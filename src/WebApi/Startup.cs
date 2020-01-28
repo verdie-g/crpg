@@ -1,38 +1,69 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AspNet.Security.OpenId.Steam;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using AutoMapper;
+using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
+using Trpg.Application;
+using Trpg.Application.Common.Interfaces;
+using Trpg.Application.Steam;
+using Trpg.Application.Users.Commands;
+using Trpg.Infrastructure;
+using Trpg.Persistence;
+using Trpg.WebApi.Authentication;
+using Trpg.WebApi.Common;
+using Trpg.WebApi.Services;
+using SameSiteMode = Microsoft.AspNetCore.Http.SameSiteMode;
 
 namespace Trpg.WebApi
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+        private readonly IWebHostEnvironment _environment;
         private IServiceCollection _services;
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
-            Configuration = configuration;
+            _configuration = configuration;
+            _environment = environment;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            var jwtSection = _configuration.GetSection("Jwt");
+
+            services
+                .AddInfrastructure(_configuration, _environment)
+                .AddPersistence(_configuration, _environment)
+                .AddApplication()
+                .AddHttpContextAccessor() // Injects IHttpContextAccessor
+                .AddScoped<ICurrentUserService, CurrentUserService>()
+                .Configure<JwtConfiguration>(jwtSection)
+                .AddSingleton<ITokenIssuer, JwtTokenIssuer>()
+                .AddControllers();
+
+            services.AddAuthentication(options =>
+                {
+                    options.DefaultSignInScheme = NopAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddNop()
+                .AddJwtBearer(ConfigureJwtBearer)
+                .AddSteam(ConfigureSteamAuthentication);
 
             _services = services;
         }
@@ -46,33 +77,97 @@ namespace Trpg.WebApi
                 RegisteredServicesPage(app);
             }
 
-            app.UseHttpsRedirection();
-            app.UsePathBase("/api");
-            app.UseRouting();
-            app.UseAuthorization(); // check that HttpContext.User has the correct rights to access the endpoint
-            app.UseEndpoints(endpoints => endpoints.MapControllers());
+            app
+                .UseCustomExceptionHandler()
+                .UseHttpsRedirection()
+                .UsePathBase("/api")
+                .UseRouting()
+                .UseAuthentication() // populate HttpContext.User
+                .UseAuthorization() // check that HttpContext.User has the correct rights to access the endpoint
+                .UseEndpoints(endpoints => endpoints.MapControllers());
         }
 
         private void RegisteredServicesPage(IApplicationBuilder app)
         {
             app.Map("/services", builder => builder.Run(async context =>
             {
-                var sb = new StringBuilder();
-                sb.Append("<h1>Registered Services</h1>");
-                sb.Append("<table><thead>");
-                sb.Append("<tr><th>Type</th><th>Lifetime</th><th>Instance</th></tr>");
-                sb.Append("</thead><tbody>");
-                foreach (var svc in _services)
+                var sb = new StringBuilder()
+                    .Append("<h1>Registered Services</h1>")
+                    .Append("<table><thead>")
+                    .Append("<tr><th>Type</th><th>Lifetime</th><th>Instance</th></tr>")
+                    .Append("</thead><tbody>");
+                foreach (var svc in _services.OrderBy(s => s.ServiceType.FullName))
                 {
-                    sb.Append("<tr>");
-                    sb.Append($"<td>{svc.ServiceType.FullName}</td>");
-                    sb.Append($"<td>{svc.Lifetime}</td>");
-                    sb.Append($"<td>{svc.ImplementationType?.FullName}</td>");
-                    sb.Append("</tr>");
+                    sb.Append("<tr>")
+                        .Append($"<td>{svc.ServiceType.FullName}</td>")
+                        .Append($"<td>{svc.Lifetime}</td>")
+                        .Append($"<td>{svc.ImplementationType?.FullName}</td>")
+                        .Append("</tr>");
                 }
+
                 sb.Append("</tbody></table>");
                 await context.Response.WriteAsync(sb.ToString());
             }));
+        }
+
+        private void ConfigureJwtBearer(JwtBearerOptions options)
+        {
+            byte[] secret = Encoding.UTF8.GetBytes(_configuration.GetValue<string>("Jwt:Secret"));
+
+            options.SaveToken = false;
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(secret),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateLifetime = true,
+            };
+
+            options.Events = new JwtBearerEvents
+            {
+                OnMessageReceived = ctx =>
+                {
+                    if (ctx.Request.Cookies.TryGetValue("jwt", out string jwt))
+                    {
+                        ctx.Request.Headers[HeaderNames.Authorization] = jwt;
+                        ctx.Response.Cookies.Delete("jwt");
+                    }
+                    return Task.CompletedTask;
+                },
+            };
+        }
+
+        private void ConfigureSteamAuthentication(SteamAuthenticationOptions options)
+        {
+            // ApplicationKey is needed to fetch user infos.
+            options.ApplicationKey = _configuration.GetValue<string>("Steam:ApiKey");
+            options.CallbackPath = "/api/users/callback";
+            options.Events.OnAuthenticated = async ctx =>
+            {
+                var mediator = ctx.HttpContext.RequestServices.GetRequiredService<IMediator>();
+                var mapper = ctx.HttpContext.RequestServices.GetRequiredService<IMapper>();
+                var tokenIssuer = ctx.HttpContext.RequestServices.GetRequiredService<ITokenIssuer>();
+
+                JToken res = ctx.User[SteamAuthenticationConstants.Parameters.Response];
+                JToken players = res[SteamAuthenticationConstants.Parameters.Players];
+                var player = players.First.ToObject<SteamPlayer>();
+
+                var user = await mediator.Send(mapper.Map<UpsertUserCommand>(player));
+
+                var claimsIdentity = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                });
+                string jwt = tokenIssuer.IssueToken(claimsIdentity);
+                ctx.Response.Cookies.Append("jwt", jwt, new CookieOptions
+                {
+                    HttpOnly = true,
+                    SameSite = SameSiteMode.None,
+                    Secure = ctx.Request.IsHttps,
+                    IsEssential = true,
+                });
+            };
         }
     }
 }

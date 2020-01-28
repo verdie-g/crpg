@@ -5,9 +5,18 @@
     <RootNamespace>Trpg.WebApi</RootNamespace>
     <AssemblyName>Trpg.WebApi</AssemblyName>
   </PropertyGroup>
-
+    
   <ItemGroup>
     <PackageReference Include="AspNet.Security.OpenId.Steam" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Persistence\Persistence.csproj" />
   </ItemGroup>
 
 </Project>
