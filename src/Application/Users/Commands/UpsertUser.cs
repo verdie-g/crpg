@@ -56,11 +56,12 @@ namespace Trpg.Application.Users.Commands
                 userEntity.AvatarMedium = request.AvatarMedium;
                 userEntity.AvatarFull = request.AvatarFull;
 
-                await _db.SaveChangesAsync(cancellationToken);
+                if (_db.Entry(userEntity).State == EntityState.Detached)
+                {
+                    _db.Users.Add(userEntity);
+                }
 
-                var a = await _db.Users
-                    .ProjectTo<UserModelView>(_mapper.ConfigurationProvider)
-                    .FirstOrDefaultAsync(u => u.SteamId == request.SteamId, cancellationToken);
+                await _db.SaveChangesAsync(cancellationToken);
 
                 return _mapper.Map<UserModelView>(userEntity);
             }
