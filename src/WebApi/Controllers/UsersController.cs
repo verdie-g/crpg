@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AspNet.Security.OpenId.Steam;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -7,23 +7,22 @@ using Microsoft.Net.Http.Headers;
 
 namespace Trpg.WebApi.Controllers
 {
-    [Authorize]
     [ApiController]
     public class UsersController : BaseController
     {
-        [AllowAnonymous]
-        [HttpGet("signIn")] // TODO: HttpPost
+        [HttpGet("signIn")]
+        [AllowAnonymous] // TODO: HttpPost
         public IActionResult SignIn()
         {
             return Challenge(new AuthenticationProperties {RedirectUri = "/api/users/callback"},
                 SteamAuthenticationDefaults.AuthenticationScheme);
         }
 
-        [AllowAnonymous]
         [HttpGet("callback")]
         public IActionResult AuthenticationCallback()
         {
-            return Ok(Request.Headers[HeaderNames.Authorization][0]);
+            var authorization = Request.Headers[HeaderNames.Authorization][0];
+            return Ok(authorization.Substring(7)); // Remove Bearer prefix
         }
 
         [HttpGet("self")]

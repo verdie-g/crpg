@@ -20,7 +20,7 @@ namespace Trpg.Application.UTest.Users
                 UserName = "def",
                 Avatar = new Uri("http://ghi.klm"),
                 AvatarMedium = new Uri("http://mno.pqr"),
-                AvatarFull = new Uri("http://stu.vwx"),
+                AvatarFull = new Uri("http://stu.vwx")
             }, CancellationToken.None);
 
             var a = await _db.Users.ToArrayAsync();
@@ -35,9 +35,10 @@ namespace Trpg.Application.UTest.Users
             {
                 SteamId = "abc",
                 UserName = "def",
+                Role = Role.Admin,
                 Avatar = new Uri("http://ghi.klm"),
                 AvatarMedium = new Uri("http://mno.pqr"),
-                AvatarFull = new Uri("http://stu.vwx"),
+                AvatarFull = new Uri("http://stu.vwx")
             };
             _db.Users.Add(user);
             await _db.SaveChangesAsync();
@@ -49,7 +50,7 @@ namespace Trpg.Application.UTest.Users
                 UserName = "def",
                 Avatar = new Uri("http://gh.klm"),
                 AvatarMedium = new Uri("http://mn.pqr"),
-                AvatarFull = new Uri("http://st.vwx"),
+                AvatarFull = new Uri("http://st.vwx")
             }, CancellationToken.None);
 
             Assert.AreEqual(user.Id, createdUser.Id);
@@ -58,6 +59,7 @@ namespace Trpg.Application.UTest.Users
             Assert.AreEqual(dbUser.Id, createdUser.Id);
             Assert.AreEqual(dbUser.SteamId, createdUser.SteamId);
             Assert.AreEqual(dbUser.UserName, createdUser.UserName);
+            Assert.AreEqual(dbUser.Role, createdUser.Role);
             Assert.AreEqual(new Uri("http://gh.klm"), createdUser.Avatar);
             Assert.AreEqual(new Uri("http://mn.pqr"), createdUser.AvatarMedium);
             Assert.AreEqual(new Uri("http://st.vwx"), createdUser.AvatarFull);

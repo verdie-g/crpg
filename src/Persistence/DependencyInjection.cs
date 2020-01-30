@@ -17,7 +17,8 @@ namespace Trpg.Persistence
             }
             else
             {
-                // use pgsql
+                var connectionString = configuration.GetConnectionString("Trpg");
+                services.AddDbContext<TrpgDbContext>(options => options.UseNpgsql(connectionString));
             }
 
             services.AddScoped<ITrpgDbContext>(provider => provider.GetService<TrpgDbContext>());

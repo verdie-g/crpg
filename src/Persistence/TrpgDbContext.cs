@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using Trpg.Application.Common.Interfaces;
 using Trpg.Common;
 using Trpg.Domain.Common;
@@ -11,6 +12,11 @@ namespace Trpg.Persistence
     public class TrpgDbContext : DbContext, ITrpgDbContext
     {
         private readonly IDateTime _dateTime;
+
+        static TrpgDbContext()
+        {
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<Role>();
+        }
 
         public TrpgDbContext(DbContextOptions<TrpgDbContext> options)
             : base(options)
@@ -32,16 +38,9 @@ namespace Trpg.Persistence
             ChangeTracker.DetectChanges();
 
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
-            {
                 if (entry.State == EntityState.Added)
-                {
                     entry.Entity.CreatedAt = _dateTime.Now;
-                }
-                else if (entry.State == EntityState.Modified)
-                {
-                    entry.Entity.LastModifiedAt = _dateTime.Now;
-                }
-            }
+                else if (entry.State == EntityState.Modified) entry.Entity.LastModifiedAt = _dateTime.Now;
 
             return base.SaveChangesAsync(cancellationToken);
         }
@@ -49,6 +48,7 @@ namespace Trpg.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(TrpgDbContext).Assembly);
+            modelBuilder.HasPostgresEnum<Role>();
         }
     }
 }

@@ -2,7 +2,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -48,8 +47,9 @@ namespace Trpg.Application.Users.Commands
 
             public async Task<UserModelView> Handle(UpsertUserCommand request, CancellationToken cancellationToken)
             {
-                var userEntity = await _db.Users.FirstOrDefaultAsync(u => u.SteamId == request.SteamId, cancellationToken)
-                                 ?? new User { SteamId = request.SteamId };
+                var userEntity =
+                    await _db.Users.FirstOrDefaultAsync(u => u.SteamId == request.SteamId, cancellationToken)
+                    ?? new User {SteamId = request.SteamId};
 
                 userEntity.UserName = request.UserName;
                 userEntity.Avatar = request.Avatar;
@@ -58,6 +58,7 @@ namespace Trpg.Application.Users.Commands
 
                 if (_db.Entry(userEntity).State == EntityState.Detached)
                 {
+                    userEntity.Role = Role.User;
                     _db.Users.Add(userEntity);
                 }
 

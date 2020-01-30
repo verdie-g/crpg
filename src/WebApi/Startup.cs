@@ -14,7 +14,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
-using Newtonsoft.Json.Linq;
 using Trpg.Application;
 using Trpg.Application.Common.Interfaces;
 using Trpg.Application.Steam;
@@ -97,13 +96,11 @@ namespace Trpg.WebApi
                     .Append("<tr><th>Type</th><th>Lifetime</th><th>Instance</th></tr>")
                     .Append("</thead><tbody>");
                 foreach (var svc in _services.OrderBy(s => s.ServiceType.FullName))
-                {
                     sb.Append("<tr>")
                         .Append($"<td>{svc.ServiceType.FullName}</td>")
                         .Append($"<td>{svc.Lifetime}</td>")
                         .Append($"<td>{svc.ImplementationType?.FullName}</td>")
                         .Append("</tr>");
-                }
 
                 sb.Append("</tbody></table>");
                 await context.Response.WriteAsync(sb.ToString());
@@ -112,7 +109,7 @@ namespace Trpg.WebApi
 
         private void ConfigureJwtBearer(JwtBearerOptions options)
         {
-            byte[] secret = Encoding.UTF8.GetBytes(_configuration.GetValue<string>("Jwt:Secret"));
+            var secret = Encoding.UTF8.GetBytes(_configuration.GetValue<string>("Jwt:Secret"));
 
             options.SaveToken = false;
             options.TokenValidationParameters = new TokenValidationParameters
@@ -121,20 +118,21 @@ namespace Trpg.WebApi
                 IssuerSigningKey = new SymmetricSecurityKey(secret),
                 ValidateIssuer = false,
                 ValidateAudience = false,
-                ValidateLifetime = true,
+                ValidateLifetime = true
             };
 
             options.Events = new JwtBearerEvents
             {
                 OnMessageReceived = ctx =>
                 {
-                    if (ctx.Request.Cookies.TryGetValue("jwt", out string jwt))
+                    if (ctx.Request.Cookies.TryGetValue("jwt", out var jwt))
                     {
-                        ctx.Request.Headers[HeaderNames.Authorization] = jwt;
+                        ctx.Request.Headers[HeaderNames.Authorization] = "Bearer " + jwt;
                         ctx.Response.Cookies.Delete("jwt");
                     }
+
                     return Task.CompletedTask;
-                },
+                }
             };
         }
 
@@ -149,23 +147,24 @@ namespace Trpg.WebApi
                 var mapper = ctx.HttpContext.RequestServices.GetRequiredService<IMapper>();
                 var tokenIssuer = ctx.HttpContext.RequestServices.GetRequiredService<ITokenIssuer>();
 
-                JToken res = ctx.User[SteamAuthenticationConstants.Parameters.Response];
-                JToken players = res[SteamAuthenticationConstants.Parameters.Players];
+                var res = ctx.User[SteamAuthenticationConstants.Parameters.Response];
+                var players = res[SteamAuthenticationConstants.Parameters.Players];
                 var player = players.First.ToObject<SteamPlayer>();
 
                 var user = await mediator.Send(mapper.Map<UpsertUserCommand>(player));
 
                 var claimsIdentity = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role.ToString())
                 });
-                string jwt = tokenIssuer.IssueToken(claimsIdentity);
+                var jwt = tokenIssuer.IssueToken(claimsIdentity);
                 ctx.Response.Cookies.Append("jwt", jwt, new CookieOptions
                 {
                     HttpOnly = true,
                     SameSite = SameSiteMode.None,
                     Secure = ctx.Request.IsHttps,
-                    IsEssential = true,
+                    IsEssential = true
                 });
             };
         }
