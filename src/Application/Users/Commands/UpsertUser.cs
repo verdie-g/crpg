@@ -30,7 +30,11 @@ namespace Trpg.Application.Users.Commands
         {
             public Validator()
             {
-                RuleFor(x => x.SteamId).Matches("^\\d{17}$");
+                RuleFor(u => u.SteamId).Matches("^\\d{17}$");
+                RuleFor(u => u.UserName).NotNull().NotEmpty();
+                RuleFor(u => u.Avatar).NotNull();
+                RuleFor(u => u.AvatarMedium).NotNull();
+                RuleFor(u => u.AvatarFull).NotNull();
             }
         }
 

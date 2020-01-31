@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using Trpg.Application.Users.Commands;
 using Trpg.Domain.Entities;
@@ -23,8 +22,7 @@ namespace Trpg.Application.UTest.Users
                 AvatarFull = new Uri("http://stu.vwx")
             }, CancellationToken.None);
 
-            var a = await _db.Users.ToArrayAsync();
-
+            Assert.AreEqual(Role.User, user.Role);
             Assert.NotNull(await _db.Users.FindAsync(user.Id));
         }
 
@@ -33,7 +31,7 @@ namespace Trpg.Application.UTest.Users
         {
             var user = new User
             {
-                SteamId = "abc",
+                SteamId = "13948192759205810",
                 UserName = "def",
                 Role = Role.Admin,
                 Avatar = new Uri("http://ghi.klm"),
@@ -46,7 +44,7 @@ namespace Trpg.Application.UTest.Users
             var handler = new UpsertUserCommand.Handler(_db, _mapper);
             var createdUser = await handler.Handle(new UpsertUserCommand
             {
-                SteamId = "abc",
+                SteamId = "13948192759205810",
                 UserName = "def",
                 Avatar = new Uri("http://gh.klm"),
                 AvatarMedium = new Uri("http://mn.pqr"),
@@ -63,6 +61,38 @@ namespace Trpg.Application.UTest.Users
             Assert.AreEqual(new Uri("http://gh.klm"), createdUser.Avatar);
             Assert.AreEqual(new Uri("http://mn.pqr"), createdUser.AvatarMedium);
             Assert.AreEqual(new Uri("http://st.vwx"), createdUser.AvatarFull);
+        }
+
+        [Test]
+        public void TestValidationValidCommand()
+        {
+            var validator = new UpsertUserCommand.Validator();
+            var res = validator.Validate(new UpsertUserCommand
+            {
+                SteamId = "28320184920184918",
+                UserName = "toto",
+                Avatar = new Uri("http://gh.klm"),
+                AvatarMedium = new Uri("http://mn.pqr"),
+                AvatarFull = new Uri("http://st.vwx")
+            });
+
+            Assert.AreEqual(0, res.Errors.Count);
+        }
+
+        [Test]
+        public void TestValidationInvalidCommand()
+        {
+            var validator = new UpsertUserCommand.Validator();
+            var res = validator.Validate(new UpsertUserCommand
+            {
+                SteamId = "invalid",
+                UserName = "",
+                Avatar = null,
+                AvatarMedium = null,
+                AvatarFull = null
+            });
+
+            Assert.AreEqual(5, res.Errors.Count);
         }
     }
 }
