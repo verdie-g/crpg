@@ -2,7 +2,7 @@ using System;
 using Trpg.Application.Common.Mappings;
 using Trpg.Domain.Entities;
 
-namespace Trpg.Application.Users.Commands
+namespace Trpg.Application.Users
 {
     public class UserModelView : IMapFrom<User>
     {

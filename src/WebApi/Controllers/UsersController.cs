@@ -1,5 +1,5 @@
-using System;
 using Microsoft.AspNetCore.Mvc;
+using Trpg.Application.Users.Queries;
 
 namespace Trpg.WebApi.Controllers
 {
@@ -9,7 +9,7 @@ namespace Trpg.WebApi.Controllers
         [HttpGet("self")]
         public IActionResult GetSelfUser()
         {
-            return Ok(string.Join(Environment.NewLine, HttpContext.User.Claims));
+            return Ok(Mediator.Send(new GetUserQuery { UserId = CurrentUser.UserId.Value }));
         }
     }
 }

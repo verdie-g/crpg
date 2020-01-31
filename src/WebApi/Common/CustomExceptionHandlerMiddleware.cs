@@ -29,6 +29,12 @@ namespace Trpg.WebApi.Common
                 context.Response.StatusCode = (int) HttpStatusCode.BadRequest;
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(e.Failures));
             }
+            catch (NotFoundException e)
+            {
+                context.Response.ContentType = MediaTypeNames.Application.Json;
+                context.Response.StatusCode = (int) HttpStatusCode.NotFound;
+                await context.Response.WriteAsync(JsonConvert.SerializeObject(e.Message));
+            }
         }
     }
 
