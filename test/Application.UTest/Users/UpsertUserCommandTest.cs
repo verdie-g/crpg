@@ -23,6 +23,7 @@ namespace Trpg.Application.UTest.Users
             }, CancellationToken.None);
 
             Assert.AreEqual(Role.User, user.Role);
+            Assert.AreEqual(300, user.Money);
             Assert.NotNull(await _db.Users.FindAsync(user.Id));
         }
 
@@ -33,6 +34,7 @@ namespace Trpg.Application.UTest.Users
             {
                 SteamId = "13948192759205810",
                 UserName = "def",
+                Money = 1000,
                 Role = Role.Admin,
                 Avatar = new Uri("http://ghi.klm"),
                 AvatarMedium = new Uri("http://mno.pqr"),
@@ -56,6 +58,7 @@ namespace Trpg.Application.UTest.Users
             var dbUser = await _db.Users.FindAsync(user.Id);
             Assert.AreEqual(dbUser.Id, createdUser.Id);
             Assert.AreEqual(dbUser.SteamId, createdUser.SteamId);
+            Assert.AreEqual(dbUser.Money, createdUser.Money);
             Assert.AreEqual(dbUser.UserName, createdUser.UserName);
             Assert.AreEqual(dbUser.Role, createdUser.Role);
             Assert.AreEqual(new Uri("http://gh.klm"), createdUser.Avatar);

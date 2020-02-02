@@ -11,7 +11,7 @@ namespace Trpg.Application.UTest.Users
     public class GetUserQueryTest : TestBase
     {
         [Test]
-        public async Task TestWhenUserDoesntExist()
+        public void TestWhenUserDoesntExist()
         {
             var handler = new GetUserQuery.Handler(_db, _mapper);
             Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new GetUserQuery

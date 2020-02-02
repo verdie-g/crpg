@@ -1,4 +1,7 @@
+using System;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +17,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using Trpg.Application;
 using Trpg.Application.Common.Interfaces;
 using Trpg.Application.Steam;
@@ -52,6 +57,7 @@ namespace Trpg.WebApi
                 .AddScoped<ICurrentUserService, CurrentUserService>()
                 .Configure<JwtConfiguration>(jwtSection)
                 .AddSingleton<ITokenIssuer, JwtTokenIssuer>()
+                .AddSwaggerGen(ConfigureSwagger)
                 .AddControllers();
 
             services.AddAuthentication(options =>
@@ -80,6 +86,8 @@ namespace Trpg.WebApi
                 .UseCustomExceptionHandler()
                 .UseHttpsRedirection()
                 .UsePathBase("/api")
+                .UseSwagger()
+                .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Trpg API"))
                 .UseRouting()
                 .UseAuthentication() // populate HttpContext.User
                 .UseAuthorization() // check that HttpContext.User has the correct rights to access the endpoint
@@ -105,6 +113,14 @@ namespace Trpg.WebApi
                 sb.Append("</tbody></table>");
                 await context.Response.WriteAsync(sb.ToString());
             }));
+        }
+
+        private void ConfigureSwagger(SwaggerGenOptions options)
+        {
+            options.SwaggerDoc("v1", new OpenApiInfo {Title = "Trpg API", Version = "v1"});
+            string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            options.IncludeXmlComments(xmlPath);
         }
 
         private void ConfigureJwtBearer(JwtBearerOptions options)

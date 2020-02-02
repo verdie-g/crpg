@@ -8,19 +8,7 @@ namespace Trpg.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasIndex(e => e.SteamId).IsUnique();
-
-            builder.Property(e => e.UserName)
-                .IsRequired();
-
-            builder.Property(e => e.Avatar)
-                .IsRequired();
-
-            builder.Property(e => e.AvatarMedium)
-                .IsRequired();
-
-            builder.Property(e => e.AvatarFull)
-                .IsRequired();
+            builder.HasIndex(u => u.SteamId).IsUnique();
         }
     }
 }

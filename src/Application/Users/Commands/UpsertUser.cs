@@ -40,6 +40,8 @@ namespace Trpg.Application.Users.Commands
 
         public class Handler : IRequestHandler<UpsertUserCommand, UserModelView>
         {
+            private const int StartingMoney = 300;
+
             private readonly ITrpgDbContext _db;
             private readonly IMapper _mapper;
 
@@ -63,6 +65,7 @@ namespace Trpg.Application.Users.Commands
                 if (_db.Entry(userEntity).State == EntityState.Detached)
                 {
                     userEntity.Role = Role.User;
+                    userEntity.Money = StartingMoney;
                     _db.Users.Add(userEntity);
                 }
 

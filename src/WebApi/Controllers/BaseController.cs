@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,8 @@ namespace Trpg.WebApi.Controllers
     [ApiController]
     [Authorize]
     [Route("[controller]")]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [Produces(MediaTypeNames.Application.Json)]
     public abstract class BaseController : ControllerBase
     {
         private IMediator _mediator;

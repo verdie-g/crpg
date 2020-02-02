@@ -9,6 +9,8 @@ namespace Trpg.Application.Common.Interfaces
     public interface ITrpgDbContext
     {
         DbSet<User> Users { get; }
+        DbSet<Character> Characters { get; }
+        DbSet<Equipment> Equipments { get; }
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
