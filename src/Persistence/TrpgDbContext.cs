@@ -1,7 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Npgsql;
 using Trpg.Application.Common.Interfaces;
 using Trpg.Common;
@@ -12,7 +11,6 @@ namespace Trpg.Persistence
 {
     public class TrpgDbContext : DbContext, ITrpgDbContext
     {
-        private readonly ILoggerFactory _loggerFactory;
         private readonly IDateTime _dateTime;
 
         static TrpgDbContext()
@@ -27,11 +25,9 @@ namespace Trpg.Persistence
 
         public TrpgDbContext(
             DbContextOptions<TrpgDbContext> options,
-            ILoggerFactory loggerFactory,
             IDateTime dateTime)
             : base(options)
         {
-            _loggerFactory = loggerFactory;
             _dateTime = dateTime;
         }
 
@@ -49,12 +45,6 @@ namespace Trpg.Persistence
                 else if (entry.State == EntityState.Modified) entry.Entity.LastModifiedAt = _dateTime.Now;
 
             return base.SaveChangesAsync(cancellationToken);
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseLoggerFactory(_loggerFactory);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

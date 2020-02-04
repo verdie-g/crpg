@@ -1,7 +1,6 @@
 using System;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using Trpg.Application.Common.Mappings;
@@ -21,7 +20,7 @@ namespace Trpg.Application.UTest
             var options = new DbContextOptionsBuilder<TrpgDbContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
-            _db = new TrpgDbContext(options, Mock.Of<ILoggerFactory>(), Mock.Of<IDateTime>());
+            _db = new TrpgDbContext(options, Mock.Of<IDateTime>());
 
             var configurationProvider = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
             _mapper = configurationProvider.CreateMapper();
