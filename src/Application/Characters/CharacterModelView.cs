@@ -10,10 +10,10 @@ namespace Trpg.Application.Characters
         public string Name { get; set; }
         public int Experience { get; set; }
         public int Level { get; set; }
-        public EquipmentModelView Head { get; set; }
-        public EquipmentModelView Body { get; set; }
-        public EquipmentModelView Legs { get; set; }
-        public EquipmentModelView Gloves { get; set; }
-        public EquipmentModelView Weapon { get; set; }
+        public EquipmentModelView HeadEquipment { get; set; }
+        public EquipmentModelView BodyEquipment { get; set; }
+        public EquipmentModelView LegsEquipment { get; set; }
+        public EquipmentModelView GlovesEquipment { get; set; }
+        public EquipmentModelView WeaponEquipment { get; set; }
     }
 }
