@@ -34,6 +34,7 @@ namespace Trpg.Persistence
         public DbSet<User> Users { get; set; }
         public DbSet<Character> Characters { get; set; }
         public DbSet<Equipment> Equipments { get; set; }
+        public DbSet<UserEquipment> UserEquipments { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

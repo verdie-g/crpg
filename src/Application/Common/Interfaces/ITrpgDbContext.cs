@@ -11,6 +11,7 @@ namespace Trpg.Application.Common.Interfaces
         DbSet<User> Users { get; }
         DbSet<Character> Characters { get; }
         DbSet<Equipment> Equipments { get; }
+        DbSet<UserEquipment> UserEquipments { get; }
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }

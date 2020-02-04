@@ -93,5 +93,20 @@ namespace Trpg.WebApi.Controllers
             var equipment = await Mediator.Send(cmd);
             return CreatedAtAction(nameof(EquipmentsController.GetEquipment), "Equipments", new {id = equipment.Id}, equipment);
         }
+
+        /// <summary>
+        /// Sells equipment for the current user.
+        /// </summary>
+        /// <param name="id">The id of the equipment to sell.</param>
+        /// <response code="204">Sold.</response>
+        /// <response code="400">Bad Request.</response>
+        /// <response code="404">Equipment was not found.</response>
+        [HttpDelete("self/equipments/{id}")]
+        [ProducesResponseType((int) HttpStatusCode.NoContent)]
+        public async Task<IActionResult> SellUserEquipment([FromRoute] int id)
+        {
+            await Mediator.Send(new SellEquipmentCommand {EquipmentId = id, UserId = CurrentUser.UserId.Value});
+            return NoContent();
+        }
     }
 }
