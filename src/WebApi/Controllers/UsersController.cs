@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Trpg.Application.Characters;
 using Trpg.Application.Characters.Commands;
 using Trpg.Application.Characters.Queries;
+using Trpg.Application.Equipments;
+using Trpg.Application.Equipments.Commands;
 using Trpg.Application.Users.Queries;
 using Trpg.WebApi.Models;
 
@@ -48,7 +50,7 @@ namespace Trpg.WebApi.Controllers
         /// <summary>
         /// Creates a new character for the current user.
         /// </summary>
-        /// <param name="cmd">The character to create.</param>
+        /// <param name="req">The character to create.</param>
         /// <returns>The created character.</returns>
         /// <response code="201">Created.</response>
         /// <response code="400">Bad Request.</response>
@@ -73,6 +75,23 @@ namespace Trpg.WebApi.Controllers
         {
             await Mediator.Send(new DeleteCharacterCommand {CharacterId = id, UserId = CurrentUser.UserId.Value});
             return NoContent();
+        }
+
+        /// <summary>
+        /// Buys equipment for the current user.
+        /// </summary>
+        /// <param name="req">The equipment to buy.</param>
+        /// <returns>The bought equipment.</returns>
+        /// <response code="201">Bought.</response>
+        /// <response code="400">Bad Request.</response>
+        /// <response code="404">Equipment was not found.</response>
+        [HttpPost("self/equipments")]
+        [ProducesResponseType((int) HttpStatusCode.Created)]
+        public async Task<ActionResult<EquipmentModelView>> BuyUserEquipment([FromBody] BuyEquipmentRequest req)
+        {
+            var cmd = new BuyEquipmentCommand {EquipmentId = req.EquipmentId, UserId = CurrentUser.UserId.Value};
+            var equipment = await Mediator.Send(cmd);
+            return CreatedAtAction(nameof(EquipmentsController.GetEquipment), "Equipments", new {id = equipment.Id}, equipment);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Trpg.Domain.Entities
         public Uri AvatarFull { get; set; }
         // TODO: loom points + retirement
 
-        public IReadOnlyList<Equipment> Equipments { get; set; }
-        public IReadOnlyList<Character> Characters { get; set; }
+        public List<UserEquipment> UserEquipments { get; set; }
+        public List<Character> Characters { get; set; }
     }
 }

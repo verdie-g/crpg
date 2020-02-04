@@ -41,6 +41,7 @@ namespace Trpg.Application.System.Commands
                     {
                         SteamId = "76561197987525637",
                         UserName = "takeoshigeru",
+                        Money = 300,
                         Role = Role.SuperAdmin,
                     });
 

@@ -42,7 +42,8 @@ namespace Trpg.Persistence
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
                 if (entry.State == EntityState.Added)
                     entry.Entity.CreatedAt = _dateTime.Now;
-                else if (entry.State == EntityState.Modified) entry.Entity.LastModifiedAt = _dateTime.Now;
+                else if (entry.State == EntityState.Modified)
+                    entry.Entity.LastModifiedAt = _dateTime.Now;
 
             return base.SaveChangesAsync(cancellationToken);
         }

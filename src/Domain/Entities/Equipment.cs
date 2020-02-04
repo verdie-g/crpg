@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Trpg.Domain.Entities
 {
     public class Equipment
@@ -8,5 +10,7 @@ namespace Trpg.Domain.Entities
         public EquipmentType Type { get; set; }
         // TODO: Looming type
         // TODO: armor + damages
+
+        public List<UserEquipment> UserEquipments { get; set; }
     }
 }
