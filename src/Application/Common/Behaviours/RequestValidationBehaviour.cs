@@ -23,10 +23,8 @@ namespace Trpg.Application.Common.Behaviours
         {
             var context = new ValidationContext(request);
 
-            var validationTasks = _validators.Select(v => v.ValidateAsync(context, cancellationToken));
-            var validationResults = await Task.WhenAll(validationTasks);
-
-            var failures = validationResults
+            var failures = _validators
+                .Select(v => v.Validate(context))
                 .SelectMany(result => result.Errors)
                 .Where(f => f != null)
                 .ToList();

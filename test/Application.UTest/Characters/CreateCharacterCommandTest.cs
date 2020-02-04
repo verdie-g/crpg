@@ -2,6 +2,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using Trpg.Application.Characters.Commands;
+using Trpg.Application.Common.Exceptions;
+using Trpg.Domain.Entities;
 
 namespace Trpg.Application.UTest.Characters
 {
@@ -10,27 +12,40 @@ namespace Trpg.Application.UTest.Characters
         [Test]
         public async Task Basic()
         {
+            var user = _db.Users.Add(new User());
+            await _db.SaveChangesAsync();
+
             var handler = new CreateCharacterCommand.Handler(_db, _mapper);
             var c = await handler.Handle(new CreateCharacterCommand
             {
                 Name = "my sword",
-                UserId = 4,
+                UserId = user.Entity.Id,
             }, CancellationToken.None);
 
             Assert.NotNull(await _db.Characters.FindAsync(c.Id));
         }
 
         [Test]
+        public void UserNotFound()
+        {
+            var handler = new CreateCharacterCommand.Handler(_db, _mapper);
+            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new CreateCharacterCommand
+            {
+                Name = "my sword",
+                UserId = 4,
+            }, CancellationToken.None));
+        }
+
+        [Test]
         public void InvalidCharacter()
         {
-            var validator = new CreateCharacterCommand.Validator(_db);
+            var validator = new CreateCharacterCommand.Validator();
             var res = validator.Validate(new CreateCharacterCommand
             {
                 Name = "",
-                UserId = 4,
             });
 
-            Assert.AreEqual(2, res.Errors.Count);
+            Assert.AreEqual(1, res.Errors.Count);
         }
     }
 }
