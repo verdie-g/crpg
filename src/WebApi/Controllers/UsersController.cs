@@ -7,6 +7,7 @@ using Trpg.Application.Characters.Commands;
 using Trpg.Application.Characters.Queries;
 using Trpg.Application.Equipments;
 using Trpg.Application.Equipments.Commands;
+using Trpg.Application.Equipments.Queries;
 using Trpg.Application.Users.Queries;
 using Trpg.WebApi.Models;
 
@@ -75,6 +76,16 @@ namespace Trpg.WebApi.Controllers
         {
             await Mediator.Send(new DeleteCharacterCommand {CharacterId = id, UserId = CurrentUser.UserId.Value});
             return NoContent();
+        }
+
+        /// <summary>
+        /// Gets current user equipments.
+        /// </summary>
+        [HttpGet("self/equipments")]
+        public async Task<ActionResult<IReadOnlyList<EquipmentModelView>>> GetUserEquipments()
+        {
+            var query = new GetUserEquipmentsQuery {UserId = CurrentUser.UserId.Value};
+            return Ok(await Mediator.Send(query));
         }
 
         /// <summary>
