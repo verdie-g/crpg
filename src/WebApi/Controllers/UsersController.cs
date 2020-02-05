@@ -65,6 +65,30 @@ namespace Trpg.WebApi.Controllers
         }
 
         /// <summary>
+        /// Updates a character for the current user.
+        /// </summary>
+        /// <param name="req">The entire character with the updated values.</param>
+        /// <returns>The updated character.</returns>
+        /// <response code="200">Updated.</response>
+        /// <response code="400">Bad Request.</response>
+        [HttpPut("self/characters/{id}")]
+        public async Task<ActionResult<CharacterModelView>> UpdateCharacter([FromRoute] int id, [FromBody] UpdateCharacterRequest req)
+        {
+            var cmd = new UpdateCharacterCommand
+            {
+                CharacterId = id,
+                UserId = CurrentUser.UserId.Value,
+                Name = req.Name,
+                HeadEquipmentId = req.HeadEquipmentId,
+                BodyEquipmentId = req.BodyEquipmentId,
+                LegsEquipmentId = req.LegsEquipmentId,
+                GlovesEquipmentId = req.GlovesEquipmentId,
+                WeaponEquipmentId = req.WeaponEquipmentId,
+            };
+            return Ok(await Mediator.Send(cmd));
+        }
+
+        /// <summary>
         /// Deletes the specified current user's character.
         /// </summary>
         /// <param name="id">Character id.</param>
