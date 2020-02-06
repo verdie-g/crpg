@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Trpg.WebApi.Authentication
+namespace Trpg.Web.Authentication
 {
     internal static class NopAuthenticationDefaults
     {

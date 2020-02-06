@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Trpg.Application.Common.Interfaces;
 
-namespace Trpg.WebApi.Controllers
+namespace Trpg.Web.Controllers
 {
     [ApiController]
     [Authorize]

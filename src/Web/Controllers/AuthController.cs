@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 
-namespace Trpg.WebApi.Controllers
+namespace Trpg.Web.Controllers
 {
     public class AuthController : BaseController
     {

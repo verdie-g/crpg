@@ -2,7 +2,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Trpg.Application.Common.Interfaces;
 
-namespace Trpg.WebApi.Services
+namespace Trpg.Web.Services
 {
     public class CurrentUserService : ICurrentUserService
     {

@@ -9,9 +9,9 @@ using Trpg.Application.Equipments;
 using Trpg.Application.Equipments.Commands;
 using Trpg.Application.Equipments.Queries;
 using Trpg.Application.Users.Queries;
-using Trpg.WebApi.Models;
+using Trpg.Web.Models;
 
-namespace Trpg.WebApi.Controllers
+namespace Trpg.Web.Controllers
 {
     [ApiController]
     public class UsersController : BaseController

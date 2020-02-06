@@ -1,4 +1,4 @@
-namespace Trpg.WebApi.Models
+namespace Trpg.Web.Models
 {
     public class BuyEquipmentRequest
     {

@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Mime;
 using System.Threading.Tasks;
 
-namespace Trpg.WebApi.Common
+namespace Trpg.Web.Common
 {
     public class CustomExceptionHandlerMiddleware
     {

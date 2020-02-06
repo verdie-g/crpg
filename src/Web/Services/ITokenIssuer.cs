@@ -1,6 +1,6 @@
 using System.Security.Claims;
 
-namespace Trpg.WebApi.Services
+namespace Trpg.Web.Services
 {
     public interface ITokenIssuer
     {

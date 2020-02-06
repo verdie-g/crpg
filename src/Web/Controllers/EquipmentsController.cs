@@ -7,7 +7,7 @@ using Trpg.Application.Equipments;
 using Trpg.Application.Equipments.Commands;
 using Trpg.Application.Equipments.Queries;
 
-namespace Trpg.WebApi.Controllers
+namespace Trpg.Web.Controllers
 {
     public class EquipmentsController : BaseController
     {

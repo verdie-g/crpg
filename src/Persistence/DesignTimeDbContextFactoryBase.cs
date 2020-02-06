@@ -14,7 +14,7 @@ namespace Trpg.Persistence
 
         public TContext CreateDbContext(string[] args)
         {
-            var basePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "..", "WebApi"));
+            var basePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "..", "Web"));
             return Create(basePath, Environment.GetEnvironmentVariable(AspNetCoreEnvironment));
         }
 
