@@ -32,7 +32,7 @@ namespace Trpg.WebApi.Controllers
         /// <response code="200">Ok.</response>
         /// <response code="404">Character not found.</response>
         [HttpGet("self/characters/{id}")]
-        public async Task<ActionResult<CharacterModelView>> GetUserCharacter([FromRoute] int id)
+        public async Task<ActionResult<CharacterViewModel>> GetUserCharacter([FromRoute] int id)
         {
             return Ok(await Mediator.Send(new GetUserCharacterQuery {CharacterId = id, UserId = CurrentUser.UserId.Value}));
         }
@@ -43,7 +43,7 @@ namespace Trpg.WebApi.Controllers
         /// <response code="200">Ok.</response>
         [HttpGet("self/characters")]
         [ResponseCache(Duration = 60 * 60 * 6)] // 6 hours
-        public async Task<ActionResult<IReadOnlyList<CharacterModelView>>> GetUserCharactersList()
+        public async Task<ActionResult<IReadOnlyList<CharacterViewModel>>> GetUserCharactersList()
         {
             return Ok(await Mediator.Send(new GetUserCharactersListQuery {UserId = CurrentUser.UserId.Value}));
         }
@@ -57,7 +57,7 @@ namespace Trpg.WebApi.Controllers
         /// <response code="400">Bad Request.</response>
         [HttpPost("self/characters")]
         [ProducesResponseType((int) HttpStatusCode.Created)]
-        public async Task<ActionResult<CharacterModelView>> CreateCharacter([FromBody] CreateCharacterRequest req)
+        public async Task<ActionResult<CharacterViewModel>> CreateCharacter([FromBody] CreateCharacterRequest req)
         {
             var cmd = new CreateCharacterCommand {Name = req.Name, UserId = CurrentUser.UserId.Value};
             var character = await Mediator.Send(cmd);
@@ -72,7 +72,7 @@ namespace Trpg.WebApi.Controllers
         /// <response code="200">Updated.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPut("self/characters/{id}")]
-        public async Task<ActionResult<CharacterModelView>> UpdateCharacter([FromRoute] int id, [FromBody] UpdateCharacterRequest req)
+        public async Task<ActionResult<CharacterViewModel>> UpdateCharacter([FromRoute] int id, [FromBody] UpdateCharacterRequest req)
         {
             var cmd = new UpdateCharacterCommand
             {
@@ -106,7 +106,7 @@ namespace Trpg.WebApi.Controllers
         /// Gets current user equipments.
         /// </summary>
         [HttpGet("self/equipments")]
-        public async Task<ActionResult<IReadOnlyList<EquipmentModelView>>> GetUserEquipments()
+        public async Task<ActionResult<IReadOnlyList<EquipmentViewModel>>> GetUserEquipments()
         {
             var query = new GetUserEquipmentsQuery {UserId = CurrentUser.UserId.Value};
             return Ok(await Mediator.Send(query));
@@ -122,7 +122,7 @@ namespace Trpg.WebApi.Controllers
         /// <response code="404">Equipment was not found.</response>
         [HttpPost("self/equipments")]
         [ProducesResponseType((int) HttpStatusCode.Created)]
-        public async Task<ActionResult<EquipmentModelView>> BuyUserEquipment([FromBody] BuyEquipmentRequest req)
+        public async Task<ActionResult<EquipmentViewModel>> BuyUserEquipment([FromBody] BuyEquipmentRequest req)
         {
             var cmd = new BuyEquipmentCommand {EquipmentId = req.EquipmentId, UserId = CurrentUser.UserId.Value};
             var equipment = await Mediator.Send(cmd);

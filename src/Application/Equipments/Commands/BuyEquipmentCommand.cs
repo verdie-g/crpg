@@ -10,12 +10,12 @@ using Trpg.Domain.Entities;
 
 namespace Trpg.Application.Equipments.Commands
 {
-    public class BuyEquipmentCommand : IRequest<EquipmentModelView>
+    public class BuyEquipmentCommand : IRequest<EquipmentViewModel>
     {
         public int EquipmentId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<BuyEquipmentCommand, EquipmentModelView>
+        public class Handler : IRequestHandler<BuyEquipmentCommand, EquipmentViewModel>
         {
             private readonly ITrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -26,7 +26,7 @@ namespace Trpg.Application.Equipments.Commands
                 _mapper = mapper;
             }
 
-            public async Task<EquipmentModelView> Handle(BuyEquipmentCommand request, CancellationToken cancellationToken)
+            public async Task<EquipmentViewModel> Handle(BuyEquipmentCommand request, CancellationToken cancellationToken)
             {
                 var equipment = await _db.Equipments
                     .AsNoTracking()
@@ -57,7 +57,7 @@ namespace Trpg.Application.Equipments.Commands
                 user.Money -= equipment.Price;
                 user.UserEquipments.Add(new UserEquipment {UserId = request.UserId, EquipmentId = request.EquipmentId});
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<EquipmentModelView>(equipment);
+                return _mapper.Map<EquipmentViewModel>(equipment);
             }
         }
     }

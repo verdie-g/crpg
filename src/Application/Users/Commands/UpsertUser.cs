@@ -12,7 +12,7 @@ using Trpg.Domain.Entities;
 
 namespace Trpg.Application.Users.Commands
 {
-    public class UpsertUserCommand : IRequest<UserModelView>, IMapFrom<SteamPlayer>
+    public class UpsertUserCommand : IRequest<UserViewModel>, IMapFrom<SteamPlayer>
     {
         public string SteamId { get; set; }
         public string UserName { get; set; }
@@ -38,7 +38,7 @@ namespace Trpg.Application.Users.Commands
             }
         }
 
-        public class Handler : IRequestHandler<UpsertUserCommand, UserModelView>
+        public class Handler : IRequestHandler<UpsertUserCommand, UserViewModel>
         {
             private const int StartingMoney = 300;
 
@@ -51,7 +51,7 @@ namespace Trpg.Application.Users.Commands
                 _mapper = mapper;
             }
 
-            public async Task<UserModelView> Handle(UpsertUserCommand request, CancellationToken cancellationToken)
+            public async Task<UserViewModel> Handle(UpsertUserCommand request, CancellationToken cancellationToken)
             {
                 var userEntity =
                     await _db.Users.FirstOrDefaultAsync(u => u.SteamId == request.SteamId, cancellationToken)
@@ -71,7 +71,7 @@ namespace Trpg.Application.Users.Commands
 
                 await _db.SaveChangesAsync(cancellationToken);
 
-                return _mapper.Map<UserModelView>(userEntity);
+                return _mapper.Map<UserViewModel>(userEntity);
             }
         }
     }

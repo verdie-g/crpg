@@ -12,7 +12,7 @@ using Trpg.Domain.Entities;
 
 namespace Trpg.Application.Characters.Commands
 {
-    public class UpdateCharacterCommand : IRequest<CharacterModelView>
+    public class UpdateCharacterCommand : IRequest<CharacterViewModel>
     {
         public int CharacterId { get; set; }
         public int UserId { get; set; }
@@ -31,7 +31,7 @@ namespace Trpg.Application.Characters.Commands
             }
         }
 
-        public class Handler : IRequestHandler<UpdateCharacterCommand, CharacterModelView>
+        public class Handler : IRequestHandler<UpdateCharacterCommand, CharacterViewModel>
         {
             private readonly ITrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -42,7 +42,7 @@ namespace Trpg.Application.Characters.Commands
                 _mapper = mapper;
             }
 
-            public async Task<CharacterModelView> Handle(UpdateCharacterCommand request,
+            public async Task<CharacterViewModel> Handle(UpdateCharacterCommand request,
                 CancellationToken cancellationToken)
             {
                 var character = await _db.Characters
@@ -61,7 +61,7 @@ namespace Trpg.Application.Characters.Commands
                 character.Name = request.Name;
                 await UpdateCharacterEquipments(request, character);
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<CharacterModelView>(character);
+                return _mapper.Map<CharacterViewModel>(character);
             }
 
             private async Task UpdateCharacterEquipments(UpdateCharacterCommand request, Character character)

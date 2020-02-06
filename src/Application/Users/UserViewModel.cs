@@ -4,7 +4,7 @@ using Trpg.Domain.Entities;
 
 namespace Trpg.Application.Users
 {
-    public class UserModelView : IMapFrom<User>
+    public class UserViewModel : IMapFrom<User>
     {
         public int Id { get; set; }
         public string SteamId { get; set; }

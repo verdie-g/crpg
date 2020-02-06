@@ -11,7 +11,7 @@ using Trpg.Domain.Entities;
 
 namespace Trpg.Application.Characters.Commands
 {
-    public class CreateCharacterCommand : IRequest<CharacterModelView>
+    public class CreateCharacterCommand : IRequest<CharacterViewModel>
     {
         public int UserId { get; set; }
         public string Name { get; set; }
@@ -24,7 +24,7 @@ namespace Trpg.Application.Characters.Commands
             }
         }
 
-        public class Handler : IRequestHandler<CreateCharacterCommand, CharacterModelView>
+        public class Handler : IRequestHandler<CreateCharacterCommand, CharacterViewModel>
         {
             private readonly ITrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -35,7 +35,7 @@ namespace Trpg.Application.Characters.Commands
                 _mapper = mapper;
             }
 
-            public async Task<CharacterModelView> Handle(CreateCharacterCommand request,
+            public async Task<CharacterViewModel> Handle(CreateCharacterCommand request,
                 CancellationToken cancellationToken)
             {
                 var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
@@ -54,7 +54,7 @@ namespace Trpg.Application.Characters.Commands
 
                 user.Characters = new List<Character> {newCharacter};
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<CharacterModelView>(newCharacter);
+                return _mapper.Map<CharacterViewModel>(newCharacter);
             }
         }
     }

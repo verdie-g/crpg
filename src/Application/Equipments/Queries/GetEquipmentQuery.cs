@@ -10,11 +10,11 @@ using Trpg.Domain.Entities;
 
 namespace Trpg.Application.Equipments.Queries
 {
-    public class GetEquipmentQuery : IRequest<EquipmentModelView>
+    public class GetEquipmentQuery : IRequest<EquipmentViewModel>
     {
         public int EquipmentId { get; set; }
 
-        public class Handler : IRequestHandler<GetEquipmentQuery, EquipmentModelView>
+        public class Handler : IRequestHandler<GetEquipmentQuery, EquipmentViewModel>
         {
             private readonly ITrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -25,10 +25,10 @@ namespace Trpg.Application.Equipments.Queries
                 _mapper = mapper;
             }
 
-            public async Task<EquipmentModelView> Handle(GetEquipmentQuery request, CancellationToken cancellationToken)
+            public async Task<EquipmentViewModel> Handle(GetEquipmentQuery request, CancellationToken cancellationToken)
             {
                 var equipment = await _db.Equipments
-                    .ProjectTo<EquipmentModelView>(_mapper.ConfigurationProvider)
+                    .ProjectTo<EquipmentViewModel>(_mapper.ConfigurationProvider)
                     .FirstOrDefaultAsync(e => e.Id == request.EquipmentId, cancellationToken);
 
                 if (equipment == null)

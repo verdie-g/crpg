@@ -18,7 +18,7 @@ namespace Trpg.WebApi.Controllers
         /// <response code="200">Ok.</response>
         /// <response code="404">Equipment not found.</response>
         [HttpGet("{id}")]
-        public async Task<ActionResult<EquipmentModelView>> GetEquipment([FromRoute] int id)
+        public async Task<ActionResult<EquipmentViewModel>> GetEquipment([FromRoute] int id)
         {
             return Ok(await Mediator.Send(new GetEquipmentQuery {EquipmentId = id}));
         }
@@ -29,7 +29,7 @@ namespace Trpg.WebApi.Controllers
         /// <response code="200">Ok.</response>
         [HttpGet]
         [ResponseCache(Duration = 60 * 60 * 6)] // 6 hours
-        public async Task<ActionResult<IReadOnlyList<EquipmentModelView>>> GetEquipmentsList()
+        public async Task<ActionResult<IReadOnlyList<EquipmentViewModel>>> GetEquipmentsList()
         {
             return Ok(await Mediator.Send(new GetEquipmentsListQuery()));
         }
@@ -43,7 +43,7 @@ namespace Trpg.WebApi.Controllers
         /// <response code="400">Bad Request.</response>
         [HttpPost, Authorize(Roles = "SuperAdmin")]
         [ProducesResponseType((int) HttpStatusCode.Created)]
-        public async Task<ActionResult<EquipmentModelView>> CreateEquipment([FromBody] CreateEquipmentCommand cmd)
+        public async Task<ActionResult<EquipmentViewModel>> CreateEquipment([FromBody] CreateEquipmentCommand cmd)
         {
             var equipment = await Mediator.Send(cmd);
             return CreatedAtAction(nameof(GetEquipment), new {id = equipment.Id}, equipment);

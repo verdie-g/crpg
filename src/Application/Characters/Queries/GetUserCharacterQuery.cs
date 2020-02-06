@@ -9,12 +9,12 @@ using Trpg.Domain.Entities;
 
 namespace Trpg.Application.Characters.Queries
 {
-    public class GetUserCharacterQuery : IRequest<CharacterModelView>
+    public class GetUserCharacterQuery : IRequest<CharacterViewModel>
     {
         public int CharacterId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<GetUserCharacterQuery, CharacterModelView>
+        public class Handler : IRequestHandler<GetUserCharacterQuery, CharacterViewModel>
         {
             private readonly ITrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -25,7 +25,7 @@ namespace Trpg.Application.Characters.Queries
                 _mapper = mapper;
             }
 
-            public async Task<CharacterModelView> Handle(GetUserCharacterQuery request, CancellationToken cancellationToken)
+            public async Task<CharacterViewModel> Handle(GetUserCharacterQuery request, CancellationToken cancellationToken)
             {
                 var character = await _db.Characters
                     .FirstOrDefaultAsync(c => c.Id == request.CharacterId, cancellationToken);
@@ -40,7 +40,7 @@ namespace Trpg.Application.Characters.Queries
                     throw new ForbiddenException(nameof(Character), request.CharacterId);
                 }
 
-                return _mapper.Map<CharacterModelView>(character);
+                return _mapper.Map<CharacterViewModel>(character);
             }
         }
     }

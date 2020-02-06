@@ -9,9 +9,9 @@ using Trpg.Application.Common.Interfaces;
 
 namespace Trpg.Application.Equipments.Queries
 {
-    public class GetEquipmentsListQuery : IRequest<IReadOnlyList<EquipmentModelView>>
+    public class GetEquipmentsListQuery : IRequest<IReadOnlyList<EquipmentViewModel>>
     {
-        public class Handler : IRequestHandler<GetEquipmentsListQuery, IReadOnlyList<EquipmentModelView>>
+        public class Handler : IRequestHandler<GetEquipmentsListQuery, IReadOnlyList<EquipmentViewModel>>
         {
             private readonly ITrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -22,10 +22,10 @@ namespace Trpg.Application.Equipments.Queries
                 _mapper = mapper;
             }
 
-            public async Task<IReadOnlyList<EquipmentModelView>> Handle(GetEquipmentsListQuery request, CancellationToken cancellationToken)
+            public async Task<IReadOnlyList<EquipmentViewModel>> Handle(GetEquipmentsListQuery request, CancellationToken cancellationToken)
             {
                 return await _db.Equipments
-                    .ProjectTo<EquipmentModelView>(_mapper.ConfigurationProvider)
+                    .ProjectTo<EquipmentViewModel>(_mapper.ConfigurationProvider)
                     .ToListAsync(cancellationToken);
             }
         }

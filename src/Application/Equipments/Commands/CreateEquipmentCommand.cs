@@ -9,7 +9,7 @@ using Trpg.Domain.Entities;
 
 namespace Trpg.Application.Equipments.Commands
 {
-    public class CreateEquipmentCommand : IRequest<EquipmentModelView>
+    public class CreateEquipmentCommand : IRequest<EquipmentViewModel>
     {
         public string Name { get; set; }
         public int Price { get; set; }
@@ -29,7 +29,7 @@ namespace Trpg.Application.Equipments.Commands
             }
         }
 
-        public class Handler : IRequestHandler<CreateEquipmentCommand, EquipmentModelView>
+        public class Handler : IRequestHandler<CreateEquipmentCommand, EquipmentViewModel>
         {
             private readonly ITrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -40,7 +40,7 @@ namespace Trpg.Application.Equipments.Commands
                 _mapper = mapper;
             }
 
-            public async Task<EquipmentModelView> Handle(CreateEquipmentCommand request, CancellationToken cancellationToken)
+            public async Task<EquipmentViewModel> Handle(CreateEquipmentCommand request, CancellationToken cancellationToken)
             {
                 var equipment = _db.Equipments.Add(new Equipment
                 {
@@ -49,7 +49,7 @@ namespace Trpg.Application.Equipments.Commands
                     Type = request.Type,
                 });
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<EquipmentModelView>(equipment.Entity);
+                return _mapper.Map<EquipmentViewModel>(equipment.Entity);
             }
         }
     }

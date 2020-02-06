@@ -3,7 +3,7 @@ using Trpg.Domain.Entities;
 
 namespace Trpg.Application.Equipments
 {
-    public class EquipmentModelView : IMapFrom<Equipment>
+    public class EquipmentViewModel : IMapFrom<Equipment>
     {
         public int Id { get; set; }
         public string Name { get; set; }
