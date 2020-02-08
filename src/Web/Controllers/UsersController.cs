@@ -67,6 +67,7 @@ namespace Trpg.Web.Controllers
         /// <summary>
         /// Updates a character for the current user.
         /// </summary>
+        /// <param name="id">Character id.</param>
         /// <param name="req">The entire character with the updated values.</param>
         /// <returns>The updated character.</returns>
         /// <response code="200">Updated.</response>
