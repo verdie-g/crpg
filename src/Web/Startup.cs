@@ -58,6 +58,7 @@ namespace Trpg.Web
                 .Configure<JwtConfiguration>(jwtSection)
                 .AddSingleton<ITokenIssuer, JwtTokenIssuer>()
                 .AddSwaggerGen(ConfigureSwagger)
+                .AddCors()
                 .AddControllers();
 
             services.AddAuthentication(options =>
@@ -84,8 +85,8 @@ namespace Trpg.Web
 
             app
                 .UseCustomExceptionHandler()
-                .UseHttpsRedirection()
                 .UsePathBase("/api")
+                .UseCors(options => options.AllowAnyOrigin())
                 .UseSwagger()
                 .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Trpg API"))
                 .UseRouting()
