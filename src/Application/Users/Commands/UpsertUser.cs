@@ -14,7 +14,7 @@ namespace Trpg.Application.Users.Commands
 {
     public class UpsertUserCommand : IRequest<UserViewModel>, IMapFrom<SteamPlayer>
     {
-        public string SteamId { get; set; }
+        public long SteamId { get; set; }
         public string UserName { get; set; }
         public Uri Avatar { get; set; }
         public Uri AvatarMedium { get; set; }
@@ -30,7 +30,6 @@ namespace Trpg.Application.Users.Commands
         {
             public Validator()
             {
-                RuleFor(u => u.SteamId).Matches("^\\d{17}$");
                 RuleFor(u => u.UserName).NotNull().NotEmpty();
                 RuleFor(u => u.Avatar).NotNull();
                 RuleFor(u => u.AvatarMedium).NotNull();

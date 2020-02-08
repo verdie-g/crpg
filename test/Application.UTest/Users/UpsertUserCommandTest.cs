@@ -15,7 +15,7 @@ namespace Trpg.Application.UTest.Users
             var handler = new UpsertUserCommand.Handler(_db, _mapper);
             var user = await handler.Handle(new UpsertUserCommand
             {
-                SteamId = "abc",
+                SteamId = 123,
                 UserName = "def",
                 Avatar = new Uri("http://ghi.klm"),
                 AvatarMedium = new Uri("http://mno.pqr"),
@@ -32,7 +32,7 @@ namespace Trpg.Application.UTest.Users
         {
             var user = new User
             {
-                SteamId = "13948192759205810",
+                SteamId = 13948192759205810,
                 UserName = "def",
                 Money = 1000,
                 Role = Role.Admin,
@@ -46,7 +46,7 @@ namespace Trpg.Application.UTest.Users
             var handler = new UpsertUserCommand.Handler(_db, _mapper);
             var createdUser = await handler.Handle(new UpsertUserCommand
             {
-                SteamId = "13948192759205810",
+                SteamId = 13948192759205810,
                 UserName = "def",
                 Avatar = new Uri("http://gh.klm"),
                 AvatarMedium = new Uri("http://mn.pqr"),
@@ -72,7 +72,7 @@ namespace Trpg.Application.UTest.Users
             var validator = new UpsertUserCommand.Validator();
             var res = validator.Validate(new UpsertUserCommand
             {
-                SteamId = "28320184920184918",
+                SteamId = 28320184920184918,
                 UserName = "toto",
                 Avatar = new Uri("http://gh.klm"),
                 AvatarMedium = new Uri("http://mn.pqr"),
@@ -88,14 +88,14 @@ namespace Trpg.Application.UTest.Users
             var validator = new UpsertUserCommand.Validator();
             var res = validator.Validate(new UpsertUserCommand
             {
-                SteamId = "invalid",
+                SteamId = 123,
                 UserName = "",
                 Avatar = null,
                 AvatarMedium = null,
                 AvatarFull = null
             });
 
-            Assert.AreEqual(5, res.Errors.Count);
+            Assert.AreEqual(4, res.Errors.Count);
         }
     }
 }

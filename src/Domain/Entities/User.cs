@@ -7,7 +7,7 @@ namespace Trpg.Domain.Entities
     public class User : AuditableEntity
     {
         public int Id { get; set; }
-        public string SteamId { get; set; }
+        public long SteamId { get; set; }
         public string UserName { get; set; }
         public int Money { get; set; }
         public Role Role { get; set; }

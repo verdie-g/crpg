@@ -5,7 +5,7 @@ namespace Trpg.Application.Steam
 {
     public class SteamPlayer
     {
-        public string SteamId { get; set; }
+        public long SteamId { get; set; }
         public CommunityVisibilityState CommunityVisibilityState { get; set; }
         public int ProfileState { get; set; }
         public string PersonaName  { get; set; }
@@ -43,5 +43,4 @@ namespace Trpg.Application.Steam
         LookingToTrade = 5,
         LookingToPlay = 6,
     }
-
 }

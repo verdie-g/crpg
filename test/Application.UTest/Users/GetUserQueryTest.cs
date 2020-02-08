@@ -25,7 +25,7 @@ namespace Trpg.Application.UTest.Users
         {
             var dbUser = new User
             {
-                SteamId = "13948192759205810",
+                SteamId = 13948192759205810,
                 UserName = "def",
                 Role = Role.Admin,
                 Avatar = new Uri("http://ghi.klm"),
