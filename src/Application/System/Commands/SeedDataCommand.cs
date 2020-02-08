@@ -39,7 +39,7 @@ namespace Trpg.Application.System.Commands
                 _db.Users.AddRange(
                     new User
                     {
-                        SteamId = "76561197987525637",
+                        SteamId = 76561197987525637,
                         UserName = "takeoshigeru",
                         Money = 300,
                         Role = Role.SuperAdmin,
