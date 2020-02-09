@@ -15,11 +15,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { signIn } from '@/utils/auth';
 
 @Component
 export default class SignIn extends Vue {
   onClick() {
-    window.location.href = 'http://localhost:5000/api/auth/signIn?redirectUri=' + encodeURIComponent(window.location.origin);
+    signIn();
   }
 }
 </script>
