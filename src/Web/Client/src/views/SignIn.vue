@@ -8,9 +8,7 @@
         It adds persistence to the multiplayer. Your start as a peasant and you'll develop your unique character with different stats and
         equipments.
       </p>
-      <b-button size="is-large" icon-left="steam-symbol" icon-pack="fab">
-        Sign in through Steam
-      </b-button>
+      <b-button size="is-large" icon-left="steam-symbol" icon-pack="fab" @click="onClick">Sign in through Steam</b-button>
     </div>
   </section>
 </template>
@@ -20,6 +18,9 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class SignIn extends Vue {
+  onClick() {
+    window.location.href = 'http://localhost:5000/api/auth/signIn?redirectUri=' + encodeURIComponent(window.location.origin);
+  }
 }
 </script>
 

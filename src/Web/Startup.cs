@@ -137,27 +137,12 @@ namespace Trpg.Web
                 ValidateAudience = false,
                 ValidateLifetime = true
             };
-
-            options.Events = new JwtBearerEvents
-            {
-                OnMessageReceived = ctx =>
-                {
-                    if (ctx.Request.Cookies.TryGetValue("jwt", out var jwt))
-                    {
-                        ctx.Request.Headers[HeaderNames.Authorization] = "Bearer " + jwt;
-                        ctx.Response.Cookies.Delete("jwt");
-                    }
-
-                    return Task.CompletedTask;
-                }
-            };
         }
 
         private void ConfigureSteamAuthentication(SteamAuthenticationOptions options)
         {
             // ApplicationKey is needed to fetch user infos.
             options.ApplicationKey = _configuration.GetValue<string>("Steam:ApiKey");
-            options.CallbackPath = "/api/users/callback";
             options.Events.OnAuthenticated = async ctx =>
             {
                 var mediator = ctx.HttpContext.RequestServices.GetRequiredService<IMediator>();
@@ -170,18 +155,19 @@ namespace Trpg.Web
 
                 var user = await mediator.Send(mapper.Map<UpsertUserCommand>(player));
 
-                var claimsIdentity = new ClaimsIdentity(new[]
+                var jwt = tokenIssuer.IssueToken(new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                     new Claim(ClaimTypes.Role, user.Role.ToString())
-                });
-                var jwt = tokenIssuer.IssueToken(claimsIdentity);
+                }));
+
                 ctx.Response.Cookies.Append("jwt", jwt, new CookieOptions
                 {
-                    HttpOnly = true,
+                    HttpOnly = false,
                     SameSite = SameSiteMode.None,
                     Secure = ctx.Request.IsHttps,
-                    IsEssential = true
+                    IsEssential = true,
+                    Path = null,
                 });
             };
         }
