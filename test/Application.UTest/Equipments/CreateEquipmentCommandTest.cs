@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Trpg.Application.Common.Exceptions;
 using Trpg.Application.Equipments.Commands;
 using Trpg.Domain.Entities;
 
@@ -23,20 +24,6 @@ namespace Trpg.Application.UTest.Equipments
         }
 
         [Test]
-        public void InvalidEquipment()
-        {
-            var validator = new CreateEquipmentCommand.Validator(_db);
-            var res = validator.Validate(new CreateEquipmentCommand
-            {
-                Name = "",
-                Price = 0,
-                Type = (EquipmentType) 500,
-            });
-
-            Assert.AreEqual(3, res.Errors.Count);
-        }
-
-        [Test]
         public async Task DuplicateName()
         {
             _db.Equipments.Add(new Equipment
@@ -45,15 +32,27 @@ namespace Trpg.Application.UTest.Equipments
             });
             await _db.SaveChangesAsync();
 
-            var validator = new CreateEquipmentCommand.Validator(_db);
-            var res = validator.Validate(new CreateEquipmentCommand
+            var handler = new CreateEquipmentCommand.Handler(_db, _mapper);
+            Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new CreateEquipmentCommand
             {
                 Name = "toto",
                 Price = 100,
                 Type = EquipmentType.Body,
+            }, CancellationToken.None));
+        }
+
+        [Test]
+        public void InvalidEquipment()
+        {
+            var validator = new CreateEquipmentCommand.Validator();
+            var res = validator.Validate(new CreateEquipmentCommand
+            {
+                Name = "",
+                Price = 0,
+                Type = (EquipmentType) 500,
             });
 
-            Assert.AreEqual(1, res.Errors.Count);
+            Assert.AreEqual(3, res.Errors.Count);
         }
     }
 }
