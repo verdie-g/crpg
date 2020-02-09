@@ -2,7 +2,6 @@ using AspNet.Security.OpenId.Steam;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers;
 
 namespace Trpg.Web.Controllers
 {
@@ -13,20 +12,9 @@ namespace Trpg.Web.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("signIn"), AllowAnonymous] // TODO: HttpPost
-        public IActionResult SignIn()
+        public IActionResult SignIn([FromQuery] string redirectUri)
         {
-            string redirectUri = Url.Action(nameof(GetToken), ControllerContext.ActionDescriptor.ControllerName, null);
             return Challenge(new AuthenticationProperties {RedirectUri = redirectUri}, SteamAuthenticationDefaults.AuthenticationScheme);
-        }
-
-        /// <summary>
-        /// Get authenticated user token.
-        /// </summary>
-        [HttpGet("token")]
-        public IActionResult GetToken()
-        {
-            var authorization = Request.Headers[HeaderNames.Authorization][0];
-            return Ok(authorization.Substring(7)); // Remove Bearer prefix
         }
     }
 }
