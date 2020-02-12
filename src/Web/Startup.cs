@@ -12,11 +12,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Trpg.Application;
@@ -25,10 +25,8 @@ using Trpg.Application.Steam;
 using Trpg.Application.Users.Commands;
 using Trpg.Infrastructure;
 using Trpg.Persistence;
-using Trpg.Web.Authentication;
 using Trpg.Web.Common;
 using Trpg.Web.Services;
-using SameSiteMode = Microsoft.AspNetCore.Http.SameSiteMode;
 
 namespace Trpg.Web
 {
@@ -63,11 +61,9 @@ namespace Trpg.Web
 
             services.AddAuthentication(options =>
                 {
-                    options.DefaultSignInScheme = NopAuthenticationDefaults.AuthenticationScheme;
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
-                .AddNop()
                 .AddJwtBearer(ConfigureJwtBearer)
                 .AddSteam(ConfigureSteamAuthentication);
 
@@ -143,6 +139,7 @@ namespace Trpg.Web
         {
             // ApplicationKey is needed to fetch user infos.
             options.ApplicationKey = _configuration.GetValue<string>("Steam:ApiKey");
+
             options.Events.OnAuthenticated = async ctx =>
             {
                 var mediator = ctx.HttpContext.RequestServices.GetRequiredService<IMediator>();
@@ -161,14 +158,16 @@ namespace Trpg.Web
                     new Claim(ClaimTypes.Role, user.Role.ToString())
                 }));
 
-                ctx.Response.Cookies.Append("jwt", jwt, new CookieOptions
-                {
-                    HttpOnly = false,
-                    SameSite = SameSiteMode.None,
-                    Secure = ctx.Request.IsHttps,
-                    IsEssential = true,
-                    Path = null,
-                });
+                ctx.Request.HttpContext.Items["jwt"] = jwt;
+            };
+
+            options.Events.OnTicketReceived = ctx =>
+            {
+                ctx.HandleResponse();
+
+                var jwt = ctx.Request.HttpContext.Items["jwt"] as string;
+                ctx.Response.Redirect(QueryHelpers.AddQueryString(ctx.ReturnUri, "token", jwt));
+                return Task.CompletedTask;
             };
         }
     }
