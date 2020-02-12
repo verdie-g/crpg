@@ -18,7 +18,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import { signIn } from '@/utils/auth';
 
 @Component
-export default class SignIn extends Vue {
+export default class Home extends Vue {
   onClick() {
     signIn();
   }
