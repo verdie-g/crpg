@@ -3,18 +3,25 @@
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-property-decorator';
-import Cookies from 'js-cookie';
+import { Component, Vue } from 'vue-property-decorator';
+import userModule from '@/store/user-module';
 import { setToken } from './utils/auth';
 
+@Component
 export default class App extends Vue {
   created() {
-    // After authenticating to steam a cookie named 'jwt' is generated containing the jwt.
-    const token = Cookies.get('jwt');
-    if (token !== undefined) {
-      setToken(token);
-      Cookies.remove('jwt');
+    this.handleAuthenticationCallback();
+  }
+
+  handleAuthenticationCallback() {
+    const token = this.$route.query.token as string;
+    if (token === undefined) {
+      return;
     }
+
+    this.$router.replace('');
+    setToken(token);
+    userModule.getUser();
   }
 }
 </script>
