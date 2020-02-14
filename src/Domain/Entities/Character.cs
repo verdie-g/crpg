@@ -16,14 +16,19 @@ namespace Trpg.Domain.Entities
         public int? BodyEquipmentId { get; set; }
         public int? LegsEquipmentId { get; set; }
         public int? GlovesEquipmentId { get; set; }
-        public int? WeaponEquipmentId { get; set; }
-        // TODO: Weapon 2 3 4
+        public int? Weapon1EquipmentId { get; set; }
+        public int? Weapon2EquipmentId { get; set; }
+        public int? Weapon3EquipmentId { get; set; }
+        public int? Weapon4EquipmentId { get; set; }
 
         public User User { get; set; }
         public Equipment HeadEquipment { get; set; }
         public Equipment BodyEquipment { get; set; }
         public Equipment LegsEquipment { get; set; }
         public Equipment GlovesEquipment { get; set; }
-        public Equipment WeaponEquipment { get; set; }
+        public Equipment Weapon1Equipment { get; set; }
+        public Equipment Weapon2Equipment { get; set; }
+        public Equipment Weapon3Equipment { get; set; }
+        public Equipment Weapon4Equipment { get; set; }
     }
 }

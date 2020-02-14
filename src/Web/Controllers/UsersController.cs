@@ -83,7 +83,10 @@ namespace Trpg.Web.Controllers
                 BodyEquipmentId = req.BodyEquipmentId,
                 LegsEquipmentId = req.LegsEquipmentId,
                 GlovesEquipmentId = req.GlovesEquipmentId,
-                WeaponEquipmentId = req.WeaponEquipmentId,
+                Weapon1EquipmentId = req.Weapon1EquipmentId,
+                Weapon2EquipmentId = req.Weapon2EquipmentId,
+                Weapon3EquipmentId = req.Weapon3EquipmentId,
+                Weapon4EquipmentId = req.Weapon4EquipmentId,
             };
             return Ok(await Mediator.Send(cmd));
         }

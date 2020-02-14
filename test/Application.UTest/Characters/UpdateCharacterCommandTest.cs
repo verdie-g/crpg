@@ -21,8 +21,14 @@ namespace Trpg.Application.UTest.Characters
             var legsNew = _db.Equipments.Add(new Equipment {Type = EquipmentType.Legs});
             var glovesOld = _db.Equipments.Add(new Equipment {Type = EquipmentType.Gloves});
             var glovesNew = _db.Equipments.Add(new Equipment {Type = EquipmentType.Gloves});
-            var weaponOld = _db.Equipments.Add(new Equipment {Type = EquipmentType.Weapon});
-            var weaponNew = _db.Equipments.Add(new Equipment {Type = EquipmentType.Weapon});
+            var weapon1Old = _db.Equipments.Add(new Equipment {Type = EquipmentType.Weapon});
+            var weapon1New = _db.Equipments.Add(new Equipment {Type = EquipmentType.Weapon});
+            var weapon2Old = _db.Equipments.Add(new Equipment {Type = EquipmentType.Weapon});
+            var weapon2New = _db.Equipments.Add(new Equipment {Type = EquipmentType.Weapon});
+            var weapon3Old = _db.Equipments.Add(new Equipment {Type = EquipmentType.Weapon});
+            var weapon3New = _db.Equipments.Add(new Equipment {Type = EquipmentType.Weapon});
+            var weapon4Old = _db.Equipments.Add(new Equipment {Type = EquipmentType.Weapon});
+            var weapon4New = _db.Equipments.Add(new Equipment {Type = EquipmentType.Weapon});
             var character = _db.Characters.Add(new Character
             {
                 Name = "Old name",
@@ -30,7 +36,7 @@ namespace Trpg.Application.UTest.Characters
                 BodyEquipment = bodyOld.Entity,
                 LegsEquipment = legsOld.Entity,
                 GlovesEquipment = glovesOld.Entity,
-                WeaponEquipment = weaponOld.Entity,
+                Weapon1Equipment = weapon1Old.Entity,
             });
             var user = _db.Users.Add(new User
             {
@@ -44,8 +50,14 @@ namespace Trpg.Application.UTest.Characters
                     new UserEquipment {Equipment = legsNew.Entity},
                     new UserEquipment {Equipment = glovesOld.Entity},
                     new UserEquipment {Equipment = glovesNew.Entity},
-                    new UserEquipment {Equipment = weaponOld.Entity},
-                    new UserEquipment {Equipment = weaponNew.Entity},
+                    new UserEquipment {Equipment = weapon1Old.Entity},
+                    new UserEquipment {Equipment = weapon1New.Entity},
+                    new UserEquipment {Equipment = weapon2Old.Entity},
+                    new UserEquipment {Equipment = weapon2New.Entity},
+                    new UserEquipment {Equipment = weapon3Old.Entity},
+                    new UserEquipment {Equipment = weapon3New.Entity},
+                    new UserEquipment {Equipment = weapon4Old.Entity},
+                    new UserEquipment {Equipment = weapon4New.Entity},
                 },
                 Characters = new List<Character> {character.Entity}
             });
@@ -61,7 +73,10 @@ namespace Trpg.Application.UTest.Characters
                 BodyEquipmentId = bodyNew.Entity.Id,
                 LegsEquipmentId = legsNew.Entity.Id,
                 GlovesEquipmentId = glovesNew.Entity.Id,
-                WeaponEquipmentId = weaponNew.Entity.Id,
+                Weapon1EquipmentId = weapon1New.Entity.Id,
+                Weapon2EquipmentId = weapon2New.Entity.Id,
+                Weapon3EquipmentId = weapon3New.Entity.Id,
+                Weapon4EquipmentId = weapon4New.Entity.Id,
             };
             var c = await handler.Handle(cmd, CancellationToken.None);
 
@@ -71,7 +86,10 @@ namespace Trpg.Application.UTest.Characters
             Assert.AreEqual(cmd.BodyEquipmentId, c.BodyEquipment.Id);
             Assert.AreEqual(cmd.LegsEquipmentId, c.LegsEquipment.Id);
             Assert.AreEqual(cmd.GlovesEquipmentId, c.GlovesEquipment.Id);
-            Assert.AreEqual(cmd.WeaponEquipmentId, c.WeaponEquipment.Id);
+            Assert.AreEqual(cmd.Weapon1EquipmentId, c.Weapon1Equipment.Id);
+            Assert.AreEqual(cmd.Weapon2EquipmentId, c.Weapon2Equipment.Id);
+            Assert.AreEqual(cmd.Weapon3EquipmentId, c.Weapon3Equipment.Id);
+            Assert.AreEqual(cmd.Weapon4EquipmentId, c.Weapon4Equipment.Id);
         }
 
         [Test]
@@ -88,7 +106,10 @@ namespace Trpg.Application.UTest.Characters
                  BodyEquipment = null,
                  LegsEquipment = legsOld.Entity,
                  GlovesEquipment = null,
-                 WeaponEquipment = null,
+                 Weapon1Equipment = null,
+                 Weapon2Equipment = null,
+                 Weapon3Equipment = null,
+                 Weapon4Equipment = null,
              });
              var user = _db.Users.Add(new User
              {
@@ -113,7 +134,10 @@ namespace Trpg.Application.UTest.Characters
                  BodyEquipmentId = bodyNew.Entity.Id,
                  LegsEquipmentId = null,
                  GlovesEquipmentId = null,
-                 WeaponEquipmentId = null,
+                 Weapon1EquipmentId = null,
+                 Weapon2EquipmentId = null,
+                 Weapon3EquipmentId = null,
+                 Weapon4EquipmentId = null,
              };
              var c = await handler.Handle(cmd, CancellationToken.None);
 
@@ -123,7 +147,10 @@ namespace Trpg.Application.UTest.Characters
              Assert.AreEqual(cmd.BodyEquipmentId, c.BodyEquipment.Id);
              Assert.IsNull(c.LegsEquipment);
              Assert.IsNull(c.GlovesEquipment);
-             Assert.IsNull(c.WeaponEquipment);
+             Assert.IsNull(c.Weapon1Equipment);
+             Assert.IsNull(c.Weapon2Equipment);
+             Assert.IsNull(c.Weapon3Equipment);
+             Assert.IsNull(c.Weapon4Equipment);
         }
 
         [Test]
@@ -224,7 +251,7 @@ namespace Trpg.Application.UTest.Characters
                  BodyEquipmentId = equipmentType == EquipmentType.Body ? null : (int?) legs.Entity.Id,
                  LegsEquipmentId = equipmentType == EquipmentType.Legs ? null : (int?) gloves.Entity.Id,
                  GlovesEquipmentId = equipmentType == EquipmentType.Gloves ? null : (int?) weapon.Entity.Id,
-                 WeaponEquipmentId = equipmentType == EquipmentType.Weapon ? null : (int?) head.Entity.Id,
+                 Weapon1EquipmentId = equipmentType == EquipmentType.Weapon ? null : (int?) head.Entity.Id,
              };
 
              Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(cmd, CancellationToken.None));
