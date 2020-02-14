@@ -42,7 +42,6 @@ namespace Trpg.Web.Controllers
         /// </summary>
         /// <response code="200">Ok.</response>
         [HttpGet("self/characters")]
-        [ResponseCache(Duration = 60 * 60 * 6)] // 6 hours
         public async Task<ActionResult<IReadOnlyList<CharacterViewModel>>> GetUserCharactersList()
         {
             return Ok(await Mediator.Send(new GetUserCharactersListQuery {UserId = CurrentUser.UserId.Value}));

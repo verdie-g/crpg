@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -43,6 +44,27 @@ namespace Trpg.Application.System.Commands
                         UserName = "takeoshigeru",
                         Money = 300,
                         Role = Role.SuperAdmin,
+                        Characters = new List<Character>
+                        {
+                            new Character
+                            {
+                                Name = "takeoshigeru",
+                                Level = 23,
+                                Experience = 200,
+                            },
+                            new Character
+                            {
+                                Name = "totoalala",
+                                Level = 12,
+                                Experience = 200,
+                            },
+                            new Character
+                            {
+                                Name = "jackie",
+                                Level = 1,
+                                Experience = 200,
+                            },
+                        }
                     });
 
                 await _db.SaveChangesAsync(cancellationToken);
