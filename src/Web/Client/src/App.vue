@@ -1,15 +1,15 @@
 <template>
   <div>
 
-    <nav v-if="isSignedIn">
+    <nav v-if="isSignedIn" style="margin-bottom: 25px">
       <b-navbar fixed-top shadow>
         <template slot="brand">
           <b-navbar-item tag="router-link" :to="{ path: '/' }">tRPG</b-navbar-item>
         </template>
 
         <template slot="start">
-          <b-navbar-item href="#">Characters</b-navbar-item>
-          <b-navbar-item href="#">Documentation</b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ path: '/characters' }">Characters</b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ path: '/shop' }">Shop</b-navbar-item>
         </template>
 
         <template slot="end">
@@ -39,38 +39,38 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import userModule from '@/store/user-module';
-  import { setToken, isSignedIn } from './services/auth-service';
+import { Component, Vue } from 'vue-property-decorator';
+import userModule from '@/store/user-module';
+import { isSignedIn, setToken } from './services/auth-service';
 
   @Component
-  export default class App extends Vue {
-    get isSignedIn() {
-      return isSignedIn();
-    }
+export default class App extends Vue {
+  get isSignedIn() {
+    return isSignedIn();
+  }
 
-    get user() {
-      return userModule.user;
-    }
+  get user() {
+    return userModule.user;
+  }
 
-    created() {
-      this.handleAuthenticationCallback();
+  created() {
+    this.handleAuthenticationCallback();
 
-      if (isSignedIn()) {
-        userModule.getUser();
-      }
-    }
-
-    handleAuthenticationCallback() {
-      const token = this.$route.query.token as string;
-      if (token === undefined) {
-        return;
-      }
-
-      this.$router.replace('');
-      setToken(token);
+    if (isSignedIn()) {
+      userModule.getUser();
     }
   }
+
+  handleAuthenticationCallback() {
+    const token = this.$route.query.token as string;
+    if (token === undefined) {
+      return;
+    }
+
+    this.$router.replace('');
+    setToken(token);
+  }
+}
 </script>
 
 <style lang="scss">

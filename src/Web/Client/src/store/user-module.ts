@@ -1,20 +1,35 @@
-import { Module, VuexModule, Mutation, Action, getModule } from 'vuex-module-decorators';
+import {
+  Action, getModule, Module, Mutation, VuexModule,
+} from 'vuex-module-decorators';
 import store from '@/store';
-import User from '@/models/user';
 import * as userService from '@/services/users-service';
+import User from '@/models/user';
+import Character from '@/models/character';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
   user: User | null = null;
+
+  characters: Character[] = [];
 
   @Mutation
   setUser(user: User) {
     this.user = user;
   }
 
+  @Mutation
+  setCharacters(characters: Character[]) {
+    this.characters = characters;
+  }
+
   @Action({ commit: 'setUser' })
-  async getUser() {
-    return await userService.getUser();
+  getUser() {
+    return userService.getUser();
+  }
+
+  @Action({ commit: 'setCharacters' })
+  getCharacters() {
+    return userService.getCharacters();
   }
 }
 

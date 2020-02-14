@@ -9,7 +9,7 @@ namespace Trpg.Domain.Entities
         public int Price { get; set; }
         public EquipmentType Type { get; set; }
         // TODO: Looming type
-        // TODO: armor + damages
+        // TODO: armor, weight, difficulty, speed rating, length, swing, thrust, slots
 
         public List<UserEquipment> UserEquipments { get; set; }
     }
