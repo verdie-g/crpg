@@ -21,7 +21,10 @@ namespace Trpg.Application.Characters.Commands
         public int? BodyEquipmentId { get; set; }
         public int? LegsEquipmentId { get; set; }
         public int? GlovesEquipmentId { get; set; }
-        public int? WeaponEquipmentId { get; set; }
+        public int? Weapon1EquipmentId { get; set; }
+        public int? Weapon2EquipmentId { get; set; }
+        public int? Weapon3EquipmentId { get; set; }
+        public int? Weapon4EquipmentId { get; set; }
 
         public class Validator : AbstractValidator<UpdateCharacterCommand>
         {
@@ -50,7 +53,10 @@ namespace Trpg.Application.Characters.Commands
                     .Include(c => c.BodyEquipment)
                     .Include(c => c.LegsEquipment)
                     .Include(c => c.GlovesEquipment)
-                    .Include(c => c.WeaponEquipment)
+                    .Include(c => c.Weapon1Equipment)
+                    .Include(c => c.Weapon2Equipment)
+                    .Include(c => c.Weapon3Equipment)
+                    .Include(c => c.Weapon4Equipment)
                     .FirstOrDefaultAsync(c => c.Id == request.CharacterId && c.UserId == request.UserId, cancellationToken);
 
                 if (character == null)
@@ -76,7 +82,10 @@ namespace Trpg.Application.Characters.Commands
                 character.BodyEquipment = GetEquipmentWithChecks(request.BodyEquipmentId, EquipmentType.Body, equipmentsById);
                 character.LegsEquipment = GetEquipmentWithChecks(request.LegsEquipmentId, EquipmentType.Legs, equipmentsById);
                 character.GlovesEquipment = GetEquipmentWithChecks(request.GlovesEquipmentId, EquipmentType.Gloves, equipmentsById);
-                character.WeaponEquipment = GetEquipmentWithChecks(request.WeaponEquipmentId, EquipmentType.Weapon, equipmentsById);
+                character.Weapon1Equipment = GetEquipmentWithChecks(request.Weapon1EquipmentId, EquipmentType.Weapon, equipmentsById);
+                character.Weapon2Equipment = GetEquipmentWithChecks(request.Weapon2EquipmentId, EquipmentType.Weapon, equipmentsById);
+                character.Weapon3Equipment = GetEquipmentWithChecks(request.Weapon3EquipmentId, EquipmentType.Weapon, equipmentsById);
+                character.Weapon4Equipment = GetEquipmentWithChecks(request.Weapon4EquipmentId, EquipmentType.Weapon, equipmentsById);
             }
 
             private Equipment GetEquipmentWithChecks(int? id, EquipmentType expectedType,
@@ -106,8 +115,14 @@ namespace Trpg.Application.Characters.Commands
                     ids.Add(request.LegsEquipmentId.Value);
                 if (request.GlovesEquipmentId != null)
                     ids.Add(request.GlovesEquipmentId.Value);
-                if (request.WeaponEquipmentId != null)
-                    ids.Add(request.WeaponEquipmentId.Value);
+                if (request.Weapon1EquipmentId != null)
+                    ids.Add(request.Weapon1EquipmentId.Value);
+                if (request.Weapon2EquipmentId != null)
+                    ids.Add(request.Weapon2EquipmentId.Value);
+                if (request.Weapon3EquipmentId != null)
+                    ids.Add(request.Weapon3EquipmentId.Value);
+                if (request.Weapon4EquipmentId != null)
+                    ids.Add(request.Weapon4EquipmentId.Value);
 
                 return ids;
             }

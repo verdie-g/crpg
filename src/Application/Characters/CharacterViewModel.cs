@@ -14,6 +14,9 @@ namespace Trpg.Application.Characters
         public EquipmentViewModel BodyEquipment { get; set; }
         public EquipmentViewModel LegsEquipment { get; set; }
         public EquipmentViewModel GlovesEquipment { get; set; }
-        public EquipmentViewModel WeaponEquipment { get; set; }
+        public EquipmentViewModel Weapon1Equipment { get; set; }
+        public EquipmentViewModel Weapon2Equipment { get; set; }
+        public EquipmentViewModel Weapon3Equipment { get; set; }
+        public EquipmentViewModel Weapon4Equipment { get; set; }
     }
 }

@@ -17,5 +17,11 @@ export default class Character {
 
   public glovesEquipment: Equipment;
 
-  public weaponEquipment: Equipment;
+  public weapon1Equipment: Equipment;
+
+  public weapon2Equipment: Equipment;
+
+  public weapon3Equipment: Equipment;
+
+  public weapon4Equipment: Equipment;
 }
