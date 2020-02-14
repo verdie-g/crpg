@@ -1,13 +1,23 @@
-import { getToken } from '@/utils/auth';
+import { getToken, signIn } from '@/services/auth-service';
+import { notify } from '@/services/notifications-service';
+import { sleep } from '@/utils/promise';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+export const API_BASE_URL = 'http://localhost:5000/api';
 
-function send(method: string, path: string, body?: any): Promise<any> {
-  return fetch(API_BASE_URL + path, {
+async function send(method: string, path: string, body?: any): Promise<any> {
+  const res = await fetch(API_BASE_URL + path, {
     method,
     headers: { Authorization: `Bearer ${getToken()}` },
     body,
-  }).then(res => res.json());
+  });
+
+  if (res.status === 401) {
+    notify('Session expired');
+    sleep(1000).then(() => signIn());
+    return {};
+  }
+
+  return res.json();
 }
 
 export function get(path: string): Promise<any> {

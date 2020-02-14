@@ -8,17 +8,23 @@
         It adds persistence to the multiplayer. Your start as a peasant and you'll develop your unique character with different stats and
         equipments.
       </p>
-      <b-button size="is-large" icon-left="steam-symbol" icon-pack="fab" @click="onClick">Sign in through Steam</b-button>
+      <b-button size="is-large" icon-left="steam-symbol" icon-pack="fab" @click="onClick" v-if="!isSignedIn">
+        Sign in through Steam
+      </b-button>
     </div>
   </section>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { signIn } from '@/utils/auth';
+import { isSignedIn, signIn } from '@/services/auth-service';
 
 @Component
 export default class Home extends Vue {
+  get isSignedIn() {
+    return isSignedIn();
+  }
+
   onClick() {
     signIn();
   }

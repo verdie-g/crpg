@@ -41,7 +41,7 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
   import userModule from '@/store/user-module';
-  import { setToken, isSignedIn } from './utils/auth';
+  import { setToken, isSignedIn } from './services/auth-service';
 
   @Component
   export default class App extends Vue {
