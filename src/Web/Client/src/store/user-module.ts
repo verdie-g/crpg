@@ -18,6 +18,11 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
+  resetUser() {
+    this.user = null;
+  }
+
+  @Mutation
   setCharacters(characters: Character[]) {
     this.characters = characters;
   }

@@ -14,19 +14,31 @@
 
         <template slot="end">
           <b-navbar-item tag="div" v-if="user">
-            <div class="media">
-              <div class="media-content">
+              <div class="media">
+                <div class="media-content">
                   <p>
                     <strong>{{user.userName}}</strong><br>
                     <b-icon icon="coins" size="is-small" style="margin-right: 6px" />{{user.money}}
                   </p>
+                </div>
+                <figure class="media-right">
+                  <b-dropdown aria-role="list" position="is-bottom-left">
+                    <p class="image" slot="trigger" style="cursor: pointer">
+                      <img v-bind:src="user.avatar" alt="avatar" />
+                    </p>
+
+                    <b-dropdown-item aria-role="listitem" @click="signOut">
+                      <div class="media">
+                        <b-icon class="media-left" icon="sign-out-alt" />
+                        <div class="media-content">
+                          <h3>Sign out</h3>
+                        </div>
+                      </div>
+                    </b-dropdown-item>
+                  </b-dropdown>
+                </figure>
               </div>
-              <figure class="media-right">
-                <p class="image">
-                  <img v-bind:src="user.avatar" alt="avatar" />
-                </p>
-              </figure>
-            </div>
+
           </b-navbar-item>
         </template>
       </b-navbar>
@@ -41,12 +53,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
-import { isSignedIn, setToken } from './services/auth-service';
+import { isSignedIn, setToken, signOut } from './services/auth-service';
 
   @Component
 export default class App extends Vue {
   get isSignedIn() {
-    return isSignedIn();
+    return userModule.user !== null;
   }
 
   get user() {
@@ -58,6 +70,14 @@ export default class App extends Vue {
 
     if (isSignedIn()) {
       userModule.getUser();
+    }
+  }
+
+  signOut() {
+    signOut();
+    userModule.resetUser();
+    if (this.$router.currentRoute.fullPath !== '/') {
+      this.$router.push('/');
     }
   }
 
