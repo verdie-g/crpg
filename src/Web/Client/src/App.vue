@@ -47,6 +47,16 @@
     <main>
       <router-view/>
     </main>
+
+    <footer class="footer">
+      <div class="level">
+        <div class="level-item">
+          <a href="https://github.com/verdie-g/tRPG" target="_blank">
+            <b-icon icon="github" pack="fab" size="is-large" />
+          </a>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
