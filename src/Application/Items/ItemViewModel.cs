@@ -1,13 +1,13 @@
 using Trpg.Application.Common.Mappings;
 using Trpg.Domain.Entities;
 
-namespace Trpg.Application.Equipments
+namespace Trpg.Application.Items
 {
-    public class EquipmentViewModel : IMapFrom<Equipment>
+    public class ItemViewModel : IMapFrom<Item>
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
-        public EquipmentType Type { get; set; }
+        public ItemType Type { get; set; }
     }
 }

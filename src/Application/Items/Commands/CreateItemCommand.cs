@@ -8,25 +8,25 @@ using Trpg.Application.Common.Exceptions;
 using Trpg.Application.Common.Interfaces;
 using Trpg.Domain.Entities;
 
-namespace Trpg.Application.Equipments.Commands
+namespace Trpg.Application.Items.Commands
 {
-    public class CreateEquipmentCommand : IRequest<EquipmentViewModel>
+    public class CreateItemCommand : IRequest<ItemViewModel>
     {
         public string Name { get; set; }
         public int Price { get; set; }
-        public EquipmentType Type { get; set; }
+        public ItemType Type { get; set; }
 
-        public class Validator : AbstractValidator<CreateEquipmentCommand>
+        public class Validator : AbstractValidator<CreateItemCommand>
         {
             public Validator()
             {
-                RuleFor(e => e.Name).NotEmpty();
-                RuleFor(e => e.Price).GreaterThan(0);
-                RuleFor(e => e.Type).IsInEnum();
+                RuleFor(i => i.Name).NotEmpty();
+                RuleFor(i => i.Price).GreaterThan(0);
+                RuleFor(i => i.Type).IsInEnum();
             }
         }
 
-        public class Handler : IRequestHandler<CreateEquipmentCommand, EquipmentViewModel>
+        public class Handler : IRequestHandler<CreateItemCommand, ItemViewModel>
         {
             private readonly ITrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -37,21 +37,21 @@ namespace Trpg.Application.Equipments.Commands
                 _mapper = mapper;
             }
 
-            public async Task<EquipmentViewModel> Handle(CreateEquipmentCommand request, CancellationToken cancellationToken)
+            public async Task<ItemViewModel> Handle(CreateItemCommand request, CancellationToken cancellationToken)
             {
-                if (await _db.Equipments.AnyAsync(e => e.Name == request.Name, cancellationToken))
+                if (await _db.Items.AnyAsync(i => i.Name == request.Name, cancellationToken))
                 {
-                    throw new BadRequestException($"Equipment \"{request.Name}\" already exists");
+                    throw new BadRequestException($"Item \"{request.Name}\" already exists");
                 }
 
-                var equipment = _db.Equipments.Add(new Equipment
+                var item = _db.Items.Add(new Item
                 {
                     Name = request.Name,
                     Price = request.Price,
                     Type = request.Type,
                 });
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<EquipmentViewModel>(equipment.Entity);
+                return _mapper.Map<ItemViewModel>(item.Entity);
             }
         }
     }

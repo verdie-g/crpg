@@ -21,21 +21,21 @@ namespace Trpg.Application.System.Commands
 
             public async Task<Unit> Handle(SeedDataCommand request, CancellationToken cancellationToken)
             {
-                _db.Equipments.AddRange(new Equipment
+                _db.Items.AddRange(new Item
                 {
                     Name = "Good Sword",
                     Price = 200,
-                    Type = EquipmentType.Weapon
-                }, new Equipment
+                    Type = ItemType.Weapon
+                }, new Item
                 {
                     Name = "Bad Sword",
                     Price = 100,
-                    Type = EquipmentType.Weapon
-                }, new Equipment
+                    Type = ItemType.Weapon
+                }, new Item
                 {
                     Name = "Ok helmet",
                     Price = 150,
-                    Type = EquipmentType.Head
+                    Type = ItemType.Head
                 });
 
                 _db.Users.AddRange(

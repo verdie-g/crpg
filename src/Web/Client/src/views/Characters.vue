@@ -50,24 +50,24 @@
           </p>
         </div>
 
-        <div class="column character-equipments">
+        <div class="column character-items">
           <div class="columns item-boxes">
             <div class="column is-narrow gear-column">
-              <div class="box equipment-box"></div>
-              <div class="box equipment-box"></div>
-              <div class="box equipment-box"></div>
-              <div class="box equipment-box"></div>
+              <div class="box item-box"></div>
+              <div class="box item-box"></div>
+              <div class="box item-box"></div>
+              <div class="box item-box"></div>
             </div>
 
             <div class="column is-narrow horse-column">
-              <div class="box equipment-box"></div>
+              <div class="box item-box"></div>
             </div>
 
             <div class="column is-narrow weapon-column">
-              <div class="box equipment-box"></div>
-              <div class="box equipment-box"></div>
-              <div class="box equipment-box"></div>
-              <div class="box equipment-box"></div>
+              <div class="box item-box"></div>
+              <div class="box item-box"></div>
+              <div class="box item-box"></div>
+              <div class="box item-box"></div>
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@
     align-items: center;
   }
 
-  .equipment-box {
+  .item-box {
     width: 100px;
     height: 100px;
   }

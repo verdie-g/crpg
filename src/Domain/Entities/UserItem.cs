@@ -1,11 +1,11 @@
 namespace Trpg.Domain.Entities
 {
-    public class UserEquipment
+    public class UserItem
     {
         public int UserId { get; set; }
-        public int EquipmentId { get; set; }
+        public int ItemId { get; set; }
 
         public User User { get; set; }
-        public Equipment Equipment { get; set; }
+        public Item Item { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-import Equipment from '@/models/equipment';
+import Item from '@/models/item';
 
 export default class Character {
   public id: number;
@@ -9,19 +9,19 @@ export default class Character {
 
   public level: number;
 
-  public headEquipment: Equipment;
+  public headItem: Item;
 
-  public bodyEquipment: Equipment;
+  public bodyItem: Item;
 
-  public legsEquipment: Equipment;
+  public legsItem: Item;
 
-  public glovesEquipment: Equipment;
+  public glovesItem: Item;
 
-  public weapon1Equipment: Equipment;
+  public weapon1Item: Item;
 
-  public weapon2Equipment: Equipment;
+  public weapon2Item: Item;
 
-  public weapon3Equipment: Equipment;
+  public weapon3Item: Item;
 
-  public weapon4Equipment: Equipment;
+  public weapon4Item: Item;
 }
