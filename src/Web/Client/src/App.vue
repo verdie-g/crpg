@@ -24,7 +24,7 @@
                 <figure class="media-right">
                   <b-dropdown aria-role="list" position="is-bottom-left">
                     <p class="image" slot="trigger" style="cursor: pointer">
-                      <img v-bind:src="user.avatar" alt="avatar" />
+                      <img v-bind:src="user.avatarSmall" alt="avatar" />
                     </p>
 
                     <b-dropdown-item aria-role="listitem" @click="signOut">

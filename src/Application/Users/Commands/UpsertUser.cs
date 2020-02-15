@@ -57,7 +57,7 @@ namespace Trpg.Application.Users.Commands
                     ?? new User {SteamId = request.SteamId};
 
                 userEntity.UserName = request.UserName;
-                userEntity.Avatar = request.Avatar;
+                userEntity.AvatarSmall = request.Avatar;
                 userEntity.AvatarMedium = request.AvatarMedium;
                 userEntity.AvatarFull = request.AvatarFull;
 
