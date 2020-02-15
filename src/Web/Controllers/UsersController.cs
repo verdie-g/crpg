@@ -79,6 +79,25 @@ namespace Trpg.Web.Controllers
                 CharacterId = id,
                 UserId = CurrentUser.UserId.Value,
                 Name = req.Name,
+            };
+            return Ok(await Mediator.Send(cmd));
+        }
+
+        /// <summary>
+        /// Updates a character's equipments for the current user.
+        /// </summary>
+        /// <param name="id">Character id.</param>
+        /// <param name="req">The entire character's equipments with the updated values.</param>
+        /// <returns>The updated character.</returns>
+        /// <response code="200">Updated.</response>
+        /// <response code="400">Bad Request.</response>
+        [HttpPut("self/characters/{id}/equipments")]
+        public async Task<ActionResult<CharacterViewModel>> UpdateCharacterEquipments([FromRoute] int id, [FromBody] UpdateCharacterEquipmentsRequest req)
+        {
+            var cmd = new UpdateCharacterEquipmentsCommand
+            {
+                CharacterId = id,
+                UserId = CurrentUser.UserId.Value,
                 HeadEquipmentId = req.HeadEquipmentId,
                 BodyEquipmentId = req.BodyEquipmentId,
                 LegsEquipmentId = req.LegsEquipmentId,
