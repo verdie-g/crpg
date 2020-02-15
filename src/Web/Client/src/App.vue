@@ -52,7 +52,19 @@
       <div class="level">
         <div class="level-item">
           <a href="https://github.com/verdie-g/tRPG" target="_blank">
-            <b-icon icon="github" pack="fab" size="is-large" />
+            <b-icon icon="github" pack="fab" size="is-medium" />
+          </a>
+        </div>
+
+        <div class="level-item">
+          <a href="#" target="_blank">
+            <b-icon icon="discord" pack="fab" size="is-medium" />
+          </a>
+        </div>
+
+        <div class="level-item">
+          <a href="#" target="_blank">
+            <b-icon icon="steam" pack="fab" size="is-medium" />
           </a>
         </div>
       </div>
