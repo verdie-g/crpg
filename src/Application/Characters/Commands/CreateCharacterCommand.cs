@@ -20,7 +20,7 @@ namespace Trpg.Application.Characters.Commands
         {
             public Validator()
             {
-                RuleFor(e => e.Name).NotEmpty();
+                RuleFor(c => c.Name).NotEmpty();
             }
         }
 

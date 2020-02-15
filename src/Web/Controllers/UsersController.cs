@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Trpg.Application.Characters;
 using Trpg.Application.Characters.Commands;
 using Trpg.Application.Characters.Queries;
-using Trpg.Application.Equipments;
-using Trpg.Application.Equipments.Commands;
-using Trpg.Application.Equipments.Queries;
+using Trpg.Application.Items;
+using Trpg.Application.Items.Commands;
+using Trpg.Application.Items.Queries;
 using Trpg.Application.Users.Queries;
 using Trpg.Web.Models;
 
@@ -84,28 +84,28 @@ namespace Trpg.Web.Controllers
         }
 
         /// <summary>
-        /// Updates a character's equipments for the current user.
+        /// Updates a character's items for the current user.
         /// </summary>
         /// <param name="id">Character id.</param>
-        /// <param name="req">The entire character's equipments with the updated values.</param>
+        /// <param name="req">The entire character's items with the updated values.</param>
         /// <returns>The updated character.</returns>
         /// <response code="200">Updated.</response>
         /// <response code="400">Bad Request.</response>
-        [HttpPut("self/characters/{id}/equipments")]
-        public async Task<ActionResult<CharacterViewModel>> UpdateCharacterEquipments([FromRoute] int id, [FromBody] UpdateCharacterEquipmentsRequest req)
+        [HttpPut("self/characters/{id}/items")]
+        public async Task<ActionResult<CharacterViewModel>> UpdateCharacterItems([FromRoute] int id, [FromBody] UpdateCharacterItemsRequest req)
         {
-            var cmd = new UpdateCharacterEquipmentsCommand
+            var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = id,
                 UserId = CurrentUser.UserId.Value,
-                HeadEquipmentId = req.HeadEquipmentId,
-                BodyEquipmentId = req.BodyEquipmentId,
-                LegsEquipmentId = req.LegsEquipmentId,
-                GlovesEquipmentId = req.GlovesEquipmentId,
-                Weapon1EquipmentId = req.Weapon1EquipmentId,
-                Weapon2EquipmentId = req.Weapon2EquipmentId,
-                Weapon3EquipmentId = req.Weapon3EquipmentId,
-                Weapon4EquipmentId = req.Weapon4EquipmentId,
+                HeadItemId = req.HeadItemId,
+                BodyItemId = req.BodyItemId,
+                LegsItemId = req.LegsItemId,
+                GlovesItemId = req.GlovesItemId,
+                Weapon1ItemId = req.Weapon1ItemId,
+                Weapon2ItemId = req.Weapon2ItemId,
+                Weapon3ItemId = req.Weapon3ItemId,
+                Weapon4ItemId = req.Weapon4ItemId,
             };
             return Ok(await Mediator.Send(cmd));
         }
@@ -125,44 +125,44 @@ namespace Trpg.Web.Controllers
         }
 
         /// <summary>
-        /// Gets current user equipments.
+        /// Gets current user items.
         /// </summary>
-        [HttpGet("self/equipments")]
-        public async Task<ActionResult<IReadOnlyList<EquipmentViewModel>>> GetUserEquipments()
+        [HttpGet("self/items")]
+        public async Task<ActionResult<IReadOnlyList<ItemViewModel>>> GetUserItems()
         {
-            var query = new GetUserEquipmentsQuery {UserId = CurrentUser.UserId.Value};
+            var query = new GetUserItemsQuery {UserId = CurrentUser.UserId.Value};
             return Ok(await Mediator.Send(query));
         }
 
         /// <summary>
-        /// Buys equipment for the current user.
+        /// Buys item for the current user.
         /// </summary>
-        /// <param name="req">The equipment to buy.</param>
-        /// <returns>The bought equipment.</returns>
+        /// <param name="req">The item to buy.</param>
+        /// <returns>The bought item.</returns>
         /// <response code="201">Bought.</response>
         /// <response code="400">Bad Request.</response>
-        /// <response code="404">Equipment was not found.</response>
-        [HttpPost("self/equipments")]
+        /// <response code="404">Item was not found.</response>
+        [HttpPost("self/items")]
         [ProducesResponseType((int) HttpStatusCode.Created)]
-        public async Task<ActionResult<EquipmentViewModel>> BuyUserEquipment([FromBody] BuyEquipmentRequest req)
+        public async Task<ActionResult<ItemViewModel>> BuyUserItem([FromBody] BuyItemRequest req)
         {
-            var cmd = new BuyEquipmentCommand {EquipmentId = req.EquipmentId, UserId = CurrentUser.UserId.Value};
-            var equipment = await Mediator.Send(cmd);
-            return CreatedAtAction(nameof(EquipmentsController.GetEquipment), "Equipments", new {id = equipment.Id}, equipment);
+            var cmd = new BuyItemCommand {ItemId = req.ItemId, UserId = CurrentUser.UserId.Value};
+            var item = await Mediator.Send(cmd);
+            return CreatedAtAction(nameof(ItemsController.GetItem), "Items", new {id = item.Id}, item);
         }
 
         /// <summary>
-        /// Sells equipment for the current user.
+        /// Sells item for the current user.
         /// </summary>
-        /// <param name="id">The id of the equipment to sell.</param>
+        /// <param name="id">The id of the item to sell.</param>
         /// <response code="204">Sold.</response>
         /// <response code="400">Bad Request.</response>
-        /// <response code="404">Equipment was not found.</response>
-        [HttpDelete("self/equipments/{id}")]
+        /// <response code="404">Item was not found.</response>
+        [HttpDelete("self/items/{id}")]
         [ProducesResponseType((int) HttpStatusCode.NoContent)]
-        public async Task<IActionResult> SellUserEquipment([FromRoute] int id)
+        public async Task<IActionResult> SellUserItem([FromRoute] int id)
         {
-            await Mediator.Send(new SellEquipmentCommand {EquipmentId = id, UserId = CurrentUser.UserId.Value});
+            await Mediator.Send(new SellItemCommand {ItemId = id, UserId = CurrentUser.UserId.Value});
             return NoContent();
         }
     }

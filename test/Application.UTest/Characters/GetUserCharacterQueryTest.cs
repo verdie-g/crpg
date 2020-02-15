@@ -32,13 +32,13 @@ namespace Trpg.Application.UTest.Characters
             await _db.SaveChangesAsync();
 
             var handler = new GetUserCharacterQuery.Handler(_db, _mapper);
-            var equipment = await handler.Handle(new GetUserCharacterQuery
+            var item = await handler.Handle(new GetUserCharacterQuery
             {
                 CharacterId = dbCharacter.Id,
                 UserId = 2,
             }, CancellationToken.None);
 
-            Assert.NotNull(equipment);
+            Assert.NotNull(item);
         }
 
         [Test]

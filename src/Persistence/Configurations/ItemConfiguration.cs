@@ -4,11 +4,11 @@ using Trpg.Domain.Entities;
 
 namespace Trpg.Persistence.Configurations
 {
-    public class EquipmentConfiguration : IEntityTypeConfiguration<Equipment>
+    public class ItemConfiguration : IEntityTypeConfiguration<Item>
     {
-        public void Configure(EntityTypeBuilder<Equipment> builder)
+        public void Configure(EntityTypeBuilder<Item> builder)
         {
-            builder.HasIndex(e => e.Name)
+            builder.HasIndex(i => i.Name)
                 .IsUnique();
 
             // TODO: check price > 0

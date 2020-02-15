@@ -33,8 +33,8 @@ namespace Trpg.Persistence
 
         public DbSet<User> Users { get; set; }
         public DbSet<Character> Characters { get; set; }
-        public DbSet<Equipment> Equipments { get; set; }
-        public DbSet<UserEquipment> UserEquipments { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<UserItem> UserItems { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -53,7 +53,7 @@ namespace Trpg.Persistence
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(TrpgDbContext).Assembly);
             modelBuilder.HasPostgresEnum<Role>();
-            modelBuilder.HasPostgresEnum<EquipmentType>();
+            modelBuilder.HasPostgresEnum<ItemType>();
         }
     }
 }

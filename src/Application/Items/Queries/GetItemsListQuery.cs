@@ -7,11 +7,11 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Trpg.Application.Common.Interfaces;
 
-namespace Trpg.Application.Equipments.Queries
+namespace Trpg.Application.Items.Queries
 {
-    public class GetEquipmentsListQuery : IRequest<IReadOnlyList<EquipmentViewModel>>
+    public class GetItemsListQuery : IRequest<IReadOnlyList<ItemViewModel>>
     {
-        public class Handler : IRequestHandler<GetEquipmentsListQuery, IReadOnlyList<EquipmentViewModel>>
+        public class Handler : IRequestHandler<GetItemsListQuery, IReadOnlyList<ItemViewModel>>
         {
             private readonly ITrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -22,10 +22,10 @@ namespace Trpg.Application.Equipments.Queries
                 _mapper = mapper;
             }
 
-            public async Task<IReadOnlyList<EquipmentViewModel>> Handle(GetEquipmentsListQuery request, CancellationToken cancellationToken)
+            public async Task<IReadOnlyList<ItemViewModel>> Handle(GetItemsListQuery request, CancellationToken cancellationToken)
             {
-                return await _db.Equipments
-                    .ProjectTo<EquipmentViewModel>(_mapper.ConfigurationProvider)
+                return await _db.Items
+                    .ProjectTo<ItemViewModel>(_mapper.ConfigurationProvider)
                     .ToListAsync(cancellationToken);
             }
         }

@@ -1,6 +1,6 @@
 namespace Trpg.Domain.Entities
 {
-    public enum EquipmentType
+    public enum ItemType
     {
         Head,
         Body,

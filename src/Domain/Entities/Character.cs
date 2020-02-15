@@ -12,23 +12,23 @@ namespace Trpg.Domain.Entities
         public int Level { get; set; }
 
         // TODO: attribute + skills + weapon points
-        public int? HeadEquipmentId { get; set; }
-        public int? BodyEquipmentId { get; set; }
-        public int? LegsEquipmentId { get; set; }
-        public int? GlovesEquipmentId { get; set; }
-        public int? Weapon1EquipmentId { get; set; }
-        public int? Weapon2EquipmentId { get; set; }
-        public int? Weapon3EquipmentId { get; set; }
-        public int? Weapon4EquipmentId { get; set; }
+        public int? HeadItemId { get; set; }
+        public int? BodyItemId { get; set; }
+        public int? LegsItemId { get; set; }
+        public int? GlovesItemId { get; set; }
+        public int? Weapon1ItemId { get; set; }
+        public int? Weapon2ItemId { get; set; }
+        public int? Weapon3ItemId { get; set; }
+        public int? Weapon4ItemId { get; set; }
 
         public User User { get; set; }
-        public Equipment HeadEquipment { get; set; }
-        public Equipment BodyEquipment { get; set; }
-        public Equipment LegsEquipment { get; set; }
-        public Equipment GlovesEquipment { get; set; }
-        public Equipment Weapon1Equipment { get; set; }
-        public Equipment Weapon2Equipment { get; set; }
-        public Equipment Weapon3Equipment { get; set; }
-        public Equipment Weapon4Equipment { get; set; }
+        public Item HeadItem { get; set; }
+        public Item BodyItem { get; set; }
+        public Item LegsItem { get; set; }
+        public Item GlovesItem { get; set; }
+        public Item Weapon1Item { get; set; }
+        public Item Weapon2Item { get; set; }
+        public Item Weapon3Item { get; set; }
+        public Item Weapon4Item { get; set; }
     }
 }

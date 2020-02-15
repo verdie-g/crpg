@@ -8,14 +8,14 @@ using Trpg.Application.Common.Exceptions;
 using Trpg.Application.Common.Interfaces;
 using Trpg.Domain.Entities;
 
-namespace Trpg.Application.Equipments.Commands
+namespace Trpg.Application.Items.Commands
 {
-    public class BuyEquipmentCommand : IRequest<EquipmentViewModel>
+    public class BuyItemCommand : IRequest<ItemViewModel>
     {
-        public int EquipmentId { get; set; }
+        public int ItemId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<BuyEquipmentCommand, EquipmentViewModel>
+        public class Handler : IRequestHandler<BuyItemCommand, ItemViewModel>
         {
             private readonly ITrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -26,38 +26,38 @@ namespace Trpg.Application.Equipments.Commands
                 _mapper = mapper;
             }
 
-            public async Task<EquipmentViewModel> Handle(BuyEquipmentCommand request, CancellationToken cancellationToken)
+            public async Task<ItemViewModel> Handle(BuyItemCommand request, CancellationToken cancellationToken)
             {
-                var equipment = await _db.Equipments
+                var item = await _db.Items
                     .AsNoTracking()
-                    .FirstOrDefaultAsync(e => e.Id == request.EquipmentId, cancellationToken);
-                if (equipment == null)
+                    .FirstOrDefaultAsync(i => i.Id == request.ItemId, cancellationToken);
+                if (item == null)
                 {
-                    throw new NotFoundException(nameof(Equipment), request.EquipmentId);
+                    throw new NotFoundException(nameof(Item), request.ItemId);
                 }
 
                 var user = await _db.Users
-                    .Include(u => u.UserEquipments)
+                    .Include(u => u.UserItems)
                     .FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
                 if (user == null)
                 {
                     throw new NotFoundException(nameof(User), request.UserId);
                 }
 
-                if (user.UserEquipments.Any(e => e.EquipmentId == request.EquipmentId))
+                if (user.UserItems.Any(i => i.ItemId == request.ItemId))
                 {
-                    throw new BadRequestException("User already owns this equipment");
+                    throw new BadRequestException("User already owns this item");
                 }
 
-                if (user.Money < equipment.Price)
+                if (user.Money < item.Price)
                 {
                     throw new BadRequestException("User doesn't have enough money");
                 }
 
-                user.Money -= equipment.Price;
-                user.UserEquipments.Add(new UserEquipment {UserId = request.UserId, EquipmentId = request.EquipmentId});
+                user.Money -= item.Price;
+                user.UserItems.Add(new UserItem {UserId = request.UserId, ItemId = request.ItemId});
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<EquipmentViewModel>(equipment);
+                return _mapper.Map<ItemViewModel>(item);
             }
         }
     }
