@@ -11,7 +11,7 @@ namespace Trpg.Application.Users
         public string UserName { get; set; }
         public int Money { get; set; }
         public Role Role { get; set; }
-        public Uri Avatar { get; set; }
+        public Uri AvatarSmall { get; set; }
         public Uri AvatarMedium { get; set; }
         public Uri AvatarFull { get; set; }
     }

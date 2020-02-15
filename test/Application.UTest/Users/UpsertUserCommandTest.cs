@@ -36,7 +36,7 @@ namespace Trpg.Application.UTest.Users
                 UserName = "def",
                 Money = 1000,
                 Role = Role.Admin,
-                Avatar = new Uri("http://ghi.klm"),
+                AvatarSmall = new Uri("http://ghi.klm"),
                 AvatarMedium = new Uri("http://mno.pqr"),
                 AvatarFull = new Uri("http://stu.vwx")
             };
@@ -61,7 +61,7 @@ namespace Trpg.Application.UTest.Users
             Assert.AreEqual(dbUser.Money, createdUser.Money);
             Assert.AreEqual(dbUser.UserName, createdUser.UserName);
             Assert.AreEqual(dbUser.Role, createdUser.Role);
-            Assert.AreEqual(new Uri("http://gh.klm"), createdUser.Avatar);
+            Assert.AreEqual(new Uri("http://gh.klm"), createdUser.AvatarSmall);
             Assert.AreEqual(new Uri("http://mn.pqr"), createdUser.AvatarMedium);
             Assert.AreEqual(new Uri("http://st.vwx"), createdUser.AvatarFull);
         }

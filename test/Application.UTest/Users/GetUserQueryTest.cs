@@ -28,7 +28,7 @@ namespace Trpg.Application.UTest.Users
                 SteamId = 13948192759205810,
                 UserName = "def",
                 Role = Role.Admin,
-                Avatar = new Uri("http://ghi.klm"),
+                AvatarSmall = new Uri("http://ghi.klm"),
                 AvatarMedium = new Uri("http://mno.pqr"),
                 AvatarFull = new Uri("http://stu.vwx")
             };

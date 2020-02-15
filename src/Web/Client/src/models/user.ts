@@ -11,7 +11,7 @@ export default class User {
 
   public role: Role;
 
-  public avatar: string;
+  public avatarSmall: string;
 
   public avatarMedium: string;
 
