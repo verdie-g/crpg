@@ -57,7 +57,7 @@
         </div>
 
         <div class="level-item">
-          <a href="#" target="_blank">
+          <a href="https://discord.gg/kXaeNB8" target="_blank">
             <b-icon icon="discord" pack="fab" size="is-medium" />
           </a>
         </div>
