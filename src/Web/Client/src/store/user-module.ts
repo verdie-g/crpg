@@ -5,11 +5,12 @@ import store from '@/store';
 import * as userService from '@/services/users-service';
 import User from '@/models/user';
 import Character from '@/models/character';
+import Item from '@/models/item';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
   user: User | null = null;
-
+  ownedItems: Item[] = [];
   characters: Character[] = [];
 
   @Mutation
@@ -18,8 +19,23 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
+  substractMoney(loss: number) {
+    this.user!.money -= loss;
+  }
+
+  @Mutation
   resetUser() {
     this.user = null;
+  }
+
+  @Mutation
+  setOwnedItems(ownedItems: Item[]) {
+    this.ownedItems = ownedItems;
+  }
+
+  @Mutation
+  addOwnedItem(item: Item) {
+    this.ownedItems.push(item);
   }
 
   @Mutation
@@ -30,6 +46,18 @@ class UserModule extends VuexModule {
   @Action({ commit: 'setUser' })
   getUser() {
     return userService.getUser();
+  }
+
+  @Action({ commit: 'setOwnedItems' })
+  getOwnedItems() {
+    return userService.getOwnedItems();
+  }
+
+  @Action
+  async buyItem(item: Item) {
+    await userService.buyItem(item.id);
+    this.addOwnedItem(item);
+    this.substractMoney(item.price);
   }
 
   @Action({ commit: 'setCharacters' })

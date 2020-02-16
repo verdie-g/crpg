@@ -1,14 +1,17 @@
-import {getToken, signIn} from '@/services/auth-service';
-import {notify} from '@/services/notifications-service';
-import {sleep} from '@/utils/promise';
+import { getToken, signIn } from '@/services/auth-service';
+import { notify } from '@/services/notifications-service';
+import { sleep } from '@/utils/promise';
 
 export const API_BASE_URL = 'http://localhost:5000/api';
 
 async function send(method: string, path: string, body?: any): Promise<any> {
   const res = await fetch(API_BASE_URL + path, {
     method,
-    headers: { Authorization: `Bearer ${getToken()}` },
-    body,
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+      'Content-Type': 'application/json',
+    },
+    body: body != null ? JSON.stringify(body) : undefined,
   });
 
   if (res.status === 401) {
