@@ -29,6 +29,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import itemModule from '@/store/item-module';
 import Item from '@/models/item';
+import { notify } from '@/services/notifications-service';
 
 @Component
 export default class Shop extends Vue {
@@ -57,6 +58,7 @@ export default class Shop extends Vue {
     Vue.set(this.buyingItems, item.id, true);
     await userModule.buyItem(item);
     Vue.set(this.buyingItems, item.id, false);
+    notify(`Bought ${item.name} for ${item.price} golds`);
   }
 
   buyButtonTitle(item: Item): string {
