@@ -1,5 +1,5 @@
 import { getToken, signIn } from '@/services/auth-service';
-import { notify } from '@/services/notifications-service';
+import { NotificationType, notify } from '@/services/notifications-service';
 import { sleep } from '@/utils/promise';
 
 export const API_BASE_URL = 'http://localhost:5000/api';
@@ -15,13 +15,13 @@ async function send(method: string, path: string, body?: any): Promise<any> {
   });
 
   if (res.status === 401) {
-    notify('Session expired');
+    notify('Session expired', NotificationType.Warning);
     sleep(1000).then(() => signIn());
     return {};
   }
 
   if (!res.ok) {
-    notify('Server error');
+    notify('Server error', NotificationType.Error);
     throw new Error('Server error');
   }
 

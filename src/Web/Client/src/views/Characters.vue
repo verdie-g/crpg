@@ -84,7 +84,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
-import Character from "@/models/character";
+import Character from '@/models/character';
 
   @Component
 export default class Characters extends Vue {
