@@ -82,11 +82,11 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator';
-  import userModule from '@/store/user-module';
+import { Component, Vue } from 'vue-property-decorator';
+import userModule from '@/store/user-module';
 
   @Component
-  export default class Character extends Vue {
+export default class Character extends Vue {
     selectedCharacter: Character | null = null;
 
     get characters() {
@@ -101,7 +101,7 @@
     selectCharacter(character: Character) {
       this.selectedCharacter = character;
     }
-  }
+}
 </script>
 
 <style scoped lang="scss">

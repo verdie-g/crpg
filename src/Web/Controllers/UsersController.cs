@@ -125,10 +125,10 @@ namespace Trpg.Web.Controllers
         }
 
         /// <summary>
-        /// Gets current user items.
+        /// Gets owned items.
         /// </summary>
         [HttpGet("self/items")]
-        public async Task<ActionResult<IReadOnlyList<ItemViewModel>>> GetUserItems()
+        public async Task<ActionResult<IReadOnlyList<ItemViewModel>>> GetOwnedItems()
         {
             var query = new GetUserItemsQuery {UserId = CurrentUser.UserId.Value};
             return Ok(await Mediator.Send(query));
@@ -144,7 +144,7 @@ namespace Trpg.Web.Controllers
         /// <response code="404">Item was not found.</response>
         [HttpPost("self/items")]
         [ProducesResponseType((int) HttpStatusCode.Created)]
-        public async Task<ActionResult<ItemViewModel>> BuyUserItem([FromBody] BuyItemRequest req)
+        public async Task<ActionResult<ItemViewModel>> BuyItem([FromBody] BuyItemRequest req)
         {
             var cmd = new BuyItemCommand {ItemId = req.ItemId, UserId = CurrentUser.UserId.Value};
             var item = await Mediator.Send(cmd);

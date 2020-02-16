@@ -14,6 +14,8 @@ module.exports = {
     'max-len': ['warn', { code: 140 }],
     'class-methods-use-this': 'off',
     'import/prefer-default-export': 'off',
+    'lines-between-class-members': 'off',
+    'no-param-reassign': 'off',
   },
   parserOptions: {
     parser: '@typescript-eslint/parser',

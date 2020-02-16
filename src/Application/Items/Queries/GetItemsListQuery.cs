@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -25,6 +26,7 @@ namespace Trpg.Application.Items.Queries
             public async Task<IReadOnlyList<ItemViewModel>> Handle(GetItemsListQuery request, CancellationToken cancellationToken)
             {
                 return await _db.Items
+                    .OrderBy(i => i.Price)
                     .ProjectTo<ItemViewModel>(_mapper.ConfigurationProvider)
                     .ToListAsync(cancellationToken);
             }

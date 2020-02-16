@@ -18,7 +18,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { isSignedIn, signIn } from '@/services/auth-service';
-import userModule from "@/store/user-module";
+import userModule from '@/store/user-module';
 
 @Component
 export default class Home extends Vue {
