@@ -24,29 +24,20 @@
           <h2>Attributes</h2>
           <p>
             <strong>Strength:</strong> 28<br />
-            <strong>Agility:</strong> 14
-          </p>
-
-          <h2>Weapon</h2>
-          <p>
-            <strong>One Handed:</strong> 0<br />
-            <strong>Two Handed:</strong> 0<br />
-            <strong>Polearm:</strong> 0<br />
-            <strong>Archery:</strong> 0<br />
-            <strong>Crossbow:</strong> 0<br />
-            <strong>Throwing:</strong> 0
+            <strong>Perception:</strong> 14<br />
+            <strong>Endurance:</strong> 12
           </p>
 
           <h2>Skills</h2>
           <p>
-            <strong>Ironflesh:</strong> 0<br />
-            <strong>Power Strike:</strong> 0<br />
-            <strong>Shield:</strong> 0<br />
-            <strong>Athletics:</strong> 0<br />
-            <strong>Riding:</strong> 0<br />
-            <strong>Horse Archery:</strong> 0<br />
-            <strong>Power Draw:</strong> 0<br />
-            <strong>Weapon Master:</strong> 0
+            <strong>One Handed:</strong> 0<br />  <!-- Mastery of fighting with one-handed weapons either with a shield or without. -->
+            <strong>Two Handed:</strong> 0<br /> <!-- Mastery of fighting with two-handed weapons of average length such as bigger axes and swords. -->
+            <strong>Polearm:</strong> 0<br /> <!-- Mastery of the spear, lance, staff and other polearms, both one-handed and two-handed. -->
+            <strong>Bow:</strong> 0<br /> <!-- Familiarity with bows and physical conditioning to shoot with them effectively. -->
+            <strong>Throwing:</strong> 0<br /> <!-- Mastery of throwing projectiles accurately and with power. -->
+            <strong>Crossbow:</strong> 0<br /> <!-- Knowledge of operating and maintaining crossbows. -->
+            <strong>Riding:</strong> 0<br /> <!-- The ability to control a horse, to keep your balance when it moves suddenly or unexpectedly. -->
+            <strong>Athletics:</strong> 0 <!-- Physical fitness, speed and balance. -->
           </p>
         </div>
 
