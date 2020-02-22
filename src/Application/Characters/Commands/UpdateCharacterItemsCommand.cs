@@ -16,9 +16,12 @@ namespace Trpg.Application.Characters.Commands
         public int CharacterId { get; set; }
         public int UserId { get; set; }
         public int? HeadItemId { get; set; }
+        public int? CapeItemId { get; set; }
         public int? BodyItemId { get; set; }
-        public int? LegsItemId { get; set; }
-        public int? GlovesItemId { get; set; }
+        public int? HandItemId { get; set; }
+        public int? LegItemId { get; set; }
+        public int? HorseHarnessItemId { get; set; }
+        public int? HorseItemId { get; set; }
         public int? Weapon1ItemId { get; set; }
         public int? Weapon2ItemId { get; set; }
         public int? Weapon3ItemId { get; set; }
@@ -53,9 +56,12 @@ namespace Trpg.Application.Characters.Commands
             {
                 var character = await _db.Characters
                     .Include(c => c.HeadItem)
+                    .Include(c => c.CapeItem)
                     .Include(c => c.BodyItem)
-                    .Include(c => c.LegsItem)
-                    .Include(c => c.GlovesItem)
+                    .Include(c => c.HandItem)
+                    .Include(c => c.LegItem)
+                    .Include(c => c.HorseHarnessItem)
+                    .Include(c => c.HorseItem)
                     .Include(c => c.Weapon1Item)
                     .Include(c => c.Weapon2Item)
                     .Include(c => c.Weapon3Item)
@@ -81,9 +87,12 @@ namespace Trpg.Application.Characters.Commands
                     .ToDictionaryAsync(ui => ui.ItemId, ui => ui.Item);
 
                 character.HeadItem = GetItemWithChecks(request.HeadItemId, new[] { ItemType.HeadArmor }, itemsById);
+                character.CapeItem = GetItemWithChecks(request.CapeItemId, new[] { ItemType.Cape }, itemsById);
                 character.BodyItem = GetItemWithChecks(request.BodyItemId, new[] { ItemType.BodyArmor }, itemsById);
-                character.LegsItem = GetItemWithChecks(request.LegsItemId, new[] { ItemType.LegArmor }, itemsById);
-                character.GlovesItem = GetItemWithChecks(request.GlovesItemId, new[] { ItemType.HandArmor }, itemsById);
+                character.HandItem = GetItemWithChecks(request.HandItemId, new[] { ItemType.HandArmor }, itemsById);
+                character.LegItem = GetItemWithChecks(request.LegItemId, new[] { ItemType.LegArmor }, itemsById);
+                character.HorseHarnessItem = GetItemWithChecks(request.HorseHarnessItemId, new[] { ItemType.HorseHarness }, itemsById);
+                character.HorseItem = GetItemWithChecks(request.HorseItemId, new[] { ItemType.Horse }, itemsById);
                 character.Weapon1Item = GetItemWithChecks(request.Weapon1ItemId, WeaponTypes, itemsById);
                 character.Weapon2Item = GetItemWithChecks(request.Weapon2ItemId, WeaponTypes, itemsById);
                 character.Weapon3Item = GetItemWithChecks(request.Weapon3ItemId, WeaponTypes, itemsById);
@@ -101,7 +110,7 @@ namespace Trpg.Application.Characters.Commands
 
                 if (!itemsById.TryGetValue(id.Value, out var item) || !expectedTypes.Contains(item.Type))
                 {
-                    throw new BadRequestException($"Unexpected item");
+                    throw new BadRequestException("Unexpected item");
                 }
 
                 return item;
@@ -112,12 +121,18 @@ namespace Trpg.Application.Characters.Commands
                 var ids = new List<int>();
                 if (request.HeadItemId != null)
                     ids.Add(request.HeadItemId.Value);
+                if (request.CapeItemId != null)
+                    ids.Add(request.CapeItemId.Value);
                 if (request.BodyItemId != null)
                     ids.Add(request.BodyItemId.Value);
-                if (request.LegsItemId != null)
-                    ids.Add(request.LegsItemId.Value);
-                if (request.GlovesItemId != null)
-                    ids.Add(request.GlovesItemId.Value);
+                if (request.HandItemId != null)
+                    ids.Add(request.HandItemId.Value);
+                if (request.LegItemId != null)
+                    ids.Add(request.LegItemId.Value);
+                if (request.HorseHarnessItemId != null)
+                    ids.Add(request.HorseHarnessItemId.Value);
+                if (request.HorseItemId != null)
+                    ids.Add(request.HorseItemId.Value);
                 if (request.Weapon1ItemId != null)
                     ids.Add(request.Weapon1ItemId.Value);
                 if (request.Weapon2ItemId != null)

@@ -11,9 +11,12 @@ namespace Trpg.Application.Characters
         public int Experience { get; set; }
         public int Level { get; set; }
         public ItemViewModel HeadItem { get; set; }
+        public ItemViewModel CapeItem { get; set; }
         public ItemViewModel BodyItem { get; set; }
-        public ItemViewModel LegsItem { get; set; }
-        public ItemViewModel GlovesItem { get; set; }
+        public ItemViewModel HandItem { get; set; }
+        public ItemViewModel LegItem { get; set; }
+        public ItemViewModel HorseItem { get; set; }
+        public ItemViewModel HorseHarnessItem { get; set; }
         public ItemViewModel Weapon1Item { get; set; }
         public ItemViewModel Weapon2Item { get; set; }
         public ItemViewModel Weapon3Item { get; set; }

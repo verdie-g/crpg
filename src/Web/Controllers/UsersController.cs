@@ -22,7 +22,7 @@ namespace Trpg.Web.Controllers
         [HttpGet("self")]
         public async Task<IActionResult> GetSelfUser()
         {
-            return Ok(await Mediator.Send(new GetUserQuery {UserId = CurrentUser.UserId.Value}));
+            return Ok(await Mediator.Send(new GetUserQuery { UserId = CurrentUser.UserId.Value }));
         }
 
         /// <summary>
@@ -34,7 +34,8 @@ namespace Trpg.Web.Controllers
         [HttpGet("self/characters/{id}")]
         public async Task<ActionResult<CharacterViewModel>> GetUserCharacter([FromRoute] int id)
         {
-            return Ok(await Mediator.Send(new GetUserCharacterQuery {CharacterId = id, UserId = CurrentUser.UserId.Value}));
+            return Ok(await Mediator.Send(new GetUserCharacterQuery
+                { CharacterId = id, UserId = CurrentUser.UserId.Value }));
         }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace Trpg.Web.Controllers
         [HttpGet("self/characters")]
         public async Task<ActionResult<IReadOnlyList<CharacterViewModel>>> GetUserCharactersList()
         {
-            return Ok(await Mediator.Send(new GetUserCharactersListQuery {UserId = CurrentUser.UserId.Value}));
+            return Ok(await Mediator.Send(new GetUserCharactersListQuery { UserId = CurrentUser.UserId.Value }));
         }
 
         /// <summary>
@@ -58,9 +59,9 @@ namespace Trpg.Web.Controllers
         [ProducesResponseType((int) HttpStatusCode.Created)]
         public async Task<ActionResult<CharacterViewModel>> CreateCharacter([FromBody] CreateCharacterRequest req)
         {
-            var cmd = new CreateCharacterCommand {Name = req.Name, UserId = CurrentUser.UserId.Value};
+            var cmd = new CreateCharacterCommand { Name = req.Name, UserId = CurrentUser.UserId.Value };
             var character = await Mediator.Send(cmd);
-            return CreatedAtAction(nameof(GetUserCharacter), new {id = character.Id}, character);
+            return CreatedAtAction(nameof(GetUserCharacter), new { id = character.Id }, character);
         }
 
         /// <summary>
@@ -72,7 +73,8 @@ namespace Trpg.Web.Controllers
         /// <response code="200">Updated.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPut("self/characters/{id}")]
-        public async Task<ActionResult<CharacterViewModel>> UpdateCharacter([FromRoute] int id, [FromBody] UpdateCharacterRequest req)
+        public async Task<ActionResult<CharacterViewModel>> UpdateCharacter([FromRoute] int id,
+            [FromBody] UpdateCharacterRequest req)
         {
             var cmd = new UpdateCharacterCommand
             {
@@ -92,16 +94,20 @@ namespace Trpg.Web.Controllers
         /// <response code="200">Updated.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPut("self/characters/{id}/items")]
-        public async Task<ActionResult<CharacterViewModel>> UpdateCharacterItems([FromRoute] int id, [FromBody] UpdateCharacterItemsRequest req)
+        public async Task<ActionResult<CharacterViewModel>> UpdateCharacterItems([FromRoute] int id,
+            [FromBody] UpdateCharacterItemsRequest req)
         {
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = id,
                 UserId = CurrentUser.UserId.Value,
                 HeadItemId = req.HeadItemId,
+                CapeItemId = req.CapeItemId,
                 BodyItemId = req.BodyItemId,
-                LegsItemId = req.LegsItemId,
-                GlovesItemId = req.GlovesItemId,
+                HandItemId = req.HandItemId,
+                LegItemId = req.LegItemId,
+                HorseHarnessItemId = req.HorseHarnessItemId,
+                HorseItemId = req.HorseItemId,
                 Weapon1ItemId = req.Weapon1ItemId,
                 Weapon2ItemId = req.Weapon2ItemId,
                 Weapon3ItemId = req.Weapon3ItemId,
@@ -120,7 +126,7 @@ namespace Trpg.Web.Controllers
         [ProducesResponseType((int) HttpStatusCode.NoContent)]
         public async Task<IActionResult> DeleteCharacter([FromRoute] int id)
         {
-            await Mediator.Send(new DeleteCharacterCommand {CharacterId = id, UserId = CurrentUser.UserId.Value});
+            await Mediator.Send(new DeleteCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId.Value });
             return NoContent();
         }
 
@@ -130,7 +136,7 @@ namespace Trpg.Web.Controllers
         [HttpGet("self/items")]
         public async Task<ActionResult<IReadOnlyList<ItemViewModel>>> GetOwnedItems()
         {
-            var query = new GetUserItemsQuery {UserId = CurrentUser.UserId.Value};
+            var query = new GetUserItemsQuery { UserId = CurrentUser.UserId.Value };
             return Ok(await Mediator.Send(query));
         }
 
@@ -146,9 +152,9 @@ namespace Trpg.Web.Controllers
         [ProducesResponseType((int) HttpStatusCode.Created)]
         public async Task<ActionResult<ItemViewModel>> BuyItem([FromBody] BuyItemRequest req)
         {
-            var cmd = new BuyItemCommand {ItemId = req.ItemId, UserId = CurrentUser.UserId.Value};
+            var cmd = new BuyItemCommand { ItemId = req.ItemId, UserId = CurrentUser.UserId.Value };
             var item = await Mediator.Send(cmd);
-            return CreatedAtAction(nameof(ItemsController.GetItem), "Items", new {id = item.Id}, item);
+            return CreatedAtAction(nameof(ItemsController.GetItem), "Items", new { id = item.Id }, item);
         }
 
         /// <summary>
@@ -162,7 +168,7 @@ namespace Trpg.Web.Controllers
         [ProducesResponseType((int) HttpStatusCode.NoContent)]
         public async Task<IActionResult> SellUserItem([FromRoute] int id)
         {
-            await Mediator.Send(new SellItemCommand {ItemId = id, UserId = CurrentUser.UserId.Value});
+            await Mediator.Send(new SellItemCommand { ItemId = id, UserId = CurrentUser.UserId.Value });
             return NoContent();
         }
     }
