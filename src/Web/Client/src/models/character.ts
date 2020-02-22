@@ -13,9 +13,9 @@ export default class Character {
 
   public bodyItem: Item;
 
-  public legsItem: Item;
+  public legItem: Item;
 
-  public glovesItem: Item;
+  public handItem: Item;
 
   public weapon1Item: Item;
 

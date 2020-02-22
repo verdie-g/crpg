@@ -1,8 +1,8 @@
 const enum ItemType {
   Head,
   Body,
-  Legs,
-  Gloves,
+  Leg,
+  Hand,
   Weapon,
 }
 

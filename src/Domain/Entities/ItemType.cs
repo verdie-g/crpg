@@ -2,21 +2,21 @@ namespace Trpg.Domain.Entities
 {
     public enum ItemType
     {
-        Arrows,
-        BodyArmor,
-        Bolts,
-        Bow,
-        Cape,
-        Crossbow,
-        HandArmor,
         HeadArmor,
+        Cape,
+        BodyArmor,
+        HandArmor,
+        LegArmor,
         Horse,
         HorseHarness,
-        LegArmor,
-        OneHandedWeapon,
-        Polearm,
         Shield,
-        Thrown,
+        Bow,
+        Crossbow,
+        OneHandedWeapon,
         TwoHandedWeapon,
+        Polearm,
+        Thrown,
+        Arrows,
+        Bolts,
     }
 }
