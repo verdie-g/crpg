@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>Trpg.Clic</RootNamespace>
+        <AssemblyName>Trpg.Cli</AssemblyName>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>1591;1701;1702</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="TaleWorlds.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>XXXXX\MountAndBlade\bin\Win64_Shipping_Client\TaleWorlds.Core.dll</HintPath>
+      </Reference>
+      <Reference Include="TaleWorlds.Localization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>XXXXX\MountAndBlade\bin\Win64_Shipping_Client\TaleWorlds.Localization.dll</HintPath>
+      </Reference>
+      <Reference Include="TaleWorlds.MountAndBlade, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>XXXXX\MountAndBlade\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.Text.Json" Version="4.7.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Application\Application.csproj" />
+      <ProjectReference Include="..\Persistence\Persistence.csproj" />
+    </ItemGroup>
+
+</Project>
