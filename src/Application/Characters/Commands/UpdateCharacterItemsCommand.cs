@@ -26,6 +26,19 @@ namespace Trpg.Application.Characters.Commands
 
         public class Handler : IRequestHandler<UpdateCharacterItemsCommand, CharacterViewModel>
         {
+            private static readonly ISet<ItemType> WeaponTypes = new HashSet<ItemType>
+            {
+                ItemType.Arrows,
+                ItemType.Bolts,
+                ItemType.Bow,
+                ItemType.Crossbow,
+                ItemType.OneHandedWeapon,
+                ItemType.Polearm,
+                ItemType.Shield,
+                ItemType.Thrown,
+                ItemType.TwoHandedWeapon,
+            };
+
             private readonly ITrpgDbContext _db;
             private readonly IMapper _mapper;
 
@@ -67,17 +80,18 @@ namespace Trpg.Application.Characters.Commands
                     .Where(ui => ids.Contains(ui.ItemId) && ui.UserId == request.UserId)
                     .ToDictionaryAsync(ui => ui.ItemId, ui => ui.Item);
 
-                character.HeadItem = GetItemWithChecks(request.HeadItemId, ItemType.Head, itemsById);
-                character.BodyItem = GetItemWithChecks(request.BodyItemId, ItemType.Body, itemsById);
-                character.LegsItem = GetItemWithChecks(request.LegsItemId, ItemType.Legs, itemsById);
-                character.GlovesItem = GetItemWithChecks(request.GlovesItemId, ItemType.Gloves, itemsById);
-                character.Weapon1Item = GetItemWithChecks(request.Weapon1ItemId, ItemType.Weapon, itemsById);
-                character.Weapon2Item = GetItemWithChecks(request.Weapon2ItemId, ItemType.Weapon, itemsById);
-                character.Weapon3Item = GetItemWithChecks(request.Weapon3ItemId, ItemType.Weapon, itemsById);
-                character.Weapon4Item = GetItemWithChecks(request.Weapon4ItemId, ItemType.Weapon, itemsById);
+                character.HeadItem = GetItemWithChecks(request.HeadItemId, new[] { ItemType.HeadArmor }, itemsById);
+                character.BodyItem = GetItemWithChecks(request.BodyItemId, new[] { ItemType.BodyArmor }, itemsById);
+                character.LegsItem = GetItemWithChecks(request.LegsItemId, new[] { ItemType.LegArmor }, itemsById);
+                character.GlovesItem = GetItemWithChecks(request.GlovesItemId, new[] { ItemType.HandArmor }, itemsById);
+                character.Weapon1Item = GetItemWithChecks(request.Weapon1ItemId, WeaponTypes, itemsById);
+                character.Weapon2Item = GetItemWithChecks(request.Weapon2ItemId, WeaponTypes, itemsById);
+                character.Weapon3Item = GetItemWithChecks(request.Weapon3ItemId, WeaponTypes, itemsById);
+                character.Weapon4Item = GetItemWithChecks(request.Weapon4ItemId, WeaponTypes, itemsById);
             }
 
-            private Item GetItemWithChecks(int? id, ItemType expectedType,
+
+            private Item GetItemWithChecks(int? id, IEnumerable<ItemType> expectedTypes,
                 Dictionary<int, Item> itemsById)
             {
                 if (id == null)
@@ -85,9 +99,9 @@ namespace Trpg.Application.Characters.Commands
                     return null;
                 }
 
-                if (!itemsById.TryGetValue(id.Value, out var item) || item.Type != expectedType)
+                if (!itemsById.TryGetValue(id.Value, out var item) || !expectedTypes.Contains(item.Type))
                 {
-                    throw new BadRequestException($"Unexpected item for {expectedType}");
+                    throw new BadRequestException($"Unexpected item");
                 }
 
                 return item;

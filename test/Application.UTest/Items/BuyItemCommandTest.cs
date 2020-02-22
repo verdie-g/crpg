@@ -16,7 +16,7 @@ namespace Trpg.Application.UTest.Items
         public async Task Basic()
         {
             var user = _db.Users.Add(new User { Money = 100 });
-            var item = _db.Items.Add(new Item { Price = 100 });
+            var item = _db.Items.Add(new Item { Value = 100 });
             await _db.SaveChangesAsync();
 
             var handler = new BuyItemCommand.Handler(_db, _mapper);
@@ -52,7 +52,7 @@ namespace Trpg.Application.UTest.Items
         [Test]
         public async Task NotFoundUser()
         {
-            var item = _db.Items.Add(new Item { Price = 100 });
+            var item = _db.Items.Add(new Item { Value = 100 });
             await _db.SaveChangesAsync();
 
             var handler = new BuyItemCommand.Handler(_db, _mapper);
@@ -67,7 +67,7 @@ namespace Trpg.Application.UTest.Items
         public async Task NotEnoughMoney()
         {
             var user = _db.Users.Add(new User { Money = 100 });
-            var item = _db.Items.Add(new Item { Price = 101 });
+            var item = _db.Items.Add(new Item { Value = 101 });
             await _db.SaveChangesAsync();
 
             var handler = new BuyItemCommand.Handler(_db, _mapper);
@@ -81,7 +81,7 @@ namespace Trpg.Application.UTest.Items
         [Test]
         public async Task AlreadyOwningItem()
         {
-            var item = _db.Items.Add(new Item {Price = 100});
+            var item = _db.Items.Add(new Item {Value = 100});
             var user = _db.Users.Add(new User
             {
                 Money = 100,

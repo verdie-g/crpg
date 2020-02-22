@@ -13,22 +13,22 @@ namespace Trpg.Application.UTest.Characters
         [Test]
         public async Task FullUpdate()
         {
-            var headOld = _db.Items.Add(new Item {Type = ItemType.Head});
-            var headNew = _db.Items.Add(new Item {Type = ItemType.Head});
-            var bodyOld = _db.Items.Add(new Item {Type = ItemType.Body});
-            var bodyNew = _db.Items.Add(new Item {Type = ItemType.Body});
-            var legsOld = _db.Items.Add(new Item {Type = ItemType.Legs});
-            var legsNew = _db.Items.Add(new Item {Type = ItemType.Legs});
-            var glovesOld = _db.Items.Add(new Item {Type = ItemType.Gloves});
-            var glovesNew = _db.Items.Add(new Item {Type = ItemType.Gloves});
-            var weapon1Old = _db.Items.Add(new Item {Type = ItemType.Weapon});
-            var weapon1New = _db.Items.Add(new Item {Type = ItemType.Weapon});
-            var weapon2Old = _db.Items.Add(new Item {Type = ItemType.Weapon});
-            var weapon2New = _db.Items.Add(new Item {Type = ItemType.Weapon});
-            var weapon3Old = _db.Items.Add(new Item {Type = ItemType.Weapon});
-            var weapon3New = _db.Items.Add(new Item {Type = ItemType.Weapon});
-            var weapon4Old = _db.Items.Add(new Item {Type = ItemType.Weapon});
-            var weapon4New = _db.Items.Add(new Item {Type = ItemType.Weapon});
+            var headOld = _db.Items.Add(new Item {Type = ItemType.HeadArmor});
+            var headNew = _db.Items.Add(new Item {Type = ItemType.HeadArmor});
+            var bodyOld = _db.Items.Add(new Item {Type = ItemType.BodyArmor});
+            var bodyNew = _db.Items.Add(new Item {Type = ItemType.BodyArmor});
+            var legsOld = _db.Items.Add(new Item {Type = ItemType.LegArmor});
+            var legsNew = _db.Items.Add(new Item {Type = ItemType.LegArmor});
+            var glovesOld = _db.Items.Add(new Item {Type = ItemType.HandArmor});
+            var glovesNew = _db.Items.Add(new Item {Type = ItemType.HandArmor});
+            var weapon1Old = _db.Items.Add(new Item {Type = ItemType.Arrows});
+            var weapon1New = _db.Items.Add(new Item {Type = ItemType.Bolts});
+            var weapon2Old = _db.Items.Add(new Item {Type = ItemType.Bow});
+            var weapon2New = _db.Items.Add(new Item {Type = ItemType.Crossbow});
+            var weapon3Old = _db.Items.Add(new Item {Type = ItemType.Polearm});
+            var weapon3New = _db.Items.Add(new Item {Type = ItemType.Shield});
+            var weapon4Old = _db.Items.Add(new Item {Type = ItemType.OneHandedWeapon});
+            var weapon4New = _db.Items.Add(new Item {Type = ItemType.TwoHandedWeapon});
             var character = _db.Characters.Add(new Character
             {
                 Name = "name",
@@ -94,10 +94,10 @@ namespace Trpg.Application.UTest.Characters
         [Test]
         public async Task PartialUpdate()
         {
-            var headOld = _db.Items.Add(new Item {Type = ItemType.Head});
-            var headNew = _db.Items.Add(new Item {Type = ItemType.Head});
-            var bodyNew = _db.Items.Add(new Item {Type = ItemType.Body});
-            var legsOld = _db.Items.Add(new Item {Type = ItemType.Legs});
+            var headOld = _db.Items.Add(new Item {Type = ItemType.HeadArmor});
+            var headNew = _db.Items.Add(new Item {Type = ItemType.HeadArmor});
+            var bodyNew = _db.Items.Add(new Item {Type = ItemType.BodyArmor});
+            var legsOld = _db.Items.Add(new Item {Type = ItemType.LegArmor});
             var character = _db.Characters.Add(new Character
             {
                 HeadItem = headOld.Entity,
@@ -222,7 +222,7 @@ namespace Trpg.Application.UTest.Characters
         [Test]
         public async Task ItemNotOwned()
         {
-            var head = _db.Items.Add(new Item {Type = ItemType.Head});
+            var head = _db.Items.Add(new Item {Type = ItemType.HeadArmor});
             var character = _db.Characters.Add(new Character());
             var user = _db.Users.Add(new User
             {
@@ -244,11 +244,11 @@ namespace Trpg.Application.UTest.Characters
         [Theory]
         public async Task WrongItemType(ItemType itemType)
         {
-            var head = _db.Items.Add(new Item {Type = ItemType.Head});
-            var body = _db.Items.Add(new Item {Type = ItemType.Body});
-            var legs = _db.Items.Add(new Item {Type = ItemType.Legs});
-            var gloves = _db.Items.Add(new Item {Type = ItemType.Gloves});
-            var weapon = _db.Items.Add(new Item {Type = ItemType.Weapon});
+            var head = _db.Items.Add(new Item {Type = ItemType.HeadArmor});
+            var body = _db.Items.Add(new Item {Type = ItemType.BodyArmor});
+            var legs = _db.Items.Add(new Item {Type = ItemType.LegArmor});
+            var gloves = _db.Items.Add(new Item {Type = ItemType.HandArmor});
+            var weapon = _db.Items.Add(new Item {Type = ItemType.OneHandedWeapon});
             var character = _db.Characters.Add(new Character());
             var user = _db.Users.Add(new User
             {
@@ -269,11 +269,14 @@ namespace Trpg.Application.UTest.Characters
             {
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
-                HeadItemId = itemType == ItemType.Head ? null : (int?) body.Entity.Id,
-                BodyItemId = itemType == ItemType.Body ? null : (int?) legs.Entity.Id,
-                LegsItemId = itemType == ItemType.Legs ? null : (int?) gloves.Entity.Id,
-                GlovesItemId = itemType == ItemType.Gloves ? null : (int?) weapon.Entity.Id,
-                Weapon1ItemId = itemType == ItemType.Weapon ? null : (int?) head.Entity.Id,
+                HeadItemId = itemType == ItemType.HeadArmor ? null : (int?) body.Entity.Id,
+                BodyItemId = itemType == ItemType.BodyArmor ? null : (int?) legs.Entity.Id,
+                LegsItemId = itemType == ItemType.LegArmor ? null : (int?) gloves.Entity.Id,
+                GlovesItemId = itemType == ItemType.HandArmor ? null : (int?) weapon.Entity.Id,
+                Weapon1ItemId = itemType == ItemType.Arrows || itemType == ItemType.Bolts || itemType == ItemType.Bow ? null : (int?) head.Entity.Id,
+                Weapon2ItemId = itemType == ItemType.Crossbow || itemType == ItemType.OneHandedWeapon ? null : (int?) head.Entity.Id,
+                Weapon3ItemId = itemType == ItemType.Polearm || itemType == ItemType.Shield  ? null : (int?) head.Entity.Id,
+                Weapon4ItemId = itemType == ItemType.Thrown || itemType == ItemType.TwoHandedWeapon  ? null : (int?) head.Entity.Id,
             };
 
             Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(cmd, CancellationToken.None));

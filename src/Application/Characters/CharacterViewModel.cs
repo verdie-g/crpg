@@ -1,5 +1,5 @@
 using Trpg.Application.Common.Mappings;
-using Trpg.Application.Items;
+using Trpg.Application.Items.Models;
 using Trpg.Domain.Entities;
 
 namespace Trpg.Application.Characters

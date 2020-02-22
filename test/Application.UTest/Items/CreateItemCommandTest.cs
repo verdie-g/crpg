@@ -1,8 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using Trpg.Application.Common.Exceptions;
 using Trpg.Application.Items.Commands;
+using Trpg.Application.Items.Models;
 using Trpg.Domain.Entities;
 
 namespace Trpg.Application.UTest.Items
@@ -12,47 +13,27 @@ namespace Trpg.Application.UTest.Items
         [Test]
         public async Task Basic()
         {
-            var handler = new CreateItemCommand.Handler(_db, _mapper);
-            var e = await handler.Handle(new CreateItemCommand
+            var handler = new CreateItemsCommand.Handler(_db);
+            await handler.Handle(new CreateItemsCommand
             {
-                Name = "my sword",
-                Price = 100,
-                Type = ItemType.Body,
+                Items = new []
+                {
+                    new ItemCreation
+                    {
+                        Name = "my sword",
+                        Value = 100,
+                        Type = ItemType.BodyArmor,
+                    },
+                    new ItemCreation
+                    {
+                        Name = "toto",
+                        Value = 200,
+                        Type = ItemType.Bow,
+                    }
+                }
             }, CancellationToken.None);
 
-            Assert.NotNull(await _db.Items.FindAsync(e.Id));
-        }
-
-        [Test]
-        public async Task DuplicateName()
-        {
-            _db.Items.Add(new Item
-            {
-                Name = "toto",
-            });
-            await _db.SaveChangesAsync();
-
-            var handler = new CreateItemCommand.Handler(_db, _mapper);
-            Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new CreateItemCommand
-            {
-                Name = "toto",
-                Price = 100,
-                Type = ItemType.Body,
-            }, CancellationToken.None));
-        }
-
-        [Test]
-        public void InvalidItem()
-        {
-            var validator = new CreateItemCommand.Validator();
-            var res = validator.Validate(new CreateItemCommand
-            {
-                Name = "",
-                Price = 0,
-                Type = (ItemType) 500,
-            });
-
-            Assert.AreEqual(3, res.Errors.Count);
+            Assert.AreEqual(2, await _db.Items.CountAsync());
         }
     }
 }

@@ -1,11 +1,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Trpg.Application.Common.Exceptions;
 using Trpg.Application.Common.Interfaces;
+using Trpg.Application.Items.Models;
 using Trpg.Domain.Entities;
 
 namespace Trpg.Application.Items.Queries
@@ -27,16 +27,13 @@ namespace Trpg.Application.Items.Queries
 
             public async Task<ItemViewModel> Handle(GetItemQuery request, CancellationToken cancellationToken)
             {
-                var item = await _db.Items
-                    .ProjectTo<ItemViewModel>(_mapper.ConfigurationProvider)
-                    .FirstOrDefaultAsync(i => i.Id == request.ItemId, cancellationToken);
-
+                var item = await _db.Items.FirstOrDefaultAsync(i => i.Id == request.ItemId, cancellationToken);
                 if (item == null)
                 {
                     throw new NotFoundException(nameof(Item), request.ItemId);
                 }
 
-                return item;
+                return _mapper.Map<ItemViewModel>(item);
             }
         }
     }

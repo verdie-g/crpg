@@ -24,18 +24,18 @@ namespace Trpg.Application.System.Commands
                 _db.Items.AddRange(new Item
                 {
                     Name = "Good Sword",
-                    Price = 200,
-                    Type = ItemType.Weapon
+                    Value = 200,
+                    Type = ItemType.TwoHandedWeapon
                 }, new Item
                 {
                     Name = "Bad Sword",
-                    Price = 100,
-                    Type = ItemType.Weapon
+                    Value = 100,
+                    Type = ItemType.OneHandedWeapon
                 }, new Item
                 {
                     Name = "Ok helmet",
-                    Price = 150,
-                    Type = ItemType.Head
+                    Value = 150,
+                    Type = ItemType.HeadArmor
                 });
 
                 _db.Users.AddRange(
