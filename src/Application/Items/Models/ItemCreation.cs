@@ -1,20 +1,14 @@
-using System.Collections.Generic;
-using Trpg.Domain.Common;
+using Trpg.Domain.Entities;
 
-namespace Trpg.Domain.Entities
+namespace Trpg.Application.Items.Models
 {
-    public class Item : AuditableEntity
+    public class ItemCreation
     {
-        public int Id { get; set; }
-        /// <summary>
-        /// Item id in Mount and Blade.
-        /// </summary>
         public string MbId { get; set; }
         public string Name { get; set; }
-        public ItemType Type { get; set; }
         public int Value { get; set; }
+        public ItemType Type { get; set; }
         public float Weight { get; set; }
-        // TODO: Looming
 
         // Armor
         public int? HeadArmor { get; set; }
@@ -48,7 +42,5 @@ namespace Trpg.Domain.Entities
         public int? SecondarySwingDamage { get; set; }
         public int? SecondarySwingSpeed { get; set; }
         public WeaponFlags? SecondaryWeaponFlags { get; set; }
-
-        public List<UserItem> UserItems { get; set; }
     }
 }

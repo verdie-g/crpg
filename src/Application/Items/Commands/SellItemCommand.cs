@@ -39,7 +39,7 @@ namespace Trpg.Application.Items.Commands
                     throw new NotFoundException(nameof(UserItem), request.UserId, request.ItemId);
                 }
 
-                userItem.User.Money += (int) (userItem.Item.Price * SellRatio);
+                userItem.User.Money += (int) (userItem.Item.Value * SellRatio);
                 _db.UserItems.Remove(userItem);
                 await _db.SaveChangesAsync(cancellationToken);
                 return Unit.Value;

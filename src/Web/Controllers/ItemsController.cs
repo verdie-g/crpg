@@ -3,8 +3,8 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Trpg.Application.Items;
 using Trpg.Application.Items.Commands;
+using Trpg.Application.Items.Models;
 using Trpg.Application.Items.Queries;
 
 namespace Trpg.Web.Controllers
@@ -40,13 +40,12 @@ namespace Trpg.Web.Controllers
         /// <param name="cmd">The item to create.</param>
         /// <returns>The created item.</returns>
         /// <response code="201">Created.</response>
-        /// <response code="400">Bad Request.</response>
         [HttpPost, Authorize(Roles = "SuperAdmin")]
         [ProducesResponseType((int) HttpStatusCode.Created)]
-        public async Task<ActionResult<ItemViewModel>> CreateItem([FromBody] CreateItemCommand cmd)
+        public async Task<ActionResult<ItemViewModel>> CreateItem([FromBody] CreateItemsCommand cmd)
         {
-            var item = await Mediator.Send(cmd);
-            return CreatedAtAction(nameof(GetItem), new {id = item.Id}, item);
+            await Mediator.Send(cmd);
+            return StatusCode((int) HttpStatusCode.Created);
         }
 
         /// <summary>

@@ -7,6 +7,7 @@ using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Trpg.Application.Common.Interfaces;
+using Trpg.Application.Items.Models;
 
 namespace Trpg.Application.Items.Queries
 {

@@ -7,6 +7,7 @@ using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Trpg.Application.Common.Interfaces;
+using Trpg.Application.Items.Models;
 
 namespace Trpg.Application.Items.Queries
 {
@@ -26,7 +27,7 @@ namespace Trpg.Application.Items.Queries
             public async Task<IReadOnlyList<ItemViewModel>> Handle(GetItemsListQuery request, CancellationToken cancellationToken)
             {
                 return await _db.Items
-                    .OrderBy(i => i.Price)
+                    .OrderBy(i => i.Value)
                     .ProjectTo<ItemViewModel>(_mapper.ConfigurationProvider)
                     .ToListAsync(cancellationToken);
             }

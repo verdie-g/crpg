@@ -21,7 +21,7 @@ namespace Trpg.Application.UTest.Items
                 {
                     new UserItem
                     {
-                        Item = new Item {Price = 100},
+                        Item = new Item { Value = 100 },
                     }
                 },
             });

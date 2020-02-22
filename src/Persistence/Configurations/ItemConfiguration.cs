@@ -8,8 +8,7 @@ namespace Trpg.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Item> builder)
         {
-            builder.HasIndex(i => i.Name)
-                .IsUnique();
+            builder.HasIndex(i => i.MbId).IsUnique();
 
             // TODO: check price > 0
         }

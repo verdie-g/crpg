@@ -15,14 +15,14 @@ namespace Trpg.Application.UTest.Items
                 new Item
                 {
                     Name = "toto",
-                    Price = 100,
-                    Type = ItemType.Body,
+                    Value = 100,
+                    Type = ItemType.BodyArmor,
                 },
                 new Item
                 {
                     Name = "tata",
-                    Price = 200,
-                    Type = ItemType.Gloves,
+                    Value = 200,
+                    Type = ItemType.HandArmor,
                 });
             await _db.SaveChangesAsync();
 

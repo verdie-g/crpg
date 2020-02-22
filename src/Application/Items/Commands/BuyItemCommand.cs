@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Trpg.Application.Common.Exceptions;
 using Trpg.Application.Common.Interfaces;
+using Trpg.Application.Items.Models;
 using Trpg.Domain.Entities;
 
 namespace Trpg.Application.Items.Commands
@@ -49,12 +50,12 @@ namespace Trpg.Application.Items.Commands
                     throw new BadRequestException("User already owns this item");
                 }
 
-                if (user.Money < item.Price)
+                if (user.Money < item.Value)
                 {
                     throw new BadRequestException("User doesn't have enough money");
                 }
 
-                user.Money -= item.Price;
+                user.Money -= item.Value;
                 user.UserItems.Add(new UserItem {UserId = request.UserId, ItemId = request.ItemId});
                 await _db.SaveChangesAsync(cancellationToken);
                 return _mapper.Map<ItemViewModel>(item);

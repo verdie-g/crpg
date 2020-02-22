@@ -15,8 +15,8 @@ namespace Trpg.Application.UTest.Items
             var i = _db.Items.Add(new Item
             {
                 Name = "sword",
-                Price = 100,
-                Type = ItemType.Body,
+                Value = 100,
+                Type = ItemType.BodyArmor,
             });
             await _db.SaveChangesAsync();
 
