@@ -1,9 +1,9 @@
 using AutoMapper;
 using NUnit.Framework;
-using Trpg.Application.Common.Mappings;
+using Crpg.Application.Common.Mappings;
 using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
-namespace Trpg.Application.UTest.Common.Mappings
+namespace Crpg.Application.UTest.Common.Mappings
 {
     public class MappingTest
     {

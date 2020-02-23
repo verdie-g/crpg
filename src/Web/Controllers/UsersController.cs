@@ -2,16 +2,16 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Trpg.Application.Characters;
-using Trpg.Application.Characters.Commands;
-using Trpg.Application.Characters.Queries;
-using Trpg.Application.Items.Commands;
-using Trpg.Application.Items.Models;
-using Trpg.Application.Items.Queries;
-using Trpg.Application.Users.Queries;
-using Trpg.Web.Models;
+using Crpg.Application.Characters;
+using Crpg.Application.Characters.Commands;
+using Crpg.Application.Characters.Queries;
+using Crpg.Application.Items.Commands;
+using Crpg.Application.Items.Models;
+using Crpg.Application.Items.Queries;
+using Crpg.Application.Users.Queries;
+using Crpg.Web.Models;
 
-namespace Trpg.Web.Controllers
+namespace Crpg.Web.Controllers
 {
     [ApiController]
     public class UsersController : BaseController

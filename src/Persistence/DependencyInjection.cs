@@ -2,9 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Trpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Interfaces;
 
-namespace Trpg.Persistence
+namespace Crpg.Persistence
 {
     public static class DependencyInjection
     {
@@ -13,15 +13,15 @@ namespace Trpg.Persistence
         {
             if (environment.IsDevelopment())
             {
-                services.AddDbContext<TrpgDbContext>(options => options.UseInMemoryDatabase("trpg"));
+                services.AddDbContext<CrpgDbContext>(options => options.UseInMemoryDatabase("crpg"));
             }
             else
             {
-                var connectionString = configuration.GetConnectionString("Trpg");
-                services.AddDbContext<TrpgDbContext>(options => options.UseNpgsql(connectionString));
+                var connectionString = configuration.GetConnectionString("Crpg");
+                services.AddDbContext<CrpgDbContext>(options => options.UseNpgsql(connectionString));
             }
 
-            services.AddScoped<ITrpgDbContext>(provider => provider.GetService<TrpgDbContext>());
+            services.AddScoped<ICrpgDbContext>(provider => provider.GetService<CrpgDbContext>());
 
             return services;
         }

@@ -4,7 +4,7 @@
     <nav v-if="isSignedIn" style="margin-bottom: 25px">
       <b-navbar fixed-top shadow>
         <template slot="brand">
-          <b-navbar-item tag="router-link" :to="{ path: '/' }">tRPG</b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ path: '/' }">cRPG</b-navbar-item>
         </template>
 
         <template slot="start">
@@ -51,7 +51,7 @@
     <footer class="footer">
       <div class="level">
         <div class="level-item">
-          <a href="https://github.com/verdie-g/tRPG" target="_blank">
+          <a href="https://github.com/verdie-g/cRPG" target="_blank">
             <b-icon icon="github" pack="fab" size="is-medium" />
           </a>
         </div>

@@ -1,8 +1,8 @@
-using Trpg.Application.Common.Mappings;
-using Trpg.Application.Items.Models;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Mappings;
+using Crpg.Application.Items.Models;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.Characters
+namespace Crpg.Application.Characters
 {
     public class CharacterViewModel : IMapFrom<Character>
     {

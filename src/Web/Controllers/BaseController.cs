@@ -3,9 +3,9 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using Trpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Interfaces;
 
-namespace Trpg.Web.Controllers
+namespace Crpg.Web.Controllers
 {
     [ApiController]
     [Authorize]

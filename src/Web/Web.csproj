@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Trpg.Web</RootNamespace>
-    <AssemblyName>Trpg.Web</AssemblyName>
+    <RootNamespace>Crpg.Web</RootNamespace>
+    <AssemblyName>Crpg.Web</AssemblyName>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1591;1701;1702</NoWarn>
     <SpaRoot>Client\</SpaRoot>

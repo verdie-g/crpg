@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <RootNamespace>Trpg.Infrastructure</RootNamespace>
-    <AssemblyName>Trpg.Infrastructure</AssemblyName>
+    <RootNamespace>Crpg.Infrastructure</RootNamespace>
+    <AssemblyName>Crpg.Infrastructure</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

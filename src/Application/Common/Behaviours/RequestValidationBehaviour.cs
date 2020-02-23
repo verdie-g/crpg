@@ -4,9 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation;
 using MediatR;
-using ValidationException = Trpg.Application.Common.Exceptions.ValidationException;
+using ValidationException = Crpg.Application.Common.Exceptions.ValidationException;
 
-namespace Trpg.Application.Common.Behaviours
+namespace Crpg.Application.Common.Behaviours
 {
     public class RequestValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
             where TRequest : IRequest<TResponse>

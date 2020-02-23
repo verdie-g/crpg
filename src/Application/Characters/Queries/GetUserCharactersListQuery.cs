@@ -6,9 +6,9 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Trpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Interfaces;
 
-namespace Trpg.Application.Characters.Queries
+namespace Crpg.Application.Characters.Queries
 {
     public class GetUserCharactersListQuery : IRequest<IReadOnlyList<CharacterViewModel>>
     {
@@ -16,10 +16,10 @@ namespace Trpg.Application.Characters.Queries
 
         public class Handler : IRequestHandler<GetUserCharactersListQuery, IReadOnlyList<CharacterViewModel>>
         {
-            private readonly ITrpgDbContext _db;
+            private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
 
-            public Handler(ITrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper)
             {
                 _db = db;
                 _mapper = mapper;

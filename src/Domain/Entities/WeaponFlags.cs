@@ -1,6 +1,6 @@
 using System;
 
-namespace Trpg.Domain.Entities
+namespace Crpg.Domain.Entities
 {
     [Flags]
     public enum WeaponFlags : ulong

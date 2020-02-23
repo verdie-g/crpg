@@ -4,11 +4,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using Trpg.Application.Common.Exceptions;
-using Trpg.Application.Items.Commands;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Items.Commands;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.UTest.Items
+namespace Crpg.Application.UTest.Items
 {
     public class BuyItemCommandTest : TestBase
     {

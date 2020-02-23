@@ -1,6 +1,6 @@
 using System;
 
-namespace Trpg.Common
+namespace Crpg.Common
 {
     public interface IDateTime
     {

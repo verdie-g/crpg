@@ -19,16 +19,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using Trpg.Application;
-using Trpg.Application.Common.Interfaces;
-using Trpg.Application.Steam;
-using Trpg.Application.Users.Commands;
-using Trpg.Infrastructure;
-using Trpg.Persistence;
-using Trpg.Web.Common;
-using Trpg.Web.Services;
+using Crpg.Application;
+using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Steam;
+using Crpg.Application.Users.Commands;
+using Crpg.Infrastructure;
+using Crpg.Persistence;
+using Crpg.Web.Common;
+using Crpg.Web.Services;
 
-namespace Trpg.Web
+namespace Crpg.Web
 {
     public class Startup
     {
@@ -87,7 +87,7 @@ namespace Trpg.Web
                 .UseCustomExceptionHandler()
                 .UsePathBase("/api")
                 .UseSwagger()
-                .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Trpg API"))
+                .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Crpg API"))
                 .UseRouting()
                 .UseCors()
                 .UseAuthentication() // populate HttpContext.User
@@ -118,7 +118,7 @@ namespace Trpg.Web
 
         private void ConfigureSwagger(SwaggerGenOptions options)
         {
-            options.SwaggerDoc("v1", new OpenApiInfo {Title = "Trpg API", Version = "v1"});
+            options.SwaggerDoc("v1", new OpenApiInfo {Title = "Crpg API", Version = "v1"});
             string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             options.IncludeXmlComments(xmlPath);

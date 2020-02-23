@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <RootNamespace>Trpg.Application</RootNamespace>
-    <AssemblyName>Trpg.Application</AssemblyName>
+    <RootNamespace>Crpg.Application</RootNamespace>
+    <AssemblyName>Crpg.Application</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

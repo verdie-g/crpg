@@ -1,6 +1,6 @@
 using System;
 
-namespace Trpg.Application.Common.Exceptions
+namespace Crpg.Application.Common.Exceptions
 {
     public class BadRequestException : Exception
     {

@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Trpg.Application.Common.Exceptions;
-using Trpg.Application.Common.Interfaces;
-using Trpg.Application.Items.Models;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Items.Models;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.Items.Commands
+namespace Crpg.Application.Items.Commands
 {
     public class BuyItemCommand : IRequest<ItemViewModel>
     {
@@ -18,10 +18,10 @@ namespace Trpg.Application.Items.Commands
 
         public class Handler : IRequestHandler<BuyItemCommand, ItemViewModel>
         {
-            private readonly ITrpgDbContext _db;
+            private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
 
-            public Handler(ITrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper)
             {
                 _db = db;
                 _mapper = mapper;

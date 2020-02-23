@@ -3,11 +3,11 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Trpg.Application.Items.Commands;
-using Trpg.Application.Items.Models;
-using Trpg.Application.Items.Queries;
+using Crpg.Application.Items.Commands;
+using Crpg.Application.Items.Models;
+using Crpg.Application.Items.Queries;
 
-namespace Trpg.Web.Controllers
+namespace Crpg.Web.Controllers
 {
     public class ItemsController : BaseController
     {

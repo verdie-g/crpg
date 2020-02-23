@@ -4,29 +4,29 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
-using Trpg.Application.Common.Interfaces;
-using Trpg.Common;
-using Trpg.Domain.Common;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Interfaces;
+using Crpg.Common;
+using Crpg.Domain.Common;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Persistence
+namespace Crpg.Persistence
 {
-    public class TrpgDbContext : DbContext, ITrpgDbContext
+    public class CrpgDbContext : DbContext, ICrpgDbContext
     {
         private readonly IDateTime _dateTime;
 
-        static TrpgDbContext()
+        static CrpgDbContext()
         {
             NpgsqlConnection.GlobalTypeMapper.MapEnum<Role>();
         }
 
-        public TrpgDbContext(DbContextOptions<TrpgDbContext> options)
+        public CrpgDbContext(DbContextOptions<CrpgDbContext> options)
             : base(options)
         {
         }
 
-        public TrpgDbContext(
-            DbContextOptions<TrpgDbContext> options,
+        public CrpgDbContext(
+            DbContextOptions<CrpgDbContext> options,
             IDateTime dateTime)
             : base(options)
         {
@@ -67,7 +67,7 @@ namespace Trpg.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(TrpgDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(CrpgDbContext).Assembly);
             modelBuilder.HasPostgresEnum<Role>();
             modelBuilder.HasPostgresEnum<ItemType>();
         }

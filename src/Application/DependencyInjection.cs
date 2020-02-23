@@ -2,9 +2,9 @@ using System.Reflection;
 using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Trpg.Application.Common.Behaviours;
+using Crpg.Application.Common.Behaviours;
 
-namespace Trpg.Application
+namespace Crpg.Application
 {
     public static class DependencyInjection
     {

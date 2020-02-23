@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using System.Xml;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
-using Trpg.Application.Items.Models;
-using Trpg.Domain.Entities;
-using WeaponFlags = Trpg.Domain.Entities.WeaponFlags;
+using Crpg.Application.Items.Models;
+using Crpg.Domain.Entities;
+using WeaponFlags = Crpg.Domain.Entities.WeaponFlags;
 
-namespace Trpg.Cli
+namespace Crpg.Cli
 {
     class Program
     {
@@ -25,7 +25,7 @@ namespace Trpg.Cli
                             {
                                 MbId = i.StringId,
                                 Name = i.Name.ToString(),
-                                Type = MBToTrpgItemType(i.Type),
+                                Type = MBToCrpgItemType(i.Type),
                                 Value = i.Value,
                                 Weight = i.Weight,
                             };
@@ -49,8 +49,8 @@ namespace Trpg.Cli
 
                             if (i.WeaponComponent != null)
                             {
-                                item.ThrustDamageType = MBToTrpgDamageType(i.Weapons[0].ThrustDamageType);
-                                item.SwingDamageType = MBToTrpgDamageType(i.Weapons[0].SwingDamageType);
+                                item.ThrustDamageType = MBToCrpgDamageType(i.Weapons[0].ThrustDamageType);
+                                item.SwingDamageType = MBToCrpgDamageType(i.Weapons[0].SwingDamageType);
                                 item.Accuracy = i.Weapons[0].Accuracy;
                                 item.MissileSpeed = i.Weapons[0].MissileSpeed;
                                 item.StackAmount = i.Weapons[0].MaxDataValue;
@@ -95,7 +95,7 @@ namespace Trpg.Cli
             // insert in db
         }
 
-        private static ItemType MBToTrpgItemType(ItemObject.ItemTypeEnum t)
+        private static ItemType MBToCrpgItemType(ItemObject.ItemTypeEnum t)
         {
             switch (t)
             {
@@ -136,7 +136,7 @@ namespace Trpg.Cli
             }
         }
 
-        private static DamageType? MBToTrpgDamageType(DamageTypes t)
+        private static DamageType? MBToCrpgDamageType(DamageTypes t)
         {
             return t == DamageTypes.Invalid ? null : (DamageType?) t;
         }

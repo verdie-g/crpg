@@ -9,9 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Trpg.Application.System.Commands;
+using Crpg.Application.System.Commands;
 
-namespace Trpg.Web
+namespace Crpg.Web
 {
     public class Program
     {

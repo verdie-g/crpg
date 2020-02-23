@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Trpg.Domain.Entities;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Persistence.Configurations
+namespace Crpg.Persistence.Configurations
 {
     public class ItemConfiguration : IEntityTypeConfiguration<Item>
     {

@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Trpg.Application.Common.Interfaces;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Interfaces;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.System.Commands
+namespace Crpg.Application.System.Commands
 {
     public class SeedDataCommand : IRequest
     {
         public class Handler : IRequestHandler<SeedDataCommand>
         {
-            private readonly ITrpgDbContext _db;
+            private readonly ICrpgDbContext _db;
 
-            public Handler(ITrpgDbContext db)
+            public Handler(ICrpgDbContext db)
             {
                 _db = db;
             }

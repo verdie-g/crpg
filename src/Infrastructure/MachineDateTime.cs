@@ -1,7 +1,7 @@
 using System;
-using Trpg.Common;
+using Crpg.Common;
 
-namespace Trpg.Infrastructure
+namespace Crpg.Infrastructure
 {
     public class MachineDateTime : IDateTime
     {

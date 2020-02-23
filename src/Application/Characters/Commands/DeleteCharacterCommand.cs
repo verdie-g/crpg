@@ -1,11 +1,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Trpg.Application.Common.Exceptions;
-using Trpg.Application.Common.Interfaces;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Interfaces;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.Characters.Commands
+namespace Crpg.Application.Characters.Commands
 {
     public class DeleteCharacterCommand : IRequest
     {
@@ -14,9 +14,9 @@ namespace Trpg.Application.Characters.Commands
 
         public class Handler : IRequestHandler<DeleteCharacterCommand>
         {
-            private readonly ITrpgDbContext _db;
+            private readonly ICrpgDbContext _db;
 
-            public Handler(ITrpgDbContext db)
+            public Handler(ICrpgDbContext db)
             {
                 _db = db;
             }

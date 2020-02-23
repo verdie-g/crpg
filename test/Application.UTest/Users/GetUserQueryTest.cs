@@ -2,11 +2,11 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using Trpg.Application.Common.Exceptions;
-using Trpg.Application.Users.Queries;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Users.Queries;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.UTest.Users
+namespace Crpg.Application.UTest.Users
 {
     public class GetUserQueryTest : TestBase
     {

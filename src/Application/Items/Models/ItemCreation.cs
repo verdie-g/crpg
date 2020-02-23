@@ -1,6 +1,6 @@
-using Trpg.Domain.Entities;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.Items.Models
+namespace Crpg.Application.Items.Models
 {
     public class ItemCreation
     {
