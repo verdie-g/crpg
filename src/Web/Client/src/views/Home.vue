@@ -3,7 +3,7 @@
     <div class="container content is-large">
       <h1>cRPG</h1>
       <p>
-        Inspired by <a href="https://c-rpg.net" target="_blank">cRPG</a>, cRPG is a mod for
+        cRPG is a mod for
         <a href="https://store.steampowered.com/app/261550/Mount__Blade_II_Bannerlord" target="_blank">Mount & Blade II: Bannerlord</a>.
         It adds persistence to the multiplayer. Your start as a peasant and you'll develop your unique character with different stats and
         items.
