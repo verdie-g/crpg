@@ -13,8 +13,8 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task Basic()
         {
-            var c1 = new Character { Experience = 0, Level = 1, User = new User { Money = 20 } };
-            var c2 = new Character { Experience = 300, Level = 1, User = new User { Money = 30 } };
+            var c1 = new Character { Experience = 0, Level = 1, User = new User { Golds = 20 } };
+            var c2 = new Character { Experience = 300, Level = 1, User = new User { Golds = 30 } };
             _db.AddRange(c1, c2);
             await _db.SaveChangesAsync();
 
@@ -36,11 +36,11 @@ namespace Crpg.Application.UTest.Games
 
             Assert.AreEqual(1, c1.Level);
             Assert.AreEqual(200, c1.Experience);
-            Assert.AreEqual(70, c1.User.Money);
+            Assert.AreEqual(70, c1.User.Golds);
 
             Assert.AreEqual(2, c2.Level);
             Assert.AreEqual(600, c2.Experience);
-            Assert.AreEqual(130, c2.User.Money);
+            Assert.AreEqual(130, c2.User.Golds);
         }
 
         [Test]
