@@ -38,7 +38,7 @@ export default class Shop extends Vue {
 
   // items owned by the user
   get ownedItems(): Record<number, boolean> {
-    return userModule.ownedItems.reduce((res: Record<number, boolean>, i: number) => { res[i.id] = true; return res; }, {});
+    return userModule.ownedItems.reduce((res: Record<number, boolean>, i: Item) => { res[i.id] = true; return res; }, {});
   }
 
   get money(): number {
