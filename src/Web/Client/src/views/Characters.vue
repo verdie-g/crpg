@@ -44,10 +44,10 @@
         <div class="column character-items">
           <div class="columns item-boxes">
             <div class="column is-narrow gear-column">
-              <div class="box item-box"></div>
-              <div class="box item-box"></div>
-              <div class="box item-box"></div>
-              <div class="box item-box"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)"></div>
             </div>
 
             <div class="column is-narrow horse-column">
@@ -55,13 +55,39 @@
             </div>
 
             <div class="column is-narrow weapon-column">
-              <div class="box item-box"></div>
-              <div class="box item-box"></div>
-              <div class="box item-box"></div>
-              <div class="box item-box"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon4)"></div>
             </div>
           </div>
         </div>
+
+        <b-modal :active.sync="isReplaceItemModalActive" scroll="keep">
+          <div class="columns replace-item-modal">
+            <div class="column" v-if="itemToReplace">
+              <h3>Replace {{itemToReplace.name}}</h3>
+            </div>
+            <div class="column">
+              <div class="columns">
+                <div class="column" v-for="ownedItem in ownedItems" v-bind:key="ownedItem.id" @click="selectedItem = ownedItem">
+                  <figure class="image is-128x128">
+                    <img src="https://via.placeholder.com/128x128.png" alt="owned item image" />
+                  </figure>
+                  <h4>{{ownedItem.name}}</h4>
+                  <p>
+                    Other<br />
+                    important<br />
+                    stuff
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="column" v-if="selectedItem">
+              <h3>Replace {{selectedItem.name}}</h3>
+            </div>
+          </div>
+        </b-modal>
 
       </div>
 
@@ -76,22 +102,41 @@
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import Character from '@/models/character';
+import ItemSlot from "@/models/item-slot";
+import Item from "@/models/item";
 
   @Component
 export default class Characters extends Vue {
     selectedCharacter: Character | null = null;
 
+    // modal stuff
+    itemSlot = ItemSlot;
+    isReplaceItemModalActive: boolean = false;
+    itemToReplace: Item | null = null;
+    selectedItem: Item | null = null;
+
     get characters() {
       return userModule.characters;
     }
 
-    async created() {
-      const characters = await userModule.getCharacters();
-      this.selectedCharacter = characters.length > 0 ? characters[0] : null;
+    get ownedItems() {
+      return userModule.ownedItems;
+    }
+
+    created() {
+      userModule.getCharacters().then(c => this.selectedCharacter = c.length > 0 ? c[0] : null);
     }
 
     selectCharacter(character: Character) {
       this.selectedCharacter = character;
+    }
+
+    openReplaceItemModal(slot: ItemSlot) {
+      if (userModule.ownedItems.length === 0) {
+        userModule.getOwnedItems();
+      }
+
+      this.isReplaceItemModalActive = true;
     }
 }
 </script>
@@ -123,5 +168,14 @@ export default class Characters extends Vue {
   .item-box {
     width: 100px;
     height: 100px;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 5px 8px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    }
+  }
+
+  .replace-item-modal {
+    background-color: #fff;
   }
 </style>
