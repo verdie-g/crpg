@@ -57,13 +57,13 @@
         </div>
 
         <div class="level-item">
-          <a href="https://discord.gg/kXaeNB8" target="_blank">
+          <a href="https://discord.gg/83RJDN9" target="_blank">
             <b-icon icon="discord" pack="fab" size="is-medium" />
           </a>
         </div>
 
         <div class="level-item">
-          <a href="#" target="_blank">
+          <a href="https://store.steampowered.com/app/261550/Mount__Blade_II_Bannerlord" target="_blank">
             <b-icon icon="steam" pack="fab" size="is-medium" />
           </a>
         </div>
