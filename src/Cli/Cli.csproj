@@ -3,7 +3,7 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <RootNamespace>Crpg.Clic</RootNamespace>
+        <RootNamespace>Crpg.Cli</RootNamespace>
         <AssemblyName>Crpg.Cli</AssemblyName>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>1591;1701;1702</NoWarn>
