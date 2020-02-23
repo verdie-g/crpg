@@ -5,6 +5,7 @@ using Trpg.Application.Common.Exceptions;
 using System.Net;
 using System.Net.Mime;
 using System.Threading.Tasks;
+using Trpg.Persistence.Exceptions;
 
 namespace Trpg.Web.Common
 {
@@ -46,6 +47,10 @@ namespace Trpg.Web.Common
                 context.Response.ContentType = MediaTypeNames.Application.Json;
                 context.Response.StatusCode = (int) HttpStatusCode.Forbidden;
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(e.Message));
+            }
+            catch (ConflictException)
+            {
+                context.Response.StatusCode = (int) HttpStatusCode.Conflict;
             }
         }
     }

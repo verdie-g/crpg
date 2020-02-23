@@ -1,3 +1,5 @@
+using System;
+using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -36,17 +38,26 @@ namespace Trpg.Persistence
         public DbSet<Item> Items { get; set; }
         public DbSet<UserItem> UserItems { get; set; }
 
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             ChangeTracker.DetectChanges();
 
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
+            {
                 if (entry.State == EntityState.Added)
                     entry.Entity.CreatedAt = _dateTime.Now;
                 else if (entry.State == EntityState.Modified)
                     entry.Entity.LastModifiedAt = _dateTime.Now;
+            }
 
-            return base.SaveChangesAsync(cancellationToken);
+            try
+            {
+                return await base.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw new DBConcurrencyException();
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
