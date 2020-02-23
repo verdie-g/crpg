@@ -16,7 +16,7 @@ namespace Crpg.Application.UTest.Items
         {
             var user = _db.Users.Add(new User
             {
-                Money = 0,
+                Golds = 0,
                 UserItems = new List<UserItem>
                 {
                     new UserItem
@@ -33,7 +33,7 @@ namespace Crpg.Application.UTest.Items
                 UserId = user.Entity.Id,
             }, CancellationToken.None);
 
-            Assert.AreEqual(66, user.Entity.Money);
+            Assert.AreEqual(66, user.Entity.Golds);
             Assert.IsTrue(!user.Entity.UserItems.Any(ui =>
                 ui.ItemId == user.Entity.UserItems[0].ItemId));
         }

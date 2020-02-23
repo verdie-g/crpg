@@ -39,7 +39,7 @@ namespace Crpg.Application.Users.Commands
 
         public class Handler : IRequestHandler<UpsertUserCommand, UserViewModel>
         {
-            private const int StartingMoney = 300;
+            private const int StartingGolds = 300;
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -64,7 +64,7 @@ namespace Crpg.Application.Users.Commands
                 if (_db.Entry(userEntity).State == EntityState.Detached)
                 {
                     userEntity.Role = Role.User;
-                    userEntity.Money = StartingMoney;
+                    userEntity.Golds = StartingGolds;
                     _db.Users.Add(userEntity);
                 }
 

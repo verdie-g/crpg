@@ -11,7 +11,7 @@
             </div>
             <div class="card-content content">
               <h4>{{item.name}}</h4>
-              <b-button icon-left="coins" expanded v-bind:disabled="item.price > money || ownedItems[item.id]"
+              <b-button icon-left="coins" expanded v-bind:disabled="item.price > golds || ownedItems[item.id]"
                         v-bind:loading="buyingItems[item.id]" @click="buy(item)"
                         v-bind:title="buyButtonTitle(item)">
                 {{item.price}}
@@ -41,8 +41,8 @@ export default class Shop extends Vue {
     return userModule.ownedItems.reduce((res: Record<number, boolean>, i: Item) => { res[i.id] = true; return res; }, {});
   }
 
-  get money(): number {
-    return userModule.user == null ? 0 : userModule.user.money;
+  get golds(): number {
+    return userModule.user == null ? 0 : userModule.user.golds;
   }
 
   get items() {
@@ -66,8 +66,8 @@ export default class Shop extends Vue {
       return 'You already own this item';
     }
 
-    if (item.price > this.money) {
-      return 'Not enough money';
+    if (item.price > this.golds) {
+      return 'Not enough golds';
     }
 
     return '';

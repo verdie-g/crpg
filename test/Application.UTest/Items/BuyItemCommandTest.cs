@@ -15,7 +15,7 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task Basic()
         {
-            var user = _db.Users.Add(new User { Money = 100 });
+            var user = _db.Users.Add(new User { Golds = 100 });
             var item = _db.Items.Add(new Item { Value = 100 });
             await _db.SaveChangesAsync();
 
@@ -31,14 +31,14 @@ namespace Crpg.Application.UTest.Items
                 .FirstAsync(u => u.Id == user.Entity.Id);
 
             Assert.AreEqual(item.Entity.Id, boughtItem.Id);
-            Assert.AreEqual(0, userDb.Money);
+            Assert.AreEqual(0, userDb.Golds);
             Assert.IsTrue(userDb.UserItems.Any(i => i.ItemId == boughtItem.Id));
         }
 
         [Test]
         public async Task NotFoundItem()
         {
-            var user = _db.Users.Add(new User { Money = 100 });
+            var user = _db.Users.Add(new User { Golds = 100 });
             await _db.SaveChangesAsync();
 
             var handler = new BuyItemCommand.Handler(_db, _mapper);
@@ -64,9 +64,9 @@ namespace Crpg.Application.UTest.Items
         }
 
         [Test]
-        public async Task NotEnoughMoney()
+        public async Task NotEnoughGolds()
         {
-            var user = _db.Users.Add(new User { Money = 100 });
+            var user = _db.Users.Add(new User { Golds = 100 });
             var item = _db.Items.Add(new Item { Value = 101 });
             await _db.SaveChangesAsync();
 
@@ -84,7 +84,7 @@ namespace Crpg.Application.UTest.Items
             var item = _db.Items.Add(new Item {Value = 100});
             var user = _db.Users.Add(new User
             {
-                Money = 100,
+                Golds = 100,
                 UserItems = new List<UserItem> {new UserItem {ItemId = item.Entity.Id}}
             });
             await _db.SaveChangesAsync();

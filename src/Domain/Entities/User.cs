@@ -9,7 +9,7 @@ namespace Crpg.Domain.Entities
         public int Id { get; set; }
         public long SteamId { get; set; }
         public string UserName { get; set; }
-        public int Money { get; set; }
+        public int Golds { get; set; }
         public Role Role { get; set; }
         /// <summary>
         /// 32x32
