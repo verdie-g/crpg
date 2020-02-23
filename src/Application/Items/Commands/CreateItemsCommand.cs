@@ -3,11 +3,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Trpg.Application.Common.Interfaces;
-using Trpg.Application.Items.Models;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Items.Models;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.Items.Commands
+namespace Crpg.Application.Items.Commands
 {
     public class CreateItemsCommand : IRequest
     {
@@ -15,9 +15,9 @@ namespace Trpg.Application.Items.Commands
 
         public class Handler : IRequestHandler<CreateItemsCommand>
         {
-            private readonly ITrpgDbContext _db;
+            private readonly ICrpgDbContext _db;
 
-            public Handler(ITrpgDbContext db)
+            public Handler(ICrpgDbContext db)
             {
                 _db = db;
             }

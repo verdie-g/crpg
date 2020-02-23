@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Trpg.Persistence</RootNamespace>
-    <AssemblyName>Trpg.Persistence</AssemblyName>
+    <RootNamespace>Crpg.Persistence</RootNamespace>
+    <AssemblyName>Crpg.Persistence</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

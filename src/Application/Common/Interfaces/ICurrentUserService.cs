@@ -1,4 +1,4 @@
-namespace Trpg.Application.Common.Interfaces
+namespace Crpg.Application.Common.Interfaces
 {
     public interface ICurrentUserService
     {

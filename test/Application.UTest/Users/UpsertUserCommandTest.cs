@@ -2,10 +2,10 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using Trpg.Application.Users.Commands;
-using Trpg.Domain.Entities;
+using Crpg.Application.Users.Commands;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.UTest.Users
+namespace Crpg.Application.UTest.Users
 {
     public class UpsertUserCommandTest : TestBase
     {

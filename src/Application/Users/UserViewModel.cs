@@ -1,8 +1,8 @@
 using System;
-using Trpg.Application.Common.Mappings;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Mappings;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.Users
+namespace Crpg.Application.Users
 {
     public class UserViewModel : IMapFrom<User>
     {

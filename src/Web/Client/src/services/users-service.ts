@@ -1,7 +1,7 @@
 import User from '@/models/user';
 import Character from '@/models/character';
 import Item from '@/models/item';
-import { get, post } from './trpg-client';
+import { get, post } from './crpg-client';
 
 export function getUser(): Promise<User> {
   return get('/users/self');

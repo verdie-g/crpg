@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Trpg.Domain.Common;
+using Crpg.Domain.Common;
 
-namespace Trpg.Domain.Entities
+namespace Crpg.Domain.Entities
 {
     public class User : AuditableEntity
     {

@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using Trpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Exceptions;
 using System.Net;
 using System.Net.Mime;
 using System.Threading.Tasks;
-using Trpg.Persistence.Exceptions;
+using Crpg.Persistence.Exceptions;
 
-namespace Trpg.Web.Common
+namespace Crpg.Web.Common
 {
     public class CustomExceptionHandlerMiddleware
     {

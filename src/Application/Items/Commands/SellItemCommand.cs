@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Trpg.Application.Common.Exceptions;
-using Trpg.Application.Common.Interfaces;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Interfaces;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.Items.Commands
+namespace Crpg.Application.Items.Commands
 {
     public class SellItemCommand : IRequest
     {
@@ -18,10 +18,10 @@ namespace Trpg.Application.Items.Commands
         {
             private const float SellRatio = 0.66f;
 
-            private readonly ITrpgDbContext _db;
+            private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
 
-            public Handler(ITrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper)
             {
                 _db = db;
                 _mapper = mapper;

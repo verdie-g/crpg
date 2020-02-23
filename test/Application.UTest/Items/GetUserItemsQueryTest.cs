@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using Trpg.Application.Items.Queries;
-using Trpg.Domain.Entities;
+using Crpg.Application.Items.Queries;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.UTest.Items
+namespace Crpg.Application.UTest.Items
 {
     public class GetUserItemsQueryTest : TestBase
     {

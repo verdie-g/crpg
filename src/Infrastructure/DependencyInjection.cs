@@ -1,9 +1,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Trpg.Common;
+using Crpg.Common;
 
-namespace Trpg.Infrastructure
+namespace Crpg.Infrastructure
 {
     public static class DependencyInjection
     {

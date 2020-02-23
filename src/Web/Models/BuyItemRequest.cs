@@ -1,4 +1,4 @@
-namespace Trpg.Web.Models
+namespace Crpg.Web.Models
 {
     public class BuyItemRequest
     {

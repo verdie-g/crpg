@@ -3,25 +3,25 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
-using Trpg.Common;
-using Trpg.Domain.Entities;
-using Trpg.Persistence;
+using Crpg.Common;
+using Crpg.Domain.Entities;
+using Crpg.Persistence;
 
 namespace Persistence.UTest
 {
-    public class TrpgDbContextTest
+    public class CrpgDbContextTest
     {
         [Test]
         public async Task AuditableEntitySetCreatedAtOnCreation()
         {
-            var options = new DbContextOptionsBuilder<TrpgDbContext>()
+            var options = new DbContextOptionsBuilder<CrpgDbContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
 
             var dt = new DateTime(2000, 01, 02);
             var idt = new Mock<IDateTime>();
             idt.SetupGet(i => i.Now).Returns(dt);
-            var db = new TrpgDbContext(options, idt.Object);
+            var db = new CrpgDbContext(options, idt.Object);
 
             var character = new Character();
             db.Add(character);
@@ -34,7 +34,7 @@ namespace Persistence.UTest
         [Test]
         public async Task AuditableEntitySetModifiedAtOnUpdate()
         {
-            var options = new DbContextOptionsBuilder<TrpgDbContext>()
+            var options = new DbContextOptionsBuilder<CrpgDbContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
 
@@ -45,7 +45,7 @@ namespace Persistence.UTest
                .Returns(dt1) // LastModifiedAt
                .Returns(dt1) // CreatedAt
                .Returns(dt2); // LastModifiedAt
-            var db = new TrpgDbContext(options, idt.Object);
+            var db = new CrpgDbContext(options, idt.Object);
 
             var character = new Character();
             db.Add(character);

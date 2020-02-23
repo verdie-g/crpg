@@ -1,7 +1,7 @@
 using System;
-using Trpg.Application.Common.Mappings;
+using Crpg.Application.Common.Mappings;
 
-namespace Trpg.Application.Steam
+namespace Crpg.Application.Steam
 {
     public class SteamPlayer
     {

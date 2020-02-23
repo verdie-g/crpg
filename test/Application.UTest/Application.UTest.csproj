@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <RootNamespace>Trpg.Application.UTest</RootNamespace>
-        <AssemblyName>Trpg.Application.UTest</AssemblyName>
+        <RootNamespace>Crpg.Application.UTest</RootNamespace>
+        <AssemblyName>Crpg.Application.UTest</AssemblyName>
 
         <IsPackable>false</IsPackable>
     </PropertyGroup>

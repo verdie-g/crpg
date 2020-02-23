@@ -3,24 +3,24 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
-using Trpg.Application.Common.Mappings;
-using Trpg.Common;
-using Trpg.Persistence;
+using Crpg.Application.Common.Mappings;
+using Crpg.Common;
+using Crpg.Persistence;
 
-namespace Trpg.Application.UTest
+namespace Crpg.Application.UTest
 {
     public class TestBase
     {
-        protected TrpgDbContext _db;
+        protected CrpgDbContext _db;
         protected IMapper _mapper;
 
         [SetUp]
         public void SetUp()
         {
-            var options = new DbContextOptionsBuilder<TrpgDbContext>()
+            var options = new DbContextOptionsBuilder<CrpgDbContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
-            _db = new TrpgDbContext(options, Mock.Of<IDateTime>());
+            _db = new CrpgDbContext(options, Mock.Of<IDateTime>());
 
             var configurationProvider = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
             _mapper = configurationProvider.CreateMapper();

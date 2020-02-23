@@ -1,11 +1,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using Trpg.Application.Common.Exceptions;
-using Trpg.Application.Characters.Queries;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Characters.Queries;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.UTest.Characters
+namespace Crpg.Application.UTest.Characters
 {
     public class GetUserCharacterQueryTest : TestBase
     {

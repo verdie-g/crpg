@@ -1,7 +1,7 @@
-using Trpg.Application.Common.Mappings;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Mappings;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.Items.Models
+namespace Crpg.Application.Items.Models
 {
     public class ItemViewModel : ItemCreation, IMapFrom<Item>
     {

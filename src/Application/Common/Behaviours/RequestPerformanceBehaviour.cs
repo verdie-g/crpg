@@ -4,9 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Trpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Interfaces;
 
-namespace Trpg.Application.Common.Behaviours
+namespace Crpg.Application.Common.Behaviours
 {
     public class RequestPerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Trpg.Domain.Common
+namespace Crpg.Domain.Common
 {
     public class AuditableEntity
     {

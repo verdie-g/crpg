@@ -4,7 +4,7 @@ using System.Reflection;
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Trpg.Application.Common.Mappings
+namespace Crpg.Application.Common.Mappings
 {
     /// <summary>
     /// AutoMapper's profile. Used by <see cref="IServiceCollection.AddAutoMapper"/>.

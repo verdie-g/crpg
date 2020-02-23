@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentValidation.Results;
 
-namespace Trpg.Application.Common.Exceptions
+namespace Crpg.Application.Common.Exceptions
 {
     public class ValidationException : Exception
     {

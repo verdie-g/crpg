@@ -1,6 +1,6 @@
 using System;
 
-namespace Trpg.Persistence.Exceptions
+namespace Crpg.Persistence.Exceptions
 {
     public class ConflictException : Exception
     {

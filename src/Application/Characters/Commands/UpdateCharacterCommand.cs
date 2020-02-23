@@ -4,11 +4,11 @@ using AutoMapper;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Trpg.Application.Common.Exceptions;
-using Trpg.Application.Common.Interfaces;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Interfaces;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.Characters.Commands
+namespace Crpg.Application.Characters.Commands
 {
     public class UpdateCharacterCommand : IRequest<CharacterViewModel>
     {
@@ -26,10 +26,10 @@ namespace Trpg.Application.Characters.Commands
 
         public class Handler : IRequestHandler<UpdateCharacterCommand, CharacterViewModel>
         {
-            private readonly ITrpgDbContext _db;
+            private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
 
-            public Handler(ITrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper)
             {
                 _db = db;
                 _mapper = mapper;

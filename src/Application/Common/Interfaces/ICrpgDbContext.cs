@@ -2,11 +2,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Trpg.Domain.Entities;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.Common.Interfaces
+namespace Crpg.Application.Common.Interfaces
 {
-    public interface ITrpgDbContext
+    public interface ICrpgDbContext
     {
         DbSet<User> Users { get; }
         DbSet<Character> Characters { get; }

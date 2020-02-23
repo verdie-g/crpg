@@ -6,10 +6,10 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Trpg.Application.Common.Interfaces;
-using Trpg.Application.Items.Models;
+using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Items.Models;
 
-namespace Trpg.Application.Items.Queries
+namespace Crpg.Application.Items.Queries
 {
     public class GetUserItemsQuery : IRequest<IReadOnlyList<ItemViewModel>>
     {
@@ -17,10 +17,10 @@ namespace Trpg.Application.Items.Queries
 
         public class Handler : IRequestHandler<GetUserItemsQuery, IReadOnlyList<ItemViewModel>>
         {
-            private readonly ITrpgDbContext _db;
+            private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
 
-            public Handler(ITrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper)
             {
                 _db = db;
                 _mapper = mapper;

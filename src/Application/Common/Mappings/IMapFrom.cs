@@ -1,6 +1,6 @@
 using AutoMapper;
 
-namespace Trpg.Application.Common.Mappings
+namespace Crpg.Application.Common.Mappings
 {
     /// <summary>
     /// Indicates that the type is mappable from <typeparamref name="TSource"/>.

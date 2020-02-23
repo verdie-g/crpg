@@ -5,12 +5,12 @@ using AutoMapper;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Trpg.Application.Common.Interfaces;
-using Trpg.Application.Common.Mappings;
-using Trpg.Application.Steam;
-using Trpg.Domain.Entities;
+using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Mappings;
+using Crpg.Application.Steam;
+using Crpg.Domain.Entities;
 
-namespace Trpg.Application.Users.Commands
+namespace Crpg.Application.Users.Commands
 {
     public class UpsertUserCommand : IRequest<UserViewModel>, IMapFrom<SteamPlayer>
     {
@@ -41,10 +41,10 @@ namespace Trpg.Application.Users.Commands
         {
             private const int StartingMoney = 300;
 
-            private readonly ITrpgDbContext _db;
+            private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
 
-            public Handler(ITrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper)
             {
                 _db = db;
                 _mapper = mapper;

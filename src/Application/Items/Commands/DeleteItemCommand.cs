@@ -1,10 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Trpg.Application.Common.Exceptions;
-using Trpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Interfaces;
 
-namespace Trpg.Application.Items.Commands
+namespace Crpg.Application.Items.Commands
 {
     public class DeleteItemCommand : IRequest
     {
@@ -12,9 +12,9 @@ namespace Trpg.Application.Items.Commands
 
         public class Handler : IRequestHandler<DeleteItemCommand>
         {
-            private readonly ITrpgDbContext _db;
+            private readonly ICrpgDbContext _db;
 
-            public Handler(ITrpgDbContext db)
+            public Handler(ICrpgDbContext db)
             {
                 _db = db;
             }
