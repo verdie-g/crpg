@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Crpg.Application.Common;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -39,8 +40,6 @@ namespace Crpg.Application.Users.Commands
 
         public class Handler : IRequestHandler<UpsertUserCommand, UserViewModel>
         {
-            private const int StartingGolds = 300;
-
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
 
@@ -54,7 +53,7 @@ namespace Crpg.Application.Users.Commands
             {
                 var userEntity =
                     await _db.Users.FirstOrDefaultAsync(u => u.SteamId == request.SteamId, cancellationToken)
-                    ?? new User {SteamId = request.SteamId};
+                    ?? new User { SteamId = request.SteamId };
 
                 userEntity.UserName = request.UserName;
                 userEntity.AvatarSmall = request.Avatar;
@@ -63,8 +62,8 @@ namespace Crpg.Application.Users.Commands
 
                 if (_db.Entry(userEntity).State == EntityState.Detached)
                 {
-                    userEntity.Role = Role.User;
-                    userEntity.Golds = StartingGolds;
+                    userEntity.Role = Constants.DefaultRole;
+                    userEntity.Golds = Constants.StartingGolds;
                     _db.Users.Add(userEntity);
                 }
 

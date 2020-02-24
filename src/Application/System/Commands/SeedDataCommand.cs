@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common;
 using MediatR;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Domain.Entities;
@@ -43,7 +44,7 @@ namespace Crpg.Application.System.Commands
                     {
                         SteamId = 76561197987525637,
                         UserName = "takeoshigeru",
-                        Golds = 300,
+                        Golds = Constants.StartingGolds,
                         Role = Role.SuperAdmin,
                         AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e.jpg"),
                         AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_full.jpg"),
