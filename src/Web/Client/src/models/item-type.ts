@@ -1,9 +1,20 @@
 const enum ItemType {
-  Head,
-  Body,
-  Leg,
-  Hand,
-  Weapon,
+  HeadArmor,
+  Cape,
+  BodyArmor,
+  HandArmor,
+  LegArmor,
+  HorseHarness,
+  Horse,
+  Shield,
+  Bow,
+  Crossbow,
+  OneHandedWeapon,
+  TwoHandedWeapon,
+  Polearm,
+  Thrown,
+  Arrows,
+  Bolts,
 }
 
 export default ItemType;
