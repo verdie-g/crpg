@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml;
 using TaleWorlds.Core;
@@ -25,7 +27,7 @@ namespace Crpg.Cli
                             {
                                 MbId = i.StringId,
                                 Name = i.Name.ToString(),
-                                Image = new Uri("https://via.placeholder.com/256x120?text=" + i.Name.ToString()),
+                                Image = new Uri("https://via.placeholder.com/256x120?text=" + i.StringId),
                                 Type = MBToCrpgItemType(i.Type),
                                 Value = i.Value,
                                 Weight = i.Weight,
@@ -91,9 +93,14 @@ namespace Crpg.Cli
 
                             return item;
                         })
+                        .OrderBy(i => i.Type)
                         .ToArray();
 
-            // insert in db
+            await using var f = File.Create("../../mpitems.json");
+            await JsonSerializer.SerializeAsync(f, items, new JsonSerializerOptions
+            {
+                WriteIndented = true,
+            });
         }
 
         private static ItemType MBToCrpgItemType(ItemObject.ItemTypeEnum t)
