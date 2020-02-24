@@ -45,13 +45,15 @@
           <div class="columns item-boxes">
             <div class="column is-narrow gear-column">
               <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Cape)"></div>
               <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)"></div>
               <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)"></div>
               <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)"></div>
             </div>
 
             <div class="column is-narrow horse-column">
-              <div class="box item-box"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.HorseHarness)"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Horse)"></div>
             </div>
 
             <div class="column is-narrow weapon-column">

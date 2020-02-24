@@ -1,8 +1,11 @@
 enum ItemSlot {
   Head,
+  Cape,
   Body,
-  Leg,
   Hand,
+  Leg,
+  HorseHarness,
+  Horse,
   Weapon1,
   Weapon2,
   Weapon3,
