@@ -182,18 +182,21 @@ namespace Crpg.Cli
                     Id = "CraftingTemplates",
                     Name = "crafting_templates",
                     ModuleName = "Native",
+                    GameTypesIncluded = new List<string>(),
                 },
                 new MbObjectXmlInformation
                 {
                     Id = "CraftingPieces",
                     Name = "mp_crafting_pieces",
                     ModuleName = "Native",
+                    GameTypesIncluded = new List<string>(),
                 },
                 new MbObjectXmlInformation
                 {
                     Id = "SPCultures",
                     Name = "mpcultures",
                     ModuleName = "Native",
+                    GameTypesIncluded = new List<string>(),
                 },
             });
 
