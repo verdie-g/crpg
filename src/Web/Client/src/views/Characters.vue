@@ -44,23 +44,40 @@
         <div class="column character-items">
           <div class="columns item-boxes">
             <div class="column is-narrow gear-column">
-              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)"></div>
-              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Cape)"></div>
-              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)"></div>
-              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)"></div>
-              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)">
+                <img src="../assets/head-armor.png" alt="Head armor" />
+              </div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Cape)">
+                <img src="../assets/cape.png" alt="Cape" />
+              </div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)">
+                <img src="../assets/body-armor.png" alt="Body armor" />
+              </div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)">
+                <img src="../assets/hand-armor.png" alt="Hand armor" />
+              </div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)">
+                <img src="../assets/leg-armor.png" alt="Leg armor" />
+              </div>
             </div>
 
             <div class="column is-narrow horse-column">
-              <div class="box item-box" @click="openReplaceItemModal(itemSlot.HorseHarness)"></div>
-              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Horse)"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.HorseHarness)">
+                <img src="../assets/horse-harness.png" alt="Horse harness" />
+              </div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Horse)">
+              </div>
             </div>
 
             <div class="column is-narrow weapon-column">
-              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)"></div>
-              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)"></div>
-              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)"></div>
-              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon4)"></div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)">
+              </div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)">
+              </div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)">
+              </div>
+              <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon4)">
+              </div>
             </div>
           </div>
         </div>
