@@ -1,3 +1,4 @@
+using System;
 using Crpg.Domain.Entities;
 
 namespace Crpg.Application.Items.Models
@@ -6,6 +7,7 @@ namespace Crpg.Application.Items.Models
     {
         public string MbId { get; set; }
         public string Name { get; set; }
+        public Uri Image { get; set; }
         public int Value { get; set; }
         public ItemType Type { get; set; }
         public float Weight { get; set; }
