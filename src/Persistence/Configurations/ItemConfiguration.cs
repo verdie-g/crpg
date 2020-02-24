@@ -10,7 +10,7 @@ namespace Crpg.Persistence.Configurations
         {
             builder.HasIndex(i => i.MbId).IsUnique();
 
-            // TODO: check price > 0
+            // TODO: check value > 0
         }
     }
 }

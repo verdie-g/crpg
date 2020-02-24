@@ -12,6 +12,9 @@ namespace Crpg.Domain.Entities
         /// </summary>
         public string MbId { get; set; }
         public string Name { get; set; }
+        /// <summary>
+        /// 256x120
+        /// </summary>
         public Uri Image { get; set; }
         public ItemType Type { get; set; }
         public int Value { get; set; }

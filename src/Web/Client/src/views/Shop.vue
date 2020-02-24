@@ -1,20 +1,20 @@
 <template>
   <section class="section">
     <div class="container">
-      <div class="columns is-multiline" v-if="items">
+      <div class="columns is-multiline items" v-if="items">
         <div class="column is-narrow" v-for="item in items" v-bind:key="item.id">
-          <div class="card">
+          <div class="card item-card">
             <div class="card-image">
-              <figure class="image is-square is-128x128">
-                <img src="https://via.placeholder.com/128x128.png" alt="item image" />
+              <figure class="image">
+                <img :src="item.image" alt="item image" />
               </figure>
             </div>
             <div class="card-content content">
               <h4>{{item.name}}</h4>
-              <b-button icon-left="coins" expanded v-bind:disabled="item.price > golds || ownedItems[item.id]"
-                        v-bind:loading="buyingItems[item.id]" @click="buy(item)"
-                        v-bind:title="buyButtonTitle(item)">
-                {{item.price}}
+              <b-button icon-left="coins" expanded :disabled="item.value > golds || ownedItems[item.id]"
+                        :loading="buyingItems[item.id]" @click="buy(item)"
+                        :title="buyButtonTitle(item)">
+                {{item.value}}
               </b-button>
             </div>
           </div>
@@ -58,7 +58,7 @@ export default class Shop extends Vue {
     Vue.set(this.buyingItems, item.id, true);
     await userModule.buyItem(item);
     Vue.set(this.buyingItems, item.id, false);
-    notify(`Bought ${item.name} for ${item.price} golds`);
+    notify(`Bought ${item.name} for ${item.value} golds`);
   }
 
   buyButtonTitle(item: Item): string {
@@ -66,7 +66,7 @@ export default class Shop extends Vue {
       return 'You already own this item';
     }
 
-    if (item.price > this.golds) {
+    if (item.value > this.golds) {
       return 'Not enough golds';
     }
 
@@ -76,4 +76,11 @@ export default class Shop extends Vue {
 </script>
 
 <style scoped lang="scss">
+.items {
+  justify-content: center;
+}
+
+.item-card {
+  width: 256px;
+}
 </style>
