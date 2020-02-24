@@ -25,6 +25,7 @@ namespace Crpg.Cli
                             {
                                 MbId = i.StringId,
                                 Name = i.Name.ToString(),
+                                Image = new Uri("https://via.placeholder.com/256x120?text=" + i.Name.ToString()),
                                 Type = MBToCrpgItemType(i.Type),
                                 Value = i.Value,
                                 Weight = i.Weight,

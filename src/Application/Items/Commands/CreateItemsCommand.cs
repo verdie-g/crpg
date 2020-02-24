@@ -28,6 +28,7 @@ namespace Crpg.Application.Items.Commands
                 {
                     MbId = i.MbId,
                     Name = i.Name,
+                    Image = i.Image,
                     Type = i.Type,
                     Value = i.Value,
                     Weight = i.Weight,

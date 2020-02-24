@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Crpg.Domain.Common;
 
@@ -11,6 +12,7 @@ namespace Crpg.Domain.Entities
         /// </summary>
         public string MbId { get; set; }
         public string Name { get; set; }
+        public Uri Image { get; set; }
         public ItemType Type { get; set; }
         public int Value { get; set; }
         public float Weight { get; set; }
