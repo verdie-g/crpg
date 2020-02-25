@@ -21,24 +21,69 @@
             <strong>Next Level:</strong> 4214
           </p>
 
-          <h2>Attributes</h2>
+          <h2>Attributes (0)</h2>
           <p>
-            <strong>Strength:</strong> 28<br />
-            <strong>Perception:</strong> 14<br />
-            <strong>Endurance:</strong> 12
+            <strong>Strength:</strong>
+            <b-icon icon="minus-square" size="is-small" />
+            <span class="stats-value">28</span>
+            <b-icon icon="plus-square" size="is-small" /><br />
+
+            <strong>Perception:</strong>
+            <b-icon icon="minus-square" size="is-small" />
+            <span class="stats-value">14</span>
+            <b-icon icon="plus-square" size="is-small" /><br />
+
+            <strong>Endurance:</strong>
+            <b-icon icon="minus-square" size="is-small" />
+            <span class="stats-value">12</span>
+            <b-icon icon="plus-square" size="is-small" /><br />
           </p>
 
-          <h2>Skills</h2>
+          <h2>Skills (0)</h2>
           <p>
-            <strong>One Handed:</strong> 0<br />  <!-- Mastery of fighting with one-handed weapons either with a shield or without. -->
-            <strong>Two Handed:</strong> 0<br /> <!-- Mastery of fighting with two-handed weapons of average length such as bigger axes and swords. -->
-            <strong>Polearm:</strong> 0<br /> <!-- Mastery of the spear, lance, staff and other polearms, both one-handed and two-handed. -->
-            <strong>Bow:</strong> 0<br /> <!-- Familiarity with bows and physical conditioning to shoot with them effectively. -->
-            <strong>Throwing:</strong> 0<br /> <!-- Mastery of throwing projectiles accurately and with power. -->
-            <strong>Crossbow:</strong> 0<br /> <!-- Knowledge of operating and maintaining crossbows. -->
-            <strong>Riding:</strong> 0<br /> <!-- The ability to control a horse, to keep your balance when it moves suddenly or unexpectedly. -->
-            <strong>Athletics:</strong> 0 <!-- Physical fitness, speed and balance. -->
+            <strong>One Handed:</strong>  <!-- Mastery of fighting with one-handed weapons either with a shield or without. -->
+            <b-icon icon="minus-square" size="is-small" />
+            <span class="stats-value">0</span>
+            <b-icon icon="plus-square" size="is-small" /><br />
+
+            <strong>Two Handed:</strong> <!-- Mastery of fighting with two-handed weapons of average length such as bigger axes and swords. -->
+            <b-icon icon="minus-square" size="is-small" />
+            <span class="stats-value">0</span>
+            <b-icon icon="plus-square" size="is-small" /><br />
+
+            <strong>Polearm:</strong> <!-- Mastery of the spear, lance, staff and other polearms, both one-handed and two-handed. -->
+            <b-icon icon="minus-square" size="is-small" />
+            <span class="stats-value">0</span>
+            <b-icon icon="plus-square" size="is-small" /><br />
+
+            <strong>Bow:</strong> <!-- Familiarity with bows and physical conditioning to shoot with them effectively. -->
+            <b-icon icon="minus-square" size="is-small" />
+            <span class="stats-value">0</span>
+            <b-icon icon="plus-square" size="is-small" /><br />
+
+            <strong>Throwing:</strong> <!-- Mastery of throwing projectiles accurately and with power. -->
+            <b-icon icon="minus-square" size="is-small" />
+            <span class="stats-value">0</span>
+            <b-icon icon="plus-square" size="is-small" /><br />
+
+            <strong>Crossbow:</strong>  <!-- Knowledge of operating and maintaining crossbows. -->
+            <b-icon icon="minus-square" size="is-small" />
+            <span class="stats-value">0</span>
+            <b-icon icon="plus-square" size="is-small" /><br />
+
+            <strong>Riding:</strong> <!-- The ability to control a horse, to keep your balance when it moves suddenly or unexpectedly. -->
+            <b-icon icon="minus-square" size="is-small" />
+            <span class="stats-value">0</span>
+            <b-icon icon="plus-square" size="is-small" /><br />
+
+            <strong>Athletics:</strong> <!-- Physical fitness, speed and balance. -->
+            <b-icon icon="minus-square" size="is-small" />
+            <span class="stats-value">0</span>
+            <b-icon icon="plus-square" size="is-small" />
           </p>
+
+          <b-button size="is-medium" icon-left="undo" title="Reset changes" />
+          <b-button size="is-medium" icon-left="check" title="Commit changes" />
         </div>
 
         <div class="column character-items">
@@ -164,8 +209,14 @@ export default class Characters extends Vue {
   .character-stats {
     strong {
       display: inline-block;
-      width: 200px;
+      width: 150px;
     }
+  }
+
+  .stats-value {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
   }
 
   .item-boxes {
