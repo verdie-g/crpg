@@ -6,7 +6,7 @@ using Crpg.Domain.Entities;
 
 namespace Crpg.Application.UTest.Characters
 {
-    public class GetUserCharacterListQuery : TestBase
+    public class GetUserCharacterListQueryTest : TestBase
     {
         [Test]
         public async Task Basic()

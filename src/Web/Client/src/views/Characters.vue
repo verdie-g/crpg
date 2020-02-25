@@ -18,7 +18,7 @@
           <p>
             <strong>Level:</strong> {{selectedCharacter.level}}<br />
             <strong>Experience:</strong> {{selectedCharacter.experience}}<br />
-            <strong>Next Level:</strong> 4214
+            <strong>Next Level:</strong> {{selectedCharacter.nextLevelExperience - selectedCharacter.experience}}
           </p>
 
           <h2>Attributes (0)</h2>

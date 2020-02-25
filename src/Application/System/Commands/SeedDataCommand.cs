@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Crpg.Application.Common;
 using MediatR;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Games;
 using Crpg.Domain.Entities;
 
 namespace Crpg.Application.System.Commands
@@ -447,19 +448,19 @@ namespace Crpg.Application.System.Commands
                             {
                                 Name = "takeoshigeru",
                                 Level = 23,
-                                Experience = 2529284,
+                                Experience = ExperienceTable.GetExperienceForLevel(23),
                             },
                             new Character
                             {
                                 Name = "totoalala",
                                 Level = 12,
-                                Experience = 13493,
+                                Experience = ExperienceTable.GetExperienceForLevel(12),
                             },
                             new Character
                             {
                                 Name = "jackie",
                                 Level = 1,
-                                Experience = 200,
+                                Experience = ExperienceTable.GetExperienceForLevel(1) + 100,
                             },
                         }
                     });
