@@ -1,4 +1,4 @@
-const enum DamageType {
+enum DamageType {
   Cut,
   Pierce,
   Blunt,

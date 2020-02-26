@@ -1,4 +1,4 @@
-const enum ItemType {
+enum ItemType {
   HeadArmor,
   Cape,
   BodyArmor,

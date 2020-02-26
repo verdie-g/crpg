@@ -11,6 +11,31 @@
             </div>
             <div class="card-content content">
               <h4>{{item.name}}</h4>
+              <div class="content">
+                <div v-for="prop in getItemProperties(item).common">
+                  {{prop[0]}}: {{prop[1]}}
+                </div>
+                <b-tabs v-if="getItemProperties(item).primary" class="weapon-tabs">
+                  <b-tab-item label="Primary">
+                    <div v-for="prop in getItemProperties(item).primary">
+                      {{prop[0]}}: {{prop[1]}}<br />
+                    </div>
+                    <b-taglist class="flag-tags">
+                      <b-tag v-for="flag in getItemProperties(item).primaryFlags" type="is-info">{{flag}}</b-tag>
+                    </b-taglist>
+                  </b-tab-item>
+
+                  <b-tab-item label="Secondary" v-if="getItemProperties(item).secondary">
+                    <div v-for="prop in getItemProperties(item).secondary">
+                      {{prop[0]}}: {{prop[1]}}<br />
+                    </div>
+                    <b-taglist class="flag-tags">
+                      <b-tag v-for="flag in getItemProperties(item).secondaryFlags" type="is-info">{{flag}}</b-tag>
+                    </b-taglist>
+                  </b-tab-item>
+                </b-tabs>
+
+              </div>
               <b-button icon-left="coins" expanded :disabled="item.value > golds || ownedItems[item.id]"
                         :loading="buyingItems[item.id]" @click="buy(item)"
                         :title="buyButtonTitle(item)">
@@ -30,6 +55,7 @@ import userModule from '@/store/user-module';
 import itemModule from '@/store/item-module';
 import Item from '@/models/item';
 import { notify } from '@/services/notifications-service';
+import { getItemProperties } from "@/services/item-service";
 
 @Component
 export default class Shop extends Vue {
@@ -72,6 +98,10 @@ export default class Shop extends Vue {
 
     return '';
   }
+
+  getItemProperties(item: Item) {
+    return getItemProperties(item);
+  }
 }
 </script>
 
@@ -82,5 +112,23 @@ export default class Shop extends Vue {
 
 .item-card {
   width: 256px;
+}
+
+.flag-tags {
+  margin-top: 6px;
+}
+</style>
+
+// not scoped
+<style lang="scss">
+.weapon-tabs {
+  .tabs ul {
+    margin-left: 0;
+  }
+
+  .tab-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 </style>

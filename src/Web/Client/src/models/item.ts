@@ -1,5 +1,6 @@
 import ItemType from '@/models/item-type';
 import DamageType from '@/models/damage-type';
+import WeaponFlags from "@/models/weapon-flags";
 
 export default class Item {
   public id: number;
@@ -21,7 +22,7 @@ export default class Item {
   public chargeDamage?: number;
   public maneuver?: number;
   public speed?: number;
-  public hitPonumbers?: number;
+  public hitPoints?: number;
 
   // Weapon
   public thrustDamageType?: DamageType;
@@ -35,11 +36,11 @@ export default class Item {
   public primaryThrustSpeed?: number;
   public primarySwingDamage?: number;
   public primarySwingSpeed?: number;
-  // public primaryWeaponFlags?: WeaponFlags;
+  public primaryWeaponFlags?: WeaponFlags;
 
   public secondaryThrustDamage?: number;
   public secondaryThrustSpeed?: number;
   public secondarySwingDamage?: number;
   public secondarySwingSpeed?: number;
-  // public secondaryWeaponFlags?: WeaponFlags;
+  public secondaryWeaponFlags?: WeaponFlags;
 }
