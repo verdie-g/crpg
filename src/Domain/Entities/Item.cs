@@ -23,7 +23,7 @@ namespace Crpg.Domain.Entities
 
         // Armor
         public int? HeadArmor { get; set; }
-        public int? BodyArmor { get; set; } // not null for shields
+        public int? BodyArmor { get; set; }
         public int? ArmArmor { get; set; }
         public int? LegArmor { get; set; }
 
