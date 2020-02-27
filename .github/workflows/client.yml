@@ -1,4 +1,4 @@
-name: Node
+name: Client
 
 on: [push]
 
