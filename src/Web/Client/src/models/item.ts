@@ -1,6 +1,6 @@
 import ItemType from '@/models/item-type';
 import DamageType from '@/models/damage-type';
-import WeaponFlags from "@/models/weapon-flags";
+import WeaponFlags from '@/models/weapon-flags';
 
 export default class Item {
   public id: number;

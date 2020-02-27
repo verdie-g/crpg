@@ -55,7 +55,7 @@ import userModule from '@/store/user-module';
 import itemModule from '@/store/item-module';
 import Item from '@/models/item';
 import { notify } from '@/services/notifications-service';
-import { getItemProperties } from "@/services/item-service";
+import { getItemProperties } from '@/services/item-service';
 
 @Component
 export default class Shop extends Vue {
