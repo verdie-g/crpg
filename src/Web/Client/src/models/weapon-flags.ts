@@ -1,3 +1,5 @@
+/* eslint-disable no-bitwise */
+
 enum WeaponFlags {
   MeleeWeapon = 0x1,
   RangedWeapon = 0x2,

@@ -41,42 +41,50 @@
 
           <h2>Skills (0)</h2>
           <p>
-            <strong>One Handed:</strong>  <!-- Mastery of fighting with one-handed weapons either with a shield or without. -->
+            <!-- Mastery of fighting with one-handed weapons either with a shield or without. -->
+            <strong>One Handed:</strong>
             <b-icon icon="minus-square" size="is-small" />
             <span class="stats-value">0</span>
             <b-icon icon="plus-square" size="is-small" /><br />
 
-            <strong>Two Handed:</strong> <!-- Mastery of fighting with two-handed weapons of average length such as bigger axes and swords. -->
+            <!-- Mastery of fighting with two-handed weapons of average length such as bigger axes and swords. -->
+            <strong>Two Handed:</strong>
             <b-icon icon="minus-square" size="is-small" />
             <span class="stats-value">0</span>
             <b-icon icon="plus-square" size="is-small" /><br />
 
-            <strong>Polearm:</strong> <!-- Mastery of the spear, lance, staff and other polearms, both one-handed and two-handed. -->
+            <!-- Mastery of the spear, lance, staff and other polearms, both one-handed and two-handed. -->
+            <strong>Polearm:</strong>
             <b-icon icon="minus-square" size="is-small" />
             <span class="stats-value">0</span>
             <b-icon icon="plus-square" size="is-small" /><br />
 
-            <strong>Bow:</strong> <!-- Familiarity with bows and physical conditioning to shoot with them effectively. -->
+            <!-- Familiarity with bows and physical conditioning to shoot with them effectively. -->
+            <strong>Bow:</strong>
             <b-icon icon="minus-square" size="is-small" />
             <span class="stats-value">0</span>
             <b-icon icon="plus-square" size="is-small" /><br />
 
-            <strong>Throwing:</strong> <!-- Mastery of throwing projectiles accurately and with power. -->
+            <!-- Mastery of throwing projectiles accurately and with power. -->
+            <strong>Throwing:</strong>
             <b-icon icon="minus-square" size="is-small" />
             <span class="stats-value">0</span>
             <b-icon icon="plus-square" size="is-small" /><br />
 
-            <strong>Crossbow:</strong>  <!-- Knowledge of operating and maintaining crossbows. -->
+            <!-- Knowledge of operating and maintaining crossbows. -->
+            <strong>Crossbow:</strong>
             <b-icon icon="minus-square" size="is-small" />
             <span class="stats-value">0</span>
             <b-icon icon="plus-square" size="is-small" /><br />
 
-            <strong>Riding:</strong> <!-- The ability to control a horse, to keep your balance when it moves suddenly or unexpectedly. -->
+            <!-- The ability to control a horse, to keep your balance when it moves suddenly or unexpectedly. -->
+            <strong>Riding:</strong>
             <b-icon icon="minus-square" size="is-small" />
             <span class="stats-value">0</span>
             <b-icon icon="plus-square" size="is-small" /><br />
 
-            <strong>Athletics:</strong> <!-- Physical fitness, speed and balance. -->
+            <!-- Physical fitness, speed and balance. -->
+            <strong>Athletics:</strong>
             <b-icon icon="minus-square" size="is-small" />
             <span class="stats-value">0</span>
             <b-icon icon="plus-square" size="is-small" />
@@ -166,8 +174,8 @@
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import Character from '@/models/character';
-import ItemSlot from "@/models/item-slot";
-import Item from "@/models/item";
+import ItemSlot from '@/models/item-slot';
+import Item from '@/models/item';
 
   @Component
 export default class Characters extends Vue {

@@ -16,6 +16,9 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'lines-between-class-members': 'off',
     'no-param-reassign': 'off',
+    'vue/valid-v-for': 'off',
+    'vue/require-v-for-key': 'off',
+    'no-return-assign': 'off',
   },
   parserOptions: {
     parser: '@typescript-eslint/parser',
