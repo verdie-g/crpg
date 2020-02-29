@@ -37,7 +37,7 @@ namespace Crpg.Application.Games.Commands
                 foreach (var character in dbCharacters)
                 {
                     var tick = tickByCharacterId[character.Id];
-                    character.User.Golds += tick.GoldGain;
+                    character.User.Gold += tick.GoldGain;
                     character.Experience += tick.ExperienceGain;
                     int newLevel = ExperienceTable.GetLevelForExperience(character.Experience);
                     if (character.Level != newLevel) // if user leveled up
