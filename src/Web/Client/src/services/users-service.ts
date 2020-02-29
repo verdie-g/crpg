@@ -1,7 +1,8 @@
 import User from '@/models/user';
 import Character from '@/models/character';
 import Item from '@/models/item';
-import { get, post } from './crpg-client';
+import { UpdateCharacterItemsRequest } from '@/models/update-character-items-request';
+import { get, post, put } from './crpg-client';
 
 export function getUser(): Promise<User> {
   return get('/users/self');
@@ -9,6 +10,10 @@ export function getUser(): Promise<User> {
 
 export function getOwnedItems(): Promise<Item[]> {
   return get('/users/self/items');
+}
+
+export function setItems(characterId: number, req: UpdateCharacterItemsRequest): Promise<Character> {
+  return put(`/users/self/characters/${characterId}/items`, req);
 }
 
 export function buyItem(itemId: number) {

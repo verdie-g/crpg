@@ -6,6 +6,7 @@ import ItemType from '@/models/item-type';
 import DamageType from '@/models/damage-type';
 import { ItemProperties } from '@/models/item-properties';
 import WeaponFlags from '@/models/weapon-flags';
+import ItemSlot from '@/models/item-slot';
 
 const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.HeadArmor]: 'Head Armor',
@@ -39,11 +40,37 @@ const weaponFlagsStr: Record<WeaponFlags, string> = {
   [WeaponFlags.CanPenetrateShield]: 'PenetrateShield',
   [WeaponFlags.CantReloadOnHorseback]: 'HorseReload',
   [WeaponFlags.AutoReload]: 'AutoReload',
-  [WeaponFlags.CrushThrough]: 'CrushThrouh',
+  [WeaponFlags.CrushThrough]: 'CrushThrough',
   // [WeaponFlags.TwoHandIdleOnMount]:
   [WeaponFlags.PenaltyWithShield]: 'PenaltyWithShield',
   [WeaponFlags.CanKnockDown]: 'KnockDown',
   [WeaponFlags.CanBlockRanged]: 'BlockRanged',
+};
+
+const weaponTypes: ItemType[] = [
+  ItemType.Shield,
+  ItemType.Bow,
+  ItemType.Crossbow,
+  ItemType.OneHandedWeapon,
+  ItemType.TwoHandedWeapon,
+  ItemType.Polearm,
+  ItemType.Thrown,
+  ItemType.Arrows,
+  ItemType.Bolts,
+];
+
+const itemTypesBySlot: Record<ItemSlot, ItemType[]> = {
+  [ItemSlot.Head]: [ItemType.HeadArmor],
+  [ItemSlot.Cape]: [ItemType.Cape],
+  [ItemSlot.Body]: [ItemType.BodyArmor],
+  [ItemSlot.Hand]: [ItemType.HandArmor],
+  [ItemSlot.Leg]: [ItemType.LegArmor],
+  [ItemSlot.HorseHarness]: [ItemType.HorseHarness],
+  [ItemSlot.Horse]: [ItemType.Horse],
+  [ItemSlot.Weapon1]: weaponTypes,
+  [ItemSlot.Weapon2]: weaponTypes,
+  [ItemSlot.Weapon3]: weaponTypes,
+  [ItemSlot.Weapon4]: weaponTypes,
 };
 
 function getWeaponFlags(flags: WeaponFlags): string[] {
@@ -185,4 +212,8 @@ export function getItemProperties(item: Item) : ItemProperties {
   }
 
   return props;
+}
+
+export function filerItemsFittingInSlot(items: Item[], slot: ItemSlot) : Item[] {
+  return items.filter(i => itemTypesBySlot[slot].includes(i.type));
 }
