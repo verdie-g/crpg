@@ -19,8 +19,8 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
-  substractGolds(loss: number) {
-    this.user!.golds -= loss;
+  substractGold(loss: number) {
+    this.user!.gold -= loss;
   }
 
   @Mutation
@@ -57,7 +57,7 @@ class UserModule extends VuexModule {
   async buyItem(item: Item) {
     await userService.buyItem(item.id);
     this.addOwnedItem(item);
-    this.substractGolds(item.value);
+    this.substractGold(item.value);
   }
 
   @Action({ commit: 'setCharacters' })

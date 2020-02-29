@@ -63,7 +63,7 @@ namespace Crpg.Application.Users.Commands
                 if (_db.Entry(userEntity).State == EntityState.Detached)
                 {
                     userEntity.Role = Constants.DefaultRole;
-                    userEntity.Golds = Constants.StartingGolds;
+                    userEntity.Gold = Constants.StartingGold;
                     _db.Users.Add(userEntity);
                 }
 

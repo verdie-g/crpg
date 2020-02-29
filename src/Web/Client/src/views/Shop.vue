@@ -36,7 +36,7 @@
                 </b-tabs>
 
               </div>
-              <b-button icon-left="coins" expanded :disabled="item.value > golds || ownedItems[item.id]"
+              <b-button icon-left="coins" expanded :disabled="item.value > gold || ownedItems[item.id]"
                         :loading="buyingItems[item.id]" @click="buy(item)"
                         :title="buyButtonTitle(item)">
                 {{item.value}}
@@ -67,8 +67,8 @@ export default class Shop extends Vue {
     return userModule.ownedItems.reduce((res: Record<number, boolean>, i: Item) => { res[i.id] = true; return res; }, {});
   }
 
-  get golds(): number {
-    return userModule.user == null ? 0 : userModule.user.golds;
+  get gold(): number {
+    return userModule.user == null ? 0 : userModule.user.gold;
   }
 
   get items() {
@@ -84,7 +84,7 @@ export default class Shop extends Vue {
     Vue.set(this.buyingItems, item.id, true);
     await userModule.buyItem(item);
     Vue.set(this.buyingItems, item.id, false);
-    notify(`Bought ${item.name} for ${item.value} golds`);
+    notify(`Bought ${item.name} for ${item.value} gold`);
   }
 
   buyButtonTitle(item: Item): string {
@@ -92,8 +92,8 @@ export default class Shop extends Vue {
       return 'You already own this item';
     }
 
-    if (item.value > this.golds) {
-      return 'Not enough golds';
+    if (item.value > this.gold) {
+      return 'Not enough gold';
     }
 
     return '';

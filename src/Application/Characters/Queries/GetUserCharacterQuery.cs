@@ -28,16 +28,11 @@ namespace Crpg.Application.Characters.Queries
             public async Task<CharacterViewModel> Handle(GetUserCharacterQuery request, CancellationToken cancellationToken)
             {
                 var character = await _db.Characters
-                    .FirstOrDefaultAsync(c => c.Id == request.CharacterId, cancellationToken);
+                    .FirstOrDefaultAsync(c => c.Id == request.CharacterId && c.UserId == request.UserId, cancellationToken);
 
                 if (character == null)
                 {
                     throw new NotFoundException(nameof(Character), request.CharacterId);
-                }
-
-                if (character.UserId != request.UserId)
-                {
-                    throw new ForbiddenException(nameof(Character), request.CharacterId);
                 }
 
                 return _mapper.Map<CharacterViewModel>(character);

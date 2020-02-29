@@ -40,7 +40,7 @@ namespace Crpg.Application.UTest.Characters
             await _db.SaveChangesAsync();
 
             var handler = new DeleteCharacterCommand.Handler(_db);
-            Assert.ThrowsAsync<ForbiddenException>(() => handler.Handle(new DeleteCharacterCommand
+            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new DeleteCharacterCommand
             {
                 CharacterId = e.Entity.Id,
                 UserId = 1,

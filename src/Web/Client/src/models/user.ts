@@ -7,7 +7,7 @@ export default class User {
 
   public userName: string;
 
-  public golds: number;
+  public gold: number;
 
   public role: Role;
 
