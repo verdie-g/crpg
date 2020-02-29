@@ -449,7 +449,7 @@ namespace Crpg.Application.System.Commands
                     {
                         SteamId = 76561197987525637,
                         UserName = "takeoshigeru",
-                        Golds = Constants.StartingGolds,
+                        Gold = Constants.StartingGold,
                         Role = Role.SuperAdmin,
                         AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e.jpg"),
                         AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_full.jpg"),

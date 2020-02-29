@@ -50,12 +50,12 @@ namespace Crpg.Application.Items.Commands
                     throw new BadRequestException("User already owns this item");
                 }
 
-                if (user.Golds < item.Value)
+                if (user.Gold < item.Value)
                 {
-                    throw new BadRequestException("User doesn't have enough golds");
+                    throw new BadRequestException("User doesn't have enough gold");
                 }
 
-                user.Golds -= item.Value;
+                user.Gold -= item.Value;
                 user.UserItems.Add(new UserItem {UserId = request.UserId, ItemId = request.ItemId});
                 await _db.SaveChangesAsync(cancellationToken);
                 return _mapper.Map<ItemViewModel>(item);
