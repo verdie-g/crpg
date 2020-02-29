@@ -4,6 +4,7 @@ using MediatR;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
@@ -23,15 +24,13 @@ namespace Crpg.Application.Characters.Commands
 
             public async Task<Unit> Handle(DeleteCharacterCommand request, CancellationToken cancellationToken)
             {
-                var characterDb = await _db.Characters.FindAsync(request.CharacterId);
+                var characterDb =
+                    await _db.Characters.FirstOrDefaultAsync(c =>
+                        c.Id == request.CharacterId && c.UserId == request.UserId, cancellationToken);
+
                 if (characterDb == null)
                 {
                     throw new NotFoundException(nameof(Characters), request.CharacterId);
-                }
-
-                if (characterDb.UserId != request.UserId)
-                {
-                    throw new ForbiddenException(nameof(Character), request.CharacterId);
                 }
 
                 _db.Characters.Remove(characterDb);
