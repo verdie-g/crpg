@@ -1,9 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Domain.Entities;
+using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters
 {
@@ -52,7 +52,7 @@ namespace Crpg.Application.UTest.Characters
         {
             var handler = new DeleteCharacterCommand.Handler(_db);
             Assert.ThrowsAsync<NotFoundException>(() =>
-                handler.Handle(new DeleteCharacterCommand {CharacterId = 1}, CancellationToken.None));
+                handler.Handle(request: new DeleteCharacterCommand { CharacterId = 1 }, CancellationToken.None));
         }
     }
 }

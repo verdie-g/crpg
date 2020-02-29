@@ -2,11 +2,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Domain.Entities;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Users.Queries
 {

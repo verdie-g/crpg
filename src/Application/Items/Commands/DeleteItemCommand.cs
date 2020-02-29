@@ -1,8 +1,8 @@
 using System.Threading;
 using System.Threading.Tasks;
-using MediatR;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
+using MediatR;
 
 namespace Crpg.Application.Items.Commands
 {

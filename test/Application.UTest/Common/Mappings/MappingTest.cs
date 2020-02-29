@@ -1,6 +1,6 @@
 using AutoMapper;
-using NUnit.Framework;
 using Crpg.Application.Common.Mappings;
+using NUnit.Framework;
 using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
 namespace Crpg.Application.UTest.Common.Mappings

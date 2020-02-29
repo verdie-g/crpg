@@ -1,9 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Items.Commands;
 using Crpg.Domain.Entities;
+using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items
 {
@@ -21,7 +21,7 @@ namespace Crpg.Application.UTest.Items
             await _db.SaveChangesAsync();
 
             var handler = new DeleteItemCommand.Handler(_db);
-            await handler.Handle(new DeleteItemCommand {ItemId = i.Entity.Id}, CancellationToken.None);
+            await handler.Handle(new DeleteItemCommand { ItemId = i.Entity.Id }, CancellationToken.None);
 
             Assert.IsNull(await _db.Items.FindAsync(i.Entity.Id));
         }
@@ -31,7 +31,7 @@ namespace Crpg.Application.UTest.Items
         {
             var handler = new DeleteItemCommand.Handler(_db);
             Assert.ThrowsAsync<NotFoundException>(() =>
-                handler.Handle(new DeleteItemCommand {ItemId = 1}, CancellationToken.None));
+                handler.Handle(new DeleteItemCommand { ItemId = 1 }, CancellationToken.None));
         }
     }
 }

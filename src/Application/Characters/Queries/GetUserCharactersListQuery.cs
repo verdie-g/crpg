@@ -4,9 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Crpg.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Crpg.Application.Common.Interfaces;
 
 namespace Crpg.Application.Characters.Queries
 {

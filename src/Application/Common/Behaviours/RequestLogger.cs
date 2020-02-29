@@ -1,8 +1,8 @@
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common.Interfaces;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
-using Crpg.Application.Common.Interfaces;
 
 namespace Crpg.Application.Common.Behaviours
 {

@@ -1,10 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using NUnit.Framework;
 using Crpg.Application.Items.Commands;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items
 {
@@ -16,7 +16,7 @@ namespace Crpg.Application.UTest.Items
             var handler = new CreateItemsCommand.Handler(_db);
             await handler.Handle(new CreateItemsCommand
             {
-                Items = new []
+                Items = new[]
                 {
                     new ItemCreation
                     {

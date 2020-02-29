@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using FluentValidation;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Domain.Entities;
+using FluentValidation;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
@@ -52,7 +52,7 @@ namespace Crpg.Application.Characters.Commands
                     Level = 1,
                 };
 
-                user.Characters = new List<Character> {newCharacter};
+                user.Characters = new List<Character> { newCharacter };
                 await _db.SaveChangesAsync(cancellationToken);
                 return _mapper.Map<CharacterViewModel>(newCharacter);
             }

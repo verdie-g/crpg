@@ -71,4 +71,3 @@ namespace Crpg.Application.Games
         }
     }
 }
-

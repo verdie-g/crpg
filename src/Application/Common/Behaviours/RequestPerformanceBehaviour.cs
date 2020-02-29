@@ -2,9 +2,9 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Crpg.Application.Common.Interfaces;
 
 namespace Crpg.Application.Common.Behaviours
 {

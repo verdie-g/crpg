@@ -4,6 +4,12 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>Crpg.Domain</RootNamespace>
     <AssemblyName>Crpg.Domain</AssemblyName>
+    <CodeAnalysisRuleSet>../stylecop.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" />
+    <AdditionalFiles Include="../stylecop.json" />
+  </ItemGroup>
 
 </Project>

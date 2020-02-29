@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using Crpg.Application.Users.Commands;
 using Crpg.Domain.Entities;
+using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Users
 {

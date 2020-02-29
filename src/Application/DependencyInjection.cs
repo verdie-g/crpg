@@ -1,8 +1,8 @@
 using System.Reflection;
 using AutoMapper;
+using Crpg.Application.Common.Behaviours;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Crpg.Application.Common.Behaviours;
 
 namespace Crpg.Application
 {

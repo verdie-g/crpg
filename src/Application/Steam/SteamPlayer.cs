@@ -8,7 +8,7 @@ namespace Crpg.Application.Steam
         public long SteamId { get; set; }
         public CommunityVisibilityState CommunityVisibilityState { get; set; }
         public int ProfileState { get; set; }
-        public string PersonaName  { get; set; }
+        public string PersonaName { get; set; }
         public long LastLogoff { get; set; }
         public bool CommentPermission { get; set; }
         public string ProfileUrl { get; set; }

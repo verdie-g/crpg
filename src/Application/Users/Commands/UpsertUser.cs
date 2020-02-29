@@ -3,13 +3,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Common;
-using FluentValidation;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mappings;
 using Crpg.Application.Steam;
 using Crpg.Domain.Entities;
+using FluentValidation;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Users.Commands
 {

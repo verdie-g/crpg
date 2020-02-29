@@ -1,11 +1,11 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Moq;
-using NUnit.Framework;
 using Crpg.Common;
 using Crpg.Domain.Entities;
 using Crpg.Persistence;
+using Microsoft.EntityFrameworkCore;
+using Moq;
+using NUnit.Framework;
 
 namespace Persistence.UTest
 {

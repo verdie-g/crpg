@@ -8,7 +8,13 @@
     <NoWarn>1591;1701;1702</NoWarn>
     <SpaRoot>Client\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+    <CodeAnalysisRuleSet>../stylecop.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" />
+    <AdditionalFiles Include="../stylecop.json" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AspNet.Security.OpenId.Steam" Version="3.0.0" />

@@ -1,10 +1,10 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Users.Queries;
 using Crpg.Domain.Entities;
+using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Users
 {
