@@ -53,7 +53,7 @@ namespace Crpg.Application.UTest.Characters
             await _db.SaveChangesAsync();
 
             var handler = new GetUserCharacterQuery.Handler(_db, _mapper);
-            Assert.ThrowsAsync<ForbiddenException>(() => handler.Handle(new GetUserCharacterQuery
+            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new GetUserCharacterQuery
             {
                 CharacterId = dbCharacter.Id,
                 UserId = 1,
