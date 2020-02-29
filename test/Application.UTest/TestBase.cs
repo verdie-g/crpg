@@ -1,11 +1,11 @@
 using System;
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using Moq;
-using NUnit.Framework;
 using Crpg.Application.Common.Mappings;
 using Crpg.Common;
 using Crpg.Persistence;
+using Microsoft.EntityFrameworkCore;
+using Moq;
+using NUnit.Framework;
 
 namespace Crpg.Application.UTest
 {

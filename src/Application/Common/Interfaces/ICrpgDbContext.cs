@@ -1,8 +1,8 @@
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Crpg.Domain.Entities;
 
 namespace Crpg.Application.Common.Interfaces
 {

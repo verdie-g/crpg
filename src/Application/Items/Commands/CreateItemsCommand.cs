@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using MediatR;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
+using MediatR;
 
 namespace Crpg.Application.Items.Commands
 {

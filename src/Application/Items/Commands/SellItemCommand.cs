@@ -1,11 +1,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Domain.Entities;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Commands
 {
@@ -39,7 +39,7 @@ namespace Crpg.Application.Items.Commands
                     throw new NotFoundException(nameof(UserItem), request.UserId, request.ItemId);
                 }
 
-                userItem.User.Gold += (int) (userItem.Item.Value * SellRatio);
+                userItem.User.Gold += (int)(userItem.Item.Value * SellRatio);
                 _db.UserItems.Remove(userItem);
                 await _db.SaveChangesAsync(cancellationToken);
                 return Unit.Value;

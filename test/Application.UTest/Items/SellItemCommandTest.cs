@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Items.Commands;
 using Crpg.Domain.Entities;
+using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items
 {

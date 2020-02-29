@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Domain.Entities;
+using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters
 {
@@ -84,7 +84,7 @@ namespace Crpg.Application.UTest.Characters
         public void BadName()
         {
             var validator = new UpdateCharacterCommand.Validator();
-            var res = validator.Validate(new UpdateCharacterCommand {Name = ""});
+            var res = validator.Validate(new UpdateCharacterCommand { Name = "" });
             Assert.AreEqual(1, res.Errors.Count);
         }
     }

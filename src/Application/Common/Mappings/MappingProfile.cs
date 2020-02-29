@@ -33,7 +33,9 @@ namespace Crpg.Application.Common.Mappings
                     .ToList();
 
                 if (interfaces.Count == 0)
+                {
                     continue;
+                }
 
                 var instance = Activator.CreateInstance(type);
                 foreach (var i in interfaces)

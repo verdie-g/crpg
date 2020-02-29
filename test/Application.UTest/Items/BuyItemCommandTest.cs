@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using NUnit.Framework;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Items.Commands;
 using Crpg.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items
 {
@@ -81,11 +81,11 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task AlreadyOwningItem()
         {
-            var item = _db.Items.Add(new Item {Value = 100});
+            var item = _db.Items.Add(new Item { Value = 100 });
             var user = _db.Users.Add(new User
             {
                 Gold = 100,
-                UserItems = new List<UserItem> {new UserItem {ItemId = item.Entity.Id}}
+                UserItems = new List<UserItem> { new UserItem { ItemId = item.Entity.Id } }
             });
             await _db.SaveChangesAsync();
 

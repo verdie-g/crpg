@@ -1,9 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
-using NUnit.Framework;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Characters.Queries;
+using Crpg.Application.Common.Exceptions;
 using Crpg.Domain.Entities;
+using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters
 {

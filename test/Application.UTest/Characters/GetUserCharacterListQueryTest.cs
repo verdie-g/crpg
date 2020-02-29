@@ -1,8 +1,8 @@
 using System.Threading;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using Crpg.Application.Characters.Queries;
 using Crpg.Domain.Entities;
+using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters
 {
@@ -30,7 +30,7 @@ namespace Crpg.Application.UTest.Characters
             await _db.SaveChangesAsync();
 
             var handler = new GetUserCharactersListQuery.Handler(_db, _mapper);
-            var characters = await handler.Handle(new GetUserCharactersListQuery {UserId = 1}, CancellationToken.None);
+            var characters = await handler.Handle(new GetUserCharactersListQuery { UserId = 1 }, CancellationToken.None);
 
             Assert.AreEqual(2, characters.Count);
         }

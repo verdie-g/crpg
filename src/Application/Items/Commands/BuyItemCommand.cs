@@ -2,12 +2,12 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Commands
 {
@@ -56,7 +56,7 @@ namespace Crpg.Application.Items.Commands
                 }
 
                 user.Gold -= item.Value;
-                user.UserItems.Add(new UserItem {UserId = request.UserId, ItemId = request.ItemId});
+                user.UserItems.Add(new UserItem { UserId = request.UserId, ItemId = request.ItemId });
                 await _db.SaveChangesAsync(cancellationToken);
                 return _mapper.Map<ItemViewModel>(item);
             }

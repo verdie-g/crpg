@@ -31,6 +31,5 @@ namespace Crpg.Application.Characters
                 .ForMember(c => c.NextLevelExperience,
                     opt => opt.MapFrom(c => ExperienceTable.GetExperienceForLevel(c.Level + 1)));
         }
-
     }
 }

@@ -4,7 +4,13 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>Crpg.Infrastructure</RootNamespace>
     <AssemblyName>Crpg.Infrastructure</AssemblyName>
+    <CodeAnalysisRuleSet>../stylecop.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" />
+    <AdditionalFiles Include="../stylecop.json" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.1" />

@@ -3,11 +3,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Domain.Entities;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
@@ -99,7 +99,6 @@ namespace Crpg.Application.Characters.Commands
                 character.Weapon4Item = GetItemWithChecks(request.Weapon4ItemId, WeaponTypes, itemsById);
             }
 
-
             private Item GetItemWithChecks(int? id, IEnumerable<ItemType> expectedTypes,
                 Dictionary<int, Item> itemsById)
             {
@@ -120,27 +119,59 @@ namespace Crpg.Application.Characters.Commands
             {
                 var ids = new List<int>();
                 if (request.HeadItemId != null)
+                {
                     ids.Add(request.HeadItemId.Value);
+                }
+
                 if (request.CapeItemId != null)
+                {
                     ids.Add(request.CapeItemId.Value);
+                }
+
                 if (request.BodyItemId != null)
+                {
                     ids.Add(request.BodyItemId.Value);
+                }
+
                 if (request.HandItemId != null)
+                {
                     ids.Add(request.HandItemId.Value);
+                }
+
                 if (request.LegItemId != null)
+                {
                     ids.Add(request.LegItemId.Value);
+                }
+
                 if (request.HorseHarnessItemId != null)
+                {
                     ids.Add(request.HorseHarnessItemId.Value);
+                }
+
                 if (request.HorseItemId != null)
+                {
                     ids.Add(request.HorseItemId.Value);
+                }
+
                 if (request.Weapon1ItemId != null)
+                {
                     ids.Add(request.Weapon1ItemId.Value);
+                }
+
                 if (request.Weapon2ItemId != null)
+                {
                     ids.Add(request.Weapon2ItemId.Value);
+                }
+
                 if (request.Weapon3ItemId != null)
+                {
                     ids.Add(request.Weapon3ItemId.Value);
+                }
+
                 if (request.Weapon4ItemId != null)
+                {
                     ids.Add(request.Weapon4ItemId.Value);
+                }
 
                 return ids;
             }

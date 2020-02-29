@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common;
-using MediatR;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Games;
 using Crpg.Domain.Entities;
+using MediatR;
 
 namespace Crpg.Application.System.Commands
 {
@@ -272,7 +272,7 @@ namespace Crpg.Application.System.Commands
                         PrimaryThrustSpeed = 82,
                         PrimarySwingDamage = 0,
                         PrimarySwingSpeed = 82,
-                        PrimaryWeaponFlags = (WeaponFlags?) 268435968,
+                        PrimaryWeaponFlags = (WeaponFlags?)268435968,
                     },
                     new Item
                     {
@@ -288,7 +288,7 @@ namespace Crpg.Application.System.Commands
                         PrimaryThrustSpeed = 82,
                         PrimarySwingDamage = 0,
                         PrimarySwingSpeed = 82,
-                        PrimaryWeaponFlags = (WeaponFlags?) 268435968,
+                        PrimaryWeaponFlags = (WeaponFlags?)268435968,
                     },
                     new Item
                     {
@@ -304,7 +304,7 @@ namespace Crpg.Application.System.Commands
                         PrimaryThrustSpeed = 82,
                         PrimarySwingDamage = 0,
                         PrimarySwingSpeed = 82,
-                        PrimaryWeaponFlags = (WeaponFlags?) 268435968,
+                        PrimaryWeaponFlags = (WeaponFlags?)268435968,
                     },
                     new Item
                     {
@@ -321,7 +321,7 @@ namespace Crpg.Application.System.Commands
                         WeaponLength = 95,
                         PrimaryThrustDamage = 42,
                         PrimaryThrustSpeed = 110,
-                        PrimaryWeaponFlags = (WeaponFlags?) 2628626,
+                        PrimaryWeaponFlags = (WeaponFlags?)2628626,
                     },
                     new Item
                     {
@@ -338,7 +338,7 @@ namespace Crpg.Application.System.Commands
                         WeaponLength = 95,
                         PrimaryThrustDamage = 85,
                         PrimaryThrustSpeed = 85,
-                        PrimaryWeaponFlags = (WeaponFlags?) 2360338,
+                        PrimaryWeaponFlags = (WeaponFlags?)2360338,
                     },
                     new Item
                     {
@@ -352,7 +352,7 @@ namespace Crpg.Application.System.Commands
                         WeaponLength = 48,
                         PrimarySwingDamage = 66,
                         PrimarySwingSpeed = 99,
-                        PrimaryWeaponFlags = (WeaponFlags?) 65537,
+                        PrimaryWeaponFlags = (WeaponFlags?)65537,
                     },
                     new Item
                     {
@@ -368,7 +368,7 @@ namespace Crpg.Application.System.Commands
                         PrimaryThrustSpeed = 100,
                         PrimarySwingDamage = 90,
                         PrimarySwingSpeed = 90,
-                        PrimaryWeaponFlags = (WeaponFlags?) 2162705,
+                        PrimaryWeaponFlags = (WeaponFlags?)2162705,
                     },
                     new Item
                     {
@@ -385,7 +385,7 @@ namespace Crpg.Application.System.Commands
                         PrimaryThrustSpeed = 103,
                         PrimarySwingDamage = 113,
                         PrimarySwingSpeed = 85,
-                        PrimaryWeaponFlags = (WeaponFlags?) 2097233,
+                        PrimaryWeaponFlags = (WeaponFlags?)2097233,
                     },
                     new Item
                     {
@@ -405,12 +405,12 @@ namespace Crpg.Application.System.Commands
                         PrimaryThrustSpeed = 101,
                         PrimarySwingDamage = 0,
                         PrimarySwingSpeed = 126,
-                        PrimaryWeaponFlags = (WeaponFlags?) 19327881474,
+                        PrimaryWeaponFlags = (WeaponFlags?)19327881474,
                         SecondaryThrustDamage = 29,
                         SecondaryThrustSpeed = 101,
                         SecondarySwingDamage = 33,
                         SecondarySwingSpeed = 126,
-                        SecondaryWeaponFlags = (WeaponFlags?) 1
+                        SecondaryWeaponFlags = (WeaponFlags?)1
                     },
                     new Item
                     {
@@ -425,7 +425,7 @@ namespace Crpg.Application.System.Commands
                         MissileSpeed = 10,
                         StackAmount = 25,
                         WeaponLength = 97,
-                        PrimaryWeaponFlags = (WeaponFlags?) 21474836736,
+                        PrimaryWeaponFlags = (WeaponFlags?)21474836736,
                     },
                     new Item
                     {
@@ -440,9 +440,8 @@ namespace Crpg.Application.System.Commands
                         MissileSpeed = 10,
                         StackAmount = 20,
                         WeaponLength = 37,
-                        PrimaryWeaponFlags = (WeaponFlags?) 21474836864,
-                    }
-                );
+                        PrimaryWeaponFlags = (WeaponFlags?)21474836864,
+                    });
 
                 _db.Users.AddRange(
                     new User

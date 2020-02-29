@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Domain.Entities;
+using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters
 {
@@ -308,25 +308,25 @@ namespace Crpg.Application.UTest.Characters
             {
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
-                HeadItemId = itemType == ItemType.HeadArmor ? null : (int?) weapon.Entity.Id,
-                CapeItemId = itemType == ItemType.Cape ? null : (int?) head.Entity.Id,
-                BodyItemId = itemType == ItemType.BodyArmor ? null : (int?) cape.Entity.Id,
-                HandItemId = itemType == ItemType.HandArmor ? null : (int?) body.Entity.Id,
-                LegItemId = itemType == ItemType.LegArmor ? null : (int?) hand.Entity.Id,
-                HorseHarnessItemId = itemType == ItemType.HorseHarness ? null : (int?) leg.Entity.Id,
-                HorseItemId = itemType == ItemType.Horse ? null : (int?) horseHarness.Entity.Id,
+                HeadItemId = itemType == ItemType.HeadArmor ? null : (int?)weapon.Entity.Id,
+                CapeItemId = itemType == ItemType.Cape ? null : (int?)head.Entity.Id,
+                BodyItemId = itemType == ItemType.BodyArmor ? null : (int?)cape.Entity.Id,
+                HandItemId = itemType == ItemType.HandArmor ? null : (int?)body.Entity.Id,
+                LegItemId = itemType == ItemType.LegArmor ? null : (int?)hand.Entity.Id,
+                HorseHarnessItemId = itemType == ItemType.HorseHarness ? null : (int?)leg.Entity.Id,
+                HorseItemId = itemType == ItemType.Horse ? null : (int?)horseHarness.Entity.Id,
                 Weapon1ItemId = itemType == ItemType.Arrows || itemType == ItemType.Bolts || itemType == ItemType.Bow
                     ? null
-                    : (int?) horse.Entity.Id,
+                    : (int?)horse.Entity.Id,
                 Weapon2ItemId = itemType == ItemType.Crossbow || itemType == ItemType.OneHandedWeapon
                     ? null
-                    : (int?) head.Entity.Id,
+                    : (int?)head.Entity.Id,
                 Weapon3ItemId = itemType == ItemType.Polearm || itemType == ItemType.Shield
                     ? null
-                    : (int?) cape.Entity.Id,
+                    : (int?)cape.Entity.Id,
                 Weapon4ItemId = itemType == ItemType.Thrown || itemType == ItemType.TwoHandedWeapon
                     ? null
-                    : (int?) body.Entity.Id,
+                    : (int?)body.Entity.Id,
             };
 
             Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(cmd, CancellationToken.None));
