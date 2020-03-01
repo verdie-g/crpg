@@ -46,8 +46,8 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
-  setCharacterItem({ character, item, slot } : { character: Character, item: Item, slot: ItemSlot }) {
-    setCharacterItem(character, item, slot);
+  setCharacterItem({ character, slot, item } : { character: Character, slot: ItemSlot, item: Item }) {
+    setCharacterItem(character, slot, item);
   }
 
   @Mutation
@@ -67,8 +67,8 @@ class UserModule extends VuexModule {
   }
 
   @Action({ commit: 'replaceCharacter' })
-  replaceItem({ character, item, slot } : { character: Character, item: Item, slot: ItemSlot }) {
-    this.setCharacterItem({ character, item, slot });
+  replaceItem({ character, slot, item } : { character: Character, slot: ItemSlot, item: Item }) {
+    this.setCharacterItem({ character, slot, item });
     return userService.setItems(character.id, {
       headItemId: character.headItem !== null ? character.headItem!.id : null,
       capeItemId: character.capeItem !== null ? character.capeItem!.id : null,
