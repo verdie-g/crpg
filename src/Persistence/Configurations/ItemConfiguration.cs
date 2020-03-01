@@ -1,6 +1,6 @@
+using Crpg.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Crpg.Domain.Entities;
 
 namespace Crpg.Persistence.Configurations
 {

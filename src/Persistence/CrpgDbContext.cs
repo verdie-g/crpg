@@ -1,13 +1,12 @@
-using System;
 using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Npgsql;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Common;
 using Crpg.Domain.Common;
 using Crpg.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 namespace Crpg.Persistence
 {

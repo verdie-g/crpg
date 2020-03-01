@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml;
-using TaleWorlds.Core;
-using TaleWorlds.MountAndBlade;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
+using TaleWorlds.Core;
+using TaleWorlds.MountAndBlade;
 using WeaponFlags = Crpg.Domain.Entities.WeaponFlags;
 
 namespace Crpg.Cli
 {
-    class Program
+    internal class Program
     {
-        static async Task Main()
+        internal static async Task Main()
         {
             Directory.SetCurrentDirectory("XXXXX/MountAndBlade/bin/Win64_Shipping_Client");
             var objectItems = DeserializeItemObjects("../../Modules/Native/ModuleData/mpitems.xml");
@@ -71,7 +70,7 @@ namespace Crpg.Cli
                                     item.PrimarySwingSpeed = i.Weapons[0].SwingSpeed;
                                 }
 
-                                item.PrimaryWeaponFlags = (WeaponFlags?) i.Weapons[0].WeaponFlags;
+                                item.PrimaryWeaponFlags = (WeaponFlags?)i.Weapons[0].WeaponFlags;
 
                                 if (i.Weapons.Count > 1)
                                 {
@@ -87,7 +86,7 @@ namespace Crpg.Cli
                                         item.SecondarySwingSpeed = i.Weapons[1].SwingSpeed;
                                     }
 
-                                    item.SecondaryWeaponFlags = (WeaponFlags?) i.Weapons[1].WeaponFlags;
+                                    item.SecondaryWeaponFlags = (WeaponFlags?)i.Weapons[1].WeaponFlags;
                                 }
                             }
 
@@ -146,7 +145,7 @@ namespace Crpg.Cli
 
         private static DamageType? MBToCrpgDamageType(DamageTypes t)
         {
-            return t == DamageTypes.Invalid ? null : (DamageType?) t;
+            return t == DamageTypes.Invalid ? null : (DamageType?)t;
         }
 
         private static IEnumerable<ItemObject> DeserializeItemObjects(string path)
@@ -155,7 +154,9 @@ namespace Crpg.Cli
 
             var itemsDoc = new XmlDocument();
             using (var r = XmlReader.Create(path, new XmlReaderSettings { IgnoreComments = true }))
+            {
                 itemsDoc.Load(r);
+            }
 
             return itemsDoc
                    .LastChild

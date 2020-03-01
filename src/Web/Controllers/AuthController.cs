@@ -10,11 +10,10 @@ namespace Crpg.Web.Controllers
         /// <summary>
         /// Signs in through Steam.
         /// </summary>
-        /// <returns></returns>
         [HttpGet("signIn"), AllowAnonymous] // TODO: HttpPost
         public IActionResult SignIn([FromQuery] string redirectUri)
         {
-            return Challenge(new AuthenticationProperties {RedirectUri = redirectUri}, SteamAuthenticationDefaults.AuthenticationScheme);
+            return Challenge(new AuthenticationProperties { RedirectUri = redirectUri }, SteamAuthenticationDefaults.AuthenticationScheme);
         }
     }
 }

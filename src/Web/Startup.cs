@@ -7,6 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using AspNet.Security.OpenId.Steam;
 using AutoMapper;
+using Crpg.Application;
+using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Steam;
+using Crpg.Application.Users.Commands;
+using Crpg.Infrastructure;
+using Crpg.Persistence;
+using Crpg.Web.Common;
+using Crpg.Web.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -19,14 +27,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using Crpg.Application;
-using Crpg.Application.Common.Interfaces;
-using Crpg.Application.Steam;
-using Crpg.Application.Users.Commands;
-using Crpg.Infrastructure;
-using Crpg.Persistence;
-using Crpg.Web.Common;
-using Crpg.Web.Services;
 
 namespace Crpg.Web
 {
@@ -105,11 +105,13 @@ namespace Crpg.Web
                     .Append("<tr><th>Type</th><th>Lifetime</th><th>Instance</th></tr>")
                     .Append("</thead><tbody>");
                 foreach (var svc in _services.OrderBy(s => s.ServiceType.FullName))
+                {
                     sb.Append("<tr>")
                         .Append($"<td>{svc.ServiceType.FullName}</td>")
                         .Append($"<td>{svc.Lifetime}</td>")
                         .Append($"<td>{svc.ImplementationType?.FullName}</td>")
                         .Append("</tr>");
+                }
 
                 sb.Append("</tbody></table>");
                 await context.Response.WriteAsync(sb.ToString());
@@ -118,7 +120,7 @@ namespace Crpg.Web
 
         private void ConfigureSwagger(SwaggerGenOptions options)
         {
-            options.SwaggerDoc("v1", new OpenApiInfo {Title = "Crpg API", Version = "v1"});
+            options.SwaggerDoc("v1", new OpenApiInfo { Title = "Crpg API", Version = "v1" });
             string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             options.IncludeXmlComments(xmlPath);
