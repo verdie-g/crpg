@@ -77,7 +77,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import { isSignedIn, setToken, signOut } from './services/auth-service';
 
-  @Component
+@Component
 export default class App extends Vue {
   get isSignedIn() {
     return userModule.user !== null;
