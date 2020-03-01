@@ -4,7 +4,7 @@ import { get } from '@/services/crpg-client';
 import Item from '@/models/item';
 import ItemType from '@/models/item-type';
 import DamageType from '@/models/damage-type';
-import { ItemProperties } from '@/models/item-properties';
+import ItemProperties from '@/models/item-properties';
 import WeaponFlags from '@/models/weapon-flags';
 import ItemSlot from '@/models/item-slot';
 

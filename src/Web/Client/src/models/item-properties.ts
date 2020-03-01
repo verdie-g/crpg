@@ -1,4 +1,4 @@
-export class ItemProperties {
+export default class ItemProperties {
   common: [string, any][];
   primary?: [string, any][];
   secondary?: [string, any][];
