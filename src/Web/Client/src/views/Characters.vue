@@ -194,7 +194,7 @@ export default class Characters extends Vue {
     itemSlot = ItemSlot;
     isReplaceItemModalActive: boolean = false;
     itemToReplace: Item | null = null;
-    itemToReplaceSlot: ItemSlot | null;
+    itemToReplaceSlot: ItemSlot | null = null;
     selectedItem: Item | null = null;
 
     get characters() {
