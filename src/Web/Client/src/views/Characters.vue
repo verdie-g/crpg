@@ -99,38 +99,49 @@
             <div class="columns item-boxes">
               <div class="column is-narrow gear-column">
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)">
-                  <img src="../assets/head-armor.png" alt="Head armor" />
+                  <img v-if="selectedCharacter.headItem" :src="selectedCharacter.headItem.image" alt="Head armor" />
+                  <img v-else src="../assets/head-armor.png" alt="Head armor" class="item-placeholder" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Cape)">
-                  <img src="../assets/cape.png" alt="Cape" />
+                  <img v-if="selectedCharacter.capeItem" :src="selectedCharacter.capeItem.image" alt="Cape" />
+                  <img v-else src="../assets/cape.png" alt="Cape" class="item-placeholder" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)">
-                  <img src="../assets/body-armor.png" alt="Body armor" />
+                  <img v-if="selectedCharacter.bodyItem" :src="selectedCharacter.bodyItem.image" alt="Body armor" />
+                  <img v-else src="../assets/body-armor.png" alt="Body armor" class="item-placeholder" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)">
-                  <img src="../assets/hand-armor.png" alt="Hand armor" />
+                  <img v-if="selectedCharacter.handItem" :src="selectedCharacter.handItem.image" alt="Hand armor" />
+                  <img v-else src="../assets/hand-armor.png" alt="Hand armor" class="item-placeholder" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)">
-                  <img src="../assets/leg-armor.png" alt="Leg armor" />
+                  <img v-if="selectedCharacter.legItem" :src="selectedCharacter.legItem.image" alt="Leg armor" />
+                  <img v-else src="../assets/leg-armor.png" alt="Leg armor" class="item-placeholder" />
                 </div>
               </div>
 
               <div class="column is-narrow horse-column">
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.HorseHarness)">
-                  <img src="../assets/horse-harness.png" alt="Horse harness" />
+                  <img v-if="selectedCharacter.horseHarnessItem" :src="selectedCharacter.horseHarnessItem.image" alt="Horse harness" />
+                  <img v-else src="../assets/horse-harness.png" alt="Horse harness" class="item-placeholder" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Horse)">
+                  <img v-if="selectedCharacter.horseItem" :src="selectedCharacter.horseItem.image" alt="Horse" />
                 </div>
               </div>
 
               <div class="column is-narrow weapon-column">
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)">
+                  <img v-if="selectedCharacter.weapon1Item" :src="selectedCharacter.weapon1Item.image" alt="First weapon" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)">
+                  <img v-if="selectedCharacter.weapon2Item" :src="selectedCharacter.weapon2Item.image" alt="Second weapon" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)">
+                  <img v-if="selectedCharacter.weapon3Item" :src="selectedCharacter.weapon3Item.image" alt="Third weapon" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon4)">
+                  <img v-if="selectedCharacter.weapon4Item" :src="selectedCharacter.weapon4Item.image" alt="Fourth Weapon" />
                 </div>
               </div>
             </div>
@@ -143,7 +154,7 @@
                 <item-properties :item="itemToReplace" />
               </div>
               <div class="column">
-                <div class="columns is-multiline owned-items">
+                <div v-if="fittingOwnedItems.length" class="columns is-multiline owned-items">
                   <div class="column is-narrow owned-item" v-for="ownedItem in fittingOwnedItems" v-bind:key="ownedItem.id"
                        @click="selectedItem = ownedItem">
                     <figure class="image">
@@ -153,6 +164,7 @@
                     <item-properties :item="ownedItem" />
                   </div>
                 </div>
+                <div v-else>You don't own any item for this type.</div>
               </div>
               <div class="column" v-if="selectedItem">
                 <h3>Replace with <strong>{{selectedItem.name}}</strong></h3>
@@ -230,10 +242,6 @@ export default class Characters extends Vue {
       userModule.replaceItem({ character: this.selectedCharacter!, slot: this.itemToReplaceSlot!, item: this.selectedItem! });
       this.isReplaceItemModalActive = false;
     }
-
-    getItemProperties(item: Item) {
-      return getItemProperties(item);
-    }
 }
 </script>
 
@@ -254,8 +262,8 @@ export default class Characters extends Vue {
   .item-boxes {
     background-image: url("../assets/body-silhouette.svg");
     background-repeat: no-repeat;
-    background-size: 215px;
-    background-position: 138px 15px;
+    background-size: 190px;
+    background-position: 180px 0px;
     padding-bottom: 8px; // so the silhouette's feet ain't cropped
   }
 
@@ -268,12 +276,20 @@ export default class Characters extends Vue {
   }
 
   .item-box {
-    width: 100px;
-    height: 100px;
+    // item image dimensions / 2
+    width: 128px;
+    height: 60px;
+    padding: 0;
     cursor: pointer;
+    text-align: center; // to align horizontally placeholder
 
     &:hover {
       box-shadow: 0 5px 8px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    }
+
+    .item-placeholder {
+      margin-top: -3px; // because placeholder is 66 px in a 60px box
+      opacity: 0.3;
     }
   }
 
