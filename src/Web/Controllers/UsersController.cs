@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Crpg.Application.Characters;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Characters.Queries;
@@ -10,6 +9,7 @@ using Crpg.Application.Items.Models;
 using Crpg.Application.Items.Queries;
 using Crpg.Application.Users.Queries;
 using Crpg.Web.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Crpg.Web.Controllers
 {
@@ -56,7 +56,7 @@ namespace Crpg.Web.Controllers
         /// <response code="201">Created.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPost("self/characters")]
-        [ProducesResponseType((int) HttpStatusCode.Created)]
+        [ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<ActionResult<CharacterViewModel>> CreateCharacter([FromBody] CreateCharacterRequest req)
         {
             var cmd = new CreateCharacterCommand { Name = req.Name, UserId = CurrentUser.UserId.Value };
@@ -123,7 +123,7 @@ namespace Crpg.Web.Controllers
         /// <response code="204">Deleted.</response>
         /// <response code="404">Character not found.</response>
         [HttpDelete("self/characters/{id}")]
-        [ProducesResponseType((int) HttpStatusCode.NoContent)]
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public async Task<IActionResult> DeleteCharacter([FromRoute] int id)
         {
             await Mediator.Send(new DeleteCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId.Value });
@@ -149,7 +149,7 @@ namespace Crpg.Web.Controllers
         /// <response code="400">Bad Request.</response>
         /// <response code="404">Item was not found.</response>
         [HttpPost("self/items")]
-        [ProducesResponseType((int) HttpStatusCode.Created)]
+        [ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<ActionResult<ItemViewModel>> BuyItem([FromBody] BuyItemRequest req)
         {
             var cmd = new BuyItemCommand { ItemId = req.ItemId, UserId = CurrentUser.UserId.Value };
@@ -165,7 +165,7 @@ namespace Crpg.Web.Controllers
         /// <response code="400">Bad Request.</response>
         /// <response code="404">Item was not found.</response>
         [HttpDelete("self/items/{id}")]
-        [ProducesResponseType((int) HttpStatusCode.NoContent)]
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public async Task<IActionResult> SellUserItem([FromRoute] int id)
         {
             await Mediator.Send(new SellItemCommand { ItemId = id, UserId = CurrentUser.UserId.Value });

@@ -1,6 +1,6 @@
+using Crpg.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Crpg.Domain.Entities;
 
 namespace Crpg.Persistence.Configurations
 {
@@ -8,7 +8,7 @@ namespace Crpg.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<UserItem> builder)
         {
-            builder.HasKey(t => new {t.UserId, t.ItemId});
+            builder.HasKey(t => new { t.UserId, t.ItemId });
 
             builder
                 .HasOne(ui => ui.User).WithMany(u => u.UserItems)

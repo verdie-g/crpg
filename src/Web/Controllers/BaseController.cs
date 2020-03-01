@@ -1,9 +1,9 @@
 using System.Net.Mime;
+using Crpg.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using Crpg.Application.Common.Interfaces;
 
 namespace Crpg.Web.Controllers
 {

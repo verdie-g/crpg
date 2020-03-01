@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using Crpg.Application.Items.Commands;
 using Crpg.Application.Items.Models;
 using Crpg.Application.Items.Queries;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Crpg.Web.Controllers
 {
@@ -20,7 +20,7 @@ namespace Crpg.Web.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ItemViewModel>> GetItem([FromRoute] int id)
         {
-            return Ok(await Mediator.Send(new GetItemQuery {ItemId = id}));
+            return Ok(await Mediator.Send(new GetItemQuery { ItemId = id }));
         }
 
         /// <summary>
@@ -41,11 +41,11 @@ namespace Crpg.Web.Controllers
         /// <returns>The created item.</returns>
         /// <response code="201">Created.</response>
         [HttpPost, Authorize(Roles = "SuperAdmin")]
-        [ProducesResponseType((int) HttpStatusCode.Created)]
+        [ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<ActionResult<ItemViewModel>> CreateItem([FromBody] CreateItemsCommand cmd)
         {
             await Mediator.Send(cmd);
-            return StatusCode((int) HttpStatusCode.Created);
+            return StatusCode((int)HttpStatusCode.Created);
         }
 
         /// <summary>
@@ -55,10 +55,10 @@ namespace Crpg.Web.Controllers
         /// <response code="204">Deleted.</response>
         /// <response code="404">Item not found.</response>
         [HttpDelete("{id}"), Authorize(Roles = "SuperAdmin")]
-        [ProducesResponseType((int) HttpStatusCode.NoContent)]
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public async Task<IActionResult> DeleteItem([FromRoute] int id)
         {
-            await Mediator.Send(new DeleteItemCommand {ItemId = id});
+            await Mediator.Send(new DeleteItemCommand { ItemId = id });
             return NoContent();
         }
     }

@@ -1,8 +1,8 @@
+using Crpg.Application.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Crpg.Application.Common.Interfaces;
 
 namespace Crpg.Persistence
 {
