@@ -214,6 +214,6 @@ export function getItemProperties(item: Item) : ItemProperties {
   return props;
 }
 
-export function filerItemsFittingInSlot(items: Item[], slot: ItemSlot) : Item[] {
+export function filterItemsFittingInSlot(items: Item[], slot: ItemSlot) : Item[] {
   return items.filter(i => itemTypesBySlot[slot].includes(i.type));
 }

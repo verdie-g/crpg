@@ -207,7 +207,7 @@ import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
 import Item from '@/models/item';
 import { getCharacterItemFromSlot } from '@/services/characters-service';
-import { getItemProperties, filerItemsFittingInSlot } from '@/services/item-service';
+import { getItemProperties, filterItemsFittingInSlot } from '@/services/item-service';
 
   @Component
 export default class Characters extends Vue {
@@ -217,7 +217,7 @@ export default class Characters extends Vue {
     itemSlot = ItemSlot;
     isReplaceItemModalActive: boolean = false;
     itemToReplace: Item | null = null;
-    itemToReplaceSlot: ItemSlot;
+    itemToReplaceSlot: ItemSlot | null;
     selectedItem: Item | null = null;
 
     get characters() {
@@ -225,7 +225,9 @@ export default class Characters extends Vue {
     }
 
     get fittingOwnedItems() : Item[] {
-      return filerItemsFittingInSlot(userModule.ownedItems, this.itemToReplaceSlot);
+      return this.itemToReplaceSlot === null
+        ? []
+        : filterItemsFittingInSlot(userModule.ownedItems, this.itemToReplaceSlot);
     }
 
     created() {
@@ -248,7 +250,7 @@ export default class Characters extends Vue {
     }
 
     confirmItemSelection() {
-      userModule.replaceItem({ character: this.selectedCharacter!, item: this.selectedItem!, slot: this.itemToReplaceSlot });
+      userModule.replaceItem({ character: this.selectedCharacter!, slot: this.itemToReplaceSlot!, item: this.selectedItem! });
       this.isReplaceItemModalActive = false;
     }
 

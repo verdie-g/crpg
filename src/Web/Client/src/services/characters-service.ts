@@ -2,71 +2,62 @@ import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
 import Item from '@/models/item';
 
-export function getCharacterItemFromSlot(character: Character, slot: ItemSlot) : Item | null {
-  switch (slot) {
-    case ItemSlot.Head:
-      return character.headItem;
-    case ItemSlot.Cape:
-      return character.capeItem;
-    case ItemSlot.Body:
-      return character.bodyItem;
-    case ItemSlot.Hand:
-      return character.handItem;
-    case ItemSlot.Leg:
-      return character.legItem;
-    case ItemSlot.HorseHarness:
-      return character.horseHarnessItem;
-    case ItemSlot.Horse:
-      return character.horseItem;
-    case ItemSlot.Weapon1:
-      return character.weapon1Item;
-    case ItemSlot.Weapon2:
-      return character.weapon2Item;
-    case ItemSlot.Weapon3:
-      return character.weapon3Item;
-    case ItemSlot.Weapon4:
-      return character.weapon4Item;
-    default:
-      return null;
-  }
+class CharacterItemSlot {
+  public getItem: (character: Character) => Item | null;
+  public setItem: (character: Character, item: Item) => void;
 }
 
-export function setCharacterItem(character: Character, item: Item, slot: ItemSlot) {
-  switch (slot) {
-    case ItemSlot.Head:
-      character.headItem = item;
-      break;
-    case ItemSlot.Cape:
-      character.capeItem = item;
-      break;
-    case ItemSlot.Body:
-      character.bodyItem = item;
-      break;
-    case ItemSlot.Hand:
-      character.handItem = item;
-      break;
-    case ItemSlot.Leg:
-      character.legItem = item;
-      break;
-    case ItemSlot.HorseHarness:
-      character.horseHarnessItem = item;
-      break;
-    case ItemSlot.Horse:
-      character.horseItem = item;
-      break;
-    case ItemSlot.Weapon1:
-      character.weapon1Item = item;
-      break;
-    case ItemSlot.Weapon2:
-      character.weapon2Item = item;
-      break;
-    case ItemSlot.Weapon3:
-      character.weapon3Item = item;
-      break;
-    case ItemSlot.Weapon4:
-      character.weapon4Item = item;
-      break;
-    default:
-      break;
-  }
+const characterItemSlots: Record<ItemSlot, CharacterItemSlot> = {
+  [ItemSlot.Head]: {
+    getItem: character => character.headItem,
+    setItem: (character, item) => character.headItem = item,
+  },
+  [ItemSlot.Cape]: {
+    getItem: character => character.capeItem,
+    setItem: (character, item) => character.capeItem = item,
+  },
+  [ItemSlot.Body]: {
+    getItem: character => character.bodyItem,
+    setItem: (character, item) => character.bodyItem = item,
+  },
+  [ItemSlot.Hand]: {
+    getItem: character => character.handItem,
+    setItem: (character, item) => character.handItem = item,
+  },
+  [ItemSlot.Leg]: {
+    getItem: character => character.legItem,
+    setItem: (character, item) => character.legItem = item,
+  },
+  [ItemSlot.HorseHarness]: {
+    getItem: character => character.horseHarnessItem,
+    setItem: (character, item) => character.horseHarnessItem = item,
+  },
+  [ItemSlot.Horse]: {
+    getItem: character => character.horseItem,
+    setItem: (character, item) => character.horseItem = item,
+  },
+  [ItemSlot.Weapon1]: {
+    getItem: character => character.weapon1Item,
+    setItem: (character, item) => character.weapon1Item = item,
+  },
+  [ItemSlot.Weapon2]: {
+    getItem: character => character.weapon2Item,
+    setItem: (character, item) => character.weapon2Item = item,
+  },
+  [ItemSlot.Weapon3]: {
+    getItem: character => character.weapon3Item,
+    setItem: (character, item) => character.weapon3Item = item,
+  },
+  [ItemSlot.Weapon4]: {
+    getItem: character => character.weapon4Item,
+    setItem: (character, item) => character.weapon4Item = item,
+  },
+};
+
+export function getCharacterItemFromSlot(character: Character, slot: ItemSlot) : Item | null {
+  return characterItemSlots[slot].getItem(character);
+}
+
+export function setCharacterItem(character: Character, slot: ItemSlot, item: Item) {
+  return characterItemSlots[slot].setItem(character, item);
 }
