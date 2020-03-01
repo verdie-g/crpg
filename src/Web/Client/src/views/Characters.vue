@@ -139,7 +139,8 @@
           <b-modal :active.sync="isReplaceItemModalActive" scroll="keep">
             <div class="columns is-marginless replace-item-modal">
               <div class="column" v-if="itemToReplace">
-                <h3>Replace {{itemToReplace.name}}</h3>
+                <h3>Replace <strong>{{itemToReplace.name}}</strong></h3>
+                <item-properties :item="itemToReplace" />
               </div>
               <div class="column">
                 <div class="columns is-multiline owned-items">
@@ -149,42 +150,15 @@
                       <img :src="ownedItem.image" alt="item image" />
                     </figure>
                     <h4>{{ownedItem.name}}</h4>
-                    <p>
-                      Other<br />
-                      important<br />
-                      stuff
-                    </p>
+                    <item-properties :item="ownedItem" />
                   </div>
                 </div>
               </div>
               <div class="column" v-if="selectedItem">
                 <h3>Replace with <strong>{{selectedItem.name}}</strong></h3>
                 <div class="content">
-                  <div v-for="prop in getItemProperties(selectedItem).common">
-                    {{prop[0]}}: {{prop[1]}}
-                  </div>
-                  <b-tabs v-if="getItemProperties(selectedItem).primary" class="weapon-tabs">
-                    <b-tab-item label="Primary">
-                      <div v-for="prop in getItemProperties(selectedItem).primary">
-                        {{prop[0]}}: {{prop[1]}}<br />
-                      </div>
-                      <b-taglist class="flag-tags">
-                        <b-tag v-for="flag in getItemProperties(selectedItem).primaryFlags" type="is-info">{{flag}}</b-tag>
-                      </b-taglist>
-                    </b-tab-item>
-
-                    <b-tab-item label="Secondary" v-if="getItemProperties(selectedItem).secondary">
-                      <div v-for="prop in getItemProperties(selectedItem).secondary">
-                        {{prop[0]}}: {{prop[1]}}<br />
-                      </div>
-                      <b-taglist class="flag-tags">
-                        <b-tag v-for="flag in getItemProperties(selectedItem).secondaryFlags" type="is-info">{{flag}}</b-tag>
-                      </b-taglist>
-                    </b-tab-item>
-                  </b-tabs>
-
+                  <item-properties :item="selectedItem" />
                   <b-button size="is-medium" icon-left="check" expanded @click="confirmItemSelection" />
-
                 </div>
               </div>
             </div>
@@ -202,6 +176,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import ItemProperties from '@/components/ItemProperties.vue';
 import userModule from '@/store/user-module';
 import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
@@ -209,7 +184,9 @@ import Item from '@/models/item';
 import { getCharacterItemFromSlot } from '@/services/characters-service';
 import { getItemProperties, filterItemsFittingInSlot } from '@/services/item-service';
 
-  @Component
+@Component({
+  components: { ItemProperties },
+})
 export default class Characters extends Vue {
     selectedCharacter: Character | null = null;
 

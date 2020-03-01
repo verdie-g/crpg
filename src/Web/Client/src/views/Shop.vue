@@ -12,29 +12,7 @@
             <div class="card-content content">
               <h4>{{item.name}}</h4>
               <div class="content">
-                <div v-for="prop in getItemProperties(item).common">
-                  {{prop[0]}}: {{prop[1]}}
-                </div>
-                <b-tabs v-if="getItemProperties(item).primary" class="weapon-tabs">
-                  <b-tab-item label="Primary">
-                    <div v-for="prop in getItemProperties(item).primary">
-                      {{prop[0]}}: {{prop[1]}}<br />
-                    </div>
-                    <b-taglist class="flag-tags">
-                      <b-tag v-for="flag in getItemProperties(item).primaryFlags" type="is-info">{{flag}}</b-tag>
-                    </b-taglist>
-                  </b-tab-item>
-
-                  <b-tab-item label="Secondary" v-if="getItemProperties(item).secondary">
-                    <div v-for="prop in getItemProperties(item).secondary">
-                      {{prop[0]}}: {{prop[1]}}<br />
-                    </div>
-                    <b-taglist class="flag-tags">
-                      <b-tag v-for="flag in getItemProperties(item).secondaryFlags" type="is-info">{{flag}}</b-tag>
-                    </b-taglist>
-                  </b-tab-item>
-                </b-tabs>
-
+                <item-properties :item="item" />
               </div>
               <b-button icon-left="coins" expanded :disabled="item.value > gold || ownedItems[item.id]"
                         :loading="buyingItems[item.id]" @click="buy(item)"
@@ -51,13 +29,15 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import ItemProperties from '@/components/ItemProperties.vue';
 import userModule from '@/store/user-module';
 import itemModule from '@/store/item-module';
 import Item from '@/models/item';
 import { notify } from '@/services/notifications-service';
-import { getItemProperties } from '@/services/item-service';
 
-@Component
+@Component({
+  components: { ItemProperties },
+})
 export default class Shop extends Vue {
   // items for which buy request was sent
   buyingItems: Record<number, boolean> = {};
@@ -97,10 +77,6 @@ export default class Shop extends Vue {
     }
 
     return '';
-  }
-
-  getItemProperties(item: Item) {
-    return getItemProperties(item);
   }
 }
 </script>
