@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Domain.Entities;
@@ -16,8 +17,6 @@ namespace Crpg.Application.Items.Commands
 
         public class Handler : IRequestHandler<SellItemCommand>
         {
-            private const float SellRatio = 0.66f;
-
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
 
@@ -39,7 +38,7 @@ namespace Crpg.Application.Items.Commands
                     throw new NotFoundException(nameof(UserItem), request.UserId, request.ItemId);
                 }
 
-                userItem.User.Gold += (int)(userItem.Item.Value * SellRatio);
+                userItem.User.Gold += (int)(userItem.Item.Value * Constants.SellItemRatio);
                 _db.UserItems.Remove(userItem);
                 await _db.SaveChangesAsync(cancellationToken);
                 return Unit.Value;
