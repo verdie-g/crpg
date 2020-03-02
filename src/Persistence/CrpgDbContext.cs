@@ -1,10 +1,10 @@
-using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Common;
 using Crpg.Domain.Common;
 using Crpg.Domain.Entities;
+using Crpg.Persistence.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
@@ -60,7 +60,7 @@ namespace Crpg.Persistence
             }
             catch (DbUpdateConcurrencyException)
             {
-                throw new DBConcurrencyException();
+                throw new ConflictException();
             }
         }
 
