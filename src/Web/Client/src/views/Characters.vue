@@ -12,7 +12,7 @@
       </div>
 
       <div class="column">
-        <div class="columns" v-if="selectedCharacter">
+        <div class="columns container is-fluid" v-if="selectedCharacter">
 
           <div class="column content character-stats">
             <h1>{{selectedCharacter.name}}</h1>
