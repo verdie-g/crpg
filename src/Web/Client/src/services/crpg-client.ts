@@ -1,4 +1,4 @@
-import { getToken, signIn } from '@/services/auth-service';
+import { getToken, challenge } from '@/services/auth-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import { sleep } from '@/utils/promise';
 
@@ -16,7 +16,7 @@ async function send(method: string, path: string, body?: any): Promise<any> {
 
   if (res.status === 401) {
     notify('Session expired', NotificationType.Warning);
-    sleep(1000).then(() => signIn());
+    sleep(1000).then(() => challenge());
     return {};
   }
 

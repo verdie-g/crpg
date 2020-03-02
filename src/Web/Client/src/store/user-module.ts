@@ -11,9 +11,23 @@ import { setCharacterItem } from '@/services/characters-service';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
+  isSignedIn: boolean = false;
   user: User | null = null;
   ownedItems: Item[] = [];
   characters: Character[] = [];
+
+  @Mutation
+  signIn() {
+    this.isSignedIn = true;
+  }
+
+  @Mutation
+  signOut() {
+    this.isSignedIn = false;
+    this.user = null;
+    this.ownedItems = [];
+    this.characters = [];
+  }
 
   @Mutation
   setUser(user: User) {
@@ -23,11 +37,6 @@ class UserModule extends VuexModule {
   @Mutation
   substractGold(loss: number) {
     this.user!.gold -= loss;
-  }
-
-  @Mutation
-  resetUser() {
-    this.user = null;
   }
 
   @Mutation

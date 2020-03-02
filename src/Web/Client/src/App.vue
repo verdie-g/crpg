@@ -75,12 +75,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
-import { isSignedIn, setToken, signOut } from './services/auth-service';
+import { getToken, setToken, clearToken } from './services/auth-service';
 
 @Component
 export default class App extends Vue {
   get isSignedIn() {
-    return userModule.user !== null;
+    return userModule.isSignedIn;
   }
 
   get user() {
@@ -89,15 +89,15 @@ export default class App extends Vue {
 
   created() {
     this.handleAuthenticationCallback();
-
-    if (isSignedIn()) {
+    if (getToken() !== undefined) {
+      userModule.signIn();
       userModule.getUser();
     }
   }
 
   signOut() {
-    signOut();
-    userModule.resetUser();
+    clearToken();
+    userModule.signOut();
     if (this.$router.currentRoute.fullPath !== '/') {
       this.$router.push('/');
     }
