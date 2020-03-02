@@ -1,8 +1,17 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+import VueRouter, { NavigationGuard } from 'vue-router';
 import Home from '../views/Home.vue';
+import userModule from '@/store/user-module';
 
 Vue.use(VueRouter);
+
+const isSignedInGuard: NavigationGuard = (to, from, next) => {
+  if (!userModule.isSignedIn) {
+    next('/');
+  } else {
+    next();
+  }
+};
 
 const routes = [
   {
@@ -14,11 +23,13 @@ const routes = [
     path: '/characters',
     name: 'characters',
     component: () => import('../views/Characters.vue'),
+    beforeEnter: isSignedInGuard,
   },
   {
     path: '/shop',
     name: 'shop',
     component: () => import('../views/Shop.vue'),
+    beforeEnter: isSignedInGuard,
   },
 ];
 
