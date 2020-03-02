@@ -25,74 +25,76 @@
             <h2>Attributes (0)</h2>
             <p>
               <strong>Strength:</strong>
-              <b-icon icon="minus-square" size="is-small" />
+              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
               <span class="stats-value">28</span>
-              <b-icon icon="plus-square" size="is-small" /><br />
+              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
 
               <strong>Perception:</strong>
-              <b-icon icon="minus-square" size="is-small" />
+              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
               <span class="stats-value">14</span>
-              <b-icon icon="plus-square" size="is-small" /><br />
+              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
 
               <strong>Endurance:</strong>
-              <b-icon icon="minus-square" size="is-small" />
+              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
               <span class="stats-value">12</span>
-              <b-icon icon="plus-square" size="is-small" /><br />
+              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
             </p>
 
             <h2>Skills (0)</h2>
             <p>
               <!-- Mastery of fighting with one-handed weapons either with a shield or without. -->
               <strong>One Handed:</strong>
-              <b-icon icon="minus-square" size="is-small" />
+              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
               <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" /><br />
+              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
 
               <!-- Mastery of fighting with two-handed weapons of average length such as bigger axes and swords. -->
               <strong>Two Handed:</strong>
-              <b-icon icon="minus-square" size="is-small" />
+              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
               <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" /><br />
+              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
 
               <!-- Mastery of the spear, lance, staff and other polearms, both one-handed and two-handed. -->
               <strong>Polearm:</strong>
-              <b-icon icon="minus-square" size="is-small" />
+              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
               <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" /><br />
+              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
 
               <!-- Familiarity with bows and physical conditioning to shoot with them effectively. -->
               <strong>Bow:</strong>
-              <b-icon icon="minus-square" size="is-small" />
+              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
               <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" /><br />
+              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
 
               <!-- Mastery of throwing projectiles accurately and with power. -->
               <strong>Throwing:</strong>
-              <b-icon icon="minus-square" size="is-small" />
+              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
               <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" /><br />
+              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
 
               <!-- Knowledge of operating and maintaining crossbows. -->
               <strong>Crossbow:</strong>
-              <b-icon icon="minus-square" size="is-small" />
+              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
               <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" /><br />
+              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
 
               <!-- The ability to control a horse, to keep your balance when it moves suddenly or unexpectedly. -->
               <strong>Riding:</strong>
-              <b-icon icon="minus-square" size="is-small" />
+              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
               <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" /><br />
+              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
 
               <!-- Physical fitness, speed and balance. -->
               <strong>Athletics:</strong>
-              <b-icon icon="minus-square" size="is-small" />
+              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
               <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" />
+              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" />
             </p>
 
-            <b-button size="is-medium" icon-left="undo" title="Reset changes" />
-            <b-button size="is-medium" icon-left="check" title="Commit changes" />
+            <div class="stats-buttons">
+              <b-button size="is-medium" icon-left="undo" title="Reset changes" />
+              <b-button size="is-medium" icon-left="check" title="Commit changes" />
+            </div>
           </div>
 
           <div class="column character-items">
@@ -246,17 +248,28 @@ export default class Characters extends Vue {
 </script>
 
 <style scoped lang="scss">
+  $stats-name-width: 150px;
+  $stats-value-width: 40px;
+
   .character-stats {
     strong {
       display: inline-block;
-      width: 150px;
+      width: $stats-name-width;
     }
   }
 
   .stats-value {
     display: inline-block;
-    width: 40px;
+    width: $stats-value-width;
     text-align: center;
+  }
+
+  .stats-decrease-button, .stats-increase-button {
+    cursor: pointer;
+  }
+
+  .stats-buttons {
+    margin-left: $stats-name-width + 16 + ($stats-value-width / 2) - 45;
   }
 
   .item-boxes {
