@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Mime;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Persistence.Exceptions;
+using Crpg.Web.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
@@ -26,32 +28,37 @@ namespace Crpg.Web.Common
             }
             catch (ValidationException e)
             {
-                context.Response.ContentType = MediaTypeNames.Application.Json;
-                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                await context.Response.WriteAsync(JsonConvert.SerializeObject(e.Failures));
+                await WriteErrorResponse(context, HttpStatusCode.BadRequest, e.Message, e.Failures);
             }
             catch (BadRequestException e)
             {
-                context.Response.ContentType = MediaTypeNames.Application.Json;
-                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                await context.Response.WriteAsync(JsonConvert.SerializeObject(e.Message));
+                await WriteErrorResponse(context, HttpStatusCode.BadRequest, e.Message);
             }
             catch (NotFoundException e)
             {
-                context.Response.ContentType = MediaTypeNames.Application.Json;
-                context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                await context.Response.WriteAsync(JsonConvert.SerializeObject(e.Message));
+                await WriteErrorResponse(context, HttpStatusCode.NotFound, e.Message);
             }
             catch (ForbiddenException e)
             {
-                context.Response.ContentType = MediaTypeNames.Application.Json;
-                context.Response.StatusCode = (int)HttpStatusCode.Forbidden;
-                await context.Response.WriteAsync(JsonConvert.SerializeObject(e.Message));
+                await WriteErrorResponse(context, HttpStatusCode.Forbidden, e.Message);
             }
-            catch (ConflictException)
+            catch (ConflictException e)
             {
                 context.Response.StatusCode = (int)HttpStatusCode.Conflict;
+                await WriteErrorResponse(context, HttpStatusCode.Forbidden, e.Message);
             }
+        }
+
+        private Task WriteErrorResponse(HttpContext ctx, HttpStatusCode status, string error,
+            IDictionary<string, string[]> details = null)
+        {
+            ctx.Response.ContentType = MediaTypeNames.Application.Json;
+            ctx.Response.StatusCode = (int)status;
+            return ctx.Response.WriteAsync(JsonConvert.SerializeObject(new ErrorResponse
+            {
+                Error = error,
+                Details = details,
+            }));
         }
     }
 
