@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -11,7 +12,7 @@ namespace Crpg.Application.Items.Commands
 {
     public class CreateItemsCommand : IRequest
     {
-        public IReadOnlyList<ItemCreation> Items { get; set; }
+        public IReadOnlyList<ItemCreation> Items { get; set; } = Array.Empty<ItemCreation>();
 
         public class Handler : IRequestHandler<CreateItemsCommand>
         {

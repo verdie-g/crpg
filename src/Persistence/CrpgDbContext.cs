@@ -12,7 +12,7 @@ namespace Crpg.Persistence
 {
     public class CrpgDbContext : DbContext, ICrpgDbContext
     {
-        private readonly IDateTime _dateTime;
+        private readonly IDateTime? _dateTime;
 
         static CrpgDbContext()
         {
@@ -32,10 +32,10 @@ namespace Crpg.Persistence
             _dateTime = dateTime;
         }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Character> Characters { get; set; }
-        public DbSet<Item> Items { get; set; }
-        public DbSet<UserItem> UserItems { get; set; }
+        public DbSet<User> Users { get; set; } = default!;
+        public DbSet<Character> Characters { get; set; } = default!;
+        public DbSet<Item> Items { get; set; } = default!;
+        public DbSet<UserItem> UserItems { get; set; } = default!;
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -45,12 +45,12 @@ namespace Crpg.Persistence
             {
                 if (entry.State == EntityState.Added)
                 {
-                    entry.Entity.LastModifiedAt = _dateTime.Now;
-                    entry.Entity.CreatedAt = _dateTime.Now;
+                    entry.Entity.LastModifiedAt = _dateTime!.Now;
+                    entry.Entity.CreatedAt = _dateTime!.Now;
                 }
                 else if (entry.State == EntityState.Modified)
                 {
-                    entry.Entity.LastModifiedAt = _dateTime.Now;
+                    entry.Entity.LastModifiedAt = _dateTime!.Now;
                 }
             }
 

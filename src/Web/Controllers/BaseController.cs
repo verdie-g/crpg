@@ -14,8 +14,8 @@ namespace Crpg.Web.Controllers
     [Produces(MediaTypeNames.Application.Json)]
     public abstract class BaseController : ControllerBase
     {
-        private IMediator _mediator;
-        private ICurrentUserService _currentUser;
+        private IMediator? _mediator;
+        private ICurrentUserService? _currentUser;
 
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
         protected ICurrentUserService CurrentUser => _currentUser ??= HttpContext.RequestServices.GetService<ICurrentUserService>();

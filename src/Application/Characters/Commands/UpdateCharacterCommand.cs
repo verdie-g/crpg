@@ -14,7 +14,7 @@ namespace Crpg.Application.Characters.Commands
     {
         public int CharacterId { get; set; }
         public int UserId { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         public class Validator : AbstractValidator<UpdateCharacterCommand>
         {

@@ -9,7 +9,7 @@ namespace Crpg.Persistence.Exceptions
         {
         }
 
-        public ConflictException(Exception innerException)
+        public ConflictException(Exception? innerException)
             : base("Conflict detected", innerException)
         {
         }

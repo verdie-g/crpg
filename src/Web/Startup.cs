@@ -34,7 +34,7 @@ namespace Crpg.Web
     {
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _environment;
-        private IServiceCollection _services;
+        private IServiceCollection? _services;
 
         public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
@@ -104,7 +104,7 @@ namespace Crpg.Web
                     .Append("<table><thead>")
                     .Append("<tr><th>Type</th><th>Lifetime</th><th>Instance</th></tr>")
                     .Append("</thead><tbody>");
-                foreach (var svc in _services.OrderBy(s => s.ServiceType.FullName))
+                foreach (var svc in _services!.OrderBy(s => s.ServiceType.FullName))
                 {
                     sb.Append("<tr>")
                         .Append($"<td>{svc.ServiceType.FullName}</td>")

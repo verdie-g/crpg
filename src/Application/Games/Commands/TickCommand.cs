@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -11,7 +12,7 @@ namespace Crpg.Application.Games.Commands
 {
     public class TickCommand : IRequest<TickResponse>
     {
-        public IReadOnlyList<UserTick> Users { get; set; }
+        public IReadOnlyList<UserTick> Users { get; set; } = Array.Empty<UserTick>();
 
         public class Handler : IRequestHandler<TickCommand, TickResponse>
         {
@@ -37,7 +38,7 @@ namespace Crpg.Application.Games.Commands
                 foreach (var character in dbCharacters)
                 {
                     var tick = tickByCharacterId[character.Id];
-                    character.User.Gold += tick.GoldGain;
+                    character.User!.Gold += tick.GoldGain;
                     character.Experience += tick.ExperienceGain;
                     int newLevel = ExperienceTable.GetLevelForExperience(character.Experience);
                     if (character.Level != newLevel) // if user leveled up

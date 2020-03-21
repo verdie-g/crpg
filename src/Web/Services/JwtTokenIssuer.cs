@@ -42,7 +42,7 @@ namespace Crpg.Web.Services
 
     public class JwtConfiguration
     {
-        public string Secret { get; set; }
+        public string Secret { get; set; } = string.Empty;
         public TimeSpan Lifetime { get; set; }
     }
 }

@@ -8,10 +8,10 @@ namespace Crpg.Web.Services
     {
         public CurrentUserService(IHttpContextAccessor httpContextAccessor)
         {
-            string idStr = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            UserId = idStr == null ? null : (int?)int.Parse(idStr);
+            string? idStr = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+            UserId = idStr == null ? -1 : int.Parse(idStr);
         }
 
-        public int? UserId { get; }
+        public int UserId { get; }
     }
 }
