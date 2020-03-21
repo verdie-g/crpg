@@ -38,7 +38,7 @@ namespace Crpg.Application.Items.Commands
                     throw new NotFoundException(nameof(UserItem), request.UserId, request.ItemId);
                 }
 
-                userItem.User.Gold += (int)(userItem.Item.Value * Constants.SellItemRatio);
+                userItem.User!.Gold += (int)(userItem.Item!.Value * Constants.SellItemRatio);
                 _db.UserItems.Remove(userItem);
                 await _db.SaveChangesAsync(cancellationToken);
                 return Unit.Value;

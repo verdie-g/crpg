@@ -5,9 +5,9 @@ namespace Crpg.Application.Items.Models
 {
     public class ItemCreation
     {
-        public string MbId { get; set; }
-        public string Name { get; set; }
-        public Uri Image { get; set; }
+        public string MbId { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public Uri Image { get; set; } = default!;
         public int Value { get; set; }
         public ItemType Type { get; set; }
         public float Weight { get; set; }

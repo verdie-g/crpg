@@ -22,7 +22,7 @@ namespace Crpg.Web.Controllers
         [HttpGet("self")]
         public async Task<IActionResult> GetSelfUser()
         {
-            return Ok(await Mediator.Send(new GetUserQuery { UserId = CurrentUser.UserId.Value }));
+            return Ok(await Mediator.Send(new GetUserQuery { UserId = CurrentUser.UserId }));
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Crpg.Web.Controllers
         public async Task<ActionResult<CharacterViewModel>> GetUserCharacter([FromRoute] int id)
         {
             return Ok(await Mediator.Send(new GetUserCharacterQuery
-                { CharacterId = id, UserId = CurrentUser.UserId.Value }));
+                { CharacterId = id, UserId = CurrentUser.UserId }));
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Crpg.Web.Controllers
         [HttpGet("self/characters")]
         public async Task<ActionResult<IReadOnlyList<CharacterViewModel>>> GetUserCharactersList()
         {
-            return Ok(await Mediator.Send(new GetUserCharactersListQuery { UserId = CurrentUser.UserId.Value }));
+            return Ok(await Mediator.Send(new GetUserCharactersListQuery { UserId = CurrentUser.UserId }));
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Crpg.Web.Controllers
         [ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<ActionResult<CharacterViewModel>> CreateCharacter([FromBody] CreateCharacterRequest req)
         {
-            var cmd = new CreateCharacterCommand { Name = req.Name, UserId = CurrentUser.UserId.Value };
+            var cmd = new CreateCharacterCommand { Name = req.Name, UserId = CurrentUser.UserId };
             var character = await Mediator.Send(cmd);
             return CreatedAtAction(nameof(GetUserCharacter), new { id = character.Id }, character);
         }
@@ -79,7 +79,7 @@ namespace Crpg.Web.Controllers
             var cmd = new UpdateCharacterCommand
             {
                 CharacterId = id,
-                UserId = CurrentUser.UserId.Value,
+                UserId = CurrentUser.UserId,
                 Name = req.Name,
             };
             return Ok(await Mediator.Send(cmd));
@@ -100,7 +100,7 @@ namespace Crpg.Web.Controllers
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = id,
-                UserId = CurrentUser.UserId.Value,
+                UserId = CurrentUser.UserId,
                 HeadItemId = req.HeadItemId,
                 CapeItemId = req.CapeItemId,
                 BodyItemId = req.BodyItemId,
@@ -126,7 +126,7 @@ namespace Crpg.Web.Controllers
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public async Task<IActionResult> DeleteCharacter([FromRoute] int id)
         {
-            await Mediator.Send(new DeleteCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId.Value });
+            await Mediator.Send(new DeleteCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId });
             return NoContent();
         }
 
@@ -136,7 +136,7 @@ namespace Crpg.Web.Controllers
         [HttpGet("self/items")]
         public async Task<ActionResult<IReadOnlyList<ItemViewModel>>> GetOwnedItems()
         {
-            var query = new GetUserItemsQuery { UserId = CurrentUser.UserId.Value };
+            var query = new GetUserItemsQuery { UserId = CurrentUser.UserId };
             return Ok(await Mediator.Send(query));
         }
 
@@ -152,7 +152,7 @@ namespace Crpg.Web.Controllers
         [ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<ActionResult<ItemViewModel>> BuyItem([FromBody] BuyItemRequest req)
         {
-            var cmd = new BuyItemCommand { ItemId = req.ItemId, UserId = CurrentUser.UserId.Value };
+            var cmd = new BuyItemCommand { ItemId = req.ItemId, UserId = CurrentUser.UserId };
             var item = await Mediator.Send(cmd);
             return CreatedAtAction(nameof(ItemsController.GetItem), "Items", new { id = item.Id }, item);
         }
@@ -168,7 +168,7 @@ namespace Crpg.Web.Controllers
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public async Task<IActionResult> SellUserItem([FromRoute] int id)
         {
-            await Mediator.Send(new SellItemCommand { ItemId = id, UserId = CurrentUser.UserId.Value });
+            await Mediator.Send(new SellItemCommand { ItemId = id, UserId = CurrentUser.UserId });
             return NoContent();
         }
     }

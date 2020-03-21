@@ -14,7 +14,7 @@ namespace Crpg.Application.Characters.Commands
     public class CreateCharacterCommand : IRequest<CharacterViewModel>
     {
         public int UserId { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         public class Validator : AbstractValidator<CreateCharacterCommand>
         {

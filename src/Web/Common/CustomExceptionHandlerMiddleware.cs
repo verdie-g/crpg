@@ -50,7 +50,7 @@ namespace Crpg.Web.Common
         }
 
         private Task WriteErrorResponse(HttpContext ctx, HttpStatusCode status, string error,
-            IDictionary<string, string[]> details = null)
+            IDictionary<string, string[]>? details = null)
         {
             ctx.Response.ContentType = MediaTypeNames.Application.Json;
             ctx.Response.StatusCode = (int)status;

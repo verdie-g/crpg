@@ -8,20 +8,20 @@ namespace Crpg.Application.Steam
         public long SteamId { get; set; }
         public CommunityVisibilityState CommunityVisibilityState { get; set; }
         public int ProfileState { get; set; }
-        public string PersonaName { get; set; }
+        public string PersonaName { get; set; } = string.Empty;
         public long LastLogoff { get; set; }
         public bool CommentPermission { get; set; }
-        public string ProfileUrl { get; set; }
-        public Uri Avatar { get; set; }
-        public Uri AvatarMedium { get; set; }
-        public Uri AvatarFull { get; set; }
+        public string ProfileUrl { get; set; } = string.Empty;
+        public Uri Avatar { get; set; } = default!;
+        public Uri AvatarMedium { get; set; } = default!;
+        public Uri AvatarFull { get; set; } = default!;
         public OnlineStatus PersonaState { get; set; }
-        public string RealName { get; set; }
+        public string RealName { get; set; } = string.Empty;
         public long PrimaryClanId { get; set; }
         public long TimeCreated { get; set; }
         public int PersonAStateFlags { get; set; }
-        public string LocCountryCode { get; set; }
-        public string LocStateCode { get; set; }
+        public string LocCountryCode { get; set; } = string.Empty;
+        public string LocStateCode { get; set; } = string.Empty;
         public long LocCityId { get; set; }
     }
 

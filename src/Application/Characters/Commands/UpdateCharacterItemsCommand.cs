@@ -99,7 +99,7 @@ namespace Crpg.Application.Characters.Commands
                 character.Weapon4Item = GetItemWithChecks(request.Weapon4ItemId, WeaponTypes, itemsById);
             }
 
-            private Item GetItemWithChecks(int? id, IEnumerable<ItemType> expectedTypes,
+            private Item? GetItemWithChecks(int? id, IEnumerable<ItemType> expectedTypes,
                 Dictionary<int, Item> itemsById)
             {
                 if (id == null)

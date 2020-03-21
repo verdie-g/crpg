@@ -6,7 +6,7 @@ namespace Crpg.Domain.Entities
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         public int Experience { get; set; }
         public int Level { get; set; }
 
@@ -23,17 +23,17 @@ namespace Crpg.Domain.Entities
         public int? Weapon3ItemId { get; set; }
         public int? Weapon4ItemId { get; set; }
 
-        public User User { get; set; }
-        public Item HeadItem { get; set; }
-        public Item CapeItem { get; set; }
-        public Item BodyItem { get; set; }
-        public Item HandItem { get; set; }
-        public Item LegItem { get; set; }
-        public Item HorseHarnessItem { get; set; }
-        public Item HorseItem { get; set; }
-        public Item Weapon1Item { get; set; }
-        public Item Weapon2Item { get; set; }
-        public Item Weapon3Item { get; set; }
-        public Item Weapon4Item { get; set; }
+        public User? User { get; set; }
+        public Item? HeadItem { get; set; }
+        public Item? CapeItem { get; set; }
+        public Item? BodyItem { get; set; }
+        public Item? HandItem { get; set; }
+        public Item? LegItem { get; set; }
+        public Item? HorseHarnessItem { get; set; }
+        public Item? HorseItem { get; set; }
+        public Item? Weapon1Item { get; set; }
+        public Item? Weapon2Item { get; set; }
+        public Item? Weapon3Item { get; set; }
+        public Item? Weapon4Item { get; set; }
     }
 }

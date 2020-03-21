@@ -7,15 +7,17 @@ namespace Crpg.Domain.Entities
     public class Item : AuditableEntity
     {
         public int Id { get; set; }
+
         /// <summary>
         /// Item id in Mount and Blade.
         /// </summary>
-        public string MbId { get; set; }
-        public string Name { get; set; }
+        public string MbId { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+
         /// <summary>
         /// 256x120
         /// </summary>
-        public Uri Image { get; set; }
+        public Uri Image { get; set; } = default!;
         public ItemType Type { get; set; }
         public int Value { get; set; }
         public float Weight { get; set; }
@@ -54,6 +56,6 @@ namespace Crpg.Domain.Entities
         public int? SecondarySwingSpeed { get; set; }
         public WeaponFlags? SecondaryWeaponFlags { get; set; }
 
-        public List<UserItem> UserItems { get; set; }
+        public List<UserItem> UserItems { get; set; } = new List<UserItem>();
     }
 }

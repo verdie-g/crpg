@@ -5,7 +5,7 @@ namespace Crpg.Domain.Entities
         public int UserId { get; set; }
         public int ItemId { get; set; }
 
-        public User User { get; set; }
-        public Item Item { get; set; }
+        public User? User { get; set; }
+        public Item? Item { get; set; }
     }
 }
