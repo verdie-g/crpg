@@ -1,6 +1,6 @@
 const TOKEN_KEY = 'token';
 const REDIRECT_URI = window.location.origin;
-const API_BASE_URI = 'http://localhost:5000/api';
+const API_BASE_URI = 'http://localhost:8000/api';
 
 export function getToken(): string | undefined {
   return localStorage[TOKEN_KEY];

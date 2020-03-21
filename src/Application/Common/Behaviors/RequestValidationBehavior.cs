@@ -6,7 +6,7 @@ using FluentValidation;
 using MediatR;
 using ValidationException = Crpg.Application.Common.Exceptions.ValidationException;
 
-namespace Crpg.Application.Common.Behaviours
+namespace Crpg.Application.Common.Behaviors
 {
     public class RequestValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
             where TRequest : IRequest<TResponse>
