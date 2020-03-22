@@ -4,7 +4,7 @@
       <div class="column is-narrow is-paddingless" style="width: 200px;">
         <div class="list is-hoverable">
           <a class="list-item" v-for="character in characters" v-bind:key="character.id"
-             v-bind:class="{ 'is-active': character === selectedCharacter }" @click="selectCharacter(character)">
+             v-bind:class="{ 'is-active': selectedCharacter && character.id === selectedCharacter.id }" @click="selectCharacter(character)">
             <p class="title is-5">{{character.name}}</p>
             <p class="subtitle is-6">Level {{character.level}}</p>
           </a>
