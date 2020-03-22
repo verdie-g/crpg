@@ -10,10 +10,11 @@ export function setToken(token: string) {
   localStorage[TOKEN_KEY] = token;
 }
 
-export function challenge() {
-  window.location.href = `${API_BASE_URI}/auth/signIn?redirectUri=${encodeURIComponent(REDIRECT_URI)}`;
-}
-
 export function clearToken() {
   localStorage.removeItem(TOKEN_KEY);
+}
+
+export function challenge() {
+  clearToken();
+  window.location.href = `${API_BASE_URI}/auth/signIn?redirectUri=${encodeURIComponent(REDIRECT_URI)}`;
 }
