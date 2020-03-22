@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import VueRouter, { NavigationGuard } from 'vue-router';
+import { getToken } from '@/services/auth-service';
 import Home from '../views/Home.vue';
-import userModule from '@/store/user-module';
 
 Vue.use(VueRouter);
 
 const isSignedInGuard: NavigationGuard = (to, from, next) => {
-  if (!userModule.isSignedIn) {
+  if (getToken() === undefined) {
     next('/');
   } else {
     next();
