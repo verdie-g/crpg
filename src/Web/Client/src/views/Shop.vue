@@ -14,12 +14,14 @@
               <div class="content">
                 <item-properties :item="item" />
               </div>
+            </div>
+            <footer class="card-footer">
               <b-button icon-left="coins" expanded :disabled="item.value > gold || ownedItems[item.id]"
                         :loading="buyingItems[item.id]" @click="buy(item)"
                         :title="buyButtonTitle(item)">
                 {{item.value}}
               </b-button>
-            </div>
+            </footer>
           </div>
         </div>
       </div>
@@ -87,7 +89,23 @@ export default class Shop extends Vue {
 }
 
 .item-card {
+  display: flex;
+  flex-direction: column;
   width: 256px;
+  height: 100%;
+
+  .card-content {
+    margin-bottom: 0;
+  }
+
+  .card-footer {
+    margin-top: auto;
+
+    button {
+      border: none;
+      border-radius: unset;
+    }
+  }
 }
 
 .flag-tags {
