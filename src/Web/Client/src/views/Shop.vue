@@ -1,8 +1,8 @@
 <template>
   <section class="section">
     <div class="container">
-      <div class="columns is-multiline items" v-if="items">
-        <div class="column is-narrow" v-for="item in items" v-bind:key="item.id">
+      <div class="columns is-multiline items" v-if="pageItems">
+        <div class="column is-narrow" v-for="item in pageItems" v-bind:key="item.id">
           <div class="card item-card">
             <div class="card-image">
               <figure class="image">
@@ -25,6 +25,8 @@
           </div>
         </div>
       </div>
+
+      <b-pagination :total="allItems.length" :current.sync="currentPage" :per-page="itemsPerPage"  order="is-centered" />
     </div>
   </section>
 </template>
@@ -44,6 +46,10 @@ export default class Shop extends Vue {
   // items for which buy request was sent
   buyingItems: Record<number, boolean> = {};
 
+  // pagination
+  itemsPerPage = 20;
+  currentPage = 1;
+
   // items owned by the user
   get ownedItems(): Record<number, boolean> {
     return userModule.ownedItems.reduce((res: Record<number, boolean>, i: Item) => { res[i.id] = true; return res; }, {});
@@ -53,8 +59,18 @@ export default class Shop extends Vue {
     return userModule.user == null ? 0 : userModule.user.gold;
   }
 
-  get items() {
+  get allItems() {
     return itemModule.items;
+  }
+
+  get pageItems() {
+    if (!this.allItems) {
+      return [];
+    }
+
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.allItems.slice(startIndex, endIndex);
   }
 
   created() {
