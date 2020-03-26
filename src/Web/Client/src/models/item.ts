@@ -36,11 +36,13 @@ export default class Item {
   public primaryThrustSpeed?: number;
   public primarySwingDamage?: number;
   public primarySwingSpeed?: number;
+  public primaryHandling?: number;
   public primaryWeaponFlags?: WeaponFlags;
 
   public secondaryThrustDamage?: number;
   public secondaryThrustSpeed?: number;
   public secondarySwingDamage?: number;
   public secondarySwingSpeed?: number;
+  public secondaryHandling?: number;
   public secondaryWeaponFlags?: WeaponFlags;
 }

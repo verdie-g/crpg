@@ -37,12 +37,14 @@ namespace Crpg.Application.Items.Models
         public int? PrimaryThrustSpeed { get; set; }
         public int? PrimarySwingDamage { get; set; }
         public int? PrimarySwingSpeed { get; set; }
+        public int? PrimaryHandling { get; set; }
         public WeaponFlags? PrimaryWeaponFlags { get; set; }
 
         public int? SecondaryThrustDamage { get; set; }
         public int? SecondaryThrustSpeed { get; set; }
         public int? SecondarySwingDamage { get; set; }
         public int? SecondarySwingSpeed { get; set; }
+        public int? SecondaryHandling { get; set; }
         public WeaponFlags? SecondaryWeaponFlags { get; set; }
     }
 }

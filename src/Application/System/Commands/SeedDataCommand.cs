@@ -228,7 +228,7 @@ namespace Crpg.Application.System.Commands
                         ChargeDamage = 2,
                         Maneuver = 62,
                         Speed = 43,
-                        HitPoints = 0,
+                        HitPoints = 200,
                     },
                     new Item
                     {
@@ -242,7 +242,7 @@ namespace Crpg.Application.System.Commands
                         ChargeDamage = 2,
                         Maneuver = 68,
                         Speed = 45,
-                        HitPoints = 0,
+                        HitPoints = 200,
                     },
                     new Item
                     {
@@ -256,7 +256,7 @@ namespace Crpg.Application.System.Commands
                         ChargeDamage = 13,
                         Maneuver = 65,
                         Speed = 40,
-                        HitPoints = 0,
+                        HitPoints = 235,
                     },
                     new Item
                     {
@@ -266,6 +266,7 @@ namespace Crpg.Application.System.Commands
                         Value = 78,
                         Type = ItemType.Shield,
                         Weight = 4.7f,
+                        BodyArmor = 5,
                         StackAmount = 170,
                         WeaponLength = 70,
                         PrimaryThrustDamage = 5,
@@ -282,6 +283,7 @@ namespace Crpg.Application.System.Commands
                         Value = 134,
                         Type = ItemType.Shield,
                         Weight = 4.7f,
+                        BodyArmor = 25,
                         StackAmount = 120,
                         WeaponLength = 60,
                         PrimaryThrustDamage = 0,
@@ -298,6 +300,7 @@ namespace Crpg.Application.System.Commands
                         Value = 119,
                         Type = ItemType.Shield,
                         Weight = 4.7f,
+                        BodyArmor = 15,
                         StackAmount = 160,
                         WeaponLength = 90,
                         PrimaryThrustDamage = 0,
@@ -352,6 +355,7 @@ namespace Crpg.Application.System.Commands
                         WeaponLength = 48,
                         PrimarySwingDamage = 66,
                         PrimarySwingSpeed = 99,
+                        PrimaryHandling = 102,
                         PrimaryWeaponFlags = (WeaponFlags?)65537,
                     },
                     new Item
@@ -368,6 +372,7 @@ namespace Crpg.Application.System.Commands
                         PrimaryThrustSpeed = 100,
                         PrimarySwingDamage = 90,
                         PrimarySwingSpeed = 90,
+                        PrimaryHandling = 78,
                         PrimaryWeaponFlags = (WeaponFlags?)2162705,
                     },
                     new Item
@@ -385,7 +390,32 @@ namespace Crpg.Application.System.Commands
                         PrimaryThrustSpeed = 103,
                         PrimarySwingDamage = 113,
                         PrimarySwingSpeed = 85,
+                        PrimaryHandling = 83,
                         PrimaryWeaponFlags = (WeaponFlags?)2097233,
+                    },
+                    new Item
+                    {
+                      MbId = "mp_khuzait_glaive",
+                      Name = "Glaive",
+                      Image = new Uri("https://via.placeholder.com/256x120?text=mp_khuzait_glaive"),
+                      Value = 150,
+                      Type = ItemType.Polearm,
+                      Weight = 1.23f,
+                      ThrustDamageType = DamageType.Pierce,
+                      SwingDamageType = DamageType.Cut,
+                      WeaponLength = 149,
+                      PrimaryThrustDamage = 32,
+                      PrimaryThrustSpeed = 91,
+                      PrimarySwingDamage = 48,
+                      PrimarySwingSpeed = 52,
+                      PrimaryHandling = 76,
+                      PrimaryWeaponFlags = (WeaponFlags?)65,
+                      SecondaryThrustDamage = 38,
+                      SecondaryThrustSpeed = 99,
+                      SecondarySwingDamage = 106,
+                      SecondarySwingSpeed = 77,
+                      SecondaryHandling = 75,
+                      SecondaryWeaponFlags = (WeaponFlags?)2097233
                     },
                     new Item
                     {
@@ -405,11 +435,13 @@ namespace Crpg.Application.System.Commands
                         PrimaryThrustSpeed = 101,
                         PrimarySwingDamage = 0,
                         PrimarySwingSpeed = 126,
+                        PrimaryHandling = 116,
                         PrimaryWeaponFlags = (WeaponFlags?)19327881474,
                         SecondaryThrustDamage = 29,
                         SecondaryThrustSpeed = 101,
                         SecondarySwingDamage = 33,
                         SecondarySwingSpeed = 126,
+                        SecondaryHandling = 116,
                         SecondaryWeaponFlags = (WeaponFlags?)1
                     },
                     new Item
