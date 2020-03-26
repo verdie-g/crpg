@@ -52,11 +52,13 @@ namespace Crpg.Application.Items.Commands
                     PrimaryThrustSpeed = i.PrimaryThrustSpeed,
                     PrimarySwingDamage = i.PrimarySwingDamage,
                     PrimarySwingSpeed = i.PrimarySwingSpeed,
+                    PrimaryHandling = i.PrimaryHandling,
                     PrimaryWeaponFlags = i.PrimaryWeaponFlags,
                     SecondaryThrustDamage = i.SecondaryThrustDamage,
                     SecondaryThrustSpeed = i.SecondaryThrustSpeed,
                     SecondarySwingDamage = i.SecondarySwingDamage,
                     SecondarySwingSpeed = i.SecondarySwingSpeed,
+                    SecondaryHandling = i.SecondaryHandling,
                     SecondaryWeaponFlags = i.SecondaryWeaponFlags,
                 }));
                 await _db.SaveChangesAsync(cancellationToken);

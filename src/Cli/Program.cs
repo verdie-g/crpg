@@ -46,7 +46,7 @@ namespace Crpg.Cli
                                 item.ChargeDamage = i.HorseComponent.ChargeDamage;
                                 item.Maneuver = i.HorseComponent.Maneuver;
                                 item.Speed = i.HorseComponent.Speed;
-                                item.HitPoints = i.HorseComponent.HitPoints;
+                                item.HitPoints = 200 + i.HorseComponent.HitPoints + i.HorseComponent.HitPointBonus;
                             }
 
                             if (i.WeaponComponent != null)
@@ -57,6 +57,7 @@ namespace Crpg.Cli
                                 item.MissileSpeed = i.Weapons[0].MissileSpeed;
                                 item.StackAmount = i.Weapons[0].MaxDataValue;
                                 item.WeaponLength = i.Weapons[0].WeaponLength;
+                                item.BodyArmor = i.Weapons[0].BodyArmor;
 
                                 if (item.ThrustDamageType != null)
                                 {
@@ -70,6 +71,7 @@ namespace Crpg.Cli
                                     item.PrimarySwingSpeed = i.Weapons[0].SwingSpeed;
                                 }
 
+                                item.PrimaryHandling = i.Weapons[0].Handling;
                                 item.PrimaryWeaponFlags = (WeaponFlags?)i.Weapons[0].WeaponFlags;
 
                                 if (i.Weapons.Count > 1)
@@ -86,13 +88,14 @@ namespace Crpg.Cli
                                         item.SecondarySwingSpeed = i.Weapons[1].SwingSpeed;
                                     }
 
+                                    item.SecondaryHandling = i.Weapons[1].Handling;
                                     item.SecondaryWeaponFlags = (WeaponFlags?)i.Weapons[1].WeaponFlags;
                                 }
                             }
 
                             return item;
                         })
-                        .OrderBy(i => i.Type)
+                        .OrderBy(i => i.Value)
                         .ToArray();
 
             await using var f = File.Create("../../mpitems.json");

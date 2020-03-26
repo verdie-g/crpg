@@ -196,7 +196,7 @@ import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
 import Item from '@/models/item';
 import { getCharacterItemFromSlot } from '@/services/characters-service';
-import { getItemProperties, filterItemsFittingInSlot } from '@/services/item-service';
+import { getItemDescriptor, filterItemsFittingInSlot } from '@/services/item-service';
 
 @Component({
   components: { ItemProperties },

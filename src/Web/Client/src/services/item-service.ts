@@ -4,7 +4,7 @@ import { get } from '@/services/crpg-client';
 import Item from '@/models/item';
 import ItemType from '@/models/item-type';
 import DamageType from '@/models/damage-type';
-import ItemProperties from '@/models/item-properties';
+import { ItemDescriptor } from '@/models/item-descriptor';
 import WeaponFlags from '@/models/weapon-flags';
 import ItemSlot from '@/models/item-slot';
 
@@ -73,6 +73,46 @@ const itemTypesBySlot: Record<ItemSlot, ItemType[]> = {
   [ItemSlot.Weapon4]: weaponTypes,
 };
 
+function getDamageFields(item: Item, primary: boolean): [string, any][] {
+  const fields: [string, any][] = [];
+
+  if (primary) {
+    if (item.primarySwingSpeed !== null) {
+      fields.push(
+        ['Swing Spd.', item.primarySwingSpeed],
+        ['Swing Dmg.', item.primarySwingDamage],
+        ['Swing Dmg. Type', damageTypeToStr[item.swingDamageType!]],
+      );
+    }
+
+    if (item.primaryThrustSpeed !== null) {
+      fields.push(
+        ['Thrust Spd.', item.primaryThrustSpeed],
+        ['Thrust Dmg.', item.primaryThrustDamage],
+        ['Thrust Dmg. Type', damageTypeToStr[item.thrustDamageType!]],
+      );
+    }
+  } else {
+    if (item.secondarySwingSpeed !== null) {
+      fields.push(
+        ['Swing Spd.', item.secondarySwingSpeed],
+        ['Swing Dmg.', item.secondarySwingDamage],
+        ['Swing Dmg. Type', damageTypeToStr[item.swingDamageType!]],
+      );
+    }
+
+    if (item.secondaryThrustSpeed !== null) {
+      fields.push(
+        ['Thrust Spd.', item.secondaryThrustSpeed],
+        ['Thrust Dmg.', item.secondaryThrustDamage],
+        ['Thrust Dmg. Type', damageTypeToStr[item.thrustDamageType!]],
+      );
+    }
+  }
+
+  return fields;
+}
+
 function getWeaponFlags(flags: WeaponFlags): string[] {
   return Object.entries<string>(weaponFlagsStr)
     .filter(([flag, _]) => (flags & flag as any) !== 0)
@@ -83,22 +123,24 @@ export function getItems(): Promise<Item[]> {
   return get('/items');
 }
 
-export function getItemProperties(item: Item) : ItemProperties {
-  const props = new ItemProperties();
-  props.common = [
-    ['Type', itemTypeToStr[item.type]],
-    ['Weight', item.weight],
-  ];
+export function getItemDescriptor(item: Item) : ItemDescriptor {
+  const props: ItemDescriptor = {
+    fields: [
+      ['Type', itemTypeToStr[item.type]],
+      ['Weight', item.weight],
+    ],
+    modes: [],
+  };
 
   switch (item.type) {
     case ItemType.HeadArmor:
-      props.common.push(['Head Armor', item.headArmor]);
+      props.fields.push(['Head Armor', item.headArmor]);
       break;
     case ItemType.Cape:
-      props.common.push(['Body Armor', item.bodyArmor]);
+      props.fields.push(['Body Armor', item.bodyArmor]);
       break;
     case ItemType.BodyArmor:
-      props.common.push(
+      props.fields.push(
         ['Head Armor', item.headArmor],
         ['Body Armor', item.bodyArmor],
         ['Arm Armor', item.armArmor],
@@ -106,103 +148,104 @@ export function getItemProperties(item: Item) : ItemProperties {
       );
       break;
     case ItemType.HandArmor:
-      props.common.push(['Arm Armor', item.armArmor]);
+      props.fields.push(['Arm Armor', item.armArmor]);
       break;
     case ItemType.LegArmor:
-      props.common.push(['Leg Armor', item.legArmor]);
+      props.fields.push(['Leg Armor', item.legArmor]);
       break;
     case ItemType.HorseHarness:
-      props.common.push(['Body Armor', item.bodyArmor]);
+      props.fields.push(['Body Armor', item.bodyArmor]);
       break;
     case ItemType.Horse:
-      props.common.push(
+      props.fields.push(
         ['Charge Dmg.', item.chargeDamage],
         ['Speed', item.speed],
         ['Maneuver', item.maneuver],
         ['Hit Points', item.hitPoints],
-        ['Horse Armor', 0], // TODO
       );
       break;
     case ItemType.Shield:
-      props.common.push(
-        ['Hit Points', item.stackAmount],
+      props.fields.push(
+        ['Speed', item.primarySwingSpeed],
+        ['Durability', item.stackAmount],
+        ['Armor', item.bodyArmor],
         ['Length', item.weaponLength],
       );
       break;
     case ItemType.Bow:
     case ItemType.Crossbow:
-      props.common.push(
-        ['Length', item.weaponLength],
-        ['Damage', item.primaryThrustDamage],
-        ['Damage Type', damageTypeToStr[item.thrustDamageType!]],
-        ['Fire Rate', item.primaryThrustSpeed],
-        ['Accuracy', item.accuracy],
-        ['Missile Spd.', item.missileSpeed],
-      );
-      props.primaryFlags = getWeaponFlags(item.primaryWeaponFlags!);
+      props.modes.push({
+        name: 'One Handed',
+        fields: [
+          ['Length', item.weaponLength],
+          ['Damage', item.primaryThrustDamage],
+          ['Damage Type', damageTypeToStr[item.thrustDamageType!]],
+          ['Fire Rate', item.primaryThrustSpeed],
+          ['Accuracy', item.accuracy],
+          ['Missile Spd.', item.missileSpeed],
+        ],
+        flags: getWeaponFlags(item.primaryWeaponFlags!),
+      });
       break;
     case ItemType.OneHandedWeapon:
-      props.common.push(['Length', item.weaponLength]);
-      props.primary = [
-        ['Swing Spd.', item.primarySwingSpeed],
-        ['Swing Dmg.', item.primarySwingDamage],
-        ['Swing Dmg. Type', damageTypeToStr[item.swingDamageType!]],
-        ['Thrust Spd.', item.primaryThrustSpeed],
-        ['Thrust Dmg.', item.primaryThrustDamage],
-        ['Thrust Dmg. Type', damageTypeToStr[item.thrustDamageType!]],
-      ];
-      props.primaryFlags = getWeaponFlags(item.primaryWeaponFlags!);
+      props.fields.push(['Length', item.weaponLength]);
+      props.modes.push({
+        name: 'One Handed',
+        fields: [
+          ...getDamageFields(item, true),
+          ['Handling', item.primaryHandling],
+        ],
+        flags: getWeaponFlags(item.primaryWeaponFlags!),
+      });
       break;
     case ItemType.TwoHandedWeapon:
     case ItemType.Polearm:
-      props.common.push(['Length', item.weaponLength]);
-      props.primary = [
-        ['Swing Spd.', item.primarySwingSpeed],
-        ['Swing Dmg.', item.primarySwingDamage],
-        ['Swing Dmg. Type', damageTypeToStr[item.swingDamageType!]],
-        ['Thrust Spd.', item.primaryThrustSpeed],
-        ['Thrust Dmg.', item.primaryThrustDamage],
-        ['Thrust Dmg. Type', damageTypeToStr[item.thrustDamageType!]],
-      ];
-      props.secondary = [
-        ['Swing Spd.', item.secondarySwingSpeed],
-        ['Swing Dmg.', item.secondarySwingDamage],
-        ['Swing Dmg. Type', damageTypeToStr[item.swingDamageType!]],
-        ['Thrust Spd.', item.secondaryThrustSpeed],
-        ['Thrust Dmg.', item.secondaryThrustDamage],
-        ['Thrust Dmg. Type', damageTypeToStr[item.thrustDamageType!]],
-      ];
-      props.primaryFlags = getWeaponFlags(item.primaryWeaponFlags!);
-      props.secondaryFlags = getWeaponFlags(item.secondaryWeaponFlags!);
+      props.fields.push(['Length', item.weaponLength]);
+      props.modes.push({
+        name: 'Two Handed',
+        fields: [
+          ...getDamageFields(item, true),
+          ['Handling', item.primaryHandling],
+        ],
+        flags: getWeaponFlags(item.primaryWeaponFlags!),
+      });
+      if (item.secondarySwingDamage !== null) {
+        props.modes.push({
+          name: 'One H.',
+          fields: [
+            ...getDamageFields(item, false),
+            ['Handling', item.primaryHandling],
+          ],
+          flags: getWeaponFlags(item.secondaryWeaponFlags!),
+        });
+      }
       break;
     case ItemType.Thrown:
-      props.common.push(['Length', item.weaponLength]);
-      props.primary = [
-        ['Swing Spd.', item.primarySwingSpeed],
-        ['Swing Dmg.', item.primarySwingDamage],
-        ['Swing Dmg. Type', damageTypeToStr[item.swingDamageType!]],
-        ['Thrust Spd.', item.primaryThrustSpeed],
-        ['Thrust Dmg.', item.primaryThrustDamage],
-        ['Thrust Dmg. Type', damageTypeToStr[item.thrustDamageType!]],
-        ['Accuracy', item.accuracy],
-        ['Stack Amount', item.stackAmount],
-        ['Missile Spd.', item.missileSpeed],
-      ];
-      props.secondary = [
-        ['Swing Spd.', item.secondarySwingSpeed],
-        ['Swing Dmg.', item.secondarySwingDamage],
-        ['Swing Dmg. Type', damageTypeToStr[item.swingDamageType!]],
-        ['Thrust Spd.', item.secondaryThrustSpeed],
-        ['Thrust Dmg.', item.secondaryThrustDamage],
-        ['Thrust Dmg. Type', damageTypeToStr[item.thrustDamageType!]],
-      ];
-      props.primaryFlags = getWeaponFlags(item.primaryWeaponFlags!);
-      props.secondaryFlags = getWeaponFlags(item.secondaryWeaponFlags!);
+      props.fields.push(['Length', item.weaponLength]);
+      props.modes.push({
+        name: 'Thrown',
+        fields: [
+          ...getDamageFields(item, true),
+          ['Fire Rate', item.missileSpeed],
+          ['Accuracy', item.accuracy],
+          ['Stack Amnt.', item.stackAmount],
+        ],
+        flags: getWeaponFlags(item.primaryWeaponFlags!),
+      });
+
+      props.modes.push({
+        name: 'One handed',
+        fields: [
+          ...getDamageFields(item, false),
+          ['Handling', item.primaryHandling],
+        ],
+        flags: getWeaponFlags(item.secondaryWeaponFlags!),
+      });
       break;
     case ItemType.Arrows:
     case ItemType.Bolts:
-      props.common.push(
-        ['Stack Amount', item.stackAmount],
+      props.fields.push(
+        ['Ammo', item.stackAmount],
         ['Missile Spd.', item.missileSpeed],
         ['Length', item.weaponLength],
       );

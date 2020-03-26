@@ -117,6 +117,7 @@ export default class Shop extends Vue {
 <style lang="scss">
 .weapon-tabs {
   .tabs ul {
+    margin-top: 0;
     margin-left: 0;
   }
 
