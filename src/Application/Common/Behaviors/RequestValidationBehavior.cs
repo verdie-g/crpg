@@ -18,7 +18,7 @@ namespace Crpg.Application.Common.Behaviors
             _validators = validators;
         }
 
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
+        public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
             RequestHandlerDelegate<TResponse> next)
         {
             var context = new ValidationContext(request);
@@ -34,7 +34,7 @@ namespace Crpg.Application.Common.Behaviors
                 throw new ValidationException(failures);
             }
 
-            return await next();
+            return next();
         }
     }
 }
