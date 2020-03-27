@@ -53,6 +53,8 @@ namespace Crpg.Application.Games.Commands
                     }
                 }
 
+                await _db.SaveChangesAsync(cancellationToken);
+
                 return new TickResponse { Users = tickUserResponse };
             }
         }
