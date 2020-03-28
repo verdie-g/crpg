@@ -80,11 +80,13 @@ namespace Crpg.Application.UTest.Characters
             Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(cmd, CancellationToken.None));
         }
 
-        [Test]
-        public void BadName()
+        [TestCase("")]
+        [TestCase("a")]
+        [TestCase("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
+        public void BadName(string name)
         {
             var validator = new UpdateCharacterCommand.Validator();
-            var res = validator.Validate(new UpdateCharacterCommand { Name = "" });
+            var res = validator.Validate(new UpdateCharacterCommand { Name = name });
             Assert.AreEqual(1, res.Errors.Count);
         }
     }
