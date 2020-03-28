@@ -15,6 +15,7 @@ namespace Crpg.Application
                 .AddMediatR(Assembly.GetExecutingAssembly())
                 .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestMetricBehavior<,>))
                 .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>))
+                .AddSingleton(typeof(RequestMetrics<>))
                 .AddValidatorsFromAssemblyContaining(typeof(DependencyInjection));
 
             return services;
