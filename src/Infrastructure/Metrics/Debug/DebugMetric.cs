@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using Crpg.Application.Common.Interfaces.Metrics;
 using Microsoft.Extensions.Logging;
 
@@ -6,17 +9,19 @@ namespace Crpg.Infrastructure.Metrics.Debug
     internal class DebugMetric : ICount, IHistogram, IGauge
     {
         private readonly string _name;
+        private readonly string _tagsStr;
         private readonly ILogger _logger;
 
-        public DebugMetric(string name, ILogger logger)
+        public DebugMetric(string name, IList<string>? tags, ILogger logger)
         {
             _name = name;
+            _tagsStr = tags != null ? string.Join(',', tags) : string.Empty;
             _logger = logger;
         }
 
-        public void Record(double value) => _logger.LogDebug($"{_name} record {value}");
-        public void Increment(long delta) => _logger.LogDebug($"{_name} increment by {delta}");
-        public void Decrement(long delta) => _logger.LogDebug($"{_name} decrement by {delta}");
+        public void Record(double value) => _logger.LogDebug($"{_name}[{_tagsStr}] record {value}");
+        public void Increment(long delta) => _logger.LogDebug($"{_name}[{_tagsStr}] increment by {delta}");
+        public void Decrement(long delta) => _logger.LogDebug($"{_name}[{_tagsStr}] decrement by {delta}");
         public void Dispose() { }
     }
 }

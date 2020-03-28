@@ -14,9 +14,12 @@ namespace Crpg.Infrastructure.Metrics.Debug
             _logger = logger;
         }
 
-        public ICount CreateCount(string metricName, IList<string>? tags = null) => new DebugMetric(metricName, _logger);
-        public IHistogram CreateHistogram(string metricName, double sampleRate = 1, IList<string>? tags = null) => new DebugMetric(metricName, _logger);
-        public IGauge CreateGauge(string metricName, Func<double> evaluator, IList<string>? tags = null) => new DebugMetric(metricName, _logger);
+        public ICount CreateCount(string metricName, IList<string>? tags = null) =>
+            new DebugMetric(metricName, tags, _logger);
+        public IHistogram CreateHistogram(string metricName, double sampleRate = 1, IList<string>? tags = null) =>
+            new DebugMetric(metricName, tags, _logger);
+        public IGauge CreateGauge(string metricName, Func<double> evaluator, IList<string>? tags = null) =>
+            new DebugMetric(metricName, tags, _logger);
         public void Dispose() { }
     }
 }
