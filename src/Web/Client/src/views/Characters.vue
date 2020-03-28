@@ -15,7 +15,11 @@
         <div class="columns container is-fluid" v-if="selectedCharacter">
 
           <div class="column content character-stats">
-            <h1>{{selectedCharacter.name}}</h1>
+            <div class="character-name">
+              <h1>{{selectedCharacter.name}}</h1>
+              <b-icon icon="pencil-alt" class="character-name-edit" @click.native="openEditCharacterDialog" />
+            </div>
+
             <p>
               <strong>Level:</strong> {{selectedCharacter.level}}<br />
               <strong>Experience:</strong> {{selectedCharacter.experience}}<br />
@@ -196,13 +200,14 @@ import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
 import Item from '@/models/item';
 import { getCharacterItemFromSlot } from '@/services/characters-service';
-import { getItemDescriptor, filterItemsFittingInSlot } from '@/services/item-service';
+import { filterItemsFittingInSlot } from '@/services/item-service';
+import { notify } from '@/services/notifications-service';
 
 @Component({
   components: { ItemProperties },
 })
 export default class Characters extends Vue {
-    selectedCharacter: Character | null = null;
+    selectedCharacterId: number | null = null;
 
     // modal stuff
     itemSlot = ItemSlot;
@@ -215,6 +220,10 @@ export default class Characters extends Vue {
       return userModule.characters;
     }
 
+    get selectedCharacter() {
+      return this.characters.find(c => c.id === this.selectedCharacterId);
+    }
+
     get fittingOwnedItems() : Item[] {
       return this.itemToReplaceSlot === null
         ? []
@@ -222,11 +231,27 @@ export default class Characters extends Vue {
     }
 
     created() {
-      userModule.getCharacters().then(c => this.selectedCharacter = c.length > 0 ? c[0] : null);
+      userModule.getCharacters().then(c => this.selectedCharacterId = c.length > 0 ? c[0].id : null);
     }
 
     selectCharacter(character: Character) {
-      this.selectedCharacter = character;
+      this.selectedCharacterId = character.id;
+    }
+
+    openEditCharacterDialog() {
+      this.$buefy.dialog.prompt({
+        message: 'New name',
+        inputAttrs: {
+          value: this.selectedCharacter!.name,
+          minlength: 2,
+          maxlength: 32,
+        },
+        trapFocus: true,
+        onConfirm: (newName) => {
+          userModule.renameCharacter({ character: this.selectedCharacter!, newName });
+          notify('Character renamed');
+        },
+      });
     }
 
     openReplaceItemModal(slot: ItemSlot) {
@@ -250,6 +275,22 @@ export default class Characters extends Vue {
 <style scoped lang="scss">
   $stats-name-width: 150px;
   $stats-value-width: 40px;
+
+  .character-name {
+    display: flex;
+
+    .character-name-edit {
+      margin-left: 8px;
+      display: none;
+      cursor: pointer;
+    }
+
+    &:hover {
+      .character-name-edit {
+        display: inline;
+      }
+    }
+  }
 
   .character-stats {
     strong {

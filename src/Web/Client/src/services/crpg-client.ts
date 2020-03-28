@@ -20,9 +20,14 @@ async function send(method: string, path: string, body?: any): Promise<any> {
     return {};
   }
 
-  if (!res.ok) {
+  if (res.status >= 500) {
     notify('Server error', NotificationType.Error);
     throw new Error('Server error');
+  }
+
+  if (res.status >= 400) {
+    notify('Bad Request', NotificationType.Warning);
+    throw new Error(await res.json());
   }
 
   return res.json();

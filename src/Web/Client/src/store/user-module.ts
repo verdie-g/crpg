@@ -75,10 +75,19 @@ class UserModule extends VuexModule {
     return userService.getOwnedItems();
   }
 
+  @Action
+  renameCharacter({ character, newName } : { character: Character, newName: string }) {
+    this.replaceCharacter({
+      ...character,
+      name: newName,
+    });
+    return userService.updateCharacter(character.id, { name: newName });
+  }
+
   @Action({ commit: 'replaceCharacter' })
   replaceItem({ character, slot, item } : { character: Character, slot: ItemSlot, item: Item }) {
     this.setCharacterItem({ character, slot, item });
-    return userService.setItems(character.id, {
+    return userService.updateItems(character.id, {
       headItemId: character.headItem !== null ? character.headItem!.id : null,
       capeItemId: character.capeItem !== null ? character.capeItem!.id : null,
       bodyItemId: character.bodyItem !== null ? character.bodyItem!.id : null,

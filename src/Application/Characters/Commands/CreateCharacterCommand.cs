@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Domain.Entities;
@@ -20,7 +21,9 @@ namespace Crpg.Application.Characters.Commands
         {
             public Validator()
             {
-                RuleFor(c => c.Name).NotEmpty();
+                RuleFor(c => c.Name)
+                    .MinimumLength(Constants.MinimumCharacterNameLength)
+                    .MaximumLength(Constants.MaximumCharacterNameLength);
             }
         }
 
