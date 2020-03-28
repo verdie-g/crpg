@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <nav v-if="isSignedIn" style="margin-bottom: 25px">
+    <nav v-if="isSignedIn">
       <b-navbar fixed-top>
         <template slot="brand">
           <b-navbar-item tag="router-link" :to="{ path: '/' }">cRPG</b-navbar-item>

@@ -2,7 +2,7 @@
   <div class="section">
     <div class="columns">
       <div class="column is-narrow is-paddingless" style="width: 200px;">
-        <div class="list is-hoverable">
+        <div class="list is-hoverable" v-if="characters.length">
           <a class="list-item" v-for="character in characters" v-bind:key="character.id"
              v-bind:class="{ 'is-active': selectedCharacter && character.id === selectedCharacter.id }" @click="selectCharacter(character)">
             <p class="title is-5">{{character.name}}</p>
@@ -151,6 +151,10 @@
                 </div>
               </div>
             </div>
+
+            <b-button type="is-warning" icon-left="angle-double-down" expanded disabled>Respecialize</b-button>
+            <b-button type="is-warning" icon-left="baby" expanded disabled>Retire</b-button>
+            <b-button type="is-danger" icon-left="trash" expanded @click="openDeleteCharacterDialog">Delete</b-button>
           </div>
 
           <b-modal :active.sync="isReplaceItemModalActive" scroll="keep">
@@ -185,7 +189,7 @@
         </div>
 
         <div v-else> <!-- if no character -->
-          Explain how to create a character
+          To create a character, simply connect to one of the cRPG servers.
         </div>
       </div>
     </div>
@@ -207,7 +211,7 @@ import { notify } from '@/services/notifications-service';
   components: { ItemProperties },
 })
 export default class Characters extends Vue {
-    selectedCharacterId: number | null = null;
+    selectedCharacterId: number = -1;
 
     // modal stuff
     itemSlot = ItemSlot;
@@ -220,8 +224,10 @@ export default class Characters extends Vue {
       return userModule.characters;
     }
 
-    get selectedCharacter() {
-      return this.characters.find(c => c.id === this.selectedCharacterId);
+    get selectedCharacter(): Character | null {
+      return this.selectedCharacterId === -1
+        ? null
+        : this.characters.find(c => c.id === this.selectedCharacterId)!;
     }
 
     get fittingOwnedItems() : Item[] {
@@ -231,7 +237,7 @@ export default class Characters extends Vue {
     }
 
     created() {
-      userModule.getCharacters().then(c => this.selectedCharacterId = c.length > 0 ? c[0].id : null);
+      userModule.getCharacters().then(c => this.selectedCharacterId = c.length > 0 ? c[0].id : -1);
     }
 
     selectCharacter(character: Character) {
@@ -252,6 +258,20 @@ export default class Characters extends Vue {
           notify('Character renamed');
         },
       });
+    }
+
+    openDeleteCharacterDialog() {
+      this.$buefy.dialog.confirm({
+        title: 'Deleting character',
+        message: `Are you sure you want to delete your character ${this.selectedCharacter!.name} lvl. ${this.selectedCharacter!.level}? This action cannot be undone.`,
+        confirmText: 'Delete Character',
+        type: 'is-danger',
+        hasIcon: true,
+        onConfirm: () => {
+          userModule.deleteCharacter(this.selectedCharacter!);
+          notify('Character deleted');
+        },
+      })
     }
 
     openReplaceItemModal(slot: ItemSlot) {
