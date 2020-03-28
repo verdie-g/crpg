@@ -65,6 +65,11 @@ class UserModule extends VuexModule {
     this.characters.splice(idx, 1, character);
   }
 
+  @Mutation removeCharacter(character: Character) {
+    const idx = this.characters.findIndex(c => c.id === character.id);
+    this.characters.splice(idx, 1);
+  }
+
   @Action({ commit: 'setUser' })
   getUser() {
     return userService.getUser();
@@ -112,6 +117,12 @@ class UserModule extends VuexModule {
   @Action({ commit: 'setCharacters' })
   getCharacters() : Promise<Character[]> {
     return userService.getCharacters();
+  }
+
+  @Action
+  deleteCharacter(character: Character): Promise<void> {
+    this.removeCharacter(character);
+    return userService.deleteCharacter(character.id);
   }
 }
 

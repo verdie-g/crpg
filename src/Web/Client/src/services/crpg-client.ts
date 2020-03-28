@@ -30,7 +30,7 @@ async function send(method: string, path: string, body?: any): Promise<any> {
     throw new Error(await res.json());
   }
 
-  return res.json();
+  return res.status !== 204 ? res.json() : {};
 }
 
 export function get(path: string): Promise<any> {

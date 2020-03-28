@@ -3,7 +3,7 @@ import Character from '@/models/character';
 import Item from '@/models/item';
 import { UpdateCharacterItemsRequest } from '@/models/update-character-items-request';
 import { UpdateCharacterRequest } from '@/models/update-character-request';
-import { get, post, put } from './crpg-client';
+import { get, post, put, del } from './crpg-client';
 
 export function getUser(): Promise<User> {
   return get('/users/self');
@@ -15,6 +15,10 @@ export function getOwnedItems(): Promise<Item[]> {
 
 export function updateCharacter(characterId: number, req: UpdateCharacterRequest) {
   return put(`/users/self/characters/${characterId}`, req);
+}
+
+export function deleteCharacter(characterId: number) {
+  return del(`/users/self/characters/${characterId}`);
 }
 
 export function updateItems(characterId: number, req: UpdateCharacterItemsRequest): Promise<Character> {
