@@ -14,5 +14,11 @@ namespace Crpg.Web.Controllers
         {
             return Ok(await Mediator.Send(tick));
         }
+
+        [HttpPut("characters")]
+        public async Task<ActionResult<GameCharacter>> GetOrCreateCharacter([FromBody] UpsertGameCharacterCommand cmd)
+        {
+            return Ok(await Mediator.Send(cmd));
+        }
     }
 }
