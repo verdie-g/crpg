@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces.Metrics;
+using Crpg.Common;
 using Crpg.Common.Helpers;
 using MediatR;
 
@@ -29,8 +30,7 @@ namespace Crpg.Application.Common.Behaviors
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
-            var sw = new Stopwatch();
-            sw.Start();
+            var sw = ValueStopwatch.StartNew();
             try
             {
                 var res = await next();
@@ -64,7 +64,6 @@ namespace Crpg.Application.Common.Behaviors
             }
             finally
             {
-                sw.Stop();
                 _responseTime!.Record(sw.Elapsed.TotalMilliseconds);
             }
         }
