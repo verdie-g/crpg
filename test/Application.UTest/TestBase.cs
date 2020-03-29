@@ -15,7 +15,7 @@ namespace Crpg.Application.UTest
         protected IMapper _mapper;
 
         [SetUp]
-        public void SetUp()
+        public void BasSetUp()
         {
             var options = new DbContextOptionsBuilder<CrpgDbContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
