@@ -1,19 +1,35 @@
 using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.System.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace Crpg.Web
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        private static readonly string Env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")
+                                             ?? Environments.Development;
+
+        private static IConfiguration Configuration { get; } = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", true, true)
+            .AddJsonFile($"appsettings.{Env}.json", true, true)
+            .AddEnvironmentVariables()
+            .Build();
+
+        public static async Task<int> Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(Configuration)
+                .CreateLogger();
+
             var host = CreateHostBuilder(args).Build();
             using (var scope = host.Services.CreateScope())
             {
@@ -26,19 +42,30 @@ namespace Crpg.Web
                 }
                 catch (Exception ex)
                 {
-                    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred while initializing the database.");
+                    Log.Fatal(ex, "An error occurred while initializing the database.");
+                    return 1;
                 }
             }
 
-            host.Run();
+            try
+            {
+                await CreateHostBuilder(args).Build().RunAsync();
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly");
+                return 1;
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>())
+                .UseSerilog();
     }
 }
