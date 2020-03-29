@@ -13,6 +13,7 @@ Server written in [.NET Core](https://dotnet.microsoft.com). Its design is inspi
 - [ASP.NET Core](https://dotnet.microsoft.com/learn/aspnet/what-is-aspnet-core) - Web-development framework
 - [Entity Framework Core](https://docs.microsoft.com/en-us/ef) - ORM
 - [PostgreSQL](https://www.postgresql.org) - Relational database
+- [Serilog](https://serilog.net) - Logger
 - [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) - to generate API documentation, available at http://localhost:5000/swagger
 - [StyleCop](https://github.com/DotNetAnalyzers/StyleCopAnalyzers) - to enforce coding style
 
