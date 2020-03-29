@@ -11,11 +11,11 @@ namespace Crpg.Common.UTest
             var sw = ValueStopwatch.StartNew();
 
             await Task.Delay(200);
-            Assert.Greater(sw.Elapsed.TotalMilliseconds, 200);
-            Assert.Less(sw.Elapsed.TotalMilliseconds, 250);
+            Assert.Greater(sw.Elapsed.TotalMilliseconds, 190);
+            Assert.Less(sw.Elapsed.TotalMilliseconds, 225);
 
             await Task.Delay(200);
-            Assert.Greater(sw.Elapsed.TotalMilliseconds, 400);
+            Assert.Greater(sw.Elapsed.TotalMilliseconds, 380);
             Assert.Less(sw.Elapsed.TotalMilliseconds, 450);
         }
     }
