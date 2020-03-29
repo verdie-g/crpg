@@ -6,6 +6,7 @@ using AutoMapper;
 using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Games.Models;
+using Crpg.Common;
 using Crpg.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,73 @@ namespace Crpg.Application.Games.Commands
 
         public class Handler : IRequestHandler<UpsertGameCharacterCommand, GameCharacter>
         {
+            internal static readonly GameCharacter[] DefaultCharacterItems =
+            {
+                // aserai
+                new GameCharacter
+                {
+                    HeadItemMbId = "mp_wrapped_desert_cap",
+                    BodyItemMbId = "mp_aserai_civil_e",
+                    LegItemMbId = "mp_strapped_shoes",
+                    Weapon1ItemMbId = "mp_aserai_axe",
+                    Weapon2ItemMbId = "mp_throwing_stone",
+                },
+                // vlandia
+                new GameCharacter
+                {
+                    HeadItemMbId = "mp_arming_coif",
+                    BodyItemMbId = "mp_sackcloth_tunic",
+                    LegItemMbId = "mp_strapped_shoes",
+                    Weapon1ItemMbId = "mp_vlandian_billhook",
+                    Weapon2ItemMbId = "mp_sling_stone",
+                },
+                // empire
+                new GameCharacter
+                {
+                    HeadItemMbId = "mp_laced_cloth_coif",
+                    BodyItemMbId = "mp_hemp_tunic",
+                    LegItemMbId = "mp_leather_shoes",
+                    Weapon1ItemMbId = "mp_empire_axe",
+                    Weapon2ItemMbId = "mp_throwing_stone",
+                },
+                // sturgia
+                new GameCharacter
+                {
+                    HeadItemMbId = "mp_nordic_fur_cap",
+                    BodyItemMbId = "mp_northern_tunic",
+                    LegItemMbId = "mp_wrapped_shoes",
+                    Weapon1ItemMbId = "mp_sturgia_mace",
+                    Weapon2ItemMbId = "mp_sling_stone",
+                },
+                // khuzait
+                new GameCharacter
+                {
+                    HeadItemMbId = "mp_nomad_padded_hood",
+                    BodyItemMbId = "mp_khuzait_civil_coat_b",
+                    LegItemMbId = "mp_strapped_leather_boots",
+                    Weapon1ItemMbId = "mp_khuzait_sichel",
+                    Weapon2ItemMbId = "mp_throwing_stone",
+                },
+                // battania
+                new GameCharacter
+                {
+                    HeadItemMbId = "mp_battania_civil_hood",
+                    BodyItemMbId = "mp_battania_civil_a",
+                    LegItemMbId = "mp_rough_tied_boots",
+                    Weapon1ItemMbId = "mp_battania_axe",
+                    Weapon2ItemMbId = "mp_sling_stone",
+                },
+                // looters
+                new GameCharacter
+                {
+                    HeadItemMbId = "mp_vlandia_bandit_cape_a",
+                    BodyItemMbId = "mp_burlap_sack_dress",
+                    LegItemMbId = "mp_strapped_leather_boots",
+                    Weapon1ItemMbId = "mp_empire_long_twohandedaxe",
+                    Weapon2ItemMbId = "mp_throwing_stone",
+                },
+            };
+
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
 
@@ -44,25 +112,14 @@ namespace Crpg.Application.Games.Commands
                         SteamId = request.SteamId,
                         Gold = Constants.StartingGold,
                         Role = Constants.DefaultRole,
-                        Characters = new List<Character>
-                        {
-                            new Character
-                            {
-                                Name = request.CharacterName,
-                                Level = 1,
-                            }
-                        },
+                        Characters = new List<Character> { await CreateCharacter(request.CharacterName, cancellationToken) },
                     };
 
                     _db.Users.Add(user);
                 }
                 else if (user.Characters.Count == 0)
                 {
-                    user.Characters.Add(new Character
-                    {
-                        Name = request.CharacterName,
-                        Level = 1,
-                    });
+                    user.Characters.Add(await CreateCharacter(request.CharacterName, cancellationToken));
                 }
 
                 if (_db.Entry(user).State != EntityState.Unchanged
@@ -72,6 +129,33 @@ namespace Crpg.Application.Games.Commands
                 }
 
                 return _mapper.Map<GameCharacter>(user.Characters[0]);
+            }
+
+            private async Task<Character> CreateCharacter(string name, CancellationToken cancellationToken)
+            {
+                var c = new Character
+                {
+                    Name = name,
+                    Level = 1,
+                    Experience = 0,
+                };
+
+                var items = DefaultCharacterItems[ThreadSafeRandom.Instance.Value.Next(DefaultCharacterItems.Length - 1)];
+                var itemsIdByMdId = await _db.Items
+                    .Where(i => i.MbId == items.HeadItemMbId
+                                || i.MbId == items.BodyItemMbId
+                                || i.MbId == items.LegItemMbId
+                                || i.MbId == items.Weapon1ItemMbId
+                                || i.MbId == items.Weapon2ItemMbId)
+                    .ToDictionaryAsync(i => i.MbId, i => i.Id, cancellationToken);
+
+                c.HeadItemId = itemsIdByMdId[items.HeadItemMbId];
+                c.BodyItemId = itemsIdByMdId[items.BodyItemMbId];
+                c.LegItemId = itemsIdByMdId[items.LegItemMbId];
+                c.Weapon1ItemId = itemsIdByMdId[items.Weapon1ItemMbId];
+                c.Weapon2ItemId = itemsIdByMdId[items.Weapon2ItemMbId];
+
+                return c;
             }
         }
     }

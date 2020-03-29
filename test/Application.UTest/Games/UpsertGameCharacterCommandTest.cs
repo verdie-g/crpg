@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Games.Commands;
@@ -10,6 +11,25 @@ namespace Crpg.Application.UTest.Games
 {
     public class UpsertGameCharacterCommandTest : TestBase
     {
+        [SetUp]
+        public Task SetUp()
+        {
+            var allDefaultItemMbIds = UpsertGameCharacterCommand.Handler.DefaultCharacterItems
+                .SelectMany(i => new[]
+                {
+                    i.HeadItemMbId,
+                    i.BodyItemMbId,
+                    i.LegItemMbId,
+                    i.Weapon1ItemMbId,
+                    i.Weapon2ItemMbId,
+                })
+                .Distinct()
+                .Select(mbId => new Item { MbId = mbId });
+
+            _db.Items.AddRange(allDefaultItemMbIds);
+            return _db.SaveChangesAsync();
+        }
+
         [Test]
         public async Task UserAndCharacterWithNoEquipmentExist()
         {
@@ -107,6 +127,11 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual("toto", gc.Name);
             Assert.AreEqual(0, gc.Experience);
             Assert.AreEqual(1, gc.Level);
+            Assert.NotNull(gc.HeadItemMbId);
+            Assert.NotNull(gc.BodyItemMbId);
+            Assert.NotNull(gc.LegItemMbId);
+            Assert.NotNull(gc.Weapon1ItemMbId);
+            Assert.NotNull(gc.Weapon2ItemMbId);
 
             Assert.DoesNotThrowAsync( () => _db.Characters.FirstAsync(c => c.UserId == user.Entity.Id && c.Name == "toto"));
         }
@@ -124,6 +149,11 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual("toto", gc.Name);
             Assert.AreEqual(0, gc.Experience);
             Assert.AreEqual(1, gc.Level);
+            Assert.NotNull(gc.HeadItemMbId);
+            Assert.NotNull(gc.BodyItemMbId);
+            Assert.NotNull(gc.LegItemMbId);
+            Assert.NotNull(gc.Weapon1ItemMbId);
+            Assert.NotNull(gc.Weapon2ItemMbId);
 
             Assert.DoesNotThrowAsync(() => _db.Users.FirstAsync(u => u.SteamId == 123));
             Assert.DoesNotThrowAsync(() => _db.Characters.FirstAsync(c => c.UserId == gc.UserId && c.Name == "toto"));
