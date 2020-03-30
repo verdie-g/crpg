@@ -29,7 +29,11 @@ namespace Crpg.Infrastructure
             }
             else
             {
-                var dogStatsD = new DogStatsD(new DogStatsDConfiguration { Namespace = "crpg" });
+                var dogStatsD = new DogStatsD(new DogStatsDConfiguration
+                {
+                    Namespace = "crpg",
+                    ConstantTags = new[] { "service:crpg_web_api" },
+                });
                 services.AddSingleton<IMetricsFactory>(new DatadogMetricsFactory(dogStatsD));
             }
         }
