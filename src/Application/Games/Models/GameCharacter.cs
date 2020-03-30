@@ -31,61 +31,17 @@ namespace Crpg.Application.Games.Models
                 .ForMember(gc => gc.CharacterId, opt => opt.MapFrom(c => c.Id))
                 .ForMember(gc => gc.NextLevelExperience,
                     opt => opt.MapFrom(c => ExperienceTable.GetExperienceForLevel(c.Level + 1)))
-                .ForMember(gc => gc.HeadItemMbId, opt =>
-                {
-                    opt.PreCondition(c => c.HeadItem != null);
-                    opt.MapFrom(c => c.HeadItem!.MbId);
-                })
-                .ForMember(gc => gc.CapeItemMbId, opt =>
-                {
-                    opt.PreCondition(c => c.CapeItem != null);
-                    opt.MapFrom(c => c.CapeItem!.MbId);
-                })
-                .ForMember(gc => gc.BodyItemMbId, opt =>
-                {
-                    opt.PreCondition(c => c.BodyItem != null);
-                    opt.MapFrom(c => c.BodyItem!.MbId);
-                })
-                .ForMember(gc => gc.HandItemMbId, opt =>
-                {
-                    opt.PreCondition(c => c.HandItem != null);
-                    opt.MapFrom(c => c.HandItem!.MbId);
-                })
-                .ForMember(gc => gc.LegItemMbId, opt =>
-                {
-                    opt.PreCondition(c => c.LegItem != null);
-                    opt.MapFrom(c => c.LegItem!.MbId);
-                })
-                .ForMember(gc => gc.HorseHarnessItemMbId, opt =>
-                {
-                    opt.PreCondition(c => c.HorseHarnessItem != null);
-                    opt.MapFrom(c => c.HorseHarnessItem!.MbId);
-                })
-                .ForMember(gc => gc.HorseItemMbId, opt =>
-                {
-                    opt.PreCondition(c => c.HorseItem != null);
-                    opt.MapFrom(c => c.HorseItem!.MbId);
-                })
-                .ForMember(gc => gc.Weapon1ItemMbId, opt =>
-                {
-                    opt.PreCondition(c => c.Weapon1Item != null);
-                    opt.MapFrom(c => c.Weapon1Item!.MbId);
-                })
-                .ForMember(gc => gc.Weapon2ItemMbId, opt =>
-                {
-                    opt.PreCondition(c => c.Weapon2Item != null);
-                    opt.MapFrom(c => c.Weapon2Item!.MbId);
-                })
-                .ForMember(gc => gc.Weapon3ItemMbId, opt =>
-                {
-                    opt.PreCondition(c => c.Weapon3Item != null);
-                    opt.MapFrom(c => c.Weapon3Item!.MbId);
-                })
-                .ForMember(gc => gc.Weapon4ItemMbId, opt =>
-                {
-                    opt.PreCondition(c => c.Weapon4Item != null);
-                    opt.MapFrom(c => c.Weapon4Item!.MbId);
-                });
+                .ForMember(gc => gc.HeadItemMbId, opt => opt.MapFrom(c => c.HeadItem!.MbId))
+                .ForMember(gc => gc.CapeItemMbId, opt => opt.MapFrom(c => c.CapeItem!.MbId))
+                .ForMember(gc => gc.BodyItemMbId, opt => opt.MapFrom(c => c.BodyItem!.MbId))
+                .ForMember(gc => gc.HandItemMbId, opt => opt.MapFrom(c => c.HandItem!.MbId))
+                .ForMember(gc => gc.LegItemMbId, opt => opt.MapFrom(c => c.LegItem!.MbId))
+                .ForMember(gc => gc.HorseHarnessItemMbId, opt => opt.MapFrom(c => c.HorseHarnessItem!.MbId))
+                .ForMember(gc => gc.HorseItemMbId, opt => opt.MapFrom(c => c.HorseItem!.MbId))
+                .ForMember(gc => gc.Weapon1ItemMbId, opt => opt.MapFrom(c => c.Weapon1Item!.MbId))
+                .ForMember(gc => gc.Weapon2ItemMbId, opt => opt.MapFrom(c => c.Weapon2Item!.MbId))
+                .ForMember(gc => gc.Weapon3ItemMbId, opt => opt.MapFrom(c => c.Weapon3Item!.MbId))
+                .ForMember(gc => gc.Weapon4ItemMbId, opt => opt.MapFrom(c => c.Weapon4Item!.MbId));
         }
     }
 }
