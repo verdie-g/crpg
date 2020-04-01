@@ -7,6 +7,7 @@ using Crpg.Application.Characters.Queries;
 using Crpg.Application.Items.Commands;
 using Crpg.Application.Items.Models;
 using Crpg.Application.Items.Queries;
+using Crpg.Application.Users.Commands;
 using Crpg.Application.Users.Queries;
 using Crpg.Web.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -20,9 +21,22 @@ namespace Crpg.Web.Controllers
         /// Gets current user information.
         /// </summary>
         [HttpGet("self")]
-        public async Task<IActionResult> GetSelfUser()
+        public async Task<IActionResult> GetUser()
         {
             return Ok(await Mediator.Send(new GetUserQuery { UserId = CurrentUser.UserId }));
+        }
+
+        /// <summary>
+        /// Deletes current user.
+        /// </summary>
+        /// <response code="204">Deleted.</response>
+        /// <response code="404">User not found.</response>
+        [HttpDelete("self")]
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
+        public async Task<IActionResult> DeleteUser()
+        {
+            await Mediator.Send(new DeleteUserCommand { UserId = CurrentUser.UserId });
+            return NoContent();
         }
 
         /// <summary>

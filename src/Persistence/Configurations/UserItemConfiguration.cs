@@ -16,7 +16,7 @@ namespace Crpg.Persistence.Configurations
 
             builder
                 .HasOne(ui => ui!.Item).WithMany(u => u!.UserItems)
-                .HasForeignKey(ui => ui!.ItemId);
+                .HasForeignKey(ui => ui.ItemId);
         }
     }
 }
