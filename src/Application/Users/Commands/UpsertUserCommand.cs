@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Common.Mappings;
 using Crpg.Application.Steam;
 using Crpg.Domain.Entities;
@@ -42,11 +43,13 @@ namespace Crpg.Application.Users.Commands
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
+            private readonly IEventRaiser _events;
 
-            public Handler(ICrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper, IEventRaiser events)
             {
                 _db = db;
                 _mapper = mapper;
+                _events = events;
             }
 
             public async Task<UserViewModel> Handle(UpsertUserCommand request, CancellationToken cancellationToken)
@@ -65,6 +68,7 @@ namespace Crpg.Application.Users.Commands
                     userEntity.Role = Constants.DefaultRole;
                     userEntity.Gold = Constants.StartingGold;
                     _db.Users.Add(userEntity);
+                    _events.Raise(EventLevel.Info, $"{request.UserName} joined ({request.SteamId})", string.Empty, "new_user");
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
