@@ -2,15 +2,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Games.Commands;
 using Crpg.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Games
 {
     public class UpsertGameCharacterCommandTest : TestBase
     {
+        private static readonly IEventRaiser EventRaiser = Mock.Of<IEventRaiser>();
+
         [SetUp]
         public Task SetUp()
         {
@@ -46,7 +50,7 @@ namespace Crpg.Application.UTest.Games
             });
             await _db.SaveChangesAsync();
 
-            var gc = await new UpsertGameCharacterCommand.Handler(_db, _mapper).Handle(new UpsertGameCharacterCommand
+            var gc = await new UpsertGameCharacterCommand.Handler(_db, _mapper, EventRaiser).Handle(new UpsertGameCharacterCommand
             {
                 SteamId = user.Entity.SteamId,
                 CharacterName = character.Entity.Name,
@@ -86,7 +90,7 @@ namespace Crpg.Application.UTest.Games
             });
             await _db.SaveChangesAsync();
 
-            var gc = await new UpsertGameCharacterCommand.Handler(_db, _mapper).Handle(new UpsertGameCharacterCommand
+            var gc = await new UpsertGameCharacterCommand.Handler(_db, _mapper, EventRaiser).Handle(new UpsertGameCharacterCommand
             {
                 SteamId = user.Entity.SteamId,
                 CharacterName = character.Entity.Name,
@@ -116,7 +120,7 @@ namespace Crpg.Application.UTest.Games
             var user = _db.Users.Add(new User { SteamId = 123 });
             await _db.SaveChangesAsync();
 
-            var gc = await new UpsertGameCharacterCommand.Handler(_db, _mapper).Handle(new UpsertGameCharacterCommand
+            var gc = await new UpsertGameCharacterCommand.Handler(_db, _mapper, EventRaiser).Handle(new UpsertGameCharacterCommand
             {
                 SteamId = user.Entity.SteamId,
                 CharacterName = "toto",
@@ -139,7 +143,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldCreateUserAndCharacterIfUserDoesntExist()
         {
-            var gc = await new UpsertGameCharacterCommand.Handler(_db, _mapper).Handle(new UpsertGameCharacterCommand
+            var gc = await new UpsertGameCharacterCommand.Handler(_db, _mapper, EventRaiser).Handle(new UpsertGameCharacterCommand
             {
                 SteamId = 123,
                 CharacterName = "toto",

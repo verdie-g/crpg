@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Games.Models;
 using Crpg.Common;
 using Crpg.Domain.Entities;
@@ -89,11 +90,13 @@ namespace Crpg.Application.Games.Commands
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
+            private readonly IEventRaiser _events;
 
-            public Handler(ICrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper, IEventRaiser events)
             {
                 _db = db;
                 _mapper = mapper;
+                _events = events;
             }
 
             public async Task<GameCharacter> Handle(UpsertGameCharacterCommand request, CancellationToken cancellationToken)
@@ -117,6 +120,8 @@ namespace Crpg.Application.Games.Commands
 
                     await AddNewCharacterToUser(user, request.CharacterName, cancellationToken);
                     _db.Users.Add(user);
+                    _events.Raise(EventLevel.Info, $"{request.CharacterName} joined ({request.SteamId})",
+                        string.Empty, "new_user");
                 }
                 else if (user.Characters.Count == 0)
                 {

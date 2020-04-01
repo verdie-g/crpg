@@ -1,18 +1,22 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Users.Commands;
 using Crpg.Domain.Entities;
+using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Users
 {
     public class UpsertUserCommandTest : TestBase
     {
+        private static readonly IEventRaiser EventRaiser = Mock.Of<IEventRaiser>();
+
         [Test]
         public async Task TestWhenUserDoesntExist()
         {
-            var handler = new UpsertUserCommand.Handler(_db, _mapper);
+            var handler = new UpsertUserCommand.Handler(_db, _mapper, EventRaiser);
             var user = await handler.Handle(new UpsertUserCommand
             {
                 SteamId = 123,
@@ -43,7 +47,7 @@ namespace Crpg.Application.UTest.Users
             _db.Users.Add(user);
             await _db.SaveChangesAsync();
 
-            var handler = new UpsertUserCommand.Handler(_db, _mapper);
+            var handler = new UpsertUserCommand.Handler(_db, _mapper, EventRaiser);
             var createdUser = await handler.Handle(new UpsertUserCommand
             {
                 SteamId = 13948192759205810,
