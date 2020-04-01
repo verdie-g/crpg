@@ -112,14 +112,15 @@ namespace Crpg.Application.Games.Commands
                         SteamId = request.SteamId,
                         Gold = Constants.StartingGold,
                         Role = Constants.DefaultRole,
-                        Characters = new List<Character> { await CreateCharacter(request.CharacterName, cancellationToken) },
+                        Characters = new List<Character>(),
                     };
 
+                    await AddNewCharacterToUser(user, request.CharacterName, cancellationToken);
                     _db.Users.Add(user);
                 }
                 else if (user.Characters.Count == 0)
                 {
-                    user.Characters.Add(await CreateCharacter(request.CharacterName, cancellationToken));
+                    await AddNewCharacterToUser(user, request.CharacterName, cancellationToken);
                 }
 
                 if (_db.Entry(user).State != EntityState.Unchanged
@@ -131,7 +132,7 @@ namespace Crpg.Application.Games.Commands
                 return _mapper.Map<GameCharacter>(user.Characters[0]);
             }
 
-            private async Task<Character> CreateCharacter(string name, CancellationToken cancellationToken)
+            private async Task AddNewCharacterToUser(User user, string name, CancellationToken cancellationToken)
             {
                 var c = new Character
                 {
@@ -155,7 +156,9 @@ namespace Crpg.Application.Games.Commands
                 c.Weapon1ItemId = itemsIdByMdId[items.Weapon1ItemMbId];
                 c.Weapon2ItemId = itemsIdByMdId[items.Weapon2ItemMbId];
 
-                return c;
+                // add character items to user inventory
+                user.UserItems = itemsIdByMdId.Values.Select(itemId => new UserItem { ItemId = itemId }).ToList();
+                user.Characters.Add(c);
             }
         }
     }
