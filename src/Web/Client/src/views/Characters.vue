@@ -165,8 +165,8 @@
               </div>
               <div class="column">
                 <div v-if="fittingOwnedItems.length" class="columns is-multiline owned-items">
-                  <div class="column is-narrow owned-item" v-for="ownedItem in fittingOwnedItems" v-bind:key="ownedItem.id"
-                       @click="selectedItem = ownedItem">
+                  <div class="column is-narrow owned-item" v-for="ownedItem in fittingOwnedItems"
+                       v-bind:key="ownedItem.id" @click="selectedItem = ownedItem">
                     <figure class="image">
                       <img :src="ownedItem.image" alt="item image" />
                     </figure>
@@ -233,7 +233,8 @@ export default class Characters extends Vue {
     get fittingOwnedItems() : Item[] {
       return this.itemToReplaceSlot === null
         ? []
-        : filterItemsFittingInSlot(userModule.ownedItems, this.itemToReplaceSlot);
+        : filterItemsFittingInSlot(userModule.ownedItems, this.itemToReplaceSlot)
+          .filter(i => this.itemToReplace === null || i.id !== this.itemToReplace.id);
     }
 
     created() {
