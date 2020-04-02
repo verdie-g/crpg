@@ -37,11 +37,11 @@ export function get(path: string): Promise<any> {
   return send('GET', path);
 }
 
-export function post(path: string, body: any): Promise<any> {
+export function post(path: string, body?: any): Promise<any> {
   return send('POST', path, body);
 }
 
-export function put(path: string, body: any): Promise<any> {
+export function put(path: string, body?: any): Promise<any> {
   return send('PUT', path, body);
 }
 
