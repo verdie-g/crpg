@@ -102,6 +102,7 @@ namespace Crpg.Cli
             await JsonSerializer.SerializeAsync(f, items, new JsonSerializerOptions
             {
                 WriteIndented = true,
+                IgnoreNullValues = true,
             });
         }
 
