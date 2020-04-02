@@ -9,6 +9,7 @@ namespace Crpg.Domain.Entities
         public string Name { get; set; } = string.Empty;
         public int Experience { get; set; }
         public int Level { get; set; }
+        public float ExperienceMultiplier { get; set; }
 
         // TODO: attribute + skills + weapon points
         public int? HeadItemId { get; set; }

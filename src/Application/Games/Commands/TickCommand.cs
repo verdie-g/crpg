@@ -39,7 +39,7 @@ namespace Crpg.Application.Games.Commands
                 {
                     var tick = tickByCharacterId[character.Id];
                     character.User!.Gold += tick.GoldGain;
-                    character.Experience += tick.ExperienceGain;
+                    character.Experience += (int)(tick.ExperienceGain * character.ExperienceMultiplier);
                     int newLevel = ExperienceTable.GetLevelForExperience(character.Experience);
                     if (character.Level != newLevel) // if user leveled up
                     {

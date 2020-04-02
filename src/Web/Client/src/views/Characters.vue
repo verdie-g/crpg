@@ -153,7 +153,9 @@
             </div>
 
             <b-button type="is-warning" icon-left="angle-double-down" expanded disabled>Respecialize</b-button>
-            <b-button type="is-warning" icon-left="baby" expanded disabled>Retire</b-button>
+            <b-button type="is-warning" icon-left="baby"
+                      expanded :disabled="selectedCharacter.level < 31"
+                      @click="openRetireCharacterDialog">Retire</b-button>
             <b-button type="is-danger" icon-left="trash" expanded @click="openDeleteCharacterDialog">Delete</b-button>
           </div>
 
@@ -259,6 +261,20 @@ export default class Characters extends Vue {
           notify('Character renamed');
         },
       });
+    }
+
+    openRetireCharacterDialog() {
+      this.$buefy.dialog.confirm({
+        title: 'Retiring character',
+        message: `Are you sure you want to retire your character ${this.selectedCharacter!.name} lvl. ${this.selectedCharacter!.level}? This action cannot be undone.`,
+        confirmText: 'Retire',
+        type: 'is-warning',
+        hasIcon: true,
+        onConfirm: () => {
+          userModule.retireCharacter(this.selectedCharacter!);
+          notify('Character retired');
+        },
+      })
     }
 
     openDeleteCharacterDialog() {

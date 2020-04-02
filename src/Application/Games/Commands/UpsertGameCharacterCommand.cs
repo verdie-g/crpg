@@ -144,6 +144,7 @@ namespace Crpg.Application.Games.Commands
                     Name = name,
                     Level = 1,
                     Experience = 0,
+                    ExperienceMultiplier = Constants.DefaultExperienceMultiplier,
                 };
 
                 var items = DefaultCharacterItems[ThreadSafeRandom.Instance.Value.Next(DefaultCharacterItems.Length - 1)];

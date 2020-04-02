@@ -17,6 +17,10 @@ export function updateCharacter(characterId: number, req: UpdateCharacterRequest
   return put(`/users/self/characters/${characterId}`, req);
 }
 
+export function retireCharacter(characterId: number) {
+  return put(`/users/self/characters/${characterId}/retire`);
+}
+
 export function deleteCharacter(characterId: number) {
   return del(`/users/self/characters/${characterId}`);
 }

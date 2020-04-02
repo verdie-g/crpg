@@ -119,6 +119,11 @@ class UserModule extends VuexModule {
     return userService.getCharacters();
   }
 
+  @Action({ commit: 'replaceCharacter' })
+  retireCharacter(character: Character): Promise<void> {
+    return userService.retireCharacter(character.id);
+  }
+
   @Action
   deleteCharacter(character: Character): Promise<void> {
     this.removeCharacter(character);

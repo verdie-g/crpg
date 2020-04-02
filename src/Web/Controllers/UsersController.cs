@@ -131,6 +131,19 @@ namespace Crpg.Web.Controllers
         }
 
         /// <summary>
+        /// Retires character.
+        /// </summary>
+        /// <param name="id">Character id.</param>
+        /// <response code="200">Retired.</response>
+        /// <response code="400">Bad Request.</response>
+        /// <response code="404">Character not found.</response>
+        [HttpPut("self/characters/{id}/retire")]
+        public async Task<ActionResult<CharacterViewModel>> UpdateCharacterItems([FromRoute] int id)
+        {
+            return Ok(await Mediator.Send(new RetireCharacterCommand { CharacterId = id }));
+        }
+
+        /// <summary>
         /// Deletes the specified current user's character.
         /// </summary>
         /// <param name="id">Character id.</param>

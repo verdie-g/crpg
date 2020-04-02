@@ -749,9 +749,9 @@ namespace Crpg.Application.System.Commands
                             },
                             new Character
                             {
-                                Name = "jackie",
-                                Level = 1,
-                                Experience = ExperienceTable.GetExperienceForLevel(1) + 100,
+                                Name = "Retire me",
+                                Level = 31,
+                                Experience = ExperienceTable.GetExperienceForLevel(31) + 100,
                             },
                         }
                     });
