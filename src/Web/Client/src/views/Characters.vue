@@ -163,8 +163,8 @@
                 <h3>Replace <strong>{{itemToReplace.name}}</strong></h3>
                 <item-properties :item="itemToReplace" />
               </div>
-              <div class="column">
-                <div v-if="fittingOwnedItems.length" class="columns is-multiline owned-items">
+              <div class="column owned-items">
+                <div v-if="fittingOwnedItems.length" class="columns is-multiline">
                   <div class="column is-narrow owned-item" v-for="ownedItem in fittingOwnedItems"
                        v-bind:key="ownedItem.id" @click="selectedItem = ownedItem">
                     <figure class="image">
@@ -369,11 +369,17 @@ export default class Characters extends Vue {
   }
 
   .replace-item-modal {
-    background-color: #fff;
+    background-color: #fff; // TODO: replace with bulma variable
+    // inherit modal height
+    max-height: inherit;
   }
 
   .owned-items {
-    justify-content: center;
+    overflow: auto;
+
+    & > .columns {
+      justify-content: center;
+    }
   }
 
   .owned-item {
