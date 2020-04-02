@@ -23,7 +23,7 @@ export function notify(message: string, type: NotificationType = NotificationTyp
   Toast.open({
     message,
     type: typeToColor(type),
-    position: 'is-top-right',
+    position: 'is-bottom-right',
     duration: 3000,
     queue: false,
   });
