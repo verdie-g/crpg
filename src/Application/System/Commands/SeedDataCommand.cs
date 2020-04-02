@@ -25,14 +25,33 @@ namespace Crpg.Application.System.Commands
             {
                 _db.Items.AddRange(new Item
                     {
-                        MbId = "mp_pointed_skullcap_over_cloth_headwrap",
-                        Name = "Pointed Skullcap Over Cloth Headwrap",
-                        Image = new Uri(
-                            "https://via.placeholder.com/256x120?text=mp_pointed_skullcap_over_cloth_headwrap"),
-                        Value = 69,
+                        MbId = "mp_laced_cloth_coif",
+                        Name = "Laced Cloth Coif",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_laced_cloth_coif"),
+                        Value = 48,
                         Type = ItemType.HeadArmor,
-                        Weight = 1.1f,
-                        HeadArmor = 16,
+                        Weight = 0.4f,
+                        HeadArmor = 4,
+                    },
+                    new Item
+                    {
+                        MbId = "mp_nomad_padded_hood",
+                        Name = "Nomad Padded Hood",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_nomad_padded_hood"),
+                        Value = 48,
+                        Type = ItemType.HeadArmor,
+                        Weight = 0.4f,
+                        HeadArmor = 4,
+                    },
+                    new Item
+                    {
+                        MbId = "mp_wrapped_desert_cap",
+                        Name = "Wrapped Southern Cap",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_wrapped_desert_cap"),
+                        Value = 61,
+                        Type = ItemType.HeadArmor,
+                        Weight = 0.5f,
+                        HeadArmor = 6,
                     },
                     new Item
                     {
@@ -46,6 +65,27 @@ namespace Crpg.Application.System.Commands
                     },
                     new Item
                     {
+                        MbId = "mp_vlandia_bandit_cape_a",
+                        Name = "Rough Padded Cap",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_vlandia_bandit_cape_a"),
+                        Value = 69,
+                        Type = ItemType.HeadArmor,
+                        Weight = 2.5f,
+                        HeadArmor = 16,
+                    },
+                    new Item
+                    {
+                        MbId = "mp_pointed_skullcap_over_cloth_headwrap",
+                        Name = "Pointed Skullcap Over Cloth Headwrap",
+                        Image = new Uri(
+                            "https://via.placeholder.com/256x120?text=mp_pointed_skullcap_over_cloth_headwrap"),
+                        Value = 69,
+                        Type = ItemType.HeadArmor,
+                        Weight = 1.1f,
+                        HeadArmor = 16,
+                    },
+                    new Item
+                    {
                         MbId = "mp_aserai_civil_d_hscarf",
                         Name = "Colored Turban",
                         Image = new Uri("https://via.placeholder.com/256x120?text=mp_aserai_civil_d_hscarf"),
@@ -53,6 +93,36 @@ namespace Crpg.Application.System.Commands
                         Type = ItemType.HeadArmor,
                         Weight = 0.1f,
                         HeadArmor = 4,
+                    },
+                    new Item
+                    {
+                        MbId = "mp_nordic_fur_cap",
+                        Name = "Northern Cap",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_nordic_fur_cap"),
+                        Value = 100,
+                        Type = ItemType.HeadArmor,
+                        Weight = 0.3f,
+                        HeadArmor = 10,
+                    },
+                    new Item
+                    {
+                        MbId = "mp_battania_civil_hood",
+                        Name = "Highland Hood",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_battania_civil_hood"),
+                        Value = 148,
+                        Type = ItemType.HeadArmor,
+                        Weight = 0.5f,
+                        HeadArmor = 9,
+                    },
+                    new Item
+                    {
+                        MbId = "mp_arming_coif",
+                        Name = "Leather Coif",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_arming_coif"),
+                        Value = 188,
+                        Type = ItemType.HeadArmor,
+                        Weight = 0.3f,
+                        HeadArmor = 11,
                     },
                     new Item
                     {
@@ -73,6 +143,140 @@ namespace Crpg.Application.System.Commands
                         Type = ItemType.Cape,
                         Weight = 1.8f,
                         BodyArmor = 8,
+                    },
+                    new Item
+                    {
+                        MbId = "mp_burlap_sack_dress",
+                        Name = "Burlap Dress",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_burlap_sack_dress"),
+                        Value = 8,
+                        Type = ItemType.BodyArmor,
+                        Weight = 0.5f,
+                        HeadArmor = 0,
+                        BodyArmor = 1,
+                        ArmArmor = 0,
+                        LegArmor = 1
+                    },
+                    new Item
+                    {
+                        MbId = "mp_sackcloth_tunic",
+                        Name = "Sackcloth Tunic",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_sackcloth_tunic"),
+                        Value = 11,
+                        Type = ItemType.BodyArmor,
+                        Weight = 0.6f,
+                        HeadArmor = 0,
+                        BodyArmor = 2,
+                        ArmArmor = 1,
+                        LegArmor = 1
+                    },
+                    new Item
+                    {
+                        MbId = "mp_battania_civil_a",
+                        Name = "Highland Tunic",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_battania_civil_a"),
+                        Value = 19,
+                        Type = ItemType.BodyArmor,
+                        Weight = 0.6f,
+                        HeadArmor = 0,
+                        BodyArmor = 1,
+                        ArmArmor = 1,
+                        LegArmor = 1
+                    },
+                    new Item
+                    {
+                        MbId = "mp_khuzait_civil_coat_b",
+                        Name = "Eastern Thick Coat",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_khuzait_civil_coat_b"),
+                        Value = 34,
+                        Type = ItemType.BodyArmor,
+                        Weight = 2.7f,
+                        HeadArmor = 0,
+                        BodyArmor = 6,
+                        ArmArmor = 0,
+                        LegArmor = 1
+                    },
+                    new Item
+                    {
+                        MbId = "mp_hemp_tunic",
+                        Name = "Hemp Tunic",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_hemp_tunic"),
+                        Value = 48,
+                        Type = ItemType.BodyArmor,
+                        Weight = 0.4f,
+                        HeadArmor = 0,
+                        BodyArmor = 1,
+                        ArmArmor = 1,
+                        LegArmor = 1
+                    },
+                    new Item
+                    {
+                        MbId = "mp_leather_shoes",
+                        Name = "Leather Shoes",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_leather_shoes"),
+                        Value = 67,
+                        Type = ItemType.LegArmor,
+                        Weight = 0.7f,
+                        LegArmor = 3
+                    },
+                    new Item
+                    {
+                        MbId = "mp_wrapped_shoes",
+                        Name = "Wrapped Shoes",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_wrapped_shoes"),
+                        Value = 74,
+                        Type = ItemType.LegArmor,
+                        Weight = 2f,
+                        HeadArmor = 0,
+                        BodyArmor = 0,
+                        ArmArmor = 0,
+                        LegArmor = 4
+                    },
+                    new Item
+                    {
+                        MbId = "mp_strapped_shoes",
+                        Name = "Strapped Shoes",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_strapped_shoes"),
+                        Value = 74,
+                        Type = ItemType.LegArmor,
+                        Weight = 0.7f,
+                        LegArmor = 4
+                    },
+                    new Item
+                    {
+                        MbId = "mp_strapped_leather_boots",
+                        Name = "Strapped Leather Boots",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_strapped_leather_boots"),
+                        Value = 81,
+                        Type = ItemType.LegArmor,
+                        Weight = 0.9f,
+                        LegArmor = 5
+                    },
+                    new Item
+                    {
+                        MbId = "mp_northern_tunic",
+                        Name = "Northern Tunic",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_northern_tunic"),
+                        Value = 66,
+                        Type = ItemType.BodyArmor,
+                        Weight = 0.4f,
+                        HeadArmor = 0,
+                        BodyArmor = 2,
+                        ArmArmor = 1,
+                        LegArmor = 1
+                    },
+                    new Item
+                    {
+                        MbId = "mp_aserai_civil_e",
+                        Name = "Thawb",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_aserai_civil_e"),
+                        Value = 80,
+                        Type = ItemType.BodyArmor,
+                        Weight = 1.1f,
+                        HeadArmor = 0,
+                        BodyArmor = 4,
+                        ArmArmor = 2,
+                        LegArmor = 1
                     },
                     new Item
                     {
@@ -395,27 +599,71 @@ namespace Crpg.Application.System.Commands
                     },
                     new Item
                     {
-                      MbId = "mp_khuzait_glaive",
-                      Name = "Glaive",
-                      Image = new Uri("https://via.placeholder.com/256x120?text=mp_khuzait_glaive"),
-                      Value = 150,
-                      Type = ItemType.Polearm,
-                      Weight = 1.23f,
-                      ThrustDamageType = DamageType.Pierce,
-                      SwingDamageType = DamageType.Cut,
-                      WeaponLength = 149,
-                      PrimaryThrustDamage = 32,
-                      PrimaryThrustSpeed = 91,
-                      PrimarySwingDamage = 48,
-                      PrimarySwingSpeed = 52,
-                      PrimaryHandling = 76,
-                      PrimaryWeaponFlags = (WeaponFlags?)65,
-                      SecondaryThrustDamage = 38,
-                      SecondaryThrustSpeed = 99,
-                      SecondarySwingDamage = 106,
-                      SecondarySwingSpeed = 77,
-                      SecondaryHandling = 75,
-                      SecondaryWeaponFlags = (WeaponFlags?)2097233
+                        MbId = "mp_khuzait_glaive",
+                        Name = "Glaive",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_khuzait_glaive"),
+                        Value = 150,
+                        Type = ItemType.Polearm,
+                        Weight = 1.23f,
+                        ThrustDamageType = DamageType.Pierce,
+                        SwingDamageType = DamageType.Cut,
+                        WeaponLength = 149,
+                        PrimaryThrustDamage = 32,
+                        PrimaryThrustSpeed = 91,
+                        PrimarySwingDamage = 48,
+                        PrimarySwingSpeed = 52,
+                        PrimaryHandling = 76,
+                        PrimaryWeaponFlags = (WeaponFlags?)65,
+                        SecondaryThrustDamage = 38,
+                        SecondaryThrustSpeed = 99,
+                        SecondarySwingDamage = 106,
+                        SecondarySwingSpeed = 77,
+                        SecondaryHandling = 75,
+                        SecondaryWeaponFlags = (WeaponFlags?)2097233
+                    },
+                    new Item
+                    {
+                        MbId = "mp_throwing_stone",
+                        Name = "Stone",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_throwing_stone"),
+                        Value = 10,
+                        Type = ItemType.Thrown,
+                        Weight = 0.1f,
+                        BodyArmor = 0,
+                        ThrustDamageType = DamageType.Blunt,
+                        SwingDamageType = DamageType.Blunt,
+                        Accuracy = 50,
+                        MissileSpeed = 40,
+                        StackAmount = 15,
+                        WeaponLength = 10,
+                        PrimaryThrustDamage = 16,
+                        PrimaryThrustSpeed = 102,
+                        PrimarySwingDamage = 0,
+                        PrimarySwingSpeed = 102,
+                        PrimaryHandling = 102,
+                        PrimaryWeaponFlags = (WeaponFlags?)2148008194
+                    },
+                    new Item
+                    {
+                        MbId = "mp_sling_stone",
+                        Name = "Sling",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_sling_stone"),
+                        Value = 10,
+                        Type = ItemType.Thrown,
+                        Weight = 0.1f,
+                        BodyArmor = 0,
+                        ThrustDamageType = DamageType.Blunt,
+                        SwingDamageType = DamageType.Blunt,
+                        Accuracy = 88,
+                        MissileSpeed = 40,
+                        StackAmount = 15,
+                        WeaponLength = 10,
+                        PrimaryThrustDamage = 16,
+                        PrimaryThrustSpeed = 102,
+                        PrimarySwingDamage = 0,
+                        PrimarySwingSpeed = 102,
+                        PrimaryHandling = 102,
+                        PrimaryWeaponFlags = (WeaponFlags?)6442975490
                     },
                     new Item
                     {
@@ -480,7 +728,7 @@ namespace Crpg.Application.System.Commands
                     {
                         SteamId = 76561197987525637,
                         UserName = "takeoshigeru",
-                        Gold = Constants.StartingGold,
+                        Gold = Constants.StartingGold * 10,
                         Role = Role.SuperAdmin,
                         AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e.jpg"),
                         AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_full.jpg"),
