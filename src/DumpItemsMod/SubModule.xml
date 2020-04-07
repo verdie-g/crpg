@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Module>
+	<Name value="Dump Items"/>
+	<Id value="DumpItems"/>
+	<Version value="v0.1.0"/>
+	<SingleplayerModule value="true"/>
+	<DependedModules>
+		<DependedModule Id="Native"/>
+	</DependedModules>
+
+	<SubModules>
+		<SubModule>
+			<Name value="DumpItems"/>
+			<DLLName value="Crpg.DumpItemsMod.dll"/>
+			<SubModuleClassType value="Crpg.DumpItemsMod.DumpItemsSubModule"/>
+			<Tags>
+				<Tag key="DedicatedServerType" value="none" />
+				<Tag key="IsNoRenderModeElement" value="false" />
+			</Tags>
+		</SubModule>
+	</SubModules>
+	<Xmls/>
+</Module>
