@@ -36,6 +36,7 @@ namespace Crpg.Persistence
         public DbSet<Character> Characters { get; set; } = default!;
         public DbSet<Item> Items { get; set; } = default!;
         public DbSet<UserItem> UserItems { get; set; } = default!;
+        public DbSet<Ban> Bans { get; set; } = default!;
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

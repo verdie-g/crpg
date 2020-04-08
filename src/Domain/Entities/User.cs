@@ -30,5 +30,6 @@ namespace Crpg.Domain.Entities
 
         public List<UserItem> UserItems { get; set; } = new List<UserItem>();
         public List<Character> Characters { get; set; } = new List<Character>();
+        public List<Ban> Bans { get; set; } = new List<Ban>();
     }
 }
