@@ -19,6 +19,7 @@ namespace Crpg.Application.UTest.Users
             {
                 Characters = new List<Character> { new Character() },
                 UserItems = new List<UserItem> { new UserItem { Item = new Item() } },
+                Bans = new List<Ban> { new Ban() }
             });
             await _db.SaveChangesAsync();
 
@@ -29,6 +30,8 @@ namespace Crpg.Application.UTest.Users
 
             Assert.ThrowsAsync<InvalidOperationException>(() => _db.Users.FirstAsync(u => u.Id == user.Entity.Id));
             Assert.ThrowsAsync<InvalidOperationException>(() => _db.Characters.FirstAsync(c => c.Id == user.Entity.Characters[0].Id));
+            Assert.ThrowsAsync<InvalidOperationException>(() => _db.Bans.FirstAsync(b =>
+                b.BannedUserId == user.Entity.Id || b.BannedByUserId == user.Entity.Id));
             Assert.ThrowsAsync<InvalidOperationException>(() => _db.UserItems.FirstAsync(ui =>
                 ui.UserId == user.Entity.Id && ui.ItemId == user.Entity.UserItems[0].ItemId));
             Assert.DoesNotThrowAsync(() => _db.Items.FirstAsync(i => i.Id == user.Entity.UserItems[0].ItemId));

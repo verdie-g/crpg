@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation;
 using MediatR;
-using ValidationException = Crpg.Application.Common.Exceptions.ValidationException;
 
 namespace Crpg.Application.Common.Behaviors
 {

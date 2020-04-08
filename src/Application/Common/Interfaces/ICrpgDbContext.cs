@@ -12,6 +12,7 @@ namespace Crpg.Application.Common.Interfaces
         DbSet<Character> Characters { get; }
         DbSet<Item> Items { get; }
         DbSet<UserItem> UserItems { get; }
+        DbSet<Ban> Bans { get; }
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
