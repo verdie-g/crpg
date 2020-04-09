@@ -147,7 +147,7 @@ namespace Crpg.Application.Games.Commands
                     ExperienceMultiplier = Constants.DefaultExperienceMultiplier,
                 };
 
-                var items = DefaultCharacterItems[ThreadSafeRandom.Instance.Value.Next(DefaultCharacterItems.Length - 1)];
+                var items = DefaultCharacterItems[ThreadSafeRandom.Instance.Value!.Next(DefaultCharacterItems.Length - 1)];
                 var itemsIdByMdId = await _db.Items
                     .Where(i => i.MbId == items.HeadItemMbId
                                 || i.MbId == items.BodyItemMbId
@@ -156,11 +156,11 @@ namespace Crpg.Application.Games.Commands
                                 || i.MbId == items.Weapon2ItemMbId)
                     .ToDictionaryAsync(i => i.MbId, i => i.Id, cancellationToken);
 
-                c.HeadItemId = itemsIdByMdId[items.HeadItemMbId];
-                c.BodyItemId = itemsIdByMdId[items.BodyItemMbId];
-                c.LegItemId = itemsIdByMdId[items.LegItemMbId];
-                c.Weapon1ItemId = itemsIdByMdId[items.Weapon1ItemMbId];
-                c.Weapon2ItemId = itemsIdByMdId[items.Weapon2ItemMbId];
+                c.HeadItemId = itemsIdByMdId[items.HeadItemMbId!];
+                c.BodyItemId = itemsIdByMdId[items.BodyItemMbId!];
+                c.LegItemId = itemsIdByMdId[items.LegItemMbId!];
+                c.Weapon1ItemId = itemsIdByMdId[items.Weapon1ItemMbId!];
+                c.Weapon2ItemId = itemsIdByMdId[items.Weapon2ItemMbId!];
 
                 // add character items to user inventory
                 user.UserItems = itemsIdByMdId.Values.Select(itemId => new UserItem { ItemId = itemId }).ToList();

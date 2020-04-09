@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netcoreapp5.0</TargetFramework>
     <RootNamespace>Crpg.Common</RootNamespace>
     <AssemblyName>Crpg.Common</AssemblyName>
     <CodeAnalysisRuleSet>../stylecop.ruleset</CodeAnalysisRuleSet>
