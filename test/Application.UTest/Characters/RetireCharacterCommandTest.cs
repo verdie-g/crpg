@@ -46,7 +46,6 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task BadRequestIfLevelTooLow()
         {
-
             var character = _db.Characters.Add(new Character
             {
                 Level = Constants.MinimumRetiringLevel - 1,

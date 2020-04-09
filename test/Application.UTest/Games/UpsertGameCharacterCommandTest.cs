@@ -137,7 +137,7 @@ namespace Crpg.Application.UTest.Games
             Assert.NotNull(gc.Weapon1ItemMbId);
             Assert.NotNull(gc.Weapon2ItemMbId);
 
-            Assert.DoesNotThrowAsync( () => _db.Characters.FirstAsync(c => c.UserId == user.Entity.Id && c.Name == "toto"));
+            Assert.DoesNotThrowAsync(() => _db.Characters.FirstAsync(c => c.UserId == user.Entity.Id && c.Name == "toto"));
         }
 
         [Test]
