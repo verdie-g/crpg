@@ -2,18 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Xml;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
-using TaleWorlds.DotNet;
-using TaleWorlds.Engine;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.GauntletUI;
 using TaleWorlds.MountAndBlade.View;
 using Module = TaleWorlds.MountAndBlade.Module;
 using Path = System.IO.Path;
@@ -22,29 +15,28 @@ namespace Crpg.DumpItemsMod
 {
     public class DumpItemsSubModule : MBSubModuleBase
     {
-        private static readonly string OutputPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "../../Items"));
+        private const string OutputPath = "../../Items";
 
         protected override void OnSubModuleLoad()
         {
+            Directory.CreateDirectory(OutputPath);
+
             Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Dump Items", new TextObject("Dump Items"), 9990, () =>
             {
                 DumpItems();
-                InformationManager.DisplayMessage(new InformationMessage("Items exported to " + OutputPath));
+                InformationManager.DisplayMessage(new InformationMessage("Exporting items to " + Path.GetFullPath(OutputPath)));
             }, false));
         }
 
         private static void DumpItems()
         {
-            var mbItems = DeserializeMbItems("../../Modules/Native/ModuleData/mpitems.xml").ToArray();
+            var mbItems = DeserializeMbItems("../../Modules/Native/ModuleData/mpitems.xml")
+                .Where(i => i.ItemType != ItemObject.ItemTypeEnum.Shield && i.ItemType != ItemObject.ItemTypeEnum.HandArmor)
+                .ToArray();
             var crpgItems = mbItems.Select(MbToCrpgItem).OrderBy(i => i.Value);
 
-            WriteCrpgItemsToJson(crpgItems);
-
-            foreach (var mbItem in mbItems)
-            {
-                TableauCacheManager.Current.BeginCreateItemTexture(mbItem, texture =>
-                    texture.SaveToFile(Path.Combine(OutputPath, mbItem.StringId + ".png")));
-            }
+            SerializeCrpgItems(crpgItems, OutputPath);
+            GenerateItemsThumbnail(mbItems, OutputPath);
         }
 
         private static Item MbToCrpgItem(ItemObject mbItem)
@@ -175,7 +167,7 @@ namespace Crpg.DumpItemsMod
                 });
         }
 
-        private static void WriteCrpgItemsToJson(IEnumerable<Item> items)
+        private static void SerializeCrpgItems(IEnumerable<Item> items, string outputPath)
         {
             var serializer = JsonSerializer.Create(new JsonSerializerSettings
             {
@@ -183,9 +175,18 @@ namespace Crpg.DumpItemsMod
                 Formatting = Newtonsoft.Json.Formatting.Indented,
             });
 
-            Directory.CreateDirectory(OutputPath);
-            using var s = new StreamWriter(Path.Combine(OutputPath, "mpitems.json"));
+            using var s = new StreamWriter(Path.Combine(outputPath, "mpitems.json"));
             serializer.Serialize(s, items);
+        }
+
+        private static void GenerateItemsThumbnail(IEnumerable<ItemObject> mbItems, string outputPath)
+        {
+            foreach (var mbItem in mbItems)
+            {
+                // Texture.SaveToFile doesn't accept absolute paths
+                TableauCacheManager.Current.BeginCreateItemTexture(mbItem, texture =>
+                    texture.SaveToFile(Path.Combine(outputPath, mbItem.StringId + ".png")));
+            }
         }
     }
 }
