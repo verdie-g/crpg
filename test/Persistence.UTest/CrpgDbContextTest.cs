@@ -18,8 +18,8 @@ namespace Persistence.UTest
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
 
-            var dt = new DateTime(2000, 01, 02);
-            var idt = new Mock<IDateTime>();
+            var dt = new DateTimeOffset(new DateTime(2000, 01, 02));
+            var idt = new Mock<IDateTimeOffset>();
             idt.SetupGet(i => i.Now).Returns(dt);
             var db = new CrpgDbContext(options, idt.Object);
 
@@ -38,9 +38,9 @@ namespace Persistence.UTest
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
 
-            var dt1 = new DateTime(2000, 01, 02);
-            var dt2 = new DateTime(2000, 01, 03);
-            var idt = new Mock<IDateTime>();
+            var dt1 = new DateTimeOffset(new DateTime(2000, 01, 02));
+            var dt2 = new DateTimeOffset(new DateTime(2000, 01, 03));
+            var idt = new Mock<IDateTimeOffset>();
             idt.SetupSequence(i => i.Now)
                .Returns(dt1) // LastModifiedAt
                .Returns(dt1) // CreatedAt

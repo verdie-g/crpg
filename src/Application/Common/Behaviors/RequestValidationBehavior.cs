@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common.Exceptions;
 using FluentValidation;
 using MediatR;
+using ValidationException = Crpg.Application.Common.Exceptions.ValidationException;
 
 namespace Crpg.Application.Common.Behaviors
 {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using Crpg.Application.Bans.Commands;
+using Crpg.Application.Bans.Models;
 using Crpg.Application.Characters;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Characters.Queries;
@@ -212,9 +213,9 @@ namespace Crpg.Web.Controllers
         /// <response code="201">Banned.</response>
         /// <response code="400">Bad Request.</response>
         /// <response code="404">User was not found.</response>
-        [HttpPost("{id}/bans"), Authorize(Roles = "Admin")]
+        [HttpPost("{id}/bans"), Authorize(Roles = "Admin,SuperAdmin")]
         [ProducesResponseType((int)HttpStatusCode.Created)]
-        public async Task<ActionResult<ItemViewModel>> BanUser([FromRoute] int id, [FromBody] BanRequest req)
+        public async Task<ActionResult<BanViewModel>> BanUser([FromRoute] int id, [FromBody] BanRequest req)
         {
             var ban = await Mediator.Send(new BanCommand
             {

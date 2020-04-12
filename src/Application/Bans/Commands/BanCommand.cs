@@ -33,9 +33,9 @@ namespace Crpg.Application.Bans.Commands
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
-            private readonly IDateTime _dateTime;
+            private readonly IDateTimeOffset _dateTime;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, IDateTime dateTime)
+            public Handler(ICrpgDbContext db, IMapper mapper, IDateTimeOffset dateTime)
             {
                 _db = db;
                 _mapper = mapper;

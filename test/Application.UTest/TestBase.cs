@@ -20,7 +20,7 @@ namespace Crpg.Application.UTest
             var options = new DbContextOptionsBuilder<CrpgDbContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
-            _db = new CrpgDbContext(options, Mock.Of<IDateTime>());
+            _db = new CrpgDbContext(options, Mock.Of<IDateTimeOffset>());
 
             var configurationProvider = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
             _mapper = configurationProvider.CreateMapper();
