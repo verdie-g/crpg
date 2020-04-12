@@ -6,12 +6,12 @@ namespace Crpg.Application.Games.Models
 {
     public class GameCharacter : IMapFrom<Character>
     {
-        public int CharacterId { get; set; }
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public int Experience { get; set; }
         public int NextLevelExperience { get; set; }
         public int Level { get; set; }
+
 
         public string? HeadItemMbId { get; set; }
         public string? CapeItemMbId { get; set; }
@@ -28,7 +28,6 @@ namespace Crpg.Application.Games.Models
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Character, GameCharacter>()
-                .ForMember(gc => gc.CharacterId, opt => opt.MapFrom(c => c.Id))
                 .ForMember(gc => gc.NextLevelExperience,
                     opt => opt.MapFrom(c => ExperienceTable.GetExperienceForLevel(c.Level + 1)))
                 .ForMember(gc => gc.HeadItemMbId, opt => opt.MapFrom(c => c.HeadItem!.MbId))

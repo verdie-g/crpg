@@ -18,7 +18,7 @@ namespace Crpg.Infrastructure
         {
             return services
                 .AddDatadog(configuration, environment)
-                .AddTransient<IDateTime, MachineDateTime>();
+                .AddTransient<IDateTimeOffset, MachineDateTimeOffset>();
         }
 
         private static IServiceCollection AddDatadog(this IServiceCollection services, IConfiguration configuration,

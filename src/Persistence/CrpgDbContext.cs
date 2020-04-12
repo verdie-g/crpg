@@ -12,7 +12,7 @@ namespace Crpg.Persistence
 {
     public class CrpgDbContext : DbContext, ICrpgDbContext
     {
-        private readonly IDateTime? _dateTime;
+        private readonly IDateTimeOffset? _dateTime;
 
         static CrpgDbContext()
         {
@@ -26,7 +26,7 @@ namespace Crpg.Persistence
 
         public CrpgDbContext(
             DbContextOptions<CrpgDbContext> options,
-            IDateTime dateTime)
+            IDateTimeOffset dateTime)
             : base(options)
         {
             _dateTime = dateTime;

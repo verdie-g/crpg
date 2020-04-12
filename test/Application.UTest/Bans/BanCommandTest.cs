@@ -19,8 +19,8 @@ namespace Crpg.Application.UTest.Bans
             var user2 = _db.Users.Add(new User());
             await _db.SaveChangesAsync();
 
-            var dt = new Mock<IDateTime>();
-            dt.Setup(d => d.Now).Returns(new DateTime(2000, 1, 1));
+            var dt = new Mock<IDateTimeOffset>();
+            dt.Setup(d => d.Now).Returns(new DateTimeOffset(new DateTime(2000, 1, 1)));
 
             var ban = await new BanCommand.Handler(_db, _mapper, dt.Object).Handle(new BanCommand
             {
@@ -42,8 +42,8 @@ namespace Crpg.Application.UTest.Bans
             var user2 = _db.Users.Add(new User());
             await _db.SaveChangesAsync();
 
-            var dt = new Mock<IDateTime>();
-            dt.Setup(d => d.Now).Returns(new DateTime(2000, 1, 1));
+            var dt = new Mock<IDateTimeOffset>();
+            dt.Setup(d => d.Now).Returns(new DateTimeOffset(new DateTime(2000, 1, 1)));
 
             Assert.ThrowsAsync<NotFoundException>(() => new BanCommand.Handler(_db, _mapper, dt.Object).Handle(new BanCommand
             {

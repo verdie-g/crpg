@@ -14,12 +14,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Games.Commands
 {
-    public class UpsertGameCharacterCommand : IRequest<GameCharacter>
+    public class UpsertGameUserCommand : IRequest<GameUser>
     {
         public long SteamId { get; set; } = default!;
         public string CharacterName { get; set; } = default!;
 
-        public class Handler : IRequestHandler<UpsertGameCharacterCommand, GameCharacter>
+        public class Handler : IRequestHandler<UpsertGameUserCommand, GameUser>
         {
             internal static readonly GameCharacter[] DefaultCharacterItems =
             {
@@ -91,22 +91,31 @@ namespace Crpg.Application.Games.Commands
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
             private readonly IEventRaiser _events;
+            private readonly IDateTimeOffset _dateTime;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, IEventRaiser events)
+            public Handler(ICrpgDbContext db, IMapper mapper, IEventRaiser events, IDateTimeOffset dateTime)
             {
                 _db = db;
                 _mapper = mapper;
                 _events = events;
+                _dateTime = dateTime;
             }
 
-            public async Task<GameCharacter> Handle(UpsertGameCharacterCommand request, CancellationToken cancellationToken)
+            public async Task<GameUser> Handle(UpsertGameUserCommand request, CancellationToken cancellationToken)
             {
                 var user = await _db.Users
                     .Where(u => u.SteamId == request.SteamId)
                     // https://github.com/dotnet/efcore/issues/1833#issuecomment-603543685
                     // .Include(u => u.Characters.Where(c => c.Name == request.CharacterName))
+                    // .Include(u => u.Bans.OrderByDescending(b => b.Id).Take(1))
                     .Include(u => u.Characters)
+                    .Include(u => u.Bans)
                     .FirstOrDefaultAsync(cancellationToken);
+
+                // remove once above fixed
+                var bans = user != null
+                    ? user.Bans.OrderByDescending(b => b.Id).Take(1).ToList()
+                    : new List<Ban>();
 
                 if (user == null)
                 {
@@ -115,7 +124,6 @@ namespace Crpg.Application.Games.Commands
                         SteamId = request.SteamId,
                         Gold = Constants.StartingGold,
                         Role = Constants.DefaultRole,
-                        Characters = new List<Character>(),
                     };
 
                     await AddNewCharacterToUser(user, request.CharacterName, cancellationToken);
@@ -134,7 +142,11 @@ namespace Crpg.Application.Games.Commands
                     await _db.SaveChangesAsync(cancellationToken);
                 }
 
-                return _mapper.Map<GameCharacter>(user.Characters[0]);
+                var gu = _mapper.Map<GameUser>(user);
+                gu.Ban = bans.Count != 0 && bans[0].Until > _dateTime.Now
+                    ? _mapper.Map<GameBan>(bans[0])
+                    : null;
+                return gu;
             }
 
             private async Task AddNewCharacterToUser(User user, string name, CancellationToken cancellationToken)
