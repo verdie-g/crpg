@@ -1,4 +1,4 @@
-﻿namespace Crpg.BattleMod
+﻿namespace Crpg.GameMod
 {
     /// <summary>
     /// Crpg item. Should be indentical to Crpg.Application.Items.Models.ItemCreation.

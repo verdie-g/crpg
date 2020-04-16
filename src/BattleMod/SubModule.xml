@@ -12,7 +12,7 @@
 	<SubModules>
 		<SubModule>
 			<Name value="cRPG"/>
-			<DLLName value="Crpg.BattleMod.dll"/>
+			<DLLName value="Crpg.GameMod.dll"/>
 			<SubModuleClassType value="Crpg.CrpgSubModule"/>
 			<Tags>
 				<Tag key="DedicatedServerType" value="none" />

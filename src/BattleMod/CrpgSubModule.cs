@@ -11,7 +11,7 @@ using TaleWorlds.MountAndBlade.View;
 using Module = TaleWorlds.MountAndBlade.Module;
 using Path = System.IO.Path;
 
-namespace Crpg.BattleMod
+namespace Crpg.GameMod
 {
     public class CrpgSubModule : MBSubModuleBase
     {
