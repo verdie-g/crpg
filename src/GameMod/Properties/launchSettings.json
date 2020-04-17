@@ -1,10 +1,12 @@
 {
+  "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
     "GameMod": {
       "commandName": "Executable",
-      "executablePath": "D:\\jeu\\steam\\SteamApps\\common\\Mount & Blade II Bannerlord\\bin\\Win64_Shipping_Client\\Bannerlord.exe",
+      "executablePath": "%MB_PATH%\\bin\\Win64_Shipping_Client\\Bannerlord.exe",
       "commandLineArgs": "/singleplayer _MODULES_*Native*cRPG*_MODULES_",
-      "workingDirectory": "D:\\jeu\\steam\\SteamApps\\common\\Mount & Blade II Bannerlord\\bin\\Win64_Shipping_Client"
+      "workingDirectory": "%MB_PATH%\\bin\\Win64_Shipping_Client",
+      "nativeDebugging": true
     }
   }
 }
