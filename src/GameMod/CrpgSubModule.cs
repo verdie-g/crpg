@@ -27,12 +27,12 @@ namespace Crpg.GameMod
         {
             base.OnMissionBehaviourInitialize(mission);
             mission.AddMissionBehaviour(new MissionComponent());
-           
         }
+
         protected override void OnSubModuleLoad()
         {
             InformationManager.DisplayMessage(new InformationMessage("Exporting items to " + Path.GetFullPath(OutputPath)));
-          
+
             Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Dump Items", new TextObject("Dump Items"), 9990, () =>
             {
                 DumpItems();
