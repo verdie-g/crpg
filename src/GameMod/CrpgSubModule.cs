@@ -55,7 +55,7 @@ namespace Crpg.GameMod
         protected override void OnSubModuleLoad()
         {
             InformationManager.DisplayMessage(new InformationMessage("OnSubModuleLoad"));
-            Module.CurrentModule.AddMultiplayerGameMode(new PeaceMissionBasedMultiplayerGamemode("PeaceGameMode"));
+            Module.CurrentModule.AddMultiplayerGameMode(new BattleMissionBasedMultiplayerGamemode("Battle"));
 
             Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "PeaceGameMode").Scenes.Add("mp_tdm_map_001_spring");
             base.OnSubModuleLoad();
