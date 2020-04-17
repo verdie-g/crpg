@@ -17,10 +17,22 @@ namespace Crpg.GameMod
     {
         private const string OutputPath = "../../Items";
 
+        public override void OnMultiplayerGameStart(Game game, object starterObject)
+        {
+            base.OnMultiplayerGameStart(game, starterObject);
+            game.AddGameHandler<OfflineMultiplayerGameHandler>();
+        }
+
+        public override void OnMissionBehaviourInitialize(Mission mission)
+        {
+            base.OnMissionBehaviourInitialize(mission);
+            mission.AddMissionBehaviour(new MissionComponent());
+           
+        }
         protected override void OnSubModuleLoad()
         {
             InformationManager.DisplayMessage(new InformationMessage("Exporting items to " + Path.GetFullPath(OutputPath)));
-
+          
             Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Dump Items", new TextObject("Dump Items"), 9990, () =>
             {
                 DumpItems();

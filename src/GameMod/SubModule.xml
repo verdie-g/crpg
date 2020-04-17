@@ -3,7 +3,7 @@
 	<Name value="cRPG"/>
 	<Id value="cRPG"/>
 	<Version value="v0.0.1"/>
-	<SingleplayerModule value="false"/>
+	<SingleplayerModule value="true"/>
 	<MultiplayerModule value="true"/>
 	<DependedModules>
 		<DependedModule Id="Native"/>
@@ -13,7 +13,7 @@
 		<SubModule>
 			<Name value="cRPG"/>
 			<DLLName value="Crpg.GameMod.dll"/>
-			<SubModuleClassType value="Crpg.CrpgSubModule"/>
+			<SubModuleClassType value="Crpg.GameMod.CrpgSubModule"/>
 			<Tags>
 				<Tag key="DedicatedServerType" value="none" />
 				<Tag key="IsNoRenderModeElement" value="false" />

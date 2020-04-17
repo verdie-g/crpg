@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.UTest", "test\Common
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DumpItemsMod", "src\DumpItemsMod\DumpItemsMod.csproj", "{A2E2C023-98B6-4309-9F95-1C3E51F58A1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleMod", "src\BattleMod\BattleMod.csproj", "{A73A9C6E-6696-4503-B84E-95698C105DFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameMod", "src\GameMod\GameMod.csproj", "{A73A9C6E-6696-4503-B84E-95698C105DFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
