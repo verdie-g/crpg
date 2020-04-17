@@ -211,6 +211,16 @@ namespace Crpg.Application.System.Commands
                     },
                     new Item
                     {
+                        MbId = "mp_rough_tied_boots",
+                        Name = "Rough Tied Boots",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_rough_tied_boots"),
+                        Value = 1,
+                        Type = ItemType.LegArmor,
+                        Weight = 0.9f,
+                        LegArmor = 9
+                    },
+                    new Item
+                    {
                         MbId = "mp_leather_shoes",
                         Name = "Leather Shoes",
                         Image = new Uri("https://via.placeholder.com/256x120?text=mp_leather_shoes"),
@@ -546,6 +556,24 @@ namespace Crpg.Application.System.Commands
                         PrimaryThrustDamage = 85,
                         PrimaryThrustSpeed = 85,
                         PrimaryWeaponFlags = (WeaponFlags?)2360338,
+                    },
+                    new Item
+                    {
+                      MbId = "mp_khuzait_sichel",
+                      Name = "Eastern Short Sickle",
+                      Value = 1,
+                      Type = ItemType.OneHandedWeapon,
+                      Weight = 1.16f,
+                      BodyArmor = 0,
+                      SwingDamageType = 0,
+                      Accuracy = 0,
+                      MissileSpeed = 0,
+                      StackAmount = 0,
+                      WeaponLength = 112,
+                      PrimarySwingDamage = 52,
+                      PrimarySwingSpeed = 93,
+                      PrimaryHandling = 90,
+                      PrimaryWeaponFlags = (WeaponFlags?)65537
                     },
                     new Item
                     {
