@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DumpItemsMod": {
+      "commandName": "Executable",
+      "executablePath": "D:\\jeu\\steam\\SteamApps\\common\\Mount & Blade II Bannerlord\\bin\\Win64_Shipping_Client\\Bannerlord.exe",
+      "commandLineArgs": "/singleplayer _MODULES_*Native*cRPG2*_MODULES_",
+      "workingDirectory": "D:\\jeu\\steam\\SteamApps\\common\\Mount & Blade II Bannerlord\\bin\\Win64_Shipping_Client"
+    }
+  }
+}
