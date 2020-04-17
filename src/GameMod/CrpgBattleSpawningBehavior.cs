@@ -9,9 +9,9 @@ using TaleWorlds.MountAndBlade;
 
 namespace Crpg.GameMod
 {
-	public class BattleSpawningBehavior : SpawningBehaviourBase
+	public class CrpgBattleSpawningBehavior : SpawningBehaviourBase
 	{
-		public BattleSpawningBehavior()
+		public CrpgBattleSpawningBehavior()
 		{
 			this._spawnCheckTimer = new Timer(MBCommon.GetTime(MBCommon.TimeType.Mission), 0.2f, true);
 			this.IsSpawningEnabled = true;
@@ -33,7 +33,7 @@ namespace Crpg.GameMod
 		{
 			if (this.IsSpawningEnabled && this._spawnCheckTimer.Check(MBCommon.GetTime(MBCommon.TimeType.Mission)))
 			{
-				this.SpawnItems();
+				this.SpawnAgents();
 			}
 			base.OnTick(dt);
 		}

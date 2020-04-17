@@ -13,9 +13,9 @@ namespace Crpg.GameMod
 {
     
     [MissionManager]
-    public class BattleMissionBasedMultiplayerGamemode : MissionBasedMultiplayerGameMode
+    public class CrpgBattleMissionBasedMultiplayerGamemode : MissionBasedMultiplayerGameMode
     {
-        public BattleMissionBasedMultiplayerGamemode(string name) : base(name)
+        public CrpgBattleMissionBasedMultiplayerGamemode(string name) : base(name)
         {
         }
 
@@ -27,31 +27,31 @@ namespace Crpg.GameMod
         }
         public override void StartMultiplayerGame(string scene)
         {
-            if (base.Name == "Battle")
+            if (base.Name == "CrpgBattle")
             {
 
-	            ScoreboardFactory.Register("Battle", new BattleModeScoreData());
-                OpenBattleMission(scene);
+	            ScoreboardFactory.Register("CrpgBattle", new CrpgBattleModeScoreData());
+                OpenCrpgBattleMission(scene);
                 return;
             }
          
         }
 
         [MissionMethod]
-        public static void OpenBattleMission(string scene)
+        public static void OpenCrpgBattleMission(string scene)
         {
-            MissionState.OpenNew("MultiplayerTeamDeathmatch", new MissionInitializerRecord(scene), delegate (Mission missionController)
+            MissionState.OpenNew("CrpgBattle", new MissionInitializerRecord(scene), delegate (Mission missionController)
             {
                 if (GameNetwork.IsServer)
                 {
                     return new MissionBehaviour[]
                     {
                             (MissionBehaviour)MissionLobbyComponent.CreateBehaviour(),
-                            new MissionMultiplayerBattle(),
-                            new MissionMultiplayerBattleClient(),
+                            new MissionMultiplayerCrpgBattle(),
+                            new MissionMultiplayerCrpgBattleClient(),
                             new MultiplayerTimerComponent(),
                             new MultiplayerMissionAgentVisualSpawnComponent(),
-                            new SpawnComponent((SpawnFrameBehaviourBase)new TeamDeathmatchSpawnFrameBehavior(), new BattleSpawningBehavior()),
+                            new SpawnComponent((SpawnFrameBehaviourBase)new TeamDeathmatchSpawnFrameBehavior(), new CrpgBattleSpawningBehavior()),
                             new MissionLobbyEquipmentNetworkComponent(),
                             new MultiplayerTeamSelectComponent(),
                             new MissionHardBorderPlacer(),
@@ -61,7 +61,7 @@ namespace Crpg.GameMod
                             new MultiplayerAdminComponent(),
                             new MultiplayerGameNotificationsComponent(),
                             new MissionOptionsComponent(),
-                            new MissionScoreboardComponent("Battle"),
+                            new MissionScoreboardComponent("CrpgBattle"),
                             new AgentBattleAILogic(),
                             new AgentFadeOutLogic()
                     };
@@ -80,18 +80,18 @@ namespace Crpg.GameMod
                     new MultiplayerPollComponent(),
                     new MultiplayerGameNotificationsComponent(),
                     new MissionOptionsComponent(),
-                    new MissionScoreboardComponent("Battle")
+                    new MissionScoreboardComponent("CrpgBattle")
                 };
             }, true, true, false);
         }
     }
 }
 
-class BattleMissionOptionsComponent : MissionOptionsComponent
+class CrpgBattleMissionOptionsComponent : MissionOptionsComponent
 {
     public new void OnAddOptionsUIHandler()
     {
-        Debug.DebugManager.Print("BattleMissionOptionsComponent::OnAddOptionsUIHandler");
+        Debug.DebugManager.Print("CrpgBattleMissionOptionsComponent::OnAddOptionsUIHandler");
         base.OnAddOptionsUIHandler();
     }
 }
@@ -100,7 +100,7 @@ class BattleMissionOptionsComponent : MissionOptionsComponent
 public class MultiplayerMissionViews
 {
 
-	[ViewMethod("Battle")]
+	[ViewMethod("CrpgBattle")]
 	public static MissionView[] OpenTeamDeathmatchMission(Mission mission)
 	{
 	    List<MissionView> list = new List<MissionView>();
@@ -110,7 +110,7 @@ public class MultiplayerMissionViews
 	    list.Add(ViewCreator.CreateMissionKillNotificationUIHandler());
 	    list.Add(ViewCreator.CreateMissionAgentStatusUIHandler(mission));
 	    list.Add(ViewCreator.CreateMissionMainAgentEquipmentController(mission));
-	    list.Add(ViewCreator.CreateMissionMultiplayerEscapeMenu("Battle"));
+	    list.Add(ViewCreator.CreateMissionMultiplayerEscapeMenu("CrpgBattle"));
 	    list.Add(ViewCreator.CreateMissionScoreBoardUIHandler(mission, false));
 	    list.Add(ViewCreator.CreateMultiplayerEndOfRoundUIHandler());
 	    list.Add(ViewCreator.CreateLobbyEquipmentUIHandler());

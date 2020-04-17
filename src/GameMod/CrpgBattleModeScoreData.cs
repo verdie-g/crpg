@@ -5,7 +5,7 @@ using TaleWorlds.MountAndBlade.Diamond;
 
 namespace Crpg.GameMod
 {
-    public class BattleModeScoreData : IScoreboardData
+    public class CrpgBattleModeScoreData : IScoreboardData
     {
         public MissionScoreboardComponent.ScoreboardHeader[] GetScoreboardHeaders()
         {

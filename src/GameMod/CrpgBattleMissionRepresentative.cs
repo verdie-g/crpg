@@ -6,7 +6,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace Crpg.GameMod
 {
-    public class BattleMissionRepresentative: MissionRepresentativeBase
+    public class CrpgBattleMissionRepresentative: MissionRepresentativeBase
 
     {
 

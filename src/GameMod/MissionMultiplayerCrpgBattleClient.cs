@@ -7,7 +7,7 @@ using TaleWorlds.MountAndBlade.Network.Messages;
 
 namespace Crpg.GameMod
 {
-    public class MissionMultiplayerBattleClient : MissionMultiplayerGameModeBaseClient
+    public class MissionMultiplayerCrpgBattleClient : MissionMultiplayerGameModeBaseClient
     {
 		public event Action<TDMGoldGain> OnGoldGainEvent;
 
@@ -39,7 +39,7 @@ namespace Crpg.GameMod
 		{
 			get
 			{
-				return MissionLobbyComponent.MultiplayerGameType.Battle;
+				return MissionLobbyComponent.MultiplayerGameType.TeamDeathmatch;
 			}
 		}
 
@@ -60,10 +60,10 @@ namespace Crpg.GameMod
 		}
 
 
-		public override void AfterStart()
+		/*public override void AfterStart()
 		{
 			base.Mission.SetMissionMode(MissionMode.Battle, true);
-		}
+		}*/
 
 		protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
 		{
@@ -95,7 +95,7 @@ namespace Crpg.GameMod
 		{
 			if (component.IsMine && component is MissionRepresentativeBase)
 			{
-				this._myRepresentative = (component as BattleMissionRepresentative);
+				this._myRepresentative = (component as CrpgBattleMissionRepresentative);
 			}
 		}
 
@@ -127,6 +127,6 @@ namespace Crpg.GameMod
 			NetworkCommunicator.OnPeerComponentAdded -= this.OnPeerComponentAdded;
 		}
 
-		private BattleMissionRepresentative _myRepresentative;
+		private CrpgBattleMissionRepresentative _myRepresentative;
 	}
 }

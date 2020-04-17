@@ -7,7 +7,7 @@ using TaleWorlds.MountAndBlade.MissionRepresentatives;
 
 namespace Crpg.GameMod
 {
-    public class MissionMultiplayerBattle :  MissionMultiplayerGameModeBase
+    public class MissionMultiplayerCrpgBattle : MissionMultiplayerGameModeBase
     {      
       	public override bool IsGameModeHidingAllAgentVisuals
       	{
@@ -19,8 +19,8 @@ namespace Crpg.GameMod
       
       	public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
       	{
-      		return MissionLobbyComponent.MultiplayerGameType.Battle;
-      	}
+      		return MissionLobbyComponent.MultiplayerGameType.TeamDeathmatch;
+        }
       
       	public override void OnBehaviourInitialize()
       	{
@@ -48,9 +48,9 @@ namespace Crpg.GameMod
       
       	protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
       	{
-      		networkPeer.AddComponent<BattleMissionRepresentative>();
+      		networkPeer.AddComponent<CrpgBattleMissionRepresentative>();
             //base.ChangeCurrentGoldForPeer(networkPeer.GetComponent<MissionPeer>(), 120);
-            //this.GameModeBaseClient.OnGoldAmountChangedForRepresentative(networkPeer.GetComponent<BattleMissionRepresentative>(), 120);
+            //this.GameModeBaseClient.OnGoldAmountChangedForRepresentative(networkPeer.GetComponent<CrpgBattleMissionRepresentative>(), 120);
 
         }
 
