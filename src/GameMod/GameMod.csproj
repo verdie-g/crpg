@@ -26,6 +26,7 @@
 
 	<!-- MB_PATH should be set in your environment variables -->
 	<ItemGroup>
+		<Reference Include="System.Net.Http" />
 		<Reference Include="TaleWorlds.BattlEye.Client">
 			<HintPath>$(MB_PATH)\bin\Win64_Shipping_Client\TaleWorlds.BattlEye.Client.dll</HintPath>
 		</Reference>
