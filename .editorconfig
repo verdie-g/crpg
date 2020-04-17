@@ -1,0 +1,37 @@
+﻿[*.cs]
+
+# SA1027: Use tabs correctly
+dotnet_diagnostic.SA1027.severity = none
+
+# CS8602: Déréférencement d'une éventuelle référence null.
+dotnet_diagnostic.CS8602.severity = none
+
+# CS8600: Conversion de littéral ayant une valeur null ou d'une éventuelle valeur null en type non-nullable.
+dotnet_diagnostic.CS8600.severity = none
+
+# CS8618: Le champ non-nullable n'est pas initialisé. Déclarez-le comme étant nullable.
+dotnet_diagnostic.CS8618.severity = none
+
+# CS8603: Existence possible d'un retour de référence null.
+dotnet_diagnostic.CS8603.severity = none
+
+# IDE0003: Supprimer une qualification
+dotnet_style_qualification_for_event = false:none
+
+# IDE0003: Supprimer une qualification
+dotnet_style_qualification_for_field = false:none
+
+# IDE0003: Supprimer une qualification
+dotnet_style_qualification_for_method = false:none
+
+# IDE0003: Supprimer une qualification
+dotnet_style_qualification_for_property = false:none
+
+# CS8601: Existence possible d'une assignation de référence null.
+dotnet_diagnostic.CS8601.severity = none
+
+# SA1119: Statement should not use unnecessary parenthesis
+dotnet_diagnostic.SA1119.severity = none
+
+# IDE0047: Supprimer les parenthèses inutiles
+dotnet_diagnostic.IDE0047.severity = none

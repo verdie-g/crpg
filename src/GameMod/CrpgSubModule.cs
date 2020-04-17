@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Xml;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
@@ -10,37 +11,63 @@ using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View;
 using Module = TaleWorlds.MountAndBlade.Module;
 using Path = System.IO.Path;
+using Steamworks;
 
 namespace Crpg.GameMod
 {
     public class CrpgSubModule : MBSubModuleBase
     {
+        [DllImport("Rgl.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "?toggle_imgui_console_visibility@rglCommand_line_manager@@QEAAXXZ")]
+        public static extern void Toggle_imgui_console_visibility(UIntPtr x);
+
+
         private const string OutputPath = "../../Items";
 
+        public override void BeginGameStart(Game game)
+        {
+            InformationManager.DisplayMessage(new InformationMessage("BeginGameStart"));
+            base.BeginGameStart(game);
+        }
         public override void OnMultiplayerGameStart(Game game, object starterObject)
         {
+            InformationManager.DisplayMessage(new InformationMessage("OnMultiplayerGameStart"));
             base.OnMultiplayerGameStart(game, starterObject);
             game.AddGameHandler<OfflineMultiplayerGameHandler>();
         }
+        public override void OnGameInitializationFinished(Game game)
+        {
+            InformationManager.DisplayMessage(new InformationMessage("OnGameInitializationFinished"));
+            base.OnGameInitializationFinished(game);
+        }
+
+        
 
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
+            InformationManager.DisplayMessage(new InformationMessage("OnMissionBehaviourInitialize"));
+            string name = SteamFriends.GetPersonaName();
+            InformationManager.DisplayMessage(new InformationMessage("OnAgentCreated" + name));
+            string steamid = SteamUser.GetSteamID().ToString();
+            InformationManager.DisplayMessage(new InformationMessage("OnAgentCreated" + steamid));
             base.OnMissionBehaviourInitialize(mission);
             mission.AddMissionBehaviour(new MissionComponent());
-           
         }
         protected override void OnSubModuleLoad()
         {
-            InformationManager.DisplayMessage(new InformationMessage("Exporting items to " + Path.GetFullPath(OutputPath)));
-          
-            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Dump Items", new TextObject("Dump Items"), 9990, () =>
+            InformationManager.DisplayMessage(new InformationMessage("OnSubModuleLoad"));
+            Module.CurrentModule.AddMultiplayerGameMode(new PeaceMissionBasedMultiplayerGamemode("PeaceGameMode"));
+
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "PeaceGameMode").Scenes.Add("mp_tdm_map_001_spring");
+            base.OnSubModuleLoad();
+
+            /*Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Dump Items", new TextObject("Dump Items"), 9990, () =>
             {
                 DumpItems();
                 InformationManager.DisplayMessage(new InformationMessage("Exporting items to " + Path.GetFullPath(OutputPath)));
-            }, false));
+            }, false));*/
         }
 
-        private static void DumpItems()
+       /* public static void DumpItems()
         {
             var mbItems = DeserializeMbItems("../../Modules/Native/ModuleData/mpitems.xml")
                 .Where(i => i.ItemType != ItemObject.ItemTypeEnum.Shield && i.ItemType != ItemObject.ItemTypeEnum.HandArmor)
@@ -199,6 +226,6 @@ namespace Crpg.GameMod
                 TableauCacheManager.Current.BeginCreateItemTexture(mbItem, texture =>
                     texture.SaveToFile(Path.Combine(outputPath, mbItem.StringId + ".png")));
             }
-        }
+        }*/
     }
 }

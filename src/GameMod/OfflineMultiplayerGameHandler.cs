@@ -8,6 +8,11 @@ namespace Crpg.GameMod
 	internal class OfflineMultiplayerGameHandler : GameHandler
 	{
 
+		protected override void OnGameStart()
+		{
+			base.OnGameStart();
+			InformationManager.DisplayMessage(new InformationMessage("OnGameStart"));
+		}
 		protected override void OnEarlyPlayerConnect(VirtualPlayer peer)
 		{
 			base.OnEarlyPlayerConnect(peer);
@@ -35,14 +40,11 @@ namespace Crpg.GameMod
 		protected override void OnTick()
 		{
 			base.OnTick();
-			/*InformationManager.DisplayMessage(new InformationMessage("OnTick "));
-
-			
 			bool flag = NetworkMain.GameClient.IsInGame && (NetworkMain.GameClient.IsHostingCustomGame || Input.IsKeyDown(InputKey.F12)) && Mission.Current != null && Mission.Current.IsLoadingFinished && !Mission.Current.HasMissionBehaviour<CombatTestMissionController>();
 			if (flag)
 			{
 				Mission.Current.AddMissionBehaviour(new CombatTestMissionController());
-			}*/
+			}
 		}
 
 

@@ -10,6 +10,11 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.PlatformService;
+using TaleWorlds.PlatformService.Steam;
+using TaleWorlds.PlayerServices;
+using TaleWorlds.Diamond.AccessProvider.Steam;
+using Steamworks;
 
 namespace Crpg.GameMod
 {
@@ -18,10 +23,17 @@ namespace Crpg.GameMod
 
 		//OnAgentCreated/AgentBuild/OnAgentDeleted
 
+		/*public override void OnAfterMissionCreated()
+		{
+			base.OnAfterMissionCreated();
+			InformationManager.DisplayMessage(new InformationMessage("OnAfterMissionCreated"));
+		}*/
 		public override void OnAgentCreated(Agent agent)
 		{
 			base.OnAgentCreated(agent);
 			InformationManager.DisplayMessage(new InformationMessage("OnAgentCreated"));
+			bool isFemale = agent.IsFemale;
+			InformationManager.DisplayMessage(new InformationMessage("OnAgentCreated" + isFemale));
 			/*CampaignAgentComponent agentComponent = new CampaignAgentComponent(agent);
 			agent.AddComponent(agentComponent);
 			if (agent.Character != null)
@@ -34,11 +46,11 @@ namespace Crpg.GameMod
 				}
 			}*/
 		}
-		public override void OnAgentDeleted(Agent agent)
+		/*public override void OnAgentDeleted(Agent agent)
 		{
 			base.OnAgentDeleted(agent);
 			InformationManager.DisplayMessage(new InformationMessage("OnAgentDeleted"));
-		}
+		}*/
 		public override void OnAgentBuild(Agent agent, Banner banner)
 		{
 			base.OnAgentBuild(agent, banner);
@@ -70,12 +82,14 @@ namespace Crpg.GameMod
 		// Token: 0x060002C3 RID: 707 RVA: 0x00017032 File Offset: 0x00015232
 		public override void OnCreated()
 		{
+			InformationManager.DisplayMessage(new InformationMessage("OnCreated"));
 		}
 
 		// Token: 0x060002C4 RID: 708 RVA: 0x0001704C File Offset: 0x0001524C
 		public override void OnBehaviourInitialize()
 		{
 			base.OnBehaviourInitialize();
+			InformationManager.DisplayMessage(new InformationMessage("OnBehaviourInitialize"));
 		}
 
 		// Token: 0x060002C5 RID: 709 RVA: 0x00017064 File Offset: 0x00015264
