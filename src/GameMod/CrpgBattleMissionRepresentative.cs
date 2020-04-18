@@ -9,25 +9,43 @@ namespace Crpg.GameMod
     public class CrpgBattleMissionRepresentative: MissionRepresentativeBase
 
     {
-
-		public override void OnAgentInteraction(Agent targetAgent)
-		{
-		}
-
 		public override bool IsThereAgentAction(Agent targetAgent)
 		{
 			return false;
 		}
-
-		public override void OnAgentSpawned()
+		public override void OnAgentInteraction(Agent targetAgent)
+		{
+		}
+		public int GetGoldAmountForVisual()
+		{
+			if (base.Gold < 0)
+			{
+				return 0;
+			}
+			return base.Gold;
+		}
+		public void UpdateSelectedClassServer(Agent agent)
+		{
+			this._survivedLastRound = (agent != null);
+		}
+		public bool CheckIfSurvivedLastRoundAndReset()
+		{
+			bool survivedLastRound = this._survivedLastRound;
+			this._survivedLastRound = false;
+			return survivedLastRound;
+		}
+		/*public override void OnAgentSpawned()
 		{
 			//this._currentGoldGains = (GoldGainFlags)0;
 			this._killCountOnSpawn = base.MissionPeer.KillCount;
 			this._assistCountOnSpawn = base.MissionPeer.AssistCount;
-		}
+		}*/
 
-		// Token: 0x06002BEC RID: 11244 RVA: 0x000AC6F4 File Offset: 0x000AA8F4
-		public int GetGoldGainsFromKillDataAndUpdateFlags(MultiplayerClassDivisions.MPHeroClass victimClass, bool isAssist, bool isRanged)
+		// Token: 0x04001289 RID: 4745
+		private bool _survivedLastRound;
+
+	
+		/*public int GetGoldGainsFromKillDataAndUpdateFlags(MultiplayerClassDivisions.MPHeroClass victimClass, bool isAssist, bool isRanged)
 		{
 			int num = 0;
 			List<KeyValuePair<ushort, int>> list = new List<KeyValuePair<ushort, int>>();
@@ -144,12 +162,12 @@ namespace Crpg.GameMod
 		private const int TenthKillGold = 30;
 
 		// Token: 0x0400129B RID: 4763
-		private GoldGainFlags _currentGoldGains;
+		private GoldGainFlags _currentGoldGains;*/
 
 		// Token: 0x0400129C RID: 4764
-		private int _killCountOnSpawn;
+		//private int _killCountOnSpawn;
 
 		// Token: 0x0400129D RID: 4765
-		private int _assistCountOnSpawn;
+		//private int _assistCountOnSpawn;
 	}
-    }
+}

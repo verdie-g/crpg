@@ -32,7 +32,7 @@ namespace Crpg.GameMod
         {
             InformationManager.DisplayMessage(new InformationMessage("OnMultiplayerGameStart"));
             base.OnMultiplayerGameStart(game, starterObject);
-            game.AddGameHandler<OfflineMultiplayerGameHandler>();
+            //game.AddGameHandler<OfflineMultiplayerGameHandler>();
         }
         public override void OnGameInitializationFinished(Game game)
         {
@@ -50,14 +50,15 @@ namespace Crpg.GameMod
             string steamid = SteamUser.GetSteamID().ToString();
             InformationManager.DisplayMessage(new InformationMessage("OnAgentCreated" + steamid));
             base.OnMissionBehaviourInitialize(mission);
-            mission.AddMissionBehaviour(new MissionComponent());
+            //mission.AddMissionBehaviour(new MissionComponent());
         }
         protected override void OnSubModuleLoad()
         {
             InformationManager.DisplayMessage(new InformationMessage("OnSubModuleLoad"));
-            Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleMissionBasedMultiplayerGamemode("CrpgBattle"));
+            Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleMissionBasedMultiplayerGamemode("ClassicBattle"));
+            InformationManager.DisplayMessage(new InformationMessage("ClassicBattle"));
 
-            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "CrpgBattle").Scenes.Add("mp_tdm_map_001_spring");
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_skirmish_map_002f");
             base.OnSubModuleLoad();
 
             /*Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Dump Items", new TextObject("Dump Items"), 9990, () =>

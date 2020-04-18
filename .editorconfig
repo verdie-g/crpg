@@ -35,3 +35,9 @@ dotnet_diagnostic.SA1119.severity = none
 
 # IDE0047: Supprimer les parenthèses inutiles
 dotnet_diagnostic.IDE0047.severity = none
+
+# CS8625: Impossible de convertir un littéral ayant une valeur null en type référence non-nullable.
+dotnet_diagnostic.CS8625.severity = none
+
+# CS8604: Existence possible d'un argument de référence null.
+dotnet_diagnostic.CS8604.severity = none

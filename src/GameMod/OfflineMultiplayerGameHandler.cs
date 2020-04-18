@@ -28,16 +28,13 @@ namespace Crpg.GameMod
 			base.OnPlayerDisconnect(peer);
 			InformationManager.DisplayMessage(new InformationMessage("OnPlayerDisconnect "));
 		}
-
-		
 		public override void OnBeforeSave()
 		{
 		}
 		public override void OnAfterSave()
 		{
 		}
-
-		protected override void OnTick()
+		/*protected override void OnTick()
 		{
 			base.OnTick();
 			bool flag = NetworkMain.GameClient.IsInGame && (NetworkMain.GameClient.IsHostingCustomGame || Input.IsKeyDown(InputKey.F12)) && Mission.Current != null && Mission.Current.IsLoadingFinished && !Mission.Current.HasMissionBehaviour<CombatTestMissionController>();
@@ -45,8 +42,6 @@ namespace Crpg.GameMod
 			{
 				Mission.Current.AddMissionBehaviour(new CombatTestMissionController());
 			}
-		}
-
-
+		}*/
 	}
 }
