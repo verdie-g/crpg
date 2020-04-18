@@ -13,7 +13,7 @@ namespace Crpg.GameMod.Api
     /// <summary>
     /// Client for Crpg.Web.Controllers.GamesController.
     /// </summary>
-    internal class CrpgClient
+    internal class CrpgClient : ICrpgClient
     {
         private readonly HttpClient _httpClient;
 
