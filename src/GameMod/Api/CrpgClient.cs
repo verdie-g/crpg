@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 namespace Crpg.GameMod.Api
 {
     /// <summary>
-    /// Client for Crpg.Web.Controllers.GamesController.
+    /// Client for Crpg.WebApi.Controllers.GamesController.
     /// </summary>
     internal class CrpgClient : ICrpgClient
     {

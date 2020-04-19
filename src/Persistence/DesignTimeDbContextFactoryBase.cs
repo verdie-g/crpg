@@ -14,7 +14,7 @@ namespace Crpg.Persistence
 
         public TContext CreateDbContext(string[] args)
         {
-            var basePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "..", "Web"));
+            var basePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "..", "WebApi"));
             return Create(basePath, Environment.GetEnvironmentVariable(AspNetCoreEnvironment)
                 ?? throw new InvalidOperationException($"{AspNetCoreEnvironment} variable is not set"));
         }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Crpg.Web.Controllers
+namespace Crpg.WebApi.Controllers
 {
     public class AuthController : BaseController
     {

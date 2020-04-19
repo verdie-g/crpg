@@ -14,8 +14,8 @@ using Crpg.Application.Steam;
 using Crpg.Application.Users.Commands;
 using Crpg.Infrastructure;
 using Crpg.Persistence;
-using Crpg.Web.Common;
-using Crpg.Web.Services;
+using Crpg.WebApi.Common;
+using Crpg.WebApi.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -29,7 +29,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Crpg.Web
+namespace Crpg.WebApi
 {
     public class Startup
     {

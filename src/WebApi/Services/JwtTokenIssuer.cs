@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Crpg.Web.Services
+namespace Crpg.WebApi.Services
 {
     public class JwtTokenIssuer : ITokenIssuer
     {
