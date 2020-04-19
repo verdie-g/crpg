@@ -76,9 +76,6 @@ namespace Crpg.GameMod
 				this.HandleAnimations();
 			}*/
 		}
-
-
-
 		// Token: 0x060002C3 RID: 707 RVA: 0x00017032 File Offset: 0x00015232
 		public override void OnCreated()
 		{
@@ -100,9 +97,6 @@ namespace Crpg.GameMod
 		// Token: 0x060002C8 RID: 712 RVA: 0x0001715F File Offset: 0x0001535F
 		protected override void OnEndMission()
 		{
-	
 		}
-
-
 	}
 }

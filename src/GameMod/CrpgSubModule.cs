@@ -39,9 +39,6 @@ namespace Crpg.GameMod
             InformationManager.DisplayMessage(new InformationMessage("OnGameInitializationFinished"));
             base.OnGameInitializationFinished(game);
         }
-
-        
-
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
             InformationManager.DisplayMessage(new InformationMessage("OnMissionBehaviourInitialize"));
@@ -59,6 +56,7 @@ namespace Crpg.GameMod
             InformationManager.DisplayMessage(new InformationMessage("ClassicBattle"));
 
             Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_skirmish_map_002f");
+
             base.OnSubModuleLoad();
 
             /*Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Dump Items", new TextObject("Dump Items"), 9990, () =>

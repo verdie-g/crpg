@@ -85,7 +85,7 @@ namespace Crpg.GameMod
       	{
             if (oldTeam != null && oldTeam != newTeam)
             {
-                base.ChangeCurrentGoldForPeer(peer.GetComponent<MissionPeer>(), 100);
+                base.ChangeCurrentGoldForPeer(peer.GetComponent<MissionPeer>(), 0);
             }
         }
         //++
@@ -179,7 +179,7 @@ namespace Crpg.GameMod
             }*/
             bool flag = base.Mission.AttackerTeam.ActiveAgents.Count > 0;
             bool flag2 = base.Mission.DefenderTeam.ActiveAgents.Count > 0;
-            InformationManager.DisplayMessage(new InformationMessage("CheckForRoundEnd :: " + flag +" - "+ flag2));
+            //InformationManager.DisplayMessage(new InformationMessage("CheckForRoundEnd :: " + flag +" - "+ flag2));
 
             if (flag && flag2)
             {
@@ -328,21 +328,22 @@ namespace Crpg.GameMod
                     if (component != null && this.RoundController.RoundCount > 0)
                     {
                         int num = 300;
+                        /*
                         int num2 = base.GetCurrentGoldForPeer(component);
                         if (num2 < 0)
                         {
                             num2 = 90;
                         }
-                        /*else if (this.RoundController.RoundWinner == component.Team.Side && component.GetComponent<FlagDominationMissionRepresentative>().CheckIfSurvivedLastRoundAndReset())
+                        else if (this.RoundController.RoundWinner == component.Team.Side && component.GetComponent<FlagDominationMissionRepresentative>().CheckIfSurvivedLastRoundAndReset())
                         {
                             num2 += 30;
-                        }*/
+                        }
                         num += MBMath.ClampInt(num2, 0, 90);
                         if (num > 300)
                         {
                             int carriedGoldAmount = num - 300;
                             this.NotificationsComponent.GoldCarriedFromPreviousRound(carriedGoldAmount, component.GetNetworkPeer());
-                        }
+                        }*/
                         base.ChangeCurrentGoldForPeer(component, num);
                     }
                 }
@@ -395,6 +396,7 @@ namespace Crpg.GameMod
                         int num2 = 300 * num / 10 / count * 10;
                         foreach (MissionPeer peer in array[(int)battleSideEnum])
                         {
+                            InformationManager.DisplayMessage(new InformationMessage("OnPreparationEnded" + num2));
                             base.ChangeCurrentGoldForPeer(peer, base.GetCurrentGoldForPeer(peer) + num2);
                         }
                     }
@@ -416,9 +418,11 @@ namespace Crpg.GameMod
         }
         protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
         {
+            InformationManager.DisplayMessage(new InformationMessage("HandleNewClientAfterSynchronized"));
             networkPeer.AddComponent<CrpgBattleMissionRepresentative>();
             if (this.UseGold() && !this.RoundController.IsRoundInProgress)
             {
+                InformationManager.DisplayMessage(new InformationMessage("HandleNewClientAfterSynchronized :: not IsRoundInProgress"));
                 base.ChangeCurrentGoldForPeer(networkPeer.GetComponent<MissionPeer>(), 300);
                 MissionMultiplayerCrpgBattleClient crpgBattleClient = this._crpgBattleClient;
                 if (crpgBattleClient != null)
@@ -439,6 +443,7 @@ namespace Crpg.GameMod
         // Token: 0x06001FB5 RID: 8117 RVA: 0x0006E620 File Offset: 0x0006C820
         public void ForfeitSpawning(NetworkCommunicator peer)
         {
+            InformationManager.DisplayMessage(new InformationMessage("ForfeitSpawning"));
             MissionPeer component = peer.GetComponent<MissionPeer>();
             if (component != null && component.HasSpawnedAgentVisuals && this.UseGold() && this.RoundController.IsRoundInProgress)
             {
@@ -476,7 +481,6 @@ namespace Crpg.GameMod
         protected override void OnEndMission()
         {
             InformationManager.DisplayMessage(new InformationMessage("OnEndMission"));
-
             if (this.UseGold())
             {
                 foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
@@ -489,7 +493,7 @@ namespace Crpg.GameMod
                 }
             }
         }
-        public override int GetScoreForKill(Agent killedAgent)
+        /*public override int GetScoreForKill(Agent killedAgent)
       	{
             return MultiplayerClassDivisions.GetMPHeroClassForCharacter(killedAgent.Character).TroopCost;
             //return 0;
@@ -499,7 +503,7 @@ namespace Crpg.GameMod
       	{
             return (int)((float)MultiplayerClassDivisions.GetMPHeroClassForCharacter(killedAgent.Character).TroopCost * 0.5f);
             //return 0;
-        }
+        }*/
         
           public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
           {
