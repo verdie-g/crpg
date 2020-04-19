@@ -12,12 +12,12 @@ using Crpg.Application.Items.Models;
 using Crpg.Application.Items.Queries;
 using Crpg.Application.Users.Commands;
 using Crpg.Application.Users.Queries;
-using Crpg.Web.Models;
+using Crpg.WebApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Crpg.Web.Controllers
+namespace Crpg.WebApi.Controllers
 {
     [ApiController]
     public class UsersController : BaseController

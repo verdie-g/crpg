@@ -1,4 +1,4 @@
-namespace Crpg.Web.Models
+namespace Crpg.WebApi.Models
 {
     public class BanRequest
     {

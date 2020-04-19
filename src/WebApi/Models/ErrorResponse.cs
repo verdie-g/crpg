@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Crpg.Web.Models
+namespace Crpg.WebApi.Models
 {
     public class ErrorResponse
     {

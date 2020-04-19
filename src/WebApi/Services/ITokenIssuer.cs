@@ -1,6 +1,6 @@
 using System.Security.Claims;
 
-namespace Crpg.Web.Services
+namespace Crpg.WebApi.Services
 {
     public interface ITokenIssuer
     {

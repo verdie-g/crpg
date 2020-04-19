@@ -4,7 +4,7 @@ using Crpg.Application.Games.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Crpg.Web.Controllers
+namespace Crpg.WebApi.Controllers
 {
     [Authorize(Roles = "Game")]
     public class GamesController : BaseController
