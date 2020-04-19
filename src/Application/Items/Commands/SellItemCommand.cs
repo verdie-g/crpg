@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using Crpg.Application.Common;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
@@ -40,58 +39,58 @@ namespace Crpg.Application.Items.Commands
                 _db.UserItems.Remove(userItem);
                 foreach (var character in userItem.User.Characters)
                 {
-                    UnsetItem(character, userItem.ItemId);
+                    UnsetItem(character.Items, userItem.ItemId);
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
                 return Unit.Value;
             }
 
-            private static void UnsetItem(Character character, int itemId)
+            private static void UnsetItem(CharacterItems items, int itemId)
             {
-                if (character.HeadItemId == itemId)
+                if (items.HeadItemId == itemId)
                 {
-                    character.HeadItemId = null;
+                    items.HeadItemId = null;
                 }
-                else if (character.CapeItemId == itemId)
+                else if (items.CapeItemId == itemId)
                 {
-                    character.CapeItemId = null;
+                    items.CapeItemId = null;
                 }
-                else if (character.BodyItemId == itemId)
+                else if (items.BodyItemId == itemId)
                 {
-                    character.BodyItemId = null;
+                    items.BodyItemId = null;
                 }
-                else if (character.HandItemId == itemId)
+                else if (items.HandItemId == itemId)
                 {
-                    character.HandItemId = null;
+                    items.HandItemId = null;
                 }
-                else if (character.LegItemId == itemId)
+                else if (items.LegItemId == itemId)
                 {
-                    character.LegItemId = null;
+                    items.LegItemId = null;
                 }
-                else if (character.HorseHarnessItemId == itemId)
+                else if (items.HorseHarnessItemId == itemId)
                 {
-                    character.HorseHarnessItemId = null;
+                    items.HorseHarnessItemId = null;
                 }
-                else if (character.HorseItemId == itemId)
+                else if (items.HorseItemId == itemId)
                 {
-                    character.HorseItemId = null;
+                    items.HorseItemId = null;
                 }
-                else if (character.Weapon1ItemId == itemId)
+                else if (items.Weapon1ItemId == itemId)
                 {
-                    character.Weapon1ItemId = null;
+                    items.Weapon1ItemId = null;
                 }
-                else if (character.Weapon2ItemId == itemId)
+                else if (items.Weapon2ItemId == itemId)
                 {
-                    character.Weapon2ItemId = null;
+                    items.Weapon2ItemId = null;
                 }
-                else if (character.Weapon3ItemId == itemId)
+                else if (items.Weapon3ItemId == itemId)
                 {
-                    character.Weapon3ItemId = null;
+                    items.Weapon3ItemId = null;
                 }
-                else if (character.Weapon4ItemId == itemId)
+                else if (items.Weapon4ItemId == itemId)
                 {
-                    character.Weapon4ItemId = null;
+                    items.Weapon4ItemId = null;
                 }
             }
         }

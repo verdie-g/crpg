@@ -1,0 +1,19 @@
+name: WebApi
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1.201' # SDK Version
+    - name: Build
+      run: dotnet build --configuration Release src/WebApi
+    - name: Test
+      run: dotnet test

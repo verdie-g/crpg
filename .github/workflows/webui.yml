@@ -1,0 +1,25 @@
+name: WebUI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      dir: ./src/WebUI
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '13.x'
+    - name: Install
+      run: yarn install
+      working-directory: ${{env.dir}}
+    - name: Build
+      run: yarn build
+      working-directory: ${{env.dir}}
+    - name: Lint
+      run: yarn lint
+      working-directory: ${{env.dir}}

@@ -5,7 +5,7 @@ that adds persistence (xp, gold, items, stats) to the multiplayer.
 
 ## Development
 
-### Web API (src/Web)
+### Web API (src/WebApi)
 
 Server written in [.NET Core](https://dotnet.microsoft.com). Its design is inspired by
 [jasontaylordev/NorthwindTraders](https://github.com/jasontaylordev/NorthwindTraders), see the
@@ -20,12 +20,12 @@ Server written in [.NET Core](https://dotnet.microsoft.com). Its design is inspi
 
 To run it:
 - download your favorite IDE: Visual Studio, Visual Studio Code, Rider...
-- set the `Steam:ApiKey` in [src/Web/appsettings.Development.json](https://github.com/verdie-g/cRPG/blob/master/src/Web/appsettings.Development.json),
+- set the `Steam:ApiKey` in [src/WebApi/appsettings.Development.json](https://github.com/verdie-g/cRPG/blob/master/src/WebApi/appsettings.Development.json),
   acquired by [filling out this form](https://steamcommunity.com/dev/apikey)
 - open the solution file Crpg.sln
 - build and run
 
-### Web UI (src/Web/Client)
+### Web UI (src/WebUI)
 
 The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the following technologies:
 - [Vue.js](https://vuejs.org) - JavaScript framework
@@ -37,7 +37,7 @@ The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the foll
 - [Eslint](https://eslint.org) - to enforce coding style and best practices. Use `yarn lint` to fix your code
 
 To run it:
-- go to src/Web/Client
+- go to src/WebUI
 - install yarn
 - `yarn install`
 - `yarn serve`
