@@ -55,7 +55,20 @@ namespace Crpg.GameMod
             Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleMissionBasedMultiplayerGamemode("ClassicBattle"));
             InformationManager.DisplayMessage(new InformationMessage("ClassicBattle"));
 
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_troop_test_10m");
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_troop_test_50m");
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_troop_test_90m");
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_sergeant_map_007");
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_sergeant_map_008");
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_sergeant_map_009");
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_sergeant_map_012");
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_sergeant_map_vlandia_01");
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_skirmish_spawn_test");
             Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_skirmish_map_002f");
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_skirmish_map_003_skinc");
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_skirmish_map_007");
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_skirmish_map_013");
+            Module.CurrentModule.GetMultiplayerGameTypes().First(x => x.GameType == "ClassicBattle").Scenes.Add("mp_sergeant_map_013");
 
             base.OnSubModuleLoad();
 

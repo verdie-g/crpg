@@ -328,13 +328,13 @@ namespace Crpg.GameMod
                     if (component != null && this.RoundController.RoundCount > 0)
                     {
                         int num = 300;
-                        /*
+                        
                         int num2 = base.GetCurrentGoldForPeer(component);
                         if (num2 < 0)
                         {
                             num2 = 90;
                         }
-                        else if (this.RoundController.RoundWinner == component.Team.Side && component.GetComponent<FlagDominationMissionRepresentative>().CheckIfSurvivedLastRoundAndReset())
+                        else if (this.RoundController.RoundWinner == component.Team.Side && component.GetComponent<CrpgBattleMissionRepresentative>().CheckIfSurvivedLastRoundAndReset())
                         {
                             num2 += 30;
                         }
@@ -343,7 +343,7 @@ namespace Crpg.GameMod
                         {
                             int carriedGoldAmount = num - 300;
                             this.NotificationsComponent.GoldCarriedFromPreviousRound(carriedGoldAmount, component.GetNetworkPeer());
-                        }*/
+                        }
                         base.ChangeCurrentGoldForPeer(component, num);
                     }
                 }

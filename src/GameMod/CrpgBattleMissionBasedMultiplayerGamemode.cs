@@ -39,18 +39,18 @@ namespace Crpg.GameMod
                 MultiplayerOptions.OptionType.SpectatorCamera.SetValue(6, mode);
                 MultiplayerOptions.OptionType.WarmupTimeLimit.SetValue(0, mode);
                 MultiplayerOptions.OptionType.MapTimeLimit.SetValue(5, mode);
-                MultiplayerOptions.OptionType.RoundTimeLimit.SetValue(120, mode);
+                MultiplayerOptions.OptionType.RoundTimeLimit.SetValue(240, mode);
                 MultiplayerOptions.OptionType.RoundPreparationTimeLimit.SetValue(10, mode);
                 MultiplayerOptions.OptionType.RoundTotal.SetValue(5, mode);
-                MultiplayerOptions.OptionType.RespawnPeriodTeam1.SetValue(3, mode);
-                MultiplayerOptions.OptionType.RespawnPeriodTeam2.SetValue(3, mode);
-                MultiplayerOptions.OptionType.GoldGainChangePercentageTeam1.SetValue(0, mode);
-                MultiplayerOptions.OptionType.GoldGainChangePercentageTeam2.SetValue(0, mode);
+                //MultiplayerOptions.OptionType.RespawnPeriodTeam1.SetValue(3, mode);
+                //MultiplayerOptions.OptionType.RespawnPeriodTeam2.SetValue(3, mode);
+                //MultiplayerOptions.OptionType.GoldGainChangePercentageTeam1.SetValue(0, mode);
+                //MultiplayerOptions.OptionType.GoldGainChangePercentageTeam2.SetValue(0, mode);
                 MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.SetValue(0, mode);
                 MultiplayerOptions.OptionType.MinNumberOfPlayersForMatchStart.SetValue(0, mode);
                 MultiplayerOptions.OptionType.UseRealisticBlocking.SetValue(1, mode);
-                MultiplayerOptions.OptionType.NumberOfBotsTeam1.SetValue(10, mode);
-                MultiplayerOptions.OptionType.NumberOfBotsTeam2.SetValue(10, mode);
+                MultiplayerOptions.OptionType.NumberOfBotsTeam1.SetValue(30, mode);
+                MultiplayerOptions.OptionType.NumberOfBotsTeam2.SetValue(30, mode);
 
                 ScoreboardFactory.Register("ClassicBattle", new CrpgBattleModeScoreData());
                 OpenCrpgBattleMission(scene);

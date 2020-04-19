@@ -92,7 +92,6 @@ namespace Crpg.GameMod
 				base.ResetSpawnTimers();
 			}
 		}
-
 		protected override void SpawnAgents()
 		{
 			BasicCultureObject @object = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions));
@@ -102,7 +101,7 @@ namespace Crpg.GameMod
 				InformationManager.DisplayMessage(new InformationMessage("Spawn !_haveBotsBeenSpawned?"));
 
 				Mission.Current.AllowAiTicking = false;
-				List<string> list = new List<string>
+				/*List<string> list = new List<string>
 				{
 					"11.8.1.4345.4345.770.774.1.0.0.133.7.5.512.512.784.769.1.0.0",
 					"11.8.1.4345.4345.770.774.1.0.0.156.7.5.512.512.784.769.1.0.0",
@@ -110,7 +109,7 @@ namespace Crpg.GameMod
 					"11.8.1.4345.4345.770.774.1.0.0.158.7.5.512.512.784.769.1.0.0",
 					"11.8.1.4345.4345.770.774.1.0.0.118.7.5.512.512.784.769.1.0.0",
 					"11.8.1.4345.4345.770.774.1.0.0.149.7.5.512.512.784.769.1.0.0"
-				};
+				};*/
 				foreach (Team team in base.Mission.Teams)
 				{
 					if (base.Mission.AttackerTeam == team || base.Mission.DefenderTeam == team)
@@ -334,10 +333,10 @@ namespace Crpg.GameMod
 			if (this._crpgBattleMissionController.UseGold())
 			{
 				bool flag = peer.Team == base.Mission.AttackerTeam;
-				//Team defenderTeam = base.Mission.DefenderTeam;
-				//MultiplayerClassDivisions.MPHeroClass mpheroClass = MultiplayerClassDivisions.GetMPHeroClasses(MBObjectManager.Instance.GetObject<BasicCultureObject>(flag ? MultiplayerOptions.OptionType.CultureTeam1.GetStrValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions) : MultiplayerOptions.OptionType.CultureTeam2.GetStrValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions))).ToList<MultiplayerClassDivisions.MPHeroClass>()[peer.SelectedTroopIndex];
-				//this._crpgBattleMissionController.ChangeCurrentGoldForPeer(peer, this._crpgBattleMissionController.GetCurrentGoldForPeer(peer) - mpheroClass.TroopCost);
-				this._crpgBattleMissionController.ChangeCurrentGoldForPeer(peer, this._crpgBattleMissionController.GetCurrentGoldForPeer(peer) - 300);
+				Team defenderTeam = base.Mission.DefenderTeam;
+				MultiplayerClassDivisions.MPHeroClass mpheroClass = MultiplayerClassDivisions.GetMPHeroClasses(MBObjectManager.Instance.GetObject<BasicCultureObject>(flag ? MultiplayerOptions.OptionType.CultureTeam1.GetStrValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions) : MultiplayerOptions.OptionType.CultureTeam2.GetStrValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions))).ToList<MultiplayerClassDivisions.MPHeroClass>()[peer.SelectedTroopIndex];
+				this._crpgBattleMissionController.ChangeCurrentGoldForPeer(peer, this._crpgBattleMissionController.GetCurrentGoldForPeer(peer) - mpheroClass.TroopCost);
+				//this._crpgBattleMissionController.ChangeCurrentGoldForPeer(peer, this._crpgBattleMissionController.GetCurrentGoldForPeer(peer) - 300);
 			}
 		}
 		/*private void BotFormationSpawned(Team team)

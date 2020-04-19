@@ -43,8 +43,9 @@ namespace Crpg.GameMod
 
 		// Token: 0x04001289 RID: 4745
 		private bool _survivedLastRound;
-
 	
+
+
 		/*public int GetGoldGainsFromKillDataAndUpdateFlags(MultiplayerClassDivisions.MPHeroClass victimClass, bool isAssist, bool isRanged)
 		{
 			int num = 0;
