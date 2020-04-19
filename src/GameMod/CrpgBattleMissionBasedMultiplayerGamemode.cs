@@ -146,7 +146,7 @@ public class MultiplayerMissionViews
 	    list.Add(ViewCreator.CreateMultiplayerEndOfRoundUIHandler()); //
 	    list.Add(ViewCreator.CreateLobbyEquipmentUIHandler()); //
         list.Add(ViewCreator.CreateMultiplayerFactionBanVoteUIHandler()); //++
-        list.Add(ViewCreator.CreateMultiplayerMissionOrderUIHandler(mission)); //++
+        //list.Add(ViewCreator.CreateMultiplayerMissionOrderUIHandler(mission)); //++
         list.Add(ViewCreator.CreateMissionAgentLabelUIHandler(mission)); //
         list.Add(ViewCreator.CreateOrderTroopPlacerView(mission)); //++
         list.Add(ViewCreator.CreatePollInitiationUIHandler()); //

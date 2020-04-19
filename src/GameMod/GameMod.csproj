@@ -23,6 +23,7 @@
 	<Target Name="CopySubModule" AfterTargets="AfterBuild">
 		<Copy SourceFiles="SubModule.xml" DestinationFolder="$(MbPath)\Modules\$(ModuleName)" />
 		<Copy SourceFiles="$(OutputPath)\$(AssemblyName).dll" DestinationFolder="$(MbPath)\Modules\$(ModuleName)\bin\Win64_Shipping_Client" />
+		<Copy SourceFiles="ModuleData\native_strings.xml" DestinationFolder="$(MbPath)\Modules\$(ModuleName)\ModuleData" />
 		<!-- <Copy SourceFiles="$(OutputPath)\Newtonsoft.Json.dll" DestinationFolder="$(MbPath)\Modules\$(ModuleName)\bin\Win64_Shipping_Client" /> -->
 	</Target>
 

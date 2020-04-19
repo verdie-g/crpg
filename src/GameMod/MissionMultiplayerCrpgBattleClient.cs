@@ -83,6 +83,8 @@ namespace Crpg.GameMod
 		public override void AfterStart()
 		{
 			base.Mission.SetMissionMode(MissionMode.Battle, true);
+			Game.Current.GameType.CurrentGame.GameTextManager.LoadGameTexts(BasePath.Name + "Modules/cRPG/ModuleData/native_strings.xml");
+
 		}
 
 		protected override void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
