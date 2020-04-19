@@ -22,7 +22,14 @@ namespace Crpg.GameMod.Api.Responses
         public int Experience { get; set; }
         public int NextLevelExperience { get; set; }
         public int Level { get; set; }
+        public GameCharacterItems Items { get; set; } = new GameCharacterItems();
+    }
 
+    /// <summary>
+    /// Copy of Crpg.Application.Games.Models.GameCharacterItems.
+    /// </summary>
+    public class GameCharacterItems
+    {
         public string? HeadItemMbId { get; set; }
         public string? CapeItemMbId { get; set; }
         public string? BodyItemMbId { get; set; }
