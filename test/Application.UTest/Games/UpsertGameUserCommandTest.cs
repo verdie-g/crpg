@@ -20,7 +20,7 @@ namespace Crpg.Application.UTest.Games
         [SetUp]
         public Task SetUp()
         {
-            var allDefaultItemMbIds = UpsertGameUserCommand.Handler.DefaultCharacterItems
+            var allDefaultItemMbIds = UpsertGameUserCommand.Handler.DefaultItemsSets
                 .SelectMany(i => new[]
                 {
                     i.HeadItemMbId,
@@ -106,17 +106,20 @@ namespace Crpg.Application.UTest.Games
                 Name = "toto",
                 Experience = 100,
                 Level = 1,
-                HeadItem = new Item { MbId = "head" },
-                CapeItem = new Item { MbId = "cape" },
-                BodyItem = new Item { MbId = "body" },
-                HandItem = new Item { MbId = "hand" },
-                LegItem = new Item { MbId = "leg" },
-                HorseHarnessItem = new Item { MbId = "horseHarness" },
-                HorseItem = new Item { MbId = "horse" },
-                Weapon1Item = new Item { MbId = "weapon1" },
-                Weapon2Item = new Item { MbId = "weapon2" },
-                Weapon3Item = new Item { MbId = "weapon3" },
-                Weapon4Item = new Item { MbId = "weapon4" },
+                Items = new CharacterItems
+                {
+                    HeadItem = new Item { MbId = "head" },
+                    CapeItem = new Item { MbId = "cape" },
+                    BodyItem = new Item { MbId = "body" },
+                    HandItem = new Item { MbId = "hand" },
+                    LegItem = new Item { MbId = "leg" },
+                    HorseHarnessItem = new Item { MbId = "horseHarness" },
+                    HorseItem = new Item { MbId = "horse" },
+                    Weapon1Item = new Item { MbId = "weapon1" },
+                    Weapon2Item = new Item { MbId = "weapon2" },
+                    Weapon3Item = new Item { MbId = "weapon3" },
+                    Weapon4Item = new Item { MbId = "weapon4" },
+                }
             });
             var user = _db.Users.Add(new User
             {
@@ -137,17 +140,17 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(character.Entity.Name, gu.Character.Name);
             Assert.AreEqual(character.Entity.Experience, gu.Character.Experience);
             Assert.AreEqual(character.Entity.Level, gu.Character.Level);
-            Assert.AreEqual(character.Entity.HeadItem.MbId, gu.Character.HeadItemMbId);
-            Assert.AreEqual(character.Entity.CapeItem.MbId, gu.Character.CapeItemMbId);
-            Assert.AreEqual(character.Entity.BodyItem.MbId, gu.Character.BodyItemMbId);
-            Assert.AreEqual(character.Entity.HandItem.MbId, gu.Character.HandItemMbId);
-            Assert.AreEqual(character.Entity.LegItem.MbId, gu.Character.LegItemMbId);
-            Assert.AreEqual(character.Entity.HorseHarnessItem.MbId, gu.Character.HorseHarnessItemMbId);
-            Assert.AreEqual(character.Entity.HorseItem.MbId, gu.Character.HorseItemMbId);
-            Assert.AreEqual(character.Entity.Weapon1Item.MbId, gu.Character.Weapon1ItemMbId);
-            Assert.AreEqual(character.Entity.Weapon2Item.MbId, gu.Character.Weapon2ItemMbId);
-            Assert.AreEqual(character.Entity.Weapon3Item.MbId, gu.Character.Weapon3ItemMbId);
-            Assert.AreEqual(character.Entity.Weapon4Item.MbId, gu.Character.Weapon4ItemMbId);
+            Assert.AreEqual(character.Entity.Items.HeadItem.MbId, gu.Character.Items.HeadItemMbId);
+            Assert.AreEqual(character.Entity.Items.CapeItem.MbId, gu.Character.Items.CapeItemMbId);
+            Assert.AreEqual(character.Entity.Items.BodyItem.MbId, gu.Character.Items.BodyItemMbId);
+            Assert.AreEqual(character.Entity.Items.HandItem.MbId, gu.Character.Items.HandItemMbId);
+            Assert.AreEqual(character.Entity.Items.LegItem.MbId, gu.Character.Items.LegItemMbId);
+            Assert.AreEqual(character.Entity.Items.HorseHarnessItem.MbId, gu.Character.Items.HorseHarnessItemMbId);
+            Assert.AreEqual(character.Entity.Items.HorseItem.MbId, gu.Character.Items.HorseItemMbId);
+            Assert.AreEqual(character.Entity.Items.Weapon1Item.MbId, gu.Character.Items.Weapon1ItemMbId);
+            Assert.AreEqual(character.Entity.Items.Weapon2Item.MbId, gu.Character.Items.Weapon2ItemMbId);
+            Assert.AreEqual(character.Entity.Items.Weapon3Item.MbId, gu.Character.Items.Weapon3ItemMbId);
+            Assert.AreEqual(character.Entity.Items.Weapon4Item.MbId, gu.Character.Items.Weapon4ItemMbId);
             Assert.IsNull(gu.Ban);
         }
 
@@ -200,11 +203,11 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual("toto", gu.Character.Name);
             Assert.AreEqual(0, gu.Character.Experience);
             Assert.AreEqual(1, gu.Character.Level);
-            Assert.NotNull(gu.Character.HeadItemMbId);
-            Assert.NotNull(gu.Character.BodyItemMbId);
-            Assert.NotNull(gu.Character.LegItemMbId);
-            Assert.NotNull(gu.Character.Weapon1ItemMbId);
-            Assert.NotNull(gu.Character.Weapon2ItemMbId);
+            Assert.NotNull(gu.Character.Items.HeadItemMbId);
+            Assert.NotNull(gu.Character.Items.BodyItemMbId);
+            Assert.NotNull(gu.Character.Items.LegItemMbId);
+            Assert.NotNull(gu.Character.Items.Weapon1ItemMbId);
+            Assert.NotNull(gu.Character.Items.Weapon2ItemMbId);
             Assert.IsNull(gu.Ban);
 
             Assert.DoesNotThrowAsync(() => _db.Characters.FirstAsync(c => c.UserId == user.Entity.Id && c.Name == "toto"));
@@ -224,11 +227,11 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual("toto", gu.Character.Name);
             Assert.AreEqual(0, gu.Character.Experience);
             Assert.AreEqual(1, gu.Character.Level);
-            Assert.NotNull(gu.Character.HeadItemMbId);
-            Assert.NotNull(gu.Character.BodyItemMbId);
-            Assert.NotNull(gu.Character.LegItemMbId);
-            Assert.NotNull(gu.Character.Weapon1ItemMbId);
-            Assert.NotNull(gu.Character.Weapon2ItemMbId);
+            Assert.NotNull(gu.Character.Items.HeadItemMbId);
+            Assert.NotNull(gu.Character.Items.BodyItemMbId);
+            Assert.NotNull(gu.Character.Items.LegItemMbId);
+            Assert.NotNull(gu.Character.Items.Weapon1ItemMbId);
+            Assert.NotNull(gu.Character.Items.Weapon2ItemMbId);
             Assert.IsNull(gu.Ban);
 
             Assert.DoesNotThrowAsync(() => _db.Users.FirstAsync(u => u.SteamId == 123));

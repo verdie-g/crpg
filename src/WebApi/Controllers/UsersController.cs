@@ -6,6 +6,7 @@ using Crpg.Application.Bans.Commands;
 using Crpg.Application.Bans.Models;
 using Crpg.Application.Characters;
 using Crpg.Application.Characters.Commands;
+using Crpg.Application.Characters.Models;
 using Crpg.Application.Characters.Queries;
 using Crpg.Application.Items.Commands;
 using Crpg.Application.Items.Models;
@@ -113,7 +114,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Updated.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPut("self/characters/{id}/items")]
-        public async Task<ActionResult<CharacterViewModel>> UpdateCharacterItems([FromRoute] int id,
+        public async Task<ActionResult<CharacterItemsViewModel>> UpdateCharacterItems([FromRoute] int id,
             [FromBody] UpdateCharacterItemsRequest req)
         {
             var cmd = new UpdateCharacterItemsCommand

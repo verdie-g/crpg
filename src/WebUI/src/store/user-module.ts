@@ -8,6 +8,7 @@ import Character from '@/models/character';
 import Item from '@/models/item';
 import ItemSlot from '@/models/item-slot';
 import { setCharacterItem } from '@/services/characters-service';
+import CharacterItems from '@/models/character-items';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
@@ -55,8 +56,8 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
-  setCharacterItem({ character, slot, item } : { character: Character, slot: ItemSlot, item: Item }) {
-    setCharacterItem(character, slot, item);
+  setCharacterItem({ characterItems, slot, item } : { characterItems: CharacterItems, slot: ItemSlot, item: Item }) {
+    setCharacterItem(characterItems, slot, item);
   }
 
   @Mutation
@@ -65,7 +66,8 @@ class UserModule extends VuexModule {
     this.characters.splice(idx, 1, character);
   }
 
-  @Mutation removeCharacter(character: Character) {
+  @Mutation
+  removeCharacter(character: Character) {
     const idx = this.characters.findIndex(c => c.id === character.id);
     this.characters.splice(idx, 1);
   }
@@ -89,21 +91,22 @@ class UserModule extends VuexModule {
     return userService.updateCharacter(character.id, { name: newName });
   }
 
-  @Action({ commit: 'replaceCharacter' })
+  @Action
   replaceItem({ character, slot, item } : { character: Character, slot: ItemSlot, item: Item }) {
-    this.setCharacterItem({ character, slot, item });
+    const { items } = character;
+    this.setCharacterItem({ characterItems: items, slot, item });
     return userService.updateItems(character.id, {
-      headItemId: character.headItem !== null ? character.headItem!.id : null,
-      capeItemId: character.capeItem !== null ? character.capeItem!.id : null,
-      bodyItemId: character.bodyItem !== null ? character.bodyItem!.id : null,
-      handItemId: character.handItem !== null ? character.handItem!.id : null,
-      legItemId: character.legItem !== null ? character.legItem!.id : null,
-      horseHarnessItemId: character.horseHarnessItem !== null ? character.horseHarnessItem!.id : null,
-      horseItemId: character.horseItem !== null ? character.horseItem!.id : null,
-      weapon1ItemId: character.weapon1Item !== null ? character.weapon1Item!.id : null,
-      weapon2ItemId: character.weapon2Item !== null ? character.weapon2Item!.id : null,
-      weapon3ItemId: character.weapon3Item !== null ? character.weapon3Item!.id : null,
-      weapon4ItemId: character.weapon4Item !== null ? character.weapon4Item!.id : null,
+      headItemId: items.headItem !== null ? items.headItem!.id : null,
+      capeItemId: items.capeItem !== null ? items.capeItem!.id : null,
+      bodyItemId: items.bodyItem !== null ? items.bodyItem!.id : null,
+      handItemId: items.handItem !== null ? items.handItem!.id : null,
+      legItemId: items.legItem !== null ? items.legItem!.id : null,
+      horseHarnessItemId: items.horseHarnessItem !== null ? items.horseHarnessItem!.id : null,
+      horseItemId: items.horseItem !== null ? items.horseItem!.id : null,
+      weapon1ItemId: items.weapon1Item !== null ? items.weapon1Item!.id : null,
+      weapon2ItemId: items.weapon2Item !== null ? items.weapon2Item!.id : null,
+      weapon3ItemId: items.weapon3Item !== null ? items.weapon3Item!.id : null,
+      weapon4ItemId: items.weapon4Item !== null ? items.weapon4Item!.id : null,
     });
   }
 
