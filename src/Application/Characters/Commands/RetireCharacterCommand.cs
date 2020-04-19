@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Crpg.Application.Characters.Models;
 using Crpg.Application.Common;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
@@ -43,17 +44,17 @@ namespace Crpg.Application.Characters.Commands
                 character.Experience = 0;
                 character.Level = 1;
                 character.ExperienceMultiplier += Constants.ExperienceMultiplierIncrease;
-                character.HeadItemId = null;
-                character.CapeItemId = null;
-                character.BodyItemId = null;
-                character.HandItemId = null;
-                character.LegItemId = null;
-                character.HorseHarnessItem = null;
-                character.HorseItem = null;
-                character.Weapon1Item = null;
-                character.Weapon2Item = null;
-                character.Weapon3Item = null;
-                character.Weapon4Item = null;
+                character.Items.HeadItemId = null;
+                character.Items.CapeItemId = null;
+                character.Items.BodyItemId = null;
+                character.Items.HandItemId = null;
+                character.Items.LegItemId = null;
+                character.Items.HorseHarnessItem = null;
+                character.Items.HorseItem = null;
+                character.Items.Weapon1Item = null;
+                character.Items.Weapon2Item = null;
+                character.Items.Weapon3Item = null;
+                character.Items.Weapon4Item = null;
                 character.User!.LoomPoints += 1;
 
                 await _db.SaveChangesAsync(cancellationToken);

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Domain.Entities;
@@ -11,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class UpdateCharacterItemsCommand : IRequest<CharacterViewModel>
+    public class UpdateCharacterItemsCommand : IRequest<CharacterItemsViewModel>
     {
         public int CharacterId { get; set; }
         public int UserId { get; set; }
@@ -27,7 +28,7 @@ namespace Crpg.Application.Characters.Commands
         public int? Weapon3ItemId { get; set; }
         public int? Weapon4ItemId { get; set; }
 
-        public class Handler : IRequestHandler<UpdateCharacterItemsCommand, CharacterViewModel>
+        public class Handler : IRequestHandler<UpdateCharacterItemsCommand, CharacterItemsViewModel>
         {
             private static readonly ISet<ItemType> WeaponTypes = new HashSet<ItemType>
             {
@@ -51,21 +52,21 @@ namespace Crpg.Application.Characters.Commands
                 _mapper = mapper;
             }
 
-            public async Task<CharacterViewModel> Handle(UpdateCharacterItemsCommand request,
+            public async Task<CharacterItemsViewModel> Handle(UpdateCharacterItemsCommand request,
                 CancellationToken cancellationToken)
             {
                 var character = await _db.Characters
-                    .Include(c => c.HeadItem)
-                    .Include(c => c.CapeItem)
-                    .Include(c => c.BodyItem)
-                    .Include(c => c.HandItem)
-                    .Include(c => c.LegItem)
-                    .Include(c => c.HorseHarnessItem)
-                    .Include(c => c.HorseItem)
-                    .Include(c => c.Weapon1Item)
-                    .Include(c => c.Weapon2Item)
-                    .Include(c => c.Weapon3Item)
-                    .Include(c => c.Weapon4Item)
+                    .Include(c => c.Items.HeadItem)
+                    .Include(c => c.Items.CapeItem)
+                    .Include(c => c.Items.BodyItem)
+                    .Include(c => c.Items.HandItem)
+                    .Include(c => c.Items.LegItem)
+                    .Include(c => c.Items.HorseHarnessItem)
+                    .Include(c => c.Items.HorseItem)
+                    .Include(c => c.Items.Weapon1Item)
+                    .Include(c => c.Items.Weapon2Item)
+                    .Include(c => c.Items.Weapon3Item)
+                    .Include(c => c.Items.Weapon4Item)
                     .FirstOrDefaultAsync(c => c.Id == request.CharacterId && c.UserId == request.UserId, cancellationToken);
 
                 if (character == null)
@@ -75,7 +76,7 @@ namespace Crpg.Application.Characters.Commands
 
                 await UpdateCharacterItems(request, character);
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<CharacterViewModel>(character);
+                return _mapper.Map<CharacterItemsViewModel>(character.Items);
             }
 
             private async Task UpdateCharacterItems(UpdateCharacterItemsCommand request, Character character)
@@ -86,17 +87,17 @@ namespace Crpg.Application.Characters.Commands
                     .Where(ui => ids.Contains(ui.ItemId) && ui.UserId == request.UserId)
                     .ToDictionaryAsync(ui => ui.ItemId, ui => ui.Item!);
 
-                character.HeadItem = GetItemWithChecks(request.HeadItemId, new[] { ItemType.HeadArmor }, itemsById);
-                character.CapeItem = GetItemWithChecks(request.CapeItemId, new[] { ItemType.Cape }, itemsById);
-                character.BodyItem = GetItemWithChecks(request.BodyItemId, new[] { ItemType.BodyArmor }, itemsById);
-                character.HandItem = GetItemWithChecks(request.HandItemId, new[] { ItemType.HandArmor }, itemsById);
-                character.LegItem = GetItemWithChecks(request.LegItemId, new[] { ItemType.LegArmor }, itemsById);
-                character.HorseHarnessItem = GetItemWithChecks(request.HorseHarnessItemId, new[] { ItemType.HorseHarness }, itemsById);
-                character.HorseItem = GetItemWithChecks(request.HorseItemId, new[] { ItemType.Horse }, itemsById);
-                character.Weapon1Item = GetItemWithChecks(request.Weapon1ItemId, WeaponTypes, itemsById);
-                character.Weapon2Item = GetItemWithChecks(request.Weapon2ItemId, WeaponTypes, itemsById);
-                character.Weapon3Item = GetItemWithChecks(request.Weapon3ItemId, WeaponTypes, itemsById);
-                character.Weapon4Item = GetItemWithChecks(request.Weapon4ItemId, WeaponTypes, itemsById);
+                character.Items.HeadItem = GetItemWithChecks(request.HeadItemId, new[] { ItemType.HeadArmor }, itemsById);
+                character.Items.CapeItem = GetItemWithChecks(request.CapeItemId, new[] { ItemType.Cape }, itemsById);
+                character.Items.BodyItem = GetItemWithChecks(request.BodyItemId, new[] { ItemType.BodyArmor }, itemsById);
+                character.Items.HandItem = GetItemWithChecks(request.HandItemId, new[] { ItemType.HandArmor }, itemsById);
+                character.Items.LegItem = GetItemWithChecks(request.LegItemId, new[] { ItemType.LegArmor }, itemsById);
+                character.Items.HorseHarnessItem = GetItemWithChecks(request.HorseHarnessItemId, new[] { ItemType.HorseHarness }, itemsById);
+                character.Items.HorseItem = GetItemWithChecks(request.HorseItemId, new[] { ItemType.Horse }, itemsById);
+                character.Items.Weapon1Item = GetItemWithChecks(request.Weapon1ItemId, WeaponTypes, itemsById);
+                character.Items.Weapon2Item = GetItemWithChecks(request.Weapon2ItemId, WeaponTypes, itemsById);
+                character.Items.Weapon3Item = GetItemWithChecks(request.Weapon3ItemId, WeaponTypes, itemsById);
+                character.Items.Weapon4Item = GetItemWithChecks(request.Weapon4ItemId, WeaponTypes, itemsById);
             }
 
             private Item? GetItemWithChecks(int? id, IEnumerable<ItemType> expectedTypes,

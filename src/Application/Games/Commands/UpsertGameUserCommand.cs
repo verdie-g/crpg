@@ -21,10 +21,10 @@ namespace Crpg.Application.Games.Commands
 
         public class Handler : IRequestHandler<UpsertGameUserCommand, GameUser>
         {
-            internal static readonly GameCharacter[] DefaultCharacterItems =
+            internal static readonly GameCharacterItems[] DefaultItemsSets =
             {
                 // aserai
-                new GameCharacter
+                new GameCharacterItems
                 {
                     HeadItemMbId = "mp_wrapped_desert_cap",
                     BodyItemMbId = "mp_aserai_civil_e",
@@ -33,7 +33,7 @@ namespace Crpg.Application.Games.Commands
                     Weapon2ItemMbId = "mp_throwing_stone",
                 },
                 // vlandia
-                new GameCharacter
+                new GameCharacterItems
                 {
                     HeadItemMbId = "mp_arming_coif",
                     BodyItemMbId = "mp_sackcloth_tunic",
@@ -42,7 +42,7 @@ namespace Crpg.Application.Games.Commands
                     Weapon2ItemMbId = "mp_sling_stone",
                 },
                 // empire
-                new GameCharacter
+                new GameCharacterItems
                 {
                     HeadItemMbId = "mp_laced_cloth_coif",
                     BodyItemMbId = "mp_hemp_tunic",
@@ -51,7 +51,7 @@ namespace Crpg.Application.Games.Commands
                     Weapon2ItemMbId = "mp_throwing_stone",
                 },
                 // sturgia
-                new GameCharacter
+                new GameCharacterItems
                 {
                     HeadItemMbId = "mp_nordic_fur_cap",
                     BodyItemMbId = "mp_northern_tunic",
@@ -60,7 +60,7 @@ namespace Crpg.Application.Games.Commands
                     Weapon2ItemMbId = "mp_sling_stone",
                 },
                 // khuzait
-                new GameCharacter
+                new GameCharacterItems
                 {
                     HeadItemMbId = "mp_nomad_padded_hood",
                     BodyItemMbId = "mp_khuzait_civil_coat_b",
@@ -69,7 +69,7 @@ namespace Crpg.Application.Games.Commands
                     Weapon2ItemMbId = "mp_throwing_stone",
                 },
                 // battania
-                new GameCharacter
+                new GameCharacterItems
                 {
                     HeadItemMbId = "mp_battania_civil_hood",
                     BodyItemMbId = "mp_battania_civil_a",
@@ -78,7 +78,7 @@ namespace Crpg.Application.Games.Commands
                     Weapon2ItemMbId = "mp_sling_stone",
                 },
                 // looters
-                new GameCharacter
+                new GameCharacterItems
                 {
                     HeadItemMbId = "mp_vlandia_bandit_cape_a",
                     BodyItemMbId = "mp_burlap_sack_dress",
@@ -159,7 +159,7 @@ namespace Crpg.Application.Games.Commands
                     ExperienceMultiplier = Constants.DefaultExperienceMultiplier,
                 };
 
-                var items = DefaultCharacterItems[ThreadSafeRandom.Instance.Value!.Next(DefaultCharacterItems.Length - 1)];
+                var items = DefaultItemsSets[ThreadSafeRandom.Instance.Value!.Next(DefaultItemsSets.Length - 1)];
                 var itemsIdByMdId = await _db.Items
                     .Where(i => i.MbId == items.HeadItemMbId
                                 || i.MbId == items.BodyItemMbId
@@ -168,11 +168,11 @@ namespace Crpg.Application.Games.Commands
                                 || i.MbId == items.Weapon2ItemMbId)
                     .ToDictionaryAsync(i => i.MbId, i => i.Id, cancellationToken);
 
-                c.HeadItemId = itemsIdByMdId[items.HeadItemMbId!];
-                c.BodyItemId = itemsIdByMdId[items.BodyItemMbId!];
-                c.LegItemId = itemsIdByMdId[items.LegItemMbId!];
-                c.Weapon1ItemId = itemsIdByMdId[items.Weapon1ItemMbId!];
-                c.Weapon2ItemId = itemsIdByMdId[items.Weapon2ItemMbId!];
+                c.Items.HeadItemId = itemsIdByMdId[items.HeadItemMbId!];
+                c.Items.BodyItemId = itemsIdByMdId[items.BodyItemMbId!];
+                c.Items.LegItemId = itemsIdByMdId[items.LegItemMbId!];
+                c.Items.Weapon1ItemId = itemsIdByMdId[items.Weapon1ItemMbId!];
+                c.Items.Weapon2ItemId = itemsIdByMdId[items.Weapon2ItemMbId!];
 
                 // add character items to user inventory
                 user.UserItems = itemsIdByMdId.Values.Select(itemId => new UserItem { ItemId = itemId }).ToList();

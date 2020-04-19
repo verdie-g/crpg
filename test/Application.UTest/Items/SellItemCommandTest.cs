@@ -43,17 +43,17 @@ namespace Crpg.Application.UTest.Items
             var item = new Item { Value = 100 };
             var characters = new List<Character>
             {
-                new Character { HeadItem = item },
-                new Character { CapeItem = item },
-                new Character { BodyItem = item },
-                new Character { HandItem = item },
-                new Character { LegItem = item },
-                new Character { HorseHarnessItem = item },
-                new Character { HorseItem = item },
-                new Character { Weapon1Item = item },
-                new Character { Weapon2Item = item },
-                new Character { Weapon3Item = item },
-                new Character { Weapon4Item = item },
+                new Character { Items = { HeadItem = item } },
+                new Character { Items = { CapeItem = item } },
+                new Character { Items = { BodyItem = item } },
+                new Character { Items = { HandItem = item } },
+                new Character { Items = { LegItem = item } },
+                new Character { Items = { HorseHarnessItem = item } },
+                new Character { Items = { HorseItem = item } },
+                new Character { Items = { Weapon1Item = item } },
+                new Character { Items = { Weapon2Item = item } },
+                new Character { Items = { Weapon3Item = item } },
+                new Character { Items = { Weapon4Item = item } },
             };
             var user = _db.Users.Add(new User
             {
@@ -71,17 +71,17 @@ namespace Crpg.Application.UTest.Items
 
             Assert.AreEqual(66, user.Entity.Gold);
             Assert.False(user.Entity.UserItems.Any(ui => ui.ItemId == item.Id));
-            Assert.Null(characters[0].HeadItem);
-            Assert.Null(characters[1].CapeItem);
-            Assert.Null(characters[2].BodyItem);
-            Assert.Null(characters[3].HeadItem);
-            Assert.Null(characters[4].LegItem);
-            Assert.Null(characters[5].HorseHarnessItem);
-            Assert.Null(characters[6].HorseItem);
-            Assert.Null(characters[7].Weapon1Item);
-            Assert.Null(characters[8].Weapon1Item);
-            Assert.Null(characters[9].Weapon1Item);
-            Assert.Null(characters[10].Weapon1Item);
+            Assert.Null(characters[0].Items.HeadItem);
+            Assert.Null(characters[1].Items.CapeItem);
+            Assert.Null(characters[2].Items.BodyItem);
+            Assert.Null(characters[3].Items.HeadItem);
+            Assert.Null(characters[4].Items.LegItem);
+            Assert.Null(characters[5].Items.HorseHarnessItem);
+            Assert.Null(characters[6].Items.HorseItem);
+            Assert.Null(characters[7].Items.Weapon1Item);
+            Assert.Null(characters[8].Items.Weapon1Item);
+            Assert.Null(characters[9].Items.Weapon1Item);
+            Assert.Null(characters[10].Items.Weapon1Item);
         }
 
         [Test]
