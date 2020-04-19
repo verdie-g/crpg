@@ -9,6 +9,7 @@ namespace Crpg.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Character> builder)
         {
             builder.HasIndex(c => new { c.UserId, c.Name }).IsUnique();
+            builder.OwnsOne(c => c.Items!);
         }
     }
 }

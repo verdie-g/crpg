@@ -1,63 +1,63 @@
-import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
 import Item from '@/models/item';
+import CharacterItems from '@/models/character-items';
 
 class CharacterItemSlot {
-  public getItem: (character: Character) => Item | null;
-  public setItem: (character: Character, item: Item) => void;
+  public getItem: (characterItems: CharacterItems) => Item | null;
+  public setItem: (characterItems: CharacterItems, item: Item) => void;
 }
 
 const characterItemSlots: Record<ItemSlot, CharacterItemSlot> = {
   [ItemSlot.Head]: {
-    getItem: character => character.headItem,
-    setItem: (character, item) => character.headItem = item,
+    getItem: characterItems => characterItems.headItem,
+    setItem: (characterItems, item) => characterItems.headItem = item,
   },
   [ItemSlot.Cape]: {
-    getItem: character => character.capeItem,
-    setItem: (character, item) => character.capeItem = item,
+    getItem: characterItems => characterItems.capeItem,
+    setItem: (characterItems, item) => characterItems.capeItem = item,
   },
   [ItemSlot.Body]: {
-    getItem: character => character.bodyItem,
-    setItem: (character, item) => character.bodyItem = item,
+    getItem: characterItems => characterItems.bodyItem,
+    setItem: (characterItems, item) => characterItems.bodyItem = item,
   },
   [ItemSlot.Hand]: {
-    getItem: character => character.handItem,
-    setItem: (character, item) => character.handItem = item,
+    getItem: characterItems => characterItems.handItem,
+    setItem: (characterItems, item) => characterItems.handItem = item,
   },
   [ItemSlot.Leg]: {
-    getItem: character => character.legItem,
-    setItem: (character, item) => character.legItem = item,
+    getItem: characterItems => characterItems.legItem,
+    setItem: (characterItems, item) => characterItems.legItem = item,
   },
   [ItemSlot.HorseHarness]: {
-    getItem: character => character.horseHarnessItem,
-    setItem: (character, item) => character.horseHarnessItem = item,
+    getItem: characterItems => characterItems.horseHarnessItem,
+    setItem: (characterItems, item) => characterItems.horseHarnessItem = item,
   },
   [ItemSlot.Horse]: {
-    getItem: character => character.horseItem,
-    setItem: (character, item) => character.horseItem = item,
+    getItem: characterItems => characterItems.horseItem,
+    setItem: (characterItems, item) => characterItems.horseItem = item,
   },
   [ItemSlot.Weapon1]: {
-    getItem: character => character.weapon1Item,
-    setItem: (character, item) => character.weapon1Item = item,
+    getItem: characterItems => characterItems.weapon1Item,
+    setItem: (characterItems, item) => characterItems.weapon1Item = item,
   },
   [ItemSlot.Weapon2]: {
-    getItem: character => character.weapon2Item,
-    setItem: (character, item) => character.weapon2Item = item,
+    getItem: characterItems => characterItems.weapon2Item,
+    setItem: (characterItems, item) => characterItems.weapon2Item = item,
   },
   [ItemSlot.Weapon3]: {
-    getItem: character => character.weapon3Item,
-    setItem: (character, item) => character.weapon3Item = item,
+    getItem: characterItems => characterItems.weapon3Item,
+    setItem: (characterItems, item) => characterItems.weapon3Item = item,
   },
   [ItemSlot.Weapon4]: {
-    getItem: character => character.weapon4Item,
-    setItem: (character, item) => character.weapon4Item = item,
+    getItem: characterItems => characterItems.weapon4Item,
+    setItem: (characterItems, item) => characterItems.weapon4Item = item,
   },
 };
 
-export function getCharacterItemFromSlot(character: Character, slot: ItemSlot) : Item | null {
-  return characterItemSlots[slot].getItem(character);
+export function getCharacterItemFromSlot(characterItems: CharacterItems, slot: ItemSlot) : Item | null {
+  return characterItemSlots[slot].getItem(characterItems);
 }
 
-export function setCharacterItem(character: Character, slot: ItemSlot, item: Item) {
-  return characterItemSlots[slot].setItem(character, item);
+export function setCharacterItem(characterItems: CharacterItems, slot: ItemSlot, item: Item) {
+  return characterItemSlots[slot].setItem(characterItems, item);
 }

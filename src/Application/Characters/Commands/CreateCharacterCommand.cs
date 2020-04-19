@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Crpg.Application.Characters.Models;
 using Crpg.Application.Common;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;

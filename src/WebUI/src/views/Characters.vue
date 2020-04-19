@@ -105,49 +105,49 @@
             <div class="columns item-boxes">
               <div class="column is-narrow gear-column">
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)">
-                  <img v-if="selectedCharacter.headItem" :src="selectedCharacter.headItem.image" alt="Head armor" />
+                  <img v-if="selectedCharacter.items.headItem" :src="selectedCharacter.items.headItem.image" alt="Head armor" />
                   <img v-else src="../assets/head-armor.png" alt="Head armor" class="item-placeholder" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Cape)">
-                  <img v-if="selectedCharacter.capeItem" :src="selectedCharacter.capeItem.image" alt="Cape" />
+                  <img v-if="selectedCharacter.items.capeItem" :src="selectedCharacter.items.capeItem.image" alt="Cape" />
                   <img v-else src="../assets/cape.png" alt="Cape" class="item-placeholder" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)">
-                  <img v-if="selectedCharacter.bodyItem" :src="selectedCharacter.bodyItem.image" alt="Body armor" />
+                  <img v-if="selectedCharacter.items.bodyItem" :src="selectedCharacter.items.bodyItem.image" alt="Body armor" />
                   <img v-else src="../assets/body-armor.png" alt="Body armor" class="item-placeholder" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)">
-                  <img v-if="selectedCharacter.handItem" :src="selectedCharacter.handItem.image" alt="Hand armor" />
+                  <img v-if="selectedCharacter.items.handItem" :src="selectedCharacter.items.handItem.image" alt="Hand armor" />
                   <img v-else src="../assets/hand-armor.png" alt="Hand armor" class="item-placeholder" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)">
-                  <img v-if="selectedCharacter.legItem" :src="selectedCharacter.legItem.image" alt="Leg armor" />
+                  <img v-if="selectedCharacter.items.legItem" :src="selectedCharacter.items.legItem.image" alt="Leg armor" />
                   <img v-else src="../assets/leg-armor.png" alt="Leg armor" class="item-placeholder" />
                 </div>
               </div>
 
               <div class="column is-narrow horse-column">
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.HorseHarness)">
-                  <img v-if="selectedCharacter.horseHarnessItem" :src="selectedCharacter.horseHarnessItem.image" alt="Horse harness" />
+                  <img v-if="selectedCharacter.items.horseHarnessItem" :src="selectedCharacter.items.horseHarnessItem.image" alt="Horse harness" />
                   <img v-else src="../assets/horse-harness.png" alt="Horse harness" class="item-placeholder" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Horse)">
-                  <img v-if="selectedCharacter.horseItem" :src="selectedCharacter.horseItem.image" alt="Horse" />
+                  <img v-if="selectedCharacter.items.horseItem" :src="selectedCharacter.items.horseItem.image" alt="Horse" />
                 </div>
               </div>
 
               <div class="column is-narrow weapon-column">
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)">
-                  <img v-if="selectedCharacter.weapon1Item" :src="selectedCharacter.weapon1Item.image" alt="First weapon" />
+                  <img v-if="selectedCharacter.items.weapon1Item" :src="selectedCharacter.items.weapon1Item.image" alt="First weapon" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)">
-                  <img v-if="selectedCharacter.weapon2Item" :src="selectedCharacter.weapon2Item.image" alt="Second weapon" />
+                  <img v-if="selectedCharacter.items.weapon2Item" :src="selectedCharacter.items.weapon2Item.image" alt="Second weapon" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)">
-                  <img v-if="selectedCharacter.weapon3Item" :src="selectedCharacter.weapon3Item.image" alt="Third weapon" />
+                  <img v-if="selectedCharacter.items.weapon3Item" :src="selectedCharacter.items.weapon3Item.image" alt="Third weapon" />
                 </div>
                 <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon4)">
-                  <img v-if="selectedCharacter.weapon4Item" :src="selectedCharacter.weapon4Item.image" alt="Fourth Weapon" />
+                  <img v-if="selectedCharacter.items.weapon4Item" :src="selectedCharacter.items.weapon4Item.image" alt="Fourth Weapon" />
                 </div>
               </div>
             </div>
@@ -274,7 +274,7 @@ export default class Characters extends Vue {
           userModule.retireCharacter(this.selectedCharacter!);
           notify('Character retired');
         },
-      })
+      });
     }
 
     openDeleteCharacterDialog() {
@@ -288,11 +288,11 @@ export default class Characters extends Vue {
           userModule.deleteCharacter(this.selectedCharacter!);
           notify('Character deleted');
         },
-      })
+      });
     }
 
     openReplaceItemModal(slot: ItemSlot) {
-      this.itemToReplace = getCharacterItemFromSlot(this.selectedCharacter!, slot);
+      this.itemToReplace = getCharacterItemFromSlot(this.selectedCharacter!.items, slot);
       this.itemToReplaceSlot = slot;
       this.selectedItem = null;
       if (userModule.ownedItems.length === 0) {

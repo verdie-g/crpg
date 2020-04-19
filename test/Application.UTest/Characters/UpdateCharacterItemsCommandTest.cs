@@ -38,17 +38,20 @@ namespace Crpg.Application.UTest.Characters
             var character = _db.Characters.Add(new Character
             {
                 Name = "name",
-                HeadItem = headOld.Entity,
-                CapeItem = capeOld.Entity,
-                BodyItem = bodyOld.Entity,
-                HandItem = handOld.Entity,
-                LegItem = legOld.Entity,
-                HorseHarnessItem = horseHarnessOld.Entity,
-                HorseItem = horseOld.Entity,
-                Weapon1Item = weapon1Old.Entity,
-                Weapon2Item = weapon2Old.Entity,
-                Weapon3Item = weapon3Old.Entity,
-                Weapon4Item = weapon4Old.Entity,
+                Items = new CharacterItems
+                {
+                    HeadItem = headOld.Entity,
+                    CapeItem = capeOld.Entity,
+                    BodyItem = bodyOld.Entity,
+                    HandItem = handOld.Entity,
+                    LegItem = legOld.Entity,
+                    HorseHarnessItem = horseHarnessOld.Entity,
+                    HorseItem = horseOld.Entity,
+                    Weapon1Item = weapon1Old.Entity,
+                    Weapon2Item = weapon2Old.Entity,
+                    Weapon3Item = weapon3Old.Entity,
+                    Weapon4Item = weapon4Old.Entity,
+                },
             });
             var user = _db.Users.Add(new User
             {
@@ -100,8 +103,6 @@ namespace Crpg.Application.UTest.Characters
             };
             var c = await handler.Handle(cmd, CancellationToken.None);
 
-            Assert.AreEqual(cmd.CharacterId, c.Id);
-            Assert.AreEqual(character.Entity.Name, c.Name);
             Assert.AreEqual(cmd.HeadItemId, c.HeadItem.Id);
             Assert.AreEqual(cmd.CapeItemId, c.CapeItem.Id);
             Assert.AreEqual(cmd.BodyItemId, c.BodyItem.Id);
@@ -124,17 +125,20 @@ namespace Crpg.Application.UTest.Characters
             var legOld = _db.Items.Add(new Item { Type = ItemType.LegArmor });
             var character = _db.Characters.Add(new Character
             {
-                HeadItem = headOld.Entity,
-                CapeItem = null,
-                BodyItem = null,
-                HandItem = null,
-                LegItem = legOld.Entity,
-                HorseHarnessItem = null,
-                HorseItem = null,
-                Weapon1Item = null,
-                Weapon2Item = null,
-                Weapon3Item = null,
-                Weapon4Item = null,
+                Items = new CharacterItems
+                {
+                    HeadItem = headOld.Entity,
+                    CapeItem = null,
+                    BodyItem = null,
+                    HandItem = null,
+                    LegItem = legOld.Entity,
+                    HorseHarnessItem = null,
+                    HorseItem = null,
+                    Weapon1Item = null,
+                    Weapon2Item = null,
+                    Weapon3Item = null,
+                    Weapon4Item = null,
+                },
             });
             var user = _db.Users.Add(new User
             {
@@ -168,9 +172,8 @@ namespace Crpg.Application.UTest.Characters
             };
             var c = await handler.Handle(cmd, CancellationToken.None);
 
-            Assert.AreEqual(cmd.CharacterId, c.Id);
-            Assert.IsNull(c.CapeItem);
             Assert.AreEqual(cmd.HeadItemId, c.HeadItem.Id);
+            Assert.IsNull(c.CapeItem);
             Assert.AreEqual(cmd.BodyItemId, c.BodyItem.Id);
             Assert.IsNull(c.HandItem);
             Assert.IsNull(c.LegItem);
