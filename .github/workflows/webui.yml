@@ -1,4 +1,4 @@
-name: Client
+name: WebUI
 
 on: [push]
 
@@ -7,7 +7,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      dir: ./src/Web/Client
+      dir: ./src/WebUI
 
     steps:
     - uses: actions/checkout@v2

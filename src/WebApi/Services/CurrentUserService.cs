@@ -2,7 +2,7 @@ using System.Security.Claims;
 using Crpg.Application.Common.Interfaces;
 using Microsoft.AspNetCore.Http;
 
-namespace Crpg.Web.Services
+namespace Crpg.WebApi.Services
 {
     public class CurrentUserService : ICurrentUserService
     {

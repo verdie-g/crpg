@@ -4,12 +4,12 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Persistence.Exceptions;
-using Crpg.Web.Models;
+using Crpg.WebApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace Crpg.Web.Common
+namespace Crpg.WebApi.Common
 {
     public class CustomExceptionHandlerMiddleware
     {
