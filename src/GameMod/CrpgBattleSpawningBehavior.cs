@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Crpg.GameMod.Api.Responses;
 using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using static Crpg.GameMod.CrpgSubModule;
 
 namespace Crpg.GameMod
 {
@@ -192,7 +194,7 @@ namespace Crpg.GameMod
 					MultiplayerClassDivisions.MPHeroClass mpheroClassForPeer = MultiplayerClassDivisions.GetMPHeroClassForPeer(missionPeer);
 					if (missionPeer.ControlledAgent == null && !missionPeer.HasSpawnedAgentVisuals && missionPeer.Team != null && missionPeer.Team != base.Mission.SpectatorTeam && missionPeer.SpawnTimer.Check(MBCommon.GetTime(MBCommon.TimeType.Mission)))
 					{
-						InformationManager.DisplayMessage(new InformationMessage("Spawn Virtual?"));
+						InformationManager.DisplayMessage(new InformationMessage("Spawn Visual"));
 						int currentGoldForPeer = this._crpgBattleMissionController.GetCurrentGoldForPeer(missionPeer);
 						if (mpheroClassForPeer == null || (this._crpgBattleMissionController.UseGold() && mpheroClassForPeer.TroopCost > currentGoldForPeer))
 						{
@@ -233,6 +235,7 @@ namespace Crpg.GameMod
 							}
 							int amountOfAgentVisualsForPeer = missionPeer.GetAmountOfAgentVisualsForPeer();
 							bool flag2 = amountOfAgentVisualsForPeer > 0;
+							equipment = CreateEquipment(CrpgGlobals.GetCrpgCharacter().Character.Items);
 							agentBuildData2.Equipment(equipment);
 							agentBuildData2.Team(missionPeer.Team);
 							agentBuildData2.VisualsIndex(0);
@@ -295,6 +298,38 @@ namespace Crpg.GameMod
 					}
 				}
 			}
+		}
+		
+
+		private Equipment CreateEquipment(GameCharacterItems gc)
+		{
+			var objectManager = Game.Current.ObjectManager;
+
+			var equipment = new Equipment();
+			SetEquipmentSlot(equipment, EquipmentIndex.Head, gc.HeadItemMbId, objectManager);
+			SetEquipmentSlot(equipment, EquipmentIndex.Cape, gc.CapeItemMbId, objectManager);
+			SetEquipmentSlot(equipment, EquipmentIndex.Body, gc.BodyItemMbId, objectManager);
+			SetEquipmentSlot(equipment, EquipmentIndex.Gloves, gc.HandItemMbId, objectManager);
+			SetEquipmentSlot(equipment, EquipmentIndex.Leg, gc.LegItemMbId, objectManager);
+			SetEquipmentSlot(equipment, EquipmentIndex.HorseHarness, gc.HorseHarnessItemMbId, objectManager);
+			SetEquipmentSlot(equipment, EquipmentIndex.Horse, gc.HorseItemMbId, objectManager);
+			SetEquipmentSlot(equipment, EquipmentIndex.Weapon1, gc.Weapon1ItemMbId, objectManager);
+			SetEquipmentSlot(equipment, EquipmentIndex.Weapon2, gc.Weapon2ItemMbId, objectManager);
+			SetEquipmentSlot(equipment, EquipmentIndex.Weapon3, gc.Weapon3ItemMbId, objectManager);
+			SetEquipmentSlot(equipment, EquipmentIndex.Weapon4, gc.Weapon4ItemMbId, objectManager);
+
+			return equipment;
+		}
+
+		private void SetEquipmentSlot(Equipment equipment, EquipmentIndex slot, string? itemId, MBObjectManager objectManager)
+		{
+			if (itemId == null)
+			{
+				return;
+			}
+
+			ItemObject item = objectManager.GetObject<ItemObject>(itemId);
+			equipment[slot] = new EquipmentElement(item);
 		}
 		/*private new void OnPeerSpawnedFromVisuals(MissionPeer peer)
 		{

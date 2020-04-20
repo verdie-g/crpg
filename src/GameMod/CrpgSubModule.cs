@@ -28,13 +28,27 @@ namespace Crpg.GameMod
 
 
         private readonly CrpgClient _client = new CrpgClient(jwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI5OTkiLCJyb2xlIjoiR2FtZSIsIm5iZiI6MTU4NzM5MjY2NywiZXhwIjoxNjE4OTI4NjY3LCJpYXQiOjE1ODczOTI2Njd9.kQmI7kJJ-aBC5idiESR4W2xjvgn_L_IEumjbbLowLQk");
+        public static class CrpgGlobals
+        {
+            private static GetUserResponse crpgCharacter;
 
-        private async Task CreateAndTick()
+            // public static String FILE_NAME = "Output.txt"; // Modifiable
+            public static GetUserResponse GetCrpgCharacter()
+            {
+                return crpgCharacter;
+            }
+            public static void SetCrpgCharacter(GetUserResponse value)
+            {
+                crpgCharacter = value;
+            }
+        }
+        public async Task CreateAndTick()
         {
             InformationManager.DisplayMessage(new InformationMessage("CreateAndTicktest :: start"));
             string steamid = SteamUser.GetSteamID().ToString();
             var user = await _client.GetOrCreateUser(req: new GetUserRequest { SteamId = long.Parse(steamid), CharacterName = SteamFriends.GetPersonaName() });
             if (user.Ban != null) { /* KICK */ }
+            CrpgGlobals.SetCrpgCharacter(user);
             var character = user.Character;
             InformationManager.DisplayMessage(new InformationMessage("CreateAndTick :: " + character.Id + " name: " + character.Name + " lv: " + character.Level));
             var tick = await _client.Tick(req: new TickRequest
