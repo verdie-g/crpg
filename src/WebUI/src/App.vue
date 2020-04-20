@@ -57,6 +57,12 @@
         </div>
 
         <div class="level-item">
+          <a href="https://www.patreon.com" target="_blank">
+            <b-icon icon="patreon" pack="fab" size="is-medium" />
+          </a>
+        </div>
+
+        <div class="level-item">
           <a href="https://discord.gg/83RJDN9" target="_blank">
             <b-icon icon="discord" pack="fab" size="is-medium" />
           </a>
