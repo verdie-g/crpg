@@ -13,16 +13,16 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task Basic()
         {
-            var character = _db.Characters.Add(new Character
+            var character = Db.Characters.Add(new Character
             {
                 Experience = 42424424,
                 Level = Constants.MinimumRetiringLevel,
                 ExperienceMultiplier = 1.1f,
                 User = new User(),
             });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
-            await new RetireCharacterCommand.Handler(_db, _mapper).Handle(new RetireCharacterCommand
+            await new RetireCharacterCommand.Handler(Db, Mapper).Handle(new RetireCharacterCommand
             {
                 CharacterId = character.Entity.Id,
             }, CancellationToken.None);
@@ -30,13 +30,13 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(1, character.Entity.Level);
             Assert.AreEqual(0, character.Entity.Experience);
             Assert.AreEqual(1.15f, character.Entity.ExperienceMultiplier);
-            Assert.AreEqual(1, character.Entity.User.LoomPoints);
+            Assert.AreEqual(1, character.Entity.User!.LoomPoints);
         }
 
         [Test]
         public void NotFoundIfCharacterDoesntExist()
         {
-            Assert.ThrowsAsync<NotFoundException>(() => new RetireCharacterCommand.Handler(_db, _mapper).Handle(
+            Assert.ThrowsAsync<NotFoundException>(() => new RetireCharacterCommand.Handler(Db, Mapper).Handle(
                 new RetireCharacterCommand
                 {
                     CharacterId = 1,
@@ -46,14 +46,14 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task BadRequestIfLevelTooLow()
         {
-            var character = _db.Characters.Add(new Character
+            var character = Db.Characters.Add(new Character
             {
                 Level = Constants.MinimumRetiringLevel - 1,
                 User = new User(),
             });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
-            Assert.ThrowsAsync<BadRequestException>(() => new RetireCharacterCommand.Handler(_db, _mapper).Handle(
+            Assert.ThrowsAsync<BadRequestException>(() => new RetireCharacterCommand.Handler(Db, Mapper).Handle(
                 new RetireCharacterCommand
                 {
                     CharacterId = character.Entity.Id,

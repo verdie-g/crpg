@@ -14,7 +14,7 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task SellItemUnequipped()
         {
-            var user = _db.Users.Add(new User
+            var user = Db.Users.Add(new User
             {
                 Gold = 0,
                 UserItems = new List<UserItem>
@@ -25,9 +25,9 @@ namespace Crpg.Application.UTest.Items
                     }
                 },
             });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
-            await new SellItemCommand.Handler(_db).Handle(new SellItemCommand
+            await new SellItemCommand.Handler(Db).Handle(new SellItemCommand
             {
                 ItemId = user.Entity.UserItems[0].ItemId,
                 UserId = user.Entity.Id,
@@ -55,15 +55,15 @@ namespace Crpg.Application.UTest.Items
                 new Character { Items = { Weapon3Item = item } },
                 new Character { Items = { Weapon4Item = item } },
             };
-            var user = _db.Users.Add(new User
+            var user = Db.Users.Add(new User
             {
                 Gold = 0,
                 UserItems = new List<UserItem> { new UserItem { Item = item } },
                 Characters = characters,
             });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
-            await new SellItemCommand.Handler(_db).Handle(new SellItemCommand
+            await new SellItemCommand.Handler(Db).Handle(new SellItemCommand
             {
                 ItemId = item.Id,
                 UserId = user.Entity.Id,
@@ -87,10 +87,10 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task NotFoundItem()
         {
-            var user = _db.Users.Add(new User());
-            await _db.SaveChangesAsync();
+            var user = Db.Users.Add(new User());
+            await Db.SaveChangesAsync();
 
-            Assert.ThrowsAsync<NotFoundException>(() => new SellItemCommand.Handler(_db).Handle(
+            Assert.ThrowsAsync<NotFoundException>(() => new SellItemCommand.Handler(Db).Handle(
                 new SellItemCommand
                 {
                     ItemId = 1,
@@ -101,10 +101,10 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task NotFoundUser()
         {
-            var item = _db.Items.Add(new Item());
-            await _db.SaveChangesAsync();
+            var item = Db.Items.Add(new Item());
+            await Db.SaveChangesAsync();
 
-            Assert.ThrowsAsync<NotFoundException>(() => new SellItemCommand.Handler(_db).Handle(
+            Assert.ThrowsAsync<NotFoundException>(() => new SellItemCommand.Handler(Db).Handle(
                 new SellItemCommand
                 {
                     ItemId = item.Entity.Id,

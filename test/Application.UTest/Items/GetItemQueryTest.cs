@@ -12,7 +12,7 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public void WhenItemDoesntExist()
         {
-            var handler = new GetItemQuery.Handler(_db, _mapper);
+            var handler = new GetItemQuery.Handler(Db, Mapper);
             Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new GetItemQuery
             {
                 ItemId = 1,
@@ -28,10 +28,10 @@ namespace Crpg.Application.UTest.Items
                 Value = 100,
                 Type = ItemType.BodyArmor,
             };
-            _db.Items.Add(dbItem);
-            await _db.SaveChangesAsync();
+            Db.Items.Add(dbItem);
+            await Db.SaveChangesAsync();
 
-            var handler = new GetItemQuery.Handler(_db, _mapper);
+            var handler = new GetItemQuery.Handler(Db, Mapper);
             var item = await handler.Handle(new GetItemQuery
             {
                 ItemId = dbItem.Id,

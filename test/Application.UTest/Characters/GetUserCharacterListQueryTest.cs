@@ -11,7 +11,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task Basic()
         {
-            _db.AddRange(
+            Db.AddRange(
                 new Character
                 {
                     Name = "toto",
@@ -27,9 +27,9 @@ namespace Crpg.Application.UTest.Characters
                     Name = "tata",
                     UserId = 2,
                 });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
-            var handler = new GetUserCharactersListQuery.Handler(_db, _mapper);
+            var handler = new GetUserCharactersListQuery.Handler(Db, Mapper);
             var characters = await handler.Handle(new GetUserCharactersListQuery { UserId = 1 }, CancellationToken.None);
 
             Assert.AreEqual(2, characters.Count);
