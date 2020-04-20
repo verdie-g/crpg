@@ -13,12 +13,12 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task Basic()
         {
-            var character = _db.Characters.Add(new Character { Name = "toto" });
-            var user = _db.Users.Add(new User
+            var character = Db.Characters.Add(new Character { Name = "toto" });
+            var user = Db.Users.Add(new User
             {
                 Characters = new List<Character> { character.Entity },
             });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
             var cmd = new UpdateCharacterCommand
             {
@@ -27,17 +27,17 @@ namespace Crpg.Application.UTest.Characters
                 Name = "tata",
             };
 
-            var res = await new UpdateCharacterCommand.Handler(_db, _mapper).Handle(cmd, CancellationToken.None);
+            var res = await new UpdateCharacterCommand.Handler(Db, Mapper).Handle(cmd, CancellationToken.None);
             Assert.AreEqual(cmd.Name, res.Name);
         }
 
         [Test]
         public async Task CharacterNotFound()
         {
-            var user = _db.Users.Add(new User());
-            await _db.SaveChangesAsync();
+            var user = Db.Users.Add(new User());
+            await Db.SaveChangesAsync();
 
-            var handler = new UpdateCharacterCommand.Handler(_db, _mapper);
+            var handler = new UpdateCharacterCommand.Handler(Db, Mapper);
             var cmd = new UpdateCharacterCommand
             {
                 CharacterId = 1,
@@ -50,11 +50,11 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task CharacterNotOwned()
         {
-            var character = _db.Characters.Add(new Character());
-            var user = _db.Users.Add(new User());
-            await _db.SaveChangesAsync();
+            var character = Db.Characters.Add(new Character());
+            var user = Db.Users.Add(new User());
+            await Db.SaveChangesAsync();
 
-            var handler = new UpdateCharacterCommand.Handler(_db, _mapper);
+            var handler = new UpdateCharacterCommand.Handler(Db, Mapper);
             var cmd = new UpdateCharacterCommand
             {
                 CharacterId = character.Entity.Id,
@@ -67,10 +67,10 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task UserNotFound()
         {
-            var character = _db.Characters.Add(new Character());
-            await _db.SaveChangesAsync();
+            var character = Db.Characters.Add(new Character());
+            await Db.SaveChangesAsync();
 
-            var handler = new UpdateCharacterCommand.Handler(_db, _mapper);
+            var handler = new UpdateCharacterCommand.Handler(Db, Mapper);
             var cmd = new UpdateCharacterCommand
             {
                 CharacterId = character.Entity.Id,

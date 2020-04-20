@@ -12,7 +12,7 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task Basic()
         {
-            var user = _db.Users.Add(new User
+            var user = Db.Users.Add(new User
             {
                 UserItems = new List<UserItem>
                 {
@@ -20,9 +20,9 @@ namespace Crpg.Application.UTest.Items
                     new UserItem { Item = new Item() },
                 }
             });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
-            var items = await new GetUserItemsQuery.Handler(_db, _mapper).Handle(
+            var items = await new GetUserItemsQuery.Handler(Db, Mapper).Handle(
                 new GetUserItemsQuery { UserId = user.Entity.Id }, CancellationToken.None);
 
             Assert.AreEqual(2, items.Count);

@@ -12,24 +12,24 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task WhenItemExists()
         {
-            var i = _db.Items.Add(new Item
+            var i = Db.Items.Add(new Item
             {
                 Name = "sword",
                 Value = 100,
                 Type = ItemType.BodyArmor,
             });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
-            var handler = new DeleteItemCommand.Handler(_db);
+            var handler = new DeleteItemCommand.Handler(Db);
             await handler.Handle(new DeleteItemCommand { ItemId = i.Entity.Id }, CancellationToken.None);
 
-            Assert.IsNull(await _db.Items.FindAsync(i.Entity.Id));
+            Assert.IsNull(await Db.Items.FindAsync(i.Entity.Id));
         }
 
         [Test]
         public void WhenItemDoesntExist()
         {
-            var handler = new DeleteItemCommand.Handler(_db);
+            var handler = new DeleteItemCommand.Handler(Db);
             Assert.ThrowsAsync<NotFoundException>(() =>
                 handler.Handle(new DeleteItemCommand { ItemId = 1 }, CancellationToken.None));
         }

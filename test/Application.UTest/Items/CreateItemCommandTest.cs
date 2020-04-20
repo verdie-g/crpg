@@ -13,7 +13,7 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task Basic()
         {
-            var handler = new CreateItemsCommand.Handler(_db);
+            var handler = new CreateItemsCommand.Handler(Db);
             await handler.Handle(new CreateItemsCommand
             {
                 Items = new[]
@@ -33,7 +33,7 @@ namespace Crpg.Application.UTest.Items
                 }
             }, CancellationToken.None);
 
-            Assert.AreEqual(2, await _db.Items.CountAsync());
+            Assert.AreEqual(2, await Db.Items.CountAsync());
         }
     }
 }

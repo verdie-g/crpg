@@ -30,16 +30,16 @@ namespace Crpg.Application.UTest.Games
                     i.Weapon2ItemMbId,
                 })
                 .Distinct()
-                .Select(mbId => new Item { MbId = mbId });
+                .Select(mbId => new Item { MbId = mbId! });
 
-            _db.Items.AddRange(allDefaultItemMbIds);
-            return _db.SaveChangesAsync();
+            Db.Items.AddRange(allDefaultItemMbIds);
+            return Db.SaveChangesAsync();
         }
 
         [Test]
         public async Task BannedUser()
         {
-            var user = _db.Users.Add(new User
+            var user = Db.Users.Add(new User
             {
                 SteamId = 123,
                 Characters = new List<Character> { new Character() },
@@ -50,12 +50,12 @@ namespace Crpg.Application.UTest.Games
                     new Ban { Until = new DateTimeOffset(new DateTime(2000, 1, 2)), Reason = "tata" },
                 }
             });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
             var dateTime = new Mock<IDateTimeOffset>();
             dateTime.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 23, 59, 59)));
 
-            var handler = new UpsertGameUserCommand.Handler(_db, _mapper, EventRaiser, dateTime.Object);
+            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, dateTime.Object);
             var gu = await handler.Handle(new UpsertGameUserCommand
             {
                 SteamId = user.Entity.SteamId,
@@ -64,14 +64,14 @@ namespace Crpg.Application.UTest.Games
 
             Assert.NotNull(gu);
             Assert.NotNull(gu.Ban);
-            Assert.AreEqual(user.Entity.Bans[2].Until, gu.Ban.Until);
-            Assert.AreEqual(user.Entity.Bans[2].Reason, gu.Ban.Reason);
+            Assert.AreEqual(user.Entity.Bans[2].Until, gu.Ban!.Until);
+            Assert.AreEqual(user.Entity.Bans[2].Reason, gu.Ban!.Reason);
         }
 
         [Test]
         public async Task UnbannedUser()
         {
-            var user = _db.Users.Add(new User
+            var user = Db.Users.Add(new User
             {
                 SteamId = 123,
                 Characters = new List<Character> { new Character() },
@@ -82,12 +82,12 @@ namespace Crpg.Application.UTest.Games
                     new Ban { Until = new DateTimeOffset(new DateTime(2000, 1, 2)), Reason = "tata" },
                 }
             });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
             var dateTime = new Mock<IDateTimeOffset>();
             dateTime.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2000, 1, 2, 0, 0, 1)));
 
-            var handler = new UpsertGameUserCommand.Handler(_db, _mapper, EventRaiser, dateTime.Object);
+            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, dateTime.Object);
             var gu = await handler.Handle(new UpsertGameUserCommand
             {
                 SteamId = user.Entity.SteamId,
@@ -101,7 +101,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task UserAndCharacterWithEquipmentExist()
         {
-            var character = _db.Characters.Add(new Character
+            var character = Db.Characters.Add(new Character
             {
                 Name = "toto",
                 Experience = 100,
@@ -121,14 +121,14 @@ namespace Crpg.Application.UTest.Games
                     Weapon4Item = new Item { MbId = "weapon4" },
                 }
             });
-            var user = _db.Users.Add(new User
+            var user = Db.Users.Add(new User
             {
                 SteamId = 123,
                 Characters = new List<Character> { character.Entity },
             });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
-            var handler = new UpsertGameUserCommand.Handler(_db, _mapper, EventRaiser, Mock.Of<IDateTimeOffset>());
+            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, Mock.Of<IDateTimeOffset>());
             var gu = await handler.Handle(new UpsertGameUserCommand
             {
                 SteamId = user.Entity.SteamId,
@@ -140,37 +140,37 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(character.Entity.Name, gu.Character.Name);
             Assert.AreEqual(character.Entity.Experience, gu.Character.Experience);
             Assert.AreEqual(character.Entity.Level, gu.Character.Level);
-            Assert.AreEqual(character.Entity.Items.HeadItem.MbId, gu.Character.Items.HeadItemMbId);
-            Assert.AreEqual(character.Entity.Items.CapeItem.MbId, gu.Character.Items.CapeItemMbId);
-            Assert.AreEqual(character.Entity.Items.BodyItem.MbId, gu.Character.Items.BodyItemMbId);
-            Assert.AreEqual(character.Entity.Items.HandItem.MbId, gu.Character.Items.HandItemMbId);
-            Assert.AreEqual(character.Entity.Items.LegItem.MbId, gu.Character.Items.LegItemMbId);
-            Assert.AreEqual(character.Entity.Items.HorseHarnessItem.MbId, gu.Character.Items.HorseHarnessItemMbId);
-            Assert.AreEqual(character.Entity.Items.HorseItem.MbId, gu.Character.Items.HorseItemMbId);
-            Assert.AreEqual(character.Entity.Items.Weapon1Item.MbId, gu.Character.Items.Weapon1ItemMbId);
-            Assert.AreEqual(character.Entity.Items.Weapon2Item.MbId, gu.Character.Items.Weapon2ItemMbId);
-            Assert.AreEqual(character.Entity.Items.Weapon3Item.MbId, gu.Character.Items.Weapon3ItemMbId);
-            Assert.AreEqual(character.Entity.Items.Weapon4Item.MbId, gu.Character.Items.Weapon4ItemMbId);
+            Assert.AreEqual(character.Entity.Items.HeadItem!.MbId, gu.Character.Items.HeadItemMbId);
+            Assert.AreEqual(character.Entity.Items.CapeItem!.MbId, gu.Character.Items.CapeItemMbId);
+            Assert.AreEqual(character.Entity.Items.BodyItem!.MbId, gu.Character.Items.BodyItemMbId);
+            Assert.AreEqual(character.Entity.Items.HandItem!.MbId, gu.Character.Items.HandItemMbId);
+            Assert.AreEqual(character.Entity.Items.LegItem!.MbId, gu.Character.Items.LegItemMbId);
+            Assert.AreEqual(character.Entity.Items.HorseHarnessItem!.MbId, gu.Character.Items.HorseHarnessItemMbId);
+            Assert.AreEqual(character.Entity.Items.HorseItem!.MbId, gu.Character.Items.HorseItemMbId);
+            Assert.AreEqual(character.Entity.Items.Weapon1Item!.MbId, gu.Character.Items.Weapon1ItemMbId);
+            Assert.AreEqual(character.Entity.Items.Weapon2Item!.MbId, gu.Character.Items.Weapon2ItemMbId);
+            Assert.AreEqual(character.Entity.Items.Weapon3Item!.MbId, gu.Character.Items.Weapon3ItemMbId);
+            Assert.AreEqual(character.Entity.Items.Weapon4Item!.MbId, gu.Character.Items.Weapon4ItemMbId);
             Assert.IsNull(gu.Ban);
         }
 
         [Test]
         public async Task UserAndCharacterWithNoEquipmentExist()
         {
-            var character = _db.Characters.Add(new Character
+            var character = Db.Characters.Add(new Character
             {
                 Name = "toto",
                 Experience = 100,
                 Level = 1,
             });
-            var user = _db.Users.Add(new User
+            var user = Db.Users.Add(new User
             {
                 SteamId = 123,
                 Characters = new List<Character> { character.Entity },
             });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
-            var handler = new UpsertGameUserCommand.Handler(_db, _mapper, EventRaiser, Mock.Of<IDateTimeOffset>());
+            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, Mock.Of<IDateTimeOffset>());
             var gu = await handler.Handle(new UpsertGameUserCommand
             {
                 SteamId = user.Entity.SteamId,
@@ -188,10 +188,10 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldCreateCharacterIfDoesntExist()
         {
-            var user = _db.Users.Add(new User { SteamId = 123 });
-            await _db.SaveChangesAsync();
+            var user = Db.Users.Add(new User { SteamId = 123 });
+            await Db.SaveChangesAsync();
 
-            var handler = new UpsertGameUserCommand.Handler(_db, _mapper, EventRaiser, Mock.Of<IDateTimeOffset>());
+            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, Mock.Of<IDateTimeOffset>());
             var gu = await handler.Handle(new UpsertGameUserCommand
             {
                 SteamId = user.Entity.SteamId,
@@ -210,13 +210,13 @@ namespace Crpg.Application.UTest.Games
             Assert.NotNull(gu.Character.Items.Weapon2ItemMbId);
             Assert.IsNull(gu.Ban);
 
-            Assert.DoesNotThrowAsync(() => _db.Characters.FirstAsync(c => c.UserId == user.Entity.Id && c.Name == "toto"));
+            Assert.DoesNotThrowAsync(() => Db.Characters.FirstAsync(c => c.UserId == user.Entity.Id && c.Name == "toto"));
         }
 
         [Test]
         public async Task ShouldCreateUserAndCharacterIfUserDoesntExist()
         {
-            var handler = new UpsertGameUserCommand.Handler(_db, _mapper, EventRaiser, Mock.Of<IDateTimeOffset>());
+            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, Mock.Of<IDateTimeOffset>());
             var gu = await handler.Handle(new UpsertGameUserCommand
             {
                 SteamId = 123,
@@ -234,8 +234,8 @@ namespace Crpg.Application.UTest.Games
             Assert.NotNull(gu.Character.Items.Weapon2ItemMbId);
             Assert.IsNull(gu.Ban);
 
-            Assert.DoesNotThrowAsync(() => _db.Users.FirstAsync(u => u.SteamId == 123));
-            Assert.DoesNotThrowAsync(() => _db.Characters.FirstAsync(c => c.UserId == gu.Id && c.Name == "toto"));
+            Assert.DoesNotThrowAsync(() => Db.Users.FirstAsync(u => u.SteamId == 123));
+            Assert.DoesNotThrowAsync(() => Db.Characters.FirstAsync(c => c.UserId == gu.Id && c.Name == "toto"));
         }
     }
 }

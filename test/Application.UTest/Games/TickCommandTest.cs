@@ -15,8 +15,8 @@ namespace Crpg.Application.UTest.Games
         {
             var c1 = new Character { Experience = 0, Level = 1, ExperienceMultiplier = 1.05f, User = new User { Gold = 20 } };
             var c2 = new Character { Experience = 300, Level = 1, ExperienceMultiplier = 1f, User = new User { Gold = 30 } };
-            _db.AddRange(c1, c2);
-            await _db.SaveChangesAsync();
+            Db.AddRange(c1, c2);
+            await Db.SaveChangesAsync();
 
             var cmd = new TickCommand
             {
@@ -27,7 +27,7 @@ namespace Crpg.Application.UTest.Games
                 }
             };
 
-            var res = await new TickCommand.Handler(_db).Handle(cmd, CancellationToken.None);
+            var res = await new TickCommand.Handler(Db).Handle(cmd, CancellationToken.None);
             Assert.NotNull(res.Users);
             Assert.AreEqual(1, res.Users.Count); // c2 leveled up
             Assert.AreEqual(res.Users[0].UserId, c2.UserId);
@@ -47,8 +47,8 @@ namespace Crpg.Application.UTest.Games
         public async Task PassTwoLevelInOneTick()
         {
             var c = new Character { Experience = 599, Level = 1, ExperienceMultiplier = 1f, User = new User() };
-            _db.Add(c);
-            await _db.SaveChangesAsync();
+            Db.Add(c);
+            await Db.SaveChangesAsync();
 
             var cmd = new TickCommand
             {
@@ -58,7 +58,7 @@ namespace Crpg.Application.UTest.Games
                 }
             };
 
-            var res = await new TickCommand.Handler(_db).Handle(cmd, CancellationToken.None);
+            var res = await new TickCommand.Handler(Db).Handle(cmd, CancellationToken.None);
             Assert.NotNull(res.Users);
             Assert.AreEqual(1, res.Users.Count);
             Assert.AreEqual(res.Users[0].UserId, c.UserId);
@@ -80,8 +80,8 @@ namespace Crpg.Application.UTest.Games
                     new Character { Experience = 0, Level = 1, ExperienceMultiplier = 1f },
                 }
             };
-            _db.Add(user);
-            await _db.SaveChangesAsync();
+            Db.Add(user);
+            await Db.SaveChangesAsync();
 
             var cmd = new TickCommand
             {
@@ -91,7 +91,7 @@ namespace Crpg.Application.UTest.Games
                 }
             };
 
-            var res = await new TickCommand.Handler(_db).Handle(cmd, CancellationToken.None);
+            var res = await new TickCommand.Handler(Db).Handle(cmd, CancellationToken.None);
             Assert.AreEqual(0, res.Users.Count);
 
             Assert.AreEqual(200, user.Characters[0].Experience);
