@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Games.Commands;
 using Crpg.Application.System.Commands;
+using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.System
@@ -27,6 +29,23 @@ namespace Crpg.Application.UTest.System
                 AssertItemExists(set.Weapon2ItemMbId);
                 AssertItemExists(set.Weapon3ItemMbId);
                 AssertItemExists(set.Weapon4ItemMbId);
+            }
+        }
+
+        [Test]
+        public async Task CheckSeedDoestContainDuplicateItems()
+        {
+            await new SeedDataCommand.Handler(_db).Handle(new SeedDataCommand(), CancellationToken.None);
+
+            var itemMbIds = new HashSet<string>();
+            foreach (var item in await _db.Items.ToArrayAsync())
+            {
+                if (itemMbIds.Contains(item.MbId))
+                {
+                    Assert.Fail($"Duplicate item \"{item.MbId}\"");
+                }
+
+                itemMbIds.Add(item.MbId);
             }
         }
 

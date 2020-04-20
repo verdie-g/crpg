@@ -392,16 +392,6 @@ namespace Crpg.Application.System.Commands
                     },
                     new Item
                     {
-                        MbId = "mp_strapped_shoes",
-                        Name = "Strapped Shoes",
-                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_strapped_shoes"),
-                        Value = 74,
-                        Type = ItemType.LegArmor,
-                        Weight = 0.7f,
-                        LegArmor = 4,
-                    },
-                    new Item
-                    {
                         MbId = "mp_light_harness",
                         Name = "Light Harness",
                         Image = new Uri("https://via.placeholder.com/256x120?text=mp_light_harness"),
