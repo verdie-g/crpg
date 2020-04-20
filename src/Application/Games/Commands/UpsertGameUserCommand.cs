@@ -108,7 +108,17 @@ namespace Crpg.Application.Games.Commands
                     // https://github.com/dotnet/efcore/issues/1833#issuecomment-603543685
                     // .Include(u => u.Characters.Where(c => c.Name == request.CharacterName))
                     // .Include(u => u.Bans.OrderByDescending(b => b.Id).Take(1))
-                    .Include(u => u.Characters)
+                    .Include(u => u.Characters).ThenInclude(c => c.Items.HeadItem)
+                    .Include(u => u.Characters).ThenInclude(c => c.Items.CapeItem)
+                    .Include(u => u.Characters).ThenInclude(c => c.Items.BodyItem)
+                    .Include(u => u.Characters).ThenInclude(c => c.Items.HandItem)
+                    .Include(u => u.Characters).ThenInclude(c => c.Items.LegItem)
+                    .Include(u => u.Characters).ThenInclude(c => c.Items.HorseHarnessItem)
+                    .Include(u => u.Characters).ThenInclude(c => c.Items.HorseItem)
+                    .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon1Item)
+                    .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon2Item)
+                    .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon3Item)
+                    .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon4Item)
                     .Include(u => u.Bans)
                     .FirstOrDefaultAsync(cancellationToken);
 

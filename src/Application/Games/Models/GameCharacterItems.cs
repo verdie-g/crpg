@@ -4,7 +4,7 @@ using Crpg.Domain.Entities;
 
 namespace Crpg.Application.Games.Models
 {
-    public class GameCharacterItems : IMapFrom<GameCharacterItems>
+    public class GameCharacterItems : IMapFrom<CharacterItems>
     {
         public string? HeadItemMbId { get; set; }
         public string? CapeItemMbId { get; set; }
