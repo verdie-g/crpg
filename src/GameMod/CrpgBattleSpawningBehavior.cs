@@ -212,7 +212,7 @@ namespace Crpg.GameMod
 							{
 								this.CreateEnforcedSpawnTimerForPeer(missionPeer, 15);
 							}*/
-							Formation formation2 = missionPeer.ControlledFormation;
+							//Formation formation2 = missionPeer.ControlledFormation;
 							/*if (MultiplayerOptions.OptionType.NumberOfBotsPerFormation.GetIntValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions) > 0 && formation2 == null)
 							{
 								FormationClass formationIndex = missionPeer.Team.FormationsIncludingEmpty.First((Formation x) => x.PlayerOwner == null && !x.ContainsAgentVisuals && !x.Units.Any()).FormationIndex;
@@ -228,14 +228,31 @@ namespace Crpg.GameMod
 
 							AgentBuildData agentBuildData2 = new AgentBuildData(heroCharacter2);
 							agentBuildData2.MissionPeer(missionPeer);
-							Equipment equipment = heroCharacter2.Equipment.Clone(false);
-							foreach (PerkEffect perkEffect in MPPerkObject.SelectRandomPerkEffectsForPerks(true, PerkType.PerkAlternativeEquipment, allSelectedPerksForPeer))
+
+							var gc = CrpgGlobals.GetCrpgCharacter().Character.Items;
+							var objectManager = Game.Current.ObjectManager;
+							Equipment equipment = new Equipment();
+							//Equipment equipment = heroCharacter2.Equipment.Clone(false);
+							//Equipment equipment = CreateEquipment(CrpgGlobals.GetCrpgCharacter().Character.Items);
+							//var equipment = new Equipment();
+							SetEquipmentSlot(equipment, EquipmentIndex.Head, gc.HeadItemMbId, objectManager);
+							SetEquipmentSlot(equipment, EquipmentIndex.Cape, gc.CapeItemMbId, objectManager);
+							SetEquipmentSlot(equipment, EquipmentIndex.Body, gc.BodyItemMbId, objectManager);
+							SetEquipmentSlot(equipment, EquipmentIndex.Gloves, gc.HandItemMbId, objectManager);
+							SetEquipmentSlot(equipment, EquipmentIndex.Leg, gc.LegItemMbId, objectManager);
+							SetEquipmentSlot(equipment, EquipmentIndex.HorseHarness, gc.HorseHarnessItemMbId, objectManager);
+							SetEquipmentSlot(equipment, EquipmentIndex.Horse, gc.HorseItemMbId, objectManager);
+							SetEquipmentSlot(equipment, EquipmentIndex.Weapon1, gc.Weapon1ItemMbId, objectManager);
+							SetEquipmentSlot(equipment, EquipmentIndex.Weapon2, gc.Weapon2ItemMbId, objectManager);
+							SetEquipmentSlot(equipment, EquipmentIndex.Weapon3, gc.Weapon3ItemMbId, objectManager);
+							SetEquipmentSlot(equipment, EquipmentIndex.Weapon4, gc.Weapon4ItemMbId, objectManager);
+
+							/*foreach (PerkEffect perkEffect in MPPerkObject.SelectRandomPerkEffectsForPerks(true, PerkType.PerkAlternativeEquipment, allSelectedPerksForPeer))
 							{
 								equipment[perkEffect.NewItemIndex] = perkEffect.NewItem.EquipmentElement;
-							}
+							}*/
 							int amountOfAgentVisualsForPeer = missionPeer.GetAmountOfAgentVisualsForPeer();
 							bool flag2 = amountOfAgentVisualsForPeer > 0;
-							equipment = CreateEquipment(CrpgGlobals.GetCrpgCharacter().Character.Items);
 							agentBuildData2.Equipment(equipment);
 							agentBuildData2.Team(missionPeer.Team);
 							agentBuildData2.VisualsIndex(0);
@@ -252,7 +269,7 @@ namespace Crpg.GameMod
 									agentBuildData2.InitialFrame(frame);
 								}
 							//}
-							agentBuildData2.Formation(formation2);
+							//agentBuildData2.Formation(formation2);
 							agentBuildData2.SpawnOnInitialPoint(true);
 							agentBuildData2.MakeUnitStandOutOfFormationDistance(7f);
 							agentBuildData2.IsFemale(missionPeer.Peer.IsFemale);
@@ -262,10 +279,14 @@ namespace Crpg.GameMod
 							agentBuildData2.ClothingColor2((team2 == base.Mission.AttackerTeam) ? basicCultureObject2.Color2 : basicCultureObject2.ClothAlternativeColor2);
 							if (this.GameMode.ShouldSpawnVisualsForServer(networkPeer))
 							{
-								base.AgentVisualSpawnComponent.SpawnAgentVisualsForPeer(missionPeer, agentBuildData2, missionPeer.SelectedTroopIndex, false, 0);
+								InformationManager.DisplayMessage(new InformationMessage("ShouldSpawnVisualsForServer"));
+
+								//base.AgentVisualSpawnComponent.SpawnAgentVisualsForPeer(missionPeer, agentBuildData2, missionPeer.SelectedTroopIndex, false, 0);
+								base.AgentVisualSpawnComponent.SpawnAgentVisualsForPeer(missionPeer, agentBuildData2, 0, false, 0);
 							}
+							InformationManager.DisplayMessage(new InformationMessage("HandleAgentVisualSpawning"));
 							this.GameMode.HandleAgentVisualSpawning(networkPeer, agentBuildData2, 0);
-							missionPeer.ControlledFormation = formation2;
+							//missionPeer.ControlledFormation = formation2;
 							/*if (MultiplayerOptions.OptionType.NumberOfBotsPerFormation.GetIntValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions) > 0)
 							{
 								int num4 = (int)Math.Ceiling((double)((float)MultiplayerOptions.OptionType.NumberOfBotsPerFormation.GetIntValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions) * mpheroClassForPeer.TroopMultiplier));
@@ -329,7 +350,7 @@ namespace Crpg.GameMod
 			}
 
 			ItemObject item = objectManager.GetObject<ItemObject>(itemId);
-			equipment[slot] = new EquipmentElement(item);
+			equipment[slot] = new EquipmentElement(item, new ItemModifier());
 		}
 		/*private new void OnPeerSpawnedFromVisuals(MissionPeer peer)
 		{
