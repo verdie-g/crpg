@@ -14,8 +14,7 @@ namespace Crpg.Application.UTest.System
         [Test]
         public async Task CheckSeedContainsAllStarterItems()
         {
-            await new SeedDataCommand.Handler(_db).Handle(new SeedDataCommand(), CancellationToken.None);
-
+            await new SeedDataCommand.Handler(Db).Handle(new SeedDataCommand(), CancellationToken.None);
             foreach (var set in UpsertGameUserCommand.Handler.DefaultItemsSets)
             {
                 AssertItemExists(set.HeadItemMbId);
@@ -35,10 +34,10 @@ namespace Crpg.Application.UTest.System
         [Test]
         public async Task CheckSeedDoestContainDuplicateItems()
         {
-            await new SeedDataCommand.Handler(_db).Handle(new SeedDataCommand(), CancellationToken.None);
+            await new SeedDataCommand.Handler(Db).Handle(new SeedDataCommand(), CancellationToken.None);
 
             var itemMbIds = new HashSet<string>();
-            foreach (var item in await _db.Items.ToArrayAsync())
+            foreach (var item in await Db.Items.ToArrayAsync())
             {
                 if (itemMbIds.Contains(item.MbId))
                 {
@@ -56,7 +55,7 @@ namespace Crpg.Application.UTest.System
                 return;
             }
 
-            var item = _db.Items.FirstOrDefault(i => i.MbId == mbId);
+            var item = Db.Items.FirstOrDefault(i => i.MbId == mbId);
             if (item == null)
             {
                 Assert.Fail($"Item \"{mbId}\" doesn't exist");

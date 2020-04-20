@@ -15,14 +15,14 @@ namespace Crpg.Application.UTest.Bans
         [Test]
         public async Task BanExistingUser()
         {
-            var user1 = _db.Users.Add(new User());
-            var user2 = _db.Users.Add(new User());
-            await _db.SaveChangesAsync();
+            var user1 = Db.Users.Add(new User());
+            var user2 = Db.Users.Add(new User());
+            await Db.SaveChangesAsync();
 
             var dt = new Mock<IDateTimeOffset>();
             dt.Setup(d => d.Now).Returns(new DateTimeOffset(new DateTime(2000, 1, 1)));
 
-            var ban = await new BanCommand.Handler(_db, _mapper, dt.Object).Handle(new BanCommand
+            var ban = await new BanCommand.Handler(Db, Mapper, dt.Object).Handle(new BanCommand
             {
                 BannedUserId = user1.Entity.Id,
                 Duration = TimeSpan.FromDays(1),
@@ -39,13 +39,13 @@ namespace Crpg.Application.UTest.Bans
         [Test]
         public async Task BanNonExistingUserShouldThrowNotFound()
         {
-            var user2 = _db.Users.Add(new User());
-            await _db.SaveChangesAsync();
+            var user2 = Db.Users.Add(new User());
+            await Db.SaveChangesAsync();
 
             var dt = new Mock<IDateTimeOffset>();
             dt.Setup(d => d.Now).Returns(new DateTimeOffset(new DateTime(2000, 1, 1)));
 
-            Assert.ThrowsAsync<NotFoundException>(() => new BanCommand.Handler(_db, _mapper, dt.Object).Handle(new BanCommand
+            Assert.ThrowsAsync<NotFoundException>(() => new BanCommand.Handler(Db, Mapper, dt.Object).Handle(new BanCommand
             {
                 BannedUserId = 10,
                 Duration = TimeSpan.FromDays(1),

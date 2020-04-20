@@ -11,7 +11,7 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task Basic()
         {
-            _db.AddRange(
+            Db.AddRange(
                 new Item
                 {
                     Name = "toto",
@@ -24,9 +24,9 @@ namespace Crpg.Application.UTest.Items
                     Value = 200,
                     Type = ItemType.HandArmor,
                 });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
-            var handler = new GetItemsListQuery.Handler(_db, _mapper);
+            var handler = new GetItemsListQuery.Handler(Db, Mapper);
             var items = await handler.Handle(new GetItemsListQuery(), CancellationToken.None);
 
             Assert.AreEqual(2, items.Count);
