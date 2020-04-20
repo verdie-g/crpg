@@ -12,23 +12,23 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task Basic()
         {
-            var user = _db.Users.Add(new User());
-            await _db.SaveChangesAsync();
+            var user = Db.Users.Add(new User());
+            await Db.SaveChangesAsync();
 
-            var handler = new CreateCharacterCommand.Handler(_db, _mapper);
+            var handler = new CreateCharacterCommand.Handler(Db, Mapper);
             var c = await handler.Handle(new CreateCharacterCommand
             {
                 Name = "my sword",
                 UserId = user.Entity.Id,
             }, CancellationToken.None);
 
-            Assert.NotNull(await _db.Characters.FindAsync(c.Id));
+            Assert.NotNull(await Db.Characters.FindAsync(c.Id));
         }
 
         [Test]
         public void UserNotFound()
         {
-            var handler = new CreateCharacterCommand.Handler(_db, _mapper);
+            var handler = new CreateCharacterCommand.Handler(Db, Mapper);
             Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new CreateCharacterCommand
             {
                 Name = "my sword",

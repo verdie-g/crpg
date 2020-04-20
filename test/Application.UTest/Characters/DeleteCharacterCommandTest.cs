@@ -12,34 +12,34 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task WhenCharacterExists()
         {
-            var e = _db.Characters.Add(new Character
+            var e = Db.Characters.Add(new Character
             {
                 Name = "sword",
                 UserId = 1,
             });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
-            var handler = new DeleteCharacterCommand.Handler(_db);
+            var handler = new DeleteCharacterCommand.Handler(Db);
             await handler.Handle(new DeleteCharacterCommand
             {
                 CharacterId = e.Entity.Id,
                 UserId = e.Entity.UserId,
             }, CancellationToken.None);
 
-            Assert.IsNull(await _db.Characters.FindAsync(e.Entity.Id));
+            Assert.IsNull(await Db.Characters.FindAsync(e.Entity.Id));
         }
 
         [Test]
         public async Task WhenCharacterExistsButNotOwnedByUser()
         {
-            var e = _db.Characters.Add(new Character
+            var e = Db.Characters.Add(new Character
             {
                 Name = "sword",
                 UserId = 2,
             });
-            await _db.SaveChangesAsync();
+            await Db.SaveChangesAsync();
 
-            var handler = new DeleteCharacterCommand.Handler(_db);
+            var handler = new DeleteCharacterCommand.Handler(Db);
             Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new DeleteCharacterCommand
             {
                 CharacterId = e.Entity.Id,
@@ -50,7 +50,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public void WhenCharacterDoesntExist()
         {
-            var handler = new DeleteCharacterCommand.Handler(_db);
+            var handler = new DeleteCharacterCommand.Handler(Db);
             Assert.ThrowsAsync<NotFoundException>(() =>
                 handler.Handle(request: new DeleteCharacterCommand { CharacterId = 1 }, CancellationToken.None));
         }

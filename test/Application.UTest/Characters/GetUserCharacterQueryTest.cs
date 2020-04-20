@@ -12,7 +12,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public void WhenCharacterDoesntExist()
         {
-            var handler = new GetUserCharacterQuery.Handler(_db, _mapper);
+            var handler = new GetUserCharacterQuery.Handler(Db, Mapper);
             Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new GetUserCharacterQuery
             {
                 CharacterId = 1,
@@ -28,10 +28,10 @@ namespace Crpg.Application.UTest.Characters
                 Name = "toto",
                 UserId = 2,
             };
-            _db.Characters.Add(dbCharacter);
-            await _db.SaveChangesAsync();
+            Db.Characters.Add(dbCharacter);
+            await Db.SaveChangesAsync();
 
-            var handler = new GetUserCharacterQuery.Handler(_db, _mapper);
+            var handler = new GetUserCharacterQuery.Handler(Db, Mapper);
             var item = await handler.Handle(new GetUserCharacterQuery
             {
                 CharacterId = dbCharacter.Id,
@@ -49,10 +49,10 @@ namespace Crpg.Application.UTest.Characters
                 Name = "toto",
                 UserId = 2,
             };
-            _db.Characters.Add(dbCharacter);
-            await _db.SaveChangesAsync();
+            Db.Characters.Add(dbCharacter);
+            await Db.SaveChangesAsync();
 
-            var handler = new GetUserCharacterQuery.Handler(_db, _mapper);
+            var handler = new GetUserCharacterQuery.Handler(Db, Mapper);
             Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new GetUserCharacterQuery
             {
                 CharacterId = dbCharacter.Id,
