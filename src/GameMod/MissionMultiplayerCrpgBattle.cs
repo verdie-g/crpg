@@ -334,10 +334,11 @@ namespace Crpg.GameMod
                         {
                             num2 = 90;
                         }
-                        else if (this.RoundController.RoundWinner == component.Team.Side && component.GetComponent<CrpgBattleMissionRepresentative>().CheckIfSurvivedLastRoundAndReset())
+                        // si spawn !team
+                        /*else if (this.RoundController.RoundWinner == component.Team.Side && component.GetComponent<CrpgBattleMissionRepresentative>().CheckIfSurvivedLastRoundAndReset())
                         {
                             num2 += 30;
-                        }
+                        }*/ 
                         num += MBMath.ClampInt(num2, 0, 90);
                         if (num > 300)
                         {

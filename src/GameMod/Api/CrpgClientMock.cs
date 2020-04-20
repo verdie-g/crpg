@@ -20,11 +20,11 @@ namespace Crpg.GameMod.Api
                     Level = 1,
                     Experience = 100,
                     NextLevelExperience = 300,
-                    HeadItemMbId = "mp_wrapped_desert_cap",
+                    /*HeadItemMbId = "mp_wrapped_desert_cap",
                     BodyItemMbId = "mp_aserai_civil_e",
                     LegItemMbId = "mp_strapped_shoes",
                     Weapon1ItemMbId = "mp_aserai_axe",
-                    Weapon2ItemMbId = "mp_throwing_stone",
+                    Weapon2ItemMbId = "mp_throwing_stone",*/
                 }
             });
         }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Games;
+using Crpg.Application.Games.Commands;
 using Crpg.Domain.Entities;
 using MediatR;
 
@@ -24,15 +25,15 @@ namespace Crpg.Application.System.Commands
             public async Task<Unit> Handle(SeedDataCommand request, CancellationToken cancellationToken)
             {
                 _db.Items.AddRange(new Item
-                    {
-                        MbId = "mp_laced_cloth_coif",
-                        Name = "Laced Cloth Coif",
-                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_laced_cloth_coif"),
-                        Value = 48,
-                        Type = ItemType.HeadArmor,
-                        Weight = 0.4f,
-                        HeadArmor = 4,
-                    },
+                {
+                    MbId = "mp_laced_cloth_coif",
+                    Name = "Laced Cloth Coif",
+                    Image = new Uri("https://via.placeholder.com/256x120?text=mp_laced_cloth_coif"),
+                    Value = 48,
+                    Type = ItemType.HeadArmor,
+                    Weight = 0.4f,
+                    HeadArmor = 4,
+                },
                     new Item
                     {
                         MbId = "mp_nomad_padded_hood",
@@ -77,8 +78,7 @@ namespace Crpg.Application.System.Commands
                     {
                         MbId = "mp_pointed_skullcap_over_cloth_headwrap",
                         Name = "Pointed Skullcap Over Cloth Headwrap",
-                        Image = new Uri(
-                            "https://via.placeholder.com/256x120?text=mp_pointed_skullcap_over_cloth_headwrap"),
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_pointed_skullcap_over_cloth_headwrap"),
                         Value = 69,
                         Type = ItemType.HeadArmor,
                         Weight = 1.1f,
@@ -392,16 +392,6 @@ namespace Crpg.Application.System.Commands
                     },
                     new Item
                     {
-                        MbId = "mp_strapped_shoes",
-                        Name = "Strapped Shoes",
-                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_strapped_shoes"),
-                        Value = 74,
-                        Type = ItemType.LegArmor,
-                        Weight = 0.7f,
-                        LegArmor = 4,
-                    },
-                    new Item
-                    {
                         MbId = "mp_light_harness",
                         Name = "Light Harness",
                         Image = new Uri("https://via.placeholder.com/256x120?text=mp_light_harness"),
@@ -559,21 +549,55 @@ namespace Crpg.Application.System.Commands
                     },
                     new Item
                     {
-                      MbId = "mp_khuzait_sichel",
-                      Name = "Eastern Short Sickle",
-                      Value = 1,
-                      Type = ItemType.OneHandedWeapon,
-                      Weight = 1.16f,
-                      BodyArmor = 0,
-                      SwingDamageType = 0,
-                      Accuracy = 0,
-                      MissileSpeed = 0,
-                      StackAmount = 0,
-                      WeaponLength = 112,
-                      PrimarySwingDamage = 52,
-                      PrimarySwingSpeed = 93,
-                      PrimaryHandling = 90,
-                      PrimaryWeaponFlags = (WeaponFlags?)65537
+                        MbId = "mp_khuzait_sichel",
+                        Name = "Eastern Short Sickle",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_khuzait_sichel"),
+                        Value = 1,
+                        Type = ItemType.OneHandedWeapon,
+                        Weight = 1.16f,
+                        BodyArmor = 0,
+                        SwingDamageType = DamageType.Cut,
+                        Accuracy = 0,
+                        MissileSpeed = 0,
+                        StackAmount = 0,
+                        WeaponLength = 112,
+                        PrimarySwingDamage = 52,
+                        PrimarySwingSpeed = 93,
+                        PrimaryHandling = 90,
+                        PrimaryWeaponFlags = (WeaponFlags?)65537,
+                    },
+                    new Item
+                    {
+                        MbId = "mp_aserai_axe",
+                        Name = "Southern Axe",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_aserai_axe"),
+                        Value = 1,
+                        Type = ItemType.OneHandedWeapon,
+                        Weight = 1.23f,
+                        WeaponLength = 76,
+                        PrimarySwingDamage = 67,
+                        PrimarySwingSpeed = 90,
+                        PrimaryHandling = 89,
+                        PrimaryWeaponFlags = (WeaponFlags?)65537
+                    },
+                    new Item
+                    {
+                        MbId = "mp_sturgia_mace",
+                        Name = "Northern Mace",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_sturgia_mace"),
+                        Value = 1,
+                        Type = ItemType.OneHandedWeapon,
+                        Weight = 1.37f,
+                        BodyArmor = 0,
+                        SwingDamageType = DamageType.Blunt,
+                        Accuracy = 0,
+                        MissileSpeed = 0,
+                        StackAmount = 0,
+                        WeaponLength = 81,
+                        PrimarySwingDamage = 51,
+                        PrimarySwingSpeed = 86,
+                        PrimaryHandling = 87,
+                        PrimaryWeaponFlags = (WeaponFlags?)1,
                     },
                     new Item
                     {
@@ -589,6 +613,57 @@ namespace Crpg.Application.System.Commands
                         PrimarySwingSpeed = 99,
                         PrimaryHandling = 102,
                         PrimaryWeaponFlags = (WeaponFlags?)65537,
+                    },
+                    new Item
+                    {
+                        MbId = "mp_empire_axe",
+                        Name = "Imperial Axe",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_empire_axe"),
+                        Value = 1,
+                        Type = ItemType.OneHandedWeapon,
+                        Weight = 1.16f,
+                        ThrustDamageType = DamageType.Blunt,
+                        SwingDamageType = 0,
+                        WeaponLength = 76,
+                        PrimaryThrustDamage = 41,
+                        PrimaryThrustSpeed = 94,
+                        PrimarySwingDamage = 73,
+                        PrimarySwingSpeed = 88,
+                        PrimaryHandling = 86,
+                        PrimaryWeaponFlags = (WeaponFlags?)65537
+                    },
+                    new Item
+                    {
+                        MbId = "mp_battania_axe",
+                        Name = "Highland Axe",
+                        Image = new Uri("https://via.placeholder.com/256x120?text=mp_battania_axe"),
+                        Value = 1,
+                        Type = ItemType.OneHandedWeapon,
+                        Weight = 0.73f,
+                        ThrustDamageType = DamageType.Pierce,
+                        WeaponLength = 85,
+                        PrimaryThrustDamage = 14,
+                        PrimaryThrustSpeed = 98,
+                        PrimarySwingDamage = 63,
+                        PrimarySwingSpeed = 99,
+                        PrimaryHandling = 95,
+                        PrimaryWeaponFlags = (WeaponFlags?)65537
+                    },
+                    new Item
+                    {
+                        MbId = "mp_empire_long_twohandedaxe",
+                        Name = "Skoldern Twohanded Axe",
+                        Value = 1,
+                        Type = ItemType.TwoHandedWeapon,
+                        Weight = 0.94f,
+                        ThrustDamageType = DamageType.Blunt,
+                        WeaponLength = 131,
+                        PrimaryThrustDamage = 20,
+                        PrimaryThrustSpeed = 102,
+                        PrimarySwingDamage = 102,
+                        PrimarySwingSpeed = 93,
+                        PrimaryHandling = 81,
+                        PrimaryWeaponFlags = (WeaponFlags?)2162705
                     },
                     new Item
                     {
