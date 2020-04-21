@@ -144,7 +144,7 @@ public class MultiplayerMissionViews
 	    list.Add(ViewCreator.CreateMissionMultiplayerEscapeMenu("ClassicBattle"));
 	    list.Add(ViewCreator.CreateMissionScoreBoardUIHandler(mission, false)); //
 	    list.Add(ViewCreator.CreateMultiplayerEndOfRoundUIHandler()); //
-	    //list.Add(ViewCreator.CreateLobbyEquipmentUIHandler()); //
+	    list.Add(ViewCreator.CreateLobbyEquipmentUIHandler()); //
         //list.Add(ViewCreator.CreateMultiplayerFactionBanVoteUIHandler()); //++
         //list.Add(ViewCreator.CreateMultiplayerMissionOrderUIHandler(mission)); //++
         list.Add(ViewCreator.CreateMissionAgentLabelUIHandler(mission)); //
