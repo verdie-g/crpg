@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Crpg.GameMod.Api;
+using Crpg.GameMod.Api.Requests;
+using Crpg.GameMod.Api.Responses;
 using NetworkMessages.FromClient;
+using Steamworks;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -12,7 +17,45 @@ namespace Crpg.GameMod
 {
     public class MissionMultiplayerCrpgBattle : MissionMultiplayerGameModeBase
     {
-      	public override bool IsGameModeHidingAllAgentVisuals
+        private readonly CrpgClient _client = new CrpgClient(jwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI5OTkiLCJyb2xlIjoiR2FtZSIsIm5iZiI6MTU4NzM5MjY2NywiZXhwIjoxNjE4OTI4NjY3LCJpYXQiOjE1ODczOTI2Njd9.kQmI7kJJ-aBC5idiESR4W2xjvgn_L_IEumjbbLowLQk");
+        public static class CrpgGlobals
+        {
+            private static GetUserResponse crpgCharacter;
+
+            // public static String FILE_NAME = "Output.txt"; // Modifiable
+            public static GetUserResponse GetCrpgCharacter()
+            {
+                return crpgCharacter;
+            }
+            public static void SetCrpgCharacter(GetUserResponse value)
+            {
+                crpgCharacter = value;
+            }
+        }
+        public async Task CreateAndTick()
+        {
+            InformationManager.DisplayMessage(new InformationMessage("CreateAndTicktest :: start"));
+            string steamid = SteamUser.GetSteamID().ToString();
+            var user = await _client.GetOrCreateUser(req: new GetUserRequest { SteamId = long.Parse(steamid), CharacterName = SteamFriends.GetPersonaName() });
+            if (user.Ban != null) { /* KICK */ }
+            CrpgGlobals.SetCrpgCharacter(user);
+            var character = user.Character;
+            InformationManager.DisplayMessage(new InformationMessage("CreateAndTick :: " + character.Id + " name: " + character.Name + " lv: " + character.Level));
+            var tick = await _client.Tick(req: new TickRequest
+            {
+                Users = new[]
+                {
+                    new UserTick
+                    {
+                        CharacterId = character.Id,
+                        ExperienceGain = 1200,
+                        GoldGain = 100,
+                    }
+                }
+            });
+            InformationManager.DisplayMessage(new InformationMessage("CreateAndTick2 :: " + character.Id + " name: " + character.Name + " lv: " + character.Level));
+        }
+        public override bool IsGameModeHidingAllAgentVisuals
       	{
       		get
       		{
@@ -590,6 +633,8 @@ namespace Crpg.GameMod
         {
             GameNetwork.BeginBroadcastModuleEvent();
             GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None, null);
+            CreateAndTick();
+            InformationManager.DisplayMessage(new InformationMessage("HandleNewClientAfterLoadingFinished :: CreateAndTick"));
         }
         public override bool CheckForMatchEnd()
       	{

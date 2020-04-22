@@ -8,7 +8,6 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using static Crpg.GameMod.CrpgSubModule;
 
 namespace Crpg.GameMod
 {
@@ -31,6 +30,7 @@ namespace Crpg.GameMod
 			this._roundController = base.Mission.GetMissionBehaviour<MultiplayerRoundController>();
 			this._roundController.OnRoundStarted += this.RequestStartSpawnSession;
 			this._roundController.OnRoundEnding += this.RequestStopSpawnSession;
+			this._roundController.OnRoundEnding += this.UpdateCrpgPlayer;
 			/*if (MultiplayerOptions.OptionType.NumberOfBotsPerFormation.GetIntValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions) == 0)
 			{
 				this._roundController.EnableEquipmentUpdate();
@@ -44,10 +44,10 @@ namespace Crpg.GameMod
 			base.Clear();
 			this._roundController.OnRoundStarted -= this.RequestStartSpawnSession;
 			this._roundController.OnRoundEnding -= this.RequestStopSpawnSession;
+			this._roundController.OnRoundEnding -= this.UpdateCrpgPlayer;
 			base.OnAllAgentsFromPeerSpawnedFromVisuals -= this.OnAllAgentsFromPeerSpawnedFromVisuals;
 			//base.OnPeerSpawnedFromVisuals -= this.OnPeerSpawnedFromVisuals;
 		}
-
 		public override void OnTick(float dt)
 		{
 			foreach (MissionPeer missionPeer in VirtualPlayer.Peers<MissionPeer>())
@@ -94,7 +94,7 @@ namespace Crpg.GameMod
 						agentBuildData.VisualsIndex(i);
 
 						//Equipment equipment = flag ? basicCharacterObject.Equipment.Clone(false) : Equipment.GetRandomEquipmentElements(basicCharacterObject, false, false, MBRandom.RandomInt());
-						Equipment equipment = flag ? CreateEquipment(CrpgGlobals.GetCrpgCharacter().Character.Items) : Equipment.GetRandomEquipmentElements(basicCharacterObject, false, false, MBRandom.RandomInt());
+						Equipment equipment = flag ? CreateEquipment(MissionMultiplayerCrpgBattle.CrpgGlobals.GetCrpgCharacter().Character.Items) : Equipment.GetRandomEquipmentElements(basicCharacterObject, false, false, MBRandom.RandomInt());
 						/*foreach (PerkEffect perkEffect2 in MPPerkObject.SelectRandomPerkEffectsForPerks(flag, PerkType.PerkAlternativeEquipment, allSelectedPerksForPeer2))
 						{
 							equipment[perkEffect2.NewItemIndex] = perkEffect2.NewItem.EquipmentElement;
@@ -233,6 +233,13 @@ namespace Crpg.GameMod
 				base.ResetSpawnTimers();
 			}
 		}
+		public void UpdateCrpgPlayer()
+		{
+			// mise a jour joueur
+			_crpgBattleMissionController.CreateAndTick();
+			InformationManager.DisplayMessage(new InformationMessage("Spawn :: UpdateCrpgPlayer"));
+		}
+
 		protected override void SpawnAgents()
 		{
 			BasicCultureObject @object = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions));
@@ -279,9 +286,9 @@ namespace Crpg.GameMod
 							BasicCharacterObject heroCharacter = randomElement.HeroCharacter;
 							BasicCharacterObject troopCharacter = randomElement.TroopCharacter;
 							AgentBuildData agentBuildData = new AgentBuildData(heroCharacter);
-							//agentBuildData.Equipment(randomElement.HeroCharacter.Equipment);
-							Equipment equipment = CreateEquipment(CrpgGlobals.GetCrpgCharacter().Character.Items);
-							agentBuildData.Equipment(equipment);
+							agentBuildData.Equipment(randomElement.HeroCharacter.Equipment);
+							//Equipment equipment = CreateEquipment(MissionMultiplayerCrpgBattle.CrpgGlobals.GetCrpgCharacter().Character.Items);
+							//agentBuildData.Equipment(equipment);
 							agentBuildData.TroopOrigin(new BasicBattleAgentOrigin(heroCharacter));
 							agentBuildData.EquipmentSeed(this.MissionLobbyComponent.GetRandomFaceSeedForCharacter(heroCharacter, 0));
 							agentBuildData.Team(team);
@@ -374,14 +381,14 @@ namespace Crpg.GameMod
 							while (gcsync != true)
 							{
 								InformationManager.DisplayMessage(new InformationMessage("Spawn gcsync?"));
-								var gc = CrpgGlobals.GetCrpgCharacter().Character.Items;
+								var gc = MissionMultiplayerCrpgBattle.CrpgGlobals.GetCrpgCharacter().Character.Items;
 								if(gc != null)
 								{
 									InformationManager.DisplayMessage(new InformationMessage("Spawn gcsync OK!?"));
 									gcsync = true;
 								}
 							}
-							Equipment equipment = CreateEquipment(CrpgGlobals.GetCrpgCharacter().Character.Items);
+							Equipment equipment = CreateEquipment(MissionMultiplayerCrpgBattle.CrpgGlobals.GetCrpgCharacter().Character.Items);
 
 							//Equipment equipment = heroCharacter2.Equipment.Clone(false);
 							//Equipment equipment = CreateEquipment(CrpgGlobals.GetCrpgCharacter().Character.Items);
