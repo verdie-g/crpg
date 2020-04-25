@@ -93,10 +93,11 @@ namespace Crpg.GameMod
                             new AgentFadeOutLogic()
                     };
                 }
+                InformationManager.DisplayMessage(new InformationMessage("OpenCrpgBattleMission::Client"));
                 return new MissionBehaviour[]
                 {
                     MissionLobbyComponent.CreateBehaviour(),
-                    new MultiplayerRoundController(), //+
+                    new MultiplayerRoundComponent(), //+
                     //new MultiplayerWarmupComponent(), //+
                     new MissionMultiplayerCrpgBattleClient(),
                     new MultiplayerTimerComponent(),
