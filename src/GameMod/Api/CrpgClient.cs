@@ -24,9 +24,9 @@ namespace Crpg.GameMod.Api
             _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + jwt);
         }
 
-        public Task<GetUserResponse> GetOrCreateUser(GetUserRequest req, CancellationToken cancellationToken = default)
+        public Task<GameUser> GetOrCreateUser(GetUserRequest req, CancellationToken cancellationToken = default)
         {
-            return Put<GetUserRequest, GetUserResponse>("users", req, cancellationToken);
+            return Put<GetUserRequest, GameUser>("users", req, cancellationToken);
         }
 
         public Task<TickResponse> Tick(TickRequest req, CancellationToken cancellationToken = default)

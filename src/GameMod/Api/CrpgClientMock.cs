@@ -8,9 +8,9 @@ namespace Crpg.GameMod.Api
 {
     public class CrpgClientMock : ICrpgClient
     {
-        public Task<GetUserResponse> GetOrCreateUser(GetUserRequest req, CancellationToken cancellationToken = default)
+        public Task<GameUser> GetOrCreateUser(GetUserRequest req, CancellationToken cancellationToken = default)
         {
-            return Task.FromResult(new GetUserResponse
+            return Task.FromResult(new GameUser
             {
                 Id = 1,
                 Character = new GameCharacter

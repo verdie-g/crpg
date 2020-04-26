@@ -7,7 +7,7 @@ namespace Crpg.GameMod.Api
 {
     internal interface ICrpgClient
     {
-        Task<GetUserResponse> GetOrCreateUser(GetUserRequest req, CancellationToken cancellationToken = default);
+        Task<GameUser> GetOrCreateUser(GetUserRequest req, CancellationToken cancellationToken = default);
         Task<TickResponse> Tick(TickRequest req, CancellationToken cancellationToken = default);
     }
 }
