@@ -7,7 +7,7 @@ namespace Crpg.Domain.Entities
     public class User : AuditableEntity
     {
         public int Id { get; set; }
-        public long SteamId { get; set; }
+        public ulong SteamId { get; set; }
         public string UserName { get; set; } = string.Empty;
         public int Gold { get; set; }
         public int LoomPoints { get; set; }
