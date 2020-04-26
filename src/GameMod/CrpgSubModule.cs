@@ -1,204 +1,135 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Xml;
-using Newtonsoft.Json;
+﻿using System.Linq;
+using Crpg.GameMod.Battle;
 using TaleWorlds.Core;
-using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.View;
-using Module = TaleWorlds.MountAndBlade.Module;
-using Path = System.IO.Path;
 
 namespace Crpg.GameMod
 {
-    public class CrpgSubModule : MBSubModuleBase
+    internal class CrpgSubModule : MBSubModuleBase
     {
-        private const string OutputPath = "../../Items";
+        /// <summary>
+        /// Called during the first loading screen of the game, always the first override to be called, this is where
+        /// you should be doing the bulk of your initial setup.
+        /// </summary>
+        protected override void OnSubModuleLoad()
+        {
+            DebugUtils.Trace();
+            base.OnSubModuleLoad();
+
+            Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode());
+
+            // Game mode needs scenes, else selecting it in UI crashes
+            // TODO: move to an xml file
+            Module.CurrentModule.GetMultiplayerGameTypes()
+                .First(gti => gti.GameType == CrpgBattleGameMode.GameModeName)
+                .Scenes.Add("mp_skirmish_spawn_test");
+        }
+
+        /// <summary>
+        /// Called just before the main menu first appears, helpful if your mod depends on other things being set up
+        /// during the initial load.
+        /// </summary>
+        protected override void OnBeforeInitialModuleScreenSetAsRoot()
+        {
+            DebugUtils.Trace();
+            base.OnBeforeInitialModuleScreenSetAsRoot();
+        }
+
+        /// <summary>
+        /// Called immediately upon loading after selecting a game mode (submodule) from the main menu.
+        /// </summary>
+        protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
+        {
+            DebugUtils.Trace();
+            base.OnGameStart(game, gameStarterObject);
+        }
+
+        /// <summary>
+        /// Called immediately after loading the selected game mode (submodule) has completed.
+        /// </summary>
+        public override void BeginGameStart(Game game)
+        {
+            DebugUtils.Trace();
+            base.BeginGameStart(game);
+        }
+
+        /// <summary>
+        /// Called once any game mode is started.
+        /// </summary>
+        public override void OnCampaignStart(Game game, object starterObject)
+        {
+            DebugUtils.Trace();
+            base.OnCampaignStart(game, starterObject);
+        }
+
+        /// <summary>
+        /// Called once the initialisation for a game mode has finished.
+        /// </summary>
+        public override void OnGameInitializationFinished(Game game)
+        {
+            DebugUtils.Trace();
+            base.OnGameInitializationFinished(game);
+        }
+
+        /// <summary>
+        /// Called seemingly as loading is ending, not entirely sure of this one.
+        /// </summary>
+        public override bool DoLoading(Game game)
+        {
+            DebugUtils.Trace();
+            return base.DoLoading(game);
+        }
+
+        /// <summary>
+        /// Called when starting a new save in the campaign mode specifically.
+        /// </summary>
+        public override void OnNewGameCreated(Game game, object initializerObject)
+        {
+            DebugUtils.Trace();
+            base.OnNewGameCreated(game, initializerObject);
+        }
+
+        /// <summary>
+        /// Called once a mission is started and behaviours are to be initialized.
+        /// </summary>
+        public override void OnMissionBehaviourInitialize(Mission mission)
+        {
+            DebugUtils.Trace();
+            base.OnMissionBehaviourInitialize(mission);
+        }
 
         public override void OnMultiplayerGameStart(Game game, object starterObject)
         {
+            DebugUtils.Trace();
             base.OnMultiplayerGameStart(game, starterObject);
-            game.AddGameHandler<OfflineMultiplayerGameHandler>();
         }
 
-        public override void OnMissionBehaviourInitialize(Mission mission)
+        /// <summary>
+        /// This is called once every frame, you should avoid expensive operations being called directly here and
+        /// instead do as little work as possible for performance reasons.
+        /// </summary>
+        /// <param name="delta">The time in milliseconds the last frame took to complete.</param>
+        protected override void OnApplicationTick(float delta)
         {
-            base.OnMissionBehaviourInitialize(mission);
-            mission.AddMissionBehaviour(new MissionComponent());
+            base.OnApplicationTick(delta);
         }
 
-        protected override void OnSubModuleLoad()
+        /// <summary>
+        /// Called on exiting out of a mission/campaign.
+        /// </summary>
+        public override void OnGameEnd(Game game)
         {
-            InformationManager.DisplayMessage(new InformationMessage("Exporting items to " + Path.GetFullPath(OutputPath)));
-
-            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Dump Items", new TextObject("Dump Items"), 9990, () =>
-            {
-                DumpItems();
-                InformationManager.DisplayMessage(new InformationMessage("Exporting items to " + Path.GetFullPath(OutputPath)));
-            }, false));
+            DebugUtils.Trace();
+            base.OnGameEnd(game);
         }
 
-        private static void DumpItems()
+        /// <summary>
+        /// Called when exiting Bannerlord entirely.
+        /// </summary>
+        protected override void OnSubModuleUnloaded()
         {
-            var mbItems = DeserializeMbItems("../../Modules/Native/ModuleData/mpitems.xml")
-                .Where(i => i.ItemType != ItemObject.ItemTypeEnum.Shield && i.ItemType != ItemObject.ItemTypeEnum.HandArmor)
-                .ToArray();
-            var crpgItems = mbItems.Select(MbToCrpgItem).OrderBy(i => i.Value);
-
-            SerializeCrpgItems(crpgItems, OutputPath);
-            GenerateItemsThumbnail(mbItems, OutputPath);
-        }
-
-        private static Item MbToCrpgItem(ItemObject mbItem)
-        {
-            var crpgItem = new Item
-            {
-                MbId = mbItem.StringId,
-                Name = mbItem.Name.ToString(),
-                Type = MbToCrpgItemType(mbItem.Type),
-                Value = mbItem.Value,
-                Weight = mbItem.Weight,
-            };
-
-            if (mbItem.ArmorComponent != null)
-            {
-                crpgItem.HeadArmor = mbItem.ArmorComponent.HeadArmor;
-                crpgItem.BodyArmor = mbItem.ArmorComponent.BodyArmor;
-                crpgItem.ArmArmor = mbItem.ArmorComponent.ArmArmor;
-                crpgItem.LegArmor = mbItem.ArmorComponent.LegArmor;
-            }
-
-            if (mbItem.HorseComponent != null)
-            {
-                crpgItem.BodyLength = mbItem.HorseComponent.BodyLength;
-                crpgItem.ChargeDamage = mbItem.HorseComponent.ChargeDamage;
-                crpgItem.Maneuver = mbItem.HorseComponent.Maneuver;
-                crpgItem.Speed = mbItem.HorseComponent.Speed;
-                crpgItem.HitPoints = 200 + mbItem.HorseComponent.HitPoints + mbItem.HorseComponent.HitPointBonus;
-            }
-
-            if (mbItem.WeaponComponent != null)
-            {
-                crpgItem.ThrustDamageType = MbToCrpgDamageType(mbItem.Weapons[0].ThrustDamageType);
-                crpgItem.SwingDamageType = MbToCrpgDamageType(mbItem.Weapons[0].SwingDamageType);
-                crpgItem.Accuracy = mbItem.Weapons[0].Accuracy;
-                crpgItem.MissileSpeed = mbItem.Weapons[0].MissileSpeed;
-                crpgItem.StackAmount = mbItem.Weapons[0].MaxDataValue;
-                crpgItem.WeaponLength = mbItem.Weapons[0].WeaponLength;
-                crpgItem.BodyArmor = mbItem.Weapons[0].BodyArmor;
-
-                if (crpgItem.ThrustDamageType != null)
-                {
-                    crpgItem.PrimaryThrustDamage = mbItem.Weapons[0].ThrustDamage;
-                    crpgItem.PrimaryThrustSpeed = mbItem.Weapons[0].ThrustSpeed;
-                }
-
-                if (crpgItem.SwingDamageType != null)
-                {
-                    crpgItem.PrimarySwingDamage = mbItem.Weapons[0].SwingDamage;
-                    crpgItem.PrimarySwingSpeed = mbItem.Weapons[0].SwingSpeed;
-                }
-
-                crpgItem.PrimaryHandling = mbItem.Weapons[0].Handling;
-                crpgItem.PrimaryWeaponFlags = (ulong?)mbItem.Weapons[0].WeaponFlags;
-
-                if (mbItem.Weapons.Count > 1)
-                {
-                    if (crpgItem.ThrustDamageType != null)
-                    {
-                        crpgItem.SecondaryThrustDamage = mbItem.Weapons[1].ThrustDamage;
-                        crpgItem.SecondaryThrustSpeed = mbItem.Weapons[1].ThrustSpeed;
-                    }
-
-                    if (crpgItem.SwingDamageType != null)
-                    {
-                        crpgItem.SecondarySwingDamage = mbItem.Weapons[1].SwingDamage;
-                        crpgItem.SecondarySwingSpeed = mbItem.Weapons[1].SwingSpeed;
-                    }
-
-                    crpgItem.SecondaryHandling = mbItem.Weapons[1].Handling;
-                    crpgItem.SecondaryWeaponFlags = (ulong?)mbItem.Weapons[1].WeaponFlags;
-                }
-            }
-
-            return crpgItem;
-        }
-
-        private static int MbToCrpgItemType(ItemObject.ItemTypeEnum t)
-        {
-            return t switch
-            {
-                ItemObject.ItemTypeEnum.HeadArmor => 0,
-                ItemObject.ItemTypeEnum.Cape => 1,
-                ItemObject.ItemTypeEnum.BodyArmor => 2,
-                ItemObject.ItemTypeEnum.HandArmor => 3,
-                ItemObject.ItemTypeEnum.LegArmor => 4,
-                ItemObject.ItemTypeEnum.HorseHarness => 5,
-                ItemObject.ItemTypeEnum.Horse => 6,
-                ItemObject.ItemTypeEnum.Shield => 7,
-                ItemObject.ItemTypeEnum.Bow => 8,
-                ItemObject.ItemTypeEnum.Crossbow => 9,
-                ItemObject.ItemTypeEnum.OneHandedWeapon => 10,
-                ItemObject.ItemTypeEnum.TwoHandedWeapon => 11,
-                ItemObject.ItemTypeEnum.Polearm => 12,
-                ItemObject.ItemTypeEnum.Thrown => 13,
-                ItemObject.ItemTypeEnum.Arrows => 14,
-                ItemObject.ItemTypeEnum.Bolts => 15,
-                _ => throw new ArgumentOutOfRangeException(nameof(t), t, null),
-            };
-        }
-
-        private static int? MbToCrpgDamageType(DamageTypes t)
-        {
-            return t == DamageTypes.Invalid ? null : (int?)t;
-        }
-
-        private static IEnumerable<ItemObject> DeserializeMbItems(string path)
-        {
-            var game = new Game(new MultiplayerGame(), new MultiplayerGameManager());
-            game.Initialize();
-
-            var itemsDoc = new XmlDocument();
-            using (var r = XmlReader.Create(path, new XmlReaderSettings { IgnoreComments = true }))
-            {
-                itemsDoc.Load(r);
-            }
-
-            return itemsDoc
-                .LastChild
-                .ChildNodes
-                .Cast<XmlNode>()
-                .Select(itemNode =>
-                {
-                    itemNode.Attributes.Remove(itemNode.Attributes["value"]); // force recomputation of value
-                    var item = new ItemObject();
-                    item.Deserialize(game.ObjectManager, itemNode);
-                    return item;
-                });
-        }
-
-        private static void SerializeCrpgItems(IEnumerable<Item> items, string outputPath)
-        {
-            var serializer = JsonSerializer.Create(new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                Formatting = Newtonsoft.Json.Formatting.Indented,
-            });
-
-            using var s = new StreamWriter(Path.Combine(outputPath, "mpitems.json"));
-            serializer.Serialize(s, items);
-        }
-
-        private static void GenerateItemsThumbnail(IEnumerable<ItemObject> mbItems, string outputPath)
-        {
-            foreach (var mbItem in mbItems)
-            {
-                // Texture.SaveToFile doesn't accept absolute paths
-                TableauCacheManager.Current.BeginCreateItemTexture(mbItem, texture =>
-                    texture.SaveToFile(Path.Combine(outputPath, mbItem.StringId + ".png")));
-            }
+            DebugUtils.Trace();
+            base.OnSubModuleUnloaded();
         }
     }
 }

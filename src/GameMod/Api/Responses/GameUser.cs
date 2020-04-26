@@ -5,7 +5,7 @@ namespace Crpg.GameMod.Api.Responses
     /// <summary>
     /// Copy of Crpg.Application.Games.Models.GameUser.
     /// </summary>
-    public class GetUserResponse
+    public class GameUser
     {
         public int Id { get; set; }
         public GameCharacter Character { get; set; } = default!;
