@@ -37,6 +37,10 @@
             <Private>False</Private> <!-- avoids dll to be copied -->
         </Reference>
 
+        <Reference Include="$(MB_PATH)/Modules/Native/bin/Win64_Shipping_Client/TaleWorlds.*.dll">
+            <Private>False</Private>
+        </Reference>
+
         <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/Newtonsoft.Json.dll">
             <Private>False</Private>
         </Reference>
