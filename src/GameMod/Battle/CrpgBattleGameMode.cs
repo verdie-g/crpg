@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Reflection;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.LegacyGUI.Missions;
 using TaleWorlds.MountAndBlade.Source.Missions;
+using TaleWorlds.MountAndBlade.View.Missions;
 
 namespace Crpg.GameMod.Battle
 {
+    [ViewCreatorModule] // exposes methods with ViewMethod attribute
     internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
     {
         public const string GameModeName = "cRPGBattle";
@@ -20,7 +23,10 @@ namespace Crpg.GameMod.Battle
             DebugUtils.Trace(scene);
 
             // inspired by TaleWorlds.MountAndBlade.MultiplayerMissions
-            MissionState.OpenNew("MultiplayerSkirmish", new MissionInitializerRecord(scene), InitializeMissionBehaviours,
+
+            // the first parameter, missionName, is used to retrieve the MissionsViews
+            // registered in TaleWorlds.MountAndBlade.View.Missions.MultiplayerMissionViews
+            MissionState.OpenNew(GameModeName, new MissionInitializerRecord(scene), InitializeMissionBehaviours,
                 true, true, false);
         }
 
@@ -85,6 +91,48 @@ namespace Crpg.GameMod.Battle
                 new MissionOptionsComponent(),
                 new MissionScoreboardComponent("Skirmish"),
             };
+        }
+
+        // used by MissionState.OpenNew that finds all methods having a ViewMethod attribute contained in class
+        // having a ViewCreatorModule attribute
+        [ViewMethod(GameModeName)]
+        private static MissionView[] OpenCrpgBattle(Mission mission)
+        {
+            var missionViewList = new List<MissionView>
+            {
+                ViewCreator.CreateLobbyEquipmentUIHandler(),
+                ViewCreator.CreateMultiplayerFactionBanVoteUIHandler(),
+                ViewCreator.CreateLobbyUIHandler(),
+                ViewCreator.CreateMissionKillNotificationUIHandler(),
+                ViewCreator.CreateMissionAgentStatusUIHandler(mission),
+                ViewCreator.CreateMissionMultiplayerPreloadView(mission),
+                ViewCreator.CreateMissionMainAgentEquipmentController(mission),
+                ViewCreator.CreateMissionMultiplayerEscapeMenu("Skirmish"),
+                ViewCreator.CreateMultiplayerMissionOrderUIHandler(mission),
+                ViewCreator.CreateMissionAgentLabelUIHandler(mission),
+                ViewCreator.CreateOrderTroopPlacerView(mission),
+                ViewCreator.CreateMultiplayerTeamSelectUIHandler(),
+                ViewCreator.CreateMissionScoreBoardUIHandler(mission, false),
+                ViewCreator.CreateMultiplayerEndOfRoundUIHandler(),
+                ViewCreator.CreatePollInitiationUIHandler(),
+                ViewCreator.CreatePollProgressUIHandler(),
+                new MissionItemContourControllerView(),
+                new MissionAgentContourControllerView(),
+                ViewCreator.CreateMultiplayerMissionHUDExtensionUIHandler(),
+                ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
+                ViewCreator.CreateMissionFlagMarkerUIHandler(),
+                ViewCreator.CreateOptionsUIHandler()
+            };
+
+            if (!GameNetwork.IsClient)
+            {
+                missionViewList.Add(ViewCreator.CreateMultiplayerAdminPanelUIHandler());
+            }
+
+            missionViewList.Add(ViewCreator.CreateMissionBoundaryCrossingView());
+            missionViewList.Add(new MissionBoundaryWallView());
+            missionViewList.Add(new SpectatorCameraView());
+            return missionViewList.ToArray();
         }
     }
 }
