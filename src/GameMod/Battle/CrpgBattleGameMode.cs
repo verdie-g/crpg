@@ -25,6 +25,7 @@ namespace Crpg.GameMod.Battle
             // hardcore options as they're not modifiable in the UI
             MultiplayerOptions.OptionType.NumberOfBotsTeam1.SetValue(10);
             MultiplayerOptions.OptionType.NumberOfBotsTeam2.SetValue(10);
+            MultiplayerOptions.OptionType.WarmupTimeLimit.SetValue(1); // warm-up will last at most 1 minute
 
             // inspired by TaleWorlds.MountAndBlade.MultiplayerMissions
 
