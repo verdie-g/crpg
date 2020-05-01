@@ -22,6 +22,10 @@ namespace Crpg.GameMod.Battle
         {
             DebugUtils.Trace(scene);
 
+            // hardcore options as they're not modifiable in the UI
+            MultiplayerOptions.OptionType.NumberOfBotsTeam1.SetValue(10);
+            MultiplayerOptions.OptionType.NumberOfBotsTeam2.SetValue(10);
+
             // inspired by TaleWorlds.MountAndBlade.MultiplayerMissions
 
             // the first parameter, missionName, is used to retrieve the MissionsViews
