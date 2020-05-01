@@ -4,7 +4,6 @@ using System.Net;
 using System.Threading.Tasks;
 using Crpg.Application.Bans.Commands;
 using Crpg.Application.Bans.Models;
-using Crpg.Application.Characters;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Characters.Queries;
@@ -77,10 +76,10 @@ namespace Crpg.WebApi.Controllers
         /// <response code="400">Bad Request.</response>
         [HttpPost("self/characters")]
         [ProducesResponseType((int)HttpStatusCode.Created)]
-        public async Task<ActionResult<CharacterViewModel>> CreateCharacter([FromBody] CreateCharacterRequest req)
+        public async Task<ActionResult<CharacterViewModel>> CreateCharacter([FromBody] CreateCharacterCommand req)
         {
-            var cmd = new CreateCharacterCommand { Name = req.Name, UserId = CurrentUser.UserId };
-            var character = await Mediator.Send(cmd);
+            CheckIsSelfUserId(req.UserId);
+            var character = await Mediator.Send(req);
             return CreatedAtAction(nameof(GetUserCharacter), new { id = character.Id }, character);
         }
 
@@ -94,15 +93,11 @@ namespace Crpg.WebApi.Controllers
         /// <response code="400">Bad Request.</response>
         [HttpPut("self/characters/{id}")]
         public async Task<ActionResult<CharacterViewModel>> UpdateCharacter([FromRoute] int id,
-            [FromBody] UpdateCharacterRequest req)
+            [FromBody] UpdateCharacterCommand req)
         {
-            var cmd = new UpdateCharacterCommand
-            {
-                CharacterId = id,
-                UserId = CurrentUser.UserId,
-                Name = req.Name,
-            };
-            return Ok(await Mediator.Send(cmd));
+            CheckIsSelfUserId(req.UserId);
+            req.CharacterId = id;
+            return Ok(await Mediator.Send(req));
         }
 
         /// <summary>
@@ -115,25 +110,11 @@ namespace Crpg.WebApi.Controllers
         /// <response code="400">Bad Request.</response>
         [HttpPut("self/characters/{id}/items")]
         public async Task<ActionResult<CharacterItemsViewModel>> UpdateCharacterItems([FromRoute] int id,
-            [FromBody] UpdateCharacterItemsRequest req)
+            [FromBody] UpdateCharacterItemsCommand req)
         {
-            var cmd = new UpdateCharacterItemsCommand
-            {
-                CharacterId = id,
-                UserId = CurrentUser.UserId,
-                HeadItemId = req.HeadItemId,
-                CapeItemId = req.CapeItemId,
-                BodyItemId = req.BodyItemId,
-                HandItemId = req.HandItemId,
-                LegItemId = req.LegItemId,
-                HorseHarnessItemId = req.HorseHarnessItemId,
-                HorseItemId = req.HorseItemId,
-                Weapon1ItemId = req.Weapon1ItemId,
-                Weapon2ItemId = req.Weapon2ItemId,
-                Weapon3ItemId = req.Weapon3ItemId,
-                Weapon4ItemId = req.Weapon4ItemId,
-            };
-            return Ok(await Mediator.Send(cmd));
+            CheckIsSelfUserId(req.UserId);
+            req.CharacterId = id;
+            return Ok(await Mediator.Send(req));
         }
 
         /// <summary>
@@ -183,10 +164,10 @@ namespace Crpg.WebApi.Controllers
         /// <response code="404">Item was not found.</response>
         [HttpPost("self/items")]
         [ProducesResponseType((int)HttpStatusCode.Created)]
-        public async Task<ActionResult<ItemViewModel>> BuyItem([FromBody] BuyItemRequest req)
+        public async Task<ActionResult<ItemViewModel>> BuyItem([FromBody] BuyItemCommand req)
         {
-            var cmd = new BuyItemCommand { ItemId = req.ItemId, UserId = CurrentUser.UserId };
-            var item = await Mediator.Send(cmd);
+            CheckIsSelfUserId(req.UserId);
+            var item = await Mediator.Send(req);
             return CreatedAtAction(nameof(ItemsController.GetItem), "Items", new { id = item.Id }, item);
         }
 

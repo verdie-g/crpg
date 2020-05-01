@@ -1,4 +1,5 @@
 using System.Net.Mime;
+using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -19,5 +20,13 @@ namespace Crpg.WebApi.Controllers
 
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
         protected ICurrentUserService CurrentUser => _currentUser ??= HttpContext.RequestServices.GetService<ICurrentUserService>();
+
+        protected void CheckIsSelfUserId(int userId)
+        {
+            if (userId != CurrentUser.UserId)
+            {
+                throw new ForbiddenException(nameof(Domain.Entities.User), userId);
+            }
+        }
     }
 }
