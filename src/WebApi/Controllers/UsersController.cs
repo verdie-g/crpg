@@ -125,7 +125,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="400">Bad Request.</response>
         /// <response code="404">Character not found.</response>
         [HttpPut("self/characters/{id}/retire")]
-        public async Task<ActionResult<CharacterViewModel>> UpdateCharacterItems([FromRoute] int id)
+        public async Task<ActionResult<CharacterViewModel>> RetireCharacter([FromRoute] int id)
         {
             return Ok(await Mediator.Send(new RetireCharacterCommand { CharacterId = id }));
         }
