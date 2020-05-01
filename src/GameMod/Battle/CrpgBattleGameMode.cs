@@ -49,9 +49,9 @@ namespace Crpg.GameMod.Battle
             {
                 MissionLobbyComponent.CreateBehaviour(), // ???
                 new MultiplayerRoundController(), // starts/stops round, ends match
-                new MissionMultiplayerFlagDomination(true), // flag + morale logic
                 new MultiplayerWarmupComponent(), // warmup logic
-                new MissionMultiplayerGameModeFlagDominationClient(),
+                new MissionMultiplayerBattle(), // new MissionMultiplayerFlagDomination(true), // flag + morale logic
+                new MissionMultiplayerBattleClient(), // new MissionMultiplayerGameModeFlagDominationClient(),
                 new MultiplayerTimerComponent(), // round timer
                 new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
                 new SpawnComponent(new FlagDominationSpawnFrameBehaviour(), spawningBehaviour),
@@ -78,7 +78,7 @@ namespace Crpg.GameMod.Battle
                 MissionLobbyComponent.CreateBehaviour(),
                 new MultiplayerRoundComponent(),
                 new MultiplayerWarmupComponent(),
-                new MissionMultiplayerGameModeFlagDominationClient(),
+                new MissionMultiplayerBattleClient(), // new MissionMultiplayerGameModeFlagDominationClient(),
                 new MultiplayerTimerComponent(),
                 new MultiplayerMissionAgentVisualSpawnComponent(),
                 new MissionLobbyEquipmentNetworkComponent(),
@@ -108,9 +108,7 @@ namespace Crpg.GameMod.Battle
                 ViewCreator.CreateMissionMultiplayerPreloadView(mission),
                 ViewCreator.CreateMissionMainAgentEquipmentController(mission),
                 ViewCreator.CreateMissionMultiplayerEscapeMenu("Skirmish"),
-                ViewCreator.CreateMultiplayerMissionOrderUIHandler(mission),
                 ViewCreator.CreateMissionAgentLabelUIHandler(mission),
-                ViewCreator.CreateOrderTroopPlacerView(mission),
                 ViewCreator.CreateMultiplayerTeamSelectUIHandler(),
                 ViewCreator.CreateMissionScoreBoardUIHandler(mission, false),
                 ViewCreator.CreateMultiplayerEndOfRoundUIHandler(),
@@ -120,7 +118,6 @@ namespace Crpg.GameMod.Battle
                 new MissionAgentContourControllerView(),
                 ViewCreator.CreateMultiplayerMissionHUDExtensionUIHandler(),
                 ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
-                ViewCreator.CreateMissionFlagMarkerUIHandler(),
                 ViewCreator.CreateOptionsUIHandler()
             };
 
