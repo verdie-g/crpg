@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Collections.Generic;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.LegacyGUI.Missions;
@@ -9,6 +7,9 @@ using TaleWorlds.MountAndBlade.View.Missions;
 
 namespace Crpg.GameMod.Battle
 {
+    /// <summary>
+    /// cRPG Battle entry point.
+    /// </summary>
     [ViewCreatorModule] // exposes methods with ViewMethod attribute
     internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
     {
@@ -26,6 +27,7 @@ namespace Crpg.GameMod.Battle
             MultiplayerOptions.OptionType.NumberOfBotsTeam1.SetValue(10);
             MultiplayerOptions.OptionType.NumberOfBotsTeam2.SetValue(10);
             MultiplayerOptions.OptionType.WarmupTimeLimit.SetValue(1); // warm-up will last at most 1 minute
+            MultiplayerOptions.OptionType.MaxNumberOfPlayers.SetValue(1); // shortens the warm-up to 30 seconds
 
             // inspired by TaleWorlds.MountAndBlade.MultiplayerMissions
 
@@ -44,22 +46,17 @@ namespace Crpg.GameMod.Battle
 
         private IEnumerable<MissionBehaviour> InitializeMissionBehavioursServer()
         {
-            // FlagDominationSpawningBehaviour is internal, instantiate it using reflection
-            // TODO: implement a cRPG spawning behaviour
-            var mbAssembly = Assembly.GetAssembly(typeof(SpawningBehaviourBase));
-            var spawningBehaviourType = mbAssembly.GetType(mbAssembly.GetName().Name + ".FlagDominationSpawningBehaviour");
-            var spawningBehaviour = (SpawningBehaviourBase)Activator.CreateInstance(spawningBehaviourType);
-
             return new MissionBehaviour[]
             {
                 MissionLobbyComponent.CreateBehaviour(), // ???
                 new MultiplayerRoundController(), // starts/stops round, ends match
-                new MultiplayerWarmupComponent(), // warmup logic
-                new MissionMultiplayerBattle(), // new MissionMultiplayerFlagDomination(true), // flag + morale logic
-                new MissionMultiplayerBattleClient(), // new MissionMultiplayerGameModeFlagDominationClient(),
+                new MultiplayerBattleWarmupComponent(), // warmup logic
+                new MissionMultiplayerBattle(),
+                new MissionMultiplayerBattleClient(),
                 new MultiplayerTimerComponent(), // round timer
                 new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
-                new SpawnComponent(new FlagDominationSpawnFrameBehaviour(), spawningBehaviour),
+                // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
+                new SpawnComponent(new FlagDominationSpawnFrameBehaviour(), new BattleSpawningBehaviour()),
                 new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
                 new MultiplayerTeamSelectComponent(), // logic to change team, autoselect
                 new AgentVictoryLogic(), // AI cheering when winning round
@@ -82,8 +79,8 @@ namespace Crpg.GameMod.Battle
             {
                 MissionLobbyComponent.CreateBehaviour(),
                 new MultiplayerRoundComponent(),
-                new MultiplayerWarmupComponent(),
-                new MissionMultiplayerBattleClient(), // new MissionMultiplayerGameModeFlagDominationClient(),
+                new MultiplayerBattleWarmupComponent(),
+                new MissionMultiplayerBattleClient(),
                 new MultiplayerTimerComponent(),
                 new MultiplayerMissionAgentVisualSpawnComponent(),
                 new MissionLobbyEquipmentNetworkComponent(),
