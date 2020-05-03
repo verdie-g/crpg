@@ -1,4 +1,5 @@
 using AutoMapper;
+using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Mappings;
 using Crpg.Domain.Entities;
 
@@ -11,6 +12,7 @@ namespace Crpg.Application.Games.Models
         public int Experience { get; set; }
         public int NextLevelExperience { get; set; }
         public int Level { get; set; }
+        public CharacterStatisticsViewModel Statistics { get; set; } = new CharacterStatisticsViewModel();
         public GameCharacterItems Items { get; set; } = new GameCharacterItems();
 
         public void Mapping(Profile profile)

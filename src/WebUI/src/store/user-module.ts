@@ -9,6 +9,7 @@ import Item from '@/models/item';
 import ItemSlot from '@/models/item-slot';
 import { setCharacterItem } from '@/services/characters-service';
 import CharacterItems from '@/models/character-items';
+import CharacterStatistics from '@/models/character-statistics';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
@@ -61,6 +62,11 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
+  setCharacterStats({ characterId, stats } : { characterId: number, stats: CharacterStatistics }) {
+    this.characters.find(c => c.id === characterId)!.statistics = stats;
+  }
+
+  @Mutation
   replaceCharacter(character: Character) {
     const idx = this.characters.findIndex(c => c.id === character.id);
     this.characters.splice(idx, 1, character);
@@ -95,7 +101,7 @@ class UserModule extends VuexModule {
   replaceItem({ character, slot, item } : { character: Character, slot: ItemSlot, item: Item }) {
     const { items } = character;
     this.setCharacterItem({ characterItems: items, slot, item });
-    return userService.updateItems(character.id, {
+    return userService.updateCharacterItems(character.id, {
       headItemId: items.headItem !== null ? items.headItem!.id : null,
       capeItemId: items.capeItem !== null ? items.capeItem!.id : null,
       bodyItemId: items.bodyItem !== null ? items.bodyItem!.id : null,
@@ -120,6 +126,12 @@ class UserModule extends VuexModule {
   @Action({ commit: 'setCharacters' })
   getCharacters() : Promise<Character[]> {
     return userService.getCharacters();
+  }
+
+  @Action
+  updateCharacterStats({ characterId, stats } : { characterId: number, stats: CharacterStatistics }): Promise<CharacterStatistics> {
+    this.setCharacterStats({ characterId, stats });
+    return userService.updateCharacterStats(characterId, stats);
   }
 
   @Action({ commit: 'replaceCharacter' })

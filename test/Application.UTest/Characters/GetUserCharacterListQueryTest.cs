@@ -16,6 +16,13 @@ namespace Crpg.Application.UTest.Characters
                 {
                     Name = "toto",
                     UserId = 1,
+                    Statistics = new CharacterStatistics
+                    {
+                        Attributes = new CharacterAttributes { Points = 1 },
+                        Skills = new CharacterSkills { Points = 2 },
+                        WeaponProficiencies = new CharacterWeaponProficiencies { Points = 3 },
+                    },
+                    Items = new CharacterItems { HeadItem = new Item { Name = "4" } },
                 },
                 new Character
                 {
@@ -33,6 +40,10 @@ namespace Crpg.Application.UTest.Characters
             var characters = await handler.Handle(new GetUserCharactersListQuery { UserId = 1 }, CancellationToken.None);
 
             Assert.AreEqual(2, characters.Count);
+            Assert.AreEqual(1, characters[0].Statistics.Attributes.Points);
+            Assert.AreEqual(2, characters[0].Statistics.Skills.Points);
+            Assert.AreEqual(3, characters[0].Statistics.WeaponProficiencies.Points);
+            Assert.AreEqual("4", characters[0].Items.HeadItem!.Name);
         }
     }
 }

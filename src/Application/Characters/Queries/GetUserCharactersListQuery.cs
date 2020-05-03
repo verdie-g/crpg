@@ -6,6 +6,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,10 +29,12 @@ namespace Crpg.Application.Characters.Queries
 
             public async Task<IReadOnlyList<CharacterViewModel>> Handle(GetUserCharactersListQuery request, CancellationToken cancellationToken)
             {
-                return await _db.Characters
+                var characters = await _db.Characters
                     .Where(c => c.UserId == request.UserId)
-                    .ProjectTo<CharacterViewModel>(_mapper.ConfigurationProvider)
                     .ToListAsync(cancellationToken);
+
+                // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729
+                return _mapper.Map<IReadOnlyList<CharacterViewModel>>(characters);
             }
         }
     }

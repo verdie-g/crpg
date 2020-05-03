@@ -14,92 +14,7 @@
       <div class="column">
         <div class="columns container is-fluid" v-if="selectedCharacter">
 
-          <div class="column content character-stats">
-            <div class="character-name">
-              <h1>{{selectedCharacter.name}}</h1>
-              <b-icon icon="pencil-alt" class="character-name-edit" @click.native="openEditCharacterDialog" />
-            </div>
-
-            <p>
-              <strong>Level:</strong> {{selectedCharacter.level}}<br />
-              <strong>Experience:</strong> {{selectedCharacter.experience}}<br />
-              <strong>Next Level:</strong> {{selectedCharacter.nextLevelExperience - selectedCharacter.experience}}
-            </p>
-
-            <h2>Attributes (0)</h2>
-            <p>
-              <strong>Strength:</strong>
-              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
-              <span class="stats-value">28</span>
-              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
-
-              <strong>Perception:</strong>
-              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
-              <span class="stats-value">14</span>
-              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
-
-              <strong>Endurance:</strong>
-              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
-              <span class="stats-value">12</span>
-              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
-            </p>
-
-            <h2>Skills (0)</h2>
-            <p>
-              <!-- Mastery of fighting with one-handed weapons either with a shield or without. -->
-              <strong>One Handed:</strong>
-              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
-              <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
-
-              <!-- Mastery of fighting with two-handed weapons of average length such as bigger axes and swords. -->
-              <strong>Two Handed:</strong>
-              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
-              <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
-
-              <!-- Mastery of the spear, lance, staff and other polearms, both one-handed and two-handed. -->
-              <strong>Polearm:</strong>
-              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
-              <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
-
-              <!-- Familiarity with bows and physical conditioning to shoot with them effectively. -->
-              <strong>Bow:</strong>
-              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
-              <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
-
-              <!-- Mastery of throwing projectiles accurately and with power. -->
-              <strong>Throwing:</strong>
-              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
-              <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
-
-              <!-- Knowledge of operating and maintaining crossbows. -->
-              <strong>Crossbow:</strong>
-              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
-              <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
-
-              <!-- The ability to control a horse, to keep your balance when it moves suddenly or unexpectedly. -->
-              <strong>Riding:</strong>
-              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
-              <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" /><br />
-
-              <!-- Physical fitness, speed and balance. -->
-              <strong>Athletics:</strong>
-              <b-icon icon="minus-square" size="is-small" class="stats-decrease-button" />
-              <span class="stats-value">0</span>
-              <b-icon icon="plus-square" size="is-small" class="stats-increase-button" />
-            </p>
-
-            <div class="stats-buttons">
-              <b-button size="is-medium" icon-left="undo" title="Reset changes" />
-              <b-button size="is-medium" icon-left="check" title="Commit changes" />
-            </div>
-          </div>
+          <character-stats :character="selectedCharacter" class="column character-stats" />
 
           <div class="column character-items">
             <div class="columns item-boxes">
@@ -208,9 +123,10 @@ import Item from '@/models/item';
 import { getCharacterItemFromSlot } from '@/services/characters-service';
 import { filterItemsFittingInSlot } from '@/services/item-service';
 import { notify } from '@/services/notifications-service';
+import CharacterStats from '@/components/CharacterStats.vue';
 
 @Component({
-  components: { ItemProperties },
+  components: { CharacterStats, ItemProperties },
 })
 export default class Characters extends Vue {
     selectedCharacterId: number = -1;
@@ -245,22 +161,6 @@ export default class Characters extends Vue {
 
     selectCharacter(character: Character) {
       this.selectedCharacterId = character.id;
-    }
-
-    openEditCharacterDialog() {
-      this.$buefy.dialog.prompt({
-        message: 'New name',
-        inputAttrs: {
-          value: this.selectedCharacter!.name,
-          minlength: 2,
-          maxlength: 32,
-        },
-        trapFocus: true,
-        onConfirm: (newName) => {
-          userModule.renameCharacter({ character: this.selectedCharacter!, newName });
-          notify('Character renamed');
-        },
-      });
     }
 
     openRetireCharacterDialog() {
@@ -310,46 +210,6 @@ export default class Characters extends Vue {
 </script>
 
 <style scoped lang="scss">
-  $stats-name-width: 150px;
-  $stats-value-width: 40px;
-
-  .character-name {
-    display: flex;
-
-    .character-name-edit {
-      margin-left: 8px;
-      display: none;
-      cursor: pointer;
-    }
-
-    &:hover {
-      .character-name-edit {
-        display: inline;
-      }
-    }
-  }
-
-  .character-stats {
-    strong {
-      display: inline-block;
-      width: $stats-name-width;
-    }
-  }
-
-  .stats-value {
-    display: inline-block;
-    width: $stats-value-width;
-    text-align: center;
-  }
-
-  .stats-decrease-button, .stats-increase-button {
-    cursor: pointer;
-  }
-
-  .stats-buttons {
-    margin-left: $stats-name-width + 16 + ($stats-value-width / 2) - 45;
-  }
-
   .item-boxes {
     background-image: url("../assets/body-silhouette.svg");
     background-repeat: no-repeat;

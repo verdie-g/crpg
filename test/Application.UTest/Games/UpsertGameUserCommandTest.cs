@@ -203,6 +203,8 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual("toto", gu.Character.Name);
             Assert.AreEqual(0, gu.Character.Experience);
             Assert.AreEqual(1, gu.Character.Level);
+            Assert.AreEqual(3, gu.Character.Statistics.Attributes.Strength);
+            Assert.AreEqual(3, gu.Character.Statistics.Attributes.Agility);
             Assert.NotNull(gu.Character.Items.HeadItemMbId);
             Assert.NotNull(gu.Character.Items.BodyItemMbId);
             Assert.NotNull(gu.Character.Items.LegItemMbId);

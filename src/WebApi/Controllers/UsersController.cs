@@ -78,7 +78,7 @@ namespace Crpg.WebApi.Controllers
         [ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<ActionResult<CharacterViewModel>> CreateCharacter([FromBody] CreateCharacterCommand req)
         {
-            CheckIsSelfUserId(req.UserId);
+            req.UserId = CurrentUser.UserId;
             var character = await Mediator.Send(req);
             return CreatedAtAction(nameof(GetUserCharacter), new { id = character.Id }, character);
         }
@@ -95,9 +95,30 @@ namespace Crpg.WebApi.Controllers
         public async Task<ActionResult<CharacterViewModel>> UpdateCharacter([FromRoute] int id,
             [FromBody] UpdateCharacterCommand req)
         {
-            CheckIsSelfUserId(req.UserId);
+            req.UserId = CurrentUser.UserId;
             req.CharacterId = id;
             return Ok(await Mediator.Send(req));
+        }
+
+        /// <summary>
+        /// Updates character statistics for the current user.
+        /// </summary>
+        /// <param name="id">Character id.</param>
+        /// <param name="stats">The character statistics with the updated values.</param>
+        /// <returns>The updated character statistics.</returns>
+        /// <response code="200">Updated.</response>
+        /// <response code="400">Bad Request.</response>
+        [HttpPut("self/characters/{id}/statistics")]
+        public async Task<ActionResult<CharacterItemsViewModel>> UpdateCharacterStatistics([FromRoute] int id,
+            [FromBody] CharacterStatisticsViewModel stats)
+        {
+            var cmd = new UpdateCharacterStatisticsCommand
+            {
+                UserId = CurrentUser.UserId,
+                CharacterId = id,
+                Statistics = stats,
+            };
+            return Ok(await Mediator.Send(cmd));
         }
 
         /// <summary>
@@ -105,14 +126,14 @@ namespace Crpg.WebApi.Controllers
         /// </summary>
         /// <param name="id">Character id.</param>
         /// <param name="req">The entire character's items with the updated values.</param>
-        /// <returns>The updated character.</returns>
+        /// <returns>The updated character items.</returns>
         /// <response code="200">Updated.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPut("self/characters/{id}/items")]
         public async Task<ActionResult<CharacterItemsViewModel>> UpdateCharacterItems([FromRoute] int id,
             [FromBody] UpdateCharacterItemsCommand req)
         {
-            CheckIsSelfUserId(req.UserId);
+            req.UserId = CurrentUser.UserId;
             req.CharacterId = id;
             return Ok(await Mediator.Send(req));
         }
@@ -166,7 +187,7 @@ namespace Crpg.WebApi.Controllers
         [ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<ActionResult<ItemViewModel>> BuyItem([FromBody] BuyItemCommand req)
         {
-            CheckIsSelfUserId(req.UserId);
+            req.UserId = CurrentUser.UserId;
             var item = await Mediator.Send(req);
             return CreatedAtAction(nameof(ItemsController.GetItem), "Items", new { id = item.Id }, item);
         }

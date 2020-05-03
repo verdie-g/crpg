@@ -167,6 +167,14 @@ namespace Crpg.Application.Games.Commands
                     Level = 1,
                     Experience = 0,
                     ExperienceMultiplier = Constants.DefaultExperienceMultiplier,
+                    Statistics = new CharacterStatistics
+                    {
+                        Attributes = new CharacterAttributes
+                        {
+                            Strength = 3,
+                            Agility = 3,
+                        },
+                    },
                 };
 
                 var items = DefaultItemsSets[ThreadSafeRandom.Instance.Value!.Next(DefaultItemsSets.Length - 1)];
