@@ -36,10 +36,16 @@ namespace Crpg.Application.UTest.Games
 
             Assert.AreEqual(1, c1.Level);
             Assert.AreEqual(209, c1.Experience);
+            Assert.AreEqual(0, c1.Statistics.Attributes.Points);
+            Assert.AreEqual(0, c1.Statistics.Skills.Points);
+            Assert.AreEqual(0, c1.Statistics.WeaponProficiencies.Points);
             Assert.AreEqual(70, c1.User.Gold);
 
             Assert.AreEqual(2, c2.Level);
             Assert.AreEqual(600, c2.Experience);
+            Assert.AreEqual(1, c2.Statistics.Attributes.Points);
+            Assert.AreEqual(2, c2.Statistics.Skills.Points);
+            Assert.AreEqual(15, c2.Statistics.WeaponProficiencies.Points);
             Assert.AreEqual(130, c2.User.Gold);
         }
 
@@ -61,12 +67,15 @@ namespace Crpg.Application.UTest.Games
             var res = await new TickCommand.Handler(Db).Handle(cmd, CancellationToken.None);
             Assert.NotNull(res.Users);
             Assert.AreEqual(1, res.Users.Count);
-            Assert.AreEqual(res.Users[0].UserId, c.UserId);
-            Assert.AreEqual(res.Users[0].Level, 3);
-            Assert.AreEqual(res.Users[0].NextLevelExperience, 2296);
+            Assert.AreEqual(c.UserId, res.Users[0].UserId);
+            Assert.AreEqual(3, res.Users[0].Level);
+            Assert.AreEqual(2296, res.Users[0].NextLevelExperience);
 
             Assert.AreEqual(3, c.Level);
             Assert.AreEqual(1360, c.Experience);
+            Assert.AreEqual(2, c.Statistics.Attributes.Points);
+            Assert.AreEqual(4, c.Statistics.Skills.Points);
+            Assert.AreEqual(30, c.Statistics.WeaponProficiencies.Points);
         }
 
         [Test]

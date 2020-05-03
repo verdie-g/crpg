@@ -843,6 +843,17 @@ namespace Crpg.Application.System.Commands
                                 Name = "takeoshigeru",
                                 Level = 23,
                                 Experience = ExperienceTable.GetExperienceForLevel(23),
+                                Statistics = new CharacterStatistics
+                                {
+                                    Attributes = new CharacterAttributes
+                                    {
+                                        Points = 4,
+                                        Strength = 3,
+                                        Agility = 3,
+                                    },
+                                    Skills = new CharacterSkills { Points = 7 },
+                                    WeaponProficiencies = new CharacterWeaponProficiencies { Points = 43 },
+                                },
                             },
                             new Character
                             {

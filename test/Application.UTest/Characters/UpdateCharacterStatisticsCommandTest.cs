@@ -1,0 +1,205 @@
+using System.Threading;
+using System.Threading.Tasks;
+using Crpg.Application.Characters.Commands;
+using Crpg.Application.Characters.Models;
+using Crpg.Application.Common.Exceptions;
+using Crpg.Domain.Entities;
+using NUnit.Framework;
+
+namespace Crpg.Application.UTest.Characters
+{
+    public class UpdateCharacterStatisticsCommandTest : TestBase
+    {
+        [Test]
+        public async Task ShouldUpdateIfEnoughPoints()
+        {
+            var character = new Character
+            {
+                Statistics = new CharacterStatistics
+                {
+                    Attributes = new CharacterAttributes
+                    {
+                        Points = 3,
+                        Strength = 1,
+                        Agility = 2,
+                    },
+                    Skills = new CharacterSkills
+                    {
+                        Points = 45,
+                        Athletics = 1,
+                        HorseArchery = 2,
+                        IronFlesh = 3,
+                        PowerDraw = 4,
+                        PowerStrike = 5,
+                        PowerThrow = 6,
+                        Riding = 7,
+                        Shield = 8,
+                        WeaponMaster = 9,
+                    },
+                    WeaponProficiencies = new CharacterWeaponProficiencies
+                    {
+                        Points = 21,
+                        OneHanded = 1,
+                        TwoHanded = 2,
+                        Polearm = 3,
+                        Bow = 4,
+                        Throwing = 5,
+                        Crossbow = 6,
+                    },
+                },
+            };
+            Db.Add(character);
+            await Db.SaveChangesAsync();
+
+            var stats = await new UpdateCharacterStatisticsCommand.Handler(Db, Mapper).Handle(
+                new UpdateCharacterStatisticsCommand
+                {
+                    UserId = character.UserId,
+                    CharacterId = character.Id,
+                    Statistics = new CharacterStatisticsViewModel
+                    {
+                        Attributes = new CharacterAttributesViewModel
+                        {
+                            Strength = 3,
+                            Agility = 3,
+                        },
+                        Skills = new CharacterSkillsViewModel
+                        {
+                            Athletics = 10,
+                            HorseArchery = 10,
+                            IronFlesh = 10,
+                            PowerDraw = 10,
+                            PowerStrike = 10,
+                            PowerThrow = 10,
+                            Riding = 10,
+                            Shield = 10,
+                            WeaponMaster = 10,
+                        },
+                        WeaponProficiencies = new CharacterWeaponProficienciesViewModel
+                        {
+                            OneHanded = 7,
+                            TwoHanded = 7,
+                            Polearm = 7,
+                            Bow = 7,
+                            Throwing = 7,
+                            Crossbow = 7,
+                        },
+                    }
+                }, CancellationToken.None);
+
+            Assert.AreEqual(3, stats.Attributes.Strength);
+            Assert.AreEqual(3, stats.Attributes.Agility);
+            Assert.AreEqual(10, stats.Skills.Athletics);
+            Assert.AreEqual(10, stats.Skills.HorseArchery);
+            Assert.AreEqual(10, stats.Skills.IronFlesh);
+            Assert.AreEqual(10, stats.Skills.PowerDraw);
+            Assert.AreEqual(10, stats.Skills.PowerStrike);
+            Assert.AreEqual(10, stats.Skills.PowerThrow);
+            Assert.AreEqual(10, stats.Skills.Riding);
+            Assert.AreEqual(10, stats.Skills.Shield);
+            Assert.AreEqual(10, stats.Skills.WeaponMaster);
+            Assert.AreEqual(7, stats.WeaponProficiencies.OneHanded);
+            Assert.AreEqual(7, stats.WeaponProficiencies.TwoHanded);
+            Assert.AreEqual(7, stats.WeaponProficiencies.Polearm);
+            Assert.AreEqual(7, stats.WeaponProficiencies.Bow);
+            Assert.AreEqual(7, stats.WeaponProficiencies.Throwing);
+            Assert.AreEqual(7, stats.WeaponProficiencies.Crossbow);
+        }
+
+        [Test]
+        public async Task StatShouldntBeDecreased()
+        {
+            var character = new Character
+            {
+                Statistics = new CharacterStatistics
+                {
+                    Attributes = new CharacterAttributes { Points = 1000 },
+                    Skills = new CharacterSkills { Points = 1000 },
+                    WeaponProficiencies = new CharacterWeaponProficiencies { Points = 1000 },
+                }
+            };
+            Db.Add(character);
+            await Db.SaveChangesAsync();
+
+            var statsObjects = new[]
+            {
+                new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Agility = -1 } },
+                new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Strength = -1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Athletics = -1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { HorseArchery = -1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { IronFlesh = -1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerDraw = -1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerStrike = -1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerThrow = -1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Riding = -1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Shield = -1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { WeaponMaster = -1 } },
+                new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { OneHanded = -1 } },
+                new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { TwoHanded = -1 } },
+                new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Polearm = -1 } },
+                new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Bow = -1 } },
+                new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Throwing = -1 } },
+                new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = -1 } },
+            };
+
+            var handler = new UpdateCharacterStatisticsCommand.Handler(Db, Mapper);
+            foreach (var statObject in statsObjects)
+            {
+                Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
+                {
+                    UserId = character.UserId,
+                    CharacterId = character.Id,
+                    Statistics = statObject,
+                }, CancellationToken.None));
+            }
+        }
+
+        [Test]
+        public async Task StatShouldntBeIncreasedIfNotEnoughPoints()
+        {
+             var character = new Character
+             {
+                 Statistics = new CharacterStatistics
+                 {
+                     Attributes = new CharacterAttributes { Points = 0 },
+                     Skills = new CharacterSkills { Points = 0 },
+                     WeaponProficiencies = new CharacterWeaponProficiencies { Points = 0 },
+                 }
+             };
+             Db.Add(character);
+             await Db.SaveChangesAsync();
+ 
+             var statsObjects = new[]
+             {
+                 new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Agility = 1 } },
+                 new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Strength = 1 } },
+                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Athletics = 1 } },
+                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { HorseArchery = 1 } },
+                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { IronFlesh = 1 } },
+                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerDraw = 1 } },
+                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerStrike = 1 } },
+                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerThrow = 1 } },
+                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Riding = 1 } },
+                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Shield = 1 } },
+                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { WeaponMaster = 1 } },
+                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { OneHanded = 1 } },
+                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { TwoHanded = 1 } },
+                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Polearm = 1 } },
+                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Bow = 1 } },
+                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Throwing = 1 } },
+                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = 1 } },
+             };
+
+             var handler = new UpdateCharacterStatisticsCommand.Handler(Db, Mapper);
+             foreach (var statObject in statsObjects)
+             {
+                 Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
+                 {
+                     UserId = character.UserId,
+                     CharacterId = character.Id,
+                     Statistics = statObject,
+                 }, CancellationToken.None));
+             }
+        }
+    }
+}

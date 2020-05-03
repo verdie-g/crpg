@@ -43,6 +43,10 @@ namespace Crpg.Application.Games.Commands
                     int newLevel = ExperienceTable.GetLevelForExperience(character.Experience);
                     if (character.Level != newLevel) // if user leveled up
                     {
+                        int levelDiff = newLevel - character.Level;
+                        character.Statistics.Attributes.Points += levelDiff;
+                        character.Statistics.Skills.Points += levelDiff * 2;
+                        character.Statistics.WeaponProficiencies.Points += levelDiff * 15;
                         character.Level = newLevel;
                         tickUserResponse.Add(new TickUserResponse
                         {
