@@ -29,6 +29,17 @@ namespace Crpg.Application.Characters.Queries
             public async Task<CharacterViewModel> Handle(GetUserCharacterQuery request, CancellationToken cancellationToken)
             {
                 var character = await _db.Characters
+                    .Include(c => c.Items.HeadItem)
+                    .Include(c => c.Items.CapeItem)
+                    .Include(c => c.Items.BodyItem)
+                    .Include(c => c.Items.HandItem)
+                    .Include(c => c.Items.LegItem)
+                    .Include(c => c.Items.HorseHarnessItem)
+                    .Include(c => c.Items.HorseItem)
+                    .Include(c => c.Items.Weapon1Item)
+                    .Include(c => c.Items.Weapon2Item)
+                    .Include(c => c.Items.Weapon3Item)
+                    .Include(c => c.Items.Weapon4Item)
                     .FirstOrDefaultAsync(c => c.Id == request.CharacterId && c.UserId == request.UserId, cancellationToken);
 
                 if (character == null)
