@@ -290,6 +290,10 @@ export default class CharacterStats extends Vue {
   .field-label {
     padding-top: 0;
   }
+
+  button.button.is-small {
+    border-radius: 0;
+  }
 }
 </style>
 
