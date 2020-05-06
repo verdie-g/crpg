@@ -17,20 +17,118 @@
       </b-field>
       <b-field horizontal label="Level up in" class="stat-field is-marginless">
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
-                       :value="character.nextLevelExperience - character.experience " :controls="false" />
+                       :value="character.nextLevelExperience - character.experience" :controls="false" />
       </b-field>
     </div>
 
-    <div v-for="statSection in statsSections" class="stats-section">
-      <h2 class="title is-4">{{statSection.name}} ({{statSection.getPoints(stats) + statSection.getPoints(statsDelta)}})</h2>
-      <b-field v-for="stat in statSection.stats" horizontal :label="stat.name" class="stat-field">
+    <div class="stats-section">
+      <h2 class="title is-4">Attributes ({{stats.attributes.points + statsDelta.attributes.points}})</h2>
+      <b-field horizontal label="Strength" class="stat-field">
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
-                       :value="stat.get(stats) + stat.get(statsDelta)"
-                       :min="stat.get(stats)"
-                       :max="stat.get(stats) + stat.get(statsDelta) + statSection.getPoints(stats) + statSection.getPoints(statsDelta)"
-                       :controls="statSection.getPoints(stats) !== 0"
-                       @input="statSection.setPoints(statsDelta, statSection.getPoints(statsDelta) - $event + stat.get(stats) + stat.get(statsDelta));
-                               stat.set(statsDelta, $event - stat.get(stats))" />
+                       v-bind="getInputProps('attributes', 'strength')"
+                       @input="onInput('attributes', 'strength', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Agility" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('attributes', 'agility')"
+                       @input="onInput('attributes', 'agility', $event)" />
+      </b-field>
+    </div>
+
+    <div class="stats-section">
+      <h2 class="title is-4">Skills ({{stats.skills.points + statsDelta.skills.points}})</h2>
+      <b-field horizontal label="Athletics" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('skills', 'athletics')"
+                       @input="onInput('skills', 'athletics', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Horse Archery" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('skills', 'horseArchery')"
+                       @input="onInput('skills', 'horseArchery', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Iron Flesh" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('skills', 'ironFlesh')"
+                       @input="onInput('skills', 'ironFlesh', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Power Draw" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('skills', 'powerDraw')"
+                       @input="onInput('skills', 'powerDraw', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Power Strike" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('skills', 'powerStrike')"
+                       @input="onInput('skills', 'powerStrike', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Power Throw" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('skills', 'powerThrow')"
+                       @input="onInput('skills', 'powerThrow', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Riding" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('skills', 'riding')"
+                       @input="onInput('skills', 'riding', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Shield" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('skills', 'shield')"
+                       @input="onInput('skills', 'shield', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Weapon Master" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('skills', 'weaponMaster')"
+                       @input="onInput('skills', 'weaponMaster', $event)" />
+      </b-field>
+    </div>
+
+    <div class="stats-section">
+      <h2 class="title is-4">Weapon Proficiencies ({{stats.weaponProficiencies.points + statsDelta.weaponProficiencies.points}})</h2>
+      <b-field horizontal label="One Handed" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('weaponProficiencies', 'oneHanded')"
+                       @input="onInput('weaponProficiencies', 'oneHanded', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Two Handed" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('weaponProficiencies', 'twoHanded')"
+                       @input="onInput('weaponProficiencies', 'twoHanded', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Polearm" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('weaponProficiencies', 'polearm')"
+                       @input="onInput('weaponProficiencies', 'polearm', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Bow" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('weaponProficiencies', 'bow')"
+                       @input="onInput('weaponProficiencies', 'bow', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Crossbow" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('weaponProficiencies', 'crossbow')"
+                       @input="onInput('weaponProficiencies', 'crossbow', $event)" />
+      </b-field>
+
+      <b-field horizontal label="Throwing" class="stat-field">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('weaponProficiencies', 'throwing')"
+                       @input="onInput('weaponProficiencies', 'throwing', $event)" />
       </b-field>
     </div>
 
@@ -50,120 +148,11 @@ import CharacterStatistics from '@/models/character-statistics';
 import Character from '@/models/character';
 import userModule from '@/store/user-module';
 import { notify } from '@/services/notifications-service';
+import {del} from "@/services/crpg-client";
 
 @Component
 export default class CharacterStats extends Vue {
   @Prop(Object) readonly character: Character;
-
-  // might be over-engineered just to avoid some duplicate code
-  statsSections = [
-    {
-      name: 'Attributes',
-      getPoints: (stats: CharacterStatistics) => stats.attributes.points,
-      setPoints: (stats: CharacterStatistics, points: number) => stats.attributes.points = points,
-      stats: [
-        {
-          name: 'Strength',
-          get: (stats: CharacterStatistics) => stats.attributes.strength,
-          set: (stats: CharacterStatistics, val: number) => stats.attributes.strength = val,
-        },
-        {
-          name: 'Agility',
-          get: (stats: CharacterStatistics) => stats.attributes.agility,
-          set: (stats: CharacterStatistics, val: number) => stats.attributes.agility = val,
-        },
-      ],
-    },
-    {
-      name: 'Skills',
-      getPoints: (stats: CharacterStatistics) => stats.skills.points,
-      setPoints: (stats: CharacterStatistics, points: number) => stats.skills.points = points,
-      stats: [
-        {
-          name: 'Athletics',
-          get: (stats: CharacterStatistics) => stats.skills.athletics,
-          set: (stats: CharacterStatistics, val: number) => stats.skills.athletics = val,
-        },
-        {
-          name: 'Horse Harchery',
-          get: (stats: CharacterStatistics) => stats.skills.horseArchery,
-          set: (stats: CharacterStatistics, val: number) => stats.skills.horseArchery = val,
-        },
-        {
-          name: 'Iron Flesh',
-          get: (stats: CharacterStatistics) => stats.skills.ironFlesh,
-          set: (stats: CharacterStatistics, val: number) => stats.skills.ironFlesh = val,
-        },
-        {
-          name: 'Power Draw',
-          get: (stats: CharacterStatistics) => stats.skills.powerDraw,
-          set: (stats: CharacterStatistics, val: number) => stats.skills.powerDraw = val,
-        },
-        {
-          name: 'Power Strike',
-          get: (stats: CharacterStatistics) => stats.skills.powerStrike,
-          set: (stats: CharacterStatistics, val: number) => stats.skills.powerStrike = val,
-        },
-        {
-          name: 'Power Throw',
-          get: (stats: CharacterStatistics) => stats.skills.powerThrow,
-          set: (stats: CharacterStatistics, val: number) => stats.skills.powerThrow = val,
-        },
-        {
-          name: 'Riding',
-          get: (stats: CharacterStatistics) => stats.skills.riding,
-          set: (stats: CharacterStatistics, val: number) => stats.skills.riding = val,
-        },
-        {
-          name: 'Shield',
-          get: (stats: CharacterStatistics) => stats.skills.shield,
-          set: (stats: CharacterStatistics, val: number) => stats.skills.shield = val,
-        },
-        {
-          name: 'Weapon Master',
-          get: (stats: CharacterStatistics) => stats.skills.weaponMaster,
-          set: (stats: CharacterStatistics, val: number) => stats.skills.weaponMaster = val,
-        },
-      ],
-    },
-    {
-      name: 'Weapon Proficiencies',
-      getPoints: (stats: CharacterStatistics) => stats.weaponProficiencies.points,
-      setPoints: (stats: CharacterStatistics, points: number) => stats.weaponProficiencies.points = points,
-      stats: [
-        {
-          name: 'One Handed',
-          get: (stats: CharacterStatistics) => stats.weaponProficiencies.oneHanded,
-          set: (stats: CharacterStatistics, val: number) => stats.weaponProficiencies.oneHanded = val,
-        },
-        {
-          name: 'Two Handed',
-          get: (stats: CharacterStatistics) => stats.weaponProficiencies.twoHanded,
-          set: (stats: CharacterStatistics, val: number) => stats.weaponProficiencies.twoHanded = val,
-        },
-        {
-          name: 'Polearm',
-          get: (stats: CharacterStatistics) => stats.weaponProficiencies.polearm,
-          set: (stats: CharacterStatistics, val: number) => stats.weaponProficiencies.polearm = val,
-        },
-        {
-          name: 'Bow',
-          get: (stats: CharacterStatistics) => stats.weaponProficiencies.bow,
-          set: (stats: CharacterStatistics, val: number) => stats.weaponProficiencies.bow = val,
-        },
-        {
-          name: 'Crossbow',
-          get: (stats: CharacterStatistics) => stats.weaponProficiencies.crossbow,
-          set: (stats: CharacterStatistics, val: number) => stats.weaponProficiencies.crossbow = val,
-        },
-        {
-          name: 'Throwing',
-          get: (stats: CharacterStatistics) => stats.weaponProficiencies.throwing,
-          set: (stats: CharacterStatistics, val: number) => stats.weaponProficiencies.throwing = val,
-        },
-      ],
-    },
-  ];
 
   // reset when changing char
   statsDelta: CharacterStatistics = this.createEmptyStatistics();
@@ -207,6 +196,28 @@ export default class CharacterStats extends Vue {
         crossbow: 0,
       },
     };
+  }
+
+  getInputProps(statSectionkey: 'attributes' | 'skills' | 'weaponProficiencies', statkey: string) {
+    const initialValue = (this.stats[statSectionkey] as any)[statkey];
+    const deltaValue = (this.statsDelta[statSectionkey] as any)[statkey];
+    const initialPoints = this.stats[statSectionkey].points;
+    const deltaPoints = this.statsDelta[statSectionkey].points;
+
+    return {
+      value: initialValue + deltaValue,
+      min: initialValue,
+      max: initialValue + deltaValue + initialPoints + deltaPoints,
+      controls: initialPoints !== 0, // hide controls (+/-) if there is no points to give
+    };
+  }
+
+  onInput(statSectionkey: keyof CharacterStatistics, statkey: string, value: number) {
+    const statInitialSection = this.stats[statSectionkey] as any;
+    const statDeltaSection = this.statsDelta[statSectionkey] as any;
+
+    statDeltaSection.points += statInitialSection[statkey] + statDeltaSection[statkey] - value;
+    statDeltaSection[statkey] = value - statInitialSection[statkey];
   }
 
   reset() {
@@ -268,6 +279,10 @@ export default class CharacterStats extends Vue {
 
 <style lang="scss">
 .stat-field {
+  &:not(:last-child) {
+    margin-bottom: 0;
+  }
+
   input {
     border: none;
   }
