@@ -143,18 +143,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component, Prop, Vue, Watch,
+} from 'vue-property-decorator';
 import CharacterStatistics from '@/models/character-statistics';
 import Character from '@/models/character';
 import userModule from '@/store/user-module';
 import { notify } from '@/services/notifications-service';
-import {del} from "@/services/crpg-client";
+import { del } from '@/services/crpg-client';
 
 @Component
-export default class CharacterStats extends Vue {
+export default class CharacterStatsComponent extends Vue {
   @Prop(Object) readonly character: Character;
 
-  // reset when changing char
   statsDelta: CharacterStatistics = this.createEmptyStatistics();
 
   get stats(): CharacterStatistics {
@@ -273,6 +274,11 @@ export default class CharacterStats extends Vue {
         notify('Character renamed');
       },
     });
+  }
+
+  @Watch('character')
+  onCharacterChange() {
+    this.statsDelta = this.createEmptyStatistics();
   }
 }
 </script>
