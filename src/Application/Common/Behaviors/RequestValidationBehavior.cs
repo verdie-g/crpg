@@ -16,7 +16,7 @@ namespace Crpg.Application.Common.Behaviors
 
         public RequestValidationBehavior(IEnumerable<IValidator<TRequest>> validators)
         {
-            _validators = (validators as IValidator<TRequest>[])!;
+            _validators = (validators as IValidator<TRequest>[]) !;
         }
 
         public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,

@@ -18,8 +18,10 @@ namespace Crpg.Application.UTest.Games
         private static readonly IEventRaiser EventRaiser = Mock.Of<IEventRaiser>();
 
         [SetUp]
-        public Task SetUp()
+        public override Task SetUp()
         {
+            base.SetUp();
+
             var allDefaultItemMbIds = UpsertGameUserCommand.Handler.DefaultItemsSets
                 .SelectMany(i => new[]
                 {
