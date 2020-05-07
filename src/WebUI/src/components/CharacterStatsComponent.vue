@@ -135,7 +135,7 @@
     <b-field horizontal>
       <p class="control">
         <b-button size="is-medium" icon-left="undo" :disabled="!wasChangeMade" @click="reset">Reset</b-button>
-        <b-button size="is-medium" icon-left="check" :disabled="!wasChangeMade" @click="commit">Commit</b-button>
+        <b-button size="is-medium" icon-left="check" :disabled="!isChangeValid" @click="commit">Commit</b-button>
       </p>
     </b-field>
 
@@ -150,7 +150,6 @@ import CharacterStatistics from '@/models/character-statistics';
 import Character from '@/models/character';
 import userModule from '@/store/user-module';
 import { notify } from '@/services/notifications-service';
-import { del } from '@/services/crpg-client';
 
 @Component
 export default class CharacterStatsComponent extends Vue {
@@ -166,6 +165,12 @@ export default class CharacterStatsComponent extends Vue {
     return this.statsDelta.attributes.points !== 0
       || this.statsDelta.skills.points !== 0
       || this.statsDelta.weaponProficiencies.points !== 0;
+  }
+
+  get isChangeValid(): boolean {
+    return this.stats.attributes.points + this.statsDelta.attributes.points >= 0
+      && this.stats.skills.points + this.statsDelta.skills.points >= 0
+      && this.stats.weaponProficiencies.points + this.statsDelta.weaponProficiencies.points >= 0;
   }
 
   createEmptyStatistics(): CharacterStatistics {
@@ -199,11 +204,15 @@ export default class CharacterStatsComponent extends Vue {
     };
   }
 
-  getInputProps(statSectionkey: 'attributes' | 'skills' | 'weaponProficiencies', statkey: string) {
-    const initialValue = (this.stats[statSectionkey] as any)[statkey];
-    const deltaValue = (this.statsDelta[statSectionkey] as any)[statkey];
-    const initialPoints = this.stats[statSectionkey].points;
-    const deltaPoints = this.statsDelta[statSectionkey].points;
+  getInputProps<
+    TSection extends keyof CharacterStatistics,
+    TStat extends keyof CharacterStatistics[TSection]>
+  (statSectionKey: TSection, statKey: TStat) {
+    // type assertion is needed because compiler doesn't understand it's necessarily a number
+    const initialValue = <number><unknown>this.stats[statSectionKey][statKey];
+    const deltaValue = <number><unknown>this.statsDelta[statSectionKey][statKey];
+    const initialPoints = this.stats[statSectionKey].points;
+    const deltaPoints = this.statsDelta[statSectionKey].points;
 
     return {
       value: initialValue + deltaValue,
@@ -213,12 +222,31 @@ export default class CharacterStatsComponent extends Vue {
     };
   }
 
-  onInput(statSectionkey: keyof CharacterStatistics, statkey: string, value: number) {
-    const statInitialSection = this.stats[statSectionkey] as any;
-    const statDeltaSection = this.statsDelta[statSectionkey] as any;
+  onInput(statSectionKey: keyof CharacterStatistics, statKey: string, value: number) {
+    // typing this function correctly was too hard
+    const statInitialSection = this.stats[statSectionKey] as any;
+    const statDeltaSection = this.statsDelta[statSectionKey] as any;
 
-    statDeltaSection.points += statInitialSection[statkey] + statDeltaSection[statkey] - value;
-    statDeltaSection[statkey] = value - statInitialSection[statkey];
+    const oldStatValue = statDeltaSection[statKey];
+    statDeltaSection.points += statInitialSection[statKey] + statDeltaSection[statKey] - value;
+    statDeltaSection[statKey] = value - statInitialSection[statKey];
+    const newStatValue = statDeltaSection[statKey];
+
+    if (statKey === 'agility') {
+      this.statsDelta.weaponProficiencies.points += this.wppForAgility(newStatValue) - this.wppForAgility(oldStatValue);
+    } else if (statKey === 'weaponMaster') {
+      this.statsDelta.weaponProficiencies.points += this.wppForWeaponMaster(newStatValue) - this.wppForWeaponMaster(oldStatValue);
+    }
+  }
+
+  wppForAgility(agility: number): number {
+    return 14 * agility;
+  }
+
+  wppForWeaponMaster(weaponMaster: number): number {
+    return weaponMaster === 0
+      ? 0
+      : 55 + 20 * weaponMaster;
   }
 
   reset() {
