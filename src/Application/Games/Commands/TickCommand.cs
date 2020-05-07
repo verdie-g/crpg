@@ -16,6 +16,10 @@ namespace Crpg.Application.Games.Commands
 
         public class Handler : IRequestHandler<TickCommand, TickResponse>
         {
+            private const int AttributePointsPerLevel = 1;
+            private const int SkillPointsPerLevel = 1;
+            private const int WeaponProficiencyPointsPerLevel = 15;
+
             private readonly ICrpgDbContext _db;
 
             public Handler(ICrpgDbContext db)
@@ -44,9 +48,9 @@ namespace Crpg.Application.Games.Commands
                     if (character.Level != newLevel) // if user leveled up
                     {
                         int levelDiff = newLevel - character.Level;
-                        character.Statistics.Attributes.Points += levelDiff;
-                        character.Statistics.Skills.Points += levelDiff * 2;
-                        character.Statistics.WeaponProficiencies.Points += levelDiff * 15;
+                        character.Statistics.Attributes.Points += levelDiff * AttributePointsPerLevel;
+                        character.Statistics.Skills.Points += levelDiff * SkillPointsPerLevel;
+                        character.Statistics.WeaponProficiencies.Points += levelDiff * WeaponProficiencyPointsPerLevel;
                         character.Level = newLevel;
                         tickUserResponse.Add(new TickUserResponse
                         {
