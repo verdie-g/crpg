@@ -38,7 +38,7 @@ namespace Crpg.Application.UTest.Characters
                     },
                     WeaponProficiencies = new CharacterWeaponProficiencies
                     {
-                        Points = 21,
+                        Points = 29,
                         OneHanded = 1,
                         TwoHanded = 2,
                         Polearm = 3,
@@ -100,7 +100,7 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(10, stats.Skills.Riding);
             Assert.AreEqual(10, stats.Skills.Shield);
             Assert.AreEqual(10, stats.Skills.WeaponMaster);
-            Assert.AreEqual(34, stats.WeaponProficiencies.Points); // 34 because +1 AGI and +1 WP
+            Assert.AreEqual(0, stats.WeaponProficiencies.Points);
             Assert.AreEqual(7, stats.WeaponProficiencies.OneHanded);
             Assert.AreEqual(7, stats.WeaponProficiencies.TwoHanded);
             Assert.AreEqual(7, stats.WeaponProficiencies.Polearm);
@@ -114,7 +114,11 @@ namespace Crpg.Application.UTest.Characters
         {
             var character = Db.Add(new Character
             {
-                Statistics = new CharacterStatistics { Attributes = new CharacterAttributes { Points = 3 } },
+                Statistics = new CharacterStatistics
+                {
+                    Attributes = new CharacterAttributes { Points = 3 },
+                    WeaponProficiencies = new CharacterWeaponProficiencies { Points = 211 },
+                },
             });
             await Db.SaveChangesAsync();
 
@@ -131,7 +135,7 @@ namespace Crpg.Application.UTest.Characters
             }, CancellationToken.None);
 
             Assert.AreEqual(1, stats.Attributes.Agility);
-            Assert.AreEqual(14, stats.WeaponProficiencies.Points);
+            Assert.AreEqual(225, stats.WeaponProficiencies.Points);
 
             stats = await handler.Handle(new UpdateCharacterStatisticsCommand
             {
@@ -154,7 +158,11 @@ namespace Crpg.Application.UTest.Characters
         {
             var character = Db.Add(new Character
             {
-                Statistics = new CharacterStatistics { Skills = new CharacterSkills { Points = 3 } },
+                Statistics = new CharacterStatistics
+                {
+                    Skills = new CharacterSkills { Points = 3 },
+                    WeaponProficiencies = new CharacterWeaponProficiencies { Points = 1876 },
+                },
             });
             await Db.SaveChangesAsync();
 
@@ -171,7 +179,7 @@ namespace Crpg.Application.UTest.Characters
             }, CancellationToken.None);
 
             Assert.AreEqual(1, stats.Skills.WeaponMaster);
-            Assert.AreEqual(75, stats.WeaponProficiencies.Points);
+            Assert.AreEqual(1951, stats.WeaponProficiencies.Points);
 
             stats = await handler.Handle(new UpdateCharacterStatisticsCommand
             {
@@ -185,7 +193,7 @@ namespace Crpg.Application.UTest.Characters
             }, CancellationToken.None);
 
             Assert.AreEqual(3, stats.Skills.WeaponMaster);
-            Assert.AreEqual(15, stats.WeaponProficiencies.Points);
+            Assert.AreEqual(0, stats.WeaponProficiencies.Points);
             Assert.AreEqual(100, stats.WeaponProficiencies.Bow);
         }
 
