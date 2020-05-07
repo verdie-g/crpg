@@ -135,7 +135,8 @@
     <b-field horizontal>
       <p class="control">
         <b-button size="is-medium" icon-left="undo" :disabled="!wasChangeMade" @click="reset">Reset</b-button>
-        <b-button size="is-medium" icon-left="check" :disabled="!isChangeValid" @click="commit">Commit</b-button>
+        <b-button size="is-medium" icon-left="check" :disabled="!wasChangeMade || !isChangeValid"
+                  @click="commit" :loading="updatingStats">Commit</b-button>
       </p>
     </b-field>
 
@@ -155,6 +156,7 @@ import { notify } from '@/services/notifications-service';
 export default class CharacterStatsComponent extends Vue {
   @Prop(Object) readonly character: Character;
 
+  updatingStats: boolean = false;
   statsDelta: CharacterStatistics = this.createEmptyStatistics();
 
   get stats(): CharacterStatistics {
@@ -204,13 +206,10 @@ export default class CharacterStatsComponent extends Vue {
     };
   }
 
-  getInputProps<
-    TSection extends keyof CharacterStatistics,
-    TStat extends keyof CharacterStatistics[TSection]>
-  (statSectionKey: TSection, statKey: TStat) {
+  getInputProps(statSectionKey: keyof CharacterStatistics, statKey: string) {
     // type assertion is needed because compiler doesn't understand it's necessarily a number
-    const initialValue = <number><unknown>this.stats[statSectionKey][statKey];
-    const deltaValue = <number><unknown>this.statsDelta[statSectionKey][statKey];
+    const initialValue = (this.stats[statSectionKey] as any)[statKey];
+    const deltaValue = (this.statsDelta[statSectionKey] as any)[statKey];
     const initialPoints = this.stats[statSectionKey].points;
     const deltaPoints = this.statsDelta[statSectionKey].points;
 
@@ -254,6 +253,7 @@ export default class CharacterStatsComponent extends Vue {
   }
 
   commit() {
+    this.updatingStats = true;
     userModule.updateCharacterStats({
       characterId: this.character.id,
       stats: {
@@ -284,7 +284,10 @@ export default class CharacterStatsComponent extends Vue {
           crossbow: this.stats.weaponProficiencies.crossbow + this.statsDelta.weaponProficiencies.crossbow,
         },
       },
-    }).then(() => notify('Character statistics updated'));
+    }).then(() => {
+      this.updatingStats = false;
+      notify('Character statistics updated');
+    });
     this.reset();
   }
 
