@@ -18,6 +18,12 @@ namespace Crpg.Application.Characters.Commands
 
         public class Handler : IRequestHandler<UpdateCharacterStatisticsCommand, CharacterStatisticsViewModel>
         {
+            private static int WeaponProficienciesPointsForAgility(int agility) => agility * 14;
+
+            private static int WeaponProficienciesPointsForWeaponMaster(int weaponMaster) => weaponMaster == 0
+                ? 0
+                : 55 + weaponMaster * 20;
+
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
 
@@ -51,6 +57,9 @@ namespace Crpg.Application.Characters.Commands
                     throw new BadRequestException("Not enough points for attributes");
                 }
 
+                stats.WeaponProficiencies.Points += WeaponProficienciesPointsForAgility(newStats.Attributes.Agility)
+                    - WeaponProficienciesPointsForAgility(stats.Attributes.Agility);
+
                 int skillsDelta = CheckedDelta(stats.Skills.Athletics, newStats.Skills.Athletics)
                     + CheckedDelta(stats.Skills.HorseArchery, newStats.Skills.HorseArchery)
                     + CheckedDelta(stats.Skills.IronFlesh, newStats.Skills.IronFlesh)
@@ -64,6 +73,9 @@ namespace Crpg.Application.Characters.Commands
                 {
                     throw new BadRequestException("Not enough points for skills");
                 }
+
+                stats.WeaponProficiencies.Points += WeaponProficienciesPointsForWeaponMaster(newStats.Skills.WeaponMaster)
+                    - WeaponProficienciesPointsForWeaponMaster(stats.Skills.WeaponMaster);
 
                 int weaponProficienciesDelta =
                     CheckedDelta(stats.WeaponProficiencies.OneHanded, newStats.WeaponProficiencies.OneHanded)
