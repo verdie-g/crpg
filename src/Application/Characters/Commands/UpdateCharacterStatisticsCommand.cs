@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -23,6 +24,13 @@ namespace Crpg.Application.Characters.Commands
             private static int WeaponProficienciesPointsForWeaponMaster(int weaponMaster) => weaponMaster == 0
                 ? 0
                 : 55 + weaponMaster * 20;
+
+            private static int WeaponProficiencyCost(int wpf)
+            {
+                const float a = 0.005f;
+                const int b = 3;
+                return (int)Math.Floor(a * wpf * (wpf + 1) * (2 * wpf + 1) / 6f + b * wpf);
+            }
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -78,12 +86,12 @@ namespace Crpg.Application.Characters.Commands
                     - WeaponProficienciesPointsForWeaponMaster(stats.Skills.WeaponMaster);
 
                 int weaponProficienciesDelta =
-                    CheckedDelta(stats.WeaponProficiencies.OneHanded, newStats.WeaponProficiencies.OneHanded)
-                    + CheckedDelta(stats.WeaponProficiencies.TwoHanded, newStats.WeaponProficiencies.TwoHanded)
-                    + CheckedDelta(stats.WeaponProficiencies.Polearm, newStats.WeaponProficiencies.Polearm)
-                    + CheckedDelta(stats.WeaponProficiencies.Bow, newStats.WeaponProficiencies.Bow)
-                    + CheckedDelta(stats.WeaponProficiencies.Throwing, newStats.WeaponProficiencies.Throwing)
-                    + CheckedDelta(stats.WeaponProficiencies.Crossbow, newStats.WeaponProficiencies.Crossbow);
+                    CheckedDelta(stats.WeaponProficiencies.OneHanded, newStats.WeaponProficiencies.OneHanded, WeaponProficiencyCost)
+                    + CheckedDelta(stats.WeaponProficiencies.TwoHanded, newStats.WeaponProficiencies.TwoHanded, WeaponProficiencyCost)
+                    + CheckedDelta(stats.WeaponProficiencies.Polearm, newStats.WeaponProficiencies.Polearm, WeaponProficiencyCost)
+                    + CheckedDelta(stats.WeaponProficiencies.Bow, newStats.WeaponProficiencies.Bow, WeaponProficiencyCost)
+                    + CheckedDelta(stats.WeaponProficiencies.Throwing, newStats.WeaponProficiencies.Throwing, WeaponProficiencyCost)
+                    + CheckedDelta(stats.WeaponProficiencies.Crossbow, newStats.WeaponProficiencies.Crossbow, WeaponProficiencyCost);
                 if (weaponProficienciesDelta > stats.WeaponProficiencies.Points)
                 {
                     throw new BadRequestException("Not enough points for weapon proficiencies");
@@ -113,9 +121,11 @@ namespace Crpg.Application.Characters.Commands
                 stats.WeaponProficiencies.Crossbow = newStats.WeaponProficiencies.Crossbow;
             }
 
-            private int CheckedDelta(int oldStat, int newStat)
+            private static int CheckedDelta(int oldStat, int newStat, Func<int, int>? cost = null)
             {
-                int delta = newStat - oldStat;
+                int delta = cost == null
+                    ? newStat - oldStat
+                    : cost(newStat) - cost(oldStat);
                 if (delta >= 0)
                 {
                     return delta;

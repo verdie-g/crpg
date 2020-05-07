@@ -213,27 +213,29 @@ export default class CharacterStatsComponent extends Vue {
   }
 
   getInputProps(statSectionKey: StatSectionKey, statKey: StatKey) {
-    // type assertion is needed because compiler doesn't understand it's necessarily a number
     const initialValue = (this.stats[statSectionKey] as any)[statKey];
     const deltaValue = (this.statsDelta[statSectionKey] as any)[statKey];
     const initialPoints = this.stats[statSectionKey].points;
     const deltaPoints = this.statsDelta[statSectionKey].points;
 
+    const value = initialValue + deltaValue;
+    const points = initialPoints + deltaPoints;
+    const costToIncrease = this.statCost(statSectionKey, statKey, value + 1) - this.statCost(statSectionKey, statKey, value);
     return {
-      value: initialValue + deltaValue,
+      value,
       min: initialValue,
-      max: initialValue + deltaValue + initialPoints + deltaPoints,
+      max: value + (costToIncrease <= points ? 1 : 0),
       controls: initialPoints !== 0, // hide controls (+/-) if there is no points to give
     };
   }
 
   onInput(statSectionKey: StatSectionKey, statKey: StatKey, value: number) {
-    // typing this function correctly was too hard
     const statInitialSection = this.stats[statSectionKey] as any;
     const statDeltaSection = this.statsDelta[statSectionKey] as any;
 
     const oldStatValue = statDeltaSection[statKey];
-    statDeltaSection.points += statInitialSection[statKey] + statDeltaSection[statKey] - value;
+    statDeltaSection.points += this.statCost(statSectionKey, statKey, statInitialSection[statKey] + statDeltaSection[statKey])
+      - this.statCost(statSectionKey, statKey, value);
     statDeltaSection[statKey] = value - statInitialSection[statKey];
     const newStatValue = statDeltaSection[statKey];
 
@@ -252,6 +254,16 @@ export default class CharacterStatsComponent extends Vue {
     return weaponMaster === 0
       ? 0
       : 55 + 20 * weaponMaster;
+  }
+
+  statCost(statSectionKey: StatSectionKey, statKey: StatKey, stat: number): number {
+    if (statSectionKey === 'weaponProficiencies') {
+      const a = 0.005;
+      const b = 3;
+      return Math.floor(a * stat * (stat + 1) * (2 * stat + 1) / 6 + b * stat);
+    }
+
+    return stat;
   }
 
   reset() {
