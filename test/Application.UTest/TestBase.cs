@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Common.Mappings;
 using Crpg.Common;
@@ -18,17 +19,19 @@ namespace Crpg.Application.UTest
         protected IMapper Mapper => _mapper ??= InitMapper();
 
         [SetUp]
-        public void SetUp()
+        public virtual Task SetUp()
         {
             // force creation of those
             _db = null;
             _mapper = null;
+            return Task.CompletedTask;
         }
 
         [TearDown]
-        public void TearDown()
+        public virtual Task TearDown()
         {
             _db?.Dispose();
+            return Task.CompletedTask;
         }
 
         private CrpgDbContext InitDb()
