@@ -151,6 +151,12 @@ import CharacterStatistics from '@/models/character-statistics';
 import Character from '@/models/character';
 import userModule from '@/store/user-module';
 import { notify } from '@/services/notifications-service';
+import CharacterAttributes from '@/models/character-attributes';
+import CharacterSkills from '@/models/character-skills';
+import CharacterWeaponProficiencies from '@/models/character-weapon-proficiencies';
+
+type StatSectionKey = keyof CharacterStatistics;
+type StatKey = keyof CharacterAttributes | keyof CharacterSkills | keyof CharacterWeaponProficiencies;
 
 @Component
 export default class CharacterStatsComponent extends Vue {
@@ -206,7 +212,7 @@ export default class CharacterStatsComponent extends Vue {
     };
   }
 
-  getInputProps(statSectionKey: keyof CharacterStatistics, statKey: string) {
+  getInputProps(statSectionKey: StatSectionKey, statKey: StatKey) {
     // type assertion is needed because compiler doesn't understand it's necessarily a number
     const initialValue = (this.stats[statSectionKey] as any)[statKey];
     const deltaValue = (this.statsDelta[statSectionKey] as any)[statKey];
@@ -221,7 +227,7 @@ export default class CharacterStatsComponent extends Vue {
     };
   }
 
-  onInput(statSectionKey: keyof CharacterStatistics, statKey: string, value: number) {
+  onInput(statSectionKey: StatSectionKey, statKey: StatKey, value: number) {
     // typing this function correctly was too hard
     const statInitialSection = this.stats[statSectionKey] as any;
     const statDeltaSection = this.statsDelta[statSectionKey] as any;
