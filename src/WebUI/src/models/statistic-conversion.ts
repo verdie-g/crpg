@@ -1,4 +1,4 @@
-﻿enum StatisticConversion {
+enum StatisticConversion {
   AttributesToSkills,
   SkillsToAttributes,
 }

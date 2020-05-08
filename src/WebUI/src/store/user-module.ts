@@ -1,11 +1,13 @@
-import {Action, getModule, Module, Mutation, VuexModule,} from 'vuex-module-decorators';
+import {
+  Action, getModule, Module, Mutation, VuexModule,
+} from 'vuex-module-decorators';
 import store from '@/store';
 import * as userService from '@/services/users-service';
 import User from '@/models/user';
 import Character from '@/models/character';
 import Item from '@/models/item';
 import ItemSlot from '@/models/item-slot';
-import {setCharacterItem} from '@/services/characters-service';
+import { setCharacterItem } from '@/services/characters-service';
 import CharacterItems from '@/models/character-items';
 import CharacterStatistics from '@/models/character-statistics';
 import StatisticConversion from '@/models/statistic-conversion';
