@@ -307,7 +307,7 @@ export default class CharacterStatsComponent extends Vue {
           ironFlesh: this.stats.skills.ironFlesh + this.statsDelta.skills.ironFlesh,
           points: this.stats.skills.points + this.statsDelta.skills.points,
           powerDraw: this.stats.skills.powerDraw + this.statsDelta.skills.powerDraw,
-          powerStrike: this.stats.skills.powerStrike + this.stats.skills.powerStrike,
+          powerStrike: this.stats.skills.powerStrike + this.statsDelta.skills.powerStrike,
           powerThrow: this.stats.skills.powerThrow + this.statsDelta.skills.powerThrow,
           riding: this.stats.skills.riding + this.statsDelta.skills.riding,
           shield: this.stats.skills.shield + this.statsDelta.skills.shield,
