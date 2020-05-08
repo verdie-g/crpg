@@ -1,15 +1,14 @@
-import {
-  Action, getModule, Module, Mutation, VuexModule,
-} from 'vuex-module-decorators';
+import {Action, getModule, Module, Mutation, VuexModule,} from 'vuex-module-decorators';
 import store from '@/store';
 import * as userService from '@/services/users-service';
 import User from '@/models/user';
 import Character from '@/models/character';
 import Item from '@/models/item';
 import ItemSlot from '@/models/item-slot';
-import { setCharacterItem } from '@/services/characters-service';
+import {setCharacterItem} from '@/services/characters-service';
 import CharacterItems from '@/models/character-items';
 import CharacterStatistics from '@/models/character-statistics';
+import StatisticConversion from '@/models/statistic-conversion';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
@@ -64,6 +63,20 @@ class UserModule extends VuexModule {
   @Mutation
   setCharacterStats({ characterId, stats } : { characterId: number, stats: CharacterStatistics }) {
     this.characters.find(c => c.id === characterId)!.statistics = stats;
+  }
+
+  @Mutation
+  convertAttributeToSkills(characterId: number) {
+    const character = this.characters.find(c => c.id === characterId)!;
+    character.statistics.attributes.points -= 1;
+    character.statistics.skills.points += 2;
+  }
+
+  @Mutation
+  convertSkillsToAttribute(characterId: number) {
+    const character = this.characters.find(c => c.id === characterId)!;
+    character.statistics.attributes.points += 1;
+    character.statistics.skills.points -= 2;
   }
 
   @Mutation
@@ -132,6 +145,17 @@ class UserModule extends VuexModule {
   updateCharacterStats({ characterId, stats } : { characterId: number, stats: CharacterStatistics }): Promise<CharacterStatistics> {
     this.setCharacterStats({ characterId, stats });
     return userService.updateCharacterStats(characterId, stats);
+  }
+
+  @Action
+  convertCharacterStats({ characterId, conversion } : { characterId: number, conversion: StatisticConversion }): Promise<CharacterStatistics> {
+    if (conversion === StatisticConversion.AttributesToSkills) {
+      this.convertAttributeToSkills(characterId);
+    } else if (conversion === StatisticConversion.SkillsToAttributes) {
+      this.convertSkillsToAttribute(characterId);
+    }
+
+    return userService.convertCharacterStats(characterId, conversion);
   }
 
   @Action({ commit: 'replaceCharacter' })

@@ -122,6 +122,23 @@ namespace Crpg.WebApi.Controllers
         }
 
         /// <summary>
+        /// Convert character statistics for the current user.
+        /// </summary>
+        /// <param name="id">Character id.</param>
+        /// <param name="req">The conversion to perform.</param>
+        /// <returns>The updated character statistics.</returns>
+        /// <response code="200">Conversion performed.</response>
+        /// <response code="400">Bad Request.</response>
+        [HttpPut("self/characters/{id}/statistics/convert")]
+        public async Task<ActionResult<CharacterItemsViewModel>> ConvertCharacterStatistics([FromRoute] int id,
+            [FromBody] ConvertCharacterStatisticsCommand req)
+        {
+            req.CharacterId = id;
+            req.UserId = CurrentUser.UserId;
+            return Ok(await Mediator.Send(req));
+        }
+
+        /// <summary>
         /// Updates a character's items for the current user.
         /// </summary>
         /// <param name="id">Character id.</param>
