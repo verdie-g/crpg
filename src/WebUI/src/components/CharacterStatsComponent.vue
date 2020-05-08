@@ -22,7 +22,13 @@
     </div>
 
     <div class="stats-section">
-      <h2 class="title is-4">Attributes ({{stats.attributes.points + statsDelta.attributes.points}})</h2>
+      <h2 class="title is-4">
+        Attributes ({{stats.attributes.points + statsDelta.attributes.points}})
+        <b-tooltip label="Convert 1 attribute point to 2 skill points" class="convert-button"
+                   v-if="stats.attributes.points + statsDelta.attributes.points >= 1">
+          <b-icon icon="exchange-alt" size="is-small" @click.native="convertStats(statisticConversion.AttributesToSkills)" />
+        </b-tooltip>
+      </h2>
       <b-field horizontal label="Strength" class="stat-field">
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('attributes', 'strength')"
@@ -37,7 +43,13 @@
     </div>
 
     <div class="stats-section">
-      <h2 class="title is-4">Skills ({{stats.skills.points + statsDelta.skills.points}})</h2>
+      <h2 class="title is-4">
+        Skills ({{stats.skills.points + statsDelta.skills.points}})
+        <b-tooltip label="Convert 2 skills points to 1 attribute point" class="convert-button"
+                   v-if="stats.skills.points + statsDelta.skills.points >= 2">
+          <b-icon icon="exchange-alt" size="is-small" @click.native="convertStats(statisticConversion.SkillsToAttributes)" />
+        </b-tooltip>
+      </h2>
       <b-field horizontal label="Athletics" class="stat-field">
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'athletics')"
@@ -154,6 +166,7 @@ import { notify } from '@/services/notifications-service';
 import CharacterAttributes from '@/models/character-attributes';
 import CharacterSkills from '@/models/character-skills';
 import CharacterWeaponProficiencies from '@/models/character-weapon-proficiencies';
+import StatisticConversion from '@/models/statistic-conversion';
 
 type StatSectionKey = keyof CharacterStatistics;
 type StatKey = keyof CharacterAttributes | keyof CharacterSkills | keyof CharacterWeaponProficiencies;
@@ -164,6 +177,10 @@ export default class CharacterStatsComponent extends Vue {
 
   updatingStats: boolean = false;
   statsDelta: CharacterStatistics = this.createEmptyStatistics();
+
+  get statisticConversion() {
+    return StatisticConversion;
+  }
 
   get stats(): CharacterStatistics {
     return this.character.statistics;
@@ -210,6 +227,10 @@ export default class CharacterStatsComponent extends Vue {
         crossbow: 0,
       },
     };
+  }
+
+  convertStats(conversion: StatisticConversion) {
+    userModule.convertCharacterStats({ characterId: this.character.id, conversion });
   }
 
   getInputProps(statSectionKey: StatSectionKey, statKey: StatKey) {
@@ -374,6 +395,11 @@ export default class CharacterStatsComponent extends Vue {
 
   h2 {
     margin-bottom: 1rem;
+
+    .convert-button {
+      margin-left: 8px;
+      cursor: pointer;
+    }
   }
 }
 </style>

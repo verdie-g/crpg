@@ -5,6 +5,7 @@ import { UpdateCharacterItemsRequest } from '@/models/update-character-items-req
 import { UpdateCharacterRequest } from '@/models/update-character-request';
 import CharacterItems from '@/models/character-items';
 import CharacterStatistics from '@/models/character-statistics';
+import StatisticConversion from '@/models/statistic-conversion';
 import {
   get, post, put, del,
 } from './crpg-client';
@@ -35,6 +36,10 @@ export function updateCharacterItems(characterId: number, req: UpdateCharacterIt
 
 export function updateCharacterStats(characterId: number, req: CharacterStatistics): Promise<CharacterStatistics> {
   return put(`/users/self/characters/${characterId}/statistics`, req);
+}
+
+export function convertCharacterStats(characterId: number, conversion: StatisticConversion): Promise<CharacterStatistics> {
+  return put(`/users/self/characters/${characterId}/statistics/convert`, { conversion });
 }
 
 export function buyItem(itemId: number) {
