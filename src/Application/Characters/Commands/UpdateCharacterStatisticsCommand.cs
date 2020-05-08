@@ -27,7 +27,7 @@ namespace Crpg.Application.Characters.Commands
 
             private static int WeaponProficiencyCost(int wpf)
             {
-                const float a = 0.005f;
+                const float a = 0.0005f;
                 const int b = 3;
                 return (int)Math.Floor(a * wpf * (wpf + 1) * (2 * wpf + 1) / 6f + b * wpf);
             }

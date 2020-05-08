@@ -279,7 +279,7 @@ export default class CharacterStatsComponent extends Vue {
 
   statCost(statSectionKey: StatSectionKey, statKey: StatKey, stat: number): number {
     if (statSectionKey === 'weaponProficiencies') {
-      const a = 0.005;
+      const a = 0.0005;
       const b = 3;
       return Math.floor(a * stat * (stat + 1) * (2 * stat + 1) / 6 + b * stat);
     }
