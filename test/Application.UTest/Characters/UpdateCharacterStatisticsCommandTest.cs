@@ -19,7 +19,7 @@ namespace Crpg.Application.UTest.Characters
                 {
                     Attributes = new CharacterAttributes
                     {
-                        Points = 3,
+                        Points = 29 + 58,
                         Strength = 1,
                         Agility = 2,
                     },
@@ -38,7 +38,6 @@ namespace Crpg.Application.UTest.Characters
                     },
                     WeaponProficiencies = new CharacterWeaponProficiencies
                     {
-                        Points = 29,
                         OneHanded = 1,
                         TwoHanded = 2,
                         Polearm = 3,
@@ -60,8 +59,8 @@ namespace Crpg.Application.UTest.Characters
                     {
                         Attributes = new CharacterAttributesViewModel
                         {
-                            Strength = 3,
-                            Agility = 3,
+                            Strength = 30,
+                            Agility = 60,
                         },
                         Skills = new CharacterSkillsViewModel
                         {
@@ -88,8 +87,8 @@ namespace Crpg.Application.UTest.Characters
                 }, CancellationToken.None);
 
             Assert.AreEqual(0, stats.Attributes.Points);
-            Assert.AreEqual(3, stats.Attributes.Strength);
-            Assert.AreEqual(3, stats.Attributes.Agility);
+            Assert.AreEqual(30, stats.Attributes.Strength);
+            Assert.AreEqual(60, stats.Attributes.Agility);
             Assert.AreEqual(0, stats.Skills.Points);
             Assert.AreEqual(10, stats.Skills.Athletics);
             Assert.AreEqual(10, stats.Skills.HorseArchery);
@@ -100,7 +99,7 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(10, stats.Skills.Riding);
             Assert.AreEqual(10, stats.Skills.Shield);
             Assert.AreEqual(10, stats.Skills.WeaponMaster);
-            Assert.AreEqual(0, stats.WeaponProficiencies.Points);
+            Assert.AreEqual(769, stats.WeaponProficiencies.Points);
             Assert.AreEqual(7, stats.WeaponProficiencies.OneHanded);
             Assert.AreEqual(7, stats.WeaponProficiencies.TwoHanded);
             Assert.AreEqual(7, stats.WeaponProficiencies.Polearm);
@@ -160,6 +159,7 @@ namespace Crpg.Application.UTest.Characters
             {
                 Statistics = new CharacterStatistics
                 {
+                    Attributes = new CharacterAttributes { Agility = 9 },
                     Skills = new CharacterSkills { Points = 3 },
                     WeaponProficiencies = new CharacterWeaponProficiencies { Points = 354 },
                 },
@@ -174,6 +174,7 @@ namespace Crpg.Application.UTest.Characters
                 UserId = character.Entity.UserId,
                 Statistics = new CharacterStatisticsViewModel
                 {
+                    Attributes = new CharacterAttributesViewModel { Agility = 9 },
                     Skills = new CharacterSkillsViewModel { WeaponMaster = 1 },
                 }
             }, CancellationToken.None);
@@ -187,6 +188,7 @@ namespace Crpg.Application.UTest.Characters
                 UserId = character.Entity.UserId,
                 Statistics = new CharacterStatisticsViewModel
                 {
+                    Attributes = new CharacterAttributesViewModel { Agility = 9 },
                     Skills = new CharacterSkillsViewModel { WeaponMaster = 3 },
                     WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Bow = 100 },
                 }
@@ -195,6 +197,81 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(3, stats.Skills.WeaponMaster);
             Assert.AreEqual(0, stats.WeaponProficiencies.Points);
             Assert.AreEqual(100, stats.WeaponProficiencies.Bow);
+        }
+
+        [Test]
+        public async Task ShouldntUpdateIfInconsistentStats()
+        {
+            var character = new Character
+            {
+                Statistics = new CharacterStatistics
+                {
+                    Attributes = new CharacterAttributes { Points = 100 },
+                    Skills = new CharacterSkills { Points = 100 },
+                }
+            };
+            Db.Add(character);
+            await Db.SaveChangesAsync();
+
+            var statsObjects = new[]
+            {
+                new CharacterStatisticsViewModel
+                {
+                    Attributes = new CharacterAttributesViewModel { Strength = 2 },
+                    Skills = new CharacterSkillsViewModel { IronFlesh = 1 },
+                },
+                new CharacterStatisticsViewModel
+                {
+                    Attributes = new CharacterAttributesViewModel { Strength = 2 },
+                    Skills = new CharacterSkillsViewModel { PowerStrike = 1 },
+                },
+                new CharacterStatisticsViewModel
+                {
+                    Attributes = new CharacterAttributesViewModel { Strength = 2 },
+                    Skills = new CharacterSkillsViewModel { PowerDraw = 1 },
+                },
+                new CharacterStatisticsViewModel
+                {
+                    Attributes = new CharacterAttributesViewModel { Strength = 2 },
+                    Skills = new CharacterSkillsViewModel { PowerThrow = 1 },
+                },
+                new CharacterStatisticsViewModel
+                {
+                    Attributes = new CharacterAttributesViewModel { Agility = 2 },
+                    Skills = new CharacterSkillsViewModel { Athletics = 1 },
+                },
+                new CharacterStatisticsViewModel
+                {
+                    Attributes = new CharacterAttributesViewModel { Agility = 2 },
+                    Skills = new CharacterSkillsViewModel { Riding = 1 },
+                },
+                new CharacterStatisticsViewModel
+                {
+                    Attributes = new CharacterAttributesViewModel { Agility = 2 },
+                    Skills = new CharacterSkillsViewModel { WeaponMaster = 1 },
+                },
+                new CharacterStatisticsViewModel
+                {
+                    Attributes = new CharacterAttributesViewModel { Agility = 5 },
+                    Skills = new CharacterSkillsViewModel { HorseArchery = 1 },
+                },
+                new CharacterStatisticsViewModel
+                {
+                    Attributes = new CharacterAttributesViewModel { Agility = 5 },
+                    Skills = new CharacterSkillsViewModel { Shield = 1 },
+                },
+            };
+
+            var handler = new UpdateCharacterStatisticsCommand.Handler(Db, Mapper);
+            foreach (var statObject in statsObjects)
+            {
+                Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
+                {
+                    UserId = character.UserId,
+                    CharacterId = character.Id,
+                    Statistics = statObject,
+                }, CancellationToken.None));
+            }
         }
 
         [Test]
@@ -299,7 +376,7 @@ namespace Crpg.Application.UTest.Characters
              };
              Db.Add(character);
              await Db.SaveChangesAsync();
- 
+
              var statsObjects = new[]
              {
                  new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Agility = 1 } },

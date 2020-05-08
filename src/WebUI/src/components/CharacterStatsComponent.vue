@@ -50,55 +50,64 @@
           <b-icon icon="exchange-alt" size="is-small" @click.native="convertStats(statisticConversion.SkillsToAttributes)" />
         </b-tooltip>
       </h2>
-      <b-field horizontal label="Athletics" class="stat-field">
+      <b-field horizontal label="Athletics" class="stat-field"
+               :type="currentSkillRequirementsSatisfied('athletics') ? 'is-primary' : 'is-danger'">
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'athletics')"
                        @input="onInput('skills', 'athletics', $event)" />
       </b-field>
 
-      <b-field horizontal label="Horse Archery" class="stat-field">
+      <b-field horizontal label="Horse Archery" class="stat-field"
+               :type="currentSkillRequirementsSatisfied('horseArchery') ? 'is-primary' : 'is-danger'">
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'horseArchery')"
                        @input="onInput('skills', 'horseArchery', $event)" />
       </b-field>
 
-      <b-field horizontal label="Iron Flesh" class="stat-field">
+      <b-field horizontal label="Iron Flesh" class="stat-field"
+               :type="currentSkillRequirementsSatisfied('ironFlesh') ? 'is-primary' : 'is-danger'">
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'ironFlesh')"
                        @input="onInput('skills', 'ironFlesh', $event)" />
       </b-field>
 
-      <b-field horizontal label="Power Draw" class="stat-field">
+      <b-field horizontal label="Power Draw" class="stat-field"
+               :type="currentSkillRequirementsSatisfied('powerDraw') ? 'is-primary' : 'is-danger'">
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'powerDraw')"
                        @input="onInput('skills', 'powerDraw', $event)" />
       </b-field>
 
-      <b-field horizontal label="Power Strike" class="stat-field">
+      <b-field horizontal label="Power Strike" class="stat-field"
+               :type="currentSkillRequirementsSatisfied('powerStrike') ? 'is-primary' : 'is-danger'">
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'powerStrike')"
                        @input="onInput('skills', 'powerStrike', $event)" />
       </b-field>
 
-      <b-field horizontal label="Power Throw" class="stat-field">
+      <b-field horizontal label="Power Throw" class="stat-field"
+               :type="currentSkillRequirementsSatisfied('powerThrow') ? 'is-primary' : 'is-danger'">
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'powerThrow')"
                        @input="onInput('skills', 'powerThrow', $event)" />
       </b-field>
 
-      <b-field horizontal label="Riding" class="stat-field">
+      <b-field horizontal label="Riding" class="stat-field"
+               :type="currentSkillRequirementsSatisfied('riding') ? 'is-primary' : 'is-danger'">
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'riding')"
                        @input="onInput('skills', 'riding', $event)" />
       </b-field>
 
-      <b-field horizontal label="Shield" class="stat-field">
+      <b-field horizontal label="Shield" class="stat-field"
+               :type="currentSkillRequirementsSatisfied('shield') ? 'is-primary' : 'is-danger'">
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'shield')"
                        @input="onInput('skills', 'shield', $event)" />
       </b-field>
 
-      <b-field horizontal label="Weapon Master" class="stat-field">
+      <b-field horizontal label="Weapon Master" class="stat-field"
+               :type="currentSkillRequirementsSatisfied('weaponMaster') ? 'is-primary' : 'is-danger'">
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'weaponMaster')"
                        @input="onInput('skills', 'weaponMaster', $event)" />
@@ -169,7 +178,10 @@ import CharacterWeaponProficiencies from '@/models/character-weapon-proficiencie
 import StatisticConversion from '@/models/statistic-conversion';
 
 type StatSectionKey = keyof CharacterStatistics;
-type StatKey = keyof CharacterAttributes | keyof CharacterSkills | keyof CharacterWeaponProficiencies;
+type AttributeKey = keyof CharacterAttributes;
+type SkillKey = keyof CharacterSkills;
+type WeaponProficienciesKey = keyof CharacterWeaponProficiencies;
+type StatKey = AttributeKey | SkillKey | WeaponProficienciesKey;
 
 @Component
 export default class CharacterStatsComponent extends Vue {
@@ -195,7 +207,14 @@ export default class CharacterStatsComponent extends Vue {
   get isChangeValid(): boolean {
     return this.stats.attributes.points + this.statsDelta.attributes.points >= 0
       && this.stats.skills.points + this.statsDelta.skills.points >= 0
-      && this.stats.weaponProficiencies.points + this.statsDelta.weaponProficiencies.points >= 0;
+      && this.stats.weaponProficiencies.points + this.statsDelta.weaponProficiencies.points >= 0
+      && this.allCurrentSkillRequirementsSatisfied;
+  }
+
+  get allCurrentSkillRequirementsSatisfied(): boolean {
+    return Object.keys(this.stats.skills)
+      .filter(skillKey => skillKey !== 'points')
+      .every(skillKey => this.currentSkillRequirementsSatisfied(<SkillKey>skillKey));
   }
 
   createEmptyStatistics(): CharacterStatistics {
@@ -242,10 +261,11 @@ export default class CharacterStatsComponent extends Vue {
     const value = initialValue + deltaValue;
     const points = initialPoints + deltaPoints;
     const costToIncrease = this.statCost(statSectionKey, statKey, value + 1) - this.statCost(statSectionKey, statKey, value);
+    const requirementsSatisfied = this.statRequirementsSatisfied(statSectionKey, statKey, value + 1);
     return {
       value,
       min: initialValue,
-      max: value + (costToIncrease <= points ? 1 : 0),
+      max: value + ((costToIncrease <= points && requirementsSatisfied) ? 1 : 0),
       controls: initialPoints !== 0, // hide controls (+/-) if there is no points to give
     };
   }
@@ -275,6 +295,41 @@ export default class CharacterStatsComponent extends Vue {
     return weaponMaster === 0
       ? 0
       : 55 + 20 * weaponMaster;
+  }
+
+  statRequirementsSatisfied(statSectionKey: StatSectionKey, statKey: StatKey, stat: number): boolean {
+    switch (statSectionKey) {
+      case 'skills':
+        return this.skillRequirementsSatisfied(<SkillKey>statKey, stat);
+      default:
+        return true;
+    }
+  }
+
+  currentSkillRequirementsSatisfied(skillKey: SkillKey): boolean {
+    return this.skillRequirementsSatisfied(skillKey, this.stats.skills[skillKey] + this.statsDelta.skills[skillKey])
+  }
+
+  skillRequirementsSatisfied(skillKey: SkillKey, skill: number): boolean {
+    switch (skillKey) {
+      case 'ironFlesh':
+      case 'powerStrike':
+      case 'powerDraw':
+      case 'powerThrow':
+        return skill <= Math.floor((this.stats.attributes.strength + this.statsDelta.attributes.strength) / 3);
+
+      case 'athletics':
+      case 'riding':
+      case 'weaponMaster':
+        return skill <= Math.floor((this.stats.attributes.agility + this.statsDelta.attributes.agility) / 3);
+
+      case 'horseArchery':
+      case 'shield':
+        return skill <= Math.floor((this.stats.attributes.agility + this.statsDelta.attributes.agility) / 6);
+
+      default:
+        return false;
+    }
   }
 
   statCost(statSectionKey: StatSectionKey, statKey: StatKey, stat: number): number {

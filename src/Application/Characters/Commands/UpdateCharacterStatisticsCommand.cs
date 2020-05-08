@@ -97,6 +97,11 @@ namespace Crpg.Application.Characters.Commands
                     throw new BadRequestException("Not enough points for weapon proficiencies");
                 }
 
+                if (!CheckSkillsConsistency(newStats))
+                {
+                    throw new BadRequestException("Inconsistent statistics");
+                }
+
                 stats.Attributes.Points -= attributesDelta;
                 stats.Attributes.Agility = newStats.Attributes.Agility;
                 stats.Attributes.Strength = newStats.Attributes.Strength;
@@ -132,6 +137,19 @@ namespace Crpg.Application.Characters.Commands
                 }
 
                 throw new BadRequestException("Can't decrease stat");
+            }
+
+            private static bool CheckSkillsConsistency(CharacterStatisticsViewModel stats)
+            {
+                return stats.Skills.IronFlesh <= stats.Attributes.Strength / 3
+                    && stats.Skills.PowerStrike <= stats.Attributes.Strength / 3
+                    && stats.Skills.PowerDraw <= stats.Attributes.Strength / 3
+                    && stats.Skills.PowerThrow <= stats.Attributes.Strength / 3
+                    && stats.Skills.Athletics <= stats.Attributes.Agility / 3
+                    && stats.Skills.Riding <= stats.Attributes.Agility / 3
+                    && stats.Skills.WeaponMaster <= stats.Attributes.Agility / 3
+                    && stats.Skills.HorseArchery <= stats.Attributes.Agility / 6
+                    && stats.Skills.Shield <= stats.Attributes.Agility / 6;
             }
         }
     }
