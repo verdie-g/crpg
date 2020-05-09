@@ -54,7 +54,7 @@ const characterItemSlots: Record<ItemSlot, CharacterItemSlot> = {
   },
 };
 
-export function getCharacterItemFromSlot(characterItems: CharacterItems, slot: ItemSlot) : Item | null {
+export function getCharacterItemFromSlot(characterItems: CharacterItems, slot: ItemSlot): Item | null {
   return characterItemSlots[slot].getItem(characterItems);
 }
 
