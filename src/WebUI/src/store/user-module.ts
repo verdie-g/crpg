@@ -117,17 +117,17 @@ class UserModule extends VuexModule {
     const { items } = character;
     this.setCharacterItem({ characterItems: items, slot, item });
     return userService.updateCharacterItems(character.id, {
-      headItemId: items.headItem !== null ? items.headItem!.id : null,
-      capeItemId: items.capeItem !== null ? items.capeItem!.id : null,
-      bodyItemId: items.bodyItem !== null ? items.bodyItem!.id : null,
-      handItemId: items.handItem !== null ? items.handItem!.id : null,
-      legItemId: items.legItem !== null ? items.legItem!.id : null,
-      horseHarnessItemId: items.horseHarnessItem !== null ? items.horseHarnessItem!.id : null,
-      horseItemId: items.horseItem !== null ? items.horseItem!.id : null,
-      weapon1ItemId: items.weapon1Item !== null ? items.weapon1Item!.id : null,
-      weapon2ItemId: items.weapon2Item !== null ? items.weapon2Item!.id : null,
-      weapon3ItemId: items.weapon3Item !== null ? items.weapon3Item!.id : null,
-      weapon4ItemId: items.weapon4Item !== null ? items.weapon4Item!.id : null,
+      headItemId: items.headItem?.id ?? null,
+      capeItemId: items.capeItem?.id ?? null,
+      bodyItemId: items.bodyItem?.id ?? null,
+      handItemId: items.handItem?.id ?? null,
+      legItemId: items.legItem?.id ?? null,
+      horseHarnessItemId: items.horseHarnessItem?.id ?? null,
+      horseItemId: items.horseItem?.id ?? null,
+      weapon1ItemId: items.weapon1Item?.id ?? null,
+      weapon2ItemId: items.weapon2Item?.id ?? null,
+      weapon3ItemId: items.weapon3Item?.id ?? null,
+      weapon4ItemId: items.weapon4Item?.id ?? null,
     });
   }
 
