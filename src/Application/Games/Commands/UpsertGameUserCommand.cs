@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Common;
+using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Games.Models;
@@ -129,13 +130,8 @@ namespace Crpg.Application.Games.Commands
 
                 if (user == null)
                 {
-                    user = new User
-                    {
-                        SteamId = request.SteamId,
-                        Gold = Constants.StartingGold,
-                        Role = Constants.DefaultRole,
-                    };
-
+                    user = new User { SteamId = request.SteamId };
+                    UserHelper.SetDefaultValuesForNewUser(user);
                     await AddNewCharacterToUser(user, request.CharacterName, cancellationToken);
                     _db.Users.Add(user);
                     _events.Raise(EventLevel.Info, $"{request.CharacterName} joined ({request.SteamId})",
@@ -161,21 +157,8 @@ namespace Crpg.Application.Games.Commands
 
             private async Task AddNewCharacterToUser(User user, string name, CancellationToken cancellationToken)
             {
-                var c = new Character
-                {
-                    Name = name,
-                    Level = 1,
-                    Experience = 0,
-                    ExperienceMultiplier = Constants.DefaultExperienceMultiplier,
-                    Statistics = new CharacterStatistics
-                    {
-                        Attributes = new CharacterAttributes
-                        {
-                            Strength = 3,
-                            Agility = 3,
-                        },
-                    },
-                };
+                var c = new Character { Name = name };
+                CharacterHelper.SetDefaultValuesForNewCharacter(c);
 
                 var items = DefaultItemsSets[ThreadSafeRandom.Instance.Value!.Next(DefaultItemsSets.Length - 1)];
                 var itemsIdByMdId = await _db.Items

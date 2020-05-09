@@ -16,7 +16,7 @@ namespace Crpg.Application.UTest.Characters
             var character = Db.Characters.Add(new Character
             {
                 Experience = 42424424,
-                Level = Constants.MinimumRetiringLevel,
+                Level = 31,
                 ExperienceMultiplier = 1.1f,
                 User = new User(),
             });
@@ -48,7 +48,7 @@ namespace Crpg.Application.UTest.Characters
         {
             var character = Db.Characters.Add(new Character
             {
-                Level = Constants.MinimumRetiringLevel - 1,
+                Level = 30,
                 User = new User(),
             });
             await Db.SaveChangesAsync();

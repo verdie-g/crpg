@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Common;
+using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Common.Mappings;
@@ -54,26 +55,24 @@ namespace Crpg.Application.Users.Commands
 
             public async Task<UserViewModel> Handle(UpsertUserCommand request, CancellationToken cancellationToken)
             {
-                var userEntity =
+                var user =
                     await _db.Users.FirstOrDefaultAsync(u => u.SteamId == request.SteamId, cancellationToken)
                     ?? new User { SteamId = request.SteamId };
 
-                userEntity.UserName = request.UserName;
-                userEntity.AvatarSmall = request.Avatar;
-                userEntity.AvatarMedium = request.AvatarMedium;
-                userEntity.AvatarFull = request.AvatarFull;
+                user.UserName = request.UserName;
+                user.AvatarSmall = request.Avatar;
+                user.AvatarMedium = request.AvatarMedium;
+                user.AvatarFull = request.AvatarFull;
 
-                if (_db.Entry(userEntity).State == EntityState.Detached)
+                if (_db.Entry(user).State == EntityState.Detached)
                 {
-                    userEntity.Role = Constants.DefaultRole;
-                    userEntity.Gold = Constants.StartingGold;
-                    _db.Users.Add(userEntity);
+                    UserHelper.SetDefaultValuesForNewUser(user);
+                    _db.Users.Add(user);
                     _events.Raise(EventLevel.Info, $"{request.UserName} joined ({request.SteamId})", string.Empty, "new_user");
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
-
-                return _mapper.Map<UserViewModel>(userEntity);
+                return _mapper.Map<UserViewModel>(user);
             }
         }
     }

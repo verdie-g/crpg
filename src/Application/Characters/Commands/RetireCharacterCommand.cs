@@ -17,6 +17,9 @@ namespace Crpg.Application.Characters.Commands
 
         public class Handler : IRequestHandler<RetireCharacterCommand, CharacterViewModel>
         {
+            private const int MinimumRetiringLevel = 31;
+            private const float ExperienceMultiplierIncrease = 0.05f;
+
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
 
@@ -36,30 +39,34 @@ namespace Crpg.Application.Characters.Commands
                     throw new NotFoundException(nameof(Character), request.CharacterId);
                 }
 
-                if (character.Level < Constants.MinimumRetiringLevel)
+                if (character.Level < MinimumRetiringLevel)
                 {
-                    throw new BadRequestException($"Level {Constants.MinimumRetiringLevel} is required to retire");
+                    throw new BadRequestException($"Level {MinimumRetiringLevel} is required to retire");
                 }
 
                 character.Experience = 0;
                 character.Level = 1;
-                character.ExperienceMultiplier += Constants.ExperienceMultiplierIncrease;
-                character.Items.HeadItemId = null;
-                character.Items.CapeItemId = null;
-                character.Items.BodyItemId = null;
-                character.Items.HandItemId = null;
-                character.Items.LegItemId = null;
-                character.Items.HorseHarnessItem = null;
-                character.Items.HorseItem = null;
-                character.Items.Weapon1Item = null;
-                character.Items.Weapon2Item = null;
-                character.Items.Weapon3Item = null;
-                character.Items.Weapon4Item = null;
+                character.ExperienceMultiplier += ExperienceMultiplierIncrease;
+                UnequipItems(character.Items);
                 character.User!.LoomPoints += 1;
 
                 await _db.SaveChangesAsync(cancellationToken);
-
                 return _mapper.Map<CharacterViewModel>(character);
+            }
+
+            private void UnequipItems(CharacterItems items)
+            {
+                items.HeadItemId = null;
+                items.CapeItemId = null;
+                items.BodyItemId = null;
+                items.HandItemId = null;
+                items.LegItemId = null;
+                items.HorseHarnessItem = null;
+                items.HorseItem = null;
+                items.Weapon1Item = null;
+                items.Weapon2Item = null;
+                items.Weapon3Item = null;
+                items.Weapon4Item = null;
             }
         }
     }
