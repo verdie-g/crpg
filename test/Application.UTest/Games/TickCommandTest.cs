@@ -23,16 +23,15 @@ namespace Crpg.Application.UTest.Games
                 Users = new[]
                 {
                     new UserTick { CharacterId = c1.Id, ExperienceGain = 200, GoldGain = 50 },
-                    new UserTick { CharacterId = c2.Id, ExperienceGain = 300, GoldGain = 100 },
+                    new UserTick { CharacterId = c2.Id, ExperienceGain = 3000, GoldGain = 100 },
                 }
             };
 
             var res = await new TickCommand.Handler(Db).Handle(cmd, CancellationToken.None);
             Assert.NotNull(res.Users);
             Assert.AreEqual(1, res.Users.Count); // c2 leveled up
-            Assert.AreEqual(res.Users[0].UserId, c2.UserId);
-            Assert.AreEqual(res.Users[0].Level, 2);
-            Assert.AreEqual(res.Users[0].NextLevelExperience, 1360);
+            Assert.AreEqual(c2.UserId, res.Users[0].UserId);
+            Assert.AreEqual(2, res.Users[0].Level);
 
             Assert.AreEqual(1, c1.Level);
             Assert.AreEqual(209, c1.Experience);
@@ -42,7 +41,7 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(70, c1.User.Gold);
 
             Assert.AreEqual(2, c2.Level);
-            Assert.AreEqual(600, c2.Experience);
+            Assert.AreEqual(3300, c2.Experience);
             Assert.AreEqual(1, c2.Statistics.Attributes.Points);
             Assert.AreEqual(1, c2.Statistics.Skills.Points);
             Assert.AreEqual(15, c2.Statistics.WeaponProficiencies.Points);
@@ -52,7 +51,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task PassTwoLevelInOneTick()
         {
-            var c = new Character { Experience = 599, Level = 1, ExperienceMultiplier = 1f, User = new User() };
+            var c = new Character { Experience = 0, Level = 1, ExperienceMultiplier = 1f, User = new User() };
             Db.Add(c);
             await Db.SaveChangesAsync();
 
@@ -60,7 +59,7 @@ namespace Crpg.Application.UTest.Games
             {
                 Users = new[]
                 {
-                    new UserTick { CharacterId = c.Id, ExperienceGain = 761, GoldGain = 50 },
+                    new UserTick { CharacterId = c.Id, ExperienceGain = 20000, GoldGain = 50 },
                 }
             };
 
@@ -69,10 +68,9 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(1, res.Users.Count);
             Assert.AreEqual(c.UserId, res.Users[0].UserId);
             Assert.AreEqual(3, res.Users[0].Level);
-            Assert.AreEqual(2296, res.Users[0].NextLevelExperience);
 
             Assert.AreEqual(3, c.Level);
-            Assert.AreEqual(1360, c.Experience);
+            Assert.AreEqual(20000, c.Experience);
             Assert.AreEqual(2, c.Statistics.Attributes.Points);
             Assert.AreEqual(2, c.Statistics.Skills.Points);
             Assert.AreEqual(30, c.Statistics.WeaponProficiencies.Points);
