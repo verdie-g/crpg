@@ -145,7 +145,7 @@ namespace Crpg.DumpItemsMod
 
         private static IEnumerable<ItemObject> DeserializeMbItems(string path)
         {
-            var game = new Game(new MultiplayerGame(), new MultiplayerGameManager());
+            var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
             game.Initialize();
 
             var itemsDoc = new XmlDocument();
