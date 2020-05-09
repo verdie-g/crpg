@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.ObjectSystem;
 
 namespace Crpg.GameMod.Battle
 {
