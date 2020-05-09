@@ -60,25 +60,6 @@
         </b-tooltip>
       </h2>
 
-      <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('athletics') ? 'is-primary' : 'is-danger'">
-        <template slot="label">
-          <b-tooltip label="Increases running speed. Requires 3 agility per level." position="is-left" multilined>Athletics</b-tooltip>
-        </template>
-        <b-numberinput size="is-small" :editable="false" controls-position="compact"
-                       v-bind="getInputProps('skills', 'athletics')"
-                       @input="onInput('skills', 'athletics', $event)" />
-      </b-field>
-
-      <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('horseArchery') ? 'is-primary' : 'is-danger'">
-        <template slot="label">
-          <b-tooltip label="Reduces penalty for using ranged weapons on a moving horse by 10% per level. Requires 6 agility per level."
-                     position="is-left" multilined>Horse Archery</b-tooltip>
-        </template>
-        <b-numberinput size="is-small" :editable="false" controls-position="compact"
-                       v-bind="getInputProps('skills', 'horseArchery')"
-                       @input="onInput('skills', 'horseArchery', $event)" />
-      </b-field>
-
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('ironFlesh') ? 'is-primary' : 'is-danger'">
         <template slot="label">
           <b-tooltip label="Increases your health by 2 points per level and reduces the negative impact armor has on weapon points. Requires 3 strength per level."
@@ -87,16 +68,6 @@
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'ironFlesh')"
                        @input="onInput('skills', 'ironFlesh', $event)" />
-      </b-field>
-
-      <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('powerDraw') ? 'is-primary' : 'is-danger'">
-        <template slot="label">
-          <b-tooltip label="Increases bow damage by 14% per level (capped at 4 above used bow's difficulty). Allows you to use higher tiers bow. Requires 3 strength per level."
-                     position="is-left" multilined>Power Draw</b-tooltip>
-        </template>
-        <b-numberinput size="is-small" :editable="false" controls-position="compact"
-                       v-bind="getInputProps('skills', 'powerDraw')"
-                       @input="onInput('skills', 'powerDraw', $event)" />
       </b-field>
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('powerStrike') ? 'is-primary' : 'is-danger'">
@@ -109,6 +80,16 @@
                        @input="onInput('skills', 'powerStrike', $event)" />
       </b-field>
 
+      <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('powerDraw') ? 'is-primary' : 'is-danger'">
+        <template slot="label">
+          <b-tooltip label="Increases bow damage by 14% per level (capped at 4 above used bow's difficulty). Allows you to use higher tiers bow. Requires 3 strength per level."
+                     position="is-left" multilined>Power Draw</b-tooltip>
+        </template>
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('skills', 'powerDraw')"
+                       @input="onInput('skills', 'powerDraw', $event)" />
+      </b-field>
+
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('powerThrow') ? 'is-primary' : 'is-danger'">
         <template slot="label">
           <b-tooltip label="Increases throw damage by 10% per level. Allows you to use higher tier weapons. Requires 3 strength per level."
@@ -117,6 +98,15 @@
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'powerThrow')"
                        @input="onInput('skills', 'powerThrow', $event)" />
+      </b-field>
+
+      <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('athletics') ? 'is-primary' : 'is-danger'">
+        <template slot="label">
+          <b-tooltip label="Increases running speed. Requires 3 agility per level." position="is-left" multilined>Athletics</b-tooltip>
+        </template>
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('skills', 'athletics')"
+                       @input="onInput('skills', 'athletics', $event)" />
       </b-field>
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('riding') ? 'is-primary' : 'is-danger'">
@@ -129,6 +119,25 @@
                        @input="onInput('skills', 'riding', $event)" />
       </b-field>
 
+      <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('weaponMaster') ? 'is-primary' : 'is-danger'">
+        <template slot="label">
+          <b-tooltip label="Gives you level*20+55 weapon points per level. Requires 3 agility per level." position="is-left" multilined>Weapon Master</b-tooltip>
+        </template>
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('skills', 'weaponMaster')"
+                       @input="onInput('skills', 'weaponMaster', $event)" />
+      </b-field>
+
+      <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('horseArchery') ? 'is-primary' : 'is-danger'">
+        <template slot="label">
+          <b-tooltip label="Reduces penalty for using ranged weapons on a moving horse by 10% per level. Requires 6 agility per level."
+                     position="is-left" multilined>Horse Archery</b-tooltip>
+        </template>
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       v-bind="getInputProps('skills', 'horseArchery')"
+                       @input="onInput('skills', 'horseArchery', $event)" />
+      </b-field>
+
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('shield') ? 'is-primary' : 'is-danger'">
         <template slot="label">
           <b-tooltip label="Reduces damage to shields by 16% per level, improves shield speed and increases coverage form ranged attacks. Allows you to use higher tier shields. Requires 6 agility per level."
@@ -137,15 +146,6 @@
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'shield')"
                        @input="onInput('skills', 'shield', $event)" />
-      </b-field>
-
-      <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('weaponMaster') ? 'is-primary' : 'is-danger'">
-        <template slot="label">
-          <b-tooltip label="Gives you level*20+55 weapon points per level. Requires 3 agility per level." position="is-left" multilined>Weapon Master</b-tooltip>
-        </template>
-        <b-numberinput size="is-small" :editable="false" controls-position="compact"
-                       v-bind="getInputProps('skills', 'weaponMaster')"
-                       @input="onInput('skills', 'weaponMaster', $event)" />
       </b-field>
     </div>
 
@@ -260,16 +260,16 @@ export default class CharacterStatsComponent extends Vue {
         agility: 0,
       },
       skills: {
-        athletics: 0,
-        horseArchery: 0,
-        ironFlesh: 0,
         points: 0,
-        powerDraw: 0,
+        ironFlesh: 0,
         powerStrike: 0,
+        powerDraw: 0,
         powerThrow: 0,
+        athletics: 0,
         riding: 0,
-        shield: 0,
         weaponMaster: 0,
+        horseArchery: 0,
+        shield: 0,
       },
       weaponProficiencies: {
         points: 0,
@@ -392,16 +392,16 @@ export default class CharacterStatsComponent extends Vue {
           agility: this.stats.attributes.agility + this.statsDelta.attributes.agility,
         },
         skills: {
-          athletics: this.stats.skills.athletics + this.statsDelta.skills.athletics,
-          horseArchery: this.stats.skills.horseArchery + this.statsDelta.skills.horseArchery,
-          ironFlesh: this.stats.skills.ironFlesh + this.statsDelta.skills.ironFlesh,
           points: this.stats.skills.points + this.statsDelta.skills.points,
-          powerDraw: this.stats.skills.powerDraw + this.statsDelta.skills.powerDraw,
+          ironFlesh: this.stats.skills.ironFlesh + this.statsDelta.skills.ironFlesh,
           powerStrike: this.stats.skills.powerStrike + this.statsDelta.skills.powerStrike,
+          powerDraw: this.stats.skills.powerDraw + this.statsDelta.skills.powerDraw,
           powerThrow: this.stats.skills.powerThrow + this.statsDelta.skills.powerThrow,
+          athletics: this.stats.skills.athletics + this.statsDelta.skills.athletics,
           riding: this.stats.skills.riding + this.statsDelta.skills.riding,
-          shield: this.stats.skills.shield + this.statsDelta.skills.shield,
           weaponMaster: this.stats.skills.weaponMaster + this.statsDelta.skills.weaponMaster,
+          horseArchery: this.stats.skills.horseArchery + this.statsDelta.skills.horseArchery,
+          shield: this.stats.skills.shield + this.statsDelta.skills.shield,
         },
         weaponProficiencies: {
           points: this.stats.weaponProficiencies.points + this.statsDelta.weaponProficiencies.points,
