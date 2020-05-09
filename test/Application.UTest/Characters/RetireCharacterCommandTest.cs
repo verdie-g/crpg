@@ -79,7 +79,7 @@ namespace Crpg.Application.UTest.Characters
 
             Assert.AreEqual(1, character.Entity.Level);
             Assert.AreEqual(0, character.Entity.Experience);
-            Assert.AreEqual(1.15f, character.Entity.ExperienceMultiplier);
+            Assert.AreEqual(1.2f, character.Entity.ExperienceMultiplier);
             Assert.AreEqual(2, character.Entity.User!.LoomPoints);
 
             Assert.AreEqual(0, character.Entity.Statistics.Attributes.Points);
