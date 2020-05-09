@@ -18,7 +18,15 @@ namespace Crpg.Application.Games.Commands
         {
             private const int AttributePointsPerLevel = 1;
             private const int SkillPointsPerLevel = 1;
-            private const int WeaponProficiencyPointsPerLevel = 15;
+
+            private static int WeaponProficiencyPointsForLevel(int lvl)
+            {
+                const int a = 1;
+                const int b = 49;
+                const int c = 52;
+
+                return (int)(a * Math.Pow(lvl, 2) + b * lvl + c);
+            }
 
             private readonly ICrpgDbContext _db;
 
@@ -50,7 +58,8 @@ namespace Crpg.Application.Games.Commands
                         int levelDiff = newLevel - character.Level;
                         character.Statistics.Attributes.Points += levelDiff * AttributePointsPerLevel;
                         character.Statistics.Skills.Points += levelDiff * SkillPointsPerLevel;
-                        character.Statistics.WeaponProficiencies.Points += levelDiff * WeaponProficiencyPointsPerLevel;
+                        character.Statistics.WeaponProficiencies.Points += WeaponProficiencyPointsForLevel(newLevel)
+                            - WeaponProficiencyPointsForLevel(character.Level);
                         character.Level = newLevel;
                         tickUserResponse.Add(new TickUserResponse
                         {
