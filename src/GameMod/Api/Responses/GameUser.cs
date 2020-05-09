@@ -22,7 +22,50 @@ namespace Crpg.GameMod.Api.Responses
         public int Experience { get; set; }
         public int NextLevelExperience { get; set; }
         public int Level { get; set; }
+        public GameCharacterStatistics Statistics { get; set; } = new GameCharacterStatistics();
         public GameCharacterItems Items { get; set; } = new GameCharacterItems();
+    }
+
+    /// <summary>
+    /// Copy of Crpg.Application.Characters.Models.CharacterStatisticsViewModel
+    /// </summary>
+    public class GameCharacterStatistics
+    {
+        public GameCharacterAttributes Attributes { get; set; } = new GameCharacterAttributes();
+        public GameCharacterSkills Skills { get; set; } = new GameCharacterSkills();
+        public GameCharacterWeaponProficiencies WeaponProficiencies { get; set; } = new GameCharacterWeaponProficiencies();
+    }
+
+    public class GameCharacterAttributes
+    {
+        public int Points { get; set; }
+        public int Strength { get; set; }
+        public int Agility { get; set; }
+    }
+
+    public class GameCharacterSkills
+    {
+        public int Points { get; set; }
+        public int IronFlesh { get; set; }
+        public int PowerStrike { get; set; }
+        public int PowerDraw { get; set; }
+        public int PowerThrow { get; set; }
+        public int Athletics { get; set; }
+        public int Riding { get; set; }
+        public int WeaponMaster { get; set; }
+        public int HorseArchery { get; set; }
+        public int Shield { get; set; }
+    }
+
+    public class GameCharacterWeaponProficiencies
+    {
+        public int Points { get; set; }
+        public int OneHanded { get; set; }
+        public int TwoHanded { get; set; }
+        public int Polearm { get; set; }
+        public int Bow { get; set; }
+        public int Throwing { get; set; }
+        public int Crossbow { get; set; }
     }
 
     /// <summary>
