@@ -141,7 +141,7 @@
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('shield') ? 'is-primary' : 'is-danger'">
         <template slot="label">
           <b-tooltip label="Reduces damage to shields by 16% per level, improves shield speed and increases coverage form ranged attacks. Allows you to use higher tier shields. Requires 6 agility per level."
-                     position="is-left" multilined>Riding</b-tooltip>
+                     position="is-left" multilined>Shield</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'shield')"
