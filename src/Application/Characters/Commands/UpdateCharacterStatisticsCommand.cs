@@ -68,15 +68,15 @@ namespace Crpg.Application.Characters.Commands
                 stats.WeaponProficiencies.Points += WeaponProficienciesPointsForAgility(newStats.Attributes.Agility)
                     - WeaponProficienciesPointsForAgility(stats.Attributes.Agility);
 
-                int skillsDelta = CheckedDelta(stats.Skills.Athletics, newStats.Skills.Athletics)
-                    + CheckedDelta(stats.Skills.HorseArchery, newStats.Skills.HorseArchery)
-                    + CheckedDelta(stats.Skills.IronFlesh, newStats.Skills.IronFlesh)
-                    + CheckedDelta(stats.Skills.PowerDraw, newStats.Skills.PowerDraw)
+                int skillsDelta = CheckedDelta(stats.Skills.IronFlesh, newStats.Skills.IronFlesh)
                     + CheckedDelta(stats.Skills.PowerStrike, newStats.Skills.PowerStrike)
+                    + CheckedDelta(stats.Skills.PowerDraw, newStats.Skills.PowerDraw)
                     + CheckedDelta(stats.Skills.PowerThrow, newStats.Skills.PowerThrow)
+                    + CheckedDelta(stats.Skills.Athletics, newStats.Skills.Athletics)
                     + CheckedDelta(stats.Skills.Riding, newStats.Skills.Riding)
-                    + CheckedDelta(stats.Skills.Shield, newStats.Skills.Shield)
-                    + CheckedDelta(stats.Skills.WeaponMaster, newStats.Skills.WeaponMaster);
+                    + CheckedDelta(stats.Skills.WeaponMaster, newStats.Skills.WeaponMaster)
+                    + CheckedDelta(stats.Skills.HorseArchery, newStats.Skills.HorseArchery)
+                    + CheckedDelta(stats.Skills.Shield, newStats.Skills.Shield);
                 if (skillsDelta > stats.Skills.Points)
                 {
                     throw new BadRequestException("Not enough points for skills");
@@ -107,15 +107,15 @@ namespace Crpg.Application.Characters.Commands
                 stats.Attributes.Strength = newStats.Attributes.Strength;
 
                 stats.Skills.Points -= skillsDelta;
-                stats.Skills.Athletics = newStats.Skills.Athletics;
-                stats.Skills.HorseArchery = newStats.Skills.HorseArchery;
                 stats.Skills.IronFlesh = newStats.Skills.IronFlesh;
-                stats.Skills.PowerDraw = newStats.Skills.PowerDraw;
                 stats.Skills.PowerStrike = newStats.Skills.PowerStrike;
+                stats.Skills.PowerDraw = newStats.Skills.PowerDraw;
                 stats.Skills.PowerThrow = newStats.Skills.PowerThrow;
+                stats.Skills.Athletics = newStats.Skills.Athletics;
                 stats.Skills.Riding = newStats.Skills.Riding;
-                stats.Skills.Shield = newStats.Skills.Shield;
                 stats.Skills.WeaponMaster = newStats.Skills.WeaponMaster;
+                stats.Skills.HorseArchery = newStats.Skills.HorseArchery;
+                stats.Skills.Shield = newStats.Skills.Shield;
 
                 stats.WeaponProficiencies.Points -= weaponProficienciesDelta;
                 stats.WeaponProficiencies.OneHanded = newStats.WeaponProficiencies.OneHanded;

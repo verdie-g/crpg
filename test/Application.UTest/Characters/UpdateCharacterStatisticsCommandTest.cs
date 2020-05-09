@@ -26,15 +26,15 @@ namespace Crpg.Application.UTest.Characters
                     Skills = new CharacterSkills
                     {
                         Points = 45,
-                        Athletics = 1,
-                        HorseArchery = 2,
-                        IronFlesh = 3,
-                        PowerDraw = 4,
-                        PowerStrike = 5,
-                        PowerThrow = 6,
-                        Riding = 7,
-                        Shield = 8,
-                        WeaponMaster = 9,
+                        IronFlesh = 1,
+                        PowerStrike = 2,
+                        PowerDraw = 3,
+                        PowerThrow = 4,
+                        Athletics = 5,
+                        Riding = 6,
+                        WeaponMaster = 7,
+                        HorseArchery = 8,
+                        Shield = 9,
                     },
                     WeaponProficiencies = new CharacterWeaponProficiencies
                     {
@@ -64,15 +64,15 @@ namespace Crpg.Application.UTest.Characters
                         },
                         Skills = new CharacterSkillsViewModel
                         {
-                            Athletics = 10,
-                            HorseArchery = 10,
                             IronFlesh = 10,
-                            PowerDraw = 10,
                             PowerStrike = 10,
+                            PowerDraw = 10,
                             PowerThrow = 10,
+                            Athletics = 10,
                             Riding = 10,
-                            Shield = 10,
                             WeaponMaster = 10,
+                            HorseArchery = 10,
+                            Shield = 10,
                         },
                         WeaponProficiencies = new CharacterWeaponProficienciesViewModel
                         {
@@ -90,16 +90,16 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(30, stats.Attributes.Strength);
             Assert.AreEqual(60, stats.Attributes.Agility);
             Assert.AreEqual(0, stats.Skills.Points);
-            Assert.AreEqual(10, stats.Skills.Athletics);
-            Assert.AreEqual(10, stats.Skills.HorseArchery);
             Assert.AreEqual(10, stats.Skills.IronFlesh);
-            Assert.AreEqual(10, stats.Skills.PowerDraw);
             Assert.AreEqual(10, stats.Skills.PowerStrike);
+            Assert.AreEqual(10, stats.Skills.PowerDraw);
             Assert.AreEqual(10, stats.Skills.PowerThrow);
+            Assert.AreEqual(10, stats.Skills.Athletics);
             Assert.AreEqual(10, stats.Skills.Riding);
-            Assert.AreEqual(10, stats.Skills.Shield);
             Assert.AreEqual(10, stats.Skills.WeaponMaster);
-            Assert.AreEqual(769, stats.WeaponProficiencies.Points);
+            Assert.AreEqual(10, stats.Skills.HorseArchery);
+            Assert.AreEqual(10, stats.Skills.Shield);
+            Assert.AreEqual(809, stats.WeaponProficiencies.Points);
             Assert.AreEqual(7, stats.WeaponProficiencies.OneHanded);
             Assert.AreEqual(7, stats.WeaponProficiencies.TwoHanded);
             Assert.AreEqual(7, stats.WeaponProficiencies.Polearm);
@@ -283,17 +283,17 @@ namespace Crpg.Application.UTest.Characters
 
             var statsObjects = new[]
             {
-                new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Agility = 1 } },
                 new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Strength = 1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Athletics = 1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { HorseArchery = 1 } },
+                new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Agility = 1 } },
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { IronFlesh = 1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerDraw = 1 } },
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerStrike = 1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerDraw = 1 } },
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerThrow = 1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Riding = 1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Shield = 1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Athletics = 1 } },
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { WeaponMaster = 1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Riding = 1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { HorseArchery = 1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Shield = 1 } },
                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { OneHanded = 1 } },
                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { TwoHanded = 1 } },
                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Polearm = 1 } },
@@ -333,15 +333,15 @@ namespace Crpg.Application.UTest.Characters
             {
                 new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Agility = -1 } },
                 new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Strength = -1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Athletics = -1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { HorseArchery = -1 } },
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { IronFlesh = -1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerDraw = -1 } },
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerStrike = -1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerDraw = -1 } },
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerThrow = -1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Athletics = -1 } },
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Riding = -1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Shield = -1 } },
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { WeaponMaster = -1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { HorseArchery = -1 } },
+                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Shield = -1 } },
                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { OneHanded = -1 } },
                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { TwoHanded = -1 } },
                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Polearm = -1 } },
@@ -381,15 +381,15 @@ namespace Crpg.Application.UTest.Characters
              {
                  new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Agility = 1 } },
                  new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Strength = 1 } },
-                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Athletics = 1 } },
-                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { HorseArchery = 1 } },
                  new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { IronFlesh = 1 } },
-                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerDraw = 1 } },
                  new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerStrike = 1 } },
+                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerDraw = 1 } },
                  new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerThrow = 1 } },
                  new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Riding = 1 } },
-                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Shield = 1 } },
+                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Athletics = 1 } },
                  new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { WeaponMaster = 1 } },
+                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { HorseArchery = 1 } },
+                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Shield = 1 } },
                  new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { OneHanded = 1 } },
                  new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { TwoHanded = 1 } },
                  new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Polearm = 1 } },
