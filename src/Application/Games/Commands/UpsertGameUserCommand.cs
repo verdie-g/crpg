@@ -131,7 +131,7 @@ namespace Crpg.Application.Games.Commands
                 if (user == null)
                 {
                     user = new User { SteamId = request.SteamId };
-                    UserHelper.SetDefaultValuesForNewUser(user);
+                    UserHelper.SetDefaultValuesForUser(user);
                     await AddNewCharacterToUser(user, request.CharacterName, cancellationToken);
                     _db.Users.Add(user);
                     _events.Raise(EventLevel.Info, $"{request.CharacterName} joined ({request.SteamId})",
@@ -158,7 +158,7 @@ namespace Crpg.Application.Games.Commands
             private async Task AddNewCharacterToUser(User user, string name, CancellationToken cancellationToken)
             {
                 var c = new Character { Name = name };
-                CharacterHelper.SetDefaultValuesForNewCharacter(c);
+                CharacterHelper.SetDefaultValuesForCharacter(c);
 
                 var items = DefaultItemsSets[ThreadSafeRandom.Instance.Value!.Next(DefaultItemsSets.Length - 1)];
                 var itemsIdByMdId = await _db.Items

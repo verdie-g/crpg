@@ -18,7 +18,56 @@ namespace Crpg.Application.UTest.Characters
                 Experience = 42424424,
                 Level = 31,
                 ExperienceMultiplier = 1.1f,
-                User = new User(),
+                Items = new CharacterItems
+                {
+                    HeadItem = new Item(),
+                    CapeItem = new Item(),
+                    BodyItem = new Item(),
+                    HandItem = new Item(),
+                    LegItem = new Item(),
+                    HorseHarnessItem = new Item(),
+                    HorseItem = new Item(),
+                    Weapon1Item = new Item(),
+                    Weapon2Item = new Item(),
+                    Weapon3Item = new Item(),
+                    Weapon4Item = new Item(),
+                },
+                Statistics = new CharacterStatistics
+                {
+                    Attributes = new CharacterAttributes
+                    {
+                        Points = 1,
+                        Strength = 18,
+                        Agility = 24,
+                    },
+                    Skills = new CharacterSkills
+                    {
+                        Points = 2,
+                        IronFlesh = 1,
+                        PowerStrike = 2,
+                        PowerDraw = 3,
+                        PowerThrow = 4,
+                        Athletics = 5,
+                        Riding = 6,
+                        WeaponMaster = 7,
+                        HorseArchery = 8,
+                        Shield = 9,
+                    },
+                    WeaponProficiencies = new CharacterWeaponProficiencies
+                    {
+                        Points = 1,
+                        OneHanded = 2,
+                        TwoHanded = 3,
+                        Polearm = 4,
+                        Bow = 5,
+                        Throwing = 6,
+                        Crossbow = 7,
+                    },
+                },
+                User = new User
+                {
+                    LoomPoints = 1,
+                }
             });
             await Db.SaveChangesAsync();
 
@@ -30,7 +79,42 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(1, character.Entity.Level);
             Assert.AreEqual(0, character.Entity.Experience);
             Assert.AreEqual(1.15f, character.Entity.ExperienceMultiplier);
-            Assert.AreEqual(1, character.Entity.User!.LoomPoints);
+            Assert.AreEqual(2, character.Entity.User!.LoomPoints);
+
+            Assert.AreEqual(0, character.Entity.Statistics.Attributes.Points);
+            Assert.AreEqual(3, character.Entity.Statistics.Attributes.Strength);
+            Assert.AreEqual(3, character.Entity.Statistics.Attributes.Agility);
+
+            Assert.AreEqual(0, character.Entity.Statistics.Skills.Points);
+            Assert.AreEqual(0, character.Entity.Statistics.Skills.IronFlesh);
+            Assert.AreEqual(0, character.Entity.Statistics.Skills.PowerStrike);
+            Assert.AreEqual(0, character.Entity.Statistics.Skills.PowerDraw);
+            Assert.AreEqual(0, character.Entity.Statistics.Skills.PowerThrow);
+            Assert.AreEqual(0, character.Entity.Statistics.Skills.Athletics);
+            Assert.AreEqual(0, character.Entity.Statistics.Skills.Riding);
+            Assert.AreEqual(0, character.Entity.Statistics.Skills.WeaponMaster);
+            Assert.AreEqual(0, character.Entity.Statistics.Skills.HorseArchery);
+            Assert.AreEqual(0, character.Entity.Statistics.Skills.Shield);
+
+            Assert.AreEqual(57, character.Entity.Statistics.WeaponProficiencies.Points);
+            Assert.AreEqual(0, character.Entity.Statistics.WeaponProficiencies.OneHanded);
+            Assert.AreEqual(0, character.Entity.Statistics.WeaponProficiencies.TwoHanded);
+            Assert.AreEqual(0, character.Entity.Statistics.WeaponProficiencies.Polearm);
+            Assert.AreEqual(0, character.Entity.Statistics.WeaponProficiencies.Bow);
+            Assert.AreEqual(0, character.Entity.Statistics.WeaponProficiencies.Throwing);
+            Assert.AreEqual(0, character.Entity.Statistics.WeaponProficiencies.Crossbow);
+
+            Assert.Null(character.Entity.Items.HeadItem);
+            Assert.Null(character.Entity.Items.CapeItem);
+            Assert.Null(character.Entity.Items.BodyItem);
+            Assert.Null(character.Entity.Items.HandItem);
+            Assert.Null(character.Entity.Items.LegItem);
+            Assert.Null(character.Entity.Items.HorseHarnessItem);
+            Assert.Null(character.Entity.Items.HorseItem);
+            Assert.Null(character.Entity.Items.Weapon1Item);
+            Assert.Null(character.Entity.Items.Weapon2Item);
+            Assert.Null(character.Entity.Items.Weapon3Item);
+            Assert.Null(character.Entity.Items.Weapon4Item);
         }
 
         [Test]

@@ -7,7 +7,7 @@ namespace Crpg.Application.Common.Helpers
         private const int DefaultGold = 300;
         private const Role DefaultRole = Role.User;
 
-        public static void SetDefaultValuesForNewUser(User user)
+        public static void SetDefaultValuesForUser(User user)
         {
             user.Gold = DefaultGold;
             user.Role = DefaultRole;
