@@ -33,7 +33,7 @@ import CharacterComponent from '@/components/CharacterComponent.vue';
   components: { CharacterComponent },
 })
 export default class CharactersComponent extends Vue {
-  selectedCharacterId: number = -1;
+  selectedCharacterId = -1;
 
   get characters() {
     return userModule.characters;

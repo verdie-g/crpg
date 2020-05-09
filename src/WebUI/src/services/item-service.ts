@@ -115,15 +115,15 @@ function getDamageFields(item: Item, primary: boolean): [string, any][] {
 
 function getWeaponFlags(flags: WeaponFlags): string[] {
   return Object.entries<string>(weaponFlagsStr)
-    .filter(([flag, _]) => (flags & flag as any) !== 0)
-    .map(([a, flagStr]) => flagStr);
+    .filter(([flag]) => (flags & flag as any) !== 0)
+    .map(([, flagStr]) => flagStr);
 }
 
 export function getItems(): Promise<Item[]> {
   return get('/items');
 }
 
-export function getItemDescriptor(item: Item) : ItemDescriptor {
+export function getItemDescriptor(item: Item): ItemDescriptor {
   const props: ItemDescriptor = {
     fields: [
       ['Type', itemTypeToStr[item.type]],
@@ -257,6 +257,6 @@ export function getItemDescriptor(item: Item) : ItemDescriptor {
   return props;
 }
 
-export function filterItemsFittingInSlot(items: Item[], slot: ItemSlot) : Item[] {
+export function filterItemsFittingInSlot(items: Item[], slot: ItemSlot): Item[] {
   return items.filter(i => itemTypesBySlot[slot].includes(i.type));
 }

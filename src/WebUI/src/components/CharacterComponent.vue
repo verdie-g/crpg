@@ -105,20 +105,20 @@ import { filterItemsFittingInSlot } from '@/services/item-service';
 import { notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
 
-  @Component({
-    components: { CharacterStatsComponent, ItemProperties },
-  })
+@Component({
+  components: { CharacterStatsComponent, ItemProperties },
+})
 export default class CharacterComponent extends Vue {
     @Prop(Object) readonly character: Character;
 
     // modal stuff
     itemSlot = ItemSlot;
-    isReplaceItemModalActive: boolean = false;
+    isReplaceItemModalActive = false;
     itemToReplace: Item | null = null;
     itemToReplaceSlot: ItemSlot | null = null;
     selectedItem: Item | null = null;
 
-    get fittingOwnedItems() : Item[] {
+    get fittingOwnedItems(): Item[] {
       return this.itemToReplaceSlot === null
         ? []
         : filterItemsFittingInSlot(userModule.ownedItems, this.itemToReplaceSlot)

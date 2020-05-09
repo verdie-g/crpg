@@ -14,7 +14,7 @@ import StatisticConversion from '@/models/statistic-conversion';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
-  isSignedIn: boolean = false;
+  isSignedIn = false;
   user: User | null = null;
   ownedItems: Item[] = [];
   characters: Character[] = [];
@@ -58,12 +58,12 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
-  setCharacterItem({ characterItems, slot, item } : { characterItems: CharacterItems, slot: ItemSlot, item: Item }) {
+  setCharacterItem({ characterItems, slot, item }: { characterItems: CharacterItems; slot: ItemSlot; item: Item }) {
     setCharacterItem(characterItems, slot, item);
   }
 
   @Mutation
-  setCharacterStats({ characterId, stats } : { characterId: number, stats: CharacterStatistics }) {
+  setCharacterStats({ characterId, stats }: { characterId: number; stats: CharacterStatistics }) {
     this.characters.find(c => c.id === characterId)!.statistics = stats;
   }
 
@@ -104,7 +104,7 @@ class UserModule extends VuexModule {
   }
 
   @Action
-  renameCharacter({ character, newName } : { character: Character, newName: string }) {
+  renameCharacter({ character, newName }: { character: Character; newName: string }) {
     this.replaceCharacter({
       ...character,
       name: newName,
@@ -113,7 +113,7 @@ class UserModule extends VuexModule {
   }
 
   @Action
-  replaceItem({ character, slot, item } : { character: Character, slot: ItemSlot, item: Item }) {
+  replaceItem({ character, slot, item }: { character: Character; slot: ItemSlot; item: Item }) {
     const { items } = character;
     this.setCharacterItem({ characterItems: items, slot, item });
     return userService.updateCharacterItems(character.id, {
@@ -139,18 +139,18 @@ class UserModule extends VuexModule {
   }
 
   @Action({ commit: 'setCharacters' })
-  getCharacters() : Promise<Character[]> {
+  getCharacters(): Promise<Character[]> {
     return userService.getCharacters();
   }
 
   @Action
-  updateCharacterStats({ characterId, stats } : { characterId: number, stats: CharacterStatistics }): Promise<CharacterStatistics> {
+  updateCharacterStats({ characterId, stats }: { characterId: number; stats: CharacterStatistics }): Promise<CharacterStatistics> {
     this.setCharacterStats({ characterId, stats });
     return userService.updateCharacterStats(characterId, stats);
   }
 
   @Action
-  convertCharacterStats({ characterId, conversion } : { characterId: number, conversion: StatisticConversion }): Promise<CharacterStatistics> {
+  convertCharacterStats({ characterId, conversion }: { characterId: number; conversion: StatisticConversion }): Promise<CharacterStatistics> {
     if (conversion === StatisticConversion.AttributesToSkills) {
       this.convertAttributeToSkills(characterId);
     } else if (conversion === StatisticConversion.SkillsToAttributes) {

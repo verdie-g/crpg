@@ -185,9 +185,9 @@ type StatKey = AttributeKey | SkillKey | WeaponProficienciesKey;
 
 @Component
 export default class CharacterStatsComponent extends Vue {
-  @Prop(Object) readonly character: Character;
+  @Prop(Object) character: Character;
 
-  updatingStats: boolean = false;
+  updatingStats = false;
   statsDelta: CharacterStatistics = this.createEmptyStatistics();
 
   get statisticConversion() {
@@ -214,7 +214,7 @@ export default class CharacterStatsComponent extends Vue {
   get allCurrentSkillRequirementsSatisfied(): boolean {
     return Object.keys(this.stats.skills)
       .filter(skillKey => skillKey !== 'points')
-      .every(skillKey => this.currentSkillRequirementsSatisfied(<SkillKey>skillKey));
+      .every(skillKey => this.currentSkillRequirementsSatisfied(skillKey as SkillKey));
   }
 
   createEmptyStatistics(): CharacterStatistics {
@@ -300,14 +300,14 @@ export default class CharacterStatsComponent extends Vue {
   statRequirementsSatisfied(statSectionKey: StatSectionKey, statKey: StatKey, stat: number): boolean {
     switch (statSectionKey) {
       case 'skills':
-        return this.skillRequirementsSatisfied(<SkillKey>statKey, stat);
+        return this.skillRequirementsSatisfied(statKey as SkillKey, stat);
       default:
         return true;
     }
   }
 
   currentSkillRequirementsSatisfied(skillKey: SkillKey): boolean {
-    return this.skillRequirementsSatisfied(skillKey, this.stats.skills[skillKey] + this.statsDelta.skills[skillKey])
+    return this.skillRequirementsSatisfied(skillKey, this.stats.skills[skillKey] + this.statsDelta.skills[skillKey]);
   }
 
   skillRequirementsSatisfied(skillKey: SkillKey, skill: number): boolean {
@@ -394,7 +394,7 @@ export default class CharacterStatsComponent extends Vue {
         maxlength: 32,
       },
       trapFocus: true,
-      onConfirm: (newName) => {
+      onConfirm: newName => {
         userModule.renameCharacter({ character: this.character, newName });
         notify('Character renamed');
       },
