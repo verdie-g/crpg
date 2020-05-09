@@ -149,7 +149,7 @@ namespace Crpg.WebApi.Controllers
         [HttpPut("self/characters/{id}/retire")]
         public async Task<ActionResult<CharacterViewModel>> RetireCharacter([FromRoute] int id)
         {
-            return Ok(await Mediator.Send(new RetireCharacterCommand { CharacterId = id }));
+            return Ok(await Mediator.Send(new RetireCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId }));
         }
 
         /// <summary>

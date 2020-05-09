@@ -15,6 +15,7 @@ namespace Crpg.Application.Characters.Commands
     public class RetireCharacterCommand : IRequest<CharacterViewModel>
     {
         public int CharacterId { get; set; }
+        public int UserId { get; set; }
 
         public class Handler : IRequestHandler<RetireCharacterCommand, CharacterViewModel>
         {
@@ -34,7 +35,7 @@ namespace Crpg.Application.Characters.Commands
             {
                 var character = await _db.Characters
                     .Include(c => c.User)
-                    .FirstOrDefaultAsync(c => c.Id == request.CharacterId, cancellationToken);
+                    .FirstOrDefaultAsync(c => c.Id == request.CharacterId && c.UserId == request.UserId, cancellationToken);
                 if (character == null)
                 {
                     throw new NotFoundException(nameof(Character), request.CharacterId);

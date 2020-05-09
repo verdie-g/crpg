@@ -74,6 +74,7 @@ namespace Crpg.Application.UTest.Characters
             await new RetireCharacterCommand.Handler(Db, Mapper).Handle(new RetireCharacterCommand
             {
                 CharacterId = character.Entity.Id,
+                UserId = character.Entity.UserId,
             }, CancellationToken.None);
 
             Assert.AreEqual(1, character.Entity.Level);
@@ -118,12 +119,27 @@ namespace Crpg.Application.UTest.Characters
         }
 
         [Test]
-        public void NotFoundIfCharacterDoesntExist()
+        public void NotFoundIfUserDoesntExist()
         {
             Assert.ThrowsAsync<NotFoundException>(() => new RetireCharacterCommand.Handler(Db, Mapper).Handle(
                 new RetireCharacterCommand
                 {
                     CharacterId = 1,
+                    UserId = 2,
+                }, CancellationToken.None));
+        }
+
+        [Test]
+        public async Task NotFoundIfCharacterDoesntExist()
+        {
+            var user = Db.Users.Add(new User());
+            await Db.SaveChangesAsync();
+
+            Assert.ThrowsAsync<NotFoundException>(() => new RetireCharacterCommand.Handler(Db, Mapper).Handle(
+                new RetireCharacterCommand
+                {
+                    CharacterId = 1,
+                    UserId = user.Entity.Id,
                 }, CancellationToken.None));
         }
 
@@ -141,6 +157,7 @@ namespace Crpg.Application.UTest.Characters
                 new RetireCharacterCommand
                 {
                     CharacterId = character.Entity.Id,
+                    UserId = character.Entity.UserId,
                 }, CancellationToken.None));
         }
     }
