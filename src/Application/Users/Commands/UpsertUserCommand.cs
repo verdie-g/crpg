@@ -66,7 +66,7 @@ namespace Crpg.Application.Users.Commands
 
                 if (_db.Entry(user).State == EntityState.Detached)
                 {
-                    UserHelper.SetDefaultValuesForNewUser(user);
+                    UserHelper.SetDefaultValuesForUser(user);
                     _db.Users.Add(user);
                     _events.Raise(EventLevel.Info, $"{request.UserName} joined ({request.SteamId})", string.Empty, "new_user");
                 }
