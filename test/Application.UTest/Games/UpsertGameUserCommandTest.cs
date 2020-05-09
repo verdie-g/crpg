@@ -121,6 +121,16 @@ namespace Crpg.Application.UTest.Games
                     Weapon2Item = new Item { MbId = "weapon2" },
                     Weapon3Item = new Item { MbId = "weapon3" },
                     Weapon4Item = new Item { MbId = "weapon4" },
+                },
+                Statistics = new CharacterStatistics
+                {
+                    Attributes = new CharacterAttributes
+                    {
+                        Strength = 24,
+                        Agility = 18,
+                    },
+                    Skills = new CharacterSkills { PowerStrike = 8 },
+                    WeaponProficiencies = new CharacterWeaponProficiencies { TwoHanded = 120 },
                 }
             });
             var user = Db.Users.Add(new User
@@ -142,6 +152,7 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(character.Entity.Name, gu.Character.Name);
             Assert.AreEqual(character.Entity.Experience, gu.Character.Experience);
             Assert.AreEqual(character.Entity.Level, gu.Character.Level);
+
             Assert.AreEqual(character.Entity.Items.HeadItem!.MbId, gu.Character.Items.HeadItemMbId);
             Assert.AreEqual(character.Entity.Items.CapeItem!.MbId, gu.Character.Items.CapeItemMbId);
             Assert.AreEqual(character.Entity.Items.BodyItem!.MbId, gu.Character.Items.BodyItemMbId);
@@ -153,6 +164,25 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(character.Entity.Items.Weapon2Item!.MbId, gu.Character.Items.Weapon2ItemMbId);
             Assert.AreEqual(character.Entity.Items.Weapon3Item!.MbId, gu.Character.Items.Weapon3ItemMbId);
             Assert.AreEqual(character.Entity.Items.Weapon4Item!.MbId, gu.Character.Items.Weapon4ItemMbId);
+
+            Assert.AreEqual(character.Entity.Statistics.Attributes.Strength, gu.Character.Statistics.Attributes.Strength);
+            Assert.AreEqual(character.Entity.Statistics.Attributes.Agility, gu.Character.Statistics.Attributes.Agility);
+            Assert.AreEqual(character.Entity.Statistics.Skills.IronFlesh, gu.Character.Statistics.Skills.IronFlesh);
+            Assert.AreEqual(character.Entity.Statistics.Skills.PowerStrike, gu.Character.Statistics.Skills.PowerStrike);
+            Assert.AreEqual(character.Entity.Statistics.Skills.PowerDraw, gu.Character.Statistics.Skills.PowerDraw);
+            Assert.AreEqual(character.Entity.Statistics.Skills.PowerThrow, gu.Character.Statistics.Skills.PowerThrow);
+            Assert.AreEqual(character.Entity.Statistics.Skills.Athletics, gu.Character.Statistics.Skills.Athletics);
+            Assert.AreEqual(character.Entity.Statistics.Skills.Riding, gu.Character.Statistics.Skills.Riding);
+            Assert.AreEqual(character.Entity.Statistics.Skills.WeaponMaster, gu.Character.Statistics.Skills.WeaponMaster);
+            Assert.AreEqual(character.Entity.Statistics.Skills.HorseArchery, gu.Character.Statistics.Skills.HorseArchery);
+            Assert.AreEqual(character.Entity.Statistics.Skills.Riding, gu.Character.Statistics.Skills.Riding);
+            Assert.AreEqual(character.Entity.Statistics.WeaponProficiencies.OneHanded, gu.Character.Statistics.WeaponProficiencies.OneHanded);
+            Assert.AreEqual(character.Entity.Statistics.WeaponProficiencies.TwoHanded, gu.Character.Statistics.WeaponProficiencies.TwoHanded);
+            Assert.AreEqual(character.Entity.Statistics.WeaponProficiencies.Polearm, gu.Character.Statistics.WeaponProficiencies.Polearm);
+            Assert.AreEqual(character.Entity.Statistics.WeaponProficiencies.Bow, gu.Character.Statistics.WeaponProficiencies.Bow);
+            Assert.AreEqual(character.Entity.Statistics.WeaponProficiencies.Throwing, gu.Character.Statistics.WeaponProficiencies.Throwing);
+            Assert.AreEqual(character.Entity.Statistics.WeaponProficiencies.Crossbow, gu.Character.Statistics.WeaponProficiencies.Crossbow);
+
             Assert.IsNull(gu.Ban);
         }
 
@@ -205,8 +235,11 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual("toto", gu.Character.Name);
             Assert.AreEqual(0, gu.Character.Experience);
             Assert.AreEqual(1, gu.Character.Level);
+
             Assert.AreEqual(3, gu.Character.Statistics.Attributes.Strength);
             Assert.AreEqual(3, gu.Character.Statistics.Attributes.Agility);
+            Assert.AreEqual(57, gu.Character.Statistics.WeaponProficiencies.Points);
+
             Assert.NotNull(gu.Character.Items.HeadItemMbId);
             Assert.NotNull(gu.Character.Items.BodyItemMbId);
             Assert.NotNull(gu.Character.Items.LegItemMbId);
