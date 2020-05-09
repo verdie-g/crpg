@@ -20,11 +20,14 @@ namespace Crpg.Application.Characters.Commands
 
         public class Validator : AbstractValidator<UpdateCharacterCommand>
         {
+            private const int MinimumCharacterNameLength = 2;
+            private const int MaximumCharacterNameLength = 32;
+
             public Validator()
             {
                 RuleFor(c => c.Name)
-                    .MinimumLength(Constants.MinimumCharacterNameLength)
-                    .MaximumLength(Constants.MaximumCharacterNameLength);
+                    .MinimumLength(MinimumCharacterNameLength)
+                    .MaximumLength(MaximumCharacterNameLength);
             }
         }
 

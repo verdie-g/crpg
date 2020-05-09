@@ -16,6 +16,8 @@ namespace Crpg.Application.Items.Commands
 
         public class Handler : IRequestHandler<SellItemCommand>
         {
+            private const float SellItemRatio = 0.66f;
+
             private readonly ICrpgDbContext _db;
 
             public Handler(ICrpgDbContext db)
@@ -35,7 +37,7 @@ namespace Crpg.Application.Items.Commands
                     throw new NotFoundException(nameof(UserItem), request.UserId, request.ItemId);
                 }
 
-                userItem.User!.Gold += (int)(userItem.Item!.Value * Constants.SellItemRatio);
+                userItem.User!.Gold += (int)(userItem.Item!.Value * SellItemRatio);
                 _db.UserItems.Remove(userItem);
                 foreach (var character in userItem.User.Characters)
                 {
