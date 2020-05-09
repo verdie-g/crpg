@@ -68,22 +68,6 @@ namespace Crpg.WebApi.Controllers
         }
 
         /// <summary>
-        /// Creates a new character for the current user.
-        /// </summary>
-        /// <param name="req">The character to create.</param>
-        /// <returns>The created character.</returns>
-        /// <response code="201">Created.</response>
-        /// <response code="400">Bad Request.</response>
-        [HttpPost("self/characters")]
-        [ProducesResponseType((int)HttpStatusCode.Created)]
-        public async Task<ActionResult<CharacterViewModel>> CreateCharacter([FromBody] CreateCharacterCommand req)
-        {
-            req.UserId = CurrentUser.UserId;
-            var character = await Mediator.Send(req);
-            return CreatedAtAction(nameof(GetUserCharacter), new { id = character.Id }, character);
-        }
-
-        /// <summary>
         /// Updates a character for the current user.
         /// </summary>
         /// <param name="id">Character id.</param>
