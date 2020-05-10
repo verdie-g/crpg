@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Xml;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
@@ -64,7 +65,7 @@ namespace Crpg.DumpItemsMod
                 crpgItem.ChargeDamage = mbItem.HorseComponent.ChargeDamage;
                 crpgItem.Maneuver = mbItem.HorseComponent.Maneuver;
                 crpgItem.Speed = mbItem.HorseComponent.Speed;
-                crpgItem.HitPoints = 200 + mbItem.HorseComponent.HitPoints + mbItem.HorseComponent.HitPointBonus;
+                crpgItem.HitPoints = mbItem.HorseComponent.HitPoints + mbItem.HorseComponent.HitPointBonus;
             }
 
             if (mbItem.WeaponComponent != null)
@@ -147,6 +148,7 @@ namespace Crpg.DumpItemsMod
         {
             var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
             game.Initialize();
+            SetItemValueModel(game.BasicModels, new DefaultItemValueModel());
 
             var itemsDoc = new XmlDocument();
             using (var r = XmlReader.Create(path, new XmlReaderSettings { IgnoreComments = true }))
@@ -187,6 +189,14 @@ namespace Crpg.DumpItemsMod
                 TableauCacheManager.Current.BeginCreateItemTexture(mbItem, texture =>
                     texture.SaveToFile(Path.Combine(outputPath, mbItem.StringId + ".png")));
             }
+        }
+
+        private static void SetItemValueModel(BasicGameModels gameModels, ItemValueModel gm)
+        {
+            gameModels
+                .GetType()
+                .GetProperty(nameof(gameModels.ItemValueModel), BindingFlags.Instance | BindingFlags.Public)
+                .SetValue(gameModels, gm);
         }
     }
 }

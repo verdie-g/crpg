@@ -11,12 +11,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DatadogStatsD" Version="0.1.2" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" />
     <AdditionalFiles Include="../stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Files/items.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DatadogStatsD" Version="0.1.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.3" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.3" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.3" />
