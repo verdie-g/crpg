@@ -62,7 +62,7 @@ namespace Crpg.WebApi.Controllers
         /// </summary>
         /// <response code="200">Ok.</response>
         [HttpGet("self/characters")]
-        public async Task<ActionResult<IReadOnlyList<CharacterViewModel>>> GetUserCharactersList()
+        public async Task<ActionResult<IList<CharacterViewModel>>> GetUserCharactersList()
         {
             return Ok(await Mediator.Send(new GetUserCharactersListQuery { UserId = CurrentUser.UserId }));
         }
@@ -183,7 +183,7 @@ namespace Crpg.WebApi.Controllers
         /// Gets owned items.
         /// </summary>
         [HttpGet("self/items")]
-        public async Task<ActionResult<IReadOnlyList<ItemViewModel>>> GetOwnedItems()
+        public async Task<ActionResult<IList<ItemViewModel>>> GetOwnedItems()
         {
             var query = new GetUserItemsQuery { UserId = CurrentUser.UserId };
             return Ok(await Mediator.Send(query));

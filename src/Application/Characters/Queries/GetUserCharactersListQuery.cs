@@ -12,11 +12,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries
 {
-    public class GetUserCharactersListQuery : IRequest<IReadOnlyList<CharacterViewModel>>
+    public class GetUserCharactersListQuery : IRequest<IList<CharacterViewModel>>
     {
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<GetUserCharactersListQuery, IReadOnlyList<CharacterViewModel>>
+        public class Handler : IRequestHandler<GetUserCharactersListQuery, IList<CharacterViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -27,7 +27,7 @@ namespace Crpg.Application.Characters.Queries
                 _mapper = mapper;
             }
 
-            public async Task<IReadOnlyList<CharacterViewModel>> Handle(GetUserCharactersListQuery request, CancellationToken cancellationToken)
+            public async Task<IList<CharacterViewModel>> Handle(GetUserCharactersListQuery request, CancellationToken cancellationToken)
             {
                 var characters = await _db.Characters
                     .Include(c => c.Items.HeadItem)
@@ -45,7 +45,7 @@ namespace Crpg.Application.Characters.Queries
                     .ToListAsync(cancellationToken);
 
                 // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729
-                return _mapper.Map<IReadOnlyList<CharacterViewModel>>(characters);
+                return _mapper.Map<IList<CharacterViewModel>>(characters);
             }
         }
     }

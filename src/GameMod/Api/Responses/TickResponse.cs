@@ -8,7 +8,7 @@ namespace Crpg.GameMod.Api.Responses
     /// </summary>
     public class TickResponse
     {
-        public IReadOnlyList<TickUserResponse> Users { get; set; } = Array.Empty<TickUserResponse>();
+        public IList<TickUserResponse> Users { get; set; } = Array.Empty<TickUserResponse>();
     }
 
     /// <summary>

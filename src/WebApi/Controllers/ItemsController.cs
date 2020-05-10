@@ -29,7 +29,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Ok.</response>
         [HttpGet]
         [ResponseCache(Duration = 60 * 60 * 6)] // 6 hours
-        public async Task<ActionResult<IReadOnlyList<ItemViewModel>>> GetItemsList()
+        public async Task<ActionResult<IList<ItemViewModel>>> GetItemsList()
         {
             return Ok(await Mediator.Send(new GetItemsListQuery()));
         }

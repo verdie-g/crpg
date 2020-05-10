@@ -8,7 +8,7 @@ namespace Crpg.GameMod.Api.Requests
     /// </summary>
     public class TickRequest
     {
-        public IReadOnlyList<UserTick> Users { get; set; } = Array.Empty<UserTick>();
+        public IList<UserTick> Users { get; set; } = Array.Empty<UserTick>();
     }
 
     /// <summary>

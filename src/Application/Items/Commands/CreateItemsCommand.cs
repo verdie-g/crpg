@@ -12,7 +12,7 @@ namespace Crpg.Application.Items.Commands
 {
     public class CreateItemsCommand : IRequest
     {
-        public IReadOnlyList<ItemCreation> Items { get; set; } = Array.Empty<ItemCreation>();
+        public IList<ItemCreation> Items { get; set; } = Array.Empty<ItemCreation>();
 
         public class Handler : IRequestHandler<CreateItemsCommand>
         {

@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Queries
 {
-    public class GetItemsListQuery : IRequest<IReadOnlyList<ItemViewModel>>
+    public class GetItemsListQuery : IRequest<IList<ItemViewModel>>
     {
-        public class Handler : IRequestHandler<GetItemsListQuery, IReadOnlyList<ItemViewModel>>
+        public class Handler : IRequestHandler<GetItemsListQuery, IList<ItemViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ namespace Crpg.Application.Items.Queries
                 _mapper = mapper;
             }
 
-            public async Task<IReadOnlyList<ItemViewModel>> Handle(GetItemsListQuery request, CancellationToken cancellationToken)
+            public async Task<IList<ItemViewModel>> Handle(GetItemsListQuery request, CancellationToken cancellationToken)
             {
                 return await _db.Items
                     .OrderBy(i => i.Value)
