@@ -13,7 +13,7 @@ namespace Crpg.Application.Games.Commands
 {
     public class TickCommand : IRequest<TickResponse>
     {
-        public IReadOnlyList<UserTick> Users { get; set; } = Array.Empty<UserTick>();
+        public IList<UserTick> Users { get; set; } = Array.Empty<UserTick>();
 
         public class Handler : IRequestHandler<TickCommand, TickResponse>
         {

@@ -11,11 +11,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Queries
 {
-    public class GetUserItemsQuery : IRequest<IReadOnlyList<ItemViewModel>>
+    public class GetUserItemsQuery : IRequest<IList<ItemViewModel>>
     {
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<GetUserItemsQuery, IReadOnlyList<ItemViewModel>>
+        public class Handler : IRequestHandler<GetUserItemsQuery, IList<ItemViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -26,7 +26,7 @@ namespace Crpg.Application.Items.Queries
                 _mapper = mapper;
             }
 
-            public async Task<IReadOnlyList<ItemViewModel>> Handle(GetUserItemsQuery request, CancellationToken cancellationToken)
+            public async Task<IList<ItemViewModel>> Handle(GetUserItemsQuery request, CancellationToken cancellationToken)
             {
                 return await _db.UserItems
                     .Where(ui => ui.UserId == request.UserId)
