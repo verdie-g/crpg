@@ -11,11 +11,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Games.Commands
 {
-    public class TickCommand : IRequest<TickResponse>
+    public class RewardCommand : IRequest<RewardResponse>
     {
-        public IList<UserTick> Users { get; set; } = Array.Empty<UserTick>();
+        public IList<UserReward> Users { get; set; } = Array.Empty<UserReward>();
 
-        public class Handler : IRequestHandler<TickCommand, TickResponse>
+        public class Handler : IRequestHandler<RewardCommand, RewardResponse>
         {
             private readonly ICrpgDbContext _db;
 
@@ -24,30 +24,30 @@ namespace Crpg.Application.Games.Commands
                 _db = db;
             }
 
-            public async Task<TickResponse> Handle(TickCommand request, CancellationToken cancellationToken)
+            public async Task<RewardResponse> Handle(RewardCommand request, CancellationToken cancellationToken)
             {
-                var tickByCharacterId = request.Users.ToDictionary(
+                var rewardByCharacterId = request.Users.ToDictionary(
                     u => u.CharacterId,
                     u => u);
 
                 var dbCharacters = await _db.Characters
-                    .Where(c => tickByCharacterId.ContainsKey(c.Id))
+                    .Where(c => rewardByCharacterId.ContainsKey(c.Id))
                     .Include(c => c.User)
                     .ToArrayAsync(cancellationToken);
 
-                var tickUserResponses = new List<TickUserResponse>();
+                var userRewardResponses = new List<UserRewardResponse>();
                 foreach (var character in dbCharacters)
                 {
-                    var tick = tickByCharacterId[character.Id];
-                    character.User!.Gold += tick.GoldGain;
-                    character.Experience += (int)(tick.ExperienceGain * character.ExperienceMultiplier);
+                    var reward = rewardByCharacterId[character.Id];
+                    character.User!.Gold += reward.GoldGain;
+                    character.Experience += (int)(reward.ExperienceGain * character.ExperienceMultiplier);
                     int newLevel = ExperienceTable.GetLevelForExperience(character.Experience);
                     if (character.Level != newLevel) // if user leveled up
                     {
                         CharacterHelper.LevelUp(character, newLevel);
                     }
 
-                    tickUserResponses.Add(new TickUserResponse
+                    userRewardResponses.Add(new UserRewardResponse
                     {
                         UserId = character.UserId,
                         Level = character.Level,
@@ -59,7 +59,7 @@ namespace Crpg.Application.Games.Commands
 
                 await _db.SaveChangesAsync(cancellationToken);
 
-                return new TickResponse { Users = tickUserResponses };
+                return new RewardResponse { Users = userRewardResponses };
             }
         }
     }

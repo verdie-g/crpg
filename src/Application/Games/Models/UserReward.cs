@@ -1,6 +1,6 @@
 namespace Crpg.Application.Games.Models
 {
-    public class UserTick
+    public class UserReward
     {
         public int CharacterId { get; set; }
         public int ExperienceGain { get; set; }

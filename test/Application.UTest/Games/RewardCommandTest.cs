@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Games
 {
-    public class TickCommandTest : TestBase
+    public class RewardCommandTest : TestBase
     {
         [Test]
         public async Task Basic()
@@ -18,16 +18,16 @@ namespace Crpg.Application.UTest.Games
             Db.AddRange(c1, c2);
             await Db.SaveChangesAsync();
 
-            var cmd = new TickCommand
+            var cmd = new RewardCommand
             {
                 Users = new[]
                 {
-                    new UserTick { CharacterId = c1.Id, ExperienceGain = 200, GoldGain = 50 },
-                    new UserTick { CharacterId = c2.Id, ExperienceGain = 3000, GoldGain = 100 },
+                    new UserReward { CharacterId = c1.Id, ExperienceGain = 200, GoldGain = 50 },
+                    new UserReward { CharacterId = c2.Id, ExperienceGain = 3000, GoldGain = 100 },
                 }
             };
 
-            var res = await new TickCommand.Handler(Db).Handle(cmd, CancellationToken.None);
+            var res = await new RewardCommand.Handler(Db).Handle(cmd, CancellationToken.None);
             Assert.NotNull(res.Users);
             Assert.AreEqual(2, res.Users.Count);
             Assert.AreEqual(c1.UserId, res.Users[0].UserId);
@@ -51,21 +51,21 @@ namespace Crpg.Application.UTest.Games
         }
 
         [Test]
-        public async Task PassTwoLevelInOneTick()
+        public async Task PassTwoLevelInOneReward()
         {
             var c = new Character { Experience = 0, Level = 1, ExperienceMultiplier = 1f, User = new User() };
             Db.Add(c);
             await Db.SaveChangesAsync();
 
-            var cmd = new TickCommand
+            var cmd = new RewardCommand
             {
                 Users = new[]
                 {
-                    new UserTick { CharacterId = c.Id, ExperienceGain = 20000, GoldGain = 50 },
+                    new UserReward { CharacterId = c.Id, ExperienceGain = 20000, GoldGain = 50 },
                 }
             };
 
-            var res = await new TickCommand.Handler(Db).Handle(cmd, CancellationToken.None);
+            var res = await new RewardCommand.Handler(Db).Handle(cmd, CancellationToken.None);
             Assert.NotNull(res.Users);
             Assert.AreEqual(1, res.Users.Count);
             Assert.AreEqual(c.UserId, res.Users[0].UserId);
@@ -79,7 +79,7 @@ namespace Crpg.Application.UTest.Games
         }
 
         [Test]
-        public async Task TickDoesntAffectOtherUserCharacters()
+        public async Task RewardDoesntAffectOtherUserCharacters()
         {
             var user = new User
             {
@@ -92,15 +92,15 @@ namespace Crpg.Application.UTest.Games
             Db.Add(user);
             await Db.SaveChangesAsync();
 
-            var cmd = new TickCommand
+            var cmd = new RewardCommand
             {
                 Users = new[]
                 {
-                    new UserTick { CharacterId = user.Characters[0].Id, ExperienceGain = 200, GoldGain = 50 },
+                    new UserReward { CharacterId = user.Characters[0].Id, ExperienceGain = 200, GoldGain = 50 },
                 }
             };
 
-            var res = await new TickCommand.Handler(Db).Handle(cmd, CancellationToken.None);
+            var res = await new RewardCommand.Handler(Db).Handle(cmd, CancellationToken.None);
             Assert.AreEqual(1, res.Users.Count);
 
             Assert.AreEqual(200, user.Characters[0].Experience);

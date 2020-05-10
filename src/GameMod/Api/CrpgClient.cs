@@ -29,9 +29,9 @@ namespace Crpg.GameMod.Api
             return Put<GetUserRequest, GameUser>("users", req, cancellationToken);
         }
 
-        public Task<TickResponse> Tick(TickRequest req, CancellationToken cancellationToken = default)
+        public Task<RewardResponse> Reward(RewardRequest req, CancellationToken cancellationToken = default)
         {
-            return Post<TickRequest, TickResponse>("ticks", req, cancellationToken);
+            return Post<RewardRequest, RewardResponse>("rewards", req, cancellationToken);
         }
 
         private Task<TResponse> Put<TRequest, TResponse>(string requestUri, TRequest payload, CancellationToken cancellationToken)

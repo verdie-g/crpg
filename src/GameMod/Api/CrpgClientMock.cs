@@ -32,9 +32,9 @@ namespace Crpg.GameMod.Api
             });
         }
 
-        public Task<TickResponse> Tick(TickRequest req, CancellationToken cancellationToken = default)
+        public Task<RewardResponse> Reward(RewardRequest req, CancellationToken cancellationToken = default)
         {
-            return Task.FromResult(new TickResponse { Users = Array.Empty<TickUserResponse>() });
+            return Task.FromResult(new RewardResponse { Users = Array.Empty<UserRewardResponse>() });
         }
     }
 }
