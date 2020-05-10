@@ -35,7 +35,7 @@ namespace Crpg.Application.Games.Commands
                     .Include(c => c.User)
                     .ToArrayAsync(cancellationToken);
 
-                var tickUserResponse = new List<TickUserResponse>();
+                var tickUserResponses = new List<TickUserResponse>();
                 foreach (var character in dbCharacters)
                 {
                     var tick = tickByCharacterId[character.Id];
@@ -45,18 +45,21 @@ namespace Crpg.Application.Games.Commands
                     if (character.Level != newLevel) // if user leveled up
                     {
                         CharacterHelper.LevelUp(character, newLevel);
-                        tickUserResponse.Add(new TickUserResponse
-                        {
-                            UserId = character.UserId,
-                            Level = newLevel,
-                            NextLevelExperience = ExperienceTable.GetExperienceForLevel(newLevel + 1),
-                        });
                     }
+
+                    tickUserResponses.Add(new TickUserResponse
+                    {
+                        UserId = character.UserId,
+                        Level = character.Level,
+                        Experience = character.Experience,
+                        NextLevelExperience = ExperienceTable.GetExperienceForLevel(character.Level + 1),
+                        Gold = character.User.Gold,
+                    });
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
 
-                return new TickResponse { Users = tickUserResponse };
+                return new TickResponse { Users = tickUserResponses };
             }
         }
     }
