@@ -4,7 +4,7 @@ import CharacterItems from '@/models/character-items';
 
 class CharacterItemSlot {
   public getItem: (characterItems: CharacterItems) => Item | null;
-  public setItem: (characterItems: CharacterItems, item: Item) => void;
+  public setItem: (characterItems: CharacterItems, item: Item | null) => void;
 }
 
 const characterItemSlots: Record<ItemSlot, CharacterItemSlot> = {
@@ -58,6 +58,6 @@ export function getCharacterItemFromSlot(characterItems: CharacterItems, slot: I
   return characterItemSlots[slot].getItem(characterItems);
 }
 
-export function setCharacterItem(characterItems: CharacterItems, slot: ItemSlot, item: Item) {
+export function setCharacterItem(characterItems: CharacterItems, slot: ItemSlot, item: Item | null) {
   return characterItemSlots[slot].setItem(characterItems, item);
 }
