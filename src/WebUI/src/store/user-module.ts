@@ -58,7 +58,7 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
-  setCharacterItem({ characterItems, slot, item }: { characterItems: CharacterItems; slot: ItemSlot; item: Item }) {
+  setCharacterItem({ characterItems, slot, item }: { characterItems: CharacterItems; slot: ItemSlot; item: Item | null }) {
     setCharacterItem(characterItems, slot, item);
   }
 
@@ -113,7 +113,7 @@ class UserModule extends VuexModule {
   }
 
   @Action
-  replaceItem({ character, slot, item }: { character: Character; slot: ItemSlot; item: Item }) {
+  replaceItem({ character, slot, item }: { character: Character; slot: ItemSlot; item: Item | null }) {
     const { items } = character;
     this.setCharacterItem({ characterItems: items, slot, item });
     return userService.updateCharacterItems(character.id, {

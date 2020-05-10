@@ -62,11 +62,12 @@
       <b-button type="is-danger" icon-left="trash" expanded @click="openDeleteCharacterDialog">Delete</b-button>
     </div>
 
-    <b-modal :active.sync="isReplaceItemModalActive" scroll="keep">
+    <b-modal :active.sync="isReplaceItemModalActive" scroll="keep" ref="replaceItemModal">
       <div class="columns is-marginless replace-item-modal">
         <div class="column" v-if="itemToReplace">
           <h3>Replace <strong>{{itemToReplace.name}}</strong></h3>
           <item-properties :item="itemToReplace" />
+          <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
         </div>
         <div class="column owned-items">
           <div v-if="fittingOwnedItems.length" class="columns is-multiline">
@@ -105,6 +106,7 @@ import { getCharacterItemFromSlot } from '@/services/characters-service';
 import { filterItemsFittingInSlot } from '@/services/item-service';
 import { notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
+import {ModalProgrammatic} from 'buefy';
 
 @Component({
   components: { CharacterStatsComponent, ItemProperties },
@@ -181,6 +183,15 @@ export default class CharacterComponent extends Vue {
     }
 
     this.isReplaceItemModalActive = true;
+  }
+
+  unequipItem() {
+    userModule.replaceItem({
+      character: this.character,
+      slot: this.itemToReplaceSlot!,
+      item: null,
+    });
+    (this.$refs.replaceItemModal as any).close();
   }
 
   confirmItemSelection() {
