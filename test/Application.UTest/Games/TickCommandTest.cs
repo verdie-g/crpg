@@ -29,9 +29,11 @@ namespace Crpg.Application.UTest.Games
 
             var res = await new TickCommand.Handler(Db).Handle(cmd, CancellationToken.None);
             Assert.NotNull(res.Users);
-            Assert.AreEqual(1, res.Users.Count); // c2 leveled up
-            Assert.AreEqual(c2.UserId, res.Users[0].UserId);
-            Assert.AreEqual(2, res.Users[0].Level);
+            Assert.AreEqual(2, res.Users.Count);
+            Assert.AreEqual(c1.UserId, res.Users[0].UserId);
+            Assert.AreEqual(1, res.Users[0].Level);
+            Assert.AreEqual(c2.UserId, res.Users[1].UserId);
+            Assert.AreEqual(2, res.Users[1].Level);
 
             Assert.AreEqual(1, c1.Level);
             Assert.AreEqual(209, c1.Experience);
@@ -99,7 +101,7 @@ namespace Crpg.Application.UTest.Games
             };
 
             var res = await new TickCommand.Handler(Db).Handle(cmd, CancellationToken.None);
-            Assert.AreEqual(0, res.Users.Count);
+            Assert.AreEqual(1, res.Users.Count);
 
             Assert.AreEqual(200, user.Characters[0].Experience);
             Assert.AreEqual(0, user.Characters[1].Experience);

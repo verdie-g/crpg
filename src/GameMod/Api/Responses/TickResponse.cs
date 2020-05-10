@@ -12,16 +12,14 @@ namespace Crpg.GameMod.Api.Responses
     }
 
     /// <summary>
-    /// Copy of Crpg.Application.Games.Models.
+    /// Copy of Crpg.Application.Games.Models.TickUserResponse.
     /// </summary>
     public class TickUserResponse
     {
         public int UserId { get; set; }
-
-        /// <summary>
-        /// Increased if the user leveled up of the tick.
-        /// </summary>
         public int Level { get; set; }
+        public int Experience { get; set; }
         public int NextLevelExperience { get; set; }
+        public int Gold { get; set; }
     }
 }
