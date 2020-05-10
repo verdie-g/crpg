@@ -2,9 +2,12 @@
 
     <PropertyGroup>
         <TargetFramework>net472</TargetFramework>
+        <ProcessorArchitecture>AMD64</ProcessorArchitecture> <!-- avoids architecture mismatch warnings -->
         <RootNamespace>Crpg.DumpItemsMod</RootNamespace>
         <AssemblyName>Crpg.DumpItemsMod</AssemblyName>
         <ModuleName>DumpItems</ModuleName>
+        <OutputPath>$(MB_PATH)/Modules/$(ModuleName)/bin/Win64_Shipping_Client</OutputPath> <!-- MB_PATH should be set in your environment variables -->
+        <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
         <CodeAnalysisRuleSet>../stylecop.ruleset</CodeAnalysisRuleSet>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
