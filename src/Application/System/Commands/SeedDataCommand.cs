@@ -98,7 +98,6 @@ namespace Crpg.Application.System.Commands
 
                     dbItem.MbId = item.MbId;
                     dbItem.Name = item.Name;
-                    dbItem.Image = new Uri("https://via.placeholder.com/256x120");
                     dbItem.Type = item.Type;
                     dbItem.Value = item.Value;
                     dbItem.Weight = item.Weight;

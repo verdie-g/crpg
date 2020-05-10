@@ -6,7 +6,7 @@
           <div class="card item-card">
             <div class="card-image">
               <figure class="image">
-                <img :src="item.image" alt="item image" />
+                <img :src="`${publicPath}items/${item.mbId}.png`" alt="item image" />
               </figure>
             </div>
             <div class="card-content content">
@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <b-pagination :total="allItems.length" :current.sync="currentPage" :per-page="itemsPerPage"  order="is-centered" />
+      <b-pagination :total="allItems.length" :current.sync="currentPage" :per-page="itemsPerPage" order="is-centered" />
     </div>
   </section>
 </template>
@@ -43,6 +43,8 @@ import { notify } from '@/services/notifications-service';
   components: { ItemProperties },
 })
 export default class Shop extends Vue {
+  publicPath = process.env.BASE_URL;
+
   // items for which buy request was sent
   buyingItems: Record<number, boolean> = {};
 

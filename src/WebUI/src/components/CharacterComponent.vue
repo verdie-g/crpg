@@ -7,49 +7,49 @@
       <div class="columns item-boxes">
         <div class="column is-narrow gear-column">
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)">
-            <img v-if="character.items.headItem" :src="character.items.headItem.image" alt="Head armor" />
+            <img v-if="character.items.headItem" :src="itemImage(character.items.headItem)" alt="Head armor" />
             <img v-else src="../assets/head-armor.png" alt="Head armor" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Cape)">
-            <img v-if="character.items.capeItem" :src="character.items.capeItem.image" alt="Cape" />
+            <img v-if="character.items.capeItem" :src="itemImage(character.items.capeItem)" alt="Cape" />
             <img v-else src="../assets/cape.png" alt="Cape" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)">
-            <img v-if="character.items.bodyItem" :src="character.items.bodyItem.image" alt="Body armor" />
+            <img v-if="character.items.bodyItem" :src="itemImage(character.items.bodyItem)" alt="Body armor" />
             <img v-else src="../assets/body-armor.png" alt="Body armor" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)">
-            <img v-if="character.items.handItem" :src="character.items.handItem.image" alt="Hand armor" />
+            <img v-if="character.items.handItem" :src="itemImage(character.items.handItem)" alt="Hand armor" />
             <img v-else src="../assets/hand-armor.png" alt="Hand armor" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)">
-            <img v-if="character.items.legItem" :src="character.items.legItem.image" alt="Leg armor" />
+            <img v-if="character.items.legItem" :src="itemImage(character.items.legItem)" alt="Leg armor" />
             <img v-else src="../assets/leg-armor.png" alt="Leg armor" class="item-placeholder" />
           </div>
         </div>
 
         <div class="column is-narrow horse-column">
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.HorseHarness)">
-            <img v-if="character.items.horseHarnessItem" :src="character.items.horseHarnessItem.image" alt="Horse harness" />
+            <img v-if="character.items.horseHarnessItem" :src="itemImage(character.items.horseHarnessItem)" alt="Horse harness" />
             <img v-else src="../assets/horse-harness.png" alt="Horse harness" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Horse)">
-            <img v-if="character.items.horseItem" :src="character.items.horseItem.image" alt="Horse" />
+            <img v-if="character.items.horseItem" :src="itemImage(character.items.horseItem)" alt="Horse" />
           </div>
         </div>
 
         <div class="column is-narrow weapon-column">
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)">
-            <img v-if="character.items.weapon1Item" :src="character.items.weapon1Item.image" alt="First weapon" />
+            <img v-if="character.items.weapon1Item" :src="itemImage(character.items.weapon1Item)" alt="First weapon" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)">
-            <img v-if="character.items.weapon2Item" :src="character.items.weapon2Item.image" alt="Second weapon" />
+            <img v-if="character.items.weapon2Item" :src="itemImage(character.items.weapon2Item)" alt="Second weapon" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)">
-            <img v-if="character.items.weapon3Item" :src="character.items.weapon3Item.image" alt="Third weapon" />
+            <img v-if="character.items.weapon3Item" :src="itemImage(character.items.weapon3Item)" alt="Third weapon" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon4)">
-            <img v-if="character.items.weapon4Item" :src="character.items.weapon4Item.image" alt="Fourth Weapon" />
+            <img v-if="character.items.weapon4Item" :src="itemImage(character.items.weapon4Item)" alt="Fourth Weapon" />
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
             <div class="column is-narrow owned-item" v-for="ownedItem in fittingOwnedItems"
                  v-bind:key="ownedItem.id" @click="selectedItem = ownedItem">
               <figure class="image">
-                <img :src="ownedItem.image" alt="item image" />
+                <img :src="itemImage(ownedItem)" alt="item image" />
               </figure>
               <h4>{{ownedItem.name}}</h4>
               <item-properties :item="ownedItem" />
@@ -110,21 +110,25 @@ import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
   components: { CharacterStatsComponent, ItemProperties },
 })
 export default class CharacterComponent extends Vue {
-    @Prop(Object) readonly character: Character;
+  @Prop(Object) readonly character: Character;
 
-    // modal stuff
-    itemSlot = ItemSlot;
-    isReplaceItemModalActive = false;
-    itemToReplace: Item | null = null;
-    itemToReplaceSlot: ItemSlot | null = null;
-    selectedItem: Item | null = null;
+  // modal stuff
+  itemSlot = ItemSlot;
+  isReplaceItemModalActive = false;
+  itemToReplace: Item | null = null;
+  itemToReplaceSlot: ItemSlot | null = null;
+  selectedItem: Item | null = null;
 
-    get fittingOwnedItems(): Item[] {
-      return this.itemToReplaceSlot === null
-        ? []
-        : filterItemsFittingInSlot(userModule.ownedItems, this.itemToReplaceSlot)
-          .filter(i => this.itemToReplace === null || i.id !== this.itemToReplace.id);
-    }
+  get fittingOwnedItems(): Item[] {
+    return this.itemToReplaceSlot === null
+      ? []
+      : filterItemsFittingInSlot(userModule.ownedItems, this.itemToReplaceSlot)
+        .filter(i => this.itemToReplace === null || i.id !== this.itemToReplace.id);
+  }
+
+  itemImage(item: Item) {
+    return `${process.env.BASE_URL}items/${item.mbId}.png`;
+  }
 
   openRespecializeCharacterDialog() {
     this.$buefy.dialog.confirm({
@@ -141,48 +145,48 @@ export default class CharacterComponent extends Vue {
   }
 
   openRetireCharacterDialog() {
-      this.$buefy.dialog.confirm({
-        title: 'Retiring character',
-        message: `Are you sure you want to retire your character ${this.character.name} lvl. ${this.character.level}? This action cannot be undone.`,
-        confirmText: 'Retire',
-        type: 'is-warning',
-        hasIcon: true,
-        onConfirm: () => {
-          userModule.retireCharacter(this.character);
-          notify('Character retired');
-        },
-      });
+    this.$buefy.dialog.confirm({
+      title: 'Retiring character',
+      message: `Are you sure you want to retire your character ${this.character.name} lvl. ${this.character.level}? This action cannot be undone.`,
+      confirmText: 'Retire',
+      type: 'is-warning',
+      hasIcon: true,
+      onConfirm: () => {
+        userModule.retireCharacter(this.character);
+        notify('Character retired');
+      },
+    });
+  }
+
+  openDeleteCharacterDialog() {
+    this.$buefy.dialog.confirm({
+      title: 'Deleting character',
+      message: `Are you sure you want to delete your character ${this.character.name} lvl. ${this.character.level}? This action cannot be undone.`,
+      confirmText: 'Delete Character',
+      type: 'is-danger',
+      hasIcon: true,
+      onConfirm: () => {
+        userModule.deleteCharacter(this.character);
+        notify('Character deleted');
+      },
+    });
+  }
+
+  openReplaceItemModal(slot: ItemSlot) {
+    this.itemToReplace = getCharacterItemFromSlot(this.character.items, slot);
+    this.itemToReplaceSlot = slot;
+    this.selectedItem = null;
+    if (userModule.ownedItems.length === 0) {
+      userModule.getOwnedItems();
     }
 
-    openDeleteCharacterDialog() {
-      this.$buefy.dialog.confirm({
-        title: 'Deleting character',
-        message: `Are you sure you want to delete your character ${this.character.name} lvl. ${this.character.level}? This action cannot be undone.`,
-        confirmText: 'Delete Character',
-        type: 'is-danger',
-        hasIcon: true,
-        onConfirm: () => {
-          userModule.deleteCharacter(this.character);
-          notify('Character deleted');
-        },
-      });
-    }
+    this.isReplaceItemModalActive = true;
+  }
 
-    openReplaceItemModal(slot: ItemSlot) {
-      this.itemToReplace = getCharacterItemFromSlot(this.character.items, slot);
-      this.itemToReplaceSlot = slot;
-      this.selectedItem = null;
-      if (userModule.ownedItems.length === 0) {
-        userModule.getOwnedItems();
-      }
-
-      this.isReplaceItemModalActive = true;
-    }
-
-    confirmItemSelection() {
-      userModule.replaceItem({ character: this.character, slot: this.itemToReplaceSlot!, item: this.selectedItem! });
-      this.isReplaceItemModalActive = false;
-    }
+  confirmItemSelection() {
+    userModule.replaceItem({ character: this.character, slot: this.itemToReplaceSlot!, item: this.selectedItem! });
+    this.isReplaceItemModalActive = false;
+  }
 }
 </script>
 
