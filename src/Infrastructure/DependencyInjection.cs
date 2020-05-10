@@ -1,7 +1,9 @@
+using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Common.Interfaces.Metrics;
 using Crpg.Common;
 using Crpg.Infrastructure.Events;
+using Crpg.Infrastructure.Files;
 using Crpg.Infrastructure.Metrics.Datadog;
 using Crpg.Infrastructure.Metrics.Debug;
 using DatadogStatsD;
@@ -18,7 +20,8 @@ namespace Crpg.Infrastructure
         {
             return services
                 .AddDatadog(configuration, environment)
-                .AddTransient<IDateTimeOffset, MachineDateTimeOffset>();
+                .AddTransient<IDateTimeOffset, MachineDateTimeOffset>()
+                .AddSingleton<IItemsSource, FileItemsSource>();
         }
 
         private static IServiceCollection AddDatadog(this IServiceCollection services, IConfiguration configuration,
