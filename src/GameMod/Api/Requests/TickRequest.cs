@@ -4,17 +4,17 @@ using System.Collections.Generic;
 namespace Crpg.GameMod.Api.Requests
 {
     /// <summary>
-    /// Copy of Crpg.Application.Games.Commands.TickCommand.
+    /// Copy of Crpg.Application.Games.Commands.RewardCommand.
     /// </summary>
-    public class TickRequest
+    public class RewardRequest
     {
-        public IList<UserTick> Users { get; set; } = Array.Empty<UserTick>();
+        public IList<UserReward> Users { get; set; } = Array.Empty<UserReward>();
     }
 
     /// <summary>
-    /// Copy of Crpg.Application.Games.Models.UserTick.
+    /// Copy of Crpg.Application.Games.Models.UserReward.
     /// </summary>
-    public class UserTick
+    public class UserReward
     {
         public int CharacterId { get; set; }
         public int ExperienceGain { get; set; }

@@ -1,6 +1,6 @@
 namespace Crpg.Application.Games.Models
 {
-    public class TickUserResponse
+    public class UserRewardResponse
     {
         public int UserId { get; set; }
         public int Level { get; set; }

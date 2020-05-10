@@ -10,9 +10,9 @@ namespace Crpg.WebApi.Controllers
     public class GamesController : BaseController
     {
         [HttpPost("ticks")]
-        public async Task<ActionResult<TickResponse>> Tick([FromBody] TickCommand tick)
+        public async Task<ActionResult<RewardResponse>> Reward([FromBody] RewardCommand reward)
         {
-            return Ok(await Mediator.Send(tick));
+            return Ok(await Mediator.Send(reward));
         }
 
         [HttpPut("users")]
