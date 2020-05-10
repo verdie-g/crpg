@@ -46,11 +46,10 @@ namespace Crpg.Application.Characters.Commands
                     throw new BadRequestException($"Level {MinimumRetiringLevel} is required to retire");
                 }
 
-                // need to save the experience multiplier before resetting the character
-                float experienceMultiplier = character.ExperienceMultiplier;
-                CharacterHelper.SetDefaultValuesForCharacter(character);
-                character.ExperienceMultiplier = experienceMultiplier + ExperienceMultiplierIncrease;
-
+                character.Level = CharacterHelper.DefaultLevel;
+                character.Experience = CharacterHelper.DefaultExperience;
+                character.ExperienceMultiplier += ExperienceMultiplierIncrease;
+                CharacterHelper.ResetCharacterStats(character);
                 CharacterHelper.UnequipCharacterItems(character.Items);
 
                 character.User!.LoomPoints += 1;
