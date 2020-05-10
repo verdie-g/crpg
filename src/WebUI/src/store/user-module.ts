@@ -161,8 +161,13 @@ class UserModule extends VuexModule {
   }
 
   @Action({ commit: 'replaceCharacter' })
-  retireCharacter(character: Character): Promise<void> {
+  retireCharacter(character: Character): Promise<Character> {
     return userService.retireCharacter(character.id);
+  }
+
+  @Action({ commit: 'replaceCharacter' })
+  respecializeCharacter(character: Character): Promise<Character> {
+    return userService.respecializeCharacter(character.id);
   }
 
   @Action

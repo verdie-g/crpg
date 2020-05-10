@@ -44,7 +44,7 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(3300, c2.Experience);
             Assert.AreEqual(1, c2.Statistics.Attributes.Points);
             Assert.AreEqual(1, c2.Statistics.Skills.Points);
-            Assert.AreEqual(52, c2.Statistics.WeaponProficiencies.Points);
+            Assert.AreEqual(5, c2.Statistics.WeaponProficiencies.Points);
             Assert.AreEqual(130, c2.User.Gold);
         }
 
@@ -73,7 +73,7 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(20000, c.Experience);
             Assert.AreEqual(2, c.Statistics.Attributes.Points);
             Assert.AreEqual(2, c.Statistics.Skills.Points);
-            Assert.AreEqual(106, c.Statistics.WeaponProficiencies.Points);
+            Assert.AreEqual(10, c.Statistics.WeaponProficiencies.Points);
         }
 
         [Test]

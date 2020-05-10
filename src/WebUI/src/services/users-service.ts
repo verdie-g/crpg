@@ -26,6 +26,10 @@ export function retireCharacter(characterId: number) {
   return put(`/users/self/characters/${characterId}/retire`);
 }
 
+export function respecializeCharacter(characterId: number) {
+  return put(`/users/self/characters/${characterId}/respecialize`);
+}
+
 export function deleteCharacter(characterId: number) {
   return del(`/users/self/characters/${characterId}`);
 }

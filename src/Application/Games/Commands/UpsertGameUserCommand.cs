@@ -157,8 +157,14 @@ namespace Crpg.Application.Games.Commands
 
             private async Task AddNewCharacterToUser(User user, string name, CancellationToken cancellationToken)
             {
-                var c = new Character { Name = name };
-                CharacterHelper.SetDefaultValuesForCharacter(c);
+                var c = new Character
+                {
+                    Name = name,
+                    Level = CharacterHelper.DefaultLevel,
+                    Experience = CharacterHelper.DefaultExperience,
+                    ExperienceMultiplier = CharacterHelper.DefaultExperienceMultiplier,
+                };
+                CharacterHelper.ResetCharacterStats(c);
 
                 var items = DefaultItemsSets[ThreadSafeRandom.Instance.Value!.Next(DefaultItemsSets.Length - 1)];
                 var itemsIdByMdId = await _db.Items

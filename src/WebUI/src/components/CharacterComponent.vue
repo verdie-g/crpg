@@ -54,7 +54,8 @@
         </div>
       </div>
 
-      <b-button type="is-warning" icon-left="angle-double-down" expanded disabled>Respecialize</b-button>
+      <b-button type="is-warning" icon-left="angle-double-down" expanded
+                @click="openRespecializeCharacterDialog">Respecialize</b-button>
       <b-button type="is-warning" icon-left="baby"
                 expanded :disabled="character.level < 31"
                 @click="openRetireCharacterDialog">Retire</b-button>
@@ -125,7 +126,21 @@ export default class CharacterComponent extends Vue {
           .filter(i => this.itemToReplace === null || i.id !== this.itemToReplace.id);
     }
 
-    openRetireCharacterDialog() {
+  openRespecializeCharacterDialog() {
+    this.$buefy.dialog.confirm({
+      title: 'Respecialize character',
+      message: `Are you sure you want to respecialize your character ${this.character.name} lvl. ${this.character.level}? This action cannot be undone.`,
+      confirmText: 'Respecialize Character',
+      type: 'is-danger',
+      hasIcon: true,
+      onConfirm: () => {
+        userModule.respecializeCharacter(this.character);
+        notify('Character respecialized');
+      },
+    });
+  }
+
+  openRetireCharacterDialog() {
       this.$buefy.dialog.confirm({
         title: 'Retiring character',
         message: `Are you sure you want to retire your character ${this.character.name} lvl. ${this.character.level}? This action cannot be undone.`,

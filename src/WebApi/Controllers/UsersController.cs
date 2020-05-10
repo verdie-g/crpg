@@ -153,6 +153,19 @@ namespace Crpg.WebApi.Controllers
         }
 
         /// <summary>
+        /// Respecializes character.
+        /// </summary>
+        /// <param name="id">Character id.</param>
+        /// <response code="200">Respecialized.</response>
+        /// <response code="400">Bad Request.</response>
+        /// <response code="404">Character not found.</response>
+        [HttpPut("self/characters/{id}/respecialize")]
+        public async Task<ActionResult<CharacterViewModel>> RespecializeCharacter([FromRoute] int id)
+        {
+            return Ok(await Mediator.Send(new RespecializeCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId }));
+        }
+
+        /// <summary>
         /// Deletes the specified current user's character.
         /// </summary>
         /// <param name="id">Character id.</param>
