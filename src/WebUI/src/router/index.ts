@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import VueRouter, { NavigationGuard } from 'vue-router';
+import VueRouter, { NavigationGuard, Route } from 'vue-router';
 import { getToken } from '@/services/auth-service';
 import Home from '../views/Home.vue';
 
@@ -11,6 +11,19 @@ const isSignedInGuard: NavigationGuard = (to, from, next) => {
   } else {
     next();
   }
+};
+
+const scrollBehavior = (to: Route, from: Route, savedPosition: any) => {
+  if (savedPosition) {
+    return savedPosition;
+  }
+
+  // check if any matched route config has meta that requires scrolling to top
+  if (to.matched.some(m => m.meta.scrollToTop)) {
+    return window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  return null;
 };
 
 const routes = [
@@ -30,12 +43,14 @@ const routes = [
     name: 'shop',
     component: () => import('../views/Shop.vue'),
     beforeEnter: isSignedInGuard,
+    meta: { scrollToTop: true },
   },
 ];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
+  scrollBehavior,
   routes,
 });
 
