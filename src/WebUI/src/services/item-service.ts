@@ -8,7 +8,7 @@ import { ItemDescriptor } from '@/models/item-descriptor';
 import WeaponFlags from '@/models/weapon-flags';
 import ItemSlot from '@/models/item-slot';
 
-const itemTypeToStr: Record<ItemType, string> = {
+export const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.HeadArmor]: 'Head Armor',
   [ItemType.Cape]: 'Cape',
   [ItemType.BodyArmor]: 'Body Armor',
