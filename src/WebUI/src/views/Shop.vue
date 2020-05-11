@@ -1,46 +1,55 @@
 <template>
   <section class="section">
     <div class="container">
-      <div class="columns is-multiline items" v-if="pageItems">
-        <div class="column is-narrow" v-for="item in pageItems" v-bind:key="item.id">
-          <div class="card item-card">
-            <div class="card-image">
-              <figure class="image">
-                <img :src="`${publicPath}items/${item.mbId}.png`" alt="item image" />
-              </figure>
-            </div>
-            <div class="card-content content">
-              <h4>{{item.name}}</h4>
-              <div class="content">
-                <item-properties :item="item" />
+      <div class="columns">
+
+        <aside class="column is-narrow shop-filters">
+          <shop-filter-form @input="onFilterInput" />
+        </aside>
+
+        <div class="column">
+          <div class="columns is-multiline items" v-if="pageItems">
+            <div class="column is-narrow" v-for="item in pageItems" v-bind:key="item.id">
+              <div class="card item-card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img :src="`${publicPath}items/${item.mbId}.png`" alt="item image" />
+                  </figure>
+                </div>
+                <div class="card-content content">
+                  <h4>{{item.name}}</h4>
+                  <div class="content">
+                    <item-properties :item="item" />
+                  </div>
+                </div>
+                <footer class="card-footer">
+                  <b-button icon-left="coins" expanded :disabled="item.value > gold || ownedItems[item.id]"
+                            :loading="buyingItems[item.id]" @click="buy(item)"
+                            :title="buyButtonTitle(item)">
+                    {{item.value}}
+                  </b-button>
+                </footer>
               </div>
             </div>
-            <footer class="card-footer">
-              <b-button icon-left="coins" expanded :disabled="item.value > gold || ownedItems[item.id]"
-                        :loading="buyingItems[item.id]" @click="buy(item)"
-                        :title="buyButtonTitle(item)">
-                {{item.value}}
-              </b-button>
-            </footer>
           </div>
+
+          <b-pagination :total="filteredItems.length" :current.sync="currentPage" :per-page="itemsPerPage" order="is-centered"
+                        range-before="2" range-after="2" icon-prev="chevron-left">
+            <b-pagination-button slot-scope="props" :page="props.page" :id="`page${props.page.number}`" tag="router-link"
+                                 :to="`/shop?page=${props.page.number}`">{{props.page.number}}</b-pagination-button>
+
+            <b-pagination-button slot="previous" slot-scope="props" :page="props.page" tag="router-link"
+                                 :to="`/shop?page=${props.page.number}`">
+              <b-icon icon="chevron-left" size="is-small" />
+            </b-pagination-button>
+
+            <b-pagination-button slot="next" slot-scope="props" :page="props.page" tag="router-link"
+                                 :to="`/shop?page=${props.page.number}`">
+              <b-icon icon="chevron-right" size="is-small" />
+            </b-pagination-button>
+          </b-pagination>
         </div>
       </div>
-
-      <b-pagination :total="allItems.length" :current.sync="currentPage" :per-page="itemsPerPage" order="is-centered"
-                    range-before="2" range-after="2" icon-prev="chevron-left">
-        <b-pagination-button slot-scope="props" :page="props.page" :id="`page${props.page.number}`" tag="router-link"
-                             :to="`/shop?page=${props.page.number}`">{{props.page.number}}</b-pagination-button>
-
-        <b-pagination-button slot="previous" slot-scope="props" :page="props.page" tag="router-link"
-                             :to="`/shop?page=${props.page.number}`">
-          <b-icon icon="chevron-left" size="is-small" />
-        </b-pagination-button>
-
-        <b-pagination-button slot="next" slot-scope="props" :page="props.page" tag="router-link"
-                             :to="`/shop?page=${props.page.number}`">
-          <b-icon icon="chevron-right" size="is-small" />
-        </b-pagination-button>
-      </b-pagination>
     </div>
   </section>
 </template>
@@ -52,9 +61,11 @@ import userModule from '@/store/user-module';
 import itemModule from '@/store/item-module';
 import Item from '@/models/item';
 import { notify } from '@/services/notifications-service';
+import ShopFiltersForm from '@/components/ShopFiltersForm.vue';
+import ShopFilters from '@/models/ShopFilters';
 
 @Component({
-  components: { ItemProperties },
+  components: { ShopFilterForm: ShopFiltersForm, ItemProperties },
 })
 export default class Shop extends Vue {
   publicPath = process.env.BASE_URL;
@@ -62,8 +73,11 @@ export default class Shop extends Vue {
   // items for which buy request was sent
   buyingItems: Record<number, boolean> = {};
 
-  // pagination
   itemsPerPage = 20;
+  filters: ShopFilters = {
+    types: [],
+    showOwned: false,
+  };
 
   // items owned by the user
   get ownedItems(): Record<number, boolean> {
@@ -76,30 +90,36 @@ export default class Shop extends Vue {
 
   get currentPage() {
     const pageQuery = this.$route.query.page ? parseInt(this.$route.query.page as string, 10) : undefined;
-    if (!this.allItems || !pageQuery || pageQuery > Math.ceil(this.allItems.length / this.itemsPerPage)) {
+    if (!this.filteredItems || !pageQuery || pageQuery > Math.ceil(this.filteredItems.length / this.itemsPerPage)) {
       return 1;
     }
 
     return pageQuery;
   }
 
-  get allItems() {
-    return itemModule.items;
+  get filteredItems() {
+    return itemModule.items.filter(i => (this.filters.types.length === 0 || this.filters.types.includes(i.type))
+      && (this.ownedItems[i.id] === undefined || this.filters.showOwned));
   }
 
   get pageItems() {
-    if (!this.allItems) {
+    if (!this.filteredItems) {
       return [];
     }
 
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    return this.allItems.slice(startIndex, endIndex);
+    return this.filteredItems.slice(startIndex, endIndex);
   }
 
   created() {
     itemModule.getItems();
     userModule.getOwnedItems();
+  }
+
+  onFilterInput(filters: ShopFilters) {
+    this.filters = filters;
+    this.$router.push('/shop?page=1');
   }
 
   async buy(item: Item) {
