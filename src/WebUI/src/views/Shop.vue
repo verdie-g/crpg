@@ -27,7 +27,7 @@
       </div>
 
       <b-pagination :total="allItems.length" :current.sync="currentPage" :per-page="itemsPerPage" order="is-centered"
-                    range-before="2" range-after="2" />
+                    range-before="2" range-after="2" @change="onPageChange" />
     </div>
   </section>
 </template>
@@ -79,6 +79,10 @@ export default class Shop extends Vue {
   created() {
     itemModule.getItems();
     userModule.getOwnedItems();
+  }
+
+  onPageChange() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   async buy(item: Item) {
