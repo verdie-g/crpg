@@ -26,7 +26,8 @@
         </div>
       </div>
 
-      <b-pagination :total="allItems.length" :current.sync="currentPage" :per-page="itemsPerPage" order="is-centered" />
+      <b-pagination :total="allItems.length" :current.sync="currentPage" :per-page="itemsPerPage" order="is-centered"
+                    range-before="2" range-after="2" />
     </div>
   </section>
 </template>
