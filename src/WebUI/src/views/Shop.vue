@@ -27,7 +27,20 @@
       </div>
 
       <b-pagination :total="allItems.length" :current.sync="currentPage" :per-page="itemsPerPage" order="is-centered"
-                    range-before="2" range-after="2" @change="onPageChange" />
+                    range-before="2" range-after="2" icon-prev="chevron-left">
+        <b-pagination-button slot-scope="props" :page="props.page" :id="`page${props.page.number}`" tag="router-link"
+                             :to="`/shop?page=${props.page.number}`">{{props.page.number}}</b-pagination-button>
+
+        <b-pagination-button slot="previous" slot-scope="props" :page="props.page" tag="router-link"
+                             :to="`/shop?page=${props.page.number}`">
+          <b-icon icon="chevron-left" size="is-small" />
+        </b-pagination-button>
+
+        <b-pagination-button slot="next" slot-scope="props" :page="props.page" tag="router-link"
+                             :to="`/shop?page=${props.page.number}`">
+          <b-icon icon="chevron-right" size="is-small" />
+        </b-pagination-button>
+      </b-pagination>
     </div>
   </section>
 </template>
@@ -51,7 +64,6 @@ export default class Shop extends Vue {
 
   // pagination
   itemsPerPage = 20;
-  currentPage = 1;
 
   // items owned by the user
   get ownedItems(): Record<number, boolean> {
@@ -60,6 +72,15 @@ export default class Shop extends Vue {
 
   get gold(): number {
     return userModule.user == null ? 0 : userModule.user.gold;
+  }
+
+  get currentPage() {
+    const pageQuery = this.$route.query.page ? parseInt(this.$route.query.page as string, 10) : undefined;
+    if (!this.allItems || !pageQuery || pageQuery > Math.ceil(this.allItems.length / this.itemsPerPage)) {
+      return 1;
+    }
+
+    return pageQuery;
   }
 
   get allItems() {
@@ -79,10 +100,6 @@ export default class Shop extends Vue {
   created() {
     itemModule.getItems();
     userModule.getOwnedItems();
-  }
-
-  onPageChange() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   async buy(item: Item) {
