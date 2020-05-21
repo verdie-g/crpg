@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Xml;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
@@ -32,12 +33,17 @@ namespace Crpg.DumpItemsMod
         private static void DumpItems()
         {
             var mbItems = DeserializeMbItems("../../Modules/Native/ModuleData/mpitems.xml")
-                .Where(i => i.ItemType != ItemObject.ItemTypeEnum.Shield && i.ItemType != ItemObject.ItemTypeEnum.HandArmor)
+                .OrderBy(i => i.Value)
+                .DistinctBy(i => i.StringId)
                 .ToArray();
             var crpgItems = mbItems.Select(MbToCrpgItem).OrderBy(i => i.Value);
 
             SerializeCrpgItems(crpgItems, OutputPath);
-            GenerateItemsThumbnail(mbItems, OutputPath);
+
+            var mbItemsNoShieldsNoHands = mbItems
+                .Where(i => i.ItemType != ItemObject.ItemTypeEnum.Shield && i.ItemType != ItemObject.ItemTypeEnum.HandArmor)
+                .ToArray();
+            GenerateItemsThumbnail(mbItemsNoShieldsNoHands, OutputPath);
         }
 
         private static Item MbToCrpgItem(ItemObject mbItem)
@@ -53,63 +59,45 @@ namespace Crpg.DumpItemsMod
 
             if (mbItem.ArmorComponent != null)
             {
-                crpgItem.HeadArmor = mbItem.ArmorComponent.HeadArmor;
-                crpgItem.BodyArmor = mbItem.ArmorComponent.BodyArmor;
-                crpgItem.ArmArmor = mbItem.ArmorComponent.ArmArmor;
-                crpgItem.LegArmor = mbItem.ArmorComponent.LegArmor;
+                crpgItem.Armor = new ItemArmorComponent
+                {
+                    HeadArmor = mbItem.ArmorComponent.HeadArmor,
+                    BodyArmor = mbItem.ArmorComponent.BodyArmor,
+                    ArmArmor = mbItem.ArmorComponent.ArmArmor,
+                    LegArmor = mbItem.ArmorComponent.LegArmor,
+                };
             }
 
             if (mbItem.HorseComponent != null)
             {
-                crpgItem.BodyLength = mbItem.HorseComponent.BodyLength;
-                crpgItem.ChargeDamage = mbItem.HorseComponent.ChargeDamage;
-                crpgItem.Maneuver = mbItem.HorseComponent.Maneuver;
-                crpgItem.Speed = mbItem.HorseComponent.Speed;
-                crpgItem.HitPoints = mbItem.HorseComponent.HitPoints + mbItem.HorseComponent.HitPointBonus;
+                crpgItem.Horse = new ItemHorseComponent
+                {
+                    BodyLength = mbItem.HorseComponent.BodyLength,
+                    ChargeDamage = mbItem.HorseComponent.ChargeDamage,
+                    Maneuver = mbItem.HorseComponent.Maneuver,
+                    Speed = mbItem.HorseComponent.Speed,
+                    HitPoints = mbItem.HorseComponent.HitPoints + mbItem.HorseComponent.HitPointBonus,
+                };
             }
 
             if (mbItem.WeaponComponent != null)
             {
-                crpgItem.ThrustDamageType = MbToCrpgDamageType(mbItem.Weapons[0].ThrustDamageType);
-                crpgItem.SwingDamageType = MbToCrpgDamageType(mbItem.Weapons[0].SwingDamageType);
-                crpgItem.Accuracy = mbItem.Weapons[0].Accuracy;
-                crpgItem.MissileSpeed = mbItem.Weapons[0].MissileSpeed;
-                crpgItem.StackAmount = mbItem.Weapons[0].MaxDataValue;
-                crpgItem.WeaponLength = mbItem.Weapons[0].WeaponLength;
-                crpgItem.BodyArmor = mbItem.Weapons[0].BodyArmor;
-
-                if (crpgItem.ThrustDamageType != null)
+                crpgItem.Weapons = mbItem.WeaponComponent.Weapons.Select(w => new ItemWeaponComponent
                 {
-                    crpgItem.PrimaryThrustDamage = mbItem.Weapons[0].ThrustDamage;
-                    crpgItem.PrimaryThrustSpeed = mbItem.Weapons[0].ThrustSpeed;
-                }
-
-                if (crpgItem.SwingDamageType != null)
-                {
-                    crpgItem.PrimarySwingDamage = mbItem.Weapons[0].SwingDamage;
-                    crpgItem.PrimarySwingSpeed = mbItem.Weapons[0].SwingSpeed;
-                }
-
-                crpgItem.PrimaryHandling = mbItem.Weapons[0].Handling;
-                crpgItem.PrimaryWeaponFlags = (ulong?)mbItem.Weapons[0].WeaponFlags;
-
-                if (mbItem.Weapons.Count > 1)
-                {
-                    if (crpgItem.ThrustDamageType != null)
-                    {
-                        crpgItem.SecondaryThrustDamage = mbItem.Weapons[1].ThrustDamage;
-                        crpgItem.SecondaryThrustSpeed = mbItem.Weapons[1].ThrustSpeed;
-                    }
-
-                    if (crpgItem.SwingDamageType != null)
-                    {
-                        crpgItem.SecondarySwingDamage = mbItem.Weapons[1].SwingDamage;
-                        crpgItem.SecondarySwingSpeed = mbItem.Weapons[1].SwingSpeed;
-                    }
-
-                    crpgItem.SecondaryHandling = mbItem.Weapons[1].Handling;
-                    crpgItem.SecondaryWeaponFlags = (ulong?)mbItem.Weapons[1].WeaponFlags;
-                }
+                    Accuracy = w.Accuracy,
+                    MissileSpeed = w.MissileSpeed,
+                    StackAmount = w.MaxDataValue,
+                    Length = w.WeaponLength,
+                    Handling = w.Handling,
+                    BodyArmor = w.BodyArmor,
+                    Flags = (ulong)w.WeaponFlags,
+                    ThrustDamage = w.ThrustDamage,
+                    ThrustDamageType = (int)w.ThrustDamageType,
+                    ThrustSpeed = w.ThrustSpeed,
+                    SwingDamage = w.SwingDamage,
+                    SwingDamageType = (int)w.SwingDamageType,
+                    SwingSpeed = w.SwingSpeed,
+                }).ToArray();
             }
 
             return crpgItem;
@@ -137,11 +125,6 @@ namespace Crpg.DumpItemsMod
                 ItemObject.ItemTypeEnum.Bolts => 15,
                 _ => throw new ArgumentOutOfRangeException(nameof(t), t, null),
             };
-        }
-
-        private static int? MbToCrpgDamageType(DamageTypes t)
-        {
-            return t == DamageTypes.Invalid ? null : (int?)t;
         }
 
         private static IEnumerable<ItemObject> DeserializeMbItems(string path)
@@ -175,6 +158,7 @@ namespace Crpg.DumpItemsMod
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 Formatting = Newtonsoft.Json.Formatting.Indented,
+                ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() },
             });
 
             using var s = new StreamWriter(Path.Combine(outputPath, "mpitems.json"));

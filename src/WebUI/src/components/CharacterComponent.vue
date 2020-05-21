@@ -106,7 +106,6 @@ import { getCharacterItemFromSlot } from '@/services/characters-service';
 import { filterItemsFittingInSlot } from '@/services/item-service';
 import { notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
-import {ModalProgrammatic} from 'buefy';
 
 @Component({
   components: { CharacterStatsComponent, ItemProperties },

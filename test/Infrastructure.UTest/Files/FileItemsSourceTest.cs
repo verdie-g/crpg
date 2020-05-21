@@ -20,7 +20,9 @@ namespace Crpg.Infrastructure.UTest.Files
         {
             var duplicates = new List<string>();
             var mbIds = new HashSet<string>();
-            foreach (var item in await new FileItemsSource().LoadItems())
+
+            var items = await new FileItemsSource().LoadItems();
+            foreach (var item in items)
             {
                 if (mbIds.Contains(item.MbId))
                 {

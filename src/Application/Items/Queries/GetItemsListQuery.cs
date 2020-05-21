@@ -26,10 +26,12 @@ namespace Crpg.Application.Items.Queries
 
             public async Task<IList<ItemViewModel>> Handle(GetItemsListQuery request, CancellationToken cancellationToken)
             {
-                return await _db.Items
+                var items = await _db.Items
                     .OrderBy(i => i.Value)
-                    .ProjectTo<ItemViewModel>(_mapper.ConfigurationProvider)
                     .ToListAsync(cancellationToken);
+
+                // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729
+                return _mapper.Map<IList<ItemViewModel>>(items);
             }
         }
     }

@@ -1,4 +1,7 @@
-﻿namespace Crpg.DumpItemsMod
+﻿using System;
+using System.Collections.Generic;
+
+namespace Crpg.DumpItemsMod
 {
     /// <summary>
     /// Crpg item. Should be indentical to Crpg.Application.Items.Models.ItemCreation.
@@ -13,48 +16,49 @@
         public int Value { get; set; }
 
         /// <summary>
-        /// Integer value of Crpg.Domain.Entities.ItemType.
+        /// Integer value of Crpg.Domain.Entities.DamageType.
         /// </summary>
         public int Type { get; set; }
         public float Weight { get; set; }
 
-        public int? HeadArmor { get; set; }
-        public int? BodyArmor { get; set; }
-        public int? ArmArmor { get; set; }
-        public int? LegArmor { get; set; }
+        public ItemArmorComponent? Armor { get; set; }
+        public ItemHorseComponent? Horse { get; set; }
+        public IList<ItemWeaponComponent>? Weapons { get; set; }
+    }
 
-        public int? BodyLength { get; set; }
-        public int? ChargeDamage { get; set; }
-        public int? Maneuver { get; set; }
-        public int? Speed { get; set; }
-        public int? HitPoints { get; set; }
+    internal class ItemArmorComponent
+    {
+        public int HeadArmor { get; set; }
+        public int BodyArmor { get; set; }
+        public int ArmArmor { get; set; }
+        public int LegArmor { get; set; }
+    }
 
-        /// <summary>
-        /// Integer value of Crpg.Domain.Entities.DamageType.
-        /// </summary>
-        public int? ThrustDamageType { get; set; }
-        public int? SwingDamageType { get; set; }
-        public int? Accuracy { get; set; }
-        public int? MissileSpeed { get; set; }
-        public int? StackAmount { get; set; }
-        public int? WeaponLength { get; set; }
+    internal class ItemHorseComponent
+    {
+        public int BodyLength { get; set; }
+        public int ChargeDamage { get; set; }
+        public int Maneuver { get; set; }
+        public int Speed { get; set; }
+        public int HitPoints { get; set; }
+    }
 
-        public int? PrimaryThrustDamage { get; set; }
-        public int? PrimaryThrustSpeed { get; set; }
-        public int? PrimarySwingDamage { get; set; }
-        public int? PrimarySwingSpeed { get; set; }
-        public int? PrimaryHandling { get; set; }
+    internal class ItemWeaponComponent
+    {
+        public int Accuracy { get; set; }
+        public int MissileSpeed { get; set; }
+        public int StackAmount { get; set; }
+        public int Length { get; set; }
+        public int Handling { get; set; }
+        public int BodyArmor { get; set; }
+        public ulong Flags { get; set; }
 
-        /// <summary>
-        /// Integer value of Crpg.Domain.Entities.WeaponFlags.
-        /// </summary>
-        public ulong? PrimaryWeaponFlags { get; set; }
+        public int ThrustDamage { get; set; }
+        public int ThrustDamageType { get; set; }
+        public int ThrustSpeed { get; set; }
 
-        public int? SecondaryThrustDamage { get; set; }
-        public int? SecondaryThrustSpeed { get; set; }
-        public int? SecondarySwingDamage { get; set; }
-        public int? SecondarySwingSpeed { get; set; }
-        public int? SecondaryHandling { get; set; }
-        public ulong? SecondaryWeaponFlags { get; set; }
+        public int SwingDamage { get; set; }
+        public int SwingDamageType { get; set; }
+        public int SwingSpeed { get; set; }
     }
 }

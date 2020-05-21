@@ -15,7 +15,10 @@ namespace Crpg.Infrastructure.Files
         public async Task<IEnumerable<ItemCreation>> LoadItems()
         {
             await using var file = File.OpenRead(ItemsPath);
-            return await JsonSerializer.DeserializeAsync<IEnumerable<ItemCreation>>(file).AsTask();
+            return await JsonSerializer.DeserializeAsync<IEnumerable<ItemCreation>>(file, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            }).AsTask();
         }
     }
 }
