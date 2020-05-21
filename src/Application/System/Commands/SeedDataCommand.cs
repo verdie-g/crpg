@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common;
+using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Games;
 using Crpg.Application.Games.Commands;
@@ -89,49 +90,15 @@ namespace Crpg.Application.System.Commands
 
                 foreach (ItemCreation item in itemsByMdId.Values)
                 {
-                    bool exists = true;
-                    if (!dbItemsByMdId.TryGetValue(item.MbId, out Item? dbItem))
+                    var newDbItem = ItemHelper.ToItem(item);
+                    if (dbItemsByMdId.TryGetValue(item.MbId, out Item? dbItem))
                     {
-                        dbItem = new Item();
-                        exists = false;
+                        newDbItem.Id = dbItem.Id;
+                        _db.Items.Update(newDbItem);
                     }
-
-                    dbItem.MbId = item.MbId;
-                    dbItem.Name = item.Name;
-                    dbItem.Type = item.Type;
-                    dbItem.Value = item.Value;
-                    dbItem.Weight = item.Weight;
-                    dbItem.HeadArmor = item.HeadArmor;
-                    dbItem.BodyArmor = item.BodyArmor;
-                    dbItem.ArmArmor = item.ArmArmor;
-                    dbItem.LegArmor = item.LegArmor;
-                    dbItem.BodyLength = item.BodyLength;
-                    dbItem.ChargeDamage = item.ChargeDamage;
-                    dbItem.Maneuver = item.Maneuver;
-                    dbItem.Speed = item.Speed;
-                    dbItem.HitPoints = item.HitPoints;
-                    dbItem.ThrustDamageType = item.ThrustDamageType;
-                    dbItem.SwingDamageType = item.SwingDamageType;
-                    dbItem.Accuracy = item.Accuracy;
-                    dbItem.MissileSpeed = item.MissileSpeed;
-                    dbItem.StackAmount = item.StackAmount;
-                    dbItem.WeaponLength = item.WeaponLength;
-                    dbItem.PrimaryThrustDamage = item.PrimaryThrustDamage;
-                    dbItem.PrimaryThrustSpeed = item.PrimaryThrustSpeed;
-                    dbItem.PrimarySwingDamage = item.PrimarySwingDamage;
-                    dbItem.PrimarySwingSpeed = item.PrimarySwingSpeed;
-                    dbItem.PrimaryHandling = item.PrimaryHandling;
-                    dbItem.PrimaryWeaponFlags = item.PrimaryWeaponFlags;
-                    dbItem.SecondaryThrustDamage = item.SecondaryThrustDamage;
-                    dbItem.SecondaryThrustSpeed = item.SecondaryThrustSpeed;
-                    dbItem.SecondarySwingDamage = item.SecondarySwingDamage;
-                    dbItem.SecondarySwingSpeed = item.SecondarySwingSpeed;
-                    dbItem.SecondaryHandling = item.SecondaryHandling;
-                    dbItem.SecondaryWeaponFlags = item.SecondaryWeaponFlags;
-
-                    if (!exists)
+                    else
                     {
-                        _db.Items.Add(dbItem);
+                        _db.Items.Add(newDbItem);
                     }
                 }
 

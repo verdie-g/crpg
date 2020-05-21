@@ -28,12 +28,14 @@ namespace Crpg.Application.Items.Queries
 
             public async Task<IList<ItemViewModel>> Handle(GetUserItemsQuery request, CancellationToken cancellationToken)
             {
-                return await _db.UserItems
+                var ownedItems = await _db.UserItems
                     .Where(ui => ui.UserId == request.UserId)
                     .Include(ui => ui.Item)
                     .Select(ui => ui.Item)
-                    .ProjectTo<ItemViewModel>(_mapper.ConfigurationProvider)
                     .ToListAsync(cancellationToken);
+
+                // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729
+                return _mapper.Map<IList<ItemViewModel>>(ownedItems);
             }
         }
     }

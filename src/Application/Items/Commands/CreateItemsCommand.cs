@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
+using Crpg.Application.Characters.Commands;
+using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
@@ -25,41 +28,7 @@ namespace Crpg.Application.Items.Commands
 
             public async Task<Unit> Handle(CreateItemsCommand request, CancellationToken cancellationToken)
             {
-                _db.Items.AddRange(request.Items.Select(i => new Item
-                {
-                    MbId = i.MbId,
-                    Name = i.Name,
-                    Type = i.Type,
-                    Value = i.Value,
-                    Weight = i.Weight,
-                    HeadArmor = i.HeadArmor,
-                    BodyArmor = i.BodyArmor,
-                    ArmArmor = i.ArmArmor,
-                    LegArmor = i.LegArmor,
-                    BodyLength = i.BodyLength,
-                    ChargeDamage = i.ChargeDamage,
-                    Maneuver = i.Maneuver,
-                    Speed = i.Speed,
-                    HitPoints = i.HitPoints,
-                    ThrustDamageType = i.ThrustDamageType,
-                    SwingDamageType = i.SwingDamageType,
-                    Accuracy = i.Accuracy,
-                    MissileSpeed = i.MissileSpeed,
-                    StackAmount = i.StackAmount,
-                    WeaponLength = i.WeaponLength,
-                    PrimaryThrustDamage = i.PrimaryThrustDamage,
-                    PrimaryThrustSpeed = i.PrimaryThrustSpeed,
-                    PrimarySwingDamage = i.PrimarySwingDamage,
-                    PrimarySwingSpeed = i.PrimarySwingSpeed,
-                    PrimaryHandling = i.PrimaryHandling,
-                    PrimaryWeaponFlags = i.PrimaryWeaponFlags,
-                    SecondaryThrustDamage = i.SecondaryThrustDamage,
-                    SecondaryThrustSpeed = i.SecondaryThrustSpeed,
-                    SecondarySwingDamage = i.SecondarySwingDamage,
-                    SecondarySwingSpeed = i.SecondarySwingSpeed,
-                    SecondaryHandling = i.SecondaryHandling,
-                    SecondaryWeaponFlags = i.SecondaryWeaponFlags,
-                }));
+                _db.Items.AddRange(request.Items.Select(ItemHelper.ToItem));
                 await _db.SaveChangesAsync(cancellationToken);
                 return Unit.Value;
             }

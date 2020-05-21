@@ -19,41 +19,30 @@ namespace Crpg.Domain.Entities
         public float Weight { get; set; }
         // TODO: Looming
 
-        // Armor
-        public int? HeadArmor { get; set; }
-        public int? BodyArmor { get; set; }
-        public int? ArmArmor { get; set; }
-        public int? LegArmor { get; set; }
-
-        // Horse
-        public int? BodyLength { get; set; }
-        public int? ChargeDamage { get; set; }
-        public int? Maneuver { get; set; }
-        public int? Speed { get; set; }
-        public int? HitPoints { get; set; }
-
-        // Weapon
-        public DamageType? ThrustDamageType { get; set; }
-        public DamageType? SwingDamageType { get; set; }
-        public int? Accuracy { get; set; }
-        public int? MissileSpeed { get; set; }
-        public int? StackAmount { get; set; }
-        public int? WeaponLength { get; set; }
-
-        public int? PrimaryThrustDamage { get; set; }
-        public int? PrimaryThrustSpeed { get; set; }
-        public int? PrimarySwingDamage { get; set; }
-        public int? PrimarySwingSpeed { get; set; }
-        public int? PrimaryHandling { get; set; }
-        public WeaponFlags? PrimaryWeaponFlags { get; set; }
-
-        public int? SecondaryThrustDamage { get; set; }
-        public int? SecondaryThrustSpeed { get; set; }
-        public int? SecondarySwingDamage { get; set; }
-        public int? SecondarySwingSpeed { get; set; }
-        public int? SecondaryHandling { get; set; }
-        public WeaponFlags? SecondaryWeaponFlags { get; set; }
+        public ItemArmorComponent? Armor { get; set; }
+        public ItemHorseComponent? Horse { get; set; }
+        public ItemWeaponComponent? PrimaryWeapon { get; set; }
+        public ItemWeaponComponent? SecondaryWeapon { get; set; }
+        public ItemWeaponComponent? TertiaryWeapon { get; set; }
 
         public List<UserItem> UserItems { get; set; } = new List<UserItem>();
+
+        public IEnumerable<ItemWeaponComponent> GetWeapons()
+        {
+            if (PrimaryWeapon != null)
+            {
+                yield return PrimaryWeapon;
+            }
+
+            if (SecondaryWeapon != null)
+            {
+                yield return SecondaryWeapon;
+            }
+
+            if (TertiaryWeapon != null)
+            {
+                yield return TertiaryWeapon;
+            }
+        }
     }
 }
