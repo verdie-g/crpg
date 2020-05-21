@@ -76,7 +76,7 @@ export default class Shop extends Vue {
   itemsPerPage = 20;
   filters: ShopFilters = {
     types: [],
-    showOwned: false,
+    showOwned: true,
   };
 
   // items owned by the user
@@ -119,7 +119,9 @@ export default class Shop extends Vue {
 
   onFilterInput(filters: ShopFilters) {
     this.filters = filters;
-    this.$router.push('/shop?page=1');
+    if (this.currentPage !== 1) {
+      this.$router.push('/shop?page=1');
+    }
   }
 
   async buy(item: Item) {
