@@ -19,6 +19,7 @@ using Crpg.WebApi.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.WebUtilities;
@@ -57,11 +58,7 @@ namespace Crpg.WebApi
                 .Configure<JwtConfiguration>(jwtSection)
                 .AddSingleton<ITokenIssuer, JwtTokenIssuer>()
                 .AddSwaggerGen(ConfigureSwagger)
-                .AddCors(options => options.AddDefaultPolicy(builder => builder
-                    .AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .SetPreflightMaxAge(TimeSpan.FromMinutes(10))))
+                .AddCors(ConfigureCors)
                 .AddControllers();
 
             services.AddAuthentication(options =>
@@ -116,6 +113,16 @@ namespace Crpg.WebApi
                 sb.Append("</tbody></table>");
                 await context.Response.WriteAsync(sb.ToString());
             }));
+        }
+
+        private void ConfigureCors(CorsOptions options)
+        {
+            string allowedOrigins = _environment.IsDevelopment() ? "*" : (_configuration["allowedOrigins"] ?? string.Empty);
+            options.AddDefaultPolicy(builder => builder
+                .WithOrigins(allowedOrigins.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetPreflightMaxAge(TimeSpan.FromMinutes(10)));
         }
 
         private void ConfigureSwagger(SwaggerGenOptions options)
