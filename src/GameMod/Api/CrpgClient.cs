@@ -19,7 +19,7 @@ namespace Crpg.GameMod.Api
 
         public CrpgClient(string jwt)
         {
-            _httpClient = new HttpClient { BaseAddress = new Uri("http://localhost:8000/api/games/") };
+            _httpClient = new HttpClient { BaseAddress = new Uri("http://localhost:8000/games/") };
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
             _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + jwt);
         }
