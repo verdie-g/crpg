@@ -39,11 +39,7 @@ namespace Crpg.DumpItemsMod
             var crpgItems = mbItems.Select(MbToCrpgItem).OrderBy(i => i.Value);
 
             SerializeCrpgItems(crpgItems, OutputPath);
-
-            var mbItemsNoShieldsNoHands = mbItems
-                .Where(i => i.ItemType != ItemObject.ItemTypeEnum.Shield && i.ItemType != ItemObject.ItemTypeEnum.HandArmor)
-                .ToArray();
-            GenerateItemsThumbnail(mbItemsNoShieldsNoHands, OutputPath);
+            GenerateItemsThumbnail(mbItems, OutputPath);
         }
 
         private static Item MbToCrpgItem(ItemObject mbItem)
@@ -169,6 +165,20 @@ namespace Crpg.DumpItemsMod
         {
             foreach (var mbItem in mbItems)
             {
+                    /*
+                Bannerlord generates image thumbnails by loading the 3D texture, spawning a camera and taking a screenshot
+                from it. For each item type, a different camera angle is used. For shields and hand armors, it seems like
+                they are placed on an agent. To do that without spawning an agent, their type is overriden by one that
+                does not need an agent. It was observed that the bow's camera angle and the animal's camera angle were
+                good substitute for respectively shield and hand armor.
+                 */
+                mbItem.Type = mbItem.Type switch
+                {
+                    ItemObject.ItemTypeEnum.Shield => ItemObject.ItemTypeEnum.Bow,
+                    ItemObject.ItemTypeEnum.HandArmor => ItemObject.ItemTypeEnum.Animal,
+                    _ => mbItem.Type
+                };
+
                 // Texture.SaveToFile doesn't accept absolute paths
                 TableauCacheManager.Current.BeginCreateItemTexture(mbItem, texture =>
                     texture.SaveToFile(Path.Combine(outputPath, mbItem.StringId + ".png")));
