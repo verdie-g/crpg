@@ -281,9 +281,11 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
     case ItemType.Arrows:
     case ItemType.Bolts:
       props.fields.push(
+        ['Speed', item.weapons[0].missileSpeed],
+        ['Damage', item.weapons[0].thrustDamage],
+        ['Damage Type', damageTypeToStr[item.weapons[0].thrustDamageType]],
         ['Length', item.weapons[0].length],
         ['Ammo', item.weapons[0].stackAmount],
-        ['Missile Spd.', item.weapons[0].missileSpeed],
       );
       break;
     default:
