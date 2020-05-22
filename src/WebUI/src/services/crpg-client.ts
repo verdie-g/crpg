@@ -2,7 +2,7 @@ import { getToken, challenge } from '@/services/auth-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import { sleep } from '@/utils/promise';
 
-export const API_BASE_URL = 'http://localhost:8000/api';
+export const API_BASE_URL = process.env.VUE_APP_API_BASE_URL;
 
 async function send(method: string, path: string, body?: any): Promise<any> {
   const res = await fetch(API_BASE_URL + path, {

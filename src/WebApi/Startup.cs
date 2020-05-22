@@ -86,7 +86,6 @@ namespace Crpg.WebApi
 
             app
                 .UseCustomExceptionHandler()
-                .UsePathBase("/api")
                 .UseSwagger()
                 .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Crpg API"))
                 .UseRouting()
