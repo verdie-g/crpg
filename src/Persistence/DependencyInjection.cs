@@ -18,7 +18,8 @@ namespace Crpg.Persistence
             else
             {
                 var connectionString = configuration.GetConnectionString("Crpg");
-                services.AddDbContext<CrpgDbContext>(options => options.UseNpgsql(connectionString));
+                services.AddDbContext<CrpgDbContext>(options =>
+                    options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention());
             }
 
             services.AddScoped<ICrpgDbContext>(provider => provider.GetService<CrpgDbContext>());

@@ -17,7 +17,7 @@ namespace Crpg.Application.Users.Commands
 {
     public class UpsertUserCommand : IRequest<UserViewModel>, IMapFrom<SteamPlayer>
     {
-        public ulong SteamId { get; set; }
+        public long SteamId { get; set; }
         public string UserName { get; set; } = string.Empty;
         public Uri Avatar { get; set; } = default!;
         public Uri AvatarMedium { get; set; } = default!;

@@ -5,7 +5,7 @@
     /// </summary>
     public class GetUserRequest
     {
-        public ulong SteamId { get; set; }
+        public long SteamId { get; set; }
         public string CharacterName { get; set; } = default!;
     }
 }

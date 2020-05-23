@@ -7,7 +7,7 @@ namespace Crpg.Application.Users
     public class UserViewModel : IMapFrom<User>
     {
         public int Id { get; set; }
-        public ulong SteamId { get; set; }
+        public long SteamId { get; set; }
         public string UserName { get; set; } = string.Empty;
         public int Gold { get; set; }
         public Role Role { get; set; }
