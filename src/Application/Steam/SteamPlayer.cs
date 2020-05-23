@@ -5,7 +5,7 @@ namespace Crpg.Application.Steam
 {
     public class SteamPlayer
     {
-        public ulong SteamId { get; set; }
+        public long SteamId { get; set; }
         public CommunityVisibilityState CommunityVisibilityState { get; set; }
         public int ProfileState { get; set; }
         public string PersonaName { get; set; } = string.Empty;

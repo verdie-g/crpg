@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Hosting.Internal;
 using Serilog;
 
 namespace Crpg.WebApi
@@ -38,7 +39,7 @@ namespace Crpg.WebApi
                 try
                 {
                     var mediator = services.GetRequiredService<IMediator>();
-                    await mediator.Send(new SeedDataCommand(), CancellationToken.None);
+                    await mediator.Send(new SeedDataCommand { IsDevelopment = true }, CancellationToken.None);
                 }
                 catch (Exception ex)
                 {

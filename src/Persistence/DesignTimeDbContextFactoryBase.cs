@@ -25,8 +25,7 @@ namespace Crpg.Persistence
         {
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(basePath)
-                .AddJsonFile("appsettings.json")
-                .AddJsonFile($"appsettings.{environment}.json", optional: true)
+                .AddJsonFile($"appsettings.{environment}.json")
                 .AddEnvironmentVariables()
                 .Build();
 
@@ -44,7 +43,9 @@ namespace Crpg.Persistence
             }
 
             var optionsBuilder = new DbContextOptionsBuilder<TContext>();
-            optionsBuilder.UseNpgsql(connectionString);
+            optionsBuilder
+                .UseNpgsql(connectionString)
+                .UseSnakeCaseNamingConvention();
             return CreateNewInstance(optionsBuilder.Options);
         }
     }

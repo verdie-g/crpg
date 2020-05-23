@@ -17,7 +17,7 @@ namespace Crpg.Application.Games.Commands
 {
     public class UpsertGameUserCommand : IRequest<GameUser>
     {
-        public ulong SteamId { get; set; } = default!;
+        public long SteamId { get; set; } = default!;
         public string CharacterName { get; set; } = default!;
 
         public class Handler : IRequestHandler<UpsertGameUserCommand, GameUser>
