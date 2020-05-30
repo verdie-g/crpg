@@ -17,7 +17,7 @@ namespace Crpg.Application.Games
                         return 0;
                     }
 
-                    const int a = 3936;
+                    const int a = 3937;
                     const int b = 13750;
                     const int c = -30750;
                     return (int)(a * Math.Pow(1.26, lvl) + b * lvl + c);
