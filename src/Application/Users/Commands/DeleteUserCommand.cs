@@ -1,12 +1,18 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Users.Commands
 {
+    /// <summary>
+    /// Deletes all entities related to user except <see cref="Ban"/>s and reset user info.
+    /// </summary>
     public class DeleteUserCommand : IRequest<Unit>
     {
         public int UserId { get; set; }
@@ -23,13 +29,22 @@ namespace Crpg.Application.Users.Commands
             public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
             {
                 var user = await _db.Users
+                    .Include(u => u.Characters)
+                    .Include(u => u.UserItems)
                     .FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
                 if (user == null)
                 {
                     throw new NotFoundException(nameof(user), request.UserId);
                 }
 
-                _db.Users.Remove(user);
+                UserHelper.SetDefaultValuesForUser(user);
+                user.UserName = string.Empty;
+                user.AvatarSmall = new Uri("https://via.placeholder.com/32x32");
+                user.AvatarMedium = new Uri("https://via.placeholder.com/64x64");
+                user.AvatarFull = new Uri("https://via.placeholder.com/184x184");
+
+                _db.UserItems.RemoveRange(user.UserItems);
+                _db.Characters.RemoveRange(user.Characters);
                 await _db.SaveChangesAsync(cancellationToken);
                 return Unit.Value;
             }
