@@ -25,5 +25,29 @@ namespace Crpg.Application.UTest.Games
         {
             Assert.AreEqual(expectedExperience, ExperienceTable.GetExperienceForLevel(level));
         }
+
+        [Test]
+        public void ExperienceShouldBeExponentialAfterLevel30()
+        {
+            int xpLastLevel = ExperienceTable.GetExperienceForLevel(30);
+            for (int lvl = 31; lvl <= ExperienceTable.MaxLevel; lvl += 1)
+            {
+                int xp = ExperienceTable.GetExperienceForLevel(lvl);
+                Assert.AreEqual(2 * xpLastLevel, xp);
+                xpLastLevel = xp;
+            }
+        }
+
+        [Test]
+        public void ExperienceTableShouldBeIncreasing()
+        {
+            int xpLastLevel = -1;
+            for (int lvl = ExperienceTable.MinLevel; lvl <= ExperienceTable.MaxLevel; lvl += 1)
+            {
+                int xp = ExperienceTable.GetExperienceForLevel(lvl);
+                Assert.Greater(xp, xpLastLevel, "Experience for lvl {0} should be greater than for lvl {1}", lvl, lvl - 1);
+                xpLastLevel = xp;
+            }
+        }
     }
 }
