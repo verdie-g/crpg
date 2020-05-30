@@ -23,18 +23,20 @@ namespace Crpg.Application.UTest.Users
             });
             await Db.SaveChangesAsync();
 
+            // needs to be saved before UserItems[0] gets deleted
+            int itemId = user.Entity.UserItems[0].ItemId;
+
             await new DeleteUserCommand.Handler(Db).Handle(new DeleteUserCommand
             {
                 UserId = user.Entity.Id
             }, CancellationToken.None);
 
-            Assert.ThrowsAsync<InvalidOperationException>(() => Db.Users.FirstAsync(u => u.Id == user.Entity.Id));
             Assert.ThrowsAsync<InvalidOperationException>(() => Db.Characters.FirstAsync(c => c.Id == user.Entity.Characters[0].Id));
-            Assert.ThrowsAsync<InvalidOperationException>(() => Db.Bans.FirstAsync(b =>
-                b.BannedUserId == user.Entity.Id || b.BannedByUserId == user.Entity.Id));
             Assert.ThrowsAsync<InvalidOperationException>(() => Db.UserItems.FirstAsync(ui =>
                 ui.UserId == user.Entity.Id && ui.ItemId == user.Entity.UserItems[0].ItemId));
-            Assert.DoesNotThrowAsync(() => Db.Items.FirstAsync(i => i.Id == user.Entity.UserItems[0].ItemId));
+            Assert.DoesNotThrowAsync(() => Db.Users.FirstAsync(u => u.Id == user.Entity.Id));
+            Assert.DoesNotThrowAsync(() => Db.Items.FirstAsync(i => i.Id == itemId));
+            Assert.DoesNotThrowAsync(() => Db.Bans.FirstAsync(b => b.BannedUserId == user.Entity.Id));
         }
 
         [Test]
