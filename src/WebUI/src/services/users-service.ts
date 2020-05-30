@@ -14,6 +14,10 @@ export function getUser(): Promise<User> {
   return get('/users/self');
 }
 
+export function deleteUser(): Promise<void> {
+  return del('/users/self');
+}
+
 export function getOwnedItems(): Promise<Item[]> {
   return get('/users/self/items');
 }

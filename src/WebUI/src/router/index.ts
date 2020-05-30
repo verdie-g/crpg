@@ -45,6 +45,12 @@ const routes = [
     beforeEnter: isSignedInGuard,
     meta: { scrollToTop: true },
   },
+  {
+    path: '/settings',
+    name: 'settings',
+    component: () => import('../views/Settings.vue'),
+    beforeEnter: isSignedInGuard,
+  },
 ];
 
 const router = new VueRouter({

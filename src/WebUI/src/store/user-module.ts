@@ -38,6 +38,13 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
+  resetUser() {
+    this.user = null;
+    this.ownedItems = [];
+    this.characters = [];
+  }
+
+  @Mutation
   substractGold(loss: number) {
     this.user!.gold -= loss;
   }
@@ -174,6 +181,12 @@ class UserModule extends VuexModule {
   deleteCharacter(character: Character): Promise<void> {
     this.removeCharacter(character);
     return userService.deleteCharacter(character.id);
+  }
+
+  @Action
+  deleteUser(): Promise<void> {
+    this.resetUser();
+    return userService.deleteUser();
   }
 }
 

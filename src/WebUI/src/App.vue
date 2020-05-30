@@ -27,13 +27,16 @@
                       <img v-bind:src="user.avatarSmall" alt="avatar" />
                     </p>
 
-                    <b-dropdown-item aria-role="listitem" @click="signOut">
-                      <div class="media">
-                        <b-icon class="media-left" icon="sign-out-alt" />
-                        <div class="media-content">
-                          <h3>Sign out</h3>
-                        </div>
-                      </div>
+                    <b-dropdown-item has-link aria-role="menuitem">
+                      <router-link to="/settings">
+                        <b-icon icon="cog" />
+                        Settings
+                      </router-link>
+                    </b-dropdown-item>
+
+                    <b-dropdown-item value="home" aria-role="menuitem">
+                      <b-icon icon="sign-out-alt" />
+                      Sign out
                     </b-dropdown-item>
                   </b-dropdown>
                 </figure>
