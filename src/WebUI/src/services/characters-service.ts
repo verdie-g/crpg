@@ -58,6 +58,6 @@ export function getCharacterItemFromSlot(characterItems: CharacterItems, slot: I
   return characterItemSlots[slot].getItem(characterItems);
 }
 
-export function setCharacterItem(characterItems: CharacterItems, slot: ItemSlot, item: Item | null) {
+export function setCharacterItem(characterItems: CharacterItems, slot: ItemSlot, item: Item | null): void {
   return characterItemSlots[slot].setItem(characterItems, item);
 }

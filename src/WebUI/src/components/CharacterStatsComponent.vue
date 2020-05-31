@@ -62,8 +62,8 @@
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('ironFlesh') ? 'is-primary' : 'is-danger'">
         <template slot="label">
-          <b-tooltip label="Increases your health by 2 points per level and reduces the negative impact armor has on weapon points. Requires 3 strength per level."
-                     position="is-left" multilined>Iron Flesh</b-tooltip>
+          <b-tooltip label="Increases your health by 2 points per level and reduces the negative impact armor has on weapon points.
+                     Requires 3 strength per level." position="is-left" multilined>Iron Flesh</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'ironFlesh')"
@@ -82,8 +82,8 @@
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('powerDraw') ? 'is-primary' : 'is-danger'">
         <template slot="label">
-          <b-tooltip label="Increases bow damage by 14% per level (capped at 4 above used bow's difficulty). Allows you to use higher tiers bow. Requires 3 strength per level."
-                     position="is-left" multilined>Power Draw</b-tooltip>
+          <b-tooltip label="Increases bow damage by 14% per level (capped at 4 above used bow's difficulty). Allows you to use higher tiers
+                     bow. Requires 3 strength per level." position="is-left" multilined>Power Draw</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'powerDraw')"
@@ -111,8 +111,8 @@
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('riding') ? 'is-primary' : 'is-danger'">
         <template slot="label">
-          <b-tooltip label="Increases riding speed, acceleration and maneuver. Allows you to ride higher tier horses. Requires 3 agility per level."
-                     position="is-left" multilined>Riding</b-tooltip>
+          <b-tooltip label="Increases riding speed, acceleration and maneuver. Allows you to ride higher tier horses.
+                     Requires 3 agility per level." position="is-left" multilined>Riding</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'riding')"
@@ -121,7 +121,9 @@
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('weaponMaster') ? 'is-primary' : 'is-danger'">
         <template slot="label">
-          <b-tooltip label="Gives you level*20+55 weapon points per level. Requires 3 agility per level." position="is-left" multilined>Weapon Master</b-tooltip>
+          <b-tooltip label="Gives you level*20+55 weapon points per level. Requires 3 agility per level." position="is-left" multilined>
+            Weapon Master
+          </b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'weaponMaster')"
@@ -140,8 +142,8 @@
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('shield') ? 'is-primary' : 'is-danger'">
         <template slot="label">
-          <b-tooltip label="Reduces damage to shields by 16% per level, improves shield speed and increases coverage form ranged attacks. Allows you to use higher tier shields. Requires 6 agility per level."
-                     position="is-left" multilined>Shield</b-tooltip>
+          <b-tooltip label="Reduces damage to shields by 16% per level, improves shield speed and increases coverage form ranged attacks.
+                     Allows you to use higher tier shields. Requires 6 agility per level." position="is-left" multilined>Shield</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'shield')"
@@ -225,7 +227,7 @@ export default class CharacterStatsComponent extends Vue {
   updatingStats = false;
   statsDelta: CharacterStatistics = this.createEmptyStatistics();
 
-  get statisticConversion() {
+  get statisticConversion(): typeof StatisticConversion {
     return StatisticConversion;
   }
 
@@ -283,11 +285,11 @@ export default class CharacterStatsComponent extends Vue {
     };
   }
 
-  convertStats(conversion: StatisticConversion) {
-    userModule.convertCharacterStats({ characterId: this.character.id, conversion });
+  convertStats(conversion: StatisticConversion): Promise<CharacterStatistics> {
+    return userModule.convertCharacterStats({ characterId: this.character.id, conversion });
   }
 
-  getInputProps(statSectionKey: StatSectionKey, statKey: StatKey) {
+  getInputProps(statSectionKey: StatSectionKey, statKey: StatKey): { value: number; min: number; max: number; controls: boolean } {
     const initialValue = (this.stats[statSectionKey] as any)[statKey];
     const deltaValue = (this.statsDelta[statSectionKey] as any)[statKey];
     const initialPoints = this.stats[statSectionKey].points;
@@ -305,7 +307,7 @@ export default class CharacterStatsComponent extends Vue {
     };
   }
 
-  onInput(statSectionKey: StatSectionKey, statKey: StatKey, value: number) {
+  onInput(statSectionKey: StatSectionKey, statKey: StatKey, value: number): void {
     const statInitialSection = this.stats[statSectionKey] as any;
     const statDeltaSection = this.statsDelta[statSectionKey] as any;
 
@@ -377,11 +379,11 @@ export default class CharacterStatsComponent extends Vue {
     return stat;
   }
 
-  reset() {
+  reset(): void {
     this.statsDelta = this.createEmptyStatistics();
   }
 
-  commit() {
+  commit(): void {
     this.updatingStats = true;
     userModule.updateCharacterStats({
       characterId: this.character.id,
@@ -420,7 +422,7 @@ export default class CharacterStatsComponent extends Vue {
     this.reset();
   }
 
-  openEditCharacterDialog() {
+  openEditCharacterDialog(): void {
     this.$buefy.dialog.prompt({
       message: 'New name',
       inputAttrs: {
@@ -437,7 +439,7 @@ export default class CharacterStatsComponent extends Vue {
   }
 
   @Watch('character')
-  onCharacterChange() {
+  onCharacterChange(): void {
     this.statsDelta = this.createEmptyStatistics();
   }
 }

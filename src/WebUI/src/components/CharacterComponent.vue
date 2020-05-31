@@ -133,14 +133,15 @@ export default class CharacterComponent extends Vue {
         .filter(i => this.itemToReplace === null || i.id !== this.itemToReplace.id);
   }
 
-  itemImage(item: Item) {
+  itemImage(item: Item): string {
     return `${process.env.BASE_URL}items/${item.mbId}.png`;
   }
 
-  openRespecializeCharacterDialog() {
+  openRespecializeCharacterDialog(): void {
     this.$buefy.dialog.confirm({
       title: 'Respecialize character',
-      message: `Are you sure you want to respecialize your character ${this.character.name} lvl. ${this.character.level}? This action cannot be undone.`,
+      message: `Are you sure you want to respecialize your character ${this.character.name} lvl. ${this.character.level}?
+        This action cannot be undone.`,
       confirmText: 'Respecialize Character',
       type: 'is-danger',
       hasIcon: true,
@@ -151,10 +152,11 @@ export default class CharacterComponent extends Vue {
     });
   }
 
-  openRetireCharacterDialog() {
+  openRetireCharacterDialog(): void {
     this.$buefy.dialog.confirm({
       title: 'Retiring character',
-      message: `Are you sure you want to retire your character ${this.character.name} lvl. ${this.character.level}? This action cannot be undone.`,
+      message: `Are you sure you want to retire your character ${this.character.name} lvl. ${this.character.level}?
+        This action cannot be undone.`,
       confirmText: 'Retire',
       type: 'is-warning',
       hasIcon: true,
@@ -165,10 +167,11 @@ export default class CharacterComponent extends Vue {
     });
   }
 
-  openDeleteCharacterDialog() {
+  openDeleteCharacterDialog(): void {
     this.$buefy.dialog.confirm({
       title: 'Deleting character',
-      message: `Are you sure you want to delete your character ${this.character.name} lvl. ${this.character.level}? This action cannot be undone.`,
+      message: `Are you sure you want to delete your character ${this.character.name} lvl. ${this.character.level}?
+        This action cannot be undone.`,
       confirmText: 'Delete Character',
       type: 'is-danger',
       hasIcon: true,
@@ -179,7 +182,7 @@ export default class CharacterComponent extends Vue {
     });
   }
 
-  openReplaceItemModal(slot: ItemSlot) {
+  openReplaceItemModal(slot: ItemSlot): void {
     this.itemToReplace = getCharacterItemFromSlot(this.character.items, slot);
     this.itemToReplaceSlot = slot;
     this.selectedItem = null;
@@ -190,7 +193,7 @@ export default class CharacterComponent extends Vue {
     this.isReplaceItemModalActive = true;
   }
 
-  unequipItem() {
+  unequipItem(): void {
     userModule.replaceItem({
       character: this.character,
       slot: this.itemToReplaceSlot!,
@@ -199,7 +202,7 @@ export default class CharacterComponent extends Vue {
     (this.$refs.replaceItemModal as any).close();
   }
 
-  confirmItemSelection() {
+  confirmItemSelection(): void {
     userModule.replaceItem({ character: this.character, slot: this.itemToReplaceSlot!, item: this.selectedItem! });
     this.isReplaceItemModalActive = false;
   }

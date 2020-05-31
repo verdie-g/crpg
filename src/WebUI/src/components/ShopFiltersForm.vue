@@ -26,7 +26,7 @@ export default class ShopFiltersForm extends Vue {
     showOwned: true,
   };
 
-  onFilterInput() {
+  onFilterInput(): void {
     this.$emit('input', {
       types: this.shopFilters.types.map(t => parseInt(t, 10) as ItemType),
       showOwned: this.shopFilters.showOwned,

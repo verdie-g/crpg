@@ -22,11 +22,11 @@ import userModule from '@/store/user-module';
 
 @Component
 export default class Home extends Vue {
-  get isSignedIn() {
+  get isSignedIn(): boolean {
     return userModule.isSignedIn;
   }
 
-  onClick() {
+  onClick(): void {
     challenge();
   }
 }

@@ -88,7 +88,7 @@ export default class Shop extends Vue {
     return userModule.user == null ? 0 : userModule.user.gold;
   }
 
-  get currentPage() {
+  get currentPage(): number {
     const pageQuery = this.$route.query.page ? parseInt(this.$route.query.page as string, 10) : undefined;
     if (!this.filteredItems || !pageQuery || pageQuery > Math.ceil(this.filteredItems.length / this.itemsPerPage)) {
       return 1;
@@ -97,12 +97,12 @@ export default class Shop extends Vue {
     return pageQuery;
   }
 
-  get filteredItems() {
+  get filteredItems(): Item[] {
     return itemModule.items.filter(i => (this.filters.types.length === 0 || this.filters.types.includes(i.type))
       && (this.ownedItems[i.id] === undefined || this.filters.showOwned));
   }
 
-  get pageItems() {
+  get pageItems(): Item[] {
     if (!this.filteredItems) {
       return [];
     }
@@ -112,19 +112,19 @@ export default class Shop extends Vue {
     return this.filteredItems.slice(startIndex, endIndex);
   }
 
-  created() {
+  created(): void {
     itemModule.getItems();
     userModule.getOwnedItems();
   }
 
-  onFilterInput(filters: ShopFilters) {
+  onFilterInput(filters: ShopFilters): void {
     this.filters = filters;
     if (this.currentPage !== 1) {
       this.$router.push('/shop?page=1');
     }
   }
 
-  async buy(item: Item) {
+  async buy(item: Item): Promise<void> {
     Vue.set(this.buyingItems, item.id, true);
     await userModule.buyItem(item);
     Vue.set(this.buyingItems, item.id, false);

@@ -13,12 +13,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
-import { notify } from '@/services/notifications-service';
 import { clearToken } from '@/services/auth-service';
 
 @Component
 export default class Settings extends Vue {
-  onDeleteAccountDialog() {
+  onDeleteAccountDialog(): void {
     this.$buefy.dialog.confirm({
       title: 'Deleting account',
       message: 'Are you sure you want to delete your account? This action cannot be undone.',
