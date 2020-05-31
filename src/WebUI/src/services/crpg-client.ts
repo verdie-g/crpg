@@ -1,4 +1,4 @@
-import { getToken, challenge } from '@/services/auth-service';
+import { setToken, getToken, challenge } from '@/services/auth-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import { sleep } from '@/utils/promise';
 
@@ -13,6 +13,12 @@ async function send(method: string, path: string, body?: any): Promise<any> {
     },
     body: body != null ? JSON.stringify(body) : undefined,
   });
+
+  // if the token was about to expire, the server issues a new one in the Refresh-Authorization header
+  const refreshedToken = res.headers.get('Refresh-Authorization');
+  if (refreshedToken !== null) {
+    setToken(refreshedToken);
+  }
 
   if (res.status === 401) {
     notify('Session expired', NotificationType.Warning);
