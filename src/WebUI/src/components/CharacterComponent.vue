@@ -54,12 +54,18 @@
         </div>
       </div>
 
-      <b-button type="is-warning" icon-left="angle-double-down" expanded
-                @click="openRespecializeCharacterDialog">Respecialize</b-button>
-      <b-button type="is-warning" icon-left="baby"
-                expanded :disabled="character.level < 31"
-                @click="openRetireCharacterDialog">Retire</b-button>
-      <b-button type="is-danger" icon-left="trash" expanded @click="openDeleteCharacterDialog">Delete</b-button>
+      <b-tooltip label="Respecialize character for a penalty of half of its experience." multilined>
+        <b-button type="is-warning" icon-left="angle-double-down" expanded
+                  @click="openRespecializeCharacterDialog">Respecialize</b-button>
+      </b-tooltip>
+
+      <b-tooltip label="Reset character to level 1 to grant a bonus multiplier and an heirloom point. (lvl > 30)" multilined>
+        <b-button type="is-warning" icon-left="baby"
+                    expanded :disabled="character.level < 31"
+                    @click="openRetireCharacterDialog">Retire</b-button>
+      </b-tooltip>
+
+      <b-button type="is-danger" icon-left="trash" @click="openDeleteCharacterDialog">Delete</b-button>
     </div>
 
     <b-modal :active.sync="isReplaceItemModalActive" scroll="keep" ref="replaceItemModal">
