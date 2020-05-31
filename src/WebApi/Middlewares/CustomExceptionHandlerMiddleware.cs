@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace Crpg.WebApi.Common
+namespace Crpg.WebApi.Middlewares
 {
     public class CustomExceptionHandlerMiddleware
     {

@@ -14,7 +14,7 @@ using Crpg.Application.Steam;
 using Crpg.Application.Users.Commands;
 using Crpg.Infrastructure;
 using Crpg.Persistence;
-using Crpg.WebApi.Common;
+using Crpg.WebApi.Middlewares;
 using Crpg.WebApi.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
