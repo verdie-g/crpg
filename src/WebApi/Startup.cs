@@ -26,6 +26,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -168,7 +169,24 @@ namespace Crpg.WebApi
                 IssuerSigningKey = new SymmetricSecurityKey(secret),
                 ValidateIssuer = false,
                 ValidateAudience = false,
-                ValidateLifetime = true
+                ValidateLifetime = true,
+            };
+
+            options.Events = new JwtBearerEvents
+            {
+                OnTokenValidated = ctx =>
+                {
+                    // refresh the token if it is about to expire
+                    if (ctx.SecurityToken.ValidTo.Subtract(TimeSpan.FromMinutes(15)) > DateTime.UtcNow)
+                    {
+                        return Task.CompletedTask;
+                    }
+
+                    var tokenIssuer = ctx.HttpContext.RequestServices.GetService<ITokenIssuer>();
+                    string token = tokenIssuer.IssueToken(ctx.Principal.Identities.First());
+                    ctx.Response.Headers["Refresh-Authorization"] = token;
+                    return Task.CompletedTask;
+                },
             };
         }
 
