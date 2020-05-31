@@ -84,19 +84,20 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
+import User from '@/models/user';
 import { getToken, setToken, clearToken } from './services/auth-service';
 
 @Component
 export default class App extends Vue {
-  get isSignedIn() {
+  get isSignedIn(): boolean {
     return userModule.isSignedIn;
   }
 
-  get user() {
+  get user(): User | null {
     return userModule.user;
   }
 
-  created() {
+  created(): void {
     this.handleAuthenticationCallback();
     if (getToken() !== undefined) {
       userModule.signIn();
@@ -104,7 +105,7 @@ export default class App extends Vue {
     }
   }
 
-  signOut() {
+  signOut(): void {
     clearToken();
     userModule.signOut();
     if (this.$router.currentRoute.fullPath !== '/') {
@@ -112,7 +113,7 @@ export default class App extends Vue {
     }
   }
 
-  handleAuthenticationCallback() {
+  handleAuthenticationCallback(): void {
     const token = this.$route.query.token as string;
     if (token === undefined) {
       return;

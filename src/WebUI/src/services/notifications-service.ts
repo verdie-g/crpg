@@ -19,7 +19,7 @@ function typeToColor(type: NotificationType): string {
   }
 }
 
-export function notify(message: string, type: NotificationType = NotificationType.Info) {
+export function notify(message: string, type: NotificationType = NotificationType.Info): void {
   Toast.open({
     message,
     type: typeToColor(type),

@@ -26,15 +26,15 @@ export function updateCharacter(characterId: number, req: UpdateCharacterRequest
   return put(`/users/self/characters/${characterId}`, req);
 }
 
-export function retireCharacter(characterId: number) {
+export function retireCharacter(characterId: number): Promise<Character> {
   return put(`/users/self/characters/${characterId}/retire`);
 }
 
-export function respecializeCharacter(characterId: number) {
+export function respecializeCharacter(characterId: number): Promise<Character> {
   return put(`/users/self/characters/${characterId}/respecialize`);
 }
 
-export function deleteCharacter(characterId: number) {
+export function deleteCharacter(characterId: number): Promise<void> {
   return del(`/users/self/characters/${characterId}`);
 }
 
@@ -50,7 +50,7 @@ export function convertCharacterStats(characterId: number, conversion: Statistic
   return put(`/users/self/characters/${characterId}/statistics/convert`, { conversion });
 }
 
-export function buyItem(itemId: number) {
+export function buyItem(itemId: number): Promise<Item> {
   return post('/users/self/items', { itemId });
 }
 

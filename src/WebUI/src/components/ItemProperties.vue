@@ -20,12 +20,13 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { getItemDescriptor } from '@/services/item-service';
 import Item from '@/models/item';
+import { ItemDescriptor } from '@/models/item-descriptor';
 
 @Component
 export default class ItemProperties extends Vue {
   @Prop(Object) readonly item: Item;
 
-  get itemDescriptor() {
+  get itemDescriptor(): ItemDescriptor {
     return getItemDescriptor(this.item);
   }
 }

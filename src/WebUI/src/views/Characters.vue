@@ -35,7 +35,7 @@ import CharacterComponent from '@/components/CharacterComponent.vue';
 export default class CharactersComponent extends Vue {
   selectedCharacterId = -1;
 
-  get characters() {
+  get characters(): Character[] {
     return userModule.characters;
   }
 
@@ -45,11 +45,11 @@ export default class CharactersComponent extends Vue {
       : this.characters.find(c => c.id === this.selectedCharacterId)!;
   }
 
-  created() {
+  created(): void {
     userModule.getCharacters().then(c => this.selectedCharacterId = c.length > 0 ? c[0].id : -1);
   }
 
-  selectCharacter(character: Character) {
+  selectCharacter(character: Character): void {
     this.selectedCharacterId = character.id;
   }
 }
