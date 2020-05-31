@@ -34,7 +34,7 @@
                       </router-link>
                     </b-dropdown-item>
 
-                    <b-dropdown-item value="home" aria-role="menuitem">
+                    <b-dropdown-item value="home" aria-role="menuitem" @click="signOut">
                       <b-icon icon="sign-out-alt" />
                       Sign out
                     </b-dropdown-item>
