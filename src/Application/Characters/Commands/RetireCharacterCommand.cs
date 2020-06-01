@@ -20,7 +20,7 @@ namespace Crpg.Application.Characters.Commands
         public class Handler : IRequestHandler<RetireCharacterCommand, CharacterViewModel>
         {
             private const int MinimumRetiringLevel = 31;
-            private const float ExperienceMultiplierIncrease = 0.1f;
+            private const float ExperienceMultiplierIncrease = 0.03f;
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

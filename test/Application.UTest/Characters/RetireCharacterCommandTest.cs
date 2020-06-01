@@ -17,7 +17,7 @@ namespace Crpg.Application.UTest.Characters
             {
                 Experience = 42424424,
                 Level = 31,
-                ExperienceMultiplier = 1.1f,
+                ExperienceMultiplier = 1.03f,
                 Items = new CharacterItems
                 {
                     HeadItem = new Item(),
@@ -79,7 +79,7 @@ namespace Crpg.Application.UTest.Characters
 
             Assert.AreEqual(1, character.Entity.Level);
             Assert.AreEqual(0, character.Entity.Experience);
-            Assert.AreEqual(1.2f, character.Entity.ExperienceMultiplier);
+            Assert.AreEqual(1.06f, character.Entity.ExperienceMultiplier);
             Assert.AreEqual(2, character.Entity.User!.LoomPoints);
 
             Assert.AreEqual(0, character.Entity.Statistics.Attributes.Points);
