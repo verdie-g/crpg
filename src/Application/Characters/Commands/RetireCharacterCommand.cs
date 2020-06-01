@@ -52,7 +52,7 @@ namespace Crpg.Application.Characters.Commands
                 CharacterHelper.ResetCharacterStats(character);
                 CharacterHelper.UnequipCharacterItems(character.Items);
 
-                character.User!.LoomPoints += 1;
+                character.User!.HeirloomPoints += 1;
 
                 await _db.SaveChangesAsync(cancellationToken);
                 return _mapper.Map<CharacterViewModel>(character);
