@@ -16,6 +16,7 @@ namespace Crpg.Application.UTest.Games
     public class UpsertGameUserCommandTest : TestBase
     {
         private static readonly IEventRaiser EventRaiser = Mock.Of<IEventRaiser>();
+        private static readonly IRandom Rdn = Mock.Of<IRandom>();
 
         [SetUp]
         public override Task SetUp()
@@ -57,7 +58,7 @@ namespace Crpg.Application.UTest.Games
             var dateTime = new Mock<IDateTimeOffset>();
             dateTime.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 23, 59, 59)));
 
-            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, dateTime.Object);
+            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, dateTime.Object, Rdn);
             var gu = await handler.Handle(new UpsertGameUserCommand
             {
                 SteamId = user.Entity.SteamId,
@@ -89,7 +90,7 @@ namespace Crpg.Application.UTest.Games
             var dateTime = new Mock<IDateTimeOffset>();
             dateTime.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2000, 1, 2, 0, 0, 1)));
 
-            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, dateTime.Object);
+            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, dateTime.Object, Rdn);
             var gu = await handler.Handle(new UpsertGameUserCommand
             {
                 SteamId = user.Entity.SteamId,
@@ -140,7 +141,7 @@ namespace Crpg.Application.UTest.Games
             });
             await Db.SaveChangesAsync();
 
-            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, Mock.Of<IDateTimeOffset>());
+            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, Mock.Of<IDateTimeOffset>(), Rdn);
             var gu = await handler.Handle(new UpsertGameUserCommand
             {
                 SteamId = user.Entity.SteamId,
@@ -202,7 +203,7 @@ namespace Crpg.Application.UTest.Games
             });
             await Db.SaveChangesAsync();
 
-            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, Mock.Of<IDateTimeOffset>());
+            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, Mock.Of<IDateTimeOffset>(), Rdn);
             var gu = await handler.Handle(new UpsertGameUserCommand
             {
                 SteamId = user.Entity.SteamId,
@@ -223,7 +224,7 @@ namespace Crpg.Application.UTest.Games
             var user = Db.Users.Add(new User { SteamId = 123 });
             await Db.SaveChangesAsync();
 
-            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, Mock.Of<IDateTimeOffset>());
+            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, Mock.Of<IDateTimeOffset>(), Rdn);
             var gu = await handler.Handle(new UpsertGameUserCommand
             {
                 SteamId = user.Entity.SteamId,
@@ -253,7 +254,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldCreateUserAndCharacterIfUserDoesntExist()
         {
-            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, Mock.Of<IDateTimeOffset>());
+            var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, Mock.Of<IDateTimeOffset>(), Rdn);
             var gu = await handler.Handle(new UpsertGameUserCommand
             {
                 SteamId = 123,

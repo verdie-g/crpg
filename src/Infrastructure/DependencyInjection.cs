@@ -20,7 +20,8 @@ namespace Crpg.Infrastructure
         {
             return services
                 .AddDatadog(configuration, environment)
-                .AddTransient<IDateTimeOffset, MachineDateTimeOffset>()
+                .AddSingleton<IDateTimeOffset, MachineDateTimeOffset>()
+                .AddSingleton<IRandom, ThreadSafeRandom>()
                 .AddSingleton<IItemsSource, FileItemsSource>();
         }
 
