@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Crpg.Application.Common;
 using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Interfaces.Events;
@@ -93,13 +92,15 @@ namespace Crpg.Application.Games.Commands
             private readonly IMapper _mapper;
             private readonly IEventRaiser _events;
             private readonly IDateTimeOffset _dateTime;
+            private readonly IRandom _random;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, IEventRaiser events, IDateTimeOffset dateTime)
+            public Handler(ICrpgDbContext db, IMapper mapper, IEventRaiser events, IDateTimeOffset dateTime, IRandom random)
             {
                 _db = db;
                 _mapper = mapper;
                 _events = events;
                 _dateTime = dateTime;
+                _random = random;
             }
 
             public async Task<GameUser> Handle(UpsertGameUserCommand request, CancellationToken cancellationToken)
@@ -166,7 +167,7 @@ namespace Crpg.Application.Games.Commands
                 };
                 CharacterHelper.ResetCharacterStats(c);
 
-                var items = DefaultItemsSets[ThreadSafeRandom.Instance.Value!.Next(DefaultItemsSets.Length - 1)];
+                var items = DefaultItemsSets[_random.Next(DefaultItemsSets.Length - 1)];
                 var itemsIdByMdId = await _db.Items
                     .Where(i => i.MbId == items.HeadItemMbId
                                 || i.MbId == items.BodyItemMbId
