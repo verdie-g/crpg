@@ -66,7 +66,7 @@ namespace Crpg.Application.UTest.Characters
                 },
                 User = new User
                 {
-                    LoomPoints = 1,
+                    HeirloomPoints = 1,
                 }
             });
             await Db.SaveChangesAsync();
@@ -80,7 +80,7 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(1, character.Entity.Level);
             Assert.AreEqual(0, character.Entity.Experience);
             Assert.AreEqual(1.06f, character.Entity.ExperienceMultiplier);
-            Assert.AreEqual(2, character.Entity.User!.LoomPoints);
+            Assert.AreEqual(2, character.Entity.User!.HeirloomPoints);
 
             Assert.AreEqual(0, character.Entity.Statistics.Attributes.Points);
             Assert.AreEqual(3, character.Entity.Statistics.Attributes.Strength);

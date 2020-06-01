@@ -10,7 +10,7 @@ namespace Crpg.Domain.Entities
         public long SteamId { get; set; }
         public string UserName { get; set; } = string.Empty;
         public int Gold { get; set; }
-        public int LoomPoints { get; set; }
+        public int HeirloomPoints { get; set; }
         public Role Role { get; set; }
 
         /// <summary>
