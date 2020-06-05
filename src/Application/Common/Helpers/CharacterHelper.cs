@@ -15,7 +15,7 @@ namespace Crpg.Application.Common.Helpers
         private const int SkillPointsPerLevel = 1;
 
         /// <summary>
-        /// Set the default values (level, xp, stats, items, ...) for a character.
+        /// Reset character stats.
         /// </summary>
         /// <param name="character">Character to reset.</param>
         /// <param name="respecialization">If the stats points should be redistributed.</param>

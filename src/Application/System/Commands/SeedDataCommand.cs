@@ -43,48 +43,50 @@ namespace Crpg.Application.System.Commands
 
             private void AddDevelopperUsers()
             {
-                _db.Users.AddRange(new User
+                var users = new[]
                 {
-                    SteamId = 76561197987525637,
-                    UserName = "takeoshigeru",
-                    Gold = 3000,
-                    Role = Role.SuperAdmin,
-                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e.jpg"),
-                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_full.jpg"),
-                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_medium.jpg"),
-                    Characters = new List<Character>
+                    new User
                     {
-                        new Character
+                        SteamId = 76561197987525637,
+                        UserName = "takeoshigeru",
+                        Gold = 30000,
+                        Role = Role.SuperAdmin,
+                        AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e.jpg"),
+                        AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_full.jpg"),
+                        AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_medium.jpg"),
+                        Characters = new List<Character>
                         {
-                            Name = "takeoshigeru",
-                            Level = 23,
-                            Experience = ExperienceTable.GetExperienceForLevel(23),
-                            Statistics = new CharacterStatistics
+                            new Character
                             {
-                                Attributes = new CharacterAttributes
-                                {
-                                    Points = 4,
-                                    Strength = 3,
-                                    Agility = 3,
-                                },
-                                Skills = new CharacterSkills { Points = 7 },
-                                WeaponProficiencies = new CharacterWeaponProficiencies { Points = 43 },
+                                Name = "takeoshigeru",
+                                Level = 23,
+                                Experience = ExperienceTable.GetExperienceForLevel(23),
                             },
-                        },
-                        new Character
-                        {
-                            Name = "totoalala",
-                            Level = 12,
-                            Experience = ExperienceTable.GetExperienceForLevel(12),
-                        },
-                        new Character
-                        {
-                            Name = "Retire me",
-                            Level = 31,
-                            Experience = ExperienceTable.GetExperienceForLevel(31) + 100,
-                        },
+                            new Character
+                            {
+                                Name = "totoalala",
+                                Level = 12,
+                                Experience = ExperienceTable.GetExperienceForLevel(12),
+                            },
+                            new Character
+                            {
+                                Name = "Retire me",
+                                Level = 31,
+                                Experience = ExperienceTable.GetExperienceForLevel(31) + 100,
+                            },
+                        }
+                    },
+                };
+
+                foreach (var user in users)
+                {
+                    foreach (var character in user.Characters)
+                    {
+                        CharacterHelper.ResetCharacterStats(character, respecialization: true);
                     }
-                });
+
+                    _db.Users.Add(user);
+                }
             }
 
             private async Task CreateOrUpdateItems(CancellationToken cancellationToken)
