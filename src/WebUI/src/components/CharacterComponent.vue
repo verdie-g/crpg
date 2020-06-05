@@ -54,6 +54,17 @@
         </div>
       </div>
 
+      <b-tooltip label="Some of your items might break at the end of a round. Switch automatic repair on so you don't
+                 have to repair manually." multilined>
+        <div class="field">
+          <b-switch :value="character.items.autoRepair" @input="onAutoRepairSwitch">
+            Automatically repair damaged items (average repair cost {{averageRepairCost}} gold)
+          </b-switch>
+        </div>
+      </b-tooltip>
+
+      <br />
+
       <b-tooltip label="Respecialize character for a penalty of half of its experience." multilined>
         <b-button type="is-warning" icon-left="angle-double-down" expanded
                   @click="openRespecializeCharacterDialog">Respecialize</b-button>
@@ -108,7 +119,7 @@ import userModule from '@/store/user-module';
 import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
 import Item from '@/models/item';
-import { getCharacterItemFromSlot } from '@/services/characters-service';
+import { getCharacterItemFromSlot, computeAverageRepairCost } from '@/services/characters-service';
 import { filterItemsFittingInSlot } from '@/services/item-service';
 import { notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
@@ -126,6 +137,10 @@ export default class CharacterComponent extends Vue {
   itemToReplaceSlot: ItemSlot | null = null;
   selectedItem: Item | null = null;
 
+  get averageRepairCost(): number {
+    return Math.floor(computeAverageRepairCost(this.character.items));
+  }
+
   get fittingOwnedItems(): Item[] {
     return this.itemToReplaceSlot === null
       ? []
@@ -135,6 +150,10 @@ export default class CharacterComponent extends Vue {
 
   itemImage(item: Item): string {
     return `${process.env.BASE_URL}items/${item.mbId}.png`;
+  }
+
+  onAutoRepairSwitch(autoRepair: boolean): void {
+    userModule.switchAutoRepair({ character: this.character, autoRepair });
   }
 
   openRespecializeCharacterDialog(): void {

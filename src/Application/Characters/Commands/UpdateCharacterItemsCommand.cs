@@ -27,6 +27,7 @@ namespace Crpg.Application.Characters.Commands
         public int? Weapon2ItemId { get; set; }
         public int? Weapon3ItemId { get; set; }
         public int? Weapon4ItemId { get; set; }
+        public bool AutoRepair { get; set; }
 
         public class Handler : IRequestHandler<UpdateCharacterItemsCommand, CharacterItemsViewModel>
         {
@@ -74,12 +75,12 @@ namespace Crpg.Application.Characters.Commands
                     throw new NotFoundException(nameof(Character), request.CharacterId, request.UserId);
                 }
 
-                await UpdateCharacterItems(request, character);
+                await UpdateCharacterItems(request, character.Items);
                 await _db.SaveChangesAsync(cancellationToken);
                 return _mapper.Map<CharacterItemsViewModel>(character.Items);
             }
 
-            private async Task UpdateCharacterItems(UpdateCharacterItemsCommand request, Character character)
+            private async Task UpdateCharacterItems(UpdateCharacterItemsCommand request, CharacterItems characterItems)
             {
                 var ids = BuildItemIdCollection(request);
                 var itemsById = await _db.UserItems
@@ -87,17 +88,18 @@ namespace Crpg.Application.Characters.Commands
                     .Where(ui => ids.Contains(ui.ItemId) && ui.UserId == request.UserId)
                     .ToDictionaryAsync(ui => ui.ItemId, ui => ui.Item!);
 
-                character.Items.HeadItem = GetItemWithChecks(request.HeadItemId, new[] { ItemType.HeadArmor }, itemsById);
-                character.Items.CapeItem = GetItemWithChecks(request.CapeItemId, new[] { ItemType.Cape }, itemsById);
-                character.Items.BodyItem = GetItemWithChecks(request.BodyItemId, new[] { ItemType.BodyArmor }, itemsById);
-                character.Items.HandItem = GetItemWithChecks(request.HandItemId, new[] { ItemType.HandArmor }, itemsById);
-                character.Items.LegItem = GetItemWithChecks(request.LegItemId, new[] { ItemType.LegArmor }, itemsById);
-                character.Items.HorseHarnessItem = GetItemWithChecks(request.HorseHarnessItemId, new[] { ItemType.HorseHarness }, itemsById);
-                character.Items.HorseItem = GetItemWithChecks(request.HorseItemId, new[] { ItemType.Horse }, itemsById);
-                character.Items.Weapon1Item = GetItemWithChecks(request.Weapon1ItemId, WeaponTypes, itemsById);
-                character.Items.Weapon2Item = GetItemWithChecks(request.Weapon2ItemId, WeaponTypes, itemsById);
-                character.Items.Weapon3Item = GetItemWithChecks(request.Weapon3ItemId, WeaponTypes, itemsById);
-                character.Items.Weapon4Item = GetItemWithChecks(request.Weapon4ItemId, WeaponTypes, itemsById);
+                characterItems.HeadItem = GetItemWithChecks(request.HeadItemId, new[] { ItemType.HeadArmor }, itemsById);
+                characterItems.CapeItem = GetItemWithChecks(request.CapeItemId, new[] { ItemType.Cape }, itemsById);
+                characterItems.BodyItem = GetItemWithChecks(request.BodyItemId, new[] { ItemType.BodyArmor }, itemsById);
+                characterItems.HandItem = GetItemWithChecks(request.HandItemId, new[] { ItemType.HandArmor }, itemsById);
+                characterItems.LegItem = GetItemWithChecks(request.LegItemId, new[] { ItemType.LegArmor }, itemsById);
+                characterItems.HorseHarnessItem = GetItemWithChecks(request.HorseHarnessItemId, new[] { ItemType.HorseHarness }, itemsById);
+                characterItems.HorseItem = GetItemWithChecks(request.HorseItemId, new[] { ItemType.Horse }, itemsById);
+                characterItems.Weapon1Item = GetItemWithChecks(request.Weapon1ItemId, WeaponTypes, itemsById);
+                characterItems.Weapon2Item = GetItemWithChecks(request.Weapon2ItemId, WeaponTypes, itemsById);
+                characterItems.Weapon3Item = GetItemWithChecks(request.Weapon3ItemId, WeaponTypes, itemsById);
+                characterItems.Weapon4Item = GetItemWithChecks(request.Weapon4ItemId, WeaponTypes, itemsById);
+                characterItems.AutoRepair = request.AutoRepair;
             }
 
             private Item? GetItemWithChecks(int? id, IEnumerable<ItemType> expectedTypes,

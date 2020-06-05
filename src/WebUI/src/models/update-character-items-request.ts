@@ -10,4 +10,5 @@ export class UpdateCharacterItemsRequest {
   public weapon2ItemId: number | null;
   public weapon3ItemId: number | null;
   public weapon4ItemId: number | null;
+  public autoRepair: boolean;
 }

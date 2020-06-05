@@ -164,6 +164,10 @@ namespace Crpg.Application.Games.Commands
                     Level = CharacterHelper.DefaultLevel,
                     Experience = CharacterHelper.DefaultExperience,
                     ExperienceMultiplier = CharacterHelper.DefaultExperienceMultiplier,
+                    Items = new CharacterItems
+                    {
+                        AutoRepair = true,
+                    },
                 };
                 CharacterHelper.ResetCharacterStats(c);
 

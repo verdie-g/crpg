@@ -17,5 +17,6 @@ namespace Crpg.Application.Characters.Models
         public ItemViewModel? Weapon2Item { get; set; }
         public ItemViewModel? Weapon3Item { get; set; }
         public ItemViewModel? Weapon4Item { get; set; }
+        public bool AutoRepair { get; set; }
     }
 }
