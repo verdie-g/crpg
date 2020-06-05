@@ -7,7 +7,7 @@ import User from '@/models/user';
 import Character from '@/models/character';
 import Item from '@/models/item';
 import ItemSlot from '@/models/item-slot';
-import { setCharacterItem } from '@/services/characters-service';
+import { setCharacterItem, updateCharacterItems } from '@/services/characters-service';
 import CharacterItems from '@/models/character-items';
 import CharacterStatistics from '@/models/character-statistics';
 import StatisticConversion from '@/models/statistic-conversion';
@@ -70,6 +70,11 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
+  setCharacterItemAutoRepair({ characterItems, autoRepair }: { characterItems: CharacterItems; autoRepair: boolean }) {
+    characterItems.autoRepair = autoRepair;
+  }
+
+  @Mutation
   setCharacterStats({ characterId, stats }: { characterId: number; stats: CharacterStatistics }) {
     this.characters.find(c => c.id === characterId)!.statistics = stats;
   }
@@ -123,19 +128,13 @@ class UserModule extends VuexModule {
   replaceItem({ character, slot, item }: { character: Character; slot: ItemSlot; item: Item | null }) {
     const { items } = character;
     this.setCharacterItem({ characterItems: items, slot, item });
-    return userService.updateCharacterItems(character.id, {
-      headItemId: items.headItem?.id ?? null,
-      capeItemId: items.capeItem?.id ?? null,
-      bodyItemId: items.bodyItem?.id ?? null,
-      handItemId: items.handItem?.id ?? null,
-      legItemId: items.legItem?.id ?? null,
-      horseHarnessItemId: items.horseHarnessItem?.id ?? null,
-      horseItemId: items.horseItem?.id ?? null,
-      weapon1ItemId: items.weapon1Item?.id ?? null,
-      weapon2ItemId: items.weapon2Item?.id ?? null,
-      weapon3ItemId: items.weapon3Item?.id ?? null,
-      weapon4ItemId: items.weapon4Item?.id ?? null,
-    });
+    return updateCharacterItems(character.id, items);
+  }
+
+  @Action
+  switchAutoRepair({ character, autoRepair }: { character: Character; autoRepair: boolean }) {
+    this.setCharacterItemAutoRepair({ characterItems: character.items, autoRepair });
+    return updateCharacterItems(character.id, character.items);
   }
 
   @Action

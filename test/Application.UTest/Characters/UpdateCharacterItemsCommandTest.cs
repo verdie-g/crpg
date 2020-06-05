@@ -51,6 +51,7 @@ namespace Crpg.Application.UTest.Characters
                     Weapon2Item = weapon2Old.Entity,
                     Weapon3Item = weapon3Old.Entity,
                     Weapon4Item = weapon4Old.Entity,
+                    AutoRepair = false,
                 },
             });
             var user = Db.Users.Add(new User
@@ -100,6 +101,7 @@ namespace Crpg.Application.UTest.Characters
                 Weapon2ItemId = weapon2New.Entity.Id,
                 Weapon3ItemId = weapon3New.Entity.Id,
                 Weapon4ItemId = weapon4New.Entity.Id,
+                AutoRepair = true,
             };
             var c = await handler.Handle(cmd, CancellationToken.None);
 
@@ -114,6 +116,7 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(cmd.Weapon2ItemId, c.Weapon2Item!.Id);
             Assert.AreEqual(cmd.Weapon3ItemId, c.Weapon3Item!.Id);
             Assert.AreEqual(cmd.Weapon4ItemId, c.Weapon4Item!.Id);
+            Assert.IsTrue(c.AutoRepair);
         }
 
         [Test]
@@ -138,6 +141,7 @@ namespace Crpg.Application.UTest.Characters
                     Weapon2Item = null,
                     Weapon3Item = null,
                     Weapon4Item = null,
+                    AutoRepair = true,
                 },
             });
             var user = Db.Users.Add(new User
@@ -183,6 +187,7 @@ namespace Crpg.Application.UTest.Characters
             Assert.IsNull(c.Weapon2Item);
             Assert.IsNull(c.Weapon3Item);
             Assert.IsNull(c.Weapon4Item);
+            Assert.IsTrue(c.AutoRepair);
         }
 
         [Test]

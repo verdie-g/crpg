@@ -12,4 +12,5 @@ export default class CharacterItems {
   public weapon2Item: Item | null;
   public weapon3Item: Item | null;
   public weapon4Item: Item | null;
+  public autoRepair: boolean;
 }

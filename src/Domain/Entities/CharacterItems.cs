@@ -13,6 +13,7 @@ namespace Crpg.Domain.Entities
         public int? Weapon2ItemId { get; set; }
         public int? Weapon3ItemId { get; set; }
         public int? Weapon4ItemId { get; set; }
+        public bool AutoRepair { get; set; }
 
         public Item? HeadItem { get; set; }
         public Item? CapeItem { get; set; }
