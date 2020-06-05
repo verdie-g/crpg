@@ -173,6 +173,7 @@ namespace Crpg.Application.UTest.Characters
                 Weapon2ItemId = null,
                 Weapon3ItemId = null,
                 Weapon4ItemId = null,
+                AutoRepair = false,
             };
             var c = await handler.Handle(cmd, CancellationToken.None);
 
@@ -187,7 +188,7 @@ namespace Crpg.Application.UTest.Characters
             Assert.IsNull(c.Weapon2Item);
             Assert.IsNull(c.Weapon3Item);
             Assert.IsNull(c.Weapon4Item);
-            Assert.IsTrue(c.AutoRepair);
+            Assert.IsFalse(c.AutoRepair);
         }
 
         [Test]
