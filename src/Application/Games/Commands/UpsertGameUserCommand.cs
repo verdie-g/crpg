@@ -161,13 +161,10 @@ namespace Crpg.Application.Games.Commands
                 var c = new Character
                 {
                     Name = name,
+                    Generation = CharacterHelper.DefaultGeneration,
                     Level = CharacterHelper.DefaultLevel,
                     Experience = CharacterHelper.DefaultExperience,
                     ExperienceMultiplier = CharacterHelper.DefaultExperienceMultiplier,
-                    Items = new CharacterItems
-                    {
-                        AutoRepair = true,
-                    },
                 };
                 CharacterHelper.ResetCharacterStats(c);
 
@@ -185,6 +182,7 @@ namespace Crpg.Application.Games.Commands
                 c.Items.LegItemId = itemsIdByMdId[items.LegItemMbId!];
                 c.Items.Weapon1ItemId = itemsIdByMdId[items.Weapon1ItemMbId!];
                 c.Items.Weapon2ItemId = itemsIdByMdId[items.Weapon2ItemMbId!];
+                c.Items.AutoRepair = true;
 
                 // add character items to user inventory
                 user.UserItems = itemsIdByMdId.Values.Select(itemId => new UserItem { ItemId = itemId }).ToList();

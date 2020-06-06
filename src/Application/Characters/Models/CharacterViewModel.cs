@@ -9,9 +9,10 @@ namespace Crpg.Application.Characters.Models
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
+        public int Generation { set; get; }
+        public int Level { get; set; }
         public int Experience { get; set; }
         public int NextLevelExperience { get; set; }
-        public int Level { get; set; }
         public CharacterStatisticsViewModel Statistics { get; set; } = new CharacterStatisticsViewModel();
         public CharacterItemsViewModel Items { get; set; } = new CharacterItemsViewModel();
 

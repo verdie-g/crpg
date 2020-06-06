@@ -15,8 +15,9 @@ namespace Crpg.Application.UTest.Characters
         {
             var character = Db.Characters.Add(new Character
             {
-                Experience = 42424424,
+                Generation = 2,
                 Level = 31,
+                Experience = 42424424,
                 ExperienceMultiplier = 1.03f,
                 Items = new CharacterItems
                 {
@@ -77,6 +78,7 @@ namespace Crpg.Application.UTest.Characters
                 UserId = character.Entity.UserId,
             }, CancellationToken.None);
 
+            Assert.AreEqual(3, character.Entity.Generation);
             Assert.AreEqual(1, character.Entity.Level);
             Assert.AreEqual(0, character.Entity.Experience);
             Assert.AreEqual(1.06f, character.Entity.ExperienceMultiplier);

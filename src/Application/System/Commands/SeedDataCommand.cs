@@ -59,6 +59,7 @@ namespace Crpg.Application.System.Commands
                             new Character
                             {
                                 Name = "takeoshigeru",
+                                Generation = 2,
                                 Level = 23,
                                 Experience = ExperienceTable.GetExperienceForLevel(23),
                             },

@@ -5,6 +5,7 @@ namespace Crpg.Application.Common.Helpers
 {
     internal static class CharacterHelper
     {
+        public const int DefaultGeneration = 0;
         public const int DefaultLevel = 1;
         public const int DefaultExperience = 0;
         public const float DefaultExperienceMultiplier = 1.0f;

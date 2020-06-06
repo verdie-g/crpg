@@ -7,6 +7,7 @@ export default class Character {
   public experience: number;
   public nextLevelExperience: number;
   public level: number;
+  public generation: number;
   public statistics: CharacterStatistics;
   public items: CharacterItems;
 }

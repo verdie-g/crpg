@@ -46,6 +46,7 @@ namespace Crpg.Application.Characters.Commands
                     throw new BadRequestException($"Level {MinimumRetiringLevel} is required to retire");
                 }
 
+                character.Generation += 1;
                 character.Level = CharacterHelper.DefaultLevel;
                 character.Experience = CharacterHelper.DefaultExperience;
                 character.ExperienceMultiplier += ExperienceMultiplierIncrease;
