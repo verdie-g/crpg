@@ -19,9 +19,10 @@ namespace Crpg.GameMod.Api.Responses
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
+        public int Generation { get; set; }
+        public int Level { get; set; }
         public int Experience { get; set; }
         public int NextLevelExperience { get; set; }
-        public int Level { get; set; }
         public GameCharacterStatistics Statistics { get; set; } = new GameCharacterStatistics();
         public GameCharacterItems Items { get; set; } = new GameCharacterItems();
     }

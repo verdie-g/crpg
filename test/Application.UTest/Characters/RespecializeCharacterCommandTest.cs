@@ -14,6 +14,7 @@ namespace Crpg.Application.UTest.Characters
         {
             var character = new Character
             {
+                Generation = 2,
                 Level = 3,
                 Experience = 20000,
                 ExperienceMultiplier = 1.1f,
@@ -51,6 +52,7 @@ namespace Crpg.Application.UTest.Characters
                 UserId = character.UserId,
             }, CancellationToken.None);
 
+            Assert.AreEqual(2, character.Generation);
             Assert.AreEqual(2, character.Level);
             Assert.AreEqual(10000, character.Experience);
             Assert.AreEqual(1.1f, character.ExperienceMultiplier);

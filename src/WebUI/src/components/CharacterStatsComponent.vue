@@ -7,6 +7,10 @@
         <b-icon icon="pencil-alt" class="character-name-edit" @click.native="openEditCharacterDialog" />
       </div>
 
+      <b-field horizontal label="Generation" class="stat-field is-marginless">
+        <b-numberinput size="is-small" :editable="false" controls-position="compact"
+                       :value="character.generation" :controls="false" />
+      </b-field>
       <b-field horizontal label="Level" class="stat-field is-marginless">
           <b-numberinput size="is-small" :editable="false" controls-position="compact"
                          :value="character.level" :controls="false" />

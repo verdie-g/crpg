@@ -107,8 +107,9 @@ namespace Crpg.Application.UTest.Games
             var character = Db.Characters.Add(new Character
             {
                 Name = "toto",
-                Experience = 100,
+                Generation = 2,
                 Level = 1,
+                Experience = 100,
                 Items = new CharacterItems
                 {
                     HeadItem = new Item { MbId = "head" },
@@ -151,8 +152,9 @@ namespace Crpg.Application.UTest.Games
             Assert.NotNull(gu);
             Assert.AreEqual(user.Entity.Id, gu.Id);
             Assert.AreEqual(character.Entity.Name, gu.Character.Name);
-            Assert.AreEqual(character.Entity.Experience, gu.Character.Experience);
+            Assert.AreEqual(character.Entity.Generation, gu.Character.Generation);
             Assert.AreEqual(character.Entity.Level, gu.Character.Level);
+            Assert.AreEqual(character.Entity.Experience, gu.Character.Experience);
 
             Assert.AreEqual(character.Entity.Items.HeadItem!.MbId, gu.Character.Items.HeadItemMbId);
             Assert.AreEqual(character.Entity.Items.CapeItem!.MbId, gu.Character.Items.CapeItemMbId);
@@ -193,8 +195,9 @@ namespace Crpg.Application.UTest.Games
             var character = Db.Characters.Add(new Character
             {
                 Name = "toto",
-                Experience = 100,
+                Generation = 1,
                 Level = 1,
+                Experience = 100,
             });
             var user = Db.Users.Add(new User
             {
@@ -213,8 +216,9 @@ namespace Crpg.Application.UTest.Games
             Assert.NotNull(gu);
             Assert.AreEqual(user.Entity.Id, gu.Id);
             Assert.AreEqual(character.Entity.Name, gu.Character.Name);
-            Assert.AreEqual(character.Entity.Experience, gu.Character.Experience);
+            Assert.AreEqual(character.Entity.Generation, gu.Character.Generation);
             Assert.AreEqual(character.Entity.Level, gu.Character.Level);
+            Assert.AreEqual(character.Entity.Experience, gu.Character.Experience);
             Assert.IsNull(gu.Ban);
         }
 
@@ -236,6 +240,7 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual("toto", gu.Character.Name);
             Assert.AreEqual(0, gu.Character.Experience);
             Assert.AreEqual(1, gu.Character.Level);
+            Assert.AreEqual(0, gu.Character.Generation);
 
             Assert.AreEqual(3, gu.Character.Statistics.Attributes.Strength);
             Assert.AreEqual(3, gu.Character.Statistics.Attributes.Agility);
