@@ -46,12 +46,24 @@ namespace Crpg.Persistence
             {
                 if (entry.State == EntityState.Added)
                 {
-                    entry.Entity.LastModifiedAt = _dateTime!.Now;
-                    entry.Entity.CreatedAt = _dateTime!.Now;
+                    // don't override the value if it was already set. Useful for tests
+                    if (entry.Entity.LastModifiedAt == default)
+                    {
+                        entry.Entity.LastModifiedAt = _dateTime!.Now;
+                    }
+
+                    if (entry.Entity.CreatedAt == default)
+                    {
+                        entry.Entity.CreatedAt = _dateTime!.Now;
+                    }
                 }
                 else if (entry.State == EntityState.Modified)
                 {
-                    entry.Entity.LastModifiedAt = _dateTime!.Now;
+                    // don't override the value if it was already set. Useful for tests
+                    if (!entry.Property(e => e.LastModifiedAt).IsModified)
+                    {
+                        entry.Entity.LastModifiedAt = _dateTime!.Now;
+                    }
                 }
             }
 
