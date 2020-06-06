@@ -48,15 +48,30 @@ namespace Crpg.Application.UTest.Games
                 Characters = new List<Character> { new Character() },
                 Bans = new List<Ban>
                 {
-                    new Ban { Until = new DateTimeOffset(new DateTime(2000, 2, 1)), Reason = "toto" },
-                    new Ban { Until = new DateTimeOffset(new DateTime(2000, 3, 1)), Reason = "titi" },
-                    new Ban { Until = new DateTimeOffset(new DateTime(2000, 1, 2)), Reason = "tata" },
+                    new Ban
+                    {
+                        CreatedAt = new DateTimeOffset(new DateTime(2000, 2, 1)),
+                        Duration = TimeSpan.FromHours(2),
+                        Reason = "toto"
+                    },
+                    new Ban
+                    {
+                        CreatedAt = new DateTimeOffset(new DateTime(2000, 2, 3)),
+                        Duration = TimeSpan.FromHours(2),
+                        Reason = "titi"
+                    },
+                    new Ban
+                    {
+                        CreatedAt = new DateTimeOffset(new DateTime(2000, 2, 3)),
+                        Duration = TimeSpan.FromSeconds(2),
+                        Reason = "tata"
+                    },
                 }
             });
             await Db.SaveChangesAsync();
 
             var dateTime = new Mock<IDateTimeOffset>();
-            dateTime.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 23, 59, 59)));
+            dateTime.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2000, 1, 2, 23, 59, 59)));
 
             var handler = new UpsertGameUserCommand.Handler(Db, Mapper, EventRaiser, dateTime.Object, Rdn);
             var gu = await handler.Handle(new UpsertGameUserCommand
@@ -67,7 +82,8 @@ namespace Crpg.Application.UTest.Games
 
             Assert.NotNull(gu);
             Assert.NotNull(gu.Ban);
-            Assert.AreEqual(user.Entity.Bans[2].Until, gu.Ban!.Until);
+            Assert.AreEqual(user.Entity.Bans[2].CreatedAt, gu.Ban!.CreatedAt);
+            Assert.AreEqual(user.Entity.Bans[2].Duration, gu.Ban!.Duration);
             Assert.AreEqual(user.Entity.Bans[2].Reason, gu.Ban!.Reason);
         }
 
@@ -80,10 +96,19 @@ namespace Crpg.Application.UTest.Games
                 Characters = new List<Character> { new Character() },
                 Bans = new List<Ban>
                 {
-                    new Ban { Until = new DateTimeOffset(new DateTime(2000, 2, 1)), Reason = "toto" },
-                    new Ban { Until = new DateTimeOffset(new DateTime(2000, 3, 1)), Reason = "titi" },
-                    new Ban { Until = new DateTimeOffset(new DateTime(2000, 1, 2)), Reason = "tata" },
-                }
+                    new Ban // banned on 01/01 for two days
+                    {
+                        CreatedAt = new DateTimeOffset(new DateTime(2000, 1, 1)),
+                        Duration = TimeSpan.FromDays(2),
+                        Reason = "toto"
+                    },
+                    new Ban // banned on 01/01 12:00:00 for 0 hours (unbanned)
+                    {
+                        CreatedAt = new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)),
+                        Duration = TimeSpan.Zero,
+                        Reason = "titi"
+                    },
+                },
             });
             await Db.SaveChangesAsync();
 

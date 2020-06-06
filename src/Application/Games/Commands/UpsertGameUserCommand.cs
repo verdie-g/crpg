@@ -150,7 +150,7 @@ namespace Crpg.Application.Games.Commands
                 }
 
                 var gu = _mapper.Map<GameUser>(user);
-                gu.Ban = bans.Count != 0 && bans[0].Until > _dateTime.Now
+                gu.Ban = bans.Count != 0 && (bans[0].CreatedAt + bans[0].Duration) > _dateTime.Now
                     ? _mapper.Map<GameBan>(bans[0])
                     : null;
                 return gu;

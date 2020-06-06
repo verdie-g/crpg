@@ -33,13 +33,11 @@ namespace Crpg.Application.Bans.Commands
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
-            private readonly IDateTimeOffset _dateTime;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, IDateTimeOffset dateTime)
+            public Handler(ICrpgDbContext db, IMapper mapper)
             {
                 _db = db;
                 _mapper = mapper;
-                _dateTime = dateTime;
             }
 
             public async Task<BanViewModel> Handle(BanCommand request, CancellationToken cancellationToken)
@@ -54,7 +52,7 @@ namespace Crpg.Application.Bans.Commands
                 {
                     BannedUserId = request.BannedUserId,
                     BannedByUserId = request.BannedByUserId,
-                    Until = _dateTime.Now + request.Duration,
+                    Duration = request.Duration,
                     Reason = request.Reason,
                 };
 

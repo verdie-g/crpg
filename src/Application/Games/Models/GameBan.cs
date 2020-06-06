@@ -6,7 +6,8 @@ namespace Crpg.Application.Games.Models
 {
     public class GameBan : IMapFrom<Ban>
     {
-        public DateTimeOffset Until { get; set; }
+        public TimeSpan Duration { get; set; }
         public string Reason { get; set; } = string.Empty;
+        public DateTimeOffset CreatedAt { get; set; }
     }
 }
