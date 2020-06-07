@@ -1,15 +1,13 @@
-using System;
-using Crpg.Application.Common.Mappings;
+﻿using System;
 using Crpg.Application.Users.Models;
-using Crpg.Domain.Entities;
 
-namespace Crpg.Application.Bans.Models
+namespace Crpg.WebApi.Models
 {
-    public class BanViewModel : IMapFrom<Ban>
+    public class BanResponse
     {
         public int Id { get; set; }
         public int BannedUserId { get; set; }
-        public TimeSpan Duration { get; set; }
+        public int Duration { get; set; }
         public string Reason { get; set; } = string.Empty;
         public UserPublicViewModel BannedByUser { get; set; } = default!;
         public DateTimeOffset CreatedAt { get; set; }

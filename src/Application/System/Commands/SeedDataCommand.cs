@@ -75,7 +75,22 @@ namespace Crpg.Application.System.Commands
                                 Level = 31,
                                 Experience = ExperienceTable.GetExperienceForLevel(31) + 100,
                             },
-                        }
+                        },
+                        Bans = new List<Ban>
+                        {
+                            new Ban
+                            {
+                                Duration = TimeSpan.FromDays(2),
+                                Reason = "Did shit",
+                                BannedByUser = new User { SteamId = 123, UserName = "toto" },
+                            },
+                            new Ban
+                            {
+                                Duration = TimeSpan.FromMinutes(5),
+                                Reason = "Did shot",
+                                BannedByUser = new User { SteamId = 123, UserName = "titi" },
+                            },
+                        },
                     },
                 };
 

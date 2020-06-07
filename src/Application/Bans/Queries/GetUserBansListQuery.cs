@@ -1,21 +1,23 @@
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Crpg.Application.Bans.Models;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
-using Crpg.Application.Users.Models;
 using Crpg.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Crpg.Application.Users.Queries
+namespace Crpg.Application.Bans.Queries
 {
-    public class GetUserQuery : IRequest<UserViewModel>
+    public class GetUserBansListQuery : IRequest<IList<BanViewModel>>
     {
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<GetUserQuery, UserViewModel>
+        public class Handler : IRequestHandler<GetUserBansListQuery, IList<BanViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -26,17 +28,18 @@ namespace Crpg.Application.Users.Queries
                 _mapper = mapper;
             }
 
-            public async Task<UserViewModel> Handle(GetUserQuery query, CancellationToken cancellationToken)
+            public async Task<IList<BanViewModel>> Handle(GetUserBansListQuery request, CancellationToken cancellationToken)
             {
                 var user = await _db.Users
-                    .ProjectTo<UserViewModel>(_mapper.ConfigurationProvider)
-                    .FirstOrDefaultAsync(u => u.Id == query.UserId, cancellationToken);
+                    .Include(u => u.Bans).ThenInclude(b => b.BannedByUser)
+                    .FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
+
                 if (user == null)
                 {
-                    throw new NotFoundException(nameof(User), query.UserId);
+                    throw new NotFoundException(nameof(User), request.UserId);
                 }
 
-                return user;
+                return _mapper.Map<BanViewModel[]>(user.Bans);
             }
         }
     }
