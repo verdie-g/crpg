@@ -11,6 +11,7 @@ import { setCharacterItem, updateCharacterItems } from '@/services/characters-se
 import CharacterItems from '@/models/character-items';
 import CharacterStatistics from '@/models/character-statistics';
 import StatisticConversion from '@/models/statistic-conversion';
+import Ban from '@/models/ban';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
@@ -18,6 +19,7 @@ class UserModule extends VuexModule {
   user: User | null = null;
   ownedItems: Item[] = [];
   characters: Character[] = [];
+  userBans: Ban[] = [];
 
   @Mutation
   signIn() {
@@ -105,6 +107,11 @@ class UserModule extends VuexModule {
     this.characters.splice(idx, 1);
   }
 
+  @Mutation
+  setUserBans(bans: Ban[]) {
+    this.userBans = bans;
+  }
+
   @Action({ commit: 'setUser' })
   getUser() {
     return userService.getUser();
@@ -181,6 +188,11 @@ class UserModule extends VuexModule {
   deleteCharacter(character: Character): Promise<void> {
     this.removeCharacter(character);
     return userService.deleteCharacter(character.id);
+  }
+
+  @Action({ commit: 'setUserBans' })
+  getUserBans(): Promise<Ban[]> {
+    return userService.getUserBans();
   }
 
   @Action

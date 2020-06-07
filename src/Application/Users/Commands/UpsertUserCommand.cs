@@ -8,6 +8,7 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Common.Mappings;
 using Crpg.Application.Steam;
+using Crpg.Application.Users.Models;
 using Crpg.Domain.Entities;
 using FluentValidation;
 using MediatR;

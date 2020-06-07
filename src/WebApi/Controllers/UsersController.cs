@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Crpg.Application.Bans.Commands;
 using Crpg.Application.Bans.Models;
+using Crpg.Application.Bans.Queries;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Characters.Queries;
@@ -19,7 +21,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Crpg.WebApi.Controllers
 {
-    [ApiController]
     public class UsersController : BaseController
     {
         /// <summary>
@@ -222,6 +223,25 @@ namespace Crpg.WebApi.Controllers
         }
 
         /// <summary>
+        /// Gets all current user's bans.
+        /// </summary>
+        /// <response code="200">Ok.</response>
+        [HttpGet("self/bans")]
+        public async Task<ActionResult<IList<BanViewModel>>> GetUserBans()
+        {
+            var bans = await Mediator.Send(new GetUserBansListQuery { UserId = CurrentUser.UserId });
+            return Ok(bans.Select(b => new BanResponse
+            {
+                Id = b.Id,
+                BannedUserId = b.BannedUserId,
+                Duration = (int)b.Duration.TotalMilliseconds,
+                Reason = b.Reason,
+                BannedByUser = b.BannedByUser,
+                CreatedAt = b.CreatedAt,
+            }));
+        }
+
+        /// <summary>
         /// Bans an user. If a ban already exists for the user, it is overriden. Use a duration of 0 to unban.
         /// </summary>
         /// <param name="id">User id to ban.</param>
@@ -237,7 +257,7 @@ namespace Crpg.WebApi.Controllers
             var ban = await Mediator.Send(new BanCommand
             {
                 BannedUserId = id,
-                Duration = TimeSpan.FromSeconds(req.Duration),
+                Duration = TimeSpan.FromMilliseconds(req.Duration),
                 Reason = req.Reason,
                 BannedByUserId = CurrentUser.UserId
             });

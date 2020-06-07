@@ -3,10 +3,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
-using Crpg.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

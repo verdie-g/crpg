@@ -6,6 +6,7 @@ import { UpdateCharacterRequest } from '@/models/update-character-request';
 import CharacterItems from '@/models/character-items';
 import CharacterStatistics from '@/models/character-statistics';
 import StatisticConversion from '@/models/statistic-conversion';
+import Ban from '@/models/ban';
 import {
   get, post, put, del,
 } from './crpg-client';
@@ -56,4 +57,9 @@ export function buyItem(itemId: number): Promise<Item> {
 
 export function getCharacters(): Promise<Character[]> {
   return get('/users/self/characters');
+}
+
+export async function getUserBans(): Promise<Ban[]> {
+  const bans: Ban[] = await get('/users/self/bans');
+  return bans.map(b => ({ ...b, createdAt: new Date(b.createdAt) }));
 }
