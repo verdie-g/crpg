@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <nav v-if="isSignedIn">
+    <nav v-if="user">
       <b-navbar fixed-top>
         <template slot="brand">
           <b-navbar-item tag="router-link" :to="{ path: '/' }">cRPG</b-navbar-item>
@@ -26,6 +26,13 @@
                     <p class="image" slot="trigger" style="cursor: pointer">
                       <img v-bind:src="user.avatarSmall" alt="avatar" />
                     </p>
+
+                    <b-dropdown-item has-link aria-role="menuitem" v-if="isAdminOrSuperAdmin">
+                      <router-link to="/admin">
+                        <b-icon icon="user-shield" />
+                        Administration
+                      </router-link>
+                    </b-dropdown-item>
 
                     <b-dropdown-item has-link aria-role="menuitem">
                       <router-link to="/settings">
@@ -89,18 +96,24 @@ import { getToken, setToken, clearToken } from './services/auth-service';
 
 @Component
 export default class App extends Vue {
-  get isSignedIn(): boolean {
-    return userModule.isSignedIn;
-  }
-
   get user(): User | null {
     return userModule.user;
   }
 
+  get isAdminOrSuperAdmin() {
+    return userModule.isAdminOrSuperAdmin;
+  }
+
+  beforeCreate() {
+    const token = this.$route.query.token as string;
+    if (token !== undefined) {
+      this.$router.replace(''); // clear query parameters
+      setToken(token);
+    }
+  }
+
   created(): void {
-    this.handleAuthenticationCallback();
     if (getToken() !== undefined) {
-      userModule.signIn();
       userModule.getUser();
     }
   }
@@ -111,16 +124,6 @@ export default class App extends Vue {
     if (this.$router.currentRoute.fullPath !== '/') {
       this.$router.push('/');
     }
-  }
-
-  handleAuthenticationCallback(): void {
-    const token = this.$route.query.token as string;
-    if (token === undefined) {
-      return;
-    }
-
-    this.$router.replace('');
-    setToken(token);
   }
 }
 </script>

@@ -233,7 +233,6 @@ namespace Crpg.WebApi.Controllers
             return Ok(bans.Select(b => new BanResponse
             {
                 Id = b.Id,
-                BannedUserId = b.BannedUserId,
                 Duration = (int)b.Duration.TotalMilliseconds,
                 Reason = b.Reason,
                 BannedByUser = b.BannedByUser,

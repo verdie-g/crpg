@@ -12,23 +12,25 @@ import CharacterItems from '@/models/character-items';
 import CharacterStatistics from '@/models/character-statistics';
 import StatisticConversion from '@/models/statistic-conversion';
 import Ban from '@/models/ban';
+import Role from '@/models/role';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
-  isSignedIn = false;
   user: User | null = null;
   ownedItems: Item[] = [];
   characters: Character[] = [];
   userBans: Ban[] = [];
 
-  @Mutation
-  signIn() {
-    this.isSignedIn = true;
+  get isSignedIn(): boolean {
+    return this.user !== null;
+  }
+
+  get isAdminOrSuperAdmin(): boolean {
+    return this.user!.role === Role.Admin || this.user!.role === Role.SuperAdmin;
   }
 
   @Mutation
   signOut() {
-    this.isSignedIn = false;
     this.user = null;
     this.ownedItems = [];
     this.characters = [];

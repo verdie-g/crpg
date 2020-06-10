@@ -31,6 +31,7 @@ module.exports = {
     }],
     'no-param-reassign': 'off',
     'no-return-assign': 'off',
+    'no-shadow': 'off',
     'vue/require-v-for-key': 'off',
     'vue/valid-v-for': 'off',
   },
