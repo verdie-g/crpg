@@ -8,7 +8,7 @@ namespace Crpg.Application.Bans.Models
     public class BanViewModel : IMapFrom<Ban>
     {
         public int Id { get; set; }
-        public int BannedUserId { get; set; }
+        public UserPublicViewModel BannedUser { get; set; } = default!;
         public TimeSpan Duration { get; set; }
         public string Reason { get; set; } = string.Empty;
         public UserPublicViewModel BannedByUser { get; set; } = default!;

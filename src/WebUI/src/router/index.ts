@@ -1,12 +1,32 @@
 import Vue from 'vue';
-import VueRouter, { NavigationGuard, Route } from 'vue-router';
-import { getToken } from '@/services/auth-service';
+import VueRouter, { NavigationGuard, NavigationGuardNext, Route } from 'vue-router';
+import Role from '@/models/role';
+import { getDecodedToken, getToken } from '@/services/auth-service';
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
 
+function combineGuards(...guards: NavigationGuard[]): NavigationGuard {
+  function callGuardsRec(guards: NavigationGuard[], idx: number, to: Route, from: Route, next: NavigationGuardNext): any {
+    guards[idx](to, from, idx === guards.length - 1
+      ? next
+      : () => callGuardsRec(guards, idx + 1, to, from, next));
+  }
+
+  return (to, from, next) => callGuardsRec(guards, 0, to, from, next);
+}
+
 const isSignedInGuard: NavigationGuard = (to, from, next) => {
   if (getToken() === undefined) {
+    next('/');
+  } else {
+    next();
+  }
+};
+
+const isAdminGuard: NavigationGuard = (to, from, next) => {
+  const { userRole } = getDecodedToken()!;
+  if (userRole !== Role.Admin && userRole !== Role.SuperAdmin) {
     next('/');
   } else {
     next();
@@ -50,6 +70,12 @@ const routes = [
     name: 'settings',
     component: () => import('../views/Settings.vue'),
     beforeEnter: isSignedInGuard,
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import('../views/Administration.vue'),
+    beforeEnter: combineGuards(isSignedInGuard, isAdminGuard),
   },
 ];
 

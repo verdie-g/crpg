@@ -50,7 +50,7 @@ namespace Crpg.Application.Bans.Commands
 
                 var ban = new Ban
                 {
-                    BannedUserId = request.BannedUserId,
+                    BannedUser = user,
                     BannedByUserId = request.BannedByUserId,
                     Duration = request.Duration,
                     Reason = request.Reason,
