@@ -28,6 +28,8 @@ namespace Crpg.Infrastructure
         private static IServiceCollection AddDatadog(this IServiceCollection services, IConfiguration configuration,
             IHostEnvironment environment)
         {
+            var appEnv = CreateApplicationEnvironment(environment);
+
             if (environment.IsDevelopment())
             {
                 services.AddSingleton<IMetricsFactory, DebugMetricsFactory>();
@@ -38,14 +40,21 @@ namespace Crpg.Infrastructure
                 var dogStatsD = new DogStatsD(new DogStatsDConfiguration
                 {
                     Namespace = "crpg",
-                    ConstantTags = new[] { "service:crpg_web_api" },
+                    ConstantTags = new[] { "service:" + appEnv.Name },
                 });
 
                 services.AddSingleton<IMetricsFactory>(new DatadogMetricsFactory(dogStatsD));
                 services.AddSingleton<IEventRaiser>(new DatadogEventRaiser(dogStatsD));
             }
 
-            return services;
+            return services
+                .AddSingleton(appEnv);
+        }
+
+        private static IApplicationEnvironment CreateApplicationEnvironment(IHostEnvironment environment)
+        {
+            var env = environment.IsProduction() ? HostingEnvironment.Production : HostingEnvironment.Development;
+            return new ApplicationEnvironment(env, "crpg_web_api");
         }
     }
 }
