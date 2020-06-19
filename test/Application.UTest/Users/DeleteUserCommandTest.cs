@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Users.Commands;
 using Crpg.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Users
@@ -26,7 +28,7 @@ namespace Crpg.Application.UTest.Users
             // needs to be saved before UserItems[0] gets deleted
             int itemId = user.Entity.UserItems[0].ItemId;
 
-            await new DeleteUserCommand.Handler(Db).Handle(new DeleteUserCommand
+            await new DeleteUserCommand.Handler(Db, Mock.Of<IEventRaiser>()).Handle(new DeleteUserCommand
             {
                 UserId = user.Entity.Id
             }, CancellationToken.None);
@@ -43,7 +45,7 @@ namespace Crpg.Application.UTest.Users
         public void DeleteNonExistingUser()
         {
             Assert.ThrowsAsync<NotFoundException>(() =>
-                new DeleteUserCommand.Handler(Db).Handle(new DeleteUserCommand { UserId = 1 }, CancellationToken.None));
+                new DeleteUserCommand.Handler(Db, Mock.Of<IEventRaiser>()).Handle(new DeleteUserCommand { UserId = 1 }, CancellationToken.None));
         }
     }
 }
