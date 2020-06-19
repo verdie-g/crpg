@@ -88,7 +88,7 @@ namespace Crpg.Application.System.Commands
                             {
                                 Duration = TimeSpan.FromMinutes(5),
                                 Reason = "Did shot",
-                                BannedByUser = new User { SteamId = 123, UserName = "titi" },
+                                BannedByUser = new User { SteamId = 456, UserName = "titi" },
                             },
                         },
                     },
