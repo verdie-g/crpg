@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Hosting.Internal;
 using Serilog;
 
 namespace Crpg.WebApi
@@ -20,7 +19,6 @@ namespace Crpg.WebApi
 
         private static IConfiguration Configuration { get; } = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", true, true)
             .AddJsonFile($"appsettings.{Env}.json", true, true)
             .AddEnvironmentVariables()
             .Build();
@@ -39,7 +37,7 @@ namespace Crpg.WebApi
                 try
                 {
                     var mediator = services.GetRequiredService<IMediator>();
-                    await mediator.Send(new SeedDataCommand { IsDevelopment = true }, CancellationToken.None);
+                    await mediator.Send(new SeedDataCommand(), CancellationToken.None);
                 }
                 catch (Exception ex)
                 {
@@ -50,7 +48,7 @@ namespace Crpg.WebApi
 
             try
             {
-                await CreateHostBuilder(args).Build().RunAsync();
+                await host.RunAsync();
                 return 0;
             }
             catch (Exception ex)

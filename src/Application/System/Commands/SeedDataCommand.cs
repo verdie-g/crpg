@@ -15,22 +15,22 @@ namespace Crpg.Application.System.Commands
 {
     public class SeedDataCommand : IRequest
     {
-        public bool IsDevelopment { get; set; }
-
         public class Handler : IRequestHandler<SeedDataCommand>
         {
             private readonly ICrpgDbContext _db;
             private readonly IItemsSource _itemsSource;
+            private readonly IApplicationEnvironment _appEnv;
 
-            public Handler(ICrpgDbContext db, IItemsSource itemsSource)
+            public Handler(ICrpgDbContext db, IItemsSource itemsSource, IApplicationEnvironment appEnv)
             {
                 _db = db;
                 _itemsSource = itemsSource;
+                _appEnv = appEnv;
             }
 
             public async Task<Unit> Handle(SeedDataCommand request, CancellationToken cancellationToken)
             {
-                if (request.IsDevelopment)
+                if (_appEnv.Environment == HostingEnvironment.Development)
                 {
                     AddDevelopperUsers();
                 }
