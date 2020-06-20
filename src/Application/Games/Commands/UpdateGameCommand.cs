@@ -175,7 +175,7 @@ namespace Crpg.Application.Games.Commands
                 }
             }
 
-            private Ban? GetActiveBan(List<Ban> bans)
+            private Ban? GetActiveBan(IList<Ban> bans)
             {
                 Ban? lastBan = bans.OrderByDescending(b => b.Id).FirstOrDefault();
                 return lastBan != null && lastBan.CreatedAt + lastBan.Duration > _dateTime.Now ? lastBan : null;
