@@ -3,7 +3,6 @@ using System.Net;
 using System.Net.Mime;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Exceptions;
-using Crpg.Persistence.Exceptions;
 using Crpg.WebApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
