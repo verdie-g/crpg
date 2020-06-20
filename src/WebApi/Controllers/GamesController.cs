@@ -9,14 +9,11 @@ namespace Crpg.WebApi.Controllers
     [Authorize(Roles = "Game")]
     public class GamesController : BaseController
     {
-        [HttpPost("ticks")]
-        public async Task<ActionResult<RewardResponse>> Reward([FromBody] RewardCommand reward)
-        {
-            return Ok(await Mediator.Send(reward));
-        }
-
-        [HttpPut("users")]
-        public async Task<ActionResult<GameUser>> GetOrCreateUser([FromBody] UpsertGameUserCommand cmd)
+        /// <summary>
+        /// All-in-One endpoint to get or create users with character, give gold and experience, and break/repair items.
+        /// </summary>
+        [HttpPut("update")]
+        public async Task<ActionResult<GameUser>> Update([FromBody] UpdateGameCommand cmd)
         {
             return Ok(await Mediator.Send(cmd));
         }

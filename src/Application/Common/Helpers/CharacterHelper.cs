@@ -9,6 +9,7 @@ namespace Crpg.Application.Common.Helpers
         public const int DefaultLevel = 1;
         public const int DefaultExperience = 0;
         public const float DefaultExperienceMultiplier = 1.0f;
+        public const bool DefaultAutoRepair = true;
 
         private const int DefaultStrength = 3;
         private const int DefaultAgility = 3;
@@ -64,6 +65,54 @@ namespace Crpg.Application.Common.Helpers
             items.Weapon2Item = null;
             items.Weapon3Item = null;
             items.Weapon4Item = null;
+        }
+
+        public static void UnequipCharacterItem(CharacterItems items, int itemId)
+        {
+            if (items.HeadItemId == itemId)
+            {
+                items.HeadItemId = null;
+            }
+            else if (items.CapeItemId == itemId)
+            {
+                items.CapeItemId = null;
+            }
+            else if (items.BodyItemId == itemId)
+            {
+                items.BodyItemId = null;
+            }
+            else if (items.HandItemId == itemId)
+            {
+                items.HandItemId = null;
+            }
+            else if (items.LegItemId == itemId)
+            {
+                items.LegItemId = null;
+            }
+            else if (items.HorseHarnessItemId == itemId)
+            {
+                items.HorseHarnessItemId = null;
+            }
+            else if (items.HorseItemId == itemId)
+            {
+                items.HorseItemId = null;
+            }
+            else if (items.Weapon1ItemId == itemId)
+            {
+                items.Weapon1ItemId = null;
+            }
+            else if (items.Weapon2ItemId == itemId)
+            {
+                items.Weapon2ItemId = null;
+            }
+            else if (items.Weapon3ItemId == itemId)
+            {
+                items.Weapon3ItemId = null;
+            }
+            else if (items.Weapon4ItemId == itemId)
+            {
+                items.Weapon4ItemId = null;
+            }
         }
 
         private static int WeaponProficiencyPointsForLevel(int lvl)

@@ -1,7 +1,7 @@
-using Crpg.Application.Games;
+using Crpg.Application.Common.Helpers;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Games
+namespace Crpg.Application.UTest.Common.Helpers
 {
     public class ExperienceTableTest
     {

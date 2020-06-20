@@ -34,9 +34,19 @@ namespace Crpg.Application.UTest
             return Task.CompletedTask;
         }
 
+        protected void ClearDbContext()
+        {
+            foreach (var entry in Db.ChangeTracker.Entries())
+            {
+                entry.State = EntityState.Detached;
+            }
+        }
+
         private CrpgDbContext InitDb()
         {
             var options = new DbContextOptionsBuilder<CrpgDbContext>()
+                .EnableSensitiveDataLogging()
+                .EnableDetailedErrors()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
             return new CrpgDbContext(options, Mock.Of<IDateTimeOffset>());
