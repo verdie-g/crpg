@@ -28,8 +28,8 @@ namespace Crpg.Domain.Entities
         /// </summary>
         public Uri? AvatarFull { get; set; }
 
-        public List<UserItem> UserItems { get; set; } = new List<UserItem>();
-        public List<Character> Characters { get; set; } = new List<Character>();
-        public List<Ban> Bans { get; set; } = new List<Ban>();
+        public IList<UserItem> UserItems { get; set; } = new List<UserItem>();
+        public IList<Character> Characters { get; set; } = new List<Character>();
+        public IList<Ban> Bans { get; set; } = new List<Ban>();
     }
 }
