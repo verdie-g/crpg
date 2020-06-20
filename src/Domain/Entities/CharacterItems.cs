@@ -1,6 +1,9 @@
+using System;
+using System.Collections.Generic;
+
 namespace Crpg.Domain.Entities
 {
-    public class CharacterItems
+    public class CharacterItems : ICloneable
     {
         public int? HeadItemId { get; set; }
         public int? CapeItemId { get; set; }
@@ -26,5 +29,81 @@ namespace Crpg.Domain.Entities
         public Item? Weapon2Item { get; set; }
         public Item? Weapon3Item { get; set; }
         public Item? Weapon4Item { get; set; }
+
+        public IEnumerable<(ItemSlot slot, Item item)> ItemSlotPairs()
+        {
+            if (HeadItem != null)
+            {
+                yield return (ItemSlot.Head, HeadItem);
+            }
+
+            if (CapeItem != null)
+            {
+                yield return (ItemSlot.Cape, CapeItem);
+            }
+
+            if (BodyItem != null)
+            {
+                yield return (ItemSlot.Body, BodyItem);
+            }
+
+            if (HandItem != null)
+            {
+                yield return (ItemSlot.Hand, HandItem);
+            }
+
+            if (LegItem != null)
+            {
+                yield return (ItemSlot.Leg, LegItem);
+            }
+
+            if (HorseHarnessItem != null)
+            {
+                yield return (ItemSlot.HorseHarness, HorseHarnessItem);
+            }
+
+            if (HorseItem != null)
+            {
+                yield return (ItemSlot.Horse, HorseItem);
+            }
+
+            if (Weapon1Item != null)
+            {
+                yield return (ItemSlot.Weapon1, Weapon1Item);
+            }
+
+            if (Weapon2Item != null)
+            {
+                yield return (ItemSlot.Weapon2, Weapon2Item);
+            }
+
+            if (Weapon3Item != null)
+            {
+                yield return (ItemSlot.Weapon3, Weapon3Item);
+            }
+
+            if (Weapon4Item != null)
+            {
+                yield return (ItemSlot.Weapon4, Weapon4Item);
+            }
+        }
+
+        public object Clone()
+        {
+            return new CharacterItems
+            {
+                HeadItem = HeadItem,
+                CapeItem = CapeItem,
+                BodyItem = BodyItem,
+                HandItem = HandItem,
+                LegItem = LegItem,
+                HorseHarnessItem = HorseHarnessItem,
+                HorseItem = HorseItem,
+                Weapon1Item = Weapon1Item,
+                Weapon2Item = Weapon2Item,
+                Weapon3Item = Weapon3Item,
+                Weapon4Item = Weapon4Item,
+            };
+        }
     }
 }

@@ -1,7 +1,6 @@
 using System;
-using System.Linq;
 
-namespace Crpg.Application.Games
+namespace Crpg.Application.Common.Helpers
 {
     public static class ExperienceTable
     {

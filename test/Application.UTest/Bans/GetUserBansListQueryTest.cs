@@ -27,8 +27,8 @@ namespace Crpg.Application.UTest.Bans
             var bans = await new GetUserBansListQuery.Handler(Db, Mapper).Handle(
                 new GetUserBansListQuery { UserId = user.Id }, CancellationToken.None);
             Assert.AreEqual(2, bans.Count);
-            Assert.AreEqual(123, bans[0].BannedByUser.SteamId);
-            Assert.AreEqual(456, bans[1].BannedByUser.SteamId);
+            Assert.AreEqual(123, bans[0].BannedByUser!.SteamId);
+            Assert.AreEqual(456, bans[1].BannedByUser!.SteamId);
         }
 
         [Test]

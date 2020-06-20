@@ -27,10 +27,10 @@ namespace Crpg.Application.UTest.Bans
                 BannedByUserId = user2.Entity.Id,
             }, CancellationToken.None);
 
-            Assert.AreEqual(user1.Entity.Id, ban.BannedUser.Id);
+            Assert.AreEqual(user1.Entity.Id, ban.BannedUser!.Id);
             Assert.AreEqual(TimeSpan.FromDays(1), ban.Duration);
             Assert.AreEqual("toto", ban.Reason);
-            Assert.AreEqual(user2.Entity.Id, ban.BannedByUser.Id);
+            Assert.AreEqual(user2.Entity.Id, ban.BannedByUser!.Id);
             Assert.AreEqual(user2.Entity.SteamId, ban.BannedByUser.SteamId);
             Assert.AreEqual(user2.Entity.UserName, ban.BannedByUser.UserName);
         }

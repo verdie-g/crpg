@@ -235,7 +235,7 @@ namespace Crpg.WebApi.Controllers
                 Id = b.Id,
                 Duration = (int)b.Duration.TotalMilliseconds,
                 Reason = b.Reason,
-                BannedByUser = b.BannedByUser,
+                BannedByUser = b.BannedByUser!,
                 CreatedAt = b.CreatedAt,
             }));
         }
