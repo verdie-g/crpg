@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Crpg.Application.Common.Interfaces.Metrics;
 using Microsoft.Extensions.Logging;
 
@@ -20,6 +21,6 @@ namespace Crpg.Infrastructure.Metrics.Debug
             new DebugMetric(metricName, tags, _logger);
         public IGauge CreateGauge(string metricName, Func<double> evaluator, IList<string>? tags = null) =>
             new DebugMetric(metricName, tags, _logger);
-        public void Dispose() { }
+        public ValueTask DisposeAsync() => default;
     }
 }

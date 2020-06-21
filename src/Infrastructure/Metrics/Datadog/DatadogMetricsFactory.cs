@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Crpg.Application.Common.Interfaces.Metrics;
 using DatadogStatsD;
 
@@ -20,6 +21,6 @@ namespace Crpg.Infrastructure.Metrics.Datadog
         public IGauge CreateGauge(string metricName, Func<double> evaluator, IList<string>? tags = null) =>
             new DatadogGauge(_dogStatsD.CreateGauge(metricName, evaluator, tags));
 
-        public void Dispose() => _dogStatsD.Dispose();
+        public ValueTask DisposeAsync() => _dogStatsD.DisposeAsync();
     }
 }
