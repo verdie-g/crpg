@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Crpg.Application.Common.Interfaces.Metrics;
 using Microsoft.Extensions.Logging;
