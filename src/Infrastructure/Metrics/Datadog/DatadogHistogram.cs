@@ -8,7 +8,7 @@ namespace Crpg.Infrastructure.Metrics.Datadog
         private readonly Histogram _underlyingHistogram;
 
         public DatadogHistogram(Histogram histogram) => _underlyingHistogram = histogram;
-        public void Record(double value) => _underlyingHistogram.Record(value);
+        public void Record(double value) => _underlyingHistogram.Sample(value);
         public void Dispose() => _underlyingHistogram.Dispose();
     }
 }
