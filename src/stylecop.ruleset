@@ -67,6 +67,7 @@
     </Rules>
     <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
         <Rule Id="SA1600" Action="None" /> <!-- Elements should be documented -->
+        <Rule Id="SA1623" Action="None" /> <!-- Property documentation summary text should begin with: 'Gets or sets' -->
         <Rule Id="SA1633" Action="None" /> <!-- File should have header -->
         <Rule Id="SA0001" Action="None" /> <!-- XML comments -->
         <Rule Id="SA1101" Action="None" /> <!-- Prefix local calls with this -->

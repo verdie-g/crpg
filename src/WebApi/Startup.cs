@@ -12,6 +12,7 @@ using Crpg.Application;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Steam;
 using Crpg.Application.Users.Commands;
+using Crpg.Common.Helpers;
 using Crpg.Infrastructure;
 using Crpg.Persistence;
 using Crpg.WebApi.Middlewares;
@@ -26,7 +27,6 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -201,9 +201,10 @@ namespace Crpg.WebApi
                 var mapper = ctx.HttpContext.RequestServices.GetRequiredService<IMapper>();
                 var tokenIssuer = ctx.HttpContext.RequestServices.GetRequiredService<ITokenIssuer>();
 
-                var res = ctx.User[SteamAuthenticationConstants.Parameters.Response];
-                var players = res[SteamAuthenticationConstants.Parameters.Players];
-                var player = players.First.ToObject<SteamPlayer>();
+                var player = ctx.UserPayload.RootElement
+                    .GetProperty(SteamAuthenticationConstants.Parameters.Response)
+                    .GetProperty(SteamAuthenticationConstants.Parameters.Players)[0]
+                    .ToObject<SteamPlayer>();
 
                 var user = await mediator.Send(mapper.Map<UpsertUserCommand>(player));
 
