@@ -3,6 +3,7 @@
     public interface IApplicationEnvironment
     {
         HostingEnvironment Environment { get; }
-        string Name { get; }
+        string ServiceName { get; }
+        string HostName { get; }
     }
 }
