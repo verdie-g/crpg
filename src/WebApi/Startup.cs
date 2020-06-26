@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using AspNet.Security.OpenId.Steam;
 using AutoMapper;
@@ -204,7 +205,7 @@ namespace Crpg.WebApi
                 var player = ctx.UserPayload.RootElement
                     .GetProperty(SteamAuthenticationConstants.Parameters.Response)
                     .GetProperty(SteamAuthenticationConstants.Parameters.Players)[0]
-                    .ToObject<SteamPlayer>();
+                    .ToObject<SteamPlayer>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
                 var user = await mediator.Send(mapper.Map<UpsertUserCommand>(player));
 
