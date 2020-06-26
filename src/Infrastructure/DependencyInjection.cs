@@ -1,3 +1,4 @@
+using System;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Common.Interfaces.Metrics;
@@ -39,7 +40,7 @@ namespace Crpg.Infrastructure
                 var dogStatsD = new DogStatsD(new DogStatsDConfiguration
                 {
                     Namespace = "crpg",
-                    ConstantTags = new[] { "service:" + appEnv.Name },
+                    ConstantTags = new[] { "service:" + appEnv.ServiceName },
                 });
 
                 services.AddSingleton<IMetricsFactory>(new DatadogMetricsFactory(dogStatsD));
@@ -52,7 +53,7 @@ namespace Crpg.Infrastructure
         private static IApplicationEnvironment CreateApplicationEnvironment(IHostEnvironment environment)
         {
             var env = environment.IsProduction() ? HostingEnvironment.Production : HostingEnvironment.Development;
-            return new ApplicationEnvironment(env, "crpg_web_api");
+            return new ApplicationEnvironment(env, "crpg_web_api", Environment.MachineName);
         }
     }
 }
