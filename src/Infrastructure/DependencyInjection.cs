@@ -18,19 +18,18 @@ namespace Crpg.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services,
             IConfiguration configuration, IHostEnvironment environment)
         {
+            var appEnv = CreateApplicationEnvironment(environment);
             return services
-                .AddDatadog(configuration, environment)
+                .AddDatadog(appEnv)
+                .AddSingleton(appEnv)
                 .AddSingleton<IDateTimeOffset, MachineDateTimeOffset>()
                 .AddSingleton<IRandom, ThreadSafeRandom>()
                 .AddSingleton<IItemsSource, FileItemsSource>();
         }
 
-        private static IServiceCollection AddDatadog(this IServiceCollection services, IConfiguration configuration,
-            IHostEnvironment environment)
+        private static IServiceCollection AddDatadog(this IServiceCollection services, IApplicationEnvironment appEnv)
         {
-            var appEnv = CreateApplicationEnvironment(environment);
-
-            if (environment.IsDevelopment())
+            if (appEnv.Environment == HostingEnvironment.Development)
             {
                 services.AddSingleton<IMetricsFactory, DebugMetricsFactory>();
                 services.AddSingleton<IEventRaiser, DebugEventRaiser>();
@@ -47,8 +46,7 @@ namespace Crpg.Infrastructure
                 services.AddSingleton<IEventRaiser>(new DatadogEventRaiser(dogStatsD));
             }
 
-            return services
-                .AddSingleton(appEnv);
+            return services;
         }
 
         private static IApplicationEnvironment CreateApplicationEnvironment(IHostEnvironment environment)
