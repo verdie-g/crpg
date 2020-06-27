@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.System.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +34,7 @@ namespace Crpg.WebApi
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
+                services.GetRequiredService<IEventRaiser>().Raise(EventLevel.Info, "cRPG Web API Started", string.Empty);
 
                 try
                 {
