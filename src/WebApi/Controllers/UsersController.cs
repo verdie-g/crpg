@@ -204,7 +204,7 @@ namespace Crpg.WebApi.Controllers
         {
             req.UserId = CurrentUser.UserId;
             var item = await Mediator.Send(req);
-            return CreatedAtAction(nameof(ItemsController.GetItem), "Items", new { id = item.Id }, item);
+            return CreatedAtAction(nameof(ItemsController.GetItemsList), "Items", new { id = item.Id }, item);
         }
 
         /// <summary>
