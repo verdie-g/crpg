@@ -9,7 +9,7 @@ namespace Crpg.Application.Common.Services
     /// <summary>
     /// Service for looming and repair <see cref="ItemCreation"/>.
     /// </summary>
-    internal class ItemModifierService
+    public class ItemModifierService
     {
         private static readonly ItemModifier[] ArmorModifiers =
         {

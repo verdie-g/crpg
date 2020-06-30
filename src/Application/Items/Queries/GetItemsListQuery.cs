@@ -28,6 +28,7 @@ namespace Crpg.Application.Items.Queries
             {
                 var items = await _db.Items
                     .OrderBy(i => i.Value)
+                    .Where(i => i.Rank == 0) // don't return broken or loomed items
                     .ToListAsync(cancellationToken);
 
                 // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729

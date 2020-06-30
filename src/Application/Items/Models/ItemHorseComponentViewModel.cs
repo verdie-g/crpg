@@ -3,7 +3,7 @@ using Crpg.Domain.Entities;
 
 namespace Crpg.Application.Items.Models
 {
-    public class ItemHorseComponentViewModel : IMapFrom<ItemHorseComponent>
+    public class ItemHorseComponentViewModel : IMapFrom<ItemHorseComponentViewModel>, IMapFrom<ItemHorseComponent>
     {
         public int BodyLength { get; set; }
         public int ChargeDamage { get; set; }
