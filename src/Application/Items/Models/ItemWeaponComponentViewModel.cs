@@ -3,7 +3,7 @@ using Crpg.Domain.Entities;
 
 namespace Crpg.Application.Items.Models
 {
-    public class ItemWeaponComponentViewModel : IMapFrom<ItemWeaponComponent>
+    public class ItemWeaponComponentViewModel : IMapFrom<ItemWeaponComponentViewModel>, IMapFrom<ItemWeaponComponent>
     {
         public int Accuracy { get; set; }
         public int MissileSpeed { get; set; }

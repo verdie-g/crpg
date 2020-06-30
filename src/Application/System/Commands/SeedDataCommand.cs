@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Games;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
@@ -17,15 +18,19 @@ namespace Crpg.Application.System.Commands
     {
         public class Handler : IRequestHandler<SeedDataCommand>
         {
+            private static readonly int[] ItemRanks = { -3, -2, -1, 1, 2, 3 };
             private readonly ICrpgDbContext _db;
             private readonly IItemsSource _itemsSource;
             private readonly IApplicationEnvironment _appEnv;
+            private readonly ItemModifierService _itemModifier;
 
-            public Handler(ICrpgDbContext db, IItemsSource itemsSource, IApplicationEnvironment appEnv)
+            public Handler(ICrpgDbContext db, IItemsSource itemsSource, IApplicationEnvironment appEnv,
+                ItemModifierService itemModifier)
             {
                 _db = db;
                 _itemsSource = itemsSource;
                 _appEnv = appEnv;
+                _itemModifier = itemModifier;
             }
 
             public async Task<Unit> Handle(SeedDataCommand request, CancellationToken cancellationToken)
@@ -109,29 +114,44 @@ namespace Crpg.Application.System.Commands
             {
                 var itemsByMdId = (await _itemsSource.LoadItems())
                     .ToDictionary(i => i.MbId, i => i);
-                var dbItemsByMdId = await _db.Items
+                var dbItemsByMbId = await _db.Items
                     .ToDictionaryAsync(di => di.MbId, di => di, cancellationToken);
 
                 foreach (ItemCreation item in itemsByMdId.Values)
                 {
-                    var newDbItem = ItemHelper.ToItem(item);
-                    if (dbItemsByMdId.TryGetValue(item.MbId, out Item? dbItem))
+                    var baseItem = ItemHelper.ToItem(item);
+                    baseItem.Rank = 0;
+                    baseItem.BaseItem = baseItem;
+                    CreateOrUpdateItem(dbItemsByMbId, baseItem);
+
+                    foreach (int rank in ItemRanks)
                     {
-                        newDbItem.Id = dbItem.Id;
-                        _db.Entry(dbItem).CurrentValues.SetValues(newDbItem);
-                    }
-                    else
-                    {
-                        _db.Items.Add(newDbItem);
+                        var modifiedItem = ItemHelper.ToItem(_itemModifier.ModifyItem(item, rank));
+                        modifiedItem.Rank = rank;
+                        modifiedItem.BaseItem = baseItem;
+                        CreateOrUpdateItem(dbItemsByMbId, modifiedItem);
                     }
                 }
 
-                foreach (Item dbItem in dbItemsByMdId.Values)
+                foreach (Item dbItem in dbItemsByMbId.Values)
                 {
                     if (!itemsByMdId.ContainsKey(dbItem.MbId))
                     {
                         _db.Items.Remove(dbItem);
                     }
+                }
+            }
+
+            private void CreateOrUpdateItem(Dictionary<string, Item> dbItemsByMbId, Item item)
+            {
+                if (dbItemsByMbId.TryGetValue(item.MbId, out Item? dbItem))
+                {
+                    item.Id = dbItem.Id;
+                    _db.Entry(dbItem).CurrentValues.SetValues(item);
+                }
+                else
+                {
+                    _db.Items.Add(item);
                 }
             }
         }

@@ -17,12 +17,21 @@ namespace Crpg.Application.UTest.Items
                     Name = "toto",
                     Value = 100,
                     Type = ItemType.BodyArmor,
+                    Rank = 0,
+                },
+                new Item
+                {
+                    Name = "toto",
+                    Value = 100,
+                    Type = ItemType.Cape,
+                    Rank = 3,
                 },
                 new Item
                 {
                     Name = "tata",
                     Value = 200,
                     Type = ItemType.HandArmor,
+                    Rank = 0,
                 });
             await Db.SaveChangesAsync();
 

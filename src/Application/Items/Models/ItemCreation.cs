@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using Crpg.Application.Common.Mappings;
 using Crpg.Domain.Entities;
 
 namespace Crpg.Application.Items.Models
 {
-    public class ItemCreation
+    public class ItemCreation : IMapFrom<ItemCreation>
     {
         public string MbId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
