@@ -37,10 +37,6 @@ namespace Crpg.WebApi.Middlewares
             {
                 await WriteErrorResponse(context, HttpStatusCode.NotFound, e.Message);
             }
-            catch (ForbiddenException e)
-            {
-                await WriteErrorResponse(context, HttpStatusCode.Forbidden, e.Message);
-            }
             catch (ConflictException e)
             {
                 context.Response.StatusCode = (int)HttpStatusCode.Conflict;

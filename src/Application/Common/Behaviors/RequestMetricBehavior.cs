@@ -41,11 +41,6 @@ namespace Crpg.Application.Common.Behaviors
                 _metrics.StatusErrorNotFound.Increment();
                 throw;
             }
-            catch (ForbiddenException)
-            {
-                _metrics.StatusErrorForbidden.Increment();
-                throw;
-            }
             catch (ConflictException)
             {
                 _metrics.StatusErrorConflict.Increment();
