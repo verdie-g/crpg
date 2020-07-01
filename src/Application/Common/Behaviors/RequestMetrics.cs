@@ -8,7 +8,6 @@ namespace Crpg.Application.Common.Behaviors
         public ICount StatusOk { get; }
         public ICount StatusErrorBadRequest { get; }
         public ICount StatusErrorNotFound { get; }
-        public ICount StatusErrorForbidden { get; }
         public ICount StatusErrorConflict { get; }
         public ICount StatusErrorUnknown { get; }
         public IHistogram ResponseTime { get; }
@@ -23,7 +22,6 @@ namespace Crpg.Application.Common.Behaviors
             StatusOk = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, statusKeyPrefix + "ok" });
             StatusErrorBadRequest = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, statusKeyPrefix + "bad_request" });
             StatusErrorNotFound = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, statusKeyPrefix + "not_found" });
-            StatusErrorForbidden = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, statusKeyPrefix + "forbidden" });
             StatusErrorConflict = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, statusKeyPrefix + "conflict" });
             StatusErrorUnknown = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, statusKeyPrefix + "unknown" });
             ResponseTime = metricsFactory.CreateHistogram(metricResponseTime, tags: new[] { requestNameTag });
