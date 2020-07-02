@@ -67,51 +67,51 @@ namespace Crpg.Application.Common.Helpers
             items.Weapon4Item = null;
         }
 
-        public static void UnequipCharacterItem(CharacterItems items, int itemId)
+        public static void ReplaceCharacterItem(CharacterItems items, int itemToReplaceId, int itemToReplaceWithId)
         {
-            if (items.HeadItemId == itemId)
+            if (items.HeadItemId == itemToReplaceId)
             {
-                items.HeadItemId = null;
+                items.HeadItemId = itemToReplaceWithId;
             }
-            else if (items.CapeItemId == itemId)
+            else if (items.CapeItemId == itemToReplaceId)
             {
-                items.CapeItemId = null;
+                items.CapeItemId = itemToReplaceWithId;
             }
-            else if (items.BodyItemId == itemId)
+            else if (items.BodyItemId == itemToReplaceId)
             {
-                items.BodyItemId = null;
+                items.BodyItemId = itemToReplaceWithId;
             }
-            else if (items.HandItemId == itemId)
+            else if (items.HandItemId == itemToReplaceId)
             {
-                items.HandItemId = null;
+                items.HandItemId = itemToReplaceWithId;
             }
-            else if (items.LegItemId == itemId)
+            else if (items.LegItemId == itemToReplaceId)
             {
-                items.LegItemId = null;
+                items.LegItemId = itemToReplaceWithId;
             }
-            else if (items.HorseHarnessItemId == itemId)
+            else if (items.HorseHarnessItemId == itemToReplaceId)
             {
-                items.HorseHarnessItemId = null;
+                items.HorseHarnessItemId = itemToReplaceWithId;
             }
-            else if (items.HorseItemId == itemId)
+            else if (items.HorseItemId == itemToReplaceId)
             {
-                items.HorseItemId = null;
+                items.HorseItemId = itemToReplaceWithId;
             }
-            else if (items.Weapon1ItemId == itemId)
+            else if (items.Weapon1ItemId == itemToReplaceId)
             {
-                items.Weapon1ItemId = null;
+                items.Weapon1ItemId = itemToReplaceWithId;
             }
-            else if (items.Weapon2ItemId == itemId)
+            else if (items.Weapon2ItemId == itemToReplaceId)
             {
-                items.Weapon2ItemId = null;
+                items.Weapon2ItemId = itemToReplaceWithId;
             }
-            else if (items.Weapon3ItemId == itemId)
+            else if (items.Weapon3ItemId == itemToReplaceId)
             {
-                items.Weapon3ItemId = null;
+                items.Weapon3ItemId = itemToReplaceWithId;
             }
-            else if (items.Weapon4ItemId == itemId)
+            else if (items.Weapon4ItemId == itemToReplaceId)
             {
-                items.Weapon4ItemId = null;
+                items.Weapon4ItemId = itemToReplaceWithId;
             }
         }
 

@@ -208,6 +208,19 @@ namespace Crpg.WebApi.Controllers
         }
 
         /// <summary>
+        /// Repair or loom item.
+        /// </summary>
+        /// <param name="id">Item id.</param>
+        /// <returns>The upgraded item.</returns>
+        /// <response code="200">Upgraded.</response>
+        /// <response code="400">Bad Request.</response>
+        [HttpPut("self/items/{id}/upgrade")]
+        public async Task<ActionResult<ItemViewModel>> UpgradeItem([FromRoute] int id)
+        {
+            return Ok(await Mediator.Send(new UpgradeItemCommand { ItemId = id, UserId = CurrentUser.UserId }));
+        }
+
+        /// <summary>
         /// Sells item for the current user.
         /// </summary>
         /// <param name="id">The id of the item to sell.</param>
