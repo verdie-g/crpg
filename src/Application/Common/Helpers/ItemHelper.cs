@@ -14,6 +14,7 @@ namespace Crpg.Application.Common.Helpers
                 Type = item.Type,
                 Value = item.Value,
                 Weight = item.Weight,
+                Rank = 0,
             };
 
             if (item.Armor != null)

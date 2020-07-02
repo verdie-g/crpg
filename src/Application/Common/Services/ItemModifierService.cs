@@ -143,7 +143,7 @@ namespace Crpg.Application.Common.Services
 
             var clone = _mapper.Map<ItemCreation>(baseItem);
 
-            int idx = rank < 0 ? rank + 3 : rank + 2;
+            Index idx = rank < 0 ? rank + 3 : rank + 2;
             ItemModifier modifier = ItemModifiers[baseItem.Type][idx];
             modifier.Apply(clone);
             return clone;

@@ -10,6 +10,7 @@ export default class Item {
   public value: number;
   public type: ItemType;
   public weight: number;
+  public rank: number;
 
   public armor: ItemArmorComponent | null;
   public horse: ItemHorseComponent | null;

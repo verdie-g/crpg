@@ -14,6 +14,7 @@ namespace Crpg.Application.Items.Models
         public int Value { get; set; }
         public ItemType Type { get; set; }
         public float Weight { get; set; }
+        public int Rank { get; set; }
 
         public ItemArmorComponentViewModel? Armor { get; set; }
         public ItemHorseComponentViewModel? Horse { get; set; }
