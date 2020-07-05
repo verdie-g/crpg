@@ -84,9 +84,9 @@ namespace Crpg.Application.Characters.Commands
             {
                 var ids = BuildItemIdCollection(request);
                 var itemsById = await _db.UserItems
-                    .Include(ui => ui.Item)
-                    .Where(ui => ids.Contains(ui.ItemId) && ui.UserId == request.UserId)
-                    .ToDictionaryAsync(ui => ui.ItemId, ui => ui.Item!);
+                    .Include(oi => oi.Item)
+                    .Where(oi => ids.Contains(oi.ItemId) && oi.UserId == request.UserId)
+                    .ToDictionaryAsync(oi => oi.ItemId, oi => oi.Item!);
 
                 characterItems.HeadItem = GetItemWithChecks(request.HeadItemId, new[] { ItemType.HeadArmor }, itemsById);
                 characterItems.CapeItem = GetItemWithChecks(request.CapeItemId, new[] { ItemType.Cape }, itemsById);

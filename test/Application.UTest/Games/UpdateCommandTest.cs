@@ -570,7 +570,7 @@ namespace Crpg.Application.UTest.Games
             // check broken items were added to user inventory
             foreach (var (_, item) in user.Entity.Characters[0].Items.ItemSlotPairs())
             {
-                Assert.DoesNotThrow(() => Db.UserItems.First(ui => ui.ItemId == item.Id && ui.UserId == user.Entity.Id));
+                Assert.DoesNotThrow(() => Db.UserItems.First(oi => oi.ItemId == item.Id && oi.UserId == user.Entity.Id));
             }
         }
 

@@ -33,7 +33,7 @@ namespace Crpg.Application.Users.Commands
             {
                 var user = await _db.Users
                     .Include(u => u.Characters)
-                    .Include(u => u.UserItems)
+                    .Include(u => u.OwnedItems)
                     .FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
                 if (user == null)
                 {
@@ -49,7 +49,7 @@ namespace Crpg.Application.Users.Commands
                 user.AvatarMedium = new Uri("https://via.placeholder.com/64x64");
                 user.AvatarFull = new Uri("https://via.placeholder.com/184x184");
 
-                _db.UserItems.RemoveRange(user.UserItems);
+                _db.UserItems.RemoveRange(user.OwnedItems);
                 _db.Characters.RemoveRange(user.Characters);
                 await _db.SaveChangesAsync(cancellationToken);
                 _events.Raise(EventLevel.Info, $"{userName} deleted its account ({steamId})", string.Empty, "user_deleted");

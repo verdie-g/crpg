@@ -11,12 +11,12 @@ namespace Crpg.Persistence.Configurations
             builder.HasKey(t => new { t.UserId, t.ItemId });
 
             builder
-                .HasOne(ui => ui!.User).WithMany(u => u!.UserItems)
-                .HasForeignKey(ui => ui.UserId);
+                .HasOne(oi => oi!.User).WithMany(u => u!.OwnedItems)
+                .HasForeignKey(oi => oi.UserId);
 
             builder
-                .HasOne(ui => ui!.Item).WithMany(u => u!.UserItems)
-                .HasForeignKey(ui => ui.ItemId);
+                .HasOne(oi => oi!.Item).WithMany(u => u!.UserItems)
+                .HasForeignKey(oi => oi.ItemId);
         }
     }
 }

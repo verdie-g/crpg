@@ -56,7 +56,7 @@ namespace Crpg.Application.UTest.Characters
             });
             var user = Db.Users.Add(new User
             {
-                UserItems = new List<UserItem>
+                OwnedItems = new List<UserItem>
                 {
                     new UserItem { Item = headOld.Entity },
                     new UserItem { Item = headNew.Entity },
@@ -146,7 +146,7 @@ namespace Crpg.Application.UTest.Characters
             });
             var user = Db.Users.Add(new User
             {
-                UserItems = new List<UserItem>
+                OwnedItems = new List<UserItem>
                 {
                     new UserItem { Item = headOld.Entity },
                     new UserItem { Item = headNew.Entity },
@@ -297,7 +297,7 @@ namespace Crpg.Application.UTest.Characters
             var character = Db.Characters.Add(new Character());
             var user = Db.Users.Add(new User
             {
-                UserItems = new List<UserItem>
+                OwnedItems = new List<UserItem>
                 {
                     new UserItem { Item = head.Entity },
                     new UserItem { Item = cape.Entity },

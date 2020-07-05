@@ -29,7 +29,7 @@ namespace Crpg.Application.UTest.Items
             var user = Db.Users.Add(new User
             {
                 Gold = 1000,
-                UserItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } }
+                OwnedItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } }
             });
             await Db.SaveChangesAsync();
 
@@ -49,7 +49,7 @@ namespace Crpg.Application.UTest.Items
             var user = Db.Users.Add(new User
             {
                 Gold = 0,
-                UserItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } }
+                OwnedItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } }
             });
             await Db.SaveChangesAsync();
 
@@ -67,7 +67,7 @@ namespace Crpg.Application.UTest.Items
             var user = Db.Users.Add(new User
             {
                 HeirloomPoints = 1,
-                UserItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } }
+                OwnedItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } }
             });
             await Db.SaveChangesAsync();
 
@@ -87,7 +87,7 @@ namespace Crpg.Application.UTest.Items
             var user = Db.Users.Add(new User
             {
                 HeirloomPoints = 0,
-                UserItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } }
+                OwnedItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } }
             });
             await Db.SaveChangesAsync();
 
@@ -106,7 +106,7 @@ namespace Crpg.Application.UTest.Items
             {
                 Gold = 1000,
                 HeirloomPoints = 3,
-                UserItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } },
+                OwnedItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } },
                 Characters = new List<Character>
                 {
                     new Character { Items = new CharacterItems { Weapon1ItemId = _items[itemIdx].Id } },
@@ -128,7 +128,7 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task ShouldThrowOnInvalidItemRank()
         {
-            var user = Db.Users.Add(new User { UserItems = new List<UserItem> { new UserItem { ItemId = _items[6].Id } } });
+            var user = Db.Users.Add(new User { OwnedItems = new List<UserItem> { new UserItem { ItemId = _items[6].Id } } });
             await Db.SaveChangesAsync();
 
             Assert.ThrowsAsync<BadRequestException>(() => new UpgradeItemCommand.Handler(Db, Mapper).Handle(

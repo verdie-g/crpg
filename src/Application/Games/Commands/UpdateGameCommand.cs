@@ -269,7 +269,7 @@ namespace Crpg.Application.Games.Commands
                 // add character items to user inventory
                 foreach (var (_, item) in character.Items.ItemSlotPairs())
                 {
-                    user.UserItems.Add(new UserItem { ItemId = item.Id });
+                    user.OwnedItems.Add(new UserItem { ItemId = item.Id });
                 }
 
                 return character;
@@ -327,10 +327,10 @@ namespace Crpg.Application.Games.Commands
                             ? tmp
                             : (int?)null; // the query did not return the downranked item, meaning the item was destroyed
 
-                        user.UserItems.Remove(new UserItem { ItemId = brokenItem.ItemId });
+                        user.OwnedItems.Remove(new UserItem { ItemId = brokenItem.ItemId });
                         if (downrankedItemId != null)
                         {
-                            user.UserItems.Add(new UserItem { ItemId = downrankedItemId.Value });
+                            user.OwnedItems.Add(new UserItem { ItemId = downrankedItemId.Value });
                         }
 
                         foreach (Character character in user.Characters)

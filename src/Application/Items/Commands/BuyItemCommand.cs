@@ -38,14 +38,14 @@ namespace Crpg.Application.Items.Commands
                 }
 
                 var user = await _db.Users
-                    .Include(u => u.UserItems)
+                    .Include(u => u.OwnedItems)
                     .FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
                 if (user == null)
                 {
                     throw new NotFoundException(nameof(User), request.UserId);
                 }
 
-                if (user.UserItems.Any(i => i.ItemId == request.ItemId))
+                if (user.OwnedItems.Any(i => i.ItemId == request.ItemId))
                 {
                     throw new BadRequestException("User already owns this item");
                 }
@@ -56,7 +56,7 @@ namespace Crpg.Application.Items.Commands
                 }
 
                 user.Gold -= item.Value;
-                user.UserItems.Add(new UserItem { UserId = request.UserId, ItemId = request.ItemId });
+                user.OwnedItems.Add(new UserItem { UserId = request.UserId, ItemId = request.ItemId });
                 await _db.SaveChangesAsync(cancellationToken);
                 return _mapper.Map<ItemViewModel>(item);
             }

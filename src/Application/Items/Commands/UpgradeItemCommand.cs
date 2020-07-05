@@ -36,9 +36,9 @@ namespace Crpg.Application.Items.Commands
             public async Task<ItemViewModel> Handle(UpgradeItemCommand request, CancellationToken cancellationToken)
             {
                 var userItem = await _db.UserItems
-                    .Include(ui => ui.User!).ThenInclude(u => u.Characters)
-                    .Include(ui => ui.Item!)
-                    .FirstOrDefaultAsync(ui => ui.UserId == request.UserId && ui.ItemId == request.ItemId, cancellationToken);
+                    .Include(oi => oi.User!).ThenInclude(u => u.Characters)
+                    .Include(oi => oi.Item!)
+                    .FirstOrDefaultAsync(oi => oi.UserId == request.UserId && oi.ItemId == request.ItemId, cancellationToken);
                 if (userItem == null)
                 {
                     throw new NotFoundException(nameof(UserItem), request.UserId, request.ItemId);
