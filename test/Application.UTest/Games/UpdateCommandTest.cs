@@ -77,6 +77,7 @@ namespace Crpg.Application.UTest.Games
             Assert.NotNull(res.Users[0].Character.Items.LegItem);
             Assert.NotNull(res.Users[0].Character.Items.Weapon1Item);
             Assert.NotNull(res.Users[0].Character.Items.Weapon2Item);
+            Assert.IsTrue(res.Users[0].Character.Items.AutoRepair);
             Assert.AreEqual(0, res.Users[0].BrokenItems.Count);
             Assert.IsNull(res.Users[0].Ban);
         }
@@ -118,6 +119,7 @@ namespace Crpg.Application.UTest.Games
             Assert.NotNull(res.Users[0].Character.Items.LegItem);
             Assert.NotNull(res.Users[0].Character.Items.Weapon1Item);
             Assert.NotNull(res.Users[0].Character.Items.Weapon2Item);
+            Assert.IsTrue(res.Users[0].Character.Items.AutoRepair);
             Assert.AreEqual(0, res.Users[0].BrokenItems.Count);
             Assert.IsNull(res.Users[0].Ban);
         }

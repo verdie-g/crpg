@@ -38,6 +38,7 @@ namespace Crpg.Application.Games.Commands
                     LegItem = new Item { MbId = "mp_strapped_shoes" },
                     Weapon1Item = new Item { MbId = "mp_aserai_axe" },
                     Weapon2Item = new Item { MbId = "mp_throwing_stone" },
+                    AutoRepair = CharacterHelper.DefaultAutoRepair,
                 },
                 // vlandia
                 new CharacterItems
@@ -47,6 +48,7 @@ namespace Crpg.Application.Games.Commands
                     LegItem = new Item { MbId = "mp_strapped_shoes" },
                     Weapon1Item = new Item { MbId = "mp_vlandian_billhook" },
                     Weapon2Item = new Item { MbId = "mp_sling_stone" },
+                    AutoRepair = CharacterHelper.DefaultAutoRepair,
                 },
                 // empire
                 new CharacterItems
@@ -56,6 +58,7 @@ namespace Crpg.Application.Games.Commands
                     LegItem = new Item { MbId = "mp_leather_shoes" },
                     Weapon1Item = new Item { MbId = "mp_empire_axe" },
                     Weapon2Item = new Item { MbId = "mp_throwing_stone" },
+                    AutoRepair = CharacterHelper.DefaultAutoRepair,
                 },
                 // sturgia
                 new CharacterItems
@@ -65,6 +68,7 @@ namespace Crpg.Application.Games.Commands
                     LegItem = new Item { MbId = "mp_wrapped_shoes" },
                     Weapon1Item = new Item { MbId = "mp_sturgia_mace" },
                     Weapon2Item = new Item { MbId = "mp_sling_stone" },
+                    AutoRepair = CharacterHelper.DefaultAutoRepair,
                 },
                 // khuzait
                 new CharacterItems
@@ -74,6 +78,7 @@ namespace Crpg.Application.Games.Commands
                     LegItem = new Item { MbId = "mp_strapped_leather_boots" },
                     Weapon1Item = new Item { MbId = "mp_khuzait_sichel" },
                     Weapon2Item = new Item { MbId = "mp_throwing_stone" },
+                    AutoRepair = CharacterHelper.DefaultAutoRepair,
                 },
                 // battania
                 new CharacterItems
@@ -83,6 +88,7 @@ namespace Crpg.Application.Games.Commands
                     LegItem = new Item { MbId = "mp_rough_tied_boots" },
                     Weapon1Item = new Item { MbId = "mp_battania_axe" },
                     Weapon2Item = new Item { MbId = "mp_sling_stone" },
+                    AutoRepair = CharacterHelper.DefaultAutoRepair,
                 },
                 // looters
                 new CharacterItems
@@ -92,6 +98,7 @@ namespace Crpg.Application.Games.Commands
                     LegItem = new Item { MbId = "mp_strapped_leather_boots" },
                     Weapon1Item = new Item { MbId = "mp_empire_long_twohandedaxe" },
                     Weapon2Item = new Item { MbId = "mp_throwing_stone" },
+                    AutoRepair = CharacterHelper.DefaultAutoRepair,
                 },
             };
 
@@ -284,17 +291,11 @@ namespace Crpg.Application.Games.Commands
                     Level = CharacterHelper.DefaultLevel,
                     Experience = CharacterHelper.DefaultExperience,
                     ExperienceMultiplier = CharacterHelper.DefaultExperienceMultiplier,
-                    Items = GetRandomCharacterItems(),
+                    Items = DefaultItemSets[_random.Next(DefaultItemSets.Length - 1)],
                 };
                 CharacterHelper.ResetCharacterStats(character);
 
                 return character;
-            }
-
-            private CharacterItems GetRandomCharacterItems()
-            {
-                Index randomIndex = _random.Next(DefaultItemSets.Length - 1);
-                return (CharacterItems)DefaultItemSets[randomIndex].Clone();
             }
 
             private async Task ReplaceBrokenItems(List<(int userId, GameUserBrokenItem[] brokenItems)> brokenItemsWithUser,
