@@ -17,7 +17,7 @@ namespace Crpg.Application.UTest.Items
             var user = Db.Users.Add(new User
             {
                 Gold = 0,
-                UserItems = new List<UserItem>
+                OwnedItems = new List<UserItem>
                 {
                     new UserItem
                     {
@@ -29,12 +29,12 @@ namespace Crpg.Application.UTest.Items
 
             await new SellItemCommand.Handler(Db).Handle(new SellItemCommand
             {
-                ItemId = user.Entity.UserItems[0].ItemId,
+                ItemId = user.Entity.OwnedItems[0].ItemId,
                 UserId = user.Entity.Id,
             }, CancellationToken.None);
 
             Assert.AreEqual(66, user.Entity.Gold);
-            Assert.False(user.Entity.UserItems.Any(ui => ui.ItemId == user.Entity.UserItems[0].ItemId));
+            Assert.False(user.Entity.OwnedItems.Any(oi => oi.ItemId == user.Entity.OwnedItems[0].ItemId));
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace Crpg.Application.UTest.Items
             var user = Db.Users.Add(new User
             {
                 Gold = 0,
-                UserItems = new List<UserItem> { new UserItem { Item = item } },
+                OwnedItems = new List<UserItem> { new UserItem { Item = item } },
                 Characters = characters,
             });
             await Db.SaveChangesAsync();
@@ -70,7 +70,7 @@ namespace Crpg.Application.UTest.Items
             }, CancellationToken.None);
 
             Assert.AreEqual(66, user.Entity.Gold);
-            Assert.False(user.Entity.UserItems.Any(ui => ui.ItemId == item.Id));
+            Assert.False(user.Entity.OwnedItems.Any(oi => oi.ItemId == item.Id));
             Assert.Null(characters[0].Items.HeadItem);
             Assert.Null(characters[1].Items.CapeItem);
             Assert.Null(characters[2].Items.BodyItem);

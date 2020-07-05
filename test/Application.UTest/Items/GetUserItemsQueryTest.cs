@@ -14,7 +14,7 @@ namespace Crpg.Application.UTest.Items
         {
             var user = Db.Users.Add(new User
             {
-                UserItems = new List<UserItem>
+                OwnedItems = new List<UserItem>
                 {
                     new UserItem { Item = new Item() },
                     new UserItem { Item = new Item() },

@@ -29,9 +29,9 @@ namespace Crpg.Application.Items.Queries
             public async Task<IList<ItemViewModel>> Handle(GetUserItemsQuery request, CancellationToken cancellationToken)
             {
                 var ownedItems = await _db.UserItems
-                    .Where(ui => ui.UserId == request.UserId)
-                    .Include(ui => ui.Item)
-                    .Select(ui => ui.Item)
+                    .Where(oi => oi.UserId == request.UserId)
+                    .Include(oi => oi.Item)
+                    .Select(oi => oi.Item)
                     .ToListAsync(cancellationToken);
 
                 // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729

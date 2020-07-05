@@ -27,12 +27,12 @@ namespace Crpg.Application.UTest.Items
             }, CancellationToken.None);
 
             var userDb = await Db.Users
-                .Include(u => u.UserItems)
+                .Include(u => u.OwnedItems)
                 .FirstAsync(u => u.Id == user.Entity.Id);
 
             Assert.AreEqual(item.Entity.Id, boughtItem.Id);
             Assert.AreEqual(0, userDb.Gold);
-            Assert.IsTrue(userDb.UserItems.Any(i => i.ItemId == boughtItem.Id));
+            Assert.IsTrue(userDb.OwnedItems.Any(i => i.ItemId == boughtItem.Id));
         }
 
         [Test]
@@ -85,7 +85,7 @@ namespace Crpg.Application.UTest.Items
             var user = Db.Users.Add(new User
             {
                 Gold = 100,
-                UserItems = new List<UserItem> { new UserItem { ItemId = item.Entity.Id } }
+                OwnedItems = new List<UserItem> { new UserItem { ItemId = item.Entity.Id } }
             });
             await Db.SaveChangesAsync();
 
