@@ -43,8 +43,8 @@ namespace Crpg.Application.Common.Services
 
         private static readonly ItemModifier[] BowModifiers =
         {
-            new BowModifier { Name = "Destroyed",  Value = 0.3f,  Damage = 0.7f,  FireRate = 0.75f, Accuracy = 0.94f },
-            new BowModifier { Name = "Cracked",    Value = 0.5f,  Damage = 0.8f,  FireRate = 0.85f, Accuracy = 0.96f },
+            new BowModifier { Name = "Cracked",    Value = 0.3f,  Damage = 0.7f,  FireRate = 0.75f, Accuracy = 0.94f },
+            new BowModifier { Name = "Chipped",    Value = 0.5f,  Damage = 0.8f,  FireRate = 0.85f, Accuracy = 0.96f },
             new BowModifier { Name = "Bent",       Value = 0.65f, Damage = 0.9f,  FireRate = 0.95f, Accuracy = 0.98f },
             new BowModifier { Name = "Strong",     Value = 1.1f,  Damage = 1.05f, FireRate = 1.03f, Accuracy = 1.01f },
             new BowModifier { Name = "Fine",       Value = 1.2f,  Damage = 1.05f, FireRate = 1.06f, Accuracy = 1.02f },
@@ -53,8 +53,8 @@ namespace Crpg.Application.Common.Services
 
         private static readonly ItemModifier[] CrossbowModifiers =
         {
-            new CrossbowModifier { Name = "Destroyed",  Value = 0.3f,  Damage = 0.4f,   FireRate = 1f,    Accuracy = 0.82f },
-            new CrossbowModifier { Name = "Cracked",    Value = 0.5f,  Damage = 0.6f,   FireRate = 1f,    Accuracy = 0.88f },
+            new CrossbowModifier { Name = "Cracked",    Value = 0.3f,  Damage = 0.4f,   FireRate = 1f,    Accuracy = 0.82f },
+            new CrossbowModifier { Name = "Chipped",    Value = 0.5f,  Damage = 0.6f,   FireRate = 1f,    Accuracy = 0.88f },
             new CrossbowModifier { Name = "Bent",       Value = 0.65f, Damage = 0.8f,   FireRate = 1f,    Accuracy = 0.94f },
             new CrossbowModifier { Name = "Well Made",  Value = 1.1f,  Damage = 1.03f,  FireRate = 1.01f, Accuracy = 1.01f },
             new CrossbowModifier { Name = "Exquisite",  Value = 1.2f,  Damage = 1.05f,  FireRate = 1.01f, Accuracy = 1.02f },
@@ -73,7 +73,7 @@ namespace Crpg.Application.Common.Services
 
         private static readonly ItemModifier[] PolearmModifiers =
         {
-            new WeaponModifier { Name = "Destroyed",  Value = 0.3f,  Damage = 0.7f,  Speed = 1f },
+            new WeaponModifier { Name = "Cracked",    Value = 0.3f,  Damage = 0.7f,  Speed = 1f },
             new WeaponModifier { Name = "Damaged",    Value = 0.5f,  Damage = 0.8f,  Speed = 1f },
             new WeaponModifier { Name = "Bent",       Value = 0.65f, Damage = 0.9f,  Speed = 1f },
             new WeaponModifier { Name = "Deadly",     Value = 1.1f,  Damage = 1.01f, Speed = 1.1f },
@@ -93,7 +93,7 @@ namespace Crpg.Application.Common.Services
 
         private static readonly ItemModifier[] MissileModifiers =
         {
-            new MissileModifier { Name = "Destroyed",    Value = 0.3f,  Weight = 1f,   Damage = 0.25f, StackAmount = 0.55f },
+            new MissileModifier { Name = "Cracked",      Value = 0.3f,  Weight = 1f,   Damage = 0.25f, StackAmount = 0.55f },
             new MissileModifier { Name = "Damaged",      Value = 0.5f,  Weight = 1f,   Damage = 0.5f,  StackAmount = 0.7f },
             new MissileModifier { Name = "Worn",         Value = 0.65f, Weight = 1f,   Damage = 0.75f, StackAmount = 0.85f },
             new MissileModifier { Name = "Light Bag of", Value = 1.1f,  Weight = 0.8f, Damage = 1f,    StackAmount = 1f },
