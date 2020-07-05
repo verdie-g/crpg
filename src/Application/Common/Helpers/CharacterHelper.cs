@@ -67,7 +67,7 @@ namespace Crpg.Application.Common.Helpers
             items.Weapon4Item = null;
         }
 
-        public static void ReplaceCharacterItem(CharacterItems items, int itemToReplaceId, int itemToReplaceWithId)
+        public static void ReplaceCharacterItem(CharacterItems items, int itemToReplaceId, int? itemToReplaceWithId)
         {
             if (items.HeadItemId == itemToReplaceId)
             {

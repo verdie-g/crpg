@@ -119,6 +119,7 @@ namespace Crpg.Application.Games.Commands
                 }
 
                 var res = new List<GameUser>();
+                var brokenItemsWithUser = new List<(int, GameUserBrokenItem[])>();
                 Dictionary<long, User> users = await GetOrCreateUsers(cmd.GameUserUpdates, cancellationToken);
                 foreach (GameUserUpdate update in cmd.GameUserUpdates)
                 {
@@ -130,8 +131,12 @@ namespace Crpg.Application.Games.Commands
                         Reward(character, update.Reward);
                     }
 
-                    var brokenItems = RepairOrBreak(character, update.BrokenItems).ToArray();
                     var activeBan = GetActiveBan(user.Bans);
+                    var brokenItems = RepairOrBreak(character, update.BrokenItems).ToArray();
+                    if (brokenItems.Length != 0)
+                    {
+                        brokenItemsWithUser.Add((user.Id, brokenItems));
+                    }
 
                     res.Add(new GameUser
                     {
@@ -144,6 +149,7 @@ namespace Crpg.Application.Games.Commands
                     });
                 }
 
+                await ReplaceBrokenItems(brokenItemsWithUser, cancellationToken);
                 await _db.SaveChangesAsync(cancellationToken);
                 return new UpdateGameResult { Users = res };
             }
@@ -169,7 +175,8 @@ namespace Crpg.Application.Games.Commands
                     }
                     else
                     {
-                        // TODO: replace item from all user characters with one rank -1 (depends on https://github.com/verdie-g/cRPG/issues/36)
+                        // Item breaking is only done at the end of the command, after the response was generated,
+                        // meaning the user will still be using the unbroken item until this command is called again
                         yield return brokenItem;
                     }
                 }
@@ -286,8 +293,52 @@ namespace Crpg.Application.Games.Commands
 
             private CharacterItems GetRandomCharacterItems()
             {
-                int randomIndex = _random.Next(DefaultItemSets.Length - 1);
+                Index randomIndex = _random.Next(DefaultItemSets.Length - 1);
                 return (CharacterItems)DefaultItemSets[randomIndex].Clone();
+            }
+
+            private async Task ReplaceBrokenItems(List<(int userId, GameUserBrokenItem[] brokenItems)> brokenItemsWithUser,
+                CancellationToken cancellationToken)
+            {
+                if (brokenItemsWithUser.Count == 0)
+                {
+                    return;
+                }
+
+                var brokenItemIds = brokenItemsWithUser
+                    .SelectMany(bi => bi.brokenItems.Select(b => b.ItemId))
+                    .Distinct()
+                    .ToArray();
+
+                var downrankedItemsByOriginalItemId = await _db.Items
+                    .AsNoTracking()
+                    .Join(_db.Items, i => i.BaseItemId, i => i.BaseItemId, (i, f) => new { Original = i, Family = f })
+                    .Where(o => brokenItemIds.Contains(o.Original.Id) && o.Family.Rank == o.Original.Rank - 1)
+                    .ToDictionaryAsync(o => o.Original.Id, o => o.Family.Id, cancellationToken);
+
+                // query again users but with all their characters this time
+                var users = await _db.Users.Include(u => u.Characters).ToDictionaryAsync(u => u.Id, cancellationToken);
+                foreach (var (userId, brokenItems) in brokenItemsWithUser)
+                {
+                    User user = users[userId];
+                    foreach (var brokenItem in brokenItems)
+                    {
+                        int? downrankedItemId = downrankedItemsByOriginalItemId.TryGetValue(brokenItem.ItemId, out int tmp)
+                            ? tmp
+                            : (int?)null; // the query did not return the downranked item, meaning the item was destroyed
+
+                        user.UserItems.Remove(new UserItem { ItemId = brokenItem.ItemId });
+                        if (downrankedItemId != null)
+                        {
+                            user.UserItems.Add(new UserItem { ItemId = downrankedItemId.Value });
+                        }
+
+                        foreach (Character character in user.Characters)
+                        {
+                            CharacterHelper.ReplaceCharacterItem(character.Items, brokenItem.ItemId, downrankedItemId);
+                        }
+                    }
+                }
             }
 
             private async Task LoadDefaultItemSets()

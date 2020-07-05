@@ -28,7 +28,6 @@ namespace Crpg.Application.UTest.Games
 
             Db.Items.AddRange(allDefaultItemMbIds);
             await Db.SaveChangesAsync();
-            ClearDbContext();
         }
 
         [Test]
@@ -448,10 +447,10 @@ namespace Crpg.Application.UTest.Games
                             new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.LegItemId!.Value, RepairCost = 300 },
                             new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HorseHarnessItemId!.Value, RepairCost = 350 },
                             new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HorseItemId!.Value, RepairCost = 400 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon1Item!.Value, RepairCost = 450 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon2Item!.Value, RepairCost = 500 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon3Item!.Value, RepairCost = 550 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon4Item!.Value, RepairCost = 600 },
+                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon1ItemId!.Value, RepairCost = 450 },
+                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon2ItemId!.Value, RepairCost = 500 },
+                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon3ItemId!.Value, RepairCost = 550 },
+                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon4ItemId!.Value, RepairCost = 600 },
                         }
                     }
                 }
@@ -489,22 +488,39 @@ namespace Crpg.Application.UTest.Games
                         Name = "b",
                         Items = new CharacterItems
                         {
-                            HeadItem = new Item(),
-                            CapeItem = new Item(),
-                            BodyItem = new Item(),
-                            HandItem = new Item(),
-                            LegItem = new Item(),
-                            HorseHarnessItem = new Item(),
-                            HorseItem = new Item(),
-                            Weapon1Item = new Item(),
-                            Weapon2Item = new Item(),
-                            Weapon3Item = new Item(),
-                            Weapon4Item = new Item(),
+                            HeadItem = new Item { Rank = 3 },
+                            CapeItem = new Item { Rank = 2 },
+                            BodyItem = new Item { Rank = 1 },
+                            HandItem = new Item { Rank = 0 },
+                            LegItem = new Item { Rank = -1 },
+                            HorseHarnessItem = new Item { Rank = -2 },
+                            HorseItem = new Item { Rank = -3 },
+                            Weapon1Item = new Item { Rank = -2 },
+                            Weapon2Item = new Item { Rank = -1 },
+                            Weapon3Item = new Item { Rank = 0 },
+                            Weapon4Item = new Item { Rank = 1 },
                             AutoRepair = false,
                         },
                     },
                 }
             });
+
+            // for each item, add its base item (rank = 0) and downranked item (rank = rank - 1)
+            foreach (var (_, item) in user.Entity.Characters[0].Items.ItemSlotPairs())
+            {
+                Db.UserItems.Add(new UserItem { User = user.Entity, Item = item });
+
+                var baseItem = item.Rank == 0 ? item : new Item { Rank = 0 };
+                baseItem.BaseItem = baseItem;
+                item.BaseItem = baseItem;
+                Db.Items.Add(baseItem);
+
+                if (item.Rank > -3 && item.Rank - 1 != 0)
+                {
+                    Db.Items.Add(new Item { Rank = item.Rank - 1, BaseItem = baseItem });
+                }
+            }
+
             await Db.SaveChangesAsync();
 
             var handler = new UpdateGameCommand.Handler(Db, Mapper, Mock.Of<IEventRaiser>(),
@@ -527,10 +543,10 @@ namespace Crpg.Application.UTest.Games
                             new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.LegItemId!.Value, RepairCost = 300 },
                             new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HorseHarnessItemId!.Value, RepairCost = 350 },
                             new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HorseItemId!.Value, RepairCost = 400 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon1Item!.Value, RepairCost = 450 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon2Item!.Value, RepairCost = 500 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon3Item!.Value, RepairCost = 550 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon4Item!.Value, RepairCost = 600 },
+                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon1ItemId!.Value, RepairCost = 450 },
+                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon2ItemId!.Value, RepairCost = 500 },
+                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon3ItemId!.Value, RepairCost = 550 },
+                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon4ItemId!.Value, RepairCost = 600 },
                         }
                     }
                 }
@@ -538,7 +554,24 @@ namespace Crpg.Application.UTest.Games
 
             Assert.AreEqual(10000, res.Users[0].Gold);
             Assert.AreEqual(11, res.Users[0].BrokenItems.Count);
-            // TODO: check items were downgraded
+
+            Assert.AreEqual(2, user.Entity.Characters[0].Items.HeadItem!.Rank);
+            Assert.AreEqual(1, user.Entity.Characters[0].Items.CapeItem!.Rank);
+            Assert.AreEqual(0, user.Entity.Characters[0].Items.BodyItem!.Rank);
+            Assert.AreEqual(-1, user.Entity.Characters[0].Items.HandItem!.Rank);
+            Assert.AreEqual(-2, user.Entity.Characters[0].Items.LegItem!.Rank);
+            Assert.AreEqual(-3, user.Entity.Characters[0].Items.HorseHarnessItem!.Rank);
+            Assert.IsNull(user.Entity.Characters[0].Items.HorseItem);
+            Assert.AreEqual(-3, user.Entity.Characters[0].Items.Weapon1Item!.Rank);
+            Assert.AreEqual(-2, user.Entity.Characters[0].Items.Weapon2Item!.Rank);
+            Assert.AreEqual(-1, user.Entity.Characters[0].Items.Weapon3Item!.Rank);
+            Assert.AreEqual(0, user.Entity.Characters[0].Items.Weapon4Item!.Rank);
+
+            // check broken items were added to user inventory
+            foreach (var (_, item) in user.Entity.Characters[0].Items.ItemSlotPairs())
+            {
+                Assert.DoesNotThrow(() => Db.UserItems.First(ui => ui.ItemId == item.Id && ui.UserId == user.Entity.Id));
+            }
         }
 
         [Test]
