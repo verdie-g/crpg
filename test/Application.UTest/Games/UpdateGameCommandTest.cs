@@ -14,7 +14,7 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Games
 {
-    public class UpdateCommandTest : TestBase
+    public class UpdateGameCommandTest : TestBase
     {
         [SetUp]
         public override async Task SetUp()
