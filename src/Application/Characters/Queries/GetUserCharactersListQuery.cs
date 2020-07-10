@@ -28,6 +28,7 @@ namespace Crpg.Application.Characters.Queries
             public async Task<IList<CharacterViewModel>> Handle(GetUserCharactersListQuery request, CancellationToken cancellationToken)
             {
                 var characters = await _db.Characters
+                    .AsNoTracking()
                     .Include(c => c.Items.HeadItem)
                     .Include(c => c.Items.CapeItem)
                     .Include(c => c.Items.BodyItem)

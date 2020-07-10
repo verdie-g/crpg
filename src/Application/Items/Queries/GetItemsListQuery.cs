@@ -27,6 +27,7 @@ namespace Crpg.Application.Items.Queries
             public async Task<IList<ItemViewModel>> Handle(GetItemsListQuery request, CancellationToken cancellationToken)
             {
                 var items = await _db.Items
+                    .AsNoTracking()
                     .OrderBy(i => i.Value)
                     .Where(i => i.Rank == 0) // don't return broken or loomed items
                     .ToListAsync(cancellationToken);
