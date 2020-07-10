@@ -31,6 +31,7 @@ namespace Crpg.Application.Bans.Queries
             public async Task<IList<BanViewModel>> Handle(GetUserBansListQuery request, CancellationToken cancellationToken)
             {
                 var user = await _db.Users
+                    .AsNoTracking()
                     .Include(u => u.Bans).ThenInclude(b => b.BannedByUser)
                     .FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
 

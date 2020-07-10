@@ -29,6 +29,7 @@ namespace Crpg.Application.Characters.Queries
             public async Task<CharacterViewModel> Handle(GetUserCharacterQuery request, CancellationToken cancellationToken)
             {
                 var character = await _db.Characters
+                    .AsNoTracking()
                     .Include(c => c.Items.HeadItem)
                     .Include(c => c.Items.CapeItem)
                     .Include(c => c.Items.BodyItem)
@@ -47,6 +48,7 @@ namespace Crpg.Application.Characters.Queries
                     throw new NotFoundException(nameof(Character), request.CharacterId);
                 }
 
+                // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729
                 return _mapper.Map<CharacterViewModel>(character);
             }
         }
