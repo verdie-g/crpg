@@ -16,7 +16,7 @@ namespace Crpg.Domain.Entities
         /// <summary>
         /// Id of the item of rank 0 (not broken nor loomed).
         /// </summary>
-        public int BaseItemId { get; set; }
+        public int? BaseItemId { get; set; }
 
         public ItemType Type { get; set; }
         public int Value { get; set; }

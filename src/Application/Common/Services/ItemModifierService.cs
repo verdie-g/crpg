@@ -121,13 +121,6 @@ namespace Crpg.Application.Common.Services
             [ItemType.Bolts] = MissileModifiers,
         };
 
-        private readonly IMapper _mapper;
-
-        public ItemModifierService(IMapper mapper)
-        {
-            _mapper = mapper;
-        }
-
         /// <summary>
         /// Create a new item from an rank 0 item and given rank.
         /// </summary>
@@ -141,7 +134,7 @@ namespace Crpg.Application.Common.Services
                 throw new ArgumentException("Rank should be one of { -3, -2, -1, 1, 2, 3 }");
             }
 
-            var clone = _mapper.Map<ItemCreation>(baseItem);
+            var clone = (ItemCreation)baseItem.Clone();
 
             Index idx = rank < 0 ? rank + 3 : rank + 2;
             ItemModifier modifier = ItemModifiers[baseItem.Type][idx];

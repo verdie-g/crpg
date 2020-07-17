@@ -1,9 +1,10 @@
-﻿using Crpg.Application.Common.Mappings;
+﻿using System;
+using Crpg.Application.Common.Mappings;
 using Crpg.Domain.Entities;
 
 namespace Crpg.Application.Items.Models
 {
-    public class ItemWeaponComponentViewModel : IMapFrom<ItemWeaponComponentViewModel>, IMapFrom<ItemWeaponComponent>
+    public class ItemWeaponComponentViewModel : IMapFrom<ItemWeaponComponent>, ICloneable
     {
         public int Accuracy { get; set; }
         public int MissileSpeed { get; set; }
@@ -20,5 +21,22 @@ namespace Crpg.Application.Items.Models
         public int SwingDamage { get; set; }
         public DamageType SwingDamageType { get; set; }
         public int SwingSpeed { get; set; }
+
+        public object Clone() => new ItemWeaponComponentViewModel
+        {
+            Accuracy = Accuracy,
+            MissileSpeed = MissileSpeed,
+            StackAmount = StackAmount,
+            Length = Length,
+            Handling = Handling,
+            BodyArmor = BodyArmor,
+            Flags = Flags,
+            ThrustDamage = ThrustDamage,
+            ThrustDamageType = ThrustDamageType,
+            ThrustSpeed = ThrustDamage,
+            SwingDamage = SwingDamage,
+            SwingDamageType = SwingDamageType,
+            SwingSpeed = SwingDamage,
+        };
     }
 }

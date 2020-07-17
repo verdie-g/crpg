@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Crpg.Application.Common.Services;
 using Crpg.Infrastructure.Files;
 using NUnit.Framework;
 
@@ -35,6 +36,24 @@ namespace Crpg.Infrastructure.UTest.Files
             if (duplicates.Count != 0)
             {
                 Assert.Fail("Duplicate items: " + string.Join(", ", duplicates));
+            }
+        }
+
+        [Test]
+        public async Task CheckNoConflictingNameWithModifiedItems()
+        {
+            var itemsByMbId = (await new FileItemsSource().LoadItems()).ToDictionary(i => i.MbId);
+            var itemModifier = new ItemModifierService();
+            foreach (var item in itemsByMbId.Values)
+            {
+                foreach (int rank in new[] { -3, -2, -1, 1, 2, 3 })
+                {
+                    var modifiedItem = itemModifier.ModifyItem(item, rank);
+                    if (itemsByMbId.TryGetValue(modifiedItem.MbId, out var conflictingItem))
+                    {
+                        Assert.Fail("Conflicting item name between {0} and {1} rank {2}", conflictingItem.MbId, item.MbId, rank);
+                    }
+                }
             }
         }
     }
