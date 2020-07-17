@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Services;
-using Crpg.Application.Games;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
 using MediatR;
@@ -42,7 +41,6 @@ namespace Crpg.Application.System.Commands
 
                 await CreateOrUpdateItems(cancellationToken);
                 await _db.SaveChangesAsync(cancellationToken);
-
                 return Unit.Value;
             }
 
@@ -112,17 +110,21 @@ namespace Crpg.Application.System.Commands
 
             private async Task CreateOrUpdateItems(CancellationToken cancellationToken)
             {
-                var itemsByMdId = (await _itemsSource.LoadItems())
-                    .ToDictionary(i => i.MbId, i => i);
-                var dbItemsByMbId = await _db.Items
-                    .ToDictionaryAsync(di => di.MbId, di => di, cancellationToken);
+                var itemsByMdId = (await _itemsSource.LoadItems()).ToDictionary(i => i.MbId);
+                var dbItemsByMbId = await _db.Items.ToDictionaryAsync(di => di.MbId, cancellationToken);
+
+                var baseItems = new List<Item>();
 
                 foreach (ItemCreation item in itemsByMdId.Values)
                 {
                     var baseItem = ItemHelper.ToItem(item);
                     baseItem.Rank = 0;
-                    baseItem.BaseItem = baseItem;
+                    // EF Core doesn't support creating an entity referencing itself, which is needed for items with
+                    // rank = 0. Workaround is to set BaseItemId to null and replace with the reference to the item
+                    // once it was created. This is the only reason why BaseItemId is nullable.
+                    baseItem.BaseItemId = null;
                     CreateOrUpdateItem(dbItemsByMbId, baseItem);
+                    baseItems.Add(baseItem);
 
                     foreach (int rank in ItemRanks)
                     {
@@ -133,12 +135,21 @@ namespace Crpg.Application.System.Commands
                     }
                 }
 
+                // Remove items that were deleted from the item source
                 foreach (Item dbItem in dbItemsByMbId.Values)
                 {
                     if (!itemsByMdId.ContainsKey(dbItem.MbId))
                     {
                         _db.Items.Remove(dbItem);
                     }
+                }
+
+                await _db.SaveChangesAsync(cancellationToken);
+
+                // Fix BaseItem for items of rank = 0
+                foreach (Item baseItem in baseItems)
+                {
+                    baseItem.BaseItem = baseItem;
                 }
             }
 

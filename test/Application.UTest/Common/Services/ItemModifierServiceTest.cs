@@ -52,7 +52,7 @@ namespace Crpg.Application.UTest.Common.Services
                 },
             };
 
-            var itemModifierService = new ItemModifierService(Mapper);
+            var itemModifierService = new ItemModifierService();
             ItemCreation[] modifiedItems =
             {
                 itemModifierService.ModifyItem(item, -3),

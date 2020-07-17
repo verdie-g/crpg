@@ -5420,19 +5420,6 @@
     ]
   },
   {
-    "mbId": "mp_reinforced_padded_mitten",
-    "name": "Reinforced Padded Mittens",
-    "value": 290,
-    "type": 3,
-    "weight": 0.9,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 0,
-      "armArmor": 9,
-      "legArmor": 0
-    }
-  },
-  {
     "mbId": "mp_trailed_desert_helmet",
     "name": "Trailed Southern Helmet",
     "value": 295,
@@ -8045,19 +8032,6 @@
     }
   },
   {
-    "mbId": "mp_reinforced_mail_mitten",
-    "name": "Reinforced Mail Mitten",
-    "value": 1115,
-    "type": 3,
-    "weight": 1.6,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 0,
-      "armArmor": 18,
-      "legArmor": 0
-    }
-  },
-  {
     "mbId": "mp_eastern_plated_leather_vambraces",
     "name": "Eastern Plated Leather Vambraces",
     "value": 1115,
@@ -8280,19 +8254,6 @@
         "swingSpeed": 94
       }
     ]
-  },
-  {
-    "mbId": "mp_lordly_mail_mitten",
-    "name": "Heavy Mail Mittens",
-    "value": 1344,
-    "type": 3,
-    "weight": 1.7,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 0,
-      "armArmor": 19,
-      "legArmor": 0
-    }
   },
   {
     "mbId": "mp_hunting_long_bow",
@@ -10846,30 +10807,6 @@
       "armArmor": 2,
       "legArmor": 15
     }
-  },
-  {
-    "mbId": "mp_strong_recurve_bow",
-    "name": "Composite Bow",
-    "value": 10885,
-    "type": 8,
-    "weight": 1.8,
-    "weapons": [
-      {
-        "accuracy": 95,
-        "missileSpeed": 78,
-        "stackAmount": 1,
-        "length": 95,
-        "handling": 80,
-        "bodyArmor": 0,
-        "flags": 2628626,
-        "thrustDamage": 62,
-        "thrustDamageType": 1,
-        "thrustSpeed": 80,
-        "swingDamage": 0,
-        "swingDamageType": 2,
-        "swingSpeed": 87
-      }
-    ]
   },
   {
     "mbId": "mp_battania_twohanded_hammer",
