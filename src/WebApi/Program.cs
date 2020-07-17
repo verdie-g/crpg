@@ -4,8 +4,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.System.Commands;
+using Crpg.Persistence;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -30,22 +32,44 @@ namespace Crpg.WebApi
                 .ReadFrom.Configuration(Configuration)
                 .CreateLogger();
 
-            var host = CreateHostBuilder(args).Build();
-            using (var scope = host.Services.CreateScope())
+            var host = Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>())
+                .UseSerilog()
+                .Build();
+
+            using (IServiceScope scope = host.Services.CreateScope())
             {
-                var services = scope.ServiceProvider;
-                services.GetRequiredService<IEventRaiser>().Raise(EventLevel.Info, "cRPG Web API Started", string.Empty);
+                IServiceProvider services = scope.ServiceProvider;
+                var mediator = services.GetRequiredService<IMediator>();
+                var eventRaiser = services.GetRequiredService<IEventRaiser>();
+                var db = services.GetRequiredService<CrpgDbContext>();
+
+                if (Env == Environments.Production)
+                {
+                    try
+                    {
+                        await db.Database.MigrateAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Fatal(ex, "An error occurred while migrating the database.");
+                        Log.CloseAndFlush();
+                        return 1;
+                    }
+                }
 
                 try
                 {
-                    var mediator = services.GetRequiredService<IMediator>();
                     await mediator.Send(new SeedDataCommand(), CancellationToken.None);
                 }
                 catch (Exception ex)
                 {
                     Log.Fatal(ex, "An error occurred while initializing the database.");
+                    Log.CloseAndFlush();
                     return 1;
                 }
+
+                eventRaiser.Raise(EventLevel.Info, "cRPG Web API Started", string.Empty);
             }
 
             try
@@ -63,10 +87,5 @@ namespace Crpg.WebApi
                 Log.CloseAndFlush();
             }
         }
-
-        private static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>())
-                .UseSerilog();
     }
 }
