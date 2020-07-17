@@ -30,6 +30,7 @@ namespace Crpg.WebApi
         {
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(Configuration)
+                .Enrich.FromLogContext()
                 .CreateLogger();
 
             var host = Host.CreateDefaultBuilder(args)
