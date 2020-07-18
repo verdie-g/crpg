@@ -36,7 +36,10 @@ namespace Crpg.DumpItemsMod
                 .OrderBy(i => i.Value)
                 .DistinctBy(i => i.StringId)
                 .ToArray();
-            var crpgItems = mbItems.Select(MbToCrpgItem).OrderBy(i => i.Value);
+            var crpgItems = mbItems
+                .Select(MbToCrpgItem)
+                .OrderBy(i => i.Type)
+                .ThenBy(i => i.Value);
 
             SerializeCrpgItems(crpgItems, OutputPath);
             GenerateItemsThumbnail(mbItems, OutputPath);
@@ -99,29 +102,26 @@ namespace Crpg.DumpItemsMod
             return crpgItem;
         }
 
-        private static int MbToCrpgItemType(ItemObject.ItemTypeEnum t)
+        private static int MbToCrpgItemType(ItemObject.ItemTypeEnum t) => t switch
         {
-            return t switch
-            {
-                ItemObject.ItemTypeEnum.HeadArmor => 0,
-                ItemObject.ItemTypeEnum.Cape => 1,
-                ItemObject.ItemTypeEnum.BodyArmor => 2,
-                ItemObject.ItemTypeEnum.HandArmor => 3,
-                ItemObject.ItemTypeEnum.LegArmor => 4,
-                ItemObject.ItemTypeEnum.HorseHarness => 5,
-                ItemObject.ItemTypeEnum.Horse => 6,
-                ItemObject.ItemTypeEnum.Shield => 7,
-                ItemObject.ItemTypeEnum.Bow => 8,
-                ItemObject.ItemTypeEnum.Crossbow => 9,
-                ItemObject.ItemTypeEnum.OneHandedWeapon => 10,
-                ItemObject.ItemTypeEnum.TwoHandedWeapon => 11,
-                ItemObject.ItemTypeEnum.Polearm => 12,
-                ItemObject.ItemTypeEnum.Thrown => 13,
-                ItemObject.ItemTypeEnum.Arrows => 14,
-                ItemObject.ItemTypeEnum.Bolts => 15,
-                _ => throw new ArgumentOutOfRangeException(nameof(t), t, null),
-            };
-        }
+            ItemObject.ItemTypeEnum.HeadArmor => 0,
+            ItemObject.ItemTypeEnum.Cape => 1,
+            ItemObject.ItemTypeEnum.BodyArmor => 2,
+            ItemObject.ItemTypeEnum.HandArmor => 3,
+            ItemObject.ItemTypeEnum.LegArmor => 4,
+            ItemObject.ItemTypeEnum.HorseHarness => 5,
+            ItemObject.ItemTypeEnum.Horse => 6,
+            ItemObject.ItemTypeEnum.Shield => 7,
+            ItemObject.ItemTypeEnum.Bow => 8,
+            ItemObject.ItemTypeEnum.Crossbow => 9,
+            ItemObject.ItemTypeEnum.OneHandedWeapon => 10,
+            ItemObject.ItemTypeEnum.TwoHandedWeapon => 11,
+            ItemObject.ItemTypeEnum.Polearm => 12,
+            ItemObject.ItemTypeEnum.Thrown => 13,
+            ItemObject.ItemTypeEnum.Arrows => 14,
+            ItemObject.ItemTypeEnum.Bolts => 15,
+            _ => throw new ArgumentOutOfRangeException(nameof(t)),
+        };
 
         private static IEnumerable<ItemObject> DeserializeMbItems(string path)
         {
