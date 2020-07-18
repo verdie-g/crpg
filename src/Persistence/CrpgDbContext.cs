@@ -17,6 +17,8 @@ namespace Crpg.Persistence
         static CrpgDbContext()
         {
             NpgsqlConnection.GlobalTypeMapper.MapEnum<Role>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<ItemType>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<DamageType>();
         }
 
         public CrpgDbContext(DbContextOptions<CrpgDbContext> options)
@@ -80,6 +82,7 @@ namespace Crpg.Persistence
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CrpgDbContext).Assembly);
             modelBuilder.HasPostgresEnum<Role>();
             modelBuilder.HasPostgresEnum<ItemType>();
+            modelBuilder.HasPostgresEnum<DamageType>();
         }
     }
 }
