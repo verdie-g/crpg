@@ -2,8 +2,9 @@ namespace Crpg.Domain.Entities
 {
     public enum DamageType
     {
-        Cut,
-        Pierce,
-        Blunt,
+        Undefined = -1,
+        Cut = 0,
+        Pierce = 1,
+        Blunt = 2,
     }
 }
