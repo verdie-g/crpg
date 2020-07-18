@@ -138,9 +138,15 @@ namespace Crpg.Application.System.Commands
                 // Remove items that were deleted from the item source
                 foreach (Item dbItem in dbItemsByMbId.Values)
                 {
-                    if (!itemsByMdId.ContainsKey(dbItem.MbId))
+                    if (dbItem.Rank != 0 || itemsByMdId.ContainsKey(dbItem.MbId))
                     {
-                        _db.Items.Remove(dbItem);
+                        continue;
+                    }
+
+                    var itemsToDelete = dbItemsByMbId.Values.Where(i => i.BaseItemId == dbItem.BaseItemId).ToArray();
+                    foreach (var i in itemsToDelete)
+                    {
+                        _db.Entry(i).State = EntityState.Deleted;
                     }
                 }
 
@@ -157,12 +163,15 @@ namespace Crpg.Application.System.Commands
             {
                 if (dbItemsByMbId.TryGetValue(item.MbId, out Item? dbItem))
                 {
+                    // swap items in context
                     item.Id = dbItem.Id;
-                    _db.Entry(dbItem).CurrentValues.SetValues(item);
+                    _db.Entry(dbItem).State = EntityState.Detached;
+                    _db.Items.Attach(item);
+                    _db.Entry(item).State = EntityState.Modified;
                 }
                 else
                 {
-                    _db.Items.Add(item);
+                    _db.Entry(item).State = EntityState.Added;
                 }
             }
         }
