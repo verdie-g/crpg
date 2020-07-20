@@ -35,6 +35,8 @@ The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the foll
 - Set the `Steam:ApiKey` in [src/WebApi/appsettings.Development.json](https://github.com/verdie-g/cRPG/blob/master/src/WebApi/appsettings.Development.json),
   acquired by [filling out this form](https://steamcommunity.com/dev/apikey)
 - Open the solution file Crpg.sln
+- Run `dotnet dev-certs https --trust` to be able to launch the API with HTTPS. The Steam authentication creates a cookie
+  with `SameSite=None` and recent version of Chrome requires HTTPS to do so
 - Build and run (can be done without IDE using [dotnet cli](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run))
 
 
