@@ -128,7 +128,7 @@ namespace Crpg.WebApi
 
         private void ConfigureCors(CorsOptions options)
         {
-            string allowedOrigins = _environment.IsDevelopment() ? "*" : (_configuration["allowedOrigins"] ?? string.Empty);
+            string allowedOrigins = _configuration["AllowedOrigins"] ?? string.Empty;
             options.AddDefaultPolicy(builder => builder
                 .WithOrigins(allowedOrigins.Split(',', StringSplitOptions.RemoveEmptyEntries))
                 .AllowAnyMethod()
