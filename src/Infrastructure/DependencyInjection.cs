@@ -2,11 +2,14 @@ using System;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Common.Interfaces.Metrics;
+using Crpg.Application.Common.Interfaces.Tracing;
 using Crpg.Common;
 using Crpg.Infrastructure.Events;
 using Crpg.Infrastructure.Files;
 using Crpg.Infrastructure.Metrics.Datadog;
 using Crpg.Infrastructure.Metrics.Debug;
+using Crpg.Infrastructure.Tracing.Datadog;
+using Crpg.Infrastructure.Tracing.Debug;
 using DatadogStatsD;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +37,7 @@ namespace Crpg.Infrastructure
             {
                 services.AddSingleton<IMetricsFactory, DebugMetricsFactory>();
                 services.AddSingleton<IEventRaiser, DebugEventRaiser>();
+                services.AddSingleton<ITracer, DebugTracer>();
             }
             else
             {
@@ -45,6 +49,7 @@ namespace Crpg.Infrastructure
 
                 services.AddSingleton<IMetricsFactory>(new DatadogMetricsFactory(dogStatsD));
                 services.AddSingleton<IEventRaiser>(new DatadogEventRaiser(dogStatsD));
+                services.AddSingleton<ITracer>(new DatadogTracer());
             }
 
             return services;

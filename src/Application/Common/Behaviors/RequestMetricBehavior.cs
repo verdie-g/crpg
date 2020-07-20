@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Interfaces.Tracing;
 using Crpg.Common;
+using Crpg.Common.Helpers;
 using MediatR;
 
 namespace Crpg.Application.Common.Behaviors
@@ -10,15 +13,24 @@ namespace Crpg.Application.Common.Behaviors
     internal class RequestMetricBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
             where TRequest : IRequest<TResponse>
     {
-        private readonly RequestMetrics<TRequest> _metrics;
+        private const string SpanName = "request";
+        private static readonly KeyValuePair<string, string>[] SpanTags =
+        {
+            new KeyValuePair<string, string>("request.name", StringHelper.PascalToSnakeCase(typeof(TRequest).Name))
+        };
 
-        public RequestMetricBehavior(RequestMetrics<TRequest> metrics)
+        private readonly RequestMetrics<TRequest> _metrics;
+        private readonly ITracer _tracer;
+
+        public RequestMetricBehavior(RequestMetrics<TRequest> metrics, ITracer tracer)
         {
             _metrics = metrics;
+            _tracer = tracer;
         }
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
+            var span = _tracer.CreateSpan(SpanName, SpanTags);
             var sw = ValueStopwatch.StartNew();
             try
             {
@@ -26,34 +38,33 @@ namespace Crpg.Application.Common.Behaviors
                 _metrics.StatusOk.Increment();
                 return res;
             }
-            catch (ValidationException)
+            catch (Exception e)
             {
-                _metrics.StatusErrorBadRequest.Increment();
-                throw;
-            }
-            catch (BadRequestException)
-            {
-                _metrics.StatusErrorBadRequest.Increment();
-                throw;
-            }
-            catch (NotFoundException)
-            {
-                _metrics.StatusErrorNotFound.Increment();
-                throw;
-            }
-            catch (ConflictException)
-            {
-                _metrics.StatusErrorConflict.Increment();
-                throw;
-            }
-            catch (Exception)
-            {
-                _metrics.StatusErrorUnknown.Increment();
+                switch (e)
+                {
+                    case ValidationException _:
+                        _metrics.StatusErrorBadRequest.Increment();
+                        break;
+                    case BadRequestException _:
+                        _metrics.StatusErrorBadRequest.Increment();
+                        break;
+                    case NotFoundException _:
+                        _metrics.StatusErrorNotFound.Increment();
+                        break;
+                    case ConflictException _:
+                        _metrics.StatusErrorConflict.Increment();
+                        break;
+                    default:
+                        _metrics.StatusErrorUnknown.Increment();
+                        break;
+                }
+
                 throw;
             }
             finally
             {
                 _metrics.ResponseTime.Record(sw.Elapsed.TotalMilliseconds);
+                span.Dispose();
             }
         }
     }
