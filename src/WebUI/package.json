@@ -27,6 +27,7 @@
     "@vue/cli-service": "^4.3.0",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/eslint-config-typescript": "^5.0.2",
+    "compression-webpack-plugin": "^4.0.0",
     "eslint": "^7.0.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",

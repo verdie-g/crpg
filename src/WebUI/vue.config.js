@@ -1,6 +1,13 @@
+const CompressionPlugin = require('compression-webpack-plugin'); // eslint-disable-line @typescript-eslint/no-var-requires
+
 module.exports = {
   lintOnSave: 'warning',
-  // disable prefetch of chunks (usually pages) to only load required chunks for the current page
-  // https://medium.com/@mrodal/how-to-make-lazy-loading-actually-work-in-vue-cli-3-7f3f88cfb102
-  chainWebpack: config => config.plugins.delete('prefetch'),
+  chainWebpack(config) {
+    // https://medium.com/@aetherus.zhou/vue-cli-3-performance-optimization-55316dcd491c
+    // disable prefetch of chunks (usually pages) to only load required chunks for the current page
+    config.plugins.delete('prefetch');
+
+    // compress files on build
+    config.plugin('CompressionPlugin').use(CompressionPlugin);
+  },
 };
