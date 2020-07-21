@@ -49,7 +49,7 @@ namespace Crpg.Infrastructure
 
                 services.AddSingleton<IMetricsFactory>(new DatadogMetricsFactory(dogStatsD));
                 services.AddSingleton<IEventRaiser>(new DatadogEventRaiser(dogStatsD));
-                services.AddSingleton<ITracer>(new DatadogTracer());
+                services.AddSingleton<ITracer>(new DatadogTracer("crpg"));
             }
 
             return services;
