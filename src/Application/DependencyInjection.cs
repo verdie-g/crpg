@@ -14,7 +14,7 @@ namespace Crpg.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly())
                 .AddMediatR(Assembly.GetExecutingAssembly())
-                .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestMetricBehavior<,>))
+                .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestInstrumentationBehavior<,>))
                 .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>))
                 .AddSingleton(typeof(RequestMetrics<>))
                 .AddSingleton<ItemModifierService>()

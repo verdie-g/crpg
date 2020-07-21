@@ -10,19 +10,19 @@ using MediatR;
 
 namespace Crpg.Application.Common.Behaviors
 {
-    internal class RequestMetricBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    internal class RequestInstrumentationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
             where TRequest : IRequest<TResponse>
     {
         private const string SpanName = "request";
         private static readonly KeyValuePair<string, string>[] SpanTags =
         {
-            new KeyValuePair<string, string>("request.name", StringHelper.PascalToSnakeCase(typeof(TRequest).Name))
+            new KeyValuePair<string, string>("name", StringHelper.PascalToSnakeCase(typeof(TRequest).Name))
         };
 
         private readonly RequestMetrics<TRequest> _metrics;
         private readonly ITracer _tracer;
 
-        public RequestMetricBehavior(RequestMetrics<TRequest> metrics, ITracer tracer)
+        public RequestInstrumentationBehavior(RequestMetrics<TRequest> metrics, ITracer tracer)
         {
             _metrics = metrics;
             _tracer = tracer;
