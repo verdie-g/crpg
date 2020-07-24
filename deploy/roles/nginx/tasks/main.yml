@@ -1,0 +1,48 @@
+---
+- name: Install Nginx
+  apt:
+    name: nginx
+
+- name: Create cRPG virtual server configuration file
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    mode: 0644
+
+- name: Create cRPG virtual server configuration file
+  template:
+    src: nginx-crpg.j2
+    dest: /etc/nginx/sites-enabled/crpg
+    mode: 0644
+
+- name: Create Nginx log rotation file
+  template:
+    src: nginx-logrotate.j2
+    dest: /etc/logrotate.d/nginx
+    mode: 0644
+    owner: root
+    group: root
+
+- name: Add Nginx status module
+  template:
+    src: nginx-status.conf.j2
+    dest: /etc/nginx/conf.d/status.conf
+    mode: 0644
+
+- name: Open HTTP port
+  ufw:
+    rule: allow
+    port: "80"
+    proto: tcp
+
+- name: Open HTTPS port
+  ufw:
+    rule: allow
+    port: "443"
+    proto: tcp
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    enabled: yes
+    state: restarted

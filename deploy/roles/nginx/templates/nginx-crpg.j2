@@ -1,0 +1,64 @@
+server {
+    listen 80;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name {{ crpg_domain_name }} www.{{ crpg_domain_name }};
+    root {{ crpg_ui_path }};
+
+    ssl_certificate /etc/letsencrypt/live/{{ crpg_domain_name }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ crpg_domain_name }}/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    # HSTS header for browser to always use HTTPS (https://www.chromium.org/hsts)
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+
+    # If the browser can render compressed files, give it the pre-compressed version.
+    gzip_static on;
+
+    location /index.html {
+        # Because the filename of /index.html never change, we need to use ETag
+        # to leverage browser-side caching
+        etag on;
+    }
+
+    location / {
+        # Because the static files other than /index.html contain fingerprints
+        # (hashes) in their filenames and they serve as the cache buster, we
+        # don't need ETag any more. Just let browsers cache those responses
+        # forever (or 5 years, maybe).
+        etag off;
+        add_header Cache-Control max-age=315360000,immutable;
+
+        # Page routing is done client-side, so if the file doesn't exist
+        # serve index.html which will handle the routing.
+        try_files $uri /index.html;
+      }
+}
+
+server {
+    listen 443 ssl http2;
+    server_name api.{{ crpg_domain_name }};
+
+    ssl_certificate /etc/letsencrypt/live/{{ crpg_domain_name }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ crpg_domain_name }}/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    # HSTS header for browser to always use HTTPS (https://www.chromium.org/hsts)
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+
+    location / {
+        proxy_pass         http://localhost:8000;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+    }
+}

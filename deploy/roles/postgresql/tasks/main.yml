@@ -1,0 +1,45 @@
+---
+- name: Install PostgreSQL
+  apt:
+    name:
+    - acl # needed by postgresql_user module (https://github.com/georchestra/ansible/issues/55#issuecomment-588313638)
+    - postgresql
+    - postgresql-client
+
+- name: Create PostgreSQL configuration file
+  template:
+    src: postgresql.conf.j2
+    dest: /etc/postgresql/12/main/postgresql.conf
+    mode: 0644
+
+- name: Ensure PostgreSQL is started
+  service:
+    name: postgresql
+    state: started
+
+- name: Create cRPG PostgreSQL user
+  become_user: postgres
+  postgresql_user:
+    name: "{{ db_user_crpg }}"
+    password: "{{ db_user_crpg_password }}"
+
+- name: Create Datadog PostgreSQL user
+  become_user: postgres
+  postgresql_user:
+    name: "{{ db_user_datadog }}"
+    password: "{{ db_user_datadog_password }}"
+    groups: pg_monitor
+
+- name: Create cRPG PostgreSQL database
+  become_user: postgres
+  postgresql_db:
+    name: "{{ db_crpg }}"
+    encoding: UTF-8
+    lc_collate: en_US.UTF-8
+    lc_ctype: en_US.UTF-8
+
+- name: Restart PostgreSQL
+  service:
+    name: postgresql
+    enabled: yes
+    state: restarted
