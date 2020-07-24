@@ -1,0 +1,69 @@
+---
+- name: Add Microsoft package signing key to the list of trusted keys
+  apt:
+    deb: https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb
+
+- name: Make sure HTTPS is supported by apt
+  apt:
+    name: apt-transport-https
+    state: present
+
+- name: Install .NET Core Runtime 3.1
+  apt:
+    name: aspnetcore-runtime-3.1
+    state: present
+    update_cache: yes
+
+- name: Create cRPG Web API user
+  user:
+   name: "{{ crpg_user }}"
+   comment: Owner of the cRPG Web API
+
+- name: Create cRPG Web API service
+  template:
+    src: crpg.service.j2
+    dest: /lib/systemd/system/crpg.service
+    mode: 0644
+
+- name: Build cRPG Web API
+  become: false
+  command: "dotnet publish -c Release {{ playbook_dir }}/../src/WebApi"
+  delegate_to: localhost
+
+- name: Stop cRPG Web API
+  service:
+    name: crpg
+    enabled: yes
+    state: stopped
+
+- name: Copy cRPG Web API to host
+  copy:
+    src: "{{ playbook_dir }}/../src/WebApi/bin/Release/netcoreapp3.1/publish/"
+    dest: "{{ crpg_api_path }}"
+    mode: 0600
+    owner: "{{ crpg_user }}"
+    group: "{{ crpg_user }}"
+
+- name: Generate cRPG Web API settings
+  template:
+    src: appsettings.Production.json.j2
+    dest: "{{ crpg_api_path }}/appsettings.Production.json"
+    mode: 0600
+    owner: "{{ crpg_user }}"
+    group: "{{ crpg_user }}"
+  notify:
+    - reload systemd
+
+- name: Create cRPG Web API log folder
+  file:
+    path: "{{ crpg_log_folder }}"
+    state: directory
+    mode: 0755
+    group: "{{ crpg_user }}"
+    owner: "{{ crpg_user }}"
+
+- name: Start cRPG Web API
+  service:
+    name: crpg
+    enabled: yes
+    state: started

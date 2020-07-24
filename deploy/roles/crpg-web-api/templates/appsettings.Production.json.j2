@@ -1,0 +1,33 @@
+{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Warning",
+        "Microsoft.Hosting.Lifetime": "Information"
+      }
+    },
+    "WriteTo": [
+      {
+        "Name": "File",
+        "Args": {
+          "Path": "{{ crpg_log_folder }}/{{ crpg_log_filename }}",
+          "Formatter": "Serilog.Formatting.Compact.RenderedCompactJsonFormatter, Serilog.Formatting.Compact",
+          "Buffered": true
+        }
+      }
+    ]
+  },
+  "Jwt": {
+    "Secret": "{{ crpg_jwt_secret }}",
+    "Lifetime": "1.00:00:00"
+  },
+  "Steam": {
+    "ApiKey": "{{ steam_api_key }}"
+  },
+  "AllowedOrigins": "https://{{ crpg_domain_name }}",
+  "Urls": "http://localhost:{{ crpg_port }}",
+  "ConnectionStrings": {
+    "Crpg": "Host=localhost;Database={{ db_crpg }};Username={{ db_user_crpg }};Password={{ db_user_crpg_password }}"
+  }
+}

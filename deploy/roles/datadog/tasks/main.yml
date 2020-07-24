@@ -1,0 +1,67 @@
+---
+- name: Install DataDog
+  include_role:
+    name: datadog.datadog
+  vars:
+    datadog_agent_major_version: "7"
+    datadog_config:
+      logs_enabled: true
+      apm_config: # tracing
+        enabled: true
+      process_config: # live processes
+        enabled: "true"
+    datadog_checks:
+      nginx:
+        init_config:
+        instances:
+        - nginx_status_url: http://localhost:81/nginx_status
+        logs:
+        - type: file
+          path: /var/log/nginx/access.log
+          service: nginx
+          source: nginx
+        - type: file
+          path: /var/log/nginx/error.log
+          service: nginx
+          source: nginx
+      postgres:
+        init_config:
+        instances:
+        - host: localhost
+          port: 5432
+          username: "{{ db_user_datadog }}"
+          password: "{{ db_user_datadog_password }}"
+        logs:
+        - type: file
+          path: /var/log/postgresql/postgresql.log
+          service: postgresql
+          source: postgresql
+          log_processing_rules:
+          - type: multi_line
+            pattern: \d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])
+            name: new_log_start_with_date
+      csharp:
+        init_config:
+        instances:
+        logs:
+        - type: file
+          path: "{{ crpg_log_folder }}/{{ crpg_log_filename }}"
+          service: "{{ crpg_service_name }}"
+          source: csharp
+
+- name: Download Datadog .NET Tracer
+  get_url:
+    url: https://github.com/DataDog/dd-trace-dotnet/releases/download/v1.18.2/datadog-dotnet-apm_1.18.2_amd64.deb
+    dest: /tmp
+
+- name: Install Datadog .NET Tracer
+  apt:
+    deb: /tmp/datadog-dotnet-apm_1.18.2_amd64.deb
+
+- name: Make Datadog .NET Tracer initialization script executable
+  file:
+    path: /opt/datadog/createLogPath.sh
+    mode: 0755
+
+- name: Initialize Datadog .NET Tracer
+  command: /opt/datadog/createLogPath.sh
