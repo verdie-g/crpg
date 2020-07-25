@@ -74,7 +74,7 @@ namespace Crpg.WebApi
                     return 1;
                 }
 
-                eventRaiser.Raise(EventLevel.Info, "cRPG Web API Started", string.Empty);
+                eventRaiser.Raise(EventLevel.Info, "cRPG Web API has started", " ");
             }
 
             try
