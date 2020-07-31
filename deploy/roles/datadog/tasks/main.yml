@@ -29,8 +29,19 @@
         instances:
         - host: localhost
           port: 5432
+          dbname: "{{ db_crpg }}"
           username: "{{ db_user_datadog }}"
           password: "{{ db_user_datadog_password }}"
+          custom_queries:
+          - metric_prefix: crpg
+            query: SELECT
+              (SELECT COUNT(*) FROM users) AS users,
+              (SELECT COUNT(*) FROM users WHERE last_modified_at > now() - INTERVAL '1 week') AS active_users
+            columns:
+            - name: users
+              type: gauge
+            - name: active_users
+              type: gauge
         logs:
         - type: file
           path: /var/log/postgresql/postgresql.log
