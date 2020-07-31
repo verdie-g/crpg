@@ -3,7 +3,7 @@ using System;
 namespace Crpg.Domain.Entities
 {
     [Flags]
-    public enum WeaponFlags : ulong
+    public enum WeaponFlags : long
     {
         MeleeWeapon = 0x1,
         RangedWeapon = 0x2,
