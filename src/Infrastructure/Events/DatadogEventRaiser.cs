@@ -15,7 +15,7 @@ namespace Crpg.Infrastructure.Events
         {
             // Datadog agent doesn't accept empty messages (https://github.com/DataDog/datadog-agent/issues/6054)
             message = message.Length == 0 ? " " : message;
-            _dogStatsD.RaiseEvent((AlertType) eventLevel, title, message, EventPriority.Normal, aggregationKey, tags);
+            _dogStatsD.RaiseEvent((AlertType)eventLevel, title, message, EventPriority.Normal, aggregationKey, tags);
         }
     }
 }

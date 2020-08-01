@@ -51,7 +51,7 @@ namespace Crpg.WebApi
                     try
                     {
                         await db.Database.MigrateAsync();
-                        var conn = (NpgsqlConnection) db.Database.GetDbConnection();
+                        var conn = (NpgsqlConnection)db.Database.GetDbConnection();
                         conn.Open();
                         conn.ReloadTypes();
                     }
