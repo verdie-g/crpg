@@ -69,7 +69,7 @@ namespace Crpg.Application.Users.Commands
                 {
                     UserHelper.SetDefaultValuesForUser(user);
                     _db.Users.Add(user);
-                    _events.Raise(EventLevel.Info, $"{request.UserName} joined ({request.SteamId})", string.Empty, "new_user");
+                    _events.Raise(EventLevel.Info, $"{request.UserName} joined ({request.SteamId})", string.Empty, "user_created");
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
