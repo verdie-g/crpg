@@ -70,6 +70,10 @@
           url: https://steamcommunity.com/openid
           service: steam
           min_collection_interval: 60
+      tls:
+        init_config:
+        instances:
+          - server: localhost
 
 - name: Download Datadog .NET Tracer
   get_url:
