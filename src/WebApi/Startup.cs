@@ -64,6 +64,8 @@ namespace Crpg.WebApi
                 .AddCors(ConfigureCors)
                 .AddControllers();
 
+            services.AddHealthChecks();
+
             services.AddAuthentication(options =>
                 {
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -100,7 +102,11 @@ namespace Crpg.WebApi
                 .UseCors()
                 .UseAuthentication() // populate HttpContext.User
                 .UseAuthorization() // check that HttpContext.User has the correct rights to access the endpoint
-                .UseEndpoints(endpoints => endpoints.MapControllers());
+                .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapHealthChecks("/health");
+                    endpoints.MapControllers();
+                });
         }
 
         private void RegisteredServicesPage(IApplicationBuilder app)
