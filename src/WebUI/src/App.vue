@@ -62,25 +62,25 @@
       <div class="level">
         <div class="level-item">
           <a href="https://github.com/verdie-g/cRPG" target="_blank" title="Contribute to the project on Github">
-            <b-icon icon="github" pack="fab" size="is-medium" />
+            <b-icon icon="github" pack="fab" size="is-medium" aria-label="cRPG Github" />
           </a>
         </div>
 
         <div class="level-item">
           <a href="https://www.patreon.com" target="_blank" title="Donate on Patreon">
-            <b-icon icon="patreon" pack="fab" size="is-medium" />
+            <b-icon icon="patreon" pack="fab" size="is-medium" aria-label="cRPG Patreon" />
           </a>
         </div>
 
         <div class="level-item">
           <a href="https://discord.gg/83RJDN9" target="_blank" title="Join our Discord">
-            <b-icon icon="discord" pack="fab" size="is-medium" />
+            <b-icon icon="discord" pack="fab" size="is-medium" aria-label="cRPG Discord" />
           </a>
         </div>
 
         <div class="level-item">
           <a href="https://store.steampowered.com/app/261550/Mount__Blade_II_Bannerlord" target="_blank" title="Buy the game">
-            <b-icon icon="steam" pack="fab" size="is-medium" />
+            <b-icon icon="steam" pack="fab" size="is-medium" aria-label="Mount & Blade Steam page" />
           </a>
         </div>
       </div>
