@@ -3,7 +3,13 @@
   apt:
     name: nginx
 
-- name: Create cRPG virtual server configuration file
+- name: Create cRPG SSL snippet file
+  template:
+    src: nginx-ssl-snippet.conf.j2
+    dest: /etc/nginx/snippets/crpg-ssl.conf
+    mode: 0644
+
+- name: Create Nginx configuration file
   template:
     src: nginx.conf.j2
     dest: /etc/nginx/nginx.conf

@@ -6,8 +6,13 @@ server {
 
 # Redirect www to non-wwww
 server {
+    listen 80;
+    listen 443 ssl http2;
     server_name www.{{ crpg_domain_name }};
-    return 301 $scheme://{{ crpg_domain_name }}$request_uri;
+
+    include /etc/nginx/snippets/crpg-ssl.conf;
+
+    return 301 https://{{ crpg_domain_name }}$request_uri;
 }
 
 # Web UI
@@ -16,13 +21,7 @@ server {
     server_name {{ crpg_domain_name }};
     root {{ crpg_ui_path }};
 
-    ssl_certificate /etc/letsencrypt/live/{{ crpg_domain_name }}/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/{{ crpg_domain_name }}/privkey.pem;
-    include /etc/letsencrypt/options-ssl-nginx.conf;
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-
-    # HSTS header for browser to always use HTTPS (https://www.chromium.org/hsts)
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    include /etc/nginx/snippets/crpg-ssl.conf;
 
     # If the browser can render compressed files, give it the pre-compressed version.
     gzip_static on;
@@ -52,13 +51,7 @@ server {
     listen 443 ssl http2;
     server_name api.{{ crpg_domain_name }};
 
-    ssl_certificate /etc/letsencrypt/live/{{ crpg_domain_name }}/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/{{ crpg_domain_name }}/privkey.pem;
-    include /etc/letsencrypt/options-ssl-nginx.conf;
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-
-    # HSTS header for browser to always use HTTPS (https://www.chromium.org/hsts)
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    include /etc/nginx/snippets/crpg-ssl.conf;
 
     location / {
         proxy_pass         http://localhost:8000;

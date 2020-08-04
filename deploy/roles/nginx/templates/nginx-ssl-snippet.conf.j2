@@ -1,0 +1,7 @@
+ssl_certificate /etc/letsencrypt/live/{{ crpg_domain_name }}/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/{{ crpg_domain_name }}/privkey.pem;
+include /etc/letsencrypt/options-ssl-nginx.conf;
+ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+# HSTS header for browser to always use HTTPS (https://www.chromium.org/hsts)
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
