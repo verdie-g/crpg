@@ -1,11 +1,19 @@
+# Redirect HTTP to HTTPS
 server {
     listen 80;
     return 301 https://$host$request_uri;
 }
 
+# Redirect www to non-wwww
+server {
+    server_name www.{{ crpg_domain_name }};
+    return 301 $scheme://{{ crpg_domain_name }}$request_uri;
+}
+
+# Web UI
 server {
     listen 443 ssl http2;
-    server_name {{ crpg_domain_name }} www.{{ crpg_domain_name }};
+    server_name {{ crpg_domain_name }};
     root {{ crpg_ui_path }};
 
     ssl_certificate /etc/letsencrypt/live/{{ crpg_domain_name }}/fullchain.pem;
@@ -39,6 +47,7 @@ server {
       }
 }
 
+# Web API
 server {
     listen 443 ssl http2;
     server_name api.{{ crpg_domain_name }};
