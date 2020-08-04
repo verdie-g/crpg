@@ -77,6 +77,11 @@ const routes = [
     component: () => import('../views/Administration.vue'),
     beforeEnter: combineGuards(isSignedInGuard, isAdminGuard),
   },
+  {
+    path: '*',
+    name: 'not-found',
+    component: () => import('../views/NotFound.vue'),
+  },
 ];
 
 const router = new VueRouter({
