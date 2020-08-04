@@ -6,10 +6,17 @@
     - postgresql
     - postgresql-client
 
+- name: Gather package facts
+  package_facts:
+
+- name: Extract PostgreSQL major version
+  set_fact:
+    postgresql_version_major: "{{ ansible_facts.packages['postgresql'][0].version.split('-')[0].split('+')[0] }}"
+
 - name: Create PostgreSQL configuration file
   template:
     src: postgresql.conf.j2
-    dest: /etc/postgresql/12/main/postgresql.conf
+    dest: "/etc/postgresql/{{ postgresql_version_major }}/main/postgresql.conf"
     mode: 0644
 
 - name: Ensure PostgreSQL is started
