@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using AspNet.Security.OpenId.Steam;
 using AutoMapper;
@@ -62,7 +63,8 @@ namespace Crpg.WebApi
                 .AddSingleton<ITokenIssuer, JwtTokenIssuer>()
                 .AddSwaggerGen(ConfigureSwagger)
                 .AddCors(ConfigureCors)
-                .AddControllers();
+                .AddControllers()
+                .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)));
 
             services.AddHealthChecks();
 

@@ -1,7 +1,8 @@
 enum DamageType {
-  Cut,
-  Pierce,
-  Blunt,
+  Undefined = "undefined",
+  Cut = "cut",
+  Pierce = "pierce",
+  Blunt = "blunt",
 }
 
 export default DamageType;
