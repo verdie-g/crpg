@@ -32,11 +32,18 @@ server {
         etag on;
     }
 
+    location ~ \.(ico|png|jpg) {
+        # Assets don't contain fingerprints (hashes) and should be cached
+        # for a limited period of time.
+        etag on;
+        add_header Cache-Control max-age=86400; # 1 day
+    }
+
     location / {
-        # Because the static files other than /index.html contain fingerprints
-        # (hashes) in their filenames and they serve as the cache buster, we
-        # don't need ETag any more. Just let browsers cache those responses
-        # forever (or 5 years, maybe).
+        # Because the static files other than /index.html and assets contain
+        # fingerprints (hashes) in their filenames and they serve as the cache
+        # buster, we don't need ETag any more. Just let browsers cache those
+        # responses forever (or 5 years, maybe).
         etag off;
         add_header Cache-Control max-age=315360000,immutable;
 
