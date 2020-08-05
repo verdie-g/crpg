@@ -171,7 +171,7 @@ namespace Crpg.Application.System.Commands
                 }
                 else
                 {
-                    _db.Entry(item).State = EntityState.Added;
+                    _db.Items.Add(item);
                 }
             }
         }
