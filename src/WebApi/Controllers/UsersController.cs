@@ -262,7 +262,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="201">Banned.</response>
         /// <response code="400">Bad Request.</response>
         /// <response code="404">User was not found.</response>
-        [HttpPost("{id}/bans"), Authorize(Roles = "Admin,SuperAdmin")]
+        [HttpPost("{id}/bans"), Authorize(Roles = "admin,superAdmin")]
         [ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<ActionResult<BanViewModel>> BanUser([FromRoute] int id, [FromBody] BanRequest req)
         {

@@ -24,7 +24,7 @@ export function getDecodedToken(): TokenPayload | undefined {
   const payload = JSON.parse(atob(token.split('.')[1]));
   return {
     userId: parseInt(payload.nameid, 10),
-    userRole: Role[payload.role] as unknown as Role,
+    userRole: payload.role,
     expiration: new Date(payload.exp * 1000),
     issuedAt: new Date(payload.iat * 1000),
   };

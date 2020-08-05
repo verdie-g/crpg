@@ -15,7 +15,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { itemTypeToStr } from '@/services/item-service';
-import ItemType from '@/models/item-type';
 
 @Component
 export default class ShopFiltersForm extends Vue {
@@ -28,7 +27,7 @@ export default class ShopFiltersForm extends Vue {
 
   onFilterInput(): void {
     this.$emit('input', {
-      types: this.shopFilters.types.map(t => parseInt(t, 10) as ItemType),
+      types: this.shopFilters.types,
       showOwned: this.shopFilters.showOwned,
     });
   }

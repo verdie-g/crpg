@@ -29,6 +29,7 @@ export const itemTypeToStr: Record<ItemType, string> = {
 };
 
 const damageTypeToStr: Record<DamageType, string> = {
+  [DamageType.Undefined]: 'Undefined',
   [DamageType.Cut]: 'Cut',
   [DamageType.Pierce]: 'Pierce',
   [DamageType.Blunt]: 'Blunt',

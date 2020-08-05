@@ -15,7 +15,7 @@ namespace Crpg.WebApi.Controllers
         /// Gets all bans.
         /// </summary>
         /// <response code="200">Ok.</response>
-        [HttpGet, Authorize(Roles = "Admin,SuperAdmin")]
+        [HttpGet, Authorize(Roles = "admin,superAdmin")]
         [ResponseCache(Duration = 60 * 60 * 1)] // 1 hour
         public async Task<ActionResult<IList<BanViewModel>>> GetBans()
         {

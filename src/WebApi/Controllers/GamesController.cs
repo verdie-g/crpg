@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Crpg.WebApi.Controllers
 {
-    [Authorize(Roles = "Game")]
+    [Authorize(Roles = "game")]
     public class GamesController : BaseController
     {
         /// <summary>

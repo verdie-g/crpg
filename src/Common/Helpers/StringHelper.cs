@@ -15,5 +15,10 @@ namespace Crpg.Common.Helpers
                 .Trim()
                 .ToLower();
         }
+
+        public static string PascalToCamelCase(string value)
+        {
+            return char.ToLowerInvariant(value[0]) + value.Substring(1);
+        }
     }
 }

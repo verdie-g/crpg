@@ -229,7 +229,7 @@ namespace Crpg.WebApi
                 var jwt = tokenIssuer.IssueToken(new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim(ClaimTypes.Role, user.Role.ToString())
+                    new Claim(ClaimTypes.Role, StringHelper.PascalToCamelCase(user.Role.ToString())),
                 }));
 
                 ctx.Request.HttpContext.Items["jwt"] = jwt;
