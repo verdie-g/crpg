@@ -21,7 +21,7 @@ http {
 
     log_format custom '$time_iso8601 $remote_addr:$remote_port $request_method $request_uri $server_protocol $status $bytes_sent $request_time "$http_referer" "$http_user_agent"';
 
-    access_log /var/log/nginx/access.log custom buffer=16k flush=1m;
+    access_log /var/log/nginx/access.log custom buffer=8k flush=15s;
 
     sendfile    on;
     tcp_nopush  on;
