@@ -79,6 +79,12 @@
         </div>
 
         <div class="level-item">
+          <a href="https://forums.taleworlds.com/index.php?groups/crpg.389" target="_blank" title="Forum">
+            <b-icon icon="users" size="is-medium" aria-label="cRPG in TaleWorlds forum" />
+          </a>
+        </div>
+
+        <div class="level-item">
           <a href="https://store.steampowered.com/app/261550/Mount__Blade_II_Bannerlord" target="_blank" title="Buy the game">
             <b-icon icon="steam" pack="fab" size="is-medium" aria-label="Mount & Blade Steam page" />
           </a>
