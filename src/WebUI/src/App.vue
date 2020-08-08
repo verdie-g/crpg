@@ -67,7 +67,7 @@
         </div>
 
         <div class="level-item">
-          <a href="https://www.patreon.com" target="_blank" title="Donate on Patreon">
+          <a href="https://www.patreon.com/crpg2" target="_blank" title="Donate on Patreon">
             <b-icon icon="patreon" pack="fab" size="is-medium" aria-label="cRPG Patreon" />
           </a>
         </div>
