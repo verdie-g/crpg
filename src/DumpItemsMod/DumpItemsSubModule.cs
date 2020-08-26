@@ -33,8 +33,8 @@ namespace Crpg.DumpItemsMod
         private static void DumpItems()
         {
             var mbItems = DeserializeMbItems("../../Modules/Native/ModuleData/mpitems.xml")
-                .OrderBy(i => i.Value)
                 .DistinctBy(i => i.StringId)
+                .OrderBy(i => i.StringId)
                 .ToArray();
             var crpgItems = mbItems
                 .Select(MbToCrpgItem)

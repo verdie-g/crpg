@@ -1,33 +1,7 @@
 [
   {
-    "mbId": "mp_arrows_steppe",
-    "name": "Steppe Arrow",
-    "value": 155,
-    "type": "arrows",
-    "weight": 0.05,
-    "weapons": [
-      {
-        "class": "arrow",
-        "accuracy": 100,
-        "missileSpeed": 10,
-        "stackAmount": 25,
-        "length": 97,
-        "balance": 0.0,
-        "handling": 0,
-        "bodyArmor": 0,
-        "flags": 21474836736,
-        "thrustDamage": 0,
-        "thrustDamageType": "pierce",
-        "thrustSpeed": 0,
-        "swingDamage": 0,
-        "swingDamageType": "blunt",
-        "swingSpeed": 0
-      }
-    ]
-  },
-  {
-    "mbId": "mp_arrows_imperial",
-    "name": "Imperial Arrow",
+    "mbId": "mp_arrows_barbed",
+    "name": "Barbed Arrow",
     "value": 155,
     "type": "arrows",
     "weight": 0.05,
@@ -78,8 +52,34 @@
     ]
   },
   {
-    "mbId": "mp_arrows_barbed",
-    "name": "Barbed Arrow",
+    "mbId": "mp_arrows_imperial",
+    "name": "Imperial Arrow",
+    "value": 155,
+    "type": "arrows",
+    "weight": 0.05,
+    "weapons": [
+      {
+        "class": "arrow",
+        "accuracy": 100,
+        "missileSpeed": 10,
+        "stackAmount": 25,
+        "length": 97,
+        "balance": 0.0,
+        "handling": 0,
+        "bodyArmor": 0,
+        "flags": 21474836736,
+        "thrustDamage": 0,
+        "thrustDamageType": "pierce",
+        "thrustSpeed": 0,
+        "swingDamage": 0,
+        "swingDamageType": "blunt",
+        "swingSpeed": 0
+      }
+    ]
+  },
+  {
+    "mbId": "mp_arrows_steppe",
+    "name": "Steppe Arrow",
     "value": 155,
     "type": "arrows",
     "weight": 0.05,
@@ -156,8 +156,8 @@
     ]
   },
   {
-    "mbId": "mp_arrows_steppe_extra",
-    "name": "Steppe Arrow",
+    "mbId": "mp_arrows_barbed_extra",
+    "name": "Barbed Arrow",
     "value": 810,
     "type": "arrows",
     "weight": 0.05,
@@ -208,8 +208,8 @@
     ]
   },
   {
-    "mbId": "mp_arrows_barbed_extra",
-    "name": "Barbed Arrow",
+    "mbId": "mp_arrows_steppe_extra",
+    "name": "Steppe Arrow",
     "value": 810,
     "type": "arrows",
     "weight": 0.05,
@@ -377,6 +377,19 @@
     }
   },
   {
+    "mbId": "mp_cloth_tunic",
+    "name": "Western Cloth Tunic",
+    "value": 96,
+    "type": "bodyArmor",
+    "weight": 0.4,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 1,
+      "armArmor": 1,
+      "legArmor": 1
+    }
+  },
+  {
     "mbId": "mp_hemp_tunic",
     "name": "Hemp Tunic",
     "value": 96,
@@ -392,19 +405,6 @@
   {
     "mbId": "mp_tied_cloth_tunic",
     "name": "Tied Cloth Tunic",
-    "value": 96,
-    "type": "bodyArmor",
-    "weight": 0.4,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 1,
-      "armArmor": 1,
-      "legArmor": 1
-    }
-  },
-  {
-    "mbId": "mp_cloth_tunic",
-    "name": "Western Cloth Tunic",
     "value": 96,
     "type": "bodyArmor",
     "weight": 0.4,
@@ -494,6 +494,19 @@
     }
   },
   {
+    "mbId": "mp_aserai_civil_a",
+    "name": "Southern Robe with Waistband",
+    "value": 120,
+    "type": "bodyArmor",
+    "weight": 0.8,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 3,
+      "armArmor": 1,
+      "legArmor": 1
+    }
+  },
+  {
     "mbId": "mp_bandit_envelope_dress_v2",
     "name": "Sleeveless Enveloped Padded Garments",
     "value": 120,
@@ -517,19 +530,6 @@
       "bodyArmor": 2,
       "armArmor": 0,
       "legArmor": 3
-    }
-  },
-  {
-    "mbId": "mp_aserai_civil_a",
-    "name": "Southern Robe with Waistband",
-    "value": 120,
-    "type": "bodyArmor",
-    "weight": 0.8,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 3,
-      "armArmor": 1,
-      "legArmor": 1
     }
   },
   {
@@ -559,16 +559,16 @@
     }
   },
   {
-    "mbId": "mp_bandit_envelope_dress_v1",
-    "name": "Commoners Tunic",
+    "mbId": "mp_armored_baggy_trunks",
+    "name": "Armored Baggy Trunks",
     "value": 134,
     "type": "bodyArmor",
-    "weight": 5.0,
+    "weight": 1.5,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 4,
-      "armArmor": 1,
-      "legArmor": 1
+      "bodyArmor": 2,
+      "armArmor": 0,
+      "legArmor": 4
     }
   },
   {
@@ -585,29 +585,16 @@
     }
   },
   {
-    "mbId": "mp_sleeveless_studded_fur_armor",
-    "name": "Sleeveless Studded Fur Armor",
+    "mbId": "mp_bandit_envelope_dress_v1",
+    "name": "Commoners Tunic",
     "value": 134,
     "type": "bodyArmor",
-    "weight": 0.4,
+    "weight": 5.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 3,
-      "armArmor": 0,
-      "legArmor": 3
-    }
-  },
-  {
-    "mbId": "mp_armored_baggy_trunks",
-    "name": "Armored Baggy Trunks",
-    "value": 134,
-    "type": "bodyArmor",
-    "weight": 1.5,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 2,
-      "armArmor": 0,
-      "legArmor": 4
+      "bodyArmor": 4,
+      "armArmor": 1,
+      "legArmor": 1
     }
   },
   {
@@ -624,16 +611,16 @@
     }
   },
   {
-    "mbId": "mp_sleeveless_fur_coat",
-    "name": "Sleeveless Fur Coat",
-    "value": 136,
+    "mbId": "mp_sleeveless_studded_fur_armor",
+    "name": "Sleeveless Studded Fur Armor",
+    "value": 134,
     "type": "bodyArmor",
-    "weight": 1.8,
+    "weight": 0.4,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 6,
+      "bodyArmor": 3,
       "armArmor": 0,
-      "legArmor": 1
+      "legArmor": 3
     }
   },
   {
@@ -650,6 +637,19 @@
     }
   },
   {
+    "mbId": "mp_sleeveless_fur_coat",
+    "name": "Sleeveless Fur Coat",
+    "value": 136,
+    "type": "bodyArmor",
+    "weight": 1.8,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 6,
+      "armArmor": 0,
+      "legArmor": 1
+    }
+  },
+  {
     "mbId": "mp_khuzait_civil_coat_b",
     "name": "Eastern Thick Coat",
     "value": 140,
@@ -659,6 +659,19 @@
       "headArmor": 0,
       "bodyArmor": 6,
       "armArmor": 0,
+      "legArmor": 1
+    }
+  },
+  {
+    "mbId": "mp_aserai_civil_e",
+    "name": "Thawb",
+    "value": 150,
+    "type": "bodyArmor",
+    "weight": 1.1,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 4,
+      "armArmor": 2,
       "legArmor": 1
     }
   },
@@ -673,19 +686,6 @@
       "bodyArmor": 3,
       "armArmor": 2,
       "legArmor": 2
-    }
-  },
-  {
-    "mbId": "mp_aserai_civil_e",
-    "name": "Thawb",
-    "value": 150,
-    "type": "bodyArmor",
-    "weight": 1.1,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 4,
-      "armArmor": 2,
-      "legArmor": 1
     }
   },
   {
@@ -715,11 +715,11 @@
     }
   },
   {
-    "mbId": "mp_ragged_robes",
-    "name": "Ragged Robes",
+    "mbId": "mp_battania_woodland_outfit",
+    "name": "Woodland Garments",
     "value": 167,
     "type": "bodyArmor",
-    "weight": 5.0,
+    "weight": 1.2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -728,11 +728,11 @@
     }
   },
   {
-    "mbId": "mp_battania_woodland_outfit",
-    "name": "Woodland Garments",
+    "mbId": "mp_ragged_robes",
+    "name": "Ragged Robes",
     "value": 167,
     "type": "bodyArmor",
-    "weight": 1.2,
+    "weight": 5.0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -780,19 +780,6 @@
     }
   },
   {
-    "mbId": "mp_vlandia_bandit_b",
-    "name": "Cheap Colored Clothes",
-    "value": 208,
-    "type": "bodyArmor",
-    "weight": 1.8,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 6,
-      "armArmor": 2,
-      "legArmor": 2
-    }
-  },
-  {
     "mbId": "mp_long_desert_robe",
     "name": "Long Desert Robe",
     "value": 208,
@@ -806,29 +793,29 @@
     }
   },
   {
-    "mbId": "mp_tundra_tunic",
-    "name": "Northern Belted Tunic",
-    "value": 233,
+    "mbId": "mp_vlandia_bandit_b",
+    "name": "Cheap Colored Clothes",
+    "value": 208,
     "type": "bodyArmor",
-    "weight": 0.3,
+    "weight": 1.8,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 9,
-      "armArmor": 1,
-      "legArmor": 1
+      "bodyArmor": 6,
+      "armArmor": 2,
+      "legArmor": 2
     }
   },
   {
-    "mbId": "mp_thick_sleeved_robe",
-    "name": "Thick Sleeved Robe",
+    "mbId": "mp_nordic_tunic",
+    "name": "Northern Luxery Tunic",
     "value": 233,
     "type": "bodyArmor",
-    "weight": 6.8,
+    "weight": 12.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 8,
+      "bodyArmor": 9,
       "armArmor": 2,
-      "legArmor": 1
+      "legArmor": 0
     }
   },
   {
@@ -845,16 +832,29 @@
     }
   },
   {
-    "mbId": "mp_nordic_tunic",
-    "name": "Northern Luxery Tunic",
+    "mbId": "mp_thick_sleeved_robe",
+    "name": "Thick Sleeved Robe",
     "value": 233,
     "type": "bodyArmor",
-    "weight": 12.0,
+    "weight": 6.8,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 8,
+      "armArmor": 2,
+      "legArmor": 1
+    }
+  },
+  {
+    "mbId": "mp_tundra_tunic",
+    "name": "Northern Belted Tunic",
+    "value": 233,
+    "type": "bodyArmor",
+    "weight": 0.3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 9,
-      "armArmor": 2,
-      "legArmor": 0
+      "armArmor": 1,
+      "legArmor": 1
     }
   },
   {
@@ -962,16 +962,16 @@
     }
   },
   {
-    "mbId": "mp_steppe_robe",
-    "name": "Eastern Steppe Robe",
+    "mbId": "mp_eastern_silk_clothing",
+    "name": "Southern Silk Clothing",
     "value": 361,
     "type": "bodyArmor",
-    "weight": 14.0,
+    "weight": 11.3,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 9,
-      "armArmor": 2,
-      "legArmor": 4
+      "bodyArmor": 14,
+      "armArmor": 1,
+      "legArmor": 0
     }
   },
   {
@@ -988,16 +988,16 @@
     }
   },
   {
-    "mbId": "mp_eastern_silk_clothing",
-    "name": "Southern Silk Clothing",
+    "mbId": "mp_steppe_robe",
+    "name": "Eastern Steppe Robe",
     "value": 361,
     "type": "bodyArmor",
-    "weight": 11.3,
+    "weight": 14.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 14,
-      "armArmor": 1,
-      "legArmor": 0
+      "bodyArmor": 9,
+      "armArmor": 2,
+      "legArmor": 4
     }
   },
   {
@@ -1079,19 +1079,6 @@
     }
   },
   {
-    "mbId": "mp_long_hemp_tunic",
-    "name": "Long Hemp Tunic",
-    "value": 502,
-    "type": "bodyArmor",
-    "weight": 11.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 12,
-      "armArmor": 2,
-      "legArmor": 4
-    }
-  },
-  {
     "mbId": "mp_fur_armor",
     "name": "Fur Armor",
     "value": 502,
@@ -1102,6 +1089,19 @@
       "bodyArmor": 15,
       "armArmor": 1,
       "legArmor": 2
+    }
+  },
+  {
+    "mbId": "mp_long_hemp_tunic",
+    "name": "Long Hemp Tunic",
+    "value": 502,
+    "type": "bodyArmor",
+    "weight": 11.0,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 12,
+      "armArmor": 2,
+      "legArmor": 4
     }
   },
   {
@@ -1144,19 +1144,6 @@
     }
   },
   {
-    "mbId": "mp_tunic_with_shoulder_pads",
-    "name": "Tunic With Shoulder Pads",
-    "value": 561,
-    "type": "bodyArmor",
-    "weight": 8.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 13,
-      "armArmor": 2,
-      "legArmor": 4
-    }
-  },
-  {
     "mbId": "mp_leather_coat_over_cloth",
     "name": "Leather Coat Over Cloth",
     "value": 561,
@@ -1167,6 +1154,19 @@
       "bodyArmor": 17,
       "armArmor": 1,
       "legArmor": 1
+    }
+  },
+  {
+    "mbId": "mp_tunic_with_shoulder_pads",
+    "name": "Tunic With Shoulder Pads",
+    "value": 561,
+    "type": "bodyArmor",
+    "weight": 8.0,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 13,
+      "armArmor": 2,
+      "legArmor": 4
     }
   },
   {
@@ -1222,6 +1222,19 @@
     }
   },
   {
+    "mbId": "mp_khuzait_belt_leather",
+    "name": "Eastern Leather With Belt",
+    "value": 636,
+    "type": "bodyArmor",
+    "weight": 2.4,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 12,
+      "armArmor": 2,
+      "legArmor": 7
+    }
+  },
+  {
     "mbId": "mp_khuzait_fortified_armor",
     "name": "Eastern Reinforced Armor",
     "value": 636,
@@ -1237,19 +1250,6 @@
   {
     "mbId": "mp_khuzait_sturdy_armor",
     "name": "Eastern Sturdy Armor",
-    "value": 636,
-    "type": "bodyArmor",
-    "weight": 2.4,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 12,
-      "armArmor": 2,
-      "legArmor": 7
-    }
-  },
-  {
-    "mbId": "mp_khuzait_belt_leather",
-    "name": "Eastern Leather With Belt",
     "value": 636,
     "type": "bodyArmor",
     "weight": 2.4,
@@ -1352,19 +1352,6 @@
     }
   },
   {
-    "mbId": "mp_sleeveless_padded_short_coat",
-    "name": "Sleeveless Padded Short Coat",
-    "value": 1351,
-    "type": "bodyArmor",
-    "weight": 11.5,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 19,
-      "armArmor": 2,
-      "legArmor": 6
-    }
-  },
-  {
     "mbId": "mp_northern_leather_tabard",
     "name": "Northern Leather Tabard",
     "value": 1351,
@@ -1378,16 +1365,29 @@
     }
   },
   {
-    "mbId": "mp_nordic_padded_cloth",
-    "name": "Northern Layered Cloth",
-    "value": 1508,
+    "mbId": "mp_sleeveless_padded_short_coat",
+    "name": "Sleeveless Padded Short Coat",
+    "value": 1351,
     "type": "bodyArmor",
-    "weight": 11.0,
+    "weight": 11.5,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 21,
+      "bodyArmor": 19,
       "armArmor": 2,
-      "legArmor": 5
+      "legArmor": 6
+    }
+  },
+  {
+    "mbId": "mp_desert_padded_cloth",
+    "name": "Southern Padded Cloth",
+    "value": 1508,
+    "type": "bodyArmor",
+    "weight": 7.6,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 18,
+      "armArmor": 3,
+      "legArmor": 7
     }
   },
   {
@@ -1401,6 +1401,19 @@
       "bodyArmor": 18,
       "armArmor": 4,
       "legArmor": 6
+    }
+  },
+  {
+    "mbId": "mp_nordic_padded_cloth",
+    "name": "Northern Layered Cloth",
+    "value": 1508,
+    "type": "bodyArmor",
+    "weight": 11.0,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 21,
+      "armArmor": 2,
+      "legArmor": 5
     }
   },
   {
@@ -1443,19 +1456,6 @@
     }
   },
   {
-    "mbId": "mp_desert_padded_cloth",
-    "name": "Southern Padded Cloth",
-    "value": 1508,
-    "type": "bodyArmor",
-    "weight": 7.6,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 18,
-      "armArmor": 3,
-      "legArmor": 7
-    }
-  },
-  {
     "mbId": "mp_khuzait_lamellar_strapped",
     "name": "Eastern Strapped Lamellar Armor",
     "value": 1575,
@@ -1482,6 +1482,19 @@
     }
   },
   {
+    "mbId": "mp_crude_leather_armor",
+    "name": "Crude Eastern Leather Armor",
+    "value": 1879,
+    "type": "bodyArmor",
+    "weight": 12.3,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 20,
+      "armArmor": 5,
+      "legArmor": 5
+    }
+  },
+  {
     "mbId": "mp_gambeson_b",
     "name": "Western Gambeson",
     "value": 1879,
@@ -1504,19 +1517,6 @@
       "headArmor": 0,
       "bodyArmor": 18,
       "armArmor": 7,
-      "legArmor": 5
-    }
-  },
-  {
-    "mbId": "mp_crude_leather_armor",
-    "name": "Crude Eastern Leather Armor",
-    "value": 1879,
-    "type": "bodyArmor",
-    "weight": 12.3,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 20,
-      "armArmor": 5,
       "legArmor": 5
     }
   },
@@ -1703,16 +1703,16 @@
     }
   },
   {
-    "mbId": "mp_legionary_mail",
-    "name": "Legionary Mail",
+    "mbId": "mp_aserai_horseman_armor",
+    "name": "Southern Horseman Armor",
     "value": 4525,
     "type": "bodyArmor",
-    "weight": 9.5,
+    "weight": 9.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 29,
-      "armArmor": 2,
-      "legArmor": 7
+      "bodyArmor": 30,
+      "armArmor": 0,
+      "legArmor": 8
     }
   },
   {
@@ -1729,6 +1729,19 @@
     }
   },
   {
+    "mbId": "mp_legionary_mail",
+    "name": "Legionary Mail",
+    "value": 4525,
+    "type": "bodyArmor",
+    "weight": 9.5,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 29,
+      "armArmor": 2,
+      "legArmor": 7
+    }
+  },
+  {
     "mbId": "mp_padded_leather_shirt",
     "name": "Padded Leather Shirt",
     "value": 4525,
@@ -1738,19 +1751,6 @@
       "headArmor": 0,
       "bodyArmor": 28,
       "armArmor": 2,
-      "legArmor": 8
-    }
-  },
-  {
-    "mbId": "mp_aserai_horseman_armor",
-    "name": "Southern Horseman Armor",
-    "value": 4525,
-    "type": "bodyArmor",
-    "weight": 9.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 30,
-      "armArmor": 0,
       "legArmor": 8
     }
   },
@@ -1765,6 +1765,19 @@
       "bodyArmor": 37,
       "armArmor": 1,
       "legArmor": 1
+    }
+  },
+  {
+    "mbId": "mp_basic_imperial_leather_armor",
+    "name": "Imperial Leather Armor",
+    "value": 7022,
+    "type": "bodyArmor",
+    "weight": 9.5,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 29,
+      "armArmor": 4,
+      "legArmor": 9
     }
   },
   {
@@ -1794,19 +1807,6 @@
     }
   },
   {
-    "mbId": "mp_empire_warrior_padded_armor_d",
-    "name": "Imperial Gambeson With Straps",
-    "value": 7022,
-    "type": "bodyArmor",
-    "weight": 12.3,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 29,
-      "armArmor": 4,
-      "legArmor": 9
-    }
-  },
-  {
     "mbId": "mp_empire_warrior_padded_armor_c",
     "name": "Imperial Gambeson With Skirts",
     "value": 7022,
@@ -1820,11 +1820,11 @@
     }
   },
   {
-    "mbId": "mp_basic_imperial_leather_armor",
-    "name": "Imperial Leather Armor",
+    "mbId": "mp_empire_warrior_padded_armor_d",
+    "name": "Imperial Gambeson With Straps",
     "value": 7022,
     "type": "bodyArmor",
-    "weight": 9.5,
+    "weight": 12.3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 29,
@@ -1885,16 +1885,16 @@
     }
   },
   {
-    "mbId": "mp_studded_leather_over_aketon",
-    "name": "Studded Leather Over Aketon",
+    "mbId": "mp_eastern_plated_leather_vest",
+    "name": "Eastern Plated Leather Vest",
     "value": 10897,
     "type": "bodyArmor",
-    "weight": 13.7,
+    "weight": 25.5,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 29,
-      "armArmor": 6,
-      "legArmor": 11
+      "bodyArmor": 36,
+      "armArmor": 2,
+      "legArmor": 8
     }
   },
   {
@@ -1911,16 +1911,16 @@
     }
   },
   {
-    "mbId": "mp_eastern_plated_leather_vest",
-    "name": "Eastern Plated Leather Vest",
+    "mbId": "mp_studded_leather_over_aketon",
+    "name": "Studded Leather Over Aketon",
     "value": 10897,
     "type": "bodyArmor",
-    "weight": 25.5,
+    "weight": 13.7,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 36,
-      "armArmor": 2,
-      "legArmor": 8
+      "bodyArmor": 29,
+      "armArmor": 6,
+      "legArmor": 11
     }
   },
   {
@@ -2015,19 +2015,6 @@
     }
   },
   {
-    "mbId": "mp_nordic_sloven_over_mail",
-    "name": "Northern Leather Tabard Over Mail",
-    "value": 21067,
-    "type": "bodyArmor",
-    "weight": 21.5,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 37,
-      "armArmor": 2,
-      "legArmor": 13
-    }
-  },
-  {
     "mbId": "mp_desert_robe_over_mail",
     "name": "Southern Robe Over Mail",
     "value": 21067,
@@ -2038,6 +2025,19 @@
       "bodyArmor": 33,
       "armArmor": 4,
       "legArmor": 15
+    }
+  },
+  {
+    "mbId": "mp_nordic_sloven_over_mail",
+    "name": "Northern Leather Tabard Over Mail",
+    "value": 21067,
+    "type": "bodyArmor",
+    "weight": 21.5,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 37,
+      "armArmor": 2,
+      "legArmor": 13
     }
   },
   {
@@ -2054,19 +2054,6 @@
     }
   },
   {
-    "mbId": "mp_imperial_mail_over_stripped_leather",
-    "name": "Imperial Mail Over Stripped Leather",
-    "value": 26244,
-    "type": "bodyArmor",
-    "weight": 18.6,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 37,
-      "armArmor": 3,
-      "legArmor": 14
-    }
-  },
-  {
     "mbId": "mp_desert_lamellar",
     "name": "Southern Lamellar",
     "value": 26244,
@@ -2077,6 +2064,19 @@
       "bodyArmor": 40,
       "armArmor": 4,
       "legArmor": 10
+    }
+  },
+  {
+    "mbId": "mp_imperial_mail_over_stripped_leather",
+    "name": "Imperial Mail Over Stripped Leather",
+    "value": 26244,
+    "type": "bodyArmor",
+    "weight": 18.6,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 37,
+      "armArmor": 3,
+      "legArmor": 14
     }
   },
   {
@@ -2184,19 +2184,6 @@
     }
   },
   {
-    "mbId": "mp_ranger_mail",
-    "name": "Ranger Mail",
-    "value": 45455,
-    "type": "bodyArmor",
-    "weight": 25.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 37,
-      "armArmor": 2,
-      "legArmor": 20
-    }
-  },
-  {
     "mbId": "mp_banded_leather_over_mail",
     "name": "Banded Leather Over Mail",
     "value": 45455,
@@ -2207,6 +2194,19 @@
       "bodyArmor": 39,
       "armArmor": 3,
       "legArmor": 17
+    }
+  },
+  {
+    "mbId": "mp_ranger_mail",
+    "name": "Ranger Mail",
+    "value": 45455,
+    "type": "bodyArmor",
+    "weight": 25.0,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 37,
+      "armArmor": 2,
+      "legArmor": 20
     }
   },
   {
@@ -2444,8 +2444,8 @@
     }
   },
   {
-    "mbId": "mp_bolts_western",
-    "name": "Bolt",
+    "mbId": "mp_bolts_imperial",
+    "name": "Imperial Bolt",
     "value": 90,
     "type": "bolts",
     "weight": 0.05,
@@ -2455,7 +2455,7 @@
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 20,
-        "length": 37,
+        "length": 47,
         "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
@@ -2470,8 +2470,8 @@
     ]
   },
   {
-    "mbId": "mp_bolts_imperial",
-    "name": "Imperial Bolt",
+    "mbId": "mp_bolts_western",
+    "name": "Bolt",
     "value": 90,
     "type": "bolts",
     "weight": 0.05,
@@ -2481,7 +2481,7 @@
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 20,
-        "length": 47,
+        "length": 37,
         "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
@@ -2782,6 +2782,19 @@
     ]
   },
   {
+    "mbId": "mp_battania_cloak",
+    "name": "Highland Cloak",
+    "value": 86,
+    "type": "cape",
+    "weight": 0.5,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 2,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
     "mbId": "mp_hood",
     "name": "Hood",
     "value": 86,
@@ -2808,32 +2821,6 @@
     }
   },
   {
-    "mbId": "mp_wrapped_scarf",
-    "name": "Wrapped Scarf",
-    "value": 86,
-    "type": "cape",
-    "weight": 0.5,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 2,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_battania_cloak",
-    "name": "Highland Cloak",
-    "value": 86,
-    "type": "cape",
-    "weight": 0.5,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 2,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
     "mbId": "mp_steppe_leather_shoulders",
     "name": "Steppe Leather Shoulders",
     "value": 86,
@@ -2847,14 +2834,14 @@
     }
   },
   {
-    "mbId": "mp_reinforced_suede_shoulders",
-    "name": "Reinforced Suede Shoulders",
-    "value": 104,
+    "mbId": "mp_wrapped_scarf",
+    "name": "Wrapped Scarf",
+    "value": 86,
     "type": "cape",
-    "weight": 3.0,
+    "weight": 0.5,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 3,
+      "bodyArmor": 2,
       "armArmor": 0,
       "legArmor": 0
     }
@@ -2873,14 +2860,14 @@
     }
   },
   {
-    "mbId": "mp_khuzait_leather_pauldron",
-    "name": "Eastern Leather Pauldron",
-    "value": 127,
+    "mbId": "mp_reinforced_suede_shoulders",
+    "name": "Reinforced Suede Shoulders",
+    "value": 104,
     "type": "cape",
-    "weight": 1.5,
+    "weight": 3.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 4,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0
     }
@@ -2899,37 +2886,24 @@
     }
   },
   {
-    "mbId": "mp_padded_leather_shoulders",
-    "name": "Padded Leather Shoulders",
-    "value": 155,
+    "mbId": "mp_khuzait_leather_pauldron",
+    "name": "Eastern Leather Pauldron",
+    "value": 127,
     "type": "cape",
-    "weight": 1.4,
+    "weight": 1.5,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 5,
+      "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0
     }
   },
   {
-    "mbId": "mp_eastern_studded_shoulders",
-    "name": "Eastern Studded Shoulders",
+    "mbId": "mp_battania_cloak_furr",
+    "name": "battania_cloak_furr",
     "value": 155,
     "type": "cape",
-    "weight": 2.3,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 5,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_desert_leather_shoulderpad",
-    "name": "Southern Leather Shoulderpad",
-    "value": 155,
-    "type": "cape",
-    "weight": 1.8,
+    "weight": 1.5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -2951,11 +2925,11 @@
     }
   },
   {
-    "mbId": "mp_battania_cloak_furr",
-    "name": "battania_cloak_furr",
+    "mbId": "mp_desert_leather_shoulderpad",
+    "name": "Southern Leather Shoulderpad",
     "value": 155,
     "type": "cape",
-    "weight": 1.5,
+    "weight": 1.8,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -2964,14 +2938,27 @@
     }
   },
   {
-    "mbId": "mp_woven_leather_shoulders",
-    "name": "Woven Leather Shoulders",
-    "value": 189,
+    "mbId": "mp_eastern_studded_shoulders",
+    "name": "Eastern Studded Shoulders",
+    "value": 155,
     "type": "cape",
-    "weight": 1.6,
+    "weight": 2.3,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 6,
+      "bodyArmor": 5,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_padded_leather_shoulders",
+    "name": "Padded Leather Shoulders",
+    "value": 155,
+    "type": "cape",
+    "weight": 1.4,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 5,
       "armArmor": 0,
       "legArmor": 0
     }
@@ -2992,6 +2979,19 @@
   {
     "mbId": "mp_empire_warrior_padded_armor_shoulder",
     "name": "Imperial Padded Shoulders",
+    "value": 189,
+    "type": "cape",
+    "weight": 1.6,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 6,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_woven_leather_shoulders",
+    "name": "Woven Leather Shoulders",
     "value": 189,
     "type": "cape",
     "weight": 1.6,
@@ -3042,11 +3042,11 @@
     }
   },
   {
-    "mbId": "mp_wolf_shoulder",
-    "name": "Wolf Shoulder",
+    "mbId": "mp_leather_lamellar_shoulders",
+    "name": "Leather Lamellar Shoulders",
     "value": 282,
     "type": "cape",
-    "weight": 1.8,
+    "weight": 8.0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -3068,11 +3068,11 @@
     }
   },
   {
-    "mbId": "mp_leather_lamellar_shoulders",
-    "name": "Leather Lamellar Shoulders",
+    "mbId": "mp_wolf_shoulder",
+    "name": "Wolf Shoulder",
     "value": 282,
     "type": "cape",
-    "weight": 8.0,
+    "weight": 1.8,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -3133,6 +3133,19 @@
     }
   },
   {
+    "mbId": "mp_imperial_lamellar_shoulders",
+    "name": "Imperial Lamellar Shoulders",
+    "value": 758,
+    "type": "cape",
+    "weight": 3.5,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 13,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
     "mbId": "mp_studded_imperial_neckguard",
     "name": "Studded Imperial Neckguard",
     "value": 758,
@@ -3146,14 +3159,27 @@
     }
   },
   {
-    "mbId": "mp_imperial_lamellar_shoulders",
-    "name": "Imperial Lamellar Shoulders",
-    "value": 758,
+    "mbId": "mp_brass_lamellar_shoulder",
+    "name": "Brass Lamellar Shoulders",
+    "value": 924,
     "type": "cape",
-    "weight": 3.5,
+    "weight": 5.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 13,
+      "bodyArmor": 14,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_imperial_studded_strip_shoulders",
+    "name": "Imperial Studded Strip Shoulders",
+    "value": 924,
+    "type": "cape",
+    "weight": 4.1,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 14,
       "armArmor": 0,
       "legArmor": 0
     }
@@ -3172,27 +3198,14 @@
     }
   },
   {
-    "mbId": "mp_imperial_studded_strip_shoulders",
-    "name": "Imperial Studded Strip Shoulders",
-    "value": 924,
+    "mbId": "mp_armored_bearskin",
+    "name": "Armored Bearskin",
+    "value": 1126,
     "type": "cape",
-    "weight": 4.1,
+    "weight": 7.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 14,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_brass_lamellar_shoulder",
-    "name": "Brass Lamellar Shoulders",
-    "value": 924,
-    "type": "cape",
-    "weight": 5.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 14,
+      "bodyArmor": 15,
       "armArmor": 0,
       "legArmor": 0
     }
@@ -3216,19 +3229,6 @@
     "value": 1126,
     "type": "cape",
     "weight": 5.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 15,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_armored_bearskin",
-    "name": "Armored Bearskin",
-    "value": 1126,
-    "type": "cape",
-    "weight": 7.0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -3380,11 +3380,11 @@
     ]
   },
   {
-    "mbId": "mp_padded_vambrace",
-    "name": "Padded Vambrace",
+    "mbId": "mp_armwraps",
+    "name": "Armwraps",
     "value": 101,
     "type": "handArmor",
-    "weight": 0.1,
+    "weight": 0.2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3393,11 +3393,11 @@
     }
   },
   {
-    "mbId": "mp_armwraps",
-    "name": "Armwraps",
+    "mbId": "mp_padded_vambrace",
+    "name": "Padded Vambrace",
     "value": 101,
     "type": "handArmor",
-    "weight": 0.2,
+    "weight": 0.1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3458,11 +3458,11 @@
     }
   },
   {
-    "mbId": "mp_steppe_leather_vambraces",
-    "name": "Steppe Leather Vambraces",
+    "mbId": "mp_ragged_armwraps",
+    "name": "Ragged Armwraps",
     "value": 146,
     "type": "handArmor",
-    "weight": 0.5,
+    "weight": 0.4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3471,11 +3471,11 @@
     }
   },
   {
-    "mbId": "mp_ragged_armwraps",
-    "name": "Ragged Armwraps",
+    "mbId": "mp_steppe_leather_vambraces",
+    "name": "Steppe Leather Vambraces",
     "value": 146,
     "type": "handArmor",
-    "weight": 0.4,
+    "weight": 0.5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3575,11 +3575,11 @@
     }
   },
   {
-    "mbId": "mp_woven_leather_bracers",
-    "name": "Woven Leather Bracers",
+    "mbId": "mp_battania_noble_bracers",
+    "name": "Battania Noble Bracers",
     "value": 450,
     "type": "handArmor",
-    "weight": 1.0,
+    "weight": 4.0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3601,11 +3601,11 @@
     }
   },
   {
-    "mbId": "mp_battania_noble_bracers",
-    "name": "Battania Noble Bracers",
+    "mbId": "mp_woven_leather_bracers",
+    "name": "Woven Leather Bracers",
     "value": 450,
     "type": "handArmor",
-    "weight": 4.0,
+    "weight": 1.0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3666,11 +3666,11 @@
     }
   },
   {
-    "mbId": "mp_eastern_plated_leather_vambraces",
-    "name": "Eastern Plated Leather Vambraces",
+    "mbId": "mp_battania_warlord_bracers",
+    "name": "Highland Warlord Bracers",
     "value": 2007,
     "type": "handArmor",
-    "weight": 1.7,
+    "weight": 1.5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3679,11 +3679,11 @@
     }
   },
   {
-    "mbId": "mp_battania_warlord_bracers",
-    "name": "Highland Warlord Bracers",
+    "mbId": "mp_eastern_plated_leather_vambraces",
+    "name": "Eastern Plated Leather Vambraces",
     "value": 2007,
     "type": "handArmor",
-    "weight": 1.5,
+    "weight": 1.7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3731,8 +3731,8 @@
     }
   },
   {
-    "mbId": "mp_aserai_civil_hscarf_b",
-    "name": "Roughspun Kefiyyeh",
+    "mbId": "mp_aserai_civil_e_hscarf",
+    "name": "Wrapped Kefiyyeh",
     "value": 79,
     "type": "headArmor",
     "weight": 0.1,
@@ -3757,8 +3757,8 @@
     }
   },
   {
-    "mbId": "mp_aserai_civil_e_hscarf",
-    "name": "Wrapped Kefiyyeh",
+    "mbId": "mp_aserai_civil_hscarf_b",
+    "name": "Roughspun Kefiyyeh",
     "value": 79,
     "type": "headArmor",
     "weight": 0.1,
@@ -3796,34 +3796,8 @@
     }
   },
   {
-    "mbId": "mp_imperial_leather_coif",
-    "name": "Imperial Leather Coif",
-    "value": 93,
-    "type": "headArmor",
-    "weight": 0.3,
-    "armor": {
-      "headArmor": 3,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
     "mbId": "mp_desert_headdress",
     "name": "Desert Headdress",
-    "value": 93,
-    "type": "headArmor",
-    "weight": 0.2,
-    "armor": {
-      "headArmor": 3,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_wrapped_headcloth",
-    "name": "Wrapped Headcloth",
     "value": 93,
     "type": "headArmor",
     "weight": 0.2,
@@ -3848,8 +3822,34 @@
     }
   },
   {
-    "mbId": "mp_nomad_padded_hood",
-    "name": "Nomad Padded Hood",
+    "mbId": "mp_imperial_leather_coif",
+    "name": "Imperial Leather Coif",
+    "value": 93,
+    "type": "headArmor",
+    "weight": 0.3,
+    "armor": {
+      "headArmor": 3,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_wrapped_headcloth",
+    "name": "Wrapped Headcloth",
+    "value": 93,
+    "type": "headArmor",
+    "weight": 0.2,
+    "armor": {
+      "headArmor": 3,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_laced_cloth_coif",
+    "name": "Laced Cloth Coif",
     "value": 104,
     "type": "headArmor",
     "weight": 0.4,
@@ -3861,8 +3861,8 @@
     }
   },
   {
-    "mbId": "mp_laced_cloth_coif",
-    "name": "Laced Cloth Coif",
+    "mbId": "mp_nomad_padded_hood",
+    "name": "Nomad Padded Hood",
     "value": 104,
     "type": "headArmor",
     "weight": 0.4,
@@ -3887,11 +3887,11 @@
     }
   },
   {
-    "mbId": "mp_northern_fur_cap",
-    "name": "Northern Fur Cap",
+    "mbId": "mp_fur_hat",
+    "name": "Fur Hat",
     "value": 109,
     "type": "headArmor",
-    "weight": 0.5,
+    "weight": 3.0,
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -3900,11 +3900,11 @@
     }
   },
   {
-    "mbId": "mp_fur_hat",
-    "name": "Fur Hat",
+    "mbId": "mp_northern_fur_cap",
+    "name": "Northern Fur Cap",
     "value": 109,
     "type": "headArmor",
-    "weight": 3.0,
+    "weight": 0.5,
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -3926,11 +3926,11 @@
     }
   },
   {
-    "mbId": "mp_tuareg",
-    "name": "Tuareg",
+    "mbId": "mp_eastern_cap",
+    "name": "Eastern Cap",
     "value": 127,
     "type": "headArmor",
-    "weight": 0.6,
+    "weight": 4.0,
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -3944,6 +3944,19 @@
     "value": 127,
     "type": "headArmor",
     "weight": 0.4,
+    "armor": {
+      "headArmor": 5,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_padded_cap",
+    "name": "Padded Cap",
+    "value": 127,
+    "type": "headArmor",
+    "weight": 1.8,
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -3978,24 +3991,11 @@
     }
   },
   {
-    "mbId": "mp_eastern_cap",
-    "name": "Eastern Cap",
+    "mbId": "mp_tuareg",
+    "name": "Tuareg",
     "value": 127,
     "type": "headArmor",
-    "weight": 4.0,
-    "armor": {
-      "headArmor": 5,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_padded_cap",
-    "name": "Padded Cap",
-    "value": 127,
-    "type": "headArmor",
-    "weight": 1.8,
+    "weight": 0.6,
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -4030,11 +4030,11 @@
     }
   },
   {
-    "mbId": "mp_woven_turban",
-    "name": "Woven Turban",
+    "mbId": "mp_leather_cap",
+    "name": "Leather Cap",
     "value": 205,
     "type": "headArmor",
-    "weight": 0.8,
+    "weight": 2.0,
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -4069,11 +4069,11 @@
     }
   },
   {
-    "mbId": "mp_leather_cap",
-    "name": "Leather Cap",
+    "mbId": "mp_upturned_fur_cap",
+    "name": "Upturned Fur Cap",
     "value": 205,
     "type": "headArmor",
-    "weight": 2.0,
+    "weight": 0.6,
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -4082,11 +4082,11 @@
     }
   },
   {
-    "mbId": "mp_upturned_fur_cap",
-    "name": "Upturned Fur Cap",
+    "mbId": "mp_woven_turban",
+    "name": "Woven Turban",
     "value": 205,
     "type": "headArmor",
-    "weight": 0.6,
+    "weight": 0.8,
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -4108,11 +4108,11 @@
     }
   },
   {
-    "mbId": "mp_laced_coif",
-    "name": "Laced Coif",
+    "mbId": "mp_closed_head_scarf",
+    "name": "Closed Head Scarf",
     "value": 240,
     "type": "headArmor",
-    "weight": 0.4,
+    "weight": 0.6,
     "armor": {
       "headArmor": 9,
       "bodyArmor": 0,
@@ -4134,11 +4134,11 @@
     }
   },
   {
-    "mbId": "mp_closed_head_scarf",
-    "name": "Closed Head Scarf",
+    "mbId": "mp_laced_coif",
+    "name": "Laced Coif",
     "value": 240,
     "type": "headArmor",
-    "weight": 0.6,
+    "weight": 0.4,
     "armor": {
       "headArmor": 9,
       "bodyArmor": 0,
@@ -4225,8 +4225,8 @@
     }
   },
   {
-    "mbId": "mp_trailed_desert_helmet",
-    "name": "Trailed Southern Helmet",
+    "mbId": "mp_leather_studdedhelm_over_headcloth",
+    "name": "Leather Studdedhelm Over Headcloth",
     "value": 531,
     "type": "headArmor",
     "weight": 1.1,
@@ -4238,8 +4238,8 @@
     }
   },
   {
-    "mbId": "mp_leather_studdedhelm_over_headcloth",
-    "name": "Leather Studdedhelm Over Headcloth",
+    "mbId": "mp_nasal_helmet",
+    "name": "Nasal Helmet",
     "value": 531,
     "type": "headArmor",
     "weight": 1.1,
@@ -4264,8 +4264,8 @@
     }
   },
   {
-    "mbId": "mp_nasal_helmet",
-    "name": "Nasal Helmet",
+    "mbId": "mp_trailed_desert_helmet",
+    "name": "Trailed Southern Helmet",
     "value": 531,
     "type": "headArmor",
     "weight": 1.1,
@@ -4277,102 +4277,11 @@
     }
   },
   {
-    "mbId": "mp_padded_leather_cape",
-    "name": "Padded Leather Cape",
-    "value": 622,
-    "type": "headArmor",
-    "weight": 1.0,
-    "armor": {
-      "headArmor": 15,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
     "mbId": "mp_guards_kettle_over_laced_coif",
     "name": "Guard's Kettle Over Laced Coif",
     "value": 622,
     "type": "headArmor",
     "weight": 1.4,
-    "armor": {
-      "headArmor": 15,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_nasal_helmet_over_padded_cloth",
-    "name": "Nasal Helmet Over Padded Cloth",
-    "value": 622,
-    "type": "headArmor",
-    "weight": 1.2,
-    "armor": {
-      "headArmor": 15,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_wolfhead",
-    "name": "Wolfhead",
-    "value": 622,
-    "type": "headArmor",
-    "weight": 1.3,
-    "armor": {
-      "headArmor": 15,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_roundkettle_over_laced_cloth",
-    "name": "Roundkettle Over Laced Cloth",
-    "value": 622,
-    "type": "headArmor",
-    "weight": 1.3,
-    "armor": {
-      "headArmor": 15,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_roundkettle_over_imperial_leather",
-    "name": "Roundkettle Over Imperial Leather",
-    "value": 622,
-    "type": "headArmor",
-    "weight": 5.0,
-    "armor": {
-      "headArmor": 15,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_plumed_fur_lined_helmet",
-    "name": "Plumed Fur Lined Helmet",
-    "value": 622,
-    "type": "headArmor",
-    "weight": 1.1,
-    "armor": {
-      "headArmor": 15,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_loose_wrapped_desert_helmet",
-    "name": "Loose Wrapped Desert Helmet",
-    "value": 622,
-    "type": "headArmor",
-    "weight": 1.2,
     "armor": {
       "headArmor": 15,
       "bodyArmor": 0,
@@ -4394,11 +4303,102 @@
     }
   },
   {
+    "mbId": "mp_loose_wrapped_desert_helmet",
+    "name": "Loose Wrapped Desert Helmet",
+    "value": 622,
+    "type": "headArmor",
+    "weight": 1.2,
+    "armor": {
+      "headArmor": 15,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_nasal_helmet_over_padded_cloth",
+    "name": "Nasal Helmet Over Padded Cloth",
+    "value": 622,
+    "type": "headArmor",
+    "weight": 1.2,
+    "armor": {
+      "headArmor": 15,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_padded_leather_cape",
+    "name": "Padded Leather Cape",
+    "value": 622,
+    "type": "headArmor",
+    "weight": 1.0,
+    "armor": {
+      "headArmor": 15,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_plumed_fur_lined_helmet",
+    "name": "Plumed Fur Lined Helmet",
+    "value": 622,
+    "type": "headArmor",
+    "weight": 1.1,
+    "armor": {
+      "headArmor": 15,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_roundkettle_over_imperial_leather",
+    "name": "Roundkettle Over Imperial Leather",
+    "value": 622,
+    "type": "headArmor",
+    "weight": 5.0,
+    "armor": {
+      "headArmor": 15,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_roundkettle_over_laced_cloth",
+    "name": "Roundkettle Over Laced Cloth",
+    "value": 622,
+    "type": "headArmor",
+    "weight": 1.3,
+    "armor": {
+      "headArmor": 15,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
     "mbId": "mp_spangenhelm_with_leather",
     "name": "Spangenhelm With Leather",
     "value": 622,
     "type": "headArmor",
     "weight": 1.2,
+    "armor": {
+      "headArmor": 15,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_wolfhead",
+    "name": "Wolfhead",
+    "value": 622,
+    "type": "headArmor",
+    "weight": 1.3,
     "armor": {
       "headArmor": 15,
       "bodyArmor": 0,
@@ -4459,24 +4459,11 @@
     }
   },
   {
-    "mbId": "mp_kettle_helmet_with_leather",
-    "name": "Kettle Helmet With Leather",
+    "mbId": "mp_bearhead",
+    "name": "Bear Head",
     "value": 728,
     "type": "headArmor",
-    "weight": 1.0,
-    "armor": {
-      "headArmor": 16,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_peaked_helmet_over_padded_cloth",
-    "name": "Peaked Helmet Over Padded Cloth",
-    "value": 728,
-    "type": "headArmor",
-    "weight": 1.2,
+    "weight": 1.4,
     "armor": {
       "headArmor": 16,
       "bodyArmor": 0,
@@ -4498,11 +4485,11 @@
     }
   },
   {
-    "mbId": "mp_nasal_helmet_over_laced_coif",
-    "name": "Nasal Helmet Over Laced Coif",
+    "mbId": "mp_kettle_helmet_with_leather",
+    "name": "Kettle Helmet With Leather",
     "value": 728,
     "type": "headArmor",
-    "weight": 6.0,
+    "weight": 1.0,
     "armor": {
       "headArmor": 16,
       "bodyArmor": 0,
@@ -4511,11 +4498,11 @@
     }
   },
   {
-    "mbId": "mp_nasalhelm_over_leather",
-    "name": "Nasalhelm Over Leather",
+    "mbId": "mp_nasal_helmet_over_laced_coif",
+    "name": "Nasal Helmet Over Laced Coif",
     "value": 728,
     "type": "headArmor",
-    "weight": 1.4,
+    "weight": 6.0,
     "armor": {
       "headArmor": 16,
       "bodyArmor": 0,
@@ -4537,11 +4524,24 @@
     }
   },
   {
-    "mbId": "mp_bearhead",
-    "name": "Bear Head",
+    "mbId": "mp_nasalhelm_over_leather",
+    "name": "Nasalhelm Over Leather",
     "value": 728,
     "type": "headArmor",
     "weight": 1.4,
+    "armor": {
+      "headArmor": 16,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_peaked_helmet_over_padded_cloth",
+    "name": "Peaked Helmet Over Padded Cloth",
+    "value": 728,
+    "type": "headArmor",
+    "weight": 1.2,
     "armor": {
       "headArmor": 16,
       "bodyArmor": 0,
@@ -4555,19 +4555,6 @@
     "value": 853,
     "type": "headArmor",
     "weight": 1.2,
-    "armor": {
-      "headArmor": 17,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_segmented_skullcap_over_padded_cloth",
-    "name": "Segmented Skullcap Over Padded Cloth",
-    "value": 853,
-    "type": "headArmor",
-    "weight": 0.5,
     "armor": {
       "headArmor": 17,
       "bodyArmor": 0,
@@ -4602,24 +4589,24 @@
     }
   },
   {
-    "mbId": "mp_steppe_helmet",
-    "name": "Steppe Helmet",
-    "value": 1000,
+    "mbId": "mp_segmented_skullcap_over_padded_cloth",
+    "name": "Segmented Skullcap Over Padded Cloth",
+    "value": 853,
     "type": "headArmor",
-    "weight": 5.0,
+    "weight": 0.5,
     "armor": {
-      "headArmor": 18,
+      "headArmor": 17,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0
     }
   },
   {
-    "mbId": "mp_plumed_nomad_helmet",
-    "name": "Plumed Nomad Helmet",
+    "mbId": "mp_battania_fur_helmet",
+    "name": "Highland Hide Helmet",
     "value": 1000,
     "type": "headArmor",
-    "weight": 1.1,
+    "weight": 1.3,
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -4641,11 +4628,11 @@
     }
   },
   {
-    "mbId": "mp_battania_fur_helmet",
-    "name": "Highland Hide Helmet",
+    "mbId": "mp_plumed_nomad_helmet",
+    "name": "Plumed Nomad Helmet",
     "value": 1000,
     "type": "headArmor",
-    "weight": 1.3,
+    "weight": 1.1,
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -4667,39 +4654,13 @@
     }
   },
   {
-    "mbId": "mp_pointed_skullcap_over_mail",
-    "name": "Pointed Skullcap Over Mail",
-    "value": 1171,
+    "mbId": "mp_steppe_helmet",
+    "name": "Steppe Helmet",
+    "value": 1000,
     "type": "headArmor",
-    "weight": 1.3,
+    "weight": 5.0,
     "armor": {
-      "headArmor": 19,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "nasal_cervelliere_over_laced_coif",
-    "name": "Nasal Cervelliere Over Laced Coif",
-    "value": 1171,
-    "type": "headArmor",
-    "weight": 1.1,
-    "armor": {
-      "headArmor": 19,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_tall_helmet",
-    "name": "Tall Helmet",
-    "value": 1171,
-    "type": "headArmor",
-    "weight": 1.2,
-    "armor": {
-      "headArmor": 19,
+      "headArmor": 18,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0
@@ -4732,6 +4693,32 @@
     }
   },
   {
+    "mbId": "mp_kettle_helmet_over_padded_cloth",
+    "name": "Kettle Helmet Over Padded Cloth",
+    "value": 1171,
+    "type": "headArmor",
+    "weight": 1.1,
+    "armor": {
+      "headArmor": 19,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_pointed_skullcap_over_mail",
+    "name": "Pointed Skullcap Over Mail",
+    "value": 1171,
+    "type": "headArmor",
+    "weight": 1.3,
+    "armor": {
+      "headArmor": 19,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
     "mbId": "mp_segmented_skullcap_over_padded_coif",
     "name": "Segmented Skullcap Over Padded Coif",
     "value": 1171,
@@ -4745,8 +4732,21 @@
     }
   },
   {
-    "mbId": "mp_kettle_helmet_over_padded_cloth",
-    "name": "Kettle Helmet Over Padded Cloth",
+    "mbId": "mp_tall_helmet",
+    "name": "Tall Helmet",
+    "value": 1171,
+    "type": "headArmor",
+    "weight": 1.2,
+    "armor": {
+      "headArmor": 19,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "nasal_cervelliere_over_laced_coif",
+    "name": "Nasal Cervelliere Over Laced Coif",
     "value": 1171,
     "type": "headArmor",
     "weight": 1.1,
@@ -4763,6 +4763,19 @@
     "value": 1311,
     "type": "headArmor",
     "weight": 1.1,
+    "armor": {
+      "headArmor": 20,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_leatherlame_nasalhelm_over_imperial_leather",
+    "name": "Leatherlame Nasalhelm Over Imperial Leather",
+    "value": 1372,
+    "type": "headArmor",
+    "weight": 1.9,
     "armor": {
       "headArmor": 20,
       "bodyArmor": 0,
@@ -4797,35 +4810,9 @@
     }
   },
   {
-    "mbId": "mp_leatherlame_nasalhelm_over_imperial_leather",
-    "name": "Leatherlame Nasalhelm Over Imperial Leather",
-    "value": 1372,
-    "type": "headArmor",
-    "weight": 1.9,
-    "armor": {
-      "headArmor": 20,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
     "mbId": "mp_spiked_kettle_over_imperial_padding",
     "name": "Spiked Kettle Over Imperial Padding",
     "value": 1372,
-    "type": "headArmor",
-    "weight": 1.5,
-    "armor": {
-      "headArmor": 20,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_nasal_helmet_with_mail",
-    "name": "Nasal Helmet With Mail",
-    "value": 1402,
     "type": "headArmor",
     "weight": 1.5,
     "armor": {
@@ -4849,13 +4836,13 @@
     }
   },
   {
-    "mbId": "mp_nasal_cervelliere_over_mail_coif",
-    "name": "Nasal Cervelliere Over Mail Coif",
-    "value": 1607,
+    "mbId": "mp_nasal_helmet_with_mail",
+    "name": "Nasal Helmet With Mail",
+    "value": 1402,
     "type": "headArmor",
-    "weight": 2.6,
+    "weight": 1.5,
     "armor": {
-      "headArmor": 21,
+      "headArmor": 20,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0
@@ -4875,11 +4862,24 @@
     }
   },
   {
-    "mbId": "mp_nasal_cervelliere_over_padded_coif",
-    "name": "Nasal Cervelliere Over Padded Coif",
+    "mbId": "mp_nasal_cervelliere_over_mail_coif",
+    "name": "Nasal Cervelliere Over Mail Coif",
+    "value": 1607,
+    "type": "headArmor",
+    "weight": 2.6,
+    "armor": {
+      "headArmor": 21,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_desert_helmet_with_mail",
+    "name": "Southern Helmet With Mail",
     "value": 1883,
     "type": "headArmor",
-    "weight": 1.2,
+    "weight": 1.9,
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -4901,8 +4901,8 @@
     }
   },
   {
-    "mbId": "mp_pointed_skullcap_over_laced_coif",
-    "name": "Pointed Skullcap Over Laced Coif",
+    "mbId": "mp_nasal_cervelliere_over_padded_coif",
+    "name": "Nasal Cervelliere Over Padded Coif",
     "value": 1883,
     "type": "headArmor",
     "weight": 1.2,
@@ -4914,11 +4914,11 @@
     }
   },
   {
-    "mbId": "mp_desert_helmet_with_mail",
-    "name": "Southern Helmet With Mail",
+    "mbId": "mp_pointed_skullcap_over_laced_coif",
+    "name": "Pointed Skullcap Over Laced Coif",
     "value": 1883,
     "type": "headArmor",
-    "weight": 1.9,
+    "weight": 1.2,
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -4966,11 +4966,11 @@
     }
   },
   {
-    "mbId": "mp_kettle_helmet_over_arming_coif",
-    "name": "Kettle Helmet Over Arming Coif",
+    "mbId": "mp_full_helm_over_cloth_headwrap",
+    "name": "Full Helm Over Cloth Headwrap",
     "value": 4865,
     "type": "headArmor",
-    "weight": 1.0,
+    "weight": 5.0,
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -4979,11 +4979,11 @@
     }
   },
   {
-    "mbId": "mp_full_helm_over_cloth_headwrap",
-    "name": "Full Helm Over Cloth Headwrap",
+    "mbId": "mp_kettle_helmet_over_arming_coif",
+    "name": "Kettle Helmet Over Arming Coif",
     "value": 4865,
     "type": "headArmor",
-    "weight": 5.0,
+    "weight": 1.0,
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -5044,11 +5044,11 @@
     }
   },
   {
-    "mbId": "mp_peaked_helmet_over_mail_coif",
-    "name": "Peaked Helmet Over Mail Coif",
+    "mbId": "mp_full_helm_over_laced_coif",
+    "name": "Full Helm Over Laced Coif",
     "value": 6676,
     "type": "headArmor",
-    "weight": 2.7,
+    "weight": 6.5,
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -5057,8 +5057,8 @@
     }
   },
   {
-    "mbId": "mp_sturgia_heavy_cavalry_helmet",
-    "name": "Sturgia Heavy Cavalry Helmet",
+    "mbId": "mp_goggled_helmet_over_mail",
+    "name": "Goggled Helmet Over Mail",
     "value": 6676,
     "type": "headArmor",
     "weight": 1.8,
@@ -5083,6 +5083,19 @@
     }
   },
   {
+    "mbId": "mp_peaked_helmet_over_mail_coif",
+    "name": "Peaked Helmet Over Mail Coif",
+    "value": 6676,
+    "type": "headArmor",
+    "weight": 2.7,
+    "armor": {
+      "headArmor": 30,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
     "mbId": "mp_roundkettle_over_imperial_mail",
     "name": "Roundkettle Over Imperial Mail",
     "value": 6676,
@@ -5096,24 +5109,11 @@
     }
   },
   {
-    "mbId": "mp_goggled_helmet_over_mail",
-    "name": "Goggled Helmet Over Mail",
+    "mbId": "mp_sturgia_heavy_cavalry_helmet",
+    "name": "Sturgia Heavy Cavalry Helmet",
     "value": 6676,
     "type": "headArmor",
     "weight": 1.8,
-    "armor": {
-      "headArmor": 30,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_full_helm_over_laced_coif",
-    "name": "Full Helm Over Laced Coif",
-    "value": 6676,
-    "type": "headArmor",
-    "weight": 6.5,
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -5148,11 +5148,11 @@
     }
   },
   {
-    "mbId": "mp_plumed_helmet",
-    "name": "Plumed Helmet",
+    "mbId": "mp_northern_goggled_helmet",
+    "name": "Northern Goggled Helmet",
     "value": 7821,
     "type": "headArmor",
-    "weight": 4.0,
+    "weight": 1.8,
     "armor": {
       "headArmor": 31,
       "bodyArmor": 0,
@@ -5161,11 +5161,11 @@
     }
   },
   {
-    "mbId": "mp_northern_goggled_helmet",
-    "name": "Northern Goggled Helmet",
+    "mbId": "mp_plumed_helmet",
+    "name": "Plumed Helmet",
     "value": 7821,
     "type": "headArmor",
-    "weight": 1.8,
+    "weight": 4.0,
     "armor": {
       "headArmor": 31,
       "bodyArmor": 0,
@@ -5200,24 +5200,11 @@
     }
   },
   {
-    "mbId": "mp_ridged_northernhelm",
-    "name": "Ridged Northernhelm",
+    "mbId": "mp_battanian_plated_noble_helmet",
+    "name": "Highland Plated Noble Helmet",
     "value": 9161,
     "type": "headArmor",
-    "weight": 3.4,
-    "armor": {
-      "headArmor": 32,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_segmented_cervelliere_over_mail_coif",
-    "name": "Segmented Cevelliere Over Mail Coif",
-    "value": 9161,
-    "type": "headArmor",
-    "weight": 3.2,
+    "weight": 2.9,
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -5252,11 +5239,24 @@
     }
   },
   {
-    "mbId": "mp_battanian_plated_noble_helmet",
-    "name": "Highland Plated Noble Helmet",
+    "mbId": "mp_ridged_northernhelm",
+    "name": "Ridged Northernhelm",
     "value": 9161,
     "type": "headArmor",
-    "weight": 2.9,
+    "weight": 3.4,
+    "armor": {
+      "headArmor": 32,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_segmented_cervelliere_over_mail_coif",
+    "name": "Segmented Cevelliere Over Mail Coif",
+    "value": 9161,
+    "type": "headArmor",
+    "weight": 3.2,
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -5272,45 +5272,6 @@
     "weight": 3.6,
     "armor": {
       "headArmor": 32,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_ironlame_spiked_kettle_over_mail",
-    "name": "Iron Spiked Kettle Over Mail",
-    "value": 10731,
-    "type": "headArmor",
-    "weight": 3.8,
-    "armor": {
-      "headArmor": 33,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_helmet_with_faceguard",
-    "name": "Helmet With Faceguard",
-    "value": 10731,
-    "type": "headArmor",
-    "weight": 5.0,
-    "armor": {
-      "headArmor": 33,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_plumed_lamellar_helmet",
-    "name": "Plumed Lamellar Helmet",
-    "value": 10731,
-    "type": "headArmor",
-    "weight": 3.3,
-    "armor": {
-      "headArmor": 33,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0
@@ -5343,26 +5304,39 @@
     }
   },
   {
-    "mbId": "mp_leather_studdedhelm_over_roughscale",
-    "name": "Leather Studdedhelm Over Roughscale",
-    "value": 12571,
+    "mbId": "mp_helmet_with_faceguard",
+    "name": "Helmet With Faceguard",
+    "value": 10731,
     "type": "headArmor",
-    "weight": 4.0,
+    "weight": 5.0,
     "armor": {
-      "headArmor": 34,
+      "headArmor": 33,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0
     }
   },
   {
-    "mbId": "mp_segmented_skullcap_over_mail_coif",
-    "name": "Segmented Skullcap Over Mail Coif",
-    "value": 12571,
+    "mbId": "mp_ironlame_spiked_kettle_over_mail",
+    "name": "Iron Spiked Kettle Over Mail",
+    "value": 10731,
     "type": "headArmor",
-    "weight": 3.5,
+    "weight": 3.8,
     "armor": {
-      "headArmor": 34,
+      "headArmor": 33,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_plumed_lamellar_helmet",
+    "name": "Plumed Lamellar Helmet",
+    "value": 10731,
+    "type": "headArmor",
+    "weight": 3.3,
+    "armor": {
+      "headArmor": 33,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0
@@ -5387,6 +5361,32 @@
     "value": 12571,
     "type": "headArmor",
     "weight": 3.2,
+    "armor": {
+      "headArmor": 34,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_leather_studdedhelm_over_roughscale",
+    "name": "Leather Studdedhelm Over Roughscale",
+    "value": 12571,
+    "type": "headArmor",
+    "weight": 4.0,
+    "armor": {
+      "headArmor": 34,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_segmented_skullcap_over_mail_coif",
+    "name": "Segmented Skullcap Over Mail Coif",
+    "value": 12571,
+    "type": "headArmor",
+    "weight": 3.5,
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -5460,19 +5460,6 @@
     }
   },
   {
-    "mbId": "mp_visored_helmet_over_mail_coif",
-    "name": "Visored Helmet Over Mail Coif",
-    "value": 17250,
-    "type": "headArmor",
-    "weight": 1.3,
-    "armor": {
-      "headArmor": 36,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
     "mbId": "mp_leatherlame_feathered_spangenhelm_over_mail",
     "name": "Leatherlame Feathered Spangenhelm Over Mail",
     "value": 17250,
@@ -5486,13 +5473,13 @@
     }
   },
   {
-    "mbId": "mp_nordic_helmet",
-    "name": "Northern Helmet",
-    "value": 20206,
+    "mbId": "mp_visored_helmet_over_mail_coif",
+    "name": "Visored Helmet Over Mail Coif",
+    "value": 17250,
     "type": "headArmor",
-    "weight": 4.1,
+    "weight": 1.3,
     "armor": {
-      "headArmor": 37,
+      "headArmor": 36,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0
@@ -5504,6 +5491,19 @@
     "value": 20206,
     "type": "headArmor",
     "weight": 4.2,
+    "armor": {
+      "headArmor": 37,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_nordic_helmet",
+    "name": "Northern Helmet",
+    "value": 20206,
+    "type": "headArmor",
+    "weight": 4.1,
     "armor": {
       "headArmor": 37,
       "bodyArmor": 0,
@@ -5525,19 +5525,6 @@
     }
   },
   {
-    "mbId": "mp_sturgian_lord_helmet_a",
-    "name": "Northern Lord Helmet",
-    "value": 22002,
-    "type": "headArmor",
-    "weight": 3.6,
-    "armor": {
-      "headArmor": 37,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
     "mbId": "mp_empire_lord_helmet",
     "name": "Imperial Lord Helmet",
     "value": 22002,
@@ -5551,13 +5538,13 @@
     }
   },
   {
-    "mbId": "mp_imperial_goggled_helmet",
-    "name": "Imperial Goggled Helmet",
-    "value": 23670,
+    "mbId": "mp_sturgian_lord_helmet_a",
+    "name": "Northern Lord Helmet",
+    "value": 22002,
     "type": "headArmor",
-    "weight": 4.2,
+    "weight": 3.6,
     "armor": {
-      "headArmor": 38,
+      "headArmor": 37,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0
@@ -5577,24 +5564,11 @@
     }
   },
   {
-    "mbId": "mp_khuzait_noble_helmet_with_fur",
-    "name": "Eastern Noble Helmet with Fur",
-    "value": 25774,
+    "mbId": "mp_imperial_goggled_helmet",
+    "name": "Imperial Goggled Helmet",
+    "value": 23670,
     "type": "headArmor",
-    "weight": 3.9,
-    "armor": {
-      "headArmor": 38,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_empire_helmet_with_metal_strips",
-    "name": "Imperial Guarded Lord Helmet",
-    "value": 25774,
-    "type": "headArmor",
-    "weight": 3.7,
+    "weight": 4.2,
     "armor": {
       "headArmor": 38,
       "bodyArmor": 0,
@@ -5616,13 +5590,26 @@
     }
   },
   {
-    "mbId": "mp_western_crowned_plated_helmet",
-    "name": "Western Crowned Plated Helmet",
-    "value": 27727,
+    "mbId": "mp_empire_helmet_with_metal_strips",
+    "name": "Imperial Guarded Lord Helmet",
+    "value": 25774,
+    "type": "headArmor",
+    "weight": 3.7,
+    "armor": {
+      "headArmor": 38,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_khuzait_noble_helmet_with_fur",
+    "name": "Eastern Noble Helmet with Fur",
+    "value": 25774,
     "type": "headArmor",
     "weight": 3.9,
     "armor": {
-      "headArmor": 39,
+      "headArmor": 38,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0
@@ -5634,6 +5621,19 @@
     "value": 27727,
     "type": "headArmor",
     "weight": 4.3,
+    "armor": {
+      "headArmor": 39,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_western_crowned_plated_helmet",
+    "name": "Western Crowned Plated Helmet",
+    "value": 27727,
+    "type": "headArmor",
+    "weight": 3.9,
     "armor": {
       "headArmor": 39,
       "bodyArmor": 0,
@@ -5746,8 +5746,8 @@
     }
   },
   {
-    "mbId": "mp_southern_noble_helmet",
-    "name": "Southern Noble Helmet",
+    "mbId": "mp_southern_lord_helmet",
+    "name": "Southern Lord Helmet",
     "value": 56847,
     "type": "headArmor",
     "weight": 3.7,
@@ -5759,8 +5759,8 @@
     }
   },
   {
-    "mbId": "mp_southern_lord_helmet",
-    "name": "Southern Lord Helmet",
+    "mbId": "mp_southern_noble_helmet",
+    "name": "Southern Noble Helmet",
     "value": 56847,
     "type": "headArmor",
     "weight": 3.7,
@@ -6135,11 +6135,89 @@
     }
   },
   {
+    "mbId": "mp_aseran_village_harness",
+    "name": "Southern Common Harness",
+    "value": 90,
+    "type": "horseHarness",
+    "weight": 32.0,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 4,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_bandit_saddle_highland",
+    "name": "Rugged Highland Saddle",
+    "value": 90,
+    "type": "horseHarness",
+    "weight": 40.0,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 4,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_camel_saddle",
+    "name": "Camel Saddle",
+    "value": 90,
+    "type": "horseHarness",
+    "weight": 50.0,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 4,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_desert_cloth_harness",
+    "name": "Desert Cloth Harness",
+    "value": 90,
+    "type": "horseHarness",
+    "weight": 38.0,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 4,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_imperial_riding_harness",
+    "name": "Imperial Riding Harness",
+    "value": 90,
+    "type": "horseHarness",
+    "weight": 30.0,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 4,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
     "mbId": "mp_light_harness",
     "name": "Light Harness",
     "value": 90,
     "type": "horseHarness",
     "weight": 30.0,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 4,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
+    "mbId": "mp_northern_noble_harness",
+    "name": "Northern Noble Harness",
+    "value": 90,
+    "type": "horseHarness",
+    "weight": 45.0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -6187,84 +6265,6 @@
     }
   },
   {
-    "mbId": "mp_desert_cloth_harness",
-    "name": "Desert Cloth Harness",
-    "value": 90,
-    "type": "horseHarness",
-    "weight": 38.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 4,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_aseran_village_harness",
-    "name": "Southern Common Harness",
-    "value": 90,
-    "type": "horseHarness",
-    "weight": 32.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 4,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_camel_saddle",
-    "name": "Camel Saddle",
-    "value": 90,
-    "type": "horseHarness",
-    "weight": 50.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 4,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_bandit_saddle_highland",
-    "name": "Rugged Highland Saddle",
-    "value": 90,
-    "type": "horseHarness",
-    "weight": 40.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 4,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_northern_noble_harness",
-    "name": "Northern Noble Harness",
-    "value": 90,
-    "type": "horseHarness",
-    "weight": 45.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 4,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_imperial_riding_harness",
-    "name": "Imperial Riding Harness",
-    "value": 90,
-    "type": "horseHarness",
-    "weight": 30.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 4,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
     "mbId": "mp_battania_horse_harness",
     "name": "Highland Horse Harness",
     "value": 139,
@@ -6291,6 +6291,19 @@
     }
   },
   {
+    "mbId": "mp_half_mail_and_plate_barding",
+    "name": "Half Mail And Plate Barding",
+    "value": 1565,
+    "type": "horseHarness",
+    "weight": 80.0,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 30,
+      "armArmor": 0,
+      "legArmor": 0
+    }
+  },
+  {
     "mbId": "mp_half_scale_barding",
     "name": "Half Scale Barding",
     "value": 1565,
@@ -6304,8 +6317,8 @@
     }
   },
   {
-    "mbId": "mp_half_mail_and_plate_barding",
-    "name": "Half Mail And Plate Barding",
+    "mbId": "mp_halfchain_barding",
+    "name": "Halfchain Barding",
     "value": 1565,
     "type": "horseHarness",
     "weight": 80.0,
@@ -6322,19 +6335,6 @@
     "value": 1565,
     "type": "horseHarness",
     "weight": 76.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 30,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_halfchain_barding",
-    "name": "Halfchain Barding",
-    "value": 1565,
-    "type": "horseHarness",
-    "weight": 80.0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 30,
@@ -6499,11 +6499,11 @@
     }
   },
   {
-    "mbId": "mp_steppe_leather_boots",
-    "name": "Steppe Leather Boots",
+    "mbId": "mp_fine_town_boots",
+    "name": "Fine Town Boots",
     "value": 238,
     "type": "legArmor",
-    "weight": 0.8,
+    "weight": 0.5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -6525,11 +6525,11 @@
     }
   },
   {
-    "mbId": "mp_fine_town_boots",
-    "name": "Fine Town Boots",
+    "mbId": "mp_steppe_leather_boots",
+    "name": "Steppe Leather Boots",
     "value": 238,
     "type": "legArmor",
-    "weight": 0.5,
+    "weight": 0.8,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -6603,11 +6603,11 @@
     }
   },
   {
-    "mbId": "mp_reinforced_suede_boots",
-    "name": "Reinforced Suede Boots",
+    "mbId": "mp_highland_boots",
+    "name": "Highland Boots",
     "value": 338,
     "type": "legArmor",
-    "weight": 4.0,
+    "weight": 1.0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -6616,11 +6616,11 @@
     }
   },
   {
-    "mbId": "mp_highland_boots",
-    "name": "Highland Boots",
+    "mbId": "mp_reinforced_suede_boots",
+    "name": "Reinforced Suede Boots",
     "value": 338,
     "type": "legArmor",
-    "weight": 1.0,
+    "weight": 4.0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -6642,11 +6642,11 @@
     }
   },
   {
-    "mbId": "mp_leather_cavalier_boots",
-    "name": "Leather Cavalier Boots",
+    "mbId": "mp_battania_woodland_boots",
+    "name": "Highland Woodland Boots",
     "value": 403,
     "type": "legArmor",
-    "weight": 0.9,
+    "weight": 1.0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -6668,11 +6668,11 @@
     }
   },
   {
-    "mbId": "mp_battania_woodland_boots",
-    "name": "Highland Woodland Boots",
+    "mbId": "mp_leather_cavalier_boots",
+    "name": "Leather Cavalier Boots",
     "value": 403,
     "type": "legArmor",
-    "weight": 1.0,
+    "weight": 0.9,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -6681,11 +6681,11 @@
     }
   },
   {
-    "mbId": "mp_eastern_leather_boots",
-    "name": "Eastern Leather Boots",
+    "mbId": "mp_battania_leather_boots",
+    "name": "Highland Leather Boots",
     "value": 481,
     "type": "legArmor",
-    "weight": 1.1,
+    "weight": 1.0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -6694,11 +6694,11 @@
     }
   },
   {
-    "mbId": "mp_battania_leather_boots",
-    "name": "Highland Leather Boots",
+    "mbId": "mp_eastern_leather_boots",
+    "name": "Eastern Leather Boots",
     "value": 481,
     "type": "legArmor",
-    "weight": 1.0,
+    "weight": 1.1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -10206,28 +10206,28 @@
     ]
   },
   {
-    "mbId": "mp_vlandian_polearm",
-    "name": "Voulge",
+    "mbId": "mp_empire_heavy_menavlion",
+    "name": "Heavy Menavlion",
     "value": 340919,
     "type": "polearm",
-    "weight": 1.44,
+    "weight": 1.15,
     "weapons": [
       {
         "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 136,
-        "balance": 0.67,
-        "handling": 78,
+        "length": 206,
+        "balance": 0.15,
+        "handling": 65,
         "bodyArmor": 0,
-        "flags": 2162769,
-        "thrustDamage": 32,
+        "flags": 2097233,
+        "thrustDamage": 48,
         "thrustDamageType": "pierce",
         "thrustSpeed": 98,
-        "swingDamage": 180,
+        "swingDamage": 166,
         "swingDamageType": "cut",
-        "swingSpeed": 90
+        "swingSpeed": 74
       }
     ]
   },
@@ -10254,32 +10254,6 @@
         "swingDamage": 137,
         "swingDamageType": "cut",
         "swingSpeed": 79
-      }
-    ]
-  },
-  {
-    "mbId": "mp_empire_heavy_menavlion",
-    "name": "Heavy Menavlion",
-    "value": 340919,
-    "type": "polearm",
-    "weight": 1.15,
-    "weapons": [
-      {
-        "class": "twoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 206,
-        "balance": 0.15,
-        "handling": 65,
-        "bodyArmor": 0,
-        "flags": 2097233,
-        "thrustDamage": 48,
-        "thrustDamageType": "pierce",
-        "thrustSpeed": 98,
-        "swingDamage": 166,
-        "swingDamageType": "cut",
-        "swingSpeed": 74
       }
     ]
   },
@@ -10332,6 +10306,32 @@
         "swingDamage": 165,
         "swingDamageType": "cut",
         "swingSpeed": 89
+      }
+    ]
+  },
+  {
+    "mbId": "mp_vlandian_polearm",
+    "name": "Voulge",
+    "value": 340919,
+    "type": "polearm",
+    "weight": 1.44,
+    "weapons": [
+      {
+        "class": "twoHandedPolearm",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 136,
+        "balance": 0.67,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": 2162769,
+        "thrustDamage": 32,
+        "thrustDamageType": "pierce",
+        "thrustSpeed": 98,
+        "swingDamage": 180,
+        "swingDamageType": "cut",
+        "swingSpeed": 90
       }
     ]
   },
@@ -10570,8 +10570,8 @@
     ]
   },
   {
-    "mbId": "mp_worn_kite_shield",
-    "name": "Worn Kite Shield",
+    "mbId": "mp_bound_adarga",
+    "name": "Bound Adarga",
     "value": 65,
     "type": "shield",
     "weight": 3.7,
@@ -10581,12 +10581,12 @@
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
-        "length": 128,
+        "length": 60,
         "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
-        "thrustDamage": 5,
+        "thrustDamage": 0,
         "thrustDamageType": "blunt",
         "thrustSpeed": 82,
         "swingDamage": 0,
@@ -10622,8 +10622,8 @@
     ]
   },
   {
-    "mbId": "mp_bound_adarga",
-    "name": "Bound Adarga",
+    "mbId": "mp_worn_kite_shield",
+    "name": "Worn Kite Shield",
     "value": 65,
     "type": "shield",
     "weight": 3.7,
@@ -10633,12 +10633,12 @@
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
-        "length": 60,
+        "length": 128,
         "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
-        "thrustDamage": 0,
+        "thrustDamage": 5,
         "thrustDamageType": "blunt",
         "thrustSpeed": 82,
         "swingDamage": 0,
@@ -10726,8 +10726,34 @@
     ]
   },
   {
-    "mbId": "mp_western_kite_shield",
-    "name": "Kite Shield",
+    "mbId": "mp_emirs_oval_shield",
+    "name": "Decorated Oval Shield",
+    "value": 78,
+    "type": "shield",
+    "weight": 4.7,
+    "weapons": [
+      {
+        "class": "largeShield",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 125,
+        "length": 110,
+        "balance": 0.0,
+        "handling": 82,
+        "bodyArmor": 10,
+        "flags": 268435968,
+        "thrustDamage": 0,
+        "thrustDamageType": "blunt",
+        "thrustSpeed": 82,
+        "swingDamage": 0,
+        "swingDamageType": "blunt",
+        "swingSpeed": 82
+      }
+    ]
+  },
+  {
+    "mbId": "mp_highland_scouts_shield",
+    "name": "Highland Scout's Shield",
     "value": 78,
     "type": "shield",
     "weight": 4.7,
@@ -10737,7 +10763,7 @@
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
-        "length": 110,
+        "length": 60,
         "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
@@ -10778,8 +10804,8 @@
     ]
   },
   {
-    "mbId": "mp_highland_scouts_shield",
-    "name": "Highland Scout's Shield",
+    "mbId": "mp_western_kite_shield",
+    "name": "Kite Shield",
     "value": 78,
     "type": "shield",
     "weight": 4.7,
@@ -10789,36 +10815,10 @@
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
-        "length": 60,
-        "balance": 0.0,
-        "handling": 82,
-        "bodyArmor": 5,
-        "flags": 268435968,
-        "thrustDamage": 0,
-        "thrustDamageType": "blunt",
-        "thrustSpeed": 82,
-        "swingDamage": 0,
-        "swingDamageType": "blunt",
-        "swingSpeed": 82
-      }
-    ]
-  },
-  {
-    "mbId": "mp_emirs_oval_shield",
-    "name": "Decorated Oval Shield",
-    "value": 78,
-    "type": "shield",
-    "weight": 4.7,
-    "weapons": [
-      {
-        "class": "largeShield",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 125,
         "length": 110,
         "balance": 0.0,
         "handling": 82,
-        "bodyArmor": 10,
+        "bodyArmor": 5,
         "flags": 268435968,
         "thrustDamage": 0,
         "thrustDamageType": "blunt",
@@ -10960,32 +10960,6 @@
     ]
   },
   {
-    "mbId": "mp_small_flat_heater_shield",
-    "name": "Small Heater Shield",
-    "value": 91,
-    "type": "shield",
-    "weight": 2.5,
-    "weapons": [
-      {
-        "class": "largeShield",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 100,
-        "length": 77,
-        "balance": 0.0,
-        "handling": 82,
-        "bodyArmor": 5,
-        "flags": 268435968,
-        "thrustDamage": 0,
-        "thrustDamageType": "blunt",
-        "thrustSpeed": 82,
-        "swingDamage": 0,
-        "swingDamageType": "blunt",
-        "swingSpeed": 82
-      }
-    ]
-  },
-  {
     "mbId": "mp_desert_round_shield",
     "name": "Round Shield",
     "value": 91,
@@ -11001,6 +10975,32 @@
         "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
+        "flags": 268435968,
+        "thrustDamage": 0,
+        "thrustDamageType": "blunt",
+        "thrustSpeed": 82,
+        "swingDamage": 0,
+        "swingDamageType": "blunt",
+        "swingSpeed": 82
+      }
+    ]
+  },
+  {
+    "mbId": "mp_small_flat_heater_shield",
+    "name": "Small Heater Shield",
+    "value": 91,
+    "type": "shield",
+    "weight": 2.5,
+    "weapons": [
+      {
+        "class": "largeShield",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 100,
+        "length": 77,
+        "balance": 0.0,
+        "handling": 82,
+        "bodyArmor": 5,
         "flags": 268435968,
         "thrustDamage": 0,
         "thrustDamageType": "blunt",
@@ -11480,32 +11480,6 @@
     ]
   },
   {
-    "mbId": "mp_throwing_stone",
-    "name": "Stone",
-    "value": 82,
-    "type": "thrown",
-    "weight": 0.1,
-    "weapons": [
-      {
-        "class": "stone",
-        "accuracy": 50,
-        "missileSpeed": 40,
-        "stackAmount": 15,
-        "length": 10,
-        "balance": 0.0,
-        "handling": 102,
-        "bodyArmor": 0,
-        "flags": 2148008194,
-        "thrustDamage": 16,
-        "thrustDamageType": "blunt",
-        "thrustSpeed": 102,
-        "swingDamage": 0,
-        "swingDamageType": "blunt",
-        "swingSpeed": 102
-      }
-    ]
-  },
-  {
     "mbId": "mp_sling_stone",
     "name": "Sling",
     "value": 82,
@@ -11522,6 +11496,32 @@
         "handling": 102,
         "bodyArmor": 0,
         "flags": 6442975490,
+        "thrustDamage": 16,
+        "thrustDamageType": "blunt",
+        "thrustSpeed": 102,
+        "swingDamage": 0,
+        "swingDamageType": "blunt",
+        "swingSpeed": 102
+      }
+    ]
+  },
+  {
+    "mbId": "mp_throwing_stone",
+    "name": "Stone",
+    "value": 82,
+    "type": "thrown",
+    "weight": 0.1,
+    "weapons": [
+      {
+        "class": "stone",
+        "accuracy": 50,
+        "missileSpeed": 40,
+        "stackAmount": 15,
+        "length": 10,
+        "balance": 0.0,
+        "handling": 102,
+        "bodyArmor": 0,
+        "flags": 2148008194,
         "thrustDamage": 16,
         "thrustDamageType": "blunt",
         "thrustSpeed": 102,
