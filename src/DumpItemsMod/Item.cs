@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Crpg.DumpItemsMod
 {
@@ -45,10 +44,12 @@ namespace Crpg.DumpItemsMod
 
     internal class ItemWeaponComponent
     {
+        public string Class { get; set; } = default!;
         public int Accuracy { get; set; }
         public int MissileSpeed { get; set; }
         public int StackAmount { get; set; }
         public int Length { get; set; }
+        public float Balance { get; set; }
         public int Handling { get; set; }
         public int BodyArmor { get; set; }
         public long Flags { get; set; }

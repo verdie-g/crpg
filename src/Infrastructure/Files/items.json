@@ -7,10 +7,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "arrow",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 25,
         "length": 97,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836736,
@@ -31,10 +33,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "arrow",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 25,
         "length": 97,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836736,
@@ -55,10 +59,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "arrow",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 25,
         "length": 97,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836736,
@@ -79,10 +85,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "arrow",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 25,
         "length": 97,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836736,
@@ -103,10 +111,12 @@
     "weight": 0.03,
     "weapons": [
       {
+        "class": "arrow",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 30,
         "length": 97,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836736,
@@ -127,10 +137,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "arrow",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 30,
         "length": 170,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836736,
@@ -151,10 +163,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "arrow",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 40,
         "length": 97,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836736,
@@ -175,10 +189,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "arrow",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 40,
         "length": 97,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836736,
@@ -199,10 +215,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "arrow",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 40,
         "length": 97,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836736,
@@ -223,10 +241,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "arrow",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 25,
         "length": 97,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836736,
@@ -247,10 +267,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "arrow",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 30,
         "length": 97,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836736,
@@ -271,10 +293,12 @@
     "weight": 3.0,
     "weapons": [
       {
+        "class": "arrow",
         "accuracy": 100,
         "missileSpeed": 80,
         "stackAmount": 20,
         "length": 95,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 17246978304,
@@ -295,10 +319,12 @@
     "weight": 3.0,
     "weapons": [
       {
+        "class": "arrow",
         "accuracy": 100,
         "missileSpeed": 80,
         "stackAmount": 20,
         "length": 95,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 17783881984,
@@ -2425,10 +2451,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "bolt",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 20,
         "length": 37,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836864,
@@ -2449,10 +2477,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "bolt",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 20,
         "length": 47,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836864,
@@ -2473,10 +2503,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "bolt",
         "accuracy": 100,
         "missileSpeed": 11,
         "stackAmount": 25,
         "length": 37,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836864,
@@ -2497,10 +2529,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "bolt",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 35,
         "length": 37,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836864,
@@ -2521,10 +2555,12 @@
     "weight": 0.05,
     "weapons": [
       {
+        "class": "bolt",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 25,
         "length": 37,
+        "balance": 0.0,
         "handling": 0,
         "bodyArmor": 0,
         "flags": 21474836864,
@@ -2545,10 +2581,12 @@
     "weight": 1.0,
     "weapons": [
       {
+        "class": "bow",
         "accuracy": 89,
         "missileSpeed": 64,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 110,
         "bodyArmor": 0,
         "flags": 2628626,
@@ -2569,10 +2607,12 @@
     "weight": 1.2,
     "weapons": [
       {
+        "class": "bow",
         "accuracy": 91,
         "missileSpeed": 68,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 100,
         "bodyArmor": 0,
         "flags": 2628626,
@@ -2593,10 +2633,12 @@
     "weight": 1.2,
     "weapons": [
       {
+        "class": "bow",
         "accuracy": 89,
         "missileSpeed": 69,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 125,
         "bodyArmor": 0,
         "flags": 2628626,
@@ -2617,10 +2659,12 @@
     "weight": 2.0,
     "weapons": [
       {
+        "class": "bow",
         "accuracy": 90,
         "missileSpeed": 72,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 70,
         "bodyArmor": 0,
         "flags": 2628626,
@@ -2641,10 +2685,12 @@
     "weight": 1.6,
     "weapons": [
       {
+        "class": "bow",
         "accuracy": 93,
         "missileSpeed": 73,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 90,
         "bodyArmor": 0,
         "flags": 2628626,
@@ -2665,10 +2711,12 @@
     "weight": 1.5,
     "weapons": [
       {
+        "class": "bow",
         "accuracy": 90,
         "missileSpeed": 70,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 135,
         "bodyArmor": 0,
         "flags": 2628626,
@@ -2689,10 +2737,12 @@
     "weight": 2.0,
     "weapons": [
       {
+        "class": "bow",
         "accuracy": 94,
         "missileSpeed": 80,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 70,
         "bodyArmor": 0,
         "flags": 2628626,
@@ -2713,10 +2763,12 @@
     "weight": 2.4,
     "weapons": [
       {
+        "class": "bow",
         "accuracy": 97,
         "missileSpeed": 83,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 60,
         "bodyArmor": 0,
         "flags": 2628626,
@@ -3231,10 +3283,12 @@
     "weight": 1.0,
     "weapons": [
       {
+        "class": "crossbow",
         "accuracy": 95,
         "missileSpeed": 77,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 140,
         "bodyArmor": 0,
         "flags": 2360338,
@@ -3255,10 +3309,12 @@
     "weight": 2.2,
     "weapons": [
       {
+        "class": "crossbow",
         "accuracy": 98,
         "missileSpeed": 82,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 85,
         "bodyArmor": 0,
         "flags": 2360338,
@@ -3279,10 +3335,12 @@
     "weight": 2.7,
     "weapons": [
       {
+        "class": "crossbow",
         "accuracy": 98,
         "missileSpeed": 91,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 100,
         "bodyArmor": 0,
         "flags": 2360338,
@@ -3303,10 +3361,12 @@
     "weight": 3.0,
     "weapons": [
       {
+        "class": "crossbow",
         "accuracy": 100,
         "missileSpeed": 91,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 70,
         "bodyArmor": 0,
         "flags": 2360338,
@@ -6771,10 +6831,12 @@
     "weight": 1.31,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 65,
+        "balance": 0.84,
         "handling": 95,
         "bodyArmor": 0,
         "flags": 1,
@@ -6795,10 +6857,12 @@
     "weight": 1.44,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 67,
+        "balance": 0.71,
         "handling": 93,
         "bodyArmor": 0,
         "flags": 1,
@@ -6819,10 +6883,12 @@
     "weight": 1.44,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 56,
+        "balance": 1.0,
         "handling": 108,
         "bodyArmor": 0,
         "flags": 1,
@@ -6843,10 +6909,12 @@
     "weight": 1.32,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 67,
+        "balance": 0.75,
         "handling": 89,
         "bodyArmor": 0,
         "flags": 65537,
@@ -6867,10 +6935,12 @@
     "weight": 1.34,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 73,
+        "balance": 0.91,
         "handling": 99,
         "bodyArmor": 0,
         "flags": 65537,
@@ -6891,10 +6961,12 @@
     "weight": 1.72,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 82,
+        "balance": 0.29,
         "handling": 81,
         "bodyArmor": 0,
         "flags": 1,
@@ -6915,10 +6987,12 @@
     "weight": 1.72,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 86,
+        "balance": 0.17,
         "handling": 79,
         "bodyArmor": 0,
         "flags": 1,
@@ -6939,10 +7013,12 @@
     "weight": 1.67,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 85,
+        "balance": 0.33,
         "handling": 82,
         "bodyArmor": 0,
         "flags": 1,
@@ -6963,10 +7039,12 @@
     "weight": 1.49,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 85,
+        "balance": 0.9,
         "handling": 100,
         "bodyArmor": 0,
         "flags": 1,
@@ -6987,10 +7065,12 @@
     "weight": 1.37,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 65,
+        "balance": 0.79,
         "handling": 95,
         "bodyArmor": 0,
         "flags": 1,
@@ -7011,10 +7091,12 @@
     "weight": 1.5,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 90,
+        "balance": 0.28,
         "handling": 80,
         "bodyArmor": 0,
         "flags": 1,
@@ -7035,10 +7117,12 @@
     "weight": 1.37,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 81,
+        "balance": 0.56,
         "handling": 87,
         "bodyArmor": 0,
         "flags": 1,
@@ -7059,10 +7143,12 @@
     "weight": 1.53,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 87,
+        "balance": 0.87,
         "handling": 97,
         "bodyArmor": 0,
         "flags": 1,
@@ -7083,10 +7169,12 @@
     "weight": 1.44,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 89,
+        "balance": 0.89,
         "handling": 97,
         "bodyArmor": 0,
         "flags": 1,
@@ -7107,10 +7195,12 @@
     "weight": 1.45,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 85,
+        "balance": 0.9,
         "handling": 99,
         "bodyArmor": 0,
         "flags": 1,
@@ -7131,10 +7221,12 @@
     "weight": 1.32,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 68,
+        "balance": 0.91,
         "handling": 100,
         "bodyArmor": 0,
         "flags": 1,
@@ -7155,10 +7247,12 @@
     "weight": 1.31,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 82,
+        "balance": 0.52,
         "handling": 86,
         "bodyArmor": 0,
         "flags": 1,
@@ -7179,10 +7273,12 @@
     "weight": 1.86,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 73,
+        "balance": 0.45,
         "handling": 87,
         "bodyArmor": 0,
         "flags": 1,
@@ -7203,10 +7299,12 @@
     "weight": 1.29,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 76,
+        "balance": 0.69,
         "handling": 90,
         "bodyArmor": 0,
         "flags": 1,
@@ -7227,10 +7325,12 @@
     "weight": 1.54,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 48,
+        "balance": 0.99,
         "handling": 102,
         "bodyArmor": 0,
         "flags": 65537,
@@ -7251,10 +7351,12 @@
     "weight": 1.18,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 62,
+        "balance": 0.8,
         "handling": 93,
         "bodyArmor": 0,
         "flags": 65537,
@@ -7275,10 +7377,12 @@
     "weight": 1.16,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 112,
+        "balance": 0.78,
         "handling": 90,
         "bodyArmor": 0,
         "flags": 65537,
@@ -7299,10 +7403,12 @@
     "weight": 1.12,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 76,
+        "balance": 0.87,
         "handling": 94,
         "bodyArmor": 0,
         "flags": 1,
@@ -7323,10 +7429,12 @@
     "weight": 1.51,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 78,
+        "balance": 0.52,
         "handling": 87,
         "bodyArmor": 0,
         "flags": 1,
@@ -7347,10 +7455,12 @@
     "weight": 1.53,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 96,
+        "balance": 0.77,
         "handling": 95,
         "bodyArmor": 0,
         "flags": 1,
@@ -7371,10 +7481,12 @@
     "weight": 1.53,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 81,
+        "balance": 0.91,
         "handling": 100,
         "bodyArmor": 0,
         "flags": 1,
@@ -7395,10 +7507,12 @@
     "weight": 1.23,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 76,
+        "balance": 0.68,
         "handling": 89,
         "bodyArmor": 0,
         "flags": 65537,
@@ -7419,10 +7533,12 @@
     "weight": 1.1,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 71,
+        "balance": 0.8,
         "handling": 92,
         "bodyArmor": 0,
         "flags": 65537,
@@ -7443,10 +7559,12 @@
     "weight": 1.16,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 76,
+        "balance": 0.61,
         "handling": 86,
         "bodyArmor": 0,
         "flags": 65537,
@@ -7467,10 +7585,12 @@
     "weight": 1.34,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 81,
+        "balance": 0.58,
         "handling": 87,
         "bodyArmor": 0,
         "flags": 1,
@@ -7491,10 +7611,12 @@
     "weight": 1.12,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 71,
+        "balance": 0.78,
         "handling": 91,
         "bodyArmor": 0,
         "flags": 65537,
@@ -7515,10 +7637,12 @@
     "weight": 1.4,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 85,
+        "balance": 0.83,
         "handling": 97,
         "bodyArmor": 0,
         "flags": 1,
@@ -7539,10 +7663,12 @@
     "weight": 1.77,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 92,
+        "balance": 0.67,
         "handling": 94,
         "bodyArmor": 0,
         "flags": 1,
@@ -7563,10 +7689,12 @@
     "weight": 1.45,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 102,
+        "balance": 0.69,
         "handling": 90,
         "bodyArmor": 0,
         "flags": 1,
@@ -7587,10 +7715,12 @@
     "weight": 1.65,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 91,
+        "balance": 0.69,
         "handling": 94,
         "bodyArmor": 0,
         "flags": 1,
@@ -7611,10 +7741,12 @@
     "weight": 0.73,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 85,
+        "balance": 0.98,
         "handling": 95,
         "bodyArmor": 0,
         "flags": 65537,
@@ -7635,10 +7767,12 @@
     "weight": 1.11,
     "weapons": [
       {
+        "class": "mace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 89,
+        "balance": 0.84,
         "handling": 94,
         "bodyArmor": 0,
         "flags": 1,
@@ -7659,10 +7793,12 @@
     "weight": 1.44,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 100,
+        "balance": 0.75,
         "handling": 95,
         "bodyArmor": 0,
         "flags": 1,
@@ -7683,10 +7819,12 @@
     "weight": 1.59,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 100,
+        "balance": 0.66,
         "handling": 92,
         "bodyArmor": 0,
         "flags": 1,
@@ -7707,10 +7845,12 @@
     "weight": 1.1,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 103,
+        "balance": 0.44,
         "handling": 80,
         "bodyArmor": 0,
         "flags": 65537,
@@ -7731,10 +7871,12 @@
     "weight": 1.46,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 95,
+        "balance": 0.69,
         "handling": 91,
         "bodyArmor": 0,
         "flags": 1,
@@ -7755,10 +7897,12 @@
     "weight": 1.68,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 116,
+        "balance": 0.32,
         "handling": 82,
         "bodyArmor": 0,
         "flags": 1,
@@ -7779,10 +7923,12 @@
     "weight": 1.7,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 92,
+        "balance": 0.81,
         "handling": 96,
         "bodyArmor": 0,
         "flags": 1,
@@ -7803,10 +7949,12 @@
     "weight": 1.48,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 122,
+        "balance": 0.43,
         "handling": 85,
         "bodyArmor": 0,
         "flags": 1,
@@ -7827,10 +7975,12 @@
     "weight": 1.35,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 102,
+        "balance": 0.72,
         "handling": 92,
         "bodyArmor": 0,
         "flags": 1,
@@ -7851,10 +8001,12 @@
     "weight": 1.48,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 97,
+        "balance": 0.8,
         "handling": 94,
         "bodyArmor": 0,
         "flags": 1,
@@ -7875,10 +8027,12 @@
     "weight": 0.99,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 84,
+        "balance": 0.75,
         "handling": 89,
         "bodyArmor": 0,
         "flags": 65537,
@@ -7899,10 +8053,12 @@
     "weight": 1.58,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 110,
+        "balance": 0.56,
         "handling": 87,
         "bodyArmor": 0,
         "flags": 1,
@@ -7923,10 +8079,12 @@
     "weight": 1.43,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 92,
+        "balance": 0.87,
         "handling": 97,
         "bodyArmor": 0,
         "flags": 1,
@@ -7947,10 +8105,12 @@
     "weight": 1.35,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 105,
+        "balance": 0.61,
         "handling": 88,
         "bodyArmor": 0,
         "flags": 1,
@@ -7971,10 +8131,12 @@
     "weight": 0.94,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 102,
+        "balance": 0.63,
         "handling": 85,
         "bodyArmor": 0,
         "flags": 65537,
@@ -7995,10 +8157,12 @@
     "weight": 1.19,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 90,
+        "balance": 0.97,
         "handling": 98,
         "bodyArmor": 0,
         "flags": 1,
@@ -8019,10 +8183,12 @@
     "weight": 1.58,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 115,
+        "balance": 0.48,
         "handling": 86,
         "bodyArmor": 0,
         "flags": 1,
@@ -8043,10 +8209,12 @@
     "weight": 1.13,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 85,
+        "balance": 1.0,
         "handling": 101,
         "bodyArmor": 0,
         "flags": 1,
@@ -8067,10 +8235,12 @@
     "weight": 1.42,
     "weapons": [
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 101,
+        "balance": 0.78,
         "handling": 95,
         "bodyArmor": 0,
         "flags": 1,
@@ -8091,10 +8261,12 @@
     "weight": 1.05,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 71,
+        "balance": 0.96,
         "handling": 96,
         "bodyArmor": 0,
         "flags": 65537,
@@ -8115,10 +8287,12 @@
     "weight": 1.01,
     "weapons": [
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 91,
+        "balance": 0.7,
         "handling": 88,
         "bodyArmor": 0,
         "flags": 65537,
@@ -8139,10 +8313,12 @@
     "weight": 2.0,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 200,
+        "balance": 1.0,
         "handling": 56,
         "bodyArmor": 0,
         "flags": 10485841,
@@ -8163,10 +8339,12 @@
     "weight": 2.8,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 204,
+        "balance": 0.0,
         "handling": 48,
         "bodyArmor": 0,
         "flags": 65,
@@ -8178,10 +8356,12 @@
         "swingSpeed": 15
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 204,
+        "balance": 0.0,
         "handling": 45,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8193,10 +8373,12 @@
         "swingSpeed": 48
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 204,
+        "balance": 0.0,
         "handling": 48,
         "bodyArmor": 0,
         "flags": 65,
@@ -8217,10 +8399,12 @@
     "weight": 2.46,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 189,
+        "balance": 0.0,
         "handling": 53,
         "bodyArmor": 0,
         "flags": 65,
@@ -8232,10 +8416,12 @@
         "swingSpeed": 17
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 189,
+        "balance": 0.0,
         "handling": 49,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8247,10 +8433,12 @@
         "swingSpeed": 57
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 189,
+        "balance": 0.0,
         "handling": 53,
         "bodyArmor": 0,
         "flags": 65,
@@ -8271,10 +8459,12 @@
     "weight": 3.06,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 204,
+        "balance": 0.0,
         "handling": 49,
         "bodyArmor": 0,
         "flags": 65,
@@ -8286,10 +8476,12 @@
         "swingSpeed": 15
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 204,
+        "balance": 0.0,
         "handling": 45,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8301,10 +8493,12 @@
         "swingSpeed": 50
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 204,
+        "balance": 0.0,
         "handling": 49,
         "bodyArmor": 0,
         "flags": 65,
@@ -8325,10 +8519,12 @@
     "weight": 2.62,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 201,
+        "balance": 0.0,
         "handling": 52,
         "bodyArmor": 0,
         "flags": 65,
@@ -8340,10 +8536,12 @@
         "swingSpeed": 16
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 201,
+        "balance": 0.0,
         "handling": 49,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8355,10 +8553,12 @@
         "swingSpeed": 54
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 201,
+        "balance": 0.0,
         "handling": 52,
         "bodyArmor": 0,
         "flags": 65,
@@ -8379,10 +8579,12 @@
     "weight": 2.7,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 203,
+        "balance": 0.0,
         "handling": 47,
         "bodyArmor": 0,
         "flags": 65,
@@ -8394,10 +8596,12 @@
         "swingSpeed": 14
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 203,
+        "balance": 0.0,
         "handling": 43,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8409,10 +8613,12 @@
         "swingSpeed": 47
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 203,
+        "balance": 0.0,
         "handling": 47,
         "bodyArmor": 0,
         "flags": 65,
@@ -8433,10 +8639,12 @@
     "weight": 2.44,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 190,
+        "balance": 0.0,
         "handling": 57,
         "bodyArmor": 0,
         "flags": 65,
@@ -8448,10 +8656,12 @@
         "swingSpeed": 18
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 190,
+        "balance": 0.0,
         "handling": 54,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8463,10 +8673,12 @@
         "swingSpeed": 64
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 190,
+        "balance": 0.0,
         "handling": 57,
         "bodyArmor": 0,
         "flags": 65,
@@ -8487,10 +8699,12 @@
     "weight": 2.53,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 189,
+        "balance": 0.0,
         "handling": 59,
         "bodyArmor": 0,
         "flags": 65,
@@ -8502,10 +8716,12 @@
         "swingSpeed": 18
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 189,
+        "balance": 0.0,
         "handling": 56,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8517,10 +8733,12 @@
         "swingSpeed": 63
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 189,
+        "balance": 0.0,
         "handling": 59,
         "bodyArmor": 0,
         "flags": 65,
@@ -8541,10 +8759,12 @@
     "weight": 2.46,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 191,
+        "balance": 0.0,
         "handling": 57,
         "bodyArmor": 0,
         "flags": 65,
@@ -8556,10 +8776,12 @@
         "swingSpeed": 17
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 191,
+        "balance": 0.0,
         "handling": 53,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8571,10 +8793,12 @@
         "swingSpeed": 62
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 191,
+        "balance": 0.0,
         "handling": 57,
         "bodyArmor": 0,
         "flags": 65,
@@ -8595,10 +8819,12 @@
     "weight": 2.64,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 204,
+        "balance": 0.0,
         "handling": 54,
         "bodyArmor": 0,
         "flags": 65,
@@ -8610,10 +8836,12 @@
         "swingSpeed": 16
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 204,
+        "balance": 0.0,
         "handling": 50,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8625,10 +8853,12 @@
         "swingSpeed": 57
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 204,
+        "balance": 0.0,
         "handling": 54,
         "bodyArmor": 0,
         "flags": 65,
@@ -8649,10 +8879,12 @@
     "weight": 1.33,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 161,
+        "balance": 0.0,
         "handling": 75,
         "bodyArmor": 0,
         "flags": 65,
@@ -8664,10 +8896,12 @@
         "swingSpeed": 49
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 161,
+        "balance": 0.58,
         "handling": 73,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8688,10 +8922,12 @@
     "weight": 1.29,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 174,
+        "balance": 0.0,
         "handling": 74,
         "bodyArmor": 0,
         "flags": 65,
@@ -8703,10 +8939,12 @@
         "swingSpeed": 45
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 174,
+        "balance": 0.51,
         "handling": 72,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8727,10 +8965,12 @@
     "weight": 1.65,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 159,
+        "balance": 0.0,
         "handling": 73,
         "bodyArmor": 0,
         "flags": 65601,
@@ -8742,10 +8982,12 @@
         "swingSpeed": 46
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 159,
+        "balance": 0.52,
         "handling": 71,
         "bodyArmor": 0,
         "flags": 2162769,
@@ -8757,10 +8999,12 @@
         "swingSpeed": 85
       },
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 26,
         "stackAmount": 1,
         "length": 159,
+        "balance": 0.0,
         "handling": 59,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -8781,10 +9025,12 @@
     "weight": 1.5,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 178,
+        "balance": 0.0,
         "handling": 65,
         "bodyArmor": 0,
         "flags": 65,
@@ -8796,10 +9042,12 @@
         "swingSpeed": 27
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 178,
+        "balance": 0.1,
         "handling": 62,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8820,10 +9068,12 @@
     "weight": 1.35,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 193,
+        "balance": 0.0,
         "handling": 69,
         "bodyArmor": 0,
         "flags": 65,
@@ -8835,10 +9085,12 @@
         "swingSpeed": 37
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 193,
+        "balance": 0.29,
         "handling": 66,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8859,10 +9111,12 @@
     "weight": 1.98,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 201,
+        "balance": 0.0,
         "handling": 58,
         "bodyArmor": 0,
         "flags": 65,
@@ -8874,10 +9128,12 @@
         "swingSpeed": 17
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 201,
+        "balance": 0.0,
         "handling": 55,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8898,10 +9154,12 @@
     "weight": 1.65,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 178,
+        "balance": 0.0,
         "handling": 70,
         "bodyArmor": 0,
         "flags": 65,
@@ -8913,10 +9171,12 @@
         "swingSpeed": 38
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 178,
+        "balance": 0.31,
         "handling": 67,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8937,10 +9197,12 @@
     "weight": 1.43,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 172,
+        "balance": 0.0,
         "handling": 73,
         "bodyArmor": 0,
         "flags": 65,
@@ -8952,10 +9214,12 @@
         "swingSpeed": 43
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 172,
+        "balance": 0.46,
         "handling": 71,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -8976,10 +9240,12 @@
     "weight": 1.25,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 184,
+        "balance": 0.0,
         "handling": 77,
         "bodyArmor": 0,
         "flags": 65,
@@ -8991,10 +9257,12 @@
         "swingSpeed": 48
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 184,
+        "balance": 0.57,
         "handling": 75,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9015,10 +9283,12 @@
     "weight": 2.07,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 200,
+        "balance": 0.0,
         "handling": 60,
         "bodyArmor": 0,
         "flags": 65,
@@ -9030,10 +9300,12 @@
         "swingSpeed": 17
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 200,
+        "balance": 0.0,
         "handling": 57,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9054,10 +9326,12 @@
     "weight": 1.2,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 180,
+        "balance": 0.0,
         "handling": 69,
         "bodyArmor": 0,
         "flags": 65,
@@ -9069,10 +9343,12 @@
         "swingSpeed": 40
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 180,
+        "balance": 0.38,
         "handling": 67,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9093,10 +9369,12 @@
     "weight": 1.69,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 184,
+        "balance": 0.08,
         "handling": 60,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9117,10 +9395,12 @@
     "weight": 1.6,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 178,
+        "balance": 0.0,
         "handling": 73,
         "bodyArmor": 0,
         "flags": 65,
@@ -9132,10 +9412,12 @@
         "swingSpeed": 44
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 178,
+        "balance": 0.46,
         "handling": 71,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9156,10 +9438,12 @@
     "weight": 1.64,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 199,
+        "balance": 0.0,
         "handling": 64,
         "bodyArmor": 0,
         "flags": 65,
@@ -9171,10 +9455,12 @@
         "swingSpeed": 26
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 199,
+        "balance": 0.07,
         "handling": 61,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9195,10 +9481,12 @@
     "weight": 1.38,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 180,
+        "balance": 0.0,
         "handling": 70,
         "bodyArmor": 0,
         "flags": 65,
@@ -9210,10 +9498,12 @@
         "swingSpeed": 37
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 180,
+        "balance": 0.31,
         "handling": 67,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9234,10 +9524,12 @@
     "weight": 1.23,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 149,
+        "balance": 0.0,
         "handling": 76,
         "bodyArmor": 0,
         "flags": 65,
@@ -9249,10 +9541,12 @@
         "swingSpeed": 52
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 149,
+        "balance": 0.65,
         "handling": 75,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9273,10 +9567,12 @@
     "weight": 1.64,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 196,
+        "balance": 0.0,
         "handling": 61,
         "bodyArmor": 0,
         "flags": 65,
@@ -9288,10 +9584,12 @@
         "swingSpeed": 18
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 196,
+        "balance": 0.0,
         "handling": 58,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9312,10 +9610,12 @@
     "weight": 1.59,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 186,
+        "balance": 0.0,
         "handling": 72,
         "bodyArmor": 0,
         "flags": 65,
@@ -9327,10 +9627,12 @@
         "swingSpeed": 40
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 186,
+        "balance": 0.37,
         "handling": 69,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9351,10 +9653,12 @@
     "weight": 2.41,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 259,
+        "balance": 0.0,
         "handling": 45,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9375,10 +9679,12 @@
     "weight": 2.86,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 271,
+        "balance": 0.0,
         "handling": 39,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9399,10 +9705,12 @@
     "weight": 1.38,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 154,
+        "balance": 0.0,
         "handling": 72,
         "bodyArmor": 0,
         "flags": 65601,
@@ -9414,10 +9722,12 @@
         "swingSpeed": 45
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 154,
+        "balance": 0.48,
         "handling": 70,
         "bodyArmor": 0,
         "flags": 2162769,
@@ -9429,10 +9739,12 @@
         "swingSpeed": 84
       },
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 27,
         "stackAmount": 1,
         "length": 154,
+        "balance": 0.0,
         "handling": 58,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -9453,10 +9765,12 @@
     "weight": 2.4,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 245,
+        "balance": 0.0,
         "handling": 47,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9477,10 +9791,12 @@
     "weight": 3.0,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 259,
+        "balance": 0.0,
         "handling": 38,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9501,10 +9817,12 @@
     "weight": 1.62,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 230,
+        "balance": 0.0,
         "handling": 58,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9525,10 +9843,12 @@
     "weight": 1.3,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 156,
+        "balance": 0.0,
         "handling": 75,
         "bodyArmor": 0,
         "flags": 65601,
@@ -9540,10 +9860,12 @@
         "swingSpeed": 49
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 156,
+        "balance": 0.59,
         "handling": 74,
         "bodyArmor": 0,
         "flags": 2162769,
@@ -9555,10 +9877,12 @@
         "swingSpeed": 87
       },
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 27,
         "stackAmount": 1,
         "length": 156,
+        "balance": 0.0,
         "handling": 62,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -9579,10 +9903,12 @@
     "weight": 1.3,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 157,
+        "balance": 0.0,
         "handling": 75,
         "bodyArmor": 0,
         "flags": 65601,
@@ -9594,10 +9920,12 @@
         "swingSpeed": 49
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 157,
+        "balance": 0.59,
         "handling": 74,
         "bodyArmor": 0,
         "flags": 2162769,
@@ -9609,10 +9937,12 @@
         "swingSpeed": 87
       },
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 27,
         "stackAmount": 1,
         "length": 157,
+        "balance": 0.0,
         "handling": 62,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -9633,10 +9963,12 @@
     "weight": 2.66,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 262,
+        "balance": 0.0,
         "handling": 41,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9657,10 +9989,12 @@
     "weight": 2.26,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 205,
+        "balance": 0.0,
         "handling": 57,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9681,10 +10015,12 @@
     "weight": 3.1,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 231,
+        "balance": 0.0,
         "handling": 43,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9705,10 +10041,12 @@
     "weight": 1.2,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 185,
+        "balance": 0.0,
         "handling": 70,
         "bodyArmor": 0,
         "flags": 65601,
@@ -9720,10 +10058,12 @@
         "swingSpeed": 40
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 185,
+        "balance": 0.36,
         "handling": 68,
         "bodyArmor": 0,
         "flags": 2162769,
@@ -9735,10 +10075,12 @@
         "swingSpeed": 80
       },
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 27,
         "stackAmount": 1,
         "length": 185,
+        "balance": 0.0,
         "handling": 55,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -9759,10 +10101,12 @@
     "weight": 1.2,
     "weapons": [
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 185,
+        "balance": 0.0,
         "handling": 70,
         "bodyArmor": 0,
         "flags": 65601,
@@ -9774,10 +10118,12 @@
         "swingSpeed": 40
       },
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 185,
+        "balance": 0.36,
         "handling": 68,
         "bodyArmor": 0,
         "flags": 2162769,
@@ -9789,10 +10135,12 @@
         "swingSpeed": 80
       },
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 27,
         "stackAmount": 1,
         "length": 185,
+        "balance": 0.0,
         "handling": 55,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -9813,10 +10161,12 @@
     "weight": 2.52,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 179,
+        "balance": 0.1,
         "handling": 63,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9837,10 +10187,12 @@
     "weight": 1.44,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 179,
+        "balance": 0.46,
         "handling": 72,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9861,10 +10213,12 @@
     "weight": 1.44,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 136,
+        "balance": 0.67,
         "handling": 78,
         "bodyArmor": 0,
         "flags": 2162769,
@@ -9885,10 +10239,12 @@
     "weight": 0.84,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 220,
+        "balance": 0.31,
         "handling": 69,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9909,10 +10265,12 @@
     "weight": 1.15,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 206,
+        "balance": 0.15,
         "handling": 65,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9933,10 +10291,12 @@
     "weight": 0.59,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 163,
+        "balance": 0.98,
         "handling": 88,
         "bodyArmor": 0,
         "flags": 2097233,
@@ -9957,10 +10317,12 @@
     "weight": 1.02,
     "weapons": [
       {
+        "class": "twoHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 132,
+        "balance": 0.64,
         "handling": 76,
         "bodyArmor": 0,
         "flags": 2162769,
@@ -9981,10 +10343,12 @@
     "weight": 5.8,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 78,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10005,10 +10369,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 100,
         "length": 78,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10029,10 +10395,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 85,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10053,10 +10421,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 85,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10077,10 +10447,12 @@
     "weight": 4.5,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 60,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10101,10 +10473,12 @@
     "weight": 4.0,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 78,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10125,10 +10499,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 78,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 10,
         "flags": 268435968,
@@ -10149,10 +10525,12 @@
     "weight": 3.6,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 100,
         "length": 78,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10173,10 +10551,12 @@
     "weight": 5.0,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 100,
         "length": 66,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -10197,10 +10577,12 @@
     "weight": 3.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 128,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10221,10 +10603,12 @@
     "weight": 6.3,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 160,
         "length": 128,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10245,10 +10629,12 @@
     "weight": 3.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 60,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10269,10 +10655,12 @@
     "weight": 4.9,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 78,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -10293,10 +10681,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 60,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -10317,10 +10707,12 @@
     "weight": 3.3,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 70,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10341,10 +10733,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
         "length": 110,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10365,10 +10759,12 @@
     "weight": 7.0,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 160,
         "length": 118,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -10389,10 +10785,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
         "length": 60,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10413,10 +10811,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 125,
         "length": 110,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 10,
         "flags": 268435968,
@@ -10437,10 +10837,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 125,
         "length": 110,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 10,
         "flags": 268435968,
@@ -10461,10 +10863,12 @@
     "weight": 5.8,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
         "length": 128,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -10485,10 +10889,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 60,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 20,
         "flags": 268435968,
@@ -10509,10 +10915,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 60,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 20,
         "flags": 268435968,
@@ -10533,10 +10941,12 @@
     "weight": 2.5,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 100,
         "length": 77,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10557,10 +10967,12 @@
     "weight": 2.5,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 100,
         "length": 77,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10581,10 +10993,12 @@
     "weight": 4.0,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 70,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -10605,10 +11019,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 150,
         "length": 70,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10629,10 +11045,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
         "length": 110,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 10,
         "flags": 268435968,
@@ -10653,10 +11071,12 @@
     "weight": 4.5,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 145,
         "length": 95,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 10,
         "flags": 268435968,
@@ -10677,10 +11097,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
         "length": 60,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 25,
         "flags": 268435968,
@@ -10701,10 +11123,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
         "length": 90,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -10725,10 +11149,12 @@
     "weight": 2.8,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 125,
         "length": 70,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10749,10 +11175,12 @@
     "weight": 5.0,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 160,
         "length": 135,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -10773,10 +11201,12 @@
     "weight": 3.0,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
         "length": 60,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10797,10 +11227,12 @@
     "weight": 3.5,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 125,
         "length": 70,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -10821,10 +11253,12 @@
     "weight": 4.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 160,
         "length": 110,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -10845,10 +11279,12 @@
     "weight": 4.0,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
         "length": 70,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -10869,10 +11305,12 @@
     "weight": 2.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 150,
         "length": 90,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 5,
         "flags": 268435968,
@@ -10893,10 +11331,12 @@
     "weight": 3.5,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 150,
         "length": 128,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -10917,10 +11357,12 @@
     "weight": 2.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 100,
         "length": 60,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 25,
         "flags": 268435968,
@@ -10941,10 +11383,12 @@
     "weight": 2.1,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
         "length": 132,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 10,
         "flags": 268435968,
@@ -10965,10 +11409,12 @@
     "weight": 3.2,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 160,
         "length": 135,
+        "balance": 0.0,
         "handling": 89,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -10989,10 +11435,12 @@
     "weight": 2.1,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
         "length": 105,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 15,
         "flags": 268435968,
@@ -11013,10 +11461,12 @@
     "weight": 2.7,
     "weapons": [
       {
+        "class": "largeShield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 190,
         "length": 90,
+        "balance": 0.0,
         "handling": 82,
         "bodyArmor": 10,
         "flags": 268435968,
@@ -11037,10 +11487,12 @@
     "weight": 0.1,
     "weapons": [
       {
+        "class": "stone",
         "accuracy": 50,
         "missileSpeed": 40,
         "stackAmount": 15,
         "length": 10,
+        "balance": 0.0,
         "handling": 102,
         "bodyArmor": 0,
         "flags": 2148008194,
@@ -11061,10 +11513,12 @@
     "weight": 0.1,
     "weapons": [
       {
+        "class": "stone",
         "accuracy": 88,
         "missileSpeed": 40,
         "stackAmount": 15,
         "length": 10,
+        "balance": 0.0,
         "handling": 102,
         "bodyArmor": 0,
         "flags": 6442975490,
@@ -11085,10 +11539,12 @@
     "weight": 0.6,
     "weapons": [
       {
+        "class": "throwingKnife",
         "accuracy": 95,
         "missileSpeed": 33,
         "stackAmount": 5,
         "length": 43,
+        "balance": 1.0,
         "handling": 116,
         "bodyArmor": 0,
         "flags": 19327881474,
@@ -11100,10 +11556,12 @@
         "swingSpeed": 126
       },
       {
+        "class": "dagger",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 43,
+        "balance": 1.0,
         "handling": 116,
         "bodyArmor": 0,
         "flags": 1,
@@ -11124,10 +11582,12 @@
     "weight": 15.0,
     "weapons": [
       {
+        "class": "boulder",
         "accuracy": 100,
         "missileSpeed": 8,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 100,
         "bodyArmor": 0,
         "flags": 11310072082,
@@ -11148,10 +11608,12 @@
     "weight": 15.0,
     "weapons": [
       {
+        "class": "boulder",
         "accuracy": 100,
         "missileSpeed": 8,
         "stackAmount": 1,
         "length": 95,
+        "balance": 0.0,
         "handling": 100,
         "bodyArmor": 0,
         "flags": 4867662098,
@@ -11172,10 +11634,12 @@
     "weight": 0.69,
     "weapons": [
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 30,
         "stackAmount": 3,
         "length": 72,
+        "balance": 1.0,
         "handling": 106,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11187,10 +11651,12 @@
         "swingSpeed": 111
       },
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 72,
+        "balance": 0.93,
         "handling": 96,
         "bodyArmor": 0,
         "flags": 65601,
@@ -11211,10 +11677,12 @@
     "weight": 0.69,
     "weapons": [
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 30,
         "stackAmount": 7,
         "length": 72,
+        "balance": 1.0,
         "handling": 106,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11226,10 +11694,12 @@
         "swingSpeed": 111
       },
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 72,
+        "balance": 0.93,
         "handling": 96,
         "bodyArmor": 0,
         "flags": 65601,
@@ -11250,10 +11720,12 @@
     "weight": 0.81,
     "weapons": [
       {
+        "class": "throwingAxe",
         "accuracy": 93,
         "missileSpeed": 26,
         "stackAmount": 4,
         "length": 47,
+        "balance": 1.0,
         "handling": 105,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11274,10 +11746,12 @@
     "weight": 1.02,
     "weapons": [
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 29,
         "stackAmount": 4,
         "length": 70,
+        "balance": 1.0,
         "handling": 104,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11289,10 +11763,12 @@
         "swingSpeed": 110
       },
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 70,
+        "balance": 0.88,
         "handling": 95,
         "bodyArmor": 0,
         "flags": 65601,
@@ -11313,10 +11789,12 @@
     "weight": 0.66,
     "weapons": [
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 30,
         "stackAmount": 4,
         "length": 87,
+        "balance": 1.0,
         "handling": 107,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11328,10 +11806,12 @@
         "swingSpeed": 114
       },
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 87,
+        "balance": 0.87,
         "handling": 96,
         "bodyArmor": 0,
         "flags": 65601,
@@ -11352,10 +11832,12 @@
     "weight": 0.66,
     "weapons": [
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 30,
         "stackAmount": 7,
         "length": 87,
+        "balance": 1.0,
         "handling": 107,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11367,10 +11849,12 @@
         "swingSpeed": 114
       },
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 87,
+        "balance": 0.87,
         "handling": 96,
         "bodyArmor": 0,
         "flags": 65601,
@@ -11391,10 +11875,12 @@
     "weight": 0.9,
     "weapons": [
       {
+        "class": "throwingAxe",
         "accuracy": 93,
         "missileSpeed": 26,
         "stackAmount": 5,
         "length": 47,
+        "balance": 1.0,
         "handling": 103,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11415,10 +11901,12 @@
     "weight": 0.62,
     "weapons": [
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 30,
         "stackAmount": 4,
         "length": 94,
+        "balance": 1.0,
         "handling": 102,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11430,10 +11918,12 @@
         "swingSpeed": 111
       },
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 94,
+        "balance": 0.74,
         "handling": 95,
         "bodyArmor": 0,
         "flags": 65601,
@@ -11454,10 +11944,12 @@
     "weight": 0.62,
     "weapons": [
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 30,
         "stackAmount": 7,
         "length": 94,
+        "balance": 1.0,
         "handling": 102,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11469,10 +11961,12 @@
         "swingSpeed": 111
       },
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 94,
+        "balance": 0.74,
         "handling": 95,
         "bodyArmor": 0,
         "flags": 65601,
@@ -11493,10 +11987,12 @@
     "weight": 0.66,
     "weapons": [
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 30,
         "stackAmount": 4,
         "length": 87,
+        "balance": 1.0,
         "handling": 107,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11508,10 +12004,12 @@
         "swingSpeed": 114
       },
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 87,
+        "balance": 0.87,
         "handling": 96,
         "bodyArmor": 0,
         "flags": 65601,
@@ -11532,10 +12030,12 @@
     "weight": 1.06,
     "weapons": [
       {
+        "class": "throwingAxe",
         "accuracy": 93,
         "missileSpeed": 26,
         "stackAmount": 3,
         "length": 52,
+        "balance": 1.0,
         "handling": 99,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11556,10 +12056,12 @@
     "weight": 1.15,
     "weapons": [
       {
+        "class": "throwingAxe",
         "accuracy": 93,
         "missileSpeed": 25,
         "stackAmount": 3,
         "length": 52,
+        "balance": 0.94,
         "handling": 98,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11580,10 +12082,12 @@
     "weight": 0.6,
     "weapons": [
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 31,
         "stackAmount": 4,
         "length": 102,
+        "balance": 1.0,
         "handling": 104,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11595,10 +12099,12 @@
         "swingSpeed": 110
       },
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 102,
+        "balance": 0.67,
         "handling": 95,
         "bodyArmor": 0,
         "flags": 65601,
@@ -11619,10 +12125,12 @@
     "weight": 0.72,
     "weapons": [
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 30,
         "stackAmount": 3,
         "length": 108,
+        "balance": 1.0,
         "handling": 98,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11634,10 +12142,12 @@
         "swingSpeed": 103
       },
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 108,
+        "balance": 0.44,
         "handling": 93,
         "bodyArmor": 0,
         "flags": 65601,
@@ -11658,10 +12168,12 @@
     "weight": 0.72,
     "weapons": [
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 30,
         "stackAmount": 6,
         "length": 108,
+        "balance": 1.0,
         "handling": 98,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11673,10 +12185,12 @@
         "swingSpeed": 103
       },
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 108,
+        "balance": 0.44,
         "handling": 93,
         "bodyArmor": 0,
         "flags": 65601,
@@ -11697,10 +12211,12 @@
     "weight": 0.91,
     "weapons": [
       {
+        "class": "javelin",
         "accuracy": 92,
         "missileSpeed": 29,
         "stackAmount": 4,
         "length": 63,
+        "balance": 1.0,
         "handling": 103,
         "bodyArmor": 0,
         "flags": 19327947010,
@@ -11712,10 +12228,12 @@
         "swingSpeed": 105
       },
       {
+        "class": "oneHandedPolearm",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 63,
+        "balance": 0.82,
         "handling": 95,
         "bodyArmor": 0,
         "flags": 65601,
@@ -11736,10 +12254,12 @@
     "weight": 1.08,
     "weapons": [
       {
+        "class": "twoHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 140,
+        "balance": 0.68,
         "handling": 78,
         "bodyArmor": 0,
         "flags": 2162705,
@@ -11751,10 +12271,12 @@
         "swingSpeed": 90
       },
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 140,
+        "balance": 0.07,
         "handling": 68,
         "bodyArmor": 0,
         "flags": 65537,
@@ -11775,10 +12297,12 @@
     "weight": 1.34,
     "weapons": [
       {
+        "class": "twoHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 107,
+        "balance": 0.53,
         "handling": 77,
         "bodyArmor": 0,
         "flags": 2162705,
@@ -11790,10 +12314,12 @@
         "swingSpeed": 85
       },
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 107,
+        "balance": 0.0,
         "handling": 66,
         "bodyArmor": 0,
         "flags": 65537,
@@ -11814,10 +12340,12 @@
     "weight": 1.99,
     "weapons": [
       {
+        "class": "twoHandedMace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 95,
+        "balance": 0.36,
         "handling": 74,
         "bodyArmor": 0,
         "flags": 2097169,
@@ -11838,10 +12366,12 @@
     "weight": 1.3,
     "weapons": [
       {
+        "class": "twoHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 86,
+        "balance": 0.88,
         "handling": 84,
         "bodyArmor": 0,
         "flags": 2162705,
@@ -11862,10 +12392,12 @@
     "weight": 1.92,
     "weapons": [
       {
+        "class": "twoHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 111,
+        "balance": 0.88,
         "handling": 88,
         "bodyArmor": 0,
         "flags": 17,
@@ -11877,10 +12409,12 @@
         "swingSpeed": 96
       },
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 111,
+        "balance": 0.35,
         "handling": 82,
         "bodyArmor": 0,
         "flags": 1,
@@ -11901,10 +12435,12 @@
     "weight": 1.5,
     "weapons": [
       {
+        "class": "twoHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 109,
+        "balance": 1.0,
         "handling": 92,
         "bodyArmor": 0,
         "flags": 17,
@@ -11916,10 +12452,12 @@
         "swingSpeed": 103
       },
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 109,
+        "balance": 0.65,
         "handling": 88,
         "bodyArmor": 0,
         "flags": 1,
@@ -11940,10 +12478,12 @@
     "weight": 1.6,
     "weapons": [
       {
+        "class": "twoHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 104,
+        "balance": 1.0,
         "handling": 93,
         "bodyArmor": 0,
         "flags": 17,
@@ -11955,10 +12495,12 @@
         "swingSpeed": 104
       },
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 104,
+        "balance": 0.69,
         "handling": 91,
         "bodyArmor": 0,
         "flags": 1,
@@ -11979,10 +12521,12 @@
     "weight": 1.8,
     "weapons": [
       {
+        "class": "twoHandedMace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 105,
+        "balance": 0.37,
         "handling": 74,
         "bodyArmor": 0,
         "flags": 2097169,
@@ -12003,10 +12547,12 @@
     "weight": 2.32,
     "weapons": [
       {
+        "class": "twoHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 127,
+        "balance": 0.53,
         "handling": 79,
         "bodyArmor": 0,
         "flags": 17,
@@ -12027,10 +12573,12 @@
     "weight": 1.38,
     "weapons": [
       {
+        "class": "twoHandedMace",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 104,
+        "balance": 0.76,
         "handling": 83,
         "bodyArmor": 0,
         "flags": 2097169,
@@ -12051,10 +12599,12 @@
     "weight": 1.81,
     "weapons": [
       {
+        "class": "twoHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 123,
+        "balance": 0.88,
         "handling": 87,
         "bodyArmor": 0,
         "flags": 17,
@@ -12075,10 +12625,12 @@
     "weight": 1.07,
     "weapons": [
       {
+        "class": "twoHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 130,
+        "balance": 0.77,
         "handling": 81,
         "bodyArmor": 0,
         "flags": 2162705,
@@ -12090,10 +12642,12 @@
         "swingSpeed": 93
       },
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 130,
+        "balance": 0.19,
         "handling": 71,
         "bodyArmor": 0,
         "flags": 65537,
@@ -12114,10 +12668,12 @@
     "weight": 1.95,
     "weapons": [
       {
+        "class": "twoHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 107,
+        "balance": 0.88,
         "handling": 88,
         "bodyArmor": 0,
         "flags": 17,
@@ -12138,10 +12694,12 @@
     "weight": 1.97,
     "weapons": [
       {
+        "class": "twoHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 120,
+        "balance": 0.83,
         "handling": 86,
         "bodyArmor": 0,
         "flags": 17,
@@ -12162,10 +12720,12 @@
     "weight": 1.81,
     "weapons": [
       {
+        "class": "twoHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 105,
+        "balance": 0.94,
         "handling": 89,
         "bodyArmor": 0,
         "flags": 17,
@@ -12177,10 +12737,12 @@
         "swingSpeed": 98
       },
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 105,
+        "balance": 0.42,
         "handling": 84,
         "bodyArmor": 0,
         "flags": 1,
@@ -12201,10 +12763,12 @@
     "weight": 2.29,
     "weapons": [
       {
+        "class": "twoHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 109,
+        "balance": 0.85,
         "handling": 87,
         "bodyArmor": 0,
         "flags": 17,
@@ -12225,10 +12789,12 @@
     "weight": 1.1,
     "weapons": [
       {
+        "class": "twoHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 95,
+        "balance": 1.0,
         "handling": 88,
         "bodyArmor": 0,
         "flags": 2162705,
@@ -12240,10 +12806,12 @@
         "swingSpeed": 100
       },
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 95,
+        "balance": 0.53,
         "handling": 83,
         "bodyArmor": 0,
         "flags": 65537,
@@ -12264,10 +12832,12 @@
     "weight": 1.02,
     "weapons": [
       {
+        "class": "twoHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 122,
+        "balance": 0.79,
         "handling": 81,
         "bodyArmor": 0,
         "flags": 2162705,
@@ -12288,10 +12858,12 @@
     "weight": 0.94,
     "weapons": [
       {
+        "class": "twoHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 131,
+        "balance": 0.79,
         "handling": 81,
         "bodyArmor": 0,
         "flags": 2162705,
@@ -12303,10 +12875,12 @@
         "swingSpeed": 93
       },
       {
+        "class": "oneHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 131,
+        "balance": 0.21,
         "handling": 72,
         "bodyArmor": 0,
         "flags": 65537,
@@ -12327,10 +12901,12 @@
     "weight": 0.93,
     "weapons": [
       {
+        "class": "twoHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 114,
+        "balance": 0.91,
         "handling": 85,
         "bodyArmor": 0,
         "flags": 2162705,
@@ -12351,10 +12927,12 @@
     "weight": 1.09,
     "weapons": [
       {
+        "class": "twoHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 141,
+        "balance": 0.6,
         "handling": 77,
         "bodyArmor": 0,
         "flags": 2162705,
@@ -12375,10 +12953,12 @@
     "weight": 1.82,
     "weapons": [
       {
+        "class": "twoHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 132,
+        "balance": 0.79,
         "handling": 84,
         "bodyArmor": 0,
         "flags": 65553,
@@ -12399,10 +12979,12 @@
     "weight": 1.74,
     "weapons": [
       {
+        "class": "twoHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 98,
+        "balance": 1.0,
         "handling": 95,
         "bodyArmor": 0,
         "flags": 65553,
@@ -12414,10 +12996,12 @@
         "swingSpeed": 105
       },
       {
+        "class": "oneHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 98,
+        "balance": 0.74,
         "handling": 96,
         "bodyArmor": 0,
         "flags": 65537,
@@ -12438,10 +13022,12 @@
     "weight": 1.28,
     "weapons": [
       {
+        "class": "twoHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 132,
+        "balance": 0.47,
         "handling": 74,
         "bodyArmor": 0,
         "flags": 2162705,
@@ -12462,10 +13048,12 @@
     "weight": 1.1,
     "weapons": [
       {
+        "class": "twoHandedAxe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 137,
+        "balance": 0.6,
         "handling": 77,
         "bodyArmor": 0,
         "flags": 2162705,
@@ -12486,10 +13074,12 @@
     "weight": 1.96,
     "weapons": [
       {
+        "class": "twoHandedSword",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 116,
+        "balance": 0.91,
         "handling": 88,
         "bodyArmor": 0,
         "flags": 65553,

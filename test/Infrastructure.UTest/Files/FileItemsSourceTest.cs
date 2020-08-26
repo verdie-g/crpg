@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Services;
@@ -44,6 +45,7 @@ namespace Crpg.Infrastructure.UTest.Files
         {
             var itemsByMbId = (await new FileItemsSource().LoadItems()).ToDictionary(i => i.MbId);
             var itemModifier = new ItemModifierService();
+            var errors = new List<string>();
             foreach (var item in itemsByMbId.Values)
             {
                 foreach (int rank in new[] { -3, -2, -1, 1, 2, 3 })
@@ -51,9 +53,14 @@ namespace Crpg.Infrastructure.UTest.Files
                     var modifiedItem = itemModifier.ModifyItem(item, rank);
                     if (itemsByMbId.TryGetValue(modifiedItem.MbId, out var conflictingItem))
                     {
-                        Assert.Fail("Conflicting item name between {0} and {1} rank {2}", conflictingItem.MbId, item.MbId, rank);
+                        errors.Add($"Conflicting item name between {conflictingItem.MbId} and {item.MbId} rank {rank}");
                     }
                 }
+            }
+
+            if (errors.Count != 0)
+            {
+                Assert.Fail("- " + string.Join($"{Environment.NewLine}- ", errors));
             }
         }
     }

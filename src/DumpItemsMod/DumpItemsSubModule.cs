@@ -83,10 +83,12 @@ namespace Crpg.DumpItemsMod
             {
                 crpgItem.Weapons = mbItem.WeaponComponent.Weapons.Select(w => new ItemWeaponComponent
                 {
+                    Class = EnumToCamelCase(w.WeaponClass.ToString()),
                     Accuracy = w.Accuracy,
                     MissileSpeed = w.MissileSpeed,
                     StackAmount = w.MaxDataValue,
                     Length = w.WeaponLength,
+                    Balance = w.WeaponBalance,
                     Handling = w.Handling,
                     BodyArmor = w.BodyArmor,
                     Flags = (long)w.WeaponFlags,

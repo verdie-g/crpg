@@ -62,10 +62,12 @@ namespace Crpg.Application.Common.Helpers
         {
             return new ItemWeaponComponent
             {
+                Class = weaponComponent.Class,
                 Accuracy = weaponComponent.Accuracy,
                 MissileSpeed = weaponComponent.MissileSpeed,
                 StackAmount = weaponComponent.StackAmount,
                 Length = weaponComponent.Length,
+                Balance = weaponComponent.Balance,
                 Handling = weaponComponent.Handling,
                 BodyArmor = weaponComponent.BodyArmor,
                 Flags = weaponComponent.Flags,

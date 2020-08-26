@@ -2,10 +2,12 @@
 {
     public class ItemWeaponComponent
     {
+        public WeaponClass Class { get; set; }
         public int Accuracy { get; set; }
         public int MissileSpeed { get; set; }
         public int StackAmount { get; set; }
         public int Length { get; set; }
+        public float Balance { get; set; }
         public int Handling { get; set; }
         public int BodyArmor { get; set; }
         public WeaponFlags Flags { get; set; }
