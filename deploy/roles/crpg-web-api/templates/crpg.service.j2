@@ -16,6 +16,7 @@ Environment=CORECLR_PROFILER_PATH=/opt/datadog/Datadog.Trace.ClrProfiler.Native.
 Environment=DD_INTEGRATIONS=/opt/datadog/integrations.json
 Environment=DD_DOTNET_TRACER_HOME=/opt/datadog
 Environment=DD_SERVICE={{ crpg_service_name }}
+Environment=DD_LOGS_INJECTION=true
 
 [Install]
 WantedBy=multi-user.target
