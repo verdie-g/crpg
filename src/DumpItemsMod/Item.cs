@@ -16,9 +16,9 @@ namespace Crpg.DumpItemsMod
         public int Value { get; set; }
 
         /// <summary>
-        /// Integer value of Crpg.Domain.Entities.DamageType.
+        /// String representation of enum Crpg.Domain.Entities.ItemType.
         /// </summary>
-        public int Type { get; set; }
+        public string Type { get; set; } = default!;
         public float Weight { get; set; }
 
         public ItemArmorComponent? Armor { get; set; }
@@ -51,14 +51,18 @@ namespace Crpg.DumpItemsMod
         public int Length { get; set; }
         public int Handling { get; set; }
         public int BodyArmor { get; set; }
-        public ulong Flags { get; set; }
+        public long Flags { get; set; }
 
         public int ThrustDamage { get; set; }
-        public int ThrustDamageType { get; set; }
+
+        /// <summary>
+        /// String representation of enum Crpg.Domain.Entities.DamageType.
+        /// </summary>
+        public string ThrustDamageType { get; set; } = default!;
         public int ThrustSpeed { get; set; }
 
         public int SwingDamage { get; set; }
-        public int SwingDamageType { get; set; }
+        public string SwingDamageType { get; set; } = default!;
         public int SwingSpeed { get; set; }
     }
 }

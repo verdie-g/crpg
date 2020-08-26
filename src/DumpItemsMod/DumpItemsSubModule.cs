@@ -51,7 +51,7 @@ namespace Crpg.DumpItemsMod
             {
                 MbId = mbItem.StringId,
                 Name = mbItem.Name.ToString(),
-                Type = MbToCrpgItemType(mbItem.Type),
+                Type = EnumToCamelCase(mbItem.Type.ToString()),
                 Value = mbItem.Value,
                 Weight = mbItem.Weight,
             };
@@ -89,12 +89,12 @@ namespace Crpg.DumpItemsMod
                     Length = w.WeaponLength,
                     Handling = w.Handling,
                     BodyArmor = w.BodyArmor,
-                    Flags = (ulong)w.WeaponFlags,
+                    Flags = (long)w.WeaponFlags,
                     ThrustDamage = w.ThrustDamage,
-                    ThrustDamageType = (int)w.ThrustDamageType,
+                    ThrustDamageType = MbToCrpgDamageType(w.ThrustDamageType),
                     ThrustSpeed = w.ThrustSpeed,
                     SwingDamage = w.SwingDamage,
-                    SwingDamageType = (int)w.SwingDamageType,
+                    SwingDamageType = MbToCrpgDamageType(w.SwingDamageType),
                     SwingSpeed = w.SwingSpeed,
                 }).ToArray();
             }
@@ -102,25 +102,10 @@ namespace Crpg.DumpItemsMod
             return crpgItem;
         }
 
-        private static int MbToCrpgItemType(ItemObject.ItemTypeEnum t) => t switch
+        private static string MbToCrpgDamageType(DamageTypes t) => t switch
         {
-            ItemObject.ItemTypeEnum.HeadArmor => 0,
-            ItemObject.ItemTypeEnum.Cape => 1,
-            ItemObject.ItemTypeEnum.BodyArmor => 2,
-            ItemObject.ItemTypeEnum.HandArmor => 3,
-            ItemObject.ItemTypeEnum.LegArmor => 4,
-            ItemObject.ItemTypeEnum.HorseHarness => 5,
-            ItemObject.ItemTypeEnum.Horse => 6,
-            ItemObject.ItemTypeEnum.Shield => 7,
-            ItemObject.ItemTypeEnum.Bow => 8,
-            ItemObject.ItemTypeEnum.Crossbow => 9,
-            ItemObject.ItemTypeEnum.OneHandedWeapon => 10,
-            ItemObject.ItemTypeEnum.TwoHandedWeapon => 11,
-            ItemObject.ItemTypeEnum.Polearm => 12,
-            ItemObject.ItemTypeEnum.Thrown => 13,
-            ItemObject.ItemTypeEnum.Arrows => 14,
-            ItemObject.ItemTypeEnum.Bolts => 15,
-            _ => throw new ArgumentOutOfRangeException(nameof(t)),
+            DamageTypes.Invalid => "undefined",
+            _ => EnumToCamelCase(t.ToString()),
         };
 
         private static IEnumerable<ItemObject> DeserializeMbItems(string path)
@@ -165,7 +150,7 @@ namespace Crpg.DumpItemsMod
         {
             foreach (var mbItem in mbItems)
             {
-                    /*
+                /*
                 Bannerlord generates image thumbnails by loading the 3D texture, spawning a camera and taking a screenshot
                 from it. For each item type, a different camera angle is used. For shields and hand armors, it seems like
                 they are placed on an agent. To do that without spawning an agent, their type is overriden by one that
@@ -192,5 +177,7 @@ namespace Crpg.DumpItemsMod
                 .GetProperty(nameof(gameModels.ItemValueModel), BindingFlags.Instance | BindingFlags.Public)
                 .SetValue(gameModels, gm);
         }
+
+        private static string EnumToCamelCase(string s) => char.ToLower(s[0]) + s.Substring(1);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Items.Models;
@@ -18,6 +19,7 @@ namespace Crpg.Infrastructure.Files
             return await JsonSerializer.DeserializeAsync<IEnumerable<ItemCreation>>(file, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                Converters = { new JsonStringEnumConverter() },
             }).AsTask();
         }
     }
