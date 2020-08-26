@@ -62,7 +62,7 @@
 
         <dt>How to donate?</dt>
         <dd>
-          You can donate on the <a href="https://patreon.com/crpg2" target="_blank">Patreon</a>. Note that donations
+          You can donate on the <a href="https://patreon.com/crpg" target="_blank">Patreon</a>. Note that donations
           will only be used to cover server costs.
         </dd>
 
