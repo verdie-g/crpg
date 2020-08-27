@@ -8,7 +8,7 @@ export default class ItemWeaponComponent {
   public length: number;
   public handling: number;
   public bodyArmor: number;
-  public flags: WeaponFlags;
+  public flags: WeaponFlags[];
 
   public thrustDamage: number;
   public thrustDamageType: DamageType;

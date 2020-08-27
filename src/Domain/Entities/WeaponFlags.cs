@@ -7,16 +7,13 @@ namespace Crpg.Domain.Entities
     {
         MeleeWeapon = 0x1,
         RangedWeapon = 0x2,
-        WeaponMask = RangedWeapon | MeleeWeapon,
         FirearmAmmo = 0x4,
         NotUsableWithOneHand = 0x10,
         NotUsableWithTwoHand = 0x20,
-        HandUsageMask = NotUsableWithTwoHand | NotUsableWithOneHand,
         WideGrip = 0x40,
         AttachAmmoToVisual = 0x80,
         Consumable = 0x100,
         HasHitPoints = 0x200,
-        DataValueMask = HasHitPoints | Consumable,
         HasString = 0x400,
         StringHeldByHand = 0xC00,
         UnloadWhenSheathed = 0x1000,
@@ -37,7 +34,6 @@ namespace Crpg.Domain.Entities
         UseHandAsThrowBase = 0x80000000,
         AmmoBreaksOnBounceBack = 0x100000000,
         AmmoCanBreakOnBounceBack = 0x200000000,
-        AmmoBreakOnBounceBackMask = AmmoCanBreakOnBounceBack | AmmoBreaksOnBounceBack,
         AmmoSticksWhenShot = 0x400000000,
     }
 }

@@ -1,5 +1,3 @@
-/* eslint-disable no-bitwise */
-
 import { get } from '@/services/crpg-client';
 import Item from '@/models/item';
 import ItemType from '@/models/item-type';
@@ -35,18 +33,38 @@ const damageTypeToStr: Record<DamageType, string> = {
   [DamageType.Blunt]: 'Blunt',
 };
 
-const weaponFlagsStr: Record<WeaponFlags, string> = {
+// Set null flag we don't to display
+const weaponFlagsStr: Record<WeaponFlags, string | null> = {
   [WeaponFlags.MeleeWeapon]: 'Melee',
   [WeaponFlags.RangedWeapon]: 'Ranged',
+  [WeaponFlags.FirearmAmmo]: null,
+  [WeaponFlags.NotUsableWithOneHand]: null,
+  [WeaponFlags.NotUsableWithTwoHand]: null,
+  [WeaponFlags.WideGrip]: null,
+  [WeaponFlags.AttachAmmoToVisual]: null,
+  [WeaponFlags.Consumable]: null,
+  [WeaponFlags.HasHitPoints]: null,
+  [WeaponFlags.HasString]: null,
+  [WeaponFlags.StringHeldByHand]: null,
+  [WeaponFlags.UnloadWhenSheathed]: null,
+  [WeaponFlags.AffectsArea]: null,
+  [WeaponFlags.Burning]: null,
   [WeaponFlags.BonusAgainstShield]: 'BonusAgainstShield',
   [WeaponFlags.CanPenetrateShield]: 'PenetrateShield',
   [WeaponFlags.CantReloadOnHorseback]: 'HorseReload',
   [WeaponFlags.AutoReload]: 'AutoReload',
   [WeaponFlags.CrushThrough]: 'CrushThrough',
-  // [WeaponFlags.TwoHandIdleOnMount]:
+  [WeaponFlags.TwoHandIdleOnMount]: 'IdleOnMount',
   [WeaponFlags.PenaltyWithShield]: 'PenaltyWithShield',
+  [WeaponFlags.MissileWithPhysics]: null,
+  [WeaponFlags.MultiplePenetration]: 'MultiplePenetration',
   [WeaponFlags.CanKnockDown]: 'KnockDown',
   [WeaponFlags.CanBlockRanged]: 'BlockRanged',
+  [WeaponFlags.LeavesTrail]: null,
+  [WeaponFlags.UseHandAsThrowBase]: null,
+  [WeaponFlags.AmmoBreaksOnBounceBack]: null,
+  [WeaponFlags.AmmoCanBreakOnBounceBack]: null,
+  [WeaponFlags.AmmoSticksWhenShot]: null,
 };
 
 const weaponTypes: ItemType[] = [
@@ -97,10 +115,8 @@ function getDamageFields(weaponComponent: ItemWeaponComponent): [string, any][] 
   return fields;
 }
 
-function getWeaponFlags(flags: WeaponFlags): string[] {
-  return Object.entries<string>(weaponFlagsStr)
-    .filter(([flag]) => (flags & flag as any) !== 0)
-    .map(([, flagStr]) => flagStr);
+function getWeaponFlags(flags: WeaponFlags[]): string[] {
+  return flags.map(flag => weaponFlagsStr[flag]).filter(flagStr => flagStr !== null) as string[];
 }
 
 export function getItems(): Promise<Item[]> {

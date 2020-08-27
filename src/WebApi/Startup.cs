@@ -64,7 +64,11 @@ namespace Crpg.WebApi
                 .AddSwaggerGen(ConfigureSwagger)
                 .AddCors(ConfigureCors)
                 .AddControllers()
-                .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)));
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new JsonArrayStringEnumFlagsConverterFactory());
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+                });
 
             services.AddHealthChecks();
 
