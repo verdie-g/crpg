@@ -19,16 +19,7 @@ namespace Crpg.WebApi.Controllers
         [ResponseCache(Duration = 60 * 60 * 1)] // 1 hour
         public async Task<ActionResult<IList<BanViewModel>>> GetBans()
         {
-            var bans = await Mediator.Send(new GetBansListQuery());
-            return Ok(bans.Select(b => new BanResponse
-            {
-                Id = b.Id,
-                BannedUser = b.BannedUser,
-                Duration = (int)b.Duration.TotalMilliseconds,
-                Reason = b.Reason,
-                BannedByUser = b.BannedByUser!,
-                CreatedAt = b.CreatedAt,
-            }));
+            return Ok(await Mediator.Send(new GetBansListQuery()));
         }
     }
 }

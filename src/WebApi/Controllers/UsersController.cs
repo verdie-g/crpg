@@ -242,15 +242,7 @@ namespace Crpg.WebApi.Controllers
         [HttpGet("self/bans")]
         public async Task<ActionResult<IList<BanViewModel>>> GetUserBans()
         {
-            var bans = await Mediator.Send(new GetUserBansListQuery { UserId = CurrentUser.UserId });
-            return Ok(bans.Select(b => new BanResponse
-            {
-                Id = b.Id,
-                Duration = (int)b.Duration.TotalMilliseconds,
-                Reason = b.Reason,
-                BannedByUser = b.BannedByUser!,
-                CreatedAt = b.CreatedAt,
-            }));
+            return Ok(await Mediator.Send(new GetUserBansListQuery { UserId = CurrentUser.UserId }));
         }
 
         /// <summary>
@@ -264,16 +256,10 @@ namespace Crpg.WebApi.Controllers
         /// <response code="404">User was not found.</response>
         [HttpPost("{id}/bans"), Authorize(Roles = "admin,superAdmin")]
         [ProducesResponseType((int)HttpStatusCode.Created)]
-        public async Task<ActionResult<BanViewModel>> BanUser([FromRoute] int id, [FromBody] BanRequest req)
+        public async Task<ActionResult<BanViewModel>> BanUser([FromRoute] int id, [FromBody] BanCommand req)
         {
-            var ban = await Mediator.Send(new BanCommand
-            {
-                BannedUserId = id,
-                Duration = TimeSpan.FromMilliseconds(req.Duration),
-                Reason = req.Reason,
-                BannedByUserId = CurrentUser.UserId
-            });
-
+            req.BannedUserId = id;
+            var ban = await Mediator.Send(req);
             return StatusCode(StatusCodes.Status201Created, ban);
         }
     }

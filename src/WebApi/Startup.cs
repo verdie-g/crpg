@@ -67,6 +67,7 @@ namespace Crpg.WebApi
                 .AddControllers()
                 .AddJsonOptions(options =>
                 {
+                    options.JsonSerializerOptions.Converters.Add(new TimeSpanConverter());
                     options.JsonSerializerOptions.Converters.Add(new JsonArrayStringEnumFlagsConverterFactory());
                     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
                 });
