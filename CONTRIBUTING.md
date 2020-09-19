@@ -51,8 +51,8 @@ The client relies on the server so you have to run both.
 
 ## Report a bug
 
-- **Do not open GitHub issue if the bug is a security vulnerability in cRPG**, and instead contact a
-  @Mod Developer on [Discord](https://discord.gg/83RJDN9)
+- **Do not open GitHub issue if the bug is a security vulnerability in cRPG**, and instead follow
+  the [security policy](https://github.com/verdie-g/crpg/blob/master/SECURITY.md).
 - **Ensure the bug was not already reported** by searching on GitHub under [Issues](https://github.com/verdie-g/cRPG/issues?q=is%3Aissue)
 - If you're unable to find an open issue addressing the problem, open a new one. Make sure to include
   a title and a clear description, as much relevant information as possible, and ideally a screenshot
@@ -64,4 +64,3 @@ The client relies on the server so you have to run both.
 - Ensure the PR description clearly describes the problem and solution. Include the relevant issue
   number if applicable.
 - Make sure the changes are correctly unit-tested
-
