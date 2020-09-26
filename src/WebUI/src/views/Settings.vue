@@ -34,7 +34,7 @@ export default class Settings extends Vue {
       ...b,
       createdAt: b.createdAt.toDateString(),
       duration: timestampToTimeString(b.duration),
-      bannedBy: `${b.bannedByUser.userName} (${b.bannedByUser.steamId})`,
+      bannedBy: `${b.bannedByUser.name} (${b.bannedByUser.steamId})`,
     }));
   }
 

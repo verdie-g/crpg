@@ -19,7 +19,7 @@ namespace Crpg.Application.Users.Commands
     public class UpsertUserCommand : IRequest<UserViewModel>, IMapFrom<SteamPlayer>
     {
         public long SteamId { get; set; }
-        public string UserName { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
         public Uri Avatar { get; set; } = default!;
         public Uri AvatarMedium { get; set; } = default!;
         public Uri AvatarFull { get; set; } = default!;
@@ -27,14 +27,14 @@ namespace Crpg.Application.Users.Commands
         public void Mapping(Profile profile)
         {
             profile.CreateMap<SteamPlayer, UpsertUserCommand>()
-                .ForMember(u => u.UserName, opt => opt.MapFrom(p => p.PersonaName));
+                .ForMember(u => u.Name, opt => opt.MapFrom(p => p.PersonaName));
         }
 
         public class Validator : AbstractValidator<UpsertUserCommand>
         {
             public Validator()
             {
-                RuleFor(u => u.UserName).NotNull().NotEmpty();
+                RuleFor(u => u.Name).NotNull().NotEmpty();
                 RuleFor(u => u.Avatar).NotNull();
                 RuleFor(u => u.AvatarMedium).NotNull();
                 RuleFor(u => u.AvatarFull).NotNull();
@@ -60,7 +60,7 @@ namespace Crpg.Application.Users.Commands
                     await _db.Users.FirstOrDefaultAsync(u => u.SteamId == request.SteamId, cancellationToken)
                     ?? new User { SteamId = request.SteamId };
 
-                user.UserName = request.UserName;
+                user.Name = request.Name;
                 user.AvatarSmall = request.Avatar;
                 user.AvatarMedium = request.AvatarMedium;
                 user.AvatarFull = request.AvatarFull;
@@ -69,7 +69,7 @@ namespace Crpg.Application.Users.Commands
                 {
                     UserHelper.SetDefaultValuesForUser(user);
                     _db.Users.Add(user);
-                    _events.Raise(EventLevel.Info, $"{request.UserName} joined ({request.SteamId})", string.Empty, "user_created");
+                    _events.Raise(EventLevel.Info, $"{request.Name} joined ({request.SteamId})", string.Empty, "user_created");
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);

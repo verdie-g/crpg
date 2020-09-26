@@ -5,7 +5,7 @@ export default class User {
 
   public steamId: number;
 
-  public userName: string;
+  public name: string;
 
   public gold: number;
 

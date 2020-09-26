@@ -40,11 +40,11 @@ namespace Crpg.Application.Users.Commands
                     throw new NotFoundException(nameof(user), request.UserId);
                 }
 
-                string userName = user.UserName;
+                string name = user.Name;
                 long steamId = user.SteamId;
 
                 UserHelper.SetDefaultValuesForUser(user);
-                user.UserName = string.Empty;
+                user.Name = string.Empty;
                 user.AvatarSmall = new Uri("https://via.placeholder.com/32x32");
                 user.AvatarMedium = new Uri("https://via.placeholder.com/64x64");
                 user.AvatarFull = new Uri("https://via.placeholder.com/184x184");
@@ -52,7 +52,7 @@ namespace Crpg.Application.Users.Commands
                 _db.UserItems.RemoveRange(user.OwnedItems);
                 _db.Characters.RemoveRange(user.Characters);
                 await _db.SaveChangesAsync(cancellationToken);
-                _events.Raise(EventLevel.Info, $"{userName} deleted its account ({steamId})", string.Empty, "user_deleted");
+                _events.Raise(EventLevel.Info, $"{name} deleted its account ({steamId})", string.Empty, "user_deleted");
                 return Unit.Value;
             }
         }

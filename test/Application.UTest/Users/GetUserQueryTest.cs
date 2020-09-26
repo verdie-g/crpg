@@ -26,7 +26,7 @@ namespace Crpg.Application.UTest.Users
             var dbUser = new User
             {
                 SteamId = 13948192759205810,
-                UserName = "def",
+                Name = "def",
                 Role = Role.Admin,
                 AvatarSmall = new Uri("http://ghi.klm"),
                 AvatarMedium = new Uri("http://mno.pqr"),

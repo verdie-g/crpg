@@ -17,7 +17,7 @@
               <div class="media">
                 <div class="media-content">
                   <p>
-                    <strong>{{user.userName}}</strong><br>
+                    <strong>{{user.name}}</strong><br>
                     <b-icon icon="coins" size="is-small" style="margin-right: 6px" />{{user.gold}}
                   </p>
                 </div>

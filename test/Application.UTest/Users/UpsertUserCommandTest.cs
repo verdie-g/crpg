@@ -20,7 +20,7 @@ namespace Crpg.Application.UTest.Users
             var user = await handler.Handle(new UpsertUserCommand
             {
                 SteamId = 123,
-                UserName = "def",
+                Name = "def",
                 Avatar = new Uri("http://ghi.klm"),
                 AvatarMedium = new Uri("http://mno.pqr"),
                 AvatarFull = new Uri("http://stu.vwx")
@@ -37,7 +37,7 @@ namespace Crpg.Application.UTest.Users
             var user = new User
             {
                 SteamId = 13948192759205810,
-                UserName = "def",
+                Name = "def",
                 Gold = 1000,
                 Role = Role.Admin,
                 AvatarSmall = new Uri("http://ghi.klm"),
@@ -51,7 +51,7 @@ namespace Crpg.Application.UTest.Users
             var createdUser = await handler.Handle(new UpsertUserCommand
             {
                 SteamId = 13948192759205810,
-                UserName = "def",
+                Name = "def",
                 Avatar = new Uri("http://gh.klm"),
                 AvatarMedium = new Uri("http://mn.pqr"),
                 AvatarFull = new Uri("http://st.vwx")
@@ -63,7 +63,7 @@ namespace Crpg.Application.UTest.Users
             Assert.AreEqual(dbUser.Id, createdUser.Id);
             Assert.AreEqual(dbUser.SteamId, createdUser.SteamId);
             Assert.AreEqual(dbUser.Gold, createdUser.Gold);
-            Assert.AreEqual(dbUser.UserName, createdUser.UserName);
+            Assert.AreEqual(dbUser.Name, createdUser.Name);
             Assert.AreEqual(dbUser.Role, createdUser.Role);
             Assert.AreEqual(new Uri("http://gh.klm"), createdUser.AvatarSmall);
             Assert.AreEqual(new Uri("http://mn.pqr"), createdUser.AvatarMedium);
@@ -77,7 +77,7 @@ namespace Crpg.Application.UTest.Users
             var res = validator.Validate(new UpsertUserCommand
             {
                 SteamId = 28320184920184918,
-                UserName = "toto",
+                Name = "toto",
                 Avatar = new Uri("http://gh.klm"),
                 AvatarMedium = new Uri("http://mn.pqr"),
                 AvatarFull = new Uri("http://st.vwx")
@@ -93,7 +93,7 @@ namespace Crpg.Application.UTest.Users
             var res = validator.Validate(new UpsertUserCommand
             {
                 SteamId = 123,
-                UserName = "",
+                Name = "",
             });
 
             Assert.AreEqual(4, res.Errors.Count);
