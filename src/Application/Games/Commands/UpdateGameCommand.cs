@@ -250,7 +250,6 @@ namespace Crpg.Application.Games.Commands
                     }
 
                     var user = CreateUser(update.SteamId, update.CharacterName);
-                    _db.Users.Add(user);
 
                     users[user.SteamId] = user;
                     _events.Raise(EventLevel.Info, $"{update.CharacterName} joined ({update.SteamId})", string.Empty, "user_created");
@@ -271,13 +270,15 @@ namespace Crpg.Application.Games.Commands
             {
                 var character = CreateCharacter(characterName);
                 character.User = user;
-                // avoid using Add here because it would add items that already exist
-                _db.Entry(character).State = EntityState.Added;
+                _db.Characters.Add(character);
 
-                // add character items to user inventory
                 foreach (var (_, item) in character.Items.ItemSlotPairs())
                 {
+                    // Add character items to user inventory
                     user.OwnedItems.Add(new UserItem { ItemId = item.Id });
+
+                    // Detach character items to avoid adding them when they already exist (dirty hack)
+                    _db.Entry(item).State = EntityState.Detached;
                 }
 
                 return character;

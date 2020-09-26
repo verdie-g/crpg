@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Games.Commands;
 using Crpg.Application.Games.Models;
 using Crpg.Common;
 using Crpg.Domain.Entities;
 using Crpg.Infrastructure;
-using LinqKit;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
@@ -75,20 +73,31 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(0, res.Users[0].Character.Statistics.Attributes.Points);
             Assert.AreEqual(0, res.Users[0].Character.Statistics.Skills.Points);
             Assert.Greater(res.Users[0].Character.Statistics.WeaponProficiencies.Points, 0);
-            Assert.NotNull(res.Users[0].Character.Items.HeadItem);
-            Assert.NotNull(res.Users[0].Character.Items.BodyItem);
-            Assert.NotNull(res.Users[0].Character.Items.LegItem);
-            Assert.NotNull(res.Users[0].Character.Items.Weapon1Item);
-            Assert.NotNull(res.Users[0].Character.Items.Weapon2Item);
+            Assert.IsNotNull(res.Users[0].Character.Items.HeadItem);
+            Assert.IsNotNull(res.Users[0].Character.Items.BodyItem);
+            Assert.IsNotNull(res.Users[0].Character.Items.LegItem);
+            Assert.IsNotNull(res.Users[0].Character.Items.Weapon1Item);
+            Assert.IsNotNull(res.Users[0].Character.Items.Weapon2Item);
             Assert.IsTrue(res.Users[0].Character.Items.AutoRepair);
             Assert.AreEqual(0, res.Users[0].BrokenItems.Count);
             Assert.IsNull(res.Users[0].Ban);
+
+            // Check that user and its owned entities were created
+            var user = await AssertDb.Users
+                .Include(u => u.Characters)
+                .FirstOrDefaultAsync(u => u.Id == res.Users[0].Id);
+
+            Assert.IsNotNull(user);
+            Assert.IsNotEmpty(user.Characters);
+            Assert.IsNotNull(user.Characters[0].Items.BodyItemId);
+            Assert.NotZero(user.Characters[0].Statistics.Attributes.Agility);
         }
 
         [Test]
         public async Task ShouldCreateCharacterIfDoesntExist()
         {
-            var user = ArrangeDb.Users.Add(new User { SteamId = 1, Gold = 1000 });
+            var user = new User { SteamId = 1, Gold = 1000 };
+            ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
@@ -125,6 +134,16 @@ namespace Crpg.Application.UTest.Games
             Assert.IsTrue(res.Users[0].Character.Items.AutoRepair);
             Assert.AreEqual(0, res.Users[0].BrokenItems.Count);
             Assert.IsNull(res.Users[0].Ban);
+
+            // Check that character and its owned entities were created
+            user = await AssertDb.Users
+                .Include(u => u.Characters)
+                .FirstOrDefaultAsync(u => u.Id == res.Users[0].Id);
+
+            Assert.IsNotNull(user);
+            Assert.IsNotEmpty(user.Characters);
+            Assert.IsNotNull(user.Characters[0].Items.BodyItemId);
+            Assert.NotZero(user.Characters[0].Statistics.Attributes.Agility);
         }
 
         [Test]
