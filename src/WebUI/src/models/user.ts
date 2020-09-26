@@ -3,7 +3,7 @@ import Role from './role';
 export default class User {
   public id: number;
 
-  public steamId: number;
+  public platformId: number;
 
   public name: string;
 

@@ -1,5 +1,5 @@
 export class UserPublic {
   public id: number;
-  public steamId: number;
+  public platformId: number;
   public name: string;
 }
