@@ -50,7 +50,7 @@ namespace Crpg.Application.System.Commands
                 {
                     new User
                     {
-                        SteamId = 76561197987525637,
+                        PlatformId = "76561197987525637",
                         Name = "takeoshigeru",
                         Gold = 30000,
                         Role = Role.SuperAdmin,
@@ -85,13 +85,13 @@ namespace Crpg.Application.System.Commands
                             {
                                 Duration = TimeSpan.FromDays(2),
                                 Reason = "Did shit",
-                                BannedByUser = new User { SteamId = 123, Name = "toto" },
+                                BannedByUser = new User { PlatformId = "123", Name = "toto" },
                             },
                             new Ban
                             {
                                 Duration = TimeSpan.FromMinutes(5),
                                 Reason = "Did shot",
-                                BannedByUser = new User { SteamId = 456, Name = "titi" },
+                                BannedByUser = new User { PlatformId = "456", Name = "titi" },
                             },
                         },
                     },

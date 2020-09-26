@@ -51,7 +51,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
-                        SteamId = 1,
+                        PlatformId = "1",
                         CharacterName = "a",
                         Reward = new GameUserReward
                         {
@@ -96,7 +96,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldCreateCharacterIfDoesntExist()
         {
-            var user = new User { SteamId = 1, Gold = 1000 };
+            var user = new User { PlatformId = "1", Gold = 1000 };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
@@ -109,7 +109,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
-                        SteamId = 1,
+                        PlatformId = "1",
                         CharacterName = "a",
                         Reward = new GameUserReward
                         {
@@ -151,7 +151,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = new User
             {
-                SteamId = 1,
+                PlatformId = "1",
                 Gold = 1000,
                 Characters = new List<Character>
                 {
@@ -180,7 +180,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
-                        SteamId = 1,
+                        PlatformId = "1",
                         CharacterName = "a",
                         Reward = new GameUserReward
                         {
@@ -212,7 +212,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = ArrangeDb.Users.Add(new User
             {
-                SteamId = 1,
+                PlatformId = "1",
                 Characters = new List<Character>
                 {
                     new Character
@@ -235,7 +235,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
-                        SteamId = 1,
+                        PlatformId = "1",
                         CharacterName = "a",
                         Reward = new GameUserReward { Experience = 1000 },
                     },
@@ -255,7 +255,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user0 = new User
             {
-                SteamId = 1,
+                PlatformId = "1",
                 Gold = 10,
                 Characters = new List<Character>
                 {
@@ -271,7 +271,7 @@ namespace Crpg.Application.UTest.Games
 
             var user1 = new User
             {
-                SteamId = 2,
+                PlatformId = "2",
                 Gold = 20,
                 Characters = new List<Character>
                 {
@@ -287,7 +287,7 @@ namespace Crpg.Application.UTest.Games
 
             var user2 = new User
             {
-                SteamId = 3,
+                PlatformId = "3",
                 Gold = 30,
             };
 
@@ -303,25 +303,25 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
-                        SteamId = user0.SteamId,
+                        PlatformId = user0.PlatformId,
                         CharacterName = user0.Characters[0].Name,
                         Reward = new GameUserReward { Experience = 900, Gold = 90 },
                     },
                     new GameUserUpdate
                     {
-                        SteamId = user1.SteamId,
+                        PlatformId = user1.PlatformId,
                         CharacterName = user1.Characters[0].Name,
                         Reward = new GameUserReward { Experience = 800, Gold = 80 },
                     },
                     new GameUserUpdate
                     {
-                        SteamId = user2.SteamId,
+                        PlatformId = user2.PlatformId,
                         CharacterName = "c",
                         Reward = new GameUserReward { Experience = 1000, Gold = 70 },
                     },
                     new GameUserUpdate
                     {
-                        SteamId = 4,
+                        PlatformId = "4",
                         CharacterName = "d",
                         Reward = new GameUserReward { Experience = 1000, Gold = -200 },
                     },
@@ -330,16 +330,16 @@ namespace Crpg.Application.UTest.Games
 
             Assert.AreEqual(4, res.Users.Count);
 
-            Assert.AreEqual(user0.SteamId, res.Users[0].SteamId);
+            Assert.AreEqual(user0.PlatformId, res.Users[0].PlatformId);
             Assert.AreEqual(user0.Characters[0].Name, res.Users[0].Character.Name);
 
-            Assert.AreEqual(user1.SteamId, res.Users[1].SteamId);
+            Assert.AreEqual(user1.PlatformId, res.Users[1].PlatformId);
             Assert.AreEqual(user1.Characters[0].Name, res.Users[1].Character.Name);
 
-            Assert.AreEqual(user2.SteamId, res.Users[2].SteamId);
+            Assert.AreEqual(user2.PlatformId, res.Users[2].PlatformId);
             Assert.AreEqual("c", res.Users[2].Character.Name);
 
-            Assert.AreEqual(4, res.Users[3].SteamId);
+            Assert.AreEqual("4", res.Users[3].PlatformId);
             Assert.AreEqual("d", res.Users[3].Character.Name);
 
             foreach (var user in res.Users)
@@ -354,7 +354,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = ArrangeDb.Users.Add(new User
             {
-                SteamId = 1,
+                PlatformId = "1",
                 Bans = new List<Ban>
                 {
                     new Ban
@@ -376,7 +376,7 @@ namespace Crpg.Application.UTest.Games
 
             var res = await handler.Handle(new UpdateGameCommand
             {
-                GameUserUpdates = new[] { new GameUserUpdate { SteamId = 1 } }
+                GameUserUpdates = new[] { new GameUserUpdate { PlatformId = "1" } }
             }, CancellationToken.None);
 
             Assert.NotNull(res.Users[0].Ban);
@@ -387,7 +387,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = ArrangeDb.Users.Add(new User
             {
-                SteamId = 1,
+                PlatformId = "1",
                 Bans = new List<Ban>
                 {
                     new Ban
@@ -414,7 +414,7 @@ namespace Crpg.Application.UTest.Games
 
             var res = await handler.Handle(new UpdateGameCommand
             {
-                GameUserUpdates = new[] { new GameUserUpdate { SteamId = 1 } }
+                GameUserUpdates = new[] { new GameUserUpdate { PlatformId = "1" } }
             }, CancellationToken.None);
 
             Assert.Null(res.Users[0].Ban);
@@ -425,7 +425,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = new User
             {
-                SteamId = 1,
+                PlatformId = "1",
                 Gold = 10000,
                 Characters = new List<Character>
                 {
@@ -462,7 +462,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
-                        SteamId = 1,
+                        PlatformId = "1",
                         CharacterName = "b",
                         BrokenItems = new List<GameUserBrokenItem>
                         {
@@ -505,7 +505,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = new User
             {
-                SteamId = 1,
+                PlatformId = "1",
                 Gold = 10000,
                 Characters = new List<Character>
                 {
@@ -559,7 +559,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
-                        SteamId = 1,
+                        PlatformId = "1",
                         CharacterName = "b",
                         BrokenItems = new List<GameUserBrokenItem>
                         {
@@ -619,7 +619,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = ArrangeDb.Users.Add(new User
             {
-                SteamId = 1,
+                PlatformId = "1",
                 Gold = 3000,
                 Characters = new List<Character>
                 {
@@ -649,7 +649,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
-                        SteamId = 1,
+                        PlatformId = "1",
                         CharacterName = "b",
                         BrokenItems = new List<GameUserBrokenItem>
                         {

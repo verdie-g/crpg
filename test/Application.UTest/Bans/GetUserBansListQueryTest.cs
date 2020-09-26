@@ -17,8 +17,8 @@ namespace Crpg.Application.UTest.Bans
             {
                 Bans = new List<Ban>
                 {
-                    new Ban { BannedByUser = new User { SteamId = 123 } },
-                    new Ban { BannedByUser = new User { SteamId = 456 } },
+                    new Ban { BannedByUser = new User { PlatformId = "123" } },
+                    new Ban { BannedByUser = new User { PlatformId = "456" } },
                 }
             };
             ArrangeDb.Users.Add(user);
@@ -27,8 +27,8 @@ namespace Crpg.Application.UTest.Bans
             var bans = await new GetUserBansListQuery.Handler(ActDb, Mapper).Handle(
                 new GetUserBansListQuery { UserId = user.Id }, CancellationToken.None);
             Assert.AreEqual(2, bans.Count);
-            Assert.AreEqual(123, bans[0].BannedByUser!.SteamId);
-            Assert.AreEqual(456, bans[1].BannedByUser!.SteamId);
+            Assert.AreEqual("123", bans[0].BannedByUser!.PlatformId);
+            Assert.AreEqual("456", bans[1].BannedByUser!.PlatformId);
         }
 
         [Test]
