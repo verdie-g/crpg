@@ -16,7 +16,7 @@ namespace Crpg.Application.UTest.Users
         [Test]
         public async Task TestWhenUserDoesntExist()
         {
-            var handler = new UpsertUserCommand.Handler(Db, Mapper, EventRaiser);
+            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventRaiser);
             var user = await handler.Handle(new UpsertUserCommand
             {
                 SteamId = 123,
@@ -28,7 +28,7 @@ namespace Crpg.Application.UTest.Users
 
             Assert.AreEqual(Role.User, user.Role);
             Assert.AreEqual(300, user.Gold);
-            Assert.NotNull(await Db.Users.FindAsync(user.Id));
+            Assert.NotNull(await AssertDb.Users.FindAsync(user.Id));
         }
 
         [Test]
@@ -44,10 +44,10 @@ namespace Crpg.Application.UTest.Users
                 AvatarMedium = new Uri("http://mno.pqr"),
                 AvatarFull = new Uri("http://stu.vwx")
             };
-            Db.Users.Add(user);
-            await Db.SaveChangesAsync();
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpsertUserCommand.Handler(Db, Mapper, EventRaiser);
+            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventRaiser);
             var createdUser = await handler.Handle(new UpsertUserCommand
             {
                 SteamId = 13948192759205810,
@@ -59,7 +59,7 @@ namespace Crpg.Application.UTest.Users
 
             Assert.AreEqual(user.Id, createdUser.Id);
 
-            var dbUser = await Db.Users.FindAsync(user.Id);
+            var dbUser = await AssertDb.Users.FindAsync(user.Id);
             Assert.AreEqual(dbUser.Id, createdUser.Id);
             Assert.AreEqual(dbUser.SteamId, createdUser.SteamId);
             Assert.AreEqual(dbUser.Gold, createdUser.Gold);

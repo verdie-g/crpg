@@ -11,7 +11,7 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task Basic()
         {
-            Db.AddRange(
+            ArrangeDb.AddRange(
                 new Item
                 {
                     Name = "toto",
@@ -33,9 +33,9 @@ namespace Crpg.Application.UTest.Items
                     Type = ItemType.HandArmor,
                     Rank = 0,
                 });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetItemsListQuery.Handler(Db, Mapper);
+            var handler = new GetItemsListQuery.Handler(ActDb, Mapper);
             var items = await handler.Handle(new GetItemsListQuery(), CancellationToken.None);
 
             Assert.AreEqual(2, items.Count);

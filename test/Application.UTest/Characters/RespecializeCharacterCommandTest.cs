@@ -1,8 +1,10 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters
@@ -43,15 +45,16 @@ namespace Crpg.Application.UTest.Characters
                     Weapon1Item = new Item(),
                 },
             };
-            Db.Add(character);
-            await Db.SaveChangesAsync();
+            ArrangeDb.Add(character);
+            await ArrangeDb.SaveChangesAsync();
 
-            await new RespecializeCharacterCommand.Handler(Db, Mapper).Handle(new RespecializeCharacterCommand
+            await new RespecializeCharacterCommand.Handler(ActDb, Mapper).Handle(new RespecializeCharacterCommand
             {
                 CharacterId = character.Id,
                 UserId = character.UserId,
             }, CancellationToken.None);
 
+            character = await AssertDb.Characters.FirstAsync(c => c.Id == character.Id);
             Assert.AreEqual(2, character.Generation);
             Assert.AreEqual(2, character.Level);
             Assert.AreEqual(10000, character.Experience);
@@ -64,15 +67,15 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(0, character.Statistics.Skills.PowerStrike);
             Assert.AreEqual(62, character.Statistics.WeaponProficiencies.Points);
 
-            Assert.Null(character.Items.HeadItem);
-            Assert.Null(character.Items.BodyItem);
-            Assert.Null(character.Items.Weapon1Item);
+            Assert.Null(character.Items.HeadItemId);
+            Assert.Null(character.Items.BodyItemId);
+            Assert.Null(character.Items.Weapon1ItemId);
         }
 
         [Test]
         public void ShouldThrowNotFoundIfUserDoesntExist()
         {
-            Assert.ThrowsAsync<NotFoundException>(() => new RespecializeCharacterCommand.Handler(Db, Mapper).Handle(
+            Assert.ThrowsAsync<NotFoundException>(() => new RespecializeCharacterCommand.Handler(ActDb, Mapper).Handle(
                 new RespecializeCharacterCommand
                 {
                     CharacterId = 1,
@@ -83,10 +86,10 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldThrowNotFoundIfCharacterDoesntExist()
         {
-            var user = Db.Users.Add(new User());
-            await Db.SaveChangesAsync();
+            var user = ArrangeDb.Users.Add(new User());
+            await ArrangeDb.SaveChangesAsync();
 
-            Assert.ThrowsAsync<NotFoundException>(() => new RespecializeCharacterCommand.Handler(Db, Mapper).Handle(
+            Assert.ThrowsAsync<NotFoundException>(() => new RespecializeCharacterCommand.Handler(ActDb, Mapper).Handle(
                 new RespecializeCharacterCommand
                 {
                     CharacterId = 1,

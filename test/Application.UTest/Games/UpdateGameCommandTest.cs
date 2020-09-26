@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Games.Commands;
 using Crpg.Application.Games.Models;
 using Crpg.Common;
 using Crpg.Domain.Entities;
 using Crpg.Infrastructure;
+using LinqKit;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
 
@@ -26,14 +29,14 @@ namespace Crpg.Application.UTest.Games
                 .GroupBy(p => p.item.MbId) // distinct by mbId
                 .Select(p => new Item { MbId = p.First().item.MbId });
 
-            Db.Items.AddRange(allDefaultItemMbIds);
-            await Db.SaveChangesAsync();
+            ArrangeDb.Items.AddRange(allDefaultItemMbIds);
+            await ArrangeDb.SaveChangesAsync();
         }
 
         [Test]
         public void ShouldDoNothingForEmptyUpdates()
         {
-            var handler = new UpdateGameCommand.Handler(Db, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
             Assert.DoesNotThrowAsync(() => handler.Handle(new UpdateGameCommand(), CancellationToken.None));
         }
@@ -41,7 +44,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldCreateUserIfDoesntExist()
         {
-            var handler = new UpdateGameCommand.Handler(Db, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var res = await handler.Handle(new UpdateGameCommand
@@ -85,10 +88,10 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldCreateCharacterIfDoesntExist()
         {
-            var user = Db.Users.Add(new User { SteamId = 1, Gold = 1000 });
-            await Db.SaveChangesAsync();
+            var user = ArrangeDb.Users.Add(new User { SteamId = 1, Gold = 1000 });
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(Db, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var res = await handler.Handle(new UpdateGameCommand
@@ -127,7 +130,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldUpdateExistingCharacterCorrectly()
         {
-            var user = Db.Users.Add(new User
+            var user = new User
             {
                 SteamId = 1,
                 Gold = 1000,
@@ -145,10 +148,11 @@ namespace Crpg.Application.UTest.Games
                         },
                     },
                 },
-            });
-            await Db.SaveChangesAsync();
+            };
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(Db, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var res = await handler.Handle(new UpdateGameCommand
@@ -169,7 +173,7 @@ namespace Crpg.Application.UTest.Games
             }, CancellationToken.None);
 
             Assert.AreEqual(1, res.Users.Count);
-            Assert.AreEqual(user.Entity.Id, res.Users[0].Id);
+            Assert.AreEqual(user.Id, res.Users[0].Id);
             Assert.AreEqual(1000 + 200, res.Users[0].Gold);
             Assert.AreEqual("a", res.Users[0].Character.Name);
             Assert.AreEqual(0, res.Users[0].Character.Generation);
@@ -187,7 +191,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldLevelUpIfEnoughExperience()
         {
-            var user = Db.Users.Add(new User
+            var user = ArrangeDb.Users.Add(new User
             {
                 SteamId = 1,
                 Characters = new List<Character>
@@ -201,9 +205,9 @@ namespace Crpg.Application.UTest.Games
                     },
                 },
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(Db, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var res = await handler.Handle(new UpdateGameCommand
@@ -268,10 +272,10 @@ namespace Crpg.Application.UTest.Games
                 Gold = 30,
             };
 
-            Db.AddRange(user0, user1, user2);
-            await Db.SaveChangesAsync();
+            ArrangeDb.AddRange(user0, user1, user2);
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(Db, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var res = await handler.Handle(new UpdateGameCommand
@@ -329,7 +333,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task BanShouldntBeNullForBannedUser()
         {
-            var user = Db.Users.Add(new User
+            var user = ArrangeDb.Users.Add(new User
             {
                 SteamId = 1,
                 Bans = new List<Ban>
@@ -341,14 +345,14 @@ namespace Crpg.Application.UTest.Games
                     }
                 },
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
             var dateTime = new Mock<IDateTimeOffset>();
             dateTime
                 .Setup(dt => dt.Now)
                 .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
 
-            var handler = new UpdateGameCommand.Handler(Db, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 dateTime.Object, new ThreadSafeRandom());
 
             var res = await handler.Handle(new UpdateGameCommand
@@ -362,7 +366,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task BanShouldBeNullForUnbannedUser()
         {
-            var user = Db.Users.Add(new User
+            var user = ArrangeDb.Users.Add(new User
             {
                 SteamId = 1,
                 Bans = new List<Ban>
@@ -379,14 +383,14 @@ namespace Crpg.Application.UTest.Games
                     }
                 },
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
             var dateTime = new Mock<IDateTimeOffset>();
             dateTime
                 .Setup(dt => dt.Now)
                 .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
 
-            var handler = new UpdateGameCommand.Handler(Db, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 dateTime.Object, new ThreadSafeRandom());
 
             var res = await handler.Handle(new UpdateGameCommand
@@ -400,7 +404,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task BreakingAllCharacterItemsWithAutoRepairShouldRepairThemIfEnoughGold()
         {
-            var user = Db.Users.Add(new User
+            var user = new User
             {
                 SteamId = 1,
                 Gold = 10000,
@@ -426,10 +430,11 @@ namespace Crpg.Application.UTest.Games
                         },
                     },
                 }
-            });
-            await Db.SaveChangesAsync();
+            };
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(Db, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var res = await handler.Handle(new UpdateGameCommand
@@ -442,17 +447,17 @@ namespace Crpg.Application.UTest.Games
                         CharacterName = "b",
                         BrokenItems = new List<GameUserBrokenItem>
                         {
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HeadItemId!.Value, RepairCost = 100 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.CapeItemId!.Value, RepairCost = 150 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.BodyItemId!.Value, RepairCost = 200 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HandItemId!.Value, RepairCost = 250 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.LegItemId!.Value, RepairCost = 300 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HorseHarnessItemId!.Value, RepairCost = 350 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HorseItemId!.Value, RepairCost = 400 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon1ItemId!.Value, RepairCost = 450 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon2ItemId!.Value, RepairCost = 500 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon3ItemId!.Value, RepairCost = 550 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon4ItemId!.Value, RepairCost = 600 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.HeadItemId!.Value, RepairCost = 100 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.CapeItemId!.Value, RepairCost = 150 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.BodyItemId!.Value, RepairCost = 200 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.HandItemId!.Value, RepairCost = 250 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.LegItemId!.Value, RepairCost = 300 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.HorseHarnessItemId!.Value, RepairCost = 350 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.HorseItemId!.Value, RepairCost = 400 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon1ItemId!.Value, RepairCost = 450 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon2ItemId!.Value, RepairCost = 500 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon3ItemId!.Value, RepairCost = 550 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon4ItemId!.Value, RepairCost = 600 },
                         }
                     }
                 }
@@ -461,7 +466,7 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(10000 - 3850, res.Users[0].Gold);
             Assert.AreEqual(0, res.Users[0].BrokenItems.Count);
 
-            var expectedItems = user.Entity.Characters[0].Items;
+            var expectedItems = user.Characters[0].Items;
             var actualItems = res.Users[0].Character.Items;
             Assert.AreEqual(expectedItems.HeadItem!.Id, actualItems.HeadItem!.Id);
             Assert.AreEqual(expectedItems.CapeItem!.Id, actualItems.CapeItem!.Id);
@@ -479,7 +484,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task BreakingAllCharacterItemsWithoutAutoRepairShouldBreakThem()
         {
-            var user = Db.Users.Add(new User
+            var user = new User
             {
                 SteamId = 1,
                 Gold = 10000,
@@ -505,27 +510,28 @@ namespace Crpg.Application.UTest.Games
                         },
                     },
                 }
-            });
+            };
+            ArrangeDb.Users.Add(user);
 
             // for each item, add its base item (rank = 0) and downranked item (rank = rank - 1)
-            foreach (var (_, item) in user.Entity.Characters[0].Items.ItemSlotPairs())
+            foreach (var (_, item) in user.Characters[0].Items.ItemSlotPairs())
             {
-                Db.UserItems.Add(new UserItem { User = user.Entity, Item = item });
+                ArrangeDb.UserItems.Add(new UserItem { User = user, Item = item });
 
                 var baseItem = item.Rank == 0 ? item : new Item { Rank = 0 };
                 baseItem.BaseItem = baseItem;
                 item.BaseItem = baseItem;
-                Db.Items.Add(baseItem);
+                ArrangeDb.Items.Add(baseItem);
 
                 if (item.Rank > -3 && item.Rank - 1 != 0)
                 {
-                    Db.Items.Add(new Item { Rank = item.Rank - 1, BaseItem = baseItem });
+                    ArrangeDb.Items.Add(new Item { Rank = item.Rank - 1, BaseItem = baseItem });
                 }
             }
 
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(Db, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var res = await handler.Handle(new UpdateGameCommand
@@ -538,17 +544,17 @@ namespace Crpg.Application.UTest.Games
                         CharacterName = "b",
                         BrokenItems = new List<GameUserBrokenItem>
                         {
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HeadItemId!.Value, RepairCost = 100 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.CapeItemId!.Value, RepairCost = 150 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.BodyItemId!.Value, RepairCost = 200 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HandItemId!.Value, RepairCost = 250 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.LegItemId!.Value, RepairCost = 300 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HorseHarnessItemId!.Value, RepairCost = 350 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HorseItemId!.Value, RepairCost = 400 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon1ItemId!.Value, RepairCost = 450 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon2ItemId!.Value, RepairCost = 500 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon3ItemId!.Value, RepairCost = 550 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.Weapon4ItemId!.Value, RepairCost = 600 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.HeadItemId!.Value, RepairCost = 100 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.CapeItemId!.Value, RepairCost = 150 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.BodyItemId!.Value, RepairCost = 200 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.HandItemId!.Value, RepairCost = 250 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.LegItemId!.Value, RepairCost = 300 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.HorseHarnessItemId!.Value, RepairCost = 350 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.HorseItemId!.Value, RepairCost = 400 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon1ItemId!.Value, RepairCost = 450 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon2ItemId!.Value, RepairCost = 500 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon3ItemId!.Value, RepairCost = 550 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon4ItemId!.Value, RepairCost = 600 },
                         }
                     }
                 }
@@ -557,29 +563,42 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(10000, res.Users[0].Gold);
             Assert.AreEqual(11, res.Users[0].BrokenItems.Count);
 
-            Assert.AreEqual(2, user.Entity.Characters[0].Items.HeadItem!.Rank);
-            Assert.AreEqual(1, user.Entity.Characters[0].Items.CapeItem!.Rank);
-            Assert.AreEqual(0, user.Entity.Characters[0].Items.BodyItem!.Rank);
-            Assert.AreEqual(-1, user.Entity.Characters[0].Items.HandItem!.Rank);
-            Assert.AreEqual(-2, user.Entity.Characters[0].Items.LegItem!.Rank);
-            Assert.AreEqual(-3, user.Entity.Characters[0].Items.HorseHarnessItem!.Rank);
-            Assert.IsNull(user.Entity.Characters[0].Items.HorseItem);
-            Assert.AreEqual(-3, user.Entity.Characters[0].Items.Weapon1Item!.Rank);
-            Assert.AreEqual(-2, user.Entity.Characters[0].Items.Weapon2Item!.Rank);
-            Assert.AreEqual(-1, user.Entity.Characters[0].Items.Weapon3Item!.Rank);
-            Assert.AreEqual(0, user.Entity.Characters[0].Items.Weapon4Item!.Rank);
+            user = await AssertDb.Users
+                .Include(u => u.Characters).ThenInclude(c => c.Items.HeadItem)
+                .Include(u => u.Characters).ThenInclude(c => c.Items.BodyItem)
+                .Include(u => u.Characters).ThenInclude(c => c.Items.CapeItem)
+                .Include(u => u.Characters).ThenInclude(c => c.Items.HandItem)
+                .Include(u => u.Characters).ThenInclude(c => c.Items.LegItem)
+                .Include(u => u.Characters).ThenInclude(c => c.Items.HorseHarnessItem)
+                .Include(u => u.Characters).ThenInclude(c => c.Items.HorseItem)
+                .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon1Item)
+                .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon2Item)
+                .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon3Item)
+                .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon4Item)
+                .FirstAsync(u => u.Id == user.Id);
+            Assert.AreEqual(2, user.Characters[0].Items.HeadItem!.Rank);
+            Assert.AreEqual(1, user.Characters[0].Items.CapeItem!.Rank);
+            Assert.AreEqual(0, user.Characters[0].Items.BodyItem!.Rank);
+            Assert.AreEqual(-1, user.Characters[0].Items.HandItem!.Rank);
+            Assert.AreEqual(-2, user.Characters[0].Items.LegItem!.Rank);
+            Assert.AreEqual(-3, user.Characters[0].Items.HorseHarnessItem!.Rank);
+            Assert.IsNull(user.Characters[0].Items.HorseItem);
+            Assert.AreEqual(-3, user.Characters[0].Items.Weapon1Item!.Rank);
+            Assert.AreEqual(-2, user.Characters[0].Items.Weapon2Item!.Rank);
+            Assert.AreEqual(-1, user.Characters[0].Items.Weapon3Item!.Rank);
+            Assert.AreEqual(0, user.Characters[0].Items.Weapon4Item!.Rank);
 
             // check broken items were added to user inventory
-            foreach (var (_, item) in user.Entity.Characters[0].Items.ItemSlotPairs())
+            foreach (var (_, item) in user.Characters[0].Items.ItemSlotPairs())
             {
-                Assert.DoesNotThrow(() => Db.UserItems.First(oi => oi.ItemId == item.Id && oi.UserId == user.Entity.Id));
+                Assert.DoesNotThrowAsync(() => AssertDb.UserItems.FirstAsync(oi => oi.ItemId == item.Id && oi.UserId == user.Id));
             }
         }
 
         [Test]
         public async Task BreakingCharacterItemsWithAutoRepairShouldRepairUntilThereIsNotEnoughGold()
         {
-            var user = Db.Users.Add(new User
+            var user = ArrangeDb.Users.Add(new User
             {
                 SteamId = 1,
                 Gold = 3000,
@@ -600,9 +619,9 @@ namespace Crpg.Application.UTest.Games
                     },
                 }
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(Db, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var res = await handler.Handle(new UpdateGameCommand

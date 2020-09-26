@@ -14,13 +14,13 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldConvertAttributeToSkillsIfEnoughPoints()
         {
-            var character = Db.Add(new Character
+            var character = ArrangeDb.Add(new Character
             {
                 Statistics = new CharacterStatistics { Attributes = new CharacterAttributes { Points = 1 } },
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var stats = await new ConvertCharacterStatisticsCommand.Handler(Db, Mapper).Handle(
+            var stats = await new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper).Handle(
                 new ConvertCharacterStatisticsCommand
                 {
                     CharacterId = character.Entity.Id,
@@ -35,13 +35,13 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldConvertSkillsToAttributeIfEnoughPoints()
         {
-            var character = Db.Add(new Character
+            var character = ArrangeDb.Add(new Character
             {
                 Statistics = new CharacterStatistics { Skills = new CharacterSkills { Points = 2 } },
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var stats = await new ConvertCharacterStatisticsCommand.Handler(Db, Mapper).Handle(
+            var stats = await new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper).Handle(
                 new ConvertCharacterStatisticsCommand
                 {
                     CharacterId = character.Entity.Id,
@@ -56,13 +56,13 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldNotConvertAttributeToSkillsIfNotEnoughPoints()
         {
-            var character = Db.Add(new Character
+            var character = ArrangeDb.Add(new Character
             {
                 Statistics = new CharacterStatistics { Attributes = new CharacterAttributes { Points = 0 } },
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new ConvertCharacterStatisticsCommand.Handler(Db, Mapper);
+            var handler = new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper);
             Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new ConvertCharacterStatisticsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -74,13 +74,13 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldNotConvertSkillsToAttributeIfNotEnoughPoints()
         {
-            var character = Db.Add(new Character
+            var character = ArrangeDb.Add(new Character
             {
                 Statistics = new CharacterStatistics { Skills = new CharacterSkills { Points = 1 } },
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new ConvertCharacterStatisticsCommand.Handler(Db, Mapper);
+            var handler = new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper);
             Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new ConvertCharacterStatisticsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -104,10 +104,10 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldThrowNotFoundIfCharacterNotFound()
         {
-             var user = Db.Add(new User());
-             await Db.SaveChangesAsync();
+             var user = ArrangeDb.Add(new User());
+             await ArrangeDb.SaveChangesAsync();
 
-             var handler = new ConvertCharacterStatisticsCommand.Handler(Db, Mapper);
+             var handler = new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper);
              Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new ConvertCharacterStatisticsCommand
              {
                  UserId = user.Entity.Id,
@@ -118,7 +118,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public void ShouldThrowNotFoundIfUserNotFound()
         {
-             var handler = new ConvertCharacterStatisticsCommand.Handler(Db, Mapper);
+             var handler = new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper);
              Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new ConvertCharacterStatisticsCommand
              {
                  UserId = 1,

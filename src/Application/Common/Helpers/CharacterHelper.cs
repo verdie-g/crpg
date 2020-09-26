@@ -59,12 +59,12 @@ namespace Crpg.Application.Common.Helpers
             items.BodyItemId = null;
             items.HandItemId = null;
             items.LegItemId = null;
-            items.HorseHarnessItem = null;
-            items.HorseItem = null;
-            items.Weapon1Item = null;
-            items.Weapon2Item = null;
-            items.Weapon3Item = null;
-            items.Weapon4Item = null;
+            items.HorseHarnessItemId = null;
+            items.HorseItemId = null;
+            items.Weapon1ItemId = null;
+            items.Weapon2ItemId = null;
+            items.Weapon3ItemId = null;
+            items.Weapon4ItemId = null;
         }
 
         public static void ReplaceCharacterItem(CharacterItems items, int itemToReplaceId, int? itemToReplaceWithId)

@@ -13,7 +13,7 @@ namespace Crpg.Application.UTest.Users
         [Test]
         public void TestWhenUserDoesntExist()
         {
-            var handler = new GetUserQuery.Handler(Db, Mapper);
+            var handler = new GetUserQuery.Handler(ActDb, Mapper);
             Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new GetUserQuery
             {
                 UserId = 1,
@@ -32,10 +32,10 @@ namespace Crpg.Application.UTest.Users
                 AvatarMedium = new Uri("http://mno.pqr"),
                 AvatarFull = new Uri("http://stu.vwx")
             };
-            Db.Users.Add(dbUser);
-            await Db.SaveChangesAsync();
+            ArrangeDb.Users.Add(dbUser);
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetUserQuery.Handler(Db, Mapper);
+            var handler = new GetUserQuery.Handler(ActDb, Mapper);
             var user = await handler.Handle(new GetUserQuery
             {
                 UserId = dbUser.Id,

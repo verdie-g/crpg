@@ -4,6 +4,7 @@ using Crpg.Application.Characters.Commands;
 using Crpg.Application.Common;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters
@@ -13,7 +14,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task Basic()
         {
-            var character = Db.Characters.Add(new Character
+            var character = new Character
             {
                 Generation = 2,
                 Level = 31,
@@ -69,61 +70,65 @@ namespace Crpg.Application.UTest.Characters
                 {
                     HeirloomPoints = 1,
                 }
-            });
-            await Db.SaveChangesAsync();
+            };
+            ArrangeDb.Add(character);
+            await ArrangeDb.SaveChangesAsync();
 
-            await new RetireCharacterCommand.Handler(Db, Mapper).Handle(new RetireCharacterCommand
+            await new RetireCharacterCommand.Handler(ActDb, Mapper).Handle(new RetireCharacterCommand
             {
-                CharacterId = character.Entity.Id,
-                UserId = character.Entity.UserId,
+                CharacterId = character.Id,
+                UserId = character.UserId,
             }, CancellationToken.None);
 
-            Assert.AreEqual(3, character.Entity.Generation);
-            Assert.AreEqual(1, character.Entity.Level);
-            Assert.AreEqual(0, character.Entity.Experience);
-            Assert.AreEqual(1.06f, character.Entity.ExperienceMultiplier);
-            Assert.AreEqual(2, character.Entity.User!.HeirloomPoints);
+            character = await AssertDb.Characters
+                .Include(c => c.User)
+                .FirstAsync(c => c.Id == character.Id);
+            Assert.AreEqual(3, character.Generation);
+            Assert.AreEqual(1, character.Level);
+            Assert.AreEqual(0, character.Experience);
+            Assert.AreEqual(1.06f, character.ExperienceMultiplier);
+            Assert.AreEqual(2, character.User!.HeirloomPoints);
 
-            Assert.AreEqual(0, character.Entity.Statistics.Attributes.Points);
-            Assert.AreEqual(3, character.Entity.Statistics.Attributes.Strength);
-            Assert.AreEqual(3, character.Entity.Statistics.Attributes.Agility);
+            Assert.AreEqual(0, character.Statistics.Attributes.Points);
+            Assert.AreEqual(3, character.Statistics.Attributes.Strength);
+            Assert.AreEqual(3, character.Statistics.Attributes.Agility);
 
-            Assert.AreEqual(0, character.Entity.Statistics.Skills.Points);
-            Assert.AreEqual(0, character.Entity.Statistics.Skills.IronFlesh);
-            Assert.AreEqual(0, character.Entity.Statistics.Skills.PowerStrike);
-            Assert.AreEqual(0, character.Entity.Statistics.Skills.PowerDraw);
-            Assert.AreEqual(0, character.Entity.Statistics.Skills.PowerThrow);
-            Assert.AreEqual(0, character.Entity.Statistics.Skills.Athletics);
-            Assert.AreEqual(0, character.Entity.Statistics.Skills.Riding);
-            Assert.AreEqual(0, character.Entity.Statistics.Skills.WeaponMaster);
-            Assert.AreEqual(0, character.Entity.Statistics.Skills.HorseArchery);
-            Assert.AreEqual(0, character.Entity.Statistics.Skills.Shield);
+            Assert.AreEqual(0, character.Statistics.Skills.Points);
+            Assert.AreEqual(0, character.Statistics.Skills.IronFlesh);
+            Assert.AreEqual(0, character.Statistics.Skills.PowerStrike);
+            Assert.AreEqual(0, character.Statistics.Skills.PowerDraw);
+            Assert.AreEqual(0, character.Statistics.Skills.PowerThrow);
+            Assert.AreEqual(0, character.Statistics.Skills.Athletics);
+            Assert.AreEqual(0, character.Statistics.Skills.Riding);
+            Assert.AreEqual(0, character.Statistics.Skills.WeaponMaster);
+            Assert.AreEqual(0, character.Statistics.Skills.HorseArchery);
+            Assert.AreEqual(0, character.Statistics.Skills.Shield);
 
-            Assert.AreEqual(57, character.Entity.Statistics.WeaponProficiencies.Points);
-            Assert.AreEqual(0, character.Entity.Statistics.WeaponProficiencies.OneHanded);
-            Assert.AreEqual(0, character.Entity.Statistics.WeaponProficiencies.TwoHanded);
-            Assert.AreEqual(0, character.Entity.Statistics.WeaponProficiencies.Polearm);
-            Assert.AreEqual(0, character.Entity.Statistics.WeaponProficiencies.Bow);
-            Assert.AreEqual(0, character.Entity.Statistics.WeaponProficiencies.Throwing);
-            Assert.AreEqual(0, character.Entity.Statistics.WeaponProficiencies.Crossbow);
+            Assert.AreEqual(57, character.Statistics.WeaponProficiencies.Points);
+            Assert.AreEqual(0, character.Statistics.WeaponProficiencies.OneHanded);
+            Assert.AreEqual(0, character.Statistics.WeaponProficiencies.TwoHanded);
+            Assert.AreEqual(0, character.Statistics.WeaponProficiencies.Polearm);
+            Assert.AreEqual(0, character.Statistics.WeaponProficiencies.Bow);
+            Assert.AreEqual(0, character.Statistics.WeaponProficiencies.Throwing);
+            Assert.AreEqual(0, character.Statistics.WeaponProficiencies.Crossbow);
 
-            Assert.Null(character.Entity.Items.HeadItem);
-            Assert.Null(character.Entity.Items.CapeItem);
-            Assert.Null(character.Entity.Items.BodyItem);
-            Assert.Null(character.Entity.Items.HandItem);
-            Assert.Null(character.Entity.Items.LegItem);
-            Assert.Null(character.Entity.Items.HorseHarnessItem);
-            Assert.Null(character.Entity.Items.HorseItem);
-            Assert.Null(character.Entity.Items.Weapon1Item);
-            Assert.Null(character.Entity.Items.Weapon2Item);
-            Assert.Null(character.Entity.Items.Weapon3Item);
-            Assert.Null(character.Entity.Items.Weapon4Item);
+            Assert.Null(character.Items.HeadItemId);
+            Assert.Null(character.Items.CapeItemId);
+            Assert.Null(character.Items.BodyItemId);
+            Assert.Null(character.Items.HandItemId);
+            Assert.Null(character.Items.LegItemId);
+            Assert.Null(character.Items.HorseHarnessItemId);
+            Assert.Null(character.Items.HorseItemId);
+            Assert.Null(character.Items.Weapon1ItemId);
+            Assert.Null(character.Items.Weapon2ItemId);
+            Assert.Null(character.Items.Weapon3ItemId);
+            Assert.Null(character.Items.Weapon4ItemId);
         }
 
         [Test]
         public void NotFoundIfUserDoesntExist()
         {
-            Assert.ThrowsAsync<NotFoundException>(() => new RetireCharacterCommand.Handler(Db, Mapper).Handle(
+            Assert.ThrowsAsync<NotFoundException>(() => new RetireCharacterCommand.Handler(ActDb, Mapper).Handle(
                 new RetireCharacterCommand
                 {
                     CharacterId = 1,
@@ -134,10 +139,10 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task NotFoundIfCharacterDoesntExist()
         {
-            var user = Db.Users.Add(new User());
-            await Db.SaveChangesAsync();
+            var user = ArrangeDb.Users.Add(new User());
+            await ArrangeDb.SaveChangesAsync();
 
-            Assert.ThrowsAsync<NotFoundException>(() => new RetireCharacterCommand.Handler(Db, Mapper).Handle(
+            Assert.ThrowsAsync<NotFoundException>(() => new RetireCharacterCommand.Handler(ActDb, Mapper).Handle(
                 new RetireCharacterCommand
                 {
                     CharacterId = 1,
@@ -148,14 +153,14 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task BadRequestIfLevelTooLow()
         {
-            var character = Db.Characters.Add(new Character
+            var character = ArrangeDb.Characters.Add(new Character
             {
                 Level = 30,
                 User = new User(),
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            Assert.ThrowsAsync<BadRequestException>(() => new RetireCharacterCommand.Handler(Db, Mapper).Handle(
+            Assert.ThrowsAsync<BadRequestException>(() => new RetireCharacterCommand.Handler(ActDb, Mapper).Handle(
                 new RetireCharacterCommand
                 {
                     CharacterId = character.Entity.Id,

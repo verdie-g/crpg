@@ -163,11 +163,11 @@ namespace Crpg.Application.System.Commands
             {
                 if (dbItemsByMbId.TryGetValue(item.MbId, out Item? dbItem))
                 {
-                    // swap items in context
-                    item.Id = dbItem.Id;
+                    // replace item in context
                     _db.Entry(dbItem).State = EntityState.Detached;
-                    _db.Items.Attach(item);
-                    _db.Entry(item).State = EntityState.Modified;
+
+                    item.Id = dbItem.Id;
+                    _db.Items.Update(item);
                 }
                 else
                 {

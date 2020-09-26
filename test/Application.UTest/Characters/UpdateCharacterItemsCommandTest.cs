@@ -13,29 +13,29 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task FullUpdate()
         {
-            var headOld = Db.Items.Add(new Item { Type = ItemType.HeadArmor });
-            var headNew = Db.Items.Add(new Item { Type = ItemType.HeadArmor });
-            var capeOld = Db.Items.Add(new Item { Type = ItemType.Cape });
-            var capeNew = Db.Items.Add(new Item { Type = ItemType.Cape });
-            var bodyOld = Db.Items.Add(new Item { Type = ItemType.BodyArmor });
-            var bodyNew = Db.Items.Add(new Item { Type = ItemType.BodyArmor });
-            var handOld = Db.Items.Add(new Item { Type = ItemType.HandArmor });
-            var handNew = Db.Items.Add(new Item { Type = ItemType.HandArmor });
-            var legOld = Db.Items.Add(new Item { Type = ItemType.LegArmor });
-            var legNew = Db.Items.Add(new Item { Type = ItemType.LegArmor });
-            var horseHarnessOld = Db.Items.Add(new Item { Type = ItemType.HorseHarness });
-            var horseHarnessNew = Db.Items.Add(new Item { Type = ItemType.HorseHarness });
-            var horseOld = Db.Items.Add(new Item { Type = ItemType.Horse });
-            var horseNew = Db.Items.Add(new Item { Type = ItemType.Horse });
-            var weapon1Old = Db.Items.Add(new Item { Type = ItemType.Arrows });
-            var weapon1New = Db.Items.Add(new Item { Type = ItemType.Bolts });
-            var weapon2Old = Db.Items.Add(new Item { Type = ItemType.Bow });
-            var weapon2New = Db.Items.Add(new Item { Type = ItemType.Crossbow });
-            var weapon3Old = Db.Items.Add(new Item { Type = ItemType.Polearm });
-            var weapon3New = Db.Items.Add(new Item { Type = ItemType.Shield });
-            var weapon4Old = Db.Items.Add(new Item { Type = ItemType.OneHandedWeapon });
-            var weapon4New = Db.Items.Add(new Item { Type = ItemType.TwoHandedWeapon });
-            var character = Db.Characters.Add(new Character
+            var headOld = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
+            var headNew = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
+            var capeOld = ArrangeDb.Items.Add(new Item { Type = ItemType.Cape });
+            var capeNew = ArrangeDb.Items.Add(new Item { Type = ItemType.Cape });
+            var bodyOld = ArrangeDb.Items.Add(new Item { Type = ItemType.BodyArmor });
+            var bodyNew = ArrangeDb.Items.Add(new Item { Type = ItemType.BodyArmor });
+            var handOld = ArrangeDb.Items.Add(new Item { Type = ItemType.HandArmor });
+            var handNew = ArrangeDb.Items.Add(new Item { Type = ItemType.HandArmor });
+            var legOld = ArrangeDb.Items.Add(new Item { Type = ItemType.LegArmor });
+            var legNew = ArrangeDb.Items.Add(new Item { Type = ItemType.LegArmor });
+            var horseHarnessOld = ArrangeDb.Items.Add(new Item { Type = ItemType.HorseHarness });
+            var horseHarnessNew = ArrangeDb.Items.Add(new Item { Type = ItemType.HorseHarness });
+            var horseOld = ArrangeDb.Items.Add(new Item { Type = ItemType.Horse });
+            var horseNew = ArrangeDb.Items.Add(new Item { Type = ItemType.Horse });
+            var weapon1Old = ArrangeDb.Items.Add(new Item { Type = ItemType.Arrows });
+            var weapon1New = ArrangeDb.Items.Add(new Item { Type = ItemType.Bolts });
+            var weapon2Old = ArrangeDb.Items.Add(new Item { Type = ItemType.Bow });
+            var weapon2New = ArrangeDb.Items.Add(new Item { Type = ItemType.Crossbow });
+            var weapon3Old = ArrangeDb.Items.Add(new Item { Type = ItemType.Polearm });
+            var weapon3New = ArrangeDb.Items.Add(new Item { Type = ItemType.Shield });
+            var weapon4Old = ArrangeDb.Items.Add(new Item { Type = ItemType.OneHandedWeapon });
+            var weapon4New = ArrangeDb.Items.Add(new Item { Type = ItemType.TwoHandedWeapon });
+            var character = ArrangeDb.Characters.Add(new Character
             {
                 Name = "name",
                 Items = new CharacterItems
@@ -54,7 +54,7 @@ namespace Crpg.Application.UTest.Characters
                     AutoRepair = false,
                 },
             });
-            var user = Db.Users.Add(new User
+            var user = ArrangeDb.Users.Add(new User
             {
                 OwnedItems = new List<UserItem>
                 {
@@ -83,9 +83,9 @@ namespace Crpg.Application.UTest.Characters
                 },
                 Characters = new List<Character> { character.Entity }
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(Db, Mapper);
+            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -122,11 +122,11 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task PartialUpdate()
         {
-            var headOld = Db.Items.Add(new Item { Type = ItemType.HeadArmor });
-            var headNew = Db.Items.Add(new Item { Type = ItemType.HeadArmor });
-            var bodyNew = Db.Items.Add(new Item { Type = ItemType.BodyArmor });
-            var legOld = Db.Items.Add(new Item { Type = ItemType.LegArmor });
-            var character = Db.Characters.Add(new Character
+            var headOld = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
+            var headNew = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
+            var bodyNew = ArrangeDb.Items.Add(new Item { Type = ItemType.BodyArmor });
+            var legOld = ArrangeDb.Items.Add(new Item { Type = ItemType.LegArmor });
+            var character = ArrangeDb.Characters.Add(new Character
             {
                 Items = new CharacterItems
                 {
@@ -144,7 +144,7 @@ namespace Crpg.Application.UTest.Characters
                     AutoRepair = true,
                 },
             });
-            var user = Db.Users.Add(new User
+            var user = ArrangeDb.Users.Add(new User
             {
                 OwnedItems = new List<UserItem>
                 {
@@ -155,9 +155,9 @@ namespace Crpg.Application.UTest.Characters
                 },
                 Characters = new List<Character> { character.Entity }
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(Db, Mapper);
+            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -194,10 +194,10 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task CharacterNotFound()
         {
-            var user = Db.Users.Add(new User());
-            await Db.SaveChangesAsync();
+            var user = ArrangeDb.Users.Add(new User());
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(Db, Mapper);
+            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = 1,
@@ -210,11 +210,11 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task CharacterNotOwned()
         {
-            var character = Db.Characters.Add(new Character());
-            var user = Db.Users.Add(new User());
-            await Db.SaveChangesAsync();
+            var character = ArrangeDb.Characters.Add(new Character());
+            var user = ArrangeDb.Users.Add(new User());
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(Db, Mapper);
+            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -227,10 +227,10 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task UserNotFound()
         {
-            var character = Db.Characters.Add(new Character());
-            await Db.SaveChangesAsync();
+            var character = ArrangeDb.Characters.Add(new Character());
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(Db, Mapper);
+            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -243,14 +243,14 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ItemNotFound()
         {
-            var character = Db.Characters.Add(new Character());
-            var user = Db.Users.Add(new User
+            var character = ArrangeDb.Characters.Add(new Character());
+            var user = ArrangeDb.Users.Add(new User
             {
                 Characters = new List<Character> { character.Entity }
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(Db, Mapper);
+            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -264,15 +264,15 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ItemNotOwned()
         {
-            var head = Db.Items.Add(new Item { Type = ItemType.HeadArmor });
-            var character = Db.Characters.Add(new Character());
-            var user = Db.Users.Add(new User
+            var head = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
+            var character = ArrangeDb.Characters.Add(new Character());
+            var user = ArrangeDb.Users.Add(new User
             {
                 Characters = new List<Character> { character.Entity }
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(Db, Mapper);
+            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -286,16 +286,16 @@ namespace Crpg.Application.UTest.Characters
         [Theory]
         public async Task WrongItemType(ItemType itemType)
         {
-            var head = Db.Items.Add(new Item { Type = ItemType.HeadArmor });
-            var cape = Db.Items.Add(new Item { Type = ItemType.Cape });
-            var body = Db.Items.Add(new Item { Type = ItemType.BodyArmor });
-            var hand = Db.Items.Add(new Item { Type = ItemType.HandArmor });
-            var leg = Db.Items.Add(new Item { Type = ItemType.LegArmor });
-            var horseHarness = Db.Items.Add(new Item { Type = ItemType.HorseHarness });
-            var horse = Db.Items.Add(new Item { Type = ItemType.Horse });
-            var weapon = Db.Items.Add(new Item { Type = ItemType.OneHandedWeapon });
-            var character = Db.Characters.Add(new Character());
-            var user = Db.Users.Add(new User
+            var head = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
+            var cape = ArrangeDb.Items.Add(new Item { Type = ItemType.Cape });
+            var body = ArrangeDb.Items.Add(new Item { Type = ItemType.BodyArmor });
+            var hand = ArrangeDb.Items.Add(new Item { Type = ItemType.HandArmor });
+            var leg = ArrangeDb.Items.Add(new Item { Type = ItemType.LegArmor });
+            var horseHarness = ArrangeDb.Items.Add(new Item { Type = ItemType.HorseHarness });
+            var horse = ArrangeDb.Items.Add(new Item { Type = ItemType.Horse });
+            var weapon = ArrangeDb.Items.Add(new Item { Type = ItemType.OneHandedWeapon });
+            var character = ArrangeDb.Characters.Add(new Character());
+            var user = ArrangeDb.Users.Add(new User
             {
                 OwnedItems = new List<UserItem>
                 {
@@ -310,9 +310,9 @@ namespace Crpg.Application.UTest.Characters
                 },
                 Characters = new List<Character> { character.Entity }
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(Db, Mapper);
+            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Entity.Id,

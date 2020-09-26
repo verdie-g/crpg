@@ -26,10 +26,10 @@ namespace Crpg.Application.UTest.System
                     new ItemCreation { MbId = "b", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() },
                 });
 
-            var seedDataCommandHandler = new SeedDataCommand.Handler(Db, itemsSource.Object, CreateAppEnv(), new ItemModifierService());
+            var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(), new ItemModifierService());
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
 
-            var items = await Db.Items.ToArrayAsync();
+            var items = await AssertDb.Items.ToArrayAsync();
             Assert.AreEqual(7 * 2, items.Length);
 
             var baseItem1 = items.First(i => i.MbId == "a" && i.Rank == 0);
@@ -51,39 +51,41 @@ namespace Crpg.Application.UTest.System
                 .ReturnsAsync(new[] { new ItemCreation { MbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() } })
                 .ReturnsAsync(Array.Empty<ItemCreation>());
 
-            var seedDataCommandHandler = new SeedDataCommand.Handler(Db, itemsSource.Object, CreateAppEnv(), new ItemModifierService());
+            var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(), new ItemModifierService());
 
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
-            var items = await Db.Items.ToArrayAsync();
+            var items = await ArrangeDb.Items.ToArrayAsync();
             Assert.AreEqual(7, items.Length);
 
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
-            items = await Db.Items.ToArrayAsync();
+            items = await ArrangeDb.Items.ToArrayAsync();
             Assert.AreEqual(0, items.Length);
         }
 
         [Test]
         public async Task ModifiedItemInSourceShouldBeModifiedInDatabase()
         {
+            var oldItems = new[]
+            {
+                new Item { MbId = "damaged_a", Type = ItemType.HeadArmor, Rank = -3, Armor = new ItemArmorComponent { ArmArmor = 80 } },
+                new Item { MbId = "battered_a", Type = ItemType.HeadArmor, Rank = -2, Armor = new ItemArmorComponent { ArmArmor = 90 } },
+                new Item { MbId = "rusty_a", Type = ItemType.HeadArmor, Rank = -1, Armor = new ItemArmorComponent { ArmArmor = 95 } },
+                new Item { MbId = "a", Type = ItemType.HeadArmor, Rank = 0, Armor = new ItemArmorComponent { ArmArmor = 100 } },
+                new Item { MbId = "thick_a", Type = ItemType.HeadArmor, Rank = 1, Armor = new ItemArmorComponent { ArmArmor = 105 } },
+                new Item { MbId = "reinforced_a", Type = ItemType.HeadArmor, Rank = 2, Armor = new ItemArmorComponent { ArmArmor = 107 } },
+                new Item { MbId = "lordly_a", Type = ItemType.HeadArmor, Rank = 3, Armor = new ItemArmorComponent { ArmArmor = 109 } },
+            };
+            ArrangeDb.Items.AddRange(oldItems);
+            await ArrangeDb.SaveChangesAsync();
+
             var itemsSource = new Mock<IItemsSource>();
-            itemsSource.SetupSequence(s => s.LoadItems())
-                .ReturnsAsync(new[] { new ItemCreation { MbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel { ArmArmor = 100 } } })
+            itemsSource.Setup(s => s.LoadItems())
                 .ReturnsAsync(new[] { new ItemCreation { MbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel { ArmArmor = 1000 } } });
 
-            var seedDataCommandHandler = new SeedDataCommand.Handler(Db, itemsSource.Object, CreateAppEnv(), new ItemModifierService());
-
+            var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(), new ItemModifierService());
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
-            var oldItems = await Db.Items.ToArrayAsync();
-            Assert.AreEqual(7, oldItems.Length);
-            foreach (var item in oldItems)
-            {
-                Assert.Greater(item.Armor!.ArmArmor, 50);
-                Assert.Less(item.Armor!.ArmArmor, 150);
-            }
-
-            await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
-            var newItems = await Db.Items.ToArrayAsync();
-            Assert.AreEqual(7, newItems.Length);
+            var newItems = await AssertDb.Items.ToArrayAsync();
+            Assert.AreEqual(7, newItems.Length, "Modifying an item added or removed one");
             foreach (var item in newItems)
             {
                 Assert.Greater(item.Armor!.ArmArmor, 500);

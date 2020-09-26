@@ -15,18 +15,18 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task Basic()
         {
-            var user = Db.Users.Add(new User { Gold = 100 });
-            var item = Db.Items.Add(new Item { Value = 100 });
-            await Db.SaveChangesAsync();
+            var user = ArrangeDb.Users.Add(new User { Gold = 100 });
+            var item = ArrangeDb.Items.Add(new Item { Value = 100 });
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(Db, Mapper);
+            var handler = new BuyItemCommand.Handler(ActDb, Mapper);
             var boughtItem = await handler.Handle(new BuyItemCommand
             {
                 ItemId = item.Entity.Id,
                 UserId = user.Entity.Id,
             }, CancellationToken.None);
 
-            var userDb = await Db.Users
+            var userDb = await AssertDb.Users
                 .Include(u => u.OwnedItems)
                 .FirstAsync(u => u.Id == user.Entity.Id);
 
@@ -38,10 +38,10 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task NotFoundItem()
         {
-            var user = Db.Users.Add(new User { Gold = 100 });
-            await Db.SaveChangesAsync();
+            var user = ArrangeDb.Users.Add(new User { Gold = 100 });
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(Db, Mapper);
+            var handler = new BuyItemCommand.Handler(ActDb, Mapper);
             Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new BuyItemCommand
             {
                 ItemId = 1,
@@ -52,10 +52,10 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task NotFoundUser()
         {
-            var item = Db.Items.Add(new Item { Value = 100 });
-            await Db.SaveChangesAsync();
+            var item = ArrangeDb.Items.Add(new Item { Value = 100 });
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(Db, Mapper);
+            var handler = new BuyItemCommand.Handler(ActDb, Mapper);
             Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new BuyItemCommand
             {
                 ItemId = item.Entity.Id,
@@ -66,11 +66,11 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task NotEnoughGold()
         {
-            var user = Db.Users.Add(new User { Gold = 100 });
-            var item = Db.Items.Add(new Item { Value = 101 });
-            await Db.SaveChangesAsync();
+            var user = ArrangeDb.Users.Add(new User { Gold = 100 });
+            var item = ArrangeDb.Items.Add(new Item { Value = 101 });
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(Db, Mapper);
+            var handler = new BuyItemCommand.Handler(ActDb, Mapper);
             Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new BuyItemCommand
             {
                 ItemId = item.Entity.Id,
@@ -81,15 +81,15 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task AlreadyOwningItem()
         {
-            var item = Db.Items.Add(new Item { Value = 100 });
-            var user = Db.Users.Add(new User
+            var item = ArrangeDb.Items.Add(new Item { Value = 100 });
+            var user = ArrangeDb.Users.Add(new User
             {
                 Gold = 100,
                 OwnedItems = new List<UserItem> { new UserItem { ItemId = item.Entity.Id } }
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(Db, Mapper);
+            var handler = new BuyItemCommand.Handler(ActDb, Mapper);
             Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new BuyItemCommand
             {
                 ItemId = item.Entity.Id,

@@ -17,35 +17,35 @@ namespace Crpg.Application.UTest.Users
         [Test]
         public async Task DeleteExistingUser()
         {
-            var user = Db.Users.Add(new User
+            var user = ArrangeDb.Users.Add(new User
             {
                 Characters = new List<Character> { new Character() },
                 OwnedItems = new List<UserItem> { new UserItem { Item = new Item() } },
                 Bans = new List<Ban> { new Ban() }
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
             // needs to be saved before UserItems[0] gets deleted
             int itemId = user.Entity.OwnedItems[0].ItemId;
 
-            await new DeleteUserCommand.Handler(Db, Mock.Of<IEventRaiser>()).Handle(new DeleteUserCommand
+            await new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventRaiser>()).Handle(new DeleteUserCommand
             {
                 UserId = user.Entity.Id
             }, CancellationToken.None);
 
-            Assert.ThrowsAsync<InvalidOperationException>(() => Db.Characters.FirstAsync(c => c.Id == user.Entity.Characters[0].Id));
-            Assert.ThrowsAsync<InvalidOperationException>(() => Db.UserItems.FirstAsync(oi =>
+            Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.Characters.FirstAsync(c => c.Id == user.Entity.Characters[0].Id));
+            Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.UserItems.FirstAsync(oi =>
                 oi.UserId == user.Entity.Id && oi.ItemId == user.Entity.OwnedItems[0].ItemId));
-            Assert.DoesNotThrowAsync(() => Db.Users.FirstAsync(u => u.Id == user.Entity.Id));
-            Assert.DoesNotThrowAsync(() => Db.Items.FirstAsync(i => i.Id == itemId));
-            Assert.DoesNotThrowAsync(() => Db.Bans.FirstAsync(b => b.BannedUserId == user.Entity.Id));
+            Assert.DoesNotThrowAsync(() => AssertDb.Users.FirstAsync(u => u.Id == user.Entity.Id));
+            Assert.DoesNotThrowAsync(() => AssertDb.Items.FirstAsync(i => i.Id == itemId));
+            Assert.DoesNotThrowAsync(() => AssertDb.Bans.FirstAsync(b => b.BannedUserId == user.Entity.Id));
         }
 
         [Test]
         public void DeleteNonExistingUser()
         {
             Assert.ThrowsAsync<NotFoundException>(() =>
-                new DeleteUserCommand.Handler(Db, Mock.Of<IEventRaiser>()).Handle(new DeleteUserCommand { UserId = 1 }, CancellationToken.None));
+                new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventRaiser>()).Handle(new DeleteUserCommand { UserId = 1 }, CancellationToken.None));
         }
     }
 }

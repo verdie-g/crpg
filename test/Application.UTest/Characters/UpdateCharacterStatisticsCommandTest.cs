@@ -47,10 +47,10 @@ namespace Crpg.Application.UTest.Characters
                     },
                 },
             };
-            Db.Add(character);
-            await Db.SaveChangesAsync();
+            ArrangeDb.Add(character);
+            await ArrangeDb.SaveChangesAsync();
 
-            var stats = await new UpdateCharacterStatisticsCommand.Handler(Db, Mapper).Handle(
+            var stats = await new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper).Handle(
                 new UpdateCharacterStatisticsCommand
                 {
                     UserId = character.UserId,
@@ -111,7 +111,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task IncreaseAgilityShouldIncreaseWeaponProficienciesPoints()
         {
-            var character = Db.Add(new Character
+            var character = ArrangeDb.Add(new Character
             {
                 Statistics = new CharacterStatistics
                 {
@@ -119,9 +119,9 @@ namespace Crpg.Application.UTest.Characters
                     WeaponProficiencies = new CharacterWeaponProficiencies { Points = 96 },
                 },
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterStatisticsCommand.Handler(Db, Mapper);
+            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
 
             var stats = await handler.Handle(new UpdateCharacterStatisticsCommand
             {
@@ -155,7 +155,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task IncreaseWeaponMasterShouldIncreaseWeaponProficienciesPoints()
         {
-            var character = Db.Add(new Character
+            var character = ArrangeDb.Add(new Character
             {
                 Statistics = new CharacterStatistics
                 {
@@ -164,9 +164,9 @@ namespace Crpg.Application.UTest.Characters
                     WeaponProficiencies = new CharacterWeaponProficiencies { Points = 354 },
                 },
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterStatisticsCommand.Handler(Db, Mapper);
+            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
 
             var stats = await handler.Handle(new UpdateCharacterStatisticsCommand
             {
@@ -210,8 +210,8 @@ namespace Crpg.Application.UTest.Characters
                     Skills = new CharacterSkills { Points = 100 },
                 }
             };
-            Db.Add(character);
-            await Db.SaveChangesAsync();
+            ArrangeDb.Add(character);
+            await ArrangeDb.SaveChangesAsync();
 
             var statsObjects = new[]
             {
@@ -262,7 +262,7 @@ namespace Crpg.Application.UTest.Characters
                 },
             };
 
-            var handler = new UpdateCharacterStatisticsCommand.Handler(Db, Mapper);
+            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
             foreach (var statObject in statsObjects)
             {
                 Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
@@ -278,8 +278,8 @@ namespace Crpg.Application.UTest.Characters
         public async Task ShouldntUpdateIfNotEnoughPoints()
         {
             var character = new Character();
-            Db.Add(character);
-            await Db.SaveChangesAsync();
+            ArrangeDb.Add(character);
+            await ArrangeDb.SaveChangesAsync();
 
             var statsObjects = new[]
             {
@@ -302,7 +302,7 @@ namespace Crpg.Application.UTest.Characters
                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = 1 } },
             };
 
-            var handler = new UpdateCharacterStatisticsCommand.Handler(Db, Mapper);
+            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
             foreach (var statObject in statsObjects)
             {
                 Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
@@ -326,8 +326,8 @@ namespace Crpg.Application.UTest.Characters
                     WeaponProficiencies = new CharacterWeaponProficiencies { Points = 1000 },
                 }
             };
-            Db.Add(character);
-            await Db.SaveChangesAsync();
+            ArrangeDb.Add(character);
+            await ArrangeDb.SaveChangesAsync();
 
             var statsObjects = new[]
             {
@@ -350,7 +350,7 @@ namespace Crpg.Application.UTest.Characters
                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = -1 } },
             };
 
-            var handler = new UpdateCharacterStatisticsCommand.Handler(Db, Mapper);
+            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
             foreach (var statObject in statsObjects)
             {
                 Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
@@ -374,8 +374,8 @@ namespace Crpg.Application.UTest.Characters
                      WeaponProficiencies = new CharacterWeaponProficiencies { Points = 0 },
                  }
              };
-             Db.Add(character);
-             await Db.SaveChangesAsync();
+             ArrangeDb.Add(character);
+             await ArrangeDb.SaveChangesAsync();
 
              var statsObjects = new[]
              {
@@ -398,7 +398,7 @@ namespace Crpg.Application.UTest.Characters
                  new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = 1 } },
              };
 
-             var handler = new UpdateCharacterStatisticsCommand.Handler(Db, Mapper);
+             var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
              foreach (var statObject in statsObjects)
              {
                  Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
@@ -413,10 +413,10 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldThrowNotFoundIfCharacterNotFound()
         {
-             var user = Db.Add(new User());
-             await Db.SaveChangesAsync();
+             var user = ArrangeDb.Add(new User());
+             await ArrangeDb.SaveChangesAsync();
 
-             var handler = new UpdateCharacterStatisticsCommand.Handler(Db, Mapper);
+             var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
              Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
              {
                  UserId = user.Entity.Id,
@@ -428,7 +428,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public void ShouldThrowNotFoundIfUserNotFound()
         {
-             var handler = new UpdateCharacterStatisticsCommand.Handler(Db, Mapper);
+             var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
              Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
              {
                  UserId = 1,

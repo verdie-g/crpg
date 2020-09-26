@@ -12,34 +12,34 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task WhenCharacterExists()
         {
-            var e = Db.Characters.Add(new Character
+            var e = ArrangeDb.Characters.Add(new Character
             {
                 Name = "sword",
                 UserId = 1,
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new DeleteCharacterCommand.Handler(Db);
+            var handler = new DeleteCharacterCommand.Handler(ActDb);
             await handler.Handle(new DeleteCharacterCommand
             {
                 CharacterId = e.Entity.Id,
                 UserId = e.Entity.UserId,
             }, CancellationToken.None);
 
-            Assert.IsNull(await Db.Characters.FindAsync(e.Entity.Id));
+            Assert.IsNull(await AssertDb.Characters.FindAsync(e.Entity.Id));
         }
 
         [Test]
         public async Task WhenCharacterExistsButNotOwnedByUser()
         {
-            var e = Db.Characters.Add(new Character
+            var e = ArrangeDb.Characters.Add(new Character
             {
                 Name = "sword",
                 UserId = 2,
             });
-            await Db.SaveChangesAsync();
+            await ArrangeDb.SaveChangesAsync();
 
-            var handler = new DeleteCharacterCommand.Handler(Db);
+            var handler = new DeleteCharacterCommand.Handler(ActDb);
             Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new DeleteCharacterCommand
             {
                 CharacterId = e.Entity.Id,
@@ -50,7 +50,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public void WhenCharacterDoesntExist()
         {
-            var handler = new DeleteCharacterCommand.Handler(Db);
+            var handler = new DeleteCharacterCommand.Handler(ActDb);
             Assert.ThrowsAsync<NotFoundException>(() =>
                 handler.Handle(request: new DeleteCharacterCommand { CharacterId = 1 }, CancellationToken.None));
         }

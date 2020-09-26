@@ -219,9 +219,9 @@ namespace Crpg.Application.Games.Commands
                 }
 
                 var users = await _db.Users
-                    .AsExpandable()
                     .Include(u => u.Characters).ThenInclude(c => c.Items.HeadItem)
                     .Include(u => u.Characters).ThenInclude(c => c.Items.BodyItem)
+                    .Include(u => u.Characters).ThenInclude(c => c.Items.CapeItem)
                     .Include(u => u.Characters).ThenInclude(c => c.Items.HandItem)
                     .Include(u => u.Characters).ThenInclude(c => c.Items.LegItem)
                     .Include(u => u.Characters).ThenInclude(c => c.Items.HorseHarnessItem)
@@ -231,6 +231,7 @@ namespace Crpg.Application.Games.Commands
                     .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon3Item)
                     .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon4Item)
                     .Include(u => u.Bans) // could be filtered https://github.com/dotnet/efcore/issues/1833#issuecomment-603543685
+                    .AsExpandable()
                     .Where(u => userSteamIds.Contains(u.SteamId))
                     .Select(u => new Tuple<User, Character>(u, u.Characters.FirstOrDefault(characterPredicateExpr.Compile())))
                     .ToDictionaryAsync(p => p.Item1.SteamId, ElemSelector, cancellationToken);

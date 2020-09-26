@@ -42,21 +42,27 @@ namespace Crpg.Application.Bans.Commands
 
             public async Task<BanViewModel> Handle(BanCommand request, CancellationToken cancellationToken)
             {
-                var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == request.BannedUserId, cancellationToken);
-                if (user == null)
+                var bannedUser = await _db.Users.FirstOrDefaultAsync(u => u.Id == request.BannedUserId, cancellationToken);
+                if (bannedUser == null)
                 {
                     throw new NotFoundException(nameof(User), request.BannedUserId);
                 }
 
+                var banningUser = await _db.Users.FirstOrDefaultAsync(u => u.Id == request.BannedByUserId, cancellationToken);
+                if (banningUser == null)
+                {
+                    throw new NotFoundException(nameof(User), request.BannedByUserId);
+                }
+
                 var ban = new Ban
                 {
-                    BannedUser = user,
-                    BannedByUserId = request.BannedByUserId,
+                    BannedUser = bannedUser,
+                    BannedByUser = banningUser,
                     Duration = request.Duration,
                     Reason = request.Reason,
                 };
 
-                user.Bans.Add(ban);
+                bannedUser.Bans.Add(ban);
                 await _db.SaveChangesAsync(cancellationToken);
                 return _mapper.Map<BanViewModel>(ban);
             }

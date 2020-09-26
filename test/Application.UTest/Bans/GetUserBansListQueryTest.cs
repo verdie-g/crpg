@@ -21,10 +21,10 @@ namespace Crpg.Application.UTest.Bans
                     new Ban { BannedByUser = new User { SteamId = 456 } },
                 }
             };
-            Db.Users.Add(user);
-            await Db.SaveChangesAsync();
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
 
-            var bans = await new GetUserBansListQuery.Handler(Db, Mapper).Handle(
+            var bans = await new GetUserBansListQuery.Handler(ActDb, Mapper).Handle(
                 new GetUserBansListQuery { UserId = user.Id }, CancellationToken.None);
             Assert.AreEqual(2, bans.Count);
             Assert.AreEqual(123, bans[0].BannedByUser!.SteamId);
@@ -34,7 +34,7 @@ namespace Crpg.Application.UTest.Bans
         [Test]
         public void NotFoundUser()
         {
-            var handler = new GetUserBansListQuery.Handler(Db, Mapper);
+            var handler = new GetUserBansListQuery.Handler(ActDb, Mapper);
             Assert.ThrowsAsync<NotFoundException>(() =>
                 handler.Handle(new GetUserBansListQuery { UserId = 1 }, CancellationToken.None));
         }

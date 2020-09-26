@@ -20,10 +20,10 @@ namespace Crpg.Application.UTest.Bans
                 new Ban { BannedUser = user1, BannedByUser = user2 },
                 new Ban { BannedUser = user2, BannedByUser = user1 },
             };
-            Db.Bans.AddRange(bans);
-            await Db.SaveChangesAsync();
+            ArrangeDb.Bans.AddRange(bans);
+            await ArrangeDb.SaveChangesAsync();
 
-            var dbBans = await new GetBansListQuery.Handler(Db, Mapper).Handle(
+            var dbBans = await new GetBansListQuery.Handler(ActDb, Mapper).Handle(
                 new GetBansListQuery(), CancellationToken.None);
             Assert.AreEqual(2, dbBans.Count);
         }
