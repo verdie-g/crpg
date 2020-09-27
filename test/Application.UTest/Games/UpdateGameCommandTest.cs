@@ -94,6 +94,35 @@ namespace Crpg.Application.UTest.Games
         }
 
         [Test]
+        public void ShouldntHaveConflictWhenTwoCreatedCharacterUseTheSameItemsSet()
+        {
+            // Make sure to always give the same item set to the character
+            var randomMock = new Mock<IRandom>();
+            randomMock.Setup(r => r.Next(It.IsAny<int>())).Returns(1);
+
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+                new MachineDateTimeOffset(), randomMock.Object);
+
+            Assert.DoesNotThrowAsync(() =>
+                handler.Handle(new UpdateGameCommand
+                {
+                    GameUserUpdates = new[]
+                    {
+                        new GameUserUpdate
+                        {
+                            PlatformId = "1",
+                            CharacterName = "a",
+                        },
+                        new GameUserUpdate
+                        {
+                            PlatformId = "2",
+                            CharacterName = "b",
+                        },
+                    }
+                }, CancellationToken.None));
+        }
+
+        [Test]
         public async Task ShouldCreateCharacterIfDoesntExist()
         {
             var user = new User { PlatformId = "1", Gold = 1000 };
@@ -144,6 +173,46 @@ namespace Crpg.Application.UTest.Games
             Assert.IsNotEmpty(user.Characters);
             Assert.IsNotNull(user.Characters[0].Items.BodyItemId);
             Assert.NotZero(user.Characters[0].Statistics.Attributes.Agility);
+        }
+
+        [Test]
+        public async Task ShouldNotAddUserItemWhenCreatingCharacterIfItemIsAlreadyOwned()
+        {
+            var user = new User
+            {
+                PlatformId = "1",
+                Gold = 1000,
+                OwnedItems = new List<UserItem>
+                {
+                    // Already owned item
+                    new UserItem { ItemId = ArrangeDb.Items.First(i => i.MbId == UpdateGameCommand.Handler.DefaultItemSets[1].HeadItem!.MbId).Id },
+                }
+            };
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
+
+            // Make sure to always give the same item set to the character
+            var randomMock = new Mock<IRandom>();
+            randomMock.Setup(r => r.Next(It.IsAny<int>())).Returns(1);
+
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+                new MachineDateTimeOffset(), randomMock.Object);
+
+            // Handle shouldn't throw
+            var res = await handler.Handle(new UpdateGameCommand
+            {
+                GameUserUpdates = new[]
+                {
+                    new GameUserUpdate
+                    {
+                        PlatformId = user.PlatformId,
+                        CharacterName = "a",
+                    },
+                }
+            }, CancellationToken.None);
+
+            var userItems = await AssertDb.UserItems.Where(ui => ui.UserId == user.Id).ToArrayAsync();
+            Assert.AreEqual(5, userItems.Length);
         }
 
         [Test]

@@ -126,12 +126,20 @@ namespace Crpg.Application.Games.Commands
                 }
 
                 var res = new List<GameUser>();
+                var newCharacters = new List<Character>();
                 var brokenItemsWithUser = new List<(int, GameUserBrokenItem[])>();
                 Dictionary<string, User> users = await GetOrCreateUsers(cmd.GameUserUpdates, cancellationToken);
                 foreach (GameUserUpdate update in cmd.GameUserUpdates)
                 {
                     User user = users[update.PlatformId];
-                    Character character = user.Characters.FirstOrDefault() ?? CreateCharacterForUser(user, update.CharacterName);
+                    Character? character = user.Characters.FirstOrDefault();
+                    if (character == null)
+                    {
+                        character = CreateCharacter(update.CharacterName);
+                        character.User = user;
+                        _db.Characters.Add(character);
+                        newCharacters.Add(character);
+                    }
 
                     if (update.Reward != null)
                     {
@@ -156,6 +164,7 @@ namespace Crpg.Application.Games.Commands
                     });
                 }
 
+                await AddNewCharacterItemsToUsers(newCharacters);
                 await ReplaceBrokenItems(brokenItemsWithUser, cancellationToken);
                 await _db.SaveChangesAsync(cancellationToken);
                 return new UpdateGameResult { Users = res };
@@ -250,7 +259,6 @@ namespace Crpg.Application.Games.Commands
                     }
 
                     var user = CreateUser(update.PlatformId, update.CharacterName);
-
                     users[user.PlatformId] = user;
                     _events.Raise(EventLevel.Info, $"{update.CharacterName} joined ({update.PlatformId})", string.Empty, "user_created");
                 }
@@ -258,30 +266,11 @@ namespace Crpg.Application.Games.Commands
                 return users;
             }
 
-            private User CreateUser(string platformId, string characterName)
+            private User CreateUser(string platformId, string name)
             {
-                var user = new User { PlatformId = platformId };
+                var user = new User { PlatformId = platformId, Name = name };
                 UserHelper.SetDefaultValuesForUser(user);
-                CreateCharacterForUser(user, characterName);
                 return user;
-            }
-
-            private Character CreateCharacterForUser(User user, string characterName)
-            {
-                var character = CreateCharacter(characterName);
-                character.User = user;
-                _db.Characters.Add(character);
-
-                foreach (var (_, item) in character.Items.ItemSlotPairs())
-                {
-                    // Add character items to user inventory
-                    user.OwnedItems.Add(new UserItem { ItemId = item.Id });
-
-                    // Detach character items to avoid adding them when they already exist (dirty hack)
-                    _db.Entry(item).State = EntityState.Detached;
-                }
-
-                return character;
             }
 
             private Character CreateCharacter(string name)
@@ -293,11 +282,59 @@ namespace Crpg.Application.Games.Commands
                     Level = CharacterHelper.DefaultLevel,
                     Experience = CharacterHelper.DefaultExperience,
                     ExperienceMultiplier = CharacterHelper.DefaultExperienceMultiplier,
-                    Items = DefaultItemSets[_random.Next(DefaultItemSets.Length - 1)],
+                    Items = (CharacterItems)DefaultItemSets[_random.Next(DefaultItemSets.Length - 1)].Clone(),
                 };
                 CharacterHelper.ResetCharacterStats(character);
 
                 return character;
+            }
+
+            private async Task AddNewCharacterItemsToUsers(List<Character> newCharacters)
+            {
+                if (newCharacters.Count == 0)
+                {
+                    return;
+                }
+
+                int[] userIds = newCharacters.Select(c => c.UserId).ToArray();
+                var userItems = await GetUserItems(userIds); // mapping item -> users owning that item
+
+                foreach (var newCharacter in newCharacters)
+                {
+                    foreach (var (_, item) in newCharacter.Items.ItemSlotPairs())
+                    {
+                        if (!userItems.TryGetValue(item.Id, out var itemOwnerIds)
+                            || !itemOwnerIds.Contains(newCharacter.User!.Id))
+                        {
+                            // Add character items to user inventory if they don't already own it
+                            newCharacter.User!.OwnedItems.Add(new UserItem { ItemId = item.Id });
+                        }
+
+                        // Detach character items to avoid adding them when they already exist (dirty hack)
+                        _db.Entry(item).State = EntityState.Detached;
+                    }
+                }
+            }
+
+            private async Task<Dictionary<int, List<int>>> GetUserItems(int[] userIds)
+            {
+                var userItems = new Dictionary<int, List<int>>();
+                await foreach (var userItem in _db.UserItems
+                    .AsNoTracking()
+                    .Where(ui => userIds.Contains(ui.UserId))
+                    .AsAsyncEnumerable())
+                {
+                    if (userItems.ContainsKey(userItem.ItemId))
+                    {
+                        userItems[userItem.ItemId].Add(userItem.UserId);
+                    }
+                    else
+                    {
+                        userItems[userItem.ItemId] = new List<int> { userItem.UserId };
+                    }
+                }
+
+                return userItems;
             }
 
             private async Task ReplaceBrokenItems(List<(int userId, GameUserBrokenItem[] brokenItems)> brokenItemsWithUser,

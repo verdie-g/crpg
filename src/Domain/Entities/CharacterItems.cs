@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 
 namespace Crpg.Domain.Entities
 {
-    public class CharacterItems
+    public class CharacterItems : ICloneable
     {
         public int? HeadItemId { get; set; }
         public int? CapeItemId { get; set; }
@@ -85,6 +86,36 @@ namespace Crpg.Domain.Entities
             {
                 yield return (ItemSlot.Weapon4, Weapon4Item);
             }
+        }
+
+        public object Clone()
+        {
+            return new CharacterItems
+            {
+                HeadItemId = HeadItemId,
+                CapeItemId = CapeItemId,
+                BodyItemId = BodyItemId,
+                HandItemId = HandItemId,
+                LegItemId = LegItemId,
+                HorseHarnessItemId = HorseHarnessItemId,
+                HorseItemId = HorseItemId,
+                Weapon1ItemId = Weapon1ItemId,
+                Weapon2ItemId = Weapon2ItemId,
+                Weapon3ItemId = Weapon3ItemId,
+                Weapon4ItemId = Weapon4ItemId,
+                AutoRepair = AutoRepair,
+                HeadItem = HeadItem,
+                CapeItem = CapeItem,
+                BodyItem = BodyItem,
+                HandItem = HandItem,
+                LegItem = LegItem,
+                HorseHarnessItem = HorseHarnessItem,
+                HorseItem = HorseItem,
+                Weapon1Item = Weapon1Item,
+                Weapon2Item = Weapon2Item,
+                Weapon3Item = Weapon3Item,
+                Weapon4Item = Weapon4Item,
+            };
         }
     }
 }
