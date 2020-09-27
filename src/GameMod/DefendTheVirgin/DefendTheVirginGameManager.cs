@@ -145,9 +145,9 @@ namespace Crpg.GameMod.DefendTheVirgin
                                 waveGroup.Count = int.Parse(attribute.Value);
                                 break;
                         }
-
-                        wave.Groups.Add(waveGroup);
                     }
+
+                    wave.Groups.Add(waveGroup);
                 }
 
                 waves.Add(wave);

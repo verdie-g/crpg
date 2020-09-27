@@ -40,7 +40,11 @@ namespace Crpg.GameMod.DefendTheVirgin
                 Formation formation = Mission.GetAgentTeam(agentOrigin, false).GetFormation(FormationClass.Infantry);
                 formation.BeginSpawn(group.Count, false);
                 Mission.Current.SpawnFormation(formation, group.Count, false, false, false);
-                Mission.Current.SpawnTroop(agentOrigin, false, true, false, false, true, group.Count, 0, true, true);
+                for (int i = 0; i < group.Count; i += 1)
+                {
+                    Mission.Current.SpawnTroop(agentOrigin, false, true, false, false, true, group.Count, i, true, true);
+                }
+
                 formation.EndSpawn();
             }
         }
