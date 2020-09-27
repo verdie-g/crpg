@@ -11,9 +11,9 @@
         <CodeAnalysisRuleSet>../stylecop.ruleset</CodeAnalysisRuleSet>
         <LangVersion>latest</LangVersion>
 
-        <!-- Avoid generating pdb -->
-        <DebugSymbols>false</DebugSymbols>
-        <DebugType>None</DebugType>
+        <!-- Avoid generating pdb in release configuration -->
+        <DebugSymbols Condition="'$(Configuration)' == 'Release'">false</DebugSymbols>
+        <DebugType Condition="'$(Configuration)' == 'Release'">None</DebugType>
 
         <!-- Enable C# 8 nullable and treat its warnings as errors -->
         <Nullable>enable</Nullable>
