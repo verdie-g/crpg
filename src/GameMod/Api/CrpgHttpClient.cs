@@ -5,8 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.GameMod.Api.Requests;
-using Crpg.GameMod.Api.Responses;
+using Crpg.GameMod.Api.Models;
 using Newtonsoft.Json;
 
 namespace Crpg.GameMod.Api
@@ -14,25 +13,20 @@ namespace Crpg.GameMod.Api
     /// <summary>
     /// Client for Crpg.WebApi.Controllers.GamesController.
     /// </summary>
-    internal class CrpgClient : ICrpgClient
+    internal class CrpgHttpClient : ICrpgClient
     {
         private readonly HttpClient _httpClient;
 
-        public CrpgClient(string jwt)
+        public CrpgHttpClient(string jwt)
         {
-            _httpClient = new HttpClient { BaseAddress = new Uri("http://localhost:8000/games/") };
+            _httpClient = new HttpClient { BaseAddress = new Uri("https://api.c-rpg.eu/games/") };
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
             _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + jwt);
         }
 
-        public Task<GameUser> GetOrCreateUser(GetUserRequest req, CancellationToken cancellationToken = default)
+        public Task<CrpgGameUpdateResponse> Update(CrpgGameUpdateRequest req, CancellationToken cancellationToken = default)
         {
-            return Put<GetUserRequest, GameUser>("users", req, cancellationToken);
-        }
-
-        public Task<RewardResponse> Reward(RewardRequest req, CancellationToken cancellationToken = default)
-        {
-            return Post<RewardRequest, RewardResponse>("rewards", req, cancellationToken);
+            return Put<CrpgGameUpdateRequest, CrpgGameUpdateResponse>("update", req, cancellationToken);
         }
 
         private Task<TResponse> Put<TRequest, TResponse>(string requestUri, TRequest payload, CancellationToken cancellationToken)
@@ -58,7 +52,7 @@ namespace Crpg.GameMod.Api
         private async Task<TResponse> Send<TResponse>(HttpRequestMessage msg, CancellationToken cancellationToken)
         {
             var res = await _httpClient.SendAsync(msg, cancellationToken);
-            var json = await res.Content.ReadAsStringAsync();
+            string json = await res.Content.ReadAsStringAsync();
 
             if (!res.IsSuccessStatusCode)
             {

@@ -1,7 +1,9 @@
-﻿using System.Linq;
-using Crpg.GameMod.Battle;
+﻿using System;
+using Crpg.GameMod.DefendTheVirgin;
 using TaleWorlds.Core;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.PlatformService;
 
 namespace Crpg.GameMod
 {
@@ -13,9 +15,9 @@ namespace Crpg.GameMod
         /// </summary>
         protected override void OnSubModuleLoad()
         {
-            DebugUtils.Trace();
             base.OnSubModuleLoad();
 
+            /*
             Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode());
 
             // Game mode needs scenes, else selecting it in UI crashes
@@ -23,6 +25,7 @@ namespace Crpg.GameMod
             Module.CurrentModule.GetMultiplayerGameTypes()
                 .First(gti => gti.GameType == CrpgBattleGameMode.GameModeName)
                 .Scenes.Add("mp_skirmish_spawn_test");
+            */
         }
 
         /// <summary>
@@ -31,8 +34,18 @@ namespace Crpg.GameMod
         /// </summary>
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
-            DebugUtils.Trace();
             base.OnBeforeInitialModuleScreenSetAsRoot();
+
+            // Initialize steam here. This can't be done in OnSubModuleLoad because Steam is not setup at that time.
+            PlatformServices.Initialize(Array.Empty<IFriendListService>());
+            if (PlatformServices.Instance.ProviderName != "Steam")
+            {
+                InformationManager.DisplayMessage(new InformationMessage("cRPG is only available with Steam"));
+                return;
+            }
+
+            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("DefendTheVirgin", new TextObject("{=4gpGhbeJ}Defend The Virgin"),
+                4567, () => MBGameManager.StartNewGame(new DefendTheVirginGameManager()), false));
         }
 
         /// <summary>
@@ -40,7 +53,6 @@ namespace Crpg.GameMod
         /// </summary>
         protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
         {
-            DebugUtils.Trace();
             base.OnGameStart(game, gameStarterObject);
         }
 
@@ -49,7 +61,6 @@ namespace Crpg.GameMod
         /// </summary>
         public override void BeginGameStart(Game game)
         {
-            DebugUtils.Trace();
             base.BeginGameStart(game);
         }
 
@@ -58,7 +69,6 @@ namespace Crpg.GameMod
         /// </summary>
         public override void OnCampaignStart(Game game, object starterObject)
         {
-            DebugUtils.Trace();
             base.OnCampaignStart(game, starterObject);
         }
 
@@ -67,7 +77,6 @@ namespace Crpg.GameMod
         /// </summary>
         public override void OnGameInitializationFinished(Game game)
         {
-            DebugUtils.Trace();
             base.OnGameInitializationFinished(game);
         }
 
@@ -76,7 +85,6 @@ namespace Crpg.GameMod
         /// </summary>
         public override bool DoLoading(Game game)
         {
-            DebugUtils.Trace();
             return base.DoLoading(game);
         }
 
@@ -85,7 +93,6 @@ namespace Crpg.GameMod
         /// </summary>
         public override void OnNewGameCreated(Game game, object initializerObject)
         {
-            DebugUtils.Trace();
             base.OnNewGameCreated(game, initializerObject);
         }
 
@@ -94,13 +101,11 @@ namespace Crpg.GameMod
         /// </summary>
         public override void OnMissionBehaviourInitialize(Mission mission)
         {
-            DebugUtils.Trace();
             base.OnMissionBehaviourInitialize(mission);
         }
 
         public override void OnMultiplayerGameStart(Game game, object starterObject)
         {
-            DebugUtils.Trace();
             base.OnMultiplayerGameStart(game, starterObject);
         }
 
@@ -119,7 +124,6 @@ namespace Crpg.GameMod
         /// </summary>
         public override void OnGameEnd(Game game)
         {
-            DebugUtils.Trace();
             base.OnGameEnd(game);
         }
 
@@ -128,7 +132,6 @@ namespace Crpg.GameMod
         /// </summary>
         protected override void OnSubModuleUnloaded()
         {
-            DebugUtils.Trace();
             base.OnSubModuleUnloaded();
         }
     }

@@ -21,8 +21,6 @@ namespace Crpg.GameMod.Battle
 
         public override void StartMultiplayerGame(string scene)
         {
-            DebugUtils.Trace(scene);
-
             // hardcore options as they're not modifiable in the UI
             MultiplayerOptions.OptionType.NumberOfBotsTeam1.SetValue(10);
             MultiplayerOptions.OptionType.NumberOfBotsTeam2.SetValue(10);
@@ -33,8 +31,7 @@ namespace Crpg.GameMod.Battle
 
             // the first parameter, missionName, is used to retrieve the MissionsViews
             // registered in TaleWorlds.MountAndBlade.View.Missions.MultiplayerMissionViews
-            MissionState.OpenNew(GameModeName, new MissionInitializerRecord(scene), InitializeMissionBehaviours,
-                true, true, false);
+            MissionState.OpenNew(GameModeName, new MissionInitializerRecord(scene), InitializeMissionBehaviours);
         }
 
         private IEnumerable<MissionBehaviour> InitializeMissionBehaviours(Mission mission)

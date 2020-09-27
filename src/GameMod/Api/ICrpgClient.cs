@@ -1,13 +1,11 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Crpg.GameMod.Api.Requests;
-using Crpg.GameMod.Api.Responses;
+using Crpg.GameMod.Api.Models;
 
 namespace Crpg.GameMod.Api
 {
     internal interface ICrpgClient
     {
-        Task<GameUser> GetOrCreateUser(GetUserRequest req, CancellationToken cancellationToken = default);
-        Task<RewardResponse> Reward(RewardRequest req, CancellationToken cancellationToken = default);
+        Task<CrpgGameUpdateResponse> Update(CrpgGameUpdateRequest req, CancellationToken cancellationToken = default);
     }
 }
