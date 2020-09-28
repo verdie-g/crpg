@@ -1,13 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
-using System.Xml;
 using Crpg.GameMod.Api;
 using Crpg.GameMod.Api.Models;
+using Crpg.GameMod.Common;
+using Crpg.GameMod.Helpers;
+using Newtonsoft.Json;
 using Steamworks;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.ObjectSystem;
+using Module = TaleWorlds.MountAndBlade.Module;
 
 namespace Crpg.GameMod.DefendTheVirgin
 {
@@ -18,7 +23,7 @@ namespace Crpg.GameMod.DefendTheVirgin
         private readonly ICrpgClient _crpgClient = new CrpgHttpClient("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOjAsInJvbGUiOiJnYW1lIiwibmJmIjoxNjAxMDQ4NzEyLCJleHAiOiIxNjAyMDAwMDAwIiwiaWF0IjoxNjAxMDQ4NzEyfQ.8GuUTu3Gs5-JH3_oHCuFWuNxF6ChjWK4P4vfs_2KFuE");
 
         private Task<CrpgUser>? _getUserTask;
-        private IList<Wave>? _waves;
+        private WaveGroup[][]? _waves;
 
         protected override void DoLoadingForGameManager(
             GameManagerLoadingSteps gameManagerLoadingStep,
@@ -76,8 +81,8 @@ namespace Crpg.GameMod.DefendTheVirgin
             InformationManager.DisplayMessage(new InformationMessage($"Map is {scene}."));
             InformationManager.DisplayMessage(new InformationMessage("Visit c-rpg.eu to upgrade your character."));
 
-            var waveController = new WaveController(_waves!.Count);
-            var waveSpawningBehavior = new WaveSpawnLogic(waveController, _waves!);
+            var waveController = new WaveController(_waves!.Length);
+            var waveSpawnLogic = new WaveSpawnLogic(waveController, _waves!, CreateCharacter(_getUserTask!.Result.Character));
             var crpgLogic = new CrpgLogic(waveController, _crpgClient, _waves!, _getUserTask!.Result);
 
             MissionState.OpenNew("DefendTheVirgin", new MissionInitializerRecord(scene)
@@ -91,7 +96,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             {
                 new MissionCombatantsLogic(),
                 waveController,
-                waveSpawningBehavior,
+                waveSpawnLogic,
                 crpgLogic,
                 new AgentBattleAILogic(),
                 new MissionHardBorderPlacer(),
@@ -117,40 +122,17 @@ namespace Crpg.GameMod.DefendTheVirgin
             return res.Users[0];
         }
 
-        private static IList<Wave> LoadWaves()
+        private static WaveGroup[][] LoadWaves()
         {
-            var waves = new List<Wave>();
-
-            string path = BasePath.Name + "Modules/cRPG/ModuleData/waves.xml";
-            XmlDocument doc = new XmlDocument();
-            doc.Load(path);
-
-            XmlNode wavesNode = doc.ChildNodes[1];
-            foreach (XmlNode waveNode in wavesNode.ChildNodes)
+            string path = BasePath.Name + "Modules/cRPG/ModuleData/waves.json";
+            var waves = JsonConvert.DeserializeObject<WaveGroup[][]>(File.ReadAllText(path));
+            foreach (var wave in waves)
             {
-                var wave = new Wave { Groups = new List<WaveGroup>() };
-
-                XmlNode unitsNode = waveNode.ChildNodes[0];
-                foreach (XmlNode unitNode in unitsNode.ChildNodes)
+                foreach (var group in wave)
                 {
-                    var waveGroup = new WaveGroup { Count = 1 };
-                    foreach (XmlAttribute attribute in unitNode.Attributes)
-                    {
-                        switch (attribute.Name)
-                        {
-                            case "id":
-                                waveGroup.CharacterId = attribute.Value;
-                                break;
-                            case "count":
-                                waveGroup.Count = int.Parse(attribute.Value);
-                                break;
-                        }
-                    }
-
-                    wave.Groups.Add(waveGroup);
+                    // In case count was not set
+                    group.Count = Math.Max(group.Count, 1);
                 }
-
-                waves.Add(wave);
             }
 
             return waves;
@@ -231,6 +213,113 @@ namespace Crpg.GameMod.DefendTheVirgin
                 AtmosphereName = atmosphere,
                 TimeInfo = new TimeInformation { Season = seasonId },
             };
+        }
+
+        private static BasicCharacterObject CreateCharacter(CrpgCharacter crpgCharacter)
+        {
+            var skills = new CharacterSkills();
+            skills.SetPropertyValue(CrpgSkills.Strength, crpgCharacter.Statistics.Attributes.Strength);
+            skills.SetPropertyValue(CrpgSkills.Agility, crpgCharacter.Statistics.Attributes.Agility);
+
+            skills.SetPropertyValue(CrpgSkills.IronFlesh, crpgCharacter.Statistics.Skills.IronFlesh);
+            skills.SetPropertyValue(CrpgSkills.PowerStrike, crpgCharacter.Statistics.Skills.PowerStrike);
+            skills.SetPropertyValue(CrpgSkills.PowerDraw, crpgCharacter.Statistics.Skills.PowerDraw);
+            skills.SetPropertyValue(CrpgSkills.PowerThrow, crpgCharacter.Statistics.Skills.PowerThrow);
+            skills.SetPropertyValue(DefaultSkills.Athletics, crpgCharacter.Statistics.Skills.Athletics * 20 + crpgCharacter.Statistics.Attributes.Agility);
+            skills.SetPropertyValue(DefaultSkills.Riding, crpgCharacter.Statistics.Skills.Riding * 20);
+            skills.SetPropertyValue(CrpgSkills.WeaponMaster, crpgCharacter.Statistics.Skills.WeaponMaster);
+            skills.SetPropertyValue(CrpgSkills.HorseArchery, crpgCharacter.Statistics.Skills.HorseArchery);
+
+            skills.SetPropertyValue(DefaultSkills.OneHanded, (int)(crpgCharacter.Statistics.WeaponProficiencies.OneHanded * 1.5));
+            skills.SetPropertyValue(DefaultSkills.TwoHanded, (int)(crpgCharacter.Statistics.WeaponProficiencies.TwoHanded * 1.5));
+            skills.SetPropertyValue(DefaultSkills.Polearm, (int)(crpgCharacter.Statistics.WeaponProficiencies.Polearm * 1.5));
+            skills.SetPropertyValue(DefaultSkills.Bow, (int)(crpgCharacter.Statistics.WeaponProficiencies.Bow * 1.5));
+            skills.SetPropertyValue(DefaultSkills.Crossbow, (int)(crpgCharacter.Statistics.WeaponProficiencies.Crossbow * 1.5));
+            skills.SetPropertyValue(DefaultSkills.Throwing, (int)(crpgCharacter.Statistics.WeaponProficiencies.Throwing * 1.5));
+
+            var equipment = new Equipment();
+            AddEquipment(equipment, EquipmentIndex.Head, crpgCharacter.Items.HeadItem?.MbId, skills);
+            AddEquipment(equipment, EquipmentIndex.Cape, crpgCharacter.Items.CapeItem?.MbId, skills);
+            AddEquipment(equipment, EquipmentIndex.Body, crpgCharacter.Items.BodyItem?.MbId, skills);
+            AddEquipment(equipment, EquipmentIndex.Gloves, crpgCharacter.Items.HandItem?.MbId, skills);
+            AddEquipment(equipment, EquipmentIndex.Leg, crpgCharacter.Items.LegItem?.MbId, skills);
+            AddEquipment(equipment, EquipmentIndex.HorseHarness, crpgCharacter.Items.HorseHarnessItem?.MbId, skills);
+            AddEquipment(equipment, EquipmentIndex.Horse, crpgCharacter.Items.HorseItem?.MbId, skills);
+            AddEquipment(equipment, EquipmentIndex.Weapon0, crpgCharacter.Items.Weapon1Item?.MbId, skills);
+            AddEquipment(equipment, EquipmentIndex.Weapon1, crpgCharacter.Items.Weapon2Item?.MbId, skills);
+            AddEquipment(equipment, EquipmentIndex.Weapon2, crpgCharacter.Items.Weapon3Item?.MbId, skills);
+            AddEquipment(equipment, EquipmentIndex.Weapon3, crpgCharacter.Items.Weapon4Item?.MbId, skills);
+
+            var characterTemplate = MBObjectManager.Instance.GetObject<BasicCharacterObject>("villager_empire");
+            return new CrpgCharacterObject(new TextObject(crpgCharacter.Name), characterTemplate, skills, equipment);
+        }
+
+        private static void AddEquipment(Equipment equipments, EquipmentIndex idx, string? itemId, CharacterSkills skills)
+        {
+            var itemObject = itemId != null ? MBObjectManager.Instance.GetObject<ItemObject>(itemId) : null;
+            var itemModifier = itemObject != null ? GetItemModifier(itemObject.Type, skills) : null;
+            var equipmentElement = new EquipmentElement(itemObject, itemModifier);
+            equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
+        }
+
+        // TODO: it seems like ItemModifier.Damage doesn't have any effect
+        // TODO: use ItemModifier for looming
+        private static ItemModifier GetItemModifier(ItemObject.ItemTypeEnum itemType, CharacterSkills skills)
+        {
+            var itemModifier = new ItemModifier();
+
+            // Not sure if needed
+            ReflectionHelper.SetProperty(itemModifier, nameof(ItemModifier.IsInitialized), true);
+            ReflectionHelper.SetProperty(itemModifier, "IsReady", true);
+
+            // Set default values for the properties which have a default value different than their type default (e.g. different than 0f for floats)
+            ReflectionHelper.SetProperty(itemModifier, nameof(ItemModifier.WeightMultiplier), 1f);
+            ReflectionHelper.SetProperty(itemModifier, nameof(ItemModifier.PriceMultiplier), 1f);
+
+            int value;
+            switch (itemType)
+            {
+                case ItemObject.ItemTypeEnum.OneHandedWeapon:
+                case ItemObject.ItemTypeEnum.TwoHandedWeapon:
+                case ItemObject.ItemTypeEnum.Polearm:
+                    value = skills.GetPropertyValue(CrpgSkills.PowerStrike) * 8 + 500;
+                    ReflectionHelper.SetProperty(itemModifier, nameof(ItemModifier.Damage), value);
+                    break;
+                case ItemObject.ItemTypeEnum.Shield:
+                    // TODO: Shield skill
+                    break;
+                case ItemObject.ItemTypeEnum.Bow:
+                    value = skills.GetPropertyValue(CrpgSkills.PowerDraw) * 14;
+                    ReflectionHelper.SetProperty(itemModifier, nameof(ItemModifier.Damage), value);
+                    break;
+                case ItemObject.ItemTypeEnum.Thrown:
+                    value = skills.GetPropertyValue(CrpgSkills.PowerDraw) * 10;
+                    ReflectionHelper.SetProperty(itemModifier, nameof(ItemModifier.Damage), value);
+                    break;
+                case ItemObject.ItemTypeEnum.HeadArmor:
+                case ItemObject.ItemTypeEnum.Cape:
+                case ItemObject.ItemTypeEnum.BodyArmor:
+                case ItemObject.ItemTypeEnum.ChestArmor:
+                case ItemObject.ItemTypeEnum.LegArmor:
+                case ItemObject.ItemTypeEnum.HandArmor:
+                case ItemObject.ItemTypeEnum.Crossbow:
+                case ItemObject.ItemTypeEnum.HorseHarness:
+                case ItemObject.ItemTypeEnum.Horse:
+                case ItemObject.ItemTypeEnum.Arrows:
+                case ItemObject.ItemTypeEnum.Bolts:
+                case ItemObject.ItemTypeEnum.Goods:
+                case ItemObject.ItemTypeEnum.Pistol:
+                case ItemObject.ItemTypeEnum.Musket:
+                case ItemObject.ItemTypeEnum.Bullets:
+                case ItemObject.ItemTypeEnum.Animal:
+                case ItemObject.ItemTypeEnum.Book:
+                case ItemObject.ItemTypeEnum.Banner:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(itemType), itemType, null);
+            }
+
+            return itemModifier;
         }
     }
 }

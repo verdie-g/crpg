@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Xml;
 using Crpg.GameMod.Api;
 using Crpg.GameMod.Api.Models;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.ObjectSystem;
 
 namespace Crpg.GameMod.DefendTheVirgin
 {
@@ -12,11 +15,11 @@ namespace Crpg.GameMod.DefendTheVirgin
     {
         private readonly WaveController _waveController;
         private readonly ICrpgClient _crpgClient;
-        private readonly IList<Wave> _waves;
+        private readonly WaveGroup[][] _waves;
 
         private CrpgUser _user;
 
-        public CrpgLogic(WaveController waveController, ICrpgClient crpgClient, IList<Wave> waves, CrpgUser user)
+        public CrpgLogic(WaveController waveController, ICrpgClient crpgClient, WaveGroup[][] waves, CrpgUser user)
         {
             _waveController = waveController;
             _crpgClient = crpgClient;
@@ -32,7 +35,7 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         private void OnWaveEnding(int waveNb)
         {
-            Wave wave = _waves[waveNb - 1];
+            WaveGroup[] wave = _waves[waveNb - 1];
             int reward = SumWaveWeight(wave);
             int experienceReward = reward * 100;
             int goldReward = reward * 5;
@@ -63,18 +66,18 @@ namespace Crpg.GameMod.DefendTheVirgin
 
             if (res.Users[0].Character.Level != _user.Character.Level)
             {
-                InformationManager.DisplayMessage(new InformationMessage("Level up!"));
+                InformationManager.DisplayMessage(new InformationMessage("Level up!", new Color(128, 0, 128)));
             }
 
             _user = res.Users[0];
         }
 
-        private static int SumWaveWeight(Wave wave)
+        private static int SumWaveWeight(IEnumerable<WaveGroup> wave)
         {
             float value = 0;
-            foreach (var group in wave.Groups)
+            foreach (var group in wave)
             {
-                BasicCharacterObject character = Game.Current.ObjectManager.GetObject<BasicCharacterObject>(group.CharacterId);
+                BasicCharacterObject character = Game.Current.ObjectManager.GetObject<BasicCharacterObject>(group.Id);
                 float weight = character.Equipment.GetTotalWeightOfArmor(true) + character.Equipment.GetTotalWeightOfWeapons();
                 value += weight * group.Count;
             }

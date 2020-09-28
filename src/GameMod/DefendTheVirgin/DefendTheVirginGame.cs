@@ -27,6 +27,7 @@ namespace Crpg.GameMod.DefendTheVirgin
 
             currentGame.CreateObjects();
             currentGame.InitializeDefaultGameObjects();
+            CrpgSkills.Initialize(currentGame);
             currentGame.LoadBasicFiles(false);
             LoadCustomGameXmls();
             objectManager.ClearEmptyObjects();
@@ -60,6 +61,7 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         private void LoadCustomGameXmls()
         {
+            ObjectManager.LoadXML("CraftingPieces");
             ObjectManager.LoadXML("Items");
             ObjectManager.LoadXML("NPCCharacters");
             ObjectManager.LoadXML("SPCultures");

@@ -1,0 +1,13 @@
+﻿/*
+  Each element of the array is a wave.
+  id is an npc character id from the file "Mount & Blade II Bannerlord\Modules\SandBoxCore\ModuleData\spnpccharacters.xml"
+  count is the number of characters to spawn
+*/
+[
+  [{ "id": "village_woman_battania", "count": 3 }],
+  [{ "id": "townsman_battania" }, { "id": "shop_worker_battania" }],
+  [{ "id": "shop_keeper" }, { "id": "shop_worker_battania" }, { "id": "taverngamehost_battania" }],
+  [{ "id": "musician_battania" }, { "id": "tavern_wench_battania" }, { "id": "armorer_battania" }, { "id": "horseMerchant_battania" }],
+  [{ "id": "villager_battania", "count": 4 }, { "id": "beggar_battania", "count": 2 }],
+  [{ "id": "battanian_picked_warrior", "count": 10 }]
+]

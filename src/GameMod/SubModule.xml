@@ -15,13 +15,16 @@
 	</SubModules>
 	<Xmls>
 		<XmlNode>
+			<XmlName id="CraftingPieces" path="../../Native/ModuleData/mp_crafting_pieces" />
+		</XmlNode>
+		<XmlNode>
 			<XmlName id="CraftingPieces" path="../../Native/ModuleData/crafting_pieces" />
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="Items" path="../../SandBoxCore/ModuleData/spitems" />
+			<XmlName id="Items" path="../../Native/ModuleData/mpitems" />
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="Items" path="../../SandBoxCore/ModuleData/mpitems" />
+			<XmlName id="Items" path="../../SandBoxCore/ModuleData/spitems" />
 		</XmlNode>
 		<XmlNode>
 			<XmlName id="SPCultures" path="../../SandBoxCore/ModuleData/spcultures" />
