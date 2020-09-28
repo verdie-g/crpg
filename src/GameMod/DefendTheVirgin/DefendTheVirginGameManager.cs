@@ -160,39 +160,39 @@ namespace Crpg.GameMod.DefendTheVirgin
         {
             string[] scenes =
             {
-                "aserai_village_e",
+                "aserai_village_e", // 127m
                 // "aserai_village_i", // 200m
-                "aserai_village_j",
-                "aserai_village_l",
-                "battania_village_h",
-                "battania_village_i",
-                "battania_village_j",
-                "battania_village_k",
-                "battania_village_l",
-                "empire_village_002",
-                // "empire_village_003", // 152m
+                // "aserai_village_j", // 257m
+                // "aserai_village_l", // 296m
+                // "battania_village_h", // 252m
+                "battania_village_i", // 120m
+                "battania_village_j", // 120m
+                // "battania_village_k", // 218m
+                // "battania_village_l", // 340m
+                // "empire_village_002", // 170m
+                "empire_village_003", // 152m
                 // "empire_village_004", // 300m
-                "empire_village_007",
-                "empire_village_008",
-                "empire_village_p",
-                "empire_village_x",
-                "khuzait_village_a",
-                "khuzait_village_i",
+                "empire_village_007", // 150m
+                // "empire_village_008", // CRASH WITH NO EXCEPTION
+                // "empire_village_p", // CRASH WITH NO EXCEPTION
+                // "empire_village_x", // CRASH WITH NO EXCEPTION
+                "khuzait_village_a", // 169m
+                // "khuzait_village_i", // 229m
                 // "khuzait_village_j", // 214m
-                "khuzait_village_k",
-                // "khuzait_village_l", // 103m
-                "sturgia_village_e",
-                "sturgia_village_f",
-                "sturgia_village_g",
-                "sturgia_village_h",
-                "sturgia_village_j",
+                // "khuzait_village_k", // 250m
+                "khuzait_village_l", // 103m
+                "sturgia_village_e", // 153m
+                // "sturgia_village_f", // 160m
+                "sturgia_village_g", // 100m
+                // "sturgia_village_h", // 279m
+                // "sturgia_village_j", // 291m
                 // "sturgia_village_l", // 120m
-                "vlandia_village_g",
+                // "vlandia_village_g", // 270m
                 // "vlandia_village_i", // 292m
-                "vlandia_village_k",
-                "vlandia_village_l",
+                // "vlandia_village_k", // 300m
+                // "vlandia_village_l", // 280m
                 // "vlandia_village_m", // 342m
-                "vlandia_village_n",
+                // "vlandia_village_n", // 278m
             };
 
             return scenes[Rng.Next(0, scenes.Length)];
