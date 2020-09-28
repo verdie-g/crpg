@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.GameMod.DefendTheVirgin
@@ -27,12 +28,15 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         private void SpawnAgents(int waveNb)
         {
-            // TODO: add virgin character
-
             // Set player character. Without this line we would just spectate bots fighting without being able to play
             Game.Current.PlayerTroop = _mainCharacter;
 
             Mission.SpawnTroop(new BasicBattleAgentOrigin(_mainCharacter), true, false, !_mainCharacter.Equipment.Horse.IsEmpty, false, true, 0, 0, false, true);
+
+            var virgin = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("townswoman_empire");
+            virgin.Name = new TextObject("The Virgin");
+            Mission.SpawnTroop(new BasicBattleAgentOrigin(virgin), true, false, false, false, true, 0, 0, false, true);
+
 
             WaveGroup[] wave = _waves[waveNb - 1];
             foreach (var group in wave)

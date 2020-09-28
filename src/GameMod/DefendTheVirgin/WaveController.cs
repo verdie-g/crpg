@@ -50,7 +50,7 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         private bool CheckForWaveEnd()
         {
-            return Mission.AttackerTeam.ActiveAgents.Count == 0 || Mission.DefenderTeam.ActiveAgents.Count == 0;
+            return Mission.AttackerTeam.ActiveAgents.Count == 0 || Mission.DefenderTeam.ActiveAgents.Count < 2;
         }
 
         private void BeginNewWave()
@@ -70,7 +70,7 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         private void PostWaveEnd()
         {
-            if (Mission.DefenderTeam.ActiveAgents.Count == 0 || _waveCount == _maxWave)
+            if (Mission.DefenderTeam.ActiveAgents.Count < 2 || _waveCount == _maxWave)
             {
                 Mission.Current.EndMission();
             }
