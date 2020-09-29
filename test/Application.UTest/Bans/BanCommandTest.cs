@@ -14,7 +14,7 @@ namespace Crpg.Application.UTest.Bans
         public async Task BanExistingUser()
         {
             var user1 = ArrangeDb.Users.Add(new User());
-            var user2 = ArrangeDb.Users.Add(new User { PlatformId = "1234", Name = "toto" });
+            var user2 = ArrangeDb.Users.Add(new User { PlatformUserId = "1234", Name = "toto" });
             await ArrangeDb.SaveChangesAsync();
 
             var ban = await new BanCommand.Handler(ActDb, Mapper).Handle(new BanCommand
@@ -29,7 +29,7 @@ namespace Crpg.Application.UTest.Bans
             Assert.AreEqual(TimeSpan.FromDays(1), ban.Duration);
             Assert.AreEqual("toto", ban.Reason);
             Assert.AreEqual(user2.Entity.Id, ban.BannedByUser!.Id);
-            Assert.AreEqual(user2.Entity.PlatformId, ban.BannedByUser.PlatformId);
+            Assert.AreEqual(user2.Entity.PlatformUserId, ban.BannedByUser.PlatformUserId);
             Assert.AreEqual(user2.Entity.Name, ban.BannedByUser.Name);
         }
 

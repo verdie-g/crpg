@@ -8,7 +8,7 @@ namespace Crpg.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasIndex(u => u.PlatformId).IsUnique();
+            builder.HasIndex(u => new { u.Platform, u.PlatformUserId }).IsUnique();
         }
     }
 }

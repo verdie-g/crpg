@@ -53,7 +53,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                 {
                     new CrpgGameUserUpdate
                     {
-                        PlatformId = _user.PlatformId,
+                        PlatformUserId = _user.PlatformUserId,
                         CharacterName = _user.Character.Name,
                         Reward = new CrpgUserReward
                         {

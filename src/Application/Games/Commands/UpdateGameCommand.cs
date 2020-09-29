@@ -131,7 +131,7 @@ namespace Crpg.Application.Games.Commands
                 Dictionary<string, User> users = await GetOrCreateUsers(cmd.GameUserUpdates, cancellationToken);
                 foreach (GameUserUpdate update in cmd.GameUserUpdates)
                 {
-                    User user = users[update.PlatformId];
+                    User user = users[update.PlatformUserId];
                     Character? character = user.Characters.FirstOrDefault();
                     if (character == null)
                     {
@@ -156,7 +156,8 @@ namespace Crpg.Application.Games.Commands
                     res.Add(new GameUser
                     {
                         Id = user.Id,
-                        PlatformId = user.PlatformId,
+                        Platform = Platform.Steam,
+                        PlatformUserId = user.PlatformUserId,
                         Gold = user.Gold,
                         Character = _mapper.Map<CharacterViewModel>(character),
                         BrokenItems = _mapper.Map<IList<GameUserBrokenItem>>(brokenItems),
@@ -206,18 +207,20 @@ namespace Crpg.Application.Games.Commands
 
             private async Task<Dictionary<string, User>> GetOrCreateUsers(IList<GameUserUpdate> gameUserUpdates, CancellationToken cancellationToken)
             {
-                string[] userPlatformIds = gameUserUpdates.Select(u => u.PlatformId).ToArray();
+                string[] userPlatformUserIds = gameUserUpdates.Select(u => u.PlatformUserId).ToArray();
                 // build predicate to get all users by their platform id and character name
                 ExpressionStarter<Character> characterPredicate = PredicateBuilder.New<Character>();
                 foreach (var update in gameUserUpdates)
                 {
                     characterPredicate = characterPredicate.Or(c =>
-                        c.User!.PlatformId == update.PlatformId && c.Name == update.CharacterName);
+                        c.User!.Platform == Platform.Steam
+                        && c.User!.PlatformUserId == update.PlatformUserId
+                        && c.Name == update.CharacterName);
                 }
 
                 Expression<Func<Character, bool>> characterPredicateExpr = characterPredicate; // https://stackoverflow.com/a/46716258/5407910
 
-                static User ElemSelector(Tuple<User, Character> p)
+                static User ElemSelector(Tuple<User, Character?> p)
                 {
                     if (p.Item2 != null)
                     {
@@ -241,9 +244,9 @@ namespace Crpg.Application.Games.Commands
                     .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon4Item)
                     .Include(u => u.Bans) // could be filtered https://github.com/dotnet/efcore/issues/1833#issuecomment-603543685
                     .AsExpandable()
-                    .Where(u => userPlatformIds.Contains(u.PlatformId))
-                    .Select(u => new Tuple<User, Character>(u, u.Characters.FirstOrDefault(characterPredicateExpr.Compile())))
-                    .ToDictionaryAsync(p => p.Item1.PlatformId, ElemSelector, cancellationToken);
+                    .Where(u => u.Platform == Platform.Steam && userPlatformUserIds.Contains(u.PlatformUserId))
+                    .Select(u => new Tuple<User, Character?>(u, u.Characters.FirstOrDefault(characterPredicateExpr.Compile())))
+                    .ToDictionaryAsync(p => p.Item1.PlatformUserId, ElemSelector, cancellationToken);
 
                 if (gameUserUpdates.Count == users.Count) // if all users already exist
                 {
@@ -253,22 +256,22 @@ namespace Crpg.Application.Games.Commands
                 // else some users don't exist, we need to create them and their first character
                 foreach (var update in gameUserUpdates)
                 {
-                    if (users.ContainsKey(update.PlatformId))
+                    if (users.ContainsKey(update.PlatformUserId))
                     {
                         continue;
                     }
 
-                    var user = CreateUser(update.PlatformId, update.CharacterName);
-                    users[user.PlatformId] = user;
-                    _events.Raise(EventLevel.Info, $"{update.CharacterName} joined ({update.PlatformId})", string.Empty, "user_created");
+                    var user = CreateUser(update.PlatformUserId, update.CharacterName);
+                    users[user.PlatformUserId] = user;
+                    _events.Raise(EventLevel.Info, $"{update.CharacterName} joined ({update.PlatformUserId})", string.Empty, "user_created");
                 }
 
                 return users;
             }
 
-            private User CreateUser(string platformId, string name)
+            private User CreateUser(string platformUserId, string name)
             {
-                var user = new User { PlatformId = platformId, Name = name };
+                var user = new User { Platform = Platform.Steam, PlatformUserId = platformUserId, Name = name };
                 UserHelper.SetDefaultValuesForUser(user);
                 return user;
             }

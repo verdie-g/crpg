@@ -18,7 +18,7 @@ namespace Crpg.Application.Users.Commands
 {
     public class UpsertUserCommand : IRequest<UserViewModel>, IMapFrom<SteamPlayer>
     {
-        public string PlatformId { get; set; } = string.Empty;
+        public string PlatformUserId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public Uri Avatar { get; set; } = default!;
         public Uri AvatarMedium { get; set; } = default!;
@@ -27,7 +27,7 @@ namespace Crpg.Application.Users.Commands
         public void Mapping(Profile profile)
         {
             profile.CreateMap<SteamPlayer, UpsertUserCommand>()
-                .ForMember(u => u.PlatformId, opt => opt.MapFrom(p => p.SteamId))
+                .ForMember(u => u.PlatformUserId, opt => opt.MapFrom(p => p.SteamId))
                 .ForMember(u => u.Name, opt => opt.MapFrom(p => p.PersonaName));
         }
 
@@ -58,8 +58,8 @@ namespace Crpg.Application.Users.Commands
             public async Task<UserViewModel> Handle(UpsertUserCommand request, CancellationToken cancellationToken)
             {
                 var user =
-                    await _db.Users.FirstOrDefaultAsync(u => u.PlatformId == request.PlatformId, cancellationToken)
-                    ?? new User { PlatformId = request.PlatformId };
+                    await _db.Users.FirstOrDefaultAsync(u => u.PlatformUserId == request.PlatformUserId, cancellationToken)
+                    ?? new User { Platform = Platform.Steam, PlatformUserId = request.PlatformUserId };
 
                 user.Name = request.Name;
                 user.AvatarSmall = request.Avatar;
@@ -70,7 +70,7 @@ namespace Crpg.Application.Users.Commands
                 {
                     UserHelper.SetDefaultValuesForUser(user);
                     _db.Users.Add(user);
-                    _events.Raise(EventLevel.Info, $"{request.Name} joined ({request.PlatformId})", string.Empty, "user_created");
+                    _events.Raise(EventLevel.Info, $"{request.Name} joined ({request.PlatformUserId})", string.Empty, "user_created");
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);

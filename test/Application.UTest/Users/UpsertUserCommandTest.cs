@@ -19,7 +19,7 @@ namespace Crpg.Application.UTest.Users
             var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventRaiser);
             var user = await handler.Handle(new UpsertUserCommand
             {
-                PlatformId = "123",
+                PlatformUserId = "123",
                 Name = "def",
                 Avatar = new Uri("http://ghi.klm"),
                 AvatarMedium = new Uri("http://mno.pqr"),
@@ -36,7 +36,7 @@ namespace Crpg.Application.UTest.Users
         {
             var user = new User
             {
-                PlatformId = "13948192759205810",
+                PlatformUserId = "13948192759205810",
                 Name = "def",
                 Gold = 1000,
                 Role = Role.Admin,
@@ -50,7 +50,7 @@ namespace Crpg.Application.UTest.Users
             var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventRaiser);
             var createdUser = await handler.Handle(new UpsertUserCommand
             {
-                PlatformId = "13948192759205810",
+                PlatformUserId = "13948192759205810",
                 Name = "def",
                 Avatar = new Uri("http://gh.klm"),
                 AvatarMedium = new Uri("http://mn.pqr"),
@@ -61,7 +61,7 @@ namespace Crpg.Application.UTest.Users
 
             var dbUser = await AssertDb.Users.FindAsync(user.Id);
             Assert.AreEqual(dbUser.Id, createdUser.Id);
-            Assert.AreEqual(dbUser.PlatformId, createdUser.PlatformId);
+            Assert.AreEqual(dbUser.PlatformUserId, createdUser.PlatformUserId);
             Assert.AreEqual(dbUser.Gold, createdUser.Gold);
             Assert.AreEqual(dbUser.Name, createdUser.Name);
             Assert.AreEqual(dbUser.Role, createdUser.Role);
@@ -76,7 +76,7 @@ namespace Crpg.Application.UTest.Users
             var validator = new UpsertUserCommand.Validator();
             var res = validator.Validate(new UpsertUserCommand
             {
-                PlatformId = "28320184920184918",
+                PlatformUserId = "28320184920184918",
                 Name = "toto",
                 Avatar = new Uri("http://gh.klm"),
                 AvatarMedium = new Uri("http://mn.pqr"),
@@ -92,7 +92,7 @@ namespace Crpg.Application.UTest.Users
             var validator = new UpsertUserCommand.Validator();
             var res = validator.Validate(new UpsertUserCommand
             {
-                PlatformId = "123",
+                PlatformUserId = "123",
                 Name = "",
             });
 

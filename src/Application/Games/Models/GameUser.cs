@@ -12,7 +12,8 @@ namespace Crpg.Application.Games.Models
     public class GameUser : IMapFrom<User>
     {
         public int Id { get; set; }
-        public string PlatformId { get; set; } = default!;
+        public Platform Platform { get; set; }
+        public string PlatformUserId { get; set; } = default!;
         public int Gold { get; set; }
         public CharacterViewModel Character { get; set; } = default!;
         public IList<GameUserBrokenItem> BrokenItems { get; set; } = Array.Empty<GameUserBrokenItem>();

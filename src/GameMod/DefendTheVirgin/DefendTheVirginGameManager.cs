@@ -115,7 +115,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             {
                 GameUserUpdates = new[]
                 {
-                    new CrpgGameUserUpdate { PlatformId = steamId.ToString(), CharacterName = name },
+                    new CrpgGameUserUpdate { PlatformUserId = steamId.ToString(), CharacterName = name },
                 },
             });
 

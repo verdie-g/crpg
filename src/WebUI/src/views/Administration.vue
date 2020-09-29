@@ -25,11 +25,11 @@ export default class Administration extends Vue {
   get bansData() {
     return banModule.bans.map(b => ({
       id: b.id,
-      bannedUser: `${b.bannedUser!.name} (${b.bannedUser!.platformId})`,
+      bannedUser: `${b.bannedUser!.name} (${b.bannedUser!.platformUserId})`,
       createdAt: b.createdAt.toDateString(),
       duration: timestampToTimeString(b.duration),
       reason: b.reason,
-      bannedBy: `${b.bannedByUser.name} (${b.bannedByUser.platformId})`,
+      bannedBy: `${b.bannedByUser.name} (${b.bannedByUser.platformUserId})`,
     }));
   }
 

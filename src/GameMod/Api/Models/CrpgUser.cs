@@ -7,7 +7,7 @@ namespace Crpg.GameMod.Api.Models
     internal class CrpgUser
     {
         public int Id { get; set; }
-        public string PlatformId { get; set; } = string.Empty;
+        public string PlatformUserId { get; set; } = string.Empty;
         public int Gold { get; set; }
         public CrpgCharacter Character { get; set; } = default!;
         public IList<CrpgUserBrokenItem> BrokenItems { get; set; } = Array.Empty<CrpgUserBrokenItem>();

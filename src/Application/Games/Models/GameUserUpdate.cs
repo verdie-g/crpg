@@ -5,7 +5,7 @@ namespace Crpg.Application.Games.Models
 {
     public class GameUserUpdate
     {
-        public string PlatformId { get; set; } = default!;
+        public string PlatformUserId { get; set; } = default!;
         public string CharacterName { get; set; } = default!;
         public GameUserReward? Reward { get; set; }
         public IList<GameUserBrokenItem> BrokenItems { get; set; } = Array.Empty<GameUserBrokenItem>();

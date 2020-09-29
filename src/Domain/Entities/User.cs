@@ -9,9 +9,10 @@ namespace Crpg.Domain.Entities
         public int Id { get; set; }
 
         /// <summary>
-        /// Steam id.
+        /// The platform (e.g. Steam) used to play Bannerlord.
         /// </summary>
-        public string PlatformId { get; set; } = string.Empty;
+        public Platform Platform { get; set; }
+        public string PlatformUserId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public int Gold { get; set; }
         public int HeirloomPoints { get; set; }

@@ -25,7 +25,7 @@ namespace Crpg.Application.UTest.Users
         {
             var dbUser = new User
             {
-                PlatformId = "13948192759205810",
+                PlatformUserId = "13948192759205810",
                 Name = "def",
                 Role = Role.Admin,
                 AvatarSmall = new Uri("http://ghi.klm"),
