@@ -16,6 +16,7 @@ namespace Crpg.Persistence
 
         static CrpgDbContext()
         {
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<Platform>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<Role>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<ItemType>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<DamageType>();
@@ -80,6 +81,7 @@ namespace Crpg.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CrpgDbContext).Assembly);
+            modelBuilder.HasPostgresEnum<Platform>();
             modelBuilder.HasPostgresEnum<Role>();
             modelBuilder.HasPostgresEnum<ItemType>();
             modelBuilder.HasPostgresEnum<DamageType>();
