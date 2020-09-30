@@ -311,15 +311,14 @@ export default class CharacterStatsComponent extends Vue {
     };
   }
 
-  onInput(statSectionKey: StatSectionKey, statKey: StatKey, value: number): void {
+  onInput(statSectionKey: StatSectionKey, statKey: StatKey, newStatValue: number): void {
     const statInitialSection = this.stats[statSectionKey] as any;
     const statDeltaSection = this.statsDelta[statSectionKey] as any;
 
-    const oldStatValue = statDeltaSection[statKey];
-    statDeltaSection.points += this.statCost(statSectionKey, statKey, statInitialSection[statKey] + statDeltaSection[statKey])
-      - this.statCost(statSectionKey, statKey, value);
-    statDeltaSection[statKey] = value - statInitialSection[statKey];
-    const newStatValue = statDeltaSection[statKey];
+    const oldStatValue = statInitialSection[statKey] + statDeltaSection[statKey];
+    statDeltaSection.points += this.statCost(statSectionKey, statKey, oldStatValue)
+      - this.statCost(statSectionKey, statKey, newStatValue);
+    statDeltaSection[statKey] = newStatValue - statInitialSection[statKey];
 
     if (statKey === 'agility') {
       this.statsDelta.weaponProficiencies.points += this.wppForAgility(newStatValue) - this.wppForAgility(oldStatValue);
