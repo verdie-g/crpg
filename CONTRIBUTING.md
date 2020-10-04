@@ -1,5 +1,21 @@
 # How to contribute to cRPG
 
+## Report a bug
+
+- **Do not open GitHub issue if the bug is a security vulnerability in cRPG**, and instead follow
+  the [security policy](https://github.com/verdie-g/crpg/blob/master/SECURITY.md).
+- **Ensure the bug was not already reported** by searching on GitHub under [Issues](https://github.com/verdie-g/cRPG/issues?q=is%3Aissue)
+- If you're unable to find an open issue addressing the problem, open a new one. Make sure to include
+  a title and a clear description, as much relevant information as possible, and ideally a screenshot
+  or a video pointing out the issue.
+
+## Fix a bug
+
+- Open a new GitHub pull request with the patch
+- Ensure the PR description clearly describes the problem and solution. Include the relevant issue
+  number if applicable.
+- Make sure the changes are correctly unit-tested
+
 ## Technologies Used
 
 ### Web API (src/WebApi)
@@ -48,19 +64,3 @@ The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the foll
 - Run `yarn serve` to launch the application
 
 The client relies on the server so you have to run both.
-
-## Report a bug
-
-- **Do not open GitHub issue if the bug is a security vulnerability in cRPG**, and instead follow
-  the [security policy](https://github.com/verdie-g/crpg/blob/master/SECURITY.md).
-- **Ensure the bug was not already reported** by searching on GitHub under [Issues](https://github.com/verdie-g/cRPG/issues?q=is%3Aissue)
-- If you're unable to find an open issue addressing the problem, open a new one. Make sure to include
-  a title and a clear description, as much relevant information as possible, and ideally a screenshot
-  or a video pointing out the issue.
-
-## Fix a bug
-
-- Open a new GitHub pull request with the patch
-- Ensure the PR description clearly describes the problem and solution. Include the relevant issue
-  number if applicable.
-- Make sure the changes are correctly unit-tested
