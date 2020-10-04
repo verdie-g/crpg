@@ -16,6 +16,10 @@
   number if applicable.
 - Make sure the changes are correctly unit-tested
 
+## High Level Architecture
+
+![crpg-architecture](https://user-images.githubusercontent.com/9092290/95020344-df71a880-066a-11eb-8439-f21f90cbc9c7.png)
+
 ## Technologies Used
 
 ### Web API (src/WebApi)
