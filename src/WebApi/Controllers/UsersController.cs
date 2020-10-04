@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using Crpg.Application.Bans.Commands;
 using Crpg.Application.Bans.Models;
 using Crpg.Application.Bans.Queries;
 using Crpg.Application.Characters.Commands;
@@ -13,7 +12,6 @@ using Crpg.Application.Items.Queries;
 using Crpg.Application.Users.Commands;
 using Crpg.Application.Users.Queries;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Crpg.WebApi.Controllers
@@ -241,24 +239,6 @@ namespace Crpg.WebApi.Controllers
         public async Task<ActionResult<IList<BanViewModel>>> GetUserBans()
         {
             return Ok(await Mediator.Send(new GetUserBansListQuery { UserId = CurrentUser.UserId }));
-        }
-
-        /// <summary>
-        /// Bans an user. If a ban already exists for the user, it is overriden. Use a duration of 0 to unban.
-        /// </summary>
-        /// <param name="id">User id to ban.</param>
-        /// <param name="req">Ban info.</param>
-        /// <returns>The ban object.</returns>
-        /// <response code="201">Banned.</response>
-        /// <response code="400">Bad Request.</response>
-        /// <response code="404">User was not found.</response>
-        [HttpPost("{id}/bans"), Authorize(Roles = "admin,superAdmin")]
-        [ProducesResponseType((int)HttpStatusCode.Created)]
-        public async Task<ActionResult<BanViewModel>> BanUser([FromRoute] int id, [FromBody] BanCommand req)
-        {
-            req.BannedUserId = id;
-            var ban = await Mediator.Send(req);
-            return StatusCode(StatusCodes.Status201Created, ban);
         }
     }
 }
