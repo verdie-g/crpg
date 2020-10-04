@@ -9,13 +9,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Crpg.WebApi.Controllers
 {
+    [Authorize(Roles = "admin,superAdmin")]
     public class BansController : BaseController
     {
         /// <summary>
         /// Gets all bans.
         /// </summary>
         /// <response code="200">Ok.</response>
-        [HttpGet, Authorize(Roles = "admin,superAdmin")]
+        [HttpGet]
         [ResponseCache(Duration = 60 * 60 * 1)] // 1 hour
         public async Task<ActionResult<IList<BanViewModel>>> GetBans()
         {

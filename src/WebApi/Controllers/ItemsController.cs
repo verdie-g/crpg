@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Crpg.WebApi.Controllers
 {
+    [Authorize(Roles = "user,admin,superAdmin")]
     public class ItemsController : BaseController
     {
         /// <summary>

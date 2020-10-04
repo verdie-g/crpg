@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Crpg.Application.Bans.Commands;
@@ -14,13 +12,13 @@ using Crpg.Application.Items.Models;
 using Crpg.Application.Items.Queries;
 using Crpg.Application.Users.Commands;
 using Crpg.Application.Users.Queries;
-using Crpg.WebApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Crpg.WebApi.Controllers
 {
+    [Authorize(Roles = "user,admin,superAdmin")]
     public class UsersController : BaseController
     {
         /// <summary>
