@@ -21,9 +21,14 @@ namespace Crpg.Application.Characters.Commands
         {
             private static int WeaponProficienciesPointsForAgility(int agility) => agility * 14;
 
-            private static int WeaponProficienciesPointsForWeaponMaster(int weaponMaster) => weaponMaster == 0
-                ? 0
-                : 55 + weaponMaster * 20;
+            private static int WeaponProficienciesPointsForWeaponMaster(int weaponMaster)
+            {
+                const int a = 10;
+                const int b = 65;
+                return weaponMaster == 0
+                    ? 0
+                    : a * weaponMaster * weaponMaster + b * weaponMaster;
+            }
 
             private static int WeaponProficiencyCost(int wpf)
             {

@@ -99,7 +99,7 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(10, stats.Skills.WeaponMaster);
             Assert.AreEqual(10, stats.Skills.HorseArchery);
             Assert.AreEqual(10, stats.Skills.Shield);
-            Assert.AreEqual(809, stats.WeaponProficiencies.Points);
+            Assert.AreEqual(1454, stats.WeaponProficiencies.Points);
             Assert.AreEqual(7, stats.WeaponProficiencies.OneHanded);
             Assert.AreEqual(7, stats.WeaponProficiencies.TwoHanded);
             Assert.AreEqual(7, stats.WeaponProficiencies.Polearm);
@@ -161,7 +161,7 @@ namespace Crpg.Application.UTest.Characters
                 {
                     Attributes = new CharacterAttributes { Agility = 9 },
                     Skills = new CharacterSkills { Points = 3 },
-                    WeaponProficiencies = new CharacterWeaponProficiencies { Points = 354 },
+                    WeaponProficiencies = new CharacterWeaponProficiencies { Points = 184 },
                 },
             });
             await ArrangeDb.SaveChangesAsync();
@@ -180,7 +180,7 @@ namespace Crpg.Application.UTest.Characters
             }, CancellationToken.None);
 
             Assert.AreEqual(1, stats.Skills.WeaponMaster);
-            Assert.AreEqual(429, stats.WeaponProficiencies.Points);
+            Assert.AreEqual(259, stats.WeaponProficiencies.Points);
 
             stats = await handler.Handle(new UpdateCharacterStatisticsCommand
             {
@@ -195,6 +195,9 @@ namespace Crpg.Application.UTest.Characters
             }, CancellationToken.None);
 
             Assert.AreEqual(3, stats.Skills.WeaponMaster);
+            // If this assertion fails after modifying weapon proficiency mathematical functions,
+            // edit the initial character weapon proficiency points to get to 0 at the end and check
+            // if the values make sense.
             Assert.AreEqual(0, stats.WeaponProficiencies.Points);
             Assert.AreEqual(100, stats.WeaponProficiencies.Bow);
         }

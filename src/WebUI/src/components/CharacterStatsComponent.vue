@@ -332,9 +332,11 @@ export default class CharacterStatsComponent extends Vue {
   }
 
   wppForWeaponMaster(weaponMaster: number): number {
+    const a = 10;
+    const b = 65;
     return weaponMaster === 0
       ? 0
-      : 55 + 20 * weaponMaster;
+      : a * weaponMaster * weaponMaster + b * weaponMaster;
   }
 
   statRequirementsSatisfied(statSectionKey: StatSectionKey, statKey: StatKey, stat: number): boolean {
