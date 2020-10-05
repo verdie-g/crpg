@@ -63,6 +63,7 @@ namespace Crpg.Application.UTest.Games
             }, CancellationToken.None);
 
             Assert.AreEqual(1, res.Users.Count);
+            Assert.NotZero(res.Users[0].Id);
             Assert.AreEqual(300 + 200, res.Users[0].Gold);
             Assert.AreEqual("a", res.Users[0].Character.Name);
             Assert.AreEqual(0, res.Users[0].Character.Generation);
@@ -151,6 +152,7 @@ namespace Crpg.Application.UTest.Games
 
             Assert.AreEqual(1, res.Users.Count);
             Assert.AreEqual(1000 + 200, res.Users[0].Gold);
+            Assert.NotZero(res.Users[0].Character.Id);
             Assert.AreEqual("a", res.Users[0].Character.Name);
             Assert.AreEqual(0, res.Users[0].Character.Generation);
             Assert.AreEqual(1, res.Users[0].Character.Level);

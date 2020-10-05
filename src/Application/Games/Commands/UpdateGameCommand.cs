@@ -125,13 +125,13 @@ namespace Crpg.Application.Games.Commands
                     await LoadDefaultItemSets();
                 }
 
-                var res = new List<GameUser>();
+                var res = new List<(User user, Character character, GameUserBrokenItem[] brokenItems, Ban? ban)>();
                 var newCharacters = new List<Character>();
                 var brokenItemsWithUser = new List<(int, GameUserBrokenItem[])>();
-                Dictionary<string, User> users = await GetOrCreateUsers(cmd.GameUserUpdates, cancellationToken);
+                Dictionary<string, User> usersByPlatformId = await GetOrCreateUsers(cmd.GameUserUpdates, cancellationToken);
                 foreach (GameUserUpdate update in cmd.GameUserUpdates)
                 {
-                    User user = users[update.PlatformUserId];
+                    User user = usersByPlatformId[update.PlatformUserId];
                     Character? character = user.Characters.FirstOrDefault();
                     if (character == null)
                     {
@@ -153,22 +153,25 @@ namespace Crpg.Application.Games.Commands
                         brokenItemsWithUser.Add((user.Id, brokenItems));
                     }
 
-                    res.Add(new GameUser
-                    {
-                        Id = user.Id,
-                        Platform = Platform.Steam,
-                        PlatformUserId = user.PlatformUserId,
-                        Gold = user.Gold,
-                        Character = _mapper.Map<CharacterViewModel>(character),
-                        BrokenItems = _mapper.Map<IList<GameUserBrokenItem>>(brokenItems),
-                        Ban = _mapper.Map<BanViewModel>(activeBan),
-                    });
+                    res.Add((user, character, brokenItems, activeBan));
                 }
 
                 await AddNewCharacterItemsToUsers(newCharacters);
                 await ReplaceBrokenItems(brokenItemsWithUser, cancellationToken);
                 await _db.SaveChangesAsync(cancellationToken);
-                return new UpdateGameResult { Users = res };
+                return new UpdateGameResult
+                {
+                    Users = res.Select(r => new GameUser
+                    {
+                        Id = r.user.Id,
+                        Platform = r.user.Platform,
+                        PlatformUserId = r.user.PlatformUserId,
+                        Gold = r.user.Gold,
+                        Character = _mapper.Map<CharacterViewModel>(r.character),
+                        BrokenItems = _mapper.Map<IList<GameUserBrokenItem>>(r.brokenItems),
+                        Ban = _mapper.Map<BanViewModel>(r.ban),
+                    }).ToArray(),
+                };
             }
 
             private void Reward(Character character, GameUserReward reward)
