@@ -51,7 +51,7 @@ namespace Crpg.DumpItemsMod
             {
                 MbId = mbItem.StringId,
                 Name = mbItem.Name.ToString(),
-                Type = EnumToCamelCase(mbItem.Type.ToString()),
+                Type = mbItem.Type.ToString(),
                 Value = mbItem.Value,
                 Weight = mbItem.Weight,
             };
@@ -83,7 +83,7 @@ namespace Crpg.DumpItemsMod
             {
                 crpgItem.Weapons = mbItem.WeaponComponent.Weapons.Select(w => new ItemWeaponComponent
                 {
-                    Class = EnumToCamelCase(w.WeaponClass.ToString()),
+                    Class = w.WeaponClass.ToString(),
                     Accuracy = w.Accuracy,
                     MissileSpeed = w.MissileSpeed,
                     StackAmount = w.MaxDataValue,
@@ -106,8 +106,8 @@ namespace Crpg.DumpItemsMod
 
         private static string MbToCrpgDamageType(DamageTypes t) => t switch
         {
-            DamageTypes.Invalid => "undefined",
-            _ => EnumToCamelCase(t.ToString()),
+            DamageTypes.Invalid => "Undefined",
+            _ => t.ToString(),
         };
 
         private static IEnumerable<ItemObject> DeserializeMbItems(string path)
@@ -179,7 +179,5 @@ namespace Crpg.DumpItemsMod
                 .GetProperty(nameof(gameModels.ItemValueModel), BindingFlags.Instance | BindingFlags.Public)
                 .SetValue(gameModels, gm);
         }
-
-        private static string EnumToCamelCase(string s) => char.ToLower(s[0]) + s.Substring(1);
     }
 }

@@ -1,5 +1,5 @@
 enum Platform {
-  Steam = 'steam',
+  Steam = 'Steam',
 }
 
 export default Platform;

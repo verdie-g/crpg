@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Crpg.WebApi.Controllers
 {
-    [Authorize(Roles = "user,admin,superAdmin")]
+    [Authorize(Roles = "User,Admin,SuperAdmin")]
     public class UsersController : BaseController
     {
         /// <summary>

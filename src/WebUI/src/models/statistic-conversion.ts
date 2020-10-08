@@ -1,6 +1,6 @@
 enum StatisticConversion {
-  AttributesToSkills,
-  SkillsToAttributes,
+  AttributesToSkills = 'AttributesToSkills',
+  SkillsToAttributes = 'SkillsToAttributes',
 }
 
 export default StatisticConversion;

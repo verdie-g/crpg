@@ -66,7 +66,7 @@ namespace Crpg.WebApi
                 {
                     options.JsonSerializerOptions.Converters.Add(new TimeSpanConverter());
                     options.JsonSerializerOptions.Converters.Add(new JsonArrayStringEnumFlagsConverterFactory());
-                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 });
 
             services.AddHealthChecks();
@@ -232,7 +232,7 @@ namespace Crpg.WebApi
                 var jwt = tokenIssuer.IssueToken(new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim(ClaimTypes.Role, StringHelper.PascalToCamelCase(user.Role.ToString())),
+                    new Claim(ClaimTypes.Role, user.Role.ToString()),
                 }));
 
                 ctx.Request.HttpContext.Items["jwt"] = jwt;

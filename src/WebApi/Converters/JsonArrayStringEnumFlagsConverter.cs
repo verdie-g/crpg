@@ -27,7 +27,7 @@ namespace Crpg.WebApi.Converters
         private static readonly Dictionary<string, ulong> EnumValues =
             Enum.GetValues(typeof(T))
                 .Cast<T>()
-                .ToDictionary(ToCamelCaseString, e => Convert.ToUInt64(e));
+                .ToDictionary(e => e.ToString(), e => Convert.ToUInt64(e));
 
         public override bool CanConvert(Type typeToConvert) =>
             typeToConvert.IsEnum && typeToConvert.IsDefined(typeof(FlagsAttribute), false);
@@ -70,12 +70,6 @@ namespace Crpg.WebApi.Converters
             }
 
             writer.WriteEndArray();
-        }
-
-        private static string ToCamelCaseString(T val)
-        {
-            string s = val.ToString();
-            return char.ToLowerInvariant(s[0]) + s.Substring(1);
         }
     }
 }
