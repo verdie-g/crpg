@@ -52,16 +52,13 @@ namespace Crpg.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var jwtSection = _configuration.GetSection("Jwt");
-
             services
                 .AddInfrastructure(_configuration, _environment)
                 .AddPersistence(_configuration, _environment)
                 .AddApplication()
                 .AddHttpContextAccessor() // Injects IHttpContextAccessor
                 .AddScoped<ICurrentUserService, CurrentUserService>()
-                .Configure<JwtConfiguration>(jwtSection)
-                .AddSingleton<ITokenIssuer, JwtTokenIssuer>()
+                .AddSingleton<ITokenIssuer>(new JwtTokenIssuer(_configuration.GetSection(JwtOptions.Position).Get<JwtOptions>()))
                 .AddSwaggerGen(ConfigureSwagger)
                 .AddCors(ConfigureCors)
                 .AddControllers()

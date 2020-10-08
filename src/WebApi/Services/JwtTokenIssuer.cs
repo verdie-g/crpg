@@ -13,10 +13,10 @@ namespace Crpg.WebApi.Services
         private readonly SigningCredentials _signingCredentials;
         private readonly TimeSpan _lifetime;
 
-        public JwtTokenIssuer(IOptions<JwtConfiguration> jwtConfig)
+        public JwtTokenIssuer(JwtOptions jwtOptions)
         {
-            _signingCredentials = ComputeSigningCredentials(jwtConfig.Value.Secret);
-            _lifetime = jwtConfig.Value.Lifetime;
+            _signingCredentials = ComputeSigningCredentials(jwtOptions.Secret);
+            _lifetime = jwtOptions.Lifetime;
         }
 
         public string IssueToken(ClaimsIdentity claimsIdentity)
@@ -40,8 +40,10 @@ namespace Crpg.WebApi.Services
         }
     }
 
-    public class JwtConfiguration
+    public class JwtOptions
     {
+        public const string Position = "Jwt";
+
         public string Secret { get; set; } = string.Empty;
         public TimeSpan Lifetime { get; set; }
     }
