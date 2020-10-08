@@ -21,7 +21,7 @@ namespace Crpg.GameMod.DefendTheVirgin
     {
         private static readonly Random Rng = new Random();
 
-        private readonly ICrpgClient _crpgClient = new CrpgHttpClient("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOjAsInJvbGUiOiJnYW1lIiwibmJmIjoxNjAxMDQ4NzEyLCJleHAiOiIxNjAyMDAwMDAwIiwiaWF0IjoxNjAxMDQ4NzEyfQ.8GuUTu3Gs5-JH3_oHCuFWuNxF6ChjWK4P4vfs_2KFuE");
+        private readonly ICrpgClient _crpgClient = new CrpgHttpClient("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIwIiwicm9sZSI6IkdhbWUiLCJuYmYiOjE2MDIxNzYyMTksImV4cCI6MTYzMzcxMjIxOSwiaWF0IjoxNjAyMTc2MjE5fQ.XI_5-9yI6B2KODpX6Lv9mvcbBhjKL5Lr5qxtNLwK7ns");
 
         private Task<CrpgUser>? _getUserTask;
         private WaveGroup[][]? _waves;
