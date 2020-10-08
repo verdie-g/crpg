@@ -8,6 +8,7 @@ using Crpg.GameMod.Helpers;
 using Newtonsoft.Json;
 using Steamworks;
 using TaleWorlds.Core;
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
@@ -75,6 +76,12 @@ namespace Crpg.GameMod.DefendTheVirgin
         {
             base.OnLoadFinished();
 
+            if (_getUserTask!.IsFaulted)
+            {
+                MBDebug.Print(_getUserTask.Exception!.ToString());
+                return;
+            }
+
             string scene = GetRandomVillageScene();
             AtmosphereInfo atmosphereInfoForMission = GetRandomAtmosphere();
 
@@ -82,8 +89,8 @@ namespace Crpg.GameMod.DefendTheVirgin
             InformationManager.DisplayMessage(new InformationMessage("Visit c-rpg.eu to upgrade your character."));
 
             var waveController = new WaveController(_waves!.Length);
-            var waveSpawnLogic = new WaveSpawnLogic(waveController, _waves!, CreateCharacter(_getUserTask!.Result.Character));
-            var crpgLogic = new CrpgLogic(waveController, _crpgClient, _waves!, _getUserTask!.Result);
+            var waveSpawnLogic = new WaveSpawnLogic(waveController, _waves!, CreateCharacter(_getUserTask.Result.Character));
+            var crpgLogic = new CrpgLogic(waveController, _crpgClient, _waves!, _getUserTask.Result);
 
             MissionState.OpenNew("DefendTheVirgin", new MissionInitializerRecord(scene)
             {
