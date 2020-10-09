@@ -1,3 +1,3 @@
 ﻿# Common Layer
 
-This will contain all cross-cutting concerns.
+This contain helper classes/methods without any dependency.

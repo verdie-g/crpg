@@ -8,6 +8,7 @@ using Crpg.Application.Games.Models;
 using Crpg.Common;
 using Crpg.Domain.Entities;
 using Crpg.Sdk;
+using Crpg.Sdk.Abstractions;
 using Crpg.Sdk.Abstractions.Events;
 using Microsoft.EntityFrameworkCore;
 using Moq;

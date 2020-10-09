@@ -1,6 +1,5 @@
 using System;
 using Crpg.Application.Common.Interfaces;
-using Crpg.Common;
 using Crpg.Sdk.Abstractions;
 using Crpg.Sdk.Abstractions.Events;
 using Crpg.Sdk.Abstractions.Metrics;

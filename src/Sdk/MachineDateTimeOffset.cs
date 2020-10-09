@@ -1,5 +1,5 @@
 using System;
-using Crpg.Common;
+using Crpg.Sdk.Abstractions;
 
 namespace Crpg.Sdk
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Security.Cryptography;
 using System.Threading;
-using Crpg.Common;
+using Crpg.Sdk.Abstractions;
 
 namespace Crpg.Sdk
 {

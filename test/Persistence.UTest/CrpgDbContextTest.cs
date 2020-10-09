@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using Crpg.Common;
 using Crpg.Domain.Entities;
 using Crpg.Persistence;
+using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;

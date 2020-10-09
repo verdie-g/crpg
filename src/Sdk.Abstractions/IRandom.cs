@@ -1,4 +1,4 @@
-﻿namespace Crpg.Common
+﻿namespace Crpg.Sdk.Abstractions
 {
     public interface IRandom
     {
