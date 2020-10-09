@@ -16,6 +16,11 @@
         string ServiceName { get; }
 
         /// <summary>
+        /// Name of the instance of the application.
+        /// </summary>
+        string Instance { get; }
+
+        /// <summary>
         /// Name of the machine the application is running on.
         /// </summary>
         string HostName { get; }

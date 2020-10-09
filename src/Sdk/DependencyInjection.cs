@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Crpg.Sdk.Abstractions;
 using Crpg.Sdk.Abstractions.Events;
 using Crpg.Sdk.Abstractions.Metrics;
@@ -41,7 +42,7 @@ namespace Crpg.Sdk
                 var dogStatsD = new DogStatsD(new DogStatsDConfiguration
                 {
                     Namespace = "crpg",
-                    ConstantTags = new[] { "service:" + appEnv.ServiceName },
+                    ConstantTags = BuildTagsFromEnv(appEnv),
                 });
 
                 services.AddSingleton<IMetricsFactory>(new DatadogMetricsFactory(dogStatsD));
@@ -56,7 +57,19 @@ namespace Crpg.Sdk
         {
             var env = environment.IsProduction() ? HostingEnvironment.Production : HostingEnvironment.Development;
             string serviceName = Environment.GetEnvironmentVariable("CRPG_SERVICE") ?? "test";
-            return new ApplicationEnvironment(env, serviceName, Environment.MachineName);
+            string instance = Environment.GetEnvironmentVariable("CRPG_INSTANCE") ?? string.Empty;
+            return new ApplicationEnvironment(env, serviceName, instance, Environment.MachineName);
+        }
+
+        private static string[] BuildTagsFromEnv(IApplicationEnvironment appEnv)
+        {
+            var constantTags = new List<string> { "service:" + appEnv.ServiceName };
+            if (appEnv.Instance.Length != 0)
+            {
+                constantTags.Add("instance:" + appEnv.Instance);
+            }
+
+            return constantTags.ToArray();
         }
     }
 }

@@ -7,11 +7,13 @@ namespace Crpg.Sdk
         public HostingEnvironment Environment { get; }
         public string ServiceName { get; }
         public string HostName { get; }
+        public string Instance { get; }
 
-        public ApplicationEnvironment(HostingEnvironment env, string serviceName, string hostName)
+        public ApplicationEnvironment(HostingEnvironment env, string serviceName, string instance, string hostName)
         {
             Environment = env;
             ServiceName = serviceName;
+            Instance = instance;
             HostName = hostName;
         }
     }
