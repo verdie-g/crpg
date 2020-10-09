@@ -288,7 +288,7 @@ namespace Crpg.Application.Games.Commands
                     Level = CharacterHelper.DefaultLevel,
                     Experience = CharacterHelper.DefaultExperience,
                     ExperienceMultiplier = CharacterHelper.DefaultExperienceMultiplier,
-                    Items = (CharacterItems)DefaultItemSets[_random.Next(DefaultItemSets.Length - 1)].Clone(),
+                    Items = (CharacterItems)DefaultItemSets[_random.Next(0, DefaultItemSets.Length - 1)].Clone(),
                 };
                 CharacterHelper.ResetCharacterStats(character);
 

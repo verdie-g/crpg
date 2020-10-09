@@ -17,9 +17,9 @@ namespace Crpg.Sdk
             return new Random(BitConverter.ToInt32(buffer, 0));
         });
 
-        public int Next(int maxValue)
+        public int Next(int minValue, int maxValue)
         {
-            return _instance.Value!.Next(maxValue);
+            return _instance.Value!.Next(minValue, maxValue);
         }
     }
 }

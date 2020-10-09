@@ -100,7 +100,7 @@ namespace Crpg.Application.UTest.Games
         {
             // Make sure to always give the same item set to the character
             var randomMock = new Mock<IRandom>();
-            randomMock.Setup(r => r.Next(It.IsAny<int>())).Returns(1);
+            randomMock.Setup(r => r.Next(It.IsAny<int>(), It.IsAny<int>())).Returns(1);
 
             var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), randomMock.Object);
@@ -196,7 +196,7 @@ namespace Crpg.Application.UTest.Games
 
             // Make sure to always give the same item set to the character
             var randomMock = new Mock<IRandom>();
-            randomMock.Setup(r => r.Next(It.IsAny<int>())).Returns(1);
+            randomMock.Setup(r => r.Next(It.IsAny<int>(), It.IsAny<int>())).Returns(1);
 
             var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), randomMock.Object);

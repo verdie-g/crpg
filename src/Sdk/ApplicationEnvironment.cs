@@ -1,5 +1,4 @@
-﻿using Crpg.Application.Common.Interfaces;
-using Crpg.Sdk.Abstractions;
+﻿using Crpg.Sdk.Abstractions;
 
 namespace Crpg.Sdk
 {
