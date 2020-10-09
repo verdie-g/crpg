@@ -16,7 +16,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" />
         <AdditionalFiles Include="../stylecop.json" />
     </ItemGroup>
 
@@ -46,6 +45,10 @@
         </Reference>
 
         <Reference Include="System.Net.Http" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" />
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,9 @@
 using System.Reflection;
 using AutoMapper;
 using Crpg.Application.Common.Behaviors;
+using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Services;
+using Crpg.Sdk.Files;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +20,7 @@ namespace Crpg.Application
                 .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>))
                 .AddSingleton(typeof(RequestMetrics<>))
                 .AddSingleton<ItemModifierService>()
+                .AddSingleton<IItemsSource, FileItemsSource>()
                 .AddValidatorsFromAssemblyContaining(typeof(DependencyInjection));
 
             return services;

@@ -15,8 +15,8 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Steam;
 using Crpg.Application.Users.Commands;
 using Crpg.Common.Helpers;
-using Crpg.Infrastructure;
 using Crpg.Persistence;
+using Crpg.Sdk;
 using Crpg.WebApi.Converters;
 using Crpg.WebApi.Middlewares;
 using Crpg.WebApi.Services;
@@ -53,7 +53,7 @@ namespace Crpg.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddInfrastructure(_configuration, _environment)
+                .AddSdk(_configuration, _environment)
                 .AddPersistence(_configuration, _environment)
                 .AddApplication()
                 .AddHttpContextAccessor() // Injects IHttpContextAccessor

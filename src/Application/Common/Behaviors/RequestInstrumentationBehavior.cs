@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Exceptions;
-using Crpg.Application.Common.Interfaces.Tracing;
 using Crpg.Common;
 using Crpg.Common.Helpers;
+using Crpg.Sdk.Abstractions.Tracing;
 using MediatR;
 
 namespace Crpg.Application.Common.Behaviors

@@ -17,6 +17,7 @@ Environment=DD_INTEGRATIONS=/opt/datadog/integrations.json
 Environment=DD_DOTNET_TRACER_HOME=/opt/datadog
 Environment=DD_SERVICE={{ crpg_service_name }}
 Environment=DD_LOGS_INJECTION=true
+Environment=CRPG_SERVICE={{ crpg_service_name }}
 
 [Install]
 WantedBy=multi-user.target

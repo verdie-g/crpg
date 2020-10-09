@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
-using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Domain.Entities;
+using Crpg.Sdk.Abstractions.Events;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

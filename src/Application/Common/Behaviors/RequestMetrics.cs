@@ -1,5 +1,5 @@
-using Crpg.Application.Common.Interfaces.Metrics;
 using Crpg.Common.Helpers;
+using Crpg.Sdk.Abstractions.Metrics;
 
 namespace Crpg.Application.Common.Behaviors
 {

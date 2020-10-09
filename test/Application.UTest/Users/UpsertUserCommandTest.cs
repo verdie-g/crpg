@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common.Interfaces.Events;
 using Crpg.Application.Users.Commands;
 using Crpg.Domain.Entities;
+using Crpg.Sdk.Abstractions.Events;
 using Moq;
 using NUnit.Framework;
 

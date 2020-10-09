@@ -8,6 +8,7 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
+using Crpg.Sdk.Abstractions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
