@@ -5,7 +5,7 @@ namespace Crpg.Application.Common.Helpers
     public static class ExperienceTable
     {
         internal const int MinLevel = 1;
-        internal const int MaxLevel = 35;
+        internal const int MaxLevel = 38;
 
         private static readonly int[] Table = ComputeExperienceTable();
 
