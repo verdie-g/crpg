@@ -2,22 +2,20 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Characters.Models;
-using Crpg.Application.Common;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
-using Crpg.Domain.Entities;
-using MediatR;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class RetireCharacterCommand : IRequest<CharacterViewModel>
+    public class RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
     {
         public int CharacterId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<RetireCharacterCommand, CharacterViewModel>
+        public class Handler : IMediatorRequestHandler<RetireCharacterCommand, CharacterViewModel>
         {
             private const int MinimumRetiringLevel = 31;
             private const float ExperienceMultiplierIncrease = 0.03f;
@@ -31,19 +29,19 @@ namespace Crpg.Application.Characters.Commands
                 _mapper = mapper;
             }
 
-            public async Task<CharacterViewModel> Handle(RetireCharacterCommand request, CancellationToken cancellationToken)
+            public async Task<Result<CharacterViewModel>> Handle(RetireCharacterCommand req, CancellationToken cancellationToken)
             {
                 var character = await _db.Characters
                     .Include(c => c.User)
-                    .FirstOrDefaultAsync(c => c.Id == request.CharacterId && c.UserId == request.UserId, cancellationToken);
+                    .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
                 if (character == null)
                 {
-                    throw new NotFoundException(nameof(Character), request.CharacterId);
+                    return new Result<CharacterViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
                 if (character.Level < MinimumRetiringLevel)
                 {
-                    throw new BadRequestException($"Level {MinimumRetiringLevel} is required to retire");
+                    return new Result<CharacterViewModel>(CommonErrors.CharacterLevelRequirementNotMet(MinimumRetiringLevel, character.Level));
                 }
 
                 character.Generation += 1;
@@ -56,7 +54,7 @@ namespace Crpg.Application.Characters.Commands
                 character.User!.HeirloomPoints += 1;
 
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<CharacterViewModel>(character);
+                return new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character));
             }
         }
     }

@@ -9,25 +9,23 @@ using ValidationException = Crpg.Application.Common.Exceptions.ValidationExcepti
 
 namespace Crpg.Application.Common.Behaviors
 {
-    public class RequestValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-            where TRequest : IRequest<TResponse>
+    internal class RequestValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
         private readonly IValidator<TRequest>[] _validators;
 
         public RequestValidationBehavior(IEnumerable<IValidator<TRequest>> validators)
         {
-            _validators = (validators as IValidator<TRequest>[]) !;
+            _validators = (validators as IValidator<TRequest>[])!;
         }
 
-        public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
-            RequestHandlerDelegate<TResponse> next)
+        public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             if (_validators.Length == 0)
             {
                 return next();
             }
 
-            var context = new ValidationContext(request);
+            var context = new ValidationContext<TRequest>(request);
 
             var failures = _validators
                 .Select(v => v.Validate(context))
@@ -37,7 +35,7 @@ namespace Crpg.Application.Common.Behaviors
 
             if (failures.Count != 0)
             {
-                throw new ValidationException(failures);
+                throw new ValidationException(failures.Select(f => new ValidationError(f.ErrorMessage, f.PropertyName)));
             }
 
             return next();

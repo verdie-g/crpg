@@ -46,7 +46,7 @@ namespace Crpg.Application.UTest.Games
             var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
-            var res = await handler.Handle(new UpdateGameCommand
+            var result = await handler.Handle(new UpdateGameCommand
             {
                 GameUserUpdates = new[]
                 {
@@ -63,31 +63,32 @@ namespace Crpg.Application.UTest.Games
                 }
             }, CancellationToken.None);
 
-            Assert.AreEqual(1, res.Users.Count);
-            Assert.NotZero(res.Users[0].Id);
-            Assert.AreEqual(300 + 200, res.Users[0].Gold);
-            Assert.AreEqual("a", res.Users[0].Character.Name);
-            Assert.AreEqual(0, res.Users[0].Character.Generation);
-            Assert.AreEqual(1, res.Users[0].Character.Level);
-            Assert.AreEqual(100, res.Users[0].Character.Experience);
-            Assert.AreEqual(3, res.Users[0].Character.Statistics.Attributes.Strength);
-            Assert.AreEqual(3, res.Users[0].Character.Statistics.Attributes.Agility);
-            Assert.AreEqual(0, res.Users[0].Character.Statistics.Attributes.Points);
-            Assert.AreEqual(0, res.Users[0].Character.Statistics.Skills.Points);
-            Assert.Greater(res.Users[0].Character.Statistics.WeaponProficiencies.Points, 0);
-            Assert.IsNotNull(res.Users[0].Character.Items.HeadItem);
-            Assert.IsNotNull(res.Users[0].Character.Items.BodyItem);
-            Assert.IsNotNull(res.Users[0].Character.Items.LegItem);
-            Assert.IsNotNull(res.Users[0].Character.Items.Weapon1Item);
-            Assert.IsNotNull(res.Users[0].Character.Items.Weapon2Item);
-            Assert.IsTrue(res.Users[0].Character.Items.AutoRepair);
-            Assert.AreEqual(0, res.Users[0].BrokenItems.Count);
-            Assert.IsNull(res.Users[0].Ban);
+            var data = result.Data!;
+            Assert.AreEqual(1, data.Users.Count);
+            Assert.NotZero(data.Users[0].Id);
+            Assert.AreEqual(300 + 200, data.Users[0].Gold);
+            Assert.AreEqual("a", data.Users[0].Character.Name);
+            Assert.AreEqual(0, data.Users[0].Character.Generation);
+            Assert.AreEqual(1, data.Users[0].Character.Level);
+            Assert.AreEqual(100, data.Users[0].Character.Experience);
+            Assert.AreEqual(3, data.Users[0].Character.Statistics.Attributes.Strength);
+            Assert.AreEqual(3, data.Users[0].Character.Statistics.Attributes.Agility);
+            Assert.AreEqual(0, data.Users[0].Character.Statistics.Attributes.Points);
+            Assert.AreEqual(0, data.Users[0].Character.Statistics.Skills.Points);
+            Assert.Greater(data.Users[0].Character.Statistics.WeaponProficiencies.Points, 0);
+            Assert.IsNotNull(data.Users[0].Character.Items.HeadItem);
+            Assert.IsNotNull(data.Users[0].Character.Items.BodyItem);
+            Assert.IsNotNull(data.Users[0].Character.Items.LegItem);
+            Assert.IsNotNull(data.Users[0].Character.Items.Weapon1Item);
+            Assert.IsNotNull(data.Users[0].Character.Items.Weapon2Item);
+            Assert.IsTrue(data.Users[0].Character.Items.AutoRepair);
+            Assert.AreEqual(0, data.Users[0].BrokenItems.Count);
+            Assert.IsNull(data.Users[0].Ban);
 
             // Check that user and its owned entities were created
             var user = await AssertDb.Users
                 .Include(u => u.Characters)
-                .FirstOrDefaultAsync(u => u.Id == res.Users[0].Id);
+                .FirstOrDefaultAsync(u => u.Id == data.Users[0].Id);
 
             Assert.IsNotNull(user);
             Assert.IsNotEmpty(user.Characters);
@@ -134,7 +135,7 @@ namespace Crpg.Application.UTest.Games
             var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
-            var res = await handler.Handle(new UpdateGameCommand
+            var result = await handler.Handle(new UpdateGameCommand
             {
                 GameUserUpdates = new[]
                 {
@@ -151,26 +152,27 @@ namespace Crpg.Application.UTest.Games
                 }
             }, CancellationToken.None);
 
-            Assert.AreEqual(1, res.Users.Count);
-            Assert.AreEqual(1000 + 200, res.Users[0].Gold);
-            Assert.NotZero(res.Users[0].Character.Id);
-            Assert.AreEqual("a", res.Users[0].Character.Name);
-            Assert.AreEqual(0, res.Users[0].Character.Generation);
-            Assert.AreEqual(1, res.Users[0].Character.Level);
-            Assert.AreEqual(100, res.Users[0].Character.Experience);
-            Assert.NotNull(res.Users[0].Character.Items.HeadItem);
-            Assert.NotNull(res.Users[0].Character.Items.BodyItem);
-            Assert.NotNull(res.Users[0].Character.Items.LegItem);
-            Assert.NotNull(res.Users[0].Character.Items.Weapon1Item);
-            Assert.NotNull(res.Users[0].Character.Items.Weapon2Item);
-            Assert.IsTrue(res.Users[0].Character.Items.AutoRepair);
-            Assert.AreEqual(0, res.Users[0].BrokenItems.Count);
-            Assert.IsNull(res.Users[0].Ban);
+            var data = result.Data!;
+            Assert.AreEqual(1, data.Users.Count);
+            Assert.AreEqual(1000 + 200, data.Users[0].Gold);
+            Assert.NotZero(data.Users[0].Character.Id);
+            Assert.AreEqual("a", data.Users[0].Character.Name);
+            Assert.AreEqual(0, data.Users[0].Character.Generation);
+            Assert.AreEqual(1, data.Users[0].Character.Level);
+            Assert.AreEqual(100, data.Users[0].Character.Experience);
+            Assert.NotNull(data.Users[0].Character.Items.HeadItem);
+            Assert.NotNull(data.Users[0].Character.Items.BodyItem);
+            Assert.NotNull(data.Users[0].Character.Items.LegItem);
+            Assert.NotNull(data.Users[0].Character.Items.Weapon1Item);
+            Assert.NotNull(data.Users[0].Character.Items.Weapon2Item);
+            Assert.IsTrue(data.Users[0].Character.Items.AutoRepair);
+            Assert.AreEqual(0, data.Users[0].BrokenItems.Count);
+            Assert.IsNull(data.Users[0].Ban);
 
             // Check that character and its owned entities were created
             user = await AssertDb.Users
                 .Include(u => u.Characters)
-                .FirstOrDefaultAsync(u => u.Id == res.Users[0].Id);
+                .FirstOrDefaultAsync(u => u.Id == data.Users[0].Id);
 
             Assert.IsNotNull(user);
             Assert.IsNotEmpty(user.Characters);
@@ -202,7 +204,7 @@ namespace Crpg.Application.UTest.Games
                 new MachineDateTimeOffset(), randomMock.Object);
 
             // Handle shouldn't throw
-            var res = await handler.Handle(new UpdateGameCommand
+            var result = await handler.Handle(new UpdateGameCommand
             {
                 GameUserUpdates = new[]
                 {
@@ -246,7 +248,7 @@ namespace Crpg.Application.UTest.Games
             var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
-            var res = await handler.Handle(new UpdateGameCommand
+            var result = await handler.Handle(new UpdateGameCommand
             {
                 GameUserUpdates = new[]
                 {
@@ -263,20 +265,21 @@ namespace Crpg.Application.UTest.Games
                 }
             }, CancellationToken.None);
 
-            Assert.AreEqual(1, res.Users.Count);
-            Assert.AreEqual(user.Id, res.Users[0].Id);
-            Assert.AreEqual(1000 + 200, res.Users[0].Gold);
-            Assert.AreEqual("a", res.Users[0].Character.Name);
-            Assert.AreEqual(0, res.Users[0].Character.Generation);
-            Assert.AreEqual(1, res.Users[0].Character.Level);
-            Assert.AreEqual(100 + 300, res.Users[0].Character.Experience);
-            Assert.Null(res.Users[0].Character.Items.HeadItem);
-            Assert.NotNull(res.Users[0].Character.Items.BodyItem);
-            Assert.Null(res.Users[0].Character.Items.LegItem);
-            Assert.Null(res.Users[0].Character.Items.Weapon1Item);
-            Assert.Null(res.Users[0].Character.Items.Weapon2Item);
-            Assert.AreEqual(0, res.Users[0].BrokenItems.Count);
-            Assert.IsNull(res.Users[0].Ban);
+            var data = result.Data!;
+            Assert.AreEqual(1, data.Users.Count);
+            Assert.AreEqual(user.Id, data.Users[0].Id);
+            Assert.AreEqual(1000 + 200, data.Users[0].Gold);
+            Assert.AreEqual("a", data.Users[0].Character.Name);
+            Assert.AreEqual(0, data.Users[0].Character.Generation);
+            Assert.AreEqual(1, data.Users[0].Character.Level);
+            Assert.AreEqual(100 + 300, data.Users[0].Character.Experience);
+            Assert.Null(data.Users[0].Character.Items.HeadItem);
+            Assert.NotNull(data.Users[0].Character.Items.BodyItem);
+            Assert.Null(data.Users[0].Character.Items.LegItem);
+            Assert.Null(data.Users[0].Character.Items.Weapon1Item);
+            Assert.Null(data.Users[0].Character.Items.Weapon2Item);
+            Assert.AreEqual(0, data.Users[0].BrokenItems.Count);
+            Assert.IsNull(data.Users[0].Ban);
         }
 
         [Test]
@@ -301,7 +304,7 @@ namespace Crpg.Application.UTest.Games
             var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
-            var res = await handler.Handle(new UpdateGameCommand
+            var result = await handler.Handle(new UpdateGameCommand
             {
                 GameUserUpdates = new[]
                 {
@@ -314,12 +317,13 @@ namespace Crpg.Application.UTest.Games
                 }
             }, CancellationToken.None);
 
-            Assert.AreEqual(0, res.Users[0].Character.Generation);
-            Assert.AreEqual(2, res.Users[0].Character.Level);
-            Assert.AreEqual(1000 + 2 * 1000, res.Users[0].Character.Experience);
-            Assert.AreEqual(1, res.Users[0].Character.Statistics.Attributes.Points);
-            Assert.AreEqual(1, res.Users[0].Character.Statistics.Skills.Points);
-            Assert.Greater(res.Users[0].Character.Statistics.WeaponProficiencies.Points, 1);
+            var data = result.Data!;
+            Assert.AreEqual(0, data.Users[0].Character.Generation);
+            Assert.AreEqual(2, data.Users[0].Character.Level);
+            Assert.AreEqual(1000 + 2 * 1000, data.Users[0].Character.Experience);
+            Assert.AreEqual(1, data.Users[0].Character.Statistics.Attributes.Points);
+            Assert.AreEqual(1, data.Users[0].Character.Statistics.Skills.Points);
+            Assert.Greater(data.Users[0].Character.Statistics.WeaponProficiencies.Points, 1);
         }
 
         [Test]
@@ -369,7 +373,7 @@ namespace Crpg.Application.UTest.Games
             var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
-            var res = await handler.Handle(new UpdateGameCommand
+            var result = await handler.Handle(new UpdateGameCommand
             {
                 GameUserUpdates = new[]
                 {
@@ -400,21 +404,22 @@ namespace Crpg.Application.UTest.Games
                 }
             }, CancellationToken.None);
 
-            Assert.AreEqual(4, res.Users.Count);
+            var data = result.Data!;
+            Assert.AreEqual(4, data.Users.Count);
 
-            Assert.AreEqual(user0.PlatformUserId, res.Users[0].PlatformUserId);
-            Assert.AreEqual(user0.Characters[0].Name, res.Users[0].Character.Name);
+            Assert.AreEqual(user0.PlatformUserId, data.Users[0].PlatformUserId);
+            Assert.AreEqual(user0.Characters[0].Name, data.Users[0].Character.Name);
 
-            Assert.AreEqual(user1.PlatformUserId, res.Users[1].PlatformUserId);
-            Assert.AreEqual(user1.Characters[0].Name, res.Users[1].Character.Name);
+            Assert.AreEqual(user1.PlatformUserId, data.Users[1].PlatformUserId);
+            Assert.AreEqual(user1.Characters[0].Name, data.Users[1].Character.Name);
 
-            Assert.AreEqual(user2.PlatformUserId, res.Users[2].PlatformUserId);
-            Assert.AreEqual("c", res.Users[2].Character.Name);
+            Assert.AreEqual(user2.PlatformUserId, data.Users[2].PlatformUserId);
+            Assert.AreEqual("c", data.Users[2].Character.Name);
 
-            Assert.AreEqual("4", res.Users[3].PlatformUserId);
-            Assert.AreEqual("d", res.Users[3].Character.Name);
+            Assert.AreEqual("4", data.Users[3].PlatformUserId);
+            Assert.AreEqual("d", data.Users[3].Character.Name);
 
-            foreach (var user in res.Users)
+            foreach (var user in data.Users)
             {
                 Assert.AreEqual(100, user.Gold);
                 Assert.AreEqual(1000, user.Character.Experience);
@@ -446,12 +451,13 @@ namespace Crpg.Application.UTest.Games
             var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 dateTime.Object, new ThreadSafeRandom());
 
-            var res = await handler.Handle(new UpdateGameCommand
+            var result = await handler.Handle(new UpdateGameCommand
             {
                 GameUserUpdates = new[] { new GameUserUpdate { PlatformUserId = "1" } }
             }, CancellationToken.None);
 
-            Assert.NotNull(res.Users[0].Ban);
+            var data = result.Data!;
+            Assert.NotNull(data.Users[0].Ban);
         }
 
         [Test]
@@ -484,12 +490,13 @@ namespace Crpg.Application.UTest.Games
             var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 dateTime.Object, new ThreadSafeRandom());
 
-            var res = await handler.Handle(new UpdateGameCommand
+            var result = await handler.Handle(new UpdateGameCommand
             {
                 GameUserUpdates = new[] { new GameUserUpdate { PlatformUserId = "1" } }
             }, CancellationToken.None);
 
-            Assert.Null(res.Users[0].Ban);
+            var data = result.Data!;
+            Assert.Null(data.Users[0].Ban);
         }
 
         [Test]
@@ -528,7 +535,7 @@ namespace Crpg.Application.UTest.Games
             var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
-            var res = await handler.Handle(new UpdateGameCommand
+            var result = await handler.Handle(new UpdateGameCommand
             {
                 GameUserUpdates = new[]
                 {
@@ -554,11 +561,12 @@ namespace Crpg.Application.UTest.Games
                 }
             }, CancellationToken.None);
 
-            Assert.AreEqual(10000 - 3850, res.Users[0].Gold);
-            Assert.AreEqual(0, res.Users[0].BrokenItems.Count);
+            var data = result.Data!;
+            Assert.AreEqual(10000 - 3850, data.Users[0].Gold);
+            Assert.AreEqual(0, data.Users[0].BrokenItems.Count);
 
             var expectedItems = user.Characters[0].Items;
-            var actualItems = res.Users[0].Character.Items;
+            var actualItems = data.Users[0].Character.Items;
             Assert.AreEqual(expectedItems.HeadItem!.Id, actualItems.HeadItem!.Id);
             Assert.AreEqual(expectedItems.CapeItem!.Id, actualItems.CapeItem!.Id);
             Assert.AreEqual(expectedItems.BodyItem!.Id, actualItems.BodyItem!.Id);
@@ -625,7 +633,7 @@ namespace Crpg.Application.UTest.Games
             var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
-            var res = await handler.Handle(new UpdateGameCommand
+            var result = await handler.Handle(new UpdateGameCommand
             {
                 GameUserUpdates = new[]
                 {
@@ -651,8 +659,9 @@ namespace Crpg.Application.UTest.Games
                 }
             }, CancellationToken.None);
 
-            Assert.AreEqual(10000, res.Users[0].Gold);
-            Assert.AreEqual(11, res.Users[0].BrokenItems.Count);
+            var data = result.Data!;
+            Assert.AreEqual(10000, data.Users[0].Gold);
+            Assert.AreEqual(11, data.Users[0].BrokenItems.Count);
 
             user = await AssertDb.Users
                 .Include(u => u.Characters).ThenInclude(c => c.Items.HeadItem)
@@ -715,7 +724,7 @@ namespace Crpg.Application.UTest.Games
             var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
-            var res = await handler.Handle(new UpdateGameCommand
+            var result = await handler.Handle(new UpdateGameCommand
             {
                 GameUserUpdates = new[]
                 {
@@ -734,8 +743,9 @@ namespace Crpg.Application.UTest.Games
                 }
             }, CancellationToken.None);
 
-            Assert.AreEqual(0, res.Users[0].Gold);
-            Assert.AreEqual(1, res.Users[0].BrokenItems.Count); // hand
+            var data = result.Data!;
+            Assert.AreEqual(0, data.Users[0].Gold);
+            Assert.AreEqual(1, data.Users[0].BrokenItems.Count); // hand
         }
     }
 }

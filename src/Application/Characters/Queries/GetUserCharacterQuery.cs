@@ -4,18 +4,19 @@ using AutoMapper;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries
 {
-    public class GetUserCharacterQuery : IRequest<CharacterViewModel>
+    public class GetUserCharacterQuery : IMediatorRequest<CharacterViewModel>
     {
         public int CharacterId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<GetUserCharacterQuery, CharacterViewModel>
+        public class Handler : IMediatorRequestHandler<GetUserCharacterQuery, CharacterViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -26,7 +27,7 @@ namespace Crpg.Application.Characters.Queries
                 _mapper = mapper;
             }
 
-            public async Task<CharacterViewModel> Handle(GetUserCharacterQuery request, CancellationToken cancellationToken)
+            public async Task<Result<CharacterViewModel>> Handle(GetUserCharacterQuery req, CancellationToken cancellationToken)
             {
                 var character = await _db.Characters
                     .AsNoTracking()
@@ -41,15 +42,11 @@ namespace Crpg.Application.Characters.Queries
                     .Include(c => c.Items.Weapon2Item)
                     .Include(c => c.Items.Weapon3Item)
                     .Include(c => c.Items.Weapon4Item)
-                    .FirstOrDefaultAsync(c => c.Id == request.CharacterId && c.UserId == request.UserId, cancellationToken);
+                    .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
 
-                if (character == null)
-                {
-                    throw new NotFoundException(nameof(Character), request.CharacterId);
-                }
-
-                // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729
-                return _mapper.Map<CharacterViewModel>(character);
+                return character == null
+                    ? new Result<CharacterViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId))
+                    : new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character)); // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729
             }
         }
     }

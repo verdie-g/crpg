@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Common;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
@@ -126,14 +126,15 @@ namespace Crpg.Application.UTest.Characters
         }
 
         [Test]
-        public void NotFoundIfUserDoesntExist()
+        public async Task NotFoundIfUserDoesntExist()
         {
-            Assert.ThrowsAsync<NotFoundException>(() => new RetireCharacterCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new RetireCharacterCommand.Handler(ActDb, Mapper).Handle(
                 new RetireCharacterCommand
                 {
                     CharacterId = 1,
                     UserId = 2,
-                }, CancellationToken.None));
+                }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
@@ -142,12 +143,13 @@ namespace Crpg.Application.UTest.Characters
             var user = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            Assert.ThrowsAsync<NotFoundException>(() => new RetireCharacterCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new RetireCharacterCommand.Handler(ActDb, Mapper).Handle(
                 new RetireCharacterCommand
                 {
                     CharacterId = 1,
                     UserId = user.Entity.Id,
-                }, CancellationToken.None));
+                }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
@@ -160,12 +162,13 @@ namespace Crpg.Application.UTest.Characters
             });
             await ArrangeDb.SaveChangesAsync();
 
-            Assert.ThrowsAsync<BadRequestException>(() => new RetireCharacterCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new RetireCharacterCommand.Handler(ActDb, Mapper).Handle(
                 new RetireCharacterCommand
                 {
                     CharacterId = character.Entity.Id,
                     UserId = character.Entity.UserId,
-                }, CancellationToken.None));
+                }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.CharacterLevelRequirementNotMet, result.Errors![0].Code);
         }
     }
 }

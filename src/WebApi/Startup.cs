@@ -227,12 +227,12 @@ namespace Crpg.WebApi
                     .GetProperty(SteamAuthenticationConstants.Parameters.Players)[0]
                     .ToObject<SteamPlayer>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-                var user = await mediator.Send(mapper.Map<UpsertUserCommand>(player));
+                var result = await mediator.Send(mapper.Map<UpsertUserCommand>(player));
 
                 var jwt = tokenIssuer.IssueToken(new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim(ClaimTypes.Role, user.Role.ToString()),
+                    new Claim(ClaimTypes.NameIdentifier, result.Data!.Id.ToString()),
+                    new Claim(ClaimTypes.Role, result.Data!.Role.ToString()),
                 }));
 
                 ctx.Request.HttpContext.Items["jwt"] = jwt;

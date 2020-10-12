@@ -72,9 +72,9 @@ namespace Crpg.Persistence
             {
                 return await base.SaveChangesAsync(cancellationToken);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException e)
             {
-                throw new ConflictException();
+                throw new ConflictException(e);
             }
         }
 

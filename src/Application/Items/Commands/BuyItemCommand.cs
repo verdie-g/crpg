@@ -2,21 +2,21 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Commands
 {
-    public class BuyItemCommand : IRequest<ItemViewModel>
+    public class BuyItemCommand : IMediatorRequest<ItemViewModel>
     {
         public int ItemId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<BuyItemCommand, ItemViewModel>
+        public class Handler : IMediatorRequestHandler<BuyItemCommand, ItemViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -27,38 +27,38 @@ namespace Crpg.Application.Items.Commands
                 _mapper = mapper;
             }
 
-            public async Task<ItemViewModel> Handle(BuyItemCommand request, CancellationToken cancellationToken)
+            public async Task<Result<ItemViewModel>> Handle(BuyItemCommand req, CancellationToken cancellationToken)
             {
                 var item = await _db.Items
                     .AsNoTracking()
-                    .FirstOrDefaultAsync(i => i.Id == request.ItemId, cancellationToken);
+                    .FirstOrDefaultAsync(i => i.Id == req.ItemId, cancellationToken);
                 if (item == null)
                 {
-                    throw new NotFoundException(nameof(Item), request.ItemId);
+                    return new Result<ItemViewModel>(CommonErrors.ItemNotFound(req.ItemId));
                 }
 
                 var user = await _db.Users
                     .Include(u => u.OwnedItems)
-                    .FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
+                    .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 if (user == null)
                 {
-                    throw new NotFoundException(nameof(User), request.UserId);
+                    return new Result<ItemViewModel>(CommonErrors.UserNotFound(req.UserId));
                 }
 
-                if (user.OwnedItems.Any(i => i.ItemId == request.ItemId))
+                if (user.OwnedItems.Any(i => i.ItemId == req.ItemId))
                 {
-                    throw new BadRequestException("User already owns this item");
+                    return new Result<ItemViewModel>(CommonErrors.ItemAlreadyOwned(req.ItemId));
                 }
 
                 if (user.Gold < item.Value)
                 {
-                    throw new BadRequestException("User doesn't have enough gold");
+                    return new Result<ItemViewModel>(CommonErrors.NotEnoughGold(item.Value, user.Gold));
                 }
 
                 user.Gold -= item.Value;
-                user.OwnedItems.Add(new UserItem { UserId = request.UserId, ItemId = request.ItemId });
+                user.OwnedItems.Add(new UserItem { UserId = req.UserId, ItemId = req.ItemId });
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<ItemViewModel>(item);
+                return new Result<ItemViewModel>(_mapper.Map<ItemViewModel>(item));
             }
         }
     }

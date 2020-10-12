@@ -5,18 +5,19 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
 using Crpg.Sdk.Abstractions;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.System.Commands
 {
-    public class SeedDataCommand : IRequest
-    {
-        public class Handler : IRequestHandler<SeedDataCommand>
+    public class SeedDataCommand : IMediatorRequest
+{
+        public class Handler : IMediatorRequestHandler<SeedDataCommand>
         {
             private static readonly int[] ItemRanks = { -3, -2, -1, 1, 2, 3 };
             private readonly ICrpgDbContext _db;
@@ -33,7 +34,7 @@ namespace Crpg.Application.System.Commands
                 _itemModifier = itemModifier;
             }
 
-            public async Task<Unit> Handle(SeedDataCommand request, CancellationToken cancellationToken)
+            public async Task<Result<object>> Handle(SeedDataCommand request, CancellationToken cancellationToken)
             {
                 if (_appEnv.Environment == HostingEnvironment.Development)
                 {
@@ -42,7 +43,7 @@ namespace Crpg.Application.System.Commands
 
                 await CreateOrUpdateItems(cancellationToken);
                 await _db.SaveChangesAsync(cancellationToken);
-                return Unit.Value;
+                return new Result<object>();
             }
 
             private void AddDevelopperUsers()

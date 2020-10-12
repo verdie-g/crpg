@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Commands;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
@@ -73,14 +73,16 @@ namespace Crpg.Application.UTest.Characters
         }
 
         [Test]
-        public void ShouldThrowNotFoundIfUserDoesntExist()
+        public async Task ShouldThrowNotFoundIfUserDoesntExist()
         {
-            Assert.ThrowsAsync<NotFoundException>(() => new RespecializeCharacterCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new RespecializeCharacterCommand.Handler(ActDb, Mapper).Handle(
                 new RespecializeCharacterCommand
                 {
                     CharacterId = 1,
                     UserId = 2,
-                }, CancellationToken.None));
+                }, CancellationToken.None);
+
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
@@ -89,12 +91,14 @@ namespace Crpg.Application.UTest.Characters
             var user = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            Assert.ThrowsAsync<NotFoundException>(() => new RespecializeCharacterCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new RespecializeCharacterCommand.Handler(ActDb, Mapper).Handle(
                 new RespecializeCharacterCommand
                 {
                     CharacterId = 1,
                     UserId = user.Entity.Id,
-                }, CancellationToken.None));
+                }, CancellationToken.None);
+
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
     }
 }

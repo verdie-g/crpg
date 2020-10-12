@@ -5,14 +5,15 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Crpg.Application.Bans.Models;
 using Crpg.Application.Common.Interfaces;
-using MediatR;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Bans.Queries
 {
-    public class GetBansListQuery : IRequest<IList<BanViewModel>>
+    public class GetBansListQuery : IMediatorRequest<IList<BanViewModel>>
     {
-        public class Handler : IRequestHandler<GetBansListQuery, IList<BanViewModel>>
+        public class Handler : IMediatorRequestHandler<GetBansListQuery, IList<BanViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -23,14 +24,14 @@ namespace Crpg.Application.Bans.Queries
                 _mapper = mapper;
             }
 
-            public async Task<IList<BanViewModel>> Handle(GetBansListQuery request, CancellationToken cancellationToken)
+            public async Task<Result<IList<BanViewModel>>> Handle(GetBansListQuery request, CancellationToken cancellationToken)
             {
                 // the whole bans table is loaded. Acceptable since only admins can access this resource
-                return await _db.Bans
+                return new Result<IList<BanViewModel>>(await _db.Bans
                     .Include(b => b.BannedUser)
                     .Include(b => b.BannedByUser)
                     .ProjectTo<BanViewModel>(_mapper.ConfigurationProvider)
-                    .ToArrayAsync(cancellationToken);
+                    .ToArrayAsync(cancellationToken));
             }
         }
     }

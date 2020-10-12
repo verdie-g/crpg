@@ -1,24 +1,20 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Crpg.Application.Common.Exceptions;
-using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Users.Models;
-using Crpg.Domain.Entities;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Users.Queries
 {
-    public class GetUserQuery : IRequest<UserViewModel>
+    public class GetUserQuery : IMediatorRequest<UserViewModel>
     {
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<GetUserQuery, UserViewModel>
+        public class Handler : IMediatorRequestHandler<GetUserQuery, UserViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -29,17 +25,14 @@ namespace Crpg.Application.Users.Queries
                 _mapper = mapper;
             }
 
-            public async Task<UserViewModel> Handle(GetUserQuery query, CancellationToken cancellationToken)
+            public async Task<Result<UserViewModel>> Handle(GetUserQuery req, CancellationToken cancellationToken)
             {
                 var user = await _db.Users
                     .ProjectTo<UserViewModel>(_mapper.ConfigurationProvider)
-                    .FirstOrDefaultAsync(u => u.Id == query.UserId, cancellationToken);
-                if (user == null)
-                {
-                    throw new NotFoundException(nameof(User), query.UserId);
-                }
-
-                return user;
+                    .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
+                return user == null
+                    ? new Result<UserViewModel>(CommonErrors.UserNotFound(req.UserId))
+                    : new Result<UserViewModel>(user);
             }
         }
     }

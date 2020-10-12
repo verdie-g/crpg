@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Bans.Commands;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
 using NUnit.Framework;
 
@@ -17,7 +17,7 @@ namespace Crpg.Application.UTest.Bans
             var user2 = ArrangeDb.Users.Add(new User { PlatformUserId = "1234", Name = "toto" });
             await ArrangeDb.SaveChangesAsync();
 
-            var ban = await new BanCommand.Handler(ActDb, Mapper).Handle(new BanCommand
+            var result = await new BanCommand.Handler(ActDb, Mapper).Handle(new BanCommand
             {
                 BannedUserId = user1.Entity.Id,
                 Duration = TimeSpan.FromDays(1),
@@ -25,6 +25,7 @@ namespace Crpg.Application.UTest.Bans
                 BannedByUserId = user2.Entity.Id,
             }, CancellationToken.None);
 
+            var ban = result.Data!;
             Assert.AreEqual(user1.Entity.Id, ban.BannedUser!.Id);
             Assert.AreEqual(TimeSpan.FromDays(1), ban.Duration);
             Assert.AreEqual("toto", ban.Reason);
@@ -39,13 +40,15 @@ namespace Crpg.Application.UTest.Bans
             var user2 = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            Assert.ThrowsAsync<NotFoundException>(() => new BanCommand.Handler(ActDb, Mapper).Handle(new BanCommand
+            var result = await new BanCommand.Handler(ActDb, Mapper).Handle(new BanCommand
             {
                 BannedUserId = 10,
                 Duration = TimeSpan.FromDays(1),
                 Reason = "toto",
                 BannedByUserId = user2.Entity.Id,
-            }, CancellationToken.None));
+            }, CancellationToken.None);
+
+            Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
         }
 
         [Test]
@@ -54,13 +57,15 @@ namespace Crpg.Application.UTest.Bans
             var user1 = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            Assert.ThrowsAsync<NotFoundException>(() => new BanCommand.Handler(ActDb, Mapper).Handle(new BanCommand
+            var result = await new BanCommand.Handler(ActDb, Mapper).Handle(new BanCommand
             {
                 BannedUserId = user1.Entity.Id,
                 Duration = TimeSpan.FromDays(1),
                 Reason = "toto",
                 BannedByUserId = 10,
-            }, CancellationToken.None));
+            }, CancellationToken.None);
+
+            Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
         }
 
         [Test]

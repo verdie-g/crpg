@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Commands;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
 using NUnit.Framework;
 
@@ -40,19 +40,21 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new DeleteCharacterCommand.Handler(ActDb);
-            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new DeleteCharacterCommand
+            var result = await handler.Handle(new DeleteCharacterCommand
             {
                 CharacterId = e.Entity.Id,
                 UserId = 1,
-            }, CancellationToken.None));
+            }, CancellationToken.None);
+
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
-        public void WhenCharacterDoesntExist()
+        public async Task WhenCharacterDoesntExist()
         {
             var handler = new DeleteCharacterCommand.Handler(ActDb);
-            Assert.ThrowsAsync<NotFoundException>(() =>
-                handler.Handle(request: new DeleteCharacterCommand { CharacterId = 1 }, CancellationToken.None));
+            var result = await handler.Handle(new DeleteCharacterCommand { CharacterId = 1 }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
     }
 }

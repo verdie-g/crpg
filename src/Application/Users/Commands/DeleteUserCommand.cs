@@ -1,9 +1,10 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
 using Crpg.Sdk.Abstractions.Events;
 using MediatR;
@@ -14,11 +15,11 @@ namespace Crpg.Application.Users.Commands
     /// <summary>
     /// Deletes all entities related to user except <see cref="Ban"/>s and reset user info.
     /// </summary>
-    public class DeleteUserCommand : IRequest<Unit>
+    public class DeleteUserCommand : IMediatorRequest
     {
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<DeleteUserCommand>
+        public class Handler : IMediatorRequestHandler<DeleteUserCommand>
         {
             private readonly ICrpgDbContext _db;
             private readonly IEventRaiser _events;
@@ -29,15 +30,15 @@ namespace Crpg.Application.Users.Commands
                 _events = events;
             }
 
-            public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+            public async Task<Result<object>> Handle(DeleteUserCommand req, CancellationToken cancellationToken)
             {
                 var user = await _db.Users
                     .Include(u => u.Characters)
                     .Include(u => u.OwnedItems)
-                    .FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
+                    .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 if (user == null)
                 {
-                    throw new NotFoundException(nameof(user), request.UserId);
+                    return new Result<object>(CommonErrors.UserNotFound(req.UserId));
                 }
 
                 string name = user.Name;
@@ -53,7 +54,7 @@ namespace Crpg.Application.Users.Commands
                 _db.Characters.RemoveRange(user.Characters);
                 await _db.SaveChangesAsync(cancellationToken);
                 _events.Raise(EventLevel.Info, $"{name} deleted its account ({platformUserId})", string.Empty, "user_deleted");
-                return Unit.Value;
+                return new Result<object>();
             }
         }
     }

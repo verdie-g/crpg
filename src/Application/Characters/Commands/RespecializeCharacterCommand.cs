@@ -2,22 +2,20 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Characters.Models;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
-using Crpg.Application.Games;
-using Crpg.Domain.Entities;
-using MediatR;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class RespecializeCharacterCommand : IRequest<CharacterViewModel>
+    public class RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel>
     {
         public int CharacterId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<RespecializeCharacterCommand, CharacterViewModel>
+        public class Handler : IMediatorRequestHandler<RespecializeCharacterCommand, CharacterViewModel>
         {
             private const float ExperiencePenalty = 0.5f;
 
@@ -30,13 +28,13 @@ namespace Crpg.Application.Characters.Commands
                 _mapper = mapper;
             }
 
-            public async Task<CharacterViewModel> Handle(RespecializeCharacterCommand request, CancellationToken cancellationToken)
+            public async Task<Result<CharacterViewModel>> Handle(RespecializeCharacterCommand req, CancellationToken cancellationToken)
             {
                 var character = await _db.Characters.FirstOrDefaultAsync(c =>
-                        c.Id == request.CharacterId && c.UserId == request.UserId, cancellationToken);
+                        c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
                 if (character == null)
                 {
-                    throw new NotFoundException(nameof(Character), request.CharacterId);
+                    return new Result<CharacterViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
                 character.Experience = (int)(character.Experience * ExperiencePenalty);
@@ -45,7 +43,7 @@ namespace Crpg.Application.Characters.Commands
                 CharacterHelper.UnequipCharacterItems(character.Items);
 
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<CharacterViewModel>(character);
+                return new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character));
             }
         }
     }

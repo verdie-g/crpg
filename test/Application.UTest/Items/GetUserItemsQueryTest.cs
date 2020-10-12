@@ -22,10 +22,10 @@ namespace Crpg.Application.UTest.Items
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var items = await new GetUserItemsQuery.Handler(ActDb, Mapper).Handle(
+            var result = await new GetUserItemsQuery.Handler(ActDb, Mapper).Handle(
                 new GetUserItemsQuery { UserId = user.Entity.Id }, CancellationToken.None);
 
-            Assert.AreEqual(2, items.Count);
+            Assert.AreEqual(2, result.Data!.Count);
         }
     }
 }

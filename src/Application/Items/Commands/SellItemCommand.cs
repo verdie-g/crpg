@@ -1,20 +1,19 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Commands
 {
-    public class SellItemCommand : IRequest
-    {
+    public class SellItemCommand : IMediatorRequest
+{
         public int ItemId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<SellItemCommand>
+        public class Handler : IMediatorRequestHandler<SellItemCommand>
         {
             private const float SellItemRatio = 0.66f;
 
@@ -25,16 +24,16 @@ namespace Crpg.Application.Items.Commands
                 _db = db;
             }
 
-            public async Task<Unit> Handle(SellItemCommand request, CancellationToken cancellationToken)
+            public async Task<Result<object>> Handle(SellItemCommand req, CancellationToken cancellationToken)
             {
                 var userItem = await _db.UserItems
                     .Include(oi => oi.User).ThenInclude(u => u!.Characters)
                     .Include(oi => oi.Item)
-                    .FirstOrDefaultAsync(oi => oi.UserId == request.UserId && oi.ItemId == request.ItemId, cancellationToken);
+                    .FirstOrDefaultAsync(oi => oi.UserId == req.UserId && oi.ItemId == req.ItemId, cancellationToken);
 
                 if (userItem == null)
                 {
-                    throw new NotFoundException(nameof(UserItem), request.UserId, request.ItemId);
+                    return new Result<object>(CommonErrors.ItemNotOwned(req.ItemId));
                 }
 
                 userItem.User!.Gold += (int)(userItem.Item!.Value * SellItemRatio);
@@ -45,7 +44,7 @@ namespace Crpg.Application.Items.Commands
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
-                return Unit.Value;
+                return new Result<object>();
             }
 
             private static void UnsetItem(CharacterItems items, int itemId)

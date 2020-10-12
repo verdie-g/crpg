@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
 using Crpg.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +20,7 @@ namespace Crpg.Application.UTest.Items
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new BuyItemCommand.Handler(ActDb, Mapper);
-            var boughtItem = await handler.Handle(new BuyItemCommand
+            var result = await handler.Handle(new BuyItemCommand
             {
                 ItemId = item.Entity.Id,
                 UserId = user.Entity.Id,
@@ -30,6 +30,7 @@ namespace Crpg.Application.UTest.Items
                 .Include(u => u.OwnedItems)
                 .FirstAsync(u => u.Id == user.Entity.Id);
 
+            var boughtItem = result.Data!;
             Assert.AreEqual(item.Entity.Id, boughtItem.Id);
             Assert.AreEqual(0, userDb.Gold);
             Assert.IsTrue(userDb.OwnedItems.Any(i => i.ItemId == boughtItem.Id));
@@ -42,11 +43,13 @@ namespace Crpg.Application.UTest.Items
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new BuyItemCommand.Handler(ActDb, Mapper);
-            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new BuyItemCommand
+            var result = await handler.Handle(new BuyItemCommand
             {
                 ItemId = 1,
                 UserId = user.Entity.Id,
-            }, CancellationToken.None));
+            }, CancellationToken.None);
+
+            Assert.AreEqual(ErrorCode.ItemNotFound, result.Errors![0].Code);
         }
 
         [Test]
@@ -56,11 +59,12 @@ namespace Crpg.Application.UTest.Items
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new BuyItemCommand.Handler(ActDb, Mapper);
-            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new BuyItemCommand
+            var result = await handler.Handle(new BuyItemCommand
             {
                 ItemId = item.Entity.Id,
                 UserId = 1,
-            }, CancellationToken.None));
+            }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
         }
 
         [Test]
@@ -71,11 +75,12 @@ namespace Crpg.Application.UTest.Items
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new BuyItemCommand.Handler(ActDb, Mapper);
-            Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new BuyItemCommand
+            var result = await handler.Handle(new BuyItemCommand
             {
                 ItemId = item.Entity.Id,
                 UserId = user.Entity.Id,
-            }, CancellationToken.None));
+            }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.NotEnoughGold, result.Errors![0].Code);
         }
 
         [Test]
@@ -90,11 +95,12 @@ namespace Crpg.Application.UTest.Items
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new BuyItemCommand.Handler(ActDb, Mapper);
-            Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new BuyItemCommand
+            var result = await handler.Handle(new BuyItemCommand
             {
                 ItemId = item.Entity.Id,
                 UserId = user.Entity.Id,
-            }, CancellationToken.None));
+            }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.ItemAlreadyOwned, result.Errors![0].Code);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Crpg.Application.UTest.Users
         public async Task TestWhenUserDoesntExist()
         {
             var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventRaiser);
-            var user = await handler.Handle(new UpsertUserCommand
+            var result = await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "123",
                 Name = "def",
@@ -26,6 +26,7 @@ namespace Crpg.Application.UTest.Users
                 AvatarFull = new Uri("http://stu.vwx")
             }, CancellationToken.None);
 
+            var user = result.Data!;
             Assert.AreEqual(Role.User, user.Role);
             Assert.AreEqual(300, user.Gold);
             Assert.NotNull(await AssertDb.Users.FindAsync(user.Id));
@@ -48,7 +49,7 @@ namespace Crpg.Application.UTest.Users
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventRaiser);
-            var createdUser = await handler.Handle(new UpsertUserCommand
+            var result = await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "13948192759205810",
                 Name = "def",
@@ -57,6 +58,7 @@ namespace Crpg.Application.UTest.Users
                 AvatarFull = new Uri("http://st.vwx")
             }, CancellationToken.None);
 
+            var createdUser = result.Data!;
             Assert.AreEqual(user.Id, createdUser.Id);
 
             var dbUser = await AssertDb.Users.FindAsync(user.Id);

@@ -1,6 +1,11 @@
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Net;
 using System.Net.Mime;
-using Crpg.Application.Common.Exceptions;
+using System.Threading.Tasks;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Results;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,5 +25,63 @@ namespace Crpg.WebApi.Controllers
 
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
         protected ICurrentUserService CurrentUser => _currentUser ??= HttpContext.RequestServices.GetService<ICurrentUserService>();
+
+        protected ActionResult<Result<TData>> ResultToAction<TData>(Result<TData> result)
+            where TData : class
+        {
+            return result.Errors == null || result.Errors.Count == 0 ? Ok(result) : FirstErrorToAction(result);
+        }
+
+        protected ActionResult<Result<TData>> ResultToCreatedAtAction<TData>(
+            string actionName, string? controllerName, Func<TData, object> getRouteValues, Result<TData> result)
+            where TData : class
+        {
+            return result.Errors == null || result.Errors.Count == 0
+                ? CreatedAtAction(actionName, controllerName, getRouteValues(result.Data!), result)
+                : FirstErrorToAction(result);
+        }
+
+        protected ActionResult ResultToAction(Result<object> result)
+        {
+            return result.Errors == null || result.Errors.Count == 0 ? NoContent() : FirstErrorToAction(result);
+        }
+
+        protected async Task<ActionResult<Result<TData>>> ResultToActionAsync<TData>(Task<Result<TData>> resultTask)
+            where TData : class
+        {
+            var result = await resultTask;
+            return ResultToAction(result);
+        }
+
+        protected async Task<ActionResult<Result<TData>>> ResultToCreatedAtActionAsync<TData>(
+            string actionName, string? controllerName, Func<TData, object> getRouteValues, Task<Result<TData>> resultTask)
+            where TData : class
+        {
+            var result = await resultTask;
+            return ResultToCreatedAtAction(actionName, controllerName, getRouteValues, result);
+        }
+
+        protected async Task<ActionResult> ResultToActionAsync(Task<Result<object>> resultTask)
+        {
+            var result = await resultTask;
+            return ResultToAction(result);
+        }
+
+        private ActionResult FirstErrorToAction<TData>(Result<TData> result) where TData : class
+        {
+            string traceId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            foreach (var error in result.Errors!)
+            {
+                error.TraceId = traceId;
+            }
+
+            Error firstError = result.Errors.First();
+            return firstError.Type switch
+            {
+                ErrorType.Validation => BadRequest(result),
+                ErrorType.NotFound => NotFound(result),
+                _ => StatusCode((int)HttpStatusCode.InternalServerError, result),
+            };
+        }
     }
 }

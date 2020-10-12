@@ -1,11 +1,12 @@
 import { setToken, getToken, challenge } from '@/services/auth-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import { sleep } from '@/utils/promise';
+import Result from '@/models/result';
 
 export const API_BASE_URL = process.env.VUE_APP_API_BASE_URL;
 
 async function send(method: string, path: string, body?: any): Promise<any> {
-  const res = await fetch(API_BASE_URL + path, {
+  const response = await fetch(API_BASE_URL + path, {
     method,
     headers: {
       Authorization: `Bearer ${getToken()}`,
@@ -15,28 +16,30 @@ async function send(method: string, path: string, body?: any): Promise<any> {
   });
 
   // if the token was about to expire, the server issues a new one in the Refresh-Authorization header
-  const refreshedToken = res.headers.get('Refresh-Authorization');
+  const refreshedToken = response.headers.get('Refresh-Authorization');
   if (refreshedToken !== null) {
     setToken(refreshedToken);
   }
 
-  if (res.status === 401) {
+  if (response.status === 401) {
     notify('Session expired', NotificationType.Warning);
     sleep(1000).then(() => challenge());
     return {};
   }
 
-  if (res.status >= 500) {
-    notify('Server error', NotificationType.Error);
+  const result: Result<any> = response.status !== 204 ? await response.json() : {};
+
+  if (response.status >= 500) {
+    notify(result.errors![0].title!, NotificationType.Error);
     throw new Error('Server error');
   }
 
-  if (res.status >= 400) {
-    notify('Bad Request', NotificationType.Warning);
-    throw new Error(await res.json());
+  if (response.status >= 400) {
+    notify(result.errors![0].title!, NotificationType.Warning);
+    throw new Error('Bad request');
   }
 
-  return res.status !== 204 ? res.json() : {};
+  return result.data;
 }
 
 export function get(path: string): Promise<any> {

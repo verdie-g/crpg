@@ -3,17 +3,17 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Models;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Queries
 {
-    public class GetItemsListQuery : IRequest<IList<ItemViewModel>>
+    public class GetItemsListQuery : IMediatorRequest<IList<ItemViewModel>>
     {
-        public class Handler : IRequestHandler<GetItemsListQuery, IList<ItemViewModel>>
+        public class Handler : IMediatorRequestHandler<GetItemsListQuery, IList<ItemViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ namespace Crpg.Application.Items.Queries
                 _mapper = mapper;
             }
 
-            public async Task<IList<ItemViewModel>> Handle(GetItemsListQuery request, CancellationToken cancellationToken)
+            public async Task<Result<IList<ItemViewModel>>> Handle(GetItemsListQuery req, CancellationToken cancellationToken)
             {
                 var items = await _db.Items
                     .AsNoTracking()
@@ -33,7 +33,7 @@ namespace Crpg.Application.Items.Queries
                     .ToListAsync(cancellationToken);
 
                 // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729
-                return _mapper.Map<IList<ItemViewModel>>(items);
+                return new Result<IList<ItemViewModel>>(_mapper.Map<IList<ItemViewModel>>(items));
             }
         }
     }

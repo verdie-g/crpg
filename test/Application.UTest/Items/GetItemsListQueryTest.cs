@@ -36,9 +36,9 @@ namespace Crpg.Application.UTest.Items
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new GetItemsListQuery.Handler(ActDb, Mapper);
-            var items = await handler.Handle(new GetItemsListQuery(), CancellationToken.None);
+            var result = await handler.Handle(new GetItemsListQuery(), CancellationToken.None);
 
-            Assert.AreEqual(2, items.Count);
+            Assert.AreEqual(2, result.Data!.Count);
         }
     }
 }

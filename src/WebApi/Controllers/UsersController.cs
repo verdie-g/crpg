@@ -6,10 +6,12 @@ using Crpg.Application.Bans.Queries;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Characters.Queries;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
 using Crpg.Application.Items.Models;
 using Crpg.Application.Items.Queries;
 using Crpg.Application.Users.Commands;
+using Crpg.Application.Users.Models;
 using Crpg.Application.Users.Queries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -23,10 +25,8 @@ namespace Crpg.WebApi.Controllers
         /// Gets current user information.
         /// </summary>
         [HttpGet("self")]
-        public async Task<IActionResult> GetUser()
-        {
-            return Ok(await Mediator.Send(new GetUserQuery { UserId = CurrentUser.UserId }));
-        }
+        public Task<ActionResult<Result<UserViewModel>>> GetUser()
+            => ResultToActionAsync(Mediator.Send(new GetUserQuery { UserId = CurrentUser.UserId }));
 
         /// <summary>
         /// Deletes current user.
@@ -35,11 +35,8 @@ namespace Crpg.WebApi.Controllers
         /// <response code="404">User not found.</response>
         [HttpDelete("self")]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
-        public async Task<IActionResult> DeleteUser()
-        {
-            await Mediator.Send(new DeleteUserCommand { UserId = CurrentUser.UserId });
-            return NoContent();
-        }
+        public Task<ActionResult> DeleteUser() =>
+            ResultToActionAsync(Mediator.Send(new DeleteUserCommand { UserId = CurrentUser.UserId }));
 
         /// <summary>
         /// Gets the specified current user's character.
@@ -48,21 +45,17 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Ok.</response>
         /// <response code="404">Character not found.</response>
         [HttpGet("self/characters/{id}")]
-        public async Task<ActionResult<CharacterViewModel>> GetUserCharacter([FromRoute] int id)
-        {
-            return Ok(await Mediator.Send(new GetUserCharacterQuery
+        public Task<ActionResult<Result<CharacterViewModel>>> GetUserCharacter([FromRoute] int id) =>
+            ResultToActionAsync(Mediator.Send(new GetUserCharacterQuery
                 { CharacterId = id, UserId = CurrentUser.UserId }));
-        }
 
         /// <summary>
         /// Gets all current user's characters.
         /// </summary>
         /// <response code="200">Ok.</response>
         [HttpGet("self/characters")]
-        public async Task<ActionResult<IList<CharacterViewModel>>> GetUserCharactersList()
-        {
-            return Ok(await Mediator.Send(new GetUserCharactersListQuery { UserId = CurrentUser.UserId }));
-        }
+        public Task<ActionResult<Result<IList<CharacterViewModel>>>> GetUserCharactersList() =>
+            ResultToActionAsync(Mediator.Send(new GetUserCharactersListQuery { UserId = CurrentUser.UserId }));
 
         /// <summary>
         /// Updates a character for the current user.
@@ -73,12 +66,12 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Updated.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPut("self/characters/{id}")]
-        public async Task<ActionResult<CharacterViewModel>> UpdateCharacter([FromRoute] int id,
+        public Task<ActionResult<Result<CharacterViewModel>>> UpdateCharacter([FromRoute] int id,
             [FromBody] UpdateCharacterCommand req)
         {
             req.UserId = CurrentUser.UserId;
             req.CharacterId = id;
-            return Ok(await Mediator.Send(req));
+            return ResultToActionAsync(Mediator.Send(req));
         }
 
         /// <summary>
@@ -90,7 +83,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Updated.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPut("self/characters/{id}/statistics")]
-        public async Task<ActionResult<CharacterItemsViewModel>> UpdateCharacterStatistics([FromRoute] int id,
+        public Task<ActionResult<Result<CharacterStatisticsViewModel>>> UpdateCharacterStatistics([FromRoute] int id,
             [FromBody] CharacterStatisticsViewModel stats)
         {
             var cmd = new UpdateCharacterStatisticsCommand
@@ -99,7 +92,7 @@ namespace Crpg.WebApi.Controllers
                 CharacterId = id,
                 Statistics = stats,
             };
-            return Ok(await Mediator.Send(cmd));
+            return ResultToActionAsync(Mediator.Send(cmd));
         }
 
         /// <summary>
@@ -111,12 +104,12 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Conversion performed.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPut("self/characters/{id}/statistics/convert")]
-        public async Task<ActionResult<CharacterItemsViewModel>> ConvertCharacterStatistics([FromRoute] int id,
+        public Task<ActionResult<Result<CharacterStatisticsViewModel>>> ConvertCharacterStatistics([FromRoute] int id,
             [FromBody] ConvertCharacterStatisticsCommand req)
         {
             req.CharacterId = id;
             req.UserId = CurrentUser.UserId;
-            return Ok(await Mediator.Send(req));
+            return ResultToActionAsync(Mediator.Send(req));
         }
 
         /// <summary>
@@ -128,12 +121,12 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Updated.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPut("self/characters/{id}/items")]
-        public async Task<ActionResult<CharacterItemsViewModel>> UpdateCharacterItems([FromRoute] int id,
+        public Task<ActionResult<Result<CharacterItemsViewModel>>> UpdateCharacterItems([FromRoute] int id,
             [FromBody] UpdateCharacterItemsCommand req)
         {
             req.UserId = CurrentUser.UserId;
             req.CharacterId = id;
-            return Ok(await Mediator.Send(req));
+            return ResultToActionAsync(Mediator.Send(req));
         }
 
         /// <summary>
@@ -144,10 +137,8 @@ namespace Crpg.WebApi.Controllers
         /// <response code="400">Bad Request.</response>
         /// <response code="404">Character not found.</response>
         [HttpPut("self/characters/{id}/retire")]
-        public async Task<ActionResult<CharacterViewModel>> RetireCharacter([FromRoute] int id)
-        {
-            return Ok(await Mediator.Send(new RetireCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId }));
-        }
+        public Task<ActionResult<Result<CharacterViewModel>>> RetireCharacter([FromRoute] int id) =>
+            ResultToActionAsync(Mediator.Send(new RetireCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId }));
 
         /// <summary>
         /// Respecializes character.
@@ -157,10 +148,8 @@ namespace Crpg.WebApi.Controllers
         /// <response code="400">Bad Request.</response>
         /// <response code="404">Character not found.</response>
         [HttpPut("self/characters/{id}/respecialize")]
-        public async Task<ActionResult<CharacterViewModel>> RespecializeCharacter([FromRoute] int id)
-        {
-            return Ok(await Mediator.Send(new RespecializeCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId }));
-        }
+        public Task<ActionResult<Result<CharacterViewModel>>> RespecializeCharacter([FromRoute] int id) =>
+            ResultToActionAsync(Mediator.Send(new RespecializeCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId }));
 
         /// <summary>
         /// Deletes the specified current user's character.
@@ -170,20 +159,17 @@ namespace Crpg.WebApi.Controllers
         /// <response code="404">Character not found.</response>
         [HttpDelete("self/characters/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
-        public async Task<IActionResult> DeleteCharacter([FromRoute] int id)
-        {
-            await Mediator.Send(new DeleteCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId });
-            return NoContent();
-        }
+        public Task<ActionResult> DeleteCharacter([FromRoute] int id) =>
+            ResultToActionAsync(Mediator.Send(new DeleteCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId }));
 
         /// <summary>
         /// Gets owned items.
         /// </summary>
         [HttpGet("self/items")]
-        public async Task<ActionResult<IList<ItemViewModel>>> GetOwnedItems()
+        public Task<ActionResult<Result<IList<ItemViewModel>>>> GetOwnedItems()
         {
             var query = new GetUserItemsQuery { UserId = CurrentUser.UserId };
-            return Ok(await Mediator.Send(query));
+            return ResultToActionAsync(Mediator.Send(query));
         }
 
         /// <summary>
@@ -196,11 +182,11 @@ namespace Crpg.WebApi.Controllers
         /// <response code="404">Item was not found.</response>
         [HttpPost("self/items")]
         [ProducesResponseType((int)HttpStatusCode.Created)]
-        public async Task<ActionResult<ItemViewModel>> BuyItem([FromBody] BuyItemCommand req)
+        public Task<ActionResult<Result<ItemViewModel>>> BuyItem([FromBody] BuyItemCommand req)
         {
             req.UserId = CurrentUser.UserId;
-            var item = await Mediator.Send(req);
-            return CreatedAtAction(nameof(ItemsController.GetItemsList), "Items", new { id = item.Id }, item);
+            return ResultToCreatedAtActionAsync(nameof(ItemsController.GetItemsList), "Items", i => new { id = i.Id },
+                Mediator.Send(req));
         }
 
         /// <summary>
@@ -211,10 +197,8 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Upgraded.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPut("self/items/{id}/upgrade")]
-        public async Task<ActionResult<ItemViewModel>> UpgradeItem([FromRoute] int id)
-        {
-            return Ok(await Mediator.Send(new UpgradeItemCommand { ItemId = id, UserId = CurrentUser.UserId }));
-        }
+        public Task<ActionResult<Result<ItemViewModel>>> UpgradeItem([FromRoute] int id) =>
+            ResultToActionAsync(Mediator.Send(new UpgradeItemCommand { ItemId = id, UserId = CurrentUser.UserId }));
 
         /// <summary>
         /// Sells item for the current user.
@@ -225,20 +209,15 @@ namespace Crpg.WebApi.Controllers
         /// <response code="404">Item was not found.</response>
         [HttpDelete("self/items/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
-        public async Task<IActionResult> SellUserItem([FromRoute] int id)
-        {
-            await Mediator.Send(new SellItemCommand { ItemId = id, UserId = CurrentUser.UserId });
-            return NoContent();
-        }
+        public Task<ActionResult> SellUserItem([FromRoute] int id) =>
+            ResultToActionAsync(Mediator.Send(new SellItemCommand { ItemId = id, UserId = CurrentUser.UserId }));
 
         /// <summary>
         /// Gets all current user's bans.
         /// </summary>
         /// <response code="200">Ok.</response>
         [HttpGet("self/bans")]
-        public async Task<ActionResult<IList<BanViewModel>>> GetUserBans()
-        {
-            return Ok(await Mediator.Send(new GetUserBansListQuery { UserId = CurrentUser.UserId }));
-        }
+        public Task<ActionResult<Result<IList<BanViewModel>>>> GetUserBans() =>
+            ResultToActionAsync(Mediator.Send(new GetUserBansListQuery { UserId = CurrentUser.UserId }));
     }
 }

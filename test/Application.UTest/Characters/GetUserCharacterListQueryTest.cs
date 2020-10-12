@@ -37,8 +37,9 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new GetUserCharactersListQuery.Handler(ActDb, Mapper);
-            var characters = await handler.Handle(new GetUserCharactersListQuery { UserId = 1 }, CancellationToken.None);
+            var result = await handler.Handle(new GetUserCharactersListQuery { UserId = 1 }, CancellationToken.None);
 
+            var characters = result.Data!;
             Assert.AreEqual(2, characters.Count);
             Assert.AreEqual(1, characters[0].Statistics.Attributes.Points);
             Assert.AreEqual(2, characters[0].Statistics.Skills.Points);

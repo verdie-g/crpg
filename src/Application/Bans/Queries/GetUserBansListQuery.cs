@@ -1,23 +1,20 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Crpg.Application.Bans.Models;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
-using Crpg.Domain.Entities;
-using MediatR;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Bans.Queries
 {
-    public class GetUserBansListQuery : IRequest<IList<BanViewModel>>
+    public class GetUserBansListQuery : IMediatorRequest<IList<BanViewModel>>
     {
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<GetUserBansListQuery, IList<BanViewModel>>
+        public class Handler : IMediatorRequestHandler<GetUserBansListQuery, IList<BanViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -28,19 +25,16 @@ namespace Crpg.Application.Bans.Queries
                 _mapper = mapper;
             }
 
-            public async Task<IList<BanViewModel>> Handle(GetUserBansListQuery request, CancellationToken cancellationToken)
+            public async Task<Result<IList<BanViewModel>>> Handle(GetUserBansListQuery request, CancellationToken cancellationToken)
             {
                 var user = await _db.Users
                     .AsNoTracking()
                     .Include(u => u.Bans).ThenInclude(b => b.BannedByUser)
                     .FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
 
-                if (user == null)
-                {
-                    throw new NotFoundException(nameof(User), request.UserId);
-                }
-
-                return _mapper.Map<BanViewModel[]>(user.Bans);
+                return user == null
+                    ? new Result<IList<BanViewModel>>(CommonErrors.UserNotFound(request.UserId))
+                    : new Result<IList<BanViewModel>>(_mapper.Map<BanViewModel[]>(user.Bans));
             }
         }
     }

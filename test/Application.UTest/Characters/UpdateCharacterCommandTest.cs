@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Commands;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
 using NUnit.Framework;
 
@@ -27,8 +27,8 @@ namespace Crpg.Application.UTest.Characters
                 Name = "tata",
             };
 
-            var res = await new UpdateCharacterCommand.Handler(ActDb, Mapper).Handle(cmd, CancellationToken.None);
-            Assert.AreEqual(cmd.Name, res.Name);
+            var result = await new UpdateCharacterCommand.Handler(ActDb, Mapper).Handle(cmd, CancellationToken.None);
+            Assert.AreEqual(cmd.Name, result.Data!.Name);
         }
 
         [Test]
@@ -44,7 +44,8 @@ namespace Crpg.Application.UTest.Characters
                 UserId = user.Entity.Id,
             };
 
-            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(cmd, CancellationToken.None));
+            var result = await handler.Handle(cmd, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
@@ -61,7 +62,8 @@ namespace Crpg.Application.UTest.Characters
                 UserId = user.Entity.Id,
             };
 
-            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(cmd, CancellationToken.None));
+            var result = await handler.Handle(cmd, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
@@ -77,7 +79,8 @@ namespace Crpg.Application.UTest.Characters
                 UserId = 1,
             };
 
-            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(cmd, CancellationToken.None));
+            var result = await handler.Handle(cmd, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [TestCase("")]

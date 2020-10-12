@@ -9,12 +9,13 @@ using Crpg.Application.Bans.Models;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Games.Models;
 using Crpg.Domain.Entities;
 using Crpg.Sdk.Abstractions;
 using Crpg.Sdk.Abstractions.Events;
 using LinqKit;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Games.Commands
@@ -22,11 +23,11 @@ namespace Crpg.Application.Games.Commands
     /// <summary>
     /// All in one command to get or update game users.
     /// </summary>
-    public class UpdateGameCommand : IRequest<UpdateGameResult>
+    public class UpdateGameCommand : IMediatorRequest<UpdateGameResult>
     {
         public IList<GameUserUpdate> GameUserUpdates { get; set; } = Array.Empty<GameUserUpdate>();
 
-        public class Handler : IRequestHandler<UpdateGameCommand, UpdateGameResult>
+        public class Handler : IMediatorRequestHandler<UpdateGameCommand, UpdateGameResult>
         {
             internal static readonly CharacterItems[] DefaultItemSets =
             {
@@ -117,7 +118,7 @@ namespace Crpg.Application.Games.Commands
                 _random = random;
             }
 
-            public async Task<UpdateGameResult> Handle(UpdateGameCommand cmd, CancellationToken cancellationToken)
+            public async Task<Result<UpdateGameResult>> Handle(UpdateGameCommand cmd, CancellationToken cancellationToken)
             {
                 // load default items only once, the first time the command is called
                 if (!_db.Entry(DefaultItemSets.First().HeadItem!).IsKeySet)
@@ -159,7 +160,7 @@ namespace Crpg.Application.Games.Commands
                 await AddNewCharacterItemsToUsers(newCharacters);
                 await ReplaceBrokenItems(brokenItemsWithUser, cancellationToken);
                 await _db.SaveChangesAsync(cancellationToken);
-                return new UpdateGameResult
+                return new Result<UpdateGameResult>(new UpdateGameResult
                 {
                     Users = res.Select(r => new GameUser
                     {
@@ -171,7 +172,7 @@ namespace Crpg.Application.Games.Commands
                         BrokenItems = _mapper.Map<IList<GameUserBrokenItem>>(r.brokenItems),
                         Ban = _mapper.Map<BanViewModel>(r.ban),
                     }).ToArray(),
-                };
+                });
             }
 
             private void Reward(Character character, GameUserReward reward)

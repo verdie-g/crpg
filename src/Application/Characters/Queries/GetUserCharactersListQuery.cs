@@ -5,16 +5,17 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
-using MediatR;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries
 {
-    public class GetUserCharactersListQuery : IRequest<IList<CharacterViewModel>>
+    public class GetUserCharactersListQuery : IMediatorRequest<IList<CharacterViewModel>>
     {
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<GetUserCharactersListQuery, IList<CharacterViewModel>>
+        public class Handler : IMediatorRequestHandler<GetUserCharactersListQuery, IList<CharacterViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -25,7 +26,7 @@ namespace Crpg.Application.Characters.Queries
                 _mapper = mapper;
             }
 
-            public async Task<IList<CharacterViewModel>> Handle(GetUserCharactersListQuery request, CancellationToken cancellationToken)
+            public async Task<Result<IList<CharacterViewModel>>> Handle(GetUserCharactersListQuery req, CancellationToken cancellationToken)
             {
                 var characters = await _db.Characters
                     .AsNoTracking()
@@ -40,11 +41,11 @@ namespace Crpg.Application.Characters.Queries
                     .Include(c => c.Items.Weapon2Item)
                     .Include(c => c.Items.Weapon3Item)
                     .Include(c => c.Items.Weapon4Item)
-                    .Where(c => c.UserId == request.UserId)
+                    .Where(c => c.UserId == req.UserId)
                     .ToListAsync(cancellationToken);
 
                 // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729
-                return _mapper.Map<IList<CharacterViewModel>>(characters);
+                return new Result<IList<CharacterViewModel>>(_mapper.Map<IList<CharacterViewModel>>(characters));
             }
         }
     }

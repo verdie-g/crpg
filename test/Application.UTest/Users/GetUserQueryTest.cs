@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Users.Queries;
 using Crpg.Domain.Entities;
 using NUnit.Framework;
@@ -11,13 +11,14 @@ namespace Crpg.Application.UTest.Users
     public class GetUserQueryTest : TestBase
     {
         [Test]
-        public void TestWhenUserDoesntExist()
+        public async Task TestWhenUserDoesntExist()
         {
             var handler = new GetUserQuery.Handler(ActDb, Mapper);
-            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new GetUserQuery
+            var result = await handler.Handle(new GetUserQuery
             {
                 UserId = 1,
-            }, CancellationToken.None));
+            }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
         }
 
         [Test]

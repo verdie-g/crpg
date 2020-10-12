@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
 using Crpg.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -100,12 +100,13 @@ namespace Crpg.Application.UTest.Items
             var user = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            Assert.ThrowsAsync<NotFoundException>(() => new SellItemCommand.Handler(ActDb).Handle(
+            var result = await new SellItemCommand.Handler(ActDb).Handle(
                 new SellItemCommand
                 {
                     ItemId = 1,
                     UserId = user.Entity.Id,
-                }, CancellationToken.None));
+                }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
         }
 
         [Test]
@@ -114,12 +115,13 @@ namespace Crpg.Application.UTest.Items
             var item = ArrangeDb.Items.Add(new Item());
             await ArrangeDb.SaveChangesAsync();
 
-            Assert.ThrowsAsync<NotFoundException>(() => new SellItemCommand.Handler(ActDb).Handle(
+            var result = await new SellItemCommand.Handler(ActDb).Handle(
                 new SellItemCommand
                 {
                     ItemId = item.Entity.Id,
                     UserId = 1,
-                }, CancellationToken.None));
+                }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
         }
     }
 }

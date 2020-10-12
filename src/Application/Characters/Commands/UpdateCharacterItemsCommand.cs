@@ -1,18 +1,19 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Characters.Models;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class UpdateCharacterItemsCommand : IRequest<CharacterItemsViewModel>
+    public class UpdateCharacterItemsCommand : IMediatorRequest<CharacterItemsViewModel>
     {
         public int CharacterId { get; set; }
         public int UserId { get; set; }
@@ -29,7 +30,7 @@ namespace Crpg.Application.Characters.Commands
         public int? Weapon4ItemId { get; set; }
         public bool AutoRepair { get; set; }
 
-        public class Handler : IRequestHandler<UpdateCharacterItemsCommand, CharacterItemsViewModel>
+        public class Handler : IMediatorRequestHandler<UpdateCharacterItemsCommand, CharacterItemsViewModel>
         {
             private static readonly ISet<ItemType> WeaponTypes = new HashSet<ItemType>
             {
@@ -53,7 +54,7 @@ namespace Crpg.Application.Characters.Commands
                 _mapper = mapper;
             }
 
-            public async Task<CharacterItemsViewModel> Handle(UpdateCharacterItemsCommand request,
+            public async Task<Result<CharacterItemsViewModel>> Handle(UpdateCharacterItemsCommand req,
                 CancellationToken cancellationToken)
             {
                 var character = await _db.Characters
@@ -68,16 +69,28 @@ namespace Crpg.Application.Characters.Commands
                     .Include(c => c.Items.Weapon2Item)
                     .Include(c => c.Items.Weapon3Item)
                     .Include(c => c.Items.Weapon4Item)
-                    .FirstOrDefaultAsync(c => c.Id == request.CharacterId && c.UserId == request.UserId, cancellationToken);
+                    .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
 
                 if (character == null)
                 {
-                    throw new NotFoundException(nameof(Character), request.CharacterId, request.UserId);
+                    return new Result<CharacterItemsViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
-                await UpdateCharacterItems(request, character.Items);
+                try
+                {
+                    await UpdateCharacterItems(req, character.Items);
+                }
+                catch (ItemNotOwnedException e)
+                {
+                    return new Result<CharacterItemsViewModel>(CommonErrors.ItemNotOwned(e.ItemId));
+                }
+                catch (ItemBadTypeException e)
+                {
+                    return new Result<CharacterItemsViewModel>(CommonErrors.ItemBadType(e.ItemId, e.ExpectedTypes, e.ActualType));
+                }
+
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<CharacterItemsViewModel>(character.Items);
+                return new Result<CharacterItemsViewModel>(_mapper.Map<CharacterItemsViewModel>(character.Items));
             }
 
             private async Task UpdateCharacterItems(UpdateCharacterItemsCommand request, CharacterItems characterItems)
@@ -102,17 +115,23 @@ namespace Crpg.Application.Characters.Commands
                 characterItems.AutoRepair = request.AutoRepair;
             }
 
-            private Item? GetItemWithChecks(int? id, IEnumerable<ItemType> expectedTypes,
+            private Item? GetItemWithChecks(int? requestedItemId, IEnumerable<ItemType> expectedTypes,
                 Dictionary<int, Item> itemsById)
             {
-                if (id == null)
+                if (requestedItemId == null)
                 {
                     return null;
                 }
 
-                if (!itemsById.TryGetValue(id.Value, out var item) || !expectedTypes.Contains(item.Type))
+                if (!itemsById.TryGetValue(requestedItemId.Value, out var item))
                 {
-                    throw new BadRequestException("Unexpected item");
+                    // Not owned or not existing item.
+                    throw new ItemNotOwnedException(requestedItemId.Value);
+                }
+
+                if (!expectedTypes.Contains(item.Type))
+                {
+                    throw new ItemBadTypeException(requestedItemId.Value, expectedTypes, item.Type);
                 }
 
                 return item;
@@ -177,6 +196,28 @@ namespace Crpg.Application.Characters.Commands
                 }
 
                 return ids;
+            }
+
+            // Exceptions that will simplify error handling in this command.
+            private class ItemNotOwnedException : Exception
+            {
+                public int ItemId { get; }
+
+                public ItemNotOwnedException(int itemId) => ItemId = itemId;
+            }
+
+            private class ItemBadTypeException : Exception
+            {
+                public int ItemId { get; }
+                public IEnumerable<ItemType> ExpectedTypes { get; }
+                public ItemType ActualType { get; }
+
+                public ItemBadTypeException(int itemId, IEnumerable<ItemType> expectedTypes, ItemType actualType)
+                {
+                    ItemId = itemId;
+                    ExpectedTypes = expectedTypes;
+                    ActualType = actualType;
+                }
             }
         }
     }

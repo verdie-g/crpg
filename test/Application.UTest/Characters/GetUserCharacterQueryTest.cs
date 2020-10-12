@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Queries;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
 using NUnit.Framework;
 
@@ -10,14 +10,16 @@ namespace Crpg.Application.UTest.Characters
     public class GetUserCharacterQueryTest : TestBase
     {
         [Test]
-        public void WhenCharacterDoesntExist()
+        public async Task WhenCharacterDoesntExist()
         {
             var handler = new GetUserCharacterQuery.Handler(ActDb, Mapper);
-            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new GetUserCharacterQuery
+            var result = await handler.Handle(new GetUserCharacterQuery
             {
                 CharacterId = 1,
                 UserId = 2,
-            }, CancellationToken.None));
+            }, CancellationToken.None);
+
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
@@ -32,13 +34,13 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new GetUserCharacterQuery.Handler(ActDb, Mapper);
-            var item = await handler.Handle(new GetUserCharacterQuery
+            var result = await handler.Handle(new GetUserCharacterQuery
             {
                 CharacterId = dbCharacter.Id,
                 UserId = 2,
             }, CancellationToken.None);
 
-            Assert.NotNull(item);
+            Assert.NotNull(result.Data);
         }
 
         [Test]
@@ -53,11 +55,13 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new GetUserCharacterQuery.Handler(ActDb, Mapper);
-            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new GetUserCharacterQuery
+            var result = await handler.Handle(new GetUserCharacterQuery
             {
                 CharacterId = dbCharacter.Id,
                 UserId = 1,
-            }, CancellationToken.None));
+            }, CancellationToken.None);
+
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
     }
 }

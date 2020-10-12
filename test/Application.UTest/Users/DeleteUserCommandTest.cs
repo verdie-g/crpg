@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Users.Commands;
 using Crpg.Domain.Entities;
 using Crpg.Sdk.Abstractions.Events;
@@ -42,10 +42,12 @@ namespace Crpg.Application.UTest.Users
         }
 
         [Test]
-        public void DeleteNonExistingUser()
+        public async Task DeleteNonExistingUser()
         {
-            Assert.ThrowsAsync<NotFoundException>(() =>
-                new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventRaiser>()).Handle(new DeleteUserCommand { UserId = 1 }, CancellationToken.None));
+            var result =
+                await new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventRaiser>()).Handle(
+                    new DeleteUserCommand { UserId = 1 }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
         }
     }
 }

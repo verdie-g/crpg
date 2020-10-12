@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using Crpg.Application.Bans.Commands;
 using Crpg.Application.Bans.Models;
 using Crpg.Application.Bans.Queries;
-using Crpg.WebApi.Models;
+using Crpg.Application.Common.Results;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Crpg.WebApi.Controllers
@@ -21,10 +18,8 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Ok.</response>
         [HttpGet]
         [ResponseCache(Duration = 60 * 60 * 1)] // 1 hour
-        public async Task<ActionResult<IList<BanViewModel>>> GetBans()
-        {
-            return Ok(await Mediator.Send(new GetBansListQuery()));
-        }
+        public Task<ActionResult<Result<IList<BanViewModel>>>> GetBans() =>
+            ResultToActionAsync(Mediator.Send(new GetBansListQuery()));
 
         /// <summary>
         /// Bans an user. If a ban already exists for the user, it is overriden. Use a duration of 0 to unban.
@@ -35,12 +30,11 @@ namespace Crpg.WebApi.Controllers
         /// <response code="400">Bad Request.</response>
         /// <response code="404">User was not found.</response>
         [HttpPost]
-        [ProducesResponseType((int)HttpStatusCode.Created)]
-        public async Task<ActionResult<BanViewModel>> BanUser([FromBody] BanCommand req)
+        public Task<ActionResult<Result<BanViewModel>>> BanUser([FromBody] BanCommand req)
         {
             req.BannedByUserId = CurrentUser.UserId;
-            var ban = await Mediator.Send(req);
-            return StatusCode(StatusCodes.Status201Created, ban);
+            return ResultToCreatedAtActionAsync(nameof(GetBans), null, b => new { id = b.Id },
+                Mediator.Send(req));
         }
     }
 }

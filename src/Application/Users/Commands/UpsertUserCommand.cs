@@ -5,17 +5,18 @@ using AutoMapper;
 using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mappings;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Steam;
 using Crpg.Application.Users.Models;
 using Crpg.Domain.Entities;
 using Crpg.Sdk.Abstractions.Events;
 using FluentValidation;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Users.Commands
 {
-    public class UpsertUserCommand : IRequest<UserViewModel>, IMapFrom<SteamPlayer>
+    public class UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<SteamPlayer>
     {
         public string PlatformUserId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
@@ -41,7 +42,7 @@ namespace Crpg.Application.Users.Commands
             }
         }
 
-        public class Handler : IRequestHandler<UpsertUserCommand, UserViewModel>
+        public class Handler : IMediatorRequestHandler<UpsertUserCommand, UserViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -54,7 +55,7 @@ namespace Crpg.Application.Users.Commands
                 _events = events;
             }
 
-            public async Task<UserViewModel> Handle(UpsertUserCommand request, CancellationToken cancellationToken)
+            public async Task<Result<UserViewModel>> Handle(UpsertUserCommand request, CancellationToken cancellationToken)
             {
                 var user =
                     await _db.Users.FirstOrDefaultAsync(u => u.PlatformUserId == request.PlatformUserId, cancellationToken)
@@ -73,7 +74,7 @@ namespace Crpg.Application.Users.Commands
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<UserViewModel>(user);
+                return new Result<UserViewModel>(_mapper.Map<UserViewModel>(user));
             }
         }
     }

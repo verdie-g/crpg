@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Characters.Models;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
 using NUnit.Framework;
 
@@ -50,7 +50,7 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
-            var stats = await new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper).Handle(
                 new UpdateCharacterStatisticsCommand
                 {
                     UserId = character.UserId,
@@ -86,6 +86,7 @@ namespace Crpg.Application.UTest.Characters
                     }
                 }, CancellationToken.None);
 
+            var stats = result.Data!;
             Assert.AreEqual(0, stats.Attributes.Points);
             Assert.AreEqual(30, stats.Attributes.Strength);
             Assert.AreEqual(60, stats.Attributes.Agility);
@@ -123,7 +124,7 @@ namespace Crpg.Application.UTest.Characters
 
             var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
 
-            var stats = await handler.Handle(new UpdateCharacterStatisticsCommand
+            var result = await handler.Handle(new UpdateCharacterStatisticsCommand
             {
                 CharacterId = character.Entity.Id,
                 UserId = character.Entity.UserId,
@@ -133,10 +134,11 @@ namespace Crpg.Application.UTest.Characters
                 }
             }, CancellationToken.None);
 
+            var stats = result.Data!;
             Assert.AreEqual(1, stats.Attributes.Agility);
             Assert.AreEqual(110, stats.WeaponProficiencies.Points);
 
-            stats = await handler.Handle(new UpdateCharacterStatisticsCommand
+            result = await handler.Handle(new UpdateCharacterStatisticsCommand
             {
                 CharacterId = character.Entity.Id,
                 UserId = character.Entity.UserId,
@@ -147,6 +149,7 @@ namespace Crpg.Application.UTest.Characters
                 }
             }, CancellationToken.None);
 
+            stats = result.Data!;
             Assert.AreEqual(3, stats.Attributes.Agility);
             Assert.AreEqual(0, stats.WeaponProficiencies.Points);
             Assert.AreEqual(42, stats.WeaponProficiencies.Bow);
@@ -168,7 +171,7 @@ namespace Crpg.Application.UTest.Characters
 
             var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
 
-            var stats = await handler.Handle(new UpdateCharacterStatisticsCommand
+            var result = await handler.Handle(new UpdateCharacterStatisticsCommand
             {
                 CharacterId = character.Entity.Id,
                 UserId = character.Entity.UserId,
@@ -179,10 +182,11 @@ namespace Crpg.Application.UTest.Characters
                 }
             }, CancellationToken.None);
 
+            var stats = result.Data!;
             Assert.AreEqual(1, stats.Skills.WeaponMaster);
             Assert.AreEqual(259, stats.WeaponProficiencies.Points);
 
-            stats = await handler.Handle(new UpdateCharacterStatisticsCommand
+            result = await handler.Handle(new UpdateCharacterStatisticsCommand
             {
                 CharacterId = character.Entity.Id,
                 UserId = character.Entity.UserId,
@@ -194,6 +198,7 @@ namespace Crpg.Application.UTest.Characters
                 }
             }, CancellationToken.None);
 
+            stats = result.Data!;
             Assert.AreEqual(3, stats.Skills.WeaponMaster);
             // If this assertion fails after modifying weapon proficiency mathematical functions,
             // edit the initial character weapon proficiency points to get to 0 at the end and check
@@ -268,17 +273,18 @@ namespace Crpg.Application.UTest.Characters
             var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
             foreach (var statObject in statsObjects)
             {
-                Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
+                var result = await handler.Handle(new UpdateCharacterStatisticsCommand
                 {
                     UserId = character.UserId,
                     CharacterId = character.Id,
                     Statistics = statObject,
-                }, CancellationToken.None));
+                }, CancellationToken.None);
+                Assert.AreEqual(ErrorCode.SkillRequirementNotMet, result.Errors![0].Code);
             }
         }
 
         [Test]
-        public async Task ShouldntUpdateIfNotEnoughPoints()
+        public async Task ShouldntUpdateIfNotEnoughAttributePoints()
         {
             var character = new Character();
             ArrangeDb.Add(character);
@@ -288,6 +294,30 @@ namespace Crpg.Application.UTest.Characters
             {
                 new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Strength = 1 } },
                 new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Agility = 1 } },
+            };
+
+            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
+            foreach (var statObject in statsObjects)
+            {
+                var result = await handler.Handle(new UpdateCharacterStatisticsCommand
+                {
+                    UserId = character.UserId,
+                    CharacterId = character.Id,
+                    Statistics = statObject,
+                }, CancellationToken.None);
+                Assert.AreEqual(ErrorCode.NotEnoughAttributePoints, result.Errors![0].Code);
+            }
+        }
+
+        [Test]
+        public async Task ShouldntUpdateIfNotEnoughSkillPoints()
+        {
+            var character = new Character();
+            ArrangeDb.Add(character);
+            await ArrangeDb.SaveChangesAsync();
+
+            var statsObjects = new[]
+            {
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { IronFlesh = 1 } },
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerStrike = 1 } },
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerDraw = 1 } },
@@ -297,6 +327,30 @@ namespace Crpg.Application.UTest.Characters
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Riding = 1 } },
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { HorseArchery = 1 } },
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Shield = 1 } },
+            };
+
+            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
+            foreach (var statObject in statsObjects)
+            {
+                var result = await handler.Handle(new UpdateCharacterStatisticsCommand
+                {
+                    UserId = character.UserId,
+                    CharacterId = character.Id,
+                    Statistics = statObject,
+                }, CancellationToken.None);
+                Assert.AreEqual(ErrorCode.NotEnoughSkillPoints, result.Errors![0].Code);
+            }
+        }
+
+        [Test]
+        public async Task ShouldntUpdateIfNotEnoughWeaponProficiencyPoints()
+        {
+            var character = new Character();
+            ArrangeDb.Add(character);
+            await ArrangeDb.SaveChangesAsync();
+
+            var statsObjects = new[]
+            {
                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { OneHanded = 1 } },
                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { TwoHanded = 1 } },
                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Polearm = 1 } },
@@ -308,12 +362,13 @@ namespace Crpg.Application.UTest.Characters
             var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
             foreach (var statObject in statsObjects)
             {
-                Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
+                var result = await handler.Handle(new UpdateCharacterStatisticsCommand
                 {
                     UserId = character.UserId,
                     CharacterId = character.Id,
                     Statistics = statObject,
-                }, CancellationToken.None));
+                }, CancellationToken.None);
+                Assert.AreEqual(ErrorCode.NotWeaponProficiencyPoints, result.Errors![0].Code);
             }
         }
 
@@ -356,61 +411,14 @@ namespace Crpg.Application.UTest.Characters
             var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
             foreach (var statObject in statsObjects)
             {
-                Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
+                var result = await handler.Handle(new UpdateCharacterStatisticsCommand
                 {
                     UserId = character.UserId,
                     CharacterId = character.Id,
                     Statistics = statObject,
-                }, CancellationToken.None));
+                }, CancellationToken.None);
+                Assert.AreEqual(ErrorCode.StatisticDecreased, result.Errors![0].Code);
             }
-        }
-
-        [Test]
-        public async Task StatShouldntBeIncreasedIfNotEnoughPoints()
-        {
-             var character = new Character
-             {
-                 Statistics = new CharacterStatistics
-                 {
-                     Attributes = new CharacterAttributes { Points = 0 },
-                     Skills = new CharacterSkills { Points = 0 },
-                     WeaponProficiencies = new CharacterWeaponProficiencies { Points = 0 },
-                 }
-             };
-             ArrangeDb.Add(character);
-             await ArrangeDb.SaveChangesAsync();
-
-             var statsObjects = new[]
-             {
-                 new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Agility = 1 } },
-                 new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Strength = 1 } },
-                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { IronFlesh = 1 } },
-                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerStrike = 1 } },
-                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerDraw = 1 } },
-                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerThrow = 1 } },
-                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Riding = 1 } },
-                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Athletics = 1 } },
-                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { WeaponMaster = 1 } },
-                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { HorseArchery = 1 } },
-                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Shield = 1 } },
-                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { OneHanded = 1 } },
-                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { TwoHanded = 1 } },
-                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Polearm = 1 } },
-                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Bow = 1 } },
-                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Throwing = 1 } },
-                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = 1 } },
-             };
-
-             var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
-             foreach (var statObject in statsObjects)
-             {
-                 Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
-                 {
-                     UserId = character.UserId,
-                     CharacterId = character.Id,
-                     Statistics = statObject,
-                 }, CancellationToken.None));
-             }
         }
 
         [Test]
@@ -420,24 +428,26 @@ namespace Crpg.Application.UTest.Characters
              await ArrangeDb.SaveChangesAsync();
 
              var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
-             Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
+             var result = await handler.Handle(new UpdateCharacterStatisticsCommand
              {
                  UserId = user.Entity.Id,
                  CharacterId = 1,
                  Statistics = new CharacterStatisticsViewModel(),
-             }, CancellationToken.None));
+             }, CancellationToken.None);
+             Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
-        public void ShouldThrowNotFoundIfUserNotFound()
+        public async Task ShouldThrowNotFoundIfUserNotFound()
         {
              var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper);
-             Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(new UpdateCharacterStatisticsCommand
+             var result = await handler.Handle(new UpdateCharacterStatisticsCommand
              {
                  UserId = 1,
                  CharacterId = 1,
                  Statistics = new CharacterStatisticsViewModel(),
-             }, CancellationToken.None));
+             }, CancellationToken.None);
+             Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
     }
 }

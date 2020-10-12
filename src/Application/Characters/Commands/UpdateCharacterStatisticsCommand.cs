@@ -1,23 +1,24 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Characters.Models;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class UpdateCharacterStatisticsCommand : IRequest<CharacterStatisticsViewModel>
+    public class UpdateCharacterStatisticsCommand : IMediatorRequest<CharacterStatisticsViewModel>
     {
         public int UserId { get; set; }
         public int CharacterId { get; set; }
         public CharacterStatisticsViewModel Statistics { get; set; } = new CharacterStatisticsViewModel();
 
-        public class Handler : IRequestHandler<UpdateCharacterStatisticsCommand, CharacterStatisticsViewModel>
+        public class Handler : IMediatorRequestHandler<UpdateCharacterStatisticsCommand, CharacterStatisticsViewModel>
         {
             private static int WeaponProficienciesPointsForAgility(int agility) => agility * 14;
 
@@ -46,28 +47,43 @@ namespace Crpg.Application.Characters.Commands
                 _mapper = mapper;
             }
 
-            public async Task<CharacterStatisticsViewModel> Handle(UpdateCharacterStatisticsCommand req,
+            public async Task<Result<CharacterStatisticsViewModel>> Handle(UpdateCharacterStatisticsCommand req,
                 CancellationToken cancellationToken)
             {
                 var character = await _db.Characters.FirstOrDefaultAsync(c =>
                         c.UserId == req.UserId && c.Id == req.CharacterId, cancellationToken);
                 if (character == null)
                 {
-                    throw new NotFoundException(nameof(Character), req.CharacterId);
+                    return new Result<CharacterStatisticsViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
-                SetStatistics(character.Statistics, req.Statistics);
+                IList<Error>? errors;
+                try
+                {
+                    var res = SetStatistics(character.Statistics, req.Statistics);
+                    errors = res.Errors;
+                }
+                catch (StatisticDecreasedException)
+                {
+                    errors = new[] { CommonErrors.StatisticDecreased() };
+                }
+
+                if (errors != null && errors.Count != 0)
+                {
+                    return new Result<CharacterStatisticsViewModel>(errors);
+                }
+
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<CharacterStatisticsViewModel>(character.Statistics);
+                return new Result<CharacterStatisticsViewModel>(_mapper.Map<CharacterStatisticsViewModel>(character.Statistics));
             }
 
-            private void SetStatistics(CharacterStatistics stats, CharacterStatisticsViewModel newStats)
+            private Result<object> SetStatistics(CharacterStatistics stats, CharacterStatisticsViewModel newStats)
             {
                 int attributesDelta = CheckedDelta(stats.Attributes.Strength, newStats.Attributes.Strength)
                     + CheckedDelta(stats.Attributes.Agility, newStats.Attributes.Agility);
                 if (attributesDelta > stats.Attributes.Points)
                 {
-                    throw new BadRequestException("Not enough points for attributes");
+                    return new Result<object>(CommonErrors.NotEnoughAttributePoints(attributesDelta, stats.Attributes.Points));
                 }
 
                 stats.WeaponProficiencies.Points += WeaponProficienciesPointsForAgility(newStats.Attributes.Agility)
@@ -84,7 +100,7 @@ namespace Crpg.Application.Characters.Commands
                     + CheckedDelta(stats.Skills.Shield, newStats.Skills.Shield);
                 if (skillsDelta > stats.Skills.Points)
                 {
-                    throw new BadRequestException("Not enough points for skills");
+                    return new Result<object>(CommonErrors.NotEnoughSkillPoints(skillsDelta, stats.Skills.Points));
                 }
 
                 stats.WeaponProficiencies.Points += WeaponProficienciesPointsForWeaponMaster(newStats.Skills.WeaponMaster)
@@ -99,12 +115,12 @@ namespace Crpg.Application.Characters.Commands
                     + CheckedDelta(stats.WeaponProficiencies.Crossbow, newStats.WeaponProficiencies.Crossbow, WeaponProficiencyCost);
                 if (weaponProficienciesDelta > stats.WeaponProficiencies.Points)
                 {
-                    throw new BadRequestException("Not enough points for weapon proficiencies");
+                    return new Result<object>(CommonErrors.NotEnoughWeaponProficiencyPoints(weaponProficienciesDelta, stats.WeaponProficiencies.Points));
                 }
 
-                if (!CheckSkillsConsistency(newStats))
+                if (!CheckSkillsRequirement(newStats))
                 {
-                    throw new BadRequestException("Inconsistent statistics");
+                    return new Result<object>(CommonErrors.SkillRequirementNotMet());
                 }
 
                 stats.Attributes.Points -= attributesDelta;
@@ -129,6 +145,8 @@ namespace Crpg.Application.Characters.Commands
                 stats.WeaponProficiencies.Bow = newStats.WeaponProficiencies.Bow;
                 stats.WeaponProficiencies.Throwing = newStats.WeaponProficiencies.Throwing;
                 stats.WeaponProficiencies.Crossbow = newStats.WeaponProficiencies.Crossbow;
+
+                return new Result<object>();
             }
 
             private static int CheckedDelta(int oldStat, int newStat, Func<int, int>? cost = null)
@@ -141,10 +159,10 @@ namespace Crpg.Application.Characters.Commands
                     return delta;
                 }
 
-                throw new BadRequestException("Can't decrease stat");
+                throw new StatisticDecreasedException();
             }
 
-            private static bool CheckSkillsConsistency(CharacterStatisticsViewModel stats)
+            private static bool CheckSkillsRequirement(CharacterStatisticsViewModel stats)
             {
                 return stats.Skills.IronFlesh <= stats.Attributes.Strength / 3
                     && stats.Skills.PowerStrike <= stats.Attributes.Strength / 3
@@ -155,6 +173,10 @@ namespace Crpg.Application.Characters.Commands
                     && stats.Skills.WeaponMaster <= stats.Attributes.Agility / 3
                     && stats.Skills.HorseArchery <= stats.Attributes.Agility / 6
                     && stats.Skills.Shield <= stats.Attributes.Agility / 6;
+            }
+
+            private class StatisticDecreasedException : Exception
+            {
             }
         }
     }

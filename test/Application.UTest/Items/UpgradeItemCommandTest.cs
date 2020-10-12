@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
 using Crpg.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -35,14 +35,14 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var upgradedItem = await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(new UpgradeItemCommand
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
                 UserId = user.Id,
             }, CancellationToken.None);
 
             user = await AssertDb.Users.FirstAsync(u => u.Id == user.Id);
-            Assert.AreEqual(itemIdx - 2, upgradedItem.Rank);
+            Assert.AreEqual(itemIdx - 2, result.Data!.Rank);
             Assert.Less(user.Gold, 1000);
         }
 
@@ -57,11 +57,12 @@ namespace Crpg.Application.UTest.Items
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new UpgradeItemCommand.Handler(ActDb, Mapper);
-            Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new UpgradeItemCommand
+            var result = await handler.Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
                 UserId = user.Entity.Id,
-            }, CancellationToken.None));
+            }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.NotEnoughGold, result.Errors![0].Code);
         }
 
         [Test]
@@ -75,14 +76,14 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var upgradedItem = await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(new UpgradeItemCommand
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
                 UserId = user.Id,
             }, CancellationToken.None);
 
             user = await AssertDb.Users.FirstAsync(u => u.Id == user.Id);
-            Assert.AreEqual(itemIdx - 2, upgradedItem.Rank);
+            Assert.AreEqual(itemIdx - 2, result.Data!.Rank);
             Assert.AreEqual(0, user.HeirloomPoints);
         }
 
@@ -97,11 +98,12 @@ namespace Crpg.Application.UTest.Items
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new UpgradeItemCommand.Handler(ActDb, Mapper);
-            Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(new UpgradeItemCommand
+            var result = await handler.Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
                 UserId = user.Entity.Id,
-            }, CancellationToken.None));
+            }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.NotEnoughHeirloomPoints, result.Errors![0].Code);
         }
 
         [Test]
@@ -121,11 +123,11 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var upgradedItem = await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(new UpgradeItemCommand
+            var upgradedItem = (await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
                 UserId = user.Id,
-            }, CancellationToken.None);
+            }, CancellationToken.None)).Data!;
 
             user = await AssertDb.Users
                 .Include(u => u.Characters)
@@ -135,32 +137,19 @@ namespace Crpg.Application.UTest.Items
         }
 
         [Test]
-        public async Task ShouldThrowOnInvalidItemRank()
-        {
-            var user = ArrangeDb.Users.Add(new User { OwnedItems = new List<UserItem> { new UserItem { ItemId = _items[6].Id } } });
-            await ArrangeDb.SaveChangesAsync();
-
-            Assert.ThrowsAsync<BadRequestException>(() => new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(
-                new UpgradeItemCommand
-                {
-                    ItemId = _items[6].Id,
-                    UserId = user.Entity.Id,
-                }, CancellationToken.None));
-        }
-
-        [Test]
         public async Task ShouldThrowIfUserDoesntOwnItem()
         {
             var user = ArrangeDb.Users.Add(new User());
             var item = ArrangeDb.Items.Add(new Item());
             await ArrangeDb.SaveChangesAsync();
 
-            Assert.ThrowsAsync<NotFoundException>(() => new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(
                 new UpgradeItemCommand
                 {
                     ItemId = item.Entity.Id,
                     UserId = user.Entity.Id,
-                }, CancellationToken.None));
+                }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
         }
 
         [Test]
@@ -169,12 +158,13 @@ namespace Crpg.Application.UTest.Items
             var user = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            Assert.ThrowsAsync<NotFoundException>(() => new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(
                 new UpgradeItemCommand
                 {
                     ItemId = 1,
                     UserId = user.Entity.Id,
-                }, CancellationToken.None));
+                }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
         }
 
         [Test]
@@ -183,12 +173,13 @@ namespace Crpg.Application.UTest.Items
             var item = ArrangeDb.Items.Add(new Item());
             await ArrangeDb.SaveChangesAsync();
 
-            Assert.ThrowsAsync<NotFoundException>(() => new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(
                 new UpgradeItemCommand
                 {
                     ItemId = item.Entity.Id,
                     UserId = 1,
-                }, CancellationToken.None));
+                }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
         }
     }
 }

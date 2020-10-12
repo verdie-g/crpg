@@ -2,17 +2,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Characters.Models;
-using Crpg.Application.Common;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
-using Crpg.Domain.Entities;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using FluentValidation;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class UpdateCharacterCommand : IRequest<CharacterViewModel>
+    public class UpdateCharacterCommand : IMediatorRequest<CharacterViewModel>
     {
         public int CharacterId { get; set; }
         public int UserId { get; set; }
@@ -31,7 +29,7 @@ namespace Crpg.Application.Characters.Commands
             }
         }
 
-        public class Handler : IRequestHandler<UpdateCharacterCommand, CharacterViewModel>
+        public class Handler : IMediatorRequestHandler<UpdateCharacterCommand, CharacterViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -42,19 +40,19 @@ namespace Crpg.Application.Characters.Commands
                 _mapper = mapper;
             }
 
-            public async Task<CharacterViewModel> Handle(UpdateCharacterCommand request, CancellationToken cancellationToken)
+            public async Task<Result<CharacterViewModel>> Handle(UpdateCharacterCommand req, CancellationToken cancellationToken)
             {
                 var character = await _db.Characters
-                    .FirstOrDefaultAsync(c => c.Id == request.CharacterId && c.UserId == request.UserId, cancellationToken);
+                    .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
 
                 if (character == null)
                 {
-                    throw new NotFoundException(nameof(Character), request.CharacterId, request.UserId);
+                    return new Result<CharacterViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
-                character.Name = request.Name;
+                character.Name = req.Name;
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<CharacterViewModel>(character);
+                return new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character));
             }
         }
     }

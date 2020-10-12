@@ -1,18 +1,18 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
-using MediatR;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class DeleteCharacterCommand : IRequest
+    public class DeleteCharacterCommand : IMediatorRequest
     {
         public int CharacterId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<DeleteCharacterCommand>
+        public class Handler : IMediatorRequestHandler<DeleteCharacterCommand>
         {
             private readonly ICrpgDbContext _db;
 
@@ -21,21 +21,21 @@ namespace Crpg.Application.Characters.Commands
                 _db = db;
             }
 
-            public async Task<Unit> Handle(DeleteCharacterCommand request, CancellationToken cancellationToken)
+            public async Task<Result<object>> Handle(DeleteCharacterCommand req, CancellationToken cancellationToken)
             {
                 var characterDb =
                     await _db.Characters.FirstOrDefaultAsync(c =>
-                        c.Id == request.CharacterId && c.UserId == request.UserId, cancellationToken);
+                        c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
 
                 if (characterDb == null)
                 {
-                    throw new NotFoundException(nameof(Characters), request.CharacterId);
+                    return new Result<object>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
                 _db.Characters.Remove(characterDb);
                 await _db.SaveChangesAsync(cancellationToken);
 
-                return Unit.Value;
+                return new Result<object>();
             }
         }
     }

@@ -3,17 +3,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Bans.Models;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
-using Crpg.Common;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
 using FluentValidation;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Bans.Commands
 {
-    public class BanCommand : IRequest<BanViewModel>
+    public class BanCommand : IMediatorRequest<BanViewModel>
     {
         public int BannedUserId { get; set; }
         public TimeSpan Duration { get; set; }
@@ -29,7 +28,7 @@ namespace Crpg.Application.Bans.Commands
             }
         }
 
-        public class Handler : IRequestHandler<BanCommand, BanViewModel>
+        public class Handler : IMediatorRequestHandler<BanCommand, BanViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -40,18 +39,18 @@ namespace Crpg.Application.Bans.Commands
                 _mapper = mapper;
             }
 
-            public async Task<BanViewModel> Handle(BanCommand request, CancellationToken cancellationToken)
+            public async Task<Result<BanViewModel>> Handle(BanCommand request, CancellationToken cancellationToken)
             {
                 var bannedUser = await _db.Users.FirstOrDefaultAsync(u => u.Id == request.BannedUserId, cancellationToken);
                 if (bannedUser == null)
                 {
-                    throw new NotFoundException(nameof(User), request.BannedUserId);
+                    return new Result<BanViewModel>(CommonErrors.UserNotFound(request.BannedUserId));
                 }
 
                 var banningUser = await _db.Users.FirstOrDefaultAsync(u => u.Id == request.BannedByUserId, cancellationToken);
                 if (banningUser == null)
                 {
-                    throw new NotFoundException(nameof(User), request.BannedByUserId);
+                    return new Result<BanViewModel>(CommonErrors.UserNotFound(request.BannedByUserId));
                 }
 
                 var ban = new Ban
@@ -64,7 +63,7 @@ namespace Crpg.Application.Bans.Commands
 
                 bannedUser.Bans.Add(ban);
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<BanViewModel>(ban);
+                return new Result<BanViewModel>(_mapper.Map<BanViewModel>(ban));
             }
         }
     }

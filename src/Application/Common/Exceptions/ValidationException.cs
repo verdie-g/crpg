@@ -1,36 +1,24 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using FluentValidation.Results;
 
 namespace Crpg.Application.Common.Exceptions
 {
     public class ValidationException : Exception
     {
-        public ValidationException()
-            : base("One or more validation failures have occurred.")
+        public IEnumerable<ValidationError> Errors { get; }
+
+        public ValidationException(IEnumerable<ValidationError> errors) => Errors = errors;
+    }
+
+    public class ValidationError
+    {
+        public string ErrorMessage { get; }
+        public string PropertyName { get; }
+
+        public ValidationError(string errorMessage, string propertyName)
         {
-            Failures = new Dictionary<string, string[]>();
+            ErrorMessage = errorMessage;
+            PropertyName = propertyName;
         }
-
-        public ValidationException(List<ValidationFailure> failures)
-            : this()
-        {
-            var propertyNames = failures
-                .Select(e => e.PropertyName)
-                .Distinct();
-
-            foreach (var propertyName in propertyNames)
-            {
-                var propertyFailures = failures
-                    .Where(e => e.PropertyName == propertyName)
-                    .Select(e => e.ErrorMessage)
-                    .ToArray();
-
-                Failures.Add(propertyName, propertyFailures);
-            }
-        }
-
-        public IDictionary<string, string[]> Failures { get; }
     }
 }

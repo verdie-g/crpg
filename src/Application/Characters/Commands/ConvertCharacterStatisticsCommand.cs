@@ -2,16 +2,15 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Characters.Models;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
-using Crpg.Domain.Entities;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using FluentValidation;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class ConvertCharacterStatisticsCommand : IRequest<CharacterStatisticsViewModel>
+    public class ConvertCharacterStatisticsCommand : IMediatorRequest<CharacterStatisticsViewModel>
     {
         public int CharacterId { get; set; }
         public int UserId { get; set; }
@@ -25,7 +24,7 @@ namespace Crpg.Application.Characters.Commands
             }
         }
 
-        public class Handler : IRequestHandler<ConvertCharacterStatisticsCommand, CharacterStatisticsViewModel>
+        public class Handler : IMediatorRequestHandler<ConvertCharacterStatisticsCommand, CharacterStatisticsViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -36,21 +35,21 @@ namespace Crpg.Application.Characters.Commands
                 _mapper = mapper;
             }
 
-            public async Task<CharacterStatisticsViewModel> Handle(ConvertCharacterStatisticsCommand req,
+            public async Task<Result<CharacterStatisticsViewModel>> Handle(ConvertCharacterStatisticsCommand req,
                 CancellationToken cancellationToken)
             {
                 var character = await _db.Characters.FirstOrDefaultAsync(c =>
                     c.UserId == req.UserId && c.Id == req.CharacterId, cancellationToken);
                 if (character == null)
                 {
-                    throw new NotFoundException(nameof(Character), req.CharacterId);
+                    return new Result<CharacterStatisticsViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
                 if (req.Conversion == CharacterStatisticConversion.AttributesToSkills)
                 {
                     if (character.Statistics.Attributes.Points < 1)
                     {
-                        throw new BadRequestException("Not enough attribute points");
+                        return new Result<CharacterStatisticsViewModel>(CommonErrors.NotEnoughAttributePoints(1, character.Statistics.Attributes.Points));
                     }
 
                     character.Statistics.Attributes.Points -= 1;
@@ -60,7 +59,7 @@ namespace Crpg.Application.Characters.Commands
                 {
                     if (character.Statistics.Skills.Points < 2)
                     {
-                        throw new BadRequestException("Not enough skill points");
+                        return new Result<CharacterStatisticsViewModel>(CommonErrors.NotEnoughSkillPoints(1, character.Statistics.Skills.Points));
                     }
 
                     character.Statistics.Skills.Points -= 2;
@@ -68,7 +67,7 @@ namespace Crpg.Application.Characters.Commands
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<CharacterStatisticsViewModel>(character.Statistics);
+                return new Result<CharacterStatisticsViewModel>(_mapper.Map<CharacterStatisticsViewModel>(character.Statistics));
             }
         }
     }

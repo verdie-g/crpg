@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Commands;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
 using NUnit.Framework;
 
@@ -103,8 +103,9 @@ namespace Crpg.Application.UTest.Characters
                 Weapon4ItemId = weapon4New.Entity.Id,
                 AutoRepair = true,
             };
-            var c = await handler.Handle(cmd, CancellationToken.None);
+            var result = await handler.Handle(cmd, CancellationToken.None);
 
+            var c = result.Data!;
             Assert.AreEqual(cmd.HeadItemId, c.HeadItem!.Id);
             Assert.AreEqual(cmd.CapeItemId, c.CapeItem!.Id);
             Assert.AreEqual(cmd.BodyItemId, c.BodyItem!.Id);
@@ -175,8 +176,9 @@ namespace Crpg.Application.UTest.Characters
                 Weapon4ItemId = null,
                 AutoRepair = false,
             };
-            var c = await handler.Handle(cmd, CancellationToken.None);
+            var result = await handler.Handle(cmd, CancellationToken.None);
 
+            var c = result.Data!;
             Assert.AreEqual(cmd.HeadItemId, c.HeadItem!.Id);
             Assert.IsNull(c.CapeItem);
             Assert.AreEqual(cmd.BodyItemId, c.BodyItem!.Id);
@@ -204,7 +206,8 @@ namespace Crpg.Application.UTest.Characters
                 UserId = user.Entity.Id,
             };
 
-            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(cmd, CancellationToken.None));
+            var result = await handler.Handle(cmd, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
@@ -221,7 +224,8 @@ namespace Crpg.Application.UTest.Characters
                 UserId = user.Entity.Id,
             };
 
-            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(cmd, CancellationToken.None));
+            var result = await handler.Handle(cmd, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
@@ -237,7 +241,8 @@ namespace Crpg.Application.UTest.Characters
                 UserId = 1,
             };
 
-            Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(cmd, CancellationToken.None));
+            var result = await handler.Handle(cmd, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
@@ -258,7 +263,8 @@ namespace Crpg.Application.UTest.Characters
                 HeadItemId = 1,
             };
 
-            Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(cmd, CancellationToken.None));
+            var result = await handler.Handle(cmd, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
         }
 
         [Test]
@@ -280,7 +286,8 @@ namespace Crpg.Application.UTest.Characters
                 HeadItemId = head.Entity.Id,
             };
 
-            Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(cmd, CancellationToken.None));
+            var result = await handler.Handle(cmd, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
         }
 
         [Theory]
@@ -338,7 +345,8 @@ namespace Crpg.Application.UTest.Characters
                     : (int?)body.Entity.Id,
             };
 
-            Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(cmd, CancellationToken.None));
+            var result = await handler.Handle(cmd, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.ItemBadType, result.Errors![0].Code);
         }
     }
 }

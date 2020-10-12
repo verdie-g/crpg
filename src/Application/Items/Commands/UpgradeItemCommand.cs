@@ -1,23 +1,22 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Commands
 {
-    public class UpgradeItemCommand : IRequest<ItemViewModel>
+    public class UpgradeItemCommand : IMediatorRequest<ItemViewModel>
     {
         public int ItemId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IRequestHandler<UpgradeItemCommand, ItemViewModel>
+        public class Handler : IMediatorRequestHandler<UpgradeItemCommand, ItemViewModel>
         {
             /// <summary>
             /// To repair an item for rank -1 to rank 0 it costs 7% of the rank 0 price.
@@ -33,18 +32,21 @@ namespace Crpg.Application.Items.Commands
                 _mapper = mapper;
             }
 
-            public async Task<ItemViewModel> Handle(UpgradeItemCommand request, CancellationToken cancellationToken)
+            public async Task<Result<ItemViewModel>> Handle(UpgradeItemCommand req, CancellationToken cancellationToken)
             {
                 var userItem = await _db.UserItems
                     .Include(oi => oi.User!).ThenInclude(u => u.Characters)
                     .Include(oi => oi.Item!)
-                    .FirstOrDefaultAsync(oi => oi.UserId == request.UserId && oi.ItemId == request.ItemId, cancellationToken);
+                    .FirstOrDefaultAsync(oi => oi.UserId == req.UserId && oi.ItemId == req.ItemId, cancellationToken);
                 if (userItem == null)
                 {
-                    throw new NotFoundException(nameof(UserItem), request.UserId, request.ItemId);
+                    return new Result<ItemViewModel>(CommonErrors.ItemNotOwned(req.ItemId));
                 }
 
-                CheckItemRank(userItem.Item!.Rank);
+                if (userItem.Item!.Rank >= 3)
+                {
+                    return new Result<ItemViewModel>(CommonErrors.ItemMaxRankReached(req.ItemId, req.UserId, 3));
+                }
 
                 var upgradedItem = await _db.Items
                     .AsNoTracking()
@@ -54,7 +56,7 @@ namespace Crpg.Application.Items.Commands
                     int repairCost = (int)(ItemRepairCost * upgradedItem.Value);
                     if (userItem.User!.Gold < repairCost)
                     {
-                        throw new BadRequestException("Not enough gold");
+                        return new Result<ItemViewModel>(CommonErrors.NotEnoughGold(repairCost, userItem.User!.Gold));
                     }
 
                     userItem.User!.Gold -= repairCost;
@@ -63,7 +65,7 @@ namespace Crpg.Application.Items.Commands
                 {
                     if (userItem.User!.HeirloomPoints == 0)
                     {
-                        throw new BadRequestException("No heirloom points");
+                        return new Result<ItemViewModel>(CommonErrors.NotEnoughHeirloomPoints(1, userItem.User.HeirloomPoints));
                     }
 
                     userItem.User!.HeirloomPoints -= 1;
@@ -77,20 +79,7 @@ namespace Crpg.Application.Items.Commands
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
-                return _mapper.Map<ItemViewModel>(upgradedItem);
-            }
-
-            private static void CheckItemRank(int rank)
-            {
-                if (rank >= 3)
-                {
-                    throw new BadRequestException("Item is already at its maximal rank");
-                }
-
-                if (rank < -3) // inconsistency in database
-                {
-                    throw new Exception($"Unknown rank {rank}");
-                }
+                return new Result<ItemViewModel>(_mapper.Map<ItemViewModel>(upgradedItem));
             }
         }
     }
