@@ -30,7 +30,7 @@
         Attributes ({{stats.attributes.points + statsDelta.attributes.points}})
         <b-tooltip label="Convert 1 attribute point to 2 skill points" class="convert-button"
                    v-if="stats.attributes.points + statsDelta.attributes.points >= 1">
-          <b-icon icon="exchange-alt" size="is-small" @click.native="convertStats(statisticConversion.AttributesToSkills)" />
+          <b-icon icon="exchange-alt" size="is-small" type="is-primary" @click.native="convertStats(statisticConversion.AttributesToSkills)" />
         </b-tooltip>
       </h2>
 
@@ -60,7 +60,7 @@
         Skills ({{stats.skills.points + statsDelta.skills.points}})
         <b-tooltip label="Convert 2 skills points to 1 attribute point" class="convert-button"
                    v-if="stats.skills.points + statsDelta.skills.points >= 2">
-          <b-icon icon="exchange-alt" size="is-small" @click.native="convertStats(statisticConversion.SkillsToAttributes)" />
+          <b-icon icon="exchange-alt" size="is-small" type="is-primary" @click.native="convertStats(statisticConversion.SkillsToAttributes)" />
         </b-tooltip>
       </h2>
 
