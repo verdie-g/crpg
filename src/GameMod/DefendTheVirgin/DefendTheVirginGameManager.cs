@@ -6,14 +6,15 @@ using Crpg.GameMod.Api.Models;
 using Crpg.GameMod.Common;
 using Crpg.GameMod.Helpers;
 using Newtonsoft.Json;
-using Steamworks;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using TaleWorlds.PlatformService;
 using Module = TaleWorlds.MountAndBlade.Module;
+using Platform = Crpg.GameMod.Api.Models.Platform;
 
 namespace Crpg.GameMod.DefendTheVirgin
 {
@@ -115,14 +116,21 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         private async Task<CrpgUser> GetUserAsync()
         {
-            var steamId = SteamUser.GetSteamID();
-            string name = SteamFriends.GetFriendPersonaName(steamId);
+            var platform = (Platform)Enum.Parse(typeof(Platform), PlatformServices.ProviderName, true);
+            var login = PlatformServices.Instance.CreateLobbyClientLoginProvider();
+            login.Initialize(null, PlatformServices.Instance.GetInitParams()); // PreferredUserName is not used
 
             var res = await _crpgClient.Update(new CrpgGameUpdateRequest
             {
                 GameUserUpdates = new[]
                 {
-                    new CrpgGameUserUpdate { PlatformUserId = steamId.ToString(), CharacterName = name },
+                    new CrpgGameUserUpdate
+                    {
+                        Platform = platform,
+                        // The real id seems to be Id2 for Steam and GOG, not sure about Epic
+                        PlatformUserId = login.GetPlayerId().Id2.ToString(),
+                        CharacterName = login.GetUserName(),
+                    },
                 },
             });
 

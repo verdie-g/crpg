@@ -52,6 +52,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
+                        Platform = Platform.Epic,
                         PlatformUserId = "1",
                         CharacterName = "a",
                         Reward = new GameUserReward
@@ -66,6 +67,8 @@ namespace Crpg.Application.UTest.Games
             var data = result.Data!;
             Assert.AreEqual(1, data.Users.Count);
             Assert.NotZero(data.Users[0].Id);
+            Assert.AreEqual(Platform.Epic, data.Users[0].Platform);
+            Assert.AreEqual("1", data.Users[0].PlatformUserId);
             Assert.AreEqual(300 + 200, data.Users[0].Gold);
             Assert.AreEqual("a", data.Users[0].Character.Name);
             Assert.AreEqual(0, data.Users[0].Character.Generation);
@@ -128,7 +131,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldCreateCharacterIfDoesntExist()
         {
-            var user = new User { PlatformUserId = "1", Gold = 1000 };
+            var user = new User { Platform = Platform.Steam, PlatformUserId = "1", Gold = 1000 };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
@@ -141,6 +144,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
+                        Platform = Platform.Steam,
                         PlatformUserId = "1",
                         CharacterName = "a",
                         Reward = new GameUserReward
@@ -154,6 +158,8 @@ namespace Crpg.Application.UTest.Games
 
             var data = result.Data!;
             Assert.AreEqual(1, data.Users.Count);
+            Assert.AreEqual(Platform.Steam, data.Users[0].Platform);
+            Assert.AreEqual("1", data.Users[0].PlatformUserId);
             Assert.AreEqual(1000 + 200, data.Users[0].Gold);
             Assert.NotZero(data.Users[0].Character.Id);
             Assert.AreEqual("a", data.Users[0].Character.Name);
@@ -185,6 +191,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = new User
             {
+                Platform = Platform.Steam,
                 PlatformUserId = "1",
                 Gold = 1000,
                 OwnedItems = new List<UserItem>
@@ -210,6 +217,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
+                        Platform = Platform.Steam,
                         PlatformUserId = user.PlatformUserId,
                         CharacterName = "a",
                     },
@@ -225,6 +233,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = new User
             {
+                Platform = Platform.Steam,
                 PlatformUserId = "1",
                 Gold = 1000,
                 Characters = new List<Character>
@@ -254,6 +263,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
+                        Platform = Platform.Steam,
                         PlatformUserId = "1",
                         CharacterName = "a",
                         Reward = new GameUserReward
@@ -268,6 +278,8 @@ namespace Crpg.Application.UTest.Games
             var data = result.Data!;
             Assert.AreEqual(1, data.Users.Count);
             Assert.AreEqual(user.Id, data.Users[0].Id);
+            Assert.AreEqual(Platform.Steam, data.Users[0].Platform);
+            Assert.AreEqual("1", data.Users[0].PlatformUserId);
             Assert.AreEqual(1000 + 200, data.Users[0].Gold);
             Assert.AreEqual("a", data.Users[0].Character.Name);
             Assert.AreEqual(0, data.Users[0].Character.Generation);
@@ -287,6 +299,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = ArrangeDb.Users.Add(new User
             {
+                Platform = Platform.Epic,
                 PlatformUserId = "1",
                 Characters = new List<Character>
                 {
@@ -310,6 +323,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
+                        Platform = Platform.Epic,
                         PlatformUserId = "1",
                         CharacterName = "a",
                         Reward = new GameUserReward { Experience = 1000 },
@@ -327,10 +341,65 @@ namespace Crpg.Application.UTest.Games
         }
 
         [Test]
+        public async Task ShouldGetWithPlatformUserAndPlatform()
+        {
+            var user0 = new User
+            {
+                Platform = Platform.Steam,
+                PlatformUserId = "1",
+                Characters = new List<Character> { new Character { Name = "a" } },
+            };
+
+            var user1 = new User
+            {
+                Platform = Platform.Epic,
+                PlatformUserId = user0.PlatformUserId, // Same platform user id but different platform
+                Characters = new List<Character> { new Character { Name = "a" } },
+            };
+
+            ArrangeDb.AddRange(user0, user1);
+            await ArrangeDb.SaveChangesAsync();
+
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+                new MachineDateTimeOffset(), new ThreadSafeRandom());
+
+            var result = await handler.Handle(new UpdateGameCommand
+            {
+                GameUserUpdates = new[]
+                {
+                    new GameUserUpdate
+                    {
+                        Platform = user0.Platform,
+                        PlatformUserId = user0.PlatformUserId,
+                        CharacterName = user0.Characters[0].Name,
+                    },
+                    new GameUserUpdate
+                    {
+                        Platform = user1.Platform,
+                        PlatformUserId = user1.PlatformUserId,
+                        CharacterName = user1.Characters[0].Name,
+                    },
+                }
+            }, CancellationToken.None);
+
+            var data = result.Data!;
+            Assert.AreEqual(2, data.Users.Count);
+
+            Assert.AreEqual(user0.Platform, data.Users[0].Platform);
+            Assert.AreEqual(user0.PlatformUserId, data.Users[0].PlatformUserId);
+            Assert.AreEqual(user0.Characters[0].Name, data.Users[0].Character.Name);
+
+            Assert.AreEqual(user1.Platform, data.Users[1].Platform);
+            Assert.AreEqual(user1.PlatformUserId, data.Users[1].PlatformUserId);
+            Assert.AreEqual(user1.Characters[0].Name, data.Users[1].Character.Name);
+        }
+
+        [Test]
         public async Task AllInOne()
         {
             var user0 = new User
             {
+                Platform = Platform.Steam,
                 PlatformUserId = "1",
                 Gold = 10,
                 Characters = new List<Character>
@@ -347,6 +416,7 @@ namespace Crpg.Application.UTest.Games
 
             var user1 = new User
             {
+                Platform = Platform.Epic,
                 PlatformUserId = "2",
                 Gold = 20,
                 Characters = new List<Character>
@@ -363,6 +433,7 @@ namespace Crpg.Application.UTest.Games
 
             var user2 = new User
             {
+                Platform = Platform.Gog,
                 PlatformUserId = "3",
                 Gold = 30,
             };
@@ -379,24 +450,28 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
+                        Platform = user0.Platform,
                         PlatformUserId = user0.PlatformUserId,
                         CharacterName = user0.Characters[0].Name,
                         Reward = new GameUserReward { Experience = 900, Gold = 90 },
                     },
                     new GameUserUpdate
                     {
+                        Platform = user1.Platform,
                         PlatformUserId = user1.PlatformUserId,
                         CharacterName = user1.Characters[0].Name,
                         Reward = new GameUserReward { Experience = 800, Gold = 80 },
                     },
                     new GameUserUpdate
                     {
+                        Platform = user2.Platform,
                         PlatformUserId = user2.PlatformUserId,
                         CharacterName = "c",
                         Reward = new GameUserReward { Experience = 1000, Gold = 70 },
                     },
                     new GameUserUpdate
                     {
+                        Platform = Platform.Epic,
                         PlatformUserId = "4",
                         CharacterName = "d",
                         Reward = new GameUserReward { Experience = 1000, Gold = -200 },
@@ -407,15 +482,19 @@ namespace Crpg.Application.UTest.Games
             var data = result.Data!;
             Assert.AreEqual(4, data.Users.Count);
 
+            Assert.AreEqual(user0.Platform, data.Users[0].Platform);
             Assert.AreEqual(user0.PlatformUserId, data.Users[0].PlatformUserId);
             Assert.AreEqual(user0.Characters[0].Name, data.Users[0].Character.Name);
 
+            Assert.AreEqual(user1.Platform, data.Users[1].Platform);
             Assert.AreEqual(user1.PlatformUserId, data.Users[1].PlatformUserId);
             Assert.AreEqual(user1.Characters[0].Name, data.Users[1].Character.Name);
 
+            Assert.AreEqual(user2.Platform, data.Users[2].Platform);
             Assert.AreEqual(user2.PlatformUserId, data.Users[2].PlatformUserId);
             Assert.AreEqual("c", data.Users[2].Character.Name);
 
+            Assert.AreEqual(Platform.Epic, data.Users[3].Platform);
             Assert.AreEqual("4", data.Users[3].PlatformUserId);
             Assert.AreEqual("d", data.Users[3].Character.Name);
 
@@ -431,6 +510,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = ArrangeDb.Users.Add(new User
             {
+                Platform = Platform.Steam,
                 PlatformUserId = "1",
                 Bans = new List<Ban>
                 {
@@ -453,7 +533,7 @@ namespace Crpg.Application.UTest.Games
 
             var result = await handler.Handle(new UpdateGameCommand
             {
-                GameUserUpdates = new[] { new GameUserUpdate { PlatformUserId = "1" } }
+                GameUserUpdates = new[] { new GameUserUpdate { Platform = Platform.Steam, PlatformUserId = "1" } }
             }, CancellationToken.None);
 
             var data = result.Data!;
@@ -504,6 +584,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = new User
             {
+                Platform = Platform.Steam,
                 PlatformUserId = "1",
                 Gold = 10000,
                 Characters = new List<Character>
@@ -541,6 +622,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
+                        Platform = Platform.Steam,
                         PlatformUserId = "1",
                         CharacterName = "b",
                         BrokenItems = new List<GameUserBrokenItem>
@@ -585,6 +667,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = new User
             {
+                Platform = Platform.Steam,
                 PlatformUserId = "1",
                 Gold = 10000,
                 Characters = new List<Character>
@@ -639,6 +722,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
+                        Platform = Platform.Steam,
                         PlatformUserId = "1",
                         CharacterName = "b",
                         BrokenItems = new List<GameUserBrokenItem>
@@ -700,6 +784,7 @@ namespace Crpg.Application.UTest.Games
         {
             var user = ArrangeDb.Users.Add(new User
             {
+                Platform = Platform.Gog,
                 PlatformUserId = "1",
                 Gold = 3000,
                 Characters = new List<Character>
@@ -730,6 +815,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     new GameUserUpdate
                     {
+                        Platform = Platform.Gog,
                         PlatformUserId = "1",
                         CharacterName = "b",
                         BrokenItems = new List<GameUserBrokenItem>

@@ -1,5 +1,6 @@
-﻿namespace Crpg.Domain.Entities
+﻿namespace Crpg.GameMod.Api.Models
 {
+    // Copy of Crpg.Domain.Entities.Platform
     public enum Platform
     {
         Steam,

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Crpg.Domain.Entities;
 
 namespace Crpg.Application.Games.Models
 {
     public class GameUserUpdate
     {
+        public Platform Platform { get; set; }
         public string PlatformUserId { get; set; } = default!;
         public string CharacterName { get; set; } = default!;
         public GameUserReward? Reward { get; set; }

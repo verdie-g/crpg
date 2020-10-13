@@ -129,10 +129,10 @@ namespace Crpg.Application.Games.Commands
                 var res = new List<(User user, Character character, GameUserBrokenItem[] brokenItems, Ban? ban)>();
                 var newCharacters = new List<Character>();
                 var brokenItemsWithUser = new List<(int, GameUserBrokenItem[])>();
-                Dictionary<string, User> usersByPlatformId = await GetOrCreateUsers(cmd.GameUserUpdates, cancellationToken);
+                Dictionary<(Platform, string), User> usersByPlatformId = await GetOrCreateUsers(cmd.GameUserUpdates, cancellationToken);
                 foreach (GameUserUpdate update in cmd.GameUserUpdates)
                 {
-                    User user = usersByPlatformId[update.PlatformUserId];
+                    User user = usersByPlatformId[(update.Platform, update.PlatformUserId)];
                     Character? character = user.Characters.FirstOrDefault();
                     if (character == null)
                     {
@@ -209,20 +209,25 @@ namespace Crpg.Application.Games.Commands
                 return lastBan != null && lastBan.CreatedAt + lastBan.Duration > _dateTime.Now ? lastBan : null;
             }
 
-            private async Task<Dictionary<string, User>> GetOrCreateUsers(IList<GameUserUpdate> gameUserUpdates, CancellationToken cancellationToken)
+            private async Task<Dictionary<(Platform, string), User>> GetOrCreateUsers(IList<GameUserUpdate> gameUserUpdates, CancellationToken cancellationToken)
             {
-                string[] userPlatformUserIds = gameUserUpdates.Select(u => u.PlatformUserId).ToArray();
-                // build predicate to get all users by their platform id and character name
+                // Build predicates to get all users by their platform id and character name. Two filters are needed for the query
+                ExpressionStarter<User> userPredicate = PredicateBuilder.New<User>();
                 ExpressionStarter<Character> characterPredicate = PredicateBuilder.New<Character>();
                 foreach (var update in gameUserUpdates)
                 {
+                    userPredicate = userPredicate.Or(u =>
+                        u.Platform == update.Platform
+                        && u.PlatformUserId == update.PlatformUserId);
+
                     characterPredicate = characterPredicate.Or(c =>
-                        c.User!.Platform == Platform.Steam
+                        c.User!.Platform == update.Platform
                         && c.User!.PlatformUserId == update.PlatformUserId
                         && c.Name == update.CharacterName);
                 }
 
-                Expression<Func<Character, bool>> characterPredicateExpr = characterPredicate; // https://stackoverflow.com/a/46716258/5407910
+                Expression<Func<User, bool>> userPredicateExpr = userPredicate; // https://stackoverflow.com/a/46716258/5407910
+                Expression<Func<Character, bool>> characterPredicateExpr = characterPredicate;
 
                 static User ElemSelector(Tuple<User, Character?> p)
                 {
@@ -248,9 +253,9 @@ namespace Crpg.Application.Games.Commands
                     .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon4Item)
                     .Include(u => u.Bans) // could be filtered https://github.com/dotnet/efcore/issues/1833#issuecomment-603543685
                     .AsExpandable()
-                    .Where(u => u.Platform == Platform.Steam && userPlatformUserIds.Contains(u.PlatformUserId))
+                    .Where(userPredicateExpr)
                     .Select(u => new Tuple<User, Character?>(u, u.Characters.FirstOrDefault(characterPredicateExpr.Compile())))
-                    .ToDictionaryAsync(p => p.Item1.PlatformUserId, ElemSelector, cancellationToken);
+                    .ToDictionaryAsync(p => (p.Item1.Platform, p.Item1.PlatformUserId), ElemSelector, cancellationToken);
 
                 if (gameUserUpdates.Count == users.Count) // if all users already exist
                 {
@@ -260,22 +265,22 @@ namespace Crpg.Application.Games.Commands
                 // else some users don't exist, we need to create them and their first character
                 foreach (var update in gameUserUpdates)
                 {
-                    if (users.ContainsKey(update.PlatformUserId))
+                    if (users.ContainsKey((update.Platform, update.PlatformUserId)))
                     {
                         continue;
                     }
 
-                    var user = CreateUser(update.PlatformUserId, update.CharacterName);
-                    users[user.PlatformUserId] = user;
-                    _events.Raise(EventLevel.Info, $"{update.CharacterName} joined ({update.PlatformUserId})", string.Empty, "user_created");
+                    var user = CreateUser(update.Platform, update.PlatformUserId, update.CharacterName);
+                    users[(update.Platform, update.PlatformUserId)] = user;
+                    _events.Raise(EventLevel.Info, $"{update.CharacterName} joined ({update.Platform}#{update.PlatformUserId})", string.Empty, "user_created");
                 }
 
                 return users;
             }
 
-            private User CreateUser(string platformUserId, string name)
+            private User CreateUser(Platform platform, string platformUserId, string name)
             {
-                var user = new User { Platform = Platform.Steam, PlatformUserId = platformUserId, Name = name };
+                var user = new User { Platform = platform, PlatformUserId = platformUserId, Name = name };
                 UserHelper.SetDefaultValuesForUser(user);
                 return user;
             }

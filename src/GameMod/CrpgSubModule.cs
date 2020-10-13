@@ -1,16 +1,12 @@
-﻿using System;
-using Crpg.GameMod.DefendTheVirgin;
+﻿using Crpg.GameMod.DefendTheVirgin;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.PlatformService;
 
 namespace Crpg.GameMod
 {
     internal class CrpgSubModule : MBSubModuleBase
     {
-        private bool _initialized;
-
         /// <summary>
         /// Called during the first loading screen of the game, always the first override to be called, this is where
         /// you should be doing the bulk of your initial setup.
@@ -18,6 +14,9 @@ namespace Crpg.GameMod
         protected override void OnSubModuleLoad()
         {
             base.OnSubModuleLoad();
+
+            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("DefendTheVirgin", new TextObject("{=4gpGhbeJ}Defend The Virgin"),
+                4567, () => MBGameManager.StartNewGame(new DefendTheVirginGameManager()), false));
 
             /*
             Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode());
@@ -37,23 +36,6 @@ namespace Crpg.GameMod
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
             base.OnBeforeInitialModuleScreenSetAsRoot();
-            if (_initialized)
-            {
-                return;
-            }
-
-            // Initialize steam here. This can't be done in OnSubModuleLoad because Steam is not setup at that time.
-            PlatformServices.Initialize(Array.Empty<IFriendListService>());
-            if (PlatformServices.Instance.ProviderName != "Steam")
-            {
-                InformationManager.DisplayMessage(new InformationMessage("cRPG is only available with Steam"));
-                return;
-            }
-
-            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("DefendTheVirgin", new TextObject("{=4gpGhbeJ}Defend The Virgin"),
-                4567, () => MBGameManager.StartNewGame(new DefendTheVirginGameManager()), false));
-
-            _initialized = true;
         }
 
         /// <summary>
