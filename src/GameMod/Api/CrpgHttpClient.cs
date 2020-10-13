@@ -24,12 +24,12 @@ namespace Crpg.GameMod.Api
             _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + jwt);
         }
 
-        public Task<CrpgGameUpdateResponse> Update(CrpgGameUpdateRequest req, CancellationToken cancellationToken = default)
+        public Task<CrpgResult<CrpgGameUpdateResponse>> Update(CrpgGameUpdateRequest req, CancellationToken cancellationToken = default)
         {
             return Put<CrpgGameUpdateRequest, CrpgGameUpdateResponse>("update", req, cancellationToken);
         }
 
-        private Task<TResponse> Put<TRequest, TResponse>(string requestUri, TRequest payload, CancellationToken cancellationToken)
+        private Task<CrpgResult<TResponse>> Put<TRequest, TResponse>(string requestUri, TRequest payload, CancellationToken cancellationToken) where TResponse : class
         {
             var msg = new HttpRequestMessage(HttpMethod.Put, requestUri)
             {
@@ -39,7 +39,7 @@ namespace Crpg.GameMod.Api
             return Send<TResponse>(msg, cancellationToken);
         }
 
-        private Task<TResponse> Post<TRequest, TResponse>(string requestUri, TRequest payload, CancellationToken cancellationToken)
+        private Task<CrpgResult<TResponse>> Post<TRequest, TResponse>(string requestUri, TRequest payload, CancellationToken cancellationToken) where TResponse : class
         {
             var msg = new HttpRequestMessage(HttpMethod.Post, requestUri)
             {
@@ -49,7 +49,7 @@ namespace Crpg.GameMod.Api
             return Send<TResponse>(msg, cancellationToken);
         }
 
-        private async Task<TResponse> Send<TResponse>(HttpRequestMessage msg, CancellationToken cancellationToken)
+        private async Task<CrpgResult<TResponse>> Send<TResponse>(HttpRequestMessage msg, CancellationToken cancellationToken) where TResponse : class
         {
             var res = await _httpClient.SendAsync(msg, cancellationToken);
             string json = await res.Content.ReadAsStringAsync();
@@ -70,7 +70,7 @@ namespace Crpg.GameMod.Api
                 _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + values.First());
             }
 
-            return JsonConvert.DeserializeObject<TResponse>(json);
+            return JsonConvert.DeserializeObject<CrpgResult<TResponse>>(json);
         }
     }
 }

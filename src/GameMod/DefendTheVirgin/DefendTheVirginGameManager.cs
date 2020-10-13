@@ -126,7 +126,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                 },
             });
 
-            return res.Users[0];
+            return res.Data!.Users[0];
         }
 
         private static WaveGroup[][] LoadWaves()

@@ -6,6 +6,6 @@ namespace Crpg.GameMod.Api
 {
     internal interface ICrpgClient
     {
-        Task<CrpgGameUpdateResponse> Update(CrpgGameUpdateRequest req, CancellationToken cancellationToken = default);
+        Task<CrpgResult<CrpgGameUpdateResponse>> Update(CrpgGameUpdateRequest req, CancellationToken cancellationToken = default);
     }
 }

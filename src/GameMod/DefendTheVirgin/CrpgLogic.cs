@@ -64,12 +64,12 @@ namespace Crpg.GameMod.DefendTheVirgin
                 },
             });
 
-            if (res.Users[0].Character.Level != _user.Character.Level)
+            if (res.Data!.Users[0].Character.Level != _user.Character.Level)
             {
                 InformationManager.DisplayMessage(new InformationMessage("Level up!", new Color(128, 0, 128)));
             }
 
-            _user = res.Users[0];
+            _user = res.Data!.Users[0];
         }
 
         private static int SumWaveWeight(IEnumerable<WaveGroup> wave)
