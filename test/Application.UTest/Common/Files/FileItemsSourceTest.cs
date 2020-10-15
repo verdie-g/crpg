@@ -63,5 +63,24 @@ namespace Crpg.Application.UTest.Common.Files
                 Assert.Fail("- " + string.Join($"{Environment.NewLine}- ", errors));
             }
         }
+
+        [Test]
+        public async Task CheckNoTestItems()
+        {
+            var items = await new FileItemsSource().LoadItems();
+            var testItems = new List<string>();
+            foreach (var item in items)
+            {
+                if (item.MbId.Contains("test") || item.MbId.Contains("dummy"))
+                {
+                    testItems.Add(item.MbId);
+                }
+            }
+
+            if (testItems.Count != 0)
+            {
+                Assert.Fail($"Test items detected:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", testItems));
+            }
+        }
     }
 }

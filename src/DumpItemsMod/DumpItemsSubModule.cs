@@ -34,6 +34,7 @@ namespace Crpg.DumpItemsMod
         {
             var mbItems = DeserializeMbItems("../../Modules/Native/ModuleData/mpitems.xml")
                 .DistinctBy(i => i.StringId)
+                .Where(i => !i.StringId.Contains("test") && !i.StringId.Contains("dummy")) // Remove test items
                 .OrderBy(i => i.StringId)
                 .ToArray();
             var crpgItems = mbItems

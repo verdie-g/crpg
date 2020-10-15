@@ -390,19 +390,6 @@
     ]
   },
   {
-    "mbId": "mp_dummy_armor_min",
-    "name": "Dummy Min Armor",
-    "value": 69,
-    "type": "BodyArmor",
-    "weight": 10.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 0,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
     "mbId": "mp_burlap_sack_dress",
     "name": "Burlap Dress",
     "value": 78,
@@ -2028,19 +2015,6 @@
     }
   },
   {
-    "mbId": "mp_dummy_armor_lower_average",
-    "name": "Dummy Lower Average",
-    "value": 17671,
-    "type": "BodyArmor",
-    "weight": 20.0,
-    "armor": {
-      "headArmor": 12,
-      "bodyArmor": 12,
-      "armArmor": 12,
-      "legArmor": 12
-    }
-  },
-  {
     "mbId": "mp_decorated_nordic_hauberk",
     "name": "Decorated Northern Hauberk",
     "value": 18875,
@@ -2441,32 +2415,6 @@
       "bodyArmor": 45,
       "armArmor": 11,
       "legArmor": 20
-    }
-  },
-  {
-    "mbId": "mp_dummy_armor_higher_average",
-    "name": "Dummy Higher Average",
-    "value": 409103,
-    "type": "BodyArmor",
-    "weight": 30.0,
-    "armor": {
-      "headArmor": 37,
-      "bodyArmor": 37,
-      "armArmor": 37,
-      "legArmor": 37
-    }
-  },
-  {
-    "mbId": "mp_dummy_armor_max",
-    "name": "Dummy Max Armor",
-    "value": 409103,
-    "type": "BodyArmor",
-    "weight": 40.0,
-    "armor": {
-      "headArmor": 55,
-      "bodyArmor": 55,
-      "armArmor": 55,
-      "legArmor": 55
     }
   },
   {
@@ -3142,19 +3090,6 @@
       "headArmor": 0,
       "bodyArmor": 6,
       "armArmor": 4,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_pauldron_cape_a",
-    "name": "long cape test",
-    "value": 510,
-    "type": "Cape",
-    "weight": 5.5,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 11,
-      "armArmor": 0,
       "legArmor": 0
     }
   },
@@ -7072,32 +7007,6 @@
     ]
   },
   {
-    "mbId": "mp_test_mace",
-    "name": "Mp Test Mace",
-    "value": 1013,
-    "type": "OneHandedWeapon",
-    "weight": 1.37,
-    "weapons": [
-      {
-        "class": "Mace",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 65,
-        "balance": 0.79,
-        "handling": 95,
-        "bodyArmor": 0,
-        "flags": 1,
-        "thrustDamage": 15,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 92,
-        "swingDamage": 46,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 93
-      }
-    ]
-  },
-  {
     "mbId": "mp_vlandian_pick_axe",
     "name": "Pickaxe",
     "value": 1105,
@@ -7592,32 +7501,6 @@
     ]
   },
   {
-    "mbId": "mp_test_axe",
-    "name": "MP Test Axe",
-    "value": 2015,
-    "type": "OneHandedWeapon",
-    "weight": 1.1,
-    "weapons": [
-      {
-        "class": "OneHandedAxe",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 71,
-        "balance": 0.8,
-        "handling": 92,
-        "bodyArmor": 0,
-        "flags": 65537,
-        "thrustDamage": 41,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 94,
-        "swingDamage": 68,
-        "swingDamageType": "Cut",
-        "swingSpeed": 93
-      }
-    ]
-  },
-  {
     "mbId": "mp_aserai_heavy_mace",
     "name": "Southern Heavy Mace",
     "value": 2260,
@@ -7978,32 +7861,6 @@
         "swingDamage": 71,
         "swingDamageType": "Cut",
         "swingSpeed": 90
-      }
-    ]
-  },
-  {
-    "mbId": "mp_test_sword",
-    "name": "Mp Testing Sword",
-    "value": 3820,
-    "type": "OneHandedWeapon",
-    "weight": 1.7,
-    "weapons": [
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 92,
-        "balance": 0.81,
-        "handling": 96,
-        "bodyArmor": 0,
-        "flags": 1,
-        "thrustDamage": 41,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 89,
-        "swingDamage": 68,
-        "swingDamageType": "Cut",
-        "swingSpeed": 94
       }
     ]
   },
@@ -8574,83 +8431,6 @@
         "swingDamage": 0,
         "swingDamageType": "Undefined",
         "swingSpeed": 48
-      }
-    ]
-  },
-  {
-    "mbId": "mp_test_lance",
-    "name": "Test Lance",
-    "value": 277,
-    "type": "Polearm",
-    "weight": 2.46,
-    "weapons": [
-      {
-        "class": "OneHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 191,
-        "balance": 0.0,
-        "handling": 57,
-        "bodyArmor": 0,
-        "flags": 65,
-        "thrustDamage": 28,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 78,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 17
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 191,
-        "balance": 0.0,
-        "handling": 53,
-        "bodyArmor": 0,
-        "flags": 2097233,
-        "thrustDamage": 34,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 86,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 62
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 191,
-        "balance": 0.0,
-        "handling": 57,
-        "bodyArmor": 0,
-        "flags": 65,
-        "thrustDamage": 28,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 78,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 17
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 191,
-        "balance": 0.0,
-        "handling": 53,
-        "bodyArmor": 0,
-        "flags": 2097233,
-        "thrustDamage": 34,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 86,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 62
       }
     ]
   },
@@ -9306,49 +9086,6 @@
     ]
   },
   {
-    "mbId": "mp_test_spear",
-    "name": "Test Spear",
-    "value": 422,
-    "type": "Polearm",
-    "weight": 1.65,
-    "weapons": [
-      {
-        "class": "OneHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 178,
-        "balance": 0.0,
-        "handling": 70,
-        "bodyArmor": 0,
-        "flags": 65,
-        "thrustDamage": 29,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 87,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 38
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 178,
-        "balance": 0.31,
-        "handling": 67,
-        "bodyArmor": 0,
-        "flags": 2097233,
-        "thrustDamage": 34,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 94,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 79
-      }
-    ]
-  },
-  {
     "mbId": "mp_khuzait_long_spear",
     "name": "Eastern Long Spear",
     "value": 435,
@@ -9981,49 +9718,6 @@
         "swingDamage": 0,
         "swingDamageType": "Undefined",
         "swingSpeed": 61
-      }
-    ]
-  },
-  {
-    "mbId": "mp_test_pike",
-    "name": "Test Pike",
-    "value": 675,
-    "type": "Polearm",
-    "weight": 2.4,
-    "weapons": [
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 245,
-        "balance": 0.0,
-        "handling": 47,
-        "bodyArmor": 0,
-        "flags": 2097233,
-        "thrustDamage": 35,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 85,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 51
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 245,
-        "balance": 0.0,
-        "handling": 47,
-        "bodyArmor": 0,
-        "flags": 2097233,
-        "thrustDamage": 35,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 85,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 51
       }
     ]
   },
@@ -10687,32 +10381,6 @@
         "swingDamage": 118,
         "swingDamageType": "Cut",
         "swingSpeed": 99
-      }
-    ]
-  },
-  {
-    "mbId": "mp_test_polearm",
-    "name": "MP Test Polearm",
-    "value": 340919,
-    "type": "Polearm",
-    "weight": 1.02,
-    "weapons": [
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 132,
-        "balance": 0.64,
-        "handling": 76,
-        "bodyArmor": 0,
-        "flags": 2162769,
-        "thrustDamage": 36,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 100,
-        "swingDamage": 165,
-        "swingDamageType": "Cut",
-        "swingSpeed": 89
       }
     ]
   },
@@ -12774,32 +12442,6 @@
     ]
   },
   {
-    "mbId": "mp_test_twohandedmace",
-    "name": "MP Test 2h Mace",
-    "value": 6744,
-    "type": "TwoHandedWeapon",
-    "weight": 1.99,
-    "weapons": [
-      {
-        "class": "TwoHandedMace",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 95,
-        "balance": 0.36,
-        "handling": 74,
-        "bodyArmor": 0,
-        "flags": 2097169,
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 92,
-        "swingDamage": 91,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 80
-      }
-    ]
-  },
-  {
     "mbId": "mp_battania_woodcutters_axe",
     "name": "Highland Twohanded Woodcutter's Axe",
     "value": 7017,
@@ -13124,75 +12766,6 @@
         "swingDamage": 84,
         "swingDamageType": "Blunt",
         "swingSpeed": 92
-      }
-    ]
-  },
-  {
-    "mbId": "mp_test_twohandedsword",
-    "name": "MP Test 2h Sword",
-    "value": 22179,
-    "type": "TwoHandedWeapon",
-    "weight": 1.81,
-    "weapons": [
-      {
-        "class": "TwoHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 123,
-        "balance": 0.88,
-        "handling": 87,
-        "bodyArmor": 0,
-        "flags": 17,
-        "thrustDamage": 58,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 94,
-        "swingDamage": 95,
-        "swingDamageType": "Cut",
-        "swingSpeed": 96
-      }
-    ]
-  },
-  {
-    "mbId": "mp_test_twohandedaxe",
-    "name": "MP Test 2h Axe",
-    "value": 22823,
-    "type": "TwoHandedWeapon",
-    "weight": 1.07,
-    "weapons": [
-      {
-        "class": "TwoHandedAxe",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 130,
-        "balance": 0.77,
-        "handling": 81,
-        "bodyArmor": 0,
-        "flags": 2162705,
-        "thrustDamage": 19,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 100,
-        "swingDamage": 97,
-        "swingDamageType": "Cut",
-        "swingSpeed": 93
-      },
-      {
-        "class": "OneHandedAxe",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 130,
-        "balance": 0.19,
-        "handling": 71,
-        "bodyArmor": 0,
-        "flags": 65537,
-        "thrustDamage": 17,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 94,
-        "swingDamage": 64,
-        "swingDamageType": "Cut",
-        "swingSpeed": 75
       }
     ]
   },
