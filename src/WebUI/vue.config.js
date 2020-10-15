@@ -7,7 +7,9 @@ module.exports = {
     // disable prefetch of chunks (usually pages) to only load required chunks for the current page
     config.plugins.delete('prefetch');
 
-    // compress files on build
-    config.plugin('CompressionPlugin').use(CompressionPlugin);
+    if (process.env.NODE_ENV === 'production') {
+      // compress files on build
+      config.plugin('CompressionPlugin').use(CompressionPlugin);
+    }
   },
 };
