@@ -1,7 +1,7 @@
 <template>
   <form>
     <b-field label="Type">
-      <b-select multiple v-model="shopFilters.types" @input="onFilterInput">
+      <b-select multiple native-size="8" v-model="shopFilters.types" @input="onFilterInput">
         <option v-for="[value, name] in Object.entries(itemTypes)" :value="value">{{name}}</option>
       </b-select>
     </b-field>
