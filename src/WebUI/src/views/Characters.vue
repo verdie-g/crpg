@@ -16,7 +16,7 @@
           <character-component :character="selectedCharacter"  />
         </div>
         <div v-else> <!-- if no character -->
-          To create a character, simply connect to one of the cRPG servers.
+          <!-- To create a character, simply connect to one of the cRPG servers. -->
         </div>
       </div>
     </div>

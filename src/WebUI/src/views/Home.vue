@@ -9,6 +9,13 @@
           It adds persistence to the multiplayer. Your start as a peasant and you'll develop your unique character with different stats and
           items.
         </p>
+
+        <p>
+          The mod was announced recently in this <a href="https://forums.taleworlds.com/index.php?threads/crpg.432051" target="_blank">Forum thread</a>.
+          As TaleWorlds haven't provided the tools to make multiplayer mods yet, only a singleplayer mod is available on
+          <a href="https://www.nexusmods.com/mountandblade2bannerlord/mods/2208?tab=files" target="_blank">Nexus Mods</a> mostly to test the system.
+          Follow the development on the <a href="https://discord.gg/83RJDN9" target="_blank">cRPG Discord</a>.
+        </p>
         <b-button size="is-large" icon-left="steam-symbol" icon-pack="fab" @click="onClick" v-if="!isSignedIn">
           Sign in through Steam
         </b-button>
@@ -17,6 +24,7 @@
       <div class="content is-medium">
         <h2>F.A.Q</h2>
         <dl id="faq">
+          <!--
           <dt>How to create a new character?</dt>
           <dd>Simply connect to a cRPG server and a character with your steam user name will be created.</dd>
 
@@ -24,6 +32,7 @@
           <dd>
             Experience and gold are gained by playing on cRPG servers. These earnings are multiplied when you win a round.
           </dd>
+          -->
 
           <dt>I've renamed my steam account and a new character level 1 was created, how can I play with my original character?</dt>
           <dd>
@@ -45,8 +54,10 @@
             stats for the cost of half of your experience.
           </dd>
 
+          <!--
           <dt>Can I host my own cRPG game server?</dt>
           <dd>For security and maintainability reasons, players won't be able to host their own server.</dd>
+          -->
 
           <dt>Is the project open-source?</dt>
           <dd>Not decided yet.</dd>
