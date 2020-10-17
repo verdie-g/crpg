@@ -1144,19 +1144,6 @@
     }
   },
   {
-    "mbId": "mp_battanian_savage_armor",
-    "name": "battanian_savage_armor",
-    "value": 536,
-    "type": "BodyArmor",
-    "weight": 0.8,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 10,
-      "armArmor": 3,
-      "legArmor": 6
-    }
-  },
-  {
     "mbId": "mp_empire_warrior_padded_armor_f",
     "name": "Imperial Auxiliary Armor",
     "value": 561,
@@ -1820,19 +1807,6 @@
     }
   },
   {
-    "mbId": "mp_empire_warrior_padded_armor_a",
-    "name": "empire_warrior_padded_armor_a",
-    "value": 7022,
-    "type": "BodyArmor",
-    "weight": 13.4,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 29,
-      "armArmor": 4,
-      "legArmor": 9
-    }
-  },
-  {
     "mbId": "mp_empire_warrior_padded_armor_b",
     "name": "Imperial Gambeson Over Leather Jacket",
     "value": 7022,
@@ -2392,19 +2366,6 @@
     }
   },
   {
-    "mbId": "mp_light_armor",
-    "name": "mp_light_armor",
-    "value": 281586,
-    "type": "BodyArmor",
-    "weight": 1.9,
-    "armor": {
-      "headArmor": 18,
-      "bodyArmor": 18,
-      "armArmor": 18,
-      "legArmor": 18
-    }
-  },
-  {
     "mbId": "mp_lamellar_with_scale_skirt",
     "name": "Lamellar With Scale Skirt",
     "value": 294236,
@@ -2415,32 +2376,6 @@
       "bodyArmor": 45,
       "armArmor": 11,
       "legArmor": 20
-    }
-  },
-  {
-    "mbId": "mp_heavy_skirt",
-    "name": "mp_heavy_armor",
-    "value": 409103,
-    "type": "BodyArmor",
-    "weight": 22.7,
-    "armor": {
-      "headArmor": 54,
-      "bodyArmor": 54,
-      "armArmor": 54,
-      "legArmor": 54
-    }
-  },
-  {
-    "mbId": "mp_medium_skirt",
-    "name": "Imperial Stitched Leather",
-    "value": 409103,
-    "type": "BodyArmor",
-    "weight": 10.6,
-    "armor": {
-      "headArmor": 33,
-      "bodyArmor": 33,
-      "armArmor": 33,
-      "legArmor": 33
     }
   },
   {
@@ -2894,19 +2829,6 @@
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
-      "armArmor": 0,
-      "legArmor": 0
-    }
-  },
-  {
-    "mbId": "mp_battania_cloak_furr",
-    "name": "battania_cloak_furr",
-    "value": 155,
-    "type": "Cape",
-    "weight": 1.5,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 5,
       "armArmor": 0,
       "legArmor": 0
     }
