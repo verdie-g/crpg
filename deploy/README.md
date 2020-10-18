@@ -11,4 +11,4 @@
 ## Run
 
 - `ansible-galaxy install -r requirements.yml`
-- `ansible-playbook -i hosts.ini --vault-password-file secret playbook.yml`
+- `ANSIBLE_CONFIG=./ansible.cfg ansible-playbook playbook.yml`
