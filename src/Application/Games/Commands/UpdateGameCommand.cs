@@ -126,7 +126,7 @@ namespace Crpg.Application.Games.Commands
                     await LoadDefaultItemSets();
                 }
 
-                var res = new List<(User user, Character character, GameUserBrokenItem[] brokenItems, Ban? ban)>();
+                var res = new List<(User User, Character Character, GameUserBrokenItem[] BrokenItems, Ban? Ban)>();
                 var newCharacters = new List<Character>();
                 var brokenItemsWithUser = new List<(int, GameUserBrokenItem[])>();
                 Dictionary<(Platform, string), User> usersByPlatformId = await GetOrCreateUsers(cmd.GameUserUpdates, cancellationToken);
@@ -164,13 +164,13 @@ namespace Crpg.Application.Games.Commands
                 {
                     Users = res.Select(r => new GameUser
                     {
-                        Id = r.user.Id,
-                        Platform = r.user.Platform,
-                        PlatformUserId = r.user.PlatformUserId,
-                        Gold = r.user.Gold,
-                        Character = _mapper.Map<CharacterViewModel>(r.character),
-                        BrokenItems = _mapper.Map<IList<GameUserBrokenItem>>(r.brokenItems),
-                        Ban = _mapper.Map<BanViewModel>(r.ban),
+                        Id = r.User.Id,
+                        Platform = r.User.Platform,
+                        PlatformUserId = r.User.PlatformUserId,
+                        Gold = r.User.Gold,
+                        Character = _mapper.Map<CharacterViewModel>(r.Character),
+                        BrokenItems = _mapper.Map<IList<GameUserBrokenItem>>(r.BrokenItems),
+                        Ban = _mapper.Map<BanViewModel>(r.Ban),
                     }).ToArray(),
                 });
             }
@@ -209,7 +209,8 @@ namespace Crpg.Application.Games.Commands
                 return lastBan != null && lastBan.CreatedAt + lastBan.Duration > _dateTime.Now ? lastBan : null;
             }
 
-            private async Task<Dictionary<(Platform, string), User>> GetOrCreateUsers(IList<GameUserUpdate> gameUserUpdates, CancellationToken cancellationToken)
+            private async Task<Dictionary<(Platform Platform, string PlatformUserId), User>> GetOrCreateUsers(
+                IList<GameUserUpdate> gameUserUpdates, CancellationToken cancellationToken)
             {
                 // Build predicates to get all users by their platform id and character name. Two filters are needed for the query
                 ExpressionStarter<User> userPredicate = PredicateBuilder.New<User>();
@@ -349,7 +350,7 @@ namespace Crpg.Application.Games.Commands
                 return userItems;
             }
 
-            private async Task ReplaceBrokenItems(List<(int userId, GameUserBrokenItem[] brokenItems)> brokenItemsWithUser,
+            private async Task ReplaceBrokenItems(List<(int UserId, GameUserBrokenItem[] BrokenItems)> brokenItemsWithUser,
                 CancellationToken cancellationToken)
             {
                 if (brokenItemsWithUser.Count == 0)
@@ -358,7 +359,7 @@ namespace Crpg.Application.Games.Commands
                 }
 
                 var brokenItemIds = brokenItemsWithUser
-                    .SelectMany(bi => bi.brokenItems.Select(b => b.ItemId))
+                    .SelectMany(bi => bi.BrokenItems.Select(b => b.ItemId))
                     .Distinct()
                     .ToArray();
 
