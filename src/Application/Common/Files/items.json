@@ -338,58 +338,6 @@
     ]
   },
   {
-    "mbId": "ballista_projectile",
-    "name": "Ballista Arrows",
-    "value": 340919,
-    "type": "Arrows",
-    "weight": 3.0,
-    "weapons": [
-      {
-        "class": "Arrow",
-        "accuracy": 100,
-        "missileSpeed": 80,
-        "stackAmount": 20,
-        "length": 95,
-        "balance": 0.0,
-        "handling": 0,
-        "bodyArmor": 0,
-        "flags": 17246978304,
-        "thrustDamage": 400,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 0,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 0
-      }
-    ]
-  },
-  {
-    "mbId": "ballista_projectile_burning",
-    "name": "Ballista Arrows",
-    "value": 340919,
-    "type": "Arrows",
-    "weight": 3.0,
-    "weapons": [
-      {
-        "class": "Arrow",
-        "accuracy": 100,
-        "missileSpeed": 80,
-        "stackAmount": 20,
-        "length": 95,
-        "balance": 0.0,
-        "handling": 0,
-        "bodyArmor": 0,
-        "flags": 17783881984,
-        "thrustDamage": 400,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 0,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 0
-      }
-    ]
-  },
-  {
     "mbId": "mp_burlap_sack_dress",
     "name": "Burlap Dress",
     "value": 78,

@@ -18,6 +18,12 @@ namespace Crpg.DumpItemsMod
     public class DumpItemsSubModule : MBSubModuleBase
     {
         private const string OutputPath = "../../Items";
+        private static readonly HashSet<string> BlacklistedItems = new HashSet<string>
+        {
+            "mp_medium_skirt",
+            "ballista_projectile",
+            "ballista_projectile_burning",
+        };
 
         protected override void OnSubModuleLoad()
         {
@@ -34,7 +40,7 @@ namespace Crpg.DumpItemsMod
         {
             var mbItems = DeserializeMbItems("../../Modules/Native/ModuleData/mpitems.xml")
                 .DistinctBy(i => i.StringId)
-                .Where(i => !i.StringId.Contains("test") && !i.StringId.Contains("dummy") && !i.Name.Contains("_")) // Remove test items
+                .Where(FilterItem) // Remove test and blacklisted items
                 .OrderBy(i => i.StringId)
                 .ToArray();
             var crpgItems = mbItems
@@ -45,6 +51,11 @@ namespace Crpg.DumpItemsMod
             SerializeCrpgItems(crpgItems, OutputPath);
             GenerateItemsThumbnail(mbItems, OutputPath);
         }
+
+        private static bool FilterItem(ItemObject mbItem) => !mbItem.StringId.Contains("test")
+                                                             && !mbItem.StringId.Contains("dummy")
+                                                             && !mbItem.Name.Contains("_")
+                                                             && !BlacklistedItems.Contains(mbItem.StringId);
 
         private static Item MbToCrpgItem(ItemObject mbItem)
         {
