@@ -141,7 +141,6 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
       break;
     case ItemType.BodyArmor:
       props.fields.push(
-        ['Head Armor', item.armor!.headArmor],
         ['Body Armor', item.armor!.bodyArmor],
         ['Arm Armor', item.armor!.armArmor],
         ['Leg Armor', item.armor!.legArmor],
