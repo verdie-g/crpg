@@ -82,29 +82,5 @@ namespace Crpg.Application.UTest.Common.Files
                 Assert.Fail($"Test items detected:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
             }
         }
-
-        [Test]
-        public async Task CheckNoBlacklistedItems()
-        {
-            var items = await new FileItemsSource().LoadItems();
-            var blacklistedItems = new HashSet<string>
-            {
-                "mp_medium_skirt",
-            };
-
-            var errors = new List<string>();
-            foreach (var item in items)
-            {
-                if (blacklistedItems.Contains(item.MbId))
-                {
-                    errors.Add(item.MbId);
-                }
-            }
-
-            if (errors.Count != 0)
-            {
-                Assert.Fail($"Blacklisted items detected:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
-            }
-        }
     }
 }
