@@ -15,7 +15,7 @@ namespace Crpg.DumpItemsMod
             double a = 0.05;
             double b = 50;
             double c = 100;
-            return (float)(a * Math.Pow((double)itemTierf, 2) + b * (double)itemTierf + c);
+            return (a * Math.Pow((double)itemTierf, 2) + b * (double)itemTierf + c);
         }
     }
 }
