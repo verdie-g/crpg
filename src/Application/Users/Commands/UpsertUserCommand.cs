@@ -70,7 +70,7 @@ namespace Crpg.Application.Users.Commands
                 {
                     UserHelper.SetDefaultValuesForUser(user);
                     _db.Users.Add(user);
-                    _events.Raise(EventLevel.Info, $"{request.Name} joined ({request.PlatformUserId})", string.Empty, "user_created");
+                    _events.Raise(EventLevel.Info, $"{request.Name} joined ({user.Platform}#{user.PlatformUserId})", string.Empty, "user_created");
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);

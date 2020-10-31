@@ -42,7 +42,6 @@ namespace Crpg.Application.Users.Commands
                 }
 
                 string name = user.Name;
-                string platformUserId = user.PlatformUserId;
 
                 UserHelper.SetDefaultValuesForUser(user);
                 user.Name = string.Empty;
@@ -53,7 +52,7 @@ namespace Crpg.Application.Users.Commands
                 _db.UserItems.RemoveRange(user.OwnedItems);
                 _db.Characters.RemoveRange(user.Characters);
                 await _db.SaveChangesAsync(cancellationToken);
-                _events.Raise(EventLevel.Info, $"{name} deleted its account ({platformUserId})", string.Empty, "user_deleted");
+                _events.Raise(EventLevel.Info, $"{name} deleted its account ({user.Platform}#{user.PlatformUserId})", string.Empty, "user_deleted");
                 return new Result<object>();
             }
         }
