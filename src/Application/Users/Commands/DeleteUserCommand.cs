@@ -22,9 +22,9 @@ namespace Crpg.Application.Users.Commands
         public class Handler : IMediatorRequestHandler<DeleteUserCommand>
         {
             private readonly ICrpgDbContext _db;
-            private readonly IEventRaiser _events;
+            private readonly IEventService _events;
 
-            public Handler(ICrpgDbContext db, IEventRaiser events)
+            public Handler(ICrpgDbContext db, IEventService events)
             {
                 _db = db;
                 _events = events;

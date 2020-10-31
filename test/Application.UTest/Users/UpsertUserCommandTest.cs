@@ -11,12 +11,12 @@ namespace Crpg.Application.UTest.Users
 {
     public class UpsertUserCommandTest : TestBase
     {
-        private static readonly IEventRaiser EventRaiser = Mock.Of<IEventRaiser>();
+        private static readonly IEventService EventService = Mock.Of<IEventService>();
 
         [Test]
         public async Task TestWhenUserDoesntExist()
         {
-            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventRaiser);
+            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService);
             var result = await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "123",
@@ -48,7 +48,7 @@ namespace Crpg.Application.UTest.Users
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventRaiser);
+            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService);
             var result = await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "13948192759205810",

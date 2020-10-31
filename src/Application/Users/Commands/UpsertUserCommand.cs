@@ -46,9 +46,9 @@ namespace Crpg.Application.Users.Commands
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
-            private readonly IEventRaiser _events;
+            private readonly IEventService _events;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, IEventRaiser events)
+            public Handler(ICrpgDbContext db, IMapper mapper, IEventService events)
             {
                 _db = db;
                 _mapper = mapper;

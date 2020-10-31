@@ -5,11 +5,11 @@ using DatadogStatsD.Events;
 
 namespace Crpg.Sdk.Events
 {
-    public class DatadogEventRaiser : IEventRaiser
+    public class DatadogEventService : IEventService
     {
         private readonly DogStatsD _dogStatsD;
 
-        public DatadogEventRaiser(DogStatsD dogStatsD) => _dogStatsD = dogStatsD;
+        public DatadogEventService(DogStatsD dogStatsD) => _dogStatsD = dogStatsD;
 
         public void Raise(EventLevel eventLevel, string title, string message, string? aggregationKey = null, IList<string>? tags = null)
         {

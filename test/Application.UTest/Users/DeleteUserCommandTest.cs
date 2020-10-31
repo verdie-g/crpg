@@ -28,7 +28,7 @@ namespace Crpg.Application.UTest.Users
             // needs to be saved before UserItems[0] gets deleted
             int itemId = user.Entity.OwnedItems[0].ItemId;
 
-            await new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventRaiser>()).Handle(new DeleteUserCommand
+            await new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventService>()).Handle(new DeleteUserCommand
             {
                 UserId = user.Entity.Id
             }, CancellationToken.None);
@@ -45,7 +45,7 @@ namespace Crpg.Application.UTest.Users
         public async Task DeleteNonExistingUser()
         {
             var result =
-                await new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventRaiser>()).Handle(
+                await new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventService>()).Handle(
                     new DeleteUserCommand { UserId = 1 }, CancellationToken.None);
             Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
         }

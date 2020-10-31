@@ -105,11 +105,11 @@ namespace Crpg.Application.Games.Commands
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
-            private readonly IEventRaiser _events;
+            private readonly IEventService _events;
             private readonly IDateTimeOffset _dateTime;
             private readonly IRandom _random;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, IEventRaiser events, IDateTimeOffset dateTime, IRandom random)
+            public Handler(ICrpgDbContext db, IMapper mapper, IEventService events, IDateTimeOffset dateTime, IRandom random)
             {
                 _db = db;
                 _mapper = mapper;

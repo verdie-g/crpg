@@ -35,7 +35,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public void ShouldDoNothingForEmptyUpdates()
         {
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
             Assert.DoesNotThrowAsync(() => handler.Handle(new UpdateGameCommand(), CancellationToken.None));
         }
@@ -43,7 +43,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldCreateUserIfDoesntExist()
         {
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var result = await handler.Handle(new UpdateGameCommand
@@ -106,7 +106,7 @@ namespace Crpg.Application.UTest.Games
             var randomMock = new Mock<IRandom>();
             randomMock.Setup(r => r.Next(It.IsAny<int>(), It.IsAny<int>())).Returns(1);
 
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), randomMock.Object);
 
             Assert.DoesNotThrowAsync(() =>
@@ -135,7 +135,7 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var result = await handler.Handle(new UpdateGameCommand
@@ -207,7 +207,7 @@ namespace Crpg.Application.UTest.Games
             var randomMock = new Mock<IRandom>();
             randomMock.Setup(r => r.Next(It.IsAny<int>(), It.IsAny<int>())).Returns(1);
 
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), randomMock.Object);
 
             // Handle shouldn't throw
@@ -254,7 +254,7 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var result = await handler.Handle(new UpdateGameCommand
@@ -314,7 +314,7 @@ namespace Crpg.Application.UTest.Games
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var result = await handler.Handle(new UpdateGameCommand
@@ -360,7 +360,7 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.AddRange(user0, user1);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var result = await handler.Handle(new UpdateGameCommand
@@ -441,7 +441,7 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.AddRange(user0, user1, user2);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var result = await handler.Handle(new UpdateGameCommand
@@ -528,7 +528,7 @@ namespace Crpg.Application.UTest.Games
                 .Setup(dt => dt.Now)
                 .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
 
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 dateTime.Object, new ThreadSafeRandom());
 
             var result = await handler.Handle(new UpdateGameCommand
@@ -567,7 +567,7 @@ namespace Crpg.Application.UTest.Games
                 .Setup(dt => dt.Now)
                 .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
 
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 dateTime.Object, new ThreadSafeRandom());
 
             var result = await handler.Handle(new UpdateGameCommand
@@ -613,7 +613,7 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var result = await handler.Handle(new UpdateGameCommand
@@ -713,7 +713,7 @@ namespace Crpg.Application.UTest.Games
 
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var result = await handler.Handle(new UpdateGameCommand
@@ -806,7 +806,7 @@ namespace Crpg.Application.UTest.Games
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventRaiser>(),
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom());
 
             var result = await handler.Handle(new UpdateGameCommand

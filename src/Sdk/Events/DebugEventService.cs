@@ -5,11 +5,11 @@ using Microsoft.Extensions.Logging;
 
 namespace Crpg.Sdk.Events
 {
-    public class DebugEventRaiser : IEventRaiser
+    public class DebugEventService : IEventService
     {
-        private readonly ILogger<DebugEventRaiser> _logger;
+        private readonly ILogger<DebugEventService> _logger;
 
-        public DebugEventRaiser(ILogger<DebugEventRaiser> logger)
+        public DebugEventService(ILogger<DebugEventService> logger)
         {
             _logger = logger;
         }

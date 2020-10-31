@@ -34,7 +34,7 @@ namespace Crpg.Sdk
             if (appEnv.Environment == HostingEnvironment.Development)
             {
                 services.AddSingleton<IMetricsFactory, DebugMetricsFactory>();
-                services.AddSingleton<IEventRaiser, DebugEventRaiser>();
+                services.AddSingleton<IEventService, DebugEventService>();
                 services.AddSingleton<ITracer, DebugTracer>();
             }
             else
@@ -46,7 +46,7 @@ namespace Crpg.Sdk
                 });
 
                 services.AddSingleton<IMetricsFactory>(new DatadogMetricsFactory(dogStatsD));
-                services.AddSingleton<IEventRaiser>(new DatadogEventRaiser(dogStatsD));
+                services.AddSingleton<IEventService>(new DatadogEventService(dogStatsD));
                 services.AddSingleton<ITracer>(new DatadogTracer("crpg"));
             }
 

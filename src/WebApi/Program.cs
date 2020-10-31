@@ -43,7 +43,7 @@ namespace Crpg.WebApi
             {
                 IServiceProvider services = scope.ServiceProvider;
                 var mediator = services.GetRequiredService<IMediator>();
-                var eventRaiser = services.GetRequiredService<IEventRaiser>();
+                var eventRaiser = services.GetRequiredService<IEventService>();
                 var db = services.GetRequiredService<CrpgDbContext>();
 
                 if (Env == Environments.Production)
