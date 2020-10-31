@@ -126,7 +126,7 @@ namespace Crpg.DumpItemsMod
         {
             var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
             game.Initialize();
-            SetItemValueModel(game.BasicModels, new DefaultItemValueModel());
+            SetItemValueModel(game.BasicModels, new CrpgItemValueModel());
 
             var itemsDoc = new XmlDocument();
             using (var r = XmlReader.Create(path, new XmlReaderSettings { IgnoreComments = true }))
