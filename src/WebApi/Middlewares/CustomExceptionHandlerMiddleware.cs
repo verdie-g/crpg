@@ -2,18 +2,24 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Net.Mime;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Results;
 using Crpg.Sdk.Abstractions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
 
 namespace Crpg.WebApi.Middlewares
 {
     public class CustomExceptionHandlerMiddleware
     {
+        private static readonly JsonSerializerOptions SerializerOptions = new JsonSerializerOptions
+        {
+            Converters = { new JsonStringEnumConverter() },
+        };
+
         private readonly RequestDelegate _next;
         private readonly IApplicationEnvironment _appEnv;
 
@@ -80,7 +86,7 @@ namespace Crpg.WebApi.Middlewares
 
                 ctx.Response.StatusCode = (int)httpStatus;
                 ctx.Response.ContentType = MediaTypeNames.Application.Json;
-                await ctx.Response.WriteAsync(JsonConvert.SerializeObject(result));
+                await ctx.Response.WriteAsync(JsonSerializer.Serialize(result, SerializerOptions));
             }
         }
     }
