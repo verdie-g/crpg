@@ -58,6 +58,8 @@ namespace Crpg.WebApi.Middlewares
                             new Error(ErrorType.InternalError, ErrorCode.Conflict)
                             {
                                 Title = "Request conflicted with another concurring one",
+                                Detail = _appEnv.Environment == HostingEnvironment.Development ? e.Message : null,
+                                StackTrace = _appEnv.Environment == HostingEnvironment.Development ? e.StackTrace : null,
                             },
                         };
                         break;
@@ -68,18 +70,11 @@ namespace Crpg.WebApi.Middlewares
                             new Error(ErrorType.InternalError, ErrorCode.InternalError)
                             {
                                 Title = "Unknown error. Contact an administrator",
+                                Detail = _appEnv.Environment == HostingEnvironment.Development ? e.Message : null,
+                                StackTrace = _appEnv.Environment == HostingEnvironment.Development ? e.StackTrace : null,
                             },
                         };
                         break;
-                }
-
-                // Only include exception in the response during development.
-                if (_appEnv.Environment == HostingEnvironment.Development)
-                {
-                    foreach (var error in errors)
-                    {
-                        error.StackTrace = e.StackTrace;
-                    }
                 }
 
                 var result = new Result<object>(errors);
