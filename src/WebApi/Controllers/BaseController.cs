@@ -41,7 +41,7 @@ namespace Crpg.WebApi.Controllers
                 : FirstErrorToAction(result);
         }
 
-        protected ActionResult ResultToAction(Result<object> result)
+        protected ActionResult ResultToAction(Result result)
         {
             return result.Errors == null || result.Errors.Count == 0 ? NoContent() : FirstErrorToAction(result);
         }
@@ -61,13 +61,13 @@ namespace Crpg.WebApi.Controllers
             return ResultToCreatedAtAction(actionName, controllerName, getRouteValues, result);
         }
 
-        protected async Task<ActionResult> ResultToActionAsync(Task<Result<object>> resultTask)
+        protected async Task<ActionResult> ResultToActionAsync(Task<Result> resultTask)
         {
             var result = await resultTask;
             return ResultToAction(result);
         }
 
-        private ActionResult FirstErrorToAction<TData>(Result<TData> result) where TData : class
+        private ActionResult FirstErrorToAction(Result result)
         {
             string traceId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
             foreach (var error in result.Errors!)

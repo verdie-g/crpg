@@ -24,7 +24,7 @@ namespace Crpg.Application.Items.Commands
                 _db = db;
             }
 
-            public async Task<Result<object>> Handle(SellItemCommand req, CancellationToken cancellationToken)
+            public async Task<Result> Handle(SellItemCommand req, CancellationToken cancellationToken)
             {
                 var userItem = await _db.UserItems
                     .Include(oi => oi.User).ThenInclude(u => u!.Characters)
@@ -33,7 +33,7 @@ namespace Crpg.Application.Items.Commands
 
                 if (userItem == null)
                 {
-                    return new Result<object>(CommonErrors.ItemNotOwned(req.ItemId));
+                    return new Result(CommonErrors.ItemNotOwned(req.ItemId));
                 }
 
                 userItem.User!.Gold += (int)(userItem.Item!.Value * SellItemRatio);
@@ -44,7 +44,7 @@ namespace Crpg.Application.Items.Commands
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
-                return new Result<object>();
+                return new Result();
             }
 
             private static void UnsetItem(CharacterItems items, int itemId)

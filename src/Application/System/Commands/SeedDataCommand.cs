@@ -34,7 +34,7 @@ namespace Crpg.Application.System.Commands
                 _itemModifier = itemModifier;
             }
 
-            public async Task<Result<object>> Handle(SeedDataCommand request, CancellationToken cancellationToken)
+            public async Task<Result> Handle(SeedDataCommand request, CancellationToken cancellationToken)
             {
                 if (_appEnv.Environment == HostingEnvironment.Development)
                 {
@@ -43,7 +43,7 @@ namespace Crpg.Application.System.Commands
 
                 await CreateOrUpdateItems(cancellationToken);
                 await _db.SaveChangesAsync(cancellationToken);
-                return new Result<object>();
+                return new Result();
             }
 
             private void AddDevelopperUsers()

@@ -77,13 +77,13 @@ namespace Crpg.Application.Characters.Commands
                 return new Result<CharacterStatisticsViewModel>(_mapper.Map<CharacterStatisticsViewModel>(character.Statistics));
             }
 
-            private Result<object> SetStatistics(CharacterStatistics stats, CharacterStatisticsViewModel newStats)
+            private Result SetStatistics(CharacterStatistics stats, CharacterStatisticsViewModel newStats)
             {
                 int attributesDelta = CheckedDelta(stats.Attributes.Strength, newStats.Attributes.Strength)
                     + CheckedDelta(stats.Attributes.Agility, newStats.Attributes.Agility);
                 if (attributesDelta > stats.Attributes.Points)
                 {
-                    return new Result<object>(CommonErrors.NotEnoughAttributePoints(attributesDelta, stats.Attributes.Points));
+                    return new Result(CommonErrors.NotEnoughAttributePoints(attributesDelta, stats.Attributes.Points));
                 }
 
                 stats.WeaponProficiencies.Points += WeaponProficienciesPointsForAgility(newStats.Attributes.Agility)
@@ -100,7 +100,7 @@ namespace Crpg.Application.Characters.Commands
                     + CheckedDelta(stats.Skills.Shield, newStats.Skills.Shield);
                 if (skillsDelta > stats.Skills.Points)
                 {
-                    return new Result<object>(CommonErrors.NotEnoughSkillPoints(skillsDelta, stats.Skills.Points));
+                    return new Result(CommonErrors.NotEnoughSkillPoints(skillsDelta, stats.Skills.Points));
                 }
 
                 stats.WeaponProficiencies.Points += WeaponProficienciesPointsForWeaponMaster(newStats.Skills.WeaponMaster)
@@ -115,12 +115,12 @@ namespace Crpg.Application.Characters.Commands
                     + CheckedDelta(stats.WeaponProficiencies.Crossbow, newStats.WeaponProficiencies.Crossbow, WeaponProficiencyCost);
                 if (weaponProficienciesDelta > stats.WeaponProficiencies.Points)
                 {
-                    return new Result<object>(CommonErrors.NotEnoughWeaponProficiencyPoints(weaponProficienciesDelta, stats.WeaponProficiencies.Points));
+                    return new Result(CommonErrors.NotEnoughWeaponProficiencyPoints(weaponProficienciesDelta, stats.WeaponProficiencies.Points));
                 }
 
                 if (!CheckSkillsRequirement(newStats))
                 {
-                    return new Result<object>(CommonErrors.SkillRequirementNotMet());
+                    return new Result(CommonErrors.SkillRequirementNotMet());
                 }
 
                 stats.Attributes.Points -= attributesDelta;
@@ -146,7 +146,7 @@ namespace Crpg.Application.Characters.Commands
                 stats.WeaponProficiencies.Throwing = newStats.WeaponProficiencies.Throwing;
                 stats.WeaponProficiencies.Crossbow = newStats.WeaponProficiencies.Crossbow;
 
-                return new Result<object>();
+                return new Result();
             }
 
             private static int CheckedDelta(int oldStat, int newStat, Func<int, int>? cost = null)

@@ -85,7 +85,7 @@ namespace Crpg.WebApi.Middlewares
                         break;
                 }
 
-                var result = new Result<object>(errors);
+                var result = new Result(errors);
 
                 ctx.Response.StatusCode = (int)httpStatus;
                 ctx.Response.ContentType = MediaTypeNames.Application.Json;

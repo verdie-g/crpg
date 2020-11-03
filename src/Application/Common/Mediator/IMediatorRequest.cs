@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Crpg.Application.Common.Mediator
 {
-    internal interface IMediatorRequest : IRequest<Result<object>>
+    internal interface IMediatorRequest : IRequest<Result>
     {
     }
 

@@ -21,7 +21,7 @@ namespace Crpg.Application.Characters.Commands
                 _db = db;
             }
 
-            public async Task<Result<object>> Handle(DeleteCharacterCommand req, CancellationToken cancellationToken)
+            public async Task<Result> Handle(DeleteCharacterCommand req, CancellationToken cancellationToken)
             {
                 var characterDb =
                     await _db.Characters.FirstOrDefaultAsync(c =>
@@ -29,13 +29,13 @@ namespace Crpg.Application.Characters.Commands
 
                 if (characterDb == null)
                 {
-                    return new Result<object>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
+                    return new Result(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
                 _db.Characters.Remove(characterDb);
                 await _db.SaveChangesAsync(cancellationToken);
 
-                return new Result<object>();
+                return new Result();
             }
         }
     }

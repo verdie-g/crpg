@@ -33,7 +33,7 @@ namespace Crpg.Application.Users.Commands
                 _dateTimeOffset = dateTimeOffset;
             }
 
-            public async Task<Result<object>> Handle(DeleteUserCommand req, CancellationToken cancellationToken)
+            public async Task<Result> Handle(DeleteUserCommand req, CancellationToken cancellationToken)
             {
                 var user = await _db.Users
                     .Include(u => u.Characters)
@@ -41,7 +41,7 @@ namespace Crpg.Application.Users.Commands
                     .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 if (user == null)
                 {
-                    return new Result<object>(CommonErrors.UserNotFound(req.UserId));
+                    return new Result(CommonErrors.UserNotFound(req.UserId));
                 }
 
                 string name = user.Name;
@@ -57,7 +57,7 @@ namespace Crpg.Application.Users.Commands
                 _db.Characters.RemoveRange(user.Characters);
                 await _db.SaveChangesAsync(cancellationToken);
                 _events.Raise(EventLevel.Info, $"{name} left ({user.Platform}#{user.PlatformUserId})", string.Empty, "user_deleted");
-                return new Result<object>();
+                return new Result();
             }
         }
     }

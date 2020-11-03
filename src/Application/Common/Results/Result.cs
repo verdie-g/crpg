@@ -12,12 +12,12 @@ namespace Crpg.Application.Common.Results
         /// </summary>
         public IList<Error>? Errors { get; }
 
-        protected Result() { }
-        protected Result(Error error) => Errors = new[] { error };
-        protected Result(IList<Error> errors) => Errors = errors;
+        public Result() { }
+        public Result(Error error) => Errors = new[] { error };
+        public Result(IList<Error> errors) => Errors = errors;
     }
 
-    /// <typeparam name="TData">Tye of the data. Use <see cref="object"/> if there is no data.</typeparam>
+    /// <inheritdoc />
     public class Result<TData> : Result where TData : class
     {
         /// <summary>
@@ -25,7 +25,6 @@ namespace Crpg.Application.Common.Results
         /// </summary>
         public TData? Data { get; }
 
-        public Result() { }
         public Result(TData data) => Data = data;
         public Result(Error error) : base(error) { }
         public Result(IList<Error> errors) : base(errors) { }
