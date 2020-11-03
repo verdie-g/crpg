@@ -65,6 +65,8 @@ namespace Crpg.Application.Users.Commands
                 user.AvatarSmall = request.Avatar;
                 user.AvatarMedium = request.AvatarMedium;
                 user.AvatarFull = request.AvatarFull;
+                // If the user has deleted its account, recreate it.
+                user.DeletedAt = null;
 
                 if (_db.Entry(user).State == EntityState.Detached)
                 {

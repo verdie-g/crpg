@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Crpg.Application.Users.Commands;
 using Crpg.Domain.Entities;
 using Crpg.Sdk.Abstractions.Events;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
 
@@ -29,7 +30,9 @@ namespace Crpg.Application.UTest.Users
             var user = result.Data!;
             Assert.AreEqual(Role.User, user.Role);
             Assert.AreEqual(300, user.Gold);
-            Assert.NotNull(await AssertDb.Users.FindAsync(user.Id));
+            var dbUser = await AssertDb.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
+            Assert.IsNotNull(dbUser);
+            Assert.IsNull(dbUser.DeletedAt);
         }
 
         [Test]
@@ -43,7 +46,8 @@ namespace Crpg.Application.UTest.Users
                 Role = Role.Admin,
                 AvatarSmall = new Uri("http://ghi.klm"),
                 AvatarMedium = new Uri("http://mno.pqr"),
-                AvatarFull = new Uri("http://stu.vwx")
+                AvatarFull = new Uri("http://stu.vwx"),
+                DeletedAt = null,
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -70,6 +74,28 @@ namespace Crpg.Application.UTest.Users
             Assert.AreEqual(new Uri("http://gh.klm"), createdUser.AvatarSmall);
             Assert.AreEqual(new Uri("http://mn.pqr"), createdUser.AvatarMedium);
             Assert.AreEqual(new Uri("http://st.vwx"), createdUser.AvatarFull);
+            Assert.IsNull(dbUser.DeletedAt);
+        }
+
+        [Test]
+        public async Task TestRecreatingUserAfterItWasDeleted()
+        {
+            var user = new User
+            {
+                PlatformUserId = "13948192759205810",
+                DeletedAt = DateTimeOffset.Now, // Deleted user are just marked with a non-null DeletedAt
+            };
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
+
+            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService);
+            var result = await handler.Handle(new UpsertUserCommand
+            {
+                PlatformUserId = "13948192759205810",
+            }, CancellationToken.None);
+
+            var dbUser = await AssertDb.Users.FindAsync(user.Id);
+            Assert.IsNull(dbUser.DeletedAt);
         }
 
         [Test]

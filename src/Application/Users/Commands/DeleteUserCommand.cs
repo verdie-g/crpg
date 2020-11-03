@@ -6,6 +6,7 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
+using Crpg.Sdk.Abstractions;
 using Crpg.Sdk.Abstractions.Events;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -23,11 +24,13 @@ namespace Crpg.Application.Users.Commands
         {
             private readonly ICrpgDbContext _db;
             private readonly IEventService _events;
+            private readonly IDateTimeOffset _dateTimeOffset;
 
-            public Handler(ICrpgDbContext db, IEventService events)
+            public Handler(ICrpgDbContext db, IEventService events, IDateTimeOffset dateTimeOffset)
             {
                 _db = db;
                 _events = events;
+                _dateTimeOffset = dateTimeOffset;
             }
 
             public async Task<Result<object>> Handle(DeleteUserCommand req, CancellationToken cancellationToken)
@@ -48,6 +51,7 @@ namespace Crpg.Application.Users.Commands
                 user.AvatarSmall = new Uri("https://via.placeholder.com/32x32");
                 user.AvatarMedium = new Uri("https://via.placeholder.com/64x64");
                 user.AvatarFull = new Uri("https://via.placeholder.com/184x184");
+                user.DeletedAt = _dateTimeOffset.Now; // Deleted users are just marked with a DeletedAt != null
 
                 _db.UserItems.RemoveRange(user.OwnedItems);
                 _db.Characters.RemoveRange(user.Characters);
