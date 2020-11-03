@@ -10,6 +10,7 @@ using Crpg.Application.Common.Results;
 using Crpg.Sdk.Abstractions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace Crpg.WebApi.Middlewares
 {
@@ -22,11 +23,14 @@ namespace Crpg.WebApi.Middlewares
 
         private readonly RequestDelegate _next;
         private readonly IApplicationEnvironment _appEnv;
+        private readonly ILogger<CustomExceptionHandlerMiddleware> _logger;
 
-        public CustomExceptionHandlerMiddleware(RequestDelegate next, IApplicationEnvironment appEnv)
+        public CustomExceptionHandlerMiddleware(RequestDelegate next, IApplicationEnvironment appEnv,
+            ILogger<CustomExceptionHandlerMiddleware> logger)
         {
             _next = next;
             _appEnv = appEnv;
+            _logger = logger;
         }
 
         public async Task Invoke(HttpContext ctx)
@@ -62,6 +66,8 @@ namespace Crpg.WebApi.Middlewares
                                 StackTrace = _appEnv.Environment == HostingEnvironment.Development ? e.StackTrace : null,
                             },
                         };
+
+                        _logger.Log(LogLevel.Error, e, "Conflict");
                         break;
                     default:
                         httpStatus = HttpStatusCode.InternalServerError;
@@ -74,6 +80,8 @@ namespace Crpg.WebApi.Middlewares
                                 StackTrace = _appEnv.Environment == HostingEnvironment.Development ? e.StackTrace : null,
                             },
                         };
+
+                        _logger.Log(LogLevel.Error, e, "Unknown error");
                         break;
                 }
 
