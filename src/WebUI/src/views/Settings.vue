@@ -20,7 +20,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
-import { clearToken } from '@/services/auth-service';
+import { signOut } from '@/services/auth-service';
 import { timestampToTimeString } from '@/utils/date';
 
 @Component
@@ -73,9 +73,7 @@ export default class Settings extends Vue {
       hasIcon: true,
       onConfirm: () => {
         userModule.deleteUser();
-        clearToken();
-        userModule.signOut();
-        this.$router.replace('/');
+        signOut();
       },
     });
   }

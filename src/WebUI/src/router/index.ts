@@ -16,16 +16,16 @@ function combineGuards(...guards: NavigationGuard[]): NavigationGuard {
   return (to, from, next) => callGuardsRec(guards, 0, to, from, next);
 }
 
-const isSignedInGuard: NavigationGuard = (to, from, next) => {
-  if (getToken() === undefined) {
+const isSignedInGuard: NavigationGuard = async (to, from, next) => {
+  if (await getToken() === null) {
     next('/');
   } else {
     next();
   }
 };
 
-const isAdminGuard: NavigationGuard = (to, from, next) => {
-  const { userRole } = getDecodedToken()!;
+const isAdminGuard: NavigationGuard = async (to, from, next) => {
+  const { userRole } = (await getDecodedToken())!;
   if (userRole !== Role.Admin && userRole !== Role.SuperAdmin) {
     next('/');
   } else {

@@ -1,8 +1,16 @@
+import { UserManager } from 'oidc-client';
 import Role from '../models/role';
 
-const TOKEN_KEY = 'token';
-const REDIRECT_URI = window.location.origin;
-const API_BASE_URL = process.env.VUE_APP_API_BASE_URL;
+const userManager = new UserManager({
+  authority: process.env.VUE_APP_API_BASE_URL,
+  client_id: 'crpg_web_ui',
+  redirect_uri: window.location.origin,
+  response_type: 'code',
+  scope: 'openid offline_access api',
+  post_logout_redirect_uri: window.location.origin,
+  // Refresh access token after half of its lifetime (30 minutes)
+  accessTokenExpiringNotificationTime: 30 * 60,
+});
 
 export class TokenPayload {
   public userId: number;
@@ -11,34 +19,36 @@ export class TokenPayload {
   public issuedAt: Date;
 }
 
-export function getToken(): string | undefined {
-  return localStorage[TOKEN_KEY];
+export async function getToken(): Promise<string | null> {
+  const user = await userManager.getUser();
+  return user !== null ? user.access_token : null;
 }
 
-export function getDecodedToken(): TokenPayload | undefined {
-  const token = getToken();
-  if (token === undefined) {
-    return undefined;
+export async function getDecodedToken(): Promise<TokenPayload | null> {
+  const token = await getToken();
+  if (token === null) {
+    return null;
   }
 
   const payload = JSON.parse(atob(token.split('.')[1]));
+  console.log(payload);
   return {
-    userId: parseInt(payload.nameid, 10),
+    userId: parseInt(payload.sub, 10),
     userRole: payload.role,
     expiration: new Date(payload.exp * 1000),
     issuedAt: new Date(payload.iat * 1000),
   };
 }
 
-export function setToken(token: string): void {
-  localStorage[TOKEN_KEY] = token;
+export function signIn(): Promise<void> {
+  return userManager.signinRedirect();
 }
 
-export function clearToken(): void {
-  localStorage.removeItem(TOKEN_KEY);
+export async function signInCallback(): Promise<void> {
+  const mgr = new UserManager({ response_mode: 'query' });
+  await mgr.signinRedirectCallback();
 }
 
-export function challenge(): void {
-  clearToken();
-  window.location.href = `${API_BASE_URL}/auth/signIn?redirectUri=${encodeURIComponent(REDIRECT_URI)}`;
+export async function signOut(): Promise<void> {
+  return userManager.signoutRedirect();
 }

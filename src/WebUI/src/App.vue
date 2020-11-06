@@ -98,7 +98,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import User from '@/models/user';
-import { getToken, setToken, clearToken } from './services/auth-service';
+import { getToken, signInCallback, signOut } from './services/auth-service';
 
 @Component
 export default class App extends Vue {
@@ -111,25 +111,25 @@ export default class App extends Vue {
   }
 
   beforeCreate() {
-    const token = this.$route.query.token as string;
-    if (token !== undefined) {
-      this.$router.replace(''); // clear query parameters
-      setToken(token);
-    }
-  }
-
-  created(): void {
-    if (getToken() !== undefined) {
-      userModule.getUser();
+    // If the 'code' parameter is present in the query, this is the response
+    // of the authorization endpoint and it should be processed
+    if (this.$route.query.code !== undefined) {
+      signInCallback().then(() => {
+        userModule.getUser();
+        this.$router.replace(''); // clear query parameters
+      });
+    } else {
+      // Get user info if user is connected
+      getToken().then(token => {
+        if (token !== null) {
+          userModule.getUser();
+        }
+      });
     }
   }
 
   signOut(): void {
-    clearToken();
-    userModule.signOut();
-    if (this.$router.currentRoute.fullPath !== '/') {
-      this.$router.push('/');
-    }
+    signOut();
   }
 }
 </script>

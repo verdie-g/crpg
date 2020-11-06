@@ -64,12 +64,6 @@ namespace Crpg.GameMod.Api
                 throw new Exception(json);
             }
 
-            // if the token was about to expire, the server issues a new one in the Refresh-Authorization header
-            if (res.Headers.TryGetValues("Refresh-Authorization", out var values))
-            {
-                _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + values.First());
-            }
-
             return JsonConvert.DeserializeObject<CrpgResult<TResponse>>(json);
         }
     }

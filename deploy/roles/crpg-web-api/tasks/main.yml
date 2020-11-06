@@ -30,16 +30,15 @@
   command: "dotnet publish -c Release {{ playbook_dir }}/../src/WebApi"
   delegate_to: localhost
 
-- name: Stop cRPG Web API
-  service:
-    name: crpg
-    enabled: yes
-    state: stopped
+- name: Check that a cRPG Web API version is already present
+  stat:
+    path: "{{ crpg_api_path }}"
+  register: crpg_api_path_stat_result
 
 - name: Copy cRPG Web API to host
   copy:
     src: "{{ playbook_dir }}/../src/WebApi/bin/Release/netcoreapp3.1/publish/"
-    dest: "{{ crpg_api_path }}"
+    dest: "{{ crpg_api_path }}_new"
     mode: 0600
     owner: "{{ crpg_user }}"
     group: "{{ crpg_user }}"
@@ -47,12 +46,19 @@
 - name: Generate cRPG Web API settings
   template:
     src: appsettings.Production.json.j2
-    dest: "{{ crpg_api_path }}/appsettings.Production.json"
+    dest: "{{ crpg_api_path }}_new/appsettings.Production.json"
     mode: 0600
     owner: "{{ crpg_user }}"
     group: "{{ crpg_user }}"
   notify:
     - reload systemd
+
+- name: Copy old cRPG key
+  copy:
+    src: "{{ crpg_api_path }}/crpg.key"
+    dest: "{{ crpg_api_path }}_new"
+    remote_src: true
+  when: crpg_api_path_stat_result.stat.exists
 
 - name: Create cRPG Web API log folder
   file:
@@ -62,8 +68,27 @@
     group: "{{ crpg_user }}"
     owner: "{{ crpg_user }}"
 
+- name: Stop cRPG Web API
+  service:
+    name: crpg
+    enabled: yes
+    state: stopped
+
+- name: Swap old and new version (1/2)
+  command: "mv {{ crpg_api_path }} {{ crpg_api_path }}_old"
+  when: crpg_api_path_stat_result.stat.exists
+
+- name: Swap old and new version (2/2)
+  command: "mv {{ crpg_api_path }}_new {{ crpg_api_path }}"
+
 - name: Start cRPG Web API
   service:
     name: crpg
     enabled: yes
     state: started
+
+- name: Clean old cRPG Web API
+  file:
+    path: "{{ crpg_api_path }}_old"
+    state: absent
+  when: crpg_api_path_stat_result.stat.exists

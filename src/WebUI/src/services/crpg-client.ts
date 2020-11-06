@@ -1,4 +1,4 @@
-import { setToken, getToken, challenge } from '@/services/auth-service';
+import { getToken, signIn } from '@/services/auth-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import { sleep } from '@/utils/promise';
 import Result from '@/models/result';
@@ -6,24 +6,19 @@ import Result from '@/models/result';
 export const API_BASE_URL = process.env.VUE_APP_API_BASE_URL;
 
 async function send(method: string, path: string, body?: any): Promise<any> {
+  const token = await getToken();
   const response = await fetch(API_BASE_URL + path, {
     method,
     headers: {
-      Authorization: `Bearer ${getToken()}`,
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
     body: body != null ? JSON.stringify(body) : undefined,
   });
 
-  // if the token was about to expire, the server issues a new one in the Refresh-Authorization header
-  const refreshedToken = response.headers.get('Refresh-Authorization');
-  if (refreshedToken !== null) {
-    setToken(refreshedToken);
-  }
-
   if (response.status === 401) {
     notify('Session expired', NotificationType.Warning);
-    sleep(1000).then(() => challenge());
+    sleep(1000).then(() => signIn());
     return {};
   }
 

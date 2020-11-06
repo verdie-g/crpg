@@ -3,37 +3,44 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Security.Claims;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using AspNet.Security.OpenId;
 using AspNet.Security.OpenId.Steam;
 using AutoMapper;
 using Crpg.Application;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Steam;
 using Crpg.Application.Users.Commands;
+using Crpg.Application.Users.Models;
 using Crpg.Common.Helpers;
+using Crpg.Domain.Entities;
 using Crpg.Persistence;
 using Crpg.Sdk;
 using Crpg.WebApi.Converters;
+using Crpg.WebApi.Identity;
 using Crpg.WebApi.Middlewares;
 using Crpg.WebApi.Services;
+using IdentityServer4;
+using IdentityServer4.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
 namespace Crpg.WebApi
 {
@@ -41,7 +48,6 @@ namespace Crpg.WebApi
     {
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _environment;
-        private IServiceCollection? _services;
 
         public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
@@ -58,7 +64,6 @@ namespace Crpg.WebApi
                 .AddApplication()
                 .AddHttpContextAccessor() // Injects IHttpContextAccessor
                 .AddScoped<ICurrentUserService, CurrentUserService>()
-                .AddSingleton<ITokenIssuer>(new JwtTokenIssuer(_configuration.GetSection(JwtOptions.Position).Get<JwtOptions>()))
                 .AddSwaggerGen(ConfigureSwagger)
                 .AddCors(ConfigureCors)
                 .AddControllers()
@@ -71,15 +76,32 @@ namespace Crpg.WebApi
 
             services.AddHealthChecks();
 
-            services.AddAuthentication(options =>
-                {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
+            services.AddIdentity<UserViewModel, IdentityRole>()
+                .AddRoleStore<NullRoleStore>()
+                .AddUserStore<CustomUserStore>();
+
+            services.AddIdentityServer()
+                .AddAspNetIdentity<UserViewModel>()
+                .AddProfileService<CustomProfileService>()
+                .AddInMemoryClients(_configuration.GetSection("IdentityServer:Clients"))
+                .AddInMemoryPersistedGrants()
+                .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
+                .AddInMemoryApiScopes(IdentityServerConfig.GetApiScopes())
+                // DeveloperSigningCredential drawback is that it never get rotated but since new deployment recreate
+                // all files this is fine.
+                .AddDeveloperSigningCredential(filename: Path.Combine(Directory.GetCurrentDirectory(), "key.jwk"));
+
+            services.AddAuthentication()
                 .AddJwtBearer(ConfigureJwtBearer)
                 .AddSteam(ConfigureSteamAuthentication);
 
-            _services = services;
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("User", BuildRolePolicy(Role.User, Role.Admin, Role.SuperAdmin));
+                options.AddPolicy("Admin", BuildRolePolicy(Role.Admin, Role.SuperAdmin));
+                options.AddPolicy("SuperAdmin", BuildRolePolicy(Role.SuperAdmin));
+                options.AddPolicy("Game", BuildRolePolicy(Role.Game));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -88,14 +110,13 @@ namespace Crpg.WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                RegisteredServicesPage(app);
             }
             else if (env.IsProduction())
             {
                 // https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx#use-a-reverse-proxy-server
                 app.UseForwardedHeaders(new ForwardedHeadersOptions
                 {
-                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost
                 });
             }
 
@@ -105,8 +126,8 @@ namespace Crpg.WebApi
                 .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Crpg API"))
                 .UseRouting()
                 .UseCors()
-                .UseAuthentication() // populate HttpContext.User
-                .UseAuthorization() // check that HttpContext.User has the correct rights to access the endpoint
+                .UseIdentityServer()
+                .UseAuthorization()
                 .UseEndpoints(endpoints =>
                 {
                     endpoints.MapHealthChecks("/health");
@@ -114,34 +135,26 @@ namespace Crpg.WebApi
                 });
         }
 
-        private void RegisteredServicesPage(IApplicationBuilder app)
-        {
-            app.Map("/services", builder => builder.Run(async context =>
-            {
-                var sb = new StringBuilder()
-                    .Append("<h1>Registered Services</h1>")
-                    .Append("<table><thead>")
-                    .Append("<tr><th>Type</th><th>Lifetime</th><th>Instance</th></tr>")
-                    .Append("</thead><tbody>");
-                foreach (var svc in _services!.OrderBy(s => s.ServiceType.FullName))
-                {
-                    sb.Append("<tr>")
-                        .Append($"<td>{svc.ServiceType.FullName}</td>")
-                        .Append($"<td>{svc.Lifetime}</td>")
-                        .Append($"<td>{svc.ImplementationType?.FullName}</td>")
-                        .Append("</tr>");
-                }
-
-                sb.Append("</tbody></table>");
-                await context.Response.WriteAsync(sb.ToString());
-            }));
-        }
+        private static AuthorizationPolicy BuildRolePolicy(params Role[] roles) =>
+            new AuthorizationPolicyBuilder()
+                .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                .RequireRole(roles.Select(r => r.ToString()))
+                .Build();
 
         private void ConfigureCors(CorsOptions options)
         {
-            string allowedOrigins = _configuration["AllowedOrigins"] ?? string.Empty;
+            var clients = new List<Client>();
+            _configuration.GetSection("IdentityServer:Clients").Bind(clients);
+
+            // Get allowed origins from clients' redirect uris.
+            var allowedOrigins = clients
+                .SelectMany(c => c.RedirectUris)
+                .Select(uri => new Uri(uri).GetLeftPart(UriPartial.Authority))
+                .Distinct()
+                .ToArray();
+
             options.AddDefaultPolicy(builder => builder
-                .WithOrigins(allowedOrigins.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                .WithOrigins(allowedOrigins)
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .SetPreflightMaxAge(TimeSpan.FromMinutes(10)));
@@ -181,71 +194,37 @@ namespace Crpg.WebApi
 
         private void ConfigureJwtBearer(JwtBearerOptions options)
         {
-            var secret = Encoding.UTF8.GetBytes(_configuration.GetValue<string>("Jwt:Secret"));
+            options.Authority = _configuration["IdentityServer:Authority"];
 
-            options.SaveToken = false;
             options.TokenValidationParameters = new TokenValidationParameters
             {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(secret),
-                ValidateIssuer = false,
+                // If the audience claim is not used, the audience check can be turned off
                 ValidateAudience = false,
-                ValidateLifetime = true,
-            };
-
-            options.Events = new JwtBearerEvents
-            {
-                OnTokenValidated = ctx =>
-                {
-                    // refresh the token if it is about to expire
-                    if (ctx.SecurityToken.ValidTo.Subtract(TimeSpan.FromMinutes(15)) > DateTime.UtcNow)
-                    {
-                        return Task.CompletedTask;
-                    }
-
-                    var tokenIssuer = ctx.HttpContext.RequestServices.GetService<ITokenIssuer>();
-                    string token = tokenIssuer.IssueToken(ctx.Principal.Identities.First());
-                    ctx.Response.Headers["Refresh-Authorization"] = token;
-                    return Task.CompletedTask;
-                },
+                ValidTypes = new[] { "at+jwt" },
             };
         }
 
         private void ConfigureSteamAuthentication(SteamAuthenticationOptions options)
         {
-            // ApplicationKey is needed to fetch user infos.
-            options.ApplicationKey = _configuration.GetValue<string>("Steam:ApiKey");
+            options.ApplicationKey = _configuration["IdentityServer:Providers:Steam:ApplicationKey"];
+            options.Events.OnAuthenticated = OnSteamUserAuthenticated;
+        }
 
-            options.Events.OnAuthenticated = async ctx =>
-            {
-                var mediator = ctx.HttpContext.RequestServices.GetRequiredService<IMediator>();
-                var mapper = ctx.HttpContext.RequestServices.GetRequiredService<IMapper>();
-                var tokenIssuer = ctx.HttpContext.RequestServices.GetRequiredService<ITokenIssuer>();
+        private static async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
+        {
+            var mediator = ctx.HttpContext.RequestServices.GetRequiredService<IMediator>();
+            var mapper = ctx.HttpContext.RequestServices.GetRequiredService<IMapper>();
 
-                var player = ctx.UserPayload.RootElement
-                    .GetProperty(SteamAuthenticationConstants.Parameters.Response)
-                    .GetProperty(SteamAuthenticationConstants.Parameters.Players)[0]
-                    .ToObject<SteamPlayer>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            var player = ctx.UserPayload.RootElement
+                .GetProperty(SteamAuthenticationConstants.Parameters.Response)
+                .GetProperty(SteamAuthenticationConstants.Parameters.Players)[0]
+                .ToObject<SteamPlayer>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-                var result = await mediator.Send(mapper.Map<UpsertUserCommand>(player));
+            var result = await mediator.Send(mapper.Map<UpsertUserCommand>(player));
+            await ctx.HttpContext.SignInAsync(new IdentityServerUser(result.Data!.Id.ToString()));
 
-                var jwt = tokenIssuer.IssueToken(new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.NameIdentifier, result.Data!.Id.ToString()),
-                    new Claim(ClaimTypes.Role, result.Data!.Role.ToString()),
-                }));
-
-                ctx.Request.HttpContext.Items["jwt"] = jwt;
-            };
-
-            options.Events.OnTicketReceived = ctx =>
-            {
-                ctx.HandleResponse();
-
-                var jwt = ctx.Request.HttpContext.Items["jwt"] as string;
-                ctx.Response.Redirect(QueryHelpers.AddQueryString(ctx.ReturnUri, "token", jwt));
-                return Task.CompletedTask;
-            };
+            // Delete temporary cookie used during external authentication
+            await ctx.HttpContext.SignOutAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
         }
     }
 }

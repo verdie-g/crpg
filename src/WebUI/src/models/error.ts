@@ -1,4 +1,4 @@
-﻿export default class Error {
+export default class Error {
   public traceId: string | null;
   // TODO: errorType
   // TODO: errorCode

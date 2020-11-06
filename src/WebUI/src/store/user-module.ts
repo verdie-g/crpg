@@ -30,13 +30,6 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
-  signOut() {
-    this.user = null;
-    this.ownedItems = [];
-    this.characters = [];
-  }
-
-  @Mutation
   setUser(user: User) {
     this.user = user;
   }
