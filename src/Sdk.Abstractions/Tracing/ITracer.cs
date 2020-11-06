@@ -7,6 +7,6 @@ namespace Crpg.Sdk.Abstractions.Tracing
     /// </summary>
     public interface ITracer
     {
-        ITraceSpan CreateSpan(string name, IEnumerable<KeyValuePair<string, string>> tags);
+        ITraceSpan CreateSpan(string name, IEnumerable<KeyValuePair<string, string>>? tags = null);
     }
 }

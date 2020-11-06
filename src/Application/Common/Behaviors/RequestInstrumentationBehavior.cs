@@ -13,11 +13,7 @@ namespace Crpg.Application.Common.Behaviors
 {
     internal class RequestInstrumentationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
-        private const string SpanName = "request";
-        private static readonly KeyValuePair<string, string>[] SpanTags =
-        {
-            new KeyValuePair<string, string>("name", StringHelper.PascalToSnakeCase(typeof(TRequest).Name))
-        };
+        private static readonly string SpanName = "request." + StringHelper.PascalToSnakeCase(typeof(TRequest).Name);
 
         private readonly RequestMetrics<TRequest> _metrics;
         private readonly ITracer _tracer;
@@ -31,7 +27,7 @@ namespace Crpg.Application.Common.Behaviors
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
             RequestHandlerDelegate<TResponse> next)
         {
-            var span = _tracer.CreateSpan(SpanName, SpanTags);
+            var span = _tracer.CreateSpan(SpanName);
             var sw = ValueStopwatch.StartNew();
             try
             {

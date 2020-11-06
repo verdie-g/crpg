@@ -10,10 +10,10 @@ namespace Crpg.Sdk.Tracing.Debug
     internal class DebugTraceSpan : ITraceSpan
     {
         private readonly string _name;
-        private readonly IEnumerable<KeyValuePair<string, string>> _tags;
+        private readonly IEnumerable<KeyValuePair<string, string>>? _tags;
         private readonly ILogger _logger;
 
-        public DebugTraceSpan(string name, IEnumerable<KeyValuePair<string, string>> tags, ILogger logger)
+        public DebugTraceSpan(string name, IEnumerable<KeyValuePair<string, string>>? tags, ILogger logger)
         {
             _name = name;
             _tags = tags;
@@ -27,7 +27,7 @@ namespace Crpg.Sdk.Tracing.Debug
         public override string ToString()
         {
             var sb = new StringBuilder(_name);
-            if (_tags.Any())
+            if (_tags != null && _tags.Any())
             {
                 sb.Append("[");
                 foreach (var kv in _tags)

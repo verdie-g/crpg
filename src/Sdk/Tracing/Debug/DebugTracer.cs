@@ -10,7 +10,7 @@ namespace Crpg.Sdk.Tracing.Debug
 
         public DebugTracer(ILogger<DebugTracer> logger) => _logger = logger;
 
-        public ITraceSpan CreateSpan(string name, IEnumerable<KeyValuePair<string, string>> tags)
+        public ITraceSpan CreateSpan(string name, IEnumerable<KeyValuePair<string, string>>? tags = null)
         {
             var span = new DebugTraceSpan(name, tags, _logger);
             _logger.Log(LogLevel.Debug, "Start of trace {0}", span.ToString());
