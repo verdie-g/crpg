@@ -13,5 +13,4 @@ If you just have a question, you can ask it on the [cRPG Discord](https://discor
 ## License
 
 All code found in this repository is licensed under [GPL v2](https://opensource.org/licenses/GPL-2.0). See the
-[LICENSE](https://raw.githubusercontent.com/verdie-g/crpg/master/LICENSE?token=ACFLZQUDJDOD32OLMDTPJUK7UPYQM)
-file in the project root for the full license text.
+[LICENSE](https://github.com/verdie-g/crpg/blob/master/LICENSE) file in the project root for the full license text.
