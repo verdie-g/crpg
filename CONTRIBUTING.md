@@ -50,20 +50,21 @@ The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the foll
 
 ### Web API (src/WebApi)
 
-- Download your favorite IDE: [Visual Studio](https://visualstudio.microsoft.com/vs), [Visual Studio Code](https://code.visualstudio.com), [Rider](https://www.jetbrains.com/rider)...
 - Download [.NET Core SDK](https://dotnet.microsoft.com/download)
-- Set the `Steam:ApiKey` in [src/WebApi/appsettings.Development.json](https://github.com/verdie-g/cRPG/blob/master/src/WebApi/appsettings.Development.json),
-  acquired by [filling out this form](https://steamcommunity.com/dev/apikey)
+- Download your favorite IDE: [Visual Studio](https://visualstudio.microsoft.com/vs), [Visual Studio Code](https://code.visualstudio.com), [Rider](https://www.jetbrains.com/rider)...
 - Open the solution file Crpg.sln
-- Run `dotnet dev-certs https --trust` to be able to launch the API with HTTPS. The Steam authentication creates a cookie
+- Set the `IdentityServer:Providers:Steam:ApplicationKey` in
+  [src/WebApi/appsettings.Development.json](https://github.com/verdie-g/cRPG/blob/master/src/WebApi/appsettings.Development.json),
+  acquired by [filling out this form](https://steamcommunity.com/dev/apikey)
+- Run `dotnet dev-certs https --trust` to be able to launch the API with HTTPS. The authentication creates a cookie
   with `SameSite=None` and recent version of Chrome requires HTTPS to do so
 - Build and run (can be done without IDE using [dotnet cli](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run))
 
-
 ### Web UI (src/WebUI)
 
+- Download [Node.js](https://nodejs.org)
+- Download [Yarn](https://classic.yarnpkg.com/en/docs/install)
 - Go to src/WebUI
-- Install [yarn](https://classic.yarnpkg.com/en/docs/install)
 - Run `yarn install` to install dependencies
 - Run `yarn serve` to launch the application
 
