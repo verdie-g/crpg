@@ -26,7 +26,7 @@
 
 Server written in [.NET Core](https://dotnet.microsoft.com). Its design is inspired by
 [jasontaylordev/NorthwindTraders](https://github.com/jasontaylordev/NorthwindTraders), see the
-[conference on Youtube](www.youtube.com/watch?v=Zygw4UAxCdg). It uses the following technologies:
+[conference on Youtube](https://youtube.com/watch?v=Zygw4UAxCdg). It uses the following technologies:
 - [ASP.NET Core](https://dotnet.microsoft.com/learn/aspnet/what-is-aspnet-core) - Web-development framework
 - [Entity Framework Core](https://docs.microsoft.com/en-us/ef) - ORM
 - [PostgreSQL](https://www.postgresql.org) - Relational database
