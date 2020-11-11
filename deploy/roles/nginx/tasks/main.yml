@@ -15,10 +15,16 @@
     dest: /etc/nginx/nginx.conf
     mode: 0644
 
-- name: Create cRPG virtual server configuration file
+- name: Create cRPG UI virtual server configuration file
   template:
-    src: nginx-crpg.j2
-    dest: /etc/nginx/sites-enabled/crpg
+    src: "nginx-{{ crpg_domain_name }}.j2"
+    dest: "/etc/nginx/sites-enabled/{{ crpg_domain_name }}"
+    mode: 0644
+
+- name: Create cRPG API virtual server configuration file
+  template:
+    src: "nginx-api.{{ crpg_domain_name }}.j2"
+    dest: "/etc/nginx/sites-enabled/api.{{ crpg_domain_name }}"
     mode: 0644
 
 - name: Create Nginx log rotation file

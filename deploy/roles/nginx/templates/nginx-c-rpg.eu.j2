@@ -1,9 +1,3 @@
-# Redirect HTTP to HTTPS
-server {
-    listen 80;
-    return 301 https://$host$request_uri;
-}
-
 # Redirect www to non-wwww
 server {
     listen 80;
@@ -15,7 +9,6 @@ server {
     return 301 https://{{ crpg_domain_name }}$request_uri;
 }
 
-# Web UI
 server {
     listen 443 ssl http2;
     server_name {{ crpg_domain_name }};
@@ -51,23 +44,4 @@ server {
         # serve index.html which will handle the routing.
         try_files $uri /index.html;
       }
-}
-
-# Web API
-server {
-    listen 443 ssl http2;
-    server_name api.{{ crpg_domain_name }};
-
-    include /etc/nginx/snippets/crpg-ssl.conf;
-
-    location / {
-        proxy_pass         http://localhost:8000;
-        proxy_http_version 1.1;
-        proxy_set_header   Upgrade $http_upgrade;
-        proxy_set_header   Connection keep-alive;
-        proxy_set_header   Host $host;
-        proxy_cache_bypass $http_upgrade;
-        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header   X-Forwarded-Proto $scheme;
-    }
 }
