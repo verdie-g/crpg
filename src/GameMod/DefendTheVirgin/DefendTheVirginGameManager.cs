@@ -211,7 +211,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                 "TOD_09_00_SemiCloudy",
                 "TOD_10_00_SemiCloudy",
                 "TOD_11_00_SemiCloudy",
-                "TOD_12_00_SemiCloudy"
+                "TOD_12_00_SemiCloudy",
             };
             string atmosphere = atmospheres[Rng.Next(0, atmospheres.Length)];
 
@@ -289,7 +289,6 @@ namespace Crpg.GameMod.DefendTheVirgin
             ReflectionHelper.SetProperty(itemModifier, "IsReady", true);
 
             // Set default values for the properties which have a default value different than their type default (e.g. different than 0f for floats)
-            ReflectionHelper.SetProperty(itemModifier, nameof(ItemModifier.WeightMultiplier), 1f);
             ReflectionHelper.SetProperty(itemModifier, nameof(ItemModifier.PriceMultiplier), 1f);
 
             int value;
@@ -298,19 +297,19 @@ namespace Crpg.GameMod.DefendTheVirgin
                 case ItemObject.ItemTypeEnum.OneHandedWeapon:
                 case ItemObject.ItemTypeEnum.TwoHandedWeapon:
                 case ItemObject.ItemTypeEnum.Polearm:
-                    value = skills.GetPropertyValue(CrpgSkills.PowerStrike) * 8 + 500;
-                    ReflectionHelper.SetProperty(itemModifier, nameof(ItemModifier.Damage), value);
+                    value = skills.GetPropertyValue(CrpgSkills.PowerStrike) * 8;
+                    ReflectionHelper.SetField(itemModifier, "_damage", value);
                     break;
                 case ItemObject.ItemTypeEnum.Shield:
                     // TODO: Shield skill
                     break;
                 case ItemObject.ItemTypeEnum.Bow:
                     value = skills.GetPropertyValue(CrpgSkills.PowerDraw) * 14;
-                    ReflectionHelper.SetProperty(itemModifier, nameof(ItemModifier.Damage), value);
+                    ReflectionHelper.SetField(itemModifier, "_damage", value);
                     break;
                 case ItemObject.ItemTypeEnum.Thrown:
                     value = skills.GetPropertyValue(CrpgSkills.PowerDraw) * 10;
-                    ReflectionHelper.SetProperty(itemModifier, nameof(ItemModifier.Damage), value);
+                    ReflectionHelper.SetField(itemModifier, "_damage", value);
                     break;
                 case ItemObject.ItemTypeEnum.HeadArmor:
                 case ItemObject.ItemTypeEnum.Cape:
