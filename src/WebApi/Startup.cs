@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security.Claims;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ using Crpg.WebApi.Converters;
 using Crpg.WebApi.Identity;
 using Crpg.WebApi.Middlewares;
 using Crpg.WebApi.Services;
+using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 using MediatR;
@@ -100,7 +102,7 @@ namespace Crpg.WebApi
                 options.AddPolicy("User", BuildRolePolicy(Role.User, Role.Admin, Role.SuperAdmin));
                 options.AddPolicy("Admin", BuildRolePolicy(Role.Admin, Role.SuperAdmin));
                 options.AddPolicy("SuperAdmin", BuildRolePolicy(Role.SuperAdmin));
-                options.AddPolicy("Game", BuildRolePolicy(Role.Game));
+                options.AddPolicy("Game", BuildScopePolicy("game_api"));
             });
         }
 
@@ -138,7 +140,16 @@ namespace Crpg.WebApi
         private static AuthorizationPolicy BuildRolePolicy(params Role[] roles) =>
             new AuthorizationPolicyBuilder()
                 .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                .RequireAuthenticatedUser()
+                .RequireClaim("scope", "user_api")
                 .RequireRole(roles.Select(r => r.ToString()))
+                .Build();
+
+        private static AuthorizationPolicy BuildScopePolicy(string scope) =>
+            new AuthorizationPolicyBuilder()
+                .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                .RequireAuthenticatedUser()
+                .RequireClaim("scope", scope)
                 .Build();
 
         private void ConfigureCors(CorsOptions options)

@@ -22,7 +22,7 @@ namespace Crpg.GameMod.DefendTheVirgin
     {
         private static readonly Random Rng = new Random();
 
-        private readonly ICrpgClient _crpgClient = new CrpgHttpClient("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIwIiwicm9sZSI6IkdhbWUiLCJuYmYiOjE2MDIxNzYyMTksImV4cCI6MTYzMzcxMjIxOSwiaWF0IjoxNjAyMTc2MjE5fQ.XI_5-9yI6B2KODpX6Lv9mvcbBhjKL5Lr5qxtNLwK7ns");
+        private readonly ICrpgClient _crpgClient = new CrpgHttpClient();
 
         private Task<CrpgUser>? _getUserTask;
         private WaveGroup[][]? _waves;
@@ -120,6 +120,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             var login = PlatformServices.Instance.CreateLobbyClientLoginProvider();
             login.Initialize(null, PlatformServices.Instance.GetInitParams()); // PreferredUserName is not used
 
+            await _crpgClient.Initialize();
             var res = await _crpgClient.Update(new CrpgGameUpdateRequest
             {
                 GameUserUpdates = new[]

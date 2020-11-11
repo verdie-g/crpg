@@ -6,7 +6,7 @@ const userManager = new UserManager({
   client_id: 'crpg_web_ui',
   redirect_uri: window.location.origin,
   response_type: 'code',
-  scope: 'openid offline_access api',
+  scope: 'openid offline_access user_api',
   post_logout_redirect_uri: window.location.origin,
   // Refresh access token after half of its lifetime (30 minutes)
   accessTokenExpiringNotificationTime: 30 * 60,

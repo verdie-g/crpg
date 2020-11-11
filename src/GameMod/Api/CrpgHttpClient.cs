@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.GameMod.Api.Models;
+using IdentityModel.Client;
 using Newtonsoft.Json;
 
 namespace Crpg.GameMod.Api
@@ -17,16 +17,40 @@ namespace Crpg.GameMod.Api
     {
         private readonly HttpClient _httpClient;
 
-        public CrpgHttpClient(string jwt)
+        public CrpgHttpClient()
         {
-            _httpClient = new HttpClient { BaseAddress = new Uri("https://api.c-rpg.eu/games/") };
+            _httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:8000") };
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-            _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + jwt);
+        }
+
+        public async Task Initialize()
+        {
+            DiscoveryDocumentResponse discoResponse = await _httpClient.GetDiscoveryDocumentAsync();
+            if (discoResponse.IsError)
+            {
+                throw new Exception("Couldn't get discovery document: " + discoResponse.Error);
+            }
+
+            // request token
+            var tokenResponse = await _httpClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            {
+                Address = discoResponse.TokenEndpoint,
+                ClientId = "crpg_game_server",
+                ClientSecret = "tototo",
+                Scope = "game_api"
+            });
+
+            if (tokenResponse.IsError)
+            {
+                throw new Exception("Couldn't get token: " + tokenResponse.Error);
+            }
+
+            _httpClient.SetBearerToken(tokenResponse.AccessToken);
         }
 
         public Task<CrpgResult<CrpgGameUpdateResponse>> Update(CrpgGameUpdateRequest req, CancellationToken cancellationToken = default)
         {
-            return Put<CrpgGameUpdateRequest, CrpgGameUpdateResponse>("update", req, cancellationToken);
+            return Put<CrpgGameUpdateRequest, CrpgGameUpdateResponse>("games/update", req, cancellationToken);
         }
 
         private Task<CrpgResult<TResponse>> Put<TRequest, TResponse>(string requestUri, TRequest payload, CancellationToken cancellationToken) where TResponse : class
@@ -66,5 +90,7 @@ namespace Crpg.GameMod.Api
 
             return JsonConvert.DeserializeObject<CrpgResult<TResponse>>(json);
         }
+
+        public void Dispose() => _httpClient.Dispose();
     }
 }

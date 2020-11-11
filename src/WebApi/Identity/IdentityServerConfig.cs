@@ -14,7 +14,8 @@ namespace Crpg.WebApi.Identity
         public static IEnumerable<ApiScope> GetApiScopes() => new[]
         {
             // Adding user claim "role" will automatically add it to the access token for clients requesting this scope.
-            new ApiScope("api", "cRPG API", new[] { JwtClaimTypes.Role }),
+            new ApiScope("user_api", "cRPG User API", new[] { JwtClaimTypes.Role }),
+            new ApiScope("game_api", "cRPG Game API"),
         };
     }
 }
