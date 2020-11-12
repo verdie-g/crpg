@@ -20,8 +20,10 @@ namespace Crpg.Application.Characters.Commands
 
         public class Handler : IMediatorRequestHandler<UpdateCharacterStatisticsCommand, CharacterStatisticsViewModel>
         {
+            /// <remarks>This method should be synced with the Web UI.</remarks>
             private static int WeaponProficienciesPointsForAgility(int agility) => agility * 14;
 
+            /// <remarks>This method should be synced with the Web UI.</remarks>
             private static int WeaponProficienciesPointsForWeaponMaster(int weaponMaster)
             {
                 const int a = 10;
@@ -31,6 +33,7 @@ namespace Crpg.Application.Characters.Commands
                     : a * weaponMaster * weaponMaster + b * weaponMaster;
             }
 
+            /// <remarks>This method should be synced with the Web UI.</remarks>
             private static int WeaponProficiencyCost(int wpf)
             {
                 const float a = 0.0005f;

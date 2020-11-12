@@ -21,6 +21,7 @@ namespace Crpg.Application.Items.Commands
             /// <summary>
             /// To repair an item for rank -1 to rank 0 it costs 7% of the rank 0 price.
             /// </summary>
+            /// <remarks>This const should be synced with the Web UI.</remarks>
             private const float ItemRepairCost = 0.07f;
 
             private readonly ICrpgDbContext _db;

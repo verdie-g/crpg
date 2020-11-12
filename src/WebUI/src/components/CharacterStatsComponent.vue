@@ -327,10 +327,12 @@ export default class CharacterStatsComponent extends Vue {
     }
   }
 
+  // This method should be synced with the Web API.
   wppForAgility(agility: number): number {
     return 14 * agility;
   }
 
+  // This method should be synced with the Web API.
   wppForWeaponMaster(weaponMaster: number): number {
     const a = 10;
     const b = 65;
@@ -374,6 +376,7 @@ export default class CharacterStatsComponent extends Vue {
     }
   }
 
+  // This method should be synced with the Web API.
   statCost(statSectionKey: StatSectionKey, statKey: StatKey, stat: number): number {
     if (statSectionKey === 'weaponProficiencies') {
       const a = 0.0005;
