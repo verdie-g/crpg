@@ -395,6 +395,44 @@ namespace Crpg.Application.UTest.Games
         }
 
         [Test]
+        public async Task ShouldGetSpecifiedCharacterWhenSeveralExists()
+        {
+            var user = new User
+            {
+                Platform = Platform.Steam,
+                PlatformUserId = "1",
+                Characters = new List<Character>
+                {
+                    new Character { Name = "a" },
+                    new Character { Name = "b" },
+                    new Character { Name = "c" },
+                },
+            };
+            ArrangeDb.Add(user);
+            await ArrangeDb.SaveChangesAsync();
+
+            var handler = new UpdateGameCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
+                new MachineDateTimeOffset(), new ThreadSafeRandom());
+
+            var result = await handler.Handle(new UpdateGameCommand
+            {
+                GameUserUpdates = new[]
+                {
+                    new GameUserUpdate
+                    {
+                        Platform = user.Platform,
+                        PlatformUserId = user.PlatformUserId,
+                        CharacterName = user.Characters[1].Name,
+                    },
+                }
+            }, CancellationToken.None);
+
+            var data = result.Data!;
+            Assert.AreEqual(1, data.Users.Count);
+            Assert.AreEqual(user.Characters[1].Id, data.Users[0].Character.Id);
+        }
+
+        [Test]
         public async Task AllInOne()
         {
             var user0 = new User
