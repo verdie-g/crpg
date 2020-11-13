@@ -30,7 +30,6 @@
     mode: u=rwX,g=rX,o=rX
     owner: www-data
     group: www-data
-  become_user: www-data # https://github.com/ansible/ansible/issues/35426
 
 - name: Check that a cRPG Web UI version is already present
   stat:
