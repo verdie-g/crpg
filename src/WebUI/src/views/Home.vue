@@ -24,58 +24,13 @@
       <div class="content is-medium">
         <h2>F.A.Q</h2>
         <dl id="faq">
-          <!--
-          <dt>How to create a new character?</dt>
-          <dd>Simply connect to a cRPG server and a character with your steam user name will be created.</dd>
-
-          <dt>How to gain experience and gold?</dt>
-          <dd>
-            Experience and gold are gained by playing on cRPG servers. These earnings are multiplied when you win a round.
-          </dd>
-          -->
-
-          <dt>I've renamed my steam account and a new character level 1 was created, how can I play with my original character?</dt>
-          <dd>
-            When you connect to a cRPG server, it searches for a character with the same name as your steam name. If it
-            doesn't find one, a new character is created. To use your original character, rename it to your new steam name
-            it in the Web UI.
-          </dd>
-
-          <dt>What is retiring?</dt>
-          <dd>
-            When a cRPG character reaches level 31, it can be retired. Retiring a character resets it to level 1 but
-            grants an experience bonus multiplier and an heirloom point which can used on an item to increate its
-            statistics.
-          </dd>
-
-          <dt>What is respecialization?</dt>
-          <dd>
-            If you want to play a different class of soldier, you can respecialize (or respec) to reset your character
-            stats for the cost of half of your experience.
-          </dd>
-
-          <!--
-          <dt>Can I host my own cRPG game server?</dt>
-          <dd>For security and maintainability reasons, players won't be able to host their own server.</dd>
-          -->
-
-          <dt>Is the project open-source?</dt>
-          <dd>Not decided yet.</dd>
-
-          <dt>How can I help?</dt>
-          <dd>
-            If you want to help developping the mod and that you already have a <b>professional</b> experience with
-            either .NET, game development, or a popular Javascript framework (Vue, React, Angular), please contact a
-            developper on the cRPG Discord. You can also help by donating to cover server costs.
-          </dd>
-
-          <dt>How to donate?</dt>
-          <dd>
-            You can donate on the <a href="https://patreon.com/crpg" target="_blank">Patreon</a>. Note that donations
-            will only be used to cover server costs.
-          </dd>
-
+          <template v-for="qa in faq">
+            <dt>{{ qa.question }}</dt>
+            <dd v-html="qa.answer"></dd>
+          </template>
         </dl>
+
+        <script v-html="faqJsonLd" type="application/ld+json"></script>
       </div>
     </section>
   </div>
@@ -88,6 +43,65 @@ import userModule from '@/store/user-module';
 
 @Component
 export default class Home extends Vue {
+  faq = [
+    // {
+    //   question: 'How to create a new character?',
+    //   answer: 'Simply connect to a cRPG server and a character with your steam user name will be created.',
+    // },
+    // {
+    // question: 'How to gain experience and gold?',
+    // answer: 'Experience and gold are gained by playing on cRPG servers. These earnings are multiplied when you win a round.',
+    // },
+    {
+      question: 'I\'ve renamed my steam account and a new character level 1 was created, how can I play with my original character?',
+      answer: 'When you connect to a cRPG server, it searches for a character with the same name as your steam name. If it doesn\'t find'
+        + ' one, a new character is created. To use your original character, rename it to your new steam name it in the Web UI.',
+    },
+    {
+      question: 'What is retiring?',
+      answer: 'When a cRPG character reaches level 31, it can be retired. Retiring a character resets it to level 1 but grants an'
+        + ' experience bonus multiplier and an heirloom point which can used on an item to increase its statistics.',
+    },
+    {
+      question: 'What is respecialization?',
+      answer: 'If you want to play a different class of soldier, you can respecialize (or respec) to reset your character stats for the'
+        + ' cost of half of your experience.',
+    },
+    // {
+    // question: 'Can I host my own cRPG game server?',
+    // answer: 'For security and maintainability reasons, players won't be able to host their own server.','
+    // },
+    {
+      question: 'Is the project open-source?',
+      answer: 'Not decided yet.',
+    },
+    {
+      question: 'How can I help?',
+      answer: 'If you want to help developping the mod and that you already have a <b>professional</b> experience with either .NET, game'
+        + ' development, or a popular Javascript framework (Vue, React, Angular), please contact a developper on the cRPG Discord. You'
+        + ' can also help by donating to cover server costs.',
+    },
+    {
+      question: 'How to donate?',
+      answer: 'You can donate on the <a href="https://patreon.com/crpg" target="_blank">Patreon</a>. Note that donations will only be used'
+        + ' to cover server costs.',
+    },
+  ];
+
+  // https://developers.google.com/search/docs/data-types/faqpage
+  faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: this.faq.map(qa => ({
+      '@type': 'Question',
+      name: qa.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: qa.answer,
+      },
+    })),
+  };
+
   get isSignedIn(): boolean {
     return userModule.isSignedIn;
   }
