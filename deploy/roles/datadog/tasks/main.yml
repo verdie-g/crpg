@@ -62,7 +62,7 @@
         instances:
         logs:
         - type: file
-          path: "{{ crpg_log_folder }}/{{ crpg_log_filename }}"
+          path: "{{ crpg_log_file }}"
           service: "{{ crpg_service_name }}"
           source: csharp
       http_check:

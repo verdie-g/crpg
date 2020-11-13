@@ -77,7 +77,7 @@
 
 - name: Create cRPG Web API log folder
   file:
-    path: "{{ crpg_log_folder }}"
+    path: "{{ crpg_log_file | dirname }}"
     state: directory
     mode: 0755
     group: "{{ crpg_user }}"
