@@ -3,7 +3,7 @@ crpg_log_folder: /var/log/crpg
 crpg_log_filename: crpg.log
 crpg_user: crpg
 crpg_api_path: /home/crpg/crpg
-crpg_ui_path: /var/www/html
+crpg_ui_path: "/var/www/{{ crpg_domain_name }}"
 crpg_service_name: crpg_web_api
 crpg_domain_name: c-rpg.eu
 crpg_port: 8000

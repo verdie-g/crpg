@@ -1,44 +1,65 @@
 ---
-- name: Install cRPG Web UI dependencies
-  command: "yarn --cwd {{ playbook_dir }}/../src/WebUI install"
+- name: Install locally cRPG Web UI dependencies
+  command: "yarn --cwd {{ playbook_dir | dirname }}/src/WebUI install"
   delegate_to: localhost
   become: false
 
-- name: Generate cRPG Web UI environment
+- name: Generate locally cRPG Web UI environment
   template:
     src: env.production.local.j2
-    dest: "{{ playbook_dir }}/../src/WebUI/.env.production.local"
+    dest: "{{ playbook_dir | dirname }}/src/WebUI/.env.production.local"
   delegate_to: localhost
   become: false
 
-- name: Build cRPG Web UI
-  command: "yarn --cwd {{ playbook_dir }}/../src/WebUI build"
+- name: Build locally cRPG Web UI
+  command: "yarn --cwd {{ playbook_dir | dirname }}/src/WebUI build --dest /tmp/{{ crpg_ui_path | basename }}_new"
   delegate_to: localhost
   become: false
+
+- name: Compress locally cRPG Web UI
+  archive:
+    path: "/tmp/{{ crpg_ui_path | basename }}_new"
+    dest: "/tmp/{{ crpg_ui_path | basename }}_new.tgz"
+  delegate_to: localhost
+  become: false
+
+- name: Copy to host and decompress cRPG Web UI
+  unarchive:
+    src: "/tmp/{{ crpg_ui_path | basename }}_new.tgz"
+    dest: "{{ crpg_ui_path | dirname }}"
+    mode: u=rwX,g=rX,o=rX
+    owner: www-data
+    group: www-data
+  become_user: www-data # https://github.com/ansible/ansible/issues/35426
 
 - name: Check that a cRPG Web UI version is already present
   stat:
     path: "{{ crpg_ui_path }}"
   register: crpg_ui_path_stat_result
 
-- name: Copy cRPG Web UI to host
-  copy:
-    src: "{{ playbook_dir }}/../src/WebUI/dist/"
-    dest: "{{ crpg_ui_path }}_new"
-    mode: u=rwX,g=rX,o=rX
-    owner: www-data
-    group: www-data
-
-- name: Disable old cRPG Web UI
+- name: Swap old and new version (1/2)
   command: "mv {{ crpg_ui_path }} {{ crpg_ui_path }}_old"
   when: crpg_ui_path_stat_result.stat.exists
 
-- name: Enable new cRPG Web UI
+- name: Swap old and new version (2/2)
   command: "mv {{ crpg_ui_path }}_new {{ crpg_ui_path }}"
 
-# new files have different name so it's important to remove them manually
 - name: Clean old cRPG Web UI
   file:
     path: "{{ crpg_ui_path }}_old"
     state: absent
   when: crpg_ui_path_stat_result.stat.exists
+
+- name: Clean local cRPG Web UI archive
+  file:
+    path: "/tmp/{{ crpg_ui_path | basename }}_new.tgz"
+    state: absent
+  delegate_to: localhost
+  become: false
+
+- name: Clean local cRPG Web UI build
+  file:
+    path: "/tmp/{{ crpg_ui_path | basename }}_new"
+    state: absent
+  delegate_to: localhost
+  become: false

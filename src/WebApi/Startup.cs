@@ -91,7 +91,7 @@ namespace Crpg.WebApi
                 .AddInMemoryApiScopes(IdentityServerConfig.GetApiScopes())
                 // DeveloperSigningCredential drawback is that it never get rotated but since new deployment recreate
                 // all files this is fine.
-                .AddDeveloperSigningCredential(filename: Path.Combine(Directory.GetCurrentDirectory(), "key.jwk"));
+                .AddDeveloperSigningCredential(filename: Path.Combine(Directory.GetCurrentDirectory(), "crpg.jwk"));
 
             services.AddAuthentication()
                 .AddJwtBearer(ConfigureJwtBearer)
