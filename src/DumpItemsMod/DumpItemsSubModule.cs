@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -31,12 +32,12 @@ namespace Crpg.DumpItemsMod
 
             Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Dump Items", new TextObject("Dump Items"), 9990, () =>
             {
-                DumpItems();
-                InformationManager.DisplayMessage(new InformationMessage("Exporting items to " + Path.GetFullPath(OutputPath)));
+                InformationManager.DisplayMessage(new InformationMessage($"Exporting items to {Path.GetFullPath(OutputPath)}."));
+                DumpItems().ContinueWith(_ => InformationManager.DisplayMessage(new InformationMessage("Done.")));
             }, false));
         }
 
-        private static void DumpItems()
+        private static Task DumpItems()
         {
             var mbItems = DeserializeMbItems("../../Modules/Native/ModuleData/mpitems.xml")
                 .DistinctBy(i => i.StringId)
@@ -49,7 +50,7 @@ namespace Crpg.DumpItemsMod
                 .ThenBy(i => i.Value);
 
             SerializeCrpgItems(crpgItems, OutputPath);
-            GenerateItemsThumbnail(mbItems, OutputPath);
+            return GenerateItemsThumbnail(mbItems, OutputPath);
         }
 
         private static bool FilterItem(ItemObject mbItem) => !mbItem.StringId.Contains("test")
@@ -160,8 +161,9 @@ namespace Crpg.DumpItemsMod
             serializer.Serialize(s, items);
         }
 
-        private static void GenerateItemsThumbnail(IEnumerable<ItemObject> mbItems, string outputPath)
+        private static Task GenerateItemsThumbnail(IEnumerable<ItemObject> mbItems, string outputPath)
         {
+            var createTextureTasks = new List<Task>();
             foreach (var mbItem in mbItems)
             {
                 /*
@@ -178,10 +180,18 @@ namespace Crpg.DumpItemsMod
                     _ => mbItem.Type
                 };
 
+                var createTextureTaskSource = new TaskCompletionSource<object?>();
+                createTextureTasks.Add(createTextureTaskSource.Task);
+
                 // Texture.SaveToFile doesn't accept absolute paths
                 TableauCacheManager.Current.BeginCreateItemTexture(mbItem, texture =>
-                    texture.SaveToFile(Path.Combine(outputPath, mbItem.StringId + ".png")));
+                {
+                    texture.SaveToFile(Path.Combine(outputPath, mbItem.StringId + ".png"));
+                    createTextureTaskSource.SetResult(null);
+                });
             }
+
+            return Task.WhenAll(createTextureTasks);
         }
 
         private static void SetItemValueModel(BasicGameModels gameModels, ItemValueModel gm)
