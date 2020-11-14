@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -19,6 +18,33 @@ namespace Crpg.DumpItemsMod
     public class DumpItemsSubModule : MBSubModuleBase
     {
         private const string OutputPath = "../../Items";
+
+        private static readonly string[] ItemFiles =
+        {
+            "../../Modules/Native/ModuleData/mpitems.xml",
+            "../../Modules/SandBoxCore/ModuleData/spitems/arm_armors.xml",
+            "../../Modules/SandBoxCore/ModuleData/spitems/body_armors.xml",
+            "../../Modules/SandBoxCore/ModuleData/spitems/head_armors.xml",
+            "../../Modules/SandBoxCore/ModuleData/spitems/horses_and_others.xml",
+            "../../Modules/SandBoxCore/ModuleData/spitems/leg_armors.xml",
+            "../../Modules/SandBoxCore/ModuleData/spitems/shields.xml",
+            "../../Modules/SandBoxCore/ModuleData/spitems/shoulder_armors.xml",
+            "../../Modules/SandBoxCore/ModuleData/spitems/tournament_weapons.xml",
+            "../../Modules/SandBoxCore/ModuleData/spitems/weapons.xml",
+        };
+
+        private static HashSet<ItemObject.ItemTypeEnum> BlacklistedItemTypes = new HashSet<ItemObject.ItemTypeEnum>
+        {
+            ItemObject.ItemTypeEnum.Invalid,
+            ItemObject.ItemTypeEnum.Goods,
+            ItemObject.ItemTypeEnum.Pistol,
+            ItemObject.ItemTypeEnum.Musket,
+            ItemObject.ItemTypeEnum.Bullets,
+            ItemObject.ItemTypeEnum.Animal,
+            ItemObject.ItemTypeEnum.Book,
+            ItemObject.ItemTypeEnum.Banner,
+        };
+
         private static readonly HashSet<string> BlacklistedItems = new HashSet<string>
         {
             "mp_medium_skirt",
@@ -39,7 +65,7 @@ namespace Crpg.DumpItemsMod
 
         private static Task DumpItems()
         {
-            var mbItems = DeserializeMbItems("../../Modules/Native/ModuleData/mpitems.xml")
+            var mbItems = DeserializeMbItems(ItemFiles)
                 .DistinctBy(i => i.StringId)
                 .Where(FilterItem) // Remove test and blacklisted items
                 .OrderBy(i => i.StringId)
@@ -56,6 +82,7 @@ namespace Crpg.DumpItemsMod
         private static bool FilterItem(ItemObject mbItem) => !mbItem.StringId.Contains("test")
                                                              && !mbItem.StringId.Contains("dummy")
                                                              && !mbItem.Name.Contains("_")
+                                                             && !BlacklistedItemTypes.Contains(mbItem.ItemType)
                                                              && !BlacklistedItems.Contains(mbItem.StringId);
 
         private static Item MbToCrpgItem(ItemObject mbItem)
@@ -123,29 +150,36 @@ namespace Crpg.DumpItemsMod
             _ => t.ToString(),
         };
 
-        private static IEnumerable<ItemObject> DeserializeMbItems(string path)
+        private static IEnumerable<ItemObject> DeserializeMbItems(IEnumerable<string> paths)
         {
             var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
             game.Initialize();
             SetItemValueModel(game.BasicModels, new CrpgItemValueModel());
 
-            var itemsDoc = new XmlDocument();
-            using (var r = XmlReader.Create(path, new XmlReaderSettings { IgnoreComments = true }))
+            var items = Enumerable.Empty<ItemObject>();
+            foreach (string path in paths)
             {
-                itemsDoc.Load(r);
+                var itemsDoc = new XmlDocument();
+                using (var r = XmlReader.Create(path, new XmlReaderSettings { IgnoreComments = true }))
+                {
+                    itemsDoc.Load(r);
+                }
+
+                var fileItems = itemsDoc
+                    .LastChild
+                    .ChildNodes
+                    .Cast<XmlNode>()
+                    .Select(itemNode =>
+                    {
+                        itemNode.Attributes.Remove(itemNode.Attributes["value"]); // force recomputation of value
+                        var item = new ItemObject();
+                        item.Deserialize(game.ObjectManager, itemNode);
+                        return item;
+                    });
+                items = items.Concat(fileItems);
             }
 
-            return itemsDoc
-                .LastChild
-                .ChildNodes
-                .Cast<XmlNode>()
-                .Select(itemNode =>
-                {
-                    itemNode.Attributes.Remove(itemNode.Attributes["value"]); // force recomputation of value
-                    var item = new ItemObject();
-                    item.Deserialize(game.ObjectManager, itemNode);
-                    return item;
-                });
+            return items;
         }
 
         private static void SerializeCrpgItems(IEnumerable<Item> items, string outputPath)
@@ -157,7 +191,7 @@ namespace Crpg.DumpItemsMod
                 ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() },
             });
 
-            using var s = new StreamWriter(Path.Combine(outputPath, "mpitems.json"));
+            using var s = new StreamWriter(Path.Combine(outputPath, "items.json"));
             serializer.Serialize(s, items);
         }
 

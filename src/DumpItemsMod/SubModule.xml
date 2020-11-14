@@ -19,5 +19,10 @@
 			</Tags>
 		</SubModule>
 	</SubModules>
-	<Xmls/>
+
+	<Xmls>
+		<XmlNode>
+			<XmlName id="CraftingPieces" path="../../Native/ModuleData/crafting_pieces" />
+		</XmlNode>
+	</Xmls>
 </Module>
