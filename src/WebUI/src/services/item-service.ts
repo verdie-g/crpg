@@ -24,6 +24,7 @@ export const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.Thrown]: 'Thrown',
   [ItemType.Arrows]: 'Arrows',
   [ItemType.Bolts]: 'Bolts',
+  [ItemType.Banner]: 'Banner',
 };
 
 const damageTypeToStr: Record<DamageType, string> = {
@@ -55,7 +56,9 @@ const weaponFlagsStr: Record<WeaponFlags, string | null> = {
   [WeaponFlags.AutoReload]: 'AutoReload',
   [WeaponFlags.CrushThrough]: 'CrushThrough',
   [WeaponFlags.TwoHandIdleOnMount]: 'IdleOnMount',
+  [WeaponFlags.NoBlood]: null,
   [WeaponFlags.PenaltyWithShield]: 'PenaltyWithShield',
+  [WeaponFlags.CanDismount]: null,
   [WeaponFlags.MissileWithPhysics]: null,
   [WeaponFlags.MultiplePenetration]: 'MultiplePenetration',
   [WeaponFlags.CanKnockDown]: 'KnockDown',
