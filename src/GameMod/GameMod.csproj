@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net472</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies> <!-- needed to copy dependency when OutputPath is non-standard -->
         <ProcessorArchitecture>AMD64</ProcessorArchitecture> <!-- avoids architecture mismatch warnings -->
         <RootNamespace>Crpg.GameMod</RootNamespace>
         <AssemblyName>Crpg.GameMod</AssemblyName>
@@ -37,23 +38,53 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.*.dll">
-            <Private>False</Private> <!-- avoids dll to be copied -->
-        </Reference>
-
-        <Reference Include="$(MB_PATH)/Modules/Native/bin/Win64_Shipping_Client/TaleWorlds.*.dll">
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.MountAndBlade.dll">
             <Private>False</Private>
         </Reference>
 
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/Newtonsoft.Json.dll">
+        <Reference Include="$(MB_PATH)/Modules/Native/bin/Win64_Shipping_Client/TaleWorlds.MountAndBlade.View.dll">
             <Private>False</Private>
         </Reference>
 
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/Steamworks.NET.dll">
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.DotNet.dll">
             <Private>False</Private>
         </Reference>
 
-        <Reference Include="System.Net.Http" />
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Core.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Library.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Engine.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Localization.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.PlatformService.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.PlayerServices.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.TaleWorlds.ObjectSystem.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Diamond.dll">
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.ObjectSystem.dll">
+            <Private>False</Private>
+        </Reference>
     </ItemGroup>
 
     <ItemGroup>

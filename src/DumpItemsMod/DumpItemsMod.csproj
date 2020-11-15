@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net472</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <ProcessorArchitecture>AMD64</ProcessorArchitecture> <!-- avoids architecture mismatch warnings -->
         <RootNamespace>Crpg.DumpItemsMod</RootNamespace>
         <AssemblyName>Crpg.DumpItemsMod</AssemblyName>
@@ -32,19 +32,37 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.*.dll">
-            <Private>False</Private> <!-- avoids dll to be copied -->
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Core.dll">
+            <Private>False</Private>
         </Reference>
 
-        <Reference Include="$(MB_PATH)/Modules/Native/bin/Win64_Shipping_Client/TaleWorlds.*.dll">
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.DotNet.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Engine.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Localization.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.MountAndBlade.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(MB_PATH)/Modules/Native/bin/Win64_Shipping_Client/TaleWorlds.MountAndBlade.View.dll">
+            <Private>False</Private>
+        </Reference>
+
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.ObjectSystem.dll">
             <Private>False</Private>
         </Reference>
 
         <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/Newtonsoft.Json.dll">
             <Private>False</Private>
         </Reference>
-
-        <Reference Include="System.Net.Http" />
     </ItemGroup>
 
     <ItemGroup>
