@@ -37,12 +37,8 @@ namespace Crpg.DumpItemsMod
         {
             ItemObject.ItemTypeEnum.Invalid,
             ItemObject.ItemTypeEnum.Goods,
-            ItemObject.ItemTypeEnum.Pistol,
-            ItemObject.ItemTypeEnum.Musket,
-            ItemObject.ItemTypeEnum.Bullets,
             ItemObject.ItemTypeEnum.Animal,
             ItemObject.ItemTypeEnum.Book,
-            ItemObject.ItemTypeEnum.Banner,
         };
 
         private static readonly HashSet<string> BlacklistedItems = new HashSet<string>

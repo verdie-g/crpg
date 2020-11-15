@@ -18,5 +18,9 @@ namespace Crpg.Domain.Entities
         Thrown,
         Arrows,
         Bolts,
+        Pistol,
+        Musket,
+        Bullets,
+        Banner,
     }
 }

@@ -15,6 +15,7 @@ enum ItemType {
   Thrown = 'Thrown',
   Arrows = 'Arrows',
   Bolts = 'Bolts',
+  Banner = 'Banner',
 }
 
 export default ItemType;

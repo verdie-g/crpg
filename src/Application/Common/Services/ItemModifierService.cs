@@ -135,9 +135,15 @@ namespace Crpg.Application.Common.Services
             }
 
             var clone = (ItemCreation)baseItem.Clone();
+            if (!ItemModifiers.TryGetValue(baseItem.Type, out ItemModifier[]? typeItemModifiers))
+            {
+                // For banners and firearms use a random type for now.
+                typeItemModifiers = ItemModifiers[ItemType.OneHandedWeapon];
+            }
 
             Index idx = rank < 0 ? rank + 3 : rank + 2;
-            ItemModifier modifier = ItemModifiers[baseItem.Type][idx];
+            ItemModifier modifier = typeItemModifiers[idx];
+
             modifier.Apply(clone);
             return clone;
         }
