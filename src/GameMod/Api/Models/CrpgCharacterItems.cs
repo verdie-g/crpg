@@ -4,7 +4,7 @@ namespace Crpg.GameMod.Api.Models
     internal class CrpgCharacterItems
     {
         public CrpgItem? HeadItem { get; set; }
-        public CrpgItem? CapeItem { get; set; }
+        public CrpgItem? ShoulderItem { get; set; }
         public CrpgItem? BodyItem { get; set; }
         public CrpgItem? HandItem { get; set; }
         public CrpgItem? LegItem { get; set; }

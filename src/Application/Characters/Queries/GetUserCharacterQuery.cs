@@ -32,7 +32,7 @@ namespace Crpg.Application.Characters.Queries
                 var character = await _db.Characters
                     .AsNoTracking()
                     .Include(c => c.Items.HeadItem)
-                    .Include(c => c.Items.CapeItem)
+                    .Include(c => c.Items.ShoulderItem)
                     .Include(c => c.Items.BodyItem)
                     .Include(c => c.Items.HandItem)
                     .Include(c => c.Items.LegItem)

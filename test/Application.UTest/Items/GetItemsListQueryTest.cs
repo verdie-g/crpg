@@ -23,7 +23,7 @@ namespace Crpg.Application.UTest.Items
                 {
                     Name = "toto",
                     Value = 100,
-                    Type = ItemType.Cape,
+                    Type = ItemType.ShoulderArmor,
                     Rank = 3,
                 },
                 new Item

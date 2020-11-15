@@ -6,7 +6,7 @@ namespace Crpg.Domain.Entities
     public class CharacterItems : ICloneable
     {
         public int? HeadItemId { get; set; }
-        public int? CapeItemId { get; set; }
+        public int? ShoulderItemId { get; set; }
         public int? BodyItemId { get; set; }
         public int? HandItemId { get; set; }
         public int? LegItemId { get; set; }
@@ -19,7 +19,7 @@ namespace Crpg.Domain.Entities
         public bool AutoRepair { get; set; }
 
         public Item? HeadItem { get; set; }
-        public Item? CapeItem { get; set; }
+        public Item? ShoulderItem { get; set; }
         public Item? BodyItem { get; set; }
         public Item? HandItem { get; set; }
         public Item? LegItem { get; set; }
@@ -37,9 +37,9 @@ namespace Crpg.Domain.Entities
                 yield return (ItemSlot.Head, HeadItem);
             }
 
-            if (CapeItem != null)
+            if (ShoulderItem != null)
             {
-                yield return (ItemSlot.Cape, CapeItem);
+                yield return (ItemSlot.Shoulder, ShoulderItem);
             }
 
             if (BodyItem != null)
@@ -93,7 +93,7 @@ namespace Crpg.Domain.Entities
             return new CharacterItems
             {
                 HeadItemId = HeadItemId,
-                CapeItemId = CapeItemId,
+                ShoulderItemId = ShoulderItemId,
                 BodyItemId = BodyItemId,
                 HandItemId = HandItemId,
                 LegItemId = LegItemId,
@@ -105,7 +105,7 @@ namespace Crpg.Domain.Entities
                 Weapon4ItemId = Weapon4ItemId,
                 AutoRepair = AutoRepair,
                 HeadItem = HeadItem,
-                CapeItem = CapeItem,
+                ShoulderItem = ShoulderItem,
                 BodyItem = BodyItem,
                 HandItem = HandItem,
                 LegItem = LegItem,

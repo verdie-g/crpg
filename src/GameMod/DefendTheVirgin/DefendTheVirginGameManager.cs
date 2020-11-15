@@ -255,7 +255,7 @@ namespace Crpg.GameMod.DefendTheVirgin
 
             var equipment = new Equipment();
             AddEquipment(equipment, EquipmentIndex.Head, crpgCharacter.Items.HeadItem?.MbId, skills);
-            AddEquipment(equipment, EquipmentIndex.Cape, crpgCharacter.Items.CapeItem?.MbId, skills);
+            AddEquipment(equipment, EquipmentIndex.Cape, crpgCharacter.Items.ShoulderItem?.MbId, skills);
             AddEquipment(equipment, EquipmentIndex.Body, crpgCharacter.Items.BodyItem?.MbId, skills);
             AddEquipment(equipment, EquipmentIndex.Gloves, crpgCharacter.Items.HandItem?.MbId, skills);
             AddEquipment(equipment, EquipmentIndex.Leg, crpgCharacter.Items.LegItem?.MbId, skills);

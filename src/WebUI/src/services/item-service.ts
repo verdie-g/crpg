@@ -9,7 +9,7 @@ import ItemWeaponComponent from '@/models/item-weapon-component';
 
 export const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.HeadArmor]: 'Head Armor',
-  [ItemType.Cape]: 'Cape',
+  [ItemType.ShoulderArmor]: 'Shoulder Armor',
   [ItemType.BodyArmor]: 'Body Armor',
   [ItemType.HandArmor]: 'Hand Armor',
   [ItemType.LegArmor]: 'Leg Armor',
@@ -84,7 +84,7 @@ const weaponTypes: ItemType[] = [
 
 const itemTypesBySlot: Record<ItemSlot, ItemType[]> = {
   [ItemSlot.Head]: [ItemType.HeadArmor],
-  [ItemSlot.Cape]: [ItemType.Cape],
+  [ItemSlot.Shoulder]: [ItemType.ShoulderArmor],
   [ItemSlot.Body]: [ItemType.BodyArmor],
   [ItemSlot.Hand]: [ItemType.HandArmor],
   [ItemSlot.Leg]: [ItemType.LegArmor],
@@ -139,7 +139,7 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
     case ItemType.HeadArmor:
       props.fields.push(['Head Armor', item.armor!.headArmor]);
       break;
-    case ItemType.Cape:
+    case ItemType.ShoulderArmor:
       props.fields.push(['Body Armor', item.armor!.bodyArmor]);
       break;
     case ItemType.BodyArmor:

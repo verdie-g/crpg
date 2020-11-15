@@ -104,7 +104,7 @@ namespace Crpg.Application.Common.Services
         private static readonly Dictionary<ItemType, ItemModifier[]> ItemModifiers = new Dictionary<ItemType, ItemModifier[]>
         {
             [ItemType.HeadArmor] = ArmorModifiers,
-            [ItemType.Cape] = ArmorModifiers,
+            [ItemType.ShoulderArmor] = ArmorModifiers,
             [ItemType.BodyArmor] = ArmorModifiers,
             [ItemType.HandArmor] = ArmorModifiers,
             [ItemType.LegArmor] = ArmorModifiers,

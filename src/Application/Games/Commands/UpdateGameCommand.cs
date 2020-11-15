@@ -243,7 +243,7 @@ namespace Crpg.Application.Games.Commands
                 var users = await _db.Users
                     .Include(u => u.Characters).ThenInclude(c => c.Items.HeadItem)
                     .Include(u => u.Characters).ThenInclude(c => c.Items.BodyItem)
-                    .Include(u => u.Characters).ThenInclude(c => c.Items.CapeItem)
+                    .Include(u => u.Characters).ThenInclude(c => c.Items.ShoulderItem)
                     .Include(u => u.Characters).ThenInclude(c => c.Items.HandItem)
                     .Include(u => u.Characters).ThenInclude(c => c.Items.LegItem)
                     .Include(u => u.Characters).ThenInclude(c => c.Items.HorseHarnessItem)

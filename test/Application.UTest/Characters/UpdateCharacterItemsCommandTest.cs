@@ -15,8 +15,8 @@ namespace Crpg.Application.UTest.Characters
         {
             var headOld = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
             var headNew = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
-            var capeOld = ArrangeDb.Items.Add(new Item { Type = ItemType.Cape });
-            var capeNew = ArrangeDb.Items.Add(new Item { Type = ItemType.Cape });
+            var shoulderOld = ArrangeDb.Items.Add(new Item { Type = ItemType.ShoulderArmor });
+            var shoulderNew = ArrangeDb.Items.Add(new Item { Type = ItemType.ShoulderArmor });
             var bodyOld = ArrangeDb.Items.Add(new Item { Type = ItemType.BodyArmor });
             var bodyNew = ArrangeDb.Items.Add(new Item { Type = ItemType.BodyArmor });
             var handOld = ArrangeDb.Items.Add(new Item { Type = ItemType.HandArmor });
@@ -41,7 +41,7 @@ namespace Crpg.Application.UTest.Characters
                 Items = new CharacterItems
                 {
                     HeadItem = headOld.Entity,
-                    CapeItem = capeOld.Entity,
+                    ShoulderItem = shoulderOld.Entity,
                     BodyItem = bodyOld.Entity,
                     HandItem = handOld.Entity,
                     LegItem = legOld.Entity,
@@ -60,8 +60,8 @@ namespace Crpg.Application.UTest.Characters
                 {
                     new UserItem { Item = headOld.Entity },
                     new UserItem { Item = headNew.Entity },
-                    new UserItem { Item = capeOld.Entity },
-                    new UserItem { Item = capeNew.Entity },
+                    new UserItem { Item = shoulderOld.Entity },
+                    new UserItem { Item = shoulderNew.Entity },
                     new UserItem { Item = bodyOld.Entity },
                     new UserItem { Item = bodyNew.Entity },
                     new UserItem { Item = handOld.Entity },
@@ -91,7 +91,7 @@ namespace Crpg.Application.UTest.Characters
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
                 HeadItemId = headNew.Entity.Id,
-                CapeItemId = capeNew.Entity.Id,
+                ShoulderItemId = shoulderNew.Entity.Id,
                 BodyItemId = bodyNew.Entity.Id,
                 HandItemId = handNew.Entity.Id,
                 LegItemId = legNew.Entity.Id,
@@ -107,7 +107,7 @@ namespace Crpg.Application.UTest.Characters
 
             var c = result.Data!;
             Assert.AreEqual(cmd.HeadItemId, c.HeadItem!.Id);
-            Assert.AreEqual(cmd.CapeItemId, c.CapeItem!.Id);
+            Assert.AreEqual(cmd.ShoulderItemId, c.ShoulderItem!.Id);
             Assert.AreEqual(cmd.BodyItemId, c.BodyItem!.Id);
             Assert.AreEqual(cmd.HandItemId, c.HandItem!.Id);
             Assert.AreEqual(cmd.LegItemId, c.LegItem!.Id);
@@ -132,7 +132,7 @@ namespace Crpg.Application.UTest.Characters
                 Items = new CharacterItems
                 {
                     HeadItem = headOld.Entity,
-                    CapeItem = null,
+                    ShoulderItem = null,
                     BodyItem = null,
                     HandItem = null,
                     LegItem = legOld.Entity,
@@ -164,7 +164,7 @@ namespace Crpg.Application.UTest.Characters
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
                 HeadItemId = headNew.Entity.Id,
-                CapeItemId = null,
+                ShoulderItemId = null,
                 BodyItemId = bodyNew.Entity.Id,
                 HandItemId = null,
                 LegItemId = null,
@@ -180,7 +180,7 @@ namespace Crpg.Application.UTest.Characters
 
             var c = result.Data!;
             Assert.AreEqual(cmd.HeadItemId, c.HeadItem!.Id);
-            Assert.IsNull(c.CapeItem);
+            Assert.IsNull(c.ShoulderItem);
             Assert.AreEqual(cmd.BodyItemId, c.BodyItem!.Id);
             Assert.IsNull(c.HandItem);
             Assert.IsNull(c.LegItem);
@@ -294,7 +294,7 @@ namespace Crpg.Application.UTest.Characters
         public async Task WrongItemType(ItemType itemType)
         {
             var head = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
-            var cape = ArrangeDb.Items.Add(new Item { Type = ItemType.Cape });
+            var shoulder = ArrangeDb.Items.Add(new Item { Type = ItemType.ShoulderArmor });
             var body = ArrangeDb.Items.Add(new Item { Type = ItemType.BodyArmor });
             var hand = ArrangeDb.Items.Add(new Item { Type = ItemType.HandArmor });
             var leg = ArrangeDb.Items.Add(new Item { Type = ItemType.LegArmor });
@@ -307,7 +307,7 @@ namespace Crpg.Application.UTest.Characters
                 OwnedItems = new List<UserItem>
                 {
                     new UserItem { Item = head.Entity },
-                    new UserItem { Item = cape.Entity },
+                    new UserItem { Item = shoulder.Entity },
                     new UserItem { Item = body.Entity },
                     new UserItem { Item = hand.Entity },
                     new UserItem { Item = leg.Entity },
@@ -325,8 +325,8 @@ namespace Crpg.Application.UTest.Characters
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
                 HeadItemId = itemType == ItemType.HeadArmor ? null : (int?)weapon.Entity.Id,
-                CapeItemId = itemType == ItemType.Cape ? null : (int?)head.Entity.Id,
-                BodyItemId = itemType == ItemType.BodyArmor ? null : (int?)cape.Entity.Id,
+                ShoulderItemId = itemType == ItemType.ShoulderArmor ? null : (int?)head.Entity.Id,
+                BodyItemId = itemType == ItemType.BodyArmor ? null : (int?)shoulder.Entity.Id,
                 HandItemId = itemType == ItemType.HandArmor ? null : (int?)body.Entity.Id,
                 LegItemId = itemType == ItemType.LegArmor ? null : (int?)hand.Entity.Id,
                 HorseHarnessItemId = itemType == ItemType.HorseHarness ? null : (int?)leg.Entity.Id,
@@ -339,7 +339,7 @@ namespace Crpg.Application.UTest.Characters
                     : (int?)head.Entity.Id,
                 Weapon3ItemId = itemType == ItemType.Polearm || itemType == ItemType.Shield
                     ? null
-                    : (int?)cape.Entity.Id,
+                    : (int?)shoulder.Entity.Id,
                 Weapon4ItemId = itemType == ItemType.Thrown || itemType == ItemType.TwoHandedWeapon
                     ? null
                     : (int?)body.Entity.Id,

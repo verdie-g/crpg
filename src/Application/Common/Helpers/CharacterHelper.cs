@@ -55,7 +55,7 @@ namespace Crpg.Application.Common.Helpers
         public static void UnequipCharacterItems(CharacterItems items)
         {
             items.HeadItemId = null;
-            items.CapeItemId = null;
+            items.ShoulderItemId = null;
             items.BodyItemId = null;
             items.HandItemId = null;
             items.LegItemId = null;
@@ -73,9 +73,9 @@ namespace Crpg.Application.Common.Helpers
             {
                 items.HeadItemId = itemToReplaceWithId;
             }
-            else if (items.CapeItemId == itemToReplaceId)
+            else if (items.ShoulderItemId == itemToReplaceId)
             {
-                items.CapeItemId = itemToReplaceWithId;
+                items.ShoulderItemId = itemToReplaceWithId;
             }
             else if (items.BodyItemId == itemToReplaceId)
             {

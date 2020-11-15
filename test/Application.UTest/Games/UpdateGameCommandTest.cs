@@ -633,7 +633,7 @@ namespace Crpg.Application.UTest.Games
                         Items = new CharacterItems
                         {
                             HeadItem = new Item(),
-                            CapeItem = new Item(),
+                            ShoulderItem = new Item(),
                             BodyItem = new Item(),
                             HandItem = new Item(),
                             LegItem = new Item(),
@@ -666,7 +666,7 @@ namespace Crpg.Application.UTest.Games
                         BrokenItems = new List<GameUserBrokenItem>
                         {
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.HeadItemId!.Value, RepairCost = 100 },
-                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.CapeItemId!.Value, RepairCost = 150 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.ShoulderItemId!.Value, RepairCost = 150 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.BodyItemId!.Value, RepairCost = 200 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.HandItemId!.Value, RepairCost = 250 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.LegItemId!.Value, RepairCost = 300 },
@@ -688,7 +688,7 @@ namespace Crpg.Application.UTest.Games
             var expectedItems = user.Characters[0].Items;
             var actualItems = data.Users[0].Character.Items;
             Assert.AreEqual(expectedItems.HeadItem!.Id, actualItems.HeadItem!.Id);
-            Assert.AreEqual(expectedItems.CapeItem!.Id, actualItems.CapeItem!.Id);
+            Assert.AreEqual(expectedItems.ShoulderItem!.Id, actualItems.ShoulderItem!.Id);
             Assert.AreEqual(expectedItems.BodyItem!.Id, actualItems.BodyItem!.Id);
             Assert.AreEqual(expectedItems.HandItem!.Id, actualItems.HandItem!.Id);
             Assert.AreEqual(expectedItems.LegItem!.Id, actualItems.LegItem!.Id);
@@ -716,7 +716,7 @@ namespace Crpg.Application.UTest.Games
                         Items = new CharacterItems
                         {
                             HeadItem = new Item { Rank = 3 },
-                            CapeItem = new Item { Rank = 2 },
+                            ShoulderItem = new Item { Rank = 2 },
                             BodyItem = new Item { Rank = 1 },
                             HandItem = new Item { Rank = 0 },
                             LegItem = new Item { Rank = -1 },
@@ -766,7 +766,7 @@ namespace Crpg.Application.UTest.Games
                         BrokenItems = new List<GameUserBrokenItem>
                         {
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.HeadItemId!.Value, RepairCost = 100 },
-                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.CapeItemId!.Value, RepairCost = 150 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.ShoulderItemId!.Value, RepairCost = 150 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.BodyItemId!.Value, RepairCost = 200 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.HandItemId!.Value, RepairCost = 250 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.LegItemId!.Value, RepairCost = 300 },
@@ -788,7 +788,7 @@ namespace Crpg.Application.UTest.Games
             user = await AssertDb.Users
                 .Include(u => u.Characters).ThenInclude(c => c.Items.HeadItem)
                 .Include(u => u.Characters).ThenInclude(c => c.Items.BodyItem)
-                .Include(u => u.Characters).ThenInclude(c => c.Items.CapeItem)
+                .Include(u => u.Characters).ThenInclude(c => c.Items.ShoulderItem)
                 .Include(u => u.Characters).ThenInclude(c => c.Items.HandItem)
                 .Include(u => u.Characters).ThenInclude(c => c.Items.LegItem)
                 .Include(u => u.Characters).ThenInclude(c => c.Items.HorseHarnessItem)
@@ -799,7 +799,7 @@ namespace Crpg.Application.UTest.Games
                 .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon4Item)
                 .FirstAsync(u => u.Id == user.Id);
             Assert.AreEqual(2, user.Characters[0].Items.HeadItem!.Rank);
-            Assert.AreEqual(1, user.Characters[0].Items.CapeItem!.Rank);
+            Assert.AreEqual(1, user.Characters[0].Items.ShoulderItem!.Rank);
             Assert.AreEqual(0, user.Characters[0].Items.BodyItem!.Rank);
             Assert.AreEqual(-1, user.Characters[0].Items.HandItem!.Rank);
             Assert.AreEqual(-2, user.Characters[0].Items.LegItem!.Rank);
@@ -833,7 +833,7 @@ namespace Crpg.Application.UTest.Games
                         Items = new CharacterItems
                         {
                             HeadItem = new Item(),
-                            CapeItem = new Item(),
+                            ShoulderItem = new Item(),
                             BodyItem = new Item(),
                             HandItem = new Item(),
                             LegItem = new Item(),
@@ -859,7 +859,7 @@ namespace Crpg.Application.UTest.Games
                         BrokenItems = new List<GameUserBrokenItem>
                         {
                             new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HeadItemId!.Value, RepairCost = 1000 },
-                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.CapeItemId!.Value, RepairCost = 1000 },
+                            new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.ShoulderItemId!.Value, RepairCost = 1000 },
                             new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.BodyItemId!.Value, RepairCost = 1000 },
                             new GameUserBrokenItem { ItemId = user.Entity.Characters[0].Items.HandItemId!.Value, RepairCost = 1000 },
                         }

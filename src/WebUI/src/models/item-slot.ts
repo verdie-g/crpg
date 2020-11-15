@@ -1,6 +1,6 @@
 enum ItemSlot {
   Head,
-  Cape,
+  Shoulder,
   Body,
   Hand,
   Leg,

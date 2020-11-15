@@ -10,9 +10,9 @@
             <img v-if="character.items.headItem" :src="itemImage(character.items.headItem)" alt="Head armor" />
             <img v-else src="../assets/head-armor.png" alt="Head armor" class="item-placeholder" />
           </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Cape)">
-            <img v-if="character.items.capeItem" :src="itemImage(character.items.capeItem)" alt="Cape" />
-            <img v-else src="../assets/cape.png" alt="Cape" class="item-placeholder" />
+          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Shoulder)">
+            <img v-if="character.items.shoulderItem" :src="itemImage(character.items.shoulderItem)" alt="Shoulder" />
+            <img v-else src="../assets/cape.png" alt="Shoulder" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)">
             <img v-if="character.items.bodyItem" :src="itemImage(character.items.bodyItem)" alt="Body armor" />

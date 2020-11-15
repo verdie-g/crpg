@@ -53,9 +53,9 @@ namespace Crpg.Application.Items.Commands
                 {
                     items.HeadItemId = null;
                 }
-                else if (items.CapeItemId == itemId)
+                else if (items.ShoulderItemId == itemId)
                 {
-                    items.CapeItemId = null;
+                    items.ShoulderItemId = null;
                 }
                 else if (items.BodyItemId == itemId)
                 {

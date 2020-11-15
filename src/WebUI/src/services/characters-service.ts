@@ -17,9 +17,9 @@ const characterItemSlots: Record<ItemSlot, CharacterItemSlot> = {
     getItem: characterItems => characterItems.headItem,
     setItem: (characterItems, item) => characterItems.headItem = item,
   },
-  [ItemSlot.Cape]: {
-    getItem: characterItems => characterItems.capeItem,
-    setItem: (characterItems, item) => characterItems.capeItem = item,
+  [ItemSlot.Shoulder]: {
+    getItem: characterItems => characterItems.shoulderItem,
+    setItem: (characterItems, item) => characterItems.shoulderItem = item,
   },
   [ItemSlot.Body]: {
     getItem: characterItems => characterItems.bodyItem,
@@ -62,7 +62,7 @@ const characterItemSlots: Record<ItemSlot, CharacterItemSlot> = {
 function listCharacterItems(items: CharacterItems): Item[] {
   return [
     items.headItem!,
-    items.capeItem!,
+    items.shoulderItem!,
     items.bodyItem!,
     items.handItem!,
     items.legItem!,
@@ -86,7 +86,7 @@ export function setCharacterItem(characterItems: CharacterItems, slot: ItemSlot,
 export function updateCharacterItems(characterId: number, items: CharacterItems): Promise<CharacterItems> {
   return userService.updateCharacterItems(characterId, {
     headItemId: items.headItem?.id ?? null,
-    capeItemId: items.capeItem?.id ?? null,
+    shoulderItemId: items.shoulderItem?.id ?? null,
     bodyItemId: items.bodyItem?.id ?? null,
     handItemId: items.handItem?.id ?? null,
     legItemId: items.legItem?.id ?? null,

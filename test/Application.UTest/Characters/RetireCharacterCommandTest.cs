@@ -23,7 +23,7 @@ namespace Crpg.Application.UTest.Characters
                 Items = new CharacterItems
                 {
                     HeadItem = new Item(),
-                    CapeItem = new Item(),
+                    ShoulderItem = new Item(),
                     BodyItem = new Item(),
                     HandItem = new Item(),
                     LegItem = new Item(),
@@ -113,7 +113,7 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(0, character.Statistics.WeaponProficiencies.Crossbow);
 
             Assert.Null(character.Items.HeadItemId);
-            Assert.Null(character.Items.CapeItemId);
+            Assert.Null(character.Items.ShoulderItemId);
             Assert.Null(character.Items.BodyItemId);
             Assert.Null(character.Items.HandItemId);
             Assert.Null(character.Items.LegItemId);

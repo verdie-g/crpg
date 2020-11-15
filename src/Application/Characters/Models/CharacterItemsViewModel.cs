@@ -7,7 +7,7 @@ namespace Crpg.Application.Characters.Models
     public class CharacterItemsViewModel : IMapFrom<CharacterItems>
     {
         public ItemViewModel? HeadItem { get; set; }
-        public ItemViewModel? CapeItem { get; set; }
+        public ItemViewModel? ShoulderItem { get; set; }
         public ItemViewModel? BodyItem { get; set; }
         public ItemViewModel? HandItem { get; set; }
         public ItemViewModel? LegItem { get; set; }

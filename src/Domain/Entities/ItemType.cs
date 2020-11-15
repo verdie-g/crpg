@@ -3,7 +3,7 @@ namespace Crpg.Domain.Entities
     public enum ItemType
     {
         HeadArmor,
-        Cape,
+        ShoulderArmor,
         BodyArmor,
         HandArmor,
         LegArmor,

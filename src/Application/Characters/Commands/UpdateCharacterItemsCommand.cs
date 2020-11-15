@@ -18,7 +18,7 @@ namespace Crpg.Application.Characters.Commands
         public int CharacterId { get; set; }
         public int UserId { get; set; }
         public int? HeadItemId { get; set; }
-        public int? CapeItemId { get; set; }
+        public int? ShoulderItemId { get; set; }
         public int? BodyItemId { get; set; }
         public int? HandItemId { get; set; }
         public int? LegItemId { get; set; }
@@ -59,7 +59,7 @@ namespace Crpg.Application.Characters.Commands
             {
                 var character = await _db.Characters
                     .Include(c => c.Items.HeadItem)
-                    .Include(c => c.Items.CapeItem)
+                    .Include(c => c.Items.ShoulderItem)
                     .Include(c => c.Items.BodyItem)
                     .Include(c => c.Items.HandItem)
                     .Include(c => c.Items.LegItem)
@@ -102,7 +102,7 @@ namespace Crpg.Application.Characters.Commands
                     .ToDictionaryAsync(oi => oi.ItemId, oi => oi.Item!);
 
                 characterItems.HeadItem = GetItemWithChecks(request.HeadItemId, new[] { ItemType.HeadArmor }, itemsById);
-                characterItems.CapeItem = GetItemWithChecks(request.CapeItemId, new[] { ItemType.Cape }, itemsById);
+                characterItems.ShoulderItem = GetItemWithChecks(request.ShoulderItemId, new[] { ItemType.ShoulderArmor }, itemsById);
                 characterItems.BodyItem = GetItemWithChecks(request.BodyItemId, new[] { ItemType.BodyArmor }, itemsById);
                 characterItems.HandItem = GetItemWithChecks(request.HandItemId, new[] { ItemType.HandArmor }, itemsById);
                 characterItems.LegItem = GetItemWithChecks(request.LegItemId, new[] { ItemType.LegArmor }, itemsById);
@@ -145,9 +145,9 @@ namespace Crpg.Application.Characters.Commands
                     ids.Add(request.HeadItemId.Value);
                 }
 
-                if (request.CapeItemId != null)
+                if (request.ShoulderItemId != null)
                 {
-                    ids.Add(request.CapeItemId.Value);
+                    ids.Add(request.ShoulderItemId.Value);
                 }
 
                 if (request.BodyItemId != null)

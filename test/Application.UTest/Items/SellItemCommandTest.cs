@@ -49,7 +49,7 @@ namespace Crpg.Application.UTest.Items
             var characters = new List<Character>
             {
                 new Character { Items = { HeadItem = item } },
-                new Character { Items = { CapeItem = item } },
+                new Character { Items = { ShoulderItem = item } },
                 new Character { Items = { BodyItem = item } },
                 new Character { Items = { HandItem = item } },
                 new Character { Items = { LegItem = item } },
@@ -82,7 +82,7 @@ namespace Crpg.Application.UTest.Items
             Assert.AreEqual(66, user.Gold);
             Assert.False(user.OwnedItems.Any(oi => oi.ItemId == item.Id));
             Assert.Null(user.Characters[0].Items.HeadItemId);
-            Assert.Null(user.Characters[1].Items.CapeItemId);
+            Assert.Null(user.Characters[1].Items.ShoulderItemId);
             Assert.Null(user.Characters[2].Items.BodyItemId);
             Assert.Null(user.Characters[3].Items.HeadItemId);
             Assert.Null(user.Characters[4].Items.LegItemId);

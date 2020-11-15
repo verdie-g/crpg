@@ -1,6 +1,6 @@
 enum ItemType {
   HeadArmor = 'HeadArmor',
-  Cape = 'Cape',
+  ShoulderArmor = 'ShoulderArmor',
   BodyArmor = 'BodyArmor',
   HandArmor = 'HandArmor',
   LegArmor = 'LegArmor',

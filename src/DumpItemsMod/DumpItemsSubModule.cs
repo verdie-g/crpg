@@ -87,7 +87,7 @@ namespace Crpg.DumpItemsMod
             {
                 MbId = mbItem.StringId,
                 Name = mbItem.Name.ToString(),
-                Type = mbItem.Type.ToString(),
+                Type = MbToCrpgItemType(mbItem.Type),
                 Value = mbItem.Value,
                 Weight = mbItem.Weight,
             };
@@ -140,9 +140,15 @@ namespace Crpg.DumpItemsMod
             return crpgItem;
         }
 
+        private static string MbToCrpgItemType(ItemObject.ItemTypeEnum t) => t switch
+        {
+            ItemObject.ItemTypeEnum.Cape => "ShoulderArmor", // Cape is a bad name.
+            _ => t.ToString(),
+        };
+
         private static string MbToCrpgDamageType(DamageTypes t) => t switch
         {
-            DamageTypes.Invalid => "Undefined",
+            DamageTypes.Invalid => "Undefined", // To be consistent with WeaponClass.
             _ => t.ToString(),
         };
 

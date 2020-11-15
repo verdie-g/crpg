@@ -1,6 +1,6 @@
 export class UpdateCharacterItemsRequest {
   public headItemId: number | null;
-  public capeItemId: number | null;
+  public shoulderItemId: number | null;
   public bodyItemId: number | null;
   public handItemId: number | null;
   public legItemId: number | null;
