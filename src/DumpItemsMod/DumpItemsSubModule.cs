@@ -43,9 +43,10 @@ namespace Crpg.DumpItemsMod
 
         private static readonly HashSet<string> BlacklistedItems = new HashSet<string>
         {
-            "mp_medium_skirt",
-            "ballista_projectile",
-            "ballista_projectile_burning",
+            "mp_medium_skirt", // OP body armor giving head armor.
+            "ballista_projectile", // Useless.
+            "ballista_projectile_burning", // Useless.
+            "mule_unmountable", // It's unmountable.
         };
 
         protected override void OnSubModuleLoad()
