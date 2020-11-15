@@ -434,3 +434,4 @@ $RECYCLE.BIN/
 
 # cRPG
 src/WebUI/public/items/
+*.jwk
