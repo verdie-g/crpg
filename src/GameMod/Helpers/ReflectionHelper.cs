@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Reflection;
+using Force.DeepCloner;
 
 namespace Crpg.GameMod.Helpers
 {
+    /// <summary>
+    /// Provides helper methods for reflection to use only when is no other choice.
+    /// </summary>
     internal static class ReflectionHelper
     {
         public static object GetField(object instance, string field) => GetFieldInfo(instance, field)!.GetValue(instance);
         public static void SetField(object instance, string field, object value) => GetFieldInfo(instance, field)!.SetValue(instance, value);
         public static object GetProperty(object instance, string field) => GetPropertyInfo(instance, field)!.GetValue(instance);
         public static void SetProperty(object instance, string field, object value) => GetPropertyInfo(instance, field)!.SetValue(instance, value, null);
+
+        public static T DeepClone<T>(T obj) => obj.DeepClone();
 
         private static FieldInfo? GetFieldInfo(object instance, string field)
         {

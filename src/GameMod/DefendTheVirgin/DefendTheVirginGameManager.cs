@@ -241,7 +241,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             skills.SetPropertyValue(CrpgSkills.PowerStrike, crpgCharacter.Statistics.Skills.PowerStrike);
             skills.SetPropertyValue(CrpgSkills.PowerDraw, crpgCharacter.Statistics.Skills.PowerDraw);
             skills.SetPropertyValue(CrpgSkills.PowerThrow, crpgCharacter.Statistics.Skills.PowerThrow);
-            skills.SetPropertyValue(DefaultSkills.Athletics, crpgCharacter.Statistics.Skills.Athletics * 20 + crpgCharacter.Statistics.Attributes.Agility);
+            skills.SetPropertyValue(DefaultSkills.Athletics, crpgCharacter.Statistics.Skills.Athletics * 20 + 2 * crpgCharacter.Statistics.Attributes.Agility);
             skills.SetPropertyValue(DefaultSkills.Riding, crpgCharacter.Statistics.Skills.Riding * 20);
             skills.SetPropertyValue(CrpgSkills.WeaponMaster, crpgCharacter.Statistics.Skills.WeaponMaster);
             skills.SetPropertyValue(CrpgSkills.HorseArchery, crpgCharacter.Statistics.Skills.HorseArchery);
@@ -272,69 +272,88 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         private static void AddEquipment(Equipment equipments, EquipmentIndex idx, string? itemId, CharacterSkills skills)
         {
-            var itemObject = itemId != null ? MBObjectManager.Instance.GetObject<ItemObject>(itemId) : null;
-            var itemModifier = itemObject != null ? GetItemModifier(itemObject.Type, skills) : null;
-            var equipmentElement = new EquipmentElement(itemObject, itemModifier);
+            var itemObject = GetModifiedItem(itemId, skills);
+            var equipmentElement = new EquipmentElement(itemObject);
             equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
         }
 
-        // TODO: it seems like ItemModifier.Damage doesn't have any effect
         // TODO: use ItemModifier for looming
-        private static ItemModifier GetItemModifier(ItemObject.ItemTypeEnum itemType, CharacterSkills skills)
+        private static ItemObject? GetModifiedItem(string? itemId, CharacterSkills skills)
         {
-            var itemModifier = new ItemModifier();
-
-            // Not sure if needed
-            ReflectionHelper.SetProperty(itemModifier, nameof(ItemModifier.IsInitialized), true);
-            ReflectionHelper.SetProperty(itemModifier, "IsReady", true);
-
-            // Set default values for the properties which have a default value different than their type default (e.g. different than 0f for floats)
-            ReflectionHelper.SetProperty(itemModifier, nameof(ItemModifier.PriceMultiplier), 1f);
-
-            int value;
-            switch (itemType)
+            if (itemId == null)
             {
-                case ItemObject.ItemTypeEnum.OneHandedWeapon:
-                case ItemObject.ItemTypeEnum.TwoHandedWeapon:
-                case ItemObject.ItemTypeEnum.Polearm:
-                    value = skills.GetPropertyValue(CrpgSkills.PowerStrike) * 8;
-                    ReflectionHelper.SetField(itemModifier, "_damage", value);
-                    break;
-                case ItemObject.ItemTypeEnum.Shield:
-                    // TODO: Shield skill
-                    break;
-                case ItemObject.ItemTypeEnum.Bow:
-                    value = skills.GetPropertyValue(CrpgSkills.PowerDraw) * 14;
-                    ReflectionHelper.SetField(itemModifier, "_damage", value);
-                    break;
-                case ItemObject.ItemTypeEnum.Thrown:
-                    value = skills.GetPropertyValue(CrpgSkills.PowerDraw) * 10;
-                    ReflectionHelper.SetField(itemModifier, "_damage", value);
-                    break;
-                case ItemObject.ItemTypeEnum.HeadArmor:
-                case ItemObject.ItemTypeEnum.Cape:
-                case ItemObject.ItemTypeEnum.BodyArmor:
-                case ItemObject.ItemTypeEnum.ChestArmor:
-                case ItemObject.ItemTypeEnum.LegArmor:
-                case ItemObject.ItemTypeEnum.HandArmor:
-                case ItemObject.ItemTypeEnum.Crossbow:
-                case ItemObject.ItemTypeEnum.HorseHarness:
-                case ItemObject.ItemTypeEnum.Horse:
-                case ItemObject.ItemTypeEnum.Arrows:
-                case ItemObject.ItemTypeEnum.Bolts:
-                case ItemObject.ItemTypeEnum.Goods:
-                case ItemObject.ItemTypeEnum.Pistol:
-                case ItemObject.ItemTypeEnum.Musket:
-                case ItemObject.ItemTypeEnum.Bullets:
-                case ItemObject.ItemTypeEnum.Animal:
-                case ItemObject.ItemTypeEnum.Book:
-                case ItemObject.ItemTypeEnum.Banner:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(itemType), itemType, null);
+                return null;
             }
 
-            return itemModifier;
+            var itemObject = MBObjectManager.Instance.GetObject<ItemObject>(itemId);
+            if (itemObject == null) // Defensive check. Object should always exist.
+            {
+                // TODO: log warning.
+                return null;
+            }
+
+            itemObject = ReflectionHelper.DeepClone(itemObject);
+            ModifyDamage(itemObject, skills.GetPropertyValue(CrpgSkills.PowerStrike) * 0.08f, WeaponClassesAffectedByPowerStrike);
+            ModifyDamage(itemObject, skills.GetPropertyValue(CrpgSkills.PowerDraw) * 0.14f, WeaponClassesAffectedByPowerDraw);
+            ModifyDamage(itemObject, skills.GetPropertyValue(CrpgSkills.PowerThrow) * 0.10f, WeaponClassesAffectedByPowerThrow);
+            return itemObject;
         }
+
+        private static void ModifyDamage(ItemObject itemObject, float factor, HashSet<WeaponClass> affectedClasses)
+        {
+            if (itemObject.Weapons == null) // If the item is not a weapon
+            {
+                return;
+            }
+
+            foreach (var weapon in itemObject.Weapons)
+            {
+                if (affectedClasses.Contains(weapon.WeaponClass))
+                {
+                    // It seems like damage is used by missiles and melee use damage factor. Scale both in any case.
+
+                    var swingDamage = (int)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.SwingDamage));
+                    ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.SwingDamage), swingDamage + (int)(swingDamage * factor));
+
+                    var thrustDamage = (int)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.ThrustDamage));
+                    ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.ThrustDamage), thrustDamage + (int)(thrustDamage * factor));
+
+                    var swingDamageFactor = (float)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.SwingDamageFactor));
+                    ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.SwingDamageFactor), swingDamageFactor + swingDamageFactor * factor);
+
+                    var thrustDamageFactor = (float)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.ThrustDamageFactor));
+                    ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.ThrustDamageFactor), thrustDamageFactor + thrustDamageFactor * factor);
+                }
+            }
+        }
+
+        private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new HashSet<WeaponClass>
+        {
+             WeaponClass.Dagger,
+             WeaponClass.OneHandedSword,
+             WeaponClass.TwoHandedSword,
+             WeaponClass.OneHandedAxe,
+             WeaponClass.TwoHandedAxe,
+             WeaponClass.Mace,
+             WeaponClass.Pick,
+             WeaponClass.TwoHandedMace,
+             WeaponClass.OneHandedPolearm,
+             WeaponClass.TwoHandedPolearm,
+             WeaponClass.LowGripPolearm,
+        };
+
+        private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerDraw = new HashSet<WeaponClass>
+        {
+             WeaponClass.Bow,
+        };
+
+        private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerThrow = new HashSet<WeaponClass>
+        {
+             WeaponClass.Stone,
+             WeaponClass.Boulder,
+             WeaponClass.ThrowingAxe,
+             WeaponClass.ThrowingKnife,
+             WeaponClass.Javelin,
+        };
     }
 }

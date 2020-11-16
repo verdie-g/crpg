@@ -81,13 +81,14 @@
         <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Diamond.dll">
             <Private>False</Private>
         </Reference>
-        
+
         <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.ObjectSystem.dll">
             <Private>False</Private>
         </Reference>
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="DeepCloner" Version="0.10.2" />
         <PackageReference Include="IdentityModel" Version="4.4.0" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" />
     </ItemGroup>
