@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Crpg.GameMod.Api;
@@ -293,19 +294,27 @@ namespace Crpg.GameMod.DefendTheVirgin
             }
 
             itemObject = ReflectionHelper.DeepClone(itemObject);
-            ModifyDamage(itemObject, skills.GetPropertyValue(CrpgSkills.PowerStrike) * 0.08f, WeaponClassesAffectedByPowerStrike);
-            ModifyDamage(itemObject, skills.GetPropertyValue(CrpgSkills.PowerDraw) * 0.14f, WeaponClassesAffectedByPowerDraw);
-            ModifyDamage(itemObject, skills.GetPropertyValue(CrpgSkills.PowerThrow) * 0.10f, WeaponClassesAffectedByPowerThrow);
+
+            if (itemObject.Weapons != null)
+            {
+                ModifyDamage(itemObject, skills.GetPropertyValue(CrpgSkills.PowerStrike) * 0.08f, WeaponClassesAffectedByPowerStrike);
+                ModifyDamage(itemObject, skills.GetPropertyValue(CrpgSkills.PowerDraw) * 0.14f, WeaponClassesAffectedByPowerDraw);
+                ModifyDamage(itemObject, skills.GetPropertyValue(CrpgSkills.PowerThrow) * 0.10f, WeaponClassesAffectedByPowerThrow);
+            }
+
+            if (itemObject.ItemType == ItemObject.ItemTypeEnum.Shield)
+            {
+                var primaryWeapon = itemObject.WeaponComponent.PrimaryWeapon;
+                float factor = skills.GetPropertyValue(CrpgSkills.Shield) * 0.16f;
+                var durability = (short)ReflectionHelper.GetProperty(primaryWeapon, nameof(WeaponComponentData.MaxDataValue));
+                ReflectionHelper.SetProperty(primaryWeapon, nameof(WeaponComponentData.MaxDataValue), (short)(durability + durability * factor));
+            }
+
             return itemObject;
         }
 
         private static void ModifyDamage(ItemObject itemObject, float factor, HashSet<WeaponClass> affectedClasses)
         {
-            if (itemObject.Weapons == null) // If the item is not a weapon
-            {
-                return;
-            }
-
             foreach (var weapon in itemObject.Weapons)
             {
                 if (affectedClasses.Contains(weapon.WeaponClass))
