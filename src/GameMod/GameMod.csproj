@@ -38,51 +38,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.MountAndBlade.dll">
+        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.*.dll">
             <Private>False</Private>
         </Reference>
 
-        <Reference Include="$(MB_PATH)/Modules/Native/bin/Win64_Shipping_Client/TaleWorlds.MountAndBlade.View.dll">
-            <Private>False</Private>
-        </Reference>
-
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.DotNet.dll">
-            <Private>False</Private>
-        </Reference>
-
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Core.dll">
-            <Private>False</Private>
-        </Reference>
-
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Library.dll">
-            <Private>False</Private>
-        </Reference>
-
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Engine.dll">
-            <Private>False</Private>
-        </Reference>
-
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Localization.dll">
-            <Private>False</Private>
-        </Reference>
-
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.PlatformService.dll">
-            <Private>False</Private>
-        </Reference>
-
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.PlayerServices.dll">
-            <Private>False</Private>
-        </Reference>
-
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.TaleWorlds.ObjectSystem.dll">
-            <Private>False</Private>
-        </Reference>
-
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Diamond.dll">
-            <Private>False</Private>
-        </Reference>
-
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.ObjectSystem.dll">
+        <Reference Include="$(MB_PATH)/Modules/Native/bin/Win64_Shipping_Client/TaleWorlds.*.dll">
             <Private>False</Private>
         </Reference>
     </ItemGroup>
