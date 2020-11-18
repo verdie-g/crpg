@@ -304,10 +304,15 @@ namespace Crpg.GameMod.DefendTheVirgin
 
             if (itemObject.ItemType == ItemObject.ItemTypeEnum.Shield)
             {
-                var primaryWeapon = itemObject.WeaponComponent.PrimaryWeapon;
-                float factor = skills.GetPropertyValue(CrpgSkills.Shield) * 0.16f;
-                var durability = (short)ReflectionHelper.GetProperty(primaryWeapon, nameof(WeaponComponentData.MaxDataValue));
-                ReflectionHelper.SetProperty(primaryWeapon, nameof(WeaponComponentData.MaxDataValue), (short)(durability + durability * factor));
+                var shield = itemObject.WeaponComponent.PrimaryWeapon;
+
+                float durabilityFactor = skills.GetPropertyValue(CrpgSkills.Shield) * 0.16f;
+                var durability = (short)ReflectionHelper.GetProperty(shield, nameof(WeaponComponentData.MaxDataValue));
+                ReflectionHelper.SetProperty(shield, nameof(WeaponComponentData.MaxDataValue), (short)(durability + durability * durabilityFactor));
+
+                float speedFactor = skills.GetPropertyValue(CrpgSkills.Shield) * 0.05f; // TODO: random constant
+                var speed = (int)ReflectionHelper.GetProperty(shield, nameof(WeaponComponentData.ThrustSpeed));
+                ReflectionHelper.SetProperty(shield, nameof(WeaponComponentData.ThrustSpeed), (int)(speed + speed * speedFactor));
             }
 
             return itemObject;
