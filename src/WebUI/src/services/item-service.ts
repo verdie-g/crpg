@@ -168,7 +168,7 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
       break;
     case ItemType.Shield:
       props.fields.push(
-        ['Speed', item.weapons[0].swingSpeed],
+        ['Speed', item.weapons[0].thrustSpeed],
         ['Durability', item.weapons[0].stackAmount],
         ['Armor', item.weapons[0].bodyArmor],
         ['Length', item.weapons[0].length],
