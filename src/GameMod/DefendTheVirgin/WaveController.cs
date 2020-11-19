@@ -14,7 +14,7 @@ namespace Crpg.GameMod.DefendTheVirgin
         private MissionTimer? _waveEndTimer;
 
         public event Action<int> OnWaveStarted = _ => { };
-        public event Action<int> OnWaveEnding = _ => { };
+        public event Action<int, Team> OnWaveEnding = (_, __) => { };
         public event Action<int> OnWaveEnded = _ => { };
 
         public WaveController(int maxWave)
@@ -30,12 +30,13 @@ namespace Crpg.GameMod.DefendTheVirgin
             }
             else if (_waveState == WaveState.InProgress)
             {
-                if (!CheckForWaveEnd())
+                var winnerTeam = GetWinnerTeam();
+                if (winnerTeam == null)
                 {
                     return;
                 }
 
-                EndWave();
+                EndWave(winnerTeam);
             }
             else if (_waveState == WaveState.Ending)
             {
@@ -48,9 +49,19 @@ namespace Crpg.GameMod.DefendTheVirgin
             }
         }
 
-        private bool CheckForWaveEnd()
+        private Team? GetWinnerTeam()
         {
-            return Mission.AttackerTeam.ActiveAgents.Count == 0 || Mission.DefenderTeam.ActiveAgents.Count < 2;
+            if (Mission.AttackerTeam.ActiveAgents.Count == 0)
+            {
+                return Mission.DefenderTeam;
+            }
+
+            if (Mission.DefenderTeam.ActiveAgents.Count < 2)
+            {
+                return Mission.AttackerTeam;
+            }
+
+            return null;
         }
 
         private void BeginNewWave()
@@ -61,11 +72,11 @@ namespace Crpg.GameMod.DefendTheVirgin
             OnWaveStarted(_waveCount);
         }
 
-        private void EndWave()
+        private void EndWave(Team winnerTeam)
         {
             _waveState = WaveState.Ending;
             _waveEndTimer = new MissionTimer((int)WaveEndDuration.TotalSeconds);
-            OnWaveEnding(_waveCount);
+            OnWaveEnding(_waveCount, winnerTeam);
         }
 
         private void PostWaveEnd()

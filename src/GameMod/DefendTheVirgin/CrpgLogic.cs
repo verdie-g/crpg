@@ -30,8 +30,14 @@ namespace Crpg.GameMod.DefendTheVirgin
             _waveController.OnWaveEnding -= OnWaveEnding;
         }
 
-        private void OnWaveEnding(int waveNb)
+        private void OnWaveEnding(int waveNb, Team winnerTeam)
         {
+            // If bots won, don't give reward.
+            if (winnerTeam == Mission.AttackerTeam)
+            {
+                return;
+            }
+
             WaveGroup[] wave = _waves[waveNb - 1];
             int reward = SumWaveWeight(wave);
             int experienceReward = reward * 100;
