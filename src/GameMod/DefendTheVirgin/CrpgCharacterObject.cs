@@ -34,8 +34,11 @@ namespace Crpg.GameMod.DefendTheVirgin
             ReflectionHelper.SetProperty(this, nameof(IsSoldier), true);
             ReflectionHelper.SetField(this, "_isBasicHero", false);
 
-            var dynamicBodyProperties = ReflectionHelper.GetField(characterTemplate, "_dynamicBodyProperties");
-            ReflectionHelper.SetField(this, "_dynamicBodyProperties", dynamicBodyProperties);
+            var dynamicBodyPropertiesMin = ReflectionHelper.GetField(characterTemplate, "_dynamicBodyPropertiesMin");
+            ReflectionHelper.SetField(this, "_dynamicBodyPropertiesMin", dynamicBodyPropertiesMin);
+
+            var dynamicBodyPropertiesMax = ReflectionHelper.GetField(characterTemplate, "_dynamicBodyPropertiesMax");
+            ReflectionHelper.SetField(this, "_dynamicBodyPropertiesMax", dynamicBodyPropertiesMax);
         }
 
         public override int MaxHitPoints() => BaseHealth + _characterSkills.GetPropertyValue(CrpgSkills.Strength)
