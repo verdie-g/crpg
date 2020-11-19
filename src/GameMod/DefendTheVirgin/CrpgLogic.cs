@@ -63,7 +63,12 @@ namespace Crpg.GameMod.DefendTheVirgin
 
             if (res.Data!.Users[0].Character.Level != _user.Character.Level)
             {
-                InformationManager.DisplayMessage(new InformationMessage("Level up!", new Color(128, 0, 128)));
+                InformationManager.DisplayMessage(new InformationMessage
+                {
+                    Information = "Level up!",
+                    Color = new Color(128, 0, 128),
+                    SoundEventPath = "event:/ui/notification/levelup",
+                });
             }
 
             _user = res.Data!.Users[0];
