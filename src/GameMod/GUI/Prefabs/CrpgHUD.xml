@@ -1,0 +1,7 @@
+﻿<Window>
+<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+    <Children>
+        <TextWidget Text="x1" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="50" SuggestedHeight="50" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="250" MarginBottom="100" Brush="ScoreboardDefaultFontBrush" Brush.TextVerticalAlignment="Center" Brush.FontSize="26"/>
+    </Children>
+</Widget>
+</Window>

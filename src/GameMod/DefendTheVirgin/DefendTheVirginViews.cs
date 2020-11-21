@@ -13,6 +13,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             ViewCreator.CreateMissionSingleplayerEscapeMenu(),
             ViewCreator.CreateMissionAgentLabelUIHandler(mission),
             ViewCreator.CreateMissionAgentStatusUIHandler(mission),
+            ViewCreatorManager.CreateMissionView<CrpgAgentExperienceView>(false, mission),
             ViewCreator.CreateMissionMainAgentEquipmentController(mission),
             ViewCreator.CreateMissionMainAgentCheerControllerView(mission),
             ViewCreator.CreateMissionBoundaryCrossingView(),

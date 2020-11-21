@@ -31,7 +31,12 @@
             <TargetPath>../../%(Identity)</TargetPath>
         </ContentWithTargetPath>
 
-        <ContentWithTargetPath Include="ModuleData/*">
+        <ContentWithTargetPath Include="ModuleData/**/*">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>../../%(Identity)</TargetPath>
+        </ContentWithTargetPath>
+
+        <ContentWithTargetPath Include="GUI/**/*">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <TargetPath>../../%(Identity)</TargetPath>
         </ContentWithTargetPath>
