@@ -247,12 +247,12 @@ namespace Crpg.GameMod.DefendTheVirgin
             skills.SetPropertyValue(CrpgSkills.WeaponMaster, crpgCharacter.Statistics.Skills.WeaponMaster);
             skills.SetPropertyValue(CrpgSkills.HorseArchery, crpgCharacter.Statistics.Skills.HorseArchery);
 
-            skills.SetPropertyValue(DefaultSkills.OneHanded, (int)(crpgCharacter.Statistics.WeaponProficiencies.OneHanded * 1.5));
-            skills.SetPropertyValue(DefaultSkills.TwoHanded, (int)(crpgCharacter.Statistics.WeaponProficiencies.TwoHanded * 1.5));
-            skills.SetPropertyValue(DefaultSkills.Polearm, (int)(crpgCharacter.Statistics.WeaponProficiencies.Polearm * 1.5));
-            skills.SetPropertyValue(DefaultSkills.Bow, (int)(crpgCharacter.Statistics.WeaponProficiencies.Bow * 1.5));
-            skills.SetPropertyValue(DefaultSkills.Crossbow, (int)(crpgCharacter.Statistics.WeaponProficiencies.Crossbow * 1.5));
-            skills.SetPropertyValue(DefaultSkills.Throwing, (int)(crpgCharacter.Statistics.WeaponProficiencies.Throwing * 1.5));
+            skills.SetPropertyValue(DefaultSkills.OneHanded, crpgCharacter.Statistics.WeaponProficiencies.OneHanded);
+            skills.SetPropertyValue(DefaultSkills.TwoHanded, crpgCharacter.Statistics.WeaponProficiencies.TwoHanded);
+            skills.SetPropertyValue(DefaultSkills.Polearm, crpgCharacter.Statistics.WeaponProficiencies.Polearm);
+            skills.SetPropertyValue(DefaultSkills.Bow, crpgCharacter.Statistics.WeaponProficiencies.Bow);
+            skills.SetPropertyValue(DefaultSkills.Crossbow, crpgCharacter.Statistics.WeaponProficiencies.Crossbow);
+            skills.SetPropertyValue(DefaultSkills.Throwing, crpgCharacter.Statistics.WeaponProficiencies.Throwing);
 
             var equipment = new Equipment();
             AddEquipment(equipment, EquipmentIndex.Head, crpgCharacter.Items.HeadItem?.MbId, skills);
