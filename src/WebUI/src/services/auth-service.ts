@@ -10,6 +10,7 @@ const userManager = new UserManager({
   post_logout_redirect_uri: window.location.origin,
   // Refresh access token after half of its lifetime (30 minutes)
   accessTokenExpiringNotificationTime: 30 * 60,
+  automaticSilentRenew: true,
 });
 
 export class TokenPayload {
