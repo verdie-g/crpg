@@ -103,6 +103,9 @@ namespace Crpg.Application.Games.Commands
                 },
             };
 
+            private const string DefaultCharacterBodyProperties = "0018880540003341783567B87A8C5A7791D94C672ABB9E8734775BD78C2B866900D776030D96978800000000000000000000000000000000000000002FA49042";
+            private static readonly CharacterGender DefaultCharacterGender = CharacterGender.Male;
+
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
             private readonly IEventService _events;
@@ -295,6 +298,8 @@ namespace Crpg.Application.Games.Commands
                     Level = CharacterHelper.DefaultLevel,
                     Experience = CharacterHelper.DefaultExperience,
                     ExperienceMultiplier = CharacterHelper.DefaultExperienceMultiplier,
+                    BodyProperties = DefaultCharacterBodyProperties,
+                    Gender = DefaultCharacterGender,
                     Items = (CharacterItems)DefaultItemSets[_random.Next(0, DefaultItemSets.Length - 1)].Clone(),
                 };
                 CharacterHelper.ResetCharacterStats(character);

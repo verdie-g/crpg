@@ -13,7 +13,12 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task Basic()
         {
-            var character = ArrangeDb.Characters.Add(new Character { Name = "toto" });
+            var character = ArrangeDb.Characters.Add(new Character
+            {
+                Name = "toto",
+                BodyProperties = "000AAC080000100DB976648E6774B835537D86629511323BDCB177278A84F667000776030048B49500000000000000000000000000000000000000003E045002",
+                Gender = CharacterGender.Male,
+            });
             var user = ArrangeDb.Users.Add(new User
             {
                 Characters = new List<Character> { character.Entity },
@@ -25,10 +30,14 @@ namespace Crpg.Application.UTest.Characters
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
                 Name = "tata",
+                BodyProperties = "000AAC080000100DB976648795577464537D86629511323BDCB177278A84F667007776030748B49500000000000000000000000000000000000000003EFC5002",
+                Gender = CharacterGender.Female,
             };
 
             var result = await new UpdateCharacterCommand.Handler(ActDb, Mapper).Handle(cmd, CancellationToken.None);
             Assert.AreEqual(cmd.Name, result.Data!.Name);
+            Assert.AreEqual(cmd.BodyProperties, result.Data!.BodyProperties);
+            Assert.AreEqual(cmd.Gender, result.Data!.Gender);
         }
 
         [Test]
@@ -81,16 +90,6 @@ namespace Crpg.Application.UTest.Characters
 
             var result = await handler.Handle(cmd, CancellationToken.None);
             Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
-        }
-
-        [TestCase("")]
-        [TestCase("a")]
-        [TestCase("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
-        public void BadName(string name)
-        {
-            var validator = new UpdateCharacterCommand.Validator();
-            var res = validator.Validate(new UpdateCharacterCommand { Name = name });
-            Assert.AreEqual(1, res.Errors.Count);
         }
     }
 }

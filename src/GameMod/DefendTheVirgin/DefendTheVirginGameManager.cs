@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using System.Xml;
 using Crpg.GameMod.Api;
 using Crpg.GameMod.Api.Models;
 using Crpg.GameMod.Common;
@@ -232,7 +233,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             };
         }
 
-        private static BasicCharacterObject CreateCharacter(CrpgCharacter crpgCharacter)
+        private BasicCharacterObject CreateCharacter(CrpgCharacter crpgCharacter)
         {
             var skills = new CharacterSkills();
             skills.SetPropertyValue(CrpgSkills.Strength, crpgCharacter.Statistics.Attributes.Strength);
@@ -267,8 +268,33 @@ namespace Crpg.GameMod.DefendTheVirgin
             AddEquipment(equipment, EquipmentIndex.Weapon2, crpgCharacter.Items.Weapon3Item?.MbId, skills);
             AddEquipment(equipment, EquipmentIndex.Weapon3, crpgCharacter.Items.Weapon4Item?.MbId, skills);
 
-            var characterTemplate = MBObjectManager.Instance.GetObject<BasicCharacterObject>("villager_empire");
-            return new CrpgCharacterObject(new TextObject(crpgCharacter.Name), characterTemplate, skills, equipment);
+            var mbCharacter = new CrpgCharacterObject(new TextObject(crpgCharacter.Name), skills);
+            SetCharacterBodyProperties(mbCharacter, crpgCharacter.BodyProperties, crpgCharacter.Gender);
+            mbCharacter.InitializeEquipmentsOnLoad(new List<Equipment> { equipment });
+            return mbCharacter;
+        }
+
+        private void SetCharacterBodyProperties(CrpgCharacterObject mbCharacter, string bodyPropertiesKey,
+            CrpgCharacterGender gender)
+        {
+            var dynamicBodyProperties = new DynamicBodyProperties { Age = 20, Build = 1.0f, Weight = 0.5f }; // Age chosen arbitrarily.
+            var staticBodyProperties = StaticBodyPropertiesFromString(bodyPropertiesKey);
+            var bodyProperties = new BodyProperties(dynamicBodyProperties, staticBodyProperties);
+            bodyProperties = bodyProperties.ClampForMultiplayer(); // Clamp height and set Build & Weight.
+            mbCharacter.UpdatePlayerCharacterBodyProperties(bodyProperties, gender == CrpgCharacterGender.Female);
+            ReflectionHelper.SetField(mbCharacter, "_dynamicBodyPropertiesMin", mbCharacter.GetBodyPropertiesMax().DynamicProperties);
+        }
+
+        private StaticBodyProperties StaticBodyPropertiesFromString(string bodyPropertiesKey)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml($"<BodyProperties key=\"{bodyPropertiesKey}\" />");
+            if (!StaticBodyProperties.FromXmlNode(doc.DocumentElement, out var staticBodyProperties))
+            {
+                // TODO: log warning.
+            }
+
+            return staticBodyProperties;
         }
 
         private static void AddEquipment(Equipment equipments, EquipmentIndex idx, string? itemId, CharacterSkills skills)

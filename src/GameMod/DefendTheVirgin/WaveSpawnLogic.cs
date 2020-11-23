@@ -37,7 +37,6 @@ namespace Crpg.GameMod.DefendTheVirgin
             virgin.Name = new TextObject("The Virgin");
             Mission.SpawnTroop(new BasicBattleAgentOrigin(virgin), true, false, false, false, true, 0, 0, false, true);
 
-
             WaveGroup[] wave = _waves[waveNb - 1];
             foreach (var group in wave)
             {

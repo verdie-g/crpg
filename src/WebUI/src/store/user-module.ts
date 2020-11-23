@@ -13,6 +13,7 @@ import CharacterStatistics from '@/models/character-statistics';
 import StatisticConversion from '@/models/statistic-conversion';
 import Ban from '@/models/ban';
 import Role from '@/models/role';
+import CharacterUpdate from '@/models/character-update';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
@@ -118,12 +119,15 @@ class UserModule extends VuexModule {
   }
 
   @Action
-  renameCharacter({ character, newName }: { character: Character; newName: string }) {
+  updateCharacter({ characterId, characterUpdate }: { characterId: number; characterUpdate: CharacterUpdate }) {
+    const character = this.characters.find(c => c.id === characterId)!;
     this.replaceCharacter({
       ...character,
-      name: newName,
+      name: characterUpdate.name,
+      bodyProperties: characterUpdate.bodyProperties,
+      gender: characterUpdate.gender,
     });
-    return userService.updateCharacter(character.id, { name: newName });
+    return userService.updateCharacter(character.id, characterUpdate);
   }
 
   @Action

@@ -4,7 +4,7 @@
     <div class="stats-section">
       <div class="character-name">
         <h1 class="title is-3">{{character.name}}</h1>
-        <b-icon icon="pencil-alt" class="character-name-edit" @click.native="openEditCharacterDialog" />
+        <b-icon icon="pencil-alt" class="character-name-edit" @click.native="openCharacterUpdateModal" />
       </div>
 
       <b-field horizontal label="Generation" class="stat-field is-marginless">
@@ -202,6 +202,39 @@
       </p>
     </b-field>
 
+    <b-modal :active.sync="isCharacterUpdateModalActive" has-modal-card trap-focus aria-role="dialog"
+             aria-modal ref="characterUpdateModal">
+      <template>
+        <form @submit.prevent="onCharacterUpdateSubmit">
+          <div class="modal-card" style="width: auto">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Character Update</p>
+            </header>
+
+            <section class="modal-card-body">
+              <b-field label="Name">
+                <b-input type="text" v-model="characterUpdate.name" minlength="2" maxlength="32" required />
+              </b-field>
+
+              <b-field label="Body Properties">
+                <b-input type="text" v-model="characterUpdate.bodyProperties" minlength="128" maxlength="128" required />
+              </b-field>
+
+              <b-field>
+                <b-radio v-model="characterUpdate.gender" name="name" native-value="Male">Male</b-radio>
+                <b-radio v-model="characterUpdate.gender" name="name" native-value="Female">Female</b-radio>
+              </b-field>
+            </section>
+
+            <footer class="modal-card-foot">
+              <button class="button" type="button" @click="closeCharacterUpdateModal">Close</button>
+              <button class="button is-primary">Update</button>
+            </footer>
+          </div>
+        </form>
+      </template>
+    </b-modal>
+
   </div>
 </template>
 
@@ -217,6 +250,7 @@ import CharacterAttributes from '@/models/character-attributes';
 import CharacterSkills from '@/models/character-skills';
 import CharacterWeaponProficiencies from '@/models/character-weapon-proficiencies';
 import StatisticConversion from '@/models/statistic-conversion';
+import CharacterUpdate from '@/models/character-update';
 
 type StatSectionKey = keyof CharacterStatistics;
 type AttributeKey = keyof CharacterAttributes;
@@ -227,6 +261,9 @@ type StatKey = AttributeKey | SkillKey | WeaponProficienciesKey;
 @Component
 export default class CharacterStatsComponent extends Vue {
   @Prop(Object) character: Character;
+
+  isCharacterUpdateModalActive = false;
+  characterUpdate: CharacterUpdate;
 
   updatingStats = false;
   statsDelta: CharacterStatistics = this.createEmptyStatistics();
@@ -430,20 +467,25 @@ export default class CharacterStatsComponent extends Vue {
     this.reset();
   }
 
-  openEditCharacterDialog(): void {
-    this.$buefy.dialog.prompt({
-      message: 'New name',
-      inputAttrs: {
-        value: this.character.name,
-        minlength: 2,
-        maxlength: 32,
-      },
-      trapFocus: true,
-      onConfirm: newName => {
-        userModule.renameCharacter({ character: this.character, newName });
-        notify('Character renamed');
-      },
-    });
+  openCharacterUpdateModal(): void {
+    this.characterUpdate = {
+      name: this.character.name,
+      bodyProperties: this.character.bodyProperties,
+      gender: this.character.gender,
+    };
+    this.isCharacterUpdateModalActive = true;
+  }
+
+  closeCharacterUpdateModal(): void {
+    this.isCharacterUpdateModalActive = false;
+  }
+
+  onCharacterUpdateSubmit(): void {
+    userModule.updateCharacter({
+      characterId: this.character.id,
+      characterUpdate: this.characterUpdate,
+    }).then(() => notify('Character updated!'));
+    this.closeCharacterUpdateModal();
   }
 
   @Watch('character')

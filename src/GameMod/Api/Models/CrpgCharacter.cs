@@ -9,6 +9,8 @@
         public int Level { get; set; }
         public int Experience { get; set; }
         public int NextLevelExperience { get; set; }
+        public string BodyProperties { get; set; } = string.Empty;
+        public CrpgCharacterGender Gender { get; set; }
         public CrpgCharacterStatistics Statistics { get; set; } = new CrpgCharacterStatistics();
         public CrpgCharacterItems Items { get; set; } = new CrpgCharacterItems();
     }

@@ -13,6 +13,8 @@ namespace Crpg.Application.Characters.Models
         public int Level { get; set; }
         public int Experience { get; set; }
         public int NextLevelExperience { get; set; }
+        public string BodyProperties { get; set; } = string.Empty;
+        public CharacterGender Gender { get; set; }
         public CharacterStatisticsViewModel Statistics { get; set; } = new CharacterStatisticsViewModel();
         public CharacterItemsViewModel Items { get; set; } = new CharacterItemsViewModel();
 
