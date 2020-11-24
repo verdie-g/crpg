@@ -263,7 +263,7 @@ export default class CharacterStatsComponent extends Vue {
   @Prop(Object) character: Character;
 
   isCharacterUpdateModalActive = false;
-  characterUpdate: CharacterUpdate;
+  characterUpdate: CharacterUpdate = this.characterUpdateFromCharacter(this.character);
 
   updatingStats = false;
   statsDelta: CharacterStatistics = this.createEmptyStatistics();
@@ -467,12 +467,16 @@ export default class CharacterStatsComponent extends Vue {
     this.reset();
   }
 
-  openCharacterUpdateModal(): void {
-    this.characterUpdate = {
-      name: this.character.name,
-      bodyProperties: this.character.bodyProperties,
-      gender: this.character.gender,
+  characterUpdateFromCharacter(character: Character): CharacterUpdate {
+    return {
+      name: character.name,
+      bodyProperties: character.bodyProperties,
+      gender: character.gender,
     };
+  }
+
+  openCharacterUpdateModal(): void {
+    this.characterUpdate = this.characterUpdateFromCharacter(this.character);
     this.isCharacterUpdateModalActive = true;
   }
 

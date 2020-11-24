@@ -3,11 +3,11 @@ import Role from '../models/role';
 
 const userManager = new UserManager({
   authority: process.env.VUE_APP_API_BASE_URL,
-  client_id: 'crpg_web_ui',
-  redirect_uri: window.location.origin,
-  response_type: 'code',
+  client_id: 'crpg_web_ui', // eslint-disable-line @typescript-eslint/camelcase
+  redirect_uri: window.location.origin, // eslint-disable-line @typescript-eslint/camelcase
+  response_type: 'code', // eslint-disable-line @typescript-eslint/camelcase
   scope: 'openid offline_access user_api',
-  post_logout_redirect_uri: window.location.origin,
+  post_logout_redirect_uri: window.location.origin, // eslint-disable-line @typescript-eslint/camelcase
   // Refresh access token after half of its lifetime (30 minutes)
   accessTokenExpiringNotificationTime: 30 * 60,
   automaticSilentRenew: true,
@@ -46,6 +46,7 @@ export function signIn(): Promise<void> {
 }
 
 export async function signInCallback(): Promise<void> {
+  // eslint-disable-next-line @typescript-eslint/camelcase
   const mgr = new UserManager({ response_mode: 'query' });
   await mgr.signinRedirectCallback();
 }
