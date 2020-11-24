@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
-using Crpg.GameMod.Common;
+﻿using Crpg.GameMod.Common;
 using Crpg.GameMod.Helpers;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.Localization;
 
 namespace Crpg.GameMod.DefendTheVirgin
 {
     internal sealed class CrpgCharacterObject : BasicCharacterObject
     {
+        // A 33 STR, 3 AGI character with 11 IF would reach 115 HP.
         private const int BaseHealth = 60;
 
         public CrpgCharacterObject(TextObject name, CharacterSkills skills)
