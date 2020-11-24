@@ -3,6 +3,9 @@ using Crpg.Domain.Common;
 
 namespace Crpg.Domain.Entities.Items
 {
+    /// <summary>
+    /// cRPG representation of an item. Very similar to the representation of an item in Bannerlord.
+    /// </summary>
     public class Item : AuditableEntity
     {
         public int Id { get; set; }
@@ -27,10 +30,30 @@ namespace Crpg.Domain.Entities.Items
         /// </summary>
         public int Rank { get; set; }
 
+        /// <summary>
+        /// Armor component of an item. If not null, the item is an armor.
+        /// </summary>
         public ItemArmorComponent? Armor { get; set; }
+
+        /// <summary>
+        /// Horse component of an item. If not null, the item is a mount.
+        /// </summary>
         public ItemHorseComponent? Horse { get; set; }
+
+        /// <summary>
+        /// Represents the first mode of a weapon. An item can have several modes for example a polearm that has a one
+        /// handed and two handed mode. If not null the item is a weapon.
+        /// </summary>
         public ItemWeaponComponent? PrimaryWeapon { get; set; }
+
+        /// <summary>
+        /// Represents the second mode a weapon. Can be null if the item is a weapon but has only one mode.
+        /// </summary>
         public ItemWeaponComponent? SecondaryWeapon { get; set; }
+
+        /// <summary>
+        /// Represents the third mode a weapon. Can be null if the item is a weapon but has only one or modes.
+        /// </summary>
         public ItemWeaponComponent? TertiaryWeapon { get; set; }
 
         public Item? BaseItem { get; set; }

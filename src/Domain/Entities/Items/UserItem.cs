@@ -2,6 +2,9 @@ using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Domain.Entities.Items
 {
+    /// <summary>
+    /// Item owned by a user.
+    /// </summary>
     public class UserItem
     {
         public int UserId { get; set; }

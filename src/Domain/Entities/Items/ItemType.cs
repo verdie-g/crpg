@@ -1,5 +1,8 @@
 namespace Crpg.Domain.Entities.Items
 {
+    /// <summary>
+    /// Type of an <see cref="Item"/>. See <see cref="WeaponClass"/> for weapon subtype.
+    /// </summary>
     public enum ItemType
     {
         HeadArmor,

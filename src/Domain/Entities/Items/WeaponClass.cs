@@ -1,5 +1,8 @@
 ﻿namespace Crpg.Domain.Entities.Items
 {
+    /// <summary>
+    /// Type of a <see cref="ItemWeaponComponent"/>.
+    /// </summary>
     public enum WeaponClass
     {
         Undefined,

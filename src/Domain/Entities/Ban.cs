@@ -4,6 +4,9 @@ using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Domain.Entities
 {
+    /// <summary>
+    /// Represents a user ban. Used by a game server to know if a user is allowed to play.
+    /// </summary>
     public class Ban : AuditableEntity
     {
         public int Id { get; set; }

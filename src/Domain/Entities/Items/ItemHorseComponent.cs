@@ -1,5 +1,8 @@
 ﻿namespace Crpg.Domain.Entities.Items
 {
+    /// <summary>
+    /// Horse component of an <see cref="Item"/>.
+    /// </summary>
     public class ItemHorseComponent
     {
         public int BodyLength { get; set; }

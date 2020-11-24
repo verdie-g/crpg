@@ -4,6 +4,9 @@ using Crpg.Domain.Entities.Items;
 
 namespace Crpg.Domain.Entities.Characters
 {
+    /// <summary>
+    /// Item set of a character.
+    /// </summary>
     public class CharacterItems : ICloneable
     {
         public int? HeadItemId { get; set; }

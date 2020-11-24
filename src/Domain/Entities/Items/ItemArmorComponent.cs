@@ -1,5 +1,8 @@
 ﻿namespace Crpg.Domain.Entities.Items
 {
+    /// <summary>
+    /// Armor component of an <see cref="Item"/>.
+    /// </summary>
     public class ItemArmorComponent
     {
         public int HeadArmor { get; set; }

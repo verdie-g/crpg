@@ -2,6 +2,9 @@ using System;
 
 namespace Crpg.Domain.Entities.Items
 {
+    /// <summary>
+    /// Various properties of a <see cref="ItemWeaponComponent"/>.
+    /// </summary>
     [Flags]
     public enum WeaponFlags : long
     {

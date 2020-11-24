@@ -1,7 +1,13 @@
 namespace Crpg.Domain.Entities.Characters
 {
+    /// <summary>
+    /// Skills of a character.
+    /// </summary>
     public class CharacterSkills
     {
+        /// <summary>
+        /// Points to spent.
+        /// </summary>
         public int Points { get; set; }
         public int IronFlesh { get; set; }
         public int PowerStrike { get; set; }

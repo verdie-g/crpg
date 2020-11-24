@@ -1,7 +1,13 @@
 namespace Crpg.Domain.Entities.Characters
 {
+    /// <summary>
+    /// Weapon proficiencies of a character.
+    /// </summary>
     public class CharacterWeaponProficiencies
     {
+        /// <summary>
+        /// Points to spent.
+        /// </summary>
         public int Points { get; set; }
         public int OneHanded { get; set; }
         public int TwoHanded { get; set; }
