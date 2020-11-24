@@ -81,19 +81,9 @@
         instances:
           - server: localhost
 
-- name: Download Datadog .NET Tracer
-  get_url:
-    url: https://github.com/DataDog/dd-trace-dotnet/releases/download/v1.18.2/datadog-dotnet-apm_1.18.2_amd64.deb
-    dest: /tmp
-
 - name: Install Datadog .NET Tracer
   apt:
-    deb: /tmp/datadog-dotnet-apm_1.18.2_amd64.deb
-
-- name: Make Datadog .NET Tracer initialization script executable
-  file:
-    path: /opt/datadog/createLogPath.sh
-    mode: 0755
+    deb: "https://github.com/DataDog/dd-trace-dotnet/releases/download/v{{ datadog_dotnet_tracer_version }}/datadog-dotnet-apm_{{ datadog_dotnet_tracer_version }}_amd64.deb"
 
 - name: Initialize Datadog .NET Tracer
   command: /opt/datadog/createLogPath.sh
