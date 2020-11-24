@@ -30,7 +30,8 @@ http {
     keepalive_timeout  65;
     keepalive_requests 100;
 
-    server_tokens on;
+    # Remove Nginx version from response header
+    server_tokens off;
 
     # Redirect HTTP to HTTPS
     server {
