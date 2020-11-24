@@ -1,6 +1,6 @@
 using System;
 
-namespace Crpg.Domain.Entities
+namespace Crpg.Domain.Entities.Items
 {
     [Flags]
     public enum WeaponFlags : long

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Crpg.Domain.Common;
+using Crpg.Domain.Entities.Characters;
+using Crpg.Domain.Entities.Items;
 
-namespace Crpg.Domain.Entities
+namespace Crpg.Domain.Entities.Users
 {
     public class User : AuditableEntity
     {

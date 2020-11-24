@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Crpg.Domain.Entities.Items;
 
-namespace Crpg.Domain.Entities
+namespace Crpg.Domain.Entities.Characters
 {
     public class CharacterItems : ICloneable
     {

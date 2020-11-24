@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Items;
 
 namespace Crpg.Application.Common.Results
 {

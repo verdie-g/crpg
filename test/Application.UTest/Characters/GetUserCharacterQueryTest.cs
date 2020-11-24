@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Crpg.Application.Characters.Queries;
 using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Characters;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters

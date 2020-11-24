@@ -1,6 +1,7 @@
 using Crpg.Domain.Common;
+using Crpg.Domain.Entities.Users;
 
-namespace Crpg.Domain.Entities
+namespace Crpg.Domain.Entities.Characters
 {
     public class Character : AuditableEntity
     {

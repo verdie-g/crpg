@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Users.Commands;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions.Events;
 using Microsoft.EntityFrameworkCore;
 using Moq;

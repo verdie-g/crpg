@@ -1,5 +1,6 @@
 ﻿using System;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Characters;
 
 namespace Crpg.Application.Common.Helpers
 {

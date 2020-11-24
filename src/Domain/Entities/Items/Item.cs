@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Crpg.Domain.Common;
 
-namespace Crpg.Domain.Entities
+namespace Crpg.Domain.Entities.Items
 {
     public class Item : AuditableEntity
     {

@@ -1,6 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Characters;
+using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 

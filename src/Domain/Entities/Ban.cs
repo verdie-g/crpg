@@ -1,5 +1,6 @@
 using System;
 using Crpg.Domain.Common;
+using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Domain.Entities
 {

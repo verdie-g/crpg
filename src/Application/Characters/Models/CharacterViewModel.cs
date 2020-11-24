@@ -2,6 +2,7 @@ using AutoMapper;
 using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Mappings;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Characters;
 
 namespace Crpg.Application.Characters.Models
 {

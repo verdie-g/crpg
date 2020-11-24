@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 

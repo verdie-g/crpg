@@ -1,4 +1,4 @@
-namespace Crpg.Domain.Entities
+namespace Crpg.Domain.Entities.Items
 {
     public enum ItemType
     {

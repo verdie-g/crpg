@@ -2,6 +2,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Queries;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Characters;
+using Crpg.Domain.Entities.Items;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters

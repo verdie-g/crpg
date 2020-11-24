@@ -1,4 +1,6 @@
-namespace Crpg.Domain.Entities
+using Crpg.Domain.Entities.Users;
+
+namespace Crpg.Domain.Entities.Items
 {
     public class UserItem
     {

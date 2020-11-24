@@ -6,6 +6,7 @@ using Crpg.Application.Bans.Models;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Mappings;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Application.Games.Models
 {

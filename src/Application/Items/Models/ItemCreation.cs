@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Items;
 
 namespace Crpg.Application.Items.Models
 {

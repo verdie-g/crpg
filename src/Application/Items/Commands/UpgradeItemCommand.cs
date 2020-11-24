@@ -7,6 +7,7 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Items;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Commands

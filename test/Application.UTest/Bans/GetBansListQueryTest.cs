@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Bans.Queries;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Bans

@@ -1,4 +1,5 @@
 ﻿using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Application.Common.Helpers
 {

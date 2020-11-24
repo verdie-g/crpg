@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Characters;
 using Crpg.Persistence;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;

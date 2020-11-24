@@ -1,6 +1,7 @@
 ﻿using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Items;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Common.Services

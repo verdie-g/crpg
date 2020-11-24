@@ -10,6 +10,7 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Steam;
 using Crpg.Application.Users.Models;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions.Events;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;

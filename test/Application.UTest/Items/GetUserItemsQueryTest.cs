@@ -3,6 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Items.Queries;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items

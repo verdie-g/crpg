@@ -1,4 +1,5 @@
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

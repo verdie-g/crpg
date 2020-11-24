@@ -6,6 +6,7 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Characters;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 

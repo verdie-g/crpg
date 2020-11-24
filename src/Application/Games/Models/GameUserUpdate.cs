@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Application.Games.Models
 {

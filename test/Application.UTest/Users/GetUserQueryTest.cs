@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Users.Queries;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Users

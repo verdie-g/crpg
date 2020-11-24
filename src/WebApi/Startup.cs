@@ -17,6 +17,7 @@ using Crpg.Application.Users.Commands;
 using Crpg.Application.Users.Models;
 using Crpg.Common.Helpers;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Users;
 using Crpg.Persistence;
 using Crpg.Sdk;
 using Crpg.WebApi.Converters;
