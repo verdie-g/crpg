@@ -18,7 +18,7 @@ namespace Crpg.Application.Items.Models
         public int Rank { get; set; }
 
         public ItemArmorComponentViewModel? Armor { get; set; }
-        public ItemHorseComponentViewModel? Horse { get; set; }
+        public ItemMountComponentViewModel? Mount { get; set; }
         public IList<ItemWeaponComponentViewModel> Weapons { get; set; } = Array.Empty<ItemWeaponComponentViewModel>();
 
         public void Mapping(Profile profile)

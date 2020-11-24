@@ -21,7 +21,7 @@ namespace Crpg.DumpItemsMod
         public float Weight { get; set; }
 
         public ItemArmorComponent? Armor { get; set; }
-        public ItemHorseComponent? Horse { get; set; }
+        public ItemMountComponent? Mount { get; set; }
         public IList<ItemWeaponComponent>? Weapons { get; set; }
     }
 
@@ -33,7 +33,7 @@ namespace Crpg.DumpItemsMod
         public int LegArmor { get; set; }
     }
 
-    internal class ItemHorseComponent
+    internal class ItemMountComponent
     {
         public int BodyLength { get; set; }
         public int ChargeDamage { get; set; }

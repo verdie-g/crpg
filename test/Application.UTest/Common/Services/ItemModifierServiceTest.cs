@@ -25,7 +25,7 @@ namespace Crpg.Application.UTest.Common.Services
                     ArmArmor = 100,
                     LegArmor = 100,
                 },
-                Horse = new ItemHorseComponentViewModel
+                Mount = new ItemMountComponentViewModel
                 {
                     BodyLength = 100,
                     ChargeDamage = 100,
@@ -78,11 +78,11 @@ namespace Crpg.Application.UTest.Common.Services
                 Assert.GreaterOrEqual(modifiedItems[i].Armor!.ArmArmor, modifiedItems[i - 1].Armor!.ArmArmor);
                 Assert.GreaterOrEqual(modifiedItems[i].Armor!.LegArmor, modifiedItems[i - 1].Armor!.LegArmor);
 
-                Assert.GreaterOrEqual(modifiedItems[i].Horse!.BodyLength, modifiedItems[i - 1].Horse!.BodyLength);
-                Assert.GreaterOrEqual(modifiedItems[i].Horse!.ChargeDamage, modifiedItems[i - 1].Horse!.ChargeDamage);
-                Assert.GreaterOrEqual(modifiedItems[i].Horse!.Maneuver, modifiedItems[i - 1].Horse!.Maneuver);
-                Assert.GreaterOrEqual(modifiedItems[i].Horse!.Speed, modifiedItems[i - 1].Horse!.Speed);
-                Assert.GreaterOrEqual(modifiedItems[i].Horse!.HitPoints, modifiedItems[i - 1].Horse!.HitPoints);
+                Assert.GreaterOrEqual(modifiedItems[i].Mount!.BodyLength, modifiedItems[i - 1].Mount!.BodyLength);
+                Assert.GreaterOrEqual(modifiedItems[i].Mount!.ChargeDamage, modifiedItems[i - 1].Mount!.ChargeDamage);
+                Assert.GreaterOrEqual(modifiedItems[i].Mount!.Maneuver, modifiedItems[i - 1].Mount!.Maneuver);
+                Assert.GreaterOrEqual(modifiedItems[i].Mount!.Speed, modifiedItems[i - 1].Mount!.Speed);
+                Assert.GreaterOrEqual(modifiedItems[i].Mount!.HitPoints, modifiedItems[i - 1].Mount!.HitPoints);
 
                 Assert.GreaterOrEqual(modifiedItems[i].Weapons[0].Accuracy, modifiedItems[i - 1].Weapons[0].Accuracy);
                 Assert.GreaterOrEqual(modifiedItems[i].Weapons[0].MissileSpeed, modifiedItems[i - 1].Weapons[0].MissileSpeed);

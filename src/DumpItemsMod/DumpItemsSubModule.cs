@@ -106,7 +106,7 @@ namespace Crpg.DumpItemsMod
 
             if (mbItem.HorseComponent != null)
             {
-                crpgItem.Horse = new ItemHorseComponent
+                crpgItem.Mount = new ItemMountComponent
                 {
                     BodyLength = mbItem.HorseComponent.BodyLength,
                     ChargeDamage = mbItem.HorseComponent.ChargeDamage,
@@ -143,6 +143,8 @@ namespace Crpg.DumpItemsMod
 
         private static string MbToCrpgItemType(ItemObject.ItemTypeEnum t) => t switch
         {
+            ItemObject.ItemTypeEnum.Horse => "Mount", // Horse includes camel and mule.
+            ItemObject.ItemTypeEnum.HorseHarness => "MountHarness", // Horse includes camel and mule.
             ItemObject.ItemTypeEnum.Cape => "ShoulderArmor", // Cape is a bad name.
             _ => t.ToString(),
         };

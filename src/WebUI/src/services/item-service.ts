@@ -13,8 +13,8 @@ export const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.BodyArmor]: 'Body Armor',
   [ItemType.HandArmor]: 'Hand Armor',
   [ItemType.LegArmor]: 'Leg Armor',
-  [ItemType.HorseHarness]: 'Horse Harness',
-  [ItemType.Horse]: 'Horse',
+  [ItemType.MountHarness]: 'Mount Harness',
+  [ItemType.Mount]: 'Mount',
   [ItemType.Shield]: 'Shield',
   [ItemType.Bow]: 'Bow',
   [ItemType.Crossbow]: 'Crossbow',
@@ -88,8 +88,8 @@ const itemTypesBySlot: Record<ItemSlot, ItemType[]> = {
   [ItemSlot.Body]: [ItemType.BodyArmor],
   [ItemSlot.Hand]: [ItemType.HandArmor],
   [ItemSlot.Leg]: [ItemType.LegArmor],
-  [ItemSlot.HorseHarness]: [ItemType.HorseHarness],
-  [ItemSlot.Horse]: [ItemType.Horse],
+  [ItemSlot.MountHarness]: [ItemType.MountHarness],
+  [ItemSlot.Mount]: [ItemType.Mount],
   [ItemSlot.Weapon1]: weaponTypes,
   [ItemSlot.Weapon2]: weaponTypes,
   [ItemSlot.Weapon3]: weaponTypes,
@@ -155,15 +155,15 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
     case ItemType.LegArmor:
       props.fields.push(['Leg Armor', item.armor!.legArmor]);
       break;
-    case ItemType.HorseHarness:
+    case ItemType.MountHarness:
       props.fields.push(['Body Armor', item.armor!.bodyArmor]);
       break;
-    case ItemType.Horse:
+    case ItemType.Mount:
       props.fields.push(
-        ['Charge Dmg.', item.horse!.chargeDamage],
-        ['Speed', item.horse!.speed],
-        ['Maneuver', item.horse!.maneuver],
-        ['Hit Points', item.horse!.hitPoints],
+        ['Charge Dmg.', item.mount!.chargeDamage],
+        ['Speed', item.mount!.speed],
+        ['Maneuver', item.mount!.maneuver],
+        ['Hit Points', item.mount!.hitPoints],
       );
       break;
     case ItemType.Shield:

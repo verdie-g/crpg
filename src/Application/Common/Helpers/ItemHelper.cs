@@ -29,15 +29,15 @@ namespace Crpg.Application.Common.Helpers
                 };
             }
 
-            if (item.Horse != null)
+            if (item.Mount != null)
             {
-                res.Horse = new ItemHorseComponent
+                res.Mount = new ItemMountComponent
                 {
-                    BodyLength = item.Horse!.BodyLength,
-                    ChargeDamage = item.Horse!.ChargeDamage,
-                    Maneuver = item.Horse!.Maneuver,
-                    Speed = item.Horse!.Speed,
-                    HitPoints = item.Horse!.HitPoints,
+                    BodyLength = item.Mount!.BodyLength,
+                    ChargeDamage = item.Mount!.ChargeDamage,
+                    Maneuver = item.Mount!.Maneuver,
+                    Speed = item.Mount!.Speed,
+                    HitPoints = item.Mount!.HitPoints,
                 };
             }
 

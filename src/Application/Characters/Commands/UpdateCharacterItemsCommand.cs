@@ -24,8 +24,8 @@ namespace Crpg.Application.Characters.Commands
         public int? BodyItemId { get; set; }
         public int? HandItemId { get; set; }
         public int? LegItemId { get; set; }
-        public int? HorseHarnessItemId { get; set; }
-        public int? HorseItemId { get; set; }
+        public int? MountHarnessItemId { get; set; }
+        public int? MountItemId { get; set; }
         public int? Weapon1ItemId { get; set; }
         public int? Weapon2ItemId { get; set; }
         public int? Weapon3ItemId { get; set; }
@@ -65,8 +65,8 @@ namespace Crpg.Application.Characters.Commands
                     .Include(c => c.Items.BodyItem)
                     .Include(c => c.Items.HandItem)
                     .Include(c => c.Items.LegItem)
-                    .Include(c => c.Items.HorseHarnessItem)
-                    .Include(c => c.Items.HorseItem)
+                    .Include(c => c.Items.MountHarnessItem)
+                    .Include(c => c.Items.MountItem)
                     .Include(c => c.Items.Weapon1Item)
                     .Include(c => c.Items.Weapon2Item)
                     .Include(c => c.Items.Weapon3Item)
@@ -108,8 +108,8 @@ namespace Crpg.Application.Characters.Commands
                 characterItems.BodyItem = GetItemWithChecks(request.BodyItemId, new[] { ItemType.BodyArmor }, itemsById);
                 characterItems.HandItem = GetItemWithChecks(request.HandItemId, new[] { ItemType.HandArmor }, itemsById);
                 characterItems.LegItem = GetItemWithChecks(request.LegItemId, new[] { ItemType.LegArmor }, itemsById);
-                characterItems.HorseHarnessItem = GetItemWithChecks(request.HorseHarnessItemId, new[] { ItemType.HorseHarness }, itemsById);
-                characterItems.HorseItem = GetItemWithChecks(request.HorseItemId, new[] { ItemType.Horse }, itemsById);
+                characterItems.MountHarnessItem = GetItemWithChecks(request.MountHarnessItemId, new[] { ItemType.MountHarness }, itemsById);
+                characterItems.MountItem = GetItemWithChecks(request.MountItemId, new[] { ItemType.Mount }, itemsById);
                 characterItems.Weapon1Item = GetItemWithChecks(request.Weapon1ItemId, WeaponTypes, itemsById);
                 characterItems.Weapon2Item = GetItemWithChecks(request.Weapon2ItemId, WeaponTypes, itemsById);
                 characterItems.Weapon3Item = GetItemWithChecks(request.Weapon3ItemId, WeaponTypes, itemsById);
@@ -167,14 +167,14 @@ namespace Crpg.Application.Characters.Commands
                     ids.Add(request.LegItemId.Value);
                 }
 
-                if (request.HorseHarnessItemId != null)
+                if (request.MountHarnessItemId != null)
                 {
-                    ids.Add(request.HorseHarnessItemId.Value);
+                    ids.Add(request.MountHarnessItemId.Value);
                 }
 
-                if (request.HorseItemId != null)
+                if (request.MountItemId != null)
                 {
-                    ids.Add(request.HorseItemId.Value);
+                    ids.Add(request.MountItemId.Value);
                 }
 
                 if (request.Weapon1ItemId != null)

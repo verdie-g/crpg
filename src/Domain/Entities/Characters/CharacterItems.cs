@@ -14,8 +14,8 @@ namespace Crpg.Domain.Entities.Characters
         public int? BodyItemId { get; set; }
         public int? HandItemId { get; set; }
         public int? LegItemId { get; set; }
-        public int? HorseHarnessItemId { get; set; }
-        public int? HorseItemId { get; set; }
+        public int? MountHarnessItemId { get; set; }
+        public int? MountItemId { get; set; }
         public int? Weapon1ItemId { get; set; }
         public int? Weapon2ItemId { get; set; }
         public int? Weapon3ItemId { get; set; }
@@ -27,8 +27,8 @@ namespace Crpg.Domain.Entities.Characters
         public Item? BodyItem { get; set; }
         public Item? HandItem { get; set; }
         public Item? LegItem { get; set; }
-        public Item? HorseHarnessItem { get; set; }
-        public Item? HorseItem { get; set; }
+        public Item? MountHarnessItem { get; set; }
+        public Item? MountItem { get; set; }
         public Item? Weapon1Item { get; set; }
         public Item? Weapon2Item { get; set; }
         public Item? Weapon3Item { get; set; }
@@ -61,14 +61,14 @@ namespace Crpg.Domain.Entities.Characters
                 yield return (ItemSlot.Leg, LegItem);
             }
 
-            if (HorseHarnessItem != null)
+            if (MountHarnessItem != null)
             {
-                yield return (ItemSlot.HorseHarness, HorseHarnessItem);
+                yield return (ItemSlot.MountHarness, MountHarnessItem);
             }
 
-            if (HorseItem != null)
+            if (MountItem != null)
             {
-                yield return (ItemSlot.Horse, HorseItem);
+                yield return (ItemSlot.Mount, MountItem);
             }
 
             if (Weapon1Item != null)
@@ -101,8 +101,8 @@ namespace Crpg.Domain.Entities.Characters
                 BodyItemId = BodyItemId,
                 HandItemId = HandItemId,
                 LegItemId = LegItemId,
-                HorseHarnessItemId = HorseHarnessItemId,
-                HorseItemId = HorseItemId,
+                MountHarnessItemId = MountHarnessItemId,
+                MountItemId = MountItemId,
                 Weapon1ItemId = Weapon1ItemId,
                 Weapon2ItemId = Weapon2ItemId,
                 Weapon3ItemId = Weapon3ItemId,
@@ -113,8 +113,8 @@ namespace Crpg.Domain.Entities.Characters
                 BodyItem = BodyItem,
                 HandItem = HandItem,
                 LegItem = LegItem,
-                HorseHarnessItem = HorseHarnessItem,
-                HorseItem = HorseItem,
+                MountHarnessItem = MountHarnessItem,
+                MountItem = MountItem,
                 Weapon1Item = Weapon1Item,
                 Weapon2Item = Weapon2Item,
                 Weapon3Item = Weapon3Item,

@@ -5,7 +5,7 @@ using Crpg.Domain.Entities.Items;
 
 namespace Crpg.Application.Items.Models
 {
-    public class ItemHorseComponentViewModel : IMapFrom<ItemHorseComponent>, ICloneable
+    public class ItemMountComponentViewModel : IMapFrom<ItemMountComponent>, ICloneable
     {
         public int BodyLength { get; set; }
         public int ChargeDamage { get; set; }
@@ -13,7 +13,7 @@ namespace Crpg.Application.Items.Models
         public int Speed { get; set; }
         public int HitPoints { get; set; }
 
-        public object Clone() => new ItemHorseComponentViewModel
+        public object Clone() => new ItemMountComponentViewModel
         {
             BodyLength = BodyLength,
             ChargeDamage = ChargeDamage,

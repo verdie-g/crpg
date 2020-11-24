@@ -70,13 +70,13 @@ namespace Crpg.Application.Items.Commands
                 {
                     items.LegItemId = null;
                 }
-                else if (items.HorseHarnessItemId == itemId)
+                else if (items.MountHarnessItemId == itemId)
                 {
-                    items.HorseHarnessItemId = null;
+                    items.MountHarnessItemId = null;
                 }
-                else if (items.HorseItemId == itemId)
+                else if (items.MountItemId == itemId)
                 {
-                    items.HorseItemId = null;
+                    items.MountItemId = null;
                 }
                 else if (items.Weapon1ItemId == itemId)
                 {

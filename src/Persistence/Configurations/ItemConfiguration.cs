@@ -11,7 +11,7 @@ namespace Crpg.Persistence.Configurations
         {
             builder.HasIndex(i => i.MbId).IsUnique();
             builder.OwnsOne(i => i.Armor);
-            builder.OwnsOne(i => i.Horse);
+            builder.OwnsOne(i => i.Mount);
             builder.OwnsOne(i => i.PrimaryWeapon);
             builder.OwnsOne(i => i.SecondaryWeapon);
             builder.OwnsOne(i => i.TertiaryWeapon);

@@ -12,8 +12,8 @@ namespace Crpg.Application.Characters.Models
         public ItemViewModel? BodyItem { get; set; }
         public ItemViewModel? HandItem { get; set; }
         public ItemViewModel? LegItem { get; set; }
-        public ItemViewModel? HorseItem { get; set; }
-        public ItemViewModel? HorseHarnessItem { get; set; }
+        public ItemViewModel? MountItem { get; set; }
+        public ItemViewModel? MountHarnessItem { get; set; }
         public ItemViewModel? Weapon1Item { get; set; }
         public ItemViewModel? Weapon2Item { get; set; }
         public ItemViewModel? Weapon3Item { get; set; }

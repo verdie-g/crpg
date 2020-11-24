@@ -28,13 +28,13 @@
           </div>
         </div>
 
-        <div class="column is-narrow horse-column">
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.HorseHarness)">
-            <img v-if="character.items.horseHarnessItem" :src="itemImage(character.items.horseHarnessItem)" alt="Horse harness" />
+        <div class="column is-narrow mount-column">
+          <div class="box item-box" @click="openReplaceItemModal(itemSlot.MountHarness)">
+            <img v-if="character.items.mountHarnessItem" :src="itemImage(character.items.mountHarnessItem)" alt="Mount harness" />
             <img v-else src="../assets/horse-harness.png" alt="Horse harness" class="item-placeholder" />
           </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Horse)">
-            <img v-if="character.items.horseItem" :src="itemImage(character.items.horseItem)" alt="Horse" />
+          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Mount)">
+            <img v-if="character.items.mountItem" :src="itemImage(character.items.mountItem)" alt="Mount" />
           </div>
         </div>
 
@@ -237,7 +237,7 @@ export default class CharacterComponent extends Vue {
     padding-bottom: 8px; // so the silhouette's feet ain't cropped
   }
 
-  .horse-column {
+  .mount-column {
     width: 250px;
     display: flex;
     justify-content: flex-end;

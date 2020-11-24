@@ -644,8 +644,8 @@ namespace Crpg.Application.UTest.Games
                             BodyItem = new Item(),
                             HandItem = new Item(),
                             LegItem = new Item(),
-                            HorseHarnessItem = new Item(),
-                            HorseItem = new Item(),
+                            MountHarnessItem = new Item(),
+                            MountItem = new Item(),
                             Weapon1Item = new Item(),
                             Weapon2Item = new Item(),
                             Weapon3Item = new Item(),
@@ -677,8 +677,8 @@ namespace Crpg.Application.UTest.Games
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.BodyItemId!.Value, RepairCost = 200 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.HandItemId!.Value, RepairCost = 250 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.LegItemId!.Value, RepairCost = 300 },
-                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.HorseHarnessItemId!.Value, RepairCost = 350 },
-                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.HorseItemId!.Value, RepairCost = 400 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.MountHarnessItemId!.Value, RepairCost = 350 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.MountItemId!.Value, RepairCost = 400 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon1ItemId!.Value, RepairCost = 450 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon2ItemId!.Value, RepairCost = 500 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon3ItemId!.Value, RepairCost = 550 },
@@ -699,8 +699,8 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(expectedItems.BodyItem!.Id, actualItems.BodyItem!.Id);
             Assert.AreEqual(expectedItems.HandItem!.Id, actualItems.HandItem!.Id);
             Assert.AreEqual(expectedItems.LegItem!.Id, actualItems.LegItem!.Id);
-            Assert.AreEqual(expectedItems.HorseHarnessItem!.Id, actualItems.HorseHarnessItem!.Id);
-            Assert.AreEqual(expectedItems.HorseItem!.Id, actualItems.HorseItem!.Id);
+            Assert.AreEqual(expectedItems.MountHarnessItem!.Id, actualItems.MountHarnessItem!.Id);
+            Assert.AreEqual(expectedItems.MountItem!.Id, actualItems.MountItem!.Id);
             Assert.AreEqual(expectedItems.Weapon1Item!.Id, actualItems.Weapon1Item!.Id);
             Assert.AreEqual(expectedItems.Weapon2Item!.Id, actualItems.Weapon2Item!.Id);
             Assert.AreEqual(expectedItems.Weapon3Item!.Id, actualItems.Weapon3Item!.Id);
@@ -727,8 +727,8 @@ namespace Crpg.Application.UTest.Games
                             BodyItem = new Item { Rank = 1 },
                             HandItem = new Item { Rank = 0 },
                             LegItem = new Item { Rank = -1 },
-                            HorseHarnessItem = new Item { Rank = -2 },
-                            HorseItem = new Item { Rank = -3 },
+                            MountHarnessItem = new Item { Rank = -2 },
+                            MountItem = new Item { Rank = -3 },
                             Weapon1Item = new Item { Rank = -2 },
                             Weapon2Item = new Item { Rank = -1 },
                             Weapon3Item = new Item { Rank = 0 },
@@ -777,8 +777,8 @@ namespace Crpg.Application.UTest.Games
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.BodyItemId!.Value, RepairCost = 200 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.HandItemId!.Value, RepairCost = 250 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.LegItemId!.Value, RepairCost = 300 },
-                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.HorseHarnessItemId!.Value, RepairCost = 350 },
-                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.HorseItemId!.Value, RepairCost = 400 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.MountHarnessItemId!.Value, RepairCost = 350 },
+                            new GameUserBrokenItem { ItemId = user.Characters[0].Items.MountItemId!.Value, RepairCost = 400 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon1ItemId!.Value, RepairCost = 450 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon2ItemId!.Value, RepairCost = 500 },
                             new GameUserBrokenItem { ItemId = user.Characters[0].Items.Weapon3ItemId!.Value, RepairCost = 550 },
@@ -798,8 +798,8 @@ namespace Crpg.Application.UTest.Games
                 .Include(u => u.Characters).ThenInclude(c => c.Items.ShoulderItem)
                 .Include(u => u.Characters).ThenInclude(c => c.Items.HandItem)
                 .Include(u => u.Characters).ThenInclude(c => c.Items.LegItem)
-                .Include(u => u.Characters).ThenInclude(c => c.Items.HorseHarnessItem)
-                .Include(u => u.Characters).ThenInclude(c => c.Items.HorseItem)
+                .Include(u => u.Characters).ThenInclude(c => c.Items.MountHarnessItem)
+                .Include(u => u.Characters).ThenInclude(c => c.Items.MountItem)
                 .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon1Item)
                 .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon2Item)
                 .Include(u => u.Characters).ThenInclude(c => c.Items.Weapon3Item)
@@ -810,8 +810,8 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(0, user.Characters[0].Items.BodyItem!.Rank);
             Assert.AreEqual(-1, user.Characters[0].Items.HandItem!.Rank);
             Assert.AreEqual(-2, user.Characters[0].Items.LegItem!.Rank);
-            Assert.AreEqual(-3, user.Characters[0].Items.HorseHarnessItem!.Rank);
-            Assert.IsNull(user.Characters[0].Items.HorseItem);
+            Assert.AreEqual(-3, user.Characters[0].Items.MountHarnessItem!.Rank);
+            Assert.IsNull(user.Characters[0].Items.MountItem);
             Assert.AreEqual(-3, user.Characters[0].Items.Weapon1Item!.Rank);
             Assert.AreEqual(-2, user.Characters[0].Items.Weapon2Item!.Rank);
             Assert.AreEqual(-1, user.Characters[0].Items.Weapon3Item!.Rank);

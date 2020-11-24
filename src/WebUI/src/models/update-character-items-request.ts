@@ -4,8 +4,8 @@ export class UpdateCharacterItemsRequest {
   public bodyItemId: number | null;
   public handItemId: number | null;
   public legItemId: number | null;
-  public horseHarnessItemId: number | null;
-  public horseItemId: number | null;
+  public mountHarnessItemId: number | null;
+  public mountItemId: number | null;
   public weapon1ItemId: number | null;
   public weapon2ItemId: number | null;
   public weapon3ItemId: number | null;

@@ -33,13 +33,13 @@ const characterItemSlots: Record<ItemSlot, CharacterItemSlot> = {
     getItem: characterItems => characterItems.legItem,
     setItem: (characterItems, item) => characterItems.legItem = item,
   },
-  [ItemSlot.HorseHarness]: {
-    getItem: characterItems => characterItems.horseHarnessItem,
-    setItem: (characterItems, item) => characterItems.horseHarnessItem = item,
+  [ItemSlot.MountHarness]: {
+    getItem: characterItems => characterItems.mountHarnessItem,
+    setItem: (characterItems, item) => characterItems.mountHarnessItem = item,
   },
-  [ItemSlot.Horse]: {
-    getItem: characterItems => characterItems.horseItem,
-    setItem: (characterItems, item) => characterItems.horseItem = item,
+  [ItemSlot.Mount]: {
+    getItem: characterItems => characterItems.mountItem,
+    setItem: (characterItems, item) => characterItems.mountItem = item,
   },
   [ItemSlot.Weapon1]: {
     getItem: characterItems => characterItems.weapon1Item,
@@ -66,8 +66,8 @@ function listCharacterItems(items: CharacterItems): Item[] {
     items.bodyItem!,
     items.handItem!,
     items.legItem!,
-    items.horseHarnessItem!,
-    items.horseItem!,
+    items.mountHarnessItem!,
+    items.mountItem!,
     items.weapon1Item!,
     items.weapon2Item!,
     items.weapon3Item!,
@@ -90,8 +90,8 @@ export function updateCharacterItems(characterId: number, items: CharacterItems)
     bodyItemId: items.bodyItem?.id ?? null,
     handItemId: items.handItem?.id ?? null,
     legItemId: items.legItem?.id ?? null,
-    horseHarnessItemId: items.horseHarnessItem?.id ?? null,
-    horseItemId: items.horseItem?.id ?? null,
+    mountHarnessItemId: items.mountHarnessItem?.id ?? null,
+    mountItemId: items.mountItem?.id ?? null,
     weapon1ItemId: items.weapon1Item?.id ?? null,
     weapon2ItemId: items.weapon2Item?.id ?? null,
     weapon3ItemId: items.weapon3Item?.id ?? null,

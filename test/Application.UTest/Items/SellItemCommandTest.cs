@@ -56,8 +56,8 @@ namespace Crpg.Application.UTest.Items
                 new Character { Items = { BodyItem = item } },
                 new Character { Items = { HandItem = item } },
                 new Character { Items = { LegItem = item } },
-                new Character { Items = { HorseHarnessItem = item } },
-                new Character { Items = { HorseItem = item } },
+                new Character { Items = { MountHarnessItem = item } },
+                new Character { Items = { MountItem = item } },
                 new Character { Items = { Weapon1Item = item } },
                 new Character { Items = { Weapon2Item = item } },
                 new Character { Items = { Weapon3Item = item } },
@@ -89,8 +89,8 @@ namespace Crpg.Application.UTest.Items
             Assert.Null(user.Characters[2].Items.BodyItemId);
             Assert.Null(user.Characters[3].Items.HeadItemId);
             Assert.Null(user.Characters[4].Items.LegItemId);
-            Assert.Null(user.Characters[5].Items.HorseHarnessItemId);
-            Assert.Null(user.Characters[6].Items.HorseItemId);
+            Assert.Null(user.Characters[5].Items.MountHarnessItemId);
+            Assert.Null(user.Characters[6].Items.MountItemId);
             Assert.Null(user.Characters[7].Items.Weapon1ItemId);
             Assert.Null(user.Characters[8].Items.Weapon2ItemId);
             Assert.Null(user.Characters[9].Items.Weapon3ItemId);

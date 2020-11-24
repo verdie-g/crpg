@@ -16,7 +16,7 @@ namespace Crpg.Application.Items.Models
         public int Rank { get; set; }
 
         public ItemArmorComponentViewModel? Armor { get; set; }
-        public ItemHorseComponentViewModel? Horse { get; set; }
+        public ItemMountComponentViewModel? Mount { get; set; }
         public IList<ItemWeaponComponentViewModel> Weapons { get; set; } = Array.Empty<ItemWeaponComponentViewModel>();
 
         public object Clone()
@@ -30,7 +30,7 @@ namespace Crpg.Application.Items.Models
                 Weight = Weight,
                 Rank = Rank,
                 Armor = (ItemArmorComponentViewModel?)Armor?.Clone(),
-                Horse = (ItemHorseComponentViewModel?)Horse?.Clone(),
+                Mount = (ItemMountComponentViewModel?)Mount?.Clone(),
                 Weapons = Weapons.Select(w => (ItemWeaponComponentViewModel)w.Clone()).ToArray(),
             };
         }

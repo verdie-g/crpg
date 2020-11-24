@@ -36,9 +36,9 @@ namespace Crpg.Domain.Entities.Items
         public ItemArmorComponent? Armor { get; set; }
 
         /// <summary>
-        /// Horse component of an item. If not null, the item is a mount.
+        /// Mount component of an item. If not null, the item is a mount.
         /// </summary>
-        public ItemHorseComponent? Horse { get; set; }
+        public ItemMountComponent? Mount { get; set; }
 
         /// <summary>
         /// Represents the first mode of a weapon. An item can have several modes for example a polearm that has a one

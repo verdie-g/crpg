@@ -26,10 +26,10 @@ namespace Crpg.Application.UTest.Characters
             var handNew = ArrangeDb.Items.Add(new Item { Type = ItemType.HandArmor });
             var legOld = ArrangeDb.Items.Add(new Item { Type = ItemType.LegArmor });
             var legNew = ArrangeDb.Items.Add(new Item { Type = ItemType.LegArmor });
-            var horseHarnessOld = ArrangeDb.Items.Add(new Item { Type = ItemType.HorseHarness });
-            var horseHarnessNew = ArrangeDb.Items.Add(new Item { Type = ItemType.HorseHarness });
-            var horseOld = ArrangeDb.Items.Add(new Item { Type = ItemType.Horse });
-            var horseNew = ArrangeDb.Items.Add(new Item { Type = ItemType.Horse });
+            var mountHarnessOld = ArrangeDb.Items.Add(new Item { Type = ItemType.MountHarness });
+            var mountHarnessNew = ArrangeDb.Items.Add(new Item { Type = ItemType.MountHarness });
+            var mountOld = ArrangeDb.Items.Add(new Item { Type = ItemType.Mount });
+            var mountNew = ArrangeDb.Items.Add(new Item { Type = ItemType.Mount });
             var weapon1Old = ArrangeDb.Items.Add(new Item { Type = ItemType.Arrows });
             var weapon1New = ArrangeDb.Items.Add(new Item { Type = ItemType.Bolts });
             var weapon2Old = ArrangeDb.Items.Add(new Item { Type = ItemType.Bow });
@@ -48,8 +48,8 @@ namespace Crpg.Application.UTest.Characters
                     BodyItem = bodyOld.Entity,
                     HandItem = handOld.Entity,
                     LegItem = legOld.Entity,
-                    HorseHarnessItem = horseHarnessOld.Entity,
-                    HorseItem = horseOld.Entity,
+                    MountHarnessItem = mountHarnessOld.Entity,
+                    MountItem = mountOld.Entity,
                     Weapon1Item = weapon1Old.Entity,
                     Weapon2Item = weapon2Old.Entity,
                     Weapon3Item = weapon3Old.Entity,
@@ -71,10 +71,10 @@ namespace Crpg.Application.UTest.Characters
                     new UserItem { Item = handNew.Entity },
                     new UserItem { Item = legOld.Entity },
                     new UserItem { Item = legNew.Entity },
-                    new UserItem { Item = horseHarnessOld.Entity },
-                    new UserItem { Item = horseHarnessNew.Entity },
-                    new UserItem { Item = horseOld.Entity },
-                    new UserItem { Item = horseNew.Entity },
+                    new UserItem { Item = mountHarnessOld.Entity },
+                    new UserItem { Item = mountHarnessNew.Entity },
+                    new UserItem { Item = mountOld.Entity },
+                    new UserItem { Item = mountNew.Entity },
                     new UserItem { Item = weapon1Old.Entity },
                     new UserItem { Item = weapon1New.Entity },
                     new UserItem { Item = weapon2Old.Entity },
@@ -98,8 +98,8 @@ namespace Crpg.Application.UTest.Characters
                 BodyItemId = bodyNew.Entity.Id,
                 HandItemId = handNew.Entity.Id,
                 LegItemId = legNew.Entity.Id,
-                HorseHarnessItemId = horseHarnessNew.Entity.Id,
-                HorseItemId = horseNew.Entity.Id,
+                MountHarnessItemId = mountHarnessNew.Entity.Id,
+                MountItemId = mountNew.Entity.Id,
                 Weapon1ItemId = weapon1New.Entity.Id,
                 Weapon2ItemId = weapon2New.Entity.Id,
                 Weapon3ItemId = weapon3New.Entity.Id,
@@ -114,8 +114,8 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(cmd.BodyItemId, c.BodyItem!.Id);
             Assert.AreEqual(cmd.HandItemId, c.HandItem!.Id);
             Assert.AreEqual(cmd.LegItemId, c.LegItem!.Id);
-            Assert.AreEqual(cmd.HorseHarnessItemId, c.HorseHarnessItem!.Id);
-            Assert.AreEqual(cmd.HorseItemId, c.HorseItem!.Id);
+            Assert.AreEqual(cmd.MountHarnessItemId, c.MountHarnessItem!.Id);
+            Assert.AreEqual(cmd.MountItemId, c.MountItem!.Id);
             Assert.AreEqual(cmd.Weapon1ItemId, c.Weapon1Item!.Id);
             Assert.AreEqual(cmd.Weapon2ItemId, c.Weapon2Item!.Id);
             Assert.AreEqual(cmd.Weapon3ItemId, c.Weapon3Item!.Id);
@@ -139,8 +139,8 @@ namespace Crpg.Application.UTest.Characters
                     BodyItem = null,
                     HandItem = null,
                     LegItem = legOld.Entity,
-                    HorseHarnessItem = null,
-                    HorseItem = null,
+                    MountHarnessItem = null,
+                    MountItem = null,
                     Weapon1Item = null,
                     Weapon2Item = null,
                     Weapon3Item = null,
@@ -171,8 +171,8 @@ namespace Crpg.Application.UTest.Characters
                 BodyItemId = bodyNew.Entity.Id,
                 HandItemId = null,
                 LegItemId = null,
-                HorseHarnessItemId = null,
-                HorseItemId = null,
+                MountHarnessItemId = null,
+                MountItemId = null,
                 Weapon1ItemId = null,
                 Weapon2ItemId = null,
                 Weapon3ItemId = null,
@@ -187,8 +187,8 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(cmd.BodyItemId, c.BodyItem!.Id);
             Assert.IsNull(c.HandItem);
             Assert.IsNull(c.LegItem);
-            Assert.IsNull(c.HorseHarnessItem);
-            Assert.IsNull(c.HorseItem);
+            Assert.IsNull(c.MountHarnessItem);
+            Assert.IsNull(c.MountItem);
             Assert.IsNull(c.Weapon1Item);
             Assert.IsNull(c.Weapon2Item);
             Assert.IsNull(c.Weapon3Item);
@@ -301,8 +301,8 @@ namespace Crpg.Application.UTest.Characters
             var body = ArrangeDb.Items.Add(new Item { Type = ItemType.BodyArmor });
             var hand = ArrangeDb.Items.Add(new Item { Type = ItemType.HandArmor });
             var leg = ArrangeDb.Items.Add(new Item { Type = ItemType.LegArmor });
-            var horseHarness = ArrangeDb.Items.Add(new Item { Type = ItemType.HorseHarness });
-            var horse = ArrangeDb.Items.Add(new Item { Type = ItemType.Horse });
+            var mountHarness = ArrangeDb.Items.Add(new Item { Type = ItemType.MountHarness });
+            var mount = ArrangeDb.Items.Add(new Item { Type = ItemType.Mount });
             var weapon = ArrangeDb.Items.Add(new Item { Type = ItemType.OneHandedWeapon });
             var character = ArrangeDb.Characters.Add(new Character());
             var user = ArrangeDb.Users.Add(new User
@@ -314,8 +314,8 @@ namespace Crpg.Application.UTest.Characters
                     new UserItem { Item = body.Entity },
                     new UserItem { Item = hand.Entity },
                     new UserItem { Item = leg.Entity },
-                    new UserItem { Item = horseHarness.Entity },
-                    new UserItem { Item = horse.Entity },
+                    new UserItem { Item = mountHarness.Entity },
+                    new UserItem { Item = mount.Entity },
                     new UserItem { Item = weapon.Entity },
                 },
                 Characters = new List<Character> { character.Entity }
@@ -332,11 +332,11 @@ namespace Crpg.Application.UTest.Characters
                 BodyItemId = itemType == ItemType.BodyArmor ? null : (int?)shoulder.Entity.Id,
                 HandItemId = itemType == ItemType.HandArmor ? null : (int?)body.Entity.Id,
                 LegItemId = itemType == ItemType.LegArmor ? null : (int?)hand.Entity.Id,
-                HorseHarnessItemId = itemType == ItemType.HorseHarness ? null : (int?)leg.Entity.Id,
-                HorseItemId = itemType == ItemType.Horse ? null : (int?)horseHarness.Entity.Id,
+                MountHarnessItemId = itemType == ItemType.MountHarness ? null : (int?)leg.Entity.Id,
+                MountItemId = itemType == ItemType.Mount ? null : (int?)mountHarness.Entity.Id,
                 Weapon1ItemId = itemType == ItemType.Arrows || itemType == ItemType.Bolts || itemType == ItemType.Bow
                     ? null
-                    : (int?)horse.Entity.Id,
+                    : (int?)mount.Entity.Id,
                 Weapon2ItemId = itemType == ItemType.Crossbow || itemType == ItemType.OneHandedWeapon
                     ? null
                     : (int?)head.Entity.Id,

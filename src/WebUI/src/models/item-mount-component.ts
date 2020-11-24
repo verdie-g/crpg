@@ -1,4 +1,4 @@
-export default class ItemHorseComponent {
+export default class ItemMountComponent {
   public bodyLength: number;
   public chargeDamage: number;
   public maneuver: number;

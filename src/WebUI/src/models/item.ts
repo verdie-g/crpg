@@ -1,6 +1,6 @@
 import ItemType from '@/models/item-type';
 import ItemArmorComponent from '@/models/item-armor-component';
-import ItemHorseComponent from '@/models/item-horse-component';
+import ItemMountComponent from '@/models/item-mount-component';
 import ItemWeaponComponent from '@/models/item-weapon-component';
 
 export default class Item {
@@ -13,6 +13,6 @@ export default class Item {
   public rank: number;
 
   public armor: ItemArmorComponent | null;
-  public horse: ItemHorseComponent | null;
+  public mount: ItemMountComponent | null;
   public weapons: ItemWeaponComponent[];
 }

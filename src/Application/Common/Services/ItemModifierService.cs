@@ -22,14 +22,14 @@ namespace Crpg.Application.Common.Services
             new ArmorModifier { Name = "Lordly",     Value = 1.3f,  Armor = 1.09f },
         };
 
-        private static readonly ItemModifier[] HorseModifiers =
+        private static readonly ItemModifier[] MountModifiers =
         {
-            new HorseModifier { Name = "Lame",      Value = 0.3f,  HitPoints = 0.75f, Speed = 0.7f,  Maneuver = 0.7f,  ChargeDamage = 0.8f },
-            new HorseModifier { Name = "Swayback",  Value = 0.7f,  HitPoints = 0.85f, Speed = 0.8f,  Maneuver = 0.8f,  ChargeDamage = 1f },
-            new HorseModifier { Name = "Stubborn",  Value = 0.85f, HitPoints = 0.95f, Speed = 0.9f,  Maneuver = 0.9f,  ChargeDamage = 1f },
-            new HorseModifier { Name = "Well Bred", Value = 1.1f,  HitPoints = 1.05f, Speed = 1f,    Maneuver = 1.04f, ChargeDamage = 1.05f },
-            new HorseModifier { Name = "Spirited",  Value = 1.2f,  HitPoints = 1.05f, Speed = 1.04f, Maneuver = 1.04f, ChargeDamage = 1.1f },
-            new HorseModifier { Name = "Champion",  Value = 1.3f,  HitPoints = 1.07f, Speed = 1.07f, Maneuver = 1.07f, ChargeDamage = 1.15f },
+            new MountModifier { Name = "Lame",      Value = 0.3f,  HitPoints = 0.75f, Speed = 0.7f,  Maneuver = 0.7f,  ChargeDamage = 0.8f },
+            new MountModifier { Name = "Swayback",  Value = 0.7f,  HitPoints = 0.85f, Speed = 0.8f,  Maneuver = 0.8f,  ChargeDamage = 1f },
+            new MountModifier { Name = "Stubborn",  Value = 0.85f, HitPoints = 0.95f, Speed = 0.9f,  Maneuver = 0.9f,  ChargeDamage = 1f },
+            new MountModifier { Name = "Well Bred", Value = 1.1f,  HitPoints = 1.05f, Speed = 1f,    Maneuver = 1.04f, ChargeDamage = 1.05f },
+            new MountModifier { Name = "Spirited",  Value = 1.2f,  HitPoints = 1.05f, Speed = 1.04f, Maneuver = 1.04f, ChargeDamage = 1.1f },
+            new MountModifier { Name = "Champion",  Value = 1.3f,  HitPoints = 1.07f, Speed = 1.07f, Maneuver = 1.07f, ChargeDamage = 1.15f },
         };
 
         private static readonly ItemModifier[] ShieldModifiers =
@@ -109,8 +109,8 @@ namespace Crpg.Application.Common.Services
             [ItemType.BodyArmor] = ArmorModifiers,
             [ItemType.HandArmor] = ArmorModifiers,
             [ItemType.LegArmor] = ArmorModifiers,
-            [ItemType.HorseHarness] = ArmorModifiers,
-            [ItemType.Horse] = HorseModifiers,
+            [ItemType.MountHarness] = ArmorModifiers,
+            [ItemType.Mount] = MountModifiers,
             [ItemType.Shield] = ShieldModifiers,
             [ItemType.Bow] = BowModifiers,
             [ItemType.Crossbow] = CrossbowModifiers,
@@ -181,7 +181,7 @@ namespace Crpg.Application.Common.Services
             }
         }
 
-        private class HorseModifier : ItemModifier
+        private class MountModifier : ItemModifier
         {
             public float ChargeDamage { get; set; }
             public float Maneuver { get; set; }
@@ -191,10 +191,10 @@ namespace Crpg.Application.Common.Services
             public override void Apply(ItemCreation item)
             {
                 base.Apply(item);
-                item.Horse!.ChargeDamage = Scale(item.Horse.ChargeDamage, ChargeDamage);
-                item.Horse!.Maneuver = Scale(item.Horse.Maneuver, Maneuver);
-                item.Horse!.Speed = Scale(item.Horse.Speed, Speed);
-                item.Horse!.HitPoints = Scale(item.Horse.HitPoints, HitPoints);
+                item.Mount!.ChargeDamage = Scale(item.Mount.ChargeDamage, ChargeDamage);
+                item.Mount!.Maneuver = Scale(item.Mount.Maneuver, Maneuver);
+                item.Mount!.Speed = Scale(item.Mount.Speed, Speed);
+                item.Mount!.HitPoints = Scale(item.Mount.HitPoints, HitPoints);
             }
         }
 

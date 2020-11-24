@@ -8,8 +8,8 @@ namespace Crpg.GameMod.Api.Models
         public CrpgItem? BodyItem { get; set; }
         public CrpgItem? HandItem { get; set; }
         public CrpgItem? LegItem { get; set; }
-        public CrpgItem? HorseItem { get; set; }
-        public CrpgItem? HorseHarnessItem { get; set; }
+        public CrpgItem? MountItem { get; set; }
+        public CrpgItem? MountHarnessItem { get; set; }
         public CrpgItem? Weapon1Item { get; set; }
         public CrpgItem? Weapon2Item { get; set; }
         public CrpgItem? Weapon3Item { get; set; }

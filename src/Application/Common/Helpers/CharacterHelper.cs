@@ -60,8 +60,8 @@ namespace Crpg.Application.Common.Helpers
             items.BodyItemId = null;
             items.HandItemId = null;
             items.LegItemId = null;
-            items.HorseHarnessItemId = null;
-            items.HorseItemId = null;
+            items.MountHarnessItemId = null;
+            items.MountItemId = null;
             items.Weapon1ItemId = null;
             items.Weapon2ItemId = null;
             items.Weapon3ItemId = null;
@@ -90,13 +90,13 @@ namespace Crpg.Application.Common.Helpers
             {
                 items.LegItemId = itemToReplaceWithId;
             }
-            else if (items.HorseHarnessItemId == itemToReplaceId)
+            else if (items.MountHarnessItemId == itemToReplaceId)
             {
-                items.HorseHarnessItemId = itemToReplaceWithId;
+                items.MountHarnessItemId = itemToReplaceWithId;
             }
-            else if (items.HorseItemId == itemToReplaceId)
+            else if (items.MountItemId == itemToReplaceId)
             {
-                items.HorseItemId = itemToReplaceWithId;
+                items.MountItemId = itemToReplaceWithId;
             }
             else if (items.Weapon1ItemId == itemToReplaceId)
             {

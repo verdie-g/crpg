@@ -115,7 +115,7 @@
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('riding') ? 'is-primary' : 'is-danger'">
         <template slot="label">
-          <b-tooltip label="Increases riding speed, acceleration and maneuver. Allows you to ride higher tier horses.
+          <b-tooltip label="Increases riding speed, acceleration and maneuver. Allows you to ride higher tier mounts.
                      Requires 3 agility per level." position="is-left" multilined>Riding</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
@@ -136,7 +136,7 @@
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('horseArchery') ? 'is-primary' : 'is-danger'">
         <template slot="label">
-          <b-tooltip label="Reduces penalty for using ranged weapons on a moving horse by 10% per level. Requires 6 agility per level."
+          <b-tooltip label="Reduces penalty for using ranged weapons on a moving mount by 10% per level. Requires 6 agility per level."
                      position="is-left" multilined>Horse Archery</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
