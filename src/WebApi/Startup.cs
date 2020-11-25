@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Security.Claims;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -16,15 +15,12 @@ using Crpg.Application.Steam;
 using Crpg.Application.Users.Commands;
 using Crpg.Application.Users.Models;
 using Crpg.Common.Helpers;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
 using Crpg.Persistence;
 using Crpg.Sdk;
 using Crpg.WebApi.Converters;
 using Crpg.WebApi.Identity;
-using Crpg.WebApi.Middlewares;
 using Crpg.WebApi.Services;
-using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 using MediatR;
@@ -124,7 +120,6 @@ namespace Crpg.WebApi
             }
 
             app
-                .UseCustomExceptionHandler()
                 .UseSwagger()
                 .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Crpg API"))
                 .UseRouting()

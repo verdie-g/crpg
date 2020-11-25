@@ -86,6 +86,7 @@ namespace Crpg.WebApi.Controllers
             {
                 ErrorType.Validation => BadRequest(result),
                 ErrorType.NotFound => NotFound(result),
+                ErrorType.Conflict => Conflict(result),
                 _ => StatusCode((int)HttpStatusCode.InternalServerError, result),
             };
         }
