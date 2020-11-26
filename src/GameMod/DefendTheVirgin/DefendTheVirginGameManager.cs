@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Xml;
 using Crpg.GameMod.Api;
 using Crpg.GameMod.Api.Models;
+using Crpg.GameMod.Api.Models.Characters;
+using Crpg.GameMod.Api.Models.Users;
 using Crpg.GameMod.Common;
 using Crpg.GameMod.Helpers;
 using Newtonsoft.Json;
@@ -16,7 +18,7 @@ using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.PlatformService;
 using Module = TaleWorlds.MountAndBlade.Module;
-using Platform = Crpg.GameMod.Api.Models.Platform;
+using Platform = Crpg.GameMod.Api.Models.Users.Platform;
 
 namespace Crpg.GameMod.DefendTheVirgin
 {

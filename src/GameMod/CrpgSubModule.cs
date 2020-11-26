@@ -1,4 +1,6 @@
-﻿using Crpg.GameMod.DefendTheVirgin;
+﻿using System.IO;
+using Crpg.GameMod.DefendTheVirgin;
+using Crpg.GameMod.ItemsExporting;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
@@ -17,6 +19,16 @@ namespace Crpg.GameMod
 
             Module.CurrentModule.AddInitialStateOption(new InitialStateOption("DefendTheVirgin", new TextObject("{=4gpGhbeJ}Defend The Virgin"),
                 4567, () => MBGameManager.StartNewGame(new DefendTheVirginGameManager()), false));
+
+            #if false
+            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportItems", new TextObject("Export Items"), 4578, () =>
+            {
+                string outputPath = "../../Items";
+                InformationManager.DisplayMessage(new InformationMessage($"Exporting items to {Path.GetFullPath(outputPath)}."));
+                var exporter = new ItemExporter();
+                exporter.Export(outputPath).ContinueWith(_ => InformationManager.DisplayMessage(new InformationMessage("Done.")));
+            }, false));
+            #endif
 
             /*
             Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode());

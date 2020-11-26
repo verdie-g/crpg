@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Crpg.GameMod.Api.Models.Users;
 
 namespace Crpg.GameMod.Api.Models
 {

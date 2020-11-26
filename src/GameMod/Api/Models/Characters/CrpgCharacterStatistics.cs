@@ -1,4 +1,4 @@
-namespace Crpg.GameMod.Api.Models
+namespace Crpg.GameMod.Api.Models.Characters
 {
     // Copy of Crpg.Application.Characters.Model.CharacterStatisticsViewModel
     internal class CrpgCharacterStatistics

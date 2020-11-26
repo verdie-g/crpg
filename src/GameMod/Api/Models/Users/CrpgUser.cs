@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Crpg.GameMod.Api.Models.Characters;
 
-namespace Crpg.GameMod.Api.Models
+namespace Crpg.GameMod.Api.Models.Users
 {
     // Copy of Crpg.Application.Games.Models.GameUser
     internal class CrpgUser

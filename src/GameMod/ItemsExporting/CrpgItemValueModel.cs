@@ -1,7 +1,7 @@
 ﻿using System;
 using TaleWorlds.Core;
 
-namespace Crpg.DumpItemsMod
+namespace Crpg.GameMod.ItemsExporting
 {
     public class CrpgItemValueModel : DefaultItemValueModel
     {

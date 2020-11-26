@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Crpg.GameMod.Api;
 using Crpg.GameMod.Api.Models;
+using Crpg.GameMod.Api.Models.Users;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;

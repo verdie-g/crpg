@@ -1,24 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Xml;
+using Crpg.GameMod.Api.Models.Items;
+using Crpg.GameMod.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using TaleWorlds.Core;
-using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View;
-using Module = TaleWorlds.MountAndBlade.Module;
 using Path = System.IO.Path;
 
-namespace Crpg.DumpItemsMod
+namespace Crpg.GameMod.ItemsExporting
 {
-    public class DumpItemsSubModule : MBSubModuleBase
+    internal class ItemExporter
     {
-        private const string OutputPath = "../../Items";
-
         private static readonly string[] ItemFiles =
         {
             "../../Modules/Native/ModuleData/mpitems.xml",
@@ -33,7 +32,7 @@ namespace Crpg.DumpItemsMod
             "../../Modules/SandBoxCore/ModuleData/spitems/weapons.xml",
         };
 
-        private static HashSet<ItemObject.ItemTypeEnum> BlacklistedItemTypes = new HashSet<ItemObject.ItemTypeEnum>
+        private static readonly HashSet<ItemObject.ItemTypeEnum> BlacklistedItemTypes = new HashSet<ItemObject.ItemTypeEnum>
         {
             ItemObject.ItemTypeEnum.Invalid,
             ItemObject.ItemTypeEnum.Goods,
@@ -49,18 +48,7 @@ namespace Crpg.DumpItemsMod
             "mule_unmountable", // It's unmountable.
         };
 
-        protected override void OnSubModuleLoad()
-        {
-            Directory.CreateDirectory(OutputPath);
-
-            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Dump Items", new TextObject("Dump Items"), 9990, () =>
-            {
-                InformationManager.DisplayMessage(new InformationMessage($"Exporting items to {Path.GetFullPath(OutputPath)}."));
-                DumpItems().ContinueWith(_ => InformationManager.DisplayMessage(new InformationMessage("Done.")));
-            }, false));
-        }
-
-        private static Task DumpItems()
+        public Task Export(string outputPath)
         {
             var mbItems = DeserializeMbItems(ItemFiles)
                 .DistinctBy(i => i.StringId)
@@ -72,8 +60,8 @@ namespace Crpg.DumpItemsMod
                 .OrderBy(i => i.Type)
                 .ThenBy(i => i.Value);
 
-            SerializeCrpgItems(crpgItems, OutputPath);
-            return GenerateItemsThumbnail(mbItems, OutputPath);
+            SerializeCrpgItems(crpgItems, outputPath);
+            return GenerateItemsThumbnail(mbItems, outputPath);
         }
 
         private static bool FilterItem(ItemObject mbItem) => !mbItem.StringId.Contains("test")
@@ -82,9 +70,9 @@ namespace Crpg.DumpItemsMod
                                                              && !BlacklistedItemTypes.Contains(mbItem.ItemType)
                                                              && !BlacklistedItems.Contains(mbItem.StringId);
 
-        private static Item MbToCrpgItem(ItemObject mbItem)
+        private static CrpgItemCreation MbToCrpgItem(ItemObject mbItem)
         {
-            var crpgItem = new Item
+            var crpgItem = new CrpgItemCreation
             {
                 MbId = mbItem.StringId,
                 Name = mbItem.Name.ToString(),
@@ -95,7 +83,7 @@ namespace Crpg.DumpItemsMod
 
             if (mbItem.ArmorComponent != null)
             {
-                crpgItem.Armor = new ItemArmorComponent
+                crpgItem.Armor = new CrpgItemArmorComponent
                 {
                     HeadArmor = mbItem.ArmorComponent.HeadArmor,
                     BodyArmor = mbItem.ArmorComponent.BodyArmor,
@@ -106,7 +94,7 @@ namespace Crpg.DumpItemsMod
 
             if (mbItem.HorseComponent != null)
             {
-                crpgItem.Mount = new ItemMountComponent
+                crpgItem.Mount = new CrpgItemMountComponent
                 {
                     BodyLength = mbItem.HorseComponent.BodyLength,
                     ChargeDamage = mbItem.HorseComponent.ChargeDamage,
@@ -118,9 +106,9 @@ namespace Crpg.DumpItemsMod
 
             if (mbItem.WeaponComponent != null)
             {
-                crpgItem.Weapons = mbItem.WeaponComponent.Weapons.Select(w => new ItemWeaponComponent
+                crpgItem.Weapons = mbItem.WeaponComponent.Weapons.Select(w => new CrpgItemWeaponComponent
                 {
-                    Class = w.WeaponClass.ToString(),
+                    Class = MbToCrpgWeaponClass(w.WeaponClass),
                     Accuracy = w.Accuracy,
                     MissileSpeed = w.MissileSpeed,
                     StackAmount = w.MaxDataValue,
@@ -128,7 +116,7 @@ namespace Crpg.DumpItemsMod
                     Balance = w.WeaponBalance,
                     Handling = w.Handling,
                     BodyArmor = w.BodyArmor,
-                    Flags = (long)w.WeaponFlags,
+                    Flags = MbToCrpgWeaponFlags(w.WeaponFlags),
                     ThrustDamage = w.ThrustDamage,
                     ThrustDamageType = MbToCrpgDamageType(w.ThrustDamageType),
                     ThrustSpeed = w.ThrustSpeed,
@@ -141,25 +129,31 @@ namespace Crpg.DumpItemsMod
             return crpgItem;
         }
 
-        private static string MbToCrpgItemType(ItemObject.ItemTypeEnum t) => t switch
+        private static CrpgItemType MbToCrpgItemType(ItemObject.ItemTypeEnum t) => t switch
         {
-            ItemObject.ItemTypeEnum.Horse => "Mount", // Horse includes camel and mule.
-            ItemObject.ItemTypeEnum.HorseHarness => "MountHarness", // Horse includes camel and mule.
-            ItemObject.ItemTypeEnum.Cape => "ShoulderArmor", // Cape is a bad name.
-            _ => t.ToString(),
+            ItemObject.ItemTypeEnum.Horse => CrpgItemType.Mount, // Horse includes camel and mule.
+            ItemObject.ItemTypeEnum.HorseHarness => CrpgItemType.MountHarness, // Horse includes camel and mule.
+            ItemObject.ItemTypeEnum.Cape => CrpgItemType.ShoulderArmor, // Cape is a bad name.
+            _ => (CrpgItemType)Enum.Parse(typeof(CrpgItemType), t.ToString()),
         };
 
-        private static string MbToCrpgDamageType(DamageTypes t) => t switch
+        private static CrpgWeaponClass MbToCrpgWeaponClass(WeaponClass wc) =>
+            (CrpgWeaponClass)Enum.Parse(typeof(CrpgWeaponClass), wc.ToString());
+
+        private static CrpgWeaponFlags MbToCrpgWeaponFlags(WeaponFlags wf) =>
+            (CrpgWeaponFlags)Enum.Parse(typeof(CrpgWeaponFlags), wf.ToString());
+
+        private static CrpgDamageType MbToCrpgDamageType(DamageTypes t) => t switch
         {
-            DamageTypes.Invalid => "Undefined", // To be consistent with WeaponClass.
-            _ => t.ToString(),
+            DamageTypes.Invalid => CrpgDamageType.Undefined, // To be consistent with WeaponClass.
+            _ => (CrpgDamageType)Enum.Parse(typeof(CrpgDamageType), t.ToString()),
         };
 
         private static IEnumerable<ItemObject> DeserializeMbItems(IEnumerable<string> paths)
         {
             var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
             game.Initialize();
-            SetItemValueModel(game.BasicModels, new CrpgItemValueModel());
+            ReflectionHelper.SetProperty(game.BasicModels, nameof(BasicGameModels.ItemValueModel), new CrpgItemValueModel());
 
             var items = Enumerable.Empty<ItemObject>();
             foreach (string path in paths)
@@ -176,7 +170,7 @@ namespace Crpg.DumpItemsMod
                     .Cast<XmlNode>()
                     .Select(itemNode =>
                     {
-                        itemNode.Attributes.Remove(itemNode.Attributes["value"]); // force recomputation of value
+                        itemNode.Attributes.Remove(itemNode.Attributes["value"]); // Force computation of the value.
                         var item = new ItemObject();
                         item.Deserialize(game.ObjectManager, itemNode);
                         return item;
@@ -187,7 +181,7 @@ namespace Crpg.DumpItemsMod
             return items;
         }
 
-        private static void SerializeCrpgItems(IEnumerable<Item> items, string outputPath)
+        private static void SerializeCrpgItems(IEnumerable<CrpgItemCreation> items, string outputPath)
         {
             var serializer = JsonSerializer.Create(new JsonSerializerSettings
             {
@@ -231,14 +225,6 @@ namespace Crpg.DumpItemsMod
             }
 
             return Task.WhenAll(createTextureTasks);
-        }
-
-        private static void SetItemValueModel(BasicGameModels gameModels, ItemValueModel gm)
-        {
-            gameModels
-                .GetType()
-                .GetProperty(nameof(gameModels.ItemValueModel), BindingFlags.Instance | BindingFlags.Public)
-                .SetValue(gameModels, gm);
         }
     }
 }

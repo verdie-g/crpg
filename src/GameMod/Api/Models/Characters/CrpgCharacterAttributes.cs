@@ -1,4 +1,4 @@
-namespace Crpg.GameMod.Api.Models
+namespace Crpg.GameMod.Api.Models.Characters
 {
     public class CrpgCharacterAttributes
     {
