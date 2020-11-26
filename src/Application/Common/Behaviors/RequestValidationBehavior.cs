@@ -1,17 +1,24 @@
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Results;
 using FluentValidation;
 using MediatR;
-using ValidationException = Crpg.Application.Common.Exceptions.ValidationException;
 
 namespace Crpg.Application.Common.Behaviors
 {
     internal class RequestValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : notnull
+        where TResponse : class
     {
+        static RequestValidationBehavior()
+        {
+            Debug.Assert(typeof(Result).IsAssignableFrom(typeof(TResponse)),
+                $"Request {typeof(TRequest).Name} should return a {nameof(Result)} type");
+        }
+
         private readonly IValidator<TRequest>[] _validators;
 
         public RequestValidationBehavior(IEnumerable<IValidator<TRequest>> validators)
@@ -27,19 +34,23 @@ namespace Crpg.Application.Common.Behaviors
             }
 
             var context = new ValidationContext<TRequest>(request);
-
-            var failures = _validators
-                .Select(v => v.Validate(context))
-                .SelectMany(result => result.Errors)
-                .Where(f => f != null)
-                .ToList();
-
-            if (failures.Count != 0)
+            var errors = new List<Error>();
+            foreach (var validator in _validators)
             {
-                throw new ValidationException(failures.Select(f => new ValidationError(f.ErrorMessage, f.PropertyName)));
+                foreach (var failure in validator.Validate(context).Errors)
+                {
+                    errors.Add(new Error(ErrorType.Validation, ErrorCode.InvalidField)
+                    {
+                        Title = "Invalid field",
+                        Detail = failure.ErrorMessage,
+                        Source = new ErrorSource { Parameter = failure.PropertyName },
+                    });
+                }
             }
 
-            return next();
+            return errors.Count != 0
+                ? Task.FromResult(Unsafe.As<TResponse>(new Result(errors)))
+                : next();
         }
     }
 }

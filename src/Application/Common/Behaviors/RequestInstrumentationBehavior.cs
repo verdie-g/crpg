@@ -1,5 +1,5 @@
 using System;
-using System.Linq;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,11 +22,8 @@ namespace Crpg.Application.Common.Behaviors
 
         static RequestInstrumentationBehavior()
         {
-            // All requests should return a Result object to have a consistent API.
-            if (!typeof(Result).IsAssignableFrom(typeof(TResponse)))
-            {
-                throw new Exception($"Request {typeof(TRequest).Name} should return a {nameof(Result)} type");
-            }
+            Debug.Assert(typeof(Result).IsAssignableFrom(typeof(TResponse)),
+                $"Request {typeof(TRequest).Name} should return a {nameof(Result)} type");
         }
 
         private readonly RequestMetrics<TRequest> _metrics;
@@ -69,15 +66,6 @@ namespace Crpg.Application.Common.Behaviors
                 Error[] errors;
                 switch (e)
                 {
-                    case ValidationException ve:
-                        _metrics.StatusErrorBadRequest.Increment();
-                        errors = ve.Errors.Select(ve => new Error(ErrorType.Validation, ErrorCode.InvalidField)
-                        {
-                            Title = "Invalid field",
-                            Detail = ve.ErrorMessage,
-                            Source = new ErrorSource { Parameter = ve.PropertyName },
-                        }).ToArray();
-                        break;
                     case ConflictException _:
                         _metrics.StatusErrorConflict.Increment();
                         errors = new[]
