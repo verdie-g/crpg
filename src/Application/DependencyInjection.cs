@@ -1,9 +1,9 @@
 using System.Reflection;
 using AutoMapper;
 using Crpg.Application.Common.Behaviors;
+using Crpg.Application.Common.Files;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Services;
-using Crpg.Sdk.Files;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;

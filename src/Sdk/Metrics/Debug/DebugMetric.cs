@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Crpg.Sdk.Abstractions.Metrics;
 using Microsoft.Extensions.Logging;
 
@@ -10,10 +11,12 @@ namespace Crpg.Sdk.Metrics.Debug
         private readonly string _tagsStr;
         private readonly ILogger _logger;
 
-        public DebugMetric(string name, IList<string>? tags, ILogger logger)
+        public DebugMetric(string name, IList<KeyValuePair<string, string>>? tags, ILogger logger)
         {
             _name = name;
-            _tagsStr = tags != null ? string.Join(",", tags) : string.Empty;
+            _tagsStr = tags != null
+                ? string.Join(",", tags.Select(tag => $"{tag.Key}:{tag.Value}"))
+                : string.Empty;
             _logger = logger;
         }
 

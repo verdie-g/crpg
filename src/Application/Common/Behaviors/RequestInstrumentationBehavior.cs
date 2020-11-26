@@ -14,7 +14,9 @@ using Microsoft.Extensions.Logging;
 
 namespace Crpg.Application.Common.Behaviors
 {
-    internal class RequestInstrumentationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TResponse : class
+    internal class RequestInstrumentationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+        where TRequest : notnull
+        where TResponse : class
     {
         private static readonly string SpanName = "request." + StringHelper.PascalToSnakeCase(typeof(TRequest).Name);
 

@@ -44,7 +44,7 @@ namespace Crpg.Application.Characters.Queries
                     .Where(c => c.UserId == req.UserId)
                     .ToListAsync(cancellationToken);
 
-                // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729
+                // can't use ProjectTo https://github.com/dotnet/efcore/issues/19726
                 return new Result<IList<CharacterViewModel>>(_mapper.Map<IList<CharacterViewModel>>(characters));
             }
         }

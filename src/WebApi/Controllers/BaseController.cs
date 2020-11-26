@@ -29,8 +29,8 @@ namespace Crpg.WebApi.Controllers
         private IMediator? _mediator;
         private ICurrentUserService? _currentUser;
 
-        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
-        protected ICurrentUserService CurrentUser => _currentUser ??= HttpContext.RequestServices.GetService<ICurrentUserService>();
+        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetRequiredService<IMediator>();
+        protected ICurrentUserService CurrentUser => _currentUser ??= HttpContext.RequestServices.GetRequiredService<ICurrentUserService>();
 
         protected ActionResult<Result<TData>> ResultToAction<TData>(Result<TData> result)
             where TData : class

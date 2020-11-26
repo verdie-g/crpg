@@ -61,12 +61,16 @@ namespace Crpg.Sdk
             return new ApplicationEnvironment(env, serviceName, instance, Environment.MachineName);
         }
 
-        private static string[] BuildTagsFromEnv(IApplicationEnvironment appEnv)
+        private static KeyValuePair<string, string>[] BuildTagsFromEnv(IApplicationEnvironment appEnv)
         {
-            var constantTags = new List<string> { "service:" + appEnv.ServiceName };
+            var constantTags = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("service", appEnv.ServiceName),
+            };
+
             if (appEnv.Instance.Length != 0)
             {
-                constantTags.Add("instance:" + appEnv.Instance);
+                constantTags.Add(new KeyValuePair<string, string>("instance", appEnv.Instance));
             }
 
             return constantTags.ToArray();

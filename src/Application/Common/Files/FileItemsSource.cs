@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Items.Models;
 
-namespace Crpg.Sdk.Files
+namespace Crpg.Application.Common.Files
 {
     public class FileItemsSource : IItemsSource
     {
@@ -16,11 +16,11 @@ namespace Crpg.Sdk.Files
         public async Task<IEnumerable<ItemCreation>> LoadItems()
         {
             await using var file = File.OpenRead(ItemsPath);
-            return await JsonSerializer.DeserializeAsync<IEnumerable<ItemCreation>>(file, new JsonSerializerOptions
+            return (await JsonSerializer.DeserializeAsync<IEnumerable<ItemCreation>>(file, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 Converters = { new JsonStringEnumConverter() },
-            }).AsTask();
+            }).AsTask())!;
         }
     }
 }

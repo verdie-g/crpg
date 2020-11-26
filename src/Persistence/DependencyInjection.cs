@@ -22,7 +22,7 @@ namespace Crpg.Persistence
                     options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention());
             }
 
-            services.AddScoped<ICrpgDbContext>(provider => provider.GetService<CrpgDbContext>());
+            services.AddScoped<ICrpgDbContext>(provider => provider.GetRequiredService<CrpgDbContext>());
 
             return services;
         }

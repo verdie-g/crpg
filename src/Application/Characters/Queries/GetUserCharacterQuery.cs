@@ -2,11 +2,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Characters.Models;
-using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
-using Crpg.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries
@@ -46,7 +44,7 @@ namespace Crpg.Application.Characters.Queries
 
                 return character == null
                     ? new Result<CharacterViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId))
-                    : new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character)); // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729
+                    : new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character)); // can't use ProjectTo https://github.com/dotnet/efcore/issues/19726
             }
         }
     }

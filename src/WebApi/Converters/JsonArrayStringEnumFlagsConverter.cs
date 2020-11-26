@@ -42,7 +42,7 @@ namespace Crpg.WebApi.Converters
             ulong flags = 0;
             while (reader.Read() && reader.TokenType == JsonTokenType.String)
             {
-                if (EnumValues.TryGetValue(reader.GetString(), out ulong flagVal))
+                if (EnumValues.TryGetValue(reader.GetString()!, out ulong flagVal))
                 {
                     flags |= flagVal;
                 }

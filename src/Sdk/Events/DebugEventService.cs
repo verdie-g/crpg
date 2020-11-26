@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Crpg.Sdk.Abstractions.Events;
 using Microsoft.Extensions.Logging;
 
@@ -14,9 +15,11 @@ namespace Crpg.Sdk.Events
             _logger = logger;
         }
 
-        public void Raise(EventLevel eventLevel, string title, string message, string? aggregationKey = null, IList<string>? tags = null)
+        public void Raise(EventLevel eventLevel, string title, string message, string? aggregationKey = null, IList<KeyValuePair<string, string>>? tags = null)
         {
-            string tagsStr = tags != null ? string.Join(",", tags) : string.Empty;
+            string tagsStr = tags != null
+                ? string.Join(",", tags.Select(tag => $"{tag.Key}:{tag.Value}"))
+                : string.Empty;
             _logger.Log(EventToLogLevel(eventLevel), $"{title}: {message} [{tagsStr}]");
         }
 

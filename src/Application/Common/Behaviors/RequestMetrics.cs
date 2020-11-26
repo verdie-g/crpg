@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Crpg.Common.Helpers;
 using Crpg.Sdk.Abstractions.Metrics;
 
@@ -14,16 +15,16 @@ namespace Crpg.Application.Common.Behaviors
 
         public RequestMetrics(IMetricsFactory metricsFactory)
         {
-            string requestNameTag = "name:" + StringHelper.PascalToSnakeCase(typeof(TRequest).Name);
+            var requestNameTag = KeyValuePair.Create("name", StringHelper.PascalToSnakeCase(typeof(TRequest).Name));
             const string metricStatus = "requests.status";
             const string metricResponseTime = "requests.response_time";
-            const string statusKeyPrefix = "status:";
+            const string statusKey = "status";
 
-            StatusOk = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, statusKeyPrefix + "ok" });
-            StatusErrorBadRequest = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, statusKeyPrefix + "bad_request" });
-            StatusErrorNotFound = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, statusKeyPrefix + "not_found" });
-            StatusErrorConflict = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, statusKeyPrefix + "conflict" });
-            StatusErrorUnknown = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, statusKeyPrefix + "unknown" });
+            StatusOk = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, KeyValuePair.Create(statusKey, "ok") });
+            StatusErrorBadRequest = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, KeyValuePair.Create(statusKey, "bad_request") });
+            StatusErrorNotFound = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, KeyValuePair.Create(statusKey, "not_found") });
+            StatusErrorConflict = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, KeyValuePair.Create(statusKey, "conflict") });
+            StatusErrorUnknown = metricsFactory.CreateCount(metricStatus, new[] { requestNameTag, KeyValuePair.Create(statusKey, "unknown") });
             ResponseTime = metricsFactory.CreateHistogram(metricResponseTime, tags: new[] { requestNameTag });
         }
     }

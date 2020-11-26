@@ -7,7 +7,7 @@ namespace Crpg.Common.Helpers
         public static T ToObject<T>(this JsonElement element, JsonSerializerOptions? options = null)
         {
             var json = element.GetRawText();
-            return JsonSerializer.Deserialize<T>(json, options);
+            return JsonSerializer.Deserialize<T>(json, options)!;
         }
     }
 }

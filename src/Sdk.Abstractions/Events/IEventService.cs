@@ -7,6 +7,6 @@ namespace Crpg.Sdk.Abstractions.Events
     /// </summary>
     public interface IEventService
     {
-        public void Raise(EventLevel eventLevel, string title, string message, string? aggregationKey = null, IList<string>? tags = null);
+        public void Raise(EventLevel eventLevel, string title, string message, string? aggregationKey = null, IList<KeyValuePair<string, string>>? tags = null);
     }
 }

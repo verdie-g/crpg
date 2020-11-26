@@ -214,7 +214,7 @@ namespace Crpg.WebApi
         private void ConfigureSteamAuthentication(SteamAuthenticationOptions options)
         {
             options.ApplicationKey = _configuration["IdentityServer:Providers:Steam:ApplicationKey"];
-            options.Events.OnAuthenticated = OnSteamUserAuthenticated;
+            options.Events!.OnAuthenticated = OnSteamUserAuthenticated;
         }
 
         private static async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
@@ -222,7 +222,7 @@ namespace Crpg.WebApi
             var mediator = ctx.HttpContext.RequestServices.GetRequiredService<IMediator>();
             var mapper = ctx.HttpContext.RequestServices.GetRequiredService<IMapper>();
 
-            var player = ctx.UserPayload.RootElement
+            var player = ctx.UserPayload!.RootElement
                 .GetProperty(SteamAuthenticationConstants.Parameters.Response)
                 .GetProperty(SteamAuthenticationConstants.Parameters.Players)[0]
                 .ToObject<SteamPlayer>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });

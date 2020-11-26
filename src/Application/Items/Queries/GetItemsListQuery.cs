@@ -32,7 +32,6 @@ namespace Crpg.Application.Items.Queries
                     .Where(i => i.Rank == 0) // don't return broken or loomed items
                     .ToListAsync(cancellationToken);
 
-                // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729
                 return new Result<IList<ItemViewModel>>(_mapper.Map<IList<ItemViewModel>>(items));
             }
         }

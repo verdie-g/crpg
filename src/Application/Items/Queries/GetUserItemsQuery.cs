@@ -34,7 +34,6 @@ namespace Crpg.Application.Items.Queries
                     .Select(oi => oi.Item)
                     .ToListAsync(cancellationToken);
 
-                // can't use ProjectTo https://github.com/dotnet/efcore/issues/20729
                 return new Result<IList<ItemViewModel>>(_mapper.Map<IList<ItemViewModel>>(ownedItems));
             }
         }

@@ -10,6 +10,7 @@ using ValidationException = Crpg.Application.Common.Exceptions.ValidationExcepti
 namespace Crpg.Application.Common.Behaviors
 {
     internal class RequestValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+        where TRequest : notnull
     {
         private readonly IValidator<TRequest>[] _validators;
 

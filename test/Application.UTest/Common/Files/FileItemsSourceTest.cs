@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Crpg.Application.Common.Files;
 using Crpg.Application.Common.Services;
-using Crpg.Sdk.Files;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Common.Files
