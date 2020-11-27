@@ -30,12 +30,10 @@
     name: "{{ db_user_crpg }}"
     password: "{{ db_user_crpg_password }}"
 
-# TODO: omit password and use ident authentication (https://github.com/DataDog/integrations-core/pull/7219)
 - name: Create Datadog PostgreSQL user
   become_user: postgres
   postgresql_user:
     name: "{{ db_user_datadog }}"
-    password: "{{ db_user_datadog_password }}"
     groups: pg_monitor
 
 - name: Create cRPG PostgreSQL database
