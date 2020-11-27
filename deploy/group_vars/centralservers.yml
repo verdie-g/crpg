@@ -17,4 +17,5 @@ db_user_crpg_password: !vault |
   3163
 db_user_datadog: dd-agent # Same username as Datadog agent so ident authentication can be used
 
+dotnet_version: 5.0
 datadog_dotnet_tracer_version: 1.20.0

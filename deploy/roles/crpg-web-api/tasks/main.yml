@@ -8,9 +8,9 @@
     name: apt-transport-https
     state: present
 
-- name: Install .NET Core Runtime 3.1
+- name: Install .NET Core Runtime
   apt:
-    name: aspnetcore-runtime-3.1
+    name: "aspnetcore-runtime-{{ dotnet_version }}"
     state: present
     update_cache: yes
 
