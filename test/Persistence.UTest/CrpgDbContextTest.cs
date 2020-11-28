@@ -28,7 +28,7 @@ namespace Persistence.UTest
             db.Add(character);
             await db.SaveChangesAsync();
 
-            Assert.AreEqual(dt, character.LastModifiedAt);
+            Assert.AreEqual(dt, character.UpdatedAt);
             Assert.AreEqual(dt, character.CreatedAt);
         }
 
@@ -55,7 +55,7 @@ namespace Persistence.UTest
             character.Name = "toto";
             await db.SaveChangesAsync();
 
-            Assert.AreEqual(dt2, character.LastModifiedAt);
+            Assert.AreEqual(dt2, character.UpdatedAt);
         }
     }
 }
