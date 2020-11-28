@@ -29,8 +29,8 @@
         instances:
         - host: localhost
           port: 5432
-          dbname: "{{ db_crpg }}"
-          username: "{{ db_user_datadog }}"
+          dbname: "{{ crpg_db }}"
+          username: "{{ datadog_db_user }}"
           custom_queries:
           - metric_prefix: crpg
             query: SELECT

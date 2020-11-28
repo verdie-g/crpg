@@ -1,21 +1,21 @@
 ﻿---
 crpg_log_file: /var/log/crpg/crpg.log
 crpg_user: crpg
-crpg_api_path: /home/crpg/crpg
+crpg_api_path: "/home/{{ crpg_user }}/crpg"
 crpg_ui_path: "/var/www/{{ crpg_domain_name }}"
 crpg_service_name: crpg_web_api
 crpg_domain_name: c-rpg.eu
 crpg_port: 8000
-db_crpg: crpg
-db_user_crpg: crpg
-db_user_crpg_password: !vault |
+crpg_db: crpg
+crpg_db_user: crpg
+crpg_db_user_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   38303737393930623462303066366563363435616265376637656538383336373931333532326362
   3364653166383839383735346266336661613566373265650a613637626666656635653134623165
   38626562646536376361343732396539373764663132663262333566326339383239653065356138
   3434356465313665390a643036346635343562646136653063646166366264396664313530326334
   3163
-db_user_datadog: dd-agent # Same username as Datadog agent so ident authentication can be used
+datadog_db_user: dd-agent # Same username as Datadog agent so ident authentication can be used
 
 dotnet_version: 5.0
 datadog_dotnet_tracer_version: 1.20.0
