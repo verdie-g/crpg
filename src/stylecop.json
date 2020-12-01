@@ -11,8 +11,8 @@
       "usingDirectivesPlacement": "outsideNamespace"
     },
     "namingRules": {
-      "includeInferredTupleElementNames": true,
-      "tupleElementNameCasing": "PascalCase"
+      "includeInferredTupleElementNames": false,
+      "tupleElementNameCasing": "camelCase"
     },
     "maintainabilityRules": {
       "topLevelTypes": ["class"]

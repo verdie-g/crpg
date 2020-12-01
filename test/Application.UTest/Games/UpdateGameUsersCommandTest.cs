@@ -309,7 +309,6 @@ namespace Crpg.Application.UTest.Games
             }
         }
 
-
         [Test]
         public async Task BreakingCharacterItemsWithAutoRepairShouldRepairUntilThereIsNotEnoughGold()
         {
