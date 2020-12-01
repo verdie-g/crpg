@@ -22,6 +22,7 @@ namespace Crpg.Persistence
             NpgsqlConnection.GlobalTypeMapper.MapEnum<Platform>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<Role>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<ItemType>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<ItemSlot>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<DamageType>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<WeaponClass>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<CharacterGender>();
@@ -42,6 +43,7 @@ namespace Crpg.Persistence
 
         public DbSet<User> Users { get; set; } = default!;
         public DbSet<Character> Characters { get; set; } = default!;
+        public DbSet<EquippedItem> EquippedItems { get; set; } = default!;
         public DbSet<Item> Items { get; set; } = default!;
         public DbSet<UserItem> UserItems { get; set; } = default!;
         public DbSet<Ban> Bans { get; set; } = default!;
@@ -89,6 +91,7 @@ namespace Crpg.Persistence
             modelBuilder.HasPostgresEnum<Platform>();
             modelBuilder.HasPostgresEnum<Role>();
             modelBuilder.HasPostgresEnum<ItemType>();
+            modelBuilder.HasPostgresEnum<ItemSlot>();
             modelBuilder.HasPostgresEnum<DamageType>();
             modelBuilder.HasPostgresEnum<WeaponClass>();
             modelBuilder.HasPostgresEnum<CharacterGender>();

@@ -4,8 +4,8 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
 using Crpg.GameMod.Api;
-using Crpg.GameMod.Api.Models;
 using Crpg.GameMod.Api.Models.Characters;
+using Crpg.GameMod.Api.Models.Items;
 using Crpg.GameMod.Api.Models.Users;
 using Crpg.GameMod.Common;
 using Crpg.GameMod.Helpers;
@@ -123,23 +123,13 @@ namespace Crpg.GameMod.DefendTheVirgin
             var platform = (Platform)Enum.Parse(typeof(Platform), PlatformServices.ProviderName, true);
             var login = PlatformServices.Instance.CreateLobbyClientLoginProvider();
             login.Initialize(null, PlatformServices.Instance.GetInitParams()); // PreferredUserName is not used
+            // The real id seems to be Id2 for Steam and GOG, not sure about Epic
+            string platformUserId = login.GetPlayerId().Id2.ToString();
+            string userName = login.GetUserName();
 
             await _crpgClient.Initialize();
-            var res = await _crpgClient.Update(new CrpgGameUpdateRequest
-            {
-                GameUserUpdates = new[]
-                {
-                    new CrpgGameUserUpdate
-                    {
-                        Platform = platform,
-                        // The real id seems to be Id2 for Steam and GOG, not sure about Epic
-                        PlatformUserId = login.GetPlayerId().Id2.ToString(),
-                        CharacterName = login.GetUserName(),
-                    },
-                },
-            });
-
-            return res.Data!.Users[0];
+            var res = await _crpgClient.GetUser(platform, platformUserId, userName);
+            return res.Data!;
         }
 
         private static WaveGroup[][] LoadWaves()
@@ -258,17 +248,11 @@ namespace Crpg.GameMod.DefendTheVirgin
             skills.SetPropertyValue(DefaultSkills.Throwing, crpgCharacter.Statistics.WeaponProficiencies.Throwing);
 
             var equipment = new Equipment();
-            AddEquipment(equipment, EquipmentIndex.Head, crpgCharacter.Items.HeadItem?.MbId, skills);
-            AddEquipment(equipment, EquipmentIndex.Cape, crpgCharacter.Items.ShoulderItem?.MbId, skills);
-            AddEquipment(equipment, EquipmentIndex.Body, crpgCharacter.Items.BodyItem?.MbId, skills);
-            AddEquipment(equipment, EquipmentIndex.Gloves, crpgCharacter.Items.HandItem?.MbId, skills);
-            AddEquipment(equipment, EquipmentIndex.Leg, crpgCharacter.Items.LegItem?.MbId, skills);
-            AddEquipment(equipment, EquipmentIndex.HorseHarness, crpgCharacter.Items.MountHarnessItem?.MbId, skills);
-            AddEquipment(equipment, EquipmentIndex.Horse, crpgCharacter.Items.MountItem?.MbId, skills);
-            AddEquipment(equipment, EquipmentIndex.Weapon0, crpgCharacter.Items.Weapon1Item?.MbId, skills);
-            AddEquipment(equipment, EquipmentIndex.Weapon1, crpgCharacter.Items.Weapon2Item?.MbId, skills);
-            AddEquipment(equipment, EquipmentIndex.Weapon2, crpgCharacter.Items.Weapon3Item?.MbId, skills);
-            AddEquipment(equipment, EquipmentIndex.Weapon3, crpgCharacter.Items.Weapon4Item?.MbId, skills);
+            foreach (var equippedItem in crpgCharacter.EquippedItems)
+            {
+                var index = ItemSlotToIndex[equippedItem.Slot];
+                AddEquipment(equipment, index, equippedItem.Item.MbId, skills);
+            }
 
             var mbCharacter = new CrpgCharacterObject(new TextObject(crpgCharacter.Name), skills);
             SetCharacterBodyProperties(mbCharacter, crpgCharacter.BodyProperties, crpgCharacter.Gender);
@@ -368,6 +352,21 @@ namespace Crpg.GameMod.DefendTheVirgin
                 }
             }
         }
+
+        private static readonly Dictionary<CrpgItemSlot, EquipmentIndex> ItemSlotToIndex = new Dictionary<CrpgItemSlot, EquipmentIndex>
+        {
+            [CrpgItemSlot.Head] = EquipmentIndex.Head,
+            [CrpgItemSlot.Shoulder] = EquipmentIndex.Cape,
+            [CrpgItemSlot.Body] = EquipmentIndex.Body,
+            [CrpgItemSlot.Hand] = EquipmentIndex.Gloves,
+            [CrpgItemSlot.Leg] = EquipmentIndex.Leg,
+            [CrpgItemSlot.MountHarness] = EquipmentIndex.HorseHarness,
+            [CrpgItemSlot.Mount] = EquipmentIndex.Horse,
+            [CrpgItemSlot.Weapon1] = EquipmentIndex.Weapon0,
+            [CrpgItemSlot.Weapon2] = EquipmentIndex.Weapon1,
+            [CrpgItemSlot.Weapon3] = EquipmentIndex.Weapon2,
+            [CrpgItemSlot.Weapon4] = EquipmentIndex.Weapon3,
+        };
 
         private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new HashSet<WeaponClass>
         {

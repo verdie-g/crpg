@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using System.Xml;
 using Crpg.GameMod.Api.Models.Items;
 using Crpg.GameMod.Helpers;
+using Crpg.GameMod.Helpers.Json;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -188,6 +190,7 @@ namespace Crpg.GameMod.ItemsExporting
                 NullValueHandling = NullValueHandling.Ignore,
                 Formatting = Newtonsoft.Json.Formatting.Indented,
                 ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() },
+                Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() }
             });
 
             using var s = new StreamWriter(Path.Combine(outputPath, "items.json"));

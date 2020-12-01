@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Domain.Entities.Items
@@ -12,5 +15,10 @@ namespace Crpg.Domain.Entities.Items
 
         public User? User { get; set; }
         public Item? Item { get; set; }
+
+        /// <summary>
+        /// Characters with that item equipped.
+        /// </summary>
+        public IList<EquippedItem> EquippedItems { get; set; } = new List<EquippedItem>();
     }
 }

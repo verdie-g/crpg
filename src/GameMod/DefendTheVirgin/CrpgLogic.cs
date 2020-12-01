@@ -51,14 +51,13 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         private async Task SendReward(int experienceReward, int goldReward)
         {
-            var res = await _crpgClient.Update(new CrpgGameUpdateRequest
+            var res = await _crpgClient.Update(new CrpgGameUsersUpdateRequest
             {
-                GameUserUpdates = new[]
+                Updates = new[]
                 {
-                    new CrpgGameUserUpdate
+                    new CrpgUserUpdate
                     {
-                        PlatformUserId = _user.PlatformUserId,
-                        CharacterName = _user.Character.Name,
+                        CharacterId = _user.Character.Id,
                         Reward = new CrpgUserReward
                         {
                             Experience = experienceReward,
@@ -68,7 +67,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                 },
             });
 
-            if (res.Data!.Users[0].Character.Level != _user.Character.Level)
+            if (res.Data!.UpdateResults[0].User.Character.Level != _user.Character.Level)
             {
                 InformationManager.DisplayMessage(new InformationMessage
                 {
@@ -78,7 +77,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                 });
             }
 
-            _user = res.Data!.Users[0];
+            _user = res.Data!.UpdateResults[0].User;
         }
 
         private static int SumWaveWeight(IEnumerable<WaveGroup> wave)

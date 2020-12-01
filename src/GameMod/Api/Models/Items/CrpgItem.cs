@@ -99,6 +99,7 @@ namespace Crpg.GameMod.Api.Models.Items
     }
 
     // Copy of Crpg.Domain.Entities.Items.WeaponFlags
+    [Flags]
     internal enum CrpgWeaponFlags : long
     {
         MeleeWeapon = 0x1,

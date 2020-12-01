@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.GameMod.Api.Models;
+using Crpg.GameMod.Api.Models.Users;
+using Crpg.GameMod.Helpers.Json;
 using IdentityModel.Client;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 
 namespace Crpg.GameMod.Api
 {
@@ -16,11 +21,21 @@ namespace Crpg.GameMod.Api
     internal class CrpgHttpClient : ICrpgClient
     {
         private readonly HttpClient _httpClient;
+        private readonly JsonSerializerSettings _serializerSettings;
 
         public CrpgHttpClient()
         {
             _httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:8000") };
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+
+            _serializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new CamelCaseNamingStrategy(),
+                },
+                Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() },
+            };
         }
 
         public async Task Initialize()
@@ -48,9 +63,30 @@ namespace Crpg.GameMod.Api
             _httpClient.SetBearerToken(tokenResponse.AccessToken);
         }
 
-        public Task<CrpgResult<CrpgGameUpdateResponse>> Update(CrpgGameUpdateRequest req, CancellationToken cancellationToken = default)
+        public Task<CrpgResult<CrpgUser>> GetUser(Platform platform, string platformUserId,
+            string characterName, CancellationToken cancellationToken = default)
         {
-            return Put<CrpgGameUpdateRequest, CrpgGameUpdateResponse>("games/update", req, cancellationToken);
+            var queryParameters = new Dictionary<string, string>
+            {
+                ["platform"] = platform.ToString(),
+                ["platformUserId"] = platformUserId,
+                ["userName"] = characterName
+            };
+            return Get<CrpgUser>("games/users", queryParameters, cancellationToken);
+        }
+
+        public Task<CrpgResult<CrpgUsersUpdateResponse>> Update(CrpgGameUsersUpdateRequest req, CancellationToken cancellationToken = default)
+        {
+            return Put<CrpgGameUsersUpdateRequest, CrpgUsersUpdateResponse>("games/users", req, cancellationToken);
+        }
+
+        private Task<CrpgResult<TResponse>> Get<TResponse>(string requestUri, Dictionary<string, string> queryParameters,
+            CancellationToken cancellationToken) where TResponse : class
+        {
+            var urlEncodedContent = new FormUrlEncodedContent(queryParameters);
+            string query = urlEncodedContent.ReadAsStringAsync().Result;
+            var msg = new HttpRequestMessage(HttpMethod.Get, requestUri + '?' + query);
+            return Send<TResponse>(msg, cancellationToken);
         }
 
         private Task<CrpgResult<TResponse>> Put<TRequest, TResponse>(string requestUri, TRequest payload, CancellationToken cancellationToken) where TResponse : class
@@ -88,7 +124,7 @@ namespace Crpg.GameMod.Api
                 throw new Exception(json);
             }
 
-            return JsonConvert.DeserializeObject<CrpgResult<TResponse>>(json);
+            return JsonConvert.DeserializeObject<CrpgResult<TResponse>>(json, _serializerSettings);
         }
 
         public void Dispose() => _httpClient.Dispose();

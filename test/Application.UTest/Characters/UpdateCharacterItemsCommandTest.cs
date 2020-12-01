@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Common.Results;
-using Crpg.Domain.Entities;
+using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
@@ -16,184 +17,146 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task FullUpdate()
         {
-            var headOld = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
-            var headNew = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
-            var shoulderOld = ArrangeDb.Items.Add(new Item { Type = ItemType.ShoulderArmor });
-            var shoulderNew = ArrangeDb.Items.Add(new Item { Type = ItemType.ShoulderArmor });
-            var bodyOld = ArrangeDb.Items.Add(new Item { Type = ItemType.BodyArmor });
-            var bodyNew = ArrangeDb.Items.Add(new Item { Type = ItemType.BodyArmor });
-            var handOld = ArrangeDb.Items.Add(new Item { Type = ItemType.HandArmor });
-            var handNew = ArrangeDb.Items.Add(new Item { Type = ItemType.HandArmor });
-            var legOld = ArrangeDb.Items.Add(new Item { Type = ItemType.LegArmor });
-            var legNew = ArrangeDb.Items.Add(new Item { Type = ItemType.LegArmor });
-            var mountHarnessOld = ArrangeDb.Items.Add(new Item { Type = ItemType.MountHarness });
-            var mountHarnessNew = ArrangeDb.Items.Add(new Item { Type = ItemType.MountHarness });
-            var mountOld = ArrangeDb.Items.Add(new Item { Type = ItemType.Mount });
-            var mountNew = ArrangeDb.Items.Add(new Item { Type = ItemType.Mount });
-            var weapon1Old = ArrangeDb.Items.Add(new Item { Type = ItemType.Arrows });
-            var weapon1New = ArrangeDb.Items.Add(new Item { Type = ItemType.Bolts });
-            var weapon2Old = ArrangeDb.Items.Add(new Item { Type = ItemType.Bow });
-            var weapon2New = ArrangeDb.Items.Add(new Item { Type = ItemType.Crossbow });
-            var weapon3Old = ArrangeDb.Items.Add(new Item { Type = ItemType.Polearm });
-            var weapon3New = ArrangeDb.Items.Add(new Item { Type = ItemType.Shield });
-            var weapon4Old = ArrangeDb.Items.Add(new Item { Type = ItemType.OneHandedWeapon });
-            var weapon4New = ArrangeDb.Items.Add(new Item { Type = ItemType.TwoHandedWeapon });
-            var character = ArrangeDb.Characters.Add(new Character
+            var user = new User();
+
+            var headOld = new UserItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
+            var headNew = new UserItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
+            var shoulderOld = new UserItem { User = user, Item = new Item { Type = ItemType.ShoulderArmor } };
+            var shoulderNew = new UserItem { User = user, Item = new Item { Type = ItemType.ShoulderArmor } };
+            var bodyOld = new UserItem { User = user, Item = new Item { Type = ItemType.BodyArmor } };
+            var bodyNew = new UserItem { User = user, Item = new Item { Type = ItemType.BodyArmor } };
+            var handOld = new UserItem { User = user, Item = new Item { Type = ItemType.HandArmor } };
+            var handNew = new UserItem { User = user, Item = new Item { Type = ItemType.HandArmor } };
+            var legOld = new UserItem { User = user, Item = new Item { Type = ItemType.LegArmor } };
+            var legNew = new UserItem { User = user, Item = new Item { Type = ItemType.LegArmor } };
+            var mountHarnessOld = new UserItem { User = user, Item = new Item { Type = ItemType.MountHarness } };
+            var mountHarnessNew = new UserItem { User = user, Item = new Item { Type = ItemType.MountHarness } };
+            var mountOld = new UserItem { User = user, Item = new Item { Type = ItemType.Mount } };
+            var mountNew = new UserItem { User = user, Item = new Item { Type = ItemType.Mount } };
+            var weapon1Old = new UserItem { User = user, Item = new Item { Type = ItemType.Arrows } };
+            var weapon1New = new UserItem { User = user, Item = new Item { Type = ItemType.Bolts } };
+            var weapon2Old = new UserItem { User = user, Item = new Item { Type = ItemType.Bow } };
+            var weapon2New = new UserItem { User = user, Item = new Item { Type = ItemType.Crossbow } };
+            var weapon3Old = new UserItem { User = user, Item = new Item { Type = ItemType.Polearm } };
+            var weapon3New = new UserItem { User = user, Item = new Item { Type = ItemType.Shield } };
+            var weapon4Old = new UserItem { User = user, Item = new Item { Type = ItemType.OneHandedWeapon } };
+            var weapon4New = new UserItem { User = user, Item = new Item { Type = ItemType.TwoHandedWeapon } };
+
+            var character = new Character
             {
                 Name = "name",
-                Items = new CharacterItems
+                EquippedItems =
                 {
-                    HeadItem = headOld.Entity,
-                    ShoulderItem = shoulderOld.Entity,
-                    BodyItem = bodyOld.Entity,
-                    HandItem = handOld.Entity,
-                    LegItem = legOld.Entity,
-                    MountHarnessItem = mountHarnessOld.Entity,
-                    MountItem = mountOld.Entity,
-                    Weapon1Item = weapon1Old.Entity,
-                    Weapon2Item = weapon2Old.Entity,
-                    Weapon3Item = weapon3Old.Entity,
-                    Weapon4Item = weapon4Old.Entity,
-                    AutoRepair = false,
+                    new EquippedItem { UserItem = headOld, Slot = ItemSlot.Head },
+                    new EquippedItem { UserItem = shoulderOld, Slot = ItemSlot.Shoulder },
+                    new EquippedItem { UserItem = bodyOld, Slot = ItemSlot.Body },
+                    new EquippedItem { UserItem = handOld, Slot = ItemSlot.Hand },
+                    new EquippedItem { UserItem = legOld, Slot = ItemSlot.Leg },
+                    new EquippedItem { UserItem = mountHarnessOld, Slot = ItemSlot.MountHarness },
+                    new EquippedItem { UserItem = mountOld, Slot = ItemSlot.Mount },
+                    new EquippedItem { UserItem = weapon1Old, Slot = ItemSlot.Weapon1 },
+                    new EquippedItem { UserItem = weapon2Old, Slot = ItemSlot.Weapon2 },
+                    new EquippedItem { UserItem = weapon3Old, Slot = ItemSlot.Weapon3 },
+                    new EquippedItem { UserItem = weapon4Old, Slot = ItemSlot.Weapon4 },
                 },
-            });
-            var user = ArrangeDb.Users.Add(new User
-            {
-                OwnedItems = new List<UserItem>
-                {
-                    new UserItem { Item = headOld.Entity },
-                    new UserItem { Item = headNew.Entity },
-                    new UserItem { Item = shoulderOld.Entity },
-                    new UserItem { Item = shoulderNew.Entity },
-                    new UserItem { Item = bodyOld.Entity },
-                    new UserItem { Item = bodyNew.Entity },
-                    new UserItem { Item = handOld.Entity },
-                    new UserItem { Item = handNew.Entity },
-                    new UserItem { Item = legOld.Entity },
-                    new UserItem { Item = legNew.Entity },
-                    new UserItem { Item = mountHarnessOld.Entity },
-                    new UserItem { Item = mountHarnessNew.Entity },
-                    new UserItem { Item = mountOld.Entity },
-                    new UserItem { Item = mountNew.Entity },
-                    new UserItem { Item = weapon1Old.Entity },
-                    new UserItem { Item = weapon1New.Entity },
-                    new UserItem { Item = weapon2Old.Entity },
-                    new UserItem { Item = weapon2New.Entity },
-                    new UserItem { Item = weapon3Old.Entity },
-                    new UserItem { Item = weapon3New.Entity },
-                    new UserItem { Item = weapon4Old.Entity },
-                    new UserItem { Item = weapon4New.Entity },
-                },
-                Characters = new List<Character> { character.Entity }
-            });
+            };
+
+            user.Characters.Add(character);
+            ArrangeDb.Users.Add(user);
+            ArrangeDb.UserItems.AddRange(headNew, shoulderNew, bodyNew, handNew, legNew, mountHarnessNew, mountNew,
+                weapon1New, weapon2New, weapon3New, weapon4New);
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
-                CharacterId = character.Entity.Id,
-                UserId = user.Entity.Id,
-                HeadItemId = headNew.Entity.Id,
-                ShoulderItemId = shoulderNew.Entity.Id,
-                BodyItemId = bodyNew.Entity.Id,
-                HandItemId = handNew.Entity.Id,
-                LegItemId = legNew.Entity.Id,
-                MountHarnessItemId = mountHarnessNew.Entity.Id,
-                MountItemId = mountNew.Entity.Id,
-                Weapon1ItemId = weapon1New.Entity.Id,
-                Weapon2ItemId = weapon2New.Entity.Id,
-                Weapon3ItemId = weapon3New.Entity.Id,
-                Weapon4ItemId = weapon4New.Entity.Id,
-                AutoRepair = true,
+                CharacterId = character.Id,
+                UserId = user.Id,
+                Items = new List<EquippedItemIdViewModel>
+                {
+                    new EquippedItemIdViewModel { ItemId = headNew.ItemId, Slot = ItemSlot.Head },
+                    new EquippedItemIdViewModel { ItemId = shoulderNew.ItemId, Slot = ItemSlot.Shoulder },
+                    new EquippedItemIdViewModel { ItemId = bodyNew.ItemId, Slot = ItemSlot.Body },
+                    new EquippedItemIdViewModel { ItemId = handNew.ItemId, Slot = ItemSlot.Hand },
+                    new EquippedItemIdViewModel { ItemId = legNew.ItemId, Slot = ItemSlot.Leg },
+                    new EquippedItemIdViewModel { ItemId = mountHarnessNew.ItemId, Slot = ItemSlot.MountHarness },
+                    new EquippedItemIdViewModel { ItemId = mountNew.ItemId, Slot = ItemSlot.Mount },
+                    new EquippedItemIdViewModel { ItemId = weapon1New.ItemId, Slot = ItemSlot.Weapon1 },
+                    new EquippedItemIdViewModel { ItemId = weapon2New.ItemId, Slot = ItemSlot.Weapon2 },
+                    new EquippedItemIdViewModel { ItemId = weapon3New.ItemId, Slot = ItemSlot.Weapon3 },
+                    new EquippedItemIdViewModel { ItemId = weapon4New.ItemId, Slot = ItemSlot.Weapon4 },
+                },
             };
             var result = await handler.Handle(cmd, CancellationToken.None);
 
-            var c = result.Data!;
-            Assert.AreEqual(cmd.HeadItemId, c.HeadItem!.Id);
-            Assert.AreEqual(cmd.ShoulderItemId, c.ShoulderItem!.Id);
-            Assert.AreEqual(cmd.BodyItemId, c.BodyItem!.Id);
-            Assert.AreEqual(cmd.HandItemId, c.HandItem!.Id);
-            Assert.AreEqual(cmd.LegItemId, c.LegItem!.Id);
-            Assert.AreEqual(cmd.MountHarnessItemId, c.MountHarnessItem!.Id);
-            Assert.AreEqual(cmd.MountItemId, c.MountItem!.Id);
-            Assert.AreEqual(cmd.Weapon1ItemId, c.Weapon1Item!.Id);
-            Assert.AreEqual(cmd.Weapon2ItemId, c.Weapon2Item!.Id);
-            Assert.AreEqual(cmd.Weapon3ItemId, c.Weapon3Item!.Id);
-            Assert.AreEqual(cmd.Weapon4ItemId, c.Weapon4Item!.Id);
-            Assert.IsTrue(c.AutoRepair);
+            var itemIdBySlot = result.Data!.ToDictionary(i => i.Slot, i => i.Item.Id);
+            Assert.AreEqual(headNew.ItemId, itemIdBySlot[ItemSlot.Head]);
+            Assert.AreEqual(shoulderNew.ItemId, itemIdBySlot[ItemSlot.Shoulder]);
+            Assert.AreEqual(bodyNew.ItemId, itemIdBySlot[ItemSlot.Body]);
+            Assert.AreEqual(handNew.ItemId, itemIdBySlot[ItemSlot.Hand]);
+            Assert.AreEqual(legNew.ItemId, itemIdBySlot[ItemSlot.Leg]);
+            Assert.AreEqual(mountHarnessNew.ItemId, itemIdBySlot[ItemSlot.MountHarness]);
+            Assert.AreEqual(mountNew.ItemId, itemIdBySlot[ItemSlot.Mount]);
+            Assert.AreEqual(weapon1New.ItemId, itemIdBySlot[ItemSlot.Weapon1]);
+            Assert.AreEqual(weapon2New.ItemId, itemIdBySlot[ItemSlot.Weapon2]);
+            Assert.AreEqual(weapon3New.ItemId, itemIdBySlot[ItemSlot.Weapon3]);
+            Assert.AreEqual(weapon4New.ItemId, itemIdBySlot[ItemSlot.Weapon4]);
         }
 
         [Test]
         public async Task PartialUpdate()
         {
-            var headOld = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
-            var headNew = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
-            var bodyNew = ArrangeDb.Items.Add(new Item { Type = ItemType.BodyArmor });
-            var legOld = ArrangeDb.Items.Add(new Item { Type = ItemType.LegArmor });
-            var character = ArrangeDb.Characters.Add(new Character
+            var user = new User();
+            ArrangeDb.Users.Add(user);
+
+            var headOld = new UserItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
+            var headNew = new UserItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
+            var bodyNew = new UserItem { User = user, Item = new Item { Type = ItemType.BodyArmor } };
+            var handOld = new UserItem { User = user, Item = new Item { Type = ItemType.HandArmor } };
+            var legOld = new UserItem { User = user, Item = new Item { Type = ItemType.LegArmor } };
+
+            var character = new Character
             {
-                Items = new CharacterItems
+                Name = "name",
+                EquippedItems =
                 {
-                    HeadItem = headOld.Entity,
-                    ShoulderItem = null,
-                    BodyItem = null,
-                    HandItem = null,
-                    LegItem = legOld.Entity,
-                    MountHarnessItem = null,
-                    MountItem = null,
-                    Weapon1Item = null,
-                    Weapon2Item = null,
-                    Weapon3Item = null,
-                    Weapon4Item = null,
-                    AutoRepair = true,
+                    new EquippedItem { UserItem = headOld, Slot = ItemSlot.Head },
+                    new EquippedItem { UserItem = handOld, Slot = ItemSlot.Hand },
+                    new EquippedItem { UserItem = legOld, Slot = ItemSlot.Leg },
                 },
-            });
-            var user = ArrangeDb.Users.Add(new User
-            {
-                OwnedItems = new List<UserItem>
-                {
-                    new UserItem { Item = headOld.Entity },
-                    new UserItem { Item = headNew.Entity },
-                    new UserItem { Item = bodyNew.Entity },
-                    new UserItem { Item = legOld.Entity },
-                },
-                Characters = new List<Character> { character.Entity }
-            });
+            };
+
+            user.Characters.Add(character);
+            ArrangeDb.UserItems.AddRange(headNew, bodyNew);
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
-                CharacterId = character.Entity.Id,
-                UserId = user.Entity.Id,
-                HeadItemId = headNew.Entity.Id,
-                ShoulderItemId = null,
-                BodyItemId = bodyNew.Entity.Id,
-                HandItemId = null,
-                LegItemId = null,
-                MountHarnessItemId = null,
-                MountItemId = null,
-                Weapon1ItemId = null,
-                Weapon2ItemId = null,
-                Weapon3ItemId = null,
-                Weapon4ItemId = null,
-                AutoRepair = false,
+                CharacterId = character.Id,
+                UserId = user.Id,
+                Items = new List<EquippedItemIdViewModel>
+                {
+                    new EquippedItemIdViewModel { ItemId = headNew.ItemId, Slot = ItemSlot.Head },
+                    new EquippedItemIdViewModel { ItemId = bodyNew.ItemId, Slot = ItemSlot.Body },
+                    new EquippedItemIdViewModel { ItemId = null, Slot = ItemSlot.Hand },
+                },
             };
             var result = await handler.Handle(cmd, CancellationToken.None);
 
-            var c = result.Data!;
-            Assert.AreEqual(cmd.HeadItemId, c.HeadItem!.Id);
-            Assert.IsNull(c.ShoulderItem);
-            Assert.AreEqual(cmd.BodyItemId, c.BodyItem!.Id);
-            Assert.IsNull(c.HandItem);
-            Assert.IsNull(c.LegItem);
-            Assert.IsNull(c.MountHarnessItem);
-            Assert.IsNull(c.MountItem);
-            Assert.IsNull(c.Weapon1Item);
-            Assert.IsNull(c.Weapon2Item);
-            Assert.IsNull(c.Weapon3Item);
-            Assert.IsNull(c.Weapon4Item);
-            Assert.IsFalse(c.AutoRepair);
+            var itemIdBySlot = result.Data!.ToDictionary(i => i.Slot, i => i.Item.Id);
+            Assert.AreEqual(headNew.ItemId, itemIdBySlot[ItemSlot.Head]);
+            Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Shoulder));
+            Assert.AreEqual(bodyNew.ItemId, itemIdBySlot[ItemSlot.Body]);
+            Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Shoulder));
+            Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Hand));
+            Assert.AreEqual(legOld.ItemId, itemIdBySlot[ItemSlot.Leg]);
+            Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.MountHarness));
+            Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Mount));
+            Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon1));
+            Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon2));
+            Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon3));
+            Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon4));
         }
 
         [Test]
@@ -263,7 +226,7 @@ namespace Crpg.Application.UTest.Characters
             {
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
-                HeadItemId = 1,
+                Items = new List<EquippedItemIdViewModel> { new EquippedItemIdViewModel { ItemId = 1, Slot = ItemSlot.Head } },
             };
 
             var result = await handler.Handle(cmd, CancellationToken.None);
@@ -286,70 +249,55 @@ namespace Crpg.Application.UTest.Characters
             {
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
-                HeadItemId = head.Entity.Id,
+                Items = new List<EquippedItemIdViewModel> { new EquippedItemIdViewModel { ItemId = head.Entity.Id, Slot = ItemSlot.Head } },
             };
 
             var result = await handler.Handle(cmd, CancellationToken.None);
             Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
         }
 
-        [Theory]
-        public async Task WrongItemType(ItemType itemType)
+        [TestCase(ItemType.HeadArmor, ItemSlot.Shoulder)]
+        [TestCase(ItemType.ShoulderArmor, ItemSlot.Body)]
+        [TestCase(ItemType.BodyArmor, ItemSlot.Hand)]
+        [TestCase(ItemType.HandArmor, ItemSlot.Leg)]
+        [TestCase(ItemType.LegArmor, ItemSlot.MountHarness)]
+        [TestCase(ItemType.MountHarness, ItemSlot.Mount)]
+        [TestCase(ItemType.Mount, ItemSlot.Weapon1)]
+        [TestCase(ItemType.Shield, ItemSlot.Head)]
+        [TestCase(ItemType.Bow, ItemSlot.Shoulder)]
+        [TestCase(ItemType.Crossbow, ItemSlot.Body)]
+        [TestCase(ItemType.OneHandedWeapon, ItemSlot.Hand)]
+        [TestCase(ItemType.TwoHandedWeapon, ItemSlot.Leg)]
+        [TestCase(ItemType.Polearm, ItemSlot.MountHarness)]
+        [TestCase(ItemType.Thrown, ItemSlot.Mount)]
+        [TestCase(ItemType.Arrows, ItemSlot.Head)]
+        [TestCase(ItemType.Bolts, ItemSlot.Shoulder)]
+        [TestCase(ItemType.Pistol, ItemSlot.Body)]
+        [TestCase(ItemType.Musket, ItemSlot.Hand)]
+        [TestCase(ItemType.Bullets, ItemSlot.Leg)]
+        [TestCase(ItemType.Banner, ItemSlot.MountHarness)]
+        public async Task WrongSlotForItemType(ItemType itemType, ItemSlot itemSlot)
         {
-            var head = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
-            var shoulder = ArrangeDb.Items.Add(new Item { Type = ItemType.ShoulderArmor });
-            var body = ArrangeDb.Items.Add(new Item { Type = ItemType.BodyArmor });
-            var hand = ArrangeDb.Items.Add(new Item { Type = ItemType.HandArmor });
-            var leg = ArrangeDb.Items.Add(new Item { Type = ItemType.LegArmor });
-            var mountHarness = ArrangeDb.Items.Add(new Item { Type = ItemType.MountHarness });
-            var mount = ArrangeDb.Items.Add(new Item { Type = ItemType.Mount });
-            var weapon = ArrangeDb.Items.Add(new Item { Type = ItemType.OneHandedWeapon });
-            var character = ArrangeDb.Characters.Add(new Character());
-            var user = ArrangeDb.Users.Add(new User
+            var character = new Character();
+            var userItem = new UserItem { Item = new Item { Type = itemType } };
+            var user = new User
             {
-                OwnedItems = new List<UserItem>
-                {
-                    new UserItem { Item = head.Entity },
-                    new UserItem { Item = shoulder.Entity },
-                    new UserItem { Item = body.Entity },
-                    new UserItem { Item = hand.Entity },
-                    new UserItem { Item = leg.Entity },
-                    new UserItem { Item = mountHarness.Entity },
-                    new UserItem { Item = mount.Entity },
-                    new UserItem { Item = weapon.Entity },
-                },
-                Characters = new List<Character> { character.Entity }
-            });
+                OwnedItems = { userItem },
+                Characters = { character },
+            };
+            ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
-                CharacterId = character.Entity.Id,
-                UserId = user.Entity.Id,
-                HeadItemId = itemType == ItemType.HeadArmor ? null : (int?)weapon.Entity.Id,
-                ShoulderItemId = itemType == ItemType.ShoulderArmor ? null : (int?)head.Entity.Id,
-                BodyItemId = itemType == ItemType.BodyArmor ? null : (int?)shoulder.Entity.Id,
-                HandItemId = itemType == ItemType.HandArmor ? null : (int?)body.Entity.Id,
-                LegItemId = itemType == ItemType.LegArmor ? null : (int?)hand.Entity.Id,
-                MountHarnessItemId = itemType == ItemType.MountHarness ? null : (int?)leg.Entity.Id,
-                MountItemId = itemType == ItemType.Mount ? null : (int?)mountHarness.Entity.Id,
-                Weapon1ItemId = itemType == ItemType.Arrows || itemType == ItemType.Bolts || itemType == ItemType.Bow
-                    ? null
-                    : (int?)mount.Entity.Id,
-                Weapon2ItemId = itemType == ItemType.Crossbow || itemType == ItemType.OneHandedWeapon
-                    ? null
-                    : (int?)head.Entity.Id,
-                Weapon3ItemId = itemType == ItemType.Polearm || itemType == ItemType.Shield
-                    ? null
-                    : (int?)shoulder.Entity.Id,
-                Weapon4ItemId = itemType == ItemType.Thrown || itemType == ItemType.TwoHandedWeapon
-                    ? null
-                    : (int?)body.Entity.Id,
+                CharacterId = character.Id,
+                UserId = user.Id,
+                Items = new List<EquippedItemIdViewModel> { new EquippedItemIdViewModel { ItemId = userItem.ItemId, Slot = itemSlot } },
             };
 
             var result = await handler.Handle(cmd, CancellationToken.None);
-            Assert.AreEqual(ErrorCode.ItemBadType, result.Errors![0].Code);
+            Assert.AreEqual(ErrorCode.ItemBadSlot, result.Errors![0].Code);
         }
     }
 }

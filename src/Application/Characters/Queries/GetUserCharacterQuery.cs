@@ -29,17 +29,7 @@ namespace Crpg.Application.Characters.Queries
             {
                 var character = await _db.Characters
                     .AsNoTracking()
-                    .Include(c => c.Items.HeadItem)
-                    .Include(c => c.Items.ShoulderItem)
-                    .Include(c => c.Items.BodyItem)
-                    .Include(c => c.Items.HandItem)
-                    .Include(c => c.Items.LegItem)
-                    .Include(c => c.Items.MountHarnessItem)
-                    .Include(c => c.Items.MountItem)
-                    .Include(c => c.Items.Weapon1Item)
-                    .Include(c => c.Items.Weapon2Item)
-                    .Include(c => c.Items.Weapon3Item)
-                    .Include(c => c.Items.Weapon4Item)
+                    .Include(c => c.EquippedItems).ThenInclude(ei => ei.Item)
                     .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
 
                 return character == null

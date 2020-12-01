@@ -1,12 +1,12 @@
 import User from '@/models/user';
 import Character from '@/models/character';
 import Item from '@/models/item';
-import { UpdateCharacterItemsRequest } from '@/models/update-character-items-request';
 import { UpdateCharacterRequest } from '@/models/update-character-request';
-import CharacterItems from '@/models/character-items';
 import CharacterStatistics from '@/models/character-statistics';
 import StatisticConversion from '@/models/statistic-conversion';
 import Ban from '@/models/ban';
+import EquippedItem from '@/models/equipped-item';
+import EquippedItemId from '@/models/equipped-item-id';
 import {
   get, post, put, del,
 } from './crpg-client';
@@ -39,8 +39,12 @@ export function deleteCharacter(characterId: number): Promise<void> {
   return del(`/users/self/characters/${characterId}`);
 }
 
-export function updateCharacterItems(characterId: number, req: UpdateCharacterItemsRequest): Promise<CharacterItems> {
-  return put(`/users/self/characters/${characterId}/items`, req);
+export function updateCharacterItems(characterId: number, items: EquippedItemId[]): Promise<EquippedItem[]> {
+  return put(`/users/self/characters/${characterId}/items`, { items });
+}
+
+export function switchCharacterAutoRepair(characterId: number, autoRepair: boolean): Promise<void> {
+  return put(`/users/self/characters/${characterId}/auto-repair`, { autoRepair });
 }
 
 export function updateCharacterStats(characterId: number, req: CharacterStatistics): Promise<CharacterStatistics> {

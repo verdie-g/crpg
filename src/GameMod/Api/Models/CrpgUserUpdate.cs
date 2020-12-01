@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Crpg.GameMod.Api.Models.Users;
 
 namespace Crpg.GameMod.Api.Models
 {
     // Copy of Crpg.Application.Games.Models.GameUserUpdate
-    internal class CrpgGameUserUpdate
+    internal class CrpgUserUpdate
     {
-        public Platform Platform { get; set; }
-        public string PlatformUserId { get; set; } = string.Empty;
-        public string CharacterName { get; set; } = string.Empty;
+        public int CharacterId { get; set; }
         public CrpgUserReward? Reward { get; set; }
         public IList<CrpgUserBrokenItem> BrokenItems { get; set; } = Array.Empty<CrpgUserBrokenItem>();
     }

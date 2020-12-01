@@ -30,8 +30,9 @@ namespace Crpg.Application.Characters.Commands
 
             public async Task<Result<CharacterViewModel>> Handle(RespecializeCharacterCommand req, CancellationToken cancellationToken)
             {
-                var character = await _db.Characters.FirstOrDefaultAsync(c =>
-                        c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
+                var character = await _db.Characters
+                    .Include(c => c.EquippedItems)
+                    .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
                 if (character == null)
                 {
                     return new Result<CharacterViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
@@ -39,8 +40,8 @@ namespace Crpg.Application.Characters.Commands
 
                 character.Experience = (int)(character.Experience * ExperiencePenalty);
                 character.Level = ExperienceTable.GetLevelForExperience(character.Experience);
+                character.EquippedItems.Clear(); // Unequip all items.
                 CharacterHelper.ResetCharacterStats(character, true);
-                CharacterHelper.UnequipCharacterItems(character.Items);
 
                 await _db.SaveChangesAsync(cancellationToken);
                 return new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character));

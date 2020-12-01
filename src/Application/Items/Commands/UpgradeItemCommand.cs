@@ -37,9 +37,10 @@ namespace Crpg.Application.Items.Commands
             public async Task<Result<ItemViewModel>> Handle(UpgradeItemCommand req, CancellationToken cancellationToken)
             {
                 var userItem = await _db.UserItems
-                    .Include(oi => oi.User!).ThenInclude(u => u.Characters)
-                    .Include(oi => oi.Item!)
-                    .FirstOrDefaultAsync(oi => oi.UserId == req.UserId && oi.ItemId == req.ItemId, cancellationToken);
+                    .Include(ui => ui.User!)
+                    .Include(ui => ui.Item!)
+                    .Include(ui => ui.EquippedItems)
+                    .FirstOrDefaultAsync(ui => ui.UserId == req.UserId && ui.ItemId == req.ItemId, cancellationToken);
                 if (userItem == null)
                 {
                     return new Result<ItemViewModel>(CommonErrors.ItemNotOwned(req.ItemId));
@@ -73,13 +74,16 @@ namespace Crpg.Application.Items.Commands
                     userItem.User!.HeirloomPoints -= 1;
                 }
 
-                _db.UserItems.Remove(userItem);
-                _db.UserItems.Add(new UserItem { User = userItem.User, ItemId = upgradedItem.Id });
-                foreach (var character in userItem.User.Characters)
+                var upgradedUserItem = new UserItem { User = userItem.User, ItemId = upgradedItem.Id };
+                _db.UserItems.Add(upgradedUserItem);
+
+                // If a character had the item equipped, replace the item by the upgraded one.
+                foreach (var equippedItem in userItem.EquippedItems)
                 {
-                    CharacterHelper.ReplaceCharacterItem(character.Items, userItem.ItemId, upgradedItem.Id);
+                    equippedItem.ItemId = upgradedItem.Id;
                 }
 
+                _db.UserItems.Remove(userItem);
                 await _db.SaveChangesAsync(cancellationToken);
                 return new Result<ItemViewModel>(_mapper.Map<ItemViewModel>(upgradedItem));
             }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Queries;
@@ -24,7 +25,7 @@ namespace Crpg.Application.UTest.Characters
                         Skills = new CharacterSkills { Points = 2 },
                         WeaponProficiencies = new CharacterWeaponProficiencies { Points = 3 },
                     },
-                    Items = new CharacterItems { HeadItem = new Item { Name = "4" } },
+                    EquippedItems = { new EquippedItem { Item = new Item { Name = "4" }, Slot = ItemSlot.Head } },
                 },
                 new Character
                 {
@@ -46,7 +47,8 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(1, characters[0].Statistics.Attributes.Points);
             Assert.AreEqual(2, characters[0].Statistics.Skills.Points);
             Assert.AreEqual(3, characters[0].Statistics.WeaponProficiencies.Points);
-            Assert.AreEqual("4", characters[0].Items.HeadItem!.Name);
+            Assert.AreEqual("4", characters[0].EquippedItems[0].Item.Name);
+            Assert.AreEqual(ItemSlot.Head, characters[0].EquippedItems[0].Slot);
         }
     }
 }

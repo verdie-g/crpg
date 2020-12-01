@@ -49,24 +49,25 @@ namespace Crpg.Application.UTest.Items
         public async Task SellItemEquipped()
         {
             var item = new Item { Value = 100 };
+            var userItem = new UserItem { Item = item };
             var characters = new List<Character>
             {
-                new Character { Items = { HeadItem = item } },
-                new Character { Items = { ShoulderItem = item } },
-                new Character { Items = { BodyItem = item } },
-                new Character { Items = { HandItem = item } },
-                new Character { Items = { LegItem = item } },
-                new Character { Items = { MountHarnessItem = item } },
-                new Character { Items = { MountItem = item } },
-                new Character { Items = { Weapon1Item = item } },
-                new Character { Items = { Weapon2Item = item } },
-                new Character { Items = { Weapon3Item = item } },
-                new Character { Items = { Weapon4Item = item } },
+                new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Head } } },
+                new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Shoulder } } },
+                new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Body } } },
+                new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Hand } } },
+                new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Leg } } },
+                new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.MountHarness } } },
+                new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Mount } } },
+                new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon1 } } },
+                new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon2 } } },
+                new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon3 } } },
+                new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon4 } } },
             };
             var user = new User
             {
                 Gold = 0,
-                OwnedItems = new List<UserItem> { new UserItem { Item = item } },
+                OwnedItems = { userItem },
                 Characters = characters,
             };
             ArrangeDb.Users.Add(user);
@@ -84,17 +85,17 @@ namespace Crpg.Application.UTest.Items
                 .FirstAsync(u => u.Id == user.Id);
             Assert.AreEqual(66, user.Gold);
             Assert.False(user.OwnedItems.Any(oi => oi.ItemId == item.Id));
-            Assert.Null(user.Characters[0].Items.HeadItemId);
-            Assert.Null(user.Characters[1].Items.ShoulderItemId);
-            Assert.Null(user.Characters[2].Items.BodyItemId);
-            Assert.Null(user.Characters[3].Items.HeadItemId);
-            Assert.Null(user.Characters[4].Items.LegItemId);
-            Assert.Null(user.Characters[5].Items.MountHarnessItemId);
-            Assert.Null(user.Characters[6].Items.MountItemId);
-            Assert.Null(user.Characters[7].Items.Weapon1ItemId);
-            Assert.Null(user.Characters[8].Items.Weapon2ItemId);
-            Assert.Null(user.Characters[9].Items.Weapon3ItemId);
-            Assert.Null(user.Characters[10].Items.Weapon4ItemId);
+            Assert.IsEmpty(user.Characters[0].EquippedItems);
+            Assert.IsEmpty(user.Characters[1].EquippedItems);
+            Assert.IsEmpty(user.Characters[2].EquippedItems);
+            Assert.IsEmpty(user.Characters[3].EquippedItems);
+            Assert.IsEmpty(user.Characters[4].EquippedItems);
+            Assert.IsEmpty(user.Characters[5].EquippedItems);
+            Assert.IsEmpty(user.Characters[6].EquippedItems);
+            Assert.IsEmpty(user.Characters[7].EquippedItems);
+            Assert.IsEmpty(user.Characters[8].EquippedItems);
+            Assert.IsEmpty(user.Characters[9].EquippedItems);
+            Assert.IsEmpty(user.Characters[10].EquippedItems);
         }
 
         [Test]

@@ -112,15 +112,16 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task ShouldReplaceCharacterItemWithUpgradeOne([Values(0, 1, 2, 3, 4, 5)] int itemIdx)
         {
+            var userItem = new UserItem { ItemId = _items[itemIdx].Id };
             var user = new User
             {
                 Gold = 1000,
                 HeirloomPoints = 3,
-                OwnedItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } },
+                OwnedItems = new List<UserItem> { userItem },
                 Characters = new List<Character>
                 {
-                    new Character { Items = new CharacterItems { Weapon1ItemId = _items[itemIdx].Id } },
-                    new Character { Items = new CharacterItems { Weapon2ItemId = _items[itemIdx].Id } },
+                    new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon1 } } },
+                    new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon2 } } },
                 },
             };
             ArrangeDb.Users.Add(user);
@@ -133,10 +134,10 @@ namespace Crpg.Application.UTest.Items
             }, CancellationToken.None)).Data!;
 
             user = await AssertDb.Users
-                .Include(u => u.Characters)
+                .Include(u => u.Characters).ThenInclude(c => c.EquippedItems)
                 .FirstAsync(u => u.Id == user.Id);
-            Assert.AreEqual(upgradedItem.Id, user.Characters[0].Items.Weapon1ItemId);
-            Assert.AreEqual(upgradedItem.Id, user.Characters[1].Items.Weapon2ItemId);
+            Assert.AreEqual(upgradedItem.Id, user.Characters[0].EquippedItems[0].ItemId);
+            Assert.AreEqual(upgradedItem.Id, user.Characters[1].EquippedItems[0].ItemId);
         }
 
         [Test]

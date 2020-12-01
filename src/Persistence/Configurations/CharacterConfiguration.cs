@@ -11,7 +11,6 @@ namespace Crpg.Persistence.Configurations
         {
             builder.HasIndex(c => new { c.UserId, c.Name }).IsUnique();
             builder.OwnsOne(c => c.Statistics, ConfigureCharacterStatistics);
-            builder.OwnsOne(c => c.Items, ConfigureCharacterItems);
         }
 
         private static void ConfigureCharacterStatistics(OwnedNavigationBuilder<Character, CharacterStatistics> builder)
@@ -54,22 +53,6 @@ namespace Crpg.Persistence.Configurations
             builder.Property(wp => wp.Bow).HasColumnName("bow");
             builder.Property(wp => wp.Throwing).HasColumnName("throwing");
             builder.Property(wp => wp.Crossbow).HasColumnName("crossbow");
-        }
-
-        private static void ConfigureCharacterItems(OwnedNavigationBuilder<Character, CharacterItems> builder)
-        {
-            // Default names are prefixed with character_items_.
-            builder.Property(a => a.HeadItemId).HasColumnName("head_item_id");
-            builder.Property(a => a.ShoulderItemId).HasColumnName("shoulder_item_id");
-            builder.Property(a => a.BodyItemId).HasColumnName("body_item_id");
-            builder.Property(a => a.HandItemId).HasColumnName("hand_item_id");
-            builder.Property(a => a.LegItemId).HasColumnName("leg_item_id");
-            builder.Property(a => a.MountHarnessItemId).HasColumnName("mount_harness_item_id");
-            builder.Property(a => a.MountItemId).HasColumnName("mount_item_id");
-            builder.Property(a => a.Weapon1ItemId).HasColumnName("weapon1_item_id");
-            builder.Property(a => a.Weapon2ItemId).HasColumnName("weapon2_item_id");
-            builder.Property(a => a.Weapon3ItemId).HasColumnName("weapon3_item_id");
-            builder.Property(a => a.Weapon4ItemId).HasColumnName("weapon4_item_id");
         }
     }
 }

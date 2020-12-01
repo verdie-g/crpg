@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Commands;
@@ -23,19 +24,10 @@ namespace Crpg.Application.UTest.Characters
                 Level = 31,
                 Experience = 42424424,
                 ExperienceMultiplier = 1.03f,
-                Items = new CharacterItems
+                EquippedItems =
                 {
-                    HeadItem = new Item(),
-                    ShoulderItem = new Item(),
-                    BodyItem = new Item(),
-                    HandItem = new Item(),
-                    LegItem = new Item(),
-                    MountHarnessItem = new Item(),
-                    MountItem = new Item(),
-                    Weapon1Item = new Item(),
-                    Weapon2Item = new Item(),
-                    Weapon3Item = new Item(),
-                    Weapon4Item = new Item(),
+                    new EquippedItem { Slot = ItemSlot.Head },
+                    new EquippedItem { Slot = ItemSlot.Hand },
                 },
                 Statistics = new CharacterStatistics
                 {
@@ -85,6 +77,7 @@ namespace Crpg.Application.UTest.Characters
 
             character = await AssertDb.Characters
                 .Include(c => c.User)
+                .Include(c => c.EquippedItems)
                 .FirstAsync(c => c.Id == character.Id);
             Assert.AreEqual(3, character.Generation);
             Assert.AreEqual(1, character.Level);
@@ -115,17 +108,7 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(0, character.Statistics.WeaponProficiencies.Throwing);
             Assert.AreEqual(0, character.Statistics.WeaponProficiencies.Crossbow);
 
-            Assert.Null(character.Items.HeadItemId);
-            Assert.Null(character.Items.ShoulderItemId);
-            Assert.Null(character.Items.BodyItemId);
-            Assert.Null(character.Items.HandItemId);
-            Assert.Null(character.Items.LegItemId);
-            Assert.Null(character.Items.MountHarnessItemId);
-            Assert.Null(character.Items.MountItemId);
-            Assert.Null(character.Items.Weapon1ItemId);
-            Assert.Null(character.Items.Weapon2ItemId);
-            Assert.Null(character.Items.Weapon3ItemId);
-            Assert.Null(character.Items.Weapon4ItemId);
+            Assert.IsEmpty(character.EquippedItems);
         }
 
         [Test]

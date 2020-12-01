@@ -11,7 +11,7 @@
         InternalError,
         InvalidField,
         ItemAlreadyOwned,
-        ItemBadType,
+        ItemBadSlot,
         ItemMaxRankReached,
         ItemNotFound,
         ItemNotOwned,

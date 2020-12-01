@@ -7,49 +7,49 @@
       <div class="columns item-boxes">
         <div class="column is-narrow gear-column">
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)">
-            <img v-if="character.items.headItem" :src="itemImage(character.items.headItem)" alt="Head armor" />
+            <img v-if="itemsBySlot[itemSlot.Head]" :src="itemImage(itemsBySlot[itemSlot.Head])" alt="Head armor" />
             <img v-else src="../assets/head-armor.png" alt="Head armor" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Shoulder)">
-            <img v-if="character.items.shoulderItem" :src="itemImage(character.items.shoulderItem)" alt="Shoulder" />
+            <img v-if="itemsBySlot[itemSlot.Shoulder]" :src="itemImage(itemsBySlot[itemSlot.Shoulder])" alt="Shoulder" />
             <img v-else src="../assets/cape.png" alt="Shoulder" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)">
-            <img v-if="character.items.bodyItem" :src="itemImage(character.items.bodyItem)" alt="Body armor" />
+            <img v-if="itemsBySlot[itemSlot.Body]" :src="itemImage(itemsBySlot[itemSlot.Body])" alt="Body armor" />
             <img v-else src="../assets/body-armor.png" alt="Body armor" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)">
-            <img v-if="character.items.handItem" :src="itemImage(character.items.handItem)" alt="Hand armor" />
+            <img v-if="itemsBySlot[itemSlot.Hand]" :src="itemImage(itemsBySlot[itemSlot.Hand])" alt="Hand armor" />
             <img v-else src="../assets/hand-armor.png" alt="Hand armor" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)">
-            <img v-if="character.items.legItem" :src="itemImage(character.items.legItem)" alt="Leg armor" />
+            <img v-if="itemsBySlot[itemSlot.Leg]" :src="itemImage(itemsBySlot[itemSlot.Leg])" alt="Leg armor" />
             <img v-else src="../assets/leg-armor.png" alt="Leg armor" class="item-placeholder" />
           </div>
         </div>
 
         <div class="column is-narrow mount-column">
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.MountHarness)">
-            <img v-if="character.items.mountHarnessItem" :src="itemImage(character.items.mountHarnessItem)" alt="Mount harness" />
+            <img v-if="itemsBySlot[itemSlot.MountHarness]" :src="itemImage(itemsBySlot[itemSlot.MountHarness])" alt="Mount harness" />
             <img v-else src="../assets/horse-harness.png" alt="Horse harness" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Mount)">
-            <img v-if="character.items.mountItem" :src="itemImage(character.items.mountItem)" alt="Mount" />
+            <img v-if="itemsBySlot[itemSlot.Mount]" :src="itemImage(itemsBySlot[itemSlot.Mount])" alt="Mount" />
           </div>
         </div>
 
         <div class="column is-narrow weapon-column">
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)">
-            <img v-if="character.items.weapon1Item" :src="itemImage(character.items.weapon1Item)" alt="First weapon" />
+            <img v-if="itemsBySlot[itemSlot.Weapon1]" :src="itemImage(itemsBySlot[itemSlot.Weapon1])" alt="First weapon" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)">
-            <img v-if="character.items.weapon2Item" :src="itemImage(character.items.weapon2Item)" alt="Second weapon" />
+            <img v-if="itemsBySlot[itemSlot.Weapon2]" :src="itemImage(itemsBySlot[itemSlot.Weapon2])" alt="Second weapon" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)">
-            <img v-if="character.items.weapon3Item" :src="itemImage(character.items.weapon3Item)" alt="Third weapon" />
+            <img v-if="itemsBySlot[itemSlot.Weapon3]" :src="itemImage(itemsBySlot[itemSlot.Weapon3])" alt="Third weapon" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon4)">
-            <img v-if="character.items.weapon4Item" :src="itemImage(character.items.weapon4Item)" alt="Fourth Weapon" />
+            <img v-if="itemsBySlot[itemSlot.Weapon4]" :src="itemImage(itemsBySlot[itemSlot.Weapon4])" alt="Fourth Weapon" />
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
       <b-tooltip label="Some of your items might break at the end of a round. Switch automatic repair on so you don't
                  have to repair manually." multilined>
         <div class="field">
-          <b-switch :value="character.items.autoRepair" @input="onAutoRepairSwitch">
+          <b-switch :value="character.autoRepair" @input="onAutoRepairSwitch">
             Automatically repair damaged items (average repair cost {{averageRepairCost}} gold)
           </b-switch>
         </div>
@@ -119,7 +119,7 @@ import userModule from '@/store/user-module';
 import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
 import Item from '@/models/item';
-import { getCharacterItemFromSlot, computeAverageRepairCost } from '@/services/characters-service';
+import { computeAverageRepairCost } from '@/services/characters-service';
 import { filterItemsFittingInSlot } from '@/services/item-service';
 import { notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
@@ -137,8 +137,15 @@ export default class CharacterComponent extends Vue {
   itemToReplaceSlot: ItemSlot | null = null;
   selectedItem: Item | null = null;
 
+  get itemsBySlot(): Record<ItemSlot, Item> {
+    return this.character.equippedItems.reduce((itemsBySlot, ei) => {
+      itemsBySlot[ei.slot] = ei.item;
+      return itemsBySlot;
+    }, {} as Record<ItemSlot, Item>);
+  }
+
   get averageRepairCost(): number {
-    return Math.floor(computeAverageRepairCost(this.character.items));
+    return Math.floor(computeAverageRepairCost(this.character.equippedItems));
   }
 
   get fittingOwnedItems(): Item[] {
@@ -202,7 +209,7 @@ export default class CharacterComponent extends Vue {
   }
 
   openReplaceItemModal(slot: ItemSlot): void {
-    this.itemToReplace = getCharacterItemFromSlot(this.character.items, slot);
+    this.itemToReplace = this.itemsBySlot[slot] ? this.itemsBySlot[slot] : null;
     this.itemToReplaceSlot = slot;
     this.selectedItem = null;
     if (userModule.ownedItems.length === 0) {

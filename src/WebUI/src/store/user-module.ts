@@ -7,13 +7,13 @@ import User from '@/models/user';
 import Character from '@/models/character';
 import Item from '@/models/item';
 import ItemSlot from '@/models/item-slot';
-import { setCharacterItem, updateCharacterItems } from '@/services/characters-service';
-import CharacterItems from '@/models/character-items';
 import CharacterStatistics from '@/models/character-statistics';
 import StatisticConversion from '@/models/statistic-conversion';
 import Ban from '@/models/ban';
 import Role from '@/models/role';
 import CharacterUpdate from '@/models/character-update';
+import EquippedItem from '@/models/equipped-item';
+import EquippedItemId from '@/models/equipped-item-id';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
@@ -63,13 +63,22 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
-  setCharacterItem({ characterItems, slot, item }: { characterItems: CharacterItems; slot: ItemSlot; item: Item | null }) {
-    setCharacterItem(characterItems, slot, item);
+  setCharacterItem({ character, slot, item }: { character: Character; slot: ItemSlot; item: Item | null }) {
+    const equippedItemIdx = character.equippedItems.findIndex(ei => ei.slot === slot);
+    if (equippedItemIdx === -1) {
+      if (item !== null) {
+        character.equippedItems.push({ slot, item });
+      }
+    } else if (item !== null) {
+      character.equippedItems[equippedItemIdx].item = item;
+    } else {
+      character.equippedItems.splice(equippedItemIdx, 1);
+    }
   }
 
   @Mutation
-  setCharacterItemAutoRepair({ characterItems, autoRepair }: { characterItems: CharacterItems; autoRepair: boolean }) {
-    characterItems.autoRepair = autoRepair;
+  setCharacterAutoRepair({ character, autoRepair }: { character: Character; autoRepair: boolean }) {
+    character.autoRepair = autoRepair;
   }
 
   @Mutation
@@ -131,16 +140,15 @@ class UserModule extends VuexModule {
   }
 
   @Action
-  replaceItem({ character, slot, item }: { character: Character; slot: ItemSlot; item: Item | null }) {
-    const { items } = character;
-    this.setCharacterItem({ characterItems: items, slot, item });
-    return updateCharacterItems(character.id, items);
+  replaceItem({ character, slot, item }: { character: Character; slot: ItemSlot; item: Item | null }): Promise<EquippedItem[]> {
+    this.setCharacterItem({ character, slot, item });
+    return userService.updateCharacterItems(character.id, [{ itemId: item === null ? null : item.id, slot }]);
   }
 
   @Action
   switchAutoRepair({ character, autoRepair }: { character: Character; autoRepair: boolean }) {
-    this.setCharacterItemAutoRepair({ characterItems: character.items, autoRepair });
-    return updateCharacterItems(character.id, character.items);
+    this.setCharacterAutoRepair({ character, autoRepair });
+    return userService.switchCharacterAutoRepair(character.id, autoRepair);
   }
 
   @Action

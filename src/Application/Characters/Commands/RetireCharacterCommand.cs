@@ -33,6 +33,7 @@ namespace Crpg.Application.Characters.Commands
             {
                 var character = await _db.Characters
                     .Include(c => c.User)
+                    .Include(c => c.EquippedItems)
                     .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
                 if (character == null)
                 {
@@ -48,8 +49,8 @@ namespace Crpg.Application.Characters.Commands
                 character.Level = CharacterHelper.DefaultLevel;
                 character.Experience = CharacterHelper.DefaultExperience;
                 character.ExperienceMultiplier += ExperienceMultiplierIncrease;
+                character.EquippedItems.Clear();
                 CharacterHelper.ResetCharacterStats(character);
-                CharacterHelper.UnequipCharacterItems(character.Items);
 
                 character.User!.HeirloomPoints += 1;
 

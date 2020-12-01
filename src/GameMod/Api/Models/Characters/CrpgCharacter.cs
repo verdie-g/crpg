@@ -1,4 +1,8 @@
-﻿namespace Crpg.GameMod.Api.Models.Characters
+﻿using System;
+using System.Collections.Generic;
+using Crpg.GameMod.Api.Models.Items;
+
+namespace Crpg.GameMod.Api.Models.Characters
 {
     // Copy of Crpg.Application.Characters.Models.CharacterViewModel
     internal class CrpgCharacter
@@ -12,6 +16,6 @@
         public string BodyProperties { get; set; } = string.Empty;
         public CrpgCharacterGender Gender { get; set; }
         public CrpgCharacterStatistics Statistics { get; set; } = new CrpgCharacterStatistics();
-        public CrpgCharacterItems Items { get; set; } = new CrpgCharacterItems();
+        public IList<CrpgEquippedItem> EquippedItems { get; set; } = Array.Empty<CrpgEquippedItem>();
     }
 }

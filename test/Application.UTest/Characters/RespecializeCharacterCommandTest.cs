@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Commands;
@@ -41,11 +42,11 @@ namespace Crpg.Application.UTest.Characters
                         Points = 67,
                     },
                 },
-                Items = new CharacterItems
+                EquippedItems =
                 {
-                    HeadItem = new Item(),
-                    BodyItem = new Item(),
-                    Weapon1Item = new Item(),
+                    new EquippedItem { Item = new Item(), Slot = ItemSlot.Head },
+                    new EquippedItem { Item = new Item(), Slot = ItemSlot.Body },
+                    new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon1 },
                 },
             };
             ArrangeDb.Add(character);
@@ -57,7 +58,9 @@ namespace Crpg.Application.UTest.Characters
                 UserId = character.UserId,
             }, CancellationToken.None);
 
-            character = await AssertDb.Characters.FirstAsync(c => c.Id == character.Id);
+            character = await AssertDb.Characters
+                .Include(c => c.EquippedItems)
+                .FirstAsync(c => c.Id == character.Id);
             Assert.AreEqual(2, character.Generation);
             Assert.AreEqual(2, character.Level);
             Assert.AreEqual(10000, character.Experience);
@@ -70,9 +73,7 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(0, character.Statistics.Skills.PowerStrike);
             Assert.AreEqual(62, character.Statistics.WeaponProficiencies.Points);
 
-            Assert.Null(character.Items.HeadItemId);
-            Assert.Null(character.Items.BodyItemId);
-            Assert.Null(character.Items.Weapon1ItemId);
+            Assert.IsEmpty(character.EquippedItems);
         }
 
         [Test]

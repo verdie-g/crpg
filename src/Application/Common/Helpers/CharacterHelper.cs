@@ -11,11 +11,24 @@ namespace Crpg.Application.Common.Helpers
         public const int DefaultExperience = 0;
         public const float DefaultExperienceMultiplier = 1.0f;
         public const bool DefaultAutoRepair = true;
+        public const string DefaultBodyProperties = "0018880540003341783567B87A8C5A7791D94C672ABB9E8734775BD78C2B866900D776030D96978800000000000000000000000000000000000000002FA49042";
+        public const CharacterGender DefaultGender = CharacterGender.Male;
 
         private const int DefaultStrength = 3;
         private const int DefaultAgility = 3;
         private const int AttributePointsPerLevel = 1;
         private const int SkillPointsPerLevel = 1;
+
+        public static void SetDefaultValuesForCharacter(Character character)
+        {
+            character.Generation = DefaultGeneration;
+            character.Level = DefaultLevel;
+            character.Experience = DefaultExperience;
+            character.ExperienceMultiplier = DefaultExperienceMultiplier;
+            character.AutoRepair = DefaultAutoRepair;
+            character.BodyProperties = DefaultBodyProperties;
+            character.Gender = DefaultGender;
+        }
 
         /// <summary>
         /// Reset character stats.
@@ -51,69 +64,6 @@ namespace Crpg.Application.Common.Helpers
             character.Statistics.WeaponProficiencies.Points += WeaponProficiencyPointsForLevel(newLevel)
                 - WeaponProficiencyPointsForLevel(character.Level);
             character.Level = newLevel;
-        }
-
-        public static void UnequipCharacterItems(CharacterItems items)
-        {
-            items.HeadItemId = null;
-            items.ShoulderItemId = null;
-            items.BodyItemId = null;
-            items.HandItemId = null;
-            items.LegItemId = null;
-            items.MountHarnessItemId = null;
-            items.MountItemId = null;
-            items.Weapon1ItemId = null;
-            items.Weapon2ItemId = null;
-            items.Weapon3ItemId = null;
-            items.Weapon4ItemId = null;
-        }
-
-        public static void ReplaceCharacterItem(CharacterItems items, int itemToReplaceId, int? itemToReplaceWithId)
-        {
-            if (items.HeadItemId == itemToReplaceId)
-            {
-                items.HeadItemId = itemToReplaceWithId;
-            }
-            else if (items.ShoulderItemId == itemToReplaceId)
-            {
-                items.ShoulderItemId = itemToReplaceWithId;
-            }
-            else if (items.BodyItemId == itemToReplaceId)
-            {
-                items.BodyItemId = itemToReplaceWithId;
-            }
-            else if (items.HandItemId == itemToReplaceId)
-            {
-                items.HandItemId = itemToReplaceWithId;
-            }
-            else if (items.LegItemId == itemToReplaceId)
-            {
-                items.LegItemId = itemToReplaceWithId;
-            }
-            else if (items.MountHarnessItemId == itemToReplaceId)
-            {
-                items.MountHarnessItemId = itemToReplaceWithId;
-            }
-            else if (items.MountItemId == itemToReplaceId)
-            {
-                items.MountItemId = itemToReplaceWithId;
-            }
-            else if (items.Weapon1ItemId == itemToReplaceId)
-            {
-                items.Weapon1ItemId = itemToReplaceWithId;
-            }
-            else if (items.Weapon2ItemId == itemToReplaceId)
-            {
-                items.Weapon2ItemId = itemToReplaceWithId;
-            }
-            else if (items.Weapon3ItemId == itemToReplaceId)
-            {
-                items.Weapon3ItemId = itemToReplaceWithId;
-            }
-            else if (items.Weapon4ItemId == itemToReplaceId)
-            {
-                items.Weapon4ItemId = itemToReplaceWithId;
-            }
         }
 
         private static int WeaponProficiencyPointsForLevel(int lvl)

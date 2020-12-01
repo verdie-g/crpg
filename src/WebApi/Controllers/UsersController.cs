@@ -116,13 +116,29 @@ namespace Crpg.WebApi.Controllers
         /// Updates a character's items for the current user.
         /// </summary>
         /// <param name="id">Character id.</param>
-        /// <param name="req">The entire character's items with the updated values.</param>
+        /// <param name="req">Item slots that changed.</param>
         /// <returns>The updated character items.</returns>
         /// <response code="200">Updated.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPut("self/characters/{id}/items")]
-        public Task<ActionResult<Result<CharacterItemsViewModel>>> UpdateCharacterItems([FromRoute] int id,
+        public Task<ActionResult<Result<IList<EquippedItemViewModel>>>> UpdateCharacterItems([FromRoute] int id,
             [FromBody] UpdateCharacterItemsCommand req)
+        {
+            req.UserId = CurrentUser.UserId;
+            req.CharacterId = id;
+            return ResultToActionAsync(Mediator.Send(req));
+        }
+
+        /// <summary>
+        /// Switch on/off auto-repairing for a character.
+        /// </summary>
+        /// <param name="id">Character id.</param>
+        /// <param name="req">Auto repair value.</param>
+        /// <response code="204">Updated.</response>
+        /// <response code="400">Bad Request.</response>
+        [HttpPut("self/characters/{id}/auto-repair")]
+        public Task<ActionResult> SwitchCharacterAutoRepair([FromRoute] int id,
+            [FromBody] SwitchCharacterAutoRepairCommand req)
         {
             req.UserId = CurrentUser.UserId;
             req.CharacterId = id;

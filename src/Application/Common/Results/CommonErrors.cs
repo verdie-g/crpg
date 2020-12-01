@@ -24,12 +24,11 @@ namespace Crpg.Application.Common.Results
             Detail = $"Item with id '{itemId}' is already owned by the user",
         };
 
-        public static Error ItemBadType(int itemId, IEnumerable<ItemType> expectedTypes, ItemType actualType) =>
-            new Error(ErrorType.Validation, ErrorCode.ItemBadType)
-            {
-                Title = "Item has a bad type",
-                Detail = $"Item with id '{itemId}' was expected to be of type '{string.Join(',', expectedTypes)} but was '{actualType}'",
-            };
+        public static Error ItemBadSlot(int itemId, ItemSlot slot) => new Error(ErrorType.Validation, ErrorCode.ItemBadSlot)
+        {
+            Title = "Item cannot be put in that slot",
+            Detail = $"Item with id '{itemId}' cannot be put in the slot '{slot}'",
+        };
 
         public static Error ItemMaxRankReached(int itemId, int userId, int maxRank) =>
             new Error(ErrorType.Validation, ErrorCode.ItemMaxRankReached)

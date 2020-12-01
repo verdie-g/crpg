@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using Crpg.Domain.Common;
+using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Domain.Entities.Characters
@@ -16,6 +19,7 @@ namespace Crpg.Domain.Entities.Characters
         public int Experience { get; set; }
         public float ExperienceMultiplier { get; set; }
         public bool SkippedTheFun { get; set; } // unused (issue #13)
+        public bool AutoRepair { get; set; }
 
         /// <summary>
         /// A 128 character long string representing the in-game body of the character (height, face, ...).
@@ -28,7 +32,7 @@ namespace Crpg.Domain.Entities.Characters
         public CharacterGender Gender { get; set; }
 
         public CharacterStatistics Statistics { get; set; } = new CharacterStatistics();
-        public CharacterItems Items { get; set; } = new CharacterItems();
+        public IList<EquippedItem> EquippedItems { get; set; } = new List<EquippedItem>();
 
         public User? User { get; set; }
     }
