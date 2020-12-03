@@ -120,7 +120,6 @@ namespace Crpg.Application.Games.Commands
             {
                 var user = await _db.Users
                     .Include(u => u.Characters.Where(c => c.Name == req.UserName).Take(1))
-                    .ThenInclude(c => c!.EquippedItems).ThenInclude(ei => ei.Item)
                     .Include(u => u.Bans.OrderByDescending(b => b.Id).Take(1))
                     .FirstOrDefaultAsync(u => u.Platform == req.Platform && u.PlatformUserId == req.PlatformUserId,
                         cancellationToken);
@@ -137,6 +136,15 @@ namespace Crpg.Application.Games.Commands
                     var itemSet = await GiveUserRandomItemSet(user);
                     var character = CreateCharacter(req.UserName, itemSet);
                     user.Characters.Add(character);
+                }
+                else
+                {
+                    // Load items in separate query to avoid cartesian explosion if character has many items equipped.
+                    await _db.Entry(user.Characters[0])
+                        .Collection(c => c.EquippedItems)
+                        .Query()
+                        .Include(ei => ei.Item)
+                        .LoadAsync(cancellationToken);
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
