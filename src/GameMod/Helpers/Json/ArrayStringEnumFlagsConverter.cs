@@ -40,7 +40,7 @@ namespace Crpg.GameMod.Helpers.Json
             long flags = 0;
             while (reader.Read() && reader.TokenType == JsonToken.String)
             {
-                if (enumValues.TryGetValue(reader.ReadAsString(), out long flagVal))
+                if (enumValues.TryGetValue(reader.Value.ToString(), out long flagVal))
                 {
                     flags |= flagVal;
                 }
