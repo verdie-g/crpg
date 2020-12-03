@@ -200,8 +200,8 @@ namespace Crpg.Application.Games.Commands
                     {
                         userItem = new UserItem
                         {
-                            UserId = user.Id,
                             ItemId = item.Id,
+                            User = user,
                         };
 
                         _db.UserItems.Add(userItem);
