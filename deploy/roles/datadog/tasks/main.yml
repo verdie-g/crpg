@@ -61,16 +61,16 @@
         instances:
         logs:
         - type: file
-          path: "{{ crpg_log_file }}"
-          service: "{{ crpg_service_name }}"
+          path: "{{ crpg_api_log_file }}"
+          service: "{{ crpg_api_service_name }}"
           source: csharp
       http_check:
         init_config:
         instances:
         - name: cRPG Web API
-          url: "http://localhost:{{ crpg_port }}/health"
+          url: "http://localhost:{{ crpg_api_port }}/health"
           content_match: ^Healthy$
-          service: "{{ crpg_service_name }}"
+          service: "{{ crpg_api_service_name }}"
         - name: Steam Open-ID
           url: https://steamcommunity.com/openid
           service: steam

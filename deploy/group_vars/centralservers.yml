@@ -1,11 +1,14 @@
 ﻿---
-crpg_log_file: /var/log/crpg/crpg.log
-crpg_user: crpg
-crpg_api_path: "/home/{{ crpg_user }}/crpg"
+crpg_api_user: crpg
+crpg_api_service_name: crpg_web_api
+crpg_api_path: "/home/{{ crpg_api_user }}/crpg"
+crpg_api_port: 8000
+crpg_api_log_file: "/var/log/crpg/{{ crpg_api_service_name }}.log"
+
 crpg_ui_path: "/var/www/{{ crpg_domain_name }}"
-crpg_service_name: crpg_web_api
+
 crpg_domain_name: c-rpg.eu
-crpg_port: 8000
+
 crpg_db: crpg
 crpg_db_user: crpg
 crpg_db_user_password: !vault |
@@ -15,6 +18,7 @@ crpg_db_user_password: !vault |
   38626562646536376361343732396539373764663132663262333566326339383239653065356138
   3434356465313665390a643036346635343562646136653063646166366264396664313530326334
   3163
+
 datadog_db_user: dd-agent # Same username as Datadog agent so ident authentication can be used
 
 dotnet_version: 5.0

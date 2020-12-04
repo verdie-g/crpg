@@ -11,7 +11,7 @@
       {
         "Name": "File",
         "Args": {
-          "Path": "{{ crpg_log_file }}",
+          "Path": "{{ crpg_api_log_file }}",
           "Formatter": "Serilog.Formatting.Compact.RenderedCompactJsonFormatter, Serilog.Formatting.Compact",
           "Buffered": true
         }
@@ -52,7 +52,7 @@
     }
   },
   "AllowedOrigins": "https://{{ crpg_domain_name }}",
-  "Urls": "http://localhost:{{ crpg_port }}",
+  "Urls": "http://localhost:{{ crpg_api_port }}",
   "ConnectionStrings": {
     "Crpg": "Host=localhost;Database={{ crpg_db }};Username={{ crpg_db_user }};Password={{ crpg_db_user_password }}"
   }
