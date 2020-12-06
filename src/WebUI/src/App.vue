@@ -61,7 +61,7 @@
     <footer class="footer">
       <div class="level">
         <div class="level-item">
-          <a href="https://github.com/verdie-g/cRPG" target="_blank" title="Contribute to the project on Github">
+          <a href="https://github.com/verdie-g/crpg" target="_blank" title="Contribute to the project on Github">
             <b-icon icon="github" pack="fab" size="is-medium" aria-label="cRPG Github" />
           </a>
         </div>

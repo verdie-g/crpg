@@ -5,7 +5,7 @@ that adds persistence (xp, gold, items, stats) to the multiplayer.
 
 ## Contributing
 
-We encourage you to contribute to cRPG! Please check out the [Contributing guide](https://github.com/verdie-g/cRPG/blob/master/CONTRIBUTING.md)
+We encourage you to contribute to cRPG! Please check out the [Contributing guide](https://github.com/verdie-g/crpg/blob/master/CONTRIBUTING.md)
 for guidelines about how to proceed.
 
 If you just have a question, you can ask it on the [cRPG Discord](https://discord.gg/83RJDN9).

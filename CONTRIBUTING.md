@@ -4,7 +4,7 @@
 
 - **Do not open GitHub issue if the bug is a security vulnerability in cRPG**, and instead follow
   the [security policy](https://github.com/verdie-g/crpg/blob/master/SECURITY.md).
-- **Ensure the bug was not already reported** by searching on GitHub under [Issues](https://github.com/verdie-g/cRPG/issues?q=is%3Aissue)
+- **Ensure the bug was not already reported** by searching on GitHub under [Issues](https://github.com/verdie-g/crpg/issues?q=is%3Aissue)
 - If you're unable to find an open issue addressing the problem, open a new one. Make sure to include
   a title and a clear description, as much relevant information as possible, and ideally a screenshot
   or a video pointing out the issue.
@@ -54,7 +54,7 @@ The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the foll
 - Download your favorite IDE: [Visual Studio](https://visualstudio.microsoft.com/vs), [Visual Studio Code](https://code.visualstudio.com), [Rider](https://www.jetbrains.com/rider)...
 - Open the solution file Crpg.sln
 - Set the `IdentityServer:Providers:Steam:ApplicationKey` in
-  [src/WebApi/appsettings.Development.json](https://github.com/verdie-g/cRPG/blob/master/src/WebApi/appsettings.Development.json),
+  [src/WebApi/appsettings.Development.json](https://github.com/verdie-g/crpg/blob/master/src/WebApi/appsettings.Development.json),
   acquired by [filling out this form](https://steamcommunity.com/dev/apikey)
 - Run `dotnet dev-certs https --trust` to be able to launch the API with HTTPS. The authentication creates a cookie
   with `SameSite=None` and recent version of Chrome requires HTTPS to do so
