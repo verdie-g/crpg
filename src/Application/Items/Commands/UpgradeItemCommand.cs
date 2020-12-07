@@ -1,12 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Models;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Items;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,7 +20,6 @@ namespace Crpg.Application.Items.Commands
             /// <summary>
             /// To repair an item for rank -1 to rank 0 it costs 7% of the rank 0 price.
             /// </summary>
-            /// <remarks>This const should be synced with the Web UI.</remarks>
             private const float ItemRepairCost = 0.07f;
 
             private readonly ICrpgDbContext _db;

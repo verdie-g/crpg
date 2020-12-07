@@ -2,10 +2,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Characters.Models;
-using Crpg.Application.Common.Helpers;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
+using Crpg.Common.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
@@ -17,16 +19,17 @@ namespace Crpg.Application.Characters.Commands
 
         public class Handler : IMediatorRequestHandler<RetireCharacterCommand, CharacterViewModel>
         {
-            private const int MinimumRetiringLevel = 31;
-            private const float ExperienceMultiplierIncrease = 0.03f;
-
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
+            private readonly CharacterService _characterService;
+            private readonly Constants _constants;
 
-            public Handler(ICrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper, CharacterService characterService, Constants constants)
             {
                 _db = db;
                 _mapper = mapper;
+                _characterService = characterService;
+                _constants = constants;
             }
 
             public async Task<Result<CharacterViewModel>> Handle(RetireCharacterCommand req, CancellationToken cancellationToken)
@@ -40,17 +43,17 @@ namespace Crpg.Application.Characters.Commands
                     return new Result<CharacterViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
-                if (character.Level < MinimumRetiringLevel)
+                if (character.Level < _constants.MinimumRetirementLevel)
                 {
-                    return new Result<CharacterViewModel>(CommonErrors.CharacterLevelRequirementNotMet(MinimumRetiringLevel, character.Level));
+                    return new Result<CharacterViewModel>(CommonErrors.CharacterLevelRequirementNotMet(_constants.MinimumRetirementLevel, character.Level));
                 }
 
                 character.Generation += 1;
-                character.Level = CharacterHelper.DefaultLevel;
-                character.Experience = CharacterHelper.DefaultExperience;
-                character.ExperienceMultiplier += ExperienceMultiplierIncrease;
+                character.Level = _constants.MinimumLevel;
+                character.Experience = 0;
+                character.ExperienceMultiplier = MathHelper.ApplyPolynomialFunction(character.Generation, _constants.ExperienceMultiplierForGenerationCoefs);
                 character.EquippedItems.Clear();
-                CharacterHelper.ResetCharacterStats(character);
+                _characterService.ResetCharacterStats(character);
 
                 character.User!.HeirloomPoints += 1;
 

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Commands;
-using Crpg.Application.Games.Models;
-using Crpg.Common;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
@@ -23,6 +23,25 @@ namespace Crpg.Application.UTest.Games
     public class GetGameUserCommandTest : TestBase
     {
         private static readonly ILogger<GetGameUserCommand> Logger = Mock.Of<ILogger<GetGameUserCommand>>();
+
+        private static readonly Constants Constants = new Constants
+        {
+            DefaultGeneration = 0,
+            MinimumLevel = 1,
+            DefaultExperienceMultiplier = 1f,
+            DefaultAutoRepair = true,
+            DefaultCharacterBodyProperties = "ABCD",
+            DefaultCharacterGender = CharacterGender.Male,
+            DefaultGold = 300,
+            DefaultRole = Role.User,
+            DefaultHeirloomPoints = 0,
+            DefaultStrength = 3,
+            DefaultAgility = 3,
+            WeaponProficiencyPointsForLevelCoefs = new[] { 100f, 0f }, // wpp = lvl * 100
+        };
+
+        private static readonly UserService UserService = new UserService(Constants);
+        private static readonly CharacterService CharacterService = new CharacterService(null!, Constants);
 
         [SetUp]
         public override async Task SetUp()
@@ -42,7 +61,7 @@ namespace Crpg.Application.UTest.Games
         public async Task ShouldCreateUserIfDoesntExist()
         {
             var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                new MachineDateTimeOffset(), new ThreadSafeRandom(), Logger);
+                new MachineDateTimeOffset(), new ThreadSafeRandom(), UserService, CharacterService, Logger);
 
             var result = await handler.Handle(new GetGameUserCommand
             {
@@ -66,7 +85,7 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(3, gameUser.Character.Statistics.Attributes.Agility);
             Assert.AreEqual(0, gameUser.Character.Statistics.Attributes.Points);
             Assert.AreEqual(0, gameUser.Character.Statistics.Skills.Points);
-            Assert.Greater(gameUser.Character.Statistics.WeaponProficiencies.Points, 0);
+            Assert.AreEqual(100, gameUser.Character.Statistics.WeaponProficiencies.Points);
             Assert.AreEqual(5, gameUser.Character.EquippedItems.Count);
             Assert.IsTrue(gameUser.Character.AutoRepair);
             Assert.IsNull(gameUser.Ban);
@@ -90,7 +109,7 @@ namespace Crpg.Application.UTest.Games
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                new MachineDateTimeOffset(), new ThreadSafeRandom(), Logger);
+                new MachineDateTimeOffset(), new ThreadSafeRandom(), UserService, CharacterService, Logger);
 
             var result = await handler.Handle(new GetGameUserCommand
             {
@@ -114,7 +133,7 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(3, gameUser.Character.Statistics.Attributes.Agility);
             Assert.AreEqual(0, gameUser.Character.Statistics.Attributes.Points);
             Assert.AreEqual(0, gameUser.Character.Statistics.Skills.Points);
-            Assert.Greater(gameUser.Character.Statistics.WeaponProficiencies.Points, 0);
+            Assert.AreEqual(100, gameUser.Character.Statistics.WeaponProficiencies.Points);
             Assert.AreEqual(5, gameUser.Character.EquippedItems.Count);
             Assert.IsTrue(gameUser.Character.AutoRepair);
             Assert.IsNull(gameUser.Ban);
@@ -151,7 +170,7 @@ namespace Crpg.Application.UTest.Games
             randomMock.Setup(r => r.Next(It.IsAny<int>(), It.IsAny<int>())).Returns(1);
 
             var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                new MachineDateTimeOffset(), randomMock.Object, Logger);
+                new MachineDateTimeOffset(), randomMock.Object, UserService, CharacterService, Logger);
 
             // Handle shouldn't throw
             await handler.Handle(new GetGameUserCommand
@@ -186,7 +205,7 @@ namespace Crpg.Application.UTest.Games
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                new MachineDateTimeOffset(), new ThreadSafeRandom(), Logger);
+                new MachineDateTimeOffset(), new ThreadSafeRandom(), UserService, CharacterService, Logger);
 
             var result = await handler.Handle(new GetGameUserCommand
             {
@@ -219,7 +238,7 @@ namespace Crpg.Application.UTest.Games
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                new MachineDateTimeOffset(), new ThreadSafeRandom(), Logger);
+                new MachineDateTimeOffset(), new ThreadSafeRandom(), UserService, CharacterService, Logger);
 
             var result = await handler.Handle(new GetGameUserCommand
             {
@@ -257,7 +276,7 @@ namespace Crpg.Application.UTest.Games
                 .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
 
             var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                dateTime.Object, new ThreadSafeRandom(), Logger);
+                dateTime.Object, new ThreadSafeRandom(), UserService, CharacterService, Logger);
 
             var result = await handler.Handle(new GetGameUserCommand
             {
@@ -299,7 +318,7 @@ namespace Crpg.Application.UTest.Games
                 .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
 
             var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                dateTime.Object, new ThreadSafeRandom(), Logger);
+                dateTime.Object, new ThreadSafeRandom(), UserService, CharacterService, Logger);
 
             var result = await handler.Handle(new GetGameUserCommand
             {

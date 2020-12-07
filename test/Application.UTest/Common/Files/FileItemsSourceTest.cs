@@ -44,7 +44,8 @@ namespace Crpg.Application.UTest.Common.Files
         public async Task CheckNoConflictingNameWithModifiedItems()
         {
             var itemsByMbId = (await new FileItemsSource().LoadItems()).ToDictionary(i => i.MbId);
-            var itemModifier = new ItemModifierService();
+            var itemModifiers = new FileItemModifiersSource().LoadItemModifiers();
+            var itemModifier = new ItemModifierService(itemModifiers);
             var errors = new List<string>();
             foreach (var item in itemsByMbId.Values)
             {

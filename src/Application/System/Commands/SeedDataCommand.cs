@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
@@ -26,14 +25,18 @@ namespace Crpg.Application.System.Commands
             private readonly ICrpgDbContext _db;
             private readonly IItemsSource _itemsSource;
             private readonly IApplicationEnvironment _appEnv;
+            private readonly CharacterService _characterService;
+            private readonly ExperienceTable _experienceTable;
             private readonly ItemModifierService _itemModifier;
 
             public Handler(ICrpgDbContext db, IItemsSource itemsSource, IApplicationEnvironment appEnv,
-                ItemModifierService itemModifier)
+                CharacterService characterService, ExperienceTable experienceTable, ItemModifierService itemModifier)
             {
                 _db = db;
                 _itemsSource = itemsSource;
                 _appEnv = appEnv;
+                _characterService = characterService;
+                _experienceTable = experienceTable;
                 _itemModifier = itemModifier;
             }
 
@@ -69,21 +72,21 @@ namespace Crpg.Application.System.Commands
                                 Name = "takeoshigeru",
                                 Generation = 2,
                                 Level = 23,
-                                Experience = ExperienceTable.GetExperienceForLevel(23),
+                                Experience = _experienceTable.GetExperienceForLevel(23),
                                 BodyProperties = "0018880540003341783567B87A8C5A7791D94C672ABB9E8734775BD78C2B866900D776030D96978800000000000000000000000000000000000000002FA49042"
                             },
                             new Character
                             {
                                 Name = "totoalala",
                                 Level = 12,
-                                Experience = ExperienceTable.GetExperienceForLevel(12),
+                                Experience = _experienceTable.GetExperienceForLevel(12),
                                 BodyProperties = "0018880540003341783567B87A8C5A7791D94C672ABB9E8734775BD78C2B866900D776030D96978800000000000000000000000000000000000000002FA49042"
                             },
                             new Character
                             {
                                 Name = "Retire me",
                                 Level = 31,
-                                Experience = ExperienceTable.GetExperienceForLevel(31) + 100,
+                                Experience = _experienceTable.GetExperienceForLevel(31) + 100,
                                 BodyProperties = "0018880540003341783567B87A8C5A7791D94C672ABB9E8734775BD78C2B866900D776030D96978800000000000000000000000000000000000000002FA49042"
                             },
                         },
@@ -109,7 +112,7 @@ namespace Crpg.Application.System.Commands
                 {
                     foreach (var character in user.Characters)
                     {
-                        CharacterHelper.ResetCharacterStats(character, respecialization: true);
+                        _characterService.ResetCharacterStats(character, respecialization: true);
                     }
 
                     _db.Users.Add(user);
@@ -125,8 +128,7 @@ namespace Crpg.Application.System.Commands
 
                 foreach (ItemCreation item in itemsByMdId.Values)
                 {
-                    var baseItem = ItemHelper.ToItem(item);
-                    baseItem.Rank = 0;
+                    var baseItem = ItemCreationToItem(item);
                     // EF Core doesn't support creating an entity referencing itself, which is needed for items with
                     // rank = 0. Workaround is to set BaseItemId to null and replace with the reference to the item
                     // once it was created. This is the only reason why BaseItemId is nullable.
@@ -136,8 +138,7 @@ namespace Crpg.Application.System.Commands
 
                     foreach (int rank in ItemRanks)
                     {
-                        var modifiedItem = ItemHelper.ToItem(_itemModifier.ModifyItem(item, rank));
-                        modifiedItem.Rank = rank;
+                        var modifiedItem = ItemCreationToItem(_itemModifier.ModifyItem(item, rank));
                         modifiedItem.BaseItem = baseItem;
                         CreateOrUpdateItem(dbItemsByMbId, modifiedItem);
                     }
@@ -182,6 +183,81 @@ namespace Crpg.Application.System.Commands
                     _db.Items.Add(item);
                 }
             }
+
+            private static Item ItemCreationToItem(ItemCreation item)
+            {
+                var res = new Item
+                {
+                    MbId = item.MbId,
+                    Name = item.Name,
+                    Type = item.Type,
+                    Value = item.Value,
+                    Weight = item.Weight,
+                    Rank = item.Rank,
+                };
+
+                if (item.Armor != null)
+                {
+                    res.Armor = new ItemArmorComponent
+                    {
+                        HeadArmor = item.Armor!.HeadArmor,
+                        BodyArmor = item.Armor!.BodyArmor,
+                        ArmArmor = item.Armor!.ArmArmor,
+                        LegArmor = item.Armor!.LegArmor,
+                    };
+                }
+
+                if (item.Mount != null)
+                {
+                    res.Mount = new ItemMountComponent
+                    {
+                        BodyLength = item.Mount!.BodyLength,
+                        ChargeDamage = item.Mount!.ChargeDamage,
+                        Maneuver = item.Mount!.Maneuver,
+                        Speed = item.Mount!.Speed,
+                        HitPoints = item.Mount!.HitPoints,
+                    };
+                }
+
+                if (item.Weapons.Count > 0)
+                {
+                    res.PrimaryWeapon = IteamWeaponComponentFromViewModel(item.Weapons[0]);
+                }
+
+                if (item.Weapons.Count > 1)
+                {
+                    res.SecondaryWeapon = IteamWeaponComponentFromViewModel(item.Weapons[1]);
+                }
+
+                if (item.Weapons.Count > 2)
+                {
+                    res.TertiaryWeapon = IteamWeaponComponentFromViewModel(item.Weapons[2]);
+                }
+
+                return res;
+            }
+
+            private static ItemWeaponComponent IteamWeaponComponentFromViewModel(ItemWeaponComponentViewModel weaponComponent)
+        {
+            return new ItemWeaponComponent
+            {
+                Class = weaponComponent.Class,
+                Accuracy = weaponComponent.Accuracy,
+                MissileSpeed = weaponComponent.MissileSpeed,
+                StackAmount = weaponComponent.StackAmount,
+                Length = weaponComponent.Length,
+                Balance = weaponComponent.Balance,
+                Handling = weaponComponent.Handling,
+                BodyArmor = weaponComponent.BodyArmor,
+                Flags = weaponComponent.Flags,
+                ThrustDamage = weaponComponent.ThrustDamage,
+                ThrustDamageType = weaponComponent.ThrustDamageType,
+                ThrustSpeed = weaponComponent.ThrustSpeed,
+                SwingDamage = weaponComponent.SwingDamage,
+                SwingDamageType = weaponComponent.SwingDamageType,
+                SwingSpeed = weaponComponent.SwingSpeed,
+            };
+        }
         }
     }
 }

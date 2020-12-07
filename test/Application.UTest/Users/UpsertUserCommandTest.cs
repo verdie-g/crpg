@@ -1,6 +1,8 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Users.Commands;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
@@ -15,10 +17,19 @@ namespace Crpg.Application.UTest.Users
     {
         private static readonly IEventService EventService = Mock.Of<IEventService>();
 
+        private static readonly Constants Constants = new Constants
+        {
+            DefaultGold = 300,
+            DefaultRole = Role.User,
+            DefaultHeirloomPoints = 0,
+        };
+
+        private static readonly UserService UserService = new UserService(Constants);
+
         [Test]
         public async Task TestWhenUserDoesntExist()
         {
-            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService);
+            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService, UserService);
             var result = await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "123",
@@ -53,7 +64,7 @@ namespace Crpg.Application.UTest.Users
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService);
+            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService, UserService);
             var result = await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "13948192759205810",
@@ -89,7 +100,7 @@ namespace Crpg.Application.UTest.Users
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService);
+            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService, UserService);
             var result = await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "13948192759205810",

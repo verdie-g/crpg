@@ -9,7 +9,7 @@ using Crpg.Application.Items.Models;
 
 namespace Crpg.Application.Common.Files
 {
-    public class FileItemsSource : IItemsSource
+    internal class FileItemsSource : IItemsSource
     {
         private static readonly string ItemsPath = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) + "/Common/Files/items.json";
 

@@ -4,10 +4,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Characters.Models;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
-using Crpg.Domain.Entities;
+using Crpg.Common.Helpers;
 using Crpg.Domain.Entities.Characters;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,34 +22,15 @@ namespace Crpg.Application.Characters.Commands
 
         public class Handler : IMediatorRequestHandler<UpdateCharacterStatisticsCommand, CharacterStatisticsViewModel>
         {
-            /// <remarks>This method should be synced with the Web UI.</remarks>
-            private static int WeaponProficienciesPointsForAgility(int agility) => agility * 14;
-
-            /// <remarks>This method should be synced with the Web UI.</remarks>
-            private static int WeaponProficienciesPointsForWeaponMaster(int weaponMaster)
-            {
-                const int a = 10;
-                const int b = 65;
-                return weaponMaster == 0
-                    ? 0
-                    : a * weaponMaster * weaponMaster + b * weaponMaster;
-            }
-
-            /// <remarks>This method should be synced with the Web UI.</remarks>
-            private static int WeaponProficiencyCost(int wpf)
-            {
-                const float a = 0.0005f;
-                const int b = 3;
-                return (int)Math.Floor(a * wpf * (wpf + 1) * (2 * wpf + 1) / 6f + b * wpf);
-            }
-
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
+            private readonly Constants _constants;
 
-            public Handler(ICrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper, Constants constants)
             {
                 _db = db;
                 _mapper = mapper;
+                _constants = constants;
             }
 
             public async Task<Result<CharacterStatisticsViewModel>> Handle(UpdateCharacterStatisticsCommand req,
@@ -178,6 +160,15 @@ namespace Crpg.Application.Characters.Commands
                     && stats.Skills.HorseArchery <= stats.Attributes.Agility / 6
                     && stats.Skills.Shield <= stats.Attributes.Agility / 6;
             }
+
+            private int WeaponProficienciesPointsForAgility(int agility) =>
+                (int)MathHelper.ApplyPolynomialFunction(agility, _constants.WeaponProficiencyPointsForAgilityCoefs);
+
+            private int WeaponProficienciesPointsForWeaponMaster(int weaponMaster) =>
+                (int)MathHelper.ApplyPolynomialFunction(weaponMaster, _constants.WeaponProficiencyPointsForWeaponMasterCoefs);
+
+            private int WeaponProficiencyCost(int wpf) =>
+                (int)MathHelper.ApplyPolynomialFunction(wpf, _constants.WeaponProficiencyCostCoefs);
 
             private class StatisticDecreasedException : Exception
             {

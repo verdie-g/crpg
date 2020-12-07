@@ -73,7 +73,7 @@ namespace Crpg.Application.Common.Results
             Detail = $"{requiredPoints} skill points are required but only {actualPoints} are available",
         };
 
-        public static Error NotEnoughWeaponProficiencyPoints(int requiredPoints, int actualPoints) => new Error(ErrorType.Validation, ErrorCode.NotWeaponProficiencyPoints)
+        public static Error NotEnoughWeaponProficiencyPoints(int requiredPoints, int actualPoints) => new Error(ErrorType.Validation, ErrorCode.NotEnoughWeaponProficiencyPoints)
         {
             Title = "Not enough weapon proficiency points",
             Detail = $"{requiredPoints} weapon proficiency points are required but only {actualPoints} are available",

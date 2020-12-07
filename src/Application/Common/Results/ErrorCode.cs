@@ -19,7 +19,7 @@
         NotEnoughGold,
         NotEnoughHeirloomPoints,
         NotEnoughSkillPoints,
-        NotWeaponProficiencyPoints,
+        NotEnoughWeaponProficiencyPoints,
         SkillRequirementNotMet,
         StatisticDecreased,
         UserNotFound,

@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Commands;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Results;
-using Crpg.Domain.Entities;
+using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
@@ -15,6 +14,22 @@ namespace Crpg.Application.UTest.Characters
 {
     public class RespecializeCharacterCommandTest : TestBase
     {
+        private static readonly Constants Constants = new Constants
+        {
+            MinimumLevel = 1,
+            MaximumLevel = 38,
+            ExperienceForLevelCoefs = new[] { 0f, 50f, -50f }, // xp = lvl * 10
+            AttributePointsPerLevel = 1,
+            SkillPointsPerLevel = 1,
+            WeaponProficiencyPointsForLevelCoefs = new[] { 100f, 0f }, // wpp = lvl * 100
+            RespecializeExperiencePenaltyCoefs = new[] { 0.5f, 0f },
+            DefaultStrength = 3,
+            DefaultAgility = 3,
+        };
+
+        private static readonly ExperienceTable ExperienceTable = new ExperienceTable(Constants);
+        private static readonly CharacterService CharacterService = new CharacterService(ExperienceTable, Constants);
+
         [Test]
         public async Task RespecializeCharacterLevel3ShouldMakeItLevel2()
         {
@@ -22,7 +37,7 @@ namespace Crpg.Application.UTest.Characters
             {
                 Generation = 2,
                 Level = 3,
-                Experience = 20000,
+                Experience = 150,
                 ExperienceMultiplier = 1.1f,
                 Statistics = new CharacterStatistics
                 {
@@ -52,7 +67,8 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
-            await new RespecializeCharacterCommand.Handler(ActDb, Mapper).Handle(new RespecializeCharacterCommand
+            var handler = new RespecializeCharacterCommand.Handler(ActDb, Mapper, CharacterService, ExperienceTable, Constants);
+            await handler.Handle(new RespecializeCharacterCommand
             {
                 CharacterId = character.Id,
                 UserId = character.UserId,
@@ -63,7 +79,7 @@ namespace Crpg.Application.UTest.Characters
                 .FirstAsync(c => c.Id == character.Id);
             Assert.AreEqual(2, character.Generation);
             Assert.AreEqual(2, character.Level);
-            Assert.AreEqual(10000, character.Experience);
+            Assert.AreEqual(75, character.Experience);
             Assert.AreEqual(1.1f, character.ExperienceMultiplier);
 
             Assert.AreEqual(1, character.Statistics.Attributes.Points);
@@ -71,7 +87,7 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(3, character.Statistics.Attributes.Agility);
             Assert.AreEqual(1, character.Statistics.Skills.Points);
             Assert.AreEqual(0, character.Statistics.Skills.PowerStrike);
-            Assert.AreEqual(62, character.Statistics.WeaponProficiencies.Points);
+            Assert.AreEqual(200, character.Statistics.WeaponProficiencies.Points);
 
             Assert.IsEmpty(character.EquippedItems);
         }
@@ -79,7 +95,8 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldThrowNotFoundIfUserDoesntExist()
         {
-            var result = await new RespecializeCharacterCommand.Handler(ActDb, Mapper).Handle(
+            var handler = new RespecializeCharacterCommand.Handler(ActDb, Mapper, CharacterService, ExperienceTable, Constants);
+            var result = await handler.Handle(
                 new RespecializeCharacterCommand
                 {
                     CharacterId = 1,
@@ -95,7 +112,8 @@ namespace Crpg.Application.UTest.Characters
             var user = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new RespecializeCharacterCommand.Handler(ActDb, Mapper).Handle(
+            var handler = new RespecializeCharacterCommand.Handler(ActDb, Mapper, CharacterService, ExperienceTable, Constants);
+            var result = await handler.Handle(
                 new RespecializeCharacterCommand
                 {
                     CharacterId = 1,

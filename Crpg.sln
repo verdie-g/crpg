@@ -30,6 +30,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdk.UTest", "test\Sdk.UTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdk.Abstractions", "src\Sdk.Abstractions\Sdk.Abstractions.csproj", "{DD79FF30-7E86-41CE-8A35-00FCC50D2252}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{5C7B1CBA-1CE0-4E05-B9B4-53EF21B17746}"
+ProjectSection(SolutionItems) = preProject
+	data\constants.json = data\constants.json
+	data\item-modifiers.json = data\item-modifiers.json
+	data\items.json = data\items.json
+EndProjectSection
+EndProject
 Global
 				GlobalSection(SolutionConfigurationPlatforms) = preSolution
 								Debug|Any CPU = Debug|Any CPU

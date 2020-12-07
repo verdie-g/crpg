@@ -1,10 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
-using Crpg.Domain.Entities;
-using Crpg.Domain.Entities.Characters;
+using Crpg.Common.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Commands
@@ -16,13 +16,13 @@ namespace Crpg.Application.Items.Commands
 
         public class Handler : IMediatorRequestHandler<SellItemCommand>
         {
-            private const float SellItemRatio = 0.66f;
-
             private readonly ICrpgDbContext _db;
+            private readonly Constants _constants;
 
-            public Handler(ICrpgDbContext db)
+            public Handler(ICrpgDbContext db, Constants constants)
             {
                 _db = db;
+                _constants = constants;
             }
 
             public async Task<Result> Handle(SellItemCommand req, CancellationToken cancellationToken)
@@ -38,7 +38,7 @@ namespace Crpg.Application.Items.Commands
                     return new Result(CommonErrors.ItemNotOwned(req.ItemId));
                 }
 
-                userItem.User!.Gold += (int)(userItem.Item!.Value * SellItemRatio);
+                userItem.User!.Gold += (int)MathHelper.ApplyPolynomialFunction(userItem.Item!.Value, _constants.ItemSellCostCoefs);
                 _db.EquippedItems.RemoveRange(userItem.EquippedItems);
                 _db.UserItems.Remove(userItem);
 

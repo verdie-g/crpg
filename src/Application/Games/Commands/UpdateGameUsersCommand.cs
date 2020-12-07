@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Models;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
@@ -27,12 +27,14 @@ namespace Crpg.Application.Games.Commands
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
+            private readonly CharacterService _characterService;
             private readonly ILogger<UpdateGameUsersCommand> _logger;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, ILogger<UpdateGameUsersCommand> logger)
+            public Handler(ICrpgDbContext db, IMapper mapper, CharacterService characterService, ILogger<UpdateGameUsersCommand> logger)
             {
                 _db = db;
                 _mapper = mapper;
+                _characterService = characterService;
                 _logger = logger;
             }
 
@@ -74,12 +76,7 @@ namespace Crpg.Application.Games.Commands
             private void GiveReward(Character character, GameUserReward reward)
             {
                 character.User!.Gold += reward.Gold;
-                character.Experience += (int)(character.ExperienceMultiplier * reward.Experience);
-                int newLevel = ExperienceTable.GetLevelForExperience(character.Experience);
-                if (character.Level != newLevel) // if user leveled up
-                {
-                    CharacterHelper.LevelUp(character, newLevel);
-                }
+                _characterService.GiveExperience(character, reward.Experience);
             }
 
             private Task<List<GameUserBrokenItem>> RepairOrBreakItems(Character character, IEnumerable<GameUserBrokenItem> itemsToRepair,

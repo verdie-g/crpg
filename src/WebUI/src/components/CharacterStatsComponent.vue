@@ -19,10 +19,6 @@
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        :value="character.experience" :controls="false" />
       </b-field>
-      <b-field horizontal label="Level up in" class="stat-field is-marginless">
-        <b-numberinput size="is-small" :editable="false" controls-position="compact"
-                       :value="character.nextLevelExperience - character.experience" :controls="false" />
-      </b-field>
     </div>
 
     <div class="stats-section">
@@ -36,7 +32,7 @@
 
       <b-field horizontal class="stat-field">
         <template slot="label">
-          <b-tooltip label="Increases your health points by 1 per level. Allows you to use higher tier weapons and armor."
+          <b-tooltip label="Increases your health points. Allows you to use higher tier weapons and armor."
                      position="is-left" multilined>Strength</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
@@ -46,7 +42,7 @@
 
       <b-field horizontal class="stat-field">
         <template slot="label">
-          <b-tooltip label="Increases your weapon points by 14 per level. Makes you move a bit faster."
+          <b-tooltip label="Increases your weapon points and makes you move a bit faster."
                      position="is-left" multilined>Agility</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
@@ -66,8 +62,8 @@
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('ironFlesh') ? 'is-primary' : 'is-danger'">
         <template slot="label">
-          <b-tooltip label="Increases your health by 2 points per level and reduces the negative impact armor has on weapon points.
-                     Requires 3 strength per level." position="is-left" multilined>Iron Flesh</b-tooltip>
+          <b-tooltip :label="`Increases your health  and reduces the negative impact armor has on weapon points. Requires 3
+            strength per level.`" position="is-left" multilined>Iron Flesh</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'ironFlesh')"
@@ -76,7 +72,7 @@
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('powerStrike') ? 'is-primary' : 'is-danger'">
         <template slot="label">
-          <b-tooltip label="Increases melee damage by 8% per level. Requires 3 strength per level."
+          <b-tooltip label="Increases melee damage. Requires 3 strength per level."
                      position="is-left" multilined>Power Strike</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
@@ -86,7 +82,7 @@
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('powerDraw') ? 'is-primary' : 'is-danger'">
         <template slot="label">
-          <b-tooltip label="Increases bow damage by 14% per level (capped at 4 above used bow's difficulty). Allows you to use higher tiers
+          <b-tooltip label="Increases bow damage. Allows you to use higher tiers
                      bow. Requires 3 strength per level." position="is-left" multilined>Power Draw</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
@@ -96,7 +92,7 @@
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('powerThrow') ? 'is-primary' : 'is-danger'">
         <template slot="label">
-          <b-tooltip label="Increases throw damage by 10% per level. Allows you to use higher tier weapons. Requires 3 strength per level."
+          <b-tooltip label="Increases throw damage. Allows you to use higher tier weapons. Requires 3 strength per level."
                      position="is-left" multilined>Power Throw</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
@@ -125,7 +121,7 @@
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('weaponMaster') ? 'is-primary' : 'is-danger'">
         <template slot="label">
-          <b-tooltip label="Gives you level*20+55 weapon points per level. Requires 3 agility per level." position="is-left" multilined>
+          <b-tooltip label="Gives weapon points. Requires 3 agility per level." position="is-left" multilined>
             Weapon Master
           </b-tooltip>
         </template>
@@ -146,7 +142,7 @@
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('shield') ? 'is-primary' : 'is-danger'">
         <template slot="label">
-          <b-tooltip label="Improves shield durability by 16% per level, shield speed by 3% per level and increase coverage from ranged attacks.
+          <b-tooltip label="Improves shield durability, shield speed and increases coverage from ranged attacks.
                      Allows you to use higher tier shields. Requires 6 agility per level." position="is-left" multilined>Shield</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
@@ -251,6 +247,8 @@ import CharacterSkills from '@/models/character-skills';
 import CharacterWeaponProficiencies from '@/models/character-weapon-proficiencies';
 import StatisticConversion from '@/models/statistic-conversion';
 import CharacterUpdate from '@/models/character-update';
+import { applyPolynomialFunction } from '@/utils/math';
+import Constants from '../../../../data/constants.json';
 
 type StatSectionKey = keyof CharacterStatistics;
 type AttributeKey = keyof CharacterAttributes;
@@ -364,18 +362,12 @@ export default class CharacterStatsComponent extends Vue {
     }
   }
 
-  // This method should be synced with the Web API.
   wppForAgility(agility: number): number {
-    return 14 * agility;
+    return applyPolynomialFunction(agility, Constants.weaponProficiencyPointsForAgilityCoefs);
   }
 
-  // This method should be synced with the Web API.
   wppForWeaponMaster(weaponMaster: number): number {
-    const a = 10;
-    const b = 65;
-    return weaponMaster === 0
-      ? 0
-      : a * weaponMaster * weaponMaster + b * weaponMaster;
+    return applyPolynomialFunction(weaponMaster, Constants.weaponProficiencyPointsForWeaponMasterCoefs);
   }
 
   statRequirementsSatisfied(statSectionKey: StatSectionKey, statKey: StatKey, stat: number): boolean {
@@ -413,12 +405,9 @@ export default class CharacterStatsComponent extends Vue {
     }
   }
 
-  // This method should be synced with the Web API.
   statCost(statSectionKey: StatSectionKey, statKey: StatKey, stat: number): number {
     if (statSectionKey === 'weaponProficiencies') {
-      const a = 0.0005;
-      const b = 3;
-      return Math.floor(a * stat * (stat + 1) * (2 * stat + 1) / 6 + b * stat);
+      return applyPolynomialFunction(stat, Constants.weaponProficiencyCostCoefs);
     }
 
     return stat;

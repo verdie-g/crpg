@@ -8,7 +8,6 @@ export default class Character {
   public generation: number;
   public level: number;
   public experience: number;
-  public nextLevelExperience: number;
   public autoRepair: boolean;
   public bodyProperties: string;
   public gender: CharacterGender;

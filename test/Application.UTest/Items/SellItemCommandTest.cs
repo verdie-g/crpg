@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
@@ -15,6 +15,8 @@ namespace Crpg.Application.UTest.Items
 {
     public class SellItemCommandTest : TestBase
     {
+        private static Constants Constants = new Constants { ItemSellCostCoefs = new[] { 0.5f, 0.0f } };
+
         [Test]
         public async Task SellItemUnequipped()
         {
@@ -32,7 +34,7 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            await new SellItemCommand.Handler(ActDb).Handle(new SellItemCommand
+            await new SellItemCommand.Handler(ActDb, Constants).Handle(new SellItemCommand
             {
                 ItemId = user.OwnedItems[0].ItemId,
                 UserId = user.Id,
@@ -41,7 +43,7 @@ namespace Crpg.Application.UTest.Items
             user = await AssertDb.Users
                 .Include(u => u.OwnedItems)
                 .FirstAsync(u => u.Id == user.Id);
-            Assert.AreEqual(66, user.Gold);
+            Assert.AreEqual(50, user.Gold);
             Assert.False(user.OwnedItems.Any(oi => oi.ItemId == user.OwnedItems[0].ItemId));
         }
 
@@ -73,7 +75,7 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            await new SellItemCommand.Handler(ActDb).Handle(new SellItemCommand
+            await new SellItemCommand.Handler(ActDb, Constants).Handle(new SellItemCommand
             {
                 ItemId = item.Id,
                 UserId = user.Id,
@@ -83,7 +85,7 @@ namespace Crpg.Application.UTest.Items
                 .Include(u => u.Characters)
                 .Include(u => u.OwnedItems)
                 .FirstAsync(u => u.Id == user.Id);
-            Assert.AreEqual(66, user.Gold);
+            Assert.AreEqual(50, user.Gold);
             Assert.False(user.OwnedItems.Any(oi => oi.ItemId == item.Id));
             Assert.IsEmpty(user.Characters[0].EquippedItems);
             Assert.IsEmpty(user.Characters[1].EquippedItems);
@@ -104,7 +106,7 @@ namespace Crpg.Application.UTest.Items
             var user = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new SellItemCommand.Handler(ActDb).Handle(
+            var result = await new SellItemCommand.Handler(ActDb, Constants).Handle(
                 new SellItemCommand
                 {
                     ItemId = 1,
@@ -119,7 +121,7 @@ namespace Crpg.Application.UTest.Items
             var item = ArrangeDb.Items.Add(new Item());
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new SellItemCommand.Handler(ActDb).Handle(
+            var result = await new SellItemCommand.Handler(ActDb, Constants).Handle(
                 new SellItemCommand
                 {
                     ItemId = item.Entity.Id,

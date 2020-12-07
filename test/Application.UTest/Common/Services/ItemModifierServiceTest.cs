@@ -1,4 +1,5 @@
-﻿using Crpg.Application.Common.Services;
+﻿using Crpg.Application.Common.Files;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Items;
@@ -53,7 +54,8 @@ namespace Crpg.Application.UTest.Common.Services
                 },
             };
 
-            var itemModifierService = new ItemModifierService();
+            var itemModifiers = new FileItemModifiersSource().LoadItemModifiers();
+            var itemModifierService = new ItemModifierService(itemModifiers);
             ItemCreation[] modifiedItems =
             {
                 itemModifierService.ModifyItem(item, -3),

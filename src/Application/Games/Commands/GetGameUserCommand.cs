@@ -4,10 +4,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Bans.Models;
-using Crpg.Application.Common.Helpers;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Models;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
@@ -103,16 +103,20 @@ namespace Crpg.Application.Games.Commands
             private readonly IEventService _events;
             private readonly IDateTimeOffset _dateTime;
             private readonly IRandom _random;
+            private readonly UserService _userService;
+            private readonly CharacterService _characterService;
             private readonly ILogger<GetGameUserCommand> _logger;
 
             public Handler(ICrpgDbContext db, IMapper mapper, IEventService events, IDateTimeOffset dateTime,
-                IRandom random, ILogger<GetGameUserCommand> logger)
+                IRandom random, UserService userService, CharacterService characterService, ILogger<GetGameUserCommand> logger)
             {
                 _db = db;
                 _mapper = mapper;
                 _events = events;
                 _dateTime = dateTime;
                 _random = random;
+                _userService = userService;
+                _characterService = characterService;
                 _logger = logger;
             }
 
@@ -163,7 +167,7 @@ namespace Crpg.Application.Games.Commands
                     Name = name,
                 };
 
-                UserHelper.SetDefaultValuesForUser(user);
+                _userService.SetDefaultValuesForUser(user);
                 return user;
             }
 
@@ -175,8 +179,8 @@ namespace Crpg.Application.Games.Commands
                     EquippedItems = equippedItems,
                 };
 
-                CharacterHelper.SetDefaultValuesForCharacter(character);
-                CharacterHelper.ResetCharacterStats(character);
+                _characterService.SetDefaultValuesForCharacter(character);
+                _characterService.ResetCharacterStats(character);
                 return character;
             }
 

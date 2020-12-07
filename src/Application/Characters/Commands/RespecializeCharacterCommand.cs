@@ -2,10 +2,12 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Characters.Models;
-using Crpg.Application.Common.Helpers;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
+using Crpg.Common.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
@@ -17,15 +19,20 @@ namespace Crpg.Application.Characters.Commands
 
         public class Handler : IMediatorRequestHandler<RespecializeCharacterCommand, CharacterViewModel>
         {
-            private const float ExperiencePenalty = 0.5f;
-
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
+            private readonly CharacterService _characterService;
+            private readonly ExperienceTable _experienceTable;
+            private readonly Constants _constants;
 
-            public Handler(ICrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper, CharacterService characterService,
+                ExperienceTable experienceTable, Constants constants)
             {
                 _db = db;
                 _mapper = mapper;
+                _characterService = characterService;
+                _experienceTable = experienceTable;
+                _constants = constants;
             }
 
             public async Task<Result<CharacterViewModel>> Handle(RespecializeCharacterCommand req, CancellationToken cancellationToken)
@@ -38,10 +45,10 @@ namespace Crpg.Application.Characters.Commands
                     return new Result<CharacterViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
-                character.Experience = (int)(character.Experience * ExperiencePenalty);
-                character.Level = ExperienceTable.GetLevelForExperience(character.Experience);
+                character.Experience = (int)MathHelper.ApplyPolynomialFunction(character.Experience, _constants.RespecializeExperiencePenaltyCoefs);
+                character.Level = _experienceTable.GetLevelForExperience(character.Experience);
                 character.EquippedItems.Clear(); // Unequip all items.
-                CharacterHelper.ResetCharacterStats(character, true);
+                _characterService.ResetCharacterStats(character, true);
 
                 await _db.SaveChangesAsync(cancellationToken);
                 return new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character));
