@@ -11,9 +11,10 @@ namespace Crpg.Domain.Entities.Items
         public int Id { get; set; }
 
         /// <summary>
-        /// Item id in Mount and Blade.
+        /// Id of the Mount & Blade item that will be used as a template. All other fields in the class <see cref="Item"/>
+        /// will override the corresponding ones in the template.
         /// </summary>
-        public string MbId { get; set; } = string.Empty;
+        public string TemplateMbId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
 
         /// <summary>

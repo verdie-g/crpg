@@ -191,8 +191,8 @@ namespace Crpg.Application.Games.Commands
                 string[] itemMbIds = mbIdsWithSlot.Select(i => i.mbId).ToArray();
                 var items = await _db.Items
                     .Include(i => i.UserItems.Where(ui => ui.UserId == user.Id))
-                    .Where(i => itemMbIds.Contains(i.MbId))
-                    .ToDictionaryAsync(i => i.MbId);
+                    .Where(i => itemMbIds.Contains(i.TemplateMbId) && i.Rank == 0)
+                    .ToDictionaryAsync(i => i.TemplateMbId);
 
                 var equippedItems = new List<EquippedItem>();
                 foreach (var (newItemMbId, slot) in mbIdsWithSlot)

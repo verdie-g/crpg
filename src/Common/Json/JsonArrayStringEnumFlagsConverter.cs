@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Crpg.WebApi.Converters
+namespace Crpg.Common.Json
 {
-    internal class JsonArrayStringEnumFlagsConverterFactory : JsonConverterFactory
+    public class JsonArrayStringEnumFlagsConverterFactory : JsonConverterFactory
     {
         public override bool CanConvert(Type typeToConvert) =>
             typeToConvert.IsEnum && typeToConvert.IsDefined(typeof(FlagsAttribute), false);
@@ -21,7 +21,7 @@ namespace Crpg.WebApi.Converters
     /// <summary>
     /// Converts enum with <see cref="System.FlagsAttribute"/> to a JSON array of strings.
     /// </summary>
-    internal class JsonArrayStringEnumFlagsConverter<T> : JsonConverter<T> where T : struct, Enum
+    public class JsonArrayStringEnumFlagsConverter<T> : JsonConverter<T> where T : struct, Enum
     {
         private static readonly TypeCode EnumTypeCode = Type.GetTypeCode(typeof(T));
         private static readonly Dictionary<string, ulong> EnumValues =
@@ -61,11 +61,11 @@ namespace Crpg.WebApi.Converters
             ulong valueInt = Convert.ToUInt64(value);
 
             writer.WriteStartArray();
-            foreach (var (flagStr, flag) in EnumValues)
+            foreach (var flag in EnumValues)
             {
-                if ((valueInt & flag) != 0)
+                if ((valueInt & flag.Value) != 0)
                 {
-                    writer.WriteStringValue(flagStr);
+                    writer.WriteStringValue(flag.Key);
                 }
             }
 

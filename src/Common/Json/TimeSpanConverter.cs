@@ -2,12 +2,12 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Crpg.WebApi.Converters
+namespace Crpg.Common.Json
 {
     /// <summary>
     /// Converts <see cref="TimeSpan"/> to <see cref="long"/> milliseconds.
     /// </summary>
-    internal class TimeSpanConverter : JsonConverter<TimeSpan>
+    public class TimeSpanConverter : JsonConverter<TimeSpan>
     {
         public override TimeSpan Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

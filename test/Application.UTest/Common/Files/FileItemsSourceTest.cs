@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Files;
 using Crpg.Application.Common.Services;
+using Crpg.Application.Items.Models;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Common.Files
@@ -26,12 +27,12 @@ namespace Crpg.Application.UTest.Common.Files
             var items = await new FileItemsSource().LoadItems();
             foreach (var item in items)
             {
-                if (mbIds.Contains(item.MbId))
+                if (mbIds.Contains(item.TemplateMbId))
                 {
-                    duplicates.Add(item.MbId);
+                    duplicates.Add(item.TemplateMbId);
                 }
 
-                mbIds.Add(item.MbId);
+                mbIds.Add(item.TemplateMbId);
             }
 
             if (duplicates.Count != 0)
@@ -43,18 +44,30 @@ namespace Crpg.Application.UTest.Common.Files
         [Test]
         public async Task CheckNoConflictingNameWithModifiedItems()
         {
-            var itemsByMbId = (await new FileItemsSource().LoadItems()).ToDictionary(i => i.MbId);
+            var errors = new List<string>();
+
+            var items = (await new FileItemsSource().LoadItems()).ToArray();
+            var itemsByName = new Dictionary<string, ItemCreation>(StringComparer.Ordinal);
+            foreach (var item in items)
+            {
+                if (itemsByName.TryGetValue(item.Name, out var conflictingItem))
+                {
+                    errors.Add($"Conflicting item name between {conflictingItem.TemplateMbId} and {item.TemplateMbId}");
+                }
+
+                itemsByName[item.Name] = item;
+            }
+
             var itemModifiers = new FileItemModifiersSource().LoadItemModifiers();
             var itemModifier = new ItemModifierService(itemModifiers);
-            var errors = new List<string>();
-            foreach (var item in itemsByMbId.Values)
+            foreach (var item in items)
             {
                 foreach (int rank in new[] { -3, -2, -1, 1, 2, 3 })
                 {
                     var modifiedItem = itemModifier.ModifyItem(item, rank);
-                    if (itemsByMbId.TryGetValue(modifiedItem.MbId, out var conflictingItem))
+                    if (itemsByName.TryGetValue(modifiedItem.Name, out var conflictingItem))
                     {
-                        errors.Add($"Conflicting item name between {conflictingItem.MbId} and {item.MbId} rank {rank}");
+                        errors.Add($"Conflicting item name between {conflictingItem.TemplateMbId} and {item.TemplateMbId} rank {rank}");
                     }
                 }
             }
@@ -72,9 +85,9 @@ namespace Crpg.Application.UTest.Common.Files
             var errors = new List<string>();
             foreach (var item in items)
             {
-                if (item.MbId.Contains("test") || item.MbId.Contains("dummy") || item.Name.Contains('_'))
+                if (item.TemplateMbId.Contains("test") || item.TemplateMbId.Contains("dummy") || item.Name.Contains('_'))
                 {
-                    errors.Add(item.MbId);
+                    errors.Add(item.TemplateMbId);
                 }
             }
 

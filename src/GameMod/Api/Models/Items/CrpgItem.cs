@@ -11,12 +11,11 @@ namespace Crpg.GameMod.Api.Models.Items
 
     internal class CrpgItemCreation
     {
-        public string MbId { get; set; } = string.Empty;
+        public string TemplateMbId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public int Value { get; set; }
         public CrpgItemType Type { get; set; }
         public float Weight { get; set; }
-        public int Rank { get; set; }
 
         public CrpgItemArmorComponent? Armor { get; set; }
         public CrpgItemMountComponent? Mount { get; set; }

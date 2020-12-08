@@ -13,7 +13,7 @@
               <div class="card item-card">
                 <div class="card-image">
                   <figure class="image">
-                    <img :src="`${publicPath}items/${item.mbId}.png`" alt="item image" loading="lazy" />
+                    <img :src="`${publicPath}items/${item.templateMbId}.png`" alt="item image" loading="lazy" />
                   </figure>
                 </div>
                 <div class="card-content content">

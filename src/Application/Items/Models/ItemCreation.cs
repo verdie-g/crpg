@@ -8,7 +8,7 @@ namespace Crpg.Application.Items.Models
 {
     public class ItemCreation : ICloneable
     {
-        public string MbId { get; set; } = string.Empty;
+        public string TemplateMbId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public int Value { get; set; }
         public ItemType Type { get; set; }
@@ -23,7 +23,7 @@ namespace Crpg.Application.Items.Models
         {
             return new ItemCreation
             {
-                MbId = MbId,
+                TemplateMbId = TemplateMbId,
                 Name = Name,
                 Value = Value,
                 Type = Type,

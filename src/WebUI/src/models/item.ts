@@ -5,7 +5,7 @@ import ItemWeaponComponent from '@/models/item-weapon-component';
 
 export default class Item {
   public id: number;
-  public mbId: string;
+  public templateMbId: string;
   public name: string;
   public value: number;
   public type: ItemType;

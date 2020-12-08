@@ -156,7 +156,7 @@ export default class CharacterComponent extends Vue {
   }
 
   itemImage(item: Item): string {
-    return `${process.env.BASE_URL}items/${item.mbId}.png`;
+    return `${process.env.BASE_URL}items/${item.templateMbId}.png`;
   }
 
   onAutoRepairSwitch(autoRepair: boolean): void {

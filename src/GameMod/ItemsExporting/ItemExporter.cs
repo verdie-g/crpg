@@ -42,7 +42,50 @@ namespace Crpg.GameMod.ItemsExporting
 
         private static readonly HashSet<string> BlacklistedItems = new HashSet<string>
         {
-            "mule_unmountable", // It's unmountable.
+            "aserai_horse_tournament", // Name conflict with aserai_horse.
+            "aserai_lord_helmet_a", // Name conflict with southern_lord_helmet.
+            "ballista_projectile", // Can't be equipped.
+            "ballista_projectile_burning", // Can't be equipped.
+            "battania_civil_cloak", // Name conflict with battania_cloak.
+            "battania_female_civil_a", // Name conflict with battania_dress_b.
+            "battania_horse_tournament", // Name conflict with battania_horse.
+            "battania_shield_targe_a", // Name conflict with battania_targe_b rank 2.
+            "battered_kite_shield", // Name conflict with western_kite_shield rank -2.
+            "bolt_b", // Name conflict with bolt_a.
+            "bolt_c", // Name conflict with bolt_a.
+            "bolt_d", // Name conflict with bolt_a.
+            "bolt_e", // Name conflict with bolt_a.
+            "camel_tournament", // Name conflict with camel.
+            "desert_round_shield", // Name conflict with bound_desert_round_shield rank 2.
+            "eastern_leather_boots", // Name conflict with leather_boots.
+            "empire_horse_tournament", // Name conflict with empire_horse.
+            "empire_sword_1_t2", // Name conflict with iron_spatha_sword_t2.
+            "empire_sword_1_t2_blunt", // Name conflict with iron_spatha_sword_t2.
+            "grapeshot_fire_projectile", // Can't be equipped.
+            "grapeshot_fire_stack", // Can't be equipped.
+            "grapeshot_projectile", // Can't be equipped.
+            "heavy_horsemans_kite_shield", // Name conflict with bound_horsemans_kite_shield rank 2.
+            "khuzait_horse_tournament", // Name conflict with khuzait_horse.
+            "lordly_padded_mitten", // Name conflict with padded_mitten rank 3.
+            "mule_unmountable", // Can't be equipped.
+            "pack_camel_unmountable", // Can't be equipped.
+            "reinforced_kite_shield", // Name conflict with western_kite_shield rank 2.
+            "reinforced_mail_mitten", // Name conflict with mail_mitten rank 2.
+            "reinforced_padded_mitten", // Name conflict with padded_mitten rank 2.
+            "southern_lamellar_armor", // Name conflict with desert_lamellar.
+            "strapped_round_shield", // Name conflict with leather_round_shield rank 2.
+            "stronger_eastern_wicker_shield", // Name conflict with eastern_wicker_shield rank 2.
+            "stronger_footmans_wicker_shield", // Name conflict with footmans_wicker_shield rank 2.
+            "sturgia_horse_tournament", // Name conflict with sturgia_horse.
+            "sturgia_old_shield_c", // Name conflict with leather_round_shield rank 2.
+            "sturgia_old_shield_c", // Name conflict with strapped_round_shield.
+            "sturgian_helmet_b_close", // Name conflict with closed_goggled_helmet.
+            "sturgian_helmet_b_open", // Name conflict with sturgian_helmet_open.
+            "vlandia_horse_tournament", // Name conflict with vlandia_horse.
+            "vlandia_mace_3_t5", // Name conflict with pernach_mace_t3.
+            "womens_headwrap_c", // Name conflict with head_wrapped.
+            "wooden_sword_t2", // Name conflict with wooden_sword_t1.
+            "woodland_throwing_axe_1_t1", // Name conflict with highland_throwing_axe_1_t2.
         };
 
         public Task Export(string outputPath)
@@ -68,7 +111,7 @@ namespace Crpg.GameMod.ItemsExporting
         {
             var crpgItem = new CrpgItemCreation
             {
-                MbId = mbItem.StringId,
+                TemplateMbId = mbItem.StringId,
                 Name = mbItem.Name.ToString(),
                 Type = MbToCrpgItemType(mbItem.Type),
                 Value = mbItem.Value,

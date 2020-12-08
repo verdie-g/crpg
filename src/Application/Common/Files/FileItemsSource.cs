@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Items.Models;
+using Crpg.Common.Json;
 
 namespace Crpg.Application.Common.Files
 {
@@ -19,7 +20,7 @@ namespace Crpg.Application.Common.Files
             return (await JsonSerializer.DeserializeAsync<IEnumerable<ItemCreation>>(file, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                Converters = { new JsonStringEnumConverter() },
+                Converters = { new JsonArrayStringEnumFlagsConverterFactory(), new JsonStringEnumConverter() },
             }).AsTask())!;
         }
     }

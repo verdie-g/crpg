@@ -51,7 +51,7 @@ namespace Crpg.Application.UTest.Games
             var allDefaultItemMbIds = GetGameUserCommand.Handler.DefaultItemSets
                 .SelectMany(set => set)
                 .GroupBy(i => i.mbId) // distinct by mbId
-                .Select(p => new Item { MbId = p.First().mbId });
+                .Select(p => new Item { TemplateMbId = p.First().mbId });
 
             ArrangeDb.Items.AddRange(allDefaultItemMbIds);
             await ArrangeDb.SaveChangesAsync();
@@ -159,7 +159,7 @@ namespace Crpg.Application.UTest.Games
                 OwnedItems =
                 {
                     // Already owned item
-                    new UserItem { ItemId = ArrangeDb.Items.First(i => i.MbId == GetGameUserCommand.Handler.DefaultItemSets[1][0].mbId).Id },
+                    new UserItem { ItemId = ArrangeDb.Items.First(i => i.TemplateMbId == GetGameUserCommand.Handler.DefaultItemSets[1][0].mbId).Id },
                 }
             };
             ArrangeDb.Users.Add(user);

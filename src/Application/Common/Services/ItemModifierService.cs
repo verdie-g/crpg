@@ -84,9 +84,6 @@ namespace Crpg.Application.Common.Services
 
         public virtual void Apply(ItemCreation item)
         {
-            item.MbId = item.MbId.StartsWith("mp_", StringComparison.Ordinal)
-                ? "mp_" + Name.ToLower() + "_" + item.MbId.Substring(3)
-                : Name.ToLower() + "_" + item.MbId;
             item.Name = Name + " " + item.Name;
             item.Value = (int)Math.Round(item.Value * Value);
         }

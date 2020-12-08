@@ -63,13 +63,9 @@ namespace Crpg.WebApi
                     }
                 }
 
-                try
+                var res = await mediator.Send(new SeedDataCommand(), CancellationToken.None);
+                if (res.Errors != null)
                 {
-                    await mediator.Send(new SeedDataCommand(), CancellationToken.None);
-                }
-                catch (Exception ex)
-                {
-                    Log.Fatal(ex, "An error occurred while initializing the database.");
                     Log.CloseAndFlush();
                     return 1;
                 }

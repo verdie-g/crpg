@@ -121,8 +121,10 @@ namespace Crpg.Application.System.Commands
 
             private async Task CreateOrUpdateItems(CancellationToken cancellationToken)
             {
-                var itemsByMdId = (await _itemsSource.LoadItems()).ToDictionary(i => i.MbId);
-                var dbItemsByMbId = await _db.Items.ToDictionaryAsync(di => di.MbId, cancellationToken);
+                var itemsByMdId = (await _itemsSource.LoadItems())
+                    .ToDictionary(i => i.TemplateMbId);
+                var dbItemsByMbId = await _db.Items
+                    .ToDictionaryAsync(di => (di.TemplateMbId, di.Rank), cancellationToken);
 
                 var baseItems = new List<Item>();
 
@@ -147,7 +149,7 @@ namespace Crpg.Application.System.Commands
                 // Remove items that were deleted from the item source
                 foreach (Item dbItem in dbItemsByMbId.Values)
                 {
-                    if (dbItem.Rank != 0 || itemsByMdId.ContainsKey(dbItem.MbId))
+                    if (dbItem.Rank != 0 || itemsByMdId.ContainsKey(dbItem.TemplateMbId))
                     {
                         continue;
                     }
@@ -168,9 +170,9 @@ namespace Crpg.Application.System.Commands
                 }
             }
 
-            private void CreateOrUpdateItem(Dictionary<string, Item> dbItemsByMbId, Item item)
+            private void CreateOrUpdateItem(Dictionary<(string mbId, int rank), Item> dbItemsByMbId, Item item)
             {
-                if (dbItemsByMbId.TryGetValue(item.MbId, out Item? dbItem))
+                if (dbItemsByMbId.TryGetValue((item.TemplateMbId, item.Rank), out Item? dbItem))
                 {
                     // replace item in context
                     _db.Entry(dbItem).State = EntityState.Detached;
@@ -188,7 +190,7 @@ namespace Crpg.Application.System.Commands
             {
                 var res = new Item
                 {
-                    MbId = item.MbId,
+                    TemplateMbId = item.TemplateMbId,
                     Name = item.Name,
                     Type = item.Type,
                     Value = item.Value,

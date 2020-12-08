@@ -10,7 +10,7 @@ namespace Crpg.Application.Items.Models
     public class ItemViewModel : IMapFrom<Item>
     {
         public int Id { get; set; }
-        public string MbId { get; set; } = string.Empty;
+        public string TemplateMbId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public int Value { get; set; }
         public ItemType Type { get; set; }

@@ -37,8 +37,8 @@ namespace Crpg.Application.UTest.System
             itemsSource.Setup(s => s.LoadItems())
                 .ReturnsAsync(new[]
                 {
-                    new ItemCreation { MbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() },
-                    new ItemCreation { MbId = "b", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() },
+                    new ItemCreation { TemplateMbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() },
+                    new ItemCreation { TemplateMbId = "b", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() },
                 });
 
             var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
@@ -48,8 +48,8 @@ namespace Crpg.Application.UTest.System
             var items = await AssertDb.Items.ToArrayAsync();
             Assert.AreEqual(7 * 2, items.Length);
 
-            var baseItem1 = items.First(i => i.MbId == "a" && i.Rank == 0);
-            var baseItem2 = items.First(i => i.MbId == "b" && i.Rank == 0);
+            var baseItem1 = items.First(i => i.TemplateMbId == "a" && i.Rank == 0);
+            var baseItem2 = items.First(i => i.TemplateMbId == "b" && i.Rank == 0);
             foreach (var baseItem in new[] { baseItem1, baseItem2 })
             {
                 foreach (int rank in new[] { -3, -2, -1, 1, 2, 3 })
@@ -64,7 +64,7 @@ namespace Crpg.Application.UTest.System
         {
             var itemsSource = new Mock<IItemsSource>();
             itemsSource.SetupSequence(s => s.LoadItems())
-                .ReturnsAsync(new[] { new ItemCreation { MbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() } })
+                .ReturnsAsync(new[] { new ItemCreation { TemplateMbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() } })
                 .ReturnsAsync(Array.Empty<ItemCreation>());
 
             var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
@@ -84,20 +84,20 @@ namespace Crpg.Application.UTest.System
         {
             var oldItems = new[]
             {
-                new Item { MbId = "a_a", Type = ItemType.HeadArmor, Rank = -3, Armor = new ItemArmorComponent { ArmArmor = 80 } },
-                new Item { MbId = "b_a", Type = ItemType.HeadArmor, Rank = -2, Armor = new ItemArmorComponent { ArmArmor = 90 } },
-                new Item { MbId = "c_a", Type = ItemType.HeadArmor, Rank = -1, Armor = new ItemArmorComponent { ArmArmor = 95 } },
-                new Item { MbId = "a", Type = ItemType.HeadArmor, Rank = 0, Armor = new ItemArmorComponent { ArmArmor = 100 } },
-                new Item { MbId = "d_a", Type = ItemType.HeadArmor, Rank = 1, Armor = new ItemArmorComponent { ArmArmor = 105 } },
-                new Item { MbId = "e_a", Type = ItemType.HeadArmor, Rank = 2, Armor = new ItemArmorComponent { ArmArmor = 107 } },
-                new Item { MbId = "f_a", Type = ItemType.HeadArmor, Rank = 3, Armor = new ItemArmorComponent { ArmArmor = 109 } },
+                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = -3, Armor = new ItemArmorComponent { ArmArmor = 80 } },
+                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = -2, Armor = new ItemArmorComponent { ArmArmor = 90 } },
+                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = -1, Armor = new ItemArmorComponent { ArmArmor = 95 } },
+                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 0, Armor = new ItemArmorComponent { ArmArmor = 100 } },
+                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 1, Armor = new ItemArmorComponent { ArmArmor = 105 } },
+                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 2, Armor = new ItemArmorComponent { ArmArmor = 107 } },
+                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 3, Armor = new ItemArmorComponent { ArmArmor = 109 } },
             };
             ArrangeDb.Items.AddRange(oldItems);
             await ArrangeDb.SaveChangesAsync();
 
             var itemsSource = new Mock<IItemsSource>();
             itemsSource.Setup(s => s.LoadItems())
-                .ReturnsAsync(new[] { new ItemCreation { MbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel { ArmArmor = 1000 } } });
+                .ReturnsAsync(new[] { new ItemCreation { TemplateMbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel { ArmArmor = 1000 } } });
 
             var itemModifiers = new ItemModifiers
             {

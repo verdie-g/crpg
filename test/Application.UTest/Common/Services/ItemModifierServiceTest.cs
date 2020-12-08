@@ -1,7 +1,6 @@
 ﻿using Crpg.Application.Common.Files;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Items;
 using NUnit.Framework;
 
@@ -14,7 +13,7 @@ namespace Crpg.Application.UTest.Common.Services
         {
             var item = new ItemCreation
             {
-                MbId = "123",
+                TemplateMbId = "123",
                 Name = "toto",
                 Value = 1000,
                 Type = itemType,
@@ -68,7 +67,7 @@ namespace Crpg.Application.UTest.Common.Services
 
             for (int i = 1; i < modifiedItems.Length; i += 1)
             {
-                StringAssert.EndsWith("123", modifiedItems[i].MbId);
+                StringAssert.EndsWith("123", modifiedItems[i].TemplateMbId);
                 StringAssert.EndsWith("toto", modifiedItems[i].Name);
                 Assert.AreEqual(itemType, modifiedItems[i].Type);
 

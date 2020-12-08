@@ -13,6 +13,11 @@ namespace Crpg.Application.Items.Queries
 {
     public class GetItemsListQuery : IMediatorRequest<IList<ItemViewModel>>
     {
+        /// <summary>
+        /// True if only the items of rank 0 should be returned.
+        /// </summary>
+        public bool BaseItems { get; set; }
+
         public class Handler : IMediatorRequestHandler<GetItemsListQuery, IList<ItemViewModel>>
         {
             private readonly ICrpgDbContext _db;
@@ -29,7 +34,7 @@ namespace Crpg.Application.Items.Queries
                 var items = await _db.Items
                     .AsNoTracking()
                     .OrderBy(i => i.Value)
-                    .Where(i => i.Rank == 0) // don't return broken or loomed items
+                    .Where(i => !req.BaseItems || i.Rank == 0)
                     .ToListAsync(cancellationToken);
 
                 return new Result<IList<ItemViewModel>>(_mapper.Map<IList<ItemViewModel>>(items));

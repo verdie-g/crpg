@@ -14,6 +14,14 @@ namespace Crpg.GameMod.Helpers
         public static object GetProperty(object instance, string field) => GetPropertyInfo(instance, field)!.GetValue(instance);
         public static void SetProperty(object instance, string field, object value) => GetPropertyInfo(instance, field)!.SetValue(instance, value, null);
 
+        public static object InvokeMethod(object instance, string method, object[] parameters)
+        {
+            return instance
+                .GetType()
+                .GetMethod(method, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                .Invoke(instance, parameters);
+        }
+
         public static T DeepClone<T>(T obj) => obj.DeepClone();
 
         private static FieldInfo? GetFieldInfo(object instance, string field)

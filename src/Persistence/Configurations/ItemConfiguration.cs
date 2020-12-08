@@ -8,7 +8,7 @@ namespace Crpg.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Item> builder)
         {
-            builder.HasIndex(i => i.MbId).IsUnique();
+            builder.HasIndex(i => new { ItemTemplateMbId = i.TemplateMbId, i.Rank }).IsUnique();
             builder.OwnsOne(i => i.Armor!, ConfigureItemArmorComponent);
             builder.OwnsOne(i => i.Mount!, ConfigureItemMountComponent);
             builder.OwnsOne(i => i.PrimaryWeapon!, b => ConfigureItemWeaponComponent(b, "primary_"));
@@ -38,7 +38,7 @@ namespace Crpg.Persistence.Configurations
         private static void ConfigureItemWeaponComponent(OwnedNavigationBuilder<Item, ItemWeaponComponent> builder, string prefix)
         {
             // Default names are prefixed with item_weapon_component_.
-            builder.Property(wc => wc.Class).HasColumnName(prefix + "weapon_class");
+            builder.Property(wc => wc.Class).HasColumnName(prefix + "class");
             builder.Property(wc => wc.Accuracy).HasColumnName(prefix + "accuracy");
             builder.Property(wc => wc.MissileSpeed).HasColumnName(prefix + "missile_speed");
             builder.Property(wc => wc.StackAmount).HasColumnName(prefix + "stack_amount");

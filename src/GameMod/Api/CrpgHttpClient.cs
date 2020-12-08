@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.GameMod.Api.Models;
+using Crpg.GameMod.Api.Models.Items;
 using Crpg.GameMod.Api.Models.Users;
 using Crpg.GameMod.Helpers.Json;
 using IdentityModel.Client;
@@ -50,6 +51,11 @@ namespace Crpg.GameMod.Api
             return Get<CrpgUser>("games/users", queryParameters, cancellationToken);
         }
 
+        public Task<CrpgResult<IList<CrpgItem>>> GetItems(CancellationToken cancellationToken = default)
+        {
+            return Get<IList<CrpgItem>>("games/items", null, cancellationToken);
+        }
+
         public Task<CrpgResult<CrpgUsersUpdateResponse>> Update(CrpgGameUsersUpdateRequest req, CancellationToken cancellationToken = default)
         {
             return Put<CrpgGameUsersUpdateRequest, CrpgUsersUpdateResponse>("games/users", req, cancellationToken);
@@ -57,12 +63,17 @@ namespace Crpg.GameMod.Api
 
         public void Dispose() => _httpClient.Dispose();
 
-        private Task<CrpgResult<TResponse>> Get<TResponse>(string requestUri, Dictionary<string, string> queryParameters,
+        private Task<CrpgResult<TResponse>> Get<TResponse>(string requestUri, Dictionary<string, string>? queryParameters,
             CancellationToken cancellationToken) where TResponse : class
         {
-            var urlEncodedContent = new FormUrlEncodedContent(queryParameters);
-            string query = urlEncodedContent.ReadAsStringAsync().Result;
-            var msg = new HttpRequestMessage(HttpMethod.Get, requestUri + '?' + query);
+            if (queryParameters != null)
+            {
+                var urlEncodedContent = new FormUrlEncodedContent(queryParameters);
+                string query = urlEncodedContent.ReadAsStringAsync().Result;
+                requestUri += '?' + query;
+            }
+
+            var msg = new HttpRequestMessage(HttpMethod.Get, requestUri);
             return Send<TResponse>(msg, cancellationToken);
         }
 

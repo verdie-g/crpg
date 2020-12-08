@@ -10,9 +10,10 @@ namespace Crpg.Application.UTest.Items
     public class GetItemsListQueryTest : TestBase
     {
         [Test]
-        public async Task Basic()
+        public async Task BaseItems()
         {
-            ArrangeDb.AddRange(
+            var items = new[]
+            {
                 new Item
                 {
                     Name = "toto",
@@ -33,13 +34,51 @@ namespace Crpg.Application.UTest.Items
                     Value = 200,
                     Type = ItemType.HandArmor,
                     Rank = 0,
-                });
+                },
+            };
+            ArrangeDb.Items.AddRange(items);
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new GetItemsListQuery.Handler(ActDb, Mapper);
-            var result = await handler.Handle(new GetItemsListQuery(), CancellationToken.None);
+            var result = await handler.Handle(new GetItemsListQuery { BaseItems = true }, CancellationToken.None);
 
             Assert.AreEqual(2, result.Data!.Count);
+        }
+
+        [Test]
+        public async Task AllItems()
+        {
+            var items = new[]
+            {
+                new Item
+                {
+                    Name = "toto",
+                    Value = 100,
+                    Type = ItemType.BodyArmor,
+                    Rank = 0,
+                },
+                new Item
+                {
+                    Name = "toto",
+                    Value = 100,
+                    Type = ItemType.ShoulderArmor,
+                    Rank = 3,
+                },
+                new Item
+                {
+                    Name = "tata",
+                    Value = 200,
+                    Type = ItemType.HandArmor,
+                    Rank = 0,
+                },
+            };
+            ArrangeDb.Items.AddRange(items);
+            await ArrangeDb.SaveChangesAsync();
+
+            var handler = new GetItemsListQuery.Handler(ActDb, Mapper);
+            var result = await handler.Handle(new GetItemsListQuery { BaseItems = false }, CancellationToken.None);
+
+            Assert.AreEqual(3, result.Data!.Count);
         }
     }
 }

@@ -12,12 +12,12 @@ namespace Crpg.WebApi.Controllers
     public class ItemsController : BaseController
     {
         /// <summary>
-        /// Gets all items.
+        /// Gets all items of rank 0 (not loomed, not broken).
         /// </summary>
         /// <response code="200">Ok.</response>
         [HttpGet]
         [ResponseCache(Duration = 60 * 60 * 6)] // 6 hours
         public Task<ActionResult<Result<IList<ItemViewModel>>>> GetItemsList() =>
-            ResultToActionAsync(Mediator.Send(new GetItemsListQuery()));
+            ResultToActionAsync(Mediator.Send(new GetItemsListQuery { BaseItems = true }));
     }
 }
