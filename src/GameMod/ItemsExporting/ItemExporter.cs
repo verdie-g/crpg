@@ -21,7 +21,6 @@ namespace Crpg.GameMod.ItemsExporting
     {
         private static readonly string[] ItemFiles =
         {
-            "../../Modules/Native/ModuleData/mpitems.xml",
             "../../Modules/SandBoxCore/ModuleData/spitems/arm_armors.xml",
             "../../Modules/SandBoxCore/ModuleData/spitems/body_armors.xml",
             "../../Modules/SandBoxCore/ModuleData/spitems/head_armors.xml",
@@ -43,9 +42,6 @@ namespace Crpg.GameMod.ItemsExporting
 
         private static readonly HashSet<string> BlacklistedItems = new HashSet<string>
         {
-            "mp_medium_skirt", // OP body armor giving head armor.
-            "ballista_projectile", // Useless.
-            "ballista_projectile_burning", // Useless.
             "mule_unmountable", // It's unmountable.
         };
 
