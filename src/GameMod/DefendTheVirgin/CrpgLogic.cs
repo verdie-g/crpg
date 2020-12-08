@@ -41,7 +41,7 @@ namespace Crpg.GameMod.DefendTheVirgin
 
             WaveGroup[] wave = _waves[waveNb - 1];
             int reward = SumWaveWeight(wave);
-            int experienceReward = reward * 100;
+            int experienceReward = reward * 500;
             int goldReward = reward * 5;
             InformationManager.DisplayMessage(new InformationMessage($"Gained {experienceReward} experience.", new Color(218, 112, 214)));
             InformationManager.DisplayMessage(new InformationMessage($"Gained {goldReward} gold.", new Color(65, 105, 225)));
