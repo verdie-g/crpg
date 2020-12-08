@@ -75,7 +75,7 @@
     remote_src: true
   when: crpg_api_path_stat_result.stat.exists and crpg_api_key_stat_result.stat.exists
 
-- name: Create cRPG Web API log folder
+- name: Create log folder
   file:
     path: "{{ crpg_api_log_file | dirname }}"
     state: directory
@@ -95,6 +95,15 @@
 
 - name: Swap old and new version (2/2)
   command: "mv {{ crpg_api_path }}_new {{ crpg_api_path }}"
+
+- name: Create or truncate log file
+  copy:
+    content: ""
+    dest: "{{ crpg_api_log_file }}"
+    force: no
+    mode: 0644
+    group: "{{ crpg_api_user }}"
+    owner: "{{ crpg_api_user }}"
 
 - name: Start cRPG Web API
   service:
