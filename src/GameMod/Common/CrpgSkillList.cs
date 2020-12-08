@@ -16,7 +16,7 @@ namespace Crpg.GameMod.Common
             yield return DefaultSkills.Athletics;
             yield return DefaultSkills.Riding;
             yield return CrpgSkills.WeaponMaster;
-            yield return CrpgSkills.HorseArchery;
+            yield return CrpgSkills.MountedArchery;
             yield return CrpgSkills.Shield;
             yield return DefaultSkills.OneHanded;
             yield return DefaultSkills.TwoHanded;

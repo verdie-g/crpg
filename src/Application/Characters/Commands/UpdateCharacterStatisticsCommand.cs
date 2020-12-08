@@ -82,7 +82,7 @@ namespace Crpg.Application.Characters.Commands
                     + CheckedDelta(stats.Skills.Athletics, newStats.Skills.Athletics)
                     + CheckedDelta(stats.Skills.Riding, newStats.Skills.Riding)
                     + CheckedDelta(stats.Skills.WeaponMaster, newStats.Skills.WeaponMaster)
-                    + CheckedDelta(stats.Skills.HorseArchery, newStats.Skills.HorseArchery)
+                    + CheckedDelta(stats.Skills.MountedArchery, newStats.Skills.MountedArchery)
                     + CheckedDelta(stats.Skills.Shield, newStats.Skills.Shield);
                 if (skillsDelta > stats.Skills.Points)
                 {
@@ -121,7 +121,7 @@ namespace Crpg.Application.Characters.Commands
                 stats.Skills.Athletics = newStats.Skills.Athletics;
                 stats.Skills.Riding = newStats.Skills.Riding;
                 stats.Skills.WeaponMaster = newStats.Skills.WeaponMaster;
-                stats.Skills.HorseArchery = newStats.Skills.HorseArchery;
+                stats.Skills.MountedArchery = newStats.Skills.MountedArchery;
                 stats.Skills.Shield = newStats.Skills.Shield;
 
                 stats.WeaponProficiencies.Points -= weaponProficienciesDelta;
@@ -157,7 +157,7 @@ namespace Crpg.Application.Characters.Commands
                     && stats.Skills.Athletics <= stats.Attributes.Agility / 3
                     && stats.Skills.Riding <= stats.Attributes.Agility / 3
                     && stats.Skills.WeaponMaster <= stats.Attributes.Agility / 3
-                    && stats.Skills.HorseArchery <= stats.Attributes.Agility / 6
+                    && stats.Skills.MountedArchery <= stats.Attributes.Agility / 6
                     && stats.Skills.Shield <= stats.Attributes.Agility / 6;
             }
 

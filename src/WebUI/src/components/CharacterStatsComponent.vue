@@ -130,14 +130,14 @@
                        @input="onInput('skills', 'weaponMaster', $event)" />
       </b-field>
 
-      <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('horseArchery') ? 'is-primary' : 'is-danger'">
+      <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('mountedArchery') ? 'is-primary' : 'is-danger'">
         <template slot="label">
           <b-tooltip label="Reduces penalty for using ranged weapons on a moving mount by 10% per level. Requires 6 agility per level."
-                     position="is-left" multilined>Horse Archery</b-tooltip>
+                     position="is-left" multilined>Mounted Archery</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
-                       v-bind="getInputProps('skills', 'horseArchery')"
-                       @input="onInput('skills', 'horseArchery', $event)" />
+                       v-bind="getInputProps('skills', 'mountedArchery')"
+                       @input="onInput('skills', 'mountedArchery', $event)" />
       </b-field>
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('shield') ? 'is-primary' : 'is-danger'">
@@ -309,7 +309,7 @@ export default class CharacterStatsComponent extends Vue {
         athletics: 0,
         riding: 0,
         weaponMaster: 0,
-        horseArchery: 0,
+        mountedArchery: 0,
         shield: 0,
       },
       weaponProficiencies: {
@@ -396,7 +396,7 @@ export default class CharacterStatsComponent extends Vue {
       case 'weaponMaster':
         return skill <= Math.floor((this.stats.attributes.agility + this.statsDelta.attributes.agility) / 3);
 
-      case 'horseArchery':
+      case 'mountedArchery':
       case 'shield':
         return skill <= Math.floor((this.stats.attributes.agility + this.statsDelta.attributes.agility) / 6);
 
@@ -436,7 +436,7 @@ export default class CharacterStatsComponent extends Vue {
           athletics: this.stats.skills.athletics + this.statsDelta.skills.athletics,
           riding: this.stats.skills.riding + this.statsDelta.skills.riding,
           weaponMaster: this.stats.skills.weaponMaster + this.statsDelta.skills.weaponMaster,
-          horseArchery: this.stats.skills.horseArchery + this.statsDelta.skills.horseArchery,
+          mountedArchery: this.stats.skills.mountedArchery + this.statsDelta.skills.mountedArchery,
           shield: this.stats.skills.shield + this.statsDelta.skills.shield,
         },
         weaponProficiencies: {

@@ -64,7 +64,7 @@ namespace Crpg.Application.UTest.Characters
                         Athletics = 5,
                         Riding = 6,
                         WeaponMaster = 7,
-                        HorseArchery = 8,
+                        MountedArchery = 8,
                         Shield = 9,
                     },
                     WeaponProficiencies = new CharacterWeaponProficiencies
@@ -115,7 +115,7 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(0, character.Statistics.Skills.Athletics);
             Assert.AreEqual(0, character.Statistics.Skills.Riding);
             Assert.AreEqual(0, character.Statistics.Skills.WeaponMaster);
-            Assert.AreEqual(0, character.Statistics.Skills.HorseArchery);
+            Assert.AreEqual(0, character.Statistics.Skills.MountedArchery);
             Assert.AreEqual(0, character.Statistics.Skills.Shield);
 
             Assert.AreEqual(100, character.Statistics.WeaponProficiencies.Points);

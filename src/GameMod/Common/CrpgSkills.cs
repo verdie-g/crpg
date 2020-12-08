@@ -12,7 +12,7 @@ namespace Crpg.GameMod.Common
         public static SkillObject PowerDraw { get; private set; } = default!;
         public static SkillObject PowerThrow { get; private set; } = default!;
         public static SkillObject WeaponMaster { get; private set; } = default!;
-        public static SkillObject HorseArchery { get; private set; } = default!;
+        public static SkillObject MountedArchery { get; private set; } = default!;
         public static SkillObject Shield { get; private set; } = default!;
 
         public static void Initialize(Game game)
@@ -24,7 +24,7 @@ namespace Crpg.GameMod.Common
             PowerDraw = InitializeSkill(game, nameof(PowerDraw), "Power Draw", "");
             PowerThrow = InitializeSkill(game, nameof(PowerThrow), "Power Throw", "");
             WeaponMaster = InitializeSkill(game, nameof(WeaponMaster), "Weapon Master", "");
-            HorseArchery = InitializeSkill(game, nameof(HorseArchery), "Horse Archery", "");
+            MountedArchery = InitializeSkill(game, nameof(MountedArchery), "Mounted Archery", "");
             Shield = InitializeSkill(game, nameof(Shield), "Shield", "");
         }
 

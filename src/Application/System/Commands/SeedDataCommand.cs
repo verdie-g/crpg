@@ -44,7 +44,7 @@ namespace Crpg.Application.System.Commands
             {
                 if (_appEnv.Environment == HostingEnvironment.Development)
                 {
-                    AddDevelopperUsers();
+                    // AddDevelopperUsers();
                 }
 
                 await CreateOrUpdateItems(cancellationToken);

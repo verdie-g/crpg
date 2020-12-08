@@ -16,7 +16,7 @@ namespace Crpg.Domain.Entities.Characters
         public int Athletics { get; set; }
         public int Riding { get; set; }
         public int WeaponMaster { get; set; }
-        public int HorseArchery { get; set; }
+        public int MountedArchery { get; set; }
         public int Shield { get; set; }
     }
 }

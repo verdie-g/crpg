@@ -39,7 +39,7 @@ namespace Crpg.Persistence.Configurations
             builder.Property(s => s.Athletics).HasColumnName("athletics");
             builder.Property(s => s.Riding).HasColumnName("riding");
             builder.Property(s => s.WeaponMaster).HasColumnName("weapon_master");
-            builder.Property(s => s.HorseArchery).HasColumnName("horse_archery");
+            builder.Property(s => s.MountedArchery).HasColumnName("mounted_archery");
             builder.Property(s => s.Shield).HasColumnName("shield");
         }
 

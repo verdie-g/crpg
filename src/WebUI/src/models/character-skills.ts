@@ -7,6 +7,6 @@ export default class CharacterSkills {
   public athletics: number;
   public riding: number;
   public weaponMaster: number;
-  public horseArchery: number;
+  public mountedArchery: number;
   public shield: number;
 }
