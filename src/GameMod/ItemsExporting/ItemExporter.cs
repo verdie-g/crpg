@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Xml;
 using Crpg.GameMod.Api.Models.Items;
@@ -57,10 +56,7 @@ namespace Crpg.GameMod.ItemsExporting
                 .Where(FilterItem) // Remove test and blacklisted items
                 .OrderBy(i => i.StringId)
                 .ToArray();
-            var crpgItems = mbItems
-                .Select(MbToCrpgItem)
-                .OrderBy(i => i.Type)
-                .ThenBy(i => i.Value);
+            var crpgItems = mbItems.Select(MbToCrpgItem);
 
             SerializeCrpgItems(crpgItems, outputPath);
             return GenerateItemsThumbnail(mbItems, outputPath);
@@ -142,8 +138,7 @@ namespace Crpg.GameMod.ItemsExporting
         private static CrpgWeaponClass MbToCrpgWeaponClass(WeaponClass wc) =>
             (CrpgWeaponClass)Enum.Parse(typeof(CrpgWeaponClass), wc.ToString());
 
-        private static CrpgWeaponFlags MbToCrpgWeaponFlags(WeaponFlags wf) =>
-            (CrpgWeaponFlags)Enum.Parse(typeof(CrpgWeaponFlags), wf.ToString());
+        private static CrpgWeaponFlags MbToCrpgWeaponFlags(WeaponFlags wf) => (CrpgWeaponFlags)wf;
 
         private static CrpgDamageType MbToCrpgDamageType(DamageTypes t) => t switch
         {
