@@ -38,31 +38,6 @@ namespace Crpg.GameMod.Api
             };
         }
 
-        public async Task Initialize()
-        {
-            DiscoveryDocumentResponse discoResponse = await _httpClient.GetDiscoveryDocumentAsync();
-            if (discoResponse.IsError)
-            {
-                throw new Exception("Couldn't get discovery document: " + discoResponse.Error);
-            }
-
-            // request token
-            var tokenResponse = await _httpClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-            {
-                Address = discoResponse.TokenEndpoint,
-                ClientId = "crpg_game_server",
-                ClientSecret = "tototo",
-                Scope = "game_api"
-            });
-
-            if (tokenResponse.IsError)
-            {
-                throw new Exception("Couldn't get token: " + tokenResponse.Error);
-            }
-
-            _httpClient.SetBearerToken(tokenResponse.AccessToken);
-        }
-
         public Task<CrpgResult<CrpgUser>> GetUser(Platform platform, string platformUserId,
             string characterName, CancellationToken cancellationToken = default)
         {
@@ -79,6 +54,8 @@ namespace Crpg.GameMod.Api
         {
             return Put<CrpgGameUsersUpdateRequest, CrpgUsersUpdateResponse>("games/users", req, cancellationToken);
         }
+
+        public void Dispose() => _httpClient.Dispose();
 
         private Task<CrpgResult<TResponse>> Get<TResponse>(string requestUri, Dictionary<string, string> queryParameters,
             CancellationToken cancellationToken) where TResponse : class
@@ -111,6 +88,11 @@ namespace Crpg.GameMod.Api
 
         private async Task<CrpgResult<TResponse>> Send<TResponse>(HttpRequestMessage msg, CancellationToken cancellationToken) where TResponse : class
         {
+            if (_httpClient.DefaultRequestHeaders.Authorization == null)
+            {
+                await Initialize();
+            }
+
             var res = await _httpClient.SendAsync(msg, cancellationToken);
             string json = await res.Content.ReadAsStringAsync();
 
@@ -127,6 +109,29 @@ namespace Crpg.GameMod.Api
             return JsonConvert.DeserializeObject<CrpgResult<TResponse>>(json, _serializerSettings);
         }
 
-        public void Dispose() => _httpClient.Dispose();
+        private async Task Initialize()
+        {
+            DiscoveryDocumentResponse discoResponse = await _httpClient.GetDiscoveryDocumentAsync();
+            if (discoResponse.IsError)
+            {
+                throw new Exception("Couldn't get discovery document: " + discoResponse.Error);
+            }
+
+            // request token
+            var tokenResponse = await _httpClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            {
+                Address = discoResponse.TokenEndpoint,
+                ClientId = "crpg_game_server",
+                ClientSecret = "tototo",
+                Scope = "game_api"
+            });
+
+            if (tokenResponse.IsError)
+            {
+                throw new Exception("Couldn't get token: " + tokenResponse.Error);
+            }
+
+            _httpClient.SetBearerToken(tokenResponse.AccessToken);
+        }
     }
 }

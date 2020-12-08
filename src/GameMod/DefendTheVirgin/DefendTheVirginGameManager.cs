@@ -127,7 +127,6 @@ namespace Crpg.GameMod.DefendTheVirgin
             string platformUserId = login.GetPlayerId().Id2.ToString();
             string userName = login.GetUserName();
 
-            await _crpgClient.Initialize();
             var res = await _crpgClient.GetUser(platform, platformUserId, userName);
             return res.Data!;
         }

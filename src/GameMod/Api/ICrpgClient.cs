@@ -9,8 +9,6 @@ namespace Crpg.GameMod.Api
 {
     internal interface ICrpgClient : IDisposable
     {
-        Task Initialize();
-
         Task<CrpgResult<CrpgUser>> GetUser(Platform platform, string platformUserId,
             string characterName, CancellationToken cancellationToken = default);
 
