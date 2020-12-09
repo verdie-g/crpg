@@ -7,6 +7,7 @@ export default class User {
   public platformUserId: number;
   public name: string;
   public gold: number;
+  public heirloomPoints: number;
   public role: Role;
   public avatarSmall: string;
   public avatarMedium: string;

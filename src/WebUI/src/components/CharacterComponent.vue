@@ -85,6 +85,8 @@
           <h3>Replace <strong>{{itemToReplace.name}}</strong></h3>
           <item-properties :item="itemToReplace" />
           <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
+          <b-button size="is-medium" type="is-warning" icon-left="angle-double-up" expanded :disabled="!itemToReplaceUpgradeInfo.upgradable"
+                    :title="itemToReplaceUpgradeInfo.reason" @click="upgradeItem">Upgrade</b-button>
         </div>
         <div class="column owned-items">
           <div v-if="fittingOwnedItems.length" class="columns is-multiline">
@@ -153,6 +155,19 @@ export default class CharacterComponent extends Vue {
       ? []
       : filterItemsFittingInSlot(userModule.ownedItems, this.itemToReplaceSlot)
         .filter(i => this.itemToReplace === null || i.id !== this.itemToReplace.id);
+  }
+
+  get itemToReplaceUpgradeInfo(): { upgradable: boolean; reason: string } {
+    const info = { upgradable: true, reason: '' };
+    if (this.itemToReplace!.rank === 3) {
+      info.upgradable = false;
+      info.reason = 'Max rank reached (3)';
+    } else if (userModule.user!.heirloomPoints === 0) {
+      info.upgradable = false;
+      info.reason = 'Not enough heirloom points';
+    }
+
+    return info;
   }
 
   itemImage(item: Item): string {
@@ -225,6 +240,11 @@ export default class CharacterComponent extends Vue {
       slot: this.itemToReplaceSlot!,
       item: null,
     });
+    (this.$refs.replaceItemModal as any).close();
+  }
+
+  upgradeItem(): void {
+    userModule.upgradeItem(this.itemToReplace!);
     (this.$refs.replaceItemModal as any).close();
   }
 

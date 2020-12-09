@@ -59,6 +59,10 @@ export function buyItem(itemId: number): Promise<Item> {
   return post('/users/self/items', { itemId });
 }
 
+export function upgradeItem(itemId: number): Promise<Item> {
+  return put(`/users/self/items/${itemId}/upgrade`);
+}
+
 export function getCharacters(): Promise<Character[]> {
   return get('/users/self/characters');
 }

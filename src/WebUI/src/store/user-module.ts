@@ -13,7 +13,6 @@ import Ban from '@/models/ban';
 import Role from '@/models/role';
 import CharacterUpdate from '@/models/character-update';
 import EquippedItem from '@/models/equipped-item';
-import EquippedItemId from '@/models/equipped-item-id';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
@@ -48,6 +47,11 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
+  addHeirloomPoints(points: number) {
+    this.user!.heirloomPoints += points;
+  }
+
+  @Mutation
   setOwnedItems(ownedItems: Item[]) {
     this.ownedItems = ownedItems;
   }
@@ -55,6 +59,14 @@ class UserModule extends VuexModule {
   @Mutation
   addOwnedItem(item: Item) {
     this.ownedItems.push(item);
+  }
+
+  @Mutation
+  removeOwnedItem(item: Item) {
+    const itemIdx = this.ownedItems.findIndex(i => i.id === item.id);
+    if (itemIdx !== -1) {
+      this.ownedItems.splice(itemIdx, 1);
+    }
   }
 
   @Mutation
@@ -74,6 +86,17 @@ class UserModule extends VuexModule {
     } else {
       character.equippedItems.splice(equippedItemIdx, 1);
     }
+  }
+
+  @Mutation
+  replaceCharactersItem({ toReplace, replaceWith }: { toReplace: Item; replaceWith: Item }) {
+    this.characters.forEach(character => {
+      character.equippedItems.forEach(equippedItem => {
+        if (equippedItem.item.id === toReplace.id) {
+          equippedItem.item = replaceWith;
+        }
+      });
+    });
   }
 
   @Mutation
@@ -158,6 +181,14 @@ class UserModule extends VuexModule {
     this.substractGold(item.value);
   }
 
+  @Action
+  async upgradeItem(item: Item) {
+    const upgradedItem = await userService.upgradeItem(item.id);
+    this.addHeirloomPoints(-1);
+    this.replaceCharactersItem({ toReplace: item, replaceWith: upgradedItem });
+    this.removeOwnedItem(item);
+  }
+
   @Action({ commit: 'setCharacters' })
   getCharacters(): Promise<Character[]> {
     return userService.getCharacters();
@@ -183,6 +214,7 @@ class UserModule extends VuexModule {
 
   @Action({ commit: 'replaceCharacter' })
   retireCharacter(character: Character): Promise<Character> {
+    this.addHeirloomPoints(1);
     return userService.retireCharacter(character.id);
   }
 
