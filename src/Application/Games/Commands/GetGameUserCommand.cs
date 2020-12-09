@@ -187,7 +187,7 @@ namespace Crpg.Application.Games.Commands
             private async Task<IList<EquippedItem>> GiveUserRandomItemSet(User user)
             {
                 // Get a random set of items and check if the user already own some of them and add the others.
-                var mbIdsWithSlot = DefaultItemSets[_random.Next(0, DefaultItemSets.Length - 1)];
+                var mbIdsWithSlot = DefaultItemSets[_random.Next(0, DefaultItemSets.Length)];
                 string[] itemMbIds = mbIdsWithSlot.Select(i => i.mbId).ToArray();
                 var items = await _db.Items
                     .Include(i => i.UserItems.Where(ui => ui.UserId == user.Id))
