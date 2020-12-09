@@ -46,16 +46,16 @@
     { "name": "Cracked",    "value": 0.5,  "damage": 0.8,  "speed": 1 },
     { "name": "Chipped",    "value": 0.65, "damage": 0.9,  "speed": 1 },
     { "name": "Tempered",   "value": 1.1,  "damage": 1.01, "speed": 1 },
-    { "name": "Balanced",   "value": 1.2,  "damage": 1.04, "speed": 1.1 },
-    { "name": "Masterwork", "value": 1.3,  "damage": 1.08, "speed": 1.1 }
+    { "name": "Balanced",   "value": 1.2,  "damage": 1.04, "speed": 1.01 },
+    { "name": "Masterwork", "value": 1.3,  "damage": 1.08, "speed": 1.01 }
   ],
   "polearm": [
     { "name": "Cracked",    "value": 0.3,  "damage": 0.7,  "speed": 1 },
     { "name": "Damaged",    "value": 0.5,  "damage": 0.8,  "speed": 1 },
     { "name": "Bent",       "value": 0.65, "damage": 0.9,  "speed": 1 },
-    { "name": "Deadly",     "value": 1.1,  "damage": 1.01, "speed": 1.1 },
-    { "name": "Balanced",   "value": 1.2,  "damage": 1.04, "speed": 1.1 },
-    { "name": "Masterwork", "value": 1.3,  "damage": 1.07, "speed": 1.1 }
+    { "name": "Deadly",     "value": 1.1,  "damage": 1.01, "speed": 1.01 },
+    { "name": "Balanced",   "value": 1.2,  "damage": 1.04, "speed": 1.01 },
+    { "name": "Masterwork", "value": 1.3,  "damage": 1.07, "speed": 1.01 }
   ],
   "thrown": [
     { "name": "Destroyed",  "value": 0.3,  "damage": 0.6,  "fireRate": 0.9,  "accuracy": 0.91 },
