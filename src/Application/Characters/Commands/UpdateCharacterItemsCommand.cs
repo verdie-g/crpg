@@ -26,10 +26,10 @@ namespace Crpg.Application.Characters.Commands
         {
             private static readonly ItemSlot[] WeaponSlots =
             {
+                ItemSlot.Weapon0,
                 ItemSlot.Weapon1,
                 ItemSlot.Weapon2,
                 ItemSlot.Weapon3,
-                ItemSlot.Weapon4,
             };
 
             private static readonly Dictionary<ItemType, ItemSlot[]> ItemSlotsByType = new Dictionary<ItemType, ItemSlot[]>

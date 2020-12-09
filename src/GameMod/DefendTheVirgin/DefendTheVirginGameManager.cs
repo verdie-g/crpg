@@ -457,10 +457,10 @@ namespace Crpg.GameMod.DefendTheVirgin
             [CrpgItemSlot.Leg] = EquipmentIndex.Leg,
             [CrpgItemSlot.MountHarness] = EquipmentIndex.HorseHarness,
             [CrpgItemSlot.Mount] = EquipmentIndex.Horse,
-            [CrpgItemSlot.Weapon1] = EquipmentIndex.Weapon0,
-            [CrpgItemSlot.Weapon2] = EquipmentIndex.Weapon1,
-            [CrpgItemSlot.Weapon3] = EquipmentIndex.Weapon2,
-            [CrpgItemSlot.Weapon4] = EquipmentIndex.Weapon3,
+            [CrpgItemSlot.Weapon0] = EquipmentIndex.Weapon0,
+            [CrpgItemSlot.Weapon1] = EquipmentIndex.Weapon1,
+            [CrpgItemSlot.Weapon2] = EquipmentIndex.Weapon2,
+            [CrpgItemSlot.Weapon3] = EquipmentIndex.Weapon3,
         };
 
         private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new HashSet<WeaponClass>

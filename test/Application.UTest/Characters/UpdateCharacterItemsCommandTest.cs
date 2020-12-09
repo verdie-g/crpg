@@ -33,14 +33,14 @@ namespace Crpg.Application.UTest.Characters
             var mountHarnessNew = new UserItem { User = user, Item = new Item { Type = ItemType.MountHarness } };
             var mountOld = new UserItem { User = user, Item = new Item { Type = ItemType.Mount } };
             var mountNew = new UserItem { User = user, Item = new Item { Type = ItemType.Mount } };
-            var weapon1Old = new UserItem { User = user, Item = new Item { Type = ItemType.Arrows } };
-            var weapon1New = new UserItem { User = user, Item = new Item { Type = ItemType.Bolts } };
-            var weapon2Old = new UserItem { User = user, Item = new Item { Type = ItemType.Bow } };
-            var weapon2New = new UserItem { User = user, Item = new Item { Type = ItemType.Crossbow } };
-            var weapon3Old = new UserItem { User = user, Item = new Item { Type = ItemType.Polearm } };
-            var weapon3New = new UserItem { User = user, Item = new Item { Type = ItemType.Shield } };
-            var weapon4Old = new UserItem { User = user, Item = new Item { Type = ItemType.OneHandedWeapon } };
-            var weapon4New = new UserItem { User = user, Item = new Item { Type = ItemType.TwoHandedWeapon } };
+            var weapon0Old = new UserItem { User = user, Item = new Item { Type = ItemType.Arrows } };
+            var weapon0New = new UserItem { User = user, Item = new Item { Type = ItemType.Bolts } };
+            var weapon1Old = new UserItem { User = user, Item = new Item { Type = ItemType.Bow } };
+            var weapon1New = new UserItem { User = user, Item = new Item { Type = ItemType.Crossbow } };
+            var weapon2Old = new UserItem { User = user, Item = new Item { Type = ItemType.Polearm } };
+            var weapon2New = new UserItem { User = user, Item = new Item { Type = ItemType.Shield } };
+            var weapon3Old = new UserItem { User = user, Item = new Item { Type = ItemType.OneHandedWeapon } };
+            var weapon3New = new UserItem { User = user, Item = new Item { Type = ItemType.TwoHandedWeapon } };
 
             var character = new Character
             {
@@ -54,17 +54,17 @@ namespace Crpg.Application.UTest.Characters
                     new EquippedItem { UserItem = legOld, Slot = ItemSlot.Leg },
                     new EquippedItem { UserItem = mountHarnessOld, Slot = ItemSlot.MountHarness },
                     new EquippedItem { UserItem = mountOld, Slot = ItemSlot.Mount },
+                    new EquippedItem { UserItem = weapon0Old, Slot = ItemSlot.Weapon0 },
                     new EquippedItem { UserItem = weapon1Old, Slot = ItemSlot.Weapon1 },
                     new EquippedItem { UserItem = weapon2Old, Slot = ItemSlot.Weapon2 },
                     new EquippedItem { UserItem = weapon3Old, Slot = ItemSlot.Weapon3 },
-                    new EquippedItem { UserItem = weapon4Old, Slot = ItemSlot.Weapon4 },
                 },
             };
 
             user.Characters.Add(character);
             ArrangeDb.Users.Add(user);
             ArrangeDb.UserItems.AddRange(headNew, shoulderNew, bodyNew, handNew, legNew, mountHarnessNew, mountNew,
-                weapon1New, weapon2New, weapon3New, weapon4New);
+                weapon0New, weapon1New, weapon2New, weapon3New);
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
@@ -81,10 +81,10 @@ namespace Crpg.Application.UTest.Characters
                     new EquippedItemIdViewModel { ItemId = legNew.ItemId, Slot = ItemSlot.Leg },
                     new EquippedItemIdViewModel { ItemId = mountHarnessNew.ItemId, Slot = ItemSlot.MountHarness },
                     new EquippedItemIdViewModel { ItemId = mountNew.ItemId, Slot = ItemSlot.Mount },
+                    new EquippedItemIdViewModel { ItemId = weapon0New.ItemId, Slot = ItemSlot.Weapon0 },
                     new EquippedItemIdViewModel { ItemId = weapon1New.ItemId, Slot = ItemSlot.Weapon1 },
                     new EquippedItemIdViewModel { ItemId = weapon2New.ItemId, Slot = ItemSlot.Weapon2 },
                     new EquippedItemIdViewModel { ItemId = weapon3New.ItemId, Slot = ItemSlot.Weapon3 },
-                    new EquippedItemIdViewModel { ItemId = weapon4New.ItemId, Slot = ItemSlot.Weapon4 },
                 },
             };
             var result = await handler.Handle(cmd, CancellationToken.None);
@@ -97,10 +97,10 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(legNew.ItemId, itemIdBySlot[ItemSlot.Leg]);
             Assert.AreEqual(mountHarnessNew.ItemId, itemIdBySlot[ItemSlot.MountHarness]);
             Assert.AreEqual(mountNew.ItemId, itemIdBySlot[ItemSlot.Mount]);
+            Assert.AreEqual(weapon0New.ItemId, itemIdBySlot[ItemSlot.Weapon0]);
             Assert.AreEqual(weapon1New.ItemId, itemIdBySlot[ItemSlot.Weapon1]);
             Assert.AreEqual(weapon2New.ItemId, itemIdBySlot[ItemSlot.Weapon2]);
             Assert.AreEqual(weapon3New.ItemId, itemIdBySlot[ItemSlot.Weapon3]);
-            Assert.AreEqual(weapon4New.ItemId, itemIdBySlot[ItemSlot.Weapon4]);
         }
 
         [Test]
@@ -153,10 +153,10 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(legOld.ItemId, itemIdBySlot[ItemSlot.Leg]);
             Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.MountHarness));
             Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Mount));
+            Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon0));
             Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon1));
             Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon2));
             Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon3));
-            Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon4));
         }
 
         [Test]
@@ -262,7 +262,7 @@ namespace Crpg.Application.UTest.Characters
         [TestCase(ItemType.HandArmor, ItemSlot.Leg)]
         [TestCase(ItemType.LegArmor, ItemSlot.MountHarness)]
         [TestCase(ItemType.MountHarness, ItemSlot.Mount)]
-        [TestCase(ItemType.Mount, ItemSlot.Weapon1)]
+        [TestCase(ItemType.Mount, ItemSlot.Weapon0)]
         [TestCase(ItemType.Shield, ItemSlot.Head)]
         [TestCase(ItemType.Bow, ItemSlot.Shoulder)]
         [TestCase(ItemType.Crossbow, ItemSlot.Body)]

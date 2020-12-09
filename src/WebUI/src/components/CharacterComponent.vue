@@ -39,17 +39,17 @@
         </div>
 
         <div class="column is-narrow weapon-column">
+          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon0)">
+            <img v-if="itemsBySlot[itemSlot.Weapon0]" :src="itemImage(itemsBySlot[itemSlot.Weapon0])" alt="First weapon" />
+          </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)">
-            <img v-if="itemsBySlot[itemSlot.Weapon1]" :src="itemImage(itemsBySlot[itemSlot.Weapon1])" alt="First weapon" />
+            <img v-if="itemsBySlot[itemSlot.Weapon1]" :src="itemImage(itemsBySlot[itemSlot.Weapon1])" alt="Second weapon" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)">
-            <img v-if="itemsBySlot[itemSlot.Weapon2]" :src="itemImage(itemsBySlot[itemSlot.Weapon2])" alt="Second weapon" />
+            <img v-if="itemsBySlot[itemSlot.Weapon2]" :src="itemImage(itemsBySlot[itemSlot.Weapon2])" alt="Third weapon" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)">
-            <img v-if="itemsBySlot[itemSlot.Weapon3]" :src="itemImage(itemsBySlot[itemSlot.Weapon3])" alt="Third weapon" />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon4)">
-            <img v-if="itemsBySlot[itemSlot.Weapon4]" :src="itemImage(itemsBySlot[itemSlot.Weapon4])" alt="Fourth Weapon" />
+            <img v-if="itemsBySlot[itemSlot.Weapon3]" :src="itemImage(itemsBySlot[itemSlot.Weapon3])" alt="Fourth Weapon" />
           </div>
         </div>
       </div>

@@ -39,8 +39,8 @@ namespace Crpg.Application.Games.Commands
                     ("mp_wrapped_desert_cap", ItemSlot.Head),
                     ("mp_aserai_civil_e", ItemSlot.Body),
                     ("mp_strapped_shoes", ItemSlot.Leg),
-                    ("mp_aserai_axe", ItemSlot.Weapon1),
-                    ("mp_throwing_stone", ItemSlot.Weapon2),
+                    ("mp_aserai_axe", ItemSlot.Weapon0),
+                    ("mp_throwing_stone", ItemSlot.Weapon1),
                 },
                 // vlandia
                 new[]
@@ -48,8 +48,8 @@ namespace Crpg.Application.Games.Commands
                     ("mp_arming_coif", ItemSlot.Head),
                     ("mp_sackcloth_tunic", ItemSlot.Body),
                     ("mp_strapped_shoes", ItemSlot.Leg),
-                    ("mp_vlandian_billhook", ItemSlot.Weapon1),
-                    ("mp_sling_stone", ItemSlot.Weapon2),
+                    ("mp_vlandian_billhook", ItemSlot.Weapon0),
+                    ("mp_sling_stone", ItemSlot.Weapon1),
                 },
                 // empire
                 new[]
@@ -57,8 +57,8 @@ namespace Crpg.Application.Games.Commands
                     ("mp_laced_cloth_coif", ItemSlot.Head),
                     ("mp_hemp_tunic", ItemSlot.Body),
                     ("mp_leather_shoes", ItemSlot.Leg),
-                    ("mp_empire_axe", ItemSlot.Weapon1),
-                    ("mp_throwing_stone", ItemSlot.Weapon2),
+                    ("mp_empire_axe", ItemSlot.Weapon0),
+                    ("mp_throwing_stone", ItemSlot.Weapon1),
                 },
                 // sturgia
                 new[]
@@ -66,8 +66,8 @@ namespace Crpg.Application.Games.Commands
                     ("mp_nordic_fur_cap", ItemSlot.Head),
                     ("mp_northern_tunic", ItemSlot.Body),
                     ("mp_wrapped_shoes", ItemSlot.Leg),
-                    ("mp_sturgia_mace", ItemSlot.Weapon1),
-                    ("mp_sling_stone", ItemSlot.Weapon2),
+                    ("mp_sturgia_mace", ItemSlot.Weapon0),
+                    ("mp_sling_stone", ItemSlot.Weapon1),
                 },
                 // khuzait
                 new[]
@@ -75,8 +75,8 @@ namespace Crpg.Application.Games.Commands
                     ("mp_nomad_padded_hood", ItemSlot.Head),
                     ("mp_khuzait_civil_coat_b", ItemSlot.Body),
                     ("mp_strapped_leather_boots", ItemSlot.Leg),
-                    ("mp_khuzait_sichel", ItemSlot.Weapon1),
-                    ("mp_throwing_stone", ItemSlot.Weapon2),
+                    ("mp_khuzait_sichel", ItemSlot.Weapon0),
+                    ("mp_throwing_stone", ItemSlot.Weapon1),
                 },
                 // battania
                 new[]
@@ -84,8 +84,8 @@ namespace Crpg.Application.Games.Commands
                     ("mp_battania_civil_hood", ItemSlot.Head),
                     ("mp_battania_civil_a", ItemSlot.Body),
                     ("mp_rough_tied_boots", ItemSlot.Leg),
-                    ("mp_battania_axe", ItemSlot.Weapon1),
-                    ("mp_sling_stone", ItemSlot.Weapon2),
+                    ("mp_battania_axe", ItemSlot.Weapon0),
+                    ("mp_sling_stone", ItemSlot.Weapon1),
                 },
                 // looters
                 new[]
@@ -93,8 +93,8 @@ namespace Crpg.Application.Games.Commands
                     ("mp_vlandia_bandit_cape_a", ItemSlot.Head),
                     ("mp_burlap_sack_dress", ItemSlot.Body),
                     ("mp_strapped_leather_boots", ItemSlot.Leg),
-                    ("mp_empire_long_twohandedaxe", ItemSlot.Weapon1),
-                    ("mp_throwing_stone", ItemSlot.Weapon2),
+                    ("mp_empire_long_twohandedaxe", ItemSlot.Weapon0),
+                    ("mp_throwing_stone", ItemSlot.Weapon1),
                 },
             };
 

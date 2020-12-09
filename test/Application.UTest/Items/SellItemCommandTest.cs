@@ -61,10 +61,10 @@ namespace Crpg.Application.UTest.Items
                 new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Leg } } },
                 new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.MountHarness } } },
                 new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Mount } } },
+                new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon0 } } },
                 new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon1 } } },
                 new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon2 } } },
                 new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon3 } } },
-                new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon4 } } },
             };
             var user = new User
             {

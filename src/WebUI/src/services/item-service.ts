@@ -90,10 +90,10 @@ const itemTypesBySlot: Record<ItemSlot, ItemType[]> = {
   [ItemSlot.Leg]: [ItemType.LegArmor],
   [ItemSlot.MountHarness]: [ItemType.MountHarness],
   [ItemSlot.Mount]: [ItemType.Mount],
+  [ItemSlot.Weapon0]: weaponTypes,
   [ItemSlot.Weapon1]: weaponTypes,
   [ItemSlot.Weapon2]: weaponTypes,
   [ItemSlot.Weapon3]: weaponTypes,
-  [ItemSlot.Weapon4]: weaponTypes,
 };
 
 function getDamageFields(weaponComponent: ItemWeaponComponent): [string, any][] {

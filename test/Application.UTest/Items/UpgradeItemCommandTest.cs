@@ -120,8 +120,8 @@ namespace Crpg.Application.UTest.Items
                 OwnedItems = new List<UserItem> { userItem },
                 Characters = new List<Character>
                 {
+                    new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon0 } } },
                     new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon1 } } },
-                    new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon2 } } },
                 },
             };
             ArrangeDb.Users.Add(user);

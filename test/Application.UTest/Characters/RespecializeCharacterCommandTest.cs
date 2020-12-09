@@ -61,7 +61,7 @@ namespace Crpg.Application.UTest.Characters
                 {
                     new EquippedItem { Item = new Item(), Slot = ItemSlot.Head },
                     new EquippedItem { Item = new Item(), Slot = ItemSlot.Body },
-                    new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon1 },
+                    new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon0 },
                 },
             };
             ArrangeDb.Add(character);

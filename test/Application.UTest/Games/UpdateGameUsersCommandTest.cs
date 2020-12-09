@@ -161,10 +161,10 @@ namespace Crpg.Application.UTest.Games
                             new EquippedItem { Item = new Item(), Slot = ItemSlot.Leg },
                             new EquippedItem { Item = new Item(), Slot = ItemSlot.MountHarness },
                             new EquippedItem { Item = new Item(), Slot = ItemSlot.Mount },
+                            new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon0 },
                             new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon1 },
                             new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon2 },
                             new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon3 },
-                            new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon4 },
                         },
                         AutoRepair = true,
                     },
@@ -212,10 +212,10 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(expectedItemsBySlot[ItemSlot.Leg].ItemId, actualItemsBySlot[ItemSlot.Leg].Item.Id);
             Assert.AreEqual(expectedItemsBySlot[ItemSlot.MountHarness].ItemId, actualItemsBySlot[ItemSlot.MountHarness].Item.Id);
             Assert.AreEqual(expectedItemsBySlot[ItemSlot.Mount].ItemId, actualItemsBySlot[ItemSlot.Mount].Item.Id);
+            Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon0].ItemId, actualItemsBySlot[ItemSlot.Weapon0].Item.Id);
             Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon1].ItemId, actualItemsBySlot[ItemSlot.Weapon1].Item.Id);
             Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon2].ItemId, actualItemsBySlot[ItemSlot.Weapon2].Item.Id);
             Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon3].ItemId, actualItemsBySlot[ItemSlot.Weapon3].Item.Id);
-            Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon4].ItemId, actualItemsBySlot[ItemSlot.Weapon4].Item.Id);
         }
 
         [Test]
@@ -240,10 +240,10 @@ namespace Crpg.Application.UTest.Games
                             new EquippedItem { Item = new Item { Rank = -1 }, Slot = ItemSlot.Leg },
                             new EquippedItem { Item = new Item { Rank = -2 }, Slot = ItemSlot.MountHarness },
                             new EquippedItem { Item = new Item { Rank = -3 }, Slot = ItemSlot.Mount },
-                            new EquippedItem { Item = new Item { Rank = -2 }, Slot = ItemSlot.Weapon1 },
-                            new EquippedItem { Item = new Item { Rank = -1 }, Slot = ItemSlot.Weapon2 },
-                            new EquippedItem { Item = new Item { Rank = 0 }, Slot = ItemSlot.Weapon3 },
-                            new EquippedItem { Item = new Item { Rank = 1 }, Slot = ItemSlot.Weapon4 },
+                            new EquippedItem { Item = new Item { Rank = -2 }, Slot = ItemSlot.Weapon0 },
+                            new EquippedItem { Item = new Item { Rank = -1 }, Slot = ItemSlot.Weapon1 },
+                            new EquippedItem { Item = new Item { Rank = 0 }, Slot = ItemSlot.Weapon2 },
+                            new EquippedItem { Item = new Item { Rank = 1 }, Slot = ItemSlot.Weapon3 },
                         },
                         AutoRepair = false,
                     },
@@ -312,10 +312,10 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(-2, itemsBySlot[ItemSlot.Leg]!.Rank);
             Assert.AreEqual(-3, itemsBySlot[ItemSlot.MountHarness]!.Rank);
             Assert.That(itemsBySlot, Does.Not.ContainKey(ItemSlot.Mount));
-            Assert.AreEqual(-3, itemsBySlot[ItemSlot.Weapon1]!.Rank);
-            Assert.AreEqual(-2, itemsBySlot[ItemSlot.Weapon2]!.Rank);
-            Assert.AreEqual(-1, itemsBySlot[ItemSlot.Weapon3]!.Rank);
-            Assert.AreEqual(0, itemsBySlot[ItemSlot.Weapon4]!.Rank);
+            Assert.AreEqual(-3, itemsBySlot[ItemSlot.Weapon0]!.Rank);
+            Assert.AreEqual(-2, itemsBySlot[ItemSlot.Weapon1]!.Rank);
+            Assert.AreEqual(-1, itemsBySlot[ItemSlot.Weapon2]!.Rank);
+            Assert.AreEqual(0, itemsBySlot[ItemSlot.Weapon3]!.Rank);
 
             // check broken items were added to user inventory
             foreach (var equippedItem in user.Characters[0].EquippedItems)
