@@ -58,4 +58,9 @@
         <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Sdk.Abstractions\Sdk.Abstractions.csproj" />
+      <ProjectReference Include="..\Sdk\Sdk.csproj" />
+    </ItemGroup>
+
 </Project>

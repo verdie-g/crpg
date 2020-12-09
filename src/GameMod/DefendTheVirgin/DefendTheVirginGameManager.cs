@@ -9,6 +9,8 @@ using Crpg.GameMod.Api.Models.Items;
 using Crpg.GameMod.Api.Models.Users;
 using Crpg.GameMod.Common;
 using Crpg.GameMod.Helpers;
+using Crpg.Sdk;
+using Crpg.Sdk.Abstractions;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -24,7 +26,7 @@ namespace Crpg.GameMod.DefendTheVirgin
 {
     public class DefendTheVirginGameManager : MBGameManager
     {
-        private static readonly Random Rng = new Random();
+        private static readonly IRandom Rng = new ThreadSafeRandom();
 
         private readonly ICrpgClient _crpgClient = new CrpgHttpClient();
 
