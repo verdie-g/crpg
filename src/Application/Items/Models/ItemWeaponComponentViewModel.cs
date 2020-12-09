@@ -38,10 +38,10 @@ namespace Crpg.Application.Items.Models
             Flags = Flags,
             ThrustDamage = ThrustDamage,
             ThrustDamageType = ThrustDamageType,
-            ThrustSpeed = ThrustDamage,
+            ThrustSpeed = ThrustSpeed,
             SwingDamage = SwingDamage,
             SwingDamageType = SwingDamageType,
-            SwingSpeed = SwingDamage,
+            SwingSpeed = SwingSpeed,
         };
     }
 }
