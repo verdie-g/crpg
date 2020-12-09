@@ -82,7 +82,7 @@
     <b-modal :active.sync="isReplaceItemModalActive" scroll="keep" ref="replaceItemModal">
       <div class="columns is-marginless replace-item-modal">
         <div class="column" v-if="itemToReplace">
-          <h3>Replace <strong>{{itemToReplace.name}}</strong></h3>
+          <h3>Replace <strong :class="itemRankClass(itemToReplace)">{{itemToReplace.name}}</strong></h3>
           <item-properties :item="itemToReplace" />
           <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
           <b-button size="is-medium" type="is-warning" icon-left="angle-double-up" expanded :disabled="!itemToReplaceUpgradeInfo.upgradable"
@@ -95,14 +95,14 @@
               <figure class="image">
                 <img :src="itemImage(ownedItem)" alt="item image" />
               </figure>
-              <h4>{{ownedItem.name}}</h4>
+              <h4 :class="itemRankClass(ownedItem)">{{ownedItem.name}}</h4>
               <item-properties :item="ownedItem" />
             </div>
           </div>
           <div v-else>You don't own any item for this type.</div>
         </div>
         <div class="column" v-if="selectedItem">
-          <h3>Replace with <strong>{{selectedItem.name}}</strong></h3>
+          <h3>Replace with <strong :class="itemRankClass(selectedItem)">{{selectedItem.name}}</strong></h3>
           <div class="content">
             <item-properties :item="selectedItem" />
             <b-button size="is-medium" icon-left="check" expanded @click="confirmItemSelection" />
@@ -172,6 +172,10 @@ export default class CharacterComponent extends Vue {
 
   itemImage(item: Item): string {
     return `${process.env.BASE_URL}items/${item.templateMbId}.png`;
+  }
+
+  itemRankClass(item: Item | null): string {
+    return item === null ? '' : 'item-rank' + item.rank;
   }
 
   onAutoRepairSwitch(autoRepair: boolean): void {
@@ -312,4 +316,12 @@ export default class CharacterComponent extends Vue {
       background-color: #fafafa; // TODO: use bulma variable
     }
   }
+
+  .item-rank-3 { color: #ff3860 }
+  .item-rank-2 { color: #ff3860 }
+  .item-rank-1 { color: #ff3860 }
+  .item-rank0 { color: #0a0a0a }
+  .item-rank1 { color: #48c774 }
+  .item-rank2 { color: #3273dc }
+  .item-rank3 { color: #774fc2 }
 </style>
