@@ -233,16 +233,19 @@ namespace Crpg.GameMod.DefendTheVirgin
                             ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.MaxDataValue), (short)crpgItem.Weapons[i].StackAmount);
                             ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.WeaponBalance), crpgItem.Weapons[i].Balance);
                             // If we want to override length here we should also override things like CenterOfMass according to WeaponComponentData.Deserialize.
+                            ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.Handling), crpgItem.Weapons[i].Handling);
                             ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.BodyArmor), crpgItem.Weapons[i].BodyArmor);
-                            ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.ThrustDamage), crpgItem.Weapons[i].ThrustDamage);
-                            ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.ThrustSpeed), crpgItem.Weapons[i].ThrustSpeed);
-                            // According to WeaponComponentData.Deserialize Handling = ThrustSpeed.
-                            ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.Handling), crpgItem.Weapons[i].ThrustSpeed);
-                            ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.SwingDamage), crpgItem.Weapons[i].SwingDamage);
-                            ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.SwingSpeed), crpgItem.Weapons[i].SwingSpeed);
 
-                            // Damage factors are computed from swing and thrust damage so this method needs to be called.
-                            ReflectionHelper.InvokeMethod(mbItem.Weapons[i], "SetDamageFactors", new object[] { crpgItem.Weight });
+                            // TODO: the relation between damage and damage factor is not clear.
+                            float thrustDamageFactor = mbItem.Weapons[i].ThrustDamageFactor * crpgItem.Weapons[i].ThrustDamage / mbItem.Weapons[i].ThrustDamage;
+                            ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.ThrustDamage), crpgItem.Weapons[i].ThrustDamage);
+                            ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.ThrustDamageFactor), thrustDamageFactor);
+                            ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.ThrustSpeed), crpgItem.Weapons[i].ThrustSpeed);
+
+                            float swingDamageFactor = mbItem.Weapons[i].SwingDamageFactor * crpgItem.Weapons[i].SwingDamage / mbItem.Weapons[i].SwingDamage;
+                            ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.SwingDamage), crpgItem.Weapons[i].SwingDamage);
+                            ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.SwingDamageFactor), swingDamageFactor);
+                            ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.SwingSpeed), crpgItem.Weapons[i].SwingSpeed);
                         }
                     }
                 }
@@ -438,14 +441,22 @@ namespace Crpg.GameMod.DefendTheVirgin
             {
                 if (affectedClasses.Contains(weapon.WeaponClass))
                 {
+                    // It seems like damage is used by missiles and melee use damage factor. Scale both in any case.
+                    // TODO: the relation between damage and damage factor is defined in the depth of the deserialization
+                    // of a crafted item. Scaling damage factor the same way damage is scaled might not work as expected.
+                    // A less fragile solution would be to find a way to apply the skill on hit instead of modifying the
+                    // item.
                     var swingDamage = (int)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.SwingDamage));
                     ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.SwingDamage), swingDamage + (int)(swingDamage * factor));
+
+                    var swingDamageFactor = (float)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.SwingDamageFactor));
+                    ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.SwingDamageFactor), swingDamageFactor + swingDamageFactor * factor);
 
                     var thrustDamage = (int)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.ThrustDamage));
                     ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.ThrustDamage), thrustDamage + (int)(thrustDamage * factor));
 
-                    // It seems like damage is used by missiles and melee use damage factor. Damage factors need to be recomputed.
-                    ReflectionHelper.InvokeMethod(weapon, "SetDamageFactors", new object[] { itemObject.Weight });
+                    var thrustDamageFactor = (float)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.ThrustDamageFactor));
+                    ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.ThrustDamageFactor), thrustDamageFactor + thrustDamageFactor * factor);
                 }
             }
         }
