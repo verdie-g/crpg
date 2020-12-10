@@ -36,65 +36,68 @@ namespace Crpg.Application.Games.Commands
                 // aserai
                 new[]
                 {
-                    ("mp_wrapped_desert_cap", ItemSlot.Head),
-                    ("mp_aserai_civil_e", ItemSlot.Body),
-                    ("mp_strapped_shoes", ItemSlot.Leg),
-                    ("mp_aserai_axe", ItemSlot.Weapon0),
-                    ("mp_throwing_stone", ItemSlot.Weapon1),
+                    ("head_wrapped", ItemSlot.Head),
+                    ("long_desert_robe", ItemSlot.Body),
+                    ("southern_moccasins", ItemSlot.Leg),
+                    ("peasant_polearm_1_t1", ItemSlot.Weapon0),
+                    ("peasant_pickaxe_1_t1", ItemSlot.Weapon1),
+                    ("throwing_stone", ItemSlot.Weapon2),
                 },
                 // vlandia
                 new[]
                 {
-                    ("mp_arming_coif", ItemSlot.Head),
-                    ("mp_sackcloth_tunic", ItemSlot.Body),
-                    ("mp_strapped_shoes", ItemSlot.Leg),
-                    ("mp_vlandian_billhook", ItemSlot.Weapon0),
-                    ("mp_sling_stone", ItemSlot.Weapon1),
+                    ("sackcloth_tunic", ItemSlot.Body),
+                    ("strapped_shoes", ItemSlot.Leg),
+                    ("peasant_pitchfork_1_t1", ItemSlot.Weapon0),
+                    ("peasant_hatchet_1_t1", ItemSlot.Weapon1),
+                    ("throwing_stone", ItemSlot.Weapon2),
                 },
                 // empire
                 new[]
                 {
-                    ("mp_laced_cloth_coif", ItemSlot.Head),
-                    ("mp_hemp_tunic", ItemSlot.Body),
-                    ("mp_leather_shoes", ItemSlot.Leg),
-                    ("mp_empire_axe", ItemSlot.Weapon0),
-                    ("mp_throwing_stone", ItemSlot.Weapon1),
+                    ("peasant_costume", ItemSlot.Body),
+                    ("folded_town_boots", ItemSlot.Leg),
+                    ("peasant_polearm_1_t1", ItemSlot.Weapon0),
+                    ("peasant_sickle_1_t1", ItemSlot.Weapon1),
+                    ("throwing_stone", ItemSlot.Weapon2),
                 },
                 // sturgia
                 new[]
                 {
-                    ("mp_nordic_fur_cap", ItemSlot.Head),
-                    ("mp_northern_tunic", ItemSlot.Body),
-                    ("mp_wrapped_shoes", ItemSlot.Leg),
-                    ("mp_sturgia_mace", ItemSlot.Weapon0),
-                    ("mp_sling_stone", ItemSlot.Weapon1),
+                    ("scarf", ItemSlot.Shoulder),
+                    ("light tunic", ItemSlot.Body),
+                    ("peasant_2haxe_1_t1", ItemSlot.Weapon0),
+                    ("peasant_hammer_1_t1", ItemSlot.Weapon1),
+                    ("throwing_stone", ItemSlot.Weapon2),
                 },
                 // khuzait
                 new[]
                 {
-                    ("mp_nomad_padded_hood", ItemSlot.Head),
-                    ("mp_khuzait_civil_coat_b", ItemSlot.Body),
-                    ("mp_strapped_leather_boots", ItemSlot.Leg),
-                    ("mp_khuzait_sichel", ItemSlot.Weapon0),
-                    ("mp_throwing_stone", ItemSlot.Weapon1),
+                    ("nomad_cap", ItemSlot.Head),
+                    ("khuzait_civil_coat", ItemSlot.Body),
+                    ("leather_boots", ItemSlot.Leg),
+                    ("peasant_pitchfork_2_t1", ItemSlot.Weapon0),
+                    ("peasant_hammer_2_t1", ItemSlot.Weapon1),
+                    ("throwing_stone", ItemSlot.Weapon2),
                 },
                 // battania
                 new[]
                 {
-                    ("mp_battania_civil_hood", ItemSlot.Head),
-                    ("mp_battania_civil_a", ItemSlot.Body),
-                    ("mp_rough_tied_boots", ItemSlot.Leg),
-                    ("mp_battania_axe", ItemSlot.Weapon0),
-                    ("mp_sling_stone", ItemSlot.Weapon1),
+                    ("baggy_trunks", ItemSlot.Body),
+                    ("armwraps", ItemSlot.Hand),
+                    ("ragged_boots", ItemSlot.Leg),
+                    ("peasant_2haxe_1_t1", ItemSlot.Weapon0),
+                    ("peasant_pickaxe_1_t1", ItemSlot.Weapon1),
+                    ("throwing_stone", ItemSlot.Weapon2),
                 },
                 // looters
                 new[]
                 {
-                    ("mp_vlandia_bandit_cape_a", ItemSlot.Head),
-                    ("mp_burlap_sack_dress", ItemSlot.Body),
-                    ("mp_strapped_leather_boots", ItemSlot.Leg),
-                    ("mp_empire_long_twohandedaxe", ItemSlot.Weapon0),
-                    ("mp_throwing_stone", ItemSlot.Weapon1),
+                    ("vlandia_bandit_c", ItemSlot.Body),
+                    ("rough_tied_boots", ItemSlot.Leg),
+                    ("training_bow", ItemSlot.Weapon0),
+                    ("default_arrows", ItemSlot.Weapon1),
+                    ("peasant_hatchet_1_t1", ItemSlot.Weapon2),
                 },
             };
 

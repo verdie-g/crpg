@@ -86,7 +86,7 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(0, gameUser.Character.Statistics.Attributes.Points);
             Assert.AreEqual(0, gameUser.Character.Statistics.Skills.Points);
             Assert.AreEqual(100, gameUser.Character.Statistics.WeaponProficiencies.Points);
-            Assert.AreEqual(5, gameUser.Character.EquippedItems.Count);
+            Assert.IsNotEmpty(gameUser.Character.EquippedItems);
             Assert.IsTrue(gameUser.Character.AutoRepair);
             Assert.IsNull(gameUser.Ban);
 
@@ -134,7 +134,7 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(0, gameUser.Character.Statistics.Attributes.Points);
             Assert.AreEqual(0, gameUser.Character.Statistics.Skills.Points);
             Assert.AreEqual(100, gameUser.Character.Statistics.WeaponProficiencies.Points);
-            Assert.AreEqual(5, gameUser.Character.EquippedItems.Count);
+            Assert.IsNotEmpty(gameUser.Character.EquippedItems);
             Assert.IsTrue(gameUser.Character.AutoRepair);
             Assert.IsNull(gameUser.Ban);
 
