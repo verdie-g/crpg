@@ -97,7 +97,7 @@ namespace Crpg.Application.UTest.Games
 
             Assert.IsNotNull(dbUser);
             Assert.IsNotEmpty(dbUser.Characters);
-            Assert.AreEqual(5, dbUser.Characters[0].EquippedItems.Count);
+            Assert.IsNotEmpty(dbUser.Characters[0].EquippedItems);
             Assert.NotZero(dbUser.Characters[0].Statistics.Attributes.Agility);
         }
 
@@ -145,7 +145,7 @@ namespace Crpg.Application.UTest.Games
 
             Assert.IsNotNull(dbUser);
             Assert.IsNotEmpty(dbUser.Characters);
-            Assert.AreEqual(5, dbUser.Characters[0].EquippedItems.Count);
+            Assert.IsNotEmpty(dbUser.Characters[0].EquippedItems);
             Assert.NotZero(dbUser.Characters[0].Statistics.Attributes.Agility);
         }
 
