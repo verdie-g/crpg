@@ -43,6 +43,7 @@ namespace Crpg.Application.Games.Commands
             {
                 int[] characterIds = req.Updates.Select(u => u.CharacterId).ToArray();
                 var charactersById = await _db.Characters
+                    .AsSplitQuery() // Split in several queries to avoid cartesian explosion.
                     .Include(c => c.User)
                     .Include(c => c.EquippedItems).ThenInclude(ei => ei.Item)
                     .Where(c => characterIds.Contains(c.Id))
