@@ -99,29 +99,41 @@ namespace Crpg.GameMod.Api
 
         private async Task<CrpgResult<TResponse>> Send<TResponse>(HttpRequestMessage msg, CancellationToken cancellationToken) where TResponse : class
         {
-            if (_httpClient.DefaultRequestHeaders.Authorization == null)
+            int retry = 0;
+            while (retry < 2)
             {
-                await Initialize();
-            }
+                retry += 1;
 
-            var res = await _httpClient.SendAsync(msg, cancellationToken);
-            string json = await res.Content.ReadAsStringAsync();
-
-            if (!res.IsSuccessStatusCode)
-            {
-                if (res.StatusCode == HttpStatusCode.Unauthorized)
+                if (_httpClient.DefaultRequestHeaders.Authorization == null)
                 {
-                    throw new Exception("Invalid or expired token");
+                    await RefreshAccessToken();
                 }
 
-                throw new Exception(json);
+                // TODO: log request
+                var res = await _httpClient.SendAsync(msg, cancellationToken);
+                string json = await res.Content.ReadAsStringAsync();
+
+                if (res.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    // TODO: log warn unauthorized.
+                    _httpClient.DefaultRequestHeaders.Authorization = null;
+                    continue;
+                }
+
+                if (!res.IsSuccessStatusCode)
+                {
+                    throw new Exception(json);
+                }
+
+                return JsonConvert.DeserializeObject<CrpgResult<TResponse>>(json, _serializerSettings);
             }
 
-            return JsonConvert.DeserializeObject<CrpgResult<TResponse>>(json, _serializerSettings);
+            throw new Exception("Couldn't send request even after refreshing access token");
         }
 
-        private async Task Initialize()
+        private async Task RefreshAccessToken()
         {
+            // TODO: log refreshing
             DiscoveryDocumentResponse discoResponse = await _httpClient.GetDiscoveryDocumentAsync();
             if (discoResponse.IsError)
             {
@@ -143,6 +155,7 @@ namespace Crpg.GameMod.Api
             }
 
             _httpClient.SetBearerToken(tokenResponse.AccessToken);
+            // TODO: log refresh ok
         }
     }
 }
