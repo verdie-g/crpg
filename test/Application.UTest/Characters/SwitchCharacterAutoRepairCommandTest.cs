@@ -18,7 +18,7 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Characters.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new SwitchCharacterAutoRepairCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new SwitchCharacterAutoRepairCommand.Handler(ActDb).Handle(
                 new SwitchCharacterAutoRepairCommand
                 {
                     CharacterId = character.Id,
@@ -38,7 +38,7 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Characters.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new SwitchCharacterAutoRepairCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new SwitchCharacterAutoRepairCommand.Handler(ActDb).Handle(
                 new SwitchCharacterAutoRepairCommand
                 {
                     CharacterId = character.Id,
@@ -58,7 +58,7 @@ namespace Crpg.Application.UTest.Characters
              ArrangeDb.Users.Add(user);
              await ArrangeDb.SaveChangesAsync();
 
-             var handler = new SwitchCharacterAutoRepairCommand.Handler(ActDb, Mapper);
+             var handler = new SwitchCharacterAutoRepairCommand.Handler(ActDb);
              var result = await handler.Handle(new SwitchCharacterAutoRepairCommand
              {
                  UserId = user.Id,
@@ -72,7 +72,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldThrowNotFoundIfUserNotFound()
         {
-             var handler = new SwitchCharacterAutoRepairCommand.Handler(ActDb, Mapper);
+             var handler = new SwitchCharacterAutoRepairCommand.Handler(ActDb);
              var result = await handler.Handle(new SwitchCharacterAutoRepairCommand
              {
                  UserId = 1,

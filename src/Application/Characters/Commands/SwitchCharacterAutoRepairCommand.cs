@@ -19,12 +19,10 @@ namespace Crpg.Application.Characters.Commands
         public class Handler : IMediatorRequestHandler<SwitchCharacterAutoRepairCommand>
         {
             private readonly ICrpgDbContext _db;
-            private readonly IMapper _mapper;
 
-            public Handler(ICrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db)
             {
                 _db = db;
-                _mapper = mapper;
             }
 
             public async Task<Result> Handle(SwitchCharacterAutoRepairCommand req, CancellationToken cancellationToken)
@@ -39,7 +37,7 @@ namespace Crpg.Application.Characters.Commands
                 character.AutoRepair = req.AutoRepair;
 
                 await _db.SaveChangesAsync(cancellationToken);
-                return new Result<CharacterStatisticsViewModel>(_mapper.Map<CharacterStatisticsViewModel>(character.Statistics));
+                return new Result();
             }
         }
     }
