@@ -236,7 +236,6 @@ namespace Crpg.GameMod.DefendTheVirgin
                             ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.Handling), crpgItem.Weapons[i].Handling);
                             ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.BodyArmor), crpgItem.Weapons[i].BodyArmor);
 
-                            // TODO: the relation between damage and damage factor is not clear.
                             float thrustDamageFactor = mbItem.Weapons[i].ThrustDamageFactor * crpgItem.Weapons[i].ThrustDamage / mbItem.Weapons[i].ThrustDamage;
                             ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.ThrustDamage), crpgItem.Weapons[i].ThrustDamage);
                             ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.ThrustDamageFactor), thrustDamageFactor);
@@ -442,10 +441,9 @@ namespace Crpg.GameMod.DefendTheVirgin
                 if (affectedClasses.Contains(weapon.WeaponClass))
                 {
                     // It seems like damage is used by missiles and melee use damage factor. Scale both in any case.
-                    // TODO: the relation between damage and damage factor is defined in the depth of the deserialization
-                    // of a crafted item. Scaling damage factor the same way damage is scaled might not work as expected.
-                    // A less fragile solution would be to find a way to apply the skill on hit instead of modifying the
-                    // item.
+                    // According to TaleWorlds.Core.Crafting.CalculateSwingBaseDamage, damage is calculated from damage
+                    // factor and other fields like weight or speed. Scaling both damage and damage factor they same way
+                    // might not work as expected.
                     var swingDamage = (int)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.SwingDamage));
                     ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.SwingDamage), swingDamage + (int)(swingDamage * factor));
 
