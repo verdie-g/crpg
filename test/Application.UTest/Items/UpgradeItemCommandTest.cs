@@ -4,17 +4,20 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items
 {
     public class UpgradeItemCommandTest : TestBase
     {
+        private static readonly ILogger<UpgradeItemCommand> Logger = Mock.Of<ILogger<UpgradeItemCommand>>();
+
         private Item[] _items = default!;
 
         [SetUp]
@@ -38,7 +41,7 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(new UpgradeItemCommand
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Logger).Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
                 UserId = user.Id,
@@ -59,7 +62,7 @@ namespace Crpg.Application.UTest.Items
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpgradeItemCommand.Handler(ActDb, Mapper);
+            var handler = new UpgradeItemCommand.Handler(ActDb, Mapper, Logger);
             var result = await handler.Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
@@ -79,7 +82,7 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(new UpgradeItemCommand
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Logger).Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
                 UserId = user.Id,
@@ -100,7 +103,7 @@ namespace Crpg.Application.UTest.Items
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpgradeItemCommand.Handler(ActDb, Mapper);
+            var handler = new UpgradeItemCommand.Handler(ActDb, Mapper, Logger);
             var result = await handler.Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
@@ -127,7 +130,7 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var upgradedItem = (await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(new UpgradeItemCommand
+            var upgradedItem = (await new UpgradeItemCommand.Handler(ActDb, Mapper, Logger).Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
                 UserId = user.Id,
@@ -147,7 +150,7 @@ namespace Crpg.Application.UTest.Items
             var item = ArrangeDb.Items.Add(new Item());
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Logger).Handle(
                 new UpgradeItemCommand
                 {
                     ItemId = item.Entity.Id,
@@ -162,7 +165,7 @@ namespace Crpg.Application.UTest.Items
             var user = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Logger).Handle(
                 new UpgradeItemCommand
                 {
                     ItemId = 1,
@@ -177,7 +180,7 @@ namespace Crpg.Application.UTest.Items
             var item = ArrangeDb.Items.Add(new Item());
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper).Handle(
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Logger).Handle(
                 new UpgradeItemCommand
                 {
                     ItemId = item.Entity.Id,

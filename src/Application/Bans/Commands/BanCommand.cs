@@ -9,6 +9,7 @@ using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Crpg.Application.Bans.Commands
 {
@@ -32,37 +33,41 @@ namespace Crpg.Application.Bans.Commands
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
+            private readonly ILogger<BanCommand> _logger;
 
-            public Handler(ICrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper, ILogger<BanCommand> logger)
             {
                 _db = db;
                 _mapper = mapper;
+                _logger = logger;
             }
 
-            public async Task<Result<BanViewModel>> Handle(BanCommand request, CancellationToken cancellationToken)
+            public async Task<Result<BanViewModel>> Handle(BanCommand req, CancellationToken cancellationToken)
             {
-                var bannedUser = await _db.Users.FirstOrDefaultAsync(u => u.Id == request.BannedUserId, cancellationToken);
+                var bannedUser = await _db.Users.FirstOrDefaultAsync(u => u.Id == req.BannedUserId, cancellationToken);
                 if (bannedUser == null)
                 {
-                    return new Result<BanViewModel>(CommonErrors.UserNotFound(request.BannedUserId));
+                    return new Result<BanViewModel>(CommonErrors.UserNotFound(req.BannedUserId));
                 }
 
-                var banningUser = await _db.Users.FirstOrDefaultAsync(u => u.Id == request.BannedByUserId, cancellationToken);
+                var banningUser = await _db.Users.FirstOrDefaultAsync(u => u.Id == req.BannedByUserId, cancellationToken);
                 if (banningUser == null)
                 {
-                    return new Result<BanViewModel>(CommonErrors.UserNotFound(request.BannedByUserId));
+                    return new Result<BanViewModel>(CommonErrors.UserNotFound(req.BannedByUserId));
                 }
 
                 var ban = new Ban
                 {
                     BannedUser = bannedUser,
                     BannedByUser = banningUser,
-                    Duration = request.Duration,
-                    Reason = request.Reason,
+                    Duration = req.Duration,
+                    Reason = req.Reason,
                 };
 
                 bannedUser.Bans.Add(ban);
                 await _db.SaveChangesAsync(cancellationToken);
+
+                _logger.LogInformation("User '{0}' banned user '{1}'", req.BannedByUserId, req.BannedUserId);
                 return new Result<BanViewModel>(_mapper.Map<BanViewModel>(ban));
             }
         }

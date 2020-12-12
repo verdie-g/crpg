@@ -47,9 +47,9 @@ namespace Crpg.Application.Characters.Commands
                 character.Experience = _experienceTable.GetExperienceForLevel(character.Level);
                 _characterService.ResetCharacterStats(character, respecialization: true);
 
-                _logger.LogInformation("Character '{0}' of user '{1}' skipped then fun", req.CharacterId, req.UserId);
-
                 await _db.SaveChangesAsync(cancellationToken);
+
+                _logger.LogInformation("User '{0}' skipped then fun character '{1}'", req.UserId, req.CharacterId);
                 return new Result();
             }
         }

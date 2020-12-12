@@ -7,6 +7,7 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities.Items;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Crpg.Application.Items.Commands
 {
@@ -24,11 +25,13 @@ namespace Crpg.Application.Items.Commands
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
+            private readonly ILogger<UpgradeItemCommand> _logger;
 
-            public Handler(ICrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper, ILogger<UpgradeItemCommand> logger)
             {
                 _db = db;
                 _mapper = mapper;
+                _logger = logger;
             }
 
             public async Task<Result<ItemViewModel>> Handle(UpgradeItemCommand req, CancellationToken cancellationToken)
@@ -82,6 +85,8 @@ namespace Crpg.Application.Items.Commands
 
                 _db.UserItems.Remove(userItem);
                 await _db.SaveChangesAsync(cancellationToken);
+
+                _logger.LogInformation("User '{0}' upgraded item '{1}' to rank {2}", req.UserId, req.ItemId, upgradedItem.Rank);
                 return new Result<ItemViewModel>(_mapper.Map<ItemViewModel>(upgradedItem));
             }
         }

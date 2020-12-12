@@ -5,12 +5,16 @@ using Crpg.Application.Bans.Commands;
 using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
+using Microsoft.Extensions.Logging;
+using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Bans
 {
     public class BanCommandTest : TestBase
     {
+        private static readonly ILogger<BanCommand> Logger = Mock.Of<ILogger<BanCommand>>();
+
         [Test]
         public async Task BanExistingUser()
         {
@@ -18,7 +22,7 @@ namespace Crpg.Application.UTest.Bans
             var user2 = ArrangeDb.Users.Add(new User { PlatformUserId = "1234", Name = "toto" });
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new BanCommand.Handler(ActDb, Mapper).Handle(new BanCommand
+            var result = await new BanCommand.Handler(ActDb, Mapper, Logger).Handle(new BanCommand
             {
                 BannedUserId = user1.Entity.Id,
                 Duration = TimeSpan.FromDays(1),
@@ -41,7 +45,7 @@ namespace Crpg.Application.UTest.Bans
             var user2 = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new BanCommand.Handler(ActDb, Mapper).Handle(new BanCommand
+            var result = await new BanCommand.Handler(ActDb, Mapper, Logger).Handle(new BanCommand
             {
                 BannedUserId = 10,
                 Duration = TimeSpan.FromDays(1),
@@ -58,7 +62,7 @@ namespace Crpg.Application.UTest.Bans
             var user1 = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new BanCommand.Handler(ActDb, Mapper).Handle(new BanCommand
+            var result = await new BanCommand.Handler(ActDb, Mapper, Logger).Handle(new BanCommand
             {
                 BannedUserId = user1.Entity.Id,
                 Duration = TimeSpan.FromDays(1),

@@ -8,6 +8,7 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 
@@ -15,6 +16,8 @@ namespace Crpg.Application.UTest.Characters
 {
     public class RetireCharacterCommandTest : TestBase
     {
+        private static readonly ILogger<RetireCharacterCommand> Logger = Mock.Of<ILogger<RetireCharacterCommand>>();
+
         private static readonly Constants Constants = new Constants
         {
             MinimumLevel = 1,
@@ -46,7 +49,7 @@ namespace Crpg.Application.UTest.Characters
 
             var characterServiceMock = new Mock<ICharacterService>();
 
-            var handler = new RetireCharacterCommand.Handler(ActDb, Mapper, characterServiceMock.Object, Constants);
+            var handler = new RetireCharacterCommand.Handler(ActDb, Mapper, characterServiceMock.Object, Constants, Logger);
             await handler.Handle(new RetireCharacterCommand
             {
                 CharacterId = character.Id,
@@ -71,7 +74,7 @@ namespace Crpg.Application.UTest.Characters
         public async Task NotFoundIfUserDoesntExist()
         {
             var characterService = Mock.Of<ICharacterService>();
-            var handler = new RetireCharacterCommand.Handler(ActDb, Mapper, characterService, Constants);
+            var handler = new RetireCharacterCommand.Handler(ActDb, Mapper, characterService, Constants, Logger);
             var result = await handler.Handle(
                 new RetireCharacterCommand
                 {
@@ -88,7 +91,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             var characterService = Mock.Of<ICharacterService>();
-            var handler = new RetireCharacterCommand.Handler(ActDb, Mapper, characterService, Constants);
+            var handler = new RetireCharacterCommand.Handler(ActDb, Mapper, characterService, Constants, Logger);
             var result = await handler.Handle(
                 new RetireCharacterCommand
                 {
@@ -110,7 +113,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             var characterService = Mock.Of<ICharacterService>();
-            var handler = new RetireCharacterCommand.Handler(ActDb, Mapper, characterService, Constants);
+            var handler = new RetireCharacterCommand.Handler(ActDb, Mapper, characterService, Constants, Logger);
             var result = await handler.Handle(
                 new RetireCharacterCommand
                 {

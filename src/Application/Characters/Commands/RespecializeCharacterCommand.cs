@@ -9,6 +9,7 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Common.Helpers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Crpg.Application.Characters.Commands
 {
@@ -24,15 +25,17 @@ namespace Crpg.Application.Characters.Commands
             private readonly ICharacterService _characterService;
             private readonly IExperienceTable _experienceTable;
             private readonly Constants _constants;
+            private readonly ILogger<RespecializeCharacterCommand> _logger;
 
             public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService,
-                IExperienceTable experienceTable, Constants constants)
+                IExperienceTable experienceTable, Constants constants, ILogger<RespecializeCharacterCommand> logger)
             {
                 _db = db;
                 _mapper = mapper;
                 _characterService = characterService;
                 _experienceTable = experienceTable;
                 _constants = constants;
+                _logger = logger;
             }
 
             public async Task<Result<CharacterViewModel>> Handle(RespecializeCharacterCommand req, CancellationToken cancellationToken)
@@ -51,6 +54,8 @@ namespace Crpg.Application.Characters.Commands
                 _characterService.ResetCharacterStats(character, true);
 
                 await _db.SaveChangesAsync(cancellationToken);
+
+                _logger.LogInformation("User '{0}' respecialized character '{1}'", req.UserId, req.CharacterId);
                 return new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character));
             }
         }
