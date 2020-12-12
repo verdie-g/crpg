@@ -363,11 +363,11 @@ export default class CharacterStatsComponent extends Vue {
   }
 
   wppForAgility(agility: number): number {
-    return applyPolynomialFunction(agility, Constants.weaponProficiencyPointsForAgilityCoefs);
+    return Math.floor(applyPolynomialFunction(agility, Constants.weaponProficiencyPointsForAgilityCoefs));
   }
 
   wppForWeaponMaster(weaponMaster: number): number {
-    return applyPolynomialFunction(weaponMaster, Constants.weaponProficiencyPointsForWeaponMasterCoefs);
+    return Math.floor(applyPolynomialFunction(weaponMaster, Constants.weaponProficiencyPointsForWeaponMasterCoefs));
   }
 
   statRequirementsSatisfied(statSectionKey: StatSectionKey, statKey: StatKey, stat: number): boolean {
@@ -407,7 +407,7 @@ export default class CharacterStatsComponent extends Vue {
 
   statCost(statSectionKey: StatSectionKey, statKey: StatKey, stat: number): number {
     if (statSectionKey === 'weaponProficiencies') {
-      return applyPolynomialFunction(stat, Constants.weaponProficiencyCostCoefs);
+      return Math.floor(applyPolynomialFunction(stat, Constants.weaponProficiencyCostCoefs));
     }
 
     return stat;
