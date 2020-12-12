@@ -3,12 +3,26 @@ using Crpg.Domain.Entities.Characters;
 
 namespace Crpg.Application.Common.Services
 {
-    public class CharacterService
+    public interface ICharacterService
     {
-        private readonly ExperienceTable _experienceTable;
+        void SetDefaultValuesForCharacter(Character character);
+
+        /// <summary>
+        /// Reset character stats.
+        /// </summary>
+        /// <param name="character">Character to reset.</param>
+        /// <param name="respecialization">If the stats points should be redistributed.</param>
+        void ResetCharacterStats(Character character, bool respecialization = false);
+
+        void GiveExperience(Character character, int experience);
+    }
+
+    public class CharacterService : ICharacterService
+    {
+        private readonly IExperienceTable _experienceTable;
         private readonly Constants _constants;
 
-        public CharacterService(ExperienceTable experienceTable, Constants constants)
+        public CharacterService(IExperienceTable experienceTable, Constants constants)
         {
             _experienceTable = experienceTable;
             _constants = constants;
@@ -20,16 +34,13 @@ namespace Crpg.Application.Common.Services
             character.Level = _constants.MinimumLevel;
             character.Experience = 0;
             character.ExperienceMultiplier = _constants.DefaultExperienceMultiplier;
+            character.SkippedTheFun = false;
             character.AutoRepair = _constants.DefaultAutoRepair;
             character.BodyProperties = _constants.DefaultCharacterBodyProperties;
             character.Gender = _constants.DefaultCharacterGender;
         }
 
-        /// <summary>
-        /// Reset character stats.
-        /// </summary>
-        /// <param name="character">Character to reset.</param>
-        /// <param name="respecialization">If the stats points should be redistributed.</param>
+        /// <inheritdoc />
         public void ResetCharacterStats(Character character, bool respecialization = false)
         {
             character.Statistics = new CharacterStatistics
@@ -53,6 +64,11 @@ namespace Crpg.Application.Common.Services
 
         public void GiveExperience(Character character, int experience)
         {
+            if (character.SkippedTheFun)
+            {
+                return;
+            }
+
             character.Experience += (int)(character.ExperienceMultiplier * experience);
             int newLevel = _experienceTable.GetLevelForExperience(character.Experience);
             if (character.Level != newLevel) // if character leveled up

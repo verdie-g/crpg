@@ -2,7 +2,20 @@ using System;
 
 namespace Crpg.Application.Common.Services
 {
-    public class ExperienceTable
+    public interface IExperienceTable
+    {
+        /// <summary>
+        /// Get the level for the total experience gained.
+        /// </summary>
+        int GetLevelForExperience(int experience);
+
+        /// <summary>
+        /// Get the total experience needed to reach <see cref="level"/>.
+        /// </summary>
+        int GetExperienceForLevel(int level);
+    }
+
+    public class ExperienceTable : IExperienceTable
     {
         private readonly Constants _constants;
         private readonly int[] _table;
@@ -13,18 +26,14 @@ namespace Crpg.Application.Common.Services
             _table = ComputeExperienceTable();
         }
 
-        /// <summary>
-        /// Get the level for the total experience gained.
-        /// </summary>
+        /// <inheritdoc />
         public int GetLevelForExperience(int experience)
         {
             int level = Array.BinarySearch(_table, experience);
             return level >= 0 ? level + _constants.MinimumLevel : ~level;
         }
 
-        /// <summary>
-        /// Get the total experience needed to reach <see cref="level"/>.
-        /// </summary>
+        /// <inheritdoc />
         public int GetExperienceForLevel(int level)
         {
             return _table[level - _constants.MinimumLevel];

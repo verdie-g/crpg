@@ -96,6 +96,62 @@ namespace Crpg.Application.UTest.Games
         }
 
         [Test]
+        public async Task ShouldntGiveExperienceIfSkippedTheFun()
+        {
+            var user = new User
+            {
+                Platform = Platform.Steam,
+                PlatformUserId = "1",
+                Gold = 1000,
+                Characters = new List<Character>
+                {
+                    new Character
+                    {
+                        Name = "a",
+                        Level = 1,
+                        Experience = 0,
+                        ExperienceMultiplier = 1.0f,
+                        SkippedTheFun = true,
+                        EquippedItems = { new EquippedItem { Item = new Item(), Slot = ItemSlot.Body } },
+                    },
+                },
+            };
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
+
+            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, CharacterService, Logger);
+            var result = await handler.Handle(new UpdateGameUsersCommand
+            {
+                Updates = new[]
+                {
+                    new GameUserUpdate
+                    {
+                        CharacterId = user.Characters[0].Id,
+                        Reward = new GameUserReward
+                        {
+                            Experience = 10,
+                            Gold = 200,
+                        },
+                    },
+                },
+            }, CancellationToken.None);
+
+            var data = result.Data!;
+            Assert.AreEqual(1, data.UpdateResults.Count);
+            Assert.AreEqual(user.Id, data.UpdateResults[0].User.Id);
+            Assert.AreEqual(Platform.Steam, data.UpdateResults[0].User.Platform);
+            Assert.AreEqual("1", data.UpdateResults[0].User.PlatformUserId);
+            Assert.AreEqual(1000 + 200, data.UpdateResults[0].User.Gold);
+            Assert.AreEqual("a", data.UpdateResults[0].User.Character.Name);
+            Assert.AreEqual(0, data.UpdateResults[0].User.Character.Generation);
+            Assert.AreEqual(1, data.UpdateResults[0].User.Character.Level);
+            Assert.AreEqual(0, data.UpdateResults[0].User.Character.Experience);
+            Assert.AreEqual(1, data.UpdateResults[0].User.Character.EquippedItems.Count);
+            Assert.IsEmpty(data.UpdateResults[0].BrokenItems);
+            Assert.IsNull(data.UpdateResults[0].User.Ban);
+        }
+
+        [Test]
         public async Task ShouldLevelUpIfEnoughExperience()
         {
             var user = new User

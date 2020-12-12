@@ -2,7 +2,12 @@
 
 namespace Crpg.Application.Common.Services
 {
-    public class UserService
+    public interface IUserService
+    {
+        void SetDefaultValuesForUser(User user);
+    }
+
+    public class UserService : IUserService
     {
         private readonly Constants _constants;
 

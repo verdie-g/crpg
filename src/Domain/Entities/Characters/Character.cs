@@ -18,7 +18,7 @@ namespace Crpg.Domain.Entities.Characters
         public int Level { get; set; }
         public int Experience { get; set; }
         public float ExperienceMultiplier { get; set; }
-        public bool SkippedTheFun { get; set; } // unused (issue #13)
+        public bool SkippedTheFun { get; set; }
         public bool AutoRepair { get; set; }
 
         /// <summary>

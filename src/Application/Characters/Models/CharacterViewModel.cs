@@ -13,6 +13,7 @@ namespace Crpg.Application.Characters.Models
         public int Generation { get; set; }
         public int Level { get; set; }
         public int Experience { get; set; }
+        public bool SkippedTheFun { get; set; }
         public bool AutoRepair { get; set; }
         public string BodyProperties { get; set; } = string.Empty;
         public CharacterGender Gender { get; set; }

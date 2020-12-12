@@ -79,6 +79,7 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(0, gameUser.Character.Generation);
             Assert.AreEqual(1, gameUser.Character.Level);
             Assert.AreEqual(0, gameUser.Character.Experience);
+            Assert.IsFalse(gameUser.Character.SkippedTheFun);
             Assert.AreEqual(CharacterGender.Male, gameUser.Character.Gender);
             Assert.IsNotEmpty(gameUser.Character.BodyProperties);
             Assert.AreEqual(3, gameUser.Character.Statistics.Attributes.Strength);
@@ -127,6 +128,7 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(0, gameUser.Character.Generation);
             Assert.AreEqual(1, gameUser.Character.Level);
             Assert.AreEqual(0, gameUser.Character.Experience);
+            Assert.IsFalse(gameUser.Character.SkippedTheFun);
             Assert.AreEqual(CharacterGender.Male, gameUser.Character.Gender);
             Assert.IsNotEmpty(gameUser.Character.BodyProperties);
             Assert.AreEqual(3, gameUser.Character.Statistics.Attributes.Strength);

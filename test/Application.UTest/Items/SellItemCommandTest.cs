@@ -15,7 +15,7 @@ namespace Crpg.Application.UTest.Items
 {
     public class SellItemCommandTest : TestBase
     {
-        private static Constants Constants = new Constants { ItemSellCostCoefs = new[] { 0.5f, 0.0f } };
+        private static readonly Constants Constants = new Constants { ItemSellCostCoefs = new[] { 0.5f, 0.0f } };
 
         [Test]
         public async Task SellItemUnequipped()
