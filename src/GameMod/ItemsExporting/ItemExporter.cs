@@ -55,6 +55,7 @@ namespace Crpg.GameMod.ItemsExporting
             "bolt_c", // Name conflict with bolt_a.
             "bolt_d", // Name conflict with bolt_a.
             "bolt_e", // Name conflict with bolt_a.
+            "boulder", // Can't be equipped.
             "camel_tournament", // Name conflict with camel.
             "desert_round_shield", // Name conflict with bound_desert_round_shield rank 2.
             "eastern_leather_boots", // Name conflict with leather_boots.
@@ -64,11 +65,13 @@ namespace Crpg.GameMod.ItemsExporting
             "grapeshot_fire_projectile", // Can't be equipped.
             "grapeshot_fire_stack", // Can't be equipped.
             "grapeshot_projectile", // Can't be equipped.
+            "grapeshot_stack", // Can't be equipped.
             "heavy_horsemans_kite_shield", // Name conflict with bound_horsemans_kite_shield rank 2.
             "khuzait_horse_tournament", // Name conflict with khuzait_horse.
             "lordly_padded_mitten", // Name conflict with padded_mitten rank 3.
             "mule_unmountable", // Can't be equipped.
             "pack_camel_unmountable", // Can't be equipped.
+            "pot", // Can't be equipped.
             "reinforced_kite_shield", // Name conflict with western_kite_shield rank 2.
             "reinforced_mail_mitten", // Name conflict with mail_mitten rank 2.
             "reinforced_padded_mitten", // Name conflict with padded_mitten rank 2.
@@ -81,6 +84,7 @@ namespace Crpg.GameMod.ItemsExporting
             "sturgia_old_shield_c", // Name conflict with strapped_round_shield.
             "sturgian_helmet_b_close", // Name conflict with closed_goggled_helmet.
             "sturgian_helmet_b_open", // Name conflict with sturgian_helmet_open.
+            "torch", // Invisible.
             "vlandia_horse_tournament", // Name conflict with vlandia_horse.
             "vlandia_mace_3_t5", // Name conflict with pernach_mace_t3.
             "womens_headwrap_c", // Name conflict with head_wrapped.

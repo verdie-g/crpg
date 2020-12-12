@@ -3453,44 +3453,6 @@
     ]
   },
   {
-    "templateMbId": "boulder",
-    "name": "Boulder",
-    "value": 10000,
-    "type": "Thrown",
-    "weight": 15.0,
-    "weapons": [
-      {
-        "class": "Boulder",
-        "accuracy": 100,
-        "missileSpeed": 8,
-        "stackAmount": 1,
-        "length": 95,
-        "balance": 0.0,
-        "handling": 100,
-        "bodyArmor": 0,
-        "flags": [
-          "RangedWeapon",
-          "NotUsableWithOneHand",
-          "Consumable",
-          "AffectsArea",
-          "CanPenetrateShield",
-          "TwoHandIdleOnMount",
-          "MissileWithPhysics",
-          "CanKnockDown",
-          "LeavesTrail",
-          "UseHandAsThrowBase",
-          "AmmoCanBreakOnBounceBack"
-        ],
-        "thrustDamage": 70,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 100,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 0
-      }
-    ]
-  },
-  {
     "templateMbId": "bound_adarga",
     "name": "Wooden Adarga",
     "value": 10883,
@@ -7969,43 +7931,6 @@
       "legArmor": 0
     },
     "weapons": []
-  },
-  {
-    "templateMbId": "grapeshot_stack",
-    "name": "Grapeshot Stack",
-    "value": 10000,
-    "type": "Thrown",
-    "weight": 15.0,
-    "weapons": [
-      {
-        "class": "Boulder",
-        "accuracy": 100,
-        "missileSpeed": 8,
-        "stackAmount": 1,
-        "length": 95,
-        "balance": 0.0,
-        "handling": 100,
-        "bodyArmor": 0,
-        "flags": [
-          "RangedWeapon",
-          "NotUsableWithOneHand",
-          "Consumable",
-          "CanPenetrateShield",
-          "TwoHandIdleOnMount",
-          "MissileWithPhysics",
-          "CanKnockDown",
-          "LeavesTrail",
-          "UseHandAsThrowBase",
-          "AmmoCanBreakOnBounceBack"
-        ],
-        "thrustDamage": 70,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 100,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 0
-      }
-    ]
   },
   {
     "templateMbId": "green_hood",
@@ -15103,42 +15028,6 @@
     "weapons": []
   },
   {
-    "templateMbId": "pot",
-    "name": "Fire Pot",
-    "value": 10000,
-    "type": "Thrown",
-    "weight": 15.0,
-    "weapons": [
-      {
-        "class": "Boulder",
-        "accuracy": 100,
-        "missileSpeed": 8,
-        "stackAmount": 1,
-        "length": 95,
-        "balance": 0.0,
-        "handling": 100,
-        "bodyArmor": 0,
-        "flags": [
-          "RangedWeapon",
-          "NotUsableWithOneHand",
-          "Consumable",
-          "Burning",
-          "CanPenetrateShield",
-          "TwoHandIdleOnMount",
-          "MissileWithPhysics",
-          "LeavesTrail",
-          "AmmoBreaksOnBounceBack"
-        ],
-        "thrustDamage": 70,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 100,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 0
-      }
-    ]
-  },
-  {
     "templateMbId": "practice_spear_t1",
     "name": "Practice Spear",
     "value": 10065,
@@ -18865,34 +18754,6 @@
       "legArmor": 0
     },
     "weapons": []
-  },
-  {
-    "templateMbId": "torch",
-    "name": "Torch",
-    "value": 9000,
-    "type": "OneHandedWeapon",
-    "weight": 0.2,
-    "weapons": [
-      {
-        "class": "OneHandedAxe",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 65,
-        "balance": 1.0,
-        "handling": 78,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 78,
-        "swingDamage": 6,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 97
-      }
-    ]
   },
   {
     "templateMbId": "torn_bandit_clothes",
