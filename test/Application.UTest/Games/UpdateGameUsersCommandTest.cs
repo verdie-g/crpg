@@ -20,23 +20,11 @@ namespace Crpg.Application.UTest.Games
     {
         private static readonly ILogger<UpdateGameUsersCommand> Logger = Mock.Of<ILogger<UpdateGameUsersCommand>>();
 
-        private static readonly Constants Constants = new Constants
-        {
-            MinimumLevel = 1,
-            MaximumLevel = 38,
-            ExperienceForLevelCoefs = new[] { 0f, 50, -50 }, // 50 xp for each level
-            AttributePointsPerLevel = 1,
-            SkillPointsPerLevel = 1,
-            WeaponProficiencyPointsForLevelCoefs = new[] { 10f, 0 }, // wpp = 10 * lvl
-        };
-
-        private static readonly ExperienceTable ExperienceTable = new ExperienceTable(Constants);
-        private static readonly CharacterService CharacterService = new CharacterService(ExperienceTable, Constants);
-
         [Test]
         public void ShouldDoNothingForEmptyUpdates()
         {
-            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, CharacterService, Logger);
+            var characterServiceMock = new Mock<ICharacterService>();
+            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, characterServiceMock.Object, Logger);
             Assert.DoesNotThrowAsync(() => handler.Handle(new UpdateGameUsersCommand(), CancellationToken.None));
         }
 
@@ -63,7 +51,8 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, CharacterService, Logger);
+            var characterServiceMock = new Mock<ICharacterService>();
+            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, characterServiceMock.Object, Logger);
             var result = await handler.Handle(new UpdateGameUsersCommand
             {
                 Updates = new[]
@@ -87,114 +76,11 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual("1", data.UpdateResults[0].User.PlatformUserId);
             Assert.AreEqual(1000 + 200, data.UpdateResults[0].User.Gold);
             Assert.AreEqual("a", data.UpdateResults[0].User.Character.Name);
-            Assert.AreEqual(0, data.UpdateResults[0].User.Character.Generation);
-            Assert.AreEqual(1, data.UpdateResults[0].User.Character.Level);
-            Assert.AreEqual(10, data.UpdateResults[0].User.Character.Experience);
             Assert.AreEqual(1, data.UpdateResults[0].User.Character.EquippedItems.Count);
             Assert.IsEmpty(data.UpdateResults[0].BrokenItems);
             Assert.IsNull(data.UpdateResults[0].User.Ban);
-        }
 
-        [Test]
-        public async Task ShouldntGiveExperienceIfSkippedTheFun()
-        {
-            var user = new User
-            {
-                Platform = Platform.Steam,
-                PlatformUserId = "1",
-                Gold = 1000,
-                Characters = new List<Character>
-                {
-                    new Character
-                    {
-                        Name = "a",
-                        Level = 1,
-                        Experience = 0,
-                        ExperienceMultiplier = 1.0f,
-                        SkippedTheFun = true,
-                        EquippedItems = { new EquippedItem { Item = new Item(), Slot = ItemSlot.Body } },
-                    },
-                },
-            };
-            ArrangeDb.Users.Add(user);
-            await ArrangeDb.SaveChangesAsync();
-
-            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, CharacterService, Logger);
-            var result = await handler.Handle(new UpdateGameUsersCommand
-            {
-                Updates = new[]
-                {
-                    new GameUserUpdate
-                    {
-                        CharacterId = user.Characters[0].Id,
-                        Reward = new GameUserReward
-                        {
-                            Experience = 10,
-                            Gold = 200,
-                        },
-                    },
-                },
-            }, CancellationToken.None);
-
-            var data = result.Data!;
-            Assert.AreEqual(1, data.UpdateResults.Count);
-            Assert.AreEqual(user.Id, data.UpdateResults[0].User.Id);
-            Assert.AreEqual(Platform.Steam, data.UpdateResults[0].User.Platform);
-            Assert.AreEqual("1", data.UpdateResults[0].User.PlatformUserId);
-            Assert.AreEqual(1000 + 200, data.UpdateResults[0].User.Gold);
-            Assert.AreEqual("a", data.UpdateResults[0].User.Character.Name);
-            Assert.AreEqual(0, data.UpdateResults[0].User.Character.Generation);
-            Assert.AreEqual(1, data.UpdateResults[0].User.Character.Level);
-            Assert.AreEqual(0, data.UpdateResults[0].User.Character.Experience);
-            Assert.AreEqual(1, data.UpdateResults[0].User.Character.EquippedItems.Count);
-            Assert.IsEmpty(data.UpdateResults[0].BrokenItems);
-            Assert.IsNull(data.UpdateResults[0].User.Ban);
-        }
-
-        [Test]
-        public async Task ShouldLevelUpIfEnoughExperience()
-        {
-            var user = new User
-            {
-                Platform = Platform.Epic,
-                PlatformUserId = "1",
-                Characters = new List<Character>
-                {
-                    new Character
-                    {
-                        Name = "a",
-                        ExperienceMultiplier = 2f,
-                        Level = 1,
-                        Experience = 40,
-                    },
-                },
-            };
-            ArrangeDb.Users.Add(user);
-            await ArrangeDb.SaveChangesAsync();
-
-            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, CharacterService, Logger);
-            var result = await handler.Handle(new UpdateGameUsersCommand
-            {
-                Updates = new[]
-                {
-                    new GameUserUpdate
-                    {
-                        CharacterId = user.Characters[0].Id,
-                        Reward = new GameUserReward
-                        {
-                            Experience = 5,
-                        },
-                    },
-                },
-            }, CancellationToken.None);
-
-            var data = result.Data!;
-            Assert.AreEqual(0, data.UpdateResults[0].User.Character.Generation);
-            Assert.AreEqual(50, data.UpdateResults[0].User.Character.Experience);
-            Assert.AreEqual(2, data.UpdateResults[0].User.Character.Level);
-            Assert.AreEqual(1, data.UpdateResults[0].User.Character.Statistics.Attributes.Points);
-            Assert.AreEqual(1, data.UpdateResults[0].User.Character.Statistics.Skills.Points);
-            Assert.Greater(data.UpdateResults[0].User.Character.Statistics.WeaponProficiencies.Points, 1);
+            characterServiceMock.Verify(cs => cs.GiveExperience(It.IsAny<Character>(), 10));
         }
 
         [Test]
@@ -229,7 +115,8 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, CharacterService, Logger);
+            var characterServiceMock = new Mock<ICharacterService>();
+            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, characterServiceMock.Object, Logger);
             var result = await handler.Handle(new UpdateGameUsersCommand
             {
                 Updates = new[]
@@ -325,7 +212,8 @@ namespace Crpg.Application.UTest.Games
 
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, CharacterService, Logger);
+            var characterServiceMock = new Mock<ICharacterService>();
+            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, characterServiceMock.Object, Logger);
 
             var result = await handler.Handle(new UpdateGameUsersCommand
             {
@@ -410,7 +298,8 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, CharacterService, Logger);
+            var characterServiceMock = new Mock<ICharacterService>();
+            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, characterServiceMock.Object, Logger);
             var result = await handler.Handle(new UpdateGameUsersCommand
             {
                 Updates = new[]

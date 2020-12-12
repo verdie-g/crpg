@@ -24,25 +24,6 @@ namespace Crpg.Application.UTest.Games
     {
         private static readonly ILogger<GetGameUserCommand> Logger = Mock.Of<ILogger<GetGameUserCommand>>();
 
-        private static readonly Constants Constants = new Constants
-        {
-            DefaultGeneration = 0,
-            MinimumLevel = 1,
-            DefaultExperienceMultiplier = 1f,
-            DefaultAutoRepair = true,
-            DefaultCharacterBodyProperties = "ABCD",
-            DefaultCharacterGender = CharacterGender.Male,
-            DefaultGold = 300,
-            DefaultRole = Role.User,
-            DefaultHeirloomPoints = 0,
-            DefaultStrength = 3,
-            DefaultAgility = 3,
-            WeaponProficiencyPointsForLevelCoefs = new[] { 100f, 0f }, // wpp = lvl * 100
-        };
-
-        private static readonly UserService UserService = new UserService(Constants);
-        private static readonly CharacterService CharacterService = new CharacterService(null!, Constants);
-
         [SetUp]
         public override async Task SetUp()
         {
@@ -60,8 +41,11 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldCreateUserIfDoesntExist()
         {
-            var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                new MachineDateTimeOffset(), new ThreadSafeRandom(), UserService, CharacterService, Logger);
+            var userServiceMock = new Mock<IUserService>();
+            var characterServiceMock = new Mock<ICharacterService>();
+
+            var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(), new MachineDateTimeOffset(),
+                new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object, Logger);
 
             var result = await handler.Handle(new GetGameUserCommand
             {
@@ -74,22 +58,14 @@ namespace Crpg.Application.UTest.Games
             Assert.NotZero(gameUser.Id);
             Assert.AreEqual(Platform.Epic, gameUser.Platform);
             Assert.AreEqual("1", gameUser.PlatformUserId);
-            Assert.AreEqual(300, gameUser.Gold);
             Assert.AreEqual("a", gameUser.Character.Name);
-            Assert.AreEqual(0, gameUser.Character.Generation);
-            Assert.AreEqual(1, gameUser.Character.Level);
-            Assert.AreEqual(0, gameUser.Character.Experience);
-            Assert.IsFalse(gameUser.Character.SkippedTheFun);
-            Assert.AreEqual(CharacterGender.Male, gameUser.Character.Gender);
-            Assert.IsNotEmpty(gameUser.Character.BodyProperties);
-            Assert.AreEqual(3, gameUser.Character.Statistics.Attributes.Strength);
-            Assert.AreEqual(3, gameUser.Character.Statistics.Attributes.Agility);
-            Assert.AreEqual(0, gameUser.Character.Statistics.Attributes.Points);
-            Assert.AreEqual(0, gameUser.Character.Statistics.Skills.Points);
-            Assert.AreEqual(100, gameUser.Character.Statistics.WeaponProficiencies.Points);
             Assert.IsNotEmpty(gameUser.Character.EquippedItems);
-            Assert.IsTrue(gameUser.Character.AutoRepair);
             Assert.IsNull(gameUser.Ban);
+
+            // Check that default values were set for user and character.
+            userServiceMock.Verify(us => us.SetDefaultValuesForUser(It.IsAny<User>()));
+            characterServiceMock.Verify(cs => cs.SetDefaultValuesForCharacter(It.IsAny<Character>()));
+            characterServiceMock.Verify(cs => cs.ResetCharacterStats(It.IsAny<Character>(), false));
 
             // Check that user and its owned entities were created
             var dbUser = await AssertDb.Users
@@ -99,18 +75,20 @@ namespace Crpg.Application.UTest.Games
             Assert.IsNotNull(dbUser);
             Assert.IsNotEmpty(dbUser.Characters);
             Assert.IsNotEmpty(dbUser.Characters[0].EquippedItems);
-            Assert.NotZero(dbUser.Characters[0].Statistics.Attributes.Agility);
         }
 
         [Test]
         public async Task ShouldCreateCharacterIfDoesntExist()
         {
+            var userServiceMock = new Mock<IUserService>();
+            var characterServiceMock = new Mock<ICharacterService>();
+
             var user = new User { Platform = Platform.Steam, PlatformUserId = "1", Gold = 1000 };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                new MachineDateTimeOffset(), new ThreadSafeRandom(), UserService, CharacterService, Logger);
+            var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(), new MachineDateTimeOffset(),
+                new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object, Logger);
 
             var result = await handler.Handle(new GetGameUserCommand
             {
@@ -123,22 +101,14 @@ namespace Crpg.Application.UTest.Games
             Assert.AreEqual(user.Id, gameUser.Id);
             Assert.AreEqual(user.Platform, gameUser.Platform);
             Assert.AreEqual(user.PlatformUserId, gameUser.PlatformUserId);
-            Assert.AreEqual(1000, gameUser.Gold);
             Assert.AreEqual("a", gameUser.Character.Name);
-            Assert.AreEqual(0, gameUser.Character.Generation);
-            Assert.AreEqual(1, gameUser.Character.Level);
-            Assert.AreEqual(0, gameUser.Character.Experience);
-            Assert.IsFalse(gameUser.Character.SkippedTheFun);
-            Assert.AreEqual(CharacterGender.Male, gameUser.Character.Gender);
-            Assert.IsNotEmpty(gameUser.Character.BodyProperties);
-            Assert.AreEqual(3, gameUser.Character.Statistics.Attributes.Strength);
-            Assert.AreEqual(3, gameUser.Character.Statistics.Attributes.Agility);
-            Assert.AreEqual(0, gameUser.Character.Statistics.Attributes.Points);
-            Assert.AreEqual(0, gameUser.Character.Statistics.Skills.Points);
-            Assert.AreEqual(100, gameUser.Character.Statistics.WeaponProficiencies.Points);
             Assert.IsNotEmpty(gameUser.Character.EquippedItems);
-            Assert.IsTrue(gameUser.Character.AutoRepair);
             Assert.IsNull(gameUser.Ban);
+
+            // Check that default values were set for character.
+            userServiceMock.Verify(us => us.SetDefaultValuesForUser(It.IsAny<User>()), Times.Never);
+            characterServiceMock.Verify(cs => cs.SetDefaultValuesForCharacter(It.IsAny<Character>()));
+            characterServiceMock.Verify(cs => cs.ResetCharacterStats(It.IsAny<Character>(), false));
 
             // Check that user and its owned entities were created
             var dbUser = await AssertDb.Users
@@ -148,12 +118,14 @@ namespace Crpg.Application.UTest.Games
             Assert.IsNotNull(dbUser);
             Assert.IsNotEmpty(dbUser.Characters);
             Assert.IsNotEmpty(dbUser.Characters[0].EquippedItems);
-            Assert.NotZero(dbUser.Characters[0].Statistics.Attributes.Agility);
         }
 
         [Test]
         public async Task ShouldNotAddUserItemWhenCreatingCharacterIfItemIsAlreadyOwned()
         {
+            var userService = Mock.Of<IUserService>();
+            var characterService = Mock.Of<ICharacterService>();
+
             var user = new User
             {
                 Platform = Platform.Steam,
@@ -172,7 +144,7 @@ namespace Crpg.Application.UTest.Games
             randomMock.Setup(r => r.Next(It.IsAny<int>(), It.IsAny<int>())).Returns(1);
 
             var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                new MachineDateTimeOffset(), randomMock.Object, UserService, CharacterService, Logger);
+                new MachineDateTimeOffset(), randomMock.Object, userService, characterService, Logger);
 
             // Handle shouldn't throw
             await handler.Handle(new GetGameUserCommand
@@ -189,6 +161,9 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldGetWithPlatformUserAndPlatform()
         {
+            var userService = Mock.Of<IUserService>();
+            var characterService = Mock.Of<ICharacterService>();
+
             var user0 = new User
             {
                 Platform = Platform.Steam,
@@ -207,7 +182,7 @@ namespace Crpg.Application.UTest.Games
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                new MachineDateTimeOffset(), new ThreadSafeRandom(), UserService, CharacterService, Logger);
+                new MachineDateTimeOffset(), new ThreadSafeRandom(), userService, characterService, Logger);
 
             var result = await handler.Handle(new GetGameUserCommand
             {
@@ -225,6 +200,9 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldGetSpecifiedCharacterWhenSeveralExists()
         {
+            var userService = Mock.Of<IUserService>();
+            var characterService = Mock.Of<ICharacterService>();
+
             var user = new User
             {
                 Platform = Platform.Steam,
@@ -240,7 +218,7 @@ namespace Crpg.Application.UTest.Games
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                new MachineDateTimeOffset(), new ThreadSafeRandom(), UserService, CharacterService, Logger);
+                new MachineDateTimeOffset(), new ThreadSafeRandom(), userService, characterService, Logger);
 
             var result = await handler.Handle(new GetGameUserCommand
             {
@@ -256,6 +234,9 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task BanShouldntBeNullForBannedUser()
         {
+            var userService = Mock.Of<IUserService>();
+            var characterService = Mock.Of<ICharacterService>();
+
             var user = new User
             {
                 Platform = Platform.Steam,
@@ -278,7 +259,7 @@ namespace Crpg.Application.UTest.Games
                 .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
 
             var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                dateTime.Object, new ThreadSafeRandom(), UserService, CharacterService, Logger);
+                dateTime.Object, new ThreadSafeRandom(), userService, characterService, Logger);
 
             var result = await handler.Handle(new GetGameUserCommand
             {
@@ -294,6 +275,9 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task BanShouldBeNullForUnbannedUser()
         {
+            var userService = Mock.Of<IUserService>();
+            var characterService = Mock.Of<ICharacterService>();
+
             var user = new User
             {
                 PlatformUserId = "1",
@@ -320,7 +304,7 @@ namespace Crpg.Application.UTest.Games
                 .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
 
             var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
-                dateTime.Object, new ThreadSafeRandom(), UserService, CharacterService, Logger);
+                dateTime.Object, new ThreadSafeRandom(), userService, characterService, Logger);
 
             var result = await handler.Handle(new GetGameUserCommand
             {

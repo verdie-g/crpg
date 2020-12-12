@@ -21,10 +21,10 @@ namespace Crpg.Application.Characters.Commands
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
-            private readonly CharacterService _characterService;
+            private readonly ICharacterService _characterService;
             private readonly Constants _constants;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, CharacterService characterService, Constants constants)
+            public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, Constants constants)
             {
                 _db = db;
                 _mapper = mapper;

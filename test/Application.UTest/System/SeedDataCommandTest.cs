@@ -18,15 +18,8 @@ namespace Crpg.Application.UTest.System
 {
     public class SeedDataCommandTest : TestBase
     {
-        private static readonly Constants Constants = new Constants
-        {
-            MinimumLevel = 1,
-            MaximumLevel = 38,
-            ExperienceForLevelCoefs = new[] { 1f, 1, 1 },
-        };
-
-        private static readonly ExperienceTable ExperienceTable = new ExperienceTable(Constants);
-        private static readonly CharacterService CharacterService = new CharacterService(ExperienceTable, Constants);
+        private static readonly IExperienceTable ExperienceTable = Mock.Of<IExperienceTable>();
+        private static readonly ICharacterService CharacterService = Mock.Of<ICharacterService>();
         private static readonly ItemModifiers ItemModifiers = new FileItemModifiersSource().LoadItemModifiers();
         private static readonly ItemModifierService ItemModifierService = new ItemModifierService(ItemModifiers);
 

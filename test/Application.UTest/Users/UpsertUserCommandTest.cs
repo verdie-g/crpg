@@ -17,19 +17,11 @@ namespace Crpg.Application.UTest.Users
     {
         private static readonly IEventService EventService = Mock.Of<IEventService>();
 
-        private static readonly Constants Constants = new Constants
-        {
-            DefaultGold = 300,
-            DefaultRole = Role.User,
-            DefaultHeirloomPoints = 0,
-        };
-
-        private static readonly UserService UserService = new UserService(Constants);
-
         [Test]
         public async Task TestWhenUserDoesntExist()
         {
-            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService, UserService);
+            var userServiceMock = new Mock<IUserService>();
+            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService, userServiceMock.Object);
             var result = await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "123",
@@ -40,8 +32,7 @@ namespace Crpg.Application.UTest.Users
             }, CancellationToken.None);
 
             var user = result.Data!;
-            Assert.AreEqual(Role.User, user.Role);
-            Assert.AreEqual(300, user.Gold);
+            userServiceMock.Verify(us => us.SetDefaultValuesForUser(It.IsAny<User>()));
             var dbUser = await AssertDb.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
             Assert.IsNotNull(dbUser);
             Assert.IsNull(dbUser.DeletedAt);
@@ -64,7 +55,8 @@ namespace Crpg.Application.UTest.Users
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService, UserService);
+            var userServiceMock = new Mock<IUserService>();
+            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService, userServiceMock.Object);
             var result = await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "13948192759205810",
@@ -76,6 +68,7 @@ namespace Crpg.Application.UTest.Users
 
             var createdUser = result.Data!;
             Assert.AreEqual(user.Id, createdUser.Id);
+            userServiceMock.Verify(us => us.SetDefaultValuesForUser(It.IsAny<User>()), Times.Never);
 
             var dbUser = await AssertDb.Users.FindAsync(user.Id);
             Assert.AreEqual(dbUser.Id, createdUser.Id);
@@ -100,7 +93,8 @@ namespace Crpg.Application.UTest.Users
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService, UserService);
+            var userServiceMock = new Mock<IUserService>();
+            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService, userServiceMock.Object);
             var result = await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "13948192759205810",

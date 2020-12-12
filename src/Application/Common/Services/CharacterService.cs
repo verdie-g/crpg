@@ -3,6 +3,9 @@ using Crpg.Domain.Entities.Characters;
 
 namespace Crpg.Application.Common.Services
 {
+    /// <summary>
+    /// Common logic for characters.
+    /// </summary>
     public interface ICharacterService
     {
         void SetDefaultValuesForCharacter(Character character);
@@ -17,6 +20,7 @@ namespace Crpg.Application.Common.Services
         void GiveExperience(Character character, int experience);
     }
 
+    /// <inheritdoc />
     public class CharacterService : ICharacterService
     {
         private readonly IExperienceTable _experienceTable;
@@ -32,7 +36,7 @@ namespace Crpg.Application.Common.Services
         {
             character.Generation = _constants.DefaultGeneration;
             character.Level = _constants.MinimumLevel;
-            character.Experience = 0;
+            character.Experience = _experienceTable.GetExperienceForLevel(character.Level);
             character.ExperienceMultiplier = _constants.DefaultExperienceMultiplier;
             character.SkippedTheFun = false;
             character.AutoRepair = _constants.DefaultAutoRepair;

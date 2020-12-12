@@ -27,10 +27,10 @@ namespace Crpg.Application.Games.Commands
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
-            private readonly CharacterService _characterService;
+            private readonly ICharacterService _characterService;
             private readonly ILogger<UpdateGameUsersCommand> _logger;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, CharacterService characterService, ILogger<UpdateGameUsersCommand> logger)
+            public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, ILogger<UpdateGameUsersCommand> logger)
             {
                 _db = db;
                 _mapper = mapper;

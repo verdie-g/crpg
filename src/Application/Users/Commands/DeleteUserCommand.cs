@@ -24,9 +24,9 @@ namespace Crpg.Application.Users.Commands
             private readonly ICrpgDbContext _db;
             private readonly IEventService _events;
             private readonly IDateTimeOffset _dateTimeOffset;
-            private readonly UserService _userService;
+            private readonly IUserService _userService;
 
-            public Handler(ICrpgDbContext db, IEventService events, IDateTimeOffset dateTimeOffset, UserService userService)
+            public Handler(ICrpgDbContext db, IEventService events, IDateTimeOffset dateTimeOffset, IUserService userService)
             {
                 _db = db;
                 _events = events;

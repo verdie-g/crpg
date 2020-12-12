@@ -106,12 +106,12 @@ namespace Crpg.Application.Games.Commands
             private readonly IEventService _events;
             private readonly IDateTimeOffset _dateTime;
             private readonly IRandom _random;
-            private readonly UserService _userService;
-            private readonly CharacterService _characterService;
+            private readonly IUserService _userService;
+            private readonly ICharacterService _characterService;
             private readonly ILogger<GetGameUserCommand> _logger;
 
             public Handler(ICrpgDbContext db, IMapper mapper, IEventService events, IDateTimeOffset dateTime,
-                IRandom random, UserService userService, CharacterService characterService, ILogger<GetGameUserCommand> logger)
+                IRandom random, IUserService userService, ICharacterService characterService, ILogger<GetGameUserCommand> logger)
             {
                 _db = db;
                 _mapper = mapper;

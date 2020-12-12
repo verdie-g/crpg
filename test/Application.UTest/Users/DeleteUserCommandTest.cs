@@ -20,15 +20,6 @@ namespace Crpg.Application.UTest.Users
 {
     public class DeleteUserCommandTest : TestBase
     {
-        private static readonly Constants Constants = new Constants
-        {
-            DefaultGold = 300,
-            DefaultRole = Role.User,
-            DefaultHeirloomPoints = 0,
-        };
-
-        private static readonly UserService UserService = new UserService(Constants);
-
         [Test]
         public async Task DeleteExistingUser()
         {
@@ -43,7 +34,8 @@ namespace Crpg.Application.UTest.Users
             // needs to be saved before UserItems[0] gets deleted
             int itemId = user.Entity.OwnedItems[0].ItemId;
 
-            var handler = new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), UserService);
+            var userService = Mock.Of<IUserService>();
+            var handler = new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), userService);
             await handler.Handle(new DeleteUserCommand
             {
                 UserId = user.Entity.Id
@@ -63,7 +55,8 @@ namespace Crpg.Application.UTest.Users
         [Test]
         public async Task DeleteNonExistingUser()
         {
-            var handler = new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), UserService);
+            var userService = Mock.Of<IUserService>();
+            var handler = new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), userService);
             var result = await handler.Handle(new DeleteUserCommand { UserId = 1 }, CancellationToken.None);
             Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
         }

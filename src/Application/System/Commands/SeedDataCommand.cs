@@ -25,12 +25,12 @@ namespace Crpg.Application.System.Commands
             private readonly ICrpgDbContext _db;
             private readonly IItemsSource _itemsSource;
             private readonly IApplicationEnvironment _appEnv;
-            private readonly CharacterService _characterService;
-            private readonly ExperienceTable _experienceTable;
+            private readonly ICharacterService _characterService;
+            private readonly IExperienceTable _experienceTable;
             private readonly ItemModifierService _itemModifier;
 
             public Handler(ICrpgDbContext db, IItemsSource itemsSource, IApplicationEnvironment appEnv,
-                CharacterService characterService, ExperienceTable experienceTable, ItemModifierService itemModifier)
+                ICharacterService characterService, IExperienceTable experienceTable, ItemModifierService itemModifier)
             {
                 _db = db;
                 _itemsSource = itemsSource;

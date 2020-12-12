@@ -21,12 +21,12 @@ namespace Crpg.Application.Characters.Commands
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
-            private readonly CharacterService _characterService;
-            private readonly ExperienceTable _experienceTable;
+            private readonly ICharacterService _characterService;
+            private readonly IExperienceTable _experienceTable;
             private readonly Constants _constants;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, CharacterService characterService,
-                ExperienceTable experienceTable, Constants constants)
+            public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService,
+                IExperienceTable experienceTable, Constants constants)
             {
                 _db = db;
                 _mapper = mapper;
