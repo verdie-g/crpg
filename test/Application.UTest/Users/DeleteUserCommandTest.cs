@@ -25,7 +25,7 @@ namespace Crpg.Application.UTest.Users
         {
             var user = ArrangeDb.Users.Add(new User
             {
-                Characters = new List<Character> { new Character() },
+                Characters = new List<Character> { new Character { EquippedItems = new List<EquippedItem> { new EquippedItem() } } },
                 OwnedItems = new List<UserItem> { new UserItem { Item = new Item() } },
                 Bans = new List<Ban> { new Ban() }
             });
@@ -48,6 +48,8 @@ namespace Crpg.Application.UTest.Users
             Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.Characters.FirstAsync(c => c.Id == user.Entity.Characters[0].Id));
             Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.UserItems.FirstAsync(oi =>
                 oi.UserId == user.Entity.Id && oi.ItemId == user.Entity.OwnedItems[0].ItemId));
+            Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.EquippedItems.FirstAsync(ei =>
+                ei.UserId == user.Entity.Id));
             Assert.DoesNotThrowAsync(() => AssertDb.Items.FirstAsync(i => i.Id == itemId));
             Assert.DoesNotThrowAsync(() => AssertDb.Bans.FirstAsync(b => b.BannedUserId == user.Entity.Id));
         }
