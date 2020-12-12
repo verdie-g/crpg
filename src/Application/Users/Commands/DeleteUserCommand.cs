@@ -19,7 +19,7 @@ namespace Crpg.Application.Users.Commands
     {
         public int UserId { get; set; }
 
-        public class Handler : IMediatorRequestHandler<DeleteUserCommand>
+        internal class Handler : IMediatorRequestHandler<DeleteUserCommand>
         {
             private readonly ICrpgDbContext _db;
             private readonly IEventService _events;

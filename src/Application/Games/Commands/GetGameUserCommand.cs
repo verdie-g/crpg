@@ -29,7 +29,7 @@ namespace Crpg.Application.Games.Commands
         public string PlatformUserId { get; set; } = default!;
         public string UserName { get; set; } = default!;
 
-        public class Handler : IMediatorRequestHandler<GetGameUserCommand, GameUser>
+        internal class Handler : IMediatorRequestHandler<GetGameUserCommand, GameUser>
         {
             internal static readonly (string mbId, ItemSlot slot)[][] DefaultItemSets =
             {

@@ -29,7 +29,7 @@ namespace Crpg.Application.Bans.Commands
             }
         }
 
-        public class Handler : IMediatorRequestHandler<BanCommand, BanViewModel>
+        internal class Handler : IMediatorRequestHandler<BanCommand, BanViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

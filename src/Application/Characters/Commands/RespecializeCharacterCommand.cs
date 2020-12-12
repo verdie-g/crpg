@@ -18,7 +18,7 @@ namespace Crpg.Application.Characters.Commands
         public int CharacterId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IMediatorRequestHandler<RespecializeCharacterCommand, CharacterViewModel>
+        internal class Handler : IMediatorRequestHandler<RespecializeCharacterCommand, CharacterViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

@@ -17,7 +17,7 @@ namespace Crpg.Application.Items.Commands
         public int ItemId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IMediatorRequestHandler<BuyItemCommand, ItemViewModel>
+        internal class Handler : IMediatorRequestHandler<BuyItemCommand, ItemViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

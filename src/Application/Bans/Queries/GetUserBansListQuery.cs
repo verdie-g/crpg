@@ -14,7 +14,7 @@ namespace Crpg.Application.Bans.Queries
     {
         public int UserId { get; set; }
 
-        public class Handler : IMediatorRequestHandler<GetUserBansListQuery, IList<BanViewModel>>
+        internal class Handler : IMediatorRequestHandler<GetUserBansListQuery, IList<BanViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

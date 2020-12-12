@@ -23,7 +23,7 @@ namespace Crpg.Application.Games.Commands
     {
         public IList<GameUserUpdate> Updates { get; set; } = Array.Empty<GameUserUpdate>();
 
-        public class Handler : IMediatorRequestHandler<UpdateGameUsersCommand, UpdateGameUsersResult>
+        internal class Handler : IMediatorRequestHandler<UpdateGameUsersCommand, UpdateGameUsersResult>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

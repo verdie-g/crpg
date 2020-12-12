@@ -2,7 +2,7 @@ using System;
 
 namespace Crpg.Application.Common.Services
 {
-    public interface IExperienceTable
+    internal interface IExperienceTable
     {
         /// <summary>
         /// Get the level for the total experience gained.
@@ -15,7 +15,7 @@ namespace Crpg.Application.Common.Services
         int GetExperienceForLevel(int level);
     }
 
-    public class ExperienceTable : IExperienceTable
+    internal class ExperienceTable : IExperienceTable
     {
         private readonly Constants _constants;
         private readonly int[] _table;

@@ -42,7 +42,7 @@ namespace Crpg.Application.Users.Commands
             }
         }
 
-        public class Handler : IMediatorRequestHandler<UpsertUserCommand, UserViewModel>
+        internal class Handler : IMediatorRequestHandler<UpsertUserCommand, UserViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

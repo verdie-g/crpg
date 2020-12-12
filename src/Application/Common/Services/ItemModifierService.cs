@@ -8,7 +8,7 @@ namespace Crpg.Application.Common.Services
     /// <summary>
     /// Service for looming and repair <see cref="ItemCreation"/>.
     /// </summary>
-    public class ItemModifierService
+    internal class ItemModifierService
     {
         private readonly Dictionary<ItemType, ItemModifier[]> _itemModifiers;
 

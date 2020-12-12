@@ -6,7 +6,7 @@ namespace Crpg.Application.Common.Services
     /// <summary>
     /// Common logic for characters.
     /// </summary>
-    public interface ICharacterService
+    internal interface ICharacterService
     {
         void SetDefaultValuesForCharacter(Character character);
 
@@ -21,7 +21,7 @@ namespace Crpg.Application.Common.Services
     }
 
     /// <inheritdoc />
-    public class CharacterService : ICharacterService
+    internal class CharacterService : ICharacterService
     {
         private readonly IExperienceTable _experienceTable;
         private readonly Constants _constants;

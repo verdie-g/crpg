@@ -5,13 +5,13 @@ namespace Crpg.Application.Common.Services
     /// <summary>
     /// Common logic for characters.
     /// </summary>
-    public interface IUserService
+    internal interface IUserService
     {
         void SetDefaultValuesForUser(User user);
     }
 
     /// <inheritdoc />
-    public class UserService : IUserService
+    internal class UserService : IUserService
     {
         private readonly Constants _constants;
 

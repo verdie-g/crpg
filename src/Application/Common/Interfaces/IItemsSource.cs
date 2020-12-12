@@ -4,7 +4,7 @@ using Crpg.Application.Items.Models;
 
 namespace Crpg.Application.Common.Interfaces
 {
-    public interface IItemsSource
+    internal interface IItemsSource
     {
         Task<IEnumerable<ItemCreation>> LoadItems();
     }

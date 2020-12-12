@@ -20,7 +20,7 @@ namespace Crpg.Application.Characters.Commands
         public int CharacterId { get; set; }
         public CharacterStatisticsViewModel Statistics { get; set; } = new CharacterStatisticsViewModel();
 
-        public class Handler : IMediatorRequestHandler<UpdateCharacterStatisticsCommand, CharacterStatisticsViewModel>
+        internal class Handler : IMediatorRequestHandler<UpdateCharacterStatisticsCommand, CharacterStatisticsViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

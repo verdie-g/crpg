@@ -18,7 +18,7 @@ namespace Crpg.Application.Items.Queries
         /// </summary>
         public bool BaseItems { get; set; }
 
-        public class Handler : IMediatorRequestHandler<GetItemsListQuery, IList<ItemViewModel>>
+        internal class Handler : IMediatorRequestHandler<GetItemsListQuery, IList<ItemViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

@@ -22,7 +22,7 @@ namespace Crpg.Application.Characters.Commands
         public int UserId { get; set; }
         public IList<EquippedItemIdViewModel> Items { get; set; } = Array.Empty<EquippedItemIdViewModel>();
 
-        public class Handler : IMediatorRequestHandler<UpdateCharacterItemsCommand, IList<EquippedItemViewModel>>
+        internal class Handler : IMediatorRequestHandler<UpdateCharacterItemsCommand, IList<EquippedItemViewModel>>
         {
             private static readonly ItemSlot[] WeaponSlots =
             {

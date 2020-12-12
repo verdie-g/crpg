@@ -24,7 +24,7 @@ namespace Crpg.Application.Characters.Commands
             }
         }
 
-        public class Handler : IMediatorRequestHandler<ConvertCharacterStatisticsCommand, CharacterStatisticsViewModel>
+        internal class Handler : IMediatorRequestHandler<ConvertCharacterStatisticsCommand, CharacterStatisticsViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

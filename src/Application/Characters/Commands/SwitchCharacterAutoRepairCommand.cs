@@ -16,7 +16,7 @@ namespace Crpg.Application.Characters.Commands
         public int UserId { get; set; }
         public bool AutoRepair { get; set; }
 
-        public class Handler : IMediatorRequestHandler<SwitchCharacterAutoRepairCommand>
+        internal class Handler : IMediatorRequestHandler<SwitchCharacterAutoRepairCommand>
         {
             private readonly ICrpgDbContext _db;
 

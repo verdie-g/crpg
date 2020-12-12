@@ -15,7 +15,7 @@ namespace Crpg.Application.Characters.Commands
         public int CharacterId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IMediatorRequestHandler<SkipTheFunCommand>
+        internal class Handler : IMediatorRequestHandler<SkipTheFunCommand>
         {
             private readonly ICrpgDbContext _db;
             private readonly ICharacterService _characterService;

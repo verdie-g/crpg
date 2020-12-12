@@ -15,7 +15,7 @@ namespace Crpg.Application.Characters.Queries
     {
         public int UserId { get; set; }
 
-        public class Handler : IMediatorRequestHandler<GetUserCharactersListQuery, IList<CharacterViewModel>>
+        internal class Handler : IMediatorRequestHandler<GetUserCharactersListQuery, IList<CharacterViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

@@ -16,7 +16,7 @@ namespace Crpg.Application.Items.Commands
         public int ItemId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IMediatorRequestHandler<UpgradeItemCommand, ItemViewModel>
+        internal class Handler : IMediatorRequestHandler<UpgradeItemCommand, ItemViewModel>
         {
             /// <summary>
             /// To repair an item for rank -1 to rank 0 it costs 7% of the rank 0 price.

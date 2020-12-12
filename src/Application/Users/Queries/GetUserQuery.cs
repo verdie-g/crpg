@@ -14,7 +14,7 @@ namespace Crpg.Application.Users.Queries
     {
         public int UserId { get; set; }
 
-        public class Handler : IMediatorRequestHandler<GetUserQuery, UserViewModel>
+        internal class Handler : IMediatorRequestHandler<GetUserQuery, UserViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

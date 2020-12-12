@@ -14,7 +14,7 @@ namespace Crpg.Application.Items.Commands
         public int ItemId { get; set; }
         public int UserId { get; set; }
 
-        public class Handler : IMediatorRequestHandler<SellItemCommand>
+        internal class Handler : IMediatorRequestHandler<SellItemCommand>
         {
             private readonly ICrpgDbContext _db;
             private readonly Constants _constants;

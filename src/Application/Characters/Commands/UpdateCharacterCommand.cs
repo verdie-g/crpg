@@ -38,7 +38,7 @@ namespace Crpg.Application.Characters.Commands
             }
         }
 
-        public class Handler : IMediatorRequestHandler<UpdateCharacterCommand, CharacterViewModel>
+        internal class Handler : IMediatorRequestHandler<UpdateCharacterCommand, CharacterViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

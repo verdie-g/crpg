@@ -19,7 +19,7 @@ namespace Crpg.Application.System.Commands
 {
     public class SeedDataCommand : IMediatorRequest
     {
-        public class Handler : IMediatorRequestHandler<SeedDataCommand>
+        internal class Handler : IMediatorRequestHandler<SeedDataCommand>
         {
             private static readonly int[] ItemRanks = { -3, -2, -1, 1, 2, 3 };
             private readonly ICrpgDbContext _db;
