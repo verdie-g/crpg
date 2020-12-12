@@ -1,10 +1,12 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Models;
+using Crpg.Common.Helpers;
 using Crpg.Domain.Entities.Items;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -18,19 +20,16 @@ namespace Crpg.Application.Items.Commands
 
         internal class Handler : IMediatorRequestHandler<UpgradeItemCommand, ItemViewModel>
         {
-            /// <summary>
-            /// To repair an item for rank -1 to rank 0 it costs 7% of the rank 0 price.
-            /// </summary>
-            private const float ItemRepairCost = 0.07f;
-
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
+            private readonly Constants _constants;
             private readonly ILogger<UpgradeItemCommand> _logger;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, ILogger<UpgradeItemCommand> logger)
+            public Handler(ICrpgDbContext db, IMapper mapper, Constants constants, ILogger<UpgradeItemCommand> logger)
             {
                 _db = db;
                 _mapper = mapper;
+                _constants = constants;
                 _logger = logger;
             }
 
@@ -56,7 +55,7 @@ namespace Crpg.Application.Items.Commands
                     .FirstAsync(i => i.BaseItemId == userItem.Item.BaseItemId && i.Rank == userItem.Item.Rank + 1, cancellationToken);
                 if (userItem.Item.Rank < 0) // repair
                 {
-                    int repairCost = (int)(ItemRepairCost * upgradedItem.Value);
+                    int repairCost = (int)MathHelper.ApplyPolynomialFunction(upgradedItem.Value, _constants.ItemRepairCostCoefs);
                     if (userItem.User!.Gold < repairCost)
                     {
                         return new Result<ItemViewModel>(CommonErrors.NotEnoughGold(repairCost, userItem.User!.Gold));
