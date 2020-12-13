@@ -32,6 +32,7 @@ namespace Crpg.Application.Characters.Queries
                     .AsNoTracking()
                     .Include(c => c.EquippedItems).ThenInclude(ei => ei.Item)
                     .Where(c => c.UserId == req.UserId)
+                    .OrderByDescending(c => c.UpdatedAt)
                     .ToListAsync(cancellationToken);
 
                 // can't use ProjectTo https://github.com/dotnet/efcore/issues/19726
