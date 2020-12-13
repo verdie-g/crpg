@@ -41,14 +41,7 @@ namespace Crpg.Application.Games.Commands
             public async Task<Result<UpdateGameUsersResult>> Handle(UpdateGameUsersCommand req,
                 CancellationToken cancellationToken)
             {
-                int[] characterIds = req.Updates.Select(u => u.CharacterId).ToArray();
-                var charactersById = await _db.Characters
-                    .AsSplitQuery() // Split in several queries to avoid cartesian explosion.
-                    .Include(c => c.User)
-                    .Include(c => c.EquippedItems).ThenInclude(ei => ei.Item)
-                    .Where(c => characterIds.Contains(c.Id))
-                    .ToDictionaryAsync(c => c.Id, cancellationToken);
-
+                var charactersById = await LoadCharacters(req.Updates, cancellationToken);
                 var results = new List<(Character character, List<GameUserBrokenItem> brokenItems)>();
                 foreach (var update in req.Updates)
                 {
@@ -72,6 +65,24 @@ namespace Crpg.Application.Games.Commands
                         BrokenItems = r.brokenItems,
                     }).ToArray(),
                 });
+            }
+
+            private async Task<Dictionary<int, Character>> LoadCharacters(IList<GameUserUpdate> updates, CancellationToken cancellationToken)
+            {
+                int[] characterIds = updates.Select(u => u.CharacterId).ToArray();
+                var charactersById = await _db.Characters
+                    .Include(c => c.User)
+                    .Where(c => characterIds.Contains(c.Id))
+                    .ToDictionaryAsync(c => c.Id, cancellationToken);
+
+                // Load items in a separate query to avoid cartesian explosion. The items will be automatically set
+                // to their respective character.
+                await _db.EquippedItems
+                    .Where(ei => characterIds.Contains(ei.CharacterId))
+                    .Include(ei => ei.Item)
+                    .LoadAsync(cancellationToken);
+
+                return charactersById;
             }
 
             private void GiveReward(Character character, GameUserReward reward)
