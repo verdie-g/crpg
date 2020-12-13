@@ -197,7 +197,7 @@ namespace Crpg.Application.UTest.Games
             // for each item, add its base item (rank = 0) and downranked item (rank = rank - 1)
             foreach (var equippedItem in user.Characters[0].EquippedItems)
             {
-                ArrangeDb.UserItems.Add(new UserItem { User = user, Item = equippedItem.Item });
+                ArrangeDb.OwnedItems.Add(new OwnedItem { User = user, Item = equippedItem.Item });
 
                 var baseItem = equippedItem.Item!.Rank == 0 ? equippedItem.Item : new Item { Rank = 0 };
                 baseItem.BaseItem = baseItem;
@@ -264,7 +264,7 @@ namespace Crpg.Application.UTest.Games
             // check broken items were added to user inventory
             foreach (var equippedItem in user.Characters[0].EquippedItems)
             {
-                Assert.DoesNotThrowAsync(() => AssertDb.UserItems.FirstAsync(oi => oi.ItemId == equippedItem.ItemId && oi.UserId == user.Id));
+                Assert.DoesNotThrowAsync(() => AssertDb.OwnedItems.FirstAsync(oi => oi.ItemId == equippedItem.ItemId && oi.UserId == user.Id));
             }
         }
 
@@ -293,7 +293,7 @@ namespace Crpg.Application.UTest.Games
                         AutoRepair = true,
                     },
                 },
-                OwnedItems = { new UserItem { Item = handItem } }
+                OwnedItems = { new OwnedItem { Item = handItem } }
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();

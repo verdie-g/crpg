@@ -40,7 +40,7 @@ namespace Crpg.Domain.Entities.Users
         /// </summary>
         public DateTimeOffset? DeletedAt { get; set; }
 
-        public IList<UserItem> OwnedItems { get; set; } = new List<UserItem>();
+        public IList<OwnedItem> OwnedItems { get; set; } = new List<OwnedItem>();
         public IList<Character> Characters { get; set; } = new List<Character>();
         public IList<Ban> Bans { get; set; } = new List<Ban>();
     }

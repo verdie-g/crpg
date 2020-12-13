@@ -57,7 +57,7 @@ namespace Crpg.Application.Items.Commands
                 }
 
                 user.Gold -= item.Value;
-                user.OwnedItems.Add(new UserItem { UserId = req.UserId, ItemId = req.ItemId });
+                user.OwnedItems.Add(new OwnedItem { UserId = req.UserId, ItemId = req.ItemId });
                 await _db.SaveChangesAsync(cancellationToken);
                 return new Result<ItemViewModel>(_mapper.Map<ItemViewModel>(item));
             }

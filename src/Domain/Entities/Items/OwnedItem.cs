@@ -8,7 +8,7 @@ namespace Crpg.Domain.Entities.Items
     /// <summary>
     /// Item owned by a user.
     /// </summary>
-    public class UserItem
+    public class OwnedItem
     {
         public int UserId { get; set; }
         public int ItemId { get; set; }

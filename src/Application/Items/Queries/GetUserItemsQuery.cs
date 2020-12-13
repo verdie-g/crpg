@@ -11,11 +11,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Queries
 {
-    public class GetUserItemsQuery : IMediatorRequest<IList<ItemViewModel>>
+    public class GetOwnedItemsQuery : IMediatorRequest<IList<ItemViewModel>>
     {
         public int UserId { get; set; }
 
-        internal class Handler : IMediatorRequestHandler<GetUserItemsQuery, IList<ItemViewModel>>
+        internal class Handler : IMediatorRequestHandler<GetOwnedItemsQuery, IList<ItemViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -26,9 +26,9 @@ namespace Crpg.Application.Items.Queries
                 _mapper = mapper;
             }
 
-            public async Task<Result<IList<ItemViewModel>>> Handle(GetUserItemsQuery req, CancellationToken cancellationToken)
+            public async Task<Result<IList<ItemViewModel>>> Handle(GetOwnedItemsQuery req, CancellationToken cancellationToken)
             {
-                var ownedItems = await _db.UserItems
+                var ownedItems = await _db.OwnedItems
                     .Where(oi => oi.UserId == req.UserId)
                     .Include(oi => oi.Item)
                     .Select(oi => oi.Item)

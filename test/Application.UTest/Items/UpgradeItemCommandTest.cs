@@ -42,7 +42,7 @@ namespace Crpg.Application.UTest.Items
             var user = new User
             {
                 Gold = 1000,
-                OwnedItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } }
+                OwnedItems = new List<OwnedItem> { new OwnedItem { ItemId = _items[itemIdx].Id } }
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -64,7 +64,7 @@ namespace Crpg.Application.UTest.Items
             var user = ArrangeDb.Users.Add(new User
             {
                 Gold = 0,
-                OwnedItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } }
+                OwnedItems = new List<OwnedItem> { new OwnedItem { ItemId = _items[itemIdx].Id } }
             });
             await ArrangeDb.SaveChangesAsync();
 
@@ -83,7 +83,7 @@ namespace Crpg.Application.UTest.Items
             var user = new User
             {
                 HeirloomPoints = 1,
-                OwnedItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } }
+                OwnedItems = new List<OwnedItem> { new OwnedItem { ItemId = _items[itemIdx].Id } }
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -105,7 +105,7 @@ namespace Crpg.Application.UTest.Items
             var user = ArrangeDb.Users.Add(new User
             {
                 HeirloomPoints = 0,
-                OwnedItems = new List<UserItem> { new UserItem { ItemId = _items[itemIdx].Id } }
+                OwnedItems = new List<OwnedItem> { new OwnedItem { ItemId = _items[itemIdx].Id } }
             });
             await ArrangeDb.SaveChangesAsync();
 
@@ -121,16 +121,16 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task ShouldReplaceCharacterItemWithUpgradeOne([Values(0, 1, 2, 3, 4, 5)] int itemIdx)
         {
-            var userItem = new UserItem { ItemId = _items[itemIdx].Id };
+            var ownedItem = new OwnedItem { ItemId = _items[itemIdx].Id };
             var user = new User
             {
                 Gold = 1000,
                 HeirloomPoints = 3,
-                OwnedItems = new List<UserItem> { userItem },
+                OwnedItems = new List<OwnedItem> { ownedItem },
                 Characters = new List<Character>
                 {
-                    new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon0 } } },
-                    new Character { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon1 } } },
+                    new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon0 } } },
+                    new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon1 } } },
                 },
             };
             ArrangeDb.Users.Add(user);

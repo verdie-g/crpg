@@ -54,7 +54,7 @@ namespace Crpg.Application.Users.Commands
                 user.AvatarFull = new Uri("https://via.placeholder.com/184x184");
                 user.DeletedAt = _dateTimeOffset.Now; // Deleted users are just marked with a DeletedAt != null
 
-                _db.UserItems.RemoveRange(user.OwnedItems);
+                _db.OwnedItems.RemoveRange(user.OwnedItems);
                 _db.Characters.RemoveRange(user.Characters);
                 await _db.SaveChangesAsync(cancellationToken);
                 _events.Raise(EventLevel.Info, $"{name} left ({user.Platform}#{user.PlatformUserId})", string.Empty, "user_deleted");

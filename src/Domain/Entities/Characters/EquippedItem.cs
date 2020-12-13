@@ -15,6 +15,6 @@ namespace Crpg.Domain.Entities.Characters
 
         public Character? Character { get; set; }
         public Item? Item { get; set; }
-        public UserItem? UserItem { get; set; }
+        public OwnedItem? OwnedItem { get; set; }
     }
 }

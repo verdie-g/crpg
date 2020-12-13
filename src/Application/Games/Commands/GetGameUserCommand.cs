@@ -193,7 +193,7 @@ namespace Crpg.Application.Games.Commands
                 var mbIdsWithSlot = DefaultItemSets[_random.Next(0, DefaultItemSets.Length)];
                 string[] itemMbIds = mbIdsWithSlot.Select(i => i.mbId).ToArray();
                 var items = await _db.Items
-                    .Include(i => i.UserItems.Where(ui => ui.UserId == user.Id))
+                    .Include(i => i.OwnedItems.Where(oi => oi.UserId == user.Id))
                     .Where(i => itemMbIds.Contains(i.TemplateMbId) && i.Rank == 0)
                     .ToDictionaryAsync(i => i.TemplateMbId);
 
@@ -206,20 +206,20 @@ namespace Crpg.Application.Games.Commands
                         continue;
                     }
 
-                    UserItem userItem;
-                    if (item.UserItems.Count != 0)
+                    OwnedItem ownedItem;
+                    if (item.OwnedItems.Count != 0)
                     {
-                        userItem = item.UserItems[0];
+                        ownedItem = item.OwnedItems[0];
                     }
                     else
                     {
-                        userItem = new UserItem
+                        ownedItem = new OwnedItem
                         {
                             ItemId = item.Id,
                             User = user,
                         };
 
-                        _db.UserItems.Add(userItem);
+                        _db.OwnedItems.Add(ownedItem);
                     }
 
                     // Don't use Add method to avoid adding the item twice.
@@ -227,7 +227,7 @@ namespace Crpg.Application.Games.Commands
                     {
                         Slot = slot,
                         Item = item,
-                        UserItem = userItem,
+                        OwnedItem = ownedItem,
                     };
 
                     equippedItems.Add(equippedItem);

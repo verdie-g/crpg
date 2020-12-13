@@ -58,7 +58,7 @@ namespace Crpg.Domain.Entities.Items
         public ItemWeaponComponent? TertiaryWeapon { get; set; }
 
         public Item? BaseItem { get; set; }
-        public IList<UserItem> UserItems { get; set; } = new List<UserItem>();
+        public IList<OwnedItem> OwnedItems { get; set; } = new List<OwnedItem>();
 
         public IEnumerable<ItemWeaponComponent> GetWeapons()
         {

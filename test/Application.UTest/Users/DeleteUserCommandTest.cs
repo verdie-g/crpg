@@ -26,12 +26,12 @@ namespace Crpg.Application.UTest.Users
             var user = ArrangeDb.Users.Add(new User
             {
                 Characters = new List<Character> { new Character { EquippedItems = new List<EquippedItem> { new EquippedItem() } } },
-                OwnedItems = new List<UserItem> { new UserItem { Item = new Item() } },
+                OwnedItems = new List<OwnedItem> { new OwnedItem { Item = new Item() } },
                 Bans = new List<Ban> { new Ban() }
             });
             await ArrangeDb.SaveChangesAsync();
 
-            // needs to be saved before UserItems[0] gets deleted
+            // needs to be saved before OwnedItems[0] gets deleted
             int itemId = user.Entity.OwnedItems[0].ItemId;
 
             var userService = Mock.Of<IUserService>();
@@ -46,7 +46,7 @@ namespace Crpg.Application.UTest.Users
             Assert.IsNotNull(dbUser.DeletedAt);
 
             Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.Characters.FirstAsync(c => c.Id == user.Entity.Characters[0].Id));
-            Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.UserItems.FirstAsync(oi =>
+            Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.OwnedItems.FirstAsync(oi =>
                 oi.UserId == user.Entity.Id && oi.ItemId == user.Entity.OwnedItems[0].ItemId));
             Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.EquippedItems.FirstAsync(ei =>
                 ei.UserId == user.Entity.Id));

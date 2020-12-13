@@ -1,13 +1,12 @@
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Items;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Crpg.Persistence.Configurations
 {
-    public class UserItemConfiguration : IEntityTypeConfiguration<UserItem>
+    public class OwnedItemConfiguration : IEntityTypeConfiguration<OwnedItem>
     {
-        public void Configure(EntityTypeBuilder<UserItem> builder)
+        public void Configure(EntityTypeBuilder<OwnedItem> builder)
         {
             builder.HasKey(t => new { t.UserId, t.ItemId });
 
@@ -16,7 +15,7 @@ namespace Crpg.Persistence.Configurations
                 .HasForeignKey(oi => oi.UserId);
 
             builder
-                .HasOne(oi => oi!.Item).WithMany(u => u!.UserItems)
+                .HasOne(oi => oi!.Item).WithMany(i => i!.OwnedItems)
                 .HasForeignKey(oi => oi.ItemId);
         }
     }
