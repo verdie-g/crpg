@@ -155,6 +155,22 @@ namespace Crpg.Application.System.Commands
                         continue;
                     }
 
+                    var ownedItems = await _db.OwnedItems
+                        .Include(oi => oi.User)
+                        .Include(oi => oi.Item)
+                        .Where(oi => oi.Item!.BaseItemId == dbItem.BaseItemId)
+                        .ToArrayAsync(cancellationToken);
+                    foreach (var ownedItem in ownedItems)
+                    {
+                        ownedItem.User!.Gold += ownedItem.Item!.Value;
+                        if (ownedItem.Item.Rank > 0)
+                        {
+                            ownedItem.User.HeirloomPoints += ownedItem.Item.Rank;
+                        }
+
+                        _db.OwnedItems.Remove(ownedItem);
+                    }
+
                     var itemsToDelete = dbItemsByMbId.Values.Where(i => i.BaseItemId == dbItem.BaseItemId).ToArray();
                     foreach (var i in itemsToDelete)
                     {

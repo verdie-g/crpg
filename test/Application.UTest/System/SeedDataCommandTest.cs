@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,7 +9,9 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Crpg.Application.System.Commands;
+using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
@@ -53,23 +56,59 @@ namespace Crpg.Application.UTest.System
         }
 
         [Test]
-        public async Task DeletedItemInSourceShouldBeDeletedInDatabase()
+        public async Task DeletedItemInSourceShouldBeDeletedInDatabaseAndUserReimbursed()
         {
             var itemsSource = new Mock<IItemsSource>();
             itemsSource.SetupSequence(s => s.LoadItems())
-                .ReturnsAsync(new[] { new ItemCreation { TemplateMbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() } })
+                .ReturnsAsync(new[] { new ItemCreation { TemplateMbId = "a", Type = ItemType.HeadArmor, Value = 500, Armor = new ItemArmorComponentViewModel() } })
                 .ReturnsAsync(Array.Empty<ItemCreation>());
 
             var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
                 CharacterService, ExperienceTable, ItemModifierService);
 
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
-            var items = await ArrangeDb.Items.ToArrayAsync();
+            var items = await AssertDb.Items.ToArrayAsync();
             Assert.AreEqual(7, items.Length);
 
+            // Users buy the new item and equip it.
+            var user0 = new User { Gold = 100, HeirloomPoints = 0 };
+            var ownedItemRank0ForUser0 = new OwnedItem { User = user0, ItemId = items.First(i => i.Rank == 0).Id };
+            var character0 = new Character
+            {
+                User = user0,
+                EquippedItems =
+                {
+                    new EquippedItem { OwnedItem = ownedItemRank0ForUser0, Slot = ItemSlot.Weapon0 },
+                    new EquippedItem { OwnedItem = ownedItemRank0ForUser0, Slot = ItemSlot.Weapon1 },
+                },
+            };
+
+            var user1 = new User { Gold = 200, HeirloomPoints = 0 };
+            var ownedItemRank0ForUser1 = new OwnedItem { User = user1, ItemId = items.First(i => i.Rank == 0).Id };
+            var ownedItemRank1ForUser1 = new OwnedItem { User = user1, ItemId = items.First(i => i.Rank == 1).Id };
+            var character1 = new Character
+            {
+                User = user1,
+                EquippedItems = { new EquippedItem { OwnedItem = ownedItemRank0ForUser1, Slot = ItemSlot.Weapon0 } },
+            };
+
+            var character2 = new Character
+            {
+                User = user1,
+                EquippedItems = { new EquippedItem { OwnedItem = ownedItemRank1ForUser1, Slot = ItemSlot.Weapon1 } },
+            };
+
+            ArrangeDb.Characters.AddRange(character0, character1, character2);
+            await ArrangeDb.SaveChangesAsync();
+
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
-            items = await ArrangeDb.Items.ToArrayAsync();
+            items = await AssertDb.Items.ToArrayAsync();
             Assert.AreEqual(0, items.Length);
+            var users = await AssertDb.Users.ToArrayAsync();
+            Assert.AreEqual(100 + 500, users[0].Gold);
+            Assert.AreEqual(0, users[0].HeirloomPoints);
+            Assert.Greater(users[1].Gold, 200 + 500 * 2);
+            Assert.AreEqual(1, users[1].HeirloomPoints);
         }
 
         [Test]
