@@ -101,6 +101,7 @@ namespace Crpg.GameMod.ItemsExporting
                 .ToArray();
             var crpgItems = mbItems.Select(MbToCrpgItem);
 
+            Directory.CreateDirectory(outputPath);
             SerializeCrpgItems(crpgItems, outputPath);
             return GenerateItemsThumbnail(mbItems, outputPath);
         }
@@ -118,7 +119,6 @@ namespace Crpg.GameMod.ItemsExporting
                 TemplateMbId = mbItem.StringId,
                 Name = mbItem.Name.ToString(),
                 Type = MbToCrpgItemType(mbItem.Type),
-                Value = mbItem.Value,
                 Weight = mbItem.Weight,
             };
 
@@ -167,6 +167,7 @@ namespace Crpg.GameMod.ItemsExporting
                 }).ToArray();
             }
 
+            crpgItem.Value = CrpgItemValueModel.CalculateValue(crpgItem);
             return crpgItem;
         }
 
@@ -193,7 +194,6 @@ namespace Crpg.GameMod.ItemsExporting
         {
             var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
             game.Initialize();
-            ReflectionHelper.SetProperty(game.BasicModels, nameof(BasicGameModels.ItemValueModel), new CrpgItemValueModel());
 
             var items = Enumerable.Empty<ItemObject>();
             foreach (string path in paths)
@@ -210,7 +210,6 @@ namespace Crpg.GameMod.ItemsExporting
                     .Cast<XmlNode>()
                     .Select(itemNode =>
                     {
-                        itemNode.Attributes.Remove(itemNode.Attributes["value"]); // Force computation of the value.
                         var item = new ItemObject();
                         item.Deserialize(game.ObjectManager, itemNode);
                         return item;
