@@ -30,6 +30,9 @@ namespace Crpg.GameMod
             }, false));
             #endif
 
+            // Uncomment to start watching UI changes.
+            // UIResourceManager.UIResourceDepot.StartWatchingChangesInDepot();
+
             /*
             Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode());
 
@@ -119,6 +122,8 @@ namespace Crpg.GameMod
         protected override void OnApplicationTick(float delta)
         {
             base.OnApplicationTick(delta);
+            // Uncomment to hot reload UI after changes.
+            // UIResourceManager.UIResourceDepot.CheckForChanges();
         }
 
         /// <summary>
