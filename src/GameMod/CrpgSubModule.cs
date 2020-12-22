@@ -1,7 +1,6 @@
-﻿using System.IO;
-using Crpg.GameMod.DefendTheVirgin;
-using Crpg.GameMod.ItemsExporting;
+﻿using Crpg.GameMod.DefendTheVirgin;
 using TaleWorlds.Core;
+using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 
@@ -16,6 +15,10 @@ namespace Crpg.GameMod
         protected override void OnSubModuleLoad()
         {
             base.OnSubModuleLoad();
+
+            // This load the sprites from the Assets folder. Calling this manually is surprising but it is done like
+            // that in TaleWorlds.MountAndBlade.GauntletUI.GauntletUISubModule.OnSubModuleLoad.
+            UIResourceManager.SpriteData.SpriteCategories["ui_crpg_experience_circle"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
 
             Module.CurrentModule.AddInitialStateOption(new InitialStateOption("DefendTheVirgin", new TextObject("{=4gpGhbeJ}Defend The Virgin"),
                 4567, () => MBGameManager.StartNewGame(new DefendTheVirginGameManager()), false));

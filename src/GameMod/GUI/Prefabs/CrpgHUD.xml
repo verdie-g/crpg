@@ -1,7 +1,21 @@
-﻿<Window>
-<Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
-    <Children>
-        <TextWidget Text="x1" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="50" SuggestedHeight="50" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="250" MarginBottom="100" Brush="ScoreboardDefaultFontBrush" Brush.TextVerticalAlignment="Center" Brush.FontSize="26"/>
-    </Children>
-</Widget>
-</Window>
+﻿<Prefab>
+  <Constants>
+    <Constant Name="Mission.MainAgentHUD.HeroHealthBar.Frame.Height" BrushName="Mission.MainAgentHUD.HeroHealthBar.Frame"
+              BrushLayer="Default" BrushValueType="Height" />
+  </Constants>
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+        <Widget Id="Canvas" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.HeroHealthBar.Frame.Height"
+              SuggestedHeight="!Mission.MainAgentHUD.HeroHealthBar.Frame.Height" HorizontalAlignment="Right"
+              VerticalAlignment="Bottom" MarginBottom="98" MarginRight="264" Sprite="crpg_experience_circle_10">
+          <Children>
+            <TextWidget Text="x1" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center"
+                        VerticalAlignment="Center" Brush="AgentAmmoCount.Text" Brush.TextVerticalAlignment="Center" Brush.FontSize="26"
+                        Brush.FontColor="#53962AFF" />
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>
