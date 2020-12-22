@@ -28,6 +28,7 @@ namespace Crpg.Application
                 .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>))
                 .AddSingleton(typeof(RequestMetrics<>))
                 .AddSingleton(itemModifierService)
+                .AddSingleton<ItemValueService>()
                 .AddSingleton<IExperienceTable>(experienceTable)
                 .AddSingleton<ICharacterService>(characterService)
                 .AddSingleton<IUserService>(userService)

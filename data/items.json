@@ -2,7 +2,6 @@
   {
     "templateMbId": "adarga",
     "name": "Adarga",
-    "value": 3854,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -31,7 +30,6 @@
   {
     "templateMbId": "aketon",
     "name": "Western Aketon",
-    "value": 1247,
     "type": "BodyArmor",
     "weight": 12.4,
     "armor": {
@@ -45,7 +43,6 @@
   {
     "templateMbId": "ambassador_sword_t3",
     "name": "The Ambassador",
-    "value": 19382,
     "type": "OneHandedWeapon",
     "weight": 1.69,
     "weapons": [
@@ -73,7 +70,6 @@
   {
     "templateMbId": "arming_cap",
     "name": "Padded Coif",
-    "value": 2221,
     "type": "HeadArmor",
     "weight": 0.2,
     "armor": {
@@ -87,7 +83,6 @@
   {
     "templateMbId": "arming_coif",
     "name": "Leather Coif",
-    "value": 1390,
     "type": "HeadArmor",
     "weight": 0.3,
     "armor": {
@@ -101,7 +96,6 @@
   {
     "templateMbId": "armored_baggy_trunks",
     "name": "Armored Baggy Trunks",
-    "value": 347,
     "type": "BodyArmor",
     "weight": 0.3,
     "armor": {
@@ -115,7 +109,6 @@
   {
     "templateMbId": "armored_bearskin",
     "name": "Armored Bearskin",
-    "value": 2711,
     "type": "ShoulderArmor",
     "weight": 7.0,
     "armor": {
@@ -129,7 +122,6 @@
   {
     "templateMbId": "armwraps",
     "name": "Armwraps",
-    "value": 158,
     "type": "HandArmor",
     "weight": 0.2,
     "armor": {
@@ -143,7 +135,6 @@
   {
     "templateMbId": "arrow_emp_1_a",
     "name": "Imperial Arrows",
-    "value": 2930,
     "type": "Arrows",
     "weight": 0.05,
     "weapons": [
@@ -173,7 +164,6 @@
   {
     "templateMbId": "aserai_2haxe_1_t3",
     "name": "Southern Broad Two Handed Axe",
-    "value": 23294,
     "type": "TwoHandedWeapon",
     "weight": 1.52,
     "weapons": [
@@ -204,7 +194,6 @@
   {
     "templateMbId": "aserai_2haxe_2_t4",
     "name": "Executioners Axe",
-    "value": 28383,
     "type": "TwoHandedWeapon",
     "weight": 1.88,
     "weapons": [
@@ -235,7 +224,6 @@
   {
     "templateMbId": "aserai_2haxe_3_t5",
     "name": "Heavy Executioners Axe",
-    "value": 37500,
     "type": "TwoHandedWeapon",
     "weight": 1.49,
     "weapons": [
@@ -266,7 +254,6 @@
   {
     "templateMbId": "aserai_archer_armor",
     "name": "Southern Archer Armor",
-    "value": 8474,
     "type": "BodyArmor",
     "weight": 9.3,
     "armor": {
@@ -280,7 +267,6 @@
   {
     "templateMbId": "aserai_axe_1_t2",
     "name": "Wood Splitter Axe",
-    "value": 11653,
     "type": "OneHandedWeapon",
     "weight": 1.15,
     "weapons": [
@@ -309,7 +295,6 @@
   {
     "templateMbId": "aserai_axe_2_t2",
     "name": "Bamboo Handled Ascia Axe",
-    "value": 11610,
     "type": "OneHandedWeapon",
     "weight": 1.02,
     "weapons": [
@@ -338,7 +323,6 @@
   {
     "templateMbId": "aserai_axe_2_t2_blunt",
     "name": "Bamboo Handled Sparing Axe",
-    "value": 19444,
     "type": "OneHandedWeapon",
     "weight": 1.02,
     "weapons": [
@@ -367,7 +351,6 @@
   {
     "templateMbId": "aserai_civil_a",
     "name": "Southern Robe with Waistband",
-    "value": 914,
     "type": "BodyArmor",
     "weight": 0.8,
     "armor": {
@@ -381,7 +364,6 @@
   {
     "templateMbId": "aserai_civil_b",
     "name": "Southern Robe with Leather Belt",
-    "value": 410,
     "type": "BodyArmor",
     "weight": 1.1,
     "armor": {
@@ -395,7 +377,6 @@
   {
     "templateMbId": "aserai_civil_c",
     "name": "Colored Southern Robe",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 0.9,
     "armor": {
@@ -409,7 +390,6 @@
   {
     "templateMbId": "aserai_civil_c_head",
     "name": "Kefiyyeh With Silken Band",
-    "value": 184,
     "type": "HeadArmor",
     "weight": 0.1,
     "armor": {
@@ -423,7 +403,6 @@
   {
     "templateMbId": "aserai_civil_d",
     "name": "Colored Bisht",
-    "value": 347,
     "type": "BodyArmor",
     "weight": 1.0,
     "armor": {
@@ -437,7 +416,6 @@
   {
     "templateMbId": "aserai_civil_d_hscarf",
     "name": "Colored Turban",
-    "value": 415,
     "type": "HeadArmor",
     "weight": 0.1,
     "armor": {
@@ -451,7 +429,6 @@
   {
     "templateMbId": "aserai_civil_e",
     "name": "Thawb",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 1.1,
     "armor": {
@@ -465,7 +442,6 @@
   {
     "templateMbId": "aserai_civil_e_hscarf",
     "name": "Brown Kefiyyeh",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.1,
     "armor": {
@@ -479,7 +455,6 @@
   {
     "templateMbId": "aserai_civil_f",
     "name": "Southern Peasant Robe",
-    "value": 347,
     "type": "BodyArmor",
     "weight": 1.1,
     "armor": {
@@ -493,7 +468,6 @@
   {
     "templateMbId": "aserai_civil_f_cape",
     "name": "Southern Leather Hood",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.1,
     "armor": {
@@ -507,7 +481,6 @@
   {
     "templateMbId": "aserai_civil_hscarf_a",
     "name": "Kefiyyeh with Brown Band",
-    "value": 184,
     "type": "HeadArmor",
     "weight": 0.1,
     "armor": {
@@ -521,7 +494,6 @@
   {
     "templateMbId": "aserai_civil_hscarf_b",
     "name": "Roughspun Kefiyyeh",
-    "value": 415,
     "type": "HeadArmor",
     "weight": 0.1,
     "armor": {
@@ -535,7 +507,6 @@
   {
     "templateMbId": "aserai_female_civil_a",
     "name": "Southern Dress With Robes",
-    "value": 479,
     "type": "BodyArmor",
     "weight": 0.9,
     "armor": {
@@ -549,7 +520,6 @@
   {
     "templateMbId": "aserai_female_civil_b",
     "name": "Southern Dress with Waistband",
-    "value": 194,
     "type": "BodyArmor",
     "weight": 0.8,
     "armor": {
@@ -563,7 +533,6 @@
   {
     "templateMbId": "aserai_female_civil_hscarf",
     "name": "Desert Headscarf",
-    "value": 248,
     "type": "HeadArmor",
     "weight": 0.4,
     "armor": {
@@ -577,7 +546,6 @@
   {
     "templateMbId": "aserai_female_civil_hscarf_b",
     "name": "Southern Half Headscarf",
-    "value": 248,
     "type": "HeadArmor",
     "weight": 0.4,
     "armor": {
@@ -591,7 +559,6 @@
   {
     "templateMbId": "aserai_horse",
     "name": "Desert Horse",
-    "value": 22660,
     "type": "Mount",
     "weight": 431.0,
     "mount": {
@@ -606,7 +573,6 @@
   {
     "templateMbId": "aserai_horseman_armor",
     "name": "Southern Horseman Armor",
-    "value": 1130,
     "type": "BodyArmor",
     "weight": 4.4,
     "armor": {
@@ -620,7 +586,6 @@
   {
     "templateMbId": "aserai_horseman_shoulder",
     "name": "Southern Ringmail Shoulder",
-    "value": 1344,
     "type": "ShoulderArmor",
     "weight": 2.5,
     "armor": {
@@ -634,7 +599,6 @@
   {
     "templateMbId": "aserai_lance_1_t5",
     "name": "Mamluke Lance",
-    "value": 8652,
     "type": "Polearm",
     "weight": 1.85,
     "weapons": [
@@ -705,7 +669,6 @@
   {
     "templateMbId": "aserai_mace_1_t2",
     "name": "Southern Militia Mace",
-    "value": 9640,
     "type": "OneHandedWeapon",
     "weight": 1.62,
     "weapons": [
@@ -733,7 +696,6 @@
   {
     "templateMbId": "aserai_mace_2_t2",
     "name": "Southern Light Mace",
-    "value": 11445,
     "type": "OneHandedWeapon",
     "weight": 1.42,
     "weapons": [
@@ -761,7 +723,6 @@
   {
     "templateMbId": "aserai_mace_3_t3",
     "name": "Southern Heavy Mace",
-    "value": 15384,
     "type": "OneHandedWeapon",
     "weight": 1.86,
     "weapons": [
@@ -789,7 +750,6 @@
   {
     "templateMbId": "aserai_mace_4_t4",
     "name": "Spiralled Mace",
-    "value": 19841,
     "type": "OneHandedWeapon",
     "weight": 2.05,
     "weapons": [
@@ -817,7 +777,6 @@
   {
     "templateMbId": "aserai_noble_sword_1_t5",
     "name": "Decorated Kaskara",
-    "value": 25455,
     "type": "OneHandedWeapon",
     "weight": 1.73,
     "weapons": [
@@ -845,7 +804,6 @@
   {
     "templateMbId": "aserai_noble_sword_2_t5",
     "name": "Decorated Long Scimitar",
-    "value": 25636,
     "type": "OneHandedWeapon",
     "weight": 1.78,
     "weapons": [
@@ -873,7 +831,6 @@
   {
     "templateMbId": "aserai_noble_sword_3_t5",
     "name": "Decorated Scimitar With Wide Grip",
-    "value": 25492,
     "type": "OneHandedWeapon",
     "weight": 1.73,
     "weapons": [
@@ -901,7 +858,6 @@
   {
     "templateMbId": "aserai_noble_sword_4_t5",
     "name": "Engraved Angular Kaskara",
-    "value": 21653,
     "type": "OneHandedWeapon",
     "weight": 1.63,
     "weapons": [
@@ -929,7 +885,6 @@
   {
     "templateMbId": "aserai_robe_c_chain",
     "name": "Southern Robe With Mail",
-    "value": 7547,
     "type": "BodyArmor",
     "weight": 8.2,
     "armor": {
@@ -943,7 +898,6 @@
   {
     "templateMbId": "aserai_sword_1_t2",
     "name": "Iron Flyssa",
-    "value": 13898,
     "type": "OneHandedWeapon",
     "weight": 1.53,
     "weapons": [
@@ -971,7 +925,6 @@
   {
     "templateMbId": "aserai_sword_1_t2_blunt",
     "name": "Iron Sparing Flyssa",
-    "value": 23297,
     "type": "OneHandedWeapon",
     "weight": 1.53,
     "weapons": [
@@ -999,7 +952,6 @@
   {
     "templateMbId": "aserai_sword_2_t2",
     "name": "Iron Scimitar",
-    "value": 15571,
     "type": "OneHandedWeapon",
     "weight": 1.38,
     "weapons": [
@@ -1027,7 +979,6 @@
   {
     "templateMbId": "aserai_sword_2_t2_blunt",
     "name": "Iron Sparing Scimitar",
-    "value": 26115,
     "type": "OneHandedWeapon",
     "weight": 1.38,
     "weapons": [
@@ -1055,7 +1006,6 @@
   {
     "templateMbId": "aserai_sword_3_t3",
     "name": "Slightly Ridged Flyssa",
-    "value": 19761,
     "type": "OneHandedWeapon",
     "weight": 1.45,
     "weapons": [
@@ -1083,7 +1033,6 @@
   {
     "templateMbId": "aserai_sword_4_t4",
     "name": "Fine Steel Long Kaskara",
-    "value": 18807,
     "type": "OneHandedWeapon",
     "weight": 1.84,
     "weapons": [
@@ -1111,7 +1060,6 @@
   {
     "templateMbId": "aserai_sword_5_t4",
     "name": "Long Fine Steel Scimitar",
-    "value": 21771,
     "type": "OneHandedWeapon",
     "weight": 1.7,
     "weapons": [
@@ -1139,7 +1087,6 @@
   {
     "templateMbId": "aserai_sword_6_t4",
     "name": "Narrow Fine Steel Kaskara",
-    "value": 22766,
     "type": "OneHandedWeapon",
     "weight": 1.6,
     "weapons": [
@@ -1167,7 +1114,6 @@
   {
     "templateMbId": "aserai_sword_7_t5",
     "name": "Thamaskene Steel Kaskara",
-    "value": 24637,
     "type": "OneHandedWeapon",
     "weight": 1.43,
     "weapons": [
@@ -1195,7 +1141,6 @@
   {
     "templateMbId": "aserai_tunic_waistcoat",
     "name": "Southern Tunic Waistcoat",
-    "value": 635,
     "type": "BodyArmor",
     "weight": 0.8,
     "armor": {
@@ -1209,7 +1154,6 @@
   {
     "templateMbId": "aserai_villager_female_dress",
     "name": "Southern Villager Dress",
-    "value": 122,
     "type": "BodyArmor",
     "weight": 0.5,
     "armor": {
@@ -1223,7 +1167,6 @@
   {
     "templateMbId": "aserai_villager_female_headdress",
     "name": "Southern Rural Headdress",
-    "value": 131,
     "type": "HeadArmor",
     "weight": 0.2,
     "armor": {
@@ -1237,7 +1180,6 @@
   {
     "templateMbId": "aseran_village_harness",
     "name": "Southern Common Harness",
-    "value": 554,
     "type": "MountHarness",
     "weight": 6.1,
     "armor": {
@@ -1251,7 +1193,6 @@
   {
     "templateMbId": "baggy_trunks",
     "name": "Baggy Trunks",
-    "value": 194,
     "type": "BodyArmor",
     "weight": 0.2,
     "armor": {
@@ -1265,7 +1206,6 @@
   {
     "templateMbId": "bamboo_axe_t4",
     "name": "Bamboo Axe",
-    "value": 14934,
     "type": "OneHandedWeapon",
     "weight": 1.21,
     "weapons": [
@@ -1294,7 +1234,6 @@
   {
     "templateMbId": "banded_leather_over_mail",
     "name": "Banded Leather Over Mail",
-    "value": 6959,
     "type": "BodyArmor",
     "weight": 8.6,
     "armor": {
@@ -1308,7 +1247,6 @@
   {
     "templateMbId": "bandit_envelope_dress_v1",
     "name": "Commoners Tunic",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -1322,7 +1260,6 @@
   {
     "templateMbId": "bandit_envelope_dress_v2",
     "name": "Sleeveless Enveloped Padded Garments",
-    "value": 122,
     "type": "BodyArmor",
     "weight": 0.5,
     "armor": {
@@ -1336,7 +1273,6 @@
   {
     "templateMbId": "bandit_fur_a",
     "name": "Old Fur Armor",
-    "value": 1130,
     "type": "BodyArmor",
     "weight": 0.9,
     "armor": {
@@ -1350,7 +1286,6 @@
   {
     "templateMbId": "bandit_fur_b",
     "name": "Old Fur Coat",
-    "value": 914,
     "type": "BodyArmor",
     "weight": 1.0,
     "armor": {
@@ -1364,7 +1299,6 @@
   {
     "templateMbId": "bandit_gambeson",
     "name": "Rugged Gambeson",
-    "value": 1922,
     "type": "BodyArmor",
     "weight": 0.9,
     "armor": {
@@ -1378,7 +1312,6 @@
   {
     "templateMbId": "bandit_leather_water_flask",
     "name": "Commoners Shirt",
-    "value": 239,
     "type": "BodyArmor",
     "weight": 0.5,
     "armor": {
@@ -1392,7 +1325,6 @@
   {
     "templateMbId": "bandit_saddle_desert",
     "name": "Rugged Desert Saddle",
-    "value": 347,
     "type": "MountHarness",
     "weight": 7.0,
     "armor": {
@@ -1406,7 +1338,6 @@
   {
     "templateMbId": "bandit_saddle_highland",
     "name": "Rugged Highland Saddle",
-    "value": 410,
     "type": "MountHarness",
     "weight": 8.0,
     "armor": {
@@ -1420,7 +1351,6 @@
   {
     "templateMbId": "bandit_saddle_steppe",
     "name": "Rugged Saddle",
-    "value": 290,
     "type": "MountHarness",
     "weight": 5.0,
     "armor": {
@@ -1434,7 +1364,6 @@
   {
     "templateMbId": "banner_big",
     "name": "Big Banner",
-    "value": 50,
     "type": "Banner",
     "weight": 4.0,
     "weapons": [
@@ -1460,7 +1389,6 @@
   {
     "templateMbId": "banner_mid",
     "name": "Triangle Banner",
-    "value": 50,
     "type": "Banner",
     "weight": 4.0,
     "weapons": [
@@ -1486,7 +1414,6 @@
   {
     "templateMbId": "barbed_arrows",
     "name": "Barbed Arrows",
-    "value": 2930,
     "type": "Arrows",
     "weight": 0.05,
     "weapons": [
@@ -1516,7 +1443,6 @@
   {
     "templateMbId": "basic_imperial_leather_armor",
     "name": "Imperial Simple Leather Armor",
-    "value": 3722,
     "type": "BodyArmor",
     "weight": 3.1,
     "armor": {
@@ -1530,7 +1456,6 @@
   {
     "templateMbId": "bastard_sword_t2",
     "name": "Simple Bastard Sword",
-    "value": 12773,
     "type": "OneHandedWeapon",
     "weight": 1.25,
     "weapons": [
@@ -1558,7 +1483,6 @@
   {
     "templateMbId": "battania_2haxe_1_t2",
     "name": "Square Bit Two Handed Axe",
-    "value": 15205,
     "type": "TwoHandedWeapon",
     "weight": 1.4,
     "weapons": [
@@ -1589,7 +1513,6 @@
   {
     "templateMbId": "battania_2haxe_1_t2_blunt",
     "name": "Sparing Two Handed Axe",
-    "value": 25499,
     "type": "TwoHandedWeapon",
     "weight": 1.4,
     "weapons": [
@@ -1620,7 +1543,6 @@
   {
     "templateMbId": "battania_2hsword_1_t2",
     "name": "Iron Broadsword",
-    "value": 27078,
     "type": "TwoHandedWeapon",
     "weight": 1.99,
     "weapons": [
@@ -1649,7 +1571,6 @@
   {
     "templateMbId": "battania_2hsword_1_t2_blunt",
     "name": "Iron Sparing Broadsword",
-    "value": 45507,
     "type": "TwoHandedWeapon",
     "weight": 1.99,
     "weapons": [
@@ -1678,7 +1599,6 @@
   {
     "templateMbId": "battania_2hsword_2_t3",
     "name": "Highland Broadsword",
-    "value": 32797,
     "type": "TwoHandedWeapon",
     "weight": 1.85,
     "weapons": [
@@ -1726,7 +1646,6 @@
   {
     "templateMbId": "battania_2hsword_3_t3",
     "name": "Wide Fullered Northern Greatsword",
-    "value": 36411,
     "type": "TwoHandedWeapon",
     "weight": 2.08,
     "weapons": [
@@ -1755,7 +1674,6 @@
   {
     "templateMbId": "battania_2hsword_4_t4",
     "name": "Falx",
-    "value": 63650,
     "type": "TwoHandedWeapon",
     "weight": 1.52,
     "weapons": [
@@ -1805,7 +1723,6 @@
   {
     "templateMbId": "battania_2hsword_5_t4",
     "name": "Highland Fine Two Handed Sword",
-    "value": 36488,
     "type": "TwoHandedWeapon",
     "weight": 1.63,
     "weapons": [
@@ -1853,7 +1770,6 @@
   {
     "templateMbId": "battania_2hsword_5_t5",
     "name": "Battanian Mountain Blade",
-    "value": 40619,
     "type": "TwoHandedWeapon",
     "weight": 1.22,
     "weapons": [
@@ -1901,7 +1817,6 @@
   {
     "templateMbId": "battania_axe_1_t2",
     "name": "Norse Hatchet",
-    "value": 12530,
     "type": "OneHandedWeapon",
     "weight": 1.09,
     "weapons": [
@@ -1930,7 +1845,6 @@
   {
     "templateMbId": "battania_axe_2_t4",
     "name": "One Handed Bearded Axe",
-    "value": 16817,
     "type": "OneHandedWeapon",
     "weight": 1.03,
     "weapons": [
@@ -1959,7 +1873,6 @@
   {
     "templateMbId": "battania_axe_3_t5",
     "name": "Round Bitted Fine Steel Hatchet",
-    "value": 21039,
     "type": "OneHandedWeapon",
     "weight": 1.05,
     "weapons": [
@@ -1988,7 +1901,6 @@
   {
     "templateMbId": "battania_civil_a",
     "name": "Highland Tunic",
-    "value": 479,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -2002,7 +1914,6 @@
   {
     "templateMbId": "battania_civil_b",
     "name": "Highland Villager Tunic",
-    "value": 914,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -2016,7 +1927,6 @@
   {
     "templateMbId": "battania_civil_c",
     "name": "Highland Townsmans Tunic",
-    "value": 1130,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -2030,7 +1940,6 @@
   {
     "templateMbId": "battania_civil_cape",
     "name": "Highland Cape",
-    "value": 464,
     "type": "ShoulderArmor",
     "weight": 4.5,
     "armor": {
@@ -2044,7 +1953,6 @@
   {
     "templateMbId": "battania_civil_hood",
     "name": "Highland Hood",
-    "value": 517,
     "type": "HeadArmor",
     "weight": 0.5,
     "armor": {
@@ -2058,7 +1966,6 @@
   {
     "templateMbId": "battania_cloak",
     "name": "Highland Cloak",
-    "value": 110,
     "type": "ShoulderArmor",
     "weight": 0.5,
     "armor": {
@@ -2072,7 +1979,6 @@
   {
     "templateMbId": "battania_cloak_furr",
     "name": "Highland Furred Cloak",
-    "value": 1344,
     "type": "ShoulderArmor",
     "weight": 1.5,
     "armor": {
@@ -2086,7 +1992,6 @@
   {
     "templateMbId": "battania_dress_a",
     "name": "Highland Peasant Dress",
-    "value": 554,
     "type": "BodyArmor",
     "weight": 0.9,
     "armor": {
@@ -2100,7 +2005,6 @@
   {
     "templateMbId": "battania_dress_b",
     "name": "Highland Dress",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 0.8,
     "armor": {
@@ -2114,7 +2018,6 @@
   {
     "templateMbId": "battania_dress_c",
     "name": "Highland Plaid Dress",
-    "value": 410,
     "type": "BodyArmor",
     "weight": 0.7,
     "armor": {
@@ -2128,7 +2031,6 @@
   {
     "templateMbId": "battania_female_civil_b",
     "name": "Highland Villager Dress",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 0.7,
     "armor": {
@@ -2142,7 +2044,6 @@
   {
     "templateMbId": "battania_fur_boots",
     "name": "Highland Fur Boots",
-    "value": 384,
     "type": "LegArmor",
     "weight": 1.5,
     "armor": {
@@ -2156,7 +2057,6 @@
   {
     "templateMbId": "battania_fur_helmet",
     "name": "Highland Fur Helmet",
-    "value": 2711,
     "type": "HeadArmor",
     "weight": 1.3,
     "armor": {
@@ -2170,7 +2070,6 @@
   {
     "templateMbId": "battania_horse",
     "name": "Battanian Pony",
-    "value": 20873,
     "type": "Mount",
     "weight": 462.0,
     "mount": {
@@ -2185,7 +2084,6 @@
   {
     "templateMbId": "battania_horse_harness",
     "name": "Battania Horse Harness",
-    "value": 815,
     "type": "MountHarness",
     "weight": 10.3,
     "armor": {
@@ -2199,7 +2097,6 @@
   {
     "templateMbId": "battania_horse_harness_halfscaled",
     "name": "Highland Half Scaled Harness",
-    "value": 5090,
     "type": "MountHarness",
     "weight": 15.0,
     "armor": {
@@ -2213,7 +2110,6 @@
   {
     "templateMbId": "battania_horse_harness_scaled",
     "name": "Highland Scaled Harness",
-    "value": 7850,
     "type": "MountHarness",
     "weight": 20.6,
     "armor": {
@@ -2227,7 +2123,6 @@
   {
     "templateMbId": "battania_large_shield_a",
     "name": "Bronze Reinforced Highland Large Shield",
-    "value": 15372,
     "type": "Shield",
     "weight": 3.5,
     "weapons": [
@@ -2256,7 +2151,6 @@
   {
     "templateMbId": "battania_large_shield_b",
     "name": "Iron Reinforced Highland Large Shield",
-    "value": 18447,
     "type": "Shield",
     "weight": 3.5,
     "weapons": [
@@ -2285,7 +2179,6 @@
   {
     "templateMbId": "battania_large_shield_c",
     "name": "Highland Large Shield",
-    "value": 13115,
     "type": "Shield",
     "weight": 3.5,
     "weapons": [
@@ -2314,7 +2207,6 @@
   {
     "templateMbId": "battania_leather_boots",
     "name": "Highland Leather Boots",
-    "value": 290,
     "type": "LegArmor",
     "weight": 1.0,
     "armor": {
@@ -2328,7 +2220,6 @@
   {
     "templateMbId": "battania_mace_1_t2",
     "name": "Knobbed Club",
-    "value": 9782,
     "type": "OneHandedWeapon",
     "weight": 1.74,
     "weapons": [
@@ -2356,7 +2247,6 @@
   {
     "templateMbId": "battania_mace_2_t2",
     "name": "Highland Spiked Club",
-    "value": 11015,
     "type": "OneHandedWeapon",
     "weight": 1.42,
     "weapons": [
@@ -2384,7 +2274,6 @@
   {
     "templateMbId": "battania_mercenary_armor",
     "name": "Highland Mercenary Armor",
-    "value": 20219,
     "type": "BodyArmor",
     "weight": 11.6,
     "armor": {
@@ -2398,7 +2287,6 @@
   {
     "templateMbId": "battania_noble_armor",
     "name": "Highland Noble Armor",
-    "value": 20714,
     "type": "BodyArmor",
     "weight": 11.6,
     "armor": {
@@ -2412,7 +2300,6 @@
   {
     "templateMbId": "battania_noble_bracers",
     "name": "Highland Noble Bracers",
-    "value": 3042,
     "type": "HandArmor",
     "weight": 0.6,
     "armor": {
@@ -2426,7 +2313,6 @@
   {
     "templateMbId": "battania_noble_sword_1_t5",
     "name": "Engraved Backsword",
-    "value": 34396,
     "type": "OneHandedWeapon",
     "weight": 1.77,
     "weapons": [
@@ -2455,7 +2341,6 @@
   {
     "templateMbId": "battania_noble_sword_2_t5",
     "name": "Highland Fine Steel Blade",
-    "value": 20067,
     "type": "OneHandedWeapon",
     "weight": 1.54,
     "weapons": [
@@ -2483,7 +2368,6 @@
   {
     "templateMbId": "battania_noble_sword_3_t5",
     "name": "Decorated Broadsword",
-    "value": 35082,
     "type": "OneHandedWeapon",
     "weight": 1.34,
     "weapons": [
@@ -2512,7 +2396,6 @@
   {
     "templateMbId": "battania_polearm_1_t5",
     "name": "Rhomphalia",
-    "value": 67958,
     "type": "Polearm",
     "weight": 1.2,
     "weapons": [
@@ -2543,7 +2426,6 @@
   {
     "templateMbId": "battania_shoulder_furr",
     "name": "Highland Shoulder Fur",
-    "value": 934,
     "type": "ShoulderArmor",
     "weight": 1.6,
     "armor": {
@@ -2557,7 +2439,6 @@
   {
     "templateMbId": "battania_shoulder_strap",
     "name": "Highland Shoulder Straps",
-    "value": 248,
     "type": "ShoulderArmor",
     "weight": 1.0,
     "armor": {
@@ -2571,7 +2452,6 @@
   {
     "templateMbId": "battania_shoulder_strap_cloak",
     "name": "Highland Cloak with Shoulder Straps",
-    "value": 601,
     "type": "ShoulderArmor",
     "weight": 1.3,
     "armor": {
@@ -2585,7 +2465,6 @@
   {
     "templateMbId": "battania_sword_1_t2",
     "name": "Ridged Iron Broadsword",
-    "value": 11992,
     "type": "OneHandedWeapon",
     "weight": 2.09,
     "weapons": [
@@ -2613,7 +2492,6 @@
   {
     "templateMbId": "battania_sword_2_t3",
     "name": "Broad Ridged Shortsword",
-    "value": 15337,
     "type": "OneHandedWeapon",
     "weight": 1.35,
     "weapons": [
@@ -2641,7 +2519,6 @@
   {
     "templateMbId": "battania_sword_3_t3",
     "name": "Broadsword",
-    "value": 16586,
     "type": "OneHandedWeapon",
     "weight": 1.75,
     "weapons": [
@@ -2669,7 +2546,6 @@
   {
     "templateMbId": "battania_sword_4_t4",
     "name": "Fine Steel Cavalry Broadsword",
-    "value": 21061,
     "type": "OneHandedWeapon",
     "weight": 1.49,
     "weapons": [
@@ -2697,7 +2573,6 @@
   {
     "templateMbId": "battania_sword_5_t5",
     "name": "Highland Broad Blade",
-    "value": 23430,
     "type": "OneHandedWeapon",
     "weight": 1.27,
     "weapons": [
@@ -2725,7 +2600,6 @@
   {
     "templateMbId": "battania_targe_b",
     "name": "Targe",
-    "value": 12516,
     "type": "Shield",
     "weight": 2.5,
     "weapons": [
@@ -2754,7 +2628,6 @@
   {
     "templateMbId": "battania_warlord_armor",
     "name": "Highland Warlord Armor",
-    "value": 15599,
     "type": "BodyArmor",
     "weight": 12.4,
     "armor": {
@@ -2768,7 +2641,6 @@
   {
     "templateMbId": "battania_warlord_boots",
     "name": "Highland Warlord Boots",
-    "value": 5491,
     "type": "LegArmor",
     "weight": 2.6,
     "armor": {
@@ -2782,7 +2654,6 @@
   {
     "templateMbId": "battania_warlord_bracers",
     "name": "Highland Warlord Bracers",
-    "value": 5723,
     "type": "HandArmor",
     "weight": 1.5,
     "armor": {
@@ -2796,7 +2667,6 @@
   {
     "templateMbId": "battania_warlord_pauldrons",
     "name": "Highland Warlord Pauldrons",
-    "value": 9122,
     "type": "ShoulderArmor",
     "weight": 4.0,
     "armor": {
@@ -2810,7 +2680,6 @@
   {
     "templateMbId": "battania_woodland_boots",
     "name": "Woodland Boots",
-    "value": 384,
     "type": "LegArmor",
     "weight": 1.0,
     "armor": {
@@ -2824,7 +2693,6 @@
   {
     "templateMbId": "battania_woodland_chainmail",
     "name": "Woodland Chainmail",
-    "value": 9122,
     "type": "BodyArmor",
     "weight": 10.3,
     "armor": {
@@ -2838,7 +2706,6 @@
   {
     "templateMbId": "battania_woodland_cloak",
     "name": "Battania Woodland Cloak",
-    "value": 248,
     "type": "ShoulderArmor",
     "weight": 1.4,
     "armor": {
@@ -2852,7 +2719,6 @@
   {
     "templateMbId": "battania_woodland_outfit",
     "name": "Woodland Garments",
-    "value": 1922,
     "type": "BodyArmor",
     "weight": 1.2,
     "armor": {
@@ -2866,7 +2732,6 @@
   {
     "templateMbId": "battanian_chainmail_armor_a",
     "name": "Highland Chainmail",
-    "value": 3722,
     "type": "BodyArmor",
     "weight": 10.7,
     "armor": {
@@ -2880,7 +2745,6 @@
   {
     "templateMbId": "battanian_chainmail_armor_b",
     "name": "Highland Mail Shirt",
-    "value": 3119,
     "type": "BodyArmor",
     "weight": 10.7,
     "armor": {
@@ -2894,7 +2758,6 @@
   {
     "templateMbId": "battanian_chainmail_armor_c",
     "name": "Highland Reinforced Mail Over Tartan",
-    "value": 6122,
     "type": "BodyArmor",
     "weight": 14.7,
     "armor": {
@@ -2908,7 +2771,6 @@
   {
     "templateMbId": "battanian_chainmail_shoulder_a",
     "name": "Highland Mail Shoulders",
-    "value": 464,
     "type": "ShoulderArmor",
     "weight": 4.5,
     "armor": {
@@ -2922,7 +2784,6 @@
   {
     "templateMbId": "battanian_chainmail_shoulder_b",
     "name": "Highland Mail Shoulder Reinforcements",
-    "value": 601,
     "type": "ShoulderArmor",
     "weight": 4.5,
     "armor": {
@@ -2936,7 +2797,6 @@
   {
     "templateMbId": "battanian_crowned_helmet",
     "name": "Highland Crowned Helmet",
-    "value": 14797,
     "type": "HeadArmor",
     "weight": 3.2,
     "armor": {
@@ -2950,7 +2810,6 @@
   {
     "templateMbId": "battanian_noble_helmet_with_feather",
     "name": "Highland Noble Helmet with Feather",
-    "value": 17982,
     "type": "HeadArmor",
     "weight": 3.1,
     "armor": {
@@ -2964,7 +2823,6 @@
   {
     "templateMbId": "battanian_plated_noble_helmet",
     "name": "Highland Plated Noble Helmet",
-    "value": 10861,
     "type": "HeadArmor",
     "weight": 2.9,
     "armor": {
@@ -2978,7 +2836,6 @@
   {
     "templateMbId": "battanian_savage_armor",
     "name": "Battanian Wilding Armor",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 0.8,
     "armor": {
@@ -2992,7 +2849,6 @@
   {
     "templateMbId": "battered_horsemans_kite_shield",
     "name": "Battered Horseman's Kite Shield",
-    "value": 3834,
     "type": "Shield",
     "weight": 3.6,
     "weapons": [
@@ -3021,7 +2877,6 @@
   {
     "templateMbId": "battle_axe_t4",
     "name": "Battle Axe",
-    "value": 17284,
     "type": "OneHandedWeapon",
     "weight": 1.01,
     "weapons": [
@@ -3050,7 +2905,6 @@
   {
     "templateMbId": "bearded_axe_t3",
     "name": "Bearded Axe",
-    "value": 22402,
     "type": "TwoHandedWeapon",
     "weight": 1.12,
     "weapons": [
@@ -3081,7 +2935,6 @@
   {
     "templateMbId": "bearhead",
     "name": "Bear Head",
-    "value": 3840,
     "type": "HeadArmor",
     "weight": 1.4,
     "armor": {
@@ -3095,7 +2948,6 @@
   {
     "templateMbId": "bearskin",
     "name": "Bear Pelt",
-    "value": 2106,
     "type": "ShoulderArmor",
     "weight": 2.3,
     "armor": {
@@ -3109,7 +2961,6 @@
   {
     "templateMbId": "belted_leather_boots",
     "name": "Belted Leather Boots",
-    "value": 290,
     "type": "LegArmor",
     "weight": 1.1,
     "armor": {
@@ -3123,7 +2974,6 @@
   {
     "templateMbId": "belted_leather_cuirass",
     "name": "Belted Leather Cuirass",
-    "value": 2234,
     "type": "BodyArmor",
     "weight": 1.9,
     "armor": {
@@ -3137,7 +2987,6 @@
   {
     "templateMbId": "billhook_polearm_t2",
     "name": "Billhook",
-    "value": 33902,
     "type": "Polearm",
     "weight": 1.69,
     "weapons": [
@@ -3168,7 +3017,6 @@
   {
     "templateMbId": "billhook_polearm_t2_blunt",
     "name": "Sparing Billhook",
-    "value": 57014,
     "type": "Polearm",
     "weight": 1.69,
     "weapons": [
@@ -3199,7 +3047,6 @@
   {
     "templateMbId": "black_heart_2haxe_t3",
     "name": "Black Heart",
-    "value": 28331,
     "type": "TwoHandedWeapon",
     "weight": 1.64,
     "weapons": [
@@ -3230,7 +3077,6 @@
   {
     "templateMbId": "blunt_arrows",
     "name": "Blunt Arrows",
-    "value": 7850,
     "type": "Arrows",
     "weight": 0.05,
     "weapons": [
@@ -3260,7 +3106,6 @@
   {
     "templateMbId": "bo_staff",
     "name": "Bo staff",
-    "value": 232,
     "type": "Polearm",
     "weight": 1.0,
     "weapons": [
@@ -3292,7 +3137,6 @@
   {
     "templateMbId": "bodkin_arrows_a",
     "name": "Stacked Bodkin Arrows",
-    "value": 11953,
     "type": "Arrows",
     "weight": 0.048,
     "weapons": [
@@ -3322,7 +3166,6 @@
   {
     "templateMbId": "bodkin_arrows_b",
     "name": "Bodkin Arrows",
-    "value": 9122,
     "type": "Arrows",
     "weight": 0.048,
     "weapons": [
@@ -3352,7 +3195,6 @@
   {
     "templateMbId": "bodkin_arrows_c",
     "name": "Light Bodkin Arrows",
-    "value": 8159,
     "type": "Arrows",
     "weight": 0.048,
     "weapons": [
@@ -3382,7 +3224,6 @@
   {
     "templateMbId": "bolt_a",
     "name": "Bolt",
-    "value": 1370,
     "type": "Bolts",
     "weight": 0.05,
     "weapons": [
@@ -3413,7 +3254,6 @@
   {
     "templateMbId": "bolted_leather_strips",
     "name": "Bolted Leather Strips",
-    "value": 758,
     "type": "ShoulderArmor",
     "weight": 0.5,
     "armor": {
@@ -3427,7 +3267,6 @@
   {
     "templateMbId": "bone_crusher_mace_t3",
     "name": "Bone Crusher",
-    "value": 20177,
     "type": "OneHandedWeapon",
     "weight": 1.68,
     "weapons": [
@@ -3455,7 +3294,6 @@
   {
     "templateMbId": "bound_adarga",
     "name": "Wooden Adarga",
-    "value": 3268,
     "type": "Shield",
     "weight": 7.3,
     "weapons": [
@@ -3484,7 +3322,6 @@
   {
     "templateMbId": "bound_desert_round_shield",
     "name": "Southern Round Shield",
-    "value": 3364,
     "type": "Shield",
     "weight": 7.3,
     "weapons": [
@@ -3513,7 +3350,6 @@
   {
     "templateMbId": "bound_desert_round_sparring_shield",
     "name": "Southern Round Sparring Shield",
-    "value": 2717,
     "type": "Shield",
     "weight": 7.3,
     "weapons": [
@@ -3542,7 +3378,6 @@
   {
     "templateMbId": "bound_horsemans_kite_shield",
     "name": "Cavalry Kite Shield",
-    "value": 4474,
     "type": "Shield",
     "weight": 5.5,
     "weapons": [
@@ -3571,7 +3406,6 @@
   {
     "templateMbId": "bracketed_heater_shield",
     "name": "Bracketed Heater Shield",
-    "value": 9549,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -3600,7 +3434,6 @@
   {
     "templateMbId": "brass_lamellar_over_mail",
     "name": "Eastern Brass Lamellar Over Mail",
-    "value": 16922,
     "type": "BodyArmor",
     "weight": 11.4,
     "armor": {
@@ -3614,7 +3447,6 @@
   {
     "templateMbId": "brass_lamellar_shoulder",
     "name": "Brass Lamellar Shoulders",
-    "value": 4992,
     "type": "ShoulderArmor",
     "weight": 5.0,
     "armor": {
@@ -3628,7 +3460,6 @@
   {
     "templateMbId": "brass_lamellar_shoulder_white",
     "name": "Northern Lamellar Shoulders",
-    "value": 4992,
     "type": "ShoulderArmor",
     "weight": 5.0,
     "armor": {
@@ -3642,7 +3473,6 @@
   {
     "templateMbId": "brass_scale_shoulders",
     "name": "Brass Scale Shoulders",
-    "value": 4992,
     "type": "ShoulderArmor",
     "weight": 2.2,
     "armor": {
@@ -3656,7 +3486,6 @@
   {
     "templateMbId": "broad_arming_sword_t4",
     "name": "Broad Arming Sword",
-    "value": 20437,
     "type": "OneHandedWeapon",
     "weight": 1.67,
     "weapons": [
@@ -3684,7 +3513,6 @@
   {
     "templateMbId": "broad_falchion_sword_t3",
     "name": "Broad Falchion",
-    "value": 16187,
     "type": "OneHandedWeapon",
     "weight": 2.14,
     "weapons": [
@@ -3712,7 +3540,6 @@
   {
     "templateMbId": "broad_ild_sword_t3",
     "name": "Broad Ild",
-    "value": 20269,
     "type": "OneHandedWeapon",
     "weight": 1.39,
     "weapons": [
@@ -3740,7 +3567,6 @@
   {
     "templateMbId": "buckled_wildsman_armor",
     "name": "Buckled Wildsman Armor",
-    "value": 5090,
     "type": "BodyArmor",
     "weight": 12.3,
     "armor": {
@@ -3754,7 +3580,6 @@
   {
     "templateMbId": "burlap_sack_dress",
     "name": "Burlap Dress",
-    "value": 122,
     "type": "BodyArmor",
     "weight": 0.5,
     "armor": {
@@ -3768,7 +3593,6 @@
   {
     "templateMbId": "burlap_waistcoat",
     "name": "Burlap Waistcoat",
-    "value": 194,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -3782,7 +3606,6 @@
   {
     "templateMbId": "buttoned_leather_bracers",
     "name": "Buttoned Leather Bracers",
-    "value": 229,
     "type": "HandArmor",
     "weight": 0.5,
     "armor": {
@@ -3796,7 +3619,6 @@
   {
     "templateMbId": "camel",
     "name": "Camel",
-    "value": 21543,
     "type": "Mount",
     "weight": 611.0,
     "mount": {
@@ -3811,7 +3633,6 @@
   {
     "templateMbId": "camel_saddle",
     "name": "Camel Saddle",
-    "value": 410,
     "type": "MountHarness",
     "weight": 25.0,
     "armor": {
@@ -3825,7 +3646,6 @@
   {
     "templateMbId": "camel_saddle_a",
     "name": "Camel Saddle with Heavy Load",
-    "value": 410,
     "type": "MountHarness",
     "weight": 25.0,
     "armor": {
@@ -3839,7 +3659,6 @@
   {
     "templateMbId": "camel_saddle_b",
     "name": "Camel Saddle with Light Load",
-    "value": 410,
     "type": "MountHarness",
     "weight": 25.0,
     "armor": {
@@ -3853,7 +3672,6 @@
   {
     "templateMbId": "campaign_banner_small",
     "name": "Campaign Banner Small",
-    "value": 50,
     "type": "Banner",
     "weight": 4.0,
     "weapons": [
@@ -3879,7 +3697,6 @@
   {
     "templateMbId": "celtic_dagger",
     "name": "Highland Dagger",
-    "value": 4379,
     "type": "OneHandedWeapon",
     "weight": 0.78,
     "weapons": [
@@ -3931,7 +3748,6 @@
   {
     "templateMbId": "celtic_frost",
     "name": "Celtic Frost",
-    "value": 18770,
     "type": "MountHarness",
     "weight": 26.0,
     "armor": {
@@ -3945,7 +3761,6 @@
   {
     "templateMbId": "celtic_throwing_dagger",
     "name": "Highland Throwing Dagger",
-    "value": 3040,
     "type": "Thrown",
     "weight": 0.8,
     "weapons": [
@@ -3997,7 +3812,6 @@
   {
     "templateMbId": "cervelliere_over_arming_coif",
     "name": "Cervelliere Over Arming Coif",
-    "value": 3250,
     "type": "HeadArmor",
     "weight": 0.9,
     "armor": {
@@ -4011,7 +3825,6 @@
   {
     "templateMbId": "cervelliere_over_cloth_headwrap",
     "name": "Cervelliere Over Cloth Headwrap",
-    "value": 3250,
     "type": "HeadArmor",
     "weight": 1.0,
     "armor": {
@@ -4025,7 +3838,6 @@
   {
     "templateMbId": "cervelliere_over_laced_coif",
     "name": "Cervelliere Over Laced Coif",
-    "value": 1579,
     "type": "HeadArmor",
     "weight": 1.1,
     "armor": {
@@ -4039,7 +3851,6 @@
   {
     "templateMbId": "cervelliere_over_padded_cap",
     "name": "Cervelliere Over Padded Cap",
-    "value": 3840,
     "type": "HeadArmor",
     "weight": 1.0,
     "armor": {
@@ -4053,7 +3864,6 @@
   {
     "templateMbId": "chain_barding",
     "name": "Chain Barding",
-    "value": 12722,
     "type": "MountHarness",
     "weight": 26.0,
     "armor": {
@@ -4067,7 +3877,6 @@
   {
     "templateMbId": "chain_horse_harness",
     "name": "Chain Horse Harness",
-    "value": 9455,
     "type": "MountHarness",
     "weight": 24.0,
     "armor": {
@@ -4081,7 +3890,6 @@
   {
     "templateMbId": "charger",
     "name": "Charger",
-    "value": 25749,
     "type": "Mount",
     "weight": 400.0,
     "mount": {
@@ -4096,7 +3904,6 @@
   {
     "templateMbId": "chivalric_kite_shield",
     "name": "Knights Kite Shield",
-    "value": 18369,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -4125,7 +3932,6 @@
   {
     "templateMbId": "cleaver_2hsword_t3",
     "name": "Two Handed Cleaver ",
-    "value": 49210,
     "type": "TwoHandedWeapon",
     "weight": 2.28,
     "weapons": [
@@ -4173,7 +3979,6 @@
   {
     "templateMbId": "cleaver_sword_t3",
     "name": "Cleaver",
-    "value": 17997,
     "type": "OneHandedWeapon",
     "weight": 1.8,
     "weapons": [
@@ -4201,7 +4006,6 @@
   {
     "templateMbId": "closed_desert_helmet",
     "name": "Closed Southern Helmet",
-    "value": 2711,
     "type": "HeadArmor",
     "weight": 1.4,
     "armor": {
@@ -4215,7 +4019,6 @@
   {
     "templateMbId": "closed_desert_helmet_with_mail",
     "name": "Closed Southern Helmet With Mail",
-    "value": 5907,
     "type": "HeadArmor",
     "weight": 3.2,
     "armor": {
@@ -4229,7 +4032,6 @@
   {
     "templateMbId": "closed_goggled_helmet",
     "name": "Northern Closed Helmet",
-    "value": 16670,
     "type": "HeadArmor",
     "weight": 4.1,
     "armor": {
@@ -4243,7 +4045,6 @@
   {
     "templateMbId": "closed_head_scarf",
     "name": "Closed Head Scarf",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.6,
     "armor": {
@@ -4257,7 +4058,6 @@
   {
     "templateMbId": "cloth_apron",
     "name": "Cloth Apron",
-    "value": 815,
     "type": "BodyArmor",
     "weight": 0.8,
     "armor": {
@@ -4271,7 +4071,6 @@
   {
     "templateMbId": "cloth_headwrap",
     "name": "Cloth Headwrap",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.4,
     "armor": {
@@ -4285,7 +4084,6 @@
   {
     "templateMbId": "cloth_tunic",
     "name": "Western Cloth Tunic",
-    "value": 122,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -4299,7 +4097,6 @@
   {
     "templateMbId": "coat_of_plates_over_mail",
     "name": "Coat of Plates Over Mail",
-    "value": 19730,
     "type": "BodyArmor",
     "weight": 25.11,
     "armor": {
@@ -4313,7 +4110,6 @@
   {
     "templateMbId": "composite_bow",
     "name": "Simple Short Bow",
-    "value": 6922,
     "type": "Bow",
     "weight": 0.3,
     "weapons": [
@@ -4347,7 +4143,6 @@
   {
     "templateMbId": "composite_steppe_bow",
     "name": "Steppe Recurve Bow",
-    "value": 9578,
     "type": "Bow",
     "weight": 0.3,
     "weapons": [
@@ -4381,7 +4176,6 @@
   {
     "templateMbId": "crossbow_a",
     "name": "Light Crossbow",
-    "value": 6641,
     "type": "Crossbow",
     "weight": 1.0,
     "weapons": [
@@ -4414,7 +4208,6 @@
   {
     "templateMbId": "crossbow_b",
     "name": "Heavy Crossbow",
-    "value": 7175,
     "type": "Crossbow",
     "weight": 2.7,
     "weapons": [
@@ -4447,7 +4240,6 @@
   {
     "templateMbId": "crossbow_c",
     "name": "Arbalest",
-    "value": 7139,
     "type": "Crossbow",
     "weight": 3.0,
     "weapons": [
@@ -4480,7 +4272,6 @@
   {
     "templateMbId": "crossbow_d",
     "name": "Hickory Crossbow",
-    "value": 10952,
     "type": "Crossbow",
     "weight": 2.2,
     "weapons": [
@@ -4513,7 +4304,6 @@
   {
     "templateMbId": "crossbow_e",
     "name": "Crossbow",
-    "value": 4058,
     "type": "Crossbow",
     "weight": 2.2,
     "weapons": [
@@ -4546,7 +4336,6 @@
   {
     "templateMbId": "crossbow_f",
     "name": "Bound Crossbow",
-    "value": 13715,
     "type": "Crossbow",
     "weight": 2.0,
     "weapons": [
@@ -4579,7 +4368,6 @@
   {
     "templateMbId": "crossbow_g",
     "name": "Fine Crossbow",
-    "value": 9780,
     "type": "Crossbow",
     "weight": 2.2,
     "weapons": [
@@ -4612,7 +4400,6 @@
   {
     "templateMbId": "crude_leather_armor",
     "name": "Crude Eastern Leather Armor",
-    "value": 2075,
     "type": "BodyArmor",
     "weight": 2.4,
     "armor": {
@@ -4626,7 +4413,6 @@
   {
     "templateMbId": "curved_round_shield",
     "name": "Curved Round Shield",
-    "value": 4300,
     "type": "Shield",
     "weight": 7.3,
     "weapons": [
@@ -4655,7 +4441,6 @@
   {
     "templateMbId": "cut_dress",
     "name": "Cut Dress",
-    "value": 410,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -4669,7 +4454,6 @@
   {
     "templateMbId": "cut_dress_with_pouch",
     "name": "Cut Dress With Pouch",
-    "value": 155,
     "type": "BodyArmor",
     "weight": 0.5,
     "armor": {
@@ -4683,7 +4467,6 @@
   {
     "templateMbId": "dawnbreaker_sword_t3",
     "name": "Dawnbreaker",
-    "value": 16311,
     "type": "OneHandedWeapon",
     "weight": 1.9,
     "weapons": [
@@ -4711,7 +4494,6 @@
   {
     "templateMbId": "decorated_goggled_helmet",
     "name": "Northern Decorated Visored Helmet",
-    "value": 17320,
     "type": "HeadArmor",
     "weight": 4.2,
     "armor": {
@@ -4725,7 +4507,6 @@
   {
     "templateMbId": "decorated_imperial_boots",
     "name": "Decorated Imperial Boots",
-    "value": 3314,
     "type": "LegArmor",
     "weight": 2.3,
     "armor": {
@@ -4739,7 +4520,6 @@
   {
     "templateMbId": "decorated_imperial_gauntlets",
     "name": "Decorated Imperial Gauntlets",
-    "value": 3722,
     "type": "HandArmor",
     "weight": 1.5,
     "armor": {
@@ -4753,7 +4533,6 @@
   {
     "templateMbId": "decorated_nomad_cap",
     "name": "Decorated Nomad Cap",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.4,
     "armor": {
@@ -4767,7 +4546,6 @@
   {
     "templateMbId": "decorated_nordic_hauberk",
     "name": "Decorated Northern Hauberk",
-    "value": 5339,
     "type": "BodyArmor",
     "weight": 20.5,
     "armor": {
@@ -4781,7 +4559,6 @@
   {
     "templateMbId": "decorated_steppe_shield",
     "name": "Round Steppe Shield",
-    "value": 6894,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -4810,7 +4587,6 @@
   {
     "templateMbId": "default_arrows",
     "name": "Arrows",
-    "value": 2399,
     "type": "Arrows",
     "weight": 0.043,
     "weapons": [
@@ -4840,7 +4616,6 @@
   {
     "templateMbId": "desert_cap",
     "name": "Southern Cap",
-    "value": 248,
     "type": "HeadArmor",
     "weight": 0.4,
     "armor": {
@@ -4854,7 +4629,6 @@
   {
     "templateMbId": "desert_cloth_harness",
     "name": "Desert Cloth Harness",
-    "value": 554,
     "type": "MountHarness",
     "weight": 7.3,
     "armor": {
@@ -4868,7 +4642,6 @@
   {
     "templateMbId": "desert_fabric_shoulderpad",
     "name": "Desert Fabric Shoulderpad",
-    "value": 110,
     "type": "ShoulderArmor",
     "weight": 1.8,
     "armor": {
@@ -4882,7 +4655,6 @@
   {
     "templateMbId": "desert_headdress",
     "name": "Desert Headdress",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.2,
     "armor": {
@@ -4896,7 +4668,6 @@
   {
     "templateMbId": "desert_helmet",
     "name": "Southern Helmet",
-    "value": 2221,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -4910,7 +4681,6 @@
   {
     "templateMbId": "desert_helmet_with_mail",
     "name": "Southern Helmet With Mail",
-    "value": 5169,
     "type": "HeadArmor",
     "weight": 1.9,
     "armor": {
@@ -4924,7 +4694,6 @@
   {
     "templateMbId": "desert_lamellar",
     "name": "Southern Lamellar Armor",
-    "value": 14330,
     "type": "BodyArmor",
     "weight": 9.4,
     "armor": {
@@ -4938,7 +4707,6 @@
   {
     "templateMbId": "desert_leather_shoulderpad",
     "name": "Desert Leather Shoulderpad",
-    "value": 347,
     "type": "ShoulderArmor",
     "weight": 1.8,
     "armor": {
@@ -4952,7 +4720,6 @@
   {
     "templateMbId": "desert_long_sword_t4",
     "name": "Desert Long Sword",
-    "value": 20440,
     "type": "OneHandedWeapon",
     "weight": 1.93,
     "weapons": [
@@ -4980,7 +4747,6 @@
   {
     "templateMbId": "desert_mail_coif",
     "name": "Southern Mail Coif",
-    "value": 2221,
     "type": "HeadArmor",
     "weight": 3.0,
     "armor": {
@@ -4994,7 +4760,6 @@
   {
     "templateMbId": "desert_oval_shield",
     "name": "Desert Oval Shield",
-    "value": 8358,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -5023,7 +4788,6 @@
   {
     "templateMbId": "desert_padded_cloth",
     "name": "Southern Padded Cloth",
-    "value": 2930,
     "type": "BodyArmor",
     "weight": 1.3,
     "armor": {
@@ -5037,7 +4801,6 @@
   {
     "templateMbId": "desert_robe",
     "name": "Southern Robe",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 1.8,
     "armor": {
@@ -5051,7 +4814,6 @@
   {
     "templateMbId": "desert_robe_over_mail",
     "name": "Southern Robe Over Mail",
-    "value": 7547,
     "type": "BodyArmor",
     "weight": 8.9,
     "armor": {
@@ -5065,7 +4827,6 @@
   {
     "templateMbId": "desert_scale_armor",
     "name": "Southern Scale Armor",
-    "value": 21722,
     "type": "BodyArmor",
     "weight": 14.4,
     "armor": {
@@ -5079,7 +4840,6 @@
   {
     "templateMbId": "desert_scale_shoulders",
     "name": "Southern Scale Shoulders",
-    "value": 6901,
     "type": "ShoulderArmor",
     "weight": 4.4,
     "armor": {
@@ -5093,7 +4853,6 @@
   {
     "templateMbId": "desert_throwing_knife",
     "name": "Southern Throwing Daggers",
-    "value": 3819,
     "type": "Thrown",
     "weight": 0.86,
     "weapons": [
@@ -5145,7 +4904,6 @@
   {
     "templateMbId": "desert_throwing_knife_blunt",
     "name": "Southern Sparing Throwing Daggers",
-    "value": 4836,
     "type": "Thrown",
     "weight": 0.86,
     "weapons": [
@@ -5197,7 +4955,6 @@
   {
     "templateMbId": "desert_war_horse",
     "name": "Desert War Horse",
-    "value": 32651,
     "type": "Mount",
     "weight": 480.0,
     "mount": {
@@ -5212,7 +4969,6 @@
   {
     "templateMbId": "dress_with_overall",
     "name": "Dress",
-    "value": 239,
     "type": "BodyArmor",
     "weight": 0.5,
     "armor": {
@@ -5226,7 +4982,6 @@
   {
     "templateMbId": "early_retirement_2hsword_t3",
     "name": "Early Retirement",
-    "value": 42196,
     "type": "TwoHandedWeapon",
     "weight": 1.32,
     "weapons": [
@@ -5274,7 +5029,6 @@
   {
     "templateMbId": "easter_polesword_t4",
     "name": "Eastern Polesword",
-    "value": 3960,
     "type": "Polearm",
     "weight": 2.45,
     "weapons": [
@@ -5325,7 +5079,6 @@
   {
     "templateMbId": "eastern_cap",
     "name": "Eastern Cap",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.3,
     "armor": {
@@ -5339,7 +5092,6 @@
   {
     "templateMbId": "eastern_javelin_1_t2",
     "name": "Eastern Jagged Javelin",
-    "value": 32905,
     "type": "Thrown",
     "weight": 0.93,
     "weapons": [
@@ -5392,7 +5144,6 @@
   {
     "templateMbId": "eastern_javelin_1_t2_blunt",
     "name": "Eastern Sparing Javelin",
-    "value": 41943,
     "type": "Thrown",
     "weight": 0.93,
     "weapons": [
@@ -5445,7 +5196,6 @@
   {
     "templateMbId": "eastern_javelin_2_t3",
     "name": "Eastern Javelin",
-    "value": 38460,
     "type": "Thrown",
     "weight": 1.11,
     "weapons": [
@@ -5498,7 +5248,6 @@
   {
     "templateMbId": "eastern_javelin_3_t4",
     "name": "Jereed",
-    "value": 114690,
     "type": "Thrown",
     "weight": 1.2,
     "weapons": [
@@ -5551,7 +5300,6 @@
   {
     "templateMbId": "eastern_lamellar_armor",
     "name": "Eastern Lamellar Armor",
-    "value": 9794,
     "type": "BodyArmor",
     "weight": 5.8,
     "armor": {
@@ -5565,7 +5313,6 @@
   {
     "templateMbId": "eastern_plated_leather",
     "name": "Eastern Plated Leather",
-    "value": 12722,
     "type": "BodyArmor",
     "weight": 21.5,
     "armor": {
@@ -5579,7 +5326,6 @@
   {
     "templateMbId": "eastern_plated_leather_vambraces",
     "name": "Eastern Plated Leather Vambraces",
-    "value": 5288,
     "type": "HandArmor",
     "weight": 1.7,
     "armor": {
@@ -5593,7 +5339,6 @@
   {
     "templateMbId": "eastern_plated_leather_vest",
     "name": "Eastern Plated Leather Vest",
-    "value": 5090,
     "type": "BodyArmor",
     "weight": 14.2,
     "armor": {
@@ -5607,7 +5352,6 @@
   {
     "templateMbId": "eastern_silk_clothing",
     "name": "Southern Silk Clothing",
-    "value": 554,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -5621,7 +5365,6 @@
   {
     "templateMbId": "eastern_spear_1_t2",
     "name": "Jagged Spear",
-    "value": 5211,
     "type": "Polearm",
     "weight": 1.54,
     "weapons": [
@@ -5672,7 +5415,6 @@
   {
     "templateMbId": "eastern_spear_1_t2_blunt",
     "name": "Jagged Sparing Spear",
-    "value": 6609,
     "type": "Polearm",
     "weight": 1.54,
     "weapons": [
@@ -5723,7 +5465,6 @@
   {
     "templateMbId": "eastern_spear_2_t3",
     "name": "Narrow Long Headed Eastern Spear",
-    "value": 8248,
     "type": "Polearm",
     "weight": 2.17,
     "weapons": [
@@ -5774,7 +5515,6 @@
   {
     "templateMbId": "eastern_spear_3_t3",
     "name": "Weighted Eastern Spear",
-    "value": 5465,
     "type": "Polearm",
     "weight": 1.85,
     "weapons": [
@@ -5825,7 +5565,6 @@
   {
     "templateMbId": "eastern_spear_4_t4",
     "name": "Fine Steel Leaf Spear",
-    "value": 9400,
     "type": "Polearm",
     "weight": 2.01,
     "weapons": [
@@ -5876,7 +5615,6 @@
   {
     "templateMbId": "eastern_spear_5_t5",
     "name": "Thin Fine Steel Hewing Spear",
-    "value": 13755,
     "type": "Polearm",
     "weight": 1.4,
     "weapons": [
@@ -5927,7 +5665,6 @@
   {
     "templateMbId": "eastern_steel_mace_t4",
     "name": "Eastern Steel Mace",
-    "value": 20728,
     "type": "OneHandedWeapon",
     "weight": 1.87,
     "weapons": [
@@ -5955,7 +5692,6 @@
   {
     "templateMbId": "eastern_stitched_leather_coat",
     "name": "Eastern Stitched Leather Coat",
-    "value": 4154,
     "type": "BodyArmor",
     "weight": 13.9,
     "armor": {
@@ -5969,7 +5705,6 @@
   {
     "templateMbId": "eastern_studded_leather",
     "name": "Imperial Studded Leather",
-    "value": 3314,
     "type": "BodyArmor",
     "weight": 3.0,
     "armor": {
@@ -5983,7 +5718,6 @@
   {
     "templateMbId": "eastern_studded_shoulders",
     "name": "Eastern Studded Shoulders",
-    "value": 4563,
     "type": "ShoulderArmor",
     "weight": 2.3,
     "armor": {
@@ -5997,7 +5731,6 @@
   {
     "templateMbId": "eastern_throwing_spear_1_t3",
     "name": "Jagged Throwing Spear",
-    "value": 4609,
     "type": "Polearm",
     "weight": 1.77,
     "weapons": [
@@ -6072,7 +5805,6 @@
   {
     "templateMbId": "eastern_throwing_spear_2_t4",
     "name": "Triangular Throwing Spear",
-    "value": 9636,
     "type": "Polearm",
     "weight": 2.1,
     "weapons": [
@@ -6147,7 +5879,6 @@
   {
     "templateMbId": "eastern_vendel_helmet",
     "name": "Eastern Vendel Helmet",
-    "value": 16670,
     "type": "HeadArmor",
     "weight": 4.0,
     "armor": {
@@ -6161,7 +5892,6 @@
   {
     "templateMbId": "eastern_wicker_shield",
     "name": "Wicker Square Shield",
-    "value": 8332,
     "type": "Shield",
     "weight": 2.7,
     "weapons": [
@@ -6190,7 +5920,6 @@
   {
     "templateMbId": "eastern_wicker_sparring_shield",
     "name": "Wicker Square Tournament Shield",
-    "value": 6554,
     "type": "Shield",
     "weight": 2.7,
     "weapons": [
@@ -6219,7 +5948,6 @@
   {
     "templateMbId": "eastern_wrapped_armguards",
     "name": "Eastern Wrapped Armguards",
-    "value": 158,
     "type": "HandArmor",
     "weight": 0.3,
     "armor": {
@@ -6233,7 +5961,6 @@
   {
     "templateMbId": "emirs_helmet",
     "name": "Emir's Helmet",
-    "value": 5169,
     "type": "HeadArmor",
     "weight": 3.0,
     "armor": {
@@ -6247,7 +5974,6 @@
   {
     "templateMbId": "emirs_oval_shield",
     "name": "Decorated Oval Shield",
-    "value": 11261,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -6276,7 +6002,6 @@
   {
     "templateMbId": "empire_dress",
     "name": "Ladies Dress",
-    "value": 635,
     "type": "BodyArmor",
     "weight": 0.7,
     "armor": {
@@ -6290,7 +6015,6 @@
   {
     "templateMbId": "empire_dress_b",
     "name": "Red Dress",
-    "value": 410,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -6304,7 +6028,6 @@
   {
     "templateMbId": "empire_guarded_lord_helmet",
     "name": "Imperial Guarded Lord Helmet",
-    "value": 16670,
     "type": "HeadArmor",
     "weight": 3.7,
     "armor": {
@@ -6318,7 +6041,6 @@
   {
     "templateMbId": "empire_helmet_with_metal_strips",
     "name": "Imperial Helmet with Metal Strips",
-    "value": 16034,
     "type": "HeadArmor",
     "weight": 3.8,
     "armor": {
@@ -6332,7 +6054,6 @@
   {
     "templateMbId": "empire_horse",
     "name": "Midlands Palfrey",
-    "value": 21225,
     "type": "Mount",
     "weight": 473.0,
     "mount": {
@@ -6347,7 +6068,6 @@
   {
     "templateMbId": "empire_horseman_armor",
     "name": "Imperial Cavalry Armor",
-    "value": 7250,
     "type": "BodyArmor",
     "weight": 8.3,
     "armor": {
@@ -6361,7 +6081,6 @@
   {
     "templateMbId": "empire_horseman_boots",
     "name": "Imperial Horseman Boots",
-    "value": 290,
     "type": "LegArmor",
     "weight": 0.8,
     "armor": {
@@ -6375,7 +6094,6 @@
   {
     "templateMbId": "empire_jewelled_helmet",
     "name": "Imperial Jewelled Helmet",
-    "value": 16034,
     "type": "HeadArmor",
     "weight": 3.8,
     "armor": {
@@ -6389,7 +6107,6 @@
   {
     "templateMbId": "empire_lance_1_t3",
     "name": "Imperial Light Lance",
-    "value": 5278,
     "type": "Polearm",
     "weight": 1.95,
     "weapons": [
@@ -6460,7 +6177,6 @@
   {
     "templateMbId": "empire_lance_1_t3_blunt",
     "name": "Imperial Sparing Lance",
-    "value": 6695,
     "type": "Polearm",
     "weight": 1.95,
     "weapons": [
@@ -6531,7 +6247,6 @@
   {
     "templateMbId": "empire_lance_2_t4",
     "name": "Imperial Lance",
-    "value": 10219,
     "type": "Polearm",
     "weight": 2.22,
     "weapons": [
@@ -6562,7 +6277,6 @@
   {
     "templateMbId": "empire_lance_3_t5",
     "name": "Cataphract Lance",
-    "value": 13602,
     "type": "Polearm",
     "weight": 2.04,
     "weapons": [
@@ -6593,7 +6307,6 @@
   {
     "templateMbId": "empire_lord_helmet",
     "name": "Imperial Lord Helmet",
-    "value": 13610,
     "type": "HeadArmor",
     "weight": 3.5,
     "armor": {
@@ -6607,7 +6320,6 @@
   {
     "templateMbId": "empire_mace_1_t2",
     "name": "Spiked Club",
-    "value": 10443,
     "type": "OneHandedWeapon",
     "weight": 1.24,
     "weapons": [
@@ -6635,7 +6347,6 @@
   {
     "templateMbId": "empire_mace_2_t4",
     "name": "Imperial Light Mace",
-    "value": 22209,
     "type": "OneHandedWeapon",
     "weight": 1.75,
     "weapons": [
@@ -6663,7 +6374,6 @@
   {
     "templateMbId": "empire_mace_3_t4",
     "name": "Calradic Mace",
-    "value": 20049,
     "type": "OneHandedWeapon",
     "weight": 1.8,
     "weapons": [
@@ -6691,7 +6401,6 @@
   {
     "templateMbId": "empire_mace_4_t5",
     "name": "Light Royal Mace",
-    "value": 18344,
     "type": "OneHandedWeapon",
     "weight": 2.54,
     "weapons": [
@@ -6719,7 +6428,6 @@
   {
     "templateMbId": "empire_mace_5_t5",
     "name": "Cataphracts Mace",
-    "value": 23001,
     "type": "OneHandedWeapon",
     "weight": 2.24,
     "weapons": [
@@ -6747,7 +6455,6 @@
   {
     "templateMbId": "empire_noble_sword_1_t5",
     "name": "Decorated Short Spatha",
-    "value": 23052,
     "type": "OneHandedWeapon",
     "weight": 1.5,
     "weapons": [
@@ -6775,7 +6482,6 @@
   {
     "templateMbId": "empire_noble_sword_2_t5",
     "name": "Thamaskene Steel Spatha",
-    "value": 22656,
     "type": "OneHandedWeapon",
     "weight": 1.49,
     "weapons": [
@@ -6803,7 +6509,6 @@
   {
     "templateMbId": "empire_noble_sword_3_t5",
     "name": "Sharpened Spatha Blade With Ring Pommel",
-    "value": 18543,
     "type": "OneHandedWeapon",
     "weight": 1.7,
     "weapons": [
@@ -6831,7 +6536,6 @@
   {
     "templateMbId": "empire_polearm_1_t4",
     "name": "Menavlion",
-    "value": 10772,
     "type": "Polearm",
     "weight": 1.81,
     "weapons": [
@@ -6882,7 +6586,6 @@
   {
     "templateMbId": "empire_polearm_2_t5",
     "name": "Fine Steel Menavlion",
-    "value": 10627,
     "type": "Polearm",
     "weight": 1.81,
     "weapons": [
@@ -6933,7 +6636,6 @@
   {
     "templateMbId": "empire_short_dress",
     "name": "Empire Short Tunic",
-    "value": 122,
     "type": "BodyArmor",
     "weight": 1.0,
     "armor": {
@@ -6947,7 +6649,6 @@
   {
     "templateMbId": "empire_sword_2_t3",
     "name": "Spatha With Narrow Fuller",
-    "value": 17118,
     "type": "OneHandedWeapon",
     "weight": 1.37,
     "weapons": [
@@ -6975,7 +6676,6 @@
   {
     "templateMbId": "empire_sword_3_t3",
     "name": "Spatha",
-    "value": 17118,
     "type": "OneHandedWeapon",
     "weight": 1.41,
     "weapons": [
@@ -7003,7 +6703,6 @@
   {
     "templateMbId": "empire_sword_4_t4",
     "name": "Fine Steel Spatha",
-    "value": 18771,
     "type": "OneHandedWeapon",
     "weight": 1.48,
     "weapons": [
@@ -7031,7 +6730,6 @@
   {
     "templateMbId": "empire_sword_5_t4",
     "name": "Fine Steel Paramerion",
-    "value": 19257,
     "type": "OneHandedWeapon",
     "weight": 1.5,
     "weapons": [
@@ -7059,7 +6757,6 @@
   {
     "templateMbId": "empire_sword_6_t5",
     "name": "Thamaskene Steel Spathion",
-    "value": 22733,
     "type": "OneHandedWeapon",
     "weight": 1.37,
     "weapons": [
@@ -7087,7 +6784,6 @@
   {
     "templateMbId": "empire_throwingknife_t5",
     "name": "Imperial Broad Bladed Throwing Knives",
-    "value": 4217,
     "type": "Thrown",
     "weight": 0.96,
     "weapons": [
@@ -7139,7 +6835,6 @@
   {
     "templateMbId": "empire_warrior_padded_armor_a",
     "name": "Imperial Gambeson",
-    "value": 2234,
     "type": "BodyArmor",
     "weight": 2.1,
     "armor": {
@@ -7153,7 +6848,6 @@
   {
     "templateMbId": "empire_warrior_padded_armor_b",
     "name": "Imperial Gambeson Over Leather Jacket",
-    "value": 2570,
     "type": "BodyArmor",
     "weight": 1.8,
     "armor": {
@@ -7167,7 +6861,6 @@
   {
     "templateMbId": "empire_warrior_padded_armor_c",
     "name": "Imperial Gambeson With Skirts",
-    "value": 2570,
     "type": "BodyArmor",
     "weight": 2.0,
     "armor": {
@@ -7181,7 +6874,6 @@
   {
     "templateMbId": "empire_warrior_padded_armor_d",
     "name": "Imperial Gambeson With Straps",
-    "value": 2570,
     "type": "BodyArmor",
     "weight": 1.6,
     "armor": {
@@ -7195,7 +6887,6 @@
   {
     "templateMbId": "empire_warrior_padded_armor_e",
     "name": "Imperial Long Gambeson",
-    "value": 2747,
     "type": "BodyArmor",
     "weight": 1.5,
     "armor": {
@@ -7209,7 +6900,6 @@
   {
     "templateMbId": "empire_warrior_padded_armor_f",
     "name": "Imperial Auxiliary Armor",
-    "value": 2747,
     "type": "BodyArmor",
     "weight": 1.9,
     "armor": {
@@ -7223,7 +6913,6 @@
   {
     "templateMbId": "empire_warrior_padded_armor_g",
     "name": "Imperial Auxiliary Armor With Straps",
-    "value": 2930,
     "type": "BodyArmor",
     "weight": 2.0,
     "armor": {
@@ -7237,7 +6926,6 @@
   {
     "templateMbId": "empire_warrior_padded_armor_shoulder",
     "name": "Imperial Padded Shoulders",
-    "value": 2399,
     "type": "ShoulderArmor",
     "weight": 1.6,
     "armor": {
@@ -7251,7 +6939,6 @@
   {
     "templateMbId": "execution_axe",
     "name": "Execution Axe",
-    "value": 34865,
     "type": "TwoHandedWeapon",
     "weight": 1.37,
     "weapons": [
@@ -7282,7 +6969,6 @@
   {
     "templateMbId": "falchion_sword_t2",
     "name": "Falchion",
-    "value": 11792,
     "type": "OneHandedWeapon",
     "weight": 1.69,
     "weapons": [
@@ -7310,7 +6996,6 @@
   {
     "templateMbId": "feathered_spangenhelm_over_imperial_coif",
     "name": "Feathered Spangenhelm Over Imperial Coif",
-    "value": 6696,
     "type": "HeadArmor",
     "weight": 3.1,
     "armor": {
@@ -7324,7 +7009,6 @@
   {
     "templateMbId": "female_head_wrap",
     "name": "Female Head Wrap",
-    "value": 184,
     "type": "HeadArmor",
     "weight": 0.4,
     "armor": {
@@ -7338,7 +7022,6 @@
   {
     "templateMbId": "female_hood",
     "name": "Woman's Hood",
-    "value": 110,
     "type": "ShoulderArmor",
     "weight": 0.5,
     "armor": {
@@ -7352,7 +7035,6 @@
   {
     "templateMbId": "female_scarf",
     "name": "Woman's Scarf",
-    "value": 169,
     "type": "ShoulderArmor",
     "weight": 0.6,
     "armor": {
@@ -7366,7 +7048,6 @@
   {
     "templateMbId": "fine_pike_t4",
     "name": "Fine Pike",
-    "value": 10417,
     "type": "Polearm",
     "weight": 2.81,
     "weapons": [
@@ -7397,7 +7078,6 @@
   {
     "templateMbId": "fine_southern_dress",
     "name": "Fine Southern Dress",
-    "value": 347,
     "type": "BodyArmor",
     "weight": 0.7,
     "armor": {
@@ -7411,7 +7091,6 @@
   {
     "templateMbId": "fine_town_boots",
     "name": "Fine Town Boots",
-    "value": 211,
     "type": "LegArmor",
     "weight": 0.5,
     "armor": {
@@ -7425,7 +7104,6 @@
   {
     "templateMbId": "fine_town_tunic",
     "name": "Rich Tunic",
-    "value": 122,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -7439,7 +7117,6 @@
   {
     "templateMbId": "flat_heater_shield",
     "name": "Flat Heater Shield",
-    "value": 8243,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -7468,7 +7145,6 @@
   {
     "templateMbId": "folded_town_boots",
     "name": "Folded Town Boots",
-    "value": 211,
     "type": "LegArmor",
     "weight": 1.0,
     "armor": {
@@ -7482,7 +7158,6 @@
   {
     "templateMbId": "footmans_tunic",
     "name": "Military Tunic",
-    "value": 239,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -7496,7 +7171,6 @@
   {
     "templateMbId": "footmans_wicker_shield",
     "name": "Wicker Shield",
-    "value": 6894,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -7525,7 +7199,6 @@
   {
     "templateMbId": "fortified_kite_shield",
     "name": "Fortified Kite Shield",
-    "value": 15226,
     "type": "Shield",
     "weight": 5.4,
     "weapons": [
@@ -7554,7 +7227,6 @@
   {
     "templateMbId": "fortunas_choice",
     "name": "Fortunas Choice",
-    "value": 18299,
     "type": "MountHarness",
     "weight": 26.0,
     "armor": {
@@ -7568,7 +7240,6 @@
   {
     "templateMbId": "full_helm_over_arming_coif",
     "name": "Full Helm Over Arming Coif",
-    "value": 10348,
     "type": "HeadArmor",
     "weight": 3.0,
     "armor": {
@@ -7582,7 +7253,6 @@
   {
     "templateMbId": "full_helm_over_cloth_headwrap",
     "name": "Full Helm Over Cloth Headwrap",
-    "value": 11386,
     "type": "HeadArmor",
     "weight": 3.2,
     "armor": {
@@ -7596,7 +7266,6 @@
   {
     "templateMbId": "full_helm_over_laced_coif",
     "name": "Full Helm Over Laced Coif",
-    "value": 16034,
     "type": "HeadArmor",
     "weight": 3.5,
     "armor": {
@@ -7610,7 +7279,6 @@
   {
     "templateMbId": "full_helm_over_mail_coif",
     "name": "Full Helm Over Mail Coif",
-    "value": 16034,
     "type": "HeadArmor",
     "weight": 4.5,
     "armor": {
@@ -7624,7 +7292,6 @@
   {
     "templateMbId": "full_helm_over_padded_cap",
     "name": "Full Helm Over Padded Cap",
-    "value": 14797,
     "type": "HeadArmor",
     "weight": 3.1,
     "armor": {
@@ -7638,7 +7305,6 @@
   {
     "templateMbId": "full_helm_over_padded_cloth",
     "name": "Full Helm Over Padded Cloth",
-    "value": 16034,
     "type": "HeadArmor",
     "weight": 3.1,
     "armor": {
@@ -7652,7 +7318,6 @@
   {
     "templateMbId": "fur_armor",
     "name": "Fur Armor",
-    "value": 1370,
     "type": "BodyArmor",
     "weight": 13.6,
     "armor": {
@@ -7666,7 +7331,6 @@
   {
     "templateMbId": "fur_armor_with_strap",
     "name": "Fur Armor With Strap",
-    "value": 1247,
     "type": "BodyArmor",
     "weight": 1.6,
     "armor": {
@@ -7680,7 +7344,6 @@
   {
     "templateMbId": "fur_coat_over_tunic",
     "name": "Fur Coat Over Tunic",
-    "value": 1247,
     "type": "BodyArmor",
     "weight": 2.1,
     "armor": {
@@ -7694,7 +7357,6 @@
   {
     "templateMbId": "fur_hat",
     "name": "Eastern Fur Hat",
-    "value": 517,
     "type": "HeadArmor",
     "weight": 0.5,
     "armor": {
@@ -7708,7 +7370,6 @@
   {
     "templateMbId": "fur_hood",
     "name": "Eastern Fur Hood",
-    "value": 1049,
     "type": "HeadArmor",
     "weight": 0.6,
     "armor": {
@@ -7722,7 +7383,6 @@
   {
     "templateMbId": "fur_skirt",
     "name": "Fur Skirt",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -7736,7 +7396,6 @@
   {
     "templateMbId": "fur_skirt_with_tunic",
     "name": "Fur Skirt With Tunic",
-    "value": 554,
     "type": "BodyArmor",
     "weight": 0.9,
     "armor": {
@@ -7750,7 +7409,6 @@
   {
     "templateMbId": "fur_waistcoat_over_tunic",
     "name": "Fur Waistcoat Over Tunic",
-    "value": 410,
     "type": "BodyArmor",
     "weight": 2.3,
     "armor": {
@@ -7764,7 +7422,6 @@
   {
     "templateMbId": "gambeson_b",
     "name": "Western Gambeson",
-    "value": 4154,
     "type": "BodyArmor",
     "weight": 2.0,
     "armor": {
@@ -7778,7 +7435,6 @@
   {
     "templateMbId": "generic_javelin_1_t3",
     "name": "Harpoon",
-    "value": 69442,
     "type": "Thrown",
     "weight": 1.35,
     "weapons": [
@@ -7831,7 +7487,6 @@
   {
     "templateMbId": "gladius_b",
     "name": "Xiphos",
-    "value": 6165,
     "type": "OneHandedWeapon",
     "weight": 0.93,
     "weapons": [
@@ -7859,7 +7514,6 @@
   {
     "templateMbId": "glen_ranger_bow",
     "name": "Longbow",
-    "value": 3080,
     "type": "Bow",
     "weight": 0.4,
     "weapons": [
@@ -7893,7 +7547,6 @@
   {
     "templateMbId": "goggled_helmet_over_full_mail",
     "name": "Northern Closed Helmet Over Mail",
-    "value": 16670,
     "type": "HeadArmor",
     "weight": 4.4,
     "armor": {
@@ -7907,7 +7560,6 @@
   {
     "templateMbId": "goggled_helmet_over_leather",
     "name": "Northern Helmet Over Leather",
-    "value": 8423,
     "type": "HeadArmor",
     "weight": 1.4,
     "armor": {
@@ -7921,7 +7573,6 @@
   {
     "templateMbId": "goggled_helmet_over_mail",
     "name": "Goggled Helmet Over Mail",
-    "value": 4479,
     "type": "HeadArmor",
     "weight": 1.8,
     "armor": {
@@ -7935,7 +7586,6 @@
   {
     "templateMbId": "green_hood",
     "name": "Green Hood",
-    "value": 169,
     "type": "ShoulderArmor",
     "weight": 0.5,
     "armor": {
@@ -7949,7 +7599,6 @@
   {
     "templateMbId": "guarded_armwraps",
     "name": "Guarded Armwraps",
-    "value": 546,
     "type": "HandArmor",
     "weight": 0.4,
     "armor": {
@@ -7963,7 +7612,6 @@
   {
     "templateMbId": "guarded_padded_vambrace",
     "name": "Guarded Padded Vambrace",
-    "value": 844,
     "type": "HandArmor",
     "weight": 0.6,
     "armor": {
@@ -7977,7 +7625,6 @@
   {
     "templateMbId": "guards_kettle_over_laced_coif",
     "name": "Guard's Kettle Over Laced Coif",
-    "value": 3250,
     "type": "HeadArmor",
     "weight": 1.4,
     "armor": {
@@ -7991,7 +7638,6 @@
   {
     "templateMbId": "guards_kettle_over_mail_coif",
     "name": "Guard's Kettle Over Mail Coif",
-    "value": 6696,
     "type": "HeadArmor",
     "weight": 3.2,
     "armor": {
@@ -8005,7 +7651,6 @@
   {
     "templateMbId": "guards_kettle_over_padded_coif",
     "name": "Guard's Kettle Over Padded Coif",
-    "value": 4479,
     "type": "HeadArmor",
     "weight": 1.5,
     "armor": {
@@ -8019,7 +7664,6 @@
   {
     "templateMbId": "half_apron",
     "name": "Half Apron",
-    "value": 155,
     "type": "BodyArmor",
     "weight": 0.7,
     "armor": {
@@ -8033,7 +7677,6 @@
   {
     "templateMbId": "half_mail_and_plate_barding",
     "name": "Half Mail And Plate Barding",
-    "value": 10490,
     "type": "MountHarness",
     "weight": 16.0,
     "armor": {
@@ -8047,7 +7690,6 @@
   {
     "templateMbId": "half_scale_barding",
     "name": "Half Scale Barding",
-    "value": 11210,
     "type": "MountHarness",
     "weight": 17.0,
     "armor": {
@@ -8061,7 +7703,6 @@
   {
     "templateMbId": "halfchain_barding",
     "name": "Halfchain Barding",
-    "value": 8474,
     "type": "MountHarness",
     "weight": 16.0,
     "armor": {
@@ -8075,7 +7716,6 @@
   {
     "templateMbId": "hauberk",
     "name": "Western Hauberk",
-    "value": 8795,
     "type": "BodyArmor",
     "weight": 7.3,
     "armor": {
@@ -8089,7 +7729,6 @@
   {
     "templateMbId": "head_piece",
     "name": "Western Scarf",
-    "value": 248,
     "type": "HeadArmor",
     "weight": 0.2,
     "armor": {
@@ -8103,7 +7742,6 @@
   {
     "templateMbId": "head_scarf",
     "name": "Brown Hijab",
-    "value": 92,
     "type": "HeadArmor",
     "weight": 0.1,
     "armor": {
@@ -8117,7 +7755,6 @@
   {
     "templateMbId": "head_wrapped",
     "name": "Western Head Wrap",
-    "value": 92,
     "type": "HeadArmor",
     "weight": 0.3,
     "armor": {
@@ -8131,7 +7768,6 @@
   {
     "templateMbId": "head_wrapping",
     "name": "Western Head Wrapping",
-    "value": 92,
     "type": "HeadArmor",
     "weight": 0.05,
     "armor": {
@@ -8145,7 +7781,6 @@
   {
     "templateMbId": "headscarf",
     "name": "Western Loose Head Scarf",
-    "value": 248,
     "type": "HeadArmor",
     "weight": 0.5,
     "armor": {
@@ -8159,7 +7794,6 @@
   {
     "templateMbId": "headscarf_c",
     "name": "Western Head Scarf",
-    "value": 184,
     "type": "HeadArmor",
     "weight": 0.3,
     "armor": {
@@ -8173,7 +7807,6 @@
   {
     "templateMbId": "headscarf_d",
     "name": "Hijab",
-    "value": 184,
     "type": "HeadArmor",
     "weight": 0.5,
     "armor": {
@@ -8187,7 +7820,6 @@
   {
     "templateMbId": "heater_shield_with_cutout",
     "name": "Heater Shield With Cutout",
-    "value": 4817,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -8216,7 +7848,6 @@
   {
     "templateMbId": "heavy_heater_shield",
     "name": "Heavy Heater Shield",
-    "value": 24825,
     "type": "Shield",
     "weight": 3.3,
     "weapons": [
@@ -8245,7 +7876,6 @@
   {
     "templateMbId": "heavy_nasalhelm_over_imperial_leather",
     "name": "Heavy Nasalhelm Over Imperial Leather",
-    "value": 6696,
     "type": "HeadArmor",
     "weight": 3.0,
     "armor": {
@@ -8259,7 +7889,6 @@
   {
     "templateMbId": "heavy_nasalhelm_over_imperial_mail",
     "name": "Heavy Nasalhelm Over Imperial Mail",
-    "value": 14797,
     "type": "HeadArmor",
     "weight": 3.6,
     "armor": {
@@ -8273,7 +7902,6 @@
   {
     "templateMbId": "heavy_nasalhelm_over_imperial_padding",
     "name": "Heavy Nasalhelm Over Imperial Padding",
-    "value": 5907,
     "type": "HeadArmor",
     "weight": 3.2,
     "armor": {
@@ -8287,7 +7915,6 @@
   {
     "templateMbId": "heavy_nasalhelm_over_laced_cloth",
     "name": "Heavy Nasalhelm Over Laced Cloth",
-    "value": 5532,
     "type": "HeadArmor",
     "weight": 3.1,
     "armor": {
@@ -8301,7 +7928,6 @@
   {
     "templateMbId": "heavy_nordic_coat",
     "name": "Northern Heavy Coat",
-    "value": 410,
     "type": "BodyArmor",
     "weight": 0.9,
     "armor": {
@@ -8315,7 +7941,6 @@
   {
     "templateMbId": "heavy_nordic_tunic",
     "name": "Heavy Northern Tunic",
-    "value": 410,
     "type": "BodyArmor",
     "weight": 1.0,
     "armor": {
@@ -8329,7 +7954,6 @@
   {
     "templateMbId": "heavy_round_shield",
     "name": "Heavy Round Shield",
-    "value": 17137,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -8358,7 +7982,6 @@
   {
     "templateMbId": "heavy_steppe_arrows",
     "name": "Stacked Steppe Arrows",
-    "value": 9794,
     "type": "Arrows",
     "weight": 0.036,
     "weapons": [
@@ -8388,7 +8011,6 @@
   {
     "templateMbId": "helmet_with_faceguard",
     "name": "Helmet With Faceguard",
-    "value": 5907,
     "type": "HeadArmor",
     "weight": 3.5,
     "armor": {
@@ -8402,7 +8024,6 @@
   {
     "templateMbId": "hemp_tunic",
     "name": "Hemp Tunic",
-    "value": 239,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -8416,7 +8037,6 @@
   {
     "templateMbId": "highland_boots",
     "name": "Highland Boots",
-    "value": 290,
     "type": "LegArmor",
     "weight": 1.0,
     "armor": {
@@ -8430,7 +8050,6 @@
   {
     "templateMbId": "highland_cloth",
     "name": "Highland Cloth",
-    "value": 815,
     "type": "BodyArmor",
     "weight": 9.0,
     "armor": {
@@ -8444,7 +8063,6 @@
   {
     "templateMbId": "highland_gloves",
     "name": "Highland Gloves",
-    "value": 686,
     "type": "HandArmor",
     "weight": 0.8,
     "armor": {
@@ -8458,7 +8076,6 @@
   {
     "templateMbId": "highland_leg_wrappings",
     "name": "Highland Leg Wrappings",
-    "value": 618,
     "type": "LegArmor",
     "weight": 1.0,
     "armor": {
@@ -8472,7 +8089,6 @@
   {
     "templateMbId": "highland_ranger_bow",
     "name": "Ranger Bow",
-    "value": 2257,
     "type": "Bow",
     "weight": 0.4,
     "weapons": [
@@ -8506,7 +8122,6 @@
   {
     "templateMbId": "highland_riders_shield",
     "name": "Highland Round Shield",
-    "value": 14496,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -8535,7 +8150,6 @@
   {
     "templateMbId": "highland_scouts_shield",
     "name": "Decorated Round Shield",
-    "value": 10820,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -8564,7 +8178,6 @@
   {
     "templateMbId": "highland_spear_3_t3",
     "name": "Reinforced Highland Spear",
-    "value": 4702,
     "type": "Polearm",
     "weight": 2.46,
     "weapons": [
@@ -8635,7 +8248,6 @@
   {
     "templateMbId": "highland_spear_4_t4",
     "name": "Steel Tipped Hooked Spear",
-    "value": 7900,
     "type": "Polearm",
     "weight": 2.03,
     "weapons": [
@@ -8688,7 +8300,6 @@
   {
     "templateMbId": "highland_spear_t2",
     "name": "Highland War Spear",
-    "value": 9844,
     "type": "Polearm",
     "weight": 2.03,
     "weapons": [
@@ -8739,7 +8350,6 @@
   {
     "templateMbId": "highland_throwing_axe_1_t2",
     "name": "Highland Throwing Axe",
-    "value": 11231,
     "type": "Thrown",
     "weight": 0.69,
     "weapons": [
@@ -8792,7 +8402,6 @@
   {
     "templateMbId": "hood",
     "name": "Western Hood",
-    "value": 169,
     "type": "ShoulderArmor",
     "weight": 0.4,
     "armor": {
@@ -8806,7 +8415,6 @@
   {
     "templateMbId": "hooked_axe_t4",
     "name": "Hooked Western Axe",
-    "value": 26805,
     "type": "TwoHandedWeapon",
     "weight": 1.52,
     "weapons": [
@@ -8837,7 +8445,6 @@
   {
     "templateMbId": "hooked_cleaver",
     "name": "Falx Knife",
-    "value": 6561,
     "type": "OneHandedWeapon",
     "weight": 0.82,
     "weapons": [
@@ -8865,7 +8472,6 @@
   {
     "templateMbId": "horse_whip",
     "name": "Horse Whip",
-    "value": 303,
     "type": "OneHandedWeapon",
     "weight": 0.2,
     "weapons": [
@@ -8893,7 +8499,6 @@
   {
     "templateMbId": "horsemans_heater_shield",
     "name": "Small Cavalry Heater Shield",
-    "value": 4876,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -8922,7 +8527,6 @@
   {
     "templateMbId": "hunter",
     "name": "Hunter",
-    "value": 23729,
     "type": "Mount",
     "weight": 350.0,
     "mount": {
@@ -8937,7 +8541,6 @@
   {
     "templateMbId": "hunting_bow",
     "name": "Hunting Bow",
-    "value": 3189,
     "type": "Bow",
     "weight": 0.3,
     "weapons": [
@@ -8971,7 +8574,6 @@
   {
     "templateMbId": "imperial_axe_t3",
     "name": "Imperial axe",
-    "value": 16029,
     "type": "OneHandedWeapon",
     "weight": 1.08,
     "weapons": [
@@ -9000,7 +8602,6 @@
   {
     "templateMbId": "imperial_cloth_coif",
     "name": "Imperial Cloth Coif",
-    "value": 184,
     "type": "HeadArmor",
     "weight": 0.2,
     "armor": {
@@ -9014,7 +8615,6 @@
   {
     "templateMbId": "imperial_goggled_helmet",
     "name": "Northern Visored Helmet",
-    "value": 17320,
     "type": "HeadArmor",
     "weight": 4.2,
     "armor": {
@@ -9028,7 +8628,6 @@
   {
     "templateMbId": "imperial_lamellar",
     "name": "Imperial Lamellar",
-    "value": 22754,
     "type": "BodyArmor",
     "weight": 22.1,
     "armor": {
@@ -9042,7 +8641,6 @@
   {
     "templateMbId": "imperial_lamellar_over_leather",
     "name": "Imperial Lamellar Over Leather",
-    "value": 6673,
     "type": "BodyArmor",
     "weight": 11.6,
     "armor": {
@@ -9056,7 +8654,6 @@
   {
     "templateMbId": "imperial_lamellar_shoulders",
     "name": "Imperial Lamellar Shoulders",
-    "value": 6901,
     "type": "ShoulderArmor",
     "weight": 3.5,
     "armor": {
@@ -9070,7 +8667,6 @@
   {
     "templateMbId": "imperial_leather_coif",
     "name": "Imperial Leather Coif",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.3,
     "armor": {
@@ -9084,7 +8680,6 @@
   {
     "templateMbId": "imperial_mail_coif",
     "name": "Imperial Mail Coif",
-    "value": 2221,
     "type": "HeadArmor",
     "weight": 1.7,
     "armor": {
@@ -9098,7 +8693,6 @@
   {
     "templateMbId": "imperial_mail_over_leather",
     "name": "Imperial Mail Over Leather",
-    "value": 5855,
     "type": "BodyArmor",
     "weight": 8.6,
     "armor": {
@@ -9112,7 +8706,6 @@
   {
     "templateMbId": "imperial_mail_over_stripped_leather",
     "name": "Imperial Mail Over Stripped Leather",
-    "value": 5855,
     "type": "BodyArmor",
     "weight": 10.2,
     "armor": {
@@ -9126,7 +8719,6 @@
   {
     "templateMbId": "imperial_mail_vest",
     "name": "Imperial Mail Vest",
-    "value": 7850,
     "type": "BodyArmor",
     "weight": 9.8,
     "armor": {
@@ -9140,7 +8732,6 @@
   {
     "templateMbId": "imperial_nasal_helm",
     "name": "Imperial Nasal Helm",
-    "value": 4154,
     "type": "HeadArmor",
     "weight": 2.2,
     "armor": {
@@ -9154,7 +8745,6 @@
   {
     "templateMbId": "imperial_open_mail_coif",
     "name": "Imperial Open Mail Coif",
-    "value": 1780,
     "type": "HeadArmor",
     "weight": 1.5,
     "armor": {
@@ -9168,7 +8758,6 @@
   {
     "templateMbId": "imperial_padded_cloth",
     "name": "Imperial Padded Cloth",
-    "value": 2930,
     "type": "BodyArmor",
     "weight": 2.8,
     "armor": {
@@ -9182,7 +8771,6 @@
   {
     "templateMbId": "imperial_padded_coif",
     "name": "Imperial Padded Coif",
-    "value": 2221,
     "type": "HeadArmor",
     "weight": 0.5,
     "armor": {
@@ -9196,7 +8784,6 @@
   {
     "templateMbId": "imperial_riding_harness",
     "name": "Imperial Riding Harness",
-    "value": 347,
     "type": "MountHarness",
     "weight": 6.0,
     "armor": {
@@ -9210,7 +8797,6 @@
   {
     "templateMbId": "imperial_robes",
     "name": "Imperial Robes",
-    "value": 815,
     "type": "BodyArmor",
     "weight": 0.9,
     "armor": {
@@ -9224,7 +8810,6 @@
   {
     "templateMbId": "imperial_scale_armor",
     "name": "Imperial Scale Armor",
-    "value": 26555,
     "type": "BodyArmor",
     "weight": 12.7,
     "armor": {
@@ -9238,7 +8823,6 @@
   {
     "templateMbId": "imperial_scale_barding",
     "name": "Imperial Scale Barding",
-    "value": 17375,
     "type": "MountHarness",
     "weight": 30.0,
     "armor": {
@@ -9252,7 +8836,6 @@
   {
     "templateMbId": "imperial_spear_t2",
     "name": "Imperial Spear",
-    "value": 3814,
     "type": "Polearm",
     "weight": 1.94,
     "weapons": [
@@ -9303,7 +8886,6 @@
   {
     "templateMbId": "imperial_studded_strip_shoulders",
     "name": "Imperial Studded Strip Shoulders",
-    "value": 5907,
     "type": "ShoulderArmor",
     "weight": 4.1,
     "armor": {
@@ -9317,7 +8899,6 @@
   {
     "templateMbId": "imperial_throwing_spear_1_t4",
     "name": "Pila",
-    "value": 6857,
     "type": "Polearm",
     "weight": 1.51,
     "weapons": [
@@ -9395,7 +8976,6 @@
   {
     "templateMbId": "iron_spatha_sword_t2",
     "name": "Iron Spatha",
-    "value": 12778,
     "type": "OneHandedWeapon",
     "weight": 1.69,
     "weapons": [
@@ -9423,7 +9003,6 @@
   {
     "templateMbId": "ironlame_feathered_spangenhelm",
     "name": "Iron Feathered Spangenhelm",
-    "value": 5907,
     "type": "HeadArmor",
     "weight": 3.2,
     "armor": {
@@ -9437,7 +9016,6 @@
   {
     "templateMbId": "ironlame_feathered_spangenhelm_over_leather",
     "name": "Iron Feathered Spangenhelm Over Leather",
-    "value": 7972,
     "type": "HeadArmor",
     "weight": 2.8,
     "armor": {
@@ -9451,7 +9029,6 @@
   {
     "templateMbId": "ironlame_feathered_spangenhelm_over_mail",
     "name": "Iron Feathered Spangenhelm Over Mail",
-    "value": 13610,
     "type": "HeadArmor",
     "weight": 3.3,
     "armor": {
@@ -9465,7 +9042,6 @@
   {
     "templateMbId": "ironlame_nasalhelm_over_imperial_cloth",
     "name": "Iron Nasalhelm Over Imperial Cloth",
-    "value": 4479,
     "type": "HeadArmor",
     "weight": 3.2,
     "armor": {
@@ -9479,7 +9055,6 @@
   {
     "templateMbId": "ironlame_nasalhelm_over_imperial_coif",
     "name": "Iron Nasalhelm Over Imperial Coif",
-    "value": 7535,
     "type": "HeadArmor",
     "weight": 4.1,
     "armor": {
@@ -9493,7 +9068,6 @@
   {
     "templateMbId": "ironlame_nasalhelm_over_imperial_mail",
     "name": "Iron Nasalhelm Over Imperial Mail",
-    "value": 9848,
     "type": "HeadArmor",
     "weight": 3.9,
     "armor": {
@@ -9507,7 +9081,6 @@
   {
     "templateMbId": "ironlame_nasalhelm_over_imperial_padding",
     "name": "Iron Nasalhelm Over Imperial Padding",
-    "value": 4818,
     "type": "HeadArmor",
     "weight": 3.4,
     "armor": {
@@ -9521,7 +9094,6 @@
   {
     "templateMbId": "ironlame_roundkettle_over_imperial_leather",
     "name": "Iron Roundkettle Over Imperial Leather",
-    "value": 5169,
     "type": "HeadArmor",
     "weight": 3.1,
     "armor": {
@@ -9535,7 +9107,6 @@
   {
     "templateMbId": "ironlame_roundkettle_over_imperial_mail",
     "name": "Iron Roundkettle Over Imperial Mail",
-    "value": 5907,
     "type": "HeadArmor",
     "weight": 3.6,
     "armor": {
@@ -9549,7 +9120,6 @@
   {
     "templateMbId": "ironlame_spiked_kettle_over_mail",
     "name": "Iron Spiked Kettle Over Mail",
-    "value": 6696,
     "type": "HeadArmor",
     "weight": 3.8,
     "armor": {
@@ -9563,7 +9133,6 @@
   {
     "templateMbId": "ironrim_kite_shield",
     "name": "Ironrimed Kite Shield",
-    "value": 5889,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -9592,7 +9161,6 @@
   {
     "templateMbId": "ironrim_riders_kite_shield",
     "name": "Reinforced Ironrimmed Kite Shield",
-    "value": 6550,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -9621,7 +9189,6 @@
   {
     "templateMbId": "jousting_shield",
     "name": "Knights Shield",
-    "value": 6382,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -9650,7 +9217,6 @@
   {
     "templateMbId": "judgement_mace_t3",
     "name": "Judgement",
-    "value": 15687,
     "type": "OneHandedWeapon",
     "weight": 1.83,
     "weapons": [
@@ -9678,7 +9244,6 @@
   {
     "templateMbId": "kaskara_2hsword_t3",
     "name": "Ridged Long Kaskara",
-    "value": 34455,
     "type": "TwoHandedWeapon",
     "weight": 1.76,
     "weapons": [
@@ -9726,7 +9291,6 @@
   {
     "templateMbId": "kettle_hat_over_mail_coif",
     "name": "Kettle Hat Over Mail Coif",
-    "value": 8423,
     "type": "HeadArmor",
     "weight": 2.9,
     "armor": {
@@ -9740,7 +9304,6 @@
   {
     "templateMbId": "kettle_hat_over_padded_cloth",
     "name": "Kettle Hat Over Padded Cloth",
-    "value": 7535,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -9754,7 +9317,6 @@
   {
     "templateMbId": "kettle_hat_over_padded_coif",
     "name": "Kettle Hat Over Padded Coif",
-    "value": 7535,
     "type": "HeadArmor",
     "weight": 1.4,
     "armor": {
@@ -9768,7 +9330,6 @@
   {
     "templateMbId": "kettle_helmet_over_arming_coif",
     "name": "Kettle Helmet Over Arming Coif",
-    "value": 6296,
     "type": "HeadArmor",
     "weight": 1.0,
     "armor": {
@@ -9782,7 +9343,6 @@
   {
     "templateMbId": "kettle_helmet_over_laced_coif",
     "name": "Kettle Helmet Over Laced Coif",
-    "value": 7109,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -9796,7 +9356,6 @@
   {
     "templateMbId": "kettle_helmet_over_mail",
     "name": "Kettle Helmet Over Mail",
-    "value": 8885,
     "type": "HeadArmor",
     "weight": 3.1,
     "armor": {
@@ -9810,7 +9369,6 @@
   {
     "templateMbId": "kettle_helmet_over_padded_cap",
     "name": "Kettle Helmet Over Padded Cap",
-    "value": 5907,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -9824,7 +9382,6 @@
   {
     "templateMbId": "kettle_helmet_over_padded_cloth",
     "name": "Kettle Helmet Over Padded Cloth",
-    "value": 6696,
     "type": "HeadArmor",
     "weight": 1.1,
     "armor": {
@@ -9838,7 +9395,6 @@
   {
     "templateMbId": "kettle_helmet_over_padded_coif",
     "name": "Kettle Helmet Over Padded Coif",
-    "value": 7109,
     "type": "HeadArmor",
     "weight": 1.3,
     "armor": {
@@ -9852,7 +9408,6 @@
   {
     "templateMbId": "kettle_helmet_with_leather",
     "name": "Kettle Helmet With Leather",
-    "value": 3539,
     "type": "HeadArmor",
     "weight": 1.0,
     "armor": {
@@ -9866,7 +9421,6 @@
   {
     "templateMbId": "kettle_helmet_with_mail",
     "name": "Kettle Helmet With Mail",
-    "value": 4818,
     "type": "HeadArmor",
     "weight": 2.7,
     "armor": {
@@ -9880,7 +9434,6 @@
   {
     "templateMbId": "khuzait_belt_leather",
     "name": "Eastern Leather With Belt",
-    "value": 722,
     "type": "BodyArmor",
     "weight": 2.4,
     "armor": {
@@ -9894,7 +9447,6 @@
   {
     "templateMbId": "khuzait_civil_coat",
     "name": "Eastern Rich Coat",
-    "value": 554,
     "type": "BodyArmor",
     "weight": 2.7,
     "armor": {
@@ -9908,7 +9460,6 @@
   {
     "templateMbId": "khuzait_civil_coat_b",
     "name": "Eastern Thick Coat",
-    "value": 554,
     "type": "BodyArmor",
     "weight": 2.7,
     "armor": {
@@ -9922,7 +9473,6 @@
   {
     "templateMbId": "khuzait_curved_boots",
     "name": "Eastern Curved Boots",
-    "value": 290,
     "type": "LegArmor",
     "weight": 0.9,
     "armor": {
@@ -9936,7 +9486,6 @@
   {
     "templateMbId": "khuzait_dress",
     "name": "Common Eastern Dress",
-    "value": 554,
     "type": "BodyArmor",
     "weight": 0.8,
     "armor": {
@@ -9950,7 +9499,6 @@
   {
     "templateMbId": "khuzait_dress_b",
     "name": "Eastern Dress with Fur",
-    "value": 635,
     "type": "BodyArmor",
     "weight": 0.9,
     "armor": {
@@ -9964,7 +9512,6 @@
   {
     "templateMbId": "khuzait_fortified_armor",
     "name": "Eastern Reinforced Armor",
-    "value": 1774,
     "type": "BodyArmor",
     "weight": 2.4,
     "armor": {
@@ -9978,7 +9525,6 @@
   {
     "templateMbId": "khuzait_horse",
     "name": "Steppe Horse",
-    "value": 21865,
     "type": "Mount",
     "weight": 456.0,
     "mount": {
@@ -9993,7 +9539,6 @@
   {
     "templateMbId": "khuzait_lamellar_strapped",
     "name": "Eastern Strapped Lamellar Armor",
-    "value": 3722,
     "type": "BodyArmor",
     "weight": 7.3,
     "armor": {
@@ -10007,7 +9552,6 @@
   {
     "templateMbId": "khuzait_lance_1_t3",
     "name": "Khuzait Light Lance",
-    "value": 5084,
     "type": "Polearm",
     "weight": 1.93,
     "weapons": [
@@ -10058,7 +9602,6 @@
   {
     "templateMbId": "khuzait_lance_2_t4",
     "name": "Khuzait Lance",
-    "value": 8466,
     "type": "Polearm",
     "weight": 1.94,
     "weapons": [
@@ -10129,7 +9672,6 @@
   {
     "templateMbId": "khuzait_lance_3_t5",
     "name": "Eastern Noble Lance",
-    "value": 10793,
     "type": "Polearm",
     "weight": 2.12,
     "weapons": [
@@ -10203,7 +9745,6 @@
   {
     "templateMbId": "khuzait_leather_pauldron",
     "name": "Eastern Leather Pauldrons",
-    "value": 1344,
     "type": "ShoulderArmor",
     "weight": 1.5,
     "armor": {
@@ -10217,7 +9758,6 @@
   {
     "templateMbId": "khuzait_leather_stitched",
     "name": "Imperial Stitched Leather",
-    "value": 6122,
     "type": "BodyArmor",
     "weight": 2.5,
     "armor": {
@@ -10231,7 +9771,6 @@
   {
     "templateMbId": "khuzait_mace_1_t2",
     "name": "Eastern Light Mace",
-    "value": 10023,
     "type": "OneHandedWeapon",
     "weight": 1.74,
     "weapons": [
@@ -10259,7 +9798,6 @@
   {
     "templateMbId": "khuzait_mace_2_t4",
     "name": "Eastern Heavy Mace",
-    "value": 18339,
     "type": "OneHandedWeapon",
     "weight": 2.35,
     "weapons": [
@@ -10287,7 +9825,6 @@
   {
     "templateMbId": "khuzait_mace_3_t4",
     "name": "Eastern Fine Steel Mace",
-    "value": 19828,
     "type": "OneHandedWeapon",
     "weight": 2.12,
     "weapons": [
@@ -10315,7 +9852,6 @@
   {
     "templateMbId": "khuzait_mace_4_t5",
     "name": "Eastern Flanged Mace",
-    "value": 19710,
     "type": "OneHandedWeapon",
     "weight": 2.15,
     "weapons": [
@@ -10343,7 +9879,6 @@
   {
     "templateMbId": "khuzait_noble_helmet_with_feathers",
     "name": "Eastern Noble Helmet with Feathers",
-    "value": 14797,
     "type": "HeadArmor",
     "weight": 3.4,
     "armor": {
@@ -10357,7 +9892,6 @@
   {
     "templateMbId": "khuzait_noble_helmet_with_fur",
     "name": "Eastern Noble Helmet with Fur",
-    "value": 13035,
     "type": "HeadArmor",
     "weight": 3.9,
     "armor": {
@@ -10371,7 +9905,6 @@
   {
     "templateMbId": "khuzait_noble_helmet_with_neckguard",
     "name": "Eastern Noble Helmet with Neckguard",
-    "value": 15409,
     "type": "HeadArmor",
     "weight": 4.0,
     "armor": {
@@ -10385,7 +9918,6 @@
   {
     "templateMbId": "khuzait_noble_sword_1_t5",
     "name": "Decorated Sabre",
-    "value": 23368,
     "type": "OneHandedWeapon",
     "weight": 1.8,
     "weapons": [
@@ -10413,7 +9945,6 @@
   {
     "templateMbId": "khuzait_noble_sword_2_t5",
     "name": "Lion Imprinted Sabre",
-    "value": 23991,
     "type": "OneHandedWeapon",
     "weight": 1.7,
     "weapons": [
@@ -10441,7 +9972,6 @@
   {
     "templateMbId": "khuzait_noble_sword_3_t5",
     "name": "Tall Gripped Ild Sword",
-    "value": 23540,
     "type": "OneHandedWeapon",
     "weight": 1.8,
     "weapons": [
@@ -10469,7 +9999,6 @@
   {
     "templateMbId": "khuzait_polearm_1_t4",
     "name": "Glaive",
-    "value": 3421,
     "type": "Polearm",
     "weight": 2.04,
     "weapons": [
@@ -10520,7 +10049,6 @@
   {
     "templateMbId": "khuzait_polearm_2_t5",
     "name": "Long Glaive",
-    "value": 10580,
     "type": "Polearm",
     "weight": 1.4,
     "weapons": [
@@ -10571,7 +10099,6 @@
   {
     "templateMbId": "khuzait_sturdy_armor",
     "name": "Eastern Mirrored Leather Armor",
-    "value": 1922,
     "type": "BodyArmor",
     "weight": 2.4,
     "armor": {
@@ -10585,7 +10112,6 @@
   {
     "templateMbId": "khuzait_sword_1_t2",
     "name": "Iron Sabre",
-    "value": 13197,
     "type": "OneHandedWeapon",
     "weight": 1.23,
     "weapons": [
@@ -10613,7 +10139,6 @@
   {
     "templateMbId": "khuzait_sword_1_t2_blunt",
     "name": "Iron Sparing Sabre",
-    "value": 22116,
     "type": "OneHandedWeapon",
     "weight": 1.23,
     "weapons": [
@@ -10641,7 +10166,6 @@
   {
     "templateMbId": "khuzait_sword_2_t3",
     "name": "Eastern Straight Sabre",
-    "value": 20349,
     "type": "OneHandedWeapon",
     "weight": 1.35,
     "weapons": [
@@ -10669,7 +10193,6 @@
   {
     "templateMbId": "khuzait_sword_3_t3",
     "name": "Long Sabre",
-    "value": 19774,
     "type": "OneHandedWeapon",
     "weight": 1.4,
     "weapons": [
@@ -10697,7 +10220,6 @@
   {
     "templateMbId": "khuzait_sword_4_t4",
     "name": "Fine Steel Sabre",
-    "value": 21078,
     "type": "OneHandedWeapon",
     "weight": 1.55,
     "weapons": [
@@ -10725,7 +10247,6 @@
   {
     "templateMbId": "khuzait_sword_5_t4",
     "name": "Heavy Sabre",
-    "value": 21002,
     "type": "OneHandedWeapon",
     "weight": 1.62,
     "weapons": [
@@ -10753,7 +10274,6 @@
   {
     "templateMbId": "kilt_over_plated_leather",
     "name": "Kilt Over Plated Leather",
-    "value": 14330,
     "type": "BodyArmor",
     "weight": 10.8,
     "armor": {
@@ -10767,7 +10287,6 @@
   {
     "templateMbId": "knights_fall_mace_t3",
     "name": "Knight's Fall",
-    "value": 14796,
     "type": "OneHandedWeapon",
     "weight": 1.9,
     "weapons": [
@@ -10795,7 +10314,6 @@
   {
     "templateMbId": "laced_cloth_coif",
     "name": "Laced Cloth Coif",
-    "value": 517,
     "type": "HeadArmor",
     "weight": 0.4,
     "armor": {
@@ -10809,7 +10327,6 @@
   {
     "templateMbId": "laced_coif",
     "name": "Laced Coif",
-    "value": 1780,
     "type": "HeadArmor",
     "weight": 0.4,
     "armor": {
@@ -10823,7 +10340,6 @@
   {
     "templateMbId": "laced_dress",
     "name": "Laced Dress",
-    "value": 122,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -10837,7 +10353,6 @@
   {
     "templateMbId": "ladys_shoe",
     "name": "Lady's Shoes",
-    "value": 67,
     "type": "LegArmor",
     "weight": 0.6,
     "armor": {
@@ -10851,7 +10366,6 @@
   {
     "templateMbId": "lamellar_plate_boots",
     "name": "Lamellar Plate Boots",
-    "value": 3004,
     "type": "LegArmor",
     "weight": 3.5,
     "armor": {
@@ -10865,7 +10379,6 @@
   {
     "templateMbId": "lamellar_plate_gauntlets",
     "name": "Lamellar Plate Gauntlets",
-    "value": 4871,
     "type": "HandArmor",
     "weight": 1.8,
     "armor": {
@@ -10879,7 +10392,6 @@
   {
     "templateMbId": "lamellar_shoulders",
     "name": "Lamellar Shoulders",
-    "value": 2399,
     "type": "ShoulderArmor",
     "weight": 5.0,
     "armor": {
@@ -10893,7 +10405,6 @@
   {
     "templateMbId": "lamellar_with_scale_skirt",
     "name": "Lamellar With Scale Skirt",
-    "value": 25439,
     "type": "BodyArmor",
     "weight": 12.4,
     "armor": {
@@ -10907,7 +10418,6 @@
   {
     "templateMbId": "large_adarga",
     "name": "Large Adarga",
-    "value": 6250,
     "type": "Shield",
     "weight": 7.3,
     "weapons": [
@@ -10936,7 +10446,6 @@
   {
     "templateMbId": "large_franziskaa_axe_t3",
     "name": "Large Franziska Axe",
-    "value": 14457,
     "type": "OneHandedWeapon",
     "weight": 1.21,
     "weapons": [
@@ -10965,7 +10474,6 @@
   {
     "templateMbId": "layered_leather_tunic",
     "name": "Layered Leather Tunic",
-    "value": 1247,
     "type": "BodyArmor",
     "weight": 1.2,
     "armor": {
@@ -10979,7 +10487,6 @@
   {
     "templateMbId": "layered_robe",
     "name": "Layered Robe",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 14.0,
     "armor": {
@@ -10993,7 +10500,6 @@
   {
     "templateMbId": "leafblade_throwing_knife",
     "name": "Leafblade Throwing Knife",
-    "value": 3420,
     "type": "Thrown",
     "weight": 0.86,
     "weapons": [
@@ -11045,7 +10551,6 @@
   {
     "templateMbId": "leather_and_iron_plate_armor",
     "name": "Leather Armor with Iron Plates",
-    "value": 2930,
     "type": "BodyArmor",
     "weight": 9.6,
     "armor": {
@@ -11059,7 +10564,6 @@
   {
     "templateMbId": "leather_apron",
     "name": "Leather Apron",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 2.5,
     "armor": {
@@ -11073,7 +10577,6 @@
   {
     "templateMbId": "leather_boots",
     "name": "Eastern Leather Boots",
-    "value": 211,
     "type": "LegArmor",
     "weight": 0.8,
     "armor": {
@@ -11087,7 +10590,6 @@
   {
     "templateMbId": "leather_bound_kite_shield",
     "name": "Leather Bound Kite Shield",
-    "value": 3256,
     "type": "Shield",
     "weight": 6.3,
     "weapons": [
@@ -11116,7 +10618,6 @@
   {
     "templateMbId": "leather_cap",
     "name": "Leather Cap",
-    "value": 517,
     "type": "HeadArmor",
     "weight": 0.4,
     "armor": {
@@ -11130,7 +10631,6 @@
   {
     "templateMbId": "leather_cavalier_boots",
     "name": "Leather Cavalier Boots",
-    "value": 384,
     "type": "LegArmor",
     "weight": 0.9,
     "armor": {
@@ -11144,7 +10644,6 @@
   {
     "templateMbId": "leather_coat",
     "name": "Western Leather Coat",
-    "value": 1130,
     "type": "BodyArmor",
     "weight": 2.3,
     "armor": {
@@ -11158,7 +10657,6 @@
   {
     "templateMbId": "leather_coat_over_cloth",
     "name": "Leather Coat Over Cloth",
-    "value": 722,
     "type": "BodyArmor",
     "weight": 0.7,
     "armor": {
@@ -11172,7 +10670,6 @@
   {
     "templateMbId": "leather_gloves",
     "name": "Leather Gloves",
-    "value": 229,
     "type": "HandArmor",
     "weight": 0.4,
     "armor": {
@@ -11186,7 +10683,6 @@
   {
     "templateMbId": "leather_lamellar_armor",
     "name": "Eastern Leather Lamellar Armor",
-    "value": 5594,
     "type": "BodyArmor",
     "weight": 2.6,
     "armor": {
@@ -11200,7 +10696,6 @@
   {
     "templateMbId": "leather_lamellar_shoulders",
     "name": "Leather Lamellar Shoulders",
-    "value": 2399,
     "type": "ShoulderArmor",
     "weight": 2.3,
     "armor": {
@@ -11214,7 +10709,6 @@
   {
     "templateMbId": "leather_round_shield",
     "name": "Large Round Shield",
-    "value": 11012,
     "type": "Shield",
     "weight": 6.9,
     "weapons": [
@@ -11243,7 +10737,6 @@
   {
     "templateMbId": "leather_scale_armor",
     "name": "Leather Scale Armor",
-    "value": 2570,
     "type": "BodyArmor",
     "weight": 8.6,
     "armor": {
@@ -11257,7 +10750,6 @@
   {
     "templateMbId": "leather_shoes",
     "name": "Leather Shoes",
-    "value": 147,
     "type": "LegArmor",
     "weight": 0.7,
     "armor": {
@@ -11271,7 +10763,6 @@
   {
     "templateMbId": "leather_strips_over_padded_robe",
     "name": "Leather Strips Over Padded Robe",
-    "value": 7547,
     "type": "BodyArmor",
     "weight": 4.1,
     "armor": {
@@ -11285,7 +10776,6 @@
   {
     "templateMbId": "leather_studdedhelm",
     "name": "Highland Leather Studded Helm",
-    "value": 1390,
     "type": "HeadArmor",
     "weight": 0.5,
     "armor": {
@@ -11299,7 +10789,6 @@
   {
     "templateMbId": "leather_studdedhelm_over_headcloth",
     "name": "Leather Studdedhelm Over Headcloth",
-    "value": 1780,
     "type": "HeadArmor",
     "weight": 1.1,
     "armor": {
@@ -11313,7 +10802,6 @@
   {
     "templateMbId": "leather_studdedhelm_over_roughscale",
     "name": "Leather Studdedhelm Over Roughscale",
-    "value": 3840,
     "type": "HeadArmor",
     "weight": 3.6,
     "armor": {
@@ -11327,7 +10815,6 @@
   {
     "templateMbId": "leather_studdedhelm_over_thinhide",
     "name": "Leather Studdedhelm Over Thinhide",
-    "value": 1994,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -11341,7 +10828,6 @@
   {
     "templateMbId": "leather_tunic",
     "name": "Leather Tunic",
-    "value": 1499,
     "type": "BodyArmor",
     "weight": 2.1,
     "armor": {
@@ -11355,7 +10841,6 @@
   {
     "templateMbId": "leatherlame_feathered_spangenhelm_over_leather",
     "name": "Bronze Feathered Spangenhelm Over Leather",
-    "value": 8423,
     "type": "HeadArmor",
     "weight": 1.7,
     "armor": {
@@ -11369,7 +10854,6 @@
   {
     "templateMbId": "leatherlame_feathered_spangenhelm_over_mail",
     "name": "Bronze Feathered Spangenhelm Over Mail",
-    "value": 14197,
     "type": "HeadArmor",
     "weight": 3.4,
     "armor": {
@@ -11383,7 +10867,6 @@
   {
     "templateMbId": "leatherlame_nasalhelm_over_imperial_leather",
     "name": "Bronze Nasalhelm Over Imperial Leather",
-    "value": 7535,
     "type": "HeadArmor",
     "weight": 1.9,
     "armor": {
@@ -11397,7 +10880,6 @@
   {
     "templateMbId": "leatherlame_nasalhelm_over_imperial_mail",
     "name": "Bronze Nasalhelm Over Imperial Mail",
-    "value": 9361,
     "type": "HeadArmor",
     "weight": 3.7,
     "armor": {
@@ -11411,7 +10893,6 @@
   {
     "templateMbId": "leatherlame_roundkettle",
     "name": "Bronze Roundkettle",
-    "value": 3840,
     "type": "HeadArmor",
     "weight": 1.8,
     "armor": {
@@ -11425,7 +10906,6 @@
   {
     "templateMbId": "leatherlame_roundkettle_over_imperial_leather",
     "name": "Bronze Roundkettle Over Imperial Leather",
-    "value": 7535,
     "type": "HeadArmor",
     "weight": 1.4,
     "armor": {
@@ -11439,7 +10919,6 @@
   {
     "templateMbId": "leatherlame_roundkettle_over_imperial_mail",
     "name": "Bronze Roundkettle Over Imperial Mail",
-    "value": 4818,
     "type": "HeadArmor",
     "weight": 3.4,
     "armor": {
@@ -11453,7 +10932,6 @@
   {
     "templateMbId": "legionary_mail",
     "name": "Legionary Mail",
-    "value": 13919,
     "type": "BodyArmor",
     "weight": 10.5,
     "armor": {
@@ -11467,7 +10945,6 @@
   {
     "templateMbId": "lendman_helmet_over_full_mail",
     "name": "Northern Warlord Helmet Over Full Mail",
-    "value": 15409,
     "type": "HeadArmor",
     "weight": 4.3,
     "armor": {
@@ -11481,7 +10958,6 @@
   {
     "templateMbId": "lendman_helmet_over_mail",
     "name": "Northern Warlord Helmet Over Mail",
-    "value": 14197,
     "type": "HeadArmor",
     "weight": 1.9,
     "armor": {
@@ -11495,7 +10971,6 @@
   {
     "templateMbId": "leopard_pelt",
     "name": "Leopard Pelt",
-    "value": 601,
     "type": "ShoulderArmor",
     "weight": 2.0,
     "armor": {
@@ -11509,7 +10984,6 @@
   {
     "templateMbId": "light tunic",
     "name": "Light Tunic",
-    "value": 122,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -11523,7 +10997,6 @@
   {
     "templateMbId": "light_harness",
     "name": "Light Harness",
-    "value": 410,
     "type": "MountHarness",
     "weight": 5.0,
     "armor": {
@@ -11537,7 +11010,6 @@
   {
     "templateMbId": "light_horsemans_kite_shield",
     "name": "Light Cavalry Kite Shield",
-    "value": 7313,
     "type": "Shield",
     "weight": 1.9,
     "weapons": [
@@ -11566,7 +11038,6 @@
   {
     "templateMbId": "light_mace_t3",
     "name": "Light Mace",
-    "value": 14112,
     "type": "OneHandedWeapon",
     "weight": 1.91,
     "weapons": [
@@ -11594,7 +11065,6 @@
   {
     "templateMbId": "long_desert_robe",
     "name": "Long Southern Robe",
-    "value": 155,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -11608,7 +11078,6 @@
   {
     "templateMbId": "long_fur_coat",
     "name": "Long Fur Coat",
-    "value": 1370,
     "type": "BodyArmor",
     "weight": 2.6,
     "armor": {
@@ -11622,7 +11091,6 @@
   {
     "templateMbId": "long_hemp_tunic",
     "name": "Long Hemp Tunic",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -11636,7 +11104,6 @@
   {
     "templateMbId": "long_padded_robe",
     "name": "Long Padded Robe",
-    "value": 1774,
     "type": "BodyArmor",
     "weight": 22.3,
     "armor": {
@@ -11650,7 +11117,6 @@
   {
     "templateMbId": "long_woolen_tunic",
     "name": "Long Woolen Tunic",
-    "value": 122,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -11664,7 +11130,6 @@
   {
     "templateMbId": "longbow_recurve_desert_bow",
     "name": "Southern Strong Longbow",
-    "value": 12541,
     "type": "Bow",
     "weight": 0.3,
     "weapons": [
@@ -11698,7 +11163,6 @@
   {
     "templateMbId": "loose_wrapped_desert_helmet",
     "name": "Loose Wrapped Southern Helmet",
-    "value": 1780,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -11712,7 +11176,6 @@
   {
     "templateMbId": "lordly_mail_mitten",
     "name": "Heavy Mail Mittens",
-    "value": 5288,
     "type": "HandArmor",
     "weight": 1.7,
     "armor": {
@@ -11726,7 +11189,6 @@
   {
     "templateMbId": "lowland_longbow",
     "name": "Western Longbow",
-    "value": 7067,
     "type": "Bow",
     "weight": 0.5,
     "weapons": [
@@ -11760,7 +11222,6 @@
   {
     "templateMbId": "lowland_throwing_knife",
     "name": "Western Throwing Knife",
-    "value": 3257,
     "type": "Thrown",
     "weight": 0.81,
     "weapons": [
@@ -11812,7 +11273,6 @@
   {
     "templateMbId": "lowland_yew_bow",
     "name": "Western Yew Bow",
-    "value": 11051,
     "type": "Bow",
     "weight": 0.5,
     "weapons": [
@@ -11846,7 +11306,6 @@
   {
     "templateMbId": "mail_and_plate_barding",
     "name": "Mail And Plate Barding",
-    "value": 14330,
     "type": "MountHarness",
     "weight": 26.8,
     "armor": {
@@ -11860,7 +11319,6 @@
   {
     "templateMbId": "mail_cavalier_boots",
     "name": "Mail Cavalier Boots",
-    "value": 4333,
     "type": "LegArmor",
     "weight": 1.8,
     "armor": {
@@ -11874,7 +11332,6 @@
   {
     "templateMbId": "mail_chausses",
     "name": "Mail Chausses",
-    "value": 3978,
     "type": "LegArmor",
     "weight": 2.9,
     "armor": {
@@ -11888,7 +11345,6 @@
   {
     "templateMbId": "mail_coif",
     "name": "Mail Coif",
-    "value": 4154,
     "type": "HeadArmor",
     "weight": 1.7,
     "armor": {
@@ -11902,7 +11358,6 @@
   {
     "templateMbId": "mail_mitten",
     "name": "Mail Mitten",
-    "value": 3722,
     "type": "HandArmor",
     "weight": 1.4,
     "armor": {
@@ -11916,7 +11371,6 @@
   {
     "templateMbId": "mail_shirt",
     "name": "Western Mail Shirt",
-    "value": 7547,
     "type": "BodyArmor",
     "weight": 7.5,
     "armor": {
@@ -11930,7 +11384,6 @@
   {
     "templateMbId": "mail_shoulders",
     "name": "Mail Shoulders",
-    "value": 1344,
     "type": "ShoulderArmor",
     "weight": 2.7,
     "armor": {
@@ -11944,7 +11397,6 @@
   {
     "templateMbId": "merchants_fur_coat",
     "name": "Merchant's Fur Coat",
-    "value": 914,
     "type": "BodyArmor",
     "weight": 2.9,
     "armor": {
@@ -11958,7 +11410,6 @@
   {
     "templateMbId": "merchants_hat",
     "name": "Merchant's Hat",
-    "value": 92,
     "type": "HeadArmor",
     "weight": 0.1,
     "armor": {
@@ -11972,7 +11423,6 @@
   {
     "templateMbId": "military_fork_pike_t3",
     "name": "Notched Military Fork",
-    "value": 6700,
     "type": "Polearm",
     "weight": 2.09,
     "weapons": [
@@ -12003,7 +11453,6 @@
   {
     "templateMbId": "military_fork_t2",
     "name": "Military Fork",
-    "value": 3455,
     "type": "Polearm",
     "weight": 2.17,
     "weapons": [
@@ -12054,7 +11503,6 @@
   {
     "templateMbId": "monk_robe",
     "name": "Scholars Robe",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 0.5,
     "armor": {
@@ -12068,7 +11516,6 @@
   {
     "templateMbId": "morningstar_mace_t3",
     "name": "Morningstar",
-    "value": 11668,
     "type": "OneHandedWeapon",
     "weight": 2.2,
     "weapons": [
@@ -12096,7 +11543,6 @@
   {
     "templateMbId": "mountain_hunting_bow",
     "name": "Mountain Hunting Bow",
-    "value": 2687,
     "type": "Bow",
     "weight": 0.3,
     "weapons": [
@@ -12130,7 +11576,6 @@
   {
     "templateMbId": "mule",
     "name": "Mule",
-    "value": 8477,
     "type": "Mount",
     "weight": 150.0,
     "mount": {
@@ -12145,7 +11590,6 @@
   {
     "templateMbId": "mule_load_a",
     "name": "Mule Harness with Pack",
-    "value": 410,
     "type": "MountHarness",
     "weight": 30.0,
     "armor": {
@@ -12159,7 +11603,6 @@
   {
     "templateMbId": "mule_load_b",
     "name": "Mule Harness with Baskets",
-    "value": 410,
     "type": "MountHarness",
     "weight": 30.0,
     "armor": {
@@ -12173,7 +11616,6 @@
   {
     "templateMbId": "mule_load_c",
     "name": "Mule Harness with Bags",
-    "value": 410,
     "type": "MountHarness",
     "weight": 30.0,
     "armor": {
@@ -12187,7 +11629,6 @@
   {
     "templateMbId": "narrow_sword_t3",
     "name": "Narrow Sword",
-    "value": 16917,
     "type": "OneHandedWeapon",
     "weight": 1.52,
     "weapons": [
@@ -12215,7 +11656,6 @@
   {
     "templateMbId": "nasal_cervelliere_over_laced_coif",
     "name": "Nasal Cervelliere Over Laced Coif",
-    "value": 5169,
     "type": "HeadArmor",
     "weight": 1.1,
     "armor": {
@@ -12229,7 +11669,6 @@
   {
     "templateMbId": "nasal_cervelliere_over_mail_coif",
     "name": "Nasal Cervelliere Over Mail Coif",
-    "value": 3250,
     "type": "HeadArmor",
     "weight": 2.6,
     "armor": {
@@ -12243,7 +11682,6 @@
   {
     "templateMbId": "nasal_cervelliere_over_padded_cap",
     "name": "Nasal Cervelliere Over Padded Cap",
-    "value": 4479,
     "type": "HeadArmor",
     "weight": 1.0,
     "armor": {
@@ -12257,7 +11695,6 @@
   {
     "templateMbId": "nasal_cervelliere_over_padded_coif",
     "name": "Nasal Cervelliere Over Padded Coif",
-    "value": 2221,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -12271,7 +11708,6 @@
   {
     "templateMbId": "nasal_helmet",
     "name": "Northern Nasal Helmet",
-    "value": 2221,
     "type": "HeadArmor",
     "weight": 1.8,
     "armor": {
@@ -12285,7 +11721,6 @@
   {
     "templateMbId": "nasal_helmet_over_cloth_headwrap",
     "name": "Nasal Helmet Over Cloth Headwrap",
-    "value": 4479,
     "type": "HeadArmor",
     "weight": 1.1,
     "armor": {
@@ -12299,7 +11734,6 @@
   {
     "templateMbId": "nasal_helmet_over_laced_coif",
     "name": "Nasal Helmet Over Laced Coif",
-    "value": 6696,
     "type": "HeadArmor",
     "weight": 1.3,
     "armor": {
@@ -12313,7 +11747,6 @@
   {
     "templateMbId": "nasal_helmet_over_mail",
     "name": "Nasal Helmet Over Mail",
-    "value": 3250,
     "type": "HeadArmor",
     "weight": 3.1,
     "armor": {
@@ -12327,7 +11760,6 @@
   {
     "templateMbId": "nasal_helmet_over_mail_coif",
     "name": "Nasal Helmet Over Mail Coif",
-    "value": 6696,
     "type": "HeadArmor",
     "weight": 2.7,
     "armor": {
@@ -12341,7 +11773,6 @@
   {
     "templateMbId": "nasal_helmet_over_padded_cloth",
     "name": "Nasal Helmet Over Padded Cloth",
-    "value": 5169,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -12355,7 +11786,6 @@
   {
     "templateMbId": "nasal_helmet_over_padded_coif",
     "name": "Nasal Helmet Over Padded Coif",
-    "value": 5907,
     "type": "HeadArmor",
     "weight": 1.4,
     "armor": {
@@ -12369,7 +11799,6 @@
   {
     "templateMbId": "nasal_helmet_with_leather",
     "name": "Nasal Helmet With Leather",
-    "value": 4818,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -12383,7 +11812,6 @@
   {
     "templateMbId": "nasal_helmet_with_mail",
     "name": "Nasal Helmet With Mail",
-    "value": 3250,
     "type": "HeadArmor",
     "weight": 1.5,
     "armor": {
@@ -12397,7 +11825,6 @@
   {
     "templateMbId": "nasalhelm_over_leather",
     "name": "Northern Nasalhelm Over Leather",
-    "value": 4154,
     "type": "HeadArmor",
     "weight": 1.4,
     "armor": {
@@ -12411,7 +11838,6 @@
   {
     "templateMbId": "nasalhelm_over_mail",
     "name": "Nasalhelm Over Mail",
-    "value": 3250,
     "type": "HeadArmor",
     "weight": 1.8,
     "armor": {
@@ -12425,7 +11851,6 @@
   {
     "templateMbId": "noble_bow",
     "name": "Noble Bow",
-    "value": 34291,
     "type": "Bow",
     "weight": 0.8,
     "weapons": [
@@ -12459,7 +11884,6 @@
   {
     "templateMbId": "noble_horse",
     "name": "Pureblood",
-    "value": 50318,
     "type": "Mount",
     "weight": 400.0,
     "mount": {
@@ -12474,7 +11898,6 @@
   {
     "templateMbId": "noble_horse_battania",
     "name": "Battanian Thoroughbred",
-    "value": 33577,
     "type": "Mount",
     "weight": 532.0,
     "mount": {
@@ -12489,7 +11912,6 @@
   {
     "templateMbId": "noble_horse_eastern",
     "name": "Asaligat",
-    "value": 32519,
     "type": "Mount",
     "weight": 510.0,
     "mount": {
@@ -12504,7 +11926,6 @@
   {
     "templateMbId": "noble_horse_imperial",
     "name": "Cossian",
-    "value": 29491,
     "type": "Mount",
     "weight": 562.0,
     "mount": {
@@ -12519,7 +11940,6 @@
   {
     "templateMbId": "noble_horse_northern",
     "name": "Tyal Horse",
-    "value": 29909,
     "type": "Mount",
     "weight": 515.0,
     "mount": {
@@ -12534,7 +11954,6 @@
   {
     "templateMbId": "noble_horse_southern",
     "name": "Nahasawi",
-    "value": 33178,
     "type": "Mount",
     "weight": 520.0,
     "mount": {
@@ -12549,7 +11968,6 @@
   {
     "templateMbId": "noble_horse_western",
     "name": "Destrier",
-    "value": 32476,
     "type": "Mount",
     "weight": 533.0,
     "mount": {
@@ -12564,7 +11982,6 @@
   {
     "templateMbId": "noble_long_bow",
     "name": "Noble Long Bow",
-    "value": 32779,
     "type": "Bow",
     "weight": 0.8,
     "weapons": [
@@ -12598,7 +12015,6 @@
   {
     "templateMbId": "nomad_bow",
     "name": "Nomad Bow",
-    "value": 10080,
     "type": "Bow",
     "weight": 0.5,
     "weapons": [
@@ -12632,7 +12048,6 @@
   {
     "templateMbId": "nomad_cap",
     "name": "Nomad Cap",
-    "value": 184,
     "type": "HeadArmor",
     "weight": 0.3,
     "armor": {
@@ -12646,7 +12061,6 @@
   {
     "templateMbId": "nomad_helmet",
     "name": "Nomad Helmet",
-    "value": 6296,
     "type": "HeadArmor",
     "weight": 1.1,
     "armor": {
@@ -12660,7 +12074,6 @@
   {
     "templateMbId": "nomad_padded_hood",
     "name": "Nomad Padded Hood",
-    "value": 184,
     "type": "HeadArmor",
     "weight": 0.4,
     "armor": {
@@ -12674,7 +12087,6 @@
   {
     "templateMbId": "nordic_fur_cap",
     "name": "Northern Cap",
-    "value": 1049,
     "type": "HeadArmor",
     "weight": 0.3,
     "armor": {
@@ -12688,7 +12100,6 @@
   {
     "templateMbId": "nordic_hauberk",
     "name": "Northern Hauberk",
-    "value": 6122,
     "type": "BodyArmor",
     "weight": 8.3,
     "armor": {
@@ -12702,7 +12113,6 @@
   {
     "templateMbId": "nordic_helmet",
     "name": "Northern Visored Cap",
-    "value": 7535,
     "type": "HeadArmor",
     "weight": 4.1,
     "armor": {
@@ -12716,7 +12126,6 @@
   {
     "templateMbId": "nordic_lamellar_armor",
     "name": "Northern Bronze Scale Vest Over Gambeson",
-    "value": 6673,
     "type": "BodyArmor",
     "weight": 15.0,
     "armor": {
@@ -12730,7 +12139,6 @@
   {
     "templateMbId": "nordic_lamellar_vest",
     "name": "Northern Bronze Scale Vest",
-    "value": 3722,
     "type": "BodyArmor",
     "weight": 12.0,
     "armor": {
@@ -12744,7 +12152,6 @@
   {
     "templateMbId": "nordic_leather_cap",
     "name": "Northern Leather Cap",
-    "value": 1049,
     "type": "HeadArmor",
     "weight": 0.4,
     "armor": {
@@ -12758,7 +12165,6 @@
   {
     "templateMbId": "nordic_padded_cloth",
     "name": "Northern Layered Cloth",
-    "value": 554,
     "type": "BodyArmor",
     "weight": 1.1,
     "armor": {
@@ -12772,7 +12178,6 @@
   {
     "templateMbId": "nordic_shortbow",
     "name": "Nordic Shortbow",
-    "value": 6797,
     "type": "Bow",
     "weight": 0.3,
     "weapons": [
@@ -12806,7 +12211,6 @@
   {
     "templateMbId": "nordic_sloven",
     "name": "Northern Leather Over Heavy Cloth",
-    "value": 1019,
     "type": "BodyArmor",
     "weight": 1.8,
     "armor": {
@@ -12820,7 +12224,6 @@
   {
     "templateMbId": "nordic_sloven_leather",
     "name": "Northern Sloven Leather",
-    "value": 1247,
     "type": "BodyArmor",
     "weight": 2.9,
     "armor": {
@@ -12834,7 +12237,6 @@
   {
     "templateMbId": "nordic_sloven_over_mail",
     "name": "Northern Leather Tabard Over Mail",
-    "value": 9794,
     "type": "BodyArmor",
     "weight": 8.4,
     "armor": {
@@ -12848,7 +12250,6 @@
   {
     "templateMbId": "nordic_tunic",
     "name": "Northern Luxery Tunic",
-    "value": 347,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -12862,7 +12263,6 @@
   {
     "templateMbId": "northern_2hsword_t4",
     "name": "Fine Steel Two Handed Sword",
-    "value": 31762,
     "type": "TwoHandedWeapon",
     "weight": 1.48,
     "weapons": [
@@ -12910,7 +12310,6 @@
   {
     "templateMbId": "northern_axe_t3",
     "name": "Northern Broad Axe",
-    "value": 30675,
     "type": "TwoHandedWeapon",
     "weight": 1.3,
     "weapons": [
@@ -12941,7 +12340,6 @@
   {
     "templateMbId": "northern_battle_axe_t3",
     "name": "Northern Simple Battle Axe",
-    "value": 16193,
     "type": "OneHandedWeapon",
     "weight": 1.15,
     "weapons": [
@@ -12970,7 +12368,6 @@
   {
     "templateMbId": "northern_brass_bracers",
     "name": "Northern Brass Bracers",
-    "value": 4470,
     "type": "HandArmor",
     "weight": 1.3,
     "armor": {
@@ -12984,7 +12381,6 @@
   {
     "templateMbId": "northern_brass_lamellar_over_mail",
     "name": "Northern Brass Lamellar Over Mail",
-    "value": 21215,
     "type": "BodyArmor",
     "weight": 23.6,
     "armor": {
@@ -12998,7 +12394,6 @@
   {
     "templateMbId": "northern_coat_of_plates",
     "name": "Northern Coat Of Plates",
-    "value": 15170,
     "type": "BodyArmor",
     "weight": 14.2,
     "armor": {
@@ -13012,7 +12407,6 @@
   {
     "templateMbId": "northern_dress",
     "name": "Northern Dress",
-    "value": 194,
     "type": "BodyArmor",
     "weight": 0.7,
     "armor": {
@@ -13026,7 +12420,6 @@
   {
     "templateMbId": "northern_fur_cap",
     "name": "Northern Fur Cap",
-    "value": 631,
     "type": "HeadArmor",
     "weight": 0.5,
     "armor": {
@@ -13040,7 +12433,6 @@
   {
     "templateMbId": "northern_goggled_helmet",
     "name": "Northern Goggled Helmet",
-    "value": 2711,
     "type": "HeadArmor",
     "weight": 1.8,
     "armor": {
@@ -13054,7 +12446,6 @@
   {
     "templateMbId": "northern_horsemans_shield",
     "name": "Reinforced Cavalry Shield",
-    "value": 7608,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -13083,7 +12474,6 @@
   {
     "templateMbId": "northern_javelin_1_t2",
     "name": "Fish Harpoon",
-    "value": 23630,
     "type": "Thrown",
     "weight": 0.98,
     "weapons": [
@@ -13136,7 +12526,6 @@
   {
     "templateMbId": "northern_javelin_2_t3",
     "name": "Woodland Javelin",
-    "value": 58936,
     "type": "Thrown",
     "weight": 1.08,
     "weapons": [
@@ -13189,7 +12578,6 @@
   {
     "templateMbId": "northern_javelin_3_t4",
     "name": "Broad Blade Javelin",
-    "value": 61843,
     "type": "Thrown",
     "weight": 1.11,
     "weapons": [
@@ -13242,7 +12630,6 @@
   {
     "templateMbId": "northern_lamellar_armor",
     "name": "Northern Lamellar Armor",
-    "value": 3119,
     "type": "BodyArmor",
     "weight": 1.9,
     "armor": {
@@ -13256,7 +12643,6 @@
   {
     "templateMbId": "northern_leather_tabard",
     "name": "Northern Leather Tabard",
-    "value": 3515,
     "type": "BodyArmor",
     "weight": 1.7,
     "armor": {
@@ -13270,7 +12656,6 @@
   {
     "templateMbId": "northern_leather_vest",
     "name": "Northern Leather Vest",
-    "value": 815,
     "type": "BodyArmor",
     "weight": 0.9,
     "armor": {
@@ -13284,7 +12669,6 @@
   {
     "templateMbId": "northern_light_harness",
     "name": "Northern Light Harness",
-    "value": 1370,
     "type": "MountHarness",
     "weight": 7.2,
     "armor": {
@@ -13298,7 +12682,6 @@
   {
     "templateMbId": "northern_noble_harness",
     "name": "Northern Noble Harness",
-    "value": 815,
     "type": "MountHarness",
     "weight": 8.9,
     "armor": {
@@ -13312,7 +12695,6 @@
   {
     "templateMbId": "northern_padded_cloth",
     "name": "Northern Padded Cloth",
-    "value": 2747,
     "type": "BodyArmor",
     "weight": 1.6,
     "armor": {
@@ -13326,7 +12708,6 @@
   {
     "templateMbId": "northern_padded_gambeson",
     "name": "Northern Padded Gambeson",
-    "value": 2075,
     "type": "BodyArmor",
     "weight": 1.5,
     "armor": {
@@ -13340,7 +12721,6 @@
   {
     "templateMbId": "northern_plated_boots",
     "name": "Northern Plated Boots",
-    "value": 2711,
     "type": "LegArmor",
     "weight": 2.9,
     "armor": {
@@ -13354,7 +12734,6 @@
   {
     "templateMbId": "northern_plated_gloves",
     "name": "Northern Plated Gloves",
-    "value": 3042,
     "type": "HandArmor",
     "weight": 1.5,
     "armor": {
@@ -13368,7 +12747,6 @@
   {
     "templateMbId": "northern_ring_barding",
     "name": "Northern Ring Barding",
-    "value": 5339,
     "type": "MountHarness",
     "weight": 15.2,
     "armor": {
@@ -13382,7 +12760,6 @@
   {
     "templateMbId": "northern_round_shield",
     "name": "Northern Round Shield",
-    "value": 8697,
     "type": "Shield",
     "weight": 3.3,
     "weapons": [
@@ -13411,7 +12788,6 @@
   {
     "templateMbId": "northern_round_sparring_shield",
     "name": "Northern Round Sparring Shield",
-    "value": 6990,
     "type": "Shield",
     "weight": 3.3,
     "weapons": [
@@ -13440,7 +12816,6 @@
   {
     "templateMbId": "northern_scouts_shield",
     "name": "Northern Cavalry Kite Shield",
-    "value": 7426,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -13469,7 +12844,6 @@
   {
     "templateMbId": "northern_spear_1_t2",
     "name": "Northern Short Simple Spear",
-    "value": 3632,
     "type": "Polearm",
     "weight": 2.11,
     "weapons": [
@@ -13520,7 +12894,6 @@
   {
     "templateMbId": "northern_spear_1_t2_blunt",
     "name": "Northern Sparing Spear",
-    "value": 4597,
     "type": "Polearm",
     "weight": 2.11,
     "weapons": [
@@ -13571,7 +12944,6 @@
   {
     "templateMbId": "northern_spear_2_t3",
     "name": "Broad Leaf Shaped Spear",
-    "value": 5724,
     "type": "Polearm",
     "weight": 1.79,
     "weapons": [
@@ -13622,7 +12994,6 @@
   {
     "templateMbId": "northern_spear_3_t4",
     "name": "Jagged Fine Steel Spear",
-    "value": 7666,
     "type": "Polearm",
     "weight": 1.87,
     "weapons": [
@@ -13673,7 +13044,6 @@
   {
     "templateMbId": "northern_spear_4_t5",
     "name": "Fine Steel Hewing Spear",
-    "value": 10016,
     "type": "Polearm",
     "weight": 2.1,
     "weapons": [
@@ -13724,7 +13094,6 @@
   {
     "templateMbId": "northern_throwing_axe_1_t1",
     "name": "Northern Throwing Axe",
-    "value": 10327,
     "type": "Thrown",
     "weight": 0.71,
     "weapons": [
@@ -13777,7 +13146,6 @@
   {
     "templateMbId": "northern_tunic",
     "name": "Northern Tunic",
-    "value": 479,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -13791,7 +13159,6 @@
   {
     "templateMbId": "northern_warlord_helmet",
     "name": "Northern Warlord Helmet",
-    "value": 14197,
     "type": "HeadArmor",
     "weight": 3.6,
     "armor": {
@@ -13805,7 +13172,6 @@
   {
     "templateMbId": "noyans_shield",
     "name": "Decorated Eastern Shield",
-    "value": 14598,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -13834,7 +13200,6 @@
   {
     "templateMbId": "old_horse",
     "name": "Old Work Horse",
-    "value": 13489,
     "type": "Mount",
     "weight": 400.0,
     "mount": {
@@ -13849,7 +13214,6 @@
   {
     "templateMbId": "old_horsemans_kite_shield",
     "name": "Wooden Kite Shield",
-    "value": 4433,
     "type": "Shield",
     "weight": 3.6,
     "weapons": [
@@ -13878,7 +13242,6 @@
   {
     "templateMbId": "old_kite_shield",
     "name": "Makeshift Kite Shield",
-    "value": 3413,
     "type": "Shield",
     "weight": 4.2,
     "weapons": [
@@ -13907,7 +13270,6 @@
   {
     "templateMbId": "old_kite_sparring_shield",
     "name": "Makeshift Kite Sparring Shield",
-    "value": 2803,
     "type": "Shield",
     "weight": 4.2,
     "weapons": [
@@ -13936,7 +13298,6 @@
   {
     "templateMbId": "open_desert_helmet",
     "name": "Open Southern Helmet",
-    "value": 2974,
     "type": "HeadArmor",
     "weight": 1.3,
     "armor": {
@@ -13950,7 +13311,6 @@
   {
     "templateMbId": "open_head_scarf",
     "name": "Open Head Scarf",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.6,
     "armor": {
@@ -13964,7 +13324,6 @@
   {
     "templateMbId": "open_mail_coif",
     "name": "Open Mail Coif",
-    "value": 4154,
     "type": "HeadArmor",
     "weight": 1.6,
     "armor": {
@@ -13978,7 +13337,6 @@
   {
     "templateMbId": "open_padded_coif",
     "name": "Open Padded Coif",
-    "value": 1390,
     "type": "HeadArmor",
     "weight": 0.3,
     "armor": {
@@ -13992,7 +13350,6 @@
   {
     "templateMbId": "ornate_adarga",
     "name": "Ornate Adarga",
-    "value": 11711,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -14021,7 +13378,6 @@
   {
     "templateMbId": "oval_shield",
     "name": "Wooden Oval Shield",
-    "value": 9044,
     "type": "Shield",
     "weight": 2.1,
     "weapons": [
@@ -14050,7 +13406,6 @@
   {
     "templateMbId": "pack_camel",
     "name": "Pack Camel",
-    "value": 11646,
     "type": "Mount",
     "weight": 150.0,
     "mount": {
@@ -14065,7 +13420,6 @@
   {
     "templateMbId": "padded_cap",
     "name": "Padded Cap",
-    "value": 1049,
     "type": "HeadArmor",
     "weight": 0.2,
     "armor": {
@@ -14079,7 +13433,6 @@
   {
     "templateMbId": "padded_cloth_with_strips",
     "name": "Padded Cloth With Strips",
-    "value": 1774,
     "type": "BodyArmor",
     "weight": 2.2,
     "armor": {
@@ -14093,7 +13446,6 @@
   {
     "templateMbId": "padded_coat",
     "name": "Western Padded Coat",
-    "value": 2930,
     "type": "BodyArmor",
     "weight": 2.4,
     "armor": {
@@ -14107,7 +13459,6 @@
   {
     "templateMbId": "padded_coif",
     "name": "Padded Half Coif",
-    "value": 1390,
     "type": "HeadArmor",
     "weight": 0.5,
     "armor": {
@@ -14121,7 +13472,6 @@
   {
     "templateMbId": "padded_leather_cape",
     "name": "Padded Leather Cape",
-    "value": 897,
     "type": "HeadArmor",
     "weight": 1.0,
     "armor": {
@@ -14135,7 +13485,6 @@
   {
     "templateMbId": "padded_leather_overcoat",
     "name": "Padded Leather Overcoat",
-    "value": 1499,
     "type": "BodyArmor",
     "weight": 3.2,
     "armor": {
@@ -14149,7 +13498,6 @@
   {
     "templateMbId": "padded_leather_shirt",
     "name": "Padded Leather Shirt",
-    "value": 2570,
     "type": "BodyArmor",
     "weight": 1.8,
     "armor": {
@@ -14163,7 +13511,6 @@
   {
     "templateMbId": "padded_leather_shoulders",
     "name": "Padded Leather Shoulders",
-    "value": 1579,
     "type": "ShoulderArmor",
     "weight": 1.4,
     "armor": {
@@ -14177,7 +13524,6 @@
   {
     "templateMbId": "padded_mitten",
     "name": "Padded Mittens",
-    "value": 844,
     "type": "HandArmor",
     "weight": 0.6,
     "armor": {
@@ -14191,7 +13537,6 @@
   {
     "templateMbId": "padded_short_coat",
     "name": "Padded Short Coat",
-    "value": 1922,
     "type": "BodyArmor",
     "weight": 2.2,
     "armor": {
@@ -14205,7 +13550,6 @@
   {
     "templateMbId": "padded_vambrace",
     "name": "Padded Vambrace",
-    "value": 546,
     "type": "HandArmor",
     "weight": 0.1,
     "armor": {
@@ -14219,7 +13563,6 @@
   {
     "templateMbId": "patched_gambeson",
     "name": "Patched Gambeson",
-    "value": 1922,
     "type": "BodyArmor",
     "weight": 2.4,
     "armor": {
@@ -14233,7 +13576,6 @@
   {
     "templateMbId": "pauldron_cape_a",
     "name": "Imperial Long Cape",
-    "value": 4154,
     "type": "ShoulderArmor",
     "weight": 3.5,
     "armor": {
@@ -14247,7 +13589,6 @@
   {
     "templateMbId": "pavise_shield",
     "name": "Pavise Shield",
-    "value": 12917,
     "type": "Shield",
     "weight": 7.0,
     "weapons": [
@@ -14276,7 +13617,6 @@
   {
     "templateMbId": "peaked_fur_hood",
     "name": "Peaked Fur Hood",
-    "value": 1049,
     "type": "HeadArmor",
     "weight": 0.7,
     "armor": {
@@ -14290,7 +13630,6 @@
   {
     "templateMbId": "peaked_helmet_over_laced_coif",
     "name": "Peaked Helmet Over Laced Coif",
-    "value": 4818,
     "type": "HeadArmor",
     "weight": 1.1,
     "armor": {
@@ -14304,7 +13643,6 @@
   {
     "templateMbId": "peaked_helmet_over_mail",
     "name": "Peaked Helmet Over Mail",
-    "value": 6696,
     "type": "HeadArmor",
     "weight": 2.6,
     "armor": {
@@ -14318,7 +13656,6 @@
   {
     "templateMbId": "peaked_helmet_over_mail_coif",
     "name": "Peaked Helmet Over Mail Coif",
-    "value": 7535,
     "type": "HeadArmor",
     "weight": 2.7,
     "armor": {
@@ -14332,7 +13669,6 @@
   {
     "templateMbId": "peaked_helmet_over_padded_cloth",
     "name": "Peaked Helmet Over Padded Cloth",
-    "value": 5169,
     "type": "HeadArmor",
     "weight": 1.0,
     "armor": {
@@ -14346,7 +13682,6 @@
   {
     "templateMbId": "peasant_2haxe_1_t1",
     "name": "Hoe",
-    "value": 9288,
     "type": "TwoHandedWeapon",
     "weight": 1.57,
     "weapons": [
@@ -14397,7 +13732,6 @@
   {
     "templateMbId": "peasant_costume",
     "name": "Commoner Clothes",
-    "value": 239,
     "type": "BodyArmor",
     "weight": 0.5,
     "armor": {
@@ -14411,7 +13745,6 @@
   {
     "templateMbId": "peasant_hammer_1_t1",
     "name": "Blacksmith Hammer",
-    "value": 3099,
     "type": "OneHandedWeapon",
     "weight": 1.4,
     "weapons": [
@@ -14439,7 +13772,6 @@
   {
     "templateMbId": "peasant_hammer_2_t1",
     "name": "Wooden Hammer",
-    "value": 2752,
     "type": "OneHandedWeapon",
     "weight": 1.4,
     "weapons": [
@@ -14467,7 +13799,6 @@
   {
     "templateMbId": "peasant_hatchet_1_t1",
     "name": "Hatchet",
-    "value": 5026,
     "type": "OneHandedWeapon",
     "weight": 1.05,
     "weapons": [
@@ -14496,7 +13827,6 @@
   {
     "templateMbId": "peasant_maul_t1",
     "name": "Makeshift Sledgehammer",
-    "value": 72176,
     "type": "Polearm",
     "weight": 1.64,
     "weapons": [
@@ -14527,7 +13857,6 @@
   {
     "templateMbId": "peasant_maul_t1_2",
     "name": "Sledgehammer",
-    "value": 28685,
     "type": "TwoHandedWeapon",
     "weight": 1.96,
     "weapons": [
@@ -14557,7 +13886,6 @@
   {
     "templateMbId": "peasant_pickaxe_1_t1",
     "name": "Pickaxe",
-    "value": 7312,
     "type": "OneHandedWeapon",
     "weight": 1.05,
     "weapons": [
@@ -14586,7 +13914,6 @@
   {
     "templateMbId": "peasant_pitchfork_1_t1",
     "name": "Iron Pitchfork",
-    "value": 2300,
     "type": "Polearm",
     "weight": 1.92,
     "weapons": [
@@ -14637,7 +13964,6 @@
   {
     "templateMbId": "peasant_pitchfork_2_t1",
     "name": "Pitchfork",
-    "value": 2942,
     "type": "Polearm",
     "weight": 1.47,
     "weapons": [
@@ -14688,7 +14014,6 @@
   {
     "templateMbId": "peasant_polearm_1_t1",
     "name": "Scythe",
-    "value": 7359,
     "type": "Polearm",
     "weight": 2.7,
     "weapons": [
@@ -14719,7 +14044,6 @@
   {
     "templateMbId": "peasant_sickle_1_t1",
     "name": "Sickle",
-    "value": 7650,
     "type": "OneHandedWeapon",
     "weight": 1.18,
     "weapons": [
@@ -14748,7 +14072,6 @@
   {
     "templateMbId": "pernach_mace_t3",
     "name": "Pernach",
-    "value": 21752,
     "type": "OneHandedWeapon",
     "weight": 1.97,
     "weapons": [
@@ -14776,7 +14099,6 @@
   {
     "templateMbId": "piercing_arrows",
     "name": "Piercing Arrows",
-    "value": 12335,
     "type": "Arrows",
     "weight": 0.041,
     "weapons": [
@@ -14806,7 +14128,6 @@
   {
     "templateMbId": "pilgrim_hood",
     "name": "Pilgrim's Hood",
-    "value": 184,
     "type": "HeadArmor",
     "weight": 0.2,
     "armor": {
@@ -14820,7 +14141,6 @@
   {
     "templateMbId": "plain_dress",
     "name": "Plain Dress",
-    "value": 122,
     "type": "BodyArmor",
     "weight": 0.5,
     "armor": {
@@ -14834,7 +14154,6 @@
   {
     "templateMbId": "plated_leather_coat",
     "name": "Plated Leather Coat",
-    "value": 17834,
     "type": "BodyArmor",
     "weight": 12.7,
     "armor": {
@@ -14848,7 +14167,6 @@
   {
     "templateMbId": "plated_strip_boots",
     "name": "Splint Boots",
-    "value": 3978,
     "type": "LegArmor",
     "weight": 2.7,
     "armor": {
@@ -14862,7 +14180,6 @@
   {
     "templateMbId": "plated_strip_gauntlets",
     "name": "Plated Striped Gauntlets",
-    "value": 4470,
     "type": "HandArmor",
     "weight": 1.4,
     "armor": {
@@ -14876,7 +14193,6 @@
   {
     "templateMbId": "plumed_fur_lined_helmet",
     "name": "Plumed Fur Lined Helmet",
-    "value": 3840,
     "type": "HeadArmor",
     "weight": 1.1,
     "armor": {
@@ -14890,7 +14206,6 @@
   {
     "templateMbId": "plumed_helmet",
     "name": "Plumed Helmet",
-    "value": 6696,
     "type": "HeadArmor",
     "weight": 2.9,
     "armor": {
@@ -14904,7 +14219,6 @@
   {
     "templateMbId": "plumed_lamellar_helmet",
     "name": "Plumed Lamellar Helmet",
-    "value": 7972,
     "type": "HeadArmor",
     "weight": 3.3,
     "armor": {
@@ -14918,7 +14232,6 @@
   {
     "templateMbId": "plumed_nomad_helmet",
     "name": "Plumed Nomad Helmet",
-    "value": 6696,
     "type": "HeadArmor",
     "weight": 1.1,
     "armor": {
@@ -14932,7 +14245,6 @@
   {
     "templateMbId": "pointed_falchion_sword_t4",
     "name": "Pointed Falchion",
-    "value": 27580,
     "type": "OneHandedWeapon",
     "weight": 1.68,
     "weapons": [
@@ -14960,7 +14272,6 @@
   {
     "templateMbId": "pointed_skullcap_over_cloth_headwrap",
     "name": "Pointed Skullcap Over Cloth Headwrap",
-    "value": 2711,
     "type": "HeadArmor",
     "weight": 1.1,
     "armor": {
@@ -14974,7 +14285,6 @@
   {
     "templateMbId": "pointed_skullcap_over_laced_coif",
     "name": "Pointed Skullcap Over Laced Coif",
-    "value": 2459,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -14988,7 +14298,6 @@
   {
     "templateMbId": "pointed_skullcap_over_mail",
     "name": "Pointed Skullcap Over Mail",
-    "value": 4479,
     "type": "HeadArmor",
     "weight": 1.3,
     "armor": {
@@ -15002,7 +14311,6 @@
   {
     "templateMbId": "pointed_skullcap_over_mail_coif",
     "name": "Pointed Skullcap Over Mail Coif",
-    "value": 4479,
     "type": "HeadArmor",
     "weight": 3.0,
     "armor": {
@@ -15016,7 +14324,6 @@
   {
     "templateMbId": "pointed_skullcap_with_mail",
     "name": "Pointed Skullcap with Mail",
-    "value": 4479,
     "type": "HeadArmor",
     "weight": 2.8,
     "armor": {
@@ -15030,7 +14337,6 @@
   {
     "templateMbId": "practice_spear_t1",
     "name": "Practice Spear",
-    "value": 3476,
     "type": "Polearm",
     "weight": 1.8,
     "weapons": [
@@ -15083,7 +14389,6 @@
   {
     "templateMbId": "pugio",
     "name": "Pugio",
-    "value": 3816,
     "type": "OneHandedWeapon",
     "weight": 0.76,
     "weapons": [
@@ -15135,7 +14440,6 @@
   {
     "templateMbId": "push_fork",
     "name": "Push Fork",
-    "value": 195,
     "type": "Polearm",
     "weight": 2.0,
     "weapons": [
@@ -15167,7 +14471,6 @@
   {
     "templateMbId": "ragged_armwraps",
     "name": "Ragged Armwraps",
-    "value": 158,
     "type": "HandArmor",
     "weight": 0.4,
     "armor": {
@@ -15181,7 +14484,6 @@
   {
     "templateMbId": "ragged_boots",
     "name": "Ragged Boots",
-    "value": 290,
     "type": "LegArmor",
     "weight": 0.8,
     "armor": {
@@ -15195,7 +14497,6 @@
   {
     "templateMbId": "ragged_robes",
     "name": "Ragged Robes",
-    "value": 194,
     "type": "BodyArmor",
     "weight": 0.9,
     "armor": {
@@ -15209,7 +14510,6 @@
   {
     "templateMbId": "range_arrows",
     "name": "Range Arrows",
-    "value": 4379,
     "type": "Arrows",
     "weight": 0.043,
     "weapons": [
@@ -15239,7 +14539,6 @@
   {
     "templateMbId": "ranger_mail",
     "name": "Ranger Mail",
-    "value": 7250,
     "type": "BodyArmor",
     "weight": 12.0,
     "armor": {
@@ -15253,7 +14552,6 @@
   {
     "templateMbId": "red_coat_over_mail",
     "name": "Red Tabard Over Mail",
-    "value": 10490,
     "type": "BodyArmor",
     "weight": 8.6,
     "armor": {
@@ -15267,7 +14565,6 @@
   {
     "templateMbId": "reinforced_flat_kite_shield",
     "name": "Reinforced Flat Kite Shield",
-    "value": 6330,
     "type": "Shield",
     "weight": 4.6,
     "weapons": [
@@ -15296,7 +14593,6 @@
   {
     "templateMbId": "reinforced_horsemans_kite_shield",
     "name": "Reinforced Cavalry Small Shield",
-    "value": 4741,
     "type": "Shield",
     "weight": 5.8,
     "weapons": [
@@ -15325,7 +14621,6 @@
   {
     "templateMbId": "reinforced_leather_vambraces",
     "name": "Reinforced Leather Vambraces",
-    "value": 3722,
     "type": "HandArmor",
     "weight": 1.0,
     "armor": {
@@ -15339,7 +14634,6 @@
   {
     "templateMbId": "reinforced_suede_armor",
     "name": "Reinforced Suede Armor",
-    "value": 1774,
     "type": "BodyArmor",
     "weight": 2.3,
     "armor": {
@@ -15353,7 +14647,6 @@
   {
     "templateMbId": "reinforced_suede_boots",
     "name": "Reinforced Suede Boots",
-    "value": 3314,
     "type": "LegArmor",
     "weight": 1.0,
     "armor": {
@@ -15367,7 +14660,6 @@
   {
     "templateMbId": "reinforced_suede_shoulders",
     "name": "Reinforced Suede Shoulders",
-    "value": 464,
     "type": "ShoulderArmor",
     "weight": 0.9,
     "armor": {
@@ -15381,7 +14673,6 @@
   {
     "templateMbId": "ridged_2hsword_t4",
     "name": "Ridged Great Sabre",
-    "value": 45839,
     "type": "TwoHandedWeapon",
     "weight": 1.86,
     "weapons": [
@@ -15429,7 +14720,6 @@
   {
     "templateMbId": "ridged_northernhelm",
     "name": "Ridged Highland helm",
-    "value": 8423,
     "type": "HeadArmor",
     "weight": 3.4,
     "armor": {
@@ -15443,7 +14733,6 @@
   {
     "templateMbId": "ridged_sabre_sword_t4",
     "name": "Ridged Sabre ",
-    "value": 21305,
     "type": "OneHandedWeapon",
     "weight": 1.53,
     "weapons": [
@@ -15471,7 +14760,6 @@
   {
     "templateMbId": "ringed_desert_armor",
     "name": "Southern Ring Mail",
-    "value": 4610,
     "type": "BodyArmor",
     "weight": 10.5,
     "armor": {
@@ -15485,7 +14773,6 @@
   {
     "templateMbId": "rough_bearskin",
     "name": "Rough Bearskin",
-    "value": 4154,
     "type": "ShoulderArmor",
     "weight": 2.3,
     "armor": {
@@ -15499,7 +14786,6 @@
   {
     "templateMbId": "rough_fur_armor",
     "name": "Rough Fur Armor",
-    "value": 1634,
     "type": "BodyArmor",
     "weight": 1.3,
     "armor": {
@@ -15513,7 +14799,6 @@
   {
     "templateMbId": "rough_fur_over_chain",
     "name": "Rough Fur Over Chain",
-    "value": 9122,
     "type": "BodyArmor",
     "weight": 14.0,
     "armor": {
@@ -15527,7 +14812,6 @@
   {
     "templateMbId": "rough_tied_boots",
     "name": "Rough Tied Boots",
-    "value": 384,
     "type": "LegArmor",
     "weight": 0.9,
     "armor": {
@@ -15541,7 +14825,6 @@
   {
     "templateMbId": "rough_tied_bracers",
     "name": "Rough Tied Bracers",
-    "value": 844,
     "type": "HandArmor",
     "weight": 0.6,
     "armor": {
@@ -15555,7 +14838,6 @@
   {
     "templateMbId": "roughcloth_shortcoat",
     "name": "Roughcloth Shortcoat",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -15569,7 +14851,6 @@
   {
     "templateMbId": "roughhide_cap",
     "name": "Northern Roughhide Cap",
-    "value": 517,
     "type": "HeadArmor",
     "weight": 0.5,
     "armor": {
@@ -15583,7 +14864,6 @@
   {
     "templateMbId": "roughscale_helmet",
     "name": "Roughscale Helmet",
-    "value": 7535,
     "type": "HeadArmor",
     "weight": 3.2,
     "armor": {
@@ -15597,7 +14877,6 @@
   {
     "templateMbId": "roughtied_leather_bracers",
     "name": "Roughtied Leather Bracers",
-    "value": 158,
     "type": "HandArmor",
     "weight": 0.5,
     "armor": {
@@ -15611,7 +14890,6 @@
   {
     "templateMbId": "roundkettle_over_imperial_cloth",
     "name": "Roundkettle Over Imperial Cloth",
-    "value": 3539,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -15625,7 +14903,6 @@
   {
     "templateMbId": "roundkettle_over_imperial_leather",
     "name": "Roundkettle Over Imperial Leather",
-    "value": 4154,
     "type": "HeadArmor",
     "weight": 1.3,
     "armor": {
@@ -15639,7 +14916,6 @@
   {
     "templateMbId": "roundkettle_over_imperial_mail",
     "name": "Roundkettle Over Imperial Mail",
-    "value": 6696,
     "type": "HeadArmor",
     "weight": 3.3,
     "armor": {
@@ -15653,7 +14929,6 @@
   {
     "templateMbId": "roundkettle_over_imperial_padding",
     "name": "Roundkettle Over Imperial Padding",
-    "value": 3250,
     "type": "HeadArmor",
     "weight": 1.4,
     "armor": {
@@ -15667,7 +14942,6 @@
   {
     "templateMbId": "roundkettle_over_laced_cloth",
     "name": "Roundkettle Over Laced Cloth",
-    "value": 2221,
     "type": "HeadArmor",
     "weight": 1.3,
     "armor": {
@@ -15681,7 +14955,6 @@
   {
     "templateMbId": "sackcloth_tunic",
     "name": "Sackcloth Tunic",
-    "value": 155,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -15695,7 +14968,6 @@
   {
     "templateMbId": "saddle_of_aeneas",
     "name": "Saddle of Aeneas",
-    "value": 17834,
     "type": "MountHarness",
     "weight": 26.0,
     "armor": {
@@ -15709,7 +14981,6 @@
   {
     "templateMbId": "scale_armor",
     "name": "Highland Scale Armor",
-    "value": 2930,
     "type": "BodyArmor",
     "weight": 10.7,
     "armor": {
@@ -15723,7 +14994,6 @@
   {
     "templateMbId": "scarf",
     "name": "Scarf",
-    "value": 110,
     "type": "ShoulderArmor",
     "weight": 0.5,
     "armor": {
@@ -15737,7 +15007,6 @@
   {
     "templateMbId": "seax",
     "name": "Seax",
-    "value": 4442,
     "type": "OneHandedWeapon",
     "weight": 0.44,
     "weapons": [
@@ -15765,7 +15034,6 @@
   {
     "templateMbId": "seax_blunt",
     "name": "Sparing Seax",
-    "value": 5629,
     "type": "OneHandedWeapon",
     "weight": 0.44,
     "weapons": [
@@ -15793,7 +15061,6 @@
   {
     "templateMbId": "segmented_cervelliere_over_laced_coif",
     "name": "Segmented Cevelliere Over Laced Coif",
-    "value": 3840,
     "type": "HeadArmor",
     "weight": 1.3,
     "armor": {
@@ -15807,7 +15074,6 @@
   {
     "templateMbId": "segmented_cervelliere_over_mail",
     "name": "Segmented Cevelliere Over Mail",
-    "value": 3250,
     "type": "HeadArmor",
     "weight": 3.3,
     "armor": {
@@ -15821,7 +15087,6 @@
   {
     "templateMbId": "segmented_cervelliere_over_mail_coif",
     "name": "Segmented Cevelliere Over Mail Coif",
-    "value": 3840,
     "type": "HeadArmor",
     "weight": 3.2,
     "armor": {
@@ -15835,7 +15100,6 @@
   {
     "templateMbId": "segmented_cervelliere_over_padded_cloth",
     "name": "Segmented Cervelliere Over Padded Cloth",
-    "value": 2974,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -15849,7 +15113,6 @@
   {
     "templateMbId": "segmented_skullcap_over_laced_coif",
     "name": "Segmented Skullcap Over Laced Coif",
-    "value": 1994,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -15863,7 +15126,6 @@
   {
     "templateMbId": "segmented_skullcap_over_mail_coif",
     "name": "Segmented Skullcap Over Mail Coif",
-    "value": 3840,
     "type": "HeadArmor",
     "weight": 3.5,
     "armor": {
@@ -15877,7 +15139,6 @@
   {
     "templateMbId": "segmented_skullcap_over_padded_cloth",
     "name": "Segmented Skullcap Over Padded Cloth",
-    "value": 3840,
     "type": "HeadArmor",
     "weight": 1.1,
     "armor": {
@@ -15891,7 +15152,6 @@
   {
     "templateMbId": "segmented_skullcap_over_padded_coif",
     "name": "Segmented Skullcap Over Padded Coif",
-    "value": 2711,
     "type": "HeadArmor",
     "weight": 1.3,
     "armor": {
@@ -15905,7 +15165,6 @@
   {
     "templateMbId": "shishpar_mace_t4",
     "name": "Light Shishpar Mace",
-    "value": 18312,
     "type": "OneHandedWeapon",
     "weight": 1.86,
     "weapons": [
@@ -15933,7 +15192,6 @@
   {
     "templateMbId": "short_padded_robe",
     "name": "Southern Short Padded Robe",
-    "value": 1634,
     "type": "BodyArmor",
     "weight": 1.0,
     "armor": {
@@ -15947,7 +15205,6 @@
   {
     "templateMbId": "short_sword_t3",
     "name": "Short Sword",
-    "value": 13685,
     "type": "OneHandedWeapon",
     "weight": 1.49,
     "weapons": [
@@ -15975,7 +15232,6 @@
   {
     "templateMbId": "simple_back_sword_t2",
     "name": "Simple Eastern Backsword",
-    "value": 12909,
     "type": "OneHandedWeapon",
     "weight": 1.23,
     "weapons": [
@@ -16003,7 +15259,6 @@
   {
     "templateMbId": "simple_pike_t2",
     "name": "Simple Pike",
-    "value": 3816,
     "type": "Polearm",
     "weight": 1.62,
     "weapons": [
@@ -16034,7 +15289,6 @@
   {
     "templateMbId": "simple_sabre_sword_t2",
     "name": "Simple Sabre ",
-    "value": 14854,
     "type": "OneHandedWeapon",
     "weight": 1.46,
     "weapons": [
@@ -16062,7 +15316,6 @@
   {
     "templateMbId": "simple_sparth_axe_t2",
     "name": "Simple Sparth Axe",
-    "value": 13448,
     "type": "TwoHandedWeapon",
     "weight": 1.13,
     "weapons": [
@@ -16093,7 +15346,6 @@
   {
     "templateMbId": "sleeveless_fur_coat",
     "name": "Sleeveless Fur Coat",
-    "value": 1247,
     "type": "BodyArmor",
     "weight": 1.8,
     "armor": {
@@ -16107,7 +15359,6 @@
   {
     "templateMbId": "sleeveless_padded_coat",
     "name": "Sleeveless Padded Coat",
-    "value": 2747,
     "type": "BodyArmor",
     "weight": 2.2,
     "armor": {
@@ -16121,7 +15372,6 @@
   {
     "templateMbId": "sleeveless_padded_short_coat",
     "name": "Sleeveless Padded Short Coat",
-    "value": 1922,
     "type": "BodyArmor",
     "weight": 2.0,
     "armor": {
@@ -16135,7 +15385,6 @@
   {
     "templateMbId": "sleeveless_studded_fur_armor",
     "name": "Sleeveless Studded Fur Armor",
-    "value": 914,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -16149,7 +15398,6 @@
   {
     "templateMbId": "small_bit_axe_t2",
     "name": "Small Bit Axe",
-    "value": 11580,
     "type": "OneHandedWeapon",
     "weight": 1.12,
     "weapons": [
@@ -16178,7 +15426,6 @@
   {
     "templateMbId": "small_flat_heater_shield",
     "name": "Small Flat Heater Shield",
-    "value": 7667,
     "type": "Shield",
     "weight": 2.5,
     "weapons": [
@@ -16207,7 +15454,6 @@
   {
     "templateMbId": "small_heater_shield",
     "name": "Small Heater Shield",
-    "value": 5263,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -16236,7 +15482,6 @@
   {
     "templateMbId": "small_spurred_axe_t2",
     "name": "Small Spurred Axe",
-    "value": 11721,
     "type": "OneHandedWeapon",
     "weight": 1.05,
     "weapons": [
@@ -16265,7 +15510,6 @@
   {
     "templateMbId": "southern_broad_2hsword_t4",
     "name": "Southern Broad Kaskara",
-    "value": 51233,
     "type": "TwoHandedWeapon",
     "weight": 1.52,
     "weapons": [
@@ -16313,7 +15557,6 @@
   {
     "templateMbId": "southern_lord_helmet",
     "name": "Southern Lord Helmet",
-    "value": 11386,
     "type": "HeadArmor",
     "weight": 3.9,
     "armor": {
@@ -16327,7 +15570,6 @@
   {
     "templateMbId": "southern_moccasins",
     "name": "Southern Moccasins",
-    "value": 99,
     "type": "LegArmor",
     "weight": 0.5,
     "armor": {
@@ -16341,7 +15583,6 @@
   {
     "templateMbId": "southern_noble_helmet",
     "name": "Southern Noble Helmet",
-    "value": 14797,
     "type": "HeadArmor",
     "weight": 3.5,
     "armor": {
@@ -16355,7 +15596,6 @@
   {
     "templateMbId": "southern_oval_shield",
     "name": "Reinforced Oval Shield",
-    "value": 9143,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -16384,7 +15624,6 @@
   {
     "templateMbId": "southern_shawl",
     "name": "Southern Shawl",
-    "value": 110,
     "type": "ShoulderArmor",
     "weight": 0.4,
     "armor": {
@@ -16398,7 +15637,6 @@
   {
     "templateMbId": "southern_small_axe_t2",
     "name": "Southern Small Axe",
-    "value": 11494,
     "type": "OneHandedWeapon",
     "weight": 0.96,
     "weapons": [
@@ -16427,7 +15665,6 @@
   {
     "templateMbId": "southern_spear_3_t3",
     "name": "Knob Headed Southern Spear",
-    "value": 7476,
     "type": "Polearm",
     "weight": 1.82,
     "weapons": [
@@ -16478,7 +15715,6 @@
   {
     "templateMbId": "southern_spear_3_t4",
     "name": "Long Thamaskene Tipped Spear",
-    "value": 9657,
     "type": "Polearm",
     "weight": 1.96,
     "weapons": [
@@ -16529,7 +15765,6 @@
   {
     "templateMbId": "southern_throwing_axe_1_t4",
     "name": "Southern Throwing Axe",
-    "value": 11231,
     "type": "Thrown",
     "weight": 0.69,
     "weapons": [
@@ -16582,7 +15817,6 @@
   {
     "templateMbId": "spangenhelm_with_leather",
     "name": "Spangenhelm With Leather",
-    "value": 2711,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -16596,7 +15830,6 @@
   {
     "templateMbId": "spangenhelm_with_padded_cloth",
     "name": "Spangenhelm With Padded Cloth",
-    "value": 3250,
     "type": "HeadArmor",
     "weight": 1.3,
     "armor": {
@@ -16610,7 +15843,6 @@
   {
     "templateMbId": "special_camel",
     "name": "Husnphree",
-    "value": 29825,
     "type": "Mount",
     "weight": 550.0,
     "mount": {
@@ -16625,7 +15857,6 @@
   {
     "templateMbId": "spiked_helmet",
     "name": "Spiked Helmet",
-    "value": 8423,
     "type": "HeadArmor",
     "weight": 4.5,
     "armor": {
@@ -16639,7 +15870,6 @@
   {
     "templateMbId": "spiked_helmet_with_facemask",
     "name": "Spiked Helmet With Facemask",
-    "value": 16670,
     "type": "HeadArmor",
     "weight": 4.5,
     "armor": {
@@ -16653,7 +15883,6 @@
   {
     "templateMbId": "spiked_kettle_over_imperial_mail",
     "name": "Spiked Kettle Over Imperial Mail",
-    "value": 4818,
     "type": "HeadArmor",
     "weight": 3.6,
     "armor": {
@@ -16667,7 +15896,6 @@
   {
     "templateMbId": "spiked_kettle_over_imperial_padding",
     "name": "Spiked Kettle Over Imperial Padding",
-    "value": 9848,
     "type": "HeadArmor",
     "weight": 1.5,
     "armor": {
@@ -16681,7 +15909,6 @@
   {
     "templateMbId": "star_falchion_sword_t3",
     "name": "Star Falchion",
-    "value": 14541,
     "type": "OneHandedWeapon",
     "weight": 2.3,
     "weapons": [
@@ -16709,7 +15936,6 @@
   {
     "templateMbId": "steel_mace_t3",
     "name": "Steel Shestopyor",
-    "value": 14237,
     "type": "OneHandedWeapon",
     "weight": 2.24,
     "weapons": [
@@ -16737,7 +15963,6 @@
   {
     "templateMbId": "steel_round_shield",
     "name": "Steel Round Shield",
-    "value": 19079,
     "type": "Shield",
     "weight": 4.0,
     "weapons": [
@@ -16766,7 +15991,6 @@
   {
     "templateMbId": "steppe_armor",
     "name": "Eastern Steppe Armor",
-    "value": 347,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -16780,7 +16004,6 @@
   {
     "templateMbId": "steppe_arrows",
     "name": "Steppe Arrows",
-    "value": 6122,
     "type": "Arrows",
     "weight": 0.036,
     "weapons": [
@@ -16810,7 +16033,6 @@
   {
     "templateMbId": "steppe_bow",
     "name": "Steppe Bow",
-    "value": 2315,
     "type": "Bow",
     "weight": 0.3,
     "weapons": [
@@ -16844,7 +16066,6 @@
   {
     "templateMbId": "steppe_dress",
     "name": "Eastern Envelope Dress",
-    "value": 914,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -16858,7 +16079,6 @@
   {
     "templateMbId": "steppe_fur_harness",
     "name": "Steppe Fur Harness",
-    "value": 914,
     "type": "MountHarness",
     "weight": 8.2,
     "armor": {
@@ -16872,7 +16092,6 @@
   {
     "templateMbId": "steppe_guardian_shield",
     "name": "Eastern Cavalry Shield",
-    "value": 14950,
     "type": "Shield",
     "weight": 2.7,
     "weapons": [
@@ -16901,7 +16120,6 @@
   {
     "templateMbId": "steppe_half_barding",
     "name": "Steppe Half Barding",
-    "value": 4610,
     "type": "MountHarness",
     "weight": 11.0,
     "armor": {
@@ -16915,7 +16133,6 @@
   {
     "templateMbId": "steppe_harness",
     "name": "Steppe Harness",
-    "value": 554,
     "type": "MountHarness",
     "weight": 8.5,
     "armor": {
@@ -16929,7 +16146,6 @@
   {
     "templateMbId": "steppe_heavy_bow",
     "name": "Heavy Recurve Bow",
-    "value": 7072,
     "type": "Bow",
     "weight": 0.3,
     "weapons": [
@@ -16963,7 +16179,6 @@
   {
     "templateMbId": "steppe_helmet",
     "name": "Eastern Helmet",
-    "value": 5169,
     "type": "HeadArmor",
     "weight": 1.2,
     "armor": {
@@ -16977,7 +16192,6 @@
   {
     "templateMbId": "steppe_leather_boots",
     "name": "Eastern Steppe Leather Boots",
-    "value": 211,
     "type": "LegArmor",
     "weight": 0.8,
     "armor": {
@@ -16991,7 +16205,6 @@
   {
     "templateMbId": "steppe_leather_shoulders",
     "name": "Eastern Leather Shoulders",
-    "value": 464,
     "type": "ShoulderArmor",
     "weight": 0.7,
     "armor": {
@@ -17005,7 +16218,6 @@
   {
     "templateMbId": "steppe_leather_vambraces",
     "name": "Eastern Leather Vambraces",
-    "value": 1420,
     "type": "HandArmor",
     "weight": 0.5,
     "armor": {
@@ -17019,7 +16231,6 @@
   {
     "templateMbId": "steppe_robe",
     "name": "Eastern Steppe Robe",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -17033,7 +16244,6 @@
   {
     "templateMbId": "steppe_war_bow",
     "name": "Steppe War Bow",
-    "value": 12220,
     "type": "Bow",
     "weight": 0.3,
     "weapons": [
@@ -17067,7 +16277,6 @@
   {
     "templateMbId": "steppe_war_horse",
     "name": "Steppe War Horse",
-    "value": 23543,
     "type": "Mount",
     "weight": 460.0,
     "mount": {
@@ -17082,7 +16291,6 @@
   {
     "templateMbId": "stitched_leather_over_mail",
     "name": "Stitched Leather Over Mail",
-    "value": 12722,
     "type": "BodyArmor",
     "weight": 11.1,
     "armor": {
@@ -17096,7 +16304,6 @@
   {
     "templateMbId": "stitched_leather_shoulders",
     "name": "Stitched Leather Shoulders",
-    "value": 601,
     "type": "ShoulderArmor",
     "weight": 1.5,
     "armor": {
@@ -17110,7 +16317,6 @@
   {
     "templateMbId": "stitched_leather_vest",
     "name": "Stitched Leather Vest",
-    "value": 1370,
     "type": "BodyArmor",
     "weight": 1.5,
     "armor": {
@@ -17124,7 +16330,6 @@
   {
     "templateMbId": "storm_charger",
     "name": "Storm Charger",
-    "value": 27810,
     "type": "Mount",
     "weight": 430.0,
     "mount": {
@@ -17139,7 +16344,6 @@
   {
     "templateMbId": "strapped_leather_boots",
     "name": "Strapped Leather Boots",
-    "value": 290,
     "type": "LegArmor",
     "weight": 0.9,
     "armor": {
@@ -17153,7 +16357,6 @@
   {
     "templateMbId": "strapped_leather_bracers",
     "name": "Strapped Leather Bracers",
-    "value": 317,
     "type": "HandArmor",
     "weight": 0.5,
     "armor": {
@@ -17167,7 +16370,6 @@
   {
     "templateMbId": "strapped_mail_chausses",
     "name": "Strapped Mail Chausses",
-    "value": 4333,
     "type": "LegArmor",
     "weight": 3.0,
     "armor": {
@@ -17181,7 +16383,6 @@
   {
     "templateMbId": "strapped_shoes",
     "name": "Strapped Shoes",
-    "value": 290,
     "type": "LegArmor",
     "weight": 0.7,
     "armor": {
@@ -17195,7 +16396,6 @@
   {
     "templateMbId": "stripped_leather_harness",
     "name": "Striped Leather Harness",
-    "value": 815,
     "type": "MountHarness",
     "weight": 7.0,
     "armor": {
@@ -17209,7 +16409,6 @@
   {
     "templateMbId": "stronger_reinforced_kite_shield",
     "name": "Reinforced Oaken Kite Shield",
-    "value": 10047,
     "type": "Shield",
     "weight": 5.8,
     "weapons": [
@@ -17238,7 +16437,6 @@
   {
     "templateMbId": "studded_adarga",
     "name": "Studded Adarga",
-    "value": 5572,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -17267,7 +16465,6 @@
   {
     "templateMbId": "studded_bound_kite_shield",
     "name": "Studded Bound Kite Shield",
-    "value": 6567,
     "type": "Shield",
     "weight": 4.8,
     "weapons": [
@@ -17296,7 +16493,6 @@
   {
     "templateMbId": "studded_fur_armor",
     "name": "Studded Fur Armor",
-    "value": 1247,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -17310,7 +16506,6 @@
   {
     "templateMbId": "studded_imperial_neckguard",
     "name": "Studded Imperial Neckguard",
-    "value": 4563,
     "type": "ShoulderArmor",
     "weight": 3.6,
     "armor": {
@@ -17324,7 +16519,6 @@
   {
     "templateMbId": "studded_leather_coat",
     "name": "Southern Studded Leather Coat",
-    "value": 1019,
     "type": "BodyArmor",
     "weight": 1.6,
     "armor": {
@@ -17338,7 +16532,6 @@
   {
     "templateMbId": "studded_leather_over_aketon",
     "name": "Studded Leather Over Aketon",
-    "value": 2570,
     "type": "BodyArmor",
     "weight": 3.8,
     "armor": {
@@ -17352,7 +16545,6 @@
   {
     "templateMbId": "studded_leather_vambraces",
     "name": "Studded Leather Vambraces",
-    "value": 1211,
     "type": "HandArmor",
     "weight": 0.9,
     "armor": {
@@ -17366,7 +16558,6 @@
   {
     "templateMbId": "studded_leather_waistcoat",
     "name": "Studded Leather Waistcoat",
-    "value": 479,
     "type": "BodyArmor",
     "weight": 0.7,
     "armor": {
@@ -17380,7 +16571,6 @@
   {
     "templateMbId": "studded_round_shield",
     "name": "Iron Round Shield",
-    "value": 10895,
     "type": "Shield",
     "weight": 7.3,
     "weapons": [
@@ -17409,7 +16599,6 @@
   {
     "templateMbId": "studded_steppe_barding",
     "name": "Studded Steppe Barding",
-    "value": 8474,
     "type": "MountHarness",
     "weight": 23.0,
     "armor": {
@@ -17423,7 +16612,6 @@
   {
     "templateMbId": "studded_steppe_leather",
     "name": "Studded Steppe Leather",
-    "value": 2399,
     "type": "BodyArmor",
     "weight": 2.4,
     "armor": {
@@ -17437,7 +16625,6 @@
   {
     "templateMbId": "studded_vambraces",
     "name": "Studded Vambraces",
-    "value": 317,
     "type": "HandArmor",
     "weight": 0.7,
     "armor": {
@@ -17451,7 +16638,6 @@
   {
     "templateMbId": "sturgia_2haxe_1_t4",
     "name": "Drilled Two Handed Axe",
-    "value": 34076,
     "type": "TwoHandedWeapon",
     "weight": 1.32,
     "weapons": [
@@ -17482,7 +16668,6 @@
   {
     "templateMbId": "sturgia_2haxe_2_t5",
     "name": "Northern Decorated Two Handed Axe",
-    "value": 36217,
     "type": "TwoHandedWeapon",
     "weight": 1.68,
     "weapons": [
@@ -17513,7 +16698,6 @@
   {
     "templateMbId": "sturgia_axe_2_t2",
     "name": "Gallogaich Axe",
-    "value": 12113,
     "type": "OneHandedWeapon",
     "weight": 1.03,
     "weapons": [
@@ -17542,7 +16726,6 @@
   {
     "templateMbId": "sturgia_axe_2_t2_blunt",
     "name": "Sparing Gallogaich Axe",
-    "value": 20292,
     "type": "OneHandedWeapon",
     "weight": 1.03,
     "weapons": [
@@ -17571,7 +16754,6 @@
   {
     "templateMbId": "sturgia_axe_3_t3",
     "name": "Northern Common Axe",
-    "value": 15414,
     "type": "OneHandedWeapon",
     "weight": 0.94,
     "weapons": [
@@ -17600,7 +16782,6 @@
   {
     "templateMbId": "sturgia_axe_4_t4",
     "name": "Veteran Warriors Axe",
-    "value": 16511,
     "type": "OneHandedWeapon",
     "weight": 1.19,
     "weapons": [
@@ -17629,7 +16810,6 @@
   {
     "templateMbId": "sturgia_axe_5_t5",
     "name": "Northern Rectangular Bitted Axe",
-    "value": 20816,
     "type": "OneHandedWeapon",
     "weight": 1.05,
     "weapons": [
@@ -17658,7 +16838,6 @@
   {
     "templateMbId": "sturgia_cavalry_armor",
     "name": "Sturgia Cavalry Armor",
-    "value": 17834,
     "type": "BodyArmor",
     "weight": 9.4,
     "armor": {
@@ -17672,7 +16851,6 @@
   {
     "templateMbId": "sturgia_heavy_cavalary_helmet",
     "name": "Sturgia Heavy Cavalry Helmet",
-    "value": 4479,
     "type": "HeadArmor",
     "weight": 2.8,
     "armor": {
@@ -17686,7 +16864,6 @@
   {
     "templateMbId": "sturgia_horse",
     "name": "Sturgian Trotter",
-    "value": 21084,
     "type": "Mount",
     "weight": 458.0,
     "mount": {
@@ -17701,7 +16878,6 @@
   {
     "templateMbId": "sturgia_lance_1_t4",
     "name": "Sturgian Lance",
-    "value": 8715,
     "type": "Polearm",
     "weight": 1.88,
     "weapons": [
@@ -17772,7 +16948,6 @@
   {
     "templateMbId": "sturgia_lance_2_t5",
     "name": "Sturgian Heavy Lance",
-    "value": 9834,
     "type": "Polearm",
     "weight": 2.38,
     "weapons": [
@@ -17843,7 +17018,6 @@
   {
     "templateMbId": "sturgia_noble_sword_1_t5",
     "name": "Thamaskene Steel Warsword",
-    "value": 18712,
     "type": "OneHandedWeapon",
     "weight": 1.54,
     "weapons": [
@@ -17871,7 +17045,6 @@
   {
     "templateMbId": "sturgia_noble_sword_2_t5",
     "name": "Decorated Long Warsword",
-    "value": 9489,
     "type": "OneHandedWeapon",
     "weight": 1.54,
     "weapons": [
@@ -17899,7 +17072,6 @@
   {
     "templateMbId": "sturgia_noble_sword_3_t5",
     "name": "Decorated Fullered Sword",
-    "value": 16885,
     "type": "OneHandedWeapon",
     "weight": 1.54,
     "weapons": [
@@ -17927,7 +17099,6 @@
   {
     "templateMbId": "sturgia_noble_sword_4_t5",
     "name": "Gold Bound Short Warsword",
-    "value": 7059,
     "type": "OneHandedWeapon",
     "weight": 1.34,
     "weapons": [
@@ -17955,7 +17126,6 @@
   {
     "templateMbId": "sturgia_old_shield_a",
     "name": "Iron Rimmed Large Round Shield",
-    "value": 9530,
     "type": "Shield",
     "weight": 7.3,
     "weapons": [
@@ -17984,7 +17154,6 @@
   {
     "templateMbId": "sturgia_old_shield_b",
     "name": "Crude Large Round Shield",
-    "value": 4018,
     "type": "Shield",
     "weight": 7.3,
     "weapons": [
@@ -18013,7 +17182,6 @@
   {
     "templateMbId": "sturgia_polearm_1_t5",
     "name": "Warrazor",
-    "value": 45329,
     "type": "Polearm",
     "weight": 1.83,
     "weapons": [
@@ -18044,7 +17212,6 @@
   {
     "templateMbId": "sturgia_sword_1_t2",
     "name": "Tapered Northern Blade",
-    "value": 11285,
     "type": "OneHandedWeapon",
     "weight": 1.11,
     "weapons": [
@@ -18072,7 +17239,6 @@
   {
     "templateMbId": "sturgia_sword_1_t2_blunt",
     "name": "Northern Sparing Blade",
-    "value": 18897,
     "type": "OneHandedWeapon",
     "weight": 1.11,
     "weapons": [
@@ -18100,7 +17266,6 @@
   {
     "templateMbId": "sturgia_sword_2_t3",
     "name": "Northern Backsword",
-    "value": 14277,
     "type": "OneHandedWeapon",
     "weight": 1.18,
     "weapons": [
@@ -18128,7 +17293,6 @@
   {
     "templateMbId": "sturgia_sword_3_t3",
     "name": "Pointy Warsword",
-    "value": 15637,
     "type": "OneHandedWeapon",
     "weight": 1.14,
     "weapons": [
@@ -18156,7 +17320,6 @@
   {
     "templateMbId": "sturgia_sword_4_t4",
     "name": "Long Warsword",
-    "value": 20557,
     "type": "OneHandedWeapon",
     "weight": 1.41,
     "weapons": [
@@ -18184,7 +17347,6 @@
   {
     "templateMbId": "sturgia_sword_5_t4",
     "name": "Fullered Narrow Warsword",
-    "value": 19048,
     "type": "OneHandedWeapon",
     "weight": 1.23,
     "weapons": [
@@ -18212,7 +17374,6 @@
   {
     "templateMbId": "sturgia_sword_5_t5",
     "name": "Fullered Long Warsword",
-    "value": 21592,
     "type": "OneHandedWeapon",
     "weight": 1.52,
     "weapons": [
@@ -18240,7 +17401,6 @@
   {
     "templateMbId": "sturgian_chainmale_longsleeve",
     "name": "Northern Decorated Hauberk",
-    "value": 11954,
     "type": "BodyArmor",
     "weight": 9.3,
     "armor": {
@@ -18254,7 +17414,6 @@
   {
     "templateMbId": "sturgian_chainmale_shortsleeve",
     "name": "Northern Decorated Mail",
-    "value": 6959,
     "type": "BodyArmor",
     "weight": 8.3,
     "armor": {
@@ -18268,7 +17427,6 @@
   {
     "templateMbId": "sturgian_fortified_armor",
     "name": "Northern Brigandine Over Hauberk",
-    "value": 27122,
     "type": "BodyArmor",
     "weight": 28.6,
     "armor": {
@@ -18282,7 +17440,6 @@
   {
     "templateMbId": "sturgian_helmet_base",
     "name": "Northern Helmet",
-    "value": 6296,
     "type": "HeadArmor",
     "weight": 1.8,
     "armor": {
@@ -18296,7 +17453,6 @@
   {
     "templateMbId": "sturgian_helmet_closed",
     "name": "Northern Helmet Closed",
-    "value": 16034,
     "type": "HeadArmor",
     "weight": 1.8,
     "armor": {
@@ -18310,7 +17466,6 @@
   {
     "templateMbId": "sturgian_helmet_open",
     "name": "Northern Open Helmet",
-    "value": 7972,
     "type": "HeadArmor",
     "weight": 1.8,
     "armor": {
@@ -18324,7 +17479,6 @@
   {
     "templateMbId": "sturgian_lamellar_base",
     "name": "Northern Lamellar Over Mail",
-    "value": 18770,
     "type": "BodyArmor",
     "weight": 24.0,
     "armor": {
@@ -18338,7 +17492,6 @@
   {
     "templateMbId": "sturgian_lamellar_fortified",
     "name": "Northern Lamellar Over Hauberk",
-    "value": 24890,
     "type": "BodyArmor",
     "weight": 28.0,
     "armor": {
@@ -18352,7 +17505,6 @@
   {
     "templateMbId": "sturgian_lamellar_gambeson",
     "name": "Northern Short Lamellar Vest",
-    "value": 3314,
     "type": "BodyArmor",
     "weight": 6.2,
     "armor": {
@@ -18366,7 +17518,6 @@
   {
     "templateMbId": "sturgian_lamellar_gambeson_heavy",
     "name": "Northern Lamellar Vest",
-    "value": 9455,
     "type": "BodyArmor",
     "weight": 8.3,
     "armor": {
@@ -18380,7 +17531,6 @@
   {
     "templateMbId": "sturgian_lord_helmet_a",
     "name": "Northern Lord Helmet",
-    "value": 13610,
     "type": "HeadArmor",
     "weight": 3.6,
     "armor": {
@@ -18394,7 +17544,6 @@
   {
     "templateMbId": "sturgian_lord_helmet_b",
     "name": "Northern Lord Helmet With Open Mail Coif",
-    "value": 14797,
     "type": "HeadArmor",
     "weight": 3.4,
     "armor": {
@@ -18408,7 +17557,6 @@
   {
     "templateMbId": "sturgian_lord_helmet_c",
     "name": "Pointed Northern Lord Helmet With Feather",
-    "value": 16670,
     "type": "HeadArmor",
     "weight": 4.4,
     "armor": {
@@ -18422,7 +17570,6 @@
   {
     "templateMbId": "sumpter_horse",
     "name": "Sumpter Horse",
-    "value": 12496,
     "type": "Mount",
     "weight": 450.0,
     "mount": {
@@ -18437,7 +17584,6 @@
   {
     "templateMbId": "t2_aserai_horse",
     "name": "Aserai Horse",
-    "value": 28829,
     "type": "Mount",
     "weight": 515.0,
     "mount": {
@@ -18452,7 +17598,6 @@
   {
     "templateMbId": "t2_battania_horse",
     "name": "Battanian Warmount",
-    "value": 26335,
     "type": "Mount",
     "weight": 542.0,
     "mount": {
@@ -18467,7 +17612,6 @@
   {
     "templateMbId": "t2_empire_horse",
     "name": "Imperial Charger",
-    "value": 25671,
     "type": "Mount",
     "weight": 548.0,
     "mount": {
@@ -18482,7 +17626,6 @@
   {
     "templateMbId": "t2_khuzait_horse",
     "name": "Steppe Warhorse",
-    "value": 27528,
     "type": "Mount",
     "weight": 498.0,
     "mount": {
@@ -18497,7 +17640,6 @@
   {
     "templateMbId": "t2_sturgia_horse",
     "name": "Sturgian Hunter",
-    "value": 26571,
     "type": "Mount",
     "weight": 510.0,
     "mount": {
@@ -18512,7 +17654,6 @@
   {
     "templateMbId": "t2_vlandia_horse",
     "name": "Vlandian Courser",
-    "value": 27327,
     "type": "Mount",
     "weight": 531.0,
     "mount": {
@@ -18527,7 +17668,6 @@
   {
     "templateMbId": "tall_heater_shield",
     "name": "Tall Heater Shield",
-    "value": 34449,
     "type": "Shield",
     "weight": 2.1,
     "weapons": [
@@ -18556,7 +17696,6 @@
   {
     "templateMbId": "tall_helmet",
     "name": "Tall Helmet",
-    "value": 5169,
     "type": "HeadArmor",
     "weight": 1.8,
     "armor": {
@@ -18570,7 +17709,6 @@
   {
     "templateMbId": "tassled_southern_robes",
     "name": "Tassled Southern Robes",
-    "value": 410,
     "type": "BodyArmor",
     "weight": 0.9,
     "armor": {
@@ -18584,7 +17722,6 @@
   {
     "templateMbId": "tattered_rags",
     "name": "Tattered Rags",
-    "value": 122,
     "type": "BodyArmor",
     "weight": 0.3,
     "armor": {
@@ -18598,7 +17735,6 @@
   {
     "templateMbId": "thamaskene_pike_t4",
     "name": "Thamaskene Pike",
-    "value": 10555,
     "type": "Polearm",
     "weight": 2.78,
     "weapons": [
@@ -18629,7 +17765,6 @@
   {
     "templateMbId": "the_scalpel_sword_t3",
     "name": "The Scalpel",
-    "value": 19106,
     "type": "OneHandedWeapon",
     "weight": 1.47,
     "weapons": [
@@ -18657,7 +17792,6 @@
   {
     "templateMbId": "thick_sleeved_robe",
     "name": "Thick Sleeved Robe",
-    "value": 410,
     "type": "BodyArmor",
     "weight": 1.0,
     "armor": {
@@ -18671,7 +17805,6 @@
   {
     "templateMbId": "thinhide_coif",
     "name": "Highland Thinhide Coif",
-    "value": 517,
     "type": "HeadArmor",
     "weight": 0.5,
     "armor": {
@@ -18685,7 +17818,6 @@
   {
     "templateMbId": "throwing_stone",
     "name": "Stone",
-    "value": 656,
     "type": "Thrown",
     "weight": 0.1,
     "weapons": [
@@ -18716,7 +17848,6 @@
   {
     "templateMbId": "tied_cloth_tunic",
     "name": "Tied Cloth Tunic",
-    "value": 194,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -18730,7 +17861,6 @@
   {
     "templateMbId": "tied_head_wrapping",
     "name": "Tied Head Wrapping",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.5,
     "armor": {
@@ -18744,7 +17874,6 @@
   {
     "templateMbId": "tight_head_scarf",
     "name": "Tight Head Scarf",
-    "value": 415,
     "type": "HeadArmor",
     "weight": 0.7,
     "armor": {
@@ -18758,7 +17887,6 @@
   {
     "templateMbId": "torn_bandit_clothes",
     "name": "Torn Padded Garments",
-    "value": 347,
     "type": "BodyArmor",
     "weight": 0.5,
     "armor": {
@@ -18772,7 +17900,6 @@
   {
     "templateMbId": "tournament_arrows",
     "name": "Tournament Arrows",
-    "value": 2930,
     "type": "Arrows",
     "weight": 0.043,
     "weapons": [
@@ -18802,7 +17929,6 @@
   {
     "templateMbId": "tournament_bolts",
     "name": "Tournament Bolts",
-    "value": 1370,
     "type": "Bolts",
     "weight": 0.05,
     "weapons": [
@@ -18833,7 +17959,6 @@
   {
     "templateMbId": "trailed_desert_helmet",
     "name": "Trailed Southern Helmet",
-    "value": 2711,
     "type": "HeadArmor",
     "weight": 1.1,
     "armor": {
@@ -18847,7 +17972,6 @@
   {
     "templateMbId": "training_bow",
     "name": "Practice Bow",
-    "value": 2453,
     "type": "Bow",
     "weight": 0.3,
     "weapons": [
@@ -18881,7 +18005,6 @@
   {
     "templateMbId": "training_longbow",
     "name": "Practice Longbow",
-    "value": 2106,
     "type": "Bow",
     "weight": 0.5,
     "weapons": [
@@ -18915,7 +18038,6 @@
   {
     "templateMbId": "triangluar_spear_t3",
     "name": "Triangular Headed Spear",
-    "value": 5118,
     "type": "Polearm",
     "weight": 1.83,
     "weapons": [
@@ -18966,7 +18088,6 @@
   {
     "templateMbId": "tribal_bow",
     "name": "Southern Tribesman's Bow",
-    "value": 7772,
     "type": "Bow",
     "weight": 0.5,
     "weapons": [
@@ -19000,7 +18121,6 @@
   {
     "templateMbId": "tribal_steppe_shield",
     "name": "Tribal Steppe Shield",
-    "value": 12638,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -19029,7 +18149,6 @@
   {
     "templateMbId": "tuareg",
     "name": "Southern Tribal Turban",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.6,
     "armor": {
@@ -19043,7 +18162,6 @@
   {
     "templateMbId": "tundra_tunic",
     "name": "Northern Belted Tunic",
-    "value": 290,
     "type": "BodyArmor",
     "weight": 0.3,
     "armor": {
@@ -19057,7 +18175,6 @@
   {
     "templateMbId": "tunic_with_rolled_cloth",
     "name": "Tunic With Rolled Cloth",
-    "value": 479,
     "type": "BodyArmor",
     "weight": 0.7,
     "armor": {
@@ -19071,7 +18188,6 @@
   {
     "templateMbId": "tunic_with_shoulder_pads",
     "name": "Tunic With Shoulder Pads",
-    "value": 347,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -19085,7 +18201,6 @@
   {
     "templateMbId": "turban",
     "name": "Turban",
-    "value": 184,
     "type": "HeadArmor",
     "weight": 0.5,
     "armor": {
@@ -19099,7 +18214,6 @@
   {
     "templateMbId": "turndown_leather_boots",
     "name": "Turndown Leather Boots",
-    "value": 758,
     "type": "LegArmor",
     "weight": 0.9,
     "armor": {
@@ -19113,7 +18227,6 @@
   {
     "templateMbId": "tyrhung_sword_t3",
     "name": "Tyrhung",
-    "value": 16023,
     "type": "OneHandedWeapon",
     "weight": 1.95,
     "weapons": [
@@ -19141,7 +18254,6 @@
   {
     "templateMbId": "tzkurion_axe_t3",
     "name": "Tzkurion Axe",
-    "value": 15007,
     "type": "OneHandedWeapon",
     "weight": 1.23,
     "weapons": [
@@ -19170,7 +18282,6 @@
   {
     "templateMbId": "upturned_fur_cap",
     "name": "Upturned Fur Cap",
-    "value": 2221,
     "type": "HeadArmor",
     "weight": 0.6,
     "armor": {
@@ -19184,7 +18295,6 @@
   {
     "templateMbId": "veteran_mercenary_armor",
     "name": "Fortified Mercenary Armor",
-    "value": 7547,
     "type": "BodyArmor",
     "weight": 8.2,
     "armor": {
@@ -19198,7 +18308,6 @@
   {
     "templateMbId": "viking_round_shield",
     "name": "Norse Round Shield",
-    "value": 16265,
     "type": "Shield",
     "weight": 3.5,
     "weapons": [
@@ -19227,7 +18336,6 @@
   {
     "templateMbId": "visored_helmet_over_laced_coif",
     "name": "Visored Helmet Over Laced Coif",
-    "value": 7972,
     "type": "HeadArmor",
     "weight": 2.4,
     "armor": {
@@ -19241,7 +18349,6 @@
   {
     "templateMbId": "visored_helmet_over_mail_coif",
     "name": "Visored Helmet Over Mail Coif",
-    "value": 17320,
     "type": "HeadArmor",
     "weight": 3.6,
     "armor": {
@@ -19255,7 +18362,6 @@
   {
     "templateMbId": "visored_helmet_over_padded_cloth",
     "name": "Visored Helmet Over Padded Cloth",
-    "value": 7535,
     "type": "HeadArmor",
     "weight": 2.3,
     "armor": {
@@ -19269,7 +18375,6 @@
   {
     "templateMbId": "visored_helmet_over_padded_coif",
     "name": "Visored Helmet Over Padded Coif",
-    "value": 7972,
     "type": "HeadArmor",
     "weight": 2.5,
     "armor": {
@@ -19283,7 +18388,6 @@
   {
     "templateMbId": "vlandia_2haxe_1_t4",
     "name": "Short Bill",
-    "value": 25368,
     "type": "TwoHandedWeapon",
     "weight": 1.72,
     "weapons": [
@@ -19314,7 +18418,6 @@
   {
     "templateMbId": "vlandia_2hsword_1_t5",
     "name": "Wide Fullered Broad Two Hander",
-    "value": 51500,
     "type": "TwoHandedWeapon",
     "weight": 1.92,
     "weapons": [
@@ -19343,7 +18446,6 @@
   {
     "templateMbId": "vlandia_2hsword_2_t5",
     "name": "Thamaskene Steel Two Hander",
-    "value": 53513,
     "type": "TwoHandedWeapon",
     "weight": 2.04,
     "weapons": [
@@ -19372,7 +18474,6 @@
   {
     "templateMbId": "vlandia_axe_1_t3",
     "name": "Western Infantry Axe",
-    "value": 12427,
     "type": "OneHandedWeapon",
     "weight": 0.92,
     "weapons": [
@@ -19401,7 +18502,6 @@
   {
     "templateMbId": "vlandia_axe_2_t4",
     "name": "Northern Spiked Battle Axe",
-    "value": 17148,
     "type": "OneHandedWeapon",
     "weight": 1.1,
     "weapons": [
@@ -19430,7 +18530,6 @@
   {
     "templateMbId": "vlandia_bandit_a",
     "name": "Cheap Paddings",
-    "value": 1247,
     "type": "BodyArmor",
     "weight": 2.9,
     "armor": {
@@ -19444,7 +18543,6 @@
   {
     "templateMbId": "vlandia_bandit_b",
     "name": "Cheap Colored Clothes",
-    "value": 239,
     "type": "BodyArmor",
     "weight": 1.8,
     "armor": {
@@ -19458,7 +18556,6 @@
   {
     "templateMbId": "vlandia_bandit_c",
     "name": "Torn Robe",
-    "value": 74,
     "type": "BodyArmor",
     "weight": 0.4,
     "armor": {
@@ -19472,7 +18569,6 @@
   {
     "templateMbId": "vlandia_bandit_cape_a",
     "name": "Rough Padded Cap",
-    "value": 1213,
     "type": "HeadArmor",
     "weight": 2.5,
     "armor": {
@@ -19486,7 +18582,6 @@
   {
     "templateMbId": "vlandia_bandit_cape_b",
     "name": "Hide Cap",
-    "value": 517,
     "type": "HeadArmor",
     "weight": 2.5,
     "armor": {
@@ -19500,7 +18595,6 @@
   {
     "templateMbId": "vlandia_chainmail",
     "name": "Western Chainmail",
-    "value": 9794,
     "type": "BodyArmor",
     "weight": 10.0,
     "armor": {
@@ -19514,7 +18608,6 @@
   {
     "templateMbId": "vlandia_horse",
     "name": "Saddle Horse",
-    "value": 21366,
     "type": "Mount",
     "weight": 462.0,
     "mount": {
@@ -19529,7 +18622,6 @@
   {
     "templateMbId": "vlandia_lance_1_t3",
     "name": "Western Light Lance",
-    "value": 6036,
     "type": "Polearm",
     "weight": 1.96,
     "weapons": [
@@ -19600,7 +18692,6 @@
   {
     "templateMbId": "vlandia_lance_1_t3_blunt",
     "name": "Western Sparing Lance",
-    "value": 7661,
     "type": "Polearm",
     "weight": 1.96,
     "weapons": [
@@ -19671,7 +18762,6 @@
   {
     "templateMbId": "vlandia_lance_2_t4",
     "name": "Vlandia Lance",
-    "value": 9396,
     "type": "Polearm",
     "weight": 1.99,
     "weapons": [
@@ -19742,7 +18832,6 @@
   {
     "templateMbId": "vlandia_lance_3_t5",
     "name": "Vlandian Heavy Lance",
-    "value": 10653,
     "type": "Polearm",
     "weight": 2.21,
     "weapons": [
@@ -19813,7 +18902,6 @@
   {
     "templateMbId": "vlandia_lord_helmet_b2",
     "name": "Plated Helmet",
-    "value": 1994,
     "type": "HeadArmor",
     "weight": 4.1,
     "armor": {
@@ -19827,7 +18915,6 @@
   {
     "templateMbId": "vlandia_mace_1_t2",
     "name": "Spiked Mace",
-    "value": 10328,
     "type": "OneHandedWeapon",
     "weight": 1.48,
     "weapons": [
@@ -19855,7 +18942,6 @@
   {
     "templateMbId": "vlandia_mace_2_t4",
     "name": "Fullered Western Mace",
-    "value": 20464,
     "type": "OneHandedWeapon",
     "weight": 2.1,
     "weapons": [
@@ -19883,7 +18969,6 @@
   {
     "templateMbId": "vlandia_noble_sword_1_t5",
     "name": "Arming Sword With Golden Petals Imprint",
-    "value": 19798,
     "type": "OneHandedWeapon",
     "weight": 1.34,
     "weapons": [
@@ -19911,7 +18996,6 @@
   {
     "templateMbId": "vlandia_noble_sword_2_t5",
     "name": "Arming Sword With Golden Circle Imprint",
-    "value": 19461,
     "type": "OneHandedWeapon",
     "weight": 1.4,
     "weapons": [
@@ -19939,7 +19023,6 @@
   {
     "templateMbId": "vlandia_noble_sword_3_t5",
     "name": "Gold Engraved Arming Sword With Engraved Guard",
-    "value": 20280,
     "type": "OneHandedWeapon",
     "weight": 1.55,
     "weapons": [
@@ -19967,7 +19050,6 @@
   {
     "templateMbId": "vlandia_noble_sword_4_t5",
     "name": "Fullered Arming Sword Blade With Crescent Guard",
-    "value": 16223,
     "type": "OneHandedWeapon",
     "weight": 1.37,
     "weapons": [
@@ -19995,7 +19077,6 @@
   {
     "templateMbId": "vlandia_pike_1_t5",
     "name": "Western Pike",
-    "value": 13096,
     "type": "Polearm",
     "weight": 3.19,
     "weapons": [
@@ -20026,7 +19107,6 @@
   {
     "templateMbId": "vlandia_polearm_1_t5",
     "name": "Voulge",
-    "value": 7541,
     "type": "Polearm",
     "weight": 1.51,
     "weapons": [
@@ -20077,7 +19157,6 @@
   {
     "templateMbId": "vlandia_sword_1_t2",
     "name": "Iron Arming Sword",
-    "value": 14078,
     "type": "OneHandedWeapon",
     "weight": 1.34,
     "weapons": [
@@ -20105,7 +19184,6 @@
   {
     "templateMbId": "vlandia_sword_1_t2_blunt",
     "name": "Iron Sparing Arming Sword",
-    "value": 23600,
     "type": "OneHandedWeapon",
     "weight": 1.34,
     "weapons": [
@@ -20133,7 +19211,6 @@
   {
     "templateMbId": "vlandia_sword_2_t3",
     "name": "Ridged Tipped Arming Sword",
-    "value": 18309,
     "type": "OneHandedWeapon",
     "weight": 1.45,
     "weapons": [
@@ -20161,7 +19238,6 @@
   {
     "templateMbId": "vlandia_sword_3_t4",
     "name": "Knightly Arming Sword",
-    "value": 23361,
     "type": "OneHandedWeapon",
     "weight": 1.41,
     "weapons": [
@@ -20189,7 +19265,6 @@
   {
     "templateMbId": "vlandia_sword_4_t4",
     "name": "Ridged Arming Sword",
-    "value": 22342,
     "type": "OneHandedWeapon",
     "weight": 1.54,
     "weapons": [
@@ -20217,7 +19292,6 @@
   {
     "templateMbId": "vlandia_sword_5_t5",
     "name": "Wide Fullered Broad Arming Sword",
-    "value": 21711,
     "type": "OneHandedWeapon",
     "weight": 1.9,
     "weapons": [
@@ -20245,7 +19319,6 @@
   {
     "templateMbId": "vlandian_corset_dress",
     "name": "Western Corseted Dress",
-    "value": 155,
     "type": "BodyArmor",
     "weight": 0.5,
     "armor": {
@@ -20259,7 +19332,6 @@
   {
     "templateMbId": "vlandian_dress",
     "name": "Imperial Rich Dress",
-    "value": 155,
     "type": "BodyArmor",
     "weight": 0.5,
     "armor": {
@@ -20273,7 +19345,6 @@
   {
     "templateMbId": "vlandian_noble_woman_dress",
     "name": "Western Noble Dress",
-    "value": 122,
     "type": "BodyArmor",
     "weight": 0.6,
     "armor": {
@@ -20287,7 +19358,6 @@
   {
     "templateMbId": "vlandian_woman_dress",
     "name": "Western Common Dress",
-    "value": 122,
     "type": "BodyArmor",
     "weight": 0.7,
     "armor": {
@@ -20301,7 +19371,6 @@
   {
     "templateMbId": "vlandic_arrows",
     "name": "Western Arrows",
-    "value": 6395,
     "type": "Arrows",
     "weight": 0.06,
     "weapons": [
@@ -20331,7 +19400,6 @@
   {
     "templateMbId": "war_camel",
     "name": "War Camel",
-    "value": 25323,
     "type": "Mount",
     "weight": 622.0,
     "mount": {
@@ -20346,7 +19414,6 @@
   {
     "templateMbId": "war_horse",
     "name": "War Horse",
-    "value": 24482,
     "type": "Mount",
     "weight": 500.0,
     "mount": {
@@ -20361,7 +19428,6 @@
   {
     "templateMbId": "war_razor_2hsword_t4",
     "name": "War Razor",
-    "value": 45722,
     "type": "TwoHandedWeapon",
     "weight": 1.54,
     "weapons": [
@@ -20409,7 +19475,6 @@
   {
     "templateMbId": "western_2hsword_t3",
     "name": "Tapered Two Hander",
-    "value": 33790,
     "type": "TwoHandedWeapon",
     "weight": 1.67,
     "weapons": [
@@ -20457,7 +19522,6 @@
   {
     "templateMbId": "western_2hsword_t4",
     "name": "Broad Two Hander",
-    "value": 40941,
     "type": "TwoHandedWeapon",
     "weight": 1.67,
     "weapons": [
@@ -20486,7 +19550,6 @@
   {
     "templateMbId": "western_crowned_helmet",
     "name": "Western Crowned Helmet",
-    "value": 15409,
     "type": "HeadArmor",
     "weight": 3.7,
     "armor": {
@@ -20500,7 +19563,6 @@
   {
     "templateMbId": "western_crowned_plated_helmet",
     "name": "Western Crowned Plated Helmet",
-    "value": 14797,
     "type": "HeadArmor",
     "weight": 3.9,
     "armor": {
@@ -20514,7 +19576,6 @@
   {
     "templateMbId": "western_javelin_1_t2",
     "name": "Simple Javelin",
-    "value": 18917,
     "type": "Thrown",
     "weight": 0.91,
     "weapons": [
@@ -20567,7 +19628,6 @@
   {
     "templateMbId": "western_javelin_1_t2_blunt",
     "name": "Simple Sparing Javelin",
-    "value": 24091,
     "type": "Thrown",
     "weight": 0.91,
     "weapons": [
@@ -20620,7 +19680,6 @@
   {
     "templateMbId": "western_javelin_2_t3",
     "name": "Western Javelin",
-    "value": 59532,
     "type": "Thrown",
     "weight": 1.2,
     "weapons": [
@@ -20673,7 +19732,6 @@
   {
     "templateMbId": "western_javelin_3_t4",
     "name": "Hooked Javelin",
-    "value": 76033,
     "type": "Thrown",
     "weight": 1.41,
     "weapons": [
@@ -20726,7 +19784,6 @@
   {
     "templateMbId": "western_kite_shield",
     "name": "Kite Shield",
-    "value": 6894,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -20755,7 +19812,6 @@
   {
     "templateMbId": "western_kite_sparring_shield",
     "name": "Kite Sparring Shield",
-    "value": 5729,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -20784,7 +19840,6 @@
   {
     "templateMbId": "western_plated_helmet",
     "name": "Plated Helmet with Sideguards",
-    "value": 13610,
     "type": "HeadArmor",
     "weight": 4.1,
     "armor": {
@@ -20798,7 +19853,6 @@
   {
     "templateMbId": "western_riders_kite_shield",
     "name": "Western Riders Kite Shield",
-    "value": 6051,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -20827,7 +19881,6 @@
   {
     "templateMbId": "western_riders_kite_sparring_shield",
     "name": "Western Riders Kite Sparring Shield",
-    "value": 4817,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -20856,7 +19909,6 @@
   {
     "templateMbId": "western_scale_mail",
     "name": "Highland Scale Mail",
-    "value": 11954,
     "type": "BodyArmor",
     "weight": 11.3,
     "armor": {
@@ -20870,7 +19922,6 @@
   {
     "templateMbId": "western_spear_1_t2",
     "name": "Western Simple Spear",
-    "value": 6113,
     "type": "Polearm",
     "weight": 1.83,
     "weapons": [
@@ -20921,7 +19972,6 @@
   {
     "templateMbId": "western_spear_2_t2",
     "name": "Western Short Spear",
-    "value": 2816,
     "type": "Polearm",
     "weight": 1.89,
     "weapons": [
@@ -20972,7 +20022,6 @@
   {
     "templateMbId": "western_spear_3_t3",
     "name": "Western Long Spear",
-    "value": 4444,
     "type": "Polearm",
     "weight": 2.07,
     "weapons": [
@@ -21023,7 +20072,6 @@
   {
     "templateMbId": "western_spear_4_t4",
     "name": "Long Fine Steel Spear",
-    "value": 8144,
     "type": "Polearm",
     "weight": 2.06,
     "weapons": [
@@ -21074,7 +20122,6 @@
   {
     "templateMbId": "western_throwing_axe_1_t1",
     "name": "Franceska",
-    "value": 8792,
     "type": "Thrown",
     "weight": 0.68,
     "weapons": [
@@ -21127,7 +20174,6 @@
   {
     "templateMbId": "white_coat_over_mail",
     "name": "White Tabard Over Mail",
-    "value": 10490,
     "type": "BodyArmor",
     "weight": 9.6,
     "armor": {
@@ -21141,7 +20187,6 @@
   {
     "templateMbId": "wide_heater_shield",
     "name": "Wide Heater Shield",
-    "value": 13115,
     "type": "Shield",
     "weight": 4.7,
     "weapons": [
@@ -21170,7 +20215,6 @@
   {
     "templateMbId": "wide_leaf_spear_t4",
     "name": "Wide Leaf Spear",
-    "value": 7826,
     "type": "Polearm",
     "weight": 2.02,
     "weapons": [
@@ -21221,7 +20265,6 @@
   {
     "templateMbId": "winds_fury_sword_t3",
     "name": "Winds Fury",
-    "value": 21853,
     "type": "OneHandedWeapon",
     "weight": 1.55,
     "weapons": [
@@ -21249,7 +20292,6 @@
   {
     "templateMbId": "wolf_shoulder",
     "name": "Wolf Shoulder",
-    "value": 758,
     "type": "ShoulderArmor",
     "weight": 1.8,
     "armor": {
@@ -21263,7 +20305,6 @@
   {
     "templateMbId": "wolfhead",
     "name": "Wolf Head",
-    "value": 1780,
     "type": "HeadArmor",
     "weight": 1.3,
     "armor": {
@@ -21277,7 +20318,6 @@
   {
     "templateMbId": "womens_headwrap_b",
     "name": "Northern Style Head Wrap",
-    "value": 92,
     "type": "HeadArmor",
     "weight": 0.2,
     "armor": {
@@ -21291,7 +20331,6 @@
   {
     "templateMbId": "wooden_2hsword_t1",
     "name": "Wooden Twohander",
-    "value": 4131,
     "type": "TwoHandedWeapon",
     "weight": 0.55,
     "weapons": [
@@ -21341,7 +20380,6 @@
   {
     "templateMbId": "wooden_sword_t1",
     "name": "Wooden Sword",
-    "value": 3692,
     "type": "OneHandedWeapon",
     "weight": 0.58,
     "weapons": [
@@ -21370,7 +20408,6 @@
   {
     "templateMbId": "woodland_axe_t3",
     "name": "Woodland axe",
-    "value": 14417,
     "type": "OneHandedWeapon",
     "weight": 1.27,
     "weapons": [
@@ -21399,7 +20436,6 @@
   {
     "templateMbId": "woodland_longbow",
     "name": "Woodland Longbow",
-    "value": 11546,
     "type": "Bow",
     "weight": 0.1,
     "weapons": [
@@ -21433,7 +20469,6 @@
   {
     "templateMbId": "woodland_yew_bow",
     "name": "Woodland Yew Bow",
-    "value": 11475,
     "type": "Bow",
     "weight": 0.5,
     "weapons": [
@@ -21467,7 +20502,6 @@
   {
     "templateMbId": "worn_horsemans_kite_shield",
     "name": "Makeshift Horsemans Kite Shield",
-    "value": 4243,
     "type": "Shield",
     "weight": 4.0,
     "weapons": [
@@ -21496,7 +20530,6 @@
   {
     "templateMbId": "worn_kite_shield",
     "name": "Worn Kite Shield",
-    "value": 4225,
     "type": "Shield",
     "weight": 3.7,
     "weapons": [
@@ -21525,7 +20558,6 @@
   {
     "templateMbId": "woven_leather_boots",
     "name": "Woven Leather Boots",
-    "value": 290,
     "type": "LegArmor",
     "weight": 0.7,
     "armor": {
@@ -21539,7 +20571,6 @@
   {
     "templateMbId": "woven_leather_bracers",
     "name": "Woven Leather Bracers",
-    "value": 423,
     "type": "HandArmor",
     "weight": 0.8,
     "armor": {
@@ -21553,7 +20584,6 @@
   {
     "templateMbId": "woven_leather_coat",
     "name": "Woven Leather Coat",
-    "value": 2075,
     "type": "BodyArmor",
     "weight": 5.1,
     "armor": {
@@ -21567,7 +20597,6 @@
   {
     "templateMbId": "woven_leather_shoulders",
     "name": "Woven Leather Shoulders",
-    "value": 1130,
     "type": "ShoulderArmor",
     "weight": 1.6,
     "armor": {
@@ -21581,7 +20610,6 @@
   {
     "templateMbId": "woven_leather_vest",
     "name": "Woven Leather Vest",
-    "value": 1247,
     "type": "BodyArmor",
     "weight": 4.7,
     "armor": {
@@ -21595,7 +20623,6 @@
   {
     "templateMbId": "woven_turban",
     "name": "Woven Turban",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.8,
     "armor": {
@@ -21609,7 +20636,6 @@
   {
     "templateMbId": "wrapped_desert_cap",
     "name": "Wrapped Southern Cap",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.5,
     "armor": {
@@ -21623,7 +20649,6 @@
   {
     "templateMbId": "wrapped_headcloth",
     "name": "Highland Wrapped Headcloth",
-    "value": 325,
     "type": "HeadArmor",
     "weight": 0.2,
     "armor": {
@@ -21637,7 +20662,6 @@
   {
     "templateMbId": "wrapped_leather_boots",
     "name": "Wrapped Leather Boots",
-    "value": 493,
     "type": "LegArmor",
     "weight": 1.0,
     "armor": {
@@ -21651,7 +20675,6 @@
   {
     "templateMbId": "wrapped_scarf",
     "name": "Southern Wrapped Scarf",
-    "value": 110,
     "type": "ShoulderArmor",
     "weight": 0.5,
     "armor": {
@@ -21665,7 +20688,6 @@
   {
     "templateMbId": "wrapped_shoes",
     "name": "Wrapped Shoes",
-    "value": 211,
     "type": "LegArmor",
     "weight": 0.8,
     "armor": {

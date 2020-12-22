@@ -27,17 +27,20 @@ namespace Crpg.Application.System.Commands
             private readonly IApplicationEnvironment _appEnv;
             private readonly ICharacterService _characterService;
             private readonly IExperienceTable _experienceTable;
-            private readonly ItemModifierService _itemModifier;
+            private readonly ItemValueService _itemValueService;
+            private readonly ItemModifierService _itemModifierService;
 
             public Handler(ICrpgDbContext db, IItemsSource itemsSource, IApplicationEnvironment appEnv,
-                ICharacterService characterService, IExperienceTable experienceTable, ItemModifierService itemModifier)
+                ICharacterService characterService, IExperienceTable experienceTable, ItemValueService itemValueService,
+                ItemModifierService itemModifierService)
             {
                 _db = db;
                 _itemsSource = itemsSource;
                 _appEnv = appEnv;
                 _characterService = characterService;
                 _experienceTable = experienceTable;
-                _itemModifier = itemModifier;
+                _itemValueService = itemValueService;
+                _itemModifierService = itemModifierService;
             }
 
             public async Task<Result> Handle(SeedDataCommand request, CancellationToken cancellationToken)
@@ -131,7 +134,8 @@ namespace Crpg.Application.System.Commands
 
                 foreach (ItemCreation item in itemsByMdId.Values)
                 {
-                    var baseItem = ItemCreationToItem(item);
+                    Item baseItem = ItemCreationToItem(item);
+                    baseItem.Value = _itemValueService.ComputeItemValue(baseItem);
                     // EF Core doesn't support creating an entity referencing itself, which is needed for items with
                     // rank = 0. Workaround is to set BaseItemId to null and replace with the reference to the item
                     // once it was created. This is the only reason why BaseItemId is nullable.
@@ -141,7 +145,7 @@ namespace Crpg.Application.System.Commands
 
                     foreach (int rank in ItemRanks)
                     {
-                        var modifiedItem = ItemCreationToItem(_itemModifier.ModifyItem(item, rank));
+                        var modifiedItem = _itemModifierService.ModifyItem(baseItem, rank);
                         modifiedItem.BaseItem = baseItem;
                         CreateOrUpdateItem(dbItemsByMbId, modifiedItem);
                     }
@@ -210,7 +214,6 @@ namespace Crpg.Application.System.Commands
                     TemplateMbId = item.TemplateMbId,
                     Name = item.Name,
                     Type = item.Type,
-                    Value = item.Value,
                     Weight = item.Weight,
                     Rank = item.Rank,
                 };
@@ -257,26 +260,26 @@ namespace Crpg.Application.System.Commands
             }
 
             private static ItemWeaponComponent IteamWeaponComponentFromViewModel(ItemWeaponComponentViewModel weaponComponent)
-        {
-            return new ItemWeaponComponent
             {
-                Class = weaponComponent.Class,
-                Accuracy = weaponComponent.Accuracy,
-                MissileSpeed = weaponComponent.MissileSpeed,
-                StackAmount = weaponComponent.StackAmount,
-                Length = weaponComponent.Length,
-                Balance = weaponComponent.Balance,
-                Handling = weaponComponent.Handling,
-                BodyArmor = weaponComponent.BodyArmor,
-                Flags = weaponComponent.Flags,
-                ThrustDamage = weaponComponent.ThrustDamage,
-                ThrustDamageType = weaponComponent.ThrustDamageType,
-                ThrustSpeed = weaponComponent.ThrustSpeed,
-                SwingDamage = weaponComponent.SwingDamage,
-                SwingDamageType = weaponComponent.SwingDamageType,
-                SwingSpeed = weaponComponent.SwingSpeed,
-            };
-        }
+                return new ItemWeaponComponent
+                {
+                    Class = weaponComponent.Class,
+                    Accuracy = weaponComponent.Accuracy,
+                    MissileSpeed = weaponComponent.MissileSpeed,
+                    StackAmount = weaponComponent.StackAmount,
+                    Length = weaponComponent.Length,
+                    Balance = weaponComponent.Balance,
+                    Handling = weaponComponent.Handling,
+                    BodyArmor = weaponComponent.BodyArmor,
+                    Flags = weaponComponent.Flags,
+                    ThrustDamage = weaponComponent.ThrustDamage,
+                    ThrustDamageType = weaponComponent.ThrustDamageType,
+                    ThrustSpeed = weaponComponent.ThrustSpeed,
+                    SwingDamage = weaponComponent.SwingDamage,
+                    SwingDamageType = weaponComponent.SwingDamageType,
+                    SwingSpeed = weaponComponent.SwingSpeed,
+                };
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Crpg.Application.Common.Files;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
+using Crpg.Domain.Entities.Items;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Common.Files
@@ -64,7 +65,14 @@ namespace Crpg.Application.UTest.Common.Files
             {
                 foreach (int rank in new[] { -3, -2, -1, 1, 2, 3 })
                 {
-                    var modifiedItem = itemModifier.ModifyItem(item, rank);
+                    var modifiedItem = itemModifier.ModifyItem(new Item
+                    {
+                        Name = item.Name,
+                        Type = item.Type,
+                        Armor = new ItemArmorComponent(),
+                        Mount = new ItemMountComponent(),
+                        PrimaryWeapon = new ItemWeaponComponent(),
+                    }, rank);
                     if (itemsByName.TryGetValue(modifiedItem.Name, out var conflictingItem))
                     {
                         errors.Add($"Conflicting item name between {conflictingItem.TemplateMbId} and {item.TemplateMbId} rank {rank}");

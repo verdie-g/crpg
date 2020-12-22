@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities.Items;
 
 namespace Crpg.Application.Common.Services
 {
     /// <summary>
-    /// Service for looming and repair <see cref="ItemCreation"/>.
+    /// Service for looming and repair <see cref="Item"/>.
     /// </summary>
     internal class ItemModifierService
     {
@@ -41,14 +40,14 @@ namespace Crpg.Application.Common.Services
         /// <param name="baseItem">Rank 0 item.</param>
         /// <param name="rank">Result rank.</param>
         /// <returns>A new item instance of rank <paramref name="rank"/>.</returns>
-        public ItemCreation ModifyItem(ItemCreation baseItem, int rank)
+        public Item ModifyItem(Item baseItem, int rank)
         {
             if (rank == 0 || rank < -3 || rank > 3)
             {
                 throw new ArgumentException("Rank should be one of { -3, -2, -1, 1, 2, 3 }");
             }
 
-            var clone = (ItemCreation)baseItem.Clone();
+            var clone = (Item)baseItem.Clone();
             clone.Rank = rank;
             if (!_itemModifiers.TryGetValue(baseItem.Type, out ItemModifier[]? typeItemModifiers))
             {
@@ -82,7 +81,7 @@ namespace Crpg.Application.Common.Services
         public string Name { get; set; } = string.Empty;
         public float Value { get; set; }
 
-        public virtual void Apply(ItemCreation item)
+        public virtual void Apply(Item item)
         {
             item.Name = Name + " " + item.Name;
             item.Value = (int)Math.Round(item.Value * Value);
@@ -96,7 +95,7 @@ namespace Crpg.Application.Common.Services
     {
         public float Armor { get; set; }
 
-        public override void Apply(ItemCreation item)
+        public override void Apply(Item item)
         {
             base.Apply(item);
             item.Armor!.HeadArmor = Scale(item.Armor!.HeadArmor, Armor);
@@ -113,7 +112,7 @@ namespace Crpg.Application.Common.Services
         public float Speed { get; set; }
         public float HitPoints { get; set; }
 
-        public override void Apply(ItemCreation item)
+        public override void Apply(Item item)
         {
             base.Apply(item);
             item.Mount!.ChargeDamage = Scale(item.Mount.ChargeDamage, ChargeDamage);
@@ -129,12 +128,12 @@ namespace Crpg.Application.Common.Services
         public float Durability { get; set; }
         public float Armor { get; set; }
 
-        public override void Apply(ItemCreation item)
+        public override void Apply(Item item)
         {
             base.Apply(item);
-            item.Weapons[0].SwingSpeed = Scale(item.Weapons[0].SwingSpeed, Speed);
-            item.Weapons[0].StackAmount = Scale(item.Weapons[0].StackAmount, Durability);
-            item.Weapons[0].BodyArmor = Scale(item.Weapons[0].BodyArmor, Armor);
+            item.PrimaryWeapon!.SwingSpeed = Scale(item.PrimaryWeapon.SwingSpeed, Speed);
+            item.PrimaryWeapon.StackAmount = Scale(item.PrimaryWeapon.StackAmount, Durability);
+            item.PrimaryWeapon.BodyArmor = Scale(item.PrimaryWeapon.BodyArmor, Armor);
         }
     }
 
@@ -144,12 +143,12 @@ namespace Crpg.Application.Common.Services
         public float FireRate { get; set; }
         public float Accuracy { get; set; }
 
-        public override void Apply(ItemCreation item)
+        public override void Apply(Item item)
         {
             base.Apply(item);
-            item.Weapons[0].ThrustDamage = Scale(item.Weapons[0].ThrustDamage, Damage);
-            item.Weapons[0].ThrustSpeed = Scale(item.Weapons[0].ThrustSpeed, FireRate);
-            item.Weapons[0].Accuracy = Scale(item.Weapons[0].Accuracy, Accuracy);
+            item.PrimaryWeapon!.ThrustDamage = Scale(item.PrimaryWeapon.ThrustDamage, Damage);
+            item.PrimaryWeapon.ThrustSpeed = Scale(item.PrimaryWeapon.ThrustSpeed, FireRate);
+            item.PrimaryWeapon.Accuracy = Scale(item.PrimaryWeapon.Accuracy, Accuracy);
         }
     }
 
@@ -162,10 +161,10 @@ namespace Crpg.Application.Common.Services
         public float Damage { get; set; }
         public float Speed { get; set; }
 
-        public override void Apply(ItemCreation item)
+        public override void Apply(Item item)
         {
             base.Apply(item);
-            foreach (var weapon in item.Weapons)
+            foreach (var weapon in item.GetWeapons())
             {
                 weapon.SwingDamage = Scale(weapon.SwingDamage, Damage);
                 weapon.SwingSpeed = Scale(weapon.SwingSpeed, Speed);
@@ -181,12 +180,12 @@ namespace Crpg.Application.Common.Services
         public float FireRate { get; set; }
         public float Accuracy { get; set; }
 
-        public override void Apply(ItemCreation item)
+        public override void Apply(Item item)
         {
             base.Apply(item);
-            item.Weapons[0].ThrustDamage = Scale(item.Weapons[0].ThrustDamage, Damage);
-            item.Weapons[0].MissileSpeed = Scale(item.Weapons[0].ThrustDamage, FireRate);
-            item.Weapons[0].Accuracy = Scale(item.Weapons[0].MissileSpeed, Accuracy);
+            item.PrimaryWeapon!.ThrustDamage = Scale(item.PrimaryWeapon.ThrustDamage, Damage);
+            item.PrimaryWeapon.MissileSpeed = Scale(item.PrimaryWeapon.ThrustDamage, FireRate);
+            item.PrimaryWeapon.Accuracy = Scale(item.PrimaryWeapon.MissileSpeed, Accuracy);
         }
     }
 
@@ -196,12 +195,12 @@ namespace Crpg.Application.Common.Services
         public float Damage { get; set; }
         public float StackAmount { get; set; }
 
-        public override void Apply(ItemCreation item)
+        public override void Apply(Item item)
         {
             base.Apply(item);
             item.Weight = Scale(item.Weight, Weight);
-            item.Weapons[0].ThrustDamage = Scale(item.Weapons[0].ThrustDamage, Damage);
-            item.Weapons[0].StackAmount = Scale(item.Weapons[0].StackAmount, StackAmount);
+            item.PrimaryWeapon!.ThrustDamage = Scale(item.PrimaryWeapon.ThrustDamage, Damage);
+            item.PrimaryWeapon.StackAmount = Scale(item.PrimaryWeapon.StackAmount, StackAmount);
         }
     }
 }

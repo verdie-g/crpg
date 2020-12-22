@@ -167,7 +167,6 @@ namespace Crpg.GameMod.ItemsExporting
                 }).ToArray();
             }
 
-            crpgItem.Value = CrpgItemValueModel.CalculateValue(crpgItem);
             return crpgItem;
         }
 

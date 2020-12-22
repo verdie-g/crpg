@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Crpg.Domain.Common;
 
@@ -6,7 +7,7 @@ namespace Crpg.Domain.Entities.Items
     /// <summary>
     /// cRPG representation of an item. Very similar to the representation of an item in Bannerlord.
     /// </summary>
-    public class Item : AuditableEntity
+    public class Item : AuditableEntity, ICloneable
     {
         public int Id { get; set; }
 
@@ -77,5 +78,24 @@ namespace Crpg.Domain.Entities.Items
                 yield return TertiaryWeapon;
             }
         }
+
+        /// <summary>
+        /// Clone <see cref="Item"/> without relations.
+        /// </summary>
+        public object Clone() => new Item
+        {
+            TemplateMbId = TemplateMbId,
+            Name = Name,
+            BaseItemId = BaseItemId,
+            Type = Type,
+            Value = Value,
+            Weight = Weight,
+            Rank = Rank,
+            Armor = (ItemArmorComponent?)Armor?.Clone(),
+            Mount = (ItemMountComponent?)Mount?.Clone(),
+            PrimaryWeapon = (ItemWeaponComponent?)PrimaryWeapon?.Clone(),
+            SecondaryWeapon = (ItemWeaponComponent?)SecondaryWeapon?.Clone(),
+            TertiaryWeapon = (ItemWeaponComponent?)TertiaryWeapon?.Clone(),
+        };
     }
 }

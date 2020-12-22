@@ -1,9 +1,11 @@
-﻿namespace Crpg.Domain.Entities.Items
+﻿using System;
+
+namespace Crpg.Domain.Entities.Items
 {
     /// <summary>
     /// Represents a weapon mode.
     /// </summary>
-    public class ItemWeaponComponent
+    public class ItemWeaponComponent : ICloneable
     {
         public WeaponClass Class { get; set; }
         public int Accuracy { get; set; }
@@ -31,5 +33,24 @@
         public int SwingDamage { get; set; }
         public DamageType SwingDamageType { get; set; }
         public int SwingSpeed { get; set; }
+
+        public object Clone() => new ItemWeaponComponent
+        {
+            Class = Class,
+            Accuracy = Accuracy,
+            MissileSpeed = MissileSpeed,
+            StackAmount = StackAmount,
+            Length = Length,
+            Balance = Balance,
+            Handling = Handling,
+            BodyArmor = BodyArmor,
+            Flags = Flags,
+            ThrustDamage = ThrustDamage,
+            ThrustDamageType = ThrustDamageType,
+            ThrustSpeed = ThrustSpeed,
+            SwingDamage = SwingDamage,
+            SwingDamageType = SwingDamageType,
+            SwingSpeed = SwingSpeed,
+        };
     }
 }

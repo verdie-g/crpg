@@ -7,13 +7,13 @@ namespace Crpg.GameMod.Api.Models.Items
     internal class CrpgItem : CrpgItemCreation
     {
         public int Id { get; set; }
+        public int Value { get; set; }
     }
 
     internal class CrpgItemCreation
     {
         public string TemplateMbId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
-        public int Value { get; set; }
         public CrpgItemType Type { get; set; }
         public float Weight { get; set; }
 

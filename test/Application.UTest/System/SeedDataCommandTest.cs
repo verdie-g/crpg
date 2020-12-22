@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common;
 using Crpg.Application.Common.Files;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Services;
@@ -25,6 +23,7 @@ namespace Crpg.Application.UTest.System
         private static readonly ICharacterService CharacterService = Mock.Of<ICharacterService>();
         private static readonly ItemModifiers ItemModifiers = new FileItemModifiersSource().LoadItemModifiers();
         private static readonly ItemModifierService ItemModifierService = new ItemModifierService(ItemModifiers);
+        private static readonly ItemValueService ItemValueService = new ItemValueService();
 
         [Test]
         public async Task ShouldInsertItemsFromItemSourceWithAllRanks()
@@ -38,7 +37,7 @@ namespace Crpg.Application.UTest.System
                 });
 
             var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
-                CharacterService, ExperienceTable, ItemModifierService);
+                CharacterService, ExperienceTable, ItemValueService, ItemModifierService);
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
 
             var items = await AssertDb.Items.ToArrayAsync();
@@ -60,11 +59,11 @@ namespace Crpg.Application.UTest.System
         {
             var itemsSource = new Mock<IItemsSource>();
             itemsSource.SetupSequence(s => s.LoadItems())
-                .ReturnsAsync(new[] { new ItemCreation { TemplateMbId = "a", Type = ItemType.HeadArmor, Value = 500, Armor = new ItemArmorComponentViewModel() } })
+                .ReturnsAsync(new[] { new ItemCreation { TemplateMbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() } })
                 .ReturnsAsync(Array.Empty<ItemCreation>());
 
             var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
-                CharacterService, ExperienceTable, ItemModifierService);
+                CharacterService, ExperienceTable, ItemValueService, ItemModifierService);
 
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
             var items = await AssertDb.Items.ToArrayAsync();
@@ -105,9 +104,9 @@ namespace Crpg.Application.UTest.System
             items = await AssertDb.Items.ToArrayAsync();
             Assert.AreEqual(0, items.Length);
             var users = await AssertDb.Users.ToArrayAsync();
-            Assert.AreEqual(100 + 500, users[0].Gold);
+            Assert.Greater(users[0].Gold, 100);
             Assert.AreEqual(0, users[0].HeirloomPoints);
-            Assert.Greater(users[1].Gold, 200 + 500 * 2);
+            Assert.Greater(users[1].Gold, 200);
             Assert.AreEqual(1, users[1].HeirloomPoints);
         }
 
@@ -146,7 +145,7 @@ namespace Crpg.Application.UTest.System
 
             var itemModifierService = new ItemModifierService(itemModifiers);
             var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
-                CharacterService, ExperienceTable, itemModifierService);
+                CharacterService, ExperienceTable, ItemValueService, itemModifierService);
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
             var newItems = await AssertDb.Items.ToDictionaryAsync(i => i.Rank);
             Assert.AreEqual(7, newItems.Count, "Modifying an item added or removed one");

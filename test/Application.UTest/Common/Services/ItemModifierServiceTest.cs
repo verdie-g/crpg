@@ -1,6 +1,5 @@
 ﻿using Crpg.Application.Common.Files;
 using Crpg.Application.Common.Services;
-using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities.Items;
 using NUnit.Framework;
 
@@ -11,21 +10,21 @@ namespace Crpg.Application.UTest.Common.Services
         [Theory]
         public void StatsShouldIncreaseBetweenRanks(ItemType itemType)
         {
-            var item = new ItemCreation
+            var item = new Item
             {
                 TemplateMbId = "123",
                 Name = "toto",
                 Value = 1000,
                 Type = itemType,
                 Weight = 1000f,
-                Armor = new ItemArmorComponentViewModel
+                Armor = new ItemArmorComponent
                 {
                     HeadArmor = 100,
                     BodyArmor = 100,
                     ArmArmor = 100,
                     LegArmor = 100,
                 },
-                Mount = new ItemMountComponentViewModel
+                Mount = new ItemMountComponent
                 {
                     BodyLength = 100,
                     ChargeDamage = 100,
@@ -33,29 +32,26 @@ namespace Crpg.Application.UTest.Common.Services
                     Speed = 100,
                     HitPoints = 100,
                 },
-                Weapons = new[]
+                PrimaryWeapon = new ItemWeaponComponent
                 {
-                    new ItemWeaponComponentViewModel
-                    {
-                        Accuracy = 100,
-                        MissileSpeed = 100,
-                        StackAmount = 100,
-                        Length = 100,
-                        Handling = 100,
-                        BodyArmor = 100,
-                        ThrustDamage = 100,
-                        ThrustDamageType = DamageType.Cut,
-                        ThrustSpeed = 100,
-                        SwingDamage = 100,
-                        SwingDamageType = DamageType.Pierce,
-                        SwingSpeed = 100,
-                    },
+                    Accuracy = 100,
+                    MissileSpeed = 100,
+                    StackAmount = 100,
+                    Length = 100,
+                    Handling = 100,
+                    BodyArmor = 100,
+                    ThrustDamage = 100,
+                    ThrustDamageType = DamageType.Cut,
+                    ThrustSpeed = 100,
+                    SwingDamage = 100,
+                    SwingDamageType = DamageType.Pierce,
+                    SwingSpeed = 100,
                 },
             };
 
             var itemModifiers = new FileItemModifiersSource().LoadItemModifiers();
             var itemModifierService = new ItemModifierService(itemModifiers);
-            ItemCreation[] modifiedItems =
+            Item[] modifiedItems =
             {
                 itemModifierService.ModifyItem(item, -3),
                 itemModifierService.ModifyItem(item, -2),
@@ -85,18 +81,18 @@ namespace Crpg.Application.UTest.Common.Services
                 Assert.GreaterOrEqual(modifiedItems[i].Mount!.Speed, modifiedItems[i - 1].Mount!.Speed);
                 Assert.GreaterOrEqual(modifiedItems[i].Mount!.HitPoints, modifiedItems[i - 1].Mount!.HitPoints);
 
-                Assert.GreaterOrEqual(modifiedItems[i].Weapons[0].Accuracy, modifiedItems[i - 1].Weapons[0].Accuracy);
-                Assert.GreaterOrEqual(modifiedItems[i].Weapons[0].MissileSpeed, modifiedItems[i - 1].Weapons[0].MissileSpeed);
-                Assert.GreaterOrEqual(modifiedItems[i].Weapons[0].StackAmount, modifiedItems[i - 1].Weapons[0].StackAmount);
-                Assert.GreaterOrEqual(modifiedItems[i].Weapons[0].Length, modifiedItems[i - 1].Weapons[0].Length);
-                Assert.GreaterOrEqual(modifiedItems[i].Weapons[0].Handling, modifiedItems[i - 1].Weapons[0].Handling);
-                Assert.GreaterOrEqual(modifiedItems[i].Weapons[0].BodyArmor, modifiedItems[i - 1].Weapons[0].BodyArmor);
-                Assert.GreaterOrEqual(modifiedItems[i].Weapons[0].ThrustDamage, modifiedItems[i - 1].Weapons[0].ThrustDamage);
-                Assert.AreEqual(item.Weapons[0].ThrustDamageType, modifiedItems[i].Weapons[0].ThrustDamageType);
-                Assert.GreaterOrEqual(modifiedItems[i].Weapons[0].ThrustSpeed, modifiedItems[i - 1].Weapons[0].ThrustSpeed);
-                Assert.GreaterOrEqual(modifiedItems[i].Weapons[0].SwingDamage, modifiedItems[i - 1].Weapons[0].SwingDamage);
-                Assert.AreEqual(item.Weapons[0].SwingDamageType, modifiedItems[i].Weapons[0].SwingDamageType);
-                Assert.GreaterOrEqual(modifiedItems[i].Weapons[0].SwingSpeed, modifiedItems[i - 1].Weapons[0].SwingSpeed);
+                Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.Accuracy, modifiedItems[i - 1].PrimaryWeapon!.Accuracy);
+                Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.MissileSpeed, modifiedItems[i - 1].PrimaryWeapon!.MissileSpeed);
+                Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.StackAmount, modifiedItems[i - 1].PrimaryWeapon!.StackAmount);
+                Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.Length, modifiedItems[i - 1].PrimaryWeapon!.Length);
+                Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.Handling, modifiedItems[i - 1].PrimaryWeapon!.Handling);
+                Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.BodyArmor, modifiedItems[i - 1].PrimaryWeapon!.BodyArmor);
+                Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.ThrustDamage, modifiedItems[i - 1].PrimaryWeapon!.ThrustDamage);
+                Assert.AreEqual(item.PrimaryWeapon!.ThrustDamageType, modifiedItems[i].PrimaryWeapon!.ThrustDamageType);
+                Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.ThrustSpeed, modifiedItems[i - 1].PrimaryWeapon!.ThrustSpeed);
+                Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.SwingDamage, modifiedItems[i - 1].PrimaryWeapon!.SwingDamage);
+                Assert.AreEqual(item.PrimaryWeapon!.SwingDamageType, modifiedItems[i].PrimaryWeapon!.SwingDamageType);
+                Assert.GreaterOrEqual(modifiedItems[i].PrimaryWeapon!.SwingSpeed, modifiedItems[i - 1].PrimaryWeapon!.SwingSpeed);
             }
         }
     }
