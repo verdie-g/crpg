@@ -9,6 +9,7 @@ using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Items;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Crpg.Application.Items.Commands
 {
@@ -21,11 +22,13 @@ namespace Crpg.Application.Items.Commands
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
+            private readonly ILogger<BuyItemCommand> _logger;
 
-            public Handler(ICrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper, ILogger<BuyItemCommand> logger)
             {
                 _db = db;
                 _mapper = mapper;
+                _logger = logger;
             }
 
             public async Task<Result<ItemViewModel>> Handle(BuyItemCommand req, CancellationToken cancellationToken)
@@ -59,6 +62,8 @@ namespace Crpg.Application.Items.Commands
                 user.Gold -= item.Value;
                 user.OwnedItems.Add(new OwnedItem { UserId = req.UserId, ItemId = req.ItemId });
                 await _db.SaveChangesAsync(cancellationToken);
+
+                _logger.LogInformation("User '{0}' bought item '{1}'", req.UserId, req.ItemId);
                 return new Result<ItemViewModel>(_mapper.Map<ItemViewModel>(item));
             }
         }

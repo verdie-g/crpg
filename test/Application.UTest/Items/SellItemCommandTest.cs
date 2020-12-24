@@ -9,12 +9,15 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items
 {
     public class SellItemCommandTest : TestBase
     {
+        private static readonly ILogger<SellItemCommand> Logger = Mock.Of<ILogger<SellItemCommand>>();
         private static readonly Constants Constants = new Constants { ItemSellCostCoefs = new[] { 0.5f, 0.0f } };
 
         [Test]
@@ -34,7 +37,7 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            await new SellItemCommand.Handler(ActDb, Constants).Handle(new SellItemCommand
+            await new SellItemCommand.Handler(ActDb, Constants, Logger).Handle(new SellItemCommand
             {
                 ItemId = user.OwnedItems[0].ItemId,
                 UserId = user.Id,
@@ -75,7 +78,7 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            await new SellItemCommand.Handler(ActDb, Constants).Handle(new SellItemCommand
+            await new SellItemCommand.Handler(ActDb, Constants, Logger).Handle(new SellItemCommand
             {
                 ItemId = item.Id,
                 UserId = user.Id,
@@ -106,7 +109,7 @@ namespace Crpg.Application.UTest.Items
             var user = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new SellItemCommand.Handler(ActDb, Constants).Handle(
+            var result = await new SellItemCommand.Handler(ActDb, Constants, Logger).Handle(
                 new SellItemCommand
                 {
                     ItemId = 1,
@@ -121,7 +124,7 @@ namespace Crpg.Application.UTest.Items
             var item = ArrangeDb.Items.Add(new Item());
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new SellItemCommand.Handler(ActDb, Constants).Handle(
+            var result = await new SellItemCommand.Handler(ActDb, Constants, Logger).Handle(
                 new SellItemCommand
                 {
                     ItemId = item.Entity.Id,
