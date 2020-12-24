@@ -9,21 +9,13 @@
         <ModuleName>cRPG</ModuleName>
         <OutputPath>$(MB_PATH)/Modules/$(ModuleName)/bin/Win64_Shipping_Client</OutputPath> <!-- MB_PATH should be set in your environment variables -->
         <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
-        <CodeAnalysisRuleSet>../stylecop.ruleset</CodeAnalysisRuleSet>
-        <LangVersion>latest</LangVersion>
 
         <!-- Avoid generating pdb in release configuration -->
         <DebugSymbols Condition="'$(Configuration)' == 'Release'">false</DebugSymbols>
         <DebugType Condition="'$(Configuration)' == 'Release'">None</DebugType>
-
-        <!-- Enable C# 8 nullable and treat its warnings as errors -->
-        <Nullable>enable</Nullable>
-        <WarningsAsErrors>CS8073;CS8597;CS8600;CS8601;CS8602;CS8603;CS8604;CS8605;CS8606;CS8607;CS8608;CS8609;CS8610;CS8611;CS8612;CS8613;CS8614;CS8615;CS8616;CS8617;CS8618;CS8619;CS8620;CS8621;CS8622;CS8624;CS8625;CS8626;CS8629;CS8631;CS8632;CS8633;CS8634;CS8638;CS8643;CS8644;CS8645;CS8653;CS8654;CS8655;CS8667;CS8714</WarningsAsErrors>
     </PropertyGroup>
 
-    <ItemGroup>
-        <AdditionalFiles Include="../stylecop.json" />
-    </ItemGroup>
+    <Import Project="../../src/Shared.targets" />
 
     <ItemGroup>
         <ContentWithTargetPath Include="SubModule.xml">
@@ -55,7 +47,6 @@
     <ItemGroup>
         <PackageReference Include="DeepCloner" Version="0.10.2" />
         <PackageReference Include="IdentityModel" Version="4.5.0" />
-        <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" />
     </ItemGroup>
 
     <ItemGroup>
