@@ -6,7 +6,7 @@
         <p>
           cRPG is a mod for
           <a href="https://store.steampowered.com/app/261550/Mount__Blade_II_Bannerlord" target="_blank">Mount & Blade II: Bannerlord</a>.
-          It adds persistence to the multiplayer. Your start as a peasant and you'll develop your unique character with different stats and
+          It adds persistence to the multiplayer. You start as a peasant and you'll develop your unique character with different stats and
           items.
         </p>
 
