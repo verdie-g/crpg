@@ -22,17 +22,7 @@
     </Target>
 
     <ItemGroup>
-        <ContentWithTargetPath Include="SubModule.xml">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <TargetPath>../../%(Identity)</TargetPath>
-        </ContentWithTargetPath>
-
-        <ContentWithTargetPath Include="ModuleData/**/*">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <TargetPath>../../%(Identity)</TargetPath>
-        </ContentWithTargetPath>
-
-        <ContentWithTargetPath Include="GUI/**/*">
+        <ContentWithTargetPath Include="SubModule.xml;ModuleData/**/*;GUI/**/*">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <TargetPath>../../%(Identity)</TargetPath>
         </ContentWithTargetPath>
