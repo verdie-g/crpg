@@ -3,9 +3,9 @@
   "profiles": {
     "GameMod": {
       "commandName": "Executable",
-      "executablePath": "%MB_PATH%\\bin\\Win64_Shipping_Client\\Bannerlord.exe",
+      "executablePath": "%MBPATH%\\bin\\Win64_Shipping_Client\\Bannerlord.exe",
       "commandLineArgs": "/singleplayer _MODULES_*Native*cRPG*_MODULES_",
-      "workingDirectory": "%MB_PATH%\\bin\\Win64_Shipping_Client",
+      "workingDirectory": "%MBPATH%\\bin\\Win64_Shipping_Client",
       "nativeDebugging": true
     }
   }

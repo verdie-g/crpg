@@ -7,7 +7,7 @@
         <RootNamespace>Crpg.GameMod</RootNamespace>
         <AssemblyName>Crpg.GameMod</AssemblyName>
         <ModuleName>cRPG</ModuleName>
-        <OutputPath>$(MB_PATH)/Modules/$(ModuleName)/bin/Win64_Shipping_Client</OutputPath> <!-- MB_PATH should be set in your environment variables -->
+        <OutputPath>$(MBPATH)/Modules/$(ModuleName)/bin/Win64_Shipping_Client</OutputPath>
         <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
 
         <!-- Avoid generating pdb in release configuration -->
@@ -16,6 +16,10 @@
     </PropertyGroup>
 
     <Import Project="../../src/Shared.targets" />
+
+    <Target Name="CheckMbPathDefined" BeforeTargets="GetReferenceAssemblyPaths">
+        <Error Text="Environment variable MBPATH should be set to your Bannerlord installation path" Condition="'$(MBPATH)' == ''" />
+    </Target>
 
     <ItemGroup>
         <ContentWithTargetPath Include="SubModule.xml">
@@ -35,11 +39,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="$(MB_PATH)/bin/Win64_Shipping_Client/TaleWorlds.*.dll">
+        <Reference Include="$(MBPATH)/bin/Win64_Shipping_Client/TaleWorlds.*.dll">
             <Private>False</Private>
         </Reference>
 
-        <Reference Include="$(MB_PATH)/Modules/Native/bin/Win64_Shipping_Client/TaleWorlds.*.dll">
+        <Reference Include="$(MBPATH)/Modules/Native/bin/Win64_Shipping_Client/TaleWorlds.*.dll">
             <Private>False</Private>
         </Reference>
     </ItemGroup>
