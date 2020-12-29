@@ -102,10 +102,6 @@ namespace Crpg.GameMod.DefendTheVirgin
 
             LoadItems(_getItemsTask.Result, MBObjectManager.Instance);
 
-            string scene = GetRandomVillageScene();
-            AtmosphereInfo atmosphereInfoForMission = GetRandomAtmosphere();
-
-            InformationManager.DisplayMessage(new InformationMessage($"Map is {scene}."));
             InformationManager.DisplayMessage(new InformationMessage("Visit c-rpg.eu to upgrade your character."));
 
             var waveController = new WaveController(_waves!.Length);
@@ -113,11 +109,11 @@ namespace Crpg.GameMod.DefendTheVirgin
             var waveSpawnLogic = new WaveSpawnLogic(waveController, _waves!, character);
             var crpgLogic = new CrpgLogic(waveController, _crpgClient, _waves!, _getUserTask.Result);
 
-            MissionState.OpenNew("DefendTheVirgin", new MissionInitializerRecord(scene)
+            MissionState.OpenNew("DefendTheVirgin", new MissionInitializerRecord("empire_village_007")
             {
                 DoNotUseLoadingScreen = false,
                 PlayingInCampaignMode = false,
-                AtmosphereOnCampaign = atmosphereInfoForMission,
+                AtmosphereOnCampaign = GetRandomAtmosphere(),
                 SceneLevels = string.Empty,
                 TimeOfDay = 6f,
             }, missionController => new MissionBehaviour[]
@@ -261,48 +257,6 @@ namespace Crpg.GameMod.DefendTheVirgin
 
                 MBObjectManager.Instance.RegisterObject(mbItem);
             }
-        }
-
-        private static string GetRandomVillageScene()
-        {
-            string[] scenes =
-            {
-                "aserai_village_e", // 127m
-                // "aserai_village_i", // 200m
-                // "aserai_village_j", // 257m
-                // "aserai_village_l", // 296m
-                // "battania_village_h", // 252m
-                "battania_village_i", // 120m
-                "battania_village_j", // 120m
-                // "battania_village_k", // 218m
-                // "battania_village_l", // 340m
-                // "empire_village_002", // 170m
-                "empire_village_003", // 152m
-                // "empire_village_004", // 300m
-                "empire_village_007", // 150m
-                // "empire_village_008", // CRASH WITH NO EXCEPTION
-                // "empire_village_p", // CRASH WITH NO EXCEPTION
-                // "empire_village_x", // CRASH WITH NO EXCEPTION
-                "khuzait_village_a", // 169m
-                // "khuzait_village_i", // 229m
-                // "khuzait_village_j", // 214m
-                // "khuzait_village_k", // 250m
-                "khuzait_village_l", // 103m
-                "sturgia_village_e", // 153m
-                // "sturgia_village_f", // 160m
-                "sturgia_village_g", // 100m
-                // "sturgia_village_h", // 279m
-                // "sturgia_village_j", // 291m
-                // "sturgia_village_l", // 120m
-                // "vlandia_village_g", // 270m
-                // "vlandia_village_i", // 292m
-                // "vlandia_village_k", // 300m
-                // "vlandia_village_l", // 280m
-                // "vlandia_village_m", // 342m
-                // "vlandia_village_n", // 278m
-            };
-
-            return scenes[Rng.Next(0, scenes.Length)];
         }
 
         private static AtmosphereInfo GetRandomAtmosphere()
