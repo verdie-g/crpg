@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
+using Crpg.Common.Helpers;
 using Crpg.GameMod.Api;
 using Crpg.GameMod.Api.Models.Characters;
 using Crpg.GameMod.Api.Models.Items;
@@ -32,6 +33,7 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         private Task<CrpgUser>? _getUserTask;
         private Task<IList<CrpgItem>>? _getItemsTask;
+        private CrpgConstants? _crpgConstants;
         private WaveGroup[][]? _waves;
 
         protected override void DoLoadingForGameManager(
@@ -45,6 +47,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                     LoadModuleData(false);
                     _getUserTask = GetUserAsync();
                     _getItemsTask = GetCrpgItems();
+                    _crpgConstants = LoadCrpgConstants();
                     _waves = LoadWaves();
                     MBGlobals.InitializeReferences();
                     Game.CreateGame(new DefendTheVirginGame(), this).DoLoading();
@@ -106,7 +109,8 @@ namespace Crpg.GameMod.DefendTheVirgin
             InformationManager.DisplayMessage(new InformationMessage("Visit c-rpg.eu to upgrade your character."));
 
             var waveController = new WaveController(_waves!.Length);
-            var waveSpawnLogic = new WaveSpawnLogic(waveController, _waves!, CreateCharacter(_getUserTask.Result.Character));
+            var character = CreateCharacter(_getUserTask.Result.Character, _crpgConstants!);
+            var waveSpawnLogic = new WaveSpawnLogic(waveController, _waves!, character);
             var crpgLogic = new CrpgLogic(waveController, _crpgClient, _waves!, _getUserTask.Result);
 
             MissionState.OpenNew("DefendTheVirgin", new MissionInitializerRecord(scene)
@@ -163,6 +167,12 @@ namespace Crpg.GameMod.DefendTheVirgin
             }
 
             return waves;
+        }
+
+        private static CrpgConstants LoadCrpgConstants()
+        {
+            string path = BasePath.Name + "Modules/cRPG/ModuleData/constants.json";
+            return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path));
         }
 
         /// <summary>
@@ -330,7 +340,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             };
         }
 
-        private BasicCharacterObject CreateCharacter(CrpgCharacter crpgCharacter)
+        private BasicCharacterObject CreateCharacter(CrpgCharacter crpgCharacter, CrpgConstants constants)
         {
             var skills = new CharacterSkills();
             skills.SetPropertyValue(CrpgSkills.Strength, crpgCharacter.Statistics.Attributes.Strength);
@@ -356,7 +366,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             foreach (var equippedItem in crpgCharacter.EquippedItems)
             {
                 var index = ItemSlotToIndex[equippedItem.Slot];
-                AddEquipment(equipment, index, "crpg_" + equippedItem.Item.Id, skills);
+                AddEquipment(equipment, index, "crpg_" + equippedItem.Item.Id, skills, constants);
             }
 
             var mbCharacter = new CrpgCharacterObject(new TextObject(crpgCharacter.Name), skills);
@@ -388,14 +398,15 @@ namespace Crpg.GameMod.DefendTheVirgin
             return staticBodyProperties;
         }
 
-        private static void AddEquipment(Equipment equipments, EquipmentIndex idx, string? itemId, CharacterSkills skills)
+        private static void AddEquipment(Equipment equipments, EquipmentIndex idx, string? itemId,
+            CharacterSkills skills, CrpgConstants constants)
         {
-            var itemObject = GetModifiedItem(itemId, skills);
+            var itemObject = GetModifiedItem(itemId, skills, constants);
             var equipmentElement = new EquipmentElement(itemObject);
             equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
         }
 
-        private static ItemObject? GetModifiedItem(string? itemId, CharacterSkills skills)
+        private static ItemObject? GetModifiedItem(string? itemId, CharacterSkills skills, CrpgConstants constants)
         {
             if (itemId == null)
             {
@@ -413,20 +424,23 @@ namespace Crpg.GameMod.DefendTheVirgin
 
             if (itemObject.Weapons != null)
             {
-                ModifyDamage(itemObject, skills.GetPropertyValue(CrpgSkills.PowerStrike) * 0.08f, WeaponClassesAffectedByPowerStrike);
-                ModifyDamage(itemObject, skills.GetPropertyValue(CrpgSkills.PowerDraw) * 0.14f, WeaponClassesAffectedByPowerDraw);
-                ModifyDamage(itemObject, skills.GetPropertyValue(CrpgSkills.PowerThrow) * 0.10f, WeaponClassesAffectedByPowerThrow);
+                float powerStrikeFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.PowerStrike), constants.DamageForPowerStrikeCoefs);
+                ModifyDamage(itemObject, powerStrikeFactor, WeaponClassesAffectedByPowerStrike);
+                float powerDrawFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.PowerDraw), constants.DamageForPowerDrawCoefs);
+                ModifyDamage(itemObject, powerDrawFactor, WeaponClassesAffectedByPowerDraw);
+                float powerThrowFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.PowerThrow), constants.DamageForPowerThrowCoefs);
+                ModifyDamage(itemObject, powerThrowFactor, WeaponClassesAffectedByPowerThrow);
             }
 
             if (itemObject.ItemType == ItemObject.ItemTypeEnum.Shield)
             {
                 var shield = itemObject.WeaponComponent.PrimaryWeapon;
 
-                float durabilityFactor = skills.GetPropertyValue(CrpgSkills.Shield) * 0.16f;
+                float durabilityFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.Shield), constants.DurabilityForShieldCoefs);
                 var durability = (short)ReflectionHelper.GetProperty(shield, nameof(WeaponComponentData.MaxDataValue));
                 ReflectionHelper.SetProperty(shield, nameof(WeaponComponentData.MaxDataValue), (short)(durability + durability * durabilityFactor));
 
-                float speedFactor = skills.GetPropertyValue(CrpgSkills.Shield) * 0.03f;
+                float speedFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.Shield), constants.SpeedForShieldCoefs);
                 var speed = (int)ReflectionHelper.GetProperty(shield, nameof(WeaponComponentData.ThrustSpeed));
                 ReflectionHelper.SetProperty(shield, nameof(WeaponComponentData.ThrustSpeed), (int)(speed + speed * speedFactor));
             }

@@ -22,10 +22,8 @@
     </Target>
 
     <ItemGroup>
-        <ContentWithTargetPath Include="SubModule.xml;ModuleData/**/*;GUI/**/*">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <TargetPath>../../%(Identity)</TargetPath>
-        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="../../data/constants.json" Link="ModuleData/constants.json" TargetPath="../../ModuleData/constants.json" CopyToOutputDirectory="PreserveNewest" />
+        <ContentWithTargetPath Include="SubModule.xml;ModuleData/**/*;GUI/**/*" TargetPath="../../%(Identity)" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
 
     <ItemGroup>
