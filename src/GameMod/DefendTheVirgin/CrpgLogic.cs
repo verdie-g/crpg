@@ -39,9 +39,8 @@ namespace Crpg.GameMod.DefendTheVirgin
             }
 
             WaveGroup[] wave = _waves[waveNb - 1];
-            int reward = SumWaveWeight(wave);
-            int experienceReward = reward * 500;
-            int goldReward = reward * 25;
+            int experienceReward = ComputeWaveTier(wave) * 100;
+            int goldReward = experienceReward / 20;
             InformationManager.DisplayMessage(new InformationMessage($"Gained {experienceReward} experience.", new Color(218, 112, 214)));
             InformationManager.DisplayMessage(new InformationMessage($"Gained {goldReward} gold.", new Color(65, 105, 225)));
 
@@ -79,14 +78,14 @@ namespace Crpg.GameMod.DefendTheVirgin
             _userAccessor.User = res.Data!.UpdateResults[0].User;
         }
 
-        private static int SumWaveWeight(IEnumerable<WaveGroup> wave)
+        private static int ComputeWaveTier(IEnumerable<WaveGroup> wave)
         {
             float value = 0;
             foreach (var group in wave)
             {
                 BasicCharacterObject character = Game.Current.ObjectManager.GetObject<BasicCharacterObject>(group.Id);
                 float weight = character.Equipment.GetTotalWeightOfArmor(true) + character.Equipment.GetTotalWeightOfWeapons();
-                value += weight * group.Count;
+                value += weight * (character.Level + 5) * group.Count;
             }
 
             return (int)value;
