@@ -164,7 +164,7 @@
   {
     "templateMbId": "aserai_2haxe_1_t3",
     "name": "Southern Broad Two Handed Axe",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.52,
     "weapons": [
       {
@@ -194,7 +194,7 @@
   {
     "templateMbId": "aserai_2haxe_2_t4",
     "name": "Executioners Axe",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.88,
     "weapons": [
       {
@@ -224,7 +224,7 @@
   {
     "templateMbId": "aserai_2haxe_3_t5",
     "name": "Heavy Executioners Axe",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.49,
     "weapons": [
       {
@@ -1483,7 +1483,7 @@
   {
     "templateMbId": "battania_2haxe_1_t2",
     "name": "Square Bit Two Handed Axe",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.4,
     "weapons": [
       {
@@ -1513,7 +1513,7 @@
   {
     "templateMbId": "battania_2haxe_1_t2_blunt",
     "name": "Sparing Two Handed Axe",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.4,
     "weapons": [
       {
@@ -1543,7 +1543,7 @@
   {
     "templateMbId": "battania_2hsword_1_t2",
     "name": "Iron Broadsword",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.99,
     "weapons": [
       {
@@ -1571,7 +1571,7 @@
   {
     "templateMbId": "battania_2hsword_1_t2_blunt",
     "name": "Iron Sparing Broadsword",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.99,
     "weapons": [
       {
@@ -1599,9 +1599,28 @@
   {
     "templateMbId": "battania_2hsword_2_t3",
     "name": "Highland Broadsword",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.85,
     "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 97,
+        "balance": 0.47,
+        "handling": 86,
+        "bodyArmor": 2,
+        "flags": [
+          "MeleeWeapon"
+        ],
+        "thrustDamage": 41,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 87,
+        "swingDamage": 72,
+        "swingDamageType": "Cut",
+        "swingSpeed": 84
+      },
       {
         "class": "TwoHandedSword",
         "accuracy": 0,
@@ -1621,32 +1640,13 @@
         "swingDamage": 101,
         "swingDamageType": "Cut",
         "swingSpeed": 99
-      },
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 97,
-        "balance": 0.47,
-        "handling": 86,
-        "bodyArmor": 2,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 41,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 87,
-        "swingDamage": 72,
-        "swingDamageType": "Cut",
-        "swingSpeed": 84
       }
     ]
   },
   {
     "templateMbId": "battania_2hsword_3_t3",
     "name": "Wide Fullered Northern Greatsword",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 2.08,
     "weapons": [
       {
@@ -1674,9 +1674,29 @@
   {
     "templateMbId": "battania_2hsword_4_t4",
     "name": "Falx",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.52,
     "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 111,
+        "balance": 0.57,
+        "handling": 88,
+        "bodyArmor": 2,
+        "flags": [
+          "MeleeWeapon",
+          "BonusAgainstShield"
+        ],
+        "thrustDamage": 0,
+        "thrustDamageType": "Undefined",
+        "thrustSpeed": 90,
+        "swingDamage": 91,
+        "swingDamageType": "Cut",
+        "swingSpeed": 87
+      },
       {
         "class": "TwoHandedSword",
         "accuracy": 0,
@@ -1697,35 +1717,34 @@
         "swingDamage": 126,
         "swingDamageType": "Cut",
         "swingSpeed": 102
-      },
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 111,
-        "balance": 0.57,
-        "handling": 88,
-        "bodyArmor": 2,
-        "flags": [
-          "MeleeWeapon",
-          "BonusAgainstShield"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 90,
-        "swingDamage": 91,
-        "swingDamageType": "Cut",
-        "swingSpeed": 87
       }
     ]
   },
   {
     "templateMbId": "battania_2hsword_5_t4",
     "name": "Highland Fine Two Handed Sword",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.63,
     "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 107,
+        "balance": 0.57,
+        "handling": 87,
+        "bodyArmor": 2,
+        "flags": [
+          "MeleeWeapon"
+        ],
+        "thrustDamage": 50,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 90,
+        "swingDamage": 71,
+        "swingDamageType": "Cut",
+        "swingSpeed": 87
+      },
       {
         "class": "TwoHandedSword",
         "accuracy": 0,
@@ -1745,34 +1764,34 @@
         "swingDamage": 97,
         "swingDamageType": "Cut",
         "swingSpeed": 102
-      },
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 107,
-        "balance": 0.57,
-        "handling": 87,
-        "bodyArmor": 2,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 50,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 90,
-        "swingDamage": 71,
-        "swingDamageType": "Cut",
-        "swingSpeed": 87
       }
     ]
   },
   {
     "templateMbId": "battania_2hsword_5_t5",
     "name": "Battanian Mountain Blade",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.22,
     "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 105,
+        "balance": 0.74,
+        "handling": 92,
+        "bodyArmor": 3,
+        "flags": [
+          "MeleeWeapon"
+        ],
+        "thrustDamage": 46,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 94,
+        "swingDamage": 75,
+        "swingDamageType": "Cut",
+        "swingSpeed": 92
+      },
       {
         "class": "TwoHandedSword",
         "accuracy": 0,
@@ -1792,25 +1811,6 @@
         "swingDamage": 99,
         "swingDamageType": "Cut",
         "swingSpeed": 105
-      },
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 105,
-        "balance": 0.74,
-        "handling": 92,
-        "bodyArmor": 3,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 46,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 94,
-        "swingDamage": 75,
-        "swingDamageType": "Cut",
-        "swingSpeed": 92
       }
     ]
   },
@@ -2490,6 +2490,33 @@
     ]
   },
   {
+    "templateMbId": "battania_sword_1_t2_blunt",
+    "name": "Blunt Iron Broadsword",
+    "type": "OneHandedWeapon",
+    "weight": 1.88,
+    "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 92,
+        "balance": 0.53,
+        "handling": 90,
+        "bodyArmor": 3,
+        "flags": [
+          "MeleeWeapon"
+        ],
+        "thrustDamage": 41,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 87,
+        "swingDamage": 72,
+        "swingDamageType": "Cut",
+        "swingSpeed": 86
+      }
+    ]
+  },
+  {
     "templateMbId": "battania_sword_2_t3",
     "name": "Broad Ridged Shortsword",
     "type": "OneHandedWeapon",
@@ -2608,6 +2635,34 @@
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 330,
+        "length": 70,
+        "balance": 0.0,
+        "handling": 82,
+        "bodyArmor": 1,
+        "flags": [
+          "HasHitPoints",
+          "CanBlockRanged"
+        ],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 82,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 82
+      }
+    ]
+  },
+  {
+    "templateMbId": "battania_targe_b_sparring",
+    "name": "Sparring Targe",
+    "type": "Shield",
+    "weight": 2.5,
+    "weapons": [
+      {
+        "class": "LargeShield",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 260,
         "length": 70,
         "balance": 0.0,
         "handling": 82,
@@ -2769,6 +2824,19 @@
     "weapons": []
   },
   {
+    "templateMbId": "battanian_chainmail_armor_d",
+    "name": "Highland Reinforced Fian Mail",
+    "type": "BodyArmor",
+    "weight": 16.6,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 34,
+      "armArmor": 4,
+      "legArmor": 8
+    },
+    "weapons": []
+  },
+  {
     "templateMbId": "battanian_chainmail_shoulder_a",
     "name": "Highland Mail Shoulders",
     "type": "ShoulderArmor",
@@ -2905,7 +2973,7 @@
   {
     "templateMbId": "bearded_axe_t3",
     "name": "Bearded Axe",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.12,
     "weapons": [
       {
@@ -3047,7 +3115,7 @@
   {
     "templateMbId": "black_heart_2haxe_t3",
     "name": "Black Heart",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.64,
     "weapons": [
       {
@@ -3932,9 +4000,28 @@
   {
     "templateMbId": "cleaver_2hsword_t3",
     "name": "Two Handed Cleaver ",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 2.28,
     "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 117,
+        "balance": 0.0,
+        "handling": 74,
+        "bodyArmor": 2,
+        "flags": [
+          "MeleeWeapon"
+        ],
+        "thrustDamage": 0,
+        "thrustDamageType": "Undefined",
+        "thrustSpeed": 84,
+        "swingDamage": 83,
+        "swingDamageType": "Cut",
+        "swingSpeed": 67
+      },
       {
         "class": "TwoHandedSword",
         "accuracy": 0,
@@ -3954,25 +4041,6 @@
         "swingDamage": 139,
         "swingDamageType": "Cut",
         "swingSpeed": 86
-      },
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 117,
-        "balance": 0.0,
-        "handling": 74,
-        "bodyArmor": 2,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 84,
-        "swingDamage": 83,
-        "swingDamageType": "Cut",
-        "swingSpeed": 67
       }
     ]
   },
@@ -4193,7 +4261,6 @@
           "NotUsableWithOneHand",
           "HasString",
           "StringHeldByHand",
-          "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 75,
@@ -4225,6 +4292,7 @@
           "NotUsableWithOneHand",
           "HasString",
           "StringHeldByHand",
+          "CanPenetrateShield",
           "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
@@ -4321,7 +4389,6 @@
           "NotUsableWithOneHand",
           "HasString",
           "StringHeldByHand",
-          "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 85,
@@ -4353,6 +4420,7 @@
           "NotUsableWithOneHand",
           "HasString",
           "StringHeldByHand",
+          "CanPenetrateShield",
           "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
@@ -4385,7 +4453,6 @@
           "NotUsableWithOneHand",
           "HasString",
           "StringHeldByHand",
-          "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
         "thrustDamage": 95,
@@ -4982,9 +5049,28 @@
   {
     "templateMbId": "early_retirement_2hsword_t3",
     "name": "Early Retirement",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.32,
     "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 115,
+        "balance": 0.55,
+        "handling": 86,
+        "bodyArmor": 3,
+        "flags": [
+          "MeleeWeapon"
+        ],
+        "thrustDamage": 44,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 93,
+        "swingDamage": 74,
+        "swingDamageType": "Cut",
+        "swingSpeed": 86
+      },
       {
         "class": "TwoHandedSword",
         "accuracy": 0,
@@ -5004,25 +5090,6 @@
         "swingDamage": 102,
         "swingDamageType": "Cut",
         "swingSpeed": 101
-      },
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 115,
-        "balance": 0.55,
-        "handling": 86,
-        "bodyArmor": 3,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 44,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 93,
-        "swingDamage": 74,
-        "swingDamageType": "Cut",
-        "swingSpeed": 86
       }
     ]
   },
@@ -6939,7 +7006,7 @@
   {
     "templateMbId": "execution_axe",
     "name": "Execution Axe",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.37,
     "weapons": [
       {
@@ -8415,7 +8482,7 @@
   {
     "templateMbId": "hooked_axe_t4",
     "name": "Hooked Western Axe",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.52,
     "weapons": [
       {
@@ -9244,9 +9311,28 @@
   {
     "templateMbId": "kaskara_2hsword_t3",
     "name": "Ridged Long Kaskara",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.76,
     "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 97,
+        "balance": 0.51,
+        "handling": 86,
+        "bodyArmor": 3,
+        "flags": [
+          "MeleeWeapon"
+        ],
+        "thrustDamage": 41,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 88,
+        "swingDamage": 73,
+        "swingDamageType": "Cut",
+        "swingSpeed": 85
+      },
       {
         "class": "TwoHandedSword",
         "accuracy": 0,
@@ -9266,25 +9352,6 @@
         "swingDamage": 102,
         "swingDamageType": "Cut",
         "swingSpeed": 100
-      },
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 97,
-        "balance": 0.51,
-        "handling": 86,
-        "bodyArmor": 3,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 41,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 88,
-        "swingDamage": 73,
-        "swingDamageType": "Cut",
-        "swingSpeed": 85
       }
     ]
   },
@@ -12263,9 +12330,28 @@
   {
     "templateMbId": "northern_2hsword_t4",
     "name": "Fine Steel Two Handed Sword",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.48,
     "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 90,
+        "balance": 0.77,
+        "handling": 93,
+        "bodyArmor": 4,
+        "flags": [
+          "MeleeWeapon"
+        ],
+        "thrustDamage": 42,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 91,
+        "swingDamage": 72,
+        "swingDamageType": "Cut",
+        "swingSpeed": 93
+      },
       {
         "class": "TwoHandedSword",
         "accuracy": 0,
@@ -12285,32 +12371,13 @@
         "swingDamage": 93,
         "swingDamageType": "Cut",
         "swingSpeed": 106
-      },
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 90,
-        "balance": 0.77,
-        "handling": 93,
-        "bodyArmor": 4,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 42,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 91,
-        "swingDamage": 72,
-        "swingDamageType": "Cut",
-        "swingSpeed": 93
       }
     ]
   },
   {
     "templateMbId": "northern_axe_t3",
     "name": "Northern Broad Axe",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.3,
     "weapons": [
       {
@@ -13682,9 +13749,29 @@
   {
     "templateMbId": "peasant_2haxe_1_t1",
     "name": "Hoe",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.57,
     "weapons": [
+      {
+        "class": "OneHandedAxe",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 86,
+        "balance": 0.08,
+        "handling": 71,
+        "bodyArmor": 0,
+        "flags": [
+          "MeleeWeapon",
+          "BonusAgainstShield"
+        ],
+        "thrustDamage": 0,
+        "thrustDamageType": "Undefined",
+        "thrustSpeed": 89,
+        "swingDamage": 41,
+        "swingDamageType": "Cut",
+        "swingSpeed": 72
+      },
       {
         "class": "TwoHandedAxe",
         "accuracy": 0,
@@ -13706,26 +13793,6 @@
         "swingDamage": 65,
         "swingDamageType": "Cut",
         "swingSpeed": 90
-      },
-      {
-        "class": "OneHandedAxe",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 86,
-        "balance": 0.08,
-        "handling": 71,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "BonusAgainstShield"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 89,
-        "swingDamage": 41,
-        "swingDamageType": "Cut",
-        "swingSpeed": 72
       }
     ]
   },
@@ -14673,9 +14740,28 @@
   {
     "templateMbId": "ridged_2hsword_t4",
     "name": "Ridged Great Sabre",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.86,
     "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 115,
+        "balance": 0.39,
+        "handling": 83,
+        "bodyArmor": 4,
+        "flags": [
+          "MeleeWeapon"
+        ],
+        "thrustDamage": 38,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 87,
+        "swingDamage": 79,
+        "swingDamageType": "Cut",
+        "swingSpeed": 81
+      },
       {
         "class": "TwoHandedSword",
         "accuracy": 0,
@@ -14695,25 +14781,6 @@
         "swingDamage": 113,
         "swingDamageType": "Cut",
         "swingSpeed": 97
-      },
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 115,
-        "balance": 0.39,
-        "handling": 83,
-        "bodyArmor": 4,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 38,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 87,
-        "swingDamage": 79,
-        "swingDamageType": "Cut",
-        "swingSpeed": 81
       }
     ]
   },
@@ -15316,7 +15383,7 @@
   {
     "templateMbId": "simple_sparth_axe_t2",
     "name": "Simple Sparth Axe",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.13,
     "weapons": [
       {
@@ -15510,9 +15577,28 @@
   {
     "templateMbId": "southern_broad_2hsword_t4",
     "name": "Southern Broad Kaskara",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.52,
     "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 125,
+        "balance": 0.31,
+        "handling": 80,
+        "bodyArmor": 5,
+        "flags": [
+          "MeleeWeapon"
+        ],
+        "thrustDamage": 36,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 90,
+        "swingDamage": 79,
+        "swingDamageType": "Cut",
+        "swingSpeed": 79
+      },
       {
         "class": "TwoHandedSword",
         "accuracy": 0,
@@ -15532,25 +15618,6 @@
         "swingDamage": 116,
         "swingDamageType": "Cut",
         "swingSpeed": 96
-      },
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 125,
-        "balance": 0.31,
-        "handling": 80,
-        "bodyArmor": 5,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 36,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 90,
-        "swingDamage": 79,
-        "swingDamageType": "Cut",
-        "swingSpeed": 79
       }
     ]
   },
@@ -16638,7 +16705,7 @@
   {
     "templateMbId": "sturgia_2haxe_1_t4",
     "name": "Drilled Two Handed Axe",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.32,
     "weapons": [
       {
@@ -16668,7 +16735,7 @@
   {
     "templateMbId": "sturgia_2haxe_2_t5",
     "name": "Northern Decorated Two Handed Axe",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.68,
     "weapons": [
       {
@@ -18388,7 +18455,7 @@
   {
     "templateMbId": "vlandia_2haxe_1_t4",
     "name": "Short Bill",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.72,
     "weapons": [
       {
@@ -18418,7 +18485,7 @@
   {
     "templateMbId": "vlandia_2hsword_1_t5",
     "name": "Wide Fullered Broad Two Hander",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.92,
     "weapons": [
       {
@@ -18446,7 +18513,7 @@
   {
     "templateMbId": "vlandia_2hsword_2_t5",
     "name": "Thamaskene Steel Two Hander",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 2.04,
     "weapons": [
       {
@@ -19428,9 +19495,28 @@
   {
     "templateMbId": "war_razor_2hsword_t4",
     "name": "War Razor",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.54,
     "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 112,
+        "balance": 0.46,
+        "handling": 84,
+        "bodyArmor": 3,
+        "flags": [
+          "MeleeWeapon"
+        ],
+        "thrustDamage": 39,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 90,
+        "swingDamage": 79,
+        "swingDamageType": "Cut",
+        "swingSpeed": 83
+      },
       {
         "class": "TwoHandedSword",
         "accuracy": 0,
@@ -19450,34 +19536,34 @@
         "swingDamage": 111,
         "swingDamageType": "Cut",
         "swingSpeed": 99
-      },
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 112,
-        "balance": 0.46,
-        "handling": 84,
-        "bodyArmor": 3,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 39,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 90,
-        "swingDamage": 79,
-        "swingDamageType": "Cut",
-        "swingSpeed": 83
       }
     ]
   },
   {
     "templateMbId": "western_2hsword_t3",
     "name": "Tapered Two Hander",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.67,
     "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 97,
+        "balance": 0.53,
+        "handling": 87,
+        "bodyArmor": 4,
+        "flags": [
+          "MeleeWeapon"
+        ],
+        "thrustDamage": 41,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 89,
+        "swingDamage": 73,
+        "swingDamageType": "Cut",
+        "swingSpeed": 85
+      },
       {
         "class": "TwoHandedSword",
         "accuracy": 0,
@@ -19497,32 +19583,13 @@
         "swingDamage": 101,
         "swingDamageType": "Cut",
         "swingSpeed": 100
-      },
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 97,
-        "balance": 0.53,
-        "handling": 87,
-        "bodyArmor": 4,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 41,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 89,
-        "swingDamage": 73,
-        "swingDamageType": "Cut",
-        "swingSpeed": 85
       }
     ]
   },
   {
     "templateMbId": "western_2hsword_t4",
     "name": "Broad Two Hander",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 1.67,
     "weapons": [
       {
@@ -20331,9 +20398,29 @@
   {
     "templateMbId": "wooden_2hsword_t1",
     "name": "Wooden Twohander",
-    "type": "TwoHandedWeapon",
+    "type": "OneHandedWeapon",
     "weight": 0.55,
     "weapons": [
+      {
+        "class": "OneHandedSword",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 104,
+        "balance": 1.0,
+        "handling": 106,
+        "bodyArmor": 1,
+        "flags": [
+          "MeleeWeapon",
+          "NoBlood"
+        ],
+        "thrustDamage": 11,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 101,
+        "swingDamage": 17,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 109
+      },
       {
         "class": "TwoHandedSword",
         "accuracy": 0,
@@ -20354,26 +20441,6 @@
         "swingDamage": 20,
         "swingDamageType": "Blunt",
         "swingSpeed": 118
-      },
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 104,
-        "balance": 1.0,
-        "handling": 106,
-        "bodyArmor": 1,
-        "flags": [
-          "MeleeWeapon",
-          "NoBlood"
-        ],
-        "thrustDamage": 11,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 101,
-        "swingDamage": 17,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 109
       }
     ]
   },
