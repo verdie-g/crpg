@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Crpg.GameMod.Api;
 using Crpg.GameMod.Api.Models;
-using Crpg.GameMod.Api.Models.Users;
+using Crpg.GameMod.Common;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -14,15 +14,14 @@ namespace Crpg.GameMod.DefendTheVirgin
         private readonly WaveController _waveController;
         private readonly ICrpgClient _crpgClient;
         private readonly WaveGroup[][] _waves;
+        private readonly CrpgUserAccessor _userAccessor;
 
-        private CrpgUser _user;
-
-        public CrpgLogic(WaveController waveController, ICrpgClient crpgClient, WaveGroup[][] waves, CrpgUser user)
+        public CrpgLogic(WaveController waveController, ICrpgClient crpgClient, WaveGroup[][] waves, CrpgUserAccessor userAccessor)
         {
             _waveController = waveController;
             _crpgClient = crpgClient;
             _waves = waves;
-            _user = user;
+            _userAccessor = userAccessor;
             _waveController.OnWaveEnding += OnWaveEnding;
         }
 
@@ -57,7 +56,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                 {
                     new CrpgUserUpdate
                     {
-                        CharacterId = _user.Character.Id,
+                        CharacterId = _userAccessor.User.Character.Id,
                         Reward = new CrpgUserReward
                         {
                             Experience = experienceReward,
@@ -67,7 +66,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                 },
             });
 
-            if (res.Data!.UpdateResults[0].User.Character.Level != _user.Character.Level)
+            if (res.Data!.UpdateResults[0].User.Character.Level != _userAccessor.User.Character.Level)
             {
                 InformationManager.DisplayMessage(new InformationMessage
                 {
@@ -77,7 +76,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                 });
             }
 
-            _user = res.Data!.UpdateResults[0].User;
+            _userAccessor.User = res.Data!.UpdateResults[0].User;
         }
 
         private static int SumWaveWeight(IEnumerable<WaveGroup> wave)

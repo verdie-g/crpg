@@ -105,10 +105,15 @@ namespace Crpg.GameMod.DefendTheVirgin
             InformationManager.DisplayMessage(new InformationMessage("Visit c-rpg.eu to upgrade your character."));
 
             var waveController = new WaveController(_waves!.Length);
-            var character = CreateCharacter(_getUserTask.Result.Character, _crpgConstants!);
+            var crpgUserAccessor = new CrpgUserAccessor(_getUserTask.Result);
+            var character = CreateCharacter(crpgUserAccessor.User.Character, _crpgConstants!);
             var waveSpawnLogic = new WaveSpawnLogic(waveController, _waves!, character);
-            var crpgLogic = new CrpgLogic(waveController, _crpgClient, _waves!, _getUserTask.Result);
+            var crpgLogic = new CrpgLogic(waveController, _crpgClient, _waves!, crpgUserAccessor);
+            var crpgExperienceTable = new CrpgExperienceTable(_crpgConstants!);
 
+            // First argument, missionName, is used to find missionViews. In ViewCreatorManager.CheckAssemblyScreens
+            // it gets all methods with an attribute ViewMethod(missionName) in all classes with a ViewCreatorModule
+            // attribute.
             MissionState.OpenNew("DefendTheVirgin", new MissionInitializerRecord("empire_village_007")
             {
                 DoNotUseLoadingScreen = false,
@@ -120,8 +125,10 @@ namespace Crpg.GameMod.DefendTheVirgin
             {
                 new MissionCombatantsLogic(),
                 waveController,
+                crpgUserAccessor,
                 waveSpawnLogic,
                 crpgLogic,
+                crpgExperienceTable,
                 new AgentBattleAILogic(),
                 new MissionHardBorderPlacer(),
                 new MissionBoundaryPlacer(),
