@@ -1,8 +1,12 @@
-﻿using Crpg.GameMod.DefendTheVirgin;
+﻿using System.IO;
+using System.Xml.Linq;
+using Crpg.GameMod.DefendTheVirgin;
 using TaleWorlds.Core;
 using TaleWorlds.Engine.GauntletUI;
+using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.TwoDimension;
 
 namespace Crpg.GameMod
 {
@@ -16,9 +20,7 @@ namespace Crpg.GameMod
         {
             base.OnSubModuleLoad();
 
-            // This load the sprites from the Assets folder. Calling this manually is surprising but it is done like
-            // that in TaleWorlds.MountAndBlade.GauntletUI.GauntletUISubModule.OnSubModuleLoad.
-            UIResourceManager.SpriteData.SpriteCategories["ui_crpg_experience_circle"].Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
+            LoadSpriteSheets();
 
             Module.CurrentModule.AddInitialStateOption(new InitialStateOption("DefendTheVirgin", new TextObject("{=4gpGhbeJ}Defend The Virgin"),
                 4567, () => MBGameManager.StartNewGame(new DefendTheVirginGameManager()), false));
@@ -143,6 +145,24 @@ namespace Crpg.GameMod
         protected override void OnSubModuleUnloaded()
         {
             base.OnSubModuleUnloaded();
+        }
+
+        /// <summary>
+        /// This method loads the sprites from the Assets folder. Doing this manually is surprising but it is done like
+        /// that in TaleWorlds.MountAndBlade.GauntletUI.GauntletUISubModule.OnSubModuleLoad.
+        /// </summary>
+        private static void LoadSpriteSheets()
+        {
+            foreach (string filename in Directory.GetFiles(BasePath.Name + "Modules/cRPG/GUI", "*SpriteData.xml", SearchOption.AllDirectories))
+            {
+                var spriteDataDoc = XDocument.Load(filename);
+                foreach (XElement spriteCategoryNode in spriteDataDoc.Root!.Descendants("SpriteCategory"))
+                {
+                    string spriteCategoryName = spriteCategoryNode.Element("Name")!.Value;
+                    SpriteCategory spriteCategory = UIResourceManager.SpriteData.SpriteCategories[spriteCategoryName];
+                    spriteCategory.Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
+                }
+            }
         }
     }
 }
