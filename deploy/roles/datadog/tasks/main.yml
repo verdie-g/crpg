@@ -35,9 +35,9 @@
           - metric_prefix: crpg
             query: SELECT
               (SELECT COUNT(*) FROM users) AS users,
-              (SELECT COUNT(*) FROM users WHERE last_modified_at > now() - INTERVAL '1 month') AS active_users_30d,
-              (SELECT COUNT(*) FROM users WHERE last_modified_at > now() - INTERVAL '1 week') AS active_users_7d,
-              (SELECT COUNT(*) FROM users WHERE last_modified_at > now() - INTERVAL '5 min') AS active_users_5min
+              (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 month') AS active_users_30d,
+              (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 week') AS active_users_7d,
+              (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '5 min') AS active_users_5min
             columns:
             - name: users
               type: gauge
