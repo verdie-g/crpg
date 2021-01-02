@@ -31,9 +31,11 @@
       </h2>
 
       <b-field horizontal class="stat-field">
-        <template slot="label">
-          <b-tooltip label="Increases your health points. Allows you to use higher tier weapons and armor."
-                     position="is-left" multilined>Strength</b-tooltip>
+        <template v-slot:label>
+          <b-tooltip position="is-left" multilined>
+            Strength
+            <template v-slot:content>Increases your health points. <s>Allows you to use higher tier weapons and armor.</s></template>
+          </b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('attributes', 'strength')"
@@ -41,7 +43,7 @@
       </b-field>
 
       <b-field horizontal class="stat-field">
-        <template slot="label">
+        <template v-slot:label>
           <b-tooltip label="Increases your weapon points and makes you move a bit faster."
                      position="is-left" multilined>Agility</b-tooltip>
         </template>
@@ -61,9 +63,13 @@
       </h2>
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('ironFlesh') ? 'is-primary' : 'is-danger'">
-        <template slot="label">
-          <b-tooltip :label="`Increases your health  and reduces the negative impact armor has on weapon points. Requires 3
-            strength per level.`" position="is-left" multilined>Iron Flesh</b-tooltip>
+        <template v-slot:label>
+          <b-tooltip position="is-left" multilined>
+            Iron Flesh
+            <template v-slot:content>
+              Increases your health <s>and reduces the negative impact armor has on weapon points</s>.
+              Requires 3 strength per level.</template>
+          </b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'ironFlesh')"
@@ -71,7 +77,7 @@
       </b-field>
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('powerStrike') ? 'is-primary' : 'is-danger'">
-        <template slot="label">
+        <template v-slot:label>
           <b-tooltip label="Increases melee damage. Requires 3 strength per level."
                      position="is-left" multilined>Power Strike</b-tooltip>
         </template>
@@ -81,9 +87,11 @@
       </b-field>
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('powerDraw') ? 'is-primary' : 'is-danger'">
-        <template slot="label">
-          <b-tooltip label="Increases bow damage. Allows you to use higher tiers
-                     bow. Requires 3 strength per level." position="is-left" multilined>Power Draw</b-tooltip>
+        <template v-slot:label>
+          <b-tooltip position="is-left" multilined>
+            Power Draw
+            <template v-slot:content>Increases bow damage. <s>Allows you to use higher tiers bow.</s> Requires 3 strength per level.</template>
+          </b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'powerDraw')"
@@ -91,9 +99,11 @@
       </b-field>
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('powerThrow') ? 'is-primary' : 'is-danger'">
-        <template slot="label">
-          <b-tooltip label="Increases throw damage. Allows you to use higher tier weapons. Requires 3 strength per level."
-                     position="is-left" multilined>Power Throw</b-tooltip>
+        <template v-slot:label>
+          <b-tooltip position="is-left" multilined>
+            Power Throw
+            <template v-slot:content>Increases throw damage. <s>Allows you to use higher tier weapons.</s> Requires 3 strength per level.</template>
+          </b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'powerThrow')"
@@ -101,7 +111,7 @@
       </b-field>
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('athletics') ? 'is-primary' : 'is-danger'">
-        <template slot="label">
+        <template v-slot:label>
           <b-tooltip label="Increases running speed. Requires 3 agility per level." position="is-left" multilined>Athletics</b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
@@ -110,9 +120,13 @@
       </b-field>
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('riding') ? 'is-primary' : 'is-danger'">
-        <template slot="label">
-          <b-tooltip label="Increases riding speed, acceleration and maneuver. Allows you to ride higher tier mounts.
-                     Requires 3 agility per level." position="is-left" multilined>Riding</b-tooltip>
+        <template v-slot:label>
+          <b-tooltip position="is-left" multilined>
+            Riding
+            <template v-slot:content>
+              Increases riding speed, acceleration and maneuver. <s>Allows you to ride higher tier mounts.</s> Requires 3 agility per level.
+            </template>
+          </b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'riding')"
@@ -120,7 +134,7 @@
       </b-field>
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('weaponMaster') ? 'is-primary' : 'is-danger'">
-        <template slot="label">
+        <template v-slot:label>
           <b-tooltip label="Gives weapon points. Requires 3 agility per level." position="is-left" multilined>
             Weapon Master
           </b-tooltip>
@@ -131,9 +145,13 @@
       </b-field>
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('mountedArchery') ? 'is-primary' : 'is-danger'">
-        <template slot="label">
-          <b-tooltip label="Reduces penalty for using ranged weapons on a moving mount by 10% per level. Requires 6 agility per level."
-                     position="is-left" multilined>Mounted Archery</b-tooltip>
+        <template v-slot:label>
+          <b-tooltip position="is-left" multilined>
+            Mounted Archery
+            <template v-slot:content>
+              <s>Reduces penalty for using ranged weapons on a moving mount by 10% per level.</s> Requires 6 agility per level.
+            </template>
+          </b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'mountedArchery')"
@@ -141,9 +159,14 @@
       </b-field>
 
       <b-field horizontal class="stat-field" :type="currentSkillRequirementsSatisfied('shield') ? 'is-primary' : 'is-danger'">
-        <template slot="label">
-          <b-tooltip label="Improves shield durability, shield speed and increases coverage from ranged attacks.
-                     Allows you to use higher tier shields. Requires 6 agility per level." position="is-left" multilined>Shield</b-tooltip>
+        <template v-slot:label>
+          <b-tooltip position="is-left" multilined>
+            Shield
+            <template v-slot:content>
+              Improves shield durability, shield speed <s>and increases coverage from ranged attacks</s>.
+              <s>Allows you to use higher tier shields.</s> Requires 6 agility per level.
+            </template>
+          </b-tooltip>
         </template>
         <b-numberinput size="is-small" :editable="false" controls-position="compact"
                        v-bind="getInputProps('skills', 'shield')"
