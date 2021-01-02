@@ -175,7 +175,7 @@ export default class CharacterComponent extends Vue {
   }
 
   itemRankClass(item: Item | null): string {
-    return item === null ? '' : 'item-rank' + item.rank;
+    return item === null ? '' : `item-rank${item.rank}`;
   }
 
   onAutoRepairSwitch(autoRepair: boolean): void {

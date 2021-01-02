@@ -5,6 +5,7 @@ namespace Crpg.Domain.Entities.Items
     /// </summary>
     public enum ItemType
     {
+        Undefined,
         HeadArmor,
         ShoulderArmor,
         BodyArmor,

@@ -15,10 +15,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { itemTypeToStr } from '@/services/item-service';
+import { recordFilter } from '@/utils/record';
+import ItemType from '@/models/item-type';
 
 @Component
 export default class ShopFiltersForm extends Vue {
-  itemTypes = itemTypeToStr;
+  hiddenItemTypes = [ItemType.Undefined, ItemType.Pistol, ItemType.Musket, ItemType.Bullets];
+  itemTypes = recordFilter(itemTypeToStr, t => !this.hiddenItemTypes.includes(t));
 
   shopFilters = {
     types: [],

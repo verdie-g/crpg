@@ -25,6 +25,7 @@ namespace Crpg.GameMod.Api.Models.Items
     // Copy of Crpg.Domain.Entities.Items.ItemType
     internal enum CrpgItemType
     {
+        Undefined,
         HeadArmor,
         ShoulderArmor,
         BodyArmor,

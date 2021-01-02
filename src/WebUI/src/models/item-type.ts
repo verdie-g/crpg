@@ -1,4 +1,5 @@
 enum ItemType {
+  Undefined = 'Undefined',
   HeadArmor = 'HeadArmor',
   ShoulderArmor = 'ShoulderArmor',
   BodyArmor = 'BodyArmor',
@@ -15,6 +16,9 @@ enum ItemType {
   Thrown = 'Thrown',
   Arrows = 'Arrows',
   Bolts = 'Bolts',
+  Pistol = 'Pistol',
+  Musket = 'Musket',
+  Bullets = 'Bullets',
   Banner = 'Banner',
 }
 

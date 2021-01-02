@@ -6,8 +6,10 @@ import { ItemDescriptor } from '@/models/item-descriptor';
 import WeaponFlags from '@/models/weapon-flags';
 import ItemSlot from '@/models/item-slot';
 import ItemWeaponComponent from '@/models/item-weapon-component';
+import WeaponClass from '@/models/weapon-class';
 
 export const itemTypeToStr: Record<ItemType, string> = {
+  [ItemType.Undefined]: 'Undefined',
   [ItemType.HeadArmor]: 'Head Armor',
   [ItemType.ShoulderArmor]: 'Shoulder Armor',
   [ItemType.BodyArmor]: 'Body Armor',
@@ -24,14 +26,17 @@ export const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.Thrown]: 'Thrown',
   [ItemType.Arrows]: 'Arrows',
   [ItemType.Bolts]: 'Bolts',
+  [ItemType.Pistol]: 'Pistol',
+  [ItemType.Musket]: 'Musket',
+  [ItemType.Bullets]: 'Bullets',
   [ItemType.Banner]: 'Banner',
 };
 
 const damageTypeToStr: Record<DamageType, string> = {
-  [DamageType.Undefined]: 'Undefined',
-  [DamageType.Cut]: 'Cut',
-  [DamageType.Pierce]: 'Pierce',
-  [DamageType.Blunt]: 'Blunt',
+  [DamageType.Undefined]: '',
+  [DamageType.Cut]: 'c',
+  [DamageType.Pierce]: 'p',
+  [DamageType.Blunt]: 'b',
 };
 
 // Set null flag we don't to display
@@ -96,26 +101,82 @@ const itemTypesBySlot: Record<ItemSlot, ItemType[]> = {
   [ItemSlot.Weapon3]: weaponTypes,
 };
 
+const itemTypeByWeaponClass: Record<WeaponClass, ItemType> = {
+  [WeaponClass.Undefined]: ItemType.Undefined,
+  [WeaponClass.Dagger]: ItemType.OneHandedWeapon,
+  [WeaponClass.OneHandedSword]: ItemType.OneHandedWeapon,
+  [WeaponClass.OneHandedAxe]: ItemType.OneHandedWeapon,
+  [WeaponClass.Mace]: ItemType.OneHandedWeapon,
+  [WeaponClass.TwoHandedSword]: ItemType.TwoHandedWeapon,
+  [WeaponClass.TwoHandedAxe]: ItemType.TwoHandedWeapon,
+  [WeaponClass.Pick]: ItemType.TwoHandedWeapon,
+  [WeaponClass.TwoHandedMace]: ItemType.TwoHandedWeapon,
+  [WeaponClass.OneHandedPolearm]: ItemType.Polearm,
+  [WeaponClass.TwoHandedPolearm]: ItemType.Polearm,
+  [WeaponClass.LowGripPolearm]: ItemType.Polearm,
+  [WeaponClass.Arrow]: ItemType.Arrows,
+  [WeaponClass.Bolt]: ItemType.Bolts,
+  [WeaponClass.Cartridge]: ItemType.Bullets,
+  [WeaponClass.Bow]: ItemType.Bow,
+  [WeaponClass.Crossbow]: ItemType.Crossbow,
+  [WeaponClass.Stone]: ItemType.Thrown,
+  [WeaponClass.Boulder]: ItemType.Thrown,
+  [WeaponClass.ThrowingAxe]: ItemType.Thrown,
+  [WeaponClass.ThrowingKnife]: ItemType.Thrown,
+  [WeaponClass.Javelin]: ItemType.Thrown,
+  [WeaponClass.Pistol]: ItemType.Pistol,
+  [WeaponClass.Musket]: ItemType.Musket,
+  [WeaponClass.SmallShield]: ItemType.Shield,
+  [WeaponClass.LargeShield]: ItemType.Shield,
+  [WeaponClass.Banner]: ItemType.Banner,
+};
+
+function getDamageFieldValue(damage: number, damageType: DamageType): string {
+  return `${damage}${damageTypeToStr[damageType]}`;
+}
+
 function getDamageFields(weaponComponent: ItemWeaponComponent): [string, any][] {
   const fields: [string, any][] = [];
 
-  if (weaponComponent.swingDamage !== 0) {
+  if (weaponComponent.swingDamageType !== DamageType.Undefined) {
     fields.push(
-      ['Swing Spd.', weaponComponent.swingSpeed],
-      ['Swing Dmg.', weaponComponent.swingDamage],
-      ['Swing Dmg. Type', damageTypeToStr[weaponComponent.swingDamageType]],
+      ['Swing Speed', weaponComponent.swingSpeed],
+      ['Swing Damage', getDamageFieldValue(weaponComponent.swingDamage, weaponComponent.swingDamageType)],
     );
   }
 
-  if (weaponComponent.thrustDamage !== 0) {
+  if (weaponComponent.thrustDamageType !== DamageType.Undefined) {
     fields.push(
-      ['Thrust Spd.', weaponComponent.thrustSpeed],
-      ['Thrust Dmg.', weaponComponent.thrustDamage],
-      ['Thrust Dmg. Type', damageTypeToStr[weaponComponent.thrustDamageType]],
+      ['Thrust Speed', weaponComponent.thrustSpeed],
+      ['Thrust Damage', getDamageFieldValue(weaponComponent.thrustDamage, weaponComponent.thrustDamageType)],
     );
   }
 
   return fields;
+}
+
+function getWeaponModeName(weapon: ItemWeaponComponent): string {
+  switch (weapon.class) {
+    case WeaponClass.Dagger:
+    case WeaponClass.OneHandedSword:
+    case WeaponClass.OneHandedAxe:
+    case WeaponClass.Mace:
+    case WeaponClass.OneHandedPolearm:
+      return '1H';
+    case WeaponClass.TwoHandedSword:
+    case WeaponClass.TwoHandedAxe:
+    case WeaponClass.TwoHandedMace:
+    case WeaponClass.TwoHandedPolearm:
+    case WeaponClass.LowGripPolearm:
+      return '2H';
+    case WeaponClass.Stone:
+    case WeaponClass.ThrowingAxe:
+    case WeaponClass.ThrowingKnife:
+    case WeaponClass.Javelin:
+      return 'Thrown';
+    default:
+      return '';
+  }
 }
 
 function getWeaponFlags(flags: WeaponFlags[]): string[] {
@@ -126,6 +187,7 @@ export function getItems(): Promise<Item[]> {
   return get('/items');
 }
 
+// Inspired by TooltipVMExtensions.UpdateTooltip.
 export function getItemDescriptor(item: Item): ItemDescriptor {
   const props: ItemDescriptor = {
     fields: [
@@ -135,180 +197,87 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
     modes: [],
   };
 
-  switch (item.type) {
-    case ItemType.HeadArmor:
-      props.fields.push(['Head Armor', item.armor!.headArmor]);
-      break;
-    case ItemType.ShoulderArmor:
-      props.fields.push(['Body Armor', item.armor!.bodyArmor]);
-      break;
-    case ItemType.BodyArmor:
-      props.fields.push(
-        ['Body Armor', item.armor!.bodyArmor],
-        ['Arm Armor', item.armor!.armArmor],
-        ['Leg Armor', item.armor!.legArmor],
-      );
-      break;
-    case ItemType.HandArmor:
-      props.fields.push(['Arm Armor', item.armor!.armArmor]);
-      break;
-    case ItemType.LegArmor:
-      props.fields.push(['Leg Armor', item.armor!.legArmor]);
-      break;
-    case ItemType.MountHarness:
-      props.fields.push(['Body Armor', item.armor!.bodyArmor]);
-      break;
-    case ItemType.Mount:
-      props.fields.push(
-        ['Charge Dmg.', item.mount!.chargeDamage],
-        ['Speed', item.mount!.speed],
-        ['Maneuver', item.mount!.maneuver],
-        ['Hit Points', item.mount!.hitPoints],
-      );
-      break;
-    case ItemType.Shield:
-      props.fields.push(
-        ['Speed', item.weapons[0].thrustSpeed],
-        ['Durability', item.weapons[0].stackAmount],
-        ['Armor', item.weapons[0].bodyArmor],
-        ['Length', item.weapons[0].length],
-      );
-      break;
-    case ItemType.Bow:
-    case ItemType.Crossbow:
-      props.modes.push({
-        name: 'One Handed',
-        fields: [
-          ['Length', item.weapons[0].length],
-          ['Damage', item.weapons[0].thrustDamage],
-          ['Damage Type', damageTypeToStr[item.weapons[0].thrustDamageType]],
-          ['Fire Rate', item.weapons[0].thrustSpeed],
-          ['Accuracy', item.weapons[0].accuracy],
-          ['Missile Spd.', item.weapons[0].missileSpeed],
-        ],
-        flags: getWeaponFlags(item.weapons[0].flags),
-      });
-      break;
-    case ItemType.OneHandedWeapon:
-      props.modes.push({
-        name: 'One Handed',
-        fields: [
-          ...getDamageFields(item.weapons[0]),
-          ['Length', item.weapons[0].length],
-          ['Handling', item.weapons[0].handling],
-        ],
-        flags: getWeaponFlags(item.weapons[0].flags),
-      });
-      break;
-    case ItemType.TwoHandedWeapon:
-      props.modes.push({
-        name: '2H',
-        fields: [
-          ...getDamageFields(item.weapons[0]),
-          ['Length', item.weapons[0].length],
-          ['Handling', item.weapons[0].handling],
-        ],
-        flags: getWeaponFlags(item.weapons[0].flags),
-      });
+  if (item.armor !== null) {
+    if (item.armor.headArmor !== 0) {
+      props.fields.push(['Head Armor', item.armor.headArmor]);
+    }
 
-      if (item.weapons.length > 1) {
-        props.modes.push({
-          name: '1H',
-          fields: [
-            ...getDamageFields(item.weapons[1]),
-            ['Length', item.weapons[1].length],
-            ['Handling', item.weapons[1].handling],
-          ],
-          flags: getWeaponFlags(item.weapons[1].flags),
-        });
-      }
-      break;
-    case ItemType.Polearm:
-      props.modes.push({
-        name: '1H',
-        fields: [
-          ...getDamageFields(item.weapons[0]),
-          ['Length', item.weapons[0].length],
-          ['Handling', item.weapons[0].handling],
-        ],
-        flags: getWeaponFlags(item.weapons[0].flags),
-      });
+    if (item.armor.bodyArmor !== 0) {
+      props.fields.push([
+        item.type === ItemType.MountHarness ? 'Mount Armor' : 'Body Armor',
+        item.armor!.bodyArmor,
+      ]);
+    }
 
-      if (item.weapons.length > 1) {
-        props.modes.push({
-          name: '2H',
-          fields: [
-            ...getDamageFields(item.weapons[1]),
-            ['Length', item.weapons[1].length],
-            ['Handling', item.weapons[1].handling],
-          ],
-          flags: getWeaponFlags(item.weapons[1].flags),
-        });
+    if (item.armor.armArmor !== 0) {
+      props.fields.push(['Arm Armor', item.armor.armArmor]);
+    }
+
+    if (item.armor.legArmor !== 0) {
+      props.fields.push(['Leg Armor', item.armor.legArmor]);
+    }
+  }
+
+  if (item.mount !== null) {
+    props.fields.push(
+      ['Charge Dmg.', item.mount.chargeDamage],
+      ['Speed', item.mount.speed],
+      ['Maneuver', item.mount.maneuver],
+      ['Hit Points', item.mount.hitPoints],
+    );
+  }
+
+  // Special cases for item types with only one weapon mode.
+  if (item.type === ItemType.Arrows || item.type === ItemType.Bolts) {
+    props.fields.push(
+      ['Speed', item.weapons[0].missileSpeed],
+      ['Damage', getDamageFieldValue(item.weapons[0].thrustDamage, item.weapons[0].thrustDamageType)],
+      ['Length', item.weapons[0].length],
+      ['Ammo', item.weapons[0].stackAmount],
+    );
+  } else if (item.type === ItemType.Shield) {
+    props.fields.push(
+      ['Speed', item.weapons[0].swingSpeed],
+      ['Durability', item.weapons[0].stackAmount],
+      ['Armor', item.weapons[0].bodyArmor],
+      ['Length', item.weapons[0].length],
+    );
+  } else if (item.type === ItemType.Bow || item.type === ItemType.Crossbow) {
+    props.fields.push(
+      ['Damage', getDamageFieldValue(item.weapons[0].thrustDamage, item.weapons[0].thrustDamageType)],
+      ['Fire Rate', item.weapons[0].swingSpeed],
+      ['Accuracy', item.weapons[0].accuracy],
+      ['Missile Speed', item.weapons[0].missileSpeed],
+      ['Length', item.weapons[0].length],
+    );
+  } else if (item.type === ItemType.Banner) {
+    props.fields.push(['Length', item.weapons[0].length]);
+  } else {
+    item.weapons.forEach(weapon => {
+      const itemType = itemTypeByWeaponClass[weapon.class];
+      const weaponFields: [string, any][] = [];
+      if (itemType === ItemType.OneHandedWeapon || itemType === ItemType.TwoHandedWeapon || itemType === ItemType.Polearm) {
+        weaponFields.push(...getDamageFields(weapon));
+      } else if (itemType === ItemType.Thrown) {
+        weaponFields.push(
+          ['Damage', getDamageFieldValue(weapon.thrustDamage, weapon.thrustDamageType)],
+          ['Fire Rate', weapon.missileSpeed],
+          ['Accuracy', weapon.accuracy],
+          ['Stack Amount', weapon.stackAmount],
+        );
       }
 
-      if (item.weapons.length > 2) {
-        if (item.weapons[2].stackAmount !== 0) { // if thrown
-          props.modes.push({
-            name: 'Thrown',
-            fields: [
-              ['Length', item.weapons[2].length],
-              ['Damage', item.weapons[2].thrustDamage],
-              ['Fire Rate', item.weapons[2].missileSpeed],
-              ['Accuracy', item.weapons[2].accuracy],
-              ['Stack Amnt.', item.weapons[2].stackAmount],
-            ],
-            flags: getWeaponFlags(item.weapons[2].flags),
-          });
-        } else { // else couchable
-          props.modes.push({
-            name: 'Couch',
-            fields: [
-              ...getDamageFields(item.weapons[2]),
-              ['Length', item.weapons[2].length],
-              ['Handling', item.weapons[2].handling],
-            ],
-            flags: getWeaponFlags(item.weapons[2].flags),
-          });
-        }
-      }
-      break;
-    case ItemType.Thrown:
-      props.modes.push({
-        name: 'Thrown',
-        fields: [
-          ['Length', item.weapons[0].length],
-          ['Damage', item.weapons[0].thrustDamage],
-          ['Fire Rate', item.weapons[0].missileSpeed],
-          ['Accuracy', item.weapons[0].accuracy],
-          ['Stack Amnt.', item.weapons[0].stackAmount],
-        ],
-        flags: getWeaponFlags(item.weapons[0].flags),
-      });
-
-      if (item.weapons.length > 1) {
-        props.modes.push({
-          name: 'One handed',
-          fields: [
-            ...getDamageFields(item.weapons[1]),
-            ['Length', item.weapons[1].length],
-            ['Handling', item.weapons[1].handling],
-          ],
-          flags: getWeaponFlags(item.weapons[1].flags),
-        });
-      }
-      break;
-    case ItemType.Arrows:
-    case ItemType.Bolts:
-      props.fields.push(
-        ['Speed', item.weapons[0].missileSpeed],
-        ['Damage', item.weapons[0].thrustDamage],
-        ['Damage Type', damageTypeToStr[item.weapons[0].thrustDamageType]],
-        ['Length', item.weapons[0].length],
-        ['Ammo', item.weapons[0].stackAmount],
+      weaponFields.push(
+        ['Handling', weapon.handling],
+        ['Length', weapon.length],
       );
-      break;
-    default:
-      break;
+
+      props.modes.push({
+        name: getWeaponModeName(weapon),
+        fields: weaponFields,
+        flags: getWeaponFlags(weapon.flags),
+      });
+    });
   }
 
   return props;

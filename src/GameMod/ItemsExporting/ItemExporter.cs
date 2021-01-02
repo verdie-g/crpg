@@ -172,6 +172,7 @@ namespace Crpg.GameMod.ItemsExporting
 
         private static CrpgItemType MbToCrpgItemType(ItemObject.ItemTypeEnum t) => t switch
         {
+            ItemObject.ItemTypeEnum.Invalid => CrpgItemType.Undefined, // To be consistent with WeaponClass.
             ItemObject.ItemTypeEnum.Horse => CrpgItemType.Mount, // Horse includes camel and mule.
             ItemObject.ItemTypeEnum.HorseHarness => CrpgItemType.MountHarness, // Horse includes camel and mule.
             ItemObject.ItemTypeEnum.Cape => CrpgItemType.ShoulderArmor, // Cape is a bad name.
