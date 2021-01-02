@@ -15,7 +15,8 @@
 
     <!-- Define revision id to be added to the assembly version -->
     <Target Name="InitializeSourceRevisionId" BeforeTargets="AddSourceRevisionToInformationalVersion">
-        <Exec Command="git describe --long --always --dirty --exclude=* --abbrev=8" ConsoleToMSBuild="True" IgnoreExitCode="False">
+        <Exec Command="git describe --long --always --dirty --exclude=* --abbrev=8" ConsoleToMSBuild="true"
+              IgnoreExitCode="false" StandardOutputImportance="low" EchoOff="true">
             <Output TaskParameter="ConsoleOutput" PropertyName="SourceRevisionId" />
         </Exec>
     </Target>
