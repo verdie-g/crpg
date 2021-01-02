@@ -36,6 +36,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -221,6 +222,7 @@ namespace Crpg.WebApi
         {
             var mediator = ctx.HttpContext.RequestServices.GetRequiredService<IMediator>();
             var mapper = ctx.HttpContext.RequestServices.GetRequiredService<IMapper>();
+            var logger = ctx.HttpContext.RequestServices.GetRequiredService<ILogger<Startup>>();
 
             var player = ctx.UserPayload!.RootElement
                 .GetProperty(SteamAuthenticationConstants.Parameters.Response)
@@ -232,6 +234,8 @@ namespace Crpg.WebApi
 
             // Delete temporary cookie used during external authentication
             await ctx.HttpContext.SignOutAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
+
+            logger.LogInformation("User '{0}' signed in", result.Data!.Id);
         }
     }
 }
