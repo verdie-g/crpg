@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.12.1",
-    "buefy": "0.8.19",
+    "buefy": "0.9.4",
     "oidc-client": "^1.10.1",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
