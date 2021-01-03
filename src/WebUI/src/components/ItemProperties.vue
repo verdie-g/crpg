@@ -3,7 +3,7 @@
     <div v-for="field in itemDescriptor.fields">
       {{field[0]}}: {{field[1]}}
     </div>
-    <b-tabs v-if="itemDescriptor.modes.length" class="weapon-tabs">
+    <b-tabs v-if="itemDescriptor.modes.length" :value="weaponIdx" class="weapon-tabs">
       <b-tab-item v-for="mode in itemDescriptor.modes" :label="mode.name">
         <div v-for="field in mode.fields">
           {{field[0]}}: {{field[1]}}<br />
@@ -25,6 +25,7 @@ import { ItemDescriptor } from '@/models/item-descriptor';
 @Component
 export default class ItemProperties extends Vue {
   @Prop(Object) readonly item: Item;
+  @Prop(Number) readonly weaponIdx: number;
 
   get itemDescriptor(): ItemDescriptor {
     return getItemDescriptor(this.item);

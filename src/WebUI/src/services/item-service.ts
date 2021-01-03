@@ -111,7 +111,7 @@ const itemTypeByWeaponClass: Record<WeaponClass, ItemType> = {
   [WeaponClass.TwoHandedAxe]: ItemType.TwoHandedWeapon,
   [WeaponClass.Pick]: ItemType.TwoHandedWeapon,
   [WeaponClass.TwoHandedMace]: ItemType.TwoHandedWeapon,
-  [WeaponClass.OneHandedPolearm]: ItemType.Polearm,
+  [WeaponClass.OneHandedPolearm]: ItemType.OneHandedWeapon,
   [WeaponClass.TwoHandedPolearm]: ItemType.Polearm,
   [WeaponClass.LowGripPolearm]: ItemType.Polearm,
   [WeaponClass.Arrow]: ItemType.Arrows,
@@ -155,24 +155,14 @@ function getDamageFields(weaponComponent: ItemWeaponComponent): [string, any][] 
   return fields;
 }
 
-function getWeaponModeName(weapon: ItemWeaponComponent): string {
-  switch (weapon.class) {
-    case WeaponClass.Dagger:
-    case WeaponClass.OneHandedSword:
-    case WeaponClass.OneHandedAxe:
-    case WeaponClass.Mace:
-    case WeaponClass.OneHandedPolearm:
+function getWeaponClassShortName(weaponClass: WeaponClass): string {
+  switch (itemTypeByWeaponClass[weaponClass]) {
+    case ItemType.OneHandedWeapon:
       return '1H';
-    case WeaponClass.TwoHandedSword:
-    case WeaponClass.TwoHandedAxe:
-    case WeaponClass.TwoHandedMace:
-    case WeaponClass.TwoHandedPolearm:
-    case WeaponClass.LowGripPolearm:
+    case ItemType.TwoHandedWeapon:
+    case ItemType.Polearm:
       return '2H';
-    case WeaponClass.Stone:
-    case WeaponClass.ThrowingAxe:
-    case WeaponClass.ThrowingKnife:
-    case WeaponClass.Javelin:
+    case ItemType.Thrown:
       return 'Thrown';
     default:
       return '';
@@ -273,7 +263,7 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
       );
 
       props.modes.push({
-        name: getWeaponModeName(weapon),
+        name: getWeaponClassShortName(weapon.class),
         fields: weaponFields,
         flags: getWeaponFlags(weapon.flags),
       });
@@ -285,4 +275,28 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
 
 export function filterItemsFittingInSlot(items: Item[], slot: ItemSlot): Item[] {
   return items.filter(i => itemTypesBySlot[slot].includes(i.type));
+}
+
+export function filterItemsByType(items: Item[], types: ItemType[]): { item: Item; weaponIdx: number | undefined }[] {
+  if (types.length === 0) {
+    return items.map(i => ({ item: i, weaponIdx: undefined }));
+  }
+
+  const filteredItems = [];
+  for (const item of items) { // eslint-disable-line no-restricted-syntax
+    if (item.weapons.length === 0) {
+      if (types.includes(item.type)) {
+        filteredItems.push({ item, weaponIdx: undefined });
+      }
+
+      continue; // eslint-disable-line no-continue
+    }
+
+    const weaponIdx = item.weapons.findIndex(w => types.includes(itemTypeByWeaponClass[w.class]));
+    if (weaponIdx !== -1) {
+      filteredItems.push({ item, weaponIdx });
+    }
+  }
+
+  return filteredItems;
 }

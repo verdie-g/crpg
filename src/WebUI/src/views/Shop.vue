@@ -9,7 +9,7 @@
 
         <div class="column">
           <div class="columns is-multiline items" v-if="pageItems">
-            <div class="column is-narrow" v-for="item in pageItems" v-bind:key="item.id">
+            <div class="column is-narrow" v-for="{ item, weaponIdx } in pageItems" v-bind:key="item.id">
               <div class="card item-card">
                 <div class="card-image">
                   <figure class="image">
@@ -19,7 +19,7 @@
                 <div class="card-content content">
                   <h4>{{item.name}}</h4>
                   <div class="content">
-                    <item-properties :item="item" />
+                    <item-properties :item="item" :weapon-idx="weaponIdx" />
                   </div>
                 </div>
                 <footer class="card-footer">
@@ -63,6 +63,7 @@ import Item from '@/models/item';
 import { notify } from '@/services/notifications-service';
 import ShopFiltersForm from '@/components/ShopFiltersForm.vue';
 import ShopFilters from '@/models/ShopFilters';
+import { filterItemsByType } from '@/services/item-service';
 
 @Component({
   components: { ShopFilterForm: ShopFiltersForm, ItemProperties },
@@ -97,12 +98,12 @@ export default class Shop extends Vue {
     return pageQuery;
   }
 
-  get filteredItems(): Item[] {
-    return itemModule.items.filter(i => (this.filters.types.length === 0 || this.filters.types.includes(i.type))
-      && (this.ownedItems[i.id] === undefined || this.filters.showOwned));
+  get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
+    return filterItemsByType(itemModule.items, this.filters.types)
+      .filter(i => this.ownedItems[i.item.id] === undefined || this.filters.showOwned);
   }
 
-  get pageItems(): Item[] {
+  get pageItems(): { item: Item; weaponIdx: number | undefined }[] {
     if (!this.filteredItems) {
       return [];
     }
