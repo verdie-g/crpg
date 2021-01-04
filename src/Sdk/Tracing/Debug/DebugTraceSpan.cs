@@ -9,13 +9,15 @@ namespace Crpg.Sdk.Tracing.Debug
 {
     internal class DebugTraceSpan : ITraceSpan
     {
-        private readonly string _name;
+        private readonly string _operationName;
+        private readonly string? _resourceName;
         private readonly IEnumerable<KeyValuePair<string, string>>? _tags;
         private readonly ILogger _logger;
 
-        public DebugTraceSpan(string name, IEnumerable<KeyValuePair<string, string>>? tags, ILogger logger)
+        public DebugTraceSpan(string operationName, string? resourceName, IEnumerable<KeyValuePair<string, string>>? tags, ILogger logger)
         {
-            _name = name;
+            _operationName = operationName;
+            _resourceName = resourceName;
             _tags = tags;
             _logger = logger;
         }
@@ -26,10 +28,17 @@ namespace Crpg.Sdk.Tracing.Debug
 
         public override string ToString()
         {
-            var sb = new StringBuilder(_name);
+            var sb = new StringBuilder(_operationName);
+            if (_resourceName != null)
+            {
+                sb.Append(' ');
+                sb.Append(_resourceName);
+            }
+
             if (_tags != null && _tags.Any())
             {
-                sb.Append("[");
+                sb.Append(' ');
+                sb.Append('[');
                 foreach (var kv in _tags)
                 {
                     sb.AppendFormat("{0}:{1}, ", kv.Key, kv.Value);
@@ -40,7 +49,7 @@ namespace Crpg.Sdk.Tracing.Debug
                     sb.Length -= 2;
                 }
 
-                sb.Append("]");
+                sb.Append(']');
             }
 
             return sb.ToString();

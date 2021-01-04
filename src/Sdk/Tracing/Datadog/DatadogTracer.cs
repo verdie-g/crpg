@@ -13,9 +13,14 @@ namespace Crpg.Sdk.Tracing.Datadog
             _namespace = ns;
         }
 
-        public ITraceSpan CreateSpan(string name, IEnumerable<KeyValuePair<string, string>>? tags = null)
+        public ITraceSpan CreateSpan(string operationName, string? resourceName = null, IEnumerable<KeyValuePair<string, string>>? tags = null)
         {
-            Scope scope = Tracer.Instance.StartActive(_namespace + "." + name);
+            Scope scope = Tracer.Instance.StartActive(_namespace + "." + operationName);
+            if (resourceName != null)
+            {
+                scope.Span.ResourceName = resourceName;
+            }
+
             if (tags != null)
             {
                 foreach (var kv in tags)

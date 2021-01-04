@@ -46,7 +46,7 @@ namespace Crpg.Application.Common.Behaviors
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
             RequestHandlerDelegate<TResponse> next)
         {
-            var span = _tracer.CreateSpan(SpanName, SpanTags);
+            var span = _tracer.CreateSpan(SpanName, tags: SpanTags);
             var sw = ValueStopwatch.StartNew();
             try
             {
