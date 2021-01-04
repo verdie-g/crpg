@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -19,9 +18,8 @@ namespace Crpg.Application.Common.Behaviors
         where TRequest : notnull
         where TResponse : class
     {
-        private const string SpanName = "request";
-        private static readonly string RequestName = StringHelper.PascalToSnakeCase(typeof(TRequest).Name);
-        private static readonly KeyValuePair<string, string>[] SpanTags = { KeyValuePair.Create("name", RequestName) };
+        private const string OperationName = "request";
+        private static readonly string ResourceName = StringHelper.PascalToSnakeCase(typeof(TRequest).Name);
 
         static RequestInstrumentationBehavior()
         {
@@ -46,7 +44,7 @@ namespace Crpg.Application.Common.Behaviors
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
             RequestHandlerDelegate<TResponse> next)
         {
-            var span = _tracer.CreateSpan(SpanName, tags: SpanTags);
+            var span = _tracer.CreateSpan(OperationName, ResourceName);
             var sw = ValueStopwatch.StartNew();
             try
             {
