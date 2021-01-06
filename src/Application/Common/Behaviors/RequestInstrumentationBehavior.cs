@@ -51,7 +51,18 @@ namespace Crpg.Application.Common.Behaviors
                 var response = await next();
                 if (response is Result result && result.Errors != null && result.Errors.Count != 0)
                 {
-                    _metrics.StatusErrorBadRequest.Increment();
+                    switch (result.Errors[0].Type)
+                    {
+                        case ErrorType.Validation:
+                            _metrics.StatusErrorBadRequest.Increment();
+                            break;
+                        case ErrorType.NotFound:
+                            _metrics.StatusErrorNotFound.Increment();
+                            break;
+                        default:
+                            _metrics.StatusErrorUnknown.Increment();
+                            break;
+                    }
                 }
                 else
                 {
