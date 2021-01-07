@@ -15,7 +15,9 @@
           <character-component :character="selectedCharacter"  />
         </div>
         <div v-else> <!-- if no character -->
-          <!-- To create a character, simply connect to one of the cRPG servers. -->
+          To create a character, simply launch a
+          <a href="https://www.nexusmods.com/mountandblade2bannerlord/mods/2208?tab=files" target="_blank">DefendTheVirgin</a>
+          game.
         </div>
       </div>
     </div>

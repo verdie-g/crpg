@@ -10,12 +10,6 @@
           items.
         </p>
 
-        <p>
-          The mod was announced recently in this <a href="https://forums.taleworlds.com/index.php?threads/crpg.432051" target="_blank">Forum thread</a>.
-          As TaleWorlds haven't provided the tools to make multiplayer mods yet, only a singleplayer mod is available on
-          <a href="https://www.nexusmods.com/mountandblade2bannerlord/mods/2208?tab=files" target="_blank">Nexus Mods</a> mostly to test the system.
-          Follow the development on the <a href="https://discord.gg/83RJDN9" target="_blank">cRPG Discord</a>.
-        </p>
         <b-button size="is-large" icon-left="steam-symbol" icon-pack="fab" @click="onClick" v-if="!isSignedIn">
           Sign in through Steam
         </b-button>
@@ -44,14 +38,26 @@ import userModule from '@/store/user-module';
 @Component
 export default class Home extends Vue {
   faq = [
-    // {
-    //   question: 'How to create a new character?',
-    //   answer: 'Simply connect to a cRPG server and a character with your steam user name will be created.',
-    // },
-    // {
-    // question: 'How to gain experience and gold?',
-    // answer: 'Experience and gold are gained by playing on cRPG servers. These earnings are multiplied when you win a round.',
-    // },
+    {
+      question: 'Is the mod available?',
+      answer: 'The mod was announced recently in this'
+        + ' <a href="https://forums.taleworlds.com/index.php?threads/crpg.432051" target="_blank">Forum thread</a>.'
+        + ' As TaleWorlds has not provided the tools to make multiplayer mods yet, only a singleplayer mod is available on'
+        + ' <a href="https://www.nexusmods.com/mountandblade2bannerlord/mods/2208?tab=files" target="_blank">Nexus Mods</a>.'
+        + ' Follow the development on the <a href="https://discord.gg/83RJDN9" target="_blank">cRPG Discord</a>',
+    },
+    {
+      question: 'How to create a new character?',
+      answer: 'Simply launch a DefendTheVirgin game and a level character 1 should be created.',
+    },
+    {
+      question: 'How to gain experience and gold?',
+      answer: 'Experience and gold are gained by playing the singleplayer cRPG mod.',
+    },
+    {
+      question: 'Will my progress (experience, gold) be saved until the official release of cRPG?',
+      answer: 'Once the multiplayer mods are available and that cRPG is released, the database will be wiped.',
+    },
     {
       question: 'I\'ve renamed my steam account and a new character level 1 was created, how can I play with my original character?',
       answer: 'When you connect to a cRPG server, it searches for a character with the same name as your steam name. If it doesn\'t find'
@@ -77,9 +83,11 @@ export default class Home extends Vue {
     },
     {
       question: 'How can I help?',
-      answer: 'If you want to help developping the mod and that you already have a <b>professional</b> experience with either .NET, game'
-        + ' development, or a popular Javascript framework (Vue, React, Angular), please contact a developper on the cRPG Discord. You'
-        + ' can also help by donating to cover server costs.',
+      answer: 'We\'re looking for:<ul style="margin-top: 0">'
+        + '<li>Game developer (.NET)</li>'
+        + '<li>UX designer for this website</li>'
+        + '<li>Front-end developer (Vue.js) for this website</li>'
+        + '</ul>If you don\'t have any of the above skills you can also donate on the Patreon.',
     },
     {
       question: 'How to donate?',
