@@ -255,12 +255,12 @@ namespace Crpg.GameMod.ItemsExporting
             // Assume the average health of a native npc is 100.
             float healthFactor = 100 / averageHealth;
 
-            float psFactor = MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.DamageForPowerStrikeCoefs);
-            float pdFactor = MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.DamageForPowerDrawCoefs);
-            float ptFactor = MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.DamageForPowerThrowCoefs);
+            float psFactor = MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.DamageFactorForPowerStrikeCoefs);
+            float pdFactor = MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.DamageFactorForPowerDrawCoefs);
+            float ptFactor = MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.DamageFactorForPowerThrowCoefs);
 
-            float shieldSpeedIncrease = MathHelper.ApplyPolynomialFunction(averageCharacterAgility / 6, crpgConstants.SpeedForShieldCoefs);
-            float shieldDurabilityIncrease = MathHelper.ApplyPolynomialFunction(averageCharacterAgility / 6, crpgConstants.DurabilityForShieldCoefs);
+            float shieldSpeedIncrease = MathHelper.ApplyPolynomialFunction(averageCharacterAgility / 6, crpgConstants.SpeedFactorForShieldCoefs);
+            float shieldDurabilityIncrease = MathHelper.ApplyPolynomialFunction(averageCharacterAgility / 6, crpgConstants.DurabilityFactorForShieldCoefs);
 
             foreach (var weapon in item.Weapons)
             {

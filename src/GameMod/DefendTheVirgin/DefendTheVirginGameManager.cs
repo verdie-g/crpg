@@ -385,11 +385,11 @@ namespace Crpg.GameMod.DefendTheVirgin
 
             if (itemObject.Weapons != null)
             {
-                float powerStrikeFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.PowerStrike), constants.DamageForPowerStrikeCoefs);
+                float powerStrikeFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.PowerStrike), constants.DamageFactorForPowerStrikeCoefs);
                 ModifyDamage(itemObject, powerStrikeFactor, WeaponClassesAffectedByPowerStrike);
-                float powerDrawFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.PowerDraw), constants.DamageForPowerDrawCoefs);
+                float powerDrawFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.PowerDraw), constants.DamageFactorForPowerDrawCoefs);
                 ModifyDamage(itemObject, powerDrawFactor, WeaponClassesAffectedByPowerDraw);
-                float powerThrowFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.PowerThrow), constants.DamageForPowerThrowCoefs);
+                float powerThrowFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.PowerThrow), constants.DamageFactorForPowerThrowCoefs);
                 ModifyDamage(itemObject, powerThrowFactor, WeaponClassesAffectedByPowerThrow);
             }
 
@@ -397,11 +397,11 @@ namespace Crpg.GameMod.DefendTheVirgin
             {
                 var shield = itemObject.WeaponComponent.PrimaryWeapon;
 
-                float durabilityFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.Shield), constants.DurabilityForShieldCoefs);
+                float durabilityFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.Shield), constants.DurabilityFactorForShieldCoefs);
                 var durability = (short)ReflectionHelper.GetProperty(shield, nameof(WeaponComponentData.MaxDataValue));
                 ReflectionHelper.SetProperty(shield, nameof(WeaponComponentData.MaxDataValue), (short)(durability * durabilityFactor));
 
-                float speedFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.Shield), constants.SpeedForShieldCoefs);
+                float speedFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.Shield), constants.SpeedFactorForShieldCoefs);
                 var speed = (int)ReflectionHelper.GetProperty(shield, nameof(WeaponComponentData.ThrustSpeed));
                 ReflectionHelper.SetProperty(shield, nameof(WeaponComponentData.ThrustSpeed), (int)(speed * speedFactor));
             }

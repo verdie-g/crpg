@@ -30,11 +30,11 @@ namespace Crpg.GameMod.Common
          public int SkillPointsPerLevel { get; set; }
          public float[] HealthPointsForStrengthCoefs { get; set; } = Array.Empty<float>();
          public float[] HealthPointsForIronFleshCoefs { get; set; } = Array.Empty<float>();
-         public float[] DamageForPowerStrikeCoefs { get; set; } = Array.Empty<float>();
-         public float[] DamageForPowerDrawCoefs { get; set; } = Array.Empty<float>();
-         public float[] DamageForPowerThrowCoefs { get; set; } = Array.Empty<float>();
-         public float[] DurabilityForShieldCoefs { get; set; } = Array.Empty<float>();
-         public float[] SpeedForShieldCoefs { get; set; } = Array.Empty<float>();
+         public float[] DamageFactorForPowerStrikeCoefs { get; set; } = Array.Empty<float>();
+         public float[] DamageFactorForPowerDrawCoefs { get; set; } = Array.Empty<float>();
+         public float[] DamageFactorForPowerThrowCoefs { get; set; } = Array.Empty<float>();
+         public float[] DurabilityFactorForShieldCoefs { get; set; } = Array.Empty<float>();
+         public float[] SpeedFactorForShieldCoefs { get; set; } = Array.Empty<float>();
          public string DefaultRole { get; set; } = string.Empty;
          public int DefaultGold { get; set; }
          public int DefaultHeirloomPoints { get; set; }
