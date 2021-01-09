@@ -4,13 +4,15 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
+using Crpg.Common.Helpers;
 using Crpg.GameMod.Api.Models.Items;
-using Crpg.GameMod.Helpers;
+using Crpg.GameMod.Common;
 using Crpg.GameMod.Helpers.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View;
 using Path = System.IO.Path;
@@ -92,14 +94,55 @@ namespace Crpg.GameMod.ItemsExporting
             "woodland_throwing_axe_1_t1", // Name conflict with highland_throwing_axe_1_t2.
         };
 
+        private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByPowerStrike = new HashSet<CrpgWeaponClass>
+        {
+             CrpgWeaponClass.Dagger,
+             CrpgWeaponClass.OneHandedSword,
+             CrpgWeaponClass.TwoHandedSword,
+             CrpgWeaponClass.OneHandedAxe,
+             CrpgWeaponClass.TwoHandedAxe,
+             CrpgWeaponClass.Mace,
+             CrpgWeaponClass.Pick,
+             CrpgWeaponClass.TwoHandedMace,
+             CrpgWeaponClass.OneHandedPolearm,
+             CrpgWeaponClass.TwoHandedPolearm,
+             CrpgWeaponClass.LowGripPolearm,
+        };
+
+        private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByPowerDraw = new HashSet<CrpgWeaponClass>
+        {
+             CrpgWeaponClass.Bow,
+        };
+
+        private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByPowerThrow = new HashSet<CrpgWeaponClass>
+        {
+             CrpgWeaponClass.Stone,
+             CrpgWeaponClass.Boulder,
+             CrpgWeaponClass.ThrowingAxe,
+             CrpgWeaponClass.ThrowingKnife,
+             CrpgWeaponClass.Javelin,
+        };
+
+        private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByShield = new HashSet<CrpgWeaponClass>
+        {
+             CrpgWeaponClass.SmallShield,
+             CrpgWeaponClass.LargeShield,
+        };
+
         public Task Export(string outputPath)
         {
+            var crpgConstants = LoadCrpgConstants();
+
             var mbItems = DeserializeMbItems(ItemFiles)
                 .DistinctBy(i => i.StringId)
                 .Where(FilterItem) // Remove test and blacklisted items
                 .OrderBy(i => i.StringId)
                 .ToArray();
-            var crpgItems = mbItems.Select(MbToCrpgItem);
+            var crpgItems = mbItems.Select(mbItem =>
+            {
+                var crpgItem = MbToCrpgItem(mbItem);
+                return RescaleItemStats(crpgItem, crpgConstants);
+            });
 
             Directory.CreateDirectory(outputPath);
             SerializeCrpgItems(crpgItems, outputPath);
@@ -111,6 +154,12 @@ namespace Crpg.GameMod.ItemsExporting
                                                              && !mbItem.Name.Contains("_")
                                                              && !BlacklistedItemTypes.Contains(mbItem.ItemType)
                                                              && !BlacklistedItems.Contains(mbItem.StringId);
+
+        private static CrpgConstants LoadCrpgConstants()
+        {
+            string path = BasePath.Name + "Modules/cRPG/ModuleData/constants.json";
+            return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path));
+        }
 
         private static CrpgItemCreation MbToCrpgItem(ItemObject mbItem)
         {
@@ -189,6 +238,54 @@ namespace Crpg.GameMod.ItemsExporting
             DamageTypes.Invalid => CrpgDamageType.Undefined, // To be consistent with WeaponClass.
             _ => (CrpgDamageType)Enum.Parse(typeof(CrpgDamageType), t.ToString()),
         };
+
+        /// <summary>
+        /// Since damages can be increased with Power Strike/Draw/Throw or speed can be increased with Shield or health
+        /// can be increased with iron flesh so stats of the native bannerlord items need to be rescaled accordingly.
+        /// </summary>
+        private static CrpgItemCreation RescaleItemStats(CrpgItemCreation item, CrpgConstants crpgConstants)
+        {
+            // Assume the average attributes of a lvl 30 character and decrease stats by the amount the skills would give.
+            const int averageCharacterStrength = 18;
+            const int averageCharacterAgility = 18;
+
+            float averageHealth = crpgConstants.DefaultHealthPoints
+                                  + MathHelper.ApplyPolynomialFunction(averageCharacterStrength, crpgConstants.HealthPointsForStrengthCoefs)
+                                  + MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.HealthPointsForIronFleshCoefs);
+            // Assume the average health of a native npc is 100.
+            float healthFactor = 100 / averageHealth;
+
+            float psFactor = MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.DamageForPowerStrikeCoefs);
+            float pdFactor = MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.DamageForPowerDrawCoefs);
+            float ptFactor = MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.DamageForPowerThrowCoefs);
+
+            float shieldSpeedIncrease = MathHelper.ApplyPolynomialFunction(averageCharacterAgility / 6, crpgConstants.SpeedForShieldCoefs);
+            float shieldDurabilityIncrease = MathHelper.ApplyPolynomialFunction(averageCharacterAgility / 6, crpgConstants.DurabilityForShieldCoefs);
+
+            foreach (var weapon in item.Weapons)
+            {
+                if (WeaponClassesAffectedByPowerStrike.Contains(weapon.Class))
+                {
+                    weapon.SwingDamage = (int)(weapon.SwingDamage / psFactor / healthFactor);
+                    weapon.ThrustDamage = (int)(weapon.ThrustDamage / psFactor / healthFactor);
+                }
+                else if (WeaponClassesAffectedByPowerDraw.Contains(weapon.Class))
+                {
+                    weapon.ThrustDamage = (int)(weapon.ThrustDamage / pdFactor / healthFactor);
+                }
+                else if (WeaponClassesAffectedByPowerThrow.Contains(weapon.Class))
+                {
+                    weapon.ThrustDamage = (int)(weapon.ThrustDamage / ptFactor / healthFactor);
+                }
+                else if (WeaponClassesAffectedByShield.Contains(weapon.Class))
+                {
+                    weapon.SwingSpeed = (int)(weapon.SwingSpeed / shieldSpeedIncrease);
+                    weapon.StackAmount = (int)(weapon.StackAmount / shieldDurabilityIncrease);
+                }
+            }
+
+            return item;
+        }
 
         private static IEnumerable<ItemObject> DeserializeMbItems(IEnumerable<string> paths)
         {
