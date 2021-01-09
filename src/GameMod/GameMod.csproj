@@ -38,7 +38,7 @@
 
     <ItemGroup>
         <PackageReference Include="DeepCloner" Version="0.10.2" />
-        <PackageReference Include="IdentityModel" Version="4.5.0" />
+        <PackageReference Include="IdentityModel" Version="4.6.0" />
     </ItemGroup>
 
     <ItemGroup>

@@ -9,7 +9,7 @@
   <Import Project="../Shared.targets" />
 
   <ItemGroup>
-    <PackageReference Include="Datadog.Trace" Version="1.21.0" />
+    <PackageReference Include="Datadog.Trace" Version="1.21.1" />
     <PackageReference Include="DatadogStatsD" Version="0.3.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.5" />
