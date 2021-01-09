@@ -56,7 +56,7 @@
     <div class="stats-section">
       <h2 class="title is-4">
         Skills ({{stats.skills.points + statsDelta.skills.points}})
-        <b-tooltip label="Convert 2 skills points to 1 attribute point" class="convert-button"
+        <b-tooltip label="Convert 2 skill points to 1 attribute point" class="convert-button"
                    v-if="stats.skills.points + statsDelta.skills.points >= 2">
           <b-icon icon="exchange-alt" size="is-small" type="is-primary" @click.native="convertStats(statisticConversion.SkillsToAttributes)" />
         </b-tooltip>
