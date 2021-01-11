@@ -16,8 +16,6 @@ namespace Crpg.Application.UTest.Characters
 {
     public class RespecializeCharacterCommandTest : TestBase
     {
-        private static readonly ILogger<RespecializeCharacterCommand> Logger = Mock.Of<ILogger<RespecializeCharacterCommand>>();
-
         private static readonly Constants Constants = new Constants
         {
             RespecializeExperiencePenaltyCoefs = new[] { 0.5f, 0f },
@@ -47,7 +45,7 @@ namespace Crpg.Application.UTest.Characters
 
             var characterServiceMock = new Mock<ICharacterService>();
 
-            var handler = new RespecializeCharacterCommand.Handler(ActDb, Mapper, characterServiceMock.Object, experienceTableMock.Object, Constants, Logger);
+            var handler = new RespecializeCharacterCommand.Handler(ActDb, Mapper, characterServiceMock.Object, experienceTableMock.Object, Constants);
             await handler.Handle(new RespecializeCharacterCommand
             {
                 CharacterId = character.Id,
@@ -70,7 +68,7 @@ namespace Crpg.Application.UTest.Characters
         {
             var experienceTable = Mock.Of<IExperienceTable>();
             var characterService = Mock.Of<ICharacterService>();
-            var handler = new RespecializeCharacterCommand.Handler(ActDb, Mapper, characterService, experienceTable, Constants, Logger);
+            var handler = new RespecializeCharacterCommand.Handler(ActDb, Mapper, characterService, experienceTable, Constants);
             var result = await handler.Handle(
                 new RespecializeCharacterCommand
                 {
@@ -89,7 +87,7 @@ namespace Crpg.Application.UTest.Characters
 
             var experienceTable = Mock.Of<IExperienceTable>();
             var characterService = Mock.Of<ICharacterService>();
-            var handler = new RespecializeCharacterCommand.Handler(ActDb, Mapper, characterService, experienceTable, Constants, Logger);
+            var handler = new RespecializeCharacterCommand.Handler(ActDb, Mapper, characterService, experienceTable, Constants);
             var result = await handler.Handle(
                 new RespecializeCharacterCommand
                 {

@@ -17,6 +17,7 @@ using Crpg.Sdk.Abstractions;
 using Crpg.Sdk.Abstractions.Events;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Games.Commands
 {
@@ -31,6 +32,7 @@ namespace Crpg.Application.Games.Commands
 
         internal class Handler : IMediatorRequestHandler<GetGameUserCommand, GameUser>
         {
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<GetGameUserCommand>();
             internal static readonly (string mbId, ItemSlot slot)[][] DefaultItemSets =
             {
                 // aserai
@@ -108,10 +110,9 @@ namespace Crpg.Application.Games.Commands
             private readonly IRandom _random;
             private readonly IUserService _userService;
             private readonly ICharacterService _characterService;
-            private readonly ILogger<GetGameUserCommand> _logger;
 
             public Handler(ICrpgDbContext db, IMapper mapper, IEventService events, IDateTimeOffset dateTime,
-                IRandom random, IUserService userService, ICharacterService characterService, ILogger<GetGameUserCommand> logger)
+                IRandom random, IUserService userService, ICharacterService characterService)
             {
                 _db = db;
                 _mapper = mapper;
@@ -120,7 +121,6 @@ namespace Crpg.Application.Games.Commands
                 _random = random;
                 _userService = userService;
                 _characterService = characterService;
-                _logger = logger;
             }
 
             public async Task<Result<GameUser>> Handle(GetGameUserCommand req, CancellationToken cancellationToken)
@@ -202,7 +202,7 @@ namespace Crpg.Application.Games.Commands
                 {
                     if (!items.TryGetValue(newItemMbId, out var item))
                     {
-                        _logger.LogWarning("Item '{0}' doesn't exist", newItemMbId);
+                        Logger.LogWarning("Item '{0}' doesn't exist", newItemMbId);
                         continue;
                     }
 

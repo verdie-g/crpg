@@ -10,6 +10,7 @@ using Crpg.Domain.Entities;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Bans.Commands
 {
@@ -31,15 +32,15 @@ namespace Crpg.Application.Bans.Commands
 
         internal class Handler : IMediatorRequestHandler<BanCommand, BanViewModel>
         {
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<BanCommand>();
+
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
-            private readonly ILogger<BanCommand> _logger;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, ILogger<BanCommand> logger)
+            public Handler(ICrpgDbContext db, IMapper mapper)
             {
                 _db = db;
                 _mapper = mapper;
-                _logger = logger;
             }
 
             public async Task<Result<BanViewModel>> Handle(BanCommand req, CancellationToken cancellationToken)
@@ -67,7 +68,7 @@ namespace Crpg.Application.Bans.Commands
                 bannedUser.Bans.Add(ban);
                 await _db.SaveChangesAsync(cancellationToken);
 
-                _logger.LogInformation("User '{0}' banned user '{1}'", req.BannedByUserId, req.BannedUserId);
+                Logger.LogInformation("User '{0}' banned user '{1}'", req.BannedByUserId, req.BannedUserId);
                 return new Result<BanViewModel>(_mapper.Map<BanViewModel>(ban));
             }
         }

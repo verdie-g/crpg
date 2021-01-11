@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.System.Commands;
+using Crpg.Logging;
 using Crpg.Persistence;
 using Crpg.Sdk.Abstractions.Events;
 using MediatR;
@@ -11,34 +12,34 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Npgsql;
 using Serilog;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.WebApi
 {
     public class Program
     {
-        private static readonly string Env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")
-                                             ?? Environments.Development;
-
-        private static IConfiguration Configuration { get; } = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile($"appsettings.{Env}.json", true, true)
-            .AddEnvironmentVariables()
-            .Build();
-
         public static async Task<int> Main(string[] args)
         {
-            Log.Logger = new LoggerConfiguration()
-                .ReadFrom.Configuration(Configuration)
-                .Enrich.FromLogContext()
-                .CreateLogger();
+            string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? Environments.Development;
+
+            IConfiguration configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile($"appsettings.{env}.json", true, true)
+                .AddEnvironmentVariables()
+                .Build();
+
+            LoggerFactory.Initialize(configuration);
 
             var host = Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>())
-                .UseSerilog()
+                .UseLogging()
                 .Build();
 
+            ILogger logger = LoggerFactory.CreateLogger<Program>();
             using (IServiceScope scope = host.Services.CreateScope())
             {
                 IServiceProvider services = scope.ServiceProvider;
@@ -46,7 +47,7 @@ namespace Crpg.WebApi
                 var eventRaiser = services.GetRequiredService<IEventService>();
                 var db = services.GetRequiredService<CrpgDbContext>();
 
-                if (Env == Environments.Production)
+                if (env == Environments.Production)
                 {
                     try
                     {
@@ -57,8 +58,8 @@ namespace Crpg.WebApi
                     }
                     catch (Exception ex)
                     {
-                        Log.Fatal(ex, "An error occurred while migrating the database.");
-                        Log.CloseAndFlush();
+                        logger.LogCritical(ex, "An error occurred while migrating the database.");
+                        LoggerFactory.Close();
                         return 1;
                     }
                 }
@@ -66,7 +67,7 @@ namespace Crpg.WebApi
                 var res = await mediator.Send(new SeedDataCommand(), CancellationToken.None);
                 if (res.Errors != null)
                 {
-                    Log.CloseAndFlush();
+                    LoggerFactory.Close();
                     return 1;
                 }
 
@@ -80,12 +81,12 @@ namespace Crpg.WebApi
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "Host terminated unexpectedly");
+                logger.LogCritical(ex, "Host terminated unexpectedly");
                 return 1;
             }
             finally
             {
-                Log.CloseAndFlush();
+                LoggerFactory.Close();
             }
         }
     }

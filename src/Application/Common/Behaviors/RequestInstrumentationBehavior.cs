@@ -11,6 +11,7 @@ using Crpg.Sdk.Abstractions;
 using Crpg.Sdk.Abstractions.Tracing;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Common.Behaviors
 {
@@ -19,6 +20,7 @@ namespace Crpg.Application.Common.Behaviors
         where TResponse : class
     {
         private const string OperationName = "request";
+        private static readonly ILogger Logger = LoggerFactory.CreateLogger(typeof(RequestInstrumentationBehavior<,>));
         private static readonly string ResourceName = StringHelper.PascalToSnakeCase(typeof(TRequest).Name);
 
         static RequestInstrumentationBehavior()
@@ -30,15 +32,12 @@ namespace Crpg.Application.Common.Behaviors
         private readonly RequestMetrics<TRequest> _metrics;
         private readonly ITracer _tracer;
         private readonly IApplicationEnvironment _appEnv;
-        private readonly ILogger<RequestInstrumentationBehavior<TRequest, TResponse>> _logger;
 
-        public RequestInstrumentationBehavior(RequestMetrics<TRequest> metrics, ITracer tracer,
-            IApplicationEnvironment appEnv, ILogger<RequestInstrumentationBehavior<TRequest, TResponse>> logger)
+        public RequestInstrumentationBehavior(RequestMetrics<TRequest> metrics, ITracer tracer, IApplicationEnvironment appEnv)
         {
             _metrics = metrics;
             _tracer = tracer;
             _appEnv = appEnv;
-            _logger = logger;
         }
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
@@ -90,7 +89,7 @@ namespace Crpg.Application.Common.Behaviors
                             },
                         };
 
-                        _logger.Log(LogLevel.Error, e, "Conflict");
+                        Logger.Log(LogLevel.Error, e, "Conflict");
                         break;
                     default:
                         _metrics.StatusErrorUnknown.Increment();
@@ -104,7 +103,7 @@ namespace Crpg.Application.Common.Behaviors
                             },
                         };
 
-                        _logger.Log(LogLevel.Error, e, "Unknown error");
+                        Logger.Log(LogLevel.Error, e, "Unknown error");
                         break;
                 }
 

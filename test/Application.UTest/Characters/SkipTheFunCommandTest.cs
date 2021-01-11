@@ -14,8 +14,6 @@ namespace Crpg.Application.UTest.Characters
 {
     public class SkipTheFunCommandTest : TestBase
     {
-        private static readonly ILogger<SkipTheFunCommand> Logger = Mock.Of<ILogger<SkipTheFunCommand>>();
-
         [Test]
         public async Task ShouldSkipTheFunCorrectly()
         {
@@ -28,7 +26,7 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Characters.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new SkipTheFunCommand.Handler(ActDb, characterServiceMock.Object, experienceTableMock.Object, Logger);
+            var handler = new SkipTheFunCommand.Handler(ActDb, characterServiceMock.Object, experienceTableMock.Object);
             var result = await handler.Handle(new SkipTheFunCommand
             {
                 CharacterId = character.Id,
@@ -53,7 +51,7 @@ namespace Crpg.Application.UTest.Characters
              await ArrangeDb.SaveChangesAsync();
 
              var handler = new SkipTheFunCommand.Handler(ActDb, Mock.Of<ICharacterService>(),
-                 Mock.Of<IExperienceTable>(), Logger);
+                 Mock.Of<IExperienceTable>());
              var result = await handler.Handle(new SkipTheFunCommand
              {
                  UserId = user.Id,

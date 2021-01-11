@@ -10,6 +10,7 @@ using Crpg.Application.Common.Services;
 using Crpg.Common.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Characters.Commands
 {
@@ -20,22 +21,22 @@ namespace Crpg.Application.Characters.Commands
 
         internal class Handler : IMediatorRequestHandler<RespecializeCharacterCommand, CharacterViewModel>
         {
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<RespecializeCharacterCommand>();
+
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
             private readonly ICharacterService _characterService;
             private readonly IExperienceTable _experienceTable;
             private readonly Constants _constants;
-            private readonly ILogger<RespecializeCharacterCommand> _logger;
 
             public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService,
-                IExperienceTable experienceTable, Constants constants, ILogger<RespecializeCharacterCommand> logger)
+                IExperienceTable experienceTable, Constants constants)
             {
                 _db = db;
                 _mapper = mapper;
                 _characterService = characterService;
                 _experienceTable = experienceTable;
                 _constants = constants;
-                _logger = logger;
             }
 
             public async Task<Result<CharacterViewModel>> Handle(RespecializeCharacterCommand req, CancellationToken cancellationToken)
@@ -55,7 +56,7 @@ namespace Crpg.Application.Characters.Commands
 
                 await _db.SaveChangesAsync(cancellationToken);
 
-                _logger.LogInformation("User '{0}' respecialized character '{1}'", req.UserId, req.CharacterId);
+                Logger.LogInformation("User '{0}' respecialized character '{1}'", req.UserId, req.CharacterId);
                 return new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character));
             }
         }

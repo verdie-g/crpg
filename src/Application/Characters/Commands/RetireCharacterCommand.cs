@@ -10,6 +10,7 @@ using Crpg.Application.Common.Services;
 using Crpg.Common.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Characters.Commands
 {
@@ -20,20 +21,19 @@ namespace Crpg.Application.Characters.Commands
 
         internal class Handler : IMediatorRequestHandler<RetireCharacterCommand, CharacterViewModel>
         {
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<RetireCharacterCommand>();
+
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
             private readonly ICharacterService _characterService;
             private readonly Constants _constants;
-            private readonly ILogger<RetireCharacterCommand> _logger;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, Constants constants,
-                ILogger<RetireCharacterCommand> logger)
+            public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, Constants constants)
             {
                 _db = db;
                 _mapper = mapper;
                 _characterService = characterService;
                 _constants = constants;
-                _logger = logger;
             }
 
             public async Task<Result<CharacterViewModel>> Handle(RetireCharacterCommand req, CancellationToken cancellationToken)
@@ -63,7 +63,7 @@ namespace Crpg.Application.Characters.Commands
 
                 await _db.SaveChangesAsync(cancellationToken);
 
-                _logger.LogInformation("User '{0}' retired character '{1}'", req.UserId, req.CharacterId);
+                Logger.LogInformation("User '{0}' retired character '{1}'", req.UserId, req.CharacterId);
                 return new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character));
             }
         }

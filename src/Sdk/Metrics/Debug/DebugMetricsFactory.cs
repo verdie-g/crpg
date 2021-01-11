@@ -1,25 +1,17 @@
 using System;
 using System.Collections.Generic;
 using Crpg.Sdk.Abstractions.Metrics;
-using Microsoft.Extensions.Logging;
 
 namespace Crpg.Sdk.Metrics.Debug
 {
     internal class DebugMetricsFactory : IMetricsFactory
     {
-        private readonly ILogger _logger;
-
-        public DebugMetricsFactory(ILogger<DebugMetricsFactory> logger)
-        {
-            _logger = logger;
-        }
-
         public ICount CreateCount(string metricName, IList<KeyValuePair<string, string>>? tags = null) =>
-            new DebugMetric(metricName, tags, _logger);
+            new DebugMetric(metricName, tags);
         public IHistogram CreateHistogram(string metricName, double sampleRate = 1, IList<KeyValuePair<string, string>>? tags = null) =>
-            new DebugMetric(metricName, tags, _logger);
+            new DebugMetric(metricName, tags);
         public IGauge CreateGauge(string metricName, Func<double> evaluator, IList<KeyValuePair<string, string>>? tags = null) =>
-            new DebugMetric(metricName, tags, _logger);
+            new DebugMetric(metricName, tags);
         public void Dispose() { }
     }
 }

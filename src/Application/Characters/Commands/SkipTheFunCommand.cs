@@ -1,12 +1,12 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Characters.Commands
 {
@@ -17,18 +17,17 @@ namespace Crpg.Application.Characters.Commands
 
         internal class Handler : IMediatorRequestHandler<SkipTheFunCommand>
         {
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<SkipTheFunCommand>();
+
             private readonly ICrpgDbContext _db;
             private readonly ICharacterService _characterService;
             private readonly IExperienceTable _experienceTable;
-            private readonly ILogger<SkipTheFunCommand> _logger;
 
-            public Handler(ICrpgDbContext db, ICharacterService characterService,
-                IExperienceTable experienceTable, ILogger<SkipTheFunCommand> logger)
+            public Handler(ICrpgDbContext db, ICharacterService characterService, IExperienceTable experienceTable)
             {
                 _db = db;
                 _characterService = characterService;
                 _experienceTable = experienceTable;
-                _logger = logger;
             }
 
             public async Task<Result> Handle(SkipTheFunCommand req, CancellationToken cancellationToken)
@@ -49,7 +48,7 @@ namespace Crpg.Application.Characters.Commands
 
                 await _db.SaveChangesAsync(cancellationToken);
 
-                _logger.LogInformation("User '{0}' skipped then fun character '{1}'", req.UserId, req.CharacterId);
+                Logger.LogInformation("User '{0}' skipped then fun character '{1}'", req.UserId, req.CharacterId);
                 return new Result();
             }
         }

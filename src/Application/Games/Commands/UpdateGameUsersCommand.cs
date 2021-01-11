@@ -13,6 +13,7 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Games.Commands
 {
@@ -25,17 +26,17 @@ namespace Crpg.Application.Games.Commands
 
         internal class Handler : IMediatorRequestHandler<UpdateGameUsersCommand, UpdateGameUsersResult>
         {
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateGameUsersCommand>();
+
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
             private readonly ICharacterService _characterService;
-            private readonly ILogger<UpdateGameUsersCommand> _logger;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, ILogger<UpdateGameUsersCommand> logger)
+            public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService)
             {
                 _db = db;
                 _mapper = mapper;
                 _characterService = characterService;
-                _logger = logger;
             }
 
             public async Task<Result<UpdateGameUsersResult>> Handle(UpdateGameUsersCommand req,
@@ -47,7 +48,7 @@ namespace Crpg.Application.Games.Commands
                 {
                     if (!charactersById.TryGetValue(update.CharacterId, out Character? character))
                     {
-                        _logger.LogWarning("Character with id '{0}' doesn't exist", update.CharacterId);
+                        Logger.LogWarning("Character with id '{0}' doesn't exist", update.CharacterId);
                         continue;
                     }
 

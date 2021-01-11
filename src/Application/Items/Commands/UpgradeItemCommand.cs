@@ -10,6 +10,7 @@ using Crpg.Common.Helpers;
 using Crpg.Domain.Entities.Items;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Items.Commands
 {
@@ -20,17 +21,17 @@ namespace Crpg.Application.Items.Commands
 
         internal class Handler : IMediatorRequestHandler<UpgradeItemCommand, ItemViewModel>
         {
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpgradeItemCommand>();
+
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
             private readonly Constants _constants;
-            private readonly ILogger<UpgradeItemCommand> _logger;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, Constants constants, ILogger<UpgradeItemCommand> logger)
+            public Handler(ICrpgDbContext db, IMapper mapper, Constants constants)
             {
                 _db = db;
                 _mapper = mapper;
                 _constants = constants;
-                _logger = logger;
             }
 
             public async Task<Result<ItemViewModel>> Handle(UpgradeItemCommand req, CancellationToken cancellationToken)
@@ -85,7 +86,7 @@ namespace Crpg.Application.Items.Commands
                 _db.OwnedItems.Remove(ownedItem);
                 await _db.SaveChangesAsync(cancellationToken);
 
-                _logger.LogInformation("User '{0}' upgraded item '{1}' to rank {2}", req.UserId, req.ItemId, upgradedItem.Rank);
+                Logger.LogInformation("User '{0}' upgraded item '{1}' to rank {2}", req.UserId, req.ItemId, upgradedItem.Rank);
                 return new Result<ItemViewModel>(_mapper.Map<ItemViewModel>(upgradedItem));
             }
         }

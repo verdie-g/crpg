@@ -5,6 +5,7 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Characters.Commands
 {
@@ -15,13 +16,13 @@ namespace Crpg.Application.Characters.Commands
 
         internal class Handler : IMediatorRequestHandler<DeleteCharacterCommand>
         {
-            private readonly ICrpgDbContext _db;
-            private readonly ILogger<DeleteCharacterCommand> _logger;
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<DeleteCharacterCommand>();
 
-            public Handler(ICrpgDbContext db, ILogger<DeleteCharacterCommand> logger)
+            private readonly ICrpgDbContext _db;
+
+            public Handler(ICrpgDbContext db)
             {
                 _db = db;
-                _logger = logger;
             }
 
             public async Task<Result> Handle(DeleteCharacterCommand req, CancellationToken cancellationToken)
@@ -38,7 +39,7 @@ namespace Crpg.Application.Characters.Commands
                 _db.Characters.Remove(characterDb);
                 await _db.SaveChangesAsync(cancellationToken);
 
-                _logger.LogInformation("User '{0}' deleted character '{1}'", req.UserId, req.CharacterId);
+                Logger.LogInformation("User '{0}' deleted character '{1}'", req.UserId, req.CharacterId);
                 return new Result();
             }
         }

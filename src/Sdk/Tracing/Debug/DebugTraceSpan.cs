@@ -4,27 +4,28 @@ using System.Linq;
 using System.Text;
 using Crpg.Sdk.Abstractions.Tracing;
 using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Sdk.Tracing.Debug
 {
     internal class DebugTraceSpan : ITraceSpan
     {
+        private static readonly ILogger Logger = LoggerFactory.CreateLogger<DebugTraceSpan>();
+
         private readonly string _operationName;
         private readonly string? _resourceName;
         private readonly IEnumerable<KeyValuePair<string, string>>? _tags;
-        private readonly ILogger _logger;
 
-        public DebugTraceSpan(string operationName, string? resourceName, IEnumerable<KeyValuePair<string, string>>? tags, ILogger logger)
+        public DebugTraceSpan(string operationName, string? resourceName, IEnumerable<KeyValuePair<string, string>>? tags)
         {
             _operationName = operationName;
             _resourceName = resourceName;
             _tags = tags;
-            _logger = logger;
         }
 
         public void SetException(Exception exception) { }
 
-        public void Dispose() => _logger.Log(LogLevel.Debug, "End of trace {0}", ToString());
+        public void Dispose() => Logger.Log(LogLevel.Debug, "End of trace {0}", ToString());
 
         public override string ToString()
         {

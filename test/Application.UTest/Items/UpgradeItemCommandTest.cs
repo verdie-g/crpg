@@ -17,8 +17,6 @@ namespace Crpg.Application.UTest.Items
 {
     public class UpgradeItemCommandTest : TestBase
     {
-        private static readonly ILogger<UpgradeItemCommand> Logger = Mock.Of<ILogger<UpgradeItemCommand>>();
-
         private static readonly Constants Constants = new Constants
         {
             ItemRepairCostCoefs = new[] { 0.07f, 0 },
@@ -47,7 +45,7 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Constants, Logger).Handle(new UpgradeItemCommand
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Constants).Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
                 UserId = user.Id,
@@ -68,7 +66,7 @@ namespace Crpg.Application.UTest.Items
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpgradeItemCommand.Handler(ActDb, Mapper, Constants, Logger);
+            var handler = new UpgradeItemCommand.Handler(ActDb, Mapper, Constants);
             var result = await handler.Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
@@ -88,7 +86,7 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Constants, Logger).Handle(new UpgradeItemCommand
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Constants).Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
                 UserId = user.Id,
@@ -109,7 +107,7 @@ namespace Crpg.Application.UTest.Items
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpgradeItemCommand.Handler(ActDb, Mapper, Constants, Logger);
+            var handler = new UpgradeItemCommand.Handler(ActDb, Mapper, Constants);
             var result = await handler.Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
@@ -136,7 +134,7 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var upgradedItem = (await new UpgradeItemCommand.Handler(ActDb, Mapper, Constants, Logger).Handle(new UpgradeItemCommand
+            var upgradedItem = (await new UpgradeItemCommand.Handler(ActDb, Mapper, Constants).Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
                 UserId = user.Id,
@@ -156,7 +154,7 @@ namespace Crpg.Application.UTest.Items
             var item = ArrangeDb.Items.Add(new Item());
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Constants, Logger).Handle(
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Constants).Handle(
                 new UpgradeItemCommand
                 {
                     ItemId = item.Entity.Id,
@@ -171,7 +169,7 @@ namespace Crpg.Application.UTest.Items
             var user = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Constants, Logger).Handle(
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Constants).Handle(
                 new UpgradeItemCommand
                 {
                     ItemId = 1,
@@ -186,7 +184,7 @@ namespace Crpg.Application.UTest.Items
             var item = ArrangeDb.Items.Add(new Item());
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Constants, Logger).Handle(
+            var result = await new UpgradeItemCommand.Handler(ActDb, Mapper, Constants).Handle(
                 new UpgradeItemCommand
                 {
                     ItemId = item.Entity.Id,

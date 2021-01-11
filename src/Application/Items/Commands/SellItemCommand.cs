@@ -7,6 +7,7 @@ using Crpg.Application.Common.Results;
 using Crpg.Common.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Items.Commands
 {
@@ -17,15 +18,15 @@ namespace Crpg.Application.Items.Commands
 
         internal class Handler : IMediatorRequestHandler<SellItemCommand>
         {
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<SellItemCommand>();
+
             private readonly ICrpgDbContext _db;
             private readonly Constants _constants;
-            private readonly ILogger<SellItemCommand> _logger;
 
-            public Handler(ICrpgDbContext db, Constants constants, ILogger<SellItemCommand> logger)
+            public Handler(ICrpgDbContext db, Constants constants)
             {
                 _db = db;
                 _constants = constants;
-                _logger = logger;
             }
 
             public async Task<Result> Handle(SellItemCommand req, CancellationToken cancellationToken)
@@ -47,7 +48,7 @@ namespace Crpg.Application.Items.Commands
 
                 await _db.SaveChangesAsync(cancellationToken);
 
-                _logger.LogInformation("User '{0}' sold item '{1}'", req.UserId, req.ItemId);
+                Logger.LogInformation("User '{0}' sold item '{1}'", req.UserId, req.ItemId);
                 return new Result();
             }
         }
