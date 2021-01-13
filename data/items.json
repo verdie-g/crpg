@@ -1,5 +1,70 @@
 [
   {
+    "templateMbId": "a_aserai_scale_b_shoulder_a",
+    "name": "Scale Shoulders",
+    "type": "ShoulderArmor",
+    "weight": 4.0,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 14,
+      "armArmor": 7,
+      "legArmor": 0
+    },
+    "weapons": []
+  },
+  {
+    "templateMbId": "a_aserai_scale_b_shoulder_b",
+    "name": "Scale Pauldrons",
+    "type": "ShoulderArmor",
+    "weight": 2.0,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 2,
+      "armArmor": 8,
+      "legArmor": 0
+    },
+    "weapons": []
+  },
+  {
+    "templateMbId": "a_aserai_scale_b_shoulder_c",
+    "name": "Southern Brass Scale Shoulders",
+    "type": "ShoulderArmor",
+    "weight": 4.4,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 14,
+      "armArmor": 7,
+      "legArmor": 0
+    },
+    "weapons": []
+  },
+  {
+    "templateMbId": "a_aserai_scale_b_shoulder_d",
+    "name": "Brass Scale Pauldrons",
+    "type": "ShoulderArmor",
+    "weight": 2.2,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 2,
+      "armArmor": 7,
+      "legArmor": 0
+    },
+    "weapons": []
+  },
+  {
+    "templateMbId": "a_aserai_scale_b_shoulder_e",
+    "name": "Southern Reinforced Brass Scale Shoulders",
+    "type": "ShoulderArmor",
+    "weight": 6.8,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 20,
+      "armArmor": 12,
+      "legArmor": 0
+    },
+    "weapons": []
+  },
+  {
     "templateMbId": "adarga",
     "name": "Adarga",
     "type": "Shield",
@@ -322,7 +387,7 @@
   },
   {
     "templateMbId": "aserai_axe_2_t2_blunt",
-    "name": "Bamboo Handled Sparing Axe",
+    "name": "Bamboo Handled Sparring Axe",
     "type": "OneHandedWeapon",
     "weight": 1.02,
     "weapons": [
@@ -924,7 +989,7 @@
   },
   {
     "templateMbId": "aserai_sword_1_t2_blunt",
-    "name": "Iron Sparing Flyssa",
+    "name": "Iron Sparring Flyssa",
     "type": "OneHandedWeapon",
     "weight": 1.53,
     "weapons": [
@@ -978,7 +1043,7 @@
   },
   {
     "templateMbId": "aserai_sword_2_t2_blunt",
-    "name": "Iron Sparing Scimitar",
+    "name": "Iron Sparring Scimitar",
     "type": "OneHandedWeapon",
     "weight": 1.38,
     "weapons": [
@@ -1512,7 +1577,7 @@
   },
   {
     "templateMbId": "battania_2haxe_1_t2_blunt",
-    "name": "Sparing Two Handed Axe",
+    "name": "Sparring Two Handed Axe",
     "type": "OneHandedWeapon",
     "weight": 1.4,
     "weapons": [
@@ -1570,7 +1635,7 @@
   },
   {
     "templateMbId": "battania_2hsword_1_t2_blunt",
-    "name": "Iron Sparing Broadsword",
+    "name": "Iron Sparring Broadsword",
     "type": "OneHandedWeapon",
     "weight": 1.99,
     "weapons": [
@@ -1991,7 +2056,7 @@
   },
   {
     "templateMbId": "battania_dress_a",
-    "name": "Highland Peasant Dress",
+    "name": "Highland Plaid Dress",
     "type": "BodyArmor",
     "weight": 0.9,
     "armor": {
@@ -2017,7 +2082,7 @@
   },
   {
     "templateMbId": "battania_dress_c",
-    "name": "Highland Plaid Dress",
+    "name": "Highland Peasant Dress",
     "type": "BodyArmor",
     "weight": 0.7,
     "armor": {
@@ -2414,8 +2479,8 @@
           "WideGrip",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 25,
-        "thrustDamageType": "Pierce",
+        "thrustDamage": 0,
+        "thrustDamageType": "Undefined",
         "thrustSpeed": 98,
         "swingDamage": 85,
         "swingDamageType": "Cut",
@@ -2876,6 +2941,19 @@
     "weapons": []
   },
   {
+    "templateMbId": "battanian_leather_shoulder_a",
+    "name": "Highland Cured Leather Shoulders",
+    "type": "ShoulderArmor",
+    "weight": 1.2,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 5,
+      "armArmor": 0,
+      "legArmor": 0
+    },
+    "weapons": []
+  },
+  {
     "templateMbId": "battanian_noble_helmet_with_feather",
     "name": "Highland Noble Helmet with Feather",
     "type": "HeadArmor",
@@ -2911,6 +2989,19 @@
       "bodyArmor": 2,
       "armArmor": 1,
       "legArmor": 5
+    },
+    "weapons": []
+  },
+  {
+    "templateMbId": "battanian_scale_armor_a",
+    "name": "Highland Scale Over Mail Armor",
+    "type": "BodyArmor",
+    "weight": 22.4,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 42,
+      "armArmor": 12,
+      "legArmor": 15
     },
     "weapons": []
   },
@@ -2981,9 +3072,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 89,
-        "balance": 1.0,
-        "handling": 88,
+        "length": 104,
+        "balance": 0.94,
+        "handling": 86,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -2994,9 +3085,9 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
-        "swingDamage": 50,
+        "swingDamage": 54,
         "swingDamageType": "Cut",
-        "swingSpeed": 102
+        "swingSpeed": 98
       }
     ]
   },
@@ -3084,7 +3175,7 @@
   },
   {
     "templateMbId": "billhook_polearm_t2_blunt",
-    "name": "Sparing Billhook",
+    "name": "Sparring Billhook",
     "type": "Polearm",
     "weight": 1.69,
     "weapons": [
@@ -4183,12 +4274,12 @@
     "weapons": [
       {
         "class": "Bow",
-        "accuracy": 93,
+        "accuracy": 72,
         "missileSpeed": 73,
         "stackAmount": 1,
         "length": 110,
         "balance": 0.0,
-        "handling": 90,
+        "handling": 86,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -4201,7 +4292,7 @@
         ],
         "thrustDamage": 27,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 90,
+        "thrustSpeed": 86,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 88
@@ -4221,7 +4312,7 @@
         "stackAmount": 1,
         "length": 108,
         "balance": 0.0,
-        "handling": 95,
+        "handling": 87,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -4234,7 +4325,7 @@
         ],
         "thrustDamage": 30,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 95,
+        "thrustSpeed": 87,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 89
@@ -4869,7 +4960,7 @@
     "templateMbId": "desert_robe",
     "name": "Southern Robe",
     "type": "BodyArmor",
-    "weight": 1.8,
+    "weight": 1.6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -4908,7 +4999,7 @@
     "templateMbId": "desert_scale_shoulders",
     "name": "Southern Scale Shoulders",
     "type": "ShoulderArmor",
-    "weight": 4.4,
+    "weight": 4.2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -4970,7 +5061,7 @@
   },
   {
     "templateMbId": "desert_throwing_knife_blunt",
-    "name": "Southern Sparing Throwing Daggers",
+    "name": "Southern Sparring Throwing Daggers",
     "type": "Thrown",
     "weight": 0.86,
     "weapons": [
@@ -5210,7 +5301,7 @@
   },
   {
     "templateMbId": "eastern_javelin_1_t2_blunt",
-    "name": "Eastern Sparing Javelin",
+    "name": "Eastern Sparring Javelin",
     "type": "Thrown",
     "weight": 0.93,
     "weapons": [
@@ -5481,7 +5572,7 @@
   },
   {
     "templateMbId": "eastern_spear_1_t2_blunt",
-    "name": "Jagged Sparing Spear",
+    "name": "Jagged Sparring Spear",
     "type": "Polearm",
     "weight": 1.54,
     "weapons": [
@@ -6243,7 +6334,7 @@
   },
   {
     "templateMbId": "empire_lance_1_t3_blunt",
-    "name": "Imperial Sparing Lance",
+    "name": "Imperial Sparring Lance",
     "type": "Polearm",
     "weight": 1.95,
     "weapons": [
@@ -7591,7 +7682,7 @@
         "stackAmount": 1,
         "length": 111,
         "balance": 0.0,
-        "handling": 70,
+        "handling": 45,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7602,9 +7693,9 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 24,
+        "thrustDamage": 29,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 70,
+        "thrustSpeed": 45,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 85
@@ -8118,7 +8209,7 @@
     "templateMbId": "highland_cloth",
     "name": "Highland Cloth",
     "type": "BodyArmor",
-    "weight": 9.0,
+    "weight": 1.5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 9,
@@ -8166,7 +8257,7 @@
         "stackAmount": 1,
         "length": 113,
         "balance": 0.0,
-        "handling": 75,
+        "handling": 55,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -8177,9 +8268,9 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 20,
+        "thrustDamage": 26,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 75,
+        "thrustSpeed": 55,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 86
@@ -8618,7 +8709,7 @@
         "stackAmount": 1,
         "length": 110,
         "balance": 0.0,
-        "handling": 82,
+        "handling": 75,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -8631,7 +8722,7 @@
         ],
         "thrustDamage": 22,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 82,
+        "thrustSpeed": 75,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 87
@@ -8681,7 +8772,7 @@
   },
   {
     "templateMbId": "imperial_goggled_helmet",
-    "name": "Northern Visored Helmet",
+    "name": "Imperial Googled Helmet",
     "type": "HeadArmor",
     "weight": 4.2,
     "armor": {
@@ -8965,7 +9056,7 @@
   },
   {
     "templateMbId": "imperial_throwing_spear_1_t4",
-    "name": "Pila",
+    "name": "Pilum",
     "type": "Polearm",
     "weight": 1.51,
     "weapons": [
@@ -10205,7 +10296,7 @@
   },
   {
     "templateMbId": "khuzait_sword_1_t2_blunt",
-    "name": "Iron Sparing Sabre",
+    "name": "Iron Sparring Sabre",
     "type": "OneHandedWeapon",
     "weight": 1.23,
     "weapons": [
@@ -10555,7 +10646,7 @@
     "templateMbId": "layered_robe",
     "name": "Layered Robe",
     "type": "BodyArmor",
-    "weight": 14.0,
+    "weight": 2.0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -11049,19 +11140,6 @@
     "weapons": []
   },
   {
-    "templateMbId": "light tunic",
-    "name": "Light Tunic",
-    "type": "BodyArmor",
-    "weight": 0.4,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 2,
-      "armArmor": 1,
-      "legArmor": 1
-    },
-    "weapons": []
-  },
-  {
     "templateMbId": "light_harness",
     "name": "Light Harness",
     "type": "MountHarness",
@@ -11130,10 +11208,23 @@
     ]
   },
   {
+    "templateMbId": "light_tunic",
+    "name": "Light Tunic",
+    "type": "BodyArmor",
+    "weight": 0.4,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 2,
+      "armArmor": 1,
+      "legArmor": 1
+    },
+    "weapons": []
+  },
+  {
     "templateMbId": "long_desert_robe",
     "name": "Long Southern Robe",
     "type": "BodyArmor",
-    "weight": 0.6,
+    "weight": 1.6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -11172,7 +11263,7 @@
     "templateMbId": "long_padded_robe",
     "name": "Long Padded Robe",
     "type": "BodyArmor",
-    "weight": 22.3,
+    "weight": 3.9,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -11207,7 +11298,7 @@
         "stackAmount": 1,
         "length": 116,
         "balance": 0.0,
-        "handling": 88,
+        "handling": 75,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -11218,9 +11309,9 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 37,
+        "thrustDamage": 38,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 88,
+        "thrustSpeed": 75,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 88
@@ -11266,7 +11357,7 @@
         "stackAmount": 1,
         "length": 120,
         "balance": 0.0,
-        "handling": 84,
+        "handling": 58,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -11277,9 +11368,9 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 29,
+        "thrustDamage": 31,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 84,
+        "thrustSpeed": 58,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 80
@@ -11345,12 +11436,12 @@
     "weapons": [
       {
         "class": "Bow",
-        "accuracy": 93,
+        "accuracy": 94,
         "missileSpeed": 79,
         "stackAmount": 1,
         "length": 117,
         "balance": 0.0,
-        "handling": 105,
+        "handling": 79,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -11361,9 +11452,9 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 29,
+        "thrustDamage": 33,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 105,
+        "thrustSpeed": 79,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 90
@@ -11620,7 +11711,7 @@
         "stackAmount": 1,
         "length": 108,
         "balance": 0.0,
-        "handling": 76,
+        "handling": 70,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -11633,7 +11724,7 @@
         ],
         "thrustDamage": 22,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 76,
+        "thrustSpeed": 70,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 86
@@ -11923,12 +12014,12 @@
     "weapons": [
       {
         "class": "Bow",
-        "accuracy": 98,
+        "accuracy": 100,
         "missileSpeed": 90,
         "stackAmount": 1,
         "length": 116,
         "balance": 0.0,
-        "handling": 135,
+        "handling": 115,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -11941,7 +12032,7 @@
         ],
         "thrustDamage": 39,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 135,
+        "thrustSpeed": 115,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 94
@@ -12054,12 +12145,12 @@
     "weapons": [
       {
         "class": "Bow",
-        "accuracy": 99,
+        "accuracy": 98,
         "missileSpeed": 85,
         "stackAmount": 1,
         "length": 118,
         "balance": 0.0,
-        "handling": 110,
+        "handling": 90,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -12072,7 +12163,7 @@
         ],
         "thrustDamage": 46,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 110,
+        "thrustSpeed": 90,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 91
@@ -12087,12 +12178,12 @@
     "weapons": [
       {
         "class": "Bow",
-        "accuracy": 93,
+        "accuracy": 91,
         "missileSpeed": 77,
         "stackAmount": 1,
         "length": 114,
         "balance": 0.0,
-        "handling": 97,
+        "handling": 70,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -12103,9 +12194,9 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 30,
+        "thrustDamage": 34,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 97,
+        "thrustSpeed": 70,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 89
@@ -12255,7 +12346,7 @@
         "stackAmount": 1,
         "length": 108,
         "balance": 0.0,
-        "handling": 94,
+        "handling": 82,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -12268,7 +12359,7 @@
         ],
         "thrustDamage": 25,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 94,
+        "thrustSpeed": 82,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 89
@@ -12385,9 +12476,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 98,
-        "balance": 0.83,
-        "handling": 83,
+        "length": 115,
+        "balance": 0.65,
+        "handling": 80,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -12398,9 +12489,9 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 98,
-        "swingDamage": 63,
+        "swingDamage": 66,
         "swingDamageType": "Cut",
-        "swingSpeed": 94
+        "swingSpeed": 89
       }
     ]
   },
@@ -12960,7 +13051,7 @@
   },
   {
     "templateMbId": "northern_spear_1_t2_blunt",
-    "name": "Northern Sparing Spear",
+    "name": "Northern Sparring Spear",
     "type": "Polearm",
     "weight": 2.11,
     "weapons": [
@@ -13912,8 +14003,8 @@
           "WideGrip",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 27,
-        "thrustDamageType": "Pierce",
+        "thrustDamage": 0,
+        "thrustDamageType": "Undefined",
         "thrustSpeed": 96,
         "swingDamage": 82,
         "swingDamageType": "Cut",
@@ -14381,7 +14472,7 @@
     "type": "HeadArmor",
     "weight": 3.0,
     "armor": {
-      "headArmor": 26,
+      "headArmor": 30,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0
@@ -14394,7 +14485,7 @@
     "type": "HeadArmor",
     "weight": 2.8,
     "armor": {
-      "headArmor": 26,
+      "headArmor": 28,
       "bodyArmor": 0,
       "armArmor": 0,
       "legArmor": 0
@@ -15260,7 +15351,7 @@
     "templateMbId": "short_padded_robe",
     "name": "Southern Short Padded Robe",
     "type": "BodyArmor",
-    "weight": 1.0,
+    "weight": 1.3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -16110,7 +16201,7 @@
         "stackAmount": 1,
         "length": 110,
         "balance": 0.0,
-        "handling": 72,
+        "handling": 65,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -16123,7 +16214,7 @@
         ],
         "thrustDamage": 22,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 72,
+        "thrustSpeed": 65,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 86
@@ -16223,7 +16314,7 @@
         "stackAmount": 1,
         "length": 106,
         "balance": 0.0,
-        "handling": 84,
+        "handling": 80,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -16236,7 +16327,7 @@
         ],
         "thrustDamage": 30,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 84,
+        "thrustSpeed": 80,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 87
@@ -16321,7 +16412,7 @@
         "stackAmount": 1,
         "length": 107,
         "balance": 0.0,
-        "handling": 100,
+        "handling": 80,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -16334,7 +16425,7 @@
         ],
         "thrustDamage": 32,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 100,
+        "thrustSpeed": 80,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 89
@@ -16792,7 +16883,7 @@
   },
   {
     "templateMbId": "sturgia_axe_2_t2_blunt",
-    "name": "Sparing Gallogaich Axe",
+    "name": "Sparring Gallogaich Axe",
     "type": "OneHandedWeapon",
     "weight": 1.03,
     "weapons": [
@@ -17083,6 +17174,19 @@
     ]
   },
   {
+    "templateMbId": "sturgia_light_tunic",
+    "name": "Long Tunic",
+    "type": "BodyArmor",
+    "weight": 0.4,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 2,
+      "armArmor": 1,
+      "legArmor": 1
+    },
+    "weapons": []
+  },
+  {
     "templateMbId": "sturgia_noble_sword_1_t5",
     "name": "Thamaskene Steel Warsword",
     "type": "OneHandedWeapon",
@@ -17305,7 +17409,7 @@
   },
   {
     "templateMbId": "sturgia_sword_1_t2_blunt",
-    "name": "Northern Sparing Blade",
+    "name": "Northern Sparring Blade",
     "type": "OneHandedWeapon",
     "weight": 1.11,
     "weapons": [
@@ -18165,7 +18269,7 @@
         "stackAmount": 1,
         "length": 115,
         "balance": 0.0,
-        "handling": 98,
+        "handling": 65,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -18176,9 +18280,9 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 26,
+        "thrustDamage": 34,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 98,
+        "thrustSpeed": 65,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 89
@@ -18758,7 +18862,7 @@
   },
   {
     "templateMbId": "vlandia_lance_1_t3_blunt",
-    "name": "Western Sparing Lance",
+    "name": "Western Sparring Lance",
     "type": "Polearm",
     "weight": 1.96,
     "weapons": [
@@ -19250,7 +19354,7 @@
   },
   {
     "templateMbId": "vlandia_sword_1_t2_blunt",
-    "name": "Iron Sparing Arming Sword",
+    "name": "Iron Sparring Arming Sword",
     "type": "OneHandedWeapon",
     "weight": 1.34,
     "weapons": [
@@ -19694,7 +19798,7 @@
   },
   {
     "templateMbId": "western_javelin_1_t2_blunt",
-    "name": "Simple Sparing Javelin",
+    "name": "Simple Sparring Javelin",
     "type": "Thrown",
     "weight": 0.91,
     "weapons": [
@@ -20513,7 +20617,7 @@
         "stackAmount": 1,
         "length": 118,
         "balance": 0.0,
-        "handling": 90,
+        "handling": 78,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -20524,9 +20628,9 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 35,
+        "thrustDamage": 37,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 90,
+        "thrustSpeed": 78,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 88
@@ -20546,7 +20650,7 @@
         "stackAmount": 1,
         "length": 115,
         "balance": 0.0,
-        "handling": 110,
+        "handling": 78,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -20557,9 +20661,9 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 29,
+        "thrustDamage": 35,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 110,
+        "thrustSpeed": 78,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 91
