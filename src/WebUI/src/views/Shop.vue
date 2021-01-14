@@ -4,7 +4,7 @@
       <div class="columns">
 
         <aside class="column is-narrow shop-filters">
-          <shop-filter-form v-model="filters" />
+          <shop-filter-form v-model="filters" :modelValue="filters" />
         </aside>
 
         <div class="column">
