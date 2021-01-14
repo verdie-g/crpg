@@ -107,7 +107,7 @@ export default class Shop extends Vue {
       query: {
         ...this.$route.query,
         types,
-        showOwned: showOwned?.toString(),
+        showOwned: showOwned.toString(),
         ...(this.currentPage === 1 ? {} : { page: this.currentPage.toString() }),
       },
     });
