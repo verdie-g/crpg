@@ -36,15 +36,16 @@
           <b-pagination :total="filteredItems.length" :current.sync="currentPage" :per-page="itemsPerPage" order="is-centered"
                         range-before="2" range-after="2" icon-prev="chevron-left">
             <b-pagination-button slot-scope="props" :page="props.page" :id="`page${props.page.number}`" tag="router-link"
-                                 :to="`/shop?page=${props.page.number}`">{{props.page.number}}</b-pagination-button>
+                                 :to="{ name: 'shop', query: { ...$route.query, page: props.page.number } }">{{props.page.number}}
+            </b-pagination-button>
 
             <b-pagination-button slot="previous" slot-scope="props" :page="props.page" tag="router-link"
-                                 :to="`/shop?page=${props.page.number}`">
+                                 :to="{ name: 'shop', query: { ...$route.query, page: props.page.number } }">
               <b-icon icon="chevron-left" size="is-small" />
             </b-pagination-button>
 
             <b-pagination-button slot="next" slot-scope="props" :page="props.page" tag="router-link"
-                                 :to="`/shop?page=${props.page.number}`">
+                                 :to="{ name: 'shop', query: { ...$route.query, page: props.page.number } }">
               <b-icon icon="chevron-right" size="is-small" />
             </b-pagination-button>
           </b-pagination>
