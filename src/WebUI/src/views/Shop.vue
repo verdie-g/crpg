@@ -4,7 +4,7 @@
       <div class="columns">
 
         <aside class="column is-narrow shop-filters">
-          <shop-filter-form @input="onFilterInput" />
+          <shop-filter-form v-model="filters" />
         </aside>
 
         <div class="column">
@@ -63,6 +63,7 @@ import Item from '@/models/item';
 import { notify } from '@/services/notifications-service';
 import ShopFiltersForm from '@/components/ShopFiltersForm.vue';
 import ShopFilters from '@/models/ShopFilters';
+import ItemType from '@/models/item-type';
 import { filterItemsByType } from '@/services/item-service';
 
 @Component({
@@ -75,10 +76,6 @@ export default class Shop extends Vue {
   buyingItems: Record<number, boolean> = {};
 
   itemsPerPage = 20;
-  filters: ShopFilters = {
-    types: [],
-    showOwned: true,
-  };
 
   // items owned by the user
   get ownedItems(): Record<number, boolean> {
@@ -96,6 +93,24 @@ export default class Shop extends Vue {
     }
 
     return pageQuery;
+  }
+
+  get filters(): ShopFilters {
+    return {
+      types: this.$route.query.types ? this.$route.query.types as Array<ItemType> : [],
+      showOwned: this.$route.query.showOwned !== undefined ? parseInt(this.$route.query.showOwned as string, 10) : 1,
+    };
+  }
+
+  set filters({ types, showOwned }: ShopFilters) {
+    this.$router.push({
+      query: {
+        ...this.$route.query,
+        types,
+        showOwned: showOwned?.toString(),
+        ...(this.currentPage === 1 ? {} : { page: this.currentPage.toString() }),
+      },
+    });
   }
 
   get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
@@ -116,13 +131,6 @@ export default class Shop extends Vue {
   created(): void {
     itemModule.getItems();
     userModule.getOwnedItems();
-  }
-
-  onFilterInput(filters: ShopFilters): void {
-    this.filters = filters;
-    if (this.currentPage !== 1) {
-      this.$router.push('/shop?page=1');
-    }
   }
 
   async buy(item: Item): Promise<void> {
