@@ -30,7 +30,7 @@ namespace Crpg.GameMod
             {
                 string outputPath = "../../Items";
                 InformationManager.DisplayMessage(new InformationMessage($"Exporting items to {Path.GetFullPath(outputPath)}."));
-                var exporter = new ItemExporter();
+                var exporter = new Crpg.GameMod.ItemsExporting.ItemExporter();
                 exporter.Export(outputPath).ContinueWith(_ => InformationManager.DisplayMessage(new InformationMessage("Done.")));
             }, false));
             #endif
