@@ -4,7 +4,7 @@
       <div class="columns">
 
         <aside class="column is-narrow shop-filters">
-          <shop-filter-form @input="onFilterInput" />
+          <shop-filter-form v-model="filters" />
         </aside>
 
         <div class="column">
@@ -36,15 +36,16 @@
           <b-pagination :total="filteredItems.length" :current.sync="currentPage" :per-page="itemsPerPage" order="is-centered"
                         range-before="2" range-after="2" icon-prev="chevron-left">
             <b-pagination-button slot-scope="props" :page="props.page" :id="`page${props.page.number}`" tag="router-link"
-                                 :to="`/shop?page=${props.page.number}`">{{props.page.number}}</b-pagination-button>
+                                 :to="{ name: 'shop', query: { ...$route.query, page: props.page.number } }">{{props.page.number}}
+            </b-pagination-button>
 
             <b-pagination-button slot="previous" slot-scope="props" :page="props.page" tag="router-link"
-                                 :to="`/shop?page=${props.page.number}`">
+                                 :to="{ name: 'shop', query: { ...$route.query, page: props.page.number } }">
               <b-icon icon="chevron-left" size="is-small" />
             </b-pagination-button>
 
             <b-pagination-button slot="next" slot-scope="props" :page="props.page" tag="router-link"
-                                 :to="`/shop?page=${props.page.number}`">
+                                 :to="{ name: 'shop', query: { ...$route.query, page: props.page.number } }">
               <b-icon icon="chevron-right" size="is-small" />
             </b-pagination-button>
           </b-pagination>
@@ -63,6 +64,7 @@ import Item from '@/models/item';
 import { notify } from '@/services/notifications-service';
 import ShopFiltersForm from '@/components/ShopFiltersForm.vue';
 import ShopFilters from '@/models/ShopFilters';
+import ItemType from '@/models/item-type';
 import { filterItemsByType } from '@/services/item-service';
 
 @Component({
@@ -75,10 +77,6 @@ export default class Shop extends Vue {
   buyingItems: Record<number, boolean> = {};
 
   itemsPerPage = 20;
-  filters: ShopFilters = {
-    types: [],
-    showOwned: true,
-  };
 
   // items owned by the user
   get ownedItems(): Record<number, boolean> {
@@ -96,6 +94,24 @@ export default class Shop extends Vue {
     }
 
     return pageQuery;
+  }
+
+  get filters(): ShopFilters {
+    return {
+      types: this.$route.query.types ? this.$route.query.types as Array<ItemType> : [],
+      showOwned: this.$route.query.showOwned !== undefined ? Boolean(this.$route.query.showOwned as string) : true,
+    };
+  }
+
+  set filters({ types, showOwned }: ShopFilters) {
+    this.$router.push({
+      query: {
+        ...this.$route.query,
+        types,
+        showOwned: showOwned.toString(),
+        ...(this.currentPage === 1 ? {} : { page: '1' }),
+      },
+    });
   }
 
   get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
@@ -116,13 +132,6 @@ export default class Shop extends Vue {
   created(): void {
     itemModule.getItems();
     userModule.getOwnedItems();
-  }
-
-  onFilterInput(filters: ShopFilters): void {
-    this.filters = filters;
-    if (this.currentPage !== 1) {
-      this.$router.push('/shop?page=1');
-    }
   }
 
   async buy(item: Item): Promise<void> {

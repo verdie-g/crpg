@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter, { NavigationGuard, NavigationGuardNext, Route } from 'vue-router';
+import queryString, { ParsedQuery } from 'query-string';
 import Role from '@/models/role';
 import { getDecodedToken, getToken } from '@/services/auth-service';
 import Home from '../views/Home.vue';
@@ -46,6 +47,27 @@ const scrollBehavior = (to: Route, from: Route, savedPosition: any) => {
   return null;
 };
 
+
+
+function parseQuery(query: string): ParsedQuery<string | number | boolean> {
+  return queryString.parse(query, {
+    arrayFormat: 'bracket',
+    parseNumbers: true,
+    parseBooleans: true,
+  });
+}
+
+function stringifyQuery(query: Record<string, any>): string {
+  const result = queryString.stringify(query, {
+    encode: true,
+    arrayFormat: 'bracket',
+    skipEmptyString: true,
+    skipNull: true,
+  });
+
+  return result ? `?${result}` : '';
+}
+
 const routes = [
   {
     path: '/',
@@ -89,6 +111,13 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   scrollBehavior,
   routes,
+  /* A custom parse/stringify query is needed because by default 
+    ?types=HeadArmor&types=ShoulderArmor is parsed correctly as ["HeadArmor", "ShoulderArmor"] 
+    but ?types=HeadArmor is parsed as "HeadArmor" (not an array). 
+    To solve this issue query-string library adds brackets for arrays ?types[]=HeadArmor.
+  */
+  parseQuery,
+  stringifyQuery,
 });
 
 export default router;
