@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Model, Vue } from 'vue-property-decorator';
 import { itemTypeToStr } from '@/services/item-service';
 import { recordFilter } from '@/utils/record';
 import ItemType from '@/models/item-type';
@@ -21,16 +21,16 @@ import ShopFilters from '@/models/ShopFilters';
 
 @Component
 export default class ShopFiltersForm extends Vue {
-  @Prop({
+  @Model('input',{
     type: Object,
     default: (): ShopFilters => ({ types: [], showOwned: 1 }),
-  }) readonly modelValue: ShopFilters;
+  }) readonly filter: ShopFilters;
 
   hiddenItemTypes = [ItemType.Undefined, ItemType.Pistol, ItemType.Musket, ItemType.Bullets];
   itemTypes = recordFilter(itemTypeToStr, t => !this.hiddenItemTypes.includes(t));
 
   get types(): ItemType[] {
-    return this.modelValue.types;
+    return this.filter.types;
   }
 
   set types(types: ItemType[]) {
@@ -38,7 +38,7 @@ export default class ShopFiltersForm extends Vue {
   }
 
   get showOwned(): number {
-    return this.modelValue.showOwned;
+    return this.filter.showOwned;
   }
 
   set showOwned(showOwned: number) {
