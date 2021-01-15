@@ -7,7 +7,7 @@
     </b-field>
 
     <b-field>
-      <b-checkbox v-model="showOwned" :true-value="1" :false-value="0">Show owned items</b-checkbox>
+      <b-checkbox v-model="showOwned">Show owned items</b-checkbox>
     </b-field>
   </form>
 </template>
@@ -21,9 +21,9 @@ import ShopFilters from '@/models/ShopFilters';
 
 @Component
 export default class ShopFiltersForm extends Vue {
-  @Model('input',{
+  @Model('input', {
     type: Object,
-    default: (): ShopFilters => ({ types: [], showOwned: 1 }),
+    default: (): ShopFilters => ({ types: [], showOwned: true }),
   }) readonly filter: ShopFilters;
 
   hiddenItemTypes = [ItemType.Undefined, ItemType.Pistol, ItemType.Musket, ItemType.Bullets];
@@ -37,11 +37,11 @@ export default class ShopFiltersForm extends Vue {
     this.$emit('input', { types, showOwned: this.showOwned });
   }
 
-  get showOwned(): number {
+  get showOwned(): boolean {
     return this.filter.showOwned;
   }
 
-  set showOwned(showOwned: number) {
+  set showOwned(showOwned: boolean) {
     this.$emit('input', { showOwned, types: this.types });
   }
 }

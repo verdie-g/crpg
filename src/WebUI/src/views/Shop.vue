@@ -99,7 +99,7 @@ export default class Shop extends Vue {
   get filters(): ShopFilters {
     return {
       types: this.$route.query.types ? this.$route.query.types as Array<ItemType> : [],
-      showOwned: this.$route.query.showOwned !== undefined ? parseInt(this.$route.query.showOwned as string, 10) : 1,
+      showOwned: this.$route.query.showOwned !== undefined ? Boolean(this.$route.query.showOwned as string) : true,
     };
   }
 
@@ -109,7 +109,7 @@ export default class Shop extends Vue {
         ...this.$route.query,
         types,
         showOwned: showOwned.toString(),
-        ...(this.currentPage === 1 ? {} : { page: this.currentPage.toString() }),
+        ...(this.currentPage === 1 ? {} : { page: '1' }),
       },
     });
   }
