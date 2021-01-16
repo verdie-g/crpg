@@ -1,7 +1,21 @@
 ---
+- name: Set up the apt repository to use mainline nginx packages
+  apt_repository:
+    repo: deb http://nginx.org/packages/mainline/debian buster nginx
+    state: present
+    filename: nginx
+    update_cache: no
+
+- name: Add nginx package signing key to the list of trusted keys
+  apt_key:
+    id: 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
+    url: https://nginx.org/keys/nginx_signing.key
+
 - name: Install Nginx
   apt:
     name: nginx
+    state: latest
+    update_cache: yes
 
 - name: Create cRPG SSL snippet file
   template:
