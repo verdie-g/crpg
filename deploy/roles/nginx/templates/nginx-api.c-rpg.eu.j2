@@ -18,5 +18,9 @@ server {
         gzip on;
         gzip_types application/json;
         gzip_min_length 1024;
+
+        opentracing on;
+        opentracing_operation_name "$request_method $uri";
+        opentracing_propagate_context;
     }
 }

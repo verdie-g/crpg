@@ -13,9 +13,23 @@
 
 - name: Install Nginx
   apt:
-    name: nginx
-    state: latest
+    name: "nginx={{ nginx_version }}~buster"
     update_cache: yes
+
+- name: Download opentracing for nginx
+  unarchive:
+    src: "https://github.com/opentracing-contrib/nginx-opentracing/releases/download/v{{ nginx_opentracing_version }}/linux-amd64-nginx-{{ nginx_version.split('-')[0] }}-ngx_http_module.so.tgz"
+    dest: /usr/lib/nginx/modules
+    remote_src: True
+
+- name: Download C++ tracer for Datadog
+  get_url:
+    url: "https://github.com/DataDog/dd-opentracing-cpp/releases/download/v{{ datadog_opentracing_version }}/linux-amd64-libdd_opentracing_plugin.so.gz"
+    dest: /tmp
+  register: datadog_tracer
+
+- name: Uncompress tracer for Datadog
+  shell: "gunzip -c {{ datadog_tracer.dest }} > /usr/local/lib/libdd_opentracing_plugin.so"
 
 - name: Create cRPG SSL snippet file
   template:
@@ -39,6 +53,12 @@
   template:
     src: "nginx-api.{{ crpg_domain_name }}.j2"
     dest: "/etc/nginx/sites-enabled/api.{{ crpg_domain_name }}"
+    mode: 0644
+
+- name: Create Datadog tracing configuration file
+  template:
+    src: dd-config.json.j2
+    dest: /etc/nginx/dd-config.json
     mode: 0644
 
 - name: Create Nginx log rotation file

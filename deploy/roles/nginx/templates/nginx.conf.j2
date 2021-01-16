@@ -1,3 +1,5 @@
+load_module modules/ngx_http_opentracing_module.so; # Load OpenTracing module.
+
 user  www-data;
 
 error_log /var/log/nginx/error.log warn;
@@ -19,12 +21,16 @@ http {
     ssl_session_timeout 10m;
     client_max_body_size 64m;
 
+    opentracing_trace_locations off; # Emit only one span per request.
+    # Load the Datadog tracing implementation, and the given config file.
+    opentracing_load_tracer /usr/local/lib/libdd_opentracing_plugin.so /etc/nginx/dd-config.json;
+
     # Trick to get time_iso8601 but with milliseconds accuracy (https://thatsamguy.com/nginx-iso8601-time-format)
     map $time_iso8601 $datetime { ~([^+]+) $1; }
     map $time_iso8601 $timezone { ~\+([0-9:]+)$ $1; }
     map $msec $datetime_ms { ~\.([0-9]+)$ $1; }
 
-    log_format custom '$datetime.$datetime_ms+$timezone $remote_addr:$remote_port $request_method $scheme://$host$request_uri $server_protocol $status $bytes_sent $request_time $http_referer "$http_user_agent"';
+    log_format custom '$datetime.$datetime_ms+$timezone $remote_addr:$remote_port $request_method $scheme://$host$request_uri $server_protocol $status $bytes_sent $request_time $http_referer "$http_user_agent" $opentracing_context_x_datadog_trace_id';
 
     access_log /var/log/nginx/access.log custom buffer=8k flush=15s;
 
