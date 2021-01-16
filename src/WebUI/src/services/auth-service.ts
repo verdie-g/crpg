@@ -1,4 +1,4 @@
-import { UserManager } from 'oidc-client';
+import { UserManager, WebStorageStateStore } from 'oidc-client';
 import Role from '../models/role';
 
 const userManager = new UserManager({
@@ -11,6 +11,7 @@ const userManager = new UserManager({
   // Refresh access token after half of its lifetime (30 minutes)
   accessTokenExpiringNotificationTime: 30 * 60,
   automaticSilentRenew: true,
+  userStore: new WebStorageStateStore({ store: window.localStorage }),
 });
 
 export class TokenPayload {
@@ -42,12 +43,18 @@ export async function getDecodedToken(): Promise<TokenPayload | null> {
 }
 
 export function signIn(): Promise<void> {
-  return userManager.signinRedirect();
+  return userManager.signinRedirect().catch(err => {
+    console.error(err);
+  });
 }
 
 export async function signInCallback(): Promise<void> {
-  // eslint-disable-next-line @typescript-eslint/camelcase
-  const mgr = new UserManager({ response_mode: 'query' });
+  const mgr = new UserManager({
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    response_mode: 'query',
+    userStore: new WebStorageStateStore({ store: window.localStorage }),
+  });
+
   await mgr.signinRedirectCallback();
 }
 
