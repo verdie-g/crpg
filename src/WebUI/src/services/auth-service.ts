@@ -1,6 +1,8 @@
 import { UserManager, WebStorageStateStore } from 'oidc-client';
 import Role from '../models/role';
 
+const userStore = new WebStorageStateStore({});
+
 const userManager = new UserManager({
   authority: process.env.VUE_APP_API_BASE_URL,
   client_id: 'crpg_web_ui', // eslint-disable-line @typescript-eslint/camelcase
@@ -11,7 +13,7 @@ const userManager = new UserManager({
   // Refresh access token after half of its lifetime (30 minutes)
   accessTokenExpiringNotificationTime: 30 * 60,
   automaticSilentRenew: true,
-  userStore: new WebStorageStateStore({ store: window.localStorage }),
+  userStore,
 });
 
 export class TokenPayload {
@@ -52,7 +54,7 @@ export async function signInCallback(): Promise<void> {
   const mgr = new UserManager({
     // eslint-disable-next-line @typescript-eslint/camelcase
     response_mode: 'query',
-    userStore: new WebStorageStateStore({ store: window.localStorage }),
+    userStore,
   });
 
   await mgr.signinRedirectCallback();
