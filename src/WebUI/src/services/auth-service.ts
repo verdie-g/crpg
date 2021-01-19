@@ -5,7 +5,7 @@ const userManager = new UserManager({
   authority: process.env.VUE_APP_API_BASE_URL,
   client_id: 'crpg_web_ui', // eslint-disable-line @typescript-eslint/camelcase
   redirect_uri: window.location.origin, // eslint-disable-line @typescript-eslint/camelcase
-  silent_redirect_uri: `${window.location.origin}/silent-renew`, // eslint-disable-line @typescript-eslint/camelcase
+  silent_redirect_uri: `${window.location.origin}/silent-renew.html`, // eslint-disable-line @typescript-eslint/camelcase
   response_type: 'code', // eslint-disable-line @typescript-eslint/camelcase
   scope: 'openid offline_access user_api',
   post_logout_redirect_uri: window.location.origin, // eslint-disable-line @typescript-eslint/camelcase
@@ -13,6 +13,7 @@ const userManager = new UserManager({
   accessTokenExpiringNotificationTime: 30 * 60,
   automaticSilentRenew: true,
 });
+
 export class TokenPayload {
   public userId: number;
   public userRole: Role;
@@ -59,12 +60,6 @@ export async function signInCallback(): Promise<void> {
   await mgr.signinRedirectCallback();
 }
 
-export async function signOut(): Promise<void> {
+export function signOut(): Promise<void> {
   return userManager.signoutRedirect();
-}
-
-export async function singInIframe(): Promise<void> {
-  const mgr = new UserManager({});
-
-  await mgr.signinSilentCallback();
 }

@@ -98,7 +98,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import User from '@/models/user';
-import { getToken, signInCallback, signOut, signInSilent } from './services/auth-service';
+import { signInCallback, signOut, signInSilent } from './services/auth-service';
 
 @Component
 export default class App extends Vue {
@@ -111,20 +111,20 @@ export default class App extends Vue {
   }
 
   async beforeCreate() {
-    // If the 'code' parameter is present in the query, this is the response
-    // of the authorization endpoint and it should be processed
-    if (this.$route.query.code !== undefined) {
-      signInCallback().then(() => {
+    try {
+      if (this.$route.query.code !== undefined) {
+        await signInCallback();
         userModule.getUser();
         this.$router.replace(''); // clear query parameters
-      });
-    } else {
-      // Silent singIn use the Iframe
-      const token = await signInSilent();
-      if (token !== null) {
-        // Get user info if user is connected
-        userModule.getUser();
+      } else {
+        const token = await signInSilent();
+
+        if (token !== null) {
+          userModule.getUser();
+        }
       }
+    } catch (error) {
+      console.error(error);
     }
   }
 

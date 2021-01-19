@@ -14,20 +14,8 @@ function useJson5Loader(config) {
     .loader('json5-loader');
 }
 
-const pages = {
-  index: {
-    entry:'src/main.ts',
-    chunks: ['chunk-index-vendors', 'chunk-common', 'index']
-  },
-  'silent-renew': {
-    entry: 'src/silent-renew.ts',
-    chunks:['chunk-silent-renew-vendors', 'chunk-common', 'silent-renew']
-  },
-};
-
 module.exports = {
   lintOnSave: 'warning',
-  pages,
   chainWebpack(config) {
     // https://medium.com/@aetherus.zhou/vue-cli-3-performance-optimization-55316dcd491c
     // disable prefetch of chunks (usually pages) to only load required chunks for the current page
@@ -40,32 +28,5 @@ module.exports = {
       // compress files on build
       config.plugin('CompressionPlugin').use(CompressionPlugin);
     }
-
-    const pageKeys = Object.keys(pages);
-    const IS_VENDOR = /[\\/]node_modules[\\/]/;
-
-    const cacheGroups = {
-      ...pageKeys.map(key => ({
-        name: `chunk-${key}-vendors`,
-        priority: -9,
-        chunks: chunk => chunk.name === key,
-        test: IS_VENDOR,
-        enforce: true,
-      })),
-      common: {
-        name: 'chunk-common',
-        priority: -20,
-        chunks: 'initial',
-        minChunks: 2,
-        reuseExistingChunk: true,
-        enforce: true,
-      },
-    };
-
-    config.optimization
-        .splitChunks({
-            cacheGroups
-    });
-
   },
 };
