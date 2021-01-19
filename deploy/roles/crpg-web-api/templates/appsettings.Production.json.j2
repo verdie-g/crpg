@@ -30,7 +30,7 @@
         "AllowedGrantTypes": ["authorization_code"],
         "AllowedScopes": ["openid", "user_api"],
         "AllowedCorsOrigins": ["https://{{ crpg_domain_name }}"],
-        "RedirectUris": ["https://{{ crpg_domain_name }}"],
+        "RedirectUris": ["https://{{ crpg_domain_name }}", "https://{{ crpg_domain_name }}/silent-renew.html"],
         "PostLogoutRedirectUris": ["https://{{ crpg_domain_name }}"],
         "AccessTokenType": "Jwt",
         "RequireConsent": false,
