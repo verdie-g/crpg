@@ -1,7 +1,7 @@
 ﻿using Crpg.Domain.Common;
-using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Characters;
 
-namespace Crpg.Domain.Entities.Characters
+namespace Crpg.Domain.Entities.Items
 {
     /// <summary>
     /// Item equipped by a character.
