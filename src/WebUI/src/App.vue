@@ -111,20 +111,19 @@ export default class App extends Vue {
   }
 
   async beforeCreate() {
-    try {
-      if (this.$route.query.code !== undefined) {
-        await signInCallback();
+    // If the 'code' parameter is present in the query, this is the response
+    // of the authorization endpoint and it should be processed
+    if (this.$route.query.code !== undefined) {
+      await signInCallback();
+      userModule.getUser();
+      this.$router.replace(''); // clear query parameters
+    } else {
+      // Try to sign in the user if already signed in to the authorization server
+      // & get user info if user is connected
+      const token = await signInSilent();
+      if (token !== null) {
         userModule.getUser();
-        this.$router.replace(''); // clear query parameters
-      } else {
-        const token = await signInSilent();
-
-        if (token !== null) {
-          userModule.getUser();
-        }
       }
-    } catch (error) {
-      console.error(error);
     }
   }
 
