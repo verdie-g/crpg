@@ -5,6 +5,7 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Domain.Common;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
+using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
@@ -26,6 +27,7 @@ namespace Crpg.Persistence
             NpgsqlConnection.GlobalTypeMapper.MapEnum<DamageType>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<WeaponClass>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<CharacterGender>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<ClanMemberRole>();
         }
 
         public CrpgDbContext(DbContextOptions<CrpgDbContext> options)
@@ -47,6 +49,8 @@ namespace Crpg.Persistence
         public DbSet<OwnedItem> OwnedItems { get; set; } = default!;
         public DbSet<EquippedItem> EquippedItems { get; set; } = default!;
         public DbSet<Ban> Bans { get; set; } = default!;
+        public DbSet<Clan> Clans { get; set; } = default!;
+        public DbSet<ClanMember> ClanMembers { get; set; } = default!;
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -95,6 +99,7 @@ namespace Crpg.Persistence
             modelBuilder.HasPostgresEnum<DamageType>();
             modelBuilder.HasPostgresEnum<WeaponClass>();
             modelBuilder.HasPostgresEnum<CharacterGender>();
+            modelBuilder.HasPostgresEnum<ClanMemberRole>();
         }
     }
 }

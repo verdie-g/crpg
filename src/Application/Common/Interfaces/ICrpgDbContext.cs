@@ -2,6 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
+using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,8 @@ namespace Crpg.Application.Common.Interfaces
         DbSet<OwnedItem> OwnedItems { get; }
         DbSet<EquippedItem> EquippedItems { get; }
         DbSet<Ban> Bans { get; }
+        DbSet<Clan> Clans { get; }
+        DbSet<ClanMember> ClanMembers { get; }
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }

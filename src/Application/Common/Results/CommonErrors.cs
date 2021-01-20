@@ -18,6 +18,24 @@ namespace Crpg.Application.Common.Results
             Detail = $"Character with id '{characterId}' for user with id '{userId}' was not found",
         };
 
+        public static Error ClanNameAlreadyUsed(string clanName) => new Error(ErrorType.Validation, ErrorCode.ClanNameAlreadyUsed)
+        {
+            Title = "Clan name is already used",
+            Detail = $"Clan name '{clanName}' is already used",
+        };
+
+        public static Error ClanNotFound(int clanId) => new Error(ErrorType.NotFound, ErrorCode.ClanNotFound)
+        {
+            Title = "Clan was not found",
+            Detail = $"Clan with id '{clanId}' was not found",
+        };
+
+        public static Error ClanTagAlreadyUsed(string clanTag) => new Error(ErrorType.Validation, ErrorCode.ClanTagAlreadyUsed)
+        {
+            Title = "Clan tag is already used",
+            Detail = $"Clan tag '{clanTag}' is already used",
+        };
+
         public static Error ItemAlreadyOwned(int itemId) => new Error(ErrorType.Validation, ErrorCode.ItemAlreadyOwned)
         {
             Title = "Item is already owned",
@@ -87,6 +105,12 @@ namespace Crpg.Application.Common.Results
         public static Error StatisticDecreased() => new Error(ErrorType.Validation, ErrorCode.StatisticDecreased)
         {
             Title = "A statistic was decreased when it is not allowed",
+        };
+
+        public static Error UserAlreadyInAClan(int userId) => new Error(ErrorType.Validation, ErrorCode.UserAlreadyInAClan)
+        {
+            Title = "User is already in a clan",
+            Detail = $"User with id '{userId}' is already in a clan",
         };
 
         public static Error UserNotFound(int userId) => new Error(ErrorType.NotFound, ErrorCode.UserNotFound)
