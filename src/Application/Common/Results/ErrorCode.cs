@@ -7,6 +7,9 @@
     {
         CharacterLevelRequirementNotMet,
         CharacterNotFound,
+        ClanNameAlreadyUsed,
+        ClanNotFound,
+        ClanTagAlreadyUsed,
         Conflict,
         InternalError,
         InvalidField,
@@ -22,6 +25,7 @@
         NotEnoughWeaponProficiencyPoints,
         SkillRequirementNotMet,
         StatisticDecreased,
+        UserAlreadyInAClan,
         UserNotFound,
     }
 }
