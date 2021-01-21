@@ -7,7 +7,9 @@
     {
         CharacterLevelRequirementNotMet,
         CharacterNotFound,
+        ClanMemberRoleNotMet,
         ClanNameAlreadyUsed,
+        ClanNeedLeader,
         ClanNotFound,
         ClanTagAlreadyUsed,
         Conflict,
@@ -26,6 +28,8 @@
         SkillRequirementNotMet,
         StatisticDecreased,
         UserAlreadyInAClan,
+        UserNotAClanMember,
         UserNotFound,
+        UserNotInAClan,
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Clans.Commands;
 using Crpg.Application.Clans.Models;
@@ -42,6 +43,23 @@ namespace Crpg.WebApi.Controllers
             clan.UserId = CurrentUser.UserId;
             return ResultToCreatedAtActionAsync(nameof(GetClan), null, b => new { id = b.Id },
                 Mediator.Send(clan));
+        }
+
+        /// <summary>
+        /// Kick a clan member of leave a clan.
+        /// </summary>
+        /// <returns>The created clan.</returns>
+        /// <response code="204">Kicked or left.</response>
+        /// <response code="400">Bad Request.</response>
+        [HttpDelete("{clanId}/members/{userId}")]
+        public Task<ActionResult> CreateClan(int clanId, int userId)
+        {
+            return ResultToActionAsync(Mediator.Send(new KickClanMemberCommand
+            {
+                UserId = CurrentUser.UserId,
+                ClanId = clanId,
+                KickedUserId = userId,
+            }, CancellationToken.None));
         }
     }
 }
