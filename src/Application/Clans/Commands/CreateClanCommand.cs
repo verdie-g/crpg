@@ -8,6 +8,8 @@ using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities.Clans;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Clans.Commands
 {
@@ -39,6 +41,8 @@ namespace Crpg.Application.Clans.Commands
 
         internal class Handler : IMediatorRequestHandler<CreateClanCommand, ClanViewModel>
         {
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<CreateClanCommand>();
+
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
 
@@ -88,6 +92,7 @@ namespace Crpg.Application.Clans.Commands
 
                 _db.Clans.Add(clan);
                 await _db.SaveChangesAsync(cancellationToken);
+                Logger.LogInformation("User '{0}' created clan '[{1}] {2}' ({3})", req.UserId, req.Tag, req.Name, clan.Id);
                 return new Result<ClanViewModel>(_mapper.Map<ClanViewModel>(clan));
             }
         }

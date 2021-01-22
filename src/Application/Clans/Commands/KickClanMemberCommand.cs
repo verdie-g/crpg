@@ -7,6 +7,8 @@ using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Clans.Commands
 {
@@ -18,6 +20,8 @@ namespace Crpg.Application.Clans.Commands
 
         internal class Handler : IMediatorRequestHandler<KickClanMemberCommand>
         {
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<KickClanMemberCommand>();
+
             private readonly ICrpgDbContext _db;
 
             public Handler(ICrpgDbContext db)
@@ -53,6 +57,7 @@ namespace Crpg.Application.Clans.Commands
 
                     _db.ClanMembers.Remove(user.ClanMembership);
                     await _db.SaveChangesAsync(cancellationToken);
+                    Logger.LogInformation("User '{0}' left clan '{1}'", req.UserId, req.ClanId);
                     return new Result();
                 }
 
@@ -71,6 +76,8 @@ namespace Crpg.Application.Clans.Commands
 
                 _db.ClanMembers.Remove(kickedUser.ClanMembership);
                 await _db.SaveChangesAsync(cancellationToken);
+                Logger.LogInformation("User '{0}' kicked user '{1}' out of clan '{2}'", req.UserId,
+                    req.KickedUserId, req.ClanId);
                 return new Result();
             }
 
