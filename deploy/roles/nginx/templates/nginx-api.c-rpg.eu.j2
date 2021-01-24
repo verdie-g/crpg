@@ -22,5 +22,8 @@ server {
         opentracing on;
         opentracing_operation_name "$request_method $uri";
         opentracing_propagate_context;
+
+        # Log with trace id.
+        access_log /var/log/nginx/access.log trace buffer=8k flush=15s;
     }
 }

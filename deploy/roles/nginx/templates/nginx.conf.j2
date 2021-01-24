@@ -21,6 +21,7 @@ http {
     ssl_session_timeout 10m;
     client_max_body_size 64m;
 
+    opentracing off; # By default don't trace requests.
     opentracing_trace_locations off; # Emit only one span per request.
     # Load the Datadog tracing implementation, and the given config file.
     opentracing_load_tracer /usr/local/lib/libdd_opentracing_plugin.so /etc/nginx/dd-config.json;
@@ -30,9 +31,13 @@ http {
     map $time_iso8601 $timezone { ~\+([0-9:]+)$ $1; }
     map $msec $datetime_ms { ~\.([0-9]+)$ $1; }
 
-    log_format custom '$datetime.$datetime_ms+$timezone $remote_addr:$remote_port $request_method $scheme://$host$request_uri $server_protocol $status $bytes_sent $request_time $http_referer "$http_user_agent" $opentracing_context_x_datadog_trace_id';
+    log_format default '$datetime.$datetime_ms+$timezone $remote_addr:$remote_port $request_method $scheme://$host$request_uri $server_protocol $status $bytes_sent $request_time $http_referer "$http_user_agent"';
+    access_log /var/log/nginx/access.log default buffer=8k flush=15s;
 
-    access_log /var/log/nginx/access.log custom buffer=8k flush=15s;
+    # Using trace id variable when opentracing is off will generate errors (https://github.com/opentracing-contrib/nginx-opentracing/issues/124).
+    # A workaround is to avoid logging trace id by default and use another log_format where opentracing is on which
+    # contains the trace id.
+    log_format trace '$datetime.$datetime_ms+$timezone $remote_addr:$remote_port $request_method $scheme://$host$request_uri $server_protocol $status $bytes_sent $request_time $http_referer "$http_user_agent" $opentracing_context_x_datadog_trace_id';
 
     sendfile    on;
     tcp_nopush  on;
