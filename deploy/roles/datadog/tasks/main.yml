@@ -76,6 +76,7 @@
           url: https://steamcommunity.com/openid
           service: steam
           min_collection_interval: 60
+          tls_verify: false
       tls:
         init_config:
         instances:
