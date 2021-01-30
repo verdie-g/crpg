@@ -33,7 +33,7 @@ namespace Crpg.Application.Common.Results
         public static Error ClanNeedLeader(int clanId) => new Error(ErrorType.Validation, ErrorCode.ClanNeedLeader)
         {
             Title = "A clan needs a leader",
-            Detail = $"Clan with '{clanId}' needs a leader",
+            Detail = $"Clan with id '{clanId}' needs a leader",
         };
 
         public static Error ClanNotFound(int clanId) => new Error(ErrorType.NotFound, ErrorCode.ClanNotFound)

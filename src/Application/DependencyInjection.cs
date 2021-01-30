@@ -21,6 +21,7 @@ namespace Crpg.Application
             var experienceTable = new ExperienceTable(constants);
             var characterService = new CharacterService(experienceTable, constants);
             var userService = new UserService(constants);
+            var clanService = new ClanService();
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly())
                 .AddMediatR(Assembly.GetExecutingAssembly())
@@ -32,6 +33,7 @@ namespace Crpg.Application
                 .AddSingleton<IExperienceTable>(experienceTable)
                 .AddSingleton<ICharacterService>(characterService)
                 .AddSingleton<IUserService>(userService)
+                .AddSingleton<IClanService>(clanService)
                 .AddSingleton(constants)
                 .AddSingleton<IItemsSource, FileItemsSource>()
                 .AddValidatorsFromAssemblyContaining(typeof(DependencyInjection));
