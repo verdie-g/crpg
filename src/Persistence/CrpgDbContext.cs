@@ -51,6 +51,7 @@ namespace Crpg.Persistence
         public DbSet<Ban> Bans { get; set; } = default!;
         public DbSet<Clan> Clans { get; set; } = default!;
         public DbSet<ClanMember> ClanMembers { get; set; } = default!;
+        public DbSet<ClanInvitation> ClanInvitations { get; set; } = default!;
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

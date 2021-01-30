@@ -52,7 +52,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="204">Kicked or left.</response>
         /// <response code="400">Bad Request.</response>
         [HttpDelete("{clanId}/members/{userId}")]
-        public Task<ActionResult> CreateClan(int clanId, int userId)
+        public Task<ActionResult> DeleteClan(int clanId, int userId)
         {
             return ResultToActionAsync(Mediator.Send(new KickClanMemberCommand
             {
@@ -60,6 +60,21 @@ namespace Crpg.WebApi.Controllers
                 ClanId = clanId,
                 KickedUserId = userId,
             }, CancellationToken.None));
+        }
+
+        /// <summary>
+        /// Invite user to clan or request to join a clan.
+        /// </summary>
+        /// <returns>The created or existing invitation.</returns>
+        /// <response code="201">Invitation created.</response>
+        /// <response code="400">Bad Request.</response>
+        [HttpPost("{clanId}/invitations")]
+        public Task<ActionResult<Result<ClanInvitationViewModel>>> InviteToClan([FromQuery] int clanId, [FromBody] InviteClanMemberCommand invite)
+        {
+            invite.UserId = CurrentUser.UserId;
+            invite.ClanId = clanId;
+            return ResultToCreatedAtActionAsync("", null, i => new { id = i.Id },
+                Mediator.Send(invite));
         }
     }
 }
