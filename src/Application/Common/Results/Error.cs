@@ -44,5 +44,7 @@
             Type = type;
             Code = code;
         }
+
+        public override string ToString() => Detail ?? Title ?? Code.ToString();
     }
 }
