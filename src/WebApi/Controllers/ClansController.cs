@@ -76,5 +76,21 @@ namespace Crpg.WebApi.Controllers
             return ResultToCreatedAtActionAsync("", null, i => new { id = i.Id },
                 Mediator.Send(invite));
         }
+
+        /// <summary>
+        /// Accept/Decline request/offer to join a clan.
+        /// </summary>
+        /// <returns>The created or existing invitation.</returns>
+        /// <response code="200">Responded successfully.</response>
+        /// <response code="400">Bad Request.</response>
+        [HttpPut("{clanId}/invitations/{invitationId}/responses")]
+        public Task<ActionResult<Result<ClanInvitationViewModel>>> RespondToClanInvitation([FromQuery] int clanId,
+            [FromQuery] int invitationId, [FromBody] RespondClanInvitationCommand invite)
+        {
+            invite.UserId = CurrentUser.UserId;
+            invite.ClanId = clanId;
+            invite.ClanInvitationId = invitationId;
+            return ResultToActionAsync(Mediator.Send(invite));
+        }
     }
 }

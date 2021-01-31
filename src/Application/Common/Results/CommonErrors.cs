@@ -17,6 +17,18 @@ namespace Crpg.Application.Common.Results
             Detail = $"Character with id '{characterId}' for user with id '{userId}' was not found",
         };
 
+        public static Error ClanInvitationClosed(int clanInvitationId, ClanInvitationStatus status) => new Error(ErrorType.NotFound, ErrorCode.ClanInvitationClosed)
+        {
+            Title = "Clan invitation was closed",
+            Detail = $"Clan invitation with id '{clanInvitationId}' has status '{status}'",
+        };
+
+        public static Error ClanInvitationNotFound(int clanInvitationId) => new Error(ErrorType.NotFound, ErrorCode.ClanInvitationNotFound)
+        {
+            Title = "Clan invitation was not found",
+            Detail = $"Clan invitation with id '{clanInvitationId}' was not found",
+        };
+
         public static Error ClanMemberRoleNotMet(int userId, ClanMemberRole expectedRole, ClanMemberRole actualRole) =>
             new Error(ErrorType.Validation, ErrorCode.ClanMemberRoleNotMet)
             {

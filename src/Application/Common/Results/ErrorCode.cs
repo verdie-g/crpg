@@ -7,6 +7,8 @@
     {
         CharacterLevelRequirementNotMet,
         CharacterNotFound,
+        ClanInvitationClosed,
+        ClanInvitationNotFound,
         ClanMemberRoleNotMet,
         ClanNameAlreadyUsed,
         ClanNeedLeader,

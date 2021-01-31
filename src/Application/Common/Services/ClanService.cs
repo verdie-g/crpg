@@ -13,6 +13,7 @@ namespace Crpg.Application.Common.Services
     {
         Task<Result<User>> GetClanMember(ICrpgDbContext db, int userId, int clanId, CancellationToken cancellationToken);
         Error? CheckClanMembership(User user, int clanId);
+        Task<Result<ClanMember>> JoinClan(ICrpgDbContext db, User user, int clanId, CancellationToken cancellationToken);
         Task<Result> LeaveClan(ICrpgDbContext db, ClanMember member, CancellationToken cancellationToken);
     }
 
@@ -45,6 +46,34 @@ namespace Crpg.Application.Common.Services
             }
 
             return null;
+        }
+
+        public async Task<Result<ClanMember>> JoinClan(ICrpgDbContext db, User user, int clanId, CancellationToken cancellationToken)
+        {
+            user.ClanMembership = new ClanMember
+            {
+                UserId = user.Id,
+                ClanId = clanId,
+                Role = ClanMemberRole.Member,
+            };
+
+            // Joining a clan declines all pending invitations and delete pending requests to join.
+            var invitations = await db.ClanInvitations
+                .Where(i => i.InviteeUserId == user.Id && i.Status == ClanInvitationStatus.Pending)
+                .ToArrayAsync(cancellationToken);
+            foreach (var invitation in invitations)
+            {
+                if (invitation.Type == ClanInvitationType.Request)
+                {
+                    db.ClanInvitations.Remove(invitation);
+                }
+                else if (invitation.Type == ClanInvitationType.Offer)
+                {
+                    invitation.Status = ClanInvitationStatus.Declined;
+                }
+            }
+
+            return new Result<ClanMember>(user.ClanMembership);
         }
 
         public async Task<Result> LeaveClan(ICrpgDbContext db, ClanMember member, CancellationToken cancellationToken)

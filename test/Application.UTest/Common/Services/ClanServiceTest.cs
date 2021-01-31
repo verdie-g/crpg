@@ -59,6 +59,65 @@ namespace Crpg.Application.UTest.Common.Services
         }
 
         [Test]
+        public async Task JoinClanShouldDeleteInvitationRequestsAndDeclineInvitationOffers()
+        {
+            var user = new User();
+            ArrangeDb.Users.Add(user);
+            var clan = new Clan();
+            ArrangeDb.Clans.Add(clan);
+            var invitations = new[]
+            {
+                new ClanInvitation
+                {
+                    Clan = new Clan(),
+                    InviteeUser = user,
+                    InviterUser = new User(),
+                    Type = ClanInvitationType.Offer,
+                    Status = ClanInvitationStatus.Pending,
+                },
+                new ClanInvitation
+                {
+                    Clan = new Clan(),
+                    InviteeUser = user,
+                    InviterUser = new User(),
+                    Type = ClanInvitationType.Offer,
+                    Status = ClanInvitationStatus.Declined,
+                },
+                new ClanInvitation
+                {
+                    Clan = new Clan(),
+                    InviteeUser = user,
+                    InviterUser = user,
+                    Type = ClanInvitationType.Request,
+                    Status = ClanInvitationStatus.Pending,
+                },
+                new ClanInvitation
+                {
+                    Clan = new Clan(),
+                    InviteeUser = user,
+                    InviterUser = new User(),
+                    Type = ClanInvitationType.Request,
+                    Status = ClanInvitationStatus.Accepted,
+                },
+            };
+            ArrangeDb.ClanInvitations.AddRange(invitations);
+            await ArrangeDb.SaveChangesAsync();
+
+            var clanService = new ClanService();
+            var u = await ActDb.Users.FirstAsync(u => u.Id == user.Id);
+            var res = await clanService.JoinClan(ActDb, u, clan.Id, CancellationToken.None);
+            await ActDb.SaveChangesAsync();
+
+            Assert.IsNull(res.Errors);
+            Assert.That(AssertDb.ClanInvitations, Has.Exactly(2)
+                .Matches<ClanInvitation>(ci => ci.Type == ClanInvitationType.Offer && ci.Status == ClanInvitationStatus.Declined));
+            Assert.That(AssertDb.ClanInvitations, Has.Exactly(0)
+                .Matches<ClanInvitation>(ci => ci.Type == ClanInvitationType.Request && ci.Status == ClanInvitationStatus.Pending));
+            Assert.That(AssertDb.ClanInvitations, Has.Exactly(1)
+                .Matches<ClanInvitation>(ci => ci.Type == ClanInvitationType.Request && ci.Status == ClanInvitationStatus.Accepted));
+        }
+
+        [Test]
         public async Task LeaveClanShouldReturnErrorIfMemberLeaderAndNotLastMember()
         {
             var user = new User();
@@ -103,7 +162,7 @@ namespace Crpg.Application.UTest.Common.Services
         }
 
         [Test]
-        public async Task LeaveClanShouldLeaveClan()
+        public async Task LeaveClanShouldWork()
         {
             var user = new User();
             ArrangeDb.Users.Add(user);
