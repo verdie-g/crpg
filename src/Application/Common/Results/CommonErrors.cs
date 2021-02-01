@@ -30,7 +30,7 @@ namespace Crpg.Application.Common.Results
         };
 
         public static Error ClanMemberRoleNotMet(int userId, ClanMemberRole expectedRole, ClanMemberRole actualRole) =>
-            new Error(ErrorType.Validation, ErrorCode.ClanMemberRoleNotMet)
+            new Error(ErrorType.Forbidden, ErrorCode.ClanMemberRoleNotMet)
             {
                 Title = "Unmet clan member role restriction",
                 Detail = $"Role '{expectedRole}' was expected but member with id '{userId}' is '{actualRole}'",
@@ -137,7 +137,7 @@ namespace Crpg.Application.Common.Results
             Detail = $"User with id '{userId}' is already in a clan",
         };
 
-        public static Error UserNotAClanMember(int userId, int clanId) => new Error(ErrorType.Validation, ErrorCode.UserNotAClanMember)
+        public static Error UserNotAClanMember(int userId, int clanId) => new Error(ErrorType.Forbidden, ErrorCode.UserNotAClanMember)
         {
             Title = "User is not a member of the clan",
             Detail = $"User with id '{userId}' is not a member of the clan with id '{clanId}'",
@@ -149,7 +149,7 @@ namespace Crpg.Application.Common.Results
             Detail = $"User with id '{userId}' was not found",
         };
 
-        public static Error UserNotInAClan(int userId) => new Error(ErrorType.Validation, ErrorCode.UserNotInAClan)
+        public static Error UserNotInAClan(int userId) => new Error(ErrorType.Forbidden, ErrorCode.UserNotInAClan)
         {
             Title = "User is not in a clan",
             Detail = $"User with id '{userId}' is not in a clan",

@@ -6,6 +6,7 @@
     public enum ErrorType
     {
         InternalError,
+        Forbidden,
         Conflict,
         NotFound,
         Validation,

@@ -87,6 +87,7 @@ namespace Crpg.WebApi.Controllers
                 ErrorType.Validation => BadRequest(result),
                 ErrorType.NotFound => NotFound(result),
                 ErrorType.Conflict => Conflict(result),
+                ErrorType.Forbidden => StatusCode((int)HttpStatusCode.Forbidden, result),
                 _ => StatusCode((int)HttpStatusCode.InternalServerError, result),
             };
         }
