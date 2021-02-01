@@ -9,7 +9,7 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters
 {
-    public class GetUserCharacterListQueryTest : TestBase
+    public class GetUserCharactersQueryTest : TestBase
     {
         [Test]
         public async Task Basic()
@@ -39,8 +39,8 @@ namespace Crpg.Application.UTest.Characters
                 });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetUserCharactersListQuery.Handler(ActDb, Mapper);
-            var result = await handler.Handle(new GetUserCharactersListQuery { UserId = 1 }, CancellationToken.None);
+            var handler = new GetUserCharactersQuery.Handler(ActDb, Mapper);
+            var result = await handler.Handle(new GetUserCharactersQuery { UserId = 1 }, CancellationToken.None);
 
             var characters = result.Data!;
             Assert.AreEqual(2, characters.Count);

@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items
 {
-    public class GetItemsListQueryTest : TestBase
+    public class GetItemsQueryTest : TestBase
     {
         [Test]
         public async Task BaseItems()
@@ -39,8 +39,8 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Items.AddRange(items);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetItemsListQuery.Handler(ActDb, Mapper);
-            var result = await handler.Handle(new GetItemsListQuery { BaseItems = true }, CancellationToken.None);
+            var handler = new GetItemsQuery.Handler(ActDb, Mapper);
+            var result = await handler.Handle(new GetItemsQuery { BaseItems = true }, CancellationToken.None);
 
             Assert.AreEqual(2, result.Data!.Count);
         }
@@ -75,8 +75,8 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Items.AddRange(items);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetItemsListQuery.Handler(ActDb, Mapper);
-            var result = await handler.Handle(new GetItemsListQuery { BaseItems = false }, CancellationToken.None);
+            var handler = new GetItemsQuery.Handler(ActDb, Mapper);
+            var result = await handler.Handle(new GetItemsQuery { BaseItems = false }, CancellationToken.None);
 
             Assert.AreEqual(3, result.Data!.Count);
         }

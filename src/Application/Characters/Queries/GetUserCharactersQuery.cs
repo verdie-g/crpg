@@ -11,11 +11,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries
 {
-    public class GetUserCharactersListQuery : IMediatorRequest<IList<CharacterViewModel>>
+    public class GetUserCharactersQuery : IMediatorRequest<IList<CharacterViewModel>>
     {
         public int UserId { get; set; }
 
-        internal class Handler : IMediatorRequestHandler<GetUserCharactersListQuery, IList<CharacterViewModel>>
+        internal class Handler : IMediatorRequestHandler<GetUserCharactersQuery, IList<CharacterViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -26,7 +26,7 @@ namespace Crpg.Application.Characters.Queries
                 _mapper = mapper;
             }
 
-            public async Task<Result<IList<CharacterViewModel>>> Handle(GetUserCharactersListQuery req, CancellationToken cancellationToken)
+            public async Task<Result<IList<CharacterViewModel>>> Handle(GetUserCharactersQuery req, CancellationToken cancellationToken)
             {
                 var characters = await _db.Characters
                     .AsNoTracking()

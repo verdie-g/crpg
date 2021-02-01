@@ -10,11 +10,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Bans.Queries
 {
-    public class GetUserBansListQuery : IMediatorRequest<IList<BanViewModel>>
+    public class GetUserBansQuery : IMediatorRequest<IList<BanViewModel>>
     {
         public int UserId { get; set; }
 
-        internal class Handler : IMediatorRequestHandler<GetUserBansListQuery, IList<BanViewModel>>
+        internal class Handler : IMediatorRequestHandler<GetUserBansQuery, IList<BanViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -25,7 +25,7 @@ namespace Crpg.Application.Bans.Queries
                 _mapper = mapper;
             }
 
-            public async Task<Result<IList<BanViewModel>>> Handle(GetUserBansListQuery request, CancellationToken cancellationToken)
+            public async Task<Result<IList<BanViewModel>>> Handle(GetUserBansQuery request, CancellationToken cancellationToken)
             {
                 var user = await _db.Users
                     .AsNoTracking()

@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Bans
 {
-    public class GetBansListQueryTest : TestBase
+    public class GetBansQueryTest : TestBase
     {
         [Test]
         public async Task Basic()
@@ -24,8 +24,8 @@ namespace Crpg.Application.UTest.Bans
             ArrangeDb.Bans.AddRange(bans);
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new GetBansListQuery.Handler(ActDb, Mapper).Handle(
-                new GetBansListQuery(), CancellationToken.None);
+            var result = await new GetBansQuery.Handler(ActDb, Mapper).Handle(
+                new GetBansQuery(), CancellationToken.None);
             Assert.AreEqual(2, result.Data!.Count);
         }
     }

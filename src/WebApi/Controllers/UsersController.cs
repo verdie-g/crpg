@@ -55,7 +55,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Ok.</response>
         [HttpGet("self/characters")]
         public Task<ActionResult<Result<IList<CharacterViewModel>>>> GetUserCharactersList() =>
-            ResultToActionAsync(Mediator.Send(new GetUserCharactersListQuery { UserId = CurrentUser.UserId }));
+            ResultToActionAsync(Mediator.Send(new GetUserCharactersQuery { UserId = CurrentUser.UserId }));
 
         /// <summary>
         /// Updates a character for the current user.
@@ -234,6 +234,6 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Ok.</response>
         [HttpGet("self/bans")]
         public Task<ActionResult<Result<IList<BanViewModel>>>> GetUserBans() =>
-            ResultToActionAsync(Mediator.Send(new GetUserBansListQuery { UserId = CurrentUser.UserId }));
+            ResultToActionAsync(Mediator.Send(new GetUserBansQuery { UserId = CurrentUser.UserId }));
     }
 }

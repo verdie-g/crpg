@@ -19,7 +19,7 @@ namespace Crpg.WebApi.Controllers
         [HttpGet]
         [ResponseCache(Duration = 60 * 60 * 1)] // 1 hour
         public Task<ActionResult<Result<IList<BanViewModel>>>> GetBans() =>
-            ResultToActionAsync(Mediator.Send(new GetBansListQuery()));
+            ResultToActionAsync(Mediator.Send(new GetBansQuery()));
 
         /// <summary>
         /// Bans an user. If a ban already exists for the user, it is overriden. Use a duration of 0 to unban.

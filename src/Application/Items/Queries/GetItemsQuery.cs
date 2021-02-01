@@ -11,14 +11,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Queries
 {
-    public class GetItemsListQuery : IMediatorRequest<IList<ItemViewModel>>
+    public class GetItemsQuery : IMediatorRequest<IList<ItemViewModel>>
     {
         /// <summary>
         /// True if only the items of rank 0 should be returned.
         /// </summary>
         public bool BaseItems { get; set; }
 
-        internal class Handler : IMediatorRequestHandler<GetItemsListQuery, IList<ItemViewModel>>
+        internal class Handler : IMediatorRequestHandler<GetItemsQuery, IList<ItemViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -29,7 +29,7 @@ namespace Crpg.Application.Items.Queries
                 _mapper = mapper;
             }
 
-            public async Task<Result<IList<ItemViewModel>>> Handle(GetItemsListQuery req, CancellationToken cancellationToken)
+            public async Task<Result<IList<ItemViewModel>>> Handle(GetItemsQuery req, CancellationToken cancellationToken)
             {
                 var items = await _db.Items
                     .AsNoTracking()

@@ -40,6 +40,6 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Ok.</response>
         [HttpGet("items")]
         public Task<ActionResult<Result<IList<ItemViewModel>>>> GetItems() =>
-            ResultToActionAsync(Mediator.Send(new GetItemsListQuery { BaseItems = false }));
+            ResultToActionAsync(Mediator.Send(new GetItemsQuery { BaseItems = false }));
     }
 }
