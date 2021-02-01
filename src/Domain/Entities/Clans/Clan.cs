@@ -18,5 +18,6 @@ namespace Crpg.Domain.Entities.Clans
         public string Name { get; set; } = string.Empty;
 
         public IList<ClanMember> Members { get; set; } = new List<ClanMember>();
+        public IList<ClanInvitation> Invitations { get; set; } = new List<ClanInvitation>();
     }
 }

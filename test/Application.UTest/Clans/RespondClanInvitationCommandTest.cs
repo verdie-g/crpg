@@ -192,7 +192,7 @@ namespace Crpg.Application.UTest.Clans
             Assert.IsNull(res.Errors);
             Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
             Assert.AreEqual(ClanInvitationStatus.Declined, res.Data!.Status);
-            Assert.AreNotEqual(user.Id, res.Data!.InviterUserId);
+            Assert.AreNotEqual(user.Id, res.Data!.InviterUser.Id);
         }
 
         [Test]
@@ -224,7 +224,7 @@ namespace Crpg.Application.UTest.Clans
             Assert.IsNull(res.Errors);
             Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
             Assert.AreEqual(ClanInvitationStatus.Accepted, res.Data!.Status);
-            Assert.AreNotEqual(user.Id, res.Data!.InviterUserId);
+            Assert.AreNotEqual(user.Id, res.Data!.InviterUser.Id);
             Assert.That(AssertDb.ClanMembers, Has.Exactly(1)
                 .Matches<ClanMember>(cm => cm.ClanId == clan.Id && cm.UserId == user.Id));
         }
@@ -258,7 +258,7 @@ namespace Crpg.Application.UTest.Clans
             Assert.IsNull(res.Errors);
             Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
             Assert.AreEqual(ClanInvitationStatus.Accepted, res.Data!.Status);
-            Assert.AreNotEqual(user.Id, res.Data!.InviterUserId);
+            Assert.AreNotEqual(user.Id, res.Data!.InviterUser.Id);
             Assert.That(AssertDb.ClanMembers, Has.Exactly(1)
                 .Matches<ClanMember>(cm => cm.ClanId == clan.Id && cm.UserId == user.Id));
         }
@@ -414,7 +414,7 @@ namespace Crpg.Application.UTest.Clans
             Assert.IsNull(res.Errors);
             Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
             Assert.AreEqual(ClanInvitationStatus.Accepted, res.Data!.Status);
-            Assert.AreEqual(user.Id, res.Data!.InviterUserId);
+            Assert.AreEqual(user.Id, res.Data!.InviterUser.Id);
         }
 
         [Test]
@@ -446,7 +446,7 @@ namespace Crpg.Application.UTest.Clans
             Assert.IsNull(res.Errors);
             Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
             Assert.AreEqual(ClanInvitationStatus.Declined, res.Data!.Status);
-            Assert.AreEqual(user.Id, res.Data!.InviterUserId);
+            Assert.AreEqual(user.Id, res.Data!.InviterUser.Id);
         }
     }
 }

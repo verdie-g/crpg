@@ -52,8 +52,8 @@ namespace Crpg.Application.UTest.Clans
             Assert.IsNull(res.Errors);
             Assert.NotZero(invitation.Id);
             Assert.AreEqual(clan.Id, invitation.ClanId);
-            Assert.AreEqual(user.Id, invitation.InviteeUserId);
-            Assert.AreEqual(user.Id, invitation.InviterUserId);
+            Assert.AreEqual(user.Id, invitation.InviteeUser.Id);
+            Assert.AreEqual(user.Id, invitation.InviterUser.Id);
             Assert.AreEqual(ClanInvitationType.Request, invitation.Type);
             Assert.AreEqual(ClanInvitationStatus.Pending, invitation.Status);
         }
@@ -203,8 +203,8 @@ namespace Crpg.Application.UTest.Clans
             Assert.IsNull(res.Errors);
             Assert.NotZero(invitation.Id);
             Assert.AreEqual(clan.Id, invitation.ClanId);
-            Assert.AreEqual(invitee.Id, invitation.InviteeUserId);
-            Assert.AreEqual(inviter.Id, invitation.InviterUserId);
+            Assert.AreEqual(invitee.Id, invitation.InviteeUser.Id);
+            Assert.AreEqual(inviter.Id, invitation.InviterUser.Id);
             Assert.AreEqual(ClanInvitationType.Offer, invitation.Type);
             Assert.AreEqual(ClanInvitationStatus.Pending, invitation.Status);
         }

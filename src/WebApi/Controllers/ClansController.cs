@@ -5,6 +5,7 @@ using Crpg.Application.Clans.Commands;
 using Crpg.Application.Clans.Models;
 using Crpg.Application.Clans.Queries;
 using Crpg.Application.Common.Results;
+using Crpg.Domain.Entities.Clans;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +20,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Ok.</response>
         /// <response code="404">Clan was not found.</response>
         [HttpGet("{id}")]
-        public Task<ActionResult<Result<ClanViewModel>>> GetClan(int id) =>
+        public Task<ActionResult<Result<ClanViewModel>>> GetClan([FromRoute] int id) =>
             ResultToActionAsync(Mediator.Send(new GetClanQuery { ClanId = id }));
 
         /// <summary>
@@ -63,18 +64,35 @@ namespace Crpg.WebApi.Controllers
         }
 
         /// <summary>
+        /// Get users invited to the clan or users requesting to join the clan.
+        /// </summary>
+        /// <returns>The invitations.</returns>
+        /// <response code="200">Ok.</response>
+        /// <response code="400">Bad Request.</response>
+        [HttpGet("{clanId}/invitations")]
+        public Task<ActionResult<Result<IList<ClanInvitationViewModel>>>> GetClanInvitations([FromRoute] int clanId,
+            [FromQuery(Name = "status[]")] ClanInvitationStatus[] statuses)
+        {
+            return ResultToActionAsync(Mediator.Send(new GetClanInvitationsQuery
+            {
+                UserId = CurrentUser.UserId,
+                ClanId = clanId,
+                Statuses = statuses,
+            }));
+        }
+
+        /// <summary>
         /// Invite user to clan or request to join a clan.
         /// </summary>
         /// <returns>The created or existing invitation.</returns>
         /// <response code="201">Invitation created.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPost("{clanId}/invitations")]
-        public Task<ActionResult<Result<ClanInvitationViewModel>>> InviteToClan([FromQuery] int clanId, [FromBody] InviteClanMemberCommand invite)
+        public Task<ActionResult<Result<ClanInvitationViewModel>>> InviteToClan([FromRoute] int clanId, [FromBody] InviteClanMemberCommand invite)
         {
             invite.UserId = CurrentUser.UserId;
             invite.ClanId = clanId;
-            return ResultToCreatedAtActionAsync("", null, i => new { id = i.Id },
-                Mediator.Send(invite));
+            return ResultToActionAsync(Mediator.Send(invite));
         }
 
         /// <summary>
@@ -84,7 +102,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Responded successfully.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPut("{clanId}/invitations/{invitationId}/responses")]
-        public Task<ActionResult<Result<ClanInvitationViewModel>>> RespondToClanInvitation([FromQuery] int clanId,
+        public Task<ActionResult<Result<ClanInvitationViewModel>>> RespondToClanInvitation([FromRoute] int clanId,
             [FromQuery] int invitationId, [FromBody] RespondClanInvitationCommand invite)
         {
             invite.UserId = CurrentUser.UserId;
