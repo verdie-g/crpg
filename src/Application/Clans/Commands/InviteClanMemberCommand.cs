@@ -59,6 +59,11 @@ namespace Crpg.Application.Clans.Commands
             private async Task<Result<ClanInvitationViewModel>> RequestToJoinClan(User user, int clanId,
                 CancellationToken cancellationToken)
             {
+                if (user.ClanMembership != null && user.ClanMembership.ClanId == clanId)
+                {
+                    return new Result<ClanInvitationViewModel>(CommonErrors.UserAlreadyInTheClan(user.Id, clanId));
+                }
+
                 // Check if an invitation already exists.
                 var invitation = await _db.ClanInvitations.FirstOrDefaultAsync(ci =>
                     ci.ClanId == clanId && ci.InviteeUserId == user.Id && ci.Type == ClanInvitationType.Request
@@ -86,9 +91,17 @@ namespace Crpg.Application.Clans.Commands
             private async Task<Result<ClanInvitationViewModel>> InviteToClan(User inviter, int clanId, int inviteeUserId,
                 CancellationToken cancellationToken)
             {
-                if (_db.Users.FirstOrDefaultAsync(u => u.Id == inviteeUserId, cancellationToken) == null)
+                var invitee = await _db.Users
+                    .Include(u => u.ClanMembership)
+                    .FirstOrDefaultAsync(u => u.Id == inviteeUserId, cancellationToken);
+                if (invitee == null)
                 {
                     return new Result<ClanInvitationViewModel>(CommonErrors.UserNotFound(inviteeUserId));
+                }
+
+                if (invitee.ClanMembership != null && invitee.ClanMembership.ClanId == clanId)
+                {
+                    return new Result<ClanInvitationViewModel>(CommonErrors.UserAlreadyInTheClan(invitee.Id, clanId));
                 }
 
                 var error = _clanService.CheckClanMembership(inviter, clanId);

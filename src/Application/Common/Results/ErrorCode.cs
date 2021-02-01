@@ -30,6 +30,7 @@
         SkillRequirementNotMet,
         StatisticDecreased,
         UserAlreadyInAClan,
+        UserAlreadyInTheClan,
         UserNotAClanMember,
         UserNotFound,
         UserNotInAClan,

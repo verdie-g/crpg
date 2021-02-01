@@ -33,6 +33,26 @@ namespace Crpg.Application.UTest.Clans
         }
 
         [Test]
+        public async Task IfRequestShouldReturnErrorIfUserAlreadyInTheClan()
+        {
+            var clan = new Clan();
+            ArrangeDb.Clans.Add(clan);
+            var user = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
+
+            var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
+            {
+                UserId = user.Id,
+                ClanId = clan.Id,
+                InviteeUserId = user.Id,
+            }, CancellationToken.None);
+
+            Assert.IsNotNull(res.Errors);
+            Assert.AreEqual(ErrorCode.UserAlreadyInTheClan, res.Errors![0].Code);
+        }
+
+        [Test]
         public async Task IfRequestShouldCreateOneIfNotAlreadyExists()
         {
             var clan = new Clan();
@@ -85,6 +105,27 @@ namespace Crpg.Application.UTest.Clans
 
             Assert.IsNull(res.Errors);
             Assert.AreEqual(invitation.Id, res.Data!.Id);
+        }
+
+        [Test]
+        public async Task IfOfferButInviteeAlreadyInTheClanShouldReturnError()
+        {
+            var clan = new Clan();
+            ArrangeDb.Clans.Add(clan);
+            var invitee = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
+            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Admin } };
+            ArrangeDb.Users.AddRange(invitee, inviter);
+            await ArrangeDb.SaveChangesAsync();
+
+            var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
+            {
+                UserId = inviter.Id,
+                ClanId = clan.Id,
+                InviteeUserId = invitee.Id,
+            }, CancellationToken.None);
+
+            Assert.IsNotNull(res.Errors);
+            Assert.AreEqual(ErrorCode.UserAlreadyInTheClan, res.Errors![0].Code);
         }
 
         [Test]
