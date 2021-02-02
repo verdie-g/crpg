@@ -22,6 +22,7 @@ namespace Crpg.Persistence
         {
             NpgsqlConnection.GlobalTypeMapper.MapEnum<Platform>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<Role>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<Culture>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<ItemType>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<ItemSlot>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<DamageType>();
@@ -95,6 +96,7 @@ namespace Crpg.Persistence
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CrpgDbContext).Assembly);
             modelBuilder.HasPostgresEnum<Platform>();
             modelBuilder.HasPostgresEnum<Role>();
+            modelBuilder.HasPostgresEnum<Culture>();
             modelBuilder.HasPostgresEnum<ItemType>();
             modelBuilder.HasPostgresEnum<ItemSlot>();
             modelBuilder.HasPostgresEnum<DamageType>();

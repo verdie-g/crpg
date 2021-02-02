@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Items;
 
 namespace Crpg.Application.Items.Models
@@ -8,6 +9,7 @@ namespace Crpg.Application.Items.Models
     {
         public string TemplateMbId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
+        public Culture Culture { get; set; }
         public ItemType Type { get; set; }
         public float Weight { get; set; }
         public int Rank { get; set; }

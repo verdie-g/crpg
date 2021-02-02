@@ -4,6 +4,7 @@
     "name": "Scale Shoulders",
     "type": "ShoulderArmor",
     "weight": 4.0,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -17,6 +18,7 @@
     "name": "Scale Pauldrons",
     "type": "ShoulderArmor",
     "weight": 2.0,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -30,6 +32,7 @@
     "name": "Southern Brass Scale Shoulders",
     "type": "ShoulderArmor",
     "weight": 4.4,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -43,6 +46,7 @@
     "name": "Brass Scale Pauldrons",
     "type": "ShoulderArmor",
     "weight": 2.2,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -56,6 +60,7 @@
     "name": "Southern Reinforced Brass Scale Shoulders",
     "type": "ShoulderArmor",
     "weight": 6.8,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 20,
@@ -69,6 +74,7 @@
     "name": "Adarga",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -96,7 +102,8 @@
     "templateMbId": "aketon",
     "name": "Western Aketon",
     "type": "BodyArmor",
-    "weight": 12.4,
+    "weight": 3.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 13,
@@ -110,6 +117,7 @@
     "name": "The Ambassador",
     "type": "OneHandedWeapon",
     "weight": 1.69,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -137,6 +145,7 @@
     "name": "Padded Coif",
     "type": "HeadArmor",
     "weight": 0.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -150,6 +159,7 @@
     "name": "Leather Coif",
     "type": "HeadArmor",
     "weight": 0.3,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 14,
       "bodyArmor": 0,
@@ -163,6 +173,7 @@
     "name": "Armored Baggy Trunks",
     "type": "BodyArmor",
     "weight": 0.3,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -176,6 +187,7 @@
     "name": "Armored Bearskin",
     "type": "ShoulderArmor",
     "weight": 7.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -189,6 +201,7 @@
     "name": "Armwraps",
     "type": "HandArmor",
     "weight": 0.2,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -202,6 +215,7 @@
     "name": "Imperial Arrows",
     "type": "Arrows",
     "weight": 0.05,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "Arrow",
@@ -231,6 +245,7 @@
     "name": "Southern Broad Two Handed Axe",
     "type": "OneHandedWeapon",
     "weight": 1.52,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -261,6 +276,7 @@
     "name": "Executioners Axe",
     "type": "OneHandedWeapon",
     "weight": 1.88,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -291,6 +307,7 @@
     "name": "Heavy Executioners Axe",
     "type": "OneHandedWeapon",
     "weight": 1.49,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -320,7 +337,8 @@
     "templateMbId": "aserai_archer_armor",
     "name": "Southern Archer Armor",
     "type": "BodyArmor",
-    "weight": 9.3,
+    "weight": 11.0,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 29,
@@ -334,6 +352,7 @@
     "name": "Wood Splitter Axe",
     "type": "OneHandedWeapon",
     "weight": 1.15,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -362,6 +381,7 @@
     "name": "Bamboo Handled Ascia Axe",
     "type": "OneHandedWeapon",
     "weight": 1.02,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -390,6 +410,7 @@
     "name": "Bamboo Handled Sparring Axe",
     "type": "OneHandedWeapon",
     "weight": 1.02,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -418,6 +439,7 @@
     "name": "Southern Robe with Waistband",
     "type": "BodyArmor",
     "weight": 0.8,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -431,6 +453,7 @@
     "name": "Southern Robe with Leather Belt",
     "type": "BodyArmor",
     "weight": 1.1,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -444,6 +467,7 @@
     "name": "Colored Southern Robe",
     "type": "BodyArmor",
     "weight": 0.9,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -457,6 +481,7 @@
     "name": "Kefiyyeh With Silken Band",
     "type": "HeadArmor",
     "weight": 0.1,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -470,6 +495,7 @@
     "name": "Colored Bisht",
     "type": "BodyArmor",
     "weight": 1.0,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -483,6 +509,7 @@
     "name": "Colored Turban",
     "type": "HeadArmor",
     "weight": 0.1,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 7,
       "bodyArmor": 0,
@@ -496,6 +523,7 @@
     "name": "Thawb",
     "type": "BodyArmor",
     "weight": 1.1,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -509,6 +537,7 @@
     "name": "Brown Kefiyyeh",
     "type": "HeadArmor",
     "weight": 0.1,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -522,6 +551,7 @@
     "name": "Southern Peasant Robe",
     "type": "BodyArmor",
     "weight": 1.1,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -535,6 +565,7 @@
     "name": "Southern Leather Hood",
     "type": "HeadArmor",
     "weight": 0.1,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -548,6 +579,7 @@
     "name": "Kefiyyeh with Brown Band",
     "type": "HeadArmor",
     "weight": 0.1,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -561,6 +593,7 @@
     "name": "Roughspun Kefiyyeh",
     "type": "HeadArmor",
     "weight": 0.1,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 7,
       "bodyArmor": 0,
@@ -574,6 +607,7 @@
     "name": "Southern Dress With Robes",
     "type": "BodyArmor",
     "weight": 0.9,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -587,6 +621,7 @@
     "name": "Southern Dress with Waistband",
     "type": "BodyArmor",
     "weight": 0.8,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -600,6 +635,7 @@
     "name": "Desert Headscarf",
     "type": "HeadArmor",
     "weight": 0.4,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -613,6 +649,7 @@
     "name": "Southern Half Headscarf",
     "type": "HeadArmor",
     "weight": 0.4,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -626,6 +663,7 @@
     "name": "Desert Horse",
     "type": "Mount",
     "weight": 431.0,
+    "culture": "Aserai",
     "mount": {
       "bodyLength": 108,
       "chargeDamage": 10,
@@ -640,6 +678,7 @@
     "name": "Southern Horseman Armor",
     "type": "BodyArmor",
     "weight": 4.4,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 13,
@@ -653,6 +692,7 @@
     "name": "Southern Ringmail Shoulder",
     "type": "ShoulderArmor",
     "weight": 2.5,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -666,6 +706,7 @@
     "name": "Mamluke Lance",
     "type": "Polearm",
     "weight": 1.85,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -736,6 +777,7 @@
     "name": "Southern Militia Mace",
     "type": "OneHandedWeapon",
     "weight": 1.62,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "Mace",
@@ -763,6 +805,7 @@
     "name": "Southern Light Mace",
     "type": "OneHandedWeapon",
     "weight": 1.42,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "Mace",
@@ -790,6 +833,7 @@
     "name": "Southern Heavy Mace",
     "type": "OneHandedWeapon",
     "weight": 1.86,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "Mace",
@@ -817,6 +861,7 @@
     "name": "Spiralled Mace",
     "type": "OneHandedWeapon",
     "weight": 2.05,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "Mace",
@@ -844,6 +889,7 @@
     "name": "Decorated Kaskara",
     "type": "OneHandedWeapon",
     "weight": 1.73,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -871,6 +917,7 @@
     "name": "Decorated Long Scimitar",
     "type": "OneHandedWeapon",
     "weight": 1.78,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -898,6 +945,7 @@
     "name": "Decorated Scimitar With Wide Grip",
     "type": "OneHandedWeapon",
     "weight": 1.73,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -925,6 +973,7 @@
     "name": "Engraved Angular Kaskara",
     "type": "OneHandedWeapon",
     "weight": 1.63,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -952,6 +1001,7 @@
     "name": "Southern Robe With Mail",
     "type": "BodyArmor",
     "weight": 8.2,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 25,
@@ -965,6 +1015,7 @@
     "name": "Iron Flyssa",
     "type": "OneHandedWeapon",
     "weight": 1.53,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -992,6 +1043,7 @@
     "name": "Iron Sparring Flyssa",
     "type": "OneHandedWeapon",
     "weight": 1.53,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1019,6 +1071,7 @@
     "name": "Iron Scimitar",
     "type": "OneHandedWeapon",
     "weight": 1.38,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1046,6 +1099,7 @@
     "name": "Iron Sparring Scimitar",
     "type": "OneHandedWeapon",
     "weight": 1.38,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1073,6 +1127,7 @@
     "name": "Slightly Ridged Flyssa",
     "type": "OneHandedWeapon",
     "weight": 1.45,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1100,6 +1155,7 @@
     "name": "Fine Steel Long Kaskara",
     "type": "OneHandedWeapon",
     "weight": 1.84,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1127,6 +1183,7 @@
     "name": "Long Fine Steel Scimitar",
     "type": "OneHandedWeapon",
     "weight": 1.7,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1154,6 +1211,7 @@
     "name": "Narrow Fine Steel Kaskara",
     "type": "OneHandedWeapon",
     "weight": 1.6,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1181,6 +1239,7 @@
     "name": "Thamaskene Steel Kaskara",
     "type": "OneHandedWeapon",
     "weight": 1.43,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1208,6 +1267,7 @@
     "name": "Southern Tunic Waistcoat",
     "type": "BodyArmor",
     "weight": 0.8,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -1221,6 +1281,7 @@
     "name": "Southern Villager Dress",
     "type": "BodyArmor",
     "weight": 0.5,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -1234,6 +1295,7 @@
     "name": "Southern Rural Headdress",
     "type": "HeadArmor",
     "weight": 0.2,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 3,
       "bodyArmor": 0,
@@ -1247,6 +1309,7 @@
     "name": "Southern Common Harness",
     "type": "MountHarness",
     "weight": 6.1,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -1260,6 +1323,7 @@
     "name": "Baggy Trunks",
     "type": "BodyArmor",
     "weight": 0.2,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -1273,6 +1337,7 @@
     "name": "Bamboo Axe",
     "type": "OneHandedWeapon",
     "weight": 1.21,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -1301,6 +1366,7 @@
     "name": "Banded Leather Over Mail",
     "type": "BodyArmor",
     "weight": 8.6,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 29,
@@ -1314,6 +1380,7 @@
     "name": "Commoners Tunic",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -1327,6 +1394,7 @@
     "name": "Sleeveless Enveloped Padded Garments",
     "type": "BodyArmor",
     "weight": 0.5,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -1340,6 +1408,7 @@
     "name": "Old Fur Armor",
     "type": "BodyArmor",
     "weight": 0.9,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -1353,6 +1422,7 @@
     "name": "Old Fur Coat",
     "type": "BodyArmor",
     "weight": 1.0,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -1365,7 +1435,8 @@
     "templateMbId": "bandit_gambeson",
     "name": "Rugged Gambeson",
     "type": "BodyArmor",
-    "weight": 0.9,
+    "weight": 2.2,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -1379,6 +1450,7 @@
     "name": "Commoners Shirt",
     "type": "BodyArmor",
     "weight": 0.5,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -1392,6 +1464,7 @@
     "name": "Rugged Desert Saddle",
     "type": "MountHarness",
     "weight": 7.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 9,
@@ -1405,6 +1478,7 @@
     "name": "Rugged Highland Saddle",
     "type": "MountHarness",
     "weight": 8.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -1418,6 +1492,7 @@
     "name": "Rugged Saddle",
     "type": "MountHarness",
     "weight": 5.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -1431,6 +1506,7 @@
     "name": "Big Banner",
     "type": "Banner",
     "weight": 4.0,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Banner",
@@ -1456,6 +1532,7 @@
     "name": "Triangle Banner",
     "type": "Banner",
     "weight": 4.0,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Banner",
@@ -1481,6 +1558,7 @@
     "name": "Barbed Arrows",
     "type": "Arrows",
     "weight": 0.05,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Arrow",
@@ -1510,6 +1588,7 @@
     "name": "Imperial Simple Leather Armor",
     "type": "BodyArmor",
     "weight": 3.1,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 22,
@@ -1523,6 +1602,7 @@
     "name": "Simple Bastard Sword",
     "type": "OneHandedWeapon",
     "weight": 1.25,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1550,6 +1630,7 @@
     "name": "Square Bit Two Handed Axe",
     "type": "OneHandedWeapon",
     "weight": 1.4,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -1580,6 +1661,7 @@
     "name": "Sparring Two Handed Axe",
     "type": "OneHandedWeapon",
     "weight": 1.4,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -1610,6 +1692,7 @@
     "name": "Iron Broadsword",
     "type": "OneHandedWeapon",
     "weight": 1.99,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "TwoHandedSword",
@@ -1638,6 +1721,7 @@
     "name": "Iron Sparring Broadsword",
     "type": "OneHandedWeapon",
     "weight": 1.99,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "TwoHandedSword",
@@ -1666,6 +1750,7 @@
     "name": "Highland Broadsword",
     "type": "OneHandedWeapon",
     "weight": 1.85,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1713,6 +1798,7 @@
     "name": "Wide Fullered Northern Greatsword",
     "type": "OneHandedWeapon",
     "weight": 2.08,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "TwoHandedSword",
@@ -1741,6 +1827,7 @@
     "name": "Falx",
     "type": "OneHandedWeapon",
     "weight": 1.52,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1790,6 +1877,7 @@
     "name": "Highland Fine Two Handed Sword",
     "type": "OneHandedWeapon",
     "weight": 1.63,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1837,6 +1925,7 @@
     "name": "Battanian Mountain Blade",
     "type": "OneHandedWeapon",
     "weight": 1.22,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1884,6 +1973,7 @@
     "name": "Norse Hatchet",
     "type": "OneHandedWeapon",
     "weight": 1.09,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -1912,6 +2002,7 @@
     "name": "One Handed Bearded Axe",
     "type": "OneHandedWeapon",
     "weight": 1.03,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -1940,6 +2031,7 @@
     "name": "Round Bitted Fine Steel Hatchet",
     "type": "OneHandedWeapon",
     "weight": 1.05,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -1968,6 +2060,7 @@
     "name": "Highland Tunic",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -1981,6 +2074,7 @@
     "name": "Highland Villager Tunic",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -1994,6 +2088,7 @@
     "name": "Highland Townsmans Tunic",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -2007,6 +2102,7 @@
     "name": "Highland Cape",
     "type": "ShoulderArmor",
     "weight": 4.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -2020,6 +2116,7 @@
     "name": "Highland Hood",
     "type": "HeadArmor",
     "weight": 0.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -2033,6 +2130,7 @@
     "name": "Highland Cloak",
     "type": "ShoulderArmor",
     "weight": 0.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -2046,6 +2144,7 @@
     "name": "Highland Furred Cloak",
     "type": "ShoulderArmor",
     "weight": 1.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -2059,6 +2158,7 @@
     "name": "Highland Plaid Dress",
     "type": "BodyArmor",
     "weight": 0.9,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -2072,6 +2172,7 @@
     "name": "Highland Dress",
     "type": "BodyArmor",
     "weight": 0.8,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -2085,6 +2186,7 @@
     "name": "Highland Peasant Dress",
     "type": "BodyArmor",
     "weight": 0.7,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -2098,6 +2200,7 @@
     "name": "Highland Villager Dress",
     "type": "BodyArmor",
     "weight": 0.7,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -2111,6 +2214,7 @@
     "name": "Highland Fur Boots",
     "type": "LegArmor",
     "weight": 1.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -2124,6 +2228,7 @@
     "name": "Highland Fur Helmet",
     "type": "HeadArmor",
     "weight": 1.3,
+    "culture": "Battania",
     "armor": {
       "headArmor": 20,
       "bodyArmor": 0,
@@ -2137,6 +2242,7 @@
     "name": "Battanian Pony",
     "type": "Mount",
     "weight": 462.0,
+    "culture": "Battania",
     "mount": {
       "bodyLength": 98,
       "chargeDamage": 10,
@@ -2151,6 +2257,7 @@
     "name": "Battania Horse Harness",
     "type": "MountHarness",
     "weight": 10.3,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -2164,6 +2271,7 @@
     "name": "Highland Half Scaled Harness",
     "type": "MountHarness",
     "weight": 15.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 40,
@@ -2177,6 +2285,7 @@
     "name": "Highland Scaled Harness",
     "type": "MountHarness",
     "weight": 20.6,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 50,
@@ -2190,6 +2299,7 @@
     "name": "Bronze Reinforced Highland Large Shield",
     "type": "Shield",
     "weight": 3.5,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -2218,6 +2328,7 @@
     "name": "Iron Reinforced Highland Large Shield",
     "type": "Shield",
     "weight": 3.5,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -2246,6 +2357,7 @@
     "name": "Highland Large Shield",
     "type": "Shield",
     "weight": 3.5,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -2274,6 +2386,7 @@
     "name": "Highland Leather Boots",
     "type": "LegArmor",
     "weight": 1.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -2287,6 +2400,7 @@
     "name": "Knobbed Club",
     "type": "OneHandedWeapon",
     "weight": 1.74,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "Mace",
@@ -2314,6 +2428,7 @@
     "name": "Highland Spiked Club",
     "type": "OneHandedWeapon",
     "weight": 1.42,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "Mace",
@@ -2340,7 +2455,8 @@
     "templateMbId": "battania_mercenary_armor",
     "name": "Highland Mercenary Armor",
     "type": "BodyArmor",
-    "weight": 11.6,
+    "weight": 24.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 53,
@@ -2353,7 +2469,8 @@
     "templateMbId": "battania_noble_armor",
     "name": "Highland Noble Armor",
     "type": "BodyArmor",
-    "weight": 11.6,
+    "weight": 23.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 48,
@@ -2367,6 +2484,7 @@
     "name": "Highland Noble Bracers",
     "type": "HandArmor",
     "weight": 0.6,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -2380,6 +2498,7 @@
     "name": "Engraved Backsword",
     "type": "OneHandedWeapon",
     "weight": 1.77,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2408,6 +2527,7 @@
     "name": "Highland Fine Steel Blade",
     "type": "OneHandedWeapon",
     "weight": 1.54,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2435,6 +2555,7 @@
     "name": "Decorated Broadsword",
     "type": "OneHandedWeapon",
     "weight": 1.34,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2463,6 +2584,7 @@
     "name": "Rhomphalia",
     "type": "Polearm",
     "weight": 1.2,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -2493,6 +2615,7 @@
     "name": "Highland Shoulder Fur",
     "type": "ShoulderArmor",
     "weight": 1.6,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 9,
@@ -2506,6 +2629,7 @@
     "name": "Highland Shoulder Straps",
     "type": "ShoulderArmor",
     "weight": 1.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -2519,6 +2643,7 @@
     "name": "Highland Cloak with Shoulder Straps",
     "type": "ShoulderArmor",
     "weight": 1.3,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -2532,6 +2657,7 @@
     "name": "Ridged Iron Broadsword",
     "type": "OneHandedWeapon",
     "weight": 2.09,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2559,6 +2685,7 @@
     "name": "Blunt Iron Broadsword",
     "type": "OneHandedWeapon",
     "weight": 1.88,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2586,6 +2713,7 @@
     "name": "Broad Ridged Shortsword",
     "type": "OneHandedWeapon",
     "weight": 1.35,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2613,6 +2741,7 @@
     "name": "Broadsword",
     "type": "OneHandedWeapon",
     "weight": 1.75,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2640,6 +2769,7 @@
     "name": "Fine Steel Cavalry Broadsword",
     "type": "OneHandedWeapon",
     "weight": 1.49,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2667,6 +2797,7 @@
     "name": "Highland Broad Blade",
     "type": "OneHandedWeapon",
     "weight": 1.27,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2694,6 +2825,7 @@
     "name": "Targe",
     "type": "Shield",
     "weight": 2.5,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "LargeShield",
@@ -2722,6 +2854,7 @@
     "name": "Sparring Targe",
     "type": "Shield",
     "weight": 2.5,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "LargeShield",
@@ -2749,7 +2882,8 @@
     "templateMbId": "battania_warlord_armor",
     "name": "Highland Warlord Armor",
     "type": "BodyArmor",
-    "weight": 12.4,
+    "weight": 19.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 37,
@@ -2763,6 +2897,7 @@
     "name": "Highland Warlord Boots",
     "type": "LegArmor",
     "weight": 2.6,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -2776,6 +2911,7 @@
     "name": "Highland Warlord Bracers",
     "type": "HandArmor",
     "weight": 1.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -2789,6 +2925,7 @@
     "name": "Highland Warlord Pauldrons",
     "type": "ShoulderArmor",
     "weight": 4.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 20,
@@ -2802,6 +2939,7 @@
     "name": "Woodland Boots",
     "type": "LegArmor",
     "weight": 1.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -2814,7 +2952,8 @@
     "templateMbId": "battania_woodland_chainmail",
     "name": "Woodland Chainmail",
     "type": "BodyArmor",
-    "weight": 10.3,
+    "weight": 14.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 31,
@@ -2828,6 +2967,7 @@
     "name": "Battania Woodland Cloak",
     "type": "ShoulderArmor",
     "weight": 1.4,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -2841,6 +2981,7 @@
     "name": "Woodland Garments",
     "type": "BodyArmor",
     "weight": 1.2,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -2854,6 +2995,7 @@
     "name": "Highland Chainmail",
     "type": "BodyArmor",
     "weight": 10.7,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 28,
@@ -2867,6 +3009,7 @@
     "name": "Highland Mail Shirt",
     "type": "BodyArmor",
     "weight": 10.7,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 23,
@@ -2880,6 +3023,7 @@
     "name": "Highland Reinforced Mail Over Tartan",
     "type": "BodyArmor",
     "weight": 14.7,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 32,
@@ -2893,6 +3037,7 @@
     "name": "Highland Reinforced Fian Mail",
     "type": "BodyArmor",
     "weight": 16.6,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 34,
@@ -2906,6 +3051,7 @@
     "name": "Highland Mail Shoulders",
     "type": "ShoulderArmor",
     "weight": 4.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -2919,6 +3065,7 @@
     "name": "Highland Mail Shoulder Reinforcements",
     "type": "ShoulderArmor",
     "weight": 4.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -2932,6 +3079,7 @@
     "name": "Highland Crowned Helmet",
     "type": "HeadArmor",
     "weight": 3.2,
+    "culture": "Battania",
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -2945,6 +3093,7 @@
     "name": "Highland Cured Leather Shoulders",
     "type": "ShoulderArmor",
     "weight": 1.2,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -2958,6 +3107,7 @@
     "name": "Highland Noble Helmet with Feather",
     "type": "HeadArmor",
     "weight": 3.1,
+    "culture": "Battania",
     "armor": {
       "headArmor": 53,
       "bodyArmor": 0,
@@ -2971,6 +3121,7 @@
     "name": "Highland Plated Noble Helmet",
     "type": "HeadArmor",
     "weight": 2.9,
+    "culture": "Battania",
     "armor": {
       "headArmor": 41,
       "bodyArmor": 0,
@@ -2984,6 +3135,7 @@
     "name": "Battanian Wilding Armor",
     "type": "BodyArmor",
     "weight": 0.8,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -2997,6 +3149,7 @@
     "name": "Highland Scale Over Mail Armor",
     "type": "BodyArmor",
     "weight": 22.4,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 42,
@@ -3010,6 +3163,7 @@
     "name": "Battered Horseman's Kite Shield",
     "type": "Shield",
     "weight": 3.6,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -3038,6 +3192,7 @@
     "name": "Battle Axe",
     "type": "OneHandedWeapon",
     "weight": 1.01,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -3066,6 +3221,7 @@
     "name": "Bearded Axe",
     "type": "OneHandedWeapon",
     "weight": 1.12,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -3096,6 +3252,7 @@
     "name": "Bear Head",
     "type": "HeadArmor",
     "weight": 1.4,
+    "culture": "Battania",
     "armor": {
       "headArmor": 24,
       "bodyArmor": 0,
@@ -3109,6 +3266,7 @@
     "name": "Bear Pelt",
     "type": "ShoulderArmor",
     "weight": 2.3,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -3122,6 +3280,7 @@
     "name": "Belted Leather Boots",
     "type": "LegArmor",
     "weight": 1.1,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3135,6 +3294,7 @@
     "name": "Belted Leather Cuirass",
     "type": "BodyArmor",
     "weight": 1.9,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 19,
@@ -3148,6 +3308,7 @@
     "name": "Billhook",
     "type": "Polearm",
     "weight": 1.69,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -3178,6 +3339,7 @@
     "name": "Sparring Billhook",
     "type": "Polearm",
     "weight": 1.69,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -3208,6 +3370,7 @@
     "name": "Black Heart",
     "type": "OneHandedWeapon",
     "weight": 1.64,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -3238,6 +3401,7 @@
     "name": "Blunt Arrows",
     "type": "Arrows",
     "weight": 0.05,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "Arrow",
@@ -3267,6 +3431,7 @@
     "name": "Bo staff",
     "type": "Polearm",
     "weight": 1.0,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -3298,6 +3463,7 @@
     "name": "Stacked Bodkin Arrows",
     "type": "Arrows",
     "weight": 0.048,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Arrow",
@@ -3327,6 +3493,7 @@
     "name": "Bodkin Arrows",
     "type": "Arrows",
     "weight": 0.048,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Arrow",
@@ -3356,6 +3523,7 @@
     "name": "Light Bodkin Arrows",
     "type": "Arrows",
     "weight": 0.048,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Arrow",
@@ -3385,6 +3553,7 @@
     "name": "Bolt",
     "type": "Bolts",
     "weight": 0.05,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Bolt",
@@ -3415,6 +3584,7 @@
     "name": "Bolted Leather Strips",
     "type": "ShoulderArmor",
     "weight": 0.5,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -3428,6 +3598,7 @@
     "name": "Bone Crusher",
     "type": "OneHandedWeapon",
     "weight": 1.68,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Mace",
@@ -3455,6 +3626,7 @@
     "name": "Wooden Adarga",
     "type": "Shield",
     "weight": 7.3,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "LargeShield",
@@ -3483,6 +3655,7 @@
     "name": "Southern Round Shield",
     "type": "Shield",
     "weight": 7.3,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "LargeShield",
@@ -3511,6 +3684,7 @@
     "name": "Southern Round Sparring Shield",
     "type": "Shield",
     "weight": 7.3,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "LargeShield",
@@ -3539,6 +3713,7 @@
     "name": "Cavalry Kite Shield",
     "type": "Shield",
     "weight": 5.5,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -3567,6 +3742,7 @@
     "name": "Bracketed Heater Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -3594,7 +3770,8 @@
     "templateMbId": "brass_lamellar_over_mail",
     "name": "Eastern Brass Lamellar Over Mail",
     "type": "BodyArmor",
-    "weight": 11.4,
+    "weight": 22.0,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 46,
@@ -3608,6 +3785,7 @@
     "name": "Brass Lamellar Shoulders",
     "type": "ShoulderArmor",
     "weight": 5.0,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -3621,6 +3799,7 @@
     "name": "Northern Lamellar Shoulders",
     "type": "ShoulderArmor",
     "weight": 5.0,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -3634,6 +3813,7 @@
     "name": "Brass Scale Shoulders",
     "type": "ShoulderArmor",
     "weight": 2.2,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -3647,6 +3827,7 @@
     "name": "Broad Arming Sword",
     "type": "OneHandedWeapon",
     "weight": 1.67,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -3674,6 +3855,7 @@
     "name": "Broad Falchion",
     "type": "OneHandedWeapon",
     "weight": 2.14,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -3701,6 +3883,7 @@
     "name": "Broad Ild",
     "type": "OneHandedWeapon",
     "weight": 1.39,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -3728,6 +3911,7 @@
     "name": "Buckled Wildsman Armor",
     "type": "BodyArmor",
     "weight": 12.3,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 28,
@@ -3741,6 +3925,7 @@
     "name": "Burlap Dress",
     "type": "BodyArmor",
     "weight": 0.5,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -3754,6 +3939,7 @@
     "name": "Burlap Waistcoat",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -3767,6 +3953,7 @@
     "name": "Buttoned Leather Bracers",
     "type": "HandArmor",
     "weight": 0.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3780,6 +3967,7 @@
     "name": "Camel",
     "type": "Mount",
     "weight": 611.0,
+    "culture": "Neutral",
     "mount": {
       "bodyLength": 95,
       "chargeDamage": 10,
@@ -3794,6 +3982,7 @@
     "name": "Camel Saddle",
     "type": "MountHarness",
     "weight": 25.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -3807,6 +3996,7 @@
     "name": "Camel Saddle with Heavy Load",
     "type": "MountHarness",
     "weight": 25.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -3820,6 +4010,7 @@
     "name": "Camel Saddle with Light Load",
     "type": "MountHarness",
     "weight": 25.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -3833,6 +4024,7 @@
     "name": "Campaign Banner Small",
     "type": "Banner",
     "weight": 4.0,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Banner",
@@ -3858,6 +4050,7 @@
     "name": "Highland Dagger",
     "type": "OneHandedWeapon",
     "weight": 0.78,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "Dagger",
@@ -3909,6 +4102,7 @@
     "name": "Celtic Frost",
     "type": "MountHarness",
     "weight": 26.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 78,
@@ -3922,6 +4116,7 @@
     "name": "Highland Throwing Dagger",
     "type": "Thrown",
     "weight": 0.8,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "ThrowingKnife",
@@ -3973,6 +4168,7 @@
     "name": "Cervelliere Over Arming Coif",
     "type": "HeadArmor",
     "weight": 0.9,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -3986,6 +4182,7 @@
     "name": "Cervelliere Over Cloth Headwrap",
     "type": "HeadArmor",
     "weight": 1.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -3999,6 +4196,7 @@
     "name": "Cervelliere Over Laced Coif",
     "type": "HeadArmor",
     "weight": 1.1,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 15,
       "bodyArmor": 0,
@@ -4012,6 +4210,7 @@
     "name": "Cervelliere Over Padded Cap",
     "type": "HeadArmor",
     "weight": 1.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 24,
       "bodyArmor": 0,
@@ -4025,6 +4224,7 @@
     "name": "Chain Barding",
     "type": "MountHarness",
     "weight": 26.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 64,
@@ -4038,6 +4238,7 @@
     "name": "Chain Horse Harness",
     "type": "MountHarness",
     "weight": 24.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 55,
@@ -4051,6 +4252,7 @@
     "name": "Charger",
     "type": "Mount",
     "weight": 400.0,
+    "culture": "Neutral",
     "mount": {
       "bodyLength": 119,
       "chargeDamage": 12,
@@ -4065,6 +4267,7 @@
     "name": "Knights Kite Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -4093,6 +4296,7 @@
     "name": "Two Handed Cleaver ",
     "type": "OneHandedWeapon",
     "weight": 2.28,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -4140,6 +4344,7 @@
     "name": "Cleaver",
     "type": "OneHandedWeapon",
     "weight": 1.8,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -4167,6 +4372,7 @@
     "name": "Closed Southern Helmet",
     "type": "HeadArmor",
     "weight": 1.4,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 20,
       "bodyArmor": 0,
@@ -4180,6 +4386,7 @@
     "name": "Closed Southern Helmet With Mail",
     "type": "HeadArmor",
     "weight": 3.2,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -4193,6 +4400,7 @@
     "name": "Northern Closed Helmet",
     "type": "HeadArmor",
     "weight": 4.1,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -4206,6 +4414,7 @@
     "name": "Closed Head Scarf",
     "type": "HeadArmor",
     "weight": 0.6,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -4219,6 +4428,7 @@
     "name": "Cloth Apron",
     "type": "BodyArmor",
     "weight": 0.8,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -4232,6 +4442,7 @@
     "name": "Cloth Headwrap",
     "type": "HeadArmor",
     "weight": 0.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -4245,6 +4456,7 @@
     "name": "Western Cloth Tunic",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -4257,7 +4469,8 @@
     "templateMbId": "coat_of_plates_over_mail",
     "name": "Coat of Plates Over Mail",
     "type": "BodyArmor",
-    "weight": 25.11,
+    "weight": 23.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 50,
@@ -4271,6 +4484,7 @@
     "name": "Simple Short Bow",
     "type": "Bow",
     "weight": 0.3,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Bow",
@@ -4304,6 +4518,7 @@
     "name": "Steppe Recurve Bow",
     "type": "Bow",
     "weight": 0.3,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Bow",
@@ -4337,6 +4552,7 @@
     "name": "Light Crossbow",
     "type": "Crossbow",
     "weight": 1.0,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Crossbow",
@@ -4368,6 +4584,7 @@
     "name": "Heavy Crossbow",
     "type": "Crossbow",
     "weight": 2.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Crossbow",
@@ -4401,6 +4618,7 @@
     "name": "Arbalest",
     "type": "Crossbow",
     "weight": 3.0,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "Crossbow",
@@ -4433,6 +4651,7 @@
     "name": "Hickory Crossbow",
     "type": "Crossbow",
     "weight": 2.2,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "Crossbow",
@@ -4465,6 +4684,7 @@
     "name": "Crossbow",
     "type": "Crossbow",
     "weight": 2.2,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Crossbow",
@@ -4496,6 +4716,7 @@
     "name": "Bound Crossbow",
     "type": "Crossbow",
     "weight": 2.0,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Crossbow",
@@ -4529,6 +4750,7 @@
     "name": "Fine Crossbow",
     "type": "Crossbow",
     "weight": 2.2,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Crossbow",
@@ -4560,6 +4782,7 @@
     "name": "Crude Eastern Leather Armor",
     "type": "BodyArmor",
     "weight": 2.4,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 13,
@@ -4573,6 +4796,7 @@
     "name": "Curved Round Shield",
     "type": "Shield",
     "weight": 7.3,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "LargeShield",
@@ -4601,6 +4825,7 @@
     "name": "Cut Dress",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -4614,6 +4839,7 @@
     "name": "Cut Dress With Pouch",
     "type": "BodyArmor",
     "weight": 0.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -4627,6 +4853,7 @@
     "name": "Dawnbreaker",
     "type": "OneHandedWeapon",
     "weight": 1.9,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -4654,6 +4881,7 @@
     "name": "Northern Decorated Visored Helmet",
     "type": "HeadArmor",
     "weight": 4.2,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 52,
       "bodyArmor": 0,
@@ -4667,6 +4895,7 @@
     "name": "Decorated Imperial Boots",
     "type": "LegArmor",
     "weight": 2.3,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -4680,6 +4909,7 @@
     "name": "Decorated Imperial Gauntlets",
     "type": "HandArmor",
     "weight": 1.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -4693,6 +4923,7 @@
     "name": "Decorated Nomad Cap",
     "type": "HeadArmor",
     "weight": 0.4,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -4705,7 +4936,8 @@
     "templateMbId": "decorated_nordic_hauberk",
     "name": "Decorated Northern Hauberk",
     "type": "BodyArmor",
-    "weight": 20.5,
+    "weight": 10.7,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 25,
@@ -4719,6 +4951,7 @@
     "name": "Round Steppe Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -4747,6 +4980,7 @@
     "name": "Arrows",
     "type": "Arrows",
     "weight": 0.043,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Arrow",
@@ -4776,6 +5010,7 @@
     "name": "Southern Cap",
     "type": "HeadArmor",
     "weight": 0.4,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -4789,6 +5024,7 @@
     "name": "Desert Cloth Harness",
     "type": "MountHarness",
     "weight": 7.3,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -4802,6 +5038,7 @@
     "name": "Desert Fabric Shoulderpad",
     "type": "ShoulderArmor",
     "weight": 1.8,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -4815,6 +5052,7 @@
     "name": "Desert Headdress",
     "type": "HeadArmor",
     "weight": 0.2,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -4828,6 +5066,7 @@
     "name": "Southern Helmet",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -4841,6 +5080,7 @@
     "name": "Southern Helmet With Mail",
     "type": "HeadArmor",
     "weight": 1.9,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -4853,7 +5093,8 @@
     "templateMbId": "desert_lamellar",
     "name": "Southern Lamellar Armor",
     "type": "BodyArmor",
-    "weight": 9.4,
+    "weight": 18.0,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 48,
@@ -4867,6 +5108,7 @@
     "name": "Desert Leather Shoulderpad",
     "type": "ShoulderArmor",
     "weight": 1.8,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -4880,6 +5122,7 @@
     "name": "Desert Long Sword",
     "type": "OneHandedWeapon",
     "weight": 1.93,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -4907,6 +5150,7 @@
     "name": "Southern Mail Coif",
     "type": "HeadArmor",
     "weight": 3.0,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -4920,6 +5164,7 @@
     "name": "Desert Oval Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -4948,6 +5193,7 @@
     "name": "Southern Padded Cloth",
     "type": "BodyArmor",
     "weight": 1.3,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -4961,6 +5207,7 @@
     "name": "Southern Robe",
     "type": "BodyArmor",
     "weight": 1.6,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -4974,6 +5221,7 @@
     "name": "Southern Robe Over Mail",
     "type": "BodyArmor",
     "weight": 8.9,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 25,
@@ -4986,7 +5234,8 @@
     "templateMbId": "desert_scale_armor",
     "name": "Southern Scale Armor",
     "type": "BodyArmor",
-    "weight": 14.4,
+    "weight": 20.0,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 47,
@@ -5000,6 +5249,7 @@
     "name": "Southern Scale Shoulders",
     "type": "ShoulderArmor",
     "weight": 4.2,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -5013,6 +5263,7 @@
     "name": "Southern Throwing Daggers",
     "type": "Thrown",
     "weight": 0.86,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "ThrowingKnife",
@@ -5064,6 +5315,7 @@
     "name": "Southern Sparring Throwing Daggers",
     "type": "Thrown",
     "weight": 0.86,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "ThrowingKnife",
@@ -5115,6 +5367,7 @@
     "name": "Desert War Horse",
     "type": "Mount",
     "weight": 480.0,
+    "culture": "Aserai",
     "mount": {
       "bodyLength": 100,
       "chargeDamage": 25,
@@ -5129,6 +5382,7 @@
     "name": "Dress",
     "type": "BodyArmor",
     "weight": 0.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -5142,6 +5396,7 @@
     "name": "Early Retirement",
     "type": "OneHandedWeapon",
     "weight": 1.32,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -5189,6 +5444,7 @@
     "name": "Eastern Polesword",
     "type": "Polearm",
     "weight": 2.45,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -5239,6 +5495,7 @@
     "name": "Eastern Cap",
     "type": "HeadArmor",
     "weight": 0.3,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -5252,6 +5509,7 @@
     "name": "Eastern Jagged Javelin",
     "type": "Thrown",
     "weight": 0.93,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "Javelin",
@@ -5304,6 +5562,7 @@
     "name": "Eastern Sparring Javelin",
     "type": "Thrown",
     "weight": 0.93,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "Javelin",
@@ -5356,6 +5615,7 @@
     "name": "Eastern Javelin",
     "type": "Thrown",
     "weight": 1.11,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "Javelin",
@@ -5408,6 +5668,7 @@
     "name": "Jereed",
     "type": "Thrown",
     "weight": 1.2,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "Javelin",
@@ -5459,7 +5720,8 @@
     "templateMbId": "eastern_lamellar_armor",
     "name": "Eastern Lamellar Armor",
     "type": "BodyArmor",
-    "weight": 5.8,
+    "weight": 13.0,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 39,
@@ -5472,7 +5734,8 @@
     "templateMbId": "eastern_plated_leather",
     "name": "Eastern Plated Leather",
     "type": "BodyArmor",
-    "weight": 21.5,
+    "weight": 18.6,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 36,
@@ -5486,6 +5749,7 @@
     "name": "Eastern Plated Leather Vambraces",
     "type": "HandArmor",
     "weight": 1.7,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -5499,6 +5763,7 @@
     "name": "Eastern Plated Leather Vest",
     "type": "BodyArmor",
     "weight": 14.2,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 34,
@@ -5512,6 +5777,7 @@
     "name": "Southern Silk Clothing",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -5525,6 +5791,7 @@
     "name": "Jagged Spear",
     "type": "Polearm",
     "weight": 1.54,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -5575,6 +5842,7 @@
     "name": "Jagged Sparring Spear",
     "type": "Polearm",
     "weight": 1.54,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -5625,6 +5893,7 @@
     "name": "Narrow Long Headed Eastern Spear",
     "type": "Polearm",
     "weight": 2.17,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -5675,6 +5944,7 @@
     "name": "Weighted Eastern Spear",
     "type": "Polearm",
     "weight": 1.85,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -5725,6 +5995,7 @@
     "name": "Fine Steel Leaf Spear",
     "type": "Polearm",
     "weight": 2.01,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -5775,6 +6046,7 @@
     "name": "Thin Fine Steel Hewing Spear",
     "type": "Polearm",
     "weight": 1.4,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -5825,6 +6097,7 @@
     "name": "Eastern Steel Mace",
     "type": "OneHandedWeapon",
     "weight": 1.87,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "Mace",
@@ -5851,7 +6124,8 @@
     "templateMbId": "eastern_stitched_leather_coat",
     "name": "Eastern Stitched Leather Coat",
     "type": "BodyArmor",
-    "weight": 13.9,
+    "weight": 8.4,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 20,
@@ -5865,6 +6139,7 @@
     "name": "Imperial Studded Leather",
     "type": "BodyArmor",
     "weight": 3.0,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -5878,6 +6153,7 @@
     "name": "Eastern Studded Shoulders",
     "type": "ShoulderArmor",
     "weight": 2.3,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 17,
@@ -5891,6 +6167,7 @@
     "name": "Jagged Throwing Spear",
     "type": "Polearm",
     "weight": 1.77,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -5965,6 +6242,7 @@
     "name": "Triangular Throwing Spear",
     "type": "Polearm",
     "weight": 2.1,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -6039,6 +6317,7 @@
     "name": "Eastern Vendel Helmet",
     "type": "HeadArmor",
     "weight": 4.0,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -6052,6 +6331,7 @@
     "name": "Wicker Square Shield",
     "type": "Shield",
     "weight": 2.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -6080,6 +6360,7 @@
     "name": "Wicker Square Tournament Shield",
     "type": "Shield",
     "weight": 2.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -6108,6 +6389,7 @@
     "name": "Eastern Wrapped Armguards",
     "type": "HandArmor",
     "weight": 0.3,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -6121,6 +6403,7 @@
     "name": "Emir's Helmet",
     "type": "HeadArmor",
     "weight": 3.0,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -6134,6 +6417,7 @@
     "name": "Decorated Oval Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -6162,6 +6446,7 @@
     "name": "Ladies Dress",
     "type": "BodyArmor",
     "weight": 0.7,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -6175,6 +6460,7 @@
     "name": "Red Dress",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -6188,6 +6474,7 @@
     "name": "Imperial Guarded Lord Helmet",
     "type": "HeadArmor",
     "weight": 3.7,
+    "culture": "Empire",
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -6201,6 +6488,7 @@
     "name": "Imperial Helmet with Metal Strips",
     "type": "HeadArmor",
     "weight": 3.8,
+    "culture": "Empire",
     "armor": {
       "headArmor": 50,
       "bodyArmor": 0,
@@ -6214,6 +6502,7 @@
     "name": "Midlands Palfrey",
     "type": "Mount",
     "weight": 473.0,
+    "culture": "Empire",
     "mount": {
       "bodyLength": 110,
       "chargeDamage": 10,
@@ -6228,6 +6517,7 @@
     "name": "Imperial Cavalry Armor",
     "type": "BodyArmor",
     "weight": 8.3,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 27,
@@ -6241,6 +6531,7 @@
     "name": "Imperial Horseman Boots",
     "type": "LegArmor",
     "weight": 0.8,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -6254,6 +6545,7 @@
     "name": "Imperial Jewelled Helmet",
     "type": "HeadArmor",
     "weight": 3.8,
+    "culture": "Empire",
     "armor": {
       "headArmor": 50,
       "bodyArmor": 0,
@@ -6267,6 +6559,7 @@
     "name": "Imperial Light Lance",
     "type": "Polearm",
     "weight": 1.95,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -6337,6 +6630,7 @@
     "name": "Imperial Sparring Lance",
     "type": "Polearm",
     "weight": 1.95,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -6407,6 +6701,7 @@
     "name": "Imperial Lance",
     "type": "Polearm",
     "weight": 2.22,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -6437,6 +6732,7 @@
     "name": "Cataphract Lance",
     "type": "Polearm",
     "weight": 2.04,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -6467,6 +6763,7 @@
     "name": "Imperial Lord Helmet",
     "type": "HeadArmor",
     "weight": 3.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -6480,6 +6777,7 @@
     "name": "Spiked Club",
     "type": "OneHandedWeapon",
     "weight": 1.24,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "Mace",
@@ -6507,6 +6805,7 @@
     "name": "Imperial Light Mace",
     "type": "OneHandedWeapon",
     "weight": 1.75,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "Mace",
@@ -6534,6 +6833,7 @@
     "name": "Calradic Mace",
     "type": "OneHandedWeapon",
     "weight": 1.8,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "Mace",
@@ -6561,6 +6861,7 @@
     "name": "Light Royal Mace",
     "type": "OneHandedWeapon",
     "weight": 2.54,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "Mace",
@@ -6588,6 +6889,7 @@
     "name": "Cataphracts Mace",
     "type": "OneHandedWeapon",
     "weight": 2.24,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "Mace",
@@ -6615,6 +6917,7 @@
     "name": "Decorated Short Spatha",
     "type": "OneHandedWeapon",
     "weight": 1.5,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -6642,6 +6945,7 @@
     "name": "Thamaskene Steel Spatha",
     "type": "OneHandedWeapon",
     "weight": 1.49,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -6669,6 +6973,7 @@
     "name": "Sharpened Spatha Blade With Ring Pommel",
     "type": "OneHandedWeapon",
     "weight": 1.7,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -6696,6 +7001,7 @@
     "name": "Menavlion",
     "type": "Polearm",
     "weight": 1.81,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -6746,6 +7052,7 @@
     "name": "Fine Steel Menavlion",
     "type": "Polearm",
     "weight": 1.81,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -6796,6 +7103,7 @@
     "name": "Empire Short Tunic",
     "type": "BodyArmor",
     "weight": 1.0,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -6809,6 +7117,7 @@
     "name": "Spatha With Narrow Fuller",
     "type": "OneHandedWeapon",
     "weight": 1.37,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -6836,6 +7145,7 @@
     "name": "Spatha",
     "type": "OneHandedWeapon",
     "weight": 1.41,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -6863,6 +7173,7 @@
     "name": "Fine Steel Spatha",
     "type": "OneHandedWeapon",
     "weight": 1.48,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -6890,6 +7201,7 @@
     "name": "Fine Steel Paramerion",
     "type": "OneHandedWeapon",
     "weight": 1.5,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -6917,6 +7229,7 @@
     "name": "Thamaskene Steel Spathion",
     "type": "OneHandedWeapon",
     "weight": 1.37,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -6944,6 +7257,7 @@
     "name": "Imperial Broad Bladed Throwing Knives",
     "type": "Thrown",
     "weight": 0.96,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "ThrowingKnife",
@@ -6995,6 +7309,7 @@
     "name": "Imperial Gambeson",
     "type": "BodyArmor",
     "weight": 2.1,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -7008,6 +7323,7 @@
     "name": "Imperial Gambeson Over Leather Jacket",
     "type": "BodyArmor",
     "weight": 1.8,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -7021,6 +7337,7 @@
     "name": "Imperial Gambeson With Skirts",
     "type": "BodyArmor",
     "weight": 2.0,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -7034,6 +7351,7 @@
     "name": "Imperial Gambeson With Straps",
     "type": "BodyArmor",
     "weight": 1.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -7047,6 +7365,7 @@
     "name": "Imperial Long Gambeson",
     "type": "BodyArmor",
     "weight": 1.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -7060,6 +7379,7 @@
     "name": "Imperial Auxiliary Armor",
     "type": "BodyArmor",
     "weight": 1.9,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 17,
@@ -7073,6 +7393,7 @@
     "name": "Imperial Auxiliary Armor With Straps",
     "type": "BodyArmor",
     "weight": 2.0,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -7086,6 +7407,7 @@
     "name": "Imperial Padded Shoulders",
     "type": "ShoulderArmor",
     "weight": 1.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -7099,6 +7421,7 @@
     "name": "Execution Axe",
     "type": "OneHandedWeapon",
     "weight": 1.37,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -7129,6 +7452,7 @@
     "name": "Falchion",
     "type": "OneHandedWeapon",
     "weight": 1.69,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -7156,6 +7480,7 @@
     "name": "Feathered Spangenhelm Over Imperial Coif",
     "type": "HeadArmor",
     "weight": 3.1,
+    "culture": "Empire",
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -7169,6 +7494,7 @@
     "name": "Female Head Wrap",
     "type": "HeadArmor",
     "weight": 0.4,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -7182,6 +7508,7 @@
     "name": "Woman's Hood",
     "type": "ShoulderArmor",
     "weight": 0.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -7195,6 +7522,7 @@
     "name": "Woman's Scarf",
     "type": "ShoulderArmor",
     "weight": 0.6,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -7208,6 +7536,7 @@
     "name": "Fine Pike",
     "type": "Polearm",
     "weight": 2.81,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -7238,6 +7567,7 @@
     "name": "Fine Southern Dress",
     "type": "BodyArmor",
     "weight": 0.7,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -7251,6 +7581,7 @@
     "name": "Fine Town Boots",
     "type": "LegArmor",
     "weight": 0.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -7264,6 +7595,7 @@
     "name": "Rich Tunic",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -7277,6 +7609,7 @@
     "name": "Flat Heater Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -7305,6 +7638,7 @@
     "name": "Folded Town Boots",
     "type": "LegArmor",
     "weight": 1.0,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -7318,6 +7652,7 @@
     "name": "Military Tunic",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -7331,6 +7666,7 @@
     "name": "Wicker Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -7359,6 +7695,7 @@
     "name": "Fortified Kite Shield",
     "type": "Shield",
     "weight": 5.4,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -7387,6 +7724,7 @@
     "name": "Fortunas Choice",
     "type": "MountHarness",
     "weight": 26.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 77,
@@ -7400,6 +7738,7 @@
     "name": "Full Helm Over Arming Coif",
     "type": "HeadArmor",
     "weight": 3.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 40,
       "bodyArmor": 0,
@@ -7413,6 +7752,7 @@
     "name": "Full Helm Over Cloth Headwrap",
     "type": "HeadArmor",
     "weight": 3.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 42,
       "bodyArmor": 0,
@@ -7426,6 +7766,7 @@
     "name": "Full Helm Over Laced Coif",
     "type": "HeadArmor",
     "weight": 3.5,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 50,
       "bodyArmor": 0,
@@ -7439,6 +7780,7 @@
     "name": "Full Helm Over Mail Coif",
     "type": "HeadArmor",
     "weight": 4.5,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 50,
       "bodyArmor": 0,
@@ -7452,6 +7794,7 @@
     "name": "Full Helm Over Padded Cap",
     "type": "HeadArmor",
     "weight": 3.1,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -7465,6 +7808,7 @@
     "name": "Full Helm Over Padded Cloth",
     "type": "HeadArmor",
     "weight": 3.1,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 50,
       "bodyArmor": 0,
@@ -7477,7 +7821,8 @@
     "templateMbId": "fur_armor",
     "name": "Fur Armor",
     "type": "BodyArmor",
-    "weight": 13.6,
+    "weight": 4.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -7490,7 +7835,8 @@
     "templateMbId": "fur_armor_with_strap",
     "name": "Fur Armor With Strap",
     "type": "BodyArmor",
-    "weight": 1.6,
+    "weight": 3.1,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -7504,6 +7850,7 @@
     "name": "Fur Coat Over Tunic",
     "type": "BodyArmor",
     "weight": 2.1,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -7517,6 +7864,7 @@
     "name": "Eastern Fur Hat",
     "type": "HeadArmor",
     "weight": 0.5,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -7530,6 +7878,7 @@
     "name": "Eastern Fur Hood",
     "type": "HeadArmor",
     "weight": 0.6,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 12,
       "bodyArmor": 0,
@@ -7543,6 +7892,7 @@
     "name": "Fur Skirt",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -7556,6 +7906,7 @@
     "name": "Fur Skirt With Tunic",
     "type": "BodyArmor",
     "weight": 0.9,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -7569,6 +7920,7 @@
     "name": "Fur Waistcoat Over Tunic",
     "type": "BodyArmor",
     "weight": 2.3,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -7582,6 +7934,7 @@
     "name": "Western Gambeson",
     "type": "BodyArmor",
     "weight": 2.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -7595,6 +7948,7 @@
     "name": "Harpoon",
     "type": "Thrown",
     "weight": 1.35,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Javelin",
@@ -7647,6 +8001,7 @@
     "name": "Xiphos",
     "type": "OneHandedWeapon",
     "weight": 0.93,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "Dagger",
@@ -7674,6 +8029,7 @@
     "name": "Longbow",
     "type": "Bow",
     "weight": 0.4,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "Bow",
@@ -7707,6 +8063,7 @@
     "name": "Northern Closed Helmet Over Mail",
     "type": "HeadArmor",
     "weight": 4.4,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -7720,6 +8077,7 @@
     "name": "Northern Helmet Over Leather",
     "type": "HeadArmor",
     "weight": 1.4,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -7733,6 +8091,7 @@
     "name": "Goggled Helmet Over Mail",
     "type": "HeadArmor",
     "weight": 1.8,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 26,
       "bodyArmor": 0,
@@ -7746,6 +8105,7 @@
     "name": "Green Hood",
     "type": "ShoulderArmor",
     "weight": 0.5,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -7759,6 +8119,7 @@
     "name": "Guarded Armwraps",
     "type": "HandArmor",
     "weight": 0.4,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -7772,6 +8133,7 @@
     "name": "Guarded Padded Vambrace",
     "type": "HandArmor",
     "weight": 0.6,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -7785,6 +8147,7 @@
     "name": "Guard's Kettle Over Laced Coif",
     "type": "HeadArmor",
     "weight": 1.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -7798,6 +8161,7 @@
     "name": "Guard's Kettle Over Mail Coif",
     "type": "HeadArmor",
     "weight": 3.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -7811,6 +8175,7 @@
     "name": "Guard's Kettle Over Padded Coif",
     "type": "HeadArmor",
     "weight": 1.5,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 26,
       "bodyArmor": 0,
@@ -7824,6 +8189,7 @@
     "name": "Half Apron",
     "type": "BodyArmor",
     "weight": 0.7,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -7837,6 +8203,7 @@
     "name": "Half Mail And Plate Barding",
     "type": "MountHarness",
     "weight": 16.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 58,
@@ -7850,6 +8217,7 @@
     "name": "Half Scale Barding",
     "type": "MountHarness",
     "weight": 17.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 60,
@@ -7863,6 +8231,7 @@
     "name": "Halfchain Barding",
     "type": "MountHarness",
     "weight": 16.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 52,
@@ -7875,7 +8244,8 @@
     "templateMbId": "hauberk",
     "name": "Western Hauberk",
     "type": "BodyArmor",
-    "weight": 7.3,
+    "weight": 9.5,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 27,
@@ -7889,6 +8259,7 @@
     "name": "Western Scarf",
     "type": "HeadArmor",
     "weight": 0.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -7902,6 +8273,7 @@
     "name": "Brown Hijab",
     "type": "HeadArmor",
     "weight": 0.1,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 2,
       "bodyArmor": 0,
@@ -7915,6 +8287,7 @@
     "name": "Western Head Wrap",
     "type": "HeadArmor",
     "weight": 0.3,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 2,
       "bodyArmor": 0,
@@ -7928,6 +8301,7 @@
     "name": "Western Head Wrapping",
     "type": "HeadArmor",
     "weight": 0.05,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 2,
       "bodyArmor": 0,
@@ -7941,6 +8315,7 @@
     "name": "Western Loose Head Scarf",
     "type": "HeadArmor",
     "weight": 0.5,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -7954,6 +8329,7 @@
     "name": "Western Head Scarf",
     "type": "HeadArmor",
     "weight": 0.3,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -7967,6 +8343,7 @@
     "name": "Hijab",
     "type": "HeadArmor",
     "weight": 0.5,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -7980,6 +8357,7 @@
     "name": "Heater Shield With Cutout",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -8008,6 +8386,7 @@
     "name": "Heavy Heater Shield",
     "type": "Shield",
     "weight": 3.3,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -8036,6 +8415,7 @@
     "name": "Heavy Nasalhelm Over Imperial Leather",
     "type": "HeadArmor",
     "weight": 3.0,
+    "culture": "Empire",
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -8049,6 +8429,7 @@
     "name": "Heavy Nasalhelm Over Imperial Mail",
     "type": "HeadArmor",
     "weight": 3.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -8062,6 +8443,7 @@
     "name": "Heavy Nasalhelm Over Imperial Padding",
     "type": "HeadArmor",
     "weight": 3.2,
+    "culture": "Empire",
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -8075,6 +8457,7 @@
     "name": "Heavy Nasalhelm Over Laced Cloth",
     "type": "HeadArmor",
     "weight": 3.1,
+    "culture": "Empire",
     "armor": {
       "headArmor": 29,
       "bodyArmor": 0,
@@ -8088,6 +8471,7 @@
     "name": "Northern Heavy Coat",
     "type": "BodyArmor",
     "weight": 0.9,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -8101,6 +8485,7 @@
     "name": "Heavy Northern Tunic",
     "type": "BodyArmor",
     "weight": 1.0,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -8114,6 +8499,7 @@
     "name": "Heavy Round Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "LargeShield",
@@ -8142,6 +8528,7 @@
     "name": "Stacked Steppe Arrows",
     "type": "Arrows",
     "weight": 0.036,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "Arrow",
@@ -8171,6 +8558,7 @@
     "name": "Helmet With Faceguard",
     "type": "HeadArmor",
     "weight": 3.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -8184,6 +8572,7 @@
     "name": "Hemp Tunic",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -8197,6 +8586,7 @@
     "name": "Highland Boots",
     "type": "LegArmor",
     "weight": 1.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -8210,6 +8600,7 @@
     "name": "Highland Cloth",
     "type": "BodyArmor",
     "weight": 1.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 9,
@@ -8223,6 +8614,7 @@
     "name": "Highland Gloves",
     "type": "HandArmor",
     "weight": 0.8,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -8236,6 +8628,7 @@
     "name": "Highland Leg Wrappings",
     "type": "LegArmor",
     "weight": 1.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -8249,6 +8642,7 @@
     "name": "Ranger Bow",
     "type": "Bow",
     "weight": 0.4,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "Bow",
@@ -8282,6 +8676,7 @@
     "name": "Highland Round Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -8310,6 +8705,7 @@
     "name": "Decorated Round Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -8338,6 +8734,7 @@
     "name": "Reinforced Highland Spear",
     "type": "Polearm",
     "weight": 2.46,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -8408,6 +8805,7 @@
     "name": "Steel Tipped Hooked Spear",
     "type": "Polearm",
     "weight": 2.03,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -8460,6 +8858,7 @@
     "name": "Highland War Spear",
     "type": "Polearm",
     "weight": 2.03,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -8510,6 +8909,7 @@
     "name": "Highland Throwing Axe",
     "type": "Thrown",
     "weight": 0.69,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "ThrowingAxe",
@@ -8562,6 +8962,7 @@
     "name": "Western Hood",
     "type": "ShoulderArmor",
     "weight": 0.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -8575,6 +8976,7 @@
     "name": "Hooked Western Axe",
     "type": "OneHandedWeapon",
     "weight": 1.52,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -8605,6 +9007,7 @@
     "name": "Falx Knife",
     "type": "OneHandedWeapon",
     "weight": 0.82,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "Dagger",
@@ -8632,6 +9035,7 @@
     "name": "Horse Whip",
     "type": "OneHandedWeapon",
     "weight": 0.2,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -8659,6 +9063,7 @@
     "name": "Small Cavalry Heater Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -8687,6 +9092,7 @@
     "name": "Hunter",
     "type": "Mount",
     "weight": 350.0,
+    "culture": "Neutral",
     "mount": {
       "bodyLength": 94,
       "chargeDamage": 7,
@@ -8701,6 +9107,7 @@
     "name": "Hunting Bow",
     "type": "Bow",
     "weight": 0.3,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "Bow",
@@ -8734,6 +9141,7 @@
     "name": "Imperial axe",
     "type": "OneHandedWeapon",
     "weight": 1.08,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -8762,6 +9170,7 @@
     "name": "Imperial Cloth Coif",
     "type": "HeadArmor",
     "weight": 0.2,
+    "culture": "Empire",
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -8775,6 +9184,7 @@
     "name": "Imperial Googled Helmet",
     "type": "HeadArmor",
     "weight": 4.2,
+    "culture": "Empire",
     "armor": {
       "headArmor": 52,
       "bodyArmor": 0,
@@ -8788,6 +9198,7 @@
     "name": "Imperial Lamellar",
     "type": "BodyArmor",
     "weight": 22.1,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 48,
@@ -8800,7 +9211,8 @@
     "templateMbId": "imperial_lamellar_over_leather",
     "name": "Imperial Lamellar Over Leather",
     "type": "BodyArmor",
-    "weight": 11.6,
+    "weight": 15.0,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 33,
@@ -8814,6 +9226,7 @@
     "name": "Imperial Lamellar Shoulders",
     "type": "ShoulderArmor",
     "weight": 3.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 17,
@@ -8827,6 +9240,7 @@
     "name": "Imperial Leather Coif",
     "type": "HeadArmor",
     "weight": 0.3,
+    "culture": "Empire",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -8840,6 +9254,7 @@
     "name": "Imperial Mail Coif",
     "type": "HeadArmor",
     "weight": 1.7,
+    "culture": "Empire",
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -8853,6 +9268,7 @@
     "name": "Imperial Mail Over Leather",
     "type": "BodyArmor",
     "weight": 8.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 31,
@@ -8866,6 +9282,7 @@
     "name": "Imperial Mail Over Stripped Leather",
     "type": "BodyArmor",
     "weight": 10.2,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 31,
@@ -8879,6 +9296,7 @@
     "name": "Imperial Mail Vest",
     "type": "BodyArmor",
     "weight": 9.8,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 26,
@@ -8892,6 +9310,7 @@
     "name": "Imperial Nasal Helm",
     "type": "HeadArmor",
     "weight": 2.2,
+    "culture": "Empire",
     "armor": {
       "headArmor": 25,
       "bodyArmor": 0,
@@ -8905,6 +9324,7 @@
     "name": "Imperial Open Mail Coif",
     "type": "HeadArmor",
     "weight": 1.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 16,
       "bodyArmor": 0,
@@ -8918,6 +9338,7 @@
     "name": "Imperial Padded Cloth",
     "type": "BodyArmor",
     "weight": 2.8,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -8931,6 +9352,7 @@
     "name": "Imperial Padded Coif",
     "type": "HeadArmor",
     "weight": 0.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -8944,6 +9366,7 @@
     "name": "Imperial Riding Harness",
     "type": "MountHarness",
     "weight": 6.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 9,
@@ -8957,6 +9380,7 @@
     "name": "Imperial Robes",
     "type": "BodyArmor",
     "weight": 0.9,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -8969,7 +9393,8 @@
     "templateMbId": "imperial_scale_armor",
     "name": "Imperial Scale Armor",
     "type": "BodyArmor",
-    "weight": 12.7,
+    "weight": 21.4,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 57,
@@ -8983,6 +9408,7 @@
     "name": "Imperial Scale Barding",
     "type": "MountHarness",
     "weight": 30.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 75,
@@ -8996,6 +9422,7 @@
     "name": "Imperial Spear",
     "type": "Polearm",
     "weight": 1.94,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -9046,6 +9473,7 @@
     "name": "Imperial Studded Strip Shoulders",
     "type": "ShoulderArmor",
     "weight": 4.1,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -9059,6 +9487,7 @@
     "name": "Pilum",
     "type": "Polearm",
     "weight": 1.51,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -9136,6 +9565,7 @@
     "name": "Iron Spatha",
     "type": "OneHandedWeapon",
     "weight": 1.69,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -9163,6 +9593,7 @@
     "name": "Iron Feathered Spangenhelm",
     "type": "HeadArmor",
     "weight": 3.2,
+    "culture": "Empire",
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -9176,6 +9607,7 @@
     "name": "Iron Feathered Spangenhelm Over Leather",
     "type": "HeadArmor",
     "weight": 2.8,
+    "culture": "Empire",
     "armor": {
       "headArmor": 35,
       "bodyArmor": 0,
@@ -9189,6 +9621,7 @@
     "name": "Iron Feathered Spangenhelm Over Mail",
     "type": "HeadArmor",
     "weight": 3.3,
+    "culture": "Empire",
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -9202,6 +9635,7 @@
     "name": "Iron Nasalhelm Over Imperial Cloth",
     "type": "HeadArmor",
     "weight": 3.2,
+    "culture": "Empire",
     "armor": {
       "headArmor": 26,
       "bodyArmor": 0,
@@ -9215,6 +9649,7 @@
     "name": "Iron Nasalhelm Over Imperial Coif",
     "type": "HeadArmor",
     "weight": 4.1,
+    "culture": "Empire",
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -9228,6 +9663,7 @@
     "name": "Iron Nasalhelm Over Imperial Mail",
     "type": "HeadArmor",
     "weight": 3.9,
+    "culture": "Empire",
     "armor": {
       "headArmor": 39,
       "bodyArmor": 0,
@@ -9241,6 +9677,7 @@
     "name": "Iron Nasalhelm Over Imperial Padding",
     "type": "HeadArmor",
     "weight": 3.4,
+    "culture": "Empire",
     "armor": {
       "headArmor": 27,
       "bodyArmor": 0,
@@ -9254,6 +9691,7 @@
     "name": "Iron Roundkettle Over Imperial Leather",
     "type": "HeadArmor",
     "weight": 3.1,
+    "culture": "Empire",
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -9267,6 +9705,7 @@
     "name": "Iron Roundkettle Over Imperial Mail",
     "type": "HeadArmor",
     "weight": 3.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -9280,6 +9719,7 @@
     "name": "Iron Spiked Kettle Over Mail",
     "type": "HeadArmor",
     "weight": 3.8,
+    "culture": "Empire",
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -9293,6 +9733,7 @@
     "name": "Ironrimed Kite Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -9321,6 +9762,7 @@
     "name": "Reinforced Ironrimmed Kite Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -9349,6 +9791,7 @@
     "name": "Knights Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -9377,6 +9820,7 @@
     "name": "Judgement",
     "type": "OneHandedWeapon",
     "weight": 1.83,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Mace",
@@ -9404,6 +9848,7 @@
     "name": "Ridged Long Kaskara",
     "type": "OneHandedWeapon",
     "weight": 1.76,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -9451,6 +9896,7 @@
     "name": "Kettle Hat Over Mail Coif",
     "type": "HeadArmor",
     "weight": 2.9,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -9464,6 +9910,7 @@
     "name": "Kettle Hat Over Padded Cloth",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -9477,6 +9924,7 @@
     "name": "Kettle Hat Over Padded Coif",
     "type": "HeadArmor",
     "weight": 1.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -9490,6 +9938,7 @@
     "name": "Kettle Helmet Over Arming Coif",
     "type": "HeadArmor",
     "weight": 1.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 31,
       "bodyArmor": 0,
@@ -9503,6 +9952,7 @@
     "name": "Kettle Helmet Over Laced Coif",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 33,
       "bodyArmor": 0,
@@ -9516,6 +9966,7 @@
     "name": "Kettle Helmet Over Mail",
     "type": "HeadArmor",
     "weight": 3.1,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 37,
       "bodyArmor": 0,
@@ -9529,6 +9980,7 @@
     "name": "Kettle Helmet Over Padded Cap",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -9542,6 +9994,7 @@
     "name": "Kettle Helmet Over Padded Cloth",
     "type": "HeadArmor",
     "weight": 1.1,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -9555,6 +10008,7 @@
     "name": "Kettle Helmet Over Padded Coif",
     "type": "HeadArmor",
     "weight": 1.3,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 33,
       "bodyArmor": 0,
@@ -9568,6 +10022,7 @@
     "name": "Kettle Helmet With Leather",
     "type": "HeadArmor",
     "weight": 1.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 23,
       "bodyArmor": 0,
@@ -9581,6 +10036,7 @@
     "name": "Kettle Helmet With Mail",
     "type": "HeadArmor",
     "weight": 2.7,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 27,
       "bodyArmor": 0,
@@ -9594,6 +10050,7 @@
     "name": "Eastern Leather With Belt",
     "type": "BodyArmor",
     "weight": 2.4,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -9607,6 +10064,7 @@
     "name": "Eastern Rich Coat",
     "type": "BodyArmor",
     "weight": 2.7,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -9620,6 +10078,7 @@
     "name": "Eastern Thick Coat",
     "type": "BodyArmor",
     "weight": 2.7,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -9633,6 +10092,7 @@
     "name": "Eastern Curved Boots",
     "type": "LegArmor",
     "weight": 0.9,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -9646,6 +10106,7 @@
     "name": "Common Eastern Dress",
     "type": "BodyArmor",
     "weight": 0.8,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -9659,6 +10120,7 @@
     "name": "Eastern Dress with Fur",
     "type": "BodyArmor",
     "weight": 0.9,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -9672,6 +10134,7 @@
     "name": "Eastern Reinforced Armor",
     "type": "BodyArmor",
     "weight": 2.4,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -9685,6 +10148,7 @@
     "name": "Steppe Horse",
     "type": "Mount",
     "weight": 456.0,
+    "culture": "Khuzait",
     "mount": {
       "bodyLength": 94,
       "chargeDamage": 8,
@@ -9698,7 +10162,8 @@
     "templateMbId": "khuzait_lamellar_strapped",
     "name": "Eastern Strapped Lamellar Armor",
     "type": "BodyArmor",
-    "weight": 7.3,
+    "weight": 11.1,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 24,
@@ -9712,6 +10177,7 @@
     "name": "Khuzait Light Lance",
     "type": "Polearm",
     "weight": 1.93,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -9762,6 +10228,7 @@
     "name": "Khuzait Lance",
     "type": "Polearm",
     "weight": 1.94,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -9832,6 +10299,7 @@
     "name": "Eastern Noble Lance",
     "type": "Polearm",
     "weight": 2.12,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -9905,6 +10373,7 @@
     "name": "Eastern Leather Pauldrons",
     "type": "ShoulderArmor",
     "weight": 1.5,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -9917,7 +10386,8 @@
     "templateMbId": "khuzait_leather_stitched",
     "name": "Imperial Stitched Leather",
     "type": "BodyArmor",
-    "weight": 2.5,
+    "weight": 4.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 34,
@@ -9931,6 +10401,7 @@
     "name": "Eastern Light Mace",
     "type": "OneHandedWeapon",
     "weight": 1.74,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "Mace",
@@ -9958,6 +10429,7 @@
     "name": "Eastern Heavy Mace",
     "type": "OneHandedWeapon",
     "weight": 2.35,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "Mace",
@@ -9985,6 +10457,7 @@
     "name": "Eastern Fine Steel Mace",
     "type": "OneHandedWeapon",
     "weight": 2.12,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "Mace",
@@ -10012,6 +10485,7 @@
     "name": "Eastern Flanged Mace",
     "type": "OneHandedWeapon",
     "weight": 2.15,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "Mace",
@@ -10039,6 +10513,7 @@
     "name": "Eastern Noble Helmet with Feathers",
     "type": "HeadArmor",
     "weight": 3.4,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -10052,6 +10527,7 @@
     "name": "Eastern Noble Helmet with Fur",
     "type": "HeadArmor",
     "weight": 3.9,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 45,
       "bodyArmor": 0,
@@ -10065,6 +10541,7 @@
     "name": "Eastern Noble Helmet with Neckguard",
     "type": "HeadArmor",
     "weight": 4.0,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 49,
       "bodyArmor": 0,
@@ -10078,6 +10555,7 @@
     "name": "Decorated Sabre",
     "type": "OneHandedWeapon",
     "weight": 1.8,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -10105,6 +10583,7 @@
     "name": "Lion Imprinted Sabre",
     "type": "OneHandedWeapon",
     "weight": 1.7,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -10132,6 +10611,7 @@
     "name": "Tall Gripped Ild Sword",
     "type": "OneHandedWeapon",
     "weight": 1.8,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -10159,6 +10639,7 @@
     "name": "Glaive",
     "type": "Polearm",
     "weight": 2.04,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -10209,6 +10690,7 @@
     "name": "Long Glaive",
     "type": "Polearm",
     "weight": 1.4,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -10259,6 +10741,7 @@
     "name": "Eastern Mirrored Leather Armor",
     "type": "BodyArmor",
     "weight": 2.4,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -10272,6 +10755,7 @@
     "name": "Iron Sabre",
     "type": "OneHandedWeapon",
     "weight": 1.23,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -10299,6 +10783,7 @@
     "name": "Iron Sparring Sabre",
     "type": "OneHandedWeapon",
     "weight": 1.23,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -10326,6 +10811,7 @@
     "name": "Eastern Straight Sabre",
     "type": "OneHandedWeapon",
     "weight": 1.35,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -10353,6 +10839,7 @@
     "name": "Long Sabre",
     "type": "OneHandedWeapon",
     "weight": 1.4,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -10380,6 +10867,7 @@
     "name": "Fine Steel Sabre",
     "type": "OneHandedWeapon",
     "weight": 1.55,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -10407,6 +10895,7 @@
     "name": "Heavy Sabre",
     "type": "OneHandedWeapon",
     "weight": 1.62,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -10433,7 +10922,8 @@
     "templateMbId": "kilt_over_plated_leather",
     "name": "Kilt Over Plated Leather",
     "type": "BodyArmor",
-    "weight": 10.8,
+    "weight": 16.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 42,
@@ -10447,6 +10937,7 @@
     "name": "Knight's Fall",
     "type": "OneHandedWeapon",
     "weight": 1.9,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Mace",
@@ -10474,6 +10965,7 @@
     "name": "Laced Cloth Coif",
     "type": "HeadArmor",
     "weight": 0.4,
+    "culture": "Empire",
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -10487,6 +10979,7 @@
     "name": "Laced Coif",
     "type": "HeadArmor",
     "weight": 0.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 16,
       "bodyArmor": 0,
@@ -10500,6 +10993,7 @@
     "name": "Laced Dress",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -10513,6 +11007,7 @@
     "name": "Lady's Shoes",
     "type": "LegArmor",
     "weight": 0.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -10526,6 +11021,7 @@
     "name": "Lamellar Plate Boots",
     "type": "LegArmor",
     "weight": 3.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -10539,6 +11035,7 @@
     "name": "Lamellar Plate Gauntlets",
     "type": "HandArmor",
     "weight": 1.8,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -10552,6 +11049,7 @@
     "name": "Lamellar Shoulders",
     "type": "ShoulderArmor",
     "weight": 5.0,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -10564,7 +11062,8 @@
     "templateMbId": "lamellar_with_scale_skirt",
     "name": "Lamellar With Scale Skirt",
     "type": "BodyArmor",
-    "weight": 12.4,
+    "weight": 24.1,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 52,
@@ -10578,6 +11077,7 @@
     "name": "Large Adarga",
     "type": "Shield",
     "weight": 7.3,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "LargeShield",
@@ -10606,6 +11106,7 @@
     "name": "Large Franziska Axe",
     "type": "OneHandedWeapon",
     "weight": 1.21,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -10634,6 +11135,7 @@
     "name": "Layered Leather Tunic",
     "type": "BodyArmor",
     "weight": 1.2,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -10647,6 +11149,7 @@
     "name": "Layered Robe",
     "type": "BodyArmor",
     "weight": 2.0,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -10660,6 +11163,7 @@
     "name": "Leafblade Throwing Knife",
     "type": "Thrown",
     "weight": 0.86,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "ThrowingKnife",
@@ -10711,6 +11215,7 @@
     "name": "Leather Armor with Iron Plates",
     "type": "BodyArmor",
     "weight": 9.6,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 22,
@@ -10724,6 +11229,7 @@
     "name": "Leather Apron",
     "type": "BodyArmor",
     "weight": 2.5,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -10737,6 +11243,7 @@
     "name": "Eastern Leather Boots",
     "type": "LegArmor",
     "weight": 0.8,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -10750,6 +11257,7 @@
     "name": "Leather Bound Kite Shield",
     "type": "Shield",
     "weight": 6.3,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -10778,6 +11286,7 @@
     "name": "Leather Cap",
     "type": "HeadArmor",
     "weight": 0.4,
+    "culture": "Empire",
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -10791,6 +11300,7 @@
     "name": "Leather Cavalier Boots",
     "type": "LegArmor",
     "weight": 0.9,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -10804,6 +11314,7 @@
     "name": "Western Leather Coat",
     "type": "BodyArmor",
     "weight": 2.3,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -10817,6 +11328,7 @@
     "name": "Leather Coat Over Cloth",
     "type": "BodyArmor",
     "weight": 0.7,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -10830,6 +11342,7 @@
     "name": "Leather Gloves",
     "type": "HandArmor",
     "weight": 0.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -10842,7 +11355,8 @@
     "templateMbId": "leather_lamellar_armor",
     "name": "Eastern Leather Lamellar Armor",
     "type": "BodyArmor",
-    "weight": 2.6,
+    "weight": 14.0,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 24,
@@ -10856,6 +11370,7 @@
     "name": "Leather Lamellar Shoulders",
     "type": "ShoulderArmor",
     "weight": 2.3,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -10869,6 +11384,7 @@
     "name": "Large Round Shield",
     "type": "Shield",
     "weight": 6.9,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "LargeShield",
@@ -10896,7 +11412,8 @@
     "templateMbId": "leather_scale_armor",
     "name": "Leather Scale Armor",
     "type": "BodyArmor",
-    "weight": 8.6,
+    "weight": 6.9,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -10910,6 +11427,7 @@
     "name": "Leather Shoes",
     "type": "LegArmor",
     "weight": 0.7,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -10922,7 +11440,8 @@
     "templateMbId": "leather_strips_over_padded_robe",
     "name": "Leather Strips Over Padded Robe",
     "type": "BodyArmor",
-    "weight": 4.1,
+    "weight": 5.5,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 36,
@@ -10936,6 +11455,7 @@
     "name": "Highland Leather Studded Helm",
     "type": "HeadArmor",
     "weight": 0.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 14,
       "bodyArmor": 0,
@@ -10949,6 +11469,7 @@
     "name": "Leather Studdedhelm Over Headcloth",
     "type": "HeadArmor",
     "weight": 1.1,
+    "culture": "Battania",
     "armor": {
       "headArmor": 16,
       "bodyArmor": 0,
@@ -10962,6 +11483,7 @@
     "name": "Leather Studdedhelm Over Roughscale",
     "type": "HeadArmor",
     "weight": 3.6,
+    "culture": "Battania",
     "armor": {
       "headArmor": 24,
       "bodyArmor": 0,
@@ -10975,6 +11497,7 @@
     "name": "Leather Studdedhelm Over Thinhide",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Battania",
     "armor": {
       "headArmor": 17,
       "bodyArmor": 0,
@@ -10988,6 +11511,7 @@
     "name": "Leather Tunic",
     "type": "BodyArmor",
     "weight": 2.1,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -11001,6 +11525,7 @@
     "name": "Bronze Feathered Spangenhelm Over Leather",
     "type": "HeadArmor",
     "weight": 1.7,
+    "culture": "Empire",
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -11014,6 +11539,7 @@
     "name": "Bronze Feathered Spangenhelm Over Mail",
     "type": "HeadArmor",
     "weight": 3.4,
+    "culture": "Empire",
     "armor": {
       "headArmor": 47,
       "bodyArmor": 0,
@@ -11027,6 +11553,7 @@
     "name": "Bronze Nasalhelm Over Imperial Leather",
     "type": "HeadArmor",
     "weight": 1.9,
+    "culture": "Empire",
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -11040,6 +11567,7 @@
     "name": "Bronze Nasalhelm Over Imperial Mail",
     "type": "HeadArmor",
     "weight": 3.7,
+    "culture": "Empire",
     "armor": {
       "headArmor": 38,
       "bodyArmor": 0,
@@ -11053,6 +11581,7 @@
     "name": "Bronze Roundkettle",
     "type": "HeadArmor",
     "weight": 1.8,
+    "culture": "Empire",
     "armor": {
       "headArmor": 24,
       "bodyArmor": 0,
@@ -11066,6 +11595,7 @@
     "name": "Bronze Roundkettle Over Imperial Leather",
     "type": "HeadArmor",
     "weight": 1.4,
+    "culture": "Empire",
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -11079,6 +11609,7 @@
     "name": "Bronze Roundkettle Over Imperial Mail",
     "type": "HeadArmor",
     "weight": 3.4,
+    "culture": "Empire",
     "armor": {
       "headArmor": 27,
       "bodyArmor": 0,
@@ -11091,7 +11622,8 @@
     "templateMbId": "legionary_mail",
     "name": "Legionary Mail",
     "type": "BodyArmor",
-    "weight": 10.5,
+    "weight": 19.0,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 34,
@@ -11105,6 +11637,7 @@
     "name": "Northern Warlord Helmet Over Full Mail",
     "type": "HeadArmor",
     "weight": 4.3,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 49,
       "bodyArmor": 0,
@@ -11118,6 +11651,7 @@
     "name": "Northern Warlord Helmet Over Mail",
     "type": "HeadArmor",
     "weight": 1.9,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 47,
       "bodyArmor": 0,
@@ -11131,6 +11665,7 @@
     "name": "Leopard Pelt",
     "type": "ShoulderArmor",
     "weight": 2.0,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -11144,6 +11679,7 @@
     "name": "Light Harness",
     "type": "MountHarness",
     "weight": 5.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -11157,6 +11693,7 @@
     "name": "Light Cavalry Kite Shield",
     "type": "Shield",
     "weight": 1.9,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -11185,6 +11722,7 @@
     "name": "Light Mace",
     "type": "OneHandedWeapon",
     "weight": 1.91,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Mace",
@@ -11212,6 +11750,7 @@
     "name": "Light Tunic",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -11225,6 +11764,7 @@
     "name": "Long Southern Robe",
     "type": "BodyArmor",
     "weight": 1.6,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -11238,6 +11778,7 @@
     "name": "Long Fur Coat",
     "type": "BodyArmor",
     "weight": 2.6,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -11251,6 +11792,7 @@
     "name": "Long Hemp Tunic",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -11264,6 +11806,7 @@
     "name": "Long Padded Robe",
     "type": "BodyArmor",
     "weight": 3.9,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -11277,6 +11820,7 @@
     "name": "Long Woolen Tunic",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -11290,6 +11834,7 @@
     "name": "Southern Strong Longbow",
     "type": "Bow",
     "weight": 0.3,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "Bow",
@@ -11323,6 +11868,7 @@
     "name": "Loose Wrapped Southern Helmet",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 16,
       "bodyArmor": 0,
@@ -11336,6 +11882,7 @@
     "name": "Heavy Mail Mittens",
     "type": "HandArmor",
     "weight": 1.7,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -11349,6 +11896,7 @@
     "name": "Western Longbow",
     "type": "Bow",
     "weight": 0.5,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "Bow",
@@ -11382,6 +11930,7 @@
     "name": "Western Throwing Knife",
     "type": "Thrown",
     "weight": 0.81,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "ThrowingKnife",
@@ -11433,6 +11982,7 @@
     "name": "Western Yew Bow",
     "type": "Bow",
     "weight": 0.5,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "Bow",
@@ -11466,6 +12016,7 @@
     "name": "Mail And Plate Barding",
     "type": "MountHarness",
     "weight": 26.8,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 68,
@@ -11479,6 +12030,7 @@
     "name": "Mail Cavalier Boots",
     "type": "LegArmor",
     "weight": 1.8,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -11492,6 +12044,7 @@
     "name": "Mail Chausses",
     "type": "LegArmor",
     "weight": 2.9,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -11505,6 +12058,7 @@
     "name": "Mail Coif",
     "type": "HeadArmor",
     "weight": 1.7,
+    "culture": "Empire",
     "armor": {
       "headArmor": 25,
       "bodyArmor": 0,
@@ -11518,6 +12072,7 @@
     "name": "Mail Mitten",
     "type": "HandArmor",
     "weight": 1.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -11531,6 +12086,7 @@
     "name": "Western Mail Shirt",
     "type": "BodyArmor",
     "weight": 7.5,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 25,
@@ -11544,6 +12100,7 @@
     "name": "Mail Shoulders",
     "type": "ShoulderArmor",
     "weight": 2.7,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -11557,6 +12114,7 @@
     "name": "Merchant's Fur Coat",
     "type": "BodyArmor",
     "weight": 2.9,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -11570,6 +12128,7 @@
     "name": "Merchant's Hat",
     "type": "HeadArmor",
     "weight": 0.1,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 2,
       "bodyArmor": 0,
@@ -11583,6 +12142,7 @@
     "name": "Notched Military Fork",
     "type": "Polearm",
     "weight": 2.09,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -11613,6 +12173,7 @@
     "name": "Military Fork",
     "type": "Polearm",
     "weight": 2.17,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -11663,6 +12224,7 @@
     "name": "Scholars Robe",
     "type": "BodyArmor",
     "weight": 0.5,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -11676,6 +12238,7 @@
     "name": "Morningstar",
     "type": "OneHandedWeapon",
     "weight": 2.2,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Mace",
@@ -11703,6 +12266,7 @@
     "name": "Mountain Hunting Bow",
     "type": "Bow",
     "weight": 0.3,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "Bow",
@@ -11736,6 +12300,7 @@
     "name": "Mule",
     "type": "Mount",
     "weight": 150.0,
+    "culture": "Neutral",
     "mount": {
       "bodyLength": 92,
       "chargeDamage": 3,
@@ -11750,6 +12315,7 @@
     "name": "Mule Harness with Pack",
     "type": "MountHarness",
     "weight": 30.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -11763,6 +12329,7 @@
     "name": "Mule Harness with Baskets",
     "type": "MountHarness",
     "weight": 30.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -11776,6 +12343,7 @@
     "name": "Mule Harness with Bags",
     "type": "MountHarness",
     "weight": 30.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -11789,6 +12357,7 @@
     "name": "Narrow Sword",
     "type": "OneHandedWeapon",
     "weight": 1.52,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -11816,6 +12385,7 @@
     "name": "Nasal Cervelliere Over Laced Coif",
     "type": "HeadArmor",
     "weight": 1.1,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -11829,6 +12399,7 @@
     "name": "Nasal Cervelliere Over Mail Coif",
     "type": "HeadArmor",
     "weight": 2.6,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -11842,6 +12413,7 @@
     "name": "Nasal Cervelliere Over Padded Cap",
     "type": "HeadArmor",
     "weight": 1.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 26,
       "bodyArmor": 0,
@@ -11855,6 +12427,7 @@
     "name": "Nasal Cervelliere Over Padded Coif",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -11868,6 +12441,7 @@
     "name": "Northern Nasal Helmet",
     "type": "HeadArmor",
     "weight": 1.8,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -11881,6 +12455,7 @@
     "name": "Nasal Helmet Over Cloth Headwrap",
     "type": "HeadArmor",
     "weight": 1.1,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 26,
       "bodyArmor": 0,
@@ -11894,6 +12469,7 @@
     "name": "Nasal Helmet Over Laced Coif",
     "type": "HeadArmor",
     "weight": 1.3,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -11907,6 +12483,7 @@
     "name": "Nasal Helmet Over Mail",
     "type": "HeadArmor",
     "weight": 3.1,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -11920,6 +12497,7 @@
     "name": "Nasal Helmet Over Mail Coif",
     "type": "HeadArmor",
     "weight": 2.7,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -11933,6 +12511,7 @@
     "name": "Nasal Helmet Over Padded Cloth",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -11946,6 +12525,7 @@
     "name": "Nasal Helmet Over Padded Coif",
     "type": "HeadArmor",
     "weight": 1.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -11959,6 +12539,7 @@
     "name": "Nasal Helmet With Leather",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 27,
       "bodyArmor": 0,
@@ -11972,6 +12553,7 @@
     "name": "Nasal Helmet With Mail",
     "type": "HeadArmor",
     "weight": 1.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -11985,6 +12567,7 @@
     "name": "Northern Nasalhelm Over Leather",
     "type": "HeadArmor",
     "weight": 1.4,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 25,
       "bodyArmor": 0,
@@ -11998,6 +12581,7 @@
     "name": "Nasalhelm Over Mail",
     "type": "HeadArmor",
     "weight": 1.8,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -12011,6 +12595,7 @@
     "name": "Noble Bow",
     "type": "Bow",
     "weight": 0.8,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Bow",
@@ -12044,6 +12629,7 @@
     "name": "Pureblood",
     "type": "Mount",
     "weight": 400.0,
+    "culture": "Neutral",
     "mount": {
       "bodyLength": 115,
       "chargeDamage": 35,
@@ -12058,6 +12644,7 @@
     "name": "Battanian Thoroughbred",
     "type": "Mount",
     "weight": 532.0,
+    "culture": "Battania",
     "mount": {
       "bodyLength": 111,
       "chargeDamage": 10,
@@ -12072,6 +12659,7 @@
     "name": "Asaligat",
     "type": "Mount",
     "weight": 510.0,
+    "culture": "Khuzait",
     "mount": {
       "bodyLength": 98,
       "chargeDamage": 10,
@@ -12086,6 +12674,7 @@
     "name": "Cossian",
     "type": "Mount",
     "weight": 562.0,
+    "culture": "Empire",
     "mount": {
       "bodyLength": 114,
       "chargeDamage": 15,
@@ -12100,6 +12689,7 @@
     "name": "Tyal Horse",
     "type": "Mount",
     "weight": 515.0,
+    "culture": "Sturgia",
     "mount": {
       "bodyLength": 100,
       "chargeDamage": 11,
@@ -12114,6 +12704,7 @@
     "name": "Nahasawi",
     "type": "Mount",
     "weight": 520.0,
+    "culture": "Aserai",
     "mount": {
       "bodyLength": 110,
       "chargeDamage": 10,
@@ -12128,6 +12719,7 @@
     "name": "Destrier",
     "type": "Mount",
     "weight": 533.0,
+    "culture": "Vlandia",
     "mount": {
       "bodyLength": 109,
       "chargeDamage": 13,
@@ -12142,6 +12734,7 @@
     "name": "Noble Long Bow",
     "type": "Bow",
     "weight": 0.8,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Bow",
@@ -12175,6 +12768,7 @@
     "name": "Nomad Bow",
     "type": "Bow",
     "weight": 0.5,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "Bow",
@@ -12208,6 +12802,7 @@
     "name": "Nomad Cap",
     "type": "HeadArmor",
     "weight": 0.3,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -12221,6 +12816,7 @@
     "name": "Nomad Helmet",
     "type": "HeadArmor",
     "weight": 1.1,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 31,
       "bodyArmor": 0,
@@ -12234,6 +12830,7 @@
     "name": "Nomad Padded Hood",
     "type": "HeadArmor",
     "weight": 0.4,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -12247,6 +12844,7 @@
     "name": "Northern Cap",
     "type": "HeadArmor",
     "weight": 0.3,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 12,
       "bodyArmor": 0,
@@ -12259,7 +12857,8 @@
     "templateMbId": "nordic_hauberk",
     "name": "Northern Hauberk",
     "type": "BodyArmor",
-    "weight": 8.3,
+    "weight": 10.7,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 24,
@@ -12273,6 +12872,7 @@
     "name": "Northern Visored Cap",
     "type": "HeadArmor",
     "weight": 4.1,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -12286,6 +12886,7 @@
     "name": "Northern Bronze Scale Vest Over Gambeson",
     "type": "BodyArmor",
     "weight": 15.0,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 28,
@@ -12298,7 +12899,8 @@
     "templateMbId": "nordic_lamellar_vest",
     "name": "Northern Bronze Scale Vest",
     "type": "BodyArmor",
-    "weight": 12.0,
+    "weight": 14.0,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 28,
@@ -12312,6 +12914,7 @@
     "name": "Northern Leather Cap",
     "type": "HeadArmor",
     "weight": 0.4,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 12,
       "bodyArmor": 0,
@@ -12325,6 +12928,7 @@
     "name": "Northern Layered Cloth",
     "type": "BodyArmor",
     "weight": 1.1,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -12338,6 +12942,7 @@
     "name": "Nordic Shortbow",
     "type": "Bow",
     "weight": 0.3,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "Bow",
@@ -12371,6 +12976,7 @@
     "name": "Northern Leather Over Heavy Cloth",
     "type": "BodyArmor",
     "weight": 1.8,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -12384,6 +12990,7 @@
     "name": "Northern Sloven Leather",
     "type": "BodyArmor",
     "weight": 2.9,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -12396,7 +13003,8 @@
     "templateMbId": "nordic_sloven_over_mail",
     "name": "Northern Leather Tabard Over Mail",
     "type": "BodyArmor",
-    "weight": 8.4,
+    "weight": 10.0,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 30,
@@ -12410,6 +13018,7 @@
     "name": "Northern Luxery Tunic",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -12423,6 +13032,7 @@
     "name": "Fine Steel Two Handed Sword",
     "type": "OneHandedWeapon",
     "weight": 1.48,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -12470,6 +13080,7 @@
     "name": "Northern Broad Axe",
     "type": "OneHandedWeapon",
     "weight": 1.3,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -12500,6 +13111,7 @@
     "name": "Northern Simple Battle Axe",
     "type": "OneHandedWeapon",
     "weight": 1.15,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -12528,6 +13140,7 @@
     "name": "Northern Brass Bracers",
     "type": "HandArmor",
     "weight": 1.3,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -12541,6 +13154,7 @@
     "name": "Northern Brass Lamellar Over Mail",
     "type": "BodyArmor",
     "weight": 23.6,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 51,
@@ -12553,7 +13167,8 @@
     "templateMbId": "northern_coat_of_plates",
     "name": "Northern Coat Of Plates",
     "type": "BodyArmor",
-    "weight": 14.2,
+    "weight": 21.0,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 45,
@@ -12567,6 +13182,7 @@
     "name": "Northern Dress",
     "type": "BodyArmor",
     "weight": 0.7,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -12580,6 +13196,7 @@
     "name": "Northern Fur Cap",
     "type": "HeadArmor",
     "weight": 0.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 9,
       "bodyArmor": 0,
@@ -12593,6 +13210,7 @@
     "name": "Northern Goggled Helmet",
     "type": "HeadArmor",
     "weight": 1.8,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 20,
       "bodyArmor": 0,
@@ -12606,6 +13224,7 @@
     "name": "Reinforced Cavalry Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -12634,6 +13253,7 @@
     "name": "Fish Harpoon",
     "type": "Thrown",
     "weight": 0.98,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "Javelin",
@@ -12686,6 +13306,7 @@
     "name": "Woodland Javelin",
     "type": "Thrown",
     "weight": 1.08,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "Javelin",
@@ -12738,6 +13359,7 @@
     "name": "Broad Blade Javelin",
     "type": "Thrown",
     "weight": 1.11,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "Javelin",
@@ -12789,7 +13411,8 @@
     "templateMbId": "northern_lamellar_armor",
     "name": "Northern Lamellar Armor",
     "type": "BodyArmor",
-    "weight": 1.9,
+    "weight": 8.9,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 26,
@@ -12802,7 +13425,8 @@
     "templateMbId": "northern_leather_tabard",
     "name": "Northern Leather Tabard",
     "type": "BodyArmor",
-    "weight": 1.7,
+    "weight": 4.4,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -12816,6 +13440,7 @@
     "name": "Northern Leather Vest",
     "type": "BodyArmor",
     "weight": 0.9,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 9,
@@ -12829,6 +13454,7 @@
     "name": "Northern Light Harness",
     "type": "MountHarness",
     "weight": 7.2,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 20,
@@ -12842,6 +13468,7 @@
     "name": "Northern Noble Harness",
     "type": "MountHarness",
     "weight": 8.9,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -12855,6 +13482,7 @@
     "name": "Northern Padded Cloth",
     "type": "BodyArmor",
     "weight": 1.6,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -12868,6 +13496,7 @@
     "name": "Northern Padded Gambeson",
     "type": "BodyArmor",
     "weight": 1.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -12881,6 +13510,7 @@
     "name": "Northern Plated Boots",
     "type": "LegArmor",
     "weight": 2.9,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -12894,6 +13524,7 @@
     "name": "Northern Plated Gloves",
     "type": "HandArmor",
     "weight": 1.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -12907,6 +13538,7 @@
     "name": "Northern Ring Barding",
     "type": "MountHarness",
     "weight": 15.2,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 41,
@@ -12920,6 +13552,7 @@
     "name": "Northern Round Shield",
     "type": "Shield",
     "weight": 3.3,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -12948,6 +13581,7 @@
     "name": "Northern Round Sparring Shield",
     "type": "Shield",
     "weight": 3.3,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -12976,6 +13610,7 @@
     "name": "Northern Cavalry Kite Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -13004,6 +13639,7 @@
     "name": "Northern Short Simple Spear",
     "type": "Polearm",
     "weight": 2.11,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -13054,6 +13690,7 @@
     "name": "Northern Sparring Spear",
     "type": "Polearm",
     "weight": 2.11,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -13104,6 +13741,7 @@
     "name": "Broad Leaf Shaped Spear",
     "type": "Polearm",
     "weight": 1.79,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -13154,6 +13792,7 @@
     "name": "Jagged Fine Steel Spear",
     "type": "Polearm",
     "weight": 1.87,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -13204,6 +13843,7 @@
     "name": "Fine Steel Hewing Spear",
     "type": "Polearm",
     "weight": 2.1,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -13254,6 +13894,7 @@
     "name": "Northern Throwing Axe",
     "type": "Thrown",
     "weight": 0.71,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "ThrowingAxe",
@@ -13306,6 +13947,7 @@
     "name": "Northern Tunic",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -13319,6 +13961,7 @@
     "name": "Northern Warlord Helmet",
     "type": "HeadArmor",
     "weight": 3.6,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 47,
       "bodyArmor": 0,
@@ -13332,6 +13975,7 @@
     "name": "Decorated Eastern Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -13360,6 +14004,7 @@
     "name": "Old Work Horse",
     "type": "Mount",
     "weight": 400.0,
+    "culture": "Neutral",
     "mount": {
       "bodyLength": 102,
       "chargeDamage": 4,
@@ -13374,6 +14019,7 @@
     "name": "Wooden Kite Shield",
     "type": "Shield",
     "weight": 3.6,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -13402,6 +14048,7 @@
     "name": "Makeshift Kite Shield",
     "type": "Shield",
     "weight": 4.2,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -13430,6 +14077,7 @@
     "name": "Makeshift Kite Sparring Shield",
     "type": "Shield",
     "weight": 4.2,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -13458,6 +14106,7 @@
     "name": "Open Southern Helmet",
     "type": "HeadArmor",
     "weight": 1.3,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 21,
       "bodyArmor": 0,
@@ -13471,6 +14120,7 @@
     "name": "Open Head Scarf",
     "type": "HeadArmor",
     "weight": 0.6,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -13484,6 +14134,7 @@
     "name": "Open Mail Coif",
     "type": "HeadArmor",
     "weight": 1.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 25,
       "bodyArmor": 0,
@@ -13497,6 +14148,7 @@
     "name": "Open Padded Coif",
     "type": "HeadArmor",
     "weight": 0.3,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 14,
       "bodyArmor": 0,
@@ -13510,6 +14162,7 @@
     "name": "Ornate Adarga",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -13538,6 +14191,7 @@
     "name": "Wooden Oval Shield",
     "type": "Shield",
     "weight": 2.1,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -13566,6 +14220,7 @@
     "name": "Pack Camel",
     "type": "Mount",
     "weight": 150.0,
+    "culture": "Neutral",
     "mount": {
       "bodyLength": 105,
       "chargeDamage": 4,
@@ -13580,6 +14235,7 @@
     "name": "Padded Cap",
     "type": "HeadArmor",
     "weight": 0.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 12,
       "bodyArmor": 0,
@@ -13593,6 +14249,7 @@
     "name": "Padded Cloth With Strips",
     "type": "BodyArmor",
     "weight": 2.2,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -13606,6 +14263,7 @@
     "name": "Western Padded Coat",
     "type": "BodyArmor",
     "weight": 2.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -13619,6 +14277,7 @@
     "name": "Padded Half Coif",
     "type": "HeadArmor",
     "weight": 0.5,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 14,
       "bodyArmor": 0,
@@ -13632,6 +14291,7 @@
     "name": "Padded Leather Cape",
     "type": "HeadArmor",
     "weight": 1.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 11,
       "bodyArmor": 0,
@@ -13645,6 +14305,7 @@
     "name": "Padded Leather Overcoat",
     "type": "BodyArmor",
     "weight": 3.2,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -13658,6 +14319,7 @@
     "name": "Padded Leather Shirt",
     "type": "BodyArmor",
     "weight": 1.8,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -13671,6 +14333,7 @@
     "name": "Padded Leather Shoulders",
     "type": "ShoulderArmor",
     "weight": 1.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -13684,6 +14347,7 @@
     "name": "Padded Mittens",
     "type": "HandArmor",
     "weight": 0.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -13697,6 +14361,7 @@
     "name": "Padded Short Coat",
     "type": "BodyArmor",
     "weight": 2.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -13710,6 +14375,7 @@
     "name": "Padded Vambrace",
     "type": "HandArmor",
     "weight": 0.1,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -13723,6 +14389,7 @@
     "name": "Patched Gambeson",
     "type": "BodyArmor",
     "weight": 2.4,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -13736,6 +14403,7 @@
     "name": "Imperial Long Cape",
     "type": "ShoulderArmor",
     "weight": 3.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -13749,6 +14417,7 @@
     "name": "Pavise Shield",
     "type": "Shield",
     "weight": 7.0,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -13777,6 +14446,7 @@
     "name": "Peaked Fur Hood",
     "type": "HeadArmor",
     "weight": 0.7,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 12,
       "bodyArmor": 0,
@@ -13790,6 +14460,7 @@
     "name": "Peaked Helmet Over Laced Coif",
     "type": "HeadArmor",
     "weight": 1.1,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 27,
       "bodyArmor": 0,
@@ -13803,6 +14474,7 @@
     "name": "Peaked Helmet Over Mail",
     "type": "HeadArmor",
     "weight": 2.6,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -13816,6 +14488,7 @@
     "name": "Peaked Helmet Over Mail Coif",
     "type": "HeadArmor",
     "weight": 2.7,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -13829,6 +14502,7 @@
     "name": "Peaked Helmet Over Padded Cloth",
     "type": "HeadArmor",
     "weight": 1.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -13842,6 +14516,7 @@
     "name": "Hoe",
     "type": "OneHandedWeapon",
     "weight": 1.57,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -13892,6 +14567,7 @@
     "name": "Commoner Clothes",
     "type": "BodyArmor",
     "weight": 0.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -13905,6 +14581,7 @@
     "name": "Blacksmith Hammer",
     "type": "OneHandedWeapon",
     "weight": 1.4,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Mace",
@@ -13932,6 +14609,7 @@
     "name": "Wooden Hammer",
     "type": "OneHandedWeapon",
     "weight": 1.4,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Mace",
@@ -13959,6 +14637,7 @@
     "name": "Hatchet",
     "type": "OneHandedWeapon",
     "weight": 1.05,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -13987,6 +14666,7 @@
     "name": "Makeshift Sledgehammer",
     "type": "Polearm",
     "weight": 1.64,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -14017,6 +14697,7 @@
     "name": "Sledgehammer",
     "type": "TwoHandedWeapon",
     "weight": 1.96,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "TwoHandedMace",
@@ -14046,6 +14727,7 @@
     "name": "Pickaxe",
     "type": "OneHandedWeapon",
     "weight": 1.05,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -14074,6 +14756,7 @@
     "name": "Iron Pitchfork",
     "type": "Polearm",
     "weight": 1.92,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -14124,6 +14807,7 @@
     "name": "Pitchfork",
     "type": "Polearm",
     "weight": 1.47,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -14174,6 +14858,7 @@
     "name": "Scythe",
     "type": "Polearm",
     "weight": 2.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -14204,6 +14889,7 @@
     "name": "Sickle",
     "type": "OneHandedWeapon",
     "weight": 1.18,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -14232,6 +14918,7 @@
     "name": "Pernach",
     "type": "OneHandedWeapon",
     "weight": 1.97,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Mace",
@@ -14259,6 +14946,7 @@
     "name": "Piercing Arrows",
     "type": "Arrows",
     "weight": 0.041,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Arrow",
@@ -14288,6 +14976,7 @@
     "name": "Pilgrim's Hood",
     "type": "HeadArmor",
     "weight": 0.2,
+    "culture": "Empire",
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -14301,6 +14990,7 @@
     "name": "Plain Dress",
     "type": "BodyArmor",
     "weight": 0.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -14313,7 +15003,8 @@
     "templateMbId": "plated_leather_coat",
     "name": "Plated Leather Coat",
     "type": "BodyArmor",
-    "weight": 12.7,
+    "weight": 19.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 38,
@@ -14327,6 +15018,7 @@
     "name": "Splint Boots",
     "type": "LegArmor",
     "weight": 2.7,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -14340,6 +15032,7 @@
     "name": "Plated Striped Gauntlets",
     "type": "HandArmor",
     "weight": 1.4,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -14353,6 +15046,7 @@
     "name": "Plumed Fur Lined Helmet",
     "type": "HeadArmor",
     "weight": 1.1,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 24,
       "bodyArmor": 0,
@@ -14366,6 +15060,7 @@
     "name": "Plumed Helmet",
     "type": "HeadArmor",
     "weight": 2.9,
+    "culture": "Empire",
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -14379,6 +15074,7 @@
     "name": "Plumed Lamellar Helmet",
     "type": "HeadArmor",
     "weight": 3.3,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 35,
       "bodyArmor": 0,
@@ -14392,6 +15088,7 @@
     "name": "Plumed Nomad Helmet",
     "type": "HeadArmor",
     "weight": 1.1,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -14405,6 +15102,7 @@
     "name": "Pointed Falchion",
     "type": "OneHandedWeapon",
     "weight": 1.68,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -14432,6 +15130,7 @@
     "name": "Pointed Skullcap Over Cloth Headwrap",
     "type": "HeadArmor",
     "weight": 1.1,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 20,
       "bodyArmor": 0,
@@ -14445,6 +15144,7 @@
     "name": "Pointed Skullcap Over Laced Coif",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 19,
       "bodyArmor": 0,
@@ -14458,6 +15158,7 @@
     "name": "Pointed Skullcap Over Mail",
     "type": "HeadArmor",
     "weight": 1.3,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 26,
       "bodyArmor": 0,
@@ -14471,6 +15172,7 @@
     "name": "Pointed Skullcap Over Mail Coif",
     "type": "HeadArmor",
     "weight": 3.0,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -14484,6 +15186,7 @@
     "name": "Pointed Skullcap with Mail",
     "type": "HeadArmor",
     "weight": 2.8,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -14497,6 +15200,7 @@
     "name": "Practice Spear",
     "type": "Polearm",
     "weight": 1.8,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -14549,6 +15253,7 @@
     "name": "Pugio",
     "type": "OneHandedWeapon",
     "weight": 0.76,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "Dagger",
@@ -14600,6 +15305,7 @@
     "name": "Push Fork",
     "type": "Polearm",
     "weight": 2.0,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -14631,6 +15337,7 @@
     "name": "Ragged Armwraps",
     "type": "HandArmor",
     "weight": 0.4,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -14644,6 +15351,7 @@
     "name": "Ragged Boots",
     "type": "LegArmor",
     "weight": 0.8,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -14657,6 +15365,7 @@
     "name": "Ragged Robes",
     "type": "BodyArmor",
     "weight": 0.9,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -14670,6 +15379,7 @@
     "name": "Range Arrows",
     "type": "Arrows",
     "weight": 0.043,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Arrow",
@@ -14699,6 +15409,7 @@
     "name": "Ranger Mail",
     "type": "BodyArmor",
     "weight": 12.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 32,
@@ -14711,7 +15422,8 @@
     "templateMbId": "red_coat_over_mail",
     "name": "Red Tabard Over Mail",
     "type": "BodyArmor",
-    "weight": 8.6,
+    "weight": 15.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 34,
@@ -14725,6 +15437,7 @@
     "name": "Reinforced Flat Kite Shield",
     "type": "Shield",
     "weight": 4.6,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -14753,6 +15466,7 @@
     "name": "Reinforced Cavalry Small Shield",
     "type": "Shield",
     "weight": 5.8,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -14781,6 +15495,7 @@
     "name": "Reinforced Leather Vambraces",
     "type": "HandArmor",
     "weight": 1.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -14794,6 +15509,7 @@
     "name": "Reinforced Suede Armor",
     "type": "BodyArmor",
     "weight": 2.3,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -14807,6 +15523,7 @@
     "name": "Reinforced Suede Boots",
     "type": "LegArmor",
     "weight": 1.0,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -14820,6 +15537,7 @@
     "name": "Reinforced Suede Shoulders",
     "type": "ShoulderArmor",
     "weight": 0.9,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -14833,6 +15551,7 @@
     "name": "Ridged Great Sabre",
     "type": "OneHandedWeapon",
     "weight": 1.86,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -14880,6 +15599,7 @@
     "name": "Ridged Highland helm",
     "type": "HeadArmor",
     "weight": 3.4,
+    "culture": "Battania",
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -14893,6 +15613,7 @@
     "name": "Ridged Sabre ",
     "type": "OneHandedWeapon",
     "weight": 1.53,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -14920,6 +15641,7 @@
     "name": "Southern Ring Mail",
     "type": "BodyArmor",
     "weight": 10.5,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 20,
@@ -14933,6 +15655,7 @@
     "name": "Rough Bearskin",
     "type": "ShoulderArmor",
     "weight": 2.3,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -14946,6 +15669,7 @@
     "name": "Rough Fur Armor",
     "type": "BodyArmor",
     "weight": 1.3,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -14959,6 +15683,7 @@
     "name": "Rough Fur Over Chain",
     "type": "BodyArmor",
     "weight": 14.0,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 36,
@@ -14972,6 +15697,7 @@
     "name": "Rough Tied Boots",
     "type": "LegArmor",
     "weight": 0.9,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -14985,6 +15711,7 @@
     "name": "Rough Tied Bracers",
     "type": "HandArmor",
     "weight": 0.6,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -14998,6 +15725,7 @@
     "name": "Roughcloth Shortcoat",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -15011,6 +15739,7 @@
     "name": "Northern Roughhide Cap",
     "type": "HeadArmor",
     "weight": 0.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -15024,6 +15753,7 @@
     "name": "Roughscale Helmet",
     "type": "HeadArmor",
     "weight": 3.2,
+    "culture": "Battania",
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -15037,6 +15767,7 @@
     "name": "Roughtied Leather Bracers",
     "type": "HandArmor",
     "weight": 0.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -15050,6 +15781,7 @@
     "name": "Roundkettle Over Imperial Cloth",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Empire",
     "armor": {
       "headArmor": 23,
       "bodyArmor": 0,
@@ -15063,6 +15795,7 @@
     "name": "Roundkettle Over Imperial Leather",
     "type": "HeadArmor",
     "weight": 1.3,
+    "culture": "Empire",
     "armor": {
       "headArmor": 25,
       "bodyArmor": 0,
@@ -15076,6 +15809,7 @@
     "name": "Roundkettle Over Imperial Mail",
     "type": "HeadArmor",
     "weight": 3.3,
+    "culture": "Empire",
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -15089,6 +15823,7 @@
     "name": "Roundkettle Over Imperial Padding",
     "type": "HeadArmor",
     "weight": 1.4,
+    "culture": "Empire",
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -15102,6 +15837,7 @@
     "name": "Roundkettle Over Laced Cloth",
     "type": "HeadArmor",
     "weight": 1.3,
+    "culture": "Empire",
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -15115,6 +15851,7 @@
     "name": "Sackcloth Tunic",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -15128,6 +15865,7 @@
     "name": "Saddle of Aeneas",
     "type": "MountHarness",
     "weight": 26.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 76,
@@ -15141,6 +15879,7 @@
     "name": "Highland Scale Armor",
     "type": "BodyArmor",
     "weight": 10.7,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 24,
@@ -15154,6 +15893,7 @@
     "name": "Scarf",
     "type": "ShoulderArmor",
     "weight": 0.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -15167,6 +15907,7 @@
     "name": "Seax",
     "type": "OneHandedWeapon",
     "weight": 0.44,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "Dagger",
@@ -15194,6 +15935,7 @@
     "name": "Sparing Seax",
     "type": "OneHandedWeapon",
     "weight": 0.44,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "Dagger",
@@ -15221,6 +15963,7 @@
     "name": "Segmented Cevelliere Over Laced Coif",
     "type": "HeadArmor",
     "weight": 1.3,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 24,
       "bodyArmor": 0,
@@ -15234,6 +15977,7 @@
     "name": "Segmented Cevelliere Over Mail",
     "type": "HeadArmor",
     "weight": 3.3,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -15247,6 +15991,7 @@
     "name": "Segmented Cevelliere Over Mail Coif",
     "type": "HeadArmor",
     "weight": 3.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 24,
       "bodyArmor": 0,
@@ -15260,6 +16005,7 @@
     "name": "Segmented Cervelliere Over Padded Cloth",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 21,
       "bodyArmor": 0,
@@ -15273,6 +16019,7 @@
     "name": "Segmented Skullcap Over Laced Coif",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 17,
       "bodyArmor": 0,
@@ -15286,6 +16033,7 @@
     "name": "Segmented Skullcap Over Mail Coif",
     "type": "HeadArmor",
     "weight": 3.5,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 24,
       "bodyArmor": 0,
@@ -15299,6 +16047,7 @@
     "name": "Segmented Skullcap Over Padded Cloth",
     "type": "HeadArmor",
     "weight": 1.1,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 24,
       "bodyArmor": 0,
@@ -15312,6 +16061,7 @@
     "name": "Segmented Skullcap Over Padded Coif",
     "type": "HeadArmor",
     "weight": 1.3,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 20,
       "bodyArmor": 0,
@@ -15325,6 +16075,7 @@
     "name": "Light Shishpar Mace",
     "type": "OneHandedWeapon",
     "weight": 1.86,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "Mace",
@@ -15352,6 +16103,7 @@
     "name": "Southern Short Padded Robe",
     "type": "BodyArmor",
     "weight": 1.3,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -15365,6 +16117,7 @@
     "name": "Short Sword",
     "type": "OneHandedWeapon",
     "weight": 1.49,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -15392,6 +16145,7 @@
     "name": "Simple Eastern Backsword",
     "type": "OneHandedWeapon",
     "weight": 1.23,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -15419,6 +16173,7 @@
     "name": "Simple Pike",
     "type": "Polearm",
     "weight": 1.62,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -15449,6 +16204,7 @@
     "name": "Simple Sabre ",
     "type": "OneHandedWeapon",
     "weight": 1.46,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -15476,6 +16232,7 @@
     "name": "Simple Sparth Axe",
     "type": "OneHandedWeapon",
     "weight": 1.13,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -15506,6 +16263,7 @@
     "name": "Sleeveless Fur Coat",
     "type": "BodyArmor",
     "weight": 1.8,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -15519,6 +16277,7 @@
     "name": "Sleeveless Padded Coat",
     "type": "BodyArmor",
     "weight": 2.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -15532,6 +16291,7 @@
     "name": "Sleeveless Padded Short Coat",
     "type": "BodyArmor",
     "weight": 2.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -15545,6 +16305,7 @@
     "name": "Sleeveless Studded Fur Armor",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -15558,6 +16319,7 @@
     "name": "Small Bit Axe",
     "type": "OneHandedWeapon",
     "weight": 1.12,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -15586,6 +16348,7 @@
     "name": "Small Flat Heater Shield",
     "type": "Shield",
     "weight": 2.5,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -15614,6 +16377,7 @@
     "name": "Small Heater Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -15642,6 +16406,7 @@
     "name": "Small Spurred Axe",
     "type": "OneHandedWeapon",
     "weight": 1.05,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -15670,6 +16435,7 @@
     "name": "Southern Broad Kaskara",
     "type": "OneHandedWeapon",
     "weight": 1.52,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -15717,6 +16483,7 @@
     "name": "Southern Lord Helmet",
     "type": "HeadArmor",
     "weight": 3.9,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 42,
       "bodyArmor": 0,
@@ -15730,6 +16497,7 @@
     "name": "Southern Moccasins",
     "type": "LegArmor",
     "weight": 0.5,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -15743,6 +16511,7 @@
     "name": "Southern Noble Helmet",
     "type": "HeadArmor",
     "weight": 3.5,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -15756,6 +16525,7 @@
     "name": "Reinforced Oval Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -15784,6 +16554,7 @@
     "name": "Southern Shawl",
     "type": "ShoulderArmor",
     "weight": 0.4,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -15797,6 +16568,7 @@
     "name": "Southern Small Axe",
     "type": "OneHandedWeapon",
     "weight": 0.96,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -15825,6 +16597,7 @@
     "name": "Knob Headed Southern Spear",
     "type": "Polearm",
     "weight": 1.82,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -15875,6 +16648,7 @@
     "name": "Long Thamaskene Tipped Spear",
     "type": "Polearm",
     "weight": 1.96,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -15925,6 +16699,7 @@
     "name": "Southern Throwing Axe",
     "type": "Thrown",
     "weight": 0.69,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "ThrowingAxe",
@@ -15977,6 +16752,7 @@
     "name": "Spangenhelm With Leather",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 20,
       "bodyArmor": 0,
@@ -15990,6 +16766,7 @@
     "name": "Spangenhelm With Padded Cloth",
     "type": "HeadArmor",
     "weight": 1.3,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -16003,6 +16780,7 @@
     "name": "Husnphree",
     "type": "Mount",
     "weight": 550.0,
+    "culture": "Aserai",
     "mount": {
       "bodyLength": 115,
       "chargeDamage": 15,
@@ -16017,6 +16795,7 @@
     "name": "Spiked Helmet",
     "type": "HeadArmor",
     "weight": 4.5,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -16030,6 +16809,7 @@
     "name": "Spiked Helmet With Facemask",
     "type": "HeadArmor",
     "weight": 4.5,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -16043,6 +16823,7 @@
     "name": "Spiked Kettle Over Imperial Mail",
     "type": "HeadArmor",
     "weight": 3.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 27,
       "bodyArmor": 0,
@@ -16056,6 +16837,7 @@
     "name": "Spiked Kettle Over Imperial Padding",
     "type": "HeadArmor",
     "weight": 1.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 39,
       "bodyArmor": 0,
@@ -16069,6 +16851,7 @@
     "name": "Star Falchion",
     "type": "OneHandedWeapon",
     "weight": 2.3,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -16096,6 +16879,7 @@
     "name": "Steel Shestopyor",
     "type": "OneHandedWeapon",
     "weight": 2.24,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Mace",
@@ -16123,6 +16907,7 @@
     "name": "Steel Round Shield",
     "type": "Shield",
     "weight": 4.0,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "LargeShield",
@@ -16151,6 +16936,7 @@
     "name": "Eastern Steppe Armor",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -16164,6 +16950,7 @@
     "name": "Steppe Arrows",
     "type": "Arrows",
     "weight": 0.036,
+    "culture": "Khuzait",
     "weapons": [
       {
         "class": "Arrow",
@@ -16193,6 +16980,7 @@
     "name": "Steppe Bow",
     "type": "Bow",
     "weight": 0.3,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Bow",
@@ -16226,6 +17014,7 @@
     "name": "Eastern Envelope Dress",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -16239,6 +17028,7 @@
     "name": "Steppe Fur Harness",
     "type": "MountHarness",
     "weight": 8.2,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -16252,6 +17042,7 @@
     "name": "Eastern Cavalry Shield",
     "type": "Shield",
     "weight": 2.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -16280,6 +17071,7 @@
     "name": "Steppe Half Barding",
     "type": "MountHarness",
     "weight": 11.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 38,
@@ -16293,6 +17085,7 @@
     "name": "Steppe Harness",
     "type": "MountHarness",
     "weight": 8.5,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -16306,6 +17099,7 @@
     "name": "Heavy Recurve Bow",
     "type": "Bow",
     "weight": 0.3,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Bow",
@@ -16339,6 +17133,7 @@
     "name": "Eastern Helmet",
     "type": "HeadArmor",
     "weight": 1.2,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -16352,6 +17147,7 @@
     "name": "Eastern Steppe Leather Boots",
     "type": "LegArmor",
     "weight": 0.8,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -16365,6 +17161,7 @@
     "name": "Eastern Leather Shoulders",
     "type": "ShoulderArmor",
     "weight": 0.7,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -16378,6 +17175,7 @@
     "name": "Eastern Leather Vambraces",
     "type": "HandArmor",
     "weight": 0.5,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -16391,6 +17189,7 @@
     "name": "Eastern Steppe Robe",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -16404,6 +17203,7 @@
     "name": "Steppe War Bow",
     "type": "Bow",
     "weight": 0.3,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Bow",
@@ -16437,6 +17237,7 @@
     "name": "Steppe War Horse",
     "type": "Mount",
     "weight": 460.0,
+    "culture": "Khuzait",
     "mount": {
       "bodyLength": 100,
       "chargeDamage": 20,
@@ -16450,7 +17251,8 @@
     "templateMbId": "stitched_leather_over_mail",
     "name": "Stitched Leather Over Mail",
     "type": "BodyArmor",
-    "weight": 11.1,
+    "weight": 15.1,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 36,
@@ -16464,6 +17266,7 @@
     "name": "Stitched Leather Shoulders",
     "type": "ShoulderArmor",
     "weight": 1.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -16477,6 +17280,7 @@
     "name": "Stitched Leather Vest",
     "type": "BodyArmor",
     "weight": 1.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -16490,6 +17294,7 @@
     "name": "Storm Charger",
     "type": "Mount",
     "weight": 430.0,
+    "culture": "Neutral",
     "mount": {
       "bodyLength": 100,
       "chargeDamage": 20,
@@ -16504,6 +17309,7 @@
     "name": "Strapped Leather Boots",
     "type": "LegArmor",
     "weight": 0.9,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -16517,6 +17323,7 @@
     "name": "Strapped Leather Bracers",
     "type": "HandArmor",
     "weight": 0.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -16530,6 +17337,7 @@
     "name": "Strapped Mail Chausses",
     "type": "LegArmor",
     "weight": 3.0,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -16543,6 +17351,7 @@
     "name": "Strapped Shoes",
     "type": "LegArmor",
     "weight": 0.7,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -16556,6 +17365,7 @@
     "name": "Striped Leather Harness",
     "type": "MountHarness",
     "weight": 7.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -16569,6 +17379,7 @@
     "name": "Reinforced Oaken Kite Shield",
     "type": "Shield",
     "weight": 5.8,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -16597,6 +17408,7 @@
     "name": "Studded Adarga",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -16625,6 +17437,7 @@
     "name": "Studded Bound Kite Shield",
     "type": "Shield",
     "weight": 4.8,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -16652,7 +17465,8 @@
     "templateMbId": "studded_fur_armor",
     "name": "Studded Fur Armor",
     "type": "BodyArmor",
-    "weight": 0.6,
+    "weight": 1.2,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -16666,6 +17480,7 @@
     "name": "Studded Imperial Neckguard",
     "type": "ShoulderArmor",
     "weight": 3.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -16679,6 +17494,7 @@
     "name": "Southern Studded Leather Coat",
     "type": "BodyArmor",
     "weight": 1.6,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -16691,7 +17507,8 @@
     "templateMbId": "studded_leather_over_aketon",
     "name": "Studded Leather Over Aketon",
     "type": "BodyArmor",
-    "weight": 3.8,
+    "weight": 4.4,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -16705,6 +17522,7 @@
     "name": "Studded Leather Vambraces",
     "type": "HandArmor",
     "weight": 0.9,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -16718,6 +17536,7 @@
     "name": "Studded Leather Waistcoat",
     "type": "BodyArmor",
     "weight": 0.7,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -16731,6 +17550,7 @@
     "name": "Iron Round Shield",
     "type": "Shield",
     "weight": 7.3,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "LargeShield",
@@ -16759,6 +17579,7 @@
     "name": "Studded Steppe Barding",
     "type": "MountHarness",
     "weight": 23.0,
+    "culture": "Neutral",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 52,
@@ -16772,6 +17593,7 @@
     "name": "Studded Steppe Leather",
     "type": "BodyArmor",
     "weight": 2.4,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -16785,6 +17607,7 @@
     "name": "Studded Vambraces",
     "type": "HandArmor",
     "weight": 0.7,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -16798,6 +17621,7 @@
     "name": "Drilled Two Handed Axe",
     "type": "OneHandedWeapon",
     "weight": 1.32,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -16828,6 +17652,7 @@
     "name": "Northern Decorated Two Handed Axe",
     "type": "OneHandedWeapon",
     "weight": 1.68,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -16858,6 +17683,7 @@
     "name": "Gallogaich Axe",
     "type": "OneHandedWeapon",
     "weight": 1.03,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -16886,6 +17712,7 @@
     "name": "Sparring Gallogaich Axe",
     "type": "OneHandedWeapon",
     "weight": 1.03,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -16914,6 +17741,7 @@
     "name": "Northern Common Axe",
     "type": "OneHandedWeapon",
     "weight": 0.94,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -16942,6 +17770,7 @@
     "name": "Veteran Warriors Axe",
     "type": "OneHandedWeapon",
     "weight": 1.19,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -16970,6 +17799,7 @@
     "name": "Northern Rectangular Bitted Axe",
     "type": "OneHandedWeapon",
     "weight": 1.05,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -16997,7 +17827,8 @@
     "templateMbId": "sturgia_cavalry_armor",
     "name": "Sturgia Cavalry Armor",
     "type": "BodyArmor",
-    "weight": 9.4,
+    "weight": 16.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 46,
@@ -17011,6 +17842,7 @@
     "name": "Sturgia Heavy Cavalry Helmet",
     "type": "HeadArmor",
     "weight": 2.8,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 26,
       "bodyArmor": 0,
@@ -17024,6 +17856,7 @@
     "name": "Sturgian Trotter",
     "type": "Mount",
     "weight": 458.0,
+    "culture": "Sturgia",
     "mount": {
       "bodyLength": 100,
       "chargeDamage": 10,
@@ -17038,6 +17871,7 @@
     "name": "Sturgian Lance",
     "type": "Polearm",
     "weight": 1.88,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -17108,6 +17942,7 @@
     "name": "Sturgian Heavy Lance",
     "type": "Polearm",
     "weight": 2.38,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -17178,6 +18013,7 @@
     "name": "Long Tunic",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -17191,6 +18027,7 @@
     "name": "Thamaskene Steel Warsword",
     "type": "OneHandedWeapon",
     "weight": 1.54,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17218,6 +18055,7 @@
     "name": "Decorated Long Warsword",
     "type": "OneHandedWeapon",
     "weight": 1.54,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17245,6 +18083,7 @@
     "name": "Decorated Fullered Sword",
     "type": "OneHandedWeapon",
     "weight": 1.54,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17272,6 +18111,7 @@
     "name": "Gold Bound Short Warsword",
     "type": "OneHandedWeapon",
     "weight": 1.34,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17299,6 +18139,7 @@
     "name": "Iron Rimmed Large Round Shield",
     "type": "Shield",
     "weight": 7.3,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "LargeShield",
@@ -17327,6 +18168,7 @@
     "name": "Crude Large Round Shield",
     "type": "Shield",
     "weight": 7.3,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "LargeShield",
@@ -17355,6 +18197,7 @@
     "name": "Warrazor",
     "type": "Polearm",
     "weight": 1.83,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -17385,6 +18228,7 @@
     "name": "Tapered Northern Blade",
     "type": "OneHandedWeapon",
     "weight": 1.11,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17412,6 +18256,7 @@
     "name": "Northern Sparring Blade",
     "type": "OneHandedWeapon",
     "weight": 1.11,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17439,6 +18284,7 @@
     "name": "Northern Backsword",
     "type": "OneHandedWeapon",
     "weight": 1.18,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17466,6 +18312,7 @@
     "name": "Pointy Warsword",
     "type": "OneHandedWeapon",
     "weight": 1.14,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17493,6 +18340,7 @@
     "name": "Long Warsword",
     "type": "OneHandedWeapon",
     "weight": 1.41,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17520,6 +18368,7 @@
     "name": "Fullered Narrow Warsword",
     "type": "OneHandedWeapon",
     "weight": 1.23,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17547,6 +18396,7 @@
     "name": "Fullered Long Warsword",
     "type": "OneHandedWeapon",
     "weight": 1.52,
+    "culture": "Sturgia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17573,7 +18423,8 @@
     "templateMbId": "sturgian_chainmale_longsleeve",
     "name": "Northern Decorated Hauberk",
     "type": "BodyArmor",
-    "weight": 9.3,
+    "weight": 14.5,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 32,
@@ -17587,6 +18438,7 @@
     "name": "Northern Decorated Mail",
     "type": "BodyArmor",
     "weight": 8.3,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 25,
@@ -17600,6 +18452,7 @@
     "name": "Northern Brigandine Over Hauberk",
     "type": "BodyArmor",
     "weight": 28.6,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 49,
@@ -17613,6 +18466,7 @@
     "name": "Northern Helmet",
     "type": "HeadArmor",
     "weight": 1.8,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 31,
       "bodyArmor": 0,
@@ -17626,6 +18480,7 @@
     "name": "Northern Helmet Closed",
     "type": "HeadArmor",
     "weight": 1.8,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 50,
       "bodyArmor": 0,
@@ -17639,6 +18494,7 @@
     "name": "Northern Open Helmet",
     "type": "HeadArmor",
     "weight": 1.8,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 35,
       "bodyArmor": 0,
@@ -17652,6 +18508,7 @@
     "name": "Northern Lamellar Over Mail",
     "type": "BodyArmor",
     "weight": 24.0,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 50,
@@ -17665,6 +18522,7 @@
     "name": "Northern Lamellar Over Hauberk",
     "type": "BodyArmor",
     "weight": 28.0,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 50,
@@ -17678,6 +18536,7 @@
     "name": "Northern Short Lamellar Vest",
     "type": "BodyArmor",
     "weight": 6.2,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 28,
@@ -17691,6 +18550,7 @@
     "name": "Northern Lamellar Vest",
     "type": "BodyArmor",
     "weight": 8.3,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 35,
@@ -17704,6 +18564,7 @@
     "name": "Northern Lord Helmet",
     "type": "HeadArmor",
     "weight": 3.6,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -17717,6 +18578,7 @@
     "name": "Northern Lord Helmet With Open Mail Coif",
     "type": "HeadArmor",
     "weight": 3.4,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -17730,6 +18592,7 @@
     "name": "Pointed Northern Lord Helmet With Feather",
     "type": "HeadArmor",
     "weight": 4.4,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -17743,6 +18606,7 @@
     "name": "Sumpter Horse",
     "type": "Mount",
     "weight": 450.0,
+    "culture": "Neutral",
     "mount": {
       "bodyLength": 102,
       "chargeDamage": 4,
@@ -17757,6 +18621,7 @@
     "name": "Aserai Horse",
     "type": "Mount",
     "weight": 515.0,
+    "culture": "Aserai",
     "mount": {
       "bodyLength": 108,
       "chargeDamage": 7,
@@ -17771,6 +18636,7 @@
     "name": "Battanian Warmount",
     "type": "Mount",
     "weight": 542.0,
+    "culture": "Battania",
     "mount": {
       "bodyLength": 111,
       "chargeDamage": 11,
@@ -17785,6 +18651,7 @@
     "name": "Imperial Charger",
     "type": "Mount",
     "weight": 548.0,
+    "culture": "Empire",
     "mount": {
       "bodyLength": 115,
       "chargeDamage": 12,
@@ -17799,6 +18666,7 @@
     "name": "Steppe Warhorse",
     "type": "Mount",
     "weight": 498.0,
+    "culture": "Khuzait",
     "mount": {
       "bodyLength": 94,
       "chargeDamage": 9,
@@ -17813,6 +18681,7 @@
     "name": "Sturgian Hunter",
     "type": "Mount",
     "weight": 510.0,
+    "culture": "Sturgia",
     "mount": {
       "bodyLength": 100,
       "chargeDamage": 9,
@@ -17827,6 +18696,7 @@
     "name": "Vlandian Courser",
     "type": "Mount",
     "weight": 531.0,
+    "culture": "Vlandia",
     "mount": {
       "bodyLength": 109,
       "chargeDamage": 12,
@@ -17841,6 +18711,7 @@
     "name": "Tall Heater Shield",
     "type": "Shield",
     "weight": 2.1,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -17869,6 +18740,7 @@
     "name": "Tall Helmet",
     "type": "HeadArmor",
     "weight": 1.8,
+    "culture": "Empire",
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -17882,6 +18754,7 @@
     "name": "Tassled Southern Robes",
     "type": "BodyArmor",
     "weight": 0.9,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -17895,6 +18768,7 @@
     "name": "Tattered Rags",
     "type": "BodyArmor",
     "weight": 0.3,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -17908,6 +18782,7 @@
     "name": "Thamaskene Pike",
     "type": "Polearm",
     "weight": 2.78,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -17938,6 +18813,7 @@
     "name": "The Scalpel",
     "type": "OneHandedWeapon",
     "weight": 1.47,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17965,6 +18841,7 @@
     "name": "Thick Sleeved Robe",
     "type": "BodyArmor",
     "weight": 1.0,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -17978,6 +18855,7 @@
     "name": "Highland Thinhide Coif",
     "type": "HeadArmor",
     "weight": 0.5,
+    "culture": "Battania",
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -17991,6 +18869,7 @@
     "name": "Stone",
     "type": "Thrown",
     "weight": 0.1,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Stone",
@@ -18021,6 +18900,7 @@
     "name": "Tied Cloth Tunic",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -18034,6 +18914,7 @@
     "name": "Tied Head Wrapping",
     "type": "HeadArmor",
     "weight": 0.5,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -18047,6 +18928,7 @@
     "name": "Tight Head Scarf",
     "type": "HeadArmor",
     "weight": 0.7,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 7,
       "bodyArmor": 0,
@@ -18060,6 +18942,7 @@
     "name": "Torn Padded Garments",
     "type": "BodyArmor",
     "weight": 0.5,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -18073,6 +18956,7 @@
     "name": "Tournament Arrows",
     "type": "Arrows",
     "weight": 0.043,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Arrow",
@@ -18102,6 +18986,7 @@
     "name": "Tournament Bolts",
     "type": "Bolts",
     "weight": 0.05,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Bolt",
@@ -18132,6 +19017,7 @@
     "name": "Trailed Southern Helmet",
     "type": "HeadArmor",
     "weight": 1.1,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 20,
       "bodyArmor": 0,
@@ -18145,6 +19031,7 @@
     "name": "Practice Bow",
     "type": "Bow",
     "weight": 0.3,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Bow",
@@ -18178,6 +19065,7 @@
     "name": "Practice Longbow",
     "type": "Bow",
     "weight": 0.5,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "Bow",
@@ -18211,6 +19099,7 @@
     "name": "Triangular Headed Spear",
     "type": "Polearm",
     "weight": 1.83,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -18261,6 +19150,7 @@
     "name": "Southern Tribesman's Bow",
     "type": "Bow",
     "weight": 0.5,
+    "culture": "Aserai",
     "weapons": [
       {
         "class": "Bow",
@@ -18294,6 +19184,7 @@
     "name": "Tribal Steppe Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -18322,6 +19213,7 @@
     "name": "Southern Tribal Turban",
     "type": "HeadArmor",
     "weight": 0.6,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -18335,6 +19227,7 @@
     "name": "Northern Belted Tunic",
     "type": "BodyArmor",
     "weight": 0.3,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -18348,6 +19241,7 @@
     "name": "Tunic With Rolled Cloth",
     "type": "BodyArmor",
     "weight": 0.7,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -18361,6 +19255,7 @@
     "name": "Tunic With Shoulder Pads",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -18374,6 +19269,7 @@
     "name": "Turban",
     "type": "HeadArmor",
     "weight": 0.5,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -18387,6 +19283,7 @@
     "name": "Turndown Leather Boots",
     "type": "LegArmor",
     "weight": 0.9,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -18400,6 +19297,7 @@
     "name": "Tyrhung",
     "type": "OneHandedWeapon",
     "weight": 1.95,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -18427,6 +19325,7 @@
     "name": "Tzkurion Axe",
     "type": "OneHandedWeapon",
     "weight": 1.23,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -18455,6 +19354,7 @@
     "name": "Upturned Fur Cap",
     "type": "HeadArmor",
     "weight": 0.6,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -18468,6 +19368,7 @@
     "name": "Fortified Mercenary Armor",
     "type": "BodyArmor",
     "weight": 8.2,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 24,
@@ -18481,6 +19382,7 @@
     "name": "Norse Round Shield",
     "type": "Shield",
     "weight": 3.5,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -18509,6 +19411,7 @@
     "name": "Visored Helmet Over Laced Coif",
     "type": "HeadArmor",
     "weight": 2.4,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 35,
       "bodyArmor": 0,
@@ -18522,6 +19425,7 @@
     "name": "Visored Helmet Over Mail Coif",
     "type": "HeadArmor",
     "weight": 3.6,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 52,
       "bodyArmor": 0,
@@ -18535,6 +19439,7 @@
     "name": "Visored Helmet Over Padded Cloth",
     "type": "HeadArmor",
     "weight": 2.3,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -18548,6 +19453,7 @@
     "name": "Visored Helmet Over Padded Coif",
     "type": "HeadArmor",
     "weight": 2.5,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 35,
       "bodyArmor": 0,
@@ -18561,6 +19467,7 @@
     "name": "Short Bill",
     "type": "OneHandedWeapon",
     "weight": 1.72,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -18591,6 +19498,7 @@
     "name": "Wide Fullered Broad Two Hander",
     "type": "OneHandedWeapon",
     "weight": 1.92,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "TwoHandedSword",
@@ -18619,6 +19527,7 @@
     "name": "Thamaskene Steel Two Hander",
     "type": "OneHandedWeapon",
     "weight": 2.04,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "TwoHandedSword",
@@ -18647,6 +19556,7 @@
     "name": "Western Infantry Axe",
     "type": "OneHandedWeapon",
     "weight": 0.92,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -18675,6 +19585,7 @@
     "name": "Northern Spiked Battle Axe",
     "type": "OneHandedWeapon",
     "weight": 1.1,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -18703,6 +19614,7 @@
     "name": "Cheap Paddings",
     "type": "BodyArmor",
     "weight": 2.9,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -18716,6 +19628,7 @@
     "name": "Cheap Colored Clothes",
     "type": "BodyArmor",
     "weight": 1.8,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -18729,6 +19642,7 @@
     "name": "Torn Robe",
     "type": "BodyArmor",
     "weight": 0.4,
+    "culture": "Looters",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 1,
@@ -18742,6 +19656,7 @@
     "name": "Rough Padded Cap",
     "type": "HeadArmor",
     "weight": 2.5,
+    "culture": "Looters",
     "armor": {
       "headArmor": 13,
       "bodyArmor": 0,
@@ -18755,6 +19670,7 @@
     "name": "Hide Cap",
     "type": "HeadArmor",
     "weight": 2.5,
+    "culture": "Looters",
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -18767,7 +19683,8 @@
     "templateMbId": "vlandia_chainmail",
     "name": "Western Chainmail",
     "type": "BodyArmor",
-    "weight": 10.0,
+    "weight": 12.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 28,
@@ -18781,6 +19698,7 @@
     "name": "Saddle Horse",
     "type": "Mount",
     "weight": 462.0,
+    "culture": "Vlandia",
     "mount": {
       "bodyLength": 109,
       "chargeDamage": 12,
@@ -18795,6 +19713,7 @@
     "name": "Western Light Lance",
     "type": "Polearm",
     "weight": 1.96,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -18865,6 +19784,7 @@
     "name": "Western Sparring Lance",
     "type": "Polearm",
     "weight": 1.96,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -18935,6 +19855,7 @@
     "name": "Vlandia Lance",
     "type": "Polearm",
     "weight": 1.99,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -19005,6 +19926,7 @@
     "name": "Vlandian Heavy Lance",
     "type": "Polearm",
     "weight": 2.21,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -19075,6 +19997,7 @@
     "name": "Plated Helmet",
     "type": "HeadArmor",
     "weight": 4.1,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 17,
       "bodyArmor": 0,
@@ -19088,6 +20011,7 @@
     "name": "Spiked Mace",
     "type": "OneHandedWeapon",
     "weight": 1.48,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "Mace",
@@ -19115,6 +20039,7 @@
     "name": "Fullered Western Mace",
     "type": "OneHandedWeapon",
     "weight": 2.1,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "Mace",
@@ -19142,6 +20067,7 @@
     "name": "Arming Sword With Golden Petals Imprint",
     "type": "OneHandedWeapon",
     "weight": 1.34,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -19169,6 +20095,7 @@
     "name": "Arming Sword With Golden Circle Imprint",
     "type": "OneHandedWeapon",
     "weight": 1.4,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -19196,6 +20123,7 @@
     "name": "Gold Engraved Arming Sword With Engraved Guard",
     "type": "OneHandedWeapon",
     "weight": 1.55,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -19223,6 +20151,7 @@
     "name": "Fullered Arming Sword Blade With Crescent Guard",
     "type": "OneHandedWeapon",
     "weight": 1.37,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -19250,6 +20179,7 @@
     "name": "Western Pike",
     "type": "Polearm",
     "weight": 3.19,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -19280,6 +20210,7 @@
     "name": "Voulge",
     "type": "Polearm",
     "weight": 1.51,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -19330,6 +20261,7 @@
     "name": "Iron Arming Sword",
     "type": "OneHandedWeapon",
     "weight": 1.34,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -19357,6 +20289,7 @@
     "name": "Iron Sparring Arming Sword",
     "type": "OneHandedWeapon",
     "weight": 1.34,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -19384,6 +20317,7 @@
     "name": "Ridged Tipped Arming Sword",
     "type": "OneHandedWeapon",
     "weight": 1.45,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -19411,6 +20345,7 @@
     "name": "Knightly Arming Sword",
     "type": "OneHandedWeapon",
     "weight": 1.41,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -19438,6 +20373,7 @@
     "name": "Ridged Arming Sword",
     "type": "OneHandedWeapon",
     "weight": 1.54,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -19465,6 +20401,7 @@
     "name": "Wide Fullered Broad Arming Sword",
     "type": "OneHandedWeapon",
     "weight": 1.9,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -19492,6 +20429,7 @@
     "name": "Western Corseted Dress",
     "type": "BodyArmor",
     "weight": 0.5,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -19505,6 +20443,7 @@
     "name": "Imperial Rich Dress",
     "type": "BodyArmor",
     "weight": 0.5,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -19518,6 +20457,7 @@
     "name": "Western Noble Dress",
     "type": "BodyArmor",
     "weight": 0.6,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -19531,6 +20471,7 @@
     "name": "Western Common Dress",
     "type": "BodyArmor",
     "weight": 0.7,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -19544,6 +20485,7 @@
     "name": "Western Arrows",
     "type": "Arrows",
     "weight": 0.06,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Arrow",
@@ -19573,6 +20515,7 @@
     "name": "War Camel",
     "type": "Mount",
     "weight": 622.0,
+    "culture": "Neutral",
     "mount": {
       "bodyLength": 105,
       "chargeDamage": 13,
@@ -19587,6 +20530,7 @@
     "name": "War Horse",
     "type": "Mount",
     "weight": 500.0,
+    "culture": "Neutral",
     "mount": {
       "bodyLength": 105,
       "chargeDamage": 25,
@@ -19601,6 +20545,7 @@
     "name": "War Razor",
     "type": "OneHandedWeapon",
     "weight": 1.54,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -19648,6 +20593,7 @@
     "name": "Tapered Two Hander",
     "type": "OneHandedWeapon",
     "weight": 1.67,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -19695,6 +20641,7 @@
     "name": "Broad Two Hander",
     "type": "OneHandedWeapon",
     "weight": 1.67,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "TwoHandedSword",
@@ -19723,6 +20670,7 @@
     "name": "Western Crowned Helmet",
     "type": "HeadArmor",
     "weight": 3.7,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 49,
       "bodyArmor": 0,
@@ -19736,6 +20684,7 @@
     "name": "Western Crowned Plated Helmet",
     "type": "HeadArmor",
     "weight": 3.9,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -19749,6 +20698,7 @@
     "name": "Simple Javelin",
     "type": "Thrown",
     "weight": 0.91,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Javelin",
@@ -19801,6 +20751,7 @@
     "name": "Simple Sparring Javelin",
     "type": "Thrown",
     "weight": 0.91,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "Javelin",
@@ -19853,6 +20804,7 @@
     "name": "Western Javelin",
     "type": "Thrown",
     "weight": 1.2,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "Javelin",
@@ -19905,6 +20857,7 @@
     "name": "Hooked Javelin",
     "type": "Thrown",
     "weight": 1.41,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "Javelin",
@@ -19957,6 +20910,7 @@
     "name": "Kite Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -19985,6 +20939,7 @@
     "name": "Kite Sparring Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -20013,6 +20968,7 @@
     "name": "Plated Helmet with Sideguards",
     "type": "HeadArmor",
     "weight": 4.1,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -20026,6 +20982,7 @@
     "name": "Western Riders Kite Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -20054,6 +21011,7 @@
     "name": "Western Riders Kite Sparring Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -20081,7 +21039,8 @@
     "templateMbId": "western_scale_mail",
     "name": "Highland Scale Mail",
     "type": "BodyArmor",
-    "weight": 11.3,
+    "weight": 15.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 32,
@@ -20095,6 +21054,7 @@
     "name": "Western Simple Spear",
     "type": "Polearm",
     "weight": 1.83,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -20145,6 +21105,7 @@
     "name": "Western Short Spear",
     "type": "Polearm",
     "weight": 1.89,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -20195,6 +21156,7 @@
     "name": "Western Long Spear",
     "type": "Polearm",
     "weight": 2.07,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -20245,6 +21207,7 @@
     "name": "Long Fine Steel Spear",
     "type": "Polearm",
     "weight": 2.06,
+    "culture": "Empire",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -20295,6 +21258,7 @@
     "name": "Franceska",
     "type": "Thrown",
     "weight": 0.68,
+    "culture": "Vlandia",
     "weapons": [
       {
         "class": "ThrowingAxe",
@@ -20346,7 +21310,8 @@
     "templateMbId": "white_coat_over_mail",
     "name": "White Tabard Over Mail",
     "type": "BodyArmor",
-    "weight": 9.6,
+    "weight": 15.0,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 34,
@@ -20360,6 +21325,7 @@
     "name": "Wide Heater Shield",
     "type": "Shield",
     "weight": 4.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -20388,6 +21354,7 @@
     "name": "Wide Leaf Spear",
     "type": "Polearm",
     "weight": 2.02,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -20438,6 +21405,7 @@
     "name": "Winds Fury",
     "type": "OneHandedWeapon",
     "weight": 1.55,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -20465,6 +21433,7 @@
     "name": "Wolf Shoulder",
     "type": "ShoulderArmor",
     "weight": 1.8,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -20478,6 +21447,7 @@
     "name": "Wolf Head",
     "type": "HeadArmor",
     "weight": 1.3,
+    "culture": "Battania",
     "armor": {
       "headArmor": 16,
       "bodyArmor": 0,
@@ -20491,6 +21461,7 @@
     "name": "Northern Style Head Wrap",
     "type": "HeadArmor",
     "weight": 0.2,
+    "culture": "Sturgia",
     "armor": {
       "headArmor": 2,
       "bodyArmor": 0,
@@ -20504,6 +21475,7 @@
     "name": "Wooden Twohander",
     "type": "OneHandedWeapon",
     "weight": 0.55,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -20553,6 +21525,7 @@
     "name": "Wooden Sword",
     "type": "OneHandedWeapon",
     "weight": 0.58,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -20581,6 +21554,7 @@
     "name": "Woodland axe",
     "type": "OneHandedWeapon",
     "weight": 1.27,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -20609,6 +21583,7 @@
     "name": "Woodland Longbow",
     "type": "Bow",
     "weight": 0.1,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "Bow",
@@ -20642,6 +21617,7 @@
     "name": "Woodland Yew Bow",
     "type": "Bow",
     "weight": 0.5,
+    "culture": "Battania",
     "weapons": [
       {
         "class": "Bow",
@@ -20675,6 +21651,7 @@
     "name": "Makeshift Horsemans Kite Shield",
     "type": "Shield",
     "weight": 4.0,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -20703,6 +21680,7 @@
     "name": "Worn Kite Shield",
     "type": "Shield",
     "weight": 3.7,
+    "culture": "Neutral",
     "weapons": [
       {
         "class": "LargeShield",
@@ -20731,6 +21709,7 @@
     "name": "Woven Leather Boots",
     "type": "LegArmor",
     "weight": 0.7,
+    "culture": "Khuzait",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -20744,6 +21723,7 @@
     "name": "Woven Leather Bracers",
     "type": "HandArmor",
     "weight": 0.8,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -20757,6 +21737,7 @@
     "name": "Woven Leather Coat",
     "type": "BodyArmor",
     "weight": 5.1,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -20770,6 +21751,7 @@
     "name": "Woven Leather Shoulders",
     "type": "ShoulderArmor",
     "weight": 1.6,
+    "culture": "Empire",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -20783,6 +21765,7 @@
     "name": "Woven Leather Vest",
     "type": "BodyArmor",
     "weight": 4.7,
+    "culture": "Vlandia",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -20796,6 +21779,7 @@
     "name": "Woven Turban",
     "type": "HeadArmor",
     "weight": 0.8,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -20809,6 +21793,7 @@
     "name": "Wrapped Southern Cap",
     "type": "HeadArmor",
     "weight": 0.5,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -20822,6 +21807,7 @@
     "name": "Highland Wrapped Headcloth",
     "type": "HeadArmor",
     "weight": 0.2,
+    "culture": "Battania",
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -20835,6 +21821,7 @@
     "name": "Wrapped Leather Boots",
     "type": "LegArmor",
     "weight": 1.0,
+    "culture": "Battania",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -20848,6 +21835,7 @@
     "name": "Southern Wrapped Scarf",
     "type": "ShoulderArmor",
     "weight": 0.5,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -20861,6 +21849,7 @@
     "name": "Wrapped Shoes",
     "type": "LegArmor",
     "weight": 0.8,
+    "culture": "Aserai",
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,

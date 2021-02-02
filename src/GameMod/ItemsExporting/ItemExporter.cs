@@ -167,6 +167,7 @@ namespace Crpg.GameMod.ItemsExporting
             {
                 TemplateMbId = mbItem.StringId,
                 Name = mbItem.Name.ToString(),
+                Culture = MbToCrpgCulture(mbItem.Culture),
                 Type = MbToCrpgItemType(mbItem.Type),
                 Weight = mbItem.Weight,
             };
@@ -227,6 +228,10 @@ namespace Crpg.GameMod.ItemsExporting
             ItemObject.ItemTypeEnum.Cape => CrpgItemType.ShoulderArmor, // Cape is a bad name.
             _ => (CrpgItemType)Enum.Parse(typeof(CrpgItemType), t.ToString()),
         };
+
+        private static CrpgCulture MbToCrpgCulture(BasicCultureObject? culture) => culture == null
+            ? CrpgCulture.Neutral // Consider no culture as neutral.
+            : (CrpgCulture)Enum.Parse(typeof(CrpgCulture), culture.ToString());
 
         private static CrpgWeaponClass MbToCrpgWeaponClass(WeaponClass wc) =>
             (CrpgWeaponClass)Enum.Parse(typeof(CrpgWeaponClass), wc.ToString());

@@ -23,6 +23,7 @@ namespace Crpg.Domain.Entities.Items
         /// </summary>
         public int? BaseItemId { get; set; }
 
+        public Culture Culture { get; set; }
         public ItemType Type { get; set; }
         public int Value { get; set; }
         public float Weight { get; set; }
@@ -87,6 +88,7 @@ namespace Crpg.Domain.Entities.Items
             TemplateMbId = TemplateMbId,
             Name = Name,
             BaseItemId = BaseItemId,
+            Culture = Culture,
             Type = Type,
             Value = Value,
             Weight = Weight,

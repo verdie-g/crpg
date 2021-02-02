@@ -213,6 +213,7 @@ namespace Crpg.Application.System.Commands
                 {
                     TemplateMbId = item.TemplateMbId,
                     Name = item.Name,
+                    Culture = item.Culture,
                     Type = item.Type,
                     Weight = item.Weight,
                     Rank = item.Rank,

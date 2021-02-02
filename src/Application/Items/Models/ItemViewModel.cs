@@ -14,6 +14,7 @@ namespace Crpg.Application.Items.Models
         public string Name { get; set; } = string.Empty;
         public int Value { get; set; }
         public ItemType Type { get; set; }
+        public Culture Culture { get; set; }
         public float Weight { get; set; }
         public int Rank { get; set; }
 

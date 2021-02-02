@@ -14,6 +14,7 @@ namespace Crpg.GameMod.Api.Models.Items
     {
         public string TemplateMbId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
+        public CrpgCulture Culture { get; set; }
         public CrpgItemType Type { get; set; }
         public float Weight { get; set; }
 
@@ -46,6 +47,19 @@ namespace Crpg.GameMod.Api.Models.Items
         Musket,
         Bullets,
         Banner,
+    }
+
+    // Copy of Crpg.Domain.Entities.Culture
+    internal enum CrpgCulture
+    {
+        Neutral,
+        Aserai,
+        Battania,
+        Empire,
+        Khuzait,
+        Looters,
+        Sturgia,
+        Vlandia,
     }
 
     // Copy of Crpg.Application.Items.Models.ItemArmorComponentViewModel
