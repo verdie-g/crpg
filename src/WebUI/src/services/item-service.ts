@@ -182,6 +182,7 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
   const props: ItemDescriptor = {
     fields: [
       ['Type', itemTypeToStr[item.type]],
+      ['Culture', item.culture],
       ['Weight', item.weight],
     ],
     modes: [],

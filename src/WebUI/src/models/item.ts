@@ -2,6 +2,7 @@ import ItemType from '@/models/item-type';
 import ItemArmorComponent from '@/models/item-armor-component';
 import ItemMountComponent from '@/models/item-mount-component';
 import ItemWeaponComponent from '@/models/item-weapon-component';
+import Culture from '@/models/culture';
 
 export default class Item {
   public id: number;
@@ -9,6 +10,7 @@ export default class Item {
   public name: string;
   public value: number;
   public type: ItemType;
+  public culture: Culture;
   public weight: number;
   public rank: number;
 
