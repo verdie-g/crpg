@@ -98,7 +98,9 @@ export default class Shop extends Vue {
 
   get filters(): ShopFilters {
     return {
-      types: this.$route.query.types ? this.$route.query.types as Array<ItemType> : [],
+      // Objects gotten from the query need to be copied, else passing them to v-model will directly
+      // modify $route.query which can have unwanted behaviors.
+      types: this.$route.query.types ? [...(this.$route.query.types as ItemType[])] : [],
       showOwned: this.$route.query.showOwned !== undefined ? Boolean(this.$route.query.showOwned as string) : true,
     };
   }
