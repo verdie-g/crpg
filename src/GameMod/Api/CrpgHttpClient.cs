@@ -26,7 +26,8 @@ namespace Crpg.GameMod.Api
 
         public CrpgHttpClient()
         {
-            _httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:8000") };
+            var httpClientHandler = new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip };
+            _httpClient = new HttpClient(httpClientHandler) { BaseAddress = new Uri("https://localhost:8000") };
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
 
             _serializerSettings = new JsonSerializerSettings
