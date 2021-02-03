@@ -5,6 +5,9 @@ export function stringTruncate(str: string, maxLength: number) {
     return ellipsis;
   }
 
-  const length = Math.min(str.length, maxLength) - ellipsis.length;
-  return str.substr(0, length) + ellipsis;
+  if (str.length < maxLength) {
+    return str;
+  }
+
+  return str.substr(0, maxLength - ellipsis.length) + ellipsis;
 }

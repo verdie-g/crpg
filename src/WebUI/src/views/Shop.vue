@@ -66,6 +66,7 @@ import ShopFiltersForm from '@/components/ShopFiltersForm.vue';
 import ShopFilters from '@/models/ShopFilters';
 import ItemType from '@/models/item-type';
 import { filterItemsByType } from '@/services/item-service';
+import Culture from '@/models/culture';
 
 @Component({
   components: { ShopFilterForm: ShopFiltersForm, ItemProperties },
@@ -101,15 +102,17 @@ export default class Shop extends Vue {
       // Objects gotten from the query need to be copied, else passing them to v-model will directly
       // modify $route.query which can have unwanted behaviors.
       types: this.$route.query.types ? [...(this.$route.query.types as ItemType[])] : [],
+      cultures: this.$route.query.cultures ? [...(this.$route.query.cultures as Culture[])] : [],
       showOwned: this.$route.query.showOwned !== undefined ? Boolean(this.$route.query.showOwned as string) : true,
     };
   }
 
-  set filters({ types, showOwned }: ShopFilters) {
+  set filters({ types, cultures, showOwned }: ShopFilters) {
     this.$router.push({
       query: {
         ...this.$route.query,
         types,
+        cultures,
         showOwned: showOwned.toString(),
         ...(this.currentPage === 1 ? {} : { page: '1' }),
       },
@@ -117,8 +120,10 @@ export default class Shop extends Vue {
   }
 
   get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
-    return filterItemsByType(itemModule.items, this.filters.types)
-      .filter(i => this.ownedItems[i.item.id] === undefined || this.filters.showOwned);
+    const filteredItems = itemModule.items.filter(i =>
+      (this.filters.showOwned || this.ownedItems[i.id] === undefined)
+      && (this.filters.cultures.length === 0 || this.filters.cultures.includes(i.culture)));
+    return filterItemsByType(filteredItems, this.filters.types);
   }
 
   get pageItems(): { item: Item; weaponIdx: number | undefined }[] {
