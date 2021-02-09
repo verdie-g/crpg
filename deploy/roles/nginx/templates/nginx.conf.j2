@@ -31,13 +31,8 @@ http {
     map $time_iso8601 $timezone { ~\+([0-9:]+)$ $1; }
     map $msec $datetime_ms { ~\.([0-9]+)$ $1; }
 
-    log_format default '$datetime.$datetime_ms+$timezone $remote_addr:$remote_port $request_method $scheme://$host$request_uri $server_protocol $status $request_length $bytes_sent $request_time $http_referer "$http_user_agent"';
+    log_format default '$datetime.$datetime_ms+$timezone $remote_addr:$remote_port $request_method $scheme://$host$request_uri $server_protocol $status $request_length $bytes_sent $request_time $http_referer "$http_user_agent" $opentracing_context_x_datadog_trace_id';
     access_log /var/log/nginx/access.log default buffer=8k flush=15s;
-
-    # Using trace id variable when opentracing is off will generate errors (https://github.com/opentracing-contrib/nginx-opentracing/issues/124).
-    # A workaround is to avoid logging trace id by default and use another log_format where opentracing is on which
-    # contains the trace id.
-    log_format trace '$datetime.$datetime_ms+$timezone $remote_addr:$remote_port $request_method $scheme://$host$request_uri $server_protocol $status $request_length $bytes_sent $request_time $http_referer "$http_user_agent" $opentracing_context_x_datadog_trace_id';
 
     sendfile    on;
     tcp_nopush  on;
