@@ -6,6 +6,7 @@ using Crpg.GameMod.Common;
 using Crpg.GameMod.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
+using TaleWorlds.ObjectSystem;
 
 namespace Crpg.GameMod.DefendTheVirgin
 {
@@ -13,8 +14,7 @@ namespace Crpg.GameMod.DefendTheVirgin
     {
         private readonly int _maxHitPoints;
 
-        public static CrpgCharacterObject New(TextObject name, CharacterSkills skills, Equipment equipment,
-            string bodyProperties, CrpgCharacterGender gender, CrpgConstants constants)
+        public static CrpgCharacterObject New(TextObject name, CharacterSkills skills, Equipment equipment, CrpgConstants constants)
         {
             int strength = skills.GetPropertyValue(CrpgSkills.Strength);
             int ironFlesh = skills.GetPropertyValue(CrpgSkills.IronFlesh);
@@ -23,20 +23,33 @@ namespace Crpg.GameMod.DefendTheVirgin
                                      + MathHelper.ApplyPolynomialFunction(strength, constants.HealthPointsForStrengthCoefs)
                                      + MathHelper.ApplyPolynomialFunction(ironFlesh, constants.HealthPointsForIronFleshCoefs));
 
-            var mbCharacter = new CrpgCharacterObject(name, skills, maxHitPoints);
-            SetCharacterBodyProperties(mbCharacter, bodyProperties, gender);
-            mbCharacter.InitializeEquipmentsOnLoad(new List<Equipment> { equipment });
+            var mbCharacter = new CrpgCharacterObject(name, maxHitPoints);
+            SetCharacterSkills(mbCharacter, skills);
+            SetCharacterEquipments(mbCharacter, equipment);
+            SetCharacterBodyProperties(mbCharacter);
             return mbCharacter;
         }
 
-        private static void SetCharacterBodyProperties(CrpgCharacterObject mbCharacter, string bodyPropertiesKey, CrpgCharacterGender gender)
+        private static void SetCharacterSkills(CrpgCharacterObject mbCharacter, CharacterSkills skills)
         {
-            var dynamicBodyProperties = new DynamicBodyProperties { Age = 20 }; // Age chosen arbitrarily.
-            var staticBodyProperties = StaticBodyPropertiesFromString(bodyPropertiesKey);
-            var bodyProperties = new BodyProperties(dynamicBodyProperties, staticBodyProperties);
-            bodyProperties = bodyProperties.ClampForMultiplayer(); // Clamp height and set Build & Weight.
-            mbCharacter.UpdatePlayerCharacterBodyProperties(bodyProperties, gender == CrpgCharacterGender.Female);
-            ReflectionHelper.SetField(mbCharacter, "_dynamicBodyPropertiesMin", mbCharacter.GetBodyPropertiesMax().DynamicProperties);
+            // MBCharacterSkills is expected to be created from an xml node, so reflection needs to be used here.
+            var mbCharacterSkills = new MBCharacterSkills();
+            ReflectionHelper.SetProperty(mbCharacterSkills, nameof(MBCharacterSkills.Skills), skills);
+            mbCharacter.CharacterSkills = mbCharacterSkills;
+        }
+
+        private static void SetCharacterEquipments(CrpgCharacterObject mbCharacter, Equipment equipment)
+        {
+            var mbEquipmentRoster = new MBEquipmentRoster();
+            ReflectionHelper.SetField(mbEquipmentRoster, "_equipments", new List<Equipment> { equipment });
+            ReflectionHelper.SetField(mbCharacter, "_equipmentRoster", mbEquipmentRoster);
+        }
+
+        private static void SetCharacterBodyProperties(CrpgCharacterObject mbCharacter)
+        {
+            var bodyProperties = MBObjectManager.Instance.GetObject<MBBodyProperty>("villager_battania");
+            mbCharacter.CreateBodyPropertyRange("whatever");
+            mbCharacter.BodyPropertyRange.Init(bodyProperties.BodyPropertyMin, bodyProperties.BodyPropertyMax);
         }
 
         private static StaticBodyProperties StaticBodyPropertiesFromString(string bodyPropertiesKey)
@@ -51,14 +64,10 @@ namespace Crpg.GameMod.DefendTheVirgin
             return staticBodyProperties;
         }
 
-        private CrpgCharacterObject(TextObject name, CharacterSkills skills, int maxHitPoints)
+        private CrpgCharacterObject(TextObject name, int maxHitPoints)
         {
             Name = name;
-            _characterSkills = skills;
             _maxHitPoints = maxHitPoints;
-
-            // Those fields are private for some reason. Don't do this at home.
-            ReflectionHelper.SetProperty(this, nameof(IsSoldier), true);
         }
 
         public override int MaxHitPoints() => _maxHitPoints;

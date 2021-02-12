@@ -329,8 +329,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                 AddEquipment(equipment, index, "crpg_" + equippedItem.Item.Id, skills, constants);
             }
 
-            return CrpgCharacterObject.New(new TextObject(crpgCharacter.Name), skills, equipment,
-                crpgCharacter.BodyProperties, crpgCharacter.Gender, constants);
+            return CrpgCharacterObject.New(new TextObject(crpgCharacter.Name), skills, equipment, constants);
         }
 
         private static void AddEquipment(Equipment equipments, EquipmentIndex idx, string? itemId,

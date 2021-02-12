@@ -4,7 +4,10 @@
 	<Id value="cRPG" />
 	<Version value="v0.0.1" />
 	<SingleplayerModule value="true" />
-	<DependedModules />
+	<DependedModules>
+		<DependedModule Id="Native" DependentVersion="e1.5.7" />
+		<DependedModule Id="SandBoxCore" DependentVersion="e1.5.7" />
+	</DependedModules>
 	<SubModules>
 		<SubModule>
 			<Name value="CrpgSubModule" />
@@ -15,16 +18,19 @@
 	</SubModules>
 	<Xmls>
 		<XmlNode>
-			<XmlName id="CraftingPieces" path="../../Native/ModuleData/mp_crafting_pieces" />
-		</XmlNode>
-		<XmlNode>
 			<XmlName id="CraftingPieces" path="../../Native/ModuleData/crafting_pieces" />
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="Items" path="../../Native/ModuleData/mpitems" />
+			<XmlName id="Items" path="../../SandBoxCore/ModuleData/spitems" />
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="Items" path="../../SandBoxCore/ModuleData/spitems" />
+			<XmlName id="EquipmentRosters" path="../../SandBoxCore/ModuleData/sandboxcore_equipment_sets" />
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="SkillSets" path="../../SandBoxCore/ModuleData/sandboxcore_skill_sets" />
+		</XmlNode>
+		<XmlNode>
+			<XmlName id="BodyProperties" path="../../SandBoxCore/ModuleData/sandboxcore_bodyproperties" />
 		</XmlNode>
 		<XmlNode>
 			<XmlName id="SPCultures" path="../../SandBoxCore/ModuleData/spcultures" />

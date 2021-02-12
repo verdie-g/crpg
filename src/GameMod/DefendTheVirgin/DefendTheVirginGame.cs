@@ -2,6 +2,7 @@
 using Crpg.GameMod.Common;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 
@@ -53,16 +54,16 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         private void InitializeGameTexts(GameTextManager gameTextManager)
         {
-            gameTextManager.LoadGameTexts(BasePath.Name + "Modules/Native/ModuleData/multiplayer_strings.xml");
-            gameTextManager.LoadGameTexts(BasePath.Name + "Modules/Native/ModuleData/global_strings.xml");
-            gameTextManager.LoadGameTexts(BasePath.Name + "Modules/Native/ModuleData/module_strings.xml");
-            gameTextManager.LoadGameTexts(BasePath.Name + "Modules/Native/ModuleData/native_strings.xml");
+            gameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("Native") + "ModuleData/multiplayer_strings.xml");
+            gameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("Native") + "ModuleData/global_strings.xml");
+            gameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("Native") + "ModuleData/module_strings.xml");
+            gameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("Native") + "ModuleData/native_strings.xml");
         }
 
         private void LoadCustomGameXmls()
         {
-            ObjectManager.LoadXML("CraftingPieces");
             ObjectManager.LoadXML("Items");
+            ObjectManager.LoadXML("EquipmentRosters");
             ObjectManager.LoadXML("NPCCharacters");
             ObjectManager.LoadXML("SPCultures");
         }
