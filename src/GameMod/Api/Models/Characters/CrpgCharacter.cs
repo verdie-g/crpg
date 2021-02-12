@@ -12,8 +12,6 @@ namespace Crpg.GameMod.Api.Models.Characters
         public int Generation { get; set; }
         public int Level { get; set; }
         public int Experience { get; set; }
-        public string BodyProperties { get; set; } = string.Empty;
-        public CrpgCharacterGender Gender { get; set; }
         public CrpgCharacterStatistics Statistics { get; set; } = new CrpgCharacterStatistics();
         public IList<CrpgEquippedItem> EquippedItems { get; set; } = Array.Empty<CrpgEquippedItem>();
     }

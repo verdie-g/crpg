@@ -156,8 +156,6 @@ class UserModule extends VuexModule {
     this.replaceCharacter({
       ...character,
       name: characterUpdate.name,
-      bodyProperties: characterUpdate.bodyProperties,
-      gender: characterUpdate.gender,
     });
     return userService.updateCharacter(character.id, characterUpdate);
   }

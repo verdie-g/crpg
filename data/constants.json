@@ -17,8 +17,6 @@
   "defaultStrength": 3,
   "defaultAgility": 3,
   "defaultHealthPoints": 60, /* A 33 STR, 3 AGI character with 11 IF would reach 115 HP. */
-  "defaultCharacterBodyProperties": "0018880540003341783567B87A8C5A7791D94C672ABB9E8734775BD78C2B866900D776030D96978800000000000000000000000000000000000000002FA49042",
-  "defaultCharacterGender": "Male",
   "defaultGeneration": 0,
   "defaultAutoRepair": true,
   "attributePointsPerLevel": 1,

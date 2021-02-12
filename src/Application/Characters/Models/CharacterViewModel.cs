@@ -15,8 +15,6 @@ namespace Crpg.Application.Characters.Models
         public int Experience { get; set; }
         public bool SkippedTheFun { get; set; }
         public bool AutoRepair { get; set; }
-        public string BodyProperties { get; set; } = string.Empty;
-        public CharacterGender Gender { get; set; }
         public CharacterStatisticsViewModel Statistics { get; set; } = new CharacterStatisticsViewModel();
         public IList<EquippedItemViewModel> EquippedItems { get; set; } = Array.Empty<EquippedItemViewModel>();
     }

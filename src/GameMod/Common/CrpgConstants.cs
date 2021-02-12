@@ -22,8 +22,6 @@ namespace Crpg.GameMod.Common
          public int DefaultStrength { get; set; }
          public int DefaultAgility { get; set; }
          public int DefaultHealthPoints { get; set; }
-         public string DefaultCharacterBodyProperties { get; set; } = string.Empty;
-         public string DefaultCharacterGender { get; set; } = string.Empty;
          public int DefaultGeneration { get; set; }
          public bool DefaultAutoRepair { get; set; }
          public int AttributePointsPerLevel { get; set; }

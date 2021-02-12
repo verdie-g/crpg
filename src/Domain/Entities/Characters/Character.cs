@@ -21,16 +21,6 @@ namespace Crpg.Domain.Entities.Characters
         public bool SkippedTheFun { get; set; }
         public bool AutoRepair { get; set; }
 
-        /// <summary>
-        /// A 128 character long string representing the in-game body of the character (height, face, ...).
-        /// </summary>
-        public string BodyProperties { get; set; } = string.Empty;
-
-        /// <summary>
-        /// In-game gender of the character.
-        /// </summary>
-        public CharacterGender Gender { get; set; }
-
         public CharacterStatistics Statistics { get; set; } = new CharacterStatistics();
         public IList<EquippedItem> EquippedItems { get; set; } = new List<EquippedItem>();
 

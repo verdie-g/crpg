@@ -20,8 +20,6 @@ namespace Crpg.Application.UTest.Common.Services
             DefaultGeneration = 1,
             DefaultExperienceMultiplier = 1.0f,
             DefaultAutoRepair = true,
-            DefaultCharacterBodyProperties = "ABC",
-            DefaultCharacterGender = CharacterGender.Male,
         };
 
         private static readonly ExperienceTable ExperienceTable = new ExperienceTable(Constants);
@@ -149,8 +147,6 @@ namespace Crpg.Application.UTest.Common.Services
             Assert.AreEqual(Constants.DefaultExperienceMultiplier, character.ExperienceMultiplier);
             Assert.IsFalse(character.SkippedTheFun);
             Assert.AreEqual(Constants.DefaultAutoRepair, character.AutoRepair);
-            Assert.AreEqual(Constants.DefaultCharacterBodyProperties, character.BodyProperties);
-            Assert.AreEqual(Constants.DefaultCharacterGender, character.Gender);
         }
     }
 }

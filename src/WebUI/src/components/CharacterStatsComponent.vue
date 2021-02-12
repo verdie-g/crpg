@@ -234,15 +234,6 @@
               <b-field label="Name">
                 <b-input type="text" v-model="characterUpdate.name" minlength="2" maxlength="32" required />
               </b-field>
-
-              <b-field label="Body Properties">
-                <b-input type="text" v-model="characterUpdate.bodyProperties" minlength="128" maxlength="128" required />
-              </b-field>
-
-              <b-field>
-                <b-radio v-model="characterUpdate.gender" name="name" native-value="Male">Male</b-radio>
-                <b-radio v-model="characterUpdate.gender" name="name" native-value="Female">Female</b-radio>
-              </b-field>
             </section>
 
             <footer class="modal-card-foot">
@@ -480,11 +471,7 @@ export default class CharacterStatsComponent extends Vue {
   }
 
   characterUpdateFromCharacter(character: Character): CharacterUpdate {
-    return {
-      name: character.name,
-      bodyProperties: character.bodyProperties,
-      gender: character.gender,
-    };
+    return { name: character.name };
   }
 
   openCharacterUpdateModal(): void {

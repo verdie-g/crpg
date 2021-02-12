@@ -1,5 +1,4 @@
 import CharacterStatistics from '@/models/character-statistics';
-import CharacterGender from '@/models/character-gender';
 import EquippedItem from '@/models/equipped-item';
 
 export default class Character {
@@ -9,8 +8,6 @@ export default class Character {
   public level: number;
   public experience: number;
   public autoRepair: boolean;
-  public bodyProperties: string;
-  public gender: CharacterGender;
   public statistics: CharacterStatistics;
   public equippedItems: EquippedItem[];
 }

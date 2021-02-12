@@ -40,8 +40,6 @@ namespace Crpg.Application.Common.Services
             character.ExperienceMultiplier = _constants.DefaultExperienceMultiplier;
             character.SkippedTheFun = false;
             character.AutoRepair = _constants.DefaultAutoRepair;
-            character.BodyProperties = _constants.DefaultCharacterBodyProperties;
-            character.Gender = _constants.DefaultCharacterGender;
         }
 
         /// <inheritdoc />

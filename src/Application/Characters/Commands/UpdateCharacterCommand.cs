@@ -17,24 +17,17 @@ namespace Crpg.Application.Characters.Commands
         public int CharacterId { get; set; }
         public int UserId { get; set; }
         public string Name { get; set; } = default!;
-        public string BodyProperties { get; set; } = string.Empty;
-        public CharacterGender Gender { get; set; }
 
         public class Validator : AbstractValidator<UpdateCharacterCommand>
         {
             private const int MinimumCharacterNameLength = 2;
             private const int MaximumCharacterNameLength = 32;
-            private const int BodyPropertiesLength = 128;
 
             public Validator()
             {
                 RuleFor(c => c.Name)
                     .MinimumLength(MinimumCharacterNameLength)
                     .MaximumLength(MaximumCharacterNameLength);
-
-                RuleFor(c => c.BodyProperties).Length(BodyPropertiesLength);
-
-                RuleFor(c => c.Gender).IsInEnum();
             }
         }
 
@@ -60,8 +53,6 @@ namespace Crpg.Application.Characters.Commands
                 }
 
                 character.Name = req.Name;
-                character.BodyProperties = req.BodyProperties;
-                character.Gender = req.Gender;
                 await _db.SaveChangesAsync(cancellationToken);
                 return new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character));
             }

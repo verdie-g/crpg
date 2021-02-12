@@ -27,7 +27,6 @@ namespace Crpg.Persistence
             NpgsqlConnection.GlobalTypeMapper.MapEnum<ItemSlot>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<DamageType>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<WeaponClass>();
-            NpgsqlConnection.GlobalTypeMapper.MapEnum<CharacterGender>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<ClanMemberRole>();
         }
 
@@ -101,7 +100,6 @@ namespace Crpg.Persistence
             modelBuilder.HasPostgresEnum<ItemSlot>();
             modelBuilder.HasPostgresEnum<DamageType>();
             modelBuilder.HasPostgresEnum<WeaponClass>();
-            modelBuilder.HasPostgresEnum<CharacterGender>();
             modelBuilder.HasPostgresEnum<ClanMemberRole>();
         }
     }

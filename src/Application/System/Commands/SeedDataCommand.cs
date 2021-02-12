@@ -77,21 +77,18 @@ namespace Crpg.Application.System.Commands
                                 Generation = 2,
                                 Level = 23,
                                 Experience = _experienceTable.GetExperienceForLevel(23),
-                                BodyProperties = "0018880540003341783567B87A8C5A7791D94C672ABB9E8734775BD78C2B866900D776030D96978800000000000000000000000000000000000000002FA49042"
                             },
                             new Character
                             {
                                 Name = "totoalala",
                                 Level = 12,
                                 Experience = _experienceTable.GetExperienceForLevel(12),
-                                BodyProperties = "0018880540003341783567B87A8C5A7791D94C672ABB9E8734775BD78C2B866900D776030D96978800000000000000000000000000000000000000002FA49042"
                             },
                             new Character
                             {
                                 Name = "Retire me",
                                 Level = 31,
                                 Experience = _experienceTable.GetExperienceForLevel(31) + 100,
-                                BodyProperties = "0018880540003341783567B87A8C5A7791D94C672ABB9E8734775BD78C2B866900D776030D96978800000000000000000000000000000000000000002FA49042"
                             },
                         },
                         Bans = new List<Ban>
