@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <nav v-if="user">
       <b-navbar fixed-top>
         <template slot="brand">
@@ -14,54 +13,59 @@
 
         <template slot="end">
           <b-navbar-item tag="div" v-if="user">
-              <div class="media">
-                <div class="media-content">
-                  <p>
-                    <strong>{{user.name}}</strong><br>
-                    <b-icon icon="coins" size="is-small" style="margin-right: 6px" />{{user.gold}}
-                  </p>
-                </div>
-                <figure class="media-right">
-                  <b-dropdown aria-role="list" position="is-bottom-left">
-                    <p class="image" slot="trigger" style="cursor: pointer">
-                      <img v-bind:src="user.avatarSmall" alt="avatar" />
-                    </p>
-
-                    <b-dropdown-item has-link aria-role="menuitem" v-if="isAdminOrSuperAdmin">
-                      <router-link to="/admin">
-                        <b-icon icon="user-shield" />
-                        Administration
-                      </router-link>
-                    </b-dropdown-item>
-
-                    <b-dropdown-item has-link aria-role="menuitem">
-                      <router-link to="/settings">
-                        <b-icon icon="cog" />
-                        Settings
-                      </router-link>
-                    </b-dropdown-item>
-
-                    <b-dropdown-item value="home" aria-role="menuitem" @click="signOut">
-                      <b-icon icon="sign-out-alt" />
-                      Sign out
-                    </b-dropdown-item>
-                  </b-dropdown>
-                </figure>
+            <div class="media">
+              <div class="media-content">
+                <p>
+                  <strong>{{ user.name }}</strong>
+                  <br />
+                  <b-icon icon="coins" size="is-small" style="margin-right: 6px" />
+                  {{ user.gold }}
+                </p>
               </div>
+              <figure class="media-right">
+                <b-dropdown aria-role="list" position="is-bottom-left">
+                  <p class="image" slot="trigger" style="cursor: pointer">
+                    <img v-bind:src="user.avatarSmall" alt="avatar" />
+                  </p>
 
+                  <b-dropdown-item has-link aria-role="menuitem" v-if="isAdminOrSuperAdmin">
+                    <router-link to="/admin">
+                      <b-icon icon="user-shield" />
+                      Administration
+                    </router-link>
+                  </b-dropdown-item>
+
+                  <b-dropdown-item has-link aria-role="menuitem">
+                    <router-link to="/settings">
+                      <b-icon icon="cog" />
+                      Settings
+                    </router-link>
+                  </b-dropdown-item>
+
+                  <b-dropdown-item value="home" aria-role="menuitem" @click="signOut">
+                    <b-icon icon="sign-out-alt" />
+                    Sign out
+                  </b-dropdown-item>
+                </b-dropdown>
+              </figure>
+            </div>
           </b-navbar-item>
         </template>
       </b-navbar>
     </nav>
 
     <main>
-      <router-view/>
+      <router-view />
     </main>
 
     <footer class="footer">
       <div class="level">
         <div class="level-item">
-          <a href="https://github.com/verdie-g/crpg" target="_blank" title="Contribute to the project on Github">
+          <a
+            href="https://github.com/verdie-g/crpg"
+            target="_blank"
+            title="Contribute to the project on Github"
+          >
             <b-icon icon="github" pack="fab" size="is-large" aria-label="cRPG Github" />
           </a>
         </div>
@@ -79,13 +83,21 @@
         </div>
 
         <div class="level-item">
-          <a href="https://forums.taleworlds.com/index.php?groups/crpg.389" target="_blank" title="Forum">
+          <a
+            href="https://forums.taleworlds.com/index.php?groups/crpg.389"
+            target="_blank"
+            title="Forum"
+          >
             <b-icon icon="users" size="is-large" aria-label="cRPG in TaleWorlds forum" />
           </a>
         </div>
 
         <div class="level-item">
-          <a href="https://store.steampowered.com/app/261550/Mount__Blade_II_Bannerlord" target="_blank" title="Buy the game">
+          <a
+            href="https://store.steampowered.com/app/261550/Mount__Blade_II_Bannerlord"
+            target="_blank"
+            title="Buy the game"
+          >
             <b-icon icon="steam" pack="fab" size="is-large" aria-label="Mount & Blade Steam page" />
           </a>
         </div>

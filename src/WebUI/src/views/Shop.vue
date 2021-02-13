@@ -2,50 +2,94 @@
   <section class="section">
     <div class="container">
       <div class="columns">
-
         <aside class="column is-narrow shop-filters">
           <shop-filter-form v-model="filters" />
         </aside>
 
         <div class="column">
           <div class="columns is-multiline items" v-if="pageItems">
-            <div class="column is-narrow" v-for="{ item, weaponIdx } in pageItems" v-bind:key="item.id">
+            <div
+              class="column is-narrow"
+              v-for="{ item, weaponIdx } in pageItems"
+              v-bind:key="item.id"
+            >
               <div class="card item-card">
                 <div class="card-image">
                   <figure class="image">
-                    <img :src="`${publicPath}items/${item.templateMbId}.png`" alt="item image" loading="lazy" />
+                    <img
+                      :src="`${publicPath}items/${item.templateMbId}.png`"
+                      alt="item image"
+                      loading="lazy"
+                    />
                   </figure>
                 </div>
                 <div class="card-content content">
-                  <h4>{{item.name}}</h4>
+                  <h4>{{ item.name }}</h4>
                   <div class="content">
                     <item-properties :item="item" :weapon-idx="weaponIdx" />
                   </div>
                 </div>
                 <footer class="card-footer">
-                  <b-button icon-left="coins" expanded :disabled="item.value > gold || ownedItems[item.id]"
-                            :loading="buyingItems[item.id]" @click="buy(item)"
-                            :title="buyButtonTitle(item)">
-                    {{item.value}}
+                  <b-button
+                    icon-left="coins"
+                    expanded
+                    :disabled="item.value > gold || ownedItems[item.id]"
+                    :loading="buyingItems[item.id]"
+                    @click="buy(item)"
+                    :title="buyButtonTitle(item)"
+                  >
+                    {{ item.value }}
                   </b-button>
                 </footer>
               </div>
             </div>
           </div>
 
-          <b-pagination :total="filteredItems.length" :current.sync="currentPage" :per-page="itemsPerPage" order="is-centered"
-                        range-before="2" range-after="2" icon-prev="chevron-left">
-            <b-pagination-button slot-scope="props" :page="props.page" :id="`page${props.page.number}`" tag="router-link"
-                                 :to="{ name: 'shop', query: { ...$route.query, page: props.page.number } }">{{props.page.number}}
+          <b-pagination
+            :total="filteredItems.length"
+            :current.sync="currentPage"
+            :per-page="itemsPerPage"
+            order="is-centered"
+            range-before="2"
+            range-after="2"
+            icon-prev="chevron-left"
+          >
+            <b-pagination-button
+              slot-scope="props"
+              :page="props.page"
+              :id="`page${props.page.number}`"
+              tag="router-link"
+              :to="{
+                name: 'shop',
+                query: { ...$route.query, page: props.page.number },
+              }"
+            >
+              {{ props.page.number }}
             </b-pagination-button>
 
-            <b-pagination-button slot="previous" slot-scope="props" :page="props.page" tag="router-link"
-                                 :to="{ name: 'shop', query: { ...$route.query, page: props.page.number } }">
+            <b-pagination-button
+              slot="previous"
+              slot-scope="props"
+              :page="props.page"
+              tag="router-link"
+              :to="{
+                name: 'shop',
+                query: { ...$route.query, page: props.page.number },
+              }"
+            >
               <b-icon icon="chevron-left" size="is-small" />
             </b-pagination-button>
 
-            <b-pagination-button slot="next" slot-scope="props" :page="props.page" tag="router-link"
-                                 :to="{ name: 'shop', query: { ...$route.query, page: props.page.number } }">
+            <b-pagination-button
+              slot="next"
+              slot-scope="props"
+              :page="props.page"
+              tag="router-link"
+              :to="{
+                name: 'shop',
+                query: { ...$route.query, page: props.page.number },
+              }"
+            >
               <b-icon icon="chevron-right" size="is-small" />
             </b-pagination-button>
           </b-pagination>
@@ -81,7 +125,10 @@ export default class Shop extends Vue {
 
   // items owned by the user
   get ownedItems(): Record<number, boolean> {
-    return userModule.ownedItems.reduce((res: Record<number, boolean>, i: Item) => { res[i.id] = true; return res; }, {});
+    return userModule.ownedItems.reduce((res: Record<number, boolean>, i: Item) => {
+      res[i.id] = true;
+      return res;
+    }, {});
   }
 
   get gold(): number {
@@ -89,8 +136,14 @@ export default class Shop extends Vue {
   }
 
   get currentPage(): number {
-    const pageQuery = this.$route.query.page ? parseInt(this.$route.query.page as string, 10) : undefined;
-    if (!this.filteredItems || !pageQuery || pageQuery > Math.ceil(this.filteredItems.length / this.itemsPerPage)) {
+    const pageQuery = this.$route.query.page
+      ? parseInt(this.$route.query.page as string, 10)
+      : undefined;
+    if (
+      !this.filteredItems ||
+      !pageQuery ||
+      pageQuery > Math.ceil(this.filteredItems.length / this.itemsPerPage)
+    ) {
       return 1;
     }
 
@@ -103,7 +156,10 @@ export default class Shop extends Vue {
       // modify $route.query which can have unwanted behaviors.
       types: this.$route.query.types ? [...(this.$route.query.types as ItemType[])] : [],
       cultures: this.$route.query.cultures ? [...(this.$route.query.cultures as Culture[])] : [],
-      showOwned: this.$route.query.showOwned !== undefined ? Boolean(this.$route.query.showOwned as string) : true,
+      showOwned:
+        this.$route.query.showOwned !== undefined
+          ? Boolean(this.$route.query.showOwned as string)
+          : true,
     };
   }
 
@@ -120,9 +176,11 @@ export default class Shop extends Vue {
   }
 
   get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
-    const filteredItems = itemModule.items.filter(i =>
-      (this.filters.showOwned || this.ownedItems[i.id] === undefined)
-      && (this.filters.cultures.length === 0 || this.filters.cultures.includes(i.culture)));
+    const filteredItems = itemModule.items.filter(
+      i =>
+        (this.filters.showOwned || this.ownedItems[i.id] === undefined) &&
+        (this.filters.cultures.length === 0 || this.filters.cultures.includes(i.culture))
+    );
     return filterItemsByType(filteredItems, this.filters.types);
   }
 

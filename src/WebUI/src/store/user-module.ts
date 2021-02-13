@@ -200,7 +200,7 @@ class UserModule extends VuexModule {
 
   @Action
   convertCharacterStats({ characterId, conversion }:
-                          { characterId: number; conversion: StatisticConversion }): Promise<CharacterStatistics> {
+    { characterId: number; conversion: StatisticConversion }): Promise<CharacterStatistics> {
     if (conversion === StatisticConversion.AttributesToSkills) {
       this.convertAttributeToSkills(characterId);
     } else if (conversion === StatisticConversion.SkillsToAttributes) {
