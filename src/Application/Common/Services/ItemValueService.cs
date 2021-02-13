@@ -68,7 +68,7 @@ namespace Crpg.Application.Common.Services
             return (0.6f * mountComponent.Maneuver
                    + 1.0f * mountComponent.Speed
                    + 1.5f * mountComponent.ChargeDamage
-                   + 0.1f * mountComponent.HitPoints) * 0.07f;
+                   + 0.1f * mountComponent.HitPoints) * 0.06f;
         }
 
         private static float CalculateWeaponTier(ItemWeaponComponent weaponComponent, ItemType itemType, float weight)
