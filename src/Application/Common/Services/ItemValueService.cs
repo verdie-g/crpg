@@ -100,7 +100,7 @@ namespace Crpg.Application.Common.Services
         {
             return (1.0f * weaponComponent.StackAmount
                     + 3.0f * weaponComponent.BodyArmor
-                    + 1.0f * weaponComponent.ThrustSpeed) / (6f + weight) * 0.13f;
+                    + 1.0f * weaponComponent.ThrustSpeed) / (6f + weight) * 0.09f;
         }
 
         private static float CalculateRangedWeaponTier(ItemWeaponComponent weaponComponent, ItemType itemType)
