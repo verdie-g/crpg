@@ -24,5 +24,5 @@ datadog_db_user: dd-agent # Same username as Datadog agent so ident authenticati
 nginx_version: 1.19.6
 nginx_opentracing_version: 0.11.0
 dotnet_version: 5.0
-datadog_dotnet_tracer_version: 1.20.0
+datadog_dotnet_tracer_version: 1.23.0
 datadog_opentracing_version: 1.2.1
