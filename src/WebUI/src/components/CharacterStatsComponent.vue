@@ -488,19 +488,21 @@ export default class CharacterStatsComponent extends Vue {
   }
 
   get wasChangeMade(): boolean {
+    // prettier-ignore
     return (
-      this.statsDelta.attributes.points !== 0 ||
-      this.statsDelta.skills.points !== 0 ||
-      this.statsDelta.weaponProficiencies.points !== 0
+      this.statsDelta.attributes.points !== 0
+      || this.statsDelta.skills.points !== 0
+      || this.statsDelta.weaponProficiencies.points !== 0
     );
   }
 
   get isChangeValid(): boolean {
+    // prettier-ignore
     return (
-      this.stats.attributes.points + this.statsDelta.attributes.points >= 0 &&
-      this.stats.skills.points + this.statsDelta.skills.points >= 0 &&
-      this.stats.weaponProficiencies.points + this.statsDelta.weaponProficiencies.points >= 0 &&
-      this.allCurrentSkillRequirementsSatisfied
+      this.stats.attributes.points + this.statsDelta.attributes.points >= 0
+      && this.stats.skills.points + this.statsDelta.skills.points >= 0
+      && this.stats.weaponProficiencies.points + this.statsDelta.weaponProficiencies.points >= 0
+      && this.allCurrentSkillRequirementsSatisfied
     );
   }
 

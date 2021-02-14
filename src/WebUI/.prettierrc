@@ -5,5 +5,6 @@
   "printWidth": 100,
   "tabWidth": 2,
   "htmlWhitespaceSensitivity": "ignore",
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+  "trailingComma": "es5"
 }
