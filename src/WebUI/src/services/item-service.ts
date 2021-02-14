@@ -141,14 +141,20 @@ function getDamageFields(weaponComponent: ItemWeaponComponent): [string, any][] 
   if (weaponComponent.swingDamageType !== DamageType.Undefined) {
     fields.push(
       ['Swing Speed', weaponComponent.swingSpeed],
-      ['Swing Damage', getDamageFieldValue(weaponComponent.swingDamage, weaponComponent.swingDamageType)],
+      [
+        'Swing Damage',
+        getDamageFieldValue(weaponComponent.swingDamage, weaponComponent.swingDamageType),
+      ]
     );
   }
 
   if (weaponComponent.thrustDamageType !== DamageType.Undefined) {
     fields.push(
       ['Thrust Speed', weaponComponent.thrustSpeed],
-      ['Thrust Damage', getDamageFieldValue(weaponComponent.thrustDamage, weaponComponent.thrustDamageType)],
+      [
+        'Thrust Damage',
+        getDamageFieldValue(weaponComponent.thrustDamage, weaponComponent.thrustDamageType),
+      ]
     );
   }
 
@@ -214,7 +220,7 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
       ['Charge Dmg.', item.mount.chargeDamage],
       ['Speed', item.mount.speed],
       ['Maneuver', item.mount.maneuver],
-      ['Hit Points', item.mount.hitPoints],
+      ['Hit Points', item.mount.hitPoints]
     );
   }
 
@@ -222,24 +228,30 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
   if (item.type === ItemType.Arrows || item.type === ItemType.Bolts) {
     props.fields.push(
       ['Speed', item.weapons[0].missileSpeed],
-      ['Damage', getDamageFieldValue(item.weapons[0].thrustDamage, item.weapons[0].thrustDamageType)],
+      [
+        'Damage',
+        getDamageFieldValue(item.weapons[0].thrustDamage, item.weapons[0].thrustDamageType),
+      ],
       ['Length', item.weapons[0].length],
-      ['Ammo', item.weapons[0].stackAmount],
+      ['Ammo', item.weapons[0].stackAmount]
     );
   } else if (item.type === ItemType.Shield) {
     props.fields.push(
       ['Speed', item.weapons[0].swingSpeed],
       ['Durability', item.weapons[0].stackAmount],
       ['Armor', item.weapons[0].bodyArmor],
-      ['Length', item.weapons[0].length],
+      ['Length', item.weapons[0].length]
     );
   } else if (item.type === ItemType.Bow || item.type === ItemType.Crossbow) {
     props.fields.push(
-      ['Damage', getDamageFieldValue(item.weapons[0].thrustDamage, item.weapons[0].thrustDamageType)],
+      [
+        'Damage',
+        getDamageFieldValue(item.weapons[0].thrustDamage, item.weapons[0].thrustDamageType),
+      ],
       ['Fire Rate', item.weapons[0].swingSpeed],
       ['Accuracy', item.weapons[0].accuracy],
       ['Missile Speed', item.weapons[0].missileSpeed],
-      ['Length', item.weapons[0].length],
+      ['Length', item.weapons[0].length]
     );
   } else if (item.type === ItemType.Banner) {
     props.fields.push(['Length', item.weapons[0].length]);
@@ -247,21 +259,22 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
     item.weapons.forEach(weapon => {
       const itemType = itemTypeByWeaponClass[weapon.class];
       const weaponFields: [string, any][] = [];
-      if (itemType === ItemType.OneHandedWeapon || itemType === ItemType.TwoHandedWeapon || itemType === ItemType.Polearm) {
+      if (
+        itemType === ItemType.OneHandedWeapon ||
+        itemType === ItemType.TwoHandedWeapon ||
+        itemType === ItemType.Polearm
+      ) {
         weaponFields.push(...getDamageFields(weapon));
       } else if (itemType === ItemType.Thrown) {
         weaponFields.push(
           ['Damage', getDamageFieldValue(weapon.thrustDamage, weapon.thrustDamageType)],
           ['Fire Rate', weapon.missileSpeed],
           ['Accuracy', weapon.accuracy],
-          ['Stack Amount', weapon.stackAmount],
+          ['Stack Amount', weapon.stackAmount]
         );
       }
 
-      weaponFields.push(
-        ['Handling', weapon.handling],
-        ['Length', weapon.length],
-      );
+      weaponFields.push(['Handling', weapon.handling], ['Length', weapon.length]);
 
       props.modes.push({
         name: getWeaponClassShortName(weapon.class),
@@ -278,13 +291,17 @@ export function filterItemsFittingInSlot(items: Item[], slot: ItemSlot): Item[] 
   return items.filter(i => itemTypesBySlot[slot].includes(i.type));
 }
 
-export function filterItemsByType(items: Item[], types: ItemType[]): { item: Item; weaponIdx: number | undefined }[] {
+export function filterItemsByType(
+  items: Item[],
+  types: ItemType[]
+): { item: Item; weaponIdx: number | undefined }[] {
   if (types.length === 0) {
     return items.map(i => ({ item: i, weaponIdx: undefined }));
   }
 
   const filteredItems = [];
-  for (const item of items) { // eslint-disable-line no-restricted-syntax
+  // eslint-disable-next-line no-restricted-syntax
+  for (const item of items) {
     if (item.weapons.length === 0) {
       if (types.includes(item.type)) {
         filteredItems.push({ item, weaponIdx: undefined });

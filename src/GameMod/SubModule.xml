@@ -24,7 +24,7 @@
 			<XmlName id="Items" path="../../SandBoxCore/ModuleData/spitems" />
 		</XmlNode>
 		<XmlNode>
-			<XmlName id="SkillSets" path="../../SandBoxCore/ModuleData/sandboxcore_equipment_sets" />
+			<XmlName id="EquipmentRosters" path="../../SandBoxCore/ModuleData/sandboxcore_equipment_sets" />
 		</XmlNode>
 		<XmlNode>
 			<XmlName id="SkillSets" path="../../SandBoxCore/ModuleData/sandboxcore_skill_sets" />

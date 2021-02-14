@@ -1,6 +1,5 @@
-enum Role
-{
-  User= 'User',
+enum Role {
+  User = 'User',
   Game = 'Game',
   Admin = 'Admin',
   SuperAdmin = 'SuperAdmin',
