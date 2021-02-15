@@ -3,12 +3,12 @@ import Role from '../models/role';
 
 const userManager = new UserManager({
   authority: process.env.VUE_APP_API_BASE_URL,
-  client_id: 'crpg_web_ui',
-  redirect_uri: window.location.origin,
-  silent_redirect_uri: `${window.location.origin}/silent-renew.html`,
-  response_type: 'code',
+  client_id: 'crpg_web_ui', // eslint-disable-line @typescript-eslint/naming-convention
+  redirect_uri: window.location.origin, // eslint-disable-line @typescript-eslint/naming-convention
+  silent_redirect_uri: `${window.location.origin}/silent-renew.html`, // eslint-disable-line @typescript-eslint/naming-convention
+  response_type: 'code', // eslint-disable-line @typescript-eslint/naming-convention
   scope: 'openid offline_access user_api',
-  post_logout_redirect_uri: window.location.origin,
+  post_logout_redirect_uri: window.location.origin, // eslint-disable-line @typescript-eslint/naming-convention
   // Refresh access token after half of its lifetime (30 minutes)
   accessTokenExpiringNotificationTime: 30 * 60,
   automaticSilentRenew: true,
@@ -53,7 +53,7 @@ export async function signInSilent(): Promise<string | null> {
 
 export async function signInCallback(): Promise<void> {
   const mgr = new UserManager({
-    response_mode: 'query',
+    response_mode: 'query', // eslint-disable-line @typescript-eslint/naming-convention
   });
 
   await mgr.signinRedirectCallback();

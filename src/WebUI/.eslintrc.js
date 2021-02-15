@@ -8,6 +8,21 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'default',
+        format: ['camelCase', 'PascalCase'],
+      },
+      {
+        selector: 'variable',
+        format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+      },
+      {
+        selector: 'typeLike',
+        format: ['PascalCase'],
+      },
+    ],
     'arrow-parens': ['error', 'as-needed'],
     'class-methods-use-this': 'off',
     'import/prefer-default-export': 'off',
