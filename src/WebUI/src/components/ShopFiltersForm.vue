@@ -1,15 +1,15 @@
 <template>
   <form>
     <b-field label="Type">
-      <b-dropdown v-model="types" multiple aria-role="list">
+      <b-dropdown v-model="type" aria-role="list">
         <template #trigger>
           <b-button type="is-primary" icon-right="caret-down">
-            {{ typesString }}
+            {{ typeString }}
           </b-button>
         </template>
 
         <b-dropdown-item
-          v-for="([value, name], idx) in Object.entries(itemTypes)"
+          v-for="([value, name], idx) in Object.entries(allTypes)"
           :value="value"
           :key="idx"
           aria-role="listitem"
@@ -20,10 +20,10 @@
     </b-field>
 
     <b-field label="Culture">
-      <b-dropdown v-model="cultures" multiple aria-role="list">
+      <b-dropdown v-model="culture" aria-role="list">
         <template #trigger>
           <b-button type="is-primary" icon-right="caret-down">
-            {{ culturesString }}
+            {{ cultureString }}
           </b-button>
         </template>
 
@@ -50,48 +50,52 @@ import { itemTypeToStr } from '@/services/item-service';
 import { recordFilter } from '@/utils/record';
 import ItemType from '@/models/item-type';
 import ShopFilters from '@/models/ShopFilters';
-import { stringTruncate } from '@/utils/string';
 import Culture from '@/models/culture';
 
 @Component
 export default class ShopFiltersForm extends Vue {
   @Model('input', {
     type: Object,
-    default: (): ShopFilters => ({ types: [], cultures: [], showOwned: true }),
+    default: (): ShopFilters => ({ type: null, culture: null, showOwned: true }),
   })
   readonly filter: ShopFilters;
 
   hiddenItemTypes = [ItemType.Undefined, ItemType.Pistol, ItemType.Musket, ItemType.Bullets];
-  itemTypes = recordFilter(itemTypeToStr, t => !this.hiddenItemTypes.includes(t));
-  allCultures = Object.values(Culture);
+  allTypes = recordFilter(itemTypeToStr, t => !this.hiddenItemTypes.includes(t));
+  allCultures = Object.values(Culture).filter(c => c !== Culture.Neutral);
 
-  get typesString(): string {
-    if (this.types.length === 0) {
-      return '*';
+  get typeString(): string {
+    return this.type === null ? 'All' : itemTypeToStr[this.type];
+  }
+
+  get type(): ItemType | null {
+    return this.filter.type;
+  }
+
+  set type(type: ItemType | null) {
+    // deselect
+    if (type === this.type) {
+      type = null;
     }
 
-    const joinedTypes = this.types.map(t => itemTypeToStr[t]).join(', ');
-    return stringTruncate(joinedTypes, 20);
+    this.emitInput({ type });
   }
 
-  get types(): ItemType[] {
-    return this.filter.types;
+  get cultureString(): string {
+    return this.culture === null ? 'All' : this.culture;
   }
 
-  set types(types: ItemType[]) {
-    this.emitInput({ types });
+  get culture(): Culture | null {
+    return this.filter.culture;
   }
 
-  get culturesString(): string {
-    return this.cultures.length === 0 ? '*' : stringTruncate(this.cultures.join(', '), 20);
-  }
+  set culture(culture: Culture | null) {
+    // deselect
+    if (culture === this.culture) {
+      culture = null;
+    }
 
-  get cultures(): Culture[] {
-    return this.filter.cultures;
-  }
-
-  set cultures(cultures: Culture[]) {
-    this.emitInput({ cultures });
+    this.emitInput({ culture });
   }
 
   get showOwned(): boolean {
@@ -104,8 +108,8 @@ export default class ShopFiltersForm extends Vue {
 
   emitInput(shopFilters: Partial<ShopFilters>) {
     this.$emit('input', {
-      types: this.types,
-      cultures: this.cultures,
+      type: this.type,
+      culture: this.culture,
       showOwned: this.showOwned,
       ...shopFilters,
     });

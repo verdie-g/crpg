@@ -152,10 +152,8 @@ export default class Shop extends Vue {
 
   get filters(): ShopFilters {
     return {
-      // Objects gotten from the query need to be copied, else passing them to v-model will directly
-      // modify $route.query which can have unwanted behaviors.
-      types: this.$route.query.types ? [...(this.$route.query.types as ItemType[])] : [],
-      cultures: this.$route.query.cultures ? [...(this.$route.query.cultures as Culture[])] : [],
+      type: this.$route.query.type ? (this.$route.query.type as ItemType) : null,
+      culture: this.$route.query.culture ? (this.$route.query.culture as Culture) : null,
       showOwned:
         this.$route.query.showOwned !== undefined
           ? Boolean(this.$route.query.showOwned as string)
@@ -163,12 +161,12 @@ export default class Shop extends Vue {
     };
   }
 
-  set filters({ types, cultures, showOwned }: ShopFilters) {
+  set filters({ type, culture, showOwned }: ShopFilters) {
     this.$router.push({
       query: {
         ...this.$route.query,
-        types,
-        cultures,
+        type,
+        culture,
         showOwned: showOwned.toString(),
         ...(this.currentPage === 1 ? {} : { page: '1' }),
       },
@@ -179,9 +177,12 @@ export default class Shop extends Vue {
     const filteredItems = itemModule.items.filter(
       i =>
         (this.filters.showOwned || this.ownedItems[i.id] === undefined) &&
-        (this.filters.cultures.length === 0 || this.filters.cultures.includes(i.culture))
+        // When the user filters by a culture, Neutral items are always added in the result.
+        (this.filters.culture === null ||
+          i.culture === this.filters.culture ||
+          i.culture === Culture.Neutral)
     );
-    return filterItemsByType(filteredItems, this.filters.types);
+    return filterItemsByType(filteredItems, this.filters.type);
   }
 
   get pageItems(): { item: Item; weaponIdx: number | undefined }[] {
