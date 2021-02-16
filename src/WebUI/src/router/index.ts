@@ -8,17 +8,25 @@ import Home from '../views/Home.vue';
 Vue.use(VueRouter);
 
 function combineGuards(...guards: NavigationGuard[]): NavigationGuard {
-  function callGuardsRec(guards: NavigationGuard[], idx: number, to: Route, from: Route, next: NavigationGuardNext): any {
-    guards[idx](to, from, idx === guards.length - 1
-      ? next
-      : () => callGuardsRec(guards, idx + 1, to, from, next));
+  function callGuardsRec(
+    guards: NavigationGuard[],
+    idx: number,
+    to: Route,
+    from: Route,
+    next: NavigationGuardNext
+  ): any {
+    guards[idx](
+      to,
+      from,
+      idx === guards.length - 1 ? next : () => callGuardsRec(guards, idx + 1, to, from, next)
+    );
   }
 
   return (to, from, next) => callGuardsRec(guards, 0, to, from, next);
 }
 
 const isSignedInGuard: NavigationGuard = async (to, from, next) => {
-  if (await getToken() === null) {
+  if ((await getToken()) === null) {
     next('/');
   } else {
     next();

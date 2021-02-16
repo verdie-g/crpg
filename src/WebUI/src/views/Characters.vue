@@ -1,22 +1,31 @@
 <template>
   <div class="section">
     <div class="columns">
-      <b-menu class="column is-narrow is-paddingless" style="width: 200px;"
-              v-if="characters.length">
+      <b-menu class="column is-narrow is-paddingless" style="width: 200px" v-if="characters.length">
         <b-menu-list>
-          <b-menu-item v-for="character in characters" v-bind:key="character.id"
-                       :active="selectedCharacter && character.id === selectedCharacter.id"
-                       :label="`${character.name} (lvl ${character.level})`" @click="selectCharacter(character)"/>
+          <b-menu-item
+            v-for="character in characters"
+            v-bind:key="character.id"
+            :active="selectedCharacter && character.id === selectedCharacter.id"
+            :label="`${character.name} (lvl ${character.level})`"
+            @click="selectCharacter(character)"
+          />
         </b-menu-list>
       </b-menu>
 
       <div class="column">
         <div v-if="selectedCharacter">
-          <character-component :character="selectedCharacter"  />
+          <character-component :character="selectedCharacter" />
         </div>
-        <div v-else> <!-- if no character -->
+        <div v-else>
+          <!-- if no character -->
           To create a character, simply launch a
-          <a href="https://www.nexusmods.com/mountandblade2bannerlord/mods/2208?tab=files" target="_blank">DefendTheVirgin</a>
+          <a
+            href="https://www.nexusmods.com/mountandblade2bannerlord/mods/2208?tab=files"
+            target="_blank"
+          >
+            DefendTheVirgin
+          </a>
           game.
         </div>
       </div>
@@ -47,7 +56,7 @@ export default class CharactersComponent extends Vue {
   }
 
   created(): void {
-    userModule.getCharacters().then(c => this.selectedCharacterId = c.length > 0 ? c[0].id : -1);
+    userModule.getCharacters().then(c => (this.selectedCharacterId = c.length > 0 ? c[0].id : -1));
   }
 
   selectCharacter(character: Character): void {
@@ -56,5 +65,4 @@ export default class CharactersComponent extends Vue {
 }
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

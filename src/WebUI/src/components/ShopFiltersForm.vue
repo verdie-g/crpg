@@ -8,8 +8,12 @@
           </b-button>
         </template>
 
-        <b-dropdown-item v-for="([value, name], idx) in Object.entries(itemTypes)"
-                         :value="value" :key="idx" aria-role="listitem">
+        <b-dropdown-item
+          v-for="([value, name], idx) in Object.entries(itemTypes)"
+          :value="value"
+          :key="idx"
+          aria-role="listitem"
+        >
           <span>{{ name }}</span>
         </b-dropdown-item>
       </b-dropdown>
@@ -23,8 +27,12 @@
           </b-button>
         </template>
 
-        <b-dropdown-item v-for="(culture, idx) in allCultures"
-                         :value="culture" :key="idx" aria-role="listitem">
+        <b-dropdown-item
+          v-for="(culture, idx) in allCultures"
+          :value="culture"
+          :key="idx"
+          aria-role="listitem"
+        >
           <span>{{ culture }}</span>
         </b-dropdown-item>
       </b-dropdown>
@@ -50,7 +58,8 @@ export default class ShopFiltersForm extends Vue {
   @Model('input', {
     type: Object,
     default: (): ShopFilters => ({ types: [], cultures: [], showOwned: true }),
-  }) readonly filter: ShopFilters;
+  })
+  readonly filter: ShopFilters;
 
   hiddenItemTypes = [ItemType.Undefined, ItemType.Pistol, ItemType.Musket, ItemType.Bullets];
   itemTypes = recordFilter(itemTypeToStr, t => !this.hiddenItemTypes.includes(t));
@@ -74,9 +83,7 @@ export default class ShopFiltersForm extends Vue {
   }
 
   get culturesString(): string {
-    return this.cultures.length === 0
-      ? '*'
-      : stringTruncate(this.cultures.join(', '), 20);
+    return this.cultures.length === 0 ? '*' : stringTruncate(this.cultures.join(', '), 20);
   }
 
   get cultures(): Culture[] {
@@ -106,5 +113,4 @@ export default class ShopFiltersForm extends Vue {
 }
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

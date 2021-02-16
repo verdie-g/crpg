@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-
     <div class="section" v-if="bansData.length">
       <h2 class="title">Bans</h2>
       <b-table :data="bansData" :columns="bansColumns"></b-table>
@@ -10,10 +9,11 @@
       <h2 class="title">Delete account</h2>
       <div class="content">
         <p>Make your character, items, gold and all your progression disappear.</p>
-        <b-button type="is-danger is-medium" @click="onDeleteAccountDialog">Delete your account</b-button>
+        <b-button type="is-danger is-medium" @click="onDeleteAccountDialog">
+          Delete your account
+        </b-button>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -80,5 +80,4 @@ export default class Settings extends Vue {
 }
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

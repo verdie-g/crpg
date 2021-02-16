@@ -1,6 +1,4 @@
-import {
-  Action, getModule, Module, Mutation, VuexModule,
-} from 'vuex-module-decorators';
+import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
 import * as itemService from '@/services/item-service';
 import Item from '@/models/item';

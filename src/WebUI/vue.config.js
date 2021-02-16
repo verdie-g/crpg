@@ -9,7 +9,8 @@ function useJson5Loader(config) {
 
   // Add replacement loader.
   jsonRule
-    .test(/\.json$/).type('javascript/auto')
+    .test(/\.json$/)
+    .type('javascript/auto')
     .use('json5-loader')
     .loader('json5-loader');
 }

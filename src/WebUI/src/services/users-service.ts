@@ -7,9 +7,7 @@ import StatisticConversion from '@/models/statistic-conversion';
 import Ban from '@/models/ban';
 import EquippedItem from '@/models/equipped-item';
 import EquippedItemId from '@/models/equipped-item-id';
-import {
-  get, post, put, del,
-} from './crpg-client';
+import { get, post, put, del } from './crpg-client';
 
 export function getUser(): Promise<User> {
   return get('/users/self');
@@ -39,7 +37,10 @@ export function deleteCharacter(characterId: number): Promise<void> {
   return del(`/users/self/characters/${characterId}`);
 }
 
-export function updateCharacterItems(characterId: number, items: EquippedItemId[]): Promise<EquippedItem[]> {
+export function updateCharacterItems(
+  characterId: number,
+  items: EquippedItemId[]
+): Promise<EquippedItem[]> {
   return put(`/users/self/characters/${characterId}/items`, { items });
 }
 
@@ -47,11 +48,17 @@ export function switchCharacterAutoRepair(characterId: number, autoRepair: boole
   return put(`/users/self/characters/${characterId}/auto-repair`, { autoRepair });
 }
 
-export function updateCharacterStats(characterId: number, req: CharacterStatistics): Promise<CharacterStatistics> {
+export function updateCharacterStats(
+  characterId: number,
+  req: CharacterStatistics
+): Promise<CharacterStatistics> {
   return put(`/users/self/characters/${characterId}/statistics`, req);
 }
 
-export function convertCharacterStats(characterId: number, conversion: StatisticConversion): Promise<CharacterStatistics> {
+export function convertCharacterStats(
+  characterId: number,
+  conversion: StatisticConversion
+): Promise<CharacterStatistics> {
   return put(`/users/self/characters/${characterId}/statistics/convert`, { conversion });
 }
 

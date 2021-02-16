@@ -1,15 +1,14 @@
 <template>
   <div>
-    <div v-for="field in itemDescriptor.fields">
-      {{field[0]}}: {{field[1]}}
-    </div>
+    <div v-for="field in itemDescriptor.fields">{{ field[0] }}: {{ field[1] }}</div>
     <b-tabs v-if="itemDescriptor.modes.length" :value="weaponIdx" class="weapon-tabs">
       <b-tab-item v-for="mode in itemDescriptor.modes" :label="mode.name">
         <div v-for="field in mode.fields">
-          {{field[0]}}: {{field[1]}}<br />
+          {{ field[0] }}: {{ field[1] }}
+          <br />
         </div>
         <b-taglist class="flags">
-          <b-tag v-for="flag in mode.flags" type="is-info">{{flag}}</b-tag>
+          <b-tag v-for="flag in mode.flags" type="is-info">{{ flag }}</b-tag>
         </b-taglist>
       </b-tab-item>
     </b-tabs>
@@ -34,7 +33,7 @@ export default class ItemProperties extends Vue {
 </script>
 
 <style scoped lang="scss">
-  .flags {
-    margin-top: 4px;
-  }
+.flags {
+  margin-top: 4px;
+}
 </style>

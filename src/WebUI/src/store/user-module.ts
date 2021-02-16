@@ -1,6 +1,4 @@
-import {
-  Action, getModule, Module, Mutation, VuexModule,
-} from 'vuex-module-decorators';
+import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
 import * as userService from '@/services/users-service';
 import User from '@/models/user';
@@ -75,7 +73,15 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
-  setCharacterItem({ character, slot, item }: { character: Character; slot: ItemSlot; item: Item | null }) {
+  setCharacterItem({
+    character,
+    slot,
+    item,
+  }: {
+    character: Character;
+    slot: ItemSlot;
+    item: Item | null;
+  }) {
     const equippedItemIdx = character.equippedItems.findIndex(ei => ei.slot === slot);
     if (equippedItemIdx === -1) {
       if (item !== null) {
@@ -151,7 +157,13 @@ class UserModule extends VuexModule {
   }
 
   @Action
-  updateCharacter({ characterId, characterUpdate }: { characterId: number; characterUpdate: CharacterUpdate }) {
+  updateCharacter({
+    characterId,
+    characterUpdate,
+  }: {
+    characterId: number;
+    characterUpdate: CharacterUpdate;
+  }) {
     const character = this.characters.find(c => c.id === characterId)!;
     this.replaceCharacter({
       ...character,
@@ -161,9 +173,19 @@ class UserModule extends VuexModule {
   }
 
   @Action
-  replaceItem({ character, slot, item }: { character: Character; slot: ItemSlot; item: Item | null }): Promise<EquippedItem[]> {
+  replaceItem({
+    character,
+    slot,
+    item,
+  }: {
+    character: Character;
+    slot: ItemSlot;
+    item: Item | null;
+  }): Promise<EquippedItem[]> {
     this.setCharacterItem({ character, slot, item });
-    return userService.updateCharacterItems(character.id, [{ itemId: item === null ? null : item.id, slot }]);
+    return userService.updateCharacterItems(character.id, [
+      { itemId: item === null ? null : item.id, slot },
+    ]);
   }
 
   @Action
@@ -193,14 +215,25 @@ class UserModule extends VuexModule {
   }
 
   @Action
-  updateCharacterStats({ characterId, stats }: { characterId: number; stats: CharacterStatistics }): Promise<CharacterStatistics> {
+  updateCharacterStats({
+    characterId,
+    stats,
+  }: {
+    characterId: number;
+    stats: CharacterStatistics;
+  }): Promise<CharacterStatistics> {
     this.setCharacterStats({ characterId, stats });
     return userService.updateCharacterStats(characterId, stats);
   }
 
   @Action
-  convertCharacterStats({ characterId, conversion }:
-                          { characterId: number; conversion: StatisticConversion }): Promise<CharacterStatistics> {
+  convertCharacterStats({
+    characterId,
+    conversion,
+  }: {
+    characterId: number;
+    conversion: StatisticConversion;
+  }): Promise<CharacterStatistics> {
     if (conversion === StatisticConversion.AttributesToSkills) {
       this.convertAttributeToSkills(characterId);
     } else if (conversion === StatisticConversion.SkillsToAttributes) {

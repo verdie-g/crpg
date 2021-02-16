@@ -1,11 +1,9 @@
 <template>
   <div class="container">
-
     <div class="section">
       <h2 class="title">Bans</h2>
       <b-table :data="bansData" :columns="bansColumns" v-if="bansData.length" />
     </div>
-
   </div>
 </template>
 
@@ -65,5 +63,4 @@ export default class Administration extends Vue {
 }
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
