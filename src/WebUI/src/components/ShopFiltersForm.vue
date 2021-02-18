@@ -8,10 +8,13 @@
           </b-button>
         </template>
 
+        <b-dropdown-item :value="null" :key="0" aria-role="listitem">
+          <span>Any</span>
+        </b-dropdown-item>
         <b-dropdown-item
           v-for="([value, name], idx) in Object.entries(allTypes)"
           :value="value"
-          :key="idx"
+          :key="idx + 1"
           aria-role="listitem"
         >
           <span>{{ name }}</span>
@@ -27,10 +30,13 @@
           </b-button>
         </template>
 
+        <b-dropdown-item :value="null" :key="0" aria-role="listitem">
+          <span>Any</span>
+        </b-dropdown-item>
         <b-dropdown-item
           v-for="(culture, idx) in allCultures"
           :value="culture"
-          :key="idx"
+          :key="idx + 1"
           aria-role="listitem"
         >
           <span>{{ culture }}</span>
@@ -65,7 +71,7 @@ export default class ShopFiltersForm extends Vue {
   allCultures = Object.values(Culture).filter(c => c !== Culture.Neutral);
 
   get typeString(): string {
-    return this.type === null ? 'All' : itemTypeToStr[this.type];
+    return this.type === null ? 'Any' : itemTypeToStr[this.type];
   }
 
   get type(): ItemType | null {
@@ -82,7 +88,7 @@ export default class ShopFiltersForm extends Vue {
   }
 
   get cultureString(): string {
-    return this.culture === null ? 'All' : this.culture;
+    return this.culture === null ? 'Any' : this.culture;
   }
 
   get culture(): Culture | null {
