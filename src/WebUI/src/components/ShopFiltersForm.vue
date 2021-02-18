@@ -79,9 +79,8 @@ export default class ShopFiltersForm extends Vue {
   }
 
   set type(type: ItemType | null) {
-    // deselect
     if (type === this.type) {
-      type = null;
+      return;
     }
 
     this.emitInput({ type });
@@ -96,9 +95,8 @@ export default class ShopFiltersForm extends Vue {
   }
 
   set culture(culture: Culture | null) {
-    // deselect
     if (culture === this.culture) {
-      culture = null;
+      return;
     }
 
     this.emitInput({ culture });
