@@ -1,4 +1,5 @@
-﻿using Crpg.Domain.Common;
+﻿using System.Collections.Generic;
+using Crpg.Domain.Common;
 using Crpg.Domain.Entities.Users;
 using NetTopologySuite.Geometries;
 
@@ -29,6 +30,6 @@ namespace Crpg.Domain.Entities.Strategus
         public MultiPoint Moves { get; set; } = default!; // TODO: Follow/Attack user?
 
         public User? User { get; set; }
-        public StrategusSettlement? OwnedSettlements { get; set; }
+        public List<StrategusSettlement>? OwnedSettlements { get; set; }
     }
 }
