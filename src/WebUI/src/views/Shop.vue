@@ -156,7 +156,7 @@ export default class Shop extends Vue {
       culture: this.$route.query.culture ? (this.$route.query.culture as Culture) : null,
       showOwned:
         this.$route.query.showOwned !== undefined
-          ? Boolean(this.$route.query.showOwned as string)
+          ? this.$route.query.showOwned === 'true'
           : true,
     };
   }
@@ -167,8 +167,8 @@ export default class Shop extends Vue {
         ...this.$route.query,
         type,
         culture,
-        showOwned: showOwned.toString(),
-        ...(this.currentPage === 1 ? {} : { page: '1' }),
+        showOwned: showOwned === true ? undefined : false.toString(),
+        page: '1',
       },
     });
   }
