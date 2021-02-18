@@ -294,9 +294,9 @@ export function filterItemsFittingInSlot(items: Item[], slot: ItemSlot): Item[] 
 
 export function filterItemsByType(
   items: Item[],
-  types: ItemType[]
+  type: ItemType | null
 ): { item: Item; weaponIdx: number | undefined }[] {
-  if (types.length === 0) {
+  if (type === null) {
     return items.map(i => ({ item: i, weaponIdx: undefined }));
   }
 
@@ -304,14 +304,14 @@ export function filterItemsByType(
   // eslint-disable-next-line no-restricted-syntax
   for (const item of items) {
     if (item.weapons.length === 0) {
-      if (types.includes(item.type)) {
+      if (item.type === type) {
         filteredItems.push({ item, weaponIdx: undefined });
       }
 
       continue; // eslint-disable-line no-continue
     }
 
-    const weaponIdx = item.weapons.findIndex(w => types.includes(itemTypeByWeaponClass[w.class]));
+    const weaponIdx = item.weapons.findIndex(w => itemTypeByWeaponClass[w.class] === type);
     if (weaponIdx !== -1) {
       filteredItems.push({ item, weaponIdx });
     }
