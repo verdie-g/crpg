@@ -47,7 +47,9 @@ namespace Crpg.WebApi
                 var eventRaiser = services.GetRequiredService<IEventService>();
                 var db = services.GetRequiredService<CrpgDbContext>();
 
-                if (env == Environments.Production)
+                string? skipMigrationStr = Environment.GetEnvironmentVariable("CRPG_SKIP_DB_MIGRATION");
+                bool skipMigration = skipMigrationStr != null && bool.Parse(skipMigrationStr);
+                if (env == Environments.Production && !skipMigration)
                 {
                     try
                     {
