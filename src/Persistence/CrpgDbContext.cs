@@ -7,6 +7,7 @@ using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Strategus;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,7 @@ namespace Crpg.Persistence
             NpgsqlConnection.GlobalTypeMapper.MapEnum<DamageType>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<WeaponClass>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<ClanMemberRole>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusSettlementType>();
         }
 
         public CrpgDbContext(DbContextOptions<CrpgDbContext> options)
@@ -52,6 +54,10 @@ namespace Crpg.Persistence
         public DbSet<Clan> Clans { get; set; } = default!;
         public DbSet<ClanMember> ClanMembers { get; set; } = default!;
         public DbSet<ClanInvitation> ClanInvitations { get; set; } = default!;
+        public DbSet<StrategusUser> StrategusUsers { get; set; } = default!;
+        public DbSet<StrategusSettlement> StrategusSettlements { get; set; } = default!;
+        public DbSet<StrategusOwnedItem> StrategusOwnedItems { get; set; } = default!;
+        public DbSet<StrategusBattle> StrategusBattles { get; set; } = default!;
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -101,6 +107,7 @@ namespace Crpg.Persistence
             modelBuilder.HasPostgresEnum<DamageType>();
             modelBuilder.HasPostgresEnum<WeaponClass>();
             modelBuilder.HasPostgresEnum<ClanMemberRole>();
+            modelBuilder.HasPostgresEnum<StrategusSettlementType>();
         }
     }
 }

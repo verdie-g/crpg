@@ -4,6 +4,7 @@ using Crpg.Domain.Common;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Strategus;
 
 namespace Crpg.Domain.Entities.Users
 {
@@ -45,5 +46,6 @@ namespace Crpg.Domain.Entities.Users
         public IList<Character> Characters { get; set; } = new List<Character>();
         public IList<Ban> Bans { get; set; } = new List<Ban>();
         public ClanMember? ClanMembership { get; set; }
+        public StrategusUser? StrategusUser { get; set; }
     }
 }
