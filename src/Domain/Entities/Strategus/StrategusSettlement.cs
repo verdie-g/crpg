@@ -1,5 +1,5 @@
-﻿using System.Drawing;
-using Crpg.Domain.Common;
+﻿using Crpg.Domain.Common;
+using NetTopologySuite.Geometries;
 
 namespace Crpg.Domain.Entities.Strategus
 {
@@ -23,7 +23,7 @@ namespace Crpg.Domain.Entities.Strategus
         public string Scene { get; set; } = default!;
 
         /// <summary>See <see cref="Owner"/>.</summary>
-        public int OwnerId { get; set; }
+        public int? OwnerId { get; set; }
 
         /// <summary>
         /// Owner of the <see cref="StrategusSettlement"/>.
