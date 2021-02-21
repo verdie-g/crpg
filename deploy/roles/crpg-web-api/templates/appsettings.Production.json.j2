@@ -14,7 +14,8 @@
         "Args": {
           "Path": "{{ crpg_api_log_file }}",
           "Formatter": "Serilog.Formatting.Compact.RenderedCompactJsonFormatter, Serilog.Formatting.Compact",
-          "Buffered": true
+          "Buffered": true,
+          "FlushToDiskInterval": "00:00:15"
         }
       }
     ]
