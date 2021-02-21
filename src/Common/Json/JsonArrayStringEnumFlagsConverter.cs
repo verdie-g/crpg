@@ -24,10 +24,11 @@ namespace Crpg.Common.Json
     public class JsonArrayStringEnumFlagsConverter<T> : JsonConverter<T> where T : struct, Enum
     {
         private static readonly TypeCode EnumTypeCode = Type.GetTypeCode(typeof(T));
-        private static readonly Dictionary<string, ulong> EnumValues =
+        private static readonly Dictionary<string, long> EnumValues =
             Enum.GetValues(typeof(T))
                 .Cast<T>()
-                .ToDictionary(e => e.ToString(), e => Convert.ToUInt64(e));
+                .Distinct() // In case "enum { A, B = A }", A.A or A.B are written as "A".
+                .ToDictionary(e => e.ToString(), e => Convert.ToInt64(e));
 
         public override bool CanConvert(Type typeToConvert) =>
             typeToConvert.IsEnum && typeToConvert.IsDefined(typeof(FlagsAttribute), false);
@@ -39,10 +40,10 @@ namespace Crpg.Common.Json
                 throw new JsonException("Expected JSON array for enum flags type");
             }
 
-            ulong flags = 0;
+            long flags = 0;
             while (reader.Read() && reader.TokenType == JsonTokenType.String)
             {
-                if (EnumValues.TryGetValue(reader.GetString()!, out ulong flagVal))
+                if (EnumValues.TryGetValue(reader.GetString()!, out long flagVal))
                 {
                     flags |= flagVal;
                 }
@@ -58,7 +59,7 @@ namespace Crpg.Common.Json
 
         public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
         {
-            ulong valueInt = Convert.ToUInt64(value);
+            long valueInt = Convert.ToInt64(value);
 
             writer.WriteStartArray();
             foreach (var flag in EnumValues)
