@@ -108,6 +108,9 @@ namespace Crpg.Persistence
             modelBuilder.HasPostgresEnum<WeaponClass>();
             modelBuilder.HasPostgresEnum<ClanMemberRole>();
             modelBuilder.HasPostgresEnum<StrategusSettlementType>();
+
+            // Ensure that the PostGIS extension is installed.
+            modelBuilder.HasPostgresExtension("postgis");
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Crpg.Persistence
         public CrpgDbContext CreateDbContext(string[] args)
         {
             var options = new DbContextOptionsBuilder<CrpgDbContext>()
-                .UseNpgsql("Database=crpg")
+                .UseNpgsql("Database=crpg", options => options.UseNetTopologySuite())
                 .UseSnakeCaseNamingConvention()
                 .Options;
             return new CrpgDbContext(options);
