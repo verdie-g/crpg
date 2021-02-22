@@ -9,6 +9,8 @@ using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Characters.Commands
 {
@@ -33,6 +35,8 @@ namespace Crpg.Application.Characters.Commands
 
         internal class Handler : IMediatorRequestHandler<UpdateCharacterCommand, CharacterViewModel>
         {
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateCharacterCommand>();
+
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
 
@@ -54,6 +58,7 @@ namespace Crpg.Application.Characters.Commands
 
                 character.Name = req.Name;
                 await _db.SaveChangesAsync(cancellationToken);
+                Logger.LogInformation("User '{0}' updated character '{1}'", req.UserId, req.CharacterId);
                 return new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character));
             }
         }
