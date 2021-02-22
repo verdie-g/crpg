@@ -41,6 +41,11 @@ namespace Crpg.Application.Items.Commands
                     return new Result<ItemViewModel>(CommonErrors.ItemNotFound(req.ItemId));
                 }
 
+                if (item.Rank != 0)
+                {
+                    return new Result<ItemViewModel>(CommonErrors.ItemNotBuyable(req.ItemId));
+                }
+
                 var user = await _db.Users
                     .Include(u => u.OwnedItems)
                     .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);

@@ -21,6 +21,7 @@
         ItemAlreadyOwned,
         ItemBadSlot,
         ItemMaxRankReached,
+        ItemNotBuyable,
         ItemNotFound,
         ItemNotOwned,
         NotEnoughAttributePoints,

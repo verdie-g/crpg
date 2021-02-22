@@ -85,6 +85,12 @@ namespace Crpg.Application.Common.Results
             Detail = $"Item with id '{itemId}' owned by user with id '{userId}' has reached its max rank ({maxRank})",
         };
 
+        public static Error ItemNotBuyable(int itemId) => new Error(ErrorType.Validation, ErrorCode.ItemNotBuyable)
+        {
+            Title = "Item is not buyable",
+            Detail = $"Item with id '{itemId}' is not buyable",
+        };
+
         public static Error ItemNotFound(int itemId) => new Error(ErrorType.NotFound, ErrorCode.ItemNotFound)
         {
             Title = "Item was not found",

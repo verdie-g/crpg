@@ -57,6 +57,25 @@ namespace Crpg.Application.UTest.Items
         }
 
         [Test]
+        public async Task ErrorIfItemNotRank0()
+        {
+            var user = new User();
+            ArrangeDb.Users.Add(user);
+            var item = new Item { Value = 100, Rank = 1 };
+            ArrangeDb.Items.Add(item);
+            await ArrangeDb.SaveChangesAsync();
+
+            var handler = new BuyItemCommand.Handler(ActDb, Mapper);
+            var result = await handler.Handle(new BuyItemCommand
+            {
+                ItemId = item.Id,
+                UserId = user.Id,
+            }, CancellationToken.None);
+
+            Assert.AreEqual(ErrorCode.ItemNotBuyable, result.Errors![0].Code);
+        }
+
+        [Test]
         public async Task NotFoundUser()
         {
             var item = ArrangeDb.Items.Add(new Item { Value = 100 });
