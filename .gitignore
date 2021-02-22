@@ -436,3 +436,5 @@ vetur.config.js
 # cRPG
 src/WebUI/public/items/
 *.jwk
+*.png
+*.ico
