@@ -37,6 +37,26 @@ namespace Crpg.Application.UTest.Characters
         }
 
         [Test]
+        public async Task ShouldReturnErrorIfCharacterNameIsAlreadyUsed()
+        {
+            var character1 = new Character { Name = "abc" };
+            var character2 = new Character { Name = "def" };
+            var user = new User { Characters = { character1, character2 } };
+            ArrangeDb.Users.AddRange(user);
+            await ArrangeDb.SaveChangesAsync();
+
+            var cmd = new UpdateCharacterCommand
+            {
+                CharacterId = character1.Id,
+                UserId = user.Id,
+                Name = "def",
+            };
+            var result = await new UpdateCharacterCommand.Handler(ActDb, Mapper).Handle(cmd, CancellationToken.None);
+            Assert.IsNotNull(result.Errors);
+            Assert.AreEqual(ErrorCode.CharacterNameAlreadyUsed, result.Errors![0].Code);
+        }
+
+        [Test]
         public async Task CharacterNotFound()
         {
             var user = ArrangeDb.Users.Add(new User());

@@ -56,7 +56,17 @@ namespace Crpg.Application.Characters.Commands
                     return new Result<CharacterViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
-                character.Name = req.Name;
+                if (character.Name != req.Name)
+                {
+                    if (await _db.Characters.AnyAsync(c => c.UserId == req.UserId && c.Name == req.Name,
+                        cancellationToken))
+                    {
+                        return new Result<CharacterViewModel>(CommonErrors.CharacterNameAlreadyUsed(req.Name));
+                    }
+
+                    character.Name = req.Name;
+                }
+
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("User '{0}' updated character '{1}'", req.UserId, req.CharacterId);
                 return new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character));

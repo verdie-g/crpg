@@ -6,6 +6,7 @@
     public enum ErrorCode
     {
         CharacterLevelRequirementNotMet,
+        CharacterNameAlreadyUsed,
         CharacterNotFound,
         ClanInvitationClosed,
         ClanInvitationNotFound,
