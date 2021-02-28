@@ -14,6 +14,11 @@ namespace Crpg.Domain.Entities.Strategus
         public Culture Culture { get; set; }
 
         /// <summary>
+        /// Region in which the <see cref="StrategusSettlement"/> is located.
+        /// </summary>
+        public Region Region { get; set; }
+
+        /// <summary>
         /// Position of the settlement on the strategus map.
         /// </summary>
         public Point Position { get; set; } = default!;
