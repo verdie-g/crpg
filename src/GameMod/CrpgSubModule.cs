@@ -1,5 +1,8 @@
 ﻿using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
+using Crpg.GameMod.DataExport;
 using Crpg.GameMod.DefendTheVirgin;
 using TaleWorlds.Core;
 using TaleWorlds.Engine.GauntletUI;
@@ -7,6 +10,8 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.TwoDimension;
+using Module = TaleWorlds.MountAndBlade.Module;
+using Path = System.IO.Path;
 
 namespace Crpg.GameMod
 {
@@ -26,13 +31,8 @@ namespace Crpg.GameMod
                 4567, () => MBGameManager.StartNewGame(new DefendTheVirginGameManager()), false));
 
             #if false
-            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportItems", new TextObject("Export Items"), 4578, () =>
-            {
-                string outputPath = "../../Items";
-                InformationManager.DisplayMessage(new InformationMessage($"Exporting items to {Path.GetFullPath(outputPath)}."));
-                var exporter = new Crpg.GameMod.ItemsExporting.ItemExporter();
-                exporter.Export(outputPath).ContinueWith(_ => InformationManager.DisplayMessage(new InformationMessage("Done.")));
-            }, false));
+            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
+                new TextObject("Export Data"), 4578, ExportData, false));
             #endif
 
             // Uncomment to start watching UI changes.
@@ -163,6 +163,25 @@ namespace Crpg.GameMod
                     spriteCategory.Load(UIResourceManager.ResourceContext, UIResourceManager.UIResourceDepot);
                 }
             }
+        }
+
+        private static void ExportData()
+        {
+            const string outputPath = "../../CrpgData";
+            var exporters = new IDataExporter[]
+            {
+                new ItemExporter(),
+                new SettlementExporter(),
+            };
+
+            Directory.CreateDirectory(outputPath);
+            InformationManager.DisplayMessage(new InformationMessage($"Exporting data to {Path.GetFullPath(outputPath)}."));
+            Task.WhenAll(exporters.Select(e => e.Export(outputPath))).ContinueWith(t =>
+            {
+                InformationManager.DisplayMessage(t.IsFaulted
+                    ? new InformationMessage(t.Exception!.Message)
+                    : new InformationMessage("Done."));
+            });
         }
     }
 }

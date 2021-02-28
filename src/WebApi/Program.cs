@@ -73,6 +73,13 @@ namespace Crpg.WebApi
                     return 1;
                 }
 
+                res = await mediator.Send(new SeedStrategusDataCommand(), CancellationToken.None);
+                if (res.Errors != null)
+                {
+                    LoggerFactory.Close();
+                    return 1;
+                }
+
                 eventRaiser.Raise(EventLevel.Info, "cRPG Web API has started", string.Empty);
             }
 

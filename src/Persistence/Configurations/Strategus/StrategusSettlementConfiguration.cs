@@ -11,6 +11,8 @@ namespace Crpg.Persistence.Configurations.Strategus
             builder
                 .HasOne(s => s.Owner!)
                 .WithMany(u => u.OwnedSettlements);
+
+            builder.HasIndex(s => s.Name).IsUnique();
         }
     }
 }

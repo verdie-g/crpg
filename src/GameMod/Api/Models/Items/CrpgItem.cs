@@ -49,19 +49,6 @@ namespace Crpg.GameMod.Api.Models.Items
         Banner,
     }
 
-    // Copy of Crpg.Domain.Entities.Culture
-    internal enum CrpgCulture
-    {
-        Neutral,
-        Aserai,
-        Battania,
-        Empire,
-        Khuzait,
-        Looters,
-        Sturgia,
-        Vlandia,
-    }
-
     // Copy of Crpg.Application.Items.Models.ItemArmorComponentViewModel
     internal class CrpgItemArmorComponent
     {

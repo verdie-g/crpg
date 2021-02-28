@@ -18,6 +18,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.3" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="NetTopologySuite.IO.GeoJSON4STJ" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,6 +41,7 @@
     <Content Include="..\..\data\constants.json" Link="Common\Files\constants.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\..\data\item-modifiers.json" Link="Common\Files\item-modifiers.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\..\data\items.json" Link="Common\Files\items.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\settlements.json" Link="Common\Files\settlements.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

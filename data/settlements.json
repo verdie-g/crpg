@@ -1,0 +1,5111 @@
+[
+  {
+    "name": "Varagos Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        493.56,
+        403.18
+      ]
+    },
+    "scene": "empire_siege_001"
+  },
+  {
+    "name": "Varagos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        498.164,
+        377.53
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Lochana Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        601.88,
+        503.195
+      ]
+    },
+    "scene": "empire_castle_004"
+  },
+  {
+    "name": "Lochana",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        622.796,
+        515.75
+      ]
+    },
+    "scene": "empire_village_c"
+  },
+  {
+    "name": "Rhesos Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        445.834,
+        439.847
+      ]
+    },
+    "scene": "empire_castle_004"
+  },
+  {
+    "name": "Rhesos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        463.498,
+        432.922
+      ]
+    },
+    "scene": "empire_village_j"
+  },
+  {
+    "name": "Gaos Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        560.547,
+        405.221
+      ]
+    },
+    "scene": "empire_siege_001"
+  },
+  {
+    "name": "Gaos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        575.501,
+        384.151
+      ]
+    },
+    "scene": "empire_village_002"
+  },
+  {
+    "name": "Atrion Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        526.21,
+        464.23
+      ]
+    },
+    "scene": "empire_castle_004"
+  },
+  {
+    "name": "Atrion",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        539.847,
+        445.969
+      ]
+    },
+    "scene": "empire_village_008"
+  },
+  {
+    "name": "Ataconia Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        428.712,
+        406.186
+      ]
+    },
+    "scene": "empire_castle_004"
+  },
+  {
+    "name": "Ataconia",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        449.761,
+        395.081
+      ]
+    },
+    "scene": "empire_village_f"
+  },
+  {
+    "name": "Epinosa Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        652.684,
+        512.049
+      ]
+    },
+    "scene": "empire_castle_004"
+  },
+  {
+    "name": "Epinosa",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        663.217,
+        496.621
+      ]
+    },
+    "scene": "empire_village_c"
+  },
+  {
+    "name": "Pons",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        644.343,
+        511.862
+      ]
+    },
+    "scene": "empire_village_007"
+  },
+  {
+    "name": "Syratos Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        663.562,
+        477.951
+      ]
+    },
+    "scene": "empire_siege_001"
+  },
+  {
+    "name": "Syratos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        653.055,
+        472.717
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Tememos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        647.501,
+        463.876
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Mecalovea Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        424.494,
+        481.205
+      ]
+    },
+    "scene": "empire_castle_004"
+  },
+  {
+    "name": "Mecalovea",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        417.965,
+        471.167
+      ]
+    },
+    "scene": "empire_village_x"
+  },
+  {
+    "name": "Agalmon",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        415.34,
+        493.736
+      ]
+    },
+    "scene": "empire_village_p"
+  },
+  {
+    "name": "Epicrotea",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        407.645,
+        474.297
+      ]
+    },
+    "scene": "empire_town_j_siege"
+  },
+  {
+    "name": "Marathea",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        385.025,
+        461.536
+      ]
+    },
+    "scene": "empire_village_e"
+  },
+  {
+    "name": "Stathymos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        407.717,
+        451.722
+      ]
+    },
+    "scene": "empire_village_b"
+  },
+  {
+    "name": "Gymos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        429.111,
+        460.234
+      ]
+    },
+    "scene": "empire_village_e"
+  },
+  {
+    "name": "Dyopalis",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        430.568,
+        440.203
+      ]
+    },
+    "scene": "empire_village_b"
+  },
+  {
+    "name": "Diathma",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        465.971,
+        475.17
+      ]
+    },
+    "scene": "empire_town_h"
+  },
+  {
+    "name": "Alosea",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        453.148,
+        473.214
+      ]
+    },
+    "scene": "empire_village_x"
+  },
+  {
+    "name": "Jeracos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        489.935,
+        459.728
+      ]
+    },
+    "scene": "empire_village_b"
+  },
+  {
+    "name": "Masangara",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        517.449,
+        451.464
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Saneopa",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        513.339,
+        419.099
+      ]
+    },
+    "scene": "empire_town_j_siege"
+  },
+  {
+    "name": "Enoisa",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        520.814,
+        398.755
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Aeoria",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        503.741,
+        407.223
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Crios",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        485.823,
+        420.131
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Argoron",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        534.622,
+        495.804
+      ]
+    },
+    "scene": "empire_town_h"
+  },
+  {
+    "name": "Potamis",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        434.334,
+        421.463
+      ]
+    },
+    "scene": "empire_village_008"
+  },
+  {
+    "name": "Alatys",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        523.468,
+        506.288
+      ]
+    },
+    "scene": "empire_village_x"
+  },
+  {
+    "name": "Nortanisa",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        573.953,
+        503.563
+      ]
+    },
+    "scene": "empire_village_x"
+  },
+  {
+    "name": "Hetania",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        561.817,
+        487.846
+      ]
+    },
+    "scene": "empire_village_f"
+  },
+  {
+    "name": "Myzea",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        604.173,
+        426.101
+      ]
+    },
+    "scene": "empire_town_j_siege"
+  },
+  {
+    "name": "Vealos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        574.82,
+        453.289
+      ]
+    },
+    "scene": "empire_village_g"
+  },
+  {
+    "name": "Orthra",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        570.369,
+        420.634
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Themys",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        581.338,
+        405.011
+      ]
+    },
+    "scene": "empire_village_002"
+  },
+  {
+    "name": "Samatha",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        621.611,
+        432.645
+      ]
+    },
+    "scene": "empire_village_g"
+  },
+  {
+    "name": "Amprela",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        620.342,
+        483.919
+      ]
+    },
+    "scene": "empire_town_j_siege"
+  },
+  {
+    "name": "Avasinton",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        647.195,
+        488.268
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Boreagora",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        632.44,
+        498.726
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Garontor Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        273.429,
+        324.02
+      ]
+    },
+    "scene": "empire_castle_004"
+  },
+  {
+    "name": "Garontor",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        277.153,
+        338.961
+      ]
+    },
+    "scene": "empire_village_008"
+  },
+  {
+    "name": "Thorios Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        467.803,
+        359.124
+      ]
+    },
+    "scene": "empire_castle_004"
+  },
+  {
+    "name": "Thorios",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        466.117,
+        382.977
+      ]
+    },
+    "scene": "empire_village_c"
+  },
+  {
+    "name": "Bergum",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        478.986,
+        381.931
+      ]
+    },
+    "scene": "empire_village_e"
+  },
+  {
+    "name": "Onica Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        445.931,
+        272.569
+      ]
+    },
+    "scene": "empire_siege_001"
+  },
+  {
+    "name": "Onica",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        458.472,
+        269.157
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Thractorae Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        258.912,
+        375.931
+      ]
+    },
+    "scene": "empire_castle_004"
+  },
+  {
+    "name": "Thractorae",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        257.234,
+        346.824
+      ]
+    },
+    "scene": "empire_village_x"
+  },
+  {
+    "name": "Veron Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        264.634,
+        407.65
+      ]
+    },
+    "scene": "empire_siege_001"
+  },
+  {
+    "name": "Veron",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        286.102,
+        417.727
+      ]
+    },
+    "scene": "empire_village_b"
+  },
+  {
+    "name": "Goleryn",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        256.898,
+        393.747
+      ]
+    },
+    "scene": "empire_village_a"
+  },
+  {
+    "name": "Hertogea Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        347.983,
+        391.892
+      ]
+    },
+    "scene": "empire_siege_001"
+  },
+  {
+    "name": "Hertogea",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        340.503,
+        403.2
+      ]
+    },
+    "scene": "empire_village_j"
+  },
+  {
+    "name": "Oristocorys Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        351.791,
+        278.093
+      ]
+    },
+    "scene": "empire_siege_001"
+  },
+  {
+    "name": "Oristocorys",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        354.02,
+        309.141
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Elvania",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        359.023,
+        291.003
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Gersegos Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        375.321,
+        445.862
+      ]
+    },
+    "scene": "empire_siege_001"
+  },
+  {
+    "name": "Gersegos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        363.72,
+        466.552
+      ]
+    },
+    "scene": "empire_village_h"
+  },
+  {
+    "name": "Lageta",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        315.287,
+        397.114
+      ]
+    },
+    "scene": "empire_town_g"
+  },
+  {
+    "name": "Primessos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        297.847,
+        386.762
+      ]
+    },
+    "scene": "empire_village_i"
+  },
+  {
+    "name": "Montos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        310.348,
+        416.18
+      ]
+    },
+    "scene": "empire_village_008"
+  },
+  {
+    "name": "Nideon",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        331.089,
+        380.283
+      ]
+    },
+    "scene": "empire_village_h"
+  },
+  {
+    "name": "Zeonica",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        412.41,
+        287.631
+      ]
+    },
+    "scene": "empire_town_h"
+  },
+  {
+    "name": "Tarcutis",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        434.189,
+        287.614
+      ]
+    },
+    "scene": "empire_village_x"
+  },
+  {
+    "name": "Neocorys",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        393.508,
+        322.385
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Alsasos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        385.095,
+        302.323
+      ]
+    },
+    "scene": "empire_village_f"
+  },
+  {
+    "name": "Zeocorys",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        416.539,
+        309.283
+      ]
+    },
+    "scene": "empire_village_008"
+  },
+  {
+    "name": "Jalmarys",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        376.986,
+        341.692
+      ]
+    },
+    "scene": "empire_town_j_siege"
+  },
+  {
+    "name": "Gamardan",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        245.466,
+        356.213
+      ]
+    },
+    "scene": "empire_village_x"
+  },
+  {
+    "name": "Aegosca",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        395.886,
+        343.079
+      ]
+    },
+    "scene": "empire_village_002"
+  },
+  {
+    "name": "Dradios",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        371.993,
+        371.042
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Ortysia",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        303.859,
+        331.889
+      ]
+    },
+    "scene": "empire_town_h"
+  },
+  {
+    "name": "Arpotis",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        343.009,
+        351.062
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Lysia",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        287.921,
+        325.283
+      ]
+    },
+    "scene": "empire_village_x"
+  },
+  {
+    "name": "Vinela",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        340.289,
+        324.207
+      ]
+    },
+    "scene": "empire_village_x"
+  },
+  {
+    "name": "Garengolia",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        305.884,
+        349.945
+      ]
+    },
+    "scene": "empire_village_007"
+  },
+  {
+    "name": "Amitatys",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        441.84,
+        352.923
+      ]
+    },
+    "scene": "empire_town_g"
+  },
+  {
+    "name": "Elipa",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        433.824,
+        373.793
+      ]
+    },
+    "scene": "empire_village_p"
+  },
+  {
+    "name": "Phasos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        410.858,
+        367.999
+      ]
+    },
+    "scene": "empire_village_g"
+  },
+  {
+    "name": "Rhotae",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        390.118,
+        393.159
+      ]
+    },
+    "scene": "empire_town_h"
+  },
+  {
+    "name": "Carphenion",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        395.566,
+        411.891
+      ]
+    },
+    "scene": "empire_village_g"
+  },
+  {
+    "name": "Vathea",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        382.933,
+        438.412
+      ]
+    },
+    "scene": "empire_village_f"
+  },
+  {
+    "name": "Thersenion",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        378.968,
+        383.119
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Leblenion",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        355.291,
+        377.413
+      ]
+    },
+    "scene": "empire_village_p"
+  },
+  {
+    "name": "Odrysa Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        693.202,
+        306.624
+      ]
+    },
+    "scene": "empire_castle_004"
+  },
+  {
+    "name": "Odrysa",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        682.056,
+        323.76
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Corenia Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        661.582,
+        363.757
+      ]
+    },
+    "scene": "empire_siege_001"
+  },
+  {
+    "name": "Corenia",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        684.084,
+        358.238
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Metachia",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        670.454,
+        343.708
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Melion Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        616.057,
+        383.799
+      ]
+    },
+    "scene": "empire_castle_004"
+  },
+  {
+    "name": "Melion",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        616.414,
+        404.007
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Sagolina",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        623.915,
+        359.987
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Lavenia Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        620.957,
+        254.729
+      ]
+    },
+    "scene": "empire_castle_004"
+  },
+  {
+    "name": "Lavenia",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        600.638,
+        242.03
+      ]
+    },
+    "scene": "empire_village_x"
+  },
+  {
+    "name": "Ethemisa",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        622.736,
+        273.428
+      ]
+    },
+    "scene": "empire_village_008"
+  },
+  {
+    "name": "Morenia Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        557.31,
+        279.074
+      ]
+    },
+    "scene": "empire_siege_001"
+  },
+  {
+    "name": "Morenia",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        550.921,
+        301.539
+      ]
+    },
+    "scene": "empire_village_p"
+  },
+  {
+    "name": "Sestadaim Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        493.22,
+        346.296
+      ]
+    },
+    "scene": "empire_siege_001"
+  },
+  {
+    "name": "Sestadaim",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        503.654,
+        349.408
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Jogurys Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        654.547,
+        434.009
+      ]
+    },
+    "scene": "empire_siege_001"
+  },
+  {
+    "name": "Jogurys",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        640.457,
+        415.094
+      ]
+    },
+    "scene": "empire_village_j"
+  },
+  {
+    "name": "Chanopsis Castle",
+    "type": "Castle",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        538.99,
+        378.31
+      ]
+    },
+    "scene": "empire_siege_001"
+  },
+  {
+    "name": "Chanopsis",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        570.062,
+        366.622
+      ]
+    },
+    "scene": "empire_village_h"
+  },
+  {
+    "name": "Danustica",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        661.191,
+        276.466
+      ]
+    },
+    "scene": "empire_town_g"
+  },
+  {
+    "name": "Caira",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        687.202,
+        276.935
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Polisia",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        673.134,
+        260.585
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Tegresos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        661.634,
+        293.11
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Erebulos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        631.47,
+        263.573
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Vostrum",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        568.779,
+        239.988
+      ]
+    },
+    "scene": "empire_town_h"
+  },
+  {
+    "name": "Atphynia",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        531.959,
+        264.371
+      ]
+    },
+    "scene": "empire_village_i"
+  },
+  {
+    "name": "Gorcorys",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        555.62,
+        265.223
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Avalyps",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        586.185,
+        276.15
+      ]
+    },
+    "scene": "empire_village_004"
+  },
+  {
+    "name": "Alision",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        548.257,
+        246.249
+      ]
+    },
+    "scene": "empire_village_x"
+  },
+  {
+    "name": "Poros",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        471.018,
+        269.821
+      ]
+    },
+    "scene": "empire_town_h"
+  },
+  {
+    "name": "Canoros",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        498.015,
+        281.822
+      ]
+    },
+    "scene": "empire_village_002"
+  },
+  {
+    "name": "Tevea",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        490.177,
+        299.374
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Zestea",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        467.529,
+        300.703
+      ]
+    },
+    "scene": "empire_village_002"
+  },
+  {
+    "name": "Lycaron",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        515.33,
+        333.562
+      ]
+    },
+    "scene": "empire_town_j_siege"
+  },
+  {
+    "name": "Sagora",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        516.05,
+        305.207
+      ]
+    },
+    "scene": "empire_village_002"
+  },
+  {
+    "name": "Popsia",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        513.001,
+        367.531
+      ]
+    },
+    "scene": "empire_village_007"
+  },
+  {
+    "name": "Canterion",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        535.418,
+        313.408
+      ]
+    },
+    "scene": "empire_village_d"
+  },
+  {
+    "name": "Onira",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        645.315,
+        325.385
+      ]
+    },
+    "scene": "empire_town_j_siege"
+  },
+  {
+    "name": "Lanthas",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        620.77,
+        330.599
+      ]
+    },
+    "scene": "empire_village_002"
+  },
+  {
+    "name": "Lartusys",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        638.381,
+        351.877
+      ]
+    },
+    "scene": "empire_village_002"
+  },
+  {
+    "name": "Parasemnos",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        645.093,
+        305.478
+      ]
+    },
+    "scene": "empire_village_008"
+  },
+  {
+    "name": "Phycaon",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        566.24,
+        347.43
+      ]
+    },
+    "scene": "empire_town_g"
+  },
+  {
+    "name": "Saldannis",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        565.911,
+        326.602
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Spotia",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        554.301,
+        337.683
+      ]
+    },
+    "scene": "empire_village_i"
+  },
+  {
+    "name": "Amycon",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        480.809,
+        352.006
+      ]
+    },
+    "scene": "empire_village_002"
+  },
+  {
+    "name": "Syronea",
+    "type": "Town",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        651.026,
+        387.791
+      ]
+    },
+    "scene": "empire_town_g"
+  },
+  {
+    "name": "Psotai",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        644.79,
+        365.767
+      ]
+    },
+    "scene": "empire_village_x"
+  },
+  {
+    "name": "Vargornis",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        659.76,
+        401.479
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Eunalica",
+    "type": "Village",
+    "culture": "Empire",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        659.415,
+        419.419
+      ]
+    },
+    "scene": "empire_village_003"
+  },
+  {
+    "name": "Ustokol Castle",
+    "type": "Castle",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        272.135,
+        593.449
+      ]
+    },
+    "scene": "sturgia_castle_siege_001"
+  },
+  {
+    "name": "Ustokol",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        239.455,
+        594.328
+      ]
+    },
+    "scene": "sturgia_village_f"
+  },
+  {
+    "name": "Mazhadan Castle",
+    "type": "Castle",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        395.312,
+        509.257
+      ]
+    },
+    "scene": "sturgia_castle_siege_001"
+  },
+  {
+    "name": "Mazhadan",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        397.957,
+        518.307
+      ]
+    },
+    "scene": "sturgia_village_j"
+  },
+  {
+    "name": "Nevyansk Castle",
+    "type": "Castle",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        268.467,
+        549.737
+      ]
+    },
+    "scene": "sturgia_castle_003"
+  },
+  {
+    "name": "Nevyansk",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        284.425,
+        530.874
+      ]
+    },
+    "scene": "sturgia_village_e"
+  },
+  {
+    "name": "Dnin",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        293.03,
+        551.614
+      ]
+    },
+    "scene": "sturgia_village_j"
+  },
+  {
+    "name": "Kranirog Castle",
+    "type": "Castle",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        367.984,
+        519.925
+      ]
+    },
+    "scene": "sturgia_castle_003"
+  },
+  {
+    "name": "Kranirog",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        381.142,
+        532.472
+      ]
+    },
+    "scene": "sturgia_village_j"
+  },
+  {
+    "name": "Ismilkorg",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        380.524,
+        498.991
+      ]
+    },
+    "scene": "sturgia_village_h"
+  },
+  {
+    "name": "Ov Castle",
+    "type": "Castle",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        452.961,
+        543.248
+      ]
+    },
+    "scene": "sturgia_castle_siege_001"
+  },
+  {
+    "name": "Ov",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        434.253,
+        542.324
+      ]
+    },
+    "scene": "sturgia_village_e"
+  },
+  {
+    "name": "Ferkh",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        441.454,
+        555.856
+      ]
+    },
+    "scene": "sturgia_village_e"
+  },
+  {
+    "name": "Takor Castle",
+    "type": "Castle",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        493.389,
+        551.866
+      ]
+    },
+    "scene": "sturgia_castle_003"
+  },
+  {
+    "name": "Takor",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        492.859,
+        567.844
+      ]
+    },
+    "scene": "sturgia_village_b"
+  },
+  {
+    "name": "Urikskala Castle",
+    "type": "Castle",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        666.54,
+        553.695
+      ]
+    },
+    "scene": "sturgia_castle_003"
+  },
+  {
+    "name": "Urikskala",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        670.142,
+        525.26
+      ]
+    },
+    "scene": "sturgia_village_g"
+  },
+  {
+    "name": "Vladiv Castle",
+    "type": "Castle",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        612.399,
+        573.747
+      ]
+    },
+    "scene": "sturgia_castle_siege_001"
+  },
+  {
+    "name": "Vladiv",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        618.42,
+        590.216
+      ]
+    },
+    "scene": "sturgia_village_b"
+  },
+  {
+    "name": "Varcheg",
+    "type": "Town",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        361.256,
+        554.313
+      ]
+    },
+    "scene": "sturgia_town_c"
+  },
+  {
+    "name": "Rodobas",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        389.676,
+        547.789
+      ]
+    },
+    "scene": "sturgia_village_j"
+  },
+  {
+    "name": "Forin",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        406.734,
+        507.526
+      ]
+    },
+    "scene": "sturgia_village_a"
+  },
+  {
+    "name": "Kargrev",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        344.755,
+        541.842
+      ]
+    },
+    "scene": "sturgia_village_g"
+  },
+  {
+    "name": "Balgard",
+    "type": "Town",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        467.86,
+        570.509
+      ]
+    },
+    "scene": "sturgia_town_c"
+  },
+  {
+    "name": "Safna",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        468.963,
+        556.267
+      ]
+    },
+    "scene": "sturgia_village_f"
+  },
+  {
+    "name": "Marabrot",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        453.523,
+        592.937
+      ]
+    },
+    "scene": "sturgia_village_f"
+  },
+  {
+    "name": "Dvorusta",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        475.506,
+        547.402
+      ]
+    },
+    "scene": "sturgia_village_h"
+  },
+  {
+    "name": "Omor",
+    "type": "Town",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        451.107,
+        515.464
+      ]
+    },
+    "scene": "sturgia_town_c"
+  },
+  {
+    "name": "Chornobas",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        431.554,
+        495.919
+      ]
+    },
+    "scene": "sturgia_village_l"
+  },
+  {
+    "name": "Skorin",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        455.437,
+        497.693
+      ]
+    },
+    "scene": "sturgia_village_g"
+  },
+  {
+    "name": "Varnovapol",
+    "type": "Town",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        540.416,
+        548.273
+      ]
+    },
+    "scene": "sturgia_town_c"
+  },
+  {
+    "name": "Borchovagorka",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        574.539,
+        551.736
+      ]
+    },
+    "scene": "sturgia_village_f"
+  },
+  {
+    "name": "Glavstrom",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        620.089,
+        559.767
+      ]
+    },
+    "scene": "sturgia_village_l"
+  },
+  {
+    "name": "Omkany",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        534.628,
+        557.699
+      ]
+    },
+    "scene": "sturgia_village_l"
+  },
+  {
+    "name": "Yangutum",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        515.753,
+        551.25
+      ]
+    },
+    "scene": "sturgia_village_f"
+  },
+  {
+    "name": "Tyal",
+    "type": "Town",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        647.079,
+        569.108
+      ]
+    },
+    "scene": "sturgia_town_c"
+  },
+  {
+    "name": "Visibrot",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        656.364,
+        550.811
+      ]
+    },
+    "scene": "sturgia_village_h"
+  },
+  {
+    "name": "Bukits",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        674.436,
+        568.448
+      ]
+    },
+    "scene": "sturgia_village_e"
+  },
+  {
+    "name": "Alov",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        654.264,
+        540.041
+      ]
+    },
+    "scene": "sturgia_village_a"
+  },
+  {
+    "name": "Sibir",
+    "type": "Town",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        549.77,
+        586.259
+      ]
+    },
+    "scene": "sturgia_town_c"
+  },
+  {
+    "name": "Kvol",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        573.026,
+        585.666
+      ]
+    },
+    "scene": "sturgia_village_h"
+  },
+  {
+    "name": "Radakmed",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        551.725,
+        572.339
+      ]
+    },
+    "scene": "sturgia_village_e"
+  },
+  {
+    "name": "Alebat",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        529.84,
+        581.846
+      ]
+    },
+    "scene": "sturgia_village_l"
+  },
+  {
+    "name": "Revyl",
+    "type": "Town",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        296.82,
+        580.832
+      ]
+    },
+    "scene": "sturgia_town_c"
+  },
+  {
+    "name": "Korsyas",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        287.861,
+        568.57
+      ]
+    },
+    "scene": "sturgia_village_g"
+  },
+  {
+    "name": "Karbur",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        315.057,
+        585.752
+      ]
+    },
+    "scene": "sturgia_village_l"
+  },
+  {
+    "name": "Zhemyan",
+    "type": "Village",
+    "culture": "Sturgia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        264.659,
+        603.249
+      ]
+    },
+    "scene": "sturgia_village_l"
+  },
+  {
+    "name": "Tubilis Castle",
+    "type": "Castle",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        274.181,
+        272.167
+      ]
+    },
+    "scene": "aserai_castle_002"
+  },
+  {
+    "name": "Tubilis",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        251.632,
+        263.255
+      ]
+    },
+    "scene": "aserai_village_j"
+  },
+  {
+    "name": "Sahel Castle",
+    "type": "Castle",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        617.677,
+        127.096
+      ]
+    },
+    "scene": "aserai_castle_002"
+  },
+  {
+    "name": "Sahel",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        639.004,
+        117.22
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Asmait",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        622.677,
+        107.025
+      ]
+    },
+    "scene": "aserai_village_c"
+  },
+  {
+    "name": "Ain Baliq Castle",
+    "type": "Castle",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        323.167,
+        186.28
+      ]
+    },
+    "scene": "aserai_castle_002"
+  },
+  {
+    "name": "Ain Baliq",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        283.666,
+        187.29
+      ]
+    },
+    "scene": "aserai_village_b"
+  },
+  {
+    "name": "Deir Hawa",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        344.876,
+        192.836
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Medeni Castle",
+    "type": "Castle",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        444.093,
+        150.416
+      ]
+    },
+    "scene": "aserai_castle_002"
+  },
+  {
+    "name": "Medeni",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        436.694,
+        178.228
+      ]
+    },
+    "scene": "aserai_village_b"
+  },
+  {
+    "name": "Qidnar",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        423.748,
+        135.275
+      ]
+    },
+    "scene": "aserai_village_j"
+  },
+  {
+    "name": "Jamayeh Castle",
+    "type": "Castle",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        516.554,
+        130.572
+      ]
+    },
+    "scene": "aserai_castle_002"
+  },
+  {
+    "name": "Jamayeh",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        530.431,
+        139.645
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Shibal Zumr Castle",
+    "type": "Castle",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        666.93,
+        245.247
+      ]
+    },
+    "scene": "aserai_castle_002"
+  },
+  {
+    "name": "Shibal Zumr",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        679.928,
+        245.814
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Uqba Castle",
+    "type": "Castle",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        357.485,
+        216.349
+      ]
+    },
+    "scene": "aserai_castle_002"
+  },
+  {
+    "name": "Uqba",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        378.735,
+        220.777
+      ]
+    },
+    "scene": "aserai_village_j"
+  },
+  {
+    "name": "Bunqaz",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        322.492,
+        210.122
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Tamnuh Castle",
+    "type": "Castle",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        650.405,
+        210.393
+      ]
+    },
+    "scene": "aserai_castle_002"
+  },
+  {
+    "name": "Tamnuh",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        641.98,
+        241.732
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Barihal Castle",
+    "type": "Castle",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        339.854,
+        156.395
+      ]
+    },
+    "scene": "aserai_castle_002"
+  },
+  {
+    "name": "Barihal",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        357.184,
+        162.152
+      ]
+    },
+    "scene": "aserai_village_c"
+  },
+  {
+    "name": "Quyaz",
+    "type": "Town",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        299.553,
+        264.853
+      ]
+    },
+    "scene": "aserai_town_b"
+  },
+  {
+    "name": "Tasheba",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        314.587,
+        256.302
+      ]
+    },
+    "scene": "aserai_village_l"
+  },
+  {
+    "name": "Baq",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        296.806,
+        241.59
+      ]
+    },
+    "scene": "aserai_village_b"
+  },
+  {
+    "name": "Fanab",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        272.077,
+        253.368
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Hiblet",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        279.042,
+        231.398
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Husn Fulq",
+    "type": "Town",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        686.263,
+        234.343
+      ]
+    },
+    "scene": "aserai_town_a"
+  },
+  {
+    "name": "Lamesa",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        659.674,
+        230.062
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Abu Khih",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        706.23,
+        202.192
+      ]
+    },
+    "scene": "aserai_village_l"
+  },
+  {
+    "name": "Hoqqa",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        725.889,
+        249.251
+      ]
+    },
+    "scene": "aserai_village_j"
+  },
+  {
+    "name": "Iyakis",
+    "type": "Town",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        493.537,
+        111.743
+      ]
+    },
+    "scene": "aserai_town_a"
+  },
+  {
+    "name": "Abba",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        474.865,
+        101.265
+      ]
+    },
+    "scene": "aserai_village_c"
+  },
+  {
+    "name": "Hunab",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        493.275,
+        130.276
+      ]
+    },
+    "scene": "aserai_village_b"
+  },
+  {
+    "name": "Bir Seif",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        522.539,
+        111.057
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Razih",
+    "type": "Town",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        608.801,
+        178.967
+      ]
+    },
+    "scene": "aserai_town_c"
+  },
+  {
+    "name": "Qablab",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        591.506,
+        153.62
+      ]
+    },
+    "scene": "aserai_village_l"
+  },
+  {
+    "name": "Mussum",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        630.013,
+        167.928
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Kuqa",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        652.93,
+        189.194
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Doqa",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        630.642,
+        182.594
+      ]
+    },
+    "scene": "aserai_village_j"
+  },
+  {
+    "name": "Hubyar",
+    "type": "Town",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        561.609,
+        119.752
+      ]
+    },
+    "scene": "aserai_town_b"
+  },
+  {
+    "name": "Mahloul",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        593.332,
+        116.417
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Liwas",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        537.603,
+        111.162
+      ]
+    },
+    "scene": "aserai_village_b"
+  },
+  {
+    "name": "Waltas",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        550.69,
+        135.427
+      ]
+    },
+    "scene": "aserai_village_j"
+  },
+  {
+    "name": "Sanala",
+    "type": "Town",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        401.651,
+        207.329
+      ]
+    },
+    "scene": "aserai_town_c"
+  },
+  {
+    "name": "Mijayit",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        409.751,
+        179.163
+      ]
+    },
+    "scene": "aserai_village_j"
+  },
+  {
+    "name": "Hamoshawat",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        394.921,
+        177.046
+      ]
+    },
+    "scene": "aserai_village_l"
+  },
+  {
+    "name": "Jahasim",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        390.38,
+        216.602
+      ]
+    },
+    "scene": "aserai_village_l"
+  },
+  {
+    "name": "Nahlan",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        404.877,
+        160.318
+      ]
+    },
+    "scene": "aserai_village_j"
+  },
+  {
+    "name": "Askar",
+    "type": "Town",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        379.425,
+        118.472
+      ]
+    },
+    "scene": "aserai_town_a"
+  },
+  {
+    "name": "Wadar",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        355.391,
+        140.124
+      ]
+    },
+    "scene": "aserai_village_e"
+  },
+  {
+    "name": "Bait Hatif",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        421.323,
+        106.433
+      ]
+    },
+    "scene": "aserai_village_j"
+  },
+  {
+    "name": "Mabwaz",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        413.118,
+        124.872
+      ]
+    },
+    "scene": "aserai_village_l"
+  },
+  {
+    "name": "Zalm",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        382.651,
+        94.964
+      ]
+    },
+    "scene": "aserai_village_l"
+  },
+  {
+    "name": "Qasira",
+    "type": "Town",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        490.694,
+        163.097
+      ]
+    },
+    "scene": "aserai_town_c"
+  },
+  {
+    "name": "Ezbet Nahul",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        509.647,
+        147.664
+      ]
+    },
+    "scene": "aserai_village_c"
+  },
+  {
+    "name": "Abghan",
+    "type": "Village",
+    "culture": "Aserai",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        465.728,
+        168.624
+      ]
+    },
+    "scene": "aserai_village_l"
+  },
+  {
+    "name": "Usanc Castle",
+    "type": "Castle",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        223.555,
+        357.026
+      ]
+    },
+    "scene": "vlandia_castle_005a"
+  },
+  {
+    "name": "Usanc",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        227.085,
+        340.176
+      ]
+    },
+    "scene": "vlandia_village_m"
+  },
+  {
+    "name": "Hongard Castle",
+    "type": "Castle",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        133.91,
+        416.794
+      ]
+    },
+    "scene": "vlandia_castle_005a"
+  },
+  {
+    "name": "Hongard",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        130.07,
+        445.606
+      ]
+    },
+    "scene": "vlandia_village_b"
+  },
+  {
+    "name": "Ferton",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        132.827,
+        425.805
+      ]
+    },
+    "scene": "vlandia_village_k"
+  },
+  {
+    "name": "Drapand Castle",
+    "type": "Castle",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        109.383,
+        514.606
+      ]
+    },
+    "scene": "vlandia_castle_005a"
+  },
+  {
+    "name": "Drapand",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        97.509,
+        489.095
+      ]
+    },
+    "scene": "vlandia_village_i"
+  },
+  {
+    "name": "Ormanfard Castle",
+    "type": "Castle",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        199.557,
+        521.81
+      ]
+    },
+    "scene": "vlandia_castle_005a"
+  },
+  {
+    "name": "Ormanfard",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        180.271,
+        519.097
+      ]
+    },
+    "scene": "vlandia_village_b"
+  },
+  {
+    "name": "Tirby Castle",
+    "type": "Castle",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        165.989,
+        564.639
+      ]
+    },
+    "scene": "vlandia_castle_005a"
+  },
+  {
+    "name": "Tirby",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        161.077,
+        586.582
+      ]
+    },
+    "scene": "vlandia_village_i"
+  },
+  {
+    "name": "Sirindac",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        152.416,
+        567.49
+      ]
+    },
+    "scene": "vlandia_village_g"
+  },
+  {
+    "name": "Caleus Castle",
+    "type": "Castle",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        230.536,
+        552.587
+      ]
+    },
+    "scene": "vlandia_castle_005a"
+  },
+  {
+    "name": "Caleus",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        243.165,
+        540.646
+      ]
+    },
+    "scene": "vlandia_village_g"
+  },
+  {
+    "name": "Deriat",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        206.0,
+        555.33
+      ]
+    },
+    "scene": "vlandia_village_k"
+  },
+  {
+    "name": "Talivel Castle",
+    "type": "Castle",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        201.425,
+        415.486
+      ]
+    },
+    "scene": "vlandia_castle_005a"
+  },
+  {
+    "name": "Talivel",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        181.223,
+        413.651
+      ]
+    },
+    "scene": "vlandia_village_n"
+  },
+  {
+    "name": "Verecsand Castle",
+    "type": "Castle",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        190.12,
+        466.865
+      ]
+    },
+    "scene": "vlandia_castle_005a"
+  },
+  {
+    "name": "Verecsand",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        174.652,
+        472.815
+      ]
+    },
+    "scene": "vlandia_village_c"
+  },
+  {
+    "name": "Sargot",
+    "type": "Town",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        210.378,
+        383.893
+      ]
+    },
+    "scene": "vlandia_city_a"
+  },
+  {
+    "name": "Calioc",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        186.614,
+        391.233
+      ]
+    },
+    "scene": "vlandia_village_k"
+  },
+  {
+    "name": "Etirfurd",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        217.421,
+        406.133
+      ]
+    },
+    "scene": "vlandia_village_l"
+  },
+  {
+    "name": "Rodetan",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        199.02,
+        438.892
+      ]
+    },
+    "scene": "vlandia_village_i"
+  },
+  {
+    "name": "Ocs Hall",
+    "type": "Town",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        181.785,
+        495.348
+      ]
+    },
+    "scene": "vlandia_town_a"
+  },
+  {
+    "name": "Mareiven",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        189.148,
+        486.143
+      ]
+    },
+    "scene": "vlandia_village_c"
+  },
+  {
+    "name": "Oritan",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        185.962,
+        510.727
+      ]
+    },
+    "scene": "vlandia_village_m"
+  },
+  {
+    "name": "Fregian",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        148.609,
+        494.408
+      ]
+    },
+    "scene": "vlandia_village_g"
+  },
+  {
+    "name": "Marin",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        166.471,
+        465.155
+      ]
+    },
+    "scene": "vlandia_village_i"
+  },
+  {
+    "name": "Pravend",
+    "type": "Town",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        139.205,
+        475.542
+      ]
+    },
+    "scene": "vlandia_city_a"
+  },
+  {
+    "name": "Valanby",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        117.556,
+        500.746
+      ]
+    },
+    "scene": "vlandia_village_m"
+  },
+  {
+    "name": "Rulund",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        135.887,
+        452.216
+      ]
+    },
+    "scene": "vlandia_village_m"
+  },
+  {
+    "name": "Larnac",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        124.399,
+        488.833
+      ]
+    },
+    "scene": "vlandia_village_m"
+  },
+  {
+    "name": "Palisont",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        156.43,
+        455.027
+      ]
+    },
+    "scene": "vlandia_village_l"
+  },
+  {
+    "name": "Galend",
+    "type": "Town",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        107.5,
+        411.689
+      ]
+    },
+    "scene": "vlandia_city_a"
+  },
+  {
+    "name": "Furbec",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        121.298,
+        398.974
+      ]
+    },
+    "scene": "vlandia_village_g"
+  },
+  {
+    "name": "Meroc",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        114.641,
+        388.872
+      ]
+    },
+    "scene": "vlandia_village_m"
+  },
+  {
+    "name": "Nogrent",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        100.203,
+        423.756
+      ]
+    },
+    "scene": "vlandia_village_k"
+  },
+  {
+    "name": "Jaculan",
+    "type": "Town",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        149.91,
+        392.826
+      ]
+    },
+    "scene": "vlandia_town_a"
+  },
+  {
+    "name": "Arromanc",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        170.209,
+        374.64
+      ]
+    },
+    "scene": "vlandia_village_i"
+  },
+  {
+    "name": "Mot",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        185.107,
+        375.822
+      ]
+    },
+    "scene": "vlandia_village_l"
+  },
+  {
+    "name": "Alorstan",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        137.567,
+        394.109
+      ]
+    },
+    "scene": "vlandia_village_k"
+  },
+  {
+    "name": "Chornad",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        152.551,
+        407.482
+      ]
+    },
+    "scene": "vlandia_village_m"
+  },
+  {
+    "name": "Charas",
+    "type": "Town",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        176.658,
+        334.402
+      ]
+    },
+    "scene": "vlandia_town_a"
+  },
+  {
+    "name": "Savinth",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        195.25,
+        350.788
+      ]
+    },
+    "scene": "vlandia_village_m"
+  },
+  {
+    "name": "Vesin",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        165.403,
+        345.646
+      ]
+    },
+    "scene": "vlandia_village_m"
+  },
+  {
+    "name": "Ostican",
+    "type": "Town",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        135.09,
+        547.52
+      ]
+    },
+    "scene": "vlandia_city_a"
+  },
+  {
+    "name": "Horsger",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        151.509,
+        540.844
+      ]
+    },
+    "scene": "vlandia_village_b"
+  },
+  {
+    "name": "Cananc",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        148.492,
+        578.874
+      ]
+    },
+    "scene": "vlandia_village_l"
+  },
+  {
+    "name": "Remental",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        146.752,
+        561.079
+      ]
+    },
+    "scene": "vlandia_village_g"
+  },
+  {
+    "name": "Rovalt",
+    "type": "Town",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        179.501,
+        548.785
+      ]
+    },
+    "scene": "vlandia_town_a"
+  },
+  {
+    "name": "Alantas",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        162.475,
+        554.636
+      ]
+    },
+    "scene": "vlandia_village_i"
+  },
+  {
+    "name": "Halisvust",
+    "type": "Village",
+    "culture": "Vlandia",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        180.584,
+        532.908
+      ]
+    },
+    "scene": "vlandia_village_i"
+  },
+  {
+    "name": "Ab Comer Castle",
+    "type": "Castle",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        223.762,
+        431.444
+      ]
+    },
+    "scene": "battania_castle_b"
+  },
+  {
+    "name": "Ab Comer",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        236.468,
+        435.447
+      ]
+    },
+    "scene": "battania_village_e"
+  },
+  {
+    "name": "Llanoc Hen Castle",
+    "type": "Castle",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        249.177,
+        434.045
+      ]
+    },
+    "scene": "battania_castle_b"
+  },
+  {
+    "name": "Llanoc Hen",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        252.977,
+        449.402
+      ]
+    },
+    "scene": "battania_village_l"
+  },
+  {
+    "name": "Cantrec",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        262.262,
+        425.217
+      ]
+    },
+    "scene": "battania_village_l"
+  },
+  {
+    "name": "Druimmor Castle",
+    "type": "Castle",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        231.203,
+        520.236
+      ]
+    },
+    "scene": "battania_castle_b"
+  },
+  {
+    "name": "Druimmor",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        220.084,
+        524.894
+      ]
+    },
+    "scene": "battania_village_h"
+  },
+  {
+    "name": "Pendraic Castle",
+    "type": "Castle",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        274.145,
+        519.959
+      ]
+    },
+    "scene": "battania_castle_b"
+  },
+  {
+    "name": "Pendraic",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        267.04,
+        533.38
+      ]
+    },
+    "scene": "battania_village_l"
+  },
+  {
+    "name": "Rhemtoil Castle",
+    "type": "Castle",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        315.343,
+        446.698
+      ]
+    },
+    "scene": "battania_castle_b"
+  },
+  {
+    "name": "Rhemtoil",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        337.844,
+        427.693
+      ]
+    },
+    "scene": "battania_village_k"
+  },
+  {
+    "name": "Claig Ban",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        338.171,
+        443.755
+      ]
+    },
+    "scene": "battania_village_k"
+  },
+  {
+    "name": "Flintolg Castle",
+    "type": "Castle",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        324.518,
+        525.065
+      ]
+    },
+    "scene": "battania_castle_b"
+  },
+  {
+    "name": "Flintolg",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        328.057,
+        503.697
+      ]
+    },
+    "scene": "battania_village"
+  },
+  {
+    "name": "Glintor",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        289.421,
+        520.739
+      ]
+    },
+    "scene": "battania_village_j"
+  },
+  {
+    "name": "Aster Castle",
+    "type": "Castle",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        235.129,
+        478.09
+      ]
+    },
+    "scene": "battania_castle_b"
+  },
+  {
+    "name": "Aster",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        257.248,
+        488.724
+      ]
+    },
+    "scene": "battania_village_l"
+  },
+  {
+    "name": "Uthelaim Castle",
+    "type": "Castle",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        352.646,
+        497.737
+      ]
+    },
+    "scene": "battania_castle_b"
+  },
+  {
+    "name": "Uthelaim",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        360.071,
+        487.902
+      ]
+    },
+    "scene": "battania_village_j"
+  },
+  {
+    "name": "Marunath",
+    "type": "Town",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        291.2,
+        442.757
+      ]
+    },
+    "scene": "battania_town_d"
+  },
+  {
+    "name": "Dalmengus",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        304.124,
+        461.07
+      ]
+    },
+    "scene": "battania_village_k"
+  },
+  {
+    "name": "Ebereth",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        277.938,
+        456.109
+      ]
+    },
+    "scene": "battania_village_l"
+  },
+  {
+    "name": "Beglomuar",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        301.07,
+        435.872
+      ]
+    },
+    "scene": "battania_village_i"
+  },
+  {
+    "name": "Ath Cafal",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        271.734,
+        436.186
+      ]
+    },
+    "scene": "battania_village_i"
+  },
+  {
+    "name": "Dunglanys",
+    "type": "Town",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        266.398,
+        483.399
+      ]
+    },
+    "scene": "battania_town_c"
+  },
+  {
+    "name": "Diantogmail",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        274.679,
+        465.324
+      ]
+    },
+    "scene": "battania_village_j"
+  },
+  {
+    "name": "Glenlithrig",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        251.317,
+        498.091
+      ]
+    },
+    "scene": "battania_village_l"
+  },
+  {
+    "name": "Morihig",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        252.428,
+        468.245
+      ]
+    },
+    "scene": "battania_village_h"
+  },
+  {
+    "name": "Imlagh",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        260.896,
+        463.179
+      ]
+    },
+    "scene": "battania_village_l"
+  },
+  {
+    "name": "Lindorn",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        273.162,
+        499.461
+      ]
+    },
+    "scene": "battania_village_l"
+  },
+  {
+    "name": "Car Banseth",
+    "type": "Town",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        255.387,
+        515.614
+      ]
+    },
+    "scene": "battania_town_c"
+  },
+  {
+    "name": "Bog Beth",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        221.658,
+        492.377
+      ]
+    },
+    "scene": "battania_village_e"
+  },
+  {
+    "name": "Geunat Nal",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        262.282,
+        505.221
+      ]
+    },
+    "scene": "battania_village_i"
+  },
+  {
+    "name": "Tor Leiad",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        240.285,
+        498.038
+      ]
+    },
+    "scene": "battania_village_l"
+  },
+  {
+    "name": "Tor Melina",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        214.681,
+        506.304
+      ]
+    },
+    "scene": "battania_village_e"
+  },
+  {
+    "name": "Seonon",
+    "type": "Town",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        329.92,
+        474.32
+      ]
+    },
+    "scene": "battania_town_d"
+  },
+  {
+    "name": "Bryn Glas",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        330.669,
+        464.535
+      ]
+    },
+    "scene": "battania_village"
+  },
+  {
+    "name": "Andurn",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        322.65,
+        490.099
+      ]
+    },
+    "scene": "battania_village_j"
+  },
+  {
+    "name": "Mag Arba",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        317.477,
+        463.681
+      ]
+    },
+    "scene": "battania_village_j"
+  },
+  {
+    "name": "Swenryn",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        310.743,
+        502.263
+      ]
+    },
+    "scene": "battania_village_j"
+  },
+  {
+    "name": "Seordas",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        366.386,
+        502.728
+      ]
+    },
+    "scene": "battania_village_j"
+  },
+  {
+    "name": "Pen Cannoc",
+    "type": "Town",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        231.631,
+        451.187
+      ]
+    },
+    "scene": "battania_town_b"
+  },
+  {
+    "name": "Durn",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        218.118,
+        436.668
+      ]
+    },
+    "scene": "battania_village_k"
+  },
+  {
+    "name": "Gainseth",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        222.656,
+        476.266
+      ]
+    },
+    "scene": "battania_village_h"
+  },
+  {
+    "name": "Fenon Etir",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        232.425,
+        415.342
+      ]
+    },
+    "scene": "battania_village"
+  },
+  {
+    "name": "Inveth",
+    "type": "Village",
+    "culture": "Battania",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        217.671,
+        418.186
+      ]
+    },
+    "scene": "battania_village_j"
+  },
+  {
+    "name": "Usek Castle",
+    "type": "Castle",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        704.358,
+        451.659
+      ]
+    },
+    "scene": "khuzait_castle_siege_001"
+  },
+  {
+    "name": "Usek",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        690.542,
+        441.721
+      ]
+    },
+    "scene": "khuzait_village_i"
+  },
+  {
+    "name": "Esme",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        717.091,
+        465.939
+      ]
+    },
+    "scene": "khuzait_village_i"
+  },
+  {
+    "name": "Akiser Castle",
+    "type": "Castle",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        709.885,
+        371.244
+      ]
+    },
+    "scene": "khuzait_castle_002"
+  },
+  {
+    "name": "Akiser",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        713.851,
+        397.271
+      ]
+    },
+    "scene": "khuzait_village_i"
+  },
+  {
+    "name": "Hakkun Castle",
+    "type": "Castle",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        721.218,
+        410.942
+      ]
+    },
+    "scene": "khuzait_castle_siege_001"
+  },
+  {
+    "name": "Hakkun",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        708.536,
+        417.264
+      ]
+    },
+    "scene": "khuzait_village_j"
+  },
+  {
+    "name": "Tepes Castle",
+    "type": "Castle",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        710.073,
+        498.92
+      ]
+    },
+    "scene": "khuzait_castle_siege_001"
+  },
+  {
+    "name": "Tepes",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        698.84,
+        500.487
+      ]
+    },
+    "scene": "khuzait_village_k"
+  },
+  {
+    "name": "Khimli Castle",
+    "type": "Castle",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        746.52,
+        472.011
+      ]
+    },
+    "scene": "khuzait_castle_002"
+  },
+  {
+    "name": "Khimli",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        740.446,
+        484.562
+      ]
+    },
+    "scene": "khuzait_village_i"
+  },
+  {
+    "name": "Dinar Castle",
+    "type": "Castle",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        695.454,
+        573.924
+      ]
+    },
+    "scene": "khuzait_castle_002"
+  },
+  {
+    "name": "Dinar",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        719.816,
+        580.276
+      ]
+    },
+    "scene": "khuzait_village_a"
+  },
+  {
+    "name": "Karahalli",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        692.123,
+        588.924
+      ]
+    },
+    "scene": "khuzait_village_l"
+  },
+  {
+    "name": "Simira Castle",
+    "type": "Castle",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        773.039,
+        379.774
+      ]
+    },
+    "scene": "khuzait_castle_002"
+  },
+  {
+    "name": "Simira",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        780.221,
+        400.774
+      ]
+    },
+    "scene": "khuzait_village_b"
+  },
+  {
+    "name": "Erzenur Castle",
+    "type": "Castle",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        712.864,
+        333.277
+      ]
+    },
+    "scene": "khuzait_castle_002"
+  },
+  {
+    "name": "Erzenur",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        719.985,
+        262.71
+      ]
+    },
+    "scene": "khuzait_village_j"
+  },
+  {
+    "name": "Kaysar Castle",
+    "type": "Castle",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        707.939,
+        547.437
+      ]
+    },
+    "scene": "khuzait_castle_siege_001"
+  },
+  {
+    "name": "Kaysar",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        726.58,
+        549.436
+      ]
+    },
+    "scene": "khuzait_village_k"
+  },
+  {
+    "name": "Payam",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        715.06,
+        563.231
+      ]
+    },
+    "scene": "khuzait_village_c"
+  },
+  {
+    "name": "Baltakhand",
+    "type": "Town",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        732.504,
+        536.542
+      ]
+    },
+    "scene": "khuzait_city_b"
+  },
+  {
+    "name": "Fisnar",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        708.931,
+        531.474
+      ]
+    },
+    "scene": "khuzait_village_a"
+  },
+  {
+    "name": "Ulaan",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        727.05,
+        567.562
+      ]
+    },
+    "scene": "khuzait_village_a"
+  },
+  {
+    "name": "Kuruluk",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        713.453,
+        517.762
+      ]
+    },
+    "scene": "khuzait_village_c"
+  },
+  {
+    "name": "Asalig",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        735.834,
+        514.359
+      ]
+    },
+    "scene": "khuzait_village_b"
+  },
+  {
+    "name": "Akkalat",
+    "type": "Town",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        726.701,
+        372.704
+      ]
+    },
+    "scene": "khuzait_city_b"
+  },
+  {
+    "name": "Karakalat",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        755.17,
+        395.284
+      ]
+    },
+    "scene": "khuzait_village_j"
+  },
+  {
+    "name": "Tismil",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        718.979,
+        355.624
+      ]
+    },
+    "scene": "khuzait_village_a"
+  },
+  {
+    "name": "Gereden",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        703.672,
+        321.564
+      ]
+    },
+    "scene": "khuzait_village_a"
+  },
+  {
+    "name": "Kiraz",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        738.013,
+        406.449
+      ]
+    },
+    "scene": "khuzait_village_l"
+  },
+  {
+    "name": "Makeb",
+    "type": "Town",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        685.692,
+        480.056
+      ]
+    },
+    "scene": "khuzait_town_004"
+  },
+  {
+    "name": "Shapeshte",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        685.203,
+        495.721
+      ]
+    },
+    "scene": "khuzait_village_c"
+  },
+  {
+    "name": "Hanekhy",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        713.592,
+        491.352
+      ]
+    },
+    "scene": "khuzait_village_b"
+  },
+  {
+    "name": "Mazen",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        679.939,
+        466.064
+      ]
+    },
+    "scene": "khuzait_village_a"
+  },
+  {
+    "name": "Ortongard",
+    "type": "Town",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        745.826,
+        448.187
+      ]
+    },
+    "scene": "khuzait_city_a"
+  },
+  {
+    "name": "Omrotok",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        764.184,
+        455.996
+      ]
+    },
+    "scene": "khuzait_village_k"
+  },
+  {
+    "name": "Ransam",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        765.346,
+        421.777
+      ]
+    },
+    "scene": "khuzait_village_l"
+  },
+  {
+    "name": "Mivanjan",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        778.934,
+        435.546
+      ]
+    },
+    "scene": "khuzait_village_l"
+  },
+  {
+    "name": "Urunjan",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        729.983,
+        428.774
+      ]
+    },
+    "scene": "khuzait_village_i"
+  },
+  {
+    "name": "Chaikand",
+    "type": "Town",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        684.811,
+        421.592
+      ]
+    },
+    "scene": "khuzait_city_a"
+  },
+  {
+    "name": "Kamshar",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        677.361,
+        384.64
+      ]
+    },
+    "scene": "khuzait_village_a"
+  },
+  {
+    "name": "Okhutan",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        689.435,
+        406.915
+      ]
+    },
+    "scene": "khuzait_village_k"
+  },
+  {
+    "name": "Ispantar",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        692.479,
+        396.231
+      ]
+    },
+    "scene": "khuzait_village_k"
+  },
+  {
+    "name": "Pabastan",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        677.576,
+        439.742
+      ]
+    },
+    "scene": "khuzait_village_a"
+  },
+  {
+    "name": "Odokh",
+    "type": "Town",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        752.864,
+        336.823
+      ]
+    },
+    "scene": "khuzait_town_004"
+  },
+  {
+    "name": "Karahan",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        760.082,
+        309.814
+      ]
+    },
+    "scene": "khuzait_village_l"
+  },
+  {
+    "name": "Nutyuk",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        772.258,
+        313.308
+      ]
+    },
+    "scene": "khuzait_village_j"
+  },
+  {
+    "name": "Danara",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        752.231,
+        354.592
+      ]
+    },
+    "scene": "khuzait_village_a"
+  },
+  {
+    "name": "Kohi Ajik",
+    "type": "Village",
+    "culture": "Khuzait",
+    "position": {
+      "type": "Point",
+      "coordinates": [
+        792.021,
+        367.172
+      ]
+    },
+    "scene": "khuzait_village_k"
+  }
+]

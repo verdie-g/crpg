@@ -11,6 +11,7 @@ namespace Crpg.Domain.Entities.Strategus
         public int Id { get; set; }
         public string Name { get; set; } = default!;
         public StrategusSettlementType Type { get; set; }
+        public Culture Culture { get; set; }
 
         /// <summary>
         /// Position of the settlement on the strategus map.

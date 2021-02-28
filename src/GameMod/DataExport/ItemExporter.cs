@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
 using Crpg.Common.Helpers;
+using Crpg.GameMod.Api.Models;
 using Crpg.GameMod.Api.Models.Items;
 using Crpg.GameMod.Common;
 using Crpg.GameMod.Helpers.Json;
@@ -17,9 +18,9 @@ using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View;
 using Path = System.IO.Path;
 
-namespace Crpg.GameMod.ItemsExporting
+namespace Crpg.GameMod.DataExport
 {
-    internal class ItemExporter
+    internal class ItemExporter : IDataExporter
     {
         private static readonly string[] ItemFiles =
         {
@@ -146,7 +147,7 @@ namespace Crpg.GameMod.ItemsExporting
 
             Directory.CreateDirectory(outputPath);
             SerializeCrpgItems(crpgItems, outputPath);
-            return GenerateItemsThumbnail(mbItems, outputPath);
+            return GenerateItemsThumbnail(mbItems, Path.Combine(outputPath, "Items"));
         }
 
         private static bool FilterItem(ItemObject mbItem) => !mbItem.StringId.Contains("test")

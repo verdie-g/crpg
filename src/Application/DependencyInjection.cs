@@ -36,6 +36,7 @@ namespace Crpg.Application
                 .AddSingleton<IClanService>(clanService)
                 .AddSingleton(constants)
                 .AddSingleton<IItemsSource, FileItemsSource>()
+                .AddSingleton<IStrategusSettlementsSource, FileStrategusSettlementsSource>()
                 .AddValidatorsFromAssemblyContaining(typeof(DependencyInjection));
 
             return services;
