@@ -13,6 +13,12 @@
   set_fact:
     postgresql_version_major: "{{ ansible_facts.packages['postgresql'][0].version.split('-')[0].split('+')[0] }}"
 
+- name: Install geographic objects support for PostgreSQL
+  apt:
+    name:
+    - postgis
+    - "postgresql-{{ postgresql_version_major }}-postgis-3"
+
 - name: Create PostgreSQL configuration file
   template:
     src: postgresql.conf.j2
@@ -43,6 +49,12 @@
   postgresql_user:
     name: "{{ datadog_db_user }}"
     groups: pg_monitor
+
+- name: Enable geographic objects support for cRPG database
+  become_user: postgres
+  postgresql_ext:
+    name: postgis
+    db: "{{ crpg_db }}"
 
 - name: Grant Datadog user SELECT permission on cRPG database
   become_user: postgres
