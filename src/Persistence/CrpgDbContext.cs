@@ -30,6 +30,7 @@ namespace Crpg.Persistence
             NpgsqlConnection.GlobalTypeMapper.MapEnum<WeaponClass>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<ClanMemberRole>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusSettlementType>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<Region>();
         }
 
         public CrpgDbContext(DbContextOptions<CrpgDbContext> options)
@@ -108,6 +109,7 @@ namespace Crpg.Persistence
             modelBuilder.HasPostgresEnum<WeaponClass>();
             modelBuilder.HasPostgresEnum<ClanMemberRole>();
             modelBuilder.HasPostgresEnum<StrategusSettlementType>();
+            modelBuilder.HasPostgresEnum<Region>();
 
             // Ensure that the PostGIS extension is installed.
             modelBuilder.HasPostgresExtension("postgis");
