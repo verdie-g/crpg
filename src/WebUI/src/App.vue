@@ -84,11 +84,11 @@
 
         <div class="level-item">
           <a
-            href="https://forums.taleworlds.com/index.php?groups/crpg.389"
+            href="https://forum.c-rpg.eu"
             target="_blank"
-            title="Forum"
+            title="Join our Forum"
           >
-            <b-icon icon="users" size="is-large" aria-label="cRPG in TaleWorlds forum" />
+            <b-icon icon="discourse" pack="fab" size="is-large" aria-label="cRPG Forum" />
           </a>
         </div>
 
