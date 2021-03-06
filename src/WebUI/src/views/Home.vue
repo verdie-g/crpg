@@ -56,7 +56,8 @@ export default class Home extends Vue {
         ' <a href="https://forums.taleworlds.com/index.php?threads/crpg.432051" target="_blank">Forum thread</a>.' +
         ' As TaleWorlds has not provided the tools to make multiplayer mods yet, only a singleplayer mod is available on' +
         ' <a href="https://www.nexusmods.com/mountandblade2bannerlord/mods/2208?tab=files" target="_blank">Nexus Mods</a>.' +
-        ' Follow the development on the <a href="https://discord.gg/83RJDN9" target="_blank">cRPG Discord</a>',
+        ' Follow the development on the <a href="https://discord.gg/83RJDN9" target="_blank">Discord</a> or' +
+        ' <a href="https://forum.c-rpg.eu" target="_blank">forum</a>.',
     },
     {
       question: 'How to create a new character?',
