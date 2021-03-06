@@ -61,16 +61,6 @@
     <footer class="footer">
       <div class="level">
         <div class="level-item">
-          <a
-            href="https://github.com/verdie-g/crpg"
-            target="_blank"
-            title="Contribute to the project on Github"
-          >
-            <b-icon icon="github" pack="fab" size="is-large" aria-label="cRPG Github" />
-          </a>
-        </div>
-
-        <div class="level-item">
           <a href="https://www.patreon.com/crpg" target="_blank" title="Donate on Patreon">
             <b-icon icon="patreon" pack="fab" size="is-large" aria-label="cRPG Patreon" />
           </a>
