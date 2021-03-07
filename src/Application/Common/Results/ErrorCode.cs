@@ -37,5 +37,6 @@
         UserNotAClanMember,
         UserNotFound,
         UserNotInAClan,
+        UserNotRegisteredToStrategus,
     }
 }

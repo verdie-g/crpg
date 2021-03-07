@@ -39,11 +39,11 @@ namespace Crpg.WebApi.Controllers
         }
 
         protected ActionResult<Result<TData>> ResultToCreatedAtAction<TData>(
-            string actionName, string? controllerName, Func<TData, object> getRouteValues, Result<TData> result)
+            string actionName, string? controllerName, Func<TData, object>? getRouteValues, Result<TData> result)
             where TData : class
         {
             return result.Errors == null || result.Errors.Count == 0
-                ? CreatedAtAction(actionName, controllerName, getRouteValues(result.Data!), result)
+                ? CreatedAtAction(actionName, controllerName, getRouteValues?.Invoke(result.Data!), result)
                 : FirstErrorToAction(result);
         }
 
@@ -60,7 +60,7 @@ namespace Crpg.WebApi.Controllers
         }
 
         protected async Task<ActionResult<Result<TData>>> ResultToCreatedAtActionAsync<TData>(
-            string actionName, string? controllerName, Func<TData, object> getRouteValues, Task<Result<TData>> resultTask)
+            string actionName, string? controllerName, Func<TData, object>? getRouteValues, Task<Result<TData>> resultTask)
             where TData : class
         {
             var result = await resultTask;

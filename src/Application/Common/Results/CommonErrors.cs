@@ -178,5 +178,11 @@ namespace Crpg.Application.Common.Results
             Title = "User is not in a clan",
             Detail = $"User with id '{userId}' is not in a clan",
         };
+
+        public static Error UserNotRegisteredToStrategus(int userId) => new Error(ErrorType.Validation, ErrorCode.UserNotRegisteredToStrategus)
+        {
+            Title = "User has not registered to strategus",
+            Detail = $"User with id '{userId}' has not registered to strategus",
+        };
     }
 }

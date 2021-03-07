@@ -32,7 +32,7 @@ namespace Crpg.Domain.Entities.Strategus
         /// <summary>
         /// Sequence of points the user is moving to.
         /// </summary>
-        public MultiPoint Moves { get; set; } = default!; // TODO: Follow/Attack user?
+        public MultiPoint Moves { get; set; } = MultiPoint.Empty; // TODO: Follow/Attack user?
 
         public User? User { get; set; }
         public List<StrategusSettlement>? OwnedSettlements { get; set; }
