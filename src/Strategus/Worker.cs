@@ -20,12 +20,12 @@ namespace Crpg.Strategus
             while (!cancellationToken.IsCancellationRequested)
             {
                 var stopwatch = ValueStopwatch.StartNew();
-                await Tick(cancellationToken);
+                await Tick(TickInterval, cancellationToken);
                 await SleepUntilNextTick(stopwatch.Elapsed, cancellationToken);
             }
         }
 
-        private static Task Tick(CancellationToken cancellationToken)
+        private static Task Tick(TimeSpan deltaTime, CancellationToken cancellationToken)
         {
             return Task.CompletedTask;
         }
