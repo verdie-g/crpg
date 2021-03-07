@@ -1,17 +1,17 @@
 using Crpg.Application.Common.Interfaces;
+using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace Crpg.Persistence
 {
     public static class DependencyInjection
     {
         public static IServiceCollection AddPersistence(this IServiceCollection services,
-            IConfiguration configuration, IHostEnvironment environment)
+            IConfiguration configuration, IApplicationEnvironment appEnv)
         {
-            if (environment.IsDevelopment())
+            if (appEnv.Environment == HostingEnvironment.Development)
             {
                 services.AddDbContext<CrpgDbContext>(options => options.UseInMemoryDatabase("crpg"));
             }

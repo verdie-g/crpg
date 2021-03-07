@@ -59,9 +59,11 @@ namespace Crpg.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var appEnv = ApplicationEnvironmentProvider.FromEnvironment();
+
             services
-                .AddSdk(_configuration, _environment)
-                .AddPersistence(_configuration, _environment)
+                .AddSdk(_configuration, appEnv)
+                .AddPersistence(_configuration, appEnv)
                 .AddApplication()
                 .AddHttpContextAccessor() // Injects IHttpContextAccessor
                 .AddScoped<ICurrentUserService, CurrentUserService>()

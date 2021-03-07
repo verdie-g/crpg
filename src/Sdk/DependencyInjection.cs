@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Crpg.Sdk.Abstractions;
 using Crpg.Sdk.Abstractions.Events;
@@ -12,16 +11,14 @@ using Crpg.Sdk.Tracing.Debug;
 using DatadogStatsD;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace Crpg.Sdk
 {
     public static class DependencyInjection
     {
         public static IServiceCollection AddSdk(this IServiceCollection services,
-            IConfiguration configuration, IHostEnvironment environment)
+            IConfiguration configuration, IApplicationEnvironment appEnv)
         {
-            var appEnv = CreateApplicationEnvironment(environment);
             return services
                 .AddDatadog(appEnv)
                 .AddSingleton(appEnv)
@@ -51,14 +48,6 @@ namespace Crpg.Sdk
             }
 
             return services;
-        }
-
-        private static IApplicationEnvironment CreateApplicationEnvironment(IHostEnvironment environment)
-        {
-            var env = environment.IsProduction() ? HostingEnvironment.Production : HostingEnvironment.Development;
-            string serviceName = Environment.GetEnvironmentVariable("CRPG_SERVICE") ?? "test";
-            string instance = Environment.GetEnvironmentVariable("CRPG_INSTANCE") ?? string.Empty;
-            return new ApplicationEnvironment(env, serviceName, instance, Environment.MachineName);
         }
 
         private static KeyValuePair<string, string>[] BuildTagsFromEnv(IApplicationEnvironment appEnv)
