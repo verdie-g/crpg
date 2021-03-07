@@ -33,6 +33,7 @@
         StatisticDecreased,
         UserAlreadyInAClan,
         UserAlreadyInTheClan,
+        UserAlreadyRegisteredToStrategus,
         UserNotAClanMember,
         UserNotFound,
         UserNotInAClan,

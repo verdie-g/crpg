@@ -155,6 +155,12 @@ namespace Crpg.Application.Common.Results
             Detail = $"User with id '{userId}' is already in the clan with id '{clanId}'",
         };
 
+        public static Error UserAlreadyRegisteredToStrategus(int userId) => new Error(ErrorType.Validation, ErrorCode.UserAlreadyRegisteredToStrategus)
+        {
+            Title = "User has already registered to strategus",
+            Detail = $"User with id '{userId}' has already registered to strategus",
+        };
+
         public static Error UserNotAClanMember(int userId, int clanId) => new Error(ErrorType.Forbidden, ErrorCode.UserNotAClanMember)
         {
             Title = "User is not a member of the clan",
