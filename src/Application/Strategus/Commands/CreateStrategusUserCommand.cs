@@ -67,7 +67,10 @@ namespace Crpg.Application.Strategus.Commands
                     Silver = 0,
                     Troops = 0,
                     Position = StartPositionFromRegion(req.Region),
-                    Moves = new MultiPoint(Array.Empty<Point>()),
+                    Status = StrategusUserStatus.Idle,
+                    Moves = MultiPoint.Empty,
+                    TargetedUserId = null,
+                    TargetedSettlementId = null,
                 };
 
                 await _db.SaveChangesAsync(cancellationToken);
