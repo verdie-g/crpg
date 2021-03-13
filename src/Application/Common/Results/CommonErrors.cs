@@ -133,6 +133,12 @@ namespace Crpg.Application.Common.Results
             Detail = $"{requiredPoints} weapon proficiency points are required but only {actualPoints} are available",
         };
 
+        public static Error SettlementNotFound(int settlementId) => new Error(ErrorType.NotFound, ErrorCode.SettlementNotFound)
+        {
+            Title = "Settlement was not found",
+            Detail = $"Settlement with id '{settlementId}' was not found",
+        };
+
         public static Error SkillRequirementNotMet() => new Error(ErrorType.Validation, ErrorCode.SkillRequirementNotMet)
         {
             Title = "Unmet skill requirement",
@@ -153,6 +159,12 @@ namespace Crpg.Application.Common.Results
         {
             Title = "User is already in the clan",
             Detail = $"User with id '{userId}' is already in the clan with id '{clanId}'",
+        };
+
+        public static Error UserInBattle(int userId) => new Error(ErrorType.Validation, ErrorCode.UserInBattle)
+        {
+            Title = "User is in a battle",
+            Detail = $"Cannot performed the requested action while user with id '{userId}' is in a battle",
         };
 
         public static Error UserAlreadyRegisteredToStrategus(int userId) => new Error(ErrorType.Validation, ErrorCode.UserAlreadyRegisteredToStrategus)

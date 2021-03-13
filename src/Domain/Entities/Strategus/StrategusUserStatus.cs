@@ -40,6 +40,6 @@
         /// <summary>
         /// Stationary because involved in a <see cref="StrategusBattle"/>.
         /// </summary>
-        Fighting,
+        InBattle,
     }
 }
