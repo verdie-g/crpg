@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Common;
+using Crpg.Sdk.Abstractions.Tracing;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -10,12 +11,20 @@ namespace Crpg.Strategus
 {
     public class Worker : BackgroundService
     {
+        private const string TracerOperationName = "strategus.tick";
         private static readonly ILogger Logger = LoggerFactory.CreateLogger<Worker>();
         private static readonly TimeSpan TickInterval = TimeSpan.FromMinutes(1);
 
+        private readonly ITracer _tracer;
+
+        public Worker(ITracer tracer)
+        {
+            _tracer = tracer;
+        }
+
         protected override Task ExecuteAsync(CancellationToken cancellationToken) => GameLoop(cancellationToken);
 
-        private static async Task GameLoop(CancellationToken cancellationToken)
+        private async Task GameLoop(CancellationToken cancellationToken)
         {
             TimeSpan deltaTime = TickInterval;
             while (!cancellationToken.IsCancellationRequested)
@@ -29,8 +38,9 @@ namespace Crpg.Strategus
             }
         }
 
-        private static Task Tick(TimeSpan deltaTime, CancellationToken cancellationToken)
+        private Task Tick(TimeSpan deltaTime, CancellationToken cancellationToken)
         {
+            using var span = _tracer.CreateSpan(TracerOperationName);
             return Task.CompletedTask;
         }
 
