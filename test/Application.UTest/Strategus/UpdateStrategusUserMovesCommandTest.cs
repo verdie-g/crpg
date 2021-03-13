@@ -13,16 +13,16 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Strategus
 {
-    public class UpdateStrategusUserMovesCommandTest : TestBase
+    public class UpdateStrategusUserMovementCommandTest : TestBase
     {
         [Test]
         public async Task ShouldReturnErrorIfNotFound()
         {
-            var handler = new UpdateStrategusUserMovesCommand.Handler(ActDb, Mapper);
-            var res = await handler.Handle(new UpdateStrategusUserMovesCommand
+            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper);
+            var res = await handler.Handle(new UpdateStrategusUserMovementCommand
             {
                 UserId = 1,
-                Moves = MultiPoint.Empty,
+                Waypoints = MultiPoint.Empty,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -36,11 +36,11 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateStrategusUserMovesCommand.Handler(ActDb, Mapper);
-            var res = await handler.Handle(new UpdateStrategusUserMovesCommand
+            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper);
+            var res = await handler.Handle(new UpdateStrategusUserMovementCommand
             {
                 UserId = user.Id,
-                Moves = MultiPoint.Empty,
+                Waypoints = MultiPoint.Empty,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -48,23 +48,23 @@ namespace Crpg.Application.UTest.Strategus
         }
 
         [Test]
-        public async Task ShouldUpdateStrategusUserMoves()
+        public async Task ShouldUpdateStrategusUserMovement()
         {
             var user = new User
             {
                 StrategusUser = new StrategusUser
                 {
-                    Moves = new MultiPoint(new[] { new Point(3, 4) })
+                    Waypoints = new MultiPoint(new[] { new Point(3, 4) })
                 }
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateStrategusUserMovesCommand.Handler(ActDb, Mapper);
-            var res = await handler.Handle(new UpdateStrategusUserMovesCommand
+            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper);
+            var res = await handler.Handle(new UpdateStrategusUserMovementCommand
             {
                 UserId = user.Id,
-                Moves = new MultiPoint(new[]
+                Waypoints = new MultiPoint(new[]
                 {
                     new Point(4, 5),
                     new Point(6, 7),
@@ -74,9 +74,9 @@ namespace Crpg.Application.UTest.Strategus
             var strategusUser = res.Data!;
             Assert.IsNotNull(strategusUser);
             Assert.AreEqual(user.Id, strategusUser.Id);
-            Assert.AreEqual(2, strategusUser.Moves.Count);
-            Assert.AreEqual(new Point(4, 5), strategusUser.Moves[0]);
-            Assert.AreEqual(new Point(6, 7), strategusUser.Moves[1]);
+            Assert.AreEqual(2, strategusUser.Waypoints.Count);
+            Assert.AreEqual(new Point(4, 5), strategusUser.Waypoints[0]);
+            Assert.AreEqual(new Point(6, 7), strategusUser.Waypoints[1]);
         }
     }
 }

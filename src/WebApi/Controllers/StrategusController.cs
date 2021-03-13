@@ -48,7 +48,7 @@ namespace Crpg.WebApi.Controllers
         /// <returns>The updated strategus user.</returns>
         /// <response code="200">Updated.</response>
         [HttpPut("users/self/moves")]
-        public Task<ActionResult<Result<StrategusUserViewModel>>> UpdateStrategusUserMoves([FromBody] UpdateStrategusUserMovesCommand req)
+        public Task<ActionResult<Result<StrategusUserViewModel>>> UpdateStrategusUserMovement([FromBody] UpdateStrategusUserMovementCommand req)
         {
             req.UserId = CurrentUser.UserId;
             return ResultToActionAsync(Mediator.Send(req));

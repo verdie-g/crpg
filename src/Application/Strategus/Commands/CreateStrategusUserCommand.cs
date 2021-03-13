@@ -68,7 +68,7 @@ namespace Crpg.Application.Strategus.Commands
                     Troops = 0,
                     Position = StartPositionFromRegion(req.Region),
                     Status = StrategusUserStatus.Idle,
-                    Moves = MultiPoint.Empty,
+                    Waypoints = MultiPoint.Empty,
                     TargetedUserId = null,
                     TargetedSettlementId = null,
                 };

@@ -30,7 +30,7 @@ namespace Crpg.Domain.Entities.Strategus
         public Point Position { get; set; } = default!;
 
         /// <summary>
-        /// Status of the user. This property is used to interpret <see cref="Moves"/>, <see cref="TargetedUser"/> and
+        /// Status of the user. This property is used to interpret <see cref="Waypoints"/>, <see cref="TargetedUser"/> and
         /// <see cref="TargetedSettlement"/>.
         /// </summary>
         public StrategusUserStatus Status { get; set; }
@@ -38,7 +38,7 @@ namespace Crpg.Domain.Entities.Strategus
         /// <summary>
         /// Sequence of points the user is moving to if <see cref="Status"/> == <see cref="StrategusUserStatus.MovingToPoint"/>.
         /// </summary>
-        public MultiPoint Moves { get; set; } = MultiPoint.Empty;
+        public MultiPoint Waypoints { get; set; } = MultiPoint.Empty;
 
         /// <summary>
         /// The id of the user to follow if <see cref="Status"/> == <see cref="StrategusUserStatus.FollowingUser"/>.

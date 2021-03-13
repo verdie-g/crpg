@@ -19,7 +19,7 @@ namespace Crpg.Application.Strategus.Models
         public int Troops { get; set; }
         public Point Position { get; set; } = default!;
         public StrategusUserStatus Status { get; set; }
-        public MultiPoint Moves { get; set; } = MultiPoint.Empty;
+        public MultiPoint Waypoints { get; set; } = MultiPoint.Empty;
         public StrategusUserPublicViewModel? TargetedUser { get; set; }
         public StrategusSettlementViewModel? TargetedSettlement { get; set; }
         public ClanPublicViewModel? Clan { get; set; }

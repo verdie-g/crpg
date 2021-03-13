@@ -78,7 +78,7 @@ namespace Crpg.Application.UTest.Strategus
             Assert.AreEqual(0, strategusUser.Troops);
             Assert.AreEqual(new Point(150.0, 50.0), strategusUser.Position);
             Assert.AreEqual(StrategusUserStatus.Idle, strategusUser.Status);
-            Assert.AreEqual(0, strategusUser.Moves.Count);
+            Assert.AreEqual(0, strategusUser.Waypoints.Count);
             Assert.IsNull(strategusUser.TargetedUser);
             Assert.IsNull(strategusUser.TargetedSettlement);
         }
