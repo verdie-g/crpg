@@ -17,11 +17,15 @@ namespace Crpg.Strategus
 
         private static async Task GameLoop(CancellationToken cancellationToken)
         {
+            TimeSpan deltaTime = TickInterval;
             while (!cancellationToken.IsCancellationRequested)
             {
                 var stopwatch = ValueStopwatch.StartNew();
-                await Tick(TickInterval, cancellationToken);
+                // There is no guarantee that Task.Delay delays the exact given time in SleepUntilNextTick so a delta
+                // time is computed to get the real delay and it is passed to Tick instead of passing TickInterval.
+                await Tick(deltaTime, cancellationToken);
                 await SleepUntilNextTick(stopwatch.Elapsed, cancellationToken);
+                deltaTime = stopwatch.Elapsed;
             }
         }
 
