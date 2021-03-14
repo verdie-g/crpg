@@ -9,6 +9,7 @@
         <template slot="start">
           <b-navbar-item tag="router-link" :to="{ path: '/characters' }">Characters</b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ path: '/shop' }">Shop</b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ path: '/strategus' }">Strategus</b-navbar-item>
         </template>
 
         <template slot="end">
@@ -73,11 +74,7 @@
         </div>
 
         <div class="level-item">
-          <a
-            href="https://forum.c-rpg.eu"
-            target="_blank"
-            title="Join our Forum"
-          >
+          <a href="https://forum.c-rpg.eu" target="_blank" title="Join our Forum">
             <b-icon icon="discourse" pack="fab" size="is-large" aria-label="cRPG Forum" />
           </a>
         </div>
