@@ -39,5 +39,6 @@ namespace Crpg.GameMod.Common
         public double StrategusMapWidth { get; set; }
         public double StrategusMapHeight { get; set; }
         public double StrategusInteractionDistance { get; set; }
+        public double StrategusEquivalentDistance { get; set; }
     }
 }

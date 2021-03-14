@@ -66,8 +66,11 @@ namespace Crpg.Application.Strategus.Commands
 
                 if (req.Status == StrategusUserStatus.MovingToPoint)
                 {
-                    strategusUser.Status = req.Status;
-                    strategusUser.Waypoints = req.Waypoints;
+                    if (!req.Waypoints.IsEmpty)
+                    {
+                        strategusUser.Status = req.Status;
+                        strategusUser.Waypoints = req.Waypoints;
+                    }
                 }
                 else if (req.Status == StrategusUserStatus.FollowingUser
                          || req.Status == StrategusUserStatus.MovingToAttackUser)

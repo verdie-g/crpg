@@ -32,5 +32,7 @@
   "defaultGold": 300,
   "defaultHeirloomPoints": 0,
   "strategusMapWidth": 1000,
-  "strategusMapHeight": 1000
+  "strategusMapHeight": 1000,
+  "strategusInteractionDistance": 10,
+  "strategusEquivalentDistance": 1, /* Distance at which two points are considered equivalent */
 }

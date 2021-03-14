@@ -1,5 +1,4 @@
 ﻿using System;
-using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Application.Common
@@ -40,5 +39,6 @@ namespace Crpg.Application.Common
         public double StrategusMapWidth { get; set; }
         public double StrategusMapHeight { get; set; }
         public double StrategusInteractionDistance { get; set; }
+        public double StrategusEquivalentDistance { get; set; }
     }
 }
