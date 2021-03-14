@@ -52,7 +52,6 @@ namespace Crpg.Application.UTest.Strategus
             Assert.AreEqual("u", settlementViews[0].Owner!.Name);
             Assert.AreEqual("c", settlementViews[0].Owner!.Clan!.Name);
 
-
             Assert.AreEqual("def", settlementViews[1].Name);
             Assert.IsNull(settlementViews[1].Owner);
         }

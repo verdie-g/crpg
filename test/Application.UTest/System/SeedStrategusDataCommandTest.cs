@@ -17,8 +17,8 @@ namespace Crpg.Application.UTest.System
 {
     public class SeedStrategusDataCommandTest : TestBase
     {
-        private static Constants Constants = new Constants { StrategusMapWidth = 100 };
-        private static Region[] Regions = Enum.GetValues(typeof(Region)).Cast<Region>().ToArray();
+        private static readonly Constants Constants = new Constants { StrategusMapWidth = 100 };
+        private static readonly Region[] Regions = Enum.GetValues(typeof(Region)).Cast<Region>().ToArray();
 
         [Test]
         public async Task ShouldAddSettlementIfDoesntExistsInDb()
