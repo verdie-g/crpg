@@ -97,7 +97,7 @@ const routes = [
     path: '/strategus',
     name: 'strategus',
     component: () => import('../views/Strategus.vue'),
-    beforeEnter: isSignedInGuard
+    beforeEnter: isSignedInGuard,
   },
   {
     path: '/settings',

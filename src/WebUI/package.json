@@ -39,7 +39,7 @@
     "eslint-plugin-vue": "^7.5.0",
     "json5-loader": "^4.0.1",
     "lint-staged": "^10.2.6",
-    "prettier": "2.2.1",
+    "prettier": "^2.2.1",
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3",
