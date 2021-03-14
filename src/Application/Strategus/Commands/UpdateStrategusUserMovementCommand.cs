@@ -70,7 +70,7 @@ namespace Crpg.Application.Strategus.Commands
                     strategusUser.Waypoints = req.Waypoints;
                 }
                 else if (req.Status == StrategusUserStatus.FollowingUser
-                         || req.Status == StrategusUserStatus.AttackingUser)
+                         || req.Status == StrategusUserStatus.MovingToAttackUser)
                 {
                     var targetUser = await _db.Users
                         .Include(u => u.StrategusUser)
@@ -84,7 +84,7 @@ namespace Crpg.Application.Strategus.Commands
                     strategusUser.TargetedUser = targetUser.StrategusUser;
                 }
                 else if (req.Status == StrategusUserStatus.MovingToSettlement
-                         || req.Status == StrategusUserStatus.AttackingSettlement)
+                         || req.Status == StrategusUserStatus.MovingToAttackSettlement)
                 {
                     var targetSettlement = await _db.StrategusSettlements
                         .Include(s => s.Owner!.User)

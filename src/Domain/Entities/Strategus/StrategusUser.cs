@@ -42,14 +42,14 @@ namespace Crpg.Domain.Entities.Strategus
 
         /// <summary>
         /// The id of the user to follow if <see cref="Status"/> == <see cref="StrategusUserStatus.FollowingUser"/>.
-        /// The id of the user to attack if <see cref="Status"/> == <see cref="StrategusUserStatus.AttackingUser"/>.
+        /// The id of the user to attack if <see cref="Status"/> == <see cref="StrategusUserStatus.MovingToAttackUser"/>.
         /// </summary>
         public int? TargetedUserId { get; set; }
 
         /// <summary>
         /// The id of the settlement the user is staying in if <see cref="Status"/> == <see cref="StrategusUserStatus.IdleInSettlement"/>.
         /// The id of the settlement the user is moving to if <see cref="Status"/> == <see cref="StrategusUserStatus.MovingToSettlement"/>.
-        /// The id of the settlement to attack if <see cref="Status"/> == <see cref="StrategusUserStatus.AttackingSettlement"/>.
+        /// The id of the settlement to attack if <see cref="Status"/> == <see cref="StrategusUserStatus.MovingToAttackSettlement"/>.
         /// </summary>
         public int? TargetedSettlementId { get; set; }
 

@@ -30,12 +30,12 @@
         /// <summary>
         /// Moving to attack a <see cref="StrategusUser"/>.
         /// </summary>
-        AttackingUser,
+        MovingToAttackUser,
 
         /// <summary>
         /// Moving to attack a <see cref="StrategusSettlement"/>.
         /// </summary>
-        AttackingSettlement,
+        MovingToAttackSettlement,
 
         /// <summary>
         /// Stationary because involved in a <see cref="StrategusBattle"/>.

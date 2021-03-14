@@ -140,14 +140,14 @@ namespace Crpg.Application.UTest.Strategus
         }
 
         [TestCase(StrategusUserStatus.FollowingUser)]
-        [TestCase(StrategusUserStatus.AttackingUser)]
+        [TestCase(StrategusUserStatus.MovingToAttackUser)]
         public async Task ShouldReturnErrorIfTargetingNotExistingUser(StrategusUserStatus status)
         {
             var user = new User
             {
                 StrategusUser = new StrategusUser
                 {
-                    Status = StrategusUserStatus.AttackingSettlement,
+                    Status = StrategusUserStatus.MovingToAttackSettlement,
                     TargetedSettlement = new StrategusSettlement(),
                 }
             };
@@ -167,7 +167,7 @@ namespace Crpg.Application.UTest.Strategus
         }
 
         [TestCase(StrategusUserStatus.FollowingUser)]
-        [TestCase(StrategusUserStatus.AttackingUser)]
+        [TestCase(StrategusUserStatus.MovingToAttackUser)]
         public async Task ShouldUpdateStrategusUserMovementIfTargetingUser(StrategusUserStatus status)
         {
             var user = new User
@@ -199,7 +199,7 @@ namespace Crpg.Application.UTest.Strategus
         }
 
         [TestCase(StrategusUserStatus.MovingToSettlement)]
-        [TestCase(StrategusUserStatus.AttackingSettlement)]
+        [TestCase(StrategusUserStatus.MovingToAttackSettlement)]
         public async Task ShouldReturnErrorIfTargetingNotExistingSettlement(StrategusUserStatus status)
         {
             var user = new User
@@ -226,14 +226,14 @@ namespace Crpg.Application.UTest.Strategus
         }
 
         [TestCase(StrategusUserStatus.MovingToSettlement)]
-        [TestCase(StrategusUserStatus.AttackingSettlement)]
+        [TestCase(StrategusUserStatus.MovingToAttackSettlement)]
         public async Task ShouldUpdateStrategusUserMovementIfTargetingSettlement(StrategusUserStatus status)
         {
             var user = new User
             {
                 StrategusUser = new StrategusUser
                 {
-                    Status = StrategusUserStatus.AttackingUser,
+                    Status = StrategusUserStatus.MovingToAttackUser,
                     TargetedUser = new StrategusUser { User = new User() },
                 }
             };
