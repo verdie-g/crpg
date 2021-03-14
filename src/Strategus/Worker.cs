@@ -1,8 +1,11 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common.Mediator;
+using Crpg.Application.Strategus.Commands;
 using Crpg.Common;
 using Crpg.Sdk.Abstractions.Tracing;
+using MediatR;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -15,10 +18,17 @@ namespace Crpg.Strategus
         private static readonly ILogger Logger = LoggerFactory.CreateLogger<Worker>();
         private static readonly TimeSpan TickInterval = TimeSpan.FromMinutes(1);
 
+        private static readonly Func<TimeSpan, IMediatorRequest>[] Behaviors =
+        {
+            dt => new UpdateStrategusUserPositionsCommand { DeltaTime = dt },
+        };
+
+        private readonly IMediator _mediator;
         private readonly ITracer _tracer;
 
-        public Worker(ITracer tracer)
+        public Worker(IMediator mediator, ITracer tracer)
         {
+            _mediator = mediator;
             _tracer = tracer;
         }
 
@@ -38,10 +48,13 @@ namespace Crpg.Strategus
             }
         }
 
-        private Task Tick(TimeSpan deltaTime, CancellationToken cancellationToken)
+        private async Task Tick(TimeSpan deltaTime, CancellationToken cancellationToken)
         {
             using var span = _tracer.CreateSpan(TracerOperationName);
-            return Task.CompletedTask;
+            foreach (var behavior in Behaviors)
+            {
+                await _mediator.Send(behavior(deltaTime), cancellationToken);
+            }
         }
 
         private static Task SleepUntilNextTick(TimeSpan elapsed, CancellationToken cancellationToken)
