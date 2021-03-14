@@ -1,12 +1,10 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Crpg.Application.Characters.Commands;
-using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Strategus.Models;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Strategus;
@@ -37,13 +35,13 @@ namespace Crpg.Application.Strategus.Commands
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
-            private readonly Constants _constants;
+            private readonly IStrategusMap _strategusMap;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, Constants constants)
+            public Handler(ICrpgDbContext db, IMapper mapper, IStrategusMap strategusMap)
             {
                 _db = db;
                 _mapper = mapper;
-                _constants = constants;
+                _strategusMap = strategusMap;
             }
 
             public async Task<Result<StrategusUserViewModel>> Handle(CreateStrategusUserCommand req, CancellationToken cancellationToken)
@@ -66,7 +64,7 @@ namespace Crpg.Application.Strategus.Commands
                     Region = req.Region,
                     Silver = 0,
                     Troops = 0,
-                    Position = StartPositionFromRegion(req.Region),
+                    Position = _strategusMap.GetSpawnPosition(req.Region),
                     Status = StrategusUserStatus.Idle,
                     Waypoints = MultiPoint.Empty,
                     TargetedUserId = null,
@@ -76,17 +74,6 @@ namespace Crpg.Application.Strategus.Commands
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("User '{0}' registered to Strategus", req.UserId);
                 return new Result<StrategusUserViewModel>(_mapper.Map<StrategusUserViewModel>(user.StrategusUser));
-            }
-
-            private Point StartPositionFromRegion(Region region)
-            {
-                return region switch
-                {
-                    Region.Europe => new Point(_constants.StrategusMapWidth / 2.0, _constants.StrategusMapHeight / 2.0),
-                    Region.NorthAmerica => new Point(_constants.StrategusMapWidth + _constants.StrategusMapWidth / 2.0, _constants.StrategusMapHeight / 2.0),
-                    Region.Asia => new Point(2 * _constants.StrategusMapWidth + _constants.StrategusMapWidth / 2.0, _constants.StrategusMapHeight / 2.0),
-                    _ => throw new ArgumentOutOfRangeException(nameof(region), region, null),
-                };
             }
         }
     }

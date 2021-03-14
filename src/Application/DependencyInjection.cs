@@ -1,6 +1,4 @@
 using System.Reflection;
-using AutoMapper;
-using Crpg.Application.Common;
 using Crpg.Application.Common.Behaviors;
 using Crpg.Application.Common.Files;
 using Crpg.Application.Common.Interfaces;
@@ -22,6 +20,7 @@ namespace Crpg.Application
             var characterService = new CharacterService(experienceTable, constants);
             var userService = new UserService(constants);
             var clanService = new ClanService();
+            var strategusMap = new StrategusMap(constants);
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly())
                 .AddMediatR(Assembly.GetExecutingAssembly())
@@ -34,6 +33,7 @@ namespace Crpg.Application
                 .AddSingleton<ICharacterService>(characterService)
                 .AddSingleton<IUserService>(userService)
                 .AddSingleton<IClanService>(clanService)
+                .AddSingleton<IStrategusMap>(strategusMap)
                 .AddSingleton(constants)
                 .AddSingleton<IItemsSource, FileItemsSource>()
                 .AddSingleton<IStrategusSettlementsSource, FileStrategusSettlementsSource>()

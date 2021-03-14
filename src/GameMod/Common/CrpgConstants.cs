@@ -36,7 +36,8 @@ namespace Crpg.GameMod.Common
         public string DefaultRole { get; set; } = string.Empty;
         public int DefaultGold { get; set; }
         public int DefaultHeirloomPoints { get; set; }
-        public int StrategusMapWidth { get; set; }
-        public int StrategusMapHeight { get; set; }
+        public double StrategusMapWidth { get; set; }
+        public double StrategusMapHeight { get; set; }
+        public double StrategusInteractionDistance { get; set; }
     }
 }

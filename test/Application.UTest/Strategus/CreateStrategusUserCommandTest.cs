@@ -2,12 +2,14 @@
 using System.Threading.Tasks;
 using Crpg.Application.Common;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Strategus.Commands;
 using Crpg.Application.Strategus.Queries;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Strategus;
 using Crpg.Domain.Entities.Users;
+using Moq;
 using NetTopologySuite.Geometries;
 using NUnit.Framework;
 
@@ -15,16 +17,10 @@ namespace Crpg.Application.UTest.Strategus
 {
     public class CreateStrategusUserCommandTest : TestBase
     {
-        private static readonly Constants Constants = new Constants
-        {
-            StrategusMapHeight = 100,
-            StrategusMapWidth = 100,
-        };
-
         [Test]
         public async Task ShouldReturnErrorIfNotFound()
         {
-            var handler = new CreateStrategusUserCommand.Handler(ActDb, Mapper, Constants);
+            var handler = new CreateStrategusUserCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new CreateStrategusUserCommand
             {
                 UserId = 1,
@@ -45,7 +41,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new CreateStrategusUserCommand.Handler(ActDb, Mapper, Constants);
+            var handler = new CreateStrategusUserCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new CreateStrategusUserCommand
             {
                 UserId = user.Id,
@@ -63,7 +59,9 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new CreateStrategusUserCommand.Handler(ActDb, Mapper, Constants);
+            var strategusMapMock = new Mock<IStrategusMap>();
+            strategusMapMock.Setup(sm => sm.GetSpawnPosition(Region.NorthAmerica)).Returns(new Point(150, 50));
+            var handler = new CreateStrategusUserCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new CreateStrategusUserCommand
             {
                 UserId = user.Id,
