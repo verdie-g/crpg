@@ -7,8 +7,6 @@
       :options="mapOptions"
       :max-bounds="maxBounds"
       @click="infoPos"
-      :maxBoundsViscosity="1"
-      :padding="['100px', '100px', '100px', '100px']"
     >
       <l-tile-layer :url="url" :attribution="attribution" />
     </l-map>
