@@ -9,6 +9,11 @@
       @click="infoPos"
     >
       <l-tile-layer :url="url" :attribution="attribution" />
+      <l-marker
+        v-for="settlement in settlements"
+        :lat-lng="[settlement.position.coordinates[0], settlement.position.coordinates[1]]"
+        :key="settlement.id"
+      ></l-marker>
     </l-map>
   </div>
 </template>
@@ -17,6 +22,8 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { latLng, latLngBounds, CRS } from 'leaflet';
 import { LMap, LTileLayer, LMarker, LPopup, LTooltip, LIcon } from 'vue2-leaflet';
+import strategusModule from '@/store/strategus-module';
+import Settlement from '@/models/settlement';
 
 @Component({
   components: { LMap, LTileLayer, LMarker, LPopup, LTooltip, LIcon },
@@ -28,7 +35,7 @@ export default class Strategus extends Vue {
   attribution = 'TaleWorlds Entertainment';
   mapOptions = {
     zoomSnap: 0.5,
-    minZoom: 3,
+    minZoom: 2.5,
     maxZoom: 8,
     crs: CRS.Simple,
   };
@@ -37,6 +44,14 @@ export default class Strategus extends Vue {
     [-215.4, 250.8],
   ]);
   infoPOS = null;
+
+  get settlements(): Settlement[] {
+    return strategusModule.settlements;
+  }
+
+  created() {
+    strategusModule.getSettlements();
+  }
 
   infoPos(event: any) {
     console.log(event.latlng);
