@@ -6,8 +6,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        493.56,
-        403.18
+        150.059375,
+        -123.821875
       ]
     },
     "scene": "empire_siege_001"
@@ -19,8 +19,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        498.164,
-        377.53
+        151.41875,
+        -131.30625
       ]
     },
     "scene": "empire_village_003"
@@ -32,8 +32,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        601.88,
-        503.195
+        184.715625,
+        -93.4625
       ]
     },
     "scene": "empire_castle_004"
@@ -45,8 +45,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        622.796,
-        515.75
+        191.1375,
+        -89.65
       ]
     },
     "scene": "empire_village_c"
@@ -58,8 +58,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        445.834,
-        439.847
+        134.996875,
+        -112.49375
       ]
     },
     "scene": "empire_castle_004"
@@ -71,8 +71,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        463.498,
-        432.922
+        140.653125,
+        -114.61875
       ]
     },
     "scene": "empire_village_j"
@@ -84,8 +84,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        560.547,
-        405.221
+        171.79375,
+        -122.946875
       ]
     },
     "scene": "empire_siege_001"
@@ -97,8 +97,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        575.501,
-        384.151
+        176.2625,
+        -129.415625
       ]
     },
     "scene": "empire_village_002"
@@ -110,8 +110,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        526.21,
-        464.23
+        160.325,
+        -105.509375
       ]
     },
     "scene": "empire_castle_004"
@@ -123,8 +123,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        539.847,
-        445.969
+        164.6375,
+        -110.759375
       ]
     },
     "scene": "empire_village_008"
@@ -136,8 +136,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        428.712,
-        406.186
+        129.41875,
+        -122.775
       ]
     },
     "scene": "empire_castle_004"
@@ -149,8 +149,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        449.761,
-        395.081
+        136.0125,
+        -126.05625
       ]
     },
     "scene": "empire_village_f"
@@ -162,8 +162,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        652.684,
-        512.049
+        200.278125,
+        -90.7125
       ]
     },
     "scene": "empire_castle_004"
@@ -175,8 +175,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        663.217,
-        496.621
+        203.7,
+        -95.384375
       ]
     },
     "scene": "empire_village_c"
@@ -188,8 +188,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        644.343,
-        511.862
+        197.934375,
+        -90.821875
       ]
     },
     "scene": "empire_village_007"
@@ -201,8 +201,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        663.562,
-        477.951
+        203.6375,
+        -101.3375
       ]
     },
     "scene": "empire_siege_001"
@@ -214,8 +214,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        653.055,
-        472.717
+        200.575,
+        -102.525
       ]
     },
     "scene": "empire_village_004"
@@ -227,8 +227,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        647.501,
-        463.876
+        198.903125,
+        -105.18125
       ]
     },
     "scene": "empire_village_004"
@@ -240,8 +240,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        424.494,
-        481.205
+        127.587485,
+        -100.435244140625
       ]
     },
     "scene": "empire_castle_004"
@@ -253,8 +253,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        417.965,
-        471.167
+        125.6375,
+        -103.259375
       ]
     },
     "scene": "empire_village_x"
@@ -266,8 +266,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        415.34,
-        493.736
+        124.95,
+        -96.4703125
       ]
     },
     "scene": "empire_village_p"
@@ -279,8 +279,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        407.645,
-        474.297
+        122.575,
+        -102.30625
       ]
     },
     "scene": "empire_town_j_siege"
@@ -292,8 +292,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        385.025,
-        461.536
+        115.15474999999999,
+        -106.2360625
       ]
     },
     "scene": "empire_village_e"
@@ -305,8 +305,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        407.717,
-        451.722
+        122.496875,
+        -108.915625
       ]
     },
     "scene": "empire_village_b"
@@ -318,8 +318,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        429.111,
-        460.234
+        128.98125,
+        -106.43125
       ]
     },
     "scene": "empire_village_e"
@@ -331,8 +331,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        430.568,
-        440.203
+        129.903125,
+        -112.30625
       ]
     },
     "scene": "empire_village_b"
@@ -344,8 +344,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        465.971,
-        475.17
+        141.8875,
+        -102.134375
       ]
     },
     "scene": "empire_town_h"
@@ -357,8 +357,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        453.148,
-        473.214
+        138.04375,
+        -102.86875
       ]
     },
     "scene": "empire_village_x"
@@ -370,8 +370,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        489.935,
-        459.728
+        148.91875,
+        -106.478125
       ]
     },
     "scene": "empire_village_b"
@@ -383,8 +383,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        517.449,
-        451.464
+        157.590625,
+        -109.009375
       ]
     },
     "scene": "empire_village_003"
@@ -396,8 +396,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        513.339,
-        419.099
+        156.41875,
+        -118.93125
       ]
     },
     "scene": "empire_town_j_siege"
@@ -409,8 +409,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        520.814,
-        398.755
+        158.54375,
+        -124.74375
       ]
     },
     "scene": "empire_village_003"
@@ -422,8 +422,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        503.741,
-        407.223
+        153.23125,
+        -122.415625
       ]
     },
     "scene": "empire_village_003"
@@ -435,8 +435,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        485.823,
-        420.131
+        147.590625,
+        -118.478125
       ]
     },
     "scene": "empire_village_004"
@@ -448,8 +448,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        534.622,
-        495.804
+        163.528125,
+        -95.696875
       ]
     },
     "scene": "empire_town_h"
@@ -461,8 +461,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        434.334,
-        421.463
+        131.278125,
+        -118.103125
       ]
     },
     "scene": "empire_village_008"
@@ -474,8 +474,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        523.468,
-        506.288
+        159.6375,
+        -92.634375
       ]
     },
     "scene": "empire_village_x"
@@ -487,8 +487,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        573.953,
-        503.563
+        175.871875,
+        -93.2671875
       ]
     },
     "scene": "empire_village_x"
@@ -500,8 +500,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        561.817,
-        487.846
+        171.85625,
+        -97.759375
       ]
     },
     "scene": "empire_village_f"
@@ -513,8 +513,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        604.173,
-        426.101
+        185.41875,
+        -116.728125
       ]
     },
     "scene": "empire_town_j_siege"
@@ -526,8 +526,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        574.82,
-        453.289
+        176.0515625,
+        -108.4546875
       ]
     },
     "scene": "empire_village_g"
@@ -539,8 +539,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        570.369,
-        420.634
+        174.79375,
+        -118.4
       ]
     },
     "scene": "empire_village_004"
@@ -552,8 +552,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        581.338,
-        405.011
+        178.16875,
+        -123.009375
       ]
     },
     "scene": "empire_village_002"
@@ -565,8 +565,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        621.611,
-        432.645
+        191.075,
+        -114.775
       ]
     },
     "scene": "empire_village_g"
@@ -578,8 +578,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        620.342,
-        483.919
+        189.98125,
+        -99.05625
       ]
     },
     "scene": "empire_town_j_siege"
@@ -591,8 +591,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        647.195,
-        488.268
+        198.7625,
+        -97.99375
       ]
     },
     "scene": "empire_village_004"
@@ -604,8 +604,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        632.44,
-        498.726
+        194.0125,
+        -94.8375
       ]
     },
     "scene": "empire_village_003"
@@ -617,8 +617,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        273.429,
-        324.02
+        80.434375,
+        -147.2125
       ]
     },
     "scene": "empire_castle_004"
@@ -630,8 +630,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        277.153,
-        338.961
+        81.2625,
+        -143.275
       ]
     },
     "scene": "empire_village_008"
@@ -643,8 +643,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        467.803,
-        359.124
+        141.325,
+        -136.978125
       ]
     },
     "scene": "empire_castle_004"
@@ -656,8 +656,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        466.117,
-        382.977
+        141.2,
+        -129.696875
       ]
     },
     "scene": "empire_village_c"
@@ -669,8 +669,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        478.986,
-        381.931
+        145.340625,
+        -130.009375
       ]
     },
     "scene": "empire_village_e"
@@ -682,8 +682,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        445.931,
-        272.569
+        134.3328125,
+        -162.7046875
       ]
     },
     "scene": "empire_siege_001"
@@ -695,8 +695,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        458.472,
-        269.157
+        138.45,
+        -163.93125
       ]
     },
     "scene": "empire_village_004"
@@ -708,8 +708,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        258.912,
-        375.931
+        75.684375,
+        -132.228125
       ]
     },
     "scene": "empire_castle_004"
@@ -721,8 +721,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        257.234,
-        346.824
+        75.5125,
+        -140.853125
       ]
     },
     "scene": "empire_village_x"
@@ -734,8 +734,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        264.634,
-        407.65
+        78.434375,
+        -122.884375
       ]
     },
     "scene": "empire_siege_001"
@@ -747,8 +747,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        286.102,
-        417.727
+        84.41875,
+        -119.540625
       ]
     },
     "scene": "empire_village_b"
@@ -760,8 +760,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        256.898,
-        393.747
+        75.559375,
+        -126.9
       ]
     },
     "scene": "empire_village_a"
@@ -773,8 +773,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        347.983,
-        391.892
+        103.496875,
+        -127.2125
       ]
     },
     "scene": "empire_siege_001"
@@ -786,8 +786,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        340.503,
-        403.2
+        101.121875,
+        -123.696875
       ]
     },
     "scene": "empire_village_j"
@@ -799,8 +799,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        351.791,
-        278.093
+        104.35625,
+        -161.15
       ]
     },
     "scene": "empire_siege_001"
@@ -812,8 +812,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        354.02,
-        309.141
+        105.1375,
+        -151.8765625
       ]
     },
     "scene": "empire_village_004"
@@ -825,8 +825,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        359.023,
-        291.003
+        106.6296875,
+        -157.1421875
       ]
     },
     "scene": "empire_village_004"
@@ -838,8 +838,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        375.321,
-        445.862
+        112.09799000000001,
+        -110.85866796875001
       ]
     },
     "scene": "empire_siege_001"
@@ -851,8 +851,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        363.72,
-        466.552
+        108.6140625,
+        -104.4859375
       ]
     },
     "scene": "empire_village_h"
@@ -864,8 +864,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        315.287,
-        397.114
+        93.2,
+        -125.603125
       ]
     },
     "scene": "empire_town_g"
@@ -877,8 +877,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        297.847,
-        386.762
+        87.91875,
+        -128.7828125
       ]
     },
     "scene": "empire_village_i"
@@ -890,8 +890,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        310.348,
-        416.18
+        91.996875,
+        -120.0875
       ]
     },
     "scene": "empire_village_008"
@@ -903,8 +903,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        331.089,
-        380.283
+        98.278125,
+        -130.571875
       ]
     },
     "scene": "empire_village_h"
@@ -916,8 +916,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        412.41,
-        287.631
+        123.215625,
+        -158.196875
       ]
     },
     "scene": "empire_town_h"
@@ -929,8 +929,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        434.189,
-        287.614
+        130.684375,
+        -158.259375
       ]
     },
     "scene": "empire_village_x"
@@ -942,8 +942,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        393.508,
-        322.385
+        117.6375,
+        -148.05625
       ]
     },
     "scene": "empire_village_004"
@@ -955,8 +955,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        385.095,
-        302.323
+        114.91875,
+        -153.9625
       ]
     },
     "scene": "empire_village_f"
@@ -968,8 +968,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        416.539,
-        309.283
+        125.08166000000001,
+        -151.13880273437502
       ]
     },
     "scene": "empire_village_008"
@@ -981,8 +981,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        376.986,
-        341.692
+        112.2625,
+        -142.4
       ]
     },
     "scene": "empire_town_j_siege"
@@ -994,8 +994,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        245.466,
-        356.213
+        72.090625,
+        -138.071875
       ]
     },
     "scene": "empire_village_x"
@@ -1007,8 +1007,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        395.886,
-        343.079
+        118.496875,
+        -141.821875
       ]
     },
     "scene": "empire_village_002"
@@ -1020,8 +1020,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        371.993,
-        371.042
+        111.04375,
+        -133.290625
       ]
     },
     "scene": "empire_village_003"
@@ -1033,8 +1033,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        303.859,
-        331.889
+        89.559375,
+        -145.259375
       ]
     },
     "scene": "empire_town_h"
@@ -1046,8 +1046,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        343.009,
-        351.062
+        101.89140625,
+        -139.353125
       ]
     },
     "scene": "empire_village_003"
@@ -1059,8 +1059,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        287.921,
-        325.283
+        84.575,
+        -147.025
       ]
     },
     "scene": "empire_village_x"
@@ -1072,8 +1072,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        340.289,
-        324.207
+        100.8328125,
+        -147.4
       ]
     },
     "scene": "empire_village_x"
@@ -1085,8 +1085,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        305.884,
-        349.945
+        90.16875,
+        -139.696875
       ]
     },
     "scene": "empire_village_007"
@@ -1098,8 +1098,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        441.84,
-        352.923
+        133.05147499999998,
+        -138.268412109375
       ]
     },
     "scene": "empire_town_g"
@@ -1111,8 +1111,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        433.824,
-        373.793
+        130.6453125,
+        -132.4546875
       ]
     },
     "scene": "empire_village_p"
@@ -1124,8 +1124,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        410.858,
-        367.999
+        123.8796875,
+        -134.062109375
       ]
     },
     "scene": "empire_village_g"
@@ -1137,8 +1137,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        390.118,
-        393.159
+        117.2,
+        -126.196875
       ]
     },
     "scene": "empire_town_h"
@@ -1150,8 +1150,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        395.566,
-        411.891
+        118.778125,
+        -121.071875
       ]
     },
     "scene": "empire_village_g"
@@ -1163,8 +1163,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        382.933,
-        438.412
+        114.49577000000001,
+        -113.0558359375
       ]
     },
     "scene": "empire_village_f"
@@ -1176,8 +1176,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        378.968,
-        383.119
+        113.73125,
+        -129.8375
       ]
     },
     "scene": "empire_village_004"
@@ -1189,8 +1189,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        355.291,
-        377.413
+        105.903125,
+        -131.384375
       ]
     },
     "scene": "empire_village_p"
@@ -1202,8 +1202,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        693.202,
-        306.624
+        212.6375,
+        -152.634375
       ]
     },
     "scene": "empire_castle_004"
@@ -1215,8 +1215,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        682.056,
-        323.76
+        209.6765625,
+        -147.5640625
       ]
     },
     "scene": "empire_village_003"
@@ -1228,8 +1228,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        661.582,
-        363.757
+        203.29375,
+        -135.571875
       ]
     },
     "scene": "empire_siege_001"
@@ -1241,8 +1241,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        684.084,
-        358.238
+        210.246875,
+        -136.99375
       ]
     },
     "scene": "empire_village_004"
@@ -1254,8 +1254,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        670.454,
-        343.708
+        206.04375,
+        -141.55625
       ]
     },
     "scene": "empire_village_003"
@@ -1267,8 +1267,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        616.057,
-        383.799
+        189.371875,
+        -129.43125
       ]
     },
     "scene": "empire_castle_004"
@@ -1280,8 +1280,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        616.414,
-        404.007
+        189.16875,
+        -123.228125
       ]
     },
     "scene": "empire_village_004"
@@ -1293,8 +1293,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        623.915,
-        359.987
+        191.715625,
+        -136.61875
       ]
     },
     "scene": "empire_village_004"
@@ -1306,8 +1306,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        620.957,
-        254.729
+        190.29375,
+        -168.259375
       ]
     },
     "scene": "empire_castle_004"
@@ -1319,8 +1319,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        600.638,
-        242.03
+        184.0125,
+        -171.99375
       ]
     },
     "scene": "empire_village_x"
@@ -1332,8 +1332,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        622.736,
-        273.428
+        191.121875,
+        -162.665625
       ]
     },
     "scene": "empire_village_008"
@@ -1345,8 +1345,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        557.31,
-        279.074
+        170.153125,
+        -160.9
       ]
     },
     "scene": "empire_siege_001"
@@ -1358,8 +1358,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        550.921,
-        301.539
+        168.325,
+        -154.2125
       ]
     },
     "scene": "empire_village_p"
@@ -1371,8 +1371,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        493.22,
-        346.296
+        149.575,
+        -140.946875
       ]
     },
     "scene": "empire_siege_001"
@@ -1384,8 +1384,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        503.654,
-        349.408
+        153.309375,
+        -139.915625
       ]
     },
     "scene": "empire_village_004"
@@ -1397,8 +1397,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        654.547,
-        434.009
+        201.0125,
+        -114.43125
       ]
     },
     "scene": "empire_siege_001"
@@ -1410,8 +1410,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        640.457,
-        415.094
+        196.85625,
+        -119.80625
       ]
     },
     "scene": "empire_village_j"
@@ -1423,8 +1423,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        538.99,
-        378.31
+        164.91875,
+        -131.228125
       ]
     },
     "scene": "empire_siege_001"
@@ -1436,8 +1436,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        570.062,
-        366.622
+        174.528125,
+        -134.696875
       ]
     },
     "scene": "empire_village_h"
@@ -1449,8 +1449,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        661.191,
-        276.466
+        203.2,
+        -162.321875
       ]
     },
     "scene": "empire_town_g"
@@ -1462,8 +1462,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        687.202,
-        276.935
+        210.34050499999998,
+        -160.678935546875
       ]
     },
     "scene": "empire_village_003"
@@ -1475,8 +1475,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        673.134,
-        260.585
+        206.7,
+        -166.4625
       ]
     },
     "scene": "empire_village_003"
@@ -1488,8 +1488,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        661.634,
-        293.11
+        203.278125,
+        -156.821875
       ]
     },
     "scene": "empire_village_003"
@@ -1501,8 +1501,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        631.47,
-        263.573
+        193.934375,
+        -165.80625
       ]
     },
     "scene": "empire_village_004"
@@ -1514,8 +1514,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        568.779,
-        239.988
+        173.66875,
+        -172.4
       ]
     },
     "scene": "empire_town_h"
@@ -1527,8 +1527,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        531.959,
-        264.371
+        162.153125,
+        -165.353125
       ]
     },
     "scene": "empire_village_i"
@@ -1540,8 +1540,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        555.62,
-        265.223
+        169.73125,
+        -165.165625
       ]
     },
     "scene": "empire_village_003"
@@ -1553,8 +1553,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        586.185,
-        276.15
+        179.48125,
+        -161.86875
       ]
     },
     "scene": "empire_village_004"
@@ -1566,8 +1566,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        548.257,
-        246.249
+        167.23125,
+        -170.759375
       ]
     },
     "scene": "empire_village_x"
@@ -1579,8 +1579,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        471.018,
-        269.821
+        142.3875,
+        -163.3375
       ]
     },
     "scene": "empire_town_h"
@@ -1592,8 +1592,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        498.015,
-        281.822
+        150.74659999999997,
+        -159.23765234375
       ]
     },
     "scene": "empire_village_002"
@@ -1605,8 +1605,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        490.177,
-        299.374
+        148.73125,
+        -154.915625
       ]
     },
     "scene": "empire_village_003"
@@ -1618,8 +1618,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        467.529,
-        300.703
+        141.434375,
+        -154.478125
       ]
     },
     "scene": "empire_village_002"
@@ -1631,8 +1631,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        515.33,
-        333.562
+        157.66875,
+        -144.86875
       ]
     },
     "scene": "empire_town_j_siege"
@@ -1644,8 +1644,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        516.05,
-        305.207
+        157.10625,
+        -153.0875
       ]
     },
     "scene": "empire_village_002"
@@ -1657,8 +1657,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        513.001,
-        367.531
+        156.16875,
+        -134.30625
       ]
     },
     "scene": "empire_village_007"
@@ -1670,8 +1670,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        535.418,
-        313.408
+        163.29375,
+        -150.7125
       ]
     },
     "scene": "empire_village_d"
@@ -1683,8 +1683,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        645.315,
-        325.385
+        198.23125,
+        -147.9
       ]
     },
     "scene": "empire_town_j_siege"
@@ -1696,8 +1696,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        620.77,
-        330.599
+        190.35625,
+        -145.4
       ]
     },
     "scene": "empire_village_002"
@@ -1709,8 +1709,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        638.381,
-        351.877
+        196.1375,
+        -139.196875
       ]
     },
     "scene": "empire_village_002"
@@ -1722,8 +1722,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        645.093,
-        305.478
+        198.10625,
+        -153.040625
       ]
     },
     "scene": "empire_village_008"
@@ -1735,8 +1735,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        566.24,
-        347.43
+        173.48125,
+        -139.93125
       ]
     },
     "scene": "empire_town_g"
@@ -1748,8 +1748,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        565.911,
-        326.602
+        173.184375,
+        -146.728125
       ]
     },
     "scene": "empire_village_003"
@@ -1761,8 +1761,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        554.301,
-        337.683
+        169.465625,
+        -143.4
       ]
     },
     "scene": "empire_village_i"
@@ -1774,8 +1774,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        480.809,
-        352.006
+        145.840625,
+        -139.025
       ]
     },
     "scene": "empire_village_002"
@@ -1787,8 +1787,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        651.026,
-        387.791
+        200.7625,
+        -128.696875
       ]
     },
     "scene": "empire_town_g"
@@ -1800,8 +1800,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        644.79,
-        365.767
+        198.0125,
+        -134.884375
       ]
     },
     "scene": "empire_village_x"
@@ -1813,8 +1813,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        659.76,
-        401.479
+        202.871875,
+        -123.946875
       ]
     },
     "scene": "empire_village_003"
@@ -1826,8 +1826,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        659.415,
-        419.419
+        202.60625,
+        -118.540625
       ]
     },
     "scene": "empire_village_003"
@@ -1839,8 +1839,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        272.135,
-        593.449
+        79.59440000000001,
+        -67.33203320312501
       ]
     },
     "scene": "sturgia_castle_siege_001"
@@ -1852,8 +1852,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        239.455,
-        594.328
+        69.3002,
+        -67.07279687500002
       ]
     },
     "scene": "sturgia_village_f"
@@ -1865,8 +1865,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        395.312,
-        509.257
+        118.559375,
+        -91.80625
       ]
     },
     "scene": "sturgia_castle_siege_001"
@@ -1878,8 +1878,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        397.957,
-        518.307
+        119.35625,
+        -89.259375
       ]
     },
     "scene": "sturgia_village_j"
@@ -1891,8 +1891,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        268.467,
-        549.737
+        78.98125,
+        -80.65
       ]
     },
     "scene": "sturgia_castle_003"
@@ -1904,8 +1904,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        284.425,
-        530.874
+        83.9421875,
+        -86.1109375
       ]
     },
     "scene": "sturgia_village_e"
@@ -1917,8 +1917,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        293.03,
-        551.614
+        86.17632499999999,
+        -79.67008984374999
       ]
     },
     "scene": "sturgia_village_j"
@@ -1930,8 +1930,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        367.984,
-        519.925
+        110.10625,
+        -88.86875
       ]
     },
     "scene": "sturgia_castle_003"
@@ -1943,8 +1943,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        381.142,
-        532.472
+        114.075,
+        -84.9625
       ]
     },
     "scene": "sturgia_village_j"
@@ -1956,8 +1956,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        380.524,
-        498.991
+        114.04375,
+        -94.9625
       ]
     },
     "scene": "sturgia_village_h"
@@ -1969,8 +1969,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        452.961,
-        543.248
+        136.684375,
+        -82.071875
       ]
     },
     "scene": "sturgia_castle_siege_001"
@@ -1982,8 +1982,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        434.253,
-        542.324
+        130.965625,
+        -82.103125
       ]
     },
     "scene": "sturgia_village_e"
@@ -1995,8 +1995,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        441.454,
-        555.856
+        133.2625,
+        -77.99375
       ]
     },
     "scene": "sturgia_village_e"
@@ -2008,8 +2008,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        493.389,
-        551.866
+        149.9109375,
+        -79.1578125
       ]
     },
     "scene": "sturgia_castle_003"
@@ -2021,8 +2021,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        492.859,
-        567.844
+        149.6375,
+        -74.478125
       ]
     },
     "scene": "sturgia_village_b"
@@ -2034,8 +2034,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        666.54,
-        553.695
+        204.465625,
+        -78.4
       ]
     },
     "scene": "sturgia_castle_003"
@@ -2047,8 +2047,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        670.142,
-        525.26
+        204.96660500000002,
+        -87.44246093750002
       ]
     },
     "scene": "sturgia_village_g"
@@ -2060,8 +2060,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        612.399,
-        573.747
+        187.653125,
+        -72.7359375
       ]
     },
     "scene": "sturgia_castle_siege_001"
@@ -2073,8 +2073,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        618.42,
-        590.216
+        189.5671875,
+        -67.9703125
       ]
     },
     "scene": "sturgia_village_b"
@@ -2086,8 +2086,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        361.256,
-        554.313
+        107.667515,
+        -78.87409570312502
       ]
     },
     "scene": "sturgia_town_c"
@@ -2099,8 +2099,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        389.676,
-        547.789
+        116.79375,
+        -80.43125
       ]
     },
     "scene": "sturgia_village_j"
@@ -2112,8 +2112,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        406.734,
-        507.526
+        122.184375,
+        -92.30625
       ]
     },
     "scene": "sturgia_village_a"
@@ -2125,8 +2125,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        344.755,
-        541.842
+        102.4697,
+        -82.55206640625002
       ]
     },
     "scene": "sturgia_village_g"
@@ -2138,8 +2138,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        467.86,
-        570.509
+        141.340625,
+        -73.99375
       ]
     },
     "scene": "sturgia_town_c"
@@ -2151,8 +2151,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        468.963,
-        556.267
+        141.9734375,
+        -77.9703125
       ]
     },
     "scene": "sturgia_village_f"
@@ -2164,8 +2164,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        453.523,
-        592.937
+        136.8875,
+        -67.228125
       ]
     },
     "scene": "sturgia_village_f"
@@ -2177,8 +2177,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        475.506,
-        547.402
+        143.9734375,
+        -80.4234375
       ]
     },
     "scene": "sturgia_village_h"
@@ -2190,8 +2190,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        451.107,
-        515.464
+        135.97058,
+        -90.33151562499998
       ]
     },
     "scene": "sturgia_town_c"
@@ -2203,8 +2203,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        431.554,
-        495.919
+        130.153125,
+        -95.775
       ]
     },
     "scene": "sturgia_village_l"
@@ -2216,8 +2216,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        455.437,
-        497.693
+        137.575,
+        -95.2125
       ]
     },
     "scene": "sturgia_village_g"
@@ -2229,8 +2229,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        540.416,
-        548.273
+        164.102915,
+        -80.65542382812501
       ]
     },
     "scene": "sturgia_town_c"
@@ -2242,8 +2242,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        574.539,
-        551.736
+        175.80546875,
+        -79.0484375
       ]
     },
     "scene": "sturgia_village_f"
@@ -2255,8 +2255,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        620.089,
-        559.767
+        190.215625,
+        -76.6109375
       ]
     },
     "scene": "sturgia_village_l"
@@ -2268,8 +2268,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        534.628,
-        557.699
+        162.9109375,
+        -77.33359375
       ]
     },
     "scene": "sturgia_village_l"
@@ -2281,8 +2281,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        515.753,
-        551.25
+        157.0046875,
+        -79.1578125
       ]
     },
     "scene": "sturgia_village_f"
@@ -2294,8 +2294,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        647.079,
-        569.108
+        198.7625,
+        -74.15
       ]
     },
     "scene": "sturgia_town_c"
@@ -2307,8 +2307,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        656.364,
-        550.811
+        201.403125,
+        -79.18125
       ]
     },
     "scene": "sturgia_village_h"
@@ -2320,8 +2320,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        674.436,
-        568.448
+        207.10625,
+        -74.259375
       ]
     },
     "scene": "sturgia_village_e"
@@ -2333,8 +2333,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        654.264,
-        540.041
+        199.965035,
+        -83.083220703125
       ]
     },
     "scene": "sturgia_village_a"
@@ -2346,8 +2346,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        549.77,
-        586.259
+        167.8015625,
+        -69.196875
       ]
     },
     "scene": "sturgia_town_c"
@@ -2359,8 +2359,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        573.026,
-        585.666
+        175.153125,
+        -69.3765625
       ]
     },
     "scene": "sturgia_village_h"
@@ -2372,8 +2372,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        551.725,
-        572.339
+        168.3796875,
+        -73.2125
       ]
     },
     "scene": "sturgia_village_e"
@@ -2385,8 +2385,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        529.84,
-        581.846
+        161.559375,
+        -70.4625
       ]
     },
     "scene": "sturgia_village_l"
@@ -2398,8 +2398,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        296.82,
-        580.832
+        87.370175,
+        -71.05306250000001
       ]
     },
     "scene": "sturgia_town_c"
@@ -2411,8 +2411,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        287.861,
-        568.57
+        84.54809,
+        -74.66939453124999
       ]
     },
     "scene": "sturgia_village_g"
@@ -2424,8 +2424,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        315.057,
-        585.752
+        93.11483000000001,
+        -69.60204687500001
       ]
     },
     "scene": "sturgia_village_l"
@@ -2437,8 +2437,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        264.659,
-        603.249
+        77.23946,
+        -64.441798828125
       ]
     },
     "scene": "sturgia_village_l"
@@ -2450,8 +2450,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        274.181,
-        272.167
+        80.45,
+        -162.11875
       ]
     },
     "scene": "aserai_castle_002"
@@ -2463,8 +2463,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        251.632,
-        263.255
+        73.246875,
+        -165.103125
       ]
     },
     "scene": "aserai_village_j"
@@ -2476,8 +2476,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        617.677,
-        127.096
+        188.7625,
+        -204.525
       ]
     },
     "scene": "aserai_castle_002"
@@ -2489,8 +2489,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        639.004,
-        117.22
+        195.0359375,
+        -207.321875
       ]
     },
     "scene": "aserai_village_e"
@@ -2502,8 +2502,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        622.677,
-        107.025
+        190.121875,
+        -210.025
       ]
     },
     "scene": "aserai_village_c"
@@ -2515,8 +2515,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        323.167,
-        186.28
+        94.3875,
+        -187.009375
       ]
     },
     "scene": "aserai_castle_002"
@@ -2528,8 +2528,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        283.666,
-        187.29
+        82.575,
+        -186.68125
       ]
     },
     "scene": "aserai_village_b"
@@ -2541,8 +2541,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        344.876,
-        192.836
+        101.7625,
+        -185.321875
       ]
     },
     "scene": "aserai_village_e"
@@ -2554,8 +2554,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        444.093,
-        150.416
+        133.184375,
+        -197.571875
       ]
     },
     "scene": "aserai_castle_002"
@@ -2567,8 +2567,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        436.694,
-        178.228
+        130.7625,
+        -190.0328125
       ]
     },
     "scene": "aserai_village_b"
@@ -2580,8 +2580,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        423.748,
-        135.275
+        126.434375,
+        -201.65
       ]
     },
     "scene": "aserai_village_j"
@@ -2593,8 +2593,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        516.554,
-        130.572
+        156.5984375,
+        -203.6265625
       ]
     },
     "scene": "aserai_castle_002"
@@ -2606,8 +2606,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        530.431,
-        139.645
+        161.153125,
+        -200.915625
       ]
     },
     "scene": "aserai_village_e"
@@ -2619,8 +2619,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        666.93,
-        245.247
+        204.23125,
+        -171.196875
       ]
     },
     "scene": "aserai_castle_002"
@@ -2632,8 +2632,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        679.928,
-        245.814
+        208.684375,
+        -170.7125
       ]
     },
     "scene": "aserai_village_e"
@@ -2645,8 +2645,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        357.485,
-        216.349
+        105.825,
+        -178.728125
       ]
     },
     "scene": "aserai_castle_002"
@@ -2658,8 +2658,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        378.735,
-        220.777
+        112.496875,
+        -177.634375
       ]
     },
     "scene": "aserai_village_j"
@@ -2671,8 +2671,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        322.492,
-        210.122
+        94.7625,
+        -180.446875
       ]
     },
     "scene": "aserai_village_e"
@@ -2684,8 +2684,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        650.405,
-        210.393
+        198.73125,
+        -181.290625
       ]
     },
     "scene": "aserai_castle_002"
@@ -2697,8 +2697,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        641.98,
-        241.732
+        197.0125,
+        -172.11875
       ]
     },
     "scene": "aserai_village_e"
@@ -2710,8 +2710,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        339.854,
-        156.395
+        99.79375,
+        -196.05625
       ]
     },
     "scene": "aserai_castle_002"
@@ -2723,8 +2723,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        357.184,
-        162.152
+        105.434375,
+        -194.009375
       ]
     },
     "scene": "aserai_village_c"
@@ -2736,8 +2736,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        299.553,
-        264.853
+        87.746875,
+        -164.509375
       ]
     },
     "scene": "aserai_town_b"
@@ -2749,8 +2749,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        314.587,
-        256.302
+        92.8640625,
+        -167.36875
       ]
     },
     "scene": "aserai_village_l"
@@ -2762,8 +2762,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        296.806,
-        241.59
+        87.0125,
+        -171.36875
       ]
     },
     "scene": "aserai_village_b"
@@ -2775,8 +2775,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        272.077,
-        253.368
+        79.575,
+        -168.259375
       ]
     },
     "scene": "aserai_village_e"
@@ -2788,8 +2788,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        279.042,
-        231.398
+        81.590625,
+        -174.15
       ]
     },
     "scene": "aserai_village_e"
@@ -2801,8 +2801,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        686.263,
-        234.343
+        210.60625,
+        -174.525
       ]
     },
     "scene": "aserai_town_a"
@@ -2814,8 +2814,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        659.674,
-        230.062
+        202.465625,
+        -175.43125
       ]
     },
     "scene": "aserai_village_e"
@@ -2827,8 +2827,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        706.23,
-        202.192
+        216.496875,
+        -183.38046875
       ]
     },
     "scene": "aserai_village_l"
@@ -2840,8 +2840,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        725.889,
-        249.251
+        222.41875,
+        -169.61875
       ]
     },
     "scene": "aserai_village_j"
@@ -2853,8 +2853,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        493.537,
-        111.743
+        149.121875,
+        -208.61875
       ]
     },
     "scene": "aserai_town_a"
@@ -2866,8 +2866,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        474.865,
-        101.265
+        142.809375,
+        -211.259375
       ]
     },
     "scene": "aserai_village_c"
@@ -2879,8 +2879,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        493.275,
-        130.276
+        149.1375,
+        -203.446875
       ]
     },
     "scene": "aserai_village_b"
@@ -2892,8 +2892,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        522.539,
-        111.057
+        158.53984375,
+        -208.634375
       ]
     },
     "scene": "aserai_village_e"
@@ -2905,8 +2905,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        608.801,
-        178.967
+        186.23125,
+        -190.30625
       ]
     },
     "scene": "aserai_town_c"
@@ -2918,8 +2918,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        591.506,
-        153.62
+        180.78984375,
+        -197.22421875
       ]
     },
     "scene": "aserai_village_l"
@@ -2931,8 +2931,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        630.013,
-        167.928
+        192.871875,
+        -193.165625
       ]
     },
     "scene": "aserai_village_e"
@@ -2944,8 +2944,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        652.93,
-        189.194
+        200.059375,
+        -187.24375
       ]
     },
     "scene": "aserai_village_e"
@@ -2957,8 +2957,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        630.642,
-        182.594
+        192.5359375,
+        -187.69296875
       ]
     },
     "scene": "aserai_village_j"
@@ -2970,8 +2970,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        561.609,
-        119.752
+        171.090625,
+        -206.478125
       ]
     },
     "scene": "aserai_town_b"
@@ -2983,8 +2983,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        593.332,
-        116.417
+        181.00859375,
+        -207.39609375
       ]
     },
     "scene": "aserai_village_e"
@@ -2996,8 +2996,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        537.603,
-        111.162
+        163.184375,
+        -208.5875
       ]
     },
     "scene": "aserai_village_b"
@@ -3009,8 +3009,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        550.69,
-        135.427
+        167.653125,
+        -202.196875
       ]
     },
     "scene": "aserai_village_j"
@@ -3022,8 +3022,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        401.651,
-        207.329
+        120.10625,
+        -181.603125
       ]
     },
     "scene": "aserai_town_c"
@@ -3035,8 +3035,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        409.751,
-        179.163
+        122.184375,
+        -189.634375
       ]
     },
     "scene": "aserai_village_j"
@@ -3048,8 +3048,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        394.921,
-        177.046
+        117.575,
+        -190.228125
       ]
     },
     "scene": "aserai_village_l"
@@ -3061,8 +3061,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        390.38,
-        216.602
+        116.2390625,
+        -178.86875
       ]
     },
     "scene": "aserai_village_l"
@@ -3074,8 +3074,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        404.877,
-        160.318
+        120.48125,
+        -194.884375
       ]
     },
     "scene": "aserai_village_j"
@@ -3087,8 +3087,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        379.425,
-        118.472
+        111.871875,
+        -206.165625
       ]
     },
     "scene": "aserai_town_a"
@@ -3100,8 +3100,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        355.391,
-        140.124
+        104.701953125,
+        -200.101171875
       ]
     },
     "scene": "aserai_village_e"
@@ -3113,8 +3113,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        421.323,
-        106.433
+        125.340625,
+        -209.43125
       ]
     },
     "scene": "aserai_village_j"
@@ -3126,8 +3126,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        413.118,
-        124.872
+        122.9265625,
+        -204.56015625
       ]
     },
     "scene": "aserai_village_l"
@@ -3139,8 +3139,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        382.651,
-        94.964
+        113.16875,
+        -212.275
       ]
     },
     "scene": "aserai_village_l"
@@ -3152,8 +3152,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        490.694,
-        163.097
+        148.440485,
+        -194.252251953125
       ]
     },
     "scene": "aserai_town_c"
@@ -3165,8 +3165,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        509.647,
-        147.664
+        154.41067999999999,
+        -198.80378125000001
       ]
     },
     "scene": "aserai_village_c"
@@ -3178,8 +3178,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        465.728,
-        168.624
+        140.434375,
+        -192.7671875
       ]
     },
     "scene": "aserai_village_l"
@@ -3191,8 +3191,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        223.555,
-        357.026
+        65.2,
+        -137.509375
       ]
     },
     "scene": "vlandia_castle_005a"
@@ -3204,8 +3204,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        227.085,
-        340.176
+        66.10625,
+        -142.696875
       ]
     },
     "scene": "vlandia_village_m"
@@ -3217,8 +3217,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        133.91,
-        416.794
+        39.29375,
+        -120.30625
       ]
     },
     "scene": "vlandia_castle_005a"
@@ -3230,8 +3230,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        130.07,
-        445.606
+        38.23125,
+        -111.728125
       ]
     },
     "scene": "vlandia_village_b"
@@ -3243,8 +3243,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        132.827,
-        425.805
+        38.965625,
+        -117.55625
       ]
     },
     "scene": "vlandia_village_k"
@@ -3256,8 +3256,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        109.383,
-        514.606
+        32.5125,
+        -91.509375
       ]
     },
     "scene": "vlandia_castle_005a"
@@ -3269,8 +3269,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        97.509,
-        489.095
+        29.153125,
+        -99.259375
       ]
     },
     "scene": "vlandia_village_i"
@@ -3282,8 +3282,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        199.557,
-        521.81
+        58.35625,
+        -89.025
       ]
     },
     "scene": "vlandia_castle_005a"
@@ -3295,8 +3295,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        180.271,
-        519.097
+        52.73125,
+        -89.9
       ]
     },
     "scene": "vlandia_village_b"
@@ -3308,8 +3308,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        165.989,
-        564.639
+        49.2,
+        -76.74375
       ]
     },
     "scene": "vlandia_castle_005a"
@@ -3321,8 +3321,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        161.077,
-        586.582
+        47.528125,
+        -70.446875
       ]
     },
     "scene": "vlandia_village_i"
@@ -3334,8 +3334,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        152.416,
-        567.49
+        44.91875,
+        -75.946875
       ]
     },
     "scene": "vlandia_village_g"
@@ -3347,8 +3347,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        230.536,
-        552.587
+        67.496875,
+        -79.946875
       ]
     },
     "scene": "vlandia_castle_005a"
@@ -3360,8 +3360,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        243.165,
-        540.646
+        71.496875,
+        -83.353125
       ]
     },
     "scene": "vlandia_village_g"
@@ -3373,8 +3373,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        206.0,
-        555.33
+        60.403125,
+        -79.3375
       ]
     },
     "scene": "vlandia_village_k"
@@ -3386,8 +3386,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        201.425,
-        415.486
+        59.0671875,
+        -120.7515625
       ]
     },
     "scene": "vlandia_castle_005a"
@@ -3399,8 +3399,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        181.223,
-        413.651
+        53.2234375,
+        -120.8765625
       ]
     },
     "scene": "vlandia_village_n"
@@ -3412,8 +3412,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        190.12,
-        466.865
+        56.0125,
+        -105.009375
       ]
     },
     "scene": "vlandia_castle_005a"
@@ -3425,8 +3425,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        174.652,
-        472.815
+        51.2,
+        -103.4625
       ]
     },
     "scene": "vlandia_village_c"
@@ -3438,8 +3438,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        210.378,
-        383.893
+        60.98125,
+        -129.775
       ]
     },
     "scene": "vlandia_city_a"
@@ -3451,8 +3451,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        186.614,
-        391.233
+        54.23125,
+        -127.665625
       ]
     },
     "scene": "vlandia_village_k"
@@ -3464,8 +3464,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        217.421,
-        406.133
+        63.496875,
+        -123.11875
       ]
     },
     "scene": "vlandia_village_l"
@@ -3477,8 +3477,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        199.02,
-        438.892
+        58.16875,
+        -113.7125
       ]
     },
     "scene": "vlandia_village_i"
@@ -3490,8 +3490,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        181.785,
-        495.348
+        53.0125,
+        -96.7359375
       ]
     },
     "scene": "vlandia_town_a"
@@ -3503,8 +3503,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        189.148,
-        486.143
+        54.996875,
+        -100.15
       ]
     },
     "scene": "vlandia_village_c"
@@ -3516,8 +3516,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        185.962,
-        510.727
+        54.496875,
+        -92.4
       ]
     },
     "scene": "vlandia_village_m"
@@ -3529,8 +3529,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        148.609,
-        494.408
+        43.6375,
+        -97.353125
       ]
     },
     "scene": "vlandia_village_g"
@@ -3542,8 +3542,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        166.471,
-        465.155
+        48.98125,
+        -105.7125
       ]
     },
     "scene": "vlandia_village_i"
@@ -3555,8 +3555,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        139.205,
-        475.542
+        41.0125,
+        -102.7125
       ]
     },
     "scene": "vlandia_city_a"
@@ -3568,8 +3568,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        117.556,
-        500.746
+        34.825,
+        -95.80625
       ]
     },
     "scene": "vlandia_village_m"
@@ -3581,8 +3581,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        135.887,
-        452.216
+        39.934375,
+        -109.74375
       ]
     },
     "scene": "vlandia_village_m"
@@ -3594,8 +3594,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        124.399,
-        488.833
+        36.715625,
+        -99.103125
       ]
     },
     "scene": "vlandia_village_m"
@@ -3607,8 +3607,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        156.43,
-        455.027
+        45.840625,
+        -108.775
       ]
     },
     "scene": "vlandia_village_l"
@@ -3620,8 +3620,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        107.5,
-        411.689
+        31.79375,
+        -122.05625
       ]
     },
     "scene": "vlandia_city_a"
@@ -3633,8 +3633,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        121.298,
-        398.974
+        35.6375,
+        -125.665625
       ]
     },
     "scene": "vlandia_village_g"
@@ -3646,8 +3646,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        114.641,
-        388.872
+        33.7625,
+        -128.65
       ]
     },
     "scene": "vlandia_village_m"
@@ -3659,8 +3659,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        100.203,
-        423.756
+        29.684375,
+        -118.4
       ]
     },
     "scene": "vlandia_village_k"
@@ -3672,8 +3672,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        149.91,
-        392.826
+        43.809375,
+        -127.446875
       ]
     },
     "scene": "vlandia_town_a"
@@ -3685,8 +3685,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        170.209,
-        374.64
+        49.6296875,
+        -132.634375
       ]
     },
     "scene": "vlandia_village_i"
@@ -3698,8 +3698,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        185.107,
-        375.822
+        54.04375,
+        -132.275
       ]
     },
     "scene": "vlandia_village_l"
@@ -3711,8 +3711,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        137.567,
-        394.109
+        40.2625,
+        -127.05625
       ]
     },
     "scene": "vlandia_village_k"
@@ -3724,8 +3724,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        152.551,
-        407.482
+        44.5984375,
+        -122.9390625
       ]
     },
     "scene": "vlandia_village_m"
@@ -3737,8 +3737,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        176.658,
-        334.402
+        51.5125,
+        -144.30625
       ]
     },
     "scene": "vlandia_town_a"
@@ -3750,8 +3750,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        195.25,
-        350.788
+        56.54375,
+        -139.603125
       ]
     },
     "scene": "vlandia_village_m"
@@ -3763,8 +3763,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        165.403,
-        345.646
+        48.23125,
+        -141.24375
       ]
     },
     "scene": "vlandia_village_m"
@@ -3776,8 +3776,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        135.09,
-        547.52
+        39.559375,
+        -82.4
       ]
     },
     "scene": "vlandia_city_a"
@@ -3789,8 +3789,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        151.509,
-        540.844
+        44.5125,
+        -83.8296875
       ]
     },
     "scene": "vlandia_village_b"
@@ -3802,8 +3802,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        148.492,
-        578.874
+        43.9421875,
+        -72.6734375
       ]
     },
     "scene": "vlandia_village_l"
@@ -3815,8 +3815,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        146.752,
-        561.079
+        43.278125,
+        -77.93125
       ]
     },
     "scene": "vlandia_village_g"
@@ -3828,8 +3828,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        179.501,
-        548.785
+        52.403125,
+        -81.36875
       ]
     },
     "scene": "vlandia_town_a"
@@ -3841,8 +3841,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        162.475,
-        554.636
+        47.778125,
+        -79.634375
       ]
     },
     "scene": "vlandia_village_i"
@@ -3854,8 +3854,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        180.584,
-        532.908
+        52.9890625,
+        -85.7984375
       ]
     },
     "scene": "vlandia_village_i"
@@ -3867,8 +3867,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        223.762,
-        431.444
+        65.66875,
+        -115.5875
       ]
     },
     "scene": "battania_castle_b"
@@ -3880,8 +3880,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        236.468,
-        435.447
+        69.45,
+        -114.55625
       ]
     },
     "scene": "battania_village_e"
@@ -3893,8 +3893,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        249.177,
-        434.045
+        73.3875,
+        -114.9625
       ]
     },
     "scene": "battania_castle_b"
@@ -3906,8 +3906,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        252.977,
-        449.402
+        74.403125,
+        -110.30625
       ]
     },
     "scene": "battania_village_l"
@@ -3919,8 +3919,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        262.262,
-        425.217
+        77.121875,
+        -117.4
       ]
     },
     "scene": "battania_village_l"
@@ -3932,8 +3932,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        231.203,
-        520.236
+        67.825,
+        -89.15
       ]
     },
     "scene": "battania_castle_b"
@@ -3945,8 +3945,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        220.084,
-        524.894
+        64.35625,
+        -88.040625
       ]
     },
     "scene": "battania_village_h"
@@ -3958,8 +3958,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        274.145,
-        519.959
+        80.8328125,
+        -89.478125
       ]
     },
     "scene": "battania_castle_b"
@@ -3971,8 +3971,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        267.04,
-        533.38
+        78.4890625,
+        -85.4703125
       ]
     },
     "scene": "battania_village_l"
@@ -3984,8 +3984,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        315.343,
-        446.698
+        94.3875,
+        -111.05625
       ]
     },
     "scene": "battania_castle_b"
@@ -3997,8 +3997,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        337.844,
-        427.693
+        100.48125,
+        -116.4
       ]
     },
     "scene": "battania_village_k"
@@ -4010,8 +4010,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        338.171,
-        443.755
+        100.7,
+        -111.509375
       ]
     },
     "scene": "battania_village_k"
@@ -4023,8 +4023,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        324.518,
-        525.065
+        96.16875,
+        -87.775
       ]
     },
     "scene": "battania_castle_b"
@@ -4036,8 +4036,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        328.057,
-        503.697
+        97.20983000000001,
+        -93.801861328125
       ]
     },
     "scene": "battania_village"
@@ -4049,8 +4049,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        289.421,
-        520.739
+        85.5828125,
+        -88.9859375
       ]
     },
     "scene": "battania_village_j"
@@ -4062,8 +4062,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        235.129,
-        478.09
+        68.98125,
+        -101.86875
       ]
     },
     "scene": "battania_castle_b"
@@ -4075,8 +4075,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        257.248,
-        488.724
+        75.621875,
+        -98.696875
       ]
     },
     "scene": "battania_village_l"
@@ -4088,8 +4088,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        352.646,
-        497.737
+        104.95536500000001,
+        -95.55959570312501
       ]
     },
     "scene": "battania_castle_b"
@@ -4101,8 +4101,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        360.071,
-        487.902
+        107.29424000000002,
+        -98.46015234375
       ]
     },
     "scene": "battania_village_j"
@@ -4114,8 +4114,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        291.2,
-        442.757
+        86.403125,
+        -112.728125
       ]
     },
     "scene": "battania_town_d"
@@ -4127,8 +4127,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        304.124,
-        461.07
+        90.1609375,
+        -106.728125
       ]
     },
     "scene": "battania_village_k"
@@ -4140,8 +4140,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        277.938,
-        456.109
+        82.059375,
+        -108.1265625
       ]
     },
     "scene": "battania_village_l"
@@ -4153,8 +4153,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        301.07,
-        435.872
+        89.23125,
+        -114.275
       ]
     },
     "scene": "battania_village_i"
@@ -4166,8 +4166,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        271.734,
-        436.186
+        79.903125,
+        -114.15
       ]
     },
     "scene": "battania_village_i"
@@ -4179,8 +4179,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        266.398,
-        483.399
+        78.996875,
+        -100.103125
       ]
     },
     "scene": "battania_town_c"
@@ -4192,8 +4192,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        274.679,
-        465.324
+        81.121875,
+        -105.4703125
       ]
     },
     "scene": "battania_village_j"
@@ -4205,8 +4205,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        251.317,
-        498.091
+        73.9890625,
+        -95.821875
       ]
     },
     "scene": "battania_village_l"
@@ -4218,8 +4218,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        252.428,
-        468.245
+        74.059375,
+        -104.5640625
       ]
     },
     "scene": "battania_village_h"
@@ -4231,8 +4231,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        260.896,
-        463.179
+        76.7703125,
+        -106.1890625
       ]
     },
     "scene": "battania_village_l"
@@ -4244,8 +4244,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        273.162,
-        499.461
+        80.684375,
+        -95.2671875
       ]
     },
     "scene": "battania_village_l"
@@ -4257,8 +4257,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        255.387,
-        515.614
+        75.3640625,
+        -90.3609375
       ]
     },
     "scene": "battania_town_c"
@@ -4270,8 +4270,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        221.658,
-        492.377
+        64.746875,
+        -97.65
       ]
     },
     "scene": "battania_village_e"
@@ -4283,8 +4283,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        262.282,
-        505.221
+        77.29375,
+        -93.4859375
       ]
     },
     "scene": "battania_village_i"
@@ -4296,8 +4296,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        240.285,
-        498.038
+        70.4734375,
+        -95.8296875
       ]
     },
     "scene": "battania_village_l"
@@ -4309,8 +4309,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        214.681,
-        506.304
+        62.590625,
+        -93.446875
       ]
     },
     "scene": "battania_village_e"
@@ -4322,8 +4322,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        329.92,
-        474.32
+        97.6765625,
+        -102.3453125
       ]
     },
     "scene": "battania_town_d"
@@ -4335,8 +4335,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        330.669,
-        464.535
+        97.465625,
+        -105.0875
       ]
     },
     "scene": "battania_village"
@@ -4348,8 +4348,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        322.65,
-        490.099
+        95.506625,
+        -97.81220898437502
       ]
     },
     "scene": "battania_village_j"
@@ -4361,8 +4361,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        317.477,
-        463.681
+        94.278125,
+        -105.80625
       ]
     },
     "scene": "battania_village_j"
@@ -4374,8 +4374,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        310.743,
-        502.263
+        91.75592,
+        -94.224779296875
       ]
     },
     "scene": "battania_village_j"
@@ -4387,8 +4387,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        366.386,
-        502.728
+        109.575,
+        -93.884375
       ]
     },
     "scene": "battania_village_j"
@@ -4400,8 +4400,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        231.631,
-        451.187
+        66.83564,
+        -109.28820898437499
       ]
     },
     "scene": "battania_town_b"
@@ -4413,8 +4413,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        218.118,
-        436.668
+        64.090625,
+        -114.2125
       ]
     },
     "scene": "battania_village_k"
@@ -4426,8 +4426,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        222.656,
-        476.266
+        65.04375,
+        -102.49375
       ]
     },
     "scene": "battania_village_h"
@@ -4439,8 +4439,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        232.425,
-        415.342
+        68.340625,
+        -120.165625
       ]
     },
     "scene": "battania_village"
@@ -4452,8 +4452,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        217.671,
-        418.186
+        63.965625,
+        -119.525
       ]
     },
     "scene": "battania_village_j"
@@ -4465,8 +4465,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        704.358,
-        451.659
+        215.74464499999996,
+        -109.149005859375
       ]
     },
     "scene": "khuzait_castle_siege_001"
@@ -4478,8 +4478,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        690.542,
-        441.721
+        211.392605,
+        -112.07993945312501
       ]
     },
     "scene": "khuzait_village_i"
@@ -4491,8 +4491,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        717.091,
-        465.939
+        219.934375,
+        -104.525
       ]
     },
     "scene": "khuzait_village_i"
@@ -4504,8 +4504,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        709.885,
-        371.244
+        217.60625,
+        -132.8375
       ]
     },
     "scene": "khuzait_castle_002"
@@ -4517,8 +4517,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        713.851,
-        397.271
+        218.7,
+        -125.0640625
       ]
     },
     "scene": "khuzait_village_i"
@@ -4530,8 +4530,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        721.218,
-        410.942
+        221.05554499999997,
+        -121.15733984375001
       ]
     },
     "scene": "khuzait_castle_siege_001"
@@ -4543,8 +4543,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        708.536,
-        417.264
+        217.1765625,
+        -118.915625
       ]
     },
     "scene": "khuzait_village_j"
@@ -4556,8 +4556,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        710.073,
-        498.92
+        218.45,
+        -94.9
       ]
     },
     "scene": "khuzait_castle_siege_001"
@@ -4569,8 +4569,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        698.84,
-        500.487
+        214.621875,
+        -94.27890625
       ]
     },
     "scene": "khuzait_village_k"
@@ -4582,8 +4582,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        746.52,
-        472.011
+        229.04375,
+        -102.7125
       ]
     },
     "scene": "khuzait_castle_002"
@@ -4595,8 +4595,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        740.446,
-        484.562
+        227.153125,
+        -99.05625
       ]
     },
     "scene": "khuzait_village_i"
@@ -4608,8 +4608,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        695.454,
-        573.924
+        213.653125,
+        -72.603125
       ]
     },
     "scene": "khuzait_castle_002"
@@ -4621,8 +4621,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        719.816,
-        580.276
+        220.965625,
+        -70.603125
       ]
     },
     "scene": "khuzait_village_a"
@@ -4634,8 +4634,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        692.123,
-        588.924
+        212.528125,
+        -68.43125
       ]
     },
     "scene": "khuzait_village_l"
@@ -4647,8 +4647,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        773.039,
-        379.774
+        236.278125,
+        -130.5015625
       ]
     },
     "scene": "khuzait_castle_002"
@@ -4660,8 +4660,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        780.221,
-        400.774
+        238.184375,
+        -124.1109375
       ]
     },
     "scene": "khuzait_village_b"
@@ -4673,8 +4673,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        712.864,
-        333.277
+        218.4734375,
+        -144.3921875
       ]
     },
     "scene": "khuzait_castle_002"
@@ -4686,8 +4686,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        719.985,
-        262.71
+        221.04375,
+        -165.0640625
       ]
     },
     "scene": "khuzait_village_j"
@@ -4699,8 +4699,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        707.939,
-        547.437
+        217.496875,
+        -80.275
       ]
     },
     "scene": "khuzait_castle_siege_001"
@@ -4712,8 +4712,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        726.58,
-        549.436
+        223.23125,
+        -79.86875
       ]
     },
     "scene": "khuzait_village_k"
@@ -4725,8 +4725,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        715.06,
-        563.231
+        219.45,
+        -75.9
       ]
     },
     "scene": "khuzait_village_c"
@@ -4738,8 +4738,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        732.504,
-        536.542
+        224.610635,
+        -84.11515234375
       ]
     },
     "scene": "khuzait_city_b"
@@ -4751,8 +4751,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        708.931,
-        531.474
+        217.6453125,
+        -85.01328125
       ]
     },
     "scene": "khuzait_village_a"
@@ -4764,8 +4764,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        727.05,
-        567.562
+        223.090625,
+        -74.571875
       ]
     },
     "scene": "khuzait_village_a"
@@ -4777,8 +4777,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        713.453,
-        517.762
+        219.16875,
+        -89.0640625
       ]
     },
     "scene": "khuzait_village_c"
@@ -4790,8 +4790,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        735.834,
-        514.359
+        225.6453125,
+        -90.32578125
       ]
     },
     "scene": "khuzait_village_b"
@@ -4803,8 +4803,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        726.701,
-        372.704
+        222.5125,
+        -132.49375
       ]
     },
     "scene": "khuzait_city_b"
@@ -4816,8 +4816,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        755.17,
-        395.284
+        231.1296875,
+        -125.7359375
       ]
     },
     "scene": "khuzait_village_j"
@@ -4829,8 +4829,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        718.979,
-        355.624
+        220.35026,
+        -137.471828125
       ]
     },
     "scene": "khuzait_village_a"
@@ -4842,8 +4842,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        703.672,
-        321.564
+        215.8171875,
+        -148.071875
       ]
     },
     "scene": "khuzait_village_a"
@@ -4855,8 +4855,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        738.013,
-        406.449
+        226.1765625,
+        -122.4546875
       ]
     },
     "scene": "khuzait_village_l"
@@ -4868,8 +4868,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        685.692,
-        480.056
+        210.85625,
+        -100.571875
       ]
     },
     "scene": "khuzait_town_004"
@@ -4881,8 +4881,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        685.203,
-        495.721
+        210.6296875,
+        -95.571875
       ]
     },
     "scene": "khuzait_village_c"
@@ -4894,8 +4894,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        713.592,
-        491.352
+        219.29375,
+        -97.05625
       ]
     },
     "scene": "khuzait_village_b"
@@ -4907,8 +4907,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        679.939,
-        466.064
+        209.0125,
+        -104.36875
       ]
     },
     "scene": "khuzait_village_a"
@@ -4920,8 +4920,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        745.826,
-        448.187
+        228.45,
+        -110.24375
       ]
     },
     "scene": "khuzait_city_a"
@@ -4933,8 +4933,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        764.184,
-        455.996
+        233.89921875,
+        -107.4546875
       ]
     },
     "scene": "khuzait_village_k"
@@ -4946,8 +4946,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        765.346,
-        421.777
+        234.0125,
+        -117.696875
       ]
     },
     "scene": "khuzait_village_l"
@@ -4959,8 +4959,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        778.934,
-        435.546
+        238.0203125,
+        -113.68125
       ]
     },
     "scene": "khuzait_village_l"
@@ -4972,8 +4972,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        729.983,
-        428.774
+        223.81651999999997,
+        -115.89829296875
       ]
     },
     "scene": "khuzait_village_i"
@@ -4985,8 +4985,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        684.811,
-        421.592
+        210.715625,
+        -117.9625
       ]
     },
     "scene": "khuzait_city_a"
@@ -4998,8 +4998,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        677.361,
-        384.64
+        207.24059,
+        -128.914375
       ]
     },
     "scene": "khuzait_village_a"
@@ -5011,8 +5011,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        689.435,
-        406.915
+        212.059375,
+        -122.4
       ]
     },
     "scene": "khuzait_village_k"
@@ -5024,8 +5024,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        692.479,
-        396.231
+        212.8875,
+        -125.603125
       ]
     },
     "scene": "khuzait_village_k"
@@ -5037,8 +5037,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        677.576,
-        439.742
+        207.308315,
+        -112.66358984375
       ]
     },
     "scene": "khuzait_village_a"
@@ -5050,8 +5050,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        752.864,
-        336.823
+        231.024035,
+        -143.016654296875
       ]
     },
     "scene": "khuzait_town_004"
@@ -5063,8 +5063,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        760.082,
-        309.814
+        232.2546875,
+        -151.28671875
       ]
     },
     "scene": "khuzait_village_l"
@@ -5076,8 +5076,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        772.258,
-        313.308
+        235.7859375,
+        -150.43125
       ]
     },
     "scene": "khuzait_village_j"
@@ -5089,8 +5089,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        752.231,
-        354.592
+        230.04375,
+        -137.9625
       ]
     },
     "scene": "khuzait_village_a"
@@ -5102,8 +5102,8 @@
     "position": {
       "type": "Point",
       "coordinates": [
-        792.021,
-        367.172
+        241.73125,
+        -134.18125
       ]
     },
     "scene": "khuzait_village_k"
