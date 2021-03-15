@@ -6,6 +6,7 @@ import store from './store';
 import 'buefy/dist/buefy.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/css/fontawesome.css';
+import 'leaflet/dist/leaflet.css';
 
 Vue.use(Buefy, {
   defaultIconPack: 'fas',

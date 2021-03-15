@@ -14,8 +14,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env",
-      "leaflet"
+      "webpack-env"
     ],
     "paths": {
       "@/*": [
