@@ -41,7 +41,7 @@ export default class Strategus extends Vue {
     maxBoundsViscosity: 0.8,
   };
   maxBounds = latLngBounds([
-    [-40.6, 5.2],
+    [-40.6, 5.3],
     [-215.4, 250.8],
   ]);
   showLoader = true;
