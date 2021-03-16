@@ -36,12 +36,12 @@ export default class Strategus extends Vue {
   mapOptions = {
     zoomSnap: 0.5,
     minZoom: 3,
-    maxZoom: 8,
+    maxZoom: 7,
     crs: CRS.Simple,
     maxBoundsViscosity: 0.8,
   };
   maxBounds = latLngBounds([
-    [-40.6, 5.1],
+    [-40.6, 5.2],
     [-215.4, 250.8],
   ]);
   showLoader = true;
