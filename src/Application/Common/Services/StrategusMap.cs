@@ -6,20 +6,20 @@ namespace Crpg.Application.Common.Services
 {
     internal interface IStrategusMap
     {
-        /// <summary>Get the spawning position depending on the region.</summary>
-        Point GetSpawnPosition(Region region);
+        /// <summary>Checks if two points are close enough to be considered equivalent.</summary>
+        bool ArePointsEquivalent(Point pointA, Point pointB);
 
         /// <summary>Checks if two points are close enough to interact with each other.</summary>
         bool ArePointsAtInteractionDistance(Point pointA, Point pointB);
-
-        /// <summary>Checks if two points are close enough to be considered equivalent.</summary>
-        bool ArePointsEquivalent(Point pointA, Point pointB);
 
         /// <summary>
         /// Calculate a position between the points specified by <see cref="current"/> and <see cref="target"/>, moving
         /// no farther than the distance specified by <see cref="maxDistanceDelta"/>.
         /// </summary>
         Point MovePointTowards(Point current, Point target, double maxDistanceDelta);
+
+        /// <summary>Get the spawning position depending on the region.</summary>
+        Point GetSpawnPosition(Region region);
     }
 
     internal class StrategusMap : IStrategusMap
@@ -38,27 +38,15 @@ namespace Crpg.Application.Common.Services
         }
 
         /// <inheritdoc />
-        public Point GetSpawnPosition(Region region)
+        public bool ArePointsEquivalent(Point pointA, Point pointB)
         {
-            return region switch
-            {
-                Region.Europe => new Point(_width / 2.0, _height / 2.0),
-                Region.NorthAmerica => new Point(_width + _width / 2.0, _height / 2.0),
-                Region.Asia => new Point(2 * _width + _width / 2.0, _height / 2.0),
-                _ => throw new ArgumentOutOfRangeException(nameof(region), region, null),
-            };
+            return pointA.EqualsExact(pointB, _equivalentDistance);
         }
 
         /// <inheritdoc />
         public bool ArePointsAtInteractionDistance(Point pointA, Point pointB)
         {
             return pointA.EqualsExact(pointB, _interactionDistance);
-        }
-
-        /// <inheritdoc />
-        public bool ArePointsEquivalent(Point pointA, Point pointB)
-        {
-            return pointA.EqualsExact(pointB, _equivalentDistance);
         }
 
         /// <inheritdoc />
@@ -80,6 +68,18 @@ namespace Crpg.Application.Common.Services
             return new Point(
                 current.X + vectorX / distance * maxDistanceDelta,
                 current.Y + vectorY / distance * maxDistanceDelta);
+        }
+
+        /// <inheritdoc />
+        public Point GetSpawnPosition(Region region)
+        {
+            return region switch
+            {
+                Region.Europe => new Point(_width / 2.0, _height / 2.0),
+                Region.NorthAmerica => new Point(_width + _width / 2.0, _height / 2.0),
+                Region.Asia => new Point(2 * _width + _width / 2.0, _height / 2.0),
+                _ => throw new ArgumentOutOfRangeException(nameof(region), region, null),
+            };
         }
     }
 }
