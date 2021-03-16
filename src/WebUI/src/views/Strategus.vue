@@ -30,7 +30,7 @@ import { LMap, LTileLayer, LMarker, LPopup, LTooltip, LIcon } from 'vue2-leaflet
 })
 export default class Strategus extends Vue {
   zoom = 6;
-  center = latLng(-137, 131);
+  center = latLng(-139, 122.75);
   url = 'http://pecores.fr/gigamap/{z}/{y}/{x}.png';
   attribution = 'TaleWorlds Entertainment';
   mapOptions = {
