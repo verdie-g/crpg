@@ -33,8 +33,8 @@ namespace Crpg.Application.Common.Services
         {
             _width = constants.StrategusMapWidth;
             _height = constants.StrategusMapHeight;
-            _interactionDistance = constants.StrategusInteractionDistance;
-            _equivalentDistance = constants.StrategusEquivalentDistance;
+            _interactionDistance = _width * _height / 30_000;
+            _equivalentDistance = _width * _height / 300_000;
         }
 
         /// <inheritdoc />
