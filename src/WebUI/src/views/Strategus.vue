@@ -1,12 +1,18 @@
 <template>
-  <div>
+  <div class="main_strategus height100 has-navbar-fixed-top">
+    <transition name="fade">
+      <div v-if="showLoader" class="height100" id="loader">
+        <img src="@/assets/loader.gif" />
+      </div>
+    </transition>
+
     <l-map
-      class="map"
+      class="height100"
+      id="map"
       :zoom="zoom"
       :center="center"
       :options="mapOptions"
       :max-bounds="maxBounds"
-      @click="infoPos"
     >
       <l-tile-layer :url="url" :attribution="attribution" />
     </l-map>
@@ -22,7 +28,7 @@ import { LMap, LTileLayer, LMarker, LPopup, LTooltip, LIcon } from 'vue2-leaflet
   components: { LMap, LTileLayer, LMarker, LPopup, LTooltip, LIcon },
 })
 export default class Strategus extends Vue {
-  zoom = 8;
+  zoom = 6;
   center = latLng(-137, 131);
   url = 'http://pecores.fr/gigamap/{z}/{y}/{x}.png';
   attribution = 'TaleWorlds Entertainment';
@@ -31,22 +37,41 @@ export default class Strategus extends Vue {
     minZoom: 3,
     maxZoom: 8,
     crs: CRS.Simple,
+    maxBoundsViscosity: 0.8,
   };
   maxBounds = latLngBounds([
     [-40.6, 5.1],
     [-215.4, 250.8],
   ]);
-  infoPOS = null;
+  showLoader = true;
 
-  infoPos(event: any) {
-    console.log(event.latlng);
+  created() {
+    this.showLoader = false;
   }
 }
 </script>
 
 <style scoped lang="scss">
-.map {
-  height: 900px;
-  width: 100%;
+.main_strategus {
+  #map {
+    width: 100%;
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+  #loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #131313;
+    > img {
+      height: 60px;
+    }
+  }
 }
 </style>

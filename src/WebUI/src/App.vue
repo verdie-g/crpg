@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="height100">
     <nav v-if="user">
-      <b-navbar fixed-top>
+      <b-navbar class="navbar" fixed-top>
         <template slot="brand">
           <b-navbar-item tag="router-link" :to="{ path: '/' }">cRPG</b-navbar-item>
         </template>
@@ -55,11 +55,11 @@
       </b-navbar>
     </nav>
 
-    <main>
+    <main class="height100">
       <router-view />
     </main>
 
-    <footer class="footer">
+    <footer v-if="$route.name !== 'strategus'" class="footer">
       <div class="level">
         <div class="level-item">
           <a href="https://www.patreon.com/crpg" target="_blank" title="Donate on Patreon">
@@ -126,10 +126,25 @@ export default class App extends Vue {
     }
   }
 
+  mounted() {
+    if (this.$route.name === 'strategus') {
+      document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+    } else {
+      document.getElementsByTagName('html')[0].style.overflow = 'visible';
+    }
+  }
+
   signOut(): void {
     signOut();
   }
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.navbar {
+  z-index: 9999 !important;
+}
+.height100 {
+  height: 100%;
+}
+</style>
