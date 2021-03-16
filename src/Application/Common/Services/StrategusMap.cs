@@ -6,6 +6,8 @@ namespace Crpg.Application.Common.Services
 {
     internal interface IStrategusMap
     {
+        double ViewDistance { get; }
+
         /// <summary>Checks if two points are close enough to be considered equivalent.</summary>
         bool ArePointsEquivalent(Point pointA, Point pointB);
 
@@ -38,7 +40,10 @@ namespace Crpg.Application.Common.Services
             _height = constants.StrategusMapHeight;
             _interactionDistance = _width * _height / 30_000;
             _equivalentDistance = _width * _height / 300_000;
+            ViewDistance = _width * _height / 500;
         }
+
+        public double ViewDistance { get; }
 
         /// <inheritdoc />
         public bool ArePointsEquivalent(Point pointA, Point pointB)
