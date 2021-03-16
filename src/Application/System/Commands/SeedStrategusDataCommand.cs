@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Strategus;
 using Microsoft.EntityFrameworkCore;
-using NetTopologySuite.Geometries;
 
 namespace Crpg.Application.System.Commands
 {
@@ -20,13 +19,13 @@ namespace Crpg.Application.System.Commands
         {
             private readonly ICrpgDbContext _db;
             private readonly IStrategusSettlementsSource _settlementsSource;
-            private readonly Constants _constants;
+            private readonly IStrategusMap _strategusMap;
 
-            public Handler(ICrpgDbContext db, IStrategusSettlementsSource settlementsSource, Constants constants)
+            public Handler(ICrpgDbContext db, IStrategusSettlementsSource settlementsSource, IStrategusMap strategusMap)
             {
                 _db = db;
                 _settlementsSource = settlementsSource;
-                _constants = constants;
+                _strategusMap = strategusMap;
             }
 
             public async Task<Result> Handle(SeedStrategusDataCommand request, CancellationToken cancellationToken)
@@ -53,7 +52,7 @@ namespace Crpg.Application.System.Commands
                             Type = settlementCreation.Type,
                             Culture = settlementCreation.Culture,
                             Region = region,
-                            Position = TranslatePositionForRegion(settlementCreation.Position, region),
+                            Position = _strategusMap.TranslatePositionForRegion(settlementCreation.Position, Region.Europe, region),
                             Scene = settlementCreation.Scene,
                         };
 
@@ -88,18 +87,6 @@ namespace Crpg.Application.System.Commands
 
             private static IEnumerable<Region> GetRegions() => Enum.GetValues(typeof(Region)).Cast<Region>();
 
-            private Point TranslatePositionForRegion(Point pos, Region region)
-            {
-                // Europe map is duplicated twice for NorthAmerica and Asia and are put together but NorthAmerica is
-                // horizontally mirrored.
-                return region switch
-                {
-                    Region.Europe => new Point(pos.X, pos.Y),
-                    Region.NorthAmerica => new Point(_constants.StrategusMapWidth * 2 - pos.X, pos.Y),
-                    Region.Asia => new Point(_constants.StrategusMapWidth * 2 + pos.X, pos.Y),
-                    _ => throw new ArgumentOutOfRangeException(nameof(region), region, null),
-                };
-            }
         }
     }
 }

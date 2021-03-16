@@ -18,6 +18,9 @@ namespace Crpg.Application.Common.Services
         /// </summary>
         Point MovePointTowards(Point current, Point target, double maxDistanceDelta);
 
+        /// <summary>Translates a point from <see cref="sourceRegion"/> to <see cref="targetRegion"/>.</summary>
+        Point TranslatePositionForRegion(Point pos, Region sourceRegion, Region targetRegion);
+
         /// <summary>Get the spawning position depending on the region.</summary>
         Point GetSpawnPosition(Region region);
     }
@@ -70,16 +73,36 @@ namespace Crpg.Application.Common.Services
                 current.Y + vectorY / distance * maxDistanceDelta);
         }
 
+        public Point TranslatePositionForRegion(Point pos, Region sourceRegion, Region targetRegion)
+        {
+            if (sourceRegion == targetRegion)
+            {
+                return (Point)pos.Copy();
+            }
+
+            // Europe map is duplicated twice for NorthAmerica and Asia and are put together but NorthAmerica is
+            // horizontally mirrored. | EU | AN | AS |
+            double x = (sourceRegion, targetRegion) switch
+            {
+                (Region.Europe, Region.NorthAmerica) => 2 * _width - pos.X,
+                (Region.NorthAmerica, Region.Europe) => 2 * _width - pos.X,
+
+                (Region.Europe, Region.Asia) => 2 * _width + pos.X,
+                (Region.Asia, Region.Europe) => -2 * _width + pos.X,
+
+                (Region.NorthAmerica, Region.Asia) => 4 * _width - pos.X,
+                (Region.Asia, Region.NorthAmerica) => 4 * _width - pos.X,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+
+            return new Point(x, pos.Y);
+        }
+
         /// <inheritdoc />
         public Point GetSpawnPosition(Region region)
         {
-            return region switch
-            {
-                Region.Europe => new Point(_width / 2.0, _height / 2.0),
-                Region.NorthAmerica => new Point(_width + _width / 2.0, _height / 2.0),
-                Region.Asia => new Point(2 * _width + _width / 2.0, _height / 2.0),
-                _ => throw new ArgumentOutOfRangeException(nameof(region), region, null),
-            };
+            var mapCenter = new Point(_width / 2.0, _height / 2.0);
+            return TranslatePositionForRegion(mapCenter, Region.Europe, region);
         }
     }
 }

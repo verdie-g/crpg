@@ -1,5 +1,6 @@
 ﻿using Crpg.Application.Common;
 using Crpg.Application.Common.Services;
+using Crpg.Domain.Entities;
 using NetTopologySuite.Geometries;
 using NUnit.Framework;
 
@@ -58,12 +59,29 @@ namespace Crpg.Application.UTest.Common.Services
         }
 
         [Test]
-        public void MovePointTowardsShouldMoveFurtherThanTarget()
+        public void MovePointTowardsShouldNotMoveFurtherThanTarget()
         {
             var p1 = new Point(0, 0);
             var p2 = new Point(100, 100);
             var p3 = StrategusMap.MovePointTowards(p1, p2, 10000000);
             Assert.AreEqual(p2, p3);
+        }
+
+        [TestCase(Region.Europe, Region.Europe, 4, 7)]
+        [TestCase(Region.Europe, Region.NorthAmerica, 1996, 7)]
+        [TestCase(Region.Europe, Region.Asia, 2004, 7)]
+        [TestCase(Region.NorthAmerica, Region.Europe, 1996, 7)]
+        [TestCase(Region.NorthAmerica, Region.NorthAmerica, 4, 7)]
+        [TestCase(Region.NorthAmerica, Region.Asia, 3996, 7)]
+        [TestCase(Region.Asia, Region.Europe, -1996, 7)]
+        [TestCase(Region.Asia, Region.NorthAmerica, 3996, 7)]
+        [TestCase(Region.Asia, Region.Asia, 4, 7)]
+        public void TranslatePositionForRegionTest(Region source, Region target, double expectedX, double expectedY)
+        {
+            Point p1 = new Point(4, 7);
+            Point p2 = StrategusMap.TranslatePositionForRegion(p1, source, target);
+            Assert.AreEqual(expectedX, p2.X);
+            Assert.AreEqual(expectedY, p2.Y);
         }
     }
 }
