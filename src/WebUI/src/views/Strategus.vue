@@ -7,12 +7,13 @@
     </transition>
 
     <l-map
-      class="height100"
+      class="height100 has-navbar-fixed-top"
       id="map"
       :zoom="zoom"
       :center="center"
       :options="mapOptions"
       :max-bounds="maxBounds"
+      @click="infoPos"
     >
       <l-tile-layer :url="url" :attribution="attribution" />
     </l-map>
@@ -44,7 +45,9 @@ export default class Strategus extends Vue {
     [-215.4, 250.8],
   ]);
   showLoader = true;
-
+  infoPos(event: any) {
+    console.log(event.latlng);
+  }
   created() {
     this.showLoader = false;
   }
@@ -53,6 +56,7 @@ export default class Strategus extends Vue {
 
 <style scoped lang="scss">
 .main_strategus {
+  padding-top: 14px;
   #map {
     width: 100%;
   }
