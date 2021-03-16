@@ -39,6 +39,7 @@ export default class Strategus extends Vue {
     maxZoom: 7,
     crs: CRS.Simple,
     maxBoundsViscosity: 0.8,
+    inertiaDeceleration: 8000,
   };
   maxBounds = latLngBounds([
     [-40.6, 5.3],
@@ -59,6 +60,7 @@ export default class Strategus extends Vue {
   padding-top: 14px;
   #map {
     width: 100%;
+    background-color: #313131;
   }
   .fade-enter-active,
   .fade-leave-active {
@@ -72,7 +74,14 @@ export default class Strategus extends Vue {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #131313;
+    background-color: #313131;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2000;
+
     > img {
       height: 60px;
     }
