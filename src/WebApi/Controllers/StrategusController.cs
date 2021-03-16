@@ -19,8 +19,8 @@ namespace Crpg.WebApi.Controllers
         /// <returns>Current strategus user, visible users and settlements, etc.</returns>
         /// <response code="200">Ok.</response>
         /// <response code="400">User was not registered to strategus.</response>
-        [HttpGet("users/self")]
-        public Task<ActionResult<Result<StrategusUpdate>>> GetStrategusUser()
+        [HttpGet("update")]
+        public Task<ActionResult<Result<StrategusUpdate>>> GetStrategusUpdate()
         {
             return ResultToActionAsync(Mediator.Send(new GetStrategusUpdateQuery
             {
@@ -39,7 +39,7 @@ namespace Crpg.WebApi.Controllers
         public Task<ActionResult<Result<StrategusUserViewModel>>> RegisterStrategusUser([FromBody] CreateStrategusUserCommand req)
         {
             req.UserId = CurrentUser.UserId;
-            return ResultToCreatedAtActionAsync(nameof(GetStrategusUser), null, null, Mediator.Send(req));
+            return ResultToCreatedAtActionAsync(nameof(GetStrategusUpdate), null, null, Mediator.Send(req));
         }
 
         /// <summary>
