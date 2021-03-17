@@ -8,6 +8,7 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Strategus.Models;
+using Crpg.Domain.Entities.Strategus;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Strategus.Queries
@@ -18,6 +19,17 @@ namespace Crpg.Application.Strategus.Queries
 
         internal class Handler : IMediatorRequestHandler<GetStrategusUpdateQuery, StrategusUpdate>
         {
+            private static readonly StrategusUserStatus[] VisibleStatuses =
+            {
+                StrategusUserStatus.Idle,
+                StrategusUserStatus.MovingToPoint,
+                StrategusUserStatus.FollowingUser,
+                StrategusUserStatus.MovingToSettlement,
+                StrategusUserStatus.MovingToAttackUser,
+                StrategusUserStatus.MovingToAttackSettlement,
+                StrategusUserStatus.InBattle,
+            };
+
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
             private readonly IStrategusMap _strategusMap;
@@ -46,12 +58,14 @@ namespace Crpg.Application.Strategus.Queries
                 }
 
                 var visibleUsers = await _db.StrategusUsers
-                    .Where(u => u.UserId != user.Id && u.Position.Distance(user.StrategusUser.Position) < _strategusMap.ViewDistance)
+                    .Where(u => u.UserId != user.Id
+                                && u.Position.IsWithinDistance(user.StrategusUser.Position, _strategusMap.ViewDistance)
+                                && VisibleStatuses.Contains(u.Status))
                     .ProjectTo<StrategusUserPublicViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
                 var visibleSettlements = await _db.StrategusSettlements
-                    .Where(u => u.Position.Distance(user.StrategusUser.Position) < _strategusMap.ViewDistance)
+                    .Where(s => s.Position.IsWithinDistance(user.StrategusUser.Position, _strategusMap.ViewDistance))
                     .ProjectTo<StrategusSettlementViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 

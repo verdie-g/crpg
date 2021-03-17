@@ -44,7 +44,7 @@ namespace Crpg.Application.UTest.Strategus
         }
 
         [Test]
-        public async Task ShouldReturnStrategusUserWithSurroundings()
+        public async Task ShouldReturnStrategusUserWithWhatsVisible()
         {
             var user = new StrategusUser
             {
@@ -61,7 +61,13 @@ namespace Crpg.Application.UTest.Strategus
                 Position = new Point(1000, 1000),
                 User = new User(),
             };
-            ArrangeDb.StrategusUsers.AddRange(user, closeUser, farUser);
+            var userInSettlement = new StrategusUser
+            {
+                Position = new Point(10.1, 10.1),
+                Status = StrategusUserStatus.IdleInSettlement,
+                User = new User(),
+            };
+            ArrangeDb.StrategusUsers.AddRange(user, closeUser, farUser, userInSettlement);
 
             var closeSettlement = new StrategusSettlement { Position = new Point(10.1, 10.1) };
             var farSettlement = new StrategusSettlement { Position = new Point(-1000, -1000) };
