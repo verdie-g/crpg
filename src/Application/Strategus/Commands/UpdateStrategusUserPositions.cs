@@ -86,10 +86,18 @@ namespace Crpg.Application.Strategus.Commands
                                 continue;
                             }
 
-                            if (MoveUserTowardsPoint(user, user.TargetedUser.Position, req.DeltaTime, true)
-                                && user.Status == StrategusUserStatus.MovingToAttackUser)
+                            if (user.Status == StrategusUserStatus.MovingToAttackUser)
                             {
-                                // TODO: attack user
+                                if (MoveUserTowardsPoint(user, user.TargetedUser.Position, req.DeltaTime, true))
+                                {
+                                    // TODO: attack user
+                                }
+                            }
+                            else if (user.Status == StrategusUserStatus.FollowingUser)
+                            {
+                                // Set canInteractWithTarget to false to the user doesn't stop to interaction range
+                                // but stops on the target user itself.
+                                MoveUserTowardsPoint(user, user.TargetedUser.Position, req.DeltaTime, false);
                             }
 
                             break;

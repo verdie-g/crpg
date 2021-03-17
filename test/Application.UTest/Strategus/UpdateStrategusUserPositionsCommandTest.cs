@@ -144,9 +144,19 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
                 .Returns(newPosition);
-            strategusMapMock
-                .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
-                .Returns(false);
+            if (status == StrategusUserStatus.FollowingUser)
+            {
+                strategusMapMock
+                    .Setup(m => m.ArePointsEquivalent(newPosition, destination))
+                    .Returns(false);
+            }
+            else
+            {
+                strategusMapMock
+                    .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
+                    .Returns(false);
+            }
+
             var handler = new UpdateStrategusUserPositionsCommand.Handler(ActDb, strategusMapMock.Object);
             await handler.Handle(new UpdateStrategusUserPositionsCommand
             {
