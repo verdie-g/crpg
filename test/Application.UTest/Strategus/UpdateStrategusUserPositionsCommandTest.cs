@@ -121,6 +121,38 @@ namespace Crpg.Application.UTest.Strategus
 
         [TestCase(StrategusUserStatus.FollowingUser)]
         [TestCase(StrategusUserStatus.MovingToAttackUser)]
+        public async Task ShouldStopIfMovingToAUserNotInSight(StrategusUserStatus status)
+        {
+            var strategusUser = new StrategusUser
+            {
+                Status = status,
+                Position = new Point(1, 2),
+                TargetedUser = new StrategusUser
+                {
+                    Position = new Point(5, 6),
+                    User = new User(),
+                },
+                User = new User(),
+            };
+            ArrangeDb.StrategusUsers.Add(strategusUser);
+            await ArrangeDb.SaveChangesAsync();
+
+            var strategusMapMock = new Mock<IStrategusMap>();
+            strategusMapMock.Setup(m => m.ViewDistance).Returns(0);
+
+            var handler = new UpdateStrategusUserPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            await handler.Handle(new UpdateStrategusUserPositionsCommand
+            {
+                DeltaTime = TimeSpan.FromMinutes(1)
+            }, CancellationToken.None);
+
+            strategusUser = await AssertDb.StrategusUsers.FirstAsync(u => u.UserId == strategusUser.UserId);
+            Assert.AreEqual(StrategusUserStatus.Idle, strategusUser.Status);
+            Assert.IsNull(strategusUser.TargetedUserId);
+        }
+
+        [TestCase(StrategusUserStatus.FollowingUser)]
+        [TestCase(StrategusUserStatus.MovingToAttackUser)]
         public async Task MovingToAnotherUserShouldMove(StrategusUserStatus status)
         {
             var position = new Point(1, 2);
@@ -141,6 +173,7 @@ namespace Crpg.Application.UTest.Strategus
 
             var newPosition = new Point(2, 3);
             var strategusMapMock = new Mock<IStrategusMap>();
+            strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
                 .Returns(newPosition);

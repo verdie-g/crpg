@@ -86,6 +86,14 @@ namespace Crpg.Application.Strategus.Commands
                                 continue;
                             }
 
+                            if (!user.Position.IsWithinDistance(user.TargetedUser.Position, _strategusMap.ViewDistance))
+                            {
+                                // Followed user is not in sight anymore. Stop.
+                                user.Status = StrategusUserStatus.Idle;
+                                user.TargetedUser = null;
+                                continue;
+                            }
+
                             if (user.Status == StrategusUserStatus.MovingToAttackUser)
                             {
                                 if (MoveUserTowardsPoint(user, user.TargetedUser.Position, req.DeltaTime, true))
