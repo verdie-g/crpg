@@ -1,19 +1,6 @@
 <template>
-  <div class="main_strategus height100 has-navbar-fixed-top">
-    <transition name="fade">
-      <div v-if="showLoader" class="height100" id="loader">
-        <img src="@/assets/loader.gif" />
-      </div>
-    </transition>
-
-    <l-map
-      class="height100 has-navbar-fixed-top"
-      id="map"
-      :zoom="zoom"
-      :center="center"
-      :options="mapOptions"
-      :max-bounds="maxBounds"
-    >
+  <div class="mainStrategus">
+    <l-map class="map" :zoom="zoom" :center="center" :options="mapOptions" :max-bounds="maxBounds">
       <l-tile-layer :url="url" :attribution="attribution" />
     </l-map>
   </div>
@@ -44,44 +31,20 @@ export default class Strategus extends Vue {
     [-40.6, 5.3],
     [-215.4, 250.8],
   ]);
-  showLoader = true;
-
-  created() {
-    this.showLoader = false;
-  }
 }
 </script>
 
-<style scoped lang="scss">
-.main_strategus {
-  padding-top: 14px;
-  #map {
-    width: 100%;
-    background-color: #313131;
-  }
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.5s;
-  }
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
-  }
-  #loader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #313131;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 2000;
+<style lang="scss">
+html {
+  overflow-y: auto;
+}
+</style>
 
-    > img {
-      height: 60px;
-    }
+<style scoped lang="scss">
+.mainStrategus {
+  .map {
+    height: calc(100vh - 3.25rem);
+    background-color: #313131;
   }
 }
 </style>
