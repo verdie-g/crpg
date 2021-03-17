@@ -196,5 +196,11 @@ namespace Crpg.Application.Common.Results
             Title = "User has not registered to strategus",
             Detail = $"User with id '{userId}' has not registered to strategus",
         };
+
+        public static Error UserNotVisible(int userId) => new Error(ErrorType.Validation, ErrorCode.UserNotVisible)
+        {
+            Title = "User is not visible",
+            Detail = $"User with id '{userId}' is too far to be visible",
+        };
     }
 }
