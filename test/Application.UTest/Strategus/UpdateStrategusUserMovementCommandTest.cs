@@ -203,7 +203,7 @@ namespace Crpg.Application.UTest.Strategus
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.UserNotVisible, res.Errors![0].Code);
+            Assert.AreEqual(ErrorCode.UserNotInSight, res.Errors![0].Code);
         }
 
         [TestCase(StrategusUserStatus.FollowingUser)]

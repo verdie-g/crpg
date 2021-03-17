@@ -88,7 +88,7 @@ namespace Crpg.Application.Strategus.Commands
 
                     if (!strategusUser.Position.IsWithinDistance(targetUser.Position, _strategusMap.ViewDistance))
                     {
-                        return new Result<StrategusUserViewModel>(CommonErrors.UserNotVisible(req.TargetedUserId));
+                        return new Result<StrategusUserViewModel>(CommonErrors.UserNotInSight(req.TargetedUserId));
                     }
 
                     strategusUser.Status = req.Status;
