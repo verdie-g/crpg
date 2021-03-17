@@ -49,13 +49,13 @@ namespace Crpg.Application.Common.Services
             {
                 Attributes = new CharacterAttributes
                 {
-                    Points = respecialization ? (character.Level - 1) * _constants.AttributePointsPerLevel : 0,
+                    Points = respecialization ? (character.Level - 1) * _constants.AttributePointsPerLevel : _constants.DefaultAttributePoints,
                     Strength = _constants.DefaultStrength,
                     Agility = _constants.DefaultAgility,
                 },
                 Skills = new CharacterSkills
                 {
-                    Points = respecialization ? (character.Level - 1) * _constants.SkillPointsPerLevel : 0,
+                    Points = respecialization ? (character.Level - 1) * _constants.SkillPointsPerLevel : _constants.DefaultSkillPoints,
                 },
                 WeaponProficiencies = new CharacterWeaponProficiencies
                 {
