@@ -73,7 +73,7 @@ namespace Crpg.Application.UTest.Strategus
             Assert.AreEqual(user.Id, strategusUser.Id);
             Assert.AreEqual(Region.NorthAmerica, strategusUser.Region);
             Assert.AreEqual(0, strategusUser.Silver);
-            Assert.AreEqual(0, strategusUser.Troops);
+            Assert.AreEqual(1, strategusUser.Troops);
             Assert.AreEqual(new Point(150.0, 50.0), strategusUser.Position);
             Assert.AreEqual(StrategusUserStatus.Idle, strategusUser.Status);
             Assert.AreEqual(0, strategusUser.Waypoints.Count);

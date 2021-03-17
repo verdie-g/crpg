@@ -63,7 +63,7 @@ namespace Crpg.Application.Strategus.Commands
                 {
                     Region = req.Region,
                     Silver = 0,
-                    Troops = 0,
+                    Troops = 1,
                     Position = _strategusMap.GetSpawnPosition(req.Region),
                     Status = StrategusUserStatus.Idle,
                     Waypoints = MultiPoint.Empty,
