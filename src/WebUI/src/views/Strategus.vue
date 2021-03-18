@@ -8,6 +8,7 @@
       :options="mapOptions"
       :max-bounds="maxBounds"
       @moveend="setDisplayedBounds($refs.map.mapObject.getBounds())"
+      @click="test"
     >
       <l-tile-layer :url="url" :attribution="attribution" />
       <l-marker
@@ -16,7 +17,10 @@
         :key="settlement.id"
         :icon-url="IconeImg"
         :icon-size="[16, 16]"
-      ></l-marker>
+        name="test"
+      >
+        test
+      </l-marker>
     </l-map>
   </div>
 </template>
@@ -27,9 +31,9 @@ import { latLng, latLngBounds, CRS } from 'leaflet';
 import { LMap, LTileLayer, LMarker, LPopup, LTooltip, LIcon } from 'vue2-leaflet';
 import strategusModule from '@/store/strategus-module';
 import Settlement from '@/models/settlement';
+import IconeImg from '@/assets/map-marker-icon.png';
 import SettlementType from '@/models/settlement-type';
 import { Icon } from 'leaflet';
-import IconeImg from '@/assets/map-marker-icon.png';
 
 delete (Icon.Default.prototype as any)._getIconUrl;
 
@@ -87,7 +91,12 @@ export default class Strategus extends Vue {
   }
 
   mounted() {
-    this.setDisplayedBounds(this.$refs.map.mapObject.getBounds());
+    console.log(this.$refs.map.mapObject);
+    this.setDisplayedBounds(this.$refs.map.getBounds());
+  }
+
+  test(event: any) {
+    console.log(event.latlng);
   }
 }
 </script>
