@@ -94,6 +94,13 @@ const routes = [
     meta: { scrollToTop: true },
   },
   {
+    path: '/strategus',
+    name: 'strategus',
+    component: () => import('../views/Strategus.vue'),
+    beforeEnter: isSignedInGuard,
+    meta: { footer: false },
+  },
+  {
     path: '/settings',
     name: 'settings',
     component: () => import('../views/Settings.vue'),

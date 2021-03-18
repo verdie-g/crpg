@@ -9,6 +9,7 @@
         <template slot="start">
           <b-navbar-item tag="router-link" :to="{ path: '/characters' }">Characters</b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ path: '/shop' }">Shop</b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ path: '/strategus' }">Strategus</b-navbar-item>
         </template>
 
         <template slot="end">
@@ -57,8 +58,8 @@
     <main>
       <router-view />
     </main>
-
-    <footer class="footer">
+    <!-- Display or not the footer depending on the current page -->
+    <footer v-if="$route.meta.footer === true || $route.meta.footer === undefined" class="footer">
       <div class="level">
         <div class="level-item">
           <a href="https://www.patreon.com/crpg" target="_blank" title="Donate on Patreon">
@@ -73,11 +74,7 @@
         </div>
 
         <div class="level-item">
-          <a
-            href="https://forum.c-rpg.eu"
-            target="_blank"
-            title="Join our Forum"
-          >
+          <a href="https://forum.c-rpg.eu" target="_blank" title="Join our Forum">
             <b-icon icon="discourse" pack="fab" size="is-large" aria-label="cRPG Forum" />
           </a>
         </div>
@@ -134,5 +131,3 @@ export default class App extends Vue {
   }
 }
 </script>
-
-<style lang="scss"></style>
