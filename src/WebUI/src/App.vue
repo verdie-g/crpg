@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav v-if="user">
-      <b-navbar class="navbar" fixed-top>
+      <b-navbar style="z-index: 1100" class="navbar" fixed-top>
         <template slot="brand">
           <b-navbar-item tag="router-link" :to="{ path: '/' }">cRPG</b-navbar-item>
         </template>
@@ -59,7 +59,7 @@
       <router-view />
     </main>
 
-    <footer class="footer">
+    <footer v-if="$route.meta.footer" class="footer">
       <div class="level">
         <div class="level-item">
           <a href="https://www.patreon.com/crpg" target="_blank" title="Donate on Patreon">

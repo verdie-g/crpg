@@ -21,20 +21,21 @@ export default class Strategus extends Vue {
   attribution = 'TaleWorlds Entertainment';
   mapOptions = {
     zoomSnap: 0.5,
-    minZoom: 3,
+    minZoom: 1,
     maxZoom: 7,
     crs: CRS.Simple,
     maxBoundsViscosity: 0.8,
     inertiaDeceleration: 8000,
   };
   maxBounds = latLngBounds([
-    [-40.6, 5.3],
-    [-215.4, 250.8],
+    [0, 0],
+    [-214.88, 768],
   ]);
 }
 </script>
 
 <style lang="scss">
+// Hide vertical scrollbar
 html {
   overflow-y: auto;
 }
@@ -43,7 +44,8 @@ html {
 <style scoped lang="scss">
 .mainStrategus {
   .map {
-    height: calc(100vh - 3.25rem);
+    //calc(Screen height - navbar)
+    height: calc(100vh - 4.25rem);
     background-color: #313131;
   }
 }

@@ -79,19 +79,21 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
+    meta: { footer: true },
   },
   {
     path: '/characters',
     name: 'characters',
     component: () => import('../views/Characters.vue'),
     beforeEnter: isSignedInGuard,
+    meta: { footer: true },
   },
   {
     path: '/shop',
     name: 'shop',
     component: () => import('../views/Shop.vue'),
     beforeEnter: isSignedInGuard,
-    meta: { scrollToTop: true },
+    meta: { scrollToTop: true, footer: true },
   },
   {
     path: '/strategus',
@@ -104,6 +106,7 @@ const routes = [
     name: 'settings',
     component: () => import('../views/Settings.vue'),
     beforeEnter: isSignedInGuard,
+    meta: { footer: true },
   },
   {
     path: '/admin',
@@ -115,6 +118,7 @@ const routes = [
     path: '*',
     name: 'not-found',
     component: () => import('../views/NotFound.vue'),
+    meta: { footer: true },
   },
 ];
 
