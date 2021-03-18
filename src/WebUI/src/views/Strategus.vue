@@ -21,7 +21,7 @@ export default class Strategus extends Vue {
   attribution = '<a target="_blank" href="https://www.taleworlds.com">TaleWorlds Entertainment</a>';
   mapOptions = {
     zoomSnap: 0.5,
-    minZoom: 1,
+    minZoom: 2,
     maxZoom: 7,
     crs: CRS.Simple,
     maxBoundsViscosity: 0.8,
