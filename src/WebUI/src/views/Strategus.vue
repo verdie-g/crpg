@@ -1,14 +1,13 @@
 <template>
-  <div>
+  <div class="mainStrategus">
     <l-map
-      class="map"
       ref="map"
+      class="map"
       :zoom="zoom"
       :center="center"
       :options="mapOptions"
       :max-bounds="maxBounds"
-      @click="infoPos"
-      @moveend="setVisibleBounds($refs.map.mapObject.getBounds())"
+      @moveend="setDisplayedBounds($refs.map.mapObject.getBounds())"
     >
       <l-tile-layer :url="url" :attribution="attribution" />
       <l-marker
@@ -28,8 +27,9 @@ import { latLng, latLngBounds, CRS } from 'leaflet';
 import { LMap, LTileLayer, LMarker, LPopup, LTooltip, LIcon } from 'vue2-leaflet';
 import strategusModule from '@/store/strategus-module';
 import Settlement from '@/models/settlement';
-import IconeImg from '@/assets/map-marker-icon.png';
+import SettlementType from '@/models/settlement-type';
 import { Icon } from 'leaflet';
+import IconeImg from '@/assets/map-marker-icon.png';
 
 delete (Icon.Default.prototype as any)._getIconUrl;
 
@@ -43,57 +43,68 @@ Icon.Default.mergeOptions({
   components: { LMap, LTileLayer, LMarker, LPopup, LTooltip, LIcon },
 })
 export default class Strategus extends Vue {
-  zoom = 8;
-  center = latLng(-137, 131);
+  zoom = 6;
+  center = latLng(-139, 122.75);
   url = 'http://pecores.fr/gigamap/{z}/{y}/{x}.png';
-  attribution = 'TaleWorlds Entertainment';
+  attribution = '<a target="_blank" href="https://www.taleworlds.com">TaleWorlds Entertainment</a>';
   mapOptions = {
     zoomSnap: 0.5,
-    minZoom: 2.5,
-    maxZoom: 8,
+    minZoom: 2,
+    maxZoom: 7,
     crs: CRS.Simple,
+    maxBoundsViscosity: 0.8,
+    inertiaDeceleration: 2000,
   };
-  IconeImg = IconeImg;
   maxBounds = latLngBounds([
-    [-40.6, 5.1],
-    [-215.4, 250.8],
+    [0, 0],
+    [-214.88, 768],
   ]);
-  displayedBound = null;
+  displayedBounds = null;
+  IconeImg = IconeImg;
 
   get settlements(): Settlement[] {
-    if (this.displayedBound) {
-      return strategusModule.settlements.filter(
-        settlement =>
-          this.displayedBound.contains(
-            latLng(settlement.position.coordinates[1], settlement.position.coordinates[0])
-          ) &&
-          ((this.zoom > 5 && ['Village', 'Town', 'Castle'].includes(settlement.type)) ||
-            (this.zoom <= 5 && ['Castle'].includes(settlement.type)))
-      );
+    return [strategusModule.settlements[0]];
+    if (this.displayedBounds === null) {
+      return [];
     }
-    return [];
+    return strategusModule.settlements.filter(
+      settlement =>
+        this.displayedBounds.contains(
+          latLng(settlement.position.coordinates[1], settlement.position.coordinates[0])
+        ) &&
+        (this.zoom > 6 ||
+          (this.zoom > 4 && settlement.type === SettlementType.Castle) ||
+          settlement.type === SettlementType.Town)
+    );
   }
 
-  setVisibleBounds(bounds: any) {
-    this.displayedBound = bounds;
+  setDisplayedBounds(bounds: LatLngBounds) {
+    this.displayedBounds = bounds;
   }
 
   created() {
     strategusModule.getSettlements();
   }
-  mounted() {
-    this.setVisibleBounds(this.$refs.map.mapObject.getBounds());
-  }
 
-  infoPos(event: any) {
-    console.log(event.latlng);
+  mounted() {
+    this.setDisplayedBounds(this.$refs.map.mapObject.getBounds());
   }
 }
 </script>
 
+<style lang="scss">
+// Hide vertical scrollbar
+html {
+  overflow-y: auto;
+}
+</style>
+
 <style scoped lang="scss">
-.map {
-  height: 900px;
-  width: 100%;
+.mainStrategus {
+  .map {
+    //calc(Screen height - navbar)
+    height: calc(100vh - 4.25rem);
+    background-color: #284745;
+  }
 }
 </style>

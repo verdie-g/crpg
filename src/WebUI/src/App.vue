@@ -58,8 +58,8 @@
     <main>
       <router-view />
     </main>
-
-    <footer class="footer">
+    <!-- Display or not the footer depending on the current page -->
+    <footer v-if="$route.meta.footer === true || $route.meta.footer === undefined" class="footer">
       <div class="level">
         <div class="level-item">
           <a href="https://www.patreon.com/crpg" target="_blank" title="Donate on Patreon">
@@ -131,5 +131,3 @@ export default class App extends Vue {
   }
 }
 </script>
-
-<style lang="scss"></style>
