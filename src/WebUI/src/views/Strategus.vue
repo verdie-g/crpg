@@ -1,5 +1,5 @@
 <template>
-  <div class="mainStrategus">
+  <div class="main-strategus">
     <l-map class="map" :zoom="zoom" :center="center" :options="mapOptions" :max-bounds="maxBounds">
       <l-tile-layer :url="url" :attribution="attribution" />
     </l-map>
@@ -42,7 +42,7 @@ html {
 </style>
 
 <style scoped lang="scss">
-.mainStrategus {
+.main-strategus {
   .map {
     //calc(Screen height - navbar)
     height: calc(100vh - 4.25rem);
