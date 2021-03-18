@@ -40,7 +40,7 @@ namespace Crpg.Application.Common.Services
             _height = constants.StrategusMapHeight;
             _interactionDistance = _width * _height / 30_000;
             _equivalentDistance = _width * _height / 300_000;
-            ViewDistance = _width * _height / 500;
+            ViewDistance = _width * _height / 2000;
         }
 
         public double ViewDistance { get; }
