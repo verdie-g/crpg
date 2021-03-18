@@ -1,0 +1,7 @@
+// Add more height to navbar default params is too low (default value 3.25rem)
+$navbar-height: 4.25rem;
+// Add z-index to navbar always over content (default value 30)
+$navbar-fixed-z: 1100;
+
+// Import Bulma and Buefy styles
+@import '~bulma';

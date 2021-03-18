@@ -18,14 +18,14 @@ export default class Strategus extends Vue {
   zoom = 6;
   center = latLng(-139, 122.75);
   url = 'http://pecores.fr/gigamap/{z}/{y}/{x}.png';
-  attribution = 'TaleWorlds Entertainment';
+  attribution = '<a target="_blank" href="https://www.taleworlds.com">TaleWorlds Entertainment</a>';
   mapOptions = {
     zoomSnap: 0.5,
     minZoom: 1,
     maxZoom: 7,
     crs: CRS.Simple,
     maxBoundsViscosity: 0.8,
-    inertiaDeceleration: 8000,
+    inertiaDeceleration: 2000,
   };
   maxBounds = latLngBounds([
     [0, 0],
@@ -46,7 +46,7 @@ html {
   .map {
     //calc(Screen height - navbar)
     height: calc(100vh - 4.25rem);
-    background-color: #313131;
+    background-color: #284745;
   }
 }
 </style>
