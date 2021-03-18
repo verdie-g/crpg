@@ -40,5 +40,6 @@
         UserNotFound,
         UserNotInAClan,
         UserNotRegisteredToStrategus,
+        UserNotInSight,
     }
 }

@@ -12,7 +12,9 @@ namespace Crpg.Application.UTest.Common.Services
             MinimumLevel = 1,
             MaximumLevel = 38,
             ExperienceForLevelCoefs = new[] { 0f, 10f, -10f }, // xp = lvl * 10
+            DefaultAttributePoints = 0,
             AttributePointsPerLevel = 1,
+            DefaultSkillPoints = 2,
             SkillPointsPerLevel = 1,
             WeaponProficiencyPointsForLevelCoefs = new[] { 100f, -90f }, // wpp = lvl * 100 - 90
             DefaultStrength = 3,
@@ -112,7 +114,7 @@ namespace Crpg.Application.UTest.Common.Services
             else
             {
                 Assert.Zero(character.Statistics.Attributes.Points);
-                Assert.Zero(character.Statistics.Skills.Points);
+                Assert.AreEqual(2, character.Statistics.Skills.Points);
                 Assert.AreEqual(10, character.Statistics.WeaponProficiencies.Points);
             }
 

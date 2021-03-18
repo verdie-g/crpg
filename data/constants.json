@@ -19,7 +19,9 @@
   "defaultHealthPoints": 60, /* A 33 STR, 3 AGI character with 11 IF would reach 115 HP. */
   "defaultGeneration": 0,
   "defaultAutoRepair": true,
+  "defaultAttributePoints": 0,
   "attributePointsPerLevel": 1,
+  "defaultSkillPoints": 2,
   "skillPointsPerLevel": 1,
   "healthPointsForStrengthCoefs": [1.0, 0.0],
   "healthPointsForIronFleshCoefs": [2.0, 0.0],
@@ -31,6 +33,6 @@
   "defaultRole": "User",
   "defaultGold": 300,
   "defaultHeirloomPoints": 0,
-  "strategusMapWidth": 1000,
-  "strategusMapHeight": 1000
+  "strategusMapWidth": 256,
+  "strategusMapHeight": 215
 }

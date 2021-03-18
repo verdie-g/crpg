@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Crpg.Application.Common.Mappings;
-using Crpg.Application.Users.Models;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Strategus;
 using NetTopologySuite.Geometries;
@@ -14,6 +13,7 @@ namespace Crpg.Application.Strategus.Models
         public StrategusSettlementType Type { get; set; }
         public Point Position { get; set; } = default!;
         public Culture Culture { get; set; }
+        public Region Region { get; set; }
         public StrategusUserPublicViewModel? Owner { get; set; }
 
         public void Mapping(Profile profile)

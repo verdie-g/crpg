@@ -4,6 +4,7 @@ using AutoMapper;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Strategus.Models;
 using Crpg.Domain.Entities.Strategus;
 using FluentValidation;
@@ -36,11 +37,13 @@ namespace Crpg.Application.Strategus.Commands
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
+            private readonly IStrategusMap _strategusMap;
 
-            public Handler(ICrpgDbContext db, IMapper mapper)
+            public Handler(ICrpgDbContext db, IMapper mapper, IStrategusMap strategusMap)
             {
                 _db = db;
                 _mapper = mapper;
+                _strategusMap = strategusMap;
             }
 
             public async Task<Result<StrategusUserViewModel>> Handle(UpdateStrategusUserMovementCommand req, CancellationToken cancellationToken)
@@ -66,22 +69,30 @@ namespace Crpg.Application.Strategus.Commands
 
                 if (req.Status == StrategusUserStatus.MovingToPoint)
                 {
-                    strategusUser.Status = req.Status;
-                    strategusUser.Waypoints = req.Waypoints;
+                    if (!req.Waypoints.IsEmpty)
+                    {
+                        strategusUser.Status = req.Status;
+                        strategusUser.Waypoints = req.Waypoints;
+                    }
                 }
                 else if (req.Status == StrategusUserStatus.FollowingUser
                          || req.Status == StrategusUserStatus.MovingToAttackUser)
                 {
-                    var targetUser = await _db.Users
-                        .Include(u => u.StrategusUser)
-                        .FirstOrDefaultAsync(u => u.Id == req.TargetedUserId, cancellationToken);
+                    var targetUser = await _db.StrategusUsers
+                        .Include(u => u.User)
+                        .FirstOrDefaultAsync(u => u.UserId == req.TargetedUserId, cancellationToken);
                     if (targetUser == null)
                     {
                         return new Result<StrategusUserViewModel>(CommonErrors.UserNotFound(req.TargetedUserId));
                     }
 
+                    if (!strategusUser.Position.IsWithinDistance(targetUser.Position, _strategusMap.ViewDistance))
+                    {
+                        return new Result<StrategusUserViewModel>(CommonErrors.UserNotInSight(req.TargetedUserId));
+                    }
+
                     strategusUser.Status = req.Status;
-                    strategusUser.TargetedUser = targetUser.StrategusUser;
+                    strategusUser.TargetedUser = targetUser;
                 }
                 else if (req.Status == StrategusUserStatus.MovingToSettlement
                          || req.Status == StrategusUserStatus.MovingToAttackSettlement)

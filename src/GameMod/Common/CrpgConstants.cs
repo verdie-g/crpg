@@ -24,7 +24,9 @@ namespace Crpg.GameMod.Common
         public int DefaultHealthPoints { get; set; }
         public int DefaultGeneration { get; set; }
         public bool DefaultAutoRepair { get; set; }
+        public int DefaultAttributePoints { get; set; }
         public int AttributePointsPerLevel { get; set; }
+        public int DefaultSkillPoints { get; set; }
         public int SkillPointsPerLevel { get; set; }
         public float[] HealthPointsForStrengthCoefs { get; set; } = Array.Empty<float>();
         public float[] HealthPointsForIronFleshCoefs { get; set; } = Array.Empty<float>();
@@ -38,6 +40,5 @@ namespace Crpg.GameMod.Common
         public int DefaultHeirloomPoints { get; set; }
         public double StrategusMapWidth { get; set; }
         public double StrategusMapHeight { get; set; }
-        public double StrategusInteractionDistance { get; set; }
     }
 }

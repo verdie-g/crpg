@@ -14,15 +14,15 @@ namespace Crpg.WebApi.Controllers
     public class StrategusController : BaseController
     {
         /// <summary>
-        /// Get strategus user.
+        /// Get an update of strategus for the current user.
         /// </summary>
-        /// <returns>The strategus user for current user.</returns>
+        /// <returns>Current strategus user, visible users and settlements, etc.</returns>
         /// <response code="200">Ok.</response>
         /// <response code="400">User was not registered to strategus.</response>
-        [HttpGet("users/self")]
-        public Task<ActionResult<Result<StrategusUserViewModel>>> GetStrategusUser()
+        [HttpGet("update")]
+        public Task<ActionResult<Result<StrategusUpdate>>> GetStrategusUpdate()
         {
-            return ResultToActionAsync(Mediator.Send(new GetStrategusUserQuery
+            return ResultToActionAsync(Mediator.Send(new GetStrategusUpdateQuery
             {
                 UserId = CurrentUser.UserId,
             }));
@@ -39,7 +39,7 @@ namespace Crpg.WebApi.Controllers
         public Task<ActionResult<Result<StrategusUserViewModel>>> RegisterStrategusUser([FromBody] CreateStrategusUserCommand req)
         {
             req.UserId = CurrentUser.UserId;
-            return ResultToCreatedAtActionAsync(nameof(GetStrategusUser), null, null, Mediator.Send(req));
+            return ResultToCreatedAtActionAsync(nameof(GetStrategusUpdate), null, null, Mediator.Send(req));
         }
 
         /// <summary>

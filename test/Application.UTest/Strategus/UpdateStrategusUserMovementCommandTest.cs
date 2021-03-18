@@ -1,9 +1,11 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Strategus.Commands;
 using Crpg.Domain.Entities.Strategus;
 using Crpg.Domain.Entities.Users;
+using Moq;
 using NetTopologySuite.Geometries;
 using NUnit.Framework;
 
@@ -14,7 +16,7 @@ namespace Crpg.Application.UTest.Strategus
         [Test]
         public async Task ShouldReturnErrorIfNotFound()
         {
-            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper);
+            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateStrategusUserMovementCommand
             {
                 UserId = 1,
@@ -32,7 +34,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper);
+            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateStrategusUserMovementCommand
             {
                 UserId = user.Id,
@@ -56,7 +58,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper);
+            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateStrategusUserMovementCommand
             {
                 UserId = user.Id,
@@ -88,7 +90,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper);
+            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateStrategusUserMovementCommand
             {
                 UserId = user.Id,
@@ -118,7 +120,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper);
+            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateStrategusUserMovementCommand
             {
                 UserId = user.Id,
@@ -154,7 +156,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.Users.AddRange(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper);
+            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateStrategusUserMovementCommand
             {
                 UserId = user.Id,
@@ -168,21 +170,69 @@ namespace Crpg.Application.UTest.Strategus
 
         [TestCase(StrategusUserStatus.FollowingUser)]
         [TestCase(StrategusUserStatus.MovingToAttackUser)]
+        public async Task ShouldReturnErrorIfTargetingNotVisibleUser(StrategusUserStatus status)
+        {
+            var user = new User
+            {
+                StrategusUser = new StrategusUser
+                {
+                    Position = new Point(0, 0),
+                    Status = StrategusUserStatus.MovingToSettlement,
+                    TargetedSettlement = new StrategusSettlement(),
+                }
+            };
+            var targetUser = new User
+            {
+                StrategusUser = new StrategusUser
+                {
+                    Position = new Point(10, 10),
+                }
+            };
+            ArrangeDb.Users.AddRange(user, targetUser);
+            await ArrangeDb.SaveChangesAsync();
+
+            var strategusMapMock = new Mock<IStrategusMap>();
+            strategusMapMock.Setup(m => m.ViewDistance).Returns(0);
+
+            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            var res = await handler.Handle(new UpdateStrategusUserMovementCommand
+            {
+                UserId = user.Id,
+                Status = status,
+                TargetedUserId = targetUser.Id,
+            }, CancellationToken.None);
+
+            Assert.IsNotNull(res.Errors);
+            Assert.AreEqual(ErrorCode.UserNotInSight, res.Errors![0].Code);
+        }
+
+        [TestCase(StrategusUserStatus.FollowingUser)]
+        [TestCase(StrategusUserStatus.MovingToAttackUser)]
         public async Task ShouldUpdateStrategusUserMovementIfTargetingUser(StrategusUserStatus status)
         {
             var user = new User
             {
                 StrategusUser = new StrategusUser
                 {
+                    Position = new Point(0, 0),
                     Status = StrategusUserStatus.MovingToSettlement,
                     TargetedSettlement = new StrategusSettlement(),
                 }
             };
-            var targetUser = new User { StrategusUser = new StrategusUser() };
+            var targetUser = new User
+            {
+                StrategusUser = new StrategusUser
+                {
+                    Position = new Point(10, 10),
+                }
+            };
             ArrangeDb.Users.AddRange(user, targetUser);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper);
+            var strategusMapMock = new Mock<IStrategusMap>();
+            strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
+
+            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new UpdateStrategusUserMovementCommand
             {
                 UserId = user.Id,
@@ -213,7 +263,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper);
+            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateStrategusUserMovementCommand
             {
                 UserId = user.Id,
@@ -242,7 +292,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.StrategusSettlements.Add(targetSettlement);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper);
+            var handler = new UpdateStrategusUserMovementCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateStrategusUserMovementCommand
             {
                 UserId = user.Id,
