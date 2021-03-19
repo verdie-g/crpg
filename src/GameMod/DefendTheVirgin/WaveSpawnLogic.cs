@@ -31,6 +31,9 @@ namespace Crpg.GameMod.DefendTheVirgin
             // Set player character. Without this line we would just spectate bots fighting without being able to play
             Game.Current.PlayerTroop = _mainCharacter;
 
+            // Initialize spawning positions. Without this line everyone spawn on the same point.
+            Mission.MakeDeploymentPlan();
+
             Mission.SpawnTroop(new BasicBattleAgentOrigin(_mainCharacter), true, false, !_mainCharacter.Equipment.Horse.IsEmpty, false, true, 0, 0, false, true);
 
             var virgin = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("townswoman_empire");

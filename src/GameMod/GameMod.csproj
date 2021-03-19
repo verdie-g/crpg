@@ -38,6 +38,11 @@
         <Reference Include="$(MBPATH)/Modules/Native/bin/Win64_Shipping_Client/TaleWorlds.*.dll">
             <Private>False</Private>
         </Reference>
+
+        <!-- Remove native library (not .NET). -->
+        <Reference Remove="$(MBPATH)/bin/Win64_Shipping_Client/TaleWorlds.Native.dll" />
+        <!-- This library causes dependency conflict. -->
+        <Reference Remove="$(MBPATH)/bin/Win64_Shipping_Client/TaleWorlds.Starter.DotNetCore.dll" />
     </ItemGroup>
 
     <ItemGroup>

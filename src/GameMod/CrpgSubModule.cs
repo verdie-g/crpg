@@ -27,8 +27,9 @@ namespace Crpg.GameMod
 
             LoadSpriteSheets();
 
+
             Module.CurrentModule.AddInitialStateOption(new InitialStateOption("DefendTheVirgin", new TextObject("{=4gpGhbeJ}Defend The Virgin"),
-                4567, () => MBGameManager.StartNewGame(new DefendTheVirginGameManager()), false));
+                4567, () => MBGameManager.StartNewGame(new DefendTheVirginGameManager()), () => false));
 
             #if false
             Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
