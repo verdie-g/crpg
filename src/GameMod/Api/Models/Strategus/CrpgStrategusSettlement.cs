@@ -1,6 +1,4 @@
-﻿using NetTopologySuite.Geometries;
-
-namespace Crpg.GameMod.Api.Models.Strategus
+﻿namespace Crpg.GameMod.Api.Models.Strategus
 {
     internal class CrpgStrategusSettlementCreation
     {

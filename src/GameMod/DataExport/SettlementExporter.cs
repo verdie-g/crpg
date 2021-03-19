@@ -7,8 +7,6 @@ using System.Xml.Linq;
 using Crpg.GameMod.Api.Models;
 using Crpg.GameMod.Api.Models.Strategus;
 using Crpg.GameMod.Helpers.Json;
-using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
@@ -36,16 +34,21 @@ namespace Crpg.GameMod.DataExport
                     Name = settlementNode.Attribute("name")!.Value.Split('}')[1],
                     Type = GetSettlementType(settlementNode),
                     Culture = ParseCulture(settlementNode.Attribute("culture")!.Value),
-                    Position = new Point(
-                        double.Parse(settlementNode.Attribute("posX")!.Value),
-                        double.Parse(settlementNode.Attribute("posY")!.Value)),
+                    Position = new Point
+                    {
+                        Coordinates = new[]
+                        {
+                            double.Parse(settlementNode.Attribute("posX")!.Value),
+                            double.Parse(settlementNode.Attribute("posY")!.Value),
+                        }
+                    },
                     Scene = GetSettlementScene(settlementNode),
                 };
 
                 settlements.Add(settlement);
             }
 
-            var serializer = GeoJsonSerializer.CreateDefault(new JsonSerializerSettings
+            var serializer = JsonSerializer.Create(new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 Formatting = Formatting.Indented,
