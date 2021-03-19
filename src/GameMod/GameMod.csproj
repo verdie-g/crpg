@@ -31,6 +31,10 @@
             <Private>False</Private>
         </Reference>
 
+        <Reference Include="$(MBPATH)/bin/Win64_Shipping_Client/Newtonsoft.Json.dll">
+            <Private>False</Private>
+        </Reference>
+
         <Reference Include="$(MBPATH)/Modules/Native/bin/Win64_Shipping_Client/TaleWorlds.*.dll">
             <Private>False</Private>
         </Reference>
@@ -38,7 +42,6 @@
 
     <ItemGroup>
         <PackageReference Include="DeepCloner" Version="0.10.2" />
-        <PackageReference Include="IdentityModel" Version="5.0.1" />
     </ItemGroup>
 
     <ItemGroup>

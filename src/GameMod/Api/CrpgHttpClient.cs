@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,9 +10,9 @@ using Crpg.GameMod.Api.Models;
 using Crpg.GameMod.Api.Models.Items;
 using Crpg.GameMod.Api.Models.Users;
 using Crpg.GameMod.Helpers.Json;
-using IdentityModel.Client;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 
 namespace Crpg.GameMod.Api
@@ -135,27 +136,23 @@ namespace Crpg.GameMod.Api
         private async Task RefreshAccessToken()
         {
             // TODO: log refreshing
-            DiscoveryDocumentResponse discoResponse = await _httpClient.GetDiscoveryDocumentAsync();
-            if (discoResponse.IsError)
+            var tokenRequest = new[]
             {
-                throw new Exception("Couldn't get discovery document: " + discoResponse.Error);
+                new KeyValuePair<string, string>("grant_type", "client_credentials"),
+                new KeyValuePair<string, string>("scope", "game_api"),
+                new KeyValuePair<string, string>("client_id", "crpg_game_server"),
+                new KeyValuePair<string, string>("client_secret", "tototo"),
+            };
+
+            var tokenResponse = await _httpClient.PostAsync("connect/token", new FormUrlEncodedContent(tokenRequest));
+            string tokenResponseBody = await tokenResponse.Content.ReadAsStringAsync();
+            if (!tokenResponse.IsSuccessStatusCode)
+            {
+                throw new Exception("Couldn't get token: " + tokenResponseBody);
             }
 
-            // request token
-            var tokenResponse = await _httpClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-            {
-                Address = discoResponse.TokenEndpoint,
-                ClientId = "crpg_game_server",
-                ClientSecret = "tototo",
-                Scope = "game_api"
-            });
-
-            if (tokenResponse.IsError)
-            {
-                throw new Exception("Couldn't get token: " + tokenResponse.Error);
-            }
-
-            _httpClient.SetBearerToken(tokenResponse.AccessToken);
+            string accessToken = JObject.Parse(tokenResponseBody)["access_token"].ToString();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
             // TODO: log refresh ok
         }
     }
