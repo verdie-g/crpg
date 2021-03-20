@@ -17,10 +17,7 @@
         :key="settlement.id"
       >
         <l-icon class-name="settlement-icon">
-          <div
-            class="settlement-icon-txt"
-            :style="`font-size:${getSettlementParams(settlement).fontSize}px`"
-          >
+          <div class="settlement-icon-txt" :class="getSettlementParams(settlement).fontSize">
             {{ settlement.name }}
           </div>
         </l-icon>
@@ -91,14 +88,14 @@ export default class Strategus extends Vue {
   getSettlementParams(settlement: Settlement): { fontSize?: string } {
     switch (settlement.type) {
       case SettlementType.Village:
-        return { fontSize: '10' };
+        return { fontSize: 'is-size-7' };
       case SettlementType.Castle:
-        return { fontSize: '14' };
+        return { fontSize: 'is-size-6' };
       case SettlementType.Town:
-        return { fontSize: '16' };
+        return { fontSize: 'is-size-5' };
     }
     // default params
-    return { fontSize: '14' };
+    return { fontSize: 'is-size-7' };
   }
 
   setDisplayedBounds(bounds: LatLngBounds | null): void {
