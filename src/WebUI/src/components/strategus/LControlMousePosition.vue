@@ -19,7 +19,7 @@ export default class LControlMousePosition extends Mixins(LControl) {
         }
 
         return this.formatNumber(this.mousePosition.lat)
-            + ', ' + this.formatNumber(this.mousePosition.lng);
+            + ' ' + this.formatNumber(this.mousePosition.lng);
     }
 
     mounted() {
@@ -39,7 +39,7 @@ export default class LControlMousePosition extends Mixins(LControl) {
         const whole = Math.trunc(n);
         const decimal = Math.trunc(Math.abs(n % 1) * 1000);
 
-        const wholeStr = ((whole < 0 ? '-' : '') + Math.abs(whole).toString()).padStart(4);
+        const wholeStr = (whole < 0 ? '-' : '+') + Math.abs(whole).toString().padStart(3, '0');
         const decimalStr = decimal.toString().padStart(3, '0');
         return wholeStr + '.' + decimalStr;
     }
