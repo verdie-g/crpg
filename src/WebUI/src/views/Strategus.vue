@@ -84,11 +84,11 @@ export default class Strategus extends Vue {
   }
 
   // get Map object
-  get mapRef(): any {
+  get mapRef(): LMap {
     return this.$refs.map as LMap & { mapObject: () => any };
   }
 
-  getSettlementParams(settlement: Settlement) {
+  getSettlementParams(settlement: Settlement): { fontSize: string } {
     switch (settlement.type) {
       case SettlementType.Village:
         return { fontSize: '10' };
