@@ -16,7 +16,7 @@
         :lat-lng="[settlement.position.coordinates[1], settlement.position.coordinates[0]]"
         :key="settlement.id"
       >
-        <l-icon :icon-anchor="[0, 0]" class-name="settlement-icon">
+        <l-icon class-name="settlement-icon">
           <div
             class="settlement-icon-txt"
             :style="`font-size:${getSettlementParams(settlement).fontSize}px`"
