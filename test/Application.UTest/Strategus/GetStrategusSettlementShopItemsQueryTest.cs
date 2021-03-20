@@ -21,25 +21,25 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new GetStrategusSettlementShopItemsQuery.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new GetStrategusSettlementShopItemsQuery
             {
-                UserId = 1,
+                HeroId = 1,
                 SettlementId = 2,
             }, CancellationToken.None);
 
             Assert.NotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.UserNotFound, res.Errors![0].Code);
+            Assert.AreEqual(ErrorCode.HeroNotFound, res.Errors![0].Code);
         }
 
         [Test]
         public async Task ShouldReturnErrorIfSettlementNotFound()
         {
-            var user = new StrategusUser { User = new User() };
-            ArrangeDb.StrategusUsers.Add(user);
+            var hero = new StrategusHero { User = new User() };
+            ArrangeDb.StrategusHeroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new GetStrategusSettlementShopItemsQuery.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new GetStrategusSettlementShopItemsQuery
             {
-                UserId = user.UserId,
+                HeroId = hero.UserId,
                 SettlementId = 2,
             }, CancellationToken.None);
 
@@ -58,8 +58,8 @@ namespace Crpg.Application.UTest.Strategus
                 .Setup(m => m.ArePointsAtInteractionDistance(userPosition, settlementPosition))
                 .Returns(false);
 
-            var user = new StrategusUser { Position = userPosition, User = new User() };
-            ArrangeDb.StrategusUsers.Add(user);
+            var hero = new StrategusHero { Position = userPosition, User = new User() };
+            ArrangeDb.StrategusHeroes.Add(hero);
             var settlement = new StrategusSettlement { Position = settlementPosition };
             ArrangeDb.StrategusSettlements.Add(settlement);
             await ArrangeDb.SaveChangesAsync();
@@ -67,7 +67,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new GetStrategusSettlementShopItemsQuery.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new GetStrategusSettlementShopItemsQuery
             {
-                UserId = user.UserId,
+                HeroId = hero.UserId,
                 SettlementId = settlement.Id,
             }, CancellationToken.None);
 
@@ -86,8 +86,8 @@ namespace Crpg.Application.UTest.Strategus
                 .Setup(m => m.ArePointsAtInteractionDistance(userPosition, settlementPosition))
                 .Returns(true);
 
-            var user = new StrategusUser { Position = userPosition, User = new User() };
-            ArrangeDb.StrategusUsers.Add(user);
+            var hero = new StrategusHero { Position = userPosition, User = new User() };
+            ArrangeDb.StrategusHeroes.Add(hero);
             var settlement = new StrategusSettlement { Position = settlementPosition, Culture = Culture.Battania };
             ArrangeDb.StrategusSettlements.Add(settlement);
             var items = new[]
@@ -104,7 +104,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new GetStrategusSettlementShopItemsQuery.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new GetStrategusSettlementShopItemsQuery
             {
-                UserId = user.UserId,
+                HeroId = hero.UserId,
                 SettlementId = settlement.Id,
             }, CancellationToken.None);
 

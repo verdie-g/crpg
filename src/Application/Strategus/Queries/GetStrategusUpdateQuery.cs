@@ -15,19 +15,19 @@ namespace Crpg.Application.Strategus.Queries
 {
     public class GetStrategusUpdateQuery : IMediatorRequest<StrategusUpdate>
     {
-        public int UserId { get; set; }
+        public int HeroId { get; set; }
 
         internal class Handler : IMediatorRequestHandler<GetStrategusUpdateQuery, StrategusUpdate>
         {
-            private static readonly StrategusUserStatus[] VisibleStatuses =
+            private static readonly StrategusHeroStatus[] VisibleStatuses =
             {
-                StrategusUserStatus.Idle,
-                StrategusUserStatus.MovingToPoint,
-                StrategusUserStatus.FollowingUser,
-                StrategusUserStatus.MovingToSettlement,
-                StrategusUserStatus.MovingToAttackUser,
-                StrategusUserStatus.MovingToAttackSettlement,
-                StrategusUserStatus.InBattle,
+                StrategusHeroStatus.Idle,
+                StrategusHeroStatus.MovingToPoint,
+                StrategusHeroStatus.FollowingHero,
+                StrategusHeroStatus.MovingToSettlement,
+                StrategusHeroStatus.MovingToAttackHero,
+                StrategusHeroStatus.MovingToAttackSettlement,
+                StrategusHeroStatus.InBattle,
             };
 
             private readonly ICrpgDbContext _db;
@@ -43,36 +43,30 @@ namespace Crpg.Application.Strategus.Queries
 
             public async Task<Result<StrategusUpdate>> Handle(GetStrategusUpdateQuery req, CancellationToken cancellationToken)
             {
-                var user = await _db.Users
-                    .Include(u => u.StrategusUser)
-                    .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
-
-                if (user == null)
+                var hero = await _db.StrategusHeroes
+                    .Include(h => h.User)
+                    .FirstOrDefaultAsync(h => h.UserId == req.HeroId, cancellationToken);
+                if (hero == null)
                 {
-                    return new Result<StrategusUpdate>(CommonErrors.UserNotFound(req.UserId));
+                    return new Result<StrategusUpdate>(CommonErrors.HeroNotFound(req.HeroId));
                 }
 
-                if (user.StrategusUser == null)
-                {
-                    return new Result<StrategusUpdate>(CommonErrors.UserNotRegisteredToStrategus(req.UserId));
-                }
-
-                var visibleUsers = await _db.StrategusUsers
-                    .Where(u => u.UserId != user.Id
-                                && u.Position.IsWithinDistance(user.StrategusUser.Position, _strategusMap.ViewDistance)
-                                && VisibleStatuses.Contains(u.Status))
-                    .ProjectTo<StrategusUserPublicViewModel>(_mapper.ConfigurationProvider)
+                var visibleHeroes = await _db.StrategusHeroes
+                    .Where(h => h.UserId != hero.UserId
+                                && h.Position.IsWithinDistance(hero.Position, _strategusMap.ViewDistance)
+                                && VisibleStatuses.Contains(h.Status))
+                    .ProjectTo<StrategusHeroPublicViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
                 var visibleSettlements = await _db.StrategusSettlements
-                    .Where(s => s.Position.IsWithinDistance(user.StrategusUser.Position, _strategusMap.ViewDistance))
+                    .Where(s => s.Position.IsWithinDistance(hero.Position, _strategusMap.ViewDistance))
                     .ProjectTo<StrategusSettlementViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
                 return new Result<StrategusUpdate>(new StrategusUpdate
                 {
-                    User = _mapper.Map<StrategusUserViewModel>(user.StrategusUser),
-                    VisibleUsers = visibleUsers,
+                    User = _mapper.Map<StrategusHeroViewModel>(hero),
+                    VisibleHeroes = visibleHeroes,
                     VisibleSettlements = visibleSettlements,
                 });
             }

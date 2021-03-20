@@ -34,6 +34,6 @@ namespace Crpg.Domain.Entities.Strategus
         /// <summary>
         /// Owner of the <see cref="StrategusSettlement"/>.
         /// </summary>
-        public StrategusUser? Owner { get; set; }
+        public StrategusHero? Owner { get; set; }
     }
 }

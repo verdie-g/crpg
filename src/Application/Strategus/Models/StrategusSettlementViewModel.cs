@@ -14,7 +14,7 @@ namespace Crpg.Application.Strategus.Models
         public Point Position { get; set; } = default!;
         public Culture Culture { get; set; }
         public Region Region { get; set; }
-        public StrategusUserPublicViewModel? Owner { get; set; }
+        public StrategusHeroPublicViewModel? Owner { get; set; }
 
         public void Mapping(Profile profile)
         {

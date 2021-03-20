@@ -19,11 +19,11 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new GetStrategusUpdateQuery.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new GetStrategusUpdateQuery
             {
-                UserId = 1,
+                HeroId = 1,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.UserNotFound, res.Errors![0].Code);
+            Assert.AreEqual(ErrorCode.HeroNotFound, res.Errors![0].Code);
         }
 
         [Test]
@@ -36,38 +36,38 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new GetStrategusUpdateQuery.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new GetStrategusUpdateQuery
             {
-                UserId = user.Id,
+                HeroId = user.Id,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.UserNotRegisteredToStrategus, res.Errors![0].Code);
+            Assert.AreEqual(ErrorCode.HeroNotFound, res.Errors![0].Code);
         }
 
         [Test]
-        public async Task ShouldReturnStrategusUserWithWhatsVisible()
+        public async Task ShouldReturnStrategusHeroWithWhatsVisible()
         {
-            var user = new StrategusUser
+            var hero = new StrategusHero
             {
                 Position = new Point(10, 10),
                 User = new User(),
             };
-            var closeUser = new StrategusUser
+            var closeHero = new StrategusHero
             {
                 Position = new Point(9.9, 9.9),
                 User = new User(),
             };
-            var farUser = new StrategusUser
+            var farHero = new StrategusHero
             {
                 Position = new Point(1000, 1000),
                 User = new User(),
             };
-            var userInSettlement = new StrategusUser
+            var heroInSettlement = new StrategusHero
             {
                 Position = new Point(10.1, 10.1),
-                Status = StrategusUserStatus.IdleInSettlement,
+                Status = StrategusHeroStatus.IdleInSettlement,
                 User = new User(),
             };
-            ArrangeDb.StrategusUsers.AddRange(user, closeUser, farUser, userInSettlement);
+            ArrangeDb.StrategusHeroes.AddRange(hero, closeHero, farHero, heroInSettlement);
 
             var closeSettlement = new StrategusSettlement { Position = new Point(10.1, 10.1) };
             var farSettlement = new StrategusSettlement { Position = new Point(-1000, -1000) };
@@ -80,14 +80,14 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new GetStrategusUpdateQuery.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new GetStrategusUpdateQuery
             {
-                UserId = user.UserId,
+                HeroId = hero.UserId,
             }, CancellationToken.None);
 
             var update = res.Data!;
             Assert.IsNotNull(update);
             Assert.NotNull(update.User);
-            Assert.AreEqual(1, update.VisibleUsers.Count);
-            Assert.AreEqual(closeUser.UserId, update.VisibleUsers[0].Id);
+            Assert.AreEqual(1, update.VisibleHeroes.Count);
+            Assert.AreEqual(closeHero.UserId, update.VisibleHeroes[0].Id);
             Assert.AreEqual(1, update.VisibleSettlements.Count);
             Assert.AreEqual(closeSettlement.Id, update.VisibleSettlements[0].Id);
         }

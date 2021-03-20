@@ -16,7 +16,7 @@ namespace Crpg.Application.Strategus.Queries
 {
     public class GetStrategusSettlementShopItemsQuery : IMediatorRequest<IList<ItemViewModel>>
     {
-        public int UserId { get; set; }
+        public int HeroId { get; set; }
         public int SettlementId { get; set; }
 
         internal class Handler : IMediatorRequestHandler<GetStrategusSettlementShopItemsQuery, IList<ItemViewModel>>
@@ -35,12 +35,12 @@ namespace Crpg.Application.Strategus.Queries
             public async Task<Result<IList<ItemViewModel>>> Handle(GetStrategusSettlementShopItemsQuery req,
                 CancellationToken cancellationToken)
             {
-                var user = await _db.StrategusUsers
+                var hero = await _db.StrategusHeroes
                     .AsNoTracking()
-                    .FirstOrDefaultAsync(u => u.UserId == req.UserId, cancellationToken);
-                if (user == null)
+                    .FirstOrDefaultAsync(h => h.UserId == req.HeroId, cancellationToken);
+                if (hero == null)
                 {
-                    return new Result<IList<ItemViewModel>>(CommonErrors.UserNotFound(req.UserId));
+                    return new Result<IList<ItemViewModel>>(CommonErrors.HeroNotFound(req.HeroId));
                 }
 
                 var settlement = await _db.StrategusSettlements
@@ -48,10 +48,10 @@ namespace Crpg.Application.Strategus.Queries
                     .FirstOrDefaultAsync(s => s.Id == req.SettlementId, cancellationToken);
                 if (settlement == null)
                 {
-                    return new Result<IList<ItemViewModel>>(CommonErrors.SettlementNotFound(req.UserId));
+                    return new Result<IList<ItemViewModel>>(CommonErrors.SettlementNotFound(req.HeroId));
                 }
 
-                if (!_strategusMap.ArePointsAtInteractionDistance(user.Position, settlement.Position))
+                if (!_strategusMap.ArePointsAtInteractionDistance(hero.Position, settlement.Position))
                 {
                     return new Result<IList<ItemViewModel>>(CommonErrors.SettlementTooFar(req.SettlementId));
                 }

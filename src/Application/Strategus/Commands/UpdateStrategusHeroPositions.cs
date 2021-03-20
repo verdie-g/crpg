@@ -14,21 +14,21 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Strategus.Commands
 {
-    public class UpdateStrategusUserPositionsCommand : IMediatorRequest
+    public class UpdateStrategusHeroPositionsCommand : IMediatorRequest
     {
         public TimeSpan DeltaTime { get; set; }
 
-        internal class Handler : IMediatorRequestHandler<UpdateStrategusUserPositionsCommand>
+        internal class Handler : IMediatorRequestHandler<UpdateStrategusHeroPositionsCommand>
         {
-            private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateStrategusUserPositionsCommand>();
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateStrategusHeroPositionsCommand>();
 
-            private static readonly StrategusUserStatus[] MovementStatuses =
+            private static readonly StrategusHeroStatus[] MovementStatuses =
             {
-                StrategusUserStatus.MovingToPoint,
-                StrategusUserStatus.FollowingUser,
-                StrategusUserStatus.MovingToSettlement,
-                StrategusUserStatus.MovingToAttackUser,
-                StrategusUserStatus.MovingToAttackSettlement,
+                StrategusHeroStatus.MovingToPoint,
+                StrategusHeroStatus.FollowingHero,
+                StrategusHeroStatus.MovingToSettlement,
+                StrategusHeroStatus.MovingToAttackHero,
+                StrategusHeroStatus.MovingToAttackSettlement,
             };
 
             private readonly ICrpgDbContext _db;
@@ -40,25 +40,25 @@ namespace Crpg.Application.Strategus.Commands
                 _strategusMap = strategusMap;
             }
 
-            public async Task<Result> Handle(UpdateStrategusUserPositionsCommand req, CancellationToken cancellationToken)
+            public async Task<Result> Handle(UpdateStrategusHeroPositionsCommand req, CancellationToken cancellationToken)
             {
-                var strategusUsers = await _db.StrategusUsers
+                var strategusHeroes = await _db.StrategusHeroes
                     .AsSplitQuery()
-                    .Where(u => MovementStatuses.Contains(u.Status))
-                    .Include(u => u.TargetedUser)
-                    .Include(u => u.TargetedSettlement)
+                    .Where(h => MovementStatuses.Contains(h.Status))
+                    .Include(h => h.TargetedHero)
+                    .Include(h => h.TargetedSettlement)
                     .ToArrayAsync(cancellationToken);
 
-                foreach (var user in strategusUsers)
+                foreach (var user in strategusHeroes)
                 {
                     switch (user.Status)
                     {
-                        case StrategusUserStatus.MovingToPoint:
+                        case StrategusHeroStatus.MovingToPoint:
                             if (user.Waypoints.IsEmpty)
                             {
                                 Logger.LogWarning("User '{userId}' was in status '{status}' without any points to go to",
                                     user.UserId, user.Status);
-                                user.Status = StrategusUserStatus.Idle;
+                                user.Status = StrategusHeroStatus.Idle;
                                 continue;
                             }
 
@@ -70,63 +70,63 @@ namespace Crpg.Application.Strategus.Commands
                                 user.Waypoints = new MultiPoint(user.Waypoints.Skip(2).Cast<Point>().ToArray());
                                 if (user.Waypoints.Count == 0)
                                 {
-                                    user.Status = StrategusUserStatus.Idle;
+                                    user.Status = StrategusHeroStatus.Idle;
                                 }
                             }
 
                             break;
 
-                        case StrategusUserStatus.FollowingUser:
-                        case StrategusUserStatus.MovingToAttackUser:
-                            if (user.TargetedUser == null)
+                        case StrategusHeroStatus.FollowingHero:
+                        case StrategusHeroStatus.MovingToAttackHero:
+                            if (user.TargetedHero == null)
                             {
                                 Logger.LogWarning("User '{userId}' was in status '{status}' without target user",
                                     user.UserId, user.Status);
-                                user.Status = StrategusUserStatus.Idle;
+                                user.Status = StrategusHeroStatus.Idle;
                                 continue;
                             }
 
-                            if (!user.Position.IsWithinDistance(user.TargetedUser.Position, _strategusMap.ViewDistance))
+                            if (!user.Position.IsWithinDistance(user.TargetedHero.Position, _strategusMap.ViewDistance))
                             {
                                 // Followed user is not in sight anymore. Stop.
-                                user.Status = StrategusUserStatus.Idle;
-                                user.TargetedUser = null;
+                                user.Status = StrategusHeroStatus.Idle;
+                                user.TargetedHero = null;
                                 continue;
                             }
 
-                            if (user.Status == StrategusUserStatus.MovingToAttackUser)
+                            if (user.Status == StrategusHeroStatus.MovingToAttackHero)
                             {
-                                if (MoveUserTowardsPoint(user, user.TargetedUser.Position, req.DeltaTime, true))
+                                if (MoveUserTowardsPoint(user, user.TargetedHero.Position, req.DeltaTime, true))
                                 {
                                     // TODO: attack user
                                 }
                             }
-                            else if (user.Status == StrategusUserStatus.FollowingUser)
+                            else if (user.Status == StrategusHeroStatus.FollowingHero)
                             {
                                 // Set canInteractWithTarget to false to the user doesn't stop to interaction range
                                 // but stops on the target user itself.
-                                MoveUserTowardsPoint(user, user.TargetedUser.Position, req.DeltaTime, false);
+                                MoveUserTowardsPoint(user, user.TargetedHero.Position, req.DeltaTime, false);
                             }
 
                             break;
-                        case StrategusUserStatus.MovingToSettlement:
-                        case StrategusUserStatus.MovingToAttackSettlement:
+                        case StrategusHeroStatus.MovingToSettlement:
+                        case StrategusHeroStatus.MovingToAttackSettlement:
                             if (user.TargetedSettlement == null)
                             {
                                 Logger.LogWarning("User '{userId}' was in status '{status}' without target settlement",
                                     user.UserId, user.Status);
-                                user.Status = StrategusUserStatus.Idle;
+                                user.Status = StrategusHeroStatus.Idle;
                                 continue;
                             }
 
                             if (MoveUserTowardsPoint(user, user.TargetedSettlement.Position, req.DeltaTime, true))
                             {
-                                if (user.Status == StrategusUserStatus.MovingToSettlement)
+                                if (user.Status == StrategusHeroStatus.MovingToSettlement)
                                 {
-                                    user.Status = StrategusUserStatus.IdleInSettlement;
+                                    user.Status = StrategusHeroStatus.IdleInSettlement;
                                     user.Position = user.TargetedSettlement.Position;
                                 }
-                                else if (user.Status == StrategusUserStatus.MovingToAttackSettlement)
+                                else if (user.Status == StrategusHeroStatus.MovingToAttackSettlement)
                                 {
                                     // TODO: attack settlement.
                                 }
@@ -140,7 +140,7 @@ namespace Crpg.Application.Strategus.Commands
                 return Result.NoErrors;
             }
 
-            private bool MoveUserTowardsPoint(StrategusUser user, Point targetPoint, TimeSpan deltaTime, bool canInteractWithTarget)
+            private bool MoveUserTowardsPoint(StrategusHero user, Point targetPoint, TimeSpan deltaTime, bool canInteractWithTarget)
             {
                 double speed = ComputeUserSpeed(user);
                 double distance = speed * deltaTime.TotalSeconds;
@@ -150,7 +150,7 @@ namespace Crpg.Application.Strategus.Commands
                     : _strategusMap.ArePointsEquivalent(user.Position, targetPoint);
             }
 
-            private double ComputeUserSpeed(StrategusUser user)
+            private double ComputeUserSpeed(StrategusHero user)
             {
                 const double terrainSpeedFactor = 1.0; // TODO: terrain penalty on speed (e.g. lower speed in forest).
                 const double weightFactor = 1.0; // TODO: goods should slow down user

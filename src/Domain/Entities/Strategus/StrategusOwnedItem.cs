@@ -12,7 +12,7 @@ namespace Crpg.Domain.Entities.Strategus
         public int ItemId { get; set; }
         public int Count { get; set; }
 
-        public StrategusUser? User { get; set; }
+        public StrategusHero? User { get; set; }
         public Item? Item { get; set; }
     }
 }

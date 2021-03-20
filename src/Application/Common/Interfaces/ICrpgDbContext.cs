@@ -22,7 +22,7 @@ namespace Crpg.Application.Common.Interfaces
         DbSet<Clan> Clans { get; }
         DbSet<ClanMember> ClanMembers { get; }
         DbSet<ClanInvitation> ClanInvitations { get; }
-        DbSet<StrategusUser> StrategusUsers { get; }
+        DbSet<StrategusHero> StrategusHeroes { get; }
         DbSet<StrategusSettlement> StrategusSettlements { get; }
         DbSet<StrategusOwnedItem> StrategusOwnedItems { get; }
         DbSet<StrategusBattle> StrategusBattles { get; }

@@ -1,12 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Strategus.Commands;
-using Crpg.Application.Strategus.Queries;
 using Crpg.Domain.Entities;
-using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Strategus;
 using Crpg.Domain.Entities.Users;
 using Moq;
@@ -15,13 +12,13 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Strategus
 {
-    public class CreateStrategusUserCommandTest : TestBase
+    public class CreateStrategusHeroCommandTest : TestBase
     {
         [Test]
         public async Task ShouldReturnErrorIfNotFound()
         {
-            var handler = new CreateStrategusUserCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
-            var res = await handler.Handle(new CreateStrategusUserCommand
+            var handler = new CreateStrategusHeroCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            var res = await handler.Handle(new CreateStrategusHeroCommand
             {
                 UserId = 1,
                 Region = Region.NorthAmerica,
@@ -36,13 +33,13 @@ namespace Crpg.Application.UTest.Strategus
         {
             var user = new User
             {
-                StrategusUser = new StrategusUser()
+                StrategusHero = new StrategusHero()
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new CreateStrategusUserCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
-            var res = await handler.Handle(new CreateStrategusUserCommand
+            var handler = new CreateStrategusHeroCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            var res = await handler.Handle(new CreateStrategusHeroCommand
             {
                 UserId = user.Id,
                 Region = Region.NorthAmerica,
@@ -61,24 +58,24 @@ namespace Crpg.Application.UTest.Strategus
 
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock.Setup(sm => sm.GetSpawnPosition(Region.NorthAmerica)).Returns(new Point(150, 50));
-            var handler = new CreateStrategusUserCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
-            var res = await handler.Handle(new CreateStrategusUserCommand
+            var handler = new CreateStrategusHeroCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            var res = await handler.Handle(new CreateStrategusHeroCommand
             {
                 UserId = user.Id,
                 Region = Region.NorthAmerica,
             }, CancellationToken.None);
 
-            var strategusUser = res.Data!;
-            Assert.IsNotNull(strategusUser);
-            Assert.AreEqual(user.Id, strategusUser.Id);
-            Assert.AreEqual(Region.NorthAmerica, strategusUser.Region);
-            Assert.AreEqual(0, strategusUser.Silver);
-            Assert.AreEqual(1, strategusUser.Troops);
-            Assert.AreEqual(new Point(150.0, 50.0), strategusUser.Position);
-            Assert.AreEqual(StrategusUserStatus.Idle, strategusUser.Status);
-            Assert.AreEqual(0, strategusUser.Waypoints.Count);
-            Assert.IsNull(strategusUser.TargetedUser);
-            Assert.IsNull(strategusUser.TargetedSettlement);
+            var strategusHero = res.Data!;
+            Assert.IsNotNull(strategusHero);
+            Assert.AreEqual(user.Id, strategusHero.Id);
+            Assert.AreEqual(Region.NorthAmerica, strategusHero.Region);
+            Assert.AreEqual(0, strategusHero.Silver);
+            Assert.AreEqual(1, strategusHero.Troops);
+            Assert.AreEqual(new Point(150.0, 50.0), strategusHero.Position);
+            Assert.AreEqual(StrategusHeroStatus.Idle, strategusHero.Status);
+            Assert.AreEqual(0, strategusHero.Waypoints.Count);
+            Assert.IsNull(strategusHero.TargetedHero);
+            Assert.IsNull(strategusHero.TargetedSettlement);
         }
     }
 }

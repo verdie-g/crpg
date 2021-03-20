@@ -66,6 +66,25 @@ namespace Crpg.Application.Common.Results
             Detail = $"Clan tag '{clanTag}' is already used",
         };
 
+        public static Error HeroInBattle(int heroId) => new Error(ErrorType.Validation, ErrorCode.HeroInBattle)
+        {
+            Title = "Hero is in a battle",
+            Detail = $"Cannot performed the requested action while hero with id '{heroId}' is in a battle",
+        };
+
+
+        public static Error HeroNotFound(int heroId) => new Error(ErrorType.NotFound, ErrorCode.HeroNotFound)
+        {
+            Title = "Hero was not found",
+            Detail = $"Hero with id '{heroId}' was not found",
+        };
+
+        public static Error HeroNotInSight(int heroId) => new Error(ErrorType.Validation, ErrorCode.HeroNotInSight)
+        {
+            Title = "Hero is not in sight",
+            Detail = $"Hero with id '{heroId}' is too far to be in sight",
+        };
+
         public static Error ItemAlreadyOwned(int itemId) => new Error(ErrorType.Validation, ErrorCode.ItemAlreadyOwned)
         {
             Title = "Item is already owned",
@@ -167,12 +186,6 @@ namespace Crpg.Application.Common.Results
             Detail = $"User with id '{userId}' is already in the clan with id '{clanId}'",
         };
 
-        public static Error UserInBattle(int userId) => new Error(ErrorType.Validation, ErrorCode.UserInBattle)
-        {
-            Title = "User is in a battle",
-            Detail = $"Cannot performed the requested action while user with id '{userId}' is in a battle",
-        };
-
         public static Error UserAlreadyRegisteredToStrategus(int userId) => new Error(ErrorType.Validation, ErrorCode.UserAlreadyRegisteredToStrategus)
         {
             Title = "User has already registered to strategus",
@@ -195,18 +208,6 @@ namespace Crpg.Application.Common.Results
         {
             Title = "User is not in a clan",
             Detail = $"User with id '{userId}' is not in a clan",
-        };
-
-        public static Error UserNotRegisteredToStrategus(int userId) => new Error(ErrorType.Validation, ErrorCode.UserNotRegisteredToStrategus)
-        {
-            Title = "User has not registered to strategus",
-            Detail = $"User with id '{userId}' has not registered to strategus",
-        };
-
-        public static Error UserNotInSight(int userId) => new Error(ErrorType.Validation, ErrorCode.UserNotInSight)
-        {
-            Title = "User is not in sight",
-            Detail = $"User with id '{userId}' is too far to be in sight",
         };
     }
 }

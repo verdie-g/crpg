@@ -5,7 +5,7 @@ using NetTopologySuite.Geometries;
 
 namespace Crpg.Domain.Entities.Strategus
 {
-    public class StrategusUser : AuditableEntity
+    public class StrategusHero : AuditableEntity
     {
         public int UserId { get; set; }
 
@@ -30,31 +30,31 @@ namespace Crpg.Domain.Entities.Strategus
         public Point Position { get; set; } = default!;
 
         /// <summary>
-        /// Status of the user. This property is used to interpret <see cref="Waypoints"/>, <see cref="TargetedUser"/> and
+        /// Status of the user. This property is used to interpret <see cref="Waypoints"/>, <see cref="TargetedHero"/> and
         /// <see cref="TargetedSettlement"/>.
         /// </summary>
-        public StrategusUserStatus Status { get; set; }
+        public StrategusHeroStatus Status { get; set; }
 
         /// <summary>
-        /// Sequence of points the user is moving to if <see cref="Status"/> == <see cref="StrategusUserStatus.MovingToPoint"/>.
+        /// Sequence of points the user is moving to if <see cref="Status"/> == <see cref="StrategusHeroStatus.MovingToPoint"/>.
         /// </summary>
         public MultiPoint Waypoints { get; set; } = MultiPoint.Empty;
 
         /// <summary>
-        /// The id of the user to follow if <see cref="Status"/> == <see cref="StrategusUserStatus.FollowingUser"/>.
-        /// The id of the user to attack if <see cref="Status"/> == <see cref="StrategusUserStatus.MovingToAttackUser"/>.
+        /// The id of the hero to follow if <see cref="Status"/> == <see cref="StrategusHeroStatus.FollowingHero"/>.
+        /// The id of the hero to attack if <see cref="Status"/> == <see cref="StrategusHeroStatus.MovingToAttackHero"/>.
         /// </summary>
-        public int? TargetedUserId { get; set; }
+        public int? TargetedHeroId { get; set; }
 
         /// <summary>
-        /// The id of the settlement the user is staying in if <see cref="Status"/> == <see cref="StrategusUserStatus.IdleInSettlement"/>.
-        /// The id of the settlement the user is moving to if <see cref="Status"/> == <see cref="StrategusUserStatus.MovingToSettlement"/>.
-        /// The id of the settlement to attack if <see cref="Status"/> == <see cref="StrategusUserStatus.MovingToAttackSettlement"/>.
+        /// The id of the settlement the hero is staying in if <see cref="Status"/> == <see cref="StrategusHeroStatus.IdleInSettlement"/>.
+        /// The id of the settlement the hero is moving to if <see cref="Status"/> == <see cref="StrategusHeroStatus.MovingToSettlement"/>.
+        /// The id of the settlement to attack if <see cref="Status"/> == <see cref="StrategusHeroStatus.MovingToAttackSettlement"/>.
         /// </summary>
         public int? TargetedSettlementId { get; set; }
 
-        /// <summary>See <see cref="TargetedUserId"/>.</summary>
-        public StrategusUser? TargetedUser { get; set; }
+        /// <summary>See <see cref="TargetedHeroId"/>.</summary>
+        public StrategusHero? TargetedHero { get; set; }
 
         /// <summary>See <see cref="TargetedSettlementId"/>.</summary>
         public StrategusSettlement? TargetedSettlement { get; set; }

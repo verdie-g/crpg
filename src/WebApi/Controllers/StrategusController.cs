@@ -17,7 +17,7 @@ namespace Crpg.WebApi.Controllers
         /// <summary>
         /// Get an update of strategus for the current user.
         /// </summary>
-        /// <returns>Current strategus user, visible users and settlements, etc.</returns>
+        /// <returns>Current strategus hero, visible heroes and settlements, etc.</returns>
         /// <response code="200">Ok.</response>
         /// <response code="400">User was not registered to strategus.</response>
         [HttpGet("update")]
@@ -25,33 +25,33 @@ namespace Crpg.WebApi.Controllers
         {
             return ResultToActionAsync(Mediator.Send(new GetStrategusUpdateQuery
             {
-                UserId = CurrentUser.UserId,
+                HeroId = CurrentUser.UserId,
             }));
         }
 
         /// <summary>
         /// Register user to strategus.
         /// </summary>
-        /// <returns>The new strategus user.</returns>
+        /// <returns>The new strategus hero.</returns>
         /// <response code="201">Registered.</response>
         /// <response code="400">Already registered.</response>
-        [HttpPost("users")]
+        [HttpPost("heroes")]
         [ProducesResponseType((int)HttpStatusCode.Created)]
-        public Task<ActionResult<Result<StrategusUserViewModel>>> RegisterStrategusUser([FromBody] CreateStrategusUserCommand req)
+        public Task<ActionResult<Result<StrategusHeroViewModel>>> RegisterStrategusHero([FromBody] CreateStrategusHeroCommand req)
         {
             req.UserId = CurrentUser.UserId;
             return ResultToCreatedAtActionAsync(nameof(GetStrategusUpdate), null, null, Mediator.Send(req));
         }
 
         /// <summary>
-        /// Update strategus user moves.
+        /// Update strategus hero movement.
         /// </summary>
-        /// <returns>The updated strategus user.</returns>
+        /// <returns>The updated strategus hero.</returns>
         /// <response code="200">Updated.</response>
-        [HttpPut("users/self/moves")]
-        public Task<ActionResult<Result<StrategusUserViewModel>>> UpdateStrategusUserMovement([FromBody] UpdateStrategusUserMovementCommand req)
+        [HttpPut("heroes/self/moves")]
+        public Task<ActionResult<Result<StrategusHeroViewModel>>> UpdateStrategusHeroMovement([FromBody] UpdateStrategusHeroMovementCommand req)
         {
-            req.UserId = CurrentUser.UserId;
+            req.HeroId = CurrentUser.UserId;
             return ResultToActionAsync(Mediator.Send(req));
         }
 
@@ -69,7 +69,7 @@ namespace Crpg.WebApi.Controllers
         public Task<ActionResult<Result<IList<ItemViewModel>>>> GetSettlementShopItems([FromRoute] int settlementId)
             => ResultToActionAsync(Mediator.Send(new GetStrategusSettlementShopItemsQuery
             {
-                UserId = CurrentUser.UserId,
+                HeroId = CurrentUser.UserId,
                 SettlementId = settlementId,
             }));
     }

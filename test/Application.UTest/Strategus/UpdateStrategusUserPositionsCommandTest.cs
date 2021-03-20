@@ -12,21 +12,21 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Strategus
 {
-    public class UpdateStrategusUserPositionsCommandTest : TestBase
+    public class UpdateStrategusHeroPositionsCommandTest : TestBase
     {
         [Test]
         public async Task UsersMovingToPointShouldMove()
         {
             var position = new Point(1, 2);
             var destination = new Point(5, 6);
-            var strategusUser = new StrategusUser
+            var strategusHero = new StrategusHero
             {
-                Status = StrategusUserStatus.MovingToPoint,
+                Status = StrategusHeroStatus.MovingToPoint,
                 Position = position,
                 Waypoints = new MultiPoint(new[] { destination }),
                 User = new User(),
             };
-            ArrangeDb.StrategusUsers.Add(strategusUser);
+            ArrangeDb.StrategusHeroes.Add(strategusHero);
             await ArrangeDb.SaveChangesAsync();
 
             var newPosition = new Point(2, 3);
@@ -37,16 +37,16 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsEquivalent(newPosition, destination))
                 .Returns(false);
-            var handler = new UpdateStrategusUserPositionsCommand.Handler(ActDb, strategusMapMock.Object);
-            await handler.Handle(new UpdateStrategusUserPositionsCommand
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusUser = await AssertDb.StrategusUsers.FirstAsync(u => u.UserId == strategusUser.UserId);
-            Assert.AreEqual(StrategusUserStatus.MovingToPoint, strategusUser.Status);
-            Assert.AreEqual(newPosition, strategusUser.Position);
-            Assert.AreEqual(1, strategusUser.Waypoints.Count);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            Assert.AreEqual(StrategusHeroStatus.MovingToPoint, strategusHero.Status);
+            Assert.AreEqual(newPosition, strategusHero.Position);
+            Assert.AreEqual(1, strategusHero.Waypoints.Count);
         }
 
         [Test]
@@ -54,14 +54,14 @@ namespace Crpg.Application.UTest.Strategus
         {
             var position = new Point(1, 2);
             var destination = new Point(5, 6);
-            var strategusUser = new StrategusUser
+            var strategusHero = new StrategusHero
             {
-                Status = StrategusUserStatus.MovingToPoint,
+                Status = StrategusHeroStatus.MovingToPoint,
                 Position = position,
                 Waypoints = new MultiPoint(new[] { destination, new Point(10, 10) }),
                 User = new User(),
             };
-            ArrangeDb.StrategusUsers.Add(strategusUser);
+            ArrangeDb.StrategusHeroes.Add(strategusHero);
             await ArrangeDb.SaveChangesAsync();
 
             var newPosition = new Point(5, 5);
@@ -72,16 +72,16 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsEquivalent(newPosition, destination))
                 .Returns(true);
-            var handler = new UpdateStrategusUserPositionsCommand.Handler(ActDb, strategusMapMock.Object);
-            await handler.Handle(new UpdateStrategusUserPositionsCommand
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusUser = await AssertDb.StrategusUsers.FirstAsync(u => u.UserId == strategusUser.UserId);
-            Assert.AreEqual(StrategusUserStatus.MovingToPoint, strategusUser.Status);
-            Assert.AreEqual(newPosition, strategusUser.Position);
-            Assert.AreEqual(1, strategusUser.Waypoints.Count);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            Assert.AreEqual(StrategusHeroStatus.MovingToPoint, strategusHero.Status);
+            Assert.AreEqual(newPosition, strategusHero.Position);
+            Assert.AreEqual(1, strategusHero.Waypoints.Count);
         }
 
         [Test]
@@ -89,14 +89,14 @@ namespace Crpg.Application.UTest.Strategus
         {
             var position = new Point(1, 2);
             var destination = new Point(5, 6);
-            var strategusUser = new StrategusUser
+            var strategusHero = new StrategusHero
             {
-                Status = StrategusUserStatus.MovingToPoint,
+                Status = StrategusHeroStatus.MovingToPoint,
                 Position = position,
                 Waypoints = new MultiPoint(new[] { destination }),
                 User = new User(),
             };
-            ArrangeDb.StrategusUsers.Add(strategusUser);
+            ArrangeDb.StrategusHeroes.Add(strategusHero);
             await ArrangeDb.SaveChangesAsync();
 
             var newPosition = new Point(5, 5);
@@ -107,68 +107,68 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsEquivalent(newPosition, destination))
                 .Returns(true);
-            var handler = new UpdateStrategusUserPositionsCommand.Handler(ActDb, strategusMapMock.Object);
-            await handler.Handle(new UpdateStrategusUserPositionsCommand
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusUser = await AssertDb.StrategusUsers.FirstAsync(u => u.UserId == strategusUser.UserId);
-            Assert.AreEqual(StrategusUserStatus.Idle, strategusUser.Status);
-            Assert.AreEqual(newPosition, strategusUser.Position);
-            Assert.AreEqual(0, strategusUser.Waypoints.Count);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            Assert.AreEqual(StrategusHeroStatus.Idle, strategusHero.Status);
+            Assert.AreEqual(newPosition, strategusHero.Position);
+            Assert.AreEqual(0, strategusHero.Waypoints.Count);
         }
 
-        [TestCase(StrategusUserStatus.FollowingUser)]
-        [TestCase(StrategusUserStatus.MovingToAttackUser)]
-        public async Task ShouldStopIfMovingToAUserNotInSight(StrategusUserStatus status)
+        [TestCase(StrategusHeroStatus.FollowingHero)]
+        [TestCase(StrategusHeroStatus.MovingToAttackHero)]
+        public async Task ShouldStopIfMovingToAUserNotInSight(StrategusHeroStatus status)
         {
-            var strategusUser = new StrategusUser
+            var strategusHero = new StrategusHero
             {
                 Status = status,
                 Position = new Point(1, 2),
-                TargetedUser = new StrategusUser
+                TargetedHero = new StrategusHero
                 {
                     Position = new Point(5, 6),
                     User = new User(),
                 },
                 User = new User(),
             };
-            ArrangeDb.StrategusUsers.Add(strategusUser);
+            ArrangeDb.StrategusHeroes.Add(strategusHero);
             await ArrangeDb.SaveChangesAsync();
 
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(0);
 
-            var handler = new UpdateStrategusUserPositionsCommand.Handler(ActDb, strategusMapMock.Object);
-            await handler.Handle(new UpdateStrategusUserPositionsCommand
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusUser = await AssertDb.StrategusUsers.FirstAsync(u => u.UserId == strategusUser.UserId);
-            Assert.AreEqual(StrategusUserStatus.Idle, strategusUser.Status);
-            Assert.IsNull(strategusUser.TargetedUserId);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            Assert.AreEqual(StrategusHeroStatus.Idle, strategusHero.Status);
+            Assert.IsNull(strategusHero.TargetedHeroId);
         }
 
-        [TestCase(StrategusUserStatus.FollowingUser)]
-        [TestCase(StrategusUserStatus.MovingToAttackUser)]
-        public async Task MovingToAnotherUserShouldMove(StrategusUserStatus status)
+        [TestCase(StrategusHeroStatus.FollowingHero)]
+        [TestCase(StrategusHeroStatus.MovingToAttackHero)]
+        public async Task MovingToAnotherUserShouldMove(StrategusHeroStatus status)
         {
             var position = new Point(1, 2);
             var destination = new Point(5, 6);
-            var strategusUser = new StrategusUser
+            var strategusHero = new StrategusHero
             {
                 Status = status,
                 Position = position,
-                TargetedUser = new StrategusUser
+                TargetedHero = new StrategusHero
                 {
                     Position = destination,
                     User = new User(),
                 },
                 User = new User(),
             };
-            ArrangeDb.StrategusUsers.Add(strategusUser);
+            ArrangeDb.StrategusHeroes.Add(strategusHero);
             await ArrangeDb.SaveChangesAsync();
 
             var newPosition = new Point(2, 3);
@@ -177,7 +177,7 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
                 .Returns(newPosition);
-            if (status == StrategusUserStatus.FollowingUser)
+            if (status == StrategusHeroStatus.FollowingHero)
             {
                 strategusMapMock
                     .Setup(m => m.ArePointsEquivalent(newPosition, destination))
@@ -190,31 +190,31 @@ namespace Crpg.Application.UTest.Strategus
                     .Returns(false);
             }
 
-            var handler = new UpdateStrategusUserPositionsCommand.Handler(ActDb, strategusMapMock.Object);
-            await handler.Handle(new UpdateStrategusUserPositionsCommand
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusUser = await AssertDb.StrategusUsers.FirstAsync(u => u.UserId == strategusUser.UserId);
-            Assert.AreEqual(status, strategusUser.Status);
-            Assert.AreEqual(newPosition, strategusUser.Position);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            Assert.AreEqual(status, strategusHero.Status);
+            Assert.AreEqual(newPosition, strategusHero.Position);
         }
 
-        [TestCase(StrategusUserStatus.MovingToSettlement)]
-        [TestCase(StrategusUserStatus.MovingToAttackSettlement)]
-        public async Task MovingToASettlementShouldMove(StrategusUserStatus status)
+        [TestCase(StrategusHeroStatus.MovingToSettlement)]
+        [TestCase(StrategusHeroStatus.MovingToAttackSettlement)]
+        public async Task MovingToASettlementShouldMove(StrategusHeroStatus status)
         {
             var position = new Point(1, 2);
             var destination = new Point(5, 6);
-            var strategusUser = new StrategusUser
+            var strategusHero = new StrategusHero
             {
                 Status = status,
                 Position = position,
                 TargetedSettlement = new StrategusSettlement { Position = destination },
                 User = new User(),
             };
-            ArrangeDb.StrategusUsers.Add(strategusUser);
+            ArrangeDb.StrategusHeroes.Add(strategusHero);
             await ArrangeDb.SaveChangesAsync();
 
             var newPosition = new Point(2, 3);
@@ -225,15 +225,15 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
                 .Returns(false);
-            var handler = new UpdateStrategusUserPositionsCommand.Handler(ActDb, strategusMapMock.Object);
-            await handler.Handle(new UpdateStrategusUserPositionsCommand
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusUser = await AssertDb.StrategusUsers.FirstAsync(u => u.UserId == strategusUser.UserId);
-            Assert.AreEqual(status, strategusUser.Status);
-            Assert.AreEqual(newPosition, strategusUser.Position);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            Assert.AreEqual(status, strategusHero.Status);
+            Assert.AreEqual(newPosition, strategusHero.Position);
         }
 
         [Test]
@@ -241,14 +241,14 @@ namespace Crpg.Application.UTest.Strategus
         {
             var position = new Point(1, 2);
             var destination = new Point(5, 6);
-            var strategusUser = new StrategusUser
+            var strategusHero = new StrategusHero
             {
-                Status = StrategusUserStatus.MovingToSettlement,
+                Status = StrategusHeroStatus.MovingToSettlement,
                 Position = position,
                 TargetedSettlement = new StrategusSettlement { Position = destination },
                 User = new User(),
             };
-            ArrangeDb.StrategusUsers.Add(strategusUser);
+            ArrangeDb.StrategusHeroes.Add(strategusHero);
             await ArrangeDb.SaveChangesAsync();
 
             var newPosition = new Point(5, 5);
@@ -259,15 +259,15 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
                 .Returns(true);
-            var handler = new UpdateStrategusUserPositionsCommand.Handler(ActDb, strategusMapMock.Object);
-            await handler.Handle(new UpdateStrategusUserPositionsCommand
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusUser = await AssertDb.StrategusUsers.FirstAsync(u => u.UserId == strategusUser.UserId);
-            Assert.AreEqual(StrategusUserStatus.IdleInSettlement, strategusUser.Status);
-            Assert.AreEqual(destination, strategusUser.Position);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            Assert.AreEqual(StrategusHeroStatus.IdleInSettlement, strategusHero.Status);
+            Assert.AreEqual(destination, strategusHero.Position);
         }
     }
 }

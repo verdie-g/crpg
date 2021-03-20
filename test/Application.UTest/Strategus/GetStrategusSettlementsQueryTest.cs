@@ -22,7 +22,7 @@ namespace Crpg.Application.UTest.Strategus
                     Type = StrategusSettlementType.Village,
                     Position = new Point(5, 6),
                     Scene = "battania_village",
-                    Owner = new StrategusUser
+                    Owner = new StrategusHero
                     {
                         User = new User
                         {

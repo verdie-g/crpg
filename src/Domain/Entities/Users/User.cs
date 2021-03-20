@@ -46,6 +46,6 @@ namespace Crpg.Domain.Entities.Users
         public IList<Character> Characters { get; set; } = new List<Character>();
         public IList<Ban> Bans { get; set; } = new List<Ban>();
         public ClanMember? ClanMembership { get; set; }
-        public StrategusUser? StrategusUser { get; set; }
+        public StrategusHero? StrategusHero { get; set; }
     }
 }

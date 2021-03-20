@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Crpg.Persistence.Configurations.Strategus
 {
-    public class StrategusUserConfiguration : IEntityTypeConfiguration<StrategusUser>
+    public class StrategusHeroConfiguration : IEntityTypeConfiguration<StrategusHero>
     {
-        public void Configure(EntityTypeBuilder<StrategusUser> builder)
+        public void Configure(EntityTypeBuilder<StrategusHero> builder)
         {
             builder.HasKey(u => u.UserId);
         }

@@ -16,6 +16,9 @@
         ClanNotFound,
         ClanTagAlreadyUsed,
         Conflict,
+        HeroInBattle,
+        HeroNotFound,
+        HeroNotInSight,
         InternalError,
         InvalidField,
         ItemAlreadyOwned,
@@ -36,11 +39,8 @@
         UserAlreadyInAClan,
         UserAlreadyInTheClan,
         UserAlreadyRegisteredToStrategus,
-        UserInBattle,
         UserNotAClanMember,
         UserNotFound,
         UserNotInAClan,
-        UserNotInSight,
-        UserNotRegisteredToStrategus,
     }
 }

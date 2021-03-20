@@ -1,6 +1,6 @@
 ﻿namespace Crpg.Domain.Entities.Strategus
 {
-    public enum StrategusUserStatus
+    public enum StrategusHeroStatus
     {
         /// <summary>
         /// Inactive.
@@ -18,9 +18,9 @@
         MovingToPoint,
 
         /// <summary>
-        /// Following a <see cref="StrategusUser"/>.
+        /// Following a <see cref="StrategusHero"/>.
         /// </summary>
-        FollowingUser,
+        FollowingHero,
 
         /// <summary>
         /// Following a <see cref="StrategusSettlement"/>.
@@ -28,9 +28,9 @@
         MovingToSettlement,
 
         /// <summary>
-        /// Moving to attack a <see cref="StrategusUser"/>.
+        /// Moving to attack a <see cref="StrategusHero"/>.
         /// </summary>
-        MovingToAttackUser,
+        MovingToAttackHero,
 
         /// <summary>
         /// Moving to attack a <see cref="StrategusSettlement"/>.

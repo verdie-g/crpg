@@ -29,7 +29,7 @@ namespace Crpg.Persistence
             NpgsqlConnection.GlobalTypeMapper.MapEnum<DamageType>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<WeaponClass>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<ClanMemberRole>();
-            NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusUserStatus>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusHeroStatus>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusSettlementType>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<Region>();
         }
@@ -56,7 +56,7 @@ namespace Crpg.Persistence
         public DbSet<Clan> Clans { get; set; } = default!;
         public DbSet<ClanMember> ClanMembers { get; set; } = default!;
         public DbSet<ClanInvitation> ClanInvitations { get; set; } = default!;
-        public DbSet<StrategusUser> StrategusUsers { get; set; } = default!;
+        public DbSet<StrategusHero> StrategusHeroes { get; set; } = default!;
         public DbSet<StrategusSettlement> StrategusSettlements { get; set; } = default!;
         public DbSet<StrategusOwnedItem> StrategusOwnedItems { get; set; } = default!;
         public DbSet<StrategusBattle> StrategusBattles { get; set; } = default!;
@@ -109,7 +109,7 @@ namespace Crpg.Persistence
             modelBuilder.HasPostgresEnum<DamageType>();
             modelBuilder.HasPostgresEnum<WeaponClass>();
             modelBuilder.HasPostgresEnum<ClanMemberRole>();
-            modelBuilder.HasPostgresEnum<StrategusUserStatus>();
+            modelBuilder.HasPostgresEnum<StrategusHeroStatus>();
             modelBuilder.HasPostgresEnum<StrategusSettlementType>();
             modelBuilder.HasPostgresEnum<Region>();
 
