@@ -1,6 +1,7 @@
 <template>
   <div class="main-strategus">
     <l-map class="map" :zoom="zoom" :center="center" :options="mapOptions" :max-bounds="maxBounds">
+      <l-control-mouse-position />
       <l-tile-layer :url="url" :attribution="attribution" />
     </l-map>
   </div>
@@ -10,9 +11,10 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { latLng, latLngBounds, CRS } from 'leaflet';
 import { LMap, LTileLayer, LMarker, LPopup, LTooltip, LIcon } from 'vue2-leaflet';
+import LControlMousePosition from '@/components/strategus/LControlMousePosition.vue';
 
 @Component({
-  components: { LMap, LTileLayer, LMarker, LPopup, LTooltip, LIcon },
+  components: { LMap, LTileLayer, LMarker, LPopup, LTooltip, LIcon, LControlMousePosition },
 })
 export default class Strategus extends Vue {
   zoom = 6;
