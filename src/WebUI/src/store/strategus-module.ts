@@ -4,7 +4,7 @@ import Settlement from '@/models/settlement';
 import * as strategusService from '@/services/strategus-service';
 
 @Module({ store, dynamic: true, name: 'strategus' })
-class strategusModule extends VuexModule {
+class StrategusModule extends VuexModule {
   settlements: Settlement[] = [];
 
   @Mutation
@@ -18,4 +18,4 @@ class strategusModule extends VuexModule {
   }
 }
 
-export default getModule(strategusModule);
+export default getModule(StrategusModule);
