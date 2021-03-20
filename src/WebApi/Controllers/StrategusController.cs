@@ -2,6 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Items.Models;
 using Crpg.Application.Strategus.Commands;
 using Crpg.Application.Strategus.Models;
 using Crpg.Application.Strategus.Queries;
@@ -58,7 +59,18 @@ namespace Crpg.WebApi.Controllers
         /// Get strategus settlements.
         /// </summary>
         [HttpGet("settlements")]
-        public Task<ActionResult<Result<IList<StrategusSettlementViewModel>>>> GetUser()
+        public Task<ActionResult<Result<IList<StrategusSettlementViewModel>>>> GetSettlements()
             => ResultToActionAsync(Mediator.Send(new GetStrategusSettlementsQuery()));
+
+        /// <summary>
+        /// Get strategus settlement shop items.
+        /// </summary>
+        [HttpGet("settlements/{settlementId}/shop/items")]
+        public Task<ActionResult<Result<IList<ItemViewModel>>>> GetSettlementShopItems([FromRoute] int settlementId)
+            => ResultToActionAsync(Mediator.Send(new GetStrategusSettlementShopItemsQuery
+            {
+                UserId = CurrentUser.UserId,
+                SettlementId = settlementId,
+            }));
     }
 }

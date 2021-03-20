@@ -30,6 +30,7 @@
         NotEnoughSkillPoints,
         NotEnoughWeaponProficiencyPoints,
         SettlementNotFound,
+        SettlementTooFar,
         SkillRequirementNotMet,
         StatisticDecreased,
         UserAlreadyInAClan,
@@ -39,7 +40,7 @@
         UserNotAClanMember,
         UserNotFound,
         UserNotInAClan,
-        UserNotRegisteredToStrategus,
         UserNotInSight,
+        UserNotRegisteredToStrategus,
     }
 }

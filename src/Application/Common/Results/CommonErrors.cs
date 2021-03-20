@@ -139,6 +139,12 @@ namespace Crpg.Application.Common.Results
             Detail = $"Settlement with id '{settlementId}' was not found",
         };
 
+        public static Error SettlementTooFar(int settlementId) => new Error(ErrorType.Validation, ErrorCode.SettlementTooFar)
+        {
+            Title = "Settlement is too far",
+            Detail = $"Settlement with id '{settlementId}' is too far to perform the requested action",
+        };
+
         public static Error SkillRequirementNotMet() => new Error(ErrorType.Validation, ErrorCode.SkillRequirementNotMet)
         {
             Title = "Unmet skill requirement",
