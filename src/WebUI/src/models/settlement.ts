@@ -7,4 +7,3 @@ export default class Settlement {
     position: Position;
     scene: string
   }
-  
