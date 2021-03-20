@@ -16,9 +16,9 @@
         :lat-lng="[settlement.position.coordinates[1], settlement.position.coordinates[0]]"
         :key="settlement.id"
       >
-        <l-icon :icon-anchor="[20, 20]">
+        <l-icon :icon-anchor="[0, 0]" class-name="settlement-icon">
           <div
-            class="settlement-icon"
+            class="settlement-icon-txt"
             :style="`font-size:${getSettlementParams(settlement).fontSize}px`"
           >
             {{ settlement.name }}
@@ -116,6 +116,12 @@ export default class Strategus extends Vue {
 html {
   overflow-y: auto;
 }
+// Center txt
+.settlement-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
 
 <style scoped lang="scss">
@@ -124,12 +130,12 @@ html {
     //calc(Screen height - navbar)
     height: calc(100vh - 4.25rem);
     background-color: #284745;
-    .settlement-icon {
+    .settlement-icon-txt {
+      display: inline-block;
       color: rgb(254, 255, 236);
       border-radius: 2px;
       white-space: nowrap;
       padding: 1px 8px;
-      display: inline-block;
       background-color: rgba(0, 0, 0, 0.4);
     }
   }
