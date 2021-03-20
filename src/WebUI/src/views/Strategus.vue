@@ -16,7 +16,9 @@
         :lat-lng="[settlement.position.coordinates[1], settlement.position.coordinates[0]]"
         :key="settlement.id"
       >
-        <l-icon class-name="settlement-icon">
+        <l-icon
+          class-name="settlement-icon is-flex is-justify-content-center is-align-items-center"
+        >
           <div class="settlement-icon-txt" :class="getSettlementParams(settlement).fontSize">
             {{ settlement.name }}
           </div>
@@ -112,12 +114,6 @@ export default class Strategus extends Vue {
 // Hide vertical scrollbar
 html {
   overflow-y: auto;
-}
-// Center txt
-.settlement-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>
 
