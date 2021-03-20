@@ -1,5 +1,5 @@
 <template>
-  <div class="mainStrategus">
+  <div class="main-strategus">
     <l-map
       ref="map"
       class="map"
@@ -7,19 +7,23 @@
       :center="center"
       :options="mapOptions"
       :max-bounds="maxBounds"
-      @moveend="setDisplayedBounds($refs.map.mapObject.getBounds())"
-      @click="test"
+      @moveend="setDisplayedBounds(mapRef.mapObject.getBounds())"
+      @leaflet:load="setDisplayedBounds(mapRef.mapObject.getBounds())"
     >
       <l-tile-layer :url="url" :attribution="attribution" />
       <l-marker
         v-for="settlement in settlements"
         :lat-lng="[settlement.position.coordinates[1], settlement.position.coordinates[0]]"
         :key="settlement.id"
-        :icon-url="IconeImg"
-        :icon-size="[16, 16]"
-        name="test"
       >
-        test
+        <l-icon :icon-anchor="[20, 20]">
+          <div
+            class="settlement-icon"
+            :style="`font-size:${getSettlementParams(settlement).fontSize}px`"
+          >
+            {{ settlement.name }}
+          </div>
+        </l-icon>
       </l-marker>
     </l-map>
   </div>
@@ -27,16 +31,14 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { latLng, latLngBounds, CRS } from 'leaflet';
-import { LMap, LTileLayer, LMarker, LPopup, LTooltip, LIcon } from 'vue2-leaflet';
+import { LatLng, LatLngBounds, CRS, Icon } from 'leaflet';
+import { LMap, LTileLayer, LMarker, LIcon } from 'vue2-leaflet';
 import strategusModule from '@/store/strategus-module';
 import Settlement from '@/models/settlement';
-import IconeImg from '@/assets/map-marker-icon.png';
 import SettlementType from '@/models/settlement-type';
-import { Icon } from 'leaflet';
 
+//Default icons
 delete (Icon.Default.prototype as any)._getIconUrl;
-
 Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
@@ -44,11 +46,11 @@ Icon.Default.mergeOptions({
 });
 
 @Component({
-  components: { LMap, LTileLayer, LMarker, LPopup, LTooltip, LIcon },
+  components: { LMap, LTileLayer, LMarker, LIcon },
 })
 export default class Strategus extends Vue {
   zoom = 6;
-  center = latLng(-139, 122.75);
+  center = new LatLng(-139, 122.75);
   url = 'http://pecores.fr/gigamap/{z}/{y}/{x}.png';
   attribution = '<a target="_blank" href="https://www.taleworlds.com">TaleWorlds Entertainment</a>';
   mapOptions = {
@@ -59,44 +61,52 @@ export default class Strategus extends Vue {
     maxBoundsViscosity: 0.8,
     inertiaDeceleration: 2000,
   };
-  maxBounds = latLngBounds([
+  maxBounds = new LatLngBounds([
     [0, 0],
     [-214.88, 768],
   ]);
-  displayedBounds = null;
-  IconeImg = IconeImg;
+  displayedBounds: LatLngBounds | null = null;
 
   get settlements(): Settlement[] {
-    return [strategusModule.settlements[0]];
     if (this.displayedBounds === null) {
       return [];
     }
+    // Keep settlement displayed and filter by zoom
     return strategusModule.settlements.filter(
       settlement =>
+        this.displayedBounds !== null &&
         this.displayedBounds.contains(
-          latLng(settlement.position.coordinates[1], settlement.position.coordinates[0])
+          new LatLng(settlement.position.coordinates[1], settlement.position.coordinates[0])
         ) &&
-        (this.zoom > 6 ||
-          (this.zoom > 4 && settlement.type === SettlementType.Castle) ||
-          settlement.type === SettlementType.Town)
+        ((this.mapRef.mapObject.getZoom() <= 3 && settlement.type === SettlementType.Town) ||
+          this.mapRef.mapObject.getZoom() > 3)
     );
   }
 
-  setDisplayedBounds(bounds: LatLngBounds) {
+  // get Map object
+  get mapRef(): any {
+    return this.$refs.map as LMap & { mapObject: () => any };
+  }
+
+  getSettlementParams(settlement: Settlement) {
+    switch (settlement.type) {
+      case SettlementType.Village:
+        return { fontSize: '10' };
+      case SettlementType.Castle:
+        return { fontSize: '14' };
+      case SettlementType.Town:
+        return { fontSize: '16' };
+    }
+    // default params
+    return { fontSize: '14' };
+  }
+
+  setDisplayedBounds(bounds: LatLngBounds | null): void {
     this.displayedBounds = bounds;
   }
 
   created() {
     strategusModule.getSettlements();
-  }
-
-  mounted() {
-    console.log(this.$refs.map.mapObject);
-    this.setDisplayedBounds(this.$refs.map.getBounds());
-  }
-
-  test(event: any) {
-    console.log(event.latlng);
   }
 }
 </script>
@@ -109,11 +119,19 @@ html {
 </style>
 
 <style scoped lang="scss">
-.mainStrategus {
+.main-strategus {
   .map {
     //calc(Screen height - navbar)
     height: calc(100vh - 4.25rem);
     background-color: #284745;
+    .settlement-icon {
+      color: rgb(254, 255, 236);
+      border-radius: 2px;
+      white-space: nowrap;
+      padding: 1px 8px;
+      display: inline-block;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
   }
 }
 </style>
