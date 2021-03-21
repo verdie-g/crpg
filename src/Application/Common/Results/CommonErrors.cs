@@ -72,7 +72,6 @@ namespace Crpg.Application.Common.Results
             Detail = $"Cannot performed the requested action while hero with id '{heroId}' is in a battle",
         };
 
-
         public static Error HeroNotFound(int heroId) => new Error(ErrorType.NotFound, ErrorCode.HeroNotFound)
         {
             Title = "Hero was not found",

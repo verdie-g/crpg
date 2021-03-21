@@ -86,7 +86,6 @@ namespace Crpg.Application.System.Commands
             }
 
             private static IEnumerable<Region> GetRegions() => Enum.GetValues(typeof(Region)).Cast<Region>();
-
         }
     }
 }

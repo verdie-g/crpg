@@ -33,7 +33,6 @@ export async function getDecodedToken(): Promise<TokenPayload | null> {
   }
 
   const payload = JSON.parse(atob(token.split('.')[1]));
-  console.log(payload);
   return {
     userId: parseInt(payload.sub, 10),
     userRole: payload.role,
