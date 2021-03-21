@@ -44,12 +44,12 @@ namespace Crpg.WebApi.Controllers
         }
 
         /// <summary>
-        /// Update strategus hero movement.
+        /// Update strategus hero status.
         /// </summary>
         /// <returns>The updated strategus hero.</returns>
         /// <response code="200">Updated.</response>
-        [HttpPut("heroes/self/moves")]
-        public Task<ActionResult<Result<StrategusHeroViewModel>>> UpdateStrategusHeroMovement([FromBody] UpdateStrategusHeroMovementCommand req)
+        [HttpPut("heroes/self/status")]
+        public Task<ActionResult<Result<StrategusHeroViewModel>>> UpdateStrategusHeroStatus([FromBody] UpdateStrategusHeroStatusCommand req)
         {
             req.HeroId = CurrentUser.UserId;
             return ResultToActionAsync(Mediator.Send(req));

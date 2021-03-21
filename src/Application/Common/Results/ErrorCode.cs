@@ -18,6 +18,7 @@
         Conflict,
         HeroInBattle,
         HeroNotFound,
+        HeroNotInASettlement,
         HeroNotInSight,
         InternalError,
         InvalidField,

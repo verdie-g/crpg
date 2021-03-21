@@ -78,6 +78,12 @@ namespace Crpg.Application.Common.Results
             Detail = $"Hero with id '{heroId}' was not found",
         };
 
+        public static Error HeroNotInASettlement(int heroId) => new Error(ErrorType.Validation, ErrorCode.HeroNotInASettlement)
+        {
+            Title = "Hero is not in a settlement",
+            Detail = $"Hero with id '{heroId}' is not in a settlement",
+        };
+
         public static Error HeroNotInSight(int heroId) => new Error(ErrorType.Validation, ErrorCode.HeroNotInSight)
         {
             Title = "Hero is not in sight",
