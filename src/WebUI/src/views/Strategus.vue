@@ -7,8 +7,8 @@
       :center="center"
       :options="mapOptions"
       :max-bounds="maxBounds"
-      @moveend="setDisplayedBounds(mapRef.mapObject.getBounds())"
-      @leaflet:load="setDisplayedBounds(mapRef.mapObject.getBounds())"
+      @moveend="setDisplayedBounds(map.mapObject.getBounds())"
+      @leaflet:load="setDisplayedBounds(map.mapObject.getBounds())"
     >
       <l-tile-layer :url="url" :attribution="attribution" />
       <l-marker
@@ -16,10 +16,11 @@
         :lat-lng="[settlement.position.coordinates[1], settlement.position.coordinates[0]]"
         :key="settlement.id"
       >
-        <l-icon
-          class-name="settlement-icon is-flex is-justify-content-center is-align-items-center"
-        >
-          <div class="settlement-icon-txt" :class="getSettlementParams(settlement).fontSize">
+        <l-icon class-name="is-flex is-justify-content-center is-align-items-center">
+          <div
+            class="settlement-icon-txt has-text-light px-3"
+            :class="getSettlementCssClass(settlement)"
+          >
             {{ settlement.name }}
           </div>
         </l-icon>
@@ -54,7 +55,7 @@ export default class Strategus extends Vue {
   attribution = '<a target="_blank" href="https://www.taleworlds.com">TaleWorlds Entertainment</a>';
   mapOptions = {
     zoomSnap: 0.5,
-    minZoom: 2,
+    minZoom: 3,
     maxZoom: 7,
     crs: CRS.Simple,
     maxBoundsViscosity: 0.8,
@@ -73,39 +74,37 @@ export default class Strategus extends Vue {
     // Keep settlement displayed and filter by zoom
     return strategusModule.settlements.filter(
       settlement =>
-        this.displayedBounds !== null &&
-        this.displayedBounds.contains(
+        this.displayedBounds!.contains(
           new LatLng(settlement.position.coordinates[1], settlement.position.coordinates[0])
         ) &&
-        ((this.mapRef.mapObject.getZoom() <= 3 && settlement.type === SettlementType.Town) ||
-          this.mapRef.mapObject.getZoom() > 3)
+        (this.map.mapObject.getZoom() > 4 || settlement.type === SettlementType.Town)
     );
   }
 
   // get Map object
-  get mapRef(): LMap {
-    return this.$refs.map as LMap & { mapObject: () => any };
-  }
-
-  getSettlementParams(settlement: Settlement): { fontSize?: string } {
-    switch (settlement.type) {
-      case SettlementType.Village:
-        return { fontSize: 'is-size-7' };
-      case SettlementType.Castle:
-        return { fontSize: 'is-size-6' };
-      case SettlementType.Town:
-        return { fontSize: 'is-size-5' };
-    }
-    // default params
-    return { fontSize: 'is-size-7' };
-  }
-
-  setDisplayedBounds(bounds: LatLngBounds | null): void {
-    this.displayedBounds = bounds;
+  get map(): LMap {
+    return this.$refs.map as LMap;
   }
 
   created() {
     strategusModule.getSettlements();
+  }
+
+  getSettlementCssClass(settlement: Settlement): string {
+    switch (settlement.type) {
+      case SettlementType.Village:
+        return 'is-size-7';
+      case SettlementType.Castle:
+        return 'is-size-6';
+      case SettlementType.Town:
+        return 'is-size-5';
+      default:
+        return 'is-size-7';
+    }
+  }
+
+  setDisplayedBounds(bounds: LatLngBounds): void {
+    this.displayedBounds = bounds;
   }
 }
 </script>
@@ -125,10 +124,8 @@ html {
     background-color: #284745;
     .settlement-icon-txt {
       display: inline-block;
-      color: rgb(254, 255, 236);
       border-radius: 2px;
       white-space: nowrap;
-      padding: 1px 8px;
       background-color: rgba(0, 0, 0, 0.4);
     }
   }

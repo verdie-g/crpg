@@ -1,7 +1,7 @@
 enum SettlementType {
+  Village = 'Village',
   Castle = 'Castle',
   Town = 'Town',
-  Village = 'Village',
 }
 
 export default SettlementType;

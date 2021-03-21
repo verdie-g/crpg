@@ -1,9 +1,10 @@
-import Position from '@/models/position';
+import Point from '@/models/point';
+import SettlementType from '@/models/settlement-type';
 
 export default class Settlement {
     name: string;
-    type: string;
+    type: SettlementType;
     culture: string;
-    position: Position;
+    position: Point;
     scene: string
   }
