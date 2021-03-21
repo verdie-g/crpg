@@ -8,7 +8,7 @@ namespace Crpg.Persistence.Configurations.Strategus
     {
         public void Configure(EntityTypeBuilder<StrategusOwnedItem> builder)
         {
-            builder.HasKey(oi => new { oi.UserId, oi.ItemId });
+            builder.HasKey(oi => new { UserId = oi.HeroId, oi.ItemId });
         }
     }
 }

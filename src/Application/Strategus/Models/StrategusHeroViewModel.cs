@@ -15,7 +15,7 @@ namespace Crpg.Application.Strategus.Models
         public string PlatformUserId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public Region Region { get; set; }
-        public int Silver { get; set; }
+        public int Gold { get; set; }
         public int Troops { get; set; }
         public Point Position { get; set; } = default!;
         public StrategusHeroStatus Status { get; set; }

@@ -56,6 +56,19 @@ namespace Crpg.WebApi.Controllers
         }
 
         /// <summary>
+        /// Buy items from a settlement.
+        /// </summary>
+        /// <returns>The bought items.</returns>
+        /// <response code="200">Bought.</response>
+        /// <response code="400">Too far from the settlement, item not available, ...</response>
+        [HttpPost("heroes/self/items")]
+        public Task<ActionResult<Result<StrategusOwnedItemViewModel>>> BuyStrategusItem([FromBody] BuyStrategusItemCommand req)
+        {
+            req.HeroId = CurrentUser.UserId;
+            return ResultToActionAsync(Mediator.Send(req));
+        }
+
+        /// <summary>
         /// Get strategus settlements.
         /// </summary>
         [HttpGet("settlements")]

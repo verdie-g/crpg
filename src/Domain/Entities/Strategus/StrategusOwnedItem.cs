@@ -8,11 +8,11 @@ namespace Crpg.Domain.Entities.Strategus
     /// </summary>
     public class StrategusOwnedItem : AuditableEntity
     {
-        public int UserId { get; set; }
+        public int HeroId { get; set; }
         public int ItemId { get; set; }
         public int Count { get; set; }
 
-        public StrategusHero? User { get; set; }
+        public StrategusHero? Hero { get; set; }
         public Item? Item { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Crpg.Domain.Entities.Strategus
         /// <summary>
         /// Money of the user on Strategus. Different from <see cref="Users.User.Gold"/>.
         /// </summary>
-        public int Silver { get; set; }
+        public int Gold { get; set; }
 
         /// <summary>
         /// Number of troops the user recruited.
@@ -60,6 +60,7 @@ namespace Crpg.Domain.Entities.Strategus
         public StrategusSettlement? TargetedSettlement { get; set; }
 
         public User? User { get; set; }
+        public List<StrategusOwnedItem>? OwnedItems { get; set; }
         public List<StrategusSettlement>? OwnedSettlements { get; set; }
     }
 }
