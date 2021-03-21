@@ -50,7 +50,7 @@ namespace Crpg.Application.Strategus.Commands
             {
                 var hero = await _db.StrategusHeroes
                     .AsNoTracking()
-                    .FirstOrDefaultAsync(h => h.UserId == req.HeroId, cancellationToken);
+                    .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
                 if (hero == null)
                 {
                     return new Result<StrategusOwnedItemViewModel>(CommonErrors.HeroNotFound(req.HeroId));
@@ -89,12 +89,12 @@ namespace Crpg.Application.Strategus.Commands
 
                 var ownedItem = await _db.StrategusOwnedItems
                     .Include(oi => oi.Item)
-                    .FirstOrDefaultAsync(oi => oi.HeroId == hero.UserId && oi.ItemId == item.Id, cancellationToken);
+                    .FirstOrDefaultAsync(oi => oi.HeroId == hero.Id && oi.ItemId == item.Id, cancellationToken);
                 if (ownedItem == null)
                 {
                     ownedItem = new StrategusOwnedItem
                     {
-                        HeroId = hero.UserId,
+                        HeroId = hero.Id,
                         Item = item,
                         Count = req.ItemCount,
                     };

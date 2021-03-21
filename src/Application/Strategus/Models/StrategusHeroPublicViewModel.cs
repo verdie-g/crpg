@@ -23,7 +23,7 @@ namespace Crpg.Application.Strategus.Models
         public void Mapping(Profile profile)
         {
             profile.CreateMap<StrategusHero, StrategusHeroPublicViewModel>()
-                .ForMember(u => u.Id, opt => opt.MapFrom(u => u.UserId))
+                .ForMember(u => u.Id, opt => opt.MapFrom(u => u.Id))
                 .ForMember(u => u.Platform, opt => opt.MapFrom(u => u.User!.Platform))
                 .ForMember(u => u.PlatformUserId, opt => opt.MapFrom(u => u.User!.PlatformUserId))
                 .ForMember(u => u.Name, opt => opt.MapFrom(u => u.User!.Name))

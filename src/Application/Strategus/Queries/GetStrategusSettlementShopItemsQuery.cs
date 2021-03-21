@@ -37,7 +37,7 @@ namespace Crpg.Application.Strategus.Queries
             {
                 var hero = await _db.StrategusHeroes
                     .AsNoTracking()
-                    .FirstOrDefaultAsync(h => h.UserId == req.HeroId, cancellationToken);
+                    .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
                 if (hero == null)
                 {
                     return new Result<IList<ItemViewModel>>(CommonErrors.HeroNotFound(req.HeroId));

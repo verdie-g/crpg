@@ -57,7 +57,7 @@ namespace Crpg.Application.Strategus.Commands
                             if (user.Waypoints.IsEmpty)
                             {
                                 Logger.LogWarning("User '{userId}' was in status '{status}' without any points to go to",
-                                    user.UserId, user.Status);
+                                    user.Id, user.Status);
                                 user.Status = StrategusHeroStatus.Idle;
                                 continue;
                             }
@@ -81,7 +81,7 @@ namespace Crpg.Application.Strategus.Commands
                             if (user.TargetedHero == null)
                             {
                                 Logger.LogWarning("User '{userId}' was in status '{status}' without target user",
-                                    user.UserId, user.Status);
+                                    user.Id, user.Status);
                                 user.Status = StrategusHeroStatus.Idle;
                                 continue;
                             }
@@ -114,7 +114,7 @@ namespace Crpg.Application.Strategus.Commands
                             if (user.TargetedSettlement == null)
                             {
                                 Logger.LogWarning("User '{userId}' was in status '{status}' without target settlement",
-                                    user.UserId, user.Status);
+                                    user.Id, user.Status);
                                 user.Status = StrategusHeroStatus.Idle;
                                 continue;
                             }

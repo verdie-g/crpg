@@ -7,7 +7,10 @@ namespace Crpg.Domain.Entities.Strategus
 {
     public class StrategusHero : AuditableEntity
     {
-        public int UserId { get; set; }
+        /// <summary>
+        /// Same as <see cref="Users.User.Id"/> (one-to-one mapping).
+        /// </summary>
+        public int Id { get; set; }
 
         /// <summary>
         /// The <see cref="Region"/> in which the user is playing.

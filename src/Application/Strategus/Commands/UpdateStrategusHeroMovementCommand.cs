@@ -20,7 +20,7 @@ namespace Crpg.Application.Strategus.Commands
         public int HeroId { get; set; }
         public StrategusHeroStatus Status { get; set; }
         public MultiPoint Waypoints { get; set; } = MultiPoint.Empty;
-        public int TargetedUserId { get; set; }
+        public int TargetedHeroId { get; set; }
         public int TargetedSettlementId { get; set; }
 
         public class Validator : AbstractValidator<UpdateStrategusHeroMovementCommand>
@@ -50,7 +50,7 @@ namespace Crpg.Application.Strategus.Commands
             {
                 var hero = await _db.StrategusHeroes
                     .Include(h => h.User)
-                    .FirstOrDefaultAsync(h => h.UserId == req.HeroId, cancellationToken);
+                    .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
                 if (hero == null)
                 {
                     return new Result<StrategusHeroViewModel>(CommonErrors.HeroNotFound(req.HeroId));
@@ -80,15 +80,15 @@ namespace Crpg.Application.Strategus.Commands
                 {
                     var targetHero = await _db.StrategusHeroes
                         .Include(h => h.User)
-                        .FirstOrDefaultAsync(h => h.UserId == req.TargetedUserId, cancellationToken);
+                        .FirstOrDefaultAsync(h => h.Id == req.TargetedHeroId, cancellationToken);
                     if (targetHero == null)
                     {
-                        return new Result<StrategusHeroViewModel>(CommonErrors.UserNotFound(req.TargetedUserId));
+                        return new Result<StrategusHeroViewModel>(CommonErrors.UserNotFound(req.TargetedHeroId));
                     }
 
                     if (!hero.Position.IsWithinDistance(targetHero.Position, _strategusMap.ViewDistance))
                     {
-                        return new Result<StrategusHeroViewModel>(CommonErrors.HeroNotInSight(req.TargetedUserId));
+                        return new Result<StrategusHeroViewModel>(CommonErrors.HeroNotInSight(req.TargetedHeroId));
                     }
 
                     hero.Status = req.Status;

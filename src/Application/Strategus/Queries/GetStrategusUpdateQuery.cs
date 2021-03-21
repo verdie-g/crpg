@@ -45,14 +45,14 @@ namespace Crpg.Application.Strategus.Queries
             {
                 var hero = await _db.StrategusHeroes
                     .Include(h => h.User)
-                    .FirstOrDefaultAsync(h => h.UserId == req.HeroId, cancellationToken);
+                    .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
                 if (hero == null)
                 {
                     return new Result<StrategusUpdate>(CommonErrors.HeroNotFound(req.HeroId));
                 }
 
                 var visibleHeroes = await _db.StrategusHeroes
-                    .Where(h => h.UserId != hero.UserId
+                    .Where(h => h.Id != hero.Id
                                 && h.Position.IsWithinDistance(hero.Position, _strategusMap.ViewDistance)
                                 && VisibleStatuses.Contains(h.Status))
                     .ProjectTo<StrategusHeroPublicViewModel>(_mapper.ConfigurationProvider)

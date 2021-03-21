@@ -42,7 +42,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new BuyStrategusItemCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new BuyStrategusItemCommand
             {
-                HeroId = hero.UserId,
+                HeroId = hero.Id,
                 ItemId = 2,
                 ItemCount = 1,
                 SettlementId = 3,
@@ -72,7 +72,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new BuyStrategusItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new BuyStrategusItemCommand
             {
-                HeroId = hero.UserId,
+                HeroId = hero.Id,
                 ItemId = 2,
                 ItemCount = 1,
                 SettlementId = settlement.Id,
@@ -99,7 +99,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new BuyStrategusItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new BuyStrategusItemCommand
             {
-                HeroId = hero.UserId,
+                HeroId = hero.Id,
                 ItemId = 2,
                 ItemCount = 1,
                 SettlementId = settlement.Id,
@@ -128,7 +128,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new BuyStrategusItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new BuyStrategusItemCommand
             {
-                HeroId = hero.UserId,
+                HeroId = hero.Id,
                 ItemId = item.Id,
                 ItemCount = 1,
                 SettlementId = settlement.Id,
@@ -157,7 +157,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new BuyStrategusItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new BuyStrategusItemCommand
             {
-                HeroId = hero.UserId,
+                HeroId = hero.Id,
                 ItemId = item.Id,
                 ItemCount = 1,
                 SettlementId = settlement.Id,
@@ -188,7 +188,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new BuyStrategusItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new BuyStrategusItemCommand
             {
-                HeroId = hero.UserId,
+                HeroId = hero.Id,
                 ItemId = item.Id,
                 ItemCount = 4,
                 SettlementId = settlement.Id,
@@ -218,7 +218,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new BuyStrategusItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new BuyStrategusItemCommand
             {
-                HeroId = hero.UserId,
+                HeroId = hero.Id,
                 ItemId = item.Id,
                 ItemCount = 10,
                 SettlementId = settlement.Id,

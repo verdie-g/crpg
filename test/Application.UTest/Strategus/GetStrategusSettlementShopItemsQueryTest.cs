@@ -39,7 +39,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new GetStrategusSettlementShopItemsQuery.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new GetStrategusSettlementShopItemsQuery
             {
-                HeroId = hero.UserId,
+                HeroId = hero.Id,
                 SettlementId = 2,
             }, CancellationToken.None);
 
@@ -67,7 +67,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new GetStrategusSettlementShopItemsQuery.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new GetStrategusSettlementShopItemsQuery
             {
-                HeroId = hero.UserId,
+                HeroId = hero.Id,
                 SettlementId = settlement.Id,
             }, CancellationToken.None);
 
@@ -104,7 +104,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new GetStrategusSettlementShopItemsQuery.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new GetStrategusSettlementShopItemsQuery
             {
-                HeroId = hero.UserId,
+                HeroId = hero.Id,
                 SettlementId = settlement.Id,
             }, CancellationToken.None);
 

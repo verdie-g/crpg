@@ -161,7 +161,7 @@ namespace Crpg.Application.UTest.Strategus
             {
                 HeroId = user.Id,
                 Status = status,
-                TargetedUserId = 10,
+                TargetedHeroId = 10,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -199,7 +199,7 @@ namespace Crpg.Application.UTest.Strategus
             {
                 HeroId = user.Id,
                 Status = status,
-                TargetedUserId = targetUser.Id,
+                TargetedHeroId = targetUser.Id,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -237,7 +237,7 @@ namespace Crpg.Application.UTest.Strategus
             {
                 HeroId = user.Id,
                 Status = status,
-                TargetedUserId = targetUser.Id,
+                TargetedHeroId = targetUser.Id,
             }, CancellationToken.None);
 
             var strategusHero = res.Data!;
