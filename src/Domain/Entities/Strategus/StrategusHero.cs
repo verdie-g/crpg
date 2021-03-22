@@ -25,7 +25,8 @@ namespace Crpg.Domain.Entities.Strategus
         /// <summary>
         /// Number of troops the user recruited.
         /// </summary>
-        public int Troops { get; set; }
+        /// <remarks>Type is a float to be able to add a fraction of troop for each strategus tick.</remarks>
+        public float Troops { get; set; }
 
         /// <summary>
         /// User position on the strategus map.

@@ -40,5 +40,7 @@ namespace Crpg.Application.Common
         public int DefaultHeirloomPoints { get; set; }
         public double StrategusMapWidth { get; set; }
         public double StrategusMapHeight { get; set; }
+        public float StrategusTroopRecruitmentPerHour { get; set; }
+        public int StrategusMaxHeroTroops { get; set; }
     }
 }
