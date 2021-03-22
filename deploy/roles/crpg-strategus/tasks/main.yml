@@ -1,0 +1,99 @@
+---
+- name: Create cRPG Strategus service
+  template:
+    src: crpg-strategus.service.j2
+    dest: /lib/systemd/system/crpg-strategus.service
+    mode: 0644
+
+- name: Build cRPG Strategus
+  become: false
+  command: "dotnet publish -c Release {{ playbook_dir | dirname }}/src/Strategus --output /tmp/{{ crpg_strategus_path | basename }}_new"
+  delegate_to: localhost
+
+- name: Compress locally cRPG Strategus
+  archive:
+    path: "/tmp/{{ crpg_strategus_path | basename }}_new"
+    dest: "/tmp/{{ crpg_strategus_path | basename }}_new.tgz"
+  delegate_to: localhost
+  become: false
+
+- name: Copy to host and decompress cRPG Strategus
+  unarchive:
+    src: "/tmp/{{ crpg_strategus_path | basename }}_new.tgz"
+    dest: "{{ crpg_strategus_path | dirname }}"
+    mode: u=rwX,g=,o=
+    owner: "{{ crpg_strategus_user }}"
+    group: "{{ crpg_strategus_user }}"
+  become_user: "{{ crpg_strategus_user }}" # https://github.com/ansible/ansible/issues/35426
+
+- name: Generate cRPG Strategus settings
+  template:
+    src: appsettings.Production.json.j2
+    dest: "{{ crpg_strategus_path }}_new/appsettings.Production.json"
+    mode: 0600
+    owner: "{{ crpg_strategus_user }}"
+    group: "{{ crpg_strategus_user }}"
+  notify:
+    - reload systemd
+
+- name: Check that a cRPG Strategus version is already present
+  stat:
+    path: "{{ crpg_strategus_path }}"
+  register: crpg_strategus_path_stat_result
+
+- name: Create log folder
+  file:
+    path: "{{ crpg_strategus_log_file | dirname }}"
+    state: directory
+    mode: 0755
+    group: "{{ crpg_strategus_user }}"
+    owner: "{{ crpg_strategus_user }}"
+
+- name: Stop cRPG Strategus
+  service:
+    name: crpg
+    enabled: yes
+    state: stopped
+
+- name: Swap old and new version (1/2)
+  command: "mv {{ crpg_strategus_path }} {{ crpg_strategus_path }}_old"
+  when: crpg_strategus_path_stat_result.stat.exists
+
+- name: Swap old and new version (2/2)
+  command: "mv {{ crpg_strategus_path }}_new {{ crpg_strategus_path }}"
+
+- name: Create or truncate log file
+  copy:
+    content: ""
+    dest: "{{ crpg_strategus_log_file }}"
+    force: no
+    mode: 0644
+    group: "{{ crpg_strategus_user }}"
+    owner: "{{ crpg_strategus_user }}"
+
+- name: Start cRPG Strategus
+  service:
+    name: crpg
+    enabled: yes
+    state: started
+
+- name: Clean old cRPG Strategus
+  file:
+    path: "{{ crpg_strategus_path }}_old"
+    state: absent
+  when: crpg_strategus_path_stat_result.stat.exists
+
+- name: Clean local cRPG Strategus archive
+  file:
+    path: "/tmp/{{ crpg_strategus_path | basename }}_new.tgz"
+    state: absent
+  delegate_to: localhost
+  become: false
+
+- name: Clean local cRPG Strategus build
+  file:
+    path: "/tmp/{{ crpg_strategus_path | basename }}_new"
+    state: absent
+  delegate_to: localhost
+  become: false
+

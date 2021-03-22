@@ -64,6 +64,10 @@
           path: "{{ crpg_api_log_file }}"
           service: "{{ crpg_api_service_name }}"
           source: csharp
+        - type: file
+          path: "{{ crpg_strategus_log_file }}"
+          service: "{{ crpg_strategus_service_name }}"
+          source: csharp
       http_check:
         init_config:
         instances:

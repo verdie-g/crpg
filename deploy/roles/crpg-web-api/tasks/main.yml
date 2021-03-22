@@ -21,8 +21,8 @@
 
 - name: Create cRPG Web API service
   template:
-    src: crpg.service.j2
-    dest: /lib/systemd/system/crpg.service
+    src: crpg-web-api.service.j2
+    dest: /lib/systemd/system/crpg-web-api.service
     mode: 0644
 
 - name: Build cRPG Web API
