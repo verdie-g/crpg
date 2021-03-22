@@ -52,6 +52,7 @@ namespace Crpg.Domain.Entities.Strategus
 
         /// <summary>
         /// The id of the settlement the hero is staying in if <see cref="Status"/> == <see cref="StrategusHeroStatus.IdleInSettlement"/>.
+        /// The id of the settlement the hero is recruiting in if <see cref="Status"/> == <see cref="StrategusHeroStatus.RecruitingInSettlement"/>.
         /// The id of the settlement the hero is moving to if <see cref="Status"/> == <see cref="StrategusHeroStatus.MovingToSettlement"/>.
         /// The id of the settlement to attack if <see cref="Status"/> == <see cref="StrategusHeroStatus.MovingToAttackSettlement"/>.
         /// </summary>
