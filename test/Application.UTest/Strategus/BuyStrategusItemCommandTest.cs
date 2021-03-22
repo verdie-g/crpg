@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Strategus.Commands;
-using Crpg.Application.Strategus.Queries;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Strategus;
 using Crpg.Domain.Entities.Users;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using NetTopologySuite.Geometries;
 using NUnit.Framework;
@@ -150,7 +150,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.StrategusHeroes.Add(hero);
             var settlement = new StrategusSettlement { Culture = Culture.Aserai };
             ArrangeDb.StrategusSettlements.Add(settlement);
-            var item = new Item { Rank = 1, Culture = Culture.Empire };
+            var item = new Item { Rank = 0, Culture = Culture.Empire };
             ArrangeDb.Items.Add(item);
             await ArrangeDb.SaveChangesAsync();
 
@@ -168,6 +168,35 @@ namespace Crpg.Application.UTest.Strategus
         }
 
         [Test]
+        public async Task ShouldReturnErrorIfNotEnoughGold()
+        {
+            var strategusMapMock = new Mock<IStrategusMap>();
+            strategusMapMock
+                .Setup(m => m.ArePointsAtInteractionDistance(It.IsAny<Point>(), It.IsAny<Point>()))
+                .Returns(true);
+
+            var hero = new StrategusHero { Gold = 21, User = new User() };
+            ArrangeDb.StrategusHeroes.Add(hero);
+            var settlement = new StrategusSettlement { Culture = Culture.Empire };
+            ArrangeDb.StrategusSettlements.Add(settlement);
+            var item = new Item { Rank = 0, Culture = Culture.Empire, Value = 11 };
+            ArrangeDb.Items.Add(item);
+            await ArrangeDb.SaveChangesAsync();
+
+            var handler = new BuyStrategusItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            var res = await handler.Handle(new BuyStrategusItemCommand
+            {
+                HeroId = hero.Id,
+                ItemId = item.Id,
+                ItemCount = 2,
+                SettlementId = settlement.Id,
+            }, CancellationToken.None);
+
+            Assert.IsNotNull(res.Errors);
+            Assert.AreEqual(ErrorCode.NotEnoughGold, res.Errors![0].Code);
+        }
+
+        [Test]
         public async Task ShouldAddCountToAlreadyExistingOwnedItem()
         {
             var strategusMapMock = new Mock<IStrategusMap>();
@@ -175,11 +204,11 @@ namespace Crpg.Application.UTest.Strategus
                 .Setup(m => m.ArePointsAtInteractionDistance(It.IsAny<Point>(), It.IsAny<Point>()))
                 .Returns(true);
 
-            var hero = new StrategusHero { User = new User() };
+            var hero = new StrategusHero { Gold = 100, User = new User() };
             ArrangeDb.StrategusHeroes.Add(hero);
             var settlement = new StrategusSettlement { Culture = Culture.Sturgia };
             ArrangeDb.StrategusSettlements.Add(settlement);
-            var item = new Item { Rank = 0, Culture = Culture.Sturgia };
+            var item = new Item { Rank = 0, Culture = Culture.Sturgia, Value = 10 };
             ArrangeDb.Items.Add(item);
             var ownedItem = new StrategusOwnedItem { Item = item, Count = 3, Hero = hero };
             ArrangeDb.StrategusOwnedItems.Add(ownedItem);
@@ -197,6 +226,9 @@ namespace Crpg.Application.UTest.Strategus
             Assert.IsNull(res.Errors);
             Assert.AreEqual(item.Id, res.Data!.Item.Id);
             Assert.AreEqual(7, res.Data!.Count);
+
+            hero = await AssertDb.StrategusHeroes.FirstAsync(h => h.Id == hero.Id);
+            Assert.AreEqual(60, hero.Gold);
         }
 
         [Test]
@@ -207,11 +239,11 @@ namespace Crpg.Application.UTest.Strategus
                 .Setup(m => m.ArePointsAtInteractionDistance(It.IsAny<Point>(), It.IsAny<Point>()))
                 .Returns(true);
 
-            var hero = new StrategusHero { User = new User() };
+            var hero = new StrategusHero { Gold = 100, User = new User() };
             ArrangeDb.StrategusHeroes.Add(hero);
             var settlement = new StrategusSettlement { Culture = Culture.Sturgia };
             ArrangeDb.StrategusSettlements.Add(settlement);
-            var item = new Item { Rank = 0, Culture = Culture.Neutral };
+            var item = new Item { Rank = 0, Culture = Culture.Neutral, Value = 10 };
             ArrangeDb.Items.Add(item);
             await ArrangeDb.SaveChangesAsync();
 
@@ -227,6 +259,9 @@ namespace Crpg.Application.UTest.Strategus
             Assert.IsNull(res.Errors);
             Assert.AreEqual(item.Id, res.Data!.Item.Id);
             Assert.AreEqual(10, res.Data!.Count);
+
+            hero = await AssertDb.StrategusHeroes.FirstAsync(h => h.Id == hero.Id);
+            Assert.AreEqual(0, hero.Gold);
         }
     }
 }

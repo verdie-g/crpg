@@ -49,7 +49,6 @@ namespace Crpg.Application.Strategus.Commands
                 CancellationToken cancellationToken)
             {
                 var hero = await _db.StrategusHeroes
-                    .AsNoTracking()
                     .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
                 if (hero == null)
                 {
@@ -94,9 +93,9 @@ namespace Crpg.Application.Strategus.Commands
                 {
                     ownedItem = new StrategusOwnedItem
                     {
-                        HeroId = hero.Id,
                         Item = item,
                         Count = req.ItemCount,
+                        Hero = hero,
                     };
                     _db.StrategusOwnedItems.Add(ownedItem);
                 }
@@ -105,6 +104,7 @@ namespace Crpg.Application.Strategus.Commands
                     ownedItem.Count += req.ItemCount;
                 }
 
+                hero.Gold -= cost;
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("Hero '{0}' bought {1} items '{2}'", req.HeroId, req.ItemCount, req.ItemId);
                 return new Result<StrategusOwnedItemViewModel>(_mapper.Map<StrategusOwnedItemViewModel>(ownedItem));
