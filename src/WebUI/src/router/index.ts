@@ -33,9 +33,9 @@ const isSignedInGuard: NavigationGuard = async (to, from, next) => {
   }
 };
 
-const isAdminGuard: NavigationGuard = async (to, from, next) => {
+const isModeratorGuard: NavigationGuard = async (to, from, next) => {
   const { userRole } = (await getDecodedToken())!;
-  if (userRole !== Role.Admin && userRole !== Role.SuperAdmin) {
+  if (userRole !== Role.Moderator && userRole !== Role.Admin) {
     next('/');
   } else {
     next();
@@ -110,7 +110,7 @@ const routes = [
     path: '/admin',
     name: 'admin',
     component: () => import('../views/Administration.vue'),
-    beforeEnter: combineGuards(isSignedInGuard, isAdminGuard),
+    beforeEnter: combineGuards(isSignedInGuard, isModeratorGuard),
   },
   {
     path: '*',

@@ -101,9 +101,9 @@ namespace Crpg.WebApi
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("User", BuildRolePolicy(Role.User, Role.Admin, Role.SuperAdmin));
-                options.AddPolicy("Admin", BuildRolePolicy(Role.Admin, Role.SuperAdmin));
-                options.AddPolicy("SuperAdmin", BuildRolePolicy(Role.SuperAdmin));
+                options.AddPolicy("User", BuildRolePolicy(Role.User, Role.Moderator, Role.Admin));
+                options.AddPolicy("Moderator", BuildRolePolicy(Role.Moderator, Role.Admin));
+                options.AddPolicy("Admin", BuildRolePolicy(Role.Admin));
                 options.AddPolicy("Game", BuildScopePolicy("game_api"));
             });
         }

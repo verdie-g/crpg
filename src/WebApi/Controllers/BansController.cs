@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Crpg.WebApi.Controllers
 {
-    [Authorize(Policy = AdminPolicy)]
+    [Authorize(Policy = ModeratorPolicy)]
     public class BansController : BaseController
     {
         /// <summary>

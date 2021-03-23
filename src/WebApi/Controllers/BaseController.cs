@@ -22,8 +22,8 @@ namespace Crpg.WebApi.Controllers
     {
         // Constants used by Authorize attributes in controllers. Their values are the policies defined in Startup.
         protected const string UserPolicy = "User";
+        protected const string ModeratorPolicy = "Moderator";
         protected const string AdminPolicy = "Admin";
-        protected const string SuperAdminPolicy = "SuperAdmin";
         protected const string GamePolicy = "Game";
 
         private IMediator? _mediator;

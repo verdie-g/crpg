@@ -23,8 +23,8 @@ class UserModule extends VuexModule {
     return this.user !== null;
   }
 
-  get isAdminOrSuperAdmin(): boolean {
-    return this.user!.role === Role.Admin || this.user!.role === Role.SuperAdmin;
+  get isModeratorOrAdmin(): boolean {
+    return this.user!.role === Role.Moderator || this.user!.role === Role.Admin;
   }
 
   @Mutation
