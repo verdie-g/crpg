@@ -7,35 +7,27 @@
       :center="center"
       :options="mapOptions"
       :max-bounds="maxBounds"
-      @moveend="setDisplayedBounds(map.mapObject.getBounds())"
-      @leaflet:load="setDisplayedBounds(map.mapObject.getBounds())"
+      @moveend="displayedBounds = map.mapObject.getBounds()"
+      @leaflet:load="displayedBounds = map.mapObject.getBounds()"
     >
       <l-tile-layer :url="url" :attribution="attribution" />
-      <l-marker
+      <settlement-component
         v-for="settlement in settlements"
-        :lat-lng="[settlement.position.coordinates[1], settlement.position.coordinates[0]]"
         :key="settlement.id"
-      >
-        <l-icon class-name="is-flex is-justify-content-center is-align-items-center">
-          <div
-            class="settlement-icon-txt has-text-light px-3"
-            :class="getSettlementCssClass(settlement)"
-          >
-            {{ settlement.name }}
-          </div>
-        </l-icon>
-      </l-marker>
+        :settlement="settlement"
+      />
     </l-map>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { LatLng, LatLngBounds, CRS, Icon } from 'leaflet';
-import { LMap, LTileLayer, LMarker, LIcon } from 'vue2-leaflet';
-import strategusModule from '@/store/strategus-module';
+import { Icon, LatLng, LatLngBounds, CRS } from 'leaflet';
+import { LMap, LTileLayer } from 'vue2-leaflet';
 import Settlement from '@/models/settlement';
 import SettlementType from '@/models/settlement-type';
+import strategusModule from '@/store/strategus-module';
+import SettlementComponent from '@/components/SettlementComponent.vue';
 
 //Default icons
 delete (Icon.Default.prototype as any)._getIconUrl;
@@ -46,7 +38,7 @@ Icon.Default.mergeOptions({
 });
 
 @Component({
-  components: { LMap, LTileLayer, LMarker, LIcon },
+  components: { LMap, LTileLayer, SettlementComponent },
 })
 export default class Strategus extends Vue {
   zoom = 6;
@@ -68,16 +60,20 @@ export default class Strategus extends Vue {
   displayedBounds: LatLngBounds | null = null;
 
   get settlements(): Settlement[] {
-    if (this.displayedBounds === null) {
+    if (
+      this.displayedBounds === null ||
+      this.map === undefined ||
+      this.map.mapObject === undefined
+    ) {
       return [];
     }
-    // Keep settlement displayed and filter by zoom
+    // Keep settlement inside displayedBounds
     return strategusModule.settlements.filter(
       settlement =>
         this.displayedBounds!.contains(
           new LatLng(settlement.position.coordinates[1], settlement.position.coordinates[0])
         ) &&
-        (this.map.mapObject.getZoom() > 4 || settlement.type === SettlementType.Town)
+        (this.map!.mapObject.getZoom() > 4 || settlement.type === SettlementType.Town)
     );
   }
 
@@ -88,23 +84,6 @@ export default class Strategus extends Vue {
 
   created() {
     strategusModule.getSettlements();
-  }
-
-  getSettlementCssClass(settlement: Settlement): string {
-    switch (settlement.type) {
-      case SettlementType.Village:
-        return 'is-size-7';
-      case SettlementType.Castle:
-        return 'is-size-6';
-      case SettlementType.Town:
-        return 'is-size-5';
-      default:
-        return 'is-size-7';
-    }
-  }
-
-  setDisplayedBounds(bounds: LatLngBounds): void {
-    this.displayedBounds = bounds;
   }
 }
 </script>
@@ -122,12 +101,6 @@ html {
     //calc(Screen height - navbar)
     height: calc(100vh - 4.25rem);
     background-color: #284745;
-    .settlement-icon-txt {
-      display: inline-block;
-      border-radius: 2px;
-      white-space: nowrap;
-      background-color: rgba(0, 0, 0, 0.4);
-    }
   }
 }
 </style>
