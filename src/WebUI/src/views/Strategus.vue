@@ -11,34 +11,22 @@
       @leaflet:load="displayedBounds = map.mapObject.getBounds()"
     >
       <l-tile-layer :url="url" :attribution="attribution" />
-      <settlement-component
-        v-for="settlement in settlements"
-        :key="settlement.id"
-        :settlement="settlement"
-      />
+      <settlement v-for="settlement in settlements" :key="settlement.id" :settlement="settlement" />
     </l-map>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { Icon, LatLng, LatLngBounds, CRS } from 'leaflet';
+import { LatLng, LatLngBounds, CRS } from 'leaflet';
 import { LMap, LTileLayer } from 'vue2-leaflet';
 import Settlement from '@/models/settlement';
 import SettlementType from '@/models/settlement-type';
 import strategusModule from '@/store/strategus-module';
 import SettlementComponent from '@/components/SettlementComponent.vue';
 
-//Default icons
-delete (Icon.Default.prototype as any)._getIconUrl;
-Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-});
-
 @Component({
-  components: { LMap, LTileLayer, SettlementComponent },
+  components: { LMap, LTileLayer, settlement: SettlementComponent },
 })
 export default class Strategus extends Vue {
   zoom = 6;
