@@ -1,9 +1,14 @@
 ﻿---
 crpg_api_user: crpg
 crpg_api_service_name: crpg_web_api
-crpg_api_path: "/home/{{ crpg_api_user }}/crpg"
+crpg_api_path: "/home/{{ crpg_api_user }}/{{ crpg_api_service_name }}"
 crpg_api_port: 8000
 crpg_api_log_file: "/var/log/crpg/{{ crpg_api_service_name }}.log"
+
+crpg_strategus_user: crpg
+crpg_strategus_service_name: crpg_strategus
+crpg_strategus_path: "/home/{{ crpg_strategus_user }}/{{ crpg_strategus_service_name }}"
+crpg_strategus_log_file: "/var/log/crpg/{{ crpg_strategus_service_name }}.log"
 
 crpg_ui_path: "/var/www/{{ crpg_domain_name }}"
 

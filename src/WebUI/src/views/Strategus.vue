@@ -10,6 +10,7 @@
       @moveend="displayedBounds = map.mapObject.getBounds()"
       @leaflet:load="displayedBounds = map.mapObject.getBounds()"
     >
+      <l-control-mouse-position />
       <l-tile-layer :url="url" :attribution="attribution" />
       <settlement v-for="settlement in settlements" :key="settlement.id" :settlement="settlement" />
     </l-map>
@@ -20,13 +21,14 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { LatLng, LatLngBounds, CRS } from 'leaflet';
 import { LMap, LTileLayer } from 'vue2-leaflet';
+import LControlMousePosition from '@/components/strategus/LControlMousePosition.vue';
 import Settlement from '@/models/settlement';
 import SettlementType from '@/models/settlement-type';
 import strategusModule from '@/store/strategus-module';
 import SettlementComponent from '@/components/SettlementComponent.vue';
 
 @Component({
-  components: { LMap, LTileLayer, settlement: SettlementComponent },
+  components: { LMap, LTileLayer, LControlMousePosition, settlement: SettlementComponent },
 })
 export default class Strategus extends Vue {
   zoom = 6;

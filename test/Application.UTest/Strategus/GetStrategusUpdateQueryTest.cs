@@ -80,14 +80,14 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new GetStrategusUpdateQuery.Handler(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new GetStrategusUpdateQuery
             {
-                HeroId = hero.UserId,
+                HeroId = hero.Id,
             }, CancellationToken.None);
 
             var update = res.Data!;
             Assert.IsNotNull(update);
             Assert.NotNull(update.User);
             Assert.AreEqual(1, update.VisibleHeroes.Count);
-            Assert.AreEqual(closeHero.UserId, update.VisibleHeroes[0].Id);
+            Assert.AreEqual(closeHero.Id, update.VisibleHeroes[0].Id);
             Assert.AreEqual(1, update.VisibleSettlements.Count);
             Assert.AreEqual(closeSettlement.Id, update.VisibleSettlements[0].Id);
         }

@@ -1,0 +1,24 @@
+[Unit]
+Description=cRPG Strategus
+
+[Service]
+WorkingDirectory={{ crpg_strategus_path }}
+ExecStart=/usr/bin/dotnet {{ crpg_strategus_path }}/Crpg.Strategus.dll
+Restart=always
+RestartSec=60
+KillSignal=SIGINT
+User={{ crpg_strategus_user }}
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+Environment=CORECLR_ENABLE_PROFILING=1
+Environment=CORECLR_PROFILER={846F5F1C-F9AE-4B07-969E-05C26BC060D8}
+Environment=CORECLR_PROFILER_PATH=/opt/datadog/Datadog.Trace.ClrProfiler.Native.so
+Environment=DD_INTEGRATIONS=/opt/datadog/integrations.json
+Environment=DD_DOTNET_TRACER_HOME=/opt/datadog
+Environment=DD_SERVICE={{ crpg_strategus_service_name }}
+Environment=DD_LOGS_INJECTION=true
+Environment=CRPG_ENV=Production
+Environment=CRPG_SERVICE={{ crpg_strategus_service_name }}
+
+[Install]
+WantedBy=multi-user.target

@@ -29,7 +29,7 @@
                     <img v-bind:src="user.avatarSmall" alt="avatar" />
                   </p>
 
-                  <b-dropdown-item has-link aria-role="menuitem" v-if="isAdminOrSuperAdmin">
+                  <b-dropdown-item has-link aria-role="menuitem" v-if="isModeratorOrAdmin">
                     <router-link to="/admin">
                       <b-icon icon="user-shield" />
                       Administration
@@ -105,8 +105,8 @@ export default class App extends Vue {
     return userModule.user;
   }
 
-  get isAdminOrSuperAdmin() {
-    return userModule.isAdminOrSuperAdmin;
+  get isModeratorOrAdmin() {
+    return userModule.isModeratorOrAdmin;
   }
 
   async beforeCreate() {

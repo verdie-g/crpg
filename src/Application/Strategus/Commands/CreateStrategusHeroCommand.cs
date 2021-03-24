@@ -62,7 +62,7 @@ namespace Crpg.Application.Strategus.Commands
                 user.StrategusHero = new StrategusHero
                 {
                     Region = req.Region,
-                    Silver = 0,
+                    Gold = 0,
                     Troops = 1,
                     Position = _strategusMap.GetSpawnPosition(req.Region),
                     Status = StrategusHeroStatus.Idle,

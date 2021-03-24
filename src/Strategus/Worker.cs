@@ -21,6 +21,7 @@ namespace Crpg.Strategus
         private static readonly Func<TimeSpan, IMediatorRequest>[] Behaviors =
         {
             dt => new UpdateStrategusHeroPositionsCommand { DeltaTime = dt },
+            dt => new UpdateStrategusHeroTroopsCommand { DeltaTime = dt },
         };
 
         private readonly IMediator _mediator;

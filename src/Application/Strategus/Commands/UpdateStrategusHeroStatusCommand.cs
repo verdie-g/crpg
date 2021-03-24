@@ -15,15 +15,15 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Strategus.Commands
 {
-    public class UpdateStrategusHeroMovementCommand : IMediatorRequest<StrategusHeroViewModel>
+    public class UpdateStrategusHeroStatusCommand : IMediatorRequest<StrategusHeroViewModel>
     {
         public int HeroId { get; set; }
         public StrategusHeroStatus Status { get; set; }
         public MultiPoint Waypoints { get; set; } = MultiPoint.Empty;
-        public int TargetedUserId { get; set; }
+        public int TargetedHeroId { get; set; }
         public int TargetedSettlementId { get; set; }
 
-        public class Validator : AbstractValidator<UpdateStrategusHeroMovementCommand>
+        public class Validator : AbstractValidator<UpdateStrategusHeroStatusCommand>
         {
             public Validator()
             {
@@ -31,9 +31,9 @@ namespace Crpg.Application.Strategus.Commands
             }
         }
 
-        internal class Handler : IMediatorRequestHandler<UpdateStrategusHeroMovementCommand, StrategusHeroViewModel>
+        internal class Handler : IMediatorRequestHandler<UpdateStrategusHeroStatusCommand, StrategusHeroViewModel>
         {
-            private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateStrategusHeroMovementCommand>();
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateStrategusHeroStatusCommand>();
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -46,11 +46,11 @@ namespace Crpg.Application.Strategus.Commands
                 _strategusMap = strategusMap;
             }
 
-            public async Task<Result<StrategusHeroViewModel>> Handle(UpdateStrategusHeroMovementCommand req, CancellationToken cancellationToken)
+            public async Task<Result<StrategusHeroViewModel>> Handle(UpdateStrategusHeroStatusCommand req, CancellationToken cancellationToken)
             {
                 var hero = await _db.StrategusHeroes
                     .Include(h => h.User)
-                    .FirstOrDefaultAsync(h => h.UserId == req.HeroId, cancellationToken);
+                    .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
                 if (hero == null)
                 {
                     return new Result<StrategusHeroViewModel>(CommonErrors.HeroNotFound(req.HeroId));
@@ -61,6 +61,32 @@ namespace Crpg.Application.Strategus.Commands
                     return new Result<StrategusHeroViewModel>(CommonErrors.HeroInBattle(req.HeroId));
                 }
 
+                if (req.Status == StrategusHeroStatus.RecruitingInSettlement)
+                {
+                    if (hero.Status != StrategusHeroStatus.IdleInSettlement)
+                    {
+                        return new Result<StrategusHeroViewModel>(CommonErrors.HeroNotInASettlement(req.HeroId));
+                    }
+
+                    hero.Status = StrategusHeroStatus.RecruitingInSettlement;
+                }
+                else
+                {
+                    var result = await UpdateHeroMovement(hero, req, cancellationToken);
+                    if (result.Errors != null)
+                    {
+                        return new Result<StrategusHeroViewModel>(result.Errors);
+                    }
+                }
+
+                await _db.SaveChangesAsync(cancellationToken);
+                Logger.LogInformation("Hero '{0}' updated their movement on the map", req.HeroId);
+                return new Result<StrategusHeroViewModel>(_mapper.Map<StrategusHeroViewModel>(hero));
+            }
+
+            private async Task<Result> UpdateHeroMovement(StrategusHero hero, UpdateStrategusHeroStatusCommand req,
+                CancellationToken cancellationToken)
+            {
                 // Reset movement.
                 hero.Status = StrategusHeroStatus.Idle;
                 hero.Waypoints = MultiPoint.Empty;
@@ -80,15 +106,15 @@ namespace Crpg.Application.Strategus.Commands
                 {
                     var targetHero = await _db.StrategusHeroes
                         .Include(h => h.User)
-                        .FirstOrDefaultAsync(h => h.UserId == req.TargetedUserId, cancellationToken);
+                        .FirstOrDefaultAsync(h => h.Id == req.TargetedHeroId, cancellationToken);
                     if (targetHero == null)
                     {
-                        return new Result<StrategusHeroViewModel>(CommonErrors.UserNotFound(req.TargetedUserId));
+                        return new Result(CommonErrors.UserNotFound(req.TargetedHeroId));
                     }
 
                     if (!hero.Position.IsWithinDistance(targetHero.Position, _strategusMap.ViewDistance))
                     {
-                        return new Result<StrategusHeroViewModel>(CommonErrors.HeroNotInSight(req.TargetedUserId));
+                        return new Result(CommonErrors.HeroNotInSight(req.TargetedHeroId));
                     }
 
                     hero.Status = req.Status;
@@ -102,16 +128,14 @@ namespace Crpg.Application.Strategus.Commands
                         .FirstOrDefaultAsync(s => s.Id == req.TargetedSettlementId, cancellationToken);
                     if (targetSettlement == null)
                     {
-                        return new Result<StrategusHeroViewModel>(CommonErrors.SettlementNotFound(req.TargetedSettlementId));
+                        return new Result(CommonErrors.SettlementNotFound(req.TargetedSettlementId));
                     }
 
                     hero.Status = req.Status;
                     hero.TargetedSettlement = targetSettlement;
                 }
 
-                await _db.SaveChangesAsync(cancellationToken);
-                Logger.LogInformation("Hero '{0}' updated their movement on the map", req.HeroId);
-                return new Result<StrategusHeroViewModel>(_mapper.Map<StrategusHeroViewModel>(hero));
+                return Result.NoErrors;
             }
         }
     }

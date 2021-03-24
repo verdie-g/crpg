@@ -69,7 +69,7 @@ namespace Crpg.Application.UTest.Strategus
             Assert.IsNotNull(strategusHero);
             Assert.AreEqual(user.Id, strategusHero.Id);
             Assert.AreEqual(Region.NorthAmerica, strategusHero.Region);
-            Assert.AreEqual(0, strategusHero.Silver);
+            Assert.AreEqual(0, strategusHero.Gold);
             Assert.AreEqual(1, strategusHero.Troops);
             Assert.AreEqual(new Point(150.0, 50.0), strategusHero.Position);
             Assert.AreEqual(StrategusHeroStatus.Idle, strategusHero.Status);

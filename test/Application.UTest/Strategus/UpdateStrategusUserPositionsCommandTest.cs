@@ -43,7 +43,7 @@ namespace Crpg.Application.UTest.Strategus
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
             Assert.AreEqual(StrategusHeroStatus.MovingToPoint, strategusHero.Status);
             Assert.AreEqual(newPosition, strategusHero.Position);
             Assert.AreEqual(1, strategusHero.Waypoints.Count);
@@ -78,7 +78,7 @@ namespace Crpg.Application.UTest.Strategus
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
             Assert.AreEqual(StrategusHeroStatus.MovingToPoint, strategusHero.Status);
             Assert.AreEqual(newPosition, strategusHero.Position);
             Assert.AreEqual(1, strategusHero.Waypoints.Count);
@@ -113,7 +113,7 @@ namespace Crpg.Application.UTest.Strategus
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
             Assert.AreEqual(StrategusHeroStatus.Idle, strategusHero.Status);
             Assert.AreEqual(newPosition, strategusHero.Position);
             Assert.AreEqual(0, strategusHero.Waypoints.Count);
@@ -146,7 +146,7 @@ namespace Crpg.Application.UTest.Strategus
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
             Assert.AreEqual(StrategusHeroStatus.Idle, strategusHero.Status);
             Assert.IsNull(strategusHero.TargetedHeroId);
         }
@@ -196,7 +196,7 @@ namespace Crpg.Application.UTest.Strategus
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
             Assert.AreEqual(status, strategusHero.Status);
             Assert.AreEqual(newPosition, strategusHero.Position);
         }
@@ -231,7 +231,7 @@ namespace Crpg.Application.UTest.Strategus
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
             Assert.AreEqual(status, strategusHero.Status);
             Assert.AreEqual(newPosition, strategusHero.Position);
         }
@@ -265,7 +265,7 @@ namespace Crpg.Application.UTest.Strategus
                 DeltaTime = TimeSpan.FromMinutes(1)
             }, CancellationToken.None);
 
-            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.UserId == strategusHero.UserId);
+            strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
             Assert.AreEqual(StrategusHeroStatus.IdleInSettlement, strategusHero.Status);
             Assert.AreEqual(destination, strategusHero.Position);
         }

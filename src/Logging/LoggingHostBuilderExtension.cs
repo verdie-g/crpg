@@ -5,7 +5,7 @@ using Serilog;
 namespace Crpg.Logging
 {
     /// <summary>
-    /// Extends <see cref="Microsoft.Extensions.Hosting.IHostBuilder" /> with Criteo.Logging configuration methods.
+    /// Extends <see cref="Microsoft.Extensions.Hosting.IHostBuilder" /> with Crpg.Logging configuration methods.
     /// </summary>
     public static class LoggingHostBuilderExtension
     {

@@ -1,0 +1,16 @@
+﻿---
+- name: Add Microsoft package signing key to the list of trusted keys
+  apt:
+    deb: https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb
+
+- name: Make sure HTTPS is supported by apt
+  apt:
+    name: apt-transport-https
+    state: present
+
+- name: Install .NET Core Runtime
+  apt:
+    name: "aspnetcore-runtime-{{ dotnet_version }}"
+    state: present
+    update_cache: yes
+

@@ -13,6 +13,11 @@
         IdleInSettlement,
 
         /// <summary>
+        /// Recruiting troops in a <see cref="StrategusSettlement"/>.
+        /// </summary>
+        RecruitingInSettlement,
+
+        /// <summary>
         /// Moving to an arbitrary location.
         /// </summary>
         MovingToPoint,
