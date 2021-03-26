@@ -31,6 +31,13 @@ namespace Crpg.Application.Strategus.Commands
                 StrategusHeroStatus.MovingToAttackSettlement,
             };
 
+            private static readonly StrategusHeroStatus[] UnattackableStatuses =
+            {
+                StrategusHeroStatus.IdleInSettlement,
+                StrategusHeroStatus.RecruitingInSettlement,
+                StrategusHeroStatus.InBattle,
+            };
+
             private readonly ICrpgDbContext _db;
             private readonly IStrategusMap _strategusMap;
 
@@ -62,7 +69,7 @@ namespace Crpg.Application.Strategus.Commands
                             break;
                         case StrategusHeroStatus.MovingToSettlement:
                         case StrategusHeroStatus.MovingToAttackSettlement:
-                            MoveToSettlement(req.DeltaTime, hero);
+                            await MoveToSettlement(req.DeltaTime, hero, cancellationToken);
                             break;
                     }
                 }
@@ -122,14 +129,44 @@ namespace Crpg.Application.Strategus.Commands
                 }
                 else if (hero.Status == StrategusHeroStatus.MovingToAttackHero)
                 {
-                    if (MoveHeroTowardsPoint(hero, hero.TargetedHero.Position, deltaTime, true))
+                    if (!MoveHeroTowardsPoint(hero, hero.TargetedHero.Position, deltaTime, true))
                     {
-                        // TODO: attack user
+                        return;
                     }
+
+                    if (UnattackableStatuses.Contains(hero.TargetedHero.Status))
+                    {
+                        return;
+                    }
+
+                    hero.Status = StrategusHeroStatus.InBattle;
+                    hero.TargetedHero.Status = StrategusHeroStatus.InBattle;
+                    var battle = new StrategusBattle
+                    {
+                        Status = StrategusBattleStatus.Initiated,
+                        Fighters =
+                        {
+                            new StrategusBattleFighter
+                            {
+                                Hero = hero,
+                                Side = StrategusBattleSide.Attacker,
+                                MainFighter = true,
+                            },
+                            new StrategusBattleFighter
+                            {
+                                Hero = hero.TargetedHero,
+                                Side = StrategusBattleSide.Defender,
+                                MainFighter = true,
+                            },
+                        },
+                    };
+                    _db.StrategusBattles.Add(battle);
+                    Logger.LogInformation("Hero '{0}' initiated a battle against hero '{1}'",
+                        hero.Id, hero.TargetedHeroId);
                 }
             }
 
-            private void MoveToSettlement(TimeSpan deltaTime, StrategusHero hero)
+            private async Task MoveToSettlement(TimeSpan deltaTime, StrategusHero hero, CancellationToken cancellationToken)
             {
                 if (hero.TargetedSettlement == null)
                 {
@@ -151,7 +188,34 @@ namespace Crpg.Application.Strategus.Commands
                 }
                 else if (hero.Status == StrategusHeroStatus.MovingToAttackSettlement)
                 {
-                    // TODO: attack settlement.
+                    bool attackInProgress = await _db.StrategusBattles
+                        .AnyAsync(b =>
+                                b.AttackedSettlementId == hero.TargetedSettlementId
+                                && b.Status != StrategusBattleStatus.Ended,
+                            cancellationToken);
+                    if (attackInProgress)
+                    {
+                        return;
+                    }
+
+                    hero.Status = StrategusHeroStatus.InBattle;
+                    var battle = new StrategusBattle
+                    {
+                        Status = StrategusBattleStatus.Initiated,
+                        AttackedSettlement = hero.TargetedSettlement,
+                        Fighters =
+                        {
+                            new StrategusBattleFighter
+                            {
+                                Hero = hero,
+                                Side = StrategusBattleSide.Attacker,
+                                MainFighter = true,
+                            },
+                        },
+                    };
+                    _db.StrategusBattles.Add(battle);
+                    Logger.LogInformation("Hero '{0}' initiated a battle against settlement '{1}'",
+                        hero.Id, hero.TargetedSettlementId);
                 }
             }
 

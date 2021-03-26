@@ -201,6 +201,104 @@ namespace Crpg.Application.UTest.Strategus
             Assert.AreEqual(newPosition, strategusHero.Position);
         }
 
+        [TestCase(StrategusHeroStatus.IdleInSettlement)]
+        [TestCase(StrategusHeroStatus.RecruitingInSettlement)]
+        [TestCase(StrategusHeroStatus.InBattle)]
+        public async Task ShouldNotAttackHeroIfInAUnattackableStatus(StrategusHeroStatus targetHeroStatus)
+        {
+            var position = new Point(1, 2);
+            var destination = new Point(5, 6);
+            var targetHero = new StrategusHero
+            {
+                Status = targetHeroStatus,
+                Position = destination,
+                User = new User(),
+            };
+            var hero = new StrategusHero
+            {
+                Status = StrategusHeroStatus.MovingToAttackHero,
+                Position = position,
+                TargetedHero = targetHero,
+                User = new User(),
+            };
+            ArrangeDb.StrategusHeroes.AddRange(hero, targetHero);
+            await ArrangeDb.SaveChangesAsync();
+
+            var newPosition = new Point(2, 3);
+            var strategusMapMock = new Mock<IStrategusMap>();
+            strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
+            strategusMapMock
+                .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
+                .Returns(newPosition);
+            strategusMapMock
+                .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
+                .Returns(true);
+
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            await handler.Handle(new UpdateStrategusHeroPositionsCommand
+            {
+                DeltaTime = TimeSpan.FromMinutes(1)
+            }, CancellationToken.None);
+
+            Assert.AreEqual(0, await AssertDb.StrategusBattles.CountAsync());
+        }
+
+        [Test]
+        public async Task ShouldAttackHeroIfCloseEnough()
+        {
+            var position = new Point(1, 2);
+            var destination = new Point(5, 6);
+            var targetHero = new StrategusHero
+            {
+                Status = StrategusHeroStatus.Idle,
+                Position = destination,
+                User = new User(),
+            };
+            var hero = new StrategusHero
+            {
+                Status = StrategusHeroStatus.MovingToAttackHero,
+                Position = position,
+                TargetedHero = targetHero,
+                User = new User(),
+            };
+            ArrangeDb.StrategusHeroes.AddRange(hero, targetHero);
+            await ArrangeDb.SaveChangesAsync();
+
+            var newPosition = new Point(2, 3);
+            var strategusMapMock = new Mock<IStrategusMap>();
+            strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
+            strategusMapMock
+                .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
+                .Returns(newPosition);
+            strategusMapMock
+                .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
+                .Returns(true);
+
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            await handler.Handle(new UpdateStrategusHeroPositionsCommand
+            {
+                DeltaTime = TimeSpan.FromMinutes(1)
+            }, CancellationToken.None);
+
+            var battle = await AssertDb.StrategusBattles
+                .Include(b => b.AttackedSettlement)
+                .Include(b => b.Fighters).ThenInclude(f => f.Hero)
+                .FirstOrDefaultAsync();
+            Assert.IsNotNull(battle);
+            Assert.IsNull(battle.AttackedSettlementId);
+            Assert.AreEqual(2, battle.Fighters.Count);
+
+            Assert.AreEqual(hero.Id, battle.Fighters[0].HeroId);
+            Assert.AreEqual(StrategusHeroStatus.InBattle, battle.Fighters[0].Hero!.Status);
+            Assert.AreEqual(StrategusBattleSide.Attacker, battle.Fighters[0].Side);
+            Assert.IsTrue(battle.Fighters[0].MainFighter);
+
+            Assert.AreEqual(targetHero.Id, battle.Fighters[1].HeroId);
+            Assert.AreEqual(StrategusHeroStatus.InBattle, battle.Fighters[1].Hero!.Status);
+            Assert.AreEqual(StrategusBattleSide.Defender, battle.Fighters[1].Side);
+            Assert.IsTrue(battle.Fighters[1].MainFighter);
+        }
+
         [TestCase(StrategusHeroStatus.MovingToSettlement)]
         [TestCase(StrategusHeroStatus.MovingToAttackSettlement)]
         public async Task MovingToASettlementShouldMove(StrategusHeroStatus status)
@@ -268,6 +366,88 @@ namespace Crpg.Application.UTest.Strategus
             strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
             Assert.AreEqual(StrategusHeroStatus.IdleInSettlement, strategusHero.Status);
             Assert.AreEqual(destination, strategusHero.Position);
+        }
+
+        [Test]
+        public async Task ShouldNotAttackSettlementIfAlreadyInABattle()
+        {
+            var position = new Point(1, 2);
+            var destination = new Point(5, 6);
+            var settlement = new StrategusSettlement { Position = destination };
+            var hero = new StrategusHero
+            {
+                Status = StrategusHeroStatus.MovingToAttackSettlement,
+                Position = position,
+                TargetedSettlement = settlement,
+                User = new User(),
+            };
+            ArrangeDb.StrategusHeroes.Add(hero);
+            var battle = new StrategusBattle
+            {
+                Status = StrategusBattleStatus.Initiated,
+                AttackedSettlement = settlement,
+            };
+            ArrangeDb.StrategusBattles.Add(battle);
+            await ArrangeDb.SaveChangesAsync();
+
+            var newPosition = new Point(5, 5);
+            var strategusMapMock = new Mock<IStrategusMap>();
+            strategusMapMock
+                .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
+                .Returns(newPosition);
+            strategusMapMock
+                .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
+                .Returns(true);
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            await handler.Handle(new UpdateStrategusHeroPositionsCommand
+            {
+                DeltaTime = TimeSpan.FromMinutes(1)
+            }, CancellationToken.None);
+
+            Assert.AreEqual(1, await AssertDb.StrategusBattles.CountAsync());
+        }
+
+        [Test]
+        public async Task ShouldAttackSettlementIfCloseEnough()
+        {
+            var position = new Point(1, 2);
+            var destination = new Point(5, 6);
+            var settlement = new StrategusSettlement { Position = destination };
+            var hero = new StrategusHero
+            {
+                Status = StrategusHeroStatus.MovingToAttackSettlement,
+                Position = position,
+                TargetedSettlement = settlement,
+                User = new User(),
+            };
+            ArrangeDb.StrategusHeroes.Add(hero);
+            await ArrangeDb.SaveChangesAsync();
+
+            var newPosition = new Point(5, 5);
+            var strategusMapMock = new Mock<IStrategusMap>();
+            strategusMapMock
+                .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
+                .Returns(newPosition);
+            strategusMapMock
+                .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
+                .Returns(true);
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            await handler.Handle(new UpdateStrategusHeroPositionsCommand
+            {
+                DeltaTime = TimeSpan.FromMinutes(1)
+            }, CancellationToken.None);
+
+            var battle = await AssertDb.StrategusBattles
+                .Include(b => b.AttackedSettlement)
+                .Include(b => b.Fighters).ThenInclude(f => f.Hero)
+                .FirstOrDefaultAsync();
+            Assert.IsNotNull(battle);
+            Assert.AreEqual(settlement.Id, battle.AttackedSettlementId);
+            Assert.AreEqual(1, battle.Fighters.Count);
+            Assert.AreEqual(hero.Id, battle.Fighters[0].HeroId);
+            Assert.AreEqual(StrategusHeroStatus.InBattle, battle.Fighters[0].Hero!.Status);
+            Assert.AreEqual(StrategusBattleSide.Attacker, battle.Fighters[0].Side);
+            Assert.IsTrue(battle.Fighters[0].MainFighter);
         }
     }
 }
