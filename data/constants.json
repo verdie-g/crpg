@@ -36,5 +36,7 @@
   "strategusMapWidth": 256,
   "strategusMapHeight": 215,
   "strategusTroopRecruitmentPerHour": 5,
-  "strategusMaxHeroTroops": 300
+  "strategusMaxHeroTroops": 300,
+  "strategusBattleInitiationDurationHours": 24,
+  "strategusBattleHiringDurationHours": 12
 }

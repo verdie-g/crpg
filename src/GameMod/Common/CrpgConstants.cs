@@ -42,5 +42,7 @@ namespace Crpg.GameMod.Common
         public double StrategusMapHeight { get; set; }
         public float StrategusTroopRecruitmentPerHour { get; set; }
         public int StrategusMaxHeroTroops { get; set; }
+        public int StrategusBattleInitiationDurationHours { get; set; }
+        public int StrategusBattleHiringDurationHours { get; set; }
     }
 }
