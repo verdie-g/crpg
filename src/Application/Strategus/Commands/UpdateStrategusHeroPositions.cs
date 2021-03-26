@@ -54,90 +54,105 @@ namespace Crpg.Application.Strategus.Commands
                     switch (hero.Status)
                     {
                         case StrategusHeroStatus.MovingToPoint:
-                            if (hero.Waypoints.IsEmpty)
-                            {
-                                Logger.LogWarning("Hero '{heroId}' was in status '{status}' without any points to go to",
-                                    hero.Id, hero.Status);
-                                hero.Status = StrategusHeroStatus.Idle;
-                                continue;
-                            }
-
-                            var targetPoint = (Point)hero.Waypoints[0];
-                            if (MoveHeroTowardsPoint(hero, targetPoint, req.DeltaTime, false))
-                            {
-                                // Skip 1 instead of 2 because for some reason MultiPoint.GetEnumerator returns an
-                                // enumerator containing itself (https://github.com/NetTopologySuite/NetTopologySuite/issues/508).
-                                hero.Waypoints = new MultiPoint(hero.Waypoints.Skip(2).Cast<Point>().ToArray());
-                                if (hero.Waypoints.Count == 0)
-                                {
-                                    hero.Status = StrategusHeroStatus.Idle;
-                                }
-                            }
-
+                            MoveToPoint(req.DeltaTime, hero);
                             break;
-
                         case StrategusHeroStatus.FollowingHero:
                         case StrategusHeroStatus.MovingToAttackHero:
-                            if (hero.TargetedHero == null)
-                            {
-                                Logger.LogWarning("Hero '{heroId}' was in status '{status}' without target hero",
-                                    hero.Id, hero.Status);
-                                hero.Status = StrategusHeroStatus.Idle;
-                                continue;
-                            }
-
-                            if (!hero.Position.IsWithinDistance(hero.TargetedHero.Position, _strategusMap.ViewDistance))
-                            {
-                                // Followed hero is not in sight anymore. Stop.
-                                hero.Status = StrategusHeroStatus.Idle;
-                                hero.TargetedHero = null;
-                                continue;
-                            }
-
-                            if (hero.Status == StrategusHeroStatus.MovingToAttackHero)
-                            {
-                                if (MoveHeroTowardsPoint(hero, hero.TargetedHero.Position, req.DeltaTime, true))
-                                {
-                                    // TODO: attack user
-                                }
-                            }
-                            else if (hero.Status == StrategusHeroStatus.FollowingHero)
-                            {
-                                // Set canInteractWithTarget to false to the hero doesn't stop to interaction range
-                                // but stops on the target hero itself.
-                                MoveHeroTowardsPoint(hero, hero.TargetedHero.Position, req.DeltaTime, false);
-                            }
-
+                            MoveToHero(req.DeltaTime, hero);
                             break;
                         case StrategusHeroStatus.MovingToSettlement:
                         case StrategusHeroStatus.MovingToAttackSettlement:
-                            if (hero.TargetedSettlement == null)
-                            {
-                                Logger.LogWarning("Hero '{heroId}' was in status '{status}' without target settlement",
-                                    hero.Id, hero.Status);
-                                hero.Status = StrategusHeroStatus.Idle;
-                                continue;
-                            }
-
-                            if (MoveHeroTowardsPoint(hero, hero.TargetedSettlement.Position, req.DeltaTime, true))
-                            {
-                                if (hero.Status == StrategusHeroStatus.MovingToSettlement)
-                                {
-                                    hero.Status = StrategusHeroStatus.IdleInSettlement;
-                                    hero.Position = hero.TargetedSettlement.Position;
-                                }
-                                else if (hero.Status == StrategusHeroStatus.MovingToAttackSettlement)
-                                {
-                                    // TODO: attack settlement.
-                                }
-                            }
-
+                            MoveToSettlement(req.DeltaTime, hero);
                             break;
                     }
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
                 return Result.NoErrors;
+            }
+
+            private void MoveToPoint(TimeSpan deltaTime, StrategusHero hero)
+            {
+                if (hero.Waypoints.IsEmpty)
+                {
+                    Logger.LogWarning("Hero '{heroId}' was in status '{status}' without any points to go to",
+                        hero.Id, hero.Status);
+                    hero.Status = StrategusHeroStatus.Idle;
+                    return;
+                }
+
+                var targetPoint = (Point)hero.Waypoints[0];
+                if (!MoveHeroTowardsPoint(hero, targetPoint, deltaTime, false))
+                {
+                    return;
+                }
+
+                // Skip 2 instead of 1 because for some reason MultiPoint.GetEnumerator returns an
+                // enumerator containing itself (https://github.com/NetTopologySuite/NetTopologySuite/issues/508).
+                hero.Waypoints = new MultiPoint(hero.Waypoints.Skip(2).Cast<Point>().ToArray());
+                if (hero.Waypoints.Count == 0)
+                {
+                    hero.Status = StrategusHeroStatus.Idle;
+                }
+            }
+
+            private void MoveToHero(TimeSpan deltaTime, StrategusHero hero)
+            {
+                if (hero.TargetedHero == null)
+                {
+                    Logger.LogWarning("Hero '{heroId}' was in status '{status}' without target hero",
+                        hero.Id, hero.Status);
+                    hero.Status = StrategusHeroStatus.Idle;
+                    return;
+                }
+
+                if (!hero.Position.IsWithinDistance(hero.TargetedHero.Position, _strategusMap.ViewDistance))
+                {
+                    // Followed hero is not in sight anymore. Stop.
+                    hero.Status = StrategusHeroStatus.Idle;
+                    hero.TargetedHero = null;
+                    return;
+                }
+
+                if (hero.Status == StrategusHeroStatus.FollowingHero)
+                {
+                    // Set canInteractWithTarget to false to the hero doesn't stop to interaction range
+                    // but stops on the target hero itself.
+                    MoveHeroTowardsPoint(hero, hero.TargetedHero.Position, deltaTime, false);
+                }
+                else if (hero.Status == StrategusHeroStatus.MovingToAttackHero)
+                {
+                    if (MoveHeroTowardsPoint(hero, hero.TargetedHero.Position, deltaTime, true))
+                    {
+                        // TODO: attack user
+                    }
+                }
+            }
+
+            private void MoveToSettlement(TimeSpan deltaTime, StrategusHero hero)
+            {
+                if (hero.TargetedSettlement == null)
+                {
+                    Logger.LogWarning("Hero '{heroId}' was in status '{status}' without target settlement",
+                        hero.Id, hero.Status);
+                    hero.Status = StrategusHeroStatus.Idle;
+                    return;
+                }
+
+                if (!MoveHeroTowardsPoint(hero, hero.TargetedSettlement.Position, deltaTime, true))
+                {
+                    return;
+                }
+
+                if (hero.Status == StrategusHeroStatus.MovingToSettlement)
+                {
+                    hero.Status = StrategusHeroStatus.IdleInSettlement;
+                    hero.Position = hero.TargetedSettlement.Position;
+                }
+                else if (hero.Status == StrategusHeroStatus.MovingToAttackSettlement)
+                {
+                    // TODO: attack settlement.
+                }
             }
 
             private bool MoveHeroTowardsPoint(StrategusHero hero, Point targetPoint, TimeSpan deltaTime, bool canInteractWithTarget)
