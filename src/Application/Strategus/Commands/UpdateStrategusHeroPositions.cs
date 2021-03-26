@@ -49,28 +49,28 @@ namespace Crpg.Application.Strategus.Commands
                     .Include(h => h.TargetedSettlement)
                     .ToArrayAsync(cancellationToken);
 
-                foreach (var user in strategusHeroes)
+                foreach (var hero in strategusHeroes)
                 {
-                    switch (user.Status)
+                    switch (hero.Status)
                     {
                         case StrategusHeroStatus.MovingToPoint:
-                            if (user.Waypoints.IsEmpty)
+                            if (hero.Waypoints.IsEmpty)
                             {
-                                Logger.LogWarning("User '{userId}' was in status '{status}' without any points to go to",
-                                    user.Id, user.Status);
-                                user.Status = StrategusHeroStatus.Idle;
+                                Logger.LogWarning("Hero '{heroId}' was in status '{status}' without any points to go to",
+                                    hero.Id, hero.Status);
+                                hero.Status = StrategusHeroStatus.Idle;
                                 continue;
                             }
 
-                            var targetPoint = (Point)user.Waypoints[0];
-                            if (MoveUserTowardsPoint(user, targetPoint, req.DeltaTime, false))
+                            var targetPoint = (Point)hero.Waypoints[0];
+                            if (MoveHeroTowardsPoint(hero, targetPoint, req.DeltaTime, false))
                             {
                                 // Skip 1 instead of 2 because for some reason MultiPoint.GetEnumerator returns an
                                 // enumerator containing itself (https://github.com/NetTopologySuite/NetTopologySuite/issues/508).
-                                user.Waypoints = new MultiPoint(user.Waypoints.Skip(2).Cast<Point>().ToArray());
-                                if (user.Waypoints.Count == 0)
+                                hero.Waypoints = new MultiPoint(hero.Waypoints.Skip(2).Cast<Point>().ToArray());
+                                if (hero.Waypoints.Count == 0)
                                 {
-                                    user.Status = StrategusHeroStatus.Idle;
+                                    hero.Status = StrategusHeroStatus.Idle;
                                 }
                             }
 
@@ -78,55 +78,55 @@ namespace Crpg.Application.Strategus.Commands
 
                         case StrategusHeroStatus.FollowingHero:
                         case StrategusHeroStatus.MovingToAttackHero:
-                            if (user.TargetedHero == null)
+                            if (hero.TargetedHero == null)
                             {
-                                Logger.LogWarning("User '{userId}' was in status '{status}' without target user",
-                                    user.Id, user.Status);
-                                user.Status = StrategusHeroStatus.Idle;
+                                Logger.LogWarning("Hero '{heroId}' was in status '{status}' without target hero",
+                                    hero.Id, hero.Status);
+                                hero.Status = StrategusHeroStatus.Idle;
                                 continue;
                             }
 
-                            if (!user.Position.IsWithinDistance(user.TargetedHero.Position, _strategusMap.ViewDistance))
+                            if (!hero.Position.IsWithinDistance(hero.TargetedHero.Position, _strategusMap.ViewDistance))
                             {
-                                // Followed user is not in sight anymore. Stop.
-                                user.Status = StrategusHeroStatus.Idle;
-                                user.TargetedHero = null;
+                                // Followed hero is not in sight anymore. Stop.
+                                hero.Status = StrategusHeroStatus.Idle;
+                                hero.TargetedHero = null;
                                 continue;
                             }
 
-                            if (user.Status == StrategusHeroStatus.MovingToAttackHero)
+                            if (hero.Status == StrategusHeroStatus.MovingToAttackHero)
                             {
-                                if (MoveUserTowardsPoint(user, user.TargetedHero.Position, req.DeltaTime, true))
+                                if (MoveHeroTowardsPoint(hero, hero.TargetedHero.Position, req.DeltaTime, true))
                                 {
                                     // TODO: attack user
                                 }
                             }
-                            else if (user.Status == StrategusHeroStatus.FollowingHero)
+                            else if (hero.Status == StrategusHeroStatus.FollowingHero)
                             {
-                                // Set canInteractWithTarget to false to the user doesn't stop to interaction range
-                                // but stops on the target user itself.
-                                MoveUserTowardsPoint(user, user.TargetedHero.Position, req.DeltaTime, false);
+                                // Set canInteractWithTarget to false to the hero doesn't stop to interaction range
+                                // but stops on the target hero itself.
+                                MoveHeroTowardsPoint(hero, hero.TargetedHero.Position, req.DeltaTime, false);
                             }
 
                             break;
                         case StrategusHeroStatus.MovingToSettlement:
                         case StrategusHeroStatus.MovingToAttackSettlement:
-                            if (user.TargetedSettlement == null)
+                            if (hero.TargetedSettlement == null)
                             {
-                                Logger.LogWarning("User '{userId}' was in status '{status}' without target settlement",
-                                    user.Id, user.Status);
-                                user.Status = StrategusHeroStatus.Idle;
+                                Logger.LogWarning("Hero '{heroId}' was in status '{status}' without target settlement",
+                                    hero.Id, hero.Status);
+                                hero.Status = StrategusHeroStatus.Idle;
                                 continue;
                             }
 
-                            if (MoveUserTowardsPoint(user, user.TargetedSettlement.Position, req.DeltaTime, true))
+                            if (MoveHeroTowardsPoint(hero, hero.TargetedSettlement.Position, req.DeltaTime, true))
                             {
-                                if (user.Status == StrategusHeroStatus.MovingToSettlement)
+                                if (hero.Status == StrategusHeroStatus.MovingToSettlement)
                                 {
-                                    user.Status = StrategusHeroStatus.IdleInSettlement;
-                                    user.Position = user.TargetedSettlement.Position;
+                                    hero.Status = StrategusHeroStatus.IdleInSettlement;
+                                    hero.Position = hero.TargetedSettlement.Position;
                                 }
-                                else if (user.Status == StrategusHeroStatus.MovingToAttackSettlement)
+                                else if (hero.Status == StrategusHeroStatus.MovingToAttackSettlement)
                                 {
                                     // TODO: attack settlement.
                                 }
@@ -140,24 +140,24 @@ namespace Crpg.Application.Strategus.Commands
                 return Result.NoErrors;
             }
 
-            private bool MoveUserTowardsPoint(StrategusHero user, Point targetPoint, TimeSpan deltaTime, bool canInteractWithTarget)
+            private bool MoveHeroTowardsPoint(StrategusHero hero, Point targetPoint, TimeSpan deltaTime, bool canInteractWithTarget)
             {
-                double speed = ComputeUserSpeed(user);
+                double speed = ComputeHeroSpeed(hero);
                 double distance = speed * deltaTime.TotalSeconds;
-                user.Position = _strategusMap.MovePointTowards(user.Position, targetPoint, distance);
+                hero.Position = _strategusMap.MovePointTowards(hero.Position, targetPoint, distance);
                 return canInteractWithTarget
-                    ? _strategusMap.ArePointsAtInteractionDistance(user.Position, targetPoint)
-                    : _strategusMap.ArePointsEquivalent(user.Position, targetPoint);
+                    ? _strategusMap.ArePointsAtInteractionDistance(hero.Position, targetPoint)
+                    : _strategusMap.ArePointsEquivalent(hero.Position, targetPoint);
             }
 
-            private double ComputeUserSpeed(StrategusHero user)
+            private double ComputeHeroSpeed(StrategusHero hero)
             {
                 const double terrainSpeedFactor = 1.0; // TODO: terrain penalty on speed (e.g. lower speed in forest).
-                const double weightFactor = 1.0; // TODO: goods should slow down user
-                const double horsesFactor = 1.0; // TODO: horse should speed user user
+                const double weightFactor = 1.0; // TODO: goods should slow down hero
+                const double horsesFactor = 1.0; // TODO: horse should speed up hero
                 const double terrainTroopInfluence = 1.0; // TODO: terrain influence on speed depending on the number of troops.
 
-                double troopInfluence = Math.Min(0.99, Math.Pow(user.Troops, terrainTroopInfluence) / 100);
+                double troopInfluence = Math.Min(0.99, Math.Pow(hero.Troops, terrainTroopInfluence) / 100);
                 return terrainSpeedFactor * weightFactor * horsesFactor * (1 - troopInfluence);
             }
         }
