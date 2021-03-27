@@ -75,7 +75,11 @@ export default class Strategus extends Vue {
       return false;
     }
 
-    return this.zoom > 4 || settlement.type == SettlementType.Town;
+    return (
+      this.zoom > 4 ||
+      (this.zoom > 3 && settlement.type == SettlementType.Castle) ||
+      settlement.type === SettlementType.Town
+    );
   }
 }
 </script>
