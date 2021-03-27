@@ -6,6 +6,7 @@ using Crpg.Application.Strategus.Commands;
 using Crpg.Common;
 using Crpg.Sdk.Abstractions.Tracing;
 using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -25,12 +26,12 @@ namespace Crpg.Strategus
             dt => new UpdateStrategusBattlePhasesCommand { DeltaTime = dt },
         };
 
-        private readonly IMediator _mediator;
+        private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly ITracer _tracer;
 
-        public Worker(IMediator mediator, ITracer tracer)
+        public Worker(IServiceScopeFactory serviceScopeFactory, ITracer tracer)
         {
-            _mediator = mediator;
+            _serviceScopeFactory = serviceScopeFactory;
             _tracer = tracer;
         }
 
@@ -53,9 +54,16 @@ namespace Crpg.Strategus
         private async Task Tick(TimeSpan deltaTime, CancellationToken cancellationToken)
         {
             using var span = _tracer.CreateSpan(TracerOperationName);
+
+            // ICrpgDbContext, used by most mediator handlers has a scoped lifetime which means that it is created once
+            // for each ASP.NET Core request. But in a worker there is no notion of request so we manually create the
+            // scope here.
+            using var scope = _serviceScopeFactory.CreateScope();
+            var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
+
             foreach (var behavior in Behaviors)
             {
-                await _mediator.Send(behavior(deltaTime), cancellationToken);
+                await mediator.Send(behavior(deltaTime), cancellationToken);
             }
         }
 
