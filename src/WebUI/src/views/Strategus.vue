@@ -3,12 +3,12 @@
     <l-map
       ref="map"
       class="map"
-      :zoom="zoom"
+      :zoom.sync="zoom"
       :center="center"
       :options="mapOptions"
       :max-bounds="maxBounds"
-      @moveend="displayedBounds = map.mapObject.getBounds()"
-      @leaflet:load="displayedBounds = map.mapObject.getBounds()"
+      @leaflet:load="onMapBoundsChange"
+      @moveend="onMapBoundsChange"
     >
       <l-control-mouse-position />
       <l-tile-layer :url="url" :attribution="attribution" />
@@ -47,33 +47,35 @@ export default class Strategus extends Vue {
     [0, 0],
     [-214.88, 768],
   ]);
-  displayedBounds: LatLngBounds | null = null;
+  mapBounds: LatLngBounds | null = null;
 
   get settlements(): Settlement[] {
-    if (
-      this.displayedBounds === null ||
-      this.map === undefined ||
-      this.map.mapObject === undefined
-    ) {
+    if (this.mapBounds === null) {
       return [];
     }
-    // Keep settlement inside displayedBounds
-    return strategusModule.settlements.filter(
-      settlement =>
-        this.displayedBounds!.contains(
-          new LatLng(settlement.position.coordinates[1], settlement.position.coordinates[0])
-        ) &&
-        (this.map!.mapObject.getZoom() > 4 || settlement.type === SettlementType.Town)
-    );
+
+    return strategusModule.settlements.filter(this.shouldDisplaySettlement);
   }
 
-  // get Map object
   get map(): LMap {
     return this.$refs.map as LMap;
   }
 
   created() {
     strategusModule.getSettlements();
+  }
+
+  onMapBoundsChange() {
+    this.mapBounds = this.map.mapObject.getBounds();
+  }
+
+  shouldDisplaySettlement(settlement: Settlement): boolean {
+    const [x, y] = settlement.position.coordinates;
+    if (!this.mapBounds!.contains(new LatLng(y, x))) {
+      return false;
+    }
+
+    return this.zoom > 4 || settlement.type == SettlementType.Town;
   }
 }
 </script>
