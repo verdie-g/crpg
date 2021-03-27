@@ -60,7 +60,7 @@ namespace Crpg.Application.Strategus.Queries
 
                 var visibleSettlements = await _db.StrategusSettlements
                     .Where(s => s.Position.IsWithinDistance(hero.Position, _strategusMap.ViewDistance))
-                    .ProjectTo<StrategusSettlementViewModel>(_mapper.ConfigurationProvider)
+                    .ProjectTo<StrategusSettlementPublicViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
                 return new Result<StrategusUpdate>(new StrategusUpdate

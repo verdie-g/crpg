@@ -21,7 +21,7 @@ namespace Crpg.Application.Strategus.Models
         public StrategusHeroStatus Status { get; set; }
         public MultiPoint Waypoints { get; set; } = MultiPoint.Empty;
         public StrategusHeroPublicViewModel? TargetedHero { get; set; }
-        public StrategusSettlementViewModel? TargetedSettlement { get; set; }
+        public StrategusSettlementPublicViewModel? TargetedSettlement { get; set; }
         public ClanPublicViewModel? Clan { get; set; }
 
         public void Mapping(Profile profile)

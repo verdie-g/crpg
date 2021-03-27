@@ -7,6 +7,6 @@ namespace Crpg.Application.Strategus.Models
     {
         public StrategusHeroViewModel Hero { get; set; } = default!;
         public IList<StrategusHeroPublicViewModel> VisibleHeroes { get; set; } = Array.Empty<StrategusHeroPublicViewModel>();
-        public IList<StrategusSettlementViewModel> VisibleSettlements { get; set; } = Array.Empty<StrategusSettlementViewModel>();
+        public IList<StrategusSettlementPublicViewModel> VisibleSettlements { get; set; } = Array.Empty<StrategusSettlementPublicViewModel>();
     }
 }

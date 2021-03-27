@@ -72,7 +72,7 @@ namespace Crpg.WebApi.Controllers
         /// Get strategus settlements.
         /// </summary>
         [HttpGet("settlements")]
-        public Task<ActionResult<Result<IList<StrategusSettlementViewModel>>>> GetSettlements()
+        public Task<ActionResult<Result<IList<StrategusSettlementPublicViewModel>>>> GetSettlements()
             => ResultToActionAsync(Mediator.Send(new GetStrategusSettlementsQuery()));
 
         /// <summary>

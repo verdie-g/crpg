@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Strategus.Queries
 {
-    public class GetStrategusSettlementsQuery : IMediatorRequest<IList<StrategusSettlementViewModel>>
+    public class GetStrategusSettlementsQuery : IMediatorRequest<IList<StrategusSettlementPublicViewModel>>
     {
-        internal class Handler : IMediatorRequestHandler<GetStrategusSettlementsQuery, IList<StrategusSettlementViewModel>>
+        internal class Handler : IMediatorRequestHandler<GetStrategusSettlementsQuery, IList<StrategusSettlementPublicViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -24,13 +24,13 @@ namespace Crpg.Application.Strategus.Queries
                 _mapper = mapper;
             }
 
-            public async Task<Result<IList<StrategusSettlementViewModel>>> Handle(GetStrategusSettlementsQuery req, CancellationToken cancellationToken)
+            public async Task<Result<IList<StrategusSettlementPublicViewModel>>> Handle(GetStrategusSettlementsQuery req, CancellationToken cancellationToken)
             {
                 var clan = await _db.StrategusSettlements
-                    .ProjectTo<StrategusSettlementViewModel>(_mapper.ConfigurationProvider)
+                    .ProjectTo<StrategusSettlementPublicViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
-                return new Result<IList<StrategusSettlementViewModel>>(clan);
+                return new Result<IList<StrategusSettlementPublicViewModel>>(clan);
             }
         }
     }
