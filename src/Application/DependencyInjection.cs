@@ -21,6 +21,7 @@ namespace Crpg.Application
             var userService = new UserService(constants);
             var clanService = new ClanService();
             var strategusMap = new StrategusMap(constants);
+            var strategusBattleScheduler = new StrategusBattleScheduler();
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly())
                 .AddMediatR(Assembly.GetExecutingAssembly())
@@ -34,6 +35,7 @@ namespace Crpg.Application
                 .AddSingleton<IUserService>(userService)
                 .AddSingleton<IClanService>(clanService)
                 .AddSingleton<IStrategusMap>(strategusMap)
+                .AddSingleton<IStrategusBattleScheduler>(strategusBattleScheduler)
                 .AddSingleton(constants)
                 .AddSingleton<IItemsSource, FileItemsSource>()
                 .AddSingleton<IStrategusSettlementsSource, FileStrategusSettlementsSource>()

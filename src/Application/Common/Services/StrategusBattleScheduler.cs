@@ -8,7 +8,7 @@ namespace Crpg.Application.Common.Services
         Task ScheduleBattle(StrategusBattle battle);
     }
 
-    internal class StrategusBattleScheduler
+    internal class StrategusBattleScheduler : IStrategusBattleScheduler
     {
         public Task ScheduleBattle(StrategusBattle battle)
         {
