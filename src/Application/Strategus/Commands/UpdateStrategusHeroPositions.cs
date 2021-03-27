@@ -143,7 +143,7 @@ namespace Crpg.Application.Strategus.Commands
                     hero.TargetedHero.Status = StrategusHeroStatus.InBattle;
                     var battle = new StrategusBattle
                     {
-                        Status = StrategusBattleStatus.Initiated,
+                        Phase = StrategusBattlePhase.Preparation,
                         Fighters =
                         {
                             new StrategusBattleFighter
@@ -191,7 +191,7 @@ namespace Crpg.Application.Strategus.Commands
                     bool attackInProgress = await _db.StrategusBattles
                         .AnyAsync(b =>
                                 b.AttackedSettlementId == hero.TargetedSettlementId
-                                && b.Status != StrategusBattleStatus.Ended,
+                                && b.Phase != StrategusBattlePhase.End,
                             cancellationToken);
                     if (attackInProgress)
                     {
@@ -201,7 +201,7 @@ namespace Crpg.Application.Strategus.Commands
                     hero.Status = StrategusHeroStatus.InBattle;
                     var battle = new StrategusBattle
                     {
-                        Status = StrategusBattleStatus.Initiated,
+                        Phase = StrategusBattlePhase.Preparation,
                         AttackedSettlement = hero.TargetedSettlement,
                         Fighters =
                         {

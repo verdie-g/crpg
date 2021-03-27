@@ -384,7 +384,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.StrategusHeroes.Add(hero);
             var battle = new StrategusBattle
             {
-                Status = StrategusBattleStatus.Initiated,
+                Phase = StrategusBattlePhase.Preparation,
                 AttackedSettlement = settlement,
             };
             ArrangeDb.StrategusBattles.Add(battle);

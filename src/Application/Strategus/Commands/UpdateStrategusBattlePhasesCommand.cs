@@ -15,13 +15,13 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Strategus.Commands
 {
-    public class UpdateStrategusBattleStatusesCommand : IMediatorRequest
+    public class UpdateStrategusBattlePhasesCommand : IMediatorRequest
     {
         public TimeSpan DeltaTime { get; set; }
 
-        internal class Handler : IMediatorRequestHandler<UpdateStrategusBattleStatusesCommand>
+        internal class Handler : IMediatorRequestHandler<UpdateStrategusBattlePhasesCommand>
         {
-            private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateStrategusBattleStatusesCommand>();
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateStrategusBattlePhasesCommand>();
 
             private readonly ICrpgDbContext _db;
             private readonly IStrategusBattleScheduler _battleScheduler;
@@ -39,26 +39,26 @@ namespace Crpg.Application.Strategus.Commands
                 _battleHiringDuration = TimeSpan.FromHours(constants.StrategusBattleHiringDurationHours);
             }
 
-            public async Task<Result> Handle(UpdateStrategusBattleStatusesCommand req, CancellationToken cancellationToken)
+            public async Task<Result> Handle(UpdateStrategusBattlePhasesCommand req, CancellationToken cancellationToken)
             {
                 var battles = _db.StrategusBattles
                     .Include(b => b.AttackedSettlement)
                     .Include(b => b.Fighters).ThenInclude(f => f.Hero)
                     .Where(b =>
-                        (b.Status == StrategusBattleStatus.Initiated && b.CreatedAt + _battleInitiationDuration < _dateTimeOffset.Now)
-                        || (b.Status == StrategusBattleStatus.Hiring && b.CreatedAt + _battleInitiationDuration + _battleHiringDuration < _dateTimeOffset.Now))
+                        (b.Phase == StrategusBattlePhase.Preparation && b.CreatedAt + _battleInitiationDuration < _dateTimeOffset.Now)
+                        || (b.Phase == StrategusBattlePhase.Hiring && b.CreatedAt + _battleInitiationDuration + _battleHiringDuration < _dateTimeOffset.Now))
                     .AsAsyncEnumerable();
 
                 await foreach (var battle in battles.WithCancellation(cancellationToken))
                 {
-                    switch (battle.Status)
+                    switch (battle.Phase)
                     {
-                        case StrategusBattleStatus.Initiated:
-                            battle.Status = StrategusBattleStatus.Hiring;
+                        case StrategusBattlePhase.Preparation:
+                            battle.Phase = StrategusBattlePhase.Hiring;
                             break;
-                        case StrategusBattleStatus.Hiring:
+                        case StrategusBattlePhase.Hiring:
                             await _battleScheduler.ScheduleBattle(battle);
-                            battle.Status = StrategusBattleStatus.Live;
+                            battle.Phase = StrategusBattlePhase.Battle;
                             break;
                     }
                 }

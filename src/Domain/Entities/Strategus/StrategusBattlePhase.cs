@@ -1,15 +1,15 @@
 ﻿namespace Crpg.Domain.Entities.Strategus
 {
     /// <summary>
-    /// Status of a <see cref="StrategusBattle"/>.
+    /// Phase of a <see cref="StrategusBattle"/>.
     /// </summary>
-    public enum StrategusBattleStatus
+    public enum StrategusBattlePhase
     {
         /// <summary>
         /// A <see cref="StrategusHero"/> attacked another one or a <see cref="StrategusSettlement"/>. Other <see cref="StrategusHero"/>es
         /// can join their army during this phase.
         /// </summary>
-        Initiated,
+        Preparation,
 
         /// <summary>
         /// <see cref="StrategusHero"/>es from anywhere on the map can join the <see cref="StrategusBattle"/> as mercenary.
@@ -19,11 +19,11 @@
         /// <summary>
         /// The <see cref="StrategusBattle"/> is live on a server.
         /// </summary>
-        Live,
+        Battle,
 
         /// <summary>
         /// The <see cref="StrategusBattle"/> ended.
         /// </summary>
-        Ended,
+        End,
     }
 }

@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Strategus
 {
-    public class UpdateStrategusBattleStatusesCommandTest : TestBase
+    public class UpdateStrategusBattlePhasesCommandTest : TestBase
     {
         private static readonly Constants Constants = new Constants
         {
@@ -21,18 +21,18 @@ namespace Crpg.Application.UTest.Strategus
         };
 
         [Test]
-        public async Task ShouldSwitchedInitiatedBattlesToHiringAfterSomeTime()
+        public async Task ShouldSwitchedPreparationBattlesToHiringAfterSomeTime()
         {
             var battles = new[]
             {
                 new StrategusBattle
                 {
-                    Status = StrategusBattleStatus.Initiated,
+                    Phase = StrategusBattlePhase.Preparation,
                     CreatedAt = new DateTimeOffset(new DateTime(2010, 12, 3)),
                 },
                 new StrategusBattle
                 {
-                    Status = StrategusBattleStatus.Initiated,
+                    Phase = StrategusBattlePhase.Preparation,
                     CreatedAt = new DateTimeOffset(new DateTime(2010, 12, 4, 12, 0, 0)),
                 },
             };
@@ -41,13 +41,13 @@ namespace Crpg.Application.UTest.Strategus
 
             var dateTimeOffsetMock = new Mock<IDateTimeOffset>();
             dateTimeOffsetMock.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2010, 12, 5)));
-            var handler = new UpdateStrategusBattleStatusesCommand.Handler(ActDb, Mock.Of<IStrategusBattleScheduler>(),
+            var handler = new UpdateStrategusBattlePhasesCommand.Handler(ActDb, Mock.Of<IStrategusBattleScheduler>(),
                 dateTimeOffsetMock.Object, Constants);
-            await handler.Handle(new UpdateStrategusBattleStatusesCommand(), CancellationToken.None);
+            await handler.Handle(new UpdateStrategusBattlePhasesCommand(), CancellationToken.None);
 
             battles = await AssertDb.StrategusBattles.ToArrayAsync();
-            Assert.AreEqual(StrategusBattleStatus.Hiring, battles[0].Status);
-            Assert.AreEqual(StrategusBattleStatus.Initiated, battles[1].Status);
+            Assert.AreEqual(StrategusBattlePhase.Hiring, battles[0].Phase);
+            Assert.AreEqual(StrategusBattlePhase.Preparation, battles[1].Phase);
         }
 
         [Test]
@@ -57,12 +57,12 @@ namespace Crpg.Application.UTest.Strategus
             {
                 new StrategusBattle
                 {
-                    Status = StrategusBattleStatus.Hiring,
+                    Phase = StrategusBattlePhase.Hiring,
                     CreatedAt = new DateTimeOffset(new DateTime(2010, 12, 3, 10, 0, 0)),
                 },
                 new StrategusBattle
                 {
-                    Status = StrategusBattleStatus.Hiring,
+                    Phase = StrategusBattlePhase.Hiring,
                     CreatedAt = new DateTimeOffset(new DateTime(2010, 12, 4, 20, 0, 0)),
                 },
             };
@@ -72,14 +72,14 @@ namespace Crpg.Application.UTest.Strategus
             var dateTimeOffsetMock = new Mock<IDateTimeOffset>();
             dateTimeOffsetMock.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2010, 12, 5)));
             var battleSchedulerMock = new Mock<IStrategusBattleScheduler>();
-            var handler = new UpdateStrategusBattleStatusesCommand.Handler(ActDb, battleSchedulerMock.Object,
+            var handler = new UpdateStrategusBattlePhasesCommand.Handler(ActDb, battleSchedulerMock.Object,
                 dateTimeOffsetMock.Object, Constants);
-            await handler.Handle(new UpdateStrategusBattleStatusesCommand(), CancellationToken.None);
+            await handler.Handle(new UpdateStrategusBattlePhasesCommand(), CancellationToken.None);
 
             battles = await AssertDb.StrategusBattles.ToArrayAsync();
-            Assert.AreEqual(StrategusBattleStatus.Live, battles[0].Status);
+            Assert.AreEqual(StrategusBattlePhase.Battle, battles[0].Phase);
             battleSchedulerMock.Verify(s => s.ScheduleBattle(It.IsAny<StrategusBattle>()), Times.Once);
-            Assert.AreEqual(StrategusBattleStatus.Hiring, battles[1].Status);
+            Assert.AreEqual(StrategusBattlePhase.Hiring, battles[1].Phase);
         }
     }
 }

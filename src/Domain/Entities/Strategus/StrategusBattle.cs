@@ -6,7 +6,7 @@ namespace Crpg.Domain.Entities.Strategus
     public class StrategusBattle : AuditableEntity
     {
         public int Id { get; set; }
-        public StrategusBattleStatus Status { get; set; }
+        public StrategusBattlePhase Phase { get; set; }
 
         /// <summary>
         /// The id of the attacked <see cref="StrategusSettlement"/>. Can be null if the <see cref="StrategusBattle"/>

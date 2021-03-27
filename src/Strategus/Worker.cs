@@ -22,7 +22,7 @@ namespace Crpg.Strategus
         {
             dt => new UpdateStrategusHeroPositionsCommand { DeltaTime = dt },
             dt => new UpdateStrategusHeroTroopsCommand { DeltaTime = dt },
-            dt => new UpdateStrategusBattleStatusesCommand { DeltaTime = dt },
+            dt => new UpdateStrategusBattlePhasesCommand { DeltaTime = dt },
         };
 
         private readonly IMediator _mediator;
