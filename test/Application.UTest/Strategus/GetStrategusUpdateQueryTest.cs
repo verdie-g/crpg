@@ -85,7 +85,7 @@ namespace Crpg.Application.UTest.Strategus
 
             var update = res.Data!;
             Assert.IsNotNull(update);
-            Assert.NotNull(update.User);
+            Assert.NotNull(update.Hero);
             Assert.AreEqual(1, update.VisibleHeroes.Count);
             Assert.AreEqual(closeHero.Id, update.VisibleHeroes[0].Id);
             Assert.AreEqual(1, update.VisibleSettlements.Count);

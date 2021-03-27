@@ -65,7 +65,7 @@ namespace Crpg.Application.Strategus.Queries
 
                 return new Result<StrategusUpdate>(new StrategusUpdate
                 {
-                    User = _mapper.Map<StrategusHeroViewModel>(hero),
+                    Hero = _mapper.Map<StrategusHeroViewModel>(hero),
                     VisibleHeroes = visibleHeroes,
                     VisibleSettlements = visibleSettlements,
                 });
