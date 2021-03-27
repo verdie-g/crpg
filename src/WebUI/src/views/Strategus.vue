@@ -26,13 +26,14 @@ import Settlement from '@/models/settlement';
 import SettlementType from '@/models/settlement-type';
 import strategusModule from '@/store/strategus-module';
 import SettlementComponent from '@/components/SettlementComponent.vue';
+import Constants from '../../../../data/constants.json';
 
 @Component({
   components: { LMap, LTileLayer, LControlMousePosition, settlement: SettlementComponent },
 })
 export default class Strategus extends Vue {
-  zoom = 6;
-  center = new LatLng(-139, 122.75);
+  zoom = 3;
+  center = new LatLng(-100, 125);
   url = 'http://pecores.fr/gigamap/{z}/{y}/{x}.png';
   attribution = '<a target="_blank" href="https://www.taleworlds.com">TaleWorlds Entertainment</a>';
   mapOptions = {
@@ -45,7 +46,7 @@ export default class Strategus extends Vue {
   };
   maxBounds = new LatLngBounds([
     [0, 0],
-    [-214.88, 768],
+    [-Constants.strategusMapHeight, Constants.strategusMapWidth * 3],
   ]);
   mapBounds: LatLngBounds | null = null;
 
