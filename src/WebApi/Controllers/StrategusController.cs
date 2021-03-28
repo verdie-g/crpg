@@ -19,7 +19,7 @@ namespace Crpg.WebApi.Controllers
         /// </summary>
         /// <returns>Current strategus hero, visible heroes and settlements, etc.</returns>
         /// <response code="200">Ok.</response>
-        /// <response code="400">User was not registered to strategus.</response>
+        /// <response code="404">User was not registered to strategus.</response>
         [HttpGet("update")]
         public Task<ActionResult<Result<StrategusUpdate>>> GetStrategusUpdate()
         {

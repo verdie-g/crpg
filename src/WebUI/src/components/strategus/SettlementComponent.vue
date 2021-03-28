@@ -14,7 +14,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { LIcon, LMarker } from 'vue2-leaflet';
-import Settlement from '@/models/settlement';
+import Settlement from '@/models/settlement-public';
 import SettlementType from '@/models/settlement-type';
 
 @Component({

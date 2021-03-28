@@ -1,20 +1,62 @@
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
-import Settlement from '@/models/settlement';
+import SettlementPublic from '@/models/settlement-public';
 import * as strategusService from '@/services/strategus-service';
+import { arrayMergeBy } from '@/utils/array';
+import HeroPublic from '@/models/hero-public';
+import Hero from '@/models/hero';
+import Region from '@/models/region';
 
 @Module({ store, dynamic: true, name: 'strategus' })
 class StrategusModule extends VuexModule {
-  settlements: Settlement[] = [];
+  hero: Hero | null = null;
+  settlements: SettlementPublic[] = [];
+  visibleHeroes: HeroPublic[] = [];
+
+  currentDialog: string | null = null;
 
   @Mutation
-  setSettlements(settlements: Settlement[]) {
+  setHero(hero: Hero) {
+    this.hero = hero;
+  }
+
+  @Mutation
+  setSettlements(settlements: SettlementPublic[]) {
     this.settlements = settlements;
   }
 
+  @Mutation
+  setVisibleHeroes(heroes: HeroPublic[]) {
+    this.visibleHeroes = heroes;
+  }
+
+  @Mutation
+  pushDialog(dialogComponent: string) {
+    this.currentDialog = dialogComponent;
+  }
+
   @Action({ commit: 'setSettlements' })
-  getSettlements() {
+  getSettlements(): Promise<SettlementPublic> {
     return strategusService.getSettlements();
+  }
+
+  @Action({ commit: 'setHero' })
+  async registerUser(region: Region): Promise<Hero> {
+    return strategusService.registerUser(region);
+  }
+
+  @Action
+  async getUpdate(): Promise<void> {
+    const res = await strategusService.getUpdate();
+    if (res.errors !== null && res.errors[0].code === 'HeroNotFound') {
+      this.pushDialog('RegistrationDialog');
+      return;
+    }
+
+    const update = res.data!;
+    this.setHero(update.hero);
+    this.setSettlements(arrayMergeBy(this.settlements, update.visibleSettlements, s => s.id));
+    this.setVisibleHeroes(update.visibleHeroes);
   }
 }
 

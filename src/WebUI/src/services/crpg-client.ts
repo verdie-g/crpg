@@ -1,11 +1,11 @@
 import { getToken, signIn } from '@/services/auth-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import { sleep } from '@/utils/promise';
-import Result from '@/models/result';
+import { ErrorType, Result } from '@/models/result';
 
 export const API_BASE_URL = process.env.VUE_APP_API_BASE_URL;
 
-async function send(method: string, path: string, body?: any): Promise<any> {
+async function trySend(method: string, path: string, body?: any): Promise<Result<any>> {
   const token = await getToken();
   const response = await fetch(API_BASE_URL + path, {
     method,
@@ -19,22 +19,30 @@ async function send(method: string, path: string, body?: any): Promise<any> {
   if (response.status === 401) {
     notify('Session expired', NotificationType.Warning);
     sleep(1000).then(() => signIn());
-    return {};
+    return new Result();
   }
 
-  const result: Result<any> = response.status !== 204 ? await response.json() : {};
+  return response.status !== 204 ? await response.json() : {};
+}
 
-  if (response.status >= 500) {
+async function send(method: string, path: string, body?: any): Promise<any> {
+  const result = await trySend(method, path, body);
+
+  if (result.errors === null) {
+    return result.data;
+  }
+
+  if (result.errors[0].type === ErrorType.InternalError) {
     notify(result.errors![0].title!, NotificationType.Error);
     throw new Error('Server error');
-  }
-
-  if (response.status >= 400) {
+  } else {
     notify(result.errors![0].title!, NotificationType.Warning);
     throw new Error('Bad request');
   }
+}
 
-  return result.data;
+export function tryGet(path: string): Promise<Result<any>> {
+  return trySend('GET', path);
 }
 
 export function get(path: string): Promise<any> {
