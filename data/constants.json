@@ -35,6 +35,8 @@
   "defaultHeirloomPoints": 0,
   "strategusMapWidth": 256,
   "strategusMapHeight": 215,
+  "strategusSpawningPositionCenter": [122, -105],
+  "strategusSpawningPositionRadius": 20,
   "strategusTroopRecruitmentPerHour": 5,
   "strategusMaxHeroTroops": 300,
   "strategusBattleInitiationDurationHours": 24,

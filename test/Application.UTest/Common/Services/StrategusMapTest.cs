@@ -1,6 +1,9 @@
 ﻿using Crpg.Application.Common;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities;
+using Crpg.Sdk;
+using Crpg.Sdk.Abstractions;
+using Moq;
 using NetTopologySuite.Geometries;
 using NUnit.Framework;
 
@@ -8,11 +11,14 @@ namespace Crpg.Application.UTest.Common.Services
 {
     public class StrategusMapTest
     {
-        private static readonly StrategusMap StrategusMap = new StrategusMap(new Constants
+        private static readonly Constants Constants = new Constants
         {
             StrategusMapWidth = 1000,
             StrategusMapHeight = 1000,
-        });
+            StrategusSpawningPositionCenter = new[] { 10.0, 20.0 },
+            StrategusSpawningPositionRadius = 5.0,
+        };
+        private static readonly StrategusMap StrategusMap = new StrategusMap(Constants, new ThreadSafeRandom());
 
         [Test]
         public void ArePointsEquivalentShouldReturnTrueIfPointsAreClose()
@@ -82,6 +88,14 @@ namespace Crpg.Application.UTest.Common.Services
             Point p2 = StrategusMap.TranslatePositionForRegion(p1, source, target);
             Assert.AreEqual(expectedX, p2.X);
             Assert.AreEqual(expectedY, p2.Y);
+        }
+
+        [Test]
+        public void GetSpawnPositionShouldReturnAPointWithinTheConstantCircle()
+        {
+            var spawnPosition = StrategusMap.GetSpawnPosition(Region.Europe);
+            Assert.That(spawnPosition.X, Is.EqualTo(Constants.StrategusSpawningPositionCenter[0]).Within(Constants.StrategusSpawningPositionRadius));
+            Assert.That(spawnPosition.Y, Is.EqualTo(Constants.StrategusSpawningPositionCenter[1]).Within(Constants.StrategusSpawningPositionRadius));
         }
     }
 }

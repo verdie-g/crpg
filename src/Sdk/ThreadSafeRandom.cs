@@ -19,7 +19,12 @@ namespace Crpg.Sdk
 
         public int Next(int minValue, int maxValue)
         {
-            return _instance.Value!.Next(minValue, maxValue);
+            return _instance.Value.Next(minValue, maxValue);
+        }
+
+        public double NextDouble()
+        {
+            return _instance.Value.NextDouble();
         }
     }
 }

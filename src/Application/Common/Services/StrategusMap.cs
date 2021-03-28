@@ -1,5 +1,6 @@
 ﻿using System;
 using Crpg.Domain.Entities;
+using Crpg.Sdk.Abstractions;
 using NetTopologySuite.Geometries;
 
 namespace Crpg.Application.Common.Services
@@ -29,21 +30,29 @@ namespace Crpg.Application.Common.Services
 
     internal class StrategusMap : IStrategusMap
     {
+        private readonly IRandom _random;
         private readonly double _width;
         private readonly double _height;
         private readonly double _interactionDistance;
         private readonly double _equivalentDistance;
+        private readonly double _viewDistance;
+        private readonly Point _spawningPositionCenter;
+        private readonly double _spawningPositionRadius;
 
-        public StrategusMap(Constants constants)
+        public StrategusMap(Constants constants, IRandom random)
         {
+            _random = random;
             _width = constants.StrategusMapWidth;
             _height = constants.StrategusMapHeight;
             _interactionDistance = _width * _height / 30_000;
             _equivalentDistance = _width * _height / 300_000;
-            ViewDistance = _width * _height / 2000;
+            _viewDistance = _width * _height / 2000;
+            var spawningPosition = constants.StrategusSpawningPositionCenter;
+            _spawningPositionCenter = new Point(spawningPosition[0], spawningPosition[1]);
+            _spawningPositionRadius = constants.StrategusSpawningPositionRadius;
         }
 
-        public double ViewDistance { get; }
+        public double ViewDistance => _viewDistance;
 
         /// <inheritdoc />
         public bool ArePointsEquivalent(Point pointA, Point pointB)
@@ -106,8 +115,14 @@ namespace Crpg.Application.Common.Services
         /// <inheritdoc />
         public Point GetSpawnPosition(Region region)
         {
-            var mapCenter = new Point(_width / 2.0, _height / 2.0);
-            return TranslatePositionForRegion(mapCenter, Region.Europe, region);
+            // https://stackoverflow.com/a/50746409/5407910
+            double r = _spawningPositionRadius * Math.Sqrt(_random.NextDouble());
+            double theta = _random.NextDouble() * 2 * Math.PI;
+
+            var spawningPosition = new Point(
+                _spawningPositionCenter.X + r * Math.Cos(theta),
+                _spawningPositionCenter.Y + r * Math.Sin(theta));
+            return TranslatePositionForRegion(spawningPosition, Region.Europe, region);
         }
     }
 }
