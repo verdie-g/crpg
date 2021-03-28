@@ -19,18 +19,13 @@
       <l-control-mouse-position />
       <l-tile-layer :url="url" :attribution="attribution" />
       <settlement v-for="settlement in settlements" :key="settlement.id" :settlement="settlement" />
-      <l-circle-marker
-        v-if="hero"
-        :lat-lng="[hero.position.coordinates[1], hero.position.coordinates[0]]"
-        :radius="10"
-        color="#f00"
-      />
+      <hero :hero="hero" />
     </l-map>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Watch } from 'vue-property-decorator';
 import { LatLng, LatLngBounds, CRS } from 'leaflet';
 import { LMap, LTileLayer, LCircleMarker } from 'vue2-leaflet';
 import LControlMousePosition from '@/components/strategus/LControlMousePosition.vue';
@@ -41,6 +36,8 @@ import SettlementComponent from '@/components/strategus/SettlementComponent.vue'
 import RegistrationDialog from '@/components/strategus/RegistrationDialog.vue';
 import Constants from '../../../../data/constants.json';
 import Hero from '@/models/hero';
+import HeroComponent from '@/components/strategus/HeroComponent.vue';
+import { pointToLatLng } from '@/utils/geometry';
 
 // Register here all dialogs that can be used by the dynamic dialog component.
 const dialogs = {
@@ -55,6 +52,7 @@ const dialogs = {
     LControlMousePosition,
     ...dialogs,
     settlement: SettlementComponent,
+    hero: HeroComponent,
   },
 })
 export default class Strategus extends Vue {
@@ -75,7 +73,7 @@ export default class Strategus extends Vue {
     [-Constants.strategusMapHeight, Constants.strategusMapWidth * 3],
   ]);
   mapBounds: LatLngBounds | null = null;
-  updateIntervalId: number;
+  updateIntervalId: number = -1;
 
   get settlements(): Settlement[] {
     if (this.mapBounds === null) {
@@ -100,11 +98,12 @@ export default class Strategus extends Vue {
   created() {
     strategusModule.getSettlements();
     strategusModule.getUpdate();
-    this.updateIntervalId = setInterval(() => strategusModule.getUpdate(), 60 * 1000);
   }
 
   beforeDestroy() {
-    clearInterval(this.updateIntervalId);
+    if (this.updateIntervalId !== -1) {
+      clearInterval(this.updateIntervalId);
+    }
   }
 
   onMapBoundsChange() {
@@ -123,6 +122,23 @@ export default class Strategus extends Vue {
       settlement.type === SettlementType.Town
     );
   }
+
+  @Watch('hero')
+  onHeroChanged(newHero: Hero, oldHero: Hero | null) {
+    // This condition is true when the hero was updated the first time or when
+    // the user just registered to Strategus. Since only the RegistrationDialog
+    // knows when a registration happens, it needs to communicate it here so we
+    // zoom on the hero. This is done using a watcher on hero, and checking if
+    // the old value was null. This is quite hacky, if there are more use-cases
+    // where a dialog component neeeds to communicate with the map, we should
+    // think of a better way to do that.
+    if (oldHero === null) {
+      this.updateIntervalId = setInterval(() => strategusModule.getUpdate(), 60 * 1000);
+      this.map.mapObject.flyTo(pointToLatLng(newHero.position), 5, {
+        duration: 0.4,
+      });
+    }
+  }
 }
 </script>
 
@@ -139,10 +155,10 @@ html {
 
   .strategus-html-layer {
     position: absolute;
-    z-index: 500; // To be over the map.
   }
 
   .strategus-dialog {
+    z-index: 500; // To be over the map.
   }
 
   .map {

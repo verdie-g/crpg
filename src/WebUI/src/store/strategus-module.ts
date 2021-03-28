@@ -35,6 +35,11 @@ class StrategusModule extends VuexModule {
     this.currentDialog = dialogComponent;
   }
 
+  @Mutation
+  popDialog() {
+    this.currentDialog = null;
+  }
+
   @Action({ commit: 'setSettlements' })
   getSettlements(): Promise<SettlementPublic> {
     return strategusService.getSettlements();

@@ -70,6 +70,7 @@ export default class RegistrationDialog extends Vue {
     this.registering = true;
     strategusModule.registerUser(this.selectedRegion!).then(() => {
       this.registering = false;
+      strategusModule.popDialog();
     });
   }
 }
