@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Strategus.Commands;
@@ -14,10 +15,15 @@ namespace Crpg.Application.UTest.Strategus
 {
     public class CreateStrategusHeroCommandTest : TestBase
     {
+        private static readonly Constants Constants = new Constants
+        {
+            StrategusMinHeroTroops = 1,
+        };
+
         [Test]
         public async Task ShouldReturnErrorIfNotFound()
         {
-            var handler = new CreateStrategusHeroCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            var handler = new CreateStrategusHeroCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>(), Constants);
             var res = await handler.Handle(new CreateStrategusHeroCommand
             {
                 UserId = 1,
@@ -38,7 +44,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new CreateStrategusHeroCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            var handler = new CreateStrategusHeroCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>(), Constants);
             var res = await handler.Handle(new CreateStrategusHeroCommand
             {
                 UserId = user.Id,
@@ -58,7 +64,7 @@ namespace Crpg.Application.UTest.Strategus
 
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock.Setup(sm => sm.GetSpawnPosition(Region.NorthAmerica)).Returns(new Point(150, 50));
-            var handler = new CreateStrategusHeroCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            var handler = new CreateStrategusHeroCommand.Handler(ActDb, Mapper, strategusMapMock.Object, Constants);
             var res = await handler.Handle(new CreateStrategusHeroCommand
             {
                 UserId = user.Id,

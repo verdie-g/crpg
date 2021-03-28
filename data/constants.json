@@ -41,6 +41,7 @@
   "strategusSpawningPositionCenter": [122, -105],
   "strategusSpawningPositionRadius": 20,
   "strategusTroopRecruitmentPerHour": 5,
+  "strategusMinHeroTroops": 1,
   "strategusMaxHeroTroops": 300,
   "strategusBattleInitiationDurationHours": 24,
   "strategusBattleHiringDurationHours": 12

@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
@@ -36,12 +37,14 @@ namespace Crpg.Application.Strategus.Commands
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
             private readonly IStrategusMap _strategusMap;
+            private readonly Constants _constants;
 
-            public Handler(ICrpgDbContext db, IMapper mapper, IStrategusMap strategusMap)
+            public Handler(ICrpgDbContext db, IMapper mapper, IStrategusMap strategusMap, Constants constants)
             {
                 _db = db;
                 _mapper = mapper;
                 _strategusMap = strategusMap;
+                _constants = constants;
             }
 
             public async Task<Result<StrategusHeroViewModel>> Handle(CreateStrategusHeroCommand req, CancellationToken cancellationToken)
@@ -63,7 +66,7 @@ namespace Crpg.Application.Strategus.Commands
                 {
                     Region = req.Region,
                     Gold = 0,
-                    Troops = 1,
+                    Troops = _constants.StrategusMinHeroTroops,
                     Position = _strategusMap.GetSpawnPosition(req.Region),
                     Status = StrategusHeroStatus.Idle,
                     Waypoints = MultiPoint.Empty,
