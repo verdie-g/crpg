@@ -70,6 +70,7 @@
           size="is-small"
           :editable="false"
           controls-position="compact"
+          :exponential="0.5"
           v-bind="getInputProps('attributes', 'strength')"
           @input="onInput('attributes', 'strength', $event)"
         />
@@ -88,6 +89,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('attributes', 'agility')"
           @input="onInput('attributes', 'agility', $event)"
@@ -130,6 +132,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('skills', 'ironFlesh')"
           @input="onInput('skills', 'ironFlesh', $event)"
@@ -153,6 +156,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('skills', 'powerStrike')"
           @input="onInput('skills', 'powerStrike', $event)"
@@ -177,6 +181,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('skills', 'powerDraw')"
           @input="onInput('skills', 'powerDraw', $event)"
@@ -201,6 +206,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('skills', 'powerThrow')"
           @input="onInput('skills', 'powerThrow', $event)"
@@ -224,6 +230,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('skills', 'athletics')"
           @input="onInput('skills', 'athletics', $event)"
@@ -248,6 +255,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('skills', 'riding')"
           @input="onInput('skills', 'riding', $event)"
@@ -271,6 +279,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('skills', 'weaponMaster')"
           @input="onInput('skills', 'weaponMaster', $event)"
@@ -294,6 +303,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('skills', 'mountedArchery')"
           @input="onInput('skills', 'mountedArchery', $event)"
@@ -320,6 +330,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('skills', 'shield')"
           @input="onInput('skills', 'shield', $event)"
@@ -337,6 +348,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('weaponProficiencies', 'oneHanded')"
           @input="onInput('weaponProficiencies', 'oneHanded', $event)"
@@ -347,6 +359,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('weaponProficiencies', 'twoHanded')"
           @input="onInput('weaponProficiencies', 'twoHanded', $event)"
@@ -357,6 +370,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('weaponProficiencies', 'polearm')"
           @input="onInput('weaponProficiencies', 'polearm', $event)"
@@ -367,6 +381,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('weaponProficiencies', 'bow')"
           @input="onInput('weaponProficiencies', 'bow', $event)"
@@ -377,6 +392,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('weaponProficiencies', 'crossbow')"
           @input="onInput('weaponProficiencies', 'crossbow', $event)"
@@ -387,6 +403,7 @@
         <b-numberinput
           size="is-small"
           :editable="false"
+          :exponential="0.5"
           controls-position="compact"
           v-bind="getInputProps('weaponProficiencies', 'throwing')"
           @input="onInput('weaponProficiencies', 'throwing', $event)"
