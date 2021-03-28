@@ -33,8 +33,8 @@ namespace Crpg.Application.Common.Services
         private readonly IRandom _random;
         private readonly double _width;
         private readonly double _height;
-        private readonly double _interactionDistance;
         private readonly double _equivalentDistance;
+        private readonly double _interactionDistance;
         private readonly double _viewDistance;
         private readonly Point _spawningPositionCenter;
         private readonly double _spawningPositionRadius;
@@ -44,9 +44,9 @@ namespace Crpg.Application.Common.Services
             _random = random;
             _width = constants.StrategusMapWidth;
             _height = constants.StrategusMapHeight;
-            _interactionDistance = _width * _height / 30_000;
-            _equivalentDistance = _width * _height / 300_000;
-            _viewDistance = _width * _height / 2000;
+            _equivalentDistance = constants.StrategusEquivalentDistance;
+            _interactionDistance = constants.StrategusInteractionDistance;
+            _viewDistance = constants.StrategusViewDistance;
             var spawningPosition = constants.StrategusSpawningPositionCenter;
             _spawningPositionCenter = new Point(spawningPosition[0], spawningPosition[1]);
             _spawningPositionRadius = constants.StrategusSpawningPositionRadius;

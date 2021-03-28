@@ -40,6 +40,9 @@ namespace Crpg.GameMod.Common
         public int DefaultHeirloomPoints { get; set; }
         public double StrategusMapWidth { get; set; }
         public double StrategusMapHeight { get; set; }
+        public double StrategusEquivalentDistance { get; set; }
+        public double StrategusInteractionDistance { get; set; }
+        public double StrategusViewDistance { get; set; }
         public double[] StrategusSpawningPositionCenter { get; set; } = Array.Empty<double>();
         public double StrategusSpawningPositionRadius { get; set; }
         public float StrategusTroopRecruitmentPerHour { get; set; }

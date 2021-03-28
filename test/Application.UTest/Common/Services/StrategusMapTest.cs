@@ -15,6 +15,8 @@ namespace Crpg.Application.UTest.Common.Services
         {
             StrategusMapWidth = 1000,
             StrategusMapHeight = 1000,
+            StrategusEquivalentDistance = 0.5,
+            StrategusInteractionDistance = 2,
             StrategusSpawningPositionCenter = new[] { 10.0, 20.0 },
             StrategusSpawningPositionRadius = 5.0,
         };

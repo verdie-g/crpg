@@ -35,6 +35,9 @@
   "defaultHeirloomPoints": 0,
   "strategusMapWidth": 256,
   "strategusMapHeight": 215,
+  "strategusEquivalentDistance": 0.2, /* Distance at which two points are consider equivalent. */
+  "strategusInteractionDistance": 1, /* Distance to attack, trade, ... */
+  "strategusViewDistance": 8,
   "strategusSpawningPositionCenter": [122, -105],
   "strategusSpawningPositionRadius": 20,
   "strategusTroopRecruitmentPerHour": 5,
