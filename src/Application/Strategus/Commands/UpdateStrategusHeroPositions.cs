@@ -233,12 +233,27 @@ namespace Crpg.Application.Strategus.Commands
             {
                 const double terrainSpeedFactor = 1.0; // TODO: terrain penalty on speed (e.g. lower speed in forest).
                 const double weightFactor = 1.0; // TODO: goods should slow down hero
-                const double horsesFactor = 1.0; // TODO: horse should speed up hero
-                const double terrainTroopInfluence = 1.0; // TODO: terrain influence on speed depending on the number of troops.
-
-                double troopInfluence = Math.Min(0.99, Math.Pow(hero.Troops, terrainTroopInfluence) / 100);
-                return terrainSpeedFactor * weightFactor * horsesFactor * (1 - troopInfluence);
+                const double slowestHorseSpeed = 1.0; // TODO: horse should speed up hero number of troops.
+                double troopInfluence = 2 / (1 + Math.Log10(1 + hero.Troops / 10));
+                return terrainSpeedFactor * weightFactor * slowestHorseSpeed * troopInfluence;
             }
+
+            /*private double SlowestHorseSpeed(int numberOfTroops, table horsesInInventory,double forceMarchSpeed)
+             {
+                 //The table should have in its first column the type of horse , and in its second column how many there is
+                 //Courser | 12
+                 //palfrey | 5
+                 int horses=0
+                 for each line in table
+                     {
+                     if horses <numberOfTroops
+                     horses += line[1];
+                     else
+                     return line[0].speed
+                     }
+                 return forceMarchSpeed * horses/troops;
+
+             }*/
         }
     }
 }
