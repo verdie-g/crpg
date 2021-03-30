@@ -3,15 +3,15 @@ import store from '@/store';
 import SettlementPublic from '@/models/settlement-public';
 import * as strategusService from '@/services/strategus-service';
 import { arrayMergeBy } from '@/utils/array';
-import HeroPublic from '@/models/hero-public';
 import Hero from '@/models/hero';
 import Region from '@/models/region';
+import HeroVisible from '@/models/hero-visible';
 
 @Module({ store, dynamic: true, name: 'strategus' })
 class StrategusModule extends VuexModule {
   hero: Hero | null = null;
   settlements: SettlementPublic[] = [];
-  visibleHeroes: HeroPublic[] = [];
+  visibleHeroes: HeroVisible[] = [];
 
   currentDialog: string | null = null;
 
@@ -26,7 +26,7 @@ class StrategusModule extends VuexModule {
   }
 
   @Mutation
-  setVisibleHeroes(heroes: HeroPublic[]) {
+  setVisibleHeroes(heroes: HeroVisible[]) {
     this.visibleHeroes = heroes;
   }
 

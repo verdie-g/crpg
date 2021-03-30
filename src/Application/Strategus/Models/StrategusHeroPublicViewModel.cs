@@ -8,7 +8,7 @@ using Crpg.Domain.Entities.Users;
 namespace Crpg.Application.Strategus.Models
 {
     /// <summary>
-    /// View of a <see cref="StrategusHero"/> when you are not near. That means information like army size or position
+    /// View of a <see cref="StrategusHero"/> when visible. That means information like army size or position
     /// are omitted.
     /// </summary>
     public class StrategusHeroPublicViewModel : IMapFrom<StrategusHero>

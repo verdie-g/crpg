@@ -55,7 +55,7 @@ namespace Crpg.Application.Strategus.Queries
                     .Where(h => h.Id != hero.Id
                                 && h.Position.IsWithinDistance(hero.Position, _strategusMap.ViewDistance)
                                 && VisibleStatuses.Contains(h.Status))
-                    .ProjectTo<StrategusHeroPublicViewModel>(_mapper.ConfigurationProvider)
+                    .ProjectTo<StrategusHeroVisibleViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
                 var visibleSettlements = await _db.StrategusSettlements

@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Crpg.Application.Common.Mappings;
+﻿using Crpg.Application.Common.Mappings;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Strategus;
 using NetTopologySuite.Geometries;
