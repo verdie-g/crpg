@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
-using Crpg.Application.Common.Services; // Extraire mes classes ici puis update toutes les reference dans ce fichier
+using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Strategus;
 using Microsoft.EntityFrameworkCore;
