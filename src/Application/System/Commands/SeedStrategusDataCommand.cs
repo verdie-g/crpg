@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.System.Commands
 {
-    public class SeedStrategusDataCommand : IMediatorRequest
+    public record SeedStrategusDataCommand : IMediatorRequest
     {
         internal class Handler : IMediatorRequestHandler<SeedStrategusDataCommand>
         {

@@ -21,7 +21,7 @@ namespace Crpg.Domain.Entities.Characters
         public bool SkippedTheFun { get; set; }
         public bool AutoRepair { get; set; }
 
-        public CharacterStatistics Statistics { get; set; } = new CharacterStatistics();
+        public CharacterStatistics Statistics { get; set; } = new();
         public IList<EquippedItem> EquippedItems { get; set; } = new List<EquippedItem>();
 
         public User? User { get; set; }

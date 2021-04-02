@@ -15,7 +15,7 @@ namespace Crpg.Application.UTest.Strategus
 {
     public class CreateStrategusHeroCommandTest : TestBase
     {
-        private static readonly Constants Constants = new Constants
+        private static readonly Constants Constants = new()
         {
             StrategusMinHeroTroops = 1,
         };

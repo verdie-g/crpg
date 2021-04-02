@@ -17,7 +17,7 @@ namespace Crpg.Application.UTest.Items
 {
     public class SellItemCommandTest : TestBase
     {
-        private static readonly Constants Constants = new Constants { ItemSellCostCoefs = new[] { 0.5f, 0.0f } };
+        private static readonly Constants Constants = new() { ItemSellCostCoefs = new[] { 0.5f, 0.0f } };
 
         [Test]
         public async Task SellItemUnequipped()
@@ -27,10 +27,10 @@ namespace Crpg.Application.UTest.Items
                 Gold = 0,
                 OwnedItems = new List<OwnedItem>
                 {
-                    new OwnedItem
+                    new()
                     {
                         Item = new Item { Value = 100 },
-                    }
+                    },
                 },
             };
             ArrangeDb.Users.Add(user);
@@ -56,17 +56,17 @@ namespace Crpg.Application.UTest.Items
             var ownedItem = new OwnedItem { Item = item };
             var characters = new List<Character>
             {
-                new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Head } } },
-                new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Shoulder } } },
-                new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Body } } },
-                new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Hand } } },
-                new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Leg } } },
-                new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.MountHarness } } },
-                new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Mount } } },
-                new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon0 } } },
-                new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon1 } } },
-                new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon2 } } },
-                new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon3 } } },
+                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Head } } },
+                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Shoulder } } },
+                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Body } } },
+                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Hand } } },
+                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Leg } } },
+                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.MountHarness } } },
+                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Mount } } },
+                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon0 } } },
+                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon1 } } },
+                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon2 } } },
+                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon3 } } },
             };
             var user = new User
             {

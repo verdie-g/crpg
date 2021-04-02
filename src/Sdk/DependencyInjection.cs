@@ -54,7 +54,7 @@ namespace Crpg.Sdk
         {
             var constantTags = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("service", appEnv.ServiceName),
+                new("service", appEnv.ServiceName),
             };
 
             if (appEnv.Instance.Length != 0)

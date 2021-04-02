@@ -13,7 +13,7 @@ namespace Crpg.Application.UTest.Characters
 {
     public class UpdateCharacterStatisticsCommandTest : TestBase
     {
-        private static readonly Constants Constants = new Constants
+        private static readonly Constants Constants = new()
         {
             WeaponProficiencyPointsForAgilityCoefs = new[] { 14f, 0f }, // wpp = agi * 14
             WeaponProficiencyPointsForWeaponMasterCoefs = new[] { 10f, 0f }, // wpp = wm * 10

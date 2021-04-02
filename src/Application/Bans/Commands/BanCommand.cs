@@ -14,12 +14,12 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Bans.Commands
 {
-    public class BanCommand : IMediatorRequest<BanViewModel>
+    public record BanCommand : IMediatorRequest<BanViewModel>
     {
-        public int BannedUserId { get; set; }
-        public TimeSpan Duration { get; set; }
-        public string Reason { get; set; } = default!;
-        public int BannedByUserId { get; set; }
+        public int BannedUserId { get; init; }
+        public TimeSpan Duration { get; init; }
+        public string Reason { get; init; } = default!;
+        public int BannedByUserId { get; init; }
 
         public class Validator : AbstractValidator<BanCommand>
         {
@@ -48,13 +48,13 @@ namespace Crpg.Application.Bans.Commands
                 var bannedUser = await _db.Users.FirstOrDefaultAsync(u => u.Id == req.BannedUserId, cancellationToken);
                 if (bannedUser == null)
                 {
-                    return new Result<BanViewModel>(CommonErrors.UserNotFound(req.BannedUserId));
+                    return new(CommonErrors.UserNotFound(req.BannedUserId));
                 }
 
                 var banningUser = await _db.Users.FirstOrDefaultAsync(u => u.Id == req.BannedByUserId, cancellationToken);
                 if (banningUser == null)
                 {
-                    return new Result<BanViewModel>(CommonErrors.UserNotFound(req.BannedByUserId));
+                    return new(CommonErrors.UserNotFound(req.BannedByUserId));
                 }
 
                 var ban = new Ban
@@ -69,7 +69,7 @@ namespace Crpg.Application.Bans.Commands
                 await _db.SaveChangesAsync(cancellationToken);
 
                 Logger.LogInformation("User '{0}' banned user '{1}'", req.BannedByUserId, req.BannedUserId);
-                return new Result<BanViewModel>(_mapper.Map<BanViewModel>(ban));
+                return new(_mapper.Map<BanViewModel>(ban));
             }
         }
     }

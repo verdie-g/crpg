@@ -14,10 +14,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Strategus.Queries
 {
-    public class GetStrategusSettlementShopItemsQuery : IMediatorRequest<IList<ItemViewModel>>
+    public record GetStrategusSettlementShopItemsQuery : IMediatorRequest<IList<ItemViewModel>>
     {
-        public int HeroId { get; set; }
-        public int SettlementId { get; set; }
+        public int HeroId { get; init; }
+        public int SettlementId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<GetStrategusSettlementShopItemsQuery, IList<ItemViewModel>>
         {
@@ -40,7 +40,7 @@ namespace Crpg.Application.Strategus.Queries
                     .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
                 if (hero == null)
                 {
-                    return new Result<IList<ItemViewModel>>(CommonErrors.HeroNotFound(req.HeroId));
+                    return new(CommonErrors.HeroNotFound(req.HeroId));
                 }
 
                 var settlement = await _db.StrategusSettlements
@@ -48,12 +48,12 @@ namespace Crpg.Application.Strategus.Queries
                     .FirstOrDefaultAsync(s => s.Id == req.SettlementId, cancellationToken);
                 if (settlement == null)
                 {
-                    return new Result<IList<ItemViewModel>>(CommonErrors.SettlementNotFound(req.HeroId));
+                    return new(CommonErrors.SettlementNotFound(req.HeroId));
                 }
 
                 if (!_strategusMap.ArePointsAtInteractionDistance(hero.Position, settlement.Position))
                 {
-                    return new Result<IList<ItemViewModel>>(CommonErrors.SettlementTooFar(req.SettlementId));
+                    return new(CommonErrors.SettlementTooFar(req.SettlementId));
                 }
 
                 // Return items with the same culture as the settlement.
@@ -61,7 +61,7 @@ namespace Crpg.Application.Strategus.Queries
                     .AsNoTracking()
                     .Where(i => i.Rank == 0 && (i.Culture == Culture.Neutral || i.Culture == settlement.Culture))
                     .ToArrayAsync(cancellationToken);
-                return new Result<IList<ItemViewModel>>(_mapper.Map<ItemViewModel[]>(items));
+                return new(_mapper.Map<ItemViewModel[]>(items));
             }
         }
     }

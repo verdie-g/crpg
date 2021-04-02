@@ -13,9 +13,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Strategus.Queries
 {
-    public class GetStrategusUpdateQuery : IMediatorRequest<StrategusUpdate>
+    public record GetStrategusUpdateQuery : IMediatorRequest<StrategusUpdate>
     {
-        public int HeroId { get; set; }
+        public int HeroId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<GetStrategusUpdateQuery, StrategusUpdate>
         {
@@ -48,7 +48,7 @@ namespace Crpg.Application.Strategus.Queries
                     .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
                 if (hero == null)
                 {
-                    return new Result<StrategusUpdate>(CommonErrors.HeroNotFound(req.HeroId));
+                    return new(CommonErrors.HeroNotFound(req.HeroId));
                 }
 
                 var visibleHeroes = await _db.StrategusHeroes
@@ -63,7 +63,7 @@ namespace Crpg.Application.Strategus.Queries
                     .ProjectTo<StrategusSettlementPublicViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
-                return new Result<StrategusUpdate>(new StrategusUpdate
+                return new(new StrategusUpdate
                 {
                     Hero = _mapper.Map<StrategusHeroViewModel>(hero),
                     VisibleHeroes = visibleHeroes,

@@ -6,14 +6,14 @@ namespace Crpg.Application.UTest.Common.Services
 {
     public class ExperienceTableTest
     {
-        private static readonly Constants Constants = new Constants
+        private static readonly Constants Constants = new()
         {
             MinimumLevel = 1,
             MaximumLevel = 38,
             ExperienceForLevelCoefs = new[] { 0f, 50f, -50 }, // 50 xp for each level
         };
 
-        private static readonly ExperienceTable ExperienceTable = new ExperienceTable(Constants);
+        private static readonly ExperienceTable ExperienceTable = new(Constants);
 
         [TestCase(0, 1)]
         [TestCase(49, 1)]

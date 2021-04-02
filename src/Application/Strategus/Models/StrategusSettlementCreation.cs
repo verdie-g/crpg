@@ -4,12 +4,12 @@ using NetTopologySuite.Geometries;
 
 namespace Crpg.Application.Strategus.Models
 {
-    public class StrategusSettlementCreation
+    public record StrategusSettlementCreation
     {
-        public string Name { get; set; } = default!;
-        public StrategusSettlementType Type { get; set; }
-        public Culture Culture { get; set; }
-        public Point Position { get; set; } = default!;
-        public string Scene { get; set; } = default!;
+        public string Name { get; init; } = string.Empty;
+        public StrategusSettlementType Type { get; init; }
+        public Culture Culture { get; init; }
+        public Point Position { get; init; } = default!;
+        public string Scene { get; init; } = string.Empty;
     }
 }

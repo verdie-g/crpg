@@ -14,10 +14,10 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel>
+    public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel>
     {
-        public int CharacterId { get; set; }
-        public int UserId { get; set; }
+        public int CharacterId { get; init; }
+        public int UserId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<RespecializeCharacterCommand, CharacterViewModel>
         {
@@ -46,7 +46,7 @@ namespace Crpg.Application.Characters.Commands
                     .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
                 if (character == null)
                 {
-                    return new Result<CharacterViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
+                    return new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
                 character.Experience = (int)MathHelper.ApplyPolynomialFunction(character.Experience, _constants.RespecializeExperiencePenaltyCoefs);
@@ -57,7 +57,7 @@ namespace Crpg.Application.Characters.Commands
                 await _db.SaveChangesAsync(cancellationToken);
 
                 Logger.LogInformation("User '{0}' respecialized character '{1}'", req.UserId, req.CharacterId);
-                return new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character));
+                return new(_mapper.Map<CharacterViewModel>(character));
             }
         }
     }

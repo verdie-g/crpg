@@ -16,11 +16,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class UpdateCharacterItemsCommand : IMediatorRequest<IList<EquippedItemViewModel>>
+    public record UpdateCharacterItemsCommand : IMediatorRequest<IList<EquippedItemViewModel>>
     {
-        public int CharacterId { get; set; }
-        public int UserId { get; set; }
-        public IList<EquippedItemIdViewModel> Items { get; set; } = Array.Empty<EquippedItemIdViewModel>();
+        public int CharacterId { get; init; }
+        public int UserId { get; init; }
+        public IList<EquippedItemIdViewModel> Items { get; init; } = Array.Empty<EquippedItemIdViewModel>();
 
         internal class Handler : IMediatorRequestHandler<UpdateCharacterItemsCommand, IList<EquippedItemViewModel>>
         {
@@ -32,7 +32,7 @@ namespace Crpg.Application.Characters.Commands
                 ItemSlot.Weapon3,
             };
 
-            private static readonly Dictionary<ItemType, ItemSlot[]> ItemSlotsByType = new Dictionary<ItemType, ItemSlot[]>
+            private static readonly Dictionary<ItemType, ItemSlot[]> ItemSlotsByType = new()
             {
                 [ItemType.HeadArmor] = new[] { ItemSlot.Head },
                 [ItemType.ShoulderArmor] = new[] { ItemSlot.Shoulder },
@@ -74,7 +74,7 @@ namespace Crpg.Application.Characters.Commands
 
                 if (character == null)
                 {
-                    return new Result<IList<EquippedItemViewModel>>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
+                    return new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
                 int[] newItemIds = req.Items
@@ -102,12 +102,12 @@ namespace Crpg.Application.Characters.Commands
 
                     if (!ownedItemsById.TryGetValue(newItem.ItemId.Value, out OwnedItem? ownedItem))
                     {
-                        return new Result<IList<EquippedItemViewModel>>(CommonErrors.ItemNotOwned(newItem.ItemId.Value));
+                        return new(CommonErrors.ItemNotOwned(newItem.ItemId.Value));
                     }
 
                     if (!ItemSlotsByType[ownedItem.Item!.Type].Contains(newItem.Slot))
                     {
-                        return new Result<IList<EquippedItemViewModel>>(CommonErrors.ItemBadSlot(newItem.ItemId.Value, newItem.Slot));
+                        return new(CommonErrors.ItemBadSlot(newItem.ItemId.Value, newItem.Slot));
                     }
 
                     if (oldItemsBySlot.TryGetValue(newItem.Slot, out equippedItem))
@@ -130,7 +130,7 @@ namespace Crpg.Application.Characters.Commands
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
-                return new Result<IList<EquippedItemViewModel>>(_mapper.Map<IList<EquippedItemViewModel>>(character.EquippedItems));
+                return new(_mapper.Map<IList<EquippedItemViewModel>>(character.EquippedItems));
             }
         }
     }

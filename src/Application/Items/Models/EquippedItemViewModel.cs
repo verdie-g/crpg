@@ -4,9 +4,9 @@ using Crpg.Domain.Entities.Items;
 
 namespace Crpg.Application.Items.Models
 {
-    public class EquippedItemViewModel : IMapFrom<EquippedItem>
+    public record EquippedItemViewModel : IMapFrom<EquippedItem>
     {
-        public ItemViewModel Item { get; set; } = default!;
-        public ItemSlot Slot { get; set; }
+        public ItemViewModel Item { get; init; } = default!;
+        public ItemSlot Slot { get; init; }
     }
 }

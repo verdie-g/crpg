@@ -11,16 +11,16 @@ namespace Crpg.Application.Strategus.Models
     /// <summary>
     /// View of a <see cref="StrategusHero"/> when they are visible.
     /// </summary>
-    public class StrategusHeroVisibleViewModel : IMapFrom<StrategusHero>
+    public record StrategusHeroVisibleViewModel : IMapFrom<StrategusHero>
     {
-        public int Id { get; set; }
-        public Platform Platform { get; set; }
-        public string PlatformUserId { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
-        public Region Region { get; set; }
-        public int Troops { get; set; }
-        public Point Position { get; set; } = default!;
-        public ClanPublicViewModel? Clan { get; set; }
+        public int Id { get; init; }
+        public Platform Platform { get; init; }
+        public string PlatformUserId { get; init; } = string.Empty;
+        public string Name { get; init; } = string.Empty;
+        public Region Region { get; init; }
+        public int Troops { get; init; }
+        public Point Position { get; init; } = default!;
+        public ClanPublicViewModel? Clan { get; init; }
 
         public void Mapping(Profile profile)
         {

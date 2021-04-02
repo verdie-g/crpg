@@ -17,10 +17,10 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Strategus.Commands
 {
-    public class CreateStrategusHeroCommand : IMediatorRequest<StrategusHeroViewModel>
+    public record CreateStrategusHeroCommand : IMediatorRequest<StrategusHeroViewModel>
     {
         public int UserId { get; set; }
-        public Region Region { get; set; }
+        public Region Region { get; init; }
 
         public class Validator : AbstractValidator<CreateStrategusHeroCommand>
         {
@@ -54,12 +54,12 @@ namespace Crpg.Application.Strategus.Commands
                     .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 if (user == null)
                 {
-                    return new Result<StrategusHeroViewModel>(CommonErrors.UserNotFound(req.UserId));
+                    return new(CommonErrors.UserNotFound(req.UserId));
                 }
 
                 if (user.StrategusHero != null)
                 {
-                    return new Result<StrategusHeroViewModel>(CommonErrors.UserAlreadyRegisteredToStrategus(req.UserId));
+                    return new(CommonErrors.UserAlreadyRegisteredToStrategus(req.UserId));
                 }
 
                 user.StrategusHero = new StrategusHero
@@ -76,7 +76,7 @@ namespace Crpg.Application.Strategus.Commands
 
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("User '{0}' registered to Strategus", req.UserId);
-                return new Result<StrategusHeroViewModel>(_mapper.Map<StrategusHeroViewModel>(user.StrategusHero));
+                return new(_mapper.Map<StrategusHeroViewModel>(user.StrategusHero));
             }
         }
     }

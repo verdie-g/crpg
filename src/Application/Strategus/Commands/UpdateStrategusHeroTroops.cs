@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Strategus.Commands
 {
-    public class UpdateStrategusHeroTroopsCommand : IMediatorRequest
+    public record UpdateStrategusHeroTroopsCommand : IMediatorRequest
     {
-        public TimeSpan DeltaTime { get; set; }
+        public TimeSpan DeltaTime { get; init; }
 
         internal class Handler : IMediatorRequestHandler<UpdateStrategusHeroTroopsCommand>
         {

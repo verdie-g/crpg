@@ -15,12 +15,12 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Strategus.Commands
 {
-    public class BuyStrategusItemCommand : IMediatorRequest<StrategusOwnedItemViewModel>
+    public record BuyStrategusItemCommand : IMediatorRequest<StrategusOwnedItemViewModel>
     {
         public int HeroId { get; set; }
-        public int ItemId { get; set; }
-        public int ItemCount { get; set; }
-        public int SettlementId { get; set; }
+        public int ItemId { get; init; }
+        public int ItemCount { get; init; }
+        public int SettlementId { get; init; }
 
         public class Validator : AbstractValidator<BuyStrategusItemCommand>
         {
@@ -52,7 +52,7 @@ namespace Crpg.Application.Strategus.Commands
                     .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
                 if (hero == null)
                 {
-                    return new Result<StrategusOwnedItemViewModel>(CommonErrors.HeroNotFound(req.HeroId));
+                    return new(CommonErrors.HeroNotFound(req.HeroId));
                 }
 
                 var settlement = await _db.StrategusSettlements
@@ -60,30 +60,30 @@ namespace Crpg.Application.Strategus.Commands
                     .FirstOrDefaultAsync(s => s.Id == req.SettlementId, cancellationToken);
                 if (settlement == null)
                 {
-                    return new Result<StrategusOwnedItemViewModel>(CommonErrors.SettlementNotFound(req.HeroId));
+                    return new(CommonErrors.SettlementNotFound(req.HeroId));
                 }
 
                 if (!_strategusMap.ArePointsAtInteractionDistance(hero.Position, settlement.Position))
                 {
-                    return new Result<StrategusOwnedItemViewModel>(CommonErrors.SettlementTooFar(req.SettlementId));
+                    return new(CommonErrors.SettlementTooFar(req.SettlementId));
                 }
 
                 var item = await _db.Items
                     .FirstOrDefaultAsync(i => i.Id == req.ItemId, cancellationToken);
                 if (item == null)
                 {
-                    return new Result<StrategusOwnedItemViewModel>(CommonErrors.ItemNotFound(req.ItemId));
+                    return new(CommonErrors.ItemNotFound(req.ItemId));
                 }
 
                 if (item.Rank != 0 || (item.Culture != Culture.Neutral && item.Culture != settlement.Culture))
                 {
-                    return new Result<StrategusOwnedItemViewModel>(CommonErrors.ItemNotBuyable(req.ItemId));
+                    return new(CommonErrors.ItemNotBuyable(req.ItemId));
                 }
 
                 int cost = item.Value * req.ItemCount;
                 if (hero.Gold < cost)
                 {
-                    return new Result<StrategusOwnedItemViewModel>(CommonErrors.NotEnoughGold(cost, hero.Gold));
+                    return new(CommonErrors.NotEnoughGold(cost, hero.Gold));
                 }
 
                 var ownedItem = await _db.StrategusOwnedItems
@@ -107,7 +107,7 @@ namespace Crpg.Application.Strategus.Commands
                 hero.Gold -= cost;
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("Hero '{0}' bought {1} items '{2}'", req.HeroId, req.ItemCount, req.ItemId);
-                return new Result<StrategusOwnedItemViewModel>(_mapper.Map<StrategusOwnedItemViewModel>(ownedItem));
+                return new(_mapper.Map<StrategusOwnedItemViewModel>(ownedItem));
             }
         }
     }

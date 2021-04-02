@@ -2,8 +2,8 @@
 
 namespace Crpg.Application.Games.Models
 {
-    public class UpdateGameUsersResult
+    public record UpdateGameUsersResult
     {
-        public IList<UpdateGameUserResult> UpdateResults { get; set; } = new List<UpdateGameUserResult>();
+        public IList<UpdateGameUserResult> UpdateResults { get; init; } = new List<UpdateGameUserResult>();
     }
 }

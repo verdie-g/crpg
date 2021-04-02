@@ -16,7 +16,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Users.Commands
 {
-    public class UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<SteamPlayer>
+    public record UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<SteamPlayer>
     {
         public string PlatformUserId { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
@@ -78,7 +78,7 @@ namespace Crpg.Application.Users.Commands
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
-                return new Result<UserViewModel>(_mapper.Map<UserViewModel>(user));
+                return new(_mapper.Map<UserViewModel>(user));
             }
         }
     }

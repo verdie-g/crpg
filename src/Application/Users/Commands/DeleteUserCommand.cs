@@ -15,9 +15,9 @@ namespace Crpg.Application.Users.Commands
     /// <summary>
     /// Deletes all entities related to user except <see cref="Ban"/>s and reset user info.
     /// </summary>
-    public class DeleteUserCommand : IMediatorRequest
+    public record DeleteUserCommand : IMediatorRequest
     {
-        public int UserId { get; set; }
+        public int UserId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<DeleteUserCommand>
         {

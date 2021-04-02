@@ -17,7 +17,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.System.Commands
 {
-    public class SeedDataCommand : IMediatorRequest
+    public record SeedDataCommand : IMediatorRequest
     {
         internal class Handler : IMediatorRequestHandler<SeedDataCommand>
         {
@@ -71,20 +71,20 @@ namespace Crpg.Application.System.Commands
                         AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_medium.jpg"),
                         Characters = new List<Character>
                         {
-                            new Character
+                            new()
                             {
                                 Name = "takeoshigeru",
                                 Generation = 2,
                                 Level = 23,
                                 Experience = _experienceTable.GetExperienceForLevel(23),
                             },
-                            new Character
+                            new()
                             {
                                 Name = "totoalala",
                                 Level = 12,
                                 Experience = _experienceTable.GetExperienceForLevel(12),
                             },
-                            new Character
+                            new()
                             {
                                 Name = "Retire me",
                                 Level = 31,
@@ -93,13 +93,13 @@ namespace Crpg.Application.System.Commands
                         },
                         Bans = new List<Ban>
                         {
-                            new Ban
+                            new()
                             {
                                 Duration = TimeSpan.FromDays(2),
                                 Reason = "Did shit",
                                 BannedByUser = new User { PlatformUserId = "123", Name = "toto" },
                             },
-                            new Ban
+                            new()
                             {
                                 Duration = TimeSpan.FromMinutes(5),
                                 Reason = "Did shot",
@@ -262,7 +262,7 @@ namespace Crpg.Application.System.Commands
 
             private static ItemWeaponComponent IteamWeaponComponentFromViewModel(ItemWeaponComponentViewModel weaponComponent)
             {
-                return new ItemWeaponComponent
+                return new()
                 {
                     Class = weaponComponent.Class,
                     Accuracy = weaponComponent.Accuracy,

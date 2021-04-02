@@ -14,12 +14,12 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Clans.Commands
 {
-    public class RespondClanInvitationCommand : IMediatorRequest<ClanInvitationViewModel>
+    public record RespondClanInvitationCommand : IMediatorRequest<ClanInvitationViewModel>
     {
-        public int UserId { get; set; }
-        public int ClanId { get; set; }
-        public int ClanInvitationId { get; set; }
-        public bool Accept { get; set; }
+        public int UserId { get; init; }
+        public int ClanId { get; init; }
+        public int ClanInvitationId { get; init; }
+        public bool Accept { get; init; }
 
         internal class Handler : IMediatorRequestHandler<RespondClanInvitationCommand, ClanInvitationViewModel>
         {
@@ -43,26 +43,26 @@ namespace Crpg.Application.Clans.Commands
                     .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 if (user == null)
                 {
-                    return new Result<ClanInvitationViewModel>(CommonErrors.UserNotFound(req.UserId));
+                    return new(CommonErrors.UserNotFound(req.UserId));
                 }
 
                 var invitation = await _db.ClanInvitations.FirstOrDefaultAsync(ci =>
                     ci.Id == req.ClanInvitationId && ci.ClanId == req.ClanId, cancellationToken);
                 if (invitation == null)
                 {
-                    return new Result<ClanInvitationViewModel>(CommonErrors.ClanInvitationNotFound(req.ClanInvitationId));
+                    return new(CommonErrors.ClanInvitationNotFound(req.ClanInvitationId));
                 }
 
                 if (invitation.Status != ClanInvitationStatus.Pending)
                 {
-                    return new Result<ClanInvitationViewModel>(CommonErrors.ClanInvitationClosed(invitation.Id, invitation.Status));
+                    return new(CommonErrors.ClanInvitationClosed(invitation.Id, invitation.Status));
                 }
 
                 if ((invitation.Type != ClanInvitationType.Offer || invitation.InviteeUserId != user.Id)
                     && invitation.Type != ClanInvitationType.Request)
                 {
                     // Too lazy to return proper errors.
-                    return new Result<ClanInvitationViewModel>(new Error(ErrorType.InternalError, ErrorCode.InternalError));
+                    return new(new Error(ErrorType.InternalError, ErrorCode.InternalError));
                 }
 
                 User invitee;
@@ -82,13 +82,13 @@ namespace Crpg.Application.Clans.Commands
                     var error = _clanService.CheckClanMembership(inviter, invitation.ClanId);
                     if (error != null)
                     {
-                        return new Result<ClanInvitationViewModel>(error);
+                        return new(error);
                     }
 
                     if (inviter.ClanMembership!.Role != ClanMemberRole.Admin
                         && inviter.ClanMembership.Role != ClanMemberRole.Leader)
                     {
-                        return new Result<ClanInvitationViewModel>(CommonErrors.ClanMemberRoleNotMet(inviter.Id,
+                        return new(CommonErrors.ClanMemberRoleNotMet(inviter.Id,
                             ClanMemberRole.Admin, inviter.ClanMembership.Role));
                     }
                 }
@@ -109,7 +109,7 @@ namespace Crpg.Application.Clans.Commands
                             inviter.Id, invitation.Id, invitee.Id, invitation.ClanId);
                     }
 
-                    return new Result<ClanInvitationViewModel>(_mapper.Map<ClanInvitationViewModel>(invitation));
+                    return new(_mapper.Map<ClanInvitationViewModel>(invitation));
                 }
 
                 int? oldClanId = null;
@@ -119,14 +119,14 @@ namespace Crpg.Application.Clans.Commands
                     var clanLeaveRes = await _clanService.LeaveClan(_db, invitee.ClanMembership, cancellationToken);
                     if (clanLeaveRes.Errors != null)
                     {
-                        return new Result<ClanInvitationViewModel>(clanLeaveRes.Errors);
+                        return new(clanLeaveRes.Errors);
                     }
                 }
 
                 var clanJoinRes = await _clanService.JoinClan(_db, invitee, invitation.ClanId, cancellationToken);
                 if (clanJoinRes.Errors != null)
                 {
-                    return new Result<ClanInvitationViewModel>(clanJoinRes.Errors);
+                    return new(clanJoinRes.Errors);
                 }
 
                 invitation.Status = ClanInvitationStatus.Accepted;
@@ -158,7 +158,7 @@ namespace Crpg.Application.Clans.Commands
                     }
                 }
 
-                return new Result<ClanInvitationViewModel>(_mapper.Map<ClanInvitationViewModel>(invitation));
+                return new(_mapper.Map<ClanInvitationViewModel>(invitation));
             }
         }
     }

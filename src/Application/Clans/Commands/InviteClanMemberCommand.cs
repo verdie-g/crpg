@@ -17,11 +17,11 @@ namespace Crpg.Application.Clans.Commands
     /// <summary>
     /// Command to invite or request to join a clan.
     /// </summary>
-    public class InviteClanMemberCommand : IMediatorRequest<ClanInvitationViewModel>
+    public record InviteClanMemberCommand : IMediatorRequest<ClanInvitationViewModel>
     {
-        public int UserId { get; set; }
-        public int ClanId { get; set; }
-        public int InviteeUserId { get; set; }
+        public int UserId { get; init; }
+        public int ClanId { get; init; }
+        public int InviteeUserId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<InviteClanMemberCommand, ClanInvitationViewModel>
         {
@@ -45,7 +45,7 @@ namespace Crpg.Application.Clans.Commands
                     .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 if (inviter == null)
                 {
-                    return new Result<ClanInvitationViewModel>(CommonErrors.UserNotFound(req.UserId));
+                    return new(CommonErrors.UserNotFound(req.UserId));
                 }
 
                 if (req.InviteeUserId == req.UserId)
@@ -61,7 +61,7 @@ namespace Crpg.Application.Clans.Commands
             {
                 if (user.ClanMembership != null && user.ClanMembership.ClanId == clanId)
                 {
-                    return new Result<ClanInvitationViewModel>(CommonErrors.UserAlreadyInTheClan(user.Id, clanId));
+                    return new(CommonErrors.UserAlreadyInTheClan(user.Id, clanId));
                 }
 
                 // Check if an invitation already exists.
@@ -71,7 +71,7 @@ namespace Crpg.Application.Clans.Commands
                 if (invitation != null)
                 {
                     // There is already a pending request to join the clan.
-                    return new Result<ClanInvitationViewModel>(_mapper.Map<ClanInvitationViewModel>(invitation));
+                    return new(_mapper.Map<ClanInvitationViewModel>(invitation));
                 }
 
                 invitation = new ClanInvitation
@@ -85,7 +85,7 @@ namespace Crpg.Application.Clans.Commands
                 _db.ClanInvitations.Add(invitation);
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("User '{0}' requested to join clan '{1}'", user.Id, clanId);
-                return new Result<ClanInvitationViewModel>(_mapper.Map<ClanInvitationViewModel>(invitation));
+                return new(_mapper.Map<ClanInvitationViewModel>(invitation));
             }
 
             private async Task<Result<ClanInvitationViewModel>> InviteToClan(User inviter, int clanId, int inviteeUserId,
@@ -96,23 +96,23 @@ namespace Crpg.Application.Clans.Commands
                     .FirstOrDefaultAsync(u => u.Id == inviteeUserId, cancellationToken);
                 if (invitee == null)
                 {
-                    return new Result<ClanInvitationViewModel>(CommonErrors.UserNotFound(inviteeUserId));
+                    return new(CommonErrors.UserNotFound(inviteeUserId));
                 }
 
                 if (invitee.ClanMembership != null && invitee.ClanMembership.ClanId == clanId)
                 {
-                    return new Result<ClanInvitationViewModel>(CommonErrors.UserAlreadyInTheClan(invitee.Id, clanId));
+                    return new(CommonErrors.UserAlreadyInTheClan(invitee.Id, clanId));
                 }
 
                 var error = _clanService.CheckClanMembership(inviter, clanId);
                 if (error != null)
                 {
-                    return new Result<ClanInvitationViewModel>(error);
+                    return new(error);
                 }
 
                 if (inviter.ClanMembership!.Role != ClanMemberRole.Admin && inviter.ClanMembership.Role != ClanMemberRole.Leader)
                 {
-                    return new Result<ClanInvitationViewModel>(
+                    return new(
                         CommonErrors.ClanMemberRoleNotMet(inviter.Id, ClanMemberRole.Admin, ClanMemberRole.Member));
                 }
 
@@ -123,7 +123,7 @@ namespace Crpg.Application.Clans.Commands
                 if (invitation != null)
                 {
                     // There is already a pending offer to join the clan.
-                    return new Result<ClanInvitationViewModel>(_mapper.Map<ClanInvitationViewModel>(invitation));
+                    return new(_mapper.Map<ClanInvitationViewModel>(invitation));
                 }
 
                 invitation = new ClanInvitation
@@ -137,7 +137,7 @@ namespace Crpg.Application.Clans.Commands
                 _db.ClanInvitations.Add(invitation);
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("User '{0}' offered user '{1}' to join clan '{2}'", inviter.Id, clanId, inviteeUserId);
-                return new Result<ClanInvitationViewModel>(_mapper.Map<ClanInvitationViewModel>(invitation));
+                return new(_mapper.Map<ClanInvitationViewModel>(invitation));
             }
         }
     }

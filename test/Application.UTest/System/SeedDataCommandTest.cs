@@ -22,8 +22,8 @@ namespace Crpg.Application.UTest.System
         private static readonly IExperienceTable ExperienceTable = Mock.Of<IExperienceTable>();
         private static readonly ICharacterService CharacterService = Mock.Of<ICharacterService>();
         private static readonly ItemModifiers ItemModifiers = new FileItemModifiersSource().LoadItemModifiers();
-        private static readonly ItemModifierService ItemModifierService = new ItemModifierService(ItemModifiers);
-        private static readonly ItemValueService ItemValueService = new ItemValueService();
+        private static readonly ItemModifierService ItemModifierService = new(ItemModifiers);
+        private static readonly ItemValueService ItemValueService = new();
 
         [Test]
         public async Task ShouldInsertItemsFromItemSourceWithAllRanks()

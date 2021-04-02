@@ -74,17 +74,17 @@ namespace Crpg.Application.UTest.Characters
                 UserId = user.Id,
                 Items = new List<EquippedItemIdViewModel>
                 {
-                    new EquippedItemIdViewModel { ItemId = headNew.ItemId, Slot = ItemSlot.Head },
-                    new EquippedItemIdViewModel { ItemId = shoulderNew.ItemId, Slot = ItemSlot.Shoulder },
-                    new EquippedItemIdViewModel { ItemId = bodyNew.ItemId, Slot = ItemSlot.Body },
-                    new EquippedItemIdViewModel { ItemId = handNew.ItemId, Slot = ItemSlot.Hand },
-                    new EquippedItemIdViewModel { ItemId = legNew.ItemId, Slot = ItemSlot.Leg },
-                    new EquippedItemIdViewModel { ItemId = mountHarnessNew.ItemId, Slot = ItemSlot.MountHarness },
-                    new EquippedItemIdViewModel { ItemId = mountNew.ItemId, Slot = ItemSlot.Mount },
-                    new EquippedItemIdViewModel { ItemId = weapon0New.ItemId, Slot = ItemSlot.Weapon0 },
-                    new EquippedItemIdViewModel { ItemId = weapon1New.ItemId, Slot = ItemSlot.Weapon1 },
-                    new EquippedItemIdViewModel { ItemId = weapon2New.ItemId, Slot = ItemSlot.Weapon2 },
-                    new EquippedItemIdViewModel { ItemId = weapon3New.ItemId, Slot = ItemSlot.Weapon3 },
+                    new() { ItemId = headNew.ItemId, Slot = ItemSlot.Head },
+                    new() { ItemId = shoulderNew.ItemId, Slot = ItemSlot.Shoulder },
+                    new() { ItemId = bodyNew.ItemId, Slot = ItemSlot.Body },
+                    new() { ItemId = handNew.ItemId, Slot = ItemSlot.Hand },
+                    new() { ItemId = legNew.ItemId, Slot = ItemSlot.Leg },
+                    new() { ItemId = mountHarnessNew.ItemId, Slot = ItemSlot.MountHarness },
+                    new() { ItemId = mountNew.ItemId, Slot = ItemSlot.Mount },
+                    new() { ItemId = weapon0New.ItemId, Slot = ItemSlot.Weapon0 },
+                    new() { ItemId = weapon1New.ItemId, Slot = ItemSlot.Weapon1 },
+                    new() { ItemId = weapon2New.ItemId, Slot = ItemSlot.Weapon2 },
+                    new() { ItemId = weapon3New.ItemId, Slot = ItemSlot.Weapon3 },
                 },
             };
             var result = await handler.Handle(cmd, CancellationToken.None);
@@ -137,9 +137,9 @@ namespace Crpg.Application.UTest.Characters
                 UserId = user.Id,
                 Items = new List<EquippedItemIdViewModel>
                 {
-                    new EquippedItemIdViewModel { ItemId = headNew.ItemId, Slot = ItemSlot.Head },
-                    new EquippedItemIdViewModel { ItemId = bodyNew.ItemId, Slot = ItemSlot.Body },
-                    new EquippedItemIdViewModel { ItemId = null, Slot = ItemSlot.Hand },
+                    new() { ItemId = headNew.ItemId, Slot = ItemSlot.Head },
+                    new() { ItemId = bodyNew.ItemId, Slot = ItemSlot.Body },
+                    new() { ItemId = null, Slot = ItemSlot.Hand },
                 },
             };
             var result = await handler.Handle(cmd, CancellationToken.None);
@@ -226,7 +226,7 @@ namespace Crpg.Application.UTest.Characters
             {
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
-                Items = new List<EquippedItemIdViewModel> { new EquippedItemIdViewModel { ItemId = 1, Slot = ItemSlot.Head } },
+                Items = new List<EquippedItemIdViewModel> { new() { ItemId = 1, Slot = ItemSlot.Head } },
             };
 
             var result = await handler.Handle(cmd, CancellationToken.None);
@@ -249,7 +249,7 @@ namespace Crpg.Application.UTest.Characters
             {
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
-                Items = new List<EquippedItemIdViewModel> { new EquippedItemIdViewModel { ItemId = head.Entity.Id, Slot = ItemSlot.Head } },
+                Items = new List<EquippedItemIdViewModel> { new() { ItemId = head.Entity.Id, Slot = ItemSlot.Head } },
             };
 
             var result = await handler.Handle(cmd, CancellationToken.None);
@@ -293,7 +293,7 @@ namespace Crpg.Application.UTest.Characters
             {
                 CharacterId = character.Id,
                 UserId = user.Id,
-                Items = new List<EquippedItemIdViewModel> { new EquippedItemIdViewModel { ItemId = ownedItem.ItemId, Slot = itemSlot } },
+                Items = new List<EquippedItemIdViewModel> { new() { ItemId = ownedItem.ItemId, Slot = itemSlot } },
             };
 
             var result = await handler.Handle(cmd, CancellationToken.None);

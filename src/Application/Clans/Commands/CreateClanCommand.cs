@@ -13,11 +13,11 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Clans.Commands
 {
-    public class CreateClanCommand : IMediatorRequest<ClanViewModel>
+    public record CreateClanCommand : IMediatorRequest<ClanViewModel>
     {
-        public int UserId { get; set; }
-        public string Tag { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
+        public int UserId { get; init; }
+        public string Tag { get; init; } = string.Empty;
+        public string Name { get; init; } = string.Empty;
 
         public class Validator : AbstractValidator<CreateClanCommand>
         {
@@ -59,12 +59,12 @@ namespace Crpg.Application.Clans.Commands
                     .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 if (user == null)
                 {
-                    return new Result<ClanViewModel>(CommonErrors.UserNotFound(req.UserId));
+                    return new(CommonErrors.UserNotFound(req.UserId));
                 }
 
                 if (user.ClanMembership != null)
                 {
-                    return new Result<ClanViewModel>(CommonErrors.UserAlreadyInAClan(req.UserId));
+                    return new(CommonErrors.UserAlreadyInAClan(req.UserId));
                 }
 
                 var clan = await _db.Clans
@@ -72,8 +72,8 @@ namespace Crpg.Application.Clans.Commands
                 if (clan != null)
                 {
                     return clan.Tag == req.Tag
-                        ? new Result<ClanViewModel>(CommonErrors.ClanTagAlreadyUsed(clan.Tag))
-                        : new Result<ClanViewModel>(CommonErrors.ClanNameAlreadyUsed(clan.Name));
+                        ? new(CommonErrors.ClanTagAlreadyUsed(clan.Tag))
+                        : new(CommonErrors.ClanNameAlreadyUsed(clan.Name));
                 }
 
                 clan = new Clan
@@ -93,7 +93,7 @@ namespace Crpg.Application.Clans.Commands
                 _db.Clans.Add(clan);
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("User '{0}' created clan '[{1}] {2}' ({3})", req.UserId, req.Tag, req.Name, clan.Id);
-                return new Result<ClanViewModel>(_mapper.Map<ClanViewModel>(clan));
+                return new(_mapper.Map<ClanViewModel>(clan));
             }
         }
     }

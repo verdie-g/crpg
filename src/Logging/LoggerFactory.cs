@@ -16,7 +16,7 @@ namespace Crpg.Logging
         /// A factory for serilog loggers. It uses <see cref="Log.Logger"/> so <see cref="Initialize"/> needs to be called
         /// before <see cref="CreateLogger{TCategory}"/>.
         /// </summary>
-        private static readonly SerilogLoggerFactory UnderlyingLoggerFactory = new SerilogLoggerFactory();
+        private static readonly SerilogLoggerFactory UnderlyingLoggerFactory = new();
 
         /// <summary>
         /// Initialize the global logger with an application configuration.

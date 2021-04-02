@@ -11,7 +11,7 @@ namespace Crpg.Application.UTest.Common.Services
 {
     public class StrategusMapTest
     {
-        private static readonly Constants Constants = new Constants
+        private static readonly Constants Constants = new()
         {
             StrategusMapWidth = 1000,
             StrategusMapHeight = 1000,
@@ -20,7 +20,7 @@ namespace Crpg.Application.UTest.Common.Services
             StrategusSpawningPositionCenter = new[] { 10.0, 20.0 },
             StrategusSpawningPositionRadius = 5.0,
         };
-        private static readonly StrategusMap StrategusMap = new StrategusMap(Constants, new ThreadSafeRandom());
+        private static readonly StrategusMap StrategusMap = new(Constants, new ThreadSafeRandom());
 
         [Test]
         public void ArePointsEquivalentShouldReturnTrueIfPointsAreClose()
@@ -86,7 +86,7 @@ namespace Crpg.Application.UTest.Common.Services
         [TestCase(Region.Asia, Region.Asia, 4, 7)]
         public void TranslatePositionForRegionTest(Region source, Region target, double expectedX, double expectedY)
         {
-            Point p1 = new Point(4, 7);
+            Point p1 = new(4, 7);
             Point p2 = StrategusMap.TranslatePositionForRegion(p1, source, target);
             Assert.AreEqual(expectedX, p2.X);
             Assert.AreEqual(expectedY, p2.Y);

@@ -5,13 +5,13 @@ using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Application.Users.Models
 {
-    public class UserViewModel : UserPublicViewModel
+    public record UserViewModel : UserPublicViewModel
     {
-        public int Gold { get; set; }
-        public int HeirloomPoints { get; set; }
-        public Role Role { get; set; }
-        public Uri? AvatarSmall { get; set; }
-        public Uri? AvatarMedium { get; set; }
-        public Uri? AvatarFull { get; set; }
+        public int Gold { get; init; }
+        public int HeirloomPoints { get; init; }
+        public Role Role { get; init; }
+        public Uri? AvatarSmall { get; init; }
+        public Uri? AvatarMedium { get; init; }
+        public Uri? AvatarFull { get; init; }
     }
 }

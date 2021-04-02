@@ -14,7 +14,7 @@ namespace Crpg.Application.UTest.Strategus
 {
     public class UpdateStrategusBattlePhasesCommandTest : TestBase
     {
-        private static readonly Constants Constants = new Constants
+        private static readonly Constants Constants = new()
         {
             StrategusBattleInitiationDurationHours = 24,
             StrategusBattleHiringDurationHours = 12,

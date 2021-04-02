@@ -4,9 +4,9 @@ using Crpg.Domain.Entities.Clans;
 
 namespace Crpg.Application.Clans.Models
 {
-    public class ClanMemberViewModel : IMapFrom<ClanMember>
+    public record ClanMemberViewModel : IMapFrom<ClanMember>
     {
-        public UserPublicViewModel User { get; set; } = default!;
-        public ClanMemberRole Role { get; set; }
+        public UserPublicViewModel User { get; init; } = default!;
+        public ClanMemberRole Role { get; init; }
     }
 }

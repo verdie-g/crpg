@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries
 {
-    public class GetUserCharactersQuery : IMediatorRequest<IList<CharacterViewModel>>
+    public record GetUserCharactersQuery : IMediatorRequest<IList<CharacterViewModel>>
     {
-        public int UserId { get; set; }
+        public int UserId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<GetUserCharactersQuery, IList<CharacterViewModel>>
         {
@@ -36,7 +36,7 @@ namespace Crpg.Application.Characters.Queries
                     .ToListAsync(cancellationToken);
 
                 // can't use ProjectTo https://github.com/dotnet/efcore/issues/19726
-                return new Result<IList<CharacterViewModel>>(_mapper.Map<IList<CharacterViewModel>>(characters));
+                return new(_mapper.Map<IList<CharacterViewModel>>(characters));
             }
         }
     }

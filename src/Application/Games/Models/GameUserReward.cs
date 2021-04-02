@@ -1,8 +1,8 @@
 ﻿namespace Crpg.Application.Games.Models
 {
-    public class GameUserReward
+    public record GameUserReward
     {
-        public int Gold { get; set; }
-        public int Experience { get; set; }
+        public int Gold { get; init; }
+        public int Experience { get; init; }
     }
 }

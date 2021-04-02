@@ -65,21 +65,21 @@ namespace Crpg.Application.Common.Services
 
     public class ItemModifiers
     {
-        public ArmorItemModifier[] Armor { get; set; } = default!;
-        public MountItemModifier[] Mount { get; set; } = default!;
-        public ShieldItemModifier[] Shield { get; set; } = default!;
-        public BowItemModifier[] Bow { get; set; } = default!;
-        public CrossbowItemModifier[] Crossbow { get; set; } = default!;
-        public WeaponItemModifier[] Weapon { get; set; } = default!;
-        public WeaponItemModifier[] Polearm { get; set; } = default!;
-        public ThrownItemModifier[] Thrown { get; set; } = default!;
-        public MissileItemModifier[] Missile { get; set; } = default!;
+        public ArmorItemModifier[] Armor { get; init; } = default!;
+        public MountItemModifier[] Mount { get; init; } = default!;
+        public ShieldItemModifier[] Shield { get; init; } = default!;
+        public BowItemModifier[] Bow { get; init; } = default!;
+        public CrossbowItemModifier[] Crossbow { get; init; } = default!;
+        public WeaponItemModifier[] Weapon { get; init; } = default!;
+        public WeaponItemModifier[] Polearm { get; init; } = default!;
+        public ThrownItemModifier[] Thrown { get; init; } = default!;
+        public MissileItemModifier[] Missile { get; init; } = default!;
     }
 
     public class ItemModifier
     {
-        public string Name { get; set; } = string.Empty;
-        public float Value { get; set; }
+        public string Name { get; init; } = string.Empty;
+        public float Value { get; init; }
 
         public virtual void Apply(Item item)
         {
@@ -93,7 +93,7 @@ namespace Crpg.Application.Common.Services
 
     public class ArmorItemModifier : ItemModifier
     {
-        public float Armor { get; set; }
+        public float Armor { get; init; }
 
         public override void Apply(Item item)
         {
@@ -107,10 +107,10 @@ namespace Crpg.Application.Common.Services
 
     public class MountItemModifier : ItemModifier
     {
-        public float ChargeDamage { get; set; }
-        public float Maneuver { get; set; }
-        public float Speed { get; set; }
-        public float HitPoints { get; set; }
+        public float ChargeDamage { get; init; }
+        public float Maneuver { get; init; }
+        public float Speed { get; init; }
+        public float HitPoints { get; init; }
 
         public override void Apply(Item item)
         {
@@ -124,9 +124,9 @@ namespace Crpg.Application.Common.Services
 
     public class ShieldItemModifier : ItemModifier
     {
-        public float Speed { get; set; }
-        public float Durability { get; set; }
-        public float Armor { get; set; }
+        public float Speed { get; init; }
+        public float Durability { get; init; }
+        public float Armor { get; init; }
 
         public override void Apply(Item item)
         {
@@ -139,9 +139,9 @@ namespace Crpg.Application.Common.Services
 
     public class BowItemModifier : ItemModifier
     {
-        public float Damage { get; set; }
-        public float FireRate { get; set; }
-        public float Accuracy { get; set; }
+        public float Damage { get; init; }
+        public float FireRate { get; init; }
+        public float Accuracy { get; init; }
 
         public override void Apply(Item item)
         {
@@ -158,8 +158,8 @@ namespace Crpg.Application.Common.Services
 
     public class WeaponItemModifier : ItemModifier
     {
-        public float Damage { get; set; }
-        public float Speed { get; set; }
+        public float Damage { get; init; }
+        public float Speed { get; init; }
 
         public override void Apply(Item item)
         {
@@ -176,9 +176,9 @@ namespace Crpg.Application.Common.Services
 
     public class ThrownItemModifier : ItemModifier
     {
-        public float Damage { get; set; }
-        public float FireRate { get; set; }
-        public float Accuracy { get; set; }
+        public float Damage { get; init; }
+        public float FireRate { get; init; }
+        public float Accuracy { get; init; }
 
         public override void Apply(Item item)
         {
@@ -191,9 +191,9 @@ namespace Crpg.Application.Common.Services
 
     public class MissileItemModifier : ItemModifier
     {
-        public float Weight { get; set; }
-        public float Damage { get; set; }
-        public float StackAmount { get; set; }
+        public float Weight { get; init; }
+        public float Damage { get; init; }
+        public float StackAmount { get; init; }
 
         public override void Apply(Item item)
         {

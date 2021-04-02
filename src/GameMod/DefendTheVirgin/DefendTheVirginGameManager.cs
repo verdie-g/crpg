@@ -23,7 +23,7 @@ namespace Crpg.GameMod.DefendTheVirgin
 {
     public class DefendTheVirginGameManager : MBGameManager
     {
-        private static readonly Random Rng = new Random();
+        private static readonly Random Rng = new();
 
         private readonly ICrpgClient _crpgClient = new CrpgHttpClient();
 
@@ -404,7 +404,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             }
         }
 
-        private static readonly Dictionary<CrpgItemSlot, EquipmentIndex> ItemSlotToIndex = new Dictionary<CrpgItemSlot, EquipmentIndex>
+        private static readonly Dictionary<CrpgItemSlot, EquipmentIndex> ItemSlotToIndex = new()
         {
             [CrpgItemSlot.Head] = EquipmentIndex.Head,
             [CrpgItemSlot.Shoulder] = EquipmentIndex.Cape,
@@ -419,7 +419,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             [CrpgItemSlot.Weapon3] = EquipmentIndex.Weapon3,
         };
 
-        private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new HashSet<WeaponClass>
+        private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new()
         {
              WeaponClass.Dagger,
              WeaponClass.OneHandedSword,
@@ -434,12 +434,12 @@ namespace Crpg.GameMod.DefendTheVirgin
              WeaponClass.LowGripPolearm,
         };
 
-        private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerDraw = new HashSet<WeaponClass>
+        private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerDraw = new()
         {
              WeaponClass.Bow,
         };
 
-        private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerThrow = new HashSet<WeaponClass>
+        private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerThrow = new()
         {
              WeaponClass.Stone,
              WeaponClass.Boulder,

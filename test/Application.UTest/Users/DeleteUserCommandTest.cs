@@ -25,9 +25,9 @@ namespace Crpg.Application.UTest.Users
         {
             var user = ArrangeDb.Users.Add(new User
             {
-                Characters = new List<Character> { new Character { EquippedItems = new List<EquippedItem> { new EquippedItem() } } },
-                OwnedItems = new List<OwnedItem> { new OwnedItem { Item = new Item() } },
-                Bans = new List<Ban> { new Ban() }
+                Characters = new List<Character> { new() { EquippedItems = new List<EquippedItem> { new() } } },
+                OwnedItems = new List<OwnedItem> { new() { Item = new Item() } },
+                Bans = new List<Ban> { new() },
             });
             await ArrangeDb.SaveChangesAsync();
 

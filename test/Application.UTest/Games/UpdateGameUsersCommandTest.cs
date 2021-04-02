@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Commands;
 using Crpg.Application.Games.Models;
@@ -10,7 +9,6 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 
@@ -36,7 +34,7 @@ namespace Crpg.Application.UTest.Games
                 Gold = 1000,
                 Characters = new List<Character>
                 {
-                    new Character
+                    new()
                     {
                         Name = "a",
                         Experience = 0,
@@ -89,7 +87,7 @@ namespace Crpg.Application.UTest.Games
                 Gold = 10000,
                 Characters = new List<Character>
                 {
-                    new Character
+                    new()
                     {
                         Name = "b",
                         EquippedItems =
@@ -169,7 +167,7 @@ namespace Crpg.Application.UTest.Games
                 Gold = 10000,
                 Characters = new List<Character>
                 {
-                    new Character
+                    new()
                     {
                         Name = "b",
                         EquippedItems =

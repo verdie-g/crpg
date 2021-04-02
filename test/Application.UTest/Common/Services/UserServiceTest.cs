@@ -7,7 +7,7 @@ namespace Crpg.Application.UTest.Common.Services
 {
     public class UserServiceTest
     {
-        private static readonly Constants Constants = new Constants
+        private static readonly Constants Constants = new()
         {
             DefaultGold = 300,
             DefaultRole = Role.User,

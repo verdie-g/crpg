@@ -10,9 +10,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Bans.Queries
 {
-    public class GetUserBansQuery : IMediatorRequest<IList<BanViewModel>>
+    public record GetUserBansQuery : IMediatorRequest<IList<BanViewModel>>
     {
-        public int UserId { get; set; }
+        public int UserId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<GetUserBansQuery, IList<BanViewModel>>
         {
@@ -33,8 +33,8 @@ namespace Crpg.Application.Bans.Queries
                     .FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
 
                 return user == null
-                    ? new Result<IList<BanViewModel>>(CommonErrors.UserNotFound(request.UserId))
-                    : new Result<IList<BanViewModel>>(_mapper.Map<BanViewModel[]>(user.Bans));
+                    ? new(CommonErrors.UserNotFound(request.UserId))
+                    : new(_mapper.Map<BanViewModel[]>(user.Bans));
             }
         }
     }

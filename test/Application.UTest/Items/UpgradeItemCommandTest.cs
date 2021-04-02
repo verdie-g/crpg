@@ -17,7 +17,7 @@ namespace Crpg.Application.UTest.Items
 {
     public class UpgradeItemCommandTest : TestBase
     {
-        private static readonly Constants Constants = new Constants
+        private static readonly Constants Constants = new()
         {
             ItemRepairCostCoefs = new[] { 0.07f, 0 },
         };
@@ -40,7 +40,7 @@ namespace Crpg.Application.UTest.Items
             var user = new User
             {
                 Gold = 1000,
-                OwnedItems = new List<OwnedItem> { new OwnedItem { ItemId = _items[itemIdx].Id } }
+                OwnedItems = new List<OwnedItem> { new() { ItemId = _items[itemIdx].Id } },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -62,7 +62,7 @@ namespace Crpg.Application.UTest.Items
             var user = ArrangeDb.Users.Add(new User
             {
                 Gold = 0,
-                OwnedItems = new List<OwnedItem> { new OwnedItem { ItemId = _items[itemIdx].Id } }
+                OwnedItems = new List<OwnedItem> { new() { ItemId = _items[itemIdx].Id } },
             });
             await ArrangeDb.SaveChangesAsync();
 
@@ -81,7 +81,7 @@ namespace Crpg.Application.UTest.Items
             var user = new User
             {
                 HeirloomPoints = 1,
-                OwnedItems = new List<OwnedItem> { new OwnedItem { ItemId = _items[itemIdx].Id } }
+                OwnedItems = new List<OwnedItem> { new() { ItemId = _items[itemIdx].Id } },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -103,7 +103,7 @@ namespace Crpg.Application.UTest.Items
             var user = ArrangeDb.Users.Add(new User
             {
                 HeirloomPoints = 0,
-                OwnedItems = new List<OwnedItem> { new OwnedItem { ItemId = _items[itemIdx].Id } }
+                OwnedItems = new List<OwnedItem> { new() { ItemId = _items[itemIdx].Id } },
             });
             await ArrangeDb.SaveChangesAsync();
 
@@ -127,8 +127,8 @@ namespace Crpg.Application.UTest.Items
                 OwnedItems = new List<OwnedItem> { ownedItem },
                 Characters = new List<Character>
                 {
-                    new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon0 } } },
-                    new Character { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon1 } } },
+                    new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon0 } } },
+                    new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon1 } } },
                 },
             };
             ArrangeDb.Users.Add(user);

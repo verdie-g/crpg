@@ -4,13 +4,13 @@ using Crpg.Domain.Entities.Clans;
 
 namespace Crpg.Application.Clans.Models
 {
-    public class ClanInvitationViewModel : IMapFrom<ClanInvitation>
+    public record ClanInvitationViewModel : IMapFrom<ClanInvitation>
     {
-        public int Id { get; set; }
-        public int ClanId { get; set; }
-        public UserPublicViewModel InviteeUser { get; set; } = default!;
-        public UserPublicViewModel InviterUser { get; set; } = default!;
-        public ClanInvitationType Type { get; set; }
-        public ClanInvitationStatus Status { get; set; }
+        public int Id { get; init; }
+        public int ClanId { get; init; }
+        public UserPublicViewModel InviteeUser { get; init; } = default!;
+        public UserPublicViewModel InviterUser { get; init; } = default!;
+        public ClanInvitationType Type { get; init; }
+        public ClanInvitationStatus Status { get; init; }
     }
 }

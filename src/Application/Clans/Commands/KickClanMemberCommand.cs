@@ -10,11 +10,11 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Clans.Commands
 {
-    public class KickClanMemberCommand : IMediatorRequest
+    public record KickClanMemberCommand : IMediatorRequest
     {
-        public int UserId { get; set; }
-        public int ClanId { get; set; }
-        public int KickedUserId { get; set; }
+        public int UserId { get; init; }
+        public int ClanId { get; init; }
+        public int KickedUserId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<KickClanMemberCommand>
         {

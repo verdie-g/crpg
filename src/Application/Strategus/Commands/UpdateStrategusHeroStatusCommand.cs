@@ -15,13 +15,13 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Strategus.Commands
 {
-    public class UpdateStrategusHeroStatusCommand : IMediatorRequest<StrategusHeroViewModel>
+    public record UpdateStrategusHeroStatusCommand : IMediatorRequest<StrategusHeroViewModel>
     {
         public int HeroId { get; set; }
-        public StrategusHeroStatus Status { get; set; }
-        public MultiPoint Waypoints { get; set; } = MultiPoint.Empty;
-        public int TargetedHeroId { get; set; }
-        public int TargetedSettlementId { get; set; }
+        public StrategusHeroStatus Status { get; init; }
+        public MultiPoint Waypoints { get; init; } = MultiPoint.Empty;
+        public int TargetedHeroId { get; init; }
+        public int TargetedSettlementId { get; init; }
 
         public class Validator : AbstractValidator<UpdateStrategusHeroStatusCommand>
         {
@@ -53,19 +53,19 @@ namespace Crpg.Application.Strategus.Commands
                     .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
                 if (hero == null)
                 {
-                    return new Result<StrategusHeroViewModel>(CommonErrors.HeroNotFound(req.HeroId));
+                    return new(CommonErrors.HeroNotFound(req.HeroId));
                 }
 
                 if (hero.Status == StrategusHeroStatus.InBattle)
                 {
-                    return new Result<StrategusHeroViewModel>(CommonErrors.HeroInBattle(req.HeroId));
+                    return new(CommonErrors.HeroInBattle(req.HeroId));
                 }
 
                 if (req.Status == StrategusHeroStatus.RecruitingInSettlement)
                 {
                     if (hero.Status != StrategusHeroStatus.IdleInSettlement)
                     {
-                        return new Result<StrategusHeroViewModel>(CommonErrors.HeroNotInASettlement(req.HeroId));
+                        return new(CommonErrors.HeroNotInASettlement(req.HeroId));
                     }
 
                     hero.Status = StrategusHeroStatus.RecruitingInSettlement;
@@ -75,13 +75,13 @@ namespace Crpg.Application.Strategus.Commands
                     var result = await UpdateHeroMovement(hero, req, cancellationToken);
                     if (result.Errors != null)
                     {
-                        return new Result<StrategusHeroViewModel>(result.Errors);
+                        return new(result.Errors);
                     }
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("Hero '{0}' updated their movement on the map", req.HeroId);
-                return new Result<StrategusHeroViewModel>(_mapper.Map<StrategusHeroViewModel>(hero));
+                return new(_mapper.Map<StrategusHeroViewModel>(hero));
             }
 
             private async Task<Result> UpdateHeroMovement(StrategusHero hero, UpdateStrategusHeroStatusCommand req,

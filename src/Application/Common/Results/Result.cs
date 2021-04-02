@@ -7,7 +7,7 @@ namespace Crpg.Application.Common.Results
     /// </summary>
     public class Result
     {
-        public static readonly Result NoErrors = new Result();
+        public static readonly Result NoErrors = new();
 
         /// <summary>
         /// A collection of error objects.

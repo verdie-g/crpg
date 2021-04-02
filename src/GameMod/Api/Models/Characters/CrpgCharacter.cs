@@ -12,7 +12,7 @@ namespace Crpg.GameMod.Api.Models.Characters
         public int Generation { get; set; }
         public int Level { get; set; }
         public int Experience { get; set; }
-        public CrpgCharacterStatistics Statistics { get; set; } = new CrpgCharacterStatistics();
+        public CrpgCharacterStatistics Statistics { get; set; } = new();
         public IList<CrpgEquippedItem> EquippedItems { get; set; } = Array.Empty<CrpgEquippedItem>();
     }
 }

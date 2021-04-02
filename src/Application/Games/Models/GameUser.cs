@@ -10,13 +10,13 @@ using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Application.Games.Models
 {
-    public class GameUser : IMapFrom<User>
+    public record GameUser : IMapFrom<User>
     {
-        public int Id { get; set; }
-        public Platform Platform { get; set; }
-        public string PlatformUserId { get; set; } = default!;
-        public int Gold { get; set; }
-        public CharacterViewModel Character { get; set; } = default!;
+        public int Id { get; init; }
+        public Platform Platform { get; init; }
+        public string PlatformUserId { get; init; } = string.Empty;
+        public int Gold { get; init; }
+        public CharacterViewModel Character { get; init; } = default!;
         public BanViewModel? Ban { get; set; }
 
         public void Mapping(Profile profile)

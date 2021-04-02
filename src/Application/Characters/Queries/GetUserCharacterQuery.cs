@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries
 {
-    public class GetUserCharacterQuery : IMediatorRequest<CharacterViewModel>
+    public record GetUserCharacterQuery : IMediatorRequest<CharacterViewModel>
     {
-        public int CharacterId { get; set; }
-        public int UserId { get; set; }
+        public int CharacterId { get; init; }
+        public int UserId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<GetUserCharacterQuery, CharacterViewModel>
         {
@@ -33,8 +33,8 @@ namespace Crpg.Application.Characters.Queries
                     .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
 
                 return character == null
-                    ? new Result<CharacterViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId))
-                    : new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character)); // can't use ProjectTo https://github.com/dotnet/efcore/issues/19726
+                    ? new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId))
+                    : new(_mapper.Map<CharacterViewModel>(character)); // can't use ProjectTo https://github.com/dotnet/efcore/issues/19726
             }
         }
     }

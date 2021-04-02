@@ -4,11 +4,11 @@ using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Application.Users.Models
 {
-    public class UserPublicViewModel : IMapFrom<User>
+    public record UserPublicViewModel : IMapFrom<User>
     {
-        public int Id { get; set; }
-        public Platform Platform { get; set; }
-        public string PlatformUserId { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
+        public int Id { get; init; }
+        public Platform Platform { get; init; }
+        public string PlatformUserId { get; init; } = string.Empty;
+        public string Name { get; init; } = string.Empty;
     }
 }

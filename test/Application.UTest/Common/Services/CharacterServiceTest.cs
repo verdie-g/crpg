@@ -7,7 +7,7 @@ namespace Crpg.Application.UTest.Common.Services
 {
     public class CharacterServiceTest
     {
-        private static readonly Constants Constants = new Constants
+        private static readonly Constants Constants = new()
         {
             MinimumLevel = 1,
             MaximumLevel = 38,
@@ -24,7 +24,7 @@ namespace Crpg.Application.UTest.Common.Services
             DefaultAutoRepair = true,
         };
 
-        private static readonly ExperienceTable ExperienceTable = new ExperienceTable(Constants);
+        private static readonly ExperienceTable ExperienceTable = new(Constants);
 
         [Test]
         public void GiveExperienceShouldGiveExperience()

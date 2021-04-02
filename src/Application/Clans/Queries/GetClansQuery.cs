@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Clans.Queries
 {
-    public class GetClansQuery : IMediatorRequest<IList<ClanViewModel>>
+    public record GetClansQuery : IMediatorRequest<IList<ClanViewModel>>
     {
         public int ClanId { get; set; }
 
@@ -31,7 +31,7 @@ namespace Crpg.Application.Clans.Queries
                 var clans = await _db.Clans
                     .ProjectTo<ClanViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
-                return new Result<IList<ClanViewModel>>(clans);
+                return new(clans);
             }
         }
     }

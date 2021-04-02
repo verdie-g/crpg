@@ -10,11 +10,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class SwitchCharacterAutoRepairCommand : IMediatorRequest
+    public record SwitchCharacterAutoRepairCommand : IMediatorRequest
     {
-        public int CharacterId { get; set; }
-        public int UserId { get; set; }
-        public bool AutoRepair { get; set; }
+        public int CharacterId { get; init; }
+        public int UserId { get; init; }
+        public bool AutoRepair { get; init; }
 
         internal class Handler : IMediatorRequestHandler<SwitchCharacterAutoRepairCommand>
         {

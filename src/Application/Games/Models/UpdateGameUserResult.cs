@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Crpg.Application.Games.Models
 {
-    public class UpdateGameUserResult
+    public record UpdateGameUserResult
     {
-        public GameUser User { get; set; } = default!;
-        public IList<GameUserBrokenItem> BrokenItems { get; set; } = Array.Empty<GameUserBrokenItem>();
+        public GameUser User { get; init; } = default!;
+        public IList<GameUserBrokenItem> BrokenItems { get; init; } = Array.Empty<GameUserBrokenItem>();
     }
 }

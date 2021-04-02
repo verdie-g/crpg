@@ -14,9 +14,9 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Strategus.Commands
 {
-    public class UpdateStrategusHeroPositionsCommand : IMediatorRequest
+    public record UpdateStrategusHeroPositionsCommand : IMediatorRequest
     {
-        public TimeSpan DeltaTime { get; set; }
+        public TimeSpan DeltaTime { get; init; }
 
         internal class Handler : IMediatorRequestHandler<UpdateStrategusHeroPositionsCommand>
         {

@@ -5,14 +5,14 @@ using NetTopologySuite.Geometries;
 
 namespace Crpg.Application.Strategus.Models
 {
-    public class StrategusSettlementPublicViewModel : IMapFrom<StrategusSettlement>
+    public record StrategusSettlementPublicViewModel : IMapFrom<StrategusSettlement>
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = default!;
-        public StrategusSettlementType Type { get; set; }
-        public Point Position { get; set; } = default!;
-        public Culture Culture { get; set; }
-        public Region Region { get; set; }
-        public StrategusHeroPublicViewModel? Owner { get; set; }
+        public int Id { get; init; }
+        public string Name { get; init; } = string.Empty;
+        public StrategusSettlementType Type { get; init; }
+        public Point Position { get; init; } = default!;
+        public Culture Culture { get; init; }
+        public Region Region { get; init; }
+        public StrategusHeroPublicViewModel? Owner { get; init; }
     }
 }

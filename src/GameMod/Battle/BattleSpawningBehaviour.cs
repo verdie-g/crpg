@@ -95,7 +95,7 @@ namespace Crpg.GameMod.Battle
                     MultiplayerClassDivisions.MPHeroClass heroClass = MultiplayerClassDivisions.GetMPHeroClasses().First();
                     BasicCharacterObject heroCharacter = heroClass.HeroCharacter;
 
-                    AgentBuildData agentBuildData = new AgentBuildData(heroCharacter);
+                    AgentBuildData agentBuildData = new(heroCharacter);
                     agentBuildData.Equipment(heroClass.HeroCharacter.Equipment);
                     agentBuildData.TroopOrigin(new BasicBattleAgentOrigin(heroCharacter));
                     agentBuildData.EquipmentSeed(MissionLobbyComponent.GetRandomFaceSeedForCharacter(heroCharacter));

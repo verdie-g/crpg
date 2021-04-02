@@ -73,7 +73,7 @@ namespace Crpg.Application.UTest
             return Task.CompletedTask;
         }
 
-        private CrpgDbContext InitDb() => new CrpgDbContext(_dbOptions!, Mock.Of<IDateTimeOffset>());
+        private CrpgDbContext InitDb() => new(_dbOptions!, Mock.Of<IDateTimeOffset>());
 
         private IMapper InitMapper()
         {

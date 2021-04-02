@@ -10,9 +10,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Users.Queries
 {
-    public class GetUserQuery : IMediatorRequest<UserViewModel>
+    public record GetUserQuery : IMediatorRequest<UserViewModel>
     {
-        public int UserId { get; set; }
+        public int UserId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<GetUserQuery, UserViewModel>
         {
@@ -31,8 +31,8 @@ namespace Crpg.Application.Users.Queries
                     .ProjectTo<UserViewModel>(_mapper.ConfigurationProvider)
                     .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 return user == null
-                    ? new Result<UserViewModel>(CommonErrors.UserNotFound(req.UserId))
-                    : new Result<UserViewModel>(user);
+                    ? new(CommonErrors.UserNotFound(req.UserId))
+                    : new(user);
             }
         }
     }

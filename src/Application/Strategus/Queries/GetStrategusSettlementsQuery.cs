@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Strategus.Queries
 {
-    public class GetStrategusSettlementsQuery : IMediatorRequest<IList<StrategusSettlementPublicViewModel>>
+    public record GetStrategusSettlementsQuery : IMediatorRequest<IList<StrategusSettlementPublicViewModel>>
     {
         internal class Handler : IMediatorRequestHandler<GetStrategusSettlementsQuery, IList<StrategusSettlementPublicViewModel>>
         {
@@ -30,7 +30,7 @@ namespace Crpg.Application.Strategus.Queries
                     .ProjectTo<StrategusSettlementPublicViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
-                return new Result<IList<StrategusSettlementPublicViewModel>>(clan);
+                return new(clan);
             }
         }
     }

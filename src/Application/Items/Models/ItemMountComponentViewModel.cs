@@ -3,12 +3,12 @@ using Crpg.Domain.Entities.Items;
 
 namespace Crpg.Application.Items.Models
 {
-    public class ItemMountComponentViewModel : IMapFrom<ItemMountComponent>
+    public record ItemMountComponentViewModel : IMapFrom<ItemMountComponent>
     {
-        public int BodyLength { get; set; }
-        public int ChargeDamage { get; set; }
-        public int Maneuver { get; set; }
-        public int Speed { get; set; }
-        public int HitPoints { get; set; }
+        public int BodyLength { get; init; }
+        public int ChargeDamage { get; init; }
+        public int Maneuver { get; init; }
+        public int Speed { get; init; }
+        public int HitPoints { get; init; }
     }
 }

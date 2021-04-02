@@ -41,7 +41,7 @@ namespace Crpg.WebApi.Controllers
         [HttpPost]
         public Task<ActionResult<Result<ClanViewModel>>> CreateClan([FromBody] CreateClanCommand clan)
         {
-            clan.UserId = CurrentUser.UserId;
+            clan = clan with { UserId = CurrentUser.UserId };
             return ResultToCreatedAtActionAsync(nameof(GetClan), null, b => new { id = b.Id },
                 Mediator.Send(clan));
         }
@@ -90,8 +90,7 @@ namespace Crpg.WebApi.Controllers
         [HttpPost("{clanId}/invitations")]
         public Task<ActionResult<Result<ClanInvitationViewModel>>> InviteToClan([FromRoute] int clanId, [FromBody] InviteClanMemberCommand invite)
         {
-            invite.UserId = CurrentUser.UserId;
-            invite.ClanId = clanId;
+            invite = invite with { UserId = CurrentUser.UserId, ClanId = clanId };
             return ResultToActionAsync(Mediator.Send(invite));
         }
 
@@ -105,9 +104,7 @@ namespace Crpg.WebApi.Controllers
         public Task<ActionResult<Result<ClanInvitationViewModel>>> RespondToClanInvitation([FromRoute] int clanId,
             [FromQuery] int invitationId, [FromBody] RespondClanInvitationCommand invite)
         {
-            invite.UserId = CurrentUser.UserId;
-            invite.ClanId = clanId;
-            invite.ClanInvitationId = invitationId;
+            invite = invite with { UserId = CurrentUser.UserId, ClanId = clanId, ClanInvitationId = invitationId };
             return ResultToActionAsync(Mediator.Send(invite));
         }
     }

@@ -6,16 +6,16 @@ using Crpg.Domain.Entities.Characters;
 
 namespace Crpg.Application.Characters.Models
 {
-    public class CharacterViewModel : IMapFrom<Character>
+    public record CharacterViewModel : IMapFrom<Character>
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public int Generation { get; set; }
-        public int Level { get; set; }
-        public int Experience { get; set; }
-        public bool SkippedTheFun { get; set; }
-        public bool AutoRepair { get; set; }
-        public CharacterStatisticsViewModel Statistics { get; set; } = new CharacterStatisticsViewModel();
-        public IList<EquippedItemViewModel> EquippedItems { get; set; } = Array.Empty<EquippedItemViewModel>();
+        public int Id { get; init; }
+        public string Name { get; init; } = string.Empty;
+        public int Generation { get; init; }
+        public int Level { get; init; }
+        public int Experience { get; init; }
+        public bool SkippedTheFun { get; init; }
+        public bool AutoRepair { get; init; }
+        public CharacterStatisticsViewModel Statistics { get; init; } = new();
+        public IList<EquippedItemViewModel> EquippedItems { get; init; } = Array.Empty<EquippedItemViewModel>();
     }
 }
