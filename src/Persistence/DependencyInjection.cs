@@ -11,13 +11,13 @@ namespace Crpg.Persistence
         public static IServiceCollection AddPersistence(this IServiceCollection services,
             IConfiguration configuration, IApplicationEnvironment appEnv)
         {
-            if (appEnv.Environment == HostingEnvironment.Development)
+            var connectionString = configuration.GetConnectionString("Crpg");
+            if (appEnv.Environment == HostingEnvironment.Development && connectionString == null)
             {
                 services.AddDbContext<CrpgDbContext>(options => options.UseInMemoryDatabase("crpg"));
             }
             else
             {
-                var connectionString = configuration.GetConnectionString("Crpg");
                 services.AddDbContext<CrpgDbContext>(options =>
                     options
                         .UseNpgsql(connectionString, options => options.UseNetTopologySuite())

@@ -49,7 +49,8 @@ namespace Crpg.WebApi
 
                 string? skipMigrationStr = Environment.GetEnvironmentVariable("CRPG_SKIP_DB_MIGRATION");
                 bool skipMigration = skipMigrationStr != null && bool.Parse(skipMigrationStr);
-                if (env == Environments.Production && !skipMigration)
+                bool hasConnectionString = configuration.GetConnectionString("Crpg") != null;
+                if (hasConnectionString && !skipMigration)
                 {
                     try
                     {

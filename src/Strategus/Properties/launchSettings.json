@@ -4,7 +4,8 @@
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "environmentVariables": {
-        "DOTNET_ENVIRONMENT": "Development"
+        "DOTNET_ENVIRONMENT": "Development",
+        "ConnectionStrings:Crpg": "Host=localhost;Database=crpg;Username=postgres;Password=root"
       }
     }
   }

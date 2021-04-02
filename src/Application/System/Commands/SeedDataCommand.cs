@@ -47,7 +47,7 @@ namespace Crpg.Application.System.Commands
             {
                 if (_appEnv.Environment == HostingEnvironment.Development)
                 {
-                    AddDevelopperUsers();
+                    await AddDevelopmentData();
                 }
 
                 await CreateOrUpdateItems(cancellationToken);
@@ -55,7 +55,7 @@ namespace Crpg.Application.System.Commands
                 return new Result();
             }
 
-            private void AddDevelopperUsers()
+            private async Task AddDevelopmentData()
             {
                 var users = new[]
                 {
@@ -116,7 +116,10 @@ namespace Crpg.Application.System.Commands
                         _characterService.ResetCharacterStats(character, respecialization: true);
                     }
 
-                    _db.Users.Add(user);
+                    if (!(await _db.Users.AnyAsync(u => u.Platform == user.Platform && u.PlatformUserId == user.PlatformUserId)))
+                    {
+                        _db.Users.Add(user);
+                    }
                 }
             }
 
