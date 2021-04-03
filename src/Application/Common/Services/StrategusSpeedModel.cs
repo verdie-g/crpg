@@ -30,22 +30,18 @@ namespace Crpg.Application.Common.Services
         }
 
         private double SlowestMountSpeed(float numberOfTroops, List<StrategusOwnedItem> owneditems)
-             {
+        {
             int mounts = 0;
             double forceMarchSpeed = 2;
             if (owneditems.Any())
             {
-                 foreach (StrategusOwnedItem ownedItem in owneditems.OrderBy(i => i.Item!.Mount!.HitPoints))
-                     {
-                if (mounts < numberOfTroops)
-                    {
-                        mounts += ownedItem.Count;
-                    }
-
-                if (mounts < numberOfTroops)
+                foreach (StrategusOwnedItem ownedItem in owneditems.OrderBy(i => i.Item!.Mount!.HitPoints))
+                {
+                    mounts += ownedItem.Count;
+                    if (mounts >= numberOfTroops)
                     {
                         return ownedItem.Item!.Mount!.HitPoints / 100;
-                        /* 
+                        /*
                         this is in case there is enough mount for everyone soldier to be mounted. In this case the speed of the army is the speed of the slowest mount.
                         Currently we're using the hitpoints to calculate the speed , but manually designed speed for mounts should be added later
                         */
@@ -60,6 +56,6 @@ namespace Crpg.Application.Common.Services
             the more the ratio numberOfTroops / mounts is close to 1 , the more they can afford.
             */
             return forceMarchSpeed * numberOfTroops / mounts + (1 - numberOfTroops / mounts);
-             }
+        }
     }
 }
