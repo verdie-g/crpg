@@ -26,9 +26,9 @@ namespace Crpg.Application.Common.Services
             double terrainSpeedFactor = 1;
             double weightFactor = 1;
             double troopInfluence = 2 / (1 + Math.Log10(1 + hero.Troops / 10));
-            return terrainSpeedFactor * weightFactor * SlowestHorseSpeed(hero.Troops, hero.OwnedItems!) * troopInfluence;
+            return terrainSpeedFactor * weightFactor * SlowestMountSpeed(hero.Troops, hero.OwnedItems!) * troopInfluence;
         }
-        private double SlowestHorseSpeed(float numberOfTroops, List<StrategusOwnedItem> owneditems,)
+        private double SlowestMountSpeed(float numberOfTroops, List<StrategusOwnedItem> owneditems)
              {
             // The table should have in its first column the type of horse , and in its second column how many there is
             // Courser | 12
