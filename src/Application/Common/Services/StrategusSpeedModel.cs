@@ -36,11 +36,11 @@ namespace Crpg.Application.Common.Services
             return terrainSpeedFactor * weightFactor * SlowestMountSpeed(hero.Troops, hero.OwnedItems!) * troopInfluence;
         }
 
-        private double SlowestMountSpeed(float numberOfTroops, List<StrategusOwnedItem> owneditems)
+        private double SlowestMountSpeed(float numberOfTroops, List<StrategusOwnedItem> ownedItems)
         {
             int mounts = 0;
             double forcedMarchSpeed = 2;
-            foreach (StrategusOwnedItem ownedItem in owneditems.OrderByDescending(i => i.Item!.Mount!.HitPoints))
+            foreach (StrategusOwnedItem ownedItem in ownedItems.OrderByDescending(i => i.Item!.Mount!.HitPoints))
             {
                 mounts += ownedItem.Count;
                 if (mounts >= numberOfTroops)
