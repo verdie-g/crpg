@@ -42,6 +42,7 @@ namespace Crpg.Application.Strategus.Commands
             public async Task<Result> Handle(UpdateStrategusBattlePhasesCommand req, CancellationToken cancellationToken)
             {
                 var battles = _db.StrategusBattles
+                    .AsSplitQuery()
                     .Include(b => b.AttackedSettlement)
                     .Include(b => b.Fighters).ThenInclude(f => f.Hero)
                     .Where(b =>
