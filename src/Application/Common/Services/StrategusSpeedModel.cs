@@ -21,8 +21,6 @@ namespace Crpg.Application.Common.Services
         /// <inheritdoc />
         public double ComputeHeroSpeed(StrategusHero hero)
         {
-            // const double terrainSpeedFactor = 1.0; // TODO: terrain penalty on speed (e.g. lower speed in forest).
-            // const double weightFactor = 1.0; // TODO: goods should slow down hero
             double terrainSpeedFactor = 1;
             double weightFactor = 1;
             double troopInfluence = 2 / (1 + Math.Log10(1 + hero.Troops / 10));
@@ -43,16 +41,21 @@ namespace Crpg.Application.Common.Services
             double forceMarchSpeed = 2;
             if (owneditems.Any())
             {
-                foreach (StrategusOwnedItem ownedItem in owneditems.OrderBy(i => i.Item!.Mount!.HitPoints))
+                foreach (StrategusOwnedItem ownedItem in owneditems.OrderByDescending(i => i.Item!.Mount!.HitPoints))
                 {
                     mounts += ownedItem.Count;
                     if (mounts >= numberOfTroops)
                     {
-                        return ownedItem.Item!.Mount!.HitPoints / 100;
                         /*
-                        this is in case there is enough mount for everyone soldier to be mounted. In this case the speed of the army is the speed of the slowest mount.
-                        Currently we're using the hitpoints to calculate the speed , but manually designed speed for mounts should be added later
+                        this is in case there is enough mount for everyone soldier to be mounted. 
+                        The soldier will choose by default the fastest mounts they can find 
+                        In this case the speed of the army is the speed of the slowest mount among the used one 
+                        (which is worst of the top tier mounts) .Currently we're using the hitpoints 
+                        to calculate the speed, because strategus is about sustained speed.
+                        Marathon runner are more suited for long distance than sprint runners
+                        Manually designed speed for mounts should be added later for more fine tuning
                         */
+                        return ownedItem.Item!.Mount!.HitPoints / 100;
                     }
                 }
             }
