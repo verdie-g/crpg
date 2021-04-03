@@ -34,7 +34,7 @@ namespace Crpg.Application.Common.Services
             // Courser | 12
             // palfrey | 5
             int horses = 0;
-            if (owneditems != null)
+            if (owneditems.Any())
             {
                  foreach (StrategusOwnedItem ownedItem in owneditems.OrderBy(i => i.Item!.Mount!.HitPoints))
                      {
