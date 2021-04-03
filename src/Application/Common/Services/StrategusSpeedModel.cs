@@ -40,24 +40,21 @@ namespace Crpg.Application.Common.Services
         {
             int mounts = 0;
             double forcedMarchSpeed = 2;
-            if (owneditems.Any())
+            foreach (StrategusOwnedItem ownedItem in owneditems.OrderByDescending(i => i.Item!.Mount!.HitPoints))
             {
-                foreach (StrategusOwnedItem ownedItem in owneditems.OrderByDescending(i => i.Item!.Mount!.HitPoints))
+                mounts += ownedItem.Count;
+                if (mounts >= numberOfTroops)
                 {
-                    mounts += ownedItem.Count;
-                    if (mounts >= numberOfTroops)
-                    {
-                        /*
-                        this is in case there is enough mount for everyone soldier to be mounted. 
-                        The soldier will choose by default the fastest mounts they can find 
-                        In this case the speed of the army is the speed of the slowest mount among the used one 
-                        (which is worst of the top tier mounts) .Currently we're using the hitpoints 
-                        to calculate the speed, because strategus is about sustained speed.
-                        Marathon runner are more suited for long distance than sprint runners
-                        Manually designed speed for mounts should be added later for more fine tuning
-                        */
-                        return ownedItem.Item!.Mount!.HitPoints / 100;
-                    }
+                    /*
+                    this is in case there is enough mount for everyone soldier to be mounted. 
+                    The soldier will choose by default the fastest mounts they can find 
+                    In this case the speed of the army is the speed of the slowest mount among the used one 
+                    (which is worst of the top tier mounts) .Currently we're using the hitpoints 
+                    to calculate the speed, because strategus is about sustained speed.
+                    Marathon runner are more suited for long distance than sprint runners
+                    Manually designed speed for mounts should be added later for more fine tuning
+                    */
+                    return ownedItem.Item!.Mount!.HitPoints / 100;
                 }
             }
 
