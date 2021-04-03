@@ -39,7 +39,7 @@ namespace Crpg.Application.Common.Services
         private double SlowestMountSpeed(float numberOfTroops, List<StrategusOwnedItem> owneditems)
         {
             int mounts = 0;
-            double forceMarchSpeed = 2;
+            double forcedMarchSpeed = 2;
             if (owneditems.Any())
             {
                 foreach (StrategusOwnedItem ownedItem in owneditems.OrderByDescending(i => i.Item!.Mount!.HitPoints))
@@ -67,7 +67,7 @@ namespace Crpg.Application.Common.Services
             Since they can change places with someone that is already on a mount, they can afford to walk faster
             the more the ratio numberOfTroops / mounts is close to 1 , the more they can afford.
             */
-            return forceMarchSpeed * numberOfTroops / mounts + (1 - numberOfTroops / mounts);
+            return forcedMarchSpeed * numberOfTroops / mounts + (1 - numberOfTroops / mounts);
         }
     }
 }
