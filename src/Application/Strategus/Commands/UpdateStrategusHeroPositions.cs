@@ -17,7 +17,6 @@ namespace Crpg.Application.Strategus.Commands
 {
     public class UpdateStrategusHeroPositionsCommand : IMediatorRequest
     {
-        // private static readonly StrategusSpeedModel StrategusSpeedModel = new StrategusSpeedModel();
         public TimeSpan DeltaTime { get; set; }
 
         internal class Handler : IMediatorRequestHandler<UpdateStrategusHeroPositionsCommand>
