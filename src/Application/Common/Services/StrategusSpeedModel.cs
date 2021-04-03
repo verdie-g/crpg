@@ -28,12 +28,13 @@ namespace Crpg.Application.Common.Services
             double troopInfluence = 2 / (1 + Math.Log10(1 + hero.Troops / 10));
             return terrainSpeedFactor * weightFactor * SlowestHorseSpeed(hero.Troops, hero.OwnedItems!) * troopInfluence;
         }
-        private double SlowestHorseSpeed(float numberOfTroops, List<StrategusOwnedItem> owneditems, double forceMarchSpeed = 2)
+        private double SlowestHorseSpeed(float numberOfTroops, List<StrategusOwnedItem> owneditems,)
              {
             // The table should have in its first column the type of horse , and in its second column how many there is
             // Courser | 12
             // palfrey | 5
             int horses = 0;
+            double forceMarchSpeed = 2;
             if (owneditems.Any())
             {
                  foreach (StrategusOwnedItem ownedItem in owneditems.OrderBy(i => i.Item!.Mount!.HitPoints))
