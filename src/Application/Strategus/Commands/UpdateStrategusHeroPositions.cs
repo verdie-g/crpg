@@ -58,7 +58,8 @@ namespace Crpg.Application.Strategus.Commands
                     .Where(h => MovementStatuses.Contains(h.Status))
                     .Include(h => h.TargetedHero)
                     .Include(h => h.TargetedSettlement)
-                    .Include(h => h.OwnedItems!.Where(oi => oi.Item!.Type == ItemType.Mount)).ThenInclude(oi => oi.Item) // OwnedItems contains only horses to compute movement speed
+                    // Load mounts into OwnedItems to compute movement speed.
+                    .Include(h => h.OwnedItems!.Where(oi => oi.Item!.Type == ItemType.Mount)).ThenInclude(oi => oi.Item)
                     .ToArrayAsync(cancellationToken);
 
                 foreach (var hero in strategusHeroes)
