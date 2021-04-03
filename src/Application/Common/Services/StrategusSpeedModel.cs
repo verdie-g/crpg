@@ -13,16 +13,18 @@ namespace Crpg.Application.Common.Services
     internal interface IStrategusSpeedModel
     {
         /// <summary>Compute the Hero Speed.</summary>
-        double ComputeHeroSpeed(StrategusHero hero, double terrainSpeedFactor, double weightFactor);
+        double ComputeHeroSpeed(StrategusHero hero);
     }
 
     internal class StrategusSpeedModel : IStrategusSpeedModel
     {
         /// <inheritdoc />
-        public double ComputeHeroSpeed(StrategusHero hero, double terrainSpeedFactor = 1.0, double weightFactor = 1.0)
+        public double ComputeHeroSpeed(StrategusHero hero)
         {
             // const double terrainSpeedFactor = 1.0; // TODO: terrain penalty on speed (e.g. lower speed in forest).
             // const double weightFactor = 1.0; // TODO: goods should slow down hero
+            double terrainSpeedFactor = 1;
+            double weightFactor = 1;
             double troopInfluence = 2 / (1 + Math.Log10(1 + hero.Troops / 10));
             return terrainSpeedFactor * weightFactor * SlowestHorseSpeed(hero.Troops, hero.OwnedItems!) * troopInfluence;
         }

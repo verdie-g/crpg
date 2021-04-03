@@ -17,7 +17,7 @@ namespace Crpg.Application.Strategus.Commands
 {
     public class UpdateStrategusHeroPositionsCommand : IMediatorRequest
     {
-        private static readonly StrategusSpeedModel StrategusSpeedModel = new StrategusSpeedModel();
+        // private static readonly StrategusSpeedModel StrategusSpeedModel = new StrategusSpeedModel();
         public TimeSpan DeltaTime { get; set; }
 
         internal class Handler : IMediatorRequestHandler<UpdateStrategusHeroPositionsCommand>
@@ -42,11 +42,13 @@ namespace Crpg.Application.Strategus.Commands
 
             private readonly ICrpgDbContext _db;
             private readonly IStrategusMap _strategusMap;
+            private readonly IStrategusSpeedModel _strategusSpeedModel;
 
-            public Handler(ICrpgDbContext db, IStrategusMap strategusMap)
+            public Handler(ICrpgDbContext db, IStrategusMap strategusMap, IStrategusSpeedModel strategusSpeedModel)
             {
                 _db = db;
                 _strategusMap = strategusMap;
+                _strategusSpeedModel = strategusSpeedModel;
             }
 
             public async Task<Result> Handle(UpdateStrategusHeroPositionsCommand req, CancellationToken cancellationToken)
@@ -224,7 +226,8 @@ namespace Crpg.Application.Strategus.Commands
 
             private bool MoveHeroTowardsPoint(StrategusHero hero, Point targetPoint, TimeSpan deltaTime, bool canInteractWithTarget)
             {
-                double speed = StrategusSpeedModel.ComputeHeroSpeed(hero);
+
+                double speed = _strategusSpeedModel.ComputeHeroSpeed(hero);
                 double distance = speed * deltaTime.TotalSeconds;
                 hero.Position = _strategusMap.MovePointTowards(hero.Position, targetPoint, distance);
                 return canInteractWithTarget
