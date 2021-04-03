@@ -3,16 +3,18 @@
     v-if="hero"
     :lat-lng="[hero.position.coordinates[1], hero.position.coordinates[0]]"
     :radius="markerRadius"
-    color="#f00"
+    :color="markerColor"
     :fill="true"
-    fillColor="#f00"
+    :fillColor="markerColor"
     :fillOpacity="1.0"
-  />
+  >
+    <l-tooltip :options="{ direction: 'top' }">{{ hero.name }} ({{ hero.troops }})</l-tooltip>
+  </l-circle-marker>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { LCircleMarker } from 'vue2-leaflet';
+import { LCircleMarker, LTooltip } from 'vue2-leaflet';
 import Hero from '@/models/hero';
 import Constants from '@/../../../data/constants.json';
 
@@ -20,10 +22,11 @@ const minRadius = 4;
 const maxRadius = 10;
 
 @Component({
-  components: { LCircleMarker },
+  components: { LCircleMarker, LTooltip },
 })
 export default class HeroComponent extends Vue {
   @Prop(Object) readonly hero: Hero | null;
+  @Prop(Boolean) readonly self: boolean;
 
   get markerRadius(): number {
     if (this.hero === null) {
@@ -33,6 +36,10 @@ export default class HeroComponent extends Vue {
     const troopsRange = Constants.strategusMaxHeroTroops - Constants.strategusMinHeroTroops;
     const sizeFactor = this.hero.troops / troopsRange;
     return minRadius + sizeFactor * (maxRadius - minRadius);
+  }
+
+  get markerColor(): string {
+    return this.self ? '#0f0' : '#f00';
   }
 }
 </script>

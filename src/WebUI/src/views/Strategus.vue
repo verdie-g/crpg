@@ -18,8 +18,13 @@
     >
       <l-control-mouse-position />
       <l-tile-layer :url="url" :attribution="attribution" />
-      <settlement v-for="settlement in settlements" :key="settlement.id" :settlement="settlement" />
-      <hero :hero="hero" />
+      <settlement
+        v-for="settlement in settlements"
+        :key="'settlement-' + settlement.id"
+        :settlement="settlement"
+      />
+      <hero :hero="hero" :self="true" />
+      <hero v-for="vh in visibleHeroes" :key="'hero-' + vh.id" :hero="vh" :self="false" />
     </l-map>
   </div>
 </template>
@@ -38,6 +43,7 @@ import Constants from '../../../../data/constants.json';
 import Hero from '@/models/hero';
 import HeroComponent from '@/components/strategus/HeroComponent.vue';
 import { pointToLatLng } from '@/utils/geometry';
+import HeroVisible from '@/models/hero-visible';
 
 // Register here all dialogs that can be used by the dynamic dialog component.
 const dialogs = {
@@ -87,6 +93,10 @@ export default class Strategus extends Vue {
     return strategusModule.hero;
   }
 
+  get visibleHeroes(): HeroVisible[] {
+    return strategusModule.visibleHeroes;
+  }
+
   get map(): LMap {
     return this.$refs.map as LMap;
   }
@@ -133,6 +143,7 @@ export default class Strategus extends Vue {
     // where a dialog component neeeds to communicate with the map, we should
     // think of a better way to do that.
     if (oldHero === null) {
+      strategusModule.getUpdate();
       this.updateIntervalId = setInterval(() => strategusModule.getUpdate(), 60 * 1000);
       this.map.mapObject.flyTo(pointToLatLng(newHero.position), 5, {
         duration: 0.4,
