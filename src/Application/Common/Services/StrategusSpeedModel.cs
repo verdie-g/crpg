@@ -46,10 +46,10 @@ namespace Crpg.Application.Common.Services
                 if (mounts >= troops)
                 {
                     /*
-                    this is in case there is enough mount for everyone soldier to be mounted. 
-                    The soldier will choose by default the fastest mounts they can find 
-                    In this case the speed of the army is the speed of the slowest mount among the used one 
-                    (which is worst of the top tier mounts) .Currently we're using the hitpoints 
+                    this is in case there is enough mount for everyone soldier to be mounted.
+                    The soldier will choose by default the fastest mounts they can find
+                    In this case the speed of the army is the speed of the slowest mount among the used one
+                    (which is worst of the top tier mounts) .Currently we're using the hitpoints
                     to calculate the speed, because strategus is about sustained speed.
                     Marathon runner are more suited for long distance than sprint runners
                     Manually designed speed for mounts should be added later for more fine tuning
