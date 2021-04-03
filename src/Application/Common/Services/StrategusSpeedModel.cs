@@ -31,31 +31,35 @@ namespace Crpg.Application.Common.Services
 
         private double SlowestMountSpeed(float numberOfTroops, List<StrategusOwnedItem> owneditems)
              {
-            int horses = 0;
+            int mounts = 0;
             double forceMarchSpeed = 2;
             if (owneditems.Any())
             {
                  foreach (StrategusOwnedItem ownedItem in owneditems.OrderBy(i => i.Item!.Mount!.HitPoints))
                      {
-                if (horses < numberOfTroops)
+                if (mounts < numberOfTroops)
                     {
-                        horses += ownedItem.Count;
+                        mounts += ownedItem.Count;
                     }
 
-                if (horses < numberOfTroops )
+                if (mounts < numberOfTroops)
                     {
                         return ownedItem.Item!.Mount!.HitPoints / 100;
+                        /* 
+                        this is in case there is enough mount for everyone soldier to be mounted. In this case the speed of the army is the speed of the slowest mount.
+                        Currently we're using the hitpoints to calculate the speed , but manually designed speed for mounts should be added later
+                        */
                     }
                 }
             }
 
             /*
-            this is in case there is not enough horses for every soldier to be mounted
+            this is in case there is not enough mounts for every soldier to be mounted
             the model for this is assuming some of the soldiers have to walk.
-            Since they can change places with someone that is already on a horse, they can afford to walk faster
-            the more the ratio numberOfTroops / horses is close to 1 , the more they can afford.
+            Since they can change places with someone that is already on a mount, they can afford to walk faster
+            the more the ratio numberOfTroops / mounts is close to 1 , the more they can afford.
             */
-            return forceMarchSpeed * numberOfTroops / horses + (1 - numberOfTroops / horses);
+            return forceMarchSpeed * numberOfTroops / mounts + (1 - numberOfTroops / mounts);
              }
     }
 }
