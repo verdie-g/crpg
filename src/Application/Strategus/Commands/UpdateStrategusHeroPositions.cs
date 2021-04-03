@@ -227,7 +227,6 @@ namespace Crpg.Application.Strategus.Commands
 
             private bool MoveHeroTowardsPoint(StrategusHero hero, Point targetPoint, TimeSpan deltaTime, bool canInteractWithTarget)
             {
-
                 double speed = _strategusSpeedModel.ComputeHeroSpeed(hero);
                 double distance = speed * deltaTime.TotalSeconds;
                 hero.Position = _strategusMap.MovePointTowards(hero.Position, targetPoint, distance);
