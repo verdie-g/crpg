@@ -23,7 +23,6 @@ namespace Crpg.Application.Common.Services
         {
             double terrainSpeedFactor = 1;
             double weightFactor = 1;
-            double troopInfluence = 2 / (1 + Math.Log10(1 + hero.Troops / 10));
             /*
                       Troops        | troopInfluence |
             ------------------------+----------------+
@@ -31,7 +30,9 @@ namespace Crpg.Application.Common.Services
              100                    |        1=2/2   |
              1000                   |          2/3   |
              10000                  |          2/4   |
-            */
+            this divide the speed of the army by the order of magnitude of its size.
+            10000 is four zeros so the denominator is 4 */
+            double troopInfluence = 2 / (1 + Math.Log10(1 + hero.Troops / 10));
             return terrainSpeedFactor * weightFactor * SlowestMountSpeed(hero.Troops, hero.OwnedItems!) * troopInfluence;
         }
 
