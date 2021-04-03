@@ -36,14 +36,14 @@ namespace Crpg.Application.Common.Services
             return terrainSpeedFactor * weightFactor * SlowestMountSpeed(hero.Troops, hero.OwnedItems!) * troopInfluence;
         }
 
-        private double SlowestMountSpeed(float numberOfTroops, List<StrategusOwnedItem> ownedItems)
+        private double SlowestMountSpeed(float troops, List<StrategusOwnedItem> ownedItems)
         {
             int mounts = 0;
             double forcedMarchSpeed = 2;
             foreach (StrategusOwnedItem ownedItem in ownedItems.OrderByDescending(i => i.Item!.Mount!.HitPoints))
             {
                 mounts += ownedItem.Count;
-                if (mounts >= numberOfTroops)
+                if (mounts >= troops)
                 {
                     /*
                     this is in case there is enough mount for everyone soldier to be mounted. 
@@ -62,9 +62,9 @@ namespace Crpg.Application.Common.Services
             this is in case there is not enough mounts for every soldier to be mounted
             the model for this is assuming some of the soldiers have to walk.
             Since they can change places with someone that is already on a mount, they can afford to walk faster
-            the more the ratio numberOfTroops / mounts is close to 1 , the more they can afford.
+            the more the ratio troops / mounts is close to 1 , the more they can afford.
             */
-            return forcedMarchSpeed * numberOfTroops / mounts + (1 - numberOfTroops / mounts);
+            return forcedMarchSpeed * troops / mounts + (1 - troops / mounts);
         }
     }
 }
