@@ -8,7 +8,7 @@ using Crpg.Domain.Entities.Strategus;
 namespace Crpg.Application.Common.Services
 {
     /// <summary>
-    /// Service to compute the speed of an <see cref="StrategusHero"/>.
+    /// Service to compute the speed of a <see cref="StrategusHero"/>.
     /// </summary>
     internal interface IStrategusSpeedModel
     {
