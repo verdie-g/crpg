@@ -3,12 +3,15 @@ using Microsoft.EntityFrameworkCore.Design;
 
 namespace Crpg.Persistence
 {
+    /// <summary>
+    /// Provides options for "dotnet ef" tool.
+    /// </summary>
     public class CrpgDbContextFactory : IDesignTimeDbContextFactory<CrpgDbContext>
     {
         public CrpgDbContext CreateDbContext(string[] args)
         {
             var options = new DbContextOptionsBuilder<CrpgDbContext>()
-                .UseNpgsql("Database=crpg", options => options.UseNetTopologySuite())
+                .UseNpgsql("Host=localhost;Database=crpg;Username=postgres;Password=root", options => options.UseNetTopologySuite())
                 .UseSnakeCaseNamingConvention()
                 .Options;
             return new CrpgDbContext(options);

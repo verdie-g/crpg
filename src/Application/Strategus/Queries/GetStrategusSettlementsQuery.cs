@@ -26,11 +26,11 @@ namespace Crpg.Application.Strategus.Queries
 
             public async Task<Result<IList<StrategusSettlementPublicViewModel>>> Handle(GetStrategusSettlementsQuery req, CancellationToken cancellationToken)
             {
-                var clan = await _db.StrategusSettlements
+                var settlements = await _db.StrategusSettlements
                     .ProjectTo<StrategusSettlementPublicViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
-                return new(clan);
+                return new(settlements);
             }
         }
     }

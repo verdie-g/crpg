@@ -39,6 +39,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using NetTopologySuite.Geometries;
 using NetTopologySuite.IO.Converters;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
@@ -73,7 +74,7 @@ namespace Crpg.WebApi
                 .AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.Converters.Add(new TimeSpanConverter());
-                    options.JsonSerializerOptions.Converters.Add(new GeoJsonConverterFactory());
+                    options.JsonSerializerOptions.Converters.Add(new GeoJsonConverterFactory(GeometryFactory.Default));
                     options.JsonSerializerOptions.Converters.Add(new JsonArrayStringEnumFlagsConverterFactory());
                     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 });

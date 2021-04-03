@@ -109,6 +109,9 @@ namespace Crpg.Application.System.Commands
                     },
                 };
 
+                var existingUsers = (await _db.Users.ToArrayAsync())
+                    .Select(u => (u.Platform, u.PlatformUserId))
+                    .ToHashSet();
                 foreach (var user in users)
                 {
                     foreach (var character in user.Characters)
@@ -116,7 +119,7 @@ namespace Crpg.Application.System.Commands
                         _characterService.ResetCharacterStats(character, respecialization: true);
                     }
 
-                    if (!(await _db.Users.AnyAsync(u => u.Platform == user.Platform && u.PlatformUserId == user.PlatformUserId)))
+                    if (!existingUsers.Contains((user.Platform, user.PlatformUserId)))
                     {
                         _db.Users.Add(user);
                     }
