@@ -28,11 +28,9 @@ namespace Crpg.Application.Common.Services
             double troopInfluence = 2 / (1 + Math.Log10(1 + hero.Troops / 10));
             return terrainSpeedFactor * weightFactor * SlowestMountSpeed(hero.Troops, hero.OwnedItems!) * troopInfluence;
         }
+
         private double SlowestMountSpeed(float numberOfTroops, List<StrategusOwnedItem> owneditems)
              {
-            // The table should have in its first column the type of horse , and in its second column how many there is
-            // Courser | 12
-            // palfrey | 5
             int horses = 0;
             double forceMarchSpeed = 2;
             if (owneditems.Any())
@@ -43,14 +41,21 @@ namespace Crpg.Application.Common.Services
                     {
                         horses += ownedItem.Count;
                     }
-                    else
+
+                if (horses < numberOfTroops )
                     {
                         return ownedItem.Item!.Mount!.HitPoints / 100;
                     }
                 }
             }
 
-            return forceMarchSpeed * horses / numberOfTroops + (1 - horses / numberOfTroops);
+            /*
+            this is in case there is not enough horses for every soldier to be mounted
+            the model for this is assuming some of the soldiers have to walk.
+            Since they can change places with someone that is already on a horse, they can afford to walk faster
+            the more the ratio numberOfTroops / horses is close to 1 , the more they can afford.
+            */
+            return forceMarchSpeed * numberOfTroops / horses + (1 - numberOfTroops / horses);
              }
     }
 }
