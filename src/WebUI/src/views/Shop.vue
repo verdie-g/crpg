@@ -155,9 +155,7 @@ export default class Shop extends Vue {
       type: this.$route.query.type ? (this.$route.query.type as ItemType) : null,
       culture: this.$route.query.culture ? (this.$route.query.culture as Culture) : null,
       showOwned:
-        this.$route.query.showOwned !== undefined
-          ? this.$route.query.showOwned === 'true'
-          : true,
+        this.$route.query.showOwned !== undefined ? this.$route.query.showOwned === 'true' : true,
     };
   }
 

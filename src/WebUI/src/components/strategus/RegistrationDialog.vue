@@ -47,7 +47,7 @@ import Region from '@/models/region';
 @Component
 export default class RegistrationDialog extends Vue {
   selectedRegion: Region | null = null;
-  registering: boolean = false;
+  registering = false;
 
   get regions(): [string, string][] {
     return Object.entries(strategusService.regionToStr);
