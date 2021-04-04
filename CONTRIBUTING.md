@@ -44,7 +44,7 @@ The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the foll
 - [Buefy](https://buefy.org) - Vue wrapper of Bulma
 - [Sass](https://sass-lang.com) - CSS pre-processor
 - [Font Awesome](https://fontawesome.com) for icons
-- [Eslint](https://eslint.org) to enforce coding style and best practices. Use `yarn lint` to fix your code
+- [Eslint](https://eslint.org) to enforce coding style and best practices. Use `yarn lint-fix` to fix your code
 
 ## Run
 
