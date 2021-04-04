@@ -1,11 +1,5 @@
 <template>
   <div class="strategus-main">
-    <div class="strategus-html-layer columns p-6">
-      <div class="column is-one-third box strategus-dialog" v-if="currentDialog">
-        <component :is="currentDialog" />
-      </div>
-    </div>
-
     <l-map
       ref="map"
       class="map"
@@ -17,6 +11,13 @@
       @moveend="onMapBoundsChange"
     >
       <l-control-mouse-position />
+      <l-control position="topleft">
+        <div class="columns p-6">
+          <div class="column is-one-third box" v-if="currentDialog">
+            <component :is="currentDialog" />
+          </div>
+        </div>
+      </l-control>
       <l-tile-layer :url="url" :attribution="attribution" />
       <settlement
         v-for="settlement in settlements"
@@ -32,7 +33,7 @@
 <script lang="ts">
 import { Vue, Component, Watch } from 'vue-property-decorator';
 import { LatLng, LatLngBounds, CRS } from 'leaflet';
-import { LMap, LTileLayer, LCircleMarker } from 'vue2-leaflet';
+import { LMap, LTileLayer, LCircleMarker, LControl } from 'vue2-leaflet';
 import LControlMousePosition from '@/components/strategus/LControlMousePosition.vue';
 import Settlement from '@/models/settlement-public';
 import SettlementType from '@/models/settlement-type';
@@ -56,6 +57,7 @@ const dialogs = {
     LTileLayer,
     LCircleMarker,
     LControlMousePosition,
+    LControl,
     ...dialogs,
     settlement: SettlementComponent,
     hero: HeroComponent,
@@ -79,7 +81,7 @@ export default class Strategus extends Vue {
     [-Constants.strategusMapHeight, Constants.strategusMapWidth * 3],
   ]);
   mapBounds: LatLngBounds | null = null;
-  updateIntervalId: number = -1;
+  updateIntervalId = -1;
 
   get settlements(): Settlement[] {
     if (this.mapBounds === null) {
@@ -162,16 +164,6 @@ html {
 
 <style scoped lang="scss">
 .strategus-main {
-  position: relative;
-
-  .strategus-html-layer {
-    position: absolute;
-  }
-
-  .strategus-dialog {
-    z-index: 500; // To be over the map.
-  }
-
   .map {
     // calc(Screen height - navbar)
     height: calc(100vh - 4.25rem);
