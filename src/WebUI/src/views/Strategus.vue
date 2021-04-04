@@ -164,8 +164,6 @@ html {
 
 <style scoped lang="scss">
 .strategus-main {
-  position: relative;
-
   .map {
     // calc(Screen height - navbar)
     height: calc(100vh - 4.25rem);
