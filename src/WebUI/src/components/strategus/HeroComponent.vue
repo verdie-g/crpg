@@ -1,6 +1,5 @@
 <template>
   <l-circle-marker
-    v-if="hero"
     :lat-lng="[hero.position.coordinates[1], hero.position.coordinates[0]]"
     :radius="markerRadius"
     :color="markerColor"
@@ -25,14 +24,10 @@ const maxRadius = 10;
   components: { LCircleMarker, LTooltip },
 })
 export default class HeroComponent extends Vue {
-  @Prop(Object) readonly hero: Hero | null;
+  @Prop(Object) readonly hero: Hero;
   @Prop(Boolean) readonly self: boolean;
 
   get markerRadius(): number {
-    if (this.hero === null) {
-      return 0;
-    }
-
     const troopsRange = Constants.strategusMaxHeroTroops - Constants.strategusMinHeroTroops;
     const sizeFactor = this.hero.troops / troopsRange;
     return minRadius + sizeFactor * (maxRadius - minRadius);
