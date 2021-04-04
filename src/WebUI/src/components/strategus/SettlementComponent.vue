@@ -1,10 +1,7 @@
 <template>
   <l-marker :lat-lng="[settlement.position.coordinates[1], settlement.position.coordinates[0]]">
     <l-icon class-name="is-flex is-justify-content-center is-align-items-center">
-      <div
-        class="settlement-icon-txt has-text-light px-3"
-        :class="getSettlementCssClass(settlement)"
-      >
+      <div class="settlement-icon-txt has-text-light px-3" :class="settlementCssClass">
         {{ settlement.name }}
       </div>
     </l-icon>
@@ -21,10 +18,10 @@ import SettlementType from '@/models/settlement-type';
   components: { LIcon, LMarker },
 })
 export default class SettlementComponent extends Vue {
-  @Prop(Object) readonly settlement: Settlement[];
+  @Prop(Object) readonly settlement: Settlement;
 
-  getSettlementCssClass(settlement: Settlement): string {
-    switch (settlement.type) {
+  get settlementCssClass(): string {
+    switch (this.settlement.type) {
       case SettlementType.Village:
         return 'is-size-7';
       case SettlementType.Castle:
