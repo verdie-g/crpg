@@ -46,7 +46,7 @@ class StrategusModule extends VuexModule {
   }
 
   @Action({ commit: 'setHero' })
-  async registerUser(region: Region): Promise<Hero> {
+  registerUser(region: Region): Promise<Hero> {
     return strategusService.registerUser(region);
   }
 
