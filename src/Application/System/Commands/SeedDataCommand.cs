@@ -27,11 +27,11 @@ namespace Crpg.Application.System.Commands
             private readonly IApplicationEnvironment _appEnv;
             private readonly ICharacterService _characterService;
             private readonly IExperienceTable _experienceTable;
-            private readonly ItemValueService _itemValueService;
+            private readonly ItemValueModel _itemValueModel;
             private readonly ItemModifierService _itemModifierService;
 
             public Handler(ICrpgDbContext db, IItemsSource itemsSource, IApplicationEnvironment appEnv,
-                ICharacterService characterService, IExperienceTable experienceTable, ItemValueService itemValueService,
+                ICharacterService characterService, IExperienceTable experienceTable, ItemValueModel itemValueModel,
                 ItemModifierService itemModifierService)
             {
                 _db = db;
@@ -39,7 +39,7 @@ namespace Crpg.Application.System.Commands
                 _appEnv = appEnv;
                 _characterService = characterService;
                 _experienceTable = experienceTable;
-                _itemValueService = itemValueService;
+                _itemValueModel = itemValueModel;
                 _itemModifierService = itemModifierService;
             }
 
@@ -138,7 +138,7 @@ namespace Crpg.Application.System.Commands
                 foreach (ItemCreation item in itemsByMdId.Values)
                 {
                     Item baseItem = ItemCreationToItem(item);
-                    baseItem.Value = _itemValueService.ComputeItemValue(baseItem);
+                    baseItem.Value = _itemValueModel.ComputeItemValue(baseItem);
                     // EF Core doesn't support creating an entity referencing itself, which is needed for items with
                     // rank = 0. Workaround is to set BaseItemId to null and replace with the reference to the item
                     // once it was created. This is the only reason why BaseItemId is nullable.

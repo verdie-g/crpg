@@ -4,9 +4,9 @@ using Crpg.Domain.Entities.Items;
 namespace Crpg.Application.Common.Services
 {
     /// <summary>
-    /// Service to compute the value of an <see cref="Item"/>.
+    /// Model to compute the value of an <see cref="Item"/>.
     /// </summary>
-    internal class ItemValueService
+    internal class ItemValueModel
     {
         public int ComputeItemValue(Item item)
         {

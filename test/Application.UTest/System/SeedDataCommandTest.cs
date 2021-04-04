@@ -23,7 +23,7 @@ namespace Crpg.Application.UTest.System
         private static readonly ICharacterService CharacterService = Mock.Of<ICharacterService>();
         private static readonly ItemModifiers ItemModifiers = new FileItemModifiersSource().LoadItemModifiers();
         private static readonly ItemModifierService ItemModifierService = new(ItemModifiers);
-        private static readonly ItemValueService ItemValueService = new();
+        private static readonly ItemValueModel ItemValueModel = new();
 
         [Test]
         public async Task ShouldInsertItemsFromItemSourceWithAllRanks()
@@ -37,7 +37,7 @@ namespace Crpg.Application.UTest.System
                 });
 
             var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
-                CharacterService, ExperienceTable, ItemValueService, ItemModifierService);
+                CharacterService, ExperienceTable, ItemValueModel, ItemModifierService);
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
 
             var items = await AssertDb.Items.ToArrayAsync();
@@ -63,7 +63,7 @@ namespace Crpg.Application.UTest.System
                 .ReturnsAsync(Array.Empty<ItemCreation>());
 
             var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
-                CharacterService, ExperienceTable, ItemValueService, ItemModifierService);
+                CharacterService, ExperienceTable, ItemValueModel, ItemModifierService);
 
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
             var items = await AssertDb.Items.ToArrayAsync();
@@ -145,7 +145,7 @@ namespace Crpg.Application.UTest.System
 
             var itemModifierService = new ItemModifierService(itemModifiers);
             var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
-                CharacterService, ExperienceTable, ItemValueService, itemModifierService);
+                CharacterService, ExperienceTable, ItemValueModel, itemModifierService);
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
             var newItems = await AssertDb.Items.ToDictionaryAsync(i => i.Rank);
             Assert.AreEqual(7, newItems.Count, "Modifying an item added or removed one");
