@@ -106,7 +106,7 @@ namespace Crpg.Application.UTest.Games
                         },
                         AutoRepair = true,
                     },
-                }
+                },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -135,7 +135,7 @@ namespace Crpg.Application.UTest.Games
                             new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[10].ItemId, RepairCost = 600 },
                         },
                     },
-                }
+                },
             }, CancellationToken.None);
 
             var data = result.Data!;
@@ -186,7 +186,7 @@ namespace Crpg.Application.UTest.Games
                         },
                         AutoRepair = false,
                     },
-                }
+                },
             };
             ArrangeDb.Users.Add(user);
 
@@ -233,7 +233,7 @@ namespace Crpg.Application.UTest.Games
                             new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[10].ItemId, RepairCost = 600 },
                         },
                     },
-                }
+                },
             }, CancellationToken.None);
 
             var data = result.Data!;
@@ -289,7 +289,7 @@ namespace Crpg.Application.UTest.Games
                         AutoRepair = true,
                     },
                 },
-                OwnedItems = { new OwnedItem { Item = handItem } }
+                OwnedItems = { new OwnedItem { Item = handItem } },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -311,7 +311,7 @@ namespace Crpg.Application.UTest.Games
                             new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[3].ItemId, RepairCost = 1000 },
                         },
                     },
-                }
+                },
             }, CancellationToken.None);
 
             var data = result.Data!;

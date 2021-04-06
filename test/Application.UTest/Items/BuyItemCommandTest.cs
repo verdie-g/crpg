@@ -113,7 +113,7 @@ namespace Crpg.Application.UTest.Items
             var user = ArrangeDb.Users.Add(new User
             {
                 Gold = 100,
-                OwnedItems = new List<OwnedItem> { new() { ItemId = item.Entity.Id } }
+                OwnedItems = new List<OwnedItem> { new() { ItemId = item.Entity.Id } },
             });
             await ArrangeDb.SaveChangesAsync();
 

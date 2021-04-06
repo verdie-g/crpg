@@ -217,7 +217,7 @@ namespace Crpg.Application.UTest.Characters
             var character = ArrangeDb.Characters.Add(new Character());
             var user = ArrangeDb.Users.Add(new User
             {
-                Characters = new List<Character> { character.Entity }
+                Characters = new List<Character> { character.Entity },
             });
             await ArrangeDb.SaveChangesAsync();
 
@@ -240,7 +240,7 @@ namespace Crpg.Application.UTest.Characters
             var character = ArrangeDb.Characters.Add(new Character());
             var user = ArrangeDb.Users.Add(new User
             {
-                Characters = new List<Character> { character.Entity }
+                Characters = new List<Character> { character.Entity },
             });
             await ArrangeDb.SaveChangesAsync();
 

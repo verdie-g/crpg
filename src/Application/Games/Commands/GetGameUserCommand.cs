@@ -32,7 +32,6 @@ namespace Crpg.Application.Games.Commands
 
         internal class Handler : IMediatorRequestHandler<GetGameUserCommand, GameUser>
         {
-            private static readonly ILogger Logger = LoggerFactory.CreateLogger<GetGameUserCommand>();
             internal static readonly (string mbId, ItemSlot slot)[][] DefaultItemSets =
             {
                 // aserai
@@ -102,6 +101,7 @@ namespace Crpg.Application.Games.Commands
                     ("peasant_hatchet_1_t1", ItemSlot.Weapon2),
                 },
             };
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<GetGameUserCommand>();
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

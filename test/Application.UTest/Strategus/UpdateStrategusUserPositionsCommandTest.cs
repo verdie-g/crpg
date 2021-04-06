@@ -40,7 +40,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
-                DeltaTime = TimeSpan.FromMinutes(1)
+                DeltaTime = TimeSpan.FromMinutes(1),
             }, CancellationToken.None);
 
             strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
@@ -75,7 +75,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
-                DeltaTime = TimeSpan.FromMinutes(1)
+                DeltaTime = TimeSpan.FromMinutes(1),
             }, CancellationToken.None);
 
             strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
@@ -110,7 +110,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
-                DeltaTime = TimeSpan.FromMinutes(1)
+                DeltaTime = TimeSpan.FromMinutes(1),
             }, CancellationToken.None);
 
             strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
@@ -143,7 +143,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
-                DeltaTime = TimeSpan.FromMinutes(1)
+                DeltaTime = TimeSpan.FromMinutes(1),
             }, CancellationToken.None);
 
             strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
@@ -193,7 +193,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
-                DeltaTime = TimeSpan.FromMinutes(1)
+                DeltaTime = TimeSpan.FromMinutes(1),
             }, CancellationToken.None);
 
             strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
@@ -237,7 +237,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
-                DeltaTime = TimeSpan.FromMinutes(1)
+                DeltaTime = TimeSpan.FromMinutes(1),
             }, CancellationToken.None);
 
             Assert.AreEqual(0, await AssertDb.StrategusBattles.CountAsync());
@@ -277,7 +277,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
-                DeltaTime = TimeSpan.FromMinutes(1)
+                DeltaTime = TimeSpan.FromMinutes(1),
             }, CancellationToken.None);
 
             var battle = await AssertDb.StrategusBattles
@@ -328,7 +328,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
-                DeltaTime = TimeSpan.FromMinutes(1)
+                DeltaTime = TimeSpan.FromMinutes(1),
             }, CancellationToken.None);
 
             strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
@@ -362,7 +362,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
-                DeltaTime = TimeSpan.FromMinutes(1)
+                DeltaTime = TimeSpan.FromMinutes(1),
             }, CancellationToken.None);
 
             strategusHero = await AssertDb.StrategusHeroes.FirstAsync(u => u.Id == strategusHero.Id);
@@ -403,7 +403,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
-                DeltaTime = TimeSpan.FromMinutes(1)
+                DeltaTime = TimeSpan.FromMinutes(1),
             }, CancellationToken.None);
 
             Assert.AreEqual(1, await AssertDb.StrategusBattles.CountAsync());
@@ -436,7 +436,7 @@ namespace Crpg.Application.UTest.Strategus
             var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
-                DeltaTime = TimeSpan.FromMinutes(1)
+                DeltaTime = TimeSpan.FromMinutes(1),
             }, CancellationToken.None);
 
             var battle = await AssertDb.StrategusBattles

@@ -140,7 +140,7 @@ namespace Crpg.Application.UTest.System
                     new ArmorItemModifier { Name = "d", Armor = 1.2f },
                     new ArmorItemModifier { Name = "e", Armor = 1.4f },
                     new ArmorItemModifier { Name = "f", Armor = 1.6f },
-                }
+                },
             };
 
             var itemModifierService = new ItemModifierService(itemModifiers);

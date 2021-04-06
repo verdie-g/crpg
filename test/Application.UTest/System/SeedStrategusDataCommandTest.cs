@@ -8,7 +8,6 @@ using Crpg.Application.Strategus.Models;
 using Crpg.Application.System.Commands;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Strategus;
-using Crpg.Sdk;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
@@ -21,13 +20,6 @@ namespace Crpg.Application.UTest.System
     {
         private static readonly Region[] Regions = Enum.GetValues(typeof(Region)).Cast<Region>().ToArray();
         private static readonly IApplicationEnvironment AppEnv = CreateApplicationEnvironment();
-
-        private static IApplicationEnvironment CreateApplicationEnvironment()
-        {
-            var appEnvMock = new Mock<IApplicationEnvironment>();
-            appEnvMock.Setup(e => e.Environment).Returns(HostingEnvironment.Production);
-            return appEnvMock.Object;
-        }
 
         [Test]
         public async Task ShouldAddSettlementIfDoesntExistsInDb()
@@ -109,7 +101,7 @@ namespace Crpg.Application.UTest.System
                         Culture = Culture.Battania,
                         Position = new Point(3, 4),
                         Scene = "def",
-                    }
+                    },
                 });
 
             var strategusMapMock = new Mock<IStrategusMap>();
@@ -165,6 +157,13 @@ namespace Crpg.Application.UTest.System
 
             var settlements = await AssertDb.StrategusSettlements.ToArrayAsync();
             Assert.AreEqual(0, settlements.Length);
+        }
+
+        private static IApplicationEnvironment CreateApplicationEnvironment()
+        {
+            var appEnvMock = new Mock<IApplicationEnvironment>();
+            appEnvMock.Setup(e => e.Environment).Returns(HostingEnvironment.Production);
+            return appEnvMock.Object;
         }
     }
 }

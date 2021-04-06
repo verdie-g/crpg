@@ -132,7 +132,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     // Already owned item
                     new OwnedItem { ItemId = ArrangeDb.Items.First(i => i.TemplateMbId == GetGameUserCommand.Handler.DefaultItemSets[1][0].mbId).Id },
-                }
+                },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -245,7 +245,7 @@ namespace Crpg.Application.UTest.Games
                     {
                         CreatedAt = new DateTimeOffset(new DateTime(2000, 1, 1)),
                         Duration = TimeSpan.FromDays(1),
-                    }
+                    },
                 },
             };
             ArrangeDb.Users.Add(user);

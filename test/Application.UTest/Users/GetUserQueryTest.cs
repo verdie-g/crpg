@@ -32,7 +32,7 @@ namespace Crpg.Application.UTest.Users
                 Role = Role.Admin,
                 AvatarSmall = new Uri("http://ghi.klm"),
                 AvatarMedium = new Uri("http://mno.pqr"),
-                AvatarFull = new Uri("http://stu.vwx")
+                AvatarFull = new Uri("http://stu.vwx"),
             };
             ArrangeDb.Users.Add(dbUser);
             await ArrangeDb.SaveChangesAsync();

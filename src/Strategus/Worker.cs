@@ -67,7 +67,7 @@ namespace Crpg.Strategus
             }
         }
 
-        private static Task SleepUntilNextTick(TimeSpan elapsed, CancellationToken cancellationToken)
+        private Task SleepUntilNextTick(TimeSpan elapsed, CancellationToken cancellationToken)
         {
             TimeSpan remainingTimeInTick = TickInterval - elapsed;
             if (remainingTimeInTick > TimeSpan.Zero)

@@ -20,7 +20,7 @@ namespace Crpg.Application.UTest.Items
                 {
                     new() { Item = new Item() },
                     new() { Item = new Item() },
-                }
+                },
             });
             await ArrangeDb.SaveChangesAsync();
 

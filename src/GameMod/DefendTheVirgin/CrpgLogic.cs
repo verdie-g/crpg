@@ -78,7 +78,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             _userAccessor.User = res.Data!.UpdateResults[0].User;
         }
 
-        private static int ComputeWaveTier(IEnumerable<WaveGroup> wave)
+        private int ComputeWaveTier(IEnumerable<WaveGroup> wave)
         {
             float value = 0;
             foreach (var group in wave)

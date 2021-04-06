@@ -40,7 +40,7 @@ namespace Crpg.Application.UTest.Characters
                 User = new User
                 {
                     HeirloomPoints = 1,
-                }
+                },
             };
             ArrangeDb.Add(character);
             await ArrangeDb.SaveChangesAsync();

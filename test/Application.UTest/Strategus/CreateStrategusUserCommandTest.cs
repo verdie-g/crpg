@@ -39,7 +39,7 @@ namespace Crpg.Application.UTest.Strategus
         {
             var user = new User
             {
-                StrategusHero = new StrategusHero()
+                StrategusHero = new StrategusHero(),
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();

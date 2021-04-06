@@ -49,7 +49,7 @@ namespace Crpg.Application.UTest.Characters
                 {
                     CharacterId = character.Entity.Id,
                     UserId = character.Entity.UserId,
-                    Conversion = CharacterStatisticConversion.SkillsToAttributes
+                    Conversion = CharacterStatisticConversion.SkillsToAttributes,
                 }, CancellationToken.None);
 
             var stats = result.Data!;
@@ -91,7 +91,7 @@ namespace Crpg.Application.UTest.Characters
             {
                 CharacterId = character.Entity.Id,
                 UserId = character.Entity.UserId,
-                Conversion = CharacterStatisticConversion.SkillsToAttributes
+                Conversion = CharacterStatisticConversion.SkillsToAttributes,
             }, CancellationToken.None);
             Assert.AreEqual(ErrorCode.NotEnoughSkillPoints, result.Errors![0].Code);
         }

@@ -210,7 +210,7 @@ namespace Crpg.Application.System.Commands
                 }
             }
 
-            private static Item ItemCreationToItem(ItemCreation item)
+            private Item ItemCreationToItem(ItemCreation item)
             {
                 var res = new Item
                 {
@@ -263,7 +263,7 @@ namespace Crpg.Application.System.Commands
                 return res;
             }
 
-            private static ItemWeaponComponent IteamWeaponComponentFromViewModel(ItemWeaponComponentViewModel weaponComponent)
+            private ItemWeaponComponent IteamWeaponComponentFromViewModel(ItemWeaponComponentViewModel weaponComponent)
             {
                 return new()
                 {

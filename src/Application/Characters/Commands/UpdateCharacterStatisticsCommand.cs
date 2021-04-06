@@ -135,7 +135,7 @@ namespace Crpg.Application.Characters.Commands
                 return new Result();
             }
 
-            private static int CheckedDelta(int oldStat, int newStat, Func<int, int>? cost = null)
+            private int CheckedDelta(int oldStat, int newStat, Func<int, int>? cost = null)
             {
                 int delta = cost == null
                     ? newStat - oldStat
@@ -148,7 +148,7 @@ namespace Crpg.Application.Characters.Commands
                 throw new StatisticDecreasedException();
             }
 
-            private static bool CheckSkillsRequirement(CharacterStatisticsViewModel stats)
+            private bool CheckSkillsRequirement(CharacterStatisticsViewModel stats)
             {
                 return stats.Skills.IronFlesh <= stats.Attributes.Strength / 3
                     && stats.Skills.PowerStrike <= stats.Attributes.Strength / 3

@@ -186,7 +186,7 @@ namespace Crpg.Application.System.Commands
                 return _db.StrategusSettlements.FirstAsync(s => s.Name == name);
             }
 
-            private static StrategusHero NewHero(string steamId, string name, int troops, Point position,
+            private StrategusHero NewHero(string steamId, string name, int troops, Point position,
                 StrategusHeroStatus status, Point? wayPoint = null, StrategusHero? heroTarget = null,
                 StrategusSettlement? settlementTarget = null) =>
                 new()
@@ -198,10 +198,10 @@ namespace Crpg.Application.System.Commands
                     Status = status,
                     Waypoints = new MultiPoint(wayPoint != null ? new[] { wayPoint } : Array.Empty<Point>()),
                     TargetedHero = heroTarget,
-                    TargetedSettlement = settlementTarget
+                    TargetedSettlement = settlementTarget,
                 };
 
-            private static IEnumerable<Region> GetRegions() => Enum.GetValues(typeof(Region)).Cast<Region>();
+            private IEnumerable<Region> GetRegions() => Enum.GetValues(typeof(Region)).Cast<Region>();
         }
     }
 }

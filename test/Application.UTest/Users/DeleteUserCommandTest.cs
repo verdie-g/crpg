@@ -38,7 +38,7 @@ namespace Crpg.Application.UTest.Users
             var handler = new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), userService);
             await handler.Handle(new DeleteUserCommand
             {
-                UserId = user.Entity.Id
+                UserId = user.Entity.Id,
             }, CancellationToken.None);
 
             var dbUser = await AssertDb.Users.FirstOrDefaultAsync(u => u.Id == user.Entity.Id);

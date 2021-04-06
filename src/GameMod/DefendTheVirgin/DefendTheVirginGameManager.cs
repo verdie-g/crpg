@@ -32,54 +32,6 @@ namespace Crpg.GameMod.DefendTheVirgin
         private CrpgConstants? _crpgConstants;
         private WaveGroup[][]? _waves;
 
-        protected override void DoLoadingForGameManager(
-            GameManagerLoadingSteps gameManagerLoadingStep,
-            out GameManagerLoadingSteps nextStep)
-        {
-            nextStep = GameManagerLoadingSteps.None;
-            switch (gameManagerLoadingStep)
-            {
-                case GameManagerLoadingSteps.PreInitializeZerothStep:
-                    LoadModuleData(false);
-                    _getUserTask = GetUserAsync();
-                    _getItemsTask = GetCrpgItems();
-                    _crpgConstants = LoadCrpgConstants();
-                    _waves = LoadWaves();
-                    MBGlobals.InitializeReferences();
-                    Game.CreateGame(new DefendTheVirginGame(), this).DoLoading();
-                    nextStep = GameManagerLoadingSteps.FirstInitializeFirstStep;
-                    break;
-                case GameManagerLoadingSteps.FirstInitializeFirstStep:
-                    bool flag = true;
-                    foreach (MBSubModuleBase subModule in Module.CurrentModule.SubModules)
-                    {
-                        flag = flag && subModule.DoLoading(Game.Current);
-                    }
-
-                    nextStep = flag
-                        ? GameManagerLoadingSteps.WaitSecondStep
-                        : GameManagerLoadingSteps.FirstInitializeFirstStep;
-                    break;
-                case GameManagerLoadingSteps.WaitSecondStep:
-                    StartNewGame();
-                    nextStep = GameManagerLoadingSteps.SecondInitializeThirdState;
-                    break;
-                case GameManagerLoadingSteps.SecondInitializeThirdState:
-                    nextStep = Game.Current.DoLoading()
-                        ? GameManagerLoadingSteps.PostInitializeFourthState
-                        : GameManagerLoadingSteps.SecondInitializeThirdState;
-                    break;
-                case GameManagerLoadingSteps.PostInitializeFourthState:
-                    nextStep = _getUserTask!.IsCompleted && _getItemsTask!.IsCompleted
-                        ? GameManagerLoadingSteps.FinishLoadingFifthStep
-                        : GameManagerLoadingSteps.PostInitializeFourthState;
-                    break;
-                case GameManagerLoadingSteps.FinishLoadingFifthStep:
-                    nextStep = GameManagerLoadingSteps.None;
-                    break;
-            }
-        }
-
         public override void OnLoadFinished()
         {
             base.OnLoadFinished();
@@ -133,6 +85,54 @@ namespace Crpg.GameMod.DefendTheVirgin
             });
         }
 
+        protected override void DoLoadingForGameManager(
+            GameManagerLoadingSteps gameManagerLoadingStep,
+            out GameManagerLoadingSteps nextStep)
+        {
+            nextStep = GameManagerLoadingSteps.None;
+            switch (gameManagerLoadingStep)
+            {
+                case GameManagerLoadingSteps.PreInitializeZerothStep:
+                    LoadModuleData(false);
+                    _getUserTask = GetUserAsync();
+                    _getItemsTask = GetCrpgItems();
+                    _crpgConstants = LoadCrpgConstants();
+                    _waves = LoadWaves();
+                    MBGlobals.InitializeReferences();
+                    Game.CreateGame(new DefendTheVirginGame(), this).DoLoading();
+                    nextStep = GameManagerLoadingSteps.FirstInitializeFirstStep;
+                    break;
+                case GameManagerLoadingSteps.FirstInitializeFirstStep:
+                    bool flag = true;
+                    foreach (MBSubModuleBase subModule in Module.CurrentModule.SubModules)
+                    {
+                        flag = flag && subModule.DoLoading(Game.Current);
+                    }
+
+                    nextStep = flag
+                        ? GameManagerLoadingSteps.WaitSecondStep
+                        : GameManagerLoadingSteps.FirstInitializeFirstStep;
+                    break;
+                case GameManagerLoadingSteps.WaitSecondStep:
+                    StartNewGame();
+                    nextStep = GameManagerLoadingSteps.SecondInitializeThirdState;
+                    break;
+                case GameManagerLoadingSteps.SecondInitializeThirdState:
+                    nextStep = Game.Current.DoLoading()
+                        ? GameManagerLoadingSteps.PostInitializeFourthState
+                        : GameManagerLoadingSteps.SecondInitializeThirdState;
+                    break;
+                case GameManagerLoadingSteps.PostInitializeFourthState:
+                    nextStep = _getUserTask!.IsCompleted && _getItemsTask!.IsCompleted
+                        ? GameManagerLoadingSteps.FinishLoadingFifthStep
+                        : GameManagerLoadingSteps.PostInitializeFourthState;
+                    break;
+                case GameManagerLoadingSteps.FinishLoadingFifthStep:
+                    nextStep = GameManagerLoadingSteps.None;
+                    break;
+            }
+        }
+
         private async Task<CrpgUser> GetUserAsync()
         {
             var platform = (Platform)Enum.Parse(typeof(Platform), PlatformServices.ProviderName, true);
@@ -152,7 +152,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             return res.Data!;
         }
 
-        private static WaveGroup[][] LoadWaves()
+        private WaveGroup[][] LoadWaves()
         {
             string path = BasePath.Name + "Modules/cRPG/ModuleData/waves.json";
             var waves = JsonConvert.DeserializeObject<WaveGroup[][]>(File.ReadAllText(path));
@@ -168,7 +168,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             return waves;
         }
 
-        private static CrpgConstants LoadCrpgConstants()
+        private CrpgConstants LoadCrpgConstants()
         {
             string path = BasePath.Name + "Modules/cRPG/ModuleData/constants.json";
             return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path));
@@ -262,7 +262,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             }
         }
 
-        private static AtmosphereInfo GetRandomAtmosphere()
+        private AtmosphereInfo GetRandomAtmosphere()
         {
             string[] atmospheres =
             {
@@ -329,7 +329,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             return CrpgCharacterObject.New(new TextObject(crpgCharacter.Name), skills, equipment, constants);
         }
 
-        private static void AddEquipment(Equipment equipments, EquipmentIndex idx, string? itemId,
+        private void AddEquipment(Equipment equipments, EquipmentIndex idx, string? itemId,
             CharacterSkills skills, CrpgConstants constants)
         {
             var itemObject = GetModifiedItem(itemId, skills, constants);
@@ -337,7 +337,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
         }
 
-        private static ItemObject? GetModifiedItem(string? itemId, CharacterSkills skills, CrpgConstants constants)
+        private ItemObject? GetModifiedItem(string? itemId, CharacterSkills skills, CrpgConstants constants)
         {
             if (itemId == null)
             {
@@ -379,7 +379,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             return itemObject;
         }
 
-        private static void ModifyDamage(ItemObject itemObject, float factor, HashSet<WeaponClass> affectedClasses)
+        private void ModifyDamage(ItemObject itemObject, float factor, HashSet<WeaponClass> affectedClasses)
         {
             foreach (var weapon in itemObject.Weapons)
             {

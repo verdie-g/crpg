@@ -92,7 +92,7 @@ namespace Crpg.Application.UTest.Bans
             {
                 BannedUserId = 1,
                 Duration = TimeSpan.Zero,
-                Reason = "",
+                Reason = string.Empty,
                 BannedByUserId = 2,
             });
 

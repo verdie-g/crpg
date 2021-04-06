@@ -18,56 +18,6 @@ namespace Crpg.GameMod
     internal class CrpgSubModule : MBSubModuleBase
     {
         /// <summary>
-        /// Called during the first loading screen of the game, always the first override to be called, this is where
-        /// you should be doing the bulk of your initial setup.
-        /// </summary>
-        protected override void OnSubModuleLoad()
-        {
-            base.OnSubModuleLoad();
-
-            LoadSpriteSheets();
-
-
-            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("DefendTheVirgin", new TextObject("{=4gpGhbeJ}Defend The Virgin"),
-                4567, () => MBGameManager.StartNewGame(new DefendTheVirginGameManager()), () => false));
-
-            #if false
-            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
-                new TextObject("Export Data"), 4578, ExportData, false));
-            #endif
-
-            // Uncomment to start watching UI changes.
-            // UIResourceManager.UIResourceDepot.StartWatchingChangesInDepot();
-
-            /*
-            Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode());
-
-            // Game mode needs scenes, else selecting it in UI crashes
-            // TODO: move to an xml file
-            Module.CurrentModule.GetMultiplayerGameTypes()
-                .First(gti => gti.GameType == CrpgBattleGameMode.GameModeName)
-                .Scenes.Add("mp_skirmish_spawn_test");
-            */
-        }
-
-        /// <summary>
-        /// Called just before the main menu first appears, helpful if your mod depends on other things being set up
-        /// during the initial load.
-        /// </summary>
-        protected override void OnBeforeInitialModuleScreenSetAsRoot()
-        {
-            base.OnBeforeInitialModuleScreenSetAsRoot();
-        }
-
-        /// <summary>
-        /// Called immediately upon loading after selecting a game mode (submodule) from the main menu.
-        /// </summary>
-        protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
-        {
-            base.OnGameStart(game, gameStarterObject);
-        }
-
-        /// <summary>
         /// Called immediately after loading the selected game mode (submodule) has completed.
         /// </summary>
         public override void BeginGameStart(Game game)
@@ -121,6 +71,63 @@ namespace Crpg.GameMod
         }
 
         /// <summary>
+        /// Called on exiting out of a mission/campaign.
+        /// </summary>
+        public override void OnGameEnd(Game game)
+        {
+            base.OnGameEnd(game);
+        }
+
+        /// <summary>
+        /// Called during the first loading screen of the game, always the first override to be called, this is where
+        /// you should be doing the bulk of your initial setup.
+        /// </summary>
+        protected override void OnSubModuleLoad()
+        {
+            base.OnSubModuleLoad();
+
+            LoadSpriteSheets();
+
+            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("DefendTheVirgin", new TextObject("{=4gpGhbeJ}Defend The Virgin"),
+                4567, () => MBGameManager.StartNewGame(new DefendTheVirginGameManager()), () => false));
+
+            #if false
+            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
+                new TextObject("Export Data"), 4578, ExportData, false));
+            #endif
+
+            // Uncomment to start watching UI changes.
+            // UIResourceManager.UIResourceDepot.StartWatchingChangesInDepot();
+
+            /*
+            Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode());
+
+            // Game mode needs scenes, else selecting it in UI crashes
+            // TODO: move to an xml file
+            Module.CurrentModule.GetMultiplayerGameTypes()
+                .First(gti => gti.GameType == CrpgBattleGameMode.GameModeName)
+                .Scenes.Add("mp_skirmish_spawn_test");
+            */
+        }
+
+        /// <summary>
+        /// Called just before the main menu first appears, helpful if your mod depends on other things being set up
+        /// during the initial load.
+        /// </summary>
+        protected override void OnBeforeInitialModuleScreenSetAsRoot()
+        {
+            base.OnBeforeInitialModuleScreenSetAsRoot();
+        }
+
+        /// <summary>
+        /// Called immediately upon loading after selecting a game mode (submodule) from the main menu.
+        /// </summary>
+        protected override void OnGameStart(Game game, IGameStarter gameStarterObject)
+        {
+            base.OnGameStart(game, gameStarterObject);
+        }
+
+        /// <summary>
         /// This is called once every frame, you should avoid expensive operations being called directly here and
         /// instead do as little work as possible for performance reasons.
         /// </summary>
@@ -130,14 +137,6 @@ namespace Crpg.GameMod
             base.OnApplicationTick(delta);
             // Uncomment to hot reload UI after changes.
             // UIResourceManager.UIResourceDepot.CheckForChanges();
-        }
-
-        /// <summary>
-        /// Called on exiting out of a mission/campaign.
-        /// </summary>
-        public override void OnGameEnd(Game game)
-        {
-            base.OnGameEnd(game);
         }
 
         /// <summary>

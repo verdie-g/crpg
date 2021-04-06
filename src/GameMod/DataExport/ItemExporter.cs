@@ -330,7 +330,7 @@ namespace Crpg.GameMod.DataExport
                 NullValueHandling = NullValueHandling.Ignore,
                 Formatting = Newtonsoft.Json.Formatting.Indented,
                 ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() },
-                Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() }
+                Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() },
             });
 
             using var s = new StreamWriter(Path.Combine(outputPath, "items.json"));
@@ -353,7 +353,7 @@ namespace Crpg.GameMod.DataExport
                 {
                     ItemObject.ItemTypeEnum.Shield => ItemObject.ItemTypeEnum.Bow,
                     ItemObject.ItemTypeEnum.HandArmor => ItemObject.ItemTypeEnum.Animal,
-                    _ => mbItem.Type
+                    _ => mbItem.Type,
                 };
 
                 var createTextureTaskSource = new TaskCompletionSource<object?>();

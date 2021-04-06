@@ -7,6 +7,6 @@ namespace Crpg.Domain.Entities.Users
     {
         User,
         Moderator,
-        Admin
+        Admin,
     }
 }

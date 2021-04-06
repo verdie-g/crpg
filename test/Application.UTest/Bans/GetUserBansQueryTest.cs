@@ -20,7 +20,7 @@ namespace Crpg.Application.UTest.Bans
                 {
                     new() { BannedByUser = new User { PlatformUserId = "123" } },
                     new() { BannedByUser = new User { PlatformUserId = "456" } },
-                }
+                },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();

@@ -53,7 +53,7 @@ namespace Crpg.Application.UTest.Strategus
                 StrategusHero = new StrategusHero
                 {
                     Status = StrategusHeroStatus.InBattle,
-                }
+                },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -85,7 +85,7 @@ namespace Crpg.Application.UTest.Strategus
                     Waypoints = new MultiPoint(new[] { new Point(5, 3) }),
                     TargetedHero = new StrategusHero { User = new User() },
                     TargetedSettlement = new StrategusSettlement(),
-                }
+                },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -114,8 +114,8 @@ namespace Crpg.Application.UTest.Strategus
                 StrategusHero = new StrategusHero
                 {
                     Status = StrategusHeroStatus.Idle,
-                    Waypoints = new MultiPoint(new[] { new Point(3, 4) })
-                }
+                    Waypoints = new MultiPoint(new[] { new Point(3, 4) }),
+                },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -151,7 +151,7 @@ namespace Crpg.Application.UTest.Strategus
                 {
                     Status = StrategusHeroStatus.MovingToAttackSettlement,
                     TargetedSettlement = new StrategusSettlement(),
-                }
+                },
             };
             ArrangeDb.Users.AddRange(user);
             await ArrangeDb.SaveChangesAsync();
@@ -179,14 +179,14 @@ namespace Crpg.Application.UTest.Strategus
                     Position = new Point(0, 0),
                     Status = StrategusHeroStatus.MovingToSettlement,
                     TargetedSettlement = new StrategusSettlement(),
-                }
+                },
             };
             var targetUser = new User
             {
                 StrategusHero = new StrategusHero
                 {
                     Position = new Point(10, 10),
-                }
+                },
             };
             ArrangeDb.Users.AddRange(user, targetUser);
             await ArrangeDb.SaveChangesAsync();
@@ -217,14 +217,14 @@ namespace Crpg.Application.UTest.Strategus
                     Position = new Point(0, 0),
                     Status = StrategusHeroStatus.MovingToSettlement,
                     TargetedSettlement = new StrategusSettlement(),
-                }
+                },
             };
             var targetUser = new User
             {
                 StrategusHero = new StrategusHero
                 {
                     Position = new Point(10, 10),
-                }
+                },
             };
             ArrangeDb.Users.AddRange(user, targetUser);
             await ArrangeDb.SaveChangesAsync();
@@ -258,7 +258,7 @@ namespace Crpg.Application.UTest.Strategus
                 {
                     Status = StrategusHeroStatus.FollowingHero,
                     TargetedHero = new StrategusHero { User = new User() },
-                }
+                },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -285,7 +285,7 @@ namespace Crpg.Application.UTest.Strategus
                 {
                     Status = StrategusHeroStatus.MovingToAttackHero,
                     TargetedHero = new StrategusHero { User = new User() },
-                }
+                },
             };
             var targetSettlement = new StrategusSettlement();
             ArrangeDb.Users.Add(user);
@@ -313,7 +313,7 @@ namespace Crpg.Application.UTest.Strategus
         {
             var user = new User
             {
-                StrategusHero = new StrategusHero { Status = StrategusHeroStatus.Idle }
+                StrategusHero = new StrategusHero { Status = StrategusHeroStatus.Idle },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();

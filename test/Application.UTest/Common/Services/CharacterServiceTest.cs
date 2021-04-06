@@ -100,7 +100,7 @@ namespace Crpg.Application.UTest.Common.Services
                         Bow = 5,
                         Throwing = 6,
                         Crossbow = 7,
-                    }
+                    },
                 },
             };
 
