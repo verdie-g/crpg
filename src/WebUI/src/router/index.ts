@@ -94,6 +94,12 @@ const routes = [
     meta: { scrollToTop: true },
   },
   {
+    path: '/clans',
+    name: 'clans',
+    component: () => import('../views/Clans.vue'),
+    beforeEnter: isSignedInGuard,
+  },
+  {
     path: '/strategus',
     name: 'strategus',
     component: () => import('../views/Strategus.vue'),
