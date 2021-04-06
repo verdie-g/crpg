@@ -64,7 +64,7 @@ namespace Crpg.Application.Common.Services
             Since they can change places with someone that is already on a mount, they can afford to walk faster
             the more the ratio troops / mounts is close to 1 , the more they can afford.
             */
-            return forcedMarchSpeed * troops / mounts + (1 - troops / mounts);
+            return forcedMarchSpeed * mounts / troops + (1 - mounts / troops);
         }
     }
 }
