@@ -33,10 +33,10 @@ namespace Crpg.Application.Common.Services
             this divide the speed of the army by the order of magnitude of its size.
             10000 is four zeros so the denominator is 4 */
             double troopInfluence = 2 / (1 + Math.Log10(1 + hero.Troops / 10));
-            return terrainSpeedFactor * weightFactor * SlowestMountSpeed(hero.Troops, hero.OwnedItems!) * troopInfluence;
+            return terrainSpeedFactor * weightFactor * MountsInfluence(hero.Troops, hero.OwnedItems!) * troopInfluence;
         }
 
-        private double SlowestMountSpeed(float troops, List<StrategusOwnedItem> ownedItems)
+        private double MountsInfluence(float troops, List<StrategusOwnedItem> ownedItems)
         {
             int mounts = 0;
             double forcedMarchSpeed = 2;
