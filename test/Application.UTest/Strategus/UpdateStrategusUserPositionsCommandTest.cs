@@ -264,7 +264,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.StrategusHeroes.AddRange(hero, targetHero);
             await ArrangeDb.SaveChangesAsync();
 
-            var newPosition = new Point(2, 3);
+            var newPosition = new Point(3, 4);
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
             strategusMapMock
@@ -286,7 +286,7 @@ namespace Crpg.Application.UTest.Strategus
                 .FirstOrDefaultAsync();
             Assert.IsNotNull(battle);
             Assert.AreEqual(StrategusBattlePhase.Preparation, battle.Phase);
-            Assert.AreEqual(new Point(3, 4), battle.Position);
+            Assert.AreEqual(new Point(4, 5), battle.Position);
             Assert.IsNull(battle.AttackedSettlementId);
             Assert.AreEqual(2, battle.Fighters.Count);
 
@@ -425,7 +425,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.StrategusHeroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
-            var newPosition = new Point(5, 5);
+            var newPosition = new Point(3, 4);
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
@@ -445,7 +445,7 @@ namespace Crpg.Application.UTest.Strategus
                 .FirstOrDefaultAsync();
             Assert.IsNotNull(battle);
             Assert.AreEqual(StrategusBattlePhase.Preparation, battle.Phase);
-            Assert.AreEqual(new Point(3, 4), battle.Position);
+            Assert.AreEqual(new Point(4, 5), battle.Position);
             Assert.AreEqual(settlement.Id, battle.AttackedSettlementId);
             Assert.AreEqual(1, battle.Fighters.Count);
             Assert.AreEqual(hero.Id, battle.Fighters[0].HeroId);
