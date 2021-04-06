@@ -1,10 +1,29 @@
 ﻿using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Strategus;
 
 namespace Crpg.Application.Common.Results
 {
     public static class CommonErrors
     {
+        public static Error BattleInvalidPhase(int battleId, StrategusBattlePhase phase) => new(ErrorType.Validation, ErrorCode.BattleInvalidPhase)
+        {
+            Title = "Cannot perform action during this battle phase",
+            Detail = $"Cannot perform action when battle with id '{battleId}' is in phase '{phase}'",
+        };
+
+        public static Error BattleNotFound(int battleId) => new(ErrorType.NotFound, ErrorCode.BattleNotFound)
+        {
+            Title = "Battle was not found",
+            Detail = $"Battle with id '{battleId}' was not found",
+        };
+
+        public static Error BattleTooFar(int battleId) => new(ErrorType.Validation, ErrorCode.BattleTooFar)
+        {
+            Title = "Battle is too far",
+            Detail = $"Battle with id '{battleId}' is too far to perform the requested action",
+        };
+
         public static Error CharacterLevelRequirementNotMet(int requiredLevel, int actualLevel) => new(ErrorType.Validation, ErrorCode.CharacterLevelRequirementNotMet)
         {
             Title = "Unmet level requirement",

@@ -5,6 +5,9 @@
     /// </summary>
     public enum ErrorCode
     {
+        BattleInvalidPhase,
+        BattleNotFound,
+        BattleTooFar,
         CharacterLevelRequirementNotMet,
         CharacterNameAlreadyUsed,
         CharacterNotFound,

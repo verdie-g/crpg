@@ -33,6 +33,7 @@ namespace Crpg.Persistence
             NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusSettlementType>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusBattlePhase>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusBattleSide>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusBattleFighterApplicationStatus>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<Region>();
         }
 
@@ -62,6 +63,8 @@ namespace Crpg.Persistence
         public DbSet<StrategusSettlement> StrategusSettlements { get; set; } = default!;
         public DbSet<StrategusOwnedItem> StrategusOwnedItems { get; set; } = default!;
         public DbSet<StrategusBattle> StrategusBattles { get; set; } = default!;
+        public DbSet<StrategusBattleFighter> StrategusBattleFighters { get; set; } = default!;
+        public DbSet<StrategusBattleFighterApplication> StrategusBattleFighterApplications { get; set; } = default!;
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -115,6 +118,7 @@ namespace Crpg.Persistence
             modelBuilder.HasPostgresEnum<StrategusSettlementType>();
             modelBuilder.HasPostgresEnum<StrategusBattlePhase>();
             modelBuilder.HasPostgresEnum<StrategusBattleSide>();
+            modelBuilder.HasPostgresEnum<StrategusBattleFighterApplicationStatus>();
             modelBuilder.HasPostgresEnum<Region>();
 
             // Ensure that the PostGIS extension is installed.

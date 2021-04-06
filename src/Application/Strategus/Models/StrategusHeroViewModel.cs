@@ -31,6 +31,7 @@ namespace Crpg.Application.Strategus.Models
                 .ForMember(u => u.Platform, opt => opt.MapFrom(u => u.User!.Platform))
                 .ForMember(u => u.PlatformUserId, opt => opt.MapFrom(u => u.User!.PlatformUserId))
                 .ForMember(u => u.Name, opt => opt.MapFrom(u => u.User!.Name))
+                .ForMember(h => h.Troops, opt => opt.MapFrom(u => (int)u.Troops))
                 .ForMember(u => u.Clan, opt => opt.MapFrom(u => u.User!.ClanMembership!.Clan));
         }
     }
