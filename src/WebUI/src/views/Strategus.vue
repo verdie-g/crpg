@@ -11,7 +11,7 @@
       @moveend="onMapBoundsChange"
     >
       <l-control-mouse-position />
-      <l-control class="column is-half" position="topleft">
+      <l-control class="column is-one-third" position="topleft">
         <component class="box" v-if="currentDialog" :is="currentDialog" />
       </l-control>
       <l-tile-layer :url="url" :attribution="attribution" />

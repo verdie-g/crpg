@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content is-medium">
     <h2>Welcome to Strategus</h2>
     <p>
       Strategus is a multiplayer campaign for cRPG where players can aquire fiefs and land and
