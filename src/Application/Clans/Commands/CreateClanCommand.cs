@@ -2,6 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Clans.Models;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
@@ -21,21 +22,15 @@ namespace Crpg.Application.Clans.Commands
 
         public class Validator : AbstractValidator<CreateClanCommand>
         {
-            private const int MinimumClanTagLength = 2;
-            private const int MaximumClanTagLength = 8;
-
-            private const int MinimumClanNameLength = 2;
-            private const int MaximumClanNameLength = 32;
-
-            public Validator()
+            public Validator(Constants constants)
             {
                 RuleFor(c => c.Tag)
-                    .MinimumLength(MinimumClanTagLength)
-                    .MaximumLength(MaximumClanTagLength);
+                    .MinimumLength(constants.ClanTagMinLength)
+                    .MaximumLength(constants.ClanTagMaxLength);
 
                 RuleFor(c => c.Name)
-                    .MinimumLength(MinimumClanNameLength)
-                    .MaximumLength(MaximumClanNameLength);
+                    .MinimumLength(constants.ClanNameMinLength)
+                    .MaximumLength(constants.ClanNameMaxLength);
             }
         }
 

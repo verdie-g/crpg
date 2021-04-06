@@ -38,6 +38,10 @@ namespace Crpg.GameMod.Common
         public string DefaultRole { get; set; } = string.Empty;
         public int DefaultGold { get; set; }
         public int DefaultHeirloomPoints { get; set; }
+        public int ClanTagMinLength { get; set; }
+        public int ClanTagMaxLength { get; set; }
+        public int ClanNameMinLength { get; set; }
+        public int ClanNameMaxLength { get; set; }
         public double StrategusMapWidth { get; set; }
         public double StrategusMapHeight { get; set; }
         public double StrategusEquivalentDistance { get; set; }

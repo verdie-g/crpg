@@ -33,6 +33,10 @@
   "defaultRole": "User",
   "defaultGold": 300,
   "defaultHeirloomPoints": 0,
+  "clanTagMinLength": 2,
+  "clanTagMaxLength": 4,
+  "clanNameMinLength": 5,
+  "clanNameMaxLength": 30,
   "strategusMapWidth": 256,
   "strategusMapHeight": 215,
   "strategusEquivalentDistance": 0.2, /* Distance at which two points are consider equivalent. */
