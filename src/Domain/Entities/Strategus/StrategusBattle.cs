@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Crpg.Domain.Common;
+using NetTopologySuite.Geometries;
 
 namespace Crpg.Domain.Entities.Strategus
 {
@@ -7,6 +8,7 @@ namespace Crpg.Domain.Entities.Strategus
     {
         public int Id { get; set; }
         public StrategusBattlePhase Phase { get; set; }
+        public Point Position { get; set; } = default!;
 
         /// <summary>
         /// The id of the attacked <see cref="StrategusSettlement"/>. Can be null if the <see cref="StrategusBattle"/>

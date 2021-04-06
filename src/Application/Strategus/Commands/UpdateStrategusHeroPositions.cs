@@ -141,9 +141,10 @@ namespace Crpg.Application.Strategus.Commands
 
                     hero.Status = StrategusHeroStatus.InBattle;
                     hero.TargetedHero.Status = StrategusHeroStatus.InBattle;
-                    var battle = new StrategusBattle
+                    StrategusBattle battle = new()
                     {
                         Phase = StrategusBattlePhase.Preparation,
+                        Position = GetMidPoint(hero.Position, hero.TargetedHero.Position),
                         Fighters =
                         {
                             new StrategusBattleFighter
@@ -202,6 +203,7 @@ namespace Crpg.Application.Strategus.Commands
                     var battle = new StrategusBattle
                     {
                         Phase = StrategusBattlePhase.Preparation,
+                        Position = GetMidPoint(hero.Position, hero.TargetedSettlement.Position),
                         AttackedSettlement = hero.TargetedSettlement,
                         Fighters =
                         {
@@ -238,6 +240,11 @@ namespace Crpg.Application.Strategus.Commands
 
                 double troopInfluence = Math.Min(0.99, Math.Pow(hero.Troops, terrainTroopInfluence) / 100);
                 return terrainSpeedFactor * weightFactor * horsesFactor * (1 - troopInfluence);
+            }
+
+            private Point GetMidPoint(Point pointA, Point pointB)
+            {
+                return new((pointA.X + pointB.X) / 2, (pointA.Y + pointB.Y) / 2);
             }
         }
     }

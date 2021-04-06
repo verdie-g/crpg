@@ -285,6 +285,8 @@ namespace Crpg.Application.UTest.Strategus
                 .Include(b => b.Fighters).ThenInclude(f => f.Hero)
                 .FirstOrDefaultAsync();
             Assert.IsNotNull(battle);
+            Assert.AreEqual(StrategusBattlePhase.Preparation, battle.Phase);
+            Assert.AreEqual(new Point(3, 4), battle.Position);
             Assert.IsNull(battle.AttackedSettlementId);
             Assert.AreEqual(2, battle.Fighters.Count);
 
@@ -442,6 +444,8 @@ namespace Crpg.Application.UTest.Strategus
                 .Include(b => b.Fighters).ThenInclude(f => f.Hero)
                 .FirstOrDefaultAsync();
             Assert.IsNotNull(battle);
+            Assert.AreEqual(StrategusBattlePhase.Preparation, battle.Phase);
+            Assert.AreEqual(new Point(3, 4), battle.Position);
             Assert.AreEqual(settlement.Id, battle.AttackedSettlementId);
             Assert.AreEqual(1, battle.Fighters.Count);
             Assert.AreEqual(hero.Id, battle.Fighters[0].HeroId);
