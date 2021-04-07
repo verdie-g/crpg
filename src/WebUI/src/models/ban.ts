@@ -1,4 +1,4 @@
-import { UserPublic } from '@/models/user-public';
+import UserPublic from '@/models/user-public';
 
 export default class Ban {
   public id: number;
