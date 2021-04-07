@@ -5,6 +5,10 @@
       <b-table :data="clan.members" :hoverable="true">
         <b-table-column field="name" label="Name" v-slot="props">
           {{ props.row.user.name }}
+          <platform
+            :platform="props.row.user.platform"
+            :platformUserId="props.row.user.platformUserId"
+          />
         </b-table-column>
 
         <b-table-column field="role" label="Role" v-slot="props">
@@ -19,8 +23,9 @@
 import { Component, Vue } from 'vue-property-decorator';
 import * as clanService from '@/services/clan-service';
 import ClanWithMembers from '@/models/clan-with-members';
+import PlatformComponent from '@/components/Platform.vue';
 
-@Component
+@Component({ components: { platform: PlatformComponent } })
 export default class ClanComponent extends Vue {
   clan: ClanWithMembers | null = null;
 
