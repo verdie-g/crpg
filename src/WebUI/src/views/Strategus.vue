@@ -7,7 +7,7 @@
       :center="center"
       :options="mapOptions"
       :max-bounds="maxBounds"
-      @leaflet:load="onMapBoundsChange(), heroSpawn()"
+      @ready="onMapBoundsChange(), heroSpawn()"
       @moveend="onMapBoundsChange"
     >
       <l-control-mouse-position />
