@@ -7,12 +7,12 @@
       :center="center"
       :options="mapOptions"
       :max-bounds="maxBounds"
-      @leaflet:load="onMapBoundsChange"
+      @leaflet:load="onMapBoundsChange(), heroSpawn()"
       @moveend="onMapBoundsChange"
     >
       <l-control-mouse-position />
       <l-control class="column is-one-third" position="topleft">
-        <component class="box" v-if="currentDialog" :is="currentDialog" />
+        <component class="box" v-if="currentDialog" :is="currentDialog" @heroSpawn="heroSpawn" />
       </l-control>
       <l-tile-layer :url="url" :attribution="attribution" />
       <settlement
@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Watch } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 import { LatLng, LatLngBounds, CRS } from 'leaflet';
 import { LMap, LTileLayer, LCircleMarker, LControl } from 'vue2-leaflet';
 import LControlMousePosition from '@/components/strategus/LControlMousePosition.vue';
@@ -131,22 +131,11 @@ export default class Strategus extends Vue {
     );
   }
 
-  @Watch('hero')
-  onHeroChanged(newHero: Hero, oldHero: Hero | null) {
-    // This condition is true when the hero was updated the first time or when
-    // the user just registered to Strategus. Since only the RegistrationDialog
-    // knows when a registration happens, it needs to communicate it here so we
-    // zoom on the hero. This is done using a watcher on hero, and checking if
-    // the old value was null. This is quite hacky, if there are more use-cases
-    // where a dialog component neeeds to communicate with the map, we should
-    // think of a better way to do that.
-    if (oldHero === null) {
-      strategusModule.getUpdate();
-      this.updateIntervalId = setInterval(() => strategusModule.getUpdate(), 60 * 1000);
-      this.map.mapObject.flyTo(pointToLatLng(newHero.position), 5, {
+  heroSpawn() {
+    if (this.map !== undefined && this.hero !== null)
+      this.map.mapObject.flyTo(pointToLatLng(this.hero.position), 5, {
         duration: 0.4,
       });
-    }
   }
 }
 </script>
