@@ -24,9 +24,16 @@
         v-for="settlement in settlements"
         :key="'settlement-' + settlement.id"
         :settlement="settlement"
+        :map="map"
       />
       <hero v-if="hero" :hero="hero" :self="true" />
-      <hero v-for="vh in visibleHeroes" :key="'hero-' + vh.id" :hero="vh" :self="false" />
+      <hero
+        v-for="vh in visibleHeroes"
+        :key="'hero-' + vh.id"
+        :hero="vh"
+        :self="false"
+        :map="map"
+      />
     </l-map>
   </div>
 </template>

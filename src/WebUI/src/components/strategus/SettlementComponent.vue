@@ -5,20 +5,26 @@
         {{ settlement.name }}
       </div>
     </l-icon>
+    <move-actions :actions="[Action.Move, Action.Attack]" :map="map" :settlement="settlement" />
   </l-marker>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { LIcon, LMarker } from 'vue2-leaflet';
+import { LMap, LIcon, LMarker, LPopup } from 'vue2-leaflet';
 import Settlement from '@/models/settlement-public';
 import SettlementType from '@/models/settlement-type';
+import ActionType from '@/models/action-type';
+import MoveActions from '@/components/strategus/MoveActions.vue';
 
 @Component({
-  components: { LIcon, LMarker },
+  components: { LIcon, LMarker, LPopup, MoveActions },
 })
 export default class SettlementComponent extends Vue {
   @Prop(Object) readonly settlement: Settlement;
+  @Prop(Object) readonly map: LMap;
+
+  Action = ActionType;
 
   get settlementCssClass(): string {
     switch (this.settlement.type) {
