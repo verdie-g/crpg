@@ -1,8 +1,15 @@
 <template>
   <section class="section">
     <div class="container">
-      <b-table :data="clans" :hoverable="true" :loading="clansLoading">
-        <b-table-column field="tag" label="Tag" v-slot="props">
+      <h1 class="is-size-2">Clans</h1>
+      <b-table
+        :data="clans"
+        :hoverable="true"
+        :loading="clansLoading"
+        :row-class="() => 'is-clickable'"
+        @click="onRowClick"
+      >
+        <b-table-column field="tag" label="Tag" width="40" v-slot="props">
           {{ props.row.tag }}
         </b-table-column>
 
@@ -17,20 +24,23 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import clanModule from '@/store/clan-module';
-import ClanLite from '@/models/clan-lite';
+import Clan from '@/models/clan';
 
-@Component({
-  components: {},
-})
+@Component
 export default class Clans extends Vue {
   clansLoading = false;
 
-  get clans(): ClanLite[] {
+  get clans(): Clan[] {
     return clanModule.clans;
   }
 
   created(): void {
-    clanModule.getClans();
+    this.clansLoading = true;
+    clanModule.getClans().then(() => (this.clansLoading = false));
+  }
+
+  onRowClick(clan: Clan): void {
+    this.$router.push({ path: `clans/${clan.id}` });
   }
 }
 </script>

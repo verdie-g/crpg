@@ -1,20 +1,20 @@
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
-import { get } from '@/services/crpg-client';
-import ClanLite from '@/models/clan-lite';
+import * as clanService from '@/services/clan-service';
+import Clan from '@/models/clan';
 
 @Module({ store, dynamic: true, name: 'clan' })
 class ClanModule extends VuexModule {
-  clans: ClanLite[] = [];
+  clans: Clan[] = [];
 
   @Mutation
-  setClans(clans: ClanLite[]) {
+  setClans(clans: Clan[]) {
     this.clans = clans;
   }
 
   @Action({ commit: 'setClans' })
   getClans() {
-    return get('/clans');
+    return clanService.getClans();
   }
 }
 
