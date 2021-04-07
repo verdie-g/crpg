@@ -132,10 +132,11 @@ export default class Strategus extends Vue {
   }
 
   heroSpawn() {
-    if (this.map !== undefined && this.hero !== null)
+    if (this.map !== undefined && this.hero !== null) {
       this.map.mapObject.flyTo(pointToLatLng(this.hero.position), 5, {
         duration: 0.4,
       });
+    }
   }
 }
 </script>
