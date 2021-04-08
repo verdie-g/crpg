@@ -23,6 +23,10 @@
         <b-table-column field="name" label="Name" v-slot="props">
           {{ props.row.name }}
         </b-table-column>
+
+        <b-table-column field="memberCount" label="Members" v-slot="props">
+          {{ props.row.memberCount }}
+        </b-table-column>
       </b-table>
     </div>
   </section>

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -30,6 +31,7 @@ namespace Crpg.Application.Clans.Queries
             {
                 var clans = await _db.Clans
                     .ProjectTo<ClanViewModel>(_mapper.ConfigurationProvider)
+                    .OrderByDescending(c => c.MemberCount)
                     .ToArrayAsync(cancellationToken);
                 return new(clans);
             }
