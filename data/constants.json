@@ -35,6 +35,7 @@
   "defaultHeirloomPoints": 0,
   "clanTagMinLength": 2,
   "clanTagMaxLength": 4,
+  "clanTagRegex": "^[a-zA-Z0-9]*$",
   "clanNameMinLength": 5,
   "clanNameMaxLength": 30,
   "strategusMapWidth": 256,
