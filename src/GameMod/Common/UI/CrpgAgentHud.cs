@@ -7,7 +7,7 @@ namespace Crpg.GameMod.Common.UI
     public class CrpgAgentHud : MissionView
     {
         private GauntletLayer? _gauntletLayer;
-        private GauntletMovie? _gauntletMovie;
+        private IGauntletMovie? _gauntletMovie;
         private CrpgAgentHudViewModel? _dataSource;
 
         public override void EarlyStart()
@@ -33,6 +33,7 @@ namespace Crpg.GameMod.Common.UI
         {
             base.OnMissionScreenFinalize();
             _gauntletLayer!.ReleaseMovie(_gauntletMovie);
+            MissionScreen.RemoveLayer(_gauntletLayer);
         }
     }
 }

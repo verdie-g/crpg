@@ -2,11 +2,11 @@
 <Module>
 	<Name value="cRPG" />
 	<Id value="cRPG" />
-	<Version value = "e1.5.8"/>
+	<Version value = "e1.5.9"/>
 	<SingleplayerModule value="true" />
 	<DependedModules>
-		<DependedModule Id="Native" DependentVersion="e1.5.8" />
-		<DependedModule Id="SandBoxCore" DependentVersion="e1.5.8" />
+		<DependedModule Id="Native" DependentVersion="e1.5.9" />
+		<DependedModule Id="SandBoxCore" DependentVersion="e1.5.9" />
 	</DependedModules>
 	<SubModules>
 		<SubModule>
