@@ -12,7 +12,12 @@
     >
       <l-control-mouse-position />
       <l-control class="column is-one-third" position="topleft">
-        <component class="box" v-if="currentDialog" :is="currentDialog" @heroSpawn="heroSpawn" />
+        <component
+          class="box"
+          v-if="currentDialog"
+          :is="currentDialog"
+          @dialogEvent="dispatchEvent($event)"
+        />
       </l-control>
       <l-tile-layer :url="url" :attribution="attribution" />
       <settlement
@@ -136,6 +141,16 @@ export default class Strategus extends Vue {
       this.map.mapObject.flyTo(pointToLatLng(this.hero.position), 5, {
         duration: 0.4,
       });
+    }
+  }
+  dispatchEvent(event: string) {
+    switch (event) {
+      case 'heroSpawn':
+        this.heroSpawn();
+        break;
+
+      default:
+        break;
     }
   }
 }
