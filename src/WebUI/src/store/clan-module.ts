@@ -2,6 +2,7 @@ import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-dec
 import store from '@/store';
 import * as clanService from '@/services/clan-service';
 import Clan from '@/models/clan';
+import ClanCreation from '@/models/clan-creation';
 
 @Module({ store, dynamic: true, name: 'clan' })
 class ClanModule extends VuexModule {
@@ -15,6 +16,11 @@ class ClanModule extends VuexModule {
   @Action({ commit: 'setClans' })
   getClans() {
     return clanService.getClans();
+  }
+
+  @Action
+  createClan(clan: ClanCreation) {
+    return clanService.createClan(clan);
   }
 }
 
