@@ -11,11 +11,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Clans.Queries
 {
-    public record GetClanQuery : IMediatorRequest<ClanViewModel>
+    public record GetClanQuery : IMediatorRequest<ClanWithMembersViewModel>
     {
         public int ClanId { get; init; }
 
-        internal class Handler : IMediatorRequestHandler<GetClanQuery, ClanViewModel>
+        internal class Handler : IMediatorRequestHandler<GetClanQuery, ClanWithMembersViewModel>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -26,11 +26,12 @@ namespace Crpg.Application.Clans.Queries
                 _mapper = mapper;
             }
 
-            public async Task<Result<ClanViewModel>> Handle(GetClanQuery req, CancellationToken cancellationToken)
+            public async Task<Result<ClanWithMembersViewModel>> Handle(GetClanQuery req, CancellationToken cancellationToken)
             {
                 var clan = await _db.Clans
                     .Where(c => c.Id == req.ClanId)
-                    .ProjectTo<ClanViewModel>(_mapper.ConfigurationProvider)
+                    .Include(c => c.Members)
+                    .ProjectTo<ClanWithMembersViewModel>(_mapper.ConfigurationProvider)
                     .FirstOrDefaultAsync(cancellationToken);
 
                 return clan == null

@@ -14,7 +14,7 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Clans.Commands
 {
-    public record CreateClanCommand : IMediatorRequest<ClanViewModel>
+    public record CreateClanCommand : IMediatorRequest<ClanWithMembersViewModel>
     {
         public int UserId { get; init; }
         public string Tag { get; init; } = string.Empty;
@@ -34,7 +34,7 @@ namespace Crpg.Application.Clans.Commands
             }
         }
 
-        internal class Handler : IMediatorRequestHandler<CreateClanCommand, ClanViewModel>
+        internal class Handler : IMediatorRequestHandler<CreateClanCommand, ClanWithMembersViewModel>
         {
             private static readonly ILogger Logger = LoggerFactory.CreateLogger<CreateClanCommand>();
 
@@ -47,7 +47,7 @@ namespace Crpg.Application.Clans.Commands
                 _mapper = mapper;
             }
 
-            public async Task<Result<ClanViewModel>> Handle(CreateClanCommand req, CancellationToken cancellationToken)
+            public async Task<Result<ClanWithMembersViewModel>> Handle(CreateClanCommand req, CancellationToken cancellationToken)
             {
                 var user = await _db.Users
                     .Include(u => u.ClanMembership)
@@ -88,7 +88,7 @@ namespace Crpg.Application.Clans.Commands
                 _db.Clans.Add(clan);
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("User '{0}' created clan '[{1}] {2}' ({3})", req.UserId, req.Tag, req.Name, clan.Id);
-                return new(_mapper.Map<ClanViewModel>(clan));
+                return new(_mapper.Map<ClanWithMembersViewModel>(clan));
             }
         }
     }

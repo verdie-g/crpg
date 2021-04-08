@@ -20,7 +20,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Ok.</response>
         /// <response code="404">Clan was not found.</response>
         [HttpGet("{id}")]
-        public Task<ActionResult<Result<ClanViewModel>>> GetClan([FromRoute] int id) =>
+        public Task<ActionResult<Result<ClanWithMembersViewModel>>> GetClan([FromRoute] int id) =>
             ResultToActionAsync(Mediator.Send(new GetClanQuery { ClanId = id }));
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="201">Created.</response>
         /// <response code="400">Bad Request.</response>
         [HttpPost]
-        public Task<ActionResult<Result<ClanViewModel>>> CreateClan([FromBody] CreateClanCommand clan)
+        public Task<ActionResult<Result<ClanWithMembersViewModel>>> CreateClan([FromBody] CreateClanCommand clan)
         {
             clan = clan with { UserId = CurrentUser.UserId };
             return ResultToCreatedAtActionAsync(nameof(GetClan), null, b => new { id = b.Id },
