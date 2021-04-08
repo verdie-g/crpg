@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -26,7 +27,8 @@ namespace Crpg.Application.Clans.Commands
             {
                 RuleFor(c => c.Tag)
                     .MinimumLength(constants.ClanTagMinLength)
-                    .MaximumLength(constants.ClanTagMaxLength);
+                    .MaximumLength(constants.ClanTagMaxLength)
+                    .Matches(new Regex(constants.ClanTagRegex, RegexOptions.Compiled));
 
                 RuleFor(c => c.Name)
                     .MinimumLength(constants.ClanNameMinLength)

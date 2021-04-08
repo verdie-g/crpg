@@ -4,11 +4,17 @@
       <h1 class="is-size-2">Create a new clan</h1>
       <form @submit.prevent="onSubmit">
         <b-field label="Tag">
-          <b-input v-model="tag" :minlength="tagMinLength" :maxlength="tagMaxLength" />
+          <b-input
+            v-model="tag"
+            :minlength="tagMinLength"
+            :maxlength="tagMaxLength"
+            :pattern="tagRegex"
+            required
+          />
         </b-field>
 
         <b-field label="Name">
-          <b-input v-model="name" :minlength="nameMinLength" :maxlength="nameMaxLength" />
+          <b-input v-model="name" :minlength="nameMinLength" :maxlength="nameMaxLength" required />
         </b-field>
 
         <b-button
@@ -17,7 +23,6 @@
           native-type="submit"
           value="Create"
           :loading="creatingClan"
-          :disabled="creationDisabled"
         />
       </form>
     </div>
@@ -37,14 +42,11 @@ export default class ClanCreationComponent extends Vue {
   tag = '';
   tagMinLength = Constants.clanTagMinLength;
   tagMaxLength = Constants.clanTagMaxLength;
+  tagRegex = Constants.clanTagRegex;
 
   name = '';
   nameMinLength = Constants.clanNameMinLength;
   nameMaxLength = Constants.clanNameMaxLength;
-
-  get creationDisabled(): boolean {
-    return this.tag.length === 0 || this.name.length === 0;
-  }
 
   onSubmit() {
     this.creatingClan = true;
