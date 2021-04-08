@@ -4,7 +4,22 @@
       <div class="columns is-vcentered">
         <h1 class="column is-size-2">Clans</h1>
         <div class="column is-narrow">
-          <b-button type="is-link" size="is-medium" tag="router-link" to="/clans-new">
+          <b-button
+            type="is-link"
+            size="is-medium"
+            tag="router-link"
+            :to="userClanRoute"
+            :disabled="userClan === null"
+          >
+            My clan
+          </b-button>
+          <b-button
+            type="is-link"
+            size="is-medium"
+            tag="router-link"
+            to="/clans-new"
+            :disabled="userClan !== null"
+          >
             Create new clan
           </b-button>
         </div>
@@ -36,10 +51,19 @@
 import { Component, Vue } from 'vue-property-decorator';
 import clanModule from '@/store/clan-module';
 import Clan from '@/models/clan';
+import userModule from '@/store/user-module';
 
 @Component
 export default class Clans extends Vue {
   clansLoading = false;
+
+  get userClan(): Clan | null {
+    return userModule.clan;
+  }
+
+  get userClanRoute(): string {
+    return this.userClan === null ? '' : `clans/${this.userClan.id}`;
+  }
 
   get clans(): Clan[] {
     return clanModule.clans;
@@ -47,7 +71,8 @@ export default class Clans extends Vue {
 
   created(): void {
     this.clansLoading = true;
-    clanModule.getClans().then(() => (this.clansLoading = false));
+    clanModule.getClans().finally(() => (this.clansLoading = false));
+    userModule.getUserClan();
   }
 
   onRowClick(clan: Clan): void {
