@@ -1,7 +1,14 @@
 <template>
   <section class="section">
     <div class="container">
-      <h1 class="is-size-2">Clans</h1>
+      <div class="columns is-vcentered">
+        <h1 class="column is-size-2">Clans</h1>
+        <div class="column is-narrow">
+          <b-button type="is-link" size="is-medium" tag="router-link" to="/clans-new">
+            Create new clan
+          </b-button>
+        </div>
+      </div>
       <b-table
         :data="clans"
         :hoverable="true"
