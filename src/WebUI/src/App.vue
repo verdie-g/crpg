@@ -120,10 +120,18 @@ export default class App extends Vue {
     } else {
       // Try to sign in the user if already signed in to the authorization server
       // & get user info if user is connected
-      const token = await signInSilent();
-      if (token !== null) {
-        userModule.getUser();
-      }
+      signInSilent()
+        .then(token => {
+          if (token !== null) {
+            userModule.getUser();
+          }
+        })
+        .catch(() => {
+          // The grant is probably not valid anymore because the server was restarted.
+          if (this.$route.path !== '/') {
+            this.$router.push('/');
+          }
+        });
     }
   }
 
