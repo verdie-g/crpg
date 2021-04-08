@@ -6,6 +6,8 @@ using Crpg.Application.Bans.Queries;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Characters.Queries;
+using Crpg.Application.Clans.Models;
+using Crpg.Application.Clans.Queries;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
 using Crpg.Application.Items.Models;
@@ -223,6 +225,16 @@ namespace Crpg.WebApi.Controllers
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public Task<ActionResult> SellOwnedItem([FromRoute] int id) =>
             ResultToActionAsync(Mediator.Send(new SellItemCommand { ItemId = id, UserId = CurrentUser.UserId }));
+
+        /// <summary>
+        /// Gets user clan or null.
+        /// </summary>
+        [HttpGet("self/clans")]
+        public Task<ActionResult<Result<ClanViewModel>>> GetUserClan()
+        {
+            GetUserClanQuery req = new() { UserId = CurrentUser.UserId };
+            return ResultToActionAsync(Mediator.Send(req));
+        }
 
         /// <summary>
         /// Gets all current user's bans.
