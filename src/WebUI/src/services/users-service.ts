@@ -8,6 +8,7 @@ import Ban from '@/models/ban';
 import EquippedItem from '@/models/equipped-item';
 import EquippedItemId from '@/models/equipped-item-id';
 import { get, post, put, del } from './crpg-client';
+import Clan from '@/models/clan';
 
 export function getUser(): Promise<User> {
   return get('/users/self');
@@ -19,6 +20,10 @@ export function deleteUser(): Promise<void> {
 
 export function getOwnedItems(): Promise<Item[]> {
   return get('/users/self/items');
+}
+
+export function getUserClan(): Promise<Clan | null> {
+  return get('/users/self/clans');
 }
 
 export function updateCharacter(characterId: number, req: UpdateCharacterRequest) {
