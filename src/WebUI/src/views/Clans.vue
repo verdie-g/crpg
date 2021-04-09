@@ -17,7 +17,7 @@
             type="is-link"
             size="is-medium"
             tag="router-link"
-            to="/clans-new"
+            :to="{ name: 'clan-create' }"
             :disabled="userClan !== null"
           >
             Create new clan
