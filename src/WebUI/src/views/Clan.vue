@@ -30,7 +30,13 @@ export default class ClanComponent extends Vue {
   clan: ClanWithMembers | null = null;
 
   async created() {
-    this.clan = await clanService.getClan(parseInt(this.$route.params.id as string));
+    const clanId = parseInt(this.$route.params.id as string);
+    if (Number.isNaN(clanId)) {
+      this.$router.push({ name: 'not-found' });
+      return;
+    }
+
+    this.clan = await clanService.getClan(clanId);
   }
 }
 </script>
