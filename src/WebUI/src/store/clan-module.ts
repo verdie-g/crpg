@@ -23,6 +23,11 @@ class ClanModule extends VuexModule {
   createClan(clan: ClanCreation): Promise<ClanWithMembers> {
     return clanService.createClan(clan);
   }
+
+  @Action
+  kickClanMember({ clanId, userId }: { clanId: number; userId: number }): Promise<void> {
+    return clanService.kickClanMember(clanId, userId);
+  }
 }
 
 export default getModule(ClanModule);

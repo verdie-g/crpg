@@ -53,7 +53,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="204">Kicked or left.</response>
         /// <response code="400">Bad Request.</response>
         [HttpDelete("{clanId}/members/{userId}")]
-        public Task<ActionResult> DeleteClan(int clanId, int userId)
+        public Task<ActionResult> KickClanMember(int clanId, int userId)
         {
             return ResultToActionAsync(Mediator.Send(new KickClanMemberCommand
             {

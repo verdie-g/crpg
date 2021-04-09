@@ -5,3 +5,10 @@ export function arrayMergeBy<TValue, TKey>(a: TValue[], b: TValue[], getKey: (v:
     return otherEl !== undefined ? otherEl : el;
   });
 }
+
+export function arrayRemove<T>(arr: T[], predicate: (value: T) => boolean) {
+  const idx = arr.findIndex(predicate);
+  if (idx !== -1) {
+    arr.splice(idx, 1);
+  }
+}
