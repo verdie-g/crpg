@@ -22,11 +22,14 @@ async function trySend(method: string, path: string, body?: any): Promise<Result
     return new Result();
   }
 
-  return response.status !== 204 ? await response.json() : {};
+  return response.status !== 204 ? await response.json() : null;
 }
 
 async function send(method: string, path: string, body?: any): Promise<any> {
   const result = await trySend(method, path, body);
+  if (result === null) {
+    return null;
+  }
 
   if (result.errors === null) {
     return result.data;
