@@ -1,9 +1,9 @@
-export default class CharacterWeaponProficiencies {
-  public points: number;
-  public oneHanded: number;
-  public twoHanded: number;
-  public polearm: number;
-  public bow: number;
-  public throwing: number;
-  public crossbow: number;
+export default interface CharacterWeaponProficiencies {
+  points: number;
+  oneHanded: number;
+  twoHanded: number;
+  polearm: number;
+  bow: number;
+  throwing: number;
+  crossbow: number;
 }

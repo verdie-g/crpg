@@ -1,5 +1,5 @@
-export default class CharacterAttributes {
-  public points: number;
-  public strength: number;
-  public agility: number;
+export default interface CharacterAttributes {
+  points: number;
+  strength: number;
+  agility: number;
 }

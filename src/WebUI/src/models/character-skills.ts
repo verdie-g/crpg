@@ -1,12 +1,12 @@
-export default class CharacterSkills {
-  public points: number;
-  public ironFlesh: number;
-  public powerStrike: number;
-  public powerDraw: number;
-  public powerThrow: number;
-  public athletics: number;
-  public riding: number;
-  public weaponMaster: number;
-  public mountedArchery: number;
-  public shield: number;
+export default interface CharacterSkills {
+  points: number;
+  ironFlesh: number;
+  powerStrike: number;
+  powerDraw: number;
+  powerThrow: number;
+  athletics: number;
+  riding: number;
+  weaponMaster: number;
+  mountedArchery: number;
+  shield: number;
 }

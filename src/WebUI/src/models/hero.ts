@@ -4,14 +4,14 @@ import Point from './point';
 import Region from './region';
 import SettlementPublic from './settlement-public';
 
-export default class Hero {
-  public id: number;
-  public name: string;
-  public region: Region;
-  public gold: number;
-  public troops: number;
-  public position: Point;
-  public status: HeroStatus;
-  public targetedHero: HeroPublic;
-  public targetSettlement: SettlementPublic;
+export default interface Hero {
+  id: number;
+  name: string;
+  region: Region;
+  gold: number;
+  troops: number;
+  position: Point;
+  status: HeroStatus;
+  targetedHero: HeroPublic;
+  targetSettlement: SettlementPublic;
 }

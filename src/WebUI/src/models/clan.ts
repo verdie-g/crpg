@@ -1,6 +1,6 @@
-export default class Clan {
-  public id: number;
-  public tag: string;
-  public name: string;
-  public memberCount: number;
+export default interface Clan {
+  id: number;
+  tag: string;
+  name: string;
+  memberCount: number;
 }

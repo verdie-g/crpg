@@ -1,8 +1,8 @@
 import ClanMember from './clan-member';
 
-export default class ClanWithMembers {
-  public id: number;
-  public tag: string;
-  public name: string;
-  public members: ClanMember[];
+export default interface ClanWithMembers {
+  id: number;
+  tag: string;
+  name: string;
+  members: ClanMember[];
 }
