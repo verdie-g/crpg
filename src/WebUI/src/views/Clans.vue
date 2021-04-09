@@ -42,6 +42,10 @@
         <b-table-column field="memberCount" label="Members" v-slot="props">
           {{ props.row.memberCount }}
         </b-table-column>
+
+        <template #empty>
+          <div class="has-text-centered">No clans</div>
+        </template>
       </b-table>
     </div>
   </section>
