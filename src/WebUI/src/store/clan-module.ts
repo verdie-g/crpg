@@ -3,6 +3,7 @@ import store from '@/store';
 import * as clanService from '@/services/clan-service';
 import Clan from '@/models/clan';
 import ClanCreation from '@/models/clan-creation';
+import ClanWithMembers from '@/models/clan-with-members';
 
 @Module({ store, dynamic: true, name: 'clan' })
 class ClanModule extends VuexModule {
@@ -19,7 +20,7 @@ class ClanModule extends VuexModule {
   }
 
   @Action
-  createClan(clan: ClanCreation) {
+  createClan(clan: ClanCreation): Promise<ClanWithMembers> {
     return clanService.createClan(clan);
   }
 }

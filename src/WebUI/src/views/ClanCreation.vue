@@ -52,9 +52,9 @@ export default class ClanCreationComponent extends Vue {
     this.creatingClan = true;
     clanModule
       .createClan({ tag: this.tag, name: this.name })
-      .then(() => {
+      .then(clan => {
         notify('Clan created');
-        this.$router.push('/clans');
+        this.$router.push({ name: 'clan', params: { id: clan.id.toString() } });
       })
       .finally(() => (this.creatingClan = false));
   }
