@@ -1,3 +1,3 @@
-export class UpdateCharacterRequest {
-  public name: string;
+export interface UpdateCharacterRequest {
+  name: string;
 }

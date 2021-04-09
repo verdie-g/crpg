@@ -2,21 +2,21 @@ import WeaponFlags from '@/models/weapon-flags';
 import DamageType from '@/models/damage-type';
 import WeaponClass from '@/models/weapon-class';
 
-export default class ItemWeaponComponent {
-  public class: WeaponClass;
-  public accuracy: number;
-  public missileSpeed: number;
-  public stackAmount: number;
-  public length: number;
-  public handling: number;
-  public bodyArmor: number;
-  public flags: WeaponFlags[];
+export default interface ItemWeaponComponent {
+  class: WeaponClass;
+  accuracy: number;
+  missileSpeed: number;
+  stackAmount: number;
+  length: number;
+  handling: number;
+  bodyArmor: number;
+  flags: WeaponFlags[];
 
-  public thrustDamage: number;
-  public thrustDamageType: DamageType;
-  public thrustSpeed: number;
+  thrustDamage: number;
+  thrustDamageType: DamageType;
+  thrustSpeed: number;
 
-  public swingDamage: number;
-  public swingDamageType: DamageType;
-  public swingSpeed: number;
+  swingDamage: number;
+  swingDamageType: DamageType;
+  swingSpeed: number;
 }

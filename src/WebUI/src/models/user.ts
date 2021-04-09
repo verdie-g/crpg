@@ -1,15 +1,15 @@
 import Platform from './platform';
 import Role from './role';
 
-export default class User {
-  public id: number;
-  public platform: Platform;
-  public platformUserId: number;
-  public name: string;
-  public gold: number;
-  public heirloomPoints: number;
-  public role: Role;
-  public avatarSmall: string;
-  public avatarMedium: string;
-  public avatarFull: string;
+export default interface User {
+  id: number;
+  platform: Platform;
+  platformUserId: number;
+  name: string;
+  gold: number;
+  heirloomPoints: number;
+  role: Role;
+  avatarSmall: string;
+  avatarMedium: string;
+  avatarFull: string;
 }

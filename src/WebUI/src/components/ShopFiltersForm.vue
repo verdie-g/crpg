@@ -55,7 +55,7 @@ import { Component, Model, Vue } from 'vue-property-decorator';
 import { itemTypeToStr } from '@/services/item-service';
 import { recordFilter } from '@/utils/record';
 import ItemType from '@/models/item-type';
-import ShopFilters from '@/models/ShopFilters';
+import ShopFilters from '@/models/shop-filters';
 import Culture from '@/models/culture';
 
 @Component

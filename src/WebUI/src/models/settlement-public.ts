@@ -1,7 +1,7 @@
 import Point from '@/models/point';
 import SettlementType from '@/models/settlement-type';
 
-export default class SettlementPublic {
+export default interface SettlementPublic {
   id: number;
   name: string;
   type: SettlementType;
