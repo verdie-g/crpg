@@ -439,19 +439,61 @@ namespace Crpg.Application.System.Commands
                     Name = "Plan QR",
                     Members = { new ClanMember { Role = ClanMemberRole.Leader, User = baronCyborg } },
                 };
-                Clan[] clans =
+                Clan[] newClans =
                 {
                     pecores, ats, legio, theGrey, ode, virginDefenders, randomClan, abcClan, defClan, ghiClan, jklClan,
                     mnoClan, pqrClan,
                 };
-                foreach (var clan in clans)
-                {
-                    if (await _db.Clans.AnyAsync(c => c.Tag == clan.Tag))
-                    {
-                        continue;
-                    }
 
-                    _db.Clans.Add(clan);
+                var existingClans = await _db.Clans.ToDictionaryAsync(c => c.Name);
+                foreach (var newClan in newClans)
+                {
+                    if (existingClans.TryGetValue(newClan.Name, out var existingClan))
+                    {
+                        _db.Entry(existingClan).State = EntityState.Detached;
+
+                        newClan.Id = existingClan.Id;
+                        _db.Clans.Update(newClan);
+                    }
+                    else
+                    {
+                        _db.Clans.Add(newClan);
+                    }
+                }
+
+                ClanInvitation schumetzqRequestForPecores = new()
+                {
+                    Clan = pecores,
+                    Invitee = schumetzq,
+                    Inviter = schumetzq,
+                    Type = ClanInvitationType.Request,
+                    Status = ClanInvitationStatus.Pending,
+                };
+                ClanInvitation neostralieOfferToBrygganForPecores = new()
+                {
+                    Clan = pecores,
+                    Inviter = neostralie,
+                    Invitee = bryggan,
+                    Type = ClanInvitationType.Offer,
+                    Status = ClanInvitationStatus.Pending,
+                };
+                ClanInvitation[] newClanInvitations = { schumetzqRequestForPecores, neostralieOfferToBrygganForPecores };
+                var existingClanInvitations =
+                    await _db.ClanInvitations.ToDictionaryAsync(i => (i.InviterId, i.InviteeId));
+                foreach (var newClanInvitation in newClanInvitations)
+                {
+                    if (existingClanInvitations.TryGetValue((newClanInvitation.InviteeId, newClanInvitation.InviteeId),
+                        out var existingClanInvitation))
+                    {
+                        _db.Entry(existingClanInvitation).State = EntityState.Detached;
+
+                        newClanInvitation.Id = existingClanInvitation.Id;
+                        _db.ClanInvitations.Update(newClanInvitation);
+                    }
+                    else
+                    {
+                        _db.ClanInvitations.Add(newClanInvitation);
+                    }
                 }
             }
 

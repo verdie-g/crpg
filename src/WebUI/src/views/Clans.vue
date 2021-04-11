@@ -24,6 +24,7 @@
           </b-button>
         </div>
       </div>
+
       <b-table
         :data="clans"
         :hoverable="true"

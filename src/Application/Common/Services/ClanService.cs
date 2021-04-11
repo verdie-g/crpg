@@ -59,7 +59,7 @@ namespace Crpg.Application.Common.Services
 
             // Joining a clan declines all pending invitations and delete pending requests to join.
             var invitations = await db.ClanInvitations
-                .Where(i => i.InviteeUserId == user.Id && i.Status == ClanInvitationStatus.Pending)
+                .Where(i => i.InviteeId == user.Id && i.Status == ClanInvitationStatus.Pending)
                 .ToArrayAsync(cancellationToken);
             foreach (var invitation in invitations)
             {

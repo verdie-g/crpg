@@ -21,7 +21,7 @@ namespace Crpg.Application.Clans.Commands
     {
         public int UserId { get; init; }
         public int ClanId { get; init; }
-        public int InviteeUserId { get; init; }
+        public int InviteeId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<InviteClanMemberCommand, ClanInvitationViewModel>
         {
@@ -48,12 +48,12 @@ namespace Crpg.Application.Clans.Commands
                     return new(CommonErrors.UserNotFound(req.UserId));
                 }
 
-                if (req.InviteeUserId == req.UserId)
+                if (req.InviteeId == req.UserId)
                 {
                     return await RequestToJoinClan(inviter, req.ClanId, cancellationToken);
                 }
 
-                return await InviteToClan(inviter, req.ClanId, req.InviteeUserId, cancellationToken);
+                return await InviteToClan(inviter, req.ClanId, req.InviteeId, cancellationToken);
             }
 
             private async Task<Result<ClanInvitationViewModel>> RequestToJoinClan(User user, int clanId,
@@ -66,7 +66,7 @@ namespace Crpg.Application.Clans.Commands
 
                 // Check if an invitation already exists.
                 var invitation = await _db.ClanInvitations.FirstOrDefaultAsync(ci =>
-                    ci.ClanId == clanId && ci.InviteeUserId == user.Id && ci.Type == ClanInvitationType.Request
+                    ci.ClanId == clanId && ci.InviteeId == user.Id && ci.Type == ClanInvitationType.Request
                     && ci.Status == ClanInvitationStatus.Pending, cancellationToken);
                 if (invitation != null)
                 {
@@ -77,8 +77,8 @@ namespace Crpg.Application.Clans.Commands
                 invitation = new ClanInvitation
                 {
                     ClanId = clanId,
-                    InviteeUserId = user.Id,
-                    InviterUserId = user.Id,
+                    InviteeId = user.Id,
+                    InviterId = user.Id,
                     Type = ClanInvitationType.Request,
                     Status = ClanInvitationStatus.Pending,
                 };
@@ -88,15 +88,15 @@ namespace Crpg.Application.Clans.Commands
                 return new(_mapper.Map<ClanInvitationViewModel>(invitation));
             }
 
-            private async Task<Result<ClanInvitationViewModel>> InviteToClan(User inviter, int clanId, int inviteeUserId,
+            private async Task<Result<ClanInvitationViewModel>> InviteToClan(User inviter, int clanId, int inviteeId,
                 CancellationToken cancellationToken)
             {
                 var invitee = await _db.Users
                     .Include(u => u.ClanMembership)
-                    .FirstOrDefaultAsync(u => u.Id == inviteeUserId, cancellationToken);
+                    .FirstOrDefaultAsync(u => u.Id == inviteeId, cancellationToken);
                 if (invitee == null)
                 {
-                    return new(CommonErrors.UserNotFound(inviteeUserId));
+                    return new(CommonErrors.UserNotFound(inviteeId));
                 }
 
                 if (invitee.ClanMembership != null && invitee.ClanMembership.ClanId == clanId)
@@ -118,7 +118,7 @@ namespace Crpg.Application.Clans.Commands
 
                 // Check if an invitation already exists.
                 var invitation = await _db.ClanInvitations.FirstOrDefaultAsync(ci =>
-                    ci.ClanId == clanId && ci.InviterUserId == inviter.Id && ci.Type == ClanInvitationType.Offer
+                    ci.ClanId == clanId && ci.InviterId == inviter.Id && ci.Type == ClanInvitationType.Offer
                     && ci.Status == ClanInvitationStatus.Pending, cancellationToken);
                 if (invitation != null)
                 {
@@ -129,14 +129,14 @@ namespace Crpg.Application.Clans.Commands
                 invitation = new ClanInvitation
                 {
                     ClanId = clanId,
-                    InviteeUserId = inviteeUserId,
-                    InviterUserId = inviter.Id,
+                    InviteeId = inviteeId,
+                    InviterId = inviter.Id,
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Pending,
                 };
                 _db.ClanInvitations.Add(invitation);
                 await _db.SaveChangesAsync(cancellationToken);
-                Logger.LogInformation("User '{0}' offered user '{1}' to join clan '{2}'", inviter.Id, clanId, inviteeUserId);
+                Logger.LogInformation("User '{0}' offered user '{1}' to join clan '{2}'", inviter.Id, clanId, inviteeId);
                 return new(_mapper.Map<ClanInvitationViewModel>(invitation));
             }
         }

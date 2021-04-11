@@ -25,7 +25,7 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = 1,
                 ClanId = clan.Id,
-                InviteeUserId = 1,
+                InviteeId = 1,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -45,7 +45,7 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = user.Id,
                 ClanId = clan.Id,
-                InviteeUserId = user.Id,
+                InviteeId = user.Id,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -65,15 +65,14 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = user.Id,
                 ClanId = clan.Id,
-                InviteeUserId = user.Id,
+                InviteeId = user.Id,
             }, CancellationToken.None);
 
             var invitation = res.Data!;
             Assert.IsNull(res.Errors);
             Assert.NotZero(invitation.Id);
-            Assert.AreEqual(clan.Id, invitation.ClanId);
-            Assert.AreEqual(user.Id, invitation.InviteeUser.Id);
-            Assert.AreEqual(user.Id, invitation.InviterUser.Id);
+            Assert.AreEqual(user.Id, invitation.Invitee.Id);
+            Assert.AreEqual(user.Id, invitation.Inviter.Id);
             Assert.AreEqual(ClanInvitationType.Request, invitation.Type);
             Assert.AreEqual(ClanInvitationStatus.Pending, invitation.Status);
         }
@@ -88,8 +87,8 @@ namespace Crpg.Application.UTest.Clans
             var invitation = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = user,
-                InviterUser = user,
+                Invitee = user,
+                Inviter = user,
                 Type = ClanInvitationType.Request,
                 Status = ClanInvitationStatus.Pending,
             };
@@ -100,7 +99,7 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = user.Id,
                 ClanId = clan.Id,
-                InviteeUserId = user.Id,
+                InviteeId = user.Id,
             }, CancellationToken.None);
 
             Assert.IsNull(res.Errors);
@@ -121,7 +120,7 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = inviter.Id,
                 ClanId = clan.Id,
-                InviteeUserId = invitee.Id,
+                InviteeId = invitee.Id,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -142,7 +141,7 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = inviter.Id,
                 ClanId = clan.Id,
-                InviteeUserId = invitee.Id,
+                InviteeId = invitee.Id,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -163,7 +162,7 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = inviter.Id,
                 ClanId = clan.Id,
-                InviteeUserId = invitee.Id,
+                InviteeId = invitee.Id,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -184,7 +183,7 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = inviter.Id,
                 ClanId = clan.Id,
-                InviteeUserId = invitee.Id,
+                InviteeId = invitee.Id,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -202,8 +201,8 @@ namespace Crpg.Application.UTest.Clans
             var offer = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = invitee,
-                InviterUser = inviter,
+                Invitee = invitee,
+                Inviter = inviter,
                 Type = ClanInvitationType.Offer,
                 Status = ClanInvitationStatus.Pending,
             };
@@ -214,7 +213,7 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = inviter.Id,
                 ClanId = clan.Id,
-                InviteeUserId = invitee.Id,
+                InviteeId = invitee.Id,
             }, CancellationToken.None);
 
             Assert.IsNull(res.Errors);
@@ -237,15 +236,14 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = inviter.Id,
                 ClanId = clan.Id,
-                InviteeUserId = invitee.Id,
+                InviteeId = invitee.Id,
             }, CancellationToken.None);
 
             var invitation = res.Data!;
             Assert.IsNull(res.Errors);
             Assert.NotZero(invitation.Id);
-            Assert.AreEqual(clan.Id, invitation.ClanId);
-            Assert.AreEqual(invitee.Id, invitation.InviteeUser.Id);
-            Assert.AreEqual(inviter.Id, invitation.InviterUser.Id);
+            Assert.AreEqual(invitee.Id, invitation.Invitee.Id);
+            Assert.AreEqual(inviter.Id, invitation.Inviter.Id);
             Assert.AreEqual(ClanInvitationType.Offer, invitation.Type);
             Assert.AreEqual(ClanInvitationStatus.Pending, invitation.Status);
         }

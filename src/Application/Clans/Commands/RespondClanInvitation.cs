@@ -58,7 +58,7 @@ namespace Crpg.Application.Clans.Commands
                     return new(CommonErrors.ClanInvitationClosed(invitation.Id, invitation.Status));
                 }
 
-                if ((invitation.Type != ClanInvitationType.Offer || invitation.InviteeUserId != user.Id)
+                if ((invitation.Type != ClanInvitationType.Offer || invitation.InviteeId != user.Id)
                     && invitation.Type != ClanInvitationType.Request)
                 {
                     // Too lazy to return proper errors.
@@ -70,13 +70,13 @@ namespace Crpg.Application.Clans.Commands
                 if (invitation.Type == ClanInvitationType.Offer) // User responds to an invitation offer.
                 {
                     invitee = user;
-                    inviter = await _db.Users.FirstAsync(u => u.Id == invitation.InviterUserId, cancellationToken);
+                    inviter = await _db.Users.FirstAsync(u => u.Id == invitation.InviterId, cancellationToken);
                 }
                 else // User responds to request to join a clan.
                 {
                     invitee = await _db.Users
                         .Include(u => u.ClanMembership)
-                        .FirstAsync(u => u.Id == invitation.InviteeUserId, cancellationToken);
+                        .FirstAsync(u => u.Id == invitation.InviteeId, cancellationToken);
                     inviter = user;
 
                     var error = _clanService.CheckClanMembership(inviter, invitation.ClanId);
@@ -96,7 +96,7 @@ namespace Crpg.Application.Clans.Commands
                 if (!req.Accept)
                 {
                     invitation.Status = ClanInvitationStatus.Declined;
-                    invitation.InviterUserId = inviter.Id; // If invitation was a request, invited == invitee.
+                    invitation.InviterId = inviter.Id; // If invitation was a request, invited == invitee.
                     await _db.SaveChangesAsync(cancellationToken);
                     if (invitation.Type == ClanInvitationType.Offer)
                     {

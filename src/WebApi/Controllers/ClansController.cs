@@ -71,12 +71,14 @@ namespace Crpg.WebApi.Controllers
         /// <response code="400">Bad Request.</response>
         [HttpGet("{clanId}/invitations")]
         public Task<ActionResult<Result<IList<ClanInvitationViewModel>>>> GetClanInvitations([FromRoute] int clanId,
+            [FromQuery(Name = "type[]")] ClanInvitationType[] types,
             [FromQuery(Name = "status[]")] ClanInvitationStatus[] statuses)
         {
             return ResultToActionAsync(Mediator.Send(new GetClanInvitationsQuery
             {
                 UserId = CurrentUser.UserId,
                 ClanId = clanId,
+                Types = types,
                 Statuses = statuses,
             }));
         }
@@ -102,7 +104,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="400">Bad Request.</response>
         [HttpPut("{clanId}/invitations/{invitationId}/responses")]
         public Task<ActionResult<Result<ClanInvitationViewModel>>> RespondToClanInvitation([FromRoute] int clanId,
-            [FromQuery] int invitationId, [FromBody] RespondClanInvitationCommand invite)
+            [FromRoute] int invitationId, [FromBody] RespondClanInvitationCommand invite)
         {
             invite = invite with { UserId = CurrentUser.UserId, ClanId = clanId, ClanInvitationId = invitationId };
             return ResultToActionAsync(Mediator.Send(invite));
