@@ -13,6 +13,11 @@ namespace Crpg.Domain.Entities.Clans
         public string Tag { get; set; } = string.Empty;
 
         /// <summary>
+        /// Hex color of the clan (e.g. #FA60EE).
+        /// </summary>
+        public string Color { get; set; } = string.Empty;
+
+        /// <summary>
         /// Full name of the clan.
         /// </summary>
         public string Name { get; set; } = string.Empty;

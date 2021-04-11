@@ -3,14 +3,26 @@
     <div class="container">
       <h1 class="is-size-2">Create a new clan</h1>
       <form @submit.prevent="onSubmit">
-        <b-field label="Tag">
-          <b-input
-            v-model="tag"
-            :minlength="tagMinLength"
-            :maxlength="tagMaxLength"
-            :pattern="tagRegex"
-            required
-          />
+        <b-field grouped>
+          <b-field label="Tag">
+            <b-input
+              v-model="tag"
+              :minlength="tagMinLength"
+              :maxlength="tagMaxLength"
+              :pattern="tagRegex"
+              required
+            />
+          </b-field>
+
+          <b-field label="Color">
+            <b-input
+              type="color"
+              v-model="color"
+              :pattern="colorRegex"
+              required
+              style="width: 77px"
+            />
+          </b-field>
         </b-field>
 
         <b-field label="Name">
@@ -44,6 +56,9 @@ export default class ClanCreationComponent extends Vue {
   tagMaxLength = Constants.clanTagMaxLength;
   tagRegex = Constants.clanTagRegex;
 
+  color = '#000000';
+  colorRegex = Constants.clanColorRegex;
+
   name = '';
   nameMinLength = Constants.clanNameMinLength;
   nameMaxLength = Constants.clanNameMaxLength;
@@ -51,7 +66,7 @@ export default class ClanCreationComponent extends Vue {
   onSubmit() {
     this.creatingClan = true;
     clanModule
-      .createClan({ tag: this.tag, name: this.name })
+      .createClan({ tag: this.tag, color: this.color, name: this.name })
       .then(clan => {
         notify('Clan created');
         this.$router.push({ name: 'clan', params: { id: clan.id.toString() } });

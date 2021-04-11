@@ -335,6 +335,7 @@ namespace Crpg.Application.System.Commands
                 Clan pecores = new()
                 {
                     Tag = "PEC",
+                    Color = "#3273DC",
                     Name = "Pecores",
                     Members =
                     {
@@ -349,6 +350,7 @@ namespace Crpg.Application.System.Commands
                 Clan ats = new()
                 {
                     Tag = "ATS",
+                    Color = "#FF3860",
                     Name = "Among The Shadows",
                     Members =
                     {
@@ -360,24 +362,28 @@ namespace Crpg.Application.System.Commands
                 Clan legio = new()
                 {
                     Tag = "LEG",
+                    Color = "#FFDD57",
                     Name = "Legio",
                     Members = { new ClanMember { Role = ClanMemberRole.Leader, User = leanir } },
                 };
                 Clan theGrey = new()
                 {
                     Tag = "GREY",
+                    Color = "#7A7A7A",
                     Name = "The Grey",
                     Members = { new ClanMember { Role = ClanMemberRole.Leader, User = opset } },
                 };
                 Clan ode = new()
                 {
                     Tag = "OdE",
+                    Color = "#00D1B2",
                     Name = "Ordre de l'étoile",
                     Members = { new ClanMember { Role = ClanMemberRole.Leader, User = falcom } },
                 };
                 Clan virginDefenders = new()
                 {
                     Tag = "VD",
+                    Color = "#FF7D97",
                     Name = "Virgin Defenders",
                     Members =
                     {
@@ -391,6 +397,7 @@ namespace Crpg.Application.System.Commands
                 Clan randomClan = new()
                 {
                     Tag = "RC",
+                    Color = "#F5F5F5",
                     Name = "Random Clan",
                     Members =
                     {
@@ -402,6 +409,7 @@ namespace Crpg.Application.System.Commands
                 Clan abcClan = new()
                 {
                     Tag = "ABC",
+                    Color = "#5D3C43",
                     Name = "ABC",
                     Members =
                     {
@@ -412,30 +420,35 @@ namespace Crpg.Application.System.Commands
                 Clan defClan = new()
                 {
                     Tag = "DEF",
+                    Color = "#65B1A6",
                     Name = "DEF",
                     Members = { new ClanMember { Role = ClanMemberRole.Leader, User = lerch } },
                 };
                 Clan ghiClan = new()
                 {
                     Tag = "GHI",
+                    Color = "#1A544C",
                     Name = "GHI",
                     Members = { new ClanMember { Role = ClanMemberRole.Leader, User = tjens } },
                 };
                 Clan jklClan = new()
                 {
                     Tag = "JKL",
+                    Color = "#10044F",
                     Name = "JKL",
                     Members = { new ClanMember { Role = ClanMemberRole.Leader, User = knitler } },
                 };
                 Clan mnoClan = new()
                 {
                     Tag = "MNO",
+                    Color = "#5A541C",
                     Name = "MNO",
                     Members = { new ClanMember { Role = ClanMemberRole.Leader, User = magnuclean } },
                 };
                 Clan pqrClan = new()
                 {
                     Tag = "PQR",
+                    Color = "#123456",
                     Name = "Plan QR",
                     Members = { new ClanMember { Role = ClanMemberRole.Leader, User = baronCyborg } },
                 };

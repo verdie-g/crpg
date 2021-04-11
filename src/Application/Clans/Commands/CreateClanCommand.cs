@@ -19,6 +19,7 @@ namespace Crpg.Application.Clans.Commands
     {
         public int UserId { get; init; }
         public string Tag { get; init; } = string.Empty;
+        public string Color { get; init; } = string.Empty;
         public string Name { get; init; } = string.Empty;
 
         public class Validator : AbstractValidator<CreateClanCommand>
@@ -29,6 +30,9 @@ namespace Crpg.Application.Clans.Commands
                     .MinimumLength(constants.ClanTagMinLength)
                     .MaximumLength(constants.ClanTagMaxLength)
                     .Matches(new Regex(constants.ClanTagRegex, RegexOptions.Compiled));
+
+                RuleFor(c => c.Color)
+                    .Matches(new Regex(constants.ClanColorRegex, RegexOptions.Compiled));
 
                 RuleFor(c => c.Name)
                     .MinimumLength(constants.ClanNameMinLength)
@@ -76,6 +80,7 @@ namespace Crpg.Application.Clans.Commands
                 clan = new Clan
                 {
                     Tag = req.Tag,
+                    Color = req.Color.ToUpperInvariant(),
                     Name = req.Name,
                     Members =
                     {

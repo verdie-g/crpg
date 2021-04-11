@@ -32,7 +32,8 @@
         :row-class="() => 'is-clickable'"
         @click="onRowClick"
       >
-        <b-table-column field="tag" label="Tag" width="40" v-slot="props">
+        <b-table-column field="tag" label="Tag" width="100" v-slot="props">
+          <div class="box clan-color" :style="`background-color: ${props.row.color}`"></div>
           {{ props.row.tag }}
         </b-table-column>
 
@@ -86,4 +87,12 @@ export default class Clans extends Vue {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.clan-color {
+  display: inline-block;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  vertical-align: text-bottom;
+}
+</style>

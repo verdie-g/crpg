@@ -36,6 +36,7 @@
   "clanTagMinLength": 2,
   "clanTagMaxLength": 4,
   "clanTagRegex": "^[a-zA-Z0-9]*$",
+  "clanColorRegex": "^#[a-fA-F0-9]{6}$",
   "clanNameMinLength": 5,
   "clanNameMaxLength": 30,
   "strategusMapWidth": 256,

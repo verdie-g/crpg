@@ -41,6 +41,7 @@ namespace Crpg.GameMod.Common
         public int ClanTagMinLength { get; set; }
         public int ClanTagMaxLength { get; set; }
         public string ClanTagRegex { get; set; } = string.Empty;
+        public string ClanColorRegex { get; set; } = string.Empty;
         public int ClanNameMinLength { get; set; }
         public int ClanNameMaxLength { get; set; }
         public double StrategusMapWidth { get; set; }
