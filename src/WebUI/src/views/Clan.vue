@@ -5,7 +5,7 @@
         <h1 class="column is-size-2">[{{ clan.tag }}] {{ clan.name }}</h1>
         <div class="column is-narrow">
           <b-button
-            v-if="selfMember !== null"
+            v-if="canManageApplications"
             type="is-link"
             size="is-medium"
             tag="router-link"
@@ -75,6 +75,15 @@ export default class ClanComponent extends Vue {
 
     const selfMember = this.clan.members.find(m => m.user.id === userModule.user!.id);
     return selfMember === undefined ? null : selfMember;
+  }
+
+  get canManageApplications(): boolean {
+    const selfMember = this.selfMember;
+    if (selfMember === null) {
+      return false;
+    }
+
+    return selfMember.role === ClanMemberRole.Admin || selfMember.role === ClanMemberRole.Leader;
   }
 
   async created() {
