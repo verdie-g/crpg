@@ -14,7 +14,7 @@ namespace Crpg.Domain.Entities.Clans
         /// <summary>
         /// Id of the <see cref="User"/> that was invited or that requested to join a <see cref="Clan"/>.
         /// </summary>
-        public int InviteeUserId { get; set; }
+        public int InviteeId { get; set; }
 
         /// <summary>
         /// Id of the <see cref="User"/> that created/accepted/declined the invitation, depending on <see cref="Type"/>
@@ -29,7 +29,7 @@ namespace Crpg.Domain.Entities.Clans
         ///   <item>
         ///     <description>
         ///       If <see cref="Type"/> == <see cref="ClanInvitationType.Request"/> &amp;&amp; <see cref="Status"/> ==
-        ///       <see cref="ClanInvitationStatus.Pending"/> then it is equal to <see cref="InviteeUserId"/>.
+        ///       <see cref="ClanInvitationStatus.Pending"/> then it is equal to <see cref="InviteeId"/>.
         ///     </description>
         ///   </item>
         ///   <item>
@@ -41,7 +41,7 @@ namespace Crpg.Domain.Entities.Clans
         ///   </item>
         /// </list>
         /// </summary>
-        public int InviterUserId { get; set; }
+        public int InviterId { get; set; }
 
         /// <summary>
         /// Type of the <see cref="ClanInvitation"/> (request or offer).
@@ -54,9 +54,11 @@ namespace Crpg.Domain.Entities.Clans
         public ClanInvitationStatus Status { get; set; }
 
         public Clan? Clan { get; set; }
-        public User? InviteeUser { get; set; }
 
-        /// <summary>See <see cref="InviterUserId"/>.</summary>
-        public User? InviterUser { get; set; }
+        /// <summary>See <see cref="InviteeId"/>.</summary>
+        public User? Invitee { get; set; }
+
+        /// <summary>See <see cref="InviterId"/>.</summary>
+        public User? Inviter { get; set; }
     }
 }

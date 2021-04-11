@@ -112,6 +112,12 @@ const routes = [
     beforeEnter: isSignedInGuard,
   },
   {
+    path: '/clans/:id/applications',
+    name: 'clan-applications',
+    component: () => import('../views/ClanApplications.vue'),
+    beforeEnter: isSignedInGuard,
+  },
+  {
     path: '/strategus',
     name: 'strategus',
     component: () => import('../views/Strategus.vue'),

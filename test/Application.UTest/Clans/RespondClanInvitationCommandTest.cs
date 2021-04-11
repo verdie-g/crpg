@@ -83,8 +83,8 @@ namespace Crpg.Application.UTest.Clans
             var clanInvitation = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = new User(),
-                InviterUser = new User(),
+                Invitee = new User(),
+                Inviter = new User(),
                 Type = ClanInvitationType.Offer,
                 Status = ClanInvitationStatus.Pending,
             };
@@ -112,8 +112,8 @@ namespace Crpg.Application.UTest.Clans
             var clanInvitation = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = new User(),
-                InviterUser = user,
+                Invitee = new User(),
+                Inviter = user,
                 Type = ClanInvitationType.Offer,
                 Status = ClanInvitationStatus.Pending,
             };
@@ -144,8 +144,8 @@ namespace Crpg.Application.UTest.Clans
             var clanInvitation = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = user,
-                InviterUser = new User(),
+                Invitee = user,
+                Inviter = new User(),
                 Type = ClanInvitationType.Offer,
                 Status = status,
             };
@@ -173,8 +173,8 @@ namespace Crpg.Application.UTest.Clans
             var clanInvitation = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = user,
-                InviterUser = new User(),
+                Invitee = user,
+                Inviter = new User(),
                 Type = ClanInvitationType.Offer,
                 Status = ClanInvitationStatus.Pending,
             };
@@ -192,7 +192,7 @@ namespace Crpg.Application.UTest.Clans
             Assert.IsNull(res.Errors);
             Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
             Assert.AreEqual(ClanInvitationStatus.Declined, res.Data!.Status);
-            Assert.AreNotEqual(user.Id, res.Data!.InviterUser.Id);
+            Assert.AreNotEqual(user.Id, res.Data!.Inviter.Id);
         }
 
         [Test]
@@ -205,8 +205,8 @@ namespace Crpg.Application.UTest.Clans
             var clanInvitation = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = user,
-                InviterUser = new User(),
+                Invitee = user,
+                Inviter = new User(),
                 Type = ClanInvitationType.Offer,
                 Status = ClanInvitationStatus.Pending,
             };
@@ -224,7 +224,7 @@ namespace Crpg.Application.UTest.Clans
             Assert.IsNull(res.Errors);
             Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
             Assert.AreEqual(ClanInvitationStatus.Accepted, res.Data!.Status);
-            Assert.AreNotEqual(user.Id, res.Data!.InviterUser.Id);
+            Assert.AreNotEqual(user.Id, res.Data!.Inviter.Id);
             Assert.That(AssertDb.ClanMembers, Has.Exactly(1)
                 .Matches<ClanMember>(cm => cm.ClanId == clan.Id && cm.UserId == user.Id));
         }
@@ -239,8 +239,8 @@ namespace Crpg.Application.UTest.Clans
             var clanInvitation = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = user,
-                InviterUser = new User(),
+                Invitee = user,
+                Inviter = new User(),
                 Type = ClanInvitationType.Offer,
                 Status = ClanInvitationStatus.Pending,
             };
@@ -258,7 +258,7 @@ namespace Crpg.Application.UTest.Clans
             Assert.IsNull(res.Errors);
             Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
             Assert.AreEqual(ClanInvitationStatus.Accepted, res.Data!.Status);
-            Assert.AreNotEqual(user.Id, res.Data!.InviterUser.Id);
+            Assert.AreNotEqual(user.Id, res.Data!.Inviter.Id);
             Assert.That(AssertDb.ClanMembers, Has.Exactly(1)
                 .Matches<ClanMember>(cm => cm.ClanId == clan.Id && cm.UserId == user.Id));
         }
@@ -273,8 +273,8 @@ namespace Crpg.Application.UTest.Clans
             var clanInvitation = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = user,
-                InviterUser = user,
+                Invitee = user,
+                Inviter = user,
                 Type = ClanInvitationType.Request,
                 Status = ClanInvitationStatus.Pending,
             };
@@ -302,8 +302,8 @@ namespace Crpg.Application.UTest.Clans
             var clanInvitation = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = user,
-                InviterUser = user,
+                Invitee = user,
+                Inviter = user,
                 Type = ClanInvitationType.Request,
                 Status = ClanInvitationStatus.Pending,
             };
@@ -332,8 +332,8 @@ namespace Crpg.Application.UTest.Clans
             var clanInvitation = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = user,
-                InviterUser = user,
+                Invitee = user,
+                Inviter = user,
                 Type = ClanInvitationType.Request,
                 Status = ClanInvitationStatus.Pending,
             };
@@ -365,8 +365,8 @@ namespace Crpg.Application.UTest.Clans
             var clanInvitation = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = user,
-                InviterUser = user,
+                Invitee = user,
+                Inviter = user,
                 Type = ClanInvitationType.Request,
                 Status = status,
             };
@@ -395,8 +395,8 @@ namespace Crpg.Application.UTest.Clans
             var clanInvitation = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = user,
-                InviterUser = user,
+                Invitee = user,
+                Inviter = user,
                 Type = ClanInvitationType.Request,
                 Status = ClanInvitationStatus.Pending,
             };
@@ -414,7 +414,7 @@ namespace Crpg.Application.UTest.Clans
             Assert.IsNull(res.Errors);
             Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
             Assert.AreEqual(ClanInvitationStatus.Accepted, res.Data!.Status);
-            Assert.AreEqual(user.Id, res.Data!.InviterUser.Id);
+            Assert.AreEqual(user.Id, res.Data!.Inviter.Id);
         }
 
         [Test]
@@ -427,8 +427,8 @@ namespace Crpg.Application.UTest.Clans
             var clanInvitation = new ClanInvitation
             {
                 Clan = clan,
-                InviteeUser = user,
-                InviterUser = user,
+                Invitee = user,
+                Inviter = user,
                 Type = ClanInvitationType.Request,
                 Status = ClanInvitationStatus.Pending,
             };
@@ -446,7 +446,7 @@ namespace Crpg.Application.UTest.Clans
             Assert.IsNull(res.Errors);
             Assert.AreEqual(clanInvitation.Id, res.Data!.Id);
             Assert.AreEqual(ClanInvitationStatus.Declined, res.Data!.Status);
-            Assert.AreEqual(user.Id, res.Data!.InviterUser.Id);
+            Assert.AreEqual(user.Id, res.Data!.Inviter.Id);
         }
     }
 }

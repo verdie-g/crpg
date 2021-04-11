@@ -1,7 +1,30 @@
 <template>
   <section class="section">
     <div class="container" v-if="clan !== null">
-      <h1 class="is-size-2">[{{ clan.tag }}] {{ clan.name }}</h1>
+      <div class="columns is-vcentered">
+        <h1 class="column is-size-2">[{{ clan.tag }}] {{ clan.name }}</h1>
+        <div class="column is-narrow">
+          <b-button
+            v-if="selfMember !== null"
+            type="is-link"
+            size="is-medium"
+            tag="router-link"
+            :to="{ name: 'clan-applications', params: { id: $route.params.id } }"
+          >
+            Clan Applications
+          </b-button>
+          <b-button
+            v-else
+            type="is-primary"
+            size="is-medium"
+            @click="apply"
+            :disabled="applicationSent"
+          >
+            Apply to join
+          </b-button>
+        </div>
+      </div>
+
       <b-table :data="clan.members" :hoverable="true">
         <b-table-column field="name" label="Name" v-slot="props">
           {{ props.row.user.name }}
@@ -42,6 +65,17 @@ import ClanMemberRole from '@/models/clan-member-role';
 @Component({ components: { platform: PlatformComponent } })
 export default class ClanComponent extends Vue {
   clan: ClanWithMembers | null = null;
+  applicationSent = false;
+
+  get selfMember(): ClanMember | null {
+    // Clan or current user not loaded yet.
+    if (this.clan === null || userModule.user === null) {
+      return null;
+    }
+
+    const selfMember = this.clan.members.find(m => m.user.id === userModule.user!.id);
+    return selfMember === undefined ? null : selfMember;
+  }
 
   async created() {
     const clanId = parseInt(this.$route.params.id as string);
@@ -53,26 +87,17 @@ export default class ClanComponent extends Vue {
     this.clan = await clanService.getClan(clanId);
   }
 
-  isMemberSelf(member: ClanMember): boolean {
-    return member.user.id === userModule.user!.id;
-  }
-
   memberKickable(member: ClanMember): boolean {
-    // Current user not loaded yet.
-    if (userModule.user === null) {
-      return false;
-    }
-
+    const selfMember = this.selfMember;
     if (
-      this.isMemberSelf(member) &&
+      selfMember !== null &&
+      member.user.id === selfMember.user.id &&
       (member.role !== ClanMemberRole.Leader || this.clan!.members.length === 1)
     ) {
       return true;
     }
 
-    // Check that the current user is a member of the clan.
-    const selfMember = this.clan!.members.find(m => m.user.id === userModule.user!.id);
-    if (selfMember === undefined) {
+    if (selfMember === null) {
       return false;
     }
 
@@ -83,14 +108,21 @@ export default class ClanComponent extends Vue {
     );
   }
 
+  apply() {
+    this.applicationSent = true;
+    clanService
+      .inviteToClan(this.clan!.id, userModule.user!.id)
+      .then(() => notify('Application sent!'));
+  }
+
   async kickMember(member: ClanMember) {
     await clanModule.kickClanMember({ clanId: this.clan!.id, userId: member.user.id });
-    arrayRemove(this.clan!.members, m => m === member);
-    if (this.isMemberSelf(member)) {
+    if (member.user.id === this.selfMember?.user.id) {
       notify('Clan left');
       this.$router.push({ name: 'clans' });
     } else {
       notify('Clan member kicked');
+      arrayRemove(this.clan!.members, m => m === member);
     }
   }
 }

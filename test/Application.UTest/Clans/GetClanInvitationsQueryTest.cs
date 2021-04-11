@@ -50,7 +50,7 @@ namespace Crpg.Application.UTest.Clans
         }
 
         [Test]
-        public async Task ShouldReturnAllClanInvitationsIfStatusesEmpty()
+        public async Task ShouldReturnAllClanInvitationsIfTypesAndStatusesEmpty()
         {
             var user = new User();
             ArrangeDb.Users.Add(user);
@@ -64,33 +64,41 @@ namespace Crpg.Application.UTest.Clans
                 new ClanInvitation
                 {
                     Clan = clan,
-                    InviteeUser = new User(),
-                    InviterUser = new User(),
+                    Invitee = new User(),
+                    Inviter = new User(),
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Accepted,
                 },
                 new ClanInvitation
                 {
                     Clan = clan,
-                    InviteeUser = new User(),
-                    InviterUser = new User(),
+                    Invitee = new User(),
+                    Inviter = new User(),
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Declined,
                 },
                 new ClanInvitation
                 {
                     Clan = clan,
-                    InviteeUser = new User(),
-                    InviterUser = new User(),
+                    Invitee = new User(),
+                    Inviter = new User(),
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Pending,
                 },
                 new ClanInvitation
                 {
+                    Clan = clan,
+                    Invitee = new User(),
+                    Inviter = new User(),
+                    Type = ClanInvitationType.Request,
+                    Status = ClanInvitationStatus.Pending,
+                },
+                new ClanInvitation
+                {
                     Clan = new Clan(),
-                    InviteeUser = new User(),
-                    InviterUser = new User(),
-                    Type = ClanInvitationType.Offer,
+                    Invitee = new User(),
+                    Inviter = new User(),
+                    Type = ClanInvitationType.Request,
                     Status = ClanInvitationStatus.Pending,
                 },
             };
@@ -101,15 +109,16 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = user.Id,
                 ClanId = clan.Id,
+                Types = Array.Empty<ClanInvitationType>(),
                 Statuses = Array.Empty<ClanInvitationStatus>(),
             }, CancellationToken.None);
 
             Assert.IsNull(res.Errors);
-            Assert.AreEqual(3, res.Data!.Count);
+            Assert.AreEqual(4, res.Data!.Count);
         }
 
         [Test]
-        public async Task ShouldReturnSpecifiedStatusesOnly()
+        public async Task ShouldReturnSpecifiedTypeAndStatusOnly()
         {
             var user = new User();
             ArrangeDb.Users.Add(user);
@@ -123,33 +132,49 @@ namespace Crpg.Application.UTest.Clans
                 new ClanInvitation
                 {
                     Clan = clan,
-                    InviteeUser = new User(),
-                    InviterUser = new User(),
+                    Invitee = new User(),
+                    Inviter = new User(),
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Accepted,
                 },
                 new ClanInvitation
                 {
                     Clan = clan,
-                    InviteeUser = new User(),
-                    InviterUser = new User(),
+                    Invitee = new User(),
+                    Inviter = new User(),
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Declined,
                 },
                 new ClanInvitation
                 {
                     Clan = clan,
-                    InviteeUser = new User(),
-                    InviterUser = new User(),
+                    Invitee = new User(),
+                    Inviter = new User(),
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Pending,
                 },
                 new ClanInvitation
                 {
                     Clan = new Clan(),
-                    InviteeUser = new User(),
-                    InviterUser = new User(),
+                    Invitee = new User(),
+                    Inviter = new User(),
                     Type = ClanInvitationType.Offer,
+                    Status = ClanInvitationStatus.Pending,
+                },
+                new ClanInvitation
+                {
+                    Clan = clan,
+                    Invitee = new User(),
+                    Inviter = new User(),
+                    Type = ClanInvitationType.Request,
+                    Status = ClanInvitationStatus.Accepted,
+                },
+                new ClanInvitation
+                {
+                    Clan = clan,
+                    Invitee = new User(),
+                    Inviter = new User(),
+                    Type = ClanInvitationType.Request,
                     Status = ClanInvitationStatus.Pending,
                 },
             };
@@ -160,6 +185,7 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = user.Id,
                 ClanId = clan.Id,
+                Types = new[] { ClanInvitationType.Offer },
                 Statuses = new[] { ClanInvitationStatus.Pending },
             }, CancellationToken.None);
 

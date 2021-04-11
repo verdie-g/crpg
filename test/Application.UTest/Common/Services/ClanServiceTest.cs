@@ -70,32 +70,32 @@ namespace Crpg.Application.UTest.Common.Services
                 new ClanInvitation
                 {
                     Clan = new Clan(),
-                    InviteeUser = user,
-                    InviterUser = new User(),
+                    Invitee = user,
+                    Inviter = new User(),
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Pending,
                 },
                 new ClanInvitation
                 {
                     Clan = new Clan(),
-                    InviteeUser = user,
-                    InviterUser = new User(),
+                    Invitee = user,
+                    Inviter = new User(),
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Declined,
                 },
                 new ClanInvitation
                 {
                     Clan = new Clan(),
-                    InviteeUser = user,
-                    InviterUser = user,
+                    Invitee = user,
+                    Inviter = user,
                     Type = ClanInvitationType.Request,
                     Status = ClanInvitationStatus.Pending,
                 },
                 new ClanInvitation
                 {
                     Clan = new Clan(),
-                    InviteeUser = user,
-                    InviterUser = new User(),
+                    Invitee = user,
+                    Inviter = new User(),
                     Type = ClanInvitationType.Request,
                     Status = ClanInvitationStatus.Accepted,
                 },
