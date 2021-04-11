@@ -37,6 +37,7 @@
               (SELECT COUNT(*) FROM users) AS users,
               (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 month') AS active_users_30d,
               (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 week') AS active_users_7d,
+              (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 day') AS active_users_1d,
               (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '15 min') AS active_users_15min
             columns:
             - name: users
@@ -44,6 +45,8 @@
             - name: active_users_30d
               type: gauge
             - name: active_users_7d
+              type: gauge
+            - name: active_users_1d
               type: gauge
             - name: active_users_15min
               type: gauge
