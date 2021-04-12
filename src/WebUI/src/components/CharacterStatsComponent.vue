@@ -491,7 +491,7 @@ export default class CharacterStatsComponent extends Vue {
   @Prop(Object) character: Character;
 
   isCharacterUpdateModalActive = false;
-  characterUpdate: CharacterUpdate = this.characterUpdateFromCharacter(this.character);
+  characterUpdate: CharacterUpdate = { name: '' };
 
   updatingStats = false;
   statsDelta: CharacterStatistics = this.createEmptyStatistics();

@@ -44,7 +44,7 @@ The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the foll
 - [Buefy](https://buefy.org) - Vue wrapper of Bulma
 - [Sass](https://sass-lang.com) - CSS pre-processor
 - [Font Awesome](https://fontawesome.com) for icons
-- [Eslint](https://eslint.org) to enforce coding style and best practices. Use `yarn lint-fix` to fix your code
+- [Eslint](https://eslint.org) to enforce coding style and best practices. Use `npm run lint-fix` to fix your code
 
 ## Run
 
@@ -65,10 +65,9 @@ By default, the Web API uses an in-memory database so no DBMS need to be downloa
 ### Web UI (src/WebUI)
 
 - Download [Node.js](https://nodejs.org)
-- Download [Yarn](https://classic.yarnpkg.com/en/docs/install)
 - Go to `src/WebUI`
-- Run `yarn install` to install dependencies
-- Run `yarn serve` to launch the application
+- Run `npm install` to install dependencies
+- Run `npm run serve` to launch the application
 
 The client relies on the server so you have to run both.
 
