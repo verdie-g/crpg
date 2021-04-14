@@ -7,7 +7,7 @@
       :center="center"
       :options="mapOptions"
       :max-bounds="maxBounds"
-      @ready="onMapBoundsChange(), heroSpawn()"
+      @ready="onMapBoundsChange"
       @moveend="onMapBoundsChange"
     >
       <l-control-mouse-position />
@@ -16,7 +16,7 @@
           class="box"
           v-if="currentDialog"
           :is="currentDialog"
-          @dialogEvent="dispatchEvent($event)"
+          v-on="dialogEventHandlers"
         />
       </l-control>
       <l-tile-layer :url="url" :attribution="attribution" />
@@ -84,6 +84,11 @@ export default class Strategus extends Vue {
   mapBounds: LatLngBounds | null = null;
   updateIntervalId = -1;
 
+  // Register here handlers for all events that can emitted from a dialog.
+  dialogEventHandlers = {
+    heroSpawn: this.heroSpawn,
+  };
+
   get settlements(): Settlement[] {
     if (this.mapBounds === null) {
       return [];
@@ -110,7 +115,14 @@ export default class Strategus extends Vue {
 
   created() {
     strategusModule.getSettlements();
-    strategusModule.getUpdate();
+    strategusModule.getUpdate().then(res => {
+      if (res.errors !== null) {
+        // Not registered to strategus.
+        strategusModule.pushDialog('RegistrationDialog');
+      } else {
+        this.heroSpawn();
+      }
+    });
   }
 
   beforeDestroy() {
@@ -137,21 +149,9 @@ export default class Strategus extends Vue {
   }
 
   heroSpawn() {
-    if (this.map !== undefined && this.hero !== null) {
-      this.map.mapObject.flyTo(pointToLatLng(this.hero.position), 5, {
-        duration: 0.4,
-      });
-    }
-  }
-  dispatchEvent(event: string) {
-    switch (event) {
-      case 'heroSpawn':
-        this.heroSpawn();
-        break;
-
-      default:
-        break;
-    }
+    strategusModule.getUpdate();
+    this.updateIntervalId = setInterval(() => strategusModule.getUpdate(), 60 * 1000);
+    this.map.mapObject.flyTo(pointToLatLng(this.hero!.position), 5, { duration: 0.4 });
   }
 }
 </script>

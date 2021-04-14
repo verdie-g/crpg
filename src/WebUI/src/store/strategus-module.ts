@@ -6,6 +6,8 @@ import { arrayMergeBy } from '@/utils/array';
 import Hero from '@/models/hero';
 import Region from '@/models/region';
 import HeroVisible from '@/models/hero-visible';
+import StrategusUpdate from '@/models/strategus-update';
+import { Result } from '@/models/result';
 
 @Module({ store, dynamic: true, name: 'strategus' })
 class StrategusModule extends VuexModule {
@@ -51,17 +53,18 @@ class StrategusModule extends VuexModule {
   }
 
   @Action
-  async getUpdate(): Promise<void> {
+  async getUpdate(): Promise<Result<StrategusUpdate>> {
     const res = await strategusService.getUpdate();
-    if (res.errors !== null && res.errors[0].code === 'HeroNotFound') {
-      this.pushDialog('RegistrationDialog');
-      return;
+    if (res.errors !== null) {
+      return res;
     }
 
     const update = res.data!;
     this.setHero(update.hero);
     this.setSettlements(arrayMergeBy(this.settlements, update.visibleSettlements, s => s.id));
     this.setVisibleHeroes(update.visibleHeroes);
+
+    return res;
   }
 }
 
