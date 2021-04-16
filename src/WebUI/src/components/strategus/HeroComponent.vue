@@ -6,6 +6,7 @@
     :fill="true"
     :fillColor="markerColor"
     :fillOpacity="1.0"
+    @click="$emit('click')"
   >
     <l-tooltip :options="{ direction: 'top' }">{{ hero.name }} ({{ hero.troops }})</l-tooltip>
   </l-circle-marker>

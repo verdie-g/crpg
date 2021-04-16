@@ -9,6 +9,7 @@
       :max-bounds="maxBounds"
       @ready="onMapBoundsChange"
       @moveend="onMapBoundsChange"
+      @click="onMapClick"
     >
       <l-control-mouse-position />
       <l-control class="column is-one-third" position="topleft">
@@ -24,17 +25,25 @@
         v-for="settlement in settlements"
         :key="'settlement-' + settlement.id"
         :settlement="settlement"
+        @click="onSettlementClick(settlement)"
       />
       <hero v-if="hero" :hero="hero" :self="true" />
-      <hero v-for="vh in visibleHeroes" :key="'hero-' + vh.id" :hero="vh" :self="false" />
+      <l-polyline v-if="heroMovementLine !== null" v-bind="heroMovementLine" />
+      <hero
+        v-for="vh in visibleHeroes"
+        :key="'hero-' + vh.id"
+        :hero="vh"
+        :self="false"
+        @click="onHeroClick(vh)"
+      />
     </l-map>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { LatLng, LatLngBounds, CRS } from 'leaflet';
-import { LMap, LTileLayer, LCircleMarker, LControl } from 'vue2-leaflet';
+import { LatLng, LatLngBounds, CRS, LeafletMouseEvent } from 'leaflet';
+import { LMap, LTileLayer, LCircleMarker, LControl, LPolyline } from 'vue2-leaflet';
 import LControlMousePosition from '@/components/strategus/LControlMousePosition.vue';
 import Settlement from '@/models/settlement-public';
 import SettlementType from '@/models/settlement-type';
@@ -45,7 +54,10 @@ import Constants from '../../../../data/constants.json';
 import Hero from '@/models/hero';
 import HeroComponent from '@/components/strategus/HeroComponent.vue';
 import HeroVisible from '@/models/hero-visible';
+import HeroStatus from '@/models/hero-status';
+import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
 import { positionToLatLng } from '@/utils/geometry';
+import { Position } from 'node_modules/@types/geojson';
 
 // Register here all dialogs that can be used by the dynamic dialog component.
 const dialogs = {
@@ -59,6 +71,7 @@ const dialogs = {
     LCircleMarker,
     LControlMousePosition,
     LControl,
+    LPolyline,
     ...dialogs,
     settlement: SettlementComponent,
     hero: HeroComponent,
@@ -99,6 +112,48 @@ export default class Strategus extends Vue {
 
   get hero(): Hero | null {
     return strategusModule.hero;
+  }
+
+  // Returns the polyline props if the user is moving, else null.
+  get heroMovementLine(): any {
+    if (this.hero === null) {
+      return null;
+    }
+
+    const attackColor = '#f14668';
+    const moveColor = '#485fc7';
+
+    let color: string;
+    let positions: Position[];
+    switch (this.hero.status) {
+      case HeroStatus.MovingToPoint:
+        positions = this.hero.waypoints.coordinates;
+        color = moveColor;
+        break;
+      case HeroStatus.FollowingHero:
+        positions = [this.hero.targetedHero.position.coordinates];
+        color = moveColor;
+        break;
+      case HeroStatus.MovingToSettlement:
+        positions = [this.hero.targetSettlement.position.coordinates];
+        color = moveColor;
+        break;
+      case HeroStatus.MovingToAttackHero:
+        positions = [this.hero.targetedHero.position.coordinates];
+        color = attackColor;
+        break;
+      case HeroStatus.MovingToAttackSettlement:
+        positions = [this.hero.targetSettlement.position.coordinates];
+        color = attackColor;
+        break;
+      default:
+        return null;
+    }
+
+    return {
+      latLngs: [this.hero.position.coordinates, ...positions].map(positionToLatLng),
+      color,
+    };
   }
 
   get visibleHeroes(): HeroVisible[] {
@@ -153,6 +208,33 @@ export default class Strategus extends Vue {
     this.updateIntervalId = setInterval(() => strategusModule.getUpdate(), 60 * 1000);
     this.map.mapObject.flyTo(positionToLatLng(this.hero!.position.coordinates), 5, {
       duration: 0.4,
+    });
+  }
+
+  onMapClick(event: LeafletMouseEvent) {
+    this.moveHero({
+      status: HeroStatus.MovingToPoint,
+      waypoints: { type: 'MultiPoint', coordinates: [[event.latlng.lng, event.latlng.lat]] },
+    });
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+  onHeroClick(hero: Hero) {}
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+  onSettlementClick(settlement: Settlement) {}
+
+  moveHero(updateRequest: Partial<HeroStatusUpdateRequest>) {
+    if (this.hero === null) {
+      return;
+    }
+
+    strategusModule.updateHeroStatus({
+      status: HeroStatus.MovingToPoint,
+      waypoints: { type: 'MultiPoint', coordinates: [] },
+      targetedHeroId: 0,
+      targetedSettlementId: 0,
+      ...updateRequest,
     });
   }
 }

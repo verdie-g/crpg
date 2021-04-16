@@ -1,5 +1,8 @@
 <template>
-  <l-marker :lat-lng="[settlement.position.coordinates[1], settlement.position.coordinates[0]]">
+  <l-marker
+    :lat-lng="[settlement.position.coordinates[1], settlement.position.coordinates[0]]"
+    @click="$emit('click')"
+  >
     <l-icon class-name="is-flex is-justify-content-center is-align-items-center">
       <div class="settlement-icon-txt has-text-light px-3" :class="settlementCssClass">
         {{ settlement.name }}

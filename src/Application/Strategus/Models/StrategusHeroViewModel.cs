@@ -20,7 +20,7 @@ namespace Crpg.Application.Strategus.Models
         public Point Position { get; init; } = default!;
         public StrategusHeroStatus Status { get; init; }
         public MultiPoint Waypoints { get; init; } = MultiPoint.Empty;
-        public StrategusHeroPublicViewModel? TargetedHero { get; init; }
+        public StrategusHeroVisibleViewModel? TargetedHero { get; init; }
         public StrategusSettlementPublicViewModel? TargetedSettlement { get; init; }
         public ClanPublicViewModel? Clan { get; init; }
 

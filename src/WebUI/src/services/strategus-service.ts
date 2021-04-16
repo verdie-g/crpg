@@ -1,9 +1,10 @@
-import { get, tryGet, post } from './crpg-client';
+import { get, tryGet, post, put } from './crpg-client';
 import SettlementPublic from '@/models/settlement-public';
 import { Result } from '@/models/result';
 import StrategusUpdate from '@/models/strategus-update';
 import Region from '@/models/region';
 import Hero from '@/models/hero';
+import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
 
 export const regionToStr: Record<Region, string> = {
   [Region.Europe]: 'Europe',
@@ -17,6 +18,10 @@ export function getSettlements(): Promise<SettlementPublic> {
 
 export function getUpdate(): Promise<Result<StrategusUpdate>> {
   return tryGet('/strategus/update');
+}
+
+export function updateHeroStatus(update: HeroStatusUpdateRequest): Promise<Hero> {
+  return put('/strategus/heroes/self/status', update);
 }
 
 export function registerUser(region: Region): Promise<Hero> {

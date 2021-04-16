@@ -1,6 +1,6 @@
-import { Point } from 'geojson';
-import HeroPublic from './hero-public';
+import { MultiPoint, Point } from 'geojson';
 import HeroStatus from './hero-status';
+import HeroVisible from './hero-visible';
 import Region from './region';
 import SettlementPublic from './settlement-public';
 
@@ -12,6 +12,7 @@ export default interface Hero {
   troops: number;
   position: Point;
   status: HeroStatus;
-  targetedHero: HeroPublic;
+  waypoints: MultiPoint;
+  targetedHero: HeroVisible;
   targetSettlement: SettlementPublic;
 }

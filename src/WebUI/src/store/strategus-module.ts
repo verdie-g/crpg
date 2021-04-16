@@ -8,6 +8,7 @@ import Region from '@/models/region';
 import HeroVisible from '@/models/hero-visible';
 import StrategusUpdate from '@/models/strategus-update';
 import { Result } from '@/models/result';
+import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
 
 @Module({ store, dynamic: true, name: 'strategus' })
 class StrategusModule extends VuexModule {
@@ -65,6 +66,12 @@ class StrategusModule extends VuexModule {
     this.setVisibleHeroes(update.visibleHeroes);
 
     return res;
+  }
+
+  @Action
+  async updateHeroStatus(update: HeroStatusUpdateRequest) {
+    const hero = await strategusService.updateHeroStatus(update);
+    this.setHero(hero);
   }
 }
 
