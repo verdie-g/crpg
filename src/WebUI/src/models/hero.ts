@@ -1,6 +1,6 @@
+import { Point } from 'geojson';
 import HeroPublic from './hero-public';
 import HeroStatus from './hero-status';
-import Point from './point';
 import Region from './region';
 import SettlementPublic from './settlement-public';
 

@@ -44,8 +44,8 @@ import RegistrationDialog from '@/components/strategus/RegistrationDialog.vue';
 import Constants from '../../../../data/constants.json';
 import Hero from '@/models/hero';
 import HeroComponent from '@/components/strategus/HeroComponent.vue';
-import { pointToLatLng } from '@/utils/geometry';
 import HeroVisible from '@/models/hero-visible';
+import { positionToLatLng } from '@/utils/geometry';
 
 // Register here all dialogs that can be used by the dynamic dialog component.
 const dialogs = {
@@ -151,7 +151,9 @@ export default class Strategus extends Vue {
   heroSpawn() {
     strategusModule.getUpdate();
     this.updateIntervalId = setInterval(() => strategusModule.getUpdate(), 60 * 1000);
-    this.map.mapObject.flyTo(pointToLatLng(this.hero!.position), 5, { duration: 0.4 });
+    this.map.mapObject.flyTo(positionToLatLng(this.hero!.position.coordinates), 5, {
+      duration: 0.4,
+    });
   }
 }
 </script>

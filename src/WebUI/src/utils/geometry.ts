@@ -1,6 +1,6 @@
-import Point from '@/models/point';
+import { Position } from 'geojson';
 import { LatLng } from 'leaflet';
 
-export function pointToLatLng(p: Point): LatLng {
-  return new LatLng(p.coordinates[1], p.coordinates[0]);
+export function positionToLatLng(p: Position): LatLng {
+  return new LatLng(p[1], p[0]);
 }

@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.12.1",
-    "@types/leaflet": "^1.7.0",
     "buefy": "0.9.4",
     "leaflet": "^1.7.1",
     "oidc-client": "^1.10.1",
@@ -24,6 +23,8 @@
     "vuex-module-decorators": "^0.17.0"
   },
   "devDependencies": {
+    "@types/geojson": "^7946.0.7",
+    "@types/leaflet": "^1.7.0",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-eslint": "~4.5.0",

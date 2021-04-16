@@ -1,6 +1,6 @@
+import { Point } from 'geojson';
 import Platform from './platform';
 import Region from './region';
-import Point from '@/models/point';
 
 export default interface HeroVisible {
   id: number;
