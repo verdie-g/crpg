@@ -111,27 +111,32 @@ export default class App extends Vue {
   }
 
   async beforeCreate() {
-    // If the 'code' parameter is present in the query, this is the response
-    // of the authorization endpoint and it should be processed
-    if (this.$route.query.code !== undefined) {
-      await signInCallback();
-      userModule.getUser();
-      this.$router.replace(''); // clear query parameters
-    } else {
+    userModule.setUserLoading(true);
+    try {
+      // If the 'code' parameter is present in the query, this is the response
+      // of the authorization endpoint and it should be processed
+      if (this.$route.query.code !== undefined) {
+        await signInCallback();
+        this.$router.replace(''); // clear query parameters
+        await userModule.getUser();
+        return;
+      }
+
       // Try to sign in the user if already signed in to the authorization server
       // & get user info if user is connected
-      signInSilent()
-        .then(token => {
-          if (token !== null) {
-            userModule.getUser();
-          }
-        })
-        .catch(() => {
-          // The grant is probably not valid anymore because the server was restarted.
-          if (this.$route.path !== '/') {
-            this.$router.push('/');
-          }
-        });
+      try {
+        const token = await signInSilent();
+        if (token !== null) {
+          await userModule.getUser();
+        }
+      } catch {
+        // The grant is probably not valid anymore because the server was restarted.
+        if (this.$route.path !== '/') {
+          this.$router.push('/');
+        }
+      }
+    } finally {
+      userModule.setUserLoading(false);
     }
   }
 

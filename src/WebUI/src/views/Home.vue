@@ -20,6 +20,7 @@
           icon-left="steam-symbol"
           icon-pack="fab"
           @click="onClick"
+          :loading="isSigningIn"
           v-if="!isSignedIn"
         >
           Sign in through Steam
@@ -130,11 +131,18 @@ export default class Home extends Vue {
     })),
   };
 
+  signingIn = false;
+
   get isSignedIn(): boolean {
     return userModule.isSignedIn;
   }
 
+  get isSigningIn(): boolean {
+    return userModule.userLoading || this.signingIn;
+  }
+
   onClick(): void {
+    this.signingIn = true;
     signIn();
   }
 }

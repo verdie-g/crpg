@@ -16,6 +16,7 @@ import Clan from '@/models/clan';
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
   user: User | null = null;
+  userLoading = false;
   ownedItems: Item[] = [];
   characters: Character[] = [];
   clan: Clan | null = null;
@@ -32,6 +33,11 @@ class UserModule extends VuexModule {
   @Mutation
   setUser(user: User) {
     this.user = user;
+  }
+
+  @Mutation
+  setUserLoading(userLoading: boolean) {
+    this.userLoading = userLoading;
   }
 
   @Mutation
