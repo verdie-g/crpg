@@ -29,6 +29,8 @@ namespace Crpg.Persistence
             NpgsqlConnection.GlobalTypeMapper.MapEnum<DamageType>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<WeaponClass>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<ClanMemberRole>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<ClanInvitationType>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<ClanInvitationStatus>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusHeroStatus>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusSettlementType>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusBattlePhase>();
@@ -114,6 +116,8 @@ namespace Crpg.Persistence
             modelBuilder.HasPostgresEnum<DamageType>();
             modelBuilder.HasPostgresEnum<WeaponClass>();
             modelBuilder.HasPostgresEnum<ClanMemberRole>();
+            modelBuilder.HasPostgresEnum<ClanInvitationType>();
+            modelBuilder.HasPostgresEnum<ClanInvitationStatus>();
             modelBuilder.HasPostgresEnum<StrategusHeroStatus>();
             modelBuilder.HasPostgresEnum<StrategusSettlementType>();
             modelBuilder.HasPostgresEnum<StrategusBattlePhase>();
