@@ -45,6 +45,7 @@ import { Vue, Component } from 'vue-property-decorator';
 import { LatLng, LatLngBounds, CRS, LeafletMouseEvent } from 'leaflet';
 import { LMap, LTileLayer, LCircleMarker, LControl, LPolyline } from 'vue2-leaflet';
 import LControlMousePosition from '@/components/strategus/LControlMousePosition.vue';
+import { promptMovementType } from '@/components/strategus/MoveDialog.vue';
 import Settlement from '@/models/settlement-public';
 import SettlementType from '@/models/settlement-type';
 import strategusModule from '@/store/strategus-module';
@@ -57,7 +58,8 @@ import HeroVisible from '@/models/hero-visible';
 import HeroStatus from '@/models/hero-status';
 import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
 import { positionToLatLng } from '@/utils/geometry';
-import { Position } from 'node_modules/@types/geojson';
+import { Position } from 'geojson';
+import MovementType from '@/models/movement-type';
 
 // Register here all dialogs that can be used by the dynamic dialog component.
 const dialogs = {
@@ -135,7 +137,7 @@ export default class Strategus extends Vue {
         color = moveColor;
         break;
       case HeroStatus.MovingToSettlement:
-        positions = [this.hero.targetSettlement.position.coordinates];
+        positions = [this.hero.targetedSettlement.position.coordinates];
         color = moveColor;
         break;
       case HeroStatus.MovingToAttackHero:
@@ -143,7 +145,7 @@ export default class Strategus extends Vue {
         color = attackColor;
         break;
       case HeroStatus.MovingToAttackSettlement:
-        positions = [this.hero.targetSettlement.position.coordinates];
+        positions = [this.hero.targetedSettlement.position.coordinates];
         color = attackColor;
         break;
       default:
@@ -218,11 +220,43 @@ export default class Strategus extends Vue {
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  onHeroClick(hero: Hero) {}
+  async onHeroClick(hero: Hero) {
+    const movement = await promptMovementType(
+      this.$refs.map as Vue,
+      positionToLatLng(hero.position.coordinates),
+      [MovementType.Follow, MovementType.Attack]
+    );
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  onSettlementClick(settlement: Settlement) {}
+    if (movement === null) {
+      return;
+    }
+
+    this.moveHero({
+      status:
+        movement === MovementType.Follow ? HeroStatus.FollowingHero : HeroStatus.MovingToAttackHero,
+      targetedHeroId: hero.id,
+    });
+  }
+
+  async onSettlementClick(settlement: Settlement) {
+    const movement = await promptMovementType(
+      this.$refs.map as Vue,
+      positionToLatLng(settlement.position.coordinates),
+      [MovementType.Move, MovementType.Attack]
+    );
+
+    if (movement === null) {
+      return;
+    }
+
+    this.moveHero({
+      status:
+        movement === MovementType.Move
+          ? HeroStatus.MovingToSettlement
+          : HeroStatus.MovingToAttackSettlement,
+      targetedSettlementId: settlement.id,
+    });
+  }
 
   moveHero(updateRequest: Partial<HeroStatusUpdateRequest>) {
     if (this.hero === null) {

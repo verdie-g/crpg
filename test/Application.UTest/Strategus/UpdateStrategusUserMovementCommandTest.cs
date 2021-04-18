@@ -248,6 +248,43 @@ namespace Crpg.Application.UTest.Strategus
             Assert.IsNull(strategusHero.TargetedSettlement);
         }
 
+        [Test]
+        public async Task ShouldSwitchFromAttackToFollowUser()
+        {
+            User targetUser = new()
+            {
+                StrategusHero = new StrategusHero { Position = new Point(10, 10) },
+            };
+            var user = new User
+            {
+                StrategusHero = new StrategusHero
+                {
+                    Position = new Point(0, 0),
+                    Status = StrategusHeroStatus.MovingToAttackHero,
+                    TargetedHero = targetUser.StrategusHero,
+                },
+            };
+            ArrangeDb.Users.AddRange(user, targetUser);
+            await ArrangeDb.SaveChangesAsync();
+
+            var strategusMapMock = new Mock<IStrategusMap>();
+            strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
+
+            var handler = new UpdateStrategusHeroStatusCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            var res = await handler.Handle(new UpdateStrategusHeroStatusCommand
+            {
+                HeroId = user.Id,
+                Status = StrategusHeroStatus.FollowingHero,
+                TargetedHeroId = targetUser.Id,
+            }, CancellationToken.None);
+
+            var strategusHero = res.Data!;
+            Assert.IsNotNull(strategusHero);
+            Assert.AreEqual(user.Id, strategusHero.Id);
+            Assert.AreEqual(StrategusHeroStatus.FollowingHero, strategusHero.Status);
+            Assert.AreEqual(targetUser.Id, strategusHero.TargetedHero!.Id);
+        }
+
         [TestCase(StrategusHeroStatus.MovingToSettlement)]
         [TestCase(StrategusHeroStatus.MovingToAttackSettlement)]
         public async Task ShouldReturnErrorIfTargetingNotExistingSettlement(StrategusHeroStatus status)
@@ -305,6 +342,37 @@ namespace Crpg.Application.UTest.Strategus
             Assert.AreEqual(user.Id, strategusHero.Id);
             Assert.AreEqual(status, strategusHero.Status);
             Assert.IsNull(strategusHero.TargetedHero);
+            Assert.AreEqual(targetSettlement.Id, strategusHero.TargetedSettlement!.Id);
+        }
+
+        [Test]
+        public async Task ShouldSwitchFromMoveToAttackSettlement()
+        {
+            var targetSettlement = new StrategusSettlement();
+            var user = new User
+            {
+                StrategusHero = new StrategusHero
+                {
+                    Position = new Point(0, 0),
+                    Status = StrategusHeroStatus.MovingToSettlement,
+                    TargetedSettlement = targetSettlement,
+                },
+            };
+            ArrangeDb.Users.AddRange(user);
+            await ArrangeDb.SaveChangesAsync();
+
+            var handler = new UpdateStrategusHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            var res = await handler.Handle(new UpdateStrategusHeroStatusCommand
+            {
+                HeroId = user.Id,
+                Status = StrategusHeroStatus.MovingToAttackSettlement,
+                TargetedSettlementId = targetSettlement.Id,
+            }, CancellationToken.None);
+
+            var strategusHero = res.Data!;
+            Assert.IsNotNull(strategusHero);
+            Assert.AreEqual(user.Id, strategusHero.Id);
+            Assert.AreEqual(StrategusHeroStatus.MovingToAttackSettlement, strategusHero.Status);
             Assert.AreEqual(targetSettlement.Id, strategusHero.TargetedSettlement!.Id);
         }
 

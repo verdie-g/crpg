@@ -45,6 +45,8 @@ namespace Crpg.Application.Strategus.Queries
             {
                 var hero = await _db.StrategusHeroes
                     .Include(h => h.User)
+                    .Include(h => h.TargetedHero!.User)
+                    .Include(h => h.TargetedSettlement)
                     .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
                 if (hero == null)
                 {

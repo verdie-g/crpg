@@ -14,5 +14,5 @@ export default interface Hero {
   status: HeroStatus;
   waypoints: MultiPoint;
   targetedHero: HeroVisible;
-  targetSettlement: SettlementPublic;
+  targetedSettlement: SettlementPublic;
 }

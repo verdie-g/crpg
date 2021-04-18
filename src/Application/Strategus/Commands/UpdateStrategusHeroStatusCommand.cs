@@ -118,6 +118,8 @@ namespace Crpg.Application.Strategus.Commands
                     }
 
                     hero.Status = req.Status;
+                    // Need to be set manually because it was set to null above and it can confuse EF Core.
+                    hero.TargetedHeroId = targetHero.Id;
                     hero.TargetedHero = targetHero;
                 }
                 else if (req.Status == StrategusHeroStatus.MovingToSettlement
@@ -132,6 +134,8 @@ namespace Crpg.Application.Strategus.Commands
                     }
 
                     hero.Status = req.Status;
+                    // Need to be set manually because it was set to null above and it can confuse EF Core.
+                    hero.TargetedSettlementId = targetSettlement.Id;
                     hero.TargetedSettlement = targetSettlement;
                 }
 

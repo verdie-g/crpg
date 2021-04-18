@@ -6,7 +6,7 @@
     :fill="true"
     :fillColor="markerColor"
     :fillOpacity="1.0"
-    @click="$emit('click')"
+    @click="onClick"
   >
     <l-tooltip :options="{ direction: 'top' }">{{ hero.name }} ({{ hero.troops }})</l-tooltip>
   </l-circle-marker>
@@ -14,6 +14,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { LeafletMouseEvent, DomEvent } from 'leaflet';
 import { LCircleMarker, LTooltip } from 'vue2-leaflet';
 import Hero from '@/models/hero';
 import Constants from '@/../../../data/constants.json';
@@ -36,6 +37,11 @@ export default class HeroComponent extends Vue {
 
   get markerColor(): string {
     return this.self ? '#0f0' : '#f00';
+  }
+
+  onClick(event: LeafletMouseEvent) {
+    DomEvent.stopPropagation(event);
+    this.$emit('click');
   }
 }
 </script>
