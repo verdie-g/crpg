@@ -67,28 +67,6 @@ namespace Crpg.Application.System.Commands
                     AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e.jpg"),
                     AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_full.jpg"),
                     AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_medium.jpg"),
-                    Characters = new List<Character>
-                    {
-                        new()
-                        {
-                            Name = "takeoshigeru",
-                            Generation = 2,
-                            Level = 23,
-                            Experience = _experienceTable.GetExperienceForLevel(23),
-                        },
-                        new()
-                        {
-                            Name = "totoalala",
-                            Level = 12,
-                            Experience = _experienceTable.GetExperienceForLevel(12),
-                        },
-                        new()
-                        {
-                            Name = "Retire me",
-                            Level = 31,
-                            Experience = _experienceTable.GetExperienceForLevel(31) + 100,
-                        },
-                    },
                 };
                 User namidaka = new()
                 {
@@ -156,19 +134,21 @@ namespace Crpg.Application.System.Commands
                 };
                 User sellka = new()
                 {
-                    PlatformUserId = "76561197979977620", Name = "Sellka",
+                    PlatformUserId = "76561197979977620",
+                    Name = "Sellka",
                     AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/bf/bf1a595dea0ac57cfedc0d3156f58c966abc5c63.jpg"),
                     AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/bf/bf1a595dea0ac57cfedc0d3156f58c966abc5c63_medium.jpg"),
                     AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/bf/bf1a595dea0ac57cfedc0d3156f58c966abc5c63_full.jpg"),
                 };
                 User leanir = new()
                 {
-                    PlatformUserId = "76561198018585047", Name = "Laenir",
+                    PlatformUserId = "76561198018585047",
+                    Name = "Laenir",
                     AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c1/c1eeba83d74ff6be9d9f42ca19fa15616a94dc2d.jpg"),
                     AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c1/c1eeba83d74ff6be9d9f42ca19fa15616a94dc2d_medium.jpg"),
                     AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c1/c1eeba83d74ff6be9d9f42ca19fa15616a94dc2d_full.jpg"),
                 };
-                User opset = new() // Grey
+                User opset = new()
                 {
                     PlatformUserId = "76561198009970770",
                     Name = "Opset_the_Grey",
@@ -176,7 +156,7 @@ namespace Crpg.Application.System.Commands
                     AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/36/36f6b77d3af6d18563101cea616590ba69b4ec81_medium.jpg"),
                     AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/36/36f6b77d3af6d18563101cea616590ba69b4ec81_full.jpg"),
                 };
-                User falcom = new() // OdE
+                User falcom = new()
                 {
                     PlatformUserId = "76561197963438590",
                     Name = "[OdE]Falcom",
@@ -314,11 +294,6 @@ namespace Crpg.Application.System.Commands
                 var existingUsers = await _db.Users.ToDictionaryAsync(u => (u.Platform, u.PlatformUserId));
                 foreach (var newUser in newUsers)
                 {
-                    foreach (var character in newUser.Characters)
-                    {
-                        _characterService.ResetCharacterStats(character, respecialization: true);
-                    }
-
                     if (existingUsers.TryGetValue((newUser.Platform, newUser.PlatformUserId), out var existingUser))
                     {
                         _db.Entry(existingUser).State = EntityState.Detached;
@@ -332,125 +307,126 @@ namespace Crpg.Application.System.Commands
                     }
                 }
 
+                Character takeoCharacter0 = new()
+                {
+                    User = takeo,
+                    Name = "takeo",
+                    Generation = 2,
+                    Level = 23,
+                    Experience = _experienceTable.GetExperienceForLevel(23),
+                };
+                Character takeoCharacter1 = new()
+                {
+                    User = takeo,
+                    Name = "totoalala",
+                    Level = 12,
+                    Experience = _experienceTable.GetExperienceForLevel(12),
+                };
+                Character takeoCharacter2 = new()
+                {
+                    User = takeo,
+                    Name = "Retire me",
+                    Level = 31,
+                    Experience = _experienceTable.GetExperienceForLevel(31) + 100,
+                };
+
+                Character[] newCharacters = { takeoCharacter0, takeoCharacter1, takeoCharacter2 };
+
+                var existingCharacters = await _db.Characters.ToDictionaryAsync(c => c.Name);
+                foreach (var newCharacter in newCharacters)
+                {
+                    _characterService.ResetCharacterStats(newCharacter, respecialization: true);
+
+                    if (existingCharacters.TryGetValue(newCharacter.Name, out var existingCharacter))
+                    {
+                        _db.Entry(existingCharacter).State = EntityState.Detached;
+
+                        newCharacter.Id = existingCharacter.Id;
+                        _db.Characters.Update(newCharacter);
+                    }
+                    else
+                    {
+                        _db.Characters.Add(newCharacter);
+                    }
+                }
+
                 Clan pecores = new()
                 {
                     Tag = "PEC",
                     Color = "#3273DC",
                     Name = "Pecores",
-                    Members =
-                    {
-                        new ClanMember { Role = ClanMemberRole.Leader, User = namidaka },
-                        new ClanMember { Role = ClanMemberRole.Admin, User = neostralie },
-                        new ClanMember { Role = ClanMemberRole.Admin, User = elmaryk },
-                        new ClanMember { Role = ClanMemberRole.Member, User = laHire },
-                        new ClanMember { Role = ClanMemberRole.Member, User = azuma },
-                        new ClanMember { Role = ClanMemberRole.Member, User = zorguy },
-                    },
                 };
                 Clan ats = new()
                 {
                     Tag = "ATS",
                     Color = "#FF3860",
                     Name = "Among The Shadows",
-                    Members =
-                    {
-                        new ClanMember { Role = ClanMemberRole.Leader, User = ecko },
-                        new ClanMember { Role = ClanMemberRole.Admin, User = firebat },
-                        new ClanMember { Role = ClanMemberRole.Member, User = sellka },
-                    },
                 };
                 Clan legio = new()
                 {
                     Tag = "LEG",
                     Color = "#FFDD57",
                     Name = "Legio",
-                    Members = { new ClanMember { Role = ClanMemberRole.Leader, User = leanir } },
                 };
                 Clan theGrey = new()
                 {
                     Tag = "GREY",
                     Color = "#7A7A7A",
                     Name = "The Grey",
-                    Members = { new ClanMember { Role = ClanMemberRole.Leader, User = opset } },
                 };
                 Clan ode = new()
                 {
                     Tag = "OdE",
                     Color = "#00D1B2",
                     Name = "Ordre de l'étoile",
-                    Members = { new ClanMember { Role = ClanMemberRole.Leader, User = falcom } },
                 };
                 Clan virginDefenders = new()
                 {
                     Tag = "VD",
                     Color = "#FF7D97",
                     Name = "Virgin Defenders",
-                    Members =
-                    {
-                        new ClanMember { Role = ClanMemberRole.Leader, User = brainfart },
-                        new ClanMember { Role = ClanMemberRole.Admin, User = kiwi },
-                        new ClanMember { Role = ClanMemberRole.Member, User = ikarooz },
-                        new ClanMember { Role = ClanMemberRole.Member, User = bryggan },
-                        new ClanMember { Role = ClanMemberRole.Member, User = schumetzq },
-                    },
                 };
                 Clan randomClan = new()
                 {
                     Tag = "RC",
                     Color = "#F5F5F5",
                     Name = "Random Clan",
-                    Members =
-                    {
-                        new ClanMember { Role = ClanMemberRole.Leader, User = victorhh888 },
-                        new ClanMember { Role = ClanMemberRole.Admin, User = distance },
-                        new ClanMember { Role = ClanMemberRole.Member, User = bakhrat },
-                    },
                 };
                 Clan abcClan = new()
                 {
                     Tag = "ABC",
                     Color = "#5D3C43",
                     Name = "ABC",
-                    Members =
-                    {
-                        new ClanMember { Role = ClanMemberRole.Leader, User = lancelot },
-                        new ClanMember { Role = ClanMemberRole.Member, User = buddha },
-                    },
                 };
                 Clan defClan = new()
                 {
                     Tag = "DEF",
                     Color = "#65B1A6",
                     Name = "DEF",
-                    Members = { new ClanMember { Role = ClanMemberRole.Leader, User = lerch } },
                 };
                 Clan ghiClan = new()
                 {
                     Tag = "GHI",
                     Color = "#1A544C",
                     Name = "GHI",
-                    Members = { new ClanMember { Role = ClanMemberRole.Leader, User = tjens } },
                 };
                 Clan jklClan = new()
                 {
                     Tag = "JKL",
                     Color = "#10044F",
                     Name = "JKL",
-                    Members = { new ClanMember { Role = ClanMemberRole.Leader, User = knitler } },
                 };
                 Clan mnoClan = new()
                 {
                     Tag = "MNO",
                     Color = "#5A541C",
                     Name = "MNO",
-                    Members = { new ClanMember { Role = ClanMemberRole.Leader, User = magnuclean } },
                 };
                 Clan pqrClan = new()
                 {
                     Tag = "PQR",
                     Color = "#123456",
                     Name = "Plan QR",
-                    Members = { new ClanMember { Role = ClanMemberRole.Leader, User = baronCyborg } },
                 };
                 Clan[] newClans =
                 {
@@ -474,6 +450,58 @@ namespace Crpg.Application.System.Commands
                     }
                 }
 
+                ClanMember namidakaMember = new() { User = namidaka, Clan = pecores, Role = ClanMemberRole.Leader };
+                ClanMember neostralieMember = new() { User = neostralie, Clan = pecores, Role = ClanMemberRole.Admin };
+                ClanMember elmarykMember = new() { User = elmaryk, Clan = pecores, Role = ClanMemberRole.Admin };
+                ClanMember laHireMember = new() { User = laHire, Clan = pecores, Role = ClanMemberRole.Member };
+                ClanMember azumaMember = new() { User = azuma, Clan = pecores, Role = ClanMemberRole.Member };
+                ClanMember zorguyMember = new() { User = zorguy, Clan = pecores, Role = ClanMemberRole.Member };
+                ClanMember eckoMember = new() { User = ecko, Clan = ats, Role = ClanMemberRole.Leader };
+                ClanMember firebatMember = new() { User = firebat, Clan = ats, Role = ClanMemberRole.Admin };
+                ClanMember sellkaMember = new() { User = sellka, Clan = ats, Role = ClanMemberRole.Member };
+                ClanMember leanirMember = new() { User = leanir, Clan = legio, Role = ClanMemberRole.Leader, };
+                ClanMember opsetMember = new() { User = opset, Clan = theGrey, Role = ClanMemberRole.Leader, };
+                ClanMember falcomMember = new() { User = falcom, Clan = ode, Role = ClanMemberRole.Leader, };
+                ClanMember brainfartMember = new() { User = brainfart, Clan = virginDefenders, Role = ClanMemberRole.Leader };
+                ClanMember kiwiMember = new() { User = kiwi, Clan = virginDefenders, Role = ClanMemberRole.Admin };
+                ClanMember ikaroozMember = new() { User = ikarooz, Clan = virginDefenders, Role = ClanMemberRole.Member };
+                ClanMember brygganMember = new() { User = bryggan, Clan = virginDefenders, Role = ClanMemberRole.Member };
+                ClanMember schumetzqMember = new() { User = schumetzq, Clan = virginDefenders, Role = ClanMemberRole.Member };
+                ClanMember victorhh888Member = new() { User = victorhh888, Clan = randomClan, Role = ClanMemberRole.Leader };
+                ClanMember distanceMember = new() { User = distance, Clan = randomClan, Role = ClanMemberRole.Admin };
+                ClanMember bakhratMember = new() { User = bakhrat, Clan = randomClan, Role = ClanMemberRole.Member };
+                ClanMember lancelotMember = new() { User = lancelot, Clan = abcClan, Role = ClanMemberRole.Leader };
+                ClanMember buddhaMember = new() { User = buddha, Clan = abcClan, Role = ClanMemberRole.Member };
+                ClanMember lerchMember = new() { User = lerch, Clan = defClan, Role = ClanMemberRole.Leader };
+                ClanMember tjensMember = new() { User = tjens, Clan = ghiClan, Role = ClanMemberRole.Leader };
+                ClanMember knitlerMember = new() { User = knitler, Clan = jklClan, Role = ClanMemberRole.Leader };
+                ClanMember magnucleanMember = new() { User = magnuclean, Clan = mnoClan, Role = ClanMemberRole.Leader };
+                ClanMember baronCyborgMember = new() { User = baronCyborg, Clan = pqrClan, Role = ClanMemberRole.Leader, };
+
+                ClanMember[] newClanMembers =
+                {
+                    namidakaMember, neostralieMember, elmarykMember, laHireMember, azumaMember, zorguyMember,
+                    eckoMember, firebatMember, sellkaMember, leanirMember, opsetMember,
+                    falcomMember, brainfartMember, kiwiMember, ikaroozMember, brygganMember, schumetzqMember,
+                    victorhh888Member, distanceMember, bakhratMember, lancelotMember,
+                    buddhaMember, lerchMember, tjensMember, knitlerMember, magnucleanMember, baronCyborgMember,
+                };
+                var existingClanMembers = await _db.ClanMembers.ToDictionaryAsync(cm => cm.UserId);
+                foreach (var newClanMember in newClanMembers)
+                {
+                    if (existingClanMembers.TryGetValue(newClanMember.User!.Id, out var existingClanMember))
+                    {
+                        _db.Entry(existingClanMember).State = EntityState.Detached;
+
+                        newClanMember.UserId = existingClanMember.UserId;
+                        _db.ClanMembers.Update(newClanMember);
+                    }
+                    else
+                    {
+                        _db.ClanMembers.Add(newClanMember);
+                    }
+                }
+
                 ClanInvitation schumetzqRequestForPecores = new()
                 {
                     Clan = pecores,
@@ -492,10 +520,10 @@ namespace Crpg.Application.System.Commands
                 };
                 ClanInvitation[] newClanInvitations = { schumetzqRequestForPecores, neostralieOfferToBrygganForPecores };
                 var existingClanInvitations =
-                    await _db.ClanInvitations.ToDictionaryAsync(i => (i.InviterId, i.InviteeId));
+                    await _db.ClanInvitations.ToDictionaryAsync(i => (i.InviteeId, i.InviterId));
                 foreach (var newClanInvitation in newClanInvitations)
                 {
-                    if (existingClanInvitations.TryGetValue((newClanInvitation.InviteeId, newClanInvitation.InviteeId),
+                    if (existingClanInvitations.TryGetValue((newClanInvitation.Invitee!.Id, newClanInvitation.Inviter!.Id),
                         out var existingClanInvitation))
                     {
                         _db.Entry(existingClanInvitation).State = EntityState.Detached;

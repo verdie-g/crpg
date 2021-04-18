@@ -19,9 +19,17 @@ namespace Crpg.Persistence
             else
             {
                 services.AddDbContext<CrpgDbContext>(options =>
+                {
                     options
                         .UseNpgsql(connectionString, options => options.UseNetTopologySuite())
-                        .UseSnakeCaseNamingConvention());
+                        .UseSnakeCaseNamingConvention();
+                    if (appEnv.Environment == HostingEnvironment.Development)
+                    {
+                        options
+                            .EnableSensitiveDataLogging()
+                            .EnableDetailedErrors();
+                    }
+                });
             }
 
             services.AddScoped<ICrpgDbContext>(provider => provider.GetRequiredService<CrpgDbContext>());
