@@ -214,9 +214,17 @@ export default class Strategus extends Vue {
   }
 
   onMapClick(event: LeafletMouseEvent) {
+    const clickCoordinates = [event.latlng.lng, event.latlng.lat];
+    let coordinates =
+      event.originalEvent.shiftKey &&
+      this.hero !== null &&
+      this.hero.status === HeroStatus.MovingToPoint
+        ? [...this.hero.waypoints.coordinates, clickCoordinates]
+        : [clickCoordinates];
+
     this.moveHero({
       status: HeroStatus.MovingToPoint,
-      waypoints: { type: 'MultiPoint', coordinates: [[event.latlng.lng, event.latlng.lat]] },
+      waypoints: { type: 'MultiPoint', coordinates },
     });
   }
 
