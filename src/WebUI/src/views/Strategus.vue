@@ -21,21 +21,25 @@
         />
       </l-control>
       <l-tile-layer :url="url" :attribution="attribution" />
-      <settlement
-        v-for="settlement in settlements"
-        :key="'settlement-' + settlement.id"
-        :settlement="settlement"
-        @click="onSettlementClick(settlement)"
-      />
       <hero v-if="hero" :hero="hero" :self="true" />
       <l-polyline v-if="heroMovementLine !== null" v-bind="heroMovementLine" />
-      <hero
-        v-for="vh in visibleHeroes"
-        :key="'hero-' + vh.id"
-        :hero="vh"
-        :self="false"
-        @click="onHeroClick(vh)"
-      />
+      <l-marker-cluster
+        :options="{ removeOutsideVisibleBounds: true, maxClusterRadius: markerClusterRadius }"
+      >
+        <hero
+          v-for="vh in visibleHeroes"
+          :key="'hero-' + vh.id"
+          :hero="vh"
+          :self="false"
+          @click="onHeroClick(vh)"
+        />
+        <settlement
+          v-for="settlement in settlements"
+          :key="'settlement-' + settlement.id"
+          :settlement="settlement"
+          @click="onSettlementClick(settlement)"
+        />
+      </l-marker-cluster>
     </l-map>
   </div>
 </template>
@@ -44,6 +48,7 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { LatLng, LatLngBounds, CRS, LeafletMouseEvent } from 'leaflet';
 import { LMap, LTileLayer, LCircleMarker, LControl, LPolyline } from 'vue2-leaflet';
+import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster';
 import LControlMousePosition from '@/components/strategus/LControlMousePosition.vue';
 import { promptMovementType } from '@/components/strategus/MoveDialog.vue';
 import Settlement from '@/models/settlement-public';
@@ -74,6 +79,7 @@ const dialogs = {
     LControlMousePosition,
     LControl,
     LPolyline,
+    'l-marker-cluster': Vue2LeafletMarkerCluster,
     ...dialogs,
     settlement: SettlementComponent,
     hero: HeroComponent,
@@ -205,6 +211,17 @@ export default class Strategus extends Vue {
     );
   }
 
+  // Returns the maximum radius that a marker cluster will cover in pixels.
+  // Since we don't want this radius to depend on the zoom, distance in latlng
+  // should be converted to pixels.
+  markerClusterRadius(): number {
+    const maximumRadius = 1;
+    const a = new LatLng(0, 0);
+    const b = new LatLng(0, maximumRadius);
+    const map = this.map.mapObject;
+    return map.latLngToLayerPoint(a).distanceTo(map.latLngToLayerPoint(b));
+  }
+
   heroSpawn() {
     strategusModule.getUpdate();
     this.updateIntervalId = setInterval(() => strategusModule.getUpdate(), 60 * 1000);
@@ -283,6 +300,9 @@ export default class Strategus extends Vue {
 </script>
 
 <style lang="scss">
+@import '~leaflet.markercluster/dist/MarkerCluster.css';
+@import '~leaflet.markercluster/dist/MarkerCluster.Default.css';
+
 // Hide vertical scrollbar
 html {
   overflow-y: auto;
