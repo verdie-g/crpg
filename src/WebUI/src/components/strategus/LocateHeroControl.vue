@@ -1,6 +1,6 @@
 <template>
   <div class="leaflet-bar">
-    <a href="#" @click="onClick">
+    <a href="#" @click="onClick" title="Locate hero">
       <b-icon icon="crosshairs" size="is-medium" />
     </a>
   </div>
