@@ -9,7 +9,7 @@
     <l-map
       ref="map"
       class="map"
-      :zoom.sync="zoom"
+      :zoom="3"
       :center="center"
       :options="mapOptions"
       :max-bounds="maxBounds"
@@ -88,7 +88,6 @@ const dialogs = {
   },
 })
 export default class Strategus extends Vue {
-  zoom = 3;
   center = new LatLng(-100, 125);
   url = 'http://pecores.fr/gigamap/{z}/{y}/{x}.png';
   attribution = '<a target="_blank" href="https://www.taleworlds.com">TaleWorlds Entertainment</a>';
@@ -118,7 +117,10 @@ export default class Strategus extends Vue {
       return [];
     }
 
-    return strategusModule.settlements.filter(this.shouldDisplaySettlement);
+    const zoom = this.map.mapObject.getZoom();
+    return strategusModule.settlements.filter(s =>
+      this.shouldDisplaySettlement(s, this.mapBounds!, zoom)
+    );
   }
 
   get hero(): Hero | null {
@@ -201,15 +203,15 @@ export default class Strategus extends Vue {
     this.mapBounds = this.map.mapObject.getBounds();
   }
 
-  shouldDisplaySettlement(settlement: Settlement): boolean {
+  shouldDisplaySettlement(settlement: Settlement, mapBounds: LatLngBounds, zoom: number): boolean {
     const [x, y] = settlement.position.coordinates;
-    if (!this.mapBounds!.contains(new LatLng(y, x))) {
+    if (!mapBounds!.contains(new LatLng(y, x))) {
       return false;
     }
 
     return (
-      this.zoom > 4 ||
-      (this.zoom > 3 && settlement.type == SettlementType.Castle) ||
+      zoom > 4 ||
+      (zoom > 3 && settlement.type == SettlementType.Castle) ||
       settlement.type === SettlementType.Town
     );
   }
