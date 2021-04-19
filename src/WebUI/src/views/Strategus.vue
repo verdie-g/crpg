@@ -226,7 +226,7 @@ export default class Strategus extends Vue {
     strategusModule.getUpdate();
     this.updateIntervalId = setInterval(() => strategusModule.getUpdate(), 60 * 1000);
     this.map.mapObject.flyTo(positionToLatLng(this.hero!.position.coordinates), 5, {
-      duration: 0.4,
+      animate: false,
     });
   }
 
