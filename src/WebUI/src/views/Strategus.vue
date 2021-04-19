@@ -1,5 +1,11 @@
 <template>
   <div class="strategus-main">
+    <div class="strategus-html-layer columns p-6">
+      <div class="column is-one-third box strategus-dialog" v-if="currentDialog">
+        <component :is="currentDialog" v-on="dialogEventHandlers" />
+      </div>
+    </div>
+
     <l-map
       ref="map"
       class="map"
@@ -12,14 +18,6 @@
       @click="onMapClick"
     >
       <l-control-mouse-position />
-      <l-control class="column is-one-third" position="topleft">
-        <component
-          class="box"
-          v-if="currentDialog"
-          :is="currentDialog"
-          v-on="dialogEventHandlers"
-        />
-      </l-control>
       <l-tile-layer :url="url" :attribution="attribution" />
       <hero v-if="hero" :hero="hero" :self="true" />
       <l-polyline v-if="heroMovementLine !== null" v-bind="heroMovementLine" />
@@ -47,7 +45,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import { LatLng, LatLngBounds, CRS, LeafletMouseEvent } from 'leaflet';
-import { LMap, LTileLayer, LCircleMarker, LControl, LPolyline } from 'vue2-leaflet';
+import { LMap, LTileLayer, LCircleMarker, LPolyline } from 'vue2-leaflet';
 import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster';
 import LControlMousePosition from '@/components/strategus/LControlMousePosition.vue';
 import { promptMovementType } from '@/components/strategus/MoveDialog.vue';
@@ -77,7 +75,6 @@ const dialogs = {
     LTileLayer,
     LCircleMarker,
     LControlMousePosition,
-    LControl,
     LPolyline,
     'l-marker-cluster': Vue2LeafletMarkerCluster,
     ...dialogs,
@@ -311,6 +308,16 @@ html {
 
 <style scoped lang="scss">
 .strategus-main {
+  position: relative;
+
+  .strategus-html-layer {
+    position: absolute;
+  }
+
+  .strategus-dialog {
+    z-index: 500; // To be over the map.
+  }
+
   .map {
     // calc(Screen height - navbar)
     height: calc(100vh - 4.25rem);
