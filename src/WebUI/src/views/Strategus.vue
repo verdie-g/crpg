@@ -17,6 +17,8 @@
       @moveend="onMapBoundsChange"
       @click="onMapClick"
     >
+      <l-control-zoom position="bottomright" />
+      <locate-hero-control position="bottomright" />
       <l-control-mouse-position />
       <l-tile-layer :url="url" :attribution="attribution" />
       <hero v-if="hero" :hero="hero" :self="true" />
@@ -45,9 +47,10 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import { LatLng, LatLngBounds, CRS, LeafletMouseEvent } from 'leaflet';
-import { LMap, LTileLayer, LCircleMarker, LPolyline } from 'vue2-leaflet';
+import { LMap, LControlZoom, LTileLayer, LCircleMarker, LPolyline } from 'vue2-leaflet';
 import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster';
 import LControlMousePosition from '@/components/strategus/LControlMousePosition.vue';
+import LocateHeroControl from '@/components/strategus/LocateHeroControl.vue';
 import { promptMovementType } from '@/components/strategus/MoveDialog.vue';
 import Settlement from '@/models/settlement-public';
 import SettlementType from '@/models/settlement-type';
@@ -72,9 +75,11 @@ const dialogs = {
 @Component({
   components: {
     LMap,
+    LControlZoom,
     LTileLayer,
     LCircleMarker,
     LControlMousePosition,
+    LocateHeroControl,
     LPolyline,
     'l-marker-cluster': Vue2LeafletMarkerCluster,
     ...dialogs,
@@ -94,6 +99,7 @@ export default class Strategus extends Vue {
     crs: CRS.Simple,
     maxBoundsViscosity: 0.8,
     inertiaDeceleration: 2000,
+    zoomControl: false,
   };
   maxBounds = new LatLngBounds([
     [0, 0],
@@ -303,6 +309,16 @@ export default class Strategus extends Vue {
 // Hide vertical scrollbar
 html {
   overflow-y: auto;
+}
+</style>
+
+<style lang="scss">
+.leaflet-right .leaflet-control {
+  margin-bottom: 3px; // Default is 10px and it's too much.
+}
+
+.leaflet-container .leaflet-control-attribution {
+  margin-bottom: 0px;
 }
 </style>
 
