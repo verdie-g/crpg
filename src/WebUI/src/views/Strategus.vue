@@ -55,8 +55,10 @@ import { promptMovementType } from '@/components/strategus/MoveDialog.vue';
 import Settlement from '@/models/settlement-public';
 import SettlementType from '@/models/settlement-type';
 import strategusModule from '@/store/strategus-module';
+import * as strategusService from '@/services/strategus-service';
 import SettlementComponent from '@/components/strategus/SettlementComponent.vue';
 import RegistrationDialog from '@/components/strategus/RegistrationDialog.vue';
+import SettlementDialog from '@/components/strategus/SettlementDialog.vue';
 import Constants from '../../../../data/constants.json';
 import Hero from '@/models/hero';
 import HeroComponent from '@/components/strategus/HeroComponent.vue';
@@ -70,6 +72,7 @@ import MovementType from '@/models/movement-type';
 // Register here all dialogs that can be used by the dynamic dialog component.
 const dialogs = {
   RegistrationDialog,
+  SettlementDialog,
 };
 
 @Component({
@@ -189,6 +192,9 @@ export default class Strategus extends Vue {
         strategusModule.pushDialog('RegistrationDialog');
       } else {
         this.heroSpawn();
+        if (strategusService.inSettlementStatuses.has(this.hero!.status)) {
+          strategusModule.pushDialog('SettlementDialog');
+        }
       }
     });
   }
@@ -269,6 +275,18 @@ export default class Strategus extends Vue {
   }
 
   async onSettlementClick(settlement: Settlement) {
+    if (this.hero === null) {
+      return;
+    }
+
+    if (
+      strategusService.inSettlementStatuses.has(this.hero.status) &&
+      this.hero.targetedSettlement.id === settlement.id
+    ) {
+      strategusModule.pushDialog('SettlementDialog');
+      return;
+    }
+
     const movement = await promptMovementType(
       this.$refs.map as Vue,
       positionToLatLng(settlement.position.coordinates),
@@ -293,13 +311,15 @@ export default class Strategus extends Vue {
       return;
     }
 
-    strategusModule.updateHeroStatus({
-      status: HeroStatus.MovingToPoint,
-      waypoints: { type: 'MultiPoint', coordinates: [] },
-      targetedHeroId: 0,
-      targetedSettlementId: 0,
-      ...updateRequest,
-    });
+    strategusModule
+      .updateHeroStatus({
+        status: HeroStatus.MovingToPoint,
+        waypoints: { type: 'MultiPoint', coordinates: [] },
+        targetedHeroId: 0,
+        targetedSettlementId: 0,
+        ...updateRequest,
+      })
+      .then(() => strategusModule.popDialog());
   }
 }
 </script>
@@ -330,6 +350,7 @@ html {
 
   .strategus-html-layer {
     position: absolute;
+    width: 100%;
   }
 
   .strategus-dialog {

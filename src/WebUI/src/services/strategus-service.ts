@@ -5,12 +5,18 @@ import StrategusUpdate from '@/models/strategus-update';
 import Region from '@/models/region';
 import Hero from '@/models/hero';
 import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
+import HeroStatus from '@/models/hero-status';
 
 export const regionToStr: Record<Region, string> = {
   [Region.Europe]: 'Europe',
   [Region.NorthAmerica]: 'North America',
   [Region.Asia]: 'Asia',
 };
+
+export const inSettlementStatuses = new Set<HeroStatus>([
+  HeroStatus.IdleInSettlement,
+  HeroStatus.RecruitingInSettlement,
+]);
 
 export function getSettlements(): Promise<SettlementPublic> {
   return get('/strategus/settlements');
