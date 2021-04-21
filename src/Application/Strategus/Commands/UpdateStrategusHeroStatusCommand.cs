@@ -50,6 +50,7 @@ namespace Crpg.Application.Strategus.Commands
             {
                 var hero = await _db.StrategusHeroes
                     .Include(h => h.User)
+                    .Include(h => h.TargetedSettlement)
                     .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
                 if (hero == null)
                 {
@@ -61,14 +62,13 @@ namespace Crpg.Application.Strategus.Commands
                     return new(CommonErrors.HeroInBattle(req.HeroId));
                 }
 
-                if (req.Status == StrategusHeroStatus.RecruitingInSettlement)
+                if (req.Status == StrategusHeroStatus.IdleInSettlement || req.Status == StrategusHeroStatus.RecruitingInSettlement)
                 {
-                    if (hero.Status != StrategusHeroStatus.IdleInSettlement)
+                    var result = StartStopRecruiting(req.Status == StrategusHeroStatus.RecruitingInSettlement, hero);
+                    if (result.Errors != null)
                     {
-                        return new(CommonErrors.HeroNotInASettlement(req.HeroId));
+                        return new(result.Errors);
                     }
-
-                    hero.Status = StrategusHeroStatus.RecruitingInSettlement;
                 }
                 else
                 {
@@ -80,8 +80,29 @@ namespace Crpg.Application.Strategus.Commands
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
-                Logger.LogInformation("Hero '{0}' updated their movement on the map", req.HeroId);
+                Logger.LogInformation("Hero '{0}' updated their status", req.HeroId);
                 return new(_mapper.Map<StrategusHeroViewModel>(hero));
+            }
+
+            private Result StartStopRecruiting(bool start, StrategusHero hero)
+            {
+                if (start)
+                {
+                    if (hero.Status != StrategusHeroStatus.IdleInSettlement)
+                    {
+                        return new(CommonErrors.HeroNotInASettlement(hero.Id));
+                    }
+                }
+                else
+                {
+                    if (hero.Status != StrategusHeroStatus.RecruitingInSettlement)
+                    {
+                        return new(CommonErrors.HeroNotInASettlement(hero.Id));
+                    }
+                }
+
+                hero.Status = start ? StrategusHeroStatus.RecruitingInSettlement : StrategusHeroStatus.IdleInSettlement;
+                return Result.NoErrors;
             }
 
             private async Task<Result> UpdateHeroMovement(StrategusHero hero, UpdateStrategusHeroStatusCommand req,

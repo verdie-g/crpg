@@ -377,6 +377,53 @@ namespace Crpg.Application.UTest.Strategus
         }
 
         [Test]
+        public async Task ShouldReturnErrorIfTryingToStopRecruitingWhenNotInASettlement()
+        {
+            var user = new User
+            {
+                StrategusHero = new StrategusHero { Status = StrategusHeroStatus.Idle },
+            };
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
+
+            var handler = new UpdateStrategusHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            var res = await handler.Handle(new UpdateStrategusHeroStatusCommand
+            {
+                HeroId = user.Id,
+                Status = StrategusHeroStatus.IdleInSettlement,
+            }, CancellationToken.None);
+
+            Assert.IsNotNull(res.Errors);
+            Assert.AreEqual(ErrorCode.HeroNotInASettlement, res.Errors![0].Code);
+        }
+
+        [Test]
+        public async Task ShouldSwitchFromRecruitingInSettlementToIdleInSettlement()
+        {
+            var user = new User
+            {
+                StrategusHero = new StrategusHero
+                {
+                    Status = StrategusHeroStatus.RecruitingInSettlement,
+                    TargetedSettlement = new StrategusSettlement(),
+                },
+            };
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
+
+            var handler = new UpdateStrategusHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            var res = await handler.Handle(new UpdateStrategusHeroStatusCommand
+            {
+                HeroId = user.Id,
+                Status = StrategusHeroStatus.IdleInSettlement,
+            }, CancellationToken.None);
+
+            Assert.IsNull(res.Errors);
+            Assert.AreEqual(StrategusHeroStatus.IdleInSettlement, res.Data!.Status);
+            Assert.IsNotNull(res.Data!.TargetedSettlement);
+        }
+
+        [Test]
         public async Task ShouldReturnErrorIfTryingToRecruitWhenNotInASettlement()
         {
             var user = new User
@@ -398,7 +445,7 @@ namespace Crpg.Application.UTest.Strategus
         }
 
         [Test]
-        public async Task ShouldUpdateStatusIfTryingToRecruitWhenInsideASettlement()
+        public async Task ShouldSwitchFromIdleInSettlementToRecruitingInSettlement()
         {
             var user = new User
             {
@@ -420,6 +467,7 @@ namespace Crpg.Application.UTest.Strategus
 
             Assert.IsNull(res.Errors);
             Assert.AreEqual(StrategusHeroStatus.RecruitingInSettlement, res.Data!.Status);
+            Assert.IsNotNull(res.Data!.TargetedSettlement);
         }
     }
 }
