@@ -42,7 +42,7 @@ namespace Crpg.Application.UTest.Common.Services
             int mediumSpeedHorseCount = 100;
             int slowHorseCount = 50;
             int totalHorseCount = fastHorseCount + mediumSpeedHorseCount + slowHorseCount;
-            double previousspeed = double.MaxValue;
+            double previousSpeed = double.MaxValue;
             for (int troops = 10; troops <= 1000; troops += 10)
             {
                 var hero = new StrategusHero
@@ -59,14 +59,14 @@ namespace Crpg.Application.UTest.Common.Services
                 double speed = speedModel.ComputeHeroSpeed(hero);
                 if (troops < totalHorseCount)
                 {
-                    Assert.LessOrEqual(speed, previousspeed);
+                    Assert.LessOrEqual(speed, previousSpeed);
                 }
                 else
                 {
-                    Assert.Less(speed, previousspeed);
+                    Assert.Less(speed, previousSpeed);
                 }
 
-                previousspeed = speed;
+                previousSpeed = speed;
             }
         }
 
