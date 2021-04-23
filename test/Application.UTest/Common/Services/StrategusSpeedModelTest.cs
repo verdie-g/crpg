@@ -11,27 +11,43 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public void BuyingAMountShouldNotDecreaseSpeed()
         {
-            var hero1 = new StrategusHero() { Troops = 3 };
-            var hero2 = new StrategusHero() { Troops = 3 };
-            var hero3 = new StrategusHero() { Troops = 3 };
-            var mount1 = new StrategusOwnedItem() { Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 250 } }, Count = 1 };
-            var mount2 = new StrategusOwnedItem() { Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 250 } }, Count = 2 };
-            var mount3 = new StrategusOwnedItem() { Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 250 } }, Count = 3 };
-            hero1.OwnedItems = new List<StrategusOwnedItem>
+            var hero1 = new StrategusHero
             {
-                mount1
+                Troops = 3,
+                OwnedItems = new List<StrategusOwnedItem>
+                {
+                     new StrategusOwnedItem()
+                     {
+                         Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 250 } }, Count = 1
+                     }
+                }
             };
-            hero2.OwnedItems = new List<StrategusOwnedItem>
+            var hero2 = new StrategusHero
             {
-                mount2
+                Troops = 3,
+                OwnedItems = new List<StrategusOwnedItem>
+                {
+                    new StrategusOwnedItem()
+                    {
+                        Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 250 } }, Count = 1
+                    }
+                }
             };
-            hero3.OwnedItems = new List<StrategusOwnedItem>
+            var hero3 = new StrategusHero
             {
-                mount3
+                Troops = 3,
+                OwnedItems = new List<StrategusOwnedItem>
+                {
+                    new StrategusOwnedItem()
+                    {
+                        Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 250 } }, Count = 1
+                    }
+                }
             };
+
             var speedModel = new StrategusSpeedModel();
-            Assert.That(speedModel.ComputeHeroSpeed(hero2), Is.GreaterThan(speedModel.ComputeHeroSpeed(hero1)));
-            Assert.That(speedModel.ComputeHeroSpeed(hero3), Is.GreaterThan(speedModel.ComputeHeroSpeed(hero2)));
+            Assert.Greater(speedModel.ComputeHeroSpeed(hero2), speedModel.ComputeHeroSpeed(hero1));
+            Assert.Greater(speedModel.ComputeHeroSpeed(hero3), speedModel.ComputeHeroSpeed(hero2));
         }
     }
 }
