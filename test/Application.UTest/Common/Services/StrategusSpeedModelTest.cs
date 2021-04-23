@@ -78,7 +78,7 @@ namespace Crpg.Application.UTest.Common.Services
         public void BuyingMountsShouldIncreaseSpeed()
         {
             double previousspeed = 0;
-            for (int i = 0; i < 100; i++)
+            for (int i = 1; i <= 100; i++)
             {
                 var hero1 = new StrategusHero
                 {
