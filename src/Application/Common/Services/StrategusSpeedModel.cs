@@ -54,7 +54,7 @@ namespace Crpg.Application.Common.Services
                     Marathon runner are more suited for long distance than sprint runners
                     Manually designed speed for mounts should be added later for more fine tuning
                     */
-                    if (ownedItem.Item!.Mount!.HitPoints >= forcedMarchSpeed)
+                    if (ownedItem.Item!.Mount!.HitPoints / 100 >= forcedMarchSpeed)
                     {
                         return ownedItem.Item!.Mount!.HitPoints / 100;
                     }
