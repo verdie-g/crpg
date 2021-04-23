@@ -78,14 +78,14 @@ namespace Crpg.Application.UTest.Common.Services
         public void BuyingMountsShouldIncreaseSpeed()
         {
             double previousspeed = 0;
-            for (int i = 1; i <= 100; i++)
+            for (int mountCountFactor = 1; mountCountFactor <= 100; mountCountFactor++)
             {
                 var hero1 = new StrategusHero
                 {
                     Troops = 1000,
                     OwnedItems = new List<StrategusOwnedItem>
                     {
-                        StrategusOwnedItemMount(450, 7 * i), StrategusOwnedItemMount(350, 3 * i), StrategusOwnedItemMount(250, i)
+                        StrategusOwnedItemMount(450, 7 * mountCountFactor), StrategusOwnedItemMount(350, 3 * mountCountFactor), StrategusOwnedItemMount(250, mountCountFactor)
                     }
                 };
                 var speedModel = new StrategusSpeedModel();
