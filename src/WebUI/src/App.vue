@@ -14,43 +14,38 @@
         </template>
 
         <template slot="end">
-          <b-navbar-item tag="div" v-if="user">
-            <div class="media">
-              <div class="media-content">
-                <p>
-                  <strong>{{ user.name }}</strong>
-                  <br />
-                  <b-icon icon="coins" size="is-small" style="margin-right: 6px" />
-                  {{ user.gold }}
-                </p>
-              </div>
-              <figure class="media-right">
-                <b-dropdown aria-role="list" position="is-bottom-left">
-                  <p class="image" slot="trigger" style="cursor: pointer">
-                    <img v-bind:src="user.avatarSmall" alt="avatar" />
-                  </p>
-
-                  <b-dropdown-item has-link aria-role="menuitem" v-if="isModeratorOrAdmin">
-                    <router-link to="/admin">
-                      <b-icon icon="user-shield" />
-                      Administration
-                    </router-link>
-                  </b-dropdown-item>
-
-                  <b-dropdown-item has-link aria-role="menuitem">
-                    <router-link to="/settings">
-                      <b-icon icon="cog" />
-                      Settings
-                    </router-link>
-                  </b-dropdown-item>
-
-                  <b-dropdown-item value="home" aria-role="menuitem" @click="signOut">
-                    <b-icon icon="sign-out-alt" />
-                    Sign out
-                  </b-dropdown-item>
-                </b-dropdown>
-              </figure>
+          <b-navbar-item has-dropdown tag="div" v-if="user">
+            <div class="media-content">
+              <p>
+                <strong>{{ user.name }}</strong>
+                <br />
+                <b-icon icon="coins" size="is-small" style="margin-right: 6px" />
+                {{ user.gold }}
+              </p>
             </div>
+            <figure class="media-right">
+              <img :src="user.avatarSmall" style="max-height: fit-content" alt="avatar" />
+            </figure>
+            <b-navbar-dropdown :right="true" class="p-0">
+              <b-navbar-item has-link aria-role="menuitem" v-if="isModeratorOrAdmin">
+                <router-link to="/admin">
+                  <b-icon icon="user-shield" />
+                  Administration
+                </router-link>
+              </b-navbar-item>
+
+              <b-navbar-item has-link aria-role="menuitem">
+                <router-link to="/settings">
+                  <b-icon icon="cog" />
+                  Settings
+                </router-link>
+              </b-navbar-item>
+
+              <b-navbar-item value="home" aria-role="menuitem" @click="signOut">
+                <b-icon icon="sign-out-alt" />
+                Sign out
+              </b-navbar-item>
+            </b-navbar-dropdown>
           </b-navbar-item>
         </template>
       </b-navbar>
