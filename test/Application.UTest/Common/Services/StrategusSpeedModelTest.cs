@@ -56,48 +56,52 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public void RecruitingTroopShouldDecreaseSpeed()
         {
-            for (int i = 1; i <= 100; i++)
+            int fastHorseCount = 150;
+            int mediumSpeedHorseCount = 100;
+            int slowHorseCount = 50;
+            int totalHorseCount = fastHorseCount + mediumSpeedHorseCount + slowHorseCount;
+            for (int troups = 10; troups <= 1000; troups += 10)
             {
                 var hero1 = new StrategusHero
                 {
-                    Troops = 10 * i,
+                    Troops = troups,
                     OwnedItems = new List<StrategusOwnedItem>
                     {
                          new StrategusOwnedItem()
                          {
-                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 450 } }, Count = 150
+                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 450 } }, Count = fastHorseCount
                          },
                          new StrategusOwnedItem()
                          {
-                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 350 } }, Count = 100
+                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 350 } }, Count = mediumSpeedHorseCount
                          },
                          new StrategusOwnedItem()
                          {
-                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 250 } }, Count = 50
+                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 250 } }, Count = slowHorseCount
                          }
                     }
                 };
                 var hero2 = new StrategusHero
                 {
-                    Troops = 10 * (i - 1),
+                    Troops = troups - 10,
                     OwnedItems = new List<StrategusOwnedItem>
                     {
                          new StrategusOwnedItem()
                          {
-                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 450 } }, Count = 150
+                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 450 } }, Count = fastHorseCount
                          },
                          new StrategusOwnedItem()
                          {
-                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 350 } }, Count = 100
+                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 350 } }, Count = mediumSpeedHorseCount
                          },
                          new StrategusOwnedItem()
                          {
-                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 250 } }, Count = 50
+                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 250 } }, Count = slowHorseCount
                          }
                     }
                 };
                 var speedModel = new StrategusSpeedModel();
-                if (i < 21)
+                if (troups < totalHorseCount)
                 {
                     Assert.LessOrEqual(speedModel.ComputeHeroSpeed(hero1), speedModel.ComputeHeroSpeed(hero2));
                 }
