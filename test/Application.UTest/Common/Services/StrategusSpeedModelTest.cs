@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Common.Services
 {
-    public class StrategusSpeedModelTest
+    public class StrategusSpeedModelTest // useless comment
     {
         private StrategusOwnedItem StrategusOwnedItemMount(int hitPoints, int count)
         {
