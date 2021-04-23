@@ -50,7 +50,7 @@ namespace Crpg.Application.UTest.Common.Services
                     }
             };
             var speedModel = new StrategusSpeedModel();
-            Assert.Greater(speedModel.ComputeHeroSpeed(hero1), speedModel.ComputeHeroSpeed(hero2));
+            Assert.GreaterOrEqual(speedModel.ComputeHeroSpeed(hero1), speedModel.ComputeHeroSpeed(hero2));
         }
 
         [Test]
@@ -97,7 +97,14 @@ namespace Crpg.Application.UTest.Common.Services
                     }
                 };
                 var speedModel = new StrategusSpeedModel();
-                Assert.Greater(speedModel.ComputeHeroSpeed(hero2), speedModel.ComputeHeroSpeed(hero1));
+                if (i < 21)
+                {
+                    Assert.LessOrEqual(speedModel.ComputeHeroSpeed(hero1), speedModel.ComputeHeroSpeed(hero2));
+                }
+                else
+                {
+                    Assert.Less(speedModel.ComputeHeroSpeed(hero1), speedModel.ComputeHeroSpeed(hero2));
+                }
             }
         }
 
