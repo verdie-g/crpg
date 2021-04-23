@@ -92,7 +92,7 @@ namespace Crpg.Application.UTest.Common.Services
                          },
                          new StrategusOwnedItem()
                          {
-                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 150 } }, Count = 50
+                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 250 } }, Count = 50
                          }
                     }
                 };
