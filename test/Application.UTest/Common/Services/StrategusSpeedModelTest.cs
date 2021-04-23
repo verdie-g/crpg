@@ -85,7 +85,7 @@ namespace Crpg.Application.UTest.Common.Services
                     Troops = 1000,
                     OwnedItems = new List<StrategusOwnedItem>
                     {
-                        StrategusOwnedItemMount(450, 7 * mountCountFactor), StrategusOwnedItemMount(350, 3 * mountCountFactor), StrategusOwnedItemMount(250, mountCountFactor)
+                        StrategusOwnedItemMount(450, 6 * mountCountFactor), StrategusOwnedItemMount(350, 2 * mountCountFactor), StrategusOwnedItemMount(250, 2 * mountCountFactor)
                     }
                 };
                 var speedModel = new StrategusSpeedModel();
