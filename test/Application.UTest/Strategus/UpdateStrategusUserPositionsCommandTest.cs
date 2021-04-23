@@ -15,6 +15,7 @@ namespace Crpg.Application.UTest.Strategus
     public class UpdateStrategusHeroPositionsCommandTest : TestBase
     {
         private static readonly IStrategusSpeedModel SpeedModelMock = Mock.Of<IStrategusSpeedModel>();
+
         [Test]
         public async Task UsersMovingToPointShouldMove()
         {
