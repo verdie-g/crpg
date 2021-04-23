@@ -56,7 +56,7 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public void RecruitingTroopShouldDecreaseSpeed()
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 1; i <= 100; i++)
             {
                 var hero1 = new StrategusHero
                 {
@@ -136,11 +136,11 @@ namespace Crpg.Application.UTest.Common.Services
                          },
                          new StrategusOwnedItem()
                          {
-                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 350 } }, Count = 100 * (i - 1)
+                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 350 } }, Count = 3 * (i - 1)
                          },
                          new StrategusOwnedItem()
                          {
-                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 150 } }, Count = 50 * (i - 1)
+                             Item = new Item() { Mount = new ItemMountComponent() { HitPoints = 150 } }, Count = 1 * (i - 1)
                          }
                     }
                 };
