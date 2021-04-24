@@ -1,6 +1,6 @@
 ﻿using Crpg.Domain.Common;
 
-namespace Crpg.Domain.Entities.Strategus
+namespace Crpg.Domain.Entities.Strategus.Battles
 {
     /// <summary>
     /// Application to join a <see cref="StrategusBattle"/> during the <see cref="StrategusBattlePhase.Preparation"/>

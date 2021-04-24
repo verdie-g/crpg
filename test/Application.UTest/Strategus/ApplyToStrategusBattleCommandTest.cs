@@ -4,6 +4,7 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Strategus.Commands;
 using Crpg.Domain.Entities.Strategus;
+using Crpg.Domain.Entities.Strategus.Battles;
 using Crpg.Domain.Entities.Users;
 using Moq;
 using NetTopologySuite.Geometries;

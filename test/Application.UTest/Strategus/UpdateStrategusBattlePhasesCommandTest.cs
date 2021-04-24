@@ -5,6 +5,7 @@ using Crpg.Application.Common;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Strategus.Commands;
 using Crpg.Domain.Entities.Strategus;
+using Crpg.Domain.Entities.Strategus.Battles;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Moq;

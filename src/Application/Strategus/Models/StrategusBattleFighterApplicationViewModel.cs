@@ -1,5 +1,6 @@
 ﻿using Crpg.Application.Common.Mappings;
 using Crpg.Domain.Entities.Strategus;
+using Crpg.Domain.Entities.Strategus.Battles;
 
 namespace Crpg.Application.Strategus.Models
 {

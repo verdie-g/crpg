@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Crpg.Domain.Entities.Strategus;
+using Crpg.Domain.Entities.Strategus.Battles;
 
 namespace Crpg.Application.Common.Services
 {

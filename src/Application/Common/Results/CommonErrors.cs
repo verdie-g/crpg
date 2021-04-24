@@ -1,6 +1,7 @@
 ﻿using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Strategus;
+using Crpg.Domain.Entities.Strategus.Battles;
 
 namespace Crpg.Application.Common.Results
 {

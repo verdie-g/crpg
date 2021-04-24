@@ -2,7 +2,7 @@
 using Crpg.Domain.Common;
 using NetTopologySuite.Geometries;
 
-namespace Crpg.Domain.Entities.Strategus
+namespace Crpg.Domain.Entities.Strategus.Battles
 {
     public class StrategusBattle : AuditableEntity
     {
