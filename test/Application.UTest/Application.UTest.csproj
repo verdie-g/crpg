@@ -20,4 +20,5 @@
       <ProjectReference Include="..\..\src\Sdk\Sdk.csproj" />
       <ProjectReference Include="..\..\src\Persistence\Persistence.csproj" />
     </ItemGroup>
+	
 </Project>
