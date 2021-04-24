@@ -20,9 +20,4 @@
       <ProjectReference Include="..\..\src\Sdk\Sdk.csproj" />
       <ProjectReference Include="..\..\src\Persistence\Persistence.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Properties\" />
-    </ItemGroup>
-
 </Project>
