@@ -12,12 +12,12 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Strategus
 {
-    public class ApplyToStrategusBattleCommandTest : TestBase
+    public class ApplyAsFighterToStrategusBattleCommandTest : TestBase
     {
         [Test]
         public async Task ShouldReturnErrorIfHeroNotFound()
         {
-            ApplyToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            ApplyAsFighterToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new()
             {
                 HeroId = 1,
@@ -35,7 +35,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.StrategusHeroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
-            ApplyToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            ApplyAsFighterToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new()
             {
                 HeroId = hero.Id,
@@ -53,7 +53,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.StrategusHeroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
-            ApplyToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            ApplyAsFighterToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new()
             {
                 HeroId = hero.Id,
@@ -82,7 +82,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.StrategusBattles.Add(battle);
             await ArrangeDb.SaveChangesAsync();
 
-            ApplyToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            ApplyAsFighterToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new()
             {
                 HeroId = hero.Id,
@@ -116,7 +116,7 @@ namespace Crpg.Application.UTest.Strategus
                 .Setup(m => m.ArePointsAtInteractionDistance(hero.Position, battle.Position))
                 .Returns(false);
 
-            ApplyToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
+            ApplyAsFighterToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new()
             {
                 HeroId = hero.Id,
@@ -127,8 +127,9 @@ namespace Crpg.Application.UTest.Strategus
             Assert.AreEqual(ErrorCode.BattleTooFar, res.Errors![0].Code);
         }
 
-        [Test]
-        public async Task ShouldReturnExistingApplication()
+        [TestCase(StrategusBattleFighterApplicationStatus.Pending)]
+        [TestCase(StrategusBattleFighterApplicationStatus.Accepted)]
+        public async Task ShouldReturnExistingApplication(StrategusBattleFighterApplicationStatus existingApplicationStatus)
         {
             StrategusHero hero = new()
             {
@@ -143,13 +144,13 @@ namespace Crpg.Application.UTest.Strategus
                 Position = new Point(3, 4),
             };
             ArrangeDb.StrategusBattles.Add(battle);
-            StrategusBattleFighterApplication application = new()
+            StrategusBattleFighterApplication existingApplication = new()
             {
-                Status = StrategusBattleFighterApplicationStatus.Pending,
+                Status = existingApplicationStatus,
                 Battle = battle,
                 Hero = hero,
             };
-            ArrangeDb.StrategusBattleFighterApplications.Add(application);
+            ArrangeDb.StrategusBattleFighterApplications.Add(existingApplication);
             await ArrangeDb.SaveChangesAsync();
 
             var strategusMapMock = new Mock<IStrategusMap>(MockBehavior.Strict);
@@ -157,7 +158,7 @@ namespace Crpg.Application.UTest.Strategus
                 .Setup(m => m.ArePointsAtInteractionDistance(hero.Position, battle.Position))
                 .Returns(true);
 
-            ApplyToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
+            ApplyAsFighterToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new()
             {
                 HeroId = hero.Id,
@@ -165,7 +166,7 @@ namespace Crpg.Application.UTest.Strategus
             }, CancellationToken.None);
 
             Assert.IsNull(res.Errors);
-            Assert.AreEqual(application.Id, res.Data!.Id);
+            Assert.AreEqual(existingApplication.Id, res.Data!.Id);
         }
 
         [Test]
@@ -191,7 +192,7 @@ namespace Crpg.Application.UTest.Strategus
                 .Setup(m => m.ArePointsAtInteractionDistance(hero.Position, battle.Position))
                 .Returns(true);
 
-            ApplyToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
+            ApplyAsFighterToStrategusBattleCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new()
             {
                 HeroId = hero.Id,

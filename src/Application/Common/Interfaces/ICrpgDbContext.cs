@@ -29,6 +29,8 @@ namespace Crpg.Application.Common.Interfaces
         DbSet<StrategusBattle> StrategusBattles { get; }
         DbSet<StrategusBattleFighter> StrategusBattleFighters { get; }
         DbSet<StrategusBattleFighterApplication> StrategusBattleFighterApplications { get; }
+        DbSet<StrategusBattleMercenary> StrategusBattleMercenaries { get; }
+        DbSet<StrategusBattleMercenaryApplication> StrategusBattleMercenaryApplications { get; }
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }

@@ -1,7 +1,8 @@
 ﻿namespace Crpg.Domain.Entities.Strategus.Battles
 {
     /// <summary>
-    /// Fighter that joined their army to a <see cref="StrategusBattle"/>.
+    /// Fighter that joined their army to a <see cref="StrategusBattle"/>. Not to be confused
+    /// with <see cref="StrategusBattleMercenary"/>.
     /// </summary>
     public class StrategusBattleFighter
     {

@@ -7,12 +7,13 @@
     {
         /// <summary>
         /// A <see cref="StrategusHero"/> attacked another one or a <see cref="StrategusSettlement"/>. Other <see cref="StrategusHero"/>es
-        /// can join their army during this phase.
+        /// can join their army during this phase as <see cref="StrategusBattleFighter"/>.
         /// </summary>
         Preparation,
 
         /// <summary>
-        /// <see cref="StrategusHero"/>es from anywhere on the map can join the <see cref="StrategusBattle"/> as mercenary.
+        /// <see cref="StrategusHero"/>es from anywhere on the map can join the <see cref="StrategusBattle"/>
+        /// as <see cref="StrategusBattleMercenary"/>.
         /// </summary>
         Hiring,
 

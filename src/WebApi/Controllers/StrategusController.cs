@@ -93,9 +93,23 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Applied.</response>
         /// <response code="400">Too far from the battle, ...</response>
         [HttpPost("battles/{battleId}/fighters")]
-        public Task<ActionResult<Result<StrategusBattleFighterApplicationViewModel>>> ApplyToBattle([FromRoute] int battleId)
+        public Task<ActionResult<Result<StrategusBattleFighterApplicationViewModel>>> ApplyToBattleAsFighter([FromRoute] int battleId)
         {
-            ApplyToStrategusBattleCommand req = new() { HeroId = CurrentUser.UserId, BattleId = battleId };
+            ApplyAsFighterToStrategusBattleCommand req = new() { HeroId = CurrentUser.UserId, BattleId = battleId };
+            return ResultToActionAsync(Mediator.Send(req));
+        }
+
+        /// <summary>
+        /// Apply as a mercenary to a battle.
+        /// </summary>
+        /// <returns>The application.</returns>
+        /// <response code="200">Applied.</response>
+        /// <response code="400">Bad request.</response>
+        [HttpPost("battles/{battleId}/mercenaries")]
+        public Task<ActionResult<Result<StrategusBattleMercenaryApplicationViewModel>>> ApplyToBattleAsMercenary(
+            [FromRoute] int battleId, [FromBody] ApplyAsMercenaryToStrategusBattleCommand req)
+        {
+            req = req with { UserId = CurrentUser.UserId, BattleId = battleId };
             return ResultToActionAsync(Mediator.Send(req));
         }
     }
