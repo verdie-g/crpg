@@ -15,21 +15,21 @@ namespace Crpg.Application.UTest.Common.Services
             {
                 Troops = 10,
                 OwnedItems = new List<StrategusOwnedItem>
-                    {
-                        StrategusOwnedItemMount(450, 5),
-                        StrategusOwnedItemMount(350, 5),
-                        StrategusOwnedItemMount(250, 5)
-                    }
+                {
+                    StrategusOwnedItemMount(450, 5),
+                    StrategusOwnedItemMount(350, 5),
+                    StrategusOwnedItemMount(250, 5),
+                },
             };
             var hero2 = new StrategusHero
             {
                 Troops = 10,
                 OwnedItems = new List<StrategusOwnedItem>
-                    {
-                        StrategusOwnedItemMount(450, 5),
-                        StrategusOwnedItemMount(350, 10),
-                        StrategusOwnedItemMount(250, 10)
-                    }
+                {
+                    StrategusOwnedItemMount(450, 5),
+                    StrategusOwnedItemMount(350, 10),
+                    StrategusOwnedItemMount(250, 10),
+                },
             };
             var speedModel = new StrategusSpeedModel();
             Assert.GreaterOrEqual(speedModel.ComputeHeroSpeed(hero1), speedModel.ComputeHeroSpeed(hero2));
@@ -53,8 +53,8 @@ namespace Crpg.Application.UTest.Common.Services
                     {
                         StrategusOwnedItemMount(450, fastHorseCount),
                         StrategusOwnedItemMount(350, mediumSpeedHorseCount),
-                        StrategusOwnedItemMount(250, slowHorseCount)
-                    }
+                        StrategusOwnedItemMount(250, slowHorseCount),
+                    },
                 };
                 double speed = speedModel.ComputeHeroSpeed(hero);
                 if (troops < totalHorseCount)
@@ -71,9 +71,8 @@ namespace Crpg.Application.UTest.Common.Services
                 else
                 {
                     /*
-                    this is in case there is not enough mounts for every soldier to be mounted
-                    the model for this is assuming some of the soldiers have to walk.
-                    The more of them walk , the slowest the party get.
+                    This is in case there is not enough mounts for every soldier to be mounted the model for this is
+                    assuming some of the soldiers have to walk. The more of them walk , the slowest the party get.
                     The speed should strictly decrease.
                     */
                     Assert.Less(speed, previousSpeed);
@@ -97,8 +96,8 @@ namespace Crpg.Application.UTest.Common.Services
                     {
                         StrategusOwnedItemMount(450, 6 * mountCountFactor),
                         StrategusOwnedItemMount(350, 2 * mountCountFactor),
-                        StrategusOwnedItemMount(250, 2 * mountCountFactor)
-                    }
+                        StrategusOwnedItemMount(250, 2 * mountCountFactor),
+                    },
                 };
                 var speed = speedModel.ComputeHeroSpeed(hero);
                 Assert.Greater(speed, previousSpeed);
@@ -108,11 +107,10 @@ namespace Crpg.Application.UTest.Common.Services
 
         private StrategusOwnedItem StrategusOwnedItemMount(int hitPoints, int count)
         {
-            return
-            new StrategusOwnedItem()
+            return new()
             {
-                Item = new Item() { Mount = new ItemMountComponent() { HitPoints = hitPoints } },
-                Count = count
+                Item = new Item { Mount = new ItemMountComponent { HitPoints = hitPoints } },
+                Count = count,
             };
         }
     }
