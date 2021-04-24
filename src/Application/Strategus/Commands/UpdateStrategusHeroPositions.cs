@@ -6,6 +6,7 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
+using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Strategus;
 using Crpg.Domain.Entities.Strategus.Battles;
 using Microsoft.EntityFrameworkCore;
@@ -41,11 +42,13 @@ namespace Crpg.Application.Strategus.Commands
 
             private readonly ICrpgDbContext _db;
             private readonly IStrategusMap _strategusMap;
+            private readonly IStrategusSpeedModel _strategusSpeedModel;
 
-            public Handler(ICrpgDbContext db, IStrategusMap strategusMap)
+            public Handler(ICrpgDbContext db, IStrategusMap strategusMap, IStrategusSpeedModel strategusSpeedModel)
             {
                 _db = db;
                 _strategusMap = strategusMap;
+                _strategusSpeedModel = strategusSpeedModel;
             }
 
             public async Task<Result> Handle(UpdateStrategusHeroPositionsCommand req, CancellationToken cancellationToken)
@@ -55,6 +58,8 @@ namespace Crpg.Application.Strategus.Commands
                     .Where(h => MovementStatuses.Contains(h.Status))
                     .Include(h => h.TargetedHero)
                     .Include(h => h.TargetedSettlement)
+                    // Load mounts into OwnedItems to compute movement speed.
+                    .Include(h => h.OwnedItems!.Where(oi => oi.Item!.Type == ItemType.Mount)).ThenInclude(oi => oi.Item)
                     .ToArrayAsync(cancellationToken);
 
                 foreach (var hero in strategusHeroes)
@@ -224,23 +229,12 @@ namespace Crpg.Application.Strategus.Commands
 
             private bool MoveHeroTowardsPoint(StrategusHero hero, Point targetPoint, TimeSpan deltaTime, bool canInteractWithTarget)
             {
-                double speed = ComputeHeroSpeed(hero);
+                double speed = _strategusSpeedModel.ComputeHeroSpeed(hero);
                 double distance = speed * deltaTime.TotalSeconds;
                 hero.Position = _strategusMap.MovePointTowards(hero.Position, targetPoint, distance);
                 return canInteractWithTarget
                     ? _strategusMap.ArePointsAtInteractionDistance(hero.Position, targetPoint)
                     : _strategusMap.ArePointsEquivalent(hero.Position, targetPoint);
-            }
-
-            private double ComputeHeroSpeed(StrategusHero hero)
-            {
-                const double terrainSpeedFactor = 1.0; // TODO: terrain penalty on speed (e.g. lower speed in forest).
-                const double weightFactor = 1.0; // TODO: goods should slow down hero
-                const double horsesFactor = 1.0; // TODO: horse should speed up hero
-                const double terrainTroopInfluence = 1.0; // TODO: terrain influence on speed depending on the number of troops.
-
-                double troopInfluence = Math.Min(0.99, Math.Pow(hero.Troops, terrainTroopInfluence) / 100);
-                return terrainSpeedFactor * weightFactor * horsesFactor * (1 - troopInfluence);
             }
 
             private Point GetMidPoint(Point pointA, Point pointB)

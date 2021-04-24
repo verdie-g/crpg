@@ -15,6 +15,8 @@ namespace Crpg.Application.UTest.Strategus
 {
     public class UpdateStrategusHeroPositionsCommandTest : TestBase
     {
+        private static readonly IStrategusSpeedModel SpeedModelMock = Mock.Of<IStrategusSpeedModel>();
+
         [Test]
         public async Task UsersMovingToPointShouldMove()
         {
@@ -29,7 +31,6 @@ namespace Crpg.Application.UTest.Strategus
             };
             ArrangeDb.StrategusHeroes.Add(strategusHero);
             await ArrangeDb.SaveChangesAsync();
-
             var newPosition = new Point(2, 3);
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock
@@ -38,7 +39,7 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsEquivalent(newPosition, destination))
                 .Returns(false);
-            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object, SpeedModelMock);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1),
@@ -64,7 +65,6 @@ namespace Crpg.Application.UTest.Strategus
             };
             ArrangeDb.StrategusHeroes.Add(strategusHero);
             await ArrangeDb.SaveChangesAsync();
-
             var newPosition = new Point(5, 5);
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock
@@ -73,7 +73,7 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsEquivalent(newPosition, destination))
                 .Returns(true);
-            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object, SpeedModelMock);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1),
@@ -108,7 +108,7 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsEquivalent(newPosition, destination))
                 .Returns(true);
-            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object, SpeedModelMock);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1),
@@ -140,8 +140,7 @@ namespace Crpg.Application.UTest.Strategus
 
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(0);
-
-            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object, SpeedModelMock);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1),
@@ -191,7 +190,7 @@ namespace Crpg.Application.UTest.Strategus
                     .Returns(false);
             }
 
-            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object, SpeedModelMock);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1),
@@ -234,8 +233,7 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
                 .Returns(true);
-
-            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object, SpeedModelMock);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1),
@@ -274,8 +272,7 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
                 .Returns(true);
-
-            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object, SpeedModelMock);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1),
@@ -326,7 +323,7 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
                 .Returns(false);
-            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object, SpeedModelMock);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1),
@@ -360,7 +357,7 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
                 .Returns(true);
-            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object, SpeedModelMock);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1),
@@ -401,7 +398,7 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
                 .Returns(true);
-            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object, SpeedModelMock);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1),
@@ -434,7 +431,7 @@ namespace Crpg.Application.UTest.Strategus
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(newPosition, destination))
                 .Returns(true);
-            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object);
+            var handler = new UpdateStrategusHeroPositionsCommand.Handler(ActDb, strategusMapMock.Object, SpeedModelMock);
             await handler.Handle(new UpdateStrategusHeroPositionsCommand
             {
                 DeltaTime = TimeSpan.FromMinutes(1),
