@@ -59,10 +59,23 @@ namespace Crpg.Application.UTest.Common.Services
                 double speed = speedModel.ComputeHeroSpeed(hero);
                 if (troops < totalHorseCount)
                 {
+                    /*
+                    this is in case there is enough mount for everyone soldier to be mounted.
+                    The soldier will choose by default the fastest mounts they can find
+                    In this case the speed of the army is the speed of the slowest mount among the used one
+                    (which is worst of the top tier mounts) .
+                    In this case the speed may not increase but should not decrease
+                    */
                     Assert.LessOrEqual(speed, previousSpeed);
                 }
                 else
                 {
+                    /*
+                    this is in case there is not enough mounts for every soldier to be mounted
+                    the model for this is assuming some of the soldiers have to walk.
+                    The more of them walk , the slowest the party get.
+                    The speed should strictly decrease.
+                    */
                     Assert.Less(speed, previousSpeed);
                 }
 
