@@ -10,7 +10,7 @@ namespace Crpg.Application.Common.Services
         CharacterClass ResolveCharacterClass(CharacterStatistics stats);
     }
 
-    internal class CharacterClassModel
+    internal class CharacterClassModel : ICharacterClassModel
     {
         private const int MinConsideredWeaponProficiency = 50;
         private const int MinConsideredSkills = 2;
