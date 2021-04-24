@@ -11,12 +11,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Queries
 {
-    public class GetItemsQuery : IMediatorRequest<IList<ItemViewModel>>
+    public record GetItemsQuery : IMediatorRequest<IList<ItemViewModel>>
     {
         /// <summary>
         /// True if only the items of rank 0 should be returned.
         /// </summary>
-        public bool BaseItems { get; set; }
+        public bool BaseItems { get; init; }
 
         internal class Handler : IMediatorRequestHandler<GetItemsQuery, IList<ItemViewModel>>
         {
@@ -37,7 +37,7 @@ namespace Crpg.Application.Items.Queries
                     .Where(i => !req.BaseItems || i.Rank == 0)
                     .ToListAsync(cancellationToken);
 
-                return new Result<IList<ItemViewModel>>(_mapper.Map<IList<ItemViewModel>>(items));
+                return new(_mapper.Map<IList<ItemViewModel>>(items));
             }
         }
     }

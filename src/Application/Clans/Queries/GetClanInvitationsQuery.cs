@@ -15,11 +15,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Clans.Queries
 {
-    public class GetClanInvitationsQuery : IMediatorRequest<IList<ClanInvitationViewModel>>
+    public record GetClanInvitationsQuery : IMediatorRequest<IList<ClanInvitationViewModel>>
     {
-        public int UserId { get; set; }
-        public int ClanId { get; set; }
-        public IList<ClanInvitationStatus> Statuses { get; set; } = Array.Empty<ClanInvitationStatus>();
+        public int UserId { get; init; }
+        public int ClanId { get; init; }
+        public IList<ClanInvitationType> Types { get; init; } = Array.Empty<ClanInvitationType>();
+        public IList<ClanInvitationStatus> Statuses { get; init; } = Array.Empty<ClanInvitationStatus>();
 
         internal class Handler : IMediatorRequestHandler<GetClanInvitationsQuery, IList<ClanInvitationViewModel>>
         {
@@ -41,28 +42,32 @@ namespace Crpg.Application.Clans.Queries
                     .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 if (user == null)
                 {
-                    return new Result<IList<ClanInvitationViewModel>>(CommonErrors.UserNotFound(req.UserId));
+                    return new(CommonErrors.UserNotFound(req.UserId));
                 }
 
                 var error = _clanService.CheckClanMembership(user, req.ClanId);
                 if (error != null)
                 {
-                    return new Result<IList<ClanInvitationViewModel>>(error);
+                    return new(error);
                 }
 
                 if (user.ClanMembership!.Role != ClanMemberRole.Admin && user.ClanMembership.Role != ClanMemberRole.Leader)
                 {
-                    return new Result<IList<ClanInvitationViewModel>>(CommonErrors.ClanMemberRoleNotMet(
+                    return new(CommonErrors.ClanMemberRoleNotMet(
                         user.Id, ClanMemberRole.Admin, user.ClanMembership.Role));
                 }
 
                 var invitations = await _db.ClanInvitations
-                    .Where(ci => ci.ClanId == req.ClanId && (req.Statuses.Count == 0 || req.Statuses.Contains(ci.Status)))
+                    .Include(ci => ci.Invitee)
+                    .Include(ci => ci.Inviter)
+                    .Where(ci => ci.ClanId == req.ClanId
+                                 && (req.Types.Count == 0 || req.Types.Contains(ci.Type))
+                                 && (req.Statuses.Count == 0 || req.Statuses.Contains(ci.Status)))
                     .OrderByDescending(ci => ci.UpdatedAt)
                     .ProjectTo<ClanInvitationViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
-                return new Result<IList<ClanInvitationViewModel>>(invitations);
+                return new(invitations);
             }
         }
     }

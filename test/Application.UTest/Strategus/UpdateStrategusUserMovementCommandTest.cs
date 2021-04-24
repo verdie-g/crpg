@@ -53,7 +53,7 @@ namespace Crpg.Application.UTest.Strategus
                 StrategusHero = new StrategusHero
                 {
                     Status = StrategusHeroStatus.InBattle,
-                }
+                },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -85,7 +85,7 @@ namespace Crpg.Application.UTest.Strategus
                     Waypoints = new MultiPoint(new[] { new Point(5, 3) }),
                     TargetedHero = new StrategusHero { User = new User() },
                     TargetedSettlement = new StrategusSettlement(),
-                }
+                },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -114,8 +114,8 @@ namespace Crpg.Application.UTest.Strategus
                 StrategusHero = new StrategusHero
                 {
                     Status = StrategusHeroStatus.Idle,
-                    Waypoints = new MultiPoint(new[] { new Point(3, 4) })
-                }
+                    Waypoints = new MultiPoint(new[] { new Point(3, 4) }),
+                },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -151,7 +151,7 @@ namespace Crpg.Application.UTest.Strategus
                 {
                     Status = StrategusHeroStatus.MovingToAttackSettlement,
                     TargetedSettlement = new StrategusSettlement(),
-                }
+                },
             };
             ArrangeDb.Users.AddRange(user);
             await ArrangeDb.SaveChangesAsync();
@@ -179,14 +179,14 @@ namespace Crpg.Application.UTest.Strategus
                     Position = new Point(0, 0),
                     Status = StrategusHeroStatus.MovingToSettlement,
                     TargetedSettlement = new StrategusSettlement(),
-                }
+                },
             };
             var targetUser = new User
             {
                 StrategusHero = new StrategusHero
                 {
                     Position = new Point(10, 10),
-                }
+                },
             };
             ArrangeDb.Users.AddRange(user, targetUser);
             await ArrangeDb.SaveChangesAsync();
@@ -217,14 +217,14 @@ namespace Crpg.Application.UTest.Strategus
                     Position = new Point(0, 0),
                     Status = StrategusHeroStatus.MovingToSettlement,
                     TargetedSettlement = new StrategusSettlement(),
-                }
+                },
             };
             var targetUser = new User
             {
                 StrategusHero = new StrategusHero
                 {
                     Position = new Point(10, 10),
-                }
+                },
             };
             ArrangeDb.Users.AddRange(user, targetUser);
             await ArrangeDb.SaveChangesAsync();
@@ -248,6 +248,43 @@ namespace Crpg.Application.UTest.Strategus
             Assert.IsNull(strategusHero.TargetedSettlement);
         }
 
+        [Test]
+        public async Task ShouldSwitchFromAttackToFollowUser()
+        {
+            User targetUser = new()
+            {
+                StrategusHero = new StrategusHero { Position = new Point(10, 10) },
+            };
+            var user = new User
+            {
+                StrategusHero = new StrategusHero
+                {
+                    Position = new Point(0, 0),
+                    Status = StrategusHeroStatus.MovingToAttackHero,
+                    TargetedHero = targetUser.StrategusHero,
+                },
+            };
+            ArrangeDb.Users.AddRange(user, targetUser);
+            await ArrangeDb.SaveChangesAsync();
+
+            var strategusMapMock = new Mock<IStrategusMap>();
+            strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
+
+            var handler = new UpdateStrategusHeroStatusCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            var res = await handler.Handle(new UpdateStrategusHeroStatusCommand
+            {
+                HeroId = user.Id,
+                Status = StrategusHeroStatus.FollowingHero,
+                TargetedHeroId = targetUser.Id,
+            }, CancellationToken.None);
+
+            var strategusHero = res.Data!;
+            Assert.IsNotNull(strategusHero);
+            Assert.AreEqual(user.Id, strategusHero.Id);
+            Assert.AreEqual(StrategusHeroStatus.FollowingHero, strategusHero.Status);
+            Assert.AreEqual(targetUser.Id, strategusHero.TargetedHero!.Id);
+        }
+
         [TestCase(StrategusHeroStatus.MovingToSettlement)]
         [TestCase(StrategusHeroStatus.MovingToAttackSettlement)]
         public async Task ShouldReturnErrorIfTargetingNotExistingSettlement(StrategusHeroStatus status)
@@ -258,7 +295,7 @@ namespace Crpg.Application.UTest.Strategus
                 {
                     Status = StrategusHeroStatus.FollowingHero,
                     TargetedHero = new StrategusHero { User = new User() },
-                }
+                },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -285,7 +322,7 @@ namespace Crpg.Application.UTest.Strategus
                 {
                     Status = StrategusHeroStatus.MovingToAttackHero,
                     TargetedHero = new StrategusHero { User = new User() },
-                }
+                },
             };
             var targetSettlement = new StrategusSettlement();
             ArrangeDb.Users.Add(user);
@@ -309,11 +346,89 @@ namespace Crpg.Application.UTest.Strategus
         }
 
         [Test]
+        public async Task ShouldSwitchFromMoveToAttackSettlement()
+        {
+            var targetSettlement = new StrategusSettlement();
+            var user = new User
+            {
+                StrategusHero = new StrategusHero
+                {
+                    Position = new Point(0, 0),
+                    Status = StrategusHeroStatus.MovingToSettlement,
+                    TargetedSettlement = targetSettlement,
+                },
+            };
+            ArrangeDb.Users.AddRange(user);
+            await ArrangeDb.SaveChangesAsync();
+
+            var handler = new UpdateStrategusHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            var res = await handler.Handle(new UpdateStrategusHeroStatusCommand
+            {
+                HeroId = user.Id,
+                Status = StrategusHeroStatus.MovingToAttackSettlement,
+                TargetedSettlementId = targetSettlement.Id,
+            }, CancellationToken.None);
+
+            var strategusHero = res.Data!;
+            Assert.IsNotNull(strategusHero);
+            Assert.AreEqual(user.Id, strategusHero.Id);
+            Assert.AreEqual(StrategusHeroStatus.MovingToAttackSettlement, strategusHero.Status);
+            Assert.AreEqual(targetSettlement.Id, strategusHero.TargetedSettlement!.Id);
+        }
+
+        [Test]
+        public async Task ShouldReturnErrorIfTryingToStopRecruitingWhenNotInASettlement()
+        {
+            var user = new User
+            {
+                StrategusHero = new StrategusHero { Status = StrategusHeroStatus.Idle },
+            };
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
+
+            var handler = new UpdateStrategusHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            var res = await handler.Handle(new UpdateStrategusHeroStatusCommand
+            {
+                HeroId = user.Id,
+                Status = StrategusHeroStatus.IdleInSettlement,
+            }, CancellationToken.None);
+
+            Assert.IsNotNull(res.Errors);
+            Assert.AreEqual(ErrorCode.HeroNotInASettlement, res.Errors![0].Code);
+        }
+
+        [Test]
+        public async Task ShouldSwitchFromRecruitingInSettlementToIdleInSettlement()
+        {
+            var user = new User
+            {
+                StrategusHero = new StrategusHero
+                {
+                    Status = StrategusHeroStatus.RecruitingInSettlement,
+                    TargetedSettlement = new StrategusSettlement(),
+                },
+            };
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
+
+            var handler = new UpdateStrategusHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            var res = await handler.Handle(new UpdateStrategusHeroStatusCommand
+            {
+                HeroId = user.Id,
+                Status = StrategusHeroStatus.IdleInSettlement,
+            }, CancellationToken.None);
+
+            Assert.IsNull(res.Errors);
+            Assert.AreEqual(StrategusHeroStatus.IdleInSettlement, res.Data!.Status);
+            Assert.IsNotNull(res.Data!.TargetedSettlement);
+        }
+
+        [Test]
         public async Task ShouldReturnErrorIfTryingToRecruitWhenNotInASettlement()
         {
             var user = new User
             {
-                StrategusHero = new StrategusHero { Status = StrategusHeroStatus.Idle }
+                StrategusHero = new StrategusHero { Status = StrategusHeroStatus.Idle },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -330,7 +445,7 @@ namespace Crpg.Application.UTest.Strategus
         }
 
         [Test]
-        public async Task ShouldUpdateStatusIfTryingToRecruitWhenInsideASettlement()
+        public async Task ShouldSwitchFromIdleInSettlementToRecruitingInSettlement()
         {
             var user = new User
             {
@@ -352,6 +467,7 @@ namespace Crpg.Application.UTest.Strategus
 
             Assert.IsNull(res.Errors);
             Assert.AreEqual(StrategusHeroStatus.RecruitingInSettlement, res.Data!.Status);
+            Assert.IsNotNull(res.Data!.TargetedSettlement);
         }
     }
 }

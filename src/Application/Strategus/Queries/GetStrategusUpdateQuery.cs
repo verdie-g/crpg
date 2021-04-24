@@ -13,9 +13,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Strategus.Queries
 {
-    public class GetStrategusUpdateQuery : IMediatorRequest<StrategusUpdate>
+    public record GetStrategusUpdateQuery : IMediatorRequest<StrategusUpdate>
     {
-        public int HeroId { get; set; }
+        public int HeroId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<GetStrategusUpdateQuery, StrategusUpdate>
         {
@@ -45,17 +45,19 @@ namespace Crpg.Application.Strategus.Queries
             {
                 var hero = await _db.StrategusHeroes
                     .Include(h => h.User)
+                    .Include(h => h.TargetedHero!.User)
+                    .Include(h => h.TargetedSettlement)
                     .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
                 if (hero == null)
                 {
-                    return new Result<StrategusUpdate>(CommonErrors.HeroNotFound(req.HeroId));
+                    return new(CommonErrors.HeroNotFound(req.HeroId));
                 }
 
                 var visibleHeroes = await _db.StrategusHeroes
                     .Where(h => h.Id != hero.Id
                                 && h.Position.IsWithinDistance(hero.Position, _strategusMap.ViewDistance)
                                 && VisibleStatuses.Contains(h.Status))
-                    .ProjectTo<StrategusHeroPublicViewModel>(_mapper.ConfigurationProvider)
+                    .ProjectTo<StrategusHeroVisibleViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
                 var visibleSettlements = await _db.StrategusSettlements
@@ -63,7 +65,7 @@ namespace Crpg.Application.Strategus.Queries
                     .ProjectTo<StrategusSettlementPublicViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
-                return new Result<StrategusUpdate>(new StrategusUpdate
+                return new(new StrategusUpdate
                 {
                     Hero = _mapper.Map<StrategusHeroViewModel>(hero),
                     VisibleHeroes = visibleHeroes,

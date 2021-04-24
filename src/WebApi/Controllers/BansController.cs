@@ -32,7 +32,7 @@ namespace Crpg.WebApi.Controllers
         [HttpPost]
         public Task<ActionResult<Result<BanViewModel>>> BanUser([FromBody] BanCommand req)
         {
-            req.BannedByUserId = CurrentUser.UserId;
+            req = req with { BannedByUserId = CurrentUser.UserId };
             return ResultToCreatedAtActionAsync(nameof(GetBans), null, b => new { id = b.Id },
                 Mediator.Send(req));
         }

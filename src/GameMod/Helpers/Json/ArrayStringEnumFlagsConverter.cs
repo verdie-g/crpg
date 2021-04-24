@@ -10,8 +10,7 @@ namespace Crpg.GameMod.Helpers.Json
     /// </summary>
     internal class ArrayStringEnumFlagsConverter : JsonConverter
     {
-        private static readonly ConcurrentDictionary<Type, Dictionary<string, long>> EnumValuesByType =
-            new ConcurrentDictionary<Type, Dictionary<string, long>>();
+        private static readonly ConcurrentDictionary<Type, Dictionary<string, long>> EnumValuesByType = new();
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {

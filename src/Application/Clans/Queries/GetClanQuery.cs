@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Clans.Queries
 {
-    public class GetClanQuery : IMediatorRequest<ClanViewModel>
+    public record GetClanQuery : IMediatorRequest<ClanViewModel>
     {
-        public int ClanId { get; set; }
+        public int ClanId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<GetClanQuery, ClanViewModel>
         {
@@ -34,8 +34,8 @@ namespace Crpg.Application.Clans.Queries
                     .FirstOrDefaultAsync(cancellationToken);
 
                 return clan == null
-                    ? new Result<ClanViewModel>(CommonErrors.ClanNotFound(req.ClanId))
-                    : new Result<ClanViewModel>(clan);
+                    ? new(CommonErrors.ClanNotFound(req.ClanId))
+                    : new(clan);
             }
         }
     }

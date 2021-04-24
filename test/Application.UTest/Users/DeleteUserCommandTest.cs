@@ -25,9 +25,9 @@ namespace Crpg.Application.UTest.Users
         {
             var user = ArrangeDb.Users.Add(new User
             {
-                Characters = new List<Character> { new Character { EquippedItems = new List<EquippedItem> { new EquippedItem() } } },
-                OwnedItems = new List<OwnedItem> { new OwnedItem { Item = new Item() } },
-                Bans = new List<Ban> { new Ban() }
+                Characters = new List<Character> { new() { EquippedItems = new List<EquippedItem> { new() } } },
+                OwnedItems = new List<OwnedItem> { new() { Item = new Item() } },
+                Bans = new List<Ban> { new() },
             });
             await ArrangeDb.SaveChangesAsync();
 
@@ -38,7 +38,7 @@ namespace Crpg.Application.UTest.Users
             var handler = new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), userService);
             await handler.Handle(new DeleteUserCommand
             {
-                UserId = user.Entity.Id
+                UserId = user.Entity.Id,
             }, CancellationToken.None);
 
             var dbUser = await AssertDb.Users.FirstOrDefaultAsync(u => u.Id == user.Entity.Id);

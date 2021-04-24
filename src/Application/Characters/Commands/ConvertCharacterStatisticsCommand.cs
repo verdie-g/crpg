@@ -10,11 +10,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class ConvertCharacterStatisticsCommand : IMediatorRequest<CharacterStatisticsViewModel>
+    public record ConvertCharacterStatisticsCommand : IMediatorRequest<CharacterStatisticsViewModel>
     {
-        public int CharacterId { get; set; }
-        public int UserId { get; set; }
-        public CharacterStatisticConversion Conversion { get; set; }
+        public int CharacterId { get; init; }
+        public int UserId { get; init; }
+        public CharacterStatisticConversion Conversion { get; init; }
 
         public class Validator : AbstractValidator<ConvertCharacterStatisticsCommand>
         {
@@ -42,14 +42,14 @@ namespace Crpg.Application.Characters.Commands
                     c.UserId == req.UserId && c.Id == req.CharacterId, cancellationToken);
                 if (character == null)
                 {
-                    return new Result<CharacterStatisticsViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
+                    return new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
                 if (req.Conversion == CharacterStatisticConversion.AttributesToSkills)
                 {
                     if (character.Statistics.Attributes.Points < 1)
                     {
-                        return new Result<CharacterStatisticsViewModel>(CommonErrors.NotEnoughAttributePoints(1, character.Statistics.Attributes.Points));
+                        return new(CommonErrors.NotEnoughAttributePoints(1, character.Statistics.Attributes.Points));
                     }
 
                     character.Statistics.Attributes.Points -= 1;
@@ -59,7 +59,7 @@ namespace Crpg.Application.Characters.Commands
                 {
                     if (character.Statistics.Skills.Points < 2)
                     {
-                        return new Result<CharacterStatisticsViewModel>(CommonErrors.NotEnoughSkillPoints(1, character.Statistics.Skills.Points));
+                        return new(CommonErrors.NotEnoughSkillPoints(1, character.Statistics.Skills.Points));
                     }
 
                     character.Statistics.Skills.Points -= 2;
@@ -67,7 +67,7 @@ namespace Crpg.Application.Characters.Commands
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
-                return new Result<CharacterStatisticsViewModel>(_mapper.Map<CharacterStatisticsViewModel>(character.Statistics));
+                return new(_mapper.Map<CharacterStatisticsViewModel>(character.Statistics));
             }
         }
     }

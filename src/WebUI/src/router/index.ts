@@ -94,6 +94,30 @@ const routes = [
     meta: { scrollToTop: true },
   },
   {
+    path: '/clans',
+    name: 'clans',
+    component: () => import('../views/Clans.vue'),
+    beforeEnter: isSignedInGuard,
+  },
+  {
+    path: '/clans/create',
+    name: 'clan-create',
+    component: () => import('../views/ClanCreation.vue'),
+    beforeEnter: isSignedInGuard,
+  },
+  {
+    path: '/clans/:id',
+    name: 'clan',
+    component: () => import('../views/Clan.vue'),
+    beforeEnter: isSignedInGuard,
+  },
+  {
+    path: '/clans/:id/applications',
+    name: 'clan-applications',
+    component: () => import('../views/ClanApplications.vue'),
+    beforeEnter: isSignedInGuard,
+  },
+  {
     path: '/strategus',
     name: 'strategus',
     component: () => import('../views/Strategus.vue'),

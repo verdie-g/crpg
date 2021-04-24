@@ -19,14 +19,17 @@ async function trySend(method: string, path: string, body?: any): Promise<Result
   if (response.status === 401) {
     notify('Session expired', NotificationType.Warning);
     sleep(1000).then(() => signIn());
-    return new Result();
+    return null!;
   }
 
-  return response.status !== 204 ? await response.json() : {};
+  return response.status !== 204 ? await response.json() : null;
 }
 
 async function send(method: string, path: string, body?: any): Promise<any> {
   const result = await trySend(method, path, body);
+  if (result === null) {
+    return null;
+  }
 
   if (result.errors === null) {
     return result.data;

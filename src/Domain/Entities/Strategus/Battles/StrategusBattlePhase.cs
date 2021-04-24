@@ -1,4 +1,4 @@
-﻿namespace Crpg.Domain.Entities.Strategus
+﻿namespace Crpg.Domain.Entities.Strategus.Battles
 {
     /// <summary>
     /// Phase of a <see cref="StrategusBattle"/>.

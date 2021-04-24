@@ -1,8 +1,8 @@
 ﻿namespace Crpg.Application.Characters.Models
 {
-  public enum CharacterStatisticConversion
-  {
-    AttributesToSkills,
-    SkillsToAttributes,
-  }
+    public enum CharacterStatisticConversion
+    {
+        AttributesToSkills,
+        SkillsToAttributes,
+    }
 }

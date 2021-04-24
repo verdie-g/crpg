@@ -4,7 +4,6 @@ using Crpg.Application.Characters.Commands;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Common;
 using Crpg.Application.Common.Results;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
@@ -13,7 +12,7 @@ namespace Crpg.Application.UTest.Characters
 {
     public class UpdateCharacterStatisticsCommandTest : TestBase
     {
-        private static readonly Constants Constants = new Constants
+        private static readonly Constants Constants = new()
         {
             WeaponProficiencyPointsForAgilityCoefs = new[] { 14f, 0f }, // wpp = agi * 14
             WeaponProficiencyPointsForWeaponMasterCoefs = new[] { 10f, 0f }, // wpp = wm * 10
@@ -93,7 +92,7 @@ namespace Crpg.Application.UTest.Characters
                             Throwing = 7,
                             Crossbow = 7,
                         },
-                    }
+                    },
                 }, CancellationToken.None);
 
             var stats = result.Data!;
@@ -141,7 +140,7 @@ namespace Crpg.Application.UTest.Characters
                 Statistics = new CharacterStatisticsViewModel
                 {
                     Attributes = new CharacterAttributesViewModel { Agility = 1 },
-                }
+                },
             }, CancellationToken.None);
 
             var stats = result.Data!;
@@ -156,7 +155,7 @@ namespace Crpg.Application.UTest.Characters
                 {
                     Attributes = new CharacterAttributesViewModel { Agility = 3 },
                     WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Bow = 42 },
-                }
+                },
             }, CancellationToken.None);
 
             stats = result.Data!;
@@ -189,7 +188,7 @@ namespace Crpg.Application.UTest.Characters
                 {
                     Attributes = new CharacterAttributesViewModel { Agility = 9 },
                     Skills = new CharacterSkillsViewModel { WeaponMaster = 1 },
-                }
+                },
             }, CancellationToken.None);
 
             var stats = result.Data!;
@@ -205,7 +204,7 @@ namespace Crpg.Application.UTest.Characters
                     Attributes = new CharacterAttributesViewModel { Agility = 9 },
                     Skills = new CharacterSkillsViewModel { WeaponMaster = 3 },
                     WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Bow = 100 },
-                }
+                },
             }, CancellationToken.None);
 
             stats = result.Data!;
@@ -223,7 +222,7 @@ namespace Crpg.Application.UTest.Characters
                 {
                     Attributes = new CharacterAttributes { Points = 100 },
                     Skills = new CharacterSkills { Points = 100 },
-                }
+                },
             };
             ArrangeDb.Add(character);
             await ArrangeDb.SaveChangesAsync();
@@ -389,7 +388,7 @@ namespace Crpg.Application.UTest.Characters
                     Attributes = new CharacterAttributes { Points = 1000 },
                     Skills = new CharacterSkills { Points = 1000 },
                     WeaponProficiencies = new CharacterWeaponProficiencies { Points = 1000 },
-                }
+                },
             };
             ArrangeDb.Add(character);
             await ArrangeDb.SaveChangesAsync();

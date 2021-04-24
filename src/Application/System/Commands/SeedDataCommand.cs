@@ -8,8 +8,8 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
+using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
@@ -17,7 +17,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.System.Commands
 {
-    public class SeedDataCommand : IMediatorRequest
+    public record SeedDataCommand : IMediatorRequest
     {
         internal class Handler : IMediatorRequestHandler<SeedDataCommand>
         {
@@ -27,11 +27,11 @@ namespace Crpg.Application.System.Commands
             private readonly IApplicationEnvironment _appEnv;
             private readonly ICharacterService _characterService;
             private readonly IExperienceTable _experienceTable;
-            private readonly ItemValueService _itemValueService;
+            private readonly ItemValueModel _itemValueModel;
             private readonly ItemModifierService _itemModifierService;
 
             public Handler(ICrpgDbContext db, IItemsSource itemsSource, IApplicationEnvironment appEnv,
-                ICharacterService characterService, IExperienceTable experienceTable, ItemValueService itemValueService,
+                ICharacterService characterService, IExperienceTable experienceTable, ItemValueModel itemValueModel,
                 ItemModifierService itemModifierService)
             {
                 _db = db;
@@ -39,7 +39,7 @@ namespace Crpg.Application.System.Commands
                 _appEnv = appEnv;
                 _characterService = characterService;
                 _experienceTable = experienceTable;
-                _itemValueService = itemValueService;
+                _itemValueModel = itemValueModel;
                 _itemModifierService = itemModifierService;
             }
 
@@ -47,7 +47,7 @@ namespace Crpg.Application.System.Commands
             {
                 if (_appEnv.Environment == HostingEnvironment.Development)
                 {
-                    AddDevelopperUsers();
+                    await AddDevelopmentData();
                 }
 
                 await CreateOrUpdateItems(cancellationToken);
@@ -55,68 +55,486 @@ namespace Crpg.Application.System.Commands
                 return new Result();
             }
 
-            private void AddDevelopperUsers()
+            private async Task AddDevelopmentData()
             {
-                var users = new[]
+                User takeo = new()
                 {
-                    new User
-                    {
-                        PlatformUserId = "76561197987525637",
-                        Name = "takeoshigeru",
-                        Gold = 30000,
-                        HeirloomPoints = 2,
-                        Role = Role.Admin,
-                        AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e.jpg"),
-                        AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_full.jpg"),
-                        AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_medium.jpg"),
-                        Characters = new List<Character>
-                        {
-                            new Character
-                            {
-                                Name = "takeoshigeru",
-                                Generation = 2,
-                                Level = 23,
-                                Experience = _experienceTable.GetExperienceForLevel(23),
-                            },
-                            new Character
-                            {
-                                Name = "totoalala",
-                                Level = 12,
-                                Experience = _experienceTable.GetExperienceForLevel(12),
-                            },
-                            new Character
-                            {
-                                Name = "Retire me",
-                                Level = 31,
-                                Experience = _experienceTable.GetExperienceForLevel(31) + 100,
-                            },
-                        },
-                        Bans = new List<Ban>
-                        {
-                            new Ban
-                            {
-                                Duration = TimeSpan.FromDays(2),
-                                Reason = "Did shit",
-                                BannedByUser = new User { PlatformUserId = "123", Name = "toto" },
-                            },
-                            new Ban
-                            {
-                                Duration = TimeSpan.FromMinutes(5),
-                                Reason = "Did shot",
-                                BannedByUser = new User { PlatformUserId = "456", Name = "titi" },
-                            },
-                        },
-                    },
+                    PlatformUserId = "76561197987525637",
+                    Name = "takeoshigeru",
+                    Gold = 30000,
+                    HeirloomPoints = 2,
+                    Role = Role.Admin,
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_full.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce4694f06523a2ffad501f5dc30ec7a8008e90e_medium.jpg"),
+                };
+                User namidaka = new()
+                {
+                    PlatformUserId = "76561197979511363",
+                    Name = "Namidaka",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273_full.jpg"),
+                };
+                User laHire = new()
+                {
+                    PlatformUserId = "76561198012340299",
+                    Name = "LaHire",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/31/31f7c86313e48dd924c08844f1cb2dd76e542a46.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/31/31f7c86313e48dd924c08844f1cb2dd76e542a46_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/31/31f7c86313e48dd924c08844f1cb2dd76e542a46_full.jpg"),
+                };
+                User elmaryk = new()
+                {
+                    PlatformUserId = "76561197972800560",
+                    Name = "Elmaryk",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/05/059f27b9bdf15392d8b0114d8d106bd430398cf2.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/05/059f27b9bdf15392d8b0114d8d106bd430398cf2_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/05/059f27b9bdf15392d8b0114d8d106bd430398cf2_full.jpg"),
+                };
+                User azuma = new()
+                {
+                    PlatformUserId = "76561198081821029",
+                    Name = "Azuma",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/57/57eab4bf98145304377078d0a3d73dc05d540714.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/57/57eab4bf98145304377078d0a3d73dc05d540714_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/57/57eab4bf98145304377078d0a3d73dc05d540714_full.jpg"),
+                };
+                User zorguy = new()
+                {
+                    PlatformUserId = "76561197989897581",
+                    Name = "Zorguy",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e1/e12361889a18f7e834447bd96b9389943200f693.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e1/e12361889a18f7e834447bd96b9389943200f693_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e1/e12361889a18f7e834447bd96b9389943200f693_full.jpg"),
+                };
+                User neostralie = new()
+                {
+                    PlatformUserId = "76561197992190847",
+                    Name = "Neostralie",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/50/50696c5fc162251193044d50e84956a60b9b9750.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/50/50696c5fc162251193044d50e84956a60b9b9750_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/50/50696c5fc162251193044d50e84956a60b9b9750_full.jpg"),
+                };
+                User ecko = new()
+                {
+                    PlatformUserId = "76561198003849595",
+                    Name = "Ecko",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b2/b22b63e50e6148d446735f9d10b53be3dbe8114a.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b2/b22b63e50e6148d446735f9d10b53be3dbe8114a_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b2/b22b63e50e6148d446735f9d10b53be3dbe8114a_full.jpg"),
+                };
+                User firebat = new()
+                {
+                    PlatformUserId = "76561198034738782",
+                    Name = "Firebat",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/80/80cfe380953ec4b9c8c09c36b22278263c47f506.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/80/80cfe380953ec4b9c8c09c36b22278263c47f506_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/80/80cfe380953ec4b9c8c09c36b22278263c47f506_full.jpg"),
+                };
+                User sellka = new()
+                {
+                    PlatformUserId = "76561197979977620",
+                    Name = "Sellka",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/bf/bf1a595dea0ac57cfedc0d3156f58c966abc5c63.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/bf/bf1a595dea0ac57cfedc0d3156f58c966abc5c63_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/bf/bf1a595dea0ac57cfedc0d3156f58c966abc5c63_full.jpg"),
+                };
+                User leanir = new()
+                {
+                    PlatformUserId = "76561198018585047",
+                    Name = "Laenir",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c1/c1eeba83d74ff6be9d9f42ca19fa15616a94dc2d.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c1/c1eeba83d74ff6be9d9f42ca19fa15616a94dc2d_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c1/c1eeba83d74ff6be9d9f42ca19fa15616a94dc2d_full.jpg"),
+                };
+                User opset = new()
+                {
+                    PlatformUserId = "76561198009970770",
+                    Name = "Opset_the_Grey",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/36/36f6b77d3af6d18563101cea616590ba69b4ec81.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/36/36f6b77d3af6d18563101cea616590ba69b4ec81_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/36/36f6b77d3af6d18563101cea616590ba69b4ec81_full.jpg"),
+                };
+                User falcom = new()
+                {
+                    PlatformUserId = "76561197963438590",
+                    Name = "[OdE]Falcom",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ff/ffbc4f2f33a16d764ce9aeb92495c05421738834.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ff/ffbc4f2f33a16d764ce9aeb92495c05421738834_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ff/ffbc4f2f33a16d764ce9aeb92495c05421738834_full.jpg"),
+                };
+                User brainfart = new()
+                {
+                    PlatformUserId = "76561198007258336", Name = "Brainfart",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/06/06be92280c028dbf83951ccaa7857d1b46f50401.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/06/06be92280c028dbf83951ccaa7857d1b46f50401_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/06/06be92280c028dbf83951ccaa7857d1b46f50401_full.jpg"),
+                };
+                User kiwi = new()
+                {
+                    PlatformUserId = "76561198050263436",
+                    Name = "Kiwi",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b1/b1eeebf4b5eaf0d0fd255e7bfd88dddac53a79b7.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b1/b1eeebf4b5eaf0d0fd255e7bfd88dddac53a79b7_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b1/b1eeebf4b5eaf0d0fd255e7bfd88dddac53a79b7_full.jpg"),
+                };
+                User ikarooz = new()
+                {
+                    PlatformUserId = "76561198013940874",
+                    Name = "Ikarooz",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7f/7fd9de1adbc5a2d7d9f6f43905663051d1f3ad6b.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7f/7fd9de1adbc5a2d7d9f6f43905663051d1f3ad6b_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7f/7fd9de1adbc5a2d7d9f6f43905663051d1f3ad6b_full.jpg"),
+                };
+                User bryggan = new()
+                {
+                    PlatformUserId = "76561198076068057",
+                    Name = "Bryggan",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b7/b7b0ba5b51367b8e667bac7be347c4b194e46c42.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b7/b7b0ba5b51367b8e667bac7be347c4b194e46c42_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b7/b7b0ba5b51367b8e667bac7be347c4b194e46c42_full.jpg"),
+                };
+                User schumetzq = new()
+                {
+                    PlatformUserId = "76561198050714825",
+                    Name = "Schumetzq",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/02/02fd365a5cd57ab2a09ada405546c7e1732e6e09.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/02/02fd365a5cd57ab2a09ada405546c7e1732e6e09_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/02/02fd365a5cd57ab2a09ada405546c7e1732e6e09_full.jpg"),
+                };
+                User victorhh888 = new()
+                {
+                    PlatformUserId = "76561197968139412",
+                    Name = "victorhh888",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/90/90fb01f63a3b68a4a6f06208c84cc03250f4786e.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/90/90fb01f63a3b68a4a6f06208c84cc03250f4786e_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/90/90fb01f63a3b68a4a6f06208c84cc03250f4786e_full.jpg"),
+                };
+                User distance = new()
+                {
+                    PlatformUserId = "76561198874880658",
+                    Name = "远方",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d1/d18e1efd0df9440d21a820e3f37ebfc57a2b9ed4.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d1/d18e1efd0df9440d21a820e3f37ebfc57a2b9ed4_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d1/d18e1efd0df9440d21a820e3f37ebfc57a2b9ed4_full.jpg"),
+                };
+                User bakhrat = new()
+                {
+                    PlatformUserId = "76561198051386592",
+                    Name = "bakhrat 22hz",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f3/f3b2fbe95be2dfe6f3f2d5ceaca04d75a1a81966.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f3/f3b2fbe95be2dfe6f3f2d5ceaca04d75a1a81966_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f3/f3b2fbe95be2dfe6f3f2d5ceaca04d75a1a81966_full.jpg"),
+                };
+                User lancelot = new()
+                {
+                    PlatformUserId = "76561198015772903",
+                    Name = "Lancelot",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e9/e9cb98a2cd5facedca0982a52eb47f37142c3555.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e9/e9cb98a2cd5facedca0982a52eb47f37142c3555_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e9/e9cb98a2cd5facedca0982a52eb47f37142c3555_full.jpg"),
+                };
+                User buddha = new()
+                {
+                    PlatformUserId = "76561198036356550",
+                    Name = "Buddha.dll",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7f/7fab01b855c8e9704f0239fa716d182ad96e3ff8.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7f/7fab01b855c8e9704f0239fa716d182ad96e3ff8_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7f/7fab01b855c8e9704f0239fa716d182ad96e3ff8_full.jpg"),
+                };
+                User lerch = new()
+                {
+                    PlatformUserId = "76561197988504032",
+                    Name = "Lerch_77",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c0/c0d5345e5592f47aeee066e73f27d884496e75e1.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c0/c0d5345e5592f47aeee066e73f27d884496e75e1_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c0/c0d5345e5592f47aeee066e73f27d884496e75e1_full.jpg"),
+                };
+                User tjens = new()
+                {
+                    PlatformUserId = "76561197997439945",
+                    Name = "Tjens",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ce/ce5524c76a12dff71e0c02b3220907597ded1aca.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ce/ce5524c76a12dff71e0c02b3220907597ded1aca_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ce/ce5524c76a12dff71e0c02b3220907597ded1aca_full.jpg"),
+                };
+                User knitler = new()
+                {
+                    PlatformUserId = "76561198034120910",
+                    Name = "Knitler",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a1174ff1fdc31ff8078511e16a73d9caeee4675b.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a1174ff1fdc31ff8078511e16a73d9caeee4675b_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a1174ff1fdc31ff8078511e16a73d9caeee4675b_full.jpg"),
+                };
+                User magnuclean = new()
+                {
+                    PlatformUserId = "76561198044343808",
+                    Name = "Magnuclean",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/8a/8a7486e99e489a7e1f7ad356ab2dd4892e4e908e.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/8a/8a7486e99e489a7e1f7ad356ab2dd4892e4e908e_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/8a/8a7486e99e489a7e1f7ad356ab2dd4892e4e908e_full.jpg"),
+                };
+                User baronCyborg = new()
+                {
+                    PlatformUserId = "76561198026044780",
+                    Name = "Baron Cyborg",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/58/5838cfcd99e280d82f63d92472d6d5aecebfb812.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/58/5838cfcd99e280d82f63d92472d6d5aecebfb812_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/58/5838cfcd99e280d82f63d92472d6d5aecebfb812_full.jpg"),
                 };
 
-                foreach (var user in users)
+                User[] newUsers =
                 {
-                    foreach (var character in user.Characters)
-                    {
-                        _characterService.ResetCharacterStats(character, respecialization: true);
-                    }
+                    takeo, baronCyborg, magnuclean, knitler, tjens, lerch, buddha, lancelot, bakhrat, distance,
+                    victorhh888, schumetzq, bryggan, ikarooz, kiwi, brainfart, falcom, opset, leanir, sellka, firebat,
+                    ecko, neostralie, zorguy, azuma, elmaryk, namidaka, laHire,
+                };
 
-                    _db.Users.Add(user);
+                var existingUsers = await _db.Users.ToDictionaryAsync(u => (u.Platform, u.PlatformUserId));
+                foreach (var newUser in newUsers)
+                {
+                    if (existingUsers.TryGetValue((newUser.Platform, newUser.PlatformUserId), out var existingUser))
+                    {
+                        _db.Entry(existingUser).State = EntityState.Detached;
+
+                        newUser.Id = existingUser.Id;
+                        _db.Users.Update(newUser);
+                    }
+                    else
+                    {
+                        _db.Users.Add(newUser);
+                    }
+                }
+
+                Character takeoCharacter0 = new()
+                {
+                    User = takeo,
+                    Name = "takeo",
+                    Generation = 2,
+                    Level = 23,
+                    Experience = _experienceTable.GetExperienceForLevel(23),
+                };
+                Character takeoCharacter1 = new()
+                {
+                    User = takeo,
+                    Name = "totoalala",
+                    Level = 12,
+                    Experience = _experienceTable.GetExperienceForLevel(12),
+                };
+                Character takeoCharacter2 = new()
+                {
+                    User = takeo,
+                    Name = "Retire me",
+                    Level = 31,
+                    Experience = _experienceTable.GetExperienceForLevel(31) + 100,
+                };
+
+                Character[] newCharacters = { takeoCharacter0, takeoCharacter1, takeoCharacter2 };
+
+                var existingCharacters = await _db.Characters.ToDictionaryAsync(c => c.Name);
+                foreach (var newCharacter in newCharacters)
+                {
+                    _characterService.ResetCharacterStats(newCharacter, respecialization: true);
+
+                    if (existingCharacters.TryGetValue(newCharacter.Name, out var existingCharacter))
+                    {
+                        _db.Entry(existingCharacter).State = EntityState.Detached;
+
+                        newCharacter.Id = existingCharacter.Id;
+                        _db.Characters.Update(newCharacter);
+                    }
+                    else
+                    {
+                        _db.Characters.Add(newCharacter);
+                    }
+                }
+
+                Clan pecores = new()
+                {
+                    Tag = "PEC",
+                    Color = "#3273DC",
+                    Name = "Pecores",
+                };
+                Clan ats = new()
+                {
+                    Tag = "ATS",
+                    Color = "#FF3860",
+                    Name = "Among The Shadows",
+                };
+                Clan legio = new()
+                {
+                    Tag = "LEG",
+                    Color = "#FFDD57",
+                    Name = "Legio",
+                };
+                Clan theGrey = new()
+                {
+                    Tag = "GREY",
+                    Color = "#7A7A7A",
+                    Name = "The Grey",
+                };
+                Clan ode = new()
+                {
+                    Tag = "OdE",
+                    Color = "#00D1B2",
+                    Name = "Ordre de l'étoile",
+                };
+                Clan virginDefenders = new()
+                {
+                    Tag = "VD",
+                    Color = "#FF7D97",
+                    Name = "Virgin Defenders",
+                };
+                Clan randomClan = new()
+                {
+                    Tag = "RC",
+                    Color = "#F5F5F5",
+                    Name = "Random Clan",
+                };
+                Clan abcClan = new()
+                {
+                    Tag = "ABC",
+                    Color = "#5D3C43",
+                    Name = "ABC",
+                };
+                Clan defClan = new()
+                {
+                    Tag = "DEF",
+                    Color = "#65B1A6",
+                    Name = "DEF",
+                };
+                Clan ghiClan = new()
+                {
+                    Tag = "GHI",
+                    Color = "#1A544C",
+                    Name = "GHI",
+                };
+                Clan jklClan = new()
+                {
+                    Tag = "JKL",
+                    Color = "#10044F",
+                    Name = "JKL",
+                };
+                Clan mnoClan = new()
+                {
+                    Tag = "MNO",
+                    Color = "#5A541C",
+                    Name = "MNO",
+                };
+                Clan pqrClan = new()
+                {
+                    Tag = "PQR",
+                    Color = "#123456",
+                    Name = "Plan QR",
+                };
+                Clan[] newClans =
+                {
+                    pecores, ats, legio, theGrey, ode, virginDefenders, randomClan, abcClan, defClan, ghiClan, jklClan,
+                    mnoClan, pqrClan,
+                };
+
+                var existingClans = await _db.Clans.ToDictionaryAsync(c => c.Name);
+                foreach (var newClan in newClans)
+                {
+                    if (existingClans.TryGetValue(newClan.Name, out var existingClan))
+                    {
+                        _db.Entry(existingClan).State = EntityState.Detached;
+
+                        newClan.Id = existingClan.Id;
+                        _db.Clans.Update(newClan);
+                    }
+                    else
+                    {
+                        _db.Clans.Add(newClan);
+                    }
+                }
+
+                ClanMember namidakaMember = new() { User = namidaka, Clan = pecores, Role = ClanMemberRole.Leader };
+                ClanMember neostralieMember = new() { User = neostralie, Clan = pecores, Role = ClanMemberRole.Admin };
+                ClanMember elmarykMember = new() { User = elmaryk, Clan = pecores, Role = ClanMemberRole.Admin };
+                ClanMember laHireMember = new() { User = laHire, Clan = pecores, Role = ClanMemberRole.Member };
+                ClanMember azumaMember = new() { User = azuma, Clan = pecores, Role = ClanMemberRole.Member };
+                ClanMember zorguyMember = new() { User = zorguy, Clan = pecores, Role = ClanMemberRole.Member };
+                ClanMember eckoMember = new() { User = ecko, Clan = ats, Role = ClanMemberRole.Leader };
+                ClanMember firebatMember = new() { User = firebat, Clan = ats, Role = ClanMemberRole.Admin };
+                ClanMember sellkaMember = new() { User = sellka, Clan = ats, Role = ClanMemberRole.Member };
+                ClanMember leanirMember = new() { User = leanir, Clan = legio, Role = ClanMemberRole.Leader, };
+                ClanMember opsetMember = new() { User = opset, Clan = theGrey, Role = ClanMemberRole.Leader, };
+                ClanMember falcomMember = new() { User = falcom, Clan = ode, Role = ClanMemberRole.Leader, };
+                ClanMember brainfartMember = new() { User = brainfart, Clan = virginDefenders, Role = ClanMemberRole.Leader };
+                ClanMember kiwiMember = new() { User = kiwi, Clan = virginDefenders, Role = ClanMemberRole.Admin };
+                ClanMember ikaroozMember = new() { User = ikarooz, Clan = virginDefenders, Role = ClanMemberRole.Member };
+                ClanMember brygganMember = new() { User = bryggan, Clan = virginDefenders, Role = ClanMemberRole.Member };
+                ClanMember schumetzqMember = new() { User = schumetzq, Clan = virginDefenders, Role = ClanMemberRole.Member };
+                ClanMember victorhh888Member = new() { User = victorhh888, Clan = randomClan, Role = ClanMemberRole.Leader };
+                ClanMember distanceMember = new() { User = distance, Clan = randomClan, Role = ClanMemberRole.Admin };
+                ClanMember bakhratMember = new() { User = bakhrat, Clan = randomClan, Role = ClanMemberRole.Member };
+                ClanMember lancelotMember = new() { User = lancelot, Clan = abcClan, Role = ClanMemberRole.Leader };
+                ClanMember buddhaMember = new() { User = buddha, Clan = abcClan, Role = ClanMemberRole.Member };
+                ClanMember lerchMember = new() { User = lerch, Clan = defClan, Role = ClanMemberRole.Leader };
+                ClanMember tjensMember = new() { User = tjens, Clan = ghiClan, Role = ClanMemberRole.Leader };
+                ClanMember knitlerMember = new() { User = knitler, Clan = jklClan, Role = ClanMemberRole.Leader };
+                ClanMember magnucleanMember = new() { User = magnuclean, Clan = mnoClan, Role = ClanMemberRole.Leader };
+                ClanMember baronCyborgMember = new() { User = baronCyborg, Clan = pqrClan, Role = ClanMemberRole.Leader, };
+
+                ClanMember[] newClanMembers =
+                {
+                    namidakaMember, neostralieMember, elmarykMember, laHireMember, azumaMember, zorguyMember,
+                    eckoMember, firebatMember, sellkaMember, leanirMember, opsetMember,
+                    falcomMember, brainfartMember, kiwiMember, ikaroozMember, brygganMember, schumetzqMember,
+                    victorhh888Member, distanceMember, bakhratMember, lancelotMember,
+                    buddhaMember, lerchMember, tjensMember, knitlerMember, magnucleanMember, baronCyborgMember,
+                };
+                var existingClanMembers = await _db.ClanMembers.ToDictionaryAsync(cm => cm.UserId);
+                foreach (var newClanMember in newClanMembers)
+                {
+                    if (existingClanMembers.TryGetValue(newClanMember.User!.Id, out var existingClanMember))
+                    {
+                        _db.Entry(existingClanMember).State = EntityState.Detached;
+
+                        newClanMember.UserId = existingClanMember.UserId;
+                        _db.ClanMembers.Update(newClanMember);
+                    }
+                    else
+                    {
+                        _db.ClanMembers.Add(newClanMember);
+                    }
+                }
+
+                ClanInvitation schumetzqRequestForPecores = new()
+                {
+                    Clan = pecores,
+                    Invitee = schumetzq,
+                    Inviter = schumetzq,
+                    Type = ClanInvitationType.Request,
+                    Status = ClanInvitationStatus.Pending,
+                };
+                ClanInvitation neostralieOfferToBrygganForPecores = new()
+                {
+                    Clan = pecores,
+                    Inviter = neostralie,
+                    Invitee = bryggan,
+                    Type = ClanInvitationType.Offer,
+                    Status = ClanInvitationStatus.Pending,
+                };
+                ClanInvitation[] newClanInvitations = { schumetzqRequestForPecores, neostralieOfferToBrygganForPecores };
+                var existingClanInvitations =
+                    await _db.ClanInvitations.ToDictionaryAsync(i => (i.InviteeId, i.InviterId));
+                foreach (var newClanInvitation in newClanInvitations)
+                {
+                    if (existingClanInvitations.TryGetValue((newClanInvitation.Invitee!.Id, newClanInvitation.Inviter!.Id),
+                        out var existingClanInvitation))
+                    {
+                        _db.Entry(existingClanInvitation).State = EntityState.Detached;
+
+                        newClanInvitation.Id = existingClanInvitation.Id;
+                        _db.ClanInvitations.Update(newClanInvitation);
+                    }
+                    else
+                    {
+                        _db.ClanInvitations.Add(newClanInvitation);
+                    }
                 }
             }
 
@@ -132,7 +550,7 @@ namespace Crpg.Application.System.Commands
                 foreach (ItemCreation item in itemsByMdId.Values)
                 {
                     Item baseItem = ItemCreationToItem(item);
-                    baseItem.Value = _itemValueService.ComputeItemValue(baseItem);
+                    baseItem.Value = _itemValueModel.ComputeItemValue(baseItem);
                     // EF Core doesn't support creating an entity referencing itself, which is needed for items with
                     // rank = 0. Workaround is to set BaseItemId to null and replace with the reference to the item
                     // once it was created. This is the only reason why BaseItemId is nullable.
@@ -204,7 +622,7 @@ namespace Crpg.Application.System.Commands
                 }
             }
 
-            private static Item ItemCreationToItem(ItemCreation item)
+            private Item ItemCreationToItem(ItemCreation item)
             {
                 var res = new Item
                 {
@@ -257,9 +675,9 @@ namespace Crpg.Application.System.Commands
                 return res;
             }
 
-            private static ItemWeaponComponent IteamWeaponComponentFromViewModel(ItemWeaponComponentViewModel weaponComponent)
+            private ItemWeaponComponent IteamWeaponComponentFromViewModel(ItemWeaponComponentViewModel weaponComponent)
             {
-                return new ItemWeaponComponent
+                return new()
                 {
                     Class = weaponComponent.Class,
                     Accuracy = weaponComponent.Accuracy,

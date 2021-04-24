@@ -1,7 +1,9 @@
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Clans.Models;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
@@ -13,29 +15,28 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Clans.Commands
 {
-    public class CreateClanCommand : IMediatorRequest<ClanViewModel>
+    public record CreateClanCommand : IMediatorRequest<ClanViewModel>
     {
-        public int UserId { get; set; }
-        public string Tag { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
+        public int UserId { get; init; }
+        public string Tag { get; init; } = string.Empty;
+        public string Color { get; init; } = string.Empty;
+        public string Name { get; init; } = string.Empty;
 
         public class Validator : AbstractValidator<CreateClanCommand>
         {
-            private const int MinimumClanTagLength = 2;
-            private const int MaximumClanTagLength = 8;
-
-            private const int MinimumClanNameLength = 2;
-            private const int MaximumClanNameLength = 32;
-
-            public Validator()
+            public Validator(Constants constants)
             {
                 RuleFor(c => c.Tag)
-                    .MinimumLength(MinimumClanTagLength)
-                    .MaximumLength(MaximumClanTagLength);
+                    .MinimumLength(constants.ClanTagMinLength)
+                    .MaximumLength(constants.ClanTagMaxLength)
+                    .Matches(new Regex(constants.ClanTagRegex, RegexOptions.Compiled));
+
+                RuleFor(c => c.Color)
+                    .Matches(new Regex(constants.ClanColorRegex, RegexOptions.Compiled));
 
                 RuleFor(c => c.Name)
-                    .MinimumLength(MinimumClanNameLength)
-                    .MaximumLength(MaximumClanNameLength);
+                    .MinimumLength(constants.ClanNameMinLength)
+                    .MaximumLength(constants.ClanNameMaxLength);
             }
         }
 
@@ -59,12 +60,12 @@ namespace Crpg.Application.Clans.Commands
                     .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 if (user == null)
                 {
-                    return new Result<ClanViewModel>(CommonErrors.UserNotFound(req.UserId));
+                    return new(CommonErrors.UserNotFound(req.UserId));
                 }
 
                 if (user.ClanMembership != null)
                 {
-                    return new Result<ClanViewModel>(CommonErrors.UserAlreadyInAClan(req.UserId));
+                    return new(CommonErrors.UserAlreadyInAClan(req.UserId));
                 }
 
                 var clan = await _db.Clans
@@ -72,13 +73,14 @@ namespace Crpg.Application.Clans.Commands
                 if (clan != null)
                 {
                     return clan.Tag == req.Tag
-                        ? new Result<ClanViewModel>(CommonErrors.ClanTagAlreadyUsed(clan.Tag))
-                        : new Result<ClanViewModel>(CommonErrors.ClanNameAlreadyUsed(clan.Name));
+                        ? new(CommonErrors.ClanTagAlreadyUsed(clan.Tag))
+                        : new(CommonErrors.ClanNameAlreadyUsed(clan.Name));
                 }
 
                 clan = new Clan
                 {
                     Tag = req.Tag,
+                    Color = req.Color.ToUpperInvariant(),
                     Name = req.Name,
                     Members =
                     {
@@ -93,7 +95,7 @@ namespace Crpg.Application.Clans.Commands
                 _db.Clans.Add(clan);
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("User '{0}' created clan '[{1}] {2}' ({3})", req.UserId, req.Tag, req.Name, clan.Id);
-                return new Result<ClanViewModel>(_mapper.Map<ClanViewModel>(clan));
+                return new(_mapper.Map<ClanViewModel>(clan));
             }
         }
     }

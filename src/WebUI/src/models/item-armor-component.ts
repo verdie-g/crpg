@@ -1,6 +1,6 @@
-export default class ItemArmorComponent {
-  public headArmor: number;
-  public bodyArmor: number;
-  public armArmor: number;
-  public legArmor: number;
+export default interface ItemArmorComponent {
+  headArmor: number;
+  bodyArmor: number;
+  armArmor: number;
+  legArmor: number;
 }

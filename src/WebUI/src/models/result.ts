@@ -1,16 +1,16 @@
-export class Result<TData> {
-  public errors: Error[] | null;
-  public data: TData | null;
+export interface Result<TData> {
+  errors: Error[] | null;
+  data: TData | null;
 }
 
-export class Error {
-  public traceId: string | null;
-  public type: ErrorType;
-  public code: string;
-  public title: string | null;
-  public detail: string | null;
+export interface Error {
+  traceId: string | null;
+  type: ErrorType;
+  code: string;
+  title: string | null;
+  detail: string | null;
   // TODO: errorSource
-  public stackTrace: string | null;
+  stackTrace: string | null;
 }
 
 export enum ErrorType {

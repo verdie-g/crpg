@@ -5,8 +5,6 @@ using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
-using Crpg.Domain.Entities;
-using Crpg.Domain.Entities.Characters;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -14,11 +12,11 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class UpdateCharacterCommand : IMediatorRequest<CharacterViewModel>
+    public record UpdateCharacterCommand : IMediatorRequest<CharacterViewModel>
     {
-        public int CharacterId { get; set; }
-        public int UserId { get; set; }
-        public string Name { get; set; } = default!;
+        public int CharacterId { get; init; }
+        public int UserId { get; init; }
+        public string Name { get; init; } = default!;
 
         public class Validator : AbstractValidator<UpdateCharacterCommand>
         {
@@ -53,7 +51,7 @@ namespace Crpg.Application.Characters.Commands
 
                 if (character == null)
                 {
-                    return new Result<CharacterViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
+                    return new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
                 if (character.Name != req.Name)
@@ -61,7 +59,7 @@ namespace Crpg.Application.Characters.Commands
                     if (await _db.Characters.AnyAsync(c => c.UserId == req.UserId && c.Name == req.Name,
                         cancellationToken))
                     {
-                        return new Result<CharacterViewModel>(CommonErrors.CharacterNameAlreadyUsed(req.Name));
+                        return new(CommonErrors.CharacterNameAlreadyUsed(req.Name));
                     }
 
                     character.Name = req.Name;
@@ -69,7 +67,7 @@ namespace Crpg.Application.Characters.Commands
 
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("User '{0}' updated character '{1}'", req.UserId, req.CharacterId);
-                return new Result<CharacterViewModel>(_mapper.Map<CharacterViewModel>(character));
+                return new(_mapper.Map<CharacterViewModel>(character));
             }
         }
     }

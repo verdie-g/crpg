@@ -4,17 +4,17 @@ using Crpg.Domain.Entities.Characters;
 
 namespace Crpg.Application.Characters.Models
 {
-    public class CharacterSkillsViewModel : IMapFrom<CharacterSkills>
+    public record CharacterSkillsViewModel : IMapFrom<CharacterSkills>
     {
-        public int Points { get; set; }
-        public int IronFlesh { get; set; }
-        public int PowerStrike { get; set; }
-        public int PowerDraw { get; set; }
-        public int PowerThrow { get; set; }
-        public int Athletics { get; set; }
-        public int Riding { get; set; }
-        public int WeaponMaster { get; set; }
-        public int MountedArchery { get; set; }
-        public int Shield { get; set; }
+        public int Points { get; init; }
+        public int IronFlesh { get; init; }
+        public int PowerStrike { get; init; }
+        public int PowerDraw { get; init; }
+        public int PowerThrow { get; init; }
+        public int Athletics { get; init; }
+        public int Riding { get; init; }
+        public int WeaponMaster { get; init; }
+        public int MountedArchery { get; init; }
+        public int Shield { get; init; }
     }
 }

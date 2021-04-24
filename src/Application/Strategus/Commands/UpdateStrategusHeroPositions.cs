@@ -8,6 +8,7 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Strategus;
+using Crpg.Domain.Entities.Strategus.Battles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
@@ -15,9 +16,9 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Strategus.Commands
 {
-    public class UpdateStrategusHeroPositionsCommand : IMediatorRequest
+    public record UpdateStrategusHeroPositionsCommand : IMediatorRequest
     {
-        public TimeSpan DeltaTime { get; set; }
+        public TimeSpan DeltaTime { get; init; }
 
         internal class Handler : IMediatorRequestHandler<UpdateStrategusHeroPositionsCommand>
         {
@@ -146,9 +147,10 @@ namespace Crpg.Application.Strategus.Commands
 
                     hero.Status = StrategusHeroStatus.InBattle;
                     hero.TargetedHero.Status = StrategusHeroStatus.InBattle;
-                    var battle = new StrategusBattle
+                    StrategusBattle battle = new()
                     {
                         Phase = StrategusBattlePhase.Preparation,
+                        Position = GetMidPoint(hero.Position, hero.TargetedHero.Position),
                         Fighters =
                         {
                             new StrategusBattleFighter
@@ -207,6 +209,7 @@ namespace Crpg.Application.Strategus.Commands
                     var battle = new StrategusBattle
                     {
                         Phase = StrategusBattlePhase.Preparation,
+                        Position = GetMidPoint(hero.Position, hero.TargetedSettlement.Position),
                         AttackedSettlement = hero.TargetedSettlement,
                         Fighters =
                         {
@@ -232,6 +235,11 @@ namespace Crpg.Application.Strategus.Commands
                 return canInteractWithTarget
                     ? _strategusMap.ArePointsAtInteractionDistance(hero.Position, targetPoint)
                     : _strategusMap.ArePointsEquivalent(hero.Position, targetPoint);
+            }
+
+            private Point GetMidPoint(Point pointA, Point pointB)
+            {
+                return new((pointA.X + pointB.X) / 2, (pointA.Y + pointB.Y) / 2);
             }
         }
     }

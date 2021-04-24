@@ -11,11 +11,11 @@
         /// <example>
         /// "/data" for a primary data object, or "/data/attributes/title" for a specific attribute.
         /// </example>
-        public string? Pointer { get; set; }
+        public string? Pointer { get; init; }
 
         /// <summary>
         /// Parameter is a string indicating which URI query parameter caused the error.
         /// </summary>
-        public string? Parameter { get; set; }
+        public string? Parameter { get; init; }
     }
 }

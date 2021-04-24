@@ -4,10 +4,10 @@ using Crpg.Domain.Entities.Characters;
 
 namespace Crpg.Application.Characters.Models
 {
-    public class CharacterAttributesViewModel : IMapFrom<CharacterAttributes>
+    public record CharacterAttributesViewModel : IMapFrom<CharacterAttributes>
     {
-        public int Points { get; set; }
-        public int Strength { get; set; }
-        public int Agility { get; set; }
+        public int Points { get; init; }
+        public int Strength { get; init; }
+        public int Agility { get; init; }
     }
 }

@@ -24,15 +24,14 @@ namespace Crpg.Application.Games.Commands
     /// <summary>
     /// Get or create a user with its character.
     /// </summary>
-    public class GetGameUserCommand : IMediatorRequest<GameUser>
+    public record GetGameUserCommand : IMediatorRequest<GameUser>
     {
-        public Platform Platform { get; set; }
-        public string PlatformUserId { get; set; } = default!;
-        public string UserName { get; set; } = default!;
+        public Platform Platform { get; init; }
+        public string PlatformUserId { get; init; } = default!;
+        public string UserName { get; init; } = default!;
 
         internal class Handler : IMediatorRequestHandler<GetGameUserCommand, GameUser>
         {
-            private static readonly ILogger Logger = LoggerFactory.CreateLogger<GetGameUserCommand>();
             internal static readonly (string mbId, ItemSlot slot)[][] DefaultItemSets =
             {
                 // aserai
@@ -102,6 +101,7 @@ namespace Crpg.Application.Games.Commands
                     ("peasant_hatchet_1_t1", ItemSlot.Weapon2),
                 },
             };
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<GetGameUserCommand>();
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -158,7 +158,7 @@ namespace Crpg.Application.Games.Commands
 
                 var gameUser = _mapper.Map<GameUser>(user);
                 gameUser.Ban = _mapper.Map<BanViewModel>(GetActiveBan(user.Bans.FirstOrDefault()));
-                return new Result<GameUser>(gameUser);
+                return new(gameUser);
             }
 
             private User CreateUser(Platform platform, string platformUserId, string name)

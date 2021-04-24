@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Strategus.Models;
+using NetTopologySuite.Geometries;
 using NetTopologySuite.IO.Converters;
 
 namespace Crpg.Application.Common.Files
@@ -21,7 +22,7 @@ namespace Crpg.Application.Common.Files
             return (await JsonSerializer.DeserializeAsync<IEnumerable<StrategusSettlementCreation>>(file, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                Converters = { new GeoJsonConverterFactory(), new JsonStringEnumConverter() },
+                Converters = { new GeoJsonConverterFactory(GeometryFactory.Default), new JsonStringEnumConverter() },
             }).AsTask())!;
         }
     }

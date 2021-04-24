@@ -18,8 +18,8 @@ namespace Crpg.Application.UTest.Bans
 
             var bans = new List<Ban>
             {
-                new Ban { BannedUser = user1, BannedByUser = user2 },
-                new Ban { BannedUser = user2, BannedByUser = user1 },
+                new() { BannedUser = user1, BannedByUser = user2 },
+                new() { BannedUser = user2, BannedByUser = user1 },
             };
             ArrangeDb.Bans.AddRange(bans);
             await ArrangeDb.SaveChangesAsync();

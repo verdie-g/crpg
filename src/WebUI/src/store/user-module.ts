@@ -11,12 +11,15 @@ import Ban from '@/models/ban';
 import Role from '@/models/role';
 import CharacterUpdate from '@/models/character-update';
 import EquippedItem from '@/models/equipped-item';
+import Clan from '@/models/clan';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
   user: User | null = null;
+  userLoading = false;
   ownedItems: Item[] = [];
   characters: Character[] = [];
+  clan: Clan | null = null;
   userBans: Ban[] = [];
 
   get isSignedIn(): boolean {
@@ -30,6 +33,11 @@ class UserModule extends VuexModule {
   @Mutation
   setUser(user: User) {
     this.user = user;
+  }
+
+  @Mutation
+  setUserLoading(userLoading: boolean) {
+    this.userLoading = userLoading;
   }
 
   @Mutation
@@ -139,6 +147,11 @@ class UserModule extends VuexModule {
   removeCharacter(character: Character) {
     const idx = this.characters.findIndex(c => c.id === character.id);
     this.characters.splice(idx, 1);
+  }
+
+  @Mutation
+  setUserClan(clan: Clan) {
+    this.clan = clan;
   }
 
   @Mutation
@@ -258,6 +271,11 @@ class UserModule extends VuexModule {
   deleteCharacter(character: Character): Promise<void> {
     this.removeCharacter(character);
     return userService.deleteCharacter(character.id);
+  }
+
+  @Action({ commit: 'setUserClan' })
+  getUserClan(): Promise<Clan | null> {
+    return userService.getUserClan();
   }
 
   @Action({ commit: 'setUserBans' })

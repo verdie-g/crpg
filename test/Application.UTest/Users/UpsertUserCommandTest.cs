@@ -28,7 +28,7 @@ namespace Crpg.Application.UTest.Users
                 Name = "def",
                 Avatar = new Uri("http://ghi.klm"),
                 AvatarMedium = new Uri("http://mno.pqr"),
-                AvatarFull = new Uri("http://stu.vwx")
+                AvatarFull = new Uri("http://stu.vwx"),
             }, CancellationToken.None);
 
             var user = result.Data!;
@@ -63,7 +63,7 @@ namespace Crpg.Application.UTest.Users
                 Name = "def",
                 Avatar = new Uri("http://gh.klm"),
                 AvatarMedium = new Uri("http://mn.pqr"),
-                AvatarFull = new Uri("http://st.vwx")
+                AvatarFull = new Uri("http://st.vwx"),
             }, CancellationToken.None);
 
             var createdUser = result.Data!;
@@ -114,7 +114,7 @@ namespace Crpg.Application.UTest.Users
                 Name = "toto",
                 Avatar = new Uri("http://gh.klm"),
                 AvatarMedium = new Uri("http://mn.pqr"),
-                AvatarFull = new Uri("http://st.vwx")
+                AvatarFull = new Uri("http://st.vwx"),
             });
 
             Assert.AreEqual(0, res.Errors.Count);
@@ -127,7 +127,7 @@ namespace Crpg.Application.UTest.Users
             var res = validator.Validate(new UpsertUserCommand
             {
                 PlatformUserId = "123",
-                Name = "",
+                Name = string.Empty,
             });
 
             Assert.AreEqual(4, res.Errors.Count);

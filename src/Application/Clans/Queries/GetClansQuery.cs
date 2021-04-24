@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -11,11 +12,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Clans.Queries
 {
-    public class GetClansQuery : IMediatorRequest<IList<ClanViewModel>>
+    public record GetClansQuery : IMediatorRequest<IList<ClanWithMemberCountViewModel>>
     {
-        public int ClanId { get; set; }
-
-        internal class Handler : IMediatorRequestHandler<GetClansQuery, IList<ClanViewModel>>
+        internal class Handler : IMediatorRequestHandler<GetClansQuery, IList<ClanWithMemberCountViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -26,12 +25,13 @@ namespace Crpg.Application.Clans.Queries
                 _mapper = mapper;
             }
 
-            public async Task<Result<IList<ClanViewModel>>> Handle(GetClansQuery req, CancellationToken cancellationToken)
+            public async Task<Result<IList<ClanWithMemberCountViewModel>>> Handle(GetClansQuery req, CancellationToken cancellationToken)
             {
                 var clans = await _db.Clans
-                    .ProjectTo<ClanViewModel>(_mapper.ConfigurationProvider)
+                    .ProjectTo<ClanWithMemberCountViewModel>(_mapper.ConfigurationProvider)
+                    .OrderByDescending(c => c.MemberCount)
                     .ToArrayAsync(cancellationToken);
-                return new Result<IList<ClanViewModel>>(clans);
+                return new(clans);
             }
         }
     }

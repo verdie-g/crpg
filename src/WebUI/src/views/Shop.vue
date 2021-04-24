@@ -107,7 +107,7 @@ import itemModule from '@/store/item-module';
 import Item from '@/models/item';
 import { notify } from '@/services/notifications-service';
 import ShopFiltersForm from '@/components/ShopFiltersForm.vue';
-import ShopFilters from '@/models/ShopFilters';
+import ShopFilters from '@/models/shop-filters';
 import ItemType from '@/models/item-type';
 import { filterItemsByType } from '@/services/item-service';
 import Culture from '@/models/culture';
@@ -155,9 +155,7 @@ export default class Shop extends Vue {
       type: this.$route.query.type ? (this.$route.query.type as ItemType) : null,
       culture: this.$route.query.culture ? (this.$route.query.culture as Culture) : null,
       showOwned:
-        this.$route.query.showOwned !== undefined
-          ? this.$route.query.showOwned === 'true'
-          : true,
+        this.$route.query.showOwned !== undefined ? this.$route.query.showOwned === 'true' : true,
     };
   }
 

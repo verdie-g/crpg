@@ -17,7 +17,7 @@ namespace Crpg.Application.UTest.Clans
 
             var result = await new GetClanQuery.Handler(ActDb, Mapper).Handle(new GetClanQuery
             {
-                ClanId = clan.Id
+                ClanId = clan.Id,
             }, CancellationToken.None);
 
             Assert.NotNull(result.Data);

@@ -8,6 +8,7 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Strategus;
+using Crpg.Domain.Entities.Strategus.Battles;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
@@ -29,10 +30,13 @@ namespace Crpg.Persistence
             NpgsqlConnection.GlobalTypeMapper.MapEnum<DamageType>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<WeaponClass>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<ClanMemberRole>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<ClanInvitationType>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<ClanInvitationStatus>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusHeroStatus>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusSettlementType>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusBattlePhase>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusBattleSide>();
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<StrategusBattleFighterApplicationStatus>();
             NpgsqlConnection.GlobalTypeMapper.MapEnum<Region>();
         }
 
@@ -62,6 +66,8 @@ namespace Crpg.Persistence
         public DbSet<StrategusSettlement> StrategusSettlements { get; set; } = default!;
         public DbSet<StrategusOwnedItem> StrategusOwnedItems { get; set; } = default!;
         public DbSet<StrategusBattle> StrategusBattles { get; set; } = default!;
+        public DbSet<StrategusBattleFighter> StrategusBattleFighters { get; set; } = default!;
+        public DbSet<StrategusBattleFighterApplication> StrategusBattleFighterApplications { get; set; } = default!;
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -111,10 +117,13 @@ namespace Crpg.Persistence
             modelBuilder.HasPostgresEnum<DamageType>();
             modelBuilder.HasPostgresEnum<WeaponClass>();
             modelBuilder.HasPostgresEnum<ClanMemberRole>();
+            modelBuilder.HasPostgresEnum<ClanInvitationType>();
+            modelBuilder.HasPostgresEnum<ClanInvitationStatus>();
             modelBuilder.HasPostgresEnum<StrategusHeroStatus>();
             modelBuilder.HasPostgresEnum<StrategusSettlementType>();
             modelBuilder.HasPostgresEnum<StrategusBattlePhase>();
             modelBuilder.HasPostgresEnum<StrategusBattleSide>();
+            modelBuilder.HasPostgresEnum<StrategusBattleFighterApplicationStatus>();
             modelBuilder.HasPostgresEnum<Region>();
 
             // Ensure that the PostGIS extension is installed.

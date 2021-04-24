@@ -8,6 +8,7 @@ using Crpg.Application.Strategus.Models;
 using Crpg.Application.System.Commands;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Strategus;
+using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NetTopologySuite.Geometries;
@@ -18,6 +19,7 @@ namespace Crpg.Application.UTest.System
     public class SeedStrategusDataCommandTest : TestBase
     {
         private static readonly Region[] Regions = Enum.GetValues(typeof(Region)).Cast<Region>().ToArray();
+        private static readonly IApplicationEnvironment AppEnv = CreateApplicationEnvironment();
 
         [Test]
         public async Task ShouldAddSettlementIfDoesntExistsInDb()
@@ -30,7 +32,8 @@ namespace Crpg.Application.UTest.System
                     new StrategusSettlementCreation { Name = "b", Position = new Point(0, 0) },
                 });
 
-            var handler = new SeedStrategusDataCommand.Handler(ActDb, settlementsSource.Object, Mock.Of<IStrategusMap>());
+            var handler = new SeedStrategusDataCommand.Handler(ActDb, settlementsSource.Object,
+                Mock.Of<IStrategusMap>(), AppEnv);
             await handler.Handle(new SeedStrategusDataCommand(), CancellationToken.None);
 
             var settlements = await AssertDb.StrategusSettlements.ToArrayAsync();
@@ -98,7 +101,7 @@ namespace Crpg.Application.UTest.System
                         Culture = Culture.Battania,
                         Position = new Point(3, 4),
                         Scene = "def",
-                    }
+                    },
                 });
 
             var strategusMapMock = new Mock<IStrategusMap>();
@@ -112,7 +115,8 @@ namespace Crpg.Application.UTest.System
                 .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Europe, Region.Asia))
                 .Returns(new Point(5, 6));
 
-            var handler = new SeedStrategusDataCommand.Handler(ActDb, settlementsSource.Object, strategusMapMock.Object);
+            var handler = new SeedStrategusDataCommand.Handler(ActDb, settlementsSource.Object,
+                strategusMapMock.Object, AppEnv);
             await handler.Handle(new SeedStrategusDataCommand(), CancellationToken.None);
 
             var settlements = await AssertDb.StrategusSettlements.ToArrayAsync();
@@ -147,11 +151,19 @@ namespace Crpg.Application.UTest.System
             settlementsSource.Setup(s => s.LoadStrategusSettlements())
                 .ReturnsAsync(Array.Empty<StrategusSettlementCreation>());
 
-            var handler = new SeedStrategusDataCommand.Handler(ActDb, settlementsSource.Object, Mock.Of<IStrategusMap>());
+            var handler = new SeedStrategusDataCommand.Handler(ActDb, settlementsSource.Object,
+                Mock.Of<IStrategusMap>(), AppEnv);
             await handler.Handle(new SeedStrategusDataCommand(), CancellationToken.None);
 
             var settlements = await AssertDb.StrategusSettlements.ToArrayAsync();
             Assert.AreEqual(0, settlements.Length);
+        }
+
+        private static IApplicationEnvironment CreateApplicationEnvironment()
+        {
+            var appEnvMock = new Mock<IApplicationEnvironment>();
+            appEnvMock.Setup(e => e.Environment).Returns(HostingEnvironment.Production);
+            return appEnvMock.Object;
         }
     }
 }

@@ -1,10 +1,10 @@
-import { UserPublic } from '@/models/user-public';
+import UserPublic from '@/models/user-public';
 
-export default class Ban {
-  public id: number;
-  public bannedUser: UserPublic | null;
-  public duration: number;
-  public reason: string;
-  public bannedByUser: UserPublic;
-  public createdAt: Date;
+export default interface Ban {
+  id: number;
+  bannedUser: UserPublic | null;
+  duration: number;
+  reason: string;
+  bannedByUser: UserPublic;
+  createdAt: Date;
 }

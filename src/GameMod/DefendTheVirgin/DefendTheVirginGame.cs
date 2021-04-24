@@ -10,6 +10,14 @@ namespace Crpg.GameMod.DefendTheVirgin
 {
     public class DefendTheVirginGame : GameType
     {
+        public override void OnDestroy()
+        {
+        }
+
+        public override void OnStateChanged(GameState oldState)
+        {
+        }
+
         protected override void OnInitialize()
         {
             Game currentGame = CurrentGame;
@@ -38,34 +46,6 @@ namespace Crpg.GameMod.DefendTheVirgin
             GameManager.OnCampaignStart(CurrentGame, null);
             GameManager.OnAfterCampaignStart(CurrentGame);
             GameManager.OnGameInitializationFinished(CurrentGame);
-        }
-
-        private void InitializeGameModels(IGameStarter basicGameStarter)
-        {
-            basicGameStarter.AddModel(new MultiplayerAgentDecideKilledOrUnconsciousModel());
-            basicGameStarter.AddModel(new CustomBattleAgentStatCalculateModel());
-            basicGameStarter.AddModel(new CustomBattleApplyWeatherEffectsModel());
-            basicGameStarter.AddModel(new MultiplayerAgentApplyDamageModel());
-            basicGameStarter.AddModel(new DefaultRidingModel());
-            basicGameStarter.AddModel(new DefaultStrikeMagnitudeModel());
-            basicGameStarter.AddModel(new CrpgSkillList());
-            basicGameStarter.AddModel(new CustomBattleMoraleModel());
-        }
-
-        private void InitializeGameTexts(GameTextManager gameTextManager)
-        {
-            gameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("Native") + "ModuleData/multiplayer_strings.xml");
-            gameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("Native") + "ModuleData/global_strings.xml");
-            gameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("Native") + "ModuleData/module_strings.xml");
-            gameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("Native") + "ModuleData/native_strings.xml");
-        }
-
-        private void LoadCustomGameXmls()
-        {
-            ObjectManager.LoadXML("Items");
-            ObjectManager.LoadXML("EquipmentRosters");
-            ObjectManager.LoadXML("NPCCharacters");
-            ObjectManager.LoadXML("SPCultures");
         }
 
         protected override void BeforeRegisterTypes(MBObjectManager objectManager)
@@ -98,12 +78,32 @@ namespace Crpg.GameMod.DefendTheVirgin
             }
         }
 
-        public override void OnDestroy()
+        private void InitializeGameModels(IGameStarter basicGameStarter)
         {
+            basicGameStarter.AddModel(new MultiplayerAgentDecideKilledOrUnconsciousModel());
+            basicGameStarter.AddModel(new CustomBattleAgentStatCalculateModel());
+            basicGameStarter.AddModel(new CustomBattleApplyWeatherEffectsModel());
+            basicGameStarter.AddModel(new MultiplayerAgentApplyDamageModel());
+            basicGameStarter.AddModel(new DefaultRidingModel());
+            basicGameStarter.AddModel(new DefaultStrikeMagnitudeModel());
+            basicGameStarter.AddModel(new CrpgSkillList());
+            basicGameStarter.AddModel(new CustomBattleMoraleModel());
         }
 
-        public override void OnStateChanged(GameState oldState)
+        private void InitializeGameTexts(GameTextManager gameTextManager)
         {
+            gameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("Native") + "ModuleData/multiplayer_strings.xml");
+            gameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("Native") + "ModuleData/global_strings.xml");
+            gameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("Native") + "ModuleData/module_strings.xml");
+            gameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("Native") + "ModuleData/native_strings.xml");
+        }
+
+        private void LoadCustomGameXmls()
+        {
+            ObjectManager.LoadXML("Items");
+            ObjectManager.LoadXML("EquipmentRosters");
+            ObjectManager.LoadXML("NPCCharacters");
+            ObjectManager.LoadXML("SPCultures");
         }
     }
 }

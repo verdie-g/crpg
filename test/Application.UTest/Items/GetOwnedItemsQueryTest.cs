@@ -18,9 +18,9 @@ namespace Crpg.Application.UTest.Items
             {
                 OwnedItems = new List<OwnedItem>
                 {
-                    new OwnedItem { Item = new Item() },
-                    new OwnedItem { Item = new Item() },
-                }
+                    new() { Item = new Item() },
+                    new() { Item = new Item() },
+                },
             });
             await ArrangeDb.SaveChangesAsync();
 

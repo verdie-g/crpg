@@ -16,7 +16,7 @@ namespace Crpg.Application.UTest.Characters
 {
     public class RespecializeCharacterCommandTest : TestBase
     {
-        private static readonly Constants Constants = new Constants
+        private static readonly Constants Constants = new()
         {
             RespecializeExperiencePenaltyCoefs = new[] { 0.5f, 0f },
         };

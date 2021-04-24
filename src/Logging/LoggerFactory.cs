@@ -16,7 +16,7 @@ namespace Crpg.Logging
         /// A factory for serilog loggers. It uses <see cref="Log.Logger"/> so <see cref="Initialize"/> needs to be called
         /// before <see cref="CreateLogger{TCategory}"/>.
         /// </summary>
-        private static readonly SerilogLoggerFactory UnderlyingLoggerFactory = new SerilogLoggerFactory();
+        private static readonly SerilogLoggerFactory UnderlyingLoggerFactory = new();
 
         /// <summary>
         /// Initialize the global logger with an application configuration.
@@ -65,6 +65,18 @@ namespace Crpg.Logging
                 throw new InvalidOperationException("Couldn't get full name of type " + categoryType);
             }
 
+            return CreateLogger(categoryName);
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="T:Microsoft.Extensions.Logging.ILogger" /> instance.
+        /// </summary>
+        /// <param name="categoryName">The category name for messages produced by the logger.</param>
+        /// <returns>
+        /// The <see cref="T:Microsoft.Extensions.Logging.ILogger" />.
+        /// </returns>
+        public static ILogger CreateLogger(string categoryName)
+        {
             return UnderlyingLoggerFactory.CreateLogger(categoryName);
         }
     }

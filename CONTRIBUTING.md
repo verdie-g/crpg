@@ -44,7 +44,7 @@ The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the foll
 - [Buefy](https://buefy.org) - Vue wrapper of Bulma
 - [Sass](https://sass-lang.com) - CSS pre-processor
 - [Font Awesome](https://fontawesome.com) for icons
-- [Eslint](https://eslint.org) to enforce coding style and best practices. Use `yarn lint` to fix your code
+- [Eslint](https://eslint.org) to enforce coding style and best practices. Use `npm run lint-fix` to fix your code
 
 ## Run
 
@@ -60,12 +60,24 @@ The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the foll
   with `SameSite=None` and recent version of Chrome requires HTTPS to do so
 - Build and run (can be done without IDE using [dotnet cli](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run))
 
+By default, the Web API uses an in-memory database so no DBMS need to be downloaded.
+
 ### Web UI (src/WebUI)
 
 - Download [Node.js](https://nodejs.org)
-- Download [Yarn](https://classic.yarnpkg.com/en/docs/install)
-- Go to src/WebUI
-- Run `yarn install` to install dependencies
-- Run `yarn serve` to launch the application
+- Go to `src/WebUI`
+- Run `npm install` to install dependencies
+- Run `npm run serve` to launch the application
 
 The client relies on the server so you have to run both.
+
+### Strategus (src/Strategus)
+
+Strategus is a standalone program but if you want to share its data with the
+Web API you need to install PostgreSQL.
+
+- Download [PostgreSQL](https://www.postgresql.org/download)
+- Download the geographic extension [PostGIS](http://download.osgeo.org/postgis/windows)
+- Create a database user named `postgres` with password `root`
+- Go to `src/Persistence` and follow its [README](https://github.com/verdie-g/crpg/blob/master/src/Persistence/README.md) to create/apply migrations
+- Build and run (can be done without IDE using [dotnet cli](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run))

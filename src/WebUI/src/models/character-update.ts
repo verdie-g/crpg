@@ -1,3 +1,3 @@
-export default class CharacterUpdate {
-  public name: string;
+export default interface CharacterUpdate {
+  name: string;
 }

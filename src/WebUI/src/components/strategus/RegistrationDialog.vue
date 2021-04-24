@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content is-medium">
     <h2>Welcome to Strategus</h2>
     <p>
       Strategus is a multiplayer campaign for cRPG where players can aquire fiefs and land and
@@ -47,7 +47,7 @@ import Region from '@/models/region';
 @Component
 export default class RegistrationDialog extends Vue {
   selectedRegion: Region | null = null;
-  registering: boolean = false;
+  registering = false;
 
   get regions(): [string, string][] {
     return Object.entries(strategusService.regionToStr);
@@ -71,6 +71,7 @@ export default class RegistrationDialog extends Vue {
     strategusModule.registerUser(this.selectedRegion!).then(() => {
       this.registering = false;
       strategusModule.popDialog();
+      this.$emit('heroSpawn');
     });
   }
 }

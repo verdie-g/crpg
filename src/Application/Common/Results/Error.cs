@@ -22,22 +22,22 @@
         /// A short, human-readable summary of the problem type. It should not change from occurrence to occurrence
         /// of the problem, except for purposes of localization.
         /// </summary>
-        public string? Title { get; set; }
+        public string? Title { get; init; }
 
         /// <summary>
         /// A human-readable explanation specific to this occurrence of the problem.
         /// </summary>
-        public string? Detail { get; set; }
+        public string? Detail { get; init; }
 
         /// <summary>
         /// A machine-readable structure to reference to the exact location causing the error.
         /// </summary>
-        public ErrorSource? Source { get; set; }
+        public ErrorSource? Source { get; init; }
 
         /// <summary>
         /// A human-readable stacktrace.
         /// </summary>
-        public string? StackTrace { get; set; }
+        public string? StackTrace { get; init; }
 
         public Error(ErrorType type, ErrorCode code)
         {

@@ -9,7 +9,7 @@ namespace Crpg.WebApi.Identity
         public static IEnumerable<IdentityResource> GetIdentityResources() => new[]
         {
             new IdentityResources.OpenId(),
-            new IdentityResource("profile", new[] { JwtClaimTypes.PreferredUserName, JwtClaimTypes.Picture })
+            new IdentityResource("profile", new[] { JwtClaimTypes.PreferredUserName, JwtClaimTypes.Picture }),
         };
 
         public static IEnumerable<ApiScope> GetApiScopes() => new[]

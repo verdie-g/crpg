@@ -37,7 +37,7 @@ namespace Crpg.Application.UTest.Strategus
                     Type = StrategusSettlementType.Castle,
                     Position = new Point(7, 8),
                     Scene = "sturgia_castle",
-                }
+                },
             };
             ArrangeDb.StrategusSettlements.AddRange(settlements);
             await ArrangeDb.SaveChangesAsync();

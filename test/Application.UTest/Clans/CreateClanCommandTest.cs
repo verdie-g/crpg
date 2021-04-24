@@ -21,17 +21,18 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = user.Id,
                 Tag = "TW",
+                Color = "#12abd3",
                 Name = "TaleWorlds",
             }, CancellationToken.None);
 
             var clan = result.Data!;
             Assert.AreEqual("TW", clan.Tag);
+            Assert.AreEqual("#12ABD3", clan.Color);
             Assert.AreEqual("TaleWorlds", clan.Name);
-            Assert.IsNotEmpty(clan.Members);
-            Assert.AreEqual(user.Id, clan.Members[0].User.Id);
-            Assert.AreEqual(ClanMemberRole.Leader, clan.Members[0].Role);
 
             Assert.That(AssertDb.Clans, Has.Exactly(1).Matches<Clan>(c => c.Id == clan.Id));
+            Assert.That(AssertDb.ClanMembers, Has.Exactly(1)
+                .Matches<ClanMember>(cm => cm.ClanId == clan.Id && cm.UserId == user.Id));
         }
 
         [Test]
@@ -41,6 +42,7 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = 1,
                 Tag = "TW",
+                Color = "#12abd3",
                 Name = "TaleWorlds",
             }, CancellationToken.None);
 
@@ -60,6 +62,7 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = user.Id,
                 Tag = "TW",
+                Color = "#12abd3",
                 Name = "TaleWorlds",
             }, CancellationToken.None);
 
@@ -80,6 +83,7 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = user.Id,
                 Tag = "TW",
+                Color = "#12abd3",
                 Name = "TaleWorlds",
             }, CancellationToken.None);
 
@@ -100,6 +104,7 @@ namespace Crpg.Application.UTest.Clans
             {
                 UserId = user.Id,
                 Tag = "TW",
+                Color = "#12abd3",
                 Name = "TaleWorlds",
             }, CancellationToken.None);
 

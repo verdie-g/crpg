@@ -48,7 +48,7 @@ namespace Crpg.GameMod.Api
             {
                 ["platform"] = platform.ToString(),
                 ["platformUserId"] = platformUserId,
-                ["userName"] = characterName
+                ["userName"] = characterName,
             };
             return Get<CrpgUser>("games/users", queryParameters, cancellationToken);
         }
@@ -83,7 +83,7 @@ namespace Crpg.GameMod.Api
         {
             var msg = new HttpRequestMessage(HttpMethod.Put, requestUri)
             {
-                Content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json")
+                Content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json"),
             };
 
             return Send<TResponse>(msg, cancellationToken);
@@ -93,7 +93,7 @@ namespace Crpg.GameMod.Api
         {
             var msg = new HttpRequestMessage(HttpMethod.Post, requestUri)
             {
-                Content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json")
+                Content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json"),
             };
 
             return Send<TResponse>(msg, cancellationToken);

@@ -1,8 +1,8 @@
 ﻿namespace Crpg.Application.Games.Models
 {
-    public class GameUserBrokenItem
+    public record GameUserBrokenItem
     {
-        public int ItemId { get; set; }
-        public int RepairCost { get; set; }
+        public int ItemId { get; init; }
+        public int RepairCost { get; init; }
     }
 }

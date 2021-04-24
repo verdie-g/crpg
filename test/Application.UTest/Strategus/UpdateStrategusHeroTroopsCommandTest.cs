@@ -12,7 +12,7 @@ namespace Crpg.Application.UTest.Strategus
 {
     public class UpdateStrategusHeroTroopsCommandTest : TestBase
     {
-        private static readonly Constants Constants = new Constants
+        private static readonly Constants Constants = new()
         {
             StrategusTroopRecruitmentPerHour = 5,
             StrategusMaxHeroTroops = 10,

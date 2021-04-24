@@ -15,11 +15,11 @@ jobs:
       with:
         node-version: '13.x'
     - name: Install
-      run: yarn install
+      run: npm install
       working-directory: ${{env.dir}}
     - name: Build
-      run: yarn build
+      run: npm run build
       working-directory: ${{env.dir}}
     - name: Lint
-      run: yarn lint
+      run: npm run lint
       working-directory: ${{env.dir}}

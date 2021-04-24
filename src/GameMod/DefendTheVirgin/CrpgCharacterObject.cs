@@ -53,7 +53,7 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         private static StaticBodyProperties StaticBodyPropertiesFromString(string bodyPropertiesKey)
         {
-            XmlDocument doc = new XmlDocument();
+            XmlDocument doc = new();
             doc.LoadXml($"<BodyProperties key=\"{bodyPropertiesKey}\" />");
             if (!StaticBodyProperties.FromXmlNode(doc.DocumentElement, out var staticBodyProperties))
             {

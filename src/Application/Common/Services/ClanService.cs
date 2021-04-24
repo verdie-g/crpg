@@ -26,11 +26,11 @@ namespace Crpg.Application.Common.Services
                 .FirstOrDefaultAsync(u => u.Id == userId, cancellationToken);
             if (user == null)
             {
-                return new Result<User>(CommonErrors.UserNotFound(userId));
+                return new(CommonErrors.UserNotFound(userId));
             }
 
             var error = CheckClanMembership(user, clanId);
-            return error != null ? new Result<User>(error) : new Result<User>(user);
+            return error != null ? new(error) : new(user);
         }
 
         public Error? CheckClanMembership(User user, int clanId)
@@ -59,7 +59,7 @@ namespace Crpg.Application.Common.Services
 
             // Joining a clan declines all pending invitations and delete pending requests to join.
             var invitations = await db.ClanInvitations
-                .Where(i => i.InviteeUserId == user.Id && i.Status == ClanInvitationStatus.Pending)
+                .Where(i => i.InviteeId == user.Id && i.Status == ClanInvitationStatus.Pending)
                 .ToArrayAsync(cancellationToken);
             foreach (var invitation in invitations)
             {
@@ -73,7 +73,7 @@ namespace Crpg.Application.Common.Services
                 }
             }
 
-            return new Result<ClanMember>(user.ClanMembership);
+            return new(user.ClanMembership);
         }
 
         public async Task<Result> LeaveClan(ICrpgDbContext db, ClanMember member, CancellationToken cancellationToken)

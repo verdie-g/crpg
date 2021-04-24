@@ -5,6 +5,7 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Strategus;
+using Crpg.Domain.Entities.Strategus.Battles;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -26,6 +27,8 @@ namespace Crpg.Application.Common.Interfaces
         DbSet<StrategusSettlement> StrategusSettlements { get; }
         DbSet<StrategusOwnedItem> StrategusOwnedItems { get; }
         DbSet<StrategusBattle> StrategusBattles { get; }
+        DbSet<StrategusBattleFighter> StrategusBattleFighters { get; }
+        DbSet<StrategusBattleFighterApplication> StrategusBattleFighterApplications { get; }
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }

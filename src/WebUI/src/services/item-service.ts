@@ -218,7 +218,7 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
 
   if (item.mount !== null) {
     props.fields.push(
-      ['Charge Dmg.', item.mount.chargeDamage],
+      ['Charge Damage', item.mount.chargeDamage],
       ['Speed', item.mount.speed],
       ['Maneuver', item.mount.maneuver],
       ['Hit Points', item.mount.hitPoints]

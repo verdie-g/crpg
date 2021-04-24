@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Queries
 {
-    public class GetOwnedItemsQuery : IMediatorRequest<IList<ItemViewModel>>
+    public record GetOwnedItemsQuery : IMediatorRequest<IList<ItemViewModel>>
     {
-        public int UserId { get; set; }
+        public int UserId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<GetOwnedItemsQuery, IList<ItemViewModel>>
         {
@@ -34,7 +34,7 @@ namespace Crpg.Application.Items.Queries
                     .Select(oi => oi.Item)
                     .ToListAsync(cancellationToken);
 
-                return new Result<IList<ItemViewModel>>(_mapper.Map<IList<ItemViewModel>>(ownedItems));
+                return new(_mapper.Map<IList<ItemViewModel>>(ownedItems));
             }
         }
     }

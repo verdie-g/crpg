@@ -6,6 +6,8 @@ using Crpg.Application.Bans.Queries;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Characters.Queries;
+using Crpg.Application.Clans.Models;
+using Crpg.Application.Clans.Queries;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
 using Crpg.Application.Items.Models;
@@ -69,8 +71,7 @@ namespace Crpg.WebApi.Controllers
         public Task<ActionResult<Result<CharacterViewModel>>> UpdateCharacter([FromRoute] int id,
             [FromBody] UpdateCharacterCommand req)
         {
-            req.UserId = CurrentUser.UserId;
-            req.CharacterId = id;
+            req = req with { UserId = CurrentUser.UserId, CharacterId = id };
             return ResultToActionAsync(Mediator.Send(req));
         }
 
@@ -107,8 +108,7 @@ namespace Crpg.WebApi.Controllers
         public Task<ActionResult<Result<CharacterStatisticsViewModel>>> ConvertCharacterStatistics([FromRoute] int id,
             [FromBody] ConvertCharacterStatisticsCommand req)
         {
-            req.CharacterId = id;
-            req.UserId = CurrentUser.UserId;
+            req = req with { CharacterId = id, UserId = CurrentUser.UserId };
             return ResultToActionAsync(Mediator.Send(req));
         }
 
@@ -124,8 +124,7 @@ namespace Crpg.WebApi.Controllers
         public Task<ActionResult<Result<IList<EquippedItemViewModel>>>> UpdateCharacterItems([FromRoute] int id,
             [FromBody] UpdateCharacterItemsCommand req)
         {
-            req.UserId = CurrentUser.UserId;
-            req.CharacterId = id;
+            req = req with { CharacterId = id, UserId = CurrentUser.UserId };
             return ResultToActionAsync(Mediator.Send(req));
         }
 
@@ -140,8 +139,7 @@ namespace Crpg.WebApi.Controllers
         public Task<ActionResult> SwitchCharacterAutoRepair([FromRoute] int id,
             [FromBody] SwitchCharacterAutoRepairCommand req)
         {
-            req.UserId = CurrentUser.UserId;
-            req.CharacterId = id;
+            req = req with { CharacterId = id, UserId = CurrentUser.UserId };
             return ResultToActionAsync(Mediator.Send(req));
         }
 
@@ -200,7 +198,7 @@ namespace Crpg.WebApi.Controllers
         [ProducesResponseType((int)HttpStatusCode.Created)]
         public Task<ActionResult<Result<ItemViewModel>>> BuyItem([FromBody] BuyItemCommand req)
         {
-            req.UserId = CurrentUser.UserId;
+            req = req with { UserId = CurrentUser.UserId };
             return ResultToCreatedAtActionAsync(nameof(ItemsController.GetItemsList), "Items", i => new { id = i.Id },
                 Mediator.Send(req));
         }
@@ -227,6 +225,16 @@ namespace Crpg.WebApi.Controllers
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public Task<ActionResult> SellOwnedItem([FromRoute] int id) =>
             ResultToActionAsync(Mediator.Send(new SellItemCommand { ItemId = id, UserId = CurrentUser.UserId }));
+
+        /// <summary>
+        /// Gets user clan or null.
+        /// </summary>
+        [HttpGet("self/clans")]
+        public Task<ActionResult<Result<ClanViewModel>>> GetUserClan()
+        {
+            GetUserClanQuery req = new() { UserId = CurrentUser.UserId };
+            return ResultToActionAsync(Mediator.Send(req));
+        }
 
         /// <summary>
         /// Gets all current user's bans.

@@ -106,7 +106,7 @@ namespace Crpg.Application.Common.Services
 
                 (Region.NorthAmerica, Region.Asia) => 4 * _width - pos.X,
                 (Region.Asia, Region.NorthAmerica) => 4 * _width - pos.X,
-                _ => throw new ArgumentOutOfRangeException()
+                _ => throw new ArgumentOutOfRangeException(),
             };
 
             return new Point(x, pos.Y);

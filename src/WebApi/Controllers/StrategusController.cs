@@ -85,5 +85,18 @@ namespace Crpg.WebApi.Controllers
                 HeroId = CurrentUser.UserId,
                 SettlementId = settlementId,
             }));
+
+        /// <summary>
+        /// Apply as a fighter to a battle.
+        /// </summary>
+        /// <returns>The application.</returns>
+        /// <response code="200">Applied.</response>
+        /// <response code="400">Too far from the battle, ...</response>
+        [HttpPost("battles/{battleId}/fighters")]
+        public Task<ActionResult<Result<StrategusBattleFighterApplicationViewModel>>> ApplyToBattle([FromRoute] int battleId)
+        {
+            ApplyToStrategusBattleCommand req = new() { HeroId = CurrentUser.UserId, BattleId = battleId };
+            return ResultToActionAsync(Mediator.Send(req));
+        }
     }
 }

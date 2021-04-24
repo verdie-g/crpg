@@ -16,7 +16,7 @@ namespace Crpg.Application.UTest.Characters
 {
     public class RetireCharacterCommandTest : TestBase
     {
-        private static readonly Constants Constants = new Constants
+        private static readonly Constants Constants = new()
         {
             MinimumLevel = 1,
             MinimumRetirementLevel = 31,
@@ -40,7 +40,7 @@ namespace Crpg.Application.UTest.Characters
                 User = new User
                 {
                     HeirloomPoints = 1,
-                }
+                },
             };
             ArrangeDb.Add(character);
             await ArrangeDb.SaveChangesAsync();

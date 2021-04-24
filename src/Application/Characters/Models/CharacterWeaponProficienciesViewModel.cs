@@ -4,14 +4,14 @@ using Crpg.Domain.Entities.Characters;
 
 namespace Crpg.Application.Characters.Models
 {
-    public class CharacterWeaponProficienciesViewModel : IMapFrom<CharacterWeaponProficiencies>
+    public record CharacterWeaponProficienciesViewModel : IMapFrom<CharacterWeaponProficiencies>
     {
-        public int Points { get; set; }
-        public int OneHanded { get; set; }
-        public int TwoHanded { get; set; }
-        public int Polearm { get; set; }
-        public int Bow { get; set; }
-        public int Throwing { get; set; }
-        public int Crossbow { get; set; }
+        public int Points { get; init; }
+        public int OneHanded { get; init; }
+        public int TwoHanded { get; init; }
+        public int Polearm { get; init; }
+        public int Bow { get; init; }
+        public int Throwing { get; init; }
+        public int Crossbow { get; init; }
     }
 }

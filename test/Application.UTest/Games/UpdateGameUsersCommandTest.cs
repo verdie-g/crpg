@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Commands;
 using Crpg.Application.Games.Models;
@@ -10,7 +9,6 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 
@@ -36,7 +34,7 @@ namespace Crpg.Application.UTest.Games
                 Gold = 1000,
                 Characters = new List<Character>
                 {
-                    new Character
+                    new()
                     {
                         Name = "a",
                         Experience = 0,
@@ -89,7 +87,7 @@ namespace Crpg.Application.UTest.Games
                 Gold = 10000,
                 Characters = new List<Character>
                 {
-                    new Character
+                    new()
                     {
                         Name = "b",
                         EquippedItems =
@@ -108,7 +106,7 @@ namespace Crpg.Application.UTest.Games
                         },
                         AutoRepair = true,
                     },
-                }
+                },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -137,7 +135,7 @@ namespace Crpg.Application.UTest.Games
                             new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[10].ItemId, RepairCost = 600 },
                         },
                     },
-                }
+                },
             }, CancellationToken.None);
 
             var data = result.Data!;
@@ -169,7 +167,7 @@ namespace Crpg.Application.UTest.Games
                 Gold = 10000,
                 Characters = new List<Character>
                 {
-                    new Character
+                    new()
                     {
                         Name = "b",
                         EquippedItems =
@@ -188,7 +186,7 @@ namespace Crpg.Application.UTest.Games
                         },
                         AutoRepair = false,
                     },
-                }
+                },
             };
             ArrangeDb.Users.Add(user);
 
@@ -235,7 +233,7 @@ namespace Crpg.Application.UTest.Games
                             new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[10].ItemId, RepairCost = 600 },
                         },
                     },
-                }
+                },
             }, CancellationToken.None);
 
             var data = result.Data!;
@@ -291,7 +289,7 @@ namespace Crpg.Application.UTest.Games
                         AutoRepair = true,
                     },
                 },
-                OwnedItems = { new OwnedItem { Item = handItem } }
+                OwnedItems = { new OwnedItem { Item = handItem } },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -313,7 +311,7 @@ namespace Crpg.Application.UTest.Games
                             new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[3].ItemId, RepairCost = 1000 },
                         },
                     },
-                }
+                },
             }, CancellationToken.None);
 
             var data = result.Data!;

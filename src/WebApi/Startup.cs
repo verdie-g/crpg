@@ -39,6 +39,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using NetTopologySuite.Geometries;
 using NetTopologySuite.IO.Converters;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
@@ -73,7 +74,7 @@ namespace Crpg.WebApi
                 .AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.Converters.Add(new TimeSpanConverter());
-                    options.JsonSerializerOptions.Converters.Add(new GeoJsonConverterFactory());
+                    options.JsonSerializerOptions.Converters.Add(new GeoJsonConverterFactory(GeometryFactory.Default));
                     options.JsonSerializerOptions.Converters.Add(new JsonArrayStringEnumFlagsConverterFactory());
                     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 });
@@ -120,7 +121,7 @@ namespace Crpg.WebApi
                 // https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx#use-a-reverse-proxy-server
                 app.UseForwardedHeaders(new ForwardedHeadersOptions
                 {
-                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost
+                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost,
                 });
             }
 
@@ -196,11 +197,11 @@ namespace Crpg.WebApi
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
-                        }
+                            Id = "Bearer",
+                        },
                     },
                     new List<string>()
-                }
+                },
             });
         }
 
@@ -222,7 +223,7 @@ namespace Crpg.WebApi
             options.Events!.OnAuthenticated = OnSteamUserAuthenticated;
         }
 
-        private static async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
+        private async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
         {
             var mediator = ctx.HttpContext.RequestServices.GetRequiredService<IMediator>();
             var mapper = ctx.HttpContext.RequestServices.GetRequiredService<IMapper>();

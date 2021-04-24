@@ -13,10 +13,10 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Items.Commands
 {
-    public class BuyItemCommand : IMediatorRequest<ItemViewModel>
+    public record BuyItemCommand : IMediatorRequest<ItemViewModel>
     {
-        public int ItemId { get; set; }
-        public int UserId { get; set; }
+        public int ItemId { get; init; }
+        public int UserId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<BuyItemCommand, ItemViewModel>
         {
@@ -38,12 +38,12 @@ namespace Crpg.Application.Items.Commands
                     .FirstOrDefaultAsync(i => i.Id == req.ItemId, cancellationToken);
                 if (item == null)
                 {
-                    return new Result<ItemViewModel>(CommonErrors.ItemNotFound(req.ItemId));
+                    return new(CommonErrors.ItemNotFound(req.ItemId));
                 }
 
                 if (item.Rank != 0)
                 {
-                    return new Result<ItemViewModel>(CommonErrors.ItemNotBuyable(req.ItemId));
+                    return new(CommonErrors.ItemNotBuyable(req.ItemId));
                 }
 
                 var user = await _db.Users
@@ -51,17 +51,17 @@ namespace Crpg.Application.Items.Commands
                     .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 if (user == null)
                 {
-                    return new Result<ItemViewModel>(CommonErrors.UserNotFound(req.UserId));
+                    return new(CommonErrors.UserNotFound(req.UserId));
                 }
 
                 if (user.OwnedItems.Any(i => i.ItemId == req.ItemId))
                 {
-                    return new Result<ItemViewModel>(CommonErrors.ItemAlreadyOwned(req.ItemId));
+                    return new(CommonErrors.ItemAlreadyOwned(req.ItemId));
                 }
 
                 if (user.Gold < item.Value)
                 {
-                    return new Result<ItemViewModel>(CommonErrors.NotEnoughGold(item.Value, user.Gold));
+                    return new(CommonErrors.NotEnoughGold(item.Value, user.Gold));
                 }
 
                 user.Gold -= item.Value;
@@ -69,7 +69,7 @@ namespace Crpg.Application.Items.Commands
                 await _db.SaveChangesAsync(cancellationToken);
 
                 Logger.LogInformation("User '{0}' bought item '{1}'", req.UserId, req.ItemId);
-                return new Result<ItemViewModel>(_mapper.Map<ItemViewModel>(item));
+                return new(_mapper.Map<ItemViewModel>(item));
             }
         }
     }

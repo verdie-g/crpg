@@ -9,10 +9,10 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class DeleteCharacterCommand : IMediatorRequest
+    public record DeleteCharacterCommand : IMediatorRequest
     {
-        public int CharacterId { get; set; }
-        public int UserId { get; set; }
+        public int CharacterId { get; init; }
+        public int UserId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<DeleteCharacterCommand>
         {

@@ -4,17 +4,17 @@ import ItemMountComponent from '@/models/item-mount-component';
 import ItemWeaponComponent from '@/models/item-weapon-component';
 import Culture from '@/models/culture';
 
-export default class Item {
-  public id: number;
-  public templateMbId: string;
-  public name: string;
-  public value: number;
-  public type: ItemType;
-  public culture: Culture;
-  public weight: number;
-  public rank: number;
+export default interface Item {
+  id: number;
+  templateMbId: string;
+  name: string;
+  value: number;
+  type: ItemType;
+  culture: Culture;
+  weight: number;
+  rank: number;
 
-  public armor: ItemArmorComponent | null;
-  public mount: ItemMountComponent | null;
-  public weapons: ItemWeaponComponent[];
+  armor: ItemArmorComponent | null;
+  mount: ItemMountComponent | null;
+  weapons: ItemWeaponComponent[];
 }

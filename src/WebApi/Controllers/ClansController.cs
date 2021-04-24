@@ -24,11 +24,20 @@ namespace Crpg.WebApi.Controllers
             ResultToActionAsync(Mediator.Send(new GetClanQuery { ClanId = id }));
 
         /// <summary>
+        /// Gets the members of a clan.
+        /// </summary>
+        /// <response code="200">Ok.</response>
+        /// <response code="404">Clan was not found.</response>
+        [HttpGet("{id}/members")]
+        public Task<ActionResult<Result<IList<ClanMemberViewModel>>>> GetClanMembers([FromRoute] int id) =>
+            ResultToActionAsync(Mediator.Send(new GetClanMembersQuery { ClanId = id }));
+
+        /// <summary>
         /// Gets all clans.
         /// </summary>
         /// <response code="200">Ok.</response>
         [HttpGet]
-        public Task<ActionResult<Result<IList<ClanViewModel>>>> GetClans() =>
+        public Task<ActionResult<Result<IList<ClanWithMemberCountViewModel>>>> GetClans() =>
             ResultToActionAsync(Mediator.Send(new GetClansQuery()));
 
         /// <summary>
@@ -41,7 +50,7 @@ namespace Crpg.WebApi.Controllers
         [HttpPost]
         public Task<ActionResult<Result<ClanViewModel>>> CreateClan([FromBody] CreateClanCommand clan)
         {
-            clan.UserId = CurrentUser.UserId;
+            clan = clan with { UserId = CurrentUser.UserId };
             return ResultToCreatedAtActionAsync(nameof(GetClan), null, b => new { id = b.Id },
                 Mediator.Send(clan));
         }
@@ -53,7 +62,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="204">Kicked or left.</response>
         /// <response code="400">Bad Request.</response>
         [HttpDelete("{clanId}/members/{userId}")]
-        public Task<ActionResult> DeleteClan(int clanId, int userId)
+        public Task<ActionResult> KickClanMember(int clanId, int userId)
         {
             return ResultToActionAsync(Mediator.Send(new KickClanMemberCommand
             {
@@ -71,12 +80,14 @@ namespace Crpg.WebApi.Controllers
         /// <response code="400">Bad Request.</response>
         [HttpGet("{clanId}/invitations")]
         public Task<ActionResult<Result<IList<ClanInvitationViewModel>>>> GetClanInvitations([FromRoute] int clanId,
+            [FromQuery(Name = "type[]")] ClanInvitationType[] types,
             [FromQuery(Name = "status[]")] ClanInvitationStatus[] statuses)
         {
             return ResultToActionAsync(Mediator.Send(new GetClanInvitationsQuery
             {
                 UserId = CurrentUser.UserId,
                 ClanId = clanId,
+                Types = types,
                 Statuses = statuses,
             }));
         }
@@ -90,8 +101,7 @@ namespace Crpg.WebApi.Controllers
         [HttpPost("{clanId}/invitations")]
         public Task<ActionResult<Result<ClanInvitationViewModel>>> InviteToClan([FromRoute] int clanId, [FromBody] InviteClanMemberCommand invite)
         {
-            invite.UserId = CurrentUser.UserId;
-            invite.ClanId = clanId;
+            invite = invite with { UserId = CurrentUser.UserId, ClanId = clanId };
             return ResultToActionAsync(Mediator.Send(invite));
         }
 
@@ -103,11 +113,9 @@ namespace Crpg.WebApi.Controllers
         /// <response code="400">Bad Request.</response>
         [HttpPut("{clanId}/invitations/{invitationId}/responses")]
         public Task<ActionResult<Result<ClanInvitationViewModel>>> RespondToClanInvitation([FromRoute] int clanId,
-            [FromQuery] int invitationId, [FromBody] RespondClanInvitationCommand invite)
+            [FromRoute] int invitationId, [FromBody] RespondClanInvitationCommand invite)
         {
-            invite.UserId = CurrentUser.UserId;
-            invite.ClanId = clanId;
-            invite.ClanInvitationId = invitationId;
+            invite = invite with { UserId = CurrentUser.UserId, ClanId = clanId, ClanInvitationId = invitationId };
             return ResultToActionAsync(Mediator.Send(invite));
         }
     }

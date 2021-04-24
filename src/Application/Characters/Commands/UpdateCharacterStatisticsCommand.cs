@@ -14,11 +14,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands
 {
-    public class UpdateCharacterStatisticsCommand : IMediatorRequest<CharacterStatisticsViewModel>
+    public record UpdateCharacterStatisticsCommand : IMediatorRequest<CharacterStatisticsViewModel>
     {
-        public int UserId { get; set; }
-        public int CharacterId { get; set; }
-        public CharacterStatisticsViewModel Statistics { get; set; } = new CharacterStatisticsViewModel();
+        public int UserId { get; init; }
+        public int CharacterId { get; init; }
+        public CharacterStatisticsViewModel Statistics { get; init; } = new();
 
         internal class Handler : IMediatorRequestHandler<UpdateCharacterStatisticsCommand, CharacterStatisticsViewModel>
         {
@@ -40,7 +40,7 @@ namespace Crpg.Application.Characters.Commands
                         c.UserId == req.UserId && c.Id == req.CharacterId, cancellationToken);
                 if (character == null)
                 {
-                    return new Result<CharacterStatisticsViewModel>(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
+                    return new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
                 }
 
                 IList<Error>? errors;
@@ -56,11 +56,11 @@ namespace Crpg.Application.Characters.Commands
 
                 if (errors != null && errors.Count != 0)
                 {
-                    return new Result<CharacterStatisticsViewModel>(errors);
+                    return new(errors);
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
-                return new Result<CharacterStatisticsViewModel>(_mapper.Map<CharacterStatisticsViewModel>(character.Statistics));
+                return new(_mapper.Map<CharacterStatisticsViewModel>(character.Statistics));
             }
 
             private Result SetStatistics(CharacterStatistics stats, CharacterStatisticsViewModel newStats)
@@ -135,7 +135,7 @@ namespace Crpg.Application.Characters.Commands
                 return new Result();
             }
 
-            private static int CheckedDelta(int oldStat, int newStat, Func<int, int>? cost = null)
+            private int CheckedDelta(int oldStat, int newStat, Func<int, int>? cost = null)
             {
                 int delta = cost == null
                     ? newStat - oldStat
@@ -148,7 +148,7 @@ namespace Crpg.Application.Characters.Commands
                 throw new StatisticDecreasedException();
             }
 
-            private static bool CheckSkillsRequirement(CharacterStatisticsViewModel stats)
+            private bool CheckSkillsRequirement(CharacterStatisticsViewModel stats)
             {
                 return stats.Skills.IronFlesh <= stats.Attributes.Strength / 3
                     && stats.Skills.PowerStrike <= stats.Attributes.Strength / 3

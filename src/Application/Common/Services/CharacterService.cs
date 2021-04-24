@@ -60,7 +60,7 @@ namespace Crpg.Application.Common.Services
                 WeaponProficiencies = new CharacterWeaponProficiencies
                 {
                     Points = WeaponProficiencyPointsForLevel(respecialization ? character.Level : 1),
-                }
+                },
             };
         }
 

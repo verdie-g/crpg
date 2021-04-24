@@ -15,6 +15,45 @@ namespace Crpg.GameMod.Battle
     {
         public const string GameModeName = "cRPGBattle";
 
+        // used by MissionState.OpenNew that finds all methods having a ViewMethod attribute contained in class
+        // having a ViewCreatorModule attribute
+        [ViewMethod(GameModeName)]
+        private static MissionView[] OpenCrpgBattle(Mission mission)
+        {
+            var missionViewList = new List<MissionView>
+            {
+                ViewCreator.CreateLobbyEquipmentUIHandler(),
+                ViewCreator.CreateMultiplayerFactionBanVoteUIHandler(),
+                ViewCreator.CreateLobbyUIHandler(),
+                ViewCreator.CreateMissionKillNotificationUIHandler(),
+                ViewCreator.CreateMissionAgentStatusUIHandler(mission),
+                ViewCreator.CreateMissionMultiplayerPreloadView(mission),
+                ViewCreator.CreateMissionMainAgentEquipmentController(mission),
+                ViewCreator.CreateMissionMultiplayerEscapeMenu("Skirmish"),
+                ViewCreator.CreateMissionAgentLabelUIHandler(mission),
+                ViewCreator.CreateMultiplayerTeamSelectUIHandler(),
+                ViewCreator.CreateMissionScoreBoardUIHandler(mission, false),
+                ViewCreator.CreateMultiplayerEndOfRoundUIHandler(),
+                ViewCreator.CreatePollInitiationUIHandler(),
+                ViewCreator.CreatePollProgressUIHandler(),
+                new MissionItemContourControllerView(),
+                new MissionAgentContourControllerView(),
+                ViewCreator.CreateMultiplayerMissionHUDExtensionUIHandler(),
+                ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
+                ViewCreator.CreateOptionsUIHandler(),
+            };
+
+            if (!GameNetwork.IsClient)
+            {
+                missionViewList.Add(ViewCreator.CreateMultiplayerAdminPanelUIHandler());
+            }
+
+            missionViewList.Add(ViewCreator.CreateMissionBoundaryCrossingView());
+            missionViewList.Add(new MissionBoundaryWallView());
+            missionViewList.Add(new SpectatorCameraView());
+            return missionViewList.ToArray();
+        }
+
         public CrpgBattleGameMode() : base(GameModeName)
         {
         }
@@ -90,45 +129,6 @@ namespace Crpg.GameMod.Battle
                 new MissionOptionsComponent(),
                 new MissionScoreboardComponent("Skirmish"),
             };
-        }
-
-        // used by MissionState.OpenNew that finds all methods having a ViewMethod attribute contained in class
-        // having a ViewCreatorModule attribute
-        [ViewMethod(GameModeName)]
-        private static MissionView[] OpenCrpgBattle(Mission mission)
-        {
-            var missionViewList = new List<MissionView>
-            {
-                ViewCreator.CreateLobbyEquipmentUIHandler(),
-                ViewCreator.CreateMultiplayerFactionBanVoteUIHandler(),
-                ViewCreator.CreateLobbyUIHandler(),
-                ViewCreator.CreateMissionKillNotificationUIHandler(),
-                ViewCreator.CreateMissionAgentStatusUIHandler(mission),
-                ViewCreator.CreateMissionMultiplayerPreloadView(mission),
-                ViewCreator.CreateMissionMainAgentEquipmentController(mission),
-                ViewCreator.CreateMissionMultiplayerEscapeMenu("Skirmish"),
-                ViewCreator.CreateMissionAgentLabelUIHandler(mission),
-                ViewCreator.CreateMultiplayerTeamSelectUIHandler(),
-                ViewCreator.CreateMissionScoreBoardUIHandler(mission, false),
-                ViewCreator.CreateMultiplayerEndOfRoundUIHandler(),
-                ViewCreator.CreatePollInitiationUIHandler(),
-                ViewCreator.CreatePollProgressUIHandler(),
-                new MissionItemContourControllerView(),
-                new MissionAgentContourControllerView(),
-                ViewCreator.CreateMultiplayerMissionHUDExtensionUIHandler(),
-                ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
-                ViewCreator.CreateOptionsUIHandler()
-            };
-
-            if (!GameNetwork.IsClient)
-            {
-                missionViewList.Add(ViewCreator.CreateMultiplayerAdminPanelUIHandler());
-            }
-
-            missionViewList.Add(ViewCreator.CreateMissionBoundaryCrossingView());
-            missionViewList.Add(new MissionBoundaryWallView());
-            missionViewList.Add(new SpectatorCameraView());
-            return missionViewList.ToArray();
         }
     }
 }

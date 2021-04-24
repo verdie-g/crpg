@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Bans.Queries
 {
-    public class GetBansQuery : IMediatorRequest<IList<BanViewModel>>
+    public record GetBansQuery : IMediatorRequest<IList<BanViewModel>>
     {
         internal class Handler : IMediatorRequestHandler<GetBansQuery, IList<BanViewModel>>
         {
@@ -27,7 +27,7 @@ namespace Crpg.Application.Bans.Queries
             public async Task<Result<IList<BanViewModel>>> Handle(GetBansQuery request, CancellationToken cancellationToken)
             {
                 // the whole bans table is loaded. Acceptable since only admins can access this resource
-                return new Result<IList<BanViewModel>>(await _db.Bans
+                return new(await _db.Bans
                     .Include(b => b.BannedUser)
                     .Include(b => b.BannedByUser)
                     .ProjectTo<BanViewModel>(_mapper.ConfigurationProvider)

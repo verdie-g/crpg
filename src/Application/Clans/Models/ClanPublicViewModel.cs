@@ -3,10 +3,11 @@ using Crpg.Domain.Entities.Clans;
 
 namespace Crpg.Application.Clans.Models
 {
-    public class ClanPublicViewModel : IMapFrom<Clan>
+    public record ClanPublicViewModel : IMapFrom<Clan>
     {
-        public int Id { get; set; }
-        public string Tag { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
+        public int Id { get; init; }
+        public string Tag { get; init; } = string.Empty;
+        public string Color { get; init; } = string.Empty;
+        public string Name { get; init; } = string.Empty;
     }
 }

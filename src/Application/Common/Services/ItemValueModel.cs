@@ -4,9 +4,9 @@ using Crpg.Domain.Entities.Items;
 namespace Crpg.Application.Common.Services
 {
     /// <summary>
-    /// Service to compute the value of an <see cref="Item"/>.
+    /// Model to compute the value of an <see cref="Item"/>.
     /// </summary>
-    internal class ItemValueService
+    internal class ItemValueModel
     {
         public int ComputeItemValue(Item item)
         {
@@ -57,7 +57,7 @@ namespace Crpg.Application.Common.Services
                 ItemType.HandArmor => 1.7f,
                 ItemType.LegArmor => 1.6f,
                 ItemType.MountHarness => 1f,
-                _ => throw new ArgumentOutOfRangeException(nameof(itemType), itemType, null)
+                _ => throw new ArgumentOutOfRangeException(nameof(itemType), itemType, null),
             };
 
             return 0.1f * factor;
@@ -109,7 +109,7 @@ namespace Crpg.Application.Common.Services
             {
                 ItemType.Musket => 0.5f,
                 ItemType.Crossbow => 0.7f,
-                _ => 1f
+                _ => 1f,
             };
 
             return rangeTypeFactor * 0.00001f * weaponComponent.ThrustDamage * weaponComponent.ThrustSpeed * weaponComponent.Accuracy;
@@ -137,7 +137,7 @@ namespace Crpg.Application.Common.Services
         {
             DamageType.Blunt => 1.3f,
             DamageType.Pierce => 1.15f,
-            _ => 1f
+            _ => 1f,
         };
 
         private static float CalculateAmmoTier(ItemWeaponComponent weaponComponent)

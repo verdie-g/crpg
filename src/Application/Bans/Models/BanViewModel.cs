@@ -5,13 +5,13 @@ using Crpg.Domain.Entities;
 
 namespace Crpg.Application.Bans.Models
 {
-    public class BanViewModel : IMapFrom<Ban>
+    public record BanViewModel : IMapFrom<Ban>
     {
-        public int Id { get; set; }
-        public UserPublicViewModel? BannedUser { get; set; }
-        public TimeSpan Duration { get; set; }
-        public string Reason { get; set; } = string.Empty;
-        public UserPublicViewModel? BannedByUser { get; set; }
-        public DateTimeOffset CreatedAt { get; set; }
+        public int Id { get; init; }
+        public UserPublicViewModel? BannedUser { get; init; }
+        public TimeSpan Duration { get; init; }
+        public string Reason { get; init; } = string.Empty;
+        public UserPublicViewModel? BannedByUser { get; init; }
+        public DateTimeOffset CreatedAt { get; init; }
     }
 }

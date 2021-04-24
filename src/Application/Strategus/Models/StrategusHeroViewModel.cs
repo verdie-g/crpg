@@ -8,21 +8,21 @@ using NetTopologySuite.Geometries;
 
 namespace Crpg.Application.Strategus.Models
 {
-    public class StrategusHeroViewModel : IMapFrom<StrategusHero>
+    public record StrategusHeroViewModel : IMapFrom<StrategusHero>
     {
-        public int Id { get; set; }
-        public Platform Platform { get; set; }
-        public string PlatformUserId { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
-        public Region Region { get; set; }
-        public int Gold { get; set; }
-        public int Troops { get; set; }
-        public Point Position { get; set; } = default!;
-        public StrategusHeroStatus Status { get; set; }
-        public MultiPoint Waypoints { get; set; } = MultiPoint.Empty;
-        public StrategusHeroPublicViewModel? TargetedHero { get; set; }
-        public StrategusSettlementPublicViewModel? TargetedSettlement { get; set; }
-        public ClanPublicViewModel? Clan { get; set; }
+        public int Id { get; init; }
+        public Platform Platform { get; init; }
+        public string PlatformUserId { get; init; } = string.Empty;
+        public string Name { get; init; } = string.Empty;
+        public Region Region { get; init; }
+        public int Gold { get; init; }
+        public int Troops { get; init; }
+        public Point Position { get; init; } = default!;
+        public StrategusHeroStatus Status { get; init; }
+        public MultiPoint Waypoints { get; init; } = MultiPoint.Empty;
+        public StrategusHeroVisibleViewModel? TargetedHero { get; init; }
+        public StrategusSettlementPublicViewModel? TargetedSettlement { get; init; }
+        public ClanPublicViewModel? Clan { get; init; }
 
         public void Mapping(Profile profile)
         {
@@ -31,6 +31,7 @@ namespace Crpg.Application.Strategus.Models
                 .ForMember(u => u.Platform, opt => opt.MapFrom(u => u.User!.Platform))
                 .ForMember(u => u.PlatformUserId, opt => opt.MapFrom(u => u.User!.PlatformUserId))
                 .ForMember(u => u.Name, opt => opt.MapFrom(u => u.User!.Name))
+                .ForMember(h => h.Troops, opt => opt.MapFrom(u => (int)u.Troops))
                 .ForMember(u => u.Clan, opt => opt.MapFrom(u => u.User!.ClanMembership!.Clan));
         }
     }

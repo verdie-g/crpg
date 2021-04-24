@@ -1,4 +1,6 @@
-﻿namespace Crpg.Domain.Entities.Strategus
+﻿using Crpg.Domain.Entities.Strategus.Battles;
+
+namespace Crpg.Domain.Entities.Strategus
 {
     public enum StrategusHeroStatus
     {

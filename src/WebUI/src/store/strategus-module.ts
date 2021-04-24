@@ -3,15 +3,18 @@ import store from '@/store';
 import SettlementPublic from '@/models/settlement-public';
 import * as strategusService from '@/services/strategus-service';
 import { arrayMergeBy } from '@/utils/array';
-import HeroPublic from '@/models/hero-public';
 import Hero from '@/models/hero';
 import Region from '@/models/region';
+import HeroVisible from '@/models/hero-visible';
+import StrategusUpdate from '@/models/strategus-update';
+import { Result } from '@/models/result';
+import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
 
 @Module({ store, dynamic: true, name: 'strategus' })
 class StrategusModule extends VuexModule {
   hero: Hero | null = null;
   settlements: SettlementPublic[] = [];
-  visibleHeroes: HeroPublic[] = [];
+  visibleHeroes: HeroVisible[] = [];
 
   currentDialog: string | null = null;
 
@@ -26,7 +29,7 @@ class StrategusModule extends VuexModule {
   }
 
   @Mutation
-  setVisibleHeroes(heroes: HeroPublic[]) {
+  setVisibleHeroes(heroes: HeroVisible[]) {
     this.visibleHeroes = heroes;
   }
 
@@ -46,22 +49,29 @@ class StrategusModule extends VuexModule {
   }
 
   @Action({ commit: 'setHero' })
-  async registerUser(region: Region): Promise<Hero> {
+  registerUser(region: Region): Promise<Hero> {
     return strategusService.registerUser(region);
   }
 
   @Action
-  async getUpdate(): Promise<void> {
+  async getUpdate(): Promise<Result<StrategusUpdate>> {
     const res = await strategusService.getUpdate();
-    if (res.errors !== null && res.errors[0].code === 'HeroNotFound') {
-      this.pushDialog('RegistrationDialog');
-      return;
+    if (res.errors !== null) {
+      return res;
     }
 
     const update = res.data!;
     this.setHero(update.hero);
     this.setSettlements(arrayMergeBy(this.settlements, update.visibleSettlements, s => s.id));
     this.setVisibleHeroes(update.visibleHeroes);
+
+    return res;
+  }
+
+  @Action
+  async updateHeroStatus(update: HeroStatusUpdateRequest) {
+    const hero = await strategusService.updateHeroStatus(update);
+    this.setHero(hero);
   }
 }
 

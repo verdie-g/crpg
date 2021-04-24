@@ -40,7 +40,7 @@ namespace Crpg.GameMod.DataExport
                         {
                             double.Parse(settlementNode.Attribute("posX")!.Value),
                             double.Parse(settlementNode.Attribute("posY")!.Value),
-                        }
+                        },
                     },
                     Scene = GetSettlementScene(settlementNode),
                 };
@@ -53,7 +53,7 @@ namespace Crpg.GameMod.DataExport
                 NullValueHandling = NullValueHandling.Ignore,
                 Formatting = Formatting.Indented,
                 ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() },
-                Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() }
+                Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() },
             });
 
             using var s = new StreamWriter(Path.Combine(outputPath, "settlements.json"));

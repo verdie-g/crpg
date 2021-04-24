@@ -2,26 +2,26 @@ using System;
 
 namespace Crpg.Application.Steam
 {
-    public class SteamPlayer
+    public record SteamPlayer
     {
-        public string SteamId { get; set; } = string.Empty;
-        public CommunityVisibilityState CommunityVisibilityState { get; set; }
-        public int ProfileState { get; set; }
-        public string PersonaName { get; set; } = string.Empty;
-        public long LastLogoff { get; set; }
-        public int CommentPermission { get; set; }
-        public string ProfileUrl { get; set; } = string.Empty;
-        public Uri Avatar { get; set; } = default!;
-        public Uri AvatarMedium { get; set; } = default!;
-        public Uri AvatarFull { get; set; } = default!;
-        public OnlineStatus PersonaState { get; set; }
-        public string RealName { get; set; } = string.Empty;
-        public string PrimaryClanId { get; set; } = string.Empty;
-        public long TimeCreated { get; set; }
-        public int PersonAStateFlags { get; set; }
-        public string LocCountryCode { get; set; } = string.Empty;
-        public string LocStateCode { get; set; } = string.Empty;
-        public long LocCityId { get; set; }
+        public string SteamId { get; init; } = string.Empty;
+        public CommunityVisibilityState CommunityVisibilityState { get; init; }
+        public int ProfileState { get; init; }
+        public string PersonaName { get; init; } = string.Empty;
+        public long LastLogoff { get; init; }
+        public int CommentPermission { get; init; }
+        public string ProfileUrl { get; init; } = string.Empty;
+        public Uri Avatar { get; init; } = default!;
+        public Uri AvatarMedium { get; init; } = default!;
+        public Uri AvatarFull { get; init; } = default!;
+        public OnlineStatus PersonaState { get; init; }
+        public string RealName { get; init; } = string.Empty;
+        public string PrimaryClanId { get; init; } = string.Empty;
+        public long TimeCreated { get; init; }
+        public int PersonAStateFlags { get; init; }
+        public string LocCountryCode { get; init; } = string.Empty;
+        public string LocStateCode { get; init; } = string.Empty;
+        public long LocCityId { get; init; }
     }
 
     public enum CommunityVisibilityState

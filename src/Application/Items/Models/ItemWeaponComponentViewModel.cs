@@ -3,24 +3,24 @@ using Crpg.Domain.Entities.Items;
 
 namespace Crpg.Application.Items.Models
 {
-    public class ItemWeaponComponentViewModel : IMapFrom<ItemWeaponComponent>
+    public record ItemWeaponComponentViewModel : IMapFrom<ItemWeaponComponent>
     {
-        public WeaponClass Class { get; set; }
-        public int Accuracy { get; set; }
-        public int MissileSpeed { get; set; }
-        public int StackAmount { get; set; }
-        public int Length { get; set; }
-        public float Balance { get; set; }
-        public int Handling { get; set; }
-        public int BodyArmor { get; set; }
-        public WeaponFlags Flags { get; set; }
+        public WeaponClass Class { get; init; }
+        public int Accuracy { get; init; }
+        public int MissileSpeed { get; init; }
+        public int StackAmount { get; init; }
+        public int Length { get; init; }
+        public float Balance { get; init; }
+        public int Handling { get; init; }
+        public int BodyArmor { get; init; }
+        public WeaponFlags Flags { get; init; }
 
-        public int ThrustDamage { get; set; }
-        public DamageType ThrustDamageType { get; set; }
-        public int ThrustSpeed { get; set; }
+        public int ThrustDamage { get; init; }
+        public DamageType ThrustDamageType { get; init; }
+        public int ThrustSpeed { get; init; }
 
-        public int SwingDamage { get; set; }
-        public DamageType SwingDamageType { get; set; }
-        public int SwingSpeed { get; set; }
+        public int SwingDamage { get; init; }
+        public DamageType SwingDamageType { get; init; }
+        public int SwingSpeed { get; init; }
     }
 }

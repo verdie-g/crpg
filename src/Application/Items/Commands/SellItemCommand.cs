@@ -11,10 +11,10 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Items.Commands
 {
-    public class SellItemCommand : IMediatorRequest
+    public record SellItemCommand : IMediatorRequest
     {
-        public int ItemId { get; set; }
-        public int UserId { get; set; }
+        public int ItemId { get; init; }
+        public int UserId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<SellItemCommand>
         {

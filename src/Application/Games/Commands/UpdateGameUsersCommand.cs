@@ -20,9 +20,9 @@ namespace Crpg.Application.Games.Commands
     /// <summary>
     /// Give gold experience and break items of game users.
     /// </summary>
-    public class UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
+    public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
     {
-        public IList<GameUserUpdate> Updates { get; set; } = Array.Empty<GameUserUpdate>();
+        public IList<GameUserUpdate> Updates { get; init; } = Array.Empty<GameUserUpdate>();
 
         internal class Handler : IMediatorRequestHandler<UpdateGameUsersCommand, UpdateGameUsersResult>
         {
@@ -58,7 +58,7 @@ namespace Crpg.Application.Games.Commands
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
-                return new Result<UpdateGameUsersResult>(new UpdateGameUsersResult
+                return new(new UpdateGameUsersResult
                 {
                     UpdateResults = results.Select(r => new UpdateGameUserResult
                     {

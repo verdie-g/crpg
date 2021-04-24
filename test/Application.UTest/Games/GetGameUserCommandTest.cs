@@ -132,7 +132,7 @@ namespace Crpg.Application.UTest.Games
                 {
                     // Already owned item
                     new OwnedItem { ItemId = ArrangeDb.Items.First(i => i.TemplateMbId == GetGameUserCommand.Handler.DefaultItemSets[1][0].mbId).Id },
-                }
+                },
             };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
@@ -166,14 +166,14 @@ namespace Crpg.Application.UTest.Games
             {
                 Platform = Platform.Steam,
                 PlatformUserId = "1",
-                Characters = new List<Character> { new Character { Name = "a" } },
+                Characters = new List<Character> { new() { Name = "a" } },
             };
 
             var user1 = new User
             {
                 Platform = Platform.Epic,
                 PlatformUserId = user0.PlatformUserId, // Same platform user id but different platform
-                Characters = new List<Character> { new Character { Name = "a" } },
+                Characters = new List<Character> { new() { Name = "a" } },
             };
 
             ArrangeDb.AddRange(user0, user1);
@@ -207,9 +207,9 @@ namespace Crpg.Application.UTest.Games
                 PlatformUserId = "1",
                 Characters = new List<Character>
                 {
-                    new Character { Name = "a" },
-                    new Character { Name = "b" },
-                    new Character { Name = "c" },
+                    new() { Name = "a" },
+                    new() { Name = "b" },
+                    new() { Name = "c" },
                 },
             };
             ArrangeDb.Add(user);
@@ -241,11 +241,11 @@ namespace Crpg.Application.UTest.Games
                 PlatformUserId = "1",
                 Bans = new List<Ban>
                 {
-                    new Ban
+                    new()
                     {
                         CreatedAt = new DateTimeOffset(new DateTime(2000, 1, 1)),
                         Duration = TimeSpan.FromDays(1),
-                    }
+                    },
                 },
             };
             ArrangeDb.Users.Add(user);
@@ -281,16 +281,16 @@ namespace Crpg.Application.UTest.Games
                 PlatformUserId = "1",
                 Bans = new List<Ban>
                 {
-                    new Ban
+                    new()
                     {
                         CreatedAt = new DateTimeOffset(new DateTime(2000, 1, 1)),
                         Duration = TimeSpan.FromDays(1),
                     },
-                    new Ban
+                    new()
                     {
                         CreatedAt = new DateTimeOffset(new DateTime(2000, 1, 1, 6, 0, 0)),
                         Duration = TimeSpan.Zero,
-                    }
+                    },
                 },
             };
             ArrangeDb.Users.Add(user);

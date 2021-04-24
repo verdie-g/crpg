@@ -35,7 +35,7 @@ namespace Crpg.GameMod.DataExport
             "../../Modules/SandBoxCore/ModuleData/spitems/weapons.xml",
         };
 
-        private static readonly HashSet<ItemObject.ItemTypeEnum> BlacklistedItemTypes = new HashSet<ItemObject.ItemTypeEnum>
+        private static readonly HashSet<ItemObject.ItemTypeEnum> BlacklistedItemTypes = new()
         {
             ItemObject.ItemTypeEnum.Invalid,
             ItemObject.ItemTypeEnum.Goods,
@@ -43,7 +43,7 @@ namespace Crpg.GameMod.DataExport
             ItemObject.ItemTypeEnum.Book,
         };
 
-        private static readonly HashSet<string> BlacklistedItems = new HashSet<string>
+        private static readonly HashSet<string> BlacklistedItems = new()
         {
             "aserai_horse_tournament", // Name conflict with aserai_horse.
             "aserai_lord_helmet_a", // Name conflict with southern_lord_helmet.
@@ -95,7 +95,7 @@ namespace Crpg.GameMod.DataExport
             "woodland_throwing_axe_1_t1", // Name conflict with highland_throwing_axe_1_t2.
         };
 
-        private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByPowerStrike = new HashSet<CrpgWeaponClass>
+        private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByPowerStrike = new()
         {
              CrpgWeaponClass.Dagger,
              CrpgWeaponClass.OneHandedSword,
@@ -110,12 +110,12 @@ namespace Crpg.GameMod.DataExport
              CrpgWeaponClass.LowGripPolearm,
         };
 
-        private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByPowerDraw = new HashSet<CrpgWeaponClass>
+        private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByPowerDraw = new()
         {
              CrpgWeaponClass.Bow,
         };
 
-        private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByPowerThrow = new HashSet<CrpgWeaponClass>
+        private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByPowerThrow = new()
         {
              CrpgWeaponClass.Stone,
              CrpgWeaponClass.Boulder,
@@ -124,7 +124,7 @@ namespace Crpg.GameMod.DataExport
              CrpgWeaponClass.Javelin,
         };
 
-        private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByShield = new HashSet<CrpgWeaponClass>
+        private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByShield = new()
         {
              CrpgWeaponClass.SmallShield,
              CrpgWeaponClass.LargeShield,
@@ -330,7 +330,7 @@ namespace Crpg.GameMod.DataExport
                 NullValueHandling = NullValueHandling.Ignore,
                 Formatting = Newtonsoft.Json.Formatting.Indented,
                 ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() },
-                Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() }
+                Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() },
             });
 
             using var s = new StreamWriter(Path.Combine(outputPath, "items.json"));
@@ -353,7 +353,7 @@ namespace Crpg.GameMod.DataExport
                 {
                     ItemObject.ItemTypeEnum.Shield => ItemObject.ItemTypeEnum.Bow,
                     ItemObject.ItemTypeEnum.HandArmor => ItemObject.ItemTypeEnum.Animal,
-                    _ => mbItem.Type
+                    _ => mbItem.Type,
                 };
 
                 var createTextureTaskSource = new TaskCompletionSource<object?>();

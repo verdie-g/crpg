@@ -8,6 +8,7 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Strategus;
+using Crpg.Domain.Entities.Strategus.Battles;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -15,9 +16,9 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Strategus.Commands
 {
-    public class UpdateStrategusBattlePhasesCommand : IMediatorRequest
+    public record UpdateStrategusBattlePhasesCommand : IMediatorRequest
     {
-        public TimeSpan DeltaTime { get; set; }
+        public TimeSpan DeltaTime { get; init; }
 
         internal class Handler : IMediatorRequestHandler<UpdateStrategusBattlePhasesCommand>
         {
@@ -42,6 +43,7 @@ namespace Crpg.Application.Strategus.Commands
             public async Task<Result> Handle(UpdateStrategusBattlePhasesCommand req, CancellationToken cancellationToken)
             {
                 var battles = _db.StrategusBattles
+                    .AsSplitQuery()
                     .Include(b => b.AttackedSettlement)
                     .Include(b => b.Fighters).ThenInclude(f => f.Hero)
                     .Where(b =>

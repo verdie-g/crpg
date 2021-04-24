@@ -14,10 +14,10 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Items.Commands
 {
-    public class UpgradeItemCommand : IMediatorRequest<ItemViewModel>
+    public record UpgradeItemCommand : IMediatorRequest<ItemViewModel>
     {
-        public int ItemId { get; set; }
-        public int UserId { get; set; }
+        public int ItemId { get; init; }
+        public int UserId { get; init; }
 
         internal class Handler : IMediatorRequestHandler<UpgradeItemCommand, ItemViewModel>
         {
@@ -43,12 +43,12 @@ namespace Crpg.Application.Items.Commands
                     .FirstOrDefaultAsync(oi => oi.UserId == req.UserId && oi.ItemId == req.ItemId, cancellationToken);
                 if (ownedItem == null)
                 {
-                    return new Result<ItemViewModel>(CommonErrors.ItemNotOwned(req.ItemId));
+                    return new(CommonErrors.ItemNotOwned(req.ItemId));
                 }
 
                 if (ownedItem.Item!.Rank >= 3)
                 {
-                    return new Result<ItemViewModel>(CommonErrors.ItemMaxRankReached(req.ItemId, req.UserId, 3));
+                    return new(CommonErrors.ItemMaxRankReached(req.ItemId, req.UserId, 3));
                 }
 
                 var upgradedItem = await _db.Items
@@ -59,7 +59,7 @@ namespace Crpg.Application.Items.Commands
                     int repairCost = (int)MathHelper.ApplyPolynomialFunction(upgradedItem.Value, _constants.ItemRepairCostCoefs);
                     if (ownedItem.User!.Gold < repairCost)
                     {
-                        return new Result<ItemViewModel>(CommonErrors.NotEnoughGold(repairCost, ownedItem.User!.Gold));
+                        return new(CommonErrors.NotEnoughGold(repairCost, ownedItem.User!.Gold));
                     }
 
                     ownedItem.User!.Gold -= repairCost;
@@ -68,7 +68,7 @@ namespace Crpg.Application.Items.Commands
                 {
                     if (ownedItem.User!.HeirloomPoints == 0)
                     {
-                        return new Result<ItemViewModel>(CommonErrors.NotEnoughHeirloomPoints(1, ownedItem.User.HeirloomPoints));
+                        return new(CommonErrors.NotEnoughHeirloomPoints(1, ownedItem.User.HeirloomPoints));
                     }
 
                     ownedItem.User!.HeirloomPoints -= 1;
@@ -87,7 +87,7 @@ namespace Crpg.Application.Items.Commands
                 await _db.SaveChangesAsync(cancellationToken);
 
                 Logger.LogInformation("User '{0}' upgraded item '{1}' to rank {2}", req.UserId, req.ItemId, upgradedItem.Rank);
-                return new Result<ItemViewModel>(_mapper.Map<ItemViewModel>(upgradedItem));
+                return new(_mapper.Map<ItemViewModel>(upgradedItem));
             }
         }
     }
