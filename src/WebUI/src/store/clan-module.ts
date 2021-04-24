@@ -3,14 +3,14 @@ import store from '@/store';
 import * as clanService from '@/services/clan-service';
 import Clan from '@/models/clan';
 import ClanCreation from '@/models/clan-creation';
-import ClanWithMembers from '@/models/clan-with-members';
+import ClanWithMemberCount from '@/models/clan-with-member-count';
 
 @Module({ store, dynamic: true, name: 'clan' })
 class ClanModule extends VuexModule {
-  clans: Clan[] = [];
+  clans: ClanWithMemberCount[] = [];
 
   @Mutation
-  setClans(clans: Clan[]) {
+  setClans(clans: ClanWithMemberCount[]) {
     this.clans = clans;
   }
 
@@ -20,7 +20,7 @@ class ClanModule extends VuexModule {
   }
 
   @Action
-  createClan(clan: ClanCreation): Promise<ClanWithMembers> {
+  createClan(clan: ClanCreation): Promise<Clan> {
     return clanService.createClan(clan);
   }
 

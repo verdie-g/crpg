@@ -1,13 +1,18 @@
 import { get, post, put, del } from './crpg-client';
 import Clan from '@/models/clan';
-import ClanWithMembers from '@/models/clan-with-members';
+import ClanWithMemberCount from '@/models/clan-with-member-count';
 import ClanCreation from '@/models/clan-creation';
 import ClanInvitation from '@/models/clan-invitation';
 import ClanInvitationStatus from '@/models/clan-invitation-status';
 import ClanInvitationType from '@/models/clan-invitation-type';
+import ClanMember from '@/models/clan-member';
 
-export function getClan(id: number): Promise<ClanWithMembers> {
+export function getClan(id: number): Promise<Clan> {
   return get(`/clans/${id}`);
+}
+
+export function getClanMembers(id: number): Promise<ClanMember[]> {
+  return get(`/clans/${id}/members`);
 }
 
 export function getClanInvitations(
@@ -34,11 +39,11 @@ export function respondToClanInvitation(
   return put(`/clans/${clanId}/invitations/${clanInvitationId}/responses`, { accept });
 }
 
-export function getClans(): Promise<Clan[]> {
+export function getClans(): Promise<ClanWithMemberCount[]> {
   return get('/clans');
 }
 
-export function createClan(clan: ClanCreation): Promise<ClanWithMembers> {
+export function createClan(clan: ClanCreation): Promise<Clan> {
   return post('/clans', clan);
 }
 

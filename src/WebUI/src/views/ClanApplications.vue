@@ -28,8 +28,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import * as clanService from '@/services/clan-service';
-import ClanWithMembers from '@/models/clan-with-members';
 import PlatformComponent from '@/components/Platform.vue';
+import Clan from '@/models/clan';
 import ClanInvitation from '@/models/clan-invitation';
 import ClanInvitationStatus from '@/models/clan-invitation-status';
 import ClanInvitationType from '@/models/clan-invitation-type';
@@ -38,7 +38,7 @@ import { notify } from '@/services/notifications-service';
 
 @Component({ components: { platform: PlatformComponent } })
 export default class ClanApplicationsComponent extends Vue {
-  clan: ClanWithMembers | null = null;
+  clan: Clan | null = null;
   applications: ClanInvitation[] = [];
 
   created() {

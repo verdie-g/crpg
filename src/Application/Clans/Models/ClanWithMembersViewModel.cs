@@ -1,15 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
 using Crpg.Application.Common.Mappings;
 using Crpg.Domain.Entities.Clans;
 
 namespace Crpg.Application.Clans.Models
 {
-    public record ClanWithMembersViewModel : IMapFrom<Clan>
+    public record ClanWithMemberCountViewModel : IMapFrom<Clan>
     {
-        public int Id { get; init; }
-        public string Tag { get; init; } = string.Empty;
-        public string Color { get; init; } = string.Empty;
-        public string Name { get; init; } = string.Empty;
-        public IList<ClanMemberViewModel> Members { get; init; } = new List<ClanMemberViewModel>();
+        public ClanViewModel Clan { get; init; } = default!;
+        public int MemberCount { get; init; }
+
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<Clan, ClanWithMemberCountViewModel>()
+                .ForMember(c => c.Clan, opt => opt.MapFrom(c => c))
+                .ForMember(c => c.MemberCount, opt => opt.MapFrom(c => c.Members.Count));
+        }
     }
 }

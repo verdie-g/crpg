@@ -3,5 +3,4 @@ export default interface Clan {
   tag: string;
   color: string;
   name: string;
-  memberCount: number;
 }

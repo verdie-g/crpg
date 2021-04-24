@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <b-table :data="clan.members" :hoverable="true">
+      <b-table :data="members" :hoverable="true">
         <b-table-column field="name" label="Name" v-slot="props">
           {{ props.row.user.name }}
           <platform
@@ -53,8 +53,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import * as clanService from '@/services/clan-service';
-import ClanWithMembers from '@/models/clan-with-members';
 import PlatformComponent from '@/components/Platform.vue';
+import Clan from '@/models/clan';
 import ClanMember from '@/models/clan-member';
 import clanModule from '@/store/clan-module';
 import { notify } from '@/services/notifications-service';
@@ -64,7 +64,8 @@ import ClanMemberRole from '@/models/clan-member-role';
 
 @Component({ components: { platform: PlatformComponent } })
 export default class ClanComponent extends Vue {
-  clan: ClanWithMembers | null = null;
+  clan: Clan | null = null;
+  members: ClanMember[] = [];
   applicationSent = false;
 
   get selfMember(): ClanMember | null {
@@ -73,7 +74,7 @@ export default class ClanComponent extends Vue {
       return null;
     }
 
-    const selfMember = this.clan.members.find(m => m.user.id === userModule.user!.id);
+    const selfMember = this.members.find(m => m.user.id === userModule.user!.id);
     return selfMember === undefined ? null : selfMember;
   }
 
@@ -86,14 +87,15 @@ export default class ClanComponent extends Vue {
     return selfMember.role === ClanMemberRole.Admin || selfMember.role === ClanMemberRole.Leader;
   }
 
-  async created() {
+  created() {
     const clanId = parseInt(this.$route.params.id as string);
     if (Number.isNaN(clanId)) {
       this.$router.push({ name: 'not-found' });
       return;
     }
 
-    this.clan = await clanService.getClan(clanId);
+    clanService.getClan(clanId).then(c => (this.clan = c));
+    clanService.getClanMembers(clanId).then(m => (this.members = m));
   }
 
   memberKickable(member: ClanMember): boolean {
@@ -101,7 +103,7 @@ export default class ClanComponent extends Vue {
     if (
       selfMember !== null &&
       member.user.id === selfMember.user.id &&
-      (member.role !== ClanMemberRole.Leader || this.clan!.members.length === 1)
+      (member.role !== ClanMemberRole.Leader || this.members.length === 1)
     ) {
       return true;
     }
@@ -131,7 +133,7 @@ export default class ClanComponent extends Vue {
       this.$router.push({ name: 'clans' });
     } else {
       notify('Clan member kicked');
-      arrayRemove(this.clan!.members, m => m === member);
+      arrayRemove(this.members, m => m === member);
     }
   }
 }

@@ -33,12 +33,12 @@
         @click="onRowClick"
       >
         <b-table-column field="tag" label="Tag" width="100" v-slot="props">
-          <div class="box clan-color" :style="`background-color: ${props.row.color}`"></div>
+          <div class="box clan-color" :style="`background-color: ${props.row.clan.color}`"></div>
           {{ props.row.tag }}
         </b-table-column>
 
         <b-table-column field="name" label="Name" v-slot="props">
-          {{ props.row.name }}
+          {{ props.row.clan.name }}
         </b-table-column>
 
         <b-table-column field="memberCount" label="Members" v-slot="props">
@@ -58,6 +58,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import clanModule from '@/store/clan-module';
 import Clan from '@/models/clan';
 import userModule from '@/store/user-module';
+import ClanWithMemberCount from '@/models/clan-with-member-count';
 
 @Component
 export default class Clans extends Vue {
@@ -71,7 +72,7 @@ export default class Clans extends Vue {
     return this.userClan === null ? '' : `clans/${this.userClan.id}`;
   }
 
-  get clans(): Clan[] {
+  get clans(): ClanWithMemberCount[] {
     return clanModule.clans;
   }
 
@@ -81,8 +82,8 @@ export default class Clans extends Vue {
     userModule.getUserClan();
   }
 
-  onRowClick(clan: Clan): void {
-    this.$router.push({ path: `clans/${clan.id}` });
+  onRowClick(clan: ClanWithMemberCount): void {
+    this.$router.push({ path: `clans/${clan.clan.id}` });
   }
 }
 </script>
