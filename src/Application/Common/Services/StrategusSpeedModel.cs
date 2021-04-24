@@ -44,7 +44,7 @@ namespace Crpg.Application.Common.Services
             {
                 mounts += ownedItem.Count;
                 int mountSpeed = ownedItem.Item!.Mount!.HitPoints / 100;
-                if (mounts >= troops)
+                if (mounts >= troops && mountSpeed >= forcedMarchSpeed)
                 {
                     /*
                     this is in case there is enough mount for everyone soldier to be mounted.
@@ -55,14 +55,7 @@ namespace Crpg.Application.Common.Services
                     Marathon runner are more suited for long distance than sprint runners
                     Manually designed speed for mounts should be added later for more fine tuning
                     */
-                    if (mountSpeed >= forcedMarchSpeed)
-                    {
-                        return mountSpeed;
-                    }
-                    else
-                    {
-                        return forcedMarchSpeed * mounts / troops + (1 - mounts / troops);
-                    }
+                    return mountSpeed;
                 }
             }
 
