@@ -220,6 +220,8 @@ export default class Shop extends Vue {
 </script>
 
 <style scoped lang="scss">
+@import '~bulma/sass/utilities/_all';
+
 .items {
   justify-content: center;
 }
@@ -229,6 +231,10 @@ export default class Shop extends Vue {
   flex-direction: column;
   width: 256px;
   height: 100%;
+
+  .card-image > .image > img {
+    background: radial-gradient($grey, $grey-darker);
+  }
 
   .card-content {
     margin-bottom: 0;
