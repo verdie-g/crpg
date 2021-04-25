@@ -1,9 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Strategus.Queries;
-using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Strategus;
-using Crpg.Domain.Entities.Users;
 using NetTopologySuite.Geometries;
 using NUnit.Framework;
 
@@ -22,14 +20,6 @@ namespace Crpg.Application.UTest.Strategus
                     Type = StrategusSettlementType.Village,
                     Position = new Point(5, 6),
                     Scene = "battania_village",
-                    Owner = new StrategusHero
-                    {
-                        User = new User
-                        {
-                            Name = "u",
-                            ClanMembership = new ClanMember { Clan = new Clan { Name = "c" } },
-                        },
-                    },
                 },
                 new StrategusSettlement
                 {
@@ -49,11 +39,7 @@ namespace Crpg.Application.UTest.Strategus
             Assert.AreEqual(2, settlementViews.Count);
 
             Assert.AreEqual("abc", settlementViews[0].Name);
-            Assert.AreEqual("u", settlementViews[0].Owner!.Name);
-            Assert.AreEqual("c", settlementViews[0].Owner!.Clan!.Name);
-
             Assert.AreEqual("def", settlementViews[1].Name);
-            Assert.IsNull(settlementViews[1].Owner);
         }
     }
 }

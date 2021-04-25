@@ -13,6 +13,5 @@ namespace Crpg.Application.Strategus.Models
         public Point Position { get; init; } = default!;
         public Culture Culture { get; init; }
         public Region Region { get; init; }
-        public StrategusHeroPublicViewModel? Owner { get; init; }
     }
 }
