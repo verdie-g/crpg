@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav v-if="user">
-      <b-navbar fixed-top>
+      <b-navbar fixed-top :close-on-click="false">
         <template slot="brand">
           <b-navbar-item tag="router-link" :to="{ path: '/' }">cRPG</b-navbar-item>
         </template>
