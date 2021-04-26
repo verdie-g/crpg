@@ -1,6 +1,7 @@
 # Export items
 
 **The quality of the images depends on the level of the graphics of the game**
+
 To export item thumbnails and the items.json file, follow the instructions:
 
 - Set the `MBPATH` environment variable to your Bannerlord path (e.g. C:/Program Files/steam/steamapps/common/Mount & Blade 2: Bannerlord)
