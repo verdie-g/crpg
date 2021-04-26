@@ -7,6 +7,7 @@
         <div class="column is-narrow gear-column">
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)">
             <img
+              class="background-item border-item"
               v-if="itemsBySlot[itemSlot.Head]"
               :src="itemImage(itemsBySlot[itemSlot.Head])"
               alt="Head armor"
@@ -15,6 +16,7 @@
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Shoulder)">
             <img
+              class="background-item border-item"
               v-if="itemsBySlot[itemSlot.Shoulder]"
               :src="itemImage(itemsBySlot[itemSlot.Shoulder])"
               alt="Shoulder"
@@ -23,6 +25,7 @@
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)">
             <img
+              class="background-item border-item"
               v-if="itemsBySlot[itemSlot.Body]"
               :src="itemImage(itemsBySlot[itemSlot.Body])"
               alt="Body armor"
@@ -31,6 +34,7 @@
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)">
             <img
+              class="background-item border-item"
               v-if="itemsBySlot[itemSlot.Hand]"
               :src="itemImage(itemsBySlot[itemSlot.Hand])"
               alt="Hand armor"
@@ -39,6 +43,7 @@
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)">
             <img
+              class="background-item border-item"
               v-if="itemsBySlot[itemSlot.Leg]"
               :src="itemImage(itemsBySlot[itemSlot.Leg])"
               alt="Leg armor"
@@ -50,6 +55,7 @@
         <div class="column is-narrow mount-column">
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.MountHarness)">
             <img
+              class="background-item border-item"
               v-if="itemsBySlot[itemSlot.MountHarness]"
               :src="itemImage(itemsBySlot[itemSlot.MountHarness])"
               alt="Mount harness"
@@ -63,6 +69,7 @@
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Mount)">
             <img
+              class="background-item border-item"
               v-if="itemsBySlot[itemSlot.Mount]"
               :src="itemImage(itemsBySlot[itemSlot.Mount])"
               alt="Mount"
@@ -73,6 +80,7 @@
         <div class="column is-narrow weapon-column">
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon0)">
             <img
+              class="background-item border-item"
               v-if="itemsBySlot[itemSlot.Weapon0]"
               :src="itemImage(itemsBySlot[itemSlot.Weapon0])"
               alt="First weapon"
@@ -80,6 +88,7 @@
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)">
             <img
+              class="background-item border-item"
               v-if="itemsBySlot[itemSlot.Weapon1]"
               :src="itemImage(itemsBySlot[itemSlot.Weapon1])"
               alt="Second weapon"
@@ -87,6 +96,7 @@
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)">
             <img
+              class="background-item border-item"
               v-if="itemsBySlot[itemSlot.Weapon2]"
               :src="itemImage(itemsBySlot[itemSlot.Weapon2])"
               alt="Third weapon"
@@ -94,6 +104,7 @@
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)">
             <img
+              class="background-item border-item"
               v-if="itemsBySlot[itemSlot.Weapon3]"
               :src="itemImage(itemsBySlot[itemSlot.Weapon3])"
               alt="Fourth Weapon"
@@ -177,7 +188,11 @@
               @click="selectedItem = ownedItem"
             >
               <figure class="image">
-                <img :src="itemImage(ownedItem)" alt="item image" />
+                <img
+                  class="background-item border-item"
+                  :src="itemImage(ownedItem)"
+                  alt="item image"
+                />
               </figure>
               <h4 :class="itemRankClass(ownedItem)">{{ ownedItem.name }}</h4>
               <item-properties :item="ownedItem" />
@@ -374,6 +389,10 @@ export default class CharacterComponent extends Vue {
   padding: 0;
   cursor: pointer;
   text-align: center; // to align horizontally placeholder
+
+  .border-item {
+    border-radius: 6px;
+  }
 
   &:hover {
     box-shadow: 0 5px 8px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);

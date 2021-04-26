@@ -1,7 +1,12 @@
+@import '~bulma/sass/utilities/_all';
 // Add more height to navbar default params is too low (default value 3.25rem)
 $navbar-height: 4.25rem;
 // Make sure the navbar is always over the page content (that's not the case by default with leaflet) (default value 30)
 $navbar-fixed-z: 1100;
+
+.background-item {
+  background: radial-gradient($grey, $grey-darker);
+}
 
 // Import Bulma and Buefy styles
 @import '~bulma';
