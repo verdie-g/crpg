@@ -93,7 +93,7 @@ namespace Crpg.GameMod
 
             #if false
             Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
-                new TextObject("Export Data"), 4578, ExportData, false));
+                new TextObject("Export Data"), 4578, ExportData, () => false));
             #endif
 
             // Uncomment to start watching UI changes.
