@@ -2,6 +2,8 @@
 $navbar-height: 4.25rem;
 // Make sure the navbar is always over the page content (that's not the case by default with leaflet) (default value 30)
 $navbar-fixed-z: 1100;
+// Modals over navbar
+$modal-z: 1200;
 
 // Import Bulma and Buefy styles
 @import '~bulma';

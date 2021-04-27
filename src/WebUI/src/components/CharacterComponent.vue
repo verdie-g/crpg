@@ -4,100 +4,24 @@
 
     <div class="column character-items">
       <div class="columns item-boxes">
-        <div class="column is-narrow gear-column">
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)">
+        <div
+          v-for="(itemType, itemTypeIndex) in slotsParams"
+          :key="itemTypeIndex"
+          class="column is-narrow"
+          :class="itemType.class"
+        >
+          <div
+            v-for="(item, itemIndex) in itemType.items"
+            :key="itemIndex"
+            class="box item-box"
+            @click="openReplaceItemModal(item.model)"
+          >
             <img
-              v-if="itemsBySlot[itemSlot.Head]"
-              :src="itemImage(itemsBySlot[itemSlot.Head])"
-              alt="Head armor"
+              v-if="itemsBySlot[item.model]"
+              :src="itemImage(itemsBySlot[item.model])"
+              :alt="item.alt"
             />
-            <img v-else src="../assets/head-armor.png" alt="Head armor" class="item-placeholder" />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Shoulder)">
-            <img
-              v-if="itemsBySlot[itemSlot.Shoulder]"
-              :src="itemImage(itemsBySlot[itemSlot.Shoulder])"
-              alt="Shoulder"
-            />
-            <img v-else src="../assets/cape.png" alt="Shoulder" class="item-placeholder" />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)">
-            <img
-              v-if="itemsBySlot[itemSlot.Body]"
-              :src="itemImage(itemsBySlot[itemSlot.Body])"
-              alt="Body armor"
-            />
-            <img v-else src="../assets/body-armor.png" alt="Body armor" class="item-placeholder" />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)">
-            <img
-              v-if="itemsBySlot[itemSlot.Hand]"
-              :src="itemImage(itemsBySlot[itemSlot.Hand])"
-              alt="Hand armor"
-            />
-            <img v-else src="../assets/hand-armor.png" alt="Hand armor" class="item-placeholder" />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)">
-            <img
-              v-if="itemsBySlot[itemSlot.Leg]"
-              :src="itemImage(itemsBySlot[itemSlot.Leg])"
-              alt="Leg armor"
-            />
-            <img v-else src="../assets/leg-armor.png" alt="Leg armor" class="item-placeholder" />
-          </div>
-        </div>
-
-        <div class="column is-narrow mount-column">
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.MountHarness)">
-            <img
-              v-if="itemsBySlot[itemSlot.MountHarness]"
-              :src="itemImage(itemsBySlot[itemSlot.MountHarness])"
-              alt="Mount harness"
-            />
-            <img
-              v-else
-              src="../assets/horse-harness.png"
-              alt="Horse harness"
-              class="item-placeholder"
-            />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Mount)">
-            <img
-              v-if="itemsBySlot[itemSlot.Mount]"
-              :src="itemImage(itemsBySlot[itemSlot.Mount])"
-              alt="Mount"
-            />
-          </div>
-        </div>
-
-        <div class="column is-narrow weapon-column">
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon0)">
-            <img
-              v-if="itemsBySlot[itemSlot.Weapon0]"
-              :src="itemImage(itemsBySlot[itemSlot.Weapon0])"
-              alt="First weapon"
-            />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)">
-            <img
-              v-if="itemsBySlot[itemSlot.Weapon1]"
-              :src="itemImage(itemsBySlot[itemSlot.Weapon1])"
-              alt="Second weapon"
-            />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)">
-            <img
-              v-if="itemsBySlot[itemSlot.Weapon2]"
-              :src="itemImage(itemsBySlot[itemSlot.Weapon2])"
-              alt="Third weapon"
-            />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)">
-            <img
-              v-if="itemsBySlot[itemSlot.Weapon3]"
-              :src="itemImage(itemsBySlot[itemSlot.Weapon3])"
-              alt="Fourth Weapon"
-            />
+            <img v-else :src="item.placeholder" :alt="item.alt" class="item-placeholder" />
           </div>
         </div>
       </div>
@@ -219,11 +143,78 @@ export default class CharacterComponent extends Vue {
   @Prop(Object) readonly character: Character;
 
   // modal stuff
-  itemSlot = ItemSlot;
   isReplaceItemModalActive = false;
   itemToReplace: Item | null = null;
   itemToReplaceSlot: ItemSlot | null = null;
   selectedItem: Item | null = null;
+  slotsParams = {
+    gear: {
+      class: 'gear-column',
+      items: {
+        Head: { model: ItemSlot.Head, alt: 'Head armor', placeholder: '../assets/head-armor.png' },
+        Shoulder: {
+          model: ItemSlot.Shoulder,
+          alt: 'Shoulder',
+          placeholder: '../assets/cape.png',
+        },
+        Body: {
+          model: ItemSlot.Body,
+          alt: 'Body armor',
+          placeholder: '../assets/body-armor.png',
+        },
+        Hand: {
+          model: ItemSlot.Hand,
+          alt: 'Hand armor',
+          placeholder: '../assets/hand-armor.png',
+        },
+        Leg: {
+          model: ItemSlot.Leg,
+          alt: 'Leg armor',
+          placeholder: '../assets/leg-armor.png',
+        },
+      },
+    },
+    mount: {
+      class: 'mount-column',
+      items: {
+        MountHarness: {
+          model: ItemSlot.MountHarness,
+          alt: 'Mount harness',
+          placeholder: '../assets/horse-harness.png',
+        },
+        Mount: {
+          model: ItemSlot.MountHarness,
+          alt: 'Mount',
+          placeholder: null,
+        },
+      },
+    },
+    weapon: {
+      class: 'weapon-column',
+      items: {
+        Weapon0: {
+          model: ItemSlot.Weapon0,
+          alt: 'First weapon',
+          placeholder: null,
+        },
+        Weapon1: {
+          model: ItemSlot.Weapon1,
+          alt: 'Second weapon',
+          placeholder: null,
+        },
+        Weapon2: {
+          model: ItemSlot.Weapon2,
+          alt: 'Third weapon',
+          placeholder: null,
+        },
+        Weapon3: {
+          model: ItemSlot.Weapon3,
+          alt: 'Fourth Weapon',
+          placeholder: null,
+        },
+      },
+    },
+  };
 
   get itemsBySlot(): Record<ItemSlot, Item> {
     return this.character.equippedItems.reduce((itemsBySlot, ei) => {
