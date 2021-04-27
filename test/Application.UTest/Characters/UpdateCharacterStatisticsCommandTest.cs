@@ -81,7 +81,7 @@ namespace Crpg.Application.UTest.Characters
                             Riding = 10,
                             WeaponMaster = 10,
                             MountedArchery = 10,
-                            Shield = 10,
+                            Shield = 20,
                         },
                         WeaponProficiencies = new CharacterWeaponProficienciesViewModel
                         {
@@ -271,7 +271,7 @@ namespace Crpg.Application.UTest.Characters
                 },
                 new CharacterStatisticsViewModel
                 {
-                    Attributes = new CharacterAttributesViewModel { Agility = 5 },
+                    Attributes = new CharacterAttributesViewModel { Agility = 2 },
                     Skills = new CharacterSkillsViewModel { Shield = 1 },
                 },
             };
