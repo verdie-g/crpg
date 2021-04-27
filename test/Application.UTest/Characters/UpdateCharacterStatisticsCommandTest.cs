@@ -108,7 +108,7 @@ namespace Crpg.Application.UTest.Characters
             Assert.AreEqual(10, stats.Skills.Riding);
             Assert.AreEqual(10, stats.Skills.WeaponMaster);
             Assert.AreEqual(10, stats.Skills.MountedArchery);
-            Assert.AreEqual(10, stats.Skills.Shield);
+            Assert.AreEqual(20, stats.Skills.Shield);
             Assert.AreEqual(779, stats.WeaponProficiencies.Points);
             Assert.AreEqual(7, stats.WeaponProficiencies.OneHanded);
             Assert.AreEqual(7, stats.WeaponProficiencies.TwoHanded);
