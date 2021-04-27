@@ -21,7 +21,12 @@
               :src="itemImage(itemsBySlot[item.model])"
               :alt="item.alt"
             />
-            <img v-else :src="item.placeholder" :alt="item.alt" class="item-placeholder" />
+            <img
+              v-else-if="item.placeholder"
+              :src="item.placeholder"
+              :alt="item.alt"
+              class="item-placeholder"
+            />
           </div>
         </div>
       </div>
