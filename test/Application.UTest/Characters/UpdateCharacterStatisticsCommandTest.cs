@@ -34,7 +34,7 @@ namespace Crpg.Application.UTest.Characters
                     },
                     Skills = new CharacterSkills
                     {
-                        Points = 45,
+                        Points = 55,
                         IronFlesh = 1,
                         PowerStrike = 2,
                         PowerDraw = 3,
