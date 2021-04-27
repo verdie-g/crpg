@@ -158,7 +158,7 @@ namespace Crpg.Application.Characters.Commands
                     && stats.Skills.Riding <= stats.Attributes.Agility / 3
                     && stats.Skills.WeaponMaster <= stats.Attributes.Agility / 3
                     && stats.Skills.MountedArchery <= stats.Attributes.Agility / 6
-                    && stats.Skills.Shield <= stats.Attributes.Agility / 6;
+                    && stats.Skills.Shield <= stats.Attributes.Agility / 3;
             }
 
             private int WeaponProficienciesPointsForAgility(int agility) =>
