@@ -14,8 +14,14 @@
       </b-menu>
 
       <div class="column">
-        <div v-if="selectedCharacter">
-          <character-component :character="selectedCharacter" />
+        <div v-if="this.characters.length !== 0">
+          <template v-for="character in characters">
+            <character-component
+              v-if="character === selectedCharacter"
+              :key="character.id"
+              :character="selectedCharacter"
+            />
+          </template>
         </div>
         <div v-else>
           <!-- if no character -->

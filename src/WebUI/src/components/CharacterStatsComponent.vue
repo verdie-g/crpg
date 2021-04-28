@@ -39,7 +39,7 @@
       </b-field>
     </div>
 
-    <div class="stats-section">
+    <div class="stats-section" v-if="stats !== null">
       <h2 class="title is-4">
         Attributes ({{ stats.attributes.points + statsDelta.attributes.points }})
         <b-tooltip
@@ -97,7 +97,7 @@
       </b-field>
     </div>
 
-    <div class="stats-section">
+    <div class="stats-section" v-if="stats !== null">
       <h2 class="title is-4">
         Skills ({{ stats.skills.points + statsDelta.skills.points }})
         <b-tooltip
@@ -338,7 +338,7 @@
       </b-field>
     </div>
 
-    <div class="stats-section">
+    <div class="stats-section" v-if="stats !== null">
       <h2 class="title is-4">
         Weapon Proficiencies ({{
           stats.weaponProficiencies.points + statsDelta.weaponProficiencies.points
@@ -501,25 +501,23 @@ export default class CharacterStatsComponent extends Vue {
   }
 
   get stats(): CharacterStatistics {
-    return this.character.statistics;
+    return userModule.characterStatistics(this.character.id)!;
   }
 
   get wasChangeMade(): boolean {
-    // prettier-ignore
     return (
-      this.statsDelta.attributes.points !== 0
-      || this.statsDelta.skills.points !== 0
-      || this.statsDelta.weaponProficiencies.points !== 0
+      this.statsDelta.attributes.points !== 0 ||
+      this.statsDelta.skills.points !== 0 ||
+      this.statsDelta.weaponProficiencies.points !== 0
     );
   }
 
   get isChangeValid(): boolean {
-    // prettier-ignore
     return (
-      this.stats.attributes.points + this.statsDelta.attributes.points >= 0
-      && this.stats.skills.points + this.statsDelta.skills.points >= 0
-      && this.stats.weaponProficiencies.points + this.statsDelta.weaponProficiencies.points >= 0
-      && this.allCurrentSkillRequirementsSatisfied
+      this.stats.attributes.points + this.statsDelta.attributes.points >= 0 &&
+      this.stats.skills.points + this.statsDelta.skills.points >= 0 &&
+      this.stats.weaponProficiencies.points + this.statsDelta.weaponProficiencies.points >= 0 &&
+      this.allCurrentSkillRequirementsSatisfied
     );
   }
 
@@ -527,6 +525,10 @@ export default class CharacterStatsComponent extends Vue {
     return Object.keys(this.stats.skills)
       .filter(skillKey => skillKey !== 'points')
       .every(skillKey => this.currentSkillRequirementsSatisfied(skillKey as SkillKey));
+  }
+
+  created() {
+    userModule.getCharacterStatistics(this.character.id);
   }
 
   createEmptyStatistics(): CharacterStatistics {
@@ -561,7 +563,7 @@ export default class CharacterStatsComponent extends Vue {
   }
 
   convertStats(conversion: StatisticConversion): Promise<CharacterStatistics> {
-    return userModule.convertCharacterStats({ characterId: this.character.id, conversion });
+    return userModule.convertCharacterStatistics({ characterId: this.character.id, conversion });
   }
 
   getInputProps(
@@ -592,7 +594,7 @@ export default class CharacterStatsComponent extends Vue {
   }
 
   onInput(statSectionKey: StatSectionKey, statKey: StatKey, newStatValue: number): void {
-    const statInitialSection = this.stats[statSectionKey] as any;
+    const statInitialSection = this.stats![statSectionKey] as any;
     const statDeltaSection = this.statsDelta[statSectionKey] as any;
 
     const oldStatValue = statInitialSection[statKey] + statDeltaSection[statKey];
@@ -688,7 +690,7 @@ export default class CharacterStatsComponent extends Vue {
   commit(): void {
     this.updatingStats = true;
     userModule
-      .updateCharacterStats({
+      .updateCharacterStatistics({
         characterId: this.character.id,
         stats: {
           attributes: {

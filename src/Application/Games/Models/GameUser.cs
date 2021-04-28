@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Crpg.Application.Bans.Models;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Mappings;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Application.Games.Models
@@ -16,7 +13,7 @@ namespace Crpg.Application.Games.Models
         public Platform Platform { get; init; }
         public string PlatformUserId { get; init; } = string.Empty;
         public int Gold { get; init; }
-        public CharacterViewModel Character { get; init; } = default!;
+        public CharacterFullViewModel Character { get; init; } = default!;
         public BanViewModel? Ban { get; set; }
 
         public void Mapping(Profile profile)

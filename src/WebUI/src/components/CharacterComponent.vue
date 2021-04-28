@@ -1,6 +1,10 @@
 <template>
   <div class="columns container is-fluid">
-    <character-stats-component :character="character" class="column character-stats" />
+    <character-stats-component
+      v-if="character !== null"
+      :character="character"
+      class="column character-stats"
+    />
 
     <div class="column character-items">
       <div class="columns item-boxes">
@@ -211,6 +215,8 @@ import { computeAverageRepairCost } from '@/services/characters-service';
 import { filterItemsFittingInSlot } from '@/services/item-service';
 import { notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
+import EquippedItem from '@/models/equipped-item';
+import CharacterStatistics from '@/models/character-statistics';
 
 @Component({
   components: { CharacterStatsComponent, ItemProperties },
@@ -225,15 +231,27 @@ export default class CharacterComponent extends Vue {
   itemToReplaceSlot: ItemSlot | null = null;
   selectedItem: Item | null = null;
 
+  get characterEquippedItems(): EquippedItem[] | null {
+    return userModule.characterEquippedItems(this.character.id);
+  }
+
   get itemsBySlot(): Record<ItemSlot, Item> {
-    return this.character.equippedItems.reduce((itemsBySlot, ei) => {
+    if (this.characterEquippedItems === null) {
+      return {} as Record<ItemSlot, Item>;
+    }
+
+    return this.characterEquippedItems.reduce((itemsBySlot, ei) => {
       itemsBySlot[ei.slot] = ei.item;
       return itemsBySlot;
     }, {} as Record<ItemSlot, Item>);
   }
 
   get averageRepairCost(): number {
-    return Math.floor(computeAverageRepairCost(this.character.equippedItems));
+    if (this.characterEquippedItems === null) {
+      return 0;
+    }
+
+    return Math.floor(computeAverageRepairCost(this.characterEquippedItems));
   }
 
   get fittingOwnedItems(): Item[] {
@@ -255,6 +273,10 @@ export default class CharacterComponent extends Vue {
     }
 
     return info;
+  }
+
+  created() {
+    userModule.getCharacterItems(this.character.id);
   }
 
   itemImage(item: Item): string {

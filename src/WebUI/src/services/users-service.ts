@@ -42,6 +42,10 @@ export function deleteCharacter(characterId: number): Promise<void> {
   return del(`/users/self/characters/${characterId}`);
 }
 
+export function getCharacterItems(characterId: number): Promise<EquippedItem[]> {
+  return get(`/users/self/characters/${characterId}/items`);
+}
+
 export function updateCharacterItems(
   characterId: number,
   items: EquippedItemId[]
@@ -53,14 +57,18 @@ export function switchCharacterAutoRepair(characterId: number, autoRepair: boole
   return put(`/users/self/characters/${characterId}/auto-repair`, { autoRepair });
 }
 
-export function updateCharacterStats(
+export function getCharacterStatistics(characterId: number): Promise<CharacterStatistics> {
+  return get(`/users/self/characters/${characterId}/statistics`);
+}
+
+export function updateCharacterStatistics(
   characterId: number,
   req: CharacterStatistics
 ): Promise<CharacterStatistics> {
   return put(`/users/self/characters/${characterId}/statistics`, req);
 }
 
-export function convertCharacterStats(
+export function convertCharacterStatistics(
   characterId: number,
   conversion: StatisticConversion
 ): Promise<CharacterStatistics> {

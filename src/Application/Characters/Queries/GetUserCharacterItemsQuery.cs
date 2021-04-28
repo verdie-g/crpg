@@ -1,22 +1,21 @@
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Items.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Queries
 {
-    public record GetUserCharacterQuery : IMediatorRequest<CharacterViewModel>
+    public record GetUserCharacterItemsQuery : IMediatorRequest<IList<EquippedItemViewModel>>
     {
         public int CharacterId { get; init; }
         public int UserId { get; init; }
 
-        internal class Handler : IMediatorRequestHandler<GetUserCharacterQuery, CharacterViewModel>
+        internal class Handler : IMediatorRequestHandler<GetUserCharacterItemsQuery, IList<EquippedItemViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -27,16 +26,16 @@ namespace Crpg.Application.Characters.Queries
                 _mapper = mapper;
             }
 
-            public async Task<Result<CharacterViewModel>> Handle(GetUserCharacterQuery req, CancellationToken cancellationToken)
+            public async Task<Result<IList<EquippedItemViewModel>>> Handle(GetUserCharacterItemsQuery req, CancellationToken cancellationToken)
             {
                 var character = await _db.Characters
-                    .Where(c => c.Id == req.CharacterId && c.UserId == req.UserId)
-                    .ProjectTo<CharacterViewModel>(_mapper.ConfigurationProvider)
-                    .FirstOrDefaultAsync(cancellationToken);
+                    .AsNoTracking()
+                    .Include(c => c.EquippedItems).ThenInclude(ei => ei.Item)
+                    .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
 
                 return character == null
                     ? new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId))
-                    : new(character);
+                    : new(_mapper.Map<IList<EquippedItemViewModel>>(character.EquippedItems));
             }
         }
     }

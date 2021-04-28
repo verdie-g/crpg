@@ -76,6 +76,22 @@ namespace Crpg.WebApi.Controllers
         }
 
         /// <summary>
+        /// Get character statistics for the current user.
+        /// </summary>
+        /// <param name="id">Character id.</param>
+        /// <returns>The character statistics.</returns>
+        /// <response code="200">Ok.</response>
+        [HttpGet("self/characters/{id}/statistics")]
+        public Task<ActionResult<Result<CharacterStatisticsViewModel>>> GetCharacterStatistics([FromRoute] int id)
+        {
+            return ResultToActionAsync(Mediator.Send(new GetUserCharacterStatisticsQuery
+            {
+                UserId = CurrentUser.UserId,
+                CharacterId = id,
+            }));
+        }
+
+        /// <summary>
         /// Updates character statistics for the current user.
         /// </summary>
         /// <param name="id">Character id.</param>
@@ -110,6 +126,22 @@ namespace Crpg.WebApi.Controllers
         {
             req = req with { CharacterId = id, UserId = CurrentUser.UserId };
             return ResultToActionAsync(Mediator.Send(req));
+        }
+
+        /// <summary>
+        /// Get character items for the current user.
+        /// </summary>
+        /// <param name="id">Character id.</param>
+        /// <returns>The character items.</returns>
+        /// <response code="200">Ok.</response>
+        [HttpGet("self/characters/{id}/items")]
+        public Task<ActionResult<Result<IList<EquippedItemViewModel>>>> GetCharacterItems([FromRoute] int id)
+        {
+            return ResultToActionAsync(Mediator.Send(new GetUserCharacterItemsQuery
+            {
+                UserId = CurrentUser.UserId,
+                CharacterId = id,
+            }));
         }
 
         /// <summary>

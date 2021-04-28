@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
@@ -29,14 +30,12 @@ namespace Crpg.Application.Characters.Queries
             public async Task<Result<IList<CharacterViewModel>>> Handle(GetUserCharactersQuery req, CancellationToken cancellationToken)
             {
                 var characters = await _db.Characters
-                    .AsNoTracking()
-                    .Include(c => c.EquippedItems).ThenInclude(ei => ei.Item)
                     .Where(c => c.UserId == req.UserId)
                     .OrderByDescending(c => c.UpdatedAt)
+                    .ProjectTo<CharacterViewModel>(_mapper.ConfigurationProvider)
                     .ToListAsync(cancellationToken);
 
-                // can't use ProjectTo https://github.com/dotnet/efcore/issues/19726
-                return new(_mapper.Map<IList<CharacterViewModel>>(characters));
+                return new(characters);
             }
         }
     }

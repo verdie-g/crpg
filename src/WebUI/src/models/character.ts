@@ -1,6 +1,3 @@
-import CharacterStatistics from '@/models/character-statistics';
-import EquippedItem from '@/models/equipped-item';
-
 export default interface Character {
   id: number;
   name: string;
@@ -8,6 +5,4 @@ export default interface Character {
   level: number;
   experience: number;
   autoRepair: boolean;
-  statistics: CharacterStatistics;
-  equippedItems: EquippedItem[];
 }
