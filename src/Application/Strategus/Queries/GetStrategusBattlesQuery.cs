@@ -40,6 +40,7 @@ namespace Crpg.Application.Strategus.Queries
                 var battlesVm = battles.Select(b => new StrategusBattlePublicViewModel
                 {
                     Id = b.Id,
+                    Region = b.Region,
                     Phase = b.Phase,
                     Attacker = _mapper.Map<StrategusBattleFighterPublicViewModel>(
                         b.Fighters.First(f => f.Side == StrategusBattleSide.Attacker && f.MainFighter)),

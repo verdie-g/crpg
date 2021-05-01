@@ -1343,6 +1343,7 @@ namespace Crpg.Application.System.Commands
                 StrategusBattle nideonBattle = new()
                 {
                     Phase = StrategusBattlePhase.Preparation,
+                    Region = Region.Europe,
                     Position = nideon.Position,
                     AttackedSettlement = nideon,
                     Fighters =
@@ -1364,6 +1365,7 @@ namespace Crpg.Application.System.Commands
                 StrategusBattle plainBattle = new()
                 {
                     Phase = StrategusBattlePhase.Preparation,
+                    Region = Region.Europe,
                     Position = new Point(107.187, -110.164),
                     Fighters =
                     {
@@ -1391,6 +1393,7 @@ namespace Crpg.Application.System.Commands
                 StrategusBattle hertogeaBattle = new()
                 {
                     Phase = StrategusBattlePhase.Hiring,
+                    Region = Region.Europe,
                     Position = hertogea.Position,
                     AttackedSettlement = hertogea,
                     Fighters =
@@ -1422,6 +1425,7 @@ namespace Crpg.Application.System.Commands
                 StrategusBattle leblenionBattle = new()
                 {
                     Phase = StrategusBattlePhase.Hiring,
+                    Region = Region.Europe,
                     Position = leblenion.Position,
                     AttackedSettlement = leblenion,
                     Fighters =

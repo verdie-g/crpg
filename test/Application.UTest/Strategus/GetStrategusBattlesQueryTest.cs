@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Strategus.Queries;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Strategus;
 using Crpg.Domain.Entities.Strategus.Battles;
 using Crpg.Domain.Entities.Users;
@@ -17,6 +18,7 @@ namespace Crpg.Application.UTest.Strategus
             {
                 new()
                 {
+                    Region = Region.NorthAmerica,
                     Phase = StrategusBattlePhase.Preparation,
                     Fighters =
                     {
@@ -48,6 +50,7 @@ namespace Crpg.Application.UTest.Strategus
                 },
                 new()
                 {
+                    Region = Region.NorthAmerica,
                     Phase = StrategusBattlePhase.Hiring,
                     Fighters =
                     {
@@ -87,6 +90,7 @@ namespace Crpg.Application.UTest.Strategus
             var battlesVm = res.Data!;
             Assert.AreEqual(2, battlesVm.Count);
 
+            Assert.AreEqual(Region.NorthAmerica, battlesVm[0].Region);
             Assert.AreEqual(StrategusBattlePhase.Preparation, battlesVm[0].Phase);
             Assert.IsNotNull(battlesVm[0].Attacker);
             Assert.IsNotNull(battlesVm[0].Attacker.Hero);
@@ -96,6 +100,7 @@ namespace Crpg.Application.UTest.Strategus
             Assert.AreEqual(45, battlesVm[0].DefenderTotalTroops);
             Assert.IsNull(battlesVm[0].SettlementDefender);
 
+            Assert.AreEqual(Region.NorthAmerica, battlesVm[1].Region);
             Assert.AreEqual(StrategusBattlePhase.Hiring, battlesVm[1].Phase);
             Assert.IsNotNull(battlesVm[1].Attacker);
             Assert.IsNotNull(battlesVm[1].Attacker.Hero);

@@ -150,6 +150,7 @@ namespace Crpg.Application.Strategus.Commands
                     StrategusBattle battle = new()
                     {
                         Phase = StrategusBattlePhase.Preparation,
+                        Region = hero.TargetedHero.Region, // Region of the defender.
                         Position = GetMidPoint(hero.Position, hero.TargetedHero.Position),
                         Fighters =
                         {
@@ -209,6 +210,7 @@ namespace Crpg.Application.Strategus.Commands
                     var battle = new StrategusBattle
                     {
                         Phase = StrategusBattlePhase.Preparation,
+                        Region = hero.TargetedSettlement.Region, // Region of the defender.
                         Position = GetMidPoint(hero.Position, hero.TargetedSettlement.Position),
                         AttackedSettlement = hero.TargetedSettlement,
                         Fighters =

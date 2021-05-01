@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Strategus.Commands;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Strategus;
 using Crpg.Domain.Entities.Strategus.Battles;
 using Crpg.Domain.Entities.Users;
@@ -412,9 +413,14 @@ namespace Crpg.Application.UTest.Strategus
         {
             var position = new Point(1, 2);
             var destination = new Point(5, 6);
-            var settlement = new StrategusSettlement { Position = destination };
+            var settlement = new StrategusSettlement
+            {
+                Region = Region.NorthAmerica,
+                Position = destination,
+            };
             var hero = new StrategusHero
             {
+                Region = Region.Europe,
                 Status = StrategusHeroStatus.MovingToAttackSettlement,
                 Position = position,
                 TargetedSettlement = settlement,
@@ -442,6 +448,7 @@ namespace Crpg.Application.UTest.Strategus
                 .Include(b => b.Fighters).ThenInclude(f => f.Hero)
                 .FirstOrDefaultAsync();
             Assert.IsNotNull(battle);
+            Assert.AreEqual(Region.NorthAmerica, battle.Region);
             Assert.AreEqual(StrategusBattlePhase.Preparation, battle.Phase);
             Assert.AreEqual(new Point(4, 5), battle.Position);
             Assert.AreEqual(settlement.Id, battle.AttackedSettlementId);

@@ -8,6 +8,7 @@ namespace Crpg.Domain.Entities.Strategus.Battles
     {
         public int Id { get; set; }
         public StrategusBattlePhase Phase { get; set; }
+        public Region Region { get; set; }
         public Point Position { get; set; } = default!;
 
         /// <summary>
