@@ -22,6 +22,7 @@ namespace Crpg.Application.UTest.Strategus
             {
                 HeroId = 1,
                 BattleId = 2,
+                Side = StrategusBattleSide.Attacker,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -40,6 +41,7 @@ namespace Crpg.Application.UTest.Strategus
             {
                 HeroId = hero.Id,
                 BattleId = 2,
+                Side = StrategusBattleSide.Attacker,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -58,6 +60,7 @@ namespace Crpg.Application.UTest.Strategus
             {
                 HeroId = hero.Id,
                 BattleId = 2,
+                Side = StrategusBattleSide.Attacker,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -87,6 +90,7 @@ namespace Crpg.Application.UTest.Strategus
             {
                 HeroId = hero.Id,
                 BattleId = battle.Id,
+                Side = StrategusBattleSide.Attacker,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -121,6 +125,7 @@ namespace Crpg.Application.UTest.Strategus
             {
                 HeroId = hero.Id,
                 BattleId = battle.Id,
+                Side = StrategusBattleSide.Attacker,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -146,6 +151,7 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.StrategusBattles.Add(battle);
             StrategusBattleFighterApplication existingApplication = new()
             {
+                Side = StrategusBattleSide.Defender,
                 Status = existingApplicationStatus,
                 Battle = battle,
                 Hero = hero,
@@ -163,6 +169,7 @@ namespace Crpg.Application.UTest.Strategus
             {
                 HeroId = hero.Id,
                 BattleId = battle.Id,
+                Side = StrategusBattleSide.Defender,
             }, CancellationToken.None);
 
             Assert.IsNull(res.Errors);
@@ -197,12 +204,14 @@ namespace Crpg.Application.UTest.Strategus
             {
                 HeroId = hero.Id,
                 BattleId = battle.Id,
+                Side = StrategusBattleSide.Defender,
             }, CancellationToken.None);
 
             Assert.IsNull(res.Errors);
             var application = res.Data!;
             Assert.NotZero(application.Id);
             Assert.AreEqual(hero.Id, application.Hero!.Id);
+            Assert.AreEqual(StrategusBattleSide.Defender, application.Side);
             Assert.AreEqual(StrategusBattleFighterApplicationStatus.Pending, application.Status);
         }
     }

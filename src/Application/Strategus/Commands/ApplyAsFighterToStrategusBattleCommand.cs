@@ -10,6 +10,7 @@ using Crpg.Application.Common.Services;
 using Crpg.Application.Strategus.Models;
 using Crpg.Domain.Entities.Strategus;
 using Crpg.Domain.Entities.Strategus.Battles;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -20,6 +21,15 @@ namespace Crpg.Application.Strategus.Commands
     {
         public int HeroId { get; init; }
         public int BattleId { get; init; }
+        public StrategusBattleSide Side { get; init; }
+
+        public class Validator : AbstractValidator<ApplyAsFighterToStrategusBattleCommand>
+        {
+            public Validator()
+            {
+                RuleFor(a => a.Side).IsInEnum();
+            }
+        }
 
         internal class Handler : IMediatorRequestHandler<ApplyAsFighterToStrategusBattleCommand, StrategusBattleFighterApplicationViewModel>
         {
@@ -73,6 +83,7 @@ namespace Crpg.Application.Strategus.Commands
                 var existingPendingApplication = await _db.StrategusBattleFighterApplications
                     .Include(a => a.Hero)
                     .Where(a => a.HeroId == req.HeroId && a.BattleId == req.BattleId
+                                                       && a.Side == req.Side
                                                        && (a.Status == StrategusBattleFighterApplicationStatus.Pending
                                                        || a.Status == StrategusBattleFighterApplicationStatus.Accepted))
                     .ProjectTo<StrategusBattleFighterApplicationViewModel>(_mapper.ConfigurationProvider)
@@ -84,6 +95,7 @@ namespace Crpg.Application.Strategus.Commands
 
                 StrategusBattleFighterApplication application = new()
                 {
+                    Side = req.Side,
                     Status = StrategusBattleFighterApplicationStatus.Pending,
                     Battle = battle,
                     Hero = hero,

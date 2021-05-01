@@ -1369,8 +1369,18 @@ namespace Crpg.Application.System.Commands
                     },
                     FighterApplications =
                     {
-                        new StrategusBattleFighterApplication { Hero = tipsyTobyHero, Status = StrategusBattleFighterApplicationStatus.Pending }, // TODO: Attacker
-                        new StrategusBattleFighterApplication { Hero = localAlphaHero, Status = StrategusBattleFighterApplicationStatus.Pending }, // TODO: Defender
+                        new StrategusBattleFighterApplication
+                        {
+                            Hero = tipsyTobyHero,
+                            Side = StrategusBattleSide.Attacker,
+                            Status = StrategusBattleFighterApplicationStatus.Pending,
+                        },
+                        new StrategusBattleFighterApplication
+                        {
+                            Hero = localAlphaHero,
+                            Side = StrategusBattleSide.Defender,
+                            Status = StrategusBattleFighterApplicationStatus.Pending,
+                        },
                     },
                 };
                 StrategusBattle hertogeaBattle = new()
@@ -1384,9 +1394,24 @@ namespace Crpg.Application.System.Commands
                     },
                     FighterApplications =
                     {
-                        new StrategusBattleFighterApplication { Hero = kedrynFuelHero, Status = StrategusBattleFighterApplicationStatus.Pending }, // TODO: Attacker
-                        new StrategusBattleFighterApplication { Hero = luqeroHero, Status = StrategusBattleFighterApplicationStatus.Pending }, // TODO: Defender
-                        new StrategusBattleFighterApplication { Hero = ilyaHero, Status = StrategusBattleFighterApplicationStatus.Pending }, // TODO: Defender
+                        new StrategusBattleFighterApplication
+                        {
+                            Hero = kedrynFuelHero,
+                            Side = StrategusBattleSide.Attacker,
+                            Status = StrategusBattleFighterApplicationStatus.Pending,
+                        },
+                        new StrategusBattleFighterApplication
+                        {
+                            Hero = luqeroHero,
+                            Side = StrategusBattleSide.Defender,
+                            Status = StrategusBattleFighterApplicationStatus.Pending,
+                        },
+                        new StrategusBattleFighterApplication
+                        {
+                            Hero = ilyaHero,
+                            Side = StrategusBattleSide.Defender,
+                            Status = StrategusBattleFighterApplicationStatus.Pending,
+                        },
                     },
                 };
                 StrategusBattle leblenionBattle = new()
