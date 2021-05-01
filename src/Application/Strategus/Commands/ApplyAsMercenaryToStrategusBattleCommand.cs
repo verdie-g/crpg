@@ -10,6 +10,7 @@ using Crpg.Application.Common.Services;
 using Crpg.Application.Strategus.Models;
 using Crpg.Application.Users.Models;
 using Crpg.Domain.Entities.Strategus.Battles;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -21,10 +22,19 @@ namespace Crpg.Application.Strategus.Commands
         public int UserId { get; init; }
         public int CharacterId { get; init; }
         public int BattleId { get; init; }
+        public StrategusBattleSide Side { get; init; }
+
+        public class Validator : AbstractValidator<ApplyAsMercenaryToStrategusBattleCommand>
+        {
+            public Validator()
+            {
+                RuleFor(a => a.Side).IsInEnum();
+            }
+        }
 
         internal class Handler : IMediatorRequestHandler<ApplyAsMercenaryToStrategusBattleCommand, StrategusBattleMercenaryApplicationViewModel>
         {
-            private static readonly ILogger Logger = LoggerFactory.CreateLogger<BuyStrategusItemCommand>();
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<ApplyAsMercenaryToStrategusBattleCommand>();
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -67,6 +77,7 @@ namespace Crpg.Application.Strategus.Commands
                 var application = await _db.StrategusBattleMercenaryApplications
                     .Where(a => a.CharacterId == req.CharacterId
                                 && a.BattleId == req.BattleId
+                                && a.Side == req.Side
                                 && (a.Status == StrategusBattleMercenaryApplicationStatus.Pending
                                     || a.Status == StrategusBattleMercenaryApplicationStatus.Accepted))
                     .FirstOrDefaultAsync(cancellationToken);
@@ -74,6 +85,7 @@ namespace Crpg.Application.Strategus.Commands
                 {
                     application = new StrategusBattleMercenaryApplication
                     {
+                        Side = req.Side,
                         Status = StrategusBattleMercenaryApplicationStatus.Pending,
                         Battle = battle,
                         Character = character,
@@ -94,6 +106,7 @@ namespace Crpg.Application.Strategus.Commands
                         Level = character.Level,
                         Class = _characterClassModel.ResolveCharacterClass(character.Statistics),
                     },
+                    Side = application.Side,
                     Status = application.Status,
                 });
             }

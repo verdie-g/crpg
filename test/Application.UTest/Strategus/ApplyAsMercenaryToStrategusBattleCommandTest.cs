@@ -27,6 +27,7 @@ namespace Crpg.Application.UTest.Strategus
                 UserId = user.Id,
                 CharacterId = 2,
                 BattleId = 3,
+                Side = StrategusBattleSide.Attacker,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -47,6 +48,7 @@ namespace Crpg.Application.UTest.Strategus
                 UserId = user.Id,
                 CharacterId = character.Id,
                 BattleId = 2,
+                Side = StrategusBattleSide.Attacker,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -72,6 +74,7 @@ namespace Crpg.Application.UTest.Strategus
                 UserId = user.Id,
                 CharacterId = character.Id,
                 BattleId = battle.Id,
+                Side = StrategusBattleSide.Attacker,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -91,6 +94,7 @@ namespace Crpg.Application.UTest.Strategus
 
             StrategusBattleMercenaryApplication existingApplication = new()
             {
+                Side = StrategusBattleSide.Attacker,
                 Status = existingApplicationStatus,
                 Battle = battle,
                 Character = character,
@@ -104,6 +108,7 @@ namespace Crpg.Application.UTest.Strategus
                 UserId = user.Id,
                 CharacterId = character.Id,
                 BattleId = battle.Id,
+                Side = StrategusBattleSide.Attacker,
             }, CancellationToken.None);
 
             Assert.IsNull(res.Errors);
@@ -136,6 +141,7 @@ namespace Crpg.Application.UTest.Strategus
                 UserId = user.Id,
                 CharacterId = character.Id,
                 BattleId = battle.Id,
+                Side = StrategusBattleSide.Defender,
             }, CancellationToken.None);
 
             Assert.IsNull(res.Errors);
@@ -144,6 +150,7 @@ namespace Crpg.Application.UTest.Strategus
             Assert.AreEqual(user.Id, application.User.Id);
             Assert.AreEqual(character.Id, application.Character.Id);
             Assert.AreEqual(CharacterClass.Crossbowman, application.Character.Class);
+            Assert.AreEqual(StrategusBattleSide.Defender, application.Side);
             Assert.AreEqual(StrategusBattleMercenaryApplicationStatus.Pending, application.Status);
         }
     }

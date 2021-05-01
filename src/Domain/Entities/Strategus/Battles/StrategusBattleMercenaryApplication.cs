@@ -12,6 +12,9 @@ namespace Crpg.Domain.Entities.Strategus.Battles
         public int Id { get; set; }
         public int BattleId { get; set; }
         public int CharacterId { get; set; }
+
+        /// <summary>The side the character is applying to.</summary>
+        public StrategusBattleSide Side { get; set; }
         public StrategusBattleMercenaryApplicationStatus Status { get; set; }
 
         public StrategusBattle? Battle { get; set; }

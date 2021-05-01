@@ -468,7 +468,7 @@ namespace Crpg.Application.System.Commands
                     PlatformUserId = "76561198010855139",
                     Name = "Drexx",
                     AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ee/ee56a301d3ec686b77c6d06c7517fbb57065b36b.jpg"),
-                    AvatarMedium = new Uri( "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ee/ee56a301d3ec686b77c6d06c7517fbb57065b36b_medium.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ee/ee56a301d3ec686b77c6d06c7517fbb57065b36b_medium.jpg"),
                     AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ee/ee56a301d3ec686b77c6d06c7517fbb57065b36b_full.jpg"),
                 };
                 User xarosh = new()
@@ -1353,7 +1353,12 @@ namespace Crpg.Application.System.Commands
                     },
                     FighterApplications =
                     {
-                        new StrategusBattleFighterApplication { Hero = sagarHero, Status = StrategusBattleFighterApplicationStatus.Pending }, // TODO: Defender
+                        new StrategusBattleFighterApplication
+                        {
+                            Hero = sagarHero,
+                            Side = StrategusBattleSide.Defender,
+                            Status = StrategusBattleFighterApplicationStatus.Pending,
+                        },
                     },
                 };
                 StrategusBattle plainBattle = new()
@@ -1425,9 +1430,24 @@ namespace Crpg.Application.System.Commands
                     },
                     MercenaryApplications =
                     {
-                        new StrategusBattleMercenaryApplication { Character = falcomCharacter0, Status = StrategusBattleMercenaryApplicationStatus.Pending }, // TODO: Attacker
-                        new StrategusBattleMercenaryApplication { Character = victorhh888Character0, Status = StrategusBattleMercenaryApplicationStatus.Pending }, // TODO: Defender
-                        new StrategusBattleMercenaryApplication { Character = sellkaCharacter0, Status = StrategusBattleMercenaryApplicationStatus.Pending }, // TODO: Defender
+                        new StrategusBattleMercenaryApplication
+                        {
+                            Character = falcomCharacter0,
+                            Side = StrategusBattleSide.Attacker,
+                            Status = StrategusBattleMercenaryApplicationStatus.Pending,
+                        },
+                        new StrategusBattleMercenaryApplication
+                        {
+                            Character = victorhh888Character0,
+                            Side = StrategusBattleSide.Defender,
+                            Status = StrategusBattleMercenaryApplicationStatus.Pending,
+                        },
+                        new StrategusBattleMercenaryApplication
+                        {
+                            Character = sellkaCharacter0,
+                            Side = StrategusBattleSide.Defender,
+                            Status = StrategusBattleMercenaryApplicationStatus.Pending,
+                        },
                     },
                 };
 
