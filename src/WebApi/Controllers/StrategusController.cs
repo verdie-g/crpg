@@ -6,6 +6,7 @@ using Crpg.Application.Items.Models;
 using Crpg.Application.Strategus.Commands;
 using Crpg.Application.Strategus.Models;
 using Crpg.Application.Strategus.Queries;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Strategus.Battles;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -91,9 +92,13 @@ namespace Crpg.WebApi.Controllers
         /// Get strategus battles.
         /// </summary>
         [HttpGet("battles")]
-        public Task<ActionResult<Result<IList<StrategusBattlePublicViewModel>>>> GetBattles(
+        public Task<ActionResult<Result<IList<StrategusBattlePublicViewModel>>>> GetBattles([FromQuery] Region region,
             [FromQuery(Name = "phase[]")] StrategusBattlePhase[] phases)
-            => ResultToActionAsync(Mediator.Send(new GetStrategusBattlesQuery { Phases = phases }));
+            => ResultToActionAsync(Mediator.Send(new GetStrategusBattlesQuery
+            {
+                Region = region,
+                Phases = phases,
+            }));
 
         /// <summary>
         /// Apply as a fighter to a battle.

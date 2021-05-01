@@ -73,8 +73,10 @@ namespace Crpg.Application.UTest.Strategus
                         Troops = 12,
                     },
                 },
-                new() { Phase = StrategusBattlePhase.Battle },
-                new() { Phase = StrategusBattlePhase.End },
+                new() { Region = Region.Europe, Phase = StrategusBattlePhase.Preparation },
+                new() { Region = Region.Asia, Phase = StrategusBattlePhase.Hiring },
+                new() { Region = Region.NorthAmerica, Phase = StrategusBattlePhase.Battle },
+                new() { Region = Region.NorthAmerica, Phase = StrategusBattlePhase.End },
             };
             ArrangeDb.StrategusBattles.AddRange(battles);
             await ArrangeDb.SaveChangesAsync();
@@ -82,6 +84,7 @@ namespace Crpg.Application.UTest.Strategus
             GetStrategusBattlesQuery.Handler handler = new(ActDb, Mapper);
             var res = await handler.Handle(new GetStrategusBattlesQuery
             {
+                Region = Region.NorthAmerica,
                 Phases = new[] { StrategusBattlePhase.Preparation, StrategusBattlePhase.Hiring },
             }, CancellationToken.None);
 

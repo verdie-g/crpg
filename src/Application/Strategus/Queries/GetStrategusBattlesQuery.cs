@@ -8,14 +8,26 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Strategus.Models;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Strategus.Battles;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Strategus.Queries
 {
     public record GetStrategusBattlesQuery : IMediatorRequest<IList<StrategusBattlePublicViewModel>>
     {
+        public Region Region { get; init; }
         public IList<StrategusBattlePhase> Phases { get; init; } = Array.Empty<StrategusBattlePhase>();
+
+        public class Validator : AbstractValidator<GetStrategusBattlesQuery>
+        {
+            public Validator()
+            {
+                RuleFor(q => q.Region).IsInEnum();
+                RuleFor(q => q.Phases).ForEach(p => p.IsInEnum());
+            }
+        }
 
         internal class Handler : IMediatorRequestHandler<GetStrategusBattlesQuery, IList<StrategusBattlePublicViewModel>>
         {
@@ -34,7 +46,7 @@ namespace Crpg.Application.Strategus.Queries
                     .AsSplitQuery()
                     .Include(b => b.Fighters).ThenInclude(f => f.Hero!.User)
                     .Include(b => b.AttackedSettlement)
-                    .Where(b => req.Phases.Contains(b.Phase))
+                    .Where(b => b.Region == req.Region && req.Phases.Contains(b.Phase))
                     .ToArrayAsync(cancellationToken);
 
                 var battlesVm = battles.Select(b => new StrategusBattlePublicViewModel
