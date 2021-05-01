@@ -49,8 +49,9 @@ namespace Crpg.Application.Strategus.Queries
                     Defender = _mapper.Map<StrategusBattleFighterPublicViewModel>(
                         b.Fighters.FirstOrDefault(f => f.Side == StrategusBattleSide.Defender && f.MainFighter)),
                     DefenderTotalTroops = b.Fighters
-                        .Where(f => f.Side == StrategusBattleSide.Defender)
-                        .Sum(f => (int)f.Hero!.Troops),
+                            .Where(f => f.Side == StrategusBattleSide.Defender)
+                            .Sum(f => (int)f.Hero!.Troops)
+                        + (b.AttackedSettlement?.Troops ?? 0),
                     SettlementDefender = _mapper.Map<StrategusSettlementPublicViewModel>(b.AttackedSettlement),
                 }).ToArray();
 

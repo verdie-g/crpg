@@ -92,6 +92,12 @@ namespace Crpg.Application.Common.Results
             Detail = $"Cannot performed the requested action while hero with id '{heroId}' is in a battle",
         };
 
+        public static Error HeroNotEnoughTroops(int heroId) => new(ErrorType.Validation, ErrorCode.HeroNotEnoughTroops)
+        {
+            Title = "Hero doesn't have enough troops",
+            Detail = $"Hero with id '{heroId} doesn't have enough troops",
+        };
+
         public static Error HeroNotFound(int heroId) => new(ErrorType.NotFound, ErrorCode.HeroNotFound)
         {
             Title = "Hero was not found",
@@ -108,6 +114,12 @@ namespace Crpg.Application.Common.Results
         {
             Title = "Hero is not in sight",
             Detail = $"Hero with id '{heroId}' is too far to be in sight",
+        };
+
+        public static Error HeroNotSettlementOwner(int heroId, int settlementId) => new(ErrorType.Forbidden, ErrorCode.HeroNotSettlementOwner)
+        {
+            Title = "Hero is not the settlement owner",
+            Detail = $"Hero with id '{heroId}' is not of the owner of settlement with id '{settlementId}",
         };
 
         public static Error ItemAlreadyOwned(int itemId) => new(ErrorType.Validation, ErrorCode.ItemAlreadyOwned)

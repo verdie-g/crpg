@@ -67,6 +67,7 @@ namespace Crpg.Application.UTest.Strategus
                     AttackedSettlement = new StrategusSettlement
                     {
                         Name = "toto",
+                        Troops = 12,
                     },
                 },
                 new() { Phase = StrategusBattlePhase.Battle },
@@ -99,7 +100,7 @@ namespace Crpg.Application.UTest.Strategus
             Assert.IsNotNull(battlesVm[1].Attacker);
             Assert.IsNotNull(battlesVm[1].Attacker.Hero);
             Assert.AreEqual(100, battlesVm[1].AttackerTotalTroops);
-            Assert.AreEqual(35, battlesVm[1].DefenderTotalTroops);
+            Assert.AreEqual(47, battlesVm[1].DefenderTotalTroops);
             Assert.IsNull(battlesVm[1].Defender);
             Assert.IsNotNull(battlesVm[1].SettlementDefender);
         }

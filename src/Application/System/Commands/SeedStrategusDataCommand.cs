@@ -20,6 +20,13 @@ namespace Crpg.Application.System.Commands
     {
         internal class Handler : IMediatorRequestHandler<SeedStrategusDataCommand>
         {
+            private static readonly Dictionary<StrategusSettlementType, int> StrategusSettlementDefaultTroops = new()
+            {
+                [StrategusSettlementType.Village] = 1000,
+                [StrategusSettlementType.Castle] = 4000,
+                [StrategusSettlementType.Town] = 8000,
+            };
+
             private readonly ICrpgDbContext _db;
             private readonly IStrategusSettlementsSource _settlementsSource;
             private readonly IStrategusMap _strategusMap;
@@ -67,6 +74,8 @@ namespace Crpg.Application.System.Commands
                             Region = region,
                             Position = _strategusMap.TranslatePositionForRegion(settlementCreation.Position, Region.Europe, region),
                             Scene = settlementCreation.Scene,
+                            Troops = StrategusSettlementDefaultTroops[settlementCreation.Type],
+                            OwnerId = null,
                         };
 
                         CreateOrUpdateSettlement(dbSettlementsByNameRegion, settlement);

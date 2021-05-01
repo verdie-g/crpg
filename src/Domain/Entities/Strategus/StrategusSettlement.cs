@@ -28,6 +28,8 @@ namespace Crpg.Domain.Entities.Strategus
         /// </summary>
         public string Scene { get; set; } = default!;
 
+        public int Troops { get; set; }
+
         /// <summary>See <see cref="Owner"/>.</summary>
         public int? OwnerId { get; set; }
 
