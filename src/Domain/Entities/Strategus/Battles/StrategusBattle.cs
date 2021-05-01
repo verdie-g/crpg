@@ -19,6 +19,8 @@ namespace Crpg.Domain.Entities.Strategus.Battles
         /// <summary>See <see cref="AttackedSettlementId"/>.</summary>
         public StrategusSettlement? AttackedSettlement { get; set; }
         public List<StrategusBattleFighter> Fighters { get; set; } = new();
+        public List<StrategusBattleFighterApplication> FighterApplications { get; set; } = new();
         public List<StrategusBattleMercenary> Mercenaries { get; set; } = new();
+        public List<StrategusBattleMercenaryApplication> MercenaryApplications { get; set; } = new();
     }
 }

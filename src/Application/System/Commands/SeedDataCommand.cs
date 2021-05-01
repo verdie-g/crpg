@@ -13,6 +13,7 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Strategus;
+using Crpg.Domain.Entities.Strategus.Battles;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
@@ -414,6 +415,150 @@ namespace Crpg.Application.System.Commands
                     AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7b/7b237d0943aa81b7f0637e46baff7eff9afa48ae_medium.jpg"),
                     AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7b/7b237d0943aa81b7f0637e46baff7eff9afa48ae_full.jpg"),
                 };
+                User xDem = new()
+                {
+                    PlatformUserId = "76561197998420060",
+                    Name = "XDem",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a15730cb6852a7b3b8109ff70a8ab506ed221ea1.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a15730cb6852a7b3b8109ff70a8ab506ed221ea1_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a15730cb6852a7b3b8109ff70a8ab506ed221ea1_full.jpg"),
+                };
+                User disorot = new()
+                {
+                    PlatformUserId = "76561198117963151",
+                    Name = "Disorot",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7b/7bab1c0d1a1716a7648afdfd987c44bfb58367a8.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7b/7bab1c0d1a1716a7648afdfd987c44bfb58367a8_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7b/7bab1c0d1a1716a7648afdfd987c44bfb58367a8_full.jpg"),
+                };
+                User ace = new()
+                {
+                    PlatformUserId = "76561198069571271",
+                    Name = "Ace",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ac/ac7445b35f7e18eebe0d2a728aaad139b0dca3c5.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ac/ac7445b35f7e18eebe0d2a728aaad139b0dca3c5_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ac/ac7445b35f7e18eebe0d2a728aaad139b0dca3c5_full.jpg"),
+                };
+                User sagar = new()
+                {
+                    PlatformUserId = "76561198049628859",
+                    Name = "Sagar",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/01/0190fa213e030bcffdde532705df318f348e8d30.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/01/0190fa213e030bcffdde532705df318f348e8d30_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/01/0190fa213e030bcffdde532705df318f348e8d30_full.jpg"),
+                };
+                User greenShadow = new()
+                {
+                    PlatformUserId = "76561198239298650",
+                    Name = "GreenShadow",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b7/b7f74b4cea3ce894e22890705466741276667e91.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b7/b7f74b4cea3ce894e22890705466741276667e91_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b7/b7f74b4cea3ce894e22890705466741276667e91_full.jpg"),
+                };
+                User hannibaru = new()
+                {
+                    PlatformUserId = "76561198120421508",
+                    Name = "Hannibaru",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/af/af69a66c19d409449586fdd863a70ffca5a3924c.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/af/af69a66c19d409449586fdd863a70ffca5a3924c_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/af/af69a66c19d409449586fdd863a70ffca5a3924c_full.jpg"),
+                };
+                User drexx = new()
+                {
+                    PlatformUserId = "76561198010855139",
+                    Name = "Drexx",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ee/ee56a301d3ec686b77c6d06c7517fbb57065b36b.jpg"),
+                    AvatarMedium = new Uri( "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ee/ee56a301d3ec686b77c6d06c7517fbb57065b36b_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ee/ee56a301d3ec686b77c6d06c7517fbb57065b36b_full.jpg"),
+                };
+                User xarosh = new()
+                {
+                    PlatformUserId = "76561198089566223",
+                    Name = "Xarosh",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/bc/bcc1c53ab76da0813e6456264ee6b588b30de7af.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/bc/bcc1c53ab76da0813e6456264ee6b588b30de7af_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/bc/bcc1c53ab76da0813e6456264ee6b588b30de7af_full.jpg"),
+                };
+                User tipsyToby = new()
+                {
+                    PlatformUserId = "76561198084047374",
+                    Name = "TipsyToby1969",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1c/1caacc14b003b71ddf09c56675c9462440dcb534.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1c/1caacc14b003b71ddf09c56675c9462440dcb534_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1c/1caacc14b003b71ddf09c56675c9462440dcb534_full.jpg"),
+                };
+                User localAlpha = new()
+                {
+                    PlatformUserId = "76561198204128229",
+                    Name = "LocalAlpha",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b5/b5b58ff641803804038c3cb3529904b14bc22b2c.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b5/b5b58ff641803804038c3cb3529904b14bc22b2c_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b5/b5b58ff641803804038c3cb3529904b14bc22b2c_full.jpg"),
+                };
+                User alex = new()
+                {
+                    PlatformUserId = "76561198049945204",
+                    Name = "Alex",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c3/c300efbbcfae57c59095547ad9362c81c9001f07.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c3/c300efbbcfae57c59095547ad9362c81c9001f07_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c3/c300efbbcfae57c59095547ad9362c81c9001f07_full.jpg"),
+                };
+                User kedrynFuel = new()
+                {
+                    PlatformUserId = "76561198124895605",
+                    Name = "KedrynFuel",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d9/d94b47877d0f0a0e50f66d80a1de34bfbf94a56f.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d9/d94b47877d0f0a0e50f66d80a1de34bfbf94a56f_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d9/d94b47877d0f0a0e50f66d80a1de34bfbf94a56f_full.jpg"),
+                };
+                User luqero = new()
+                {
+                    PlatformUserId = "76561197990543288",
+                    Name = "LuQeRo",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ad/adf81333c999516c251df9ca281553d487825f1c.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ad/adf81333c999516c251df9ca281553d487825f1c_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ad/adf81333c999516c251df9ca281553d487825f1c_full.jpg"),
+                };
+                User ilya = new()
+                {
+                    PlatformUserId = "76561198116180462",
+                    Name = "ilya2106",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f4/f4b04c6590153ebb1a43c9192627beb07bb613f3.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f4/f4b04c6590153ebb1a43c9192627beb07bb613f3_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f4/f4b04c6590153ebb1a43c9192627beb07bb613f3_full.jpg"),
+                };
+                User eztli = new()
+                {
+                    PlatformUserId = "76561197995328883",
+                    Name = "Eztli",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/97/971a781269e5cd82b76d0cacc138f180bbfbb8d2.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/97/971a781269e5cd82b76d0cacc138f180bbfbb8d2_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/97/971a781269e5cd82b76d0cacc138f180bbfbb8d2_full.jpg"),
+                };
+                User telesto = new()
+                {
+                    PlatformUserId = "76561198021932355",
+                    Name = "Telesto",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg"),
+                };
+                User kypak = new()
+                {
+                    PlatformUserId = "76561198133571210",
+                    Name = "Kypak",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df6e263fe8cd9ec2d1a2a7d61da59d47f23a52cd.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df6e263fe8cd9ec2d1a2a7d61da59d47f23a52cd_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df6e263fe8cd9ec2d1a2a7d61da59d47f23a52cd_full.jpg"),
+                };
+                User devoidDragon = new()
+                {
+                    PlatformUserId = "76561198018668459",
+                    Name = "DevoidDragon",
+                    AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/79/79a8119bd2a027755f93872d0d09b959909a0405.jpg"),
+                    AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/79/79a8119bd2a027755f93872d0d09b959909a0405_medium.jpg"),
+                    AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/79/79a8119bd2a027755f93872d0d09b959909a0405_full.jpg"),
+                };
 
                 User[] newUsers =
                 {
@@ -421,6 +566,8 @@ namespace Crpg.Application.System.Commands
                     victorhh888, schumetzq, bryggan, ikarooz, kiwi, brainfart, falcom, opset, leanir, sellka, firebat,
                     ecko, neostralie, zorguy, azuma, elmaryk, namidaka, laHire, manik, ajroselle, skrael, bedo, lambic,
                     sanasar, vlad007, canp0g, shark, noobAmphetamine, mundete, aroyFalconer, insanitoid, scarface,
+                    xDem, disorot, ace, sagar, greenShadow, hannibaru, drexx, xarosh, tipsyToby, localAlpha, alex,
+                    kedrynFuel, luqero, ilya, eztli, telesto, kypak, devoidDragon,
                 };
 
                 var existingUsers = await _db.Users.ToDictionaryAsync(u => (u.Platform, u.PlatformUserId));
@@ -442,7 +589,7 @@ namespace Crpg.Application.System.Commands
                 Character takeoCharacter0 = new()
                 {
                     User = takeo,
-                    Name = "takeo",
+                    Name = takeo.Name,
                     Generation = 2,
                     Level = 23,
                     Experience = _experienceTable.GetExperienceForLevel(23),
@@ -461,8 +608,27 @@ namespace Crpg.Application.System.Commands
                     Level = 31,
                     Experience = _experienceTable.GetExperienceForLevel(31) + 100,
                 };
+                Character falcomCharacter0 = new()
+                {
+                    User = falcom,
+                    Name = falcom.Name,
+                };
+                Character victorhh888Character0 = new()
+                {
+                    User = victorhh888,
+                    Name = victorhh888.Name,
+                };
+                Character sellkaCharacter0 = new()
+                {
+                    User = sellka,
+                    Name = sellka.Name,
+                };
 
-                Character[] newCharacters = { takeoCharacter0, takeoCharacter1, takeoCharacter2 };
+                Character[] newCharacters =
+                {
+                    takeoCharacter0, takeoCharacter1, takeoCharacter2, falcomCharacter0, victorhh888Character0,
+                    sellkaCharacter0,
+                };
 
                 var existingCharacters = await _db.Characters.ToDictionaryAsync(c => c.Name);
                 foreach (var newCharacter in newCharacters)
@@ -648,7 +814,7 @@ namespace Crpg.Application.System.Commands
                 }
 
                 Task<StrategusSettlement> GetSettlementByName(string name) =>
-                    _db.StrategusSettlements.FirstAsync(s => s.Name == name);
+                    _db.StrategusSettlements.FirstAsync(s => s.Name == name && s.Region == Region.Europe);
                 var epicrotea = await GetSettlementByName("Epicrotea");
                 var mecalovea = await GetSettlementByName("Mecalovea");
                 var marathea = await GetSettlementByName("Marathea");
@@ -665,6 +831,7 @@ namespace Crpg.Application.System.Commands
                 var hertogeaCastle = await GetSettlementByName("Hertogea Castle");
                 var hertogea = await GetSettlementByName("Hertogea");
                 var nideon = await GetSettlementByName("Nideon");
+                var leblenion = await GetSettlementByName("Leblenion");
                 var rhemtoil = await GetSettlementByName("Rhemtoil");
 
                 StrategusHero brainfartHero = new()
@@ -1022,6 +1189,134 @@ namespace Crpg.Application.System.Commands
                     Status = StrategusHeroStatus.FollowingHero,
                     TargetedHero = insanitoidHero,
                 };
+                StrategusHero xDemHero = new()
+                {
+                    Region = Region.Europe,
+                    User = xDem,
+                    Troops = 250,
+                    Position = new Point(nideon.Position.X - 0.2, nideon.Position.Y - 0.2),
+                    Status = StrategusHeroStatus.InBattle,
+                    TargetedSettlement = nideon,
+                };
+                StrategusHero disorotHero = new()
+                {
+                    Region = Region.Europe,
+                    User = disorot,
+                    Troops = 89,
+                    Position = new Point(nideon.Position.X + 0.2, nideon.Position.Y + 0.2),
+                    Status = StrategusHeroStatus.InBattle,
+                };
+                StrategusHero aceHero = new()
+                {
+                    Region = Region.Europe,
+                    User = ace,
+                    Troops = 104,
+                    Position = new Point(nideon.Position.X - 0.2, nideon.Position.Y + 0.2),
+                    Status = StrategusHeroStatus.InBattle,
+                };
+                StrategusHero sagarHero = new()
+                {
+                    Region = Region.Europe,
+                    User = sagar,
+                    Troops = 300,
+                    Position = new Point(nideon.Position.X + 0.2, nideon.Position.Y - 0.2),
+                    Status = StrategusHeroStatus.Idle,
+                };
+                StrategusHero greenShadowHero = new()
+                {
+                    Region = Region.Europe,
+                    User = greenShadow,
+                    Troops = 31,
+                    Position = new Point(106.986, -110.171),
+                    Status = StrategusHeroStatus.InBattle,
+                };
+                StrategusHero hannibaruHero = new()
+                {
+                    Region = Region.Europe,
+                    User = hannibaru,
+                    Troops = 42,
+                    Position = new Point(107.109, -110.328),
+                    Status = StrategusHeroStatus.InBattle,
+                };
+                StrategusHero drexxHero = new()
+                {
+                    Region = Region.Europe,
+                    User = drexx,
+                    Troops = 53,
+                    Position = new Point(107.304, -110.203),
+                    Status = StrategusHeroStatus.InBattle,
+                };
+                StrategusHero xaroshHero = new()
+                {
+                    Region = Region.Europe,
+                    User = xarosh,
+                    Troops = 64,
+                    Position = new Point(107.210, -110.062),
+                    Status = StrategusHeroStatus.InBattle,
+                };
+                StrategusHero tipsyTobyHero = new()
+                {
+                    Region = Region.Europe,
+                    User = tipsyToby,
+                    Troops = 75,
+                    Position = new Point(107.304, -110.046),
+                    Status = StrategusHeroStatus.Idle,
+                };
+                StrategusHero localAlphaHero = new()
+                {
+                    Region = Region.Europe,
+                    User = localAlpha,
+                    Troops = 75,
+                    Position = new Point(107.304, -110.046),
+                    Status = StrategusHeroStatus.Idle,
+                };
+                StrategusHero alexHero = new()
+                {
+                    Region = Region.Europe,
+                    User = alex,
+                    Troops = 86,
+                    Position = new Point(107, -106),
+                    Status = StrategusHeroStatus.InBattle,
+                    TargetedSettlement = hertogea,
+                };
+                StrategusHero kedrynFuelHero = new()
+                {
+                    Region = Region.Europe,
+                    User = kedrynFuel,
+                    Troops = 97,
+                    Position = new Point(107, -106.2),
+                    Status = StrategusHeroStatus.FollowingHero,
+                    TargetedHero = alexHero,
+                };
+                StrategusHero luqeroHero = new()
+                {
+                    Region = Region.Europe,
+                    User = luqero,
+                    Troops = 108,
+                    Position = hertogea.Position,
+                    Status = StrategusHeroStatus.IdleInSettlement,
+                    TargetedSettlement = hertogea,
+                };
+                StrategusHero ilyaHero = new()
+                {
+                    Region = Region.Europe,
+                    User = ilya,
+                    Troops = 119,
+                    Position = hertogea.Position,
+                    Status = StrategusHeroStatus.IdleInSettlement,
+                    TargetedSettlement = hertogea,
+                };
+                StrategusHero eztliHero = new()
+                {
+                    Region = Region.Europe,
+                    User = eztli,
+                    Troops = 86,
+                    Position = leblenion.Position,
+                    Status = StrategusHeroStatus.InBattle,
+                    TargetedSettlement = leblenion,
+                };
+
+                // Users with no hero: telesto, kypak, devoidDragon.
 
                 var newHeroes = new[]
                 {
@@ -1030,7 +1325,8 @@ namespace Crpg.Application.System.Commands
                     distanceHero, bakhratHero, lancelotHero, buddhaHero, lerchHero, tjensHero, knitlerHero, magnucleanHero,
                     baronCyborgHero, scarfaceHero, neostralieHero, manikHero, ajroselleHero, skraelHero, bedoHero,
                     lambicHero, sanasarHero, vlad007Hero, canp0GHero, sharkHero, noobAmphetamineHero, mundeteHero,
-                    aroyFalconerHero, insanitoidHero, namidakaHero,
+                    aroyFalconerHero, insanitoidHero, namidakaHero, xDemHero, disorotHero, aceHero, sagarHero,
+                    greenShadowHero, hannibaruHero, drexxHero, xaroshHero, tipsyTobyHero, localAlphaHero, eztliHero,
                 };
 
                 var existingHeroes = (await _db.StrategusHeroes.ToArrayAsync())
@@ -1042,6 +1338,78 @@ namespace Crpg.Application.System.Commands
                     {
                         _db.StrategusHeroes.Add(newHero);
                     }
+                }
+
+                StrategusBattle nideonBattle = new()
+                {
+                    Phase = StrategusBattlePhase.Preparation,
+                    Position = nideon.Position,
+                    AttackedSettlement = nideon,
+                    Fighters =
+                    {
+                        new StrategusBattleFighter { Hero = xDemHero, Side = StrategusBattleSide.Attacker, MainFighter = true },
+                        new StrategusBattleFighter { Hero = disorotHero, Side = StrategusBattleSide.Attacker, MainFighter = false },
+                        new StrategusBattleFighter { Hero = aceHero, Side = StrategusBattleSide.Defender, MainFighter = false },
+                    },
+                    FighterApplications =
+                    {
+                        new StrategusBattleFighterApplication { Hero = sagarHero, Status = StrategusBattleFighterApplicationStatus.Pending }, // TODO: Defender
+                    },
+                };
+                StrategusBattle plainBattle = new()
+                {
+                    Phase = StrategusBattlePhase.Preparation,
+                    Position = new Point(107.187, -110.164),
+                    Fighters =
+                    {
+                        new StrategusBattleFighter { Hero = xaroshHero, Side = StrategusBattleSide.Attacker, MainFighter = true },
+                        new StrategusBattleFighter { Hero = greenShadowHero, Side = StrategusBattleSide.Attacker, MainFighter = false },
+                        new StrategusBattleFighter { Hero = drexxHero, Side = StrategusBattleSide.Defender, MainFighter = true },
+                        new StrategusBattleFighter { Hero = hannibaruHero, Side = StrategusBattleSide.Defender, MainFighter = false },
+                    },
+                    FighterApplications =
+                    {
+                        new StrategusBattleFighterApplication { Hero = tipsyTobyHero, Status = StrategusBattleFighterApplicationStatus.Pending }, // TODO: Attacker
+                        new StrategusBattleFighterApplication { Hero = localAlphaHero, Status = StrategusBattleFighterApplicationStatus.Pending }, // TODO: Defender
+                    },
+                };
+                StrategusBattle hertogeaBattle = new()
+                {
+                    Phase = StrategusBattlePhase.Hiring,
+                    Position = hertogea.Position,
+                    AttackedSettlement = hertogea,
+                    Fighters =
+                    {
+                        new StrategusBattleFighter { Hero = alexHero, Side = StrategusBattleSide.Attacker, MainFighter = true },
+                    },
+                    FighterApplications =
+                    {
+                        new StrategusBattleFighterApplication { Hero = kedrynFuelHero, Status = StrategusBattleFighterApplicationStatus.Pending }, // TODO: Attacker
+                        new StrategusBattleFighterApplication { Hero = luqeroHero, Status = StrategusBattleFighterApplicationStatus.Pending }, // TODO: Defender
+                        new StrategusBattleFighterApplication { Hero = ilyaHero, Status = StrategusBattleFighterApplicationStatus.Pending }, // TODO: Defender
+                    },
+                };
+                StrategusBattle leblenionBattle = new()
+                {
+                    Phase = StrategusBattlePhase.Hiring,
+                    Position = leblenion.Position,
+                    AttackedSettlement = leblenion,
+                    Fighters =
+                    {
+                        new StrategusBattleFighter { Hero = eztliHero, Side = StrategusBattleSide.Attacker, MainFighter = true },
+                    },
+                    MercenaryApplications =
+                    {
+                        new StrategusBattleMercenaryApplication { Character = falcomCharacter0, Status = StrategusBattleMercenaryApplicationStatus.Pending }, // TODO: Attacker
+                        new StrategusBattleMercenaryApplication { Character = victorhh888Character0, Status = StrategusBattleMercenaryApplicationStatus.Pending }, // TODO: Defender
+                        new StrategusBattleMercenaryApplication { Character = sellkaCharacter0, Status = StrategusBattleMercenaryApplicationStatus.Pending }, // TODO: Defender
+                    },
+                };
+
+                StrategusBattle[] newBattles = { nideonBattle, plainBattle, hertogeaBattle, leblenionBattle };
+                if (!(await _db.StrategusBattles.AnyAsync()))
+                {
+                    _db.StrategusBattles.AddRange(newBattles);
                 }
             }
 
