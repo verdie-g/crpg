@@ -11,7 +11,6 @@ namespace Crpg.Application.Strategus.Models
         public StrategusBattleFighterPublicViewModel Attacker { get; init; } = default!;
         public int AttackerTotalTroops { get; init; }
         public StrategusBattleFighterPublicViewModel? Defender { get; init; }
-        public StrategusSettlementPublicViewModel? SettlementDefender { get; init; }
         public int DefenderTotalTroops { get; init; }
     }
 }

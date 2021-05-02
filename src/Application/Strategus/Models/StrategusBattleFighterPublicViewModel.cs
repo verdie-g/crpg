@@ -6,6 +6,7 @@ namespace Crpg.Application.Strategus.Models
     public record StrategusBattleFighterPublicViewModel : IMapFrom<StrategusBattleFighter>
     {
         public int Id { get; init; }
-        public StrategusHeroPublicViewModel Hero { get; init; } = default!;
+        public StrategusHeroPublicViewModel? Hero { get; init; }
+        public StrategusSettlementPublicViewModel? Settlement { get; init; }
     }
 }

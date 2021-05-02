@@ -7,7 +7,6 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
-using Crpg.Domain.Entities.Strategus;
 using Crpg.Domain.Entities.Strategus.Battles;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
@@ -44,8 +43,8 @@ namespace Crpg.Application.Strategus.Commands
             {
                 var battles = _db.StrategusBattles
                     .AsSplitQuery()
-                    .Include(b => b.AttackedSettlement)
                     .Include(b => b.Fighters).ThenInclude(f => f.Hero)
+                    .Include(b => b.Fighters).ThenInclude(f => f.Settlement)
                     .Where(b =>
                         (b.Phase == StrategusBattlePhase.Preparation && b.CreatedAt + _battleInitiationDuration < _dateTimeOffset.Now)
                         || (b.Phase == StrategusBattlePhase.Hiring && b.CreatedAt + _battleInitiationDuration + _battleHiringDuration < _dateTimeOffset.Now))

@@ -63,14 +63,19 @@ namespace Crpg.Application.UTest.Strategus
                         new StrategusBattleFighter
                         {
                             Side = StrategusBattleSide.Defender,
+                            MainFighter = true,
+                            Settlement = new StrategusSettlement
+                            {
+                                Name = "toto",
+                                Troops = 12,
+                            },
+                        },
+                        new StrategusBattleFighter
+                        {
+                            Side = StrategusBattleSide.Defender,
                             MainFighter = false,
                             Hero = new StrategusHero { Troops = 35, User = new User() },
                         },
-                    },
-                    AttackedSettlement = new StrategusSettlement
-                    {
-                        Name = "toto",
-                        Troops = 12,
                     },
                 },
                 new() { Region = Region.NorthAmerica, Phase = StrategusBattlePhase.Preparation },
@@ -101,7 +106,6 @@ namespace Crpg.Application.UTest.Strategus
             Assert.IsNotNull(battlesVm[0].Defender);
             Assert.IsNotNull(battlesVm[0].Defender!.Hero);
             Assert.AreEqual(45, battlesVm[0].DefenderTotalTroops);
-            Assert.IsNull(battlesVm[0].SettlementDefender);
 
             Assert.AreEqual(Region.NorthAmerica, battlesVm[1].Region);
             Assert.AreEqual(StrategusBattlePhase.Battle, battlesVm[1].Phase);
@@ -109,8 +113,8 @@ namespace Crpg.Application.UTest.Strategus
             Assert.IsNotNull(battlesVm[1].Attacker.Hero);
             Assert.AreEqual(100, battlesVm[1].AttackerTotalTroops);
             Assert.AreEqual(47, battlesVm[1].DefenderTotalTroops);
-            Assert.IsNull(battlesVm[1].Defender);
-            Assert.IsNotNull(battlesVm[1].SettlementDefender);
+            Assert.IsNotNull(battlesVm[1].Defender);
+            Assert.IsNotNull(battlesVm[1].Defender!.Settlement);
         }
     }
 }

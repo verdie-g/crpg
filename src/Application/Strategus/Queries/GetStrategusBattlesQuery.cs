@@ -48,7 +48,7 @@ namespace Crpg.Application.Strategus.Queries
                 var battles = await _db.StrategusBattles
                     .AsSplitQuery()
                     .Include(b => b.Fighters).ThenInclude(f => f.Hero!.User)
-                    .Include(b => b.AttackedSettlement)
+                    .Include(b => b.Fighters).ThenInclude(f => f.Settlement)
                     .Where(b => b.Region == req.Region && req.Phases.Contains(b.Phase))
                     .ToArrayAsync(cancellationToken);
 
@@ -63,12 +63,10 @@ namespace Crpg.Application.Strategus.Queries
                         .Where(f => f.Side == StrategusBattleSide.Attacker)
                         .Sum(f => (int)f.Hero!.Troops),
                     Defender = _mapper.Map<StrategusBattleFighterPublicViewModel>(
-                        b.Fighters.FirstOrDefault(f => f.Side == StrategusBattleSide.Defender && f.MainFighter)),
+                        b.Fighters.First(f => f.Side == StrategusBattleSide.Defender && f.MainFighter)),
                     DefenderTotalTroops = b.Fighters
                             .Where(f => f.Side == StrategusBattleSide.Defender)
-                            .Sum(f => (int)f.Hero!.Troops)
-                        + (b.AttackedSettlement?.Troops ?? 0),
-                    SettlementDefender = _mapper.Map<StrategusSettlementPublicViewModel>(b.AttackedSettlement),
+                            .Sum(f => (int)(f.Hero?.Troops ?? 0) + (f.Settlement?.Troops ?? 0)),
                 }).ToArray();
 
                 return new(battlesVm);

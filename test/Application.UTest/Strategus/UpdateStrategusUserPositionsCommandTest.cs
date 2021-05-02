@@ -280,13 +280,11 @@ namespace Crpg.Application.UTest.Strategus
             }, CancellationToken.None);
 
             var battle = await AssertDb.StrategusBattles
-                .Include(b => b.AttackedSettlement)
                 .Include(b => b.Fighters).ThenInclude(f => f.Hero)
                 .FirstOrDefaultAsync();
             Assert.IsNotNull(battle);
             Assert.AreEqual(StrategusBattlePhase.Preparation, battle.Phase);
             Assert.AreEqual(new Point(4, 5), battle.Position);
-            Assert.IsNull(battle.AttackedSettlementId);
             Assert.AreEqual(2, battle.Fighters.Count);
 
             Assert.AreEqual(hero.Id, battle.Fighters[0].HeroId);
@@ -386,7 +384,16 @@ namespace Crpg.Application.UTest.Strategus
             var battle = new StrategusBattle
             {
                 Phase = StrategusBattlePhase.Preparation,
-                AttackedSettlement = settlement,
+                Fighters =
+                {
+                    new StrategusBattleFighter
+                    {
+                        Hero = null,
+                        Settlement = settlement,
+                        Side = StrategusBattleSide.Defender,
+                        MainFighter = true,
+                    },
+                },
             };
             ArrangeDb.StrategusBattles.Add(battle);
             await ArrangeDb.SaveChangesAsync();
@@ -444,19 +451,25 @@ namespace Crpg.Application.UTest.Strategus
             }, CancellationToken.None);
 
             var battle = await AssertDb.StrategusBattles
-                .Include(b => b.AttackedSettlement)
                 .Include(b => b.Fighters).ThenInclude(f => f.Hero)
                 .FirstOrDefaultAsync();
             Assert.IsNotNull(battle);
             Assert.AreEqual(Region.NorthAmerica, battle.Region);
             Assert.AreEqual(StrategusBattlePhase.Preparation, battle.Phase);
             Assert.AreEqual(new Point(4, 5), battle.Position);
-            Assert.AreEqual(settlement.Id, battle.AttackedSettlementId);
-            Assert.AreEqual(1, battle.Fighters.Count);
+
+            Assert.AreEqual(2, battle.Fighters.Count);
+
             Assert.AreEqual(hero.Id, battle.Fighters[0].HeroId);
             Assert.AreEqual(StrategusHeroStatus.InBattle, battle.Fighters[0].Hero!.Status);
+            Assert.IsNull(battle.Fighters[0].SettlementId);
             Assert.AreEqual(StrategusBattleSide.Attacker, battle.Fighters[0].Side);
             Assert.IsTrue(battle.Fighters[0].MainFighter);
+
+            Assert.IsNull(battle.Fighters[1].HeroId);
+            Assert.AreEqual(settlement.Id, battle.Fighters[1].SettlementId);
+            Assert.AreEqual(StrategusBattleSide.Defender, battle.Fighters[1].Side);
+            Assert.IsTrue(battle.Fighters[1].MainFighter);
         }
     }
 }

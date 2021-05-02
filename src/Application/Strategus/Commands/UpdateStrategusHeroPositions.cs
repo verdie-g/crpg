@@ -198,8 +198,8 @@ namespace Crpg.Application.Strategus.Commands
                 {
                     bool attackInProgress = await _db.StrategusBattles
                         .AnyAsync(b =>
-                                b.AttackedSettlementId == hero.TargetedSettlementId
-                                && b.Phase != StrategusBattlePhase.End,
+                                b.Phase != StrategusBattlePhase.End
+                                && b.Fighters.Any(f => f.SettlementId == hero.TargetedSettlementId),
                             cancellationToken);
                     if (attackInProgress)
                     {
@@ -212,13 +212,18 @@ namespace Crpg.Application.Strategus.Commands
                         Phase = StrategusBattlePhase.Preparation,
                         Region = hero.TargetedSettlement.Region, // Region of the defender.
                         Position = GetMidPoint(hero.Position, hero.TargetedSettlement.Position),
-                        AttackedSettlement = hero.TargetedSettlement,
                         Fighters =
                         {
                             new StrategusBattleFighter
                             {
                                 Hero = hero,
                                 Side = StrategusBattleSide.Attacker,
+                                MainFighter = true,
+                            },
+                            new StrategusBattleFighter
+                            {
+                                Settlement = hero.TargetedSettlement,
+                                Side = StrategusBattleSide.Defender,
                                 MainFighter = true,
                             },
                         },

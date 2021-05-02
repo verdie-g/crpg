@@ -1345,12 +1345,33 @@ namespace Crpg.Application.System.Commands
                     Phase = StrategusBattlePhase.Preparation,
                     Region = Region.Europe,
                     Position = nideon.Position,
-                    AttackedSettlement = nideon,
                     Fighters =
                     {
-                        new StrategusBattleFighter { Hero = xDemHero, Side = StrategusBattleSide.Attacker, MainFighter = true },
-                        new StrategusBattleFighter { Hero = disorotHero, Side = StrategusBattleSide.Attacker, MainFighter = false },
-                        new StrategusBattleFighter { Hero = aceHero, Side = StrategusBattleSide.Defender, MainFighter = false },
+                        new StrategusBattleFighter
+                        {
+                            Hero = xDemHero,
+                            Side = StrategusBattleSide.Attacker,
+                            MainFighter = true,
+                        },
+                        new StrategusBattleFighter
+                        {
+                            Hero = disorotHero,
+                            Side = StrategusBattleSide.Attacker,
+                            MainFighter = false,
+                        },
+                        new StrategusBattleFighter
+                        {
+                            Hero = null,
+                            Settlement = nideon,
+                            Side = StrategusBattleSide.Defender,
+                            MainFighter = true,
+                        },
+                        new StrategusBattleFighter
+                        {
+                            Hero = aceHero,
+                            Side = StrategusBattleSide.Defender,
+                            MainFighter = false,
+                        },
                     },
                     FighterApplications =
                     {
@@ -1395,10 +1416,21 @@ namespace Crpg.Application.System.Commands
                     Phase = StrategusBattlePhase.Hiring,
                     Region = Region.Europe,
                     Position = hertogea.Position,
-                    AttackedSettlement = hertogea,
                     Fighters =
                     {
-                        new StrategusBattleFighter { Hero = alexHero, Side = StrategusBattleSide.Attacker, MainFighter = true },
+                        new StrategusBattleFighter
+                        {
+                            Hero = alexHero,
+                            Side = StrategusBattleSide.Attacker,
+                            MainFighter = true,
+                        },
+                        new StrategusBattleFighter
+                        {
+                            Hero = null,
+                            Settlement = hertogea,
+                            Side = StrategusBattleSide.Defender,
+                            MainFighter = true,
+                        },
                     },
                     FighterApplications =
                     {
@@ -1427,10 +1459,21 @@ namespace Crpg.Application.System.Commands
                     Phase = StrategusBattlePhase.Hiring,
                     Region = Region.Europe,
                     Position = leblenion.Position,
-                    AttackedSettlement = leblenion,
                     Fighters =
                     {
-                        new StrategusBattleFighter { Hero = eztliHero, Side = StrategusBattleSide.Attacker, MainFighter = true },
+                        new StrategusBattleFighter
+                        {
+                            Hero = eztliHero,
+                            Side = StrategusBattleSide.Attacker,
+                            MainFighter = true,
+                        },
+                        new StrategusBattleFighter
+                        {
+                            Hero = null,
+                            Settlement = leblenion,
+                            Side = StrategusBattleSide.Defender,
+                            MainFighter = true,
+                        },
                     },
                     MercenaryApplications =
                     {
