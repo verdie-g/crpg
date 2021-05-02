@@ -1,6 +1,6 @@
 enum ClanMemberRole {
   Member = 'Member',
-  Admin = 'Admin',
+  Officer = 'Officer',
   Leader = 'Leader',
 }
 

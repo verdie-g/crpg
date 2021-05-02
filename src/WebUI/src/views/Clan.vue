@@ -84,7 +84,7 @@ export default class ClanComponent extends Vue {
       return false;
     }
 
-    return selfMember.role === ClanMemberRole.Admin || selfMember.role === ClanMemberRole.Leader;
+    return selfMember.role === ClanMemberRole.Officer || selfMember.role === ClanMemberRole.Leader;
   }
 
   created() {
@@ -114,8 +114,8 @@ export default class ClanComponent extends Vue {
 
     return (
       (selfMember.role === ClanMemberRole.Leader &&
-        (member.role == ClanMemberRole.Admin || member.role == ClanMemberRole.Member)) ||
-      (selfMember.role === ClanMemberRole.Admin && member.role == ClanMemberRole.Member)
+        (member.role == ClanMemberRole.Officer || member.role == ClanMemberRole.Member)) ||
+      (selfMember.role === ClanMemberRole.Officer && member.role == ClanMemberRole.Member)
     );
   }
 
