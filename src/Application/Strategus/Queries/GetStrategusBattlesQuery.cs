@@ -25,7 +25,10 @@ namespace Crpg.Application.Strategus.Queries
             public Validator()
             {
                 RuleFor(q => q.Region).IsInEnum();
-                RuleFor(q => q.Phases).ForEach(p => p.IsInEnum());
+                RuleFor(q => q.Phases).ForEach(p =>
+                {
+                    p.IsInEnum().NotEqual(StrategusBattlePhase.Preparation);
+                });
             }
         }
 
