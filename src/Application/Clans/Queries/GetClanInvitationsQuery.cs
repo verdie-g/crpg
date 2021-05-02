@@ -51,10 +51,10 @@ namespace Crpg.Application.Clans.Queries
                     return new(error);
                 }
 
-                if (user.ClanMembership!.Role != ClanMemberRole.Admin && user.ClanMembership.Role != ClanMemberRole.Leader)
+                if (user.ClanMembership!.Role != ClanMemberRole.Officer && user.ClanMembership.Role != ClanMemberRole.Leader)
                 {
                     return new(CommonErrors.ClanMemberRoleNotMet(
-                        user.Id, ClanMemberRole.Admin, user.ClanMembership.Role));
+                        user.Id, ClanMemberRole.Officer, user.ClanMembership.Role));
                 }
 
                 var invitations = await _db.ClanInvitations

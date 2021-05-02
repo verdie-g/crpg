@@ -112,7 +112,7 @@ namespace Crpg.Application.UTest.Clans
             var clan = new Clan();
             ArrangeDb.Clans.Add(clan);
             var invitee = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
-            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Admin } };
+            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
             ArrangeDb.Users.AddRange(invitee, inviter);
             await ArrangeDb.SaveChangesAsync();
 
@@ -154,7 +154,7 @@ namespace Crpg.Application.UTest.Clans
             var clan = new Clan();
             ArrangeDb.Clans.Add(clan);
             var invitee = new User();
-            var inviter = new User { ClanMembership = new ClanMember { Clan = new Clan(), Role = ClanMemberRole.Admin } };
+            var inviter = new User { ClanMembership = new ClanMember { Clan = new Clan(), Role = ClanMemberRole.Officer } };
             ArrangeDb.Users.AddRange(invitee, inviter);
             await ArrangeDb.SaveChangesAsync();
 
@@ -170,7 +170,7 @@ namespace Crpg.Application.UTest.Clans
         }
 
         [Test]
-        public async Task IfOfferButInviterNotAdminOrLeaderShouldReturnError()
+        public async Task IfOfferButInviterNotOfficerOrLeaderShouldReturnError()
         {
             var clan = new Clan();
             ArrangeDb.Clans.Add(clan);
@@ -196,7 +196,7 @@ namespace Crpg.Application.UTest.Clans
             var clan = new Clan();
             ArrangeDb.Clans.Add(clan);
             var invitee = new User();
-            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Admin } };
+            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
             ArrangeDb.Users.AddRange(invitee, inviter);
             var offer = new ClanInvitation
             {
@@ -226,7 +226,7 @@ namespace Crpg.Application.UTest.Clans
             var clan = new Clan();
             ArrangeDb.Clans.Add(clan);
             var invitee = new User();
-            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Admin } };
+            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
             ArrangeDb.Users.AddRange(invitee, inviter);
             await ArrangeDb.SaveChangesAsync();
 

@@ -18,7 +18,7 @@ namespace Crpg.Application.UTest.Clans
                 Members =
                 {
                     new ClanMember { Role = ClanMemberRole.Leader, User = new User() },
-                    new ClanMember { Role = ClanMemberRole.Admin, User = new User() },
+                    new ClanMember { Role = ClanMemberRole.Officer, User = new User() },
                     new ClanMember { Role = ClanMemberRole.Member, User = new User() },
                 },
             };

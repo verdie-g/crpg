@@ -3,7 +3,7 @@
     public enum ClanMemberRole
     {
         Member,
-        Admin,
+        Officer,
         Leader,
     }
 }

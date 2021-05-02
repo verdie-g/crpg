@@ -323,7 +323,7 @@ namespace Crpg.Application.UTest.Clans
         }
 
         [Theory]
-        public async Task ShouldReturnErrorIfRequestButUserNotAClanAdmin(bool accept)
+        public async Task ShouldReturnErrorIfRequestButUserNotAClanOfficer(bool accept)
         {
             var user = new User();
             ArrangeDb.Add(user);
@@ -360,7 +360,7 @@ namespace Crpg.Application.UTest.Clans
         {
             var user = new User();
             ArrangeDb.Add(user);
-            var clan = new Clan { Members = { new ClanMember { Role = ClanMemberRole.Admin, User = user } } };
+            var clan = new Clan { Members = { new ClanMember { Role = ClanMemberRole.Officer, User = user } } };
             ArrangeDb.Clans.Add(clan);
             var clanInvitation = new ClanInvitation
             {
@@ -390,7 +390,7 @@ namespace Crpg.Application.UTest.Clans
         {
             var user = new User();
             ArrangeDb.Add(user);
-            var clan = new Clan { Members = { new ClanMember { Role = ClanMemberRole.Admin, User = user } } };
+            var clan = new Clan { Members = { new ClanMember { Role = ClanMemberRole.Officer, User = user } } };
             ArrangeDb.Clans.Add(clan);
             var clanInvitation = new ClanInvitation
             {
@@ -422,7 +422,7 @@ namespace Crpg.Application.UTest.Clans
         {
             var user = new User();
             ArrangeDb.Add(user);
-            var clan = new Clan { Members = { new ClanMember { Role = ClanMemberRole.Admin, User = user } } };
+            var clan = new Clan { Members = { new ClanMember { Role = ClanMemberRole.Officer, User = user } } };
             ArrangeDb.Clans.Add(clan);
             var clanInvitation = new ClanInvitation
             {

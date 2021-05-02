@@ -742,24 +742,24 @@ namespace Crpg.Application.System.Commands
                 }
 
                 ClanMember namidakaMember = new() { User = namidaka, Clan = pecores, Role = ClanMemberRole.Leader };
-                ClanMember neostralieMember = new() { User = neostralie, Clan = pecores, Role = ClanMemberRole.Admin };
-                ClanMember elmarykMember = new() { User = elmaryk, Clan = pecores, Role = ClanMemberRole.Admin };
+                ClanMember neostralieMember = new() { User = neostralie, Clan = pecores, Role = ClanMemberRole.Officer };
+                ClanMember elmarykMember = new() { User = elmaryk, Clan = pecores, Role = ClanMemberRole.Officer };
                 ClanMember laHireMember = new() { User = laHire, Clan = pecores, Role = ClanMemberRole.Member };
                 ClanMember azumaMember = new() { User = azuma, Clan = pecores, Role = ClanMemberRole.Member };
                 ClanMember zorguyMember = new() { User = zorguy, Clan = pecores, Role = ClanMemberRole.Member };
                 ClanMember eckoMember = new() { User = ecko, Clan = ats, Role = ClanMemberRole.Leader };
-                ClanMember firebatMember = new() { User = firebat, Clan = ats, Role = ClanMemberRole.Admin };
+                ClanMember firebatMember = new() { User = firebat, Clan = ats, Role = ClanMemberRole.Officer };
                 ClanMember sellkaMember = new() { User = sellka, Clan = ats, Role = ClanMemberRole.Member };
                 ClanMember leanirMember = new() { User = leanir, Clan = legio, Role = ClanMemberRole.Leader, };
                 ClanMember opsetMember = new() { User = opset, Clan = theGrey, Role = ClanMemberRole.Leader, };
                 ClanMember falcomMember = new() { User = falcom, Clan = ode, Role = ClanMemberRole.Leader, };
                 ClanMember brainfartMember = new() { User = brainfart, Clan = virginDefenders, Role = ClanMemberRole.Leader };
-                ClanMember kiwiMember = new() { User = kiwi, Clan = virginDefenders, Role = ClanMemberRole.Admin };
+                ClanMember kiwiMember = new() { User = kiwi, Clan = virginDefenders, Role = ClanMemberRole.Officer };
                 ClanMember ikaroozMember = new() { User = ikarooz, Clan = virginDefenders, Role = ClanMemberRole.Member };
                 ClanMember brygganMember = new() { User = bryggan, Clan = virginDefenders, Role = ClanMemberRole.Member };
                 ClanMember schumetzqMember = new() { User = schumetzq, Clan = virginDefenders, Role = ClanMemberRole.Member };
                 ClanMember victorhh888Member = new() { User = victorhh888, Clan = randomClan, Role = ClanMemberRole.Leader };
-                ClanMember distanceMember = new() { User = distance, Clan = randomClan, Role = ClanMemberRole.Admin };
+                ClanMember distanceMember = new() { User = distance, Clan = randomClan, Role = ClanMemberRole.Officer };
                 ClanMember bakhratMember = new() { User = bakhrat, Clan = randomClan, Role = ClanMemberRole.Member };
                 ClanMember lancelotMember = new() { User = lancelot, Clan = abcClan, Role = ClanMemberRole.Leader };
                 ClanMember buddhaMember = new() { User = buddha, Clan = abcClan, Role = ClanMemberRole.Member };

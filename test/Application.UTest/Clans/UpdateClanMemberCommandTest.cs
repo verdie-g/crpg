@@ -14,7 +14,7 @@ namespace Crpg.Application.UTest.Clans
         private static readonly IClanService ClanService = new ClanService();
 
         [TestCase(ClanMemberRole.Member)]
-        [TestCase(ClanMemberRole.Admin)]
+        [TestCase(ClanMemberRole.Officer)]
         public async Task ShouldReturnErrorIfUserNotLeader(ClanMemberRole userRole)
         {
             var clan = new Clan();
@@ -28,7 +28,7 @@ namespace Crpg.Application.UTest.Clans
                 UserId = user.Id,
                 ClanId = clan.Id,
                 MemberId = member.Id,
-                Role = ClanMemberRole.Admin,
+                Role = ClanMemberRole.Officer,
             }, CancellationToken.None);
 
             Assert.IsNotNull(res.Errors);
@@ -49,13 +49,13 @@ namespace Crpg.Application.UTest.Clans
                 UserId = user.Id,
                 ClanId = clan.Id,
                 MemberId = member.Id,
-                Role = ClanMemberRole.Admin,
+                Role = ClanMemberRole.Officer,
             }, CancellationToken.None);
 
             Assert.IsNull(res.Errors);
             var memberVm = res.Data!;
             Assert.AreEqual(member.Id, memberVm.User.Id);
-            Assert.AreEqual(ClanMemberRole.Admin, memberVm.Role);
+            Assert.AreEqual(ClanMemberRole.Officer, memberVm.Role);
         }
     }
 }

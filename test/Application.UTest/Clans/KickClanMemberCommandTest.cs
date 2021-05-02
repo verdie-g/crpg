@@ -33,8 +33,8 @@ namespace Crpg.Application.UTest.Clans
                 .Matches<ClanMember>(cm => cm.ClanId == clan.Id && cm.UserId == user.Id));
         }
 
-        [TestCase(ClanMemberRole.Member, ClanMemberRole.Admin)]
-        [TestCase(ClanMemberRole.Admin, ClanMemberRole.Leader)]
+        [TestCase(ClanMemberRole.Member, ClanMemberRole.Officer)]
+        [TestCase(ClanMemberRole.Officer, ClanMemberRole.Leader)]
         public async Task ShouldNotKickUserIfHisRoleIsHigher(ClanMemberRole userRole, ClanMemberRole kickedUserRole)
         {
             var clan = new Clan();
@@ -54,8 +54,8 @@ namespace Crpg.Application.UTest.Clans
             Assert.AreEqual(ErrorCode.ClanMemberRoleNotMet, result.Errors![0].Code);
         }
 
-        [TestCase(ClanMemberRole.Admin, ClanMemberRole.Member)]
-        [TestCase(ClanMemberRole.Leader, ClanMemberRole.Admin)]
+        [TestCase(ClanMemberRole.Officer, ClanMemberRole.Member)]
+        [TestCase(ClanMemberRole.Leader, ClanMemberRole.Officer)]
         public async Task ShouldKickUser(ClanMemberRole userRole, ClanMemberRole kickedUserRole)
         {
             var clan = new Clan();

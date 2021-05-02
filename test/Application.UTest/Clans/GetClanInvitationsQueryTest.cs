@@ -28,7 +28,7 @@ namespace Crpg.Application.UTest.Clans
         }
 
         [Test]
-        public async Task ShouldReturnErrorIfUserNotAdmin()
+        public async Task ShouldReturnErrorIfUserNotOfficer()
         {
             var user = new User();
             ArrangeDb.Users.Add(user);
@@ -56,7 +56,7 @@ namespace Crpg.Application.UTest.Clans
             ArrangeDb.Users.Add(user);
             var clan = new Clan
             {
-                Members = { new ClanMember { User = user, Role = ClanMemberRole.Admin } },
+                Members = { new ClanMember { User = user, Role = ClanMemberRole.Officer } },
             };
             ArrangeDb.Clans.Add(clan);
             var invitations = new[]
@@ -124,7 +124,7 @@ namespace Crpg.Application.UTest.Clans
             ArrangeDb.Users.Add(user);
             var clan = new Clan
             {
-                Members = { new ClanMember { User = user, Role = ClanMemberRole.Admin } },
+                Members = { new ClanMember { User = user, Role = ClanMemberRole.Officer } },
             };
             ArrangeDb.Clans.Add(clan);
             var invitations = new[]

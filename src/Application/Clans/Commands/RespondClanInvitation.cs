@@ -85,11 +85,11 @@ namespace Crpg.Application.Clans.Commands
                         return new(error);
                     }
 
-                    if (inviter.ClanMembership!.Role != ClanMemberRole.Admin
+                    if (inviter.ClanMembership!.Role != ClanMemberRole.Officer
                         && inviter.ClanMembership.Role != ClanMemberRole.Leader)
                     {
                         return new(CommonErrors.ClanMemberRoleNotMet(inviter.Id,
-                            ClanMemberRole.Admin, inviter.ClanMembership.Role));
+                            ClanMemberRole.Officer, inviter.ClanMembership.Role));
                     }
                 }
 

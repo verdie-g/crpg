@@ -110,10 +110,10 @@ namespace Crpg.Application.Clans.Commands
                     return new(error);
                 }
 
-                if (inviter.ClanMembership!.Role != ClanMemberRole.Admin && inviter.ClanMembership.Role != ClanMemberRole.Leader)
+                if (inviter.ClanMembership!.Role != ClanMemberRole.Officer && inviter.ClanMembership.Role != ClanMemberRole.Leader)
                 {
                     return new(
-                        CommonErrors.ClanMemberRoleNotMet(inviter.Id, ClanMemberRole.Admin, ClanMemberRole.Member));
+                        CommonErrors.ClanMemberRoleNotMet(inviter.Id, ClanMemberRole.Officer, ClanMemberRole.Member));
                 }
 
                 // Check if an invitation already exists.
