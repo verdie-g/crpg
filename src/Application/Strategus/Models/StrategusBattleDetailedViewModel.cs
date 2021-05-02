@@ -9,9 +9,9 @@ namespace Crpg.Application.Strategus.Models
         public int Id { get; init; }
         public Region Region { get; set; }
         public StrategusBattlePhase Phase { get; set; }
-        public StrategusBattleFighterPublicViewModel Attacker { get; init; } = default!;
+        public StrategusBattleFighterViewModel Attacker { get; init; } = default!;
         public int AttackerTotalTroops { get; init; }
-        public StrategusBattleFighterPublicViewModel? Defender { get; init; }
+        public StrategusBattleFighterViewModel? Defender { get; init; }
         public int DefenderTotalTroops { get; init; }
         public DateTimeOffset CreatedAt { get; set; }
     }

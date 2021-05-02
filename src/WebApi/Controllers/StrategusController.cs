@@ -111,6 +111,21 @@ namespace Crpg.WebApi.Controllers
             }));
 
         /// <summary>
+        /// Get battle fighters.
+        /// </summary>
+        /// <returns>The fighters.</returns>
+        /// <response code="200">Ok.</response>
+        /// <response code="400">Bad request.</response>
+        [HttpGet("battles/{battleId}/fighters")]
+        public Task<ActionResult<Result<IList<StrategusBattleFighterViewModel>>>> GetBattleFighters([FromRoute] int battleId)
+        {
+            return ResultToActionAsync(Mediator.Send(new GetStrategusBattleFightersQuery
+            {
+                BattleId = battleId,
+            }));
+        }
+
+        /// <summary>
         /// Apply as a fighter to a battle.
         /// </summary>
         /// <returns>The application.</returns>

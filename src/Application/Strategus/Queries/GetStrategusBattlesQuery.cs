@@ -57,12 +57,12 @@ namespace Crpg.Application.Strategus.Queries
                     Id = b.Id,
                     Region = b.Region,
                     Phase = b.Phase,
-                    Attacker = _mapper.Map<StrategusBattleFighterPublicViewModel>(
+                    Attacker = _mapper.Map<StrategusBattleFighterViewModel>(
                         b.Fighters.First(f => f.Side == StrategusBattleSide.Attacker && f.MainFighter)),
                     AttackerTotalTroops = b.Fighters
                         .Where(f => f.Side == StrategusBattleSide.Attacker)
                         .Sum(f => (int)f.Hero!.Troops),
-                    Defender = _mapper.Map<StrategusBattleFighterPublicViewModel>(
+                    Defender = _mapper.Map<StrategusBattleFighterViewModel>(
                         b.Fighters.First(f => f.Side == StrategusBattleSide.Defender && f.MainFighter)),
                     DefenderTotalTroops = b.Fighters
                             .Where(f => f.Side == StrategusBattleSide.Defender)
