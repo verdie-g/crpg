@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Strategus.Queries
 {
-    public record GetStrategusBattlesQuery : IMediatorRequest<IList<StrategusBattlePublicViewModel>>
+    public record GetStrategusBattlesQuery : IMediatorRequest<IList<StrategusBattleDetailedViewModel>>
     {
         public Region Region { get; init; }
         public IList<StrategusBattlePhase> Phases { get; init; } = Array.Empty<StrategusBattlePhase>();
@@ -32,7 +32,7 @@ namespace Crpg.Application.Strategus.Queries
             }
         }
 
-        internal class Handler : IMediatorRequestHandler<GetStrategusBattlesQuery, IList<StrategusBattlePublicViewModel>>
+        internal class Handler : IMediatorRequestHandler<GetStrategusBattlesQuery, IList<StrategusBattleDetailedViewModel>>
         {
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -43,7 +43,7 @@ namespace Crpg.Application.Strategus.Queries
                 _mapper = mapper;
             }
 
-            public async Task<Result<IList<StrategusBattlePublicViewModel>>> Handle(GetStrategusBattlesQuery req, CancellationToken cancellationToken)
+            public async Task<Result<IList<StrategusBattleDetailedViewModel>>> Handle(GetStrategusBattlesQuery req, CancellationToken cancellationToken)
             {
                 var battles = await _db.StrategusBattles
                     .AsSplitQuery()
@@ -52,7 +52,7 @@ namespace Crpg.Application.Strategus.Queries
                     .Where(b => b.Region == req.Region && req.Phases.Contains(b.Phase))
                     .ToArrayAsync(cancellationToken);
 
-                var battlesVm = battles.Select(b => new StrategusBattlePublicViewModel
+                var battlesVm = battles.Select(b => new StrategusBattleDetailedViewModel
                 {
                     Id = b.Id,
                     Region = b.Region,

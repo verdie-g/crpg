@@ -3,7 +3,7 @@ using Crpg.Domain.Entities.Strategus.Battles;
 
 namespace Crpg.Application.Strategus.Models
 {
-    public record StrategusBattlePublicViewModel
+    public record StrategusBattleDetailedViewModel
     {
         public int Id { get; init; }
         public Region Region { get; set; }

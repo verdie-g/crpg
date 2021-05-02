@@ -92,12 +92,22 @@ namespace Crpg.WebApi.Controllers
         /// Get strategus battles.
         /// </summary>
         [HttpGet("battles")]
-        public Task<ActionResult<Result<IList<StrategusBattlePublicViewModel>>>> GetBattles([FromQuery] Region region,
+        public Task<ActionResult<Result<IList<StrategusBattleDetailedViewModel>>>> GetBattles([FromQuery] Region region,
             [FromQuery(Name = "phase[]")] StrategusBattlePhase[] phases)
             => ResultToActionAsync(Mediator.Send(new GetStrategusBattlesQuery
             {
                 Region = region,
                 Phases = phases,
+            }));
+
+        /// <summary>
+        /// Get strategus battle.
+        /// </summary>
+        [HttpGet("battles/{battleId}")]
+        public Task<ActionResult<Result<StrategusBattleViewModel>>> GetBattles([FromRoute] int battleId) =>
+            ResultToActionAsync(Mediator.Send(new GetStrategusBattleQuery
+            {
+                BattleId = battleId,
             }));
 
         /// <summary>
