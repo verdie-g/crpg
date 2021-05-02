@@ -92,6 +92,12 @@ namespace Crpg.Application.Common.Results
             Detail = $"Cannot performed the requested action while hero with id '{heroId}' is in a battle",
         };
 
+        public static Error HeroNotAFighter(int heroId, int battleId) => new(ErrorType.Validation, ErrorCode.HeroNotAFighter)
+        {
+            Title = "Hero is not a fighter in the battle",
+            Detail = $"Hero with id '{heroId} is not a fighter of the battle with id '{battleId}'",
+        };
+
         public static Error HeroNotEnoughTroops(int heroId) => new(ErrorType.Validation, ErrorCode.HeroNotEnoughTroops)
         {
             Title = "Hero doesn't have enough troops",
