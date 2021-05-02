@@ -34,7 +34,7 @@
       >
         <b-table-column field="tag" label="Tag" width="100" v-slot="props">
           <div class="box clan-color" :style="`background-color: ${props.row.clan.color}`"></div>
-          {{ props.row.tag }}
+          {{ props.row.clan.tag }}
         </b-table-column>
 
         <b-table-column field="name" label="Name" v-slot="props">
