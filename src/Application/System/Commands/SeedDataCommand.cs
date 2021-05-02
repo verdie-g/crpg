@@ -1410,6 +1410,7 @@ namespace Crpg.Application.System.Commands
                             Status = StrategusBattleFighterApplicationStatus.Pending,
                         },
                     },
+                    CreatedAt = DateTimeOffset.Now,
                 };
                 StrategusBattle hertogeaBattle = new()
                 {
@@ -1453,6 +1454,7 @@ namespace Crpg.Application.System.Commands
                             Status = StrategusBattleFighterApplicationStatus.Pending,
                         },
                     },
+                    CreatedAt = DateTimeOffset.Now.AddHours(-2),
                 };
                 StrategusBattle leblenionBattle = new()
                 {
@@ -1496,6 +1498,7 @@ namespace Crpg.Application.System.Commands
                             Status = StrategusBattleMercenaryApplicationStatus.Pending,
                         },
                     },
+                    CreatedAt = DateTimeOffset.Now.AddHours(-4),
                 };
 
                 StrategusBattle[] newBattles = { nideonBattle, plainBattle, hertogeaBattle, leblenionBattle };

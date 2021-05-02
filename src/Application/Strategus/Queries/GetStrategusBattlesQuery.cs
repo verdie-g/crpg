@@ -67,6 +67,7 @@ namespace Crpg.Application.Strategus.Queries
                     DefenderTotalTroops = b.Fighters
                             .Where(f => f.Side == StrategusBattleSide.Defender)
                             .Sum(f => (int)(f.Hero?.Troops ?? 0) + (f.Settlement?.Troops ?? 0)),
+                    CreatedAt = b.CreatedAt,
                 }).ToArray();
 
                 return new(battlesVm);

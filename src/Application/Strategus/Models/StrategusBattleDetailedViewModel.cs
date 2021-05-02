@@ -1,4 +1,5 @@
-﻿using Crpg.Domain.Entities;
+﻿using System;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Strategus.Battles;
 
 namespace Crpg.Application.Strategus.Models
@@ -12,5 +13,6 @@ namespace Crpg.Application.Strategus.Models
         public int AttackerTotalTroops { get; init; }
         public StrategusBattleFighterPublicViewModel? Defender { get; init; }
         public int DefenderTotalTroops { get; init; }
+        public DateTimeOffset CreatedAt { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Crpg.Application.Common.Mappings;
+﻿using System;
+using Crpg.Application.Common.Mappings;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Strategus.Battles;
 
@@ -9,5 +10,6 @@ namespace Crpg.Application.Strategus.Models
         public int Id { get; init; }
         public Region Region { get; set; }
         public StrategusBattlePhase Phase { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
     }
 }
