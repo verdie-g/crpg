@@ -1,0 +1,146 @@
+<template>
+  <section class="section">
+    <b-field label="Region">
+      <b-select
+        v-model="selectedRegion"
+        @input="getBattles(selectedRegion, 'Hiring')"
+        placeholder="Select a character"
+        required
+      >
+        <option value="Europe">Europe</option>
+        <option value="NorthAmerica">NorthAmerica</option>
+        <option value="Asia">Asia</option>
+      </b-select>
+    </b-field>
+    <b-table
+      :data="battles"
+      ref="tableBattles"
+      paginated
+      per-page="10"
+      detail-key="id"
+      aria-next-label="Next page"
+      aria-previous-label="Previous page"
+      aria-page-label="Page"
+      aria-current-label="Current page"
+    >
+      <b-table-column field="date" label="Schedule date" sortable centered v-slot="props">
+        {{ new Date(props.row.createdAt).toDateString() }}
+      </b-table-column>
+
+      <b-table-column label="Attacker" v-slot="props">
+        <div>
+          <i class="fas fa-user"></i>
+          {{ props.row.attacker.hero.name }} ({{ props.row.attackerTotalTroops }})
+          <b-button
+            class="ml-2"
+            size="is-small"
+            @click="applyAsMercenaries(String(props.row.id), String(hero.id), 'Attacker')"
+          >
+            Join as mercenary
+          </b-button>
+        </div>
+      </b-table-column>
+
+      <b-table-column label="Defender" v-slot="props">
+        <div v-if="props.row.defender.hero">
+          <i class="fas fa-user"></i>
+          {{ props.row.defender.hero.name }} ({{ props.row.defenderTotalTroops }})
+          <b-button
+            class="ml-2"
+            size="is-small"
+            @click="applyAsMercenaries(props.row.id, hero.id, 'Defender')"
+          >
+            Join as mercenary
+          </b-button>
+        </div>
+        <div v-else>
+          <i class="fab fa-fort-awesome"></i>
+          {{ props.row.defender.settlement.name }} ({{ props.row.defenderTotalTroops }})
+          <b-button
+            class="ml-2"
+            size="is-small"
+            @click="applyAsMercenaries(props.row.id, hero.id, 'Defender')"
+          >
+            Join as mercenary
+          </b-button>
+        </div>
+      </b-table-column>
+
+      <b-table-column label="Position" v-slot="props">
+        <router-link
+          v-if="props.row.defender.hero"
+          :to="{
+            name: 'strategus',
+            params: {
+              lat: props.row.defender.hero.position.coordinates[1],
+              long: props.row.defender.hero.position.coordinates[0],
+            },
+          }"
+        >
+          {{ props.row.defender.hero.position.coordinates[0].toFixed(2) }},
+          {{ props.row.defender.hero.position.coordinates[1].toFixed(2) }}
+        </router-link>
+        <router-link
+          v-else
+          :to="{
+            name: 'strategus',
+            params: {
+              lat: props.row.defender.settlement.position.coordinates[1],
+              long: props.row.defender.settlement.position.coordinates[0],
+            },
+          }"
+        >
+          {{ props.row.defender.settlement.position.coordinates[0].toFixed(2) }},
+          {{ props.row.defender.settlement.position.coordinates[1].toFixed(2) }}
+        </router-link>
+      </b-table-column>
+
+      <b-table-column v-slot="props">
+        <router-link :to="{ name: 'battles-details', params: { id: props.row.id } }">
+          Show details
+          <i class="fas fa-chevron-right"></i>
+        </router-link>
+      </b-table-column>
+    </b-table>
+  </section>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import strategusModule from '@/store/strategus-module';
+import Battle from '@/models/battle-public';
+import Hero from '@/models/hero';
+import Phase from '@/models/phase';
+import Region from '@/models/region';
+
+@Component
+export default class Battles extends Vue {
+  selectedRegion: Region = Region.Europe;
+
+  get battles(): Battle[] {
+    return strategusModule.battles;
+  }
+
+  get hero(): Hero | null {
+    return strategusModule.hero;
+  }
+
+  created() {
+    strategusModule.getUpdate();
+    if (this.hero) {
+      this.selectedRegion = this.hero.region;
+    }
+    this.getBattles(this.selectedRegion, Phase.Hiring);
+  }
+
+  getBattles(region: Region, phase: Phase) {
+    strategusModule.getBattles({ region, phase });
+  }
+
+  applyAsMercenaries(battleId: string, characterId: string, side: string) {
+    strategusModule.applyMercenaries({ battleId, characterId, side });
+  }
+}
+</script>
+
+<style scoped lang="scss"></style>
