@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Users.Commands;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
+using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Strategus;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
 using Crpg.Sdk.Abstractions.Events;
@@ -23,35 +24,49 @@ namespace Crpg.Application.UTest.Users
         [Test]
         public async Task DeleteExistingUser()
         {
-            var user = ArrangeDb.Users.Add(new User
+            var user = new User
             {
                 Characters = new List<Character> { new() { EquippedItems = new List<EquippedItem> { new() } } },
                 OwnedItems = new List<OwnedItem> { new() { Item = new Item() } },
                 Bans = new List<Ban> { new() },
-            });
+                ClanMembership = new ClanMember { Clan = new Clan() },
+                StrategusHero = new StrategusHero
+                {
+                    OwnedItems = new List<StrategusOwnedItem> { new() { Item = new Item() } },
+                },
+            };
+            ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            // needs to be saved before OwnedItems[0] gets deleted
-            int itemId = user.Entity.OwnedItems[0].ItemId;
+            // Save ids before they get deleted.
+            int itemId = user.OwnedItems[0].ItemId;
+            int clanId = user.ClanMembership.ClanId;
+            int strategusItemId = user.StrategusHero.OwnedItems[0].ItemId;
 
             var userService = Mock.Of<IUserService>();
             var handler = new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), userService);
             await handler.Handle(new DeleteUserCommand
             {
-                UserId = user.Entity.Id,
+                UserId = user.Id,
             }, CancellationToken.None);
 
-            var dbUser = await AssertDb.Users.FirstOrDefaultAsync(u => u.Id == user.Entity.Id);
+            var dbUser = await AssertDb.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
             Assert.IsNotNull(dbUser);
             Assert.IsNotNull(dbUser.DeletedAt);
 
-            Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.Characters.FirstAsync(c => c.Id == user.Entity.Characters[0].Id));
+            Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.Characters.FirstAsync(c => c.Id == user.Characters[0].Id));
             Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.OwnedItems.FirstAsync(oi =>
-                oi.UserId == user.Entity.Id && oi.ItemId == user.Entity.OwnedItems[0].ItemId));
+                oi.UserId == user.Id && oi.ItemId == user.OwnedItems[0].ItemId));
             Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.EquippedItems.FirstAsync(ei =>
-                ei.UserId == user.Entity.Id));
+                ei.UserId == user.Id));
+            Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.StrategusHeroes.FirstAsync(h =>
+                h.Id == user.Id));
+            Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.StrategusOwnedItems.FirstAsync(oi =>
+                oi.HeroId == user.Id));
             Assert.DoesNotThrowAsync(() => AssertDb.Items.FirstAsync(i => i.Id == itemId));
-            Assert.DoesNotThrowAsync(() => AssertDb.Bans.FirstAsync(b => b.BannedUserId == user.Entity.Id));
+            Assert.DoesNotThrowAsync(() => AssertDb.Bans.FirstAsync(b => b.BannedUserId == user.Id));
+            Assert.DoesNotThrowAsync(() => AssertDb.Clans.FirstAsync(c => c.Id == clanId));
+            Assert.DoesNotThrowAsync(() => AssertDb.Items.FirstAsync(i => i.Id == strategusItemId));
         }
 
         [Test]
