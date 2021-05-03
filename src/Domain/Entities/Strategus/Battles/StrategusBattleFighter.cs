@@ -26,10 +26,10 @@
 
         /// <summary>
         /// Is the <see cref="StrategusBattleFighter"/> the fighter that initiated the <see cref="StrategusBattle"/>.
-        /// There is one main fighter by <see cref="StrategusBattleSide"/>. If <see cref="SettlementId"/> is not null
-        /// then it is guarantee that <see cref="MainFighter"/> is true.
+        /// There is one commander by <see cref="StrategusBattleSide"/>. If <see cref="SettlementId"/> is not null
+        /// then it is guarantee that <see cref="Commander"/> is true.
         /// </summary>
-        public bool MainFighter { get; set; }
+        public bool Commander { get; set; }
 
         public StrategusHero? Hero { get; set; }
         public StrategusSettlement? Settlement { get; set; }

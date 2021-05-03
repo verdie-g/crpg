@@ -290,12 +290,12 @@ namespace Crpg.Application.UTest.Strategus
             Assert.AreEqual(hero.Id, battle.Fighters[0].HeroId);
             Assert.AreEqual(StrategusHeroStatus.InBattle, battle.Fighters[0].Hero!.Status);
             Assert.AreEqual(StrategusBattleSide.Attacker, battle.Fighters[0].Side);
-            Assert.IsTrue(battle.Fighters[0].MainFighter);
+            Assert.IsTrue(battle.Fighters[0].Commander);
 
             Assert.AreEqual(targetHero.Id, battle.Fighters[1].HeroId);
             Assert.AreEqual(StrategusHeroStatus.InBattle, battle.Fighters[1].Hero!.Status);
             Assert.AreEqual(StrategusBattleSide.Defender, battle.Fighters[1].Side);
-            Assert.IsTrue(battle.Fighters[1].MainFighter);
+            Assert.IsTrue(battle.Fighters[1].Commander);
         }
 
         [TestCase(StrategusHeroStatus.MovingToSettlement)]
@@ -391,7 +391,7 @@ namespace Crpg.Application.UTest.Strategus
                         Hero = null,
                         Settlement = settlement,
                         Side = StrategusBattleSide.Defender,
-                        MainFighter = true,
+                        Commander = true,
                     },
                 },
             };
@@ -464,12 +464,12 @@ namespace Crpg.Application.UTest.Strategus
             Assert.AreEqual(StrategusHeroStatus.InBattle, battle.Fighters[0].Hero!.Status);
             Assert.IsNull(battle.Fighters[0].SettlementId);
             Assert.AreEqual(StrategusBattleSide.Attacker, battle.Fighters[0].Side);
-            Assert.IsTrue(battle.Fighters[0].MainFighter);
+            Assert.IsTrue(battle.Fighters[0].Commander);
 
             Assert.IsNull(battle.Fighters[1].HeroId);
             Assert.AreEqual(settlement.Id, battle.Fighters[1].SettlementId);
             Assert.AreEqual(StrategusBattleSide.Defender, battle.Fighters[1].Side);
-            Assert.IsTrue(battle.Fighters[1].MainFighter);
+            Assert.IsTrue(battle.Fighters[1].Commander);
         }
     }
 }

@@ -25,25 +25,25 @@ namespace Crpg.Application.UTest.Strategus
                         new StrategusBattleFighter
                         {
                             Side = StrategusBattleSide.Attacker,
-                            MainFighter = true,
+                            Commander = true,
                             Hero = new StrategusHero { Troops = 20, User = new User() },
                         },
                         new StrategusBattleFighter
                         {
                             Side = StrategusBattleSide.Attacker,
-                            MainFighter = false,
+                            Commander = false,
                             Hero = new StrategusHero { Troops = 15, User = new User() },
                         },
                         new StrategusBattleFighter
                         {
                             Side = StrategusBattleSide.Defender,
-                            MainFighter = false,
+                            Commander = false,
                             Hero = new StrategusHero { Troops = 35, User = new User() },
                         },
                         new StrategusBattleFighter
                         {
                             Side = StrategusBattleSide.Defender,
-                            MainFighter = true,
+                            Commander = true,
                             Hero = new StrategusHero { Troops = 10, User = new User() },
                         },
                     },
@@ -57,13 +57,13 @@ namespace Crpg.Application.UTest.Strategus
                         new StrategusBattleFighter
                         {
                             Side = StrategusBattleSide.Attacker,
-                            MainFighter = true,
+                            Commander = true,
                             Hero = new StrategusHero { Troops = 100, User = new User() },
                         },
                         new StrategusBattleFighter
                         {
                             Side = StrategusBattleSide.Defender,
-                            MainFighter = true,
+                            Commander = true,
                             Settlement = new StrategusSettlement
                             {
                                 Name = "toto",
@@ -73,7 +73,7 @@ namespace Crpg.Application.UTest.Strategus
                         new StrategusBattleFighter
                         {
                             Side = StrategusBattleSide.Defender,
-                            MainFighter = false,
+                            Commander = false,
                             Hero = new StrategusHero { Troops = 35, User = new User() },
                         },
                     },

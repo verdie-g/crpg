@@ -1351,26 +1351,26 @@ namespace Crpg.Application.System.Commands
                         {
                             Hero = xDemHero,
                             Side = StrategusBattleSide.Attacker,
-                            MainFighter = true,
+                            Commander = true,
                         },
                         new StrategusBattleFighter
                         {
                             Hero = disorotHero,
                             Side = StrategusBattleSide.Attacker,
-                            MainFighter = false,
+                            Commander = false,
                         },
                         new StrategusBattleFighter
                         {
                             Hero = null,
                             Settlement = nideon,
                             Side = StrategusBattleSide.Defender,
-                            MainFighter = true,
+                            Commander = true,
                         },
                         new StrategusBattleFighter
                         {
                             Hero = aceHero,
                             Side = StrategusBattleSide.Defender,
-                            MainFighter = false,
+                            Commander = false,
                         },
                     },
                     FighterApplications =
@@ -1390,10 +1390,10 @@ namespace Crpg.Application.System.Commands
                     Position = new Point(107.187, -110.164),
                     Fighters =
                     {
-                        new StrategusBattleFighter { Hero = xaroshHero, Side = StrategusBattleSide.Attacker, MainFighter = true },
-                        new StrategusBattleFighter { Hero = greenShadowHero, Side = StrategusBattleSide.Attacker, MainFighter = false },
-                        new StrategusBattleFighter { Hero = drexxHero, Side = StrategusBattleSide.Defender, MainFighter = true },
-                        new StrategusBattleFighter { Hero = hannibaruHero, Side = StrategusBattleSide.Defender, MainFighter = false },
+                        new StrategusBattleFighter { Hero = xaroshHero, Side = StrategusBattleSide.Attacker, Commander = true },
+                        new StrategusBattleFighter { Hero = greenShadowHero, Side = StrategusBattleSide.Attacker, Commander = false },
+                        new StrategusBattleFighter { Hero = drexxHero, Side = StrategusBattleSide.Defender, Commander = true },
+                        new StrategusBattleFighter { Hero = hannibaruHero, Side = StrategusBattleSide.Defender, Commander = false },
                     },
                     FighterApplications =
                     {
@@ -1423,14 +1423,14 @@ namespace Crpg.Application.System.Commands
                         {
                             Hero = alexHero,
                             Side = StrategusBattleSide.Attacker,
-                            MainFighter = true,
+                            Commander = true,
                         },
                         new StrategusBattleFighter
                         {
                             Hero = null,
                             Settlement = hertogea,
                             Side = StrategusBattleSide.Defender,
-                            MainFighter = true,
+                            Commander = true,
                         },
                     },
                     FighterApplications =
@@ -1467,14 +1467,14 @@ namespace Crpg.Application.System.Commands
                         {
                             Hero = eztliHero,
                             Side = StrategusBattleSide.Attacker,
-                            MainFighter = true,
+                            Commander = true,
                         },
                         new StrategusBattleFighter
                         {
                             Hero = null,
                             Settlement = leblenion,
                             Side = StrategusBattleSide.Defender,
-                            MainFighter = true,
+                            Commander = true,
                         },
                     },
                     MercenaryApplications =

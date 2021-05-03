@@ -158,13 +158,13 @@ namespace Crpg.Application.Strategus.Commands
                             {
                                 Hero = hero,
                                 Side = StrategusBattleSide.Attacker,
-                                MainFighter = true,
+                                Commander = true,
                             },
                             new StrategusBattleFighter
                             {
                                 Hero = hero.TargetedHero,
                                 Side = StrategusBattleSide.Defender,
-                                MainFighter = true,
+                                Commander = true,
                             },
                         },
                     };
@@ -218,13 +218,13 @@ namespace Crpg.Application.Strategus.Commands
                             {
                                 Hero = hero,
                                 Side = StrategusBattleSide.Attacker,
-                                MainFighter = true,
+                                Commander = true,
                             },
                             new StrategusBattleFighter
                             {
                                 Settlement = hero.TargetedSettlement,
                                 Side = StrategusBattleSide.Defender,
-                                MainFighter = true,
+                                Commander = true,
                             },
                         },
                     };

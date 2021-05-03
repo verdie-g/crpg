@@ -59,12 +59,12 @@ namespace Crpg.Application.Strategus.Queries
                     Position = b.Position,
                     Phase = b.Phase,
                     Attacker = _mapper.Map<StrategusBattleFighterViewModel>(
-                        b.Fighters.First(f => f.Side == StrategusBattleSide.Attacker && f.MainFighter)),
+                        b.Fighters.First(f => f.Side == StrategusBattleSide.Attacker && f.Commander)),
                     AttackerTotalTroops = b.Fighters
                         .Where(f => f.Side == StrategusBattleSide.Attacker)
                         .Sum(f => (int)f.Hero!.Troops),
                     Defender = _mapper.Map<StrategusBattleFighterViewModel>(
-                        b.Fighters.First(f => f.Side == StrategusBattleSide.Defender && f.MainFighter)),
+                        b.Fighters.First(f => f.Side == StrategusBattleSide.Defender && f.Commander)),
                     DefenderTotalTroops = b.Fighters
                             .Where(f => f.Side == StrategusBattleSide.Defender)
                             .Sum(f => (int)(f.Hero?.Troops ?? 0) + (f.Settlement?.Troops ?? 0)),
