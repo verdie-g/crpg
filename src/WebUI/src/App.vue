@@ -10,7 +10,10 @@
           <b-navbar-item tag="router-link" :to="{ path: '/characters' }">Characters</b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ path: '/shop' }">Shop</b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ path: '/clans' }">Clans</b-navbar-item>
-          <b-navbar-item tag="router-link" :to="{ path: '/strategus' }">Strategus</b-navbar-item>
+          <b-navbar-dropdown label="Strategus">
+            <b-navbar-item tag="router-link" :to="{ path: '/strategus' }">Map</b-navbar-item>
+            <b-navbar-item tag="router-link" :to="{ path: '/battles' }">Battles</b-navbar-item>
+          </b-navbar-dropdown>
         </template>
 
         <template slot="end">

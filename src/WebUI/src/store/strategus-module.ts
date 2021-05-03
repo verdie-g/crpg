@@ -1,11 +1,14 @@
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
 import SettlementPublic from '@/models/settlement-public';
+import BattlePublic from '@/models/battle-public';
 import * as strategusService from '@/services/strategus-service';
 import { arrayMergeBy } from '@/utils/array';
 import Hero from '@/models/hero';
 import Region from '@/models/region';
+import Phase from '@/models/phase';
 import HeroVisible from '@/models/hero-visible';
+import BattleApplyMercenaries from '@/models/battle-apply-mercenaries';
 import StrategusUpdate from '@/models/strategus-update';
 import { Result } from '@/models/result';
 import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
@@ -14,6 +17,7 @@ import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
 class StrategusModule extends VuexModule {
   hero: Hero | null = null;
   settlements: SettlementPublic[] = [];
+  battles: BattlePublic[] = [];
   visibleHeroes: HeroVisible[] = [];
 
   currentDialog: string | null = null;
@@ -26,6 +30,11 @@ class StrategusModule extends VuexModule {
   @Mutation
   setSettlements(settlements: SettlementPublic[]) {
     this.settlements = settlements;
+  }
+
+  @Mutation
+  setBattles(battles: BattlePublic[]) {
+    this.battles = battles;
   }
 
   @Mutation
@@ -48,9 +57,19 @@ class StrategusModule extends VuexModule {
     return strategusService.getSettlements();
   }
 
+  @Action({ commit: 'setBattles' })
+  getBattles(params: { region: Region, phase: Phase }): Promise<BattlePublic> {
+    return strategusService.getBattles(params.region, params.phase);
+  }
+
   @Action({ commit: 'setHero' })
   registerUser(region: Region): Promise<Hero> {
     return strategusService.registerUser(region);
+  }
+
+  @Action({ rawError: true })
+  applyMercenaries(params: BattleApplyMercenaries) {
+    return strategusService.applyMercenaries(params);
   }
 
   @Action

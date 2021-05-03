@@ -236,9 +236,19 @@ export default class Strategus extends Vue {
   heroSpawn() {
     strategusModule.getUpdate();
     this.updateIntervalId = setInterval(() => strategusModule.getUpdate(), 60 * 1000);
-    this.map.mapObject.flyTo(positionToLatLng(this.hero!.position.coordinates), 5, {
-      animate: false,
-    });
+    if (this.$route.params.lat && this.$route.params.long) {
+      this.map.mapObject.flyTo(
+        [Number(this.$route.params.lat), Number(this.$route.params.long)],
+        5,
+        {
+          animate: false,
+        }
+      );
+    } else {
+      this.map.mapObject.flyTo(positionToLatLng(this.hero!.position.coordinates), 5, {
+        animate: false,
+      });
+    }
   }
 
   onMapClick(event: LeafletMouseEvent) {
