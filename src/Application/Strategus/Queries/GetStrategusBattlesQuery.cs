@@ -56,6 +56,7 @@ namespace Crpg.Application.Strategus.Queries
                 {
                     Id = b.Id,
                     Region = b.Region,
+                    Position = b.Position,
                     Phase = b.Phase,
                     Attacker = _mapper.Map<StrategusBattleFighterViewModel>(
                         b.Fighters.First(f => f.Side == StrategusBattleSide.Attacker && f.MainFighter)),
