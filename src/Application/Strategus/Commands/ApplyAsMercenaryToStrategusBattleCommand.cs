@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Characters.Models;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
@@ -23,12 +24,16 @@ namespace Crpg.Application.Strategus.Commands
         public int CharacterId { get; init; }
         public int BattleId { get; init; }
         public StrategusBattleSide Side { get; init; }
+        public int Wage { get; init; }
+        public string Note { get; init; } = string.Empty;
 
         public class Validator : AbstractValidator<ApplyAsMercenaryToStrategusBattleCommand>
         {
-            public Validator()
+            public Validator(Constants constants)
             {
                 RuleFor(a => a.Side).IsInEnum();
+                RuleFor(a => a.Wage).InclusiveBetween(0, constants.StrategusMercenaryMaxWage);
+                RuleFor(a => a.Note).MaximumLength(constants.StrategusMercenaryNoteMaxLength);
             }
         }
 
@@ -86,11 +91,12 @@ namespace Crpg.Application.Strategus.Commands
                     application = new StrategusBattleMercenaryApplication
                     {
                         Side = req.Side,
+                        Wage = req.Wage,
+                        Note = req.Note,
                         Status = StrategusBattleMercenaryApplicationStatus.Pending,
-                        Battle = battle,
                         Character = character,
                     };
-                    _db.StrategusBattleMercenaryApplications.Add(application);
+                    battle.MercenaryApplications.Add(application);
                     await _db.SaveChangesAsync(cancellationToken);
                     Logger.LogInformation("User '{0}' applied as a mercenary to battle '{1}' with character '{2}'",
                         character.UserId, battle.Id, character.Id);
@@ -107,6 +113,8 @@ namespace Crpg.Application.Strategus.Commands
                         Class = _characterClassModel.ResolveCharacterClass(character.Statistics),
                     },
                     Side = application.Side,
+                    Wage = application.Wage,
+                    Note = application.Note,
                     Status = application.Status,
                 });
             }

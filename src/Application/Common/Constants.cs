@@ -56,5 +56,7 @@ namespace Crpg.Application.Common
         public int StrategusMaxHeroTroops { get; set; }
         public int StrategusBattleInitiationDurationHours { get; set; }
         public int StrategusBattleHiringDurationHours { get; set; }
+        public int StrategusMercenaryMaxWage { get; set; }
+        public int StrategusMercenaryNoteMaxLength { get; set; }
     }
 }

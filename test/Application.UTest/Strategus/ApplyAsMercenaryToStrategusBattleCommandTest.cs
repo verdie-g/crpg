@@ -142,6 +142,8 @@ namespace Crpg.Application.UTest.Strategus
                 CharacterId = character.Id,
                 BattleId = battle.Id,
                 Side = StrategusBattleSide.Defender,
+                Wage = 123,
+                Note = "toto",
             }, CancellationToken.None);
 
             Assert.IsNull(res.Errors);
@@ -151,6 +153,8 @@ namespace Crpg.Application.UTest.Strategus
             Assert.AreEqual(character.Id, application.Character.Id);
             Assert.AreEqual(CharacterClass.Crossbowman, application.Character.Class);
             Assert.AreEqual(StrategusBattleSide.Defender, application.Side);
+            Assert.AreEqual(123, application.Wage);
+            Assert.AreEqual("toto", application.Note);
             Assert.AreEqual(StrategusBattleMercenaryApplicationStatus.Pending, application.Status);
         }
     }

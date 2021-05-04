@@ -10,6 +10,8 @@ namespace Crpg.Application.Strategus.Models
         public UserPublicViewModel User { get; init; } = default!;
         public CharacterPublicViewModel Character { get; init; } = default!;
         public StrategusBattleSide Side { get; init; }
+        public int Wage { get; init; }
+        public string Note { get; init; } = string.Empty;
         public StrategusBattleMercenaryApplicationStatus Status { get; init; }
     }
 }

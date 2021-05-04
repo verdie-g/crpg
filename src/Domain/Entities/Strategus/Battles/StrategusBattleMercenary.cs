@@ -14,8 +14,10 @@ namespace Crpg.Domain.Entities.Strategus.Battles
         /// <summary>The id of the character the user will fight with.</summary>
         public int CharacterId { get; set; }
         public StrategusBattleSide Side { get; set; }
+        public int ApplicationId { get; set; }
 
         public Character? Character { get; set; }
         public StrategusBattle? Battle { get; set; }
+        public StrategusBattleMercenaryApplication? Application { get; set; }
     }
 }

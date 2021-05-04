@@ -15,6 +15,12 @@ namespace Crpg.Domain.Entities.Strategus.Battles
 
         /// <summary>The side the character is applying to.</summary>
         public StrategusBattleSide Side { get; set; }
+
+        /// <summary>Amount of gold the mercenary is requesting.</summary>
+        public int Wage { get; set; }
+
+        /// <summary>A note to the recruiters.</summary>
+        public string Note { get; set; } = string.Empty;
         public StrategusBattleMercenaryApplicationStatus Status { get; set; }
 
         public StrategusBattle? Battle { get; set; }
