@@ -42,5 +42,5 @@ export function registerUser(region: Region): Promise<Hero> {
 }
 
 export function applyMercenaries(params: BattleApplyMercenaries) {
-  return post('/strategus​/battles​/' + params.battleId + '​/mercenaries', params);
+  return post(`/strategus​/battles​/${params.battleId}​/mercenaries`, params);
 }
