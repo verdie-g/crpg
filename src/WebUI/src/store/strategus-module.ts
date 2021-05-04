@@ -7,8 +7,10 @@ import { arrayMergeBy } from '@/utils/array';
 import Hero from '@/models/hero';
 import Region from '@/models/region';
 import Phase from '@/models/phase';
+import Side from '@/models/side';
+import Mercenaries from '@/models/mercenaries';
+import Fighters from '@/models/fighters';
 import HeroVisible from '@/models/hero-visible';
-import BattleApplyMercenaries from '@/models/battle-apply-mercenaries';
 import StrategusUpdate from '@/models/strategus-update';
 import { Result } from '@/models/result';
 import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
@@ -18,6 +20,9 @@ class StrategusModule extends VuexModule {
   hero: Hero | null = null;
   settlements: SettlementPublic[] = [];
   battles: BattlePublic[] = [];
+  battle: BattlePublic | null = null;
+  mercenaries: Mercenaries[] = [];
+  fighters: Fighters[] = [];
   visibleHeroes: HeroVisible[] = [];
 
   currentDialog: string | null = null;
@@ -35,6 +40,21 @@ class StrategusModule extends VuexModule {
   @Mutation
   setBattles(battles: BattlePublic[]) {
     this.battles = battles;
+  }
+
+  @Mutation
+  setBattle(battle: BattlePublic) {
+    this.battle = battle;
+  }
+
+  @Mutation
+  setMercenaries(mercenaries: Mercenaries[]) {
+    this.mercenaries = mercenaries;
+  }
+
+  @Mutation
+  setFighters(fighters: Fighters[]) {
+    this.fighters = fighters;
   }
 
   @Mutation
@@ -58,8 +78,23 @@ class StrategusModule extends VuexModule {
   }
 
   @Action({ commit: 'setBattles' })
-  getBattles({ region, phases }: { region: Region, phases: Phase[] }): Promise<BattlePublic> {
+  getBattles({ region, phases }: { region: Region, phases: Phase[] }): Promise<BattlePublic[]> {
     return strategusService.getBattles(region, phases);
+  }
+
+  @Action({ commit: 'setBattle' })
+  getBattle(id: String): Promise<BattlePublic> {
+    return strategusService.getBattle(id);
+  }
+
+  @Action({ commit: 'setFighters' })
+  getFighters(battleId: String): Promise<Fighters[]> {
+    return strategusService.getFighters(battleId);
+  }
+
+  @Action({ commit: 'setMercenaries' })
+  getMercenaries(battleId: String): Promise<Mercenaries[]> {
+    return strategusService.getMercenaries(battleId);
   }
 
   @Action({ commit: 'setHero' })
@@ -67,9 +102,9 @@ class StrategusModule extends VuexModule {
     return strategusService.registerUser(region);
   }
 
-  @Action({ rawError: true })
-  applyMercenaries(params: BattleApplyMercenaries) {
-    return strategusService.applyMercenaries(params);
+  @Action
+  applyMercenaries({battleId ,characterId, side }:{battleId: number, characterId: number, side: Side}) {
+    return strategusService.applyMercenaries(battleId ,characterId, side);
   }
 
   @Action

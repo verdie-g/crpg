@@ -128,7 +128,12 @@ const routes = [
     path: '/battles',
     name: 'battles',
     component: () => import('../views/Battles.vue'),
-    beforeEnter: isSignedInGuard,
+    beforeEnter: isSignedInGuard
+  },
+  {
+      path: '/battles/:id',
+      name: 'battles-details',
+      component: () => import('../views/BattlesDetails.vue'),
   },
   {
     path: '/settings',

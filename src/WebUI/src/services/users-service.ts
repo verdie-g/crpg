@@ -87,6 +87,10 @@ export function getCharacters(): Promise<Character[]> {
   return get('/users/self/characters');
 }
 
+export function getCharacter(id: number): Promise<Character> {
+  return get(`/users/self/characters/${id}`);
+}
+
 export async function getUserBans(): Promise<Ban[]> {
   const bans: Ban[] = await get('/users/self/bans');
   return bans.map(b => ({ ...b, createdAt: new Date(b.createdAt) }));

@@ -5,8 +5,10 @@ import { Result } from '@/models/result';
 import StrategusUpdate from '@/models/strategus-update';
 import Region from '@/models/region';
 import Phase from '@/models/phase';
+import Fighters from '@/models/fighters';
+import Mercenaries from '@/models/mercenaries';
 import Hero from '@/models/hero';
-import BattleApplyMercenaries from '@/models/battle-apply-mercenaries';
+import Side from '@/models/side';
 import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
 import HeroStatus from '@/models/hero-status';
 import { parameterizeArray } from '@/utils/serialize';
@@ -26,8 +28,12 @@ export function getSettlements(): Promise<SettlementPublic> {
   return get('/strategus/settlements');
 }
 
-export function getBattles(region: Region, phases: Phase[]): Promise<BattlePublic> {
+export function getBattles(region: Region, phases: Phase[]): Promise<BattlePublic[]> {
   return get(`/strategus/battles?region=${region}&${parameterizeArray('phase',phases)}`);
+}
+
+export function getBattle(id: String): Promise<BattlePublic> {
+  return get(`/strategus/battles/${id}`);
 }
 
 export function getUpdate(): Promise<Result<StrategusUpdate>> {
@@ -42,6 +48,14 @@ export function registerUser(region: Region): Promise<Hero> {
   return post('/strategus/heroes', { region });
 }
 
-export function applyMercenaries(params: BattleApplyMercenaries) {
-  return post(`/strategus​/battles​/${params.battleId}​/mercenaries`, params);
+export function getFighters(battleId: String): Promise<Fighters[]> {
+  return get(`/strategus/battles/${battleId}/fighters`);
+}
+
+export function getMercenaries(battleId: String): Promise<Mercenaries[]> {
+  return get(`/strategus/battles/${battleId}/mercenaries`);
+}
+
+export function applyMercenaries(battleId: number, characterId: number, side: Side) {
+  return post(`/strategus​/battles​/${battleId}​/mercenaries`, {characterId, side});
 }
