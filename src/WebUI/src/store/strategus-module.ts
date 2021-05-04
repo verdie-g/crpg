@@ -1,7 +1,7 @@
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
 import SettlementPublic from '@/models/settlement-public';
-import BattlePublic from '@/models/battle-public';
+import BattlePublic from '@/models/battle-detailed';
 import * as strategusService from '@/services/strategus-service';
 import { arrayMergeBy } from '@/utils/array';
 import Hero from '@/models/hero';
@@ -58,8 +58,8 @@ class StrategusModule extends VuexModule {
   }
 
   @Action({ commit: 'setBattles' })
-  getBattles(params: { region: Region, phase: Phase }): Promise<BattlePublic> {
-    return strategusService.getBattles(params.region, params.phase);
+  getBattles({ region, phases }: { region: Region, phases: Phase[] }): Promise<BattlePublic> {
+    return strategusService.getBattles(region, phases);
   }
 
   @Action({ commit: 'setHero' })

@@ -3,7 +3,7 @@
     <b-field label="Region">
       <b-select
         v-model="selectedRegion"
-        @input="getBattles(selectedRegion, 'Hiring')"
+        @input="getBattles(selectedRegion, ['Hiring'])"
         placeholder="Select a character"
         required
       >
@@ -73,7 +73,7 @@
             name: 'strategus',
             params: {
               lat: props.row.defender.hero.position.coordinates[1],
-              long: props.row.defender.hero.position.coordinates[0],
+              lng: props.row.defender.hero.position.coordinates[0],
             },
           }"
         >
@@ -86,19 +86,12 @@
             name: 'strategus',
             params: {
               lat: props.row.defender.settlement.position.coordinates[1],
-              long: props.row.defender.settlement.position.coordinates[0],
+              lng: props.row.defender.settlement.position.coordinates[0],
             },
           }"
         >
           {{ props.row.defender.settlement.position.coordinates[0].toFixed(2) }},
           {{ props.row.defender.settlement.position.coordinates[1].toFixed(2) }}
-        </router-link>
-      </b-table-column>
-
-      <b-table-column v-slot="props">
-        <router-link :to="{ name: 'battles-details', params: { id: props.row.id } }">
-          Show details
-          <i class="fas fa-chevron-right"></i>
         </router-link>
       </b-table-column>
     </b-table>
@@ -108,10 +101,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import strategusModule from '@/store/strategus-module';
-import Battle from '@/models/battle-public';
+import Battle from '@/models/battle-detailed';
 import Hero from '@/models/hero';
 import Phase from '@/models/phase';
 import Region from '@/models/region';
+import Side from '@/models/side';
 
 @Component
 export default class Battles extends Vue {
@@ -125,19 +119,17 @@ export default class Battles extends Vue {
     return strategusModule.hero;
   }
 
-  created() {
-    strategusModule.getUpdate();
-    if (this.hero) {
-      this.selectedRegion = this.hero.region;
-    }
-    this.getBattles(this.selectedRegion, Phase.Hiring);
+  async created() {
+    await strategusModule.getUpdate();
+    this.selectedRegion = this.hero.region;
+    this.getBattles(this.selectedRegion, [Phase.Hiring, Phase.Battle]);
   }
 
-  getBattles(region: Region, phase: Phase) {
-    strategusModule.getBattles({ region, phase });
+  getBattles(region: Region, phases: Phase[]) {
+    strategusModule.getBattles({ region, phases });
   }
 
-  applyAsMercenaries(battleId: string, characterId: string, side: string) {
+  applyAsMercenaries(battleId: number, characterId: number, side: Side) {
     strategusModule.applyMercenaries({ battleId, characterId, side });
   }
 }

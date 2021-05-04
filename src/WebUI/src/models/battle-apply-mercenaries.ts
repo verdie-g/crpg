@@ -1,5 +1,7 @@
+import Side from '@/models/side';
+
 export default interface BattleApplyMercenaries {
-  battleId: string;
-  characterId: string;
-  side: string;
+  battleId: number;
+  characterId: number;
+  side: Side;
 }
