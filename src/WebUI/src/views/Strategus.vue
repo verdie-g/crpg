@@ -236,9 +236,9 @@ export default class Strategus extends Vue {
   heroSpawn() {
     strategusModule.getUpdate();
     this.updateIntervalId = setInterval(() => strategusModule.getUpdate(), 60 * 1000);
-    if (this.$route.params.lat && this.$route.params.long) {
+    if (this.$route.params.lat && this.$route.params.lng) {
       this.map.mapObject.flyTo(
-        [Number(this.$route.params.lat), Number(this.$route.params.long)],
+        [Number(this.$route.params.lat), Number(this.$route.params.lng)],
         5,
         {
           animate: false,
