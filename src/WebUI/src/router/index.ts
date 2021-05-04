@@ -131,12 +131,6 @@ const routes = [
     beforeEnter: isSignedInGuard,
   },
   {
-    path: '/battle/:id',
-    name: 'battles-details',
-    component: () => import('../views/BattlesDetails.vue'),
-    beforeEnter: isSignedInGuard,
-  },
-  {
     path: '/settings',
     name: 'settings',
     component: () => import('../views/Settings.vue'),
