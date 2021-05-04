@@ -89,7 +89,6 @@ import Battle from '@/models/battle-detailed';
 import Hero from '@/models/hero';
 import Phase from '@/models/phase';
 import Region from '@/models/region';
-import Side from '@/models/side';
 
 @Component
 export default class Battles extends Vue {
@@ -111,10 +110,6 @@ export default class Battles extends Vue {
 
   getBattles(region: Region, phases: Phase[]) {
     strategusModule.getBattles({ region, phases });
-  }
-
-  applyAsMercenaries(battleId: number, characterId: number, side: Side) {
-    strategusModule.applyMercenaries({ battleId, characterId, side });
   }
 }
 </script>
