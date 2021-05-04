@@ -70,7 +70,6 @@ import Battle from '@/models/battle-detailed';
 import Hero from '@/models/hero';
 import Phase from '@/models/phase';
 import Region from '@/models/region';
-import Side from '@/models/side';
 
 @Component
 export default class Battles extends Vue {

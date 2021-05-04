@@ -42,7 +42,3 @@ export function updateHeroStatus(update: HeroStatusUpdateRequest): Promise<Hero>
 export function registerUser(region: Region): Promise<Hero> {
   return post('/strategus/heroes', { region });
 }
-
-export function applyMercenaries(params: BattleApplyMercenaries) {
-  return post(`/strategus​/battles​/${params.battleId}​/mercenaries`, params);
-}
