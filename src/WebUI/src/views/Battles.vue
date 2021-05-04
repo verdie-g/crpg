@@ -31,13 +31,6 @@
         <div>
           <i class="fas fa-user"></i>
           {{ props.row.attacker.hero.name }} ({{ props.row.attackerTotalTroops }})
-          <b-button
-            class="ml-2"
-            size="is-small"
-            @click="applyAsMercenaries(String(props.row.id), String(hero.id), 'Attacker')"
-          >
-            Join as mercenary
-          </b-button>
         </div>
       </b-table-column>
 
@@ -45,24 +38,10 @@
         <div v-if="props.row.defender.hero">
           <i class="fas fa-user"></i>
           {{ props.row.defender.hero.name }} ({{ props.row.defenderTotalTroops }})
-          <b-button
-            class="ml-2"
-            size="is-small"
-            @click="applyAsMercenaries(props.row.id, hero.id, 'Defender')"
-          >
-            Join as mercenary
-          </b-button>
         </div>
         <div v-else>
           <i class="fab fa-fort-awesome"></i>
           {{ props.row.defender.settlement.name }} ({{ props.row.defenderTotalTroops }})
-          <b-button
-            class="ml-2"
-            size="is-small"
-            @click="applyAsMercenaries(props.row.id, hero.id, 'Defender')"
-          >
-            Join as mercenary
-          </b-button>
         </div>
       </b-table-column>
 
@@ -105,7 +84,6 @@ import Battle from '@/models/battle-detailed';
 import Hero from '@/models/hero';
 import Phase from '@/models/phase';
 import Region from '@/models/region';
-import Side from '@/models/side';
 
 @Component
 export default class Battles extends Vue {
@@ -122,15 +100,11 @@ export default class Battles extends Vue {
   async created() {
     await strategusModule.getUpdate();
     this.selectedRegion = this.hero.region;
-    this.getBattles(this.selectedRegion, [Phase.Hiring, Phase.Battle]);
+    this.getBattles(this.selectedRegion, [Phase.Hiring]);
   }
 
   getBattles(region: Region, phases: Phase[]) {
     strategusModule.getBattles({ region, phases });
-  }
-
-  applyAsMercenaries(battleId: number, characterId: number, side: Side) {
-    strategusModule.applyMercenaries({ battleId, characterId, side });
   }
 }
 </script>
