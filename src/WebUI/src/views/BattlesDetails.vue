@@ -7,7 +7,10 @@
     <div class="columns">
       <div class="column mx-6">
         <article class="tile is-child box is-flex is-align-items-center is-flex-direction-column">
-          <p class="subtitle">Attackers</p>
+          <p class="title is-4">Attacker(s)</p>
+          <p v-for="fighter in fighters" :key="fighter.id" class="subtitle is-5">
+            <span v-if="fighter.side === sideModel.Attacker">{{ fighter.hero.name }}</span>
+          </p>
           <b-field v-if="!haveCharacterInBattle()">
             <b-select
               v-model="selectedAttacker"
@@ -36,7 +39,7 @@
       </div>
       <div class="column mx-6">
         <article class="tile is-child box is-flex is-align-items-center is-flex-direction-column">
-          <p class="subtitle">Defenders</p>
+          <p class="subtitle">Defender(s)</p>
           <b-field v-if="!haveCharacterInBattle()">
             <b-select
               v-model="selectedDefenser"
@@ -81,6 +84,7 @@ import Fighters from '@/models/fighters';
 export default class BattlesDetails extends Vue {
   selectedAttacker: Character | null = null;
   selectedDefenser: Character | null = null;
+  sideModel = Side;
 
   get battle(): Battle | null {
     return strategusModule.battle;
