@@ -24,7 +24,7 @@
       aria-current-label="Current page"
     >
       <b-table-column field="date" label="Schedule date" sortable centered v-slot="props">
-        {{ new Date(props.row.createdAt).toDateString() }}
+        {{ props.row.createdAt.toDateString() }}
       </b-table-column>
 
       <b-table-column label="Attacker" v-slot="props">
@@ -47,30 +47,16 @@
 
       <b-table-column label="Position" v-slot="props">
         <router-link
-          v-if="props.row.defender.hero"
           :to="{
             name: 'strategus',
             params: {
-              lat: props.row.defender.hero.position.coordinates[1],
-              lng: props.row.defender.hero.position.coordinates[0],
+              lat: props.row.position.coordinates[1],
+              lng: props.row.position.coordinates[0],
             },
           }"
         >
-          {{ props.row.defender.hero.position.coordinates[0].toFixed(2) }},
-          {{ props.row.defender.hero.position.coordinates[1].toFixed(2) }}
-        </router-link>
-        <router-link
-          v-else
-          :to="{
-            name: 'strategus',
-            params: {
-              lat: props.row.defender.settlement.position.coordinates[1],
-              lng: props.row.defender.settlement.position.coordinates[0],
-            },
-          }"
-        >
-          {{ props.row.defender.settlement.position.coordinates[0].toFixed(2) }},
-          {{ props.row.defender.settlement.position.coordinates[1].toFixed(2) }}
+          {{ props.row.position.coordinates[0].toFixed(2) }},
+          {{ props.row.position.coordinates[1].toFixed(2) }}
         </router-link>
       </b-table-column>
     </b-table>

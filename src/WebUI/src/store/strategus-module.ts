@@ -58,7 +58,7 @@ class StrategusModule extends VuexModule {
   }
 
   @Action({ commit: 'setBattles' })
-  getBattles({ region, phases }: { region: Region, phases: Phase[] }): Promise<BattlePublic> {
+  getBattles({ region, phases }: { region: Region, phases: Phase[] }): Promise<BattlePublic[]> {
     return strategusService.getBattles(region, phases);
   }
 
