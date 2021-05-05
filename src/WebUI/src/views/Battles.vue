@@ -68,6 +68,11 @@
           <i class="fas fa-chevron-right"></i>
         </router-link>
       </b-table-column>
+      <b-table-column v-slot="props">
+        <router-link :to="{ name: 'battles-details', params: { id: props.row.id } }">
+          <i class="fas fa-chevron-right"></i>
+        </router-link>
+      </b-table-column>
     </b-table>
   </section>
 </template>
