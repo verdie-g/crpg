@@ -23,6 +23,7 @@ class UserModule extends VuexModule {
   userBans: Ban[] = [];
 
   characters: Character[] = [];
+  character: Character | null = null;
   equippedItemsByCharacterId: { [id: number]: EquippedItem[] } = {};
   statisticsByCharacterId: { [id: number]: CharacterStatistics } = {};
 
@@ -96,6 +97,11 @@ class UserModule extends VuexModule {
   @Mutation
   setCharacters(characters: Character[]) {
     this.characters = characters;
+  }
+
+  @Mutation
+  setCharacter(character: Character) {
+    this.character = character;
   }
 
   @Mutation
@@ -261,6 +267,11 @@ class UserModule extends VuexModule {
   @Action({ commit: 'setCharacters' })
   getCharacters(): Promise<Character[]> {
     return userService.getCharacters();
+  }
+
+  @Action({ commit: 'setCharacter' })
+  getCharacter(id: number): Promise<Character> {
+    return userService.getCharacter(id);
   }
 
   @Action
