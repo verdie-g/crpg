@@ -6,6 +6,7 @@ import StrategusUpdate from '@/models/strategus-update';
 import Region from '@/models/region';
 import Phase from '@/models/phase';
 import Hero from '@/models/hero';
+import BattleApplyMercenaries from '@/models/battle-apply-mercenaries';
 import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
 import HeroStatus from '@/models/hero-status';
 import { parameterizeArray } from '@/utils/serialize';

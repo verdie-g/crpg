@@ -24,7 +24,11 @@
       aria-current-label="Current page"
     >
       <b-table-column field="date" label="Schedule date" sortable centered v-slot="props">
+        <<<<<<< HEAD
         {{ props.row.createdAt.toDateString() }}
+        =======
+        {{ new Date(props.row.createdAt).toDateString() }}
+        >>>>>>> d47993855c8aee1dde884545b4d6250588bc0f2d
       </b-table-column>
 
       <b-table-column label="Attacker" v-slot="props">
