@@ -27,7 +27,7 @@
               class="ml-2"
               :disabled="selectedAttacker === null"
               size="is-small"
-              @click="applyAsMercenaries($route.params.id, selectedAttacker.id, 'Attacker')"
+              @click="applyToBattleAsMercenary($route.params.id, selectedAttacker.id, 'Attacker')"
             >
               Join as mercenary
             </b-button>
@@ -56,7 +56,7 @@
               class="ml-2"
               size="is-small"
               :disabled="selectedDefenser === null"
-              @click="applyAsMercenaries($route.params.id, selectedDefenser.id, 'Defender')"
+              @click="applyToBattleAsMercenary($route.params.id, selectedDefenser.id, 'Defender')"
             >
               Join as mercenary
             </b-button>
@@ -117,8 +117,8 @@ export default class BattlesDetails extends Vue {
     return false;
   }
 
-  applyAsMercenaries(battleId: number, characterId: number, side: Side) {
-    strategusModule.applyMercenaries({ battleId, characterId, side });
+  applyToBattleAsMercenary(battleId: number, characterId: number, side: Side) {
+    strategusModule.applyToBattleAsMercenary({ battleId, characterId, side });
   }
 }
 </script>

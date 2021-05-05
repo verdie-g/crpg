@@ -57,6 +57,6 @@ export function getMercenaries(battleId: String): Promise<Mercenaries[]> {
   return get(`/strategus/battles/${battleId}/mercenaries`);
 }
 
-export function applyMercenaries(battleId: number, characterId: number, side: Side) {
+export function applyToBattleAsMercenary(battleId: number, characterId: number, side: Side) {
   return post(`/strategus​/battles​/${battleId}​/mercenaries`, {characterId, side});
 }

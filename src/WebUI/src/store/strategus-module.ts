@@ -103,8 +103,8 @@ class StrategusModule extends VuexModule {
   }
 
   @Action
-  applyMercenaries({battleId ,characterId, side }:{battleId: number, characterId: number, side: Side}) {
-    return strategusService.applyMercenaries(battleId ,characterId, side);
+  applyToBattleAsMercenary({battleId ,characterId, side }:{battleId: number, characterId: number, side: Side}) {
+    return strategusService.applyToBattleAsMercenary(battleId ,characterId, side);
   }
 
   @Action
