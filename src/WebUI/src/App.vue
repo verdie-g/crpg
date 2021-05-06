@@ -141,7 +141,7 @@ export default class App extends Vue {
       userModule.setUserLoading(false);
     }
   }
-  
+
   signOut(): void {
     signOut();
   }

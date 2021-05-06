@@ -88,18 +88,22 @@ export default class Battles extends Vue {
   get battles(): BattleDetailed[] {
     return strategusModule.battles;
   }
+
   get hero(): Hero | null {
     return strategusModule.hero;
   }
+
   async created() {
     await strategusModule.getUpdate();
     // Set default region or hero region
     this.selectedRegion = this.hero === null ? Region.Europe : this.hero.region;
     this.getBattles(this.selectedRegion, [BattlePhase.Hiring]);
   }
+
   getBattles(region: Region, phases: BattlePhase[]) {
     strategusModule.getBattles({ region, phases });
   }
+
   formatDateBattle(
     createdAt: string,
     strategusBattleInitiationDurationHours: number,

@@ -109,6 +109,7 @@ export default class Strategus extends Vue {
   ]);
   mapBounds: LatLngBounds | null = null;
   updateIntervalId = -1;
+
   // Register here handlers for all events that can emitted from a dialog.
   dialogEventHandlers = {
     heroSpawn: this.heroSpawn,
@@ -118,6 +119,7 @@ export default class Strategus extends Vue {
     if (this.mapBounds === null) {
       return [];
     }
+
     const zoom = this.map.mapObject.getZoom();
     return strategusModule.settlements.filter(s =>
       this.shouldDisplaySettlement(s, this.mapBounds!, zoom)
@@ -133,8 +135,10 @@ export default class Strategus extends Vue {
     if (this.hero === null) {
       return null;
     }
+
     const attackColor = '#f14668';
     const moveColor = '#485fc7';
+
     let color: string;
     let positions: Position[];
     switch (this.hero.status) {
@@ -161,6 +165,7 @@ export default class Strategus extends Vue {
       default:
         return null;
     }
+
     return {
       latLngs: [this.hero.position.coordinates, ...positions].map(positionToLatLng),
       color,
@@ -209,6 +214,7 @@ export default class Strategus extends Vue {
     if (!mapBounds!.contains(new LatLng(y, x))) {
       return false;
     }
+
     return (
       zoom > 4 ||
       (zoom > 3 && settlement.type == SettlementType.Castle) ||
@@ -253,6 +259,7 @@ export default class Strategus extends Vue {
       this.hero.status === HeroStatus.MovingToPoint
         ? [...this.hero.waypoints.coordinates, clickCoordinates]
         : [clickCoordinates];
+
     this.moveHero({
       status: HeroStatus.MovingToPoint,
       waypoints: { type: 'MultiPoint', coordinates },
@@ -268,6 +275,7 @@ export default class Strategus extends Vue {
     if (movement === null) {
       return;
     }
+
     this.moveHero({
       status:
         movement === MovementType.Follow ? HeroStatus.FollowingHero : HeroStatus.MovingToAttackHero,
@@ -279,6 +287,7 @@ export default class Strategus extends Vue {
     if (this.hero === null) {
       return;
     }
+
     if (
       strategusService.inSettlementStatuses.has(this.hero.status) &&
       this.hero.targetedSettlement.id === settlement.id
@@ -286,14 +295,17 @@ export default class Strategus extends Vue {
       strategusModule.pushDialog('SettlementDialog');
       return;
     }
+
     const movement = await promptMovementType(
       this.$refs.map as Vue,
       positionToLatLng(settlement.position.coordinates),
       [MovementType.Move, MovementType.Attack]
     );
+
     if (movement === null) {
       return;
     }
+
     this.moveHero({
       status:
         movement === MovementType.Move
@@ -307,6 +319,7 @@ export default class Strategus extends Vue {
     if (this.hero === null) {
       return;
     }
+
     strategusModule
       .updateHeroStatus({
         status: HeroStatus.MovingToPoint,
@@ -323,6 +336,7 @@ export default class Strategus extends Vue {
 <style lang="scss">
 @import '~leaflet.markercluster/dist/MarkerCluster.css';
 @import '~leaflet.markercluster/dist/MarkerCluster.Default.css';
+
 // Hide vertical scrollbar
 html {
   overflow-y: auto;
@@ -342,6 +356,7 @@ html {
 <style scoped lang="scss">
 .strategus-main {
   position: relative;
+
   .strategus-html-layer {
     position: absolute;
     width: 100%;

@@ -1,6 +1,6 @@
-enum Side {
+enum BattleSide {
   Attacker = 'Attacker',
   Defender = 'Defender',
 }
 
-export default Side;
+export default BattleSide;
