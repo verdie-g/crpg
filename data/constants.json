@@ -50,5 +50,7 @@
   "strategusMinHeroTroops": 1,
   "strategusMaxHeroTroops": 300,
   "strategusBattleInitiationDurationHours": 24,
-  "strategusBattleHiringDurationHours": 12
+  "strategusBattleHiringDurationHours": 12,
+  "strategusMercenaryMaxWage": 100000,
+  "strategusMercenaryNoteMaxLength": 64
 }
