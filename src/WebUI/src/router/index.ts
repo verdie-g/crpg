@@ -125,6 +125,12 @@ const routes = [
     meta: { footer: false },
   },
   {
+    path: '/battles',
+    name: 'battles',
+    component: () => import('../views/Battles.vue'),
+    beforeEnter: isSignedInGuard,
+  },
+  {
     path: '/settings',
     name: 'settings',
     component: () => import('../views/Settings.vue'),

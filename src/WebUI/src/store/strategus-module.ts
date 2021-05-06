@@ -1,10 +1,12 @@
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
 import SettlementPublic from '@/models/settlement-public';
+import BattlePublic from '@/models/battle-detailed';
 import * as strategusService from '@/services/strategus-service';
 import { arrayMergeBy } from '@/utils/array';
 import Hero from '@/models/hero';
 import Region from '@/models/region';
+import Phase from '@/models/phase';
 import HeroVisible from '@/models/hero-visible';
 import StrategusUpdate from '@/models/strategus-update';
 import { Result } from '@/models/result';
@@ -14,6 +16,7 @@ import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
 class StrategusModule extends VuexModule {
   hero: Hero | null = null;
   settlements: SettlementPublic[] = [];
+  battles: BattlePublic[] = [];
   visibleHeroes: HeroVisible[] = [];
 
   currentDialog: string | null = null;
@@ -26,6 +29,11 @@ class StrategusModule extends VuexModule {
   @Mutation
   setSettlements(settlements: SettlementPublic[]) {
     this.settlements = settlements;
+  }
+
+  @Mutation
+  setBattles(battles: BattlePublic[]) {
+    this.battles = battles;
   }
 
   @Mutation
@@ -46,6 +54,11 @@ class StrategusModule extends VuexModule {
   @Action({ commit: 'setSettlements' })
   getSettlements(): Promise<SettlementPublic> {
     return strategusService.getSettlements();
+  }
+
+  @Action({ commit: 'setBattles' })
+  getBattles({ region, phases }: { region: Region, phases: Phase[] }): Promise<BattlePublic[]> {
+    return strategusService.getBattles(region, phases);
   }
 
   @Action({ commit: 'setHero' })
