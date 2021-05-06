@@ -3,4 +3,3 @@ export default interface Fighters {
     templateMbId: string;
     name: string;
   }
-  

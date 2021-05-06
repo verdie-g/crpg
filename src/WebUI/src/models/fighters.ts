@@ -1,11 +1,10 @@
 import Hero from "@/models/hero";
 import Settlement from "@/models/settlement-public";
-import Side from "@/models/side";
+import BattleSide from "@/models/battle-side";
 
 export default interface Fighters {
     id: number;
     settlement: Settlement;
-    side: Side;
+    side: BattleSide;
     hero: Hero;
   }
-  

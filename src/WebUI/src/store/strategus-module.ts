@@ -108,7 +108,7 @@ class StrategusModule extends VuexModule {
     return strategusService.registerUser(region);
   }
 
-  @Action({rawError: true})
+  @Action
   applyToBattleAsMercenary({battleId ,characterId, side }:{battleId: number, characterId: number, side: BattleSide}): Promise<Mercenaries[]> {
     return strategusService.applyToBattleAsMercenary(battleId ,characterId, side);
   }
