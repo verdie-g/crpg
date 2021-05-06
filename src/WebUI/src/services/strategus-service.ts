@@ -63,6 +63,5 @@ export function applyToBattleAsMercenary(
   characterId: number,
   side: BattleSide
 ): Promise<Mercenaries[]> {
-  console.log(battleId);
   return post(`/strategus/battles/${battleId}/mercenaries`, { characterId, side });
 }
