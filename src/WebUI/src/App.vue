@@ -108,9 +108,11 @@ export default class App extends Vue {
   get user(): User | null {
     return userModule.user;
   }
+
   get isModeratorOrAdmin() {
     return userModule.isModeratorOrAdmin;
   }
+
   async beforeCreate() {
     userModule.setUserLoading(true);
     try {
@@ -139,6 +141,7 @@ export default class App extends Vue {
       userModule.setUserLoading(false);
     }
   }
+  
   signOut(): void {
     signOut();
   }

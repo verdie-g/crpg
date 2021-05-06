@@ -113,6 +113,7 @@ export default class Strategus extends Vue {
   dialogEventHandlers = {
     heroSpawn: this.heroSpawn,
   };
+
   get settlements(): Settlement[] {
     if (this.mapBounds === null) {
       return [];
@@ -122,9 +123,11 @@ export default class Strategus extends Vue {
       this.shouldDisplaySettlement(s, this.mapBounds!, zoom)
     );
   }
+
   get hero(): Hero | null {
     return strategusModule.hero;
   }
+
   // Returns the polyline props if the user is moving, else null.
   get heroMovementLine(): any {
     if (this.hero === null) {
@@ -163,15 +166,19 @@ export default class Strategus extends Vue {
       color,
     };
   }
+
   get visibleHeroes(): HeroVisible[] {
     return strategusModule.visibleHeroes;
   }
+
   get map(): LMap {
     return this.$refs.map as LMap;
   }
+
   get currentDialog(): string | null {
     return strategusModule.currentDialog;
   }
+
   created() {
     strategusModule.getSettlements();
     strategusModule.getUpdate().then(res => {
@@ -186,14 +193,17 @@ export default class Strategus extends Vue {
       }
     });
   }
+
   beforeDestroy() {
     if (this.updateIntervalId !== -1) {
       clearInterval(this.updateIntervalId);
     }
   }
+
   onMapBoundsChange() {
     this.mapBounds = this.map.mapObject.getBounds();
   }
+
   shouldDisplaySettlement(settlement: Settlement, mapBounds: LatLngBounds, zoom: number): boolean {
     const [x, y] = settlement.position.coordinates;
     if (!mapBounds!.contains(new LatLng(y, x))) {
@@ -205,6 +215,7 @@ export default class Strategus extends Vue {
       settlement.type === SettlementType.Town
     );
   }
+
   // Returns the maximum radius that a marker cluster will cover in pixels.
   // Since we don't want this radius to depend on the zoom, distance in latlng
   // should be converted to pixels.
@@ -215,6 +226,7 @@ export default class Strategus extends Vue {
     const map = this.map.mapObject;
     return map.latLngToLayerPoint(a).distanceTo(map.latLngToLayerPoint(b));
   }
+
   heroSpawn() {
     strategusModule.getUpdate();
     this.updateIntervalId = setInterval(() => strategusModule.getUpdate(), 60 * 1000);
@@ -232,6 +244,7 @@ export default class Strategus extends Vue {
       });
     }
   }
+
   onMapClick(event: LeafletMouseEvent) {
     const clickCoordinates = [event.latlng.lng, event.latlng.lat];
     let coordinates =
@@ -245,6 +258,7 @@ export default class Strategus extends Vue {
       waypoints: { type: 'MultiPoint', coordinates },
     });
   }
+
   async onHeroClick(hero: Hero) {
     const movement = await promptMovementType(
       this.$refs.map as Vue,
@@ -260,6 +274,7 @@ export default class Strategus extends Vue {
       targetedHeroId: hero.id,
     });
   }
+
   async onSettlementClick(settlement: Settlement) {
     if (this.hero === null) {
       return;
@@ -287,6 +302,7 @@ export default class Strategus extends Vue {
       targetedSettlementId: settlement.id,
     });
   }
+
   moveHero(updateRequest: Partial<HeroStatusUpdateRequest>) {
     if (this.hero === null) {
       return;
@@ -317,6 +333,7 @@ html {
 .leaflet-right .leaflet-control {
   margin-bottom: 3px; // Default is 10px and it's too much.
 }
+
 .leaflet-container .leaflet-control-attribution {
   margin-bottom: 0px;
 }
@@ -329,9 +346,11 @@ html {
     position: absolute;
     width: 100%;
   }
+
   .strategus-dialog {
     z-index: 500; // To be over the map.
   }
+
   .map {
     // calc(Screen height - navbar)
     height: calc(100vh - 4.25rem);
