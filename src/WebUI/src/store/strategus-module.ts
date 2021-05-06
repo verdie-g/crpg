@@ -89,17 +89,17 @@ class StrategusModule extends VuexModule {
   }
 
   @Action({ commit: 'setBattle' })
-  getBattle(id: String): Promise<BattleDetailed> {
+  getBattle(id: number): Promise<BattleDetailed> {
     return strategusService.getBattle(id);
   }
 
   @Action({ commit: 'setFighters' })
-  getFighters(battleId: String): Promise<Fighters[]> {
+  getFighters(battleId: number): Promise<Fighters[]> {
     return strategusService.getFighters(battleId);
   }
 
   @Action({ commit: 'setMercenaries' })
-  getMercenaries(battleId: String): Promise<Mercenaries[]> {
+  getMercenaries(battleId: number): Promise<Mercenaries[]> {
     return strategusService.getMercenaries(battleId);
   }
 
@@ -109,8 +109,16 @@ class StrategusModule extends VuexModule {
   }
 
   @Action
-  applyToBattleAsMercenary({battleId ,characterId, side }:{battleId: number, characterId: number, side: BattleSide}): Promise<Mercenaries[]> {
-    return strategusService.applyToBattleAsMercenary(battleId ,characterId, side);
+  applyToBattleAsMercenary({
+    battleId,
+    characterId,
+    side,
+  }: {
+    battleId: number;
+    characterId: number;
+    side: BattleSide;
+  }): Promise<Mercenaries[]> {
+    return strategusService.applyToBattleAsMercenary(battleId, characterId, side);
   }
 
   @Action

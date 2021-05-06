@@ -76,35 +76,42 @@ import strategusModule from '@/store/strategus-module';
 import userModule from '@/store/user-module';
 import Battle from '@/models/battle-detailed';
 import Character from '@/models/character';
-import Side from '@/models/side';
+import BattleSide from '@/models/battle-side';
 import Mercenaries from '@/models/mercenaries';
 import Fighters from '@/models/fighters';
+
 @Component
 export default class BattlesDetails extends Vue {
   selectedAttacker: Character | null = null;
   selectedDefenser: Character | null = null;
-  sideModel = Side;
+  sideModel = BattleSide;
+
   get battle(): Battle | null {
     return strategusModule.battle;
   }
+
   get characters(): Character[] {
     return userModule.characters;
   }
+
   get fighters(): Fighters[] {
     return strategusModule.fighters;
   }
+
   get mercenaries(): Mercenaries[] {
     return strategusModule.mercenaries;
   }
+
   async created() {
     await strategusModule.getUpdate();
-    await strategusModule.getBattle(this.$route.params.id);
-    await strategusModule.getFighters(this.$route.params.id);
+    await strategusModule.getBattle(Number(this.$route.params.id));
+    await strategusModule.getFighters(Number(this.$route.params.id));
     if (this.haveCharacterInBattle()) {
-      await strategusModule.getMercenaries(this.$route.params.id);
+      await strategusModule.getMercenaries(Number(this.$route.params.id));
     }
     await userModule.getCharacters();
   }
+
   haveCharacterInBattle(): boolean {
     for (const character of this.characters) {
       if (this.fighters.find(x => x.id === character.id)) {
@@ -113,7 +120,8 @@ export default class BattlesDetails extends Vue {
     }
     return false;
   }
-  applyToBattleAsMercenary(battleId: number, characterId: number, side: Side) {
+
+  applyToBattleAsMercenary(battleId: number, characterId: number, side: BattleSide) {
     strategusModule.applyToBattleAsMercenary({ battleId, characterId, side });
   }
 }

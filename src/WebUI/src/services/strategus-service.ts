@@ -34,7 +34,7 @@ export async function getBattles(region: Region, phases: BattlePhase[]): Promise
   return battles.map(b => ({ ...b, createdAt: new Date(b.createdAt) }));
 }
 
-export function getBattle(id: String): Promise<BattleDetailed> {
+export function getBattle(id: number): Promise<BattleDetailed> {
   return get(`/strategus/battles/${id}`);
 }
 
@@ -50,15 +50,19 @@ export function registerUser(region: Region): Promise<Hero> {
   return post('/strategus/heroes', { region });
 }
 
-export function getFighters(battleId: String): Promise<Fighters[]> {
+export function getFighters(battleId: number): Promise<Fighters[]> {
   return get(`/strategus/battles/${battleId}/fighters`);
 }
 
-export function getMercenaries(battleId: String): Promise<Mercenaries[]> {
+export function getMercenaries(battleId: number): Promise<Mercenaries[]> {
   return get(`/strategus/battles/${battleId}/mercenaries`);
 }
 
-export function applyToBattleAsMercenary(battleId: number, characterId: number, side: BattleSide): Promise<Mercenaries[]> {
-  console.log(battleId)
-  return post(`/strategus/battles/${battleId}/mercenaries`, {characterId, side});
+export function applyToBattleAsMercenary(
+  battleId: number,
+  characterId: number,
+  side: BattleSide
+): Promise<Mercenaries[]> {
+  console.log(battleId);
+  return post(`/strategus/battles/${battleId}/mercenaries`, { characterId, side });
 }
