@@ -272,6 +272,7 @@ export default class Strategus extends Vue {
       positionToLatLng(hero.position.coordinates),
       [MovementType.Follow, MovementType.Attack]
     );
+
     if (movement === null) {
       return;
     }
