@@ -6,6 +6,7 @@ import StrategusUpdate from '@/models/strategus-update';
 import Region from '@/models/region';
 import Phase from '@/models/phase';
 import Hero from '@/models/hero';
+import BattleApplyMercenaries from '@/models/battle-apply-mercenaries';
 import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
 import HeroStatus from '@/models/hero-status';
 import { parameterizeArray } from '@/utils/serialize';
@@ -40,4 +41,8 @@ export function updateHeroStatus(update: HeroStatusUpdateRequest): Promise<Hero>
 
 export function registerUser(region: Region): Promise<Hero> {
   return post('/strategus/heroes', { region });
+}
+
+export function applyMercenaries(params: BattleApplyMercenaries) {
+  return post('/strategus​/battles​/' + params.battleId + '​/mercenaries', params);
 }

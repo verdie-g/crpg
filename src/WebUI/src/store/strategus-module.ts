@@ -67,6 +67,11 @@ class StrategusModule extends VuexModule {
     return strategusService.registerUser(region);
   }
 
+  @Action({ rawError: true })
+  applyMercenaries(params: BattleApplyMercenaries) {
+    return strategusService.applyMercenaries(params);
+  }
+
   @Action
   async getUpdate(): Promise<Result<StrategusUpdate>> {
     const res = await strategusService.getUpdate();
