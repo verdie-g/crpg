@@ -4,12 +4,32 @@
       <i class="fas fa-chevron-left mr-1"></i>
       Back
     </router-link>
+    <router-link
+      v-if="battle"
+      class="is-flex is-align-items-center ml-6 my-3"
+      :to="{
+        name: 'strategus',
+        params: {
+          lat: battle.position.coordinates[1],
+          lng: battle.position.coordinates[0],
+        },
+      }"
+    >
+      View on map
+      <i class="far fa-eye ml-2"></i>
+    </router-link>
     <div class="columns">
       <div class="column mx-6">
         <article class="tile is-child box is-flex is-align-items-center is-flex-direction-column">
-          <p class="title is-4">Attacker(s)</p>
-          <p v-for="fighter in fighters" :key="fighter.id" class="subtitle is-5">
-            <span v-if="fighter.side === sideModel.Attacker">{{ fighter.hero.name }}</span>
+          <p class="is-size-4">Attacker(s)</p>
+          <p
+            v-for="fighterAttacker in getFightersAttackers"
+            :key="fighterAttacker.id"
+            class="subtitle is-5"
+          >
+            <span v-if="fighterAttacker.side === sideModel.Attacker">
+              {{ fighterAttacker.hero.name }}
+            </span>
           </p>
           <b-field v-if="!haveCharacterInBattle()">
             <b-select
@@ -39,7 +59,19 @@
       </div>
       <div class="column mx-6">
         <article class="tile is-child box is-flex is-align-items-center is-flex-direction-column">
-          <p class="subtitle">Defender(s)</p>
+          <p class="is-size-4">Defender(s)</p>
+          <p
+            v-for="fighterDefender in getFightersDefenders"
+            :key="fighterDefender.id"
+            class="subtitle is-5"
+          >
+            <span v-if="fighterDefender.side === sideModel.Defender && fighterDefender.hero">
+              {{ fighterDefender.hero.name }}
+            </span>
+            <span v-if="fighterDefender.side === sideModel.Defender && fighterDefender.settlement">
+              {{ fighterDefender.settlement.name }}
+            </span>
+          </p>
           <b-field v-if="!haveCharacterInBattle()">
             <b-select
               v-model="selectedDefenser"
@@ -100,6 +132,18 @@ export default class BattlesDetails extends Vue {
 
   get mercenaries(): Mercenaries[] {
     return strategusModule.mercenaries;
+  }
+
+  get getFightersAttackers(): Fighters[] {
+    return this.fighters.filter(figther => figther.hero && figther.side === BattleSide.Attacker);
+  }
+
+  get getFightersDefenders(): Fighters[] {
+    return this.fighters.filter(
+      figther =>
+        (figther.hero && figther.side === BattleSide.Defender) ||
+        (figther.settlement && figther.side === BattleSide.Defender)
+    );
   }
 
   async created() {
