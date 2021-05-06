@@ -1,11 +1,11 @@
 import Region from '@/models/region';
 import { LatLng } from 'leaflet';
-import Phase from '@/models/phase';
+import BattlePhase from '@/models/battle-phase';
 
 export default interface BattleDetailed {
   id: number;
   createdAt: Date;
   region: Region;
   position: LatLng;
-  phase: Phase;
+  phase: BattlePhase;
 }

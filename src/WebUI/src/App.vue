@@ -102,14 +102,17 @@ import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import User from '@/models/user';
 import { signInCallback, signOut, signInSilent } from './services/auth-service';
+
 @Component
 export default class App extends Vue {
   get user(): User | null {
     return userModule.user;
   }
+
   get isModeratorOrAdmin() {
     return userModule.isModeratorOrAdmin;
   }
+
   async beforeCreate() {
     userModule.setUserLoading(true);
     try {
@@ -121,6 +124,7 @@ export default class App extends Vue {
         await userModule.getUser();
         return;
       }
+
       // Try to sign in the user if already signed in to the authorization server
       // & get user info if user is connected
       try {
@@ -138,6 +142,7 @@ export default class App extends Vue {
       userModule.setUserLoading(false);
     }
   }
+
   signOut(): void {
     signOut();
   }

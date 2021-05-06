@@ -155,12 +155,33 @@ namespace Crpg.WebApi.Controllers
         }
 
         /// <summary>
+        /// Get battle mercenary applications.
+        /// </summary>
+        /// <returns>
+        /// If the user is a fighter of the battle it will return all applications of their battle side, else it returns
+        /// only the applications of the user.
+        /// </returns>
+        /// <response code="200">Ok.</response>
+        /// <response code="400">Bad request.</response>
+        [HttpGet("battles/{battleId}/mercenary-applications")]
+        public Task<ActionResult<Result<IList<StrategusBattleMercenaryApplicationViewModel>>>> GetBattleMercenaryApplications(
+            [FromRoute] int battleId, [FromQuery(Name = "phase[]")] StrategusBattleMercenaryApplicationStatus[] statuses)
+        {
+            return ResultToActionAsync(Mediator.Send(new GetStrategusBattleMercenaryApplicationsQuery
+            {
+                UserId = CurrentUser.UserId,
+                BattleId = battleId,
+                Statuses = statuses,
+            }));
+        }
+
+        /// <summary>
         /// Apply as a mercenary to a battle.
         /// </summary>
         /// <returns>The application.</returns>
         /// <response code="200">Applied.</response>
         /// <response code="400">Bad request.</response>
-        [HttpPost("battles/{battleId}/mercenaries")]
+        [HttpPost("battles/{battleId}/mercenary-applications")]
         public Task<ActionResult<Result<StrategusBattleMercenaryApplicationViewModel>>> ApplyToBattleAsMercenary(
             [FromRoute] int battleId, [FromBody] ApplyAsMercenaryToStrategusBattleCommand req)
         {

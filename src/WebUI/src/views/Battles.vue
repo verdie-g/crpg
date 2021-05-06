@@ -4,12 +4,12 @@
       <b-select
         v-model="selectedRegion"
         @input="getBattles(selectedRegion, ['Hiring'])"
-        placeholder="Select a character"
+        placeholder="Select a region"
         required
       >
-        <option value="Europe">Europe</option>
-        <option value="NorthAmerica">NorthAmerica</option>
-        <option value="Asia">Asia</option>
+        <option :value="regionToStr.Europe">{{ regionToStr.Europe }}</option>
+        <option :value="regionToStr.NorthAmerica">{{ regionToStr.NorthAmerica }}</option>
+        <option :value="regionToStr.Asia">{{ regionToStr.Asia }}</option>
       </b-select>
     </b-field>
     <b-table
@@ -24,7 +24,13 @@
       aria-current-label="Current page"
     >
       <b-table-column field="date" label="Schedule date" sortable centered v-slot="props">
-        {{ props.row.createdAt.toDateString() }}
+        {{
+          formatDateBattle(
+            props.row.createdAt,
+            dataConstant.strategusBattleInitiationDurationHours,
+            dataConstant.strategusBattleHiringDurationHours
+          )
+        }}
       </b-table-column>
 
       <b-table-column label="Attacker" v-slot="props">
@@ -55,8 +61,8 @@
             },
           }"
         >
-          {{ props.row.position.coordinates[0].toFixed(2) }},
-          {{ props.row.position.coordinates[1].toFixed(2) }}
+          {{ props.row.position.coordinates[1].toFixed(2) }},
+          {{ props.row.position.coordinates[0].toFixed(2) }}
         </router-link>
       </b-table-column>
       <b-table-column v-slot="props">
@@ -71,26 +77,63 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import strategusModule from '@/store/strategus-module';
-import Battle from '@/models/battle-detailed';
+import { regionToStr } from '@/services/strategus-service';
+import BattleDetailed from '@/models/battle-detailed';
 import Hero from '@/models/hero';
-import Phase from '@/models/phase';
+import BattlePhase from '@/models/battle-phase';
 import Region from '@/models/region';
+import dataConstant from '@/../../../data/constants.json';
+
 @Component
 export default class Battles extends Vue {
+  regionToStr = regionToStr;
+  dataConstant = dataConstant;
   selectedRegion: Region = Region.Europe;
-  get battles(): Battle[] {
+
+  get battles(): BattleDetailed[] {
     return strategusModule.battles;
   }
+
   get hero(): Hero | null {
     return strategusModule.hero;
   }
+
   async created() {
     await strategusModule.getUpdate();
-    this.selectedRegion = this.hero.region;
-    this.getBattles(this.selectedRegion, [Phase.Hiring]);
+    // Set default region or hero region
+    this.selectedRegion = this.hero === null ? Region.Europe : this.hero.region;
+    this.getBattles(this.selectedRegion, [BattlePhase.Hiring]);
   }
-  getBattles(region: Region, phases: Phase[]) {
+
+  getBattles(region: Region, phases: BattlePhase[]) {
     strategusModule.getBattles({ region, phases });
+  }
+
+  formatDateBattle(
+    createdAt: string,
+    strategusBattleInitiationDurationHours: number,
+    strategusBattleHiringDurationHours: number
+  ) {
+    const createdDate = new Date(createdAt);
+    createdDate.setTime(
+      createdDate.getTime() +
+        (strategusBattleInitiationDurationHours + strategusBattleHiringDurationHours) *
+          60 *
+          60 *
+          1000
+    );
+    return `${(createdDate.getMonth() + 1).toLocaleString('en-US', {
+      minimumIntegerDigits: 2,
+      useGrouping: false,
+    })}-${createdDate.getDate().toLocaleString('en-US', {
+      minimumIntegerDigits: 2,
+      useGrouping: false,
+    })}-${createdDate.getFullYear()} ${createdDate.getHours().toLocaleString('en-US', {
+      minimumIntegerDigits: 2,
+      useGrouping: false,
+    })}:${createdDate
+      .getMinutes()
+      .toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}`;
   }
 }
 </script>
