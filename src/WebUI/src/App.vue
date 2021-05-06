@@ -102,6 +102,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import User from '@/models/user';
 import { signInCallback, signOut, signInSilent } from './services/auth-service';
+
 @Component
 export default class App extends Vue {
   get user(): User | null {

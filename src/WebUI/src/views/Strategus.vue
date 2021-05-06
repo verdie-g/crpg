@@ -68,11 +68,13 @@ import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
 import { positionToLatLng } from '@/utils/geometry';
 import { Position } from 'geojson';
 import MovementType from '@/models/movement-type';
+
 // Register here all dialogs that can be used by the dynamic dialog component.
 const dialogs = {
   RegistrationDialog,
   SettlementDialog,
 };
+
 @Component({
   components: {
     LMap,
