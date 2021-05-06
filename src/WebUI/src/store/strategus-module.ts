@@ -7,6 +7,9 @@ import { arrayMergeBy } from '@/utils/array';
 import Hero from '@/models/hero';
 import Region from '@/models/region';
 import Phase from '@/models/phase';
+import Side from '@/models/side';
+import Mercenaries from '@/models/mercenaries';
+import Fighters from '@/models/fighters';
 import HeroVisible from '@/models/hero-visible';
 import StrategusUpdate from '@/models/strategus-update';
 import { Result } from '@/models/result';
@@ -17,6 +20,9 @@ class StrategusModule extends VuexModule {
   hero: Hero | null = null;
   settlements: SettlementPublic[] = [];
   battles: BattlePublic[] = [];
+  battle: BattlePublic | null = null;
+  mercenaries: Mercenaries[] = [];
+  fighters: Fighters[] = [];
   visibleHeroes: HeroVisible[] = [];
 
   currentDialog: string | null = null;
@@ -34,6 +40,21 @@ class StrategusModule extends VuexModule {
   @Mutation
   setBattles(battles: BattlePublic[]) {
     this.battles = battles;
+  }
+
+  @Mutation
+  setBattle(battle: BattlePublic) {
+    this.battle = battle;
+  }
+
+  @Mutation
+  setMercenaries(mercenaries: Mercenaries[]) {
+    this.mercenaries = mercenaries;
+  }
+
+  @Mutation
+  setFighters(fighters: Fighters[]) {
+    this.fighters = fighters;
   }
 
   @Mutation
@@ -61,9 +82,29 @@ class StrategusModule extends VuexModule {
     return strategusService.getBattles(region, phases);
   }
 
+  @Action({ commit: 'setBattle' })
+  getBattle(id: String): Promise<BattlePublic> {
+    return strategusService.getBattle(id);
+  }
+
+  @Action({ commit: 'setFighters' })
+  getFighters(battleId: String): Promise<Fighters[]> {
+    return strategusService.getFighters(battleId);
+  }
+
+  @Action({ commit: 'setMercenaries' })
+  getMercenaries(battleId: String): Promise<Mercenaries[]> {
+    return strategusService.getMercenaries(battleId);
+  }
+
   @Action({ commit: 'setHero' })
   registerUser(region: Region): Promise<Hero> {
     return strategusService.registerUser(region);
+  }
+
+  @Action({rawError: true})
+  applyToBattleAsMercenary({battleId ,characterId, side }:{battleId: number, characterId: number, side: Side}): Promise<Mercenaries[]> {
+    return strategusService.applyToBattleAsMercenary(battleId ,characterId, side);
   }
 
   @Action
