@@ -124,6 +124,7 @@ export default class App extends Vue {
         await userModule.getUser();
         return;
       }
+
       // Try to sign in the user if already signed in to the authorization server
       // & get user info if user is connected
       try {
