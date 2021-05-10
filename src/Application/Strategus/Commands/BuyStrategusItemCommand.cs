@@ -15,7 +15,7 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Strategus.Commands
 {
-    public record BuyStrategusItemCommand : IMediatorRequest<StrategusOwnedItemViewModel>
+    public record BuyStrategusItemCommand : IMediatorRequest<StrategusHeroItemViewModel>
     {
         public int HeroId { get; set; }
         public int ItemId { get; init; }
@@ -30,7 +30,7 @@ namespace Crpg.Application.Strategus.Commands
             }
         }
 
-        internal class Handler : IMediatorRequestHandler<BuyStrategusItemCommand, StrategusOwnedItemViewModel>
+        internal class Handler : IMediatorRequestHandler<BuyStrategusItemCommand, StrategusHeroItemViewModel>
         {
             private static readonly ILogger Logger = LoggerFactory.CreateLogger<BuyStrategusItemCommand>();
 
@@ -45,7 +45,7 @@ namespace Crpg.Application.Strategus.Commands
                 _strategusMap = strategusMap;
             }
 
-            public async Task<Result<StrategusOwnedItemViewModel>> Handle(BuyStrategusItemCommand req,
+            public async Task<Result<StrategusHeroItemViewModel>> Handle(BuyStrategusItemCommand req,
                 CancellationToken cancellationToken)
             {
                 var hero = await _db.StrategusHeroes
@@ -86,28 +86,28 @@ namespace Crpg.Application.Strategus.Commands
                     return new(CommonErrors.NotEnoughGold(cost, hero.Gold));
                 }
 
-                var ownedItem = await _db.StrategusOwnedItems
+                var heroItem = await _db.StrategusHeroItems
                     .Include(oi => oi.Item)
                     .FirstOrDefaultAsync(oi => oi.HeroId == hero.Id && oi.ItemId == item.Id, cancellationToken);
-                if (ownedItem == null)
+                if (heroItem == null)
                 {
-                    ownedItem = new StrategusOwnedItem
+                    heroItem = new StrategusHeroItem
                     {
                         Item = item,
                         Count = req.ItemCount,
                         Hero = hero,
                     };
-                    _db.StrategusOwnedItems.Add(ownedItem);
+                    _db.StrategusHeroItems.Add(heroItem);
                 }
                 else
                 {
-                    ownedItem.Count += req.ItemCount;
+                    heroItem.Count += req.ItemCount;
                 }
 
                 hero.Gold -= cost;
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("Hero '{0}' bought {1} items '{2}'", req.HeroId, req.ItemCount, req.ItemId);
-                return new(_mapper.Map<StrategusOwnedItemViewModel>(ownedItem));
+                return new(_mapper.Map<StrategusHeroItemViewModel>(heroItem));
             }
         }
     }

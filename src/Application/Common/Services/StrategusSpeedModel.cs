@@ -32,17 +32,17 @@ namespace Crpg.Application.Common.Services
             10000 is four zeros so the denominator is 4
             */
             double troopInfluence = 2 / (1 + Math.Log10(1 + hero.Troops / 10));
-            return terrainSpeedFactor * weightFactor * MountsInfluence(hero.Troops, hero.OwnedItems!) * troopInfluence;
+            return terrainSpeedFactor * weightFactor * MountsInfluence(hero.Troops, hero.Items!) * troopInfluence;
         }
 
-        private double MountsInfluence(float troops, List<StrategusOwnedItem> ownedItems)
+        private double MountsInfluence(float troops, List<StrategusHeroItem> heroItems)
         {
             int mounts = 0;
             double forcedMarchSpeed = 2;
-            foreach (StrategusOwnedItem ownedItem in ownedItems.OrderByDescending(i => i.Item!.Mount!.HitPoints))
+            foreach (StrategusHeroItem heroItem in heroItems.OrderByDescending(i => i.Item!.Mount!.HitPoints))
             {
-                mounts += ownedItem.Count;
-                int mountSpeed = ownedItem.Item!.Mount!.HitPoints / 100;
+                mounts += heroItem.Count;
+                int mountSpeed = heroItem.Item!.Mount!.HitPoints / 100;
                 if (mounts >= troops && mountSpeed >= forcedMarchSpeed)
                 {
                     /*

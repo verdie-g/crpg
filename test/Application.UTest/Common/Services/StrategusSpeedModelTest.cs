@@ -14,21 +14,21 @@ namespace Crpg.Application.UTest.Common.Services
             var hero1 = new StrategusHero
             {
                 Troops = 10,
-                OwnedItems = new List<StrategusOwnedItem>
+                Items = new List<StrategusHeroItem>
                 {
-                    StrategusOwnedItemMount(450, 5),
-                    StrategusOwnedItemMount(350, 5),
-                    StrategusOwnedItemMount(250, 5),
+                    StrategusHeroItemMount(450, 5),
+                    StrategusHeroItemMount(350, 5),
+                    StrategusHeroItemMount(250, 5),
                 },
             };
             var hero2 = new StrategusHero
             {
                 Troops = 10,
-                OwnedItems = new List<StrategusOwnedItem>
+                Items = new List<StrategusHeroItem>
                 {
-                    StrategusOwnedItemMount(450, 5),
-                    StrategusOwnedItemMount(350, 10),
-                    StrategusOwnedItemMount(250, 10),
+                    StrategusHeroItemMount(450, 5),
+                    StrategusHeroItemMount(350, 10),
+                    StrategusHeroItemMount(250, 10),
                 },
             };
             var speedModel = new StrategusSpeedModel();
@@ -49,11 +49,11 @@ namespace Crpg.Application.UTest.Common.Services
                 var hero = new StrategusHero
                 {
                     Troops = troops,
-                    OwnedItems = new List<StrategusOwnedItem>
+                    Items = new List<StrategusHeroItem>
                     {
-                        StrategusOwnedItemMount(450, fastHorseCount),
-                        StrategusOwnedItemMount(350, mediumSpeedHorseCount),
-                        StrategusOwnedItemMount(250, slowHorseCount),
+                        StrategusHeroItemMount(450, fastHorseCount),
+                        StrategusHeroItemMount(350, mediumSpeedHorseCount),
+                        StrategusHeroItemMount(250, slowHorseCount),
                     },
                 };
                 double speed = speedModel.ComputeHeroSpeed(hero);
@@ -92,11 +92,11 @@ namespace Crpg.Application.UTest.Common.Services
                 var hero = new StrategusHero
                 {
                     Troops = 1000,
-                    OwnedItems = new List<StrategusOwnedItem>
+                    Items = new List<StrategusHeroItem>
                     {
-                        StrategusOwnedItemMount(450, 6 * mountCountFactor),
-                        StrategusOwnedItemMount(350, 2 * mountCountFactor),
-                        StrategusOwnedItemMount(250, 2 * mountCountFactor),
+                        StrategusHeroItemMount(450, 6 * mountCountFactor),
+                        StrategusHeroItemMount(350, 2 * mountCountFactor),
+                        StrategusHeroItemMount(250, 2 * mountCountFactor),
                     },
                 };
                 var speed = speedModel.ComputeHeroSpeed(hero);
@@ -105,7 +105,7 @@ namespace Crpg.Application.UTest.Common.Services
             }
         }
 
-        private StrategusOwnedItem StrategusOwnedItemMount(int hitPoints, int count)
+        private StrategusHeroItem StrategusHeroItemMount(int hitPoints, int count)
         {
             return new()
             {

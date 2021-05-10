@@ -65,7 +65,7 @@ namespace Crpg.Persistence
         public DbSet<ClanInvitation> ClanInvitations { get; set; } = default!;
         public DbSet<StrategusHero> StrategusHeroes { get; set; } = default!;
         public DbSet<StrategusSettlement> StrategusSettlements { get; set; } = default!;
-        public DbSet<StrategusOwnedItem> StrategusOwnedItems { get; set; } = default!;
+        public DbSet<StrategusHeroItem> StrategusHeroItems { get; set; } = default!;
         public DbSet<StrategusBattle> StrategusBattles { get; set; } = default!;
         public DbSet<StrategusBattleFighter> StrategusBattleFighters { get; set; } = default!;
         public DbSet<StrategusBattleFighterApplication> StrategusBattleFighterApplications { get; set; } = default!;

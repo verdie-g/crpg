@@ -65,7 +65,7 @@ namespace Crpg.Domain.Entities.Strategus
         public StrategusSettlement? TargetedSettlement { get; set; }
 
         public User? User { get; set; }
-        public List<StrategusOwnedItem>? OwnedItems { get; set; }
+        public List<StrategusHeroItem>? Items { get; set; }
         public List<StrategusSettlement>? OwnedSettlements { get; set; }
     }
 }

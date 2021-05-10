@@ -197,7 +197,7 @@ namespace Crpg.Application.UTest.Strategus
         }
 
         [Test]
-        public async Task ShouldAddCountToAlreadyExistingOwnedItem()
+        public async Task ShouldAddCountToAlreadyExistingHeroItems()
         {
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock
@@ -210,8 +210,8 @@ namespace Crpg.Application.UTest.Strategus
             ArrangeDb.StrategusSettlements.Add(settlement);
             var item = new Item { Rank = 0, Culture = Culture.Sturgia, Value = 10 };
             ArrangeDb.Items.Add(item);
-            var ownedItem = new StrategusOwnedItem { Item = item, Count = 3, Hero = hero };
-            ArrangeDb.StrategusOwnedItems.Add(ownedItem);
+            var heroItem = new StrategusHeroItem { Item = item, Count = 3, Hero = hero };
+            ArrangeDb.StrategusHeroItems.Add(heroItem);
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new BuyStrategusItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);

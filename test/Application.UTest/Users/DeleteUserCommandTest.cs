@@ -32,7 +32,7 @@ namespace Crpg.Application.UTest.Users
                 ClanMembership = new ClanMember { Clan = new Clan() },
                 StrategusHero = new StrategusHero
                 {
-                    OwnedItems = new List<StrategusOwnedItem> { new() { Item = new Item() } },
+                    Items = new List<StrategusHeroItem> { new() { Item = new Item() } },
                 },
             };
             ArrangeDb.Users.Add(user);
@@ -41,7 +41,7 @@ namespace Crpg.Application.UTest.Users
             // Save ids before they get deleted.
             int itemId = user.OwnedItems[0].ItemId;
             int clanId = user.ClanMembership.ClanId;
-            int strategusItemId = user.StrategusHero.OwnedItems[0].ItemId;
+            int strategusItemId = user.StrategusHero.Items[0].ItemId;
 
             var userService = Mock.Of<IUserService>();
             var handler = new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), userService);
@@ -61,7 +61,7 @@ namespace Crpg.Application.UTest.Users
                 ei.UserId == user.Id));
             Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.StrategusHeroes.FirstAsync(h =>
                 h.Id == user.Id));
-            Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.StrategusOwnedItems.FirstAsync(oi =>
+            Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.StrategusHeroItems.FirstAsync(oi =>
                 oi.HeroId == user.Id));
             Assert.DoesNotThrowAsync(() => AssertDb.Items.FirstAsync(i => i.Id == itemId));
             Assert.DoesNotThrowAsync(() => AssertDb.Bans.FirstAsync(b => b.BannedUserId == user.Id));

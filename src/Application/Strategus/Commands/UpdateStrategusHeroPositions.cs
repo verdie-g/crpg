@@ -58,8 +58,8 @@ namespace Crpg.Application.Strategus.Commands
                     .Where(h => MovementStatuses.Contains(h.Status))
                     .Include(h => h.TargetedHero)
                     .Include(h => h.TargetedSettlement)
-                    // Load mounts into OwnedItems to compute movement speed.
-                    .Include(h => h.OwnedItems!.Where(oi => oi.Item!.Type == ItemType.Mount)).ThenInclude(oi => oi.Item)
+                    // Load mounts items to compute movement speed.
+                    .Include(h => h.Items!.Where(oi => oi.Item!.Type == ItemType.Mount)).ThenInclude(oi => oi.Item)
                     .ToArrayAsync(cancellationToken);
 
                 foreach (var hero in strategusHeroes)

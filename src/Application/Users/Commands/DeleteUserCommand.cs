@@ -39,7 +39,7 @@ namespace Crpg.Application.Users.Commands
                 var user = await _db.Users
                     .Include(u => u.Characters)
                     .Include(u => u.OwnedItems)
-                    .Include(u => u.StrategusHero!).ThenInclude(h => h.OwnedItems)
+                    .Include(u => u.StrategusHero!).ThenInclude(h => h.Items)
                     .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 if (user == null)
                 {
@@ -57,7 +57,7 @@ namespace Crpg.Application.Users.Commands
 
                 _db.OwnedItems.RemoveRange(user.OwnedItems);
                 _db.Characters.RemoveRange(user.Characters);
-                _db.StrategusOwnedItems.RemoveRange(user.StrategusHero!.OwnedItems!);
+                _db.StrategusHeroItems.RemoveRange(user.StrategusHero!.Items!);
                 _db.StrategusHeroes.Remove(user.StrategusHero);
                 await _db.SaveChangesAsync(cancellationToken);
                 _events.Raise(EventLevel.Info, $"{name} left ({user.Platform}#{user.PlatformUserId})", string.Empty, "user_deleted");
