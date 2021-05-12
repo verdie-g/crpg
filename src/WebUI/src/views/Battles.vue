@@ -7,9 +7,9 @@
         placeholder="Select a region"
         required
       >
-        <option :value="regionToStr.Europe">{{ regionToStr.Europe }}</option>
-        <option :value="regionToStr.NorthAmerica">{{ regionToStr.NorthAmerica }}</option>
-        <option :value="regionToStr.Asia">{{ regionToStr.Asia }}</option>
+        <option v-for="region in regionToStr" :key="region" :value="region">
+          {{ region }}
+        </option>
       </b-select>
     </b-field>
     <b-table
@@ -24,13 +24,7 @@
       aria-current-label="Current page"
     >
       <b-table-column field="date" label="Schedule date" sortable centered v-slot="props">
-        {{
-          formatDateBattle(
-            props.row.createdAt,
-            dataConstant.strategusBattleInitiationDurationHours,
-            dataConstant.strategusBattleHiringDurationHours
-          )
-        }}
+        {{ getBattleSchedulingDate(props.row) }}
       </b-table-column>
 
       <b-table-column label="Attacker" v-slot="props">
@@ -72,17 +66,16 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import strategusModule from '@/store/strategus-module';
-import { regionToStr } from '@/services/strategus-service';
+import { regionToStr, getBattleSchedulingDate } from '@/services/strategus-service';
 import BattleDetailed from '@/models/battle-detailed';
 import Hero from '@/models/hero';
 import BattlePhase from '@/models/battle-phase';
 import Region from '@/models/region';
-import dataConstant from '@/../../../data/constants.json';
 
 @Component
 export default class Battles extends Vue {
   regionToStr = regionToStr;
-  dataConstant = dataConstant;
+  getBattleSchedulingDate = getBattleSchedulingDate;
   selectedRegion: Region = Region.Europe;
 
   get battles(): BattleDetailed[] {
@@ -102,33 +95,6 @@ export default class Battles extends Vue {
 
   getBattles(region: Region, phases: BattlePhase[]) {
     strategusModule.getBattles({ region, phases });
-  }
-
-  formatDateBattle(
-    createdAt: string,
-    strategusBattleInitiationDurationHours: number,
-    strategusBattleHiringDurationHours: number
-  ) {
-    const createdDate = new Date(createdAt);
-    createdDate.setTime(
-      createdDate.getTime() +
-        (strategusBattleInitiationDurationHours + strategusBattleHiringDurationHours) *
-          60 *
-          60 *
-          1000
-    );
-    return `${(createdDate.getMonth() + 1).toLocaleString('en-US', {
-      minimumIntegerDigits: 2,
-      useGrouping: false,
-    })}-${createdDate.getDate().toLocaleString('en-US', {
-      minimumIntegerDigits: 2,
-      useGrouping: false,
-    })}-${createdDate.getFullYear()} ${createdDate.getHours().toLocaleString('en-US', {
-      minimumIntegerDigits: 2,
-      useGrouping: false,
-    })}:${createdDate
-      .getMinutes()
-      .toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}`;
   }
 }
 </script>
