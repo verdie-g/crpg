@@ -33,3 +33,15 @@ export function timestampToTimeString(ts: number): string {
 
   return timeStr;
 }
+
+export function formatDateShort(date:Date):string {
+  // Force h24 hour cycle so that americans won't use "12:48 am" that confuses everyone.
+  const dateTimeShortFormat = new Intl.DateTimeFormat({ hc: 'h24' }, { dateStyle: 'short', timeStyle: 'short' });
+  return dateTimeShortFormat.format(date);
+}
+
+export function formatDateLong(date:Date):string {
+  // Force h24 hour cycle so that americans won't use "12:48 am" that confuses everyone.
+  const dateTimeShortFormat = new Intl.DateTimeFormat({ hc: 'h24' }, { dateStyle: 'long', timeStyle: 'long' });
+  return dateTimeShortFormat.format(date);
+}

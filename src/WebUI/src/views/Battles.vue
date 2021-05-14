@@ -24,7 +24,14 @@
       aria-current-label="Current page"
     >
       <b-table-column field="date" label="Schedule date" sortable centered v-slot="props">
-        {{ getBattleSchedulingDate(props.row) }}
+        <a href="#" @click="showLongDate = !showLongDate">
+          <span v-if="showLongDate">
+            {{ formatDateLong(getBattleSchedulingDate(props.row)) }}
+          </span>
+          <span v-else>
+            {{ formatDateShort(getBattleSchedulingDate(props.row)) }}
+          </span>
+        </a>
       </b-table-column>
 
       <b-table-column label="Attacker" v-slot="props">
@@ -67,6 +74,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import strategusModule from '@/store/strategus-module';
 import { regionToStr, getBattleSchedulingDate } from '@/services/strategus-service';
+import { formatDateShort, formatDateLong } from '@/utils/date';
 import BattleDetailed from '@/models/battle-detailed';
 import Hero from '@/models/hero';
 import BattlePhase from '@/models/battle-phase';
@@ -76,7 +84,10 @@ import Region from '@/models/region';
 export default class Battles extends Vue {
   regionToStr = regionToStr;
   getBattleSchedulingDate = getBattleSchedulingDate;
+  formatDateShort = formatDateShort;
+  formatDateLong = formatDateLong;
   selectedRegion: Region = Region.Europe;
+  showLongDate = false;
 
   get battles(): BattleDetailed[] {
     return strategusModule.battles;

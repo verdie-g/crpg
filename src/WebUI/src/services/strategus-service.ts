@@ -45,9 +45,7 @@ export function registerUser(region: Region): Promise<Hero> {
   return post('/strategus/heroes', { region });
 }
 
-export function getBattleSchedulingDate(battle: BattleDetailed): string {
-  // Force h24 hour cycle so that americans won't use "12:48 am" that confuses everyone.
-  const dateTimeShortFormat = new Intl.DateTimeFormat({ hc: 'h24' }, { dateStyle: 'short', timeStyle: 'short' });
-  const createdDate = new Date(new Date(battle.createdAt).setHours(new Date(battle.createdAt).getHours() + Constants.strategusBattleInitiationDurationHours +  Constants.strategusBattleHiringDurationHours));
-  return dateTimeShortFormat.format(createdDate);
+export function getBattleSchedulingDate(battle: BattleDetailed): Date {
+  const schedingDate = new Date(battle.createdAt)
+  return new Date(schedingDate.setHours(schedingDate.getHours() + Constants.strategusBattleInitiationDurationHours +  Constants.strategusBattleHiringDurationHours));
 }
