@@ -1,11 +1,12 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
+using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
-using Crpg.Domain.Entities.Strategus;
-using Crpg.Domain.Entities.Strategus.Battles;
+using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -23,15 +24,15 @@ namespace Crpg.Application.Common.Interfaces
         DbSet<Clan> Clans { get; }
         DbSet<ClanMember> ClanMembers { get; }
         DbSet<ClanInvitation> ClanInvitations { get; }
-        DbSet<StrategusHero> StrategusHeroes { get; }
-        DbSet<StrategusSettlement> StrategusSettlements { get; }
-        DbSet<StrategusSettlementItem> StrategusSettlementItems { get; }
-        DbSet<StrategusHeroItem> StrategusHeroItems { get; }
-        DbSet<StrategusBattle> StrategusBattles { get; }
-        DbSet<StrategusBattleFighter> StrategusBattleFighters { get; }
-        DbSet<StrategusBattleFighterApplication> StrategusBattleFighterApplications { get; }
-        DbSet<StrategusBattleMercenary> StrategusBattleMercenaries { get; }
-        DbSet<StrategusBattleMercenaryApplication> StrategusBattleMercenaryApplications { get; }
+        DbSet<Hero> Heroes { get; }
+        DbSet<Settlement> Settlements { get; }
+        DbSet<SettlementItem> SettlementItems { get; }
+        DbSet<HeroItem> HeroItems { get; }
+        DbSet<Battle> Battles { get; }
+        DbSet<BattleFighter> BattleFighters { get; }
+        DbSet<FighterApplication> BattleFighterApplications { get; }
+        DbSet<BattleMercenary> BattleMercenaries { get; }
+        DbSet<BattleMercenaryApplication> BattleMercenaryApplications { get; }
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }

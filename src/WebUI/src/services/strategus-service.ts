@@ -19,17 +19,17 @@ export const inSettlementStatuses = new Set<HeroStatus>([
 ]);
 
 export function getSettlements(): Promise<SettlementPublic> {
-  return get('/strategus/settlements');
+  return get('/settlements');
 }
 
 export function getUpdate(): Promise<Result<StrategusUpdate>> {
-  return tryGet('/strategus/update');
+  return tryGet('/heroes/self/update');
 }
 
 export function updateHeroStatus(update: HeroStatusUpdateRequest): Promise<Hero> {
-  return put('/strategus/heroes/self/status', update);
+  return put('/heroes/self/status', update);
 }
 
 export function registerUser(region: Region): Promise<Hero> {
-  return post('/strategus/heroes', { region });
+  return post('/heroes', { region });
 }

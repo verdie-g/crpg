@@ -9,11 +9,12 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
+using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
-using Crpg.Domain.Entities.Strategus;
-using Crpg.Domain.Entities.Strategus.Battles;
+using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
@@ -27,11 +28,11 @@ namespace Crpg.Application.System.Commands
         {
             private static readonly int[] ItemRanks = { -3, -2, -1, 1, 2, 3 };
 
-            private static readonly Dictionary<StrategusSettlementType, int> StrategusSettlementDefaultTroops = new()
+            private static readonly Dictionary<SettlementType, int> StrategusSettlementDefaultTroops = new()
             {
-                [StrategusSettlementType.Village] = 1000,
-                [StrategusSettlementType.Castle] = 4000,
-                [StrategusSettlementType.Town] = 8000,
+                [SettlementType.Village] = 1000,
+                [SettlementType.Castle] = 4000,
+                [SettlementType.Town] = 8000,
             };
 
             private readonly ICrpgDbContext _db;
@@ -40,13 +41,13 @@ namespace Crpg.Application.System.Commands
             private readonly ICharacterService _characterService;
             private readonly IExperienceTable _experienceTable;
             private readonly IStrategusMap _strategusMap;
-            private readonly IStrategusSettlementsSource _settlementsSource;
+            private readonly ISettlementsSource _settlementsSource;
             private readonly ItemValueModel _itemValueModel;
             private readonly ItemModifierService _itemModifierService;
 
             public Handler(ICrpgDbContext db, IItemsSource itemsSource, IApplicationEnvironment appEnv,
                 ICharacterService characterService, IExperienceTable experienceTable, IStrategusMap strategusMap,
-                IStrategusSettlementsSource settlementsSource, ItemValueModel itemValueModel,
+                ISettlementsSource settlementsSource, ItemValueModel itemValueModel,
                 ItemModifierService itemModifierService)
             {
                 _db = db;
@@ -813,8 +814,8 @@ namespace Crpg.Application.System.Commands
                     }
                 }
 
-                Task<StrategusSettlement> GetSettlementByName(string name) =>
-                    _db.StrategusSettlements.FirstAsync(s => s.Name == name && s.Region == Region.Europe);
+                Task<Settlement> GetSettlementByName(string name) =>
+                    _db.Settlements.FirstAsync(s => s.Name == name && s.Region == Region.Europe);
                 var epicrotea = await GetSettlementByName("Epicrotea");
                 var mecalovea = await GetSettlementByName("Mecalovea");
                 var marathea = await GetSettlementByName("Marathea");
@@ -834,485 +835,485 @@ namespace Crpg.Application.System.Commands
                 var leblenion = await GetSettlementByName("Leblenion");
                 var rhemtoil = await GetSettlementByName("Rhemtoil");
 
-                StrategusHero brainfartHero = new()
+                Hero brainfartHero = new()
                 {
                     Region = Region.Europe,
                     User = brainfart,
                     Troops = 1,
                     Position = new Point(112, -88),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero kiwiHero = new()
+                Hero kiwiHero = new()
                 {
                     Region = Region.Europe,
                     User = kiwi,
                     Troops = 1,
                     Position = new Point(142, -90),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero ikaroozHero = new()
+                Hero ikaroozHero = new()
                 {
                     Region = Region.Europe,
                     User = ikarooz,
                     Troops = 20,
                     Position = new Point(130, -102),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero laHireHero = new()
+                Hero laHireHero = new()
                 {
                     Region = Region.Europe,
                     User = laHire,
                     Troops = 20,
                     Position = new Point(135, -97),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero brygganHero = new()
+                Hero brygganHero = new()
                 {
                     Region = Region.Europe,
                     User = bryggan,
                     Troops = 1,
                     Position = new Point(131, -102),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero elmarykHero = new()
+                Hero elmarykHero = new()
                 {
                     Region = Region.Europe,
                     User = elmaryk,
                     Troops = 6,
                     Position = new Point(108, -98),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero schumetzqHero = new()
+                Hero schumetzqHero = new()
                 {
                     Region = Region.Europe,
                     User = schumetzq,
                     Troops = 7,
                     Position = new Point(119, -105),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero azumaHero = new()
+                Hero azumaHero = new()
                 {
                     Region = Region.Europe,
                     User = azuma,
                     Troops = 121,
                     Position = new Point(106, -112),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero zorguyHero = new()
+                Hero zorguyHero = new()
                 {
                     Region = Region.Europe,
                     User = zorguy,
                     Troops = 98,
                     Position = new Point(114, -114),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero eckoHero = new()
+                Hero eckoHero = new()
                 {
                     Region = Region.Europe,
                     User = ecko,
                     Troops = 55,
                     Position = new Point(117, -112),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero firebatHero = new()
+                Hero firebatHero = new()
                 {
                     Region = Region.Europe,
                     User = firebat,
                     Troops = 29,
                     Position = new Point(105, -111),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero laenirHero = new()
+                Hero laenirHero = new()
                 {
                     Region = Region.Europe,
                     User = leanir,
                     Troops = 1,
                     Position = new Point(103, -102),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero opsetHero = new()
+                Hero opsetHero = new()
                 {
                     Region = Region.Europe,
                     User = opset,
                     Troops = 1,
                     Position = new Point(113, -112),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero falcomHero = new()
+                Hero falcomHero = new()
                 {
                     Region = Region.Europe,
                     User = falcom,
                     Troops = 4,
                     Position = epicrotea.Position,
-                    Status = StrategusHeroStatus.IdleInSettlement,
+                    Status = HeroStatus.IdleInSettlement,
                     TargetedSettlement = epicrotea,
                 };
-                StrategusHero victorhh888Hero = new()
+                Hero victorhh888Hero = new()
                 {
                     Region = Region.Europe,
                     User = victorhh888,
                     Troops = 9,
                     Position = epicrotea.Position,
-                    Status = StrategusHeroStatus.RecruitingInSettlement,
+                    Status = HeroStatus.RecruitingInSettlement,
                 };
-                StrategusHero sellkaHero = new()
+                Hero sellkaHero = new()
                 {
                     Region = Region.Europe,
                     User = sellka,
                     Troops = 3,
                     Position = dyopalis.Position,
-                    Status = StrategusHeroStatus.RecruitingInSettlement,
+                    Status = HeroStatus.RecruitingInSettlement,
                     TargetedSettlement = dyopalis,
                 };
-                StrategusHero distanceHero = new()
+                Hero distanceHero = new()
                 {
                     Region = Region.Europe,
                     User = distance,
                     Troops = 1,
                     Position = rhotae.Position,
-                    Status = StrategusHeroStatus.RecruitingInSettlement,
+                    Status = HeroStatus.RecruitingInSettlement,
                     TargetedSettlement = rhotae,
                 };
-                StrategusHero bakhratHero = new()
+                Hero bakhratHero = new()
                 {
                     Region = Region.Europe,
                     User = bakhrat,
                     Troops = 120,
                     Position = rhotae.Position,
-                    Status = StrategusHeroStatus.RecruitingInSettlement,
+                    Status = HeroStatus.RecruitingInSettlement,
                     TargetedSettlement = rhotae,
                 };
-                StrategusHero lancelotHero = new()
+                Hero lancelotHero = new()
                 {
                     Region = Region.Europe,
                     User = lancelot,
                     Troops = 243,
                     Position = rhotae.Position,
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                     TargetedSettlement = rhotae,
                 };
-                StrategusHero buddhaHero = new()
+                Hero buddhaHero = new()
                 {
                     Region = Region.Europe,
                     User = buddha,
                     Troops = 49,
                     Position = nideon.Position,
-                    Status = StrategusHeroStatus.IdleInSettlement,
+                    Status = HeroStatus.IdleInSettlement,
                     TargetedSettlement = rhotae,
                 };
-                StrategusHero lerchHero = new()
+                Hero lerchHero = new()
                 {
                     Region = Region.Europe,
                     User = lerch,
                     Troops = 10,
                     Position = new Point(107, -102),
-                    Status = StrategusHeroStatus.MovingToSettlement,
+                    Status = HeroStatus.MovingToSettlement,
                     TargetedSettlement = rhotae,
                 };
-                StrategusHero tjensHero = new()
+                Hero tjensHero = new()
                 {
                     Region = Region.Europe,
                     User = tjens,
                     Troops = 20,
                     Position = new Point(112, -93),
-                    Status = StrategusHeroStatus.MovingToSettlement,
+                    Status = HeroStatus.MovingToSettlement,
                     TargetedSettlement = rhotae,
                 };
-                StrategusHero knitlerHero = new()
+                Hero knitlerHero = new()
                 {
                     Region = Region.Europe,
                     User = knitler,
                     Troops = 3,
                     Position = new Point(124, -102),
-                    Status = StrategusHeroStatus.MovingToSettlement,
+                    Status = HeroStatus.MovingToSettlement,
                     TargetedSettlement = rhotae,
                 };
-                StrategusHero magnucleanHero = new()
+                Hero magnucleanHero = new()
                 {
                     Region = Region.Europe,
                     User = magnuclean,
                     Troops = 9,
                     Position = new Point(120, -88),
-                    Status = StrategusHeroStatus.MovingToSettlement,
+                    Status = HeroStatus.MovingToSettlement,
                     TargetedSettlement = rhemtoil,
                 };
-                StrategusHero baronCyborgHero = new()
+                Hero baronCyborgHero = new()
                 {
                     Region = Region.Europe,
                     User = baronCyborg,
                     Troops = 9,
                     Position = new Point(120, -88),
-                    Status = StrategusHeroStatus.MovingToSettlement,
+                    Status = HeroStatus.MovingToSettlement,
                     TargetedSettlement = mecalovea,
                 };
-                StrategusHero scarfaceHero = new()
+                Hero scarfaceHero = new()
                 {
                     Region = Region.Europe,
                     User = scarface,
                     Troops = 25,
                     Position = new Point(119, -105),
-                    Status = StrategusHeroStatus.MovingToSettlement,
+                    Status = HeroStatus.MovingToSettlement,
                     TargetedSettlement = hertogeaCastle,
                 };
-                StrategusHero neostralieHero = new()
+                Hero neostralieHero = new()
                 {
                     Region = Region.Europe,
                     User = neostralie,
                     Troops = 1,
                     Position = new Point(128, -97),
-                    Status = StrategusHeroStatus.MovingToSettlement,
+                    Status = HeroStatus.MovingToSettlement,
                     TargetedSettlement = potamis,
                 };
-                StrategusHero manikHero = new()
+                Hero manikHero = new()
                 {
                     Region = Region.Europe,
                     User = manik,
                     Troops = 1,
                     Position = new Point(129, -102),
-                    Status = StrategusHeroStatus.MovingToAttackHero,
+                    Status = HeroStatus.MovingToAttackHero,
                     TargetedHero = neostralieHero,
                 };
-                StrategusHero ajroselleHero = new()
+                Hero ajroselleHero = new()
                 {
                     Region = Region.Europe,
                     User = ajroselle,
                     Troops = 1,
                     Position = new Point(130, -107),
-                    Status = StrategusHeroStatus.MovingToAttackHero,
+                    Status = HeroStatus.MovingToAttackHero,
                     TargetedHero = manikHero,
                 };
-                StrategusHero skraelHero = new()
+                Hero skraelHero = new()
                 {
                     Region = Region.Europe,
                     User = skrael,
                     Troops = 1,
                     Position = new Point(126, -93),
-                    Status = StrategusHeroStatus.MovingToAttackHero,
+                    Status = HeroStatus.MovingToAttackHero,
                     TargetedHero = neostralieHero,
                 };
-                StrategusHero bedoHero = new()
+                Hero bedoHero = new()
                 {
                     Region = Region.Europe,
                     User = bedo,
                     Troops = 300,
                     Position = new Point(114, -101),
-                    Status = StrategusHeroStatus.MovingToAttackSettlement,
+                    Status = HeroStatus.MovingToAttackSettlement,
                     TargetedSettlement = gersegosCastle,
                 };
-                StrategusHero lambicHero = new()
+                Hero lambicHero = new()
                 {
                     Region = Region.Europe,
                     User = lambic,
                     Troops = 87,
                     Position = new Point(113, -98),
-                    Status = StrategusHeroStatus.MovingToAttackSettlement,
+                    Status = HeroStatus.MovingToAttackSettlement,
                     TargetedSettlement = gersegosCastle,
                 };
-                StrategusHero sanasarHero = new()
+                Hero sanasarHero = new()
                 {
                     Region = Region.Europe,
                     User = sanasar,
                     Troops = 21,
                     Position = new Point(119, -101),
-                    Status = StrategusHeroStatus.MovingToAttackSettlement,
+                    Status = HeroStatus.MovingToAttackSettlement,
                     TargetedSettlement = rhotae,
                 };
-                StrategusHero vlad007Hero = new()
+                Hero vlad007Hero = new()
                 {
                     Region = Region.Europe,
                     User = vlad007,
                     Troops = 21,
                     Position = new Point(119, -101),
-                    Status = StrategusHeroStatus.MovingToAttackSettlement,
+                    Status = HeroStatus.MovingToAttackSettlement,
                     TargetedSettlement = rhotae,
                 };
-                StrategusHero canp0GHero = new()
+                Hero canp0GHero = new()
                 {
                     Region = Region.Europe,
                     User = canp0g,
                     Troops = 1,
                     Position = rhesosCastle.Position,
-                    Status = StrategusHeroStatus.MovingToPoint,
+                    Status = HeroStatus.MovingToPoint,
                     Waypoints = new MultiPoint(new[] { new Point(125, -97) }),
                 };
-                StrategusHero sharkHero = new()
+                Hero sharkHero = new()
                 {
                     Region = Region.Europe,
                     User = shark,
                     Troops = 1,
                     Position = new Point(105, -107),
-                    Status = StrategusHeroStatus.MovingToPoint,
+                    Status = HeroStatus.MovingToPoint,
                     Waypoints = new MultiPoint(new[] { new Point(121, -99) }),
                 };
-                StrategusHero noobAmphetamineHero = new()
+                Hero noobAmphetamineHero = new()
                 {
                     Region = Region.Europe,
                     User = noobAmphetamine,
                     Troops = 1,
                     Position = new Point(107, -100),
-                    Status = StrategusHeroStatus.MovingToPoint,
+                    Status = HeroStatus.MovingToPoint,
                     Waypoints = new MultiPoint(new[] { new Point(112, -88) }),
                 };
-                StrategusHero mundeteHero = new()
+                Hero mundeteHero = new()
                 {
                     Region = Region.Europe,
                     User = mundete,
                     Troops = 1,
                     Position = new Point(112, -99),
-                    Status = StrategusHeroStatus.FollowingHero,
+                    Status = HeroStatus.FollowingHero,
                     TargetedHero = sharkHero,
                 };
-                StrategusHero aroyFalconerHero = new()
+                Hero aroyFalconerHero = new()
                 {
                     Region = Region.Europe,
                     User = aroyFalconer,
                     Troops = 1,
                     Position = new Point(123, -88),
-                    Status = StrategusHeroStatus.MovingToPoint,
+                    Status = HeroStatus.MovingToPoint,
                     Waypoints = new MultiPoint(new[] { new Point(135, -98) }),
                 };
-                StrategusHero insanitoidHero = new()
+                Hero insanitoidHero = new()
                 {
                     Region = Region.Europe,
                     User = insanitoid,
                     Troops = 1,
                     Position = new Point(135, -98),
-                    Status = StrategusHeroStatus.MovingToPoint,
+                    Status = HeroStatus.MovingToPoint,
                     Waypoints = new MultiPoint(new[] { new Point(123, -88) }),
                 };
-                StrategusHero namidakaHero = new()
+                Hero namidakaHero = new()
                 {
                     Region = Region.Europe,
                     User = namidaka,
                     Troops = 11,
                     Position = new Point(135, -99),
-                    Status = StrategusHeroStatus.FollowingHero,
+                    Status = HeroStatus.FollowingHero,
                     TargetedHero = insanitoidHero,
                 };
-                StrategusHero xDemHero = new()
+                Hero xDemHero = new()
                 {
                     Region = Region.Europe,
                     User = xDem,
                     Troops = 250,
                     Position = new Point(nideon.Position.X - 0.2, nideon.Position.Y - 0.2),
-                    Status = StrategusHeroStatus.InBattle,
+                    Status = HeroStatus.InBattle,
                     TargetedSettlement = nideon,
                 };
-                StrategusHero disorotHero = new()
+                Hero disorotHero = new()
                 {
                     Region = Region.Europe,
                     User = disorot,
                     Troops = 89,
                     Position = new Point(nideon.Position.X + 0.2, nideon.Position.Y + 0.2),
-                    Status = StrategusHeroStatus.InBattle,
+                    Status = HeroStatus.InBattle,
                 };
-                StrategusHero aceHero = new()
+                Hero aceHero = new()
                 {
                     Region = Region.Europe,
                     User = ace,
                     Troops = 104,
                     Position = new Point(nideon.Position.X - 0.2, nideon.Position.Y + 0.2),
-                    Status = StrategusHeroStatus.InBattle,
+                    Status = HeroStatus.InBattle,
                 };
-                StrategusHero sagarHero = new()
+                Hero sagarHero = new()
                 {
                     Region = Region.Europe,
                     User = sagar,
                     Troops = 300,
                     Position = new Point(nideon.Position.X + 0.2, nideon.Position.Y - 0.2),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero greenShadowHero = new()
+                Hero greenShadowHero = new()
                 {
                     Region = Region.Europe,
                     User = greenShadow,
                     Troops = 31,
                     Position = new Point(106.986, -110.171),
-                    Status = StrategusHeroStatus.InBattle,
+                    Status = HeroStatus.InBattle,
                 };
-                StrategusHero hannibaruHero = new()
+                Hero hannibaruHero = new()
                 {
                     Region = Region.Europe,
                     User = hannibaru,
                     Troops = 42,
                     Position = new Point(107.109, -110.328),
-                    Status = StrategusHeroStatus.InBattle,
+                    Status = HeroStatus.InBattle,
                 };
-                StrategusHero drexxHero = new()
+                Hero drexxHero = new()
                 {
                     Region = Region.Europe,
                     User = drexx,
                     Troops = 53,
                     Position = new Point(107.304, -110.203),
-                    Status = StrategusHeroStatus.InBattle,
+                    Status = HeroStatus.InBattle,
                 };
-                StrategusHero xaroshHero = new()
+                Hero xaroshHero = new()
                 {
                     Region = Region.Europe,
                     User = xarosh,
                     Troops = 64,
                     Position = new Point(107.210, -110.062),
-                    Status = StrategusHeroStatus.InBattle,
+                    Status = HeroStatus.InBattle,
                 };
-                StrategusHero tipsyTobyHero = new()
+                Hero tipsyTobyHero = new()
                 {
                     Region = Region.Europe,
                     User = tipsyToby,
                     Troops = 75,
                     Position = new Point(107.304, -110.046),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero localAlphaHero = new()
+                Hero localAlphaHero = new()
                 {
                     Region = Region.Europe,
                     User = localAlpha,
                     Troops = 75,
                     Position = new Point(107.304, -110.046),
-                    Status = StrategusHeroStatus.Idle,
+                    Status = HeroStatus.Idle,
                 };
-                StrategusHero alexHero = new()
+                Hero alexHero = new()
                 {
                     Region = Region.Europe,
                     User = alex,
                     Troops = 86,
                     Position = new Point(107, -106),
-                    Status = StrategusHeroStatus.InBattle,
+                    Status = HeroStatus.InBattle,
                     TargetedSettlement = hertogea,
                 };
-                StrategusHero kedrynFuelHero = new()
+                Hero kedrynFuelHero = new()
                 {
                     Region = Region.Europe,
                     User = kedrynFuel,
                     Troops = 97,
                     Position = new Point(107, -106.2),
-                    Status = StrategusHeroStatus.FollowingHero,
+                    Status = HeroStatus.FollowingHero,
                     TargetedHero = alexHero,
                 };
-                StrategusHero luqeroHero = new()
+                Hero luqeroHero = new()
                 {
                     Region = Region.Europe,
                     User = luqero,
                     Troops = 108,
                     Position = hertogea.Position,
-                    Status = StrategusHeroStatus.IdleInSettlement,
+                    Status = HeroStatus.IdleInSettlement,
                     TargetedSettlement = hertogea,
                 };
-                StrategusHero ilyaHero = new()
+                Hero ilyaHero = new()
                 {
                     Region = Region.Europe,
                     User = ilya,
                     Troops = 119,
                     Position = hertogea.Position,
-                    Status = StrategusHeroStatus.IdleInSettlement,
+                    Status = HeroStatus.IdleInSettlement,
                     TargetedSettlement = hertogea,
                 };
-                StrategusHero eztliHero = new()
+                Hero eztliHero = new()
                 {
                     Region = Region.Europe,
                     User = eztli,
                     Troops = 86,
                     Position = leblenion.Position,
-                    Status = StrategusHeroStatus.InBattle,
+                    Status = HeroStatus.InBattle,
                     TargetedSettlement = leblenion,
                 };
 
@@ -1329,182 +1330,182 @@ namespace Crpg.Application.System.Commands
                     greenShadowHero, hannibaruHero, drexxHero, xaroshHero, tipsyTobyHero, localAlphaHero, eztliHero,
                 };
 
-                var existingHeroes = (await _db.StrategusHeroes.ToArrayAsync())
+                var existingHeroes = (await _db.Heroes.ToArrayAsync())
                     .Select(u => u.Id)
                     .ToHashSet();
                 foreach (var newHero in newHeroes)
                 {
                     if (!existingHeroes.Contains(newHero.User!.Id))
                     {
-                        _db.StrategusHeroes.Add(newHero);
+                        _db.Heroes.Add(newHero);
                     }
                 }
 
-                StrategusBattle nideonBattle = new()
+                Battle nideonBattle = new()
                 {
-                    Phase = StrategusBattlePhase.Preparation,
+                    Phase = BattlePhase.Preparation,
                     Region = Region.Europe,
                     Position = nideon.Position,
                     Fighters =
                     {
-                        new StrategusBattleFighter
+                        new BattleFighter
                         {
                             Hero = xDemHero,
-                            Side = StrategusBattleSide.Attacker,
+                            Side = BattleSide.Attacker,
                             Commander = true,
                         },
-                        new StrategusBattleFighter
+                        new BattleFighter
                         {
                             Hero = disorotHero,
-                            Side = StrategusBattleSide.Attacker,
+                            Side = BattleSide.Attacker,
                             Commander = false,
                         },
-                        new StrategusBattleFighter
+                        new BattleFighter
                         {
                             Hero = null,
                             Settlement = nideon,
-                            Side = StrategusBattleSide.Defender,
+                            Side = BattleSide.Defender,
                             Commander = true,
                         },
-                        new StrategusBattleFighter
+                        new BattleFighter
                         {
                             Hero = aceHero,
-                            Side = StrategusBattleSide.Defender,
+                            Side = BattleSide.Defender,
                             Commander = false,
                         },
                     },
                     FighterApplications =
                     {
-                        new StrategusBattleFighterApplication
+                        new FighterApplication
                         {
                             Hero = sagarHero,
-                            Side = StrategusBattleSide.Defender,
-                            Status = StrategusBattleFighterApplicationStatus.Pending,
+                            Side = BattleSide.Defender,
+                            Status = BattleFighterApplicationStatus.Pending,
                         },
                     },
                 };
-                StrategusBattle plainBattle = new()
+                Battle plainBattle = new()
                 {
-                    Phase = StrategusBattlePhase.Preparation,
+                    Phase = BattlePhase.Preparation,
                     Region = Region.Europe,
                     Position = new Point(107.187, -110.164),
                     Fighters =
                     {
-                        new StrategusBattleFighter { Hero = xaroshHero, Side = StrategusBattleSide.Attacker, Commander = true },
-                        new StrategusBattleFighter { Hero = greenShadowHero, Side = StrategusBattleSide.Attacker, Commander = false },
-                        new StrategusBattleFighter { Hero = drexxHero, Side = StrategusBattleSide.Defender, Commander = true },
-                        new StrategusBattleFighter { Hero = hannibaruHero, Side = StrategusBattleSide.Defender, Commander = false },
+                        new BattleFighter { Hero = xaroshHero, Side = BattleSide.Attacker, Commander = true },
+                        new BattleFighter { Hero = greenShadowHero, Side = BattleSide.Attacker, Commander = false },
+                        new BattleFighter { Hero = drexxHero, Side = BattleSide.Defender, Commander = true },
+                        new BattleFighter { Hero = hannibaruHero, Side = BattleSide.Defender, Commander = false },
                     },
                     FighterApplications =
                     {
-                        new StrategusBattleFighterApplication
+                        new FighterApplication
                         {
                             Hero = tipsyTobyHero,
-                            Side = StrategusBattleSide.Attacker,
-                            Status = StrategusBattleFighterApplicationStatus.Pending,
+                            Side = BattleSide.Attacker,
+                            Status = BattleFighterApplicationStatus.Pending,
                         },
-                        new StrategusBattleFighterApplication
+                        new FighterApplication
                         {
                             Hero = localAlphaHero,
-                            Side = StrategusBattleSide.Defender,
-                            Status = StrategusBattleFighterApplicationStatus.Pending,
+                            Side = BattleSide.Defender,
+                            Status = BattleFighterApplicationStatus.Pending,
                         },
                     },
                     CreatedAt = DateTimeOffset.Now,
                 };
-                StrategusBattle hertogeaBattle = new()
+                Battle hertogeaBattle = new()
                 {
-                    Phase = StrategusBattlePhase.Hiring,
+                    Phase = BattlePhase.Hiring,
                     Region = Region.Europe,
                     Position = hertogea.Position,
                     Fighters =
                     {
-                        new StrategusBattleFighter
+                        new BattleFighter
                         {
                             Hero = alexHero,
-                            Side = StrategusBattleSide.Attacker,
+                            Side = BattleSide.Attacker,
                             Commander = true,
                         },
-                        new StrategusBattleFighter
+                        new BattleFighter
                         {
                             Hero = null,
                             Settlement = hertogea,
-                            Side = StrategusBattleSide.Defender,
+                            Side = BattleSide.Defender,
                             Commander = true,
                         },
                     },
                     FighterApplications =
                     {
-                        new StrategusBattleFighterApplication
+                        new FighterApplication
                         {
                             Hero = kedrynFuelHero,
-                            Side = StrategusBattleSide.Attacker,
-                            Status = StrategusBattleFighterApplicationStatus.Pending,
+                            Side = BattleSide.Attacker,
+                            Status = BattleFighterApplicationStatus.Pending,
                         },
-                        new StrategusBattleFighterApplication
+                        new FighterApplication
                         {
                             Hero = luqeroHero,
-                            Side = StrategusBattleSide.Defender,
-                            Status = StrategusBattleFighterApplicationStatus.Pending,
+                            Side = BattleSide.Defender,
+                            Status = BattleFighterApplicationStatus.Pending,
                         },
-                        new StrategusBattleFighterApplication
+                        new FighterApplication
                         {
                             Hero = ilyaHero,
-                            Side = StrategusBattleSide.Defender,
-                            Status = StrategusBattleFighterApplicationStatus.Pending,
+                            Side = BattleSide.Defender,
+                            Status = BattleFighterApplicationStatus.Pending,
                         },
                     },
                     CreatedAt = DateTimeOffset.Now.AddHours(-2),
                 };
-                StrategusBattle leblenionBattle = new()
+                Battle leblenionBattle = new()
                 {
-                    Phase = StrategusBattlePhase.Hiring,
+                    Phase = BattlePhase.Hiring,
                     Region = Region.Europe,
                     Position = leblenion.Position,
                     Fighters =
                     {
-                        new StrategusBattleFighter
+                        new BattleFighter
                         {
                             Hero = eztliHero,
-                            Side = StrategusBattleSide.Attacker,
+                            Side = BattleSide.Attacker,
                             Commander = true,
                         },
-                        new StrategusBattleFighter
+                        new BattleFighter
                         {
                             Hero = null,
                             Settlement = leblenion,
-                            Side = StrategusBattleSide.Defender,
+                            Side = BattleSide.Defender,
                             Commander = true,
                         },
                     },
                     MercenaryApplications =
                     {
-                        new StrategusBattleMercenaryApplication
+                        new BattleMercenaryApplication
                         {
                             Character = falcomCharacter0,
-                            Side = StrategusBattleSide.Attacker,
-                            Status = StrategusBattleMercenaryApplicationStatus.Pending,
+                            Side = BattleSide.Attacker,
+                            Status = BattleMercenaryApplicationStatus.Pending,
                         },
-                        new StrategusBattleMercenaryApplication
+                        new BattleMercenaryApplication
                         {
                             Character = victorhh888Character0,
-                            Side = StrategusBattleSide.Defender,
-                            Status = StrategusBattleMercenaryApplicationStatus.Pending,
+                            Side = BattleSide.Defender,
+                            Status = BattleMercenaryApplicationStatus.Pending,
                         },
-                        new StrategusBattleMercenaryApplication
+                        new BattleMercenaryApplication
                         {
                             Character = sellkaCharacter0,
-                            Side = StrategusBattleSide.Defender,
-                            Status = StrategusBattleMercenaryApplicationStatus.Pending,
+                            Side = BattleSide.Defender,
+                            Status = BattleMercenaryApplicationStatus.Pending,
                         },
                     },
                     CreatedAt = DateTimeOffset.Now.AddHours(-4),
                 };
 
-                StrategusBattle[] newBattles = { nideonBattle, plainBattle, hertogeaBattle, leblenionBattle };
-                if (!(await _db.StrategusBattles.AnyAsync()))
+                Battle[] newBattles = { nideonBattle, plainBattle, hertogeaBattle, leblenionBattle };
+                if (!(await _db.Battles.AnyAsync()))
                 {
-                    _db.StrategusBattles.AddRange(newBattles);
+                    _db.Battles.AddRange(newBattles);
                 }
             }
 
@@ -1671,14 +1672,14 @@ namespace Crpg.Application.System.Commands
             {
                 var settlementsByName = (await _settlementsSource.LoadStrategusSettlements())
                     .ToDictionary(i => i.Name);
-                var dbSettlementsByNameRegion = await _db.StrategusSettlements
+                var dbSettlementsByNameRegion = await _db.Settlements
                     .ToDictionaryAsync(di => (di.Name, di.Region), cancellationToken);
 
                 foreach (var settlementCreation in settlementsByName.Values)
                 {
                     foreach (var region in GetRegions())
                     {
-                        var settlement = new StrategusSettlement
+                        var settlement = new Settlement
                         {
                             Name = settlementCreation.Name,
                             Type = settlementCreation.Type,
@@ -1690,16 +1691,16 @@ namespace Crpg.Application.System.Commands
                             OwnerId = null,
                         };
 
-                        if (dbSettlementsByNameRegion.TryGetValue((settlement.Name, settlement.Region), out StrategusSettlement? dbSettlement))
+                        if (dbSettlementsByNameRegion.TryGetValue((settlement.Name, settlement.Region), out Settlement? dbSettlement))
                         {
                             _db.Entry(dbSettlement).State = EntityState.Detached;
 
                             settlement.Id = dbSettlement.Id;
-                            _db.StrategusSettlements.Update(settlement);
+                            _db.Settlements.Update(settlement);
                         }
                         else
                         {
-                            _db.StrategusSettlements.Add(settlement);
+                            _db.Settlements.Add(settlement);
                         }
                     }
                 }
@@ -1708,7 +1709,7 @@ namespace Crpg.Application.System.Commands
                 {
                     if (!settlementsByName.ContainsKey(dbSettlement.Name))
                     {
-                        _db.StrategusSettlements.Remove(dbSettlement);
+                        _db.Settlements.Remove(dbSettlement);
                     }
                 }
             }

@@ -20,7 +20,7 @@ namespace Crpg.Application
             var characterService = new CharacterService(experienceTable, constants);
             var userService = new UserService(constants);
             var clanService = new ClanService();
-            var strategusBattleScheduler = new StrategusBattleScheduler();
+            var strategusBattleScheduler = new BattleScheduler();
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly())
                 .AddMediatR(Assembly.GetExecutingAssembly())
@@ -35,11 +35,11 @@ namespace Crpg.Application
                 .AddSingleton<IClanService>(clanService)
                 .AddSingleton<IStrategusMap, StrategusMap>()
                 .AddSingleton<IStrategusSpeedModel, StrategusSpeedModel>()
-                .AddSingleton<IStrategusBattleScheduler>(strategusBattleScheduler)
+                .AddSingleton<IBattleScheduler>(strategusBattleScheduler)
                 .AddSingleton<ICharacterClassModel, CharacterClassModel>()
                 .AddSingleton(constants)
                 .AddSingleton<IItemsSource, FileItemsSource>()
-                .AddSingleton<IStrategusSettlementsSource, FileStrategusSettlementsSource>()
+                .AddSingleton<ISettlementsSource, FileSettlementsSource>()
                 .AddValidatorsFromAssemblyContaining(typeof(DependencyInjection));
 
             return services;

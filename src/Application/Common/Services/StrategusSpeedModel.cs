@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Crpg.Domain.Entities.Strategus;
+using Crpg.Domain.Entities.Heroes;
 
 namespace Crpg.Application.Common.Services
 {
     /// <summary>
-    /// Service to compute the speed of a <see cref="StrategusHero"/>.
+    /// Service to compute the speed of a <see cref="Hero"/>.
     /// </summary>
     internal interface IStrategusSpeedModel
     {
         /// <summary>Compute the Hero Speed.</summary>
-        double ComputeHeroSpeed(StrategusHero hero);
+        double ComputeHeroSpeed(Hero hero);
     }
 
     internal class StrategusSpeedModel : IStrategusSpeedModel
     {
         /// <inheritdoc />
-        public double ComputeHeroSpeed(StrategusHero hero)
+        public double ComputeHeroSpeed(Hero hero)
         {
             double terrainSpeedFactor = 1;
             double weightFactor = 1;
@@ -35,11 +35,11 @@ namespace Crpg.Application.Common.Services
             return terrainSpeedFactor * weightFactor * MountsInfluence(hero.Troops, hero.Items!) * troopInfluence;
         }
 
-        private double MountsInfluence(float troops, List<StrategusHeroItem> heroItems)
+        private double MountsInfluence(float troops, List<HeroItem> heroItems)
         {
             int mounts = 0;
             double forcedMarchSpeed = 2;
-            foreach (StrategusHeroItem heroItem in heroItems.OrderByDescending(i => i.Item!.Mount!.HitPoints))
+            foreach (HeroItem heroItem in heroItems.OrderByDescending(i => i.Item!.Mount!.HitPoints))
             {
                 mounts += heroItem.Count;
                 int mountSpeed = heroItem.Item!.Mount!.HitPoints / 100;

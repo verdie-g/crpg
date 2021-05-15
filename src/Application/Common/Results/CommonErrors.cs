@@ -1,13 +1,12 @@
-﻿using Crpg.Domain.Entities.Clans;
+﻿using Crpg.Domain.Entities.Battles;
+using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
-using Crpg.Domain.Entities.Strategus;
-using Crpg.Domain.Entities.Strategus.Battles;
 
 namespace Crpg.Application.Common.Results
 {
     public static class CommonErrors
     {
-        public static Error BattleInvalidPhase(int battleId, StrategusBattlePhase phase) => new(ErrorType.Validation, ErrorCode.BattleInvalidPhase)
+        public static Error BattleInvalidPhase(int battleId, BattlePhase phase) => new(ErrorType.Validation, ErrorCode.BattleInvalidPhase)
         {
             Title = "Cannot perform action during this battle phase",
             Detail = $"Cannot perform action when battle with id '{battleId}' is in phase '{phase}'",

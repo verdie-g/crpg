@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Crpg.Application.Common.Services;
+using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
-using Crpg.Domain.Entities.Strategus;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Common.Services
@@ -11,24 +11,24 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public void TroopsShouldUseTheBestMountTheyHave()
         {
-            var hero1 = new StrategusHero
+            var hero1 = new Hero
             {
                 Troops = 10,
-                Items = new List<StrategusHeroItem>
+                Items = new List<HeroItem>
                 {
-                    StrategusHeroItemMount(450, 5),
-                    StrategusHeroItemMount(350, 5),
-                    StrategusHeroItemMount(250, 5),
+                    HeroItemMount(450, 5),
+                    HeroItemMount(350, 5),
+                    HeroItemMount(250, 5),
                 },
             };
-            var hero2 = new StrategusHero
+            var hero2 = new Hero
             {
                 Troops = 10,
-                Items = new List<StrategusHeroItem>
+                Items = new List<HeroItem>
                 {
-                    StrategusHeroItemMount(450, 5),
-                    StrategusHeroItemMount(350, 10),
-                    StrategusHeroItemMount(250, 10),
+                    HeroItemMount(450, 5),
+                    HeroItemMount(350, 10),
+                    HeroItemMount(250, 10),
                 },
             };
             var speedModel = new StrategusSpeedModel();
@@ -46,14 +46,14 @@ namespace Crpg.Application.UTest.Common.Services
             var speedModel = new StrategusSpeedModel();
             for (int troops = 10; troops <= 1000; troops += 10)
             {
-                var hero = new StrategusHero
+                var hero = new Hero
                 {
                     Troops = troops,
-                    Items = new List<StrategusHeroItem>
+                    Items = new List<HeroItem>
                     {
-                        StrategusHeroItemMount(450, fastHorseCount),
-                        StrategusHeroItemMount(350, mediumSpeedHorseCount),
-                        StrategusHeroItemMount(250, slowHorseCount),
+                        HeroItemMount(450, fastHorseCount),
+                        HeroItemMount(350, mediumSpeedHorseCount),
+                        HeroItemMount(250, slowHorseCount),
                     },
                 };
                 double speed = speedModel.ComputeHeroSpeed(hero);
@@ -89,14 +89,14 @@ namespace Crpg.Application.UTest.Common.Services
             var speedModel = new StrategusSpeedModel();
             for (int mountCountFactor = 1; mountCountFactor <= 100; mountCountFactor++)
             {
-                var hero = new StrategusHero
+                var hero = new Hero
                 {
                     Troops = 1000,
-                    Items = new List<StrategusHeroItem>
+                    Items = new List<HeroItem>
                     {
-                        StrategusHeroItemMount(450, 6 * mountCountFactor),
-                        StrategusHeroItemMount(350, 2 * mountCountFactor),
-                        StrategusHeroItemMount(250, 2 * mountCountFactor),
+                        HeroItemMount(450, 6 * mountCountFactor),
+                        HeroItemMount(350, 2 * mountCountFactor),
+                        HeroItemMount(250, 2 * mountCountFactor),
                     },
                 };
                 var speed = speedModel.ComputeHeroSpeed(hero);
@@ -105,7 +105,7 @@ namespace Crpg.Application.UTest.Common.Services
             }
         }
 
-        private StrategusHeroItem StrategusHeroItemMount(int hitPoints, int count)
+        private HeroItem HeroItemMount(int hitPoints, int count)
         {
             return new()
             {

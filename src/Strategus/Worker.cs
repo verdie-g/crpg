@@ -1,8 +1,9 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Crpg.Application.Battles.Commands;
 using Crpg.Application.Common.Mediator;
-using Crpg.Application.Strategus.Commands;
+using Crpg.Application.Heroes.Commands;
 using Crpg.Common;
 using Crpg.Sdk.Abstractions.Tracing;
 using MediatR;
@@ -21,8 +22,8 @@ namespace Crpg.Strategus
 
         private static readonly Func<TimeSpan, IMediatorRequest>[] Behaviors =
         {
-            dt => new UpdateStrategusHeroPositionsCommand { DeltaTime = dt },
-            dt => new UpdateStrategusHeroTroopsCommand { DeltaTime = dt },
+            dt => new UpdateHeroPositionsCommand { DeltaTime = dt },
+            dt => new UpdateHeroTroopsCommand { DeltaTime = dt },
             dt => new UpdateStrategusBattlePhasesCommand { DeltaTime = dt },
         };
 

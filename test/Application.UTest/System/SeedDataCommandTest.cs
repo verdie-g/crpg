@@ -6,12 +6,13 @@ using Crpg.Application.Common.Files;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
+using Crpg.Application.Settlements.Models;
 using Crpg.Application.Strategus.Models;
 using Crpg.Application.System.Commands;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
-using Crpg.Domain.Entities.Strategus;
+using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
@@ -43,7 +44,7 @@ namespace Crpg.Application.UTest.System
                 });
 
             var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
-                CharacterService, ExperienceTable, StrategusMap, Mock.Of<IStrategusSettlementsSource>(),
+                CharacterService, ExperienceTable, StrategusMap, Mock.Of<ISettlementsSource>(),
                 ItemValueModel, ItemModifierService);
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
 
@@ -70,7 +71,7 @@ namespace Crpg.Application.UTest.System
                 .ReturnsAsync(Array.Empty<ItemCreation>());
 
             var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
-                CharacterService, ExperienceTable, StrategusMap, Mock.Of<IStrategusSettlementsSource>(),
+                CharacterService, ExperienceTable, StrategusMap, Mock.Of<ISettlementsSource>(),
                 ItemValueModel, ItemModifierService);
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
             var items = await AssertDb.Items.ToArrayAsync();
@@ -152,7 +153,7 @@ namespace Crpg.Application.UTest.System
 
             var itemModifierService = new ItemModifierService(itemModifiers);
             var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
-                CharacterService, ExperienceTable, StrategusMap, Mock.Of<IStrategusSettlementsSource>(),
+                CharacterService, ExperienceTable, StrategusMap, Mock.Of<ISettlementsSource>(),
                 ItemValueModel, itemModifierService);
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
             var newItems = await AssertDb.Items.ToDictionaryAsync(i => i.Rank);
@@ -174,12 +175,12 @@ namespace Crpg.Application.UTest.System
         [Test]
         public async Task ShouldAddSettlementIfDoesntExistsInDb()
         {
-            var settlementsSource = new Mock<IStrategusSettlementsSource>();
+            var settlementsSource = new Mock<ISettlementsSource>();
             settlementsSource.Setup(s => s.LoadStrategusSettlements())
                 .ReturnsAsync(new[]
                 {
-                    new StrategusSettlementCreation { Name = "a", Position = new Point(0, 0) },
-                    new StrategusSettlementCreation { Name = "b", Position = new Point(0, 0) },
+                    new SettlementCreation { Name = "a", Position = new Point(0, 0) },
+                    new SettlementCreation { Name = "b", Position = new Point(0, 0) },
                 });
 
             var handler = new SeedDataCommand.Handler(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,
@@ -187,7 +188,7 @@ namespace Crpg.Application.UTest.System
                 ItemModifierService);
             await handler.Handle(new SeedDataCommand(), CancellationToken.None);
 
-            var settlements = await AssertDb.StrategusSettlements.ToArrayAsync();
+            var settlements = await AssertDb.Settlements.ToArrayAsync();
             Assert.AreEqual(2 * Regions.Length, settlements.Length);
 
             Assert.NotZero(settlements[0].Id);
@@ -210,45 +211,45 @@ namespace Crpg.Application.UTest.System
         {
             var dbSettlements = new[]
             {
-                new StrategusSettlement
+                new Settlement
                 {
                     Name = "a",
-                    Type = StrategusSettlementType.Castle,
+                    Type = SettlementType.Castle,
                     Culture = Culture.Aserai,
                     Region = Region.Europe,
                     Position = new Point(1, 2),
                     Scene = "abc",
                 },
-                new StrategusSettlement
+                new Settlement
                 {
                     Name = "a",
-                    Type = StrategusSettlementType.Castle,
+                    Type = SettlementType.Castle,
                     Culture = Culture.Aserai,
                     Region = Region.NorthAmerica,
                     Position = new Point(1, 2),
                     Scene = "abc",
                 },
-                new StrategusSettlement
+                new Settlement
                 {
                     Name = "a",
-                    Type = StrategusSettlementType.Castle,
+                    Type = SettlementType.Castle,
                     Culture = Culture.Aserai,
                     Region = Region.Asia,
                     Position = new Point(1, 2),
                     Scene = "abc",
                 },
             };
-            ArrangeDb.StrategusSettlements.AddRange(dbSettlements);
+            ArrangeDb.Settlements.AddRange(dbSettlements);
             await ArrangeDb.SaveChangesAsync();
 
-            var settlementsSource = new Mock<IStrategusSettlementsSource>();
+            var settlementsSource = new Mock<ISettlementsSource>();
             settlementsSource.Setup(s => s.LoadStrategusSettlements())
                 .ReturnsAsync(new[]
                 {
-                    new StrategusSettlementCreation
+                    new SettlementCreation
                     {
                         Name = "a",
-                        Type = StrategusSettlementType.Town,
+                        Type = SettlementType.Town,
                         Culture = Culture.Battania,
                         Position = new Point(3, 4),
                         Scene = "def",
@@ -270,7 +271,7 @@ namespace Crpg.Application.UTest.System
                 ExperienceTable, strategusMapMock.Object, settlementsSource.Object, ItemValueModel, ItemModifierService);
             await handler.Handle(new SeedDataCommand(), CancellationToken.None);
 
-            var settlements = await AssertDb.StrategusSettlements.ToArrayAsync();
+            var settlements = await AssertDb.Settlements.ToArrayAsync();
             Assert.AreEqual(Regions.Length, settlements.Length);
 
             Assert.AreEqual(Region.Europe, settlements[0].Region);
@@ -283,7 +284,7 @@ namespace Crpg.Application.UTest.System
             {
                 Assert.AreEqual(dbSettlements[i].Id, settlements[i].Id);
                 Assert.AreEqual("a", settlements[i].Name);
-                Assert.AreEqual(StrategusSettlementType.Town, settlements[i].Type);
+                Assert.AreEqual(SettlementType.Town, settlements[i].Type);
                 Assert.AreEqual(Culture.Battania, settlements[i].Culture);
                 Assert.AreEqual("def", settlements[i].Scene);
             }
@@ -293,21 +294,21 @@ namespace Crpg.Application.UTest.System
         public async Task ShouldDeleteSettlementIfDoesntExistInSourceAnymore()
         {
             var dbSettlements = Regions
-                .Select(r => new StrategusSettlement { Name = "c", Region = r })
+                .Select(r => new Settlement { Name = "c", Region = r })
                 .ToArray();
-            ArrangeDb.StrategusSettlements.AddRange(dbSettlements);
+            ArrangeDb.Settlements.AddRange(dbSettlements);
             await ArrangeDb.SaveChangesAsync();
 
-            var settlementsSource = new Mock<IStrategusSettlementsSource>();
+            var settlementsSource = new Mock<ISettlementsSource>();
             settlementsSource.Setup(s => s.LoadStrategusSettlements())
-                .ReturnsAsync(Array.Empty<StrategusSettlementCreation>());
+                .ReturnsAsync(Array.Empty<SettlementCreation>());
 
             var handler = new SeedDataCommand.Handler(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,
                 ExperienceTable, StrategusMap, settlementsSource.Object, ItemValueModel,
                 ItemModifierService);
             await handler.Handle(new SeedDataCommand(), CancellationToken.None);
 
-            var settlements = await AssertDb.StrategusSettlements.ToArrayAsync();
+            var settlements = await AssertDb.Settlements.ToArrayAsync();
             Assert.AreEqual(0, settlements.Length);
         }
 
