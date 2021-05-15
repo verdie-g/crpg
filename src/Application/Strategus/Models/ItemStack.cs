@@ -1,11 +1,13 @@
 ﻿using Crpg.Application.Common.Mappings;
 using Crpg.Application.Items.Models;
-using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Strategus;
 
 namespace Crpg.Application.Strategus.Models
 {
-    public record StrategusHeroItemViewModel : IMapFrom<StrategusHeroItem>
+    /// <summary>
+    /// View of a <see cref="StrategusHeroItem"/> or <see cref="StrategusSettlementItem"/>.
+    /// </summary>
+    public record ItemStack : IMapFrom<StrategusHeroItem>, IMapFrom<StrategusSettlementItem>
     {
         public ItemViewModel Item { get; init; } = default!;
         public int Count { get; init; }

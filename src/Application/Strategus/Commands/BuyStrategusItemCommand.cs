@@ -15,7 +15,7 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Strategus.Commands
 {
-    public record BuyStrategusItemCommand : IMediatorRequest<StrategusHeroItemViewModel>
+    public record BuyStrategusItemCommand : IMediatorRequest<ItemStack>
     {
         public int HeroId { get; set; }
         public int ItemId { get; init; }
@@ -30,7 +30,7 @@ namespace Crpg.Application.Strategus.Commands
             }
         }
 
-        internal class Handler : IMediatorRequestHandler<BuyStrategusItemCommand, StrategusHeroItemViewModel>
+        internal class Handler : IMediatorRequestHandler<BuyStrategusItemCommand, ItemStack>
         {
             private static readonly ILogger Logger = LoggerFactory.CreateLogger<BuyStrategusItemCommand>();
 
@@ -45,7 +45,7 @@ namespace Crpg.Application.Strategus.Commands
                 _strategusMap = strategusMap;
             }
 
-            public async Task<Result<StrategusHeroItemViewModel>> Handle(BuyStrategusItemCommand req,
+            public async Task<Result<ItemStack>> Handle(BuyStrategusItemCommand req,
                 CancellationToken cancellationToken)
             {
                 var hero = await _db.StrategusHeroes
@@ -107,7 +107,7 @@ namespace Crpg.Application.Strategus.Commands
                 hero.Gold -= cost;
                 await _db.SaveChangesAsync(cancellationToken);
                 Logger.LogInformation("Hero '{0}' bought {1} items '{2}'", req.HeroId, req.ItemCount, req.ItemId);
-                return new(_mapper.Map<StrategusHeroItemViewModel>(heroItem));
+                return new(_mapper.Map<ItemStack>(heroItem));
             }
         }
     }

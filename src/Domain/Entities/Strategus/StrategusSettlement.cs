@@ -1,4 +1,6 @@
-﻿using Crpg.Domain.Common;
+﻿using System;
+using System.Collections.Generic;
+using Crpg.Domain.Common;
 using NetTopologySuite.Geometries;
 
 namespace Crpg.Domain.Entities.Strategus
@@ -24,10 +26,13 @@ namespace Crpg.Domain.Entities.Strategus
         public Point Position { get; set; } = default!;
 
         /// <summary>
-        /// Bannelord scene to load when a siege happens.
+        /// Bannerlord scene to load when a siege happens.
         /// </summary>
         public string Scene { get; set; } = default!;
 
+        /// <summary>
+        /// Garrison of the <see cref="StrategusSettlement"/>.
+        /// </summary>
         public int Troops { get; set; }
 
         /// <summary>See <see cref="Owner"/>.</summary>
@@ -37,5 +42,11 @@ namespace Crpg.Domain.Entities.Strategus
         /// Owner of the <see cref="StrategusSettlement"/>.
         /// </summary>
         public StrategusHero? Owner { get; set; }
+
+        /// <summary>
+        /// Inventory of the <see cref="StrategusSettlement"/>. Used as a simple storage or as equipment for the
+        /// <see cref="Troops"/> during sieges.
+        /// </summary>
+        public IList<StrategusSettlementItem> Items { get; set; } = new List<StrategusSettlementItem>();
     }
 }

@@ -64,7 +64,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Bought.</response>
         /// <response code="400">Too far from the settlement, item not available, ...</response>
         [HttpPost("heroes/self/items")]
-        public Task<ActionResult<Result<StrategusHeroItemViewModel>>> BuyStrategusItem([FromBody] BuyStrategusItemCommand req)
+        public Task<ActionResult<Result<ItemStack>>> BuyStrategusItem([FromBody] BuyStrategusItemCommand req)
         {
             req.HeroId = CurrentUser.UserId;
             return ResultToActionAsync(Mediator.Send(req));
@@ -76,6 +76,17 @@ namespace Crpg.WebApi.Controllers
         [HttpGet("settlements")]
         public Task<ActionResult<Result<IList<StrategusSettlementPublicViewModel>>>> GetSettlements()
             => ResultToActionAsync(Mediator.Send(new GetStrategusSettlementsQuery()));
+
+        /// <summary>
+        /// Give or take garrison items from a settlement.
+        /// </summary>
+        [HttpPut("settlements/{settlementId}/items")]
+        public Task<ActionResult<Result<IList<ItemStack>>>> UpdateSettlementItems([FromRoute] int settlementId,
+            [FromBody] UpdateStrategusSettlementItemsCommand req)
+        {
+            req = req with { HeroId = CurrentUser.UserId, SettlementId = settlementId };
+            return ResultToActionAsync(Mediator.Send(req));
+        }
 
         /// <summary>
         /// Get strategus settlement shop items.

@@ -25,6 +25,7 @@ namespace Crpg.Application.Common.Interfaces
         DbSet<ClanInvitation> ClanInvitations { get; }
         DbSet<StrategusHero> StrategusHeroes { get; }
         DbSet<StrategusSettlement> StrategusSettlements { get; }
+        DbSet<StrategusSettlementItem> StrategusSettlementItems { get; }
         DbSet<StrategusHeroItem> StrategusHeroItems { get; }
         DbSet<StrategusBattle> StrategusBattles { get; }
         DbSet<StrategusBattleFighter> StrategusBattleFighters { get; }
