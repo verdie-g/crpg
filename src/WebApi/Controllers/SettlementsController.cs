@@ -22,6 +22,19 @@ namespace Crpg.WebApi.Controllers
             => ResultToActionAsync(Mediator.Send(new GetSettlementsQuery()));
 
         /// <summary>
+        /// Get garrison items from a settlement.
+        /// </summary>
+        [HttpGet("{settlementId}/items")]
+        public Task<ActionResult<Result<IList<ItemStack>>>> GetSettlementItems([FromRoute] int settlementId)
+        {
+            return ResultToActionAsync(Mediator.Send(new GetSettlementItemsQuery
+            {
+                HeroId = CurrentUser.UserId,
+                SettlementId = settlementId,
+            }));
+        }
+
+        /// <summary>
         /// Give or take garrison items from a settlement.
         /// </summary>
         [HttpPut("{settlementId}/items")]
