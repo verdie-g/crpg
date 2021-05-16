@@ -46,19 +46,19 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldReturnNotFoundIfCharacterNotFound()
         {
-             var user = new User();
-             ArrangeDb.Users.Add(user);
-             await ArrangeDb.SaveChangesAsync();
+            var user = new User();
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
 
-             var handler = new SkipTheFunCommand.Handler(ActDb, Mock.Of<ICharacterService>(),
-                 Mock.Of<IExperienceTable>());
-             var result = await handler.Handle(new SkipTheFunCommand
-             {
-                 UserId = user.Id,
-                 CharacterId = 1,
-             }, CancellationToken.None);
+            var handler = new SkipTheFunCommand.Handler(ActDb, Mock.Of<ICharacterService>(),
+                Mock.Of<IExperienceTable>());
+            var result = await handler.Handle(new SkipTheFunCommand
+            {
+                UserId = user.Id,
+                CharacterId = 1,
+            }, CancellationToken.None);
 
-             Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
     }
 }

@@ -430,30 +430,30 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldThrowNotFoundIfCharacterNotFound()
         {
-             var user = ArrangeDb.Add(new User());
-             await ArrangeDb.SaveChangesAsync();
+            var user = ArrangeDb.Add(new User());
+            await ArrangeDb.SaveChangesAsync();
 
-             var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants);
-             var result = await handler.Handle(new UpdateCharacterStatisticsCommand
-             {
-                 UserId = user.Entity.Id,
-                 CharacterId = 1,
-                 Statistics = new CharacterStatisticsViewModel(),
-             }, CancellationToken.None);
-             Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants);
+            var result = await handler.Handle(new UpdateCharacterStatisticsCommand
+            {
+                UserId = user.Entity.Id,
+                CharacterId = 1,
+                Statistics = new CharacterStatisticsViewModel(),
+            }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
         public async Task ShouldThrowNotFoundIfUserNotFound()
         {
-             var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants);
-             var result = await handler.Handle(new UpdateCharacterStatisticsCommand
-             {
-                 UserId = 1,
-                 CharacterId = 1,
-                 Statistics = new CharacterStatisticsViewModel(),
-             }, CancellationToken.None);
-             Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants);
+            var result = await handler.Handle(new UpdateCharacterStatisticsCommand
+            {
+                UserId = 1,
+                CharacterId = 1,
+                Statistics = new CharacterStatisticsViewModel(),
+            }, CancellationToken.None);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
     }
 }

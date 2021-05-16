@@ -111,30 +111,30 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldThrowNotFoundIfCharacterNotFound()
         {
-             var user = ArrangeDb.Add(new User());
-             await ArrangeDb.SaveChangesAsync();
+            var user = ArrangeDb.Add(new User());
+            await ArrangeDb.SaveChangesAsync();
 
-             var handler = new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper);
-             var result = await handler.Handle(new ConvertCharacterStatisticsCommand
-             {
-                 UserId = user.Entity.Id,
-                 CharacterId = 1,
-             }, CancellationToken.None);
+            var handler = new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper);
+            var result = await handler.Handle(new ConvertCharacterStatisticsCommand
+            {
+                UserId = user.Entity.Id,
+                CharacterId = 1,
+            }, CancellationToken.None);
 
-             Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
         public async Task ShouldThrowNotFoundIfUserNotFound()
         {
-             var handler = new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper);
-             var result = await handler.Handle(new ConvertCharacterStatisticsCommand
-             {
-                 UserId = 1,
-                 CharacterId = 1,
-             }, CancellationToken.None);
+            var handler = new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper);
+            var result = await handler.Handle(new ConvertCharacterStatisticsCommand
+            {
+                UserId = 1,
+                CharacterId = 1,
+            }, CancellationToken.None);
 
-             Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
     }
 }

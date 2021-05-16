@@ -141,10 +141,11 @@ namespace Crpg.Application.Common.Results
 
         public static Error ItemMaxRankReached(int itemId, int userId, int maxRank) =>
             new(ErrorType.Validation, ErrorCode.ItemMaxRankReached)
-        {
-            Title = "User item has reached its max rank",
-            Detail = $"Item with id '{itemId}' owned by user with id '{userId}' has reached its max rank ({maxRank})",
-        };
+            {
+                Title = "User item has reached its max rank",
+                Detail =
+                    $"Item with id '{itemId}' owned by user with id '{userId}' has reached its max rank ({maxRank})",
+            };
 
         public static Error ItemNotBuyable(int itemId) => new(ErrorType.Validation, ErrorCode.ItemNotBuyable)
         {

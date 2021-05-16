@@ -54,32 +54,32 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldThrowNotFoundIfCharacterNotFound()
         {
-             var user = new User();
-             ArrangeDb.Users.Add(user);
-             await ArrangeDb.SaveChangesAsync();
+            var user = new User();
+            ArrangeDb.Users.Add(user);
+            await ArrangeDb.SaveChangesAsync();
 
-             var handler = new SwitchCharacterAutoRepairCommand.Handler(ActDb);
-             var result = await handler.Handle(new SwitchCharacterAutoRepairCommand
-             {
-                 UserId = user.Id,
-                 CharacterId = 1,
-                 AutoRepair = true,
-             }, CancellationToken.None);
+            var handler = new SwitchCharacterAutoRepairCommand.Handler(ActDb);
+            var result = await handler.Handle(new SwitchCharacterAutoRepairCommand
+            {
+                UserId = user.Id,
+                CharacterId = 1,
+                AutoRepair = true,
+            }, CancellationToken.None);
 
-             Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
 
         [Test]
         public async Task ShouldThrowNotFoundIfUserNotFound()
         {
-             var handler = new SwitchCharacterAutoRepairCommand.Handler(ActDb);
-             var result = await handler.Handle(new SwitchCharacterAutoRepairCommand
-             {
-                 UserId = 1,
-                 CharacterId = 1,
-             }, CancellationToken.None);
+            var handler = new SwitchCharacterAutoRepairCommand.Handler(ActDb);
+            var result = await handler.Handle(new SwitchCharacterAutoRepairCommand
+            {
+                UserId = 1,
+                CharacterId = 1,
+            }, CancellationToken.None);
 
-             Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }
     }
 }
