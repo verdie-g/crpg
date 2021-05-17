@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Heroes.Models;
 using Crpg.Application.Items.Models;
 using Crpg.Application.Settlements.Commands;
 using Crpg.Application.Settlements.Models;
@@ -35,11 +36,11 @@ namespace Crpg.WebApi.Controllers
         }
 
         /// <summary>
-        /// Give or take garrison items from a settlement.
+        /// Give (position count) or take (negative count) garrison items from a settlement.
         /// </summary>
-        [HttpPut("{settlementId}/items")]
-        public Task<ActionResult<Result<IList<ItemStack>>>> UpdateSettlementItems([FromRoute] int settlementId,
-            [FromBody] UpdateSettlementItemsCommand req)
+        [HttpPost("{settlementId}/items")]
+        public Task<ActionResult<Result<ItemStack>>> UpdateSettlementItems([FromRoute] int settlementId,
+            [FromBody] AddSettlementItemCommand req)
         {
             req = req with { HeroId = CurrentUser.UserId, SettlementId = settlementId };
             return ResultToActionAsync(Mediator.Send(req));

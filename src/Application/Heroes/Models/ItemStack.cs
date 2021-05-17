@@ -3,7 +3,7 @@ using Crpg.Application.Items.Models;
 using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Settlements;
 
-namespace Crpg.Application.Strategus.Models
+namespace Crpg.Application.Heroes.Models
 {
     /// <summary>
     /// View of a <see cref="HeroItem"/> or <see cref="SettlementItem"/>.
