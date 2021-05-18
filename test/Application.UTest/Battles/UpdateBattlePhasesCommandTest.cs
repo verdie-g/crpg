@@ -21,7 +21,7 @@ namespace Crpg.Application.UTest.Battles
         };
 
         [Test]
-        public async Task ShouldSwitchedPreparationBattlesToHiringAfterSomeTime()
+        public async Task ShouldSwitchPreparationBattlesToHiringAfterSomeTime()
         {
             var battles = new[]
             {
@@ -77,9 +77,40 @@ namespace Crpg.Application.UTest.Battles
             await handler.Handle(new UpdateBattlePhasesCommand(), CancellationToken.None);
 
             battles = await AssertDb.Battles.ToArrayAsync();
-            Assert.AreEqual(BattlePhase.Battle, battles[0].Phase);
+            Assert.AreEqual(BattlePhase.Scheduled, battles[0].Phase);
             battleSchedulerMock.Verify(s => s.ScheduleBattle(It.IsAny<Battle>()), Times.Once);
             Assert.AreEqual(BattlePhase.Hiring, battles[1].Phase);
+        }
+
+        [Test]
+        public async Task ShouldSwitchScheduledBattlesToLiveAfterScheduledDate()
+        {
+            var battles = new[]
+            {
+                new Battle
+                {
+                    Phase = BattlePhase.Scheduled,
+                    ScheduledFor = new DateTimeOffset(new DateTime(2010, 12, 4)),
+                },
+                new Battle
+                {
+                    Phase = BattlePhase.Scheduled,
+                    ScheduledFor = new DateTimeOffset(new DateTime(2010, 12, 6)),
+                },
+            };
+            ArrangeDb.Battles.AddRange(battles);
+            await ArrangeDb.SaveChangesAsync();
+
+            var dateTimeOffsetMock = new Mock<IDateTimeOffset>();
+            dateTimeOffsetMock.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2010, 12, 5)));
+
+            var handler = new UpdateBattlePhasesCommand.Handler(ActDb, Mock.Of<IBattleScheduler>(),
+                dateTimeOffsetMock.Object, Constants);
+            await handler.Handle(new UpdateBattlePhasesCommand(), CancellationToken.None);
+
+            battles = await AssertDb.Battles.ToArrayAsync();
+            Assert.AreEqual(BattlePhase.Live, battles[0].Phase);
+            Assert.AreEqual(BattlePhase.Scheduled, battles[1].Phase);
         }
     }
 }

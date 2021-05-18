@@ -56,7 +56,8 @@ namespace Crpg.Application.UTest.Battles
         }
 
         [TestCase(BattlePhase.Preparation)]
-        [TestCase(BattlePhase.Battle)]
+        [TestCase(BattlePhase.Scheduled)]
+        [TestCase(BattlePhase.Live)]
         [TestCase(BattlePhase.End)]
         public async Task ShouldReturnErrorIfBattleNotInHiringPhase(BattlePhase battlePhase)
         {

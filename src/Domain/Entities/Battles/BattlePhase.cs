@@ -21,9 +21,14 @@ namespace Crpg.Domain.Entities.Battles
         Hiring,
 
         /// <summary>
+        /// The <see cref="Battle"/> was scheduled to a certain date.
+        /// </summary>
+        Scheduled,
+
+        /// <summary>
         /// The <see cref="Battle"/> is live on a server.
         /// </summary>
-        Battle,
+        Live,
 
         /// <summary>
         /// The <see cref="Battle"/> ended.

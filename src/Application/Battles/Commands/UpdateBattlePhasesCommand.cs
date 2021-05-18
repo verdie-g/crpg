@@ -47,11 +47,13 @@ namespace Crpg.Application.Battles.Commands
                     .Include(b => b.Fighters).ThenInclude(f => f.Settlement)
                     .Where(b =>
                         (b.Phase == BattlePhase.Preparation && b.CreatedAt + _battleInitiationDuration < _dateTimeOffset.Now)
-                        || (b.Phase == BattlePhase.Hiring && b.CreatedAt + _battleInitiationDuration + _battleHiringDuration < _dateTimeOffset.Now))
+                        || (b.Phase == BattlePhase.Hiring && b.CreatedAt + _battleInitiationDuration + _battleHiringDuration < _dateTimeOffset.Now)
+                        || (b.Phase == BattlePhase.Scheduled && b.ScheduledFor < _dateTimeOffset.Now))
                     .AsAsyncEnumerable();
 
                 await foreach (var battle in battles.WithCancellation(cancellationToken))
                 {
+                    BattlePhase oldPhase = battle.Phase;
                     switch (battle.Phase)
                     {
                         case BattlePhase.Preparation:
@@ -59,9 +61,15 @@ namespace Crpg.Application.Battles.Commands
                             break;
                         case BattlePhase.Hiring:
                             await _battleScheduler.ScheduleBattle(battle);
-                            battle.Phase = BattlePhase.Battle;
+                            battle.Phase = BattlePhase.Scheduled;
+                            break;
+                        case BattlePhase.Scheduled:
+                            battle.Phase = BattlePhase.Live;
                             break;
                     }
+
+                    Logger.LogInformation("Battle '{0}' switches from phase '{1}' to phase '{2}'",
+                        battle.Id, oldPhase, battle.Phase);
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);

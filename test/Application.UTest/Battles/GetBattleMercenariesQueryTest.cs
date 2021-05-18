@@ -100,7 +100,8 @@ namespace Crpg.Application.UTest.Battles
             Assert.AreEqual(BattleSide.Defender, mercenaries[0].Side);
         }
 
-        [TestCase(BattlePhase.Battle)]
+        [TestCase(BattlePhase.Scheduled)]
+        [TestCase(BattlePhase.Live)]
         [TestCase(BattlePhase.End)]
         public async Task ShouldOnlyReturnBothSidesDuringOtherPhases(BattlePhase battlePhase)
         {

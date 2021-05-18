@@ -52,7 +52,7 @@ namespace Crpg.Application.UTest.Battles
                 new()
                 {
                     Region = Region.NorthAmerica,
-                    Phase = BattlePhase.Battle,
+                    Phase = BattlePhase.Live,
                     Fighters =
                     {
                         new BattleFighter
@@ -81,7 +81,7 @@ namespace Crpg.Application.UTest.Battles
                 },
                 new() { Region = Region.NorthAmerica, Phase = BattlePhase.Preparation },
                 new() { Region = Region.Europe, Phase = BattlePhase.Hiring },
-                new() { Region = Region.Asia, Phase = BattlePhase.Battle },
+                new() { Region = Region.Asia, Phase = BattlePhase.Live },
                 new() { Region = Region.NorthAmerica, Phase = BattlePhase.End },
             };
             ArrangeDb.Battles.AddRange(battles);
@@ -91,7 +91,7 @@ namespace Crpg.Application.UTest.Battles
             var res = await handler.Handle(new GetBattlesQuery
             {
                 Region = Region.NorthAmerica,
-                Phases = new[] { BattlePhase.Hiring, BattlePhase.Battle },
+                Phases = new[] { BattlePhase.Hiring, BattlePhase.Live },
             }, CancellationToken.None);
 
             Assert.IsNull(res.Errors);
@@ -109,7 +109,7 @@ namespace Crpg.Application.UTest.Battles
             Assert.AreEqual(45, battlesVm[0].DefenderTotalTroops);
 
             Assert.AreEqual(Region.NorthAmerica, battlesVm[1].Region);
-            Assert.AreEqual(BattlePhase.Battle, battlesVm[1].Phase);
+            Assert.AreEqual(BattlePhase.Live, battlesVm[1].Phase);
             Assert.IsNotNull(battlesVm[1].Attacker);
             Assert.IsNotNull(battlesVm[1].Attacker.Hero);
             Assert.AreEqual(100, battlesVm[1].AttackerTotalTroops);
