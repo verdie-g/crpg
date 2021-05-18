@@ -15,13 +15,13 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Battles.Commands
 {
-    public record UpdateStrategusBattlePhasesCommand : IMediatorRequest
+    public record UpdateBattlePhasesCommand : IMediatorRequest
     {
         public TimeSpan DeltaTime { get; init; }
 
-        internal class Handler : IMediatorRequestHandler<UpdateStrategusBattlePhasesCommand>
+        internal class Handler : IMediatorRequestHandler<UpdateBattlePhasesCommand>
         {
-            private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateStrategusBattlePhasesCommand>();
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateBattlePhasesCommand>();
 
             private readonly ICrpgDbContext _db;
             private readonly IBattleScheduler _battleScheduler;
@@ -39,7 +39,7 @@ namespace Crpg.Application.Battles.Commands
                 _battleHiringDuration = TimeSpan.FromHours(constants.StrategusBattleHiringDurationHours);
             }
 
-            public async Task<Result> Handle(UpdateStrategusBattlePhasesCommand req, CancellationToken cancellationToken)
+            public async Task<Result> Handle(UpdateBattlePhasesCommand req, CancellationToken cancellationToken)
             {
                 var battles = _db.Battles
                     .AsSplitQuery()

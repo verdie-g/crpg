@@ -2,7 +2,6 @@
 using Crpg.Application.Clans.Models;
 using Crpg.Application.Common.Mappings;
 using Crpg.Application.Settlements.Models;
-using Crpg.Application.Strategus.Models;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Users;

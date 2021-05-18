@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Settlements.Commands;
 using Crpg.Application.Settlements.Queries;
-using Crpg.Application.Strategus.Models;
 using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Settlements;

@@ -6,7 +6,6 @@ using Crpg.Application.Items.Models;
 using Crpg.Application.Settlements.Commands;
 using Crpg.Application.Settlements.Models;
 using Crpg.Application.Settlements.Queries;
-using Crpg.Application.Strategus.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

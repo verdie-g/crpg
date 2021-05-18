@@ -6,7 +6,6 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Settlements.Models;
-using Crpg.Application.Strategus.Models;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO.Converters;
 

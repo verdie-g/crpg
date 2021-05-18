@@ -24,7 +24,7 @@ namespace Crpg.Strategus
         {
             dt => new UpdateHeroPositionsCommand { DeltaTime = dt },
             dt => new UpdateHeroTroopsCommand { DeltaTime = dt },
-            dt => new UpdateStrategusBattlePhasesCommand { DeltaTime = dt },
+            dt => new UpdateBattlePhasesCommand { DeltaTime = dt },
         };
 
         private readonly IServiceScopeFactory _serviceScopeFactory;

@@ -6,7 +6,6 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Heroes.Models;
-using Crpg.Application.Strategus.Models;
 using Crpg.Domain.Entities.Heroes;
 using Microsoft.EntityFrameworkCore;
 

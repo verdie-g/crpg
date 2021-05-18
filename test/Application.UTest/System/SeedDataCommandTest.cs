@@ -7,7 +7,6 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Models;
 using Crpg.Application.Settlements.Models;
-using Crpg.Application.Strategus.Models;
 using Crpg.Application.System.Commands;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;

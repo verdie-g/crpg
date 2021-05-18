@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Crpg.Application.Heroes.Models;
 using Crpg.Application.Settlements.Models;
 
-namespace Crpg.Application.Strategus.Models
+namespace Crpg.Application.Heroes.Models
 {
     public record StrategusUpdate
     {

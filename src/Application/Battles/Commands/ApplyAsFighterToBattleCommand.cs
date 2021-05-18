@@ -9,7 +9,6 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Heroes.Commands;
-using Crpg.Application.Strategus.Models;
 using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Heroes;
 using FluentValidation;

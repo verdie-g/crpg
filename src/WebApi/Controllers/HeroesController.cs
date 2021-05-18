@@ -4,7 +4,6 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Heroes.Commands;
 using Crpg.Application.Heroes.Models;
 using Crpg.Application.Heroes.Queries;
-using Crpg.Application.Strategus.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

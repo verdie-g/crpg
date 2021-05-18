@@ -1,5 +1,4 @@
 ﻿using System;
-using Crpg.Application.Strategus.Models;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Battles;
 using NetTopologySuite.Geometries;
