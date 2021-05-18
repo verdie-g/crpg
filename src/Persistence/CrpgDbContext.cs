@@ -58,7 +58,7 @@ namespace Crpg.Persistence
         public DbSet<User> Users { get; set; } = default!;
         public DbSet<Character> Characters { get; set; } = default!;
         public DbSet<Item> Items { get; set; } = default!;
-        public DbSet<OwnedItem> OwnedItems { get; set; } = default!;
+        public DbSet<UserItem> UserItems { get; set; } = default!;
         public DbSet<EquippedItem> EquippedItems { get; set; } = default!;
         public DbSet<Ban> Bans { get; set; } = default!;
         public DbSet<Clan> Clans { get; set; } = default!;

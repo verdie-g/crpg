@@ -4,18 +4,18 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Crpg.Persistence.Configurations
 {
-    public class OwnedItemConfiguration : IEntityTypeConfiguration<OwnedItem>
+    public class UserItemConfiguration : IEntityTypeConfiguration<UserItem>
     {
-        public void Configure(EntityTypeBuilder<OwnedItem> builder)
+        public void Configure(EntityTypeBuilder<UserItem> builder)
         {
             builder.HasKey(t => new { t.UserId, t.ItemId });
 
             builder
-                .HasOne(oi => oi!.User).WithMany(u => u!.OwnedItems)
+                .HasOne(oi => oi!.User).WithMany(u => u!.Items)
                 .HasForeignKey(oi => oi.UserId);
 
             builder
-                .HasOne(oi => oi!.Item).WithMany(i => i!.OwnedItems)
+                .HasOne(oi => oi!.Item).WithMany(i => i!.UserItems)
                 .HasForeignKey(oi => oi.ItemId);
         }
     }

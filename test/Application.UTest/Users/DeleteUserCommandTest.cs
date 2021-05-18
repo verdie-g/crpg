@@ -27,7 +27,7 @@ namespace Crpg.Application.UTest.Users
             var user = new User
             {
                 Characters = new List<Character> { new() { EquippedItems = new List<EquippedItem> { new() } } },
-                OwnedItems = new List<OwnedItem> { new() { Item = new Item() } },
+                Items = new List<UserItem> { new() { Item = new Item() } },
                 Bans = new List<Ban> { new() },
                 ClanMembership = new ClanMember { Clan = new Clan() },
                 Hero = new Hero
@@ -39,7 +39,7 @@ namespace Crpg.Application.UTest.Users
             await ArrangeDb.SaveChangesAsync();
 
             // Save ids before they get deleted.
-            int itemId = user.OwnedItems[0].ItemId;
+            int itemId = user.Items[0].ItemId;
             int clanId = user.ClanMembership.ClanId;
             int strategusItemId = user.Hero.Items[0].ItemId;
 
@@ -55,8 +55,8 @@ namespace Crpg.Application.UTest.Users
             Assert.IsNotNull(dbUser.DeletedAt);
 
             Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.Characters.FirstAsync(c => c.Id == user.Characters[0].Id));
-            Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.OwnedItems.FirstAsync(oi =>
-                oi.UserId == user.Id && oi.ItemId == user.OwnedItems[0].ItemId));
+            Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.UserItems.FirstAsync(oi =>
+                oi.UserId == user.Id && oi.ItemId == user.Items[0].ItemId));
             Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.EquippedItems.FirstAsync(ei =>
                 ei.UserId == user.Id));
             Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.Heroes.FirstAsync(h =>

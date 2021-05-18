@@ -38,7 +38,7 @@ namespace Crpg.Application.Users.Commands
             {
                 var user = await _db.Users
                     .Include(u => u.Characters)
-                    .Include(u => u.OwnedItems)
+                    .Include(u => u.Items)
                     .Include(u => u.Hero!).ThenInclude(h => h.Items)
                     .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 if (user == null)
@@ -55,7 +55,7 @@ namespace Crpg.Application.Users.Commands
                 user.AvatarFull = new Uri("https://via.placeholder.com/184x184");
                 user.DeletedAt = _dateTimeOffset.Now; // Deleted users are just marked with a DeletedAt != null
 
-                _db.OwnedItems.RemoveRange(user.OwnedItems);
+                _db.UserItems.RemoveRange(user.Items);
                 _db.Characters.RemoveRange(user.Characters);
                 _db.HeroItems.RemoveRange(user.Hero!.Items!);
                 _db.Heroes.Remove(user.Hero);

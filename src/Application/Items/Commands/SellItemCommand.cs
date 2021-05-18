@@ -31,20 +31,20 @@ namespace Crpg.Application.Items.Commands
 
             public async Task<Result> Handle(SellItemCommand req, CancellationToken cancellationToken)
             {
-                var ownedItem = await _db.OwnedItems
+                var userItem = await _db.UserItems
                     .Include(oi => oi.User)
                     .Include(oi => oi.Item)
                     .Include(oi => oi.EquippedItems)
                     .FirstOrDefaultAsync(oi => oi.UserId == req.UserId && oi.ItemId == req.ItemId, cancellationToken);
 
-                if (ownedItem == null)
+                if (userItem == null)
                 {
                     return new Result(CommonErrors.ItemNotOwned(req.ItemId));
                 }
 
-                ownedItem.User!.Gold += (int)MathHelper.ApplyPolynomialFunction(ownedItem.Item!.Value, _constants.ItemSellCostCoefs);
-                _db.EquippedItems.RemoveRange(ownedItem.EquippedItems);
-                _db.OwnedItems.Remove(ownedItem);
+                userItem.User!.Gold += (int)MathHelper.ApplyPolynomialFunction(userItem.Item!.Value, _constants.ItemSellCostCoefs);
+                _db.EquippedItems.RemoveRange(userItem.EquippedItems);
+                _db.UserItems.Remove(userItem);
 
                 await _db.SaveChangesAsync(cancellationToken);
 

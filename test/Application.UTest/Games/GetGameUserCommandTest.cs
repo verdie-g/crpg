@@ -119,7 +119,7 @@ namespace Crpg.Application.UTest.Games
         }
 
         [Test]
-        public async Task ShouldNotAddOwnedItemWhenCreatingCharacterIfItemIsAlreadyOwned()
+        public async Task ShouldNotAddUserItemWhenCreatingCharacterIfItemIsAlreadyOwned()
         {
             var userService = Mock.Of<IUserService>();
             var characterService = Mock.Of<ICharacterService>();
@@ -128,10 +128,10 @@ namespace Crpg.Application.UTest.Games
             {
                 Platform = Platform.Steam,
                 PlatformUserId = "1",
-                OwnedItems =
+                Items =
                 {
                     // Already owned item
-                    new OwnedItem { ItemId = ArrangeDb.Items.First(i => i.TemplateMbId == GetGameUserCommand.Handler.DefaultItemSets[1][0].mbId).Id },
+                    new UserItem { ItemId = ArrangeDb.Items.First(i => i.TemplateMbId == GetGameUserCommand.Handler.DefaultItemSets[1][0].mbId).Id },
                 },
             };
             ArrangeDb.Users.Add(user);
@@ -152,8 +152,8 @@ namespace Crpg.Application.UTest.Games
                 UserName = "a",
             }, CancellationToken.None);
 
-            var ownedItems = await AssertDb.OwnedItems.Where(oi => oi.UserId == user.Id).ToArrayAsync();
-            Assert.AreEqual(5, ownedItems.Length);
+            var userItems = await AssertDb.UserItems.Where(oi => oi.UserId == user.Id).ToArrayAsync();
+            Assert.AreEqual(5, userItems.Length);
         }
 
         [Test]

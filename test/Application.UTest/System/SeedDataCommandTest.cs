@@ -78,30 +78,30 @@ namespace Crpg.Application.UTest.System
 
             // Users buy the new item and equip it.
             var user0 = new User { Gold = 100, HeirloomPoints = 0 };
-            var ownedItemRank0ForUser0 = new OwnedItem { User = user0, ItemId = items.First(i => i.Rank == 0).Id };
+            var userItemRank0ForUser0 = new UserItem { User = user0, ItemId = items.First(i => i.Rank == 0).Id };
             var character0 = new Character
             {
                 User = user0,
                 EquippedItems =
                 {
-                    new EquippedItem { OwnedItem = ownedItemRank0ForUser0, Slot = ItemSlot.Weapon0 },
-                    new EquippedItem { OwnedItem = ownedItemRank0ForUser0, Slot = ItemSlot.Weapon1 },
+                    new EquippedItem { UserItem = userItemRank0ForUser0, Slot = ItemSlot.Weapon0 },
+                    new EquippedItem { UserItem = userItemRank0ForUser0, Slot = ItemSlot.Weapon1 },
                 },
             };
 
             var user1 = new User { Gold = 200, HeirloomPoints = 0 };
-            var ownedItemRank0ForUser1 = new OwnedItem { User = user1, ItemId = items.First(i => i.Rank == 0).Id };
-            var ownedItemRank1ForUser1 = new OwnedItem { User = user1, ItemId = items.First(i => i.Rank == 1).Id };
+            var userItemRank0ForUser1 = new UserItem { User = user1, ItemId = items.First(i => i.Rank == 0).Id };
+            var userItemRank1ForUser1 = new UserItem { User = user1, ItemId = items.First(i => i.Rank == 1).Id };
             var character1 = new Character
             {
                 User = user1,
-                EquippedItems = { new EquippedItem { OwnedItem = ownedItemRank0ForUser1, Slot = ItemSlot.Weapon0 } },
+                EquippedItems = { new EquippedItem { UserItem = userItemRank0ForUser1, Slot = ItemSlot.Weapon0 } },
             };
 
             var character2 = new Character
             {
                 User = user1,
-                EquippedItems = { new EquippedItem { OwnedItem = ownedItemRank1ForUser1, Slot = ItemSlot.Weapon1 } },
+                EquippedItems = { new EquippedItem { UserItem = userItemRank1ForUser1, Slot = ItemSlot.Weapon1 } },
             };
 
             ArrangeDb.Characters.AddRange(character0, character1, character2);

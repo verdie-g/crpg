@@ -18,7 +18,7 @@ import Clan from '@/models/clan';
 class UserModule extends VuexModule {
   user: User | null = null;
   userLoading = false;
-  ownedItems: Item[] = [];
+  userItems: Item[] = [];
   clan: Clan | null = null;
   userBans: Ban[] = [];
 
@@ -61,7 +61,7 @@ class UserModule extends VuexModule {
   @Mutation
   resetUser() {
     this.user = null;
-    this.ownedItems = [];
+    this.userItems = [];
     this.characters = [];
   }
 
@@ -76,20 +76,20 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
-  setOwnedItems(ownedItems: Item[]) {
-    this.ownedItems = ownedItems;
+  setUserItems(userItems: Item[]) {
+    this.userItems = userItems;
   }
 
   @Mutation
-  addOwnedItem(item: Item) {
-    this.ownedItems.push(item);
+  addUserItem(item: Item) {
+    this.userItems.push(item);
   }
 
   @Mutation
-  removeOwnedItem(item: Item) {
-    const itemIdx = this.ownedItems.findIndex(i => i.id === item.id);
+  removeUserItem(item: Item) {
+    const itemIdx = this.userItems.findIndex(i => i.id === item.id);
     if (itemIdx !== -1) {
-      this.ownedItems.splice(itemIdx, 1);
+      this.userItems.splice(itemIdx, 1);
     }
   }
 
@@ -200,9 +200,9 @@ class UserModule extends VuexModule {
     return userService.getUser();
   }
 
-  @Action({ commit: 'setOwnedItems' })
-  getOwnedItems() {
-    return userService.getOwnedItems();
+  @Action({ commit: 'setUserItems' })
+  getUserItems() {
+    return userService.getUserItems();
   }
 
   @Action
@@ -246,7 +246,7 @@ class UserModule extends VuexModule {
   @Action
   async buyItem(item: Item) {
     await userService.buyItem(item.id);
-    this.addOwnedItem(item);
+    this.addUserItem(item);
     this.substractGold(item.value);
   }
 
@@ -255,7 +255,7 @@ class UserModule extends VuexModule {
     const upgradedItem = await userService.upgradeItem(item.id);
     this.addHeirloomPoints(-1);
     this.replaceCharactersItem({ toReplace: item, replaceWith: upgradedItem });
-    this.removeOwnedItem(item);
+    this.removeUserItem(item);
   }
 
   @Action({ commit: 'setCharacters' })

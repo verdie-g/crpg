@@ -128,15 +128,15 @@ namespace Crpg.Application.Games.Commands
 
                 foreach (var brokenItemId in brokenItemIds)
                 {
-                    _db.Entry(new OwnedItem { UserId = character.UserId, ItemId = brokenItemId }).State = EntityState.Deleted;
+                    _db.Entry(new UserItem { UserId = character.UserId, ItemId = brokenItemId }).State = EntityState.Deleted;
                     if (downrankedItemsByOriginalItemId.TryGetValue(brokenItemId, out var downrankedItem))
                     {
-                        var downrankedOwnedItem = new OwnedItem { UserId = character.UserId, ItemId = downrankedItem.Id };
-                        character.User!.OwnedItems.Add(downrankedOwnedItem);
+                        var downrankedUserItem = new UserItem { UserId = character.UserId, ItemId = downrankedItem.Id };
+                        character.User!.Items.Add(downrankedUserItem);
 
                         foreach (var equippedItems in equippedItemsByItemId[brokenItemId])
                         {
-                            equippedItems.OwnedItem = downrankedOwnedItem;
+                            equippedItems.UserItem = downrankedUserItem;
                         }
                     }
                     else

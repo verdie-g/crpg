@@ -172,19 +172,19 @@
             Upgrade
           </b-button>
         </div>
-        <div class="column owned-items">
-          <div v-if="fittingOwnedItems.length" class="columns is-multiline">
+        <div class="column user-items">
+          <div v-if="fittingUserItems.length" class="columns is-multiline">
             <div
-              class="column is-narrow owned-item"
-              v-for="ownedItem in fittingOwnedItems"
-              v-bind:key="ownedItem.id"
-              @click="selectedItem = ownedItem"
+              class="column is-narrow user-item"
+              v-for="userItem in fittingUserItems"
+              v-bind:key="userItem.id"
+              @click="selectedItem = userItem"
             >
               <figure class="image">
-                <img :src="itemImage(ownedItem)" alt="item image" />
+                <img :src="itemImage(userItem)" alt="item image" />
               </figure>
-              <h4 :class="itemRankClass(ownedItem)">{{ ownedItem.name }}</h4>
-              <item-properties :item="ownedItem" />
+              <h4 :class="itemRankClass(userItem)">{{ userItem.name }}</h4>
+              <item-properties :item="userItem" />
             </div>
           </div>
           <div v-else>You don't own any item for this type.</div>
@@ -254,10 +254,10 @@ export default class CharacterComponent extends Vue {
     return Math.floor(computeAverageRepairCost(this.characterEquippedItems));
   }
 
-  get fittingOwnedItems(): Item[] {
+  get fittingUserItems(): Item[] {
     return this.itemToReplaceSlot === null
       ? []
-      : filterItemsFittingInSlot(userModule.ownedItems, this.itemToReplaceSlot).filter(
+      : filterItemsFittingInSlot(userModule.userItems, this.itemToReplaceSlot).filter(
           i => this.itemToReplace === null || i.id !== this.itemToReplace.id
         );
   }
@@ -340,8 +340,8 @@ export default class CharacterComponent extends Vue {
     this.itemToReplace = this.itemsBySlot[slot] ? this.itemsBySlot[slot] : null;
     this.itemToReplaceSlot = slot;
     this.selectedItem = null;
-    if (userModule.ownedItems.length === 0) {
-      userModule.getOwnedItems();
+    if (userModule.userItems.length === 0) {
+      userModule.getUserItems();
     }
 
     this.isReplaceItemModalActive = true;
@@ -413,7 +413,7 @@ export default class CharacterComponent extends Vue {
   max-height: inherit;
 }
 
-.owned-items {
+.user-items {
   overflow: auto;
 
   & > .columns {
@@ -421,7 +421,7 @@ export default class CharacterComponent extends Vue {
   }
 }
 
-.owned-item {
+.user-item {
   width: 256px;
   cursor: pointer;
 

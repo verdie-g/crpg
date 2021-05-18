@@ -47,14 +47,14 @@ namespace Crpg.Application.Items.Commands
                 }
 
                 var user = await _db.Users
-                    .Include(u => u.OwnedItems)
+                    .Include(u => u.Items)
                     .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
                 if (user == null)
                 {
                     return new(CommonErrors.UserNotFound(req.UserId));
                 }
 
-                if (user.OwnedItems.Any(i => i.ItemId == req.ItemId))
+                if (user.Items.Any(i => i.ItemId == req.ItemId))
                 {
                     return new(CommonErrors.ItemAlreadyOwned(req.ItemId));
                 }
@@ -65,7 +65,7 @@ namespace Crpg.Application.Items.Commands
                 }
 
                 user.Gold -= item.Value;
-                user.OwnedItems.Add(new OwnedItem { UserId = req.UserId, ItemId = req.ItemId });
+                user.Items.Add(new UserItem { UserId = req.UserId, ItemId = req.ItemId });
                 await _db.SaveChangesAsync(cancellationToken);
 
                 Logger.LogInformation("User '{0}' bought item '{1}'", req.UserId, req.ItemId);

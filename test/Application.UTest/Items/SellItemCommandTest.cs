@@ -25,7 +25,7 @@ namespace Crpg.Application.UTest.Items
             var user = new User
             {
                 Gold = 0,
-                OwnedItems = new List<OwnedItem>
+                Items = new List<UserItem>
                 {
                     new()
                     {
@@ -38,40 +38,40 @@ namespace Crpg.Application.UTest.Items
 
             await new SellItemCommand.Handler(ActDb, Constants).Handle(new SellItemCommand
             {
-                ItemId = user.OwnedItems[0].ItemId,
+                ItemId = user.Items[0].ItemId,
                 UserId = user.Id,
             }, CancellationToken.None);
 
             user = await AssertDb.Users
-                .Include(u => u.OwnedItems)
+                .Include(u => u.Items)
                 .FirstAsync(u => u.Id == user.Id);
             Assert.AreEqual(50, user.Gold);
-            Assert.False(user.OwnedItems.Any(oi => oi.ItemId == user.OwnedItems[0].ItemId));
+            Assert.False(user.Items.Any(oi => oi.ItemId == user.Items[0].ItemId));
         }
 
         [Test]
         public async Task SellItemEquipped()
         {
             var item = new Item { Value = 100 };
-            var ownedItem = new OwnedItem { Item = item };
+            var userItem = new UserItem { Item = item };
             var characters = new List<Character>
             {
-                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Head } } },
-                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Shoulder } } },
-                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Body } } },
-                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Hand } } },
-                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Leg } } },
-                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.MountHarness } } },
-                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Mount } } },
-                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon0 } } },
-                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon1 } } },
-                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon2 } } },
-                new() { EquippedItems = { new EquippedItem { OwnedItem = ownedItem, Slot = ItemSlot.Weapon3 } } },
+                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Head } } },
+                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Shoulder } } },
+                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Body } } },
+                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Hand } } },
+                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Leg } } },
+                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.MountHarness } } },
+                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Mount } } },
+                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon0 } } },
+                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon1 } } },
+                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon2 } } },
+                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon3 } } },
             };
             var user = new User
             {
                 Gold = 0,
-                OwnedItems = { ownedItem },
+                Items = { userItem },
                 Characters = characters,
             };
             ArrangeDb.Users.Add(user);
@@ -85,10 +85,10 @@ namespace Crpg.Application.UTest.Items
 
             user = await AssertDb.Users
                 .Include(u => u.Characters)
-                .Include(u => u.OwnedItems)
+                .Include(u => u.Items)
                 .FirstAsync(u => u.Id == user.Id);
             Assert.AreEqual(50, user.Gold);
-            Assert.False(user.OwnedItems.Any(oi => oi.ItemId == item.Id));
+            Assert.False(user.Items.Any(oi => oi.ItemId == item.Id));
             Assert.IsEmpty(user.Characters[0].EquippedItems);
             Assert.IsEmpty(user.Characters[1].EquippedItems);
             Assert.IsEmpty(user.Characters[2].EquippedItems);

@@ -18,7 +18,7 @@ namespace Crpg.Application.Common.Interfaces
         DbSet<User> Users { get; }
         DbSet<Character> Characters { get; }
         DbSet<Item> Items { get; }
-        DbSet<OwnedItem> OwnedItems { get; }
+        DbSet<UserItem> UserItems { get; }
         DbSet<EquippedItem> EquippedItems { get; }
         DbSet<Ban> Bans { get; }
         DbSet<Clan> Clans { get; }

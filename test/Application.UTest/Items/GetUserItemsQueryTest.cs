@@ -2,21 +2,20 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Items.Queries;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items
 {
-    public class GetOwnedItemsQueryTest : TestBase
+    public class GetUserItemsQueryTest : TestBase
     {
         [Test]
         public async Task Basic()
         {
             var user = ArrangeDb.Users.Add(new User
             {
-                OwnedItems = new List<OwnedItem>
+                Items = new List<UserItem>
                 {
                     new() { Item = new Item() },
                     new() { Item = new Item() },
@@ -24,8 +23,8 @@ namespace Crpg.Application.UTest.Items
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var result = await new GetOwnedItemsQuery.Handler(ActDb, Mapper).Handle(
-                new GetOwnedItemsQuery { UserId = user.Entity.Id }, CancellationToken.None);
+            var result = await new GetUserItemsQuery.Handler(ActDb, Mapper).Handle(
+                new GetUserItemsQuery { UserId = user.Entity.Id }, CancellationToken.None);
 
             Assert.AreEqual(2, result.Data!.Count);
         }

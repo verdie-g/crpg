@@ -31,13 +31,13 @@ namespace Crpg.Application.UTest.Items
             }, CancellationToken.None);
 
             var userDb = await AssertDb.Users
-                .Include(u => u.OwnedItems)
+                .Include(u => u.Items)
                 .FirstAsync(u => u.Id == user.Entity.Id);
 
             var boughtItem = result.Data!;
             Assert.AreEqual(item.Entity.Id, boughtItem.Id);
             Assert.AreEqual(0, userDb.Gold);
-            Assert.IsTrue(userDb.OwnedItems.Any(i => i.ItemId == boughtItem.Id));
+            Assert.IsTrue(userDb.Items.Any(i => i.ItemId == boughtItem.Id));
         }
 
         [Test]
@@ -113,7 +113,7 @@ namespace Crpg.Application.UTest.Items
             var user = ArrangeDb.Users.Add(new User
             {
                 Gold = 100,
-                OwnedItems = new List<OwnedItem> { new() { ItemId = item.Entity.Id } },
+                Items = new List<UserItem> { new() { ItemId = item.Entity.Id } },
             });
             await ArrangeDb.SaveChangesAsync();
 

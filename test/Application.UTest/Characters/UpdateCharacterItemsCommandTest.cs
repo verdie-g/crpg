@@ -19,51 +19,51 @@ namespace Crpg.Application.UTest.Characters
         {
             var user = new User();
 
-            var headOld = new OwnedItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
-            var headNew = new OwnedItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
-            var shoulderOld = new OwnedItem { User = user, Item = new Item { Type = ItemType.ShoulderArmor } };
-            var shoulderNew = new OwnedItem { User = user, Item = new Item { Type = ItemType.ShoulderArmor } };
-            var bodyOld = new OwnedItem { User = user, Item = new Item { Type = ItemType.BodyArmor } };
-            var bodyNew = new OwnedItem { User = user, Item = new Item { Type = ItemType.BodyArmor } };
-            var handOld = new OwnedItem { User = user, Item = new Item { Type = ItemType.HandArmor } };
-            var handNew = new OwnedItem { User = user, Item = new Item { Type = ItemType.HandArmor } };
-            var legOld = new OwnedItem { User = user, Item = new Item { Type = ItemType.LegArmor } };
-            var legNew = new OwnedItem { User = user, Item = new Item { Type = ItemType.LegArmor } };
-            var mountHarnessOld = new OwnedItem { User = user, Item = new Item { Type = ItemType.MountHarness } };
-            var mountHarnessNew = new OwnedItem { User = user, Item = new Item { Type = ItemType.MountHarness } };
-            var mountOld = new OwnedItem { User = user, Item = new Item { Type = ItemType.Mount } };
-            var mountNew = new OwnedItem { User = user, Item = new Item { Type = ItemType.Mount } };
-            var weapon0Old = new OwnedItem { User = user, Item = new Item { Type = ItemType.Arrows } };
-            var weapon0New = new OwnedItem { User = user, Item = new Item { Type = ItemType.Bolts } };
-            var weapon1Old = new OwnedItem { User = user, Item = new Item { Type = ItemType.Bow } };
-            var weapon1New = new OwnedItem { User = user, Item = new Item { Type = ItemType.Crossbow } };
-            var weapon2Old = new OwnedItem { User = user, Item = new Item { Type = ItemType.Polearm } };
-            var weapon2New = new OwnedItem { User = user, Item = new Item { Type = ItemType.Shield } };
-            var weapon3Old = new OwnedItem { User = user, Item = new Item { Type = ItemType.OneHandedWeapon } };
-            var weapon3New = new OwnedItem { User = user, Item = new Item { Type = ItemType.TwoHandedWeapon } };
+            var headOld = new UserItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
+            var headNew = new UserItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
+            var shoulderOld = new UserItem { User = user, Item = new Item { Type = ItemType.ShoulderArmor } };
+            var shoulderNew = new UserItem { User = user, Item = new Item { Type = ItemType.ShoulderArmor } };
+            var bodyOld = new UserItem { User = user, Item = new Item { Type = ItemType.BodyArmor } };
+            var bodyNew = new UserItem { User = user, Item = new Item { Type = ItemType.BodyArmor } };
+            var handOld = new UserItem { User = user, Item = new Item { Type = ItemType.HandArmor } };
+            var handNew = new UserItem { User = user, Item = new Item { Type = ItemType.HandArmor } };
+            var legOld = new UserItem { User = user, Item = new Item { Type = ItemType.LegArmor } };
+            var legNew = new UserItem { User = user, Item = new Item { Type = ItemType.LegArmor } };
+            var mountHarnessOld = new UserItem { User = user, Item = new Item { Type = ItemType.MountHarness } };
+            var mountHarnessNew = new UserItem { User = user, Item = new Item { Type = ItemType.MountHarness } };
+            var mountOld = new UserItem { User = user, Item = new Item { Type = ItemType.Mount } };
+            var mountNew = new UserItem { User = user, Item = new Item { Type = ItemType.Mount } };
+            var weapon0Old = new UserItem { User = user, Item = new Item { Type = ItemType.Arrows } };
+            var weapon0New = new UserItem { User = user, Item = new Item { Type = ItemType.Bolts } };
+            var weapon1Old = new UserItem { User = user, Item = new Item { Type = ItemType.Bow } };
+            var weapon1New = new UserItem { User = user, Item = new Item { Type = ItemType.Crossbow } };
+            var weapon2Old = new UserItem { User = user, Item = new Item { Type = ItemType.Polearm } };
+            var weapon2New = new UserItem { User = user, Item = new Item { Type = ItemType.Shield } };
+            var weapon3Old = new UserItem { User = user, Item = new Item { Type = ItemType.OneHandedWeapon } };
+            var weapon3New = new UserItem { User = user, Item = new Item { Type = ItemType.TwoHandedWeapon } };
 
             var character = new Character
             {
                 Name = "name",
                 EquippedItems =
                 {
-                    new EquippedItem { OwnedItem = headOld, Slot = ItemSlot.Head },
-                    new EquippedItem { OwnedItem = shoulderOld, Slot = ItemSlot.Shoulder },
-                    new EquippedItem { OwnedItem = bodyOld, Slot = ItemSlot.Body },
-                    new EquippedItem { OwnedItem = handOld, Slot = ItemSlot.Hand },
-                    new EquippedItem { OwnedItem = legOld, Slot = ItemSlot.Leg },
-                    new EquippedItem { OwnedItem = mountHarnessOld, Slot = ItemSlot.MountHarness },
-                    new EquippedItem { OwnedItem = mountOld, Slot = ItemSlot.Mount },
-                    new EquippedItem { OwnedItem = weapon0Old, Slot = ItemSlot.Weapon0 },
-                    new EquippedItem { OwnedItem = weapon1Old, Slot = ItemSlot.Weapon1 },
-                    new EquippedItem { OwnedItem = weapon2Old, Slot = ItemSlot.Weapon2 },
-                    new EquippedItem { OwnedItem = weapon3Old, Slot = ItemSlot.Weapon3 },
+                    new EquippedItem { UserItem = headOld, Slot = ItemSlot.Head },
+                    new EquippedItem { UserItem = shoulderOld, Slot = ItemSlot.Shoulder },
+                    new EquippedItem { UserItem = bodyOld, Slot = ItemSlot.Body },
+                    new EquippedItem { UserItem = handOld, Slot = ItemSlot.Hand },
+                    new EquippedItem { UserItem = legOld, Slot = ItemSlot.Leg },
+                    new EquippedItem { UserItem = mountHarnessOld, Slot = ItemSlot.MountHarness },
+                    new EquippedItem { UserItem = mountOld, Slot = ItemSlot.Mount },
+                    new EquippedItem { UserItem = weapon0Old, Slot = ItemSlot.Weapon0 },
+                    new EquippedItem { UserItem = weapon1Old, Slot = ItemSlot.Weapon1 },
+                    new EquippedItem { UserItem = weapon2Old, Slot = ItemSlot.Weapon2 },
+                    new EquippedItem { UserItem = weapon3Old, Slot = ItemSlot.Weapon3 },
                 },
             };
 
             user.Characters.Add(character);
             ArrangeDb.Users.Add(user);
-            ArrangeDb.OwnedItems.AddRange(headNew, shoulderNew, bodyNew, handNew, legNew, mountHarnessNew, mountNew,
+            ArrangeDb.UserItems.AddRange(headNew, shoulderNew, bodyNew, handNew, legNew, mountHarnessNew, mountNew,
                 weapon0New, weapon1New, weapon2New, weapon3New);
             await ArrangeDb.SaveChangesAsync();
 
@@ -109,25 +109,25 @@ namespace Crpg.Application.UTest.Characters
             var user = new User();
             ArrangeDb.Users.Add(user);
 
-            var headOld = new OwnedItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
-            var headNew = new OwnedItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
-            var bodyNew = new OwnedItem { User = user, Item = new Item { Type = ItemType.BodyArmor } };
-            var handOld = new OwnedItem { User = user, Item = new Item { Type = ItemType.HandArmor } };
-            var legOld = new OwnedItem { User = user, Item = new Item { Type = ItemType.LegArmor } };
+            var headOld = new UserItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
+            var headNew = new UserItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
+            var bodyNew = new UserItem { User = user, Item = new Item { Type = ItemType.BodyArmor } };
+            var handOld = new UserItem { User = user, Item = new Item { Type = ItemType.HandArmor } };
+            var legOld = new UserItem { User = user, Item = new Item { Type = ItemType.LegArmor } };
 
             var character = new Character
             {
                 Name = "name",
                 EquippedItems =
                 {
-                    new EquippedItem { OwnedItem = headOld, Slot = ItemSlot.Head },
-                    new EquippedItem { OwnedItem = handOld, Slot = ItemSlot.Hand },
-                    new EquippedItem { OwnedItem = legOld, Slot = ItemSlot.Leg },
+                    new EquippedItem { UserItem = headOld, Slot = ItemSlot.Head },
+                    new EquippedItem { UserItem = handOld, Slot = ItemSlot.Hand },
+                    new EquippedItem { UserItem = legOld, Slot = ItemSlot.Leg },
                 },
             };
 
             user.Characters.Add(character);
-            ArrangeDb.OwnedItems.AddRange(headNew, bodyNew);
+            ArrangeDb.UserItems.AddRange(headNew, bodyNew);
             await ArrangeDb.SaveChangesAsync();
 
             var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
@@ -279,10 +279,10 @@ namespace Crpg.Application.UTest.Characters
         public async Task WrongSlotForItemType(ItemType itemType, ItemSlot itemSlot)
         {
             var character = new Character();
-            var ownedItem = new OwnedItem { Item = new Item { Type = itemType } };
+            var userItem = new UserItem { Item = new Item { Type = itemType } };
             var user = new User
             {
-                OwnedItems = { ownedItem },
+                Items = { userItem },
                 Characters = { character },
             };
             ArrangeDb.Users.Add(user);
@@ -293,7 +293,7 @@ namespace Crpg.Application.UTest.Characters
             {
                 CharacterId = character.Id,
                 UserId = user.Id,
-                Items = new List<EquippedItemIdViewModel> { new() { ItemId = ownedItem.ItemId, Slot = itemSlot } },
+                Items = new List<EquippedItemIdViewModel> { new() { ItemId = userItem.ItemId, Slot = itemSlot } },
             };
 
             var result = await handler.Handle(cmd, CancellationToken.None);

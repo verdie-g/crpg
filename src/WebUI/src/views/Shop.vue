@@ -33,7 +33,7 @@
                   <b-button
                     icon-left="coins"
                     expanded
-                    :disabled="item.value > gold || ownedItems[item.id]"
+                    :disabled="item.value > gold || userItems[item.id]"
                     :loading="buyingItems[item.id]"
                     @click="buy(item)"
                     :title="buyButtonTitle(item)"
@@ -124,8 +124,8 @@ export default class Shop extends Vue {
   itemsPerPage = 20;
 
   // items owned by the user
-  get ownedItems(): Record<number, boolean> {
-    return userModule.ownedItems.reduce((res: Record<number, boolean>, i: Item) => {
+  get userItems(): Record<number, boolean> {
+    return userModule.userItems.reduce((res: Record<number, boolean>, i: Item) => {
       res[i.id] = true;
       return res;
     }, {});
@@ -174,7 +174,7 @@ export default class Shop extends Vue {
   get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
     const filteredItems = itemModule.items.filter(
       i =>
-        (this.filters.showOwned || this.ownedItems[i.id] === undefined) &&
+        (this.filters.showOwned || this.userItems[i.id] === undefined) &&
         // When the user filters by a culture, Neutral items are always added in the result.
         (this.filters.culture === null ||
           i.culture === this.filters.culture ||
@@ -195,7 +195,7 @@ export default class Shop extends Vue {
 
   created(): void {
     itemModule.getItems();
-    userModule.getOwnedItems();
+    userModule.getUserItems();
   }
 
   async buy(item: Item): Promise<void> {
@@ -206,7 +206,7 @@ export default class Shop extends Vue {
   }
 
   buyButtonTitle(item: Item): string {
-    if (this.ownedItems[item.id]) {
+    if (this.userItems[item.id]) {
       return 'You already own this item';
     }
 

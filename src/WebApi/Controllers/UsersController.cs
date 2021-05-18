@@ -212,9 +212,9 @@ namespace Crpg.WebApi.Controllers
         /// Gets owned items.
         /// </summary>
         [HttpGet("self/items")]
-        public Task<ActionResult<Result<IList<ItemViewModel>>>> GetOwnedItems()
+        public Task<ActionResult<Result<IList<ItemViewModel>>>> GetUserItems()
         {
-            var query = new GetOwnedItemsQuery { UserId = CurrentUser.UserId };
+            var query = new GetUserItemsQuery { UserId = CurrentUser.UserId };
             return ResultToActionAsync(Mediator.Send(query));
         }
 
@@ -255,7 +255,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="404">Item was not found.</response>
         [HttpDelete("self/items/{id}")]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
-        public Task<ActionResult> SellOwnedItem([FromRoute] int id) =>
+        public Task<ActionResult> SellUserItem([FromRoute] int id) =>
             ResultToActionAsync(Mediator.Send(new SellItemCommand { ItemId = id, UserId = CurrentUser.UserId }));
 
         /// <summary>

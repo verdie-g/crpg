@@ -11,7 +11,7 @@ namespace Crpg.Persistence.Configurations
         {
             builder.HasKey(ei => new { ei.CharacterId, ei.Slot });
 
-            builder.HasOne(ei => ei.OwnedItem)
+            builder.HasOne(ei => ei.UserItem)
                 .WithMany(oi => oi!.EquippedItems)
                 .HasForeignKey(ei => new { ei.UserId, ei.ItemId });
         }

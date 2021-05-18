@@ -42,7 +42,7 @@ namespace Crpg.Domain.Entities.Users
         /// </summary>
         public DateTimeOffset? DeletedAt { get; set; }
 
-        public IList<OwnedItem> OwnedItems { get; set; } = new List<OwnedItem>();
+        public IList<UserItem> Items { get; set; } = new List<UserItem>();
         public IList<Character> Characters { get; set; } = new List<Character>();
         public IList<Ban> Bans { get; set; } = new List<Ban>();
         public ClanMember? ClanMembership { get; set; }

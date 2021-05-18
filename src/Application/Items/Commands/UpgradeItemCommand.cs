@@ -36,54 +36,54 @@ namespace Crpg.Application.Items.Commands
 
             public async Task<Result<ItemViewModel>> Handle(UpgradeItemCommand req, CancellationToken cancellationToken)
             {
-                var ownedItem = await _db.OwnedItems
+                var userItem = await _db.UserItems
                     .Include(oi => oi.User!)
                     .Include(oi => oi.Item!)
                     .Include(oi => oi.EquippedItems)
                     .FirstOrDefaultAsync(oi => oi.UserId == req.UserId && oi.ItemId == req.ItemId, cancellationToken);
-                if (ownedItem == null)
+                if (userItem == null)
                 {
                     return new(CommonErrors.ItemNotOwned(req.ItemId));
                 }
 
-                if (ownedItem.Item!.Rank >= 3)
+                if (userItem.Item!.Rank >= 3)
                 {
                     return new(CommonErrors.ItemMaxRankReached(req.ItemId, req.UserId, 3));
                 }
 
                 var upgradedItem = await _db.Items
                     .AsNoTracking()
-                    .FirstAsync(i => i.BaseItemId == ownedItem.Item.BaseItemId && i.Rank == ownedItem.Item.Rank + 1, cancellationToken);
-                if (ownedItem.Item.Rank < 0) // repair
+                    .FirstAsync(i => i.BaseItemId == userItem.Item.BaseItemId && i.Rank == userItem.Item.Rank + 1, cancellationToken);
+                if (userItem.Item.Rank < 0) // repair
                 {
                     int repairCost = (int)MathHelper.ApplyPolynomialFunction(upgradedItem.Value, _constants.ItemRepairCostCoefs);
-                    if (ownedItem.User!.Gold < repairCost)
+                    if (userItem.User!.Gold < repairCost)
                     {
-                        return new(CommonErrors.NotEnoughGold(repairCost, ownedItem.User!.Gold));
+                        return new(CommonErrors.NotEnoughGold(repairCost, userItem.User!.Gold));
                     }
 
-                    ownedItem.User!.Gold -= repairCost;
+                    userItem.User!.Gold -= repairCost;
                 }
                 else // looming
                 {
-                    if (ownedItem.User!.HeirloomPoints == 0)
+                    if (userItem.User!.HeirloomPoints == 0)
                     {
-                        return new(CommonErrors.NotEnoughHeirloomPoints(1, ownedItem.User.HeirloomPoints));
+                        return new(CommonErrors.NotEnoughHeirloomPoints(1, userItem.User.HeirloomPoints));
                     }
 
-                    ownedItem.User!.HeirloomPoints -= 1;
+                    userItem.User!.HeirloomPoints -= 1;
                 }
 
-                var upgradedOwnedItem = new OwnedItem { User = ownedItem.User, ItemId = upgradedItem.Id };
-                _db.OwnedItems.Add(upgradedOwnedItem);
+                var upgradedUserItem = new UserItem { User = userItem.User, ItemId = upgradedItem.Id };
+                _db.UserItems.Add(upgradedUserItem);
 
                 // If a character had the item equipped, replace the item by the upgraded one.
-                foreach (var equippedItem in ownedItem.EquippedItems)
+                foreach (var equippedItem in userItem.EquippedItems)
                 {
                     equippedItem.ItemId = upgradedItem.Id;
                 }
 
-                _db.OwnedItems.Remove(ownedItem);
+                _db.UserItems.Remove(userItem);
                 await _db.SaveChangesAsync(cancellationToken);
 
                 Logger.LogInformation("User '{0}' upgraded item '{1}' to rank {2}", req.UserId, req.ItemId, upgradedItem.Rank);

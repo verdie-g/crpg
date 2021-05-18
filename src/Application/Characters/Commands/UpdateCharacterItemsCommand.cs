@@ -80,7 +80,7 @@ namespace Crpg.Application.Characters.Commands
                 int[] newItemIds = req.Items
                     .Where(i => i.ItemId != null)
                     .Select(i => i.ItemId!.Value).ToArray();
-                Dictionary<int, OwnedItem> ownedItemsById = await _db.OwnedItems
+                Dictionary<int, UserItem> userItemsById = await _db.UserItems
                     .Include(oi => oi.Item)
                     .Where(oi => oi.UserId == req.UserId && newItemIds.Contains(oi.ItemId))
                     .ToDictionaryAsync(oi => oi.ItemId, cancellationToken);
@@ -100,12 +100,12 @@ namespace Crpg.Application.Characters.Commands
                         continue;
                     }
 
-                    if (!ownedItemsById.TryGetValue(newItem.ItemId.Value, out OwnedItem? ownedItem))
+                    if (!userItemsById.TryGetValue(newItem.ItemId.Value, out UserItem? userItem))
                     {
                         return new(CommonErrors.ItemNotOwned(newItem.ItemId.Value));
                     }
 
-                    if (!ItemSlotsByType[ownedItem.Item!.Type].Contains(newItem.Slot))
+                    if (!ItemSlotsByType[userItem.Item!.Type].Contains(newItem.Slot))
                     {
                         return new(CommonErrors.ItemBadSlot(newItem.ItemId.Value, newItem.Slot));
                     }
@@ -113,7 +113,7 @@ namespace Crpg.Application.Characters.Commands
                     if (oldItemsBySlot.TryGetValue(newItem.Slot, out equippedItem))
                     {
                         // Character already has an item in this slot. Replace it.
-                        equippedItem.OwnedItem = ownedItem;
+                        equippedItem.UserItem = userItem;
                     }
                     else
                     {
@@ -122,7 +122,7 @@ namespace Crpg.Application.Characters.Commands
                         {
                             CharacterId = req.CharacterId,
                             Slot = newItem.Slot,
-                            OwnedItem = ownedItem,
+                            UserItem = userItem,
                         };
 
                         character.EquippedItems.Add(equippedItem);

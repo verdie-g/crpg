@@ -6,9 +6,9 @@ using Crpg.Domain.Entities.Users;
 namespace Crpg.Domain.Entities.Items
 {
     /// <summary>
-    /// Item owned by a user.
+    /// Item owned by a <see cref="User"/>.
     /// </summary>
-    public class OwnedItem : AuditableEntity
+    public class UserItem : AuditableEntity
     {
         public int UserId { get; set; }
         public int ItemId { get; set; }
@@ -19,6 +19,6 @@ namespace Crpg.Domain.Entities.Items
         /// <summary>
         /// Characters with that item equipped.
         /// </summary>
-        public IList<EquippedItem> EquippedItems { get; set; } = new List<EquippedItem>();
+        public List<EquippedItem> EquippedItems { get; set; } = new();
     }
 }
