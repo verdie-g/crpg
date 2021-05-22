@@ -6,6 +6,7 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Characters;
+using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Users;
 using Moq;
 using NUnit.Framework;
@@ -80,6 +81,35 @@ namespace Crpg.Application.UTest.Battles
 
             Assert.IsNotNull(res.Errors);
             Assert.AreEqual(ErrorCode.BattleInvalidPhase, res.Errors![0].Code);
+        }
+
+        [Test]
+        public async Task ShouldReturnErrorIfUserIsAFighter()
+        {
+            Character character = new();
+            User user = new() { Characters = { character } };
+            ArrangeDb.Users.Add(user);
+
+            Battle battle = new()
+            {
+                Phase = BattlePhase.Hiring,
+                Fighters = { new BattleFighter { Hero = new Hero { User = user } } },
+            };
+            ArrangeDb.Battles.Add(battle);
+
+            await ArrangeDb.SaveChangesAsync();
+
+            ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+            var res = await handler.Handle(new()
+            {
+                UserId = user.Id,
+                CharacterId = character.Id,
+                BattleId = battle.Id,
+                Side = BattleSide.Attacker,
+            }, CancellationToken.None);
+
+            Assert.IsNotNull(res.Errors);
+            Assert.AreEqual(ErrorCode.HeroFighter, res.Errors![0].Code);
         }
 
         [TestCase(BattleMercenaryApplicationStatus.Pending)]

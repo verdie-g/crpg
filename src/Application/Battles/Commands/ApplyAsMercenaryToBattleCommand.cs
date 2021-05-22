@@ -78,6 +78,14 @@ namespace Crpg.Application.Battles.Commands
                     return new(CommonErrors.BattleInvalidPhase(req.BattleId, battle.Phase));
                 }
 
+                // User cannot apply as a mercenary in battle they are fighting.
+                bool isUserFighter = await _db.BattleFighters.AnyAsync(f =>
+                        f.BattleId == battle.Id && f.HeroId == character.UserId, cancellationToken);
+                if (isUserFighter)
+                {
+                    return new(CommonErrors.HeroFighter(character.UserId, battle.Id));
+                }
+
                 // Check for existing application.
                 var application = await _db.BattleMercenaryApplications
                     .Where(a => a.CharacterId == req.CharacterId

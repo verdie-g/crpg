@@ -85,6 +85,13 @@ namespace Crpg.Application.Common.Results
             Detail = $"Clan tag '{clanTag}' is already used",
         };
 
+        public static Error HeroFighter(int heroId, int battleId) => new(ErrorType.Validation, ErrorCode.HeroFighter)
+        {
+            Title = "Hero is a fighter in this battle",
+            Detail = $"Cannot performed the requested action because the hero with id '{heroId}' is a fighter in" +
+                     $" the battle with id '{battleId}'",
+        };
+
         public static Error HeroInBattle(int heroId) => new(ErrorType.Validation, ErrorCode.HeroInBattle)
         {
             Title = "Hero is in a battle",

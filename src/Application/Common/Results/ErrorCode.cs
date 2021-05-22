@@ -19,6 +19,7 @@
         ClanNotFound,
         ClanTagAlreadyUsed,
         Conflict,
+        HeroFighter,
         HeroInBattle,
         HeroNotAFighter,
         HeroNotEnoughTroops,
