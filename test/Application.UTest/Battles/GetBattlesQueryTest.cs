@@ -27,25 +27,25 @@ namespace Crpg.Application.UTest.Battles
                         {
                             Side = BattleSide.Attacker,
                             Commander = true,
-                            Hero = new Hero { Troops = 20, User = new User() },
+                            Hero = new Hero { Troops = 20.9f, User = new User() },
                         },
                         new BattleFighter
                         {
                             Side = BattleSide.Attacker,
                             Commander = false,
-                            Hero = new Hero { Troops = 15, User = new User() },
+                            Hero = new Hero { Troops = 15.8f, User = new User() },
                         },
                         new BattleFighter
                         {
                             Side = BattleSide.Defender,
                             Commander = false,
-                            Hero = new Hero { Troops = 35, User = new User() },
+                            Hero = new Hero { Troops = 35.7f, User = new User() },
                         },
                         new BattleFighter
                         {
                             Side = BattleSide.Defender,
                             Commander = true,
-                            Hero = new Hero { Troops = 10, User = new User() },
+                            Hero = new Hero { Troops = 10.6f, User = new User() },
                         },
                     },
                 },
@@ -59,7 +59,7 @@ namespace Crpg.Application.UTest.Battles
                         {
                             Side = BattleSide.Attacker,
                             Commander = true,
-                            Hero = new Hero { Troops = 100, User = new User() },
+                            Hero = new Hero { Troops = 100.5f, User = new User() },
                         },
                         new BattleFighter
                         {
@@ -75,7 +75,7 @@ namespace Crpg.Application.UTest.Battles
                         {
                             Side = BattleSide.Defender,
                             Commander = false,
-                            Hero = new Hero { Troops = 35, User = new User() },
+                            Hero = new Hero { Troops = 35.6f, User = new User() },
                         },
                     },
                 },

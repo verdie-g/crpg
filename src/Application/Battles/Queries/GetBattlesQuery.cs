@@ -62,12 +62,12 @@ namespace Crpg.Application.Battles.Queries
                         b.Fighters.First(f => f.Side == BattleSide.Attacker && f.Commander)),
                     AttackerTotalTroops = b.Fighters
                         .Where(f => f.Side == BattleSide.Attacker)
-                        .Sum(f => (int)f.Hero!.Troops),
+                        .Sum(f => (int)Math.Floor(f.Hero!.Troops)),
                     Defender = _mapper.Map<BattleFighterViewModel>(
                         b.Fighters.First(f => f.Side == BattleSide.Defender && f.Commander)),
                     DefenderTotalTroops = b.Fighters
                             .Where(f => f.Side == BattleSide.Defender)
-                            .Sum(f => (int)(f.Hero?.Troops ?? 0) + (f.Settlement?.Troops ?? 0)),
+                            .Sum(f => (int)Math.Floor(f.Hero?.Troops ?? 0) + (f.Settlement?.Troops ?? 0)),
                     CreatedAt = b.CreatedAt,
                 }).ToArray();
 
