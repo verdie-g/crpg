@@ -34,7 +34,7 @@ namespace Crpg.Application.Battles.Commands
 
         internal class Handler : IMediatorRequestHandler<ApplyAsFighterToBattleCommand, BattleFighterApplicationViewModel>
         {
-            private static readonly ILogger Logger = LoggerFactory.CreateLogger<BuyItemCommand>();
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<BuySettlementItemCommand>();
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;

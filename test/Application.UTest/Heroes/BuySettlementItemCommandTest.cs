@@ -15,13 +15,13 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Heroes
 {
-    public class BuyItemCommandTest : TestBase
+    public class BuySettlementItemCommandTest : TestBase
     {
         [Test]
         public async Task ShouldReturnErrorIfHeroNotFound()
         {
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
-            var res = await handler.Handle(new BuyItemCommand
+            var handler = new BuySettlementItemCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            var res = await handler.Handle(new BuySettlementItemCommand
             {
                 HeroId = 1,
                 ItemId = 2,
@@ -40,8 +40,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Heroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
-            var res = await handler.Handle(new BuyItemCommand
+            var handler = new BuySettlementItemCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            var res = await handler.Handle(new BuySettlementItemCommand
             {
                 HeroId = hero.Id,
                 ItemId = 2,
@@ -70,8 +70,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Settlements.Add(settlement);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
-            var res = await handler.Handle(new BuyItemCommand
+            var handler = new BuySettlementItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            var res = await handler.Handle(new BuySettlementItemCommand
             {
                 HeroId = hero.Id,
                 ItemId = 2,
@@ -97,8 +97,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Settlements.Add(settlement);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
-            var res = await handler.Handle(new BuyItemCommand
+            var handler = new BuySettlementItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            var res = await handler.Handle(new BuySettlementItemCommand
             {
                 HeroId = hero.Id,
                 ItemId = 2,
@@ -126,8 +126,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Items.Add(item);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
-            var res = await handler.Handle(new BuyItemCommand
+            var handler = new BuySettlementItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            var res = await handler.Handle(new BuySettlementItemCommand
             {
                 HeroId = hero.Id,
                 ItemId = item.Id,
@@ -155,8 +155,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Items.Add(item);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
-            var res = await handler.Handle(new BuyItemCommand
+            var handler = new BuySettlementItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            var res = await handler.Handle(new BuySettlementItemCommand
             {
                 HeroId = hero.Id,
                 ItemId = item.Id,
@@ -184,8 +184,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Items.Add(item);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
-            var res = await handler.Handle(new BuyItemCommand
+            var handler = new BuySettlementItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            var res = await handler.Handle(new BuySettlementItemCommand
             {
                 HeroId = hero.Id,
                 ItemId = item.Id,
@@ -215,8 +215,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.HeroItems.Add(heroItem);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
-            var res = await handler.Handle(new BuyItemCommand
+            var handler = new BuySettlementItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            var res = await handler.Handle(new BuySettlementItemCommand
             {
                 HeroId = hero.Id,
                 ItemId = item.Id,
@@ -248,8 +248,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Items.Add(item);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
-            var res = await handler.Handle(new BuyItemCommand
+            var handler = new BuySettlementItemCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            var res = await handler.Handle(new BuySettlementItemCommand
             {
                 HeroId = hero.Id,
                 ItemId = item.Id,

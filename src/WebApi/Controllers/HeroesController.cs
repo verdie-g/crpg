@@ -60,7 +60,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="200">Bought.</response>
         /// <response code="400">Too far from the settlement, item not available, ...</response>
         [HttpPost("self/items")]
-        public Task<ActionResult<Result<ItemStack>>> BuyStrategusItem([FromBody] BuyItemCommand req)
+        public Task<ActionResult<Result<ItemStack>>> BuySettlementItem([FromBody] BuySettlementItemCommand req)
         {
             req.HeroId = CurrentUser.UserId;
             return ResultToActionAsync(Mediator.Send(req));

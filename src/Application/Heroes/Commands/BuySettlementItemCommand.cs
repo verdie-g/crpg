@@ -15,14 +15,14 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Heroes.Commands
 {
-    public record BuyItemCommand : IMediatorRequest<ItemStack>
+    public record BuySettlementItemCommand : IMediatorRequest<ItemStack>
     {
         public int HeroId { get; set; }
         public int ItemId { get; init; }
         public int ItemCount { get; init; }
         public int SettlementId { get; init; }
 
-        public class Validator : AbstractValidator<BuyItemCommand>
+        public class Validator : AbstractValidator<BuySettlementItemCommand>
         {
             public Validator()
             {
@@ -30,9 +30,9 @@ namespace Crpg.Application.Heroes.Commands
             }
         }
 
-        internal class Handler : IMediatorRequestHandler<BuyItemCommand, ItemStack>
+        internal class Handler : IMediatorRequestHandler<BuySettlementItemCommand, ItemStack>
         {
-            private static readonly ILogger Logger = LoggerFactory.CreateLogger<BuyItemCommand>();
+            private static readonly ILogger Logger = LoggerFactory.CreateLogger<BuySettlementItemCommand>();
 
             private readonly ICrpgDbContext _db;
             private readonly IMapper _mapper;
@@ -45,7 +45,7 @@ namespace Crpg.Application.Heroes.Commands
                 _strategusMap = strategusMap;
             }
 
-            public async Task<Result<ItemStack>> Handle(BuyItemCommand req,
+            public async Task<Result<ItemStack>> Handle(BuySettlementItemCommand req,
                 CancellationToken cancellationToken)
             {
                 var hero = await _db.Heroes
