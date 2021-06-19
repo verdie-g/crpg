@@ -5,6 +5,8 @@
     /// </summary>
     public enum ErrorCode
     {
+        ApplicationClosed,
+        ApplicationNotFound,
         BattleInvalidPhase,
         BattleNotFound,
         BattleTooFar,
@@ -19,6 +21,8 @@
         ClanNotFound,
         ClanTagAlreadyUsed,
         Conflict,
+        FighterNotACommander,
+        FightersNotOnTheSameSide,
         HeroFighter,
         HeroInBattle,
         HeroNotAFighter,

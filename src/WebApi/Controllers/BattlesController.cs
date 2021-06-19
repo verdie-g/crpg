@@ -86,6 +86,19 @@ namespace Crpg.WebApi.Controllers
         }
 
         /// <summary>
+        /// Accept/Decline battle fighter application.
+        /// </summary>
+        /// <response code="200">Ok.</response>
+        /// <response code="400">Bad request.</response>
+        [HttpPut("{battleId}/fighter-applications/{applicationId}/response")]
+        public Task<ActionResult<Result<BattleFighterApplicationViewModel>>> RespondToBattleFighterApplication(
+            [FromRoute] int battleId, [FromRoute] int applicationId, [FromBody] RespondToBattleFighterApplicationCommand req)
+        {
+            req = req with { HeroId = CurrentUser.UserId, FighterApplicationId = applicationId };
+            return ResultToActionAsync(Mediator.Send(req));
+        }
+
+        /// <summary>
         /// Get battle mercenaries.
         /// </summary>
         /// <returns>The mercenaries.</returns>

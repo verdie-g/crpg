@@ -6,6 +6,18 @@ namespace Crpg.Application.Common.Results
 {
     public static class CommonErrors
     {
+        public static Error ApplicationClosed(int applicationId) => new(ErrorType.NotFound, ErrorCode.ApplicationClosed)
+        {
+            Title = "Application is closed",
+            Detail = $"Application with id '{applicationId}' is closed",
+        };
+
+        public static Error ApplicationNotFound(int applicationId) => new(ErrorType.Validation, ErrorCode.ApplicationNotFound)
+        {
+            Title = "Application was not found",
+            Detail = $"Application with id '{applicationId}' was not found",
+        };
+
         public static Error BattleInvalidPhase(int battleId, BattlePhase phase) => new(ErrorType.Validation, ErrorCode.BattleInvalidPhase)
         {
             Title = "Cannot perform action during this battle phase",
@@ -84,6 +96,19 @@ namespace Crpg.Application.Common.Results
             Title = "Clan tag is already used",
             Detail = $"Clan tag '{clanTag}' is already used",
         };
+
+        public static Error FighterNotACommander(int fighterId, int battleId) => new(ErrorType.Validation, ErrorCode.FighterNotACommander)
+        {
+            Title = "Fighter is not a commander in the battle",
+            Detail = $"Fighter with id '{fighterId} is not a commander of the battle with id '{battleId}'",
+        };
+
+        public static Error FightersNotOnTheSameSide(int heroId1, int heroId2, int battleId) =>
+            new(ErrorType.Validation, ErrorCode.FightersNotOnTheSameSide)
+            {
+                Title = "Fighters are not on the same side",
+                Detail = $"Fighters with ids '{heroId1}' and '{heroId2}' are not in the side in the battle with id '{battleId}'",
+            };
 
         public static Error HeroFighter(int heroId, int battleId) => new(ErrorType.Validation, ErrorCode.HeroFighter)
         {
