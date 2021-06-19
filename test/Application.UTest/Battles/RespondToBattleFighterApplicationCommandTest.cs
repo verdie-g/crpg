@@ -307,7 +307,8 @@ namespace Crpg.Application.UTest.Battles
         public async Task ShouldAcceptApplication()
         {
             Hero hero = new() { User = new User() };
-            ArrangeDb.Heroes.Add(hero);
+            Hero applyingHero = new() { User = new User() };
+            ArrangeDb.Heroes.AddRange(applyingHero);
 
             Battle battle = new()
             {
@@ -329,9 +330,37 @@ namespace Crpg.Application.UTest.Battles
                 Side = BattleSide.Attacker,
                 Status = BattleFighterApplicationStatus.Pending,
                 Battle = battle,
-                Hero = new Hero { User = new User() },
+                Hero = applyingHero,
+            };
+            BattleFighterApplication[] otherApplications =
+            {
+                new() // Should get deleted.
+                {
+                    Status = BattleFighterApplicationStatus.Pending,
+                    Battle = battle,
+                    Hero = applyingHero,
+                },
+                new() // Should stay.
+                {
+                    Status = BattleFighterApplicationStatus.Accepted,
+                    Battle = battle,
+                    Hero = applyingHero,
+                },
+                new() // Should stay.
+                {
+                    Status = BattleFighterApplicationStatus.Pending,
+                    Battle = new Battle(),
+                    Hero = applyingHero,
+                },
+                new() // Should stay.
+                {
+                    Status = BattleFighterApplicationStatus.Pending,
+                    Battle = battle,
+                    Hero = new Hero { User = new User() },
+                },
             };
             ArrangeDb.BattleFighterApplications.Add(application);
+            ArrangeDb.BattleFighterApplications.AddRange(otherApplications);
             await ArrangeDb.SaveChangesAsync();
 
             RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
@@ -348,6 +377,7 @@ namespace Crpg.Application.UTest.Battles
             Assert.AreEqual(BattleFighterApplicationStatus.Accepted, applicationVm.Status);
 
             Assert.AreEqual(2, await AssertDb.BattleFighters.CountAsync());
+            Assert.AreEqual(4, await AssertDb.BattleFighterApplications.CountAsync());
         }
     }
 }

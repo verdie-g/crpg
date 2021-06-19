@@ -90,6 +90,15 @@ namespace Crpg.Application.Battles.Commands
                         Battle = application.Battle,
                     };
                     _db.BattleFighters.Add(newFighter);
+
+                    // Delete all other applying hero pending applications for this battle.
+                    var otherApplications = await _db.BattleFighterApplications
+                        .Where(a => a.Id != application.Id
+                                    && a.BattleId == application.BattleId
+                                    && a.HeroId == application.HeroId
+                                    && a.Status == BattleFighterApplicationStatus.Pending)
+                        .ToArrayAsync(cancellationToken);
+                    _db.BattleFighterApplications.RemoveRange(otherApplications);
                 }
                 else
                 {
