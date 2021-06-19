@@ -149,7 +149,7 @@ namespace Crpg.Application.UTest.Battles
                 Position = new Point(3, 4),
             };
             ArrangeDb.Battles.Add(battle);
-            FighterApplication existingApplication = new()
+            BattleFighterApplication existingApplication = new()
             {
                 Side = BattleSide.Defender,
                 Status = existingApplicationStatus,

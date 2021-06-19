@@ -94,7 +94,7 @@ namespace Crpg.Application.Battles.Commands
                     return new(existingPendingApplication);
                 }
 
-                FighterApplication application = new()
+                BattleFighterApplication application = new()
                 {
                     Side = req.Side,
                     Status = BattleFighterApplicationStatus.Pending,

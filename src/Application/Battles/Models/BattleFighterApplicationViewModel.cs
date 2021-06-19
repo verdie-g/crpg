@@ -4,7 +4,7 @@ using Crpg.Domain.Entities.Battles;
 
 namespace Crpg.Application.Battles.Models
 {
-    public record BattleFighterApplicationViewModel : IMapFrom<FighterApplication>
+    public record BattleFighterApplicationViewModel : IMapFrom<BattleFighterApplication>
     {
         public int Id { get; init; }
         public HeroVisibleViewModel? Hero { get; init; }

@@ -16,7 +16,7 @@ namespace Crpg.Domain.Entities.Battles
         public DateTimeOffset? ScheduledFor { get; set; }
 
         public List<BattleFighter> Fighters { get; set; } = new();
-        public List<FighterApplication> FighterApplications { get; set; } = new();
+        public List<BattleFighterApplication> FighterApplications { get; set; } = new();
         public List<BattleMercenary> Mercenaries { get; set; } = new();
         public List<BattleMercenaryApplication> MercenaryApplications { get; set; } = new();
     }

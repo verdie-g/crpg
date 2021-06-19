@@ -65,6 +65,27 @@ namespace Crpg.WebApi.Controllers
         }
 
         /// <summary>
+        /// Get battle fighter applications.
+        /// </summary>
+        /// <returns>
+        /// If the hero is a command of the battle it will return all applications of their battle side, else it returns
+        /// only the applications of the hero.
+        /// </returns>
+        /// <response code="200">Ok.</response>
+        /// <response code="400">Bad request.</response>
+        [HttpGet("{battleId}/fighter-applications")]
+        public Task<ActionResult<Result<IList<BattleFighterApplicationViewModel>>>> GetBattleFighterApplications(
+            [FromRoute] int battleId, [FromQuery(Name = "status[]")] BattleFighterApplicationStatus[] statuses)
+        {
+            return ResultToActionAsync(Mediator.Send(new GetBattleFighterApplicationsQuery
+            {
+                HeroId = CurrentUser.UserId,
+                BattleId = battleId,
+                Statuses = statuses,
+            }));
+        }
+
+        /// <summary>
         /// Get battle mercenaries.
         /// </summary>
         /// <returns>The mercenaries.</returns>
@@ -91,7 +112,7 @@ namespace Crpg.WebApi.Controllers
         /// <response code="400">Bad request.</response>
         [HttpGet("{battleId}/mercenary-applications")]
         public Task<ActionResult<Result<IList<BattleMercenaryApplicationViewModel>>>> GetBattleMercenaryApplications(
-            [FromRoute] int battleId, [FromQuery(Name = "phase[]")] BattleMercenaryApplicationStatus[] statuses)
+            [FromRoute] int battleId, [FromQuery(Name = "status[]")] BattleMercenaryApplicationStatus[] statuses)
         {
             return ResultToActionAsync(Mediator.Send(new GetBattleMercenaryApplicationsQuery
             {

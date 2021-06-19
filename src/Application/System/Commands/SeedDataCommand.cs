@@ -1376,7 +1376,7 @@ namespace Crpg.Application.System.Commands
                     },
                     FighterApplications =
                     {
-                        new FighterApplication
+                        new BattleFighterApplication
                         {
                             Hero = sagarHero,
                             Side = BattleSide.Defender,
@@ -1398,13 +1398,13 @@ namespace Crpg.Application.System.Commands
                     },
                     FighterApplications =
                     {
-                        new FighterApplication
+                        new BattleFighterApplication
                         {
                             Hero = tipsyTobyHero,
                             Side = BattleSide.Attacker,
                             Status = BattleFighterApplicationStatus.Pending,
                         },
-                        new FighterApplication
+                        new BattleFighterApplication
                         {
                             Hero = localAlphaHero,
                             Side = BattleSide.Defender,
@@ -1436,19 +1436,19 @@ namespace Crpg.Application.System.Commands
                     },
                     FighterApplications =
                     {
-                        new FighterApplication
+                        new BattleFighterApplication
                         {
                             Hero = kedrynFuelHero,
                             Side = BattleSide.Attacker,
                             Status = BattleFighterApplicationStatus.Pending,
                         },
-                        new FighterApplication
+                        new BattleFighterApplication
                         {
                             Hero = luqeroHero,
                             Side = BattleSide.Defender,
                             Status = BattleFighterApplicationStatus.Pending,
                         },
-                        new FighterApplication
+                        new BattleFighterApplication
                         {
                             Hero = ilyaHero,
                             Side = BattleSide.Defender,

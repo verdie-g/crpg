@@ -30,7 +30,7 @@ namespace Crpg.Application.Common.Interfaces
         DbSet<HeroItem> HeroItems { get; }
         DbSet<Battle> Battles { get; }
         DbSet<BattleFighter> BattleFighters { get; }
-        DbSet<FighterApplication> BattleFighterApplications { get; }
+        DbSet<BattleFighterApplication> BattleFighterApplications { get; }
         DbSet<BattleMercenary> BattleMercenaries { get; }
         DbSet<BattleMercenaryApplication> BattleMercenaryApplications { get; }
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;

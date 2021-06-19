@@ -6,7 +6,7 @@ namespace Crpg.Domain.Entities.Battles
     /// <summary>
     /// Application to join a <see cref="Battle"/> during the <see cref="BattlePhase.Preparation"/> phase.
     /// </summary>
-    public class FighterApplication : AuditableEntity
+    public class BattleFighterApplication : AuditableEntity
     {
         public int Id { get; set; }
         public int BattleId { get; set; }

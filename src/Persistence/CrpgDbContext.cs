@@ -70,7 +70,7 @@ namespace Crpg.Persistence
         public DbSet<HeroItem> HeroItems { get; set; } = default!;
         public DbSet<Battle> Battles { get; set; } = default!;
         public DbSet<BattleFighter> BattleFighters { get; set; } = default!;
-        public DbSet<FighterApplication> BattleFighterApplications { get; set; } = default!;
+        public DbSet<BattleFighterApplication> BattleFighterApplications { get; set; } = default!;
         public DbSet<BattleMercenary> BattleMercenaries { get; set; } = default!;
         public DbSet<BattleMercenaryApplication> BattleMercenaryApplications { get; set; } = default!;
 
