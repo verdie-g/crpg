@@ -34,6 +34,12 @@ namespace Crpg.Domain.Entities.Battles
         /// </summary>
         public bool Commander { get; set; }
 
+        /// <summary>
+        /// Maximum number of <see cref="BattleMercenary"/> for the <see cref="BattleFighter"/>. Depends on
+        /// <see cref="Hero"/> troops. This number doesn't include the <see cref="BattleFighter"/> itself.
+        /// </summary>
+        public int MercenarySlots { get; set; }
+
         public Hero? Hero { get; set; }
         public Settlement? Settlement { get; set; }
         public Battle? Battle { get; set; }

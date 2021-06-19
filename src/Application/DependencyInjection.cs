@@ -37,6 +37,7 @@ namespace Crpg.Application
                 .AddSingleton<IStrategusSpeedModel, StrategusSpeedModel>()
                 .AddSingleton<IBattleScheduler>(strategusBattleScheduler)
                 .AddSingleton<ICharacterClassModel, CharacterClassModel>()
+                .AddSingleton<IBattleMercenaryDistributionModel, BattleMercenaryUniformDistributionModel>()
                 .AddSingleton(constants)
                 .AddSingleton<IItemsSource, FileItemsSource>()
                 .AddSingleton<ISettlementsSource, FileSettlementsSource>()

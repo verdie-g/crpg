@@ -24,15 +24,17 @@ namespace Crpg.Application.Battles.Commands
             private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateBattlePhasesCommand>();
 
             private readonly ICrpgDbContext _db;
+            private readonly IBattleMercenaryDistributionModel _battleMercenaryDistributionModel;
             private readonly IBattleScheduler _battleScheduler;
             private readonly IDateTimeOffset _dateTimeOffset;
             private readonly TimeSpan _battleInitiationDuration;
             private readonly TimeSpan _battleHiringDuration;
 
-            public Handler(ICrpgDbContext db, IBattleScheduler battleScheduler, IDateTimeOffset dateTimeOffset,
-                Constants constants)
+            public Handler(ICrpgDbContext db, IBattleMercenaryDistributionModel battleMercenaryDistributionModel,
+                IBattleScheduler battleScheduler, IDateTimeOffset dateTimeOffset, Constants constants)
             {
                 _db = db;
+                _battleMercenaryDistributionModel = battleMercenaryDistributionModel;
                 _battleScheduler = battleScheduler;
                 _dateTimeOffset = dateTimeOffset;
                 _battleInitiationDuration = TimeSpan.FromHours(constants.StrategusBattleInitiationDurationHours);
@@ -57,6 +59,8 @@ namespace Crpg.Application.Battles.Commands
                     switch (battle.Phase)
                     {
                         case BattlePhase.Preparation:
+                            int battleSlots = 100; // TODO: make it depend on the number of troops.
+                            _battleMercenaryDistributionModel.DistributeMercenaries(battle.Fighters, battleSlots);
                             battle.Phase = BattlePhase.Hiring;
                             break;
                         case BattlePhase.Hiring:
