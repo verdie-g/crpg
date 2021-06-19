@@ -67,7 +67,7 @@ namespace Crpg.Application.UTest.Characters
                 weapon0New, weapon1New, weapon2New, weapon3New);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
+            UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Id,
@@ -130,7 +130,7 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.UserItems.AddRange(headNew, bodyNew);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
+            UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Id,
@@ -165,7 +165,7 @@ namespace Crpg.Application.UTest.Characters
             var user = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
+            UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = 1,
@@ -183,7 +183,7 @@ namespace Crpg.Application.UTest.Characters
             var user = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
+            UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -200,7 +200,7 @@ namespace Crpg.Application.UTest.Characters
             var character = ArrangeDb.Characters.Add(new Character());
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
+            UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -221,7 +221,7 @@ namespace Crpg.Application.UTest.Characters
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
+            UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -244,7 +244,7 @@ namespace Crpg.Application.UTest.Characters
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
+            UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -288,7 +288,7 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterItemsCommand.Handler(ActDb, Mapper);
+            UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
             var cmd = new UpdateCharacterItemsCommand
             {
                 CharacterId = character.Id,

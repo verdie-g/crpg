@@ -29,7 +29,7 @@ namespace Crpg.Application.UTest.Characters
                 });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetUserCharactersQuery.Handler(ActDb, Mapper);
+            GetUserCharactersQuery.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new GetUserCharactersQuery { UserId = 1 }, CancellationToken.None);
 
             var characters = result.Data!;

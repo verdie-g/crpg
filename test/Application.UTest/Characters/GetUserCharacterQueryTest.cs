@@ -13,7 +13,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task WhenCharacterDoesntExist()
         {
-            var handler = new GetUserCharacterQuery.Handler(ActDb, Mapper);
+            GetUserCharacterQuery.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new GetUserCharacterQuery
             {
                 CharacterId = 1,
@@ -34,7 +34,7 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Characters.Add(dbCharacter);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetUserCharacterQuery.Handler(ActDb, Mapper);
+            GetUserCharacterQuery.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new GetUserCharacterQuery
             {
                 CharacterId = dbCharacter.Id,
@@ -55,7 +55,7 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Characters.Add(dbCharacter);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetUserCharacterQuery.Handler(ActDb, Mapper);
+            GetUserCharacterQuery.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new GetUserCharacterQuery
             {
                 CharacterId = dbCharacter.Id,

@@ -36,7 +36,7 @@ namespace Crpg.Application.UTest.Bans
         [Test]
         public async Task NotFoundUser()
         {
-            var handler = new GetUserBansQuery.Handler(ActDb, Mapper);
+            GetUserBansQuery.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new GetUserBansQuery { UserId = 1 }, CancellationToken.None);
             Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
         }

@@ -163,7 +163,7 @@ namespace Crpg.Application.Games.Commands
 
             private User CreateUser(Platform platform, string platformUserId, string name)
             {
-                var user = new User
+                User user = new()
                 {
                     Platform = platform,
                     PlatformUserId = platformUserId,
@@ -176,7 +176,7 @@ namespace Crpg.Application.Games.Commands
 
             private Character CreateCharacter(string name, IList<EquippedItem> equippedItems)
             {
-                var character = new Character
+                Character character = new()
                 {
                     Name = name,
                     EquippedItems = equippedItems,
@@ -197,7 +197,7 @@ namespace Crpg.Application.Games.Commands
                     .Where(i => itemMbIds.Contains(i.TemplateMbId) && i.Rank == 0)
                     .ToDictionaryAsync(i => i.TemplateMbId);
 
-                var equippedItems = new List<EquippedItem>();
+                List<EquippedItem> equippedItems = new();
                 foreach (var (newItemMbId, slot) in mbIdsWithSlot)
                 {
                     if (!items.TryGetValue(newItemMbId, out var item))
@@ -223,7 +223,7 @@ namespace Crpg.Application.Games.Commands
                     }
 
                     // Don't use Add method to avoid adding the item twice.
-                    var equippedItem = new EquippedItem
+                    EquippedItem equippedItem = new()
                     {
                         Slot = slot,
                         Item = item,

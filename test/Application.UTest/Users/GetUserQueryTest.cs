@@ -14,7 +14,7 @@ namespace Crpg.Application.UTest.Users
         [Test]
         public async Task TestWhenUserDoesntExist()
         {
-            var handler = new GetUserQuery.Handler(ActDb, Mapper);
+            GetUserQuery.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new GetUserQuery
             {
                 UserId = 1,
@@ -37,7 +37,7 @@ namespace Crpg.Application.UTest.Users
             ArrangeDb.Users.Add(dbUser);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetUserQuery.Handler(ActDb, Mapper);
+            GetUserQuery.Handler handler = new(ActDb, Mapper);
             var user = await handler.Handle(new GetUserQuery
             {
                 UserId = dbUser.Id,

@@ -207,7 +207,7 @@ namespace Crpg.Application.Heroes.Commands
                     }
 
                     hero.Status = HeroStatus.InBattle;
-                    var battle = new Battle
+                    Battle battle = new()
                     {
                         Phase = BattlePhase.Preparation,
                         Region = hero.TargetedSettlement.Region, // Region of the defender.

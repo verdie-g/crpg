@@ -47,7 +47,7 @@ namespace Crpg.Application.UTest.Characters
 
             var characterServiceMock = new Mock<ICharacterService>();
 
-            var handler = new RetireCharacterCommand.Handler(ActDb, Mapper, characterServiceMock.Object, Constants);
+            RetireCharacterCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, Constants);
             await handler.Handle(new RetireCharacterCommand
             {
                 CharacterId = character.Id,
@@ -72,7 +72,7 @@ namespace Crpg.Application.UTest.Characters
         public async Task NotFoundIfUserDoesntExist()
         {
             var characterService = Mock.Of<ICharacterService>();
-            var handler = new RetireCharacterCommand.Handler(ActDb, Mapper, characterService, Constants);
+            RetireCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, Constants);
             var result = await handler.Handle(
                 new RetireCharacterCommand
                 {
@@ -89,7 +89,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             var characterService = Mock.Of<ICharacterService>();
-            var handler = new RetireCharacterCommand.Handler(ActDb, Mapper, characterService, Constants);
+            RetireCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, Constants);
             var result = await handler.Handle(
                 new RetireCharacterCommand
                 {
@@ -111,7 +111,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             var characterService = Mock.Of<ICharacterService>();
-            var handler = new RetireCharacterCommand.Handler(ActDb, Mapper, characterService, Constants);
+            RetireCharacterCommand.Handler handler = new(ActDb, Mapper, characterService, Constants);
             var result = await handler.Handle(
                 new RetireCharacterCommand
                 {

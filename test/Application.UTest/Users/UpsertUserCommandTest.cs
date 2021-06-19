@@ -21,7 +21,7 @@ namespace Crpg.Application.UTest.Users
         public async Task TestWhenUserDoesntExist()
         {
             var userServiceMock = new Mock<IUserService>();
-            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService, userServiceMock.Object);
+            UpsertUserCommand.Handler handler = new(ActDb, Mapper, EventService, userServiceMock.Object);
             var result = await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "123",
@@ -56,7 +56,7 @@ namespace Crpg.Application.UTest.Users
             await ArrangeDb.SaveChangesAsync();
 
             var userServiceMock = new Mock<IUserService>();
-            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService, userServiceMock.Object);
+            UpsertUserCommand.Handler handler = new(ActDb, Mapper, EventService, userServiceMock.Object);
             var result = await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "13948192759205810",
@@ -94,7 +94,7 @@ namespace Crpg.Application.UTest.Users
             await ArrangeDb.SaveChangesAsync();
 
             var userServiceMock = new Mock<IUserService>();
-            var handler = new UpsertUserCommand.Handler(ActDb, Mapper, EventService, userServiceMock.Object);
+            UpsertUserCommand.Handler handler = new(ActDb, Mapper, EventService, userServiceMock.Object);
             var result = await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "13948192759205810",

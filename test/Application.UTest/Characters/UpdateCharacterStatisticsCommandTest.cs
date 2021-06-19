@@ -131,7 +131,7 @@ namespace Crpg.Application.UTest.Characters
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants);
+            UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
 
             var result = await handler.Handle(new UpdateCharacterStatisticsCommand
             {
@@ -178,7 +178,7 @@ namespace Crpg.Application.UTest.Characters
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants);
+            UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
 
             var result = await handler.Handle(new UpdateCharacterStatisticsCommand
             {
@@ -276,7 +276,7 @@ namespace Crpg.Application.UTest.Characters
                 },
             };
 
-            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants);
+            UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
             foreach (var statObject in statsObjects)
             {
                 var result = await handler.Handle(new UpdateCharacterStatisticsCommand
@@ -302,7 +302,7 @@ namespace Crpg.Application.UTest.Characters
                 new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Agility = 1 } },
             };
 
-            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants);
+            UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
             foreach (var statObject in statsObjects)
             {
                 var result = await handler.Handle(new UpdateCharacterStatisticsCommand
@@ -335,7 +335,7 @@ namespace Crpg.Application.UTest.Characters
                 new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Shield = 1 } },
             };
 
-            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants);
+            UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
             foreach (var statObject in statsObjects)
             {
                 var result = await handler.Handle(new UpdateCharacterStatisticsCommand
@@ -365,7 +365,7 @@ namespace Crpg.Application.UTest.Characters
                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = 1 } },
             };
 
-            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants);
+            UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
             foreach (var statObject in statsObjects)
             {
                 var result = await handler.Handle(new UpdateCharacterStatisticsCommand
@@ -414,7 +414,7 @@ namespace Crpg.Application.UTest.Characters
                 new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = -1 } },
             };
 
-            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants);
+            UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
             foreach (var statObject in statsObjects)
             {
                 var result = await handler.Handle(new UpdateCharacterStatisticsCommand
@@ -433,7 +433,7 @@ namespace Crpg.Application.UTest.Characters
             var user = ArrangeDb.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants);
+            UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
             var result = await handler.Handle(new UpdateCharacterStatisticsCommand
             {
                 UserId = user.Entity.Id,
@@ -446,7 +446,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldThrowNotFoundIfUserNotFound()
         {
-            var handler = new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants);
+            UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
             var result = await handler.Handle(new UpdateCharacterStatisticsCommand
             {
                 UserId = 1,

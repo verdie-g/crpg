@@ -32,7 +32,7 @@ namespace Crpg.Application.UTest.Settlements
             ArrangeDb.Settlements.AddRange(settlements);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetSettlementsQuery.Handler(ActDb, Mapper);
+            GetSettlementsQuery.Handler handler = new(ActDb, Mapper);
             var res = await handler.Handle(new GetSettlementsQuery(), CancellationToken.None);
             var settlementViews = res.Data!;
             Assert.IsNotNull(settlementViews);

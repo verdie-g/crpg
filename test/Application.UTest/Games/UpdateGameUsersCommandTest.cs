@@ -20,7 +20,7 @@ namespace Crpg.Application.UTest.Games
         public void ShouldDoNothingForEmptyUpdates()
         {
             var characterServiceMock = new Mock<ICharacterService>();
-            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, characterServiceMock.Object);
+            UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
             Assert.DoesNotThrowAsync(() => handler.Handle(new UpdateGameUsersCommand(), CancellationToken.None));
         }
 
@@ -48,7 +48,7 @@ namespace Crpg.Application.UTest.Games
             await ArrangeDb.SaveChangesAsync();
 
             var characterServiceMock = new Mock<ICharacterService>();
-            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, characterServiceMock.Object);
+            UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
             var result = await handler.Handle(new UpdateGameUsersCommand
             {
                 Updates = new[]
@@ -112,7 +112,7 @@ namespace Crpg.Application.UTest.Games
             await ArrangeDb.SaveChangesAsync();
 
             var characterServiceMock = new Mock<ICharacterService>();
-            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, characterServiceMock.Object);
+            UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
             var result = await handler.Handle(new UpdateGameUsersCommand
             {
                 Updates = new[]
@@ -209,7 +209,7 @@ namespace Crpg.Application.UTest.Games
             await ArrangeDb.SaveChangesAsync();
 
             var characterServiceMock = new Mock<ICharacterService>();
-            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, characterServiceMock.Object);
+            UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
 
             var result = await handler.Handle(new UpdateGameUsersCommand
             {
@@ -295,7 +295,7 @@ namespace Crpg.Application.UTest.Games
             await ArrangeDb.SaveChangesAsync();
 
             var characterServiceMock = new Mock<ICharacterService>();
-            var handler = new UpdateGameUsersCommand.Handler(ActDb, Mapper, characterServiceMock.Object);
+            UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
             var result = await handler.Handle(new UpdateGameUsersCommand
             {
                 Updates = new[]

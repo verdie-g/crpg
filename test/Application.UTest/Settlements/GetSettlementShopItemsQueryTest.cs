@@ -19,7 +19,7 @@ namespace Crpg.Application.UTest.Settlements
         [Test]
         public async Task ShouldReturnErrorIfUserNotFound()
         {
-            var handler = new GetSettlementShopItemsQuery.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new GetSettlementShopItemsQuery
             {
                 HeroId = 1,
@@ -37,7 +37,7 @@ namespace Crpg.Application.UTest.Settlements
             ArrangeDb.Heroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetSettlementShopItemsQuery.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new GetSettlementShopItemsQuery
             {
                 HeroId = hero.Id,
@@ -65,7 +65,7 @@ namespace Crpg.Application.UTest.Settlements
             ArrangeDb.Settlements.Add(settlement);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetSettlementShopItemsQuery.Handler(ActDb, Mapper, strategusMapMock.Object);
+            GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new GetSettlementShopItemsQuery
             {
                 HeroId = hero.Id,
@@ -102,7 +102,7 @@ namespace Crpg.Application.UTest.Settlements
             ArrangeDb.Items.AddRange(items);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetSettlementShopItemsQuery.Handler(ActDb, Mapper, strategusMapMock.Object);
+            GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new GetSettlementShopItemsQuery
             {
                 HeroId = hero.Id,

@@ -1516,7 +1516,7 @@ namespace Crpg.Application.System.Commands
                 var dbItemsByMbId = await _db.Items
                     .ToDictionaryAsync(di => (di.TemplateMbId, di.Rank), cancellationToken);
 
-                var baseItems = new List<Item>();
+                List<Item> baseItems = new();
 
                 foreach (ItemCreation item in itemsByMdId.Values)
                 {
@@ -1595,7 +1595,7 @@ namespace Crpg.Application.System.Commands
 
             private Item ItemCreationToItem(ItemCreation item)
             {
-                var res = new Item
+                Item res = new()
                 {
                     TemplateMbId = item.TemplateMbId,
                     Name = item.Name,
@@ -1679,7 +1679,7 @@ namespace Crpg.Application.System.Commands
                 {
                     foreach (var region in GetRegions())
                     {
-                        var settlement = new Settlement
+                        Settlement settlement = new()
                         {
                             Name = settlementCreation.Name,
                             Type = settlementCreation.Type,

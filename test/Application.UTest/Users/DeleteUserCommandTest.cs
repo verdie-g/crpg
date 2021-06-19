@@ -44,7 +44,7 @@ namespace Crpg.Application.UTest.Users
             int strategusItemId = user.Hero.Items[0].ItemId;
 
             var userService = Mock.Of<IUserService>();
-            var handler = new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), userService);
+            DeleteUserCommand.Handler handler = new(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), userService);
             await handler.Handle(new DeleteUserCommand
             {
                 UserId = user.Id,
@@ -73,7 +73,7 @@ namespace Crpg.Application.UTest.Users
         public async Task DeleteNonExistingUser()
         {
             var userService = Mock.Of<IUserService>();
-            var handler = new DeleteUserCommand.Handler(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), userService);
+            DeleteUserCommand.Handler handler = new(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), userService);
             var result = await handler.Handle(new DeleteUserCommand { UserId = 1 }, CancellationToken.None);
             Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
         }

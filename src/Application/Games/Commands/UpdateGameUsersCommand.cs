@@ -43,7 +43,7 @@ namespace Crpg.Application.Games.Commands
                 CancellationToken cancellationToken)
             {
                 var charactersById = await LoadCharacters(req.Updates, cancellationToken);
-                var results = new List<(Character character, List<GameUserBrokenItem> brokenItems)>();
+                List<(Character character, List<GameUserBrokenItem> brokenItems)> results = new();
                 foreach (var update in req.Updates)
                 {
                     if (!charactersById.TryGetValue(update.CharacterId, out Character? character))
@@ -95,7 +95,7 @@ namespace Crpg.Application.Games.Commands
             private Task<List<GameUserBrokenItem>> RepairOrBreakItems(Character character, IEnumerable<GameUserBrokenItem> itemsToRepair,
                 CancellationToken cancellationToken)
             {
-                var brokenItems = new List<GameUserBrokenItem>();
+                List<GameUserBrokenItem> brokenItems = new();
                 foreach (var itemToRepair in itemsToRepair)
                 {
                     if (character.AutoRepair && character.User!.Gold >= itemToRepair.RepairCost)
@@ -131,7 +131,7 @@ namespace Crpg.Application.Games.Commands
                     _db.Entry(new UserItem { UserId = character.UserId, ItemId = brokenItemId }).State = EntityState.Deleted;
                     if (downrankedItemsByOriginalItemId.TryGetValue(brokenItemId, out var downrankedItem))
                     {
-                        var downrankedUserItem = new UserItem { UserId = character.UserId, ItemId = downrankedItem.Id };
+                        UserItem downrankedUserItem = new() { UserId = character.UserId, ItemId = downrankedItem.Id };
                         character.User!.Items.Add(downrankedUserItem);
 
                         foreach (var equippedItems in equippedItemsByItemId[brokenItemId])

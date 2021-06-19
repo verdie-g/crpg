@@ -33,7 +33,7 @@ namespace Crpg.Application.Common.Behaviors
                 return next();
             }
 
-            var context = new ValidationContext<TRequest>(request);
+            ValidationContext<TRequest> context = new(request);
             var errors = new List<Error>();
             foreach (var validator in _validators)
             {

@@ -57,7 +57,7 @@ namespace Crpg.Application.Bans.Commands
                     return new(CommonErrors.UserNotFound(req.BannedByUserId));
                 }
 
-                var ban = new Ban
+                Ban ban = new()
                 {
                     BannedUser = bannedUser,
                     BannedByUser = banningUser,

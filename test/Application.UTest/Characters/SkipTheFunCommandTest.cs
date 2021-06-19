@@ -26,7 +26,7 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Characters.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new SkipTheFunCommand.Handler(ActDb, characterServiceMock.Object, experienceTableMock.Object);
+            SkipTheFunCommand.Handler handler = new(ActDb, characterServiceMock.Object, experienceTableMock.Object);
             var result = await handler.Handle(new SkipTheFunCommand
             {
                 CharacterId = character.Id,
@@ -50,7 +50,7 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new SkipTheFunCommand.Handler(ActDb, Mock.Of<ICharacterService>(),
+            SkipTheFunCommand.Handler handler = new(ActDb, Mock.Of<ICharacterService>(),
                 Mock.Of<IExperienceTable>());
             var result = await handler.Handle(new SkipTheFunCommand
             {

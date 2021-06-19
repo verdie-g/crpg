@@ -28,7 +28,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Heroes.AddRange(hero1, hero2, hero3, hero4);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateHeroTroopsCommand.Handler(ActDb, Constants);
+            UpdateHeroTroopsCommand.Handler handler = new(ActDb, Constants);
             await handler.Handle(new UpdateHeroTroopsCommand
             {
                 DeltaTime = TimeSpan.FromHours(1),

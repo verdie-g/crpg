@@ -23,7 +23,7 @@ namespace Crpg.Application.UTest.Items
             var item = ArrangeDb.Items.Add(new Item { Value = 100 });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper);
+            BuyItemCommand.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new BuyItemCommand
             {
                 ItemId = item.Entity.Id,
@@ -46,7 +46,7 @@ namespace Crpg.Application.UTest.Items
             var user = ArrangeDb.Users.Add(new User { Gold = 100 });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper);
+            BuyItemCommand.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new BuyItemCommand
             {
                 ItemId = 1,
@@ -65,7 +65,7 @@ namespace Crpg.Application.UTest.Items
             ArrangeDb.Items.Add(item);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper);
+            BuyItemCommand.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new BuyItemCommand
             {
                 ItemId = item.Id,
@@ -81,7 +81,7 @@ namespace Crpg.Application.UTest.Items
             var item = ArrangeDb.Items.Add(new Item { Value = 100 });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper);
+            BuyItemCommand.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new BuyItemCommand
             {
                 ItemId = item.Entity.Id,
@@ -97,7 +97,7 @@ namespace Crpg.Application.UTest.Items
             var item = ArrangeDb.Items.Add(new Item { Value = 101 });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper);
+            BuyItemCommand.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new BuyItemCommand
             {
                 ItemId = item.Entity.Id,
@@ -117,7 +117,7 @@ namespace Crpg.Application.UTest.Items
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new BuyItemCommand.Handler(ActDb, Mapper);
+            BuyItemCommand.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new BuyItemCommand
             {
                 ItemId = item.Entity.Id,

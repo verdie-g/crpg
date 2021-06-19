@@ -66,7 +66,7 @@ namespace Crpg.Application.UTest.Characters
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper);
+            ConvertCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new ConvertCharacterStatisticsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -86,7 +86,7 @@ namespace Crpg.Application.UTest.Characters
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper);
+            ConvertCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new ConvertCharacterStatisticsCommand
             {
                 CharacterId = character.Entity.Id,
@@ -114,7 +114,7 @@ namespace Crpg.Application.UTest.Characters
             var user = ArrangeDb.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper);
+            ConvertCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new ConvertCharacterStatisticsCommand
             {
                 UserId = user.Entity.Id,
@@ -127,7 +127,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldThrowNotFoundIfUserNotFound()
         {
-            var handler = new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper);
+            ConvertCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new ConvertCharacterStatisticsCommand
             {
                 UserId = 1,

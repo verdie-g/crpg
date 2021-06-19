@@ -66,7 +66,7 @@ namespace Crpg.Application.UTest.Items
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpgradeItemCommand.Handler(ActDb, Mapper, Constants);
+            UpgradeItemCommand.Handler handler = new(ActDb, Mapper, Constants);
             var result = await handler.Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,
@@ -107,7 +107,7 @@ namespace Crpg.Application.UTest.Items
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpgradeItemCommand.Handler(ActDb, Mapper, Constants);
+            UpgradeItemCommand.Handler handler = new(ActDb, Mapper, Constants);
             var result = await handler.Handle(new UpgradeItemCommand
             {
                 ItemId = _items[itemIdx].Id,

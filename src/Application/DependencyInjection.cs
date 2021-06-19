@@ -15,12 +15,12 @@ namespace Crpg.Application
         {
             var constants = new FileConstantsSource().LoadConstants();
             var itemModifiers = new FileItemModifiersSource().LoadItemModifiers();
-            var itemModifierService = new ItemModifierService(itemModifiers);
-            var experienceTable = new ExperienceTable(constants);
-            var characterService = new CharacterService(experienceTable, constants);
-            var userService = new UserService(constants);
-            var clanService = new ClanService();
-            var strategusBattleScheduler = new BattleScheduler();
+            ItemModifierService itemModifierService = new(itemModifiers);
+            ExperienceTable experienceTable = new(constants);
+            CharacterService characterService = new(experienceTable, constants);
+            UserService userService = new(constants);
+            ClanService clanService = new();
+            BattleScheduler strategusBattleScheduler = new();
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly())
                 .AddMediatR(Assembly.GetExecutingAssembly())

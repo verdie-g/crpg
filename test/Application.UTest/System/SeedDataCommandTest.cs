@@ -182,7 +182,7 @@ namespace Crpg.Application.UTest.System
                     new SettlementCreation { Name = "b", Position = new Point(0, 0) },
                 });
 
-            var handler = new SeedDataCommand.Handler(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,
+            SeedDataCommand.Handler handler = new(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,
                 ExperienceTable, StrategusMap, settlementsSource.Object, ItemValueModel,
                 ItemModifierService);
             await handler.Handle(new SeedDataCommand(), CancellationToken.None);
@@ -266,7 +266,7 @@ namespace Crpg.Application.UTest.System
                 .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Europe, Region.Asia))
                 .Returns(new Point(5, 6));
 
-            var handler = new SeedDataCommand.Handler(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,
+            SeedDataCommand.Handler handler = new(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,
                 ExperienceTable, strategusMapMock.Object, settlementsSource.Object, ItemValueModel, ItemModifierService);
             await handler.Handle(new SeedDataCommand(), CancellationToken.None);
 
@@ -302,7 +302,7 @@ namespace Crpg.Application.UTest.System
             settlementsSource.Setup(s => s.LoadStrategusSettlements())
                 .ReturnsAsync(Array.Empty<SettlementCreation>());
 
-            var handler = new SeedDataCommand.Handler(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,
+            SeedDataCommand.Handler handler = new(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,
                 ExperienceTable, StrategusMap, settlementsSource.Object, ItemValueModel,
                 ItemModifierService);
             await handler.Handle(new SeedDataCommand(), CancellationToken.None);

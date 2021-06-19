@@ -23,7 +23,7 @@ namespace Crpg.Application.UTest.Characters
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new DeleteCharacterCommand.Handler(ActDb);
+            DeleteCharacterCommand.Handler handler = new(ActDb);
             await handler.Handle(new DeleteCharacterCommand
             {
                 CharacterId = e.Entity.Id,
@@ -43,7 +43,7 @@ namespace Crpg.Application.UTest.Characters
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new DeleteCharacterCommand.Handler(ActDb);
+            DeleteCharacterCommand.Handler handler = new(ActDb);
             var result = await handler.Handle(new DeleteCharacterCommand
             {
                 CharacterId = e.Entity.Id,
@@ -56,7 +56,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task WhenCharacterDoesntExist()
         {
-            var handler = new DeleteCharacterCommand.Handler(ActDb);
+            DeleteCharacterCommand.Handler handler = new(ActDb);
             var result = await handler.Handle(new DeleteCharacterCommand { CharacterId = 1 }, CancellationToken.None);
             Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
         }

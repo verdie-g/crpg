@@ -23,7 +23,7 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldReturnErrorIfNotFound()
         {
-            var handler = new CreateHeroCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>(), Constants);
+            CreateHeroCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>(), Constants);
             var res = await handler.Handle(new CreateHeroCommand
             {
                 UserId = 1,
@@ -44,7 +44,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new CreateHeroCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>(), Constants);
+            CreateHeroCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>(), Constants);
             var res = await handler.Handle(new CreateHeroCommand
             {
                 UserId = user.Id,
@@ -64,7 +64,7 @@ namespace Crpg.Application.UTest.Heroes
 
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock.Setup(sm => sm.GetSpawnPosition(Region.NorthAmerica)).Returns(new Point(150, 50));
-            var handler = new CreateHeroCommand.Handler(ActDb, Mapper, strategusMapMock.Object, Constants);
+            CreateHeroCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object, Constants);
             var res = await handler.Handle(new CreateHeroCommand
             {
                 UserId = user.Id,

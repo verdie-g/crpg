@@ -62,7 +62,7 @@ namespace Crpg.Application.UTest.Characters
             var user = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterCommand.Handler(ActDb, Mapper);
+            UpdateCharacterCommand.Handler handler = new(ActDb, Mapper);
             var cmd = new UpdateCharacterCommand
             {
                 CharacterId = 1,
@@ -80,7 +80,7 @@ namespace Crpg.Application.UTest.Characters
             var user = ArrangeDb.Users.Add(new User());
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterCommand.Handler(ActDb, Mapper);
+            UpdateCharacterCommand.Handler handler = new(ActDb, Mapper);
             var cmd = new UpdateCharacterCommand
             {
                 CharacterId = character.Entity.Id,
@@ -97,7 +97,7 @@ namespace Crpg.Application.UTest.Characters
             var character = ArrangeDb.Characters.Add(new Character());
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateCharacterCommand.Handler(ActDb, Mapper);
+            UpdateCharacterCommand.Handler handler = new(ActDb, Mapper);
             var cmd = new UpdateCharacterCommand
             {
                 CharacterId = character.Entity.Id,

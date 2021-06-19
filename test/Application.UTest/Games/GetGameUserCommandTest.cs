@@ -42,7 +42,7 @@ namespace Crpg.Application.UTest.Games
             var userServiceMock = new Mock<IUserService>();
             var characterServiceMock = new Mock<ICharacterService>();
 
-            var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(), new MachineDateTimeOffset(),
+            GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(), new MachineDateTimeOffset(),
                 new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object);
 
             var result = await handler.Handle(new GetGameUserCommand
@@ -85,7 +85,7 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(), new MachineDateTimeOffset(),
+            GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(), new MachineDateTimeOffset(),
                 new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object);
 
             var result = await handler.Handle(new GetGameUserCommand
@@ -141,7 +141,7 @@ namespace Crpg.Application.UTest.Games
             var randomMock = new Mock<IRandom>();
             randomMock.Setup(r => r.Next(It.IsAny<int>(), It.IsAny<int>())).Returns(1);
 
-            var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
+            GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), randomMock.Object, userService, characterService);
 
             // Handle shouldn't throw
@@ -179,7 +179,7 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.AddRange(user0, user1);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
+            GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom(), userService, characterService);
 
             var result = await handler.Handle(new GetGameUserCommand
@@ -215,7 +215,7 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
+            GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(),
                 new MachineDateTimeOffset(), new ThreadSafeRandom(), userService, characterService);
 
             var result = await handler.Handle(new GetGameUserCommand
@@ -256,7 +256,7 @@ namespace Crpg.Application.UTest.Games
                 .Setup(dt => dt.Now)
                 .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
 
-            var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
+            GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(),
                 dateTime.Object, new ThreadSafeRandom(), userService, characterService);
 
             var result = await handler.Handle(new GetGameUserCommand
@@ -301,7 +301,7 @@ namespace Crpg.Application.UTest.Games
                 .Setup(dt => dt.Now)
                 .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
 
-            var handler = new GetGameUserCommand.Handler(ActDb, Mapper, Mock.Of<IEventService>(),
+            GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(),
                 dateTime.Object, new ThreadSafeRandom(), userService, characterService);
 
             var result = await handler.Handle(new GetGameUserCommand

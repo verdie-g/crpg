@@ -74,7 +74,7 @@ namespace Crpg.Application.Items.Commands
                     userItem.User!.HeirloomPoints -= 1;
                 }
 
-                var upgradedUserItem = new UserItem { User = userItem.User, ItemId = upgradedItem.Id };
+                UserItem upgradedUserItem = new() { User = userItem.User, ItemId = upgradedItem.Id };
                 _db.UserItems.Add(upgradedUserItem);
 
                 // If a character had the item equipped, replace the item by the upgraded one.

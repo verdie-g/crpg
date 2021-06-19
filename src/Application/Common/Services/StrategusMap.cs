@@ -119,7 +119,7 @@ namespace Crpg.Application.Common.Services
             double r = _spawningPositionRadius * Math.Sqrt(_random.NextDouble());
             double theta = _random.NextDouble() * 2 * Math.PI;
 
-            var spawningPosition = new Point(
+            Point spawningPosition = new(
                 _spawningPositionCenter.X + r * Math.Cos(theta),
                 _spawningPositionCenter.Y + r * Math.Sin(theta));
             return TranslatePositionForRegion(spawningPosition, Region.Europe, region);

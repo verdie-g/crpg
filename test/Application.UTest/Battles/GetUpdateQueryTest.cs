@@ -17,7 +17,7 @@ namespace Crpg.Application.UTest.Battles
         [Test]
         public async Task ShouldReturnErrorIfNotFound()
         {
-            var handler = new GetStrategusUpdateQuery.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            GetStrategusUpdateQuery.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new GetStrategusUpdateQuery
             {
                 HeroId = 1,
@@ -34,7 +34,7 @@ namespace Crpg.Application.UTest.Battles
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetStrategusUpdateQuery.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            GetStrategusUpdateQuery.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new GetStrategusUpdateQuery
             {
                 HeroId = user.Id,
@@ -78,7 +78,7 @@ namespace Crpg.Application.UTest.Battles
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(50);
 
-            var handler = new GetStrategusUpdateQuery.Handler(ActDb, Mapper, strategusMapMock.Object);
+            GetStrategusUpdateQuery.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new GetStrategusUpdateQuery
             {
                 HeroId = hero.Id,

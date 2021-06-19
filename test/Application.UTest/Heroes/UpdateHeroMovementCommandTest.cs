@@ -17,7 +17,7 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldReturnErrorIfNotFound()
         {
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = 1,
@@ -35,7 +35,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -59,7 +59,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -91,7 +91,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -121,7 +121,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -157,7 +157,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.AddRange(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -195,7 +195,7 @@ namespace Crpg.Application.UTest.Heroes
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(0);
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -233,7 +233,7 @@ namespace Crpg.Application.UTest.Heroes
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -271,7 +271,7 @@ namespace Crpg.Application.UTest.Heroes
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, strategusMapMock.Object);
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -301,7 +301,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -330,7 +330,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Settlements.Add(targetSettlement);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -362,7 +362,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.AddRange(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -387,7 +387,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -412,7 +412,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -434,7 +434,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,
@@ -459,7 +459,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new UpdateHeroStatusCommand.Handler(ActDb, Mapper, Mock.Of<IStrategusMap>());
+            UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
             var res = await handler.Handle(new UpdateHeroStatusCommand
             {
                 HeroId = user.Id,

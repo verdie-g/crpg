@@ -12,7 +12,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldReturnErrorIfCharacterDoesntExist()
         {
-            var handler = new GetUserCharacterStatisticsQuery.Handler(ActDb, Mapper);
+            GetUserCharacterStatisticsQuery.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new GetUserCharacterStatisticsQuery
             {
                 CharacterId = 1,
@@ -34,7 +34,7 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Characters.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
-            var handler = new GetUserCharacterStatisticsQuery.Handler(ActDb, Mapper);
+            GetUserCharacterStatisticsQuery.Handler handler = new(ActDb, Mapper);
             var result = await handler.Handle(new GetUserCharacterStatisticsQuery
             {
                 CharacterId = character.Id,

@@ -45,7 +45,7 @@ namespace Crpg.Application.UTest.Battles
             var dateTimeOffsetMock = new Mock<IDateTimeOffset>();
             dateTimeOffsetMock.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2010, 12, 5)));
 
-            var handler = new UpdateBattlePhasesCommand.Handler(ActDb, battleMercenaryDistributionModelMock.Object,
+            UpdateBattlePhasesCommand.Handler handler = new(ActDb, battleMercenaryDistributionModelMock.Object,
                 Mock.Of<IBattleScheduler>(), dateTimeOffsetMock.Object, Constants);
             await handler.Handle(new UpdateBattlePhasesCommand(), CancellationToken.None);
 
@@ -79,7 +79,7 @@ namespace Crpg.Application.UTest.Battles
             var dateTimeOffsetMock = new Mock<IDateTimeOffset>();
             dateTimeOffsetMock.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2010, 12, 5)));
             var battleSchedulerMock = new Mock<IBattleScheduler>();
-            var handler = new UpdateBattlePhasesCommand.Handler(ActDb, Mock.Of<IBattleMercenaryDistributionModel>(),
+            UpdateBattlePhasesCommand.Handler handler = new(ActDb, Mock.Of<IBattleMercenaryDistributionModel>(),
                 battleSchedulerMock.Object, dateTimeOffsetMock.Object, Constants);
             await handler.Handle(new UpdateBattlePhasesCommand(), CancellationToken.None);
 
@@ -111,7 +111,7 @@ namespace Crpg.Application.UTest.Battles
             var dateTimeOffsetMock = new Mock<IDateTimeOffset>();
             dateTimeOffsetMock.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2010, 12, 5)));
 
-            var handler = new UpdateBattlePhasesCommand.Handler(ActDb, Mock.Of<IBattleMercenaryDistributionModel>(),
+            UpdateBattlePhasesCommand.Handler handler = new(ActDb, Mock.Of<IBattleMercenaryDistributionModel>(),
                 Mock.Of<IBattleScheduler>(), dateTimeOffsetMock.Object, Constants);
             await handler.Handle(new UpdateBattlePhasesCommand(), CancellationToken.None);
 
