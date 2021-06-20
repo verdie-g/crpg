@@ -81,6 +81,7 @@ namespace Crpg.Application.Battles.Queries
                     Wage = m.Wage,
                     Note = m.Note,
                     Side = m.Side,
+                    Status = m.Status,
                 }).ToArray();
 
                 return new(applications);

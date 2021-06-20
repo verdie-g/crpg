@@ -13,10 +13,12 @@ namespace Crpg.Domain.Entities.Battles
         /// <summary>The id of the character the user will fight with.</summary>
         public int CharacterId { get; set; }
         public BattleSide Side { get; set; }
+        public int CaptainFighterId { get; set; }
         public int ApplicationId { get; set; }
 
         public Character? Character { get; set; }
         public Battle? Battle { get; set; }
+        public BattleFighter? CaptainFighter { get; set; }
         public BattleMercenaryApplication? Application { get; set; }
     }
 }

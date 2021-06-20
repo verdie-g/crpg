@@ -64,7 +64,7 @@ namespace Crpg.Application.Battles.Commands
 
                 if (heroFighter.Side != application.Side)
                 {
-                    return new(CommonErrors.FightersNotOnTheSameSide(heroFighter.Id, application.HeroId,
+                    return new(CommonErrors.HeroesNotOnTheSameSide(heroFighter.Id, application.HeroId,
                         application.BattleId));
                 }
 
@@ -106,14 +106,10 @@ namespace Crpg.Application.Battles.Commands
                 }
 
                 await _db.SaveChangesAsync(cancellationToken);
-                if (req.Accept)
-                {
-                    Logger.LogInformation(
-                        "Hero '{0}' {1} application '{2}' from hero '{3}' to join battle '{4}' as a fighter",
-                        req.HeroId, req.Accept ? "accepted" : "declined", req.FighterApplicationId,
-                        application.HeroId, application.BattleId);
-                }
-
+                Logger.LogInformation(
+                    "Hero '{0}' {1} application '{2}' from hero '{3}' to join battle '{4}' as a fighter",
+                    req.HeroId, req.Accept ? "accepted" : "declined", req.FighterApplicationId,
+                    application.HeroId, application.BattleId);
                 return new(_mapper.Map<BattleFighterApplicationViewModel>(application));
             }
         }

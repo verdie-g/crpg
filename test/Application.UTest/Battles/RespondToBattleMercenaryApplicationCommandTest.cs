@@ -2,24 +2,27 @@
 using System.Threading.Tasks;
 using Crpg.Application.Battles.Commands;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Battles;
+using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
+using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Battles
 {
-    public class RespondToBattleFighterApplicationCommandTest : TestBase
+    public class RespondToBattleMercenaryApplicationCommandTest : TestBase
     {
         [Test]
         public async Task ShouldReturnErrorIfHeroIsNotFound()
         {
-            RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
+            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
             {
                 HeroId = 99,
-                FighterApplicationId = 99,
+                MercenaryApplicationId = 99,
                 Accept = true,
             }, CancellationToken.None);
 
@@ -34,11 +37,11 @@ namespace Crpg.Application.UTest.Battles
             ArrangeDb.Heroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
-            RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
+            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
             {
                 HeroId = hero.Id,
-                FighterApplicationId = 99,
+                MercenaryApplicationId = 99,
                 Accept = true,
             }, CancellationToken.None);
 
@@ -54,25 +57,25 @@ namespace Crpg.Application.UTest.Battles
 
             Battle battle = new()
             {
-                Phase = BattlePhase.Preparation,
+                Phase = BattlePhase.Hiring,
             };
             ArrangeDb.Battles.Add(battle);
 
-            BattleFighterApplication application = new()
+            BattleMercenaryApplication application = new()
             {
                 Side = BattleSide.Attacker,
-                Status = BattleFighterApplicationStatus.Pending,
+                Status = BattleMercenaryApplicationStatus.Pending,
                 Battle = battle,
-                Hero = new Hero { User = new User() },
+                Character = new Character { User = new User() },
             };
-            ArrangeDb.BattleFighterApplications.Add(application);
+            ArrangeDb.BattleMercenaryApplications.Add(application);
             await ArrangeDb.SaveChangesAsync();
 
-            RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
+            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
             {
                 HeroId = hero.Id,
-                FighterApplicationId = application.Id,
+                MercenaryApplicationId = application.Id,
                 Accept = true,
             }, CancellationToken.None);
 
@@ -81,19 +84,19 @@ namespace Crpg.Application.UTest.Battles
         }
 
         [Test]
-        public async Task ShouldReturnErrorIfHeroIsNotACommander()
+        public async Task ShouldReturnErrorIfHeroAndCharacterNotOnTheSameSide()
         {
             Hero hero = new() { User = new User() };
             ArrangeDb.Heroes.Add(hero);
 
             Battle battle = new()
             {
-                Phase = BattlePhase.Preparation,
+                Phase = BattlePhase.Hiring,
                 Fighters =
                 {
                     new BattleFighter
                     {
-                        Side = BattleSide.Attacker,
+                        Side = BattleSide.Defender,
                         Commander = false,
                         Hero = hero,
                     },
@@ -101,64 +104,21 @@ namespace Crpg.Application.UTest.Battles
             };
             ArrangeDb.Battles.Add(battle);
 
-            BattleFighterApplication application = new()
+            BattleMercenaryApplication application = new()
             {
                 Side = BattleSide.Attacker,
-                Status = BattleFighterApplicationStatus.Pending,
+                Status = BattleMercenaryApplicationStatus.Pending,
                 Battle = battle,
-                Hero = new Hero { User = new User() },
+                Character = new Character { User = new User() },
             };
-            ArrangeDb.BattleFighterApplications.Add(application);
+            ArrangeDb.BattleMercenaryApplications.Add(application);
             await ArrangeDb.SaveChangesAsync();
 
-            RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
+            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
             {
                 HeroId = hero.Id,
-                FighterApplicationId = application.Id,
-                Accept = true,
-            }, CancellationToken.None);
-
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.FighterNotACommander, res.Errors![0].Code);
-        }
-
-        [Test]
-        public async Task ShouldReturnErrorIfFightersNotOnTheSameSide()
-        {
-            Hero hero = new() { User = new User() };
-            ArrangeDb.Heroes.Add(hero);
-
-            Battle battle = new()
-            {
-                Phase = BattlePhase.Preparation,
-                Fighters =
-                {
-                    new BattleFighter
-                    {
-                        Side = BattleSide.Defender,
-                        Commander = true,
-                        Hero = hero,
-                    },
-                },
-            };
-            ArrangeDb.Battles.Add(battle);
-
-            BattleFighterApplication application = new()
-            {
-                Side = BattleSide.Attacker,
-                Status = BattleFighterApplicationStatus.Pending,
-                Battle = battle,
-                Hero = new Hero { User = new User() },
-            };
-            ArrangeDb.BattleFighterApplications.Add(application);
-            await ArrangeDb.SaveChangesAsync();
-
-            RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
-            {
-                HeroId = hero.Id,
-                FighterApplicationId = application.Id,
+                MercenaryApplicationId = application.Id,
                 Accept = true,
             }, CancellationToken.None);
 
@@ -166,11 +126,11 @@ namespace Crpg.Application.UTest.Battles
             Assert.AreEqual(ErrorCode.HeroesNotOnTheSameSide, res.Errors![0].Code);
         }
 
-        [TestCase(BattlePhase.Hiring)]
+        [TestCase(BattlePhase.Preparation)]
         [TestCase(BattlePhase.Scheduled)]
         [TestCase(BattlePhase.Live)]
         [TestCase(BattlePhase.End)]
-        public async Task ShouldReturnErrorIfBattleIsNotInPreparation(BattlePhase battlePhase)
+        public async Task ShouldReturnErrorIfBattleIsNotInHiringPhase(BattlePhase battlePhase)
         {
             Hero hero = new() { User = new User() };
             ArrangeDb.Heroes.Add(hero);
@@ -183,28 +143,28 @@ namespace Crpg.Application.UTest.Battles
                     new BattleFighter
                     {
                         Side = BattleSide.Attacker,
-                        Commander = true,
+                        Commander = false,
                         Hero = hero,
                     },
                 },
             };
             ArrangeDb.Battles.Add(battle);
 
-            BattleFighterApplication application = new()
+            BattleMercenaryApplication application = new()
             {
                 Side = BattleSide.Attacker,
-                Status = BattleFighterApplicationStatus.Pending,
+                Status = BattleMercenaryApplicationStatus.Pending,
                 Battle = battle,
-                Hero = new Hero { User = new User() },
+                Character = new Character { User = new User() },
             };
-            ArrangeDb.BattleFighterApplications.Add(application);
+            ArrangeDb.BattleMercenaryApplications.Add(application);
             await ArrangeDb.SaveChangesAsync();
 
-            RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
+            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
             {
                 HeroId = hero.Id,
-                FighterApplicationId = application.Id,
+                MercenaryApplicationId = application.Id,
                 Accept = true,
             }, CancellationToken.None);
 
@@ -212,43 +172,43 @@ namespace Crpg.Application.UTest.Battles
             Assert.AreEqual(ErrorCode.BattleInvalidPhase, res.Errors![0].Code);
         }
 
-        [TestCase(BattleFighterApplicationStatus.Declined)]
-        [TestCase(BattleFighterApplicationStatus.Accepted)]
-        public async Task ShouldReturnErrorIfApplicationIsClosed(BattleFighterApplicationStatus applicationStatus)
+        [TestCase(BattleMercenaryApplicationStatus.Declined)]
+        [TestCase(BattleMercenaryApplicationStatus.Accepted)]
+        public async Task ShouldReturnErrorIfApplicationIsClosed(BattleMercenaryApplicationStatus applicationStatus)
         {
             Hero hero = new() { User = new User() };
             ArrangeDb.Heroes.Add(hero);
 
             Battle battle = new()
             {
-                Phase = BattlePhase.Preparation,
+                Phase = BattlePhase.Hiring,
                 Fighters =
                 {
                     new BattleFighter
                     {
                         Side = BattleSide.Attacker,
-                        Commander = true,
+                        Commander = false,
                         Hero = hero,
                     },
                 },
             };
             ArrangeDb.Battles.Add(battle);
 
-            BattleFighterApplication application = new()
+            BattleMercenaryApplication application = new()
             {
                 Side = BattleSide.Attacker,
                 Status = applicationStatus,
                 Battle = battle,
-                Hero = new Hero { User = new User() },
+                Character = new Character { User = new User() },
             };
-            ArrangeDb.BattleFighterApplications.Add(application);
+            ArrangeDb.BattleMercenaryApplications.Add(application);
             await ArrangeDb.SaveChangesAsync();
 
-            RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
+            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
             {
                 HeroId = hero.Id,
-                FighterApplicationId = application.Id,
+                MercenaryApplicationId = application.Id,
                 Accept = true,
             }, CancellationToken.None);
 
@@ -264,120 +224,131 @@ namespace Crpg.Application.UTest.Battles
 
             Battle battle = new()
             {
-                Phase = BattlePhase.Preparation,
+                Phase = BattlePhase.Hiring,
                 Fighters =
                 {
                     new BattleFighter
                     {
                         Side = BattleSide.Attacker,
-                        Commander = true,
+                        Commander = false,
                         Hero = hero,
                     },
                 },
             };
             ArrangeDb.Battles.Add(battle);
 
-            BattleFighterApplication application = new()
+            BattleMercenaryApplication application = new()
             {
                 Side = BattleSide.Attacker,
-                Status = BattleFighterApplicationStatus.Pending,
+                Status = BattleMercenaryApplicationStatus.Pending,
                 Battle = battle,
-                Hero = new Hero { User = new User() },
+                Character = new Character { User = new User() },
             };
-            ArrangeDb.BattleFighterApplications.Add(application);
+            ArrangeDb.BattleMercenaryApplications.Add(application);
             await ArrangeDb.SaveChangesAsync();
 
-            RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
+            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
             {
                 HeroId = hero.Id,
-                FighterApplicationId = application.Id,
+                MercenaryApplicationId = application.Id,
                 Accept = false,
             }, CancellationToken.None);
 
             Assert.IsNull(res.Errors);
             var applicationVm = res.Data!;
             Assert.AreEqual(application.Id, applicationVm.Id);
-            Assert.AreEqual(BattleFighterApplicationStatus.Declined, applicationVm.Status);
+            Assert.AreEqual(BattleMercenaryApplicationStatus.Declined, applicationVm.Status);
 
-            Assert.AreEqual(1, await AssertDb.BattleFighters.CountAsync());
+            Assert.AreEqual(0, await AssertDb.BattleMercenaries.CountAsync());
         }
 
         [Test]
         public async Task ShouldAcceptApplication()
         {
+            User applyingUser = new()
+            {
+                Characters = { new Character(), new Character() },
+            };
+            ArrangeDb.Users.Add(applyingUser);
+
             Hero hero = new() { User = new User() };
-            Hero applyingHero = new() { User = new User() };
-            ArrangeDb.Heroes.AddRange(applyingHero);
+            ArrangeDb.Heroes.Add(hero);
 
             Battle battle = new()
             {
-                Phase = BattlePhase.Preparation,
+                Phase = BattlePhase.Hiring,
                 Fighters =
                 {
                     new BattleFighter
                     {
                         Side = BattleSide.Attacker,
-                        Commander = true,
+                        Commander = false,
                         Hero = hero,
                     },
                 },
             };
             ArrangeDb.Battles.Add(battle);
 
-            BattleFighterApplication application = new()
+            BattleMercenaryApplication application = new()
             {
                 Side = BattleSide.Attacker,
-                Status = BattleFighterApplicationStatus.Pending,
+                Status = BattleMercenaryApplicationStatus.Pending,
                 Battle = battle,
-                Hero = applyingHero,
+                Character = applyingUser.Characters[0],
             };
-            BattleFighterApplication[] otherApplications =
+            BattleMercenaryApplication[] otherApplications =
             {
                 new() // Should get deleted.
                 {
-                    Status = BattleFighterApplicationStatus.Pending,
+                    Status = BattleMercenaryApplicationStatus.Pending,
                     Battle = battle,
-                    Hero = applyingHero,
+                    Character = applyingUser.Characters[0],
                 },
                 new() // Should stay.
                 {
-                    Status = BattleFighterApplicationStatus.Accepted,
+                    Status = BattleMercenaryApplicationStatus.Accepted,
                     Battle = battle,
-                    Hero = applyingHero,
+                    Character = applyingUser.Characters[0],
                 },
                 new() // Should stay.
                 {
-                    Status = BattleFighterApplicationStatus.Pending,
+                    Status = BattleMercenaryApplicationStatus.Pending,
                     Battle = new Battle(),
-                    Hero = applyingHero,
+                    Character = applyingUser.Characters[1],
+                },
+                new() // Should get deleted.
+                {
+                    Status = BattleMercenaryApplicationStatus.Pending,
+                    Battle = battle,
+                    Character = applyingUser.Characters[1],
                 },
                 new() // Should stay.
                 {
-                    Status = BattleFighterApplicationStatus.Pending,
+                    Status = BattleMercenaryApplicationStatus.Pending,
                     Battle = battle,
-                    Hero = new Hero { User = new User() },
+                    Character = new Character { User = new User() },
                 },
             };
-            ArrangeDb.BattleFighterApplications.Add(application);
-            ArrangeDb.BattleFighterApplications.AddRange(otherApplications);
+            ArrangeDb.BattleMercenaryApplications.Add(application);
+            ArrangeDb.BattleMercenaryApplications.AddRange(otherApplications);
             await ArrangeDb.SaveChangesAsync();
 
-            RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
+            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
             {
                 HeroId = hero.Id,
-                FighterApplicationId = application.Id,
+                MercenaryApplicationId = application.Id,
                 Accept = true,
             }, CancellationToken.None);
 
             Assert.IsNull(res.Errors);
             var applicationVm = res.Data!;
             Assert.AreEqual(application.Id, applicationVm.Id);
-            Assert.AreEqual(BattleFighterApplicationStatus.Accepted, applicationVm.Status);
+            Assert.AreEqual(BattleMercenaryApplicationStatus.Accepted, applicationVm.Status);
 
-            Assert.AreEqual(2, await AssertDb.BattleFighters.CountAsync());
-            Assert.AreEqual(4, await AssertDb.BattleFighterApplications.CountAsync());
+            Assert.AreEqual(1, await AssertDb.BattleMercenaries.CountAsync());
+            Assert.AreEqual(4, await AssertDb.BattleMercenaryApplications.CountAsync());
         }
     }
 }

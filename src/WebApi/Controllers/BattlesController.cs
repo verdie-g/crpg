@@ -148,5 +148,18 @@ namespace Crpg.WebApi.Controllers
             req = req with { UserId = CurrentUser.UserId, BattleId = battleId };
             return ResultToActionAsync(Mediator.Send(req));
         }
+
+        /// <summary>
+        /// Accept/Decline battle mercenary application.
+        /// </summary>
+        /// <response code="200">Ok.</response>
+        /// <response code="400">Bad request.</response>
+        [HttpPut("{battleId}/mercenary-applications/{applicationId}/response")]
+        public Task<ActionResult<Result<BattleMercenaryApplicationViewModel>>> RespondToBattleMercenaryApplication(
+            [FromRoute] int battleId, [FromRoute] int applicationId, [FromBody] RespondToBattleMercenaryApplicationCommand req)
+        {
+            req = req with { HeroId = CurrentUser.UserId, MercenaryApplicationId = applicationId };
+            return ResultToActionAsync(Mediator.Send(req));
+        }
     }
 }

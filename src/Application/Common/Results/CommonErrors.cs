@@ -103,13 +103,6 @@ namespace Crpg.Application.Common.Results
             Detail = $"Fighter with id '{fighterId} is not a commander of the battle with id '{battleId}'",
         };
 
-        public static Error FightersNotOnTheSameSide(int heroId1, int heroId2, int battleId) =>
-            new(ErrorType.Validation, ErrorCode.FightersNotOnTheSameSide)
-            {
-                Title = "Fighters are not on the same side",
-                Detail = $"Fighters with ids '{heroId1}' and '{heroId2}' are not in the side in the battle with id '{battleId}'",
-            };
-
         public static Error HeroFighter(int heroId, int battleId) => new(ErrorType.Validation, ErrorCode.HeroFighter)
         {
             Title = "Hero is a fighter in this battle",
@@ -158,6 +151,13 @@ namespace Crpg.Application.Common.Results
             Title = "Hero is not the settlement owner",
             Detail = $"Hero with id '{heroId}' is not of the owner of settlement with id '{settlementId}",
         };
+
+        public static Error HeroesNotOnTheSameSide(int heroId1, int heroId2, int battleId) =>
+            new(ErrorType.Validation, ErrorCode.HeroesNotOnTheSameSide)
+            {
+                Title = "Heroes are not on the same side of the battle",
+                Detail = $"Heroes with ids '{heroId1}' and '{heroId2}' are not in the side in the battle with id '{battleId}'",
+            };
 
         public static Error ItemAlreadyOwned(int itemId) => new(ErrorType.Validation, ErrorCode.ItemAlreadyOwned)
         {
