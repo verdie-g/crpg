@@ -21,7 +21,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             Mission.AttackerTeam.AddTacticOption(new TacticCharge(Mission.AttackerTeam));
             Mission.AttackerTeam.AddTacticOption(new TacticFullScaleAttack(Mission.AttackerTeam));
             Mission.AttackerTeam.AddTacticOption(new TacticRangedHarrassmentOffensive(Mission.AttackerTeam));
-            typeof(TeamQuerySystem).GetMethod("Expire", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(Mission.AttackerTeam.QuerySystem, null);
+            Mission.AttackerTeam.QuerySystem.Expire();
             Mission.AttackerTeam.ResetTactic();
         }
 

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Crpg.GameMod.Common;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
@@ -34,14 +33,12 @@ namespace Crpg.GameMod.DefendTheVirgin
             GameManager.BeginGameStart(CurrentGame);
             CurrentGame.ThirdInitialize();
 
-            currentGame.CreateObjects();
             currentGame.InitializeDefaultGameObjects();
             CrpgSkills.Initialize(currentGame);
             currentGame.LoadBasicFiles(false);
             LoadCustomGameXmls();
             objectManager.ClearEmptyObjects();
             currentGame.SetDefaultEquipments(new Dictionary<string, Equipment>());
-            currentGame.CreateLists();
             objectManager.ClearEmptyObjects();
             GameManager.OnCampaignStart(CurrentGame, null);
             GameManager.OnAfterCampaignStart(CurrentGame);
@@ -86,7 +83,6 @@ namespace Crpg.GameMod.DefendTheVirgin
             basicGameStarter.AddModel(new MultiplayerAgentApplyDamageModel());
             basicGameStarter.AddModel(new DefaultRidingModel());
             basicGameStarter.AddModel(new DefaultStrikeMagnitudeModel());
-            basicGameStarter.AddModel(new CrpgSkillList());
             basicGameStarter.AddModel(new CustomBattleMoraleModel());
         }
 

@@ -34,13 +34,13 @@ namespace Crpg.GameMod.Battle
                 ViewCreator.CreateMultiplayerTeamSelectUIHandler(),
                 ViewCreator.CreateMissionScoreBoardUIHandler(mission, false),
                 ViewCreator.CreateMultiplayerEndOfRoundUIHandler(),
-                ViewCreator.CreatePollInitiationUIHandler(),
                 ViewCreator.CreatePollProgressUIHandler(),
                 new MissionItemContourControllerView(),
                 new MissionAgentContourControllerView(),
                 ViewCreator.CreateMultiplayerMissionHUDExtensionUIHandler(),
                 ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
                 ViewCreator.CreateOptionsUIHandler(),
+                ViewCreator.CreateMissionMainAgentGamepadEquipDropView(mission),
             };
 
             if (!GameNetwork.IsClient)

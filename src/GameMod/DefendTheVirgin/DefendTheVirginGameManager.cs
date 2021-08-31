@@ -81,7 +81,6 @@ namespace Crpg.GameMod.DefendTheVirgin
                 new MissionHardBorderPlacer(),
                 new MissionBoundaryPlacer(),
                 new MissionBoundaryCrossingHandler(),
-                new AgentFadeOutLogic(),
             });
         }
 

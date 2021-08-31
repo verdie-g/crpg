@@ -7,6 +7,7 @@ namespace Crpg.GameMod.Battle
     public class MissionMultiplayerBattle : MissionMultiplayerGameModeBase
     {
         public override bool IsGameModeHidingAllAgentVisuals => false;
+        public override bool IsGameModeUsingOpposingTeams => true;
 
         public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
         {

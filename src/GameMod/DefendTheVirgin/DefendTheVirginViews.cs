@@ -11,12 +11,12 @@ namespace Crpg.GameMod.DefendTheVirgin
         [ViewMethod("DefendTheVirgin")]
         public static MissionView[] OpenDefendTheVirginMission(Mission mission) => new[]
         {
-            ViewCreator.CreateMissionSingleplayerEscapeMenu(),
+            ViewCreator.CreateMissionSingleplayerEscapeMenu(false),
             ViewCreator.CreateMissionAgentLabelUIHandler(mission),
             ViewCreator.CreateMissionAgentStatusUIHandler(mission),
             ViewCreatorManager.CreateMissionView<CrpgAgentHud>(false, mission),
             ViewCreator.CreateMissionMainAgentEquipmentController(mission),
-            ViewCreator.CreateMissionMainAgentCheerControllerView(mission),
+            ViewCreator.CreateMissionMainAgentCheerBarkControllerView(mission),
             ViewCreator.CreateMissionBoundaryCrossingView(),
             new MissionBoundaryWallView(),
             ViewCreator.CreateMissionFormationMarkerUIHandler(mission),

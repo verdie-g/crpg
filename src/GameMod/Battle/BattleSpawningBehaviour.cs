@@ -113,7 +113,7 @@ namespace Crpg.GameMod.Battle
                     agentBuildData.ClothingColor2(team == Mission.AttackerTeam ? cultureTeam1.Color2 : cultureTeam2.Color2);
 
                     Agent agent = Mission.SpawnAgent(agentBuildData);
-                    agent.SetWatchState(AgentAIStateFlagComponent.WatchState.Alarmed);
+                    agent.SetWatchState(Agent.WatchState.Alarmed);
                     agent.WieldInitialWeapons();
                 }
             }

@@ -360,7 +360,8 @@ namespace Crpg.GameMod.DataExport
                 createTextureTasks.Add(createTextureTaskSource.Task);
 
                 // Texture.SaveToFile doesn't accept absolute paths
-                TableauCacheManager.Current.BeginCreateItemTexture(mbItem, texture =>
+                // TODO: what is second argument "additionalArgs"?
+                TableauCacheManager.Current.BeginCreateItemTexture(mbItem, null, texture =>
                 {
                     texture.SaveToFile(Path.Combine(outputPath, mbItem.StringId + ".png"));
                     createTextureTaskSource.SetResult(null);

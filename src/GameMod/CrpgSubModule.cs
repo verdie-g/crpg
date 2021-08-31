@@ -88,13 +88,16 @@ namespace Crpg.GameMod
 
             LoadSpriteSheets();
 
-            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("DefendTheVirgin", new TextObject("{=4gpGhbeJ}Defend The Virgin"),
-                4567, () => MBGameManager.StartNewGame(new DefendTheVirginGameManager()), () => false));
+            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("DefendTheVirgin",
+                new TextObject("{=4gpGhbeJ}Defend The Virgin"),
+                4567,
+                () => MBGameManager.StartNewGame(new DefendTheVirginGameManager()),
+                () => (false, new TextObject())));
 
-            #if false
+#if false
             Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
                 new TextObject("Export Data"), 4578, ExportData, () => false));
-            #endif
+#endif
 
             // Uncomment to start watching UI changes.
             // UIResourceManager.UIResourceDepot.StartWatchingChangesInDepot();
