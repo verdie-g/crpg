@@ -18,7 +18,7 @@
 
 - name: Download opentracing for nginx
   unarchive:
-    src: "https://github.com/opentracing-contrib/nginx-opentracing/releases/download/v{{ nginx_opentracing_version }}/linux-amd64-nginx-{{ nginx_version }}-ngx_http_module.so.tgz"
+    src: "https://github.com/opentracing-contrib/nginx-opentracing/releases/download/v{{ nginx_opentracing_version }}/linux-amd64-nginx-{{ nginx_version }}-ot16-ngx_http_module.so.tgz"
     dest: /usr/lib/nginx/modules
     remote_src: True
 

@@ -28,8 +28,8 @@
     src: "/tmp/{{ crpg_ui_path | basename }}_new.tgz"
     dest: "{{ crpg_ui_path | dirname }}"
     mode: u=rwX,g=rX,o=rX
-    owner: www-data
-    group: www-data
+    owner: nginx
+    group: nginx
 
 - name: Check that a cRPG Web UI version is already present
   stat:

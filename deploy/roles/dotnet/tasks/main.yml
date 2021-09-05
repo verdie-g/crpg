@@ -1,4 +1,4 @@
-﻿---
+---
 - name: Add Microsoft package signing key to the list of trusted keys
   apt:
     deb: https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb
