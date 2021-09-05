@@ -31,6 +31,7 @@
           port: 5432
           dbname: "{{ crpg_db }}"
           username: "{{ datadog_db_user }}"
+          dbm: true
           custom_queries:
           - metric_prefix: crpg
             query: SELECT
