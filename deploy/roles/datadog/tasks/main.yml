@@ -18,11 +18,11 @@
         logs:
         - type: file
           path: /var/log/nginx/access.log
-          service: nginx
+          service: "{{ crpg_reverse_proxy_service_name }}"
           source: nginx
         - type: file
           path: /var/log/nginx/error.log
-          service: nginx
+          service: "{{ crpg_reverse_proxy_service_name }}"
           source: nginx
       postgres:
         init_config:
@@ -54,7 +54,7 @@
         logs:
         - type: file
           path: /var/log/postgresql/postgresql.csv
-          service: postgresql
+          service: "{{ crpg_db_service_name }}"
           source: postgresql
           log_processing_rules:
           - type: multi_line
