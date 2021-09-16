@@ -3,7 +3,7 @@ import Role from '../models/role';
 
 const userManager = new UserManager({
   authority: process.env.VUE_APP_API_BASE_URL,
-  client_id: 'crpg_web_ui', // eslint-disable-line @typescript-eslint/naming-convention
+  client_id: 'crpg-web-ui', // eslint-disable-line @typescript-eslint/naming-convention
   redirect_uri: window.location.origin, // eslint-disable-line @typescript-eslint/naming-convention
   silent_redirect_uri: `${window.location.origin}/silent-renew.html`, // eslint-disable-line @typescript-eslint/naming-convention
   response_type: 'code', // eslint-disable-line @typescript-eslint/naming-convention
