@@ -100,9 +100,7 @@ namespace Crpg.Application.Heroes.Commands
                     return;
                 }
 
-                // Skip 2 instead of 1 because for some reason MultiPoint.GetEnumerator returns an
-                // enumerator containing itself (https://github.com/NetTopologySuite/NetTopologySuite/issues/508).
-                hero.Waypoints = new MultiPoint(hero.Waypoints.Skip(2).Cast<Point>().ToArray());
+                hero.Waypoints = new MultiPoint(hero.Waypoints.Skip(1).Cast<Point>().ToArray());
                 if (hero.Waypoints.Count == 0)
                 {
                     hero.Status = HeroStatus.Idle;
