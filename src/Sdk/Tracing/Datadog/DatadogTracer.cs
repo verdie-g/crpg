@@ -6,6 +6,8 @@ namespace Crpg.Sdk.Tracing.Datadog
 {
     internal class DatadogTracer : ITracer
     {
+        private static readonly KeyValuePair<string, string>[] DefaultTags = { new("component", "crpg") };
+
         private readonly string _namespace;
 
         public DatadogTracer(string ns)
@@ -21,11 +23,16 @@ namespace Crpg.Sdk.Tracing.Datadog
                 scope.Span.ResourceName = resourceName;
             }
 
+            foreach (var tag in DefaultTags)
+            {
+                scope.Span.SetTag(tag.Key, tag.Value);
+            }
+
             if (tags != null)
             {
-                foreach (var kv in tags)
+                foreach (var tag in tags)
                 {
-                    scope.Span.SetTag(kv.Key, kv.Value);
+                    scope.Span.SetTag(tag.Key, tag.Value);
                 }
             }
 
