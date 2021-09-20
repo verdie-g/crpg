@@ -3,12 +3,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Crpg.Application.Battles.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Heroes.Models;
 using Crpg.Application.Settlements.Models;
+using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Heroes;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,7 +30,6 @@ namespace Crpg.Application.Heroes.Queries
                 HeroStatus.MovingToSettlement,
                 HeroStatus.MovingToAttackHero,
                 HeroStatus.MovingToAttackSettlement,
-                HeroStatus.InBattle,
             };
 
             private readonly ICrpgDbContext _db;
@@ -66,11 +67,18 @@ namespace Crpg.Application.Heroes.Queries
                     .ProjectTo<SettlementPublicViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
+                var visibleBattles = await _db.Battles
+                    .Where(b => b.Position.IsWithinDistance(hero.Position, _strategusMap.ViewDistance)
+                                && b.Phase != BattlePhase.End)
+                    .ProjectTo<BattleViewModel>(_mapper.ConfigurationProvider)
+                    .ToArrayAsync(cancellationToken);
+
                 return new(new StrategusUpdate
                 {
                     Hero = _mapper.Map<HeroViewModel>(hero),
                     VisibleHeroes = visibleHeroes,
                     VisibleSettlements = visibleSettlements,
+                    VisibleBattles = visibleBattles,
                 });
             }
         }
