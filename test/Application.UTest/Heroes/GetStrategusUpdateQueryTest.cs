@@ -58,6 +58,12 @@ namespace Crpg.Application.UTest.Battles
                 Position = new Point(9.9, 9.9),
                 User = new User(),
             };
+            var closeHeroInBattle = new Hero
+            {
+                Position = new Point(9.8, 9.8),
+                User = new User(),
+                Status = HeroStatus.InBattle,
+            };
             var farHero = new Hero
             {
                 Position = new Point(1000, 1000),
@@ -69,7 +75,7 @@ namespace Crpg.Application.UTest.Battles
                 Status = HeroStatus.IdleInSettlement,
                 User = new User(),
             };
-            ArrangeDb.Heroes.AddRange(hero, closeHero, farHero, heroInSettlement);
+            ArrangeDb.Heroes.AddRange(hero, closeHero, farHero, heroInSettlement, closeHeroInBattle);
 
             var closeSettlement = new Settlement { Position = new Point(10.1, 10.1) };
             var farSettlement = new Settlement { Position = new Point(-1000, -1000) };
@@ -77,8 +83,13 @@ namespace Crpg.Application.UTest.Battles
             await ArrangeDb.SaveChangesAsync();
 
             var closeBattle = new Battle { Position = new Point(9.0, 9.0) };
+            var closeEndedBattle = new Battle
+            {
+                Position = new Point(8.0, 8.0),
+                Phase = BattlePhase.End,
+            };
             var farBattle = new Battle { Position = new Point(-999, -999) };
-            ArrangeDb.Battles.AddRange(closeBattle, farBattle);
+            ArrangeDb.Battles.AddRange(closeBattle, closeEndedBattle, farBattle);
             await ArrangeDb.SaveChangesAsync();
 
             var strategusMapMock = new Mock<IStrategusMap>();
