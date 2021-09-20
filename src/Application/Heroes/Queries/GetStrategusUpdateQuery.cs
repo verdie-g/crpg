@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Crpg.Application.Battles.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
@@ -66,11 +67,17 @@ namespace Crpg.Application.Heroes.Queries
                     .ProjectTo<SettlementPublicViewModel>(_mapper.ConfigurationProvider)
                     .ToArrayAsync(cancellationToken);
 
+                var visibleBattles = await _db.Battles
+                    .Where(s => s.Position.IsWithinDistance(hero.Position, _strategusMap.ViewDistance))
+                    .ProjectTo<BattleViewModel>(_mapper.ConfigurationProvider)
+                    .ToArrayAsync(cancellationToken);
+
                 return new(new StrategusUpdate
                 {
                     Hero = _mapper.Map<HeroViewModel>(hero),
                     VisibleHeroes = visibleHeroes,
                     VisibleSettlements = visibleSettlements,
+                    VisibleBattles = visibleBattles,
                 });
             }
         }

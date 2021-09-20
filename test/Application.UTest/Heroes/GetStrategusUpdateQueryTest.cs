@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Heroes.Queries;
+using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
@@ -75,6 +76,11 @@ namespace Crpg.Application.UTest.Battles
             ArrangeDb.Settlements.AddRange(closeSettlement, farSettlement);
             await ArrangeDb.SaveChangesAsync();
 
+            var closeBattle = new Battle { Position = new Point(9.0, 9.0) };
+            var farBattle = new Battle { Position = new Point(-999, -999) };
+            ArrangeDb.Battles.AddRange(closeBattle, farBattle);
+            await ArrangeDb.SaveChangesAsync();
+
             var strategusMapMock = new Mock<IStrategusMap>();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(50);
 
@@ -91,6 +97,8 @@ namespace Crpg.Application.UTest.Battles
             Assert.AreEqual(closeHero.Id, update.VisibleHeroes[0].Id);
             Assert.AreEqual(1, update.VisibleSettlements.Count);
             Assert.AreEqual(closeSettlement.Id, update.VisibleSettlements[0].Id);
+            Assert.AreEqual(1, update.VisibleBattles.Count);
+            Assert.AreEqual(closeBattle.Id, update.VisibleBattles[0].Id);
         }
     }
 }
