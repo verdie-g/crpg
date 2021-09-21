@@ -101,53 +101,21 @@ namespace Crpg.Application.UTest.Battles
 
             Assert.AreEqual(Region.NorthAmerica, battlesVm[0].Region);
             Assert.AreEqual(BattlePhase.Hiring, battlesVm[0].Phase);
-            Assert.IsNotNull(battlesVm[0].Attackers);
-
-            foreach (var a in battlesVm[0].Attackers)
-            {
-                Assert.IsNotNull(a.Hero);
-            }
-
+            Assert.IsNotNull(battlesVm[0].Attacker);
+            Assert.IsNotNull(battlesVm[0].Attacker.Hero);
             Assert.AreEqual(35, battlesVm[0].AttackerTotalTroops);
-            Assert.IsNotNull(battlesVm[0].Defenders);
-
-            foreach (var d in battlesVm[0].Defenders)
-            {
-                Assert.IsNotNull(d.Hero);
-            }
-
+            Assert.IsNotNull(battlesVm[0].Defender);
+            Assert.IsNotNull(battlesVm[0].Defender!.Hero);
             Assert.AreEqual(45, battlesVm[0].DefenderTotalTroops);
 
             Assert.AreEqual(Region.NorthAmerica, battlesVm[1].Region);
             Assert.AreEqual(BattlePhase.Live, battlesVm[1].Phase);
-            Assert.IsNotNull(battlesVm[1].Attackers);
-
-            foreach (var a in battlesVm[1].Attackers)
-            {
-                Assert.IsNotNull(a.Hero);
-            }
-
+            Assert.IsNotNull(battlesVm[1].Attacker);
+            Assert.IsNotNull(battlesVm[1].Attacker.Hero);
             Assert.AreEqual(100, battlesVm[1].AttackerTotalTroops);
             Assert.AreEqual(47, battlesVm[1].DefenderTotalTroops);
-            Assert.IsNotNull(battlesVm[1].Defenders);
-
-            int defendersSettlementCount = 0;
-            int defendersHeroCount = 0;
-
-            foreach (var d in battlesVm[1].Defenders)
-            {
-                if (d.Settlement != null)
-                {
-                    defendersSettlementCount++;
-                }
-
-                if (d.Hero != null)
-                {
-                    defendersHeroCount++;
-                }
-            }
-
-            Assert.That(defendersSettlementCount == 1 && defendersHeroCount == 1);
+            Assert.IsNotNull(battlesVm[1].Defender);
+            Assert.IsNotNull(battlesVm[1].Defender!.Settlement);
         }
     }
 }

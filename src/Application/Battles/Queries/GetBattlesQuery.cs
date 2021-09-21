@@ -58,13 +58,13 @@ namespace Crpg.Application.Battles.Queries
                     Region = b.Region,
                     Position = b.Position,
                     Phase = b.Phase,
-                    Attackers = _mapper.Map<List<BattleFighterViewModel>>(
-                        b.Fighters.Where(f => f.Side == BattleSide.Attacker)),
+                    Attacker = _mapper.Map<BattleFighterViewModel>(
+                        b.Fighters.First(f => f.Side == BattleSide.Attacker && f.Commander)),
                     AttackerTotalTroops = b.Fighters
                         .Where(f => f.Side == BattleSide.Attacker)
                         .Sum(f => (int)Math.Floor(f.Hero!.Troops)),
-                    Defenders = _mapper.Map<List<BattleFighterViewModel>>(
-                        b.Fighters.Where(f => f.Side == BattleSide.Defender)),
+                    Defender = _mapper.Map<BattleFighterViewModel>(
+                        b.Fighters.First(f => f.Side == BattleSide.Defender && f.Commander)),
                     DefenderTotalTroops = b.Fighters
                             .Where(f => f.Side == BattleSide.Defender)
                             .Sum(f => (int)Math.Floor(f.Hero?.Troops ?? 0) + (f.Settlement?.Troops ?? 0)),
