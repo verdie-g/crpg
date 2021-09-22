@@ -11,5 +11,6 @@ namespace Crpg.Application.Battles.Models
         public HeroPublicViewModel? Hero { get; init; }
         public SettlementPublicViewModel? Settlement { get; init; }
         public BattleSide Side { get; init; }
+        public bool Commander { get; init; }
     }
 }

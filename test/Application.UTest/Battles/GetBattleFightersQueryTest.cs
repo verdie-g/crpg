@@ -57,6 +57,11 @@ namespace Crpg.Application.UTest.Battles
                     new BattleFighter
                     {
                         Hero = new Hero { User = new User { Name = "b" } },
+                        Commander = true,
+                    },
+                    new BattleFighter
+                    {
+                        Hero = new Hero { User = new User { Name = "c" } },
                     },
                 },
             };
@@ -71,9 +76,12 @@ namespace Crpg.Application.UTest.Battles
 
             Assert.IsNull(res.Errors);
             var fighters = res.Data!;
-            Assert.AreEqual(2, fighters.Count);
+            Assert.AreEqual(3, fighters.Count);
             Assert.AreEqual("a", fighters[0].Settlement!.Name);
             Assert.AreEqual("b", fighters[1].Hero!.Name);
+            Assert.AreEqual(true, fighters[1].Commander);
+            Assert.AreEqual("c", fighters[2].Hero!.Name);
+            Assert.AreEqual(false, fighters[2].Commander);
         }
     }
 }
