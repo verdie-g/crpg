@@ -41,7 +41,7 @@ namespace Crpg.WebApi.Controllers
         /// <returns>The updated member.</returns>
         /// <response code="200">Updated.</response>
         /// <response code="400">Bad Request.</response>
-        [HttpPut("{clanId}/members/{userId}")]
+        [HttpPut("{clanId}/members/{memberId}")]
         public Task<ActionResult<Result<ClanMemberViewModel>>> UpdateClanMember([FromRoute] int clanId,
             [FromRoute] int memberId, [FromBody] UpdateClanMemberCommand req)
         {

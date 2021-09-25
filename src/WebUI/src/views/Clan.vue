@@ -45,6 +45,24 @@
             v-if="memberKickable(props.row)"
           />
         </b-table-column>
+
+        <b-table-column v-slot="props" cell-class="is-clickable">
+          <b-dropdown aria-role="list" v-if="canManageMembers">
+            <template #trigger>
+              <p class="tag is-success" role="button">Manage Role</p>
+            </template>
+
+            <b-dropdown-item aria-role="listitem" @click="updateMember(props.row, 'Member')">
+              Member
+            </b-dropdown-item>
+            <b-dropdown-item aria-role="listitem" @click="updateMember(props.row, 'Officer')">
+              Officer
+            </b-dropdown-item>
+            <b-dropdown-item aria-role="listitem" @click="updateMember(props.row, 'Leader')">
+              Leader
+            </b-dropdown-item>
+          </b-dropdown>
+        </b-table-column>
       </b-table>
     </div>
   </section>
@@ -85,6 +103,15 @@ export default class ClanComponent extends Vue {
     }
 
     return selfMember.role === ClanMemberRole.Officer || selfMember.role === ClanMemberRole.Leader;
+  }
+
+  get canManageMembers(): boolean {
+    const selfMember = this.selfMember;
+    if (selfMember === null) {
+      return false;
+    }
+
+    return selfMember.role === ClanMemberRole.Leader;
   }
 
   created() {
@@ -135,6 +162,17 @@ export default class ClanComponent extends Vue {
       notify('Clan member kicked');
       arrayRemove(this.members, m => m === member);
     }
+  }
+
+  async updateMember(member: ClanMember, selectedRole: ClanMemberRole) {
+    await clanModule
+      .updateClanMember({
+        clanId: this.clan!.id,
+        userId: member.user.id,
+        role: selectedRole,
+      })
+      .then(() => notify('User updated'));
+    clanService.getClanMembers(this.clan!.id).then(m => (this.members = m));
   }
 }
 </script>

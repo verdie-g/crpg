@@ -6,6 +6,7 @@ import ClanInvitation from '@/models/clan-invitation';
 import ClanInvitationStatus from '@/models/clan-invitation-status';
 import ClanInvitationType from '@/models/clan-invitation-type';
 import ClanMember from '@/models/clan-member';
+import ClanMemberRole from '@/models/clan-member-role';
 
 export function getClan(id: number): Promise<Clan> {
   return get(`/clans/${id}`);
@@ -13,6 +14,14 @@ export function getClan(id: number): Promise<Clan> {
 
 export function getClanMembers(id: number): Promise<ClanMember[]> {
   return get(`/clans/${id}/members`);
+}
+
+export function updateClanMember(
+  clanId: number,
+  userId: number,
+  role: ClanMemberRole
+): Promise<ClanMember> {
+  return put(`/clans/${clanId}/members/${userId}`, { role });
 }
 
 export function getClanInvitations(
