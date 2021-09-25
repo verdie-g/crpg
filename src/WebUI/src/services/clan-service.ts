@@ -56,6 +56,6 @@ export function createClan(clan: ClanCreation): Promise<Clan> {
   return post('/clans', clan);
 }
 
-export function kickClanMember(clanId: number, userId: number): Promise<void> {
-  return del(`/clans/${clanId}/members/${userId}`);
+export function kickClanMember(clanId: number, memberId: number): Promise<void> {
+  return del(`/clans/${clanId}/members/${memberId}`);
 }

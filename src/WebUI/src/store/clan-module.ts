@@ -34,14 +34,14 @@ class ClanModule extends VuexModule {
   @Action
   updateClanMember({
     clanId,
-    userId,
+    memberId,
     role,
   }: {
     clanId: number;
-    userId: number;
+    memberId: number;
     role: ClanMemberRole;
   }): Promise<ClanMember> {
-    return clanService.updateClanMember(clanId, userId, role);
+    return clanService.updateClanMember(clanId, memberId, role);
   }
 }
 

@@ -168,7 +168,7 @@ export default class ClanComponent extends Vue {
     await clanModule
       .updateClanMember({
         clanId: this.clan!.id,
-        userId: member.user.id,
+        memberId: member.user.id,
         role: selectedRole,
       })
       .then(() => notify('User updated'));
