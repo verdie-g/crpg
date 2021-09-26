@@ -36,6 +36,26 @@ namespace Crpg.Application.UTest.Clans
         }
 
         [Test]
+        public async Task ShouldReturnErrorIfLeaderChangesItsRole()
+        {
+            var clan = new Clan();
+            var user = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Leader } };
+            ArrangeDb.Users.AddRange(user);
+            await ArrangeDb.SaveChangesAsync();
+
+            var res = await new UpdateClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new UpdateClanMemberCommand
+            {
+                UserId = user.Id,
+                ClanId = clan.Id,
+                MemberId = user.Id,
+                Role = ClanMemberRole.Officer,
+            }, CancellationToken.None);
+
+            Assert.IsNotNull(res.Errors);
+            Assert.AreEqual(ErrorCode.ClanMemberRoleNotMet, res.Errors![0].Code);
+        }
+
+        [Test]
         public async Task ShouldUpdateMember()
         {
             var clan = new Clan();
