@@ -66,6 +66,12 @@ namespace Crpg.Application.Clans.Commands
                 }
 
                 User toUpdateUser = toUpdateUserRes.Data!;
+                if (user.Id == toUpdateUser.Id) // Leader cannot change its own role.
+                {
+                    return new(CommonErrors.ClanMemberRoleNotMet(req.UserId, ClanMemberRole.Officer,
+                        user.ClanMembership.Role));
+                }
+
                 toUpdateUser.ClanMembership!.Role = req.Role;
 
                 await _db.SaveChangesAsync(cancellationToken);
