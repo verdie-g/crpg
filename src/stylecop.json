@@ -18,7 +18,8 @@
       "topLevelTypes": ["class"]
     },
     "layoutRules": {
-      "allowConsecutiveUsings": true
+      "allowConsecutiveUsings": true,
+      "newlineAtEndOfFile": "require"
     },
     "documentationRules": {
       "documentInterfaces": true,

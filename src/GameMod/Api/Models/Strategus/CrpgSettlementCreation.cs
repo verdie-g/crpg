@@ -1,16 +1,16 @@
 ﻿namespace Crpg.GameMod.Api.Models.Strategus
 {
-    internal class CrpgStrategusSettlementCreation
+    internal class CrpgSettlementCreation
     {
         public string Name { get; set; } = default!;
-        public CrpgStrategusSettlementType Type { get; set; }
+        public CrpgSettlementType Type { get; set; }
         public CrpgCulture Culture { get; set; }
         public Point Position { get; set; } = default!;
         public string Scene { get; set; } = default!;
     }
 
-    // Copy of Crpg.Domain.Entities.Strategus.StrategusSettlementType.
-    internal enum CrpgStrategusSettlementType
+    // Copy of Crpg.Domain.Entities.Settlements.SettlementType.
+    internal enum CrpgSettlementType
     {
         Village,
         Castle,

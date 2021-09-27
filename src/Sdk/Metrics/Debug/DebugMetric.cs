@@ -24,6 +24,8 @@ namespace Crpg.Sdk.Metrics.Debug
         public void Record(double value) => Logger.LogDebug($"{_name}[{_tagsStr}] record {value}");
         public void Increment(long delta) => Logger.LogDebug($"{_name}[{_tagsStr}] increment by {delta}");
         public void Decrement(long delta) => Logger.LogDebug($"{_name}[{_tagsStr}] decrement by {delta}");
-        public void Dispose() { }
+        public void Dispose()
+        {
+        }
     }
 }

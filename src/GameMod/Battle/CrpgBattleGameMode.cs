@@ -54,7 +54,8 @@ namespace Crpg.GameMod.Battle
             return missionViewList.ToArray();
         }
 
-        public CrpgBattleGameMode() : base(GameModeName)
+        public CrpgBattleGameMode()
+            : base(GameModeName)
         {
         }
 

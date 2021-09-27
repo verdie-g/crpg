@@ -14,8 +14,12 @@ namespace Crpg.Application.Common.Results
         /// </summary>
         public IList<Error>? Errors { get; }
 
-        public Result() { }
+        public Result()
+        {
+        }
+
         public Result(Error error) => Errors = new[] { error };
+
         public Result(IList<Error> errors) => Errors = errors;
     }
 
@@ -28,7 +32,15 @@ namespace Crpg.Application.Common.Results
         public TData? Data { get; }
 
         public Result(TData data) => Data = data;
-        public Result(Error error) : base(error) { }
-        public Result(IList<Error> errors) : base(errors) { }
+
+        public Result(Error error)
+            : base(error)
+        {
+        }
+
+        public Result(IList<Error> errors)
+            : base(errors)
+        {
+        }
     }
 }

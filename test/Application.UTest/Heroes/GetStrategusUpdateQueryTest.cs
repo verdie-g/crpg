@@ -13,7 +13,7 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Battles
 {
-    public class GetUpdateQueryTest : TestBase
+    public class GetStrategusUpdateQueryTest : TestBase
     {
         [Test]
         public async Task ShouldReturnErrorIfNotFound()

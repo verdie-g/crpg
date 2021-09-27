@@ -19,7 +19,7 @@ namespace Crpg.GameMod.DataExport
 
         public Task Export(string outputPath)
         {
-            var settlements = new List<CrpgStrategusSettlementCreation>();
+            var settlements = new List<CrpgSettlementCreation>();
 
             var settlementsDoc = XDocument.Load(SettlementsFile);
             foreach (var settlementNode in settlementsDoc.Descendants("Settlement"))
@@ -29,7 +29,7 @@ namespace Crpg.GameMod.DataExport
                     continue;
                 }
 
-                var settlement = new CrpgStrategusSettlementCreation
+                var settlement = new CrpgSettlementCreation
                 {
                     Name = settlementNode.Attribute("name")!.Value.Split('}')[1],
                     Type = GetSettlementType(settlementNode),
@@ -64,18 +64,18 @@ namespace Crpg.GameMod.DataExport
         private static CrpgCulture ParseCulture(string mbCulture) =>
             (CrpgCulture)Enum.Parse(typeof(CrpgCulture), mbCulture.Split('.')[1], true);
 
-        private static CrpgStrategusSettlementType GetSettlementType(XElement settlementNode)
+        private static CrpgSettlementType GetSettlementType(XElement settlementNode)
         {
             var componentNode = settlementNode.Element("Components")!.Elements().First();
             if (componentNode.Name.LocalName == "Village")
             {
-                return CrpgStrategusSettlementType.Village;
+                return CrpgSettlementType.Village;
             }
 
             var isCastleAttribute = componentNode.Attribute("is_castle");
             return isCastleAttribute != null && bool.Parse(isCastleAttribute.Value)
-                ? CrpgStrategusSettlementType.Castle
-                : CrpgStrategusSettlementType.Town;
+                ? CrpgSettlementType.Castle
+                : CrpgSettlementType.Town;
         }
 
         private static string GetSettlementScene(XElement settlementNode)

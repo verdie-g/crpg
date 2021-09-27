@@ -12,6 +12,8 @@ namespace Crpg.Sdk.Metrics.Debug
             new DebugMetric(metricName, tags);
         public IGauge CreateGauge(string metricName, Func<double> evaluator, IList<KeyValuePair<string, string>>? tags = null) =>
             new DebugMetric(metricName, tags);
-        public void Dispose() { }
+        public void Dispose()
+        {
+        }
     }
 }

@@ -81,7 +81,6 @@ namespace Crpg.Application.Settlements.Commands
                     }
                 }
 
-
                 if (heroItem == null) // If hero did not have this item before.
                 {
                     heroItem = new HeroItem

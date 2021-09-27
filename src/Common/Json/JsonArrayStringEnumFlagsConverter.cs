@@ -6,18 +6,6 @@ using System.Text.Json.Serialization;
 
 namespace Crpg.Common.Json
 {
-    public class JsonArrayStringEnumFlagsConverterFactory : JsonConverterFactory
-    {
-        public override bool CanConvert(Type typeToConvert) =>
-            typeToConvert.IsEnum && typeToConvert.IsDefined(typeof(FlagsAttribute), false);
-
-        public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
-        {
-            var converterType = typeof(JsonArrayStringEnumFlagsConverter<>).MakeGenericType(typeToConvert);
-            return (JsonConverter)Activator.CreateInstance(converterType)!;
-        }
-    }
-
     /// <summary>
     /// Converts enum with <see cref="System.FlagsAttribute"/> to a JSON array of strings.
     /// </summary>
@@ -71,6 +59,18 @@ namespace Crpg.Common.Json
             }
 
             writer.WriteEndArray();
+        }
+    }
+
+    public class JsonArrayStringEnumFlagsConverterFactory : JsonConverterFactory
+    {
+        public override bool CanConvert(Type typeToConvert) =>
+            typeToConvert.IsEnum && typeToConvert.IsDefined(typeof(FlagsAttribute), false);
+
+        public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+        {
+            var converterType = typeof(JsonArrayStringEnumFlagsConverter<>).MakeGenericType(typeToConvert);
+            return (JsonConverter)Activator.CreateInstance(converterType)!;
         }
     }
 }

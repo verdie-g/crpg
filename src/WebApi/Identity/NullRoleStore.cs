@@ -18,6 +18,8 @@ namespace Crpg.WebApi.Identity
         public Task SetNormalizedRoleNameAsync(IdentityRole role, string normalizedName, CancellationToken cancellationToken) => throw new NotImplementedException();
         public Task SetRoleNameAsync(IdentityRole role, string roleName, CancellationToken cancellationToken) => throw new NotImplementedException();
         public Task<IdentityResult> UpdateAsync(IdentityRole role, CancellationToken cancellationToken) => throw new NotImplementedException();
-        public void Dispose() { }
+        public void Dispose()
+        {
+        }
     }
 }

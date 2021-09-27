@@ -55,6 +55,8 @@ namespace Crpg.WebApi.Identity
         public Task ReplaceClaimAsync(UserViewModel user, Claim claim, Claim newClaim, CancellationToken cancellationToken) => throw new NotImplementedException();
         public Task RemoveClaimsAsync(UserViewModel user, IEnumerable<Claim> claims, CancellationToken cancellationToken) => throw new NotImplementedException();
         public Task<IList<UserViewModel>> GetUsersForClaimAsync(Claim claim, CancellationToken cancellationToken) => throw new NotImplementedException();
-        public void Dispose() { }
+        public void Dispose()
+        {
+        }
     }
 }

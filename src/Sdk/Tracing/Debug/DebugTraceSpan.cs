@@ -23,7 +23,9 @@ namespace Crpg.Sdk.Tracing.Debug
             _tags = tags;
         }
 
-        public void SetException(Exception exception) { }
+        public void SetException(Exception exception)
+        {
+        }
 
         public void Dispose() => Logger.Log(LogLevel.Debug, "End of trace {0}", ToString());
 

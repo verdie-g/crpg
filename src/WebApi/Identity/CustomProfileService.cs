@@ -10,7 +10,8 @@ namespace Crpg.WebApi.Identity
     internal class CustomProfileService : ProfileService<UserViewModel>
     {
         public CustomProfileService(UserManager<UserViewModel> userManager, IUserClaimsPrincipalFactory<UserViewModel> claimsFactory,
-            ILogger<ProfileService<UserViewModel>> logger) : base(userManager, claimsFactory, logger)
+            ILogger<ProfileService<UserViewModel>> logger)
+            : base(userManager, claimsFactory, logger)
         {
         }
 

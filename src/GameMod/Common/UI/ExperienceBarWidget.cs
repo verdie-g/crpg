@@ -14,7 +14,8 @@ namespace Crpg.GameMod.Common.UI
         private readonly Sprite[] _sprites;
         private float _levelProgression;
 
-        public ExperienceBarWidget(UIContext context) : base(context)
+        public ExperienceBarWidget(UIContext context)
+            : base(context)
         {
             _sprites = LoadSprites();
         }
