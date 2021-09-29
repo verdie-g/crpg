@@ -16,12 +16,12 @@ namespace Crpg.Application.Common.Services
         bool ArePointsAtInteractionDistance(Point pointA, Point pointB);
 
         /// <summary>
-        /// Calculate a position between the points specified by <see cref="current"/> and <see cref="target"/>, moving
-        /// no farther than the distance specified by <see cref="maxDistanceDelta"/>.
+        /// Calculate a position between the points specified by <paramref name="current"/> and <paramref name="target"/>,
+        /// moving no farther than the distance specified by <paramref name="maxDistanceDelta"/>.
         /// </summary>
         Point MovePointTowards(Point current, Point target, double maxDistanceDelta);
 
-        /// <summary>Translates a point from <see cref="sourceRegion"/> to <see cref="targetRegion"/>.</summary>
+        /// <summary>Translates a point from <paramref name="sourceRegion"/> to <paramref name="targetRegion"/>.</summary>
         Point TranslatePositionForRegion(Point pos, Region sourceRegion, Region targetRegion);
 
         /// <summary>Get the spawning position depending on the region.</summary>

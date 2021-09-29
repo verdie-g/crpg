@@ -10,7 +10,7 @@ namespace Crpg.Application.Common.Services
         int GetLevelForExperience(int experience);
 
         /// <summary>
-        /// Get the total experience needed to reach <see cref="level"/>.
+        /// Get the total experience needed to reach <paramref name="level"/>.
         /// </summary>
         int GetExperienceForLevel(int level);
     }

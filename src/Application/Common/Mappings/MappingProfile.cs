@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Crpg.Application.Common.Mappings
 {
     /// <summary>
-    /// AutoMapper's profile. Used by <see cref="IServiceCollection.AddAutoMapper"/>.
+    /// AutoMapper's profile. Used by IServiceCollection.AddAutoMapper.
     /// </summary>
     public class MappingProfile : Profile
     {

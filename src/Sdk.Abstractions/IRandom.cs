@@ -16,7 +16,7 @@
         /// <returns>
         /// A 32-bit signed integer greater than or equal to <paramref name="minValue"/> and less than <paramref name="maxValue"/>;
         /// that is, the range of return values includes <paramref name="minValue"/> but not maxValue. If <paramref name="minValue"/>
-        /// equals <paramref name="maxValue"/>, minValue is returned
+        /// equals <paramref name="maxValue"/>, minValue is returned.
         /// </returns>
         int Next(int minValue, int maxValue);
 
