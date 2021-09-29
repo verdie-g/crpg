@@ -12,11 +12,11 @@ namespace Crpg.Common.UTest
 
             await Task.Delay(200);
             Assert.Greater(sw.Elapsed.TotalMilliseconds, 150);
-            Assert.Less(sw.Elapsed.TotalMilliseconds, 250);
+            Assert.Less(sw.Elapsed.TotalMilliseconds, 500);
 
             await Task.Delay(200);
             Assert.Greater(sw.Elapsed.TotalMilliseconds, 350);
-            Assert.Less(sw.Elapsed.TotalMilliseconds, 500);
+            Assert.Less(sw.Elapsed.TotalMilliseconds, 1000);
         }
     }
 }
