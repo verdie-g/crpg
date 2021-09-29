@@ -13,7 +13,7 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldGetClanMembersIfClanExists()
         {
-            var clan = new Clan
+            Clan clan = new()
             {
                 Members =
                 {

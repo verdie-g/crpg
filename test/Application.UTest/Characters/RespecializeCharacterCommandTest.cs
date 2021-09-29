@@ -8,7 +8,6 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 
@@ -24,7 +23,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task RespecializeCharacterLevel3ShouldMakeItLevel2()
         {
-            var character = new Character
+            Character character = new()
             {
                 Generation = 2,
                 Level = 3,
@@ -40,10 +39,10 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
-            var experienceTableMock = new Mock<IExperienceTable>();
+            Mock<IExperienceTable> experienceTableMock = new();
             experienceTableMock.Setup(et => et.GetLevelForExperience(75)).Returns(2);
 
-            var characterServiceMock = new Mock<ICharacterService>();
+            Mock<ICharacterService> characterServiceMock = new();
 
             RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, experienceTableMock.Object, Constants);
             await handler.Handle(new RespecializeCharacterCommand

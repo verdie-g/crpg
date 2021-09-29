@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Common.Results;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
@@ -25,7 +24,7 @@ namespace Crpg.Application.UTest.Characters
             });
             await ArrangeDb.SaveChangesAsync();
 
-            var cmd = new UpdateCharacterCommand
+            UpdateCharacterCommand cmd = new()
             {
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
@@ -39,13 +38,13 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldReturnErrorIfCharacterNameIsAlreadyUsed()
         {
-            var character1 = new Character { Name = "abc" };
-            var character2 = new Character { Name = "def" };
-            var user = new User { Characters = { character1, character2 } };
+            Character character1 = new() { Name = "abc" };
+            Character character2 = new() { Name = "def" };
+            User user = new() { Characters = { character1, character2 } };
             ArrangeDb.Users.AddRange(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var cmd = new UpdateCharacterCommand
+            UpdateCharacterCommand cmd = new()
             {
                 CharacterId = character1.Id,
                 UserId = user.Id,
@@ -63,7 +62,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             UpdateCharacterCommand.Handler handler = new(ActDb, Mapper);
-            var cmd = new UpdateCharacterCommand
+            UpdateCharacterCommand cmd = new()
             {
                 CharacterId = 1,
                 UserId = user.Entity.Id,
@@ -81,7 +80,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             UpdateCharacterCommand.Handler handler = new(ActDb, Mapper);
-            var cmd = new UpdateCharacterCommand
+            UpdateCharacterCommand cmd = new()
             {
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
@@ -98,7 +97,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             UpdateCharacterCommand.Handler handler = new(ActDb, Mapper);
-            var cmd = new UpdateCharacterCommand
+            UpdateCharacterCommand cmd = new()
             {
                 CharacterId = character.Entity.Id,
                 UserId = 1,

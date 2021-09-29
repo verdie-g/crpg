@@ -1,4 +1,3 @@
-using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

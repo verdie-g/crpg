@@ -4,13 +4,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Models;
-using Crpg.Domain.Entities;
-using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Microsoft.EntityFrameworkCore;
 

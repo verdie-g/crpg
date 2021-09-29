@@ -1,14 +1,12 @@
 using System;
 using System.Threading.Tasks;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
-using Crpg.Persistence;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
 
-namespace Persistence.UTest
+namespace Crpg.Persistence.UTest
 {
     public class CrpgDbContextTest
     {
@@ -19,12 +17,12 @@ namespace Persistence.UTest
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
 
-            var dt = new DateTimeOffset(new DateTime(2000, 01, 02));
-            var idt = new Mock<IDateTimeOffset>();
+            DateTimeOffset dt = new(new DateTime(2000, 01, 02));
+            Mock<IDateTimeOffset> idt = new();
             idt.SetupGet(i => i.Now).Returns(dt);
-            var db = new CrpgDbContext(options, idt.Object);
+            CrpgDbContext db = new(options, idt.Object);
 
-            var character = new Character();
+            Character character = new();
             db.Add(character);
             await db.SaveChangesAsync();
 
@@ -39,16 +37,16 @@ namespace Persistence.UTest
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
 
-            var dt1 = new DateTimeOffset(new DateTime(2000, 01, 02));
-            var dt2 = new DateTimeOffset(new DateTime(2000, 01, 03));
-            var idt = new Mock<IDateTimeOffset>();
+            DateTimeOffset dt1 = new(new DateTime(2000, 01, 02));
+            DateTimeOffset dt2 = new(new DateTime(2000, 01, 03));
+            Mock<IDateTimeOffset> idt = new();
             idt.SetupSequence(i => i.Now)
                .Returns(dt1) // LastModifiedAt
                .Returns(dt1) // CreatedAt
                .Returns(dt2); // LastModifiedAt
-            var db = new CrpgDbContext(options, idt.Object);
+            CrpgDbContext db = new(options, idt.Object);
 
-            var character = new Character();
+            Character character = new();
             db.Add(character);
             await db.SaveChangesAsync();
 

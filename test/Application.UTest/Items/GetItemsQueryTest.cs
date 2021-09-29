@@ -1,7 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Items.Queries;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Items;
 using NUnit.Framework;
 
@@ -12,23 +11,23 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task BaseItems()
         {
-            var items = new[]
+            Item[] items =
             {
-                new Item
+                new()
                 {
                     Name = "toto",
                     Value = 100,
                     Type = ItemType.BodyArmor,
                     Rank = 0,
                 },
-                new Item
+                new()
                 {
                     Name = "toto",
                     Value = 100,
                     Type = ItemType.ShoulderArmor,
                     Rank = 3,
                 },
-                new Item
+                new()
                 {
                     Name = "tata",
                     Value = 200,
@@ -48,23 +47,23 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task AllItems()
         {
-            var items = new[]
+            Item[] items =
             {
-                new Item
+                new()
                 {
                     Name = "toto",
                     Value = 100,
                     Type = ItemType.BodyArmor,
                     Rank = 0,
                 },
-                new Item
+                new()
                 {
                     Name = "toto",
                     Value = 100,
                     Type = ItemType.ShoulderArmor,
                     Rank = 3,
                 },
-                new Item
+                new()
                 {
                     Name = "tata",
                     Value = 200,

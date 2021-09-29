@@ -21,10 +21,10 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldIncreaseTroopsOfHeroesRecruiting()
         {
-            var hero1 = new Hero { Troops = 0, Status = HeroStatus.RecruitingInSettlement, User = new User() };
-            var hero2 = new Hero { Troops = 5, Status = HeroStatus.RecruitingInSettlement, User = new User() };
-            var hero3 = new Hero { Troops = 9, Status = HeroStatus.RecruitingInSettlement, User = new User() };
-            var hero4 = new Hero { Troops = 2, Status = HeroStatus.IdleInSettlement, User = new User() };
+            Hero hero1 = new() { Troops = 0, Status = HeroStatus.RecruitingInSettlement, User = new User() };
+            Hero hero2 = new() { Troops = 5, Status = HeroStatus.RecruitingInSettlement, User = new User() };
+            Hero hero3 = new() { Troops = 9, Status = HeroStatus.RecruitingInSettlement, User = new User() };
+            Hero hero4 = new() { Troops = 2, Status = HeroStatus.IdleInSettlement, User = new User() };
             ArrangeDb.Heroes.AddRange(hero1, hero2, hero3, hero4);
             await ArrangeDb.SaveChangesAsync();
 

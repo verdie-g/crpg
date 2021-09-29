@@ -161,7 +161,7 @@ namespace Crpg.Application.UTest.Battles
             ArrangeDb.Battles.Add(battle);
             await ArrangeDb.SaveChangesAsync();
 
-            var characterClassModelMock = new Mock<ICharacterClassModel>();
+            Mock<ICharacterClassModel> characterClassModelMock = new();
             characterClassModelMock
                 .Setup(m => m.ResolveCharacterClass(It.IsAny<CharacterStatistics>()))
                 .Returns(CharacterClass.Crossbowman);

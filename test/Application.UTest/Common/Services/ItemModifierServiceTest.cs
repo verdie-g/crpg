@@ -10,7 +10,7 @@ namespace Crpg.Application.UTest.Common.Services
         [Theory]
         public void StatsShouldIncreaseBetweenRanks(ItemType itemType)
         {
-            var item = new Item
+            Item item = new()
             {
                 TemplateMbId = "123",
                 Name = "toto",
@@ -50,7 +50,7 @@ namespace Crpg.Application.UTest.Common.Services
             };
 
             var itemModifiers = new FileItemModifiersSource().LoadItemModifiers();
-            var itemModifierService = new ItemModifierService(itemModifiers);
+            ItemModifierService itemModifierService = new(itemModifiers);
             Item[] modifiedItems =
             {
                 itemModifierService.ModifyItem(item, -3),

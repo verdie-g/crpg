@@ -49,12 +49,10 @@ namespace Crpg.WebApi
     public class Startup
     {
         private readonly IConfiguration _configuration;
-        private readonly IWebHostEnvironment _environment;
 
-        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
+        public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
-            _environment = environment;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -156,11 +154,11 @@ namespace Crpg.WebApi
 
         private void ConfigureCors(CorsOptions options)
         {
-            var clients = new List<Client>();
+            List<Client> clients = new();
             _configuration.GetSection("IdentityServer:Clients").Bind(clients);
 
             // Get allowed origins from clients' redirect uris.
-            var allowedOrigins = clients
+            string[] allowedOrigins = clients
                 .SelectMany(c => c.RedirectUris)
                 .Select(uri => new Uri(uri).GetLeftPart(UriPartial.Authority))
                 .Distinct()

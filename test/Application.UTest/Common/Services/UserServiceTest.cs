@@ -17,8 +17,8 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public void SetDefaultValuesShouldSetDefaultValues()
         {
-            var userService = new UserService(Constants);
-            var user = new User();
+            UserService userService = new(Constants);
+            User user = new();
             userService.SetDefaultValuesForUser(user);
 
             Assert.AreEqual(Constants.DefaultGold, user.Gold);

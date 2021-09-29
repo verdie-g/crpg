@@ -30,9 +30,9 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldReturnErrorIfUserNotOfficer()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
-            var clan = new Clan
+            Clan clan = new()
             {
                 Members = { new ClanMember { User = user, Role = ClanMemberRole.Member } },
             };
@@ -52,16 +52,16 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldReturnAllClanInvitationsIfTypesAndStatusesEmpty()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
-            var clan = new Clan
+            Clan clan = new()
             {
                 Members = { new ClanMember { User = user, Role = ClanMemberRole.Officer } },
             };
             ArrangeDb.Clans.Add(clan);
-            var invitations = new[]
+            ClanInvitation[] invitations =
             {
-                new ClanInvitation
+                new()
                 {
                     Clan = clan,
                     Invitee = new User(),
@@ -69,7 +69,7 @@ namespace Crpg.Application.UTest.Clans
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Accepted,
                 },
-                new ClanInvitation
+                new()
                 {
                     Clan = clan,
                     Invitee = new User(),
@@ -77,7 +77,7 @@ namespace Crpg.Application.UTest.Clans
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Declined,
                 },
-                new ClanInvitation
+                new()
                 {
                     Clan = clan,
                     Invitee = new User(),
@@ -85,7 +85,7 @@ namespace Crpg.Application.UTest.Clans
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Pending,
                 },
-                new ClanInvitation
+                new()
                 {
                     Clan = clan,
                     Invitee = new User(),
@@ -93,7 +93,7 @@ namespace Crpg.Application.UTest.Clans
                     Type = ClanInvitationType.Request,
                     Status = ClanInvitationStatus.Pending,
                 },
-                new ClanInvitation
+                new()
                 {
                     Clan = new Clan(),
                     Invitee = new User(),
@@ -120,9 +120,9 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldReturnSpecifiedTypeAndStatusOnly()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
-            var clan = new Clan
+            Clan clan = new()
             {
                 Members = { new ClanMember { User = user, Role = ClanMemberRole.Officer } },
             };

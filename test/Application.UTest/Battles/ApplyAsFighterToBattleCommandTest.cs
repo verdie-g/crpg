@@ -115,7 +115,7 @@ namespace Crpg.Application.UTest.Battles
             ArrangeDb.Battles.Add(battle);
             await ArrangeDb.SaveChangesAsync();
 
-            var strategusMapMock = new Mock<IStrategusMap>(MockBehavior.Strict);
+            Mock<IStrategusMap> strategusMapMock = new(MockBehavior.Strict);
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(hero.Position, battle.Position))
                 .Returns(false);
@@ -159,7 +159,7 @@ namespace Crpg.Application.UTest.Battles
             ArrangeDb.BattleFighterApplications.Add(existingApplication);
             await ArrangeDb.SaveChangesAsync();
 
-            var strategusMapMock = new Mock<IStrategusMap>(MockBehavior.Strict);
+            Mock<IStrategusMap> strategusMapMock = new(MockBehavior.Strict);
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(hero.Position, battle.Position))
                 .Returns(true);
@@ -194,7 +194,7 @@ namespace Crpg.Application.UTest.Battles
             ArrangeDb.Battles.Add(battle);
             await ArrangeDb.SaveChangesAsync();
 
-            var strategusMapMock = new Mock<IStrategusMap>(MockBehavior.Strict);
+            Mock<IStrategusMap> strategusMapMock = new(MockBehavior.Strict);
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(hero.Position, battle.Position))
                 .Returns(true);

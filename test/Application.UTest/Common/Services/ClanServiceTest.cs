@@ -14,7 +14,7 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public async Task GetClanMemberShouldReturnErrorIfUserNotFound()
         {
-            var clanService = new ClanService();
+            ClanService clanService = new();
             var res = await clanService.GetClanMember(ActDb, 1, 2, CancellationToken.None);
             Assert.IsNotNull(res.Errors);
             Assert.AreEqual(ErrorCode.UserNotFound, res.Errors![0].Code);
@@ -23,11 +23,11 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public async Task GetClanMemberShouldReturnErrorIfUserIsNotInAClan()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var clanService = new ClanService();
+            ClanService clanService = new();
             var res = await clanService.GetClanMember(ActDb, user.Id, 2, CancellationToken.None);
             Assert.IsNotNull(res.Errors);
             Assert.AreEqual(ErrorCode.UserNotInAClan, res.Errors![0].Code);
@@ -36,11 +36,11 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public async Task GetClanMemberShouldReturnErrorIfUserIsNotAClanMember()
         {
-            var user = new User { ClanMembership = new ClanMember { Clan = new Clan() } };
+            User user = new() { ClanMembership = new ClanMember { Clan = new Clan() } };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var clanService = new ClanService();
+            ClanService clanService = new();
             var res = await clanService.GetClanMember(ActDb, user.Id, 3, CancellationToken.None);
             Assert.IsNotNull(res.Errors);
             Assert.AreEqual(ErrorCode.UserNotAClanMember, res.Errors![0].Code);
@@ -49,11 +49,11 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public async Task GetClanMemberShouldNotReturnErrorIfUserIsAClanMember()
         {
-            var user = new User { ClanMembership = new ClanMember { Clan = new Clan() } };
+            User user = new() { ClanMembership = new ClanMember { Clan = new Clan() } };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var clanService = new ClanService();
+            ClanService clanService = new();
             var res = await clanService.GetClanMember(ActDb, user.Id, user.ClanMembership.ClanId, CancellationToken.None);
             Assert.IsNull(res.Errors);
         }
@@ -61,13 +61,13 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public async Task JoinClanShouldDeleteInvitationRequestsAndDeclineInvitationOffers()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var invitations = new[]
+            ClanInvitation[] invitations =
             {
-                new ClanInvitation
+                new()
                 {
                     Clan = new Clan(),
                     Invitee = user,
@@ -75,7 +75,7 @@ namespace Crpg.Application.UTest.Common.Services
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Pending,
                 },
-                new ClanInvitation
+                new()
                 {
                     Clan = new Clan(),
                     Invitee = user,
@@ -83,7 +83,7 @@ namespace Crpg.Application.UTest.Common.Services
                     Type = ClanInvitationType.Offer,
                     Status = ClanInvitationStatus.Declined,
                 },
-                new ClanInvitation
+                new()
                 {
                     Clan = new Clan(),
                     Invitee = user,
@@ -91,7 +91,7 @@ namespace Crpg.Application.UTest.Common.Services
                     Type = ClanInvitationType.Request,
                     Status = ClanInvitationStatus.Pending,
                 },
-                new ClanInvitation
+                new()
                 {
                     Clan = new Clan(),
                     Invitee = user,
@@ -103,7 +103,7 @@ namespace Crpg.Application.UTest.Common.Services
             ArrangeDb.ClanInvitations.AddRange(invitations);
             await ArrangeDb.SaveChangesAsync();
 
-            var clanService = new ClanService();
+            ClanService clanService = new();
             var u = await ActDb.Users.FirstAsync(u => u.Id == user.Id);
             var res = await clanService.JoinClan(ActDb, u, clan.Id, CancellationToken.None);
             await ActDb.SaveChangesAsync();
@@ -120,9 +120,9 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public async Task LeaveClanShouldReturnErrorIfMemberLeaderAndNotLastMember()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
-            var clan = new Clan
+            Clan clan = new()
             {
                 Members =
                 {
@@ -133,7 +133,7 @@ namespace Crpg.Application.UTest.Common.Services
             ArrangeDb.Clans.Add(clan);
             await ArrangeDb.SaveChangesAsync();
 
-            var clanService = new ClanService();
+            ClanService clanService = new();
             var member = await ActDb.ClanMembers.FirstAsync(cm => cm.UserId == user.Id);
             var res = await clanService.LeaveClan(ActDb, member, CancellationToken.None);
             await ActDb.SaveChangesAsync();
@@ -145,13 +145,13 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public async Task LeaveClanShouldLeaveClanIfMemberLeaderButLastMember()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
-            var clan = new Clan { Members = { new ClanMember { User = user, Role = ClanMemberRole.Leader } } };
+            Clan clan = new() { Members = { new ClanMember { User = user, Role = ClanMemberRole.Leader } } };
             ArrangeDb.Clans.Add(clan);
             await ArrangeDb.SaveChangesAsync();
 
-            var clanService = new ClanService();
+            ClanService clanService = new();
             var member = await ActDb.ClanMembers.FirstAsync(cm => cm.UserId == user.Id);
             var res = await clanService.LeaveClan(ActDb, member, CancellationToken.None);
             await ActDb.SaveChangesAsync();
@@ -164,13 +164,13 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public async Task LeaveClanShouldWork()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
-            var clan = new Clan { Members = { new ClanMember { User = user, Role = ClanMemberRole.Member } } };
+            Clan clan = new() { Members = { new ClanMember { User = user, Role = ClanMemberRole.Member } } };
             ArrangeDb.Clans.Add(clan);
             await ArrangeDb.SaveChangesAsync();
 
-            var clanService = new ClanService();
+            ClanService clanService = new();
             var member = await ActDb.ClanMembers.FirstAsync(cm => cm.UserId == user.Id);
             var res = await clanService.LeaveClan(ActDb, member, CancellationToken.None);
             await ActDb.SaveChangesAsync();

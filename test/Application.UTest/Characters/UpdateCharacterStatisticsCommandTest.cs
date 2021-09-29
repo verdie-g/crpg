@@ -22,7 +22,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldUpdateIfEnoughPoints()
         {
-            var character = new Character
+            Character character = new()
             {
                 Statistics = new CharacterStatistics
                 {
@@ -216,7 +216,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldntUpdateIfInconsistentStats()
         {
-            var character = new Character
+            Character character = new()
             {
                 Statistics = new CharacterStatistics
                 {
@@ -227,49 +227,49 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
-            var statsObjects = new[]
+            CharacterStatisticsViewModel[] statsObjects =
             {
-                new CharacterStatisticsViewModel
+                new()
                 {
                     Attributes = new CharacterAttributesViewModel { Strength = 2 },
                     Skills = new CharacterSkillsViewModel { IronFlesh = 1 },
                 },
-                new CharacterStatisticsViewModel
+                new()
                 {
                     Attributes = new CharacterAttributesViewModel { Strength = 2 },
                     Skills = new CharacterSkillsViewModel { PowerStrike = 1 },
                 },
-                new CharacterStatisticsViewModel
+                new()
                 {
                     Attributes = new CharacterAttributesViewModel { Strength = 2 },
                     Skills = new CharacterSkillsViewModel { PowerDraw = 1 },
                 },
-                new CharacterStatisticsViewModel
+                new()
                 {
                     Attributes = new CharacterAttributesViewModel { Strength = 2 },
                     Skills = new CharacterSkillsViewModel { PowerThrow = 1 },
                 },
-                new CharacterStatisticsViewModel
+                new()
                 {
                     Attributes = new CharacterAttributesViewModel { Agility = 2 },
                     Skills = new CharacterSkillsViewModel { Athletics = 1 },
                 },
-                new CharacterStatisticsViewModel
+                new()
                 {
                     Attributes = new CharacterAttributesViewModel { Agility = 2 },
                     Skills = new CharacterSkillsViewModel { Riding = 1 },
                 },
-                new CharacterStatisticsViewModel
+                new()
                 {
                     Attributes = new CharacterAttributesViewModel { Agility = 2 },
                     Skills = new CharacterSkillsViewModel { WeaponMaster = 1 },
                 },
-                new CharacterStatisticsViewModel
+                new()
                 {
                     Attributes = new CharacterAttributesViewModel { Agility = 5 },
                     Skills = new CharacterSkillsViewModel { MountedArchery = 1 },
                 },
-                new CharacterStatisticsViewModel
+                new()
                 {
                     Attributes = new CharacterAttributesViewModel { Agility = 5 },
                     Skills = new CharacterSkillsViewModel { Shield = 1 },
@@ -292,7 +292,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldntUpdateIfNotEnoughAttributePoints()
         {
-            var character = new Character();
+            Character character = new();
             ArrangeDb.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
@@ -318,21 +318,21 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldntUpdateIfNotEnoughSkillPoints()
         {
-            var character = new Character();
+            Character character = new();
             ArrangeDb.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
-            var statsObjects = new[]
+            CharacterStatisticsViewModel[] statsObjects =
             {
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { IronFlesh = 1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerStrike = 1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerDraw = 1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerThrow = 1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Athletics = 1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { WeaponMaster = 1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Riding = 1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { MountedArchery = 1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Shield = 1 } },
+                new() { Skills = new CharacterSkillsViewModel { IronFlesh = 1 } },
+                new() { Skills = new CharacterSkillsViewModel { PowerStrike = 1 } },
+                new() { Skills = new CharacterSkillsViewModel { PowerDraw = 1 } },
+                new() { Skills = new CharacterSkillsViewModel { PowerThrow = 1 } },
+                new() { Skills = new CharacterSkillsViewModel { Athletics = 1 } },
+                new() { Skills = new CharacterSkillsViewModel { WeaponMaster = 1 } },
+                new() { Skills = new CharacterSkillsViewModel { Riding = 1 } },
+                new() { Skills = new CharacterSkillsViewModel { MountedArchery = 1 } },
+                new() { Skills = new CharacterSkillsViewModel { Shield = 1 } },
             };
 
             UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
@@ -351,7 +351,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldntUpdateIfNotEnoughWeaponProficiencyPoints()
         {
-            var character = new Character();
+            Character character = new();
             ArrangeDb.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
@@ -381,7 +381,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task StatShouldntBeDecreased()
         {
-            var character = new Character
+            Character character = new()
             {
                 Statistics = new CharacterStatistics
                 {
@@ -393,25 +393,25 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
-            var statsObjects = new[]
+            CharacterStatisticsViewModel[] statsObjects =
             {
-                new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Agility = -1 } },
-                new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Strength = -1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { IronFlesh = -1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerStrike = -1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerDraw = -1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { PowerThrow = -1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Athletics = -1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Riding = -1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { WeaponMaster = -1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { MountedArchery = -1 } },
-                new CharacterStatisticsViewModel { Skills = new CharacterSkillsViewModel { Shield = -1 } },
-                new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { OneHanded = -1 } },
-                new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { TwoHanded = -1 } },
-                new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Polearm = -1 } },
-                new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Bow = -1 } },
-                new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Throwing = -1 } },
-                new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = -1 } },
+                new() { Attributes = new CharacterAttributesViewModel { Agility = -1 } },
+                new() { Attributes = new CharacterAttributesViewModel { Strength = -1 } },
+                new() { Skills = new CharacterSkillsViewModel { IronFlesh = -1 } },
+                new() { Skills = new CharacterSkillsViewModel { PowerStrike = -1 } },
+                new() { Skills = new CharacterSkillsViewModel { PowerDraw = -1 } },
+                new() { Skills = new CharacterSkillsViewModel { PowerThrow = -1 } },
+                new() { Skills = new CharacterSkillsViewModel { Athletics = -1 } },
+                new() { Skills = new CharacterSkillsViewModel { Riding = -1 } },
+                new() { Skills = new CharacterSkillsViewModel { WeaponMaster = -1 } },
+                new() { Skills = new CharacterSkillsViewModel { MountedArchery = -1 } },
+                new() { Skills = new CharacterSkillsViewModel { Shield = -1 } },
+                new() { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { OneHanded = -1 } },
+                new() { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { TwoHanded = -1 } },
+                new() { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Polearm = -1 } },
+                new() { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Bow = -1 } },
+                new() { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Throwing = -1 } },
+                new() { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = -1 } },
             };
 
             UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);

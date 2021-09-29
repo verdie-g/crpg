@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using TaleWorlds.Core;
-using TaleWorlds.Library;
+﻿using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 

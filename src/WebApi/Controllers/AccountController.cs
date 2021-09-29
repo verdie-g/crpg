@@ -26,8 +26,11 @@ namespace Crpg.WebApi.Controllers
             }
 
             const string provider = "Steam";
-            var properties = new AuthenticationProperties { RedirectUri = returnUrl };
-            properties.Items[provider] = provider;
+            AuthenticationProperties properties = new()
+            {
+                RedirectUri = returnUrl,
+                Items = { [provider] = provider },
+            };
             return new ChallengeResult(provider, properties);
         }
 

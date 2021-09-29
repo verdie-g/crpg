@@ -9,12 +9,12 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         private readonly int _maxWave;
 
-        private int _waveCount = 0;
+        private int _waveCount;
         private WaveState _waveState = WaveState.Ended;
         private MissionTimer? _waveEndTimer;
 
         public event Action<int> OnWaveStarted = _ => { };
-        public event Action<int, Team> OnWaveEnding = (_, __) => { };
+        public event Action<int, Team> OnWaveEnding = (_, _) => { };
         public event Action<int> OnWaveEnded = _ => { };
 
         public WaveController(int maxWave)

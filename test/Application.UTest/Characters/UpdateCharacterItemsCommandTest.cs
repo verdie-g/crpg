@@ -17,32 +17,32 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task FullUpdate()
         {
-            var user = new User();
+            User user = new();
 
-            var headOld = new UserItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
-            var headNew = new UserItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
-            var shoulderOld = new UserItem { User = user, Item = new Item { Type = ItemType.ShoulderArmor } };
-            var shoulderNew = new UserItem { User = user, Item = new Item { Type = ItemType.ShoulderArmor } };
-            var bodyOld = new UserItem { User = user, Item = new Item { Type = ItemType.BodyArmor } };
-            var bodyNew = new UserItem { User = user, Item = new Item { Type = ItemType.BodyArmor } };
-            var handOld = new UserItem { User = user, Item = new Item { Type = ItemType.HandArmor } };
-            var handNew = new UserItem { User = user, Item = new Item { Type = ItemType.HandArmor } };
-            var legOld = new UserItem { User = user, Item = new Item { Type = ItemType.LegArmor } };
-            var legNew = new UserItem { User = user, Item = new Item { Type = ItemType.LegArmor } };
-            var mountHarnessOld = new UserItem { User = user, Item = new Item { Type = ItemType.MountHarness } };
-            var mountHarnessNew = new UserItem { User = user, Item = new Item { Type = ItemType.MountHarness } };
-            var mountOld = new UserItem { User = user, Item = new Item { Type = ItemType.Mount } };
-            var mountNew = new UserItem { User = user, Item = new Item { Type = ItemType.Mount } };
-            var weapon0Old = new UserItem { User = user, Item = new Item { Type = ItemType.Arrows } };
-            var weapon0New = new UserItem { User = user, Item = new Item { Type = ItemType.Bolts } };
-            var weapon1Old = new UserItem { User = user, Item = new Item { Type = ItemType.Bow } };
-            var weapon1New = new UserItem { User = user, Item = new Item { Type = ItemType.Crossbow } };
-            var weapon2Old = new UserItem { User = user, Item = new Item { Type = ItemType.Polearm } };
-            var weapon2New = new UserItem { User = user, Item = new Item { Type = ItemType.Shield } };
-            var weapon3Old = new UserItem { User = user, Item = new Item { Type = ItemType.OneHandedWeapon } };
-            var weapon3New = new UserItem { User = user, Item = new Item { Type = ItemType.TwoHandedWeapon } };
+            UserItem headOld = new() { User = user, Item = new Item { Type = ItemType.HeadArmor } };
+            UserItem headNew = new() { User = user, Item = new Item { Type = ItemType.HeadArmor } };
+            UserItem shoulderOld = new() { User = user, Item = new Item { Type = ItemType.ShoulderArmor } };
+            UserItem shoulderNew = new() { User = user, Item = new Item { Type = ItemType.ShoulderArmor } };
+            UserItem bodyOld = new() { User = user, Item = new Item { Type = ItemType.BodyArmor } };
+            UserItem bodyNew = new() { User = user, Item = new Item { Type = ItemType.BodyArmor } };
+            UserItem handOld = new() { User = user, Item = new Item { Type = ItemType.HandArmor } };
+            UserItem handNew = new() { User = user, Item = new Item { Type = ItemType.HandArmor } };
+            UserItem legOld = new() { User = user, Item = new Item { Type = ItemType.LegArmor } };
+            UserItem legNew = new() { User = user, Item = new Item { Type = ItemType.LegArmor } };
+            UserItem mountHarnessOld = new() { User = user, Item = new Item { Type = ItemType.MountHarness } };
+            UserItem mountHarnessNew = new() { User = user, Item = new Item { Type = ItemType.MountHarness } };
+            UserItem mountOld = new() { User = user, Item = new Item { Type = ItemType.Mount } };
+            UserItem mountNew = new() { User = user, Item = new Item { Type = ItemType.Mount } };
+            UserItem weapon0Old = new() { User = user, Item = new Item { Type = ItemType.Arrows } };
+            UserItem weapon0New = new() { User = user, Item = new Item { Type = ItemType.Bolts } };
+            UserItem weapon1Old = new() { User = user, Item = new Item { Type = ItemType.Bow } };
+            UserItem weapon1New = new() { User = user, Item = new Item { Type = ItemType.Crossbow } };
+            UserItem weapon2Old = new() { User = user, Item = new Item { Type = ItemType.Polearm } };
+            UserItem weapon2New = new() { User = user, Item = new Item { Type = ItemType.Shield } };
+            UserItem weapon3Old = new() { User = user, Item = new Item { Type = ItemType.OneHandedWeapon } };
+            UserItem weapon3New = new() { User = user, Item = new Item { Type = ItemType.TwoHandedWeapon } };
 
-            var character = new Character
+            Character character = new()
             {
                 Name = "name",
                 EquippedItems =
@@ -68,7 +68,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
-            var cmd = new UpdateCharacterItemsCommand
+            UpdateCharacterItemsCommand cmd = new()
             {
                 CharacterId = character.Id,
                 UserId = user.Id,
@@ -106,16 +106,16 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task PartialUpdate()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
 
-            var headOld = new UserItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
-            var headNew = new UserItem { User = user, Item = new Item { Type = ItemType.HeadArmor } };
-            var bodyNew = new UserItem { User = user, Item = new Item { Type = ItemType.BodyArmor } };
-            var handOld = new UserItem { User = user, Item = new Item { Type = ItemType.HandArmor } };
-            var legOld = new UserItem { User = user, Item = new Item { Type = ItemType.LegArmor } };
+            UserItem headOld = new() { User = user, Item = new Item { Type = ItemType.HeadArmor } };
+            UserItem headNew = new() { User = user, Item = new Item { Type = ItemType.HeadArmor } };
+            UserItem bodyNew = new() { User = user, Item = new Item { Type = ItemType.BodyArmor } };
+            UserItem handOld = new() { User = user, Item = new Item { Type = ItemType.HandArmor } };
+            UserItem legOld = new() { User = user, Item = new Item { Type = ItemType.LegArmor } };
 
-            var character = new Character
+            Character character = new()
             {
                 Name = "name",
                 EquippedItems =
@@ -131,7 +131,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
-            var cmd = new UpdateCharacterItemsCommand
+            UpdateCharacterItemsCommand cmd = new()
             {
                 CharacterId = character.Id,
                 UserId = user.Id,
@@ -166,7 +166,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
-            var cmd = new UpdateCharacterItemsCommand
+            UpdateCharacterItemsCommand cmd = new()
             {
                 CharacterId = 1,
                 UserId = user.Entity.Id,
@@ -184,7 +184,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
-            var cmd = new UpdateCharacterItemsCommand
+            UpdateCharacterItemsCommand cmd = new()
             {
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
@@ -201,7 +201,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
-            var cmd = new UpdateCharacterItemsCommand
+            UpdateCharacterItemsCommand cmd = new()
             {
                 CharacterId = character.Entity.Id,
                 UserId = 1,
@@ -222,7 +222,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
-            var cmd = new UpdateCharacterItemsCommand
+            UpdateCharacterItemsCommand cmd = new()
             {
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
@@ -245,7 +245,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
-            var cmd = new UpdateCharacterItemsCommand
+            UpdateCharacterItemsCommand cmd = new()
             {
                 CharacterId = character.Entity.Id,
                 UserId = user.Entity.Id,
@@ -278,9 +278,9 @@ namespace Crpg.Application.UTest.Characters
         [TestCase(ItemType.Banner, ItemSlot.MountHarness)]
         public async Task WrongSlotForItemType(ItemType itemType, ItemSlot itemSlot)
         {
-            var character = new Character();
-            var userItem = new UserItem { Item = new Item { Type = itemType } };
-            var user = new User
+            Character character = new();
+            UserItem userItem = new() { Item = new Item { Type = itemType } };
+            User user = new()
             {
                 Items = { userItem },
                 Characters = { character },
@@ -289,7 +289,7 @@ namespace Crpg.Application.UTest.Characters
             await ArrangeDb.SaveChangesAsync();
 
             UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
-            var cmd = new UpdateCharacterItemsCommand
+            UpdateCharacterItemsCommand cmd = new()
             {
                 CharacterId = character.Id,
                 UserId = user.Id,

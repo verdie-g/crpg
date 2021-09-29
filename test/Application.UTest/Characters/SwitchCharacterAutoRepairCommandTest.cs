@@ -14,7 +14,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldSwitchOnAutoRepairWithTrue()
         {
-            var character = new Character { AutoRepair = false };
+            Character character = new() { AutoRepair = false };
             ArrangeDb.Characters.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
@@ -34,7 +34,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldSwitchOffAutoRepairWithFalse()
         {
-            var character = new Character { AutoRepair = true };
+            Character character = new() { AutoRepair = true };
             ArrangeDb.Characters.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
@@ -54,7 +54,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldThrowNotFoundIfCharacterNotFound()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 

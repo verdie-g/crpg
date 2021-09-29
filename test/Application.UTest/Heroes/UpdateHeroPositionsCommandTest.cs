@@ -22,9 +22,9 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task UsersMovingToPointShouldMove()
         {
-            var position = new Point(1, 2);
-            var destination = new Point(5, 6);
-            var hero = new Hero
+            Point position = new(1, 2);
+            Point destination = new(5, 6);
+            Hero hero = new()
             {
                 Status = HeroStatus.MovingToPoint,
                 Position = position,
@@ -33,8 +33,8 @@ namespace Crpg.Application.UTest.Heroes
             };
             ArrangeDb.Heroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
-            var newPosition = new Point(2, 3);
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Point newPosition = new(2, 3);
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
                 .Returns(newPosition);
@@ -56,9 +56,9 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ReachedWaypointShouldBeRemovedForMovingToPointUsers()
         {
-            var position = new Point(1, 2);
-            var destination = new Point(5, 6);
-            var hero = new Hero
+            Point position = new(1, 2);
+            Point destination = new(5, 6);
+            Hero hero = new()
             {
                 Status = HeroStatus.MovingToPoint,
                 Position = position,
@@ -67,8 +67,8 @@ namespace Crpg.Application.UTest.Heroes
             };
             ArrangeDb.Heroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
-            var newPosition = new Point(5, 5);
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Point newPosition = new(5, 5);
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
                 .Returns(newPosition);
@@ -90,9 +90,9 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task MovingUsersShouldChangeToIdleIfLastWaypointReached()
         {
-            var position = new Point(1, 2);
-            var destination = new Point(5, 6);
-            var hero = new Hero
+            Point position = new(1, 2);
+            Point destination = new(5, 6);
+            Hero hero = new()
             {
                 Status = HeroStatus.MovingToPoint,
                 Position = position,
@@ -102,8 +102,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Heroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
-            var newPosition = new Point(5, 5);
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Point newPosition = new(5, 5);
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
                 .Returns(newPosition);
@@ -126,7 +126,7 @@ namespace Crpg.Application.UTest.Heroes
         [TestCase(HeroStatus.MovingToAttackHero)]
         public async Task ShouldStopIfMovingToAUserNotInSight(HeroStatus status)
         {
-            var hero = new Hero
+            Hero hero = new()
             {
                 Status = status,
                 Position = new Point(1, 2),
@@ -140,7 +140,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Heroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(0);
             UpdateHeroPositionsCommand.Handler handler = new(ActDb, strategusMapMock.Object, SpeedModelMock);
             await handler.Handle(new UpdateHeroPositionsCommand
@@ -157,9 +157,9 @@ namespace Crpg.Application.UTest.Heroes
         [TestCase(HeroStatus.MovingToAttackHero)]
         public async Task MovingToAnotherUserShouldMove(HeroStatus status)
         {
-            var position = new Point(1, 2);
-            var destination = new Point(5, 6);
-            var hero = new Hero
+            Point position = new(1, 2);
+            Point destination = new(5, 6);
+            Hero hero = new()
             {
                 Status = status,
                 Position = position,
@@ -173,8 +173,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Heroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
-            var newPosition = new Point(2, 3);
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Point newPosition = new(2, 3);
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
@@ -208,15 +208,15 @@ namespace Crpg.Application.UTest.Heroes
         [TestCase(HeroStatus.InBattle)]
         public async Task ShouldNotAttackHeroIfInAUnattackableStatus(HeroStatus targetHeroStatus)
         {
-            var position = new Point(1, 2);
-            var destination = new Point(5, 6);
-            var targetHero = new Hero
+            Point position = new(1, 2);
+            Point destination = new(5, 6);
+            Hero targetHero = new()
             {
                 Status = targetHeroStatus,
                 Position = destination,
                 User = new User(),
             };
-            var hero = new Hero
+            Hero hero = new()
             {
                 Status = HeroStatus.MovingToAttackHero,
                 Position = position,
@@ -226,8 +226,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Heroes.AddRange(hero, targetHero);
             await ArrangeDb.SaveChangesAsync();
 
-            var newPosition = new Point(2, 3);
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Point newPosition = new(2, 3);
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
@@ -247,15 +247,15 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldAttackHeroIfCloseEnough()
         {
-            var position = new Point(1, 2);
-            var destination = new Point(5, 6);
-            var targetHero = new Hero
+            Point position = new(1, 2);
+            Point destination = new(5, 6);
+            Hero targetHero = new()
             {
                 Status = HeroStatus.Idle,
                 Position = destination,
                 User = new User(),
             };
-            var hero = new Hero
+            Hero hero = new()
             {
                 Status = HeroStatus.MovingToAttackHero,
                 Position = position,
@@ -265,8 +265,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Heroes.AddRange(hero, targetHero);
             await ArrangeDb.SaveChangesAsync();
 
-            var newPosition = new Point(3, 4);
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Point newPosition = new(3, 4);
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
@@ -303,9 +303,9 @@ namespace Crpg.Application.UTest.Heroes
         [TestCase(HeroStatus.MovingToAttackSettlement)]
         public async Task MovingToASettlementShouldMove(HeroStatus status)
         {
-            var position = new Point(1, 2);
-            var destination = new Point(5, 6);
-            var hero = new Hero
+            Point position = new(1, 2);
+            Point destination = new(5, 6);
+            Hero hero = new()
             {
                 Status = status,
                 Position = position,
@@ -315,8 +315,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Heroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
-            var newPosition = new Point(2, 3);
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Point newPosition = new(2, 3);
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
                 .Returns(newPosition);
@@ -337,9 +337,9 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldEnterSettlementIfCloseEnough()
         {
-            var position = new Point(1, 2);
-            var destination = new Point(5, 6);
-            var hero = new Hero
+            Point position = new(1, 2);
+            Point destination = new(5, 6);
+            Hero hero = new()
             {
                 Status = HeroStatus.MovingToSettlement,
                 Position = position,
@@ -349,8 +349,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Heroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
-            var newPosition = new Point(5, 5);
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Point newPosition = new(5, 5);
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
                 .Returns(newPosition);
@@ -371,10 +371,10 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldNotAttackSettlementIfAlreadyInABattle()
         {
-            var position = new Point(1, 2);
-            var destination = new Point(5, 6);
-            var settlement = new Settlement { Position = destination };
-            var hero = new Hero
+            Point position = new(1, 2);
+            Point destination = new(5, 6);
+            Settlement settlement = new() { Position = destination };
+            Hero hero = new()
             {
                 Status = HeroStatus.MovingToAttackSettlement,
                 Position = position,
@@ -382,7 +382,7 @@ namespace Crpg.Application.UTest.Heroes
                 User = new User(),
             };
             ArrangeDb.Heroes.Add(hero);
-            var battle = new Battle
+            Battle battle = new()
             {
                 Phase = BattlePhase.Preparation,
                 Fighters =
@@ -399,8 +399,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Battles.Add(battle);
             await ArrangeDb.SaveChangesAsync();
 
-            var newPosition = new Point(5, 5);
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Point newPosition = new(5, 5);
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
                 .Returns(newPosition);
@@ -419,14 +419,14 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldAttackSettlementIfCloseEnough()
         {
-            var position = new Point(1, 2);
-            var destination = new Point(5, 6);
-            var settlement = new Settlement
+            Point position = new(1, 2);
+            Point destination = new(5, 6);
+            Settlement settlement = new()
             {
                 Region = Region.NorthAmerica,
                 Position = destination,
             };
-            var hero = new Hero
+            Hero hero = new()
             {
                 Region = Region.Europe,
                 Status = HeroStatus.MovingToAttackSettlement,
@@ -437,8 +437,8 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Heroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
-            var newPosition = new Point(3, 4);
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Point newPosition = new(3, 4);
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.MovePointTowards(position, destination, It.IsAny<double>()))
                 .Returns(newPosition);

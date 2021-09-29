@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Crpg.Domain.Common;
-using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Domain.Entities.Items

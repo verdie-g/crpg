@@ -64,7 +64,7 @@ namespace Crpg.GameMod.Helpers.Json
             }
 
             enumValues = new Dictionary<string, long>();
-            foreach (var val in Enum.GetValues(enumType))
+            foreach (object val in Enum.GetValues(enumType))
             {
                 enumValues[val.ToString()] = (long)val;
             }

@@ -19,7 +19,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public void ShouldDoNothingForEmptyUpdates()
         {
-            var characterServiceMock = new Mock<ICharacterService>();
+            Mock<ICharacterService> characterServiceMock = new();
             UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
             Assert.DoesNotThrowAsync(() => handler.Handle(new UpdateGameUsersCommand(), CancellationToken.None));
         }
@@ -27,7 +27,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldUpdateExistingCharacterCorrectly()
         {
-            var user = new User
+            User user = new()
             {
                 Platform = Platform.Steam,
                 PlatformUserId = "1",
@@ -47,7 +47,7 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var characterServiceMock = new Mock<ICharacterService>();
+            Mock<ICharacterService> characterServiceMock = new();
             UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
             var result = await handler.Handle(new UpdateGameUsersCommand
             {
@@ -82,7 +82,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task BreakingAllCharacterItemsWithAutoRepairShouldRepairThemIfEnoughGold()
         {
-            var user = new User
+            User user = new()
             {
                 Gold = 10000,
                 Characters = new List<Character>
@@ -111,7 +111,7 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var characterServiceMock = new Mock<ICharacterService>();
+            Mock<ICharacterService> characterServiceMock = new();
             UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
             var result = await handler.Handle(new UpdateGameUsersCommand
             {
@@ -160,7 +160,7 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task BreakingAllCharacterItemsWithoutAutoRepairShouldBreakThem()
         {
-            var user = new User
+            User user = new()
             {
                 Platform = Platform.Steam,
                 PlatformUserId = "1",
@@ -208,7 +208,7 @@ namespace Crpg.Application.UTest.Games
 
             await ArrangeDb.SaveChangesAsync();
 
-            var characterServiceMock = new Mock<ICharacterService>();
+            Mock<ICharacterService> characterServiceMock = new();
             UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
 
             var result = await handler.Handle(new UpdateGameUsersCommand
@@ -245,17 +245,17 @@ namespace Crpg.Application.UTest.Games
                 .FirstAsync(u => u.Id == user.Id);
 
             var itemsBySlot = user.Characters[0].EquippedItems.ToDictionary(ei => ei.Slot, ei => ei.Item!);
-            Assert.AreEqual(2, itemsBySlot[ItemSlot.Head]!.Rank);
-            Assert.AreEqual(1, itemsBySlot[ItemSlot.Shoulder]!.Rank);
-            Assert.AreEqual(0, itemsBySlot[ItemSlot.Body]!.Rank);
-            Assert.AreEqual(-1, itemsBySlot[ItemSlot.Hand]!.Rank);
-            Assert.AreEqual(-2, itemsBySlot[ItemSlot.Leg]!.Rank);
-            Assert.AreEqual(-3, itemsBySlot[ItemSlot.MountHarness]!.Rank);
+            Assert.AreEqual(2, itemsBySlot[ItemSlot.Head].Rank);
+            Assert.AreEqual(1, itemsBySlot[ItemSlot.Shoulder].Rank);
+            Assert.AreEqual(0, itemsBySlot[ItemSlot.Body].Rank);
+            Assert.AreEqual(-1, itemsBySlot[ItemSlot.Hand].Rank);
+            Assert.AreEqual(-2, itemsBySlot[ItemSlot.Leg].Rank);
+            Assert.AreEqual(-3, itemsBySlot[ItemSlot.MountHarness].Rank);
             Assert.That(itemsBySlot, Does.Not.ContainKey(ItemSlot.Mount));
-            Assert.AreEqual(-3, itemsBySlot[ItemSlot.Weapon0]!.Rank);
-            Assert.AreEqual(-2, itemsBySlot[ItemSlot.Weapon1]!.Rank);
-            Assert.AreEqual(-1, itemsBySlot[ItemSlot.Weapon2]!.Rank);
-            Assert.AreEqual(0, itemsBySlot[ItemSlot.Weapon3]!.Rank);
+            Assert.AreEqual(-3, itemsBySlot[ItemSlot.Weapon0].Rank);
+            Assert.AreEqual(-2, itemsBySlot[ItemSlot.Weapon1].Rank);
+            Assert.AreEqual(-1, itemsBySlot[ItemSlot.Weapon2].Rank);
+            Assert.AreEqual(0, itemsBySlot[ItemSlot.Weapon3].Rank);
 
             // check broken items were added to user inventory
             foreach (var equippedItem in user.Characters[0].EquippedItems)
@@ -267,11 +267,11 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task BreakingCharacterItemsWithAutoRepairShouldRepairUntilThereIsNotEnoughGold()
         {
-            var handItem = new Item { Rank = 0 };
-            var downrankedHandItem = new Item { Rank = -1, BaseItem = handItem };
+            Item handItem = new() { Rank = 0 };
+            Item downrankedHandItem = new() { Rank = -1, BaseItem = handItem };
             ArrangeDb.Items.AddRange(handItem, downrankedHandItem);
 
-            var user = new User
+            User user = new()
             {
                 Gold = 3000,
                 Characters =
@@ -294,7 +294,7 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var characterServiceMock = new Mock<ICharacterService>();
+            Mock<ICharacterService> characterServiceMock = new();
             UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
             var result = await handler.Handle(new UpdateGameUsersCommand
             {

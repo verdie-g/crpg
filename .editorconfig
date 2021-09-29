@@ -40,9 +40,9 @@ dotnet_style_qualification_for_event = false:warning
 
 # Types: use keywords instead of BCL types, and permit var only when the type is clear
 csharp_style_var_for_built_in_types = false:warning
-csharp_style_var_when_type_is_apparent = false:warning
-csharp_style_var_elsewhere = false:warning
-csharp_style_implicit_object_creation_when_type_is_apparent = true
+csharp_style_var_when_type_is_apparent = false:none
+csharp_style_var_elsewhere = true:none
+csharp_style_implicit_object_creation_when_type_is_apparent = true:warning
 dotnet_style_predefined_type_for_locals_parameters_members = true:warning
 dotnet_style_predefined_type_for_member_access = true:warning
 
@@ -81,7 +81,7 @@ csharp_preserve_single_line_blocks = true
 csharp_preserve_single_line_statements = false
 csharp_prefer_static_local_function = true:warning
 csharp_prefer_simple_using_statement = false:none
-csharp_style_prefer_switch_expression = true:warning
+csharp_style_prefer_switch_expression = true:silent
 dotnet_style_readonly_field = true:warning
 
 # Expression-level preferences
@@ -95,18 +95,18 @@ dotnet_style_prefer_inferred_tuple_names = true:warning
 dotnet_style_prefer_inferred_anonymous_type_member_names = true:warning
 dotnet_style_prefer_auto_properties = true:warning
 dotnet_style_prefer_conditional_expression_over_assignment = true:warning
-dotnet_style_prefer_conditional_expression_over_return = true:warning
+dotnet_style_prefer_conditional_expression_over_return = true:silent
 csharp_prefer_simple_default_expression = true:warning
 
 # Expression-bodied members
-csharp_style_expression_bodied_methods = true:warning
-csharp_style_expression_bodied_constructors = true:warning
-csharp_style_expression_bodied_operators = true:warning
-csharp_style_expression_bodied_properties = true:warning
-csharp_style_expression_bodied_indexers = true:warning
-csharp_style_expression_bodied_accessors = true:warning
-csharp_style_expression_bodied_lambdas = true:warning
-csharp_style_expression_bodied_local_functions = true:warning
+csharp_style_expression_bodied_methods = true:silent
+csharp_style_expression_bodied_constructors = true:silent
+csharp_style_expression_bodied_operators = true:silent
+csharp_style_expression_bodied_properties = true:silent
+csharp_style_expression_bodied_indexers = true:silent
+csharp_style_expression_bodied_accessors = true:silent
+csharp_style_expression_bodied_lambdas = true:silent
+csharp_style_expression_bodied_local_functions = true:silent
 
 # Pattern matching
 csharp_style_pattern_matching_over_is_with_cast_check = true:warning
@@ -148,7 +148,6 @@ csharp_space_between_square_brackets = false
 
 dotnet_diagnostic.CS1570.severity = silent # XML comment has badly formed XML
 dotnet_diagnostic.CS1591.severity = silent # Missing XML comment for publicly visible type
-dotnet_diagnostic.IDE0090.severity = warning
 
 dotnet_diagnostic.SA1101.severity = silent # PrefixLocalCallsWithThis
 dotnet_diagnostic.SA1108.severity = silent # BlockStatementsMustNotContainEmbeddedComments

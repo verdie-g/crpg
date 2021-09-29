@@ -12,11 +12,11 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldGetClans()
         {
-            var clan1 = new Clan
+            Clan clan1 = new()
             {
                 Members = { new ClanMember { User = new User() } },
             };
-            var clan2 = new Clan
+            Clan clan2 = new()
             {
                 Members = { new ClanMember { User = new User() }, new ClanMember { User = new User() } },
             };

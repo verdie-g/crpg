@@ -1,10 +1,8 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Users.Commands;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions.Events;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +18,7 @@ namespace Crpg.Application.UTest.Users
         [Test]
         public async Task TestWhenUserDoesntExist()
         {
-            var userServiceMock = new Mock<IUserService>();
+            Mock<IUserService> userServiceMock = new();
             UpsertUserCommand.Handler handler = new(ActDb, Mapper, EventService, userServiceMock.Object);
             var result = await handler.Handle(new UpsertUserCommand
             {
@@ -41,7 +39,7 @@ namespace Crpg.Application.UTest.Users
         [Test]
         public async Task TestWhenUserAlreadyExist()
         {
-            var user = new User
+            User user = new()
             {
                 PlatformUserId = "13948192759205810",
                 Name = "def",
@@ -55,7 +53,7 @@ namespace Crpg.Application.UTest.Users
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var userServiceMock = new Mock<IUserService>();
+            Mock<IUserService> userServiceMock = new();
             UpsertUserCommand.Handler handler = new(ActDb, Mapper, EventService, userServiceMock.Object);
             var result = await handler.Handle(new UpsertUserCommand
             {
@@ -85,7 +83,7 @@ namespace Crpg.Application.UTest.Users
         [Test]
         public async Task TestRecreatingUserAfterItWasDeleted()
         {
-            var user = new User
+            User user = new()
             {
                 PlatformUserId = "13948192759205810",
                 DeletedAt = DateTimeOffset.Now, // Deleted user are just marked with a non-null DeletedAt
@@ -93,9 +91,9 @@ namespace Crpg.Application.UTest.Users
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var userServiceMock = new Mock<IUserService>();
+            Mock<IUserService> userServiceMock = new();
             UpsertUserCommand.Handler handler = new(ActDb, Mapper, EventService, userServiceMock.Object);
-            var result = await handler.Handle(new UpsertUserCommand
+            await handler.Handle(new UpsertUserCommand
             {
                 PlatformUserId = "13948192759205810",
             }, CancellationToken.None);
@@ -123,7 +121,7 @@ namespace Crpg.Application.UTest.Users
         [Test]
         public void TestValidationInvalidCommand()
         {
-            var validator = new UpsertUserCommand.Validator();
+            UpsertUserCommand.Validator validator = new();
             var res = validator.Validate(new UpsertUserCommand
             {
                 PlatformUserId = "123",

@@ -114,7 +114,7 @@ namespace Crpg.Application.Games.Commands
 
             private async Task<List<GameUserBrokenItem>> DowngradeItems(Character character, List<GameUserBrokenItem> brokenItems, CancellationToken cancellationToken)
             {
-                var brokenItemIds = brokenItems.Select(bi => bi.ItemId).ToArray();
+                int[] brokenItemIds = brokenItems.Select(bi => bi.ItemId).ToArray();
                 var downrankedItemsByOriginalItemId = await _db.Items
                     .AsNoTracking()
                     .Join(_db.Items, i => i.BaseItemId, i => i.BaseItemId, (i, f) => new { Original = i, Family = f })
@@ -126,7 +126,7 @@ namespace Crpg.Application.Games.Commands
                         .ToArrayAsync(cancellationToken))
                     .ToLookup(ei => ei.ItemId);
 
-                foreach (var brokenItemId in brokenItemIds)
+                foreach (int brokenItemId in brokenItemIds)
                 {
                     _db.Entry(new UserItem { UserId = character.UserId, ItemId = brokenItemId }).State = EntityState.Deleted;
                     if (downrankedItemsByOriginalItemId.TryGetValue(brokenItemId, out var downrankedItem))

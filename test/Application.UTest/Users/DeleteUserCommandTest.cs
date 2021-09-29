@@ -24,7 +24,7 @@ namespace Crpg.Application.UTest.Users
         [Test]
         public async Task DeleteExistingUser()
         {
-            var user = new User
+            User user = new()
             {
                 Characters = new List<Character> { new() { EquippedItems = new List<EquippedItem> { new() } } },
                 Items = new List<UserItem> { new() { Item = new Item() } },

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Xml;
-using Crpg.GameMod.Api.Models.Characters;
 using Crpg.GameMod.Common;
 using Crpg.GameMod.Helpers;
 using TaleWorlds.Core;

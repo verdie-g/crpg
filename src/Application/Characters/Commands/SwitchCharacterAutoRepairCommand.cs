@@ -1,11 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
-using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
-using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands

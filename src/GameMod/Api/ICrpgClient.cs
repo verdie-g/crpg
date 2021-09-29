@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Crpg.GameMod.Api.Models;
 using Crpg.GameMod.Api.Models.Items;
 using Crpg.GameMod.Api.Models.Users;
-using NetworkMessages.FromServer;
 
 namespace Crpg.GameMod.Api
 {

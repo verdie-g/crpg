@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Users.Queries;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
@@ -25,7 +24,7 @@ namespace Crpg.Application.UTest.Users
         [Test]
         public async Task TestWhenUserExists()
         {
-            var dbUser = new User
+            User dbUser = new()
             {
                 PlatformUserId = "13948192759205810",
                 Name = "def",

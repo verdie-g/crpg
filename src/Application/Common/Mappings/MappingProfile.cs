@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using System.Reflection;
 using AutoMapper;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Crpg.Application.Common.Mappings
 {
@@ -37,7 +36,7 @@ namespace Crpg.Application.Common.Mappings
                     continue;
                 }
 
-                var instance = Activator.CreateInstance(type);
+                object? instance = Activator.CreateInstance(type);
                 foreach (var i in interfaces)
                 {
                     var methodInfo = i.GetMethod(MappingMethodName);

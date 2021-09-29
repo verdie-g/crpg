@@ -13,7 +13,7 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldCreateClan()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
@@ -54,7 +54,7 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldReturnErrorIfUserIsAlreadyInAClan()
         {
-            var user = new User { ClanMembership = new ClanMember { Clan = new Clan() } };
+            User user = new() { ClanMembership = new ClanMember { Clan = new Clan() } };
             ArrangeDb.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
@@ -74,7 +74,7 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldReturnErrorIfTagAlreadyExists()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
             ArrangeDb.Clans.Add(new Clan { Tag = "TW" });
             await ArrangeDb.SaveChangesAsync();
@@ -95,7 +95,7 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldReturnErrorIfNameAlreadyExists()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
             ArrangeDb.Clans.Add(new Clan { Name = "TaleWorlds" });
             await ArrangeDb.SaveChangesAsync();

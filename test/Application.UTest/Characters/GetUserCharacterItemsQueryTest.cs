@@ -2,7 +2,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Queries;
 using Crpg.Application.Common.Results;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using NUnit.Framework;
@@ -27,7 +26,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldReturnCharacterItems()
         {
-            var character = new Character
+            Character character = new()
             {
                 Name = "toto",
                 UserId = 2,

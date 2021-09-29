@@ -34,7 +34,7 @@ namespace Crpg.Application.Common.Behaviors
             }
 
             ValidationContext<TRequest> context = new(request);
-            var errors = new List<Error>();
+            List<Error> errors = new();
             foreach (var validator in _validators)
             {
                 foreach (var failure in validator.Validate(context).Errors)

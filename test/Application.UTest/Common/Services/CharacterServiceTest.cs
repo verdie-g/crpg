@@ -29,8 +29,8 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public void GiveExperienceShouldGiveExperience()
         {
-            var characterService = new CharacterService(ExperienceTable, Constants);
-            var character = new Character { Level = 1, Experience = 2, ExperienceMultiplier = 2f, SkippedTheFun = false };
+            CharacterService characterService = new(ExperienceTable, Constants);
+            Character character = new() { Level = 1, Experience = 2, ExperienceMultiplier = 2f, SkippedTheFun = false };
             characterService.GiveExperience(character, 3);
 
             Assert.AreEqual(1, character.Level);
@@ -40,8 +40,8 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public void GiveExperienceShouldntGiveExperienceIfSkippedTheFun()
         {
-            var characterService = new CharacterService(ExperienceTable, Constants);
-            var character = new Character { Level = 1, Experience = 2, ExperienceMultiplier = 2f, SkippedTheFun = true };
+            CharacterService characterService = new(ExperienceTable, Constants);
+            Character character = new() { Level = 1, Experience = 2, ExperienceMultiplier = 2f, SkippedTheFun = true };
             characterService.GiveExperience(character, 3);
 
             Assert.AreEqual(1, character.Level);
@@ -51,8 +51,8 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public void GiveExperienceShouldMakeCharacterLevelUpIfEnoughExperience()
         {
-            var characterService = new CharacterService(ExperienceTable, Constants);
-            var character = new Character { Level = 1, Experience = 2, ExperienceMultiplier = 2f, SkippedTheFun = false };
+            CharacterService characterService = new(ExperienceTable, Constants);
+            Character character = new() { Level = 1, Experience = 2, ExperienceMultiplier = 2f, SkippedTheFun = false };
             characterService.GiveExperience(character, 4);
 
             Assert.AreEqual(2, character.Level);
@@ -66,8 +66,8 @@ namespace Crpg.Application.UTest.Common.Services
         [Theory]
         public void ResetCharacterStatsShouldResetStats(bool respecialization)
         {
-            var characterService = new CharacterService(ExperienceTable, Constants);
-            var character = new Character
+            CharacterService characterService = new(ExperienceTable, Constants);
+            Character character = new()
             {
                 Level = 5,
                 Statistics = new CharacterStatistics
@@ -140,8 +140,8 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public void SetDefaultValuesShouldSetDefaultValues()
         {
-            var characterService = new CharacterService(ExperienceTable, Constants);
-            var character = new Character { Level = 2, Experience = 2, ExperienceMultiplier = 2f, SkippedTheFun = false };
+            CharacterService characterService = new(ExperienceTable, Constants);
+            Character character = new() { Level = 2, Experience = 2, ExperienceMultiplier = 2f, SkippedTheFun = false };
             characterService.SetDefaultValuesForCharacter(character);
 
             Assert.AreEqual(Constants.MinimumLevel, character.Level);

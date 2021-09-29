@@ -59,7 +59,7 @@ namespace Crpg.Application.Heroes.Commands
                     .Include(h => h.TargetedHero)
                     .Include(h => h.TargetedSettlement)
                     // Load mounts items to compute movement speed.
-                    .Include(h => h.Items!.Where(oi => oi.Item!.Type == ItemType.Mount)).ThenInclude(oi => oi.Item)
+                    .Include(h => h.Items.Where(oi => oi.Item!.Type == ItemType.Mount)).ThenInclude(oi => oi.Item)
                     .ToArrayAsync(cancellationToken);
 
                 foreach (var hero in heroes)

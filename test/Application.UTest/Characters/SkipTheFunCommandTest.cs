@@ -6,7 +6,6 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Users;
-using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 
@@ -17,12 +16,12 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldSkipTheFunCorrectly()
         {
-            var experienceTableMock = new Mock<IExperienceTable>();
+            Mock<IExperienceTable> experienceTableMock = new();
             experienceTableMock.Setup(et => et.GetExperienceForLevel(30)).Returns(30000);
 
-            var characterServiceMock = new Mock<ICharacterService>();
+            Mock<ICharacterService> characterServiceMock = new();
 
-            var character = new Character { Generation = 2, Level = 3, Experience = 250 };
+            Character character = new() { Generation = 2, Level = 3, Experience = 250 };
             ArrangeDb.Characters.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
@@ -46,7 +45,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldReturnNotFoundIfCharacterNotFound()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 

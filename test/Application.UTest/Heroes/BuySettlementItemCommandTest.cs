@@ -36,7 +36,7 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldReturnErrorIfSettlementNotFound()
         {
-            var hero = new Hero { User = new User() };
+            Hero hero = new() { User = new User() };
             ArrangeDb.Heroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
@@ -56,17 +56,17 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldReturnErrorIfSettlementTooFar()
         {
-            var userPosition = new Point(1, 2);
-            var settlementPosition = new Point(3, 4);
+            Point userPosition = new(1, 2);
+            Point settlementPosition = new(3, 4);
 
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(userPosition, settlementPosition))
                 .Returns(false);
 
-            var hero = new Hero { Position = userPosition, User = new User() };
+            Hero hero = new() { Position = userPosition, User = new User() };
             ArrangeDb.Heroes.Add(hero);
-            var settlement = new Settlement { Position = settlementPosition };
+            Settlement settlement = new() { Position = settlementPosition };
             ArrangeDb.Settlements.Add(settlement);
             await ArrangeDb.SaveChangesAsync();
 
@@ -86,14 +86,14 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldReturnErrorIfItemNotFound()
         {
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(It.IsAny<Point>(), It.IsAny<Point>()))
                 .Returns(true);
 
-            var hero = new Hero { User = new User() };
+            Hero hero = new() { User = new User() };
             ArrangeDb.Heroes.Add(hero);
-            var settlement = new Settlement();
+            Settlement settlement = new();
             ArrangeDb.Settlements.Add(settlement);
             await ArrangeDb.SaveChangesAsync();
 
@@ -113,16 +113,16 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldReturnErrorIfItemNotRank0()
         {
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(It.IsAny<Point>(), It.IsAny<Point>()))
                 .Returns(true);
 
-            var hero = new Hero { User = new User() };
+            Hero hero = new() { User = new User() };
             ArrangeDb.Heroes.Add(hero);
-            var settlement = new Settlement { Culture = Culture.Aserai };
+            Settlement settlement = new() { Culture = Culture.Aserai };
             ArrangeDb.Settlements.Add(settlement);
-            var item = new Item { Rank = 1, Culture = Culture.Aserai };
+            Item item = new() { Rank = 1, Culture = Culture.Aserai };
             ArrangeDb.Items.Add(item);
             await ArrangeDb.SaveChangesAsync();
 
@@ -142,16 +142,16 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldReturnErrorIfItemIsNotFromTheSettlementCulture()
         {
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(It.IsAny<Point>(), It.IsAny<Point>()))
                 .Returns(true);
 
-            var hero = new Hero { User = new User() };
+            Hero hero = new() { User = new User() };
             ArrangeDb.Heroes.Add(hero);
-            var settlement = new Settlement { Culture = Culture.Aserai };
+            Settlement settlement = new() { Culture = Culture.Aserai };
             ArrangeDb.Settlements.Add(settlement);
-            var item = new Item { Rank = 0, Culture = Culture.Empire };
+            Item item = new() { Rank = 0, Culture = Culture.Empire };
             ArrangeDb.Items.Add(item);
             await ArrangeDb.SaveChangesAsync();
 
@@ -171,16 +171,16 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldReturnErrorIfNotEnoughGold()
         {
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(It.IsAny<Point>(), It.IsAny<Point>()))
                 .Returns(true);
 
-            var hero = new Hero { Gold = 21, User = new User() };
+            Hero hero = new() { Gold = 21, User = new User() };
             ArrangeDb.Heroes.Add(hero);
-            var settlement = new Settlement { Culture = Culture.Empire };
+            Settlement settlement = new() { Culture = Culture.Empire };
             ArrangeDb.Settlements.Add(settlement);
-            var item = new Item { Rank = 0, Culture = Culture.Empire, Value = 11 };
+            Item item = new() { Rank = 0, Culture = Culture.Empire, Value = 11 };
             ArrangeDb.Items.Add(item);
             await ArrangeDb.SaveChangesAsync();
 
@@ -200,18 +200,18 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldAddCountToAlreadyExistingHeroItems()
         {
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(It.IsAny<Point>(), It.IsAny<Point>()))
                 .Returns(true);
 
-            var hero = new Hero { Gold = 100, User = new User() };
+            Hero hero = new() { Gold = 100, User = new User() };
             ArrangeDb.Heroes.Add(hero);
-            var settlement = new Settlement { Culture = Culture.Sturgia };
+            Settlement settlement = new() { Culture = Culture.Sturgia };
             ArrangeDb.Settlements.Add(settlement);
-            var item = new Item { Rank = 0, Culture = Culture.Sturgia, Value = 10 };
+            Item item = new() { Rank = 0, Culture = Culture.Sturgia, Value = 10 };
             ArrangeDb.Items.Add(item);
-            var heroItem = new HeroItem { Item = item, Count = 3, Hero = hero };
+            HeroItem heroItem = new() { Item = item, Count = 3, Hero = hero };
             ArrangeDb.HeroItems.Add(heroItem);
             await ArrangeDb.SaveChangesAsync();
 
@@ -235,16 +235,16 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldAddItemToHero()
         {
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(It.IsAny<Point>(), It.IsAny<Point>()))
                 .Returns(true);
 
-            var hero = new Hero { Gold = 100, User = new User() };
+            Hero hero = new() { Gold = 100, User = new User() };
             ArrangeDb.Heroes.Add(hero);
-            var settlement = new Settlement { Culture = Culture.Sturgia };
+            Settlement settlement = new() { Culture = Culture.Sturgia };
             ArrangeDb.Settlements.Add(settlement);
-            var item = new Item { Rank = 0, Culture = Culture.Neutral, Value = 10 };
+            Item item = new() { Rank = 0, Culture = Culture.Neutral, Value = 10 };
             ArrangeDb.Items.Add(item);
             await ArrangeDb.SaveChangesAsync();
 

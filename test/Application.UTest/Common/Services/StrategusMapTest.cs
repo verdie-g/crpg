@@ -2,8 +2,6 @@
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities;
 using Crpg.Sdk;
-using Crpg.Sdk.Abstractions;
-using Moq;
 using NetTopologySuite.Geometries;
 using NUnit.Framework;
 
@@ -25,40 +23,40 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public void ArePointsEquivalentShouldReturnTrueIfPointsAreClose()
         {
-            var p1 = new Point(0.00001, 0.00001);
-            var p2 = new Point(0.00002, 0.00002);
+            Point p1 = new(0.00001, 0.00001);
+            Point p2 = new(0.00002, 0.00002);
             Assert.True(StrategusMap.ArePointsEquivalent(p1, p2));
         }
 
         [Test]
         public void ArePointsEquivalentShouldReturnFalseIfPointsAreFar()
         {
-            var p1 = new Point(0, 0);
-            var p2 = new Point(10, 10);
+            Point p1 = new(0, 0);
+            Point p2 = new(10, 10);
             Assert.False(StrategusMap.ArePointsEquivalent(p1, p2));
         }
 
         [Test]
         public void ArePointsAtInteractionDistanceShouldReturnTrueIfPointsAreClose()
         {
-            var p1 = new Point(0.5, 0.5);
-            var p2 = new Point(1, 0.5);
+            Point p1 = new(0.5, 0.5);
+            Point p2 = new(1, 0.5);
             Assert.True(StrategusMap.ArePointsAtInteractionDistance(p1, p2));
         }
 
         [Test]
         public void ArePointsAtInteractionDistanceShouldReturnFalseIfPointsAreFar()
         {
-            var p1 = new Point(0, 0);
-            var p2 = new Point(100, 100);
+            Point p1 = new(0, 0);
+            Point p2 = new(100, 100);
             Assert.False(StrategusMap.ArePointsAtInteractionDistance(p1, p2));
         }
 
         [Test]
         public void MovePointTowardsShouldReturnMovedPoint()
         {
-            var p1 = new Point(0, 0);
-            var p2 = new Point(100, 100);
+            Point p1 = new(0, 0);
+            Point p2 = new(100, 100);
             var p3 = StrategusMap.MovePointTowards(p1, p2, 1);
             Assert.Greater(p3.X, p1.X);
             Assert.Greater(p3.Y, p1.Y);
@@ -69,8 +67,8 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public void MovePointTowardsShouldNotMoveFurtherThanTarget()
         {
-            var p1 = new Point(0, 0);
-            var p2 = new Point(100, 100);
+            Point p1 = new(0, 0);
+            Point p2 = new(100, 100);
             var p3 = StrategusMap.MovePointTowards(p1, p2, 10000000);
             Assert.AreEqual(p2, p3);
         }

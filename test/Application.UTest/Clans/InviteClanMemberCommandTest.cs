@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Clans.Commands;
 using Crpg.Application.Common.Results;
@@ -17,7 +16,7 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldReturnErrorIfUserNotFound()
         {
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
             await ArrangeDb.SaveChangesAsync();
 
@@ -35,9 +34,9 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task IfRequestShouldReturnErrorIfUserAlreadyInTheClan()
         {
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var user = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
+            User user = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
@@ -55,9 +54,9 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task IfRequestShouldCreateOneIfNotAlreadyExists()
         {
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
@@ -80,11 +79,11 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task IfRequestShouldReturnExistingPendingRequest()
         {
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
-            var invitation = new ClanInvitation
+            ClanInvitation invitation = new()
             {
                 Clan = clan,
                 Invitee = user,
@@ -109,10 +108,10 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task IfOfferButInviteeAlreadyInTheClanShouldReturnError()
         {
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var invitee = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
-            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
+            User invitee = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
+            User inviter = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
             ArrangeDb.Users.AddRange(invitee, inviter);
             await ArrangeDb.SaveChangesAsync();
 
@@ -130,10 +129,10 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task IfOfferButInviterNotInAClanShouldReturnError()
         {
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var invitee = new User();
-            var inviter = new User();
+            User invitee = new();
+            User inviter = new();
             ArrangeDb.Users.AddRange(invitee, inviter);
             await ArrangeDb.SaveChangesAsync();
 
@@ -151,10 +150,10 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task IfOfferButInviterNotInTheClanShouldReturnError()
         {
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var invitee = new User();
-            var inviter = new User { ClanMembership = new ClanMember { Clan = new Clan(), Role = ClanMemberRole.Officer } };
+            User invitee = new();
+            User inviter = new() { ClanMembership = new ClanMember { Clan = new Clan(), Role = ClanMemberRole.Officer } };
             ArrangeDb.Users.AddRange(invitee, inviter);
             await ArrangeDb.SaveChangesAsync();
 
@@ -172,10 +171,10 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task IfOfferButInviterNotOfficerOrLeaderShouldReturnError()
         {
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var invitee = new User();
-            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
+            User invitee = new();
+            User inviter = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
             ArrangeDb.Users.AddRange(invitee, inviter);
             await ArrangeDb.SaveChangesAsync();
 
@@ -193,12 +192,12 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task IfOfferShouldReturnExistingPendingOffer()
         {
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var invitee = new User();
-            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
+            User invitee = new();
+            User inviter = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
             ArrangeDb.Users.AddRange(invitee, inviter);
-            var offer = new ClanInvitation
+            ClanInvitation offer = new()
             {
                 Clan = clan,
                 Invitee = invitee,
@@ -223,14 +222,12 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task IfOfferShouldCreateOneIfNotAlreadyExists()
         {
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var invitee = new User();
-            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
+            User invitee = new();
+            User inviter = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
             ArrangeDb.Users.AddRange(invitee, inviter);
             await ArrangeDb.SaveChangesAsync();
-
-            var a = ActDb.Users.ToArray();
 
             var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
             {

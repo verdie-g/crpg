@@ -31,7 +31,7 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldReturnErrorUserNotRegisteredToStrategus()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
@@ -49,7 +49,7 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldReturnErrorIfUserIsInBattle()
         {
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero
                 {
@@ -77,7 +77,7 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldClearMovementIfStatusIdle()
         {
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero
                 {
@@ -110,7 +110,7 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldUpdateHeroMovementIfStatusMovingToPoint()
         {
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero
                 {
@@ -146,7 +146,7 @@ namespace Crpg.Application.UTest.Heroes
         [TestCase(HeroStatus.MovingToAttackHero)]
         public async Task ShouldReturnErrorIfTargetingNotExistingUser(HeroStatus status)
         {
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero
                 {
@@ -173,7 +173,7 @@ namespace Crpg.Application.UTest.Heroes
         [TestCase(HeroStatus.MovingToAttackHero)]
         public async Task ShouldReturnErrorIfTargetingNotVisibleHero(HeroStatus status)
         {
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero
                 {
@@ -182,7 +182,7 @@ namespace Crpg.Application.UTest.Heroes
                     TargetedSettlement = new Settlement(),
                 },
             };
-            var targetUser = new User
+            User targetUser = new()
             {
                 Hero = new Hero
                 {
@@ -192,7 +192,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.AddRange(user, targetUser);
             await ArrangeDb.SaveChangesAsync();
 
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(0);
 
             UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
@@ -211,7 +211,7 @@ namespace Crpg.Application.UTest.Heroes
         [TestCase(HeroStatus.MovingToAttackHero)]
         public async Task ShouldUpdateHeroMovementIfTargetingUser(HeroStatus status)
         {
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero
                 {
@@ -220,7 +220,7 @@ namespace Crpg.Application.UTest.Heroes
                     TargetedSettlement = new Settlement(),
                 },
             };
-            var targetUser = new User
+            User targetUser = new()
             {
                 Hero = new Hero
                 {
@@ -230,7 +230,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.AddRange(user, targetUser);
             await ArrangeDb.SaveChangesAsync();
 
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
 
             UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
@@ -256,7 +256,7 @@ namespace Crpg.Application.UTest.Heroes
             {
                 Hero = new Hero { Position = new Point(10, 10) },
             };
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero
                 {
@@ -268,7 +268,7 @@ namespace Crpg.Application.UTest.Heroes
             ArrangeDb.Users.AddRange(user, targetUser);
             await ArrangeDb.SaveChangesAsync();
 
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(500);
 
             UpdateHeroStatusCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
@@ -290,7 +290,7 @@ namespace Crpg.Application.UTest.Heroes
         [TestCase(HeroStatus.MovingToAttackSettlement)]
         public async Task ShouldReturnErrorIfTargetingNotExistingSettlement(HeroStatus status)
         {
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero
                 {
@@ -317,7 +317,7 @@ namespace Crpg.Application.UTest.Heroes
         [TestCase(HeroStatus.MovingToAttackSettlement)]
         public async Task ShouldUpdateHeroMovementIfTargetingSettlement(HeroStatus status)
         {
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero
                 {
@@ -325,7 +325,7 @@ namespace Crpg.Application.UTest.Heroes
                     TargetedHero = new Hero { User = new User() },
                 },
             };
-            var targetSettlement = new Settlement();
+            Settlement targetSettlement = new();
             ArrangeDb.Users.Add(user);
             ArrangeDb.Settlements.Add(targetSettlement);
             await ArrangeDb.SaveChangesAsync();
@@ -349,8 +349,8 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldSwitchFromMoveToAttackSettlement()
         {
-            var targetSettlement = new Settlement();
-            var user = new User
+            Settlement targetSettlement = new();
+            User user = new()
             {
                 Hero = new Hero
                 {
@@ -380,7 +380,7 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldReturnErrorIfTryingToStopRecruitingWhenNotInASettlement()
         {
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero { Status = HeroStatus.Idle },
             };
@@ -401,7 +401,7 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldSwitchFromRecruitingInSettlementToIdleInSettlement()
         {
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero
                 {
@@ -427,7 +427,7 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldReturnErrorIfTryingToRecruitWhenNotInASettlement()
         {
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero { Status = HeroStatus.Idle },
             };
@@ -448,7 +448,7 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldSwitchFromIdleInSettlementToRecruitingInSettlement()
         {
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero
                 {

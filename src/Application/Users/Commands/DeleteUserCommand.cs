@@ -57,7 +57,7 @@ namespace Crpg.Application.Users.Commands
 
                 _db.UserItems.RemoveRange(user.Items);
                 _db.Characters.RemoveRange(user.Characters);
-                _db.HeroItems.RemoveRange(user.Hero!.Items!);
+                _db.HeroItems.RemoveRange(user.Hero!.Items);
                 _db.Heroes.Remove(user.Hero);
                 await _db.SaveChangesAsync(cancellationToken);
                 _events.Raise(EventLevel.Info, $"{name} left ({user.Platform}#{user.PlatformUserId})", string.Empty, "user_deleted");

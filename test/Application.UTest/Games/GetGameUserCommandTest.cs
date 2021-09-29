@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Common;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Commands;
 using Crpg.Domain.Entities;
@@ -14,7 +13,6 @@ using Crpg.Sdk;
 using Crpg.Sdk.Abstractions;
 using Crpg.Sdk.Abstractions.Events;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 
@@ -39,8 +37,8 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldCreateUserIfDoesntExist()
         {
-            var userServiceMock = new Mock<IUserService>();
-            var characterServiceMock = new Mock<ICharacterService>();
+            Mock<IUserService> userServiceMock = new();
+            Mock<ICharacterService> characterServiceMock = new();
 
             GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(), new MachineDateTimeOffset(),
                 new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object);
@@ -78,10 +76,10 @@ namespace Crpg.Application.UTest.Games
         [Test]
         public async Task ShouldCreateCharacterIfDoesntExist()
         {
-            var userServiceMock = new Mock<IUserService>();
-            var characterServiceMock = new Mock<ICharacterService>();
+            Mock<IUserService> userServiceMock = new();
+            Mock<ICharacterService> characterServiceMock = new();
 
-            var user = new User { Platform = Platform.Steam, PlatformUserId = "1", Gold = 1000 };
+            User user = new() { Platform = Platform.Steam, PlatformUserId = "1", Gold = 1000 };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
@@ -124,7 +122,7 @@ namespace Crpg.Application.UTest.Games
             var userService = Mock.Of<IUserService>();
             var characterService = Mock.Of<ICharacterService>();
 
-            var user = new User
+            User user = new()
             {
                 Platform = Platform.Steam,
                 PlatformUserId = "1",
@@ -138,7 +136,7 @@ namespace Crpg.Application.UTest.Games
             await ArrangeDb.SaveChangesAsync();
 
             // Make sure to always give the same item set to the character
-            var randomMock = new Mock<IRandom>();
+            Mock<IRandom> randomMock = new();
             randomMock.Setup(r => r.Next(It.IsAny<int>(), It.IsAny<int>())).Returns(1);
 
             GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(),
@@ -162,14 +160,14 @@ namespace Crpg.Application.UTest.Games
             var userService = Mock.Of<IUserService>();
             var characterService = Mock.Of<ICharacterService>();
 
-            var user0 = new User
+            User user0 = new()
             {
                 Platform = Platform.Steam,
                 PlatformUserId = "1",
                 Characters = new List<Character> { new() { Name = "a" } },
             };
 
-            var user1 = new User
+            User user1 = new()
             {
                 Platform = Platform.Epic,
                 PlatformUserId = user0.PlatformUserId, // Same platform user id but different platform
@@ -201,7 +199,7 @@ namespace Crpg.Application.UTest.Games
             var userService = Mock.Of<IUserService>();
             var characterService = Mock.Of<ICharacterService>();
 
-            var user = new User
+            User user = new()
             {
                 Platform = Platform.Steam,
                 PlatformUserId = "1",
@@ -235,7 +233,7 @@ namespace Crpg.Application.UTest.Games
             var userService = Mock.Of<IUserService>();
             var characterService = Mock.Of<ICharacterService>();
 
-            var user = new User
+            User user = new()
             {
                 Platform = Platform.Steam,
                 PlatformUserId = "1",
@@ -251,7 +249,7 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var dateTime = new Mock<IDateTimeOffset>();
+            Mock<IDateTimeOffset> dateTime = new();
             dateTime
                 .Setup(dt => dt.Now)
                 .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
@@ -276,7 +274,7 @@ namespace Crpg.Application.UTest.Games
             var userService = Mock.Of<IUserService>();
             var characterService = Mock.Of<ICharacterService>();
 
-            var user = new User
+            User user = new()
             {
                 PlatformUserId = "1",
                 Bans = new List<Ban>
@@ -296,7 +294,7 @@ namespace Crpg.Application.UTest.Games
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var dateTime = new Mock<IDateTimeOffset>();
+            Mock<IDateTimeOffset> dateTime = new();
             dateTime
                 .Setup(dt => dt.Now)
                 .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));

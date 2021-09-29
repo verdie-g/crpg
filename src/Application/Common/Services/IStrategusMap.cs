@@ -47,7 +47,7 @@ namespace Crpg.Application.Common.Services
             _equivalentDistance = constants.StrategusEquivalentDistance;
             _interactionDistance = constants.StrategusInteractionDistance;
             _viewDistance = constants.StrategusViewDistance;
-            var spawningPosition = constants.StrategusSpawningPositionCenter;
+            double[] spawningPosition = constants.StrategusSpawningPositionCenter;
             _spawningPositionCenter = new Point(spawningPosition[0], spawningPosition[1]);
             _spawningPositionRadius = constants.StrategusSpawningPositionRadius;
         }

@@ -9,8 +9,6 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items
@@ -37,7 +35,7 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task ShouldRepairIfRankLessThanZero([Values(0, 1, 2)] int itemIdx)
         {
-            var user = new User
+            User user = new()
             {
                 Gold = 1000,
                 Items = new List<UserItem> { new() { ItemId = _items[itemIdx].Id } },
@@ -78,7 +76,7 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task ShouldLoomIfRankGreatorOrEqualThanZero([Values(3, 4, 5)] int itemIdx)
         {
-            var user = new User
+            User user = new()
             {
                 HeirloomPoints = 1,
                 Items = new List<UserItem> { new() { ItemId = _items[itemIdx].Id } },
@@ -119,8 +117,8 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task ShouldReplaceCharacterItemWithUpgradeOne([Values(0, 1, 2, 3, 4, 5)] int itemIdx)
         {
-            var userItem = new UserItem { ItemId = _items[itemIdx].Id };
-            var user = new User
+            UserItem userItem = new() { ItemId = _items[itemIdx].Id };
+            User user = new()
             {
                 Gold = 1000,
                 HeirloomPoints = 3,

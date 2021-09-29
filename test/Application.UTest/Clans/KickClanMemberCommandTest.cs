@@ -16,8 +16,8 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldLeaveClanIfUserKickedHimself()
         {
-            var clan = new Clan();
-            var user = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
+            Clan clan = new();
+            User user = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
@@ -37,9 +37,9 @@ namespace Crpg.Application.UTest.Clans
         [TestCase(ClanMemberRole.Officer, ClanMemberRole.Leader)]
         public async Task ShouldNotKickUserIfHisRoleIsHigher(ClanMemberRole userRole, ClanMemberRole kickedUserRole)
         {
-            var clan = new Clan();
-            var user = new User { ClanMembership = new ClanMember { Clan = clan, Role = userRole } };
-            var kickedUser = new User { ClanMembership = new ClanMember { Clan = clan, Role = kickedUserRole } };
+            Clan clan = new();
+            User user = new() { ClanMembership = new ClanMember { Clan = clan, Role = userRole } };
+            User kickedUser = new() { ClanMembership = new ClanMember { Clan = clan, Role = kickedUserRole } };
             ArrangeDb.Users.AddRange(user, kickedUser);
             await ArrangeDb.SaveChangesAsync();
 
@@ -58,9 +58,9 @@ namespace Crpg.Application.UTest.Clans
         [TestCase(ClanMemberRole.Leader, ClanMemberRole.Officer)]
         public async Task ShouldKickUser(ClanMemberRole userRole, ClanMemberRole kickedUserRole)
         {
-            var clan = new Clan();
-            var user = new User { ClanMembership = new ClanMember { Clan = clan, Role = userRole } };
-            var kickedUser = new User { ClanMembership = new ClanMember { Clan = clan, Role = kickedUserRole } };
+            Clan clan = new();
+            User user = new() { ClanMembership = new ClanMember { Clan = clan, Role = userRole } };
+            User kickedUser = new() { ClanMembership = new ClanMember { Clan = clan, Role = kickedUserRole } };
             ArrangeDb.Users.AddRange(user, kickedUser);
             await ArrangeDb.SaveChangesAsync();
 

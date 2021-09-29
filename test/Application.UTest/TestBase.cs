@@ -77,7 +77,7 @@ namespace Crpg.Application.UTest
 
         private IMapper InitMapper()
         {
-            var configurationProvider = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
+            MapperConfiguration configurationProvider = new(cfg => cfg.AddProfile<MappingProfile>());
             return configurationProvider.CreateMapper();
         }
     }

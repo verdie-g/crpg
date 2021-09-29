@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
-using Crpg.Application.Heroes.Models;
 using Crpg.Application.Settlements.Commands;
 using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;

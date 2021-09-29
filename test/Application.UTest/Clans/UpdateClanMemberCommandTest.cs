@@ -17,9 +17,9 @@ namespace Crpg.Application.UTest.Clans
         [TestCase(ClanMemberRole.Officer)]
         public async Task ShouldReturnErrorIfUserNotLeader(ClanMemberRole userRole)
         {
-            var clan = new Clan();
-            var user = new User { ClanMembership = new ClanMember { Clan = clan, Role = userRole } };
-            var member = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
+            Clan clan = new();
+            User user = new() { ClanMembership = new ClanMember { Clan = clan, Role = userRole } };
+            User member = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
             ArrangeDb.Users.AddRange(user, member);
             await ArrangeDb.SaveChangesAsync();
 
@@ -38,8 +38,8 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldReturnErrorIfLeaderChangesItsRole()
         {
-            var clan = new Clan();
-            var user = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Leader } };
+            Clan clan = new();
+            User user = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Leader } };
             ArrangeDb.Users.AddRange(user);
             await ArrangeDb.SaveChangesAsync();
 
@@ -58,9 +58,9 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldUpdateMember()
         {
-            var clan = new Clan();
-            var user = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Leader } };
-            var member = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
+            Clan clan = new();
+            User user = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Leader } };
+            User member = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
             ArrangeDb.Users.AddRange(user, member);
             await ArrangeDb.SaveChangesAsync();
 

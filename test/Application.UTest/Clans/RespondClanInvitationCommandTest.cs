@@ -31,9 +31,9 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldReturnErrorIfClanInvitationNotFound()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
             await ArrangeDb.SaveChangesAsync();
 
@@ -52,12 +52,12 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldReturnErrorIfClanIdAndClanIdOfInvitationDontMatch()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
-            var clan1 = new Clan();
-            var clan2 = new Clan();
+            Clan clan1 = new();
+            Clan clan2 = new();
             ArrangeDb.Clans.AddRange(clan1, clan2);
-            var clanInvitation = new ClanInvitation { Clan = clan2 };
+            ClanInvitation clanInvitation = new() { Clan = clan2 };
             ArrangeDb.ClanInvitations.Add(clanInvitation);
             await ArrangeDb.SaveChangesAsync();
 
@@ -76,11 +76,11 @@ namespace Crpg.Application.UTest.Clans
         [Theory]
         public async Task ShouldReturnErrorIfOfferButUserNotTheInvitee(bool accept)
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var clanInvitation = new ClanInvitation
+            ClanInvitation clanInvitation = new()
             {
                 Clan = clan,
                 Invitee = new User(),
@@ -105,11 +105,11 @@ namespace Crpg.Application.UTest.Clans
         [Theory]
         public async Task ShouldReturnErrorIfOfferButUserIsTheInviter(bool accept)
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var clanInvitation = new ClanInvitation
+            ClanInvitation clanInvitation = new()
             {
                 Clan = clan,
                 Invitee = new User(),
@@ -137,11 +137,11 @@ namespace Crpg.Application.UTest.Clans
         [TestCase(true, ClanInvitationStatus.Accepted)]
         public async Task ShouldReturnErrorIfOfferButInvitationIsClosed(bool accept, ClanInvitationStatus status)
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var clanInvitation = new ClanInvitation
+            ClanInvitation clanInvitation = new()
             {
                 Clan = clan,
                 Invitee = user,
@@ -166,11 +166,11 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task DecliningInvitationShouldWork()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var clanInvitation = new ClanInvitation
+            ClanInvitation clanInvitation = new()
             {
                 Clan = clan,
                 Invitee = user,
@@ -198,11 +198,11 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task AcceptingInvitationShouldWorkIfUserIsInAClan()
         {
-            var user = new User { ClanMembership = new ClanMember { Role = ClanMemberRole.Member, Clan = new Clan() } };
+            User user = new() { ClanMembership = new ClanMember { Role = ClanMemberRole.Member, Clan = new Clan() } };
             ArrangeDb.Add(user);
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var clanInvitation = new ClanInvitation
+            ClanInvitation clanInvitation = new()
             {
                 Clan = clan,
                 Invitee = user,
@@ -232,11 +232,11 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task AcceptingInvitationShouldWorkIfUserIsNotInAClan()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var clanInvitation = new ClanInvitation
+            ClanInvitation clanInvitation = new()
             {
                 Clan = clan,
                 Invitee = user,
@@ -266,11 +266,11 @@ namespace Crpg.Application.UTest.Clans
         [Theory]
         public async Task ShouldReturnErrorIfRequestButUserIsTheInviter(bool accept)
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var clanInvitation = new ClanInvitation
+            ClanInvitation clanInvitation = new()
             {
                 Clan = clan,
                 Invitee = user,
@@ -295,11 +295,11 @@ namespace Crpg.Application.UTest.Clans
         [Theory]
         public async Task ShouldReturnErrorIfRequestButUserNotInTheClan(bool accept)
         {
-            var user = new User { ClanMembership = new ClanMember { Role = ClanMemberRole.Member, Clan = new Clan() } };
+            User user = new() { ClanMembership = new ClanMember { Role = ClanMemberRole.Member, Clan = new Clan() } };
             ArrangeDb.Add(user);
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
-            var clanInvitation = new ClanInvitation
+            ClanInvitation clanInvitation = new()
             {
                 Clan = clan,
                 Invitee = user,
@@ -325,11 +325,11 @@ namespace Crpg.Application.UTest.Clans
         [Theory]
         public async Task ShouldReturnErrorIfRequestButUserNotAClanOfficer(bool accept)
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
-            var clan = new Clan { Members = { new ClanMember { Role = ClanMemberRole.Member, User = user } } };
+            Clan clan = new() { Members = { new ClanMember { Role = ClanMemberRole.Member, User = user } } };
             ArrangeDb.Clans.Add(clan);
-            var clanInvitation = new ClanInvitation
+            ClanInvitation clanInvitation = new()
             {
                 Clan = clan,
                 Invitee = user,
@@ -358,11 +358,11 @@ namespace Crpg.Application.UTest.Clans
         [TestCase(true, ClanInvitationStatus.Accepted)]
         public async Task ShouldReturnErrorIfRequestButInvitationIsClosed(bool accept, ClanInvitationStatus status)
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
-            var clan = new Clan { Members = { new ClanMember { Role = ClanMemberRole.Officer, User = user } } };
+            Clan clan = new() { Members = { new ClanMember { Role = ClanMemberRole.Officer, User = user } } };
             ArrangeDb.Clans.Add(clan);
-            var clanInvitation = new ClanInvitation
+            ClanInvitation clanInvitation = new()
             {
                 Clan = clan,
                 Invitee = user,
@@ -388,11 +388,11 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task AcceptingRequestShouldWork()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
-            var clan = new Clan { Members = { new ClanMember { Role = ClanMemberRole.Officer, User = user } } };
+            Clan clan = new() { Members = { new ClanMember { Role = ClanMemberRole.Officer, User = user } } };
             ArrangeDb.Clans.Add(clan);
-            var clanInvitation = new ClanInvitation
+            ClanInvitation clanInvitation = new()
             {
                 Clan = clan,
                 Invitee = user,
@@ -420,11 +420,11 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task DecliningRequestShouldWork()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Add(user);
-            var clan = new Clan { Members = { new ClanMember { Role = ClanMemberRole.Officer, User = user } } };
+            Clan clan = new() { Members = { new ClanMember { Role = ClanMemberRole.Officer, User = user } } };
             ArrangeDb.Clans.Add(clan);
-            var clanInvitation = new ClanInvitation
+            ClanInvitation clanInvitation = new()
             {
                 Clan = clan,
                 Invitee = user,

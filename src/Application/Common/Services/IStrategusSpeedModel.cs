@@ -32,7 +32,7 @@ namespace Crpg.Application.Common.Services
             10000 is four zeros so the denominator is 4
             */
             double troopInfluence = 2 / (1 + Math.Log10(1 + hero.Troops / 10));
-            return terrainSpeedFactor * weightFactor * MountsInfluence(hero.Troops, hero.Items!) * troopInfluence;
+            return terrainSpeedFactor * weightFactor * MountsInfluence(hero.Troops, hero.Items) * troopInfluence;
         }
 
         private double MountsInfluence(float troops, List<HeroItem> heroItems)

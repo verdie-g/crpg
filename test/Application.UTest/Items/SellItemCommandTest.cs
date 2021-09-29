@@ -9,8 +9,6 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items
@@ -22,7 +20,7 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task SellItemUnequipped()
         {
-            var user = new User
+            User user = new()
             {
                 Gold = 0,
                 Items = new List<UserItem>
@@ -52,9 +50,9 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task SellItemEquipped()
         {
-            var item = new Item { Value = 100 };
-            var userItem = new UserItem { Item = item };
-            var characters = new List<Character>
+            Item item = new() { Value = 100 };
+            UserItem userItem = new() { Item = item };
+            List<Character> characters = new()
             {
                 new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Head } } },
                 new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Shoulder } } },
@@ -68,7 +66,7 @@ namespace Crpg.Application.UTest.Items
                 new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon2 } } },
                 new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon3 } } },
             };
-            var user = new User
+            User user = new()
             {
                 Gold = 0,
                 Items = { userItem },

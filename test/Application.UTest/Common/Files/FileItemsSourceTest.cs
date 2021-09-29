@@ -13,17 +13,17 @@ namespace Crpg.Application.UTest.Common.Files
     public class FileItemsSourceTest
     {
         [Test]
-        public async Task TestCanDeserializeFile()
+        public void TestCanDeserializeFile()
         {
-            var source = new FileItemsSource();
-            var items = await source.LoadItems();
+            FileItemsSource source = new();
+            Assert.DoesNotThrowAsync(() => source.LoadItems());
         }
 
         [Test]
         public async Task CheckNoDuplicatedMbId()
         {
-            var duplicates = new List<string>();
-            var mbIds = new HashSet<string>();
+            List<string> duplicates = new();
+            HashSet<string> mbIds = new();
 
             var items = await new FileItemsSource().LoadItems();
             foreach (var item in items)
@@ -45,10 +45,10 @@ namespace Crpg.Application.UTest.Common.Files
         [Test]
         public async Task CheckNoConflictingNameWithModifiedItems()
         {
-            var errors = new List<string>();
+            List<string> errors = new();
 
             var items = (await new FileItemsSource().LoadItems()).ToArray();
-            var itemsByName = new Dictionary<string, ItemCreation>(StringComparer.Ordinal);
+            Dictionary<string, ItemCreation> itemsByName = new(StringComparer.Ordinal);
             foreach (var item in items)
             {
                 if (itemsByName.TryGetValue(item.Name, out var conflictingItem))
@@ -60,7 +60,7 @@ namespace Crpg.Application.UTest.Common.Files
             }
 
             var itemModifiers = new FileItemModifiersSource().LoadItemModifiers();
-            var itemModifier = new ItemModifierService(itemModifiers);
+            ItemModifierService itemModifier = new(itemModifiers);
             foreach (var item in items)
             {
                 foreach (int rank in new[] { -3, -2, -1, 1, 2, 3 })
@@ -90,7 +90,7 @@ namespace Crpg.Application.UTest.Common.Files
         public async Task CheckNoTestItems()
         {
             var items = await new FileItemsSource().LoadItems();
-            var errors = new List<string>();
+            List<string> errors = new();
             foreach (var item in items)
             {
                 if (item.TemplateMbId.Contains("test") || item.TemplateMbId.Contains("dummy") || item.Name.Contains('_'))

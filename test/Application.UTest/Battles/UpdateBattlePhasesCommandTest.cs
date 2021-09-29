@@ -24,14 +24,14 @@ namespace Crpg.Application.UTest.Battles
         [Test]
         public async Task ShouldSwitchPreparationBattlesToHiringAfterSomeTime()
         {
-            var battles = new[]
+            Battle[] battles =
             {
-                new Battle
+                new()
                 {
                     Phase = BattlePhase.Preparation,
                     CreatedAt = new DateTimeOffset(new DateTime(2010, 12, 3)),
                 },
-                new Battle
+                new()
                 {
                     Phase = BattlePhase.Preparation,
                     CreatedAt = new DateTimeOffset(new DateTime(2010, 12, 4, 12, 0, 0)),
@@ -42,7 +42,7 @@ namespace Crpg.Application.UTest.Battles
 
             Mock<IBattleMercenaryDistributionModel> battleMercenaryDistributionModelMock = new();
 
-            var dateTimeOffsetMock = new Mock<IDateTimeOffset>();
+            Mock<IDateTimeOffset> dateTimeOffsetMock = new();
             dateTimeOffsetMock.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2010, 12, 5)));
 
             UpdateBattlePhasesCommand.Handler handler = new(ActDb, battleMercenaryDistributionModelMock.Object,
@@ -60,14 +60,14 @@ namespace Crpg.Application.UTest.Battles
         [Test]
         public async Task ShouldScheduleHiringBattlesAfterSomeTime()
         {
-            var battles = new[]
+            Battle[] battles =
             {
-                new Battle
+                new()
                 {
                     Phase = BattlePhase.Hiring,
                     CreatedAt = new DateTimeOffset(new DateTime(2010, 12, 3, 10, 0, 0)),
                 },
-                new Battle
+                new()
                 {
                     Phase = BattlePhase.Hiring,
                     CreatedAt = new DateTimeOffset(new DateTime(2010, 12, 4, 20, 0, 0)),
@@ -76,9 +76,9 @@ namespace Crpg.Application.UTest.Battles
             ArrangeDb.Battles.AddRange(battles);
             await ArrangeDb.SaveChangesAsync();
 
-            var dateTimeOffsetMock = new Mock<IDateTimeOffset>();
+            Mock<IDateTimeOffset> dateTimeOffsetMock = new();
             dateTimeOffsetMock.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2010, 12, 5)));
-            var battleSchedulerMock = new Mock<IBattleScheduler>();
+            Mock<IBattleScheduler> battleSchedulerMock = new();
             UpdateBattlePhasesCommand.Handler handler = new(ActDb, Mock.Of<IBattleMercenaryDistributionModel>(),
                 battleSchedulerMock.Object, dateTimeOffsetMock.Object, Constants);
             await handler.Handle(new UpdateBattlePhasesCommand(), CancellationToken.None);
@@ -92,14 +92,14 @@ namespace Crpg.Application.UTest.Battles
         [Test]
         public async Task ShouldSwitchScheduledBattlesToLiveAfterScheduledDate()
         {
-            var battles = new[]
+            Battle[] battles =
             {
-                new Battle
+                new()
                 {
                     Phase = BattlePhase.Scheduled,
                     ScheduledFor = new DateTimeOffset(new DateTime(2010, 12, 4)),
                 },
-                new Battle
+                new()
                 {
                     Phase = BattlePhase.Scheduled,
                     ScheduledFor = new DateTimeOffset(new DateTime(2010, 12, 6)),
@@ -108,7 +108,7 @@ namespace Crpg.Application.UTest.Battles
             ArrangeDb.Battles.AddRange(battles);
             await ArrangeDb.SaveChangesAsync();
 
-            var dateTimeOffsetMock = new Mock<IDateTimeOffset>();
+            Mock<IDateTimeOffset> dateTimeOffsetMock = new();
             dateTimeOffsetMock.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2010, 12, 5)));
 
             UpdateBattlePhasesCommand.Handler handler = new(ActDb, Mock.Of<IBattleMercenaryDistributionModel>(),

@@ -2,7 +2,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Characters.Queries;
 using Crpg.Application.Common.Results;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using NUnit.Framework;
 
@@ -26,7 +25,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task WhenCharacterExists()
         {
-            var dbCharacter = new Character
+            Character dbCharacter = new()
             {
                 Name = "toto",
                 UserId = 2,
@@ -47,7 +46,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task WhenCharacterExistsButNotOwned()
         {
-            var dbCharacter = new Character
+            Character dbCharacter = new()
             {
                 Name = "toto",
                 UserId = 2,

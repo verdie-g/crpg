@@ -31,7 +31,7 @@ namespace Crpg.Sdk.Tracing.Debug
 
         public override string ToString()
         {
-            var sb = new StringBuilder(_operationName);
+            StringBuilder sb = new(_operationName);
             if (_resourceName != null)
             {
                 sb.Append(' ');

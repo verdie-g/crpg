@@ -11,7 +11,7 @@ namespace Crpg.Application.UTest.Common.Services
         [Test]
         public void TroopsShouldUseTheBestMountTheyHave()
         {
-            var hero1 = new Hero
+            Hero hero1 = new()
             {
                 Troops = 10,
                 Items = new List<HeroItem>
@@ -21,7 +21,7 @@ namespace Crpg.Application.UTest.Common.Services
                     HeroItemMount(250, 5),
                 },
             };
-            var hero2 = new Hero
+            Hero hero2 = new()
             {
                 Troops = 10,
                 Items = new List<HeroItem>
@@ -31,7 +31,7 @@ namespace Crpg.Application.UTest.Common.Services
                     HeroItemMount(250, 10),
                 },
             };
-            var speedModel = new StrategusSpeedModel();
+            StrategusSpeedModel speedModel = new();
             Assert.GreaterOrEqual(speedModel.ComputeHeroSpeed(hero1), speedModel.ComputeHeroSpeed(hero2));
         }
 
@@ -43,10 +43,10 @@ namespace Crpg.Application.UTest.Common.Services
             int slowHorseCount = 50;
             int totalHorseCount = fastHorseCount + mediumSpeedHorseCount + slowHorseCount;
             double previousSpeed = double.MaxValue;
-            var speedModel = new StrategusSpeedModel();
+            StrategusSpeedModel speedModel = new();
             for (int troops = 10; troops <= 1000; troops += 10)
             {
-                var hero = new Hero
+                Hero hero = new()
                 {
                     Troops = troops,
                     Items = new List<HeroItem>
@@ -86,10 +86,10 @@ namespace Crpg.Application.UTest.Common.Services
         public void BuyingMountsShouldIncreaseSpeed()
         {
             double previousSpeed = 0;
-            var speedModel = new StrategusSpeedModel();
+            StrategusSpeedModel speedModel = new();
             for (int mountCountFactor = 1; mountCountFactor <= 100; mountCountFactor++)
             {
-                var hero = new Hero
+                Hero hero = new()
                 {
                     Troops = 1000,
                     Items = new List<HeroItem>
@@ -99,7 +99,7 @@ namespace Crpg.Application.UTest.Common.Services
                         HeroItemMount(250, 2 * mountCountFactor),
                     },
                 };
-                var speed = speedModel.ComputeHeroSpeed(hero);
+                double speed = speedModel.ComputeHeroSpeed(hero);
                 Assert.Greater(speed, previousSpeed);
                 previousSpeed = speed;
             }

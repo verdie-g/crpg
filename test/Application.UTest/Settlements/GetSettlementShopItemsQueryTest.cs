@@ -33,7 +33,7 @@ namespace Crpg.Application.UTest.Settlements
         [Test]
         public async Task ShouldReturnErrorIfSettlementNotFound()
         {
-            var hero = new Hero { User = new User() };
+            Hero hero = new() { User = new User() };
             ArrangeDb.Heroes.Add(hero);
             await ArrangeDb.SaveChangesAsync();
 
@@ -51,17 +51,17 @@ namespace Crpg.Application.UTest.Settlements
         [Test]
         public async Task ShouldReturnErrorIfSettlementTooFar()
         {
-            var userPosition = new Point(1, 2);
-            var settlementPosition = new Point(3, 4);
+            Point userPosition = new(1, 2);
+            Point settlementPosition = new(3, 4);
 
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(userPosition, settlementPosition))
                 .Returns(false);
 
-            var hero = new Hero { Position = userPosition, User = new User() };
+            Hero hero = new() { Position = userPosition, User = new User() };
             ArrangeDb.Heroes.Add(hero);
-            var settlement = new Settlement { Position = settlementPosition };
+            Settlement settlement = new() { Position = settlementPosition };
             ArrangeDb.Settlements.Add(settlement);
             await ArrangeDb.SaveChangesAsync();
 
@@ -79,25 +79,25 @@ namespace Crpg.Application.UTest.Settlements
         [Test]
         public async Task ShouldReturnItemsForTheSettlementCulture()
         {
-            var userPosition = new Point(1, 2);
-            var settlementPosition = new Point(3, 4);
+            Point userPosition = new(1, 2);
+            Point settlementPosition = new(3, 4);
 
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.ArePointsAtInteractionDistance(userPosition, settlementPosition))
                 .Returns(true);
 
-            var hero = new Hero { Position = userPosition, User = new User() };
+            Hero hero = new() { Position = userPosition, User = new User() };
             ArrangeDb.Heroes.Add(hero);
-            var settlement = new Settlement { Position = settlementPosition, Culture = Culture.Battania };
+            Settlement settlement = new() { Position = settlementPosition, Culture = Culture.Battania };
             ArrangeDb.Settlements.Add(settlement);
-            var items = new[]
+            Item[] items =
             {
-                new Item { Culture = Culture.Aserai, Rank = 0 },
-                new Item { Culture = Culture.Aserai, Rank = 1 },
-                new Item { Culture = Culture.Battania, Rank = 2 },
-                new Item { Culture = Culture.Battania, Rank = 0 },
-                new Item { Culture = Culture.Battania, Rank = 0 },
+                new() { Culture = Culture.Aserai, Rank = 0 },
+                new() { Culture = Culture.Aserai, Rank = 1 },
+                new() { Culture = Culture.Battania, Rank = 2 },
+                new() { Culture = Culture.Battania, Rank = 0 },
+                new() { Culture = Culture.Battania, Rank = 0 },
             };
             ArrangeDb.Items.AddRange(items);
             await ArrangeDb.SaveChangesAsync();

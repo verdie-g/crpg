@@ -36,7 +36,7 @@ namespace Crpg.Sdk
             }
             else
             {
-                var dogStatsD = new DogStatsD(new DogStatsDConfiguration
+                DogStatsD dogStatsD = new(new DogStatsDConfiguration
                 {
                     Namespace = "crpg",
                     ConstantTags = BuildTagsFromEnv(appEnv),
@@ -52,7 +52,7 @@ namespace Crpg.Sdk
 
         private static KeyValuePair<string, string>[] BuildTagsFromEnv(IApplicationEnvironment appEnv)
         {
-            var constantTags = new List<KeyValuePair<string, string>>
+            List<KeyValuePair<string, string>> constantTags = new()
             {
                 new("service", appEnv.ServiceName),
             };

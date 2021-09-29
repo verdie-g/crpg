@@ -29,7 +29,7 @@ namespace Crpg.GameMod.Common
 
         private int[] ComputeExperienceTable()
         {
-            var table = new int[_constants.MaximumLevel - _constants.MinimumLevel + 1];
+            int[] table = new int[_constants.MaximumLevel - _constants.MinimumLevel + 1];
             table[0] = 0; // lvl 1: 0
 
             for (int lvl = _constants.MinimumLevel + 1; lvl <= 30; lvl += 1)

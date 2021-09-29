@@ -11,7 +11,7 @@ using Moq;
 using NetTopologySuite.Geometries;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Battles
+namespace Crpg.Application.UTest.Heroes
 {
     public class GetStrategusUpdateQueryTest : TestBase
     {
@@ -31,7 +31,7 @@ namespace Crpg.Application.UTest.Battles
         [Test]
         public async Task ShouldReturnErrorIfNotRegisteredToStrategus()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
@@ -48,28 +48,28 @@ namespace Crpg.Application.UTest.Battles
         [Test]
         public async Task ShouldReturnHeroWithWhatsVisible()
         {
-            var hero = new Hero
+            Hero hero = new()
             {
                 Position = new Point(10, 10),
                 User = new User(),
             };
-            var closeHero = new Hero
+            Hero closeHero = new()
             {
                 Position = new Point(9.9, 9.9),
                 User = new User(),
             };
-            var closeHeroInBattle = new Hero
+            Hero closeHeroInBattle = new()
             {
                 Position = new Point(9.8, 9.8),
                 User = new User(),
                 Status = HeroStatus.InBattle,
             };
-            var farHero = new Hero
+            Hero farHero = new()
             {
                 Position = new Point(1000, 1000),
                 User = new User(),
             };
-            var heroInSettlement = new Hero
+            Hero heroInSettlement = new()
             {
                 Position = new Point(10.1, 10.1),
                 Status = HeroStatus.IdleInSettlement,
@@ -77,22 +77,22 @@ namespace Crpg.Application.UTest.Battles
             };
             ArrangeDb.Heroes.AddRange(hero, closeHero, farHero, heroInSettlement, closeHeroInBattle);
 
-            var closeSettlement = new Settlement { Position = new Point(10.1, 10.1) };
-            var farSettlement = new Settlement { Position = new Point(-1000, -1000) };
+            Settlement closeSettlement = new() { Position = new Point(10.1, 10.1) };
+            Settlement farSettlement = new() { Position = new Point(-1000, -1000) };
             ArrangeDb.Settlements.AddRange(closeSettlement, farSettlement);
             await ArrangeDb.SaveChangesAsync();
 
-            var closeBattle = new Battle { Position = new Point(9.0, 9.0) };
-            var closeEndedBattle = new Battle
+            Battle closeBattle = new() { Position = new Point(9.0, 9.0) };
+            Battle closeEndedBattle = new()
             {
                 Position = new Point(8.0, 8.0),
                 Phase = BattlePhase.End,
             };
-            var farBattle = new Battle { Position = new Point(-999, -999) };
+            Battle farBattle = new() { Position = new Point(-999, -999) };
             ArrangeDb.Battles.AddRange(closeBattle, closeEndedBattle, farBattle);
             await ArrangeDb.SaveChangesAsync();
 
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock.Setup(m => m.ViewDistance).Returns(50);
 
             GetStrategusUpdateQuery.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);

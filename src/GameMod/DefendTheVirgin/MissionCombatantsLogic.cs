@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using TaleWorlds.Core;
+﻿using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.GameMod.DefendTheVirgin

@@ -12,16 +12,16 @@ namespace Crpg.Application.UTest.Settlements
         [Test]
         public async Task ShouldReturnAllSettlements()
         {
-            var settlements = new[]
+            Settlement[] settlements =
             {
-                new Settlement
+                new()
                 {
                     Name = "abc",
                     Type = SettlementType.Village,
                     Position = new Point(5, 6),
                     Scene = "battania_village",
                 },
-                new Settlement
+                new()
                 {
                     Name = "def",
                     Type = SettlementType.Castle,

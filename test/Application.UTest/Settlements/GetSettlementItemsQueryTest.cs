@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
-using Crpg.Application.Settlements.Commands;
 using Crpg.Application.Settlements.Queries;
 using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
-using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Settlements

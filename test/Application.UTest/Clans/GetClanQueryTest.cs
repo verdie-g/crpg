@@ -11,7 +11,7 @@ namespace Crpg.Application.UTest.Clans
         [Test]
         public async Task ShouldGetClanIfExists()
         {
-            var clan = new Clan();
+            Clan clan = new();
             ArrangeDb.Clans.Add(clan);
             await ArrangeDb.SaveChangesAsync();
 

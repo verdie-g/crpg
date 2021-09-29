@@ -1319,7 +1319,7 @@ namespace Crpg.Application.System.Commands
 
                 // Users with no hero: telesto, kypak, devoidDragon.
 
-                var newHeroes = new[]
+                Hero[] newHeroes =
                 {
                     brainfartHero, kiwiHero, ikaroozHero, laHireHero, brygganHero, elmarykHero, schumetzqHero, azumaHero,
                     zorguyHero, eckoHero, firebatHero, laenirHero, opsetHero, falcomHero, victorhh888Hero, sellkaHero,

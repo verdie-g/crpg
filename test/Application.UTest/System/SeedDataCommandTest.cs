@@ -34,7 +34,7 @@ namespace Crpg.Application.UTest.System
         [Test]
         public async Task ShouldInsertItemsFromItemSourceWithAllRanks()
         {
-            var itemsSource = new Mock<IItemsSource>();
+            Mock<IItemsSource> itemsSource = new();
             itemsSource.Setup(s => s.LoadItems())
                 .ReturnsAsync(new[]
                 {
@@ -42,7 +42,7 @@ namespace Crpg.Application.UTest.System
                     new ItemCreation { TemplateMbId = "b", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() },
                 });
 
-            var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
+            SeedDataCommand.Handler seedDataCommandHandler = new(ActDb, itemsSource.Object, CreateAppEnv(),
                 CharacterService, ExperienceTable, StrategusMap, Mock.Of<ISettlementsSource>(),
                 ItemValueModel, ItemModifierService);
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
@@ -64,12 +64,12 @@ namespace Crpg.Application.UTest.System
         [Test]
         public async Task DeletedItemInSourceShouldBeDeletedInDatabaseAndUserReimbursed()
         {
-            var itemsSource = new Mock<IItemsSource>();
+            Mock<IItemsSource> itemsSource = new();
             itemsSource.SetupSequence(s => s.LoadItems())
                 .ReturnsAsync(new[] { new ItemCreation { TemplateMbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() } })
                 .ReturnsAsync(Array.Empty<ItemCreation>());
 
-            var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
+            SeedDataCommand.Handler seedDataCommandHandler = new(ActDb, itemsSource.Object, CreateAppEnv(),
                 CharacterService, ExperienceTable, StrategusMap, Mock.Of<ISettlementsSource>(),
                 ItemValueModel, ItemModifierService);
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
@@ -77,9 +77,9 @@ namespace Crpg.Application.UTest.System
             Assert.AreEqual(7, items.Length);
 
             // Users buy the new item and equip it.
-            var user0 = new User { Gold = 100, HeirloomPoints = 0 };
-            var userItemRank0ForUser0 = new UserItem { User = user0, ItemId = items.First(i => i.Rank == 0).Id };
-            var character0 = new Character
+            User user0 = new() { Gold = 100, HeirloomPoints = 0 };
+            UserItem userItemRank0ForUser0 = new() { User = user0, ItemId = items.First(i => i.Rank == 0).Id };
+            Character character0 = new()
             {
                 User = user0,
                 EquippedItems =
@@ -89,16 +89,16 @@ namespace Crpg.Application.UTest.System
                 },
             };
 
-            var user1 = new User { Gold = 200, HeirloomPoints = 0 };
-            var userItemRank0ForUser1 = new UserItem { User = user1, ItemId = items.First(i => i.Rank == 0).Id };
-            var userItemRank1ForUser1 = new UserItem { User = user1, ItemId = items.First(i => i.Rank == 1).Id };
-            var character1 = new Character
+            User user1 = new() { Gold = 200, HeirloomPoints = 0 };
+            UserItem userItemRank0ForUser1 = new() { User = user1, ItemId = items.First(i => i.Rank == 0).Id };
+            UserItem userItemRank1ForUser1 = new() { User = user1, ItemId = items.First(i => i.Rank == 1).Id };
+            Character character1 = new()
             {
                 User = user1,
                 EquippedItems = { new EquippedItem { UserItem = userItemRank0ForUser1, Slot = ItemSlot.Weapon0 } },
             };
 
-            var character2 = new Character
+            Character character2 = new()
             {
                 User = user1,
                 EquippedItems = { new EquippedItem { UserItem = userItemRank1ForUser1, Slot = ItemSlot.Weapon1 } },
@@ -120,24 +120,24 @@ namespace Crpg.Application.UTest.System
         [Test]
         public async Task ModifiedItemInSourceShouldBeModifiedInDatabase()
         {
-            var oldItems = new[]
+            Item[] oldItems =
             {
-                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = -3, Armor = new ItemArmorComponent { ArmArmor = 80 } },
-                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = -2, Armor = new ItemArmorComponent { ArmArmor = 90 } },
-                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = -1, Armor = new ItemArmorComponent { ArmArmor = 95 } },
-                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 0, Armor = new ItemArmorComponent { ArmArmor = 100 } },
-                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 1, Armor = new ItemArmorComponent { ArmArmor = 105 } },
-                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 2, Armor = new ItemArmorComponent { ArmArmor = 107 } },
-                new Item { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 3, Armor = new ItemArmorComponent { ArmArmor = 109 } },
+                new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = -3, Armor = new ItemArmorComponent { ArmArmor = 80 } },
+                new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = -2, Armor = new ItemArmorComponent { ArmArmor = 90 } },
+                new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = -1, Armor = new ItemArmorComponent { ArmArmor = 95 } },
+                new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 0, Armor = new ItemArmorComponent { ArmArmor = 100 } },
+                new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 1, Armor = new ItemArmorComponent { ArmArmor = 105 } },
+                new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 2, Armor = new ItemArmorComponent { ArmArmor = 107 } },
+                new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 3, Armor = new ItemArmorComponent { ArmArmor = 109 } },
             };
             ArrangeDb.Items.AddRange(oldItems);
             await ArrangeDb.SaveChangesAsync();
 
-            var itemsSource = new Mock<IItemsSource>();
+            Mock<IItemsSource> itemsSource = new();
             itemsSource.Setup(s => s.LoadItems())
                 .ReturnsAsync(new[] { new ItemCreation { TemplateMbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel { ArmArmor = 1000 } } });
 
-            var itemModifiers = new ItemModifiers
+            ItemModifiers itemModifiers = new()
             {
                 Armor = new[]
                 {
@@ -150,8 +150,8 @@ namespace Crpg.Application.UTest.System
                 },
             };
 
-            var itemModifierService = new ItemModifierService(itemModifiers);
-            var seedDataCommandHandler = new SeedDataCommand.Handler(ActDb, itemsSource.Object, CreateAppEnv(),
+            ItemModifierService itemModifierService = new(itemModifiers);
+            SeedDataCommand.Handler seedDataCommandHandler = new(ActDb, itemsSource.Object, CreateAppEnv(),
                 CharacterService, ExperienceTable, StrategusMap, Mock.Of<ISettlementsSource>(),
                 ItemValueModel, itemModifierService);
             await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
@@ -174,7 +174,7 @@ namespace Crpg.Application.UTest.System
         [Test]
         public async Task ShouldAddSettlementIfDoesntExistsInDb()
         {
-            var settlementsSource = new Mock<ISettlementsSource>();
+            Mock<ISettlementsSource> settlementsSource = new();
             settlementsSource.Setup(s => s.LoadStrategusSettlements())
                 .ReturnsAsync(new[]
                 {
@@ -208,9 +208,9 @@ namespace Crpg.Application.UTest.System
         [Test]
         public async Task ShouldModifySettlementIfAlreadyExistsInDb()
         {
-            var dbSettlements = new[]
+            Settlement[] dbSettlements =
             {
-                new Settlement
+                new()
                 {
                     Name = "a",
                     Type = SettlementType.Castle,
@@ -219,7 +219,7 @@ namespace Crpg.Application.UTest.System
                     Position = new Point(1, 2),
                     Scene = "abc",
                 },
-                new Settlement
+                new()
                 {
                     Name = "a",
                     Type = SettlementType.Castle,
@@ -228,7 +228,7 @@ namespace Crpg.Application.UTest.System
                     Position = new Point(1, 2),
                     Scene = "abc",
                 },
-                new Settlement
+                new()
                 {
                     Name = "a",
                     Type = SettlementType.Castle,
@@ -241,7 +241,7 @@ namespace Crpg.Application.UTest.System
             ArrangeDb.Settlements.AddRange(dbSettlements);
             await ArrangeDb.SaveChangesAsync();
 
-            var settlementsSource = new Mock<ISettlementsSource>();
+            Mock<ISettlementsSource> settlementsSource = new();
             settlementsSource.Setup(s => s.LoadStrategusSettlements())
                 .ReturnsAsync(new[]
                 {
@@ -255,7 +255,7 @@ namespace Crpg.Application.UTest.System
                     },
                 });
 
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock
                 .Setup(m => m.TranslatePositionForRegion(It.IsAny<Point>(), Region.Europe, Region.Europe))
                 .Returns(new Point(3, 4));
@@ -298,7 +298,7 @@ namespace Crpg.Application.UTest.System
             ArrangeDb.Settlements.AddRange(dbSettlements);
             await ArrangeDb.SaveChangesAsync();
 
-            var settlementsSource = new Mock<ISettlementsSource>();
+            Mock<ISettlementsSource> settlementsSource = new();
             settlementsSource.Setup(s => s.LoadStrategusSettlements())
                 .ReturnsAsync(Array.Empty<SettlementCreation>());
 
@@ -313,7 +313,7 @@ namespace Crpg.Application.UTest.System
 
         private IApplicationEnvironment CreateAppEnv()
         {
-            var appEnv = new Mock<IApplicationEnvironment>();
+            Mock<IApplicationEnvironment> appEnv = new();
             appEnv.Setup(e => e.Environment).Returns(HostingEnvironment.Production);
             return appEnv.Object;
         }

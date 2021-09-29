@@ -4,12 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items
@@ -59,9 +56,9 @@ namespace Crpg.Application.UTest.Items
         [Test]
         public async Task ErrorIfItemNotRank0()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
-            var item = new Item { Value = 100, Rank = 1 };
+            Item item = new() { Value = 100, Rank = 1 };
             ArrangeDb.Items.Add(item);
             await ArrangeDb.SaveChangesAsync();
 

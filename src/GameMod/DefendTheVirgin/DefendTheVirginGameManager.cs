@@ -367,11 +367,11 @@ namespace Crpg.GameMod.DefendTheVirgin
                 var shield = itemObject.WeaponComponent.PrimaryWeapon;
 
                 float durabilityFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.Shield), constants.DurabilityFactorForShieldCoefs);
-                var durability = (short)ReflectionHelper.GetProperty(shield, nameof(WeaponComponentData.MaxDataValue));
+                short durability = (short)ReflectionHelper.GetProperty(shield, nameof(WeaponComponentData.MaxDataValue));
                 ReflectionHelper.SetProperty(shield, nameof(WeaponComponentData.MaxDataValue), (short)(durability * durabilityFactor));
 
                 float speedFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.Shield), constants.SpeedFactorForShieldCoefs);
-                var speed = (int)ReflectionHelper.GetProperty(shield, nameof(WeaponComponentData.ThrustSpeed));
+                int speed = (int)ReflectionHelper.GetProperty(shield, nameof(WeaponComponentData.ThrustSpeed));
                 ReflectionHelper.SetProperty(shield, nameof(WeaponComponentData.ThrustSpeed), (int)(speed * speedFactor));
             }
 
@@ -388,16 +388,16 @@ namespace Crpg.GameMod.DefendTheVirgin
                     // According to TaleWorlds.Core.Crafting.CalculateSwingBaseDamage, damage is calculated from damage
                     // factor and other fields like weight or speed. Scaling both damage and damage factor they same way
                     // might not work as expected.
-                    var swingDamage = (int)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.SwingDamage));
+                    int swingDamage = (int)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.SwingDamage));
                     ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.SwingDamage), (int)(swingDamage * factor));
 
-                    var swingDamageFactor = (float)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.SwingDamageFactor));
+                    float swingDamageFactor = (float)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.SwingDamageFactor));
                     ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.SwingDamageFactor), swingDamageFactor * factor);
 
-                    var thrustDamage = (int)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.ThrustDamage));
+                    int thrustDamage = (int)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.ThrustDamage));
                     ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.ThrustDamage), (int)(thrustDamage * factor));
 
-                    var thrustDamageFactor = (float)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.ThrustDamageFactor));
+                    float thrustDamageFactor = (float)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.ThrustDamageFactor));
                     ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.ThrustDamageFactor), thrustDamageFactor * factor);
                 }
             }

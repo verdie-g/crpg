@@ -25,7 +25,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task ShouldReturnCharacterStatistics()
         {
-            var character = new Character
+            Character character = new()
             {
                 Name = "toto",
                 UserId = 2,

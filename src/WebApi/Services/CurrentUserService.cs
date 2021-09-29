@@ -8,7 +8,7 @@ namespace Crpg.WebApi.Services
     {
         public CurrentUserService(IHttpContextAccessor httpContextAccessor)
         {
-            string? idStr = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+            string? idStr = httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
             UserId = idStr == null ? -1 : int.Parse(idStr);
         }
 

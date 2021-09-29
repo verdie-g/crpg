@@ -103,7 +103,7 @@ namespace Crpg.WebApi.Controllers
         public Task<ActionResult<Result<CharacterStatisticsViewModel>>> UpdateCharacterStatistics([FromRoute] int id,
             [FromBody] CharacterStatisticsViewModel stats)
         {
-            var cmd = new UpdateCharacterStatisticsCommand
+            UpdateCharacterStatisticsCommand cmd = new()
             {
                 UserId = CurrentUser.UserId,
                 CharacterId = id,
@@ -214,7 +214,7 @@ namespace Crpg.WebApi.Controllers
         [HttpGet("self/items")]
         public Task<ActionResult<Result<IList<ItemViewModel>>>> GetUserItems()
         {
-            var query = new GetUserItemsQuery { UserId = CurrentUser.UserId };
+            GetUserItemsQuery query = new() { UserId = CurrentUser.UserId };
             return ResultToActionAsync(Mediator.Send(query));
         }
 

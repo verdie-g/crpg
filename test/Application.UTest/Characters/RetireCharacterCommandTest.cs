@@ -8,7 +8,6 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 
@@ -26,7 +25,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task Basic()
         {
-            var character = new Character
+            Character character = new()
             {
                 Generation = 2,
                 Level = 31,
@@ -45,7 +44,7 @@ namespace Crpg.Application.UTest.Characters
             ArrangeDb.Add(character);
             await ArrangeDb.SaveChangesAsync();
 
-            var characterServiceMock = new Mock<ICharacterService>();
+            Mock<ICharacterService> characterServiceMock = new();
 
             RetireCharacterCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, Constants);
             await handler.Handle(new RetireCharacterCommand
@@ -102,7 +101,7 @@ namespace Crpg.Application.UTest.Characters
         [Test]
         public async Task BadRequestIfLevelTooLow()
         {
-            var character = new Character
+            Character character = new()
             {
                 Level = 30,
                 User = new User(),

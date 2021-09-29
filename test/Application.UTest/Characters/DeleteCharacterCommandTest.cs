@@ -1,12 +1,8 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Crpg.Application.Bans.Commands;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Common.Results;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
-using Microsoft.Extensions.Logging;
-using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters

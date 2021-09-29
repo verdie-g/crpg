@@ -37,7 +37,7 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldReturnErrorIfAlreadyRegistered()
         {
-            var user = new User
+            User user = new()
             {
                 Hero = new Hero(),
             };
@@ -58,11 +58,11 @@ namespace Crpg.Application.UTest.Heroes
         [Test]
         public async Task ShouldRegisterToStrategus()
         {
-            var user = new User();
+            User user = new();
             ArrangeDb.Users.Add(user);
             await ArrangeDb.SaveChangesAsync();
 
-            var strategusMapMock = new Mock<IStrategusMap>();
+            Mock<IStrategusMap> strategusMapMock = new();
             strategusMapMock.Setup(sm => sm.GetSpawnPosition(Region.NorthAmerica)).Returns(new Point(150, 50));
             CreateHeroCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object, Constants);
             var res = await handler.Handle(new CreateHeroCommand

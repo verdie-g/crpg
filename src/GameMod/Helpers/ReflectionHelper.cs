@@ -9,8 +9,8 @@ namespace Crpg.GameMod.Helpers
     /// </summary>
     internal static class ReflectionHelper
     {
-        public static object GetField(object instance, string field) => GetFieldInfo(instance, field)!.GetValue(instance);
-        public static void SetField(object instance, string field, object value) => GetFieldInfo(instance, field)!.SetValue(instance, value);
+        public static object GetField(object instance, string field) => GetFieldInfo(instance, field).GetValue(instance);
+        public static void SetField(object instance, string field, object value) => GetFieldInfo(instance, field).SetValue(instance, value);
         public static object GetProperty(object instance, string field) => GetPropertyInfo(instance, field)!.GetValue(instance);
         public static void SetProperty(object instance, string field, object value) => GetPropertyInfo(instance, field)!.SetValue(instance, value, null);
 
@@ -18,13 +18,13 @@ namespace Crpg.GameMod.Helpers
         {
             return instance
                 .GetType()
-                .GetMethod(method, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                .GetMethod(method, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)!
                 .Invoke(instance, parameters);
         }
 
         public static T DeepClone<T>(T obj) => obj.DeepClone();
 
-        private static FieldInfo? GetFieldInfo(object instance, string field)
+        private static FieldInfo GetFieldInfo(object instance, string field)
         {
             Type? t = instance.GetType();
             while (t != null)
@@ -49,7 +49,7 @@ namespace Crpg.GameMod.Helpers
                 var f = t.GetProperty(prop, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 if (f != null)
                 {
-                    return f.DeclaringType.GetProperty(prop, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                    return f.DeclaringType!.GetProperty(prop, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 }
 
                 t = t.BaseType;

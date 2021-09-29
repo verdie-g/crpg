@@ -14,7 +14,7 @@ namespace Crpg.Application.UTest.Bans
         [Test]
         public async Task Basic()
         {
-            var user = new User
+            User user = new()
             {
                 Bans = new List<Ban>
                 {
