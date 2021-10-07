@@ -18,10 +18,10 @@ export function getClanMembers(id: number): Promise<ClanMember[]> {
 
 export function updateClanMember(
   clanId: number,
-  userId: number,
+  memberId: number,
   role: ClanMemberRole
 ): Promise<ClanMember> {
-  return put(`/clans/${clanId}/members/${userId}`, { role });
+  return put(`/clans/${clanId}/members/${memberId}`, { role });
 }
 
 export function getClanInvitations(

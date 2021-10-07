@@ -40,31 +40,42 @@
 
         <b-table-column v-slot="props" cell-class="is-clickable">
           <b-icon
-            icon="ban"
-            @click.native="kickMember(props.row)"
+            icon="user-cog"
+            @click.native="selected(props.row)"
             v-if="memberKickable(props.row)"
           />
         </b-table-column>
+      </b-table>
+    </div>
 
-        <b-table-column v-slot="props" cell-class="is-clickable">
-          <b-dropdown aria-role="list" v-if="canManageMembers">
+    <b-modal display="inline-block" v-model="isManageMemberWindowActive">
+      <div class="card">
+        <div class="card-content">
+          <b-dropdown aria-role="list" v-if="isLeader">
             <template #trigger>
-              <p class="tag is-success" role="button">Manage Role</p>
+              <b-button label="Manage Role" type="is-primary" />
             </template>
 
-            <b-dropdown-item aria-role="listitem" @click="updateMember(props.row, 'Member')">
+            <b-dropdown-item aria-role="listitem" @click="updateMember(selectedMember, 'Member')">
               Member
             </b-dropdown-item>
-            <b-dropdown-item aria-role="listitem" @click="updateMember(props.row, 'Officer')">
+            <b-dropdown-item aria-role="listitem" @click="updateMember(selectedMember, 'Officer')">
               Officer
             </b-dropdown-item>
-            <b-dropdown-item aria-role="listitem" @click="updateMember(props.row, 'Leader')">
+            <b-dropdown-item aria-role="listitem" @click="updateMember(selectedMember, 'Leader')">
               Leader
             </b-dropdown-item>
           </b-dropdown>
-        </b-table-column>
-      </b-table>
-    </div>
+          <b-button
+            type="is-danger"
+            v-model="isManageMemberWindowActive"
+            @click.native="kickMember(selectedMember)"
+            v-if="memberKickable(selectedMember)"
+          >Kick Member
+          </b-button>
+        </div>
+      </div>
+    </b-modal>
   </section>
 </template>
 
@@ -85,6 +96,8 @@ export default class ClanComponent extends Vue {
   clan: Clan | null = null;
   members: ClanMember[] = [];
   applicationSent = false;
+  isManageMemberWindowActive = false;
+  selectedMember: ClanMember | null = null;
 
   get selfMember(): ClanMember | null {
     // Clan or current user not loaded yet.
@@ -105,13 +118,36 @@ export default class ClanComponent extends Vue {
     return selfMember.role === ClanMemberRole.Officer || selfMember.role === ClanMemberRole.Leader;
   }
 
-  get canManageMembers(): boolean {
+  get isLeader(): boolean {
     const selfMember = this.selfMember;
     if (selfMember === null) {
       return false;
     }
 
     return selfMember.role === ClanMemberRole.Leader;
+  }
+
+  get isOfficer(): boolean {
+    const selfMember = this.selfMember;
+    if (selfMember === null) {
+      return false;
+    }
+
+    return selfMember.role === ClanMemberRole.Officer;
+  }
+
+  get isMember(): boolean {
+    const selfMember = this.selfMember;
+    if (selfMember === null) {
+      return false;
+    }
+
+    return selfMember.role === ClanMemberRole.Member;
+  }
+
+  selected(member: ClanMember) {
+    this.selectedMember = member;
+    this.isManageMemberWindowActive = true;
   }
 
   created() {
@@ -126,6 +162,10 @@ export default class ClanComponent extends Vue {
   }
 
   memberKickable(member: ClanMember): boolean {
+    if (member === null) {
+      return false;
+    }
+
     const selfMember = this.selfMember;
     if (
       selfMember !== null &&
@@ -153,7 +193,7 @@ export default class ClanComponent extends Vue {
       .then(() => notify('Application sent!'));
   }
 
-  async kickMember(member: ClanMember) {
+  async kickMember(member: ClanMember) {   
     await clanModule.kickClanMember({ clanId: this.clan!.id, userId: member.user.id });
     if (member.user.id === this.selfMember?.user.id) {
       notify('Clan left');
@@ -162,6 +202,8 @@ export default class ClanComponent extends Vue {
       notify('Clan member kicked');
       arrayRemove(this.members, m => m === member);
     }
+    this.selectedMember = null;
+    this.isManageMemberWindowActive = false;
   }
 
   async updateMember(member: ClanMember, selectedRole: ClanMemberRole) {
@@ -171,8 +213,9 @@ export default class ClanComponent extends Vue {
         memberId: member.user.id,
         role: selectedRole,
       })
-      .then(() => notify('User updated'));
+      .then(() => notify('Member updated'));
     clanService.getClanMembers(this.clan!.id).then(m => (this.members = m));
+    this.isManageMemberWindowActive = false;
   }
 }
 </script>
