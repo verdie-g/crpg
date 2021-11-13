@@ -46,7 +46,7 @@ namespace Crpg.GameMod.DefendTheVirgin
         private static void SetCharacterBodyProperties(CrpgCharacterObject mbCharacter)
         {
             var bodyProperties = MBObjectManager.Instance.GetObject<MBBodyProperty>("villager_battania");
-            mbCharacter.CreateBodyPropertyRange("whatever");
+            mbCharacter.BodyPropertyRange = MBObjectManager.Instance.CreateObject<MBBodyProperty>("whatever");
             mbCharacter.BodyPropertyRange.Init(bodyProperties.BodyPropertyMin, bodyProperties.BodyPropertyMax);
         }
 

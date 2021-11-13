@@ -19,28 +19,25 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         protected override void OnInitialize()
         {
-            Game currentGame = CurrentGame;
-            currentGame.FirstInitialize(false);
-
-            InitializeGameTexts(currentGame.GameTextManager);
+            GameTextManager gameTextManager = CurrentGame.GameTextManager;
+            InitializeGameTexts(gameTextManager);
             IGameStarter gameStarter = new BasicGameStarter();
             InitializeGameModels(gameStarter);
+            GameManager.InitializeGameStarter(CurrentGame, gameStarter);
             GameManager.OnGameStart(CurrentGame, gameStarter);
-            MBObjectManager objectManager = currentGame.ObjectManager;
-            currentGame.SecondInitialize(gameStarter.Models);
-
-            currentGame.CreateGameManager();
+            MBObjectManager objectManager = CurrentGame.ObjectManager;
+            CurrentGame.SetBasicModels(gameStarter.Models);
+            CurrentGame.CreateGameManager();
             GameManager.BeginGameStart(CurrentGame);
-            CurrentGame.ThirdInitialize();
-
-            currentGame.InitializeDefaultGameObjects();
-            CrpgSkills.Initialize(currentGame);
-            currentGame.LoadBasicFiles(false);
+            CurrentGame.SetRandomGenerators();
+            CurrentGame.InitializeDefaultGameObjects();
+            CrpgSkills.Initialize(CurrentGame);
+            CurrentGame.LoadBasicFiles();
             LoadCustomGameXmls();
-            objectManager.ClearEmptyObjects();
-            currentGame.SetDefaultEquipments(new Dictionary<string, Equipment>());
-            objectManager.ClearEmptyObjects();
-            GameManager.OnCampaignStart(CurrentGame, null);
+            objectManager.UnregisterNonReadyObjects();
+            CurrentGame.SetDefaultEquipments(new Dictionary<string, Equipment>());
+            objectManager.UnregisterNonReadyObjects();
+            GameManager.OnNewCampaignStart(CurrentGame, null);
             GameManager.OnAfterCampaignStart(CurrentGame);
             GameManager.OnGameInitializationFinished(CurrentGame);
         }
@@ -84,6 +81,7 @@ namespace Crpg.GameMod.DefendTheVirgin
             basicGameStarter.AddModel(new DefaultRidingModel());
             basicGameStarter.AddModel(new DefaultStrikeMagnitudeModel());
             basicGameStarter.AddModel(new CustomBattleMoraleModel());
+            basicGameStarter.AddModel(new DefaultDamageParticleModel());
         }
 
         private void InitializeGameTexts(GameTextManager gameTextManager)

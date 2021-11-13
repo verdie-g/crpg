@@ -135,7 +135,7 @@ namespace Crpg.GameMod.DefendTheVirgin
         private async Task<CrpgUser> GetUserAsync()
         {
             var platform = (Platform)Enum.Parse(typeof(Platform), PlatformServices.ProviderName, true);
-            var login = PlatformServices.Instance.CreateLobbyClientLoginProvider();
+            var login = await PlatformServices.Instance.CreateLobbyClientLoginProvider();
             login.Initialize(null, PlatformServices.Instance.GetInitParams()); // PreferredUserName is not used
             // The real id seems to be Id2 for Steam and GOG, not sure about Epic
             string platformUserId = login.GetPlayerId().Id2.ToString();
