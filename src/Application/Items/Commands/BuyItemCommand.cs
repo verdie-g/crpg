@@ -1,6 +1,3 @@
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
@@ -11,66 +8,65 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
 
-namespace Crpg.Application.Items.Commands
+namespace Crpg.Application.Items.Commands;
+
+public record BuyItemCommand : IMediatorRequest<ItemViewModel>
 {
-    public record BuyItemCommand : IMediatorRequest<ItemViewModel>
+    public int ItemId { get; init; }
+    public int UserId { get; init; }
+
+    internal class Handler : IMediatorRequestHandler<BuyItemCommand, ItemViewModel>
     {
-        public int ItemId { get; init; }
-        public int UserId { get; init; }
+        private static readonly ILogger Logger = LoggerFactory.CreateLogger<BuyItemCommand>();
 
-        internal class Handler : IMediatorRequestHandler<BuyItemCommand, ItemViewModel>
+        private readonly ICrpgDbContext _db;
+        private readonly IMapper _mapper;
+
+        public Handler(ICrpgDbContext db, IMapper mapper)
         {
-            private static readonly ILogger Logger = LoggerFactory.CreateLogger<BuyItemCommand>();
+            _db = db;
+            _mapper = mapper;
+        }
 
-            private readonly ICrpgDbContext _db;
-            private readonly IMapper _mapper;
-
-            public Handler(ICrpgDbContext db, IMapper mapper)
+        public async Task<Result<ItemViewModel>> Handle(BuyItemCommand req, CancellationToken cancellationToken)
+        {
+            var item = await _db.Items
+                .AsNoTracking()
+                .FirstOrDefaultAsync(i => i.Id == req.ItemId, cancellationToken);
+            if (item == null)
             {
-                _db = db;
-                _mapper = mapper;
+                return new(CommonErrors.ItemNotFound(req.ItemId));
             }
 
-            public async Task<Result<ItemViewModel>> Handle(BuyItemCommand req, CancellationToken cancellationToken)
+            if (item.Rank != 0)
             {
-                var item = await _db.Items
-                    .AsNoTracking()
-                    .FirstOrDefaultAsync(i => i.Id == req.ItemId, cancellationToken);
-                if (item == null)
-                {
-                    return new(CommonErrors.ItemNotFound(req.ItemId));
-                }
-
-                if (item.Rank != 0)
-                {
-                    return new(CommonErrors.ItemNotBuyable(req.ItemId));
-                }
-
-                var user = await _db.Users
-                    .Include(u => u.Items)
-                    .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
-                if (user == null)
-                {
-                    return new(CommonErrors.UserNotFound(req.UserId));
-                }
-
-                if (user.Items.Any(i => i.ItemId == req.ItemId))
-                {
-                    return new(CommonErrors.ItemAlreadyOwned(req.ItemId));
-                }
-
-                if (user.Gold < item.Value)
-                {
-                    return new(CommonErrors.NotEnoughGold(item.Value, user.Gold));
-                }
-
-                user.Gold -= item.Value;
-                user.Items.Add(new UserItem { UserId = req.UserId, ItemId = req.ItemId });
-                await _db.SaveChangesAsync(cancellationToken);
-
-                Logger.LogInformation("User '{0}' bought item '{1}'", req.UserId, req.ItemId);
-                return new(_mapper.Map<ItemViewModel>(item));
+                return new(CommonErrors.ItemNotBuyable(req.ItemId));
             }
+
+            var user = await _db.Users
+                .Include(u => u.Items)
+                .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
+            if (user == null)
+            {
+                return new(CommonErrors.UserNotFound(req.UserId));
+            }
+
+            if (user.Items.Any(i => i.ItemId == req.ItemId))
+            {
+                return new(CommonErrors.ItemAlreadyOwned(req.ItemId));
+            }
+
+            if (user.Gold < item.Value)
+            {
+                return new(CommonErrors.NotEnoughGold(item.Value, user.Gold));
+            }
+
+            user.Gold -= item.Value;
+            user.Items.Add(new UserItem { UserId = req.UserId, ItemId = req.ItemId });
+            await _db.SaveChangesAsync(cancellationToken);
+
+            Logger.LogInformation("User '{0}' bought item '{1}'", req.UserId, req.ItemId);
+            return new(_mapper.Map<ItemViewModel>(item));
         }
     }
 }

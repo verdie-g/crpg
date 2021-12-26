@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Crpg.Application.Items.Models;
+﻿using Crpg.Application.Items.Models;
 
-namespace Crpg.Application.Common.Interfaces
+namespace Crpg.Application.Common.Interfaces;
+
+internal interface IItemsSource
 {
-    internal interface IItemsSource
-    {
-        Task<IEnumerable<ItemCreation>> LoadItems();
-    }
+    Task<IEnumerable<ItemCreation>> LoadItems();
 }

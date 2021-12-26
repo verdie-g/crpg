@@ -1,6 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Crpg.Application.Battles.Queries;
+﻿using Crpg.Application.Battles.Queries;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Battles;
@@ -9,132 +7,131 @@ using Crpg.Domain.Entities.Users;
 using Moq;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Battles
+namespace Crpg.Application.UTest.Battles;
+
+public class GetBattleMercenariesQueryTest : TestBase
 {
-    public class GetBattleMercenariesQueryTest : TestBase
+    [Test]
+    public async Task ShouldReturnErrorIfBattleNotFound()
     {
-        [Test]
-        public async Task ShouldReturnErrorIfBattleNotFound()
+        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        var res = await handler.Handle(new GetBattleMercenariesQuery
         {
-            GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
-            var res = await handler.Handle(new GetBattleMercenariesQuery
-            {
-                UserId = 99,
-                BattleId = 99,
-            }, CancellationToken.None);
+            UserId = 99,
+            BattleId = 99,
+        }, CancellationToken.None);
 
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.BattleNotFound, res.Errors![0].Code);
-        }
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.BattleNotFound, res.Errors![0].Code);
+    }
 
-        [Test]
-        public async Task ShouldReturnErrorIfBattleIsInPreparation()
+    [Test]
+    public async Task ShouldReturnErrorIfBattleIsInPreparation()
+    {
+        Battle battle = new() { Phase = BattlePhase.Preparation };
+        ArrangeDb.Battles.Add(battle);
+        await ArrangeDb.SaveChangesAsync();
+
+        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        var res = await handler.Handle(new GetBattleMercenariesQuery
         {
-            Battle battle = new() { Phase = BattlePhase.Preparation };
-            ArrangeDb.Battles.Add(battle);
-            await ArrangeDb.SaveChangesAsync();
+            UserId = 99,
+            BattleId = battle.Id,
+        }, CancellationToken.None);
 
-            GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
-            var res = await handler.Handle(new GetBattleMercenariesQuery
-            {
-                UserId = 99,
-                BattleId = battle.Id,
-            }, CancellationToken.None);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.BattleInvalidPhase, res.Errors![0].Code);
+    }
 
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.BattleInvalidPhase, res.Errors![0].Code);
-        }
+    [Test]
+    public async Task ShouldReturnErrorIfBattleIsInHiringPhaseAndUserNotAFighter()
+    {
+        Battle battle = new() { Phase = BattlePhase.Hiring };
+        ArrangeDb.Battles.Add(battle);
+        await ArrangeDb.SaveChangesAsync();
 
-        [Test]
-        public async Task ShouldReturnErrorIfBattleIsInHiringPhaseAndUserNotAFighter()
+        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        var res = await handler.Handle(new GetBattleMercenariesQuery
         {
-            Battle battle = new() { Phase = BattlePhase.Hiring };
-            ArrangeDb.Battles.Add(battle);
-            await ArrangeDb.SaveChangesAsync();
+            UserId = 99,
+            BattleId = battle.Id,
+        }, CancellationToken.None);
 
-            GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
-            var res = await handler.Handle(new GetBattleMercenariesQuery
-            {
-                UserId = 99,
-                BattleId = battle.Id,
-            }, CancellationToken.None);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.HeroNotAFighter, res.Errors![0].Code);
+    }
 
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.HeroNotAFighter, res.Errors![0].Code);
-        }
-
-        [Test]
-        public async Task ShouldOnlyReturnOneSideDuringHiringPhase()
+    [Test]
+    public async Task ShouldOnlyReturnOneSideDuringHiringPhase()
+    {
+        Battle battle = new()
         {
-            Battle battle = new()
+            Phase = BattlePhase.Hiring,
+            Fighters = { new BattleFighter { HeroId = 20, Side = BattleSide.Defender } },
+            Mercenaries =
             {
-                Phase = BattlePhase.Hiring,
-                Fighters = { new BattleFighter { HeroId = 20, Side = BattleSide.Defender } },
-                Mercenaries =
+                new BattleMercenary
                 {
-                    new BattleMercenary
-                    {
-                        Character = new Character { User = new User() },
-                        Side = BattleSide.Attacker,
-                    },
-                    new BattleMercenary
-                    {
-                        Character = new Character { User = new User() },
-                        Side = BattleSide.Defender,
-                    },
+                    Character = new Character { User = new User() },
+                    Side = BattleSide.Attacker,
                 },
-            };
-            ArrangeDb.Battles.Add(battle);
-            await ArrangeDb.SaveChangesAsync();
-
-            GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
-            var res = await handler.Handle(new GetBattleMercenariesQuery
-            {
-                UserId = 20,
-                BattleId = battle.Id,
-            }, CancellationToken.None);
-
-            Assert.IsNull(res.Errors);
-            var mercenaries = res.Data!;
-            Assert.AreEqual(1, mercenaries.Count);
-            Assert.AreEqual(BattleSide.Defender, mercenaries[0].Side);
-        }
-
-        [TestCase(BattlePhase.Scheduled)]
-        [TestCase(BattlePhase.Live)]
-        [TestCase(BattlePhase.End)]
-        public async Task ShouldOnlyReturnBothSidesDuringOtherPhases(BattlePhase battlePhase)
-        {
-            Battle battle = new()
-            {
-                Phase = battlePhase,
-                Mercenaries =
+                new BattleMercenary
                 {
-                    new BattleMercenary
-                    {
-                        Character = new Character { User = new User() },
-                        Side = BattleSide.Attacker,
-                    },
-                    new BattleMercenary
-                    {
-                        Character = new Character { User = new User() },
-                        Side = BattleSide.Defender,
-                    },
+                    Character = new Character { User = new User() },
+                    Side = BattleSide.Defender,
                 },
-            };
-            ArrangeDb.Battles.Add(battle);
-            await ArrangeDb.SaveChangesAsync();
+            },
+        };
+        ArrangeDb.Battles.Add(battle);
+        await ArrangeDb.SaveChangesAsync();
 
-            GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
-            var res = await handler.Handle(new GetBattleMercenariesQuery
+        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        var res = await handler.Handle(new GetBattleMercenariesQuery
+        {
+            UserId = 20,
+            BattleId = battle.Id,
+        }, CancellationToken.None);
+
+        Assert.IsNull(res.Errors);
+        var mercenaries = res.Data!;
+        Assert.AreEqual(1, mercenaries.Count);
+        Assert.AreEqual(BattleSide.Defender, mercenaries[0].Side);
+    }
+
+    [TestCase(BattlePhase.Scheduled)]
+    [TestCase(BattlePhase.Live)]
+    [TestCase(BattlePhase.End)]
+    public async Task ShouldOnlyReturnBothSidesDuringOtherPhases(BattlePhase battlePhase)
+    {
+        Battle battle = new()
+        {
+            Phase = battlePhase,
+            Mercenaries =
             {
-                UserId = 20,
-                BattleId = battle.Id,
-            }, CancellationToken.None);
+                new BattleMercenary
+                {
+                    Character = new Character { User = new User() },
+                    Side = BattleSide.Attacker,
+                },
+                new BattleMercenary
+                {
+                    Character = new Character { User = new User() },
+                    Side = BattleSide.Defender,
+                },
+            },
+        };
+        ArrangeDb.Battles.Add(battle);
+        await ArrangeDb.SaveChangesAsync();
 
-            Assert.IsNull(res.Errors);
-            var mercenaries = res.Data!;
-            Assert.AreEqual(2, mercenaries.Count);
-        }
+        GetBattleMercenariesQuery.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        var res = await handler.Handle(new GetBattleMercenariesQuery
+        {
+            UserId = 20,
+            BattleId = battle.Id,
+        }, CancellationToken.None);
+
+        Assert.IsNull(res.Errors);
+        var mercenaries = res.Data!;
+        Assert.AreEqual(2, mercenaries.Count);
     }
 }

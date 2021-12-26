@@ -1,13 +1,13 @@
-import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
+import {Action, getModule, Module, Mutation, VuexModule} from 'vuex-module-decorators';
 import store from '@/store';
 import SettlementPublic from '@/models/settlement-public';
 import * as strategusService from '@/services/strategus-service';
-import { arrayMergeBy } from '@/utils/array';
+import {arrayMergeBy} from '@/utils/array';
 import Hero from '@/models/hero';
 import Region from '@/models/region';
 import HeroVisible from '@/models/hero-visible';
 import StrategusUpdate from '@/models/strategus-update';
-import { Result } from '@/models/result';
+import {Result} from '@/models/result';
 import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
 
 @Module({ store, dynamic: true, name: 'strategus' })

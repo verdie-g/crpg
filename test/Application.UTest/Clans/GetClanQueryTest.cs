@@ -1,38 +1,35 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Crpg.Application.Clans.Queries;
 using Crpg.Domain.Entities.Clans;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Clans
+namespace Crpg.Application.UTest.Clans;
+
+public class GetClanQueryTest : TestBase
 {
-    public class GetClanQueryTest : TestBase
+    [Test]
+    public async Task ShouldGetClanIfExists()
     {
-        [Test]
-        public async Task ShouldGetClanIfExists()
+        Clan clan = new();
+        ArrangeDb.Clans.Add(clan);
+        await ArrangeDb.SaveChangesAsync();
+
+        var result = await new GetClanQuery.Handler(ActDb, Mapper).Handle(new GetClanQuery
         {
-            Clan clan = new();
-            ArrangeDb.Clans.Add(clan);
-            await ArrangeDb.SaveChangesAsync();
+            ClanId = clan.Id,
+        }, CancellationToken.None);
 
-            var result = await new GetClanQuery.Handler(ActDb, Mapper).Handle(new GetClanQuery
-            {
-                ClanId = clan.Id,
-            }, CancellationToken.None);
+        Assert.NotNull(result.Data);
+    }
 
-            Assert.NotNull(result.Data);
-        }
-
-        [Test]
-        public async Task ShouldReturnErrorIfClanDoesntExist()
+    [Test]
+    public async Task ShouldReturnErrorIfClanDoesntExist()
+    {
+        var result = await new GetClanQuery.Handler(ActDb, Mapper).Handle(new GetClanQuery
         {
-            var result = await new GetClanQuery.Handler(ActDb, Mapper).Handle(new GetClanQuery
-            {
-                ClanId = 1,
-            }, CancellationToken.None);
+            ClanId = 1,
+        }, CancellationToken.None);
 
-            Assert.Null(result.Data);
-            Assert.IsNotEmpty(result.Errors!);
-        }
+        Assert.Null(result.Data);
+        Assert.IsNotEmpty(result.Errors!);
     }
 }

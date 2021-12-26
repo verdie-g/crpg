@@ -1,4 +1,4 @@
-import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
+import {Action, getModule, Module, Mutation, VuexModule} from 'vuex-module-decorators';
 import store from '@/store';
 import * as banService from '@/services/ban-service';
 import Ban from '@/models/ban';

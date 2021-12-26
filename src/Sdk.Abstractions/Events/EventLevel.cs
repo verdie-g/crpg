@@ -1,10 +1,9 @@
-namespace Crpg.Sdk.Abstractions.Events
+namespace Crpg.Sdk.Abstractions.Events;
+
+public enum EventLevel
 {
-    public enum EventLevel
-    {
-        Info,
-        Success,
-        Warning,
-        Error,
-    }
+    Info,
+    Success,
+    Warning,
+    Error,
 }

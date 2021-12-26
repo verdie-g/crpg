@@ -1,12 +1,9 @@
-﻿using System;
+﻿namespace Crpg.Application.Common.Exceptions;
 
-namespace Crpg.Application.Common.Exceptions
+public class ConflictException : Exception
 {
-    public class ConflictException : Exception
+    public ConflictException(Exception innerException)
+        : base(null, innerException)
     {
-        public ConflictException(Exception innerException)
-            : base(null, innerException)
-        {
-        }
     }
 }

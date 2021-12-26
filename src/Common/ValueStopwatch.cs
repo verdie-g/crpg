@@ -1,21 +1,19 @@
-using System;
 using System.Diagnostics;
 
-namespace Crpg.Common
+namespace Crpg.Common;
+
+/// <summary>
+/// <see cref="Stopwatch"/> but as a struct.
+/// </summary>
+public readonly struct ValueStopwatch
 {
-    /// <summary>
-    /// <see cref="Stopwatch"/> but as a struct.
-    /// </summary>
-    public readonly struct ValueStopwatch
-    {
-        private static readonly double TimestampTicksToMachineTicksRatio = TimeSpan.TicksPerSecond / (double)Stopwatch.Frequency;
+    private static readonly double TimestampTicksToMachineTicksRatio = TimeSpan.TicksPerSecond / (double)Stopwatch.Frequency;
 
-        public static ValueStopwatch StartNew() => new(Stopwatch.GetTimestamp());
+    public static ValueStopwatch StartNew() => new(Stopwatch.GetTimestamp());
 
-        private readonly long _startTimestamp;
+    private readonly long _startTimestamp;
 
-        public TimeSpan Elapsed => new((long)((Stopwatch.GetTimestamp() - _startTimestamp) * TimestampTicksToMachineTicksRatio));
+    public TimeSpan Elapsed => new((long)((Stopwatch.GetTimestamp() - _startTimestamp) * TimestampTicksToMachineTicksRatio));
 
-        private ValueStopwatch(long startTimestamp) => _startTimestamp = startTimestamp;
-    }
+    private ValueStopwatch(long startTimestamp) => _startTimestamp = startTimestamp;
 }

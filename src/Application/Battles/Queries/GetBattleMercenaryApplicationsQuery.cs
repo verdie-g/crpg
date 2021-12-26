@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Battles.Models;
 using Crpg.Application.Characters.Models;
@@ -15,60 +10,60 @@ using Crpg.Domain.Entities.Battles;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
-namespace Crpg.Application.Battles.Queries
-{
-    public record GetBattleMercenaryApplicationsQuery : IMediatorRequest<IList<BattleMercenaryApplicationViewModel>>
-    {
-        public int UserId { get; init; }
-        public int BattleId { get; init; }
-        public IList<BattleMercenaryApplicationStatus> Statuses { get; init; } = Array.Empty<BattleMercenaryApplicationStatus>();
+namespace Crpg.Application.Battles.Queries;
 
-        public class Validator : AbstractValidator<GetBattleMercenaryApplicationsQuery>
+public record GetBattleMercenaryApplicationsQuery : IMediatorRequest<IList<BattleMercenaryApplicationViewModel>>
+{
+    public int UserId { get; init; }
+    public int BattleId { get; init; }
+    public IList<BattleMercenaryApplicationStatus> Statuses { get; init; } = Array.Empty<BattleMercenaryApplicationStatus>();
+
+    public class Validator : AbstractValidator<GetBattleMercenaryApplicationsQuery>
+    {
+        public Validator()
         {
-            public Validator()
-            {
-                RuleFor(a => a.Statuses).ForEach(s => s.IsInEnum());
-            }
+            RuleFor(a => a.Statuses).ForEach(s => s.IsInEnum());
+        }
+    }
+
+    internal class Handler : IMediatorRequestHandler<GetBattleMercenaryApplicationsQuery, IList<BattleMercenaryApplicationViewModel>>
+    {
+        private readonly ICrpgDbContext _db;
+        private readonly IMapper _mapper;
+        private readonly ICharacterClassModel _characterClassModel;
+
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterClassModel characterClassModel)
+        {
+            _db = db;
+            _mapper = mapper;
+            _characterClassModel = characterClassModel;
         }
 
-        internal class Handler : IMediatorRequestHandler<GetBattleMercenaryApplicationsQuery, IList<BattleMercenaryApplicationViewModel>>
+        public async Task<Result<IList<BattleMercenaryApplicationViewModel>>> Handle(GetBattleMercenaryApplicationsQuery req, CancellationToken cancellationToken)
         {
-            private readonly ICrpgDbContext _db;
-            private readonly IMapper _mapper;
-            private readonly ICharacterClassModel _characterClassModel;
-
-            public Handler(ICrpgDbContext db, IMapper mapper, ICharacterClassModel characterClassModel)
+            var battle = await _db.Battles
+                .AsSplitQuery()
+                .Include(b => b.Fighters.Where(f => f.HeroId == req.UserId))
+                .Include(b => b.MercenaryApplications.Where(a => req.Statuses.Contains(a.Status)))
+                .ThenInclude(m => m.Character!.User)
+                .FirstOrDefaultAsync(b => b.Id == req.BattleId, cancellationToken);
+            if (battle == null)
             {
-                _db = db;
-                _mapper = mapper;
-                _characterClassModel = characterClassModel;
+                return new(CommonErrors.BattleNotFound(req.BattleId));
             }
 
-            public async Task<Result<IList<BattleMercenaryApplicationViewModel>>> Handle(GetBattleMercenaryApplicationsQuery req, CancellationToken cancellationToken)
+            // Mercenaries can only apply during the Hiring phase so return an error for preceding phases.
+            if (battle.Phase == BattlePhase.Preparation)
             {
-                var battle = await _db.Battles
-                    .AsSplitQuery()
-                    .Include(b => b.Fighters.Where(f => f.HeroId == req.UserId))
-                    .Include(b => b.MercenaryApplications.Where(a => req.Statuses.Contains(a.Status)))
-                    .ThenInclude(m => m.Character!.User)
-                    .FirstOrDefaultAsync(b => b.Id == req.BattleId, cancellationToken);
-                if (battle == null)
-                {
-                    return new(CommonErrors.BattleNotFound(req.BattleId));
-                }
+                return new(CommonErrors.BattleInvalidPhase(req.BattleId, battle.Phase));
+            }
 
-                // Mercenaries can only apply during the Hiring phase so return an error for preceding phases.
-                if (battle.Phase == BattlePhase.Preparation)
-                {
-                    return new(CommonErrors.BattleInvalidPhase(req.BattleId, battle.Phase));
-                }
-
-                BattleFighter? fighter = battle.Fighters.FirstOrDefault();
-                // If the user is not a fighter of that battle, only return its applications, else return the mercenary
-                // applications from the same side as the user.
-                var applications = battle.MercenaryApplications
-                    .Where(a => a.Character!.UserId == req.UserId || (fighter != null && a.Side == fighter.Side))
-                    .Select(m => new BattleMercenaryApplicationViewModel
+            BattleFighter? fighter = battle.Fighters.FirstOrDefault();
+            // If the user is not a fighter of that battle, only return its applications, else return the mercenary
+            // applications from the same side as the user.
+            var applications = battle.MercenaryApplications
+                .Where(a => a.Character!.UserId == req.UserId || (fighter != null && a.Side == fighter.Side))
+                .Select(m => new BattleMercenaryApplicationViewModel
                 {
                     Id = m.Id,
                     User = _mapper.Map<UserPublicViewModel>(m.Character!.User),
@@ -84,8 +79,7 @@ namespace Crpg.Application.Battles.Queries
                     Status = m.Status,
                 }).ToArray();
 
-                return new(applications);
-            }
+            return new(applications);
         }
     }
 }

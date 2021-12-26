@@ -1,6 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
@@ -12,53 +10,52 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
 
-namespace Crpg.Application.Characters.Commands
+namespace Crpg.Application.Characters.Commands;
+
+public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel>
 {
-    public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel>
+    public int CharacterId { get; init; }
+    public int UserId { get; init; }
+
+    internal class Handler : IMediatorRequestHandler<RespecializeCharacterCommand, CharacterViewModel>
     {
-        public int CharacterId { get; init; }
-        public int UserId { get; init; }
+        private static readonly ILogger Logger = LoggerFactory.CreateLogger<RespecializeCharacterCommand>();
 
-        internal class Handler : IMediatorRequestHandler<RespecializeCharacterCommand, CharacterViewModel>
+        private readonly ICrpgDbContext _db;
+        private readonly IMapper _mapper;
+        private readonly ICharacterService _characterService;
+        private readonly IExperienceTable _experienceTable;
+        private readonly Constants _constants;
+
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService,
+            IExperienceTable experienceTable, Constants constants)
         {
-            private static readonly ILogger Logger = LoggerFactory.CreateLogger<RespecializeCharacterCommand>();
+            _db = db;
+            _mapper = mapper;
+            _characterService = characterService;
+            _experienceTable = experienceTable;
+            _constants = constants;
+        }
 
-            private readonly ICrpgDbContext _db;
-            private readonly IMapper _mapper;
-            private readonly ICharacterService _characterService;
-            private readonly IExperienceTable _experienceTable;
-            private readonly Constants _constants;
-
-            public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService,
-                IExperienceTable experienceTable, Constants constants)
+        public async Task<Result<CharacterViewModel>> Handle(RespecializeCharacterCommand req, CancellationToken cancellationToken)
+        {
+            var character = await _db.Characters
+                .Include(c => c.EquippedItems)
+                .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
+            if (character == null)
             {
-                _db = db;
-                _mapper = mapper;
-                _characterService = characterService;
-                _experienceTable = experienceTable;
-                _constants = constants;
+                return new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
             }
 
-            public async Task<Result<CharacterViewModel>> Handle(RespecializeCharacterCommand req, CancellationToken cancellationToken)
-            {
-                var character = await _db.Characters
-                    .Include(c => c.EquippedItems)
-                    .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
-                if (character == null)
-                {
-                    return new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
-                }
+            character.Experience = (int)MathHelper.ApplyPolynomialFunction(character.Experience, _constants.RespecializeExperiencePenaltyCoefs);
+            character.Level = _experienceTable.GetLevelForExperience(character.Experience);
+            character.EquippedItems.Clear(); // Unequip all items.
+            _characterService.ResetCharacterStats(character, true);
 
-                character.Experience = (int)MathHelper.ApplyPolynomialFunction(character.Experience, _constants.RespecializeExperiencePenaltyCoefs);
-                character.Level = _experienceTable.GetLevelForExperience(character.Experience);
-                character.EquippedItems.Clear(); // Unequip all items.
-                _characterService.ResetCharacterStats(character, true);
+            await _db.SaveChangesAsync(cancellationToken);
 
-                await _db.SaveChangesAsync(cancellationToken);
-
-                Logger.LogInformation("User '{0}' respecialized character '{1}'", req.UserId, req.CharacterId);
-                return new(_mapper.Map<CharacterViewModel>(character));
-            }
+            Logger.LogInformation("User '{0}' respecialized character '{1}'", req.UserId, req.CharacterId);
+            return new(_mapper.Map<CharacterViewModel>(character));
         }
     }
 }

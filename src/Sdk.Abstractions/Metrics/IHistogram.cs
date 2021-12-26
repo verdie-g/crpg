@@ -1,7 +1,6 @@
-namespace Crpg.Sdk.Abstractions.Metrics
+namespace Crpg.Sdk.Abstractions.Metrics;
+
+public interface IHistogram : IMetric
 {
-    public interface IHistogram : IMetric
-    {
-        public void Record(double value);
-    }
+    public void Record(double value);
 }

@@ -1,12 +1,11 @@
-﻿namespace Crpg.Domain.Entities.Settlements
+﻿namespace Crpg.Domain.Entities.Settlements;
+
+/// <summary>
+/// Type of <see cref="Settlement"/>.
+/// </summary>
+public enum SettlementType
 {
-    /// <summary>
-    /// Type of <see cref="Settlement"/>.
-    /// </summary>
-    public enum SettlementType
-    {
-        Village,
-        Castle,
-        Town,
-    }
+    Village,
+    Castle,
+    Town,
 }

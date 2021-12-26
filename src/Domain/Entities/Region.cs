@@ -1,9 +1,8 @@
-﻿namespace Crpg.Domain.Entities
+﻿namespace Crpg.Domain.Entities;
+
+public enum Region
 {
-    public enum Region
-    {
-        Europe,
-        NorthAmerica,
-        Asia,
-    }
+    Europe,
+    NorthAmerica,
+    Asia,
 }

@@ -1,13 +1,12 @@
-namespace Crpg.Domain.Entities.Items
+namespace Crpg.Domain.Entities.Items;
+
+/// <summary>
+/// Damage type of a weapon.
+/// </summary>
+public enum DamageType
 {
-    /// <summary>
-    /// Damage type of a weapon.
-    /// </summary>
-    public enum DamageType
-    {
-        Undefined,
-        Cut,
-        Pierce,
-        Blunt,
-    }
+    Undefined,
+    Cut,
+    Pierce,
+    Blunt,
 }

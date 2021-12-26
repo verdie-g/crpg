@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Crpg.Application.Common;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
@@ -11,123 +7,122 @@ using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Items
+namespace Crpg.Application.UTest.Items;
+
+public class SellItemCommandTest : TestBase
 {
-    public class SellItemCommandTest : TestBase
+    private static readonly Constants Constants = new() { ItemSellCostCoefs = new[] { 0.5f, 0.0f } };
+
+    [Test]
+    public async Task SellItemUnequipped()
     {
-        private static readonly Constants Constants = new() { ItemSellCostCoefs = new[] { 0.5f, 0.0f } };
-
-        [Test]
-        public async Task SellItemUnequipped()
+        User user = new()
         {
-            User user = new()
+            Gold = 0,
+            Items = new List<UserItem>
             {
-                Gold = 0,
-                Items = new List<UserItem>
+                new()
                 {
-                    new()
-                    {
-                        Item = new Item { Value = 100 },
-                    },
+                    Item = new Item { Value = 100 },
                 },
-            };
-            ArrangeDb.Users.Add(user);
-            await ArrangeDb.SaveChangesAsync();
+            },
+        };
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
 
-            await new SellItemCommand.Handler(ActDb, Constants).Handle(new SellItemCommand
+        await new SellItemCommand.Handler(ActDb, Constants).Handle(new SellItemCommand
+        {
+            ItemId = user.Items[0].ItemId,
+            UserId = user.Id,
+        }, CancellationToken.None);
+
+        user = await AssertDb.Users
+            .Include(u => u.Items)
+            .FirstAsync(u => u.Id == user.Id);
+        Assert.AreEqual(50, user.Gold);
+        Assert.False(user.Items.Any(oi => oi.ItemId == user.Items[0].ItemId));
+    }
+
+    [Test]
+    public async Task SellItemEquipped()
+    {
+        Item item = new() { Value = 100 };
+        UserItem userItem = new() { Item = item };
+        List<Character> characters = new()
+        {
+            new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Head } } },
+            new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Shoulder } } },
+            new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Body } } },
+            new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Hand } } },
+            new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Leg } } },
+            new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.MountHarness } } },
+            new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Mount } } },
+            new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon0 } } },
+            new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon1 } } },
+            new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon2 } } },
+            new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon3 } } },
+        };
+        User user = new()
+        {
+            Gold = 0,
+            Items = { userItem },
+            Characters = characters,
+        };
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
+
+        await new SellItemCommand.Handler(ActDb, Constants).Handle(new SellItemCommand
+        {
+            ItemId = item.Id,
+            UserId = user.Id,
+        }, CancellationToken.None);
+
+        user = await AssertDb.Users
+            .Include(u => u.Characters)
+            .Include(u => u.Items)
+            .FirstAsync(u => u.Id == user.Id);
+        Assert.AreEqual(50, user.Gold);
+        Assert.False(user.Items.Any(oi => oi.ItemId == item.Id));
+        Assert.IsEmpty(user.Characters[0].EquippedItems);
+        Assert.IsEmpty(user.Characters[1].EquippedItems);
+        Assert.IsEmpty(user.Characters[2].EquippedItems);
+        Assert.IsEmpty(user.Characters[3].EquippedItems);
+        Assert.IsEmpty(user.Characters[4].EquippedItems);
+        Assert.IsEmpty(user.Characters[5].EquippedItems);
+        Assert.IsEmpty(user.Characters[6].EquippedItems);
+        Assert.IsEmpty(user.Characters[7].EquippedItems);
+        Assert.IsEmpty(user.Characters[8].EquippedItems);
+        Assert.IsEmpty(user.Characters[9].EquippedItems);
+        Assert.IsEmpty(user.Characters[10].EquippedItems);
+    }
+
+    [Test]
+    public async Task NotFoundItem()
+    {
+        var user = ArrangeDb.Users.Add(new User());
+        await ArrangeDb.SaveChangesAsync();
+
+        var result = await new SellItemCommand.Handler(ActDb, Constants).Handle(
+            new SellItemCommand
             {
-                ItemId = user.Items[0].ItemId,
-                UserId = user.Id,
+                ItemId = 1,
+                UserId = user.Entity.Id,
             }, CancellationToken.None);
+        Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
+    }
 
-            user = await AssertDb.Users
-                .Include(u => u.Items)
-                .FirstAsync(u => u.Id == user.Id);
-            Assert.AreEqual(50, user.Gold);
-            Assert.False(user.Items.Any(oi => oi.ItemId == user.Items[0].ItemId));
-        }
+    [Test]
+    public async Task NotFoundUser()
+    {
+        var item = ArrangeDb.Items.Add(new Item());
+        await ArrangeDb.SaveChangesAsync();
 
-        [Test]
-        public async Task SellItemEquipped()
-        {
-            Item item = new() { Value = 100 };
-            UserItem userItem = new() { Item = item };
-            List<Character> characters = new()
+        var result = await new SellItemCommand.Handler(ActDb, Constants).Handle(
+            new SellItemCommand
             {
-                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Head } } },
-                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Shoulder } } },
-                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Body } } },
-                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Hand } } },
-                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Leg } } },
-                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.MountHarness } } },
-                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Mount } } },
-                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon0 } } },
-                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon1 } } },
-                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon2 } } },
-                new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon3 } } },
-            };
-            User user = new()
-            {
-                Gold = 0,
-                Items = { userItem },
-                Characters = characters,
-            };
-            ArrangeDb.Users.Add(user);
-            await ArrangeDb.SaveChangesAsync();
-
-            await new SellItemCommand.Handler(ActDb, Constants).Handle(new SellItemCommand
-            {
-                ItemId = item.Id,
-                UserId = user.Id,
+                ItemId = item.Entity.Id,
+                UserId = 1,
             }, CancellationToken.None);
-
-            user = await AssertDb.Users
-                .Include(u => u.Characters)
-                .Include(u => u.Items)
-                .FirstAsync(u => u.Id == user.Id);
-            Assert.AreEqual(50, user.Gold);
-            Assert.False(user.Items.Any(oi => oi.ItemId == item.Id));
-            Assert.IsEmpty(user.Characters[0].EquippedItems);
-            Assert.IsEmpty(user.Characters[1].EquippedItems);
-            Assert.IsEmpty(user.Characters[2].EquippedItems);
-            Assert.IsEmpty(user.Characters[3].EquippedItems);
-            Assert.IsEmpty(user.Characters[4].EquippedItems);
-            Assert.IsEmpty(user.Characters[5].EquippedItems);
-            Assert.IsEmpty(user.Characters[6].EquippedItems);
-            Assert.IsEmpty(user.Characters[7].EquippedItems);
-            Assert.IsEmpty(user.Characters[8].EquippedItems);
-            Assert.IsEmpty(user.Characters[9].EquippedItems);
-            Assert.IsEmpty(user.Characters[10].EquippedItems);
-        }
-
-        [Test]
-        public async Task NotFoundItem()
-        {
-            var user = ArrangeDb.Users.Add(new User());
-            await ArrangeDb.SaveChangesAsync();
-
-            var result = await new SellItemCommand.Handler(ActDb, Constants).Handle(
-                new SellItemCommand
-                {
-                    ItemId = 1,
-                    UserId = user.Entity.Id,
-                }, CancellationToken.None);
-            Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
-        }
-
-        [Test]
-        public async Task NotFoundUser()
-        {
-            var item = ArrangeDb.Items.Add(new Item());
-            await ArrangeDb.SaveChangesAsync();
-
-            var result = await new SellItemCommand.Handler(ActDb, Constants).Handle(
-                new SellItemCommand
-                {
-                    ItemId = item.Entity.Id,
-                    UserId = 1,
-                }, CancellationToken.None);
-            Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
-        }
+        Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
     }
 }

@@ -1,14 +1,13 @@
-﻿namespace Crpg.Application.Common.Results
+﻿namespace Crpg.Application.Common.Results;
+
+/// <summary>
+/// A machine-readable code specifying error category.
+/// </summary>
+public enum ErrorType
 {
-    /// <summary>
-    /// A machine-readable code specifying error category.
-    /// </summary>
-    public enum ErrorType
-    {
-        InternalError,
-        Forbidden,
-        Conflict,
-        NotFound,
-        Validation,
-    }
+    InternalError,
+    Forbidden,
+    Conflict,
+    NotFound,
+    Validation,
 }

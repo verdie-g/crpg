@@ -1,7 +1,6 @@
-namespace Crpg.Application.Common.Interfaces
+namespace Crpg.Application.Common.Interfaces;
+
+public interface ICurrentUserService
 {
-    public interface ICurrentUserService
-    {
-        int UserId { get; }
-    }
+    int UserId { get; }
 }

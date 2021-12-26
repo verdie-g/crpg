@@ -1,48 +1,45 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Crpg.Application.Characters.Queries;
 using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities.Characters;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Characters
+namespace Crpg.Application.UTest.Characters;
+
+public class GetUserCharacterStatisticsQueryTest : TestBase
 {
-    public class GetUserCharacterStatisticsQueryTest : TestBase
+    [Test]
+    public async Task ShouldReturnErrorIfCharacterDoesntExist()
     {
-        [Test]
-        public async Task ShouldReturnErrorIfCharacterDoesntExist()
+        GetUserCharacterStatisticsQuery.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new GetUserCharacterStatisticsQuery
         {
-            GetUserCharacterStatisticsQuery.Handler handler = new(ActDb, Mapper);
-            var result = await handler.Handle(new GetUserCharacterStatisticsQuery
-            {
-                CharacterId = 1,
-                UserId = 2,
-            }, CancellationToken.None);
+            CharacterId = 1,
+            UserId = 2,
+        }, CancellationToken.None);
 
-            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
-        }
+        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+    }
 
-        [Test]
-        public async Task ShouldReturnCharacterStatistics()
+    [Test]
+    public async Task ShouldReturnCharacterStatistics()
+    {
+        Character character = new()
         {
-            Character character = new()
-            {
-                Name = "toto",
-                UserId = 2,
-                Statistics = new CharacterStatistics(),
-            };
-            ArrangeDb.Characters.Add(character);
-            await ArrangeDb.SaveChangesAsync();
+            Name = "toto",
+            UserId = 2,
+            Statistics = new CharacterStatistics(),
+        };
+        ArrangeDb.Characters.Add(character);
+        await ArrangeDb.SaveChangesAsync();
 
-            GetUserCharacterStatisticsQuery.Handler handler = new(ActDb, Mapper);
-            var result = await handler.Handle(new GetUserCharacterStatisticsQuery
-            {
-                CharacterId = character.Id,
-                UserId = 2,
-            }, CancellationToken.None);
+        GetUserCharacterStatisticsQuery.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new GetUserCharacterStatisticsQuery
+        {
+            CharacterId = character.Id,
+            UserId = 2,
+        }, CancellationToken.None);
 
-            Assert.IsNull(result.Errors);
-            Assert.IsNotNull(result.Data);
-        }
+        Assert.IsNull(result.Errors);
+        Assert.IsNotNull(result.Data);
     }
 }

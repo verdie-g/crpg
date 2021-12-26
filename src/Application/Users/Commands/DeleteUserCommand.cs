@@ -1,6 +1,3 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
@@ -10,59 +7,58 @@ using Crpg.Sdk.Abstractions;
 using Crpg.Sdk.Abstractions.Events;
 using Microsoft.EntityFrameworkCore;
 
-namespace Crpg.Application.Users.Commands
+namespace Crpg.Application.Users.Commands;
+
+/// <summary>
+/// Deletes all entities related to user except <see cref="Ban"/>s and reset user info.
+/// </summary>
+public record DeleteUserCommand : IMediatorRequest
 {
-    /// <summary>
-    /// Deletes all entities related to user except <see cref="Ban"/>s and reset user info.
-    /// </summary>
-    public record DeleteUserCommand : IMediatorRequest
+    public int UserId { get; init; }
+
+    internal class Handler : IMediatorRequestHandler<DeleteUserCommand>
     {
-        public int UserId { get; init; }
+        private readonly ICrpgDbContext _db;
+        private readonly IEventService _events;
+        private readonly IDateTimeOffset _dateTimeOffset;
+        private readonly IUserService _userService;
 
-        internal class Handler : IMediatorRequestHandler<DeleteUserCommand>
+        public Handler(ICrpgDbContext db, IEventService events, IDateTimeOffset dateTimeOffset, IUserService userService)
         {
-            private readonly ICrpgDbContext _db;
-            private readonly IEventService _events;
-            private readonly IDateTimeOffset _dateTimeOffset;
-            private readonly IUserService _userService;
+            _db = db;
+            _events = events;
+            _dateTimeOffset = dateTimeOffset;
+            _userService = userService;
+        }
 
-            public Handler(ICrpgDbContext db, IEventService events, IDateTimeOffset dateTimeOffset, IUserService userService)
+        public async Task<Result> Handle(DeleteUserCommand req, CancellationToken cancellationToken)
+        {
+            var user = await _db.Users
+                .Include(u => u.Characters)
+                .Include(u => u.Items)
+                .Include(u => u.Hero!).ThenInclude(h => h.Items)
+                .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
+            if (user == null)
             {
-                _db = db;
-                _events = events;
-                _dateTimeOffset = dateTimeOffset;
-                _userService = userService;
+                return new Result(CommonErrors.UserNotFound(req.UserId));
             }
 
-            public async Task<Result> Handle(DeleteUserCommand req, CancellationToken cancellationToken)
-            {
-                var user = await _db.Users
-                    .Include(u => u.Characters)
-                    .Include(u => u.Items)
-                    .Include(u => u.Hero!).ThenInclude(h => h.Items)
-                    .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
-                if (user == null)
-                {
-                    return new Result(CommonErrors.UserNotFound(req.UserId));
-                }
+            string name = user.Name;
 
-                string name = user.Name;
+            _userService.SetDefaultValuesForUser(user);
+            user.Name = string.Empty;
+            user.AvatarSmall = new Uri("https://via.placeholder.com/32x32");
+            user.AvatarMedium = new Uri("https://via.placeholder.com/64x64");
+            user.AvatarFull = new Uri("https://via.placeholder.com/184x184");
+            user.DeletedAt = _dateTimeOffset.Now; // Deleted users are just marked with a DeletedAt != null
 
-                _userService.SetDefaultValuesForUser(user);
-                user.Name = string.Empty;
-                user.AvatarSmall = new Uri("https://via.placeholder.com/32x32");
-                user.AvatarMedium = new Uri("https://via.placeholder.com/64x64");
-                user.AvatarFull = new Uri("https://via.placeholder.com/184x184");
-                user.DeletedAt = _dateTimeOffset.Now; // Deleted users are just marked with a DeletedAt != null
-
-                _db.UserItems.RemoveRange(user.Items);
-                _db.Characters.RemoveRange(user.Characters);
-                _db.HeroItems.RemoveRange(user.Hero!.Items);
-                _db.Heroes.Remove(user.Hero);
-                await _db.SaveChangesAsync(cancellationToken);
-                _events.Raise(EventLevel.Info, $"{name} left ({user.Platform}#{user.PlatformUserId})", string.Empty, "user_deleted");
-                return Result.NoErrors;
-            }
+            _db.UserItems.RemoveRange(user.Items);
+            _db.Characters.RemoveRange(user.Characters);
+            _db.HeroItems.RemoveRange(user.Hero!.Items);
+            _db.Heroes.Remove(user.Hero);
+            await _db.SaveChangesAsync(cancellationToken);
+            _events.Raise(EventLevel.Info, $"{name} left ({user.Platform}#{user.PlatformUserId})", string.Empty, "user_deleted");
+            return Result.NoErrors;
         }
     }
 }

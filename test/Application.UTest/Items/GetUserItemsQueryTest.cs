@@ -1,32 +1,28 @@
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using Crpg.Application.Items.Queries;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Items
+namespace Crpg.Application.UTest.Items;
+
+public class GetUserItemsQueryTest : TestBase
 {
-    public class GetUserItemsQueryTest : TestBase
+    [Test]
+    public async Task Basic()
     {
-        [Test]
-        public async Task Basic()
+        var user = ArrangeDb.Users.Add(new User
         {
-            var user = ArrangeDb.Users.Add(new User
+            Items = new List<UserItem>
             {
-                Items = new List<UserItem>
-                {
-                    new() { Item = new Item() },
-                    new() { Item = new Item() },
-                },
-            });
-            await ArrangeDb.SaveChangesAsync();
+                new() { Item = new Item() },
+                new() { Item = new Item() },
+            },
+        });
+        await ArrangeDb.SaveChangesAsync();
 
-            var result = await new GetUserItemsQuery.Handler(ActDb, Mapper).Handle(
-                new GetUserItemsQuery { UserId = user.Entity.Id }, CancellationToken.None);
+        var result = await new GetUserItemsQuery.Handler(ActDb, Mapper).Handle(
+            new GetUserItemsQuery { UserId = user.Entity.Id }, CancellationToken.None);
 
-            Assert.AreEqual(2, result.Data!.Count);
-        }
+        Assert.AreEqual(2, result.Data!.Count);
     }
 }

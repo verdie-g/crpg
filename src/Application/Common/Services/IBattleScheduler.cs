@@ -1,19 +1,17 @@
-﻿using System.Threading.Tasks;
-using Crpg.Domain.Entities.Battles;
+﻿using Crpg.Domain.Entities.Battles;
 
-namespace Crpg.Application.Common.Services
+namespace Crpg.Application.Common.Services;
+
+internal interface IBattleScheduler
 {
-    internal interface IBattleScheduler
-    {
-        Task ScheduleBattle(Battle battle);
-    }
+    Task ScheduleBattle(Battle battle);
+}
 
-    internal class BattleScheduler : IBattleScheduler
+internal class BattleScheduler : IBattleScheduler
+{
+    public Task ScheduleBattle(Battle battle)
     {
-        public Task ScheduleBattle(Battle battle)
-        {
-            // TODO
-            return Task.CompletedTask;
-        }
+        // TODO
+        return Task.CompletedTask;
     }
 }

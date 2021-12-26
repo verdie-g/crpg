@@ -1,18 +1,17 @@
-﻿namespace Crpg.Domain.Entities.Clans
+﻿namespace Crpg.Domain.Entities.Clans;
+
+/// <summary>
+/// Type of a <see cref="ClanInvitation"/>.
+/// </summary>
+public enum ClanInvitationType
 {
     /// <summary>
-    /// Type of a <see cref="ClanInvitation"/>.
+    /// User requested to join a clan.
     /// </summary>
-    public enum ClanInvitationType
-    {
-        /// <summary>
-        /// User requested to join a clan.
-        /// </summary>
-        Request,
+    Request,
 
-        /// <summary>
-        /// User was of offered to join a clan.
-        /// </summary>
-        Offer,
-    }
+    /// <summary>
+    /// User was of offered to join a clan.
+    /// </summary>
+    Offer,
 }

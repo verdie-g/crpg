@@ -1,13 +1,12 @@
-﻿namespace Crpg.Application.Characters.Models
+﻿namespace Crpg.Application.Characters.Models;
+
+public enum CharacterClass
 {
-    public enum CharacterClass
-    {
-        Infantry,
-        ShockInfantry,
-        Skirmisher,
-        Crossbowman,
-        Archer,
-        Cavalry,
-        MountedArcher,
-    }
+    Infantry,
+    ShockInfantry,
+    Skirmisher,
+    Crossbowman,
+    Archer,
+    Cavalry,
+    MountedArcher,
 }

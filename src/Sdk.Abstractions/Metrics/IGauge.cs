@@ -1,6 +1,5 @@
-namespace Crpg.Sdk.Abstractions.Metrics
+namespace Crpg.Sdk.Abstractions.Metrics;
+
+public interface IGauge : IMetric
 {
-    public interface IGauge : IMetric
-    {
-    }
 }

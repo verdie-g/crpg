@@ -1,42 +1,41 @@
-﻿using System.Collections.Generic;
-using Crpg.Sdk.Abstractions.Tracing;
+﻿using Crpg.Sdk.Abstractions.Tracing;
 using Datadog.Trace;
+using ITracer = Crpg.Sdk.Abstractions.Tracing.ITracer;
 
-namespace Crpg.Sdk.Tracing.Datadog
+namespace Crpg.Sdk.Tracing.Datadog;
+
+internal class DatadogTracer : ITracer
 {
-    internal class DatadogTracer : ITracer
+    private static readonly KeyValuePair<string, string>[] DefaultTags = { new("component", "crpg") };
+
+    private readonly string _namespace;
+
+    public DatadogTracer(string ns)
     {
-        private static readonly KeyValuePair<string, string>[] DefaultTags = { new("component", "crpg") };
+        _namespace = ns;
+    }
 
-        private readonly string _namespace;
-
-        public DatadogTracer(string ns)
+    public ITraceSpan CreateSpan(string operationName, string? resourceName = null, IEnumerable<KeyValuePair<string, string>>? tags = null)
+    {
+        IScope scope = Tracer.Instance.StartActive(_namespace + "." + operationName);
+        if (resourceName != null)
         {
-            _namespace = ns;
+            scope.Span.ResourceName = resourceName;
         }
 
-        public ITraceSpan CreateSpan(string operationName, string? resourceName = null, IEnumerable<KeyValuePair<string, string>>? tags = null)
+        foreach (var tag in DefaultTags)
         {
-            Scope scope = Tracer.Instance.StartActive(_namespace + "." + operationName);
-            if (resourceName != null)
-            {
-                scope.Span.ResourceName = resourceName;
-            }
+            scope.Span.SetTag(tag.Key, tag.Value);
+        }
 
-            foreach (var tag in DefaultTags)
+        if (tags != null)
+        {
+            foreach (var tag in tags)
             {
                 scope.Span.SetTag(tag.Key, tag.Value);
             }
-
-            if (tags != null)
-            {
-                foreach (var tag in tags)
-                {
-                    scope.Span.SetTag(tag.Key, tag.Value);
-                }
-            }
-
-            return new DatadogTraceSpan(scope);
         }
+
+        return new DatadogTraceSpan(scope);
     }
 }

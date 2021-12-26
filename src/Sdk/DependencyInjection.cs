@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Crpg.Sdk.Abstractions;
 using Crpg.Sdk.Abstractions.Events;
 using Crpg.Sdk.Abstractions.Metrics;
@@ -12,57 +11,56 @@ using DatadogStatsD;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Crpg.Sdk
+namespace Crpg.Sdk;
+
+public static class DependencyInjection
 {
-    public static class DependencyInjection
+    public static IServiceCollection AddSdk(this IServiceCollection services,
+        IConfiguration configuration, IApplicationEnvironment appEnv)
     {
-        public static IServiceCollection AddSdk(this IServiceCollection services,
-            IConfiguration configuration, IApplicationEnvironment appEnv)
+        return services
+            .AddDatadog(appEnv)
+            .AddSingleton(appEnv)
+            .AddSingleton<IDateTimeOffset, MachineDateTimeOffset>()
+            .AddSingleton<IRandom, ThreadSafeRandom>();
+    }
+
+    private static IServiceCollection AddDatadog(this IServiceCollection services, IApplicationEnvironment appEnv)
+    {
+        if (appEnv.Environment == HostingEnvironment.Development)
         {
-            return services
-                .AddDatadog(appEnv)
-                .AddSingleton(appEnv)
-                .AddSingleton<IDateTimeOffset, MachineDateTimeOffset>()
-                .AddSingleton<IRandom, ThreadSafeRandom>();
+            services.AddSingleton<IMetricsFactory, DebugMetricsFactory>();
+            services.AddSingleton<IEventService, DebugEventService>();
+            services.AddSingleton<ITracer, DebugTracer>();
+        }
+        else
+        {
+            DogStatsD dogStatsD = new(new DogStatsDConfiguration
+            {
+                Namespace = "crpg",
+                ConstantTags = BuildTagsFromEnv(appEnv),
+            });
+
+            services.AddSingleton<IMetricsFactory>(new DatadogMetricsFactory(dogStatsD));
+            services.AddSingleton<IEventService>(new DatadogEventService(dogStatsD));
+            services.AddSingleton<ITracer>(new DatadogTracer("crpg"));
         }
 
-        private static IServiceCollection AddDatadog(this IServiceCollection services, IApplicationEnvironment appEnv)
+        return services;
+    }
+
+    private static KeyValuePair<string, string>[] BuildTagsFromEnv(IApplicationEnvironment appEnv)
+    {
+        List<KeyValuePair<string, string>> constantTags = new()
         {
-            if (appEnv.Environment == HostingEnvironment.Development)
-            {
-                services.AddSingleton<IMetricsFactory, DebugMetricsFactory>();
-                services.AddSingleton<IEventService, DebugEventService>();
-                services.AddSingleton<ITracer, DebugTracer>();
-            }
-            else
-            {
-                DogStatsD dogStatsD = new(new DogStatsDConfiguration
-                {
-                    Namespace = "crpg",
-                    ConstantTags = BuildTagsFromEnv(appEnv),
-                });
+            new("service", appEnv.ServiceName),
+        };
 
-                services.AddSingleton<IMetricsFactory>(new DatadogMetricsFactory(dogStatsD));
-                services.AddSingleton<IEventService>(new DatadogEventService(dogStatsD));
-                services.AddSingleton<ITracer>(new DatadogTracer("crpg"));
-            }
-
-            return services;
+        if (appEnv.Instance.Length != 0)
+        {
+            constantTags.Add(new KeyValuePair<string, string>("instance", appEnv.Instance));
         }
 
-        private static KeyValuePair<string, string>[] BuildTagsFromEnv(IApplicationEnvironment appEnv)
-        {
-            List<KeyValuePair<string, string>> constantTags = new()
-            {
-                new("service", appEnv.ServiceName),
-            };
-
-            if (appEnv.Instance.Length != 0)
-            {
-                constantTags.Add(new KeyValuePair<string, string>("instance", appEnv.Instance));
-            }
-
-            return constantTags.ToArray();
-        }
+        return constantTags.ToArray();
     }
 }

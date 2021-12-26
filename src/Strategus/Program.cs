@@ -1,14 +1,9 @@
-using System;
-using System.IO;
 using Crpg.Application;
-using Crpg.Logging;
 using Crpg.Persistence;
 using Crpg.Sdk;
 using Crpg.Sdk.Abstractions;
 using Crpg.Strategus;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using LoggingHostBuilderExtension = Crpg.Logging.LoggingHostBuilderExtension;
 
 string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? Environments.Development;
 var appEnv = ApplicationEnvironmentProvider.FromEnvironment();
@@ -19,10 +14,9 @@ IConfiguration configuration = new ConfigurationBuilder()
     .AddEnvironmentVariables()
     .Build();
 
-LoggerFactory.Initialize(configuration);
+Crpg.Logging.LoggerFactory.Initialize(configuration);
 
-Host.CreateDefaultBuilder(args)
-    .UseLogging()
+LoggingHostBuilderExtension.UseLogging(Host.CreateDefaultBuilder(args))
     .ConfigureServices(services => ConfigureServices(services, configuration, appEnv))
     .Build()
     .Run();

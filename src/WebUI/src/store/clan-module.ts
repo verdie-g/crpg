@@ -1,4 +1,4 @@
-import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
+import {Action, getModule, Module, Mutation, VuexModule} from 'vuex-module-decorators';
 import store from '@/store';
 import * as clanService from '@/services/clan-service';
 import Clan from '@/models/clan';

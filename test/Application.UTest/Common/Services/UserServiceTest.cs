@@ -3,27 +3,26 @@ using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Common.Services
+namespace Crpg.Application.UTest.Common.Services;
+
+public class UserServiceTest
 {
-    public class UserServiceTest
+    private static readonly Constants Constants = new()
     {
-        private static readonly Constants Constants = new()
-        {
-            DefaultGold = 300,
-            DefaultRole = Role.User,
-            DefaultHeirloomPoints = 0,
-        };
+        DefaultGold = 300,
+        DefaultRole = Role.User,
+        DefaultHeirloomPoints = 0,
+    };
 
-        [Test]
-        public void SetDefaultValuesShouldSetDefaultValues()
-        {
-            UserService userService = new(Constants);
-            User user = new();
-            userService.SetDefaultValuesForUser(user);
+    [Test]
+    public void SetDefaultValuesShouldSetDefaultValues()
+    {
+        UserService userService = new(Constants);
+        User user = new();
+        userService.SetDefaultValuesForUser(user);
 
-            Assert.AreEqual(Constants.DefaultGold, user.Gold);
-            Assert.AreEqual(Constants.DefaultRole, user.Role);
-            Assert.AreEqual(Constants.DefaultHeirloomPoints, user.HeirloomPoints);
-        }
+        Assert.AreEqual(Constants.DefaultGold, user.Gold);
+        Assert.AreEqual(Constants.DefaultRole, user.Role);
+        Assert.AreEqual(Constants.DefaultHeirloomPoints, user.HeirloomPoints);
     }
 }

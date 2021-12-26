@@ -1,17 +1,16 @@
-﻿namespace Crpg.Domain.Entities
+﻿namespace Crpg.Domain.Entities;
+
+/// <summary>
+/// Bannerlord culture.
+/// </summary>
+public enum Culture
 {
-    /// <summary>
-    /// Bannerlord culture.
-    /// </summary>
-    public enum Culture
-    {
-        Neutral,
-        Aserai,
-        Battania,
-        Empire,
-        Khuzait,
-        Looters,
-        Sturgia,
-        Vlandia,
-    }
+    Neutral,
+    Aserai,
+    Battania,
+    Empire,
+    Khuzait,
+    Looters,
+    Sturgia,
+    Vlandia,
 }

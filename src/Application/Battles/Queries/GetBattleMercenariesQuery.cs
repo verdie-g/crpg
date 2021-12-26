@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Battles.Models;
 using Crpg.Application.Characters.Models;
@@ -13,55 +9,55 @@ using Crpg.Application.Users.Models;
 using Crpg.Domain.Entities.Battles;
 using Microsoft.EntityFrameworkCore;
 
-namespace Crpg.Application.Battles.Queries
+namespace Crpg.Application.Battles.Queries;
+
+public record GetBattleMercenariesQuery : IMediatorRequest<IList<BattleMercenaryViewModel>>
 {
-    public record GetBattleMercenariesQuery : IMediatorRequest<IList<BattleMercenaryViewModel>>
+    public int UserId { get; init; }
+    public int BattleId { get; init; }
+
+    internal class Handler : IMediatorRequestHandler<GetBattleMercenariesQuery, IList<BattleMercenaryViewModel>>
     {
-        public int UserId { get; init; }
-        public int BattleId { get; init; }
+        private readonly ICrpgDbContext _db;
+        private readonly IMapper _mapper;
+        private readonly ICharacterClassModel _characterClassModel;
 
-        internal class Handler : IMediatorRequestHandler<GetBattleMercenariesQuery, IList<BattleMercenaryViewModel>>
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterClassModel characterClassModel)
         {
-            private readonly ICrpgDbContext _db;
-            private readonly IMapper _mapper;
-            private readonly ICharacterClassModel _characterClassModel;
+            _db = db;
+            _mapper = mapper;
+            _characterClassModel = characterClassModel;
+        }
 
-            public Handler(ICrpgDbContext db, IMapper mapper, ICharacterClassModel characterClassModel)
+        public async Task<Result<IList<BattleMercenaryViewModel>>> Handle(GetBattleMercenariesQuery req, CancellationToken cancellationToken)
+        {
+            var battle = await _db.Battles
+                .AsSplitQuery()
+                .Include(b => b.Fighters)
+                .Include(b => b.Mercenaries).ThenInclude(m => m.Character!.User)
+                .FirstOrDefaultAsync(b => b.Id == req.BattleId, cancellationToken);
+            if (battle == null)
             {
-                _db = db;
-                _mapper = mapper;
-                _characterClassModel = characterClassModel;
+                return new(CommonErrors.BattleNotFound(req.BattleId));
             }
 
-            public async Task<Result<IList<BattleMercenaryViewModel>>> Handle(GetBattleMercenariesQuery req, CancellationToken cancellationToken)
+            // Mercenaries can only apply during the Hiring phase so return an error for preceding phases.
+            if (battle.Phase == BattlePhase.Preparation)
             {
-                var battle = await _db.Battles
-                    .AsSplitQuery()
-                    .Include(b => b.Fighters)
-                    .Include(b => b.Mercenaries).ThenInclude(m => m.Character!.User)
-                    .FirstOrDefaultAsync(b => b.Id == req.BattleId, cancellationToken);
-                if (battle == null)
-                {
-                    return new(CommonErrors.BattleNotFound(req.BattleId));
-                }
+                return new(CommonErrors.BattleInvalidPhase(req.BattleId, battle.Phase));
+            }
 
-                // Mercenaries can only apply during the Hiring phase so return an error for preceding phases.
-                if (battle.Phase == BattlePhase.Preparation)
-                {
-                    return new(CommonErrors.BattleInvalidPhase(req.BattleId, battle.Phase));
-                }
+            BattleFighter? fighter = battle.Fighters.FirstOrDefault(f => f.HeroId == req.UserId);
+            // During the hiring phase, only the fighters can see the mercenaries.
+            if (battle.Phase == BattlePhase.Hiring && fighter == null)
+            {
+                return new(CommonErrors.HeroNotAFighter(req.UserId, req.BattleId));
+            }
 
-                BattleFighter? fighter = battle.Fighters.FirstOrDefault(f => f.HeroId == req.UserId);
-                // During the hiring phase, only the fighters can see the mercenaries.
-                if (battle.Phase == BattlePhase.Hiring && fighter == null)
-                {
-                    return new(CommonErrors.HeroNotAFighter(req.UserId, req.BattleId));
-                }
-
-                // Return the mercenaries from the same side as the user during the hiring phase.
-                var mercenaries = battle.Mercenaries
-                    .Where(m => battle.Phase != BattlePhase.Hiring || m.Side == fighter!.Side)
-                    .Select(m => new BattleMercenaryViewModel
+            // Return the mercenaries from the same side as the user during the hiring phase.
+            var mercenaries = battle.Mercenaries
+                .Where(m => battle.Phase != BattlePhase.Hiring || m.Side == fighter!.Side)
+                .Select(m => new BattleMercenaryViewModel
                 {
                     Id = m.Id,
                     User = _mapper.Map<UserPublicViewModel>(m.Character!.User),
@@ -74,8 +70,7 @@ namespace Crpg.Application.Battles.Queries
                     Side = m.Side,
                 }).ToArray();
 
-                return new(mercenaries);
-            }
+            return new(mercenaries);
         }
     }
 }

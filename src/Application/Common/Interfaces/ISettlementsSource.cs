@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Crpg.Application.Settlements.Models;
+﻿using Crpg.Application.Settlements.Models;
 
-namespace Crpg.Application.Common.Interfaces
+namespace Crpg.Application.Common.Interfaces;
+
+internal interface ISettlementsSource
 {
-    internal interface ISettlementsSource
-    {
-        Task<IEnumerable<SettlementCreation>> LoadStrategusSettlements();
-    }
+    Task<IEnumerable<SettlementCreation>> LoadStrategusSettlements();
 }

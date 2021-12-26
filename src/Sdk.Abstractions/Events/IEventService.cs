@@ -1,12 +1,9 @@
-using System.Collections.Generic;
+namespace Crpg.Sdk.Abstractions.Events;
 
-namespace Crpg.Sdk.Abstractions.Events
+/// <summary>
+/// Responsible for sending events to Datadog.
+/// </summary>
+public interface IEventService
 {
-    /// <summary>
-    /// Responsible for sending events to Datadog.
-    /// </summary>
-    public interface IEventService
-    {
-        public void Raise(EventLevel eventLevel, string title, string message, string? aggregationKey = null, IList<KeyValuePair<string, string>>? tags = null);
-    }
+    public void Raise(EventLevel eventLevel, string title, string message, string? aggregationKey = null, IList<KeyValuePair<string, string>>? tags = null);
 }
