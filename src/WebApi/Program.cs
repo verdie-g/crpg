@@ -19,6 +19,7 @@ using Crpg.Sdk;
 using Crpg.Sdk.Abstractions.Events;
 using Crpg.WebApi.Identity;
 using Crpg.WebApi.Services;
+using Crpg.WebApi.Workers;
 using IdentityServer4;
 using IdentityServer4.Models;
 using MediatR;
@@ -47,6 +48,7 @@ builder.Services
     .AddSdk(builder.Configuration, appEnv)
     .AddPersistence(builder.Configuration, appEnv)
     .AddApplication()
+    .AddHostedService<StrategusWorker>()
     .AddHttpContextAccessor() // Injects IHttpContextAccessor
     .AddScoped<ICurrentUserService, CurrentUserService>()
     .AddEndpointsApiExplorer()
@@ -251,7 +253,7 @@ static void ConfigureJwtBearer(JwtBearerOptions options, IConfiguration configur
 static void ConfigureSteamAuthentication(SteamAuthenticationOptions options, IConfiguration configuration)
 {
     options.ApplicationKey = configuration["IdentityServer:Providers:Steam:ApplicationKey"];
-    options.Events!.OnAuthenticated = OnSteamUserAuthenticated;
+    options.Events.OnAuthenticated = OnSteamUserAuthenticated;
 }
 
 static async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
