@@ -4,7 +4,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace Crpg.GameMod.Common
 {
-    internal class CrpgUserAccessor : MissionBehaviour
+    internal class CrpgUserAccessor : MissionBehavior
     {
         private CrpgUser _user;
 
@@ -22,6 +22,6 @@ namespace Crpg.GameMod.Common
             }
         }
 
-        public override MissionBehaviourType BehaviourType => MissionBehaviourType.Other;
+        public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
     }
 }

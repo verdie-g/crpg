@@ -69,7 +69,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                 AtmosphereOnCampaign = GetRandomAtmosphere(),
                 SceneLevels = string.Empty,
                 TimeOfDay = 6f,
-            }, missionController => new MissionBehaviour[]
+            }, missionController => new MissionBehavior[]
             {
                 new MissionCombatantsLogic(),
                 waveController,
@@ -77,7 +77,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                 waveSpawnLogic,
                 crpgLogic,
                 crpgExperienceTable,
-                new AgentBattleAILogic(),
+                new AgentHumanAILogic(),
                 new MissionHardBorderPlacer(),
                 new MissionBoundaryPlacer(),
                 new MissionBoundaryCrossingHandler(),

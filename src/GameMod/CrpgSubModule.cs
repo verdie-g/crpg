@@ -60,9 +60,9 @@ namespace Crpg.GameMod
         /// <summary>
         /// Called once a mission is started and behaviours are to be initialized.
         /// </summary>
-        public override void OnMissionBehaviourInitialize(Mission mission)
+        public override void OnMissionBehaviorInitialize(Mission mission)
         {
-            base.OnMissionBehaviourInitialize(mission);
+            base.OnMissionBehaviorInitialize(mission);
         }
 
         public override void OnMultiplayerGameStart(Game game, object starterObject)

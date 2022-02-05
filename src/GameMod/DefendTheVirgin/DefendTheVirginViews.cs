@@ -1,5 +1,6 @@
 ﻿using Crpg.GameMod.Common.UI;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.GauntletUI;
 using TaleWorlds.MountAndBlade.LegacyGUI.Missions;
 using TaleWorlds.MountAndBlade.View.Missions;
 
@@ -19,7 +20,6 @@ namespace Crpg.GameMod.DefendTheVirgin
             ViewCreator.CreateMissionMainAgentCheerBarkControllerView(mission),
             ViewCreator.CreateMissionBoundaryCrossingView(),
             new MissionBoundaryWallView(),
-            ViewCreator.CreateMissionFormationMarkerUIHandler(mission),
             ViewCreator.CreateSingleplayerMissionKillNotificationUIHandler(),
             new MissionAgentContourControllerView(),
         };

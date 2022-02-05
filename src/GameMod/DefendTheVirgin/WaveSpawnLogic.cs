@@ -35,7 +35,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                 !_mainCharacter.Equipment.Horse.IsEmpty, false, true, 0, 0, false, true, false, null, null);
 
             var virgin = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("townswoman_empire");
-            virgin.Name = new TextObject("The Virgin");
+            // virgin.Name = new TextObject("The Virgin");
             Mission.SpawnTroop(new BasicBattleAgentOrigin(virgin), true, false, false, false, true, 0, 0, false, true,
                 false, null, null);
 
@@ -46,7 +46,7 @@ namespace Crpg.GameMod.DefendTheVirgin
                 var agentOrigin = new BasicBattleAgentOrigin(troop);
                 Formation formation = Mission.GetAgentTeam(agentOrigin, false).GetFormation(FormationClass.Infantry);
                 formation.BeginSpawn(group.Count, false);
-                Mission.Current.SpawnFormation(formation, group.Count, true, false, false);
+                Mission.Current.SpawnFormation(formation);
                 for (int i = 0; i < group.Count; i += 1)
                 {
                     Mission.Current.SpawnTroop(agentOrigin, false, true, !troop.Equipment.Horse.IsEmpty, false, true,

@@ -5,9 +5,9 @@ namespace Crpg.GameMod.DefendTheVirgin
 {
     public class MissionCombatantsLogic : MissionLogic
     {
-        public override void OnBehaviourInitialize()
+        public override void OnBehaviorInitialize()
         {
-            base.OnBehaviourInitialize();
+            base.OnBehaviorInitialize();
 
             Mission.Teams.Add(BattleSideEnum.Defender, banner: Banner.CreateRandomBanner());
             Mission.Teams.Add(BattleSideEnum.Attacker, banner: Banner.CreateRandomBanner());

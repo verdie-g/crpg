@@ -14,12 +14,12 @@ namespace Crpg.GameMod.Common.UI
         {
             base.EarlyStart();
 
-            var crpgUserAccessor = Mission.GetMissionBehaviour<CrpgUserAccessor>();
-            var experienceTable = Mission.GetMissionBehaviour<CrpgExperienceTable>();
+            var crpgUserAccessor = Mission.GetMissionBehavior<CrpgUserAccessor>();
+            var experienceTable = Mission.GetMissionBehavior<CrpgExperienceTable>();
             _dataSource = new CrpgAgentHudViewModel(crpgUserAccessor, experienceTable);
 
             // localOrder sets the order the layer are drawn. + 1 to be drawn over the agent HUD.
-            _gauntletLayer = new GauntletLayer(ViewOrderPriorty + 1);
+            _gauntletLayer = new GauntletLayer(ViewOrderPriority + 1);
             _gauntletMovie = _gauntletLayer.LoadMovie("CrpgAgentHud", _dataSource); // Load the file from GUI/Prefabs.
             MissionScreen.AddLayer(_gauntletLayer);
         }

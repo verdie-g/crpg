@@ -64,7 +64,7 @@ namespace Crpg.GameMod.DefendTheVirgin
 
         private CrpgCharacterObject(TextObject name, int maxHitPoints)
         {
-            Name = name;
+            _basicName = name;
             _maxHitPoints = maxHitPoints;
         }
 
