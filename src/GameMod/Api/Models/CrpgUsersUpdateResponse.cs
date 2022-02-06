@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
+﻿namespace Crpg.GameMod.Api.Models;
 
-namespace Crpg.GameMod.Api.Models
+// Copy of Crpg.Application.Games.Models.UpdateGameUsersUpdateResult
+internal class CrpgUsersUpdateResponse
 {
-    // Copy of Crpg.Application.Games.Models.UpdateGameUsersUpdateResult
-    internal class CrpgUsersUpdateResponse
-    {
-        public IList<UpdateCrpgUserResult> UpdateResults { get; set; } = new List<UpdateCrpgUserResult>();
-    }
+    public IList<UpdateCrpgUserResult> UpdateResults { get; set; } = new List<UpdateCrpgUserResult>();
 }

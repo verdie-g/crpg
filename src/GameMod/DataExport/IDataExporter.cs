@@ -1,9 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿namespace Crpg.GameMod.DataExport;
 
-namespace Crpg.GameMod.DataExport
+public interface IDataExporter
 {
-    public interface IDataExporter
-    {
-        Task Export(string outputPath);
-    }
+    Task Export(string outputPath);
 }

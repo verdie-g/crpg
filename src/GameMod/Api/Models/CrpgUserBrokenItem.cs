@@ -1,9 +1,8 @@
-﻿namespace Crpg.GameMod.Api.Models
+﻿namespace Crpg.GameMod.Api.Models;
+
+// Copy of Crpg.Application.Games.Models.GameUserBrokenItem
+internal class CrpgUserBrokenItem
 {
-    // Copy of Crpg.Application.Games.Models.GameUserBrokenItem
-    internal class CrpgUserBrokenItem
-    {
-        public int ItemId { get; set; }
-        public int RepairCost { get; set; }
-    }
+    public int ItemId { get; set; }
+    public int RepairCost { get; set; }
 }

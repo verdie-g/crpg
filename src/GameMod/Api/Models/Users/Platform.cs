@@ -1,10 +1,9 @@
-﻿namespace Crpg.GameMod.Api.Models.Users
+﻿namespace Crpg.GameMod.Api.Models.Users;
+
+// Copy of Crpg.Domain.Entities.Platform
+public enum Platform
 {
-    // Copy of Crpg.Domain.Entities.Platform
-    public enum Platform
-    {
-        Steam,
-        Epic,
-        Gog,
-    }
+    Steam,
+    Epic,
+    Gog,
 }

@@ -1,27 +1,25 @@
 ﻿using Crpg.GameMod.Common.UI;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.GauntletUI;
 using TaleWorlds.MountAndBlade.LegacyGUI.Missions;
 using TaleWorlds.MountAndBlade.View.Missions;
 
-namespace Crpg.GameMod.DefendTheVirgin
+namespace Crpg.GameMod.DefendTheVirgin;
+
+[ViewCreatorModule]
+public class DefendTheVirginViews
 {
-    [ViewCreatorModule]
-    public class DefendTheVirginViews
+    [ViewMethod("DefendTheVirgin")]
+    public static MissionView[] OpenDefendTheVirginMission(Mission mission) => new[]
     {
-        [ViewMethod("DefendTheVirgin")]
-        public static MissionView[] OpenDefendTheVirginMission(Mission mission) => new[]
-        {
-            ViewCreator.CreateMissionSingleplayerEscapeMenu(false),
-            ViewCreator.CreateMissionAgentLabelUIHandler(mission),
-            ViewCreator.CreateMissionAgentStatusUIHandler(mission),
-            ViewCreatorManager.CreateMissionView<CrpgAgentHud>(false, mission),
-            ViewCreator.CreateMissionMainAgentEquipmentController(mission),
-            ViewCreator.CreateMissionMainAgentCheerBarkControllerView(mission),
-            ViewCreator.CreateMissionBoundaryCrossingView(),
-            new MissionBoundaryWallView(),
-            ViewCreator.CreateSingleplayerMissionKillNotificationUIHandler(),
-            new MissionAgentContourControllerView(),
-        };
-    }
+        ViewCreator.CreateMissionSingleplayerEscapeMenu(false),
+        ViewCreator.CreateMissionAgentLabelUIHandler(mission),
+        ViewCreator.CreateMissionAgentStatusUIHandler(mission),
+        ViewCreatorManager.CreateMissionView<CrpgAgentHud>(false, mission),
+        ViewCreator.CreateMissionMainAgentEquipmentController(mission),
+        ViewCreator.CreateMissionMainAgentCheerBarkControllerView(mission),
+        ViewCreator.CreateMissionBoundaryCrossingView(),
+        new MissionBoundaryWallView(),
+        ViewCreator.CreateSingleplayerMissionKillNotificationUIHandler(),
+        new MissionAgentContourControllerView(),
+    };
 }

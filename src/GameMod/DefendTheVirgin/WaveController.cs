@@ -1,100 +1,98 @@
-﻿using System;
-using TaleWorlds.MountAndBlade;
+﻿using TaleWorlds.MountAndBlade;
 
-namespace Crpg.GameMod.DefendTheVirgin
+namespace Crpg.GameMod.DefendTheVirgin;
+
+internal class WaveController : MissionLogic
 {
-    internal class WaveController : MissionLogic
+    private static readonly TimeSpan WaveEndDuration = TimeSpan.FromSeconds(4);
+
+    private readonly int _maxWave;
+
+    private int _waveCount;
+    private WaveState _waveState = WaveState.Ended;
+    private MissionTimer? _waveEndTimer;
+
+    public event Action<int> OnWaveStarted = _ => { };
+    public event Action<int, Team> OnWaveEnding = (_, _) => { };
+    public event Action<int> OnWaveEnded = _ => { };
+
+    public WaveController(int maxWave)
     {
-        private static readonly TimeSpan WaveEndDuration = TimeSpan.FromSeconds(4);
+        _maxWave = maxWave;
+    }
 
-        private readonly int _maxWave;
-
-        private int _waveCount;
-        private WaveState _waveState = WaveState.Ended;
-        private MissionTimer? _waveEndTimer;
-
-        public event Action<int> OnWaveStarted = _ => { };
-        public event Action<int, Team> OnWaveEnding = (_, _) => { };
-        public event Action<int> OnWaveEnded = _ => { };
-
-        public WaveController(int maxWave)
+    public override void OnPreDisplayMissionTick(float dt)
+    {
+        if (_waveState == WaveState.Ended)
         {
-            _maxWave = maxWave;
+            BeginNewWave();
         }
-
-        public override void OnPreDisplayMissionTick(float dt)
+        else if (_waveState == WaveState.InProgress)
         {
-            if (_waveState == WaveState.Ended)
+            var winnerTeam = GetWinnerTeam();
+            if (winnerTeam == null)
             {
-                BeginNewWave();
-            }
-            else if (_waveState == WaveState.InProgress)
-            {
-                var winnerTeam = GetWinnerTeam();
-                if (winnerTeam == null)
-                {
-                    return;
-                }
-
-                EndWave(winnerTeam);
-            }
-            else if (_waveState == WaveState.Ending)
-            {
-                if (!_waveEndTimer!.Check())
-                {
-                    return;
-                }
-
-                PostWaveEnd();
-            }
-        }
-
-        private Team? GetWinnerTeam()
-        {
-            if (Mission.AttackerTeam.ActiveAgents.Count == 0)
-            {
-                return Mission.DefenderTeam;
+                return;
             }
 
-            if (Mission.DefenderTeam.ActiveAgents.Count < 2)
+            EndWave(winnerTeam);
+        }
+        else if (_waveState == WaveState.Ending)
+        {
+            if (!_waveEndTimer!.Check())
             {
-                return Mission.AttackerTeam;
+                return;
             }
 
-            return null;
+            PostWaveEnd();
         }
+    }
 
-        private void BeginNewWave()
+    private Team? GetWinnerTeam()
+    {
+        if (Mission.AttackerTeam.ActiveAgents.Count == 0)
         {
-            Mission.Current.ResetMission();
-            _waveState = WaveState.InProgress;
-            ++_waveCount;
-            OnWaveStarted(_waveCount);
+            return Mission.DefenderTeam;
         }
 
-        private void EndWave(Team winnerTeam)
+        if (Mission.DefenderTeam.ActiveAgents.Count < 2)
         {
-            _waveState = WaveState.Ending;
-            _waveEndTimer = new MissionTimer((int)WaveEndDuration.TotalSeconds);
-            OnWaveEnding(_waveCount, winnerTeam);
+            return Mission.AttackerTeam;
         }
 
-        private void PostWaveEnd()
+        return null;
+    }
+
+    private void BeginNewWave()
+    {
+        Mission.Current.ResetMission();
+        _waveState = WaveState.InProgress;
+        ++_waveCount;
+        OnWaveStarted(_waveCount);
+    }
+
+    private void EndWave(Team winnerTeam)
+    {
+        _waveState = WaveState.Ending;
+        _waveEndTimer = new MissionTimer((int)WaveEndDuration.TotalSeconds);
+        OnWaveEnding(_waveCount, winnerTeam);
+    }
+
+    private void PostWaveEnd()
+    {
+        if (Mission.DefenderTeam.ActiveAgents.Count < 2 || _waveCount == _maxWave)
         {
-            if (Mission.DefenderTeam.ActiveAgents.Count < 2 || _waveCount == _maxWave)
-            {
-                Mission.Current.EndMission();
-            }
-
-            _waveState = WaveState.Ended;
-            OnWaveEnded(_waveCount);
+            Mission.Current.EndMission();
         }
 
-        private enum WaveState
-        {
-            InProgress,
-            Ending,
-            Ended,
-        }
+        _waveState = WaveState.Ended;
+        OnWaveEnded(_waveCount);
+    }
+
+    private enum WaveState
+    {
+        InProgress,
+        Ending,
+        Ended,
     }
 }

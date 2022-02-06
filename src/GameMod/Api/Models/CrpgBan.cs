@@ -1,7 +1,6 @@
-﻿namespace Crpg.GameMod.Api.Models
+﻿namespace Crpg.GameMod.Api.Models;
+
+internal class CrpgBan
 {
-    internal class CrpgBan
-    {
-        // TODO
-    }
+    // TODO
 }
