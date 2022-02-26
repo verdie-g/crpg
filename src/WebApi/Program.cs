@@ -135,7 +135,7 @@ using (IServiceScope scope = app.Services.CreateScope())
         try
         {
             await db.Database.MigrateAsync();
-            var conn = (NpgsqlConnection)db.Database.GetDbConnection();
+            await using var conn = (NpgsqlConnection)db.Database.GetDbConnection();
             conn.Open();
             conn.ReloadTypes();
         }
