@@ -6,10 +6,14 @@
     datadog_agent_major_version: "7"
     datadog_config:
       logs_enabled: true
-      apm_config: # tracing
+      apm_config: # Tracing
         enabled: true
-      process_config: # live processes
+      process_config: # Live processes
         enabled: "true"
+      otlp_config: # OpenTelemetry
+        receiver:
+          protocols:
+            grpc:
     datadog_checks:
       nginx:
         init_config:

@@ -10,7 +10,6 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
-using Crpg.Sdk.Abstractions.Events;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -101,18 +100,16 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
 
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
-        private readonly IEventService _events;
         private readonly IDateTimeOffset _dateTime;
         private readonly IRandom _random;
         private readonly IUserService _userService;
         private readonly ICharacterService _characterService;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, IEventService events, IDateTimeOffset dateTime,
+        public Handler(ICrpgDbContext db, IMapper mapper, IDateTimeOffset dateTime,
             IRandom random, IUserService userService, ICharacterService characterService)
         {
             _db = db;
             _mapper = mapper;
-            _events = events;
             _dateTime = dateTime;
             _random = random;
             _userService = userService;
@@ -131,7 +128,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
             {
                 user = CreateUser(req.Platform, req.PlatformUserId, req.UserName);
                 _db.Users.Add(user);
-                _events.Raise(EventLevel.Info, $"{req.UserName} joined ({req.Platform}#{req.PlatformUserId})", string.Empty, "user_created");
+                Logger.LogInformation("{0} joined ({1}#{2})", req.UserName, req.Platform, req.PlatformUserId);
             }
 
             if (user.Characters.Count == 0)

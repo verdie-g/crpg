@@ -16,7 +16,6 @@ using Crpg.Domain.Entities.Users;
 using Crpg.Logging;
 using Crpg.Persistence;
 using Crpg.Sdk;
-using Crpg.Sdk.Abstractions.Events;
 using Crpg.WebApi.Identity;
 using Crpg.WebApi.Services;
 using Crpg.WebApi.Workers;
@@ -124,7 +123,6 @@ using (IServiceScope scope = app.Services.CreateScope())
 {
     IServiceProvider services = scope.ServiceProvider;
     var mediator = services.GetRequiredService<IMediator>();
-    var eventRaiser = services.GetRequiredService<IEventService>();
     var db = services.GetRequiredService<CrpgDbContext>();
 
     string? skipMigrationStr = Environment.GetEnvironmentVariable("CRPG_SKIP_DB_MIGRATION");
@@ -154,7 +152,7 @@ using (IServiceScope scope = app.Services.CreateScope())
         return 1;
     }
 
-    eventRaiser.Raise(EventLevel.Info, "cRPG Web API has started", string.Empty);
+    logger.LogInformation("cRPG Web API has started");
 }
 
 try

@@ -7,9 +7,10 @@ using Crpg.Application.Common.Services;
 using Crpg.Application.Steam;
 using Crpg.Application.Users.Models;
 using Crpg.Domain.Entities.Users;
-using Crpg.Sdk.Abstractions.Events;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Users.Commands;
 
@@ -41,16 +42,16 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<Stea
 
     internal class Handler : IMediatorRequestHandler<UpsertUserCommand, UserViewModel>
     {
+        private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpsertUserCommand>();
+
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
-        private readonly IEventService _events;
         private readonly IUserService _userService;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, IEventService events, IUserService userService)
+        public Handler(ICrpgDbContext db, IMapper mapper, IUserService userService)
         {
             _db = db;
             _mapper = mapper;
-            _events = events;
             _userService = userService;
         }
 
@@ -71,7 +72,8 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<Stea
             {
                 _userService.SetDefaultValuesForUser(user);
                 _db.Users.Add(user);
-                _events.Raise(EventLevel.Info, $"{request.Name} joined ({user.Platform}#{user.PlatformUserId})", string.Empty, "user_created");
+                Logger.LogInformation("{0} joined ({1}#{2})", request.Name,
+                    user.Platform, user.PlatformUserId);
             }
 
             await _db.SaveChangesAsync(cancellationToken);

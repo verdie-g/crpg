@@ -1,8 +1,9 @@
+using System.Diagnostics;
+using System.Reflection;
 using Crpg.Application.Battles.Commands;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Heroes.Commands;
 using Crpg.Common;
-using Crpg.Sdk.Abstractions.Tracing;
 using MediatR;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
 
@@ -11,7 +12,10 @@ namespace Crpg.WebApi.Workers;
 /// <summary>Worker to update the strategus map (movements, battles, ...).</summary>
 public class StrategusWorker : BackgroundService
 {
-    private const string TracerOperationName = "strategus.tick";
+    private static readonly AssemblyName AssemblyName = typeof(StrategusWorker).Assembly.GetName();
+    private static readonly string InstrumentationName = AssemblyName.Name!;
+    private static readonly string InstrumentationVersion = AssemblyName.Version!.ToString();
+    private static readonly ActivitySource ActivitySource = new(InstrumentationName, InstrumentationVersion);
     private static readonly ILogger Logger = LoggerFactory.CreateLogger<StrategusWorker>();
     private static readonly TimeSpan TickInterval = TimeSpan.FromMinutes(1);
 
@@ -23,12 +27,10 @@ public class StrategusWorker : BackgroundService
     };
 
     private readonly IServiceScopeFactory _serviceScopeFactory;
-    private readonly ITracer _tracer;
 
-    public StrategusWorker(IServiceScopeFactory serviceScopeFactory, ITracer tracer)
+    public StrategusWorker(IServiceScopeFactory serviceScopeFactory)
     {
         _serviceScopeFactory = serviceScopeFactory;
-        _tracer = tracer;
     }
 
     protected override Task ExecuteAsync(CancellationToken cancellationToken) => GameLoop(cancellationToken);
@@ -49,7 +51,7 @@ public class StrategusWorker : BackgroundService
 
     private async Task Tick(TimeSpan deltaTime, CancellationToken cancellationToken)
     {
-        using var span = _tracer.CreateSpan(TracerOperationName);
+        using var span = ActivitySource.StartActivity("crpg.strategus.tick");
 
         // ICrpgDbContext, used by most mediator handlers has a scoped lifetime which means that it is created once
         // for each ASP.NET Core request. But in a worker there is no notion of request so we manually create the
