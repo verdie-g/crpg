@@ -175,6 +175,7 @@ internal class ItemExporter : IDataExporter
                 BodyArmor = mbItem.ArmorComponent.BodyArmor,
                 ArmArmor = mbItem.ArmorComponent.ArmArmor,
                 LegArmor = mbItem.ArmorComponent.LegArmor,
+                MaterialType = MbToCrpgArmorMaterialType(mbItem.ArmorComponent.MaterialType),
             };
         }
 
@@ -227,6 +228,12 @@ internal class ItemExporter : IDataExporter
     private static CrpgCulture MbToCrpgCulture(BasicCultureObject? culture) => culture == null
         ? CrpgCulture.Neutral // Consider no culture as neutral.
         : (CrpgCulture)Enum.Parse(typeof(CrpgCulture), culture.ToString());
+
+    private static CrpgArmorMaterialType MbToCrpgArmorMaterialType(ArmorComponent.ArmorMaterialTypes t) => t switch
+    {
+        ArmorComponent.ArmorMaterialTypes.None => CrpgArmorMaterialType.Undefined, // To be consistent with WeaponClass.
+        _ => (CrpgArmorMaterialType)Enum.Parse(typeof(CrpgArmorMaterialType), t.ToString()),
+    };
 
     private static CrpgWeaponClass MbToCrpgWeaponClass(WeaponClass wc) =>
         (CrpgWeaponClass)Enum.Parse(typeof(CrpgWeaponClass), wc.ToString());

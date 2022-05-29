@@ -9,6 +9,7 @@ public class ItemArmorComponent : ICloneable
     public int BodyArmor { get; set; }
     public int ArmArmor { get; set; }
     public int LegArmor { get; set; }
+    public ArmorMaterialType MaterialType { get; set; }
 
     public object Clone() => new ItemArmorComponent
     {
@@ -16,5 +17,6 @@ public class ItemArmorComponent : ICloneable
         BodyArmor = BodyArmor,
         ArmArmor = ArmArmor,
         LegArmor = LegArmor,
+        MaterialType = MaterialType,
     };
 }

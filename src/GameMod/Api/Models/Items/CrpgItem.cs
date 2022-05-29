@@ -53,6 +53,17 @@ internal class CrpgItemArmorComponent
     public int BodyArmor { get; set; }
     public int ArmArmor { get; set; }
     public int LegArmor { get; set; }
+    public CrpgArmorMaterialType MaterialType { get; set; }
+}
+
+// Copy of Crpg.Domain.Entities.Items.ArmorMaterialType
+internal enum CrpgArmorMaterialType
+{
+    Undefined,
+    Cloth,
+    Leather,
+    Chainmail,
+    Plate,
 }
 
 // Copy of Crpg.Application.Items.Models.ItemMountComponentViewModel

@@ -9,4 +9,5 @@ public record ItemArmorComponentViewModel : IMapFrom<ItemArmorComponent>
     public int BodyArmor { get; init; }
     public int ArmArmor { get; init; }
     public int LegArmor { get; init; }
+    public ArmorMaterialType MaterialType { get; init; }
 }
