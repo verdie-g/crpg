@@ -4,8 +4,9 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities;
 using Crpg.Sdk.Abstractions;
-using Crpg.Sdk.Abstractions.Events;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using LoggerFactory = Crpg.Logging.LoggerFactory;
 
 namespace Crpg.Application.Users.Commands;
 
@@ -18,15 +19,15 @@ public record DeleteUserCommand : IMediatorRequest
 
     internal class Handler : IMediatorRequestHandler<DeleteUserCommand>
     {
+        private static readonly ILogger Logger = LoggerFactory.CreateLogger<DeleteUserCommand>();
+
         private readonly ICrpgDbContext _db;
-        private readonly IEventService _events;
         private readonly IDateTimeOffset _dateTimeOffset;
         private readonly IUserService _userService;
 
-        public Handler(ICrpgDbContext db, IEventService events, IDateTimeOffset dateTimeOffset, IUserService userService)
+        public Handler(ICrpgDbContext db, IDateTimeOffset dateTimeOffset, IUserService userService)
         {
             _db = db;
-            _events = events;
             _dateTimeOffset = dateTimeOffset;
             _userService = userService;
         }
@@ -57,7 +58,7 @@ public record DeleteUserCommand : IMediatorRequest
             _db.HeroItems.RemoveRange(user.Hero!.Items);
             _db.Heroes.Remove(user.Hero);
             await _db.SaveChangesAsync(cancellationToken);
-            _events.Raise(EventLevel.Info, $"{name} left ({user.Platform}#{user.PlatformUserId})", string.Empty, "user_deleted");
+            Logger.LogInformation("{0} left ({1}#{2})", name, user.Platform, user.PlatformUserId);
             return Result.NoErrors;
         }
     }

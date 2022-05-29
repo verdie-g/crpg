@@ -8,7 +8,6 @@ using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
-using Crpg.Sdk.Abstractions.Events;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
@@ -40,7 +39,7 @@ public class DeleteUserCommandTest : TestBase
         int strategusItemId = user.Hero.Items[0].ItemId;
 
         var userService = Mock.Of<IUserService>();
-        DeleteUserCommand.Handler handler = new(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), userService);
+        DeleteUserCommand.Handler handler = new(ActDb, Mock.Of<IDateTimeOffset>(), userService);
         await handler.Handle(new DeleteUserCommand
         {
             UserId = user.Id,
@@ -69,7 +68,7 @@ public class DeleteUserCommandTest : TestBase
     public async Task DeleteNonExistingUser()
     {
         var userService = Mock.Of<IUserService>();
-        DeleteUserCommand.Handler handler = new(ActDb, Mock.Of<IEventService>(), Mock.Of<IDateTimeOffset>(), userService);
+        DeleteUserCommand.Handler handler = new(ActDb, Mock.Of<IDateTimeOffset>(), userService);
         var result = await handler.Handle(new DeleteUserCommand { UserId = 1 }, CancellationToken.None);
         Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
     }

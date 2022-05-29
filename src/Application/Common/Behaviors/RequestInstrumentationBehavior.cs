@@ -3,9 +3,7 @@ using System.Runtime.CompilerServices;
 using Crpg.Application.Common.Exceptions;
 using Crpg.Application.Common.Results;
 using Crpg.Common;
-using Crpg.Common.Helpers;
 using Crpg.Sdk.Abstractions;
-using Crpg.Sdk.Abstractions.Tracing;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -16,9 +14,8 @@ internal class RequestInstrumentationBehavior<TRequest, TResponse> : IPipelineBe
     where TRequest : notnull
     where TResponse : class
 {
-    private const string OperationName = "request";
     private static readonly ILogger Logger = LoggerFactory.CreateLogger(typeof(RequestInstrumentationBehavior<,>));
-    private static readonly string ResourceName = StringHelper.PascalToSnakeCase(typeof(TRequest).Name);
+    private static readonly RequestInstrumentation Instrumentation = new(typeof(TRequest));
 
     static RequestInstrumentationBehavior()
     {
@@ -26,21 +23,17 @@ internal class RequestInstrumentationBehavior<TRequest, TResponse> : IPipelineBe
             $"Request {typeof(TRequest).Name} should return a {nameof(Result)} type");
     }
 
-    private readonly RequestMetrics<TRequest> _metrics;
-    private readonly ITracer _tracer;
     private readonly IApplicationEnvironment _appEnv;
 
-    public RequestInstrumentationBehavior(RequestMetrics<TRequest> metrics, ITracer tracer, IApplicationEnvironment appEnv)
+    public RequestInstrumentationBehavior(IApplicationEnvironment appEnv)
     {
-        _metrics = metrics;
-        _tracer = tracer;
         _appEnv = appEnv;
     }
 
     public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
         RequestHandlerDelegate<TResponse> next)
     {
-        var span = _tracer.CreateSpan(OperationName, ResourceName);
+        using var span = Instrumentation.StartRequestSpan();
         var sw = ValueStopwatch.StartNew();
         try
         {
@@ -50,32 +43,33 @@ internal class RequestInstrumentationBehavior<TRequest, TResponse> : IPipelineBe
                 switch (result.Errors[0].Type)
                 {
                     case ErrorType.Validation:
-                        _metrics.StatusErrorBadRequest.Increment();
+                        Instrumentation.IncrementBadRequest();
                         break;
                     case ErrorType.NotFound:
-                        _metrics.StatusErrorNotFound.Increment();
+                        Instrumentation.IncrementNotFound();
                         break;
                     default:
-                        _metrics.StatusErrorUnknown.Increment();
+                        Instrumentation.IncrementUnknown();
                         break;
                 }
             }
             else
             {
-                _metrics.StatusOk.Increment();
+                Instrumentation.IncrementOk();
             }
 
+            span?.SetStatus(ActivityStatusCode.Ok);
             return response;
         }
         catch (Exception e)
         {
-            span.SetException(e);
+            span?.SetStatus(ActivityStatusCode.Error, e.Message);
 
             Error[] errors;
             switch (e)
             {
                 case ConflictException _:
-                    _metrics.StatusErrorConflict.Increment();
+                    Instrumentation.IncrementConflict();
                     errors = new[]
                     {
                         new Error(ErrorType.Conflict, ErrorCode.Conflict)
@@ -89,7 +83,7 @@ internal class RequestInstrumentationBehavior<TRequest, TResponse> : IPipelineBe
                     Logger.Log(LogLevel.Error, e, "Conflict");
                     break;
                 default:
-                    _metrics.StatusErrorUnknown.Increment();
+                    Instrumentation.IncrementUnknown();
                     errors = new[]
                     {
                         new Error(ErrorType.InternalError, ErrorCode.InternalError)
@@ -108,8 +102,7 @@ internal class RequestInstrumentationBehavior<TRequest, TResponse> : IPipelineBe
         }
         finally
         {
-            _metrics.ResponseTime.Record(sw.Elapsed.TotalMilliseconds);
-            span.Dispose();
+            Instrumentation.RecordResponseTime(sw.Elapsed.TotalMilliseconds);
         }
     }
 }

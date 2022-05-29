@@ -6,7 +6,6 @@ using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk;
 using Crpg.Sdk.Abstractions;
-using Crpg.Sdk.Abstractions.Events;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
@@ -35,7 +34,7 @@ public class GetGameUserCommandTest : TestBase
         Mock<IUserService> userServiceMock = new();
         Mock<ICharacterService> characterServiceMock = new();
 
-        GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(), new MachineDateTimeOffset(),
+        GetGameUserCommand.Handler handler = new(ActDb, Mapper, new MachineDateTimeOffset(),
             new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object);
 
         var result = await handler.Handle(new GetGameUserCommand
@@ -78,7 +77,7 @@ public class GetGameUserCommandTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(), new MachineDateTimeOffset(),
+        GetGameUserCommand.Handler handler = new(ActDb, Mapper, new MachineDateTimeOffset(),
             new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object);
 
         var result = await handler.Handle(new GetGameUserCommand
@@ -134,7 +133,7 @@ public class GetGameUserCommandTest : TestBase
         Mock<IRandom> randomMock = new();
         randomMock.Setup(r => r.Next(It.IsAny<int>(), It.IsAny<int>())).Returns(1);
 
-        GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(),
+        GetGameUserCommand.Handler handler = new(ActDb, Mapper,
             new MachineDateTimeOffset(), randomMock.Object, userService, characterService);
 
         // Handle shouldn't throw
@@ -172,7 +171,7 @@ public class GetGameUserCommandTest : TestBase
         ArrangeDb.AddRange(user0, user1);
         await ArrangeDb.SaveChangesAsync();
 
-        GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(),
+        GetGameUserCommand.Handler handler = new(ActDb, Mapper,
             new MachineDateTimeOffset(), new ThreadSafeRandom(), userService, characterService);
 
         var result = await handler.Handle(new GetGameUserCommand
@@ -208,7 +207,7 @@ public class GetGameUserCommandTest : TestBase
         ArrangeDb.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(),
+        GetGameUserCommand.Handler handler = new(ActDb, Mapper,
             new MachineDateTimeOffset(), new ThreadSafeRandom(), userService, characterService);
 
         var result = await handler.Handle(new GetGameUserCommand
@@ -249,7 +248,7 @@ public class GetGameUserCommandTest : TestBase
             .Setup(dt => dt.Now)
             .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
 
-        GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(),
+        GetGameUserCommand.Handler handler = new(ActDb, Mapper,
             dateTime.Object, new ThreadSafeRandom(), userService, characterService);
 
         var result = await handler.Handle(new GetGameUserCommand
@@ -294,7 +293,7 @@ public class GetGameUserCommandTest : TestBase
             .Setup(dt => dt.Now)
             .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
 
-        GetGameUserCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IEventService>(),
+        GetGameUserCommand.Handler handler = new(ActDb, Mapper,
             dateTime.Object, new ThreadSafeRandom(), userService, characterService);
 
         var result = await handler.Handle(new GetGameUserCommand

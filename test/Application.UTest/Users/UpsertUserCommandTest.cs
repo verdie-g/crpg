@@ -1,7 +1,6 @@
 using Crpg.Application.Common.Services;
 using Crpg.Application.Users.Commands;
 using Crpg.Domain.Entities.Users;
-using Crpg.Sdk.Abstractions.Events;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
@@ -10,13 +9,11 @@ namespace Crpg.Application.UTest.Users;
 
 public class UpsertUserCommandTest : TestBase
 {
-    private static readonly IEventService EventService = Mock.Of<IEventService>();
-
     [Test]
     public async Task TestWhenUserDoesntExist()
     {
         Mock<IUserService> userServiceMock = new();
-        UpsertUserCommand.Handler handler = new(ActDb, Mapper, EventService, userServiceMock.Object);
+        UpsertUserCommand.Handler handler = new(ActDb, Mapper, userServiceMock.Object);
         var result = await handler.Handle(new UpsertUserCommand
         {
             PlatformUserId = "123",
@@ -51,7 +48,7 @@ public class UpsertUserCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         Mock<IUserService> userServiceMock = new();
-        UpsertUserCommand.Handler handler = new(ActDb, Mapper, EventService, userServiceMock.Object);
+        UpsertUserCommand.Handler handler = new(ActDb, Mapper, userServiceMock.Object);
         var result = await handler.Handle(new UpsertUserCommand
         {
             PlatformUserId = "13948192759205810",
@@ -89,7 +86,7 @@ public class UpsertUserCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         Mock<IUserService> userServiceMock = new();
-        UpsertUserCommand.Handler handler = new(ActDb, Mapper, EventService, userServiceMock.Object);
+        UpsertUserCommand.Handler handler = new(ActDb, Mapper, userServiceMock.Object);
         await handler.Handle(new UpsertUserCommand
         {
             PlatformUserId = "13948192759205810",
