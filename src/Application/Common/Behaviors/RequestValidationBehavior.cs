@@ -7,7 +7,7 @@ using MediatR;
 namespace Crpg.Application.Common.Behaviors;
 
 internal class RequestValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-    where TRequest : notnull
+    where TRequest : IRequest<TResponse>
     where TResponse : class
 {
     static RequestValidationBehavior()

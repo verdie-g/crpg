@@ -11,7 +11,7 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 namespace Crpg.Application.Common.Behaviors;
 
 internal class RequestInstrumentationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-    where TRequest : notnull
+    where TRequest : IRequest<TResponse>
     where TResponse : class
 {
     private static readonly ILogger Logger = LoggerFactory.CreateLogger(typeof(RequestInstrumentationBehavior<,>));
