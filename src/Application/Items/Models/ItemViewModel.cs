@@ -10,7 +10,7 @@ public record ItemViewModel : IMapFrom<Item>
     public int Id { get; init; }
     public string TemplateMbId { get; init; } = string.Empty;
     public string Name { get; init; } = string.Empty;
-    public int Value { get; init; }
+    public int Price { get; init; }
     public ItemType Type { get; init; }
     public Culture Culture { get; init; }
     public float Weight { get; init; }

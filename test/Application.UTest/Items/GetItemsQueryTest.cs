@@ -14,21 +14,21 @@ public class GetItemsQueryTest : TestBase
             new()
             {
                 Name = "toto",
-                Value = 100,
+                Price = 100,
                 Type = ItemType.BodyArmor,
                 Rank = 0,
             },
             new()
             {
                 Name = "toto",
-                Value = 100,
+                Price = 100,
                 Type = ItemType.ShoulderArmor,
                 Rank = 3,
             },
             new()
             {
                 Name = "tata",
-                Value = 200,
+                Price = 200,
                 Type = ItemType.HandArmor,
                 Rank = 0,
             },
@@ -50,21 +50,21 @@ public class GetItemsQueryTest : TestBase
             new()
             {
                 Name = "toto",
-                Value = 100,
+                Price = 100,
                 Type = ItemType.BodyArmor,
                 Rank = 0,
             },
             new()
             {
                 Name = "toto",
-                Value = 100,
+                Price = 100,
                 Type = ItemType.ShoulderArmor,
                 Rank = 3,
             },
             new()
             {
                 Name = "tata",
-                Value = 200,
+                Price = 200,
                 Type = ItemType.HandArmor,
                 Rank = 0,
             },

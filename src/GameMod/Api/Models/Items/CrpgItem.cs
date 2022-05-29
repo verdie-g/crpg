@@ -4,7 +4,7 @@
 internal class CrpgItem : CrpgItemCreation
 {
     public int Id { get; set; }
-    public int Value { get; set; }
+    public int Price { get; set; }
 }
 
 internal class CrpgItemCreation

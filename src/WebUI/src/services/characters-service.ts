@@ -6,7 +6,7 @@ export function computeAverageRepairCost(equippedItems: EquippedItem[]): number 
   return equippedItems.reduce(
     (cost, ei) =>
       cost +
-      applyPolynomialFunction(ei.item.value, Constants.itemRepairCostCoefs) *
+      applyPolynomialFunction(ei.item.price, Constants.itemRepairCostCoefs) *
         Constants.itemBreakChance,
     0
   );

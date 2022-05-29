@@ -8,7 +8,7 @@ export default interface Item {
   id: number;
   templateMbId: string;
   name: string;
-  value: number;
+  price: number;
   type: ItemType;
   culture: Culture;
   weight: number;

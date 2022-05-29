@@ -23,7 +23,7 @@ public class Item : AuditableEntity, ICloneable
 
     public Culture Culture { get; set; }
     public ItemType Type { get; set; }
-    public int Value { get; set; }
+    public int Price { get; set; }
     public float Weight { get; set; }
 
     /// <summary>
@@ -88,7 +88,7 @@ public class Item : AuditableEntity, ICloneable
         BaseItemId = BaseItemId,
         Culture = Culture,
         Type = Type,
-        Value = Value,
+        Price = Price,
         Weight = Weight,
         Rank = Rank,
         Armor = (ItemArmorComponent?)Armor?.Clone(),

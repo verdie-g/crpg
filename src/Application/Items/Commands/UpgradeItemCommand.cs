@@ -54,7 +54,7 @@ public record UpgradeItemCommand : IMediatorRequest<ItemViewModel>
                 .FirstAsync(i => i.BaseItemId == userItem.Item.BaseItemId && i.Rank == userItem.Item.Rank + 1, cancellationToken);
             if (userItem.Item.Rank < 0) // repair
             {
-                int repairCost = (int)MathHelper.ApplyPolynomialFunction(upgradedItem.Value, _constants.ItemRepairCostCoefs);
+                int repairCost = (int)MathHelper.ApplyPolynomialFunction(upgradedItem.Price, _constants.ItemRepairCostCoefs);
                 if (userItem.User!.Gold < repairCost)
                 {
                     return new(CommonErrors.NotEnoughGold(repairCost, userItem.User!.Gold));

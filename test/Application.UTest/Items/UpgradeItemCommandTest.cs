@@ -23,7 +23,7 @@ public class UpgradeItemCommandTest : TestBase
     {
         await base.SetUp();
 
-        _items = Enumerable.Range(-3, 7).Select(r => new Item { Rank = r, Value = (r + 4) * 100 }).ToArray();
+        _items = Enumerable.Range(-3, 7).Select(r => new Item { Rank = r, Price = (r + 4) * 100 }).ToArray();
         ArrangeDb.Items.AddRange(_items);
         await ArrangeDb.SaveChangesAsync();
     }

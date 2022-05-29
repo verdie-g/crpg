@@ -178,7 +178,7 @@ public class BuySettlementItemCommandTest : TestBase
         ArrangeDb.Heroes.Add(hero);
         Settlement settlement = new() { Culture = Culture.Empire };
         ArrangeDb.Settlements.Add(settlement);
-        Item item = new() { Rank = 0, Culture = Culture.Empire, Value = 11 };
+        Item item = new() { Rank = 0, Culture = Culture.Empire, Price = 11 };
         ArrangeDb.Items.Add(item);
         await ArrangeDb.SaveChangesAsync();
 
@@ -207,7 +207,7 @@ public class BuySettlementItemCommandTest : TestBase
         ArrangeDb.Heroes.Add(hero);
         Settlement settlement = new() { Culture = Culture.Sturgia };
         ArrangeDb.Settlements.Add(settlement);
-        Item item = new() { Rank = 0, Culture = Culture.Sturgia, Value = 10 };
+        Item item = new() { Rank = 0, Culture = Culture.Sturgia, Price = 10 };
         ArrangeDb.Items.Add(item);
         HeroItem heroItem = new() { Item = item, Count = 3, Hero = hero };
         ArrangeDb.HeroItems.Add(heroItem);
@@ -242,7 +242,7 @@ public class BuySettlementItemCommandTest : TestBase
         ArrangeDb.Heroes.Add(hero);
         Settlement settlement = new() { Culture = Culture.Sturgia };
         ArrangeDb.Settlements.Add(settlement);
-        Item item = new() { Rank = 0, Culture = Culture.Neutral, Value = 10 };
+        Item item = new() { Rank = 0, Culture = Culture.Neutral, Price = 10 };
         ArrangeDb.Items.Add(item);
         await ArrangeDb.SaveChangesAsync();
 

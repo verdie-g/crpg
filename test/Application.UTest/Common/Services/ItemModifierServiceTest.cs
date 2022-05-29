@@ -14,7 +14,7 @@ public class ItemModifierServiceTest : TestBase
         {
             TemplateMbId = "123",
             Name = "toto",
-            Value = 1000,
+            Price = 1000,
             Type = itemType,
             Weight = 1000f,
             Armor = new ItemArmorComponent
@@ -67,7 +67,7 @@ public class ItemModifierServiceTest : TestBase
             StringAssert.EndsWith("toto", modifiedItems[i].Name);
             Assert.AreEqual(itemType, modifiedItems[i].Type);
 
-            Assert.GreaterOrEqual(modifiedItems[i].Value, modifiedItems[i - 1].Value);
+            Assert.GreaterOrEqual(modifiedItems[i].Price, modifiedItems[i - 1].Price);
             Assert.LessOrEqual(modifiedItems[i].Weight, modifiedItems[i - 1].Weight);
 
             Assert.GreaterOrEqual(modifiedItems[i].Armor!.HeadArmor, modifiedItems[i - 1].Armor!.HeadArmor);

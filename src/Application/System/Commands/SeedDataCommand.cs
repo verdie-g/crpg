@@ -37,12 +37,12 @@ public record SeedDataCommand : IMediatorRequest
         private readonly IExperienceTable _experienceTable;
         private readonly IStrategusMap _strategusMap;
         private readonly ISettlementsSource _settlementsSource;
-        private readonly ItemValueModel _itemValueModel;
+        private readonly ItemPriceModel _itemPriceModel;
         private readonly ItemModifierService _itemModifierService;
 
         public Handler(ICrpgDbContext db, IItemsSource itemsSource, IApplicationEnvironment appEnv,
             ICharacterService characterService, IExperienceTable experienceTable, IStrategusMap strategusMap,
-            ISettlementsSource settlementsSource, ItemValueModel itemValueModel,
+            ISettlementsSource settlementsSource, ItemPriceModel itemPriceModel,
             ItemModifierService itemModifierService)
         {
             _db = db;
@@ -52,7 +52,7 @@ public record SeedDataCommand : IMediatorRequest
             _experienceTable = experienceTable;
             _strategusMap = strategusMap;
             _settlementsSource = settlementsSource;
-            _itemValueModel = itemValueModel;
+            _itemPriceModel = itemPriceModel;
             _itemModifierService = itemModifierService;
         }
 
@@ -1516,7 +1516,7 @@ public record SeedDataCommand : IMediatorRequest
             foreach (ItemCreation item in itemsByMdId.Values)
             {
                 Item baseItem = ItemCreationToItem(item);
-                baseItem.Value = _itemValueModel.ComputeItemValue(baseItem);
+                baseItem.Price = _itemPriceModel.ComputeItemPrice(baseItem);
                 // EF Core doesn't support creating an entity referencing itself, which is needed for items with
                 // rank = 0. Workaround is to set BaseItemId to null and replace with the reference to the item
                 // once it was created. This is the only reason why BaseItemId is nullable.
@@ -1547,7 +1547,7 @@ public record SeedDataCommand : IMediatorRequest
                     .ToArrayAsync(cancellationToken);
                 foreach (var userItem in userItems)
                 {
-                    userItem.User!.Gold += userItem.Item!.Value;
+                    userItem.User!.Gold += userItem.Item!.Price;
                     if (userItem.Item.Rank > 0)
                     {
                         userItem.User.HeirloomPoints += userItem.Item.Rank;

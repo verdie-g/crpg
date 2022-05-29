@@ -40,7 +40,7 @@ public record SellItemCommand : IMediatorRequest
                 return new Result(CommonErrors.ItemNotOwned(req.ItemId));
             }
 
-            userItem.User!.Gold += (int)MathHelper.ApplyPolynomialFunction(userItem.Item!.Value, _constants.ItemSellCostCoefs);
+            userItem.User!.Gold += (int)MathHelper.ApplyPolynomialFunction(userItem.Item!.Price, _constants.ItemSellCostCoefs);
             _db.EquippedItems.RemoveRange(userItem.EquippedItems);
             _db.UserItems.Remove(userItem);
 

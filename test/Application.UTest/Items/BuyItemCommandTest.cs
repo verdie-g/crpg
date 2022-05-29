@@ -13,7 +13,7 @@ public class BuyItemCommandTest : TestBase
     public async Task Basic()
     {
         var user = ArrangeDb.Users.Add(new User { Gold = 100 });
-        var item = ArrangeDb.Items.Add(new Item { Value = 100 });
+        var item = ArrangeDb.Items.Add(new Item { Price = 100 });
         await ArrangeDb.SaveChangesAsync();
 
         BuyItemCommand.Handler handler = new(ActDb, Mapper);
@@ -54,7 +54,7 @@ public class BuyItemCommandTest : TestBase
     {
         User user = new();
         ArrangeDb.Users.Add(user);
-        Item item = new() { Value = 100, Rank = 1 };
+        Item item = new() { Price = 100, Rank = 1 };
         ArrangeDb.Items.Add(item);
         await ArrangeDb.SaveChangesAsync();
 
@@ -71,7 +71,7 @@ public class BuyItemCommandTest : TestBase
     [Test]
     public async Task NotFoundUser()
     {
-        var item = ArrangeDb.Items.Add(new Item { Value = 100 });
+        var item = ArrangeDb.Items.Add(new Item { Price = 100 });
         await ArrangeDb.SaveChangesAsync();
 
         BuyItemCommand.Handler handler = new(ActDb, Mapper);
@@ -87,7 +87,7 @@ public class BuyItemCommandTest : TestBase
     public async Task NotEnoughGold()
     {
         var user = ArrangeDb.Users.Add(new User { Gold = 100 });
-        var item = ArrangeDb.Items.Add(new Item { Value = 101 });
+        var item = ArrangeDb.Items.Add(new Item { Price = 101 });
         await ArrangeDb.SaveChangesAsync();
 
         BuyItemCommand.Handler handler = new(ActDb, Mapper);
@@ -102,7 +102,7 @@ public class BuyItemCommandTest : TestBase
     [Test]
     public async Task AlreadyOwningItem()
     {
-        var item = ArrangeDb.Items.Add(new Item { Value = 100 });
+        var item = ArrangeDb.Items.Add(new Item { Price = 100 });
         var user = ArrangeDb.Users.Add(new User
         {
             Gold = 100,

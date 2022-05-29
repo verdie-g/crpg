@@ -56,12 +56,12 @@ public record BuyItemCommand : IMediatorRequest<ItemViewModel>
                 return new(CommonErrors.ItemAlreadyOwned(req.ItemId));
             }
 
-            if (user.Gold < item.Value)
+            if (user.Gold < item.Price)
             {
-                return new(CommonErrors.NotEnoughGold(item.Value, user.Gold));
+                return new(CommonErrors.NotEnoughGold(item.Price, user.Gold));
             }
 
-            user.Gold -= item.Value;
+            user.Gold -= item.Price;
             user.Items.Add(new UserItem { UserId = req.UserId, ItemId = req.ItemId });
             await _db.SaveChangesAsync(cancellationToken);
 

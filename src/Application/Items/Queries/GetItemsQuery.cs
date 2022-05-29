@@ -29,7 +29,7 @@ public record GetItemsQuery : IMediatorRequest<IList<ItemViewModel>>
         {
             var items = await _db.Items
                 .AsNoTracking()
-                .OrderBy(i => i.Value)
+                .OrderBy(i => i.Price)
                 .Where(i => !req.BaseItems || i.Rank == 0)
                 .ToListAsync(cancellationToken);
 

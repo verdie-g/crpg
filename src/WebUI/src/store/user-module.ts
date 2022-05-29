@@ -247,7 +247,7 @@ class UserModule extends VuexModule {
   async buyItem(item: Item) {
     await userService.buyItem(item.id);
     this.addUserItem(item);
-    this.substractGold(item.value);
+    this.substractGold(item.price);
   }
 
   @Action

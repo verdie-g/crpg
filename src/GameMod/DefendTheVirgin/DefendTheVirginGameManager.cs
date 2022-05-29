@@ -187,7 +187,7 @@ public class DefendTheVirginGameManager : MBGameManager
             mbItem = ReflectionHelper.DeepClone(mbItem);
             ReflectionHelper.SetProperty(mbItem, nameof(ItemObject.StringId), "crpg_" + crpgItem.Id);
             ReflectionHelper.SetProperty(mbItem, nameof(ItemObject.Name), new TextObject(crpgItem.Name));
-            ReflectionHelper.SetProperty(mbItem, nameof(ItemObject.Value), crpgItem.Value);
+            ReflectionHelper.SetProperty(mbItem, nameof(ItemObject.Value), crpgItem.Price);
             ReflectionHelper.SetProperty(mbItem, nameof(ItemObject.Weight), crpgItem.Weight);
 
             if (crpgItem.Armor != null)

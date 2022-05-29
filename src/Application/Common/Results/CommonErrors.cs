@@ -4,7 +4,7 @@ using Crpg.Domain.Entities.Items;
 
 namespace Crpg.Application.Common.Results;
 
-public static class CommonErrors
+internal static class CommonErrors
 {
     public static Error ApplicationClosed(int applicationId) => new(ErrorType.NotFound, ErrorCode.ApplicationClosed)
     {

@@ -18,12 +18,12 @@ public class ItemModifiers
 public class ItemModifier
 {
     public string Name { get; init; } = string.Empty;
-    public float Value { get; init; }
+    public float Price { get; init; }
 
     public virtual void Apply(Item item)
     {
         item.Name = Name + " " + item.Name;
-        item.Value = (int)Math.Round(item.Value * Value);
+        item.Price = (int)Math.Round(item.Price * Price);
     }
 
     protected static int Scale(int val, float factor) => (int)Math.Round(val * factor);

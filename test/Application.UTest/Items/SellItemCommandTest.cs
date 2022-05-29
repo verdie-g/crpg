@@ -23,7 +23,7 @@ public class SellItemCommandTest : TestBase
             {
                 new()
                 {
-                    Item = new Item { Value = 100 },
+                    Item = new Item { Price = 100 },
                 },
             },
         };
@@ -46,7 +46,7 @@ public class SellItemCommandTest : TestBase
     [Test]
     public async Task SellItemEquipped()
     {
-        Item item = new() { Value = 100 };
+        Item item = new() { Price = 100 };
         UserItem userItem = new() { Item = item };
         List<Character> characters = new()
         {

@@ -78,7 +78,7 @@ public record BuySettlementItemCommand : IMediatorRequest<ItemStack>
                 return new(CommonErrors.ItemNotBuyable(req.ItemId));
             }
 
-            int cost = item.Value * req.ItemCount;
+            int cost = item.Price * req.ItemCount;
             if (hero.Gold < cost)
             {
                 return new(CommonErrors.NotEnoughGold(cost, hero.Gold));

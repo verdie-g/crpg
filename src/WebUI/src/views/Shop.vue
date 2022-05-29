@@ -33,12 +33,12 @@
                   <b-button
                     icon-left="coins"
                     expanded
-                    :disabled="item.value > gold || userItems[item.id]"
+                    :disabled="item.price > gold || userItems[item.id]"
                     :loading="buyingItems[item.id]"
                     @click="buy(item)"
                     :title="buyButtonTitle(item)"
                   >
-                    {{ item.value }}
+                    {{ item.price }}
                   </b-button>
                 </footer>
               </div>
@@ -202,7 +202,7 @@ export default class Shop extends Vue {
     Vue.set(this.buyingItems, item.id, true);
     await userModule.buyItem(item);
     Vue.set(this.buyingItems, item.id, false);
-    notify(`Bought ${item.name} for ${item.value} gold`);
+    notify(`Bought ${item.name} for ${item.price} gold`);
   }
 
   buyButtonTitle(item: Item): string {
@@ -210,7 +210,7 @@ export default class Shop extends Vue {
       return 'You already own this item';
     }
 
-    if (item.value > this.gold) {
+    if (item.price > this.gold) {
       return 'Not enough gold';
     }
 
