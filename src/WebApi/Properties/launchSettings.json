@@ -3,14 +3,14 @@
   "profiles": {
     "In-Memory Database": {
       "commandName": "Project",
-      "applicationUrl": "http://localhost:8000",
+      "applicationUrl": "https://localhost:8000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "Persistent Database": {
       "commandName": "Project",
-      "applicationUrl": "http://localhost:8000",
+      "applicationUrl": "https://localhost:8000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ConnectionStrings:Crpg": "Host=localhost;Database=crpg;Username=postgres;Password=root;Include Error Detail=true"
