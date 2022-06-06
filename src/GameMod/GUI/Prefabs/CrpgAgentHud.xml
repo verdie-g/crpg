@@ -13,7 +13,7 @@
           <Children>
             <TextWidget Text="x1" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center"
                         VerticalAlignment="Center" Brush="AgentAmmoCount.Text" Brush.TextVerticalAlignment="Center" Brush.FontSize="26"
-                        Brush.FontColor="#53962AFF" />
+                        Brush.FontColor="#53962AFF" MarginLeft="15" />
           </Children>
         </ExperienceBarWidget>
       </Children>

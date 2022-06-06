@@ -10,6 +10,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.Source.Missions;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.PlatformService;
 using Platform = Crpg.GameMod.Api.Models.Users.Platform;
@@ -66,6 +67,7 @@ public class DefendTheVirginGameManager : MBGameManager
             TimeOfDay = 6f,
         }, missionController => new MissionBehavior[]
         {
+            new MissionOptionsComponent(),
             new MissionCombatantsLogic(),
             waveController,
             crpgUserAccessor,

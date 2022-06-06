@@ -11,6 +11,7 @@ public class DefendTheVirginViews
     [ViewMethod("DefendTheVirgin")]
     public static MissionView[] OpenDefendTheVirginMission(Mission mission) => new[]
     {
+        ViewCreator.CreateOptionsUIHandler(),
         ViewCreator.CreateMissionSingleplayerEscapeMenu(false),
         ViewCreator.CreateMissionAgentLabelUIHandler(mission),
         ViewCreator.CreateMissionAgentStatusUIHandler(mission),
