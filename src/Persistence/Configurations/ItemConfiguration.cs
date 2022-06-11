@@ -23,6 +23,7 @@ public class ItemConfiguration : IEntityTypeConfiguration<Item>
         builder.Property(ac => ac.BodyArmor).HasColumnName("armor_body");
         builder.Property(ac => ac.ArmArmor).HasColumnName("armor_arm");
         builder.Property(ac => ac.LegArmor).HasColumnName("armor_leg");
+        builder.Property(ac => ac.MaterialType).HasColumnName("material_type");
     }
 
     private static void ConfigureItemMountComponent(OwnedNavigationBuilder<Item, ItemMountComponent> builder)
