@@ -79,9 +79,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         EquipmentElement mountHarness = equipment[EquipmentIndex.HorseHarness];
 
         props.AiSpeciesIndex = agent.Monster.FamilyType;
-        props.AttributeRiding = 0.800000011920929f + (equipment[EquipmentIndex.HorseHarness].Item != null ? 0.200000002980232f : 0.0f);
+        props.AttributeRiding = 0.8f + (equipment[EquipmentIndex.HorseHarness].Item != null ? 0.2f : 0.0f);
         props.ArmorTorso = ComputeMountArmor(equipment);
-        props.MountChargeDamage = mount.GetModifiedMountCharge(in mountHarness) * 0.00999999977648258f;
+        props.MountChargeDamage = mount.GetModifiedMountCharge(in mountHarness) * 0.01f;
         props.MountDifficulty = mount.Item.Difficulty;
     }
 
@@ -92,8 +92,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int ridingSkill = agent.RiderAgent != null
             ? agent.RiderAgent.Character.GetSkillValue(DefaultSkills.Riding)
             : 100;
-        props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (1.0f + ridingSkill * 0.00350000010803342f);
-        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.219999998807907f * (1.0f + ridingSkill * 2.0f / 625.0f);
+        props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (1.0f + ridingSkill * 0.0035f);
+        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.22f * (1.0f + ridingSkill * 0.0032f);
         props.TopSpeedReachDuration = Game.Current.BasicModels.RidingModel.CalculateAcceleration(in mount, in mountHarness, ridingSkill);
         float weightFactor = mount.Weight / 2.0f + (mountHarness.IsEmpty ? 0.0f : mountHarness.Weight);
         props.MountDashAccelerationMultiplier = weightFactor > 200.0
@@ -137,16 +137,16 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             : null;
         agentDrivenProperties.LongestRangedWeaponSlotIndex = equipment.GetLongestRangedWeaponWithAimingError(out float inaccuracy, agent);
         agentDrivenProperties.LongestRangedWeaponInaccuracy = inaccuracy;
-        agentDrivenProperties.SwingSpeedMultiplier = 0.930000007152557f + 0.000699999975040555f * character.GetSkillValue(primaryItem?.RelevantSkill ?? DefaultSkills.Athletics);
+        agentDrivenProperties.SwingSpeedMultiplier = 0.93f + 0.0007f * character.GetSkillValue(primaryItem?.RelevantSkill ?? DefaultSkills.Athletics);
         agentDrivenProperties.ThrustOrRangedReadySpeedMultiplier = agentDrivenProperties.SwingSpeedMultiplier;
         agentDrivenProperties.HandlingMultiplier = 1f;
         agentDrivenProperties.ShieldBashStunDurationMultiplier = 1f;
         agentDrivenProperties.KickStunDurationMultiplier = 1f;
-        agentDrivenProperties.ReloadSpeed = 0.930000007152557f + 0.000699999975040555f * character.GetSkillValue(primaryItem?.RelevantSkill ?? DefaultSkills.Athletics);
+        agentDrivenProperties.ReloadSpeed = agentDrivenProperties.SwingSpeedMultiplier;
         agentDrivenProperties.MissileSpeedMultiplier = 1f;
         agentDrivenProperties.ReloadMovementPenaltyFactor = 1f;
         agentDrivenProperties.WeaponInaccuracy = 0.0f;
-        agentDrivenProperties.MaxSpeedMultiplier = 1.04999995231628f * (100.0f / (100.0f + weaponsEncumbrance));
+        agentDrivenProperties.MaxSpeedMultiplier = 1.05f * (100.0f / (100.0f + weaponsEncumbrance));
         int ridingSkill = character.GetSkillValue(DefaultSkills.Riding);
         if (equippedItem != null)
         {
@@ -188,9 +188,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
                 {
-                    agentDrivenProperties.WeaponBestAccuracyWaitTime = 0.300000011920929f + (95.75f - equippedItem.ThrustSpeed) * 0.00499999988824129f;
+                    agentDrivenProperties.WeaponBestAccuracyWaitTime = 0.3f + (95.75f - equippedItem.ThrustSpeed) * 0.005f;
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 60.0f) / 75.0f, 0.0f, 1f);
-                    agentDrivenProperties.WeaponUnsteadyBeginTime = 0.100000001490116f + weaponSkill * 0.00999999977648258f * MBMath.Lerp(1f, 2f, amount);
+                    agentDrivenProperties.WeaponUnsteadyBeginTime = 0.1f + weaponSkill * 0.001f * MBMath.Lerp(1f, 2f, amount);
                     if (agent.IsAIControlled)
                     {
                         agentDrivenProperties.WeaponUnsteadyBeginTime *= 4f;
@@ -201,8 +201,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 }
                 else if (equippedItem.WeaponClass is WeaponClass.Javelin or WeaponClass.ThrowingAxe or WeaponClass.ThrowingKnife)
                 {
-                    agentDrivenProperties.WeaponBestAccuracyWaitTime = 0.400000005960464f + (89.0f - equippedItem.ThrustSpeed) * 0.0299999993294477f;
-                    agentDrivenProperties.WeaponUnsteadyBeginTime = 2.5f + weaponSkill * 0.00999999977648258f;
+                    agentDrivenProperties.WeaponBestAccuracyWaitTime = 0.4f + (89.0f - equippedItem.ThrustSpeed) * 0.03f;
+                    agentDrivenProperties.WeaponUnsteadyBeginTime = 2.5f + weaponSkill * 0.01f;
                     agentDrivenProperties.WeaponUnsteadyEndTime = 10f + agentDrivenProperties.WeaponUnsteadyBeginTime;
                     agentDrivenProperties.WeaponRotationalAccuracyPenaltyInRadians = 0.025f;
                     if (equippedItem.WeaponClass == WeaponClass.ThrowingAxe)
@@ -220,8 +220,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             }
             else if (equippedItem.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
             {
-                agentDrivenProperties.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.00499999988824129f;
-                agentDrivenProperties.WeaponUnsteadyEndTime = 3.0f + weaponSkill * 0.00999999977648258f;
+                agentDrivenProperties.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.005f;
+                agentDrivenProperties.WeaponUnsteadyEndTime = 3.0f + weaponSkill * 0.01f;
             }
         }
 
