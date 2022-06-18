@@ -1,12 +1,22 @@
-﻿using TaleWorlds.Core;
+﻿using Crpg.GameMod.Helpers;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.GameMod.Common;
 
-// Most of it is copied from MultiplayerAgentStatCalculateModel.
+/// <summary>
+/// Mostly copied from <see cref="MultiplayerAgentStatCalculateModel"/> but with the class division system removed.
+/// </summary>
 internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 {
+    private readonly CrpgConstants _constants;
+
+    public CrpgAgentStatCalculateModel(CrpgConstants constants)
+    {
+        _constants = constants;
+    }
+
     public override void InitializeAgentStats(Agent agent, Equipment spawnEquipment,
         AgentDrivenProperties agentDrivenProperties, AgentBuildData agentBuildData)
     {
@@ -215,9 +225,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             }
         }
 
-        agentDrivenProperties.AttributeShieldMissileCollisionBodySizeAdder = 0.3f;
+        int shieldSkill = character.GetSkillValue(CrpgSkills.Shield);
+        agentDrivenProperties.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.CoverageFactorForShieldCoefs);
         float ridingAttribute = agent.MountAgent?.GetAgentDrivenPropertyValue(DrivenProperty.AttributeRiding) ?? 1f;
         agentDrivenProperties.AttributeRiding = ridingSkill * ridingAttribute;
+        // TODO: AttributeHorseArchery doesn't seem to have any effect for now.
         agentDrivenProperties.AttributeHorseArchery = Game.Current.BasicModels.StrikeMagnitudeModel.CalculateHorseArcheryFactor(character);
         agentDrivenProperties.BipedalRangedReadySpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReadySpeedMultiplier);
         agentDrivenProperties.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);

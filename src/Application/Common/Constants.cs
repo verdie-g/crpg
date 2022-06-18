@@ -33,6 +33,7 @@ public class Constants
     public float[] DamageFactorForPowerDrawCoefs { get; set; } = Array.Empty<float>();
     public float[] DamageFactorForPowerThrowCoefs { get; set; } = Array.Empty<float>();
     public float[] DurabilityFactorForShieldCoefs { get; set; } = Array.Empty<float>();
+    public float[] CoverageFactorForShieldCoefs { get; set; } = Array.Empty<float>();
     public float[] SpeedFactorForShieldCoefs { get; set; } = Array.Empty<float>();
     public Role DefaultRole { get; set; }
     public int DefaultGold { get; set; }

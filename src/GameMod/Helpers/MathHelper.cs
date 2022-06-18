@@ -1,6 +1,6 @@
 ﻿namespace Crpg.GameMod.Helpers;
 
-public static class MathHelper
+internal static class MathHelper
 {
     public static float ApplyPolynomialFunction(float x, float[] coefficients)
     {

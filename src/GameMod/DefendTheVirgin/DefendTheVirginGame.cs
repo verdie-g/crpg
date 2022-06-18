@@ -81,7 +81,7 @@ internal class DefendTheVirginGame : GameType
     private void InitializeGameModels(IGameStarter basicGameStarter)
     {
         basicGameStarter.AddModel(new MultiplayerAgentDecideKilledOrUnconsciousModel());
-        basicGameStarter.AddModel(new CrpgAgentStatCalculateModel());
+        basicGameStarter.AddModel(new CrpgAgentStatCalculateModel(_crpgConstants));
         basicGameStarter.AddModel(new CustomBattleApplyWeatherEffectsModel());
         basicGameStarter.AddModel(new CrpgAgentApplyDamageModel(_crpgConstants));
         basicGameStarter.AddModel(new DefaultRidingModel());
