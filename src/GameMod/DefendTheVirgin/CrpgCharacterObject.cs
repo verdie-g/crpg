@@ -11,6 +11,8 @@ internal sealed class CrpgCharacterObject : BasicCharacterObject
 {
     private readonly int _maxHitPoints;
 
+    public override bool IsHero => true; // Spawning a non-hero gives random item modifiers.
+
     public static CrpgCharacterObject New(TextObject name, CharacterSkills skills, Equipment equipment, CrpgConstants constants)
     {
         int strength = skills.GetPropertyValue(CrpgSkills.Strength);
