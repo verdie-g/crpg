@@ -79,14 +79,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     {
         EquipmentElement mount = agent.SpawnEquipment[EquipmentIndex.ArmorItemEndSlot];
         EquipmentElement mountHarness = agent.SpawnEquipment[EquipmentIndex.HorseHarness];
-        props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness);
-        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.219999998807907f;
         int ridingSkill = agent.RiderAgent != null
             ? agent.RiderAgent.Character.GetSkillValue(DefaultSkills.Riding)
             : 100;
+        props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (1.0f + ridingSkill * 0.00350000010803342f);
+        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.219999998807907f * (1.0f + ridingSkill * 2.0f / 625.0f);
         props.TopSpeedReachDuration = Game.Current.BasicModels.RidingModel.CalculateAcceleration(in mount, in mountHarness, ridingSkill);
-        props.MountSpeed *= 1.0f + ridingSkill * 2.0f / 625.0f;
-        props.MountManeuver *= 1.0f + ridingSkill * 0.00350000010803342f;
         float weightFactor = mount.Weight / 2.0f + (mountHarness.IsEmpty ? 0.0f : mountHarness.Weight);
         props.MountDashAccelerationMultiplier = weightFactor > 200.0
             ? weightFactor < 300.0 ? 1.0f - (weightFactor - 200.0f) / 111.0f : 0.1f
