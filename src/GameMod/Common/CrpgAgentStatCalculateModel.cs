@@ -13,11 +13,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         agentDrivenProperties.ArmorEncumbrance = spawnEquipment.GetTotalWeightOfArmor(agent.IsHuman);
         if (agent.IsHuman)
         {
-            InitializeHumanAgentStats(agent, agentDrivenProperties, agentBuildData);
+            InitializeHumanAgentStats(agent, spawnEquipment, agentDrivenProperties);
         }
         else
         {
-            InitializeMountAgentStats(agent, agentDrivenProperties, spawnEquipment);
+            InitializeMountAgentStats(agent, spawnEquipment, agentDrivenProperties);
         }
     }
 
@@ -45,20 +45,31 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         return true;
     }
 
-    private void InitializeHumanAgentStats(Agent agent, AgentDrivenProperties props, AgentBuildData agentBuildData)
+    private void InitializeHumanAgentStats(Agent agent, Equipment equipment, AgentDrivenProperties props)
     {
+        props.SetStat(DrivenProperty.UseRealisticBlocking, MultiplayerOptions.OptionType.UseRealisticBlocking.GetBoolValue() ? 1f : 0.0f);
+        props.ArmorHead = equipment.GetHeadArmorSum();
+        props.ArmorTorso = equipment.GetHumanBodyArmorSum();
+        props.ArmorLegs = equipment.GetLegArmorSum();
+        props.ArmorArms = equipment.GetArmArmorSum();
+        props.TopSpeedReachDuration = 2.5f; // Acceleration. TODO: should probably not be a constant.
+        float bipedalCombatSpeedMinMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMinMultiplier);
+        float bipedalCombatSpeedMaxMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMaxMultiplier);
+        const float combatMovementSpeed = 0.8f; // TODO: should probably not be a constant.
+        props.CombatMaxSpeedMultiplier = bipedalCombatSpeedMinMultiplier + (bipedalCombatSpeedMaxMultiplier - bipedalCombatSpeedMinMultiplier) * combatMovementSpeed;
+
         agent.BaseHealthLimit = 100f; // TODO: get character health.
         agent.HealthLimit = agent.BaseHealthLimit;
         agent.Health = agent.HealthLimit;
     }
 
-    private void InitializeMountAgentStats(Agent agent, AgentDrivenProperties props, Equipment equipment)
+    private void InitializeMountAgentStats(Agent agent, Equipment equipment, AgentDrivenProperties props)
     {
         EquipmentElement mount = equipment[EquipmentIndex.Horse];
         EquipmentElement mountHarness = equipment[EquipmentIndex.HorseHarness];
 
         props.AiSpeciesIndex = agent.Monster.FamilyType;
-        props.AttributeRiding = (float)(0.800000011920929 + (equipment[EquipmentIndex.HorseHarness].Item != null ? 0.200000002980232 : 0.0));
+        props.AttributeRiding = 0.800000011920929f + (equipment[EquipmentIndex.HorseHarness].Item != null ? 0.200000002980232f : 0.0f);
         props.ArmorTorso = ComputeMountArmor(equipment);
         props.MountChargeDamage = mount.GetModifiedMountCharge(in mountHarness) * 0.00999999977648258f;
         props.MountDifficulty = mount.Item.Difficulty;
@@ -78,7 +89,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.MountManeuver *= 1.0f + ridingSkill * 0.00350000010803342f;
         float weightFactor = mount.Weight / 2.0f + (mountHarness.IsEmpty ? 0.0f : mountHarness.Weight);
         props.MountDashAccelerationMultiplier = weightFactor > 200.0
-            ? weightFactor < 300.0 ? (float)(1.0 - (weightFactor - 200.0) / 111.0) : 0.1f
+            ? weightFactor < 300.0 ? 1.0f - (weightFactor - 200.0f) / 111.0f : 0.1f
             : 1f;
     }
 
