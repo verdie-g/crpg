@@ -3,7 +3,6 @@ using Crpg.GameMod.Api.Models.Characters;
 using Crpg.GameMod.Api.Models.Items;
 using Crpg.GameMod.Api.Models.Users;
 using Crpg.GameMod.Common;
-using Crpg.GameMod.Helpers;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -43,8 +42,6 @@ public class DefendTheVirginGameManager : MBGameManager
             MBDebug.Print(_getItemsTask.Exception!.ToString());
             return;
         }
-
-        LoadItems(_getItemsTask.Result, MBObjectManager.Instance);
 
         InformationManager.DisplayMessage(new InformationMessage("Visit c-rpg.eu to upgrade your character."));
 
@@ -95,7 +92,7 @@ public class DefendTheVirginGameManager : MBGameManager
                 _crpgConstants = LoadCrpgConstants();
                 _waves = LoadWaves();
                 MBGlobals.InitializeReferences();
-                Game.CreateGame(new DefendTheVirginGame(), this).DoLoading();
+                Game.CreateGame(new DefendTheVirginGame(_crpgConstants), this).DoLoading();
                 nextStep = GameManagerLoadingSteps.FirstInitializeFirstStep;
                 break;
             case GameManagerLoadingSteps.FirstInitializeFirstStep:
@@ -170,94 +167,6 @@ public class DefendTheVirginGameManager : MBGameManager
         return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path));
     }
 
-    /// <summary>
-    /// For each cRPG item get its template from the <see cref="MBObjectManager"/> and create a new object by
-    /// overriding all fields with the ones of the cRPG item.
-    /// </summary>
-    private void LoadItems(IList<CrpgItem> crpgItems, MBObjectManager objectManager)
-    {
-        foreach (var crpgItem in crpgItems)
-        {
-            var mbItem = objectManager.GetObject<ItemObject>(crpgItem.TemplateMbId);
-            if (mbItem == null)
-            {
-                // TODO: log warning.
-                continue;
-            }
-
-            // No way to create an item programmatically so use reflection.
-            mbItem = ReflectionHelper.DeepClone(mbItem);
-            ReflectionHelper.SetProperty(mbItem, nameof(ItemObject.StringId), "crpg_" + crpgItem.Id);
-            ReflectionHelper.SetProperty(mbItem, nameof(ItemObject.Name), new TextObject(crpgItem.Name));
-            ReflectionHelper.SetProperty(mbItem, nameof(ItemObject.Value), crpgItem.Price);
-            ReflectionHelper.SetProperty(mbItem, nameof(ItemObject.Weight), crpgItem.Weight);
-
-            if (crpgItem.Armor != null)
-            {
-                if (mbItem.ArmorComponent == null)
-                {
-                    // TODO: log warning
-                }
-                else
-                {
-                    ReflectionHelper.SetProperty(mbItem.ArmorComponent, nameof(ArmorComponent.HeadArmor), crpgItem.Armor.HeadArmor);
-                    ReflectionHelper.SetProperty(mbItem.ArmorComponent, nameof(ArmorComponent.BodyArmor), crpgItem.Armor.BodyArmor);
-                    ReflectionHelper.SetProperty(mbItem.ArmorComponent, nameof(ArmorComponent.ArmArmor), crpgItem.Armor.ArmArmor);
-                    ReflectionHelper.SetProperty(mbItem.ArmorComponent, nameof(ArmorComponent.LegArmor), crpgItem.Armor.LegArmor);
-                }
-            }
-
-            if (crpgItem.Mount != null)
-            {
-                if (mbItem.HorseComponent == null)
-                {
-                    // TODO: log warning
-                }
-                else
-                {
-                    ReflectionHelper.SetProperty(mbItem.HorseComponent, nameof(HorseComponent.BodyLength), crpgItem.Mount.BodyLength);
-                    ReflectionHelper.SetProperty(mbItem.HorseComponent, nameof(HorseComponent.ChargeDamage), crpgItem.Mount.ChargeDamage);
-                    ReflectionHelper.SetProperty(mbItem.HorseComponent, nameof(HorseComponent.Maneuver), crpgItem.Mount.Maneuver);
-                    ReflectionHelper.SetProperty(mbItem.HorseComponent, nameof(HorseComponent.Speed), crpgItem.Mount.Speed);
-                    ReflectionHelper.SetProperty(mbItem.HorseComponent.Monster, nameof(Monster.HitPoints), crpgItem.Mount.HitPoints);
-                }
-            }
-
-            if (crpgItem.Weapons != null)
-            {
-                if (mbItem.Weapons == null || crpgItem.Weapons.Count != mbItem.Weapons.Count)
-                {
-                    // TODO: log warning
-                }
-                else
-                {
-                    for (int i = 0; i < crpgItem.Weapons.Count; i += 1)
-                    {
-                        ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.Accuracy), crpgItem.Weapons[i].Accuracy);
-                        ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.MissileSpeed), crpgItem.Weapons[i].MissileSpeed);
-                        ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.MaxDataValue), (short)crpgItem.Weapons[i].StackAmount);
-                        ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.WeaponBalance), crpgItem.Weapons[i].Balance);
-                        // If we want to override length here we should also override things like CenterOfMass according to WeaponComponentData.Deserialize.
-                        ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.Handling), crpgItem.Weapons[i].Handling);
-                        ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.BodyArmor), crpgItem.Weapons[i].BodyArmor);
-
-                        float thrustDamageFactor = mbItem.Weapons[i].ThrustDamageFactor * crpgItem.Weapons[i].ThrustDamage / mbItem.Weapons[i].ThrustDamage;
-                        ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.ThrustDamage), crpgItem.Weapons[i].ThrustDamage);
-                        ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.ThrustDamageFactor), thrustDamageFactor);
-                        ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.ThrustSpeed), crpgItem.Weapons[i].ThrustSpeed);
-
-                        float swingDamageFactor = mbItem.Weapons[i].SwingDamageFactor * crpgItem.Weapons[i].SwingDamage / mbItem.Weapons[i].SwingDamage;
-                        ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.SwingDamage), crpgItem.Weapons[i].SwingDamage);
-                        ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.SwingDamageFactor), swingDamageFactor);
-                        ReflectionHelper.SetProperty(mbItem.Weapons[i], nameof(WeaponComponentData.SwingSpeed), crpgItem.Weapons[i].SwingSpeed);
-                    }
-                }
-            }
-
-            MBObjectManager.Instance.RegisterObject(mbItem);
-        }
-    }
-
     private AtmosphereInfo GetRandomAtmosphere()
     {
         string[] atmospheres =
@@ -319,85 +228,17 @@ public class DefendTheVirginGameManager : MBGameManager
         foreach (var equippedItem in crpgCharacter.EquippedItems)
         {
             var index = ItemSlotToIndex[equippedItem.Slot];
-            AddEquipment(equipment, index, "crpg_" + equippedItem.Item.Id, skills, constants);
+            AddEquipment(equipment, index, equippedItem.Item.TemplateMbId);
         }
 
         return CrpgCharacterObject.New(new TextObject(crpgCharacter.Name), skills, equipment, constants);
     }
 
-    private void AddEquipment(Equipment equipments, EquipmentIndex idx, string? itemId,
-        CharacterSkills skills, CrpgConstants constants)
+    private void AddEquipment(Equipment equipments, EquipmentIndex idx, string? itemId)
     {
-        var itemObject = GetModifiedItem(itemId, skills, constants);
+        var itemObject = MBObjectManager.Instance.GetObject<ItemObject>(itemId);
         var equipmentElement = new EquipmentElement(itemObject);
         equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
-    }
-
-    private ItemObject? GetModifiedItem(string? itemId, CharacterSkills skills, CrpgConstants constants)
-    {
-        if (itemId == null)
-        {
-            return null;
-        }
-
-        var itemObject = MBObjectManager.Instance.GetObject<ItemObject>(itemId);
-        if (itemObject == null) // Defensive check. Object should always exist.
-        {
-            // TODO: log warning.
-            return null;
-        }
-
-        itemObject = ReflectionHelper.DeepClone(itemObject);
-
-        if (itemObject.Weapons != null)
-        {
-            float powerStrikeFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.PowerStrike), constants.DamageFactorForPowerStrikeCoefs);
-            ModifyDamage(itemObject, powerStrikeFactor, WeaponClassesAffectedByPowerStrike);
-            float powerDrawFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.PowerDraw), constants.DamageFactorForPowerDrawCoefs);
-            ModifyDamage(itemObject, powerDrawFactor, WeaponClassesAffectedByPowerDraw);
-            float powerThrowFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.PowerThrow), constants.DamageFactorForPowerThrowCoefs);
-            ModifyDamage(itemObject, powerThrowFactor, WeaponClassesAffectedByPowerThrow);
-        }
-
-        if (itemObject.ItemType == ItemObject.ItemTypeEnum.Shield)
-        {
-            var shield = itemObject.WeaponComponent.PrimaryWeapon;
-
-            float durabilityFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.Shield), constants.DurabilityFactorForShieldCoefs);
-            short durability = (short)ReflectionHelper.GetProperty(shield, nameof(WeaponComponentData.MaxDataValue));
-            ReflectionHelper.SetProperty(shield, nameof(WeaponComponentData.MaxDataValue), (short)(durability * durabilityFactor));
-
-            float speedFactor = MathHelper.ApplyPolynomialFunction(skills.GetPropertyValue(CrpgSkills.Shield), constants.SpeedFactorForShieldCoefs);
-            int speed = (int)ReflectionHelper.GetProperty(shield, nameof(WeaponComponentData.ThrustSpeed));
-            ReflectionHelper.SetProperty(shield, nameof(WeaponComponentData.ThrustSpeed), (int)(speed * speedFactor));
-        }
-
-        return itemObject;
-    }
-
-    private void ModifyDamage(ItemObject itemObject, float factor, HashSet<WeaponClass> affectedClasses)
-    {
-        foreach (var weapon in itemObject.Weapons)
-        {
-            if (affectedClasses.Contains(weapon.WeaponClass))
-            {
-                // It seems like damage is used by missiles and melee use damage factor. Scale both in any case.
-                // According to TaleWorlds.Core.Crafting.CalculateSwingBaseDamage, damage is calculated from damage
-                // factor and other fields like weight or speed. Scaling both damage and damage factor they same way
-                // might not work as expected.
-                int swingDamage = (int)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.SwingDamage));
-                ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.SwingDamage), (int)(swingDamage * factor));
-
-                float swingDamageFactor = (float)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.SwingDamageFactor));
-                ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.SwingDamageFactor), swingDamageFactor * factor);
-
-                int thrustDamage = (int)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.ThrustDamage));
-                ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.ThrustDamage), (int)(thrustDamage * factor));
-
-                float thrustDamageFactor = (float)ReflectionHelper.GetProperty(weapon, nameof(WeaponComponentData.ThrustDamageFactor));
-                ReflectionHelper.SetProperty(weapon, nameof(WeaponComponentData.ThrustDamageFactor), thrustDamageFactor * factor);
-            }
-        }
     }
 
     private static readonly Dictionary<CrpgItemSlot, EquipmentIndex> ItemSlotToIndex = new()
@@ -413,34 +254,5 @@ public class DefendTheVirginGameManager : MBGameManager
         [CrpgItemSlot.Weapon1] = EquipmentIndex.Weapon1,
         [CrpgItemSlot.Weapon2] = EquipmentIndex.Weapon2,
         [CrpgItemSlot.Weapon3] = EquipmentIndex.Weapon3,
-    };
-
-    private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new()
-    {
-        WeaponClass.Dagger,
-        WeaponClass.OneHandedSword,
-        WeaponClass.TwoHandedSword,
-        WeaponClass.OneHandedAxe,
-        WeaponClass.TwoHandedAxe,
-        WeaponClass.Mace,
-        WeaponClass.Pick,
-        WeaponClass.TwoHandedMace,
-        WeaponClass.OneHandedPolearm,
-        WeaponClass.TwoHandedPolearm,
-        WeaponClass.LowGripPolearm,
-    };
-
-    private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerDraw = new()
-    {
-        WeaponClass.Bow,
-    };
-
-    private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerThrow = new()
-    {
-        WeaponClass.Stone,
-        WeaponClass.Boulder,
-        WeaponClass.ThrowingAxe,
-        WeaponClass.ThrowingKnife,
-        WeaponClass.Javelin,
     };
 }

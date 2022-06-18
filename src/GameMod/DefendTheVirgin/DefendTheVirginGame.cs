@@ -6,8 +6,15 @@ using TaleWorlds.ObjectSystem;
 
 namespace Crpg.GameMod.DefendTheVirgin;
 
-public class DefendTheVirginGame : GameType
+internal class DefendTheVirginGame : GameType
 {
+    private readonly CrpgConstants _crpgConstants;
+
+    public DefendTheVirginGame(CrpgConstants crpgConstants)
+    {
+        _crpgConstants = crpgConstants;
+    }
+
     public override void OnDestroy()
     {
     }
@@ -76,7 +83,7 @@ public class DefendTheVirginGame : GameType
         basicGameStarter.AddModel(new MultiplayerAgentDecideKilledOrUnconsciousModel());
         basicGameStarter.AddModel(new CrpgAgentStatCalculateModel());
         basicGameStarter.AddModel(new CustomBattleApplyWeatherEffectsModel());
-        basicGameStarter.AddModel(new MultiplayerAgentApplyDamageModel());
+        basicGameStarter.AddModel(new CrpgAgentApplyDamageModel(_crpgConstants));
         basicGameStarter.AddModel(new DefaultRidingModel());
         basicGameStarter.AddModel(new DefaultStrikeMagnitudeModel());
         basicGameStarter.AddModel(new CustomBattleMoraleModel());
