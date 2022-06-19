@@ -96,7 +96,7 @@ public class ConvertCharacterStatisticsCommandTest : TestBase
     [Test]
     public void ShouldThrowIfConversionIsNotInEnum()
     {
-        var validator = new ConvertCharacterStatisticsCommand.Validator();
+        ConvertCharacterStatisticsCommand.Validator validator = new();
         ValidationResult res = validator.Validate(new ConvertCharacterStatisticsCommand
         {
             Conversion = (CharacterStatisticConversion)10,

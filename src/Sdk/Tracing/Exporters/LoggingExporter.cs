@@ -14,7 +14,7 @@ internal class LoggingExporter : BaseExporter<Activity>
     {
         foreach (var activity in batch)
         {
-            var sb = new StringBuilder($"Span {activity.DisplayName}{{");
+            StringBuilder sb = new($"Span {activity.DisplayName}{{");
             bool hasTags = false;
             foreach (var tag in activity.Tags)
             {

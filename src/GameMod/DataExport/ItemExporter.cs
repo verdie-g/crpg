@@ -113,7 +113,7 @@ internal class ItemExporter : IDataExporter
 
     private static CrpgItemCreation MbToCrpgItem(ItemObject mbItem)
     {
-        var crpgItem = new CrpgItemCreation
+        CrpgItemCreation crpgItem = new()
         {
             TemplateMbId = mbItem.StringId,
             Name = mbItem.Name.ToString(),
@@ -209,7 +209,7 @@ internal class ItemExporter : IDataExporter
         var items = Enumerable.Empty<ItemObject>();
         foreach (string path in Directory.EnumerateFiles(folderPath))
         {
-            var itemsDoc = new XmlDocument();
+            XmlDocument itemsDoc = new();
             using (var r = XmlReader.Create(path, new XmlReaderSettings { IgnoreComments = true }))
             {
                 itemsDoc.Load(r);
@@ -221,7 +221,7 @@ internal class ItemExporter : IDataExporter
                 .Cast<XmlNode>()
                 .Select(itemNode =>
                 {
-                    var item = new ItemObject();
+                    ItemObject item = new();
                     item.Deserialize(game.ObjectManager, itemNode);
                     return item;
                 });
@@ -241,13 +241,13 @@ internal class ItemExporter : IDataExporter
             Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() },
         });
 
-        using var s = new StreamWriter(Path.Combine(outputPath, "items.json"));
+        using StreamWriter s = new(Path.Combine(outputPath, "items.json"));
         serializer.Serialize(s, items);
     }
 
     private static Task GenerateItemsThumbnail(IEnumerable<ItemObject> mbItems, string outputPath)
     {
-        var createTextureTasks = new List<Task>();
+        List<Task> createTextureTasks = new();
         foreach (var mbItem in mbItems)
         {
             /*
@@ -264,7 +264,7 @@ internal class ItemExporter : IDataExporter
                 _ => mbItem.Type,
             };
 
-            var createTextureTaskSource = new TaskCompletionSource<object?>();
+            TaskCompletionSource<object?> createTextureTaskSource = new();
             createTextureTasks.Add(createTextureTaskSource.Task);
 
             // Texture.SaveToFile doesn't accept absolute paths

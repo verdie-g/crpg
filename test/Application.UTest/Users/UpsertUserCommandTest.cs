@@ -99,7 +99,7 @@ public class UpsertUserCommandTest : TestBase
     [Test]
     public void TestValidationValidCommand()
     {
-        var validator = new UpsertUserCommand.Validator();
+        UpsertUserCommand.Validator validator = new();
         var res = validator.Validate(new UpsertUserCommand
         {
             PlatformUserId = "28320184920184918",

@@ -42,7 +42,7 @@ internal class WaveSpawnLogic : MissionLogic
         foreach (var group in wave)
         {
             var troop = Game.Current.ObjectManager.GetObject<BasicCharacterObject>(group.Id);
-            var agentOrigin = new BasicBattleAgentOrigin(troop);
+            BasicBattleAgentOrigin agentOrigin = new(troop);
             Formation formation = Mission.GetAgentTeam(agentOrigin, false).GetFormation(FormationClass.Infantry);
             formation.BeginSpawn(group.Count, false);
             Mission.Current.SpawnFormation(formation);
