@@ -51,7 +51,7 @@ public class StrategusWorker : BackgroundService
 
     private async Task Tick(TimeSpan deltaTime, CancellationToken cancellationToken)
     {
-        using var span = ActivitySource.StartActivity("crpg.strategus.tick");
+        using var span = ActivitySource.StartActivity("strategus.tick");
 
         // ICrpgDbContext, used by most mediator handlers has a scoped lifetime which means that it is created once
         // for each ASP.NET Core request. But in a worker there is no notion of request so we manually create the
