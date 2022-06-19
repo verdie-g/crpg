@@ -7,7 +7,6 @@ namespace Crpg.Application.Common.Behaviors;
 
 internal class RequestInstrumentation
 {
-    private const string OperationName = "crpg.request";
     private static readonly AssemblyName AssemblyName = typeof(RequestInstrumentation).Assembly.GetName();
     private static readonly string InstrumentationName = AssemblyName.Name!;
     private static readonly string InstrumentationVersion = AssemblyName.Version!.ToString();
@@ -17,7 +16,7 @@ internal class RequestInstrumentation
     private readonly ObservableCounter<long> _statusCounter;
     private readonly Histogram<double> _responseTimeHistogram;
     private readonly KeyValuePair<string, object?>[] _responseTimeTags;
-    private readonly string _resourceName;
+    private readonly string _spanName;
 
     private long _statusOk;
     private long _statusErrorBadRequest;
@@ -48,7 +47,7 @@ internal class RequestInstrumentation
         });
         _responseTimeHistogram = Meter.CreateHistogram<double>(metricResponseTime);
         _responseTimeTags = new[] { requestNameTag };
-        _resourceName = StringHelper.PascalToSnakeCase(requestType.Name);
+        _spanName = StringHelper.PascalToSnakeCase(requestType.Name);
     }
 
     public void IncrementOk() => Interlocked.Increment(ref _statusOk);
@@ -59,12 +58,6 @@ internal class RequestInstrumentation
     public void RecordResponseTime(double value) => _responseTimeHistogram.Record(value, _responseTimeTags);
     public Activity? StartRequestSpan()
     {
-        var span = ActivitySource.StartActivity(OperationName);
-        if (span is { IsAllDataRequested: true })
-        {
-            span.SetTag("resource.name", _resourceName);
-        }
-
-        return span;
+        return ActivitySource.StartActivity(_spanName);
     }
 }
