@@ -61,7 +61,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
             new[]
             {
                 ("scarf", ItemSlot.Shoulder),
-                ("light tunic", ItemSlot.Body),
+                ("light_tunic", ItemSlot.Body),
                 ("peasant_2haxe_1_t1", ItemSlot.Weapon0),
                 ("peasant_hammer_1_t1", ItemSlot.Weapon1),
                 ("throwing_stone", ItemSlot.Weapon2),
