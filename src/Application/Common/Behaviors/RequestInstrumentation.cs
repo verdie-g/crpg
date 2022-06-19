@@ -30,7 +30,7 @@ internal class RequestInstrumentation
         const string metricResponseTime = "crpg.requests.response-time";
         const string statusKey = "status";
 
-        var requestNameTag = KeyValuePair.Create("name", (object?)StringHelper.PascalToSnakeCase(requestType.Name));
+        var requestNameTag = KeyValuePair.Create("name", (object?)StringHelper.PascalToKebabCase(requestType.Name));
         KeyValuePair<string, object?>[] statusOkTags = { requestNameTag, new(statusKey, "ok") };
         KeyValuePair<string, object?>[] statusErrorBadRequestTags = { requestNameTag, new(statusKey, "bad-request") };
         KeyValuePair<string, object?>[] statusErrorNotFoundTags = { requestNameTag, new(statusKey, "not-found") };
@@ -47,7 +47,7 @@ internal class RequestInstrumentation
         });
         _responseTimeHistogram = Meter.CreateHistogram<double>(metricResponseTime);
         _responseTimeTags = new[] { requestNameTag };
-        _spanName = StringHelper.PascalToSnakeCase(requestType.Name);
+        _spanName = StringHelper.PascalToKebabCase(requestType.Name);
     }
 
     public void IncrementOk() => Interlocked.Increment(ref _statusOk);
