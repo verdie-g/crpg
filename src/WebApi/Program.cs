@@ -151,8 +151,6 @@ using (IServiceScope scope = app.Services.CreateScope())
         LoggerFactory.Close();
         return 1;
     }
-
-    logger.LogInformation("cRPG Web API has started");
 }
 
 try
@@ -162,7 +160,7 @@ try
 }
 catch (Exception ex)
 {
-    logger.LogCritical(ex, "Host terminated unexpectedly");
+    logger.LogCritical(ex, "Application terminated unexpectedly");
     return 1;
 }
 finally
