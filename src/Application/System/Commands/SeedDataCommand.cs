@@ -1406,7 +1406,7 @@ public record SeedDataCommand : IMediatorRequest
                         Status = BattleFighterApplicationStatus.Pending,
                     },
                 },
-                CreatedAt = DateTimeOffset.Now,
+                CreatedAt = DateTime.UtcNow,
             };
             Battle hertogeaBattle = new()
             {
@@ -1450,7 +1450,7 @@ public record SeedDataCommand : IMediatorRequest
                         Status = BattleFighterApplicationStatus.Pending,
                     },
                 },
-                CreatedAt = DateTimeOffset.Now.AddHours(-2),
+                CreatedAt = DateTime.UtcNow.AddHours(-2),
             };
             Battle leblenionBattle = new()
             {
@@ -1494,7 +1494,7 @@ public record SeedDataCommand : IMediatorRequest
                         Status = BattleMercenaryApplicationStatus.Pending,
                     },
                 },
-                CreatedAt = DateTimeOffset.Now.AddHours(-4),
+                CreatedAt = DateTime.UtcNow.AddHours(-4),
             };
 
             Battle[] newBattles = { nideonBattle, plainBattle, hertogeaBattle, leblenionBattle };

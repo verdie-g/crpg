@@ -15,9 +15,9 @@ public class CrpgDbContextTest
             .UseInMemoryDatabase(Guid.NewGuid().ToString())
             .Options;
 
-        DateTimeOffset dt = new(new DateTime(2000, 01, 02));
-        Mock<IDateTimeOffset> idt = new();
-        idt.SetupGet(i => i.Now).Returns(dt);
+        DateTime dt = new(2000, 01, 02);
+        Mock<IDateTime> idt = new();
+        idt.SetupGet(i => i.UtcNow).Returns(dt);
         CrpgDbContext db = new(options, idt.Object);
 
         Character character = new();
@@ -35,10 +35,10 @@ public class CrpgDbContextTest
             .UseInMemoryDatabase(Guid.NewGuid().ToString())
             .Options;
 
-        DateTimeOffset dt1 = new(new DateTime(2000, 01, 02));
-        DateTimeOffset dt2 = new(new DateTime(2000, 01, 03));
-        Mock<IDateTimeOffset> idt = new();
-        idt.SetupSequence(i => i.Now)
+        DateTime dt1 = new(2000, 01, 02);
+        DateTime dt2 = new(2000, 01, 03);
+        Mock<IDateTime> idt = new();
+        idt.SetupSequence(i => i.UtcNow)
             .Returns(dt1) // LastModifiedAt
             .Returns(dt1) // CreatedAt
             .Returns(dt2); // LastModifiedAt

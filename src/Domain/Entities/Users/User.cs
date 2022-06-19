@@ -38,7 +38,7 @@ public class User : AuditableEntity
     /// <summary>
     /// Not null if the user deleted its account.
     /// </summary>
-    public DateTimeOffset? DeletedAt { get; set; }
+    public DateTime? DeletedAt { get; set; }
 
     public IList<UserItem> Items { get; set; } = new List<UserItem>();
     public IList<Character> Characters { get; set; } = new List<Character>();

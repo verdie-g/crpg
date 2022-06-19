@@ -22,13 +22,13 @@ public record DeleteUserCommand : IMediatorRequest
         private static readonly ILogger Logger = LoggerFactory.CreateLogger<DeleteUserCommand>();
 
         private readonly ICrpgDbContext _db;
-        private readonly IDateTimeOffset _dateTimeOffset;
+        private readonly IDateTime _dateTime;
         private readonly IUserService _userService;
 
-        public Handler(ICrpgDbContext db, IDateTimeOffset dateTimeOffset, IUserService userService)
+        public Handler(ICrpgDbContext db, IDateTime dateTime, IUserService userService)
         {
             _db = db;
-            _dateTimeOffset = dateTimeOffset;
+            _dateTime = dateTime;
             _userService = userService;
         }
 
@@ -51,7 +51,7 @@ public record DeleteUserCommand : IMediatorRequest
             user.AvatarSmall = new Uri("https://via.placeholder.com/32x32");
             user.AvatarMedium = new Uri("https://via.placeholder.com/64x64");
             user.AvatarFull = new Uri("https://via.placeholder.com/184x184");
-            user.DeletedAt = _dateTimeOffset.Now; // Deleted users are just marked with a DeletedAt != null
+            user.DeletedAt = _dateTime.UtcNow; // Deleted users are just marked with a DeletedAt != null
 
             _db.UserItems.RemoveRange(user.Items);
             _db.Characters.RemoveRange(user.Characters);

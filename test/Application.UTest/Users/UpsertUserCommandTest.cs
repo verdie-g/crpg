@@ -80,7 +80,7 @@ public class UpsertUserCommandTest : TestBase
         User user = new()
         {
             PlatformUserId = "13948192759205810",
-            DeletedAt = DateTimeOffset.Now, // Deleted user are just marked with a non-null DeletedAt
+            DeletedAt = DateTime.Now, // Deleted user are just marked with a non-null DeletedAt
         };
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();

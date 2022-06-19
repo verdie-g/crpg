@@ -100,12 +100,12 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
 
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
-        private readonly IDateTimeOffset _dateTime;
+        private readonly IDateTime _dateTime;
         private readonly IRandom _random;
         private readonly IUserService _userService;
         private readonly ICharacterService _characterService;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, IDateTimeOffset dateTime,
+        public Handler(ICrpgDbContext db, IMapper mapper, IDateTime dateTime,
             IRandom random, IUserService userService, ICharacterService characterService)
         {
             _db = db;
@@ -231,7 +231,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
 
         private Ban? GetActiveBan(Ban? lastBan)
         {
-            return lastBan != null && lastBan.CreatedAt + lastBan.Duration > _dateTime.Now ? lastBan : null;
+            return lastBan != null && lastBan.CreatedAt + lastBan.Duration > _dateTime.UtcNow ? lastBan : null;
         }
     }
 }

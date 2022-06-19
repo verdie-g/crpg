@@ -71,7 +71,7 @@ public class TestBase
         return Task.CompletedTask;
     }
 
-    private CrpgDbContext InitDb() => new(_dbOptions!, Mock.Of<IDateTimeOffset>());
+    private CrpgDbContext InitDb() => new(_dbOptions!, Mock.Of<IDateTime>());
 
     private IMapper InitMapper()
     {
