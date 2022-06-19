@@ -47,7 +47,7 @@ builder.Services
     .AddSdk(builder.Configuration, appEnv)
     .AddPersistence(builder.Configuration, appEnv)
     .AddApplication()
-    .AddHostedService<StrategusWorker>()
+    // .AddHostedService<StrategusWorker>() Disable strategus for now.
     .AddHttpContextAccessor() // Injects IHttpContextAccessor
     .AddScoped<ICurrentUserService, CurrentUserService>()
     .AddEndpointsApiExplorer()
