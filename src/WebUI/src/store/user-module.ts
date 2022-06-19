@@ -1,5 +1,5 @@
-import {Vue} from 'vue-property-decorator';
-import {Action, getModule, Module, Mutation, VuexModule} from 'vuex-module-decorators';
+import { Vue } from 'vue-property-decorator';
+import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
 import * as userService from '@/services/users-service';
 import User from '@/models/user';

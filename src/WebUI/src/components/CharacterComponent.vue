@@ -216,7 +216,6 @@ import { filterItemsFittingInSlot } from '@/services/item-service';
 import { notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
 import EquippedItem from '@/models/equipped-item';
-import CharacterStatistics from '@/models/character-statistics';
 
 @Component({
   components: { CharacterStatsComponent, ItemProperties },
