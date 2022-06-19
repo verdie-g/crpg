@@ -45,12 +45,12 @@ public class DefendTheVirginGameManager : MBGameManager
 
         InformationManager.DisplayMessage(new InformationMessage("Visit c-rpg.eu to upgrade your character."));
 
-        var waveController = new WaveController(_waves!.Length);
-        var crpgUserAccessor = new CrpgUserAccessor(_getUserTask.Result);
+        WaveController waveController = new(_waves!.Length);
+        CrpgUserAccessor crpgUserAccessor = new(_getUserTask.Result);
         var character = CreateCharacter(crpgUserAccessor.User.Character, _crpgConstants!);
-        var waveSpawnLogic = new WaveSpawnLogic(waveController, _waves!, character);
-        var crpgLogic = new CrpgLogic(waveController, _crpgClient, _waves!, crpgUserAccessor);
-        var crpgExperienceTable = new CrpgExperienceTable(_crpgConstants!);
+        WaveSpawnLogic waveSpawnLogic = new(waveController, _waves!, character);
+        CrpgLogic crpgLogic = new(waveController, _crpgClient, _waves!, crpgUserAccessor);
+        CrpgExperienceTable crpgExperienceTable = new(_crpgConstants!);
 
         // First argument, missionName, is used to find missionViews. In ViewCreatorManager.CheckAssemblyScreens
         // it gets all methods with an attribute ViewMethod(missionName) in all classes with a ViewCreatorModule
@@ -204,7 +204,7 @@ public class DefendTheVirginGameManager : MBGameManager
 
     private BasicCharacterObject CreateCharacter(CrpgCharacter crpgCharacter, CrpgConstants constants)
     {
-        var skills = new CharacterSkills();
+        CharacterSkills skills = new();
         skills.SetPropertyValue(CrpgSkills.Strength, crpgCharacter.Statistics.Attributes.Strength);
         skills.SetPropertyValue(CrpgSkills.Agility, crpgCharacter.Statistics.Attributes.Agility);
 
@@ -224,7 +224,7 @@ public class DefendTheVirginGameManager : MBGameManager
         skills.SetPropertyValue(DefaultSkills.Crossbow, crpgCharacter.Statistics.WeaponProficiencies.Crossbow);
         skills.SetPropertyValue(DefaultSkills.Throwing, crpgCharacter.Statistics.WeaponProficiencies.Throwing);
 
-        var equipment = new Equipment();
+        Equipment equipment = new();
         foreach (var equippedItem in crpgCharacter.EquippedItems)
         {
             var index = ItemSlotToIndex[equippedItem.Slot];
@@ -237,7 +237,7 @@ public class DefendTheVirginGameManager : MBGameManager
     private void AddEquipment(Equipment equipments, EquipmentIndex idx, string? itemId)
     {
         var itemObject = MBObjectManager.Instance.GetObject<ItemObject>(itemId);
-        var equipmentElement = new EquipmentElement(itemObject);
+        EquipmentElement equipmentElement = new(itemObject);
         equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
     }
 

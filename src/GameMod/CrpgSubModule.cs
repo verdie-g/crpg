@@ -166,7 +166,7 @@ internal class CrpgSubModule : MBSubModuleBase
     private static void ExportData()
     {
         const string outputPath = "../../CrpgData";
-        var exporters = new IDataExporter[]
+        IDataExporter[] exporters =
         {
             new ItemExporter(),
             new SettlementExporter(),

@@ -14,7 +14,7 @@ internal class SettlementExporter : IDataExporter
 
     public Task Export(string outputPath)
     {
-        var settlements = new List<CrpgSettlementCreation>();
+        List<CrpgSettlementCreation> settlements = new();
 
         var settlementsDoc = XDocument.Load(SettlementsFile);
         foreach (var settlementNode in settlementsDoc.Descendants("Settlement"))
@@ -24,7 +24,7 @@ internal class SettlementExporter : IDataExporter
                 continue;
             }
 
-            var settlement = new CrpgSettlementCreation
+            CrpgSettlementCreation settlement = new()
             {
                 Name = settlementNode.Attribute("name")!.Value.Split('}')[1],
                 Type = GetSettlementType(settlementNode),
@@ -51,7 +51,7 @@ internal class SettlementExporter : IDataExporter
             Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() },
         });
 
-        using var s = new StreamWriter(Path.Combine(outputPath, "settlements.json"));
+        using StreamWriter s = new(Path.Combine(outputPath, "settlements.json"));
         serializer.Serialize(s, settlements);
         return Task.CompletedTask;
     }

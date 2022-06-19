@@ -22,7 +22,7 @@ internal class CrpgHttpClient : ICrpgClient
 
     public CrpgHttpClient()
     {
-        var httpClientHandler = new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip };
+        HttpClientHandler httpClientHandler = new() { AutomaticDecompression = DecompressionMethods.GZip };
         _httpClient = new HttpClient(httpClientHandler) { BaseAddress = new Uri("https://localhost:8000") };
         _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
 
@@ -39,7 +39,7 @@ internal class CrpgHttpClient : ICrpgClient
     public Task<CrpgResult<CrpgUser>> GetUser(Platform platform, string platformUserId,
         string characterName, CancellationToken cancellationToken = default)
     {
-        var queryParameters = new Dictionary<string, string>
+        Dictionary<string, string> queryParameters = new(StringComparer.Ordinal)
         {
             ["platform"] = platform.ToString(),
             ["platformUserId"] = platformUserId,
@@ -65,18 +65,18 @@ internal class CrpgHttpClient : ICrpgClient
     {
         if (queryParameters != null)
         {
-            var urlEncodedContent = new FormUrlEncodedContent(queryParameters);
+            FormUrlEncodedContent urlEncodedContent = new(queryParameters);
             string query = urlEncodedContent.ReadAsStringAsync().Result;
             requestUri += '?' + query;
         }
 
-        var msg = new HttpRequestMessage(HttpMethod.Get, requestUri);
+        HttpRequestMessage msg = new(HttpMethod.Get, requestUri);
         return Send<TResponse>(msg, cancellationToken);
     }
 
     private Task<CrpgResult<TResponse>> Put<TRequest, TResponse>(string requestUri, TRequest payload, CancellationToken cancellationToken) where TResponse : class
     {
-        var msg = new HttpRequestMessage(HttpMethod.Put, requestUri)
+        HttpRequestMessage msg = new(HttpMethod.Put, requestUri)
         {
             Content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json"),
         };
@@ -86,7 +86,7 @@ internal class CrpgHttpClient : ICrpgClient
 
     private Task<CrpgResult<TResponse>> Post<TRequest, TResponse>(string requestUri, TRequest payload, CancellationToken cancellationToken) where TResponse : class
     {
-        var msg = new HttpRequestMessage(HttpMethod.Post, requestUri)
+        HttpRequestMessage msg = new(HttpMethod.Post, requestUri)
         {
             Content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json"),
         };

@@ -22,7 +22,7 @@ internal sealed class CrpgCharacterObject : BasicCharacterObject
                                  + MathHelper.ApplyPolynomialFunction(strength, constants.HealthPointsForStrengthCoefs)
                                  + MathHelper.ApplyPolynomialFunction(ironFlesh, constants.HealthPointsForIronFleshCoefs));
 
-        var mbCharacter = new CrpgCharacterObject(name, maxHitPoints);
+        CrpgCharacterObject mbCharacter = new(name, maxHitPoints);
         SetCharacterSkills(mbCharacter, skills);
         SetCharacterEquipments(mbCharacter, equipment);
         SetCharacterBodyProperties(mbCharacter);
@@ -32,14 +32,14 @@ internal sealed class CrpgCharacterObject : BasicCharacterObject
     private static void SetCharacterSkills(CrpgCharacterObject mbCharacter, CharacterSkills skills)
     {
         // MBCharacterSkills is expected to be created from an xml node, so reflection needs to be used here.
-        var mbCharacterSkills = new MBCharacterSkills();
+        MBCharacterSkills mbCharacterSkills = new();
         ReflectionHelper.SetProperty(mbCharacterSkills, nameof(MBCharacterSkills.Skills), skills);
         mbCharacter.CharacterSkills = mbCharacterSkills;
     }
 
     private static void SetCharacterEquipments(CrpgCharacterObject mbCharacter, Equipment equipment)
     {
-        var mbEquipmentRoster = new MBEquipmentRoster();
+        MBEquipmentRoster mbEquipmentRoster = new();
         ReflectionHelper.SetField(mbEquipmentRoster, "_equipments", new List<Equipment> { equipment });
         ReflectionHelper.SetField(mbCharacter, "_equipmentRoster", mbEquipmentRoster);
     }
