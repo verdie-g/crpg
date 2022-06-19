@@ -1,4 +1,5 @@
-﻿using Crpg.Application.Common.Services;
+﻿using Crpg.Application.Common.Files;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Commands;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
@@ -305,5 +306,18 @@ public class GetGameUserCommandTest : TestBase
 
         var gameUser = result.Data!;
         Assert.Null(gameUser.Ban);
+    }
+
+    [Test]
+    public async Task CheckDefaultItemsExist()
+    {
+        var items = (await new FileItemsSource().LoadItems()).ToDictionary(i => i.TemplateMbId);
+        foreach (var set in GetGameUserCommand.Handler.DefaultItemSets)
+        {
+            foreach ((string mbId, ItemSlot slot) in set)
+            {
+                Assert.IsTrue(items.ContainsKey(mbId), $"Item '{mbId}' doesn't exist");
+            }
+        }
     }
 }
