@@ -9,7 +9,7 @@
   <Import Project="../Shared.targets" />
 
   <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="6.0.4" />
+    <PackageReference Include="System.Text.Json" Version="6.0.5" />
   </ItemGroup>
 
 </Project>
