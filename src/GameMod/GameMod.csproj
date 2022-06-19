@@ -45,8 +45,4 @@
         <Reference Remove="$(MBPATH)/bin/Win64_Shipping_Client/TaleWorlds.Starter.DotNetCore.dll" />
     </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="DeepCloner" Version="0.10.3" />
-    </ItemGroup>
-
 </Project>
