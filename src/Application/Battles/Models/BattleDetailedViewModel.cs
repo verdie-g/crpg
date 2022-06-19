@@ -14,5 +14,5 @@ public record BattleDetailedViewModel
     public int AttackerTotalTroops { get; init; }
     public BattleFighterViewModel? Defender { get; init; }
     public int DefenderTotalTroops { get; init; }
-    public DateTimeOffset CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; }
 }

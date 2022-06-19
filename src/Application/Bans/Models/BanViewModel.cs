@@ -11,5 +11,5 @@ public record BanViewModel : IMapFrom<Ban>
     public TimeSpan Duration { get; init; }
     public string Reason { get; init; } = string.Empty;
     public UserPublicViewModel? BannedByUser { get; init; }
-    public DateTimeOffset CreatedAt { get; init; }
+    public DateTime CreatedAt { get; init; }
 }

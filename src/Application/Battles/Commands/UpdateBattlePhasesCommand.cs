@@ -22,17 +22,17 @@ public record UpdateBattlePhasesCommand : IMediatorRequest
         private readonly ICrpgDbContext _db;
         private readonly IBattleMercenaryDistributionModel _battleMercenaryDistributionModel;
         private readonly IBattleScheduler _battleScheduler;
-        private readonly IDateTimeOffset _dateTimeOffset;
+        private readonly IDateTime _dateTime;
         private readonly TimeSpan _battleInitiationDuration;
         private readonly TimeSpan _battleHiringDuration;
 
         public Handler(ICrpgDbContext db, IBattleMercenaryDistributionModel battleMercenaryDistributionModel,
-            IBattleScheduler battleScheduler, IDateTimeOffset dateTimeOffset, Constants constants)
+            IBattleScheduler battleScheduler, IDateTime dateTime, Constants constants)
         {
             _db = db;
             _battleMercenaryDistributionModel = battleMercenaryDistributionModel;
             _battleScheduler = battleScheduler;
-            _dateTimeOffset = dateTimeOffset;
+            _dateTime = dateTime;
             _battleInitiationDuration = TimeSpan.FromHours(constants.StrategusBattleInitiationDurationHours);
             _battleHiringDuration = TimeSpan.FromHours(constants.StrategusBattleHiringDurationHours);
         }
@@ -44,9 +44,9 @@ public record UpdateBattlePhasesCommand : IMediatorRequest
                 .Include(b => b.Fighters).ThenInclude(f => f.Hero)
                 .Include(b => b.Fighters).ThenInclude(f => f.Settlement)
                 .Where(b =>
-                    (b.Phase == BattlePhase.Preparation && b.CreatedAt + _battleInitiationDuration < _dateTimeOffset.Now)
-                    || (b.Phase == BattlePhase.Hiring && b.CreatedAt + _battleInitiationDuration + _battleHiringDuration < _dateTimeOffset.Now)
-                    || (b.Phase == BattlePhase.Scheduled && b.ScheduledFor < _dateTimeOffset.Now))
+                    (b.Phase == BattlePhase.Preparation && b.CreatedAt + _battleInitiationDuration < _dateTime.UtcNow)
+                    || (b.Phase == BattlePhase.Hiring && b.CreatedAt + _battleInitiationDuration + _battleHiringDuration < _dateTime.UtcNow)
+                    || (b.Phase == BattlePhase.Scheduled && b.ScheduledFor < _dateTime.UtcNow))
                 .AsAsyncEnumerable();
 
             await foreach (var battle in battles.WithCancellation(cancellationToken))

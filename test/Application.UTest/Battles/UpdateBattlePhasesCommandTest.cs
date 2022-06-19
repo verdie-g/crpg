@@ -25,12 +25,12 @@ public class UpdateBattlePhasesCommandTest : TestBase
             new()
             {
                 Phase = BattlePhase.Preparation,
-                CreatedAt = new DateTimeOffset(new DateTime(2010, 12, 3)),
+                CreatedAt = new DateTime(2010, 12, 3),
             },
             new()
             {
                 Phase = BattlePhase.Preparation,
-                CreatedAt = new DateTimeOffset(new DateTime(2010, 12, 4, 12, 0, 0)),
+                CreatedAt = new DateTime(2010, 12, 4, 12, 0, 0),
             },
         };
         ArrangeDb.Battles.AddRange(battles);
@@ -38,11 +38,11 @@ public class UpdateBattlePhasesCommandTest : TestBase
 
         Mock<IBattleMercenaryDistributionModel> battleMercenaryDistributionModelMock = new();
 
-        Mock<IDateTimeOffset> dateTimeOffsetMock = new();
-        dateTimeOffsetMock.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2010, 12, 5)));
+        Mock<IDateTime> dateTimeMock = new();
+        dateTimeMock.Setup(dt => dt.UtcNow).Returns(new DateTime(2010, 12, 5));
 
         UpdateBattlePhasesCommand.Handler handler = new(ActDb, battleMercenaryDistributionModelMock.Object,
-            Mock.Of<IBattleScheduler>(), dateTimeOffsetMock.Object, Constants);
+            Mock.Of<IBattleScheduler>(), dateTimeMock.Object, Constants);
         await handler.Handle(new UpdateBattlePhasesCommand(), CancellationToken.None);
 
         battles = await AssertDb.Battles.ToArrayAsync();
@@ -61,22 +61,22 @@ public class UpdateBattlePhasesCommandTest : TestBase
             new()
             {
                 Phase = BattlePhase.Hiring,
-                CreatedAt = new DateTimeOffset(new DateTime(2010, 12, 3, 10, 0, 0)),
+                CreatedAt = new DateTime(2010, 12, 3, 10, 0, 0),
             },
             new()
             {
                 Phase = BattlePhase.Hiring,
-                CreatedAt = new DateTimeOffset(new DateTime(2010, 12, 4, 20, 0, 0)),
+                CreatedAt = new DateTime(2010, 12, 4, 20, 0, 0),
             },
         };
         ArrangeDb.Battles.AddRange(battles);
         await ArrangeDb.SaveChangesAsync();
 
-        Mock<IDateTimeOffset> dateTimeOffsetMock = new();
-        dateTimeOffsetMock.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2010, 12, 5)));
+        Mock<IDateTime> dateTimeMock = new();
+        dateTimeMock.Setup(dt => dt.UtcNow).Returns(new DateTime(2010, 12, 5));
         Mock<IBattleScheduler> battleSchedulerMock = new();
         UpdateBattlePhasesCommand.Handler handler = new(ActDb, Mock.Of<IBattleMercenaryDistributionModel>(),
-            battleSchedulerMock.Object, dateTimeOffsetMock.Object, Constants);
+            battleSchedulerMock.Object, dateTimeMock.Object, Constants);
         await handler.Handle(new UpdateBattlePhasesCommand(), CancellationToken.None);
 
         battles = await AssertDb.Battles.ToArrayAsync();
@@ -93,22 +93,22 @@ public class UpdateBattlePhasesCommandTest : TestBase
             new()
             {
                 Phase = BattlePhase.Scheduled,
-                ScheduledFor = new DateTimeOffset(new DateTime(2010, 12, 4)),
+                ScheduledFor = new DateTime(2010, 12, 4),
             },
             new()
             {
                 Phase = BattlePhase.Scheduled,
-                ScheduledFor = new DateTimeOffset(new DateTime(2010, 12, 6)),
+                ScheduledFor = new DateTime(2010, 12, 6),
             },
         };
         ArrangeDb.Battles.AddRange(battles);
         await ArrangeDb.SaveChangesAsync();
 
-        Mock<IDateTimeOffset> dateTimeOffsetMock = new();
-        dateTimeOffsetMock.Setup(dt => dt.Now).Returns(new DateTimeOffset(new DateTime(2010, 12, 5)));
+        Mock<IDateTime> dateTimeMock = new();
+        dateTimeMock.Setup(dt => dt.UtcNow).Returns(new DateTime(2010, 12, 5));
 
         UpdateBattlePhasesCommand.Handler handler = new(ActDb, Mock.Of<IBattleMercenaryDistributionModel>(),
-            Mock.Of<IBattleScheduler>(), dateTimeOffsetMock.Object, Constants);
+            Mock.Of<IBattleScheduler>(), dateTimeMock.Object, Constants);
         await handler.Handle(new UpdateBattlePhasesCommand(), CancellationToken.None);
 
         battles = await AssertDb.Battles.ToArrayAsync();

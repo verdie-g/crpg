@@ -34,7 +34,7 @@ public class GetGameUserCommandTest : TestBase
         Mock<IUserService> userServiceMock = new();
         Mock<ICharacterService> characterServiceMock = new();
 
-        GetGameUserCommand.Handler handler = new(ActDb, Mapper, new MachineDateTimeOffset(),
+        GetGameUserCommand.Handler handler = new(ActDb, Mapper, new MachineDateTime(),
             new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object);
 
         var result = await handler.Handle(new GetGameUserCommand
@@ -77,7 +77,7 @@ public class GetGameUserCommandTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        GetGameUserCommand.Handler handler = new(ActDb, Mapper, new MachineDateTimeOffset(),
+        GetGameUserCommand.Handler handler = new(ActDb, Mapper, new MachineDateTime(),
             new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object);
 
         var result = await handler.Handle(new GetGameUserCommand
@@ -134,7 +134,7 @@ public class GetGameUserCommandTest : TestBase
         randomMock.Setup(r => r.Next(It.IsAny<int>(), It.IsAny<int>())).Returns(1);
 
         GetGameUserCommand.Handler handler = new(ActDb, Mapper,
-            new MachineDateTimeOffset(), randomMock.Object, userService, characterService);
+            new MachineDateTime(), randomMock.Object, userService, characterService);
 
         // Handle shouldn't throw
         await handler.Handle(new GetGameUserCommand
@@ -172,7 +172,7 @@ public class GetGameUserCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         GetGameUserCommand.Handler handler = new(ActDb, Mapper,
-            new MachineDateTimeOffset(), new ThreadSafeRandom(), userService, characterService);
+            new MachineDateTime(), new ThreadSafeRandom(), userService, characterService);
 
         var result = await handler.Handle(new GetGameUserCommand
         {
@@ -208,7 +208,7 @@ public class GetGameUserCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         GetGameUserCommand.Handler handler = new(ActDb, Mapper,
-            new MachineDateTimeOffset(), new ThreadSafeRandom(), userService, characterService);
+            new MachineDateTime(), new ThreadSafeRandom(), userService, characterService);
 
         var result = await handler.Handle(new GetGameUserCommand
         {
@@ -235,7 +235,7 @@ public class GetGameUserCommandTest : TestBase
             {
                 new()
                 {
-                    CreatedAt = new DateTimeOffset(new DateTime(2000, 1, 1)),
+                    CreatedAt = new DateTime(2000, 1, 1),
                     Duration = TimeSpan.FromDays(1),
                 },
             },
@@ -243,10 +243,10 @@ public class GetGameUserCommandTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        Mock<IDateTimeOffset> dateTime = new();
+        Mock<IDateTime> dateTime = new();
         dateTime
-            .Setup(dt => dt.Now)
-            .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
+            .Setup(dt => dt.UtcNow)
+            .Returns(new DateTime(2000, 1, 1, 12, 0, 0));
 
         GetGameUserCommand.Handler handler = new(ActDb, Mapper,
             dateTime.Object, new ThreadSafeRandom(), userService, characterService);
@@ -275,12 +275,12 @@ public class GetGameUserCommandTest : TestBase
             {
                 new()
                 {
-                    CreatedAt = new DateTimeOffset(new DateTime(2000, 1, 1)),
+                    CreatedAt = new DateTime(2000, 1, 1),
                     Duration = TimeSpan.FromDays(1),
                 },
                 new()
                 {
-                    CreatedAt = new DateTimeOffset(new DateTime(2000, 1, 1, 6, 0, 0)),
+                    CreatedAt = new DateTime(2000, 1, 1, 6, 0, 0),
                     Duration = TimeSpan.Zero,
                 },
             },
@@ -288,10 +288,10 @@ public class GetGameUserCommandTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        Mock<IDateTimeOffset> dateTime = new();
+        Mock<IDateTime> dateTime = new();
         dateTime
-            .Setup(dt => dt.Now)
-            .Returns(new DateTimeOffset(new DateTime(2000, 1, 1, 12, 0, 0)));
+            .Setup(dt => dt.UtcNow)
+            .Returns(new DateTime(2000, 1, 1, 12, 0, 0));
 
         GetGameUserCommand.Handler handler = new(ActDb, Mapper,
             dateTime.Object, new ThreadSafeRandom(), userService, characterService);

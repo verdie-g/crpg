@@ -17,7 +17,7 @@ namespace Crpg.Persistence;
 
 public class CrpgDbContext : DbContext, ICrpgDbContext
 {
-    private readonly IDateTimeOffset? _dateTime;
+    private readonly IDateTime? _dateTime;
 
     static CrpgDbContext()
     {
@@ -47,7 +47,7 @@ public class CrpgDbContext : DbContext, ICrpgDbContext
 
     public CrpgDbContext(
         DbContextOptions<CrpgDbContext> options,
-        IDateTimeOffset dateTime)
+        IDateTime dateTime)
         : base(options)
     {
         _dateTime = dateTime;
@@ -81,12 +81,12 @@ public class CrpgDbContext : DbContext, ICrpgDbContext
                 // don't override the value if it was already set. Useful for tests
                 if (entry.Entity.UpdatedAt == default)
                 {
-                    entry.Entity.UpdatedAt = _dateTime!.Now;
+                    entry.Entity.UpdatedAt = _dateTime!.UtcNow;
                 }
 
                 if (entry.Entity.CreatedAt == default)
                 {
-                    entry.Entity.CreatedAt = _dateTime!.Now;
+                    entry.Entity.CreatedAt = _dateTime!.UtcNow;
                 }
             }
             else if (entry.State == EntityState.Modified)
@@ -94,7 +94,7 @@ public class CrpgDbContext : DbContext, ICrpgDbContext
                 // don't override the value if it was already set. Useful for tests
                 if (!entry.Property(e => e.UpdatedAt).IsModified)
                 {
-                    entry.Entity.UpdatedAt = _dateTime!.Now;
+                    entry.Entity.UpdatedAt = _dateTime!.UtcNow;
                 }
             }
         }

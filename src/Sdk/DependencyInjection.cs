@@ -19,7 +19,7 @@ public static class DependencyInjection
             .AddOpenTelemetryMetrics(opts => ConfigureOpenTelemetryMetrics(opts, appEnv))
             .AddOpenTelemetryTracing(opts => ConfigureOpenTelemetryTracing(opts, appEnv))
             .AddSingleton(appEnv)
-            .AddSingleton<IDateTimeOffset, MachineDateTimeOffset>()
+            .AddSingleton<IDateTime, MachineDateTime>()
             .AddSingleton<IRandom, ThreadSafeRandom>();
     }
 

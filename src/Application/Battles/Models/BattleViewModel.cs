@@ -11,5 +11,5 @@ public record BattleViewModel : IMapFrom<Battle>
     public Region Region { get; init; }
     public Point Position { get; init; } = default!;
     public BattlePhase Phase { get; init; }
-    public DateTimeOffset CreatedAt { get; init; }
+    public DateTime CreatedAt { get; init; }
 }

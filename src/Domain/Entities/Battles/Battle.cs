@@ -11,7 +11,7 @@ public class Battle : AuditableEntity
     public Point Position { get; set; } = Point.Empty;
 
     /// <summary>The date the battle takes place. Null if the battle is not yet scheduled.</summary>
-    public DateTimeOffset? ScheduledFor { get; set; }
+    public DateTime? ScheduledFor { get; set; }
 
     public List<BattleFighter> Fighters { get; set; } = new();
     public List<BattleFighterApplication> FighterApplications { get; set; } = new();
