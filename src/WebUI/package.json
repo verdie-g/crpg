@@ -11,7 +11,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.12.1",
     "buefy": "0.9.4",
-    "leaflet": "^1.7.1",
+    "leaflet": "^1.8.0",
     "oidc-client": "^1.10.1",
     "query-string": "^6.13.8",
     "vue": "^2.6.11",
