@@ -319,9 +319,8 @@
           <b-tooltip position="is-left" multilined>
             Shield
             <template v-slot:content>
-              Improves shield durability, shield speed
-              <s>and increases coverage from ranged attacks</s>
-              .
+              <s>Improves shield durability, shield speed and</s>
+              increases coverage from ranged attacks.
               <s>Allows you to use higher tier shields.</s>
               Requires 6 agility per level.
             </template>
