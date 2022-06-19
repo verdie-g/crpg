@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using Force.DeepCloner;
 
 namespace Crpg.GameMod.Helpers;
 
@@ -20,8 +19,6 @@ internal static class ReflectionHelper
             .GetMethod(method, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)!
             .Invoke(instance, parameters);
     }
-
-    public static T DeepClone<T>(T obj) => obj.DeepClone();
 
     private static FieldInfo GetFieldInfo(object instance, string field)
     {
