@@ -79,8 +79,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         EquipmentElement mountHarness = equipment[EquipmentIndex.HorseHarness];
 
         props.AiSpeciesIndex = agent.Monster.FamilyType;
-        props.AttributeRiding = 0.8f + (equipment[EquipmentIndex.HorseHarness].Item != null ? 0.2f : 0.0f);
-        props.ArmorTorso = ComputeMountArmor(equipment);
+        props.AttributeRiding = 0.8f + (mountHarness.Item != null ? 0.2f : 0.0f);
+        props.ArmorTorso = mountHarness.Item != null ? mountHarness.GetModifiedMountBodyArmor() : 0;
         props.MountChargeDamage = mount.GetModifiedMountCharge(in mountHarness) * 0.01f;
         props.MountDifficulty = mount.Item.Difficulty;
     }
@@ -235,20 +235,5 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         agentDrivenProperties.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
 
         SetAiRelatedProperties(agent, agentDrivenProperties, equippedItem, secondaryItem);
-    }
-
-    private float ComputeMountArmor(Equipment equipment)
-    {
-        float armor = 0.0f;
-        for (EquipmentIndex index = EquipmentIndex.Weapon1; index < EquipmentIndex.NumEquipmentSetSlots; index += 1)
-        {
-            EquipmentElement equipmentElement = equipment[index];
-            if (equipmentElement.Item != null)
-            {
-                armor += equipmentElement.GetModifiedMountBodyArmor();
-            }
-        }
-
-        return armor;
     }
 }
