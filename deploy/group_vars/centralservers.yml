@@ -11,7 +11,7 @@ crpg_ui_path: "/var/www/{{ crpg_domain_name }}"
 
 crpg_domain_name: c-rpg.eu
 
-crpg_service_name: crpg-db
+crpg_db_service_name: crpg-db
 crpg_db: crpg
 crpg_db_user: crpg
 crpg_db_user_password: !vault |
@@ -26,6 +26,6 @@ datadog_db_user: dd-agent # Same username as Datadog agent so ident authenticati
 
 nginx_version: 1.21.1
 nginx_opentracing_version: 0.20.0
-dotnet_version: 5.0
-datadog_dotnet_tracer_version: 1.23.0
+dotnet_version: 6.0
+datadog_dotnet_tracer_version: 2.10.0
 datadog_opentracing_version: 1.3.0
