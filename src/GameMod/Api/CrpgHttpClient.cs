@@ -96,11 +96,8 @@ internal class CrpgHttpClient : ICrpgClient
 
     private async Task<CrpgResult<TResponse>> Send<TResponse>(HttpRequestMessage msg, CancellationToken cancellationToken) where TResponse : class
     {
-        int retry = 0;
-        while (retry < 2)
+        for (int retry = 0; retry < 2; retry += 1)
         {
-            retry += 1;
-
             if (_httpClient.DefaultRequestHeaders.Authorization == null)
             {
                 await RefreshAccessToken();
