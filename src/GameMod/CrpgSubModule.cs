@@ -90,8 +90,8 @@ internal class CrpgSubModule : MBSubModuleBase
             () => (false, new TextObject())));
 
 #if false
-            Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
-                new TextObject("Export Data"), 4578, ExportData, () => false));
+        Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
+            new TextObject("Export Data"), 4578, ExportData, () => (false, null)));
 #endif
 
         // Uncomment to start watching UI changes.

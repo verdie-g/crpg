@@ -1,14 +1,11 @@
 ﻿using System.Xml;
 using Crpg.GameMod.Api.Models;
 using Crpg.GameMod.Api.Models.Items;
-using Crpg.GameMod.Common;
-using Crpg.GameMod.Helpers;
 using Crpg.GameMod.Helpers.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View;
 
@@ -16,18 +13,7 @@ namespace Crpg.GameMod.DataExport;
 
 internal class ItemExporter : IDataExporter
 {
-    private static readonly string[] ItemFiles =
-    {
-        "../../Modules/SandBoxCore/ModuleData/spitems/arm_armors.xml",
-        "../../Modules/SandBoxCore/ModuleData/spitems/body_armors.xml",
-        "../../Modules/SandBoxCore/ModuleData/spitems/head_armors.xml",
-        "../../Modules/SandBoxCore/ModuleData/spitems/horses_and_others.xml",
-        "../../Modules/SandBoxCore/ModuleData/spitems/leg_armors.xml",
-        "../../Modules/SandBoxCore/ModuleData/spitems/shields.xml",
-        "../../Modules/SandBoxCore/ModuleData/spitems/shoulder_armors.xml",
-        "../../Modules/SandBoxCore/ModuleData/spitems/tournament_weapons.xml",
-        "../../Modules/SandBoxCore/ModuleData/spitems/weapons.xml",
-    };
+    private const string ItemFilesPath = "../../Modules/SandBoxCore/ModuleData/items";
 
     private static readonly HashSet<ItemObject.ItemTypeEnum> BlacklistedItemTypes = new()
     {
@@ -39,6 +25,10 @@ internal class ItemExporter : IDataExporter
 
     private static readonly HashSet<string> BlacklistedItems = new()
     {
+        "a_aserai_scale_b_shoulder_e", // Name conflict with a_aserai_scale_b_shoulder_c rank 2.
+        "a_brass_lamellar_shoulder_b", // Name conflict with a_brass_lamellar_shoulder_white_a rank 2.
+        "a_brass_lamellar_shoulder_white_b", // Name conflict a_brass_lamellar_shoulder_b.
+        "arming_coif", // Name conflict with imperial_leather_coif.
         "aserai_horse_tournament", // Name conflict with aserai_horse.
         "aserai_lord_helmet_a", // Name conflict with southern_lord_helmet.
         "ballista_projectile", // Can't be equipped.
@@ -53,10 +43,13 @@ internal class ItemExporter : IDataExporter
         "bolt_d", // Name conflict with bolt_a.
         "bolt_e", // Name conflict with bolt_a.
         "boulder", // Can't be equipped.
+        "bound_horsemans_kite_shield", // Name conflict with northern_scouts_shield.
         "camel_tournament", // Name conflict with camel.
         "desert_round_shield", // Name conflict with bound_desert_round_shield rank 2.
         "eastern_leather_boots", // Name conflict with leather_boots.
+        "empire_crown_v2", // Name conflict with empire_crown_west.
         "empire_horse_tournament", // Name conflict with empire_horse.
+        "empire_lance_1_t3_blunt", // Name conflict with vlandia_lance_1_t3_blunt.
         "empire_sword_1_t2", // Name conflict with iron_spatha_sword_t2.
         "empire_sword_1_t2_blunt", // Name conflict with iron_spatha_sword_t2.
         "grapeshot_fire_projectile", // Can't be equipped.
@@ -64,7 +57,14 @@ internal class ItemExporter : IDataExporter
         "grapeshot_projectile", // Can't be equipped.
         "grapeshot_stack", // Can't be equipped.
         "heavy_horsemans_kite_shield", // Name conflict with bound_horsemans_kite_shield rank 2.
+        "imperial_open_mail_coif", // Name conflict with open_mail_coif.
+        "ironrim_riders_kite_shield", // Name conflict with ironrim_kite_shield rank 2.
         "khuzait_horse_tournament", // Name conflict with khuzait_horse.
+        "khuzait_lamellar_strapped", // Name conflict with basic_imperial_leather_armor rank 2.
+        "khuzait_leather_stitched", // Name conflict with eastern_plated_leather_vest rank 1.
+        "leather_coat", // Name conflict with leather_tunic.
+        "leatherlame_roundkettle_over_imperial_mail", // Name conflict with roundkettle_over_imperial_mail.
+        "longbow_recurve_desert_bow", // Name conflict with tribal_bow rank 1.
         "lordly_padded_mitten", // Name conflict with padded_mitten rank 3.
         "mule_unmountable", // Can't be equipped.
         "pack_camel_unmountable", // Can't be equipped.
@@ -73,6 +73,7 @@ internal class ItemExporter : IDataExporter
         "reinforced_mail_mitten", // Name conflict with mail_mitten rank 2.
         "reinforced_padded_mitten", // Name conflict with padded_mitten rank 2.
         "southern_lamellar_armor", // Name conflict with desert_lamellar.
+        "southern_lord_helmet", // Name conflict with desert_helmet rank 3.
         "strapped_round_shield", // Name conflict with leather_round_shield rank 2.
         "stronger_eastern_wicker_shield", // Name conflict with eastern_wicker_shield rank 2.
         "stronger_footmans_wicker_shield", // Name conflict with footmans_wicker_shield rank 2.
@@ -81,6 +82,7 @@ internal class ItemExporter : IDataExporter
         "sturgia_old_shield_c", // Name conflict with strapped_round_shield.
         "sturgian_helmet_b_close", // Name conflict with closed_goggled_helmet.
         "sturgian_helmet_b_open", // Name conflict with sturgian_helmet_open.
+        "sturgian_lamellar_gambeson", // Name conflict with sturgian_lamellar_gambeson_heavy.
         "torch", // Invisible.
         "vlandia_horse_tournament", // Name conflict with vlandia_horse.
         "vlandia_mace_3_t5", // Name conflict with pernach_mace_t3.
@@ -89,55 +91,14 @@ internal class ItemExporter : IDataExporter
         "woodland_throwing_axe_1_t1", // Name conflict with highland_throwing_axe_1_t2.
     };
 
-    private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByPowerStrike = new()
-    {
-        CrpgWeaponClass.Dagger,
-        CrpgWeaponClass.OneHandedSword,
-        CrpgWeaponClass.TwoHandedSword,
-        CrpgWeaponClass.OneHandedAxe,
-        CrpgWeaponClass.TwoHandedAxe,
-        CrpgWeaponClass.Mace,
-        CrpgWeaponClass.Pick,
-        CrpgWeaponClass.TwoHandedMace,
-        CrpgWeaponClass.OneHandedPolearm,
-        CrpgWeaponClass.TwoHandedPolearm,
-        CrpgWeaponClass.LowGripPolearm,
-    };
-
-    private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByPowerDraw = new()
-    {
-        CrpgWeaponClass.Bow,
-    };
-
-    private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByPowerThrow = new()
-    {
-        CrpgWeaponClass.Stone,
-        CrpgWeaponClass.Boulder,
-        CrpgWeaponClass.ThrowingAxe,
-        CrpgWeaponClass.ThrowingKnife,
-        CrpgWeaponClass.Javelin,
-    };
-
-    private static readonly HashSet<CrpgWeaponClass> WeaponClassesAffectedByShield = new()
-    {
-        CrpgWeaponClass.SmallShield,
-        CrpgWeaponClass.LargeShield,
-    };
-
     public Task Export(string outputPath)
     {
-        var crpgConstants = LoadCrpgConstants();
-
-        var mbItems = DeserializeMbItems(ItemFiles)
+        var mbItems = DeserializeMbItems(ItemFilesPath)
             .DistinctBy(i => i.StringId)
             .Where(FilterItem) // Remove test and blacklisted items
             .OrderBy(i => i.StringId)
             .ToArray();
-        var crpgItems = mbItems.Select(mbItem =>
-        {
-            var crpgItem = MbToCrpgItem(mbItem);
-            return RescaleItemStats(crpgItem, crpgConstants);
-        });
+        var crpgItems = mbItems.Select(MbToCrpgItem);
 
         Directory.CreateDirectory(outputPath);
         SerializeCrpgItems(crpgItems, outputPath);
@@ -149,12 +110,6 @@ internal class ItemExporter : IDataExporter
                                                          && !mbItem.Name.Contains("_")
                                                          && !BlacklistedItemTypes.Contains(mbItem.ItemType)
                                                          && !BlacklistedItems.Contains(mbItem.StringId);
-
-    private static CrpgConstants LoadCrpgConstants()
-    {
-        string path = BasePath.Name + "Modules/cRPG/ModuleData/constants.json";
-        return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path));
-    }
 
     private static CrpgItemCreation MbToCrpgItem(ItemObject mbItem)
     {
@@ -246,61 +201,13 @@ internal class ItemExporter : IDataExporter
         _ => (CrpgDamageType)Enum.Parse(typeof(CrpgDamageType), t.ToString()),
     };
 
-    /// <summary>
-    /// Since damages can be increased with Power Strike/Draw/Throw or speed can be increased with Shield or health
-    /// can be increased with iron flesh so stats of the native bannerlord items need to be rescaled accordingly.
-    /// </summary>
-    private static CrpgItemCreation RescaleItemStats(CrpgItemCreation item, CrpgConstants crpgConstants)
-    {
-        // Assume the average attributes of a lvl 30 character and decrease stats by the amount the skills would give.
-        const int averageCharacterStrength = 18;
-        const int averageCharacterAgility = 18;
-
-        float averageHealth = crpgConstants.DefaultHealthPoints
-                              + MathHelper.ApplyPolynomialFunction(averageCharacterStrength, crpgConstants.HealthPointsForStrengthCoefs)
-                              + MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.HealthPointsForIronFleshCoefs);
-        // Assume the average health of a native npc is 100.
-        float healthFactor = 100 / averageHealth;
-
-        float psFactor = MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.DamageFactorForPowerStrikeCoefs);
-        float pdFactor = MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.DamageFactorForPowerDrawCoefs);
-        float ptFactor = MathHelper.ApplyPolynomialFunction(averageCharacterStrength / 3, crpgConstants.DamageFactorForPowerThrowCoefs);
-
-        float shieldSpeedIncrease = MathHelper.ApplyPolynomialFunction(averageCharacterAgility / 6, crpgConstants.SpeedFactorForShieldCoefs);
-        float shieldDurabilityIncrease = MathHelper.ApplyPolynomialFunction(averageCharacterAgility / 6, crpgConstants.DurabilityFactorForShieldCoefs);
-
-        foreach (var weapon in item.Weapons)
-        {
-            if (WeaponClassesAffectedByPowerStrike.Contains(weapon.Class))
-            {
-                weapon.SwingDamage = (int)(weapon.SwingDamage / psFactor / healthFactor);
-                weapon.ThrustDamage = (int)(weapon.ThrustDamage / psFactor / healthFactor);
-            }
-            else if (WeaponClassesAffectedByPowerDraw.Contains(weapon.Class))
-            {
-                weapon.ThrustDamage = (int)(weapon.ThrustDamage / pdFactor / healthFactor);
-            }
-            else if (WeaponClassesAffectedByPowerThrow.Contains(weapon.Class))
-            {
-                weapon.ThrustDamage = (int)(weapon.ThrustDamage / ptFactor / healthFactor);
-            }
-            else if (WeaponClassesAffectedByShield.Contains(weapon.Class))
-            {
-                weapon.SwingSpeed = (int)(weapon.SwingSpeed / shieldSpeedIncrease);
-                weapon.StackAmount = (int)(weapon.StackAmount / shieldDurabilityIncrease);
-            }
-        }
-
-        return item;
-    }
-
-    private static IEnumerable<ItemObject> DeserializeMbItems(IEnumerable<string> paths)
+    private static IEnumerable<ItemObject> DeserializeMbItems(string folderPath)
     {
         var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
         game.Initialize();
 
         var items = Enumerable.Empty<ItemObject>();
-        foreach (string path in paths)
+        foreach (string path in Directory.EnumerateFiles(folderPath))
         {
             var itemsDoc = new XmlDocument();
             using (var r = XmlReader.Create(path, new XmlReaderSettings { IgnoreComments = true }))

@@ -35,6 +35,7 @@ ProjectSection(SolutionItems) = preProject
 	data\constants.json = data\constants.json
 	data\item-modifiers.json = data\item-modifiers.json
 	data\items.json = data\items.json
+	data\settlements.json = data\settlements.json
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "src\Logging\Logging.csproj", "{9AF9F1A6-9A96-4E15-97A9-17A4996FE110}"
