@@ -133,7 +133,7 @@ using (IServiceScope scope = app.Services.CreateScope())
         try
         {
             await db.Database.MigrateAsync();
-            await using var conn = (NpgsqlConnection)db.Database.GetDbConnection();
+            var conn = (NpgsqlConnection)db.Database.GetDbConnection(); // Don't dispose!
             conn.Open();
             conn.ReloadTypes();
         }
