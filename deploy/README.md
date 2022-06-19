@@ -12,3 +12,8 @@
 
 - `ansible-galaxy install -r requirements.yml`
 - `ANSIBLE_CONFIG=./ansible.cfg ansible-playbook playbook.yml`
+
+## Encrypt/Decrypt secret
+
+`ansible-vault encrypt_string --vault-password-file ./secret`
+`ANSIBLE_CONFIG=./ansible.cfg ansible all -m debug -a 'var=my_secret'`
