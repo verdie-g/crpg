@@ -95,5 +95,10 @@
   apt:
     deb: "https://github.com/DataDog/dd-trace-dotnet/releases/download/v{{ datadog_dotnet_tracer_version }}/datadog-dotnet-apm_{{ datadog_dotnet_tracer_version }}_amd64.deb"
 
+- name: Make Datadog .NET Tracer script executable
+  file:
+    dest: /opt/datadog/createLogPath.sh
+    mode: +x
+
 - name: Initialize Datadog .NET Tracer
   command: /opt/datadog/createLogPath.sh
