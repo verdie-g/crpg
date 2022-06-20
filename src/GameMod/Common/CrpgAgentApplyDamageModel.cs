@@ -58,19 +58,27 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
             return baseDamage;
         }
 
+
+        // Because for now cRPG doesn't have its own items but use Native ones without changing the stats, increasing
+        // their power with skills make them too powerful. To compensate that we had a penalty of power skills equal
+        // to the average a lvl 30 character has. In the future, cRPG should have its own items on which we can control
+        // their stats.
+        const int averageCharacterStrength = 18;
+        const int averagePowerSkills = averageCharacterStrength / 3;
+
         if (WeaponClassesAffectedByPowerStrike.Contains(weapon.CurrentUsageItem.WeaponClass))
         {
-            int powerStrike = attackerCharacter.GetSkillValue(CrpgSkills.PowerStrike);
+            int powerStrike = attackerCharacter.GetSkillValue(CrpgSkills.PowerStrike) - averagePowerSkills;
             baseDamage *= MathHelper.ApplyPolynomialFunction(powerStrike, _constants.DamageFactorForPowerStrikeCoefs);
         }
         else if (WeaponClassesAffectedByPowerDraw.Contains(weapon.CurrentUsageItem.WeaponClass))
         {
-            int powerDraw = attackerCharacter.GetSkillValue(CrpgSkills.PowerDraw);
+            int powerDraw = attackerCharacter.GetSkillValue(CrpgSkills.PowerDraw) - averagePowerSkills;
             baseDamage *= MathHelper.ApplyPolynomialFunction(powerDraw, _constants.DamageFactorForPowerDrawCoefs);
         }
         else if (WeaponClassesAffectedByPowerThrow.Contains(weapon.CurrentUsageItem.WeaponClass))
         {
-            int powerThrow = attackerCharacter.GetSkillValue(CrpgSkills.PowerThrow);
+            int powerThrow = attackerCharacter.GetSkillValue(CrpgSkills.PowerThrow) - averagePowerSkills;
             baseDamage *= MathHelper.ApplyPolynomialFunction(powerThrow, _constants.DamageFactorForPowerThrowCoefs);
         }
 
