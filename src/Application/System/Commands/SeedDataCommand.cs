@@ -1608,6 +1608,7 @@ public record SeedDataCommand : IMediatorRequest
                     BodyArmor = item.Armor!.BodyArmor,
                     ArmArmor = item.Armor!.ArmArmor,
                     LegArmor = item.Armor!.LegArmor,
+                    MaterialType = item.Armor.MaterialType,
                 };
             }
 
