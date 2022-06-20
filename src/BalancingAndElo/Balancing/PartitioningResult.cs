@@ -21,7 +21,7 @@ namespace Crpg.BalancingAndRating.Balancing
         }
 
         /// <summary>
-        /// The partition as a list of arrays of integers. The
+        /// The partition as a array of list of integers. The
         /// integers represent the indices in a number set.
         /// </summary>
         public List<T>[] Partition { get; }

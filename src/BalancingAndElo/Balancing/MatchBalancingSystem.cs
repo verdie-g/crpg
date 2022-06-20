@@ -42,7 +42,49 @@ namespace Crpg.BalancingAndRating.Balancing
 
             return returnedGameMatch;
         }
-
+        public GameMatch KKBalancing(GameMatch gameMatch)
+        {
+            List<User> allUsers = new();
+            allUsers.AddRange(gameMatch.TeamA);
+            allUsers.AddRange(gameMatch.TeamB);
+            allUsers.AddRange(gameMatch.Waiting);
+            GameMatch returnedGameMatch = new();
+            int i = 0;
+            User[] players = new User[allUsers.Count];
+            double[] elos = new double[allUsers.Count];
+            foreach (User player in allUsers.OrderByDescending(u => u.Elo))
+            {
+                players[i] = player;
+                elos[i] = player.Elo;
+                i++;
+            }
+            var partition = MatchBalancingHelpers.Heuristic(players, elos, 2);
+            returnedGameMatch.TeamA = partition.Partition[0];
+            returnedGameMatch.TeamB = partition.Partition[1];
+            return returnedGameMatch;
+        }
+        public GameMatch KKMakeTeamOfSimilarSizes(GameMatch gameMatch)
+        {
+            List<User> allUsers = new();
+            allUsers.AddRange(gameMatch.TeamA);
+            allUsers.AddRange(gameMatch.TeamB);
+            allUsers.AddRange(gameMatch.Waiting);
+            var clangroupList = MatchBalancingHelpers.ConvertUserListToClanGroups(allUsers);
+            GameMatch returnedGameMatch = new();
+            int i = 0;
+            ClanGroup[] clangroupsArray = new ClanGroup[clangroupList.Count];
+            double[] size = new double[clangroupList.Count];
+            foreach (ClanGroup clangroup in clangroupList.OrderByDescending(c => c.Size()))
+            {
+                clangroupsArray[i] = clangroup;
+                size[i] = clangroup.Size();
+                i++;
+            }
+            var partition = MatchBalancingHelpers.Heuristic(clangroupsArray, size, 2);
+            returnedGameMatch.TeamA = MatchBalancingHelpers.ConvertClanGroupsToUserList(partition.Partition[0].ToList());
+            returnedGameMatch.TeamB = MatchBalancingHelpers.ConvertClanGroupsToUserList(partition.Partition[1].ToList());
+            return returnedGameMatch;
+        }
 
 
         /*

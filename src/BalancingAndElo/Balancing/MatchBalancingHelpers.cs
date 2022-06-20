@@ -77,41 +77,58 @@ namespace Crpg.BalancingAndRating.Balancing
         /// <param name="preSorted">Set to <see langword="true" /> to save time when the input weights are
         /// already sorted in descending order.</param>
         /// <returns>The partition as a <see cref="PartitioningResult{T}"/>.</returns>
-        /*
+
         public static PartitioningResult<T> Heuristic<T>(T[] elements, double[] weights, int numParts, bool preSorted = false)
         {
             if (numParts <= 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(numParts), $"{numParts} must be positive");
+            }
 
             if (weights.Length == 0)
+            {
                 return new PartitioningResult<T>(
                     Enumerable.Repeat(new List<T>(), numParts).ToArray(),
                     Enumerable.Repeat(0d, numParts).ToArray());
+            }
 
             var indexSortingMap = Enumerable.Range(0, weights.Length).ToArray();
             if (!preSorted)
             {
+                // if elements is not sorted , sort them , but using indexSortingMap to remember their original position.
                 Array.Sort(weights, indexSortingMap);
                 weights = weights.Reverse().ToArray();
                 indexSortingMap = indexSortingMap.Reverse().ToArray();
             }
 
-            var partitions = new FastPriorityQueue<PartitionNode<T>>(weights.Length);
+            var partitions = new PriorityQueue<PartitionNode<T> , double>(weights.Length);
+            // iteration on weights
             for (var i = 0; i < weights.Length; i++)
             {
+                // number is current weight
                 var number = weights[i];
+                // Initialization of the Array of List
                 var thisPartition = new List<T>[numParts];
+                // initialisation of each list of the array except the last one
                 for (var n = 0; n < numParts - 1; n++)
+                {
                     thisPartition[n] = new List<T>();
+                }
+                // last cell is a list that contains the biggest remaining element in the for loop
                 thisPartition[numParts - 1] = new List<T> { elements[indexSortingMap[i]] };
+                // thisSum is an array of double. The size of the Array is the number of partitions
                 var thisSum = new double[numParts];
+                // Last cell of the array contains current weight
                 thisSum[numParts - 1] = number;
+                //this Node has the array of list associated with the array this sum.
                 var thisNode = new PartitionNode<T>(thisPartition, thisSum);
+                // this enqueue one partition for each element.
                 partitions.Enqueue(thisNode, -(float)number);
             }
-
+            // checked this part doing the algo by hand , this witchcraft works.
             for (var i = 0; i < weights.Length - 1; i++)
             {
+                
                 var node1 = partitions.Dequeue();
                 var node2 = partitions.Dequeue();
                 var newPartition = new List<T>[numParts];
@@ -133,7 +150,7 @@ namespace Crpg.BalancingAndRating.Balancing
             return new PartitioningResult<T>(node.Partition, node.Sizes);
         }
 
-        private class PartitionNode<T> : FastPriorityQueueNode
+        private class PartitionNode<T>
         {
             public PartitionNode(List<T>[] partition, double[] sizes)
             {
@@ -145,6 +162,6 @@ namespace Crpg.BalancingAndRating.Balancing
             public double[] Sizes { get; }
         }
 
-    }*/
+    }
 }
-}
+

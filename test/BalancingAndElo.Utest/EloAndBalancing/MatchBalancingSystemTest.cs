@@ -21,6 +21,33 @@ namespace Crpg.BalancingAndRating.UTest.Balancing
             double quadraticMeanEloRatio = (double)teamAQuadraticMeanElo / (double)teamBQuadraticMeanElo;
             Assert.AreEqual(quadraticMeanEloRatio, 1, 0.2);
         }
+        [Test]
+        public void KKbalancingelosShouldNotBeThatBad()
+        {
+            var matchBalancer = new MatchBalancingSystem();
+            var eloSystem = new Rating();
+            GameMatch balancedGame = matchBalancer.KKBalancing(game1);
+            int teamAMeanElo = eloSystem.ComputeTeamEloPowerMean(balancedGame.TeamA, 1);
+            int teamBMeanElo = eloSystem.ComputeTeamEloPowerMean(balancedGame.TeamB, 1);
+            double meanEloRatio = (double)teamAMeanElo / (double)teamBMeanElo;
+            Assert.AreEqual(meanEloRatio, 1, 0.2);
+            int teamAQuadraticMeanElo = eloSystem.ComputeTeamEloPowerMean(balancedGame.TeamA, 2);
+            int teamBQuadraticMeanElo = eloSystem.ComputeTeamEloPowerMean(balancedGame.TeamB, 2);
+            double quadraticMeanEloRatio = (double)teamAQuadraticMeanElo / (double)teamBQuadraticMeanElo;
+            Assert.AreEqual(quadraticMeanEloRatio, 1, 0.2);
+        }
+        [Test]
+        public void KKMakeTeamOfSimilarSizesShouldNotBeThatBad()
+        {
+            var matchBalancer = new MatchBalancingSystem();
+            var eloSystem = new Rating();
+            GameMatch balancedGame = matchBalancer.KKMakeTeamOfSimilarSizes(game1);
+            int teamASize = balancedGame.TeamA.Count;
+            int teamBSize = balancedGame.TeamB.Count;
+            double sizeRatio = (double)teamASize / (double)teamBSize;
+            Assert.AreEqual(sizeRatio, 1, 0.2);
+        }
+
 
 
         private static Clan lOTR = new(){ Id = 1, Name = "LOTR" };
@@ -33,10 +60,11 @@ namespace Crpg.BalancingAndRating.UTest.Balancing
         private static User arwen =new(){ Id = 1, Elo = 2000, ClanMembership = new ClanMember { UserId = 1, User = arwen, ClanId = 1, Clan = lOTR } };
         private static User frodon =new(){ Id = 2, Elo = 1600, ClanMembership = new ClanMember { UserId = 2, User = frodon, ClanId = 1, Clan = lOTR } };
         private static User sam =new(){ Id = 3, Elo = 1500, ClanMembership = new ClanMember { UserId = 3, User = sam, ClanId = 1, Clan = lOTR } };
-        private static User sangoku =new(){ Id = 4, Elo = 2000, ClanMembership = new ClanMember { UserId = 4, User = sangoku, ClanId = 1, Clan = lOTR } };
+        private static User sangoku =new(){ Id = 4, Elo = 2000, ClanMembership = new ClanMember { UserId = 4, User = sangoku, ClanId = 2, Clan = dBZ } };
         private static User krilin =new(){ Id = 5, Elo = 1000, ClanMembership = new ClanMember { UserId = 5, User = krilin, ClanId = 2, Clan = dBZ } };
         private static User rolandDeschain =new(){ Id = 6, Elo = 2800, ClanMembership = new ClanMember { UserId = 6, User = rolandDeschain, ClanId = 3, Clan = gilead } };
-        private static User harryPotter =new(){ Id = 7, Elo = 2000, ClanMembership = new ClanMember { UserId = 7, User = krilin, ClanId = 2, Clan = dBZ } };
+        private static User harryPotter =new(){ Id = 7, Elo = 2000, ClanMembership = new ClanMember { UserId = 7, User = harryPotter, ClanId = 4, Clan = poudlard } };
+        private static User ronWeasley = new() { Id = 7, Elo = 600, ClanMembership = new ClanMember { UserId = 7, User = ronWeasley, ClanId = 4, Clan = poudlard } };
         private static User magneto =new(){ Id = 8, Elo = 2700, ClanMembership = new ClanMember { UserId = 8, User = magneto, ClanId = 6, Clan = xMenVillain } };
         private static User profCharles =new(){ Id = 9, Elo = 2800, ClanMembership = new ClanMember { UserId = 9, User = profCharles, ClanId = 5, Clan = xMen } };
         private static User usainBolt =new(){ Id = 10, Elo = 1200 };

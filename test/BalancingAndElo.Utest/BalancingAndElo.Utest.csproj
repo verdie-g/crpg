@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -13,10 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BalancingAndElo\BalancingAndElo.csproj" />
-    <ProjectReference Include="..\src\Application\Application.csproj" />
-    <ProjectReference Include="..\src\Common\Common.csproj" />
-    <ProjectReference Include="..\src\Domain\Domain.csproj" />
+    <ProjectReference Include="..\..\src\BalancingAndElo\BalancingAndElo.csproj" />
+    <ProjectReference Include="..\..\src\Application\Application.csproj" />
+    <ProjectReference Include="..\..\src\Common\Common.csproj" />
+    <ProjectReference Include="..\..\src\Domain\Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
