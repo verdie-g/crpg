@@ -6,8 +6,6 @@
     <AssemblyName>Crpg.Sdk</AssemblyName>
   </PropertyGroup>
 
-  <Import Project="../Shared.targets" />
-
   <ItemGroup>
     <!-- Keep Datadog.Trace for automatic tracing -->
     <PackageReference Include="Datadog.Trace" Version="2.10.0" />
