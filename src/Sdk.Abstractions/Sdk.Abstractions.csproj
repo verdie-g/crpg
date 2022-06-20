@@ -6,6 +6,4 @@
     <AssemblyName>Crpg.Sdk.Abstractions</AssemblyName>
   </PropertyGroup>
 
-  <Import Project="../Shared.targets" />
-
 </Project>
