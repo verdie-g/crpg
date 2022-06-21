@@ -42,16 +42,14 @@ namespace Crpg.BalancingAndRating.Balancing
             members.Add(user);
         }
 
-        public int EloPsum(int p)
+        public int RatingPsum(int p)
         {
-            var eloSystem = new Rating();
-            return eloSystem.ComputeTeamEloPowerSum(members, p);
+            return RatingHelpers.ComputeTeamRatingPowerSum(members, p);
         }
 
-        public int EloPMean(int p)
+        public int RatingPMean(int p)
         {
-            var eloSystem = new Rating();
-            return eloSystem.ComputeTeamEloPowerMean(members, p);
+            return RatingHelpers.ComputeTeamRatingPowerMean(members, p);
         }
 
         public List<User> MemberList() { return members; }

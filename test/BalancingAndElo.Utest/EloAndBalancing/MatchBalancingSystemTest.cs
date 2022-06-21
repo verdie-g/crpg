@@ -10,14 +10,13 @@ namespace Crpg.BalancingAndRating.UTest.Balancing
         public void CaptainShouldNotBeThatBad()
         {
             var matchBalancer = new MatchBalancingSystem();
-            var eloSystem = new Rating();
             GameMatch balancedGame = matchBalancer.NaiveCaptainBalancing(game1);
-            int teamAMeanElo = eloSystem.ComputeTeamEloPowerMean(balancedGame.TeamA, 1);
-            int teamBMeanElo = eloSystem.ComputeTeamEloPowerMean(balancedGame.TeamB, 1);
+            int teamAMeanElo = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 1);
+            int teamBMeanElo = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 1);
             double meanEloRatio = (double)teamAMeanElo / (double)teamBMeanElo;
             Assert.AreEqual(meanEloRatio, 1, 0.2);
-            int teamAQuadraticMeanElo = eloSystem.ComputeTeamEloPowerMean(balancedGame.TeamA, 2);
-            int teamBQuadraticMeanElo = eloSystem.ComputeTeamEloPowerMean(balancedGame.TeamB, 2);
+            int teamAQuadraticMeanElo = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 2);
+            int teamBQuadraticMeanElo = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 2);
             double quadraticMeanEloRatio = (double)teamAQuadraticMeanElo / (double)teamBQuadraticMeanElo;
             Assert.AreEqual(quadraticMeanEloRatio, 1, 0.2);
         }
@@ -25,14 +24,13 @@ namespace Crpg.BalancingAndRating.UTest.Balancing
         public void KKbalancingelosShouldNotBeThatBad()
         {
             var matchBalancer = new MatchBalancingSystem();
-            var eloSystem = new Rating();
             GameMatch balancedGame = matchBalancer.KKBalancing(game1);
-            int teamAMeanElo = eloSystem.ComputeTeamEloPowerMean(balancedGame.TeamA, 1);
-            int teamBMeanElo = eloSystem.ComputeTeamEloPowerMean(balancedGame.TeamB, 1);
+            int teamAMeanElo = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 1);
+            int teamBMeanElo = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 1);
             double meanEloRatio = (double)teamAMeanElo / (double)teamBMeanElo;
             Assert.AreEqual(meanEloRatio, 1, 0.2);
-            int teamAQuadraticMeanElo = eloSystem.ComputeTeamEloPowerMean(balancedGame.TeamA, 2);
-            int teamBQuadraticMeanElo = eloSystem.ComputeTeamEloPowerMean(balancedGame.TeamB, 2);
+            int teamAQuadraticMeanElo = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamA, 2);
+            int teamBQuadraticMeanElo = RatingHelpers.ComputeTeamRatingPowerMean(balancedGame.TeamB, 2);
             double quadraticMeanEloRatio = (double)teamAQuadraticMeanElo / (double)teamBQuadraticMeanElo;
             Assert.AreEqual(quadraticMeanEloRatio, 1, 0.2);
         }
@@ -40,7 +38,6 @@ namespace Crpg.BalancingAndRating.UTest.Balancing
         public void KKMakeTeamOfSimilarSizesShouldNotBeThatBad()
         {
             var matchBalancer = new MatchBalancingSystem();
-            var eloSystem = new Rating();
             GameMatch balancedGame = matchBalancer.KKMakeTeamOfSimilarSizes(game1);
             int teamASize = balancedGame.TeamA.Count;
             int teamBSize = balancedGame.TeamB.Count;

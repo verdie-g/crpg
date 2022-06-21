@@ -85,7 +85,28 @@ namespace Crpg.BalancingAndRating.Balancing
             returnedGameMatch.TeamB = MatchBalancingHelpers.ConvertClanGroupsToUserList(partition.Partition[1].ToList());
             return returnedGameMatch;
         }
+        public GameMatch BalanceTeamOfSimilarSizes(GameMatch gameMatch, double threshold = 0.10)
+        {
+            double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
+            GameMatch returnedGameMatch = new();
+            if (Math.Abs(diff / RatingHelpers.ComputeTeamRatingPowerSum(gameMatch.TeamA, 1)) < threshold)
+            {
+            }
+            else
+            {
+                if (diff < 0)
+                {
+                    returnedGameMatch = DoASwap(returnedGameMatch);
+                }
 
+            }
+            return returnedGameMatch;
+        }
+
+        public GameMatch DoASwap(GameMatch gameMatch)
+        {
+        return gameMatch;
+        }
 
         /*
         public GameMatch BalancingWithClans(GameMatch gameMatch)
