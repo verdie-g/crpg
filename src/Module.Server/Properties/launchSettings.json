@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "Module.Server": {
+      "commandName": "Executable",
+      "executablePath": "%MB_SERVER_PATH%\\bin\\Win64_Shipping_Server\\DedicatedCustomServer.Starter.exe",
+      "commandLineArgs": "_MODULES_*Native*Multiplayer*_MODULES_ /dedicatedcustomserverconfigfile ds_config_crpg.txt /port 7210",
+      "workingDirectory": "%MB_SERVER_PATH%\\bin\\Win64_Shipping_Server"
+    }
+  }
+}
