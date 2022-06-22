@@ -23,6 +23,8 @@ namespace Crpg.BalancingAndRating.Balancing
             return ComputeTeamRatingPowerSum(gameMatch.TeamA, 1) - ComputeTeamRatingPowerSum(gameMatch.TeamB, 1);
         }
 
+
+
         public static int ComputeTeamRatingPowerSum(List<User> team, int p)
         {
             List<int> elos = (List<int>)team.Select(u => u.Elo);

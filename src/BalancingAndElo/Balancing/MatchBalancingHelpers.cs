@@ -67,13 +67,27 @@ namespace Crpg.BalancingAndRating.Balancing
             return clanGroupsGameMatch;
         }
 
-        public static GameMatch ConvertGameMatchToClanGroupsGameMatchList(ClanGroupsGameMatch clanGroupsgameMatch)
+        public static GameMatch ConvertClanGroupsGameMatchToGameMatchList(ClanGroupsGameMatch clanGroupsgameMatch)
         {
             GameMatch gameMatch = new();
             gameMatch.TeamA = ConvertClanGroupsToUserList(clanGroupsgameMatch.TeamA);
             gameMatch.TeamB = ConvertClanGroupsToUserList(clanGroupsgameMatch.TeamB);
             gameMatch.Waiting = ConvertClanGroupsToUserList(clanGroupsgameMatch.Waiting);
             return gameMatch;
+        }
+        public static int UserCountInClanGroupList(List<ClanGroup> clanGroups)
+        {
+            int count = 0;
+            foreach (ClanGroup clanGroup in clanGroups)
+            {
+                count += clanGroup.Size();
+            }
+            return count;
+        }
+        public static List<ClanGroup> FindSuitableSwap(ClanGroup weakClanGroup, List<ClanGroup> strongTeam ,double diff)
+        {
+            List<ClanGroup> selectedClanGroups = new();
+            return selectedClanGroups;
         }
 
         /* public static List<User> LargestDifferencing(List<User> userList)

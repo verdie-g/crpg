@@ -94,10 +94,7 @@ namespace Crpg.BalancingAndRating.Balancing
             }
             else
             {
-                if (diff < 0)
-                {
                     returnedGameMatch = DoASwap(returnedGameMatch);
-                }
 
             }
             return returnedGameMatch;
@@ -105,7 +102,54 @@ namespace Crpg.BalancingAndRating.Balancing
 
         public GameMatch DoASwap(GameMatch gameMatch)
         {
-        return gameMatch;
+            double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
+            ClanGroupsGameMatch clanGroupGameMatch = MatchBalancingHelpers.ConvertGameMatchToClanGroupsGameMatchList(gameMatch);
+            List<ClanGroup> weakTeam;
+            List<ClanGroup> strongTeam;
+            if (diff < 0)
+            {
+
+                weakTeam = clanGroupGameMatch.TeamA;
+                strongTeam = clanGroupGameMatch.TeamB;
+
+            }
+            else
+            {
+                weakTeam = clanGroupGameMatch.TeamB;
+                strongTeam = clanGroupGameMatch.TeamA;
+            }
+
+            weakTeam.OrderBy(c => c.RatingPMean(1));
+            strongTeam.OrderBy(c => c.RatingPMean(1));
+            ClanGroup weakClanGroupToSwap = weakTeam.First();
+            int i = 0;
+            bool swapfound = false;
+            while ( (i < clanGroupGameMatch.TeamA.Count) & swapfound)
+                {
+                    List<ClanGroup>? suitableClanGroupsCandidate = MatchBalancingHelpers.FindSuitableSwap(weakTeam.ElementAt(i), strongTeam,diff);
+                    if (suitableClanGroupsCandidate.Count == 0)
+                        {
+                        i++;
+                        }
+                    else if (MatchBalancingHelpers.UserCountInClanGroupList(suitableClanGroupsCandidate) == weakClanGroupToSwap.Size())
+                        {
+                        swapfound = true;
+                        foreach (ClanGroup c in suitableClanGroupsCandidate)
+                            {
+                            weakTeam.Add(c);
+                            strongTeam.Remove(c);
+                            }
+
+                        strongTeam.Add(weakClanGroupToSwap);
+                        weakTeam.Remove(weakClanGroupToSwap);
+                        }
+             return MatchBalancingHelpers.ConvertClanGroupsGameMatchToGameMatchList(clanGroupGameMatch);
+
+        }
+
+        
+
+        
         }
 
         /*
