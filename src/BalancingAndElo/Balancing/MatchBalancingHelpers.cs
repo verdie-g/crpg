@@ -57,6 +57,25 @@ namespace Crpg.BalancingAndRating.Balancing
         {
             return gameMatch.TeamA.Count - gameMatch.TeamB.Count;
         }
+
+        public static ClanGroupsGameMatch ConvertGameMatchToClanGroupsGameMatchList(GameMatch gameMatch)
+        {
+            ClanGroupsGameMatch clanGroupsGameMatch = new();
+            clanGroupsGameMatch.TeamA = ConvertUserListToClanGroups(gameMatch.TeamA);
+            clanGroupsGameMatch.TeamB = ConvertUserListToClanGroups(gameMatch.TeamB);
+            clanGroupsGameMatch.Waiting = ConvertUserListToClanGroups(gameMatch.Waiting);
+            return clanGroupsGameMatch;
+        }
+
+        public static GameMatch ConvertGameMatchToClanGroupsGameMatchList(ClanGroupsGameMatch clanGroupsgameMatch)
+        {
+            GameMatch gameMatch = new();
+            gameMatch.TeamA = ConvertClanGroupsToUserList(clanGroupsgameMatch.TeamA);
+            gameMatch.TeamB = ConvertClanGroupsToUserList(clanGroupsgameMatch.TeamB);
+            gameMatch.Waiting = ConvertClanGroupsToUserList(clanGroupsgameMatch.Waiting);
+            return gameMatch;
+        }
+
         /* public static List<User> LargestDifferencing(List<User> userList)
          {
              List<ClanGroup> clanGroups = new();
@@ -67,7 +86,7 @@ namespace Crpg.BalancingAndRating.Balancing
          }*/
 
 
-        
+
         /// <summary>
         /// Solves the partition problem using the Karmarkar--Karp algorithm.
         /// </summary>
