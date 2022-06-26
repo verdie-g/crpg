@@ -23,8 +23,14 @@ internal class CrpgHttpClient : ICrpgClient
     public CrpgHttpClient()
     {
         HttpClientHandler httpClientHandler = new() { AutomaticDecompression = DecompressionMethods.GZip };
-        _httpClient = new HttpClient(httpClientHandler) { BaseAddress = new Uri("https://api.c-rpg.eu") };
+        _httpClient = new HttpClient(httpClientHandler)
+        {
+            BaseAddress = new Uri("https://api.c-rpg.eu"),
+            Timeout = TimeSpan.FromSeconds(3),
+        };
         _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+        string version = typeof(CrpgHttpClient).Assembly.GetName().Version.ToString();
+        _httpClient.DefaultRequestHeaders.Add("User-Agent",  "cRPG/" + version);
 
         _serializerSettings = new JsonSerializerSettings
         {
@@ -36,24 +42,24 @@ internal class CrpgHttpClient : ICrpgClient
         };
     }
 
-    public Task<CrpgResult<CrpgUser>> GetUser(Platform platform, string platformUserId,
-        string characterName, CancellationToken cancellationToken = default)
+    public Task<CrpgResult<CrpgUser>> GetUserAsync(Platform platform, string platformUserId,
+        string userName, CancellationToken cancellationToken = default)
     {
         Dictionary<string, string> queryParameters = new(StringComparer.Ordinal)
         {
             ["platform"] = platform.ToString(),
             ["platformUserId"] = platformUserId,
-            ["userName"] = characterName,
+            ["userName"] = userName,
         };
         return Get<CrpgUser>("games/users", queryParameters, cancellationToken);
     }
 
-    public Task<CrpgResult<IList<CrpgItem>>> GetItems(CancellationToken cancellationToken = default)
+    public Task<CrpgResult<IList<CrpgItem>>> GetItemsAsync(CancellationToken cancellationToken = default)
     {
         return Get<IList<CrpgItem>>("games/items", null, cancellationToken);
     }
 
-    public Task<CrpgResult<CrpgUsersUpdateResponse>> Update(CrpgGameUsersUpdateRequest req, CancellationToken cancellationToken = default)
+    public Task<CrpgResult<CrpgUsersUpdateResponse>> UpdateUsersAsync(CrpgGameUsersUpdateRequest req, CancellationToken cancellationToken = default)
     {
         return Put<CrpgGameUsersUpdateRequest, CrpgUsersUpdateResponse>("games/users", req, cancellationToken);
     }

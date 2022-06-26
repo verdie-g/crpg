@@ -47,7 +47,7 @@ internal class CrpgLogic : MissionLogic
 
     private async Task SendReward(int experienceReward, int goldReward)
     {
-        var res = await _crpgClient.Update(new CrpgGameUsersUpdateRequest
+        var res = await _crpgClient.UpdateUsersAsync(new CrpgGameUsersUpdateRequest
         {
             Updates = new[]
             {
