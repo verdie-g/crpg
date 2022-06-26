@@ -6,10 +6,11 @@ namespace Crpg.Module.Api;
 
 internal interface ICrpgClient : IDisposable
 {
-    Task<CrpgResult<CrpgUser>> GetUser(Platform platform, string platformUserId,
-        string characterName, CancellationToken cancellationToken = default);
+    Task<CrpgResult<CrpgUser>> GetUserAsync(Platform platform, string platformUserId,
+        string userName, CancellationToken cancellationToken = default);
 
-    Task<CrpgResult<IList<CrpgItem>>> GetItems(CancellationToken cancellationToken = default);
+    Task<CrpgResult<IList<CrpgItem>>> GetItemsAsync(CancellationToken cancellationToken = default);
 
-    Task<CrpgResult<CrpgUsersUpdateResponse>> Update(CrpgGameUsersUpdateRequest req, CancellationToken cancellationToken = default);
+    Task<CrpgResult<CrpgUsersUpdateResponse>> UpdateUsersAsync(CrpgGameUsersUpdateRequest req,
+        CancellationToken cancellationToken = default);
 }

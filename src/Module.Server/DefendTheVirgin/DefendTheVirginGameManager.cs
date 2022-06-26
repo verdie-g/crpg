@@ -135,13 +135,13 @@ public class DefendTheVirginGameManager : MBGameManager
         string platformUserId = login.GetPlayerId().Id2.ToString();
         string userName = login.GetUserName();
 
-        var res = await _crpgClient.GetUser(platform, platformUserId, userName);
+        var res = await _crpgClient.GetUserAsync(platform, platformUserId, userName);
         return res.Data!;
     }
 
     private async Task<IList<CrpgItem>> GetCrpgItems()
     {
-        var res = await _crpgClient.GetItems();
+        var res = await _crpgClient.GetItemsAsync();
         return res.Data!;
     }
 
