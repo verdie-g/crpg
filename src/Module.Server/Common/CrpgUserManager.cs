@@ -44,7 +44,7 @@ internal class CrpgUserManager : MissionNetwork
         }
         catch (Exception e)
         {
-            Debug.PrintError($"Couldn't get user {userName} ({platform}#{platformUserId}): {e.Message}", e.StackTrace);
+            Debug.Print($"Couldn't get user {userName} ({platform}#{platformUserId}): {e}");
             KickPeer(networkPeer, DisconnectType.KickedByHost);
             return;
         }
