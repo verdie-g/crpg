@@ -1,6 +1,10 @@
 ﻿using System.Xml.Linq;
 using Crpg.Module.Battle;
+using Crpg.Module.Common;
+using Newtonsoft.Json;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
 
 #if CRPG_CLIENT
@@ -16,11 +20,14 @@ namespace Crpg.Module;
 
 internal class CrpgSubModule : MBSubModuleBase
 {
+    private CrpgConstants _constants = default!;
+
     protected override void OnSubModuleLoad()
     {
         base.OnSubModuleLoad();
 
-        TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode());
+        _constants = LoadCrpgConstants();
+        TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode(_constants));
 
 #if CRPG_EXPORT
         Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
@@ -31,6 +38,13 @@ internal class CrpgSubModule : MBSubModuleBase
         // UIResourceManager.UIResourceDepot.StartWatchingChangesInDepot();
     }
 
+    protected override void InitializeGameStarter(Game game, IGameStarter starterObject)
+    {
+        base.InitializeGameStarter(game, starterObject);
+        InitializeGameModels(starterObject);
+        CrpgSkills.Initialize(game);
+    }
+
     protected override void OnApplicationTick(float delta)
     {
         base.OnApplicationTick(delta);
@@ -38,11 +52,28 @@ internal class CrpgSubModule : MBSubModuleBase
         // UIResourceManager.UIResourceDepot.CheckForChanges();
     }
 
+    private CrpgConstants LoadCrpgConstants()
+    {
+        if (!GameNetwork.IsDedicatedServer) // No need for the constants in the client.
+        {
+            return new CrpgConstants();
+        }
+
+        string path = ModuleHelper.GetModuleFullPath("cRPG") + "ModuleData/constants.json";
+        return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path));
+    }
+
+    private void InitializeGameModels(IGameStarter basicGameStarter)
+    {
+        basicGameStarter.AddModel(new CrpgAgentStatCalculateModel(_constants));
+        basicGameStarter.AddModel(new CrpgAgentApplyDamageModel(_constants));
+    }
+
     /// <summary>
     /// This method loads the sprites from the Assets folder. Doing this manually is surprising but it is done like
     /// that in TaleWorlds.MountAndBlade.GauntletUI.GauntletUISubModule.OnSubModuleLoad.
     /// </summary>
-    private static void LoadSpriteSheets()
+    private void LoadSpriteSheets()
     {
 #if CRPG_CLIENT
         foreach (string filename in Directory.GetFiles(BasePath.Name + "Modules/cRPG/GUI", "*SpriteData.xml", SearchOption.AllDirectories))

@@ -5,7 +5,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
 
-namespace Crpg.Module.DefendTheVirgin;
+namespace Crpg.Module.Common;
 
 internal sealed class CrpgCharacterObject : BasicCharacterObject
 {
@@ -13,7 +13,7 @@ internal sealed class CrpgCharacterObject : BasicCharacterObject
 
     public override bool IsHero => true; // Spawning a non-hero gives random item modifiers.
 
-    public static CrpgCharacterObject New(TextObject name, CharacterSkills skills, Equipment equipment, CrpgConstants constants)
+    public static CrpgCharacterObject New(TextObject name, CharacterSkills skills, CrpgConstants constants)
     {
         int strength = skills.GetPropertyValue(CrpgSkills.Strength);
         int ironFlesh = skills.GetPropertyValue(CrpgSkills.IronFlesh);
@@ -24,8 +24,6 @@ internal sealed class CrpgCharacterObject : BasicCharacterObject
 
         CrpgCharacterObject mbCharacter = new(name, maxHitPoints);
         SetCharacterSkills(mbCharacter, skills);
-        SetCharacterEquipments(mbCharacter, equipment);
-        SetCharacterBodyProperties(mbCharacter);
         return mbCharacter;
     }
 
@@ -35,32 +33,6 @@ internal sealed class CrpgCharacterObject : BasicCharacterObject
         MBCharacterSkills mbCharacterSkills = new();
         ReflectionHelper.SetProperty(mbCharacterSkills, nameof(MBCharacterSkills.Skills), skills);
         mbCharacter.CharacterSkills = mbCharacterSkills;
-    }
-
-    private static void SetCharacterEquipments(CrpgCharacterObject mbCharacter, Equipment equipment)
-    {
-        MBEquipmentRoster mbEquipmentRoster = new();
-        ReflectionHelper.SetField(mbEquipmentRoster, "_equipments", new List<Equipment> { equipment });
-        ReflectionHelper.SetField(mbCharacter, "_equipmentRoster", mbEquipmentRoster);
-    }
-
-    private static void SetCharacterBodyProperties(CrpgCharacterObject mbCharacter)
-    {
-        var bodyProperties = MBObjectManager.Instance.GetObject<MBBodyProperty>("villager_battania");
-        mbCharacter.BodyPropertyRange = MBObjectManager.Instance.CreateObject<MBBodyProperty>("whatever");
-        mbCharacter.BodyPropertyRange.Init(bodyProperties.BodyPropertyMin, bodyProperties.BodyPropertyMax);
-    }
-
-    private static StaticBodyProperties StaticBodyPropertiesFromString(string bodyPropertiesKey)
-    {
-        XmlDocument doc = new();
-        doc.LoadXml($"<BodyProperties key=\"{bodyPropertiesKey}\" />");
-        if (!StaticBodyProperties.FromXmlNode(doc.DocumentElement, out var staticBodyProperties))
-        {
-            // TODO: log warning.
-        }
-
-        return staticBodyProperties;
     }
 
     private CrpgCharacterObject(TextObject name, int maxHitPoints)

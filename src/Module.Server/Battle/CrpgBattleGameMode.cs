@@ -17,9 +17,12 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 {
     private const string GameName = "cRPG";
 
-    public CrpgBattleGameMode()
+    private readonly CrpgConstants _constants;
+
+    public CrpgBattleGameMode(CrpgConstants constants)
         : base(GameName)
     {
+        _constants = constants;
     }
 
 #if CRPG_CLIENT
@@ -90,9 +93,10 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new EquipmentControllerLeaveLogic(),
                     new MultiplayerPreloadHelper(),
 #if CRPG_SERVER
-                    new CrpgBattleMissionMultiplayer(), // new MissionMultiplayerFlagDomination(MissionLobbyComponent.MultiplayerGameType.Battle),
+                    roundController,
+                    new CrpgBattleMissionMultiplayer(crpgClient), // new MissionMultiplayerFlagDomination(MissionLobbyComponent.MultiplayerGameType.Battle),
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
-                    new SpawnComponent(new BattleSpawnFrameBehavior(), new CrpgBattleSpawningBehavior(roundController)),
+                    new SpawnComponent(new BattleSpawnFrameBehavior(), new CrpgBattleSpawningBehavior(_constants, roundController)),
                     new AgentHumanAILogic(), // bot intelligence
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
                     new CrpgUserManager(crpgClient),

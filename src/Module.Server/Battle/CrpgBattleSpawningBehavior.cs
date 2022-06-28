@@ -1,6 +1,10 @@
-﻿using Crpg.Module.Common;
+﻿using Crpg.Module.Api.Models.Characters;
+using Crpg.Module.Api.Models.Items;
+using Crpg.Module.Common;
+using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 
@@ -8,11 +12,13 @@ namespace Crpg.Module.Battle;
 
 internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 {
+    private readonly CrpgConstants _constants;
     private readonly MultiplayerRoundController _roundController;
     private bool _botsSpawned;
 
-    public CrpgBattleSpawningBehavior(MultiplayerRoundController roundController)
+    public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController roundController)
     {
+        _constants = constants;
         _roundController = roundController;
     }
 
@@ -157,6 +163,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 || missionPeer.Team == null
                 || missionPeer.Team == Mission.SpectatorTeam
                 || !missionPeer.SpawnTimer.Check(Mission.CurrentTime)
+                || missionPeer.SpawnCountThisRound > 0
                 || crpgPeer == null
                 || crpgPeer.User == null)
             {
@@ -164,29 +171,20 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             }
 
             BasicCultureObject teamCulture = missionPeer.Team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
-            // for now everyone will have the same hero class
-            MultiplayerClassDivisions.MPHeroClass peerClass = MultiplayerClassDivisions.GetMPHeroClasses().Skip(1).First();
-            BasicCharacterObject heroCharacter = peerClass.HeroCharacter;
-            MPPerkObject.MPOnSpawnPerkHandler spawnPerkHandler = MPPerkObject.GetOnSpawnPerkHandler(missionPeer);
-            Equipment equipment = heroCharacter.Equipment.Clone();
-            var alternativeEquipments = spawnPerkHandler?.GetAlternativeEquipments(true);
-            if (alternativeEquipments != null)
-            {
-                foreach ((EquipmentIndex, EquipmentElement) tuple in alternativeEquipments)
-                {
-                    equipment[tuple.Item1] = tuple.Item2;
-                }
-            }
+            var peerClass = MultiplayerClassDivisions.GetMPHeroClasses().Skip(1).First();
+            // var character = CreateCharacter(crpgPeer.User.Character, _constants);
+            var character = peerClass.HeroCharacter;
+            var characterEquipment = CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
 
-            bool hasMount = equipment[EquipmentIndex.ArmorItemEndSlot].Item != null;
+            bool hasMount = characterEquipment[EquipmentIndex.ArmorItemEndSlot].Item != null;
             MatrixFrame spawnFrame = missionPeer.GetAmountOfAgentVisualsForPeer() > 0
                 ? missionPeer.GetAgentVisualForPeer(0).GetFrame()
                 : SpawnComponent.GetSpawnFrame(missionPeer.Team, hasMount, true);
             Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
 
-            AgentBuildData agentBuildData = new AgentBuildData(heroCharacter)
+            AgentBuildData agentBuildData = new AgentBuildData(character)
                 .MissionPeer(missionPeer)
-                .Equipment(equipment)
+                .Equipment(characterEquipment)
                 .Team(missionPeer.Team)
                 .VisualsIndex(0)
                 .SpawnOnInitialPoint(true)
@@ -206,9 +204,72 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 AgentVisualSpawnComponent.SpawnAgentVisualsForPeer(missionPeer, agentBuildData);
             }
 
-            GameMode.HandleAgentVisualSpawning(networkPeer, agentBuildData, useCosmetics: false);
+            missionPeer.HasSpawnedAgentVisuals = true;
+            missionPeer.EquipmentUpdatingExpired = false;
+            GameNetwork.BeginBroadcastModuleEvent();
+            GameNetwork.WriteMessage(new CreateAgentVisuals(networkPeer, agentBuildData, -1));
+            GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.ExcludeOtherTeamPlayers, networkPeer);
             // This line makes the agent spawn in battle instead of spawning in the class loadout thing.
             SpawnComponent.SetEarlyAgentVisualsDespawning(missionPeer);
         }
     }
+
+    private BasicCharacterObject CreateCharacter(CrpgCharacter crpgCharacter, CrpgConstants constants)
+    {
+        CharacterSkills skills = new();
+        skills.SetPropertyValue(CrpgSkills.Strength, crpgCharacter.Statistics.Attributes.Strength);
+        skills.SetPropertyValue(CrpgSkills.Agility, crpgCharacter.Statistics.Attributes.Agility);
+
+        skills.SetPropertyValue(CrpgSkills.IronFlesh, crpgCharacter.Statistics.Skills.IronFlesh);
+        skills.SetPropertyValue(CrpgSkills.PowerStrike, crpgCharacter.Statistics.Skills.PowerStrike);
+        skills.SetPropertyValue(CrpgSkills.PowerDraw, crpgCharacter.Statistics.Skills.PowerDraw);
+        skills.SetPropertyValue(CrpgSkills.PowerThrow, crpgCharacter.Statistics.Skills.PowerThrow);
+        skills.SetPropertyValue(DefaultSkills.Athletics, crpgCharacter.Statistics.Skills.Athletics * 20 + 2 * crpgCharacter.Statistics.Attributes.Agility);
+        skills.SetPropertyValue(DefaultSkills.Riding, crpgCharacter.Statistics.Skills.Riding * 20);
+        skills.SetPropertyValue(CrpgSkills.WeaponMaster, crpgCharacter.Statistics.Skills.WeaponMaster);
+        skills.SetPropertyValue(CrpgSkills.MountedArchery, crpgCharacter.Statistics.Skills.MountedArchery);
+
+        skills.SetPropertyValue(DefaultSkills.OneHanded, crpgCharacter.Statistics.WeaponProficiencies.OneHanded);
+        skills.SetPropertyValue(DefaultSkills.TwoHanded, crpgCharacter.Statistics.WeaponProficiencies.TwoHanded);
+        skills.SetPropertyValue(DefaultSkills.Polearm, crpgCharacter.Statistics.WeaponProficiencies.Polearm);
+        skills.SetPropertyValue(DefaultSkills.Bow, crpgCharacter.Statistics.WeaponProficiencies.Bow);
+        skills.SetPropertyValue(DefaultSkills.Crossbow, crpgCharacter.Statistics.WeaponProficiencies.Crossbow);
+        skills.SetPropertyValue(DefaultSkills.Throwing, crpgCharacter.Statistics.WeaponProficiencies.Throwing);
+
+        return CrpgCharacterObject.New(new TextObject(crpgCharacter.Name), skills, constants);
+    }
+
+    private Equipment CreateCharacterEquipment(IList<CrpgEquippedItem> equippedItems)
+    {
+        Equipment equipment = new();
+        foreach (var equippedItem in equippedItems)
+        {
+            var index = ItemSlotToIndex[equippedItem.Slot];
+            AddEquipment(equipment, index, equippedItem.Item.TemplateMbId);
+        }
+
+        return equipment;
+    }
+
+    private void AddEquipment(Equipment equipments, EquipmentIndex idx, string? itemId)
+    {
+        var itemObject = MBObjectManager.Instance.GetObject<ItemObject>(itemId);
+        EquipmentElement equipmentElement = new(itemObject);
+        equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
+    }
+
+    private static readonly Dictionary<CrpgItemSlot, EquipmentIndex> ItemSlotToIndex = new()
+    {
+        [CrpgItemSlot.Head] = EquipmentIndex.Head,
+        [CrpgItemSlot.Shoulder] = EquipmentIndex.Cape,
+        [CrpgItemSlot.Body] = EquipmentIndex.Body,
+        [CrpgItemSlot.Hand] = EquipmentIndex.Gloves,
+        [CrpgItemSlot.Leg] = EquipmentIndex.Leg,
+        [CrpgItemSlot.MountHarness] = EquipmentIndex.HorseHarness,
+        [CrpgItemSlot.Mount] = EquipmentIndex.Horse,
+        [CrpgItemSlot.Weapon0] = EquipmentIndex.Weapon0,
+        [CrpgItemSlot.Weapon1] = EquipmentIndex.Weapon1,
+        [CrpgItemSlot.Weapon2] = EquipmentIndex.Weapon2,
+        [CrpgItemSlot.Weapon3] = EquipmentIndex.Weapon3,
+    };
 }
