@@ -190,7 +190,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         }
         catch (Exception e)
         {
-            Debug.PrintError($"Couldn't update users: {e.Message}", e.StackTrace);
+            Debug.Print("Couldn't update users: " + e);
             // TODO: send error to users.
             return;
         }
@@ -199,7 +199,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         {
             if (!crpgPeerByUserId.TryGetValue(updateResult.User.Id, out var crpgPeer))
             {
-                Debug.PrintWarning($"Unknown user with id '{updateResult.User.Id}'");
+                Debug.Print($"Unknown user with id '{updateResult.User.Id}'");
                 continue;
             }
 
