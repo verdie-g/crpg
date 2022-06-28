@@ -58,6 +58,7 @@ internal class CrpgUserManager : MissionNetwork
 
         var crpgPeerComponent = networkPeer.AddComponent<CrpgPeer>();
         crpgPeerComponent.User = crpgUser;
+        crpgPeerComponent.RewardMultiplier = 0;
     }
 
     private void KickPeer(NetworkCommunicator networkPeer, DisconnectType disconnectType)

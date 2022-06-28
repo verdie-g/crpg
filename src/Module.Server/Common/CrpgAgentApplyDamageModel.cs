@@ -23,7 +23,7 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
 
     private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerDraw = new()
     {
-        WeaponClass.Bow,
+        WeaponClass.Arrow,
     };
 
     private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerThrow = new()

@@ -6,4 +6,5 @@ namespace Crpg.Module.Common;
 internal class CrpgPeer : PeerComponent
 {
     public CrpgUser? User { get; set; }
+    public int RewardMultiplier { get; set; }
 }

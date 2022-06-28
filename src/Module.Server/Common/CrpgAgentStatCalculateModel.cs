@@ -62,7 +62,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.ArmorTorso = equipment.GetHumanBodyArmorSum();
         props.ArmorLegs = equipment.GetLegArmorSum();
         props.ArmorArms = equipment.GetArmArmorSum();
-        props.TopSpeedReachDuration = 2.5f; // Acceleration. TODO: should probably not be a constant.
+        props.TopSpeedReachDuration = 3f; // Acceleration. TODO: should probably not be a constant.
         float bipedalCombatSpeedMinMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMinMultiplier);
         float bipedalCombatSpeedMaxMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMaxMultiplier);
         const float combatMovementSpeed = 0.8f; // TODO: should probably not be a constant.
