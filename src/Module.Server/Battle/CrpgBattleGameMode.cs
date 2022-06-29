@@ -15,7 +15,7 @@ namespace Crpg.Module.Battle;
 [ViewCreatorModule] // Exposes methods with ViewMethod attribute.
 internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 {
-    private const string GameName = "cRPG";
+    public const string GameName = "cRPG";
 
     private readonly CrpgConstants _constants;
 

@@ -26,12 +26,6 @@
     <Compile Include="..\Module.Server\**\*$(DefaultLanguageSourceExtension)" />
     <Compile Remove="..\Module.Server\$(BaseIntermediateOutputPath)\**;..\Module.Server\$(BaseOutputPath)\**" />
     <Compile Remove="..\Module.Server\Battle\NoEndingMissionLobbyComponent.cs" />
-    <Compile Update="..\Module.Server\Battle\CrpgMissionMultiplayerClient.cs">
-      <Link>Battle\CrpgMissionMultiplayerClient.cs</Link>
-    </Compile>
-    <Compile Update="..\Module.Server\Battle\NoMultiplayerMissionAgentVisualSpawnComponent.cs">
-      <Link>Battle\NoMultiplayerMissionAgentVisualSpawnComponent.cs</Link>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>

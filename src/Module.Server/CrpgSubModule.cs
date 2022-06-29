@@ -59,7 +59,7 @@ internal class CrpgSubModule : MBSubModuleBase
             return new CrpgConstants();
         }
 
-        string path = ModuleHelper.GetModuleFullPath("cRPG") + "ModuleData/constants.json";
+        string path = ModuleHelper.GetModuleFullPath(CrpgBattleGameMode.GameName) + "ModuleData/constants.json";
         return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path));
     }
 
