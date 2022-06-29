@@ -30,7 +30,7 @@
   "damageFactorForPowerThrowCoefs": [0.10, 1.0],
   "durabilityFactorForShieldCoefs": [0.16, 1.0],
   "speedFactorForShieldCoefs": [0.03, 1.0],
-  "coverageFactorForShieldCoefs": [0.03, 1.0],
+  "coverageFactorForShieldCoefs": [0.03, 0.0],
   "defaultRole": "User",
   "defaultGold": 300,
   "defaultHeirloomPoints": 0,
