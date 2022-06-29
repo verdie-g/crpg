@@ -62,7 +62,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.ArmorTorso = equipment.GetHumanBodyArmorSum();
         props.ArmorLegs = equipment.GetLegArmorSum();
         props.ArmorArms = equipment.GetArmArmorSum();
-        props.TopSpeedReachDuration = 3f; // Acceleration. TODO: should probably not be a constant.
+        props.TopSpeedReachDuration = 2.3f; // Acceleration. TODO: should probably not be a constant.
         float bipedalCombatSpeedMinMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMinMultiplier);
         float bipedalCombatSpeedMaxMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMaxMultiplier);
         const float combatMovementSpeed = 0.8f; // TODO: should probably not be a constant.
@@ -113,9 +113,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             ItemObject itemObject = equipment[wieldedItemIndex1].Item;
             WeaponComponent weaponComponent = itemObject.WeaponComponent;
             float realWeaponLength = weaponComponent.PrimaryWeapon.GetRealWeaponLength();
-            float num2 = (weaponComponent.GetItemType() == ItemObject.ItemTypeEnum.Bow ? 4f : 1.5f) *
-                         itemObject.Weight * (float)Math.Sqrt(realWeaponLength);
-            weaponsEncumbrance += num2;
+            weaponsEncumbrance += (weaponComponent.GetItemType() == ItemObject.ItemTypeEnum.Bow ? 4f : 1.5f)
+                                  * itemObject.Weight * (float)Math.Sqrt(realWeaponLength);
         }
 
         if (wieldedItemIndex2 != EquipmentIndex.None)
@@ -146,7 +145,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         agentDrivenProperties.MissileSpeedMultiplier = 1f;
         agentDrivenProperties.ReloadMovementPenaltyFactor = 1f;
         agentDrivenProperties.WeaponInaccuracy = 0.0f;
-        agentDrivenProperties.MaxSpeedMultiplier = 1.05f * (100.0f / (100.0f + weaponsEncumbrance));
+        const float movementSpeed = 0.8f; // TODO: should probably not be a constant.
+        agentDrivenProperties.MaxSpeedMultiplier = 1.05f * movementSpeed * (100.0f / (100.0f + weaponsEncumbrance));
         int ridingSkill = character.GetSkillValue(DefaultSkills.Riding);
         if (equippedItem != null)
         {
