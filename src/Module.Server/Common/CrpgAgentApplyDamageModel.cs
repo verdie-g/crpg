@@ -46,6 +46,11 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
         ref AttackCollisionData collisionData,
         in MissionWeapon weapon, float baseDamage)
     {
+        if (attackInformation.IsAttackerAIControlled)
+        {
+            return baseDamage;
+        }
+
         var attackerCharacter = attackInformation.AttackerAgentCharacter;
         if (attackerCharacter == null)
         {
