@@ -1,7 +1,6 @@
 ﻿using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Common;
-using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
@@ -43,8 +42,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         {
             SpawnAgents();
         }
-
-        base.OnTick(dt);
     }
 
     public override void RequestStartSpawnSession()
@@ -199,18 +196,9 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 .InitialPosition(in spawnFrame.origin)
                 .InitialDirection(in initialDirection);
 
-            if (GameMode.ShouldSpawnVisualsForServer(networkPeer))
-            {
-                AgentVisualSpawnComponent.SpawnAgentVisualsForPeer(missionPeer, agentBuildData);
-            }
+            Mission.SpawnAgent(agentBuildData);
 
-            missionPeer.HasSpawnedAgentVisuals = true;
-            missionPeer.EquipmentUpdatingExpired = false;
-            GameNetwork.BeginBroadcastModuleEvent();
-            GameNetwork.WriteMessage(new CreateAgentVisuals(networkPeer, agentBuildData, -1));
-            GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.ExcludeOtherTeamPlayers, networkPeer);
-            // This line makes the agent spawn in battle instead of spawning in the class loadout thing.
-            SpawnComponent.SetEarlyAgentVisualsDespawning(missionPeer);
+            missionPeer.SpawnCountThisRound += 1;
         }
     }
 
@@ -251,9 +239,15 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         return equipment;
     }
 
-    private void AddEquipment(Equipment equipments, EquipmentIndex idx, string? itemId)
+    private void AddEquipment(Equipment equipments, EquipmentIndex idx, string itemId)
     {
         var itemObject = MBObjectManager.Instance.GetObject<ItemObject>(itemId);
+        if (itemObject == null)
+        {
+            Debug.Print($"Cannot equip unknown item '{itemId}'");
+            return;
+        }
+
         EquipmentElement equipmentElement = new(itemObject);
         equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
     }
