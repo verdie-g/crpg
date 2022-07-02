@@ -10,6 +10,9 @@ internal class CrpgCharacter
     public int Generation { get; set; }
     public int Level { get; set; }
     public int Experience { get; set; }
+    public float ExperienceMultiplier { get; set; }
+    public bool SkippedTheFun { get; set; }
+    public bool AutoRepair { get; set; }
     public CrpgCharacterStatistics Statistics { get; set; } = new();
     public IList<CrpgEquippedItem> EquippedItems { get; set; } = Array.Empty<CrpgEquippedItem>();
 }

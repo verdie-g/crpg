@@ -11,6 +11,7 @@ public record CharacterFullViewModel : IMapFrom<Character>
     public int Generation { get; init; }
     public int Level { get; init; }
     public int Experience { get; init; }
+    public float ExperienceMultiplier { get; init; }
     public bool SkippedTheFun { get; init; }
     public bool AutoRepair { get; init; }
     public CharacterStatisticsViewModel Statistics { get; init; } = new();
