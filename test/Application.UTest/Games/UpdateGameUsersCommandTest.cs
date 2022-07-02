@@ -44,6 +44,9 @@ public class UpdateGameUsersCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         Mock<ICharacterService> characterServiceMock = new();
+        characterServiceMock
+            .Setup(cs => cs.GiveExperience(It.IsAny<Character>(), 10))
+            .Callback((Character c, int xp) => c.Experience += xp);
         UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
         var result = await handler.Handle(new UpdateGameUsersCommand
         {
@@ -69,10 +72,13 @@ public class UpdateGameUsersCommandTest : TestBase
         Assert.AreEqual(1000 + 200, data.UpdateResults[0].User.Gold);
         Assert.AreEqual("a", data.UpdateResults[0].User.Character.Name);
         Assert.AreEqual(1, data.UpdateResults[0].User.Character.EquippedItems.Count);
-        Assert.IsEmpty(data.UpdateResults[0].BrokenItems);
         Assert.IsNull(data.UpdateResults[0].User.Ban);
+        Assert.AreEqual(10, data.UpdateResults[0].EffectiveReward.Experience);
+        Assert.AreEqual(200, data.UpdateResults[0].EffectiveReward.Gold);
+        Assert.IsFalse(data.UpdateResults[0].EffectiveReward.LevelUp);
+        Assert.IsEmpty(data.UpdateResults[0].BrokenItems);
 
-        characterServiceMock.Verify(cs => cs.GiveExperience(It.IsAny<Character>(), 10));
+        characterServiceMock.VerifyAll();
     }
 
     [Test]

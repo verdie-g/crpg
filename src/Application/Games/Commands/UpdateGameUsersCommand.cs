@@ -6,6 +6,7 @@ using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Models;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -38,7 +39,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             CancellationToken cancellationToken)
         {
             var charactersById = await LoadCharacters(req.Updates, cancellationToken);
-            List<(Character character, List<GameUserBrokenItem> brokenItems)> results = new();
+            List<(User user, GameUserEffectiveReward reward, List<GameUserBrokenItem> brokenItems)> results = new(req.Updates.Count);
             foreach (var update in req.Updates)
             {
                 if (!charactersById.TryGetValue(update.CharacterId, out Character? character))
@@ -47,9 +48,9 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
                     continue;
                 }
 
-                GiveReward(character, update.Reward);
+                var reward = GiveReward(character, update.Reward);
                 var brokenItems = await RepairOrBreakItems(character, update.BrokenItems, cancellationToken);
-                results.Add((character, brokenItems));
+                results.Add((character.User!, reward, brokenItems));
             }
 
             await _db.SaveChangesAsync(cancellationToken);
@@ -57,7 +58,8 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             {
                 UpdateResults = results.Select(r => new UpdateGameUserResult
                 {
-                    User = _mapper.Map<GameUser>(r.character.User),
+                    User = _mapper.Map<GameUser>(r.user),
+                    EffectiveReward = r.reward,
                     BrokenItems = r.brokenItems,
                 }).ToArray(),
             });
@@ -81,10 +83,20 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             return charactersById;
         }
 
-        private void GiveReward(Character character, GameUserReward reward)
+        private GameUserEffectiveReward GiveReward(Character character, GameUserReward reward)
         {
+            int level = character.Level;
+            int experience = character.Experience;
+
             character.User!.Gold += reward.Gold;
             _characterService.GiveExperience(character, reward.Experience);
+
+            return new GameUserEffectiveReward
+            {
+                Experience = character.Experience - experience,
+                Gold = reward.Gold,
+                LevelUp = character.Level != level,
+            };
         }
 
         private Task<List<GameUserBrokenItem>> RepairOrBreakItems(Character character, IEnumerable<GameUserBrokenItem> itemsToRepair,
