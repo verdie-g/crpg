@@ -36,7 +36,7 @@ export function respondToClanInvitation(
   clanInvitationId: number,
   accept: boolean
 ): Promise<ClanInvitation> {
-  return put(`/clans/${clanId}/invitations/${clanInvitationId}/responses`, { accept });
+  return put(`/clans/${clanId}/invitations/${clanInvitationId}/response`, { accept });
 }
 
 export function getClans(): Promise<ClanWithMemberCount[]> {
