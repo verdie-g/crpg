@@ -1,6 +1,7 @@
 ﻿using Crpg.Module.Api;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Common;
+using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -86,6 +87,11 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     {
     }
 
+    protected override void HandleEarlyNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
+    {
+        networkPeer.AddComponent<CrpgRepresentative>();
+    }
+
     private void AddTeams()
     {
         BasicCultureObject cultureTeam1 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
@@ -135,22 +141,24 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 
     private async Task UpdateCrpgUsersAsync()
     {
-        Dictionary<int, CrpgPeer> crpgPeerByUserId = new();
+        int ticks = ComputeTicks();
+
+        Dictionary<int, CrpgRepresentative> crpgRepresentativeByUserId = new();
         List<CrpgUserUpdate> userUpdates = new();
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
             var missionPeer = networkPeer.GetComponent<MissionPeer>();
-            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
-            if (missionPeer == null || crpgPeer == null || crpgPeer.User == null)
+            var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
+            if (missionPeer == null || crpgRepresentative?.User == null)
             {
                 continue;
             }
 
-            crpgPeerByUserId[crpgPeer.User.Id] = crpgPeer;
+            crpgRepresentativeByUserId[crpgRepresentative.User.Id] = crpgRepresentative;
 
             CrpgUserUpdate userUpdate = new()
             {
-                CharacterId = crpgPeer.User.Character.Id,
+                CharacterId = crpgRepresentative.User.Character.Id,
                 Reward = new CrpgUserReward { Experience = 0, Gold = 0 },
                 BrokenItems = Array.Empty<CrpgUserBrokenItem>(), // TODO
             };
@@ -159,24 +167,16 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             if (missionPeer.SpawnCountThisRound > 0 && missionPeer.Team != null && missionPeer.Team.Side != BattleSideEnum.None)
             {
                 // TODO: only give reward to users that spawned during the round.
-                if (RoundController.RoundWinner == missionPeer.Team.Side)
+                int totalRewardMultiplier = crpgRepresentative.RewardMultiplier * ticks;
+                userUpdate.Reward = new CrpgUserReward
                 {
-                    userUpdate.Reward = new CrpgUserReward
-                    {
-                        Experience = 0,
-                        Gold = 0,
-                    };
-                    crpgPeer.RewardMultiplier = Math.Min(5, crpgPeer.RewardMultiplier + 1);
-                }
-                else
-                {
-                    userUpdate.Reward = new CrpgUserReward
-                    {
-                        Experience = 0,
-                        Gold = 0,
-                    };
-                    crpgPeer.RewardMultiplier = 1;
-                }
+                    Experience = totalRewardMultiplier * 1000,
+                    Gold = totalRewardMultiplier * 50,
+                };
+
+                crpgRepresentative.RewardMultiplier = RoundController.RoundWinner == missionPeer.Team.Side
+                    ? Math.Min(5, crpgRepresentative.RewardMultiplier + 1)
+                    : 1;
             }
 
             userUpdates.Add(userUpdate);
@@ -197,14 +197,31 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 
         foreach (var updateResult in res.UpdateResults)
         {
-            if (!crpgPeerByUserId.TryGetValue(updateResult.User.Id, out var crpgPeer))
+            if (!crpgRepresentativeByUserId.TryGetValue(updateResult.User.Id, out var crpgRepresentative))
             {
                 Debug.Print($"Unknown user with id '{updateResult.User.Id}'");
                 continue;
             }
 
-            crpgPeer.User = updateResult.User;
-            // TODO: send reward info to user.
+            crpgRepresentative.User = updateResult.User;
+
+            if (updateResult.EffectiveReward.Experience != 0 && updateResult.EffectiveReward.Gold != 0)
+            {
+                GameNetwork.BeginModuleEventAsServer(crpgRepresentative.GetNetworkPeer());
+                GameNetwork.WriteMessage(new RewardCrpgUser { Reward = updateResult.EffectiveReward });
+                GameNetwork.EndModuleEventAsServer();
+            }
         }
+    }
+
+    private int ComputeTicks()
+    {
+        float roundDuration = TimerComponent.GetCurrentTimerStartTime().ElapsedSeconds;
+        if (roundDuration < 30)
+        {
+            return 1;
+        }
+
+        return 1 + (int)roundDuration / 60;
     }
 }
