@@ -1,11 +1,13 @@
 ﻿using Crpg.Module.Common;
+using Crpg.Module.Common.Network;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Battle;
 
 internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBaseClient
 {
-    private CrpgPeer? _crpgPeer;
+    private CrpgRepresentative? _crpgRepresentative;
 
     public override bool IsGameModeUsingGold => false;
     public override bool IsGameModeTactical => false;
@@ -25,6 +27,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
       base.OnRemoveBehavior();
       RoundComponent.OnPreparationEnded -= OnPreparationEnded;
       MissionNetworkComponent.OnMyClientSynchronized -= OnMyClientSynchronized;
+      _crpgRepresentative?.AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Remove);
     }
 
     public override void OnGoldAmountChangedForRepresentative(MissionRepresentativeBase representative, int goldAmount)
@@ -41,14 +44,15 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         base.OnMissionTick(dt);
     }
 
-#if CRPG_CLIENT
     protected override void AddRemoveMessageHandlers(
         GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
     {
-        // TODO: crpg rewards.
-        // registerer.Register(new GameNetworkMessage.ServerMessageHandlerDelegate<TDMGoldGain>(HandleServerEventPersonalGoldGain));
+        base.AddRemoveMessageHandlers(registerer);
+        if (GameNetwork.IsClientOrReplay)
+        {
+            registerer.Register<RewardCrpgUser>(HandleRewardCrpgUser);
+        }
     }
-#endif
 
     private void OnPreparationEnded()
     {
@@ -56,6 +60,23 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
 
     private void OnMyClientSynchronized()
     {
-        _crpgPeer = GameNetwork.MyPeer.GetComponent<CrpgPeer>();
+        _crpgRepresentative = GameNetwork.MyPeer.GetComponent<CrpgRepresentative>();
+        _crpgRepresentative.AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
+    }
+
+    private void HandleRewardCrpgUser(RewardCrpgUser message)
+    {
+        var reward = message.Reward;
+        InformationManager.DisplayMessage(new InformationMessage($"Gained {reward.Experience} experience.", new Color(218, 112, 214)));
+        InformationManager.DisplayMessage(new InformationMessage($"Gained {reward.Gold} gold.", new Color(65, 105, 225)));
+        if (reward.LevelUp)
+        {
+            InformationManager.DisplayMessage(new InformationMessage
+            {
+                Information = "Level up!",
+                Color = new Color(128, 0, 128),
+                SoundEventPath = "event:/ui/notification/levelup",
+            });
+        }
     }
 }

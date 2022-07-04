@@ -153,7 +153,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
             var missionPeer = networkPeer.GetComponent<MissionPeer>();
-            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
+            var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
             if (!networkPeer.IsSynchronized
                 || missionPeer.ControlledAgent != null
                 || missionPeer.HasSpawnedAgentVisuals
@@ -161,19 +161,24 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 || missionPeer.Team == Mission.SpectatorTeam
                 || !missionPeer.SpawnTimer.Check(Mission.CurrentTime)
                 || missionPeer.SpawnCountThisRound > 0
-                || crpgPeer == null
-                || crpgPeer.User == null)
+                || crpgRepresentative?.User == null)
             {
                 continue;
             }
 
             BasicCultureObject teamCulture = missionPeer.Team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
             var peerClass = MultiplayerClassDivisions.GetMPHeroClasses().Skip(1).First();
-            // var character = CreateCharacter(crpgPeer.User.Character, _constants);
+            // var character = CreateCharacter(crpgRepresentative.User.Character, _constants);
+            // var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
             var character = peerClass.HeroCharacter;
-            var characterEquipment = CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
+            var characterEquipment = character.Equipment;
 
-            bool hasMount = characterEquipment[EquipmentIndex.ArmorItemEndSlot].Item != null;
+            // var item = MBObjectManager.Instance.GetObject<ItemObject>("mp_vlandian_sickle");
+            // var item = MBObjectManager.Instance.GetObject<ItemObject>("narrow_sword_t3");
+            // Equipment characterEquipment = new() { [EquipmentIndex.Weapon1] = new EquipmentElement(item) };
+            // MissionEquipment characterMissionEquipment = new() { [EquipmentIndex.Weapon1] = new MissionWeapon(item, null, null) };
+
+            bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
             MatrixFrame spawnFrame = missionPeer.GetAmountOfAgentVisualsForPeer() > 0
                 ? missionPeer.GetAgentVisualForPeer(0).GetFrame()
                 : SpawnComponent.GetSpawnFrame(missionPeer.Team, hasMount, true);

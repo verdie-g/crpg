@@ -1,6 +1,5 @@
 ﻿using Crpg.Module.Api;
 using Crpg.Module.Api.Models.Users;
-using Crpg.Module.Battle;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -56,9 +55,9 @@ internal class CrpgUserManager : MissionNetwork
             return;
         }
 
-        var crpgPeerComponent = networkPeer.AddComponent<CrpgPeer>();
-        crpgPeerComponent.User = crpgUser;
-        crpgPeerComponent.RewardMultiplier = 0;
+        var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
+        crpgRepresentative.User = crpgUser;
+        crpgRepresentative.RewardMultiplier = 1;
     }
 
     private void KickPeer(NetworkCommunicator networkPeer, DisconnectType disconnectType)
