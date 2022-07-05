@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Api.Models.Users;
+﻿using Crpg.Module.Api.Models.Characters;
+using Crpg.Module.Api.Models.Users;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Network.Messages;
 
@@ -7,15 +8,30 @@ namespace Crpg.Module.Common.Network;
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
 internal sealed class UpdateCrpgUser : GameNetworkMessage
 {
+    private static readonly CompressionInfo.Integer ExperienceCompressionInfo = new(0, int.MaxValue, true);
+    private static readonly CompressionInfo.Integer LevelCompressionInfo = new(0, 50, true);
     public CrpgUser User { get; set; } = default!;
 
     protected override void OnWrite()
     {
+        WriteIntToPacket(User.Character.Level, LevelCompressionInfo);
+        WriteIntToPacket(User.Character.Experience, ExperienceCompressionInfo);
     }
 
     protected override bool OnRead()
     {
-        return true;
+        bool bufferReadValid = true;
+        int level = ReadIntFromPacket(LevelCompressionInfo, ref bufferReadValid);
+        int experience = ReadIntFromPacket(ExperienceCompressionInfo, ref bufferReadValid);
+        User = new CrpgUser
+        {
+            Character = new CrpgCharacter
+            {
+                Level = level,
+                Experience = experience,
+            },
+        };
+        return bufferReadValid;
     }
 
     protected override MultiplayerMessageFilter OnGetLogFilter()

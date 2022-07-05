@@ -7,6 +7,7 @@ namespace Crpg.Module.Common;
 internal class CrpgRepresentative : MissionRepresentativeBase
 {
     private CrpgUser? _user;
+    private int _rewardMultiplier;
 
     public CrpgUser? User
     {
@@ -23,7 +24,20 @@ internal class CrpgRepresentative : MissionRepresentativeBase
         }
     }
 
-    public int RewardMultiplier { get; set; }
+    public int RewardMultiplier
+    {
+        get => _rewardMultiplier;
+        set
+        {
+            _rewardMultiplier = value;
+            if (GameNetwork.IsServerOrRecorder)
+            {
+                GameNetwork.BeginModuleEventAsServer(Peer);
+                GameNetwork.WriteMessage(new UpdateRewardMultiplier { RewardMultiplier = _rewardMultiplier });
+                GameNetwork.EndModuleEventAsServer();
+            }
+        }
+    }
 
     public void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode mode)
     {
@@ -31,10 +45,17 @@ internal class CrpgRepresentative : MissionRepresentativeBase
         {
             GameNetwork.NetworkMessageHandlerRegisterer registerer = new(mode);
             registerer.Register<UpdateCrpgUser>(HandleUpdateCrpgUser);
+            registerer.Register<UpdateRewardMultiplier>(HandleUpdateRewardMultiplier);
         }
     }
 
     private void HandleUpdateCrpgUser(UpdateCrpgUser message)
     {
+        User = message.User;
+    }
+
+    private void HandleUpdateRewardMultiplier(UpdateRewardMultiplier message)
+    {
+        RewardMultiplier = message.RewardMultiplier;
     }
 }

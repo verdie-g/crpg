@@ -11,7 +11,7 @@
                              VerticalAlignment="Bottom" MarginBottom="98" MarginRight="264" LevelProgression="@LevelProgression"
                              IsVisible="@ShowExperienceBar">
           <Children>
-            <TextWidget Text="x1" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center"
+            <TextWidget Text="@RewardMultiplier" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center"
                         VerticalAlignment="Center" Brush="AgentAmmoCount.Text" Brush.TextVerticalAlignment="Center" Brush.FontSize="26"
                         Brush.FontColor="#53962AFF" MarginLeft="15" />
           </Children>
