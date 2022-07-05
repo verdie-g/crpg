@@ -7,23 +7,18 @@ namespace Crpg.Module.GUI;
 
 internal class CrpgAgentHudViewModel : ViewModel
 {
-    private readonly CrpgUserAccessor _userAccessor;
     private readonly CrpgExperienceTable _experienceTable;
+    private readonly NetworkCommunicator _myPeer;
+    private int _experience;
     private float _levelProgression;
+    private int _rewardMultiplier;
+    private string _rewardMultiplierStr = string.Empty;
     private bool _showExperienceBar;
 
-    public CrpgAgentHudViewModel(CrpgUserAccessor userAccessor, CrpgExperienceTable experienceTable)
+    public CrpgAgentHudViewModel(CrpgExperienceTable experienceTable)
     {
-        _userAccessor = userAccessor;
         _experienceTable = experienceTable;
-
-        _userAccessor.OnUserUpdate += UpdateLevelProgression;
-        UpdateLevelProgression(userAccessor.User);
-    }
-
-    public override void OnFinalize()
-    {
-        _userAccessor.OnUserUpdate -= UpdateLevelProgression;
+        _myPeer = GameNetwork.MyPeer;
     }
 
     /// <summary>
@@ -36,7 +31,18 @@ internal class CrpgAgentHudViewModel : ViewModel
         private set
         {
             _levelProgression = value;
-            OnPropertyChangedWithValue(value, nameof(LevelProgression)); // Notify that the property changed.
+            OnPropertyChangedWithValue(value); // Notify that the property changed.
+        }
+    }
+
+    [DataSourceProperty]
+    public string RewardMultiplier
+    {
+        get => _rewardMultiplierStr;
+        private set
+        {
+            _rewardMultiplierStr = value;
+            OnPropertyChangedWithValue(value);
         }
     }
 
@@ -47,7 +53,7 @@ internal class CrpgAgentHudViewModel : ViewModel
         private set
         {
             _showExperienceBar = value;
-            OnPropertyChangedWithValue(value, nameof(ShowExperienceBar));
+            OnPropertyChangedWithValue(value);
         }
     }
 
@@ -55,12 +61,36 @@ internal class CrpgAgentHudViewModel : ViewModel
     {
         // Hide the experience bar if the user is dead.
         ShowExperienceBar = Mission.Current?.MainAgent != null;
+
+        var crpgRepresentative = _myPeer.GetComponent<CrpgRepresentative>();
+        if (crpgRepresentative == null)
+        {
+            return;
+        }
+
+        var user = crpgRepresentative.User;
+        if (user == null)
+        {
+            return;
+        }
+
+        if (_experience != user.Character.Experience)
+        {
+            LevelProgression = ComputeLevelProgression(user);
+            _experience = user.Character.Experience;
+        }
+
+        if (_rewardMultiplier != crpgRepresentative.RewardMultiplier)
+        {
+            RewardMultiplier = 'x' + crpgRepresentative.RewardMultiplier.ToString();
+            _rewardMultiplier = crpgRepresentative.RewardMultiplier;
+        }
     }
 
-    private void UpdateLevelProgression(CrpgUser user)
+    private float ComputeLevelProgression(CrpgUser user)
     {
         int experienceForCurrentLevel = _experienceTable.GetExperienceForLevel(user.Character.Level);
         int experienceForNextLevel = _experienceTable.GetExperienceForLevel(user.Character.Level + 1);
-        LevelProgression = (float)(user.Character.Experience - experienceForCurrentLevel) / (experienceForNextLevel - experienceForCurrentLevel);
+        return (float)(user.Character.Experience - experienceForCurrentLevel) / (experienceForNextLevel - experienceForCurrentLevel);
     }
 }

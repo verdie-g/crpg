@@ -27,6 +27,7 @@ internal class CrpgSubModule : MBSubModuleBase
         base.OnSubModuleLoad();
 
         _constants = LoadCrpgConstants();
+        LoadSpriteSheets();
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode(_constants));
 
 #if CRPG_EXPORT
@@ -54,11 +55,6 @@ internal class CrpgSubModule : MBSubModuleBase
 
     private CrpgConstants LoadCrpgConstants()
     {
-        if (!GameNetwork.IsDedicatedServer) // No need for the constants in the client.
-        {
-            return new CrpgConstants();
-        }
-
         string path = ModuleHelper.GetModuleFullPath(CrpgBattleGameMode.GameName) + "ModuleData/constants.json";
         return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path));
     }
@@ -76,7 +72,8 @@ internal class CrpgSubModule : MBSubModuleBase
     private void LoadSpriteSheets()
     {
 #if CRPG_CLIENT
-        foreach (string filename in Directory.GetFiles(BasePath.Name + "Modules/cRPG/GUI", "*SpriteData.xml", SearchOption.AllDirectories))
+        string guiPath = Path.Combine(ModuleHelper.GetModuleFullPath(CrpgBattleGameMode.GameName), "GUI");
+        foreach (string filename in Directory.GetFiles(guiPath, "*SpriteData.xml", SearchOption.AllDirectories))
         {
             var spriteDataDoc = XDocument.Load(filename);
             foreach (XElement spriteCategoryNode in spriteDataDoc.Root!.Descendants("SpriteCategory"))

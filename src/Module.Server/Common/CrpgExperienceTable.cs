@@ -1,8 +1,6 @@
-using TaleWorlds.MountAndBlade;
-
 namespace Crpg.Module.Common;
 
-internal class CrpgExperienceTable : MissionBehavior
+internal class CrpgExperienceTable
 {
     private readonly CrpgConstants _constants;
     private readonly int[] _table;
@@ -12,8 +10,6 @@ internal class CrpgExperienceTable : MissionBehavior
         _constants = constants;
         _table = ComputeExperienceTable();
     }
-
-    public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
 
     public int GetLevelForExperience(int experience)
     {

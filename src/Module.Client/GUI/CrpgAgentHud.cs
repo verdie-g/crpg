@@ -5,19 +5,23 @@ using TaleWorlds.MountAndBlade.View.Missions;
 
 namespace Crpg.Module.GUI;
 
-public class CrpgAgentHud : MissionView
+internal class CrpgAgentHud : MissionView
 {
+    private readonly CrpgExperienceTable _experienceTable;
     private GauntletLayer? _gauntletLayer;
     private IGauntletMovie? _gauntletMovie;
     private CrpgAgentHudViewModel? _dataSource;
+
+    public CrpgAgentHud(CrpgExperienceTable experienceTable)
+    {
+        _experienceTable = experienceTable;
+    }
 
     public override void EarlyStart()
     {
         base.EarlyStart();
 
-        var crpgUserAccessor = Mission.GetMissionBehavior<CrpgUserAccessor>();
-        var experienceTable = Mission.GetMissionBehavior<CrpgExperienceTable>();
-        _dataSource = new CrpgAgentHudViewModel(crpgUserAccessor, experienceTable);
+        _dataSource = new CrpgAgentHudViewModel(_experienceTable);
 
         // localOrder sets the order the layer are drawn. + 1 to be drawn over the agent HUD.
         _gauntletLayer = new GauntletLayer(ViewOrderPriority + 1);

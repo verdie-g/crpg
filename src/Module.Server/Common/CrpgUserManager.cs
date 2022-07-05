@@ -17,6 +17,12 @@ internal class CrpgUserManager : MissionNetwork
         _crpgClient = crpgClient;
     }
 
+    protected override void HandleEarlyNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
+    {
+        base.HandleEarlyNewClientAfterLoadingFinished(networkPeer);
+        networkPeer.AddComponent<CrpgRepresentative>();
+    }
+
     protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
     {
         base.HandleNewClientAfterSynchronized(networkPeer);

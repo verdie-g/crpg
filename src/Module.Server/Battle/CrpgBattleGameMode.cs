@@ -6,6 +6,7 @@ using TaleWorlds.MountAndBlade.Source.Missions;
 #if CRPG_SERVER
 using Crpg.Module.Api;
 #else
+using Crpg.Module.GUI;
 using TaleWorlds.MountAndBlade.LegacyGUI.Missions;
 using TaleWorlds.MountAndBlade.View.Missions;
 #endif
@@ -17,7 +18,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 {
     public const string GameName = "cRPG";
 
-    private readonly CrpgConstants _constants;
+    private static CrpgConstants _constants = default!; // Static so it's accessible from the views.
 
     public CrpgBattleGameMode(CrpgConstants constants)
         : base(GameName)
@@ -29,8 +30,10 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
     // Used by MissionState.OpenNew that finds all methods having a ViewMethod attribute contained in class
     // having a ViewCreatorModule attribute.
     [ViewMethod(GameName)]
-    public static MissionView[] OpenCrpgBattle(Mission mission) =>
-        new[]
+    public static MissionView[] OpenCrpgBattle(Mission mission)
+    {
+        CrpgExperienceTable experienceTable = new(_constants);
+        return new[]
         {
             // ViewCreator.CreateLobbyEquipmentUIHandler(), // UI to choose loadout.
             ViewCreator.CreateMultiplayerFactionBanVoteUIHandler(),
@@ -57,7 +60,9 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
             ViewCreator.CreateMissionBoundaryCrossingView(),
             new MissionBoundaryWallView(),
             new SpectatorCameraView(),
+            new CrpgAgentHud(experienceTable),
         };
+    }
 #endif
 
     public override void StartMultiplayerGame(string scene)
