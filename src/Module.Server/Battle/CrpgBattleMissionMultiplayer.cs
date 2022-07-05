@@ -177,6 +177,11 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             userUpdates.Add(userUpdate);
         }
 
+        if (userUpdates.Count == 0)
+        {
+            return;
+        }
+
         // TODO: add retry mechanism (the endpoint need to be idempotent though).
         CrpgUsersUpdateResponse res;
         try
