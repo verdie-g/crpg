@@ -13,6 +13,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 {
     private readonly CrpgConstants _constants;
     private readonly MultiplayerRoundController _roundController;
+    private MissionTimer? _spawnTimer;
     private bool _botsSpawned;
 
     public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController roundController)
@@ -26,7 +27,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         base.Initialize(spawnComponent);
         _roundController.OnRoundStarted += RequestStartSpawnSession;
         _roundController.OnRoundEnding += RequestStopSpawnSession;
-        _roundController.EnableEquipmentUpdate();
     }
 
     public override void Clear()
@@ -48,21 +48,12 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     {
         base.RequestStartSpawnSession();
         _botsSpawned = false;
+        _spawnTimer = new MissionTimer(30f); // Limit spawning for 30 seconds.
     }
 
     public override bool AllowEarlyAgentVisualsDespawning(MissionPeer missionPeer)
     {
-        if (!_roundController.IsRoundInProgress)
-        {
-            return false;
-        }
-
-        if (!missionPeer.HasSpawnTimerExpired && missionPeer.SpawnTimer.Check(Mission.Current.CurrentTime))
-        {
-            missionPeer.HasSpawnTimerExpired = true;
-        }
-
-        return missionPeer.HasSpawnTimerExpired;
+        return false;
     }
 
     protected override bool IsRoundInProgress()
@@ -72,6 +63,11 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
     protected override void SpawnAgents()
     {
+        if (_spawnTimer!.Check())
+        {
+            return;
+        }
+
         if (!_botsSpawned)
         {
             SpawnBotAgents();
@@ -160,7 +156,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 || missionPeer.HasSpawnedAgentVisuals
                 || missionPeer.Team == null
                 || missionPeer.Team == Mission.SpectatorTeam
-                || !missionPeer.SpawnTimer.Check(Mission.CurrentTime)
                 || missionPeer.SpawnCountThisRound > 0
                 || crpgRepresentative?.User == null)
             {
