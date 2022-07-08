@@ -1,11 +1,11 @@
 ﻿<Prefab>
   <Constants>
-    <Constant Name="Mission.MainAgentHUD.HeroHealthBar.Frame.Height" BrushName="Mission.MainAgentHUD.HeroHealthBar.Frame"
-              BrushLayer="Default" BrushValueType="Height" />
+    <Constant Name="Mission.MainAgentHUD.HeroHealthBar.Frame.Height" BrushName="Mission.MainAgentHUD.HeroHealthBar.Frame" BrushLayer="Default" BrushValueType="Height" />
   </Constants>
   <Window>
     <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
       <Children>
+
         <ExperienceBarWidget Id="Canvas" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!Mission.MainAgentHUD.HeroHealthBar.Frame.Height"
                              SuggestedHeight="!Mission.MainAgentHUD.HeroHealthBar.Frame.Height" HorizontalAlignment="Right"
                              VerticalAlignment="Bottom" MarginBottom="98" MarginRight="264" LevelProgression="@LevelProgression"
@@ -13,7 +13,11 @@
           <Children>
             <TextWidget Text="@RewardMultiplier" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center"
                         VerticalAlignment="Center" Brush="AgentAmmoCount.Text" Brush.TextVerticalAlignment="Center" Brush.FontSize="26"
-                        Brush.FontColor="#53962AFF" MarginLeft="15" />
+                        Brush.FontColor="#53962AFF" MarginLeft="18" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="!Mission.MainAgentHUD.HeroHealthBar.Frame.Height"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="!Mission.MainAgentHUD.HeroHealthBar.Frame.Height"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="28" />
           </Children>
         </ExperienceBarWidget>
       </Children>
