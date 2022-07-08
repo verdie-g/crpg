@@ -6,16 +6,24 @@ namespace Crpg.Module.GUI;
 // All classes inheriting Widget are usable in prefabs as an xml that (e.g. <ExperienceBarWidget />).
 internal class ExperienceBarWidget : Widget
 {
-    private const int SpritesNb = 16;
-    private const string SpritePrefix = "crpg_experience_circle_";
+    private const int SpritesNb = 50;
+    private const string LeftSpritePrefix = "crpg_experience_circle_left_";
+    private const string RightSpritePrefix = "crpg_experience_circle_right_";
 
-    private readonly Sprite[] _sprites;
+    private readonly Sprite[] _leftSprites;
+    private readonly Sprite[] _rightSprites;
+    private readonly int _spriteHeight;
     private float _levelProgression;
+
+    private Widget LeftWidget => Children[1];
+    private Widget RightWidget => Children[2];
 
     public ExperienceBarWidget(UIContext context)
         : base(context)
     {
-        _sprites = LoadSprites();
+        LoadSprites();
+        (_leftSprites, _rightSprites) = LoadSprites();
+        _spriteHeight = _leftSprites.Last().Height;
     }
 
     [Editor]
@@ -25,15 +33,36 @@ internal class ExperienceBarWidget : Widget
         set
         {
             _levelProgression = value;
-            int spritesIndex = (int)Math.Round(_levelProgression * (_sprites.Length - 1));
-            Sprite = _sprites[spritesIndex];
+
+            int rightSpriteIndex;
+            if (_levelProgression < 0.5f)
+            {
+                LeftWidget.Sprite = null;
+                rightSpriteIndex = (int)Math.Round(2 * _levelProgression * (_rightSprites.Length - 1));
+            }
+            else
+            {
+                int leftSpriteIndex = (int)Math.Round(2 * (_levelProgression - 0.5f) * (_leftSprites.Length - 1));
+                LeftWidget.Sprite = _leftSprites[leftSpriteIndex];
+                LeftWidget.SuggestedHeight = (int)(SuggestedHeight * ((float)LeftWidget.Sprite.Height / _spriteHeight));
+                LeftWidget.MarginTop = SuggestedHeight - LeftWidget.SuggestedHeight;
+                rightSpriteIndex = _rightSprites.Length - 1;
+            }
+
+            RightWidget.Sprite = _rightSprites[rightSpriteIndex];
+            RightWidget.SuggestedHeight = (int)(SuggestedHeight * ((float)RightWidget.Sprite.Height / _spriteHeight));
+            RightWidget.MarginBottom = SuggestedHeight - RightWidget.SuggestedHeight;
         }
     }
 
-    private Sprite[] LoadSprites()
+    private (Sprite[] leftSprites, Sprite[] rightSprites) LoadSprites()
     {
-        return Enumerable.Range(0, SpritesNb)
-            .Select(n => Context.SpriteData.GetSprite(SpritePrefix + n))
+        var leftSprites = Enumerable.Range(0, SpritesNb)
+            .Select(n => Context.SpriteData.GetSprite(LeftSpritePrefix + n))
             .ToArray();
+        var rightSprites = Enumerable.Range(0, SpritesNb)
+            .Select(n => Context.SpriteData.GetSprite(RightSpritePrefix + n))
+            .ToArray();
+        return (leftSprites, rightSprites);
     }
 }
