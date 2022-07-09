@@ -2,9 +2,9 @@ ServerName cRPG Beta
 GameType cRPG
 WelcomeMessage yoyoyooooo
 Map mp_duel_001
-CultureTeam1 khuzait
+CultureTeam1 vlandia
 CultureTeam2 battania
-RoundPreparationTimeLimit 3
+RoundPreparationTimeLimit 2
 MaxNumberOfPlayers 1
 AutoTeamBalanceThreshold 0
 FriendlyFireDamageMeleeFriendPercent 50
@@ -14,10 +14,8 @@ FriendlyFireDamageRangedSelfPercent 0
 MinNumberOfPlayersForMatchStart 0
 NumberOfBotsTeam1 1
 NumberOfBotsTeam2 2
-RoundTotal 10
+RoundTotal 5
 MapTimeLimit 8
-RoundTimeLimit 960
+RoundTimeLimit 120
 WarmupTimeLimit 1
-SingleSpawn true
-end_game_after_mission_is_over
 start_game_and_mission
