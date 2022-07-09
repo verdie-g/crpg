@@ -22,7 +22,10 @@
   <ItemGroup>
     <ContentWithTargetPath Include="..\..\data\constants.json" Link="ModuleData\constants.json" TargetPath="..\..\ModuleData\constants.json" CopyToOutputDirectory="PreserveNewest" />
     <ContentWithTargetPath Include="SubModule.xml;ds_config_crpg.txt;ModuleData\**\*;GUI\**\*.xml" TargetPath="..\..\%(Identity)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="$(MB_CLIENT_PATH)\Modules\Native\ModuleData\crafting_pieces.xml" LinkBase="..\..\ModuleData" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <Content Include="$(MB_CLIENT_PATH)\Modules\SandBoxCore\ModuleData\items\*" LinkBase="..\..\ModuleData\items" CopyToOutputDirectory="PreserveNewest" Visible="false" />
   </ItemGroup>
+
 
   <ItemGroup>
     <Reference Include="$(MB_SERVER_PATH)\bin\Win64_Shipping_Server\TaleWorlds.*.dll">
