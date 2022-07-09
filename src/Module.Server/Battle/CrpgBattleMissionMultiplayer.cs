@@ -142,9 +142,8 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         List<CrpgUserUpdate> userUpdates = new();
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
-            var missionPeer = networkPeer.GetComponent<MissionPeer>();
             var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-            if (missionPeer == null || crpgRepresentative?.User == null)
+            if (crpgRepresentative?.User == null)
             {
                 continue;
             }
@@ -158,10 +157,8 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
                 BrokenItems = Array.Empty<CrpgUserBrokenItem>(), // TODO
             };
 
-            // TODO: check in which team the player has spawned instead of checking the current team.
-            if (missionPeer.SpawnCountThisRound > 0 && missionPeer.Team != null && missionPeer.Team.Side != BattleSideEnum.None)
+            if (crpgRepresentative.SpawnTeamThisRound != null)
             {
-                // TODO: only give reward to users that spawned during the round.
                 int totalRewardMultiplier = crpgRepresentative.RewardMultiplier * ticks;
                 userUpdate.Reward = new CrpgUserReward
                 {
@@ -169,7 +166,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
                     Gold = totalRewardMultiplier * 50,
                 };
 
-                crpgRepresentative.RewardMultiplier = RoundController.RoundWinner == missionPeer.Team.Side
+                crpgRepresentative.RewardMultiplier = RoundController.RoundWinner == crpgRepresentative.SpawnTeamThisRound.Side
                     ? Math.Min(5, crpgRepresentative.RewardMultiplier + 1)
                     : 1;
             }

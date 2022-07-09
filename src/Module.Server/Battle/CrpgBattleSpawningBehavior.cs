@@ -49,6 +49,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         base.RequestStartSpawnSession();
         _botsSpawned = false;
         _spawnTimer = new MissionTimer(30f); // Limit spawning for 30 seconds.
+        ResetSpawnTeams();
     }
 
     public override bool AllowEarlyAgentVisualsDespawning(MissionPeer missionPeer)
@@ -75,6 +76,18 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         }
 
         SpawnPeerAgents();
+    }
+
+    private void ResetSpawnTeams()
+    {
+        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
+        {
+            var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
+            if (crpgRepresentative != null)
+            {
+                crpgRepresentative.SpawnTeamThisRound = null;
+            }
+        }
     }
 
     private void SpawnBotAgents()
@@ -156,8 +169,8 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 || missionPeer.HasSpawnedAgentVisuals
                 || missionPeer.Team == null
                 || missionPeer.Team == Mission.SpectatorTeam
-                || missionPeer.SpawnCountThisRound > 0
-                || crpgRepresentative?.User == null)
+                || crpgRepresentative?.User == null
+                || crpgRepresentative.SpawnTeamThisRound != null)
             {
                 continue;
             }
@@ -200,6 +213,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             Mission.SpawnAgent(agentBuildData);
 
             missionPeer.SpawnCountThisRound += 1;
+            crpgRepresentative.SpawnTeamThisRound = missionPeer.Team;
         }
     }
 
