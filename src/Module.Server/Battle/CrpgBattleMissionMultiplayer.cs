@@ -51,11 +51,6 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         base.OnRemoveBehavior();
     }
 
-    public override void OnPeerChangedTeam(NetworkCommunicator peer, Team? oldTeam, Team newTeam)
-    {
-        // TODO: reward multiplier to change maybe
-    }
-
     public override bool CheckForWarmupEnd()
     {
         int playersInTeam = 0;
