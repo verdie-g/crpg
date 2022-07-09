@@ -119,7 +119,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                     .GetRandomElementWithPredicate<MultiplayerClassDivisions.MPHeroClass>(x => x.Culture == teamCulture);
                 BasicCharacterObject character = botClass.HeroCharacter;
 
-                bool hasMount = character.Equipment[EquipmentIndex.ArmorItemEndSlot].Item != null;
+                bool hasMount = character.Equipment[EquipmentIndex.Horse].Item != null;
                 MatrixFrame spawnFrame = SpawnComponent.GetSpawnFrame(team, hasMount, true);
                 Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
 
@@ -176,16 +176,10 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             }
 
             BasicCultureObject teamCulture = missionPeer.Team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
-            var peerClass = MultiplayerClassDivisions.GetMPHeroClasses().Skip(1).First();
+            var peerClass = MultiplayerClassDivisions.GetMPHeroClasses().Skip(5).First();
             // var character = CreateCharacter(crpgRepresentative.User.Character, _constants);
-            // var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
+            var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
             var character = peerClass.HeroCharacter;
-            var characterEquipment = character.Equipment;
-
-            // var item = MBObjectManager.Instance.GetObject<ItemObject>("mp_vlandian_sickle");
-            // var item = MBObjectManager.Instance.GetObject<ItemObject>("narrow_sword_t3");
-            // Equipment characterEquipment = new() { [EquipmentIndex.Weapon1] = new EquipmentElement(item) };
-            // MissionEquipment characterMissionEquipment = new() { [EquipmentIndex.Weapon1] = new MissionWeapon(item, null, null) };
 
             bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
             MatrixFrame spawnFrame = missionPeer.GetAmountOfAgentVisualsForPeer() > 0
