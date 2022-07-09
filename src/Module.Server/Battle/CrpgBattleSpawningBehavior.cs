@@ -210,7 +210,8 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 .InitialPosition(in spawnFrame.origin)
                 .InitialDirection(in initialDirection);
 
-            Mission.SpawnAgent(agentBuildData);
+            Agent agent = Mission.SpawnAgent(agentBuildData);
+            agent.WieldInitialWeapons();
 
             missionPeer.SpawnCountThisRound += 1;
             crpgRepresentative.SpawnTeamThisRound = missionPeer.Team;
