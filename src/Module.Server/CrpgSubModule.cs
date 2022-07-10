@@ -46,6 +46,9 @@ internal class CrpgSubModule : MBSubModuleBase
         base.InitializeGameStarter(game, starterObject);
         InitializeGameModels(starterObject);
         CrpgSkills.Initialize(game);
+#if CRPG_CLIENT
+        game.GameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("cRPG") + "ModuleData/multiplayer_strings.xml");
+#endif
     }
 
     protected override void OnApplicationTick(float delta)
@@ -57,7 +60,7 @@ internal class CrpgSubModule : MBSubModuleBase
 
     private CrpgConstants LoadCrpgConstants()
     {
-        string path = ModuleHelper.GetModuleFullPath(CrpgBattleGameMode.GameName) + "ModuleData/constants.json";
+        string path = ModuleHelper.GetModuleFullPath("cRPG") + "ModuleData/constants.json";
         return JsonConvert.DeserializeObject<CrpgConstants>(File.ReadAllText(path));
     }
 
@@ -89,7 +92,7 @@ internal class CrpgSubModule : MBSubModuleBase
     private void LoadSpriteSheets()
     {
 #if CRPG_CLIENT
-        string guiPath = Path.Combine(ModuleHelper.GetModuleFullPath(CrpgBattleGameMode.GameName), "GUI");
+        string guiPath = Path.Combine(ModuleHelper.GetModuleFullPath("cRPG"), "GUI");
         foreach (string filename in Directory.GetFiles(guiPath, "*SpriteData.xml", SearchOption.AllDirectories))
         {
             var spriteDataDoc = XDocument.Load(filename);

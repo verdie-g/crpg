@@ -23,10 +23,9 @@
   <ItemGroup>
     <ContentWithTargetPath Include="..\..\data\constants.json" Link="ModuleData\constants.json" TargetPath="..\..\ModuleData\constants.json" CopyToOutputDirectory="PreserveNewest" />
     <ContentWithTargetPath Include="..\Module.Server\SubModule.xml" Link="SubModule.xml" TargetPath="..\..\SubModule.xml" CopyToOutputDirectory="PreserveNewest" />
-    <ContentWithTargetPath Include="..\Module.Server\ModuleData\**\*;GUI\**\*.xml" TargetPath="..\..\%(Identity)" CopyToOutputDirectory="PreserveNewest" />
+    <ContentWithTargetPath Include="ModuleData\**\*;GUI\**\*.xml" TargetPath="..\..\%(Identity)" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="..\Module.Server\**\*$(DefaultLanguageSourceExtension)" />
     <Compile Remove="..\Module.Server\$(BaseIntermediateOutputPath)\**;..\Module.Server\$(BaseOutputPath)\**" />
-    <Compile Remove="..\Module.Server\Battle\NoEndingMissionLobbyComponent.cs" />
   </ItemGroup>
 
   <ItemGroup>
