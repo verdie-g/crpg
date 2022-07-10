@@ -1,5 +1,5 @@
 ServerName cRPG Beta
-GameType cRPG
+GameType cRPGBattle
 WelcomeMessage yoyoyooooo
 Map mp_duel_001
 CultureTeam1 vlandia
@@ -12,9 +12,9 @@ FriendlyFireDamageMeleeSelfPercent 0
 FriendlyFireDamageRangedFriendPercent 50
 FriendlyFireDamageRangedSelfPercent 0
 MinNumberOfPlayersForMatchStart 0
-NumberOfBotsTeam1 1
-NumberOfBotsTeam2 2
-RoundTotal 5
+NumberOfBotsTeam1 2
+NumberOfBotsTeam2 3
+RoundTotal 10
 MapTimeLimit 8
 RoundTimeLimit 120
 WarmupTimeLimit 1
