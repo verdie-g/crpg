@@ -35,26 +35,22 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
         CrpgExperienceTable experienceTable = new(_constants);
         return new[]
         {
-            // ViewCreator.CreateLobbyEquipmentUIHandler(), // UI to choose loadout.
             ViewCreator.CreateMultiplayerFactionBanVoteUIHandler(),
             ViewCreator.CreateMissionAgentStatusUIHandler(mission),
-            // ViewCreator.CreateMissionMainAgentEquipmentController(mission),
+            ViewCreator.CreateMissionMainAgentEquipmentController(mission), // Pick/drop items.
             ViewCreator.CreateMissionMainAgentCheerBarkControllerView(mission),
             ViewCreator.CreateMissionMultiplayerEscapeMenu("Battle"),
-            // ViewCreator.CreateMultiplayerMissionOrderUIHandler(mission),
             ViewCreator.CreateMissionAgentLabelUIHandler(mission),
-            // ViewCreator.CreateOrderTroopPlacerView(mission),
             ViewCreator.CreateMultiplayerTeamSelectUIHandler(),
             ViewCreator.CreateMissionScoreBoardUIHandler(mission, false),
             ViewCreator.CreateMultiplayerEndOfRoundUIHandler(),
             ViewCreator.CreateMultiplayerEndOfBattleUIHandler(),
             ViewCreator.CreatePollProgressUIHandler(),
-            // new MissionItemContourControllerView(),
-            // new MissionAgentContourControllerView(),
+            new MissionItemContourControllerView(), // Draw contour of item on the ground when pressing ALT.
+            new MissionAgentContourControllerView(),
             ViewCreator.CreateMissionKillNotificationUIHandler(),
             ViewCreator.CreateMultiplayerMissionHUDExtensionUIHandler(),
             ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
-            // ViewCreator.CreateMissionFlagMarkerUIHandler(),
             ViewCreator.CreateOptionsUIHandler(),
             ViewCreator.CreateMissionMainAgentEquipDropView(mission),
             ViewCreator.CreateMissionBoundaryCrossingView(),
