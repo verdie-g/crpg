@@ -51,7 +51,7 @@ public class GetBattleMercenaryApplicationsQueryTest : TestBase
         Battle battle = new()
         {
             Phase = BattlePhase.Hiring,
-            Fighters = { new BattleFighter { HeroId = 20, Side = BattleSide.Defender } },
+            Fighters = { new BattleFighter { PartyId = 20, Side = BattleSide.Defender } },
             MercenaryApplications =
             {
                 new BattleMercenaryApplication
@@ -123,7 +123,7 @@ public class GetBattleMercenaryApplicationsQueryTest : TestBase
         Battle battle = new()
         {
             Phase = BattlePhase.Hiring,
-            Fighters = { new BattleFighter { HeroId = 99, Side = BattleSide.Defender } },
+            Fighters = { new BattleFighter { PartyId = 99, Side = BattleSide.Defender } },
             MercenaryApplications =
             {
                 new BattleMercenaryApplication

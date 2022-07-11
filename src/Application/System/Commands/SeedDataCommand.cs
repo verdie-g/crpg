@@ -7,8 +7,8 @@ using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
-using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
@@ -830,509 +830,510 @@ public record SeedDataCommand : IMediatorRequest
             var leblenion = await GetSettlementByName("Leblenion");
             var rhemtoil = await GetSettlementByName("Rhemtoil");
 
-            Hero brainfartHero = new()
+            Party brainfartParty = new()
             {
                 Region = Region.Europe,
                 User = brainfart,
                 Troops = 1,
                 Position = new Point(112, -88),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero kiwiHero = new()
+            Party kiwiParty = new()
             {
                 Region = Region.Europe,
                 User = kiwi,
                 Troops = 1,
                 Position = new Point(142, -90),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero ikaroozHero = new()
+            Party ikaroozParty = new()
             {
                 Region = Region.Europe,
                 User = ikarooz,
                 Troops = 20,
                 Position = new Point(130, -102),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero laHireHero = new()
+            Party laHireParty = new()
             {
                 Region = Region.Europe,
                 User = laHire,
                 Troops = 20,
                 Position = new Point(135, -97),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero brygganHero = new()
+            Party brygganParty = new()
             {
                 Region = Region.Europe,
                 User = bryggan,
                 Troops = 1,
                 Position = new Point(131, -102),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero elmarykHero = new()
+            Party elmarykParty = new()
             {
                 Region = Region.Europe,
                 User = elmaryk,
                 Troops = 6,
                 Position = new Point(108, -98),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero schumetzqHero = new()
+            Party schumetzqParty = new()
             {
                 Region = Region.Europe,
                 User = schumetzq,
                 Troops = 7,
                 Position = new Point(119, -105),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero azumaHero = new()
+            Party azumaParty = new()
             {
                 Region = Region.Europe,
                 User = azuma,
                 Troops = 121,
                 Position = new Point(106, -112),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero zorguyHero = new()
+            Party zorguyParty = new()
             {
                 Region = Region.Europe,
                 User = zorguy,
                 Troops = 98,
                 Position = new Point(114, -114),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero eckoHero = new()
+            Party eckoParty = new()
             {
                 Region = Region.Europe,
                 User = ecko,
                 Troops = 55,
                 Position = new Point(117, -112),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero firebatHero = new()
+            Party firebatParty = new()
             {
                 Region = Region.Europe,
                 User = firebat,
                 Troops = 29,
                 Position = new Point(105, -111),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero laenirHero = new()
+            Party laenirParty = new()
             {
                 Region = Region.Europe,
                 User = leanir,
                 Troops = 1,
                 Position = new Point(103, -102),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero opsetHero = new()
+            Party opsetParty = new()
             {
                 Region = Region.Europe,
                 User = opset,
                 Troops = 1,
                 Position = new Point(113, -112),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero falcomHero = new()
+            Party falcomParty = new()
             {
                 Region = Region.Europe,
                 User = falcom,
                 Troops = 4,
                 Position = epicrotea.Position,
-                Status = HeroStatus.IdleInSettlement,
+                Status = PartyStatus.IdleInSettlement,
                 TargetedSettlement = epicrotea,
             };
-            Hero victorhh888Hero = new()
+            Party victorhh888Party = new()
             {
                 Region = Region.Europe,
                 User = victorhh888,
                 Troops = 9,
                 Position = epicrotea.Position,
-                Status = HeroStatus.RecruitingInSettlement,
+                Status = PartyStatus.RecruitingInSettlement,
             };
-            Hero sellkaHero = new()
+            Party sellkaParty = new()
             {
                 Region = Region.Europe,
                 User = sellka,
                 Troops = 3,
                 Position = dyopalis.Position,
-                Status = HeroStatus.RecruitingInSettlement,
+                Status = PartyStatus.RecruitingInSettlement,
                 TargetedSettlement = dyopalis,
             };
-            Hero distanceHero = new()
+            Party distanceParty = new()
             {
                 Region = Region.Europe,
                 User = distance,
                 Troops = 1,
                 Position = rhotae.Position,
-                Status = HeroStatus.RecruitingInSettlement,
+                Status = PartyStatus.RecruitingInSettlement,
                 TargetedSettlement = rhotae,
             };
-            Hero bakhratHero = new()
+            Party bakhratParty = new()
             {
                 Region = Region.Europe,
                 User = bakhrat,
                 Troops = 120,
                 Position = rhotae.Position,
-                Status = HeroStatus.RecruitingInSettlement,
+                Status = PartyStatus.RecruitingInSettlement,
                 TargetedSettlement = rhotae,
             };
-            Hero lancelotHero = new()
+            Party lancelotParty = new()
             {
                 Region = Region.Europe,
                 User = lancelot,
                 Troops = 243,
                 Position = rhotae.Position,
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
                 TargetedSettlement = rhotae,
             };
-            Hero buddhaHero = new()
+            Party buddhaParty = new()
             {
                 Region = Region.Europe,
                 User = buddha,
                 Troops = 49,
                 Position = nideon.Position,
-                Status = HeroStatus.IdleInSettlement,
+                Status = PartyStatus.IdleInSettlement,
                 TargetedSettlement = rhotae,
             };
-            Hero lerchHero = new()
+            Party lerchParty = new()
             {
                 Region = Region.Europe,
                 User = lerch,
                 Troops = 10,
                 Position = new Point(107, -102),
-                Status = HeroStatus.MovingToSettlement,
+                Status = PartyStatus.MovingToSettlement,
                 TargetedSettlement = rhotae,
             };
-            Hero tjensHero = new()
+            Party tjensParty = new()
             {
                 Region = Region.Europe,
                 User = tjens,
                 Troops = 20,
                 Position = new Point(112, -93),
-                Status = HeroStatus.MovingToSettlement,
+                Status = PartyStatus.MovingToSettlement,
                 TargetedSettlement = rhotae,
             };
-            Hero knitlerHero = new()
+            Party knitlerParty = new()
             {
                 Region = Region.Europe,
                 User = knitler,
                 Troops = 3,
                 Position = new Point(124, -102),
-                Status = HeroStatus.MovingToSettlement,
+                Status = PartyStatus.MovingToSettlement,
                 TargetedSettlement = rhotae,
             };
-            Hero magnucleanHero = new()
+            Party magnucleanParty = new()
             {
                 Region = Region.Europe,
                 User = magnuclean,
                 Troops = 9,
                 Position = new Point(120, -88),
-                Status = HeroStatus.MovingToSettlement,
+                Status = PartyStatus.MovingToSettlement,
                 TargetedSettlement = rhemtoil,
             };
-            Hero baronCyborgHero = new()
+            Party baronCyborgParty = new()
             {
                 Region = Region.Europe,
                 User = baronCyborg,
                 Troops = 9,
                 Position = new Point(120, -88),
-                Status = HeroStatus.MovingToSettlement,
+                Status = PartyStatus.MovingToSettlement,
                 TargetedSettlement = mecalovea,
             };
-            Hero scarfaceHero = new()
+            Party scarfaceParty = new()
             {
                 Region = Region.Europe,
                 User = scarface,
                 Troops = 25,
                 Position = new Point(119, -105),
-                Status = HeroStatus.MovingToSettlement,
+                Status = PartyStatus.MovingToSettlement,
                 TargetedSettlement = hertogeaCastle,
             };
-            Hero neostralieHero = new()
+            Party neostralieParty = new()
             {
                 Region = Region.Europe,
                 User = neostralie,
                 Troops = 1,
                 Position = new Point(128, -97),
-                Status = HeroStatus.MovingToSettlement,
+                Status = PartyStatus.MovingToSettlement,
                 TargetedSettlement = potamis,
             };
-            Hero manikHero = new()
+            Party manikParty = new()
             {
                 Region = Region.Europe,
                 User = manik,
                 Troops = 1,
                 Position = new Point(129, -102),
-                Status = HeroStatus.MovingToAttackHero,
-                TargetedHero = neostralieHero,
+                Status = PartyStatus.MovingToAttackParty,
+                TargetedParty = neostralieParty,
             };
-            Hero ajroselleHero = new()
+            Party ajroselleParty = new()
             {
                 Region = Region.Europe,
                 User = ajroselle,
                 Troops = 1,
                 Position = new Point(130, -107),
-                Status = HeroStatus.MovingToAttackHero,
-                TargetedHero = manikHero,
+                Status = PartyStatus.MovingToAttackParty,
+                TargetedParty = manikParty,
             };
-            Hero skraelHero = new()
+            Party skraelParty = new()
             {
                 Region = Region.Europe,
                 User = skrael,
                 Troops = 1,
                 Position = new Point(126, -93),
-                Status = HeroStatus.MovingToAttackHero,
-                TargetedHero = neostralieHero,
+                Status = PartyStatus.MovingToAttackParty,
+                TargetedParty = neostralieParty,
             };
-            Hero bedoHero = new()
+            Party bedoParty = new()
             {
                 Region = Region.Europe,
                 User = bedo,
                 Troops = 300,
                 Position = new Point(114, -101),
-                Status = HeroStatus.MovingToAttackSettlement,
+                Status = PartyStatus.MovingToAttackSettlement,
                 TargetedSettlement = gersegosCastle,
             };
-            Hero lambicHero = new()
+            Party lambicParty = new()
             {
                 Region = Region.Europe,
                 User = lambic,
                 Troops = 87,
                 Position = new Point(113, -98),
-                Status = HeroStatus.MovingToAttackSettlement,
+                Status = PartyStatus.MovingToAttackSettlement,
                 TargetedSettlement = gersegosCastle,
             };
-            Hero sanasarHero = new()
+            Party sanasarParty = new()
             {
                 Region = Region.Europe,
                 User = sanasar,
                 Troops = 21,
                 Position = new Point(119, -101),
-                Status = HeroStatus.MovingToAttackSettlement,
+                Status = PartyStatus.MovingToAttackSettlement,
                 TargetedSettlement = rhotae,
             };
-            Hero vlad007Hero = new()
+            Party vlad007Party = new()
             {
                 Region = Region.Europe,
                 User = vlad007,
                 Troops = 21,
                 Position = new Point(119, -101),
-                Status = HeroStatus.MovingToAttackSettlement,
+                Status = PartyStatus.MovingToAttackSettlement,
                 TargetedSettlement = rhotae,
             };
-            Hero canp0GHero = new()
+            Party canp0GParty = new()
             {
                 Region = Region.Europe,
                 User = canp0g,
                 Troops = 1,
                 Position = rhesosCastle.Position,
-                Status = HeroStatus.MovingToPoint,
+                Status = PartyStatus.MovingToPoint,
                 Waypoints = new MultiPoint(new[] { new Point(125, -97) }),
             };
-            Hero sharkHero = new()
+            Party sharkParty = new()
             {
                 Region = Region.Europe,
                 User = shark,
                 Troops = 1,
                 Position = new Point(105, -107),
-                Status = HeroStatus.MovingToPoint,
+                Status = PartyStatus.MovingToPoint,
                 Waypoints = new MultiPoint(new[] { new Point(121, -99) }),
             };
-            Hero noobAmphetamineHero = new()
+            Party noobAmphetamineParty = new()
             {
                 Region = Region.Europe,
                 User = noobAmphetamine,
                 Troops = 1,
                 Position = new Point(107, -100),
-                Status = HeroStatus.MovingToPoint,
+                Status = PartyStatus.MovingToPoint,
                 Waypoints = new MultiPoint(new[] { new Point(112, -88) }),
             };
-            Hero mundeteHero = new()
+            Party mundeteParty = new()
             {
                 Region = Region.Europe,
                 User = mundete,
                 Troops = 1,
                 Position = new Point(112, -99),
-                Status = HeroStatus.FollowingHero,
-                TargetedHero = sharkHero,
+                Status = PartyStatus.FollowingParty,
+                TargetedParty = sharkParty,
             };
-            Hero aroyFalconerHero = new()
+            Party aroyFalconerParty = new()
             {
                 Region = Region.Europe,
                 User = aroyFalconer,
                 Troops = 1,
                 Position = new Point(123, -88),
-                Status = HeroStatus.MovingToPoint,
+                Status = PartyStatus.MovingToPoint,
                 Waypoints = new MultiPoint(new[] { new Point(135, -98) }),
             };
-            Hero insanitoidHero = new()
+            Party insanitoidParty = new()
             {
                 Region = Region.Europe,
                 User = insanitoid,
                 Troops = 1,
                 Position = new Point(135, -98),
-                Status = HeroStatus.MovingToPoint,
+                Status = PartyStatus.MovingToPoint,
                 Waypoints = new MultiPoint(new[] { new Point(123, -88) }),
             };
-            Hero namidakaHero = new()
+            Party namidakaParty = new()
             {
                 Region = Region.Europe,
                 User = namidaka,
                 Troops = 11,
                 Position = new Point(135, -99),
-                Status = HeroStatus.FollowingHero,
-                TargetedHero = insanitoidHero,
+                Status = PartyStatus.FollowingParty,
+                TargetedParty = insanitoidParty,
             };
-            Hero xDemHero = new()
+            Party xDemParty = new()
             {
                 Region = Region.Europe,
                 User = xDem,
                 Troops = 250,
                 Position = new Point(nideon.Position.X - 0.2, nideon.Position.Y - 0.2),
-                Status = HeroStatus.InBattle,
+                Status = PartyStatus.InBattle,
                 TargetedSettlement = nideon,
             };
-            Hero disorotHero = new()
+            Party disorotParty = new()
             {
                 Region = Region.Europe,
                 User = disorot,
                 Troops = 89,
                 Position = new Point(nideon.Position.X + 0.2, nideon.Position.Y + 0.2),
-                Status = HeroStatus.InBattle,
+                Status = PartyStatus.InBattle,
             };
-            Hero aceHero = new()
+            Party aceParty = new()
             {
                 Region = Region.Europe,
                 User = ace,
                 Troops = 104,
                 Position = new Point(nideon.Position.X - 0.2, nideon.Position.Y + 0.2),
-                Status = HeroStatus.InBattle,
+                Status = PartyStatus.InBattle,
             };
-            Hero sagarHero = new()
+            Party sagarParty = new()
             {
                 Region = Region.Europe,
                 User = sagar,
                 Troops = 300,
                 Position = new Point(nideon.Position.X + 0.2, nideon.Position.Y - 0.2),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero greenShadowHero = new()
+            Party greenShadowParty = new()
             {
                 Region = Region.Europe,
                 User = greenShadow,
                 Troops = 31,
                 Position = new Point(106.986, -110.171),
-                Status = HeroStatus.InBattle,
+                Status = PartyStatus.InBattle,
             };
-            Hero hannibaruHero = new()
+            Party hannibaruParty = new()
             {
                 Region = Region.Europe,
                 User = hannibaru,
                 Troops = 42,
                 Position = new Point(107.109, -110.328),
-                Status = HeroStatus.InBattle,
+                Status = PartyStatus.InBattle,
             };
-            Hero drexxHero = new()
+            Party drexxParty = new()
             {
                 Region = Region.Europe,
                 User = drexx,
                 Troops = 53,
                 Position = new Point(107.304, -110.203),
-                Status = HeroStatus.InBattle,
+                Status = PartyStatus.InBattle,
             };
-            Hero xaroshHero = new()
+            Party xaroshParty = new()
             {
                 Region = Region.Europe,
                 User = xarosh,
                 Troops = 64,
                 Position = new Point(107.210, -110.062),
-                Status = HeroStatus.InBattle,
+                Status = PartyStatus.InBattle,
             };
-            Hero tipsyTobyHero = new()
+            Party tipsyTobyParty = new()
             {
                 Region = Region.Europe,
                 User = tipsyToby,
                 Troops = 75,
                 Position = new Point(107.304, -110.046),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero localAlphaHero = new()
+            Party localAlphaParty = new()
             {
                 Region = Region.Europe,
                 User = localAlpha,
                 Troops = 75,
                 Position = new Point(107.304, -110.046),
-                Status = HeroStatus.Idle,
+                Status = PartyStatus.Idle,
             };
-            Hero alexHero = new()
+            Party alexParty = new()
             {
                 Region = Region.Europe,
                 User = alex,
                 Troops = 86,
                 Position = new Point(107, -106),
-                Status = HeroStatus.InBattle,
+                Status = PartyStatus.InBattle,
                 TargetedSettlement = hertogea,
             };
-            Hero kedrynFuelHero = new()
+            Party kedrynFuelParty = new()
             {
                 Region = Region.Europe,
                 User = kedrynFuel,
                 Troops = 97,
                 Position = new Point(107, -106.2),
-                Status = HeroStatus.FollowingHero,
-                TargetedHero = alexHero,
+                Status = PartyStatus.FollowingParty,
+                TargetedParty = alexParty,
             };
-            Hero luqeroHero = new()
+            Party luqeroParty = new()
             {
                 Region = Region.Europe,
                 User = luqero,
                 Troops = 108,
                 Position = hertogea.Position,
-                Status = HeroStatus.IdleInSettlement,
+                Status = PartyStatus.IdleInSettlement,
                 TargetedSettlement = hertogea,
             };
-            Hero ilyaHero = new()
+            Party ilyaParty = new()
             {
                 Region = Region.Europe,
                 User = ilya,
                 Troops = 119,
                 Position = hertogea.Position,
-                Status = HeroStatus.IdleInSettlement,
+                Status = PartyStatus.IdleInSettlement,
                 TargetedSettlement = hertogea,
             };
-            Hero eztliHero = new()
+            Party eztliParty = new()
             {
                 Region = Region.Europe,
                 User = eztli,
                 Troops = 86,
                 Position = leblenion.Position,
-                Status = HeroStatus.InBattle,
+                Status = PartyStatus.InBattle,
                 TargetedSettlement = leblenion,
             };
 
-            // Users with no hero: telesto, kypak, devoidDragon.
+            // Users with no party: telesto, kypak, devoidDragon.
 
-            Hero[] newHeroes =
+            Party[] newParties =
             {
-                brainfartHero, kiwiHero, ikaroozHero, laHireHero, brygganHero, elmarykHero, schumetzqHero, azumaHero,
-                zorguyHero, eckoHero, firebatHero, laenirHero, opsetHero, falcomHero, victorhh888Hero, sellkaHero,
-                distanceHero, bakhratHero, lancelotHero, buddhaHero, lerchHero, tjensHero, knitlerHero, magnucleanHero,
-                baronCyborgHero, scarfaceHero, neostralieHero, manikHero, ajroselleHero, skraelHero, bedoHero,
-                lambicHero, sanasarHero, vlad007Hero, canp0GHero, sharkHero, noobAmphetamineHero, mundeteHero,
-                aroyFalconerHero, insanitoidHero, namidakaHero, xDemHero, disorotHero, aceHero, sagarHero,
-                greenShadowHero, hannibaruHero, drexxHero, xaroshHero, tipsyTobyHero, localAlphaHero, eztliHero,
+                brainfartParty, kiwiParty, ikaroozParty, laHireParty, brygganParty, elmarykParty, schumetzqParty,
+                azumaParty, zorguyParty, eckoParty, firebatParty, laenirParty, opsetParty, falcomParty,
+                victorhh888Party, sellkaParty, distanceParty, bakhratParty, lancelotParty, buddhaParty, lerchParty,
+                tjensParty, knitlerParty, magnucleanParty, baronCyborgParty, scarfaceParty, neostralieParty,
+                manikParty, ajroselleParty, skraelParty, bedoParty, lambicParty, sanasarParty, vlad007Party,
+                canp0GParty, sharkParty, noobAmphetamineParty, mundeteParty, aroyFalconerParty, insanitoidParty,
+                namidakaParty, xDemParty, disorotParty, aceParty, sagarParty, greenShadowParty, hannibaruParty,
+                drexxParty, xaroshParty, tipsyTobyParty, localAlphaParty, eztliParty,
             };
 
-            var existingHeroes = (await _db.Heroes.ToArrayAsync())
+            var existingParties = (await _db.Parties.ToArrayAsync())
                 .Select(u => u.Id)
                 .ToHashSet();
-            foreach (var newHero in newHeroes)
+            foreach (var newParty in newParties)
             {
-                if (!existingHeroes.Contains(newHero.User!.Id))
+                if (!existingParties.Contains(newParty.User!.Id))
                 {
-                    _db.Heroes.Add(newHero);
+                    _db.Parties.Add(newParty);
                 }
             }
 
@@ -1345,26 +1346,26 @@ public record SeedDataCommand : IMediatorRequest
                 {
                     new BattleFighter
                     {
-                        Hero = xDemHero,
+                        Party = xDemParty,
                         Side = BattleSide.Attacker,
                         Commander = true,
                     },
                     new BattleFighter
                     {
-                        Hero = disorotHero,
+                        Party = disorotParty,
                         Side = BattleSide.Attacker,
                         Commander = false,
                     },
                     new BattleFighter
                     {
-                        Hero = null,
+                        Party = null,
                         Settlement = nideon,
                         Side = BattleSide.Defender,
                         Commander = true,
                     },
                     new BattleFighter
                     {
-                        Hero = aceHero,
+                        Party = aceParty,
                         Side = BattleSide.Defender,
                         Commander = false,
                     },
@@ -1373,7 +1374,7 @@ public record SeedDataCommand : IMediatorRequest
                 {
                     new BattleFighterApplication
                     {
-                        Hero = sagarHero,
+                        Party = sagarParty,
                         Side = BattleSide.Defender,
                         Status = BattleFighterApplicationStatus.Pending,
                     },
@@ -1386,22 +1387,22 @@ public record SeedDataCommand : IMediatorRequest
                 Position = new Point(107.187, -110.164),
                 Fighters =
                 {
-                    new BattleFighter { Hero = xaroshHero, Side = BattleSide.Attacker, Commander = true },
-                    new BattleFighter { Hero = greenShadowHero, Side = BattleSide.Attacker, Commander = false },
-                    new BattleFighter { Hero = drexxHero, Side = BattleSide.Defender, Commander = true },
-                    new BattleFighter { Hero = hannibaruHero, Side = BattleSide.Defender, Commander = false },
+                    new BattleFighter { Party = xaroshParty, Side = BattleSide.Attacker, Commander = true },
+                    new BattleFighter { Party = greenShadowParty, Side = BattleSide.Attacker, Commander = false },
+                    new BattleFighter { Party = drexxParty, Side = BattleSide.Defender, Commander = true },
+                    new BattleFighter { Party = hannibaruParty, Side = BattleSide.Defender, Commander = false },
                 },
                 FighterApplications =
                 {
                     new BattleFighterApplication
                     {
-                        Hero = tipsyTobyHero,
+                        Party = tipsyTobyParty,
                         Side = BattleSide.Attacker,
                         Status = BattleFighterApplicationStatus.Pending,
                     },
                     new BattleFighterApplication
                     {
-                        Hero = localAlphaHero,
+                        Party = localAlphaParty,
                         Side = BattleSide.Defender,
                         Status = BattleFighterApplicationStatus.Pending,
                     },
@@ -1417,13 +1418,13 @@ public record SeedDataCommand : IMediatorRequest
                 {
                     new BattleFighter
                     {
-                        Hero = alexHero,
+                        Party = alexParty,
                         Side = BattleSide.Attacker,
                         Commander = true,
                     },
                     new BattleFighter
                     {
-                        Hero = null,
+                        Party = null,
                         Settlement = hertogea,
                         Side = BattleSide.Defender,
                         Commander = true,
@@ -1433,19 +1434,19 @@ public record SeedDataCommand : IMediatorRequest
                 {
                     new BattleFighterApplication
                     {
-                        Hero = kedrynFuelHero,
+                        Party = kedrynFuelParty,
                         Side = BattleSide.Attacker,
                         Status = BattleFighterApplicationStatus.Pending,
                     },
                     new BattleFighterApplication
                     {
-                        Hero = luqeroHero,
+                        Party = luqeroParty,
                         Side = BattleSide.Defender,
                         Status = BattleFighterApplicationStatus.Pending,
                     },
                     new BattleFighterApplication
                     {
-                        Hero = ilyaHero,
+                        Party = ilyaParty,
                         Side = BattleSide.Defender,
                         Status = BattleFighterApplicationStatus.Pending,
                     },
@@ -1461,13 +1462,13 @@ public record SeedDataCommand : IMediatorRequest
                 {
                     new BattleFighter
                     {
-                        Hero = eztliHero,
+                        Party = eztliParty,
                         Side = BattleSide.Attacker,
                         Commander = true,
                     },
                     new BattleFighter
                     {
-                        Hero = null,
+                        Party = null,
                         Settlement = leblenion,
                         Side = BattleSide.Defender,
                         Commander = true,

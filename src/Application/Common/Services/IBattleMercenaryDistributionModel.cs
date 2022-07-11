@@ -18,13 +18,13 @@ internal class BattleMercenaryUniformDistributionModel : IBattleMercenaryDistrib
     {
         foreach (IGrouping<BattleSide, BattleFighter> teamFighters in fighters.GroupBy(f => f.Side))
         {
-            int teamTotalTroops = teamFighters.Sum(fighter => (int)fighter.Hero!.Troops);
+            int teamTotalTroops = teamFighters.Sum(fighter => (int)fighter.Party!.Troops);
             int remainingSlots = battleSlots;
             foreach (var fighter in teamFighters)
             {
                 // Compute the share the fighter troops represents in the entire army and give the fighter
                 // the same share of mercenary slots.
-                double fighterFactor = Math.Floor(fighter.Hero!.Troops) / teamTotalTroops;
+                double fighterFactor = Math.Floor(fighter.Party!.Troops) / teamTotalTroops;
                 int slotsForFighter = (int)(fighterFactor * battleSlots);
                 fighter.MercenarySlots = slotsForFighter - 1; // Remove one for the slot of the fighter itself.
                 remainingSlots -= slotsForFighter;

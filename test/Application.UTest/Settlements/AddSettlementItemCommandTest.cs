@@ -1,7 +1,7 @@
 ﻿using Crpg.Application.Common.Results;
 using Crpg.Application.Settlements.Commands;
-using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
@@ -12,76 +12,76 @@ namespace Crpg.Application.UTest.Settlements;
 public class AddSettlementItemCommandTest : TestBase
 {
     [Test]
-    public async Task ShouldReturnErrorIfHeroNotFound()
+    public async Task ShouldReturnErrorIfPartyNotFound()
     {
         AddSettlementItemCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new AddSettlementItemCommand
         {
-            HeroId = 99,
+            PartyId = 99,
             SettlementId = 99,
             ItemId = 99,
             Count = 0,
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.HeroNotFound, res.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
     }
 
     [Test]
-    public async Task ShouldReturnErrorIfHeroNotInASettlement()
+    public async Task ShouldReturnErrorIfPartyNotInASettlement()
     {
         Settlement settlement = new();
         ArrangeDb.Settlements.Add(settlement);
-        Hero hero = new()
+        Party party = new()
         {
-            Status = HeroStatus.Idle,
+            Status = PartyStatus.Idle,
             User = new User(),
         };
-        ArrangeDb.Heroes.Add(hero);
+        ArrangeDb.Parties.Add(party);
         await ArrangeDb.SaveChangesAsync();
 
         AddSettlementItemCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new AddSettlementItemCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             SettlementId = settlement.Id,
             ItemId = 99,
             Count = 0,
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.HeroNotInASettlement, res.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.PartyNotInASettlement, res.Errors![0].Code);
     }
 
     [Test]
-    public async Task ShouldReturnErrorIfHeroNotInTheSettlement()
+    public async Task ShouldReturnErrorIfPartyNotInTheSettlement()
     {
         Settlement settlement = new();
         ArrangeDb.Settlements.Add(settlement);
-        Hero hero = new()
+        Party party = new()
         {
-            Status = HeroStatus.IdleInSettlement,
+            Status = PartyStatus.IdleInSettlement,
             TargetedSettlement = new Settlement(),
             User = new User(),
         };
-        ArrangeDb.Heroes.Add(hero);
+        ArrangeDb.Parties.Add(party);
         await ArrangeDb.SaveChangesAsync();
 
         AddSettlementItemCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new AddSettlementItemCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             SettlementId = settlement.Id,
             ItemId = 99,
             Count = 0,
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.HeroNotInASettlement, res.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.PartyNotInASettlement, res.Errors![0].Code);
     }
 
     [Test]
-    public async Task ShouldReturnErrorIfHeroGiveItemsTheyDontOwn()
+    public async Task ShouldReturnErrorIfPartyGiveItemsTheyDontOwn()
     {
         Item item0 = new();
         Item item1 = new();
@@ -90,21 +90,21 @@ public class AddSettlementItemCommandTest : TestBase
         Settlement settlement = new();
         ArrangeDb.Settlements.Add(settlement);
 
-        Hero hero = new()
+        Party party = new()
         {
-            Status = HeroStatus.RecruitingInSettlement,
+            Status = PartyStatus.RecruitingInSettlement,
             TargetedSettlement = settlement,
             User = new User(),
-            Items = { new HeroItem { Item = item0, Count = 5 } },
+            Items = { new PartyItem { Item = item0, Count = 5 } },
         };
-        ArrangeDb.Heroes.Add(hero);
+        ArrangeDb.Parties.Add(party);
 
         await ArrangeDb.SaveChangesAsync();
 
         AddSettlementItemCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new AddSettlementItemCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             SettlementId = settlement.Id,
             ItemId = item1.Id,
             Count = 0,
@@ -115,7 +115,7 @@ public class AddSettlementItemCommandTest : TestBase
     }
 
     [Test]
-    public async Task ShouldReturnErrorIfHeroDoesntHaveEnoughItems()
+    public async Task ShouldReturnErrorIfPartyDoesntHaveEnoughItems()
     {
         Item item0 = new();
         ArrangeDb.Items.AddRange(item0);
@@ -123,21 +123,21 @@ public class AddSettlementItemCommandTest : TestBase
         Settlement settlement = new();
         ArrangeDb.Settlements.Add(settlement);
 
-        Hero hero = new()
+        Party party = new()
         {
-            Status = HeroStatus.RecruitingInSettlement,
+            Status = PartyStatus.RecruitingInSettlement,
             TargetedSettlement = settlement,
             User = new User(),
-            Items = { new HeroItem { Item = item0, Count = 5 } },
+            Items = { new PartyItem { Item = item0, Count = 5 } },
         };
-        ArrangeDb.Heroes.Add(hero);
+        ArrangeDb.Parties.Add(party);
 
         await ArrangeDb.SaveChangesAsync();
 
         AddSettlementItemCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new AddSettlementItemCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             SettlementId = settlement.Id,
             ItemId = item0.Id,
             Count = 6,
@@ -148,7 +148,7 @@ public class AddSettlementItemCommandTest : TestBase
     }
 
     [Test]
-    public async Task ShouldReturnErrorIfHeroTakesItemsFromUnownedSettlement()
+    public async Task ShouldReturnErrorIfPartyTakesItemsFromUnownedSettlement()
     {
         Item item0 = new();
         ArrangeDb.Items.AddRange(item0);
@@ -159,32 +159,32 @@ public class AddSettlementItemCommandTest : TestBase
         };
         ArrangeDb.Settlements.Add(settlement);
 
-        Hero hero = new()
+        Party party = new()
         {
-            Status = HeroStatus.RecruitingInSettlement,
+            Status = PartyStatus.RecruitingInSettlement,
             TargetedSettlement = settlement,
             User = new User(),
-            Items = new List<HeroItem>(),
+            Items = new List<PartyItem>(),
         };
-        ArrangeDb.Heroes.Add(hero);
+        ArrangeDb.Parties.Add(party);
 
         await ArrangeDb.SaveChangesAsync();
 
         AddSettlementItemCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new AddSettlementItemCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             SettlementId = settlement.Id,
             ItemId = item0.Id,
             Count = -2,
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.HeroNotSettlementOwner, res.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.PartyNotSettlementOwner, res.Errors![0].Code);
     }
 
     [Test]
-    public async Task ShouldReturnErrorIfHeroTakesItemsTheSettlementDoesNotHave()
+    public async Task ShouldReturnErrorIfPartyTakesItemsTheSettlementDoesNotHave()
     {
         Item item0 = new();
         Item item1 = new();
@@ -196,22 +196,22 @@ public class AddSettlementItemCommandTest : TestBase
         };
         ArrangeDb.Settlements.Add(settlement);
 
-        Hero hero = new()
+        Party party = new()
         {
-            Status = HeroStatus.RecruitingInSettlement,
+            Status = PartyStatus.RecruitingInSettlement,
             TargetedSettlement = settlement,
             User = new User(),
-            Items = new List<HeroItem>(),
+            Items = new List<PartyItem>(),
             OwnedSettlements = { settlement },
         };
-        ArrangeDb.Heroes.Add(hero);
+        ArrangeDb.Parties.Add(party);
 
         await ArrangeDb.SaveChangesAsync();
 
         AddSettlementItemCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new AddSettlementItemCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             SettlementId = settlement.Id,
             ItemId = item1.Id,
             Count = -1,
@@ -222,7 +222,7 @@ public class AddSettlementItemCommandTest : TestBase
     }
 
     [Test]
-    public async Task ShouldReturnErrorIfHeroTakesItemsWhenTheSettlementDoesntHaveEnough()
+    public async Task ShouldReturnErrorIfPartyTakesItemsWhenTheSettlementDoesntHaveEnough()
     {
         Item item0 = new();
         ArrangeDb.Items.AddRange(item0);
@@ -233,22 +233,22 @@ public class AddSettlementItemCommandTest : TestBase
         };
         ArrangeDb.Settlements.Add(settlement);
 
-        Hero hero = new()
+        Party party = new()
         {
-            Status = HeroStatus.RecruitingInSettlement,
+            Status = PartyStatus.RecruitingInSettlement,
             TargetedSettlement = settlement,
             User = new User(),
-            Items = new List<HeroItem>(),
+            Items = new List<PartyItem>(),
             OwnedSettlements = { settlement },
         };
-        ArrangeDb.Heroes.Add(hero);
+        ArrangeDb.Parties.Add(party);
 
         await ArrangeDb.SaveChangesAsync();
 
         AddSettlementItemCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new AddSettlementItemCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             SettlementId = settlement.Id,
             ItemId = item0.Id,
             Count = -3,
@@ -262,7 +262,7 @@ public class AddSettlementItemCommandTest : TestBase
     [TestCase(3, 0, 11)]
     [TestCase(-3, 7, 11)]
     [TestCase(-3, 7, 0)]
-    public async Task ShouldGiveTakeItemsToFromSettlement(int diff, int settlementItemCount, int heroItemCount)
+    public async Task ShouldGiveTakeItemsToFromSettlement(int diff, int settlementItemCount, int partyItemCount)
     {
         Item item0 = new();
         ArrangeDb.Items.AddRange(item0);
@@ -275,26 +275,26 @@ public class AddSettlementItemCommandTest : TestBase
 
         ArrangeDb.Settlements.Add(settlement);
 
-        Hero hero = new()
+        Party party = new()
         {
-            Status = HeroStatus.IdleInSettlement,
+            Status = PartyStatus.IdleInSettlement,
             TargetedSettlement = settlement,
             User = new User(),
             OwnedSettlements = { settlement },
         };
-        if (heroItemCount != 0)
+        if (partyItemCount != 0)
         {
-            hero.Items.Add(new HeroItem { Item = item0, Count = heroItemCount });
+            party.Items.Add(new PartyItem { Item = item0, Count = partyItemCount });
         }
 
-        ArrangeDb.Heroes.Add(hero);
+        ArrangeDb.Parties.Add(party);
 
         await ArrangeDb.SaveChangesAsync();
 
         AddSettlementItemCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new AddSettlementItemCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             SettlementId = settlement.Id,
             ItemId = item0.Id,
             Count = diff,
@@ -312,11 +312,11 @@ public class AddSettlementItemCommandTest : TestBase
         Assert.AreEqual(item0.Id, settlement.Items[0].ItemId);
         Assert.AreEqual(settlementItemCount + diff, settlement.Items[0].Count);
 
-        hero = await AssertDb.Heroes
+        party = await AssertDb.Parties
             .Include(h => h.Items)
-            .FirstAsync(h => h.Id == hero.Id);
-        Assert.AreEqual(1, hero.Items.Count);
-        Assert.AreEqual(item0.Id, hero.Items[0].ItemId);
-        Assert.AreEqual(heroItemCount - diff, hero.Items[0].Count);
+            .FirstAsync(h => h.Id == party.Id);
+        Assert.AreEqual(1, party.Items.Count);
+        Assert.AreEqual(item0.Id, party.Items[0].ItemId);
+        Assert.AreEqual(partyItemCount - diff, party.Items[0].Count);
     }
 }

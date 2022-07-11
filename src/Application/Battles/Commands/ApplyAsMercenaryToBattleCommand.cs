@@ -77,10 +77,10 @@ public record ApplyAsMercenaryToBattleCommand : IMediatorRequest<BattleMercenary
 
             // User cannot apply as a mercenary in battle they are fighting.
             bool isUserFighter = await _db.BattleFighters.AnyAsync(f =>
-                f.BattleId == battle.Id && f.HeroId == character.UserId, cancellationToken);
+                f.BattleId == battle.Id && f.PartyId == character.UserId, cancellationToken);
             if (isUserFighter)
             {
-                return new(CommonErrors.HeroFighter(character.UserId, battle.Id));
+                return new(CommonErrors.PartyFighter(character.UserId, battle.Id));
             }
 
             // Check for existing application.

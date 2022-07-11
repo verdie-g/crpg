@@ -1,4 +1,4 @@
-﻿using Crpg.Domain.Entities.Heroes;
+﻿using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Settlements;
 
 namespace Crpg.Domain.Entities.Battles;
@@ -9,13 +9,13 @@ namespace Crpg.Domain.Entities.Battles;
 public enum BattlePhase
 {
     /// <summary>
-    /// A <see cref="Hero"/> attacked another one or a <see cref="Settlement"/>. Other <see cref="Hero"/>es
+    /// A <see cref="Party"/> attacked another one or a <see cref="Settlement"/>. Other <see cref="Party"/>es
     /// can join their army during this phase as <see cref="BattleFighter"/>.
     /// </summary>
     Preparation,
 
     /// <summary>
-    /// <see cref="Hero"/>es from anywhere on the map can join the <see cref="Battle"/>
+    /// <see cref="Party"/>es from anywhere on the map can join the <see cref="Battle"/>
     /// as <see cref="BattleMercenary"/>.
     /// </summary>
     Hiring,

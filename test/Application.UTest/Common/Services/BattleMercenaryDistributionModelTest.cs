@@ -1,6 +1,6 @@
 ﻿using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Battles;
-using Crpg.Domain.Entities.Heroes;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
@@ -36,7 +36,7 @@ public class BattleMercenaryDistributionModelTest
     }
 
     [Test]
-    public void ShouldIgnoreDecimalsOfHeroTroops()
+    public void ShouldIgnoreDecimalsOfPartyTroops()
     {
         BattleFighter[] fighters =
         {
@@ -69,7 +69,7 @@ public class BattleMercenaryDistributionModelTest
 
     private BattleFighter NewFighter(float troops, BattleSide side) => new()
     {
-        Hero = new Hero { Troops = troops, User = new User() },
+        Party = new Party { Troops = troops, User = new User() },
         Side = side,
     };
 }

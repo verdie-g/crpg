@@ -1,7 +1,7 @@
 ﻿using Crpg.Application.Battles.Queries;
 using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities.Battles;
-using Crpg.Domain.Entities.Heroes;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
@@ -15,7 +15,7 @@ public class GetBattleFighterApplicationsQueryTest : TestBase
         GetBattleFighterApplicationsQuery.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new GetBattleFighterApplicationsQuery
         {
-            HeroId = 99,
+            PartyId = 99,
             BattleId = 99,
             Statuses = Array.Empty<BattleFighterApplicationStatus>(),
         }, CancellationToken.None);
@@ -30,42 +30,42 @@ public class GetBattleFighterApplicationsQueryTest : TestBase
         Battle battle = new()
         {
             Phase = BattlePhase.Hiring,
-            Fighters = { new BattleFighter { HeroId = 20, Side = BattleSide.Defender, Commander = true } },
+            Fighters = { new BattleFighter { PartyId = 20, Side = BattleSide.Defender, Commander = true } },
             FighterApplications =
             {
                 new BattleFighterApplication
                 {
-                    Hero = new Hero { User = new User() },
+                    Party = new Party { User = new User() },
                     Side = BattleSide.Attacker,
                     Status = BattleFighterApplicationStatus.Pending,
                 },
                 new BattleFighterApplication
                 {
-                    Hero = new Hero { User = new User() },
+                    Party = new Party { User = new User() },
                     Side = BattleSide.Attacker,
                     Status = BattleFighterApplicationStatus.Declined,
                 },
                 new BattleFighterApplication
                 {
-                    Hero = new Hero { User = new User() },
+                    Party = new Party { User = new User() },
                     Side = BattleSide.Attacker,
                     Status = BattleFighterApplicationStatus.Accepted,
                 },
                 new BattleFighterApplication
                 {
-                    Hero = new Hero { User = new User() },
+                    Party = new Party { User = new User() },
                     Side = BattleSide.Defender,
                     Status = BattleFighterApplicationStatus.Pending,
                 },
                 new BattleFighterApplication
                 {
-                    Hero = new Hero { User = new User() },
+                    Party = new Party { User = new User() },
                     Side = BattleSide.Defender,
                     Status = BattleFighterApplicationStatus.Declined,
                 },
                 new BattleFighterApplication
                 {
-                    Hero = new Hero { User = new User() },
+                    Party = new Party { User = new User() },
                     Side = BattleSide.Defender,
                     Status = BattleFighterApplicationStatus.Accepted,
                 },
@@ -77,7 +77,7 @@ public class GetBattleFighterApplicationsQueryTest : TestBase
         GetBattleFighterApplicationsQuery.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new GetBattleFighterApplicationsQuery
         {
-            HeroId = 20,
+            PartyId = 20,
             BattleId = battle.Id,
             Statuses = new[]
             {
@@ -94,38 +94,38 @@ public class GetBattleFighterApplicationsQueryTest : TestBase
     }
 
     [Theory]
-    public async Task ShouldOnlyReturnHeroApplicationsIfHeroIsNotACommanderOrFighter(bool isFighter)
+    public async Task ShouldOnlyReturnPartyApplicationsIfPartyIsNotACommanderOrFighter(bool isFighter)
     {
-        Hero hero = new() { User = new User() };
-        ArrangeDb.Heroes.Add(hero);
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
 
         Battle battle = new()
         {
             Phase = BattlePhase.Hiring,
-            Fighters = { new BattleFighter { HeroId = 99, Side = BattleSide.Defender } },
+            Fighters = { new BattleFighter { PartyId = 99, Side = BattleSide.Defender } },
             FighterApplications =
             {
                 new BattleFighterApplication
                 {
-                    Hero = new Hero { User = new User() },
+                    Party = new Party { User = new User() },
                     Side = BattleSide.Attacker,
                     Status = BattleFighterApplicationStatus.Pending,
                 },
                 new BattleFighterApplication
                 {
-                    Hero = hero,
+                    Party = party,
                     Side = BattleSide.Attacker,
                     Status = BattleFighterApplicationStatus.Pending,
                 },
                 new BattleFighterApplication
                 {
-                    Hero = hero,
+                    Party = party,
                     Side = BattleSide.Defender,
                     Status = BattleFighterApplicationStatus.Pending,
                 },
                 new BattleFighterApplication
                 {
-                    Hero = hero,
+                    Party = party,
                     Side = BattleSide.Defender,
                     Status = BattleFighterApplicationStatus.Declined,
                 },
@@ -135,7 +135,7 @@ public class GetBattleFighterApplicationsQueryTest : TestBase
         {
             battle.Fighters.Add(new BattleFighter
             {
-                Hero = hero,
+                Party = party,
                 Side = BattleSide.Defender,
                 Commander = false,
             });
@@ -147,7 +147,7 @@ public class GetBattleFighterApplicationsQueryTest : TestBase
         GetBattleFighterApplicationsQuery.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new GetBattleFighterApplicationsQuery
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             BattleId = battle.Id,
             Statuses = new[]
             {

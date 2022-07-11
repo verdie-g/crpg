@@ -15,7 +15,7 @@ namespace Crpg.Application.Battles.Commands;
 
 public record RespondToBattleMercenaryApplicationCommand : IMediatorRequest<BattleMercenaryApplicationViewModel>
 {
-    public int HeroId { get; init; }
+    public int PartyId { get; init; }
     public int MercenaryApplicationId { get; init; }
     public bool Accept { get; init; }
 
@@ -37,15 +37,15 @@ public record RespondToBattleMercenaryApplicationCommand : IMediatorRequest<Batt
         public async Task<Result<BattleMercenaryApplicationViewModel>> Handle(RespondToBattleMercenaryApplicationCommand req,
             CancellationToken cancellationToken)
         {
-            var hero = await _db.Heroes.FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
-            if (hero == null)
+            var party = await _db.Parties.FirstOrDefaultAsync(h => h.Id == req.PartyId, cancellationToken);
+            if (party == null)
             {
-                return new(CommonErrors.HeroNotFound(req.HeroId));
+                return new(CommonErrors.PartyNotFound(req.PartyId));
             }
 
             var application = await _db.BattleMercenaryApplications
                 .AsSplitQuery()
-                .Include(a => a.Battle!).ThenInclude(b => b.Fighters.Where(f => f.HeroId == req.HeroId))
+                .Include(a => a.Battle!).ThenInclude(b => b.Fighters.Where(f => f.PartyId == req.PartyId))
                 .Include(a => a.Character!).ThenInclude(c => c.User)
                 .FirstOrDefaultAsync(a => a.Id == req.MercenaryApplicationId, cancellationToken);
             if (application == null)
@@ -53,15 +53,15 @@ public record RespondToBattleMercenaryApplicationCommand : IMediatorRequest<Batt
                 return new(CommonErrors.ApplicationNotFound(req.MercenaryApplicationId));
             }
 
-            var heroFighter = application.Battle!.Fighters.FirstOrDefault();
-            if (heroFighter == null)
+            var partyFighter = application.Battle!.Fighters.FirstOrDefault();
+            if (partyFighter == null)
             {
-                return new(CommonErrors.HeroNotAFighter(hero.Id, application.BattleId));
+                return new(CommonErrors.PartyNotAFighter(party.Id, application.BattleId));
             }
 
-            if (heroFighter.Side != application.Side)
+            if (partyFighter.Side != application.Side)
             {
-                return new(CommonErrors.HeroesNotOnTheSameSide(hero.Id, 0,
+                return new(CommonErrors.PartiesNotOnTheSameSide(party.Id, 0,
                     application.BattleId));
             }
 
@@ -83,12 +83,12 @@ public record RespondToBattleMercenaryApplicationCommand : IMediatorRequest<Batt
                     Side = application.Side,
                     Character = application.Character,
                     Battle = application.Battle,
-                    CaptainFighter = heroFighter,
+                    CaptainFighter = partyFighter,
                     Application = application,
                 };
                 _db.BattleMercenaries.Add(newMercenary);
 
-                // Delete all other applying hero pending applications for this battle.
+                // Delete all other applying party pending applications for this battle.
                 var otherApplications = await _db.BattleMercenaryApplications
                     .Where(a => a.Id != application.Id
                                 && a.BattleId == application.BattleId
@@ -104,8 +104,8 @@ public record RespondToBattleMercenaryApplicationCommand : IMediatorRequest<Batt
 
             await _db.SaveChangesAsync(cancellationToken);
             Logger.LogInformation(
-                "Hero '{0}' {1} application '{2}' from character '{3}' to join battle '{4}' as a mercenary",
-                req.HeroId, req.Accept ? "accepted" : "declined", req.MercenaryApplicationId,
+                "Party '{0}' {1} application '{2}' from character '{3}' to join battle '{4}' as a mercenary",
+                req.PartyId, req.Accept ? "accepted" : "declined", req.MercenaryApplicationId,
                 application.CharacterId, application.BattleId);
             return new(new BattleMercenaryApplicationViewModel
             {

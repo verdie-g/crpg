@@ -11,7 +11,7 @@ namespace Crpg.Application.Battles.Queries;
 
 public record GetBattleFighterApplicationsQuery : IMediatorRequest<IList<BattleFighterApplicationViewModel>>
 {
-    public int HeroId { get; init; }
+    public int PartyId { get; init; }
     public int BattleId { get; init; }
     public IList<BattleFighterApplicationStatus> Statuses { get; init; } = Array.Empty<BattleFighterApplicationStatus>();
 
@@ -39,9 +39,9 @@ public record GetBattleFighterApplicationsQuery : IMediatorRequest<IList<BattleF
         {
             var battle = await _db.Battles
                 .AsSplitQuery()
-                .Include(b => b.Fighters.Where(f => f.HeroId == req.HeroId))
+                .Include(b => b.Fighters.Where(f => f.PartyId == req.PartyId))
                 .Include(b => b.FighterApplications.Where(a => req.Statuses.Contains(a.Status)))
-                .ThenInclude(a => a.Hero!).ThenInclude(h => h.User)
+                .ThenInclude(a => a.Party!).ThenInclude(h => h.User)
                 .FirstOrDefaultAsync(b => b.Id == req.BattleId, cancellationToken);
             if (battle == null)
             {
@@ -49,9 +49,9 @@ public record GetBattleFighterApplicationsQuery : IMediatorRequest<IList<BattleF
             }
 
             BattleFighter? fighter = battle.Fighters.FirstOrDefault();
-            // If the fighter is a commander, return all applications of their side else return only the hero applications.
+            // If the fighter is a commander, return all applications of their side else return only the party applications.
             var applications = battle.FighterApplications
-                .Where(a => a.HeroId == req.HeroId || (fighter != null && fighter.Commander && a.Side == fighter.Side));
+                .Where(a => a.PartyId == req.PartyId || (fighter != null && fighter.Commander && a.Side == fighter.Side));
             return new(_mapper.Map<IList<BattleFighterApplicationViewModel>>(applications));
         }
     }

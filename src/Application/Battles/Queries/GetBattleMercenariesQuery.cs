@@ -47,11 +47,11 @@ public record GetBattleMercenariesQuery : IMediatorRequest<IList<BattleMercenary
                 return new(CommonErrors.BattleInvalidPhase(req.BattleId, battle.Phase));
             }
 
-            BattleFighter? fighter = battle.Fighters.FirstOrDefault(f => f.HeroId == req.UserId);
+            BattleFighter? fighter = battle.Fighters.FirstOrDefault(f => f.PartyId == req.UserId);
             // During the hiring phase, only the fighters can see the mercenaries.
             if (battle.Phase == BattlePhase.Hiring && fighter == null)
             {
-                return new(CommonErrors.HeroNotAFighter(req.UserId, req.BattleId));
+                return new(CommonErrors.PartyNotAFighter(req.UserId, req.BattleId));
             }
 
             // Return the mercenaries from the same side as the user during the hiring phase.

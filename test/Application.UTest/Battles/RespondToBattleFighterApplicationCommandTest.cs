@@ -1,7 +1,7 @@
 ﻿using Crpg.Application.Battles.Commands;
 using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities.Battles;
-using Crpg.Domain.Entities.Heroes;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
@@ -11,31 +11,31 @@ namespace Crpg.Application.UTest.Battles;
 public class RespondToBattleFighterApplicationCommandTest : TestBase
 {
     [Test]
-    public async Task ShouldReturnErrorIfHeroIsNotFound()
+    public async Task ShouldReturnErrorIfPartyIsNotFound()
     {
         RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
         {
-            HeroId = 99,
+            PartyId = 99,
             FighterApplicationId = 99,
             Accept = true,
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.HeroNotFound, res.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
     }
 
     [Test]
     public async Task ShouldReturnErrorIfApplicationIsNotFound()
     {
-        Hero hero = new() { User = new User() };
-        ArrangeDb.Heroes.Add(hero);
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
         await ArrangeDb.SaveChangesAsync();
 
         RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             FighterApplicationId = 99,
             Accept = true,
         }, CancellationToken.None);
@@ -45,10 +45,10 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
     }
 
     [Test]
-    public async Task ShouldReturnErrorIfHeroIsNotAFighter()
+    public async Task ShouldReturnErrorIfPartyIsNotAFighter()
     {
-        Hero hero = new() { User = new User() };
-        ArrangeDb.Heroes.Add(hero);
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
 
         Battle battle = new()
         {
@@ -61,7 +61,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
             Side = BattleSide.Attacker,
             Status = BattleFighterApplicationStatus.Pending,
             Battle = battle,
-            Hero = new Hero { User = new User() },
+            Party = new Party { User = new User() },
         };
         ArrangeDb.BattleFighterApplications.Add(application);
         await ArrangeDb.SaveChangesAsync();
@@ -69,20 +69,20 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
         RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             FighterApplicationId = application.Id,
             Accept = true,
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.HeroNotAFighter, res.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.PartyNotAFighter, res.Errors![0].Code);
     }
 
     [Test]
-    public async Task ShouldReturnErrorIfHeroIsNotACommander()
+    public async Task ShouldReturnErrorIfPartyIsNotACommander()
     {
-        Hero hero = new() { User = new User() };
-        ArrangeDb.Heroes.Add(hero);
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
 
         Battle battle = new()
         {
@@ -93,7 +93,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
                 {
                     Side = BattleSide.Attacker,
                     Commander = false,
-                    Hero = hero,
+                    Party = party,
                 },
             },
         };
@@ -104,7 +104,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
             Side = BattleSide.Attacker,
             Status = BattleFighterApplicationStatus.Pending,
             Battle = battle,
-            Hero = new Hero { User = new User() },
+            Party = new Party { User = new User() },
         };
         ArrangeDb.BattleFighterApplications.Add(application);
         await ArrangeDb.SaveChangesAsync();
@@ -112,7 +112,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
         RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             FighterApplicationId = application.Id,
             Accept = true,
         }, CancellationToken.None);
@@ -124,8 +124,8 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
     [Test]
     public async Task ShouldReturnErrorIfFightersNotOnTheSameSide()
     {
-        Hero hero = new() { User = new User() };
-        ArrangeDb.Heroes.Add(hero);
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
 
         Battle battle = new()
         {
@@ -136,7 +136,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
                 {
                     Side = BattleSide.Defender,
                     Commander = true,
-                    Hero = hero,
+                    Party = party,
                 },
             },
         };
@@ -147,7 +147,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
             Side = BattleSide.Attacker,
             Status = BattleFighterApplicationStatus.Pending,
             Battle = battle,
-            Hero = new Hero { User = new User() },
+            Party = new Party { User = new User() },
         };
         ArrangeDb.BattleFighterApplications.Add(application);
         await ArrangeDb.SaveChangesAsync();
@@ -155,13 +155,13 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
         RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             FighterApplicationId = application.Id,
             Accept = true,
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.HeroesNotOnTheSameSide, res.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.PartiesNotOnTheSameSide, res.Errors![0].Code);
     }
 
     [TestCase(BattlePhase.Hiring)]
@@ -170,8 +170,8 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
     [TestCase(BattlePhase.End)]
     public async Task ShouldReturnErrorIfBattleIsNotInPreparation(BattlePhase battlePhase)
     {
-        Hero hero = new() { User = new User() };
-        ArrangeDb.Heroes.Add(hero);
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
 
         Battle battle = new()
         {
@@ -182,7 +182,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
                 {
                     Side = BattleSide.Attacker,
                     Commander = true,
-                    Hero = hero,
+                    Party = party,
                 },
             },
         };
@@ -193,7 +193,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
             Side = BattleSide.Attacker,
             Status = BattleFighterApplicationStatus.Pending,
             Battle = battle,
-            Hero = new Hero { User = new User() },
+            Party = new Party { User = new User() },
         };
         ArrangeDb.BattleFighterApplications.Add(application);
         await ArrangeDb.SaveChangesAsync();
@@ -201,7 +201,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
         RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             FighterApplicationId = application.Id,
             Accept = true,
         }, CancellationToken.None);
@@ -214,8 +214,8 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
     [TestCase(BattleFighterApplicationStatus.Accepted)]
     public async Task ShouldReturnErrorIfApplicationIsClosed(BattleFighterApplicationStatus applicationStatus)
     {
-        Hero hero = new() { User = new User() };
-        ArrangeDb.Heroes.Add(hero);
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
 
         Battle battle = new()
         {
@@ -226,7 +226,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
                 {
                     Side = BattleSide.Attacker,
                     Commander = true,
-                    Hero = hero,
+                    Party = party,
                 },
             },
         };
@@ -237,7 +237,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
             Side = BattleSide.Attacker,
             Status = applicationStatus,
             Battle = battle,
-            Hero = new Hero { User = new User() },
+            Party = new Party { User = new User() },
         };
         ArrangeDb.BattleFighterApplications.Add(application);
         await ArrangeDb.SaveChangesAsync();
@@ -245,7 +245,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
         RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             FighterApplicationId = application.Id,
             Accept = true,
         }, CancellationToken.None);
@@ -257,8 +257,8 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
     [Test]
     public async Task ShouldDeclineApplication()
     {
-        Hero hero = new() { User = new User() };
-        ArrangeDb.Heroes.Add(hero);
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
 
         Battle battle = new()
         {
@@ -269,7 +269,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
                 {
                     Side = BattleSide.Attacker,
                     Commander = true,
-                    Hero = hero,
+                    Party = party,
                 },
             },
         };
@@ -280,7 +280,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
             Side = BattleSide.Attacker,
             Status = BattleFighterApplicationStatus.Pending,
             Battle = battle,
-            Hero = new Hero { User = new User() },
+            Party = new Party { User = new User() },
         };
         ArrangeDb.BattleFighterApplications.Add(application);
         await ArrangeDb.SaveChangesAsync();
@@ -288,7 +288,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
         RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             FighterApplicationId = application.Id,
             Accept = false,
         }, CancellationToken.None);
@@ -304,9 +304,9 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
     [Test]
     public async Task ShouldAcceptApplication()
     {
-        Hero hero = new() { User = new User() };
-        Hero applyingHero = new() { User = new User() };
-        ArrangeDb.Heroes.AddRange(applyingHero);
+        Party party = new() { User = new User() };
+        Party applyingParty = new() { User = new User() };
+        ArrangeDb.Parties.AddRange(applyingParty);
 
         Battle battle = new()
         {
@@ -317,7 +317,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
                 {
                     Side = BattleSide.Attacker,
                     Commander = true,
-                    Hero = hero,
+                    Party = party,
                 },
             },
         };
@@ -328,7 +328,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
             Side = BattleSide.Attacker,
             Status = BattleFighterApplicationStatus.Pending,
             Battle = battle,
-            Hero = applyingHero,
+            Party = applyingParty,
         };
         BattleFighterApplication[] otherApplications =
         {
@@ -336,25 +336,25 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
             {
                 Status = BattleFighterApplicationStatus.Pending,
                 Battle = battle,
-                Hero = applyingHero,
+                Party = applyingParty,
             },
             new() // Should stay.
             {
                 Status = BattleFighterApplicationStatus.Accepted,
                 Battle = battle,
-                Hero = applyingHero,
+                Party = applyingParty,
             },
             new() // Should stay.
             {
                 Status = BattleFighterApplicationStatus.Pending,
                 Battle = new Battle(),
-                Hero = applyingHero,
+                Party = applyingParty,
             },
             new() // Should stay.
             {
                 Status = BattleFighterApplicationStatus.Pending,
                 Battle = battle,
-                Hero = new Hero { User = new User() },
+                Party = new Party { User = new User() },
             },
         };
         ArrangeDb.BattleFighterApplications.Add(application);
@@ -364,7 +364,7 @@ public class RespondToBattleFighterApplicationCommandTest : TestBase
         RespondToBattleFighterApplicationCommand.Handler handler = new(ActDb, Mapper);
         var res = await handler.Handle(new RespondToBattleFighterApplicationCommand
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             FighterApplicationId = application.Id,
             Accept = true,
         }, CancellationToken.None);

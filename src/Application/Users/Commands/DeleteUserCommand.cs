@@ -37,7 +37,7 @@ public record DeleteUserCommand : IMediatorRequest
             var user = await _db.Users
                 .Include(u => u.Characters)
                 .Include(u => u.Items)
-                .Include(u => u.Hero!).ThenInclude(h => h.Items)
+                .Include(u => u.Party!).ThenInclude(h => h.Items)
                 .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
             if (user == null)
             {
@@ -55,8 +55,8 @@ public record DeleteUserCommand : IMediatorRequest
 
             _db.UserItems.RemoveRange(user.Items);
             _db.Characters.RemoveRange(user.Characters);
-            _db.HeroItems.RemoveRange(user.Hero!.Items);
-            _db.Heroes.Remove(user.Hero);
+            _db.PartyItems.RemoveRange(user.Party!.Items);
+            _db.Parties.Remove(user.Party);
             await _db.SaveChangesAsync(cancellationToken);
             Logger.LogInformation("{0} left ({1}#{2})", name, user.Platform, user.PlatformUserId);
             return Result.NoErrors;

@@ -3,7 +3,7 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Settlements.Models;
-using Crpg.Domain.Entities.Heroes;
+using Crpg.Domain.Entities.Parties;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -13,7 +13,7 @@ namespace Crpg.Application.Settlements.Commands;
 
 public record UpdateSettlementCommand : IMediatorRequest<SettlementPublicViewModel>
 {
-    public int HeroId { get; init; }
+    public int PartyId { get; init; }
     public int SettlementId { get; init; }
     public int Troops { get; init; }
 
@@ -40,44 +40,44 @@ public record UpdateSettlementCommand : IMediatorRequest<SettlementPublicViewMod
 
         public async Task<Result<SettlementPublicViewModel>> Handle(UpdateSettlementCommand req, CancellationToken cancellationToken)
         {
-            var hero = await _db.Heroes
+            var party = await _db.Parties
                 .Include(h => h.TargetedSettlement)
-                .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
-            if (hero == null)
+                .FirstOrDefaultAsync(h => h.Id == req.PartyId, cancellationToken);
+            if (party == null)
             {
-                return new(CommonErrors.HeroNotFound(req.HeroId));
+                return new(CommonErrors.PartyNotFound(req.PartyId));
             }
 
-            if ((hero.Status != HeroStatus.IdleInSettlement
-                 && hero.Status != HeroStatus.RecruitingInSettlement)
-                || hero.TargetedSettlementId != req.SettlementId)
+            if ((party.Status != PartyStatus.IdleInSettlement
+                 && party.Status != PartyStatus.RecruitingInSettlement)
+                || party.TargetedSettlementId != req.SettlementId)
             {
-                return new(CommonErrors.HeroNotInASettlement(hero.Id));
+                return new(CommonErrors.PartyNotInASettlement(party.Id));
             }
 
-            int troopsDelta = req.Troops - hero.TargetedSettlement!.Troops;
-            if (troopsDelta >= 0) // Hero troops -> settlement troops.
+            int troopsDelta = req.Troops - party.TargetedSettlement!.Troops;
+            if (troopsDelta >= 0) // Party troops -> settlement troops.
             {
-                if (hero.Troops < troopsDelta)
+                if (party.Troops < troopsDelta)
                 {
-                    return new(CommonErrors.HeroNotEnoughTroops(hero.Id));
+                    return new(CommonErrors.PartyNotEnoughTroops(party.Id));
                 }
             }
-            else // Settlement troops -> hero troops.
+            else // Settlement troops -> party troops.
             {
-                if (hero.TargetedSettlement!.OwnerId != hero.Id)
+                if (party.TargetedSettlement!.OwnerId != party.Id)
                 {
-                    return new(CommonErrors.HeroNotSettlementOwner(hero.Id, hero.TargetedSettlementId!.Value));
+                    return new(CommonErrors.PartyNotSettlementOwner(party.Id, party.TargetedSettlementId!.Value));
                 }
             }
 
-            hero.TargetedSettlement.Troops += troopsDelta;
-            hero.Troops -= troopsDelta;
+            party.TargetedSettlement.Troops += troopsDelta;
+            party.Troops -= troopsDelta;
 
             await _db.SaveChangesAsync(cancellationToken);
-            Logger.LogInformation("Hero '{0}' {1} settlement '{2}'", req.HeroId,
-                troopsDelta >= 0 ? "gave troops to" : "took troops from", hero.TargetedSettlementId);
-            return new(_mapper.Map<SettlementPublicViewModel>(hero.TargetedSettlement));
+            Logger.LogInformation("Party '{0}' {1} settlement '{2}'", req.PartyId,
+                troopsDelta >= 0 ? "gave troops to" : "took troops from", party.TargetedSettlementId);
+            return new(_mapper.Map<SettlementPublicViewModel>(party.TargetedSettlement));
         }
     }
 }

@@ -2,8 +2,8 @@
 using Crpg.Application.Common.Services;
 using Crpg.Application.Settlements.Queries;
 using Crpg.Domain.Entities;
-using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using Moq;
@@ -20,25 +20,25 @@ public class GetSettlementShopItemsQueryTest : TestBase
         GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
         var res = await handler.Handle(new GetSettlementShopItemsQuery
         {
-            HeroId = 1,
+            PartyId = 1,
             SettlementId = 2,
         }, CancellationToken.None);
 
         Assert.NotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.HeroNotFound, res.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
     }
 
     [Test]
     public async Task ShouldReturnErrorIfSettlementNotFound()
     {
-        Hero hero = new() { User = new User() };
-        ArrangeDb.Heroes.Add(hero);
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
         await ArrangeDb.SaveChangesAsync();
 
         GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
         var res = await handler.Handle(new GetSettlementShopItemsQuery
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             SettlementId = 2,
         }, CancellationToken.None);
 
@@ -57,8 +57,8 @@ public class GetSettlementShopItemsQueryTest : TestBase
             .Setup(m => m.ArePointsAtInteractionDistance(userPosition, settlementPosition))
             .Returns(false);
 
-        Hero hero = new() { Position = userPosition, User = new User() };
-        ArrangeDb.Heroes.Add(hero);
+        Party party = new() { Position = userPosition, User = new User() };
+        ArrangeDb.Parties.Add(party);
         Settlement settlement = new() { Position = settlementPosition };
         ArrangeDb.Settlements.Add(settlement);
         await ArrangeDb.SaveChangesAsync();
@@ -66,7 +66,7 @@ public class GetSettlementShopItemsQueryTest : TestBase
         GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
         var res = await handler.Handle(new GetSettlementShopItemsQuery
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             SettlementId = settlement.Id,
         }, CancellationToken.None);
 
@@ -85,8 +85,8 @@ public class GetSettlementShopItemsQueryTest : TestBase
             .Setup(m => m.ArePointsAtInteractionDistance(userPosition, settlementPosition))
             .Returns(true);
 
-        Hero hero = new() { Position = userPosition, User = new User() };
-        ArrangeDb.Heroes.Add(hero);
+        Party party = new() { Position = userPosition, User = new User() };
+        ArrangeDb.Parties.Add(party);
         Settlement settlement = new() { Position = settlementPosition, Culture = Culture.Battania };
         ArrangeDb.Settlements.Add(settlement);
         Item[] items =
@@ -103,7 +103,7 @@ public class GetSettlementShopItemsQueryTest : TestBase
         GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
         var res = await handler.Handle(new GetSettlementShopItemsQuery
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             SettlementId = settlement.Id,
         }, CancellationToken.None);
 

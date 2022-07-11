@@ -1,6 +1,6 @@
 ﻿using Crpg.Application.Common.Results;
-using Crpg.Application.Heroes.Models;
 using Crpg.Application.Items.Models;
+using Crpg.Application.Parties.Models;
 using Crpg.Application.Settlements.Commands;
 using Crpg.Application.Settlements.Models;
 using Crpg.Application.Settlements.Queries;
@@ -27,7 +27,7 @@ public class SettlementsController : BaseController
     {
         return ResultToActionAsync(Mediator.Send(new GetSettlementItemsQuery
         {
-            HeroId = CurrentUser.UserId,
+            PartyId = CurrentUser.UserId,
             SettlementId = settlementId,
         }));
     }
@@ -39,7 +39,7 @@ public class SettlementsController : BaseController
     public Task<ActionResult<Result<ItemStack>>> UpdateSettlementItems([FromRoute] int settlementId,
         [FromBody] AddSettlementItemCommand req)
     {
-        req = req with { HeroId = CurrentUser.UserId, SettlementId = settlementId };
+        req = req with { PartyId = CurrentUser.UserId, SettlementId = settlementId };
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -50,7 +50,7 @@ public class SettlementsController : BaseController
     public Task<ActionResult<Result<IList<ItemViewModel>>>> GetSettlementShopItems([FromRoute] int settlementId)
         => ResultToActionAsync(Mediator.Send(new GetSettlementShopItemsQuery
         {
-            HeroId = CurrentUser.UserId,
+            PartyId = CurrentUser.UserId,
             SettlementId = settlementId,
         }));
 }

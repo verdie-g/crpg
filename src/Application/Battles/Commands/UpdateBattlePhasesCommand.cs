@@ -41,7 +41,7 @@ public record UpdateBattlePhasesCommand : IMediatorRequest
         {
             var battles = _db.Battles
                 .AsSplitQuery()
-                .Include(b => b.Fighters).ThenInclude(f => f.Hero)
+                .Include(b => b.Fighters).ThenInclude(f => f.Party)
                 .Include(b => b.Fighters).ThenInclude(f => f.Settlement)
                 .Where(b =>
                     (b.Phase == BattlePhase.Preparation && b.CreatedAt + _battleInitiationDuration < _dateTime.UtcNow)

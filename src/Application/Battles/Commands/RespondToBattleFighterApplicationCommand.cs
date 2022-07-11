@@ -12,7 +12,7 @@ namespace Crpg.Application.Battles.Commands;
 
 public record RespondToBattleFighterApplicationCommand : IMediatorRequest<BattleFighterApplicationViewModel>
 {
-    public int HeroId { get; init; }
+    public int PartyId { get; init; }
     public int FighterApplicationId { get; init; }
     public bool Accept { get; init; }
 
@@ -32,36 +32,36 @@ public record RespondToBattleFighterApplicationCommand : IMediatorRequest<Battle
         public async Task<Result<BattleFighterApplicationViewModel>> Handle(RespondToBattleFighterApplicationCommand req,
             CancellationToken cancellationToken)
         {
-            var hero = await _db.Heroes.FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
-            if (hero == null)
+            var party = await _db.Parties.FirstOrDefaultAsync(h => h.Id == req.PartyId, cancellationToken);
+            if (party == null)
             {
-                return new(CommonErrors.HeroNotFound(req.HeroId));
+                return new(CommonErrors.PartyNotFound(req.PartyId));
             }
 
             var application = await _db.BattleFighterApplications
                 .AsSplitQuery()
-                .Include(a => a.Battle!).ThenInclude(b => b.Fighters.Where(f => f.HeroId == req.HeroId))
-                .Include(a => a.Hero!).ThenInclude(h => h.User)
+                .Include(a => a.Battle!).ThenInclude(b => b.Fighters.Where(f => f.PartyId == req.PartyId))
+                .Include(a => a.Party!).ThenInclude(h => h.User)
                 .FirstOrDefaultAsync(a => a.Id == req.FighterApplicationId, cancellationToken);
             if (application == null)
             {
                 return new(CommonErrors.ApplicationNotFound(req.FighterApplicationId));
             }
 
-            var heroFighter = application.Battle!.Fighters.FirstOrDefault();
-            if (heroFighter == null)
+            var partyFighter = application.Battle!.Fighters.FirstOrDefault();
+            if (partyFighter == null)
             {
-                return new(CommonErrors.HeroNotAFighter(req.HeroId, application.BattleId));
+                return new(CommonErrors.PartyNotAFighter(req.PartyId, application.BattleId));
             }
 
-            if (!heroFighter.Commander)
+            if (!partyFighter.Commander)
             {
-                return new(CommonErrors.FighterNotACommander(req.HeroId, application.BattleId));
+                return new(CommonErrors.FighterNotACommander(req.PartyId, application.BattleId));
             }
 
-            if (heroFighter.Side != application.Side)
+            if (partyFighter.Side != application.Side)
             {
-                return new(CommonErrors.HeroesNotOnTheSameSide(heroFighter.Id, application.HeroId,
+                return new(CommonErrors.PartiesNotOnTheSameSide(partyFighter.Id, application.PartyId,
                     application.BattleId));
             }
 
@@ -83,16 +83,16 @@ public record RespondToBattleFighterApplicationCommand : IMediatorRequest<Battle
                     Side = application.Side,
                     Commander = false,
                     MercenarySlots = 0,
-                    Hero = application.Hero,
+                    Party = application.Party,
                     Battle = application.Battle,
                 };
                 _db.BattleFighters.Add(newFighter);
 
-                // Delete all other applying hero pending applications for this battle.
+                // Delete all other applying party pending applications for this battle.
                 var otherApplications = await _db.BattleFighterApplications
                     .Where(a => a.Id != application.Id
                                 && a.BattleId == application.BattleId
-                                && a.HeroId == application.HeroId
+                                && a.PartyId == application.PartyId
                                 && a.Status == BattleFighterApplicationStatus.Pending)
                     .ToArrayAsync(cancellationToken);
                 _db.BattleFighterApplications.RemoveRange(otherApplications);
@@ -104,9 +104,9 @@ public record RespondToBattleFighterApplicationCommand : IMediatorRequest<Battle
 
             await _db.SaveChangesAsync(cancellationToken);
             Logger.LogInformation(
-                "Hero '{0}' {1} application '{2}' from hero '{3}' to join battle '{4}' as a fighter",
-                req.HeroId, req.Accept ? "accepted" : "declined", req.FighterApplicationId,
-                application.HeroId, application.BattleId);
+                "Party '{0}' {1} application '{2}' from party '{3}' to join battle '{4}' as a fighter",
+                req.PartyId, req.Accept ? "accepted" : "declined", req.FighterApplicationId,
+                application.PartyId, application.BattleId);
             return new(_mapper.Map<BattleFighterApplicationViewModel>(application));
         }
     }

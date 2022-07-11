@@ -58,7 +58,7 @@ public class BattlesController : BaseController
     [HttpPost("{battleId}/fighters")]
     public Task<ActionResult<Result<BattleFighterApplicationViewModel>>> ApplyToBattleAsFighter([FromRoute] int battleId)
     {
-        ApplyAsFighterToBattleCommand req = new() { HeroId = CurrentUser.UserId, BattleId = battleId };
+        ApplyAsFighterToBattleCommand req = new() { PartyId = CurrentUser.UserId, BattleId = battleId };
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -66,8 +66,8 @@ public class BattlesController : BaseController
     /// Get battle fighter applications.
     /// </summary>
     /// <returns>
-    /// If the hero is a command of the battle it will return all applications of their battle side, else it returns
-    /// only the applications of the hero.
+    /// If the party is a command of the battle it will return all applications of their battle side, else it returns
+    /// only the applications of the party.
     /// </returns>
     /// <response code="200">Ok.</response>
     /// <response code="400">Bad request.</response>
@@ -77,7 +77,7 @@ public class BattlesController : BaseController
     {
         return ResultToActionAsync(Mediator.Send(new GetBattleFighterApplicationsQuery
         {
-            HeroId = CurrentUser.UserId,
+            PartyId = CurrentUser.UserId,
             BattleId = battleId,
             Statuses = statuses,
         }));
@@ -92,7 +92,7 @@ public class BattlesController : BaseController
     public Task<ActionResult<Result<BattleFighterApplicationViewModel>>> RespondToBattleFighterApplication(
         [FromRoute] int battleId, [FromRoute] int applicationId, [FromBody] RespondToBattleFighterApplicationCommand req)
     {
-        req = req with { HeroId = CurrentUser.UserId, FighterApplicationId = applicationId };
+        req = req with { PartyId = CurrentUser.UserId, FighterApplicationId = applicationId };
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -156,7 +156,7 @@ public class BattlesController : BaseController
     public Task<ActionResult<Result<BattleMercenaryApplicationViewModel>>> RespondToBattleMercenaryApplication(
         [FromRoute] int battleId, [FromRoute] int applicationId, [FromBody] RespondToBattleMercenaryApplicationCommand req)
     {
-        req = req with { HeroId = CurrentUser.UserId, MercenaryApplicationId = applicationId };
+        req = req with { PartyId = CurrentUser.UserId, MercenaryApplicationId = applicationId };
         return ResultToActionAsync(Mediator.Send(req));
     }
 }

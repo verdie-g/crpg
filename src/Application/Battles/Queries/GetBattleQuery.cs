@@ -34,7 +34,7 @@ public record GetBattleQuery : IMediatorRequest<BattleViewModel>
                 return new(CommonErrors.BattleNotFound(req.BattleId));
             }
 
-            // Battles in preparation shouldn't be visible to anyone but only to heroes in sight on the map.
+            // Battles in preparation shouldn't be visible to anyone but only to parties in sight on the map.
             if (battle.Phase == BattlePhase.Preparation)
             {
                 return new(CommonErrors.BattleInvalidPhase(req.BattleId, battle.Phase));

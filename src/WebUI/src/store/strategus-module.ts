@@ -3,24 +3,24 @@ import store from '@/store';
 import SettlementPublic from '@/models/settlement-public';
 import * as strategusService from '@/services/strategus-service';
 import { arrayMergeBy } from '@/utils/array';
-import Hero from '@/models/hero';
+import Party from '@/models/party';
 import Region from '@/models/region';
-import HeroVisible from '@/models/hero-visible';
+import PartyVisible from '@/models/party-visible';
 import StrategusUpdate from '@/models/strategus-update';
 import { Result } from '@/models/result';
-import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
+import PartyStatusUpdateRequest from '@/models/party-status-update-request';
 
 @Module({ store, dynamic: true, name: 'strategus' })
 class StrategusModule extends VuexModule {
-  hero: Hero | null = null;
+  party: Party | null = null;
   settlements: SettlementPublic[] = [];
-  visibleHeroes: HeroVisible[] = [];
+  visibleParties: PartyVisible[] = [];
 
   currentDialog: string | null = null;
 
   @Mutation
-  setHero(hero: Hero) {
-    this.hero = hero;
+  setParty(party: Party) {
+    this.party = party;
   }
 
   @Mutation
@@ -29,8 +29,8 @@ class StrategusModule extends VuexModule {
   }
 
   @Mutation
-  setVisibleHeroes(heroes: HeroVisible[]) {
-    this.visibleHeroes = heroes;
+  setVisibleParties(parties: PartyVisible[]) {
+    this.visibleParties = parties;
   }
 
   @Mutation
@@ -48,8 +48,8 @@ class StrategusModule extends VuexModule {
     return strategusService.getSettlements();
   }
 
-  @Action({ commit: 'setHero' })
-  registerUser(region: Region): Promise<Hero> {
+  @Action({ commit: 'setParty' })
+  registerUser(region: Region): Promise<Party> {
     return strategusService.registerUser(region);
   }
 
@@ -61,17 +61,17 @@ class StrategusModule extends VuexModule {
     }
 
     const update = res.data!;
-    this.setHero(update.hero);
+    this.setParty(update.party);
     this.setSettlements(arrayMergeBy(this.settlements, update.visibleSettlements, s => s.id));
-    this.setVisibleHeroes(update.visibleHeroes);
+    this.setVisibleParties(update.visibleParties);
 
     return res;
   }
 
   @Action
-  async updateHeroStatus(update: HeroStatusUpdateRequest) {
-    const hero = await strategusService.updateHeroStatus(update);
-    this.setHero(hero);
+  async updatePartyStatus(update: PartyStatusUpdateRequest) {
+    const party = await strategusService.updatePartyStatus(update);
+    this.setParty(party);
   }
 }
 

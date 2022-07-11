@@ -43,7 +43,7 @@ public record GetBattleMercenaryApplicationsQuery : IMediatorRequest<IList<Battl
         {
             var battle = await _db.Battles
                 .AsSplitQuery()
-                .Include(b => b.Fighters.Where(f => f.HeroId == req.UserId))
+                .Include(b => b.Fighters.Where(f => f.PartyId == req.UserId))
                 .Include(b => b.MercenaryApplications.Where(a => req.Statuses.Contains(a.Status)))
                 .ThenInclude(m => m.Character!.User)
                 .FirstOrDefaultAsync(b => b.Id == req.BattleId, cancellationToken);

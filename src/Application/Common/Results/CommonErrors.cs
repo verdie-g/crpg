@@ -103,60 +103,60 @@ internal static class CommonErrors
         Detail = $"Fighter with id '{fighterId} is not a commander of the battle with id '{battleId}'",
     };
 
-    public static Error HeroFighter(int heroId, int battleId) => new(ErrorType.Validation, ErrorCode.HeroFighter)
+    public static Error PartyFighter(int partyId, int battleId) => new(ErrorType.Validation, ErrorCode.PartyFighter)
     {
-        Title = "Hero is a fighter in this battle",
-        Detail = $"Cannot performed the requested action because the hero with id '{heroId}' is a fighter in" +
+        Title = "Party is a fighter in this battle",
+        Detail = $"Cannot performed the requested action because the party with id '{partyId}' is a fighter in" +
                  $" the battle with id '{battleId}'",
     };
 
-    public static Error HeroInBattle(int heroId) => new(ErrorType.Validation, ErrorCode.HeroInBattle)
+    public static Error PartyInBattle(int partyId) => new(ErrorType.Validation, ErrorCode.PartyInBattle)
     {
-        Title = "Hero is in a battle",
-        Detail = $"Cannot performed the requested action while hero with id '{heroId}' is in a battle",
+        Title = "Party is in a battle",
+        Detail = $"Cannot performed the requested action while party with id '{partyId}' is in a battle",
     };
 
-    public static Error HeroNotAFighter(int heroId, int battleId) => new(ErrorType.Validation, ErrorCode.HeroNotAFighter)
+    public static Error PartyNotAFighter(int partyId, int battleId) => new(ErrorType.Validation, ErrorCode.PartyNotAFighter)
     {
-        Title = "Hero is not a fighter in the battle",
-        Detail = $"Hero with id '{heroId} is not a fighter of the battle with id '{battleId}'",
+        Title = "Party is not a fighter in the battle",
+        Detail = $"Party with id '{partyId} is not a fighter of the battle with id '{battleId}'",
     };
 
-    public static Error HeroNotEnoughTroops(int heroId) => new(ErrorType.Validation, ErrorCode.HeroNotEnoughTroops)
+    public static Error PartyNotEnoughTroops(int partyId) => new(ErrorType.Validation, ErrorCode.PartyNotEnoughTroops)
     {
-        Title = "Hero doesn't have enough troops",
-        Detail = $"Hero with id '{heroId} doesn't have enough troops",
+        Title = "Party doesn't have enough troops",
+        Detail = $"Party with id '{partyId} doesn't have enough troops",
     };
 
-    public static Error HeroNotFound(int heroId) => new(ErrorType.NotFound, ErrorCode.HeroNotFound)
+    public static Error PartyNotFound(int partyId) => new(ErrorType.NotFound, ErrorCode.PartyNotFound)
     {
-        Title = "Hero was not found",
-        Detail = $"Hero with id '{heroId}' was not found",
+        Title = "Party was not found",
+        Detail = $"Party with id '{partyId}' was not found",
     };
 
-    public static Error HeroNotInASettlement(int heroId) => new(ErrorType.Validation, ErrorCode.HeroNotInASettlement)
+    public static Error PartyNotInASettlement(int partyId) => new(ErrorType.Validation, ErrorCode.PartyNotInASettlement)
     {
-        Title = "Hero is not in a settlement",
-        Detail = $"Hero with id '{heroId}' is not in a settlement",
+        Title = "Party is not in a settlement",
+        Detail = $"Party with id '{partyId}' is not in a settlement",
     };
 
-    public static Error HeroNotInSight(int heroId) => new(ErrorType.Validation, ErrorCode.HeroNotInSight)
+    public static Error PartyNotInSight(int partyId) => new(ErrorType.Validation, ErrorCode.PartyNotInSight)
     {
-        Title = "Hero is not in sight",
-        Detail = $"Hero with id '{heroId}' is too far to be in sight",
+        Title = "Party is not in sight",
+        Detail = $"Party with id '{partyId}' is too far to be in sight",
     };
 
-    public static Error HeroNotSettlementOwner(int heroId, int settlementId) => new(ErrorType.Forbidden, ErrorCode.HeroNotSettlementOwner)
+    public static Error PartyNotSettlementOwner(int partyId, int settlementId) => new(ErrorType.Forbidden, ErrorCode.PartyNotSettlementOwner)
     {
-        Title = "Hero is not the settlement owner",
-        Detail = $"Hero with id '{heroId}' is not of the owner of settlement with id '{settlementId}",
+        Title = "Party is not the settlement owner",
+        Detail = $"Party with id '{partyId}' is not of the owner of settlement with id '{settlementId}",
     };
 
-    public static Error HeroesNotOnTheSameSide(int heroId1, int heroId2, int battleId) =>
-        new(ErrorType.Validation, ErrorCode.HeroesNotOnTheSameSide)
+    public static Error PartiesNotOnTheSameSide(int partyId1, int partyId2, int battleId) =>
+        new(ErrorType.Validation, ErrorCode.PartiesNotOnTheSameSide)
         {
-            Title = "Heroes are not on the same side of the battle",
-            Detail = $"Heroes with ids '{heroId1}' and '{heroId2}' are not in the side in the battle with id '{battleId}'",
+            Title = "Parties are not on the same side of the battle",
+            Detail = $"Parties with ids '{partyId1}' and '{partyId2}' are not in the side in the battle with id '{battleId}'",
         };
 
     public static Error ItemAlreadyOwned(int itemId) => new(ErrorType.Validation, ErrorCode.ItemAlreadyOwned)

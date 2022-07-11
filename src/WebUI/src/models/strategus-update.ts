@@ -1,9 +1,9 @@
-import Hero from './hero';
-import HeroVisible from './hero-visible';
+import Party from './party';
+import PartyVisible from './party-visible';
 import SettlementPublic from './settlement-public';
 
 export default interface StrategusUpdate {
-  hero: Hero;
-  visibleHeroes: HeroVisible[];
+  party: Party;
+  visibleParties: PartyVisible[];
   visibleSettlements: SettlementPublic[];
 }
