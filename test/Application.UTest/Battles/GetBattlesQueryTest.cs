@@ -1,7 +1,7 @@
 ﻿using Crpg.Application.Battles.Queries;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Battles;
-using Crpg.Domain.Entities.Heroes;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
@@ -25,25 +25,25 @@ public class GetBattlesQueryTest : TestBase
                     {
                         Side = BattleSide.Attacker,
                         Commander = true,
-                        Hero = new Hero { Troops = 20.9f, User = new User() },
+                        Party = new Party { Troops = 20.9f, User = new User() },
                     },
                     new BattleFighter
                     {
                         Side = BattleSide.Attacker,
                         Commander = false,
-                        Hero = new Hero { Troops = 15.8f, User = new User() },
+                        Party = new Party { Troops = 15.8f, User = new User() },
                     },
                     new BattleFighter
                     {
                         Side = BattleSide.Defender,
                         Commander = false,
-                        Hero = new Hero { Troops = 35.7f, User = new User() },
+                        Party = new Party { Troops = 35.7f, User = new User() },
                     },
                     new BattleFighter
                     {
                         Side = BattleSide.Defender,
                         Commander = true,
-                        Hero = new Hero { Troops = 10.6f, User = new User() },
+                        Party = new Party { Troops = 10.6f, User = new User() },
                     },
                 },
             },
@@ -57,7 +57,7 @@ public class GetBattlesQueryTest : TestBase
                     {
                         Side = BattleSide.Attacker,
                         Commander = true,
-                        Hero = new Hero { Troops = 100.5f, User = new User() },
+                        Party = new Party { Troops = 100.5f, User = new User() },
                     },
                     new BattleFighter
                     {
@@ -73,7 +73,7 @@ public class GetBattlesQueryTest : TestBase
                     {
                         Side = BattleSide.Defender,
                         Commander = false,
-                        Hero = new Hero { Troops = 35.6f, User = new User() },
+                        Party = new Party { Troops = 35.6f, User = new User() },
                     },
                 },
             },
@@ -100,16 +100,16 @@ public class GetBattlesQueryTest : TestBase
         Assert.AreEqual(Region.NorthAmerica, battlesVm[0].Region);
         Assert.AreEqual(BattlePhase.Hiring, battlesVm[0].Phase);
         Assert.IsNotNull(battlesVm[0].Attacker);
-        Assert.IsNotNull(battlesVm[0].Attacker.Hero);
+        Assert.IsNotNull(battlesVm[0].Attacker.Party);
         Assert.AreEqual(35, battlesVm[0].AttackerTotalTroops);
         Assert.IsNotNull(battlesVm[0].Defender);
-        Assert.IsNotNull(battlesVm[0].Defender!.Hero);
+        Assert.IsNotNull(battlesVm[0].Defender!.Party);
         Assert.AreEqual(45, battlesVm[0].DefenderTotalTroops);
 
         Assert.AreEqual(Region.NorthAmerica, battlesVm[1].Region);
         Assert.AreEqual(BattlePhase.Live, battlesVm[1].Phase);
         Assert.IsNotNull(battlesVm[1].Attacker);
-        Assert.IsNotNull(battlesVm[1].Attacker.Hero);
+        Assert.IsNotNull(battlesVm[1].Attacker.Party);
         Assert.AreEqual(100, battlesVm[1].AttackerTotalTroops);
         Assert.AreEqual(47, battlesVm[1].DefenderTotalTroops);
         Assert.IsNotNull(battlesVm[1].Defender);

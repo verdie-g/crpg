@@ -42,7 +42,7 @@ public record GetBattlesQuery : IMediatorRequest<IList<BattleDetailedViewModel>>
         {
             var battles = await _db.Battles
                 .AsSplitQuery()
-                .Include(b => b.Fighters).ThenInclude(f => f.Hero!.User)
+                .Include(b => b.Fighters).ThenInclude(f => f.Party!.User)
                 .Include(b => b.Fighters).ThenInclude(f => f.Settlement)
                 .Where(b => b.Region == req.Region && req.Phases.Contains(b.Phase))
                 .ToArrayAsync(cancellationToken);
@@ -57,12 +57,12 @@ public record GetBattlesQuery : IMediatorRequest<IList<BattleDetailedViewModel>>
                     b.Fighters.First(f => f.Side == BattleSide.Attacker && f.Commander)),
                 AttackerTotalTroops = b.Fighters
                     .Where(f => f.Side == BattleSide.Attacker)
-                    .Sum(f => (int)Math.Floor(f.Hero!.Troops)),
+                    .Sum(f => (int)Math.Floor(f.Party!.Troops)),
                 Defender = _mapper.Map<BattleFighterViewModel>(
                     b.Fighters.First(f => f.Side == BattleSide.Defender && f.Commander)),
                 DefenderTotalTroops = b.Fighters
                     .Where(f => f.Side == BattleSide.Defender)
-                    .Sum(f => (int)Math.Floor(f.Hero?.Troops ?? 0) + (f.Settlement?.Troops ?? 0)),
+                    .Sum(f => (int)Math.Floor(f.Party?.Troops ?? 0) + (f.Settlement?.Troops ?? 0)),
                 CreatedAt = b.CreatedAt,
             }).ToArray();
 

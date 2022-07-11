@@ -27,7 +27,7 @@ public record GetBattleFightersQuery : IMediatorRequest<IList<BattleFighterViewM
         {
             var battle = await _db.Battles
                 .AsSplitQuery()
-                .Include(b => b.Fighters).ThenInclude(f => f.Hero!).ThenInclude(h => h.User)
+                .Include(b => b.Fighters).ThenInclude(f => f.Party!).ThenInclude(h => h.User)
                 .Include(b => b.Fighters).ThenInclude(f => f.Settlement)
                 .FirstOrDefaultAsync(b => b.Id == req.BattleId, cancellationToken);
             if (battle == null)
@@ -35,7 +35,7 @@ public record GetBattleFightersQuery : IMediatorRequest<IList<BattleFighterViewM
                 return new(CommonErrors.BattleNotFound(req.BattleId));
             }
 
-            // Battles in preparation shouldn't be visible to anyone but only to heroes in sight on the map.
+            // Battles in preparation shouldn't be visible to anyone but only to parties in sight on the map.
             if (battle.Phase == BattlePhase.Preparation)
             {
                 return new(CommonErrors.BattleInvalidPhase(req.BattleId, battle.Phase));

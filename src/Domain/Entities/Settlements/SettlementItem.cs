@@ -1,11 +1,11 @@
 ﻿using Crpg.Domain.Common;
-using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Parties;
 
 namespace Crpg.Domain.Entities.Settlements;
 
 /// <summary>
-/// Item owned by a settlement on Strategus. Similar to <see cref="HeroItem"/> but for <see cref="Settlement"/>s.
+/// Item owned by a settlement on Strategus. Similar to <see cref="PartyItem"/> but for <see cref="Settlement"/>s.
 /// </summary>
 public class SettlementItem : AuditableEntity
 {

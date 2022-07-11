@@ -58,7 +58,7 @@ public class GetBattleMercenariesQueryTest : TestBase
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.HeroNotAFighter, res.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.PartyNotAFighter, res.Errors![0].Code);
     }
 
     [Test]
@@ -67,7 +67,7 @@ public class GetBattleMercenariesQueryTest : TestBase
         Battle battle = new()
         {
             Phase = BattlePhase.Hiring,
-            Fighters = { new BattleFighter { HeroId = 20, Side = BattleSide.Defender } },
+            Fighters = { new BattleFighter { PartyId = 20, Side = BattleSide.Defender } },
             Mercenaries =
             {
                 new BattleMercenary

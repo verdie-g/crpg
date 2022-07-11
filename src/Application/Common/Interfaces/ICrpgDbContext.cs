@@ -2,8 +2,8 @@ using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
-using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
@@ -22,10 +22,10 @@ public interface ICrpgDbContext
     DbSet<Clan> Clans { get; }
     DbSet<ClanMember> ClanMembers { get; }
     DbSet<ClanInvitation> ClanInvitations { get; }
-    DbSet<Hero> Heroes { get; }
+    DbSet<Party> Parties { get; }
     DbSet<Settlement> Settlements { get; }
     DbSet<SettlementItem> SettlementItems { get; }
-    DbSet<HeroItem> HeroItems { get; }
+    DbSet<PartyItem> PartyItems { get; }
     DbSet<Battle> Battles { get; }
     DbSet<BattleFighter> BattleFighters { get; }
     DbSet<BattleFighterApplication> BattleFighterApplications { get; }

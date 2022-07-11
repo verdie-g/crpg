@@ -1,20 +1,20 @@
-﻿using Crpg.Domain.Entities.Heroes;
+﻿using Crpg.Domain.Entities.Parties;
 
 namespace Crpg.Application.Common.Services;
 
 /// <summary>
-/// Service to compute the speed of a <see cref="Hero"/>.
+/// Service to compute the speed of a <see cref="Party"/>.
 /// </summary>
 internal interface IStrategusSpeedModel
 {
-    /// <summary>Compute the Hero Speed.</summary>
-    double ComputeHeroSpeed(Hero hero);
+    /// <summary>Compute the Party Speed.</summary>
+    double ComputePartySpeed(Party party);
 }
 
 internal class StrategusSpeedModel : IStrategusSpeedModel
 {
     /// <inheritdoc />
-    public double ComputeHeroSpeed(Hero hero)
+    public double ComputePartySpeed(Party party)
     {
         const double baseSpeed = 1; // TODO: tune https://github.com/verdie-g/crpg/issues/195
         const double terrainSpeedFactor = 1;
@@ -28,19 +28,19 @@ internal class StrategusSpeedModel : IStrategusSpeedModel
         //  10000                  |          2/4   |
         // this divide the speed of the army by the order of magnitude of its size.
         // 10000 is four zeros so the denominator is 4
-        double troopInfluence = 2 / (1 + Math.Log10(1 + hero.Troops / 10));
-        return baseSpeed * terrainSpeedFactor * weightFactor * MountsInfluence(hero.Troops, hero.Items) * troopInfluence;
+        double troopInfluence = 2 / (1 + Math.Log10(1 + party.Troops / 10));
+        return baseSpeed * terrainSpeedFactor * weightFactor * MountsInfluence(party.Troops, party.Items) * troopInfluence;
     }
 
-    private double MountsInfluence(float troops, List<HeroItem> heroItems)
+    private double MountsInfluence(float troops, List<PartyItem> partyItems)
     {
         const double forcedMarchSpeed = 2;
 
         int mounts = 0;
-        foreach (HeroItem heroItem in heroItems.OrderByDescending(i => i.Item!.Mount!.HitPoints))
+        foreach (PartyItem partyItem in partyItems.OrderByDescending(i => i.Item!.Mount!.HitPoints))
         {
-            mounts += heroItem.Count;
-            int mountSpeed = heroItem.Item!.Mount!.HitPoints / 100;
+            mounts += partyItem.Count;
+            int mountSpeed = partyItem.Item!.Mount!.HitPoints / 100;
             if (mounts >= troops && mountSpeed >= forcedMarchSpeed)
             {
                 // This is in case there is enough mount for everyone soldier to be mounted. The soldier will choose

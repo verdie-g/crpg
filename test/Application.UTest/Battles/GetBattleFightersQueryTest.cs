@@ -1,7 +1,7 @@
 ﻿using Crpg.Application.Battles.Queries;
 using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities.Battles;
-using Crpg.Domain.Entities.Heroes;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
@@ -54,12 +54,12 @@ public class GetBattleFightersQueryTest : TestBase
                 },
                 new BattleFighter
                 {
-                    Hero = new Hero { User = new User { Name = "b" } },
+                    Party = new Party { User = new User { Name = "b" } },
                     Commander = true,
                 },
                 new BattleFighter
                 {
-                    Hero = new Hero { User = new User { Name = "c" } },
+                    Party = new Party { User = new User { Name = "c" } },
                 },
             },
         };
@@ -76,9 +76,9 @@ public class GetBattleFightersQueryTest : TestBase
         var fighters = res.Data!;
         Assert.AreEqual(3, fighters.Count);
         Assert.AreEqual("a", fighters[0].Settlement!.Name);
-        Assert.AreEqual("b", fighters[1].Hero!.Name);
+        Assert.AreEqual("b", fighters[1].Party!.Name);
         Assert.AreEqual(true, fighters[1].Commander);
-        Assert.AreEqual("c", fighters[2].Hero!.Name);
+        Assert.AreEqual("c", fighters[2].Party!.Name);
         Assert.AreEqual(false, fighters[2].Commander);
     }
 }

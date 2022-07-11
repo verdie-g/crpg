@@ -1,11 +1,11 @@
-﻿using Crpg.Domain.Entities.Heroes;
+﻿using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Settlements;
 
 namespace Crpg.Domain.Entities.Battles;
 
 /// <summary>
 /// Fighter that joined their army to a <see cref="Battle"/> during the <see cref="BattlePhase.Preparation"/>
-/// phase. Fighter can be either a <see cref="Hero"/> or a <see cref="Settlement"/>. Not to be confused with
+/// phase. Fighter can be either a <see cref="Party"/> or a <see cref="Settlement"/>. Not to be confused with
 /// <see cref="BattleMercenary"/>.
 /// </summary>
 public class BattleFighter
@@ -14,14 +14,14 @@ public class BattleFighter
     public int BattleId { get; set; }
 
     /// <summary>
-    /// The id of the hero that joined the <see cref="Battle"/>. Null if <see cref="BattleFighter"/>
+    /// The id of the party that joined the <see cref="Battle"/>. Null if <see cref="BattleFighter"/>
     /// represents a <see cref="Settlement"/>.
     /// </summary>
-    public int? HeroId { get; set; }
+    public int? PartyId { get; set; }
 
     /// <summary>
     /// The id of the settlement that being siege in the <see cref="Battle"/>. Null if <see cref="BattleFighter"/>
-    /// represents a <see cref="Hero"/>.
+    /// represents a <see cref="Party"/>.
     /// </summary>
     public int? SettlementId { get; set; }
 
@@ -36,11 +36,11 @@ public class BattleFighter
 
     /// <summary>
     /// Maximum number of <see cref="BattleMercenary"/> for the <see cref="BattleFighter"/>. Depends on
-    /// <see cref="Hero"/> troops. This number doesn't include the <see cref="BattleFighter"/> itself.
+    /// <see cref="Party"/> troops. This number doesn't include the <see cref="BattleFighter"/> itself.
     /// </summary>
     public int MercenarySlots { get; set; }
 
-    public Hero? Hero { get; set; }
+    public Party? Party { get; set; }
     public Settlement? Settlement { get; set; }
     public Battle? Battle { get; set; }
 }

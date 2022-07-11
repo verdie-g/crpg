@@ -5,9 +5,9 @@ using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
-using Crpg.Application.Heroes.Commands;
+using Crpg.Application.Parties.Commands;
 using Crpg.Domain.Entities.Battles;
-using Crpg.Domain.Entities.Heroes;
+using Crpg.Domain.Entities.Parties;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -17,7 +17,7 @@ namespace Crpg.Application.Battles.Commands;
 
 public record ApplyAsFighterToBattleCommand : IMediatorRequest<BattleFighterApplicationViewModel>
 {
-    public int HeroId { get; init; }
+    public int PartyId { get; init; }
     public int BattleId { get; init; }
     public BattleSide Side { get; init; }
 
@@ -48,16 +48,16 @@ public record ApplyAsFighterToBattleCommand : IMediatorRequest<BattleFighterAppl
             ApplyAsFighterToBattleCommand req,
             CancellationToken cancellationToken)
         {
-            var hero = await _db.Heroes
-                .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
-            if (hero == null)
+            var party = await _db.Parties
+                .FirstOrDefaultAsync(h => h.Id == req.PartyId, cancellationToken);
+            if (party == null)
             {
-                return new(CommonErrors.HeroNotFound(req.HeroId));
+                return new(CommonErrors.PartyNotFound(req.PartyId));
             }
 
-            if (hero.Status == HeroStatus.InBattle)
+            if (party.Status == PartyStatus.InBattle)
             {
-                return new(CommonErrors.HeroInBattle(req.HeroId));
+                return new(CommonErrors.PartyInBattle(req.PartyId));
             }
 
             var battle = await _db.Battles
@@ -73,14 +73,14 @@ public record ApplyAsFighterToBattleCommand : IMediatorRequest<BattleFighterAppl
                 return new(CommonErrors.BattleInvalidPhase(req.BattleId, battle.Phase));
             }
 
-            if (!_strategusMap.ArePointsAtInteractionDistance(hero.Position, battle.Position))
+            if (!_strategusMap.ArePointsAtInteractionDistance(party.Position, battle.Position))
             {
                 return new(CommonErrors.BattleTooFar(req.BattleId));
             }
 
             var existingPendingApplication = await _db.BattleFighterApplications
-                .Include(a => a.Hero)
-                .Where(a => a.HeroId == req.HeroId && a.BattleId == req.BattleId
+                .Include(a => a.Party)
+                .Where(a => a.PartyId == req.PartyId && a.BattleId == req.BattleId
                                                    && a.Side == req.Side
                                                    && (a.Status == BattleFighterApplicationStatus.Pending
                                                        || a.Status == BattleFighterApplicationStatus.Accepted))
@@ -96,11 +96,11 @@ public record ApplyAsFighterToBattleCommand : IMediatorRequest<BattleFighterAppl
                 Side = req.Side,
                 Status = BattleFighterApplicationStatus.Pending,
                 Battle = battle,
-                Hero = hero,
+                Party = party,
             };
             _db.BattleFighterApplications.Add(application);
             await _db.SaveChangesAsync(cancellationToken);
-            Logger.LogInformation("Hero '{0}' applied as fighter to battle '{1}'", req.HeroId, req.BattleId);
+            Logger.LogInformation("Party '{0}' applied as fighter to battle '{1}'", req.PartyId, req.BattleId);
             return new(_mapper.Map<BattleFighterApplicationViewModel>(application));
         }
     }

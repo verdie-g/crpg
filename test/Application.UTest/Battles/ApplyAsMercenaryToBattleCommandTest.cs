@@ -4,7 +4,7 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Characters;
-using Crpg.Domain.Entities.Heroes;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Users;
 using Moq;
 using NUnit.Framework;
@@ -91,7 +91,7 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
         Battle battle = new()
         {
             Phase = BattlePhase.Hiring,
-            Fighters = { new BattleFighter { Hero = new Hero { User = user } } },
+            Fighters = { new BattleFighter { Party = new Party { User = user } } },
         };
         ArrangeDb.Battles.Add(battle);
 
@@ -107,7 +107,7 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.HeroFighter, res.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.PartyFighter, res.Errors![0].Code);
     }
 
     [TestCase(BattleMercenaryApplicationStatus.Pending)]

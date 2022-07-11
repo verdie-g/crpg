@@ -52,8 +52,8 @@ public class Constants
     public double[] StrategusSpawningPositionCenter { get; set; } = Array.Empty<double>();
     public double StrategusSpawningPositionRadius { get; set; }
     public float StrategusTroopRecruitmentPerHour { get; set; }
-    public int StrategusMinHeroTroops { get; set; }
-    public int StrategusMaxHeroTroops { get; set; }
+    public int StrategusMinPartyTroops { get; set; }
+    public int StrategusMaxPartyTroops { get; set; }
     public int StrategusBattleInitiationDurationHours { get; set; }
     public int StrategusBattleHiringDurationHours { get; set; }
     public int StrategusMercenaryMaxWage { get; set; }

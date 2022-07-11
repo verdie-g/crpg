@@ -1,5 +1,5 @@
 ﻿using Crpg.Domain.Common;
-using Crpg.Domain.Entities.Heroes;
+using Crpg.Domain.Entities.Parties;
 using NetTopologySuite.Geometries;
 
 namespace Crpg.Domain.Entities.Settlements;
@@ -40,7 +40,7 @@ public class Settlement : AuditableEntity
     /// <summary>
     /// Owner of the <see cref="Settlement"/>.
     /// </summary>
-    public Hero? Owner { get; set; }
+    public Party? Owner { get; set; }
 
     /// <summary>
     /// Inventory of the <see cref="Settlement"/>. Used as a simple storage or as equipment for the

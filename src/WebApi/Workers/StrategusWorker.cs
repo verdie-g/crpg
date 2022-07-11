@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Reflection;
 using Crpg.Application.Battles.Commands;
 using Crpg.Application.Common.Mediator;
-using Crpg.Application.Heroes.Commands;
+using Crpg.Application.Parties.Commands;
 using Crpg.Common;
 using MediatR;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -21,8 +21,8 @@ public class StrategusWorker : BackgroundService
 
     private static readonly Func<TimeSpan, IMediatorRequest>[] Behaviors =
     {
-        dt => new UpdateHeroPositionsCommand { DeltaTime = dt },
-        dt => new UpdateHeroTroopsCommand { DeltaTime = dt },
+        dt => new UpdatePartyPositionsCommand { DeltaTime = dt },
+        dt => new UpdatePartyTroopsCommand { DeltaTime = dt },
         dt => new UpdateBattlePhasesCommand { DeltaTime = dt },
     };
 

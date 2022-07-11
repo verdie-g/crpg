@@ -4,8 +4,8 @@ using Crpg.Application.Users.Commands;
 using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
-using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
@@ -25,9 +25,9 @@ public class DeleteUserCommandTest : TestBase
             Items = new List<UserItem> { new() { Item = new Item() } },
             Bans = new List<Ban> { new() },
             ClanMembership = new ClanMember { Clan = new Clan() },
-            Hero = new Hero
+            Party = new Party
             {
-                Items = new List<HeroItem> { new() { Item = new Item() } },
+                Items = new List<PartyItem> { new() { Item = new Item() } },
             },
         };
         ArrangeDb.Users.Add(user);
@@ -36,7 +36,7 @@ public class DeleteUserCommandTest : TestBase
         // Save ids before they get deleted.
         int itemId = user.Items[0].ItemId;
         int clanId = user.ClanMembership.ClanId;
-        int strategusItemId = user.Hero.Items[0].ItemId;
+        int strategusItemId = user.Party.Items[0].ItemId;
 
         var userService = Mock.Of<IUserService>();
         DeleteUserCommand.Handler handler = new(ActDb, Mock.Of<IDateTime>(), userService);
@@ -54,10 +54,10 @@ public class DeleteUserCommandTest : TestBase
             oi.UserId == user.Id && oi.ItemId == user.Items[0].ItemId));
         Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.EquippedItems.FirstAsync(ei =>
             ei.UserId == user.Id));
-        Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.Heroes.FirstAsync(h =>
+        Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.Parties.FirstAsync(h =>
             h.Id == user.Id));
-        Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.HeroItems.FirstAsync(oi =>
-            oi.HeroId == user.Id));
+        Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.PartyItems.FirstAsync(oi =>
+            oi.PartyId == user.Id));
         Assert.DoesNotThrowAsync(() => AssertDb.Items.FirstAsync(i => i.Id == itemId));
         Assert.DoesNotThrowAsync(() => AssertDb.Bans.FirstAsync(b => b.BannedUserId == user.Id));
         Assert.DoesNotThrowAsync(() => AssertDb.Clans.FirstAsync(c => c.Id == clanId));

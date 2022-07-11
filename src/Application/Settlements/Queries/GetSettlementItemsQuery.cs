@@ -2,15 +2,15 @@ using AutoMapper;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
-using Crpg.Application.Heroes.Models;
-using Crpg.Domain.Entities.Heroes;
+using Crpg.Application.Parties.Models;
+using Crpg.Domain.Entities.Parties;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Settlements.Queries;
 
 public record GetSettlementItemsQuery : IMediatorRequest<IList<ItemStack>>
 {
-    public int HeroId { get; init; }
+    public int PartyId { get; init; }
     public int SettlementId { get; init; }
 
     internal class Handler : IMediatorRequestHandler<GetSettlementItemsQuery, IList<ItemStack>>
@@ -27,29 +27,29 @@ public record GetSettlementItemsQuery : IMediatorRequest<IList<ItemStack>>
         public async Task<Result<IList<ItemStack>>> Handle(GetSettlementItemsQuery req,
             CancellationToken cancellationToken)
         {
-            var hero = await _db.Heroes
+            var party = await _db.Parties
                 .AsSplitQuery()
                 .Include(h => h.TargetedSettlement).ThenInclude(s => s!.Items).ThenInclude(i => i.Item)
-                .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
-            if (hero == null)
+                .FirstOrDefaultAsync(h => h.Id == req.PartyId, cancellationToken);
+            if (party == null)
             {
-                return new(CommonErrors.HeroNotFound(req.HeroId));
+                return new(CommonErrors.PartyNotFound(req.PartyId));
             }
 
-            if ((hero.Status != HeroStatus.IdleInSettlement
-                 && hero.Status != HeroStatus.RecruitingInSettlement)
-                || hero.TargetedSettlementId != req.SettlementId)
+            if ((party.Status != PartyStatus.IdleInSettlement
+                 && party.Status != PartyStatus.RecruitingInSettlement)
+                || party.TargetedSettlementId != req.SettlementId)
             {
-                return new(CommonErrors.HeroNotInASettlement(hero.Id));
+                return new(CommonErrors.PartyNotInASettlement(party.Id));
             }
 
             // Only the settlement owner can see the items.
-            if (hero.TargetedSettlement!.OwnerId != hero.Id)
+            if (party.TargetedSettlement!.OwnerId != party.Id)
             {
-                return new(CommonErrors.HeroNotSettlementOwner(hero.Id, hero.TargetedSettlementId.Value));
+                return new(CommonErrors.PartyNotSettlementOwner(party.Id, party.TargetedSettlementId.Value));
             }
 
-            return new(_mapper.Map<IList<ItemStack>>(hero.TargetedSettlement!.Items));
+            return new(_mapper.Map<IList<ItemStack>>(party.TargetedSettlement!.Items));
         }
     }
 }

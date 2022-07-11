@@ -1,6 +1,6 @@
 ﻿using Crpg.Application.Common.Services;
-using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Parties;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Common.Services;
@@ -10,28 +10,28 @@ public class StrategusSpeedModelTest
     [Test]
     public void TroopsShouldUseTheBestMountTheyHave()
     {
-        Hero hero1 = new()
+        Party party1 = new()
         {
             Troops = 10,
-            Items = new List<HeroItem>
+            Items = new List<PartyItem>
             {
-                HeroItemMount(450, 5),
-                HeroItemMount(350, 5),
-                HeroItemMount(250, 5),
+                PartyItemMount(450, 5),
+                PartyItemMount(350, 5),
+                PartyItemMount(250, 5),
             },
         };
-        Hero hero2 = new()
+        Party party2 = new()
         {
             Troops = 10,
-            Items = new List<HeroItem>
+            Items = new List<PartyItem>
             {
-                HeroItemMount(450, 5),
-                HeroItemMount(350, 10),
-                HeroItemMount(250, 10),
+                PartyItemMount(450, 5),
+                PartyItemMount(350, 10),
+                PartyItemMount(250, 10),
             },
         };
         StrategusSpeedModel speedModel = new();
-        Assert.GreaterOrEqual(speedModel.ComputeHeroSpeed(hero1), speedModel.ComputeHeroSpeed(hero2));
+        Assert.GreaterOrEqual(speedModel.ComputePartySpeed(party1), speedModel.ComputePartySpeed(party2));
     }
 
     [Test]
@@ -45,17 +45,17 @@ public class StrategusSpeedModelTest
         StrategusSpeedModel speedModel = new();
         for (int troops = 10; troops <= 1000; troops += 10)
         {
-            Hero hero = new()
+            Party party = new()
             {
                 Troops = troops,
-                Items = new List<HeroItem>
+                Items = new List<PartyItem>
                 {
-                    HeroItemMount(450, fastHorseCount),
-                    HeroItemMount(350, mediumSpeedHorseCount),
-                    HeroItemMount(250, slowHorseCount),
+                    PartyItemMount(450, fastHorseCount),
+                    PartyItemMount(350, mediumSpeedHorseCount),
+                    PartyItemMount(250, slowHorseCount),
                 },
             };
-            double speed = speedModel.ComputeHeroSpeed(hero);
+            double speed = speedModel.ComputePartySpeed(party);
             if (troops < totalHorseCount)
             {
                 /*
@@ -88,23 +88,23 @@ public class StrategusSpeedModelTest
         StrategusSpeedModel speedModel = new();
         for (int mountCountFactor = 1; mountCountFactor <= 100; mountCountFactor++)
         {
-            Hero hero = new()
+            Party party = new()
             {
                 Troops = 1000,
-                Items = new List<HeroItem>
+                Items = new List<PartyItem>
                 {
-                    HeroItemMount(450, 6 * mountCountFactor),
-                    HeroItemMount(350, 2 * mountCountFactor),
-                    HeroItemMount(250, 2 * mountCountFactor),
+                    PartyItemMount(450, 6 * mountCountFactor),
+                    PartyItemMount(350, 2 * mountCountFactor),
+                    PartyItemMount(250, 2 * mountCountFactor),
                 },
             };
-            double speed = speedModel.ComputeHeroSpeed(hero);
+            double speed = speedModel.ComputePartySpeed(party);
             Assert.Greater(speed, previousSpeed);
             previousSpeed = speed;
         }
     }
 
-    private HeroItem HeroItemMount(int hitPoints, int count)
+    private PartyItem PartyItemMount(int hitPoints, int count)
     {
         return new()
         {

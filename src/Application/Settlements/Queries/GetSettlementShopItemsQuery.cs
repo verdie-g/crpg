@@ -11,7 +11,7 @@ namespace Crpg.Application.Settlements.Queries;
 
 public record GetSettlementShopItemsQuery : IMediatorRequest<IList<ItemViewModel>>
 {
-    public int HeroId { get; init; }
+    public int PartyId { get; init; }
     public int SettlementId { get; init; }
 
     internal class Handler : IMediatorRequestHandler<GetSettlementShopItemsQuery, IList<ItemViewModel>>
@@ -30,12 +30,12 @@ public record GetSettlementShopItemsQuery : IMediatorRequest<IList<ItemViewModel
         public async Task<Result<IList<ItemViewModel>>> Handle(GetSettlementShopItemsQuery req,
             CancellationToken cancellationToken)
         {
-            var hero = await _db.Heroes
+            var party = await _db.Parties
                 .AsNoTracking()
-                .FirstOrDefaultAsync(h => h.Id == req.HeroId, cancellationToken);
-            if (hero == null)
+                .FirstOrDefaultAsync(h => h.Id == req.PartyId, cancellationToken);
+            if (party == null)
             {
-                return new(CommonErrors.HeroNotFound(req.HeroId));
+                return new(CommonErrors.PartyNotFound(req.PartyId));
             }
 
             var settlement = await _db.Settlements
@@ -43,10 +43,10 @@ public record GetSettlementShopItemsQuery : IMediatorRequest<IList<ItemViewModel
                 .FirstOrDefaultAsync(s => s.Id == req.SettlementId, cancellationToken);
             if (settlement == null)
             {
-                return new(CommonErrors.SettlementNotFound(req.HeroId));
+                return new(CommonErrors.SettlementNotFound(req.PartyId));
             }
 
-            if (!_strategusMap.ArePointsAtInteractionDistance(hero.Position, settlement.Position))
+            if (!_strategusMap.ArePointsAtInteractionDistance(party.Position, settlement.Position))
             {
                 return new(CommonErrors.SettlementTooFar(req.SettlementId));
             }

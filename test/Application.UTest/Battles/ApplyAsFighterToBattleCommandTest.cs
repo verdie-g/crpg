@@ -2,7 +2,7 @@
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Battles;
-using Crpg.Domain.Entities.Heroes;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Users;
 using Moq;
 using NetTopologySuite.Geometries;
@@ -13,50 +13,50 @@ namespace Crpg.Application.UTest.Battles;
 public class ApplyAsFighterToBattleCommandTest : TestBase
 {
     [Test]
-    public async Task ShouldReturnErrorIfHeroNotFound()
+    public async Task ShouldReturnErrorIfPartyNotFound()
     {
         ApplyAsFighterToBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
         var res = await handler.Handle(new()
         {
-            HeroId = 1,
+            PartyId = 1,
             BattleId = 2,
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.HeroNotFound, res.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
     }
 
     [Test]
-    public async Task ShouldReturnErrorIfHeroInBattle()
+    public async Task ShouldReturnErrorIfPartyInBattle()
     {
-        Hero hero = new() { Status = HeroStatus.InBattle, User = new User() };
-        ArrangeDb.Heroes.Add(hero);
+        Party party = new() { Status = PartyStatus.InBattle, User = new User() };
+        ArrangeDb.Parties.Add(party);
         await ArrangeDb.SaveChangesAsync();
 
         ApplyAsFighterToBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
         var res = await handler.Handle(new()
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             BattleId = 2,
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.HeroInBattle, res.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.PartyInBattle, res.Errors![0].Code);
     }
 
     [Test]
     public async Task ShouldReturnErrorIfBattleNotFound()
     {
-        Hero hero = new() { User = new User() };
-        ArrangeDb.Heroes.Add(hero);
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
         await ArrangeDb.SaveChangesAsync();
 
         ApplyAsFighterToBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
         var res = await handler.Handle(new()
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             BattleId = 2,
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
@@ -68,13 +68,13 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
     [Test]
     public async Task ShouldReturnErrorIfBattleNotInPreparation()
     {
-        Hero hero = new()
+        Party party = new()
         {
-            Status = HeroStatus.Idle,
+            Status = PartyStatus.Idle,
             Position = new Point(1, 2),
             User = new User(),
         };
-        ArrangeDb.Heroes.Add(hero);
+        ArrangeDb.Parties.Add(party);
         Battle battle = new()
         {
             Phase = BattlePhase.Hiring,
@@ -86,7 +86,7 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
         ApplyAsFighterToBattleCommand.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
         var res = await handler.Handle(new()
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             BattleId = battle.Id,
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
@@ -96,15 +96,15 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
     }
 
     [Test]
-    public async Task ShouldReturnErrorIfHeroTooFarFromBattle()
+    public async Task ShouldReturnErrorIfPartyTooFarFromBattle()
     {
-        Hero hero = new()
+        Party party = new()
         {
-            Status = HeroStatus.Idle,
+            Status = PartyStatus.Idle,
             Position = new Point(1, 2),
             User = new User(),
         };
-        ArrangeDb.Heroes.Add(hero);
+        ArrangeDb.Parties.Add(party);
         Battle battle = new()
         {
             Phase = BattlePhase.Preparation,
@@ -115,13 +115,13 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
 
         Mock<IStrategusMap> strategusMapMock = new(MockBehavior.Strict);
         strategusMapMock
-            .Setup(m => m.ArePointsAtInteractionDistance(hero.Position, battle.Position))
+            .Setup(m => m.ArePointsAtInteractionDistance(party.Position, battle.Position))
             .Returns(false);
 
         ApplyAsFighterToBattleCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
         var res = await handler.Handle(new()
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             BattleId = battle.Id,
             Side = BattleSide.Attacker,
         }, CancellationToken.None);
@@ -134,13 +134,13 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
     [TestCase(BattleFighterApplicationStatus.Accepted)]
     public async Task ShouldReturnExistingApplication(BattleFighterApplicationStatus existingApplicationStatus)
     {
-        Hero hero = new()
+        Party party = new()
         {
-            Status = HeroStatus.Idle,
+            Status = PartyStatus.Idle,
             Position = new Point(1, 2),
             User = new User(),
         };
-        ArrangeDb.Heroes.Add(hero);
+        ArrangeDb.Parties.Add(party);
         Battle battle = new()
         {
             Phase = BattlePhase.Preparation,
@@ -152,20 +152,20 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
             Side = BattleSide.Defender,
             Status = existingApplicationStatus,
             Battle = battle,
-            Hero = hero,
+            Party = party,
         };
         ArrangeDb.BattleFighterApplications.Add(existingApplication);
         await ArrangeDb.SaveChangesAsync();
 
         Mock<IStrategusMap> strategusMapMock = new(MockBehavior.Strict);
         strategusMapMock
-            .Setup(m => m.ArePointsAtInteractionDistance(hero.Position, battle.Position))
+            .Setup(m => m.ArePointsAtInteractionDistance(party.Position, battle.Position))
             .Returns(true);
 
         ApplyAsFighterToBattleCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
         var res = await handler.Handle(new()
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             BattleId = battle.Id,
             Side = BattleSide.Defender,
         }, CancellationToken.None);
@@ -177,13 +177,13 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
     [Test]
     public async Task ShouldApply()
     {
-        Hero hero = new()
+        Party party = new()
         {
-            Status = HeroStatus.Idle,
+            Status = PartyStatus.Idle,
             Position = new Point(1, 2),
             User = new User(),
         };
-        ArrangeDb.Heroes.Add(hero);
+        ArrangeDb.Parties.Add(party);
         Battle battle = new()
         {
             Phase = BattlePhase.Preparation,
@@ -194,13 +194,13 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
 
         Mock<IStrategusMap> strategusMapMock = new(MockBehavior.Strict);
         strategusMapMock
-            .Setup(m => m.ArePointsAtInteractionDistance(hero.Position, battle.Position))
+            .Setup(m => m.ArePointsAtInteractionDistance(party.Position, battle.Position))
             .Returns(true);
 
         ApplyAsFighterToBattleCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
         var res = await handler.Handle(new()
         {
-            HeroId = hero.Id,
+            PartyId = party.Id,
             BattleId = battle.Id,
             Side = BattleSide.Defender,
         }, CancellationToken.None);
@@ -208,7 +208,7 @@ public class ApplyAsFighterToBattleCommandTest : TestBase
         Assert.IsNull(res.Errors);
         var application = res.Data!;
         Assert.NotZero(application.Id);
-        Assert.AreEqual(hero.Id, application.Hero!.Id);
+        Assert.AreEqual(party.Id, application.Party!.Id);
         Assert.AreEqual(BattleSide.Defender, application.Side);
         Assert.AreEqual(BattleFighterApplicationStatus.Pending, application.Status);
     }
