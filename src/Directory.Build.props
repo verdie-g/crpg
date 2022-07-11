@@ -8,6 +8,7 @@
         <!-- Required for StyleCopAnalyzers to analyze comments. -->
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <InvariantGlobalization>true</InvariantGlobalization>
 
         <Version>0.1.0</Version>
         <!-- Flag to enable to add revision id to the assembly version -->
