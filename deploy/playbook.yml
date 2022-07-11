@@ -7,3 +7,8 @@
     - dotnet
     - crpg-web-api
     - crpg-web-ui
+- hosts: gameservers
+  become: yes
+  roles:
+    - datadog
+    - crpg-game-server
