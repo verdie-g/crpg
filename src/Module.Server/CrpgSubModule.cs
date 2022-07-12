@@ -32,6 +32,11 @@ internal class CrpgSubModule : MBSubModuleBase
         AddCrpgXmls();
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode(_constants));
 
+#if CRPG_SERVER
+        // Disable culture vote during intermission because there is no concept of cultures in cRPG.
+        MultiplayerIntermissionVotingManager.Instance.IsCultureVoteEnabled = false;
+#endif
+
 #if CRPG_EXPORT
         Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
             new TextObject("Export Data"), 4578, ExportData, () => (false, null)));
