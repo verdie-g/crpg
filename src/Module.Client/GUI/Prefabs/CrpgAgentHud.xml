@@ -20,6 +20,10 @@
                     HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="28" />
           </Children>
         </ExperienceBarWidget>
+
+        <TextWidget Text="cRPG Mod: Work in Progress" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left"
+                    VerticalAlignment="Top" Brush="AgentAmmoCount.Text" Brush.TextVerticalAlignment="Top" Brush.FontSize="30"
+                    Brush.FontColor="#FFFFFFFF" MarginLeft="9" />
       </Children>
     </Widget>
   </Window>
