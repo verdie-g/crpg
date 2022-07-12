@@ -76,7 +76,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                 {
                     MissionLobbyComponent.CreateBehavior(),
                     // new MultiplayerWarmupComponent(),
-                    new CrpgBattleMissionMultiplayerClient(), // new MissionMultiplayerGameModeFlagDominationClient(),
+                    new CrpgBattleMissionMultiplayerClient(),
                     new MultiplayerTimerComponent(), // round timer
                     new NoMultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
                     // new ConsoleMatchStartEndHandler(),

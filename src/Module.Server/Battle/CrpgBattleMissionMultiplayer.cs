@@ -12,7 +12,6 @@ namespace Crpg.Module.Battle;
 internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 {
     private readonly ICrpgClient _crpgClient;
-    private CrpgBattleMissionMultiplayerClient? _client;
 
     public override bool IsGameModeHidingAllAgentVisuals => true;
     public override bool IsGameModeUsingOpposingTeams => true;
@@ -27,12 +26,6 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
     {
         return MissionLobbyComponent.MultiplayerGameType.Battle;
-    }
-
-    public override void OnBehaviorInitialize()
-    {
-        base.OnBehaviorInitialize();
-        _client = Mission.Current.GetMissionBehavior<CrpgBattleMissionMultiplayerClient>();
     }
 
     public override void AfterStart()
