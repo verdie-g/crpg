@@ -179,30 +179,12 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         try
         {
             res = (await _crpgClient.UpdateUsersAsync(new CrpgGameUsersUpdateRequest { Updates = userUpdates })).Data!;
+            SendRewardToPeers(res.UpdateResults, crpgRepresentativeByUserId);
         }
         catch (Exception e)
         {
             Debug.Print("Couldn't update users: " + e);
-            // TODO: send error to users.
-            return;
-        }
-
-        foreach (var updateResult in res.UpdateResults)
-        {
-            if (!crpgRepresentativeByUserId.TryGetValue(updateResult.User.Id, out var crpgRepresentative))
-            {
-                Debug.Print($"Unknown user with id '{updateResult.User.Id}'");
-                continue;
-            }
-
-            crpgRepresentative.User = updateResult.User;
-
-            if (updateResult.EffectiveReward.Experience != 0 && updateResult.EffectiveReward.Gold != 0)
-            {
-                GameNetwork.BeginModuleEventAsServer(crpgRepresentative.GetNetworkPeer());
-                GameNetwork.WriteMessage(new RewardCrpgUser { Reward = updateResult.EffectiveReward });
-                GameNetwork.EndModuleEventAsServer();
-            }
+            SendErrorToPeers(crpgRepresentativeByUserId);
         }
     }
 
@@ -215,5 +197,37 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         }
 
         return 1 + (int)roundDuration / 60;
+    }
+
+    private void SendRewardToPeers(IList<UpdateCrpgUserResult> updateResults,
+        Dictionary<int, CrpgRepresentative> crpgRepresentativeByUserId)
+    {
+        foreach (var updateResult in updateResults)
+        {
+            if (!crpgRepresentativeByUserId.TryGetValue(updateResult.User.Id, out var crpgRepresentative))
+            {
+                Debug.Print($"Unknown user with id '{updateResult.User.Id}'");
+                continue;
+            }
+
+            crpgRepresentative.User = updateResult.User;
+
+            if (updateResult.EffectiveReward.Experience != 0 && updateResult.EffectiveReward.Gold != 0)
+            {
+                GameNetwork.BeginModuleEventAsServer(crpgRepresentative.GetNetworkPeer());
+                GameNetwork.WriteMessage(new CrpgRewardUser { Reward = updateResult.EffectiveReward });
+                GameNetwork.EndModuleEventAsServer();
+            }
+        }
+    }
+
+    private void SendErrorToPeers(Dictionary<int, CrpgRepresentative> crpgRepresentativeByUserId)
+    {
+        foreach (var crpgRepresentative in crpgRepresentativeByUserId.Values)
+        {
+            GameNetwork.BeginModuleEventAsServer(crpgRepresentative.GetNetworkPeer());
+            GameNetwork.WriteMessage(new CrpgRewardError());
+            GameNetwork.EndModuleEventAsServer();
+        }
     }
 }

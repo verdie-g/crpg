@@ -50,7 +50,8 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         base.AddRemoveMessageHandlers(registerer);
         if (GameNetwork.IsClientOrReplay)
         {
-            registerer.Register<RewardCrpgUser>(HandleRewardCrpgUser);
+            registerer.Register<CrpgRewardUser>(HandleRewardUser);
+            registerer.Register<CrpgRewardError>(HandleRewardError);
         }
     }
 
@@ -64,7 +65,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         _crpgRepresentative.AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
     }
 
-    private void HandleRewardCrpgUser(RewardCrpgUser message)
+    private void HandleRewardUser(CrpgRewardUser message)
     {
         var reward = message.Reward;
         InformationManager.DisplayMessage(new InformationMessage($"Gained {reward.Experience} experience.", new Color(218, 112, 214)));
@@ -78,5 +79,10 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
                 SoundEventPath = "event:/ui/notification/levelup",
             });
         }
+    }
+
+    private void HandleRewardError(CrpgRewardError message)
+    {
+        InformationManager.DisplayMessage(new InformationMessage("Could not join cRPG main server. Your reward was lost.", new Color(0.75f, 0.01f, 0.01f)));
     }
 }

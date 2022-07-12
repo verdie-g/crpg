@@ -5,7 +5,7 @@ using TaleWorlds.MountAndBlade.Network.Messages;
 namespace Crpg.Module.Common.Network;
 
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
-internal sealed class RewardCrpgUser : GameNetworkMessage
+internal sealed class CrpgRewardUser : GameNetworkMessage
 {
     private static readonly CompressionInfo.Integer Int32CompressionInfo = new(int.MinValue, int.MaxValue, true);
 
@@ -35,6 +35,6 @@ internal sealed class RewardCrpgUser : GameNetworkMessage
 
     protected override string OnGetLogFormat()
     {
-        return "Reward cRPG User";
+        return "cRPG Reward User";
     }
 }
