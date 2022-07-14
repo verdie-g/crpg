@@ -4,12 +4,19 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
+using TaleWorlds.PlayerServices;
 using Platform = Crpg.Module.Api.Models.Users.Platform;
 
 namespace Crpg.Module.Common;
 
 internal class CrpgUserManager : MissionNetwork
 {
+    /// <summary>
+    /// Static variable used to persist user info such as reward multipliers between missions. A little hacky to my
+    /// taste but as long as it works.
+    /// </summary>
+    private static readonly Dictionary<PlayerId, int> RewardMultiplierByPlayerId = new();
+
     private readonly ICrpgClient _crpgClient;
 
     public CrpgUserManager(ICrpgClient crpgClient)
@@ -27,6 +34,21 @@ internal class CrpgUserManager : MissionNetwork
     {
         base.HandleNewClientAfterSynchronized(networkPeer);
         _ = SetCrpgComponentAsync(networkPeer);
+    }
+
+    protected override void OnEndMission()
+    {
+        RewardMultiplierByPlayerId.Clear();
+        foreach (var networkPeer in GameNetwork.NetworkPeers)
+        {
+            var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
+            if (crpgRepresentative == null)
+            {
+                continue;
+            }
+
+            RewardMultiplierByPlayerId[networkPeer.VirtualPlayer.Id] = crpgRepresentative.RewardMultiplier;
+        }
     }
 
     private async Task SetCrpgComponentAsync(NetworkCommunicator networkPeer)
@@ -63,7 +85,10 @@ internal class CrpgUserManager : MissionNetwork
 
         var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
         crpgRepresentative.User = crpgUser;
-        crpgRepresentative.RewardMultiplier = 1;
+        crpgRepresentative.RewardMultiplier =
+            RewardMultiplierByPlayerId.TryGetValue(vp.Id, out int lastMissionMultiplier)
+                ? lastMissionMultiplier
+                : 1;
     }
 
     private void KickPeer(NetworkCommunicator networkPeer, DisconnectType disconnectType)
