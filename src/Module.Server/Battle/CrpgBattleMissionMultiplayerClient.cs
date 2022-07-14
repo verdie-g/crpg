@@ -50,6 +50,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         base.AddRemoveMessageHandlers(registerer);
         if (GameNetwork.IsClientOrReplay)
         {
+            registerer.Register<UpdateCrpgUser>(HandleUpdateCrpgUser);
             registerer.Register<CrpgRewardUser>(HandleRewardUser);
             registerer.Register<CrpgRewardError>(HandleRewardError);
         }
@@ -63,6 +64,23 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     {
         _crpgRepresentative = GameNetwork.MyPeer.GetComponent<CrpgRepresentative>();
         _crpgRepresentative.AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
+    }
+
+    private void HandleUpdateCrpgUser(UpdateCrpgUser message)
+    {
+        // Print a welcome message to new players. For convenience, new player are considered character of generation
+        // 0 and small level. This doesn't handle the case of second characters for the same user but it's good enough.
+        if (RoundComponent.RoundCount > 1 || RoundComponent.CurrentRoundState == MultiplayerRoundState.Ending)
+        {
+            return;
+        }
+
+        var user = message.User;
+        if (user.Character.Generation == 0 && user.Character.Level < 4)
+        {
+            InformationManager.DisplayMessage(new InformationMessage(
+                "Welcome to cRPG! Gain experience and gold in battles and upgrade your character on the website https://c-rpg.eu"));
+        }
     }
 
     private void HandleRewardUser(CrpgRewardUser message)
