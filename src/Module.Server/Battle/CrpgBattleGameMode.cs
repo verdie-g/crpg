@@ -75,27 +75,24 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                 new MissionBehavior[]
                 {
                     MissionLobbyComponent.CreateBehavior(),
-                    // new MultiplayerWarmupComponent(),
                     new CrpgBattleMissionMultiplayerClient(),
                     new MultiplayerTimerComponent(), // round timer
-                    new NoMultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
-                    // new ConsoleMatchStartEndHandler(),
-                    new NoMissionLobbyEquipmentNetworkComponent(), // new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
+                    new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
+                    new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
                     new MultiplayerTeamSelectComponent(), // logic to change team, autoselect
                     new MissionHardBorderPlacer(),
                     new MissionBoundaryPlacer(), // set walkable boundaries
                     new AgentVictoryLogic(), // AI cheering when winning round
                     new MissionBoundaryCrossingHandler(), // kills agent out of mission boundaries
                     new MultiplayerPollComponent(), // poll logic to kick player, ban player, change game
-                    // used to send notifications (e.g. flag captured, round won) to peer. same logic can be used to send gold + xp gains
-                    new MultiplayerGameNotificationsComponent(),
+                    new MultiplayerGameNotificationsComponent(), // used to send notifications (e.g. flag captured, round won) to peer
                     new MissionOptionsComponent(),
                     new MissionScoreboardComponent(new BattleScoreboardData()), // score board
                     new EquipmentControllerLeaveLogic(),
                     new MultiplayerPreloadHelper(),
 #if CRPG_SERVER
                     roundController,
-                    new CrpgBattleMissionMultiplayer(crpgClient), // new MissionMultiplayerFlagDomination(MissionLobbyComponent.MultiplayerGameType.Battle),
+                    new CrpgBattleMissionMultiplayer(crpgClient),
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
                     new SpawnComponent(new BattleSpawnFrameBehavior(), new CrpgBattleSpawningBehavior(_constants, roundController)),
                     new AgentHumanAILogic(), // bot intelligence
