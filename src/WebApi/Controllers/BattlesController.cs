@@ -58,7 +58,7 @@ public class BattlesController : BaseController
     [HttpPost("{battleId}/fighters")]
     public Task<ActionResult<Result<BattleFighterApplicationViewModel>>> ApplyToBattleAsFighter([FromRoute] int battleId)
     {
-        ApplyAsFighterToBattleCommand req = new() { PartyId = CurrentUser.UserId, BattleId = battleId };
+        ApplyAsFighterToBattleCommand req = new() { PartyId = CurrentUser.User!.Id, BattleId = battleId };
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -77,7 +77,7 @@ public class BattlesController : BaseController
     {
         return ResultToActionAsync(Mediator.Send(new GetBattleFighterApplicationsQuery
         {
-            PartyId = CurrentUser.UserId,
+            PartyId = CurrentUser.User!.Id,
             BattleId = battleId,
             Statuses = statuses,
         }));
@@ -92,7 +92,7 @@ public class BattlesController : BaseController
     public Task<ActionResult<Result<BattleFighterApplicationViewModel>>> RespondToBattleFighterApplication(
         [FromRoute] int battleId, [FromRoute] int applicationId, [FromBody] RespondToBattleFighterApplicationCommand req)
     {
-        req = req with { PartyId = CurrentUser.UserId, FighterApplicationId = applicationId };
+        req = req with { PartyId = CurrentUser.User!.Id, FighterApplicationId = applicationId };
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -107,7 +107,7 @@ public class BattlesController : BaseController
     {
         return ResultToActionAsync(Mediator.Send(new GetBattleMercenariesQuery
         {
-            UserId = CurrentUser.UserId,
+            UserId = CurrentUser.User!.Id,
             BattleId = battleId,
         }));
     }
@@ -127,7 +127,7 @@ public class BattlesController : BaseController
     {
         return ResultToActionAsync(Mediator.Send(new GetBattleMercenaryApplicationsQuery
         {
-            UserId = CurrentUser.UserId,
+            UserId = CurrentUser.User!.Id,
             BattleId = battleId,
             Statuses = statuses,
         }));
@@ -143,7 +143,7 @@ public class BattlesController : BaseController
     public Task<ActionResult<Result<BattleMercenaryApplicationViewModel>>> ApplyToBattleAsMercenary(
         [FromRoute] int battleId, [FromBody] ApplyAsMercenaryToBattleCommand req)
     {
-        req = req with { UserId = CurrentUser.UserId, BattleId = battleId };
+        req = req with { UserId = CurrentUser.User!.Id, BattleId = battleId };
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -156,7 +156,7 @@ public class BattlesController : BaseController
     public Task<ActionResult<Result<BattleMercenaryApplicationViewModel>>> RespondToBattleMercenaryApplication(
         [FromRoute] int battleId, [FromRoute] int applicationId, [FromBody] RespondToBattleMercenaryApplicationCommand req)
     {
-        req = req with { PartyId = CurrentUser.UserId, MercenaryApplicationId = applicationId };
+        req = req with { PartyId = CurrentUser.User!.Id, MercenaryApplicationId = applicationId };
         return ResultToActionAsync(Mediator.Send(req));
     }
 }

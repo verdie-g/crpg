@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Crpg.Application.Common.Exceptions;
+using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Results;
 using Crpg.Common;
 using Crpg.Sdk.Abstractions;
@@ -24,16 +25,28 @@ internal class RequestInstrumentationBehavior<TRequest, TResponse> : IPipelineBe
     }
 
     private readonly IApplicationEnvironment _appEnv;
+    private readonly ICurrentUserService _currentUser;
 
-    public RequestInstrumentationBehavior(IApplicationEnvironment appEnv)
+    public RequestInstrumentationBehavior(IApplicationEnvironment appEnv, ICurrentUserService currentUser)
     {
         _appEnv = appEnv;
+        _currentUser = currentUser;
     }
 
     public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
         RequestHandlerDelegate<TResponse> next)
     {
-        using var span = Instrumentation.StartRequestSpan();
+        var span = Instrumentation.StartRequestSpan();
+        IDisposable? loggingScope = null;
+        if (_currentUser.User != null)
+        {
+            loggingScope = Logger.BeginScope(new KeyValuePair<string, object?>[]
+            {
+                new("enduser.id", _currentUser.User.Id),
+                new("enduser.role", _currentUser.User.Role.ToString()),
+            });
+        }
+
         var sw = ValueStopwatch.StartNew();
         try
         {
@@ -103,6 +116,8 @@ internal class RequestInstrumentationBehavior<TRequest, TResponse> : IPipelineBe
         finally
         {
             Instrumentation.RecordResponseTime(sw.Elapsed.TotalMilliseconds);
+            loggingScope?.Dispose();
+            span?.Dispose();
         }
     }
 }
