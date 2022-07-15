@@ -1,6 +1,7 @@
 ﻿using System.Xml.Linq;
 using Crpg.Module.Battle;
 using Crpg.Module.Common;
+using Crpg.Module.Common.Models;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
 using TaleWorlds.Library;

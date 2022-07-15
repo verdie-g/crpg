@@ -2,7 +2,7 @@
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
-namespace Crpg.Module.Common;
+namespace Crpg.Module.Common.Models;
 
 internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
 {

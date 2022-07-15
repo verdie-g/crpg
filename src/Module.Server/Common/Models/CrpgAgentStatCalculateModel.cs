@@ -3,7 +3,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
-namespace Crpg.Module.Common;
+namespace Crpg.Module.Common.Models;
 
 /// <summary>
 /// Mostly copied from <see cref="MultiplayerAgentStatCalculateModel"/> but with the class division system removed.
