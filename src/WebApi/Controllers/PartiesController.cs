@@ -22,7 +22,7 @@ public class PartiesController : BaseController
     {
         return ResultToActionAsync(Mediator.Send(new GetStrategusUpdateQuery
         {
-            PartyId = CurrentUser.UserId,
+            PartyId = CurrentUser.User!.Id,
         }));
     }
 
@@ -36,7 +36,7 @@ public class PartiesController : BaseController
     [ProducesResponseType((int)HttpStatusCode.Created)]
     public Task<ActionResult<Result<PartyViewModel>>> RegisterParty([FromBody] CreatePartyCommand req)
     {
-        req.UserId = CurrentUser.UserId;
+        req.UserId = CurrentUser.User!.Id;
         return ResultToCreatedAtActionAsync(nameof(GetStrategusUpdate), null, null, Mediator.Send(req));
     }
 
@@ -48,7 +48,7 @@ public class PartiesController : BaseController
     [HttpPut("self/status")]
     public Task<ActionResult<Result<PartyViewModel>>> UpdatePartyStatus([FromBody] UpdatePartyStatusCommand req)
     {
-        req.PartyId = CurrentUser.UserId;
+        req.PartyId = CurrentUser.User!.Id;
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -61,7 +61,7 @@ public class PartiesController : BaseController
     [HttpPost("self/items")]
     public Task<ActionResult<Result<ItemStack>>> BuySettlementItem([FromBody] BuySettlementItemCommand req)
     {
-        req.PartyId = CurrentUser.UserId;
+        req.PartyId = CurrentUser.User!.Id;
         return ResultToActionAsync(Mediator.Send(req));
     }
 }

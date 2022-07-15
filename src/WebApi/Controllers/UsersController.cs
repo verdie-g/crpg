@@ -26,7 +26,7 @@ public class UsersController : BaseController
     /// </summary>
     [HttpGet("self")]
     public Task<ActionResult<Result<UserViewModel>>> GetUser()
-        => ResultToActionAsync(Mediator.Send(new GetUserQuery { UserId = CurrentUser.UserId }));
+        => ResultToActionAsync(Mediator.Send(new GetUserQuery { UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Deletes current user.
@@ -36,7 +36,7 @@ public class UsersController : BaseController
     [HttpDelete("self")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     public Task<ActionResult> DeleteUser() =>
-        ResultToActionAsync(Mediator.Send(new DeleteUserCommand { UserId = CurrentUser.UserId }));
+        ResultToActionAsync(Mediator.Send(new DeleteUserCommand { UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Gets the specified current user's character.
@@ -47,7 +47,7 @@ public class UsersController : BaseController
     [HttpGet("self/characters/{id}")]
     public Task<ActionResult<Result<CharacterViewModel>>> GetUserCharacter([FromRoute] int id) =>
         ResultToActionAsync(Mediator.Send(new GetUserCharacterQuery
-            { CharacterId = id, UserId = CurrentUser.UserId }));
+            { CharacterId = id, UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Gets all current user's characters.
@@ -55,7 +55,7 @@ public class UsersController : BaseController
     /// <response code="200">Ok.</response>
     [HttpGet("self/characters")]
     public Task<ActionResult<Result<IList<CharacterViewModel>>>> GetUserCharactersList() =>
-        ResultToActionAsync(Mediator.Send(new GetUserCharactersQuery { UserId = CurrentUser.UserId }));
+        ResultToActionAsync(Mediator.Send(new GetUserCharactersQuery { UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Updates a character for the current user.
@@ -69,7 +69,7 @@ public class UsersController : BaseController
     public Task<ActionResult<Result<CharacterViewModel>>> UpdateCharacter([FromRoute] int id,
         [FromBody] UpdateCharacterCommand req)
     {
-        req = req with { UserId = CurrentUser.UserId, CharacterId = id };
+        req = req with { UserId = CurrentUser.User!.Id, CharacterId = id };
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -84,7 +84,7 @@ public class UsersController : BaseController
     {
         return ResultToActionAsync(Mediator.Send(new GetUserCharacterStatisticsQuery
         {
-            UserId = CurrentUser.UserId,
+            UserId = CurrentUser.User!.Id,
             CharacterId = id,
         }));
     }
@@ -103,7 +103,7 @@ public class UsersController : BaseController
     {
         UpdateCharacterStatisticsCommand cmd = new()
         {
-            UserId = CurrentUser.UserId,
+            UserId = CurrentUser.User!.Id,
             CharacterId = id,
             Statistics = stats,
         };
@@ -122,7 +122,7 @@ public class UsersController : BaseController
     public Task<ActionResult<Result<CharacterStatisticsViewModel>>> ConvertCharacterStatistics([FromRoute] int id,
         [FromBody] ConvertCharacterStatisticsCommand req)
     {
-        req = req with { CharacterId = id, UserId = CurrentUser.UserId };
+        req = req with { CharacterId = id, UserId = CurrentUser.User!.Id };
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -137,7 +137,7 @@ public class UsersController : BaseController
     {
         return ResultToActionAsync(Mediator.Send(new GetUserCharacterItemsQuery
         {
-            UserId = CurrentUser.UserId,
+            UserId = CurrentUser.User!.Id,
             CharacterId = id,
         }));
     }
@@ -154,7 +154,7 @@ public class UsersController : BaseController
     public Task<ActionResult<Result<IList<EquippedItemViewModel>>>> UpdateCharacterItems([FromRoute] int id,
         [FromBody] UpdateCharacterItemsCommand req)
     {
-        req = req with { CharacterId = id, UserId = CurrentUser.UserId };
+        req = req with { CharacterId = id, UserId = CurrentUser.User!.Id };
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -169,7 +169,7 @@ public class UsersController : BaseController
     public Task<ActionResult> SwitchCharacterAutoRepair([FromRoute] int id,
         [FromBody] SwitchCharacterAutoRepairCommand req)
     {
-        req = req with { CharacterId = id, UserId = CurrentUser.UserId };
+        req = req with { CharacterId = id, UserId = CurrentUser.User!.Id };
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -182,7 +182,7 @@ public class UsersController : BaseController
     /// <response code="404">Character not found.</response>
     [HttpPut("self/characters/{id}/retire")]
     public Task<ActionResult<Result<CharacterViewModel>>> RetireCharacter([FromRoute] int id) =>
-        ResultToActionAsync(Mediator.Send(new RetireCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId }));
+        ResultToActionAsync(Mediator.Send(new RetireCharacterCommand { CharacterId = id, UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Respecializes character.
@@ -193,7 +193,7 @@ public class UsersController : BaseController
     /// <response code="404">Character not found.</response>
     [HttpPut("self/characters/{id}/respecialize")]
     public Task<ActionResult<Result<CharacterViewModel>>> RespecializeCharacter([FromRoute] int id) =>
-        ResultToActionAsync(Mediator.Send(new RespecializeCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId }));
+        ResultToActionAsync(Mediator.Send(new RespecializeCharacterCommand { CharacterId = id, UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Deletes the specified current user's character.
@@ -204,7 +204,7 @@ public class UsersController : BaseController
     [HttpDelete("self/characters/{id}")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     public Task<ActionResult> DeleteCharacter([FromRoute] int id) =>
-        ResultToActionAsync(Mediator.Send(new DeleteCharacterCommand { CharacterId = id, UserId = CurrentUser.UserId }));
+        ResultToActionAsync(Mediator.Send(new DeleteCharacterCommand { CharacterId = id, UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Gets owned items.
@@ -212,7 +212,7 @@ public class UsersController : BaseController
     [HttpGet("self/items")]
     public Task<ActionResult<Result<IList<ItemViewModel>>>> GetUserItems()
     {
-        GetUserItemsQuery query = new() { UserId = CurrentUser.UserId };
+        GetUserItemsQuery query = new() { UserId = CurrentUser.User!.Id };
         return ResultToActionAsync(Mediator.Send(query));
     }
 
@@ -228,7 +228,7 @@ public class UsersController : BaseController
     [ProducesResponseType((int)HttpStatusCode.Created)]
     public Task<ActionResult<Result<ItemViewModel>>> BuyItem([FromBody] BuyItemCommand req)
     {
-        req = req with { UserId = CurrentUser.UserId };
+        req = req with { UserId = CurrentUser.User!.Id };
         return ResultToCreatedAtActionAsync(nameof(ItemsController.GetItemsList), "Items", i => new { id = i.Id },
             Mediator.Send(req));
     }
@@ -242,7 +242,7 @@ public class UsersController : BaseController
     /// <response code="400">Bad Request.</response>
     [HttpPut("self/items/{id}/upgrade")]
     public Task<ActionResult<Result<ItemViewModel>>> UpgradeItem([FromRoute] int id) =>
-        ResultToActionAsync(Mediator.Send(new UpgradeItemCommand { ItemId = id, UserId = CurrentUser.UserId }));
+        ResultToActionAsync(Mediator.Send(new UpgradeItemCommand { ItemId = id, UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Sells item for the current user.
@@ -254,7 +254,7 @@ public class UsersController : BaseController
     [HttpDelete("self/items/{id}")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     public Task<ActionResult> SellUserItem([FromRoute] int id) =>
-        ResultToActionAsync(Mediator.Send(new SellItemCommand { ItemId = id, UserId = CurrentUser.UserId }));
+        ResultToActionAsync(Mediator.Send(new SellItemCommand { ItemId = id, UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Gets user clan or null.
@@ -262,7 +262,7 @@ public class UsersController : BaseController
     [HttpGet("self/clans")]
     public Task<ActionResult<Result<ClanViewModel>>> GetUserClan()
     {
-        GetUserClanQuery req = new() { UserId = CurrentUser.UserId };
+        GetUserClanQuery req = new() { UserId = CurrentUser.User!.Id };
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -272,5 +272,5 @@ public class UsersController : BaseController
     /// <response code="200">Ok.</response>
     [HttpGet("self/bans")]
     public Task<ActionResult<Result<IList<BanViewModel>>>> GetUserBans() =>
-        ResultToActionAsync(Mediator.Send(new GetUserBansQuery { UserId = CurrentUser.UserId }));
+        ResultToActionAsync(Mediator.Send(new GetUserBansQuery { UserId = CurrentUser.User!.Id }));
 }

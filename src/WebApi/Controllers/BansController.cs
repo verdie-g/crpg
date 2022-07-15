@@ -30,7 +30,7 @@ public class BansController : BaseController
     [HttpPost]
     public Task<ActionResult<Result<BanViewModel>>> BanUser([FromBody] BanCommand req)
     {
-        req = req with { BannedByUserId = CurrentUser.UserId };
+        req = req with { BannedByUserId = CurrentUser.User!.Id };
         return ResultToCreatedAtActionAsync(nameof(GetBans), null, b => new { id = b.Id },
             Mediator.Send(req));
     }

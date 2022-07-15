@@ -42,7 +42,7 @@ public class ClansController : BaseController
     public Task<ActionResult<Result<ClanMemberViewModel>>> UpdateClanMember([FromRoute] int clanId,
         [FromRoute] int memberId, [FromBody] UpdateClanMemberCommand req)
     {
-        req = req with { UserId = CurrentUser.UserId, ClanId = clanId, MemberId = memberId };
+        req = req with { UserId = CurrentUser.User!.Id, ClanId = clanId, MemberId = memberId };
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -64,7 +64,7 @@ public class ClansController : BaseController
     [HttpPost]
     public Task<ActionResult<Result<ClanViewModel>>> CreateClan([FromBody] CreateClanCommand clan)
     {
-        clan = clan with { UserId = CurrentUser.UserId };
+        clan = clan with { UserId = CurrentUser.User!.Id };
         return ResultToCreatedAtActionAsync(nameof(GetClan), null, b => new { id = b.Id },
             Mediator.Send(clan));
     }
@@ -80,7 +80,7 @@ public class ClansController : BaseController
     {
         return ResultToActionAsync(Mediator.Send(new KickClanMemberCommand
         {
-            UserId = CurrentUser.UserId,
+            UserId = CurrentUser.User!.Id,
             ClanId = clanId,
             KickedUserId = userId,
         }, CancellationToken.None));
@@ -99,7 +99,7 @@ public class ClansController : BaseController
     {
         return ResultToActionAsync(Mediator.Send(new GetClanInvitationsQuery
         {
-            UserId = CurrentUser.UserId,
+            UserId = CurrentUser.User!.Id,
             ClanId = clanId,
             Types = types,
             Statuses = statuses,
@@ -115,7 +115,7 @@ public class ClansController : BaseController
     [HttpPost("{clanId}/invitations")]
     public Task<ActionResult<Result<ClanInvitationViewModel>>> InviteToClan([FromRoute] int clanId, [FromBody] InviteClanMemberCommand invite)
     {
-        invite = invite with { UserId = CurrentUser.UserId, ClanId = clanId };
+        invite = invite with { UserId = CurrentUser.User!.Id, ClanId = clanId };
         return ResultToActionAsync(Mediator.Send(invite));
     }
 
@@ -129,7 +129,7 @@ public class ClansController : BaseController
     public Task<ActionResult<Result<ClanInvitationViewModel>>> RespondToClanInvitation([FromRoute] int clanId,
         [FromRoute] int invitationId, [FromBody] RespondClanInvitationCommand invite)
     {
-        invite = invite with { UserId = CurrentUser.UserId, ClanId = clanId, ClanInvitationId = invitationId };
+        invite = invite with { UserId = CurrentUser.User!.Id, ClanId = clanId, ClanInvitationId = invitationId };
         return ResultToActionAsync(Mediator.Send(invite));
     }
 }

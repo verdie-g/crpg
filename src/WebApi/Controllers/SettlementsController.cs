@@ -27,7 +27,7 @@ public class SettlementsController : BaseController
     {
         return ResultToActionAsync(Mediator.Send(new GetSettlementItemsQuery
         {
-            PartyId = CurrentUser.UserId,
+            PartyId = CurrentUser.User!.Id,
             SettlementId = settlementId,
         }));
     }
@@ -39,7 +39,7 @@ public class SettlementsController : BaseController
     public Task<ActionResult<Result<ItemStack>>> UpdateSettlementItems([FromRoute] int settlementId,
         [FromBody] AddSettlementItemCommand req)
     {
-        req = req with { PartyId = CurrentUser.UserId, SettlementId = settlementId };
+        req = req with { PartyId = CurrentUser.User!.Id, SettlementId = settlementId };
         return ResultToActionAsync(Mediator.Send(req));
     }
 
@@ -50,7 +50,7 @@ public class SettlementsController : BaseController
     public Task<ActionResult<Result<IList<ItemViewModel>>>> GetSettlementShopItems([FromRoute] int settlementId)
         => ResultToActionAsync(Mediator.Send(new GetSettlementShopItemsQuery
         {
-            PartyId = CurrentUser.UserId,
+            PartyId = CurrentUser.User!.Id,
             SettlementId = settlementId,
         }));
 }
