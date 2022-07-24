@@ -58,17 +58,23 @@ datadog_checks:
                         (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 month') AS active_users_30d,
                         (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 week') AS active_users_7d,
                         (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 day') AS active_users_1d,
-                        (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '15 min') AS active_users_15min
+                        (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '15 min') AS active_users_15min,
+                        (SELECT AVG(gold) FROM users WHERE updated_at > now() - INTERVAL '1 month') AS active_users_30d_average_gold,
+                        (SELECT AVG(level) FROM characters WHERE updated_at > now() - INTERVAL '1 month') AS active_characters_30d_average_level
                     columns:
-                        - name: users
+                        - name: users.count
                           type: gauge
-                        - name: active_users_30d
+                        - name: users.active.30d.count
                           type: gauge
-                        - name: active_users_7d
+                        - name: users.active.7d.count
                           type: gauge
-                        - name: active_users_1d
+                        - name: users.active.1d.count
                           type: gauge
-                        - name: active_users_15min
+                        - name: users.active.15min.count
+                          type: gauge
+                        - name: users.active.30d.average_gold
+                          type: gauge
+                        - name: characters.active.30d.average_level
                           type: gauge
         logs:
             - type: file
