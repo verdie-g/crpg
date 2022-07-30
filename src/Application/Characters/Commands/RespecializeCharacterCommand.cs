@@ -6,6 +6,7 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Common.Helpers;
+using Crpg.Domain.Entities.Characters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -50,6 +51,12 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
             character.Experience = (int)MathHelper.ApplyPolynomialFunction(character.Experience, _constants.RespecializeExperiencePenaltyCoefs);
             character.Level = _experienceTable.GetLevelForExperience(character.Experience);
             character.EquippedItems.Clear(); // Unequip all items.
+            character.Statistics = new CharacterStatistics
+            {
+                Kills = 0,
+                Deaths = 0,
+                Assists = 0,
+            };
             _characterService.ResetCharacterCharacteristics(character, true);
 
             await _db.SaveChangesAsync(cancellationToken);

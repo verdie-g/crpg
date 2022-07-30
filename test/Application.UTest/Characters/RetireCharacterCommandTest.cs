@@ -34,6 +34,12 @@ public class RetireCharacterCommandTest : TestBase
                 new EquippedItem { Slot = ItemSlot.Head },
                 new EquippedItem { Slot = ItemSlot.Hand },
             },
+            Statistics = new CharacterStatistics
+            {
+                Kills = 1,
+                Deaths = 2,
+                Assists = 3,
+            },
             User = new User
             {
                 HeirloomPoints = 1,
@@ -59,6 +65,9 @@ public class RetireCharacterCommandTest : TestBase
         Assert.AreEqual(Constants.MinimumLevel, character.Level);
         Assert.AreEqual(0, character.Experience);
         Assert.AreEqual(1.09f, character.ExperienceMultiplier);
+        Assert.AreEqual(0, character.Statistics.Kills);
+        Assert.AreEqual(0, character.Statistics.Deaths);
+        Assert.AreEqual(0, character.Statistics.Assists);
         Assert.AreEqual(2, character.User!.HeirloomPoints);
         Assert.IsEmpty(character.EquippedItems);
 

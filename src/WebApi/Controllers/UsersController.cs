@@ -174,6 +174,22 @@ public class UsersController : BaseController
     }
 
     /// <summary>
+    /// Get character statistics for the current user.
+    /// </summary>
+    /// <param name="id">Character id.</param>
+    /// <returns>The character statistics.</returns>
+    /// <response code="200">Ok.</response>
+    [HttpGet("self/characters/{id}/statistics")]
+    public Task<ActionResult<Result<CharacterStatisticsViewModel>>> GetCharacterStatistics([FromRoute] int id)
+    {
+        return ResultToActionAsync(Mediator.Send(new GetUserCharacterStatisticsQuery
+        {
+            UserId = CurrentUser.User!.Id,
+            CharacterId = id,
+        }));
+    }
+
+    /// <summary>
     /// Retires character.
     /// </summary>
     /// <param name="id">Character id.</param>
