@@ -1,6 +1,6 @@
-enum StatisticConversion {
+enum CharacteristicConversion {
   AttributesToSkills = 'AttributesToSkills',
   SkillsToAttributes = 'SkillsToAttributes',
 }
 
-export default StatisticConversion;
+export default CharacteristicConversion;

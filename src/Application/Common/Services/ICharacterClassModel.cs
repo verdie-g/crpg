@@ -6,8 +6,8 @@ namespace Crpg.Application.Common.Services;
 /// <summary>Model to resolves the <see cref="CharacterClass"/> of a <see cref="Character"/>.</summary>
 public interface ICharacterClassModel
 {
-    /// <summary>Resolves the character's class from its <see cref="CharacterStatistics"/>.</summary>
-    CharacterClass ResolveCharacterClass(CharacterStatistics stats);
+    /// <summary>Resolves the character's class from its <see cref="CharacterCharacteristics"/>.</summary>
+    CharacterClass ResolveCharacterClass(CharacterCharacteristics stats);
 }
 
 internal class CharacterClassModel : ICharacterClassModel
@@ -15,7 +15,7 @@ internal class CharacterClassModel : ICharacterClassModel
     private const int MinConsideredWeaponProficiency = 50;
     private const int MinConsideredSkills = 2;
 
-    public CharacterClass ResolveCharacterClass(CharacterStatistics stats)
+    public CharacterClass ResolveCharacterClass(CharacterCharacteristics stats)
     {
         if (IsMounted(stats))
         {
@@ -40,27 +40,27 @@ internal class CharacterClassModel : ICharacterClassModel
         return IsShielded(stats) ? CharacterClass.Infantry : CharacterClass.ShockInfantry;
     }
 
-    private bool IsMounted(CharacterStatistics stats)
+    private bool IsMounted(CharacterCharacteristics stats)
     {
         return stats.Skills.Riding >= MinConsideredSkills;
     }
 
-    private bool IsArcher(CharacterStatistics stats)
+    private bool IsArcher(CharacterCharacteristics stats)
     {
         return stats.WeaponProficiencies.Bow >= MinConsideredWeaponProficiency;
     }
 
-    private bool IsCrossbowman(CharacterStatistics stats)
+    private bool IsCrossbowman(CharacterCharacteristics stats)
     {
         return stats.WeaponProficiencies.Crossbow >= MinConsideredWeaponProficiency;
     }
 
-    private bool IsSkirmisher(CharacterStatistics stats)
+    private bool IsSkirmisher(CharacterCharacteristics stats)
     {
         return stats.WeaponProficiencies.Throwing >= MinConsideredWeaponProficiency;
     }
 
-    private bool IsShielded(CharacterStatistics stats)
+    private bool IsShielded(CharacterCharacteristics stats)
     {
         return stats.Skills.Shield >= MinConsideredSkills;
     }

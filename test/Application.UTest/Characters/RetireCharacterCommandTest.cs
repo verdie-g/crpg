@@ -62,7 +62,7 @@ public class RetireCharacterCommandTest : TestBase
         Assert.AreEqual(2, character.User!.HeirloomPoints);
         Assert.IsEmpty(character.EquippedItems);
 
-        characterServiceMock.Verify(cs => cs.ResetCharacterStats(It.IsAny<Character>(), false));
+        characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), false));
     }
 
     [Test]

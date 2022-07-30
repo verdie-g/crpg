@@ -14,6 +14,6 @@ public record CharacterFullViewModel : IMapFrom<Character>
     public float ExperienceMultiplier { get; init; }
     public bool SkippedTheFun { get; init; }
     public bool AutoRepair { get; init; }
-    public CharacterStatisticsViewModel Statistics { get; init; } = new();
+    public CharacterCharacteristicsViewModel Characteristics { get; init; } = new();
     public IList<EquippedItemViewModel> EquippedItems { get; init; } = Array.Empty<EquippedItemViewModel>();
 }

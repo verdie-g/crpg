@@ -71,7 +71,7 @@ public record GetBattleMercenaryApplicationsQuery : IMediatorRequest<IList<Battl
                     {
                         Id = m.Character.Id,
                         Level = m.Character.Level,
-                        Class = _characterClassModel.ResolveCharacterClass(m.Character.Statistics),
+                        Class = _characterClassModel.ResolveCharacterClass(m.Character.Characteristics),
                     },
                     Wage = m.Wage,
                     Note = m.Note,

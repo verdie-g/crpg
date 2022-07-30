@@ -36,7 +36,7 @@ public class SkipTheFunCommandTest : TestBase
         Assert.AreEqual(30000, character.Experience);
         Assert.IsTrue(character.SkippedTheFun);
 
-        characterServiceMock.Verify(cs => cs.ResetCharacterStats(It.IsAny<Character>(), true), Times.Once);
+        characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true), Times.Once);
     }
 
     [Test]

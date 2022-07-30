@@ -65,7 +65,7 @@ public record GetBattleMercenariesQuery : IMediatorRequest<IList<BattleMercenary
                     {
                         Id = m.Character.Id,
                         Level = m.Character.Level,
-                        Class = _characterClassModel.ResolveCharacterClass(m.Character.Statistics),
+                        Class = _characterClassModel.ResolveCharacterClass(m.Character.Characteristics),
                     },
                     Side = m.Side,
                 }).ToArray();

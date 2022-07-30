@@ -627,7 +627,7 @@ public record SeedDataCommand : IMediatorRequest
             var existingCharacters = await _db.Characters.ToDictionaryAsync(c => c.Name);
             foreach (var newCharacter in newCharacters)
             {
-                _characterService.ResetCharacterStats(newCharacter, respecialization: true);
+                _characterService.ResetCharacterCharacteristics(newCharacter, respecialization: true);
 
                 if (existingCharacters.TryGetValue(newCharacter.Name, out var existingCharacter))
                 {

@@ -9,17 +9,17 @@ public class CharacterConfiguration : IEntityTypeConfiguration<Character>
     public void Configure(EntityTypeBuilder<Character> builder)
     {
         builder.HasIndex(c => new { c.UserId, c.Name }).IsUnique();
-        builder.OwnsOne(c => c.Statistics, ConfigureCharacterStatistics);
+        builder.OwnsOne(c => c.Characteristics, ConfigureCharacterCharacteristics);
     }
 
-    private static void ConfigureCharacterStatistics(OwnedNavigationBuilder<Character, CharacterStatistics> builder)
+    private static void ConfigureCharacterCharacteristics(OwnedNavigationBuilder<Character, CharacterCharacteristics> builder)
     {
         builder.OwnsOne(cs => cs.Attributes, ConfigureCharacterAttributes);
         builder.OwnsOne(cs => cs.Skills, ConfigureCharacterSkills);
         builder.OwnsOne(cs => cs.WeaponProficiencies, ConfigureCharacterWeaponProficiencies);
     }
 
-    private static void ConfigureCharacterAttributes(OwnedNavigationBuilder<CharacterStatistics, CharacterAttributes> builder)
+    private static void ConfigureCharacterAttributes(OwnedNavigationBuilder<CharacterCharacteristics, CharacterAttributes> builder)
     {
         // Default names are prefixed with character_attributes_.
         builder.Property(a => a.Points).HasColumnName("attribute_points");
@@ -27,7 +27,7 @@ public class CharacterConfiguration : IEntityTypeConfiguration<Character>
         builder.Property(a => a.Agility).HasColumnName("agility");
     }
 
-    private static void ConfigureCharacterSkills(OwnedNavigationBuilder<CharacterStatistics, CharacterSkills> builder)
+    private static void ConfigureCharacterSkills(OwnedNavigationBuilder<CharacterCharacteristics, CharacterSkills> builder)
     {
         // Default names are prefixed with character_skills_.
         builder.Property(s => s.Points).HasColumnName("skill_points");
@@ -42,7 +42,7 @@ public class CharacterConfiguration : IEntityTypeConfiguration<Character>
         builder.Property(s => s.Shield).HasColumnName("shield");
     }
 
-    private static void ConfigureCharacterWeaponProficiencies(OwnedNavigationBuilder<CharacterStatistics, CharacterWeaponProficiencies> builder)
+    private static void ConfigureCharacterWeaponProficiencies(OwnedNavigationBuilder<CharacterCharacteristics, CharacterWeaponProficiencies> builder)
     {
         // Default names are prefixed with character_weapon_proficiencies.
         builder.Property(wp => wp.Points).HasColumnName("weapon_proficiency_points");

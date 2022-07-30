@@ -19,7 +19,7 @@ public class Character : AuditableEntity
     public bool SkippedTheFun { get; set; }
     public bool AutoRepair { get; set; }
 
-    public CharacterStatistics Statistics { get; set; } = new();
+    public CharacterCharacteristics Characteristics { get; set; } = new();
     public IList<EquippedItem> EquippedItems { get; set; } = new List<EquippedItem>();
 
     public User? User { get; set; }

@@ -8,7 +8,7 @@ namespace Crpg.Application.UTest.Common.Services;
 public class CharacterClassModelTest
 {
     [TestCaseSource(nameof(TestResolveCharacterClassSource))]
-    public void TestResolveCharacterClass(CharacterClass expectedClass, CharacterStatistics stats)
+    public void TestResolveCharacterClass(CharacterClass expectedClass, CharacterCharacteristics stats)
     {
         CharacterClassModel model = new();
         CharacterClass actualClass = model.ResolveCharacterClass(stats);
@@ -20,7 +20,7 @@ public class CharacterClassModelTest
         new object[]
         {
             CharacterClass.Cavalry,
-            new CharacterStatistics
+            new CharacterCharacteristics
             {
                 Skills = new CharacterSkills { Riding = 5 },
                 WeaponProficiencies = new CharacterWeaponProficiencies { Polearm = 120 },
@@ -29,7 +29,7 @@ public class CharacterClassModelTest
         new object[]
         {
             CharacterClass.MountedArcher,
-            new CharacterStatistics
+            new CharacterCharacteristics
             {
                 Skills = new CharacterSkills { Riding = 4 },
                 WeaponProficiencies = new CharacterWeaponProficiencies { Crossbow = 100 },
@@ -38,7 +38,7 @@ public class CharacterClassModelTest
         new object[]
         {
             CharacterClass.MountedArcher,
-            new CharacterStatistics
+            new CharacterCharacteristics
             {
                 Skills = new CharacterSkills { Riding = 3 },
                 WeaponProficiencies = new CharacterWeaponProficiencies { Crossbow = 80 },
@@ -47,7 +47,7 @@ public class CharacterClassModelTest
         new object[]
         {
             CharacterClass.Skirmisher,
-            new CharacterStatistics
+            new CharacterCharacteristics
             {
                 Skills = new CharacterSkills(),
                 WeaponProficiencies = new CharacterWeaponProficiencies { Throwing = 60 },
@@ -56,7 +56,7 @@ public class CharacterClassModelTest
         new object[]
         {
             CharacterClass.Crossbowman,
-            new CharacterStatistics
+            new CharacterCharacteristics
             {
                 Skills = new CharacterSkills(),
                 WeaponProficiencies = new CharacterWeaponProficiencies { Crossbow = 70 },
@@ -65,7 +65,7 @@ public class CharacterClassModelTest
         new object[]
         {
             CharacterClass.Archer,
-            new CharacterStatistics
+            new CharacterCharacteristics
             {
                 Skills = new CharacterSkills(),
                 WeaponProficiencies = new CharacterWeaponProficiencies { Bow = 50 },
@@ -74,7 +74,7 @@ public class CharacterClassModelTest
         new object[]
         {
             CharacterClass.Infantry,
-            new CharacterStatistics
+            new CharacterCharacteristics
             {
                 Skills = new CharacterSkills { Shield = 4 },
                 WeaponProficiencies = new CharacterWeaponProficiencies(),
@@ -83,7 +83,7 @@ public class CharacterClassModelTest
         new object[]
         {
             CharacterClass.ShockInfantry,
-            new CharacterStatistics
+            new CharacterCharacteristics
             {
                 Skills = new CharacterSkills(),
                 WeaponProficiencies = new CharacterWeaponProficiencies { TwoHanded = 120 },

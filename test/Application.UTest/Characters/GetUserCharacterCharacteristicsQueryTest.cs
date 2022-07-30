@@ -5,13 +5,13 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters;
 
-public class GetUserCharacterStatisticsQueryTest : TestBase
+public class GetUserCharacterCharacteristicsQueryTest : TestBase
 {
     [Test]
     public async Task ShouldReturnErrorIfCharacterDoesntExist()
     {
-        GetUserCharacterStatisticsQuery.Handler handler = new(ActDb, Mapper);
-        var result = await handler.Handle(new GetUserCharacterStatisticsQuery
+        GetUserCharacterCharacteristicsQuery.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new GetUserCharacterCharacteristicsQuery
         {
             CharacterId = 1,
             UserId = 2,
@@ -21,19 +21,19 @@ public class GetUserCharacterStatisticsQueryTest : TestBase
     }
 
     [Test]
-    public async Task ShouldReturnCharacterStatistics()
+    public async Task ShouldReturnCharacterCharacteristics()
     {
         Character character = new()
         {
             Name = "toto",
             UserId = 2,
-            Statistics = new CharacterStatistics(),
+            Characteristics = new CharacterCharacteristics(),
         };
         ArrangeDb.Characters.Add(character);
         await ArrangeDb.SaveChangesAsync();
 
-        GetUserCharacterStatisticsQuery.Handler handler = new(ActDb, Mapper);
-        var result = await handler.Handle(new GetUserCharacterStatisticsQuery
+        GetUserCharacterCharacteristicsQuery.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new GetUserCharacterCharacteristicsQuery
         {
             CharacterId = character.Id,
             UserId = 2,

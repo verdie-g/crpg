@@ -1,9 +1,8 @@
 import User from '@/models/user';
 import Character from '@/models/character';
-import Item from '@/models/item';
 import { UpdateCharacterRequest } from '@/models/update-character-request';
-import CharacterStatistics from '@/models/character-statistics';
-import StatisticConversion from '@/models/statistic-conversion';
+import CharacterCharacteristics from '@/models/character-characteristics';
+import CharacteristicConversion from '@/models/characteristic-conversion';
 import Ban from '@/models/ban';
 import EquippedItem from '@/models/equipped-item';
 import EquippedItemId from '@/models/equipped-item-id';
@@ -58,22 +57,22 @@ export function switchCharacterAutoRepair(characterId: number, autoRepair: boole
   return put(`/users/self/characters/${characterId}/auto-repair`, { autoRepair });
 }
 
-export function getCharacterStatistics(characterId: number): Promise<CharacterStatistics> {
-  return get(`/users/self/characters/${characterId}/statistics`);
+export function getCharacterCharacteristics(characterId: number): Promise<CharacterCharacteristics> {
+  return get(`/users/self/characters/${characterId}/characteristics`);
 }
 
-export function updateCharacterStatistics(
+export function updateCharacterCharacteristics(
   characterId: number,
-  req: CharacterStatistics
-): Promise<CharacterStatistics> {
-  return put(`/users/self/characters/${characterId}/statistics`, req);
+  req: CharacterCharacteristics
+): Promise<CharacterCharacteristics> {
+  return put(`/users/self/characters/${characterId}/characteristics`, req);
 }
 
-export function convertCharacterStatistics(
+export function convertCharacterCharacteristics(
   characterId: number,
-  conversion: StatisticConversion
-): Promise<CharacterStatistics> {
-  return put(`/users/self/characters/${characterId}/statistics/convert`, { conversion });
+  conversion: CharacteristicConversion
+): Promise<CharacterCharacteristics> {
+  return put(`/users/self/characters/${characterId}/characteristics/convert`, { conversion });
 }
 
 export function buyItem(itemId: string): Promise<UserItem> {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="stats-section">
+    <div class="characteristic-section">
       <div class="character-name">
         <h1 class="title is-3">{{ character.name }}</h1>
         <b-icon
@@ -10,7 +10,7 @@
         />
       </div>
 
-      <b-field horizontal label="Generation" class="stat-field is-marginless">
+      <b-field horizontal label="Generation" class="characteristic-field is-marginless">
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -19,7 +19,7 @@
           :controls="false"
         />
       </b-field>
-      <b-field horizontal label="Level" class="stat-field is-marginless">
+      <b-field horizontal label="Level" class="characteristic-field is-marginless">
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -28,7 +28,7 @@
           :controls="false"
         />
       </b-field>
-      <b-field horizontal label="Experience" class="stat-field is-marginless">
+      <b-field horizontal label="Experience" class="characteristic-field is-marginless">
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -39,24 +39,24 @@
       </b-field>
     </div>
 
-    <div class="stats-section" v-if="stats !== null">
+    <div class="characteristic-section" v-if="characteristics !== null">
       <h2 class="title is-4">
-        Attributes ({{ stats.attributes.points + statsDelta.attributes.points }})
+        Attributes ({{ characteristics.attributes.points + characteristicsDelta.attributes.points }})
         <b-tooltip
           label="Convert 1 attribute point to 2 skill points"
           class="convert-button"
-          v-if="stats.attributes.points + statsDelta.attributes.points >= 1"
+          v-if="characteristics.attributes.points + characteristicsDelta.attributes.points >= 1"
         >
           <b-icon
             icon="exchange-alt"
             size="is-small"
             type="is-primary"
-            @click.native="convertStats(statisticConversion.AttributesToSkills)"
+            @click.native="convertCharacteristics(characteristicisticConversion.AttributesToSkills)"
           />
         </b-tooltip>
       </h2>
 
-      <b-field horizontal class="stat-field">
+      <b-field horizontal class="characteristic-field">
         <template v-slot:label>
           <b-tooltip position="is-left" multilined>
             Strength
@@ -76,7 +76,7 @@
         />
       </b-field>
 
-      <b-field horizontal class="stat-field">
+      <b-field horizontal class="characteristic-field">
         <template v-slot:label>
           <b-tooltip
             label="Increases your weapon points and makes you move a bit faster."
@@ -97,26 +97,26 @@
       </b-field>
     </div>
 
-    <div class="stats-section" v-if="stats !== null">
+    <div class="characteristic-section" v-if="characteristics !== null">
       <h2 class="title is-4">
-        Skills ({{ stats.skills.points + statsDelta.skills.points }})
+        Skills ({{ characteristics.skills.points + characteristicsDelta.skills.points }})
         <b-tooltip
           label="Convert 2 skill points to 1 attribute point"
           class="convert-button"
-          v-if="stats.skills.points + statsDelta.skills.points >= 2"
+          v-if="characteristics.skills.points + characteristicsDelta.skills.points >= 2"
         >
           <b-icon
             icon="exchange-alt"
             size="is-small"
             type="is-primary"
-            @click.native="convertStats(statisticConversion.SkillsToAttributes)"
+            @click.native="convertCharacteristics(characteristicisticConversion.SkillsToAttributes)"
           />
         </b-tooltip>
       </h2>
 
       <b-field
         horizontal
-        class="stat-field"
+        class="characteristic-field"
         :type="currentSkillRequirementsSatisfied('ironFlesh') ? 'is-primary' : 'is-danger'"
       >
         <template v-slot:label>
@@ -141,7 +141,7 @@
 
       <b-field
         horizontal
-        class="stat-field"
+        class="characteristic-field"
         :type="currentSkillRequirementsSatisfied('powerStrike') ? 'is-primary' : 'is-danger'"
       >
         <template v-slot:label>
@@ -165,7 +165,7 @@
 
       <b-field
         horizontal
-        class="stat-field"
+        class="characteristic-field"
         :type="currentSkillRequirementsSatisfied('powerDraw') ? 'is-primary' : 'is-danger'"
       >
         <template v-slot:label>
@@ -190,7 +190,7 @@
 
       <b-field
         horizontal
-        class="stat-field"
+        class="characteristic-field"
         :type="currentSkillRequirementsSatisfied('powerThrow') ? 'is-primary' : 'is-danger'"
       >
         <template v-slot:label>
@@ -215,7 +215,7 @@
 
       <b-field
         horizontal
-        class="stat-field"
+        class="characteristic-field"
         :type="currentSkillRequirementsSatisfied('athletics') ? 'is-primary' : 'is-danger'"
       >
         <template v-slot:label>
@@ -239,7 +239,7 @@
 
       <b-field
         horizontal
-        class="stat-field"
+        class="characteristic-field"
         :type="currentSkillRequirementsSatisfied('riding') ? 'is-primary' : 'is-danger'"
       >
         <template v-slot:label>
@@ -264,7 +264,7 @@
 
       <b-field
         horizontal
-        class="stat-field"
+        class="characteristic-field"
         :type="currentSkillRequirementsSatisfied('weaponMaster') ? 'is-primary' : 'is-danger'"
       >
         <template v-slot:label>
@@ -288,7 +288,7 @@
 
       <b-field
         horizontal
-        class="stat-field"
+        class="characteristic-field"
         :type="currentSkillRequirementsSatisfied('mountedArchery') ? 'is-primary' : 'is-danger'"
       >
         <template v-slot:label>
@@ -312,7 +312,7 @@
 
       <b-field
         horizontal
-        class="stat-field"
+        class="characteristic-field"
         :type="currentSkillRequirementsSatisfied('shield') ? 'is-primary' : 'is-danger'"
       >
         <template v-slot:label>
@@ -337,13 +337,13 @@
       </b-field>
     </div>
 
-    <div class="stats-section" v-if="stats !== null">
+    <div class="characteristic-section" v-if="characteristics !== null">
       <h2 class="title is-4">
         Weapon Proficiencies ({{
-          stats.weaponProficiencies.points + statsDelta.weaponProficiencies.points
+          characteristics.weaponProficiencies.points + characteristicsDelta.weaponProficiencies.points
         }})
       </h2>
-      <b-field horizontal label="One Handed" class="stat-field">
+      <b-field horizontal label="One Handed" class="characteristic-field">
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -354,7 +354,7 @@
         />
       </b-field>
 
-      <b-field horizontal label="Two Handed" class="stat-field">
+      <b-field horizontal label="Two Handed" class="characteristic-field">
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -365,7 +365,7 @@
         />
       </b-field>
 
-      <b-field horizontal label="Polearm" class="stat-field">
+      <b-field horizontal label="Polearm" class="characteristic-field">
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -376,7 +376,7 @@
         />
       </b-field>
 
-      <b-field horizontal label="Bow" class="stat-field">
+      <b-field horizontal label="Bow" class="characteristic-field">
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -387,7 +387,7 @@
         />
       </b-field>
 
-      <b-field horizontal label="Crossbow" class="stat-field">
+      <b-field horizontal label="Crossbow" class="characteristic-field">
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -398,7 +398,7 @@
         />
       </b-field>
 
-      <b-field horizontal label="Throwing" class="stat-field">
+      <b-field horizontal label="Throwing" class="characteristic-field">
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -420,7 +420,7 @@
           icon-left="check"
           :disabled="!wasChangeMade || !isChangeValid"
           @click="commit"
-          :loading="updatingStats"
+          :loading="updatingCharacteristics"
         >
           Commit
         </b-button>
@@ -467,70 +467,70 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import CharacterStatistics from '@/models/character-statistics';
+import CharacterCharacteristics from '@/models/character-characteristics';
 import Character from '@/models/character';
 import userModule from '@/store/user-module';
 import { notify } from '@/services/notifications-service';
 import CharacterAttributes from '@/models/character-attributes';
 import CharacterSkills from '@/models/character-skills';
 import CharacterWeaponProficiencies from '@/models/character-weapon-proficiencies';
-import StatisticConversion from '@/models/statistic-conversion';
+import CharacteristicConversion from '@/models/characteristic-conversion';
 import CharacterUpdate from '@/models/character-update';
 import { applyPolynomialFunction } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
 
-type StatSectionKey = keyof CharacterStatistics;
+type CharacteristicSectionKey = keyof CharacterCharacteristics;
 type AttributeKey = keyof CharacterAttributes;
 type SkillKey = keyof CharacterSkills;
 type WeaponProficienciesKey = keyof CharacterWeaponProficiencies;
-type StatKey = AttributeKey | SkillKey | WeaponProficienciesKey;
+type CharacteristicKey = AttributeKey | SkillKey | WeaponProficienciesKey;
 
 @Component
-export default class CharacterStatsComponent extends Vue {
+export default class CharacterCharacteristicsComponent extends Vue {
   @Prop(Object) character: Character;
 
   isCharacterUpdateModalActive = false;
   characterUpdate: CharacterUpdate = { name: '' };
 
-  updatingStats = false;
-  statsDelta: CharacterStatistics = this.createEmptyStatistics();
+  updatingCharacteristics = false;
+  characteristicsDelta: CharacterCharacteristics = this.createEmptycharacteristics();
 
-  get statisticConversion(): typeof StatisticConversion {
-    return StatisticConversion;
+  get characteristicisticConversion(): typeof CharacteristicConversion {
+    return CharacteristicConversion;
   }
 
-  get stats(): CharacterStatistics {
-    return userModule.characterStatistics(this.character.id)!;
+  get characteristics(): CharacterCharacteristics {
+    return userModule.characterCharacteristics(this.character.id)!;
   }
 
   get wasChangeMade(): boolean {
     return (
-      this.statsDelta.attributes.points !== 0 ||
-      this.statsDelta.skills.points !== 0 ||
-      this.statsDelta.weaponProficiencies.points !== 0
+      this.characteristicsDelta.attributes.points !== 0 ||
+      this.characteristicsDelta.skills.points !== 0 ||
+      this.characteristicsDelta.weaponProficiencies.points !== 0
     );
   }
 
   get isChangeValid(): boolean {
     return (
-      this.stats.attributes.points + this.statsDelta.attributes.points >= 0 &&
-      this.stats.skills.points + this.statsDelta.skills.points >= 0 &&
-      this.stats.weaponProficiencies.points + this.statsDelta.weaponProficiencies.points >= 0 &&
+      this.characteristics.attributes.points + this.characteristicsDelta.attributes.points >= 0 &&
+      this.characteristics.skills.points + this.characteristicsDelta.skills.points >= 0 &&
+      this.characteristics.weaponProficiencies.points + this.characteristicsDelta.weaponProficiencies.points >= 0 &&
       this.allCurrentSkillRequirementsSatisfied
     );
   }
 
   get allCurrentSkillRequirementsSatisfied(): boolean {
-    return Object.keys(this.stats.skills)
+    return Object.keys(this.characteristics.skills)
       .filter(skillKey => skillKey !== 'points')
       .every(skillKey => this.currentSkillRequirementsSatisfied(skillKey as SkillKey));
   }
 
   created() {
-    userModule.getCharacterStatistics(this.character.id);
+    userModule.getCharacterCharacteristics(this.character.id);
   }
 
-  createEmptyStatistics(): CharacterStatistics {
+  createEmptycharacteristics(): CharacterCharacteristics {
     return {
       attributes: {
         points: 0,
@@ -561,27 +561,27 @@ export default class CharacterStatsComponent extends Vue {
     };
   }
 
-  convertStats(conversion: StatisticConversion): Promise<CharacterStatistics> {
-    return userModule.convertCharacterStatistics({ characterId: this.character.id, conversion });
+  convertCharacteristics(conversion: CharacteristicConversion): Promise<CharacterCharacteristics> {
+    return userModule.convertCharacterCharacteristics({ characterId: this.character.id, conversion });
   }
 
   getInputProps(
-    statSectionKey: StatSectionKey,
-    statKey: StatKey
+    characteristicSectionKey: CharacteristicSectionKey,
+    characteristicKey: CharacteristicKey
   ): { value: number; min: number; max: number; controls: boolean } {
-    const initialValue = (this.stats[statSectionKey] as any)[statKey];
-    const deltaValue = (this.statsDelta[statSectionKey] as any)[statKey];
-    const initialPoints = this.stats[statSectionKey].points;
-    const deltaPoints = this.statsDelta[statSectionKey].points;
+    const initialValue = (this.characteristics[characteristicSectionKey] as any)[characteristicKey];
+    const deltaValue = (this.characteristicsDelta[characteristicSectionKey] as any)[characteristicKey];
+    const initialPoints = this.characteristics[characteristicSectionKey].points;
+    const deltaPoints = this.characteristicsDelta[characteristicSectionKey].points;
 
     const value = initialValue + deltaValue;
     const points = initialPoints + deltaPoints;
     const costToIncrease =
-      this.statCost(statSectionKey, statKey, value + 1) -
-      this.statCost(statSectionKey, statKey, value);
-    const requirementsSatisfied = this.statRequirementsSatisfied(
-      statSectionKey,
-      statKey,
+      this.characteristicCost(characteristicSectionKey, characteristicKey, value + 1) -
+      this.characteristicCost(characteristicSectionKey, characteristicKey, value);
+    const requirementsSatisfied = this.characteristicRequirementsSatisfied(
+      characteristicSectionKey,
+      characteristicKey,
       value + 1
     );
     return {
@@ -592,22 +592,22 @@ export default class CharacterStatsComponent extends Vue {
     };
   }
 
-  onInput(statSectionKey: StatSectionKey, statKey: StatKey, newStatValue: number): void {
-    const statInitialSection = this.stats![statSectionKey] as any;
-    const statDeltaSection = this.statsDelta[statSectionKey] as any;
+  onInput(characteristicSectionKey: CharacteristicSectionKey, characteristicKey: CharacteristicKey, newCharacteristicValue: number): void {
+    const characteristicInitialSection = this.characteristics![characteristicSectionKey] as any;
+    const characteristicDeltaSection = this.characteristicsDelta[characteristicSectionKey] as any;
 
-    const oldStatValue = statInitialSection[statKey] + statDeltaSection[statKey];
-    statDeltaSection.points +=
-      this.statCost(statSectionKey, statKey, oldStatValue) -
-      this.statCost(statSectionKey, statKey, newStatValue);
-    statDeltaSection[statKey] = newStatValue - statInitialSection[statKey];
+    const oldCharacteristicValue = characteristicInitialSection[characteristicKey] + characteristicDeltaSection[characteristicKey];
+    characteristicDeltaSection.points +=
+      this.characteristicCost(characteristicSectionKey, characteristicKey, oldCharacteristicValue) -
+      this.characteristicCost(characteristicSectionKey, characteristicKey, newCharacteristicValue);
+    characteristicDeltaSection[characteristicKey] = newCharacteristicValue - characteristicInitialSection[characteristicKey];
 
-    if (statKey === 'agility') {
-      this.statsDelta.weaponProficiencies.points +=
-        this.wppForAgility(newStatValue) - this.wppForAgility(oldStatValue);
-    } else if (statKey === 'weaponMaster') {
-      this.statsDelta.weaponProficiencies.points +=
-        this.wppForWeaponMaster(newStatValue) - this.wppForWeaponMaster(oldStatValue);
+    if (characteristicKey === 'agility') {
+      this.characteristicsDelta.weaponProficiencies.points +=
+        this.wppForAgility(newCharacteristicValue) - this.wppForAgility(oldCharacteristicValue);
+    } else if (characteristicKey === 'weaponMaster') {
+      this.characteristicsDelta.weaponProficiencies.points +=
+        this.wppForWeaponMaster(newCharacteristicValue) - this.wppForWeaponMaster(oldCharacteristicValue);
     }
   }
 
@@ -623,14 +623,14 @@ export default class CharacterStatsComponent extends Vue {
     );
   }
 
-  statRequirementsSatisfied(
-    statSectionKey: StatSectionKey,
-    statKey: StatKey,
-    stat: number
+  characteristicRequirementsSatisfied(
+    characteristicSectionKey: CharacteristicSectionKey,
+    characteristicKey: CharacteristicKey,
+    characteristic: number
   ): boolean {
-    switch (statSectionKey) {
+    switch (characteristicSectionKey) {
       case 'skills':
-        return this.skillRequirementsSatisfied(statKey as SkillKey, stat);
+        return this.skillRequirementsSatisfied(characteristicKey as SkillKey, characteristic);
       default:
         return true;
     }
@@ -639,7 +639,7 @@ export default class CharacterStatsComponent extends Vue {
   currentSkillRequirementsSatisfied(skillKey: SkillKey): boolean {
     return this.skillRequirementsSatisfied(
       skillKey,
-      this.stats.skills[skillKey] + this.statsDelta.skills[skillKey]
+      this.characteristics.skills[skillKey] + this.characteristicsDelta.skills[skillKey]
     );
   }
 
@@ -651,7 +651,7 @@ export default class CharacterStatsComponent extends Vue {
       case 'powerThrow':
         return (
           skill <=
-          Math.floor((this.stats.attributes.strength + this.statsDelta.attributes.strength) / 3)
+          Math.floor((this.characteristics.attributes.strength + this.characteristicsDelta.attributes.strength) / 3)
         );
 
       case 'athletics':
@@ -659,14 +659,14 @@ export default class CharacterStatsComponent extends Vue {
       case 'weaponMaster':
         return (
           skill <=
-          Math.floor((this.stats.attributes.agility + this.statsDelta.attributes.agility) / 3)
+          Math.floor((this.characteristics.attributes.agility + this.characteristicsDelta.attributes.agility) / 3)
         );
 
       case 'mountedArchery':
       case 'shield':
         return (
           skill <=
-          Math.floor((this.stats.attributes.agility + this.statsDelta.attributes.agility) / 6)
+          Math.floor((this.characteristics.attributes.agility + this.characteristicsDelta.attributes.agility) / 6)
         );
 
       default:
@@ -674,66 +674,66 @@ export default class CharacterStatsComponent extends Vue {
     }
   }
 
-  statCost(statSectionKey: StatSectionKey, statKey: StatKey, stat: number): number {
-    if (statSectionKey === 'weaponProficiencies') {
-      return Math.floor(applyPolynomialFunction(stat, Constants.weaponProficiencyCostCoefs));
+  characteristicCost(characteristicSectionKey: CharacteristicSectionKey, characteristicKey: CharacteristicKey, characteristic: number): number {
+    if (characteristicSectionKey === 'weaponProficiencies') {
+      return Math.floor(applyPolynomialFunction(characteristic, Constants.weaponProficiencyCostCoefs));
     }
 
-    return stat;
+    return characteristic;
   }
 
   reset(): void {
-    this.statsDelta = this.createEmptyStatistics();
+    this.characteristicsDelta = this.createEmptycharacteristics();
   }
 
   commit(): void {
-    this.updatingStats = true;
+    this.updatingCharacteristics = true;
     userModule
-      .updateCharacterStatistics({
+      .updateCharacterCharacteristics({
         characterId: this.character.id,
-        stats: {
+        characteristics: {
           attributes: {
-            points: this.stats.attributes.points + this.statsDelta.attributes.points,
-            strength: this.stats.attributes.strength + this.statsDelta.attributes.strength,
-            agility: this.stats.attributes.agility + this.statsDelta.attributes.agility,
+            points: this.characteristics.attributes.points + this.characteristicsDelta.attributes.points,
+            strength: this.characteristics.attributes.strength + this.characteristicsDelta.attributes.strength,
+            agility: this.characteristics.attributes.agility + this.characteristicsDelta.attributes.agility,
           },
           skills: {
-            points: this.stats.skills.points + this.statsDelta.skills.points,
-            ironFlesh: this.stats.skills.ironFlesh + this.statsDelta.skills.ironFlesh,
-            powerStrike: this.stats.skills.powerStrike + this.statsDelta.skills.powerStrike,
-            powerDraw: this.stats.skills.powerDraw + this.statsDelta.skills.powerDraw,
-            powerThrow: this.stats.skills.powerThrow + this.statsDelta.skills.powerThrow,
-            athletics: this.stats.skills.athletics + this.statsDelta.skills.athletics,
-            riding: this.stats.skills.riding + this.statsDelta.skills.riding,
-            weaponMaster: this.stats.skills.weaponMaster + this.statsDelta.skills.weaponMaster,
+            points: this.characteristics.skills.points + this.characteristicsDelta.skills.points,
+            ironFlesh: this.characteristics.skills.ironFlesh + this.characteristicsDelta.skills.ironFlesh,
+            powerStrike: this.characteristics.skills.powerStrike + this.characteristicsDelta.skills.powerStrike,
+            powerDraw: this.characteristics.skills.powerDraw + this.characteristicsDelta.skills.powerDraw,
+            powerThrow: this.characteristics.skills.powerThrow + this.characteristicsDelta.skills.powerThrow,
+            athletics: this.characteristics.skills.athletics + this.characteristicsDelta.skills.athletics,
+            riding: this.characteristics.skills.riding + this.characteristicsDelta.skills.riding,
+            weaponMaster: this.characteristics.skills.weaponMaster + this.characteristicsDelta.skills.weaponMaster,
             mountedArchery:
-              this.stats.skills.mountedArchery + this.statsDelta.skills.mountedArchery,
-            shield: this.stats.skills.shield + this.statsDelta.skills.shield,
+              this.characteristics.skills.mountedArchery + this.characteristicsDelta.skills.mountedArchery,
+            shield: this.characteristics.skills.shield + this.characteristicsDelta.skills.shield,
           },
           weaponProficiencies: {
             points:
-              this.stats.weaponProficiencies.points + this.statsDelta.weaponProficiencies.points,
+              this.characteristics.weaponProficiencies.points + this.characteristicsDelta.weaponProficiencies.points,
             oneHanded:
-              this.stats.weaponProficiencies.oneHanded +
-              this.statsDelta.weaponProficiencies.oneHanded,
+              this.characteristics.weaponProficiencies.oneHanded +
+              this.characteristicsDelta.weaponProficiencies.oneHanded,
             twoHanded:
-              this.stats.weaponProficiencies.twoHanded +
-              this.statsDelta.weaponProficiencies.twoHanded,
+              this.characteristics.weaponProficiencies.twoHanded +
+              this.characteristicsDelta.weaponProficiencies.twoHanded,
             polearm:
-              this.stats.weaponProficiencies.polearm + this.statsDelta.weaponProficiencies.polearm,
-            bow: this.stats.weaponProficiencies.bow + this.statsDelta.weaponProficiencies.bow,
+              this.characteristics.weaponProficiencies.polearm + this.characteristicsDelta.weaponProficiencies.polearm,
+            bow: this.characteristics.weaponProficiencies.bow + this.characteristicsDelta.weaponProficiencies.bow,
             throwing:
-              this.stats.weaponProficiencies.throwing +
-              this.statsDelta.weaponProficiencies.throwing,
+              this.characteristics.weaponProficiencies.throwing +
+              this.characteristicsDelta.weaponProficiencies.throwing,
             crossbow:
-              this.stats.weaponProficiencies.crossbow +
-              this.statsDelta.weaponProficiencies.crossbow,
+              this.characteristics.weaponProficiencies.crossbow +
+              this.characteristicsDelta.weaponProficiencies.crossbow,
           },
         },
       })
       .then(() => {
-        this.updatingStats = false;
-        notify('Character statistics updated');
+        this.updatingCharacteristics = false;
+        notify('Character characteristics updated');
       });
     this.reset();
   }
@@ -763,13 +763,13 @@ export default class CharacterStatsComponent extends Vue {
 
   @Watch('character')
   onCharacterChange(): void {
-    this.statsDelta = this.createEmptyStatistics();
+    this.characteristicsDelta = this.createEmptycharacteristics();
   }
 }
 </script>
 
 <style lang="scss">
-.stat-field {
+.characteristic-field {
   &:not(:last-child) {
     margin-bottom: 0;
   }
@@ -805,7 +805,7 @@ export default class CharacterStatsComponent extends Vue {
   }
 }
 
-.stats-section {
+.characteristic-section {
   margin-bottom: 20px;
 
   h2 {

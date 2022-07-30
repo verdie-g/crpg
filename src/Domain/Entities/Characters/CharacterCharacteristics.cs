@@ -1,9 +1,9 @@
 namespace Crpg.Domain.Entities.Characters;
 
 /// <summary>
-/// Statistics of a character.
+/// Characteristics of a character.
 /// </summary>
-public class CharacterStatistics
+public class CharacterCharacteristics
 {
     public CharacterAttributes Attributes { get; set; } = new();
     public CharacterSkills Skills { get; set; } = new();

@@ -115,7 +115,7 @@ public record ApplyAsMercenaryToBattleCommand : IMediatorRequest<BattleMercenary
                 {
                     Id = character.Id,
                     Level = character.Level,
-                    Class = _characterClassModel.ResolveCharacterClass(character.Statistics),
+                    Class = _characterClassModel.ResolveCharacterClass(character.Characteristics),
                 },
                 Side = application.Side,
                 Wage = application.Wage,

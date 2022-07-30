@@ -74,15 +74,15 @@ public class UsersController : BaseController
     }
 
     /// <summary>
-    /// Get character statistics for the current user.
+    /// Get character characteristics for the current user.
     /// </summary>
     /// <param name="id">Character id.</param>
-    /// <returns>The character statistics.</returns>
+    /// <returns>The character characteristics.</returns>
     /// <response code="200">Ok.</response>
-    [HttpGet("self/characters/{id}/statistics")]
-    public Task<ActionResult<Result<CharacterStatisticsViewModel>>> GetCharacterStatistics([FromRoute] int id)
+    [HttpGet("self/characters/{id}/characteristics")]
+    public Task<ActionResult<Result<CharacterCharacteristicsViewModel>>> GetCharacterCharacteristics([FromRoute] int id)
     {
-        return ResultToActionAsync(Mediator.Send(new GetUserCharacterStatisticsQuery
+        return ResultToActionAsync(Mediator.Send(new GetUserCharacterCharacteristicsQuery
         {
             UserId = CurrentUser.User!.Id,
             CharacterId = id,
@@ -90,37 +90,37 @@ public class UsersController : BaseController
     }
 
     /// <summary>
-    /// Updates character statistics for the current user.
+    /// Updates character characteristics for the current user.
     /// </summary>
     /// <param name="id">Character id.</param>
-    /// <param name="stats">The character statistics with the updated values.</param>
-    /// <returns>The updated character statistics.</returns>
+    /// <param name="stats">The character characteristics with the updated values.</param>
+    /// <returns>The updated character characteristics.</returns>
     /// <response code="200">Updated.</response>
     /// <response code="400">Bad Request.</response>
-    [HttpPut("self/characters/{id}/statistics")]
-    public Task<ActionResult<Result<CharacterStatisticsViewModel>>> UpdateCharacterStatistics([FromRoute] int id,
-        [FromBody] CharacterStatisticsViewModel stats)
+    [HttpPut("self/characters/{id}/characteristics")]
+    public Task<ActionResult<Result<CharacterCharacteristicsViewModel>>> UpdateCharacterCharacteristics([FromRoute] int id,
+        [FromBody] CharacterCharacteristicsViewModel stats)
     {
-        UpdateCharacterStatisticsCommand cmd = new()
+        UpdateCharacterCharacteristicsCommand cmd = new()
         {
             UserId = CurrentUser.User!.Id,
             CharacterId = id,
-            Statistics = stats,
+            Characteristics = stats,
         };
         return ResultToActionAsync(Mediator.Send(cmd));
     }
 
     /// <summary>
-    /// Convert character statistics for the current user.
+    /// Convert character characteristics for the current user.
     /// </summary>
     /// <param name="id">Character id.</param>
     /// <param name="req">The conversion to perform.</param>
-    /// <returns>The updated character statistics.</returns>
+    /// <returns>The updated character characteristics.</returns>
     /// <response code="200">Conversion performed.</response>
     /// <response code="400">Bad Request.</response>
-    [HttpPut("self/characters/{id}/statistics/convert")]
-    public Task<ActionResult<Result<CharacterStatisticsViewModel>>> ConvertCharacterStatistics([FromRoute] int id,
-        [FromBody] ConvertCharacterStatisticsCommand req)
+    [HttpPut("self/characters/{id}/characteristics/convert")]
+    public Task<ActionResult<Result<CharacterCharacteristicsViewModel>>> ConvertCharacterCharacteristics([FromRoute] int id,
+        [FromBody] ConvertCharacterCharacteristicsCommand req)
     {
         req = req with { CharacterId = id, UserId = CurrentUser.User!.Id };
         return ResultToActionAsync(Mediator.Send(req));
