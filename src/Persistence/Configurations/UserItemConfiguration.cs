@@ -8,14 +8,6 @@ public class UserItemConfiguration : IEntityTypeConfiguration<UserItem>
 {
     public void Configure(EntityTypeBuilder<UserItem> builder)
     {
-        builder.HasKey(t => new { t.UserId, t.ItemId });
-
-        builder
-            .HasOne(oi => oi!.User).WithMany(u => u!.Items)
-            .HasForeignKey(oi => oi.UserId);
-
-        builder
-            .HasOne(oi => oi!.Item).WithMany(i => i!.UserItems)
-            .HasForeignKey(oi => oi.ItemId);
+        builder.HasIndex(ui => new { ui.UserId, ui.BaseItemId, ui.Rank }).IsUnique();
     }
 }

@@ -36,7 +36,7 @@ public class UpdateGameUsersCommandTest : TestBase
                     Experience = 0,
                     ExperienceMultiplier = 1.0f,
                     Level = 1,
-                    EquippedItems = { new EquippedItem { Item = new Item(), Slot = ItemSlot.Body } },
+                    EquippedItems = { new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Body } },
                 },
             },
         };
@@ -94,17 +94,17 @@ public class UpdateGameUsersCommandTest : TestBase
                     Name = "b",
                     EquippedItems =
                     {
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Head },
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Shoulder },
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Body },
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Hand },
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Leg },
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.MountHarness },
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Mount },
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon0 },
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon1 },
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon2 },
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon3 },
+                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Head },
+                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Shoulder },
+                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Body },
+                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Hand },
+                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Leg },
+                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.MountHarness },
+                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Mount },
+                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Weapon0 },
+                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Weapon1 },
+                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Weapon2 },
+                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Weapon3 },
                     },
                     AutoRepair = true,
                 },
@@ -124,17 +124,17 @@ public class UpdateGameUsersCommandTest : TestBase
                     CharacterId = user.Characters[0].Id,
                     BrokenItems = new[]
                     {
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[0].ItemId, RepairCost = 100 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[1].ItemId, RepairCost = 150 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[2].ItemId, RepairCost = 200 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[3].ItemId, RepairCost = 250 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[4].ItemId, RepairCost = 300 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[5].ItemId, RepairCost = 350 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[6].ItemId, RepairCost = 400 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[7].ItemId, RepairCost = 450 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[8].ItemId, RepairCost = 500 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[9].ItemId, RepairCost = 550 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[10].ItemId, RepairCost = 600 },
+                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[0].UserItemId, RepairCost = 100 },
+                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[1].UserItemId, RepairCost = 150 },
+                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[2].UserItemId, RepairCost = 200 },
+                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[3].UserItemId, RepairCost = 250 },
+                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[4].UserItemId, RepairCost = 300 },
+                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[5].UserItemId, RepairCost = 350 },
+                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[6].UserItemId, RepairCost = 400 },
+                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[7].UserItemId, RepairCost = 450 },
+                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[8].UserItemId, RepairCost = 500 },
+                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[9].UserItemId, RepairCost = 550 },
+                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[10].UserItemId, RepairCost = 600 },
                     },
                 },
             },
@@ -146,22 +146,34 @@ public class UpdateGameUsersCommandTest : TestBase
 
         var expectedItemsBySlot = user.Characters[0].EquippedItems.ToDictionary(ei => ei.Slot);
         var actualItemsBySlot = data.UpdateResults[0].User.Character.EquippedItems.ToDictionary(ei => ei.Slot);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Head].ItemId, actualItemsBySlot[ItemSlot.Head].Item.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Shoulder].ItemId, actualItemsBySlot[ItemSlot.Shoulder].Item.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Body].ItemId, actualItemsBySlot[ItemSlot.Body].Item.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Hand].ItemId, actualItemsBySlot[ItemSlot.Hand].Item.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Leg].ItemId, actualItemsBySlot[ItemSlot.Leg].Item.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.MountHarness].ItemId, actualItemsBySlot[ItemSlot.MountHarness].Item.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Mount].ItemId, actualItemsBySlot[ItemSlot.Mount].Item.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon0].ItemId, actualItemsBySlot[ItemSlot.Weapon0].Item.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon1].ItemId, actualItemsBySlot[ItemSlot.Weapon1].Item.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon2].ItemId, actualItemsBySlot[ItemSlot.Weapon2].Item.Id);
-        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon3].ItemId, actualItemsBySlot[ItemSlot.Weapon3].Item.Id);
+        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Head].UserItemId, actualItemsBySlot[ItemSlot.Head].UserItem.Id);
+        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Shoulder].UserItemId, actualItemsBySlot[ItemSlot.Shoulder].UserItem.Id);
+        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Body].UserItemId, actualItemsBySlot[ItemSlot.Body].UserItem.Id);
+        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Hand].UserItemId, actualItemsBySlot[ItemSlot.Hand].UserItem.Id);
+        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Leg].UserItemId, actualItemsBySlot[ItemSlot.Leg].UserItem.Id);
+        Assert.AreEqual(expectedItemsBySlot[ItemSlot.MountHarness].UserItemId, actualItemsBySlot[ItemSlot.MountHarness].UserItem.Id);
+        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Mount].UserItemId, actualItemsBySlot[ItemSlot.Mount].UserItem.Id);
+        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon0].UserItemId, actualItemsBySlot[ItemSlot.Weapon0].UserItem.Id);
+        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon1].UserItemId, actualItemsBySlot[ItemSlot.Weapon1].UserItem.Id);
+        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon2].UserItemId, actualItemsBySlot[ItemSlot.Weapon2].UserItem.Id);
+        Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon3].UserItemId, actualItemsBySlot[ItemSlot.Weapon3].UserItem.Id);
     }
 
     [Test]
     public async Task BreakingAllCharacterItemsWithoutAutoRepairShouldBreakThem()
     {
+        UserItem userItem0 = new() { Rank = 3, BaseItem = new Item { Id = "0" } };
+        UserItem userItem1 = new() { Rank = 2, BaseItem = new Item { Id = "1" } };
+        UserItem userItem2 = new() { Rank = 1, BaseItem = new Item { Id = "2" } };
+        UserItem userItem3 = new() { Rank = 0, BaseItem = new Item { Id = "3" } };
+        UserItem userItem4 = new() { Rank = -1, BaseItem = new Item { Id = "4" } };
+        UserItem userItem5 = new() { Rank = -2, BaseItem = new Item { Id = "5" } };
+        UserItem userItem6 = new() { Rank = -3, BaseItem = new Item { Id = "6" } };
+        UserItem userItem7 = new() { Rank = -2, BaseItem = new Item { Id = "7" } };
+        UserItem userItem8 = new() { Rank = -1, BaseItem = new Item { Id = "8" } };
+        UserItem userItem9 = new() { Rank = 0, BaseItem = new Item { Id = "9" } };
+        UserItem userItem10 = new() { Rank = 1, BaseItem = new Item { Id = "10" } };
+
         User user = new()
         {
             Platform = Platform.Steam,
@@ -174,40 +186,23 @@ public class UpdateGameUsersCommandTest : TestBase
                     Name = "b",
                     EquippedItems =
                     {
-                        new EquippedItem { Item = new Item { Rank = 3 }, Slot = ItemSlot.Head },
-                        new EquippedItem { Item = new Item { Rank = 2 }, Slot = ItemSlot.Shoulder },
-                        new EquippedItem { Item = new Item { Rank = 1 }, Slot = ItemSlot.Body },
-                        new EquippedItem { Item = new Item { Rank = 0 }, Slot = ItemSlot.Hand },
-                        new EquippedItem { Item = new Item { Rank = -1 }, Slot = ItemSlot.Leg },
-                        new EquippedItem { Item = new Item { Rank = -2 }, Slot = ItemSlot.MountHarness },
-                        new EquippedItem { Item = new Item { Rank = -3 }, Slot = ItemSlot.Mount },
-                        new EquippedItem { Item = new Item { Rank = -2 }, Slot = ItemSlot.Weapon0 },
-                        new EquippedItem { Item = new Item { Rank = -1 }, Slot = ItemSlot.Weapon1 },
-                        new EquippedItem { Item = new Item { Rank = 0 }, Slot = ItemSlot.Weapon2 },
-                        new EquippedItem { Item = new Item { Rank = 1 }, Slot = ItemSlot.Weapon3 },
+                        new EquippedItem { UserItem = userItem0, Slot = ItemSlot.Head },
+                        new EquippedItem { UserItem = userItem1, Slot = ItemSlot.Shoulder },
+                        new EquippedItem { UserItem = userItem2, Slot = ItemSlot.Body },
+                        new EquippedItem { UserItem = userItem3, Slot = ItemSlot.Hand },
+                        new EquippedItem { UserItem = userItem4, Slot = ItemSlot.Leg },
+                        new EquippedItem { UserItem = userItem5, Slot = ItemSlot.MountHarness },
+                        new EquippedItem { UserItem = userItem6, Slot = ItemSlot.Mount },
+                        new EquippedItem { UserItem = userItem7, Slot = ItemSlot.Weapon0 },
+                        new EquippedItem { UserItem = userItem8, Slot = ItemSlot.Weapon1 },
+                        new EquippedItem { UserItem = userItem9, Slot = ItemSlot.Weapon2 },
+                        new EquippedItem { UserItem = userItem10, Slot = ItemSlot.Weapon3 },
                     },
                     AutoRepair = false,
                 },
             },
         };
         ArrangeDb.Users.Add(user);
-
-        // for each item, add its base item (rank = 0) and downranked item (rank = rank - 1)
-        foreach (var equippedItem in user.Characters[0].EquippedItems)
-        {
-            ArrangeDb.UserItems.Add(new UserItem { User = user, Item = equippedItem.Item });
-
-            var baseItem = equippedItem.Item!.Rank == 0 ? equippedItem.Item : new Item { Rank = 0 };
-            baseItem.BaseItem = baseItem;
-            equippedItem.Item.BaseItem = baseItem;
-            ArrangeDb.Items.Add(baseItem);
-
-            if (equippedItem.Item.Rank > -3 && equippedItem.Item.Rank - 1 != 0)
-            {
-                ArrangeDb.Items.Add(new Item { Rank = equippedItem.Item.Rank - 1, BaseItem = baseItem });
-            }
-        }
-
         await ArrangeDb.SaveChangesAsync();
 
         Mock<ICharacterService> characterServiceMock = new();
@@ -222,17 +217,17 @@ public class UpdateGameUsersCommandTest : TestBase
                     CharacterId = user.Characters[0].Id,
                     BrokenItems = new[]
                     {
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[0].ItemId, RepairCost = 100 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[1].ItemId, RepairCost = 150 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[2].ItemId, RepairCost = 200 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[3].ItemId, RepairCost = 250 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[4].ItemId, RepairCost = 300 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[5].ItemId, RepairCost = 350 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[6].ItemId, RepairCost = 400 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[7].ItemId, RepairCost = 450 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[8].ItemId, RepairCost = 500 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[9].ItemId, RepairCost = 550 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[10].ItemId, RepairCost = 600 },
+                        new GameUserBrokenItem { UserItemId = userItem0.Id, RepairCost = 100 },
+                        new GameUserBrokenItem { UserItemId = userItem1.Id, RepairCost = 150 },
+                        new GameUserBrokenItem { UserItemId = userItem2.Id, RepairCost = 200 },
+                        new GameUserBrokenItem { UserItemId = userItem3.Id, RepairCost = 250 },
+                        new GameUserBrokenItem { UserItemId = userItem4.Id, RepairCost = 300 },
+                        new GameUserBrokenItem { UserItemId = userItem5.Id, RepairCost = 350 },
+                        new GameUserBrokenItem { UserItemId = userItem6.Id, RepairCost = 400 },
+                        new GameUserBrokenItem { UserItemId = userItem7.Id, RepairCost = 450 },
+                        new GameUserBrokenItem { UserItemId = userItem8.Id, RepairCost = 500 },
+                        new GameUserBrokenItem { UserItemId = userItem9.Id, RepairCost = 550 },
+                        new GameUserBrokenItem { UserItemId = userItem10.Id, RepairCost = 600 },
                     },
                 },
             },
@@ -243,35 +238,31 @@ public class UpdateGameUsersCommandTest : TestBase
         Assert.AreEqual(11, data.UpdateResults[0].BrokenItems.Count);
 
         user = await AssertDb.Users
-            .Include(u => u.Characters).ThenInclude(c => c.EquippedItems).ThenInclude(ei => ei.Item)
+            .Include(u => u.Characters).ThenInclude(c => c.EquippedItems).ThenInclude(ei => ei.UserItem)
             .FirstAsync(u => u.Id == user.Id);
 
-        var itemsBySlot = user.Characters[0].EquippedItems.ToDictionary(ei => ei.Slot, ei => ei.Item!);
-        Assert.AreEqual(2, itemsBySlot[ItemSlot.Head].Rank);
-        Assert.AreEqual(1, itemsBySlot[ItemSlot.Shoulder].Rank);
-        Assert.AreEqual(0, itemsBySlot[ItemSlot.Body].Rank);
-        Assert.AreEqual(-1, itemsBySlot[ItemSlot.Hand].Rank);
-        Assert.AreEqual(-2, itemsBySlot[ItemSlot.Leg].Rank);
-        Assert.AreEqual(-3, itemsBySlot[ItemSlot.MountHarness].Rank);
-        Assert.That(itemsBySlot, Does.Not.ContainKey(ItemSlot.Mount));
-        Assert.AreEqual(-3, itemsBySlot[ItemSlot.Weapon0].Rank);
-        Assert.AreEqual(-2, itemsBySlot[ItemSlot.Weapon1].Rank);
-        Assert.AreEqual(-1, itemsBySlot[ItemSlot.Weapon2].Rank);
-        Assert.AreEqual(0, itemsBySlot[ItemSlot.Weapon3].Rank);
-
-        // check broken items were added to user inventory
-        foreach (var equippedItem in user.Characters[0].EquippedItems)
-        {
-            Assert.DoesNotThrowAsync(() => AssertDb.UserItems.FirstAsync(oi => oi.ItemId == equippedItem.ItemId && oi.UserId == user.Id));
-        }
+        var userItemsBySlot = user.Characters[0].EquippedItems.ToDictionary(ei => ei.Slot, ei => ei.UserItem!);
+        Assert.AreEqual(2, userItemsBySlot[ItemSlot.Head].Rank);
+        Assert.AreEqual(1, userItemsBySlot[ItemSlot.Shoulder].Rank);
+        Assert.AreEqual(0, userItemsBySlot[ItemSlot.Body].Rank);
+        Assert.AreEqual(-1, userItemsBySlot[ItemSlot.Hand].Rank);
+        Assert.AreEqual(-2, userItemsBySlot[ItemSlot.Leg].Rank);
+        Assert.AreEqual(-3, userItemsBySlot[ItemSlot.MountHarness].Rank);
+        Assert.AreEqual(-3, userItemsBySlot[ItemSlot.Mount].Rank);
+        Assert.AreEqual(-3, userItemsBySlot[ItemSlot.Weapon0].Rank);
+        Assert.AreEqual(-2, userItemsBySlot[ItemSlot.Weapon1].Rank);
+        Assert.AreEqual(-1, userItemsBySlot[ItemSlot.Weapon2].Rank);
+        Assert.AreEqual(0, userItemsBySlot[ItemSlot.Weapon3].Rank);
     }
 
     [Test]
     public async Task BreakingCharacterItemsWithAutoRepairShouldRepairUntilThereIsNotEnoughGold()
     {
-        Item handItem = new() { Rank = 0 };
-        Item downrankedHandItem = new() { Rank = -1, BaseItem = handItem };
-        ArrangeDb.Items.AddRange(handItem, downrankedHandItem);
+        UserItem userItem0 = new() { Rank = 0, BaseItem = new Item { Id = "0" } };
+        UserItem userItem1 = new() { Rank = 0, BaseItem = new Item { Id = "1" } };
+        UserItem userItem2 = new() { Rank = 0, BaseItem = new Item { Id = "2" } };
+        UserItem userItem3 = new() { Rank = 0, BaseItem = new Item { Id = "3" } };
+        UserItem userItem4 = new() { Rank = 0, BaseItem = new Item { Id = "4" } };
 
         User user = new()
         {
@@ -282,16 +273,15 @@ public class UpdateGameUsersCommandTest : TestBase
                 {
                     EquippedItems =
                     {
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Head },
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Shoulder },
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Body },
-                        new EquippedItem { Item = handItem, Slot = ItemSlot.Hand },
-                        new EquippedItem { Item = new Item(), Slot = ItemSlot.Leg },
+                        new EquippedItem { UserItem = userItem0, Slot = ItemSlot.Head },
+                        new EquippedItem { UserItem = userItem1, Slot = ItemSlot.Shoulder },
+                        new EquippedItem { UserItem = userItem2, Slot = ItemSlot.Body },
+                        new EquippedItem { UserItem = userItem3, Slot = ItemSlot.Hand },
+                        new EquippedItem { UserItem = userItem4, Slot = ItemSlot.Leg },
                     },
                     AutoRepair = true,
                 },
             },
-            Items = { new UserItem { Item = handItem } },
         };
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
@@ -307,10 +297,10 @@ public class UpdateGameUsersCommandTest : TestBase
                     CharacterId = user.Characters[0].Id,
                     BrokenItems = new[]
                     {
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[0].ItemId, RepairCost = 1000 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[1].ItemId, RepairCost = 1000 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[2].ItemId, RepairCost = 1000 },
-                        new GameUserBrokenItem { ItemId = user.Characters[0].EquippedItems[3].ItemId, RepairCost = 1000 },
+                        new GameUserBrokenItem { UserItemId = userItem0.Id, RepairCost = 1000 },
+                        new GameUserBrokenItem { UserItemId = userItem1.Id, RepairCost = 1000 },
+                        new GameUserBrokenItem { UserItemId = userItem2.Id, RepairCost = 1000 },
+                        new GameUserBrokenItem { UserItemId = userItem3.Id, RepairCost = 1000 },
                     },
                 },
             },
@@ -318,6 +308,6 @@ public class UpdateGameUsersCommandTest : TestBase
 
         var data = result.Data!;
         Assert.AreEqual(0, data.UpdateResults[0].User.Gold);
-        Assert.AreEqual(1, data.UpdateResults[0].BrokenItems.Count); // hand
+        Assert.AreEqual(1, data.UpdateResults[0].BrokenItems.Count); // not enough gold to repair the last one.
     }
 }

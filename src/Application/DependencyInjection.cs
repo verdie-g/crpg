@@ -26,7 +26,7 @@ public static class DependencyInjection
             .AddMediatR(Assembly.GetExecutingAssembly())
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestInstrumentationBehavior<,>))
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>))
-            .AddSingleton(itemModifierService)
+            .AddSingleton<IItemModifierService>(itemModifierService)
             .AddSingleton<ItemPriceModel>()
             .AddSingleton<IExperienceTable>(experienceTable)
             .AddSingleton<ICharacterService>(characterService)

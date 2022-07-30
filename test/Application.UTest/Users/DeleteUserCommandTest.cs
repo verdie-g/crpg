@@ -22,7 +22,7 @@ public class DeleteUserCommandTest : TestBase
         User user = new()
         {
             Characters = new List<Character> { new() { EquippedItems = new List<EquippedItem> { new() } } },
-            Items = new List<UserItem> { new() { Item = new Item() } },
+            Items = new List<UserItem> { new() { BaseItem = new Item { Id = "1" } } },
             Bans = new List<Ban> { new() },
             ClanMembership = new ClanMember { Clan = new Clan() },
             Party = new Party
@@ -34,9 +34,9 @@ public class DeleteUserCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         // Save ids before they get deleted.
-        int itemId = user.Items[0].ItemId;
+        string itemId = user.Items[0].BaseItemId;
         int clanId = user.ClanMembership.ClanId;
-        int strategusItemId = user.Party.Items[0].ItemId;
+        string partyItemId = user.Party.Items[0].ItemId;
 
         var userService = Mock.Of<IUserService>();
         DeleteUserCommand.Handler handler = new(ActDb, Mock.Of<IDateTime>(), userService);
@@ -50,10 +50,10 @@ public class DeleteUserCommandTest : TestBase
         Assert.IsNotNull(dbUser!.DeletedAt);
 
         Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.Characters.FirstAsync(c => c.Id == user.Characters[0].Id));
-        Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.UserItems.FirstAsync(oi =>
-            oi.UserId == user.Id && oi.ItemId == user.Items[0].ItemId));
+        Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.UserItems.FirstAsync(ui =>
+            ui.UserId == user.Id && ui.Id == user.Items[0].Id));
         Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.EquippedItems.FirstAsync(ei =>
-            ei.UserId == user.Id));
+            ei.UserItem!.UserId == user.Id));
         Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.Parties.FirstAsync(h =>
             h.Id == user.Id));
         Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.PartyItems.FirstAsync(oi =>
@@ -61,7 +61,7 @@ public class DeleteUserCommandTest : TestBase
         Assert.DoesNotThrowAsync(() => AssertDb.Items.FirstAsync(i => i.Id == itemId));
         Assert.DoesNotThrowAsync(() => AssertDb.Bans.FirstAsync(b => b.BannedUserId == user.Id));
         Assert.DoesNotThrowAsync(() => AssertDb.Clans.FirstAsync(c => c.Id == clanId));
-        Assert.DoesNotThrowAsync(() => AssertDb.Items.FirstAsync(i => i.Id == strategusItemId));
+        Assert.DoesNotThrowAsync(() => AssertDb.Items.FirstAsync(i => i.Id == partyItemId));
     }
 
     [Test]

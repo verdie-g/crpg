@@ -21,8 +21,6 @@ public record SeedDataCommand : IMediatorRequest
 {
     internal class Handler : IMediatorRequestHandler<SeedDataCommand>
     {
-        private static readonly int[] ItemRanks = { -3, -2, -1, 1, 2, 3 };
-
         private static readonly Dictionary<SettlementType, int> StrategusSettlementDefaultTroops = new()
         {
             [SettlementType.Village] = 1000,
@@ -38,12 +36,12 @@ public record SeedDataCommand : IMediatorRequest
         private readonly IStrategusMap _strategusMap;
         private readonly ISettlementsSource _settlementsSource;
         private readonly ItemPriceModel _itemPriceModel;
-        private readonly ItemModifierService _itemModifierService;
+        private readonly IItemModifierService _itemModifierService;
 
         public Handler(ICrpgDbContext db, IItemsSource itemsSource, IApplicationEnvironment appEnv,
             ICharacterService characterService, IExperienceTable experienceTable, IStrategusMap strategusMap,
             ISettlementsSource settlementsSource, ItemPriceModel itemPriceModel,
-            ItemModifierService itemModifierService)
+            IItemModifierService itemModifierService)
         {
             _db = db;
             _itemsSource = itemsSource;
@@ -1507,75 +1505,52 @@ public record SeedDataCommand : IMediatorRequest
 
         private async Task CreateOrUpdateItems(CancellationToken cancellationToken)
         {
-            var itemsByMdId = (await _itemsSource.LoadItems())
-                .ToDictionary(i => i.TemplateMbId);
-            var dbItemsByMbId = await _db.Items
-                .ToDictionaryAsync(di => (di.TemplateMbId, di.Rank), cancellationToken);
+            var itemsById = (await _itemsSource.LoadItems()).ToDictionary(i => i.Id);
+            var dbItemsById = await _db.Items.ToDictionaryAsync(i => i.Id, cancellationToken);
 
-            List<Item> baseItems = new();
-
-            foreach (ItemCreation item in itemsByMdId.Values)
+            foreach (ItemCreation item in itemsById.Values)
             {
                 Item baseItem = ItemCreationToItem(item);
                 baseItem.Price = _itemPriceModel.ComputeItemPrice(baseItem);
-                // EF Core doesn't support creating an entity referencing itself, which is needed for items with
-                // rank = 0. Workaround is to set BaseItemId to null and replace with the reference to the item
-                // once it was created. This is the only reason why BaseItemId is nullable.
-                baseItem.BaseItemId = null;
-                CreateOrUpdateItem(dbItemsByMbId, baseItem);
-                baseItems.Add(baseItem);
-
-                foreach (int rank in ItemRanks)
-                {
-                    var modifiedItem = _itemModifierService.ModifyItem(baseItem, rank);
-                    modifiedItem.BaseItem = baseItem;
-                    CreateOrUpdateItem(dbItemsByMbId, modifiedItem);
-                }
+                CreateOrUpdateItem(dbItemsById, baseItem);
             }
 
             // Remove items that were deleted from the item source
-            foreach (Item dbItem in dbItemsByMbId.Values)
+            foreach (Item dbItem in dbItemsById.Values)
             {
-                if (dbItem.Rank != 0 || itemsByMdId.ContainsKey(dbItem.TemplateMbId))
+                if (itemsById.ContainsKey(dbItem.Id))
                 {
                     continue;
                 }
 
                 var userItems = await _db.UserItems
-                    .Include(oi => oi.User)
-                    .Include(oi => oi.Item)
-                    .Where(oi => oi.Item!.BaseItemId == dbItem.BaseItemId)
+                    .Include(ui => ui.User)
+                    .Include(ui => ui.BaseItem)
+                    .Where(ui => ui.BaseItemId == dbItem.Id)
                     .ToArrayAsync(cancellationToken);
                 foreach (var userItem in userItems)
                 {
-                    userItem.User!.Gold += userItem.Item!.Price;
-                    if (userItem.Item.Rank > 0)
+                    int price = _itemModifierService.ModifyItem(userItem.BaseItem!, userItem.Rank).Price;
+                    userItem.User!.Gold += price;
+                    if (userItem.Rank > 0)
                     {
-                        userItem.User.HeirloomPoints += userItem.Item.Rank;
+                        userItem.User.HeirloomPoints += userItem.Rank;
                     }
 
                     _db.UserItems.Remove(userItem);
                 }
 
-                var itemsToDelete = dbItemsByMbId.Values.Where(i => i.BaseItemId == dbItem.BaseItemId).ToArray();
+                var itemsToDelete = dbItemsById.Values.Where(i => i.Id == dbItem.Id).ToArray();
                 foreach (var i in itemsToDelete)
                 {
                     _db.Entry(i).State = EntityState.Deleted;
                 }
             }
-
-            await _db.SaveChangesAsync(cancellationToken);
-
-            // Fix BaseItem for items of rank = 0
-            foreach (Item baseItem in baseItems)
-            {
-                baseItem.BaseItem = baseItem;
-            }
         }
 
-        private void CreateOrUpdateItem(Dictionary<(string mbId, int rank), Item> dbItemsByMbId, Item item)
+        private void CreateOrUpdateItem(Dictionary<string, Item> dbItemsByMbId, Item item)
         {
-            if (dbItemsByMbId.TryGetValue((item.TemplateMbId, item.Rank), out Item? dbItem))
+            if (dbItemsByMbId.TryGetValue(item.Id, out Item? dbItem))
             {
                 // replace item in context
                 _db.Entry(dbItem).State = EntityState.Detached;
@@ -1593,12 +1568,11 @@ public record SeedDataCommand : IMediatorRequest
         {
             Item res = new()
             {
-                TemplateMbId = item.TemplateMbId,
+                Id = item.Id,
                 Name = item.Name,
                 Culture = item.Culture,
                 Type = item.Type,
                 Weight = item.Weight,
-                Rank = item.Rank,
             };
 
             if (item.Armor != null)

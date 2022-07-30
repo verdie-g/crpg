@@ -16,5 +16,5 @@ public class ItemsController : BaseController
     [HttpGet]
     [ResponseCache(Duration = 60 * 60 * 6)] // 6 hours
     public Task<ActionResult<Result<IList<ItemViewModel>>>> GetItemsList() =>
-        ResultToActionAsync(Mediator.Send(new GetItemsQuery { BaseItems = true }));
+        ResultToActionAsync(Mediator.Send(new GetItemsQuery()));
 }

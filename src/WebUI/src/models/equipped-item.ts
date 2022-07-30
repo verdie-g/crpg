@@ -1,7 +1,7 @@
-import Item from '@/models/item';
+import UserItem from '@/models/user-item';
 import ItemSlot from '@/models/item-slot';
 
 export default interface EquippedItem {
-  item: Item;
   slot: ItemSlot;
+  userItem: UserItem;
 }

@@ -10,7 +10,7 @@ namespace Crpg.Domain.Entities.Parties;
 public class PartyItem : AuditableEntity
 {
     public int PartyId { get; set; }
-    public int ItemId { get; set; }
+    public string ItemId { get; set; } = string.Empty;
     public int Count { get; set; }
 
     public Party? Party { get; set; }

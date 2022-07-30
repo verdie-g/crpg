@@ -7,6 +7,7 @@ import WeaponFlags from '@/models/weapon-flags';
 import ItemSlot from '@/models/item-slot';
 import ItemWeaponComponent from '@/models/item-weapon-component';
 import WeaponClass from '@/models/weapon-class';
+import UserItem from '@/models/user-item';
 
 export const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.Undefined]: 'Undefined',
@@ -185,79 +186,79 @@ export function getItems(): Promise<Item[]> {
 }
 
 // Inspired by TooltipVMExtensions.UpdateTooltip.
-export function getItemDescriptor(item: Item): ItemDescriptor {
+export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor {
   const props: ItemDescriptor = {
     fields: [
-      ['Type', itemTypeToStr[item.type]],
-      ['Culture', item.culture],
-      ['Weight', item.weight],
+      ['Type', itemTypeToStr[baseItem.type]],
+      ['Culture', baseItem.culture],
+      ['Weight', baseItem.weight],
     ],
     modes: [],
   };
 
-  if (item.armor !== null) {
-    if (item.armor.headArmor !== 0) {
-      props.fields.push(['Head Armor', item.armor.headArmor]);
+  if (baseItem.armor !== null) {
+    if (baseItem.armor.headArmor !== 0) {
+      props.fields.push(['Head Armor', baseItem.armor.headArmor]);
     }
 
-    if (item.armor.bodyArmor !== 0) {
+    if (baseItem.armor.bodyArmor !== 0) {
       props.fields.push([
-        item.type === ItemType.MountHarness ? 'Mount Armor' : 'Body Armor',
-        item.armor!.bodyArmor,
+        baseItem.type === ItemType.MountHarness ? 'Mount Armor' : 'Body Armor',
+        baseItem.armor!.bodyArmor,
       ]);
     }
 
-    if (item.armor.armArmor !== 0) {
-      props.fields.push(['Arm Armor', item.armor.armArmor]);
+    if (baseItem.armor.armArmor !== 0) {
+      props.fields.push(['Arm Armor', baseItem.armor.armArmor]);
     }
 
-    if (item.armor.legArmor !== 0) {
-      props.fields.push(['Leg Armor', item.armor.legArmor]);
+    if (baseItem.armor.legArmor !== 0) {
+      props.fields.push(['Leg Armor', baseItem.armor.legArmor]);
     }
   }
 
-  if (item.mount !== null) {
+  if (baseItem.mount !== null) {
     props.fields.push(
-      ['Charge Damage', item.mount.chargeDamage],
-      ['Speed', item.mount.speed],
-      ['Maneuver', item.mount.maneuver],
-      ['Hit Points', item.mount.hitPoints]
+      ['Charge Damage', baseItem.mount.chargeDamage],
+      ['Speed', baseItem.mount.speed],
+      ['Maneuver', baseItem.mount.maneuver],
+      ['Hit Points', baseItem.mount.hitPoints]
     );
   }
 
   // Special cases for item types with only one weapon mode.
-  if (item.type === ItemType.Arrows || item.type === ItemType.Bolts) {
+  if (baseItem.type === ItemType.Arrows || baseItem.type === ItemType.Bolts) {
     props.fields.push(
-      ['Speed', item.weapons[0].missileSpeed],
+      ['Speed', baseItem.weapons[0].missileSpeed],
       [
         'Damage',
-        getDamageFieldValue(item.weapons[0].thrustDamage, item.weapons[0].thrustDamageType),
+        getDamageFieldValue(baseItem.weapons[0].thrustDamage, baseItem.weapons[0].thrustDamageType),
       ],
-      ['Length', item.weapons[0].length],
-      ['Ammo', item.weapons[0].stackAmount]
+      ['Length', baseItem.weapons[0].length],
+      ['Ammo', baseItem.weapons[0].stackAmount]
     );
-  } else if (item.type === ItemType.Shield) {
+  } else if (baseItem.type === ItemType.Shield) {
     props.fields.push(
-      ['Speed', item.weapons[0].swingSpeed],
-      ['Durability', item.weapons[0].stackAmount],
-      ['Armor', item.weapons[0].bodyArmor],
-      ['Length', item.weapons[0].length]
+      ['Speed', baseItem.weapons[0].swingSpeed],
+      ['Durability', baseItem.weapons[0].stackAmount],
+      ['Armor', baseItem.weapons[0].bodyArmor],
+      ['Length', baseItem.weapons[0].length]
     );
-  } else if (item.type === ItemType.Bow || item.type === ItemType.Crossbow) {
+  } else if (baseItem.type === ItemType.Bow || baseItem.type === ItemType.Crossbow) {
     props.fields.push(
       [
         'Damage',
-        getDamageFieldValue(item.weapons[0].thrustDamage, item.weapons[0].thrustDamageType),
+        getDamageFieldValue(baseItem.weapons[0].thrustDamage, baseItem.weapons[0].thrustDamageType),
       ],
-      ['Fire Rate', item.weapons[0].swingSpeed],
-      ['Accuracy', item.weapons[0].accuracy],
-      ['Missile Speed', item.weapons[0].missileSpeed],
-      ['Length', item.weapons[0].length]
+      ['Fire Rate', baseItem.weapons[0].swingSpeed],
+      ['Accuracy', baseItem.weapons[0].accuracy],
+      ['Missile Speed', baseItem.weapons[0].missileSpeed],
+      ['Length', baseItem.weapons[0].length]
     );
-  } else if (item.type === ItemType.Banner) {
-    props.fields.push(['Length', item.weapons[0].length]);
+  } else if (baseItem.type === ItemType.Banner) {
+    props.fields.push(['Length', baseItem.weapons[0].length]);
   } else {
-    item.weapons.forEach(weapon => {
+    baseItem.weapons.forEach(weapon => {
       const itemType = itemTypeByWeaponClass[weapon.class];
       const weaponFields: [string, any][] = [];
       if (
@@ -288,8 +289,8 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
   return props;
 }
 
-export function filterItemsFittingInSlot(items: Item[], slot: ItemSlot): Item[] {
-  return items.filter(i => itemTypesBySlot[slot].includes(i.type));
+export function filterUserItemsFittingInSlot(items: UserItem[], slot: ItemSlot): UserItem[] {
+  return items.filter(i => itemTypesBySlot[slot].includes(i.baseItem.type));
 }
 
 export function filterItemsByType(

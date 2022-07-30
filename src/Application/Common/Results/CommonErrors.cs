@@ -159,39 +159,31 @@ internal static class CommonErrors
             Detail = $"Parties with ids '{partyId1}' and '{partyId2}' are not in the side in the battle with id '{battleId}'",
         };
 
-    public static Error ItemAlreadyOwned(int itemId) => new(ErrorType.Validation, ErrorCode.ItemAlreadyOwned)
+    public static Error ItemAlreadyOwned(string itemId) => new(ErrorType.Validation, ErrorCode.ItemAlreadyOwned)
     {
         Title = "Item is already owned",
         Detail = $"Item with id '{itemId}' is already owned by the user",
     };
 
-    public static Error ItemBadSlot(int itemId, ItemSlot slot) => new(ErrorType.Validation, ErrorCode.ItemBadSlot)
+    public static Error ItemBadSlot(string itemId, ItemSlot slot) => new(ErrorType.Validation, ErrorCode.ItemBadSlot)
     {
         Title = "Item cannot be put in that slot",
         Detail = $"Item with id '{itemId}' cannot be put in the slot '{slot}'",
     };
 
-    public static Error ItemMaxRankReached(int itemId, int userId, int maxRank) =>
-        new(ErrorType.Validation, ErrorCode.ItemMaxRankReached)
-        {
-            Title = "User item has reached its max rank",
-            Detail =
-                $"Item with id '{itemId}' owned by user with id '{userId}' has reached its max rank ({maxRank})",
-        };
-
-    public static Error ItemNotBuyable(int itemId) => new(ErrorType.Validation, ErrorCode.ItemNotBuyable)
+    public static Error ItemNotBuyable(string itemId) => new(ErrorType.Validation, ErrorCode.ItemNotBuyable)
     {
         Title = "Item is not buyable",
         Detail = $"Item with id '{itemId}' is not buyable",
     };
 
-    public static Error ItemNotFound(int itemId) => new(ErrorType.NotFound, ErrorCode.ItemNotFound)
+    public static Error ItemNotFound(string itemId) => new(ErrorType.NotFound, ErrorCode.ItemNotFound)
     {
         Title = "Item was not found",
         Detail = $"Item with id '{itemId}' was not found",
     };
 
-    public static Error ItemNotOwned(int itemId) => new(ErrorType.NotFound, ErrorCode.ItemNotOwned)
+    public static Error ItemNotOwned(string itemId) => new(ErrorType.NotFound, ErrorCode.ItemNotOwned)
     {
         Title = "Item is not owned",
         Detail = $"Item with id '{itemId}' is not owned by the user",
@@ -265,6 +257,19 @@ internal static class CommonErrors
     {
         Title = "User has already registered to strategus",
         Detail = $"User with id '{userId}' has already registered to strategus",
+    };
+
+    public static Error UserItemMaxRankReached(int userItemId, int maxRank) =>
+        new(ErrorType.Validation, ErrorCode.UserItemMaxRankReached)
+        {
+            Title = "User item has reached its max rank",
+            Detail = $"User item with id '{userItemId}' has reached its max rank ({maxRank})",
+        };
+
+    public static Error UserItemNotFound(int userItemId) => new(ErrorType.NotFound, ErrorCode.UserItemNotFound)
+    {
+        Title = "User item was not found",
+        Detail = $"User item with id '{userItemId}' was not found",
     };
 
     public static Error UserNotAClanMember(int userId, int clanId) => new(ErrorType.Forbidden, ErrorCode.UserNotAClanMember)

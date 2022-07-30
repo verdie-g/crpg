@@ -5,7 +5,6 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Models;
 using Crpg.Domain.Entities.Characters;
-using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -77,7 +76,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             // to their respective character.
             await _db.EquippedItems
                 .Where(ei => characterIds.Contains(ei.CharacterId))
-                .Include(ei => ei.Item)
+                .Include(ei => ei.UserItem)
                 .LoadAsync(cancellationToken);
 
             return charactersById;
@@ -116,39 +115,21 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
 
             return brokenItems.Count == 0
                 ? Task.FromResult(brokenItems)
-                : DowngradeItems(character, brokenItems, cancellationToken);
+                : DowngradeItems(brokenItems, cancellationToken);
         }
 
-        private async Task<List<GameUserBrokenItem>> DowngradeItems(Character character, List<GameUserBrokenItem> brokenItems, CancellationToken cancellationToken)
+        private async Task<List<GameUserBrokenItem>> DowngradeItems(List<GameUserBrokenItem> brokenItems, CancellationToken cancellationToken)
         {
-            int[] brokenItemIds = brokenItems.Select(bi => bi.ItemId).ToArray();
-            var downrankedItemsByOriginalItemId = await _db.Items
-                .AsNoTracking()
-                .Join(_db.Items, i => i.BaseItemId, i => i.BaseItemId, (i, f) => new { Original = i, Family = f })
-                .Where(o => brokenItemIds.Contains(o.Original.Id) && o.Family.Rank == o.Original.Rank - 1)
-                .ToDictionaryAsync(o => o.Original.Id, o => o.Family, cancellationToken);
-
-            var equippedItemsByItemId = (await _db.EquippedItems
-                    .Where(ei => ei.CharacterId == character.Id && brokenItemIds.Contains(ei.ItemId))
-                    .ToArrayAsync(cancellationToken))
-                .ToLookup(ei => ei.ItemId);
-
-            foreach (int brokenItemId in brokenItemIds)
+            int[] userItemIds = brokenItems.Select(bi => bi.UserItemId).ToArray();
+            var userItems = await _db.UserItems
+                .Where(ui => userItemIds.Contains(ui.Id))
+                .ToArrayAsync(cancellationToken);
+            foreach (var userItem in userItems)
             {
-                _db.Entry(new UserItem { UserId = character.UserId, ItemId = brokenItemId }).State = EntityState.Deleted;
-                if (downrankedItemsByOriginalItemId.TryGetValue(brokenItemId, out var downrankedItem))
+                if (userItem.Rank > -3)
                 {
-                    UserItem downrankedUserItem = new() { UserId = character.UserId, ItemId = downrankedItem.Id };
-                    character.User!.Items.Add(downrankedUserItem);
-
-                    foreach (var equippedItems in equippedItemsByItemId[brokenItemId])
-                    {
-                        equippedItems.UserItem = downrankedUserItem;
-                    }
-                }
-                else
-                {
-                    _db.EquippedItems.RemoveRange(equippedItemsByItemId[brokenItemId]);
+                    // TODO: check user item with this rank already exist
+                    userItem.Rank -= 1;
                 }
             }
 

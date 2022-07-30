@@ -115,7 +115,7 @@ internal class ItemExporter : IDataExporter
     {
         CrpgItemCreation crpgItem = new()
         {
-            TemplateMbId = mbItem.StringId,
+            Id = mbItem.StringId,
             Name = mbItem.Name.ToString(),
             Culture = MbToCrpgCulture(mbItem.Culture),
             Type = MbToCrpgItemType(mbItem.Type),

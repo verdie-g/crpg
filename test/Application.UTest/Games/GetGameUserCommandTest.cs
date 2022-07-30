@@ -22,8 +22,8 @@ public class GetGameUserCommandTest : TestBase
 
         var allDefaultItemMbIds = GetGameUserCommand.Handler.DefaultItemSets
             .SelectMany(set => set)
-            .GroupBy(i => i.mbId) // distinct by mbId
-            .Select(p => new Item { TemplateMbId = p.First().mbId });
+            .GroupBy(i => i.id) // distinct by mbId
+            .Select(p => new Item { Id = p.First().id });
 
         ArrangeDb.Items.AddRange(allDefaultItemMbIds);
         await ArrangeDb.SaveChangesAsync();
@@ -124,7 +124,7 @@ public class GetGameUserCommandTest : TestBase
             Items =
             {
                 // Already owned item
-                new UserItem { ItemId = ArrangeDb.Items.First(i => i.TemplateMbId == GetGameUserCommand.Handler.DefaultItemSets[1][0].mbId).Id },
+                new UserItem { BaseItemId = ArrangeDb.Items.First(i => i.Id == GetGameUserCommand.Handler.DefaultItemSets[1][0].id).Id },
             },
         };
         ArrangeDb.Users.Add(user);
@@ -311,7 +311,7 @@ public class GetGameUserCommandTest : TestBase
     [Test]
     public async Task CheckDefaultItemsExist()
     {
-        var items = (await new FileItemsSource().LoadItems()).ToDictionary(i => i.TemplateMbId);
+        var items = (await new FileItemsSource().LoadItems()).ToDictionary(i => i.Id);
         foreach (var set in GetGameUserCommand.Handler.DefaultItemSets)
         {
             foreach ((string mbId, ItemSlot slot) in set)

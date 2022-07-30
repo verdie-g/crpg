@@ -10,7 +10,7 @@ namespace Crpg.Domain.Entities.Settlements;
 public class SettlementItem : AuditableEntity
 {
     public int SettlementId { get; set; }
-    public int ItemId { get; set; }
+    public string ItemId { get; set; } = string.Empty;
     public int Count { get; set; }
 
     public Settlement? Settlement { get; set; }

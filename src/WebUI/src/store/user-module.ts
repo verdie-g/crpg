@@ -13,12 +13,13 @@ import Role from '@/models/role';
 import CharacterUpdate from '@/models/character-update';
 import EquippedItem from '@/models/equipped-item';
 import Clan from '@/models/clan';
+import UserItem from '@/models/user-item';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
   user: User | null = null;
   userLoading = false;
-  userItems: Item[] = [];
+  userItems: UserItem[] = [];
   clan: Clan | null = null;
   userBans: Ban[] = [];
 
@@ -76,18 +77,18 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
-  setUserItems(userItems: Item[]) {
+  setUserItems(userItems: UserItem[]) {
     this.userItems = userItems;
   }
 
   @Mutation
-  addUserItem(item: Item) {
-    this.userItems.push(item);
+  addUserItem(userItem: UserItem) {
+    this.userItems.push(userItem);
   }
 
   @Mutation
-  removeUserItem(item: Item) {
-    const itemIdx = this.userItems.findIndex(i => i.id === item.id);
+  removeUserItem(userItem: UserItem) {
+    const itemIdx = this.userItems.findIndex(ui => ui.id === userItem.id);
     if (itemIdx !== -1) {
       this.userItems.splice(itemIdx, 1);
     }
@@ -113,31 +114,31 @@ class UserModule extends VuexModule {
   setCharacterItem({
     characterId,
     slot,
-    item,
+    userItem,
   }: {
     characterId: number;
     slot: ItemSlot;
-    item: Item | null;
+    userItem: UserItem | null;
   }) {
     const characterEquippedItems = this.equippedItemsByCharacterId[characterId];
     const equippedItemIdx = characterEquippedItems.findIndex(ei => ei.slot === slot);
     if (equippedItemIdx === -1) {
-      if (item !== null) {
-        characterEquippedItems.push({ slot, item });
+      if (userItem !== null) {
+        characterEquippedItems.push({ slot, userItem });
       }
-    } else if (item !== null) {
-      characterEquippedItems[equippedItemIdx].item = item;
+    } else if (userItem !== null) {
+      characterEquippedItems[equippedItemIdx].userItem = userItem;
     } else {
       characterEquippedItems.splice(equippedItemIdx, 1);
     }
   }
 
   @Mutation
-  replaceCharactersItem({ toReplace, replaceWith }: { toReplace: Item; replaceWith: Item }) {
+  replaceCharactersItem({ toReplace, replaceWith }: { toReplace: UserItem; replaceWith: UserItem }) {
     Object.values(this.equippedItemsByCharacterId).forEach(characterEquippedItems => {
       characterEquippedItems.forEach(equippedItem => {
-        if (equippedItem.item.id === toReplace.id) {
-          equippedItem.item = replaceWith;
+        if (equippedItem.userItem.id === toReplace.id) {
+          equippedItem.userItem = replaceWith;
         }
       });
     });
@@ -225,15 +226,15 @@ class UserModule extends VuexModule {
   replaceItem({
     character,
     slot,
-    item,
+    userItem,
   }: {
     character: Character;
     slot: ItemSlot;
-    item: Item | null;
+    userItem: UserItem | null;
   }): Promise<EquippedItem[]> {
-    this.setCharacterItem({ characterId: character.id, slot, item });
+    this.setCharacterItem({ characterId: character.id, slot, userItem });
     return userService.updateCharacterItems(character.id, [
-      { itemId: item === null ? null : item.id, slot },
+      { userItemId: userItem === null ? null : userItem.id, slot },
     ]);
   }
 
@@ -245,17 +246,18 @@ class UserModule extends VuexModule {
 
   @Action
   async buyItem(item: Item) {
-    await userService.buyItem(item.id);
-    this.addUserItem(item);
+    const userItem = await userService.buyItem(item.id);
+    this.addUserItem(userItem);
     this.substractGold(item.price);
   }
 
   @Action
-  async upgradeItem(item: Item) {
-    const upgradedItem = await userService.upgradeItem(item.id);
+  async upgradeUserItem(userItem: UserItem) {
+    const upgradedUserItem = await userService.upgradeUserItem(userItem.id);
+    this.addUserItem(upgradedUserItem);
     this.addHeirloomPoints(-1);
-    this.replaceCharactersItem({ toReplace: item, replaceWith: upgradedItem });
-    this.removeUserItem(item);
+    this.replaceCharactersItem({ toReplace: userItem, replaceWith: upgradedUserItem });
+    this.removeUserItem(userItem);
   }
 
   @Action({ commit: 'setCharacters' })

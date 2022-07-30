@@ -5,6 +5,6 @@ namespace Crpg.Application.Items.Models;
 
 public record EquippedItemViewModel : IMapFrom<EquippedItem>
 {
-    public ItemViewModel Item { get; init; } = default!;
     public ItemSlot Slot { get; init; }
+    public UserItemViewModel UserItem { get; init; } = default!;
 }

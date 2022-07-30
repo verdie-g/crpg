@@ -19,7 +19,7 @@ public class AddSettlementItemCommandTest : TestBase
         {
             PartyId = 99,
             SettlementId = 99,
-            ItemId = 99,
+            ItemId = "99",
             Count = 0,
         }, CancellationToken.None);
 
@@ -45,7 +45,7 @@ public class AddSettlementItemCommandTest : TestBase
         {
             PartyId = party.Id,
             SettlementId = settlement.Id,
-            ItemId = 99,
+            ItemId = "99",
             Count = 0,
         }, CancellationToken.None);
 
@@ -72,7 +72,7 @@ public class AddSettlementItemCommandTest : TestBase
         {
             PartyId = party.Id,
             SettlementId = settlement.Id,
-            ItemId = 99,
+            ItemId = "99",
             Count = 0,
         }, CancellationToken.None);
 
@@ -83,8 +83,8 @@ public class AddSettlementItemCommandTest : TestBase
     [Test]
     public async Task ShouldReturnErrorIfPartyGiveItemsTheyDontOwn()
     {
-        Item item0 = new();
-        Item item1 = new();
+        Item item0 = new() { Id = "0" };
+        Item item1 = new() { Id = "1" };
         ArrangeDb.Items.AddRange(item0, item1);
 
         Settlement settlement = new();
@@ -117,7 +117,7 @@ public class AddSettlementItemCommandTest : TestBase
     [Test]
     public async Task ShouldReturnErrorIfPartyDoesntHaveEnoughItems()
     {
-        Item item0 = new();
+        Item item0 = new() { Id = "0" };
         ArrangeDb.Items.AddRange(item0);
 
         Settlement settlement = new();
@@ -150,7 +150,7 @@ public class AddSettlementItemCommandTest : TestBase
     [Test]
     public async Task ShouldReturnErrorIfPartyTakesItemsFromUnownedSettlement()
     {
-        Item item0 = new();
+        Item item0 = new() { Id = "0" };
         ArrangeDb.Items.AddRange(item0);
 
         Settlement settlement = new()
@@ -186,8 +186,8 @@ public class AddSettlementItemCommandTest : TestBase
     [Test]
     public async Task ShouldReturnErrorIfPartyTakesItemsTheSettlementDoesNotHave()
     {
-        Item item0 = new();
-        Item item1 = new();
+        Item item0 = new() { Id = "0" };
+        Item item1 = new() { Id = "1" };
         ArrangeDb.Items.AddRange(item0, item1);
 
         Settlement settlement = new()
@@ -224,7 +224,7 @@ public class AddSettlementItemCommandTest : TestBase
     [Test]
     public async Task ShouldReturnErrorIfPartyTakesItemsWhenTheSettlementDoesntHaveEnough()
     {
-        Item item0 = new();
+        Item item0 = new() { Id = "0" };
         ArrangeDb.Items.AddRange(item0);
 
         Settlement settlement = new()
@@ -264,7 +264,7 @@ public class AddSettlementItemCommandTest : TestBase
     [TestCase(-3, 7, 0)]
     public async Task ShouldGiveTakeItemsToFromSettlement(int diff, int settlementItemCount, int partyItemCount)
     {
-        Item item0 = new();
+        Item item0 = new() { Id = "0" };
         ArrangeDb.Items.AddRange(item0);
 
         Settlement settlement = new();

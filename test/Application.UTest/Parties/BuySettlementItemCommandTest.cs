@@ -22,7 +22,7 @@ public class BuySettlementItemCommandTest : TestBase
         var res = await handler.Handle(new BuySettlementItemCommand
         {
             PartyId = 1,
-            ItemId = 2,
+            ItemId = "2",
             ItemCount = 1,
             SettlementId = 3,
         }, CancellationToken.None);
@@ -42,7 +42,7 @@ public class BuySettlementItemCommandTest : TestBase
         var res = await handler.Handle(new BuySettlementItemCommand
         {
             PartyId = party.Id,
-            ItemId = 2,
+            ItemId = "2",
             ItemCount = 1,
             SettlementId = 3,
         }, CancellationToken.None);
@@ -72,7 +72,7 @@ public class BuySettlementItemCommandTest : TestBase
         var res = await handler.Handle(new BuySettlementItemCommand
         {
             PartyId = party.Id,
-            ItemId = 2,
+            ItemId = "2",
             ItemCount = 1,
             SettlementId = settlement.Id,
         }, CancellationToken.None);
@@ -99,42 +99,13 @@ public class BuySettlementItemCommandTest : TestBase
         var res = await handler.Handle(new BuySettlementItemCommand
         {
             PartyId = party.Id,
-            ItemId = 2,
+            ItemId = "2",
             ItemCount = 1,
             SettlementId = settlement.Id,
         }, CancellationToken.None);
 
         Assert.IsNotNull(res.Errors);
         Assert.AreEqual(ErrorCode.ItemNotFound, res.Errors![0].Code);
-    }
-
-    [Test]
-    public async Task ShouldReturnErrorIfItemNotRank0()
-    {
-        Mock<IStrategusMap> strategusMapMock = new();
-        strategusMapMock
-            .Setup(m => m.ArePointsAtInteractionDistance(It.IsAny<Point>(), It.IsAny<Point>()))
-            .Returns(true);
-
-        Party party = new() { User = new User() };
-        ArrangeDb.Parties.Add(party);
-        Settlement settlement = new() { Culture = Culture.Aserai };
-        ArrangeDb.Settlements.Add(settlement);
-        Item item = new() { Rank = 1, Culture = Culture.Aserai };
-        ArrangeDb.Items.Add(item);
-        await ArrangeDb.SaveChangesAsync();
-
-        BuySettlementItemCommand.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
-        var res = await handler.Handle(new BuySettlementItemCommand
-        {
-            PartyId = party.Id,
-            ItemId = item.Id,
-            ItemCount = 1,
-            SettlementId = settlement.Id,
-        }, CancellationToken.None);
-
-        Assert.IsNotNull(res.Errors);
-        Assert.AreEqual(ErrorCode.ItemNotBuyable, res.Errors![0].Code);
     }
 
     [Test]
@@ -149,7 +120,7 @@ public class BuySettlementItemCommandTest : TestBase
         ArrangeDb.Parties.Add(party);
         Settlement settlement = new() { Culture = Culture.Aserai };
         ArrangeDb.Settlements.Add(settlement);
-        Item item = new() { Rank = 0, Culture = Culture.Empire };
+        Item item = new() { Culture = Culture.Empire };
         ArrangeDb.Items.Add(item);
         await ArrangeDb.SaveChangesAsync();
 
@@ -178,7 +149,7 @@ public class BuySettlementItemCommandTest : TestBase
         ArrangeDb.Parties.Add(party);
         Settlement settlement = new() { Culture = Culture.Empire };
         ArrangeDb.Settlements.Add(settlement);
-        Item item = new() { Rank = 0, Culture = Culture.Empire, Price = 11 };
+        Item item = new() { Culture = Culture.Empire, Price = 11 };
         ArrangeDb.Items.Add(item);
         await ArrangeDb.SaveChangesAsync();
 
@@ -207,7 +178,7 @@ public class BuySettlementItemCommandTest : TestBase
         ArrangeDb.Parties.Add(party);
         Settlement settlement = new() { Culture = Culture.Sturgia };
         ArrangeDb.Settlements.Add(settlement);
-        Item item = new() { Rank = 0, Culture = Culture.Sturgia, Price = 10 };
+        Item item = new() { Culture = Culture.Sturgia, Price = 10 };
         ArrangeDb.Items.Add(item);
         PartyItem partyItem = new() { Item = item, Count = 3, Party = party };
         ArrangeDb.PartyItems.Add(partyItem);
@@ -242,7 +213,7 @@ public class BuySettlementItemCommandTest : TestBase
         ArrangeDb.Parties.Add(party);
         Settlement settlement = new() { Culture = Culture.Sturgia };
         ArrangeDb.Settlements.Add(settlement);
-        Item item = new() { Rank = 0, Culture = Culture.Neutral, Price = 10 };
+        Item item = new() { Culture = Culture.Neutral, Price = 10 };
         ArrangeDb.Items.Add(item);
         await ArrangeDb.SaveChangesAsync();
 

@@ -16,7 +16,7 @@ namespace Crpg.Application.Parties.Commands;
 public record BuySettlementItemCommand : IMediatorRequest<ItemStack>
 {
     public int PartyId { get; set; }
-    public int ItemId { get; init; }
+    public string ItemId { get; init; } = string.Empty;
     public int ItemCount { get; init; }
     public int SettlementId { get; init; }
 
@@ -73,7 +73,7 @@ public record BuySettlementItemCommand : IMediatorRequest<ItemStack>
                 return new(CommonErrors.ItemNotFound(req.ItemId));
             }
 
-            if (item.Rank != 0 || (item.Culture != Culture.Neutral && item.Culture != settlement.Culture))
+            if (item.Culture != Culture.Neutral && item.Culture != settlement.Culture)
             {
                 return new(CommonErrors.ItemNotBuyable(req.ItemId));
             }
@@ -85,8 +85,8 @@ public record BuySettlementItemCommand : IMediatorRequest<ItemStack>
             }
 
             var partyItem = await _db.PartyItems
-                .Include(oi => oi.Item)
-                .FirstOrDefaultAsync(oi => oi.PartyId == party.Id && oi.ItemId == item.Id, cancellationToken);
+                .Include(pi => pi.Item)
+                .FirstOrDefaultAsync(pi => pi.PartyId == party.Id && pi.ItemId == item.Id, cancellationToken);
             if (partyItem == null)
             {
                 partyItem = new PartyItem

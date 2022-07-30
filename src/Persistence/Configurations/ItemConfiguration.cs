@@ -8,7 +8,6 @@ public class ItemConfiguration : IEntityTypeConfiguration<Item>
 {
     public void Configure(EntityTypeBuilder<Item> builder)
     {
-        builder.HasIndex(i => new { ItemTemplateMbId = i.TemplateMbId, i.Rank }).IsUnique();
         builder.OwnsOne(i => i.Armor!, ConfigureItemArmorComponent);
         builder.OwnsOne(i => i.Mount!, ConfigureItemMountComponent);
         builder.OwnsOne(i => i.PrimaryWeapon!, b => ConfigureItemWeaponComponent(b, "primary_"));
