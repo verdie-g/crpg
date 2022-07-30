@@ -33,6 +33,12 @@ public class RespecializeCharacterCommandTest : TestBase
                 new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Body },
                 new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Weapon0 },
             },
+            Statistics = new CharacterStatistics
+            {
+                Kills = 1,
+                Deaths = 2,
+                Assists = 3,
+            },
         };
         ArrangeDb.Add(character);
         await ArrangeDb.SaveChangesAsync();
@@ -57,6 +63,9 @@ public class RespecializeCharacterCommandTest : TestBase
         Assert.AreEqual(75, character.Experience);
         Assert.AreEqual(1.1f, character.ExperienceMultiplier);
         Assert.IsEmpty(character.EquippedItems);
+        Assert.AreEqual(0, character.Statistics.Kills);
+        Assert.AreEqual(0, character.Statistics.Deaths);
+        Assert.AreEqual(0, character.Statistics.Assists);
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true));
     }
 

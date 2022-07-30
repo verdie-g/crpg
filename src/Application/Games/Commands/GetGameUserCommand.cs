@@ -173,6 +173,12 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
             {
                 Name = name,
                 EquippedItems = equippedItems,
+                Statistics = new CharacterStatistics
+                {
+                    Kills = 0,
+                    Deaths = 0,
+                    Assists = 0,
+                },
             };
 
             _characterService.SetDefaultValuesForCharacter(character);

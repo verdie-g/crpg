@@ -6,6 +6,7 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Common.Helpers;
+using Crpg.Domain.Entities.Characters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
@@ -55,6 +56,12 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
             character.Experience = 0;
             character.ExperienceMultiplier = MathHelper.ApplyPolynomialFunction(character.Generation, _constants.ExperienceMultiplierForGenerationCoefs);
             character.EquippedItems.Clear();
+            character.Statistics = new CharacterStatistics
+            {
+                Kills = 0,
+                Deaths = 0,
+                Assists = 0,
+            };
             _characterService.ResetCharacterCharacteristics(character);
 
             character.User!.HeirloomPoints += 1;

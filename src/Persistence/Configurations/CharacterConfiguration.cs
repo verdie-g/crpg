@@ -10,6 +10,7 @@ public class CharacterConfiguration : IEntityTypeConfiguration<Character>
     {
         builder.HasIndex(c => new { c.UserId, c.Name }).IsUnique();
         builder.OwnsOne(c => c.Characteristics, ConfigureCharacterCharacteristics);
+        builder.OwnsOne(c => c.Statistics, ConfigureCharacterStatistics);
     }
 
     private static void ConfigureCharacterCharacteristics(OwnedNavigationBuilder<Character, CharacterCharacteristics> builder)
@@ -52,5 +53,13 @@ public class CharacterConfiguration : IEntityTypeConfiguration<Character>
         builder.Property(wp => wp.Bow).HasColumnName("bow");
         builder.Property(wp => wp.Throwing).HasColumnName("throwing");
         builder.Property(wp => wp.Crossbow).HasColumnName("crossbow");
+    }
+
+    private static void ConfigureCharacterStatistics(OwnedNavigationBuilder<Character, CharacterStatistics> builder)
+    {
+        // Default names are prefixed with character_statistics.
+        builder.Property(s => s.Kills).HasColumnName("kills");
+        builder.Property(s => s.Deaths).HasColumnName("deaths");
+        builder.Property(s => s.Assists).HasColumnName("assists");
     }
 }
