@@ -42,7 +42,7 @@ public record SkipTheFunCommand : IMediatorRequest
             character.SkippedTheFun = true;
             character.Level = 30;
             character.Experience = _experienceTable.GetExperienceForLevel(character.Level);
-            _characterService.ResetCharacterStats(character, respecialization: true);
+            _characterService.ResetCharacterCharacteristics(character, respecialization: true);
 
             await _db.SaveChangesAsync(cancellationToken);
 

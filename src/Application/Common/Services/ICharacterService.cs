@@ -11,11 +11,11 @@ internal interface ICharacterService
     void SetDefaultValuesForCharacter(Character character);
 
     /// <summary>
-    /// Reset character stats.
+    /// Reset character characteristics.
     /// </summary>
     /// <param name="character">Character to reset.</param>
     /// <param name="respecialization">If the stats points should be redistributed.</param>
-    void ResetCharacterStats(Character character, bool respecialization = false);
+    void ResetCharacterCharacteristics(Character character, bool respecialization = false);
 
     void GiveExperience(Character character, int experience);
 }
@@ -43,9 +43,9 @@ internal class CharacterService : ICharacterService
     }
 
     /// <inheritdoc />
-    public void ResetCharacterStats(Character character, bool respecialization = false)
+    public void ResetCharacterCharacteristics(Character character, bool respecialization = false)
     {
-        character.Statistics = new CharacterStatistics
+        character.Characteristics = new CharacterCharacteristics
         {
             Attributes = new CharacterAttributes
             {
@@ -76,9 +76,9 @@ internal class CharacterService : ICharacterService
         if (character.Level != newLevel) // if character leveled up
         {
             int levelDiff = newLevel - character.Level;
-            character.Statistics.Attributes.Points += levelDiff * _constants.AttributePointsPerLevel;
-            character.Statistics.Skills.Points += levelDiff * _constants.SkillPointsPerLevel;
-            character.Statistics.WeaponProficiencies.Points += WeaponProficiencyPointsForLevel(newLevel) - WeaponProficiencyPointsForLevel(character.Level);
+            character.Characteristics.Attributes.Points += levelDiff * _constants.AttributePointsPerLevel;
+            character.Characteristics.Skills.Points += levelDiff * _constants.SkillPointsPerLevel;
+            character.Characteristics.WeaponProficiencies.Points += WeaponProficiencyPointsForLevel(newLevel) - WeaponProficiencyPointsForLevel(character.Level);
             character.Level = newLevel;
         }
     }

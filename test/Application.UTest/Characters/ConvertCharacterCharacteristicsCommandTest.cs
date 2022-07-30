@@ -8,23 +8,23 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters;
 
-public class ConvertCharacterStatisticsCommandTest : TestBase
+public class ConvertCharacterCharacteristicsCommandTest : TestBase
 {
     [Test]
     public async Task ShouldConvertAttributeToSkillsIfEnoughPoints()
     {
         var character = ArrangeDb.Add(new Character
         {
-            Statistics = new CharacterStatistics { Attributes = new CharacterAttributes { Points = 1 } },
+            Characteristics = new CharacterCharacteristics { Attributes = new CharacterAttributes { Points = 1 } },
         });
         await ArrangeDb.SaveChangesAsync();
 
-        var result = await new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper).Handle(
-            new ConvertCharacterStatisticsCommand
+        var result = await new ConvertCharacterCharacteristicsCommand.Handler(ActDb, Mapper).Handle(
+            new ConvertCharacterCharacteristicsCommand
             {
                 CharacterId = character.Entity.Id,
                 UserId = character.Entity.UserId,
-                Conversion = CharacterStatisticConversion.AttributesToSkills,
+                Conversion = CharacterCharacteristicConversion.AttributesToSkills,
             }, CancellationToken.None);
 
         var stats = result.Data!;
@@ -37,16 +37,16 @@ public class ConvertCharacterStatisticsCommandTest : TestBase
     {
         var character = ArrangeDb.Add(new Character
         {
-            Statistics = new CharacterStatistics { Skills = new CharacterSkills { Points = 2 } },
+            Characteristics = new CharacterCharacteristics { Skills = new CharacterSkills { Points = 2 } },
         });
         await ArrangeDb.SaveChangesAsync();
 
-        var result = await new ConvertCharacterStatisticsCommand.Handler(ActDb, Mapper).Handle(
-            new ConvertCharacterStatisticsCommand
+        var result = await new ConvertCharacterCharacteristicsCommand.Handler(ActDb, Mapper).Handle(
+            new ConvertCharacterCharacteristicsCommand
             {
                 CharacterId = character.Entity.Id,
                 UserId = character.Entity.UserId,
-                Conversion = CharacterStatisticConversion.SkillsToAttributes,
+                Conversion = CharacterCharacteristicConversion.SkillsToAttributes,
             }, CancellationToken.None);
 
         var stats = result.Data!;
@@ -59,16 +59,16 @@ public class ConvertCharacterStatisticsCommandTest : TestBase
     {
         var character = ArrangeDb.Add(new Character
         {
-            Statistics = new CharacterStatistics { Attributes = new CharacterAttributes { Points = 0 } },
+            Characteristics = new CharacterCharacteristics { Attributes = new CharacterAttributes { Points = 0 } },
         });
         await ArrangeDb.SaveChangesAsync();
 
-        ConvertCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper);
-        var result = await handler.Handle(new ConvertCharacterStatisticsCommand
+        ConvertCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new ConvertCharacterCharacteristicsCommand
         {
             CharacterId = character.Entity.Id,
             UserId = character.Entity.UserId,
-            Conversion = CharacterStatisticConversion.AttributesToSkills,
+            Conversion = CharacterCharacteristicConversion.AttributesToSkills,
         }, CancellationToken.None);
 
         Assert.AreEqual(ErrorCode.NotEnoughAttributePoints, result.Errors![0].Code);
@@ -79,16 +79,16 @@ public class ConvertCharacterStatisticsCommandTest : TestBase
     {
         var character = ArrangeDb.Add(new Character
         {
-            Statistics = new CharacterStatistics { Skills = new CharacterSkills { Points = 1 } },
+            Characteristics = new CharacterCharacteristics { Skills = new CharacterSkills { Points = 1 } },
         });
         await ArrangeDb.SaveChangesAsync();
 
-        ConvertCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper);
-        var result = await handler.Handle(new ConvertCharacterStatisticsCommand
+        ConvertCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new ConvertCharacterCharacteristicsCommand
         {
             CharacterId = character.Entity.Id,
             UserId = character.Entity.UserId,
-            Conversion = CharacterStatisticConversion.SkillsToAttributes,
+            Conversion = CharacterCharacteristicConversion.SkillsToAttributes,
         }, CancellationToken.None);
         Assert.AreEqual(ErrorCode.NotEnoughSkillPoints, result.Errors![0].Code);
     }
@@ -96,10 +96,10 @@ public class ConvertCharacterStatisticsCommandTest : TestBase
     [Test]
     public void ShouldThrowIfConversionIsNotInEnum()
     {
-        ConvertCharacterStatisticsCommand.Validator validator = new();
-        ValidationResult res = validator.Validate(new ConvertCharacterStatisticsCommand
+        ConvertCharacterCharacteristicsCommand.Validator validator = new();
+        ValidationResult res = validator.Validate(new ConvertCharacterCharacteristicsCommand
         {
-            Conversion = (CharacterStatisticConversion)10,
+            Conversion = (CharacterCharacteristicConversion)10,
         });
 
         Assert.False(res.IsValid);
@@ -111,8 +111,8 @@ public class ConvertCharacterStatisticsCommandTest : TestBase
         var user = ArrangeDb.Add(new User());
         await ArrangeDb.SaveChangesAsync();
 
-        ConvertCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper);
-        var result = await handler.Handle(new ConvertCharacterStatisticsCommand
+        ConvertCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new ConvertCharacterCharacteristicsCommand
         {
             UserId = user.Entity.Id,
             CharacterId = 1,
@@ -124,8 +124,8 @@ public class ConvertCharacterStatisticsCommandTest : TestBase
     [Test]
     public async Task ShouldThrowNotFoundIfUserNotFound()
     {
-        ConvertCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper);
-        var result = await handler.Handle(new ConvertCharacterStatisticsCommand
+        ConvertCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new ConvertCharacterCharacteristicsCommand
         {
             UserId = 1,
             CharacterId = 1,

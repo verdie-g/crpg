@@ -176,7 +176,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
             };
 
             _characterService.SetDefaultValuesForCharacter(character);
-            _characterService.ResetCharacterStats(character);
+            _characterService.ResetCharacterCharacteristics(character);
             return character;
         }
 

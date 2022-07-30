@@ -57,9 +57,9 @@ public class CharacterServiceTest
 
         Assert.AreEqual(2, character.Level);
         Assert.AreEqual(10, character.Experience);
-        Assert.AreEqual(1, character.Statistics.Attributes.Points);
-        Assert.AreEqual(1, character.Statistics.Skills.Points);
-        Assert.AreEqual(100, character.Statistics.WeaponProficiencies.Points);
+        Assert.AreEqual(1, character.Characteristics.Attributes.Points);
+        Assert.AreEqual(1, character.Characteristics.Skills.Points);
+        Assert.AreEqual(100, character.Characteristics.WeaponProficiencies.Points);
     }
 
     [Test]
@@ -70,7 +70,7 @@ public class CharacterServiceTest
         Character character = new()
         {
             Level = 5,
-            Statistics = new CharacterStatistics
+            Characteristics = new CharacterCharacteristics
             {
                 Attributes = new CharacterAttributes
                 {
@@ -104,37 +104,37 @@ public class CharacterServiceTest
             },
         };
 
-        characterService.ResetCharacterStats(character, respecialization);
+        characterService.ResetCharacterCharacteristics(character, respecialization);
         if (respecialization)
         {
-            Assert.AreEqual(4, character.Statistics.Attributes.Points);
-            Assert.AreEqual(4, character.Statistics.Skills.Points);
-            Assert.AreEqual(410, character.Statistics.WeaponProficiencies.Points);
+            Assert.AreEqual(4, character.Characteristics.Attributes.Points);
+            Assert.AreEqual(4, character.Characteristics.Skills.Points);
+            Assert.AreEqual(410, character.Characteristics.WeaponProficiencies.Points);
         }
         else
         {
-            Assert.Zero(character.Statistics.Attributes.Points);
-            Assert.AreEqual(2, character.Statistics.Skills.Points);
-            Assert.AreEqual(10, character.Statistics.WeaponProficiencies.Points);
+            Assert.Zero(character.Characteristics.Attributes.Points);
+            Assert.AreEqual(2, character.Characteristics.Skills.Points);
+            Assert.AreEqual(10, character.Characteristics.WeaponProficiencies.Points);
         }
 
-        Assert.AreEqual(Constants.DefaultStrength, character.Statistics.Attributes.Strength);
-        Assert.AreEqual(Constants.DefaultAgility, character.Statistics.Attributes.Agility);
-        Assert.Zero(character.Statistics.Skills.IronFlesh);
-        Assert.Zero(character.Statistics.Skills.PowerStrike);
-        Assert.Zero(character.Statistics.Skills.PowerDraw);
-        Assert.Zero(character.Statistics.Skills.PowerThrow);
-        Assert.Zero(character.Statistics.Skills.Athletics);
-        Assert.Zero(character.Statistics.Skills.Riding);
-        Assert.Zero(character.Statistics.Skills.WeaponMaster);
-        Assert.Zero(character.Statistics.Skills.MountedArchery);
-        Assert.Zero(character.Statistics.Skills.Shield);
-        Assert.Zero(character.Statistics.WeaponProficiencies.OneHanded);
-        Assert.Zero(character.Statistics.WeaponProficiencies.TwoHanded);
-        Assert.Zero(character.Statistics.WeaponProficiencies.Polearm);
-        Assert.Zero(character.Statistics.WeaponProficiencies.Bow);
-        Assert.Zero(character.Statistics.WeaponProficiencies.Throwing);
-        Assert.Zero(character.Statistics.WeaponProficiencies.Crossbow);
+        Assert.AreEqual(Constants.DefaultStrength, character.Characteristics.Attributes.Strength);
+        Assert.AreEqual(Constants.DefaultAgility, character.Characteristics.Attributes.Agility);
+        Assert.Zero(character.Characteristics.Skills.IronFlesh);
+        Assert.Zero(character.Characteristics.Skills.PowerStrike);
+        Assert.Zero(character.Characteristics.Skills.PowerDraw);
+        Assert.Zero(character.Characteristics.Skills.PowerThrow);
+        Assert.Zero(character.Characteristics.Skills.Athletics);
+        Assert.Zero(character.Characteristics.Skills.Riding);
+        Assert.Zero(character.Characteristics.Skills.WeaponMaster);
+        Assert.Zero(character.Characteristics.Skills.MountedArchery);
+        Assert.Zero(character.Characteristics.Skills.Shield);
+        Assert.Zero(character.Characteristics.WeaponProficiencies.OneHanded);
+        Assert.Zero(character.Characteristics.WeaponProficiencies.TwoHanded);
+        Assert.Zero(character.Characteristics.WeaponProficiencies.Polearm);
+        Assert.Zero(character.Characteristics.WeaponProficiencies.Bow);
+        Assert.Zero(character.Characteristics.WeaponProficiencies.Throwing);
+        Assert.Zero(character.Characteristics.WeaponProficiencies.Crossbow);
     }
 
     [Test]

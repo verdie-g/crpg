@@ -57,7 +57,7 @@ public class RespecializeCharacterCommandTest : TestBase
         Assert.AreEqual(75, character.Experience);
         Assert.AreEqual(1.1f, character.ExperienceMultiplier);
         Assert.IsEmpty(character.EquippedItems);
-        characterServiceMock.Verify(cs => cs.ResetCharacterStats(It.IsAny<Character>(), true));
+        characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true));
     }
 
     [Test]

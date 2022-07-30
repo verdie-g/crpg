@@ -55,7 +55,7 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
             character.Experience = 0;
             character.ExperienceMultiplier = MathHelper.ApplyPolynomialFunction(character.Generation, _constants.ExperienceMultiplierForGenerationCoefs);
             character.EquippedItems.Clear();
-            _characterService.ResetCharacterStats(character);
+            _characterService.ResetCharacterCharacteristics(character);
 
             character.User!.HeirloomPoints += 1;
 

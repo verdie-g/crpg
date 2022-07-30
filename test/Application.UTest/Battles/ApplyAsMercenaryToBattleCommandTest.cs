@@ -161,7 +161,7 @@ public class ApplyAsMercenaryToBattleCommandTest : TestBase
 
         Mock<ICharacterClassModel> characterClassModelMock = new();
         characterClassModelMock
-            .Setup(m => m.ResolveCharacterClass(It.IsAny<CharacterStatistics>()))
+            .Setup(m => m.ResolveCharacterClass(It.IsAny<CharacterCharacteristics>()))
             .Returns(CharacterClass.Crossbowman);
 
         ApplyAsMercenaryToBattleCommand.Handler handler = new(ActDb, Mapper, characterClassModelMock.Object);

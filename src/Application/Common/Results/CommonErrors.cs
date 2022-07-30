@@ -54,6 +54,11 @@ internal static class CommonErrors
         Detail = $"Character with id '{characterId}' for user with id '{userId}' was not found",
     };
 
+    public static Error CharacteristicDecreased() => new(ErrorType.Validation, ErrorCode.CharacteristicDecreased)
+    {
+        Title = "A characteristic was decreased when it is not allowed",
+    };
+
     public static Error ClanInvitationClosed(int clanInvitationId, ClanInvitationStatus status) => new(ErrorType.NotFound, ErrorCode.ClanInvitationClosed)
     {
         Title = "Clan invitation was closed",
@@ -234,11 +239,6 @@ internal static class CommonErrors
     public static Error SkillRequirementNotMet() => new(ErrorType.Validation, ErrorCode.SkillRequirementNotMet)
     {
         Title = "Unmet skill requirement",
-    };
-
-    public static Error StatisticDecreased() => new(ErrorType.Validation, ErrorCode.StatisticDecreased)
-    {
-        Title = "A statistic was decreased when it is not allowed",
     };
 
     public static Error UserAlreadyInAClan(int userId) => new(ErrorType.Validation, ErrorCode.UserAlreadyInAClan)

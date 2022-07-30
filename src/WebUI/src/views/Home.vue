@@ -84,7 +84,7 @@ export default class Home extends Vue {
       question: 'What is retiring?',
       answer:
         'When a cRPG character reaches level 31, it can be retired. Retiring a character resets it to level 1 but grants an' +
-        ' experience bonus multiplier and an heirloom point which can used on an item to increase its statistics.',
+        ' experience bonus multiplier and an heirloom point which can used on an item to increase its characteristics.',
     },
     {
       question: 'What is respecialization?',

@@ -10,13 +10,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Characters.Commands;
 
-public record UpdateCharacterStatisticsCommand : IMediatorRequest<CharacterStatisticsViewModel>
+public record UpdateCharacterCharacteristicsCommand : IMediatorRequest<CharacterCharacteristicsViewModel>
 {
     public int UserId { get; init; }
     public int CharacterId { get; init; }
-    public CharacterStatisticsViewModel Statistics { get; init; } = new();
+    public CharacterCharacteristicsViewModel Characteristics { get; init; } = new();
 
-    internal class Handler : IMediatorRequestHandler<UpdateCharacterStatisticsCommand, CharacterStatisticsViewModel>
+    internal class Handler : IMediatorRequestHandler<UpdateCharacterCharacteristicsCommand, CharacterCharacteristicsViewModel>
     {
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
@@ -29,7 +29,7 @@ public record UpdateCharacterStatisticsCommand : IMediatorRequest<CharacterStati
             _constants = constants;
         }
 
-        public async Task<Result<CharacterStatisticsViewModel>> Handle(UpdateCharacterStatisticsCommand req,
+        public async Task<Result<CharacterCharacteristicsViewModel>> Handle(UpdateCharacterCharacteristicsCommand req,
             CancellationToken cancellationToken)
         {
             var character = await _db.Characters.FirstOrDefaultAsync(c =>
@@ -42,12 +42,12 @@ public record UpdateCharacterStatisticsCommand : IMediatorRequest<CharacterStati
             IList<Error>? errors;
             try
             {
-                var res = SetStatistics(character.Statistics, req.Statistics);
+                var res = SetCharacteristic(character.Characteristics, req.Characteristics);
                 errors = res.Errors;
             }
-            catch (StatisticDecreasedException)
+            catch (CharacteristicDecreasedException)
             {
-                errors = new[] { CommonErrors.StatisticDecreased() };
+                errors = new[] { CommonErrors.CharacteristicDecreased() };
             }
 
             if (errors != null && errors.Count != 0)
@@ -56,10 +56,10 @@ public record UpdateCharacterStatisticsCommand : IMediatorRequest<CharacterStati
             }
 
             await _db.SaveChangesAsync(cancellationToken);
-            return new(_mapper.Map<CharacterStatisticsViewModel>(character.Statistics));
+            return new(_mapper.Map<CharacterCharacteristicsViewModel>(character.Characteristics));
         }
 
-        private Result SetStatistics(CharacterStatistics stats, CharacterStatisticsViewModel newStats)
+        private Result SetCharacteristic(CharacterCharacteristics stats, CharacterCharacteristicsViewModel newStats)
         {
             int attributesDelta = CheckedDelta(stats.Attributes.Strength, newStats.Attributes.Strength)
                                   + CheckedDelta(stats.Attributes.Agility, newStats.Attributes.Agility);
@@ -141,10 +141,10 @@ public record UpdateCharacterStatisticsCommand : IMediatorRequest<CharacterStati
                 return delta;
             }
 
-            throw new StatisticDecreasedException();
+            throw new CharacteristicDecreasedException();
         }
 
-        private bool CheckSkillsRequirement(CharacterStatisticsViewModel stats)
+        private bool CheckSkillsRequirement(CharacterCharacteristicsViewModel stats)
         {
             return stats.Skills.IronFlesh <= stats.Attributes.Strength / 3
                    && stats.Skills.PowerStrike <= stats.Attributes.Strength / 3
@@ -166,7 +166,7 @@ public record UpdateCharacterStatisticsCommand : IMediatorRequest<CharacterStati
         private int WeaponProficiencyCost(int wpf) =>
             (int)MathHelper.ApplyPolynomialFunction(wpf, _constants.WeaponProficiencyCostCoefs);
 
-        private class StatisticDecreasedException : Exception
+        private class CharacteristicDecreasedException : Exception
         {
         }
     }

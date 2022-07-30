@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters;
 
-public class UpdateCharacterStatisticsCommandTest : TestBase
+public class UpdateCharacterCharacteristicsCommandTest : TestBase
 {
     private static readonly Constants Constants = new()
     {
@@ -22,7 +22,7 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
     {
         Character character = new()
         {
-            Statistics = new CharacterStatistics
+            Characteristics = new CharacterCharacteristics
             {
                 Attributes = new CharacterAttributes
                 {
@@ -57,12 +57,12 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
         ArrangeDb.Add(character);
         await ArrangeDb.SaveChangesAsync();
 
-        var result = await new UpdateCharacterStatisticsCommand.Handler(ActDb, Mapper, Constants).Handle(
-            new UpdateCharacterStatisticsCommand
+        var result = await new UpdateCharacterCharacteristicsCommand.Handler(ActDb, Mapper, Constants).Handle(
+            new UpdateCharacterCharacteristicsCommand
             {
                 UserId = character.UserId,
                 CharacterId = character.Id,
-                Statistics = new CharacterStatisticsViewModel
+                Characteristics = new CharacterCharacteristicsViewModel
                 {
                     Attributes = new CharacterAttributesViewModel
                     {
@@ -121,7 +121,7 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
     {
         var character = ArrangeDb.Add(new Character
         {
-            Statistics = new CharacterStatistics
+            Characteristics = new CharacterCharacteristics
             {
                 Attributes = new CharacterAttributes { Points = 3 },
                 WeaponProficiencies = new CharacterWeaponProficiencies { Points = 84 },
@@ -129,13 +129,13 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
         });
         await ArrangeDb.SaveChangesAsync();
 
-        UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
 
-        var result = await handler.Handle(new UpdateCharacterStatisticsCommand
+        var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
         {
             CharacterId = character.Entity.Id,
             UserId = character.Entity.UserId,
-            Statistics = new CharacterStatisticsViewModel
+            Characteristics = new CharacterCharacteristicsViewModel
             {
                 Attributes = new CharacterAttributesViewModel { Agility = 1 },
             },
@@ -145,11 +145,11 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
         Assert.AreEqual(1, stats.Attributes.Agility);
         Assert.AreEqual(98, stats.WeaponProficiencies.Points);
 
-        result = await handler.Handle(new UpdateCharacterStatisticsCommand
+        result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
         {
             CharacterId = character.Entity.Id,
             UserId = character.Entity.UserId,
-            Statistics = new CharacterStatisticsViewModel
+            Characteristics = new CharacterCharacteristicsViewModel
             {
                 Attributes = new CharacterAttributesViewModel { Agility = 3 },
                 WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Bow = 42 },
@@ -167,7 +167,7 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
     {
         var character = ArrangeDb.Add(new Character
         {
-            Statistics = new CharacterStatistics
+            Characteristics = new CharacterCharacteristics
             {
                 Attributes = new CharacterAttributes { Agility = 9 },
                 Skills = new CharacterSkills { Points = 3 },
@@ -176,13 +176,13 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
         });
         await ArrangeDb.SaveChangesAsync();
 
-        UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
 
-        var result = await handler.Handle(new UpdateCharacterStatisticsCommand
+        var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
         {
             CharacterId = character.Entity.Id,
             UserId = character.Entity.UserId,
-            Statistics = new CharacterStatisticsViewModel
+            Characteristics = new CharacterCharacteristicsViewModel
             {
                 Attributes = new CharacterAttributesViewModel { Agility = 9 },
                 Skills = new CharacterSkillsViewModel { WeaponMaster = 1 },
@@ -193,11 +193,11 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
         Assert.AreEqual(1, stats.Skills.WeaponMaster);
         Assert.AreEqual(280, stats.WeaponProficiencies.Points);
 
-        result = await handler.Handle(new UpdateCharacterStatisticsCommand
+        result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
         {
             CharacterId = character.Entity.Id,
             UserId = character.Entity.UserId,
-            Statistics = new CharacterStatisticsViewModel
+            Characteristics = new CharacterCharacteristicsViewModel
             {
                 Attributes = new CharacterAttributesViewModel { Agility = 9 },
                 Skills = new CharacterSkillsViewModel { WeaponMaster = 3 },
@@ -216,7 +216,7 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
     {
         Character character = new()
         {
-            Statistics = new CharacterStatistics
+            Characteristics = new CharacterCharacteristics
             {
                 Attributes = new CharacterAttributes { Points = 100 },
                 Skills = new CharacterSkills { Points = 100 },
@@ -225,7 +225,7 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
         ArrangeDb.Add(character);
         await ArrangeDb.SaveChangesAsync();
 
-        CharacterStatisticsViewModel[] statsObjects =
+        CharacterCharacteristicsViewModel[] statsObjects =
         {
             new()
             {
@@ -274,14 +274,14 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
             },
         };
 
-        UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
         foreach (var statObject in statsObjects)
         {
-            var result = await handler.Handle(new UpdateCharacterStatisticsCommand
+            var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
             {
                 UserId = character.UserId,
                 CharacterId = character.Id,
-                Statistics = statObject,
+                Characteristics = statObject,
             }, CancellationToken.None);
             Assert.AreEqual(ErrorCode.SkillRequirementNotMet, result.Errors![0].Code);
         }
@@ -296,18 +296,18 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
 
         var statsObjects = new[]
         {
-            new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Strength = 1 } },
-            new CharacterStatisticsViewModel { Attributes = new CharacterAttributesViewModel { Agility = 1 } },
+            new CharacterCharacteristicsViewModel { Attributes = new CharacterAttributesViewModel { Strength = 1 } },
+            new CharacterCharacteristicsViewModel { Attributes = new CharacterAttributesViewModel { Agility = 1 } },
         };
 
-        UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
         foreach (var statObject in statsObjects)
         {
-            var result = await handler.Handle(new UpdateCharacterStatisticsCommand
+            var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
             {
                 UserId = character.UserId,
                 CharacterId = character.Id,
-                Statistics = statObject,
+                Characteristics = statObject,
             }, CancellationToken.None);
             Assert.AreEqual(ErrorCode.NotEnoughAttributePoints, result.Errors![0].Code);
         }
@@ -320,7 +320,7 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
         ArrangeDb.Add(character);
         await ArrangeDb.SaveChangesAsync();
 
-        CharacterStatisticsViewModel[] statsObjects =
+        CharacterCharacteristicsViewModel[] statsObjects =
         {
             new() { Skills = new CharacterSkillsViewModel { IronFlesh = 1 } },
             new() { Skills = new CharacterSkillsViewModel { PowerStrike = 1 } },
@@ -333,14 +333,14 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
             new() { Skills = new CharacterSkillsViewModel { Shield = 1 } },
         };
 
-        UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
         foreach (var statObject in statsObjects)
         {
-            var result = await handler.Handle(new UpdateCharacterStatisticsCommand
+            var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
             {
                 UserId = character.UserId,
                 CharacterId = character.Id,
-                Statistics = statObject,
+                Characteristics = statObject,
             }, CancellationToken.None);
             Assert.AreEqual(ErrorCode.NotEnoughSkillPoints, result.Errors![0].Code);
         }
@@ -355,22 +355,22 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
 
         var statsObjects = new[]
         {
-            new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { OneHanded = 1 } },
-            new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { TwoHanded = 1 } },
-            new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Polearm = 1 } },
-            new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Bow = 1 } },
-            new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Throwing = 1 } },
-            new CharacterStatisticsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = 1 } },
+            new CharacterCharacteristicsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { OneHanded = 1 } },
+            new CharacterCharacteristicsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { TwoHanded = 1 } },
+            new CharacterCharacteristicsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Polearm = 1 } },
+            new CharacterCharacteristicsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Bow = 1 } },
+            new CharacterCharacteristicsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Throwing = 1 } },
+            new CharacterCharacteristicsViewModel { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = 1 } },
         };
 
-        UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
         foreach (var statObject in statsObjects)
         {
-            var result = await handler.Handle(new UpdateCharacterStatisticsCommand
+            var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
             {
                 UserId = character.UserId,
                 CharacterId = character.Id,
-                Statistics = statObject,
+                Characteristics = statObject,
             }, CancellationToken.None);
             Assert.AreEqual(ErrorCode.NotEnoughWeaponProficiencyPoints, result.Errors![0].Code);
         }
@@ -381,7 +381,7 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
     {
         Character character = new()
         {
-            Statistics = new CharacterStatistics
+            Characteristics = new CharacterCharacteristics
             {
                 Attributes = new CharacterAttributes { Points = 1000 },
                 Skills = new CharacterSkills { Points = 1000 },
@@ -391,7 +391,7 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
         ArrangeDb.Add(character);
         await ArrangeDb.SaveChangesAsync();
 
-        CharacterStatisticsViewModel[] statsObjects =
+        CharacterCharacteristicsViewModel[] statsObjects =
         {
             new() { Attributes = new CharacterAttributesViewModel { Agility = -1 } },
             new() { Attributes = new CharacterAttributesViewModel { Strength = -1 } },
@@ -412,16 +412,16 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
             new() { WeaponProficiencies = new CharacterWeaponProficienciesViewModel { Crossbow = -1 } },
         };
 
-        UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
         foreach (var statObject in statsObjects)
         {
-            var result = await handler.Handle(new UpdateCharacterStatisticsCommand
+            var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
             {
                 UserId = character.UserId,
                 CharacterId = character.Id,
-                Statistics = statObject,
+                Characteristics = statObject,
             }, CancellationToken.None);
-            Assert.AreEqual(ErrorCode.StatisticDecreased, result.Errors![0].Code);
+            Assert.AreEqual(ErrorCode.CharacteristicDecreased, result.Errors![0].Code);
         }
     }
 
@@ -431,12 +431,12 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
         var user = ArrangeDb.Add(new User());
         await ArrangeDb.SaveChangesAsync();
 
-        UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
-        var result = await handler.Handle(new UpdateCharacterStatisticsCommand
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
         {
             UserId = user.Entity.Id,
             CharacterId = 1,
-            Statistics = new CharacterStatisticsViewModel(),
+            Characteristics = new CharacterCharacteristicsViewModel(),
         }, CancellationToken.None);
         Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
     }
@@ -444,12 +444,12 @@ public class UpdateCharacterStatisticsCommandTest : TestBase
     [Test]
     public async Task ShouldThrowNotFoundIfUserNotFound()
     {
-        UpdateCharacterStatisticsCommand.Handler handler = new(ActDb, Mapper, Constants);
-        var result = await handler.Handle(new UpdateCharacterStatisticsCommand
+        UpdateCharacterCharacteristicsCommand.Handler handler = new(ActDb, Mapper, Constants);
+        var result = await handler.Handle(new UpdateCharacterCharacteristicsCommand
         {
             UserId = 1,
             CharacterId = 1,
-            Statistics = new CharacterStatisticsViewModel(),
+            Characteristics = new CharacterCharacteristicsViewModel(),
         }, CancellationToken.None);
         Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
     }
