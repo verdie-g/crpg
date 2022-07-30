@@ -5,7 +5,19 @@ namespace Crpg.Application.Common.Services;
 /// <summary>
 /// Service for looming and repair <see cref="Item"/>.
 /// </summary>
-internal class ItemModifierService
+internal interface IItemModifierService
+{
+    /// <summary>
+    /// Create a new item from an rank 0 item and given rank.
+    /// </summary>
+    /// <param name="baseItem">Rank 0 item.</param>
+    /// <param name="rank">Result rank.</param>
+    /// <returns>A new item instance of rank <paramref name="rank"/>.</returns>
+    Item ModifyItem(Item baseItem, int rank);
+}
+
+/// <inheritdoc />
+internal class ItemModifierService : IItemModifierService
 {
     private readonly Dictionary<ItemType, ItemModifier[]> _itemModifiers;
 
@@ -13,6 +25,7 @@ internal class ItemModifierService
     {
         _itemModifiers = new Dictionary<ItemType, ItemModifier[]>
         {
+            // ReSharper disable CoVariantArrayConversion
             [ItemType.HeadArmor] = itemModifiers.Armor,
             [ItemType.ShoulderArmor] = itemModifiers.Armor,
             [ItemType.BodyArmor] = itemModifiers.Armor,
@@ -29,24 +42,24 @@ internal class ItemModifierService
             [ItemType.Thrown] = itemModifiers.Thrown,
             [ItemType.Arrows] = itemModifiers.Missile,
             [ItemType.Bolts] = itemModifiers.Missile,
+            // ReSharper restore CoVariantArrayConversion
         };
     }
 
-    /// <summary>
-    /// Create a new item from an rank 0 item and given rank.
-    /// </summary>
-    /// <param name="baseItem">Rank 0 item.</param>
-    /// <param name="rank">Result rank.</param>
-    /// <returns>A new item instance of rank <paramref name="rank"/>.</returns>
+    /// <inheritdoc />
     public Item ModifyItem(Item baseItem, int rank)
     {
-        if (rank == 0 || rank < -3 || rank > 3)
+        if (rank < -3 || rank > 3)
         {
-            throw new ArgumentException("Rank should be one of { -3, -2, -1, 1, 2, 3 }");
+            throw new ArgumentException("Rank should be between -3 and 3");
         }
 
         var clone = (Item)baseItem.Clone();
-        clone.Rank = rank;
+        if (rank == 0)
+        {
+            return clone;
+        }
+
         if (!_itemModifiers.TryGetValue(baseItem.Type, out ItemModifier[]? typeItemModifiers))
         {
             // For banners and firearms use a random type for now.

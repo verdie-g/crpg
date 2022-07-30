@@ -16,20 +16,20 @@ public class FileItemsSourceTest
     }
 
     [Test]
-    public async Task CheckNoDuplicatedMbId()
+    public async Task CheckNoDuplicatedId()
     {
         List<string> duplicates = new();
-        HashSet<string> mbIds = new();
+        HashSet<string> ids = new();
 
         var items = await new FileItemsSource().LoadItems();
         foreach (var item in items)
         {
-            if (mbIds.Contains(item.TemplateMbId))
+            if (ids.Contains(item.Id))
             {
-                duplicates.Add(item.TemplateMbId);
+                duplicates.Add(item.Id);
             }
 
-            mbIds.Add(item.TemplateMbId);
+            ids.Add(item.Id);
         }
 
         if (duplicates.Count != 0)
@@ -49,7 +49,7 @@ public class FileItemsSourceTest
         {
             if (itemsByName.TryGetValue(item.Name, out var conflictingItem))
             {
-                errors.Add($"Conflicting item name between {conflictingItem.TemplateMbId} and {item.TemplateMbId}");
+                errors.Add($"Conflicting item name between {conflictingItem.Id} and {item.Id}");
             }
 
             itemsByName[item.Name] = item;
@@ -71,7 +71,7 @@ public class FileItemsSourceTest
                 }, rank);
                 if (itemsByName.TryGetValue(modifiedItem.Name, out var conflictingItem))
                 {
-                    errors.Add($"Conflicting item name between {conflictingItem.TemplateMbId} and {item.TemplateMbId} rank {rank}");
+                    errors.Add($"Conflicting item name between {conflictingItem.Id} and {item.Id} rank {rank}");
                 }
             }
         }
@@ -89,9 +89,9 @@ public class FileItemsSourceTest
         List<string> errors = new();
         foreach (var item in items)
         {
-            if (item.TemplateMbId.Contains("test") || item.TemplateMbId.Contains("dummy") || item.Name.Contains('_'))
+            if (item.Id.Contains("test") || item.Id.Contains("dummy") || item.Name.Contains('_'))
             {
-                errors.Add(item.TemplateMbId);
+                errors.Add(item.Id);
             }
         }
 

@@ -91,11 +91,9 @@ public class GetSettlementShopItemsQueryTest : TestBase
         ArrangeDb.Settlements.Add(settlement);
         Item[] items =
         {
-            new() { Culture = Culture.Aserai, Rank = 0 },
-            new() { Culture = Culture.Aserai, Rank = 1 },
-            new() { Culture = Culture.Battania, Rank = 2 },
-            new() { Culture = Culture.Battania, Rank = 0 },
-            new() { Culture = Culture.Battania, Rank = 0 },
+            new() { Id = "0", Culture = Culture.Aserai },
+            new() { Id = "1", Culture = Culture.Battania },
+            new() { Id = "2", Culture = Culture.Battania },
         };
         ArrangeDb.Items.AddRange(items);
         await ArrangeDb.SaveChangesAsync();

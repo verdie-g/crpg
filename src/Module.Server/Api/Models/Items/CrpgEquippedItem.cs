@@ -5,6 +5,6 @@
 /// </summary>
 internal class CrpgEquippedItem
 {
-    public CrpgItem Item { get; set; } = default!;
     public CrpgItemSlot Slot { get; set; }
+    public CrpgUserItem UserItem { get; set; } = default!;
 }

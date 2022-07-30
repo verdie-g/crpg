@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Items.Queries;
 
-public record GetUserItemsQuery : IMediatorRequest<IList<ItemViewModel>>
+public record GetUserItemsQuery : IMediatorRequest<IList<UserItemViewModel>>
 {
     public int UserId { get; init; }
 
-    internal class Handler : IMediatorRequestHandler<GetUserItemsQuery, IList<ItemViewModel>>
+    internal class Handler : IMediatorRequestHandler<GetUserItemsQuery, IList<UserItemViewModel>>
     {
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
@@ -22,15 +22,14 @@ public record GetUserItemsQuery : IMediatorRequest<IList<ItemViewModel>>
             _mapper = mapper;
         }
 
-        public async Task<Result<IList<ItemViewModel>>> Handle(GetUserItemsQuery req, CancellationToken cancellationToken)
+        public async Task<Result<IList<UserItemViewModel>>> Handle(GetUserItemsQuery req, CancellationToken cancellationToken)
         {
             var userItems = await _db.UserItems
-                .Where(oi => oi.UserId == req.UserId)
-                .Include(oi => oi.Item)
-                .Select(oi => oi.Item)
+                .Where(ui => ui.UserId == req.UserId)
+                .Include(ui => ui.BaseItem)
                 .ToListAsync(cancellationToken);
 
-            return new(_mapper.Map<IList<ItemViewModel>>(userItems));
+            return new(_mapper.Map<IList<UserItemViewModel>>(userItems));
         }
     }
 }

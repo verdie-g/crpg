@@ -1,8 +1,6 @@
 using Crpg.Application.Common.Results;
 using Crpg.Application.Games.Commands;
 using Crpg.Application.Games.Models;
-using Crpg.Application.Items.Models;
-using Crpg.Application.Items.Queries;
 using Crpg.Domain.Entities.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,12 +29,4 @@ public class GamesController : BaseController
     [HttpPut("users")]
     public Task<ActionResult<Result<UpdateGameUsersResult>>> UpdateUsers([FromBody] UpdateGameUsersCommand cmd) =>
         ResultToActionAsync(Mediator.Send(cmd));
-
-    /// <summary>
-    /// Gets all items including loomed and broken ones.
-    /// </summary>
-    /// <response code="200">Ok.</response>
-    [HttpGet("items")]
-    public Task<ActionResult<Result<IList<ItemViewModel>>>> GetItems() =>
-        ResultToActionAsync(Mediator.Send(new GetItemsQuery { BaseItems = false }));
 }

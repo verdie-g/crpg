@@ -28,14 +28,14 @@ public class SeedDataCommandTest : TestBase
     private static readonly ItemPriceModel ItemPriceModel = new();
 
     [Test]
-    public async Task ShouldInsertItemsFromItemSourceWithAllRanks()
+    public async Task ShouldInsertItemsFromItemSource()
     {
         Mock<IItemsSource> itemsSource = new();
         itemsSource.Setup(s => s.LoadItems())
             .ReturnsAsync(new[]
             {
-                new ItemCreation { TemplateMbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() },
-                new ItemCreation { TemplateMbId = "b", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() },
+                new ItemCreation { Id = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() },
+                new ItemCreation { Id = "b", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() },
             });
 
         SeedDataCommand.Handler seedDataCommandHandler = new(ActDb, itemsSource.Object, CreateAppEnv(),
@@ -44,17 +44,7 @@ public class SeedDataCommandTest : TestBase
         await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
 
         var items = await AssertDb.Items.ToArrayAsync();
-        Assert.AreEqual(7 * 2, items.Length);
-
-        var baseItem1 = items.First(i => i.TemplateMbId == "a" && i.Rank == 0);
-        var baseItem2 = items.First(i => i.TemplateMbId == "b" && i.Rank == 0);
-        foreach (var baseItem in new[] { baseItem1, baseItem2 })
-        {
-            foreach (int rank in new[] { -3, -2, -1, 1, 2, 3 })
-            {
-                Assert.NotNull(items.FirstOrDefault(i => i.BaseItemId == baseItem.Id && i.Rank == rank));
-            }
-        }
+        Assert.AreEqual(2, items.Length);
     }
 
     [Test]
@@ -62,7 +52,7 @@ public class SeedDataCommandTest : TestBase
     {
         Mock<IItemsSource> itemsSource = new();
         itemsSource.SetupSequence(s => s.LoadItems())
-            .ReturnsAsync(new[] { new ItemCreation { TemplateMbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() } })
+            .ReturnsAsync(new[] { new ItemCreation { Id = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() } })
             .ReturnsAsync(Array.Empty<ItemCreation>());
 
         SeedDataCommand.Handler seedDataCommandHandler = new(ActDb, itemsSource.Object, CreateAppEnv(),
@@ -70,11 +60,11 @@ public class SeedDataCommandTest : TestBase
             ItemPriceModel, ItemModifierService);
         await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
         var items = await AssertDb.Items.ToArrayAsync();
-        Assert.AreEqual(7, items.Length);
+        Assert.AreEqual(1, items.Length);
 
         // Users buy the new item and equip it.
         User user0 = new() { Gold = 100, HeirloomPoints = 0 };
-        UserItem userItemRank0ForUser0 = new() { User = user0, ItemId = items.First(i => i.Rank == 0).Id };
+        UserItem userItemRank0ForUser0 = new() { BaseItemId = items.First().Id, Rank = 0, User = user0 };
         Character character0 = new()
         {
             User = user0,
@@ -86,8 +76,8 @@ public class SeedDataCommandTest : TestBase
         };
 
         User user1 = new() { Gold = 200, HeirloomPoints = 0 };
-        UserItem userItemRank0ForUser1 = new() { User = user1, ItemId = items.First(i => i.Rank == 0).Id };
-        UserItem userItemRank1ForUser1 = new() { User = user1, ItemId = items.First(i => i.Rank == 1).Id };
+        UserItem userItemRank0ForUser1 = new() { BaseItemId = items.First().Id, Rank = 0, User = user1 };
+        UserItem userItemRank1ForUser1 = new() { BaseItemId = items.First().Id, Rank = 1, User = user1 };
         Character character1 = new()
         {
             User = user1,
@@ -111,60 +101,6 @@ public class SeedDataCommandTest : TestBase
         Assert.AreEqual(0, users[0].HeirloomPoints);
         Assert.Greater(users[1].Gold, 200);
         Assert.AreEqual(1, users[1].HeirloomPoints);
-    }
-
-    [Test]
-    public async Task ModifiedItemInSourceShouldBeModifiedInDatabase()
-    {
-        Item[] oldItems =
-        {
-            new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = -3, Armor = new ItemArmorComponent { ArmArmor = 80 } },
-            new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = -2, Armor = new ItemArmorComponent { ArmArmor = 90 } },
-            new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = -1, Armor = new ItemArmorComponent { ArmArmor = 95 } },
-            new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 0, Armor = new ItemArmorComponent { ArmArmor = 100 } },
-            new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 1, Armor = new ItemArmorComponent { ArmArmor = 105 } },
-            new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 2, Armor = new ItemArmorComponent { ArmArmor = 107 } },
-            new() { TemplateMbId = "a", Type = ItemType.HeadArmor, Rank = 3, Armor = new ItemArmorComponent { ArmArmor = 109 } },
-        };
-        ArrangeDb.Items.AddRange(oldItems);
-        await ArrangeDb.SaveChangesAsync();
-
-        Mock<IItemsSource> itemsSource = new();
-        itemsSource.Setup(s => s.LoadItems())
-            .ReturnsAsync(new[] { new ItemCreation { TemplateMbId = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel { ArmArmor = 1000 } } });
-
-        ItemModifiers itemModifiers = new()
-        {
-            Armor = new[]
-            {
-                new ArmorItemModifier { Name = "a", Armor = 0.4f },
-                new ArmorItemModifier { Name = "b", Armor = 0.6f },
-                new ArmorItemModifier { Name = "c", Armor = 0.8f },
-                new ArmorItemModifier { Name = "d", Armor = 1.2f },
-                new ArmorItemModifier { Name = "e", Armor = 1.4f },
-                new ArmorItemModifier { Name = "f", Armor = 1.6f },
-            },
-        };
-
-        ItemModifierService itemModifierService = new(itemModifiers);
-        SeedDataCommand.Handler seedDataCommandHandler = new(ActDb, itemsSource.Object, CreateAppEnv(),
-            CharacterService, ExperienceTable, StrategusMap, Mock.Of<ISettlementsSource>(),
-            ItemPriceModel, itemModifierService);
-        await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
-        var newItems = await AssertDb.Items.ToDictionaryAsync(i => i.Rank);
-        Assert.AreEqual(7, newItems.Count, "Modifying an item added or removed one");
-        Assert.AreEqual(400, newItems[-3].Armor!.ArmArmor);
-        Assert.AreEqual(600, newItems[-2].Armor!.ArmArmor);
-        Assert.AreEqual(800, newItems[-1].Armor!.ArmArmor);
-        Assert.AreEqual(1000, newItems[0].Armor!.ArmArmor);
-        Assert.AreEqual(1200, newItems[1].Armor!.ArmArmor);
-        Assert.AreEqual(1400, newItems[2].Armor!.ArmArmor);
-        Assert.AreEqual(1600, newItems[3].Armor!.ArmArmor);
-
-        CollectionAssert.AreEquivalent(
-            oldItems.Select(i => i.Id),
-            newItems.Select(i => i.Value.Id),
-            "Modified items were recreated instead of just modified");
     }
 
     [Test]

@@ -11,40 +11,40 @@
         <div class="column is-narrow gear-column">
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)">
             <img
-              v-if="itemsBySlot[itemSlot.Head]"
-              :src="itemImage(itemsBySlot[itemSlot.Head])"
+              v-if="userItemsBySlot[itemSlot.Head]"
+              :src="userItemImage(userItemsBySlot[itemSlot.Head])"
               alt="Head armor"
             />
             <img v-else src="../assets/head-armor.png" alt="Head armor" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Shoulder)">
             <img
-              v-if="itemsBySlot[itemSlot.Shoulder]"
-              :src="itemImage(itemsBySlot[itemSlot.Shoulder])"
+              v-if="userItemsBySlot[itemSlot.Shoulder]"
+              :src="userItemImage(userItemsBySlot[itemSlot.Shoulder])"
               alt="Shoulder"
             />
             <img v-else src="../assets/cape.png" alt="Shoulder" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)">
             <img
-              v-if="itemsBySlot[itemSlot.Body]"
-              :src="itemImage(itemsBySlot[itemSlot.Body])"
+              v-if="userItemsBySlot[itemSlot.Body]"
+              :src="userItemImage(userItemsBySlot[itemSlot.Body])"
               alt="Body armor"
             />
             <img v-else src="../assets/body-armor.png" alt="Body armor" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)">
             <img
-              v-if="itemsBySlot[itemSlot.Hand]"
-              :src="itemImage(itemsBySlot[itemSlot.Hand])"
+              v-if="userItemsBySlot[itemSlot.Hand]"
+              :src="userItemImage(userItemsBySlot[itemSlot.Hand])"
               alt="Hand armor"
             />
             <img v-else src="../assets/hand-armor.png" alt="Hand armor" class="item-placeholder" />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)">
             <img
-              v-if="itemsBySlot[itemSlot.Leg]"
-              :src="itemImage(itemsBySlot[itemSlot.Leg])"
+              v-if="userItemsBySlot[itemSlot.Leg]"
+              :src="userItemImage(userItemsBySlot[itemSlot.Leg])"
               alt="Leg armor"
             />
             <img v-else src="../assets/leg-armor.png" alt="Leg armor" class="item-placeholder" />
@@ -54,8 +54,8 @@
         <div class="column is-narrow mount-column">
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.MountHarness)">
             <img
-              v-if="itemsBySlot[itemSlot.MountHarness]"
-              :src="itemImage(itemsBySlot[itemSlot.MountHarness])"
+              v-if="userItemsBySlot[itemSlot.MountHarness]"
+              :src="userItemImage(userItemsBySlot[itemSlot.MountHarness])"
               alt="Mount harness"
             />
             <img
@@ -67,8 +67,8 @@
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Mount)">
             <img
-              v-if="itemsBySlot[itemSlot.Mount]"
-              :src="itemImage(itemsBySlot[itemSlot.Mount])"
+              v-if="userItemsBySlot[itemSlot.Mount]"
+              :src="userItemImage(userItemsBySlot[itemSlot.Mount])"
               alt="Mount"
             />
           </div>
@@ -77,29 +77,29 @@
         <div class="column is-narrow weapon-column">
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon0)">
             <img
-              v-if="itemsBySlot[itemSlot.Weapon0]"
-              :src="itemImage(itemsBySlot[itemSlot.Weapon0])"
+              v-if="userItemsBySlot[itemSlot.Weapon0]"
+              :src="userItemImage(userItemsBySlot[itemSlot.Weapon0])"
               alt="First weapon"
             />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)">
             <img
-              v-if="itemsBySlot[itemSlot.Weapon1]"
-              :src="itemImage(itemsBySlot[itemSlot.Weapon1])"
+              v-if="userItemsBySlot[itemSlot.Weapon1]"
+              :src="userItemImage(userItemsBySlot[itemSlot.Weapon1])"
               alt="Second weapon"
             />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)">
             <img
-              v-if="itemsBySlot[itemSlot.Weapon2]"
-              :src="itemImage(itemsBySlot[itemSlot.Weapon2])"
+              v-if="userItemsBySlot[itemSlot.Weapon2]"
+              :src="userItemImage(userItemsBySlot[itemSlot.Weapon2])"
               alt="Third weapon"
             />
           </div>
           <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)">
             <img
-              v-if="itemsBySlot[itemSlot.Weapon3]"
-              :src="itemImage(itemsBySlot[itemSlot.Weapon3])"
+              v-if="userItemsBySlot[itemSlot.Weapon3]"
+              :src="userItemImage(userItemsBySlot[itemSlot.Weapon3])"
               alt="Fourth Weapon"
             />
           </div>
@@ -153,12 +153,12 @@
 
     <b-modal :active.sync="isReplaceItemModalActive" scroll="keep" ref="replaceItemModal">
       <div class="columns is-marginless replace-item-modal">
-        <div class="column" v-if="itemToReplace">
+        <div class="column" v-if="userItemToReplace">
           <h3>
             Replace
-            <strong :class="itemRankClass(itemToReplace)">{{ itemToReplace.name }}</strong>
+            <strong :class="userItemRankClass(userItemToReplace)">{{ userItemToReplace.baseItem.name }}</strong>
           </h3>
-          <item-properties :item="itemToReplace" />
+          <item-properties :item="userItemToReplace.baseItem" :rank="userItemToReplace.rank" />
           <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
           <b-button
             size="is-medium"
@@ -178,24 +178,24 @@
               class="column is-narrow user-item"
               v-for="userItem in fittingUserItems"
               v-bind:key="userItem.id"
-              @click="selectedItem = userItem"
+              @click="selectedUserItem = userItem"
             >
               <figure class="image">
-                <img :src="itemImage(userItem)" alt="item image" />
+                <img :src="userItemImage(userItem)" alt="item image" />
               </figure>
-              <h4 :class="itemRankClass(userItem)">{{ userItem.name }}</h4>
-              <item-properties :item="userItem" />
+              <h4 :class="userItemRankClass(userItem)">{{ userItem.baseItem.name }}</h4>
+              <item-properties :item="userItem.baseItem" :rank="userItem.rank" />
             </div>
           </div>
           <div v-else>You don't own any item for this type.</div>
         </div>
-        <div class="column" v-if="selectedItem">
+        <div class="column" v-if="selectedUserItem">
           <h3>
             Replace with
-            <strong :class="itemRankClass(selectedItem)">{{ selectedItem.name }}</strong>
+            <strong :class="userItemRankClass(selectedUserItem)">{{ selectedUserItem.baseItem.name }}</strong>
           </h3>
           <div class="content">
-            <item-properties :item="selectedItem" />
+            <item-properties :item="selectedUserItem.baseItem" :rank="selectedUserItem.rank" />
             <b-button size="is-medium" icon-left="check" expanded @click="confirmItemSelection" />
           </div>
         </div>
@@ -212,10 +212,11 @@ import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
 import Item from '@/models/item';
 import { computeAverageRepairCost } from '@/services/characters-service';
-import { filterItemsFittingInSlot } from '@/services/item-service';
+import { filterUserItemsFittingInSlot } from '@/services/item-service';
 import { notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
 import EquippedItem from '@/models/equipped-item';
+import UserItem from "@/models/user-item";
 
 @Component({
   components: { CharacterStatsComponent, ItemProperties },
@@ -226,23 +227,23 @@ export default class CharacterComponent extends Vue {
   // modal stuff
   itemSlot = ItemSlot;
   isReplaceItemModalActive = false;
-  itemToReplace: Item | null = null;
-  itemToReplaceSlot: ItemSlot | null = null;
-  selectedItem: Item | null = null;
+  userItemToReplace: UserItem | null = null;
+  userItemToReplaceSlot: ItemSlot | null = null;
+  selectedUserItem: UserItem | null = null;
 
   get characterEquippedItems(): EquippedItem[] | null {
     return userModule.characterEquippedItems(this.character.id);
   }
 
-  get itemsBySlot(): Record<ItemSlot, Item> {
+  get userItemsBySlot(): Record<ItemSlot, UserItem> {
     if (this.characterEquippedItems === null) {
-      return {} as Record<ItemSlot, Item>;
+      return {} as Record<ItemSlot, UserItem>;
     }
 
-    return this.characterEquippedItems.reduce((itemsBySlot, ei) => {
-      itemsBySlot[ei.slot] = ei.item;
-      return itemsBySlot;
-    }, {} as Record<ItemSlot, Item>);
+    return this.characterEquippedItems.reduce((userItemsBySlot, ei) => {
+      userItemsBySlot[ei.slot] = ei.userItem;
+      return userItemsBySlot;
+    }, {} as Record<ItemSlot, UserItem>);
   }
 
   get averageRepairCost(): number {
@@ -253,17 +254,21 @@ export default class CharacterComponent extends Vue {
     return Math.floor(computeAverageRepairCost(this.characterEquippedItems));
   }
 
-  get fittingUserItems(): Item[] {
-    return this.itemToReplaceSlot === null
+  get fittingUserItems(): UserItem[] {
+    return this.userItemToReplaceSlot === null
       ? []
-      : filterItemsFittingInSlot(userModule.userItems, this.itemToReplaceSlot).filter(
-          i => this.itemToReplace === null || i.id !== this.itemToReplace.id
+      : filterUserItemsFittingInSlot(userModule.userItems, this.userItemToReplaceSlot).filter(
+          ui => this.userItemToReplace === null || ui.id !== this.userItemToReplace.id
         );
   }
 
   get itemToReplaceUpgradeInfo(): { upgradable: boolean; reason: string } {
     const info = { upgradable: true, reason: '' };
-    if (this.itemToReplace!.rank === 3) {
+    if (this.userItemToReplace === null) {
+      return info;
+    }
+
+    if (this.userItemToReplace.rank === 3) {
       info.upgradable = false;
       info.reason = 'Max rank reached (3)';
     } else if (userModule.user!.heirloomPoints === 0) {
@@ -278,12 +283,12 @@ export default class CharacterComponent extends Vue {
     userModule.getCharacterItems(this.character.id);
   }
 
-  itemImage(item: Item): string {
-    return `${process.env.BASE_URL}items/${item.templateMbId}.png`;
+  userItemImage(userItem: UserItem): string {
+    return `${process.env.BASE_URL}items/${userItem.baseItem.id}.png`;
   }
 
-  itemRankClass(item: Item | null): string {
-    return item === null ? '' : `item-rank${item.rank}`;
+  userItemRankClass(userItem: UserItem | null): string {
+    return userItem === null ? '' : `item-rank${userItem.rank}`;
   }
 
   onAutoRepairSwitch(autoRepair: boolean): void {
@@ -336,9 +341,9 @@ export default class CharacterComponent extends Vue {
   }
 
   openReplaceItemModal(slot: ItemSlot): void {
-    this.itemToReplace = this.itemsBySlot[slot] ? this.itemsBySlot[slot] : null;
-    this.itemToReplaceSlot = slot;
-    this.selectedItem = null;
+    this.userItemToReplace = this.userItemsBySlot[slot] ? this.userItemsBySlot[slot] : null;
+    this.userItemToReplaceSlot = slot;
+    this.selectedUserItem = null;
     if (userModule.userItems.length === 0) {
       userModule.getUserItems();
     }
@@ -349,22 +354,22 @@ export default class CharacterComponent extends Vue {
   unequipItem(): void {
     userModule.replaceItem({
       character: this.character,
-      slot: this.itemToReplaceSlot!,
-      item: null,
+      slot: this.userItemToReplaceSlot!,
+      userItem: null,
     });
     (this.$refs.replaceItemModal as any).close();
   }
 
   upgradeItem(): void {
-    userModule.upgradeItem(this.itemToReplace!);
+    userModule.upgradeUserItem(this.userItemToReplace!);
     (this.$refs.replaceItemModal as any).close();
   }
 
   confirmItemSelection(): void {
     userModule.replaceItem({
       character: this.character,
-      slot: this.itemToReplaceSlot!,
-      item: this.selectedItem!,
+      slot: this.userItemToReplaceSlot!,
+      userItem: this.selectedUserItem!,
     });
     this.isReplaceItemModalActive = false;
   }

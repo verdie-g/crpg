@@ -16,6 +16,7 @@ using TaleWorlds.TwoDimension;
 
 #if CRPG_EXPORT
 using Crpg.Module.DataExport;
+using TaleWorlds.Localization;
 #endif
 
 namespace Crpg.Module;
@@ -39,7 +40,7 @@ internal class CrpgSubModule : MBSubModuleBase
 #endif
 
 #if CRPG_EXPORT
-        Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
+        TaleWorlds.MountAndBlade.Module.CurrentModule.AddInitialStateOption(new InitialStateOption("ExportData",
             new TextObject("Export Data"), 4578, ExportData, () => (false, null)));
 #endif
 
@@ -113,7 +114,7 @@ internal class CrpgSubModule : MBSubModuleBase
     }
 
 #if CRPG_EXPORT
-    private static void ExportData()
+    private void ExportData()
     {
         const string outputPath = "../../CrpgData";
         IDataExporter[] exporters =

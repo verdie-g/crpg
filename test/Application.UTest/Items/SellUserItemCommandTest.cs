@@ -1,15 +1,17 @@
 using Crpg.Application.Common;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Items.Commands;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
+using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Items;
 
-public class SellItemCommandTest : TestBase
+public class SellUserItemCommandTest : TestBase
 {
     private static readonly Constants Constants = new() { ItemSellCostCoefs = new[] { 0.5f, 0.0f } };
 
@@ -23,31 +25,37 @@ public class SellItemCommandTest : TestBase
             {
                 new()
                 {
-                    Item = new Item { Price = 100 },
+                    BaseItem = new Item { Price = 100 },
                 },
             },
         };
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        await new SellItemCommand.Handler(ActDb, Constants).Handle(new SellItemCommand
+        Item upgradedItem = new() { Id = "0", Price = 150 };
+        Mock<IItemModifierService> itemModifierServiceMock = new();
+        itemModifierServiceMock
+            .Setup(m => m.ModifyItem(It.IsAny<Item>(), It.IsAny<int>()))
+            .Returns(upgradedItem);
+
+        await new SellUserItemCommand.Handler(ActDb, itemModifierServiceMock.Object, Constants).Handle(new SellUserItemCommand
         {
-            ItemId = user.Items[0].ItemId,
+            UserItemId = user.Items[0].Id,
             UserId = user.Id,
         }, CancellationToken.None);
 
         user = await AssertDb.Users
             .Include(u => u.Items)
             .FirstAsync(u => u.Id == user.Id);
-        Assert.AreEqual(50, user.Gold);
-        Assert.False(user.Items.Any(oi => oi.ItemId == user.Items[0].ItemId));
+        Assert.AreEqual(75, user.Gold);
+        Assert.False(user.Items.Any(ui => ui.Id == user.Items[0].Id));
     }
 
     [Test]
     public async Task SellItemEquipped()
     {
-        Item item = new() { Price = 100 };
-        UserItem userItem = new() { Item = item };
+        Item item = new() { Id = "0", Price = 100 };
+        UserItem userItem = new() { Rank = 1, BaseItem = item };
         List<Character> characters = new()
         {
             new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Head } } },
@@ -71,9 +79,15 @@ public class SellItemCommandTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        await new SellItemCommand.Handler(ActDb, Constants).Handle(new SellItemCommand
+        Item upgradedItem = new() { Id = "0", Price = 150 };
+        Mock<IItemModifierService> itemModifierServiceMock = new();
+        itemModifierServiceMock
+            .Setup(m => m.ModifyItem(It.IsAny<Item>(), It.IsAny<int>()))
+            .Returns(upgradedItem);
+
+        await new SellUserItemCommand.Handler(ActDb, itemModifierServiceMock.Object, Constants).Handle(new SellUserItemCommand
         {
-            ItemId = item.Id,
+            UserItemId = user.Id,
             UserId = user.Id,
         }, CancellationToken.None);
 
@@ -81,8 +95,8 @@ public class SellItemCommandTest : TestBase
             .Include(u => u.Characters)
             .Include(u => u.Items)
             .FirstAsync(u => u.Id == user.Id);
-        Assert.AreEqual(50, user.Gold);
-        Assert.False(user.Items.Any(oi => oi.ItemId == item.Id));
+        Assert.AreEqual(75, user.Gold);
+        Assert.False(user.Items.Any(ui => ui.Id == userItem.Id));
         Assert.IsEmpty(user.Characters[0].EquippedItems);
         Assert.IsEmpty(user.Characters[1].EquippedItems);
         Assert.IsEmpty(user.Characters[2].EquippedItems);
@@ -102,27 +116,30 @@ public class SellItemCommandTest : TestBase
         var user = ArrangeDb.Users.Add(new User());
         await ArrangeDb.SaveChangesAsync();
 
-        var result = await new SellItemCommand.Handler(ActDb, Constants).Handle(
-            new SellItemCommand
+        var itemModifierService = Mock.Of<IItemModifierService>();
+        var result = await new SellUserItemCommand.Handler(ActDb, itemModifierService, Constants).Handle(
+            new SellUserItemCommand
             {
-                ItemId = 1,
+                UserItemId = 1,
                 UserId = user.Entity.Id,
             }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.UserItemNotFound, result.Errors![0].Code);
     }
 
     [Test]
-    public async Task NotFoundUser()
+    public async Task NotFoundUserItem()
     {
-        var item = ArrangeDb.Items.Add(new Item());
+        User user = new();
+        ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        var result = await new SellItemCommand.Handler(ActDb, Constants).Handle(
-            new SellItemCommand
+        var itemModifierService = Mock.Of<IItemModifierService>();
+        var result = await new SellUserItemCommand.Handler(ActDb, itemModifierService, Constants).Handle(
+            new SellUserItemCommand
             {
-                ItemId = item.Entity.Id,
-                UserId = 1,
+                UserItemId = 1,
+                UserId = user.Id,
             }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.UserItemNotFound, result.Errors![0].Code);
     }
 }

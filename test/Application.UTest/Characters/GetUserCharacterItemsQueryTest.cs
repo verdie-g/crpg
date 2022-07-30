@@ -24,14 +24,16 @@ public class GetUserCharacterItemsQueryTest : TestBase
     [Test]
     public async Task ShouldReturnCharacterItems()
     {
+        UserItem userItem1 = new() { BaseItem = new Item { Id = "1" } };
+        UserItem userItem2 = new() { BaseItem = new Item { Id = "2" } };
         Character character = new()
         {
             Name = "toto",
             UserId = 2,
             EquippedItems =
             {
-                new EquippedItem { Item = new Item(), Slot = ItemSlot.Body },
-                new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon0 },
+                new EquippedItem { UserItem = userItem1, Slot = ItemSlot.Body },
+                new EquippedItem { UserItem = userItem2, Slot = ItemSlot.Weapon0 },
             },
         };
         ArrangeDb.Characters.Add(character);

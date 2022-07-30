@@ -29,9 +29,9 @@ public class RespecializeCharacterCommandTest : TestBase
             ExperienceMultiplier = 1.1f,
             EquippedItems =
             {
-                new EquippedItem { Item = new Item(), Slot = ItemSlot.Head },
-                new EquippedItem { Item = new Item(), Slot = ItemSlot.Body },
-                new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon0 },
+                new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Head },
+                new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Body },
+                new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Weapon0 },
             },
         };
         ArrangeDb.Add(character);

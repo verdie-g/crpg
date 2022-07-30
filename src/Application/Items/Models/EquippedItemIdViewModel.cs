@@ -4,6 +4,6 @@ namespace Crpg.Application.Items.Models;
 
 public record EquippedItemIdViewModel
 {
-    public int? ItemId { get; init; }
-    public ItemSlot Slot { get; init; }
+    public ItemSlot Slot { get; set; }
+    public int? UserItemId { get; set; }
 }

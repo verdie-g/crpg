@@ -54,7 +54,7 @@ public record GetSettlementShopItemsQuery : IMediatorRequest<IList<ItemViewModel
             // Return items with the same culture as the settlement.
             var items = await _db.Items
                 .AsNoTracking()
-                .Where(i => i.Rank == 0 && (i.Culture == Culture.Neutral || i.Culture == settlement.Culture))
+                .Where(i => i.Culture == Culture.Neutral || i.Culture == settlement.Culture)
                 .ToArrayAsync(cancellationToken);
             return new(_mapper.Map<ItemViewModel[]>(items));
         }

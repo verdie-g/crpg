@@ -61,7 +61,7 @@ public record UpdateCharacterItemsCommand : IMediatorRequest<IList<EquippedItemV
             CancellationToken cancellationToken)
         {
             var character = await _db.Characters
-                .Include(c => c.EquippedItems).ThenInclude(ci => ci.Item)
+                .Include(c => c.EquippedItems).ThenInclude(ei => ei.UserItem!.BaseItem)
                 .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
 
             if (character == null)
@@ -69,22 +69,23 @@ public record UpdateCharacterItemsCommand : IMediatorRequest<IList<EquippedItemV
                 return new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
             }
 
-            int[] newItemIds = req.Items
-                .Where(i => i.ItemId != null)
-                .Select(i => i.ItemId!.Value).ToArray();
+            int[] newUserItemIds = req.Items
+                .Where(ei => ei.UserItemId != null)
+                .Select(ei => ei.UserItemId!.Value)
+                .ToArray();
             Dictionary<int, UserItem> userItemsById = await _db.UserItems
-                .Include(oi => oi.Item)
-                .Where(oi => oi.UserId == req.UserId && newItemIds.Contains(oi.ItemId))
-                .ToDictionaryAsync(oi => oi.ItemId, cancellationToken);
+                .Include(ui => ui.BaseItem)
+                .Where(ui => ui.UserId == req.UserId && newUserItemIds.Contains(ui.Id))
+                .ToDictionaryAsync(ui => ui.Id, cancellationToken);
 
             Dictionary<ItemSlot, EquippedItem> oldItemsBySlot = character.EquippedItems.ToDictionary(c => c.Slot);
 
-            foreach (EquippedItemIdViewModel newItem in req.Items)
+            foreach (EquippedItemIdViewModel newEquippedItem in req.Items)
             {
                 EquippedItem? equippedItem;
-                if (newItem.ItemId == null) // If null, remove item in the slot.
+                if (newEquippedItem.UserItemId == null) // If null, remove item in the slot.
                 {
-                    if (oldItemsBySlot.TryGetValue(newItem.Slot, out equippedItem))
+                    if (oldItemsBySlot.TryGetValue(newEquippedItem.Slot, out equippedItem))
                     {
                         character.EquippedItems.Remove(equippedItem);
                     }
@@ -92,17 +93,17 @@ public record UpdateCharacterItemsCommand : IMediatorRequest<IList<EquippedItemV
                     continue;
                 }
 
-                if (!userItemsById.TryGetValue(newItem.ItemId.Value, out UserItem? userItem))
+                if (!userItemsById.TryGetValue(newEquippedItem.UserItemId.Value, out UserItem? userItem))
                 {
-                    return new(CommonErrors.ItemNotOwned(newItem.ItemId.Value));
+                    return new(CommonErrors.UserItemNotFound(newEquippedItem.UserItemId.Value));
                 }
 
-                if (!ItemSlotsByType[userItem.Item!.Type].Contains(newItem.Slot))
+                if (!ItemSlotsByType[userItem.BaseItem!.Type].Contains(newEquippedItem.Slot))
                 {
-                    return new(CommonErrors.ItemBadSlot(newItem.ItemId.Value, newItem.Slot));
+                    return new(CommonErrors.ItemBadSlot(userItem.BaseItemId, newEquippedItem.Slot));
                 }
 
-                if (oldItemsBySlot.TryGetValue(newItem.Slot, out equippedItem))
+                if (oldItemsBySlot.TryGetValue(newEquippedItem.Slot, out equippedItem))
                 {
                     // Character already has an item in this slot. Replace it.
                     equippedItem.UserItem = userItem;
@@ -113,7 +114,7 @@ public record UpdateCharacterItemsCommand : IMediatorRequest<IList<EquippedItemV
                     equippedItem = new EquippedItem
                     {
                         CharacterId = req.CharacterId,
-                        Slot = newItem.Slot,
+                        Slot = newEquippedItem.Slot,
                         UserItem = userItem,
                     };
 

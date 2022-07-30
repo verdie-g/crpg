@@ -15,7 +15,7 @@ public record AddSettlementItemCommand : IMediatorRequest<ItemStack>
 {
     public int PartyId { get; init; }
     public int SettlementId { get; init; }
-    public int ItemId { get; init; }
+    public string ItemId { get; init; } = string.Empty;
     public int Count { get; init; }
 
     internal class Handler : IMediatorRequestHandler<AddSettlementItemCommand, ItemStack>

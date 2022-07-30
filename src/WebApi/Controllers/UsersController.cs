@@ -210,7 +210,7 @@ public class UsersController : BaseController
     /// Gets owned items.
     /// </summary>
     [HttpGet("self/items")]
-    public Task<ActionResult<Result<IList<ItemViewModel>>>> GetUserItems()
+    public Task<ActionResult<Result<IList<UserItemViewModel>>>> GetUserItems()
     {
         GetUserItemsQuery query = new() { UserId = CurrentUser.User!.Id };
         return ResultToActionAsync(Mediator.Send(query));
@@ -226,35 +226,35 @@ public class UsersController : BaseController
     /// <response code="404">Item was not found.</response>
     [HttpPost("self/items")]
     [ProducesResponseType((int)HttpStatusCode.Created)]
-    public Task<ActionResult<Result<ItemViewModel>>> BuyItem([FromBody] BuyItemCommand req)
+    public Task<ActionResult<Result<UserItemViewModel>>> BuyItem([FromBody] BuyItemCommand req)
     {
         req = req with { UserId = CurrentUser.User!.Id };
-        return ResultToCreatedAtActionAsync(nameof(ItemsController.GetItemsList), "Items", i => new { id = i.Id },
+        return ResultToCreatedAtActionAsync(nameof(GetUserItems), null, ui => new { id = ui.Id },
             Mediator.Send(req));
     }
 
     /// <summary>
     /// Repair or loom item.
     /// </summary>
-    /// <param name="id">Item id.</param>
+    /// <param name="id">User item id.</param>
     /// <returns>The upgraded item.</returns>
     /// <response code="200">Upgraded.</response>
     /// <response code="400">Bad Request.</response>
     [HttpPut("self/items/{id}/upgrade")]
-    public Task<ActionResult<Result<ItemViewModel>>> UpgradeItem([FromRoute] int id) =>
-        ResultToActionAsync(Mediator.Send(new UpgradeItemCommand { ItemId = id, UserId = CurrentUser.User!.Id }));
+    public Task<ActionResult<Result<UserItemViewModel>>> UpgradeUserItem([FromRoute] int id) =>
+        ResultToActionAsync(Mediator.Send(new UpgradeUserItemCommand { UserItemId = id, UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Sells item for the current user.
     /// </summary>
-    /// <param name="id">The id of the item to sell.</param>
+    /// <param name="id">The id of the user item to sell.</param>
     /// <response code="204">Sold.</response>
     /// <response code="400">Bad Request.</response>
     /// <response code="404">Item was not found.</response>
     [HttpDelete("self/items/{id}")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     public Task<ActionResult> SellUserItem([FromRoute] int id) =>
-        ResultToActionAsync(Mediator.Send(new SellItemCommand { ItemId = id, UserId = CurrentUser.User!.Id }));
+        ResultToActionAsync(Mediator.Send(new SellUserItemCommand { UserItemId = id, UserId = CurrentUser.User!.Id }));
 
     /// <summary>
     /// Gets user clan or null.

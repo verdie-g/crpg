@@ -27,7 +27,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
 
     internal class Handler : IMediatorRequestHandler<GetGameUserCommand, GameUser>
     {
-        internal static readonly (string mbId, ItemSlot slot)[][] DefaultItemSets =
+        internal static readonly (string id, ItemSlot slot)[][] DefaultItemSets =
         {
             // aserai
             new[]
@@ -143,7 +143,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
                 await _db.Entry(user.Characters[0])
                     .Collection(c => c.EquippedItems)
                     .Query()
-                    .Include(ei => ei.Item)
+                    .Include(ei => ei.UserItem)
                     .LoadAsync(cancellationToken);
             }
 
@@ -184,11 +184,11 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
         {
             // Get a random set of items and check if the user already own some of them and add the others.
             var mbIdsWithSlot = DefaultItemSets[_random.Next(0, DefaultItemSets.Length)];
-            string[] itemMbIds = mbIdsWithSlot.Select(i => i.mbId).ToArray();
+            string[] itemIds = mbIdsWithSlot.Select(i => i.id).ToArray();
             var items = await _db.Items
                 .Include(i => i.UserItems.Where(oi => oi.UserId == user.Id))
-                .Where(i => itemMbIds.Contains(i.TemplateMbId) && i.Rank == 0)
-                .ToDictionaryAsync(i => i.TemplateMbId);
+                .Where(i => itemIds.Contains(i.Id))
+                .ToDictionaryAsync(i => i.Id, StringComparer.Ordinal);
 
             List<EquippedItem> equippedItems = new();
             foreach (var (newItemMbId, slot) in mbIdsWithSlot)
@@ -208,8 +208,9 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
                 {
                     userItem = new UserItem
                     {
-                        ItemId = item.Id,
+                        BaseItemId = item.Id,
                         User = user,
+                        Rank = 0,
                     };
 
                     _db.UserItems.Add(userItem);
@@ -219,7 +220,6 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
                 EquippedItem equippedItem = new()
                 {
                     Slot = slot,
-                    Item = item,
                     UserItem = userItem,
                 };
 

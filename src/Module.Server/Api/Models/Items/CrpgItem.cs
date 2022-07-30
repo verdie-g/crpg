@@ -3,13 +3,12 @@
 // Copy of Crpg.Application.Items.Model.ItemViewModel
 internal class CrpgItem : CrpgItemCreation
 {
-    public int Id { get; set; }
     public int Price { get; set; }
 }
 
 internal class CrpgItemCreation
 {
-    public string TemplateMbId { get; set; } = string.Empty;
+    public string Id { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
     public CrpgCulture Culture { get; set; }
     public CrpgItemType Type { get; set; }

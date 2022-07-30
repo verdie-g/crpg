@@ -7,14 +7,12 @@ namespace Crpg.Application.Items.Models;
 
 public record ItemViewModel : IMapFrom<Item>
 {
-    public int Id { get; init; }
-    public string TemplateMbId { get; init; } = string.Empty;
+    public string Id { get; init; } = string.Empty;
     public string Name { get; init; } = string.Empty;
     public int Price { get; init; }
     public ItemType Type { get; init; }
     public Culture Culture { get; init; }
     public float Weight { get; init; }
-    public int Rank { get; init; }
 
     public ItemArmorComponentViewModel? Armor { get; init; }
     public ItemMountComponentViewModel? Mount { get; init; }

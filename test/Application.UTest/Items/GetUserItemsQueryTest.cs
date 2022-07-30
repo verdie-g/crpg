@@ -14,8 +14,8 @@ public class GetUserItemsQueryTest : TestBase
         {
             Items = new List<UserItem>
             {
-                new() { Item = new Item() },
-                new() { Item = new Item() },
+                new() { BaseItem = new Item { Id = "1" } },
+                new() { BaseItem = new Item { Id = "2" } },
             },
         });
         await ArrangeDb.SaveChangesAsync();

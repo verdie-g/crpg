@@ -15,28 +15,28 @@ public class UpdateCharacterItemsCommandTest : TestBase
     {
         User user = new();
 
-        UserItem headOld = new() { User = user, Item = new Item { Type = ItemType.HeadArmor } };
-        UserItem headNew = new() { User = user, Item = new Item { Type = ItemType.HeadArmor } };
-        UserItem shoulderOld = new() { User = user, Item = new Item { Type = ItemType.ShoulderArmor } };
-        UserItem shoulderNew = new() { User = user, Item = new Item { Type = ItemType.ShoulderArmor } };
-        UserItem bodyOld = new() { User = user, Item = new Item { Type = ItemType.BodyArmor } };
-        UserItem bodyNew = new() { User = user, Item = new Item { Type = ItemType.BodyArmor } };
-        UserItem handOld = new() { User = user, Item = new Item { Type = ItemType.HandArmor } };
-        UserItem handNew = new() { User = user, Item = new Item { Type = ItemType.HandArmor } };
-        UserItem legOld = new() { User = user, Item = new Item { Type = ItemType.LegArmor } };
-        UserItem legNew = new() { User = user, Item = new Item { Type = ItemType.LegArmor } };
-        UserItem mountHarnessOld = new() { User = user, Item = new Item { Type = ItemType.MountHarness } };
-        UserItem mountHarnessNew = new() { User = user, Item = new Item { Type = ItemType.MountHarness } };
-        UserItem mountOld = new() { User = user, Item = new Item { Type = ItemType.Mount } };
-        UserItem mountNew = new() { User = user, Item = new Item { Type = ItemType.Mount } };
-        UserItem weapon0Old = new() { User = user, Item = new Item { Type = ItemType.Arrows } };
-        UserItem weapon0New = new() { User = user, Item = new Item { Type = ItemType.Bolts } };
-        UserItem weapon1Old = new() { User = user, Item = new Item { Type = ItemType.Bow } };
-        UserItem weapon1New = new() { User = user, Item = new Item { Type = ItemType.Crossbow } };
-        UserItem weapon2Old = new() { User = user, Item = new Item { Type = ItemType.Polearm } };
-        UserItem weapon2New = new() { User = user, Item = new Item { Type = ItemType.Shield } };
-        UserItem weapon3Old = new() { User = user, Item = new Item { Type = ItemType.OneHandedWeapon } };
-        UserItem weapon3New = new() { User = user, Item = new Item { Type = ItemType.TwoHandedWeapon } };
+        UserItem headOld = new() { User = user, BaseItem = new Item { Id = "1", Type = ItemType.HeadArmor } };
+        UserItem headNew = new() { User = user, BaseItem = new Item { Id = "2", Type = ItemType.HeadArmor } };
+        UserItem shoulderOld = new() { User = user, BaseItem = new Item { Id = "3", Type = ItemType.ShoulderArmor } };
+        UserItem shoulderNew = new() { User = user, BaseItem = new Item { Id = "4", Type = ItemType.ShoulderArmor } };
+        UserItem bodyOld = new() { User = user, BaseItem = new Item { Id = "5", Type = ItemType.BodyArmor } };
+        UserItem bodyNew = new() { User = user, BaseItem = new Item { Id = "6", Type = ItemType.BodyArmor } };
+        UserItem handOld = new() { User = user, BaseItem = new Item { Id = "7", Type = ItemType.HandArmor } };
+        UserItem handNew = new() { User = user, BaseItem = new Item { Id = "8", Type = ItemType.HandArmor } };
+        UserItem legOld = new() { User = user, BaseItem = new Item { Id = "9", Type = ItemType.LegArmor } };
+        UserItem legNew = new() { User = user, BaseItem = new Item { Id = "10", Type = ItemType.LegArmor } };
+        UserItem mountHarnessOld = new() { User = user, BaseItem = new Item { Id = "11", Type = ItemType.MountHarness } };
+        UserItem mountHarnessNew = new() { User = user, BaseItem = new Item { Id = "12", Type = ItemType.MountHarness } };
+        UserItem mountOld = new() { User = user, BaseItem = new Item { Id = "13", Type = ItemType.Mount } };
+        UserItem mountNew = new() { User = user, BaseItem = new Item { Id = "14", Type = ItemType.Mount } };
+        UserItem weapon0Old = new() { User = user, BaseItem = new Item { Id = "15", Type = ItemType.Arrows } };
+        UserItem weapon0New = new() { User = user, BaseItem = new Item { Id = "16", Type = ItemType.Bolts } };
+        UserItem weapon1Old = new() { User = user, BaseItem = new Item { Id = "17", Type = ItemType.Bow } };
+        UserItem weapon1New = new() { User = user, BaseItem = new Item { Id = "18", Type = ItemType.Crossbow } };
+        UserItem weapon2Old = new() { User = user, BaseItem = new Item { Id = "19", Type = ItemType.Polearm } };
+        UserItem weapon2New = new() { User = user, BaseItem = new Item { Id = "20", Type = ItemType.Shield } };
+        UserItem weapon3Old = new() { User = user, BaseItem = new Item { Id = "21", Type = ItemType.OneHandedWeapon } };
+        UserItem weapon3New = new() { User = user, BaseItem = new Item { Id = "22", Type = ItemType.TwoHandedWeapon } };
 
         Character character = new()
         {
@@ -70,33 +70,33 @@ public class UpdateCharacterItemsCommandTest : TestBase
             UserId = user.Id,
             Items = new List<EquippedItemIdViewModel>
             {
-                new() { ItemId = headNew.ItemId, Slot = ItemSlot.Head },
-                new() { ItemId = shoulderNew.ItemId, Slot = ItemSlot.Shoulder },
-                new() { ItemId = bodyNew.ItemId, Slot = ItemSlot.Body },
-                new() { ItemId = handNew.ItemId, Slot = ItemSlot.Hand },
-                new() { ItemId = legNew.ItemId, Slot = ItemSlot.Leg },
-                new() { ItemId = mountHarnessNew.ItemId, Slot = ItemSlot.MountHarness },
-                new() { ItemId = mountNew.ItemId, Slot = ItemSlot.Mount },
-                new() { ItemId = weapon0New.ItemId, Slot = ItemSlot.Weapon0 },
-                new() { ItemId = weapon1New.ItemId, Slot = ItemSlot.Weapon1 },
-                new() { ItemId = weapon2New.ItemId, Slot = ItemSlot.Weapon2 },
-                new() { ItemId = weapon3New.ItemId, Slot = ItemSlot.Weapon3 },
+                new() { UserItemId = headNew.Id, Slot = ItemSlot.Head },
+                new() { UserItemId = shoulderNew.Id, Slot = ItemSlot.Shoulder },
+                new() { UserItemId = bodyNew.Id, Slot = ItemSlot.Body },
+                new() { UserItemId = handNew.Id, Slot = ItemSlot.Hand },
+                new() { UserItemId = legNew.Id, Slot = ItemSlot.Leg },
+                new() { UserItemId = mountHarnessNew.Id, Slot = ItemSlot.MountHarness },
+                new() { UserItemId = mountNew.Id, Slot = ItemSlot.Mount },
+                new() { UserItemId = weapon0New.Id, Slot = ItemSlot.Weapon0 },
+                new() { UserItemId = weapon1New.Id, Slot = ItemSlot.Weapon1 },
+                new() { UserItemId = weapon2New.Id, Slot = ItemSlot.Weapon2 },
+                new() { UserItemId = weapon3New.Id, Slot = ItemSlot.Weapon3 },
             },
         };
         var result = await handler.Handle(cmd, CancellationToken.None);
 
-        var itemIdBySlot = result.Data!.ToDictionary(i => i.Slot, i => i.Item.Id);
-        Assert.AreEqual(headNew.ItemId, itemIdBySlot[ItemSlot.Head]);
-        Assert.AreEqual(shoulderNew.ItemId, itemIdBySlot[ItemSlot.Shoulder]);
-        Assert.AreEqual(bodyNew.ItemId, itemIdBySlot[ItemSlot.Body]);
-        Assert.AreEqual(handNew.ItemId, itemIdBySlot[ItemSlot.Hand]);
-        Assert.AreEqual(legNew.ItemId, itemIdBySlot[ItemSlot.Leg]);
-        Assert.AreEqual(mountHarnessNew.ItemId, itemIdBySlot[ItemSlot.MountHarness]);
-        Assert.AreEqual(mountNew.ItemId, itemIdBySlot[ItemSlot.Mount]);
-        Assert.AreEqual(weapon0New.ItemId, itemIdBySlot[ItemSlot.Weapon0]);
-        Assert.AreEqual(weapon1New.ItemId, itemIdBySlot[ItemSlot.Weapon1]);
-        Assert.AreEqual(weapon2New.ItemId, itemIdBySlot[ItemSlot.Weapon2]);
-        Assert.AreEqual(weapon3New.ItemId, itemIdBySlot[ItemSlot.Weapon3]);
+        var userItemIdBySlot = result.Data!.ToDictionary(i => i.Slot, ei => ei.UserItem.Id);
+        Assert.AreEqual(headNew.Id, userItemIdBySlot[ItemSlot.Head]);
+        Assert.AreEqual(shoulderNew.Id, userItemIdBySlot[ItemSlot.Shoulder]);
+        Assert.AreEqual(bodyNew.Id, userItemIdBySlot[ItemSlot.Body]);
+        Assert.AreEqual(handNew.Id, userItemIdBySlot[ItemSlot.Hand]);
+        Assert.AreEqual(legNew.Id, userItemIdBySlot[ItemSlot.Leg]);
+        Assert.AreEqual(mountHarnessNew.Id, userItemIdBySlot[ItemSlot.MountHarness]);
+        Assert.AreEqual(mountNew.Id, userItemIdBySlot[ItemSlot.Mount]);
+        Assert.AreEqual(weapon0New.Id, userItemIdBySlot[ItemSlot.Weapon0]);
+        Assert.AreEqual(weapon1New.Id, userItemIdBySlot[ItemSlot.Weapon1]);
+        Assert.AreEqual(weapon2New.Id, userItemIdBySlot[ItemSlot.Weapon2]);
+        Assert.AreEqual(weapon3New.Id, userItemIdBySlot[ItemSlot.Weapon3]);
     }
 
     [Test]
@@ -105,11 +105,11 @@ public class UpdateCharacterItemsCommandTest : TestBase
         User user = new();
         ArrangeDb.Users.Add(user);
 
-        UserItem headOld = new() { User = user, Item = new Item { Type = ItemType.HeadArmor } };
-        UserItem headNew = new() { User = user, Item = new Item { Type = ItemType.HeadArmor } };
-        UserItem bodyNew = new() { User = user, Item = new Item { Type = ItemType.BodyArmor } };
-        UserItem handOld = new() { User = user, Item = new Item { Type = ItemType.HandArmor } };
-        UserItem legOld = new() { User = user, Item = new Item { Type = ItemType.LegArmor } };
+        UserItem headOld = new() { User = user, BaseItem = new Item { Id = "1", Type = ItemType.HeadArmor } };
+        UserItem headNew = new() { User = user, BaseItem = new Item { Id = "2", Type = ItemType.HeadArmor } };
+        UserItem bodyNew = new() { User = user, BaseItem = new Item { Id = "3", Type = ItemType.BodyArmor } };
+        UserItem handOld = new() { User = user, BaseItem = new Item { Id = "4", Type = ItemType.HandArmor } };
+        UserItem legOld = new() { User = user, BaseItem = new Item { Id = "5", Type = ItemType.LegArmor } };
 
         Character character = new()
         {
@@ -133,26 +133,26 @@ public class UpdateCharacterItemsCommandTest : TestBase
             UserId = user.Id,
             Items = new List<EquippedItemIdViewModel>
             {
-                new() { ItemId = headNew.ItemId, Slot = ItemSlot.Head },
-                new() { ItemId = bodyNew.ItemId, Slot = ItemSlot.Body },
-                new() { ItemId = null, Slot = ItemSlot.Hand },
+                new() { UserItemId = headNew.Id, Slot = ItemSlot.Head },
+                new() { UserItemId = bodyNew.Id, Slot = ItemSlot.Body },
+                new() { UserItemId = null, Slot = ItemSlot.Hand },
             },
         };
         var result = await handler.Handle(cmd, CancellationToken.None);
 
-        var itemIdBySlot = result.Data!.ToDictionary(i => i.Slot, i => i.Item.Id);
-        Assert.AreEqual(headNew.ItemId, itemIdBySlot[ItemSlot.Head]);
-        Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Shoulder));
-        Assert.AreEqual(bodyNew.ItemId, itemIdBySlot[ItemSlot.Body]);
-        Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Shoulder));
-        Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Hand));
-        Assert.AreEqual(legOld.ItemId, itemIdBySlot[ItemSlot.Leg]);
-        Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.MountHarness));
-        Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Mount));
-        Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon0));
-        Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon1));
-        Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon2));
-        Assert.That(itemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon3));
+        var userItemIdBySlot = result.Data!.ToDictionary(i => i.Slot, i => i.UserItem.Id);
+        Assert.AreEqual(headNew.Id, userItemIdBySlot[ItemSlot.Head]);
+        Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.Shoulder));
+        Assert.AreEqual(bodyNew.Id, userItemIdBySlot[ItemSlot.Body]);
+        Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.Shoulder));
+        Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.Hand));
+        Assert.AreEqual(legOld.Id, userItemIdBySlot[ItemSlot.Leg]);
+        Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.MountHarness));
+        Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.Mount));
+        Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon0));
+        Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon1));
+        Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon2));
+        Assert.That(userItemIdBySlot, Does.Not.ContainKey(ItemSlot.Weapon3));
     }
 
     [Test]
@@ -222,34 +222,34 @@ public class UpdateCharacterItemsCommandTest : TestBase
         {
             CharacterId = character.Entity.Id,
             UserId = user.Entity.Id,
-            Items = new List<EquippedItemIdViewModel> { new() { ItemId = 1, Slot = ItemSlot.Head } },
+            Items = new List<EquippedItemIdViewModel> { new() { UserItemId = 1, Slot = ItemSlot.Head } },
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.UserItemNotFound, result.Errors![0].Code);
     }
 
     [Test]
     public async Task ItemNotOwned()
     {
-        var head = ArrangeDb.Items.Add(new Item { Type = ItemType.HeadArmor });
-        var character = ArrangeDb.Characters.Add(new Character());
-        var user = ArrangeDb.Users.Add(new User
-        {
-            Characters = new List<Character> { character.Entity },
-        });
+        UserItem userItem = new() { BaseItem = new Item { Type = ItemType.HeadArmor } };
+        Character character = new();
+        User user = new() { Characters = { character } };
+        ArrangeDb.UserItems.Add(userItem);
+        ArrangeDb.Characters.Add(character);
+        ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
         UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
         UpdateCharacterItemsCommand cmd = new()
         {
-            CharacterId = character.Entity.Id,
-            UserId = user.Entity.Id,
-            Items = new List<EquippedItemIdViewModel> { new() { ItemId = head.Entity.Id, Slot = ItemSlot.Head } },
+            CharacterId = character.Id,
+            UserId = user.Id,
+            Items = new List<EquippedItemIdViewModel> { new() { UserItemId = userItem.Id, Slot = ItemSlot.Head } },
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.ItemNotOwned, result.Errors![0].Code);
+        Assert.AreEqual(ErrorCode.UserItemNotFound, result.Errors![0].Code);
     }
 
     [TestCase(ItemType.HeadArmor, ItemSlot.Shoulder)]
@@ -275,7 +275,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
     public async Task WrongSlotForItemType(ItemType itemType, ItemSlot itemSlot)
     {
         Character character = new();
-        UserItem userItem = new() { Item = new Item { Type = itemType } };
+        UserItem userItem = new() { BaseItem = new Item { Type = itemType } };
         User user = new()
         {
             Items = { userItem },
@@ -289,7 +289,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
         {
             CharacterId = character.Id,
             UserId = user.Id,
-            Items = new List<EquippedItemIdViewModel> { new() { ItemId = userItem.ItemId, Slot = itemSlot } },
+            Items = new List<EquippedItemIdViewModel> { new() { UserItemId = userItem.Id, Slot = itemSlot } },
         };
 
         var result = await handler.Handle(cmd, CancellationToken.None);

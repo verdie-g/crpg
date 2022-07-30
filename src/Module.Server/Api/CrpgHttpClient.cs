@@ -2,7 +2,6 @@
 using System.Net.Http.Headers;
 using System.Text;
 using Crpg.Module.Api.Models;
-using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Helpers.Json;
 using Newtonsoft.Json;
@@ -52,11 +51,6 @@ internal class CrpgHttpClient : ICrpgClient
             ["userName"] = userName,
         };
         return Get<CrpgUser>("games/users", queryParameters, cancellationToken);
-    }
-
-    public Task<CrpgResult<IList<CrpgItem>>> GetItemsAsync(CancellationToken cancellationToken = default)
-    {
-        return Get<IList<CrpgItem>>("games/items", null, cancellationToken);
     }
 
     public Task<CrpgResult<CrpgUsersUpdateResponse>> UpdateUsersAsync(CrpgGameUsersUpdateRequest req, CancellationToken cancellationToken = default)

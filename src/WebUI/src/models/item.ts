@@ -5,14 +5,12 @@ import ItemWeaponComponent from '@/models/item-weapon-component';
 import Culture from '@/models/culture';
 
 export default interface Item {
-  id: number;
-  templateMbId: string;
+  id: string;
   name: string;
   price: number;
   type: ItemType;
   culture: Culture;
   weight: number;
-  rank: number;
 
   armor: ItemArmorComponent | null;
   mount: ItemMountComponent | null;

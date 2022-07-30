@@ -9,6 +9,7 @@ import EquippedItem from '@/models/equipped-item';
 import EquippedItemId from '@/models/equipped-item-id';
 import { get, post, put, del } from './crpg-client';
 import Clan from '@/models/clan';
+import UserItem from '@/models/user-item';
 
 export function getUser(): Promise<User> {
   return get('/users/self');
@@ -18,7 +19,7 @@ export function deleteUser(): Promise<void> {
   return del('/users/self');
 }
 
-export function getUserItems(): Promise<Item[]> {
+export function getUserItems(): Promise<UserItem[]> {
   return get('/users/self/items');
 }
 
@@ -75,12 +76,12 @@ export function convertCharacterStatistics(
   return put(`/users/self/characters/${characterId}/statistics/convert`, { conversion });
 }
 
-export function buyItem(itemId: number): Promise<Item> {
+export function buyItem(itemId: string): Promise<UserItem> {
   return post('/users/self/items', { itemId });
 }
 
-export function upgradeItem(itemId: number): Promise<Item> {
-  return put(`/users/self/items/${itemId}/upgrade`);
+export function upgradeUserItem(userItemId: number): Promise<UserItem> {
+  return put(`/users/self/items/${userItemId}/upgrade`);
 }
 
 export function getCharacters(): Promise<Character[]> {

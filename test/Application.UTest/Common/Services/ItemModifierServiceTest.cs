@@ -12,7 +12,7 @@ public class ItemModifierServiceTest : TestBase
     {
         Item item = new()
         {
-            TemplateMbId = "123",
+            Id = "123",
             Name = "toto",
             Price = 1000,
             Type = itemType,
@@ -63,7 +63,7 @@ public class ItemModifierServiceTest : TestBase
 
         for (int i = 1; i < modifiedItems.Length; i += 1)
         {
-            StringAssert.EndsWith("123", modifiedItems[i].TemplateMbId);
+            StringAssert.EndsWith("123", modifiedItems[i].Id);
             StringAssert.EndsWith("toto", modifiedItems[i].Name);
             Assert.AreEqual(itemType, modifiedItems[i].Type);
 
