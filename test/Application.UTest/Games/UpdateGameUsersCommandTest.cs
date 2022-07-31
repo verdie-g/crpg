@@ -1,4 +1,5 @@
-﻿using Crpg.Application.Common.Services;
+﻿using Crpg.Application.Characters.Models;
+using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Commands;
 using Crpg.Application.Games.Models;
 using Crpg.Domain.Entities.Characters;
@@ -36,7 +37,21 @@ public class UpdateGameUsersCommandTest : TestBase
                     Experience = 0,
                     ExperienceMultiplier = 1.0f,
                     Level = 1,
-                    EquippedItems = { new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Body } },
+                    EquippedItems =
+                    {
+                        new EquippedItem
+                        {
+                            UserItem = new UserItem { BaseItem = new Item() },
+                            Slot = ItemSlot.Body,
+                        },
+                    },
+                    Statistics = new CharacterStatistics
+                    {
+                        Kills = 1,
+                        Deaths = 2,
+                        Assists = 3,
+                        PlayTime = TimeSpan.FromSeconds(4),
+                    },
                 },
             },
         };
@@ -60,6 +75,13 @@ public class UpdateGameUsersCommandTest : TestBase
                         Experience = 10,
                         Gold = 200,
                     },
+                    Statistics = new CharacterStatisticsViewModel
+                    {
+                        Kills = 5,
+                        Deaths = 6,
+                        Assists = 7,
+                        PlayTime = TimeSpan.FromSeconds(8),
+                    },
                 },
             },
         }, CancellationToken.None);
@@ -78,6 +100,12 @@ public class UpdateGameUsersCommandTest : TestBase
         Assert.IsFalse(data.UpdateResults[0].EffectiveReward.LevelUp);
         Assert.IsEmpty(data.UpdateResults[0].BrokenItems);
 
+        var dbCharacter = await AssertDb.Characters.FirstAsync(c => c.Id == user.Characters[0].Id);
+        Assert.AreEqual(6, dbCharacter.Statistics.Kills);
+        Assert.AreEqual(8, dbCharacter.Statistics.Deaths);
+        Assert.AreEqual(10, dbCharacter.Statistics.Assists);
+        Assert.AreEqual(TimeSpan.FromSeconds(12), dbCharacter.Statistics.PlayTime);
+
         characterServiceMock.VerifyAll();
     }
 
@@ -94,17 +122,17 @@ public class UpdateGameUsersCommandTest : TestBase
                     Name = "b",
                     EquippedItems =
                     {
-                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Head },
-                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Shoulder },
-                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Body },
-                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Hand },
-                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Leg },
-                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.MountHarness },
-                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Mount },
-                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Weapon0 },
-                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Weapon1 },
-                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Weapon2 },
-                        new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Weapon3 },
+                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "0" } }, Slot = ItemSlot.Head },
+                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "1" } }, Slot = ItemSlot.Shoulder },
+                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "2" } }, Slot = ItemSlot.Body },
+                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "3" } }, Slot = ItemSlot.Hand },
+                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "4" } }, Slot = ItemSlot.Leg },
+                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "5" } }, Slot = ItemSlot.MountHarness },
+                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "6" } }, Slot = ItemSlot.Mount },
+                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "7" } }, Slot = ItemSlot.Weapon0 },
+                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "8" } }, Slot = ItemSlot.Weapon1 },
+                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "9" } }, Slot = ItemSlot.Weapon2 },
+                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "10" } }, Slot = ItemSlot.Weapon3 },
                     },
                     AutoRepair = true,
                 },

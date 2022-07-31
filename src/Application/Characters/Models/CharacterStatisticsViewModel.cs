@@ -8,4 +8,5 @@ public record CharacterStatisticsViewModel : IMapFrom<CharacterStatistics>
     public int Kills { get; init; }
     public int Deaths { get; init; }
     public int Assists { get; init; }
+    public TimeSpan PlayTime { get; init; }
 }

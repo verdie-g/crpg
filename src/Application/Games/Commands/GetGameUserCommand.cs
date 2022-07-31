@@ -143,7 +143,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
                 await _db.Entry(user.Characters[0])
                     .Collection(c => c.EquippedItems)
                     .Query()
-                    .Include(ei => ei.UserItem)
+                    .Include(ei => ei.UserItem!.BaseItem)
                     .LoadAsync(cancellationToken);
             }
 
@@ -178,6 +178,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
                     Kills = 0,
                     Deaths = 0,
                     Assists = 0,
+                    PlayTime = TimeSpan.Zero,
                 },
             };
 

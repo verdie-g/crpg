@@ -37,6 +37,14 @@
           :controls="false"
         />
       </b-field>
+      <!-- TODO: align correctly -->
+      <b-field horizontal label="KDA" class="characteristic-field">
+        <b-input
+          size="is-small"
+          :value="getKda()"
+          readonly
+        />
+      </b-field>
     </div>
 
     <div class="characteristic-section" v-if="characteristics !== null">
@@ -528,6 +536,7 @@ export default class CharacterCharacteristicsComponent extends Vue {
 
   created() {
     userModule.getCharacterCharacteristics(this.character.id);
+    userModule.getCharacterStatistics(this.character.id);
   }
 
   createEmptycharacteristics(): CharacterCharacteristics {
@@ -559,6 +568,18 @@ export default class CharacterCharacteristicsComponent extends Vue {
         crossbow: 0,
       },
     };
+  }
+
+  getKda(): string {
+    const statistics = userModule.characterStatistics(this.character.id);
+    if (statistics === null) {
+      return '0/0/0';
+    }
+
+    const ratio = statistics.deaths === 0
+      ? '∞'
+      : Math.round(100 * statistics.kills / statistics.deaths) / 100;
+    return `${statistics.kills}/${statistics.deaths}/${statistics.assists} (${ratio})`;
   }
 
   convertCharacteristics(conversion: CharacteristicConversion): Promise<CharacterCharacteristics> {

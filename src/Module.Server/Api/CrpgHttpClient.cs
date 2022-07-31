@@ -37,7 +37,12 @@ internal class CrpgHttpClient : ICrpgClient
             {
                 NamingStrategy = new CamelCaseNamingStrategy(),
             },
-            Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() },
+            Converters = new JsonConverter[]
+            {
+                new TimeSpanConverter(),
+                new ArrayStringEnumFlagsConverter(),
+                new StringEnumConverter(),
+            },
         };
     }
 
@@ -78,7 +83,7 @@ internal class CrpgHttpClient : ICrpgClient
     {
         HttpRequestMessage msg = new(HttpMethod.Put, requestUri)
         {
-            Content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json"),
+            Content = new StringContent(JsonConvert.SerializeObject(payload, _serializerSettings), Encoding.UTF8, "application/json"),
         };
 
         return Send<TResponse>(msg, cancellationToken);
@@ -88,7 +93,7 @@ internal class CrpgHttpClient : ICrpgClient
     {
         HttpRequestMessage msg = new(HttpMethod.Post, requestUri)
         {
-            Content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json"),
+            Content = new StringContent(JsonConvert.SerializeObject(payload, _serializerSettings), Encoding.UTF8, "application/json"),
         };
 
         return Send<TResponse>(msg, cancellationToken);
