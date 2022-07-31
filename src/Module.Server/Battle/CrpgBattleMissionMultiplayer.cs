@@ -1,17 +1,21 @@
 ﻿using Crpg.Module.Api;
 using Crpg.Module.Api.Models;
+using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using TaleWorlds.PlayerServices;
 
 namespace Crpg.Module.Battle;
 
 internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 {
     private readonly ICrpgClient _crpgClient;
+
+    private Dictionary<PlayerId, CrpgCharacterStatistics> _lastRoundAllTotalStats = new();
 
     public override bool IsGameModeHidingAllAgentVisuals => true;
     public override bool IsGameModeUsingOpposingTeams => true;
@@ -127,6 +131,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         int ticks = ComputeTicks();
 
         Dictionary<int, CrpgRepresentative> crpgRepresentativeByUserId = new();
+        var newRoundAllTotalStats = new Dictionary<PlayerId, CrpgCharacterStatistics>();
         List<CrpgUserUpdate> userUpdates = new();
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
@@ -142,22 +147,12 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             {
                 CharacterId = crpgRepresentative.User.Character.Id,
                 Reward = new CrpgUserReward { Experience = 0, Gold = 0 },
+                Statistics = new CrpgCharacterStatistics { Kills = 0, Deaths = 0, Assists = 0, PlayTime = TimeSpan.Zero },
                 BrokenItems = Array.Empty<CrpgUserBrokenItem>(), // TODO
             };
 
-            if (crpgRepresentative.SpawnTeamThisRound != null)
-            {
-                int totalRewardMultiplier = crpgRepresentative.RewardMultiplier * ticks;
-                userUpdate.Reward = new CrpgUserReward
-                {
-                    Experience = totalRewardMultiplier * 1000,
-                    Gold = totalRewardMultiplier * 50,
-                };
-
-                crpgRepresentative.RewardMultiplier = RoundController.RoundWinner == crpgRepresentative.SpawnTeamThisRound.Side
-                    ? Math.Min(5, crpgRepresentative.RewardMultiplier + 1)
-                    : 1;
-            }
+            SetReward(userUpdate, crpgRepresentative, ticks);
+            SetStatistics(userUpdate, networkPeer, newRoundAllTotalStats);
 
             userUpdates.Add(userUpdate);
         }
@@ -166,6 +161,9 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         {
             return;
         }
+
+        // Save last round stats to be able to make the difference next round.
+        _lastRoundAllTotalStats = newRoundAllTotalStats;
 
         // TODO: add retry mechanism (the endpoint need to be idempotent though).
         CrpgUsersUpdateResponse res;
@@ -190,6 +188,55 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         }
 
         return 1 + (int)roundDuration / 60;
+    }
+
+    private void SetReward(CrpgUserUpdate userUpdate, CrpgRepresentative crpgRepresentative, int ticks)
+    {
+        if (crpgRepresentative.SpawnTeamThisRound == null)
+        {
+            return;
+        }
+
+        int totalRewardMultiplier = crpgRepresentative.RewardMultiplier * ticks;
+        userUpdate.Reward = new CrpgUserReward
+        {
+            Experience = totalRewardMultiplier * 1000,
+            Gold = totalRewardMultiplier * 50,
+        };
+
+        crpgRepresentative.RewardMultiplier = RoundController.RoundWinner == crpgRepresentative.SpawnTeamThisRound.Side
+            ? Math.Min(5, crpgRepresentative.RewardMultiplier + 1)
+            : 1;
+    }
+
+    private void SetStatistics(CrpgUserUpdate userUpdate, NetworkCommunicator networkPeer,
+        Dictionary<PlayerId, CrpgCharacterStatistics> newRoundAllTotalStats)
+    {
+        var missionPeer = networkPeer.GetComponent<MissionPeer>();
+        var newRoundTotalStats = new CrpgCharacterStatistics
+        {
+            Kills = missionPeer.KillCount,
+            Deaths = missionPeer.DeathCount,
+            Assists = missionPeer.AssistCount,
+            PlayTime = DateTime.Now - missionPeer.JoinTime,
+        };
+
+        if (_lastRoundAllTotalStats.TryGetValue(networkPeer.VirtualPlayer.Id, out var lastRoundTotalStats))
+        {
+            userUpdate.Statistics.Kills = newRoundTotalStats.Kills - lastRoundTotalStats.Kills;
+            userUpdate.Statistics.Deaths = newRoundTotalStats.Deaths - lastRoundTotalStats.Deaths;
+            userUpdate.Statistics.Assists = newRoundTotalStats.Assists - lastRoundTotalStats.Assists;
+            userUpdate.Statistics.PlayTime = newRoundTotalStats.PlayTime - lastRoundTotalStats.PlayTime;
+        }
+        else
+        {
+            userUpdate.Statistics.Kills = newRoundTotalStats.Kills;
+            userUpdate.Statistics.Deaths = newRoundTotalStats.Deaths;
+            userUpdate.Statistics.Assists = newRoundTotalStats.Assists;
+            userUpdate.Statistics.PlayTime = newRoundTotalStats.PlayTime;
+        }
+
+        newRoundAllTotalStats[networkPeer.VirtualPlayer.Id] = newRoundTotalStats;
     }
 
     private void SendRewardToPeers(IList<UpdateCrpgUserResult> updateResults,

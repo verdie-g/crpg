@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
@@ -48,6 +49,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
                 }
 
                 var reward = GiveReward(character, update.Reward);
+                UpdateStatistics(character, update.Statistics);
                 var brokenItems = await RepairOrBreakItems(character, update.BrokenItems, cancellationToken);
                 results.Add((character.User!, reward, brokenItems));
             }
@@ -76,7 +78,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             // to their respective character.
             await _db.EquippedItems
                 .Where(ei => characterIds.Contains(ei.CharacterId))
-                .Include(ei => ei.UserItem)
+                .Include(ei => ei.UserItem!.BaseItem)
                 .LoadAsync(cancellationToken);
 
             return charactersById;
@@ -96,6 +98,14 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
                 Gold = reward.Gold,
                 LevelUp = character.Level != level,
             };
+        }
+
+        private void UpdateStatistics(Character character, CharacterStatisticsViewModel statistics)
+        {
+            character.Statistics.Kills += statistics.Kills;
+            character.Statistics.Deaths += statistics.Deaths;
+            character.Statistics.Assists += statistics.Assists;
+            character.Statistics.PlayTime += statistics.PlayTime;
         }
 
         private Task<List<GameUserBrokenItem>> RepairOrBreakItems(Character character, IEnumerable<GameUserBrokenItem> itemsToRepair,

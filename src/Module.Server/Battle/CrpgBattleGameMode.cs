@@ -5,7 +5,6 @@ using TaleWorlds.MountAndBlade.Source.Missions;
 
 #if CRPG_SERVER
 using Crpg.Module.Api;
-using TaleWorlds.MountAndBlade.DedicatedCustomServer;
 #else
 using Crpg.Module.GUI;
 using TaleWorlds.MountAndBlade.LegacyGUI.Missions;
@@ -67,7 +66,6 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 #if CRPG_SERVER
         CrpgHttpClient crpgClient = new();
         MultiplayerRoundController roundController = new(); // starts/stops round, ends match
-        CrpgCharacterKillDeath characterKillDeath = new(DedicatedCustomServerSubModule.Instance.DedicatedCustomGameServer.BattleResult);
 #endif
 
         MissionState.OpenNew(
@@ -100,7 +98,6 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new AgentHumanAILogic(), // bot intelligence
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
                     new CrpgUserManager(crpgClient),
-                    characterKillDeath,
 #else
                     new MultiplayerRoundComponent(),
                     new MissionMatchHistoryComponent(),

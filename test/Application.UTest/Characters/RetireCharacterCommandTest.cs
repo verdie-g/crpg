@@ -39,6 +39,7 @@ public class RetireCharacterCommandTest : TestBase
                 Kills = 1,
                 Deaths = 2,
                 Assists = 3,
+                PlayTime = TimeSpan.FromSeconds(4),
             },
             User = new User
             {
@@ -68,6 +69,7 @@ public class RetireCharacterCommandTest : TestBase
         Assert.AreEqual(0, character.Statistics.Kills);
         Assert.AreEqual(0, character.Statistics.Deaths);
         Assert.AreEqual(0, character.Statistics.Assists);
+        Assert.AreEqual(TimeSpan.FromSeconds(4), character.Statistics.PlayTime);
         Assert.AreEqual(2, character.User!.HeirloomPoints);
         Assert.IsEmpty(character.EquippedItems);
 

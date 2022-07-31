@@ -38,6 +38,7 @@ public class RespecializeCharacterCommandTest : TestBase
                 Kills = 1,
                 Deaths = 2,
                 Assists = 3,
+                PlayTime = TimeSpan.FromSeconds(4),
             },
         };
         ArrangeDb.Add(character);
@@ -66,6 +67,7 @@ public class RespecializeCharacterCommandTest : TestBase
         Assert.AreEqual(0, character.Statistics.Kills);
         Assert.AreEqual(0, character.Statistics.Deaths);
         Assert.AreEqual(0, character.Statistics.Assists);
+        Assert.AreEqual(TimeSpan.FromSeconds(4), character.Statistics.PlayTime);
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true));
     }
 

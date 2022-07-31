@@ -2,6 +2,7 @@ import User from '@/models/user';
 import Character from '@/models/character';
 import { UpdateCharacterRequest } from '@/models/update-character-request';
 import CharacterCharacteristics from '@/models/character-characteristics';
+import CharacterStatistics from '@/models/character-statistics';
 import CharacteristicConversion from '@/models/characteristic-conversion';
 import Ban from '@/models/ban';
 import EquippedItem from '@/models/equipped-item';
@@ -59,6 +60,10 @@ export function switchCharacterAutoRepair(characterId: number, autoRepair: boole
 
 export function getCharacterCharacteristics(characterId: number): Promise<CharacterCharacteristics> {
   return get(`/users/self/characters/${characterId}/characteristics`);
+}
+
+export function getCharacterStatistics(characterId: number): Promise<CharacterStatistics> {
+  return get(`/users/self/characters/${characterId}/statistics`);
 }
 
 export function updateCharacterCharacteristics(

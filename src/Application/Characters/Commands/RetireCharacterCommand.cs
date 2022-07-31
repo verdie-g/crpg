@@ -56,12 +56,9 @@ public record RetireCharacterCommand : IMediatorRequest<CharacterViewModel>
             character.Experience = 0;
             character.ExperienceMultiplier = MathHelper.ApplyPolynomialFunction(character.Generation, _constants.ExperienceMultiplierForGenerationCoefs);
             character.EquippedItems.Clear();
-            character.Statistics = new CharacterStatistics
-            {
-                Kills = 0,
-                Deaths = 0,
-                Assists = 0,
-            };
+            character.Statistics.Kills = 0;
+            character.Statistics.Deaths = 0;
+            character.Statistics.Assists = 0;
             _characterService.ResetCharacterCharacteristics(character);
 
             character.User!.HeirloomPoints += 1;

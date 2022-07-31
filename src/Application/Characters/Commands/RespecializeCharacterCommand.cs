@@ -51,12 +51,9 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
             character.Experience = (int)MathHelper.ApplyPolynomialFunction(character.Experience, _constants.RespecializeExperiencePenaltyCoefs);
             character.Level = _experienceTable.GetLevelForExperience(character.Experience);
             character.EquippedItems.Clear(); // Unequip all items.
-            character.Statistics = new CharacterStatistics
-            {
-                Kills = 0,
-                Deaths = 0,
-                Assists = 0,
-            };
+            character.Statistics.Kills = 0;
+            character.Statistics.Deaths = 0;
+            character.Statistics.Assists = 0;
             _characterService.ResetCharacterCharacteristics(character, true);
 
             await _db.SaveChangesAsync(cancellationToken);

@@ -7,6 +7,7 @@ import Character from '@/models/character';
 import Item from '@/models/item';
 import ItemSlot from '@/models/item-slot';
 import CharacterCharacteristics from '@/models/character-characteristics';
+import CharacterStatistics from '@/models/character-statistics';
 import CharacteristicConversion from '@/models/characteristic-conversion';
 import Ban from '@/models/ban';
 import Role from '@/models/role';
@@ -26,6 +27,7 @@ class UserModule extends VuexModule {
   characters: Character[] = [];
   equippedItemsByCharacterId: { [id: number]: EquippedItem[] } = {};
   characteristicsByCharacterId: { [id: number]: CharacterCharacteristics } = {};
+  statisticsByCharacterId: { [id: number]: CharacterStatistics } = {};
 
   get isSignedIn(): boolean {
     return this.user !== null;
@@ -39,6 +41,13 @@ class UserModule extends VuexModule {
     return (id: number) => {
       const characteristics = this.characteristicsByCharacterId[id];
       return characteristics === undefined ? null : characteristics;
+    };
+  }
+
+  get characterStatistics() {
+    return (id: number) => {
+      const statistics = this.statisticsByCharacterId[id];
+      return statistics === undefined ? null : statistics;
     };
   }
 
@@ -161,6 +170,17 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
+  setCharacterStatistics({
+    characterId,
+    statistics,
+  }: {
+    characterId: number;
+    statistics: CharacterStatistics;
+  }) {
+    Vue.set(this.statisticsByCharacterId, characterId, statistics);
+  }
+
+  @Mutation
   convertAttributeToSkills(characterId: number) {
     const characteristics = this.characteristicsByCharacterId[characterId];
     characteristics.attributes.points -= 1;
@@ -268,7 +288,13 @@ class UserModule extends VuexModule {
   @Action
   async getCharacterCharacteristics(characterId: number): Promise<void> {
     const characteristics = await userService.getCharacterCharacteristics(characterId);
-    this.setCharacterCharacteristics({ characterId, characteristics: characteristics });
+    this.setCharacterCharacteristics({ characterId, characteristics });
+  }
+
+  @Action
+  async getCharacterStatistics(characterId: number): Promise<void> {
+    const statistics = await userService.getCharacterStatistics(characterId);
+    this.setCharacterStatistics({ characterId, statistics });
   }
 
   @Action
