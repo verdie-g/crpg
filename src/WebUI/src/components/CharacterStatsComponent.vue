@@ -578,7 +578,7 @@ export default class CharacterCharacteristicsComponent extends Vue {
 
     const ratio = statistics.deaths === 0
       ? '∞'
-      : Math.round(100 * statistics.kills / statistics.deaths) / 100;
+      : Math.round(100 * (statistics.kills + statistics.assists) / statistics.deaths) / 100;
     return `${statistics.kills}/${statistics.deaths}/${statistics.assists} (${ratio})`;
   }
 
