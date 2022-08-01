@@ -40,11 +40,19 @@ internal class RequestInstrumentationBehavior<TRequest, TResponse> : IPipelineBe
         IDisposable? loggingScope = null;
         if (_currentUser.User != null)
         {
-            loggingScope = Logger.BeginScope(new KeyValuePair<string, object?>[]
+            KeyValuePair<string, object?>[] tags =
             {
                 new("enduser.id", _currentUser.User.Id),
                 new("enduser.role", _currentUser.User.Role.ToString()),
-            });
+            };
+            loggingScope = Logger.BeginScope(tags);
+            if (span != null)
+            {
+                foreach (var tag in tags)
+                {
+                    span.SetTag(tag.Key, tag.Value);
+                }
+            }
         }
 
         var sw = ValueStopwatch.StartNew();
