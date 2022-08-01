@@ -131,11 +131,12 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
                 Logger.LogInformation("{0} joined ({1}#{2})", req.UserName, req.Platform, req.PlatformUserId);
             }
 
+            Character? newCharacter = null;
             if (user.Characters.Count == 0)
             {
                 var itemSet = await GiveUserRandomItemSet(user);
-                var character = CreateCharacter(req.UserName, itemSet);
-                user.Characters.Add(character);
+                newCharacter = CreateCharacter(req.UserName, itemSet);
+                user.Characters.Add(newCharacter);
             }
             else
             {
@@ -148,6 +149,11 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
             }
 
             await _db.SaveChangesAsync(cancellationToken);
+
+            if (newCharacter != null)
+            {
+                Logger.LogInformation("User '{0}' created character '{1}'", user.Id, newCharacter.Id);
+            }
 
             var gameUser = _mapper.Map<GameUser>(user);
             gameUser.Ban = _mapper.Map<BanViewModel>(GetActiveBan(user.Bans.FirstOrDefault()));
