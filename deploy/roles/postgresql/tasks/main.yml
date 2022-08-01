@@ -77,9 +77,9 @@
 
 - name: Create explain_statement function
   become_user: postgres
-  postgresql_query:
+  postgresql_db:
     db: "{{ crpg_db }}"
-    path_to_script: /tmp/explain_statement.sql
+    target: /tmp/explain_statement.sql
 
 - name: Grant Datadog user SELECT permission on cRPG database
   become_user: postgres
