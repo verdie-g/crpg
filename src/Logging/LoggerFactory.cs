@@ -1,7 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
-using Serilog;
-using Serilog.Extensions.Logging;
-using ILogger = Microsoft.Extensions.Logging.ILogger;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace Crpg.Logging;
 
@@ -12,29 +10,25 @@ namespace Crpg.Logging;
 public static class LoggerFactory
 {
     /// <summary>
-    /// A factory for serilog loggers. It uses <see cref="Log.Logger"/> so <see cref="Initialize"/> needs to be called
-    /// before <see cref="CreateLogger{TCategory}"/>.
+    /// The underlying <see cref="ILoggerFactory"/>. <see cref="Initialize"/> needs to be called before <see cref="CreateLogger{TCategory}"/>.
     /// </summary>
-    private static readonly SerilogLoggerFactory UnderlyingLoggerFactory = new();
+    private static ILoggerFactory _delegate = new NullLoggerFactory();
 
     /// <summary>
     /// Initialize the global logger with an application configuration.
     /// </summary>
-    /// <param name="configuration">The application configuration. The "Serilog" section is used.</param>
-    public static void Initialize(IConfiguration configuration)
+    /// <param name="delegateLoggerFactory">The underlying <see cref="ILoggerFactory"/>.</param>
+    public static void Initialize(ILoggerFactory delegateLoggerFactory)
     {
-        Log.Logger = new LoggerConfiguration()
-            .ReadFrom.Configuration(configuration)
-            .Enrich.FromLogContext()
-            .CreateLogger();
+        _delegate = delegateLoggerFactory;
     }
 
     /// <summary>
     /// Resets and flushes the global logger.
     /// </summary>
-    public static void Close()
+    public static void Dispose()
     {
-        Log.CloseAndFlush();
+        _delegate.Dispose();
     }
 
     /// <summary>
@@ -76,6 +70,6 @@ public static class LoggerFactory
     /// </returns>
     public static ILogger CreateLogger(string categoryName)
     {
-        return UnderlyingLoggerFactory.CreateLogger(categoryName);
+        return _delegate.CreateLogger(categoryName);
     }
 }

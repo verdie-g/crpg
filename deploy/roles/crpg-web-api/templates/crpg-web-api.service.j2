@@ -8,6 +8,8 @@ Restart=always
 RestartSec=10
 KillSignal=SIGINT
 User={{ crpg_api_user }}
+StandardOutput=file:{{ crpg_api_log_file }}
+StandardError=inherit
 Environment=ASPNETCORE_ENVIRONMENT=Production
 Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
 Environment=CORECLR_ENABLE_PROFILING=1
@@ -18,7 +20,6 @@ Environment=DD_DOTNET_TRACER_HOME=/opt/datadog
 Environment=DD_TRACE_Npgsql_ENABLED=false
 Environment=DD_TRACE_ACTIVITY_LISTENER_ENABLED=true
 Environment=DD_SERVICE={{ crpg_api_service_name }}
-Environment=DD_LOGS_INJECTION=true
 Environment=DD_RUNTIME_METRICS_ENABLED=true
 Environment=CRPG_ENV=Production
 Environment=CRPG_SERVICE={{ crpg_api_service_name }}
