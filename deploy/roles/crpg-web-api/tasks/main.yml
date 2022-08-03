@@ -81,14 +81,10 @@
 - name: Swap old and new version (2/2)
   command: "mv {{ crpg_api_path }}_new {{ crpg_api_path }}"
 
-- name: Create or truncate log file
-  copy:
-    content: ""
-    dest: "{{ crpg_api_log_file }}"
-    force: no
-    mode: 0644
-    group: "{{ crpg_api_user }}"
-    owner: "{{ crpg_api_user }}"
+- name: remove log file
+  file:
+    path: "{{ crpg_api_log_file }}"
+    state: absent
 
 - name: Start cRPG Web API
   service:

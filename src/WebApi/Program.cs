@@ -13,12 +13,10 @@ using Crpg.Application.Users.Models;
 using Crpg.Common.Helpers;
 using Crpg.Common.Json;
 using Crpg.Domain.Entities.Users;
-using Crpg.Logging;
 using Crpg.Persistence;
 using Crpg.Sdk;
 using Crpg.WebApi.Identity;
 using Crpg.WebApi.Services;
-using Crpg.WebApi.Workers;
 using IdentityServer4;
 using IdentityServer4.Models;
 using MediatR;
@@ -37,11 +35,9 @@ using Npgsql;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
 
-var builder = WebApplication.CreateBuilder(args);
-LoggerFactory.Initialize(builder.Configuration);
-builder.Host.UseLogging();
-
 var appEnv = ApplicationEnvironmentProvider.FromEnvironment();
+
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddSdk(builder.Configuration, appEnv)
@@ -92,6 +88,8 @@ builder.Services.AddAuthorization(options =>
 });
 
 var app = builder.Build();
+// Get the ASP.NET Core logger and store in a static variable.
+LoggerFactory.Initialize(app.Services.GetRequiredService<ILoggerFactory>());
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -118,7 +116,7 @@ app
         endpoints.MapControllers();
     });
 
-ILogger logger = LoggerFactory.CreateLogger("Program");
+ILogger logger = LoggerFactory.CreateLogger<Program>();
 using (IServiceScope scope = app.Services.CreateScope())
 {
     IServiceProvider services = scope.ServiceProvider;
@@ -140,7 +138,7 @@ using (IServiceScope scope = app.Services.CreateScope())
         catch (Exception ex)
         {
             logger.LogCritical(ex, "An error occurred while migrating the database.");
-            LoggerFactory.Close();
+            LoggerFactory.Dispose();
             return 1;
         }
     }
@@ -148,7 +146,7 @@ using (IServiceScope scope = app.Services.CreateScope())
     var res = await mediator.Send(new SeedDataCommand(), CancellationToken.None);
     if (res.Errors != null)
     {
-        LoggerFactory.Close();
+        LoggerFactory.Dispose();
         return 1;
     }
 }
@@ -165,7 +163,7 @@ catch (Exception ex)
 }
 finally
 {
-    LoggerFactory.Close();
+    LoggerFactory.Dispose();
 }
 
 static AuthorizationPolicy BuildRolePolicy(params Role[] roles) =>
