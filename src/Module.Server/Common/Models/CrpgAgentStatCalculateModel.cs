@@ -17,8 +17,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         _constants = constants;
     }
 
-    public override void InitializeAgentStats(Agent agent, Equipment spawnEquipment,
-        AgentDrivenProperties agentDrivenProperties, AgentBuildData agentBuildData)
+    public override void InitializeAgentStats(
+       Agent agent,
+       Equipment spawnEquipment,
+       AgentDrivenProperties agentDrivenProperties,
+       AgentBuildData agentBuildData)
     {
         agentDrivenProperties.ArmorEncumbrance = spawnEquipment.GetTotalWeightOfArmor(agent.IsHuman);
         if (agent.IsHuman)
@@ -53,6 +56,38 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     {
         // TODO: check riding skills?
         return true;
+    }
+
+    public override float GetWeaponDamageMultiplier(BasicCharacterObject agentCharacter, IAgentOriginBase agentOrigin,
+        Formation agentFormation, WeaponComponentData weapon)
+    {
+        // TODO: implement power skills here?
+        return 1f;
+    }
+
+    public override float GetKnockBackResistance(Agent agent)
+    {
+        return 0.25f;
+    }
+
+    public override float GetKnockDownResistance(Agent agent, StrikeType strikeType = StrikeType.Invalid)
+    {
+        float knockDownResistance = 0.5f;
+        if (agent.HasMount)
+        {
+            knockDownResistance += 0.1f;
+        }
+        else if (strikeType == StrikeType.Thrust)
+        {
+            knockDownResistance += 0.25f;
+        }
+
+        return knockDownResistance;
+    }
+
+    public override float GetDismountResistance(Agent agent)
+    {
+        return 0.5f;
     }
 
     private void InitializeHumanAgentStats(Agent agent, Equipment equipment, AgentDrivenProperties props)
@@ -134,8 +169,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         WeaponComponentData? secondaryItem = wieldedItemIndex4 != EquipmentIndex.None
             ? equipment[wieldedItemIndex4].CurrentUsageItem
             : null;
-        agentDrivenProperties.LongestRangedWeaponSlotIndex = equipment.GetLongestRangedWeaponWithAimingError(out float inaccuracy, agent);
-        agentDrivenProperties.LongestRangedWeaponInaccuracy = inaccuracy;
         agentDrivenProperties.SwingSpeedMultiplier = 0.93f + 0.0007f * character.GetSkillValue(primaryItem?.RelevantSkill ?? DefaultSkills.Athletics);
         agentDrivenProperties.ThrustOrRangedReadySpeedMultiplier = agentDrivenProperties.SwingSpeedMultiplier;
         agentDrivenProperties.HandlingMultiplier = 1f;
@@ -144,13 +177,13 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         agentDrivenProperties.ReloadSpeed = agentDrivenProperties.SwingSpeedMultiplier;
         agentDrivenProperties.MissileSpeedMultiplier = 1f;
         agentDrivenProperties.ReloadMovementPenaltyFactor = 1f;
-        agentDrivenProperties.WeaponInaccuracy = 0.0f;
+        SetAllWeaponInaccuracy(agent, agentDrivenProperties, (int)wieldedItemIndex3, equippedItem);
         const float movementSpeed = 0.8f; // TODO: should probably not be a constant.
         agentDrivenProperties.MaxSpeedMultiplier = 1.05f * movementSpeed * (100.0f / (100.0f + weaponsEncumbrance));
         int ridingSkill = character.GetSkillValue(DefaultSkills.Riding);
         if (equippedItem != null)
         {
-            int weaponSkill = character.GetSkillValue(equippedItem.RelevantSkill);
+            int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
             agentDrivenProperties.WeaponInaccuracy = GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
             if (equippedItem.IsRangedWeapon)
             {

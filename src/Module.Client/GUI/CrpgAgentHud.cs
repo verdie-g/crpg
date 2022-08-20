@@ -1,7 +1,7 @@
 ﻿using Crpg.Module.Common;
 using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.GauntletUI.Data;
-using TaleWorlds.MountAndBlade.View.Missions;
+using TaleWorlds.MountAndBlade.View.MissionViews;
 
 namespace Crpg.Module.GUI;
 
