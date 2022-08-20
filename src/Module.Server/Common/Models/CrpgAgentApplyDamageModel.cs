@@ -4,7 +4,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Models;
 
-internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
+internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
 {
     private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new()
     {
@@ -42,9 +42,11 @@ internal class CrpgAgentApplyDamageModel : MultiplayerAgentApplyDamageModel
         _constants = constants;
     }
 
-    public override float CalculateDamage(ref AttackInformation attackInformation,
-        ref AttackCollisionData collisionData,
-        in MissionWeapon weapon, float baseDamage)
+    public override float CalculateDamage(
+        in AttackInformation attackInformation,
+        in AttackCollisionData collisionData,
+        in MissionWeapon weapon,
+        float baseDamage)
     {
         if (attackInformation.IsAttackerAIControlled)
         {

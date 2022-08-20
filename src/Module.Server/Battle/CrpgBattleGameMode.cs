@@ -7,8 +7,8 @@ using TaleWorlds.MountAndBlade.Source.Missions;
 using Crpg.Module.Api;
 #else
 using Crpg.Module.GUI;
-using TaleWorlds.MountAndBlade.LegacyGUI.Missions;
-using TaleWorlds.MountAndBlade.View.Missions;
+using TaleWorlds.MountAndBlade.View;
+using TaleWorlds.MountAndBlade.View.MissionViews;
 #endif
 
 namespace Crpg.Module.Battle;

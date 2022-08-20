@@ -54,7 +54,7 @@ internal class CrpgSubModule : MBSubModuleBase
         InitializeGameModels(starterObject);
         CrpgSkills.Initialize(game);
 #if CRPG_CLIENT
-        game.GameTextManager.LoadGameTexts(ModuleHelper.GetModuleFullPath("cRPG") + "ModuleData/multiplayer_strings.xml");
+        game.GameTextManager.LoadGameTexts();
 #endif
     }
 

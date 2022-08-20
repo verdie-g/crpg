@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
-  <strings>
-    <string id="str_multiplayer_official_game_type_name.cRPGBattle" text="{=*}cRPG Battle" />
-    <string id="str_multiplayer_official_game_type_explainer.cRPGBattle" text="{=*}·   Kill the entire enemy team to win{newline}·   Gain experience and gold every minute{newline}·   Upgrade your character on the website c-rpg.eu" />
-    <string id="str_multiplayer_game_type.cRPGBattle" text="{=*}cRPG Battle" />
-  </strings>
-</base>

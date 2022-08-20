@@ -131,13 +131,13 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                     .VisualsIndex(0)
                     .InitialPosition(in spawnFrame.origin)
                     .InitialDirection(in initialDirection)
-                    .SpawnOnInitialPoint(true)
                     .IsFemale(character.IsFemale)
                     .ClothingColor1(team.Side == BattleSideEnum.Attacker ? teamCulture.Color : teamCulture.ClothAlternativeColor)
                     .ClothingColor2(team.Side == BattleSideEnum.Attacker ? teamCulture.Color2 : teamCulture.ClothAlternativeColor2)
                     .NoHorses(true); // Bots with horses are just running around most of the time.
 
                 var bodyProperties = BodyProperties.GetRandomBodyProperties(
+                    character.Race,
                     character.IsFemale,
                     character.GetBodyPropertiesMin(),
                     character.GetBodyPropertiesMax(),
@@ -192,7 +192,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 .Equipment(characterEquipment)
                 .Team(missionPeer.Team)
                 .VisualsIndex(0)
-                .SpawnOnInitialPoint(true)
                 .IsFemale(missionPeer.Peer.IsFemale)
                 .ClothingColor1(missionPeer.Team == Mission.AttackerTeam
                     ? teamCulture.Color
