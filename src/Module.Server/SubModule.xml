@@ -19,5 +19,17 @@
     <XmlNode>
       <XmlName id="GameText" path="multiplayer_strings"/>
     </XmlNode>
+    <XmlNode>
+      <XmlName id="CraftingPieces" path="crafting_pieces"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="WeaponDescriptions" path="weapon_descriptions"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="CraftingTemplates" path="crafting_templates"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="Items" path="items"/>
+    </XmlNode>
   </Xmls>
 </Module>

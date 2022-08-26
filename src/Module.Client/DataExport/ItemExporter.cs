@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Globalization;
+using System.Xml;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Helpers.Json;
@@ -8,11 +9,15 @@ using Newtonsoft.Json.Serialization;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Tableaus;
+using TaleWorlds.ObjectSystem;
 
 namespace Crpg.Module.DataExport;
 
 internal class ItemExporter : IDataExporter
 {
+    private const string CraftingPiecesFilePath = "../../Modules/Native/ModuleData/crafting_pieces.xml";
+    private const string WeaponDescriptionsFilePath = "../../Modules/Native/ModuleData/weapon_descriptions.xml";
+    private const string CraftingTemplatesFilePath = "../../Modules/Native/ModuleData/crafting_templates.xml";
     private const string ItemFilesPath = "../../Modules/SandBoxCore/ModuleData/items";
 
     private static readonly HashSet<ItemObject.ItemTypeEnum> BlacklistedItemTypes = new()
@@ -93,23 +98,43 @@ internal class ItemExporter : IDataExporter
 
     public Task Export(string outputPath)
     {
-        var mbItems = DeserializeMbItems(ItemFilesPath)
+        var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
+        game.Initialize();
+
+        var craftingPiecesDoc = LoadMbDocument(CraftingPiecesFilePath);
+        RegisterMbObjects<CraftingPiece>(craftingPiecesDoc, game);
+        craftingPiecesDoc.Save(Path.Combine(outputPath, Path.GetFileName(CraftingPiecesFilePath)));
+
+        var weaponDescriptionsDoc = LoadMbDocument(WeaponDescriptionsFilePath);
+        RegisterMbObjects<WeaponDescription>(weaponDescriptionsDoc, game);
+        weaponDescriptionsDoc.Save(Path.Combine(outputPath, Path.GetFileName(WeaponDescriptionsFilePath)));
+
+        var craftingTemplatesDoc = LoadMbDocument(CraftingTemplatesFilePath);
+        RegisterMbObjects<CraftingTemplate>(craftingTemplatesDoc, game);
+        craftingTemplatesDoc.Save(Path.Combine(outputPath, Path.GetFileName(CraftingTemplatesFilePath)));
+
+        string itemsOutputPath = Path.Combine(outputPath, "items");
+        Directory.CreateDirectory(itemsOutputPath);
+
+        var mbItems = Enumerable.Empty<ItemObject>();
+        foreach (string filePath in Directory.EnumerateFiles(ItemFilesPath))
+        {
+            var itemsDoc = LoadMbDocument(filePath);
+            RegisterMbObjects<ItemObject>(itemsDoc, game);
+            mbItems = mbItems.Concat(DeserializeMbItems(itemsDoc, game));
+            itemsDoc.Save(Path.Combine(itemsOutputPath, Path.GetFileName(filePath)));
+        }
+
+        mbItems = mbItems
             .DistinctBy(i => i.StringId)
-            .Where(FilterItem) // Remove test and blacklisted items
             .OrderBy(i => i.StringId)
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
 
         Directory.CreateDirectory(outputPath);
         SerializeCrpgItems(crpgItems, outputPath);
-        return GenerateItemsThumbnail(mbItems, Path.Combine(outputPath, "Items"));
+        return GenerateItemsThumbnail(mbItems, Path.Combine(outputPath, "item-thumbnails"));
     }
-
-    private static bool FilterItem(ItemObject mbItem) => !mbItem.StringId.Contains("test")
-                                                         && !mbItem.StringId.Contains("dummy")
-                                                         && !mbItem.Name.Contains("_")
-                                                         && !BlacklistedItemTypes.Contains(mbItem.ItemType)
-                                                         && !BlacklistedItems.Contains(mbItem.StringId);
 
     private static CrpgItemCreation MbToCrpgItem(ItemObject mbItem)
     {
@@ -201,34 +226,148 @@ internal class ItemExporter : IDataExporter
         _ => (CrpgDamageType)Enum.Parse(typeof(CrpgDamageType), t.ToString()),
     };
 
-    private static IEnumerable<ItemObject> DeserializeMbItems(string folderPath)
+    private static IEnumerable<ItemObject> DeserializeMbItems(XmlDocument itemsDoc, Game game)
     {
-        var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
-        game.Initialize();
-
-        var items = Enumerable.Empty<ItemObject>();
-        foreach (string path in Directory.EnumerateFiles(folderPath))
-        {
-            XmlDocument itemsDoc = new();
-            using (var r = XmlReader.Create(path, new XmlReaderSettings { IgnoreComments = true }))
+        return itemsDoc
+            .LastChild
+            .ChildNodes
+            .Cast<XmlNode>()
+            .Select(itemNode =>
             {
-                itemsDoc.Load(r);
-            }
+                ItemObject item = new();
+                item.Deserialize(game.ObjectManager, itemNode);
+                return item;
+            });
+    }
 
-            var fileItems = itemsDoc
-                .LastChild
-                .ChildNodes
-                .Cast<XmlNode>()
-                .Select(itemNode =>
-                {
-                    ItemObject item = new();
-                    item.Deserialize(game.ObjectManager, itemNode);
-                    return item;
-                });
-            items = items.Concat(fileItems);
+    private static XmlDocument LoadMbDocument(string filePath)
+    {
+        XmlDocument itemsDoc = new();
+        using (var r = XmlReader.Create(filePath, new XmlReaderSettings { IgnoreComments = true }))
+        {
+            itemsDoc.Load(r);
         }
 
-        return items;
+        // Prefix all ids with "crpg_" to avoid conflicts with mb objects.
+        var nodes1 = itemsDoc.LastChild.ChildNodes.Cast<XmlNode>().ToArray();
+        for (int i = 0; i < nodes1.Length; i += 1)
+        {
+            var node1 = nodes1[i];
+
+            // Remove test and blacklisted items
+            if (node1.Name == "CraftedItem" || node1.Name == "Item")
+            {
+                string id = node1.Attributes!["id"].Value;
+                string name = node1.Attributes!["name"].Value;
+                ItemObject.ItemTypeEnum itemType = ItemObject.ItemTypeEnum.OneHandedWeapon; // A random valid item type.
+                if (node1.Name == "Item")
+                {
+                    itemType = (ItemObject.ItemTypeEnum)Enum.Parse(typeof(ItemObject.ItemTypeEnum), node1.Attributes!["Type"].Value);
+                }
+
+                if (id.IndexOf("dummy", StringComparison.Ordinal) != -1
+                    || name.IndexOf('_') != -1
+                    || BlacklistedItemTypes.Contains(itemType)
+                    || BlacklistedItems.Contains(id))
+                {
+                    node1.ParentNode!.RemoveChild(node1);
+                    continue;
+                }
+            }
+
+            node1.Attributes!["id"].Value = PrefixCrpg(node1.Attributes["id"].Value);
+            if (node1.Name == "CraftedItem")
+            {
+                node1.Attributes!["crafting_template"].Value = PrefixCrpg(node1.Attributes["crafting_template"].Value);
+                foreach (var pieceNode in node1.FirstChild.ChildNodes.Cast<XmlNode>())
+                {
+                    pieceNode.Attributes!["id"].Value = PrefixCrpg(pieceNode.Attributes["id"].Value);
+                }
+            }
+            else if (node1.Name == "CraftingPiece")
+            {
+                // Because characteristics can be increased in cRPG, weapons can be way too powerful. To compensate that
+                // the damage factor is divided by two.
+                foreach (var damageNode in node1.SelectNodes("BladeData/*")!.Cast<XmlNode>())
+                {
+                    var damageFactorAttr = damageNode.Attributes!["damage_factor"];
+                    float damageFactor = float.Parse(damageFactorAttr.Value) / 2f;
+                    damageFactorAttr.Value = damageFactor.ToString(CultureInfo.InvariantCulture);
+                }
+            }
+            else if (node1.Name == "CraftingTemplate")
+            {
+                foreach (var node2 in node1.ChildNodes.Cast<XmlNode>())
+                {
+                    if (node2.Name == "WeaponDescriptions")
+                    {
+                        foreach (var weaponDescriptionNode in node2.ChildNodes.Cast<XmlNode>())
+                        {
+                            weaponDescriptionNode.Attributes!["id"].Value =
+                                PrefixCrpg(weaponDescriptionNode.Attributes["id"].Value);
+                        }
+                    }
+                    else if (node2.Name == "StatsData")
+                    {
+                        var weaponDescriptionAttr = node2.Attributes!["weapon_description"];
+                        if (weaponDescriptionAttr != null)
+                        {
+                            weaponDescriptionAttr.Value = PrefixCrpg(weaponDescriptionAttr.Value);
+                        }
+                    }
+                    else if (node2.Name == "UsablePieces")
+                    {
+                        var usablePieceNodes = node2.ChildNodes.Cast<XmlNode>().ToArray();
+                        for (int j = 0; j < usablePieceNodes.Length; j += 1)
+                        {
+                            var usablePieceNode = usablePieceNodes[j];
+                            var mpPieceAttr = usablePieceNode.Attributes!["piece_id"];
+                            if (mpPieceAttr != null && mpPieceAttr.Value == "true")
+                            {
+                                node2.RemoveChild(usablePieceNode);
+                                continue;
+                            }
+
+                            usablePieceNode.Attributes!["piece_id"].Value =
+                                PrefixCrpg(usablePieceNode.Attributes["piece_id"].Value);
+                        }
+                    }
+                }
+            }
+            else if (node1.Name == "WeaponDescription")
+            {
+                foreach (var node2 in node1.ChildNodes.Cast<XmlNode>())
+                {
+                    if (node2.Name == "AvailablePieces")
+                    {
+                        foreach (var availablePieceNode in node2.ChildNodes.Cast<XmlNode>())
+                        {
+                            availablePieceNode.Attributes!["id"].Value =
+                                PrefixCrpg(availablePieceNode.Attributes["id"].Value);
+                        }
+                    }
+                }
+            }
+        }
+
+        return itemsDoc;
+    }
+
+    private static string PrefixCrpg(string s)
+    {
+        const string prefix = "crpg_";
+        return s.StartsWith(prefix, StringComparison.Ordinal) ? prefix : prefix + s;
+    }
+
+    private static void RegisterMbObjects<T>(XmlDocument doc, Game game) where T : MBObjectBase, new()
+    {
+        var nodes = doc.LastChild.ChildNodes.Cast<XmlNode>();
+        foreach (var node in nodes)
+        {
+            T obj = new();
+            obj.Deserialize(game.ObjectManager, node);
+            game.ObjectManager.RegisterObject(obj);
+        }
     }
 
     private static void SerializeCrpgItems(IEnumerable<CrpgItemCreation> items, string outputPath)

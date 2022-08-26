@@ -7,7 +7,6 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.ObjectSystem;
 
 #if CRPG_CLIENT
 using TaleWorlds.Engine.GauntletUI;
@@ -31,7 +30,6 @@ internal class CrpgSubModule : MBSubModuleBase
 
         _constants = LoadCrpgConstants();
         LoadSpriteSheets();
-        AddCrpgXmls();
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode(_constants));
 
 #if CRPG_SERVER
@@ -75,21 +73,6 @@ internal class CrpgSubModule : MBSubModuleBase
     {
         basicGameStarter.AddModel(new CrpgAgentStatCalculateModel(_constants));
         basicGameStarter.AddModel(new CrpgAgentApplyDamageModel(_constants));
-    }
-
-    private void AddCrpgXmls()
-    {
-        // Add the singleplayer items xml files to the resources so that they are loaded as the same time as the multiplayer ones.
-        XmlResource.XmlInformationList.AddRange(new MbObjectXmlInformation[]
-        {
-#if CRPG_CLIENT
-            new("Items", "items", "SandBoxCore", new List<string>()),
-            new("CraftingPieces", "crafting_pieces", "Native", new List<string>()),
-#else
-            new("Items", "items", "cRPG", new List<string>()),
-            new("CraftingPieces", "crafting_pieces", "cRPG", new List<string>()),
-#endif
-        });
     }
 
     /// <summary>
