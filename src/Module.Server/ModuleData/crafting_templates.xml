@@ -1,0 +1,2363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CraftingTemplates>
+  <CraftingTemplate id="crpg_OneHandedSword" item_type="OneHandedWeapon" item_modifier_group="sword" item_holsters="sword_left_hip_3:sword_left_hip:sword_left_hip_2:sword_back" piece_type_to_scale_holster_with="Blade" hidden_piece_types_on_holster="Blade" default_item_holster_position_offset="0,0,-0.1">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_OneHandedSword" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_empire_blade_1" />
+      <UsablePiece piece_id="crpg_empire_noble_blade_1" />
+      <UsablePiece piece_id="crpg_empire_noble_blade_2" />
+      <UsablePiece piece_id="crpg_empire_noble_blade_3" />
+      <UsablePiece piece_id="crpg_empire_noble_blade_4" />
+      <UsablePiece piece_id="crpg_empire_blade_2" />
+      <UsablePiece piece_id="crpg_empire_blade_3" />
+      <UsablePiece piece_id="crpg_empire_blade_3_blunt" />
+      <UsablePiece piece_id="crpg_empire_blade_4" />
+      <UsablePiece piece_id="crpg_empire_blade_4_blunt" />
+      <UsablePiece piece_id="crpg_empire_blade_5" />
+      <UsablePiece piece_id="crpg_empire_blade_6" />
+      <UsablePiece piece_id="crpg_empire_blade_6_blunt" />
+      <UsablePiece piece_id="crpg_empire_blade_7" />
+      <UsablePiece piece_id="crpg_empire_blade_8" />
+      <UsablePiece piece_id="crpg_empire_blade_9" />
+      <UsablePiece piece_id="crpg_empire_blade_10" />
+      <UsablePiece piece_id="crpg_sturgian_blade_1" />
+      <UsablePiece piece_id="crpg_sturgian_blade_1_blunt" />
+      <UsablePiece piece_id="crpg_sturgian_blade_2" />
+      <UsablePiece piece_id="crpg_sturgian_blade_3" />
+      <UsablePiece piece_id="crpg_sturgian_blade_4" />
+      <UsablePiece piece_id="crpg_sturgian_blade_5" />
+      <UsablePiece piece_id="crpg_sturgian_blade_6" />
+      <UsablePiece piece_id="crpg_sturgian_blade_7" />
+      <UsablePiece piece_id="crpg_sturgian_blade_8" />
+      <UsablePiece piece_id="crpg_sturgian_blade_9" />
+      <UsablePiece piece_id="crpg_sturgian_noble_blade_1" />
+      <UsablePiece piece_id="crpg_sturgian_noble_blade_2" />
+      <UsablePiece piece_id="crpg_sturgian_noble_blade_3" />
+      <UsablePiece piece_id="crpg_sturgian_noble_blade_4" />
+      <UsablePiece piece_id="crpg_sturgian_noble_blade_5" />
+      <UsablePiece piece_id="crpg_sturgian_noble_blade_6" />
+      <UsablePiece piece_id="crpg_sturgian_noble_blade_7" />
+      <UsablePiece piece_id="crpg_sturgian_noble_blade_8" />
+      <UsablePiece piece_id="crpg_khuzait_blade_1" />
+      <UsablePiece piece_id="crpg_khuzait_blade_2" />
+      <UsablePiece piece_id="crpg_khuzait_blade_3" />
+      <UsablePiece piece_id="crpg_khuzait_blade_5" />
+      <UsablePiece piece_id="crpg_khuzait_blade_6" />
+      <UsablePiece piece_id="crpg_khuzait_blade_7" />
+      <UsablePiece piece_id="crpg_khuzait_blade_7_blunt" />
+      <UsablePiece piece_id="crpg_khuzait_blade_8" />
+      <UsablePiece piece_id="crpg_khuzait_noble_blade_1" />
+      <UsablePiece piece_id="crpg_khuzait_noble_blade_2" />
+      <UsablePiece piece_id="crpg_khuzait_noble_blade_3" />
+      <UsablePiece piece_id="crpg_khuzait_noble_blade_4" />
+      <UsablePiece piece_id="crpg_khuzait_noble_blade_5" />
+      <UsablePiece piece_id="crpg_khuzait_noble_blade_6" />
+      <UsablePiece piece_id="crpg_khuzait_noble_blade_7" />
+      <UsablePiece piece_id="crpg_vlandian_blade_1" />
+      <UsablePiece piece_id="crpg_vlandian_blade_1_blunt" />
+      <UsablePiece piece_id="crpg_vlandian_blade_2" />
+      <UsablePiece piece_id="crpg_vlandian_blade_3" />
+      <UsablePiece piece_id="crpg_vlandian_blade_3_blunt" />
+      <UsablePiece piece_id="crpg_vlandian_blade_4" />
+      <UsablePiece piece_id="crpg_vlandian_blade_5" />
+      <UsablePiece piece_id="crpg_vlandian_blade_6" />
+      <UsablePiece piece_id="crpg_vlandian_blade_7" />
+      <UsablePiece piece_id="crpg_vlandian_blade_8" />
+      <UsablePiece piece_id="crpg_vlandian_blade_9" />
+      <UsablePiece piece_id="crpg_vlandian_blade_10" />
+      <UsablePiece piece_id="crpg_vlandian_noble_blade_1" />
+      <UsablePiece piece_id="crpg_vlandian_noble_blade_2" />
+      <UsablePiece piece_id="crpg_vlandian_noble_blade_3" />
+      <UsablePiece piece_id="crpg_vlandian_noble_blade_4" />
+      <UsablePiece piece_id="crpg_vlandian_noble_blade_5" />
+      <UsablePiece piece_id="crpg_vlandian_noble_blade_6" />
+      <UsablePiece piece_id="crpg_vlandian_noble_blade_7" />
+      <UsablePiece piece_id="crpg_vlandian_noble_blade_8" />
+      <UsablePiece piece_id="crpg_cleaver_blade_1" />
+      <UsablePiece piece_id="crpg_cleaver_blade_2" />
+      <UsablePiece piece_id="crpg_cleaver_blade_3" />
+      <UsablePiece piece_id="crpg_cleaver_blade_4" />
+      <UsablePiece piece_id="crpg_cleaver_blade_5" />
+      <UsablePiece piece_id="crpg_cleaver_blade_6" />
+      <UsablePiece piece_id="crpg_cleaver_blade_7" />
+      <UsablePiece piece_id="crpg_cleaver_blade_8" />
+      <UsablePiece piece_id="crpg_aserai_blade_1" />
+      <UsablePiece piece_id="crpg_aserai_blade_2" />
+      <UsablePiece piece_id="crpg_aserai_blade_3" />
+      <UsablePiece piece_id="crpg_aserai_blade_4" />
+      <UsablePiece piece_id="crpg_aserai_blade_5" />
+      <UsablePiece piece_id="crpg_aserai_blade_7" />
+      <UsablePiece piece_id="crpg_aserai_blade_8" />
+      <UsablePiece piece_id="crpg_aserai_blade_9" />
+      <UsablePiece piece_id="crpg_aserai_blade_10" />
+      <UsablePiece piece_id="crpg_aserai_blade_11" />
+      <UsablePiece piece_id="crpg_aserai_blade_18" />
+      <UsablePiece piece_id="crpg_aserai_blade_19" />
+      <UsablePiece piece_id="crpg_aserai_blade_20" />
+      <UsablePiece piece_id="crpg_aserai_blade_21" />
+      <UsablePiece piece_id="crpg_aserai_blade_22" />
+      <UsablePiece piece_id="crpg_aserai_blade_23" />
+      <UsablePiece piece_id="crpg_aserai_blade_24" />
+      <UsablePiece piece_id="crpg_aserai_blade_25" />
+      <UsablePiece piece_id="crpg_aserai_blade_26" />
+      <UsablePiece piece_id="crpg_aserai_blade_27" />
+      <UsablePiece piece_id="crpg_aserai_noble_blade_5" />
+      <UsablePiece piece_id="crpg_aserai_noble_blade_6" />
+      <UsablePiece piece_id="crpg_aserai_blade_4_blunt" />
+      <UsablePiece piece_id="crpg_aserai_blade_3_blunt" />
+      <UsablePiece piece_id="crpg_aserai_noble_blade_1" />
+      <UsablePiece piece_id="crpg_aserai_noble_blade_2" />
+      <UsablePiece piece_id="crpg_aserai_noble_blade_3" />
+      <UsablePiece piece_id="crpg_aserai_noble_blade_4" />
+      <UsablePiece piece_id="crpg_battania_blade_1" />
+      <UsablePiece piece_id="crpg_battania_blade_2" />
+      <UsablePiece piece_id="crpg_battania_blade_3" />
+      <UsablePiece piece_id="crpg_battania_blade_3_blunt" />
+      <UsablePiece piece_id="crpg_battania_blade_3_crude_iron" />
+      <UsablePiece piece_id="crpg_battania_blade_3_iron" />
+      <UsablePiece piece_id="crpg_battania_blade_3_steel" />
+      <UsablePiece piece_id="crpg_battania_blade_3_fine_steel" />
+      <UsablePiece piece_id="crpg_battania_blade_4" />
+      <UsablePiece piece_id="crpg_battania_blade_5" />
+      <UsablePiece piece_id="crpg_battania_blade_6" />
+      <UsablePiece piece_id="crpg_battania_blade_8" />
+      <UsablePiece piece_id="crpg_battania_blade_9" />
+      <UsablePiece piece_id="crpg_battania_blade_10" />
+      <UsablePiece piece_id="crpg_battania_noble_blade_1" />
+      <UsablePiece piece_id="crpg_battania_noble_blade_2" />
+      <UsablePiece piece_id="crpg_wood_blade_1" />
+      <UsablePiece piece_id="crpg_wood_blade_2" />
+      <UsablePiece piece_id="crpg_empire_guard_1" />
+      <UsablePiece piece_id="crpg_empire_guard_2" />
+      <UsablePiece piece_id="crpg_empire_guard_3" />
+      <UsablePiece piece_id="crpg_empire_guard_4" />
+      <UsablePiece piece_id="crpg_empire_guard_5" />
+      <UsablePiece piece_id="crpg_empire_guard_6" />
+      <UsablePiece piece_id="crpg_empire_noble_guard_1" />
+      <UsablePiece piece_id="crpg_empire_noble_guard_2" />
+      <UsablePiece piece_id="crpg_empire_noble_guard_3" />
+      <UsablePiece piece_id="crpg_empire_noble_guard_4" />
+      <UsablePiece piece_id="crpg_sturgian_guard_1" />
+      <UsablePiece piece_id="crpg_sturgian_guard_2" />
+      <UsablePiece piece_id="crpg_sturgian_guard_3" />
+      <UsablePiece piece_id="crpg_sturgian_guard_4" />
+      <UsablePiece piece_id="crpg_sturgian_guard_5" />
+      <UsablePiece piece_id="crpg_sturgian_guard_6" />
+      <UsablePiece piece_id="crpg_sturgian_guard_7" />
+      <UsablePiece piece_id="crpg_sturgian_guard_8" />
+      <UsablePiece piece_id="crpg_sturgian_guard_9" />
+      <UsablePiece piece_id="crpg_sturgian_guard_10" />
+      <UsablePiece piece_id="crpg_sturgian_guard_11" />
+      <UsablePiece piece_id="crpg_sturgian_guard_12" />
+      <UsablePiece piece_id="crpg_sturgian_noble_guard_1" />
+      <UsablePiece piece_id="crpg_sturgian_noble_guard_2" />
+      <UsablePiece piece_id="crpg_sturgian_noble_guard_3" />
+      <UsablePiece piece_id="crpg_sturgian_noble_guard_4" />
+      <UsablePiece piece_id="crpg_khuzait_guard_1" />
+      <UsablePiece piece_id="crpg_khuzait_guard_2" />
+      <UsablePiece piece_id="crpg_khuzait_guard_3" />
+      <UsablePiece piece_id="crpg_khuzait_guard_4" />
+      <UsablePiece piece_id="crpg_khuzait_guard_5" />
+      <UsablePiece piece_id="crpg_khuzait_guard_6" />
+      <UsablePiece piece_id="crpg_khuzait_guard_7" />
+      <UsablePiece piece_id="crpg_khuzait_guard_8" />
+      <UsablePiece piece_id="crpg_khuzait_guard_9" />
+      <UsablePiece piece_id="crpg_khuzait_noble_guard_1" />
+      <UsablePiece piece_id="crpg_khuzait_noble_guard_2" />
+      <UsablePiece piece_id="crpg_khuzait_noble_guard_3" />
+      <UsablePiece piece_id="crpg_khuzait_noble_guard_4" />
+      <UsablePiece piece_id="crpg_vlandian_guard_1" />
+      <UsablePiece piece_id="crpg_vlandian_guard_2" />
+      <UsablePiece piece_id="crpg_vlandian_guard_3" />
+      <UsablePiece piece_id="crpg_vlandian_guard_4" />
+      <UsablePiece piece_id="crpg_vlandian_guard_5" />
+      <UsablePiece piece_id="crpg_vlandian_guard_6" />
+      <UsablePiece piece_id="crpg_vlandian_guard_7" />
+      <UsablePiece piece_id="crpg_vlandian_guard_8" />
+      <UsablePiece piece_id="crpg_vlandian_noble_guard_1" />
+      <UsablePiece piece_id="crpg_vlandian_noble_guard_2" />
+      <UsablePiece piece_id="crpg_vlandian_noble_guard_3" />
+      <UsablePiece piece_id="crpg_vlandian_noble_guard_4" />
+      <UsablePiece piece_id="crpg_cleaver_guard_1" />
+      <UsablePiece piece_id="crpg_cleaver_guard_2" />
+      <UsablePiece piece_id="crpg_cleaver_guard_3" />
+      <UsablePiece piece_id="crpg_cleaver_guard_4" />
+      <UsablePiece piece_id="crpg_cleaver_guard_5" />
+      <UsablePiece piece_id="crpg_aserai_guard_1" />
+      <UsablePiece piece_id="crpg_aserai_guard_2" />
+      <UsablePiece piece_id="crpg_aserai_guard_3" />
+      <UsablePiece piece_id="crpg_aserai_guard_4" />
+      <UsablePiece piece_id="crpg_aserai_guard_5" />
+      <UsablePiece piece_id="crpg_aserai_guard_6" />
+      <UsablePiece piece_id="crpg_aserai_guard_7" />
+      <UsablePiece piece_id="crpg_aserai_guard_8" />
+      <UsablePiece piece_id="crpg_aserai_guard_9" />
+      <UsablePiece piece_id="crpg_aserai_noble_guard_1" />
+      <UsablePiece piece_id="crpg_aserai_noble_guard_2" />
+      <UsablePiece piece_id="crpg_aserai_noble_guard_3" />
+      <UsablePiece piece_id="crpg_aserai_noble_guard_4" />
+      <UsablePiece piece_id="crpg_battania_guard_1" />
+      <UsablePiece piece_id="crpg_battania_guard_3" />
+      <UsablePiece piece_id="crpg_battania_guard_5" />
+      <UsablePiece piece_id="crpg_battania_guard_6" />
+      <UsablePiece piece_id="crpg_battania_guard_7" />
+      <UsablePiece piece_id="crpg_battania_guard_8" />
+      <UsablePiece piece_id="crpg_battania_guard_9" />
+      <UsablePiece piece_id="crpg_battania_noble_guard_1" />
+      <UsablePiece piece_id="crpg_battania_noble_guard_2" />
+      <UsablePiece piece_id="crpg_wood_guard_1" />
+      <UsablePiece piece_id="crpg_empire_grip_1" />
+      <UsablePiece piece_id="crpg_empire_grip_2" />
+      <UsablePiece piece_id="crpg_empire_grip_3" />
+      <UsablePiece piece_id="crpg_empire_grip_4" />
+      <UsablePiece piece_id="crpg_empire_grip_5" />
+      <UsablePiece piece_id="crpg_empire_grip_6" />
+      <UsablePiece piece_id="crpg_empire_grip_10" />
+      <UsablePiece piece_id="crpg_empire_grip_11" />
+      <UsablePiece piece_id="crpg_empire_grip_12" />
+      <UsablePiece piece_id="crpg_empire_grip_16" />
+      <UsablePiece piece_id="crpg_empire_grip_17" />
+      <UsablePiece piece_id="crpg_empire_grip_18" />
+      <UsablePiece piece_id="crpg_empire_noble_grip_1" />
+      <UsablePiece piece_id="crpg_empire_noble_grip_2" />
+      <UsablePiece piece_id="crpg_empire_noble_grip_3" />
+      <UsablePiece piece_id="crpg_empire_noble_grip_4" />
+      <UsablePiece piece_id="crpg_sturgian_grip_1" />
+      <UsablePiece piece_id="crpg_sturgian_grip_2" />
+      <UsablePiece piece_id="crpg_sturgian_grip_3" />
+      <UsablePiece piece_id="crpg_sturgian_grip_4" />
+      <UsablePiece piece_id="crpg_sturgian_grip_5" />
+      <UsablePiece piece_id="crpg_sturgian_grip_6" />
+      <UsablePiece piece_id="crpg_sturgian_grip_7" />
+      <UsablePiece piece_id="crpg_sturgian_grip_8" />
+      <UsablePiece piece_id="crpg_sturgian_grip_9" />
+      <UsablePiece piece_id="crpg_sturgian_grip_10" />
+      <UsablePiece piece_id="crpg_sturgian_grip_11" />
+      <UsablePiece piece_id="crpg_sturgian_grip_12" />
+      <UsablePiece piece_id="crpg_sturgian_grip_13" />
+      <UsablePiece piece_id="crpg_sturgian_grip_14" />
+      <UsablePiece piece_id="crpg_sturgian_grip_20" />
+      <UsablePiece piece_id="crpg_sturgian_grip_21" />
+      <UsablePiece piece_id="crpg_sturgian_grip_22" />
+      <UsablePiece piece_id="crpg_sturgian_grip_25" />
+      <UsablePiece piece_id="crpg_sturgian_grip_26" />
+      <UsablePiece piece_id="crpg_sturgian_grip_28" />
+      <UsablePiece piece_id="crpg_sturgian_grip_29" />
+      <UsablePiece piece_id="crpg_sturgian_grip_30" />
+      <UsablePiece piece_id="crpg_sturgian_grip_32" />
+      <UsablePiece piece_id="crpg_sturgian_grip_33" />
+      <UsablePiece piece_id="crpg_sturgian_grip_34" />
+      <UsablePiece piece_id="crpg_sturgian_grip_35" />
+      <UsablePiece piece_id="crpg_sturgian_grip_36" />
+      <UsablePiece piece_id="crpg_sturgian_grip_37" />
+      <UsablePiece piece_id="crpg_sturgian_noble_grip_1" />
+      <UsablePiece piece_id="crpg_sturgian_noble_grip_2" />
+      <UsablePiece piece_id="crpg_sturgian_noble_grip_3" />
+      <UsablePiece piece_id="crpg_sturgian_noble_grip_4" />
+      <UsablePiece piece_id="crpg_khuzait_grip_1" />
+      <UsablePiece piece_id="crpg_khuzait_grip_2" />
+      <UsablePiece piece_id="crpg_khuzait_grip_4" />
+      <UsablePiece piece_id="crpg_khuzait_grip_5" />
+      <UsablePiece piece_id="crpg_khuzait_grip_6" />
+      <UsablePiece piece_id="crpg_khuzait_grip_7" />
+      <UsablePiece piece_id="crpg_khuzait_grip_8" />
+      <UsablePiece piece_id="crpg_khuzait_grip_12" />
+      <UsablePiece piece_id="crpg_khuzait_grip_14" />
+      <UsablePiece piece_id="crpg_khuzait_grip_15" />
+      <UsablePiece piece_id="crpg_khuzait_grip_16" />
+      <UsablePiece piece_id="crpg_khuzait_grip_17" />
+      <UsablePiece piece_id="crpg_khuzait_grip_18" />
+      <UsablePiece piece_id="crpg_khuzait_grip_19" />
+      <UsablePiece piece_id="crpg_khuzait_grip_20" />
+      <UsablePiece piece_id="crpg_khuzait_noble_grip_1" />
+      <UsablePiece piece_id="crpg_khuzait_noble_grip_2" />
+      <UsablePiece piece_id="crpg_khuzait_noble_grip_3" />
+      <UsablePiece piece_id="crpg_khuzait_noble_grip_4" />
+      <UsablePiece piece_id="crpg_vlandian_grip_1" />
+      <UsablePiece piece_id="crpg_vlandian_grip_2" />
+      <UsablePiece piece_id="crpg_vlandian_grip_3" />
+      <UsablePiece piece_id="crpg_vlandian_grip_4" />
+      <UsablePiece piece_id="crpg_vlandian_grip_5" />
+      <UsablePiece piece_id="crpg_vlandian_grip_6" />
+      <UsablePiece piece_id="crpg_vlandian_grip_10" />
+      <UsablePiece piece_id="crpg_vlandian_grip_11" />
+      <UsablePiece piece_id="crpg_vlandian_grip_12" />
+      <UsablePiece piece_id="crpg_vlandian_grip_13" />
+      <UsablePiece piece_id="crpg_vlandian_grip_14" />
+      <UsablePiece piece_id="crpg_vlandian_grip_15" />
+      <UsablePiece piece_id="crpg_vlandian_grip_16" />
+      <UsablePiece piece_id="crpg_vlandian_grip_17" />
+      <UsablePiece piece_id="crpg_vlandian_grip_18" />
+      <UsablePiece piece_id="crpg_vlandian_grip_19" />
+      <UsablePiece piece_id="crpg_vlandian_grip_20" />
+      <UsablePiece piece_id="crpg_vlandian_grip_21" />
+      <UsablePiece piece_id="crpg_vlandian_grip_22" />
+      <UsablePiece piece_id="crpg_vlandian_grip_23" />
+      <UsablePiece piece_id="crpg_vlandian_grip_24" />
+      <UsablePiece piece_id="crpg_vlandian_noble_grip_1" />
+      <UsablePiece piece_id="crpg_vlandian_noble_grip_2" />
+      <UsablePiece piece_id="crpg_vlandian_noble_grip_3" />
+      <UsablePiece piece_id="crpg_vlandian_noble_grip_4" />
+      <UsablePiece piece_id="crpg_cleaver_grip_1" />
+      <UsablePiece piece_id="crpg_cleaver_grip_2" />
+      <UsablePiece piece_id="crpg_cleaver_grip_3" />
+      <UsablePiece piece_id="crpg_cleaver_grip_5" />
+      <UsablePiece piece_id="crpg_cleaver_grip_6" />
+      <UsablePiece piece_id="crpg_cleaver_grip_7" />
+      <UsablePiece piece_id="crpg_cleaver_grip_8" />
+      <UsablePiece piece_id="crpg_cleaver_grip_9" />
+      <UsablePiece piece_id="crpg_cleaver_grip_10" />
+      <UsablePiece piece_id="crpg_aserai_grip_1" />
+      <UsablePiece piece_id="crpg_aserai_grip_3" />
+      <UsablePiece piece_id="crpg_aserai_grip_4" />
+      <UsablePiece piece_id="crpg_aserai_grip_5" />
+      <UsablePiece piece_id="crpg_aserai_grip_6" />
+      <UsablePiece piece_id="crpg_aserai_grip_7" />
+      <UsablePiece piece_id="crpg_aserai_grip_8" />
+      <UsablePiece piece_id="crpg_aserai_grip_9" />
+      <UsablePiece piece_id="crpg_aserai_grip_16" />
+      <UsablePiece piece_id="crpg_aserai_grip_17" />
+      <UsablePiece piece_id="crpg_aserai_grip_18" />
+      <UsablePiece piece_id="crpg_aserai_grip_20" />
+      <UsablePiece piece_id="crpg_aserai_grip_21" />
+      <UsablePiece piece_id="crpg_aserai_grip_22" />
+      <UsablePiece piece_id="crpg_aserai_grip_23" />
+      <UsablePiece piece_id="crpg_aserai_grip_24" />
+      <UsablePiece piece_id="crpg_aserai_grip_25" />
+      <UsablePiece piece_id="crpg_aserai_grip_26" />
+      <UsablePiece piece_id="crpg_aserai_grip_27" />
+      <UsablePiece piece_id="crpg_aserai_grip_28" />
+      <UsablePiece piece_id="crpg_aserai_grip_29" />
+      <UsablePiece piece_id="crpg_aserai_noble_grip_1" />
+      <UsablePiece piece_id="crpg_aserai_noble_grip_2" />
+      <UsablePiece piece_id="crpg_aserai_noble_grip_3" />
+      <UsablePiece piece_id="crpg_aserai_noble_grip_4" />
+      <UsablePiece piece_id="crpg_battania_grip_1" />
+      <UsablePiece piece_id="crpg_battania_grip_3" />
+      <UsablePiece piece_id="crpg_battania_grip_4" />
+      <UsablePiece piece_id="crpg_battania_grip_6" />
+      <UsablePiece piece_id="crpg_battania_grip_7" />
+      <UsablePiece piece_id="crpg_battania_grip_8" />
+      <UsablePiece piece_id="crpg_battania_grip_9" />
+      <UsablePiece piece_id="crpg_battania_grip_10" />
+      <UsablePiece piece_id="crpg_battania_noble_grip_1" />
+      <UsablePiece piece_id="crpg_wood_grip_1" />
+      <UsablePiece piece_id="crpg_wood_grip_2" />
+      <UsablePiece piece_id="crpg_sickle_grip_1" />
+      <UsablePiece piece_id="crpg_empire_pommel_1" />
+      <UsablePiece piece_id="crpg_empire_pommel_2" />
+      <UsablePiece piece_id="crpg_empire_pommel_3" />
+      <UsablePiece piece_id="crpg_empire_pommel_4" />
+      <UsablePiece piece_id="crpg_empire_pommel_5" />
+      <UsablePiece piece_id="crpg_empire_pommel_6" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_1" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_2" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_3" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_4" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_5" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_6" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_7" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_8" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_9" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_10" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_11" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_12" />
+      <UsablePiece piece_id="crpg_sturgian_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_sturgian_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_sturgian_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_sturgian_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_1" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_3" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_4" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_5" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_6" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_7" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_1" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_2" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_3" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_4" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_5" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_6" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_7" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_8" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_9" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_10" />
+      <UsablePiece piece_id="crpg_vlandian_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_vlandian_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_vlandian_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_vlandian_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_1" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_2" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_3" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_1" />
+      <UsablePiece piece_id="crpg_aserai_pommel_2" />
+      <UsablePiece piece_id="crpg_aserai_pommel_3" />
+      <UsablePiece piece_id="crpg_aserai_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_5" />
+      <UsablePiece piece_id="crpg_aserai_pommel_6" />
+      <UsablePiece piece_id="crpg_aserai_pommel_8" />
+      <UsablePiece piece_id="crpg_aserai_pommel_9" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_battania_pommel_1" />
+      <UsablePiece piece_id="crpg_battania_pommel_2" />
+      <UsablePiece piece_id="crpg_battania_pommel_3" />
+      <UsablePiece piece_id="crpg_battania_pommel_4" />
+      <UsablePiece piece_id="crpg_battania_pommel_5" />
+      <UsablePiece piece_id="crpg_battania_pommel_6" />
+      <UsablePiece piece_id="crpg_battania_pommel_7" />
+      <UsablePiece piece_id="crpg_battania_pommel_8" />
+      <UsablePiece piece_id="crpg_battania_pommel_9" />
+      <UsablePiece piece_id="crpg_battania_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_wood_pommel_1" />
+      <UsablePiece piece_id="crpg_mp_vlandian_arming_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_arming_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_arming_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_arming_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_long_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_long_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_long_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_long_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_short_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_short_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_short_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_short_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_fast_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_fast_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_fast_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_fast_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_gladius_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_gladius_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_gladius_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_gladius_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_spatha_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_spatha_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_spatha_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_spatha_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_long_spatha_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_long_spatha_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_long_spatha_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_long_spatha_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_paramerion_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_paramerion_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_paramerion_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_paramerion_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_long_paramerion_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_long_paramerion_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_long_paramerion_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_long_paramerion_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_pugio_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_pugio_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_pugio_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_pugio_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_pommel_2" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_northern_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_northern_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_northern_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_northern_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_cavalry_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_cavalry_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_cavalry_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_cavalry_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_cavalry_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_cavalry_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_cavalry_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_cavalry_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_sabre_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_sabre_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_sabre_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_sabre_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_heavy_sabre_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_heavy_sabre_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_heavy_sabre_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_heavy_sabre_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_cavalry_sabre_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_cavalry_sabre_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_cavalry_sabre_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_cavalry_sabre_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_ranger_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_ranger_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_ranger_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_ranger_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_long_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_fast_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_fast_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_fast_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_fast_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_long_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_long_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_long_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_noble_long_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_noble_long_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_noble_long_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_noble_long_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_long_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_cleaver_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_noble_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_long_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_long_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_long_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_short_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_short_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_short_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_short_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_bastard_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_bastard_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_bastard_sword_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_bastard_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_bastard_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_bastard_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_bastard_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_bastard_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_noble_bastard_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_noble_bastard_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_noble_bastard_sword_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_noble_bastard_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_sickle_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_sickle_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_pick_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_pick_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_sword_pommel" mp_piece="true" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_TwoHandedSword" item_type="TwoHandedWeapon" item_modifier_group="sword" item_holsters="sword_back:sword_back_2:sword_back_3:sword_back_4" piece_type_to_scale_holster_with="Blade" hidden_piece_types_on_holster="Blade" default_item_holster_position_offset="0,0,-0.1">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_OneHandedBastardSword" />
+      <WeaponDescription id="crpg_TwoHandedSword" />
+      <WeaponDescription id="crpg_OneHandedBastardSwordAlternative" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_empire_blade_1" />
+      <UsablePiece piece_id="crpg_empire_blade_2" />
+      <UsablePiece piece_id="crpg_empire_blade_3" />
+      <UsablePiece piece_id="crpg_empire_blade_3_blunt" />
+      <UsablePiece piece_id="crpg_empire_blade_4" />
+      <UsablePiece piece_id="crpg_empire_blade_4_blunt" />
+      <UsablePiece piece_id="crpg_empire_blade_5" />
+      <UsablePiece piece_id="crpg_empire_blade_6" />
+      <UsablePiece piece_id="crpg_empire_blade_6_blunt" />
+      <UsablePiece piece_id="crpg_empire_blade_7" />
+      <UsablePiece piece_id="crpg_sturgian_blade_1" />
+      <UsablePiece piece_id="crpg_sturgian_blade_2" />
+      <UsablePiece piece_id="crpg_sturgian_blade_3" />
+      <UsablePiece piece_id="crpg_sturgian_blade_4" />
+      <UsablePiece piece_id="crpg_sturgian_blade_5" />
+      <UsablePiece piece_id="crpg_sturgian_blade_6" />
+      <UsablePiece piece_id="crpg_sturgian_blade_7" />
+      <UsablePiece piece_id="crpg_sturgian_blade_8" />
+      <UsablePiece piece_id="crpg_sturgian_blade_9" />
+      <UsablePiece piece_id="crpg_sturgian_blade_10" />
+      <UsablePiece piece_id="crpg_sturgian_blade_11" />
+      <UsablePiece piece_id="crpg_sturgian_blade_12" />
+      <UsablePiece piece_id="crpg_sturgian_blade_13" />
+      <UsablePiece piece_id="crpg_sturgian_blade_14" />
+      <UsablePiece piece_id="crpg_sturgian_blade_15" />
+      <UsablePiece piece_id="crpg_sturgian_blade_16" />
+      <UsablePiece piece_id="crpg_khuzait_blade_1" />
+      <UsablePiece piece_id="crpg_khuzait_blade_2" />
+      <UsablePiece piece_id="crpg_khuzait_blade_3" />
+      <UsablePiece piece_id="crpg_khuzait_blade_5" />
+      <UsablePiece piece_id="crpg_khuzait_blade_6" />
+      <UsablePiece piece_id="crpg_khuzait_blade_7" />
+      <UsablePiece piece_id="crpg_khuzait_blade_8" />
+      <UsablePiece piece_id="crpg_khuzait_blade_9" />
+      <UsablePiece piece_id="crpg_vlandian_blade_1" />
+      <UsablePiece piece_id="crpg_vlandian_blade_2" />
+      <UsablePiece piece_id="crpg_vlandian_blade_3" />
+      <UsablePiece piece_id="crpg_vlandian_blade_3_blunt" />
+      <UsablePiece piece_id="crpg_vlandian_blade_4" />
+      <UsablePiece piece_id="crpg_vlandian_blade_5" />
+      <UsablePiece piece_id="crpg_vlandian_blade_6" />
+      <UsablePiece piece_id="crpg_vlandian_blade_7" />
+      <UsablePiece piece_id="crpg_vlandian_blade_8" />
+      <UsablePiece piece_id="crpg_vlandian_blade_9" />
+      <UsablePiece piece_id="crpg_vlandian_blade_10" />
+      <UsablePiece piece_id="crpg_vlandian_blade_11" />
+      <UsablePiece piece_id="crpg_vlandian_blade_12" />
+      <UsablePiece piece_id="crpg_vlandian_blade_13" />
+      <UsablePiece piece_id="crpg_vlandian_blade_14" />
+      <UsablePiece piece_id="crpg_cleaver_blade_1" />
+      <UsablePiece piece_id="crpg_cleaver_blade_2" />
+      <UsablePiece piece_id="crpg_cleaver_blade_3" />
+      <UsablePiece piece_id="crpg_cleaver_blade_4" />
+      <UsablePiece piece_id="crpg_cleaver_blade_5" />
+      <UsablePiece piece_id="crpg_aserai_blade_1" />
+      <UsablePiece piece_id="crpg_aserai_blade_2" />
+      <UsablePiece piece_id="crpg_aserai_blade_3" />
+      <UsablePiece piece_id="crpg_aserai_blade_4" />
+      <UsablePiece piece_id="crpg_aserai_blade_5" />
+      <UsablePiece piece_id="crpg_aserai_blade_7" />
+      <UsablePiece piece_id="crpg_aserai_blade_8" />
+      <UsablePiece piece_id="crpg_aserai_blade_9" />
+      <UsablePiece piece_id="crpg_aserai_blade_11" />
+      <UsablePiece piece_id="crpg_battania_blade_1" />
+      <UsablePiece piece_id="crpg_battania_blade_3" />
+      <UsablePiece piece_id="crpg_battania_blade_3_blunt" />
+      <UsablePiece piece_id="crpg_battania_blade_3_iron" />
+      <UsablePiece piece_id="crpg_battania_blade_3_iron_blunt" />
+      <UsablePiece piece_id="crpg_battania_blade_4" />
+      <UsablePiece piece_id="crpg_battania_blade_5" />
+      <UsablePiece piece_id="crpg_battania_blade_6" />
+      <UsablePiece piece_id="crpg_wood_blade_1" />
+      <UsablePiece piece_id="crpg_empire_guard_1" />
+      <UsablePiece piece_id="crpg_empire_guard_2" />
+      <UsablePiece piece_id="crpg_empire_guard_3" />
+      <UsablePiece piece_id="crpg_empire_guard_4" />
+      <UsablePiece piece_id="crpg_empire_guard_5" />
+      <UsablePiece piece_id="crpg_empire_guard_6" />
+      <UsablePiece piece_id="crpg_sturgian_guard_1" />
+      <UsablePiece piece_id="crpg_sturgian_guard_2" />
+      <UsablePiece piece_id="crpg_sturgian_guard_3" />
+      <UsablePiece piece_id="crpg_sturgian_guard_4" />
+      <UsablePiece piece_id="crpg_sturgian_guard_5" />
+      <UsablePiece piece_id="crpg_sturgian_guard_6" />
+      <UsablePiece piece_id="crpg_sturgian_guard_7" />
+      <UsablePiece piece_id="crpg_sturgian_guard_8" />
+      <UsablePiece piece_id="crpg_sturgian_guard_9" />
+      <UsablePiece piece_id="crpg_sturgian_guard_10" />
+      <UsablePiece piece_id="crpg_sturgian_guard_11" />
+      <UsablePiece piece_id="crpg_sturgian_guard_12" />
+      <UsablePiece piece_id="crpg_sturgian_noble_guard_1" />
+      <UsablePiece piece_id="crpg_sturgian_noble_guard_2" />
+      <UsablePiece piece_id="crpg_khuzait_guard_1" />
+      <UsablePiece piece_id="crpg_khuzait_guard_2" />
+      <UsablePiece piece_id="crpg_khuzait_guard_3" />
+      <UsablePiece piece_id="crpg_khuzait_guard_4" />
+      <UsablePiece piece_id="crpg_khuzait_guard_5" />
+      <UsablePiece piece_id="crpg_khuzait_guard_6" />
+      <UsablePiece piece_id="crpg_khuzait_guard_7" />
+      <UsablePiece piece_id="crpg_khuzait_guard_8" />
+      <UsablePiece piece_id="crpg_khuzait_guard_9" />
+      <UsablePiece piece_id="crpg_vlandian_guard_1" />
+      <UsablePiece piece_id="crpg_vlandian_guard_2" />
+      <UsablePiece piece_id="crpg_vlandian_guard_3" />
+      <UsablePiece piece_id="crpg_vlandian_guard_4" />
+      <UsablePiece piece_id="crpg_vlandian_guard_5" />
+      <UsablePiece piece_id="crpg_vlandian_guard_6" />
+      <UsablePiece piece_id="crpg_vlandian_guard_7" />
+      <UsablePiece piece_id="crpg_vlandian_guard_8" />
+      <UsablePiece piece_id="crpg_cleaver_guard_1" />
+      <UsablePiece piece_id="crpg_cleaver_guard_2" />
+      <UsablePiece piece_id="crpg_cleaver_guard_3" />
+      <UsablePiece piece_id="crpg_cleaver_guard_4" />
+      <UsablePiece piece_id="crpg_cleaver_guard_5" />
+      <UsablePiece piece_id="crpg_aserai_guard_1" />
+      <UsablePiece piece_id="crpg_aserai_guard_2" />
+      <UsablePiece piece_id="crpg_aserai_guard_3" />
+      <UsablePiece piece_id="crpg_aserai_guard_4" />
+      <UsablePiece piece_id="crpg_aserai_guard_5" />
+      <UsablePiece piece_id="crpg_aserai_guard_6" />
+      <UsablePiece piece_id="crpg_aserai_guard_7" />
+      <UsablePiece piece_id="crpg_aserai_guard_8" />
+      <UsablePiece piece_id="crpg_aserai_guard_9" />
+      <UsablePiece piece_id="crpg_battania_guard_1" />
+      <UsablePiece piece_id="crpg_battania_guard_3" />
+      <UsablePiece piece_id="crpg_battania_guard_5" />
+      <UsablePiece piece_id="crpg_battania_guard_6" />
+      <UsablePiece piece_id="crpg_battania_guard_7" />
+      <UsablePiece piece_id="crpg_battania_guard_8" />
+      <UsablePiece piece_id="crpg_battania_guard_9" />
+      <UsablePiece piece_id="crpg_wood_guard_1" />
+      <UsablePiece piece_id="crpg_empire_grip_7" />
+      <UsablePiece piece_id="crpg_empire_grip_8" />
+      <UsablePiece piece_id="crpg_empire_grip_9" />
+      <UsablePiece piece_id="crpg_empire_grip_10" />
+      <UsablePiece piece_id="crpg_empire_grip_11" />
+      <UsablePiece piece_id="crpg_empire_grip_12" />
+      <UsablePiece piece_id="crpg_empire_grip_13" />
+      <UsablePiece piece_id="crpg_empire_grip_14" />
+      <UsablePiece piece_id="crpg_empire_grip_15" />
+      <UsablePiece piece_id="crpg_empire_grip_18" />
+      <UsablePiece piece_id="crpg_sturgian_grip_15" />
+      <UsablePiece piece_id="crpg_sturgian_grip_16" />
+      <UsablePiece piece_id="crpg_sturgian_grip_17" />
+      <UsablePiece piece_id="crpg_sturgian_grip_18" />
+      <UsablePiece piece_id="crpg_sturgian_grip_19" />
+      <UsablePiece piece_id="crpg_sturgian_grip_20" />
+      <UsablePiece piece_id="crpg_sturgian_grip_21" />
+      <UsablePiece piece_id="crpg_sturgian_grip_22" />
+      <UsablePiece piece_id="crpg_sturgian_grip_23" />
+      <UsablePiece piece_id="crpg_sturgian_grip_24" />
+      <UsablePiece piece_id="crpg_sturgian_grip_25" />
+      <UsablePiece piece_id="crpg_sturgian_grip_26" />
+      <UsablePiece piece_id="crpg_sturgian_grip_27" />
+      <UsablePiece piece_id="crpg_sturgian_grip_28" />
+      <UsablePiece piece_id="crpg_sturgian_grip_29" />
+      <UsablePiece piece_id="crpg_sturgian_grip_30" />
+      <UsablePiece piece_id="crpg_sturgian_grip_31" />
+      <UsablePiece piece_id="crpg_sturgian_grip_32" />
+      <UsablePiece piece_id="crpg_sturgian_grip_33" />
+      <UsablePiece piece_id="crpg_khuzait_grip_9" />
+      <UsablePiece piece_id="crpg_khuzait_grip_10" />
+      <UsablePiece piece_id="crpg_khuzait_grip_11" />
+      <UsablePiece piece_id="crpg_khuzait_grip_12" />
+      <UsablePiece piece_id="crpg_khuzait_grip_13" />
+      <UsablePiece piece_id="crpg_khuzait_grip_14" />
+      <UsablePiece piece_id="crpg_khuzait_grip_15" />
+      <UsablePiece piece_id="crpg_khuzait_grip_16" />
+      <UsablePiece piece_id="crpg_khuzait_grip_17" />
+      <UsablePiece piece_id="crpg_vlandian_grip_7" />
+      <UsablePiece piece_id="crpg_vlandian_grip_8" />
+      <UsablePiece piece_id="crpg_vlandian_grip_9" />
+      <UsablePiece piece_id="crpg_vlandian_grip_10" />
+      <UsablePiece piece_id="crpg_vlandian_grip_11" />
+      <UsablePiece piece_id="crpg_vlandian_grip_12" />
+      <UsablePiece piece_id="crpg_vlandian_grip_13" />
+      <UsablePiece piece_id="crpg_vlandian_grip_14" />
+      <UsablePiece piece_id="crpg_vlandian_grip_15" />
+      <UsablePiece piece_id="crpg_vlandian_grip_16" />
+      <UsablePiece piece_id="crpg_vlandian_grip_17" />
+      <UsablePiece piece_id="crpg_vlandian_grip_18" />
+      <UsablePiece piece_id="crpg_cleaver_grip_4" />
+      <UsablePiece piece_id="crpg_cleaver_grip_6" />
+      <UsablePiece piece_id="crpg_cleaver_grip_7" />
+      <UsablePiece piece_id="crpg_cleaver_grip_8" />
+      <UsablePiece piece_id="crpg_cleaver_grip_10" />
+      <UsablePiece piece_id="crpg_aserai_grip_10" />
+      <UsablePiece piece_id="crpg_aserai_grip_11" />
+      <UsablePiece piece_id="crpg_aserai_grip_12" />
+      <UsablePiece piece_id="crpg_aserai_grip_13" />
+      <UsablePiece piece_id="crpg_aserai_grip_14" />
+      <UsablePiece piece_id="crpg_aserai_grip_15" />
+      <UsablePiece piece_id="crpg_aserai_grip_16" />
+      <UsablePiece piece_id="crpg_aserai_grip_17" />
+      <UsablePiece piece_id="crpg_aserai_grip_18" />
+      <UsablePiece piece_id="crpg_aserai_grip_19" />
+      <UsablePiece piece_id="crpg_aserai_grip_20" />
+      <UsablePiece piece_id="crpg_aserai_grip_21" />
+      <UsablePiece piece_id="crpg_aserai_grip_22" />
+      <UsablePiece piece_id="crpg_aserai_grip_23" />
+      <UsablePiece piece_id="crpg_battania_grip_2" />
+      <UsablePiece piece_id="crpg_battania_grip_5" />
+      <UsablePiece piece_id="crpg_battania_grip_6" />
+      <UsablePiece piece_id="crpg_battania_grip_8" />
+      <UsablePiece piece_id="crpg_battania_grip_9" />
+      <UsablePiece piece_id="crpg_wood_grip_2" />
+      <UsablePiece piece_id="crpg_empire_pommel_1" />
+      <UsablePiece piece_id="crpg_empire_pommel_2" />
+      <UsablePiece piece_id="crpg_empire_pommel_3" />
+      <UsablePiece piece_id="crpg_empire_pommel_4" />
+      <UsablePiece piece_id="crpg_empire_pommel_5" />
+      <UsablePiece piece_id="crpg_empire_pommel_6" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_1" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_2" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_3" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_4" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_5" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_6" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_7" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_8" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_9" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_10" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_11" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_12" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_1" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_3" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_4" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_5" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_6" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_7" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_1" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_2" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_3" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_4" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_5" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_6" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_7" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_8" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_9" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_10" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_1" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_2" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_3" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_1" />
+      <UsablePiece piece_id="crpg_aserai_pommel_2" />
+      <UsablePiece piece_id="crpg_aserai_pommel_3" />
+      <UsablePiece piece_id="crpg_aserai_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_5" />
+      <UsablePiece piece_id="crpg_aserai_pommel_6" />
+      <UsablePiece piece_id="crpg_aserai_pommel_8" />
+      <UsablePiece piece_id="crpg_aserai_pommel_9" />
+      <UsablePiece piece_id="crpg_battania_pommel_1" />
+      <UsablePiece piece_id="crpg_battania_pommel_2" />
+      <UsablePiece piece_id="crpg_battania_pommel_3" />
+      <UsablePiece piece_id="crpg_battania_pommel_4" />
+      <UsablePiece piece_id="crpg_battania_pommel_5" />
+      <UsablePiece piece_id="crpg_battania_pommel_6" />
+      <UsablePiece piece_id="crpg_battania_pommel_7" />
+      <UsablePiece piece_id="crpg_battania_pommel_8" />
+      <UsablePiece piece_id="crpg_battania_pommel_9" />
+      <UsablePiece piece_id="crpg_wood_pommel_1" />
+      <UsablePiece piece_id="crpg_mp_vlandian_2hsword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_2hsword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_2hsword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_2hsword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_falx_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_falx_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_falx_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_falx_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_long_falx_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_long_falx_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_long_falx_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_long_falx_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_polearm_falx_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_polearm_falx_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_polearm_falx_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_polearm_falx_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_2h_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_2h_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_2h_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_2h_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_2h_long_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_2h_long_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_2h_long_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_2h_long_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_two_handed_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_two_handed_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_two_handed_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_handed_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_handed_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_pommel_2" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_bastard_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_bastard_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_bastard_sword_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_bastard_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_bastard_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_bastard_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_bastard_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_bastard_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_noble_bastard_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_noble_bastard_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_noble_bastard_sword_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_noble_bastard_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_noble_two_handed_sword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_noble_two_handed_sword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_noble_two_handed_sword_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_noble_two_handed_sword_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_2hsword_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_2hsword_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_2hsword_pommel" mp_piece="true" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_Dagger" item_type="OneHandedWeapon" item_modifier_group="sword" item_holsters="sword_left_hip_3:sword_left_hip_2:sword_left_hip:sword_back" default_item_holster_position_offset="0,0,-0.1" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_Dagger" />
+      <WeaponDescription id="crpg_ThrowingKnife" />
+    </WeaponDescriptions>
+    <StatsData weapon_description="crpg_Dagger">
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <StatsData weapon_description="crpg_ThrowingKnife">
+      <StatData stat_type="Weight" max_value="2.0" />
+      <StatData stat_type="WeaponReach" max_value="100" />
+      <StatData stat_type="MissileSpeed" max_value="150" />
+      <StatData stat_type="MissileDamage" max_value="200" />
+      <StatData stat_type="Accuracy" max_value="100" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_empire_dagger_guard_1" />
+      <UsablePiece piece_id="crpg_empire_dagger_guard_2" />
+      <UsablePiece piece_id="crpg_empire_dagger_guard_3" />
+      <UsablePiece piece_id="crpg_empire_dagger_guard_4" />
+      <UsablePiece piece_id="crpg_empire_dagger_guard_5" />
+      <UsablePiece piece_id="crpg_empire_dagger_guard_6" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_1" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_2" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_3" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_4" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_5" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_6" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_7" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_8" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_9" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_10" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_11" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_12" />
+      <UsablePiece piece_id="crpg_khuzait_dagger_guard_1" />
+      <UsablePiece piece_id="crpg_khuzait_dagger_guard_2" />
+      <UsablePiece piece_id="crpg_khuzait_dagger_guard_3" />
+      <UsablePiece piece_id="crpg_khuzait_dagger_guard_4" />
+      <UsablePiece piece_id="crpg_khuzait_dagger_guard_5" />
+      <UsablePiece piece_id="crpg_khuzait_dagger_guard_6" />
+      <UsablePiece piece_id="crpg_khuzait_dagger_guard_7" />
+      <UsablePiece piece_id="crpg_khuzait_dagger_guard_8" />
+      <UsablePiece piece_id="crpg_khuzait_dagger_guard_9" />
+      <UsablePiece piece_id="crpg_vlandian_dagger_guard_1" />
+      <UsablePiece piece_id="crpg_vlandian_dagger_guard_2" />
+      <UsablePiece piece_id="crpg_vlandian_dagger_guard_3" />
+      <UsablePiece piece_id="crpg_vlandian_dagger_guard_4" />
+      <UsablePiece piece_id="crpg_vlandian_dagger_guard_5" />
+      <UsablePiece piece_id="crpg_vlandian_dagger_guard_6" />
+      <UsablePiece piece_id="crpg_vlandian_dagger_guard_7" />
+      <UsablePiece piece_id="crpg_vlandian_dagger_guard_8" />
+      <UsablePiece piece_id="crpg_cleaver_dagger_guard_1" />
+      <UsablePiece piece_id="crpg_cleaver_dagger_guard_2" />
+      <UsablePiece piece_id="crpg_cleaver_dagger_guard_3" />
+      <UsablePiece piece_id="crpg_cleaver_dagger_guard_4" />
+      <UsablePiece piece_id="crpg_cleaver_dagger_guard_5" />
+      <UsablePiece piece_id="crpg_aserai_dagger_guard_1" />
+      <UsablePiece piece_id="crpg_aserai_dagger_guard_2" />
+      <UsablePiece piece_id="crpg_aserai_dagger_guard_3" />
+      <UsablePiece piece_id="crpg_aserai_dagger_guard_4" />
+      <UsablePiece piece_id="crpg_aserai_dagger_guard_5" />
+      <UsablePiece piece_id="crpg_aserai_dagger_guard_6" />
+      <UsablePiece piece_id="crpg_aserai_dagger_guard_7" />
+      <UsablePiece piece_id="crpg_aserai_dagger_guard_8" />
+      <UsablePiece piece_id="crpg_aserai_guard_9" />
+      <UsablePiece piece_id="crpg_battania_dagger_guard_1" />
+      <UsablePiece piece_id="crpg_battania_dagger_guard_3" />
+      <UsablePiece piece_id="crpg_battania_dagger_guard_5" />
+      <UsablePiece piece_id="crpg_battania_dagger_guard_6" />
+      <UsablePiece piece_id="crpg_battania_dagger_guard_7" />
+      <UsablePiece piece_id="crpg_battania_dagger_guard_8" />
+      <UsablePiece piece_id="crpg_battania_dagger_guard_9" />
+      <UsablePiece piece_id="crpg_empire_grip_1" />
+      <UsablePiece piece_id="crpg_empire_grip_2" />
+      <UsablePiece piece_id="crpg_empire_grip_3" />
+      <UsablePiece piece_id="crpg_empire_grip_4" />
+      <UsablePiece piece_id="crpg_empire_grip_5" />
+      <UsablePiece piece_id="crpg_empire_grip_6" />
+      <UsablePiece piece_id="crpg_empire_grip_16" />
+      <UsablePiece piece_id="crpg_sturgian_grip_1" />
+      <UsablePiece piece_id="crpg_sturgian_grip_2" />
+      <UsablePiece piece_id="crpg_sturgian_grip_3" />
+      <UsablePiece piece_id="crpg_sturgian_grip_4" />
+      <UsablePiece piece_id="crpg_sturgian_grip_5" />
+      <UsablePiece piece_id="crpg_sturgian_grip_6" />
+      <UsablePiece piece_id="crpg_sturgian_grip_7" />
+      <UsablePiece piece_id="crpg_sturgian_grip_8" />
+      <UsablePiece piece_id="crpg_sturgian_grip_9" />
+      <UsablePiece piece_id="crpg_sturgian_grip_10" />
+      <UsablePiece piece_id="crpg_sturgian_grip_11" />
+      <UsablePiece piece_id="crpg_sturgian_grip_12" />
+      <UsablePiece piece_id="crpg_sturgian_grip_13" />
+      <UsablePiece piece_id="crpg_sturgian_grip_14" />
+      <UsablePiece piece_id="crpg_sturgian_grip_34" />
+      <UsablePiece piece_id="crpg_sturgian_grip_35" />
+      <UsablePiece piece_id="crpg_sturgian_grip_37" />
+      <UsablePiece piece_id="crpg_khuzait_grip_2" />
+      <UsablePiece piece_id="crpg_khuzait_grip_4" />
+      <UsablePiece piece_id="crpg_khuzait_grip_5" />
+      <UsablePiece piece_id="crpg_khuzait_grip_7" />
+      <UsablePiece piece_id="crpg_khuzait_grip_18" />
+      <UsablePiece piece_id="crpg_vlandian_grip_1" />
+      <UsablePiece piece_id="crpg_vlandian_grip_2" />
+      <UsablePiece piece_id="crpg_vlandian_grip_3" />
+      <UsablePiece piece_id="crpg_vlandian_grip_4" />
+      <UsablePiece piece_id="crpg_vlandian_grip_5" />
+      <UsablePiece piece_id="crpg_vlandian_grip_6" />
+      <UsablePiece piece_id="crpg_vlandian_grip_21" />
+      <UsablePiece piece_id="crpg_vlandian_grip_23" />
+      <UsablePiece piece_id="crpg_cleaver_grip_1" />
+      <UsablePiece piece_id="crpg_cleaver_grip_5" />
+      <UsablePiece piece_id="crpg_aserai_grip_1" />
+      <UsablePiece piece_id="crpg_aserai_grip_3" />
+      <UsablePiece piece_id="crpg_aserai_grip_4" />
+      <UsablePiece piece_id="crpg_aserai_grip_5" />
+      <UsablePiece piece_id="crpg_aserai_grip_6" />
+      <UsablePiece piece_id="crpg_aserai_grip_7" />
+      <UsablePiece piece_id="crpg_aserai_grip_8" />
+      <UsablePiece piece_id="crpg_aserai_grip_9" />
+      <UsablePiece piece_id="crpg_aserai_grip_24" />
+      <UsablePiece piece_id="crpg_aserai_grip_25" />
+      <UsablePiece piece_id="crpg_aserai_grip_29" />
+      <UsablePiece piece_id="crpg_battania_grip_1" />
+      <UsablePiece piece_id="crpg_battania_grip_3" />
+      <UsablePiece piece_id="crpg_wood_grip_1" />
+      <UsablePiece piece_id="crpg_sickle_grip_1" />
+      <UsablePiece piece_id="crpg_empire_pommel_1" />
+      <UsablePiece piece_id="crpg_empire_pommel_2" />
+      <UsablePiece piece_id="crpg_empire_pommel_3" />
+      <UsablePiece piece_id="crpg_empire_pommel_4" />
+      <UsablePiece piece_id="crpg_empire_pommel_5" />
+      <UsablePiece piece_id="crpg_empire_pommel_6" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_1" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_2" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_3" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_4" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_5" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_6" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_7" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_8" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_9" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_10" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_11" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_12" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_1" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_3" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_4" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_5" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_6" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_7" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_1" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_2" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_3" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_4" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_5" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_6" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_7" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_8" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_9" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_10" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_1" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_2" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_3" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_1" />
+      <UsablePiece piece_id="crpg_aserai_pommel_2" />
+      <UsablePiece piece_id="crpg_aserai_pommel_3" />
+      <UsablePiece piece_id="crpg_aserai_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_5" />
+      <UsablePiece piece_id="crpg_aserai_pommel_6" />
+      <UsablePiece piece_id="crpg_aserai_pommel_8" />
+      <UsablePiece piece_id="crpg_aserai_pommel_9" />
+      <UsablePiece piece_id="crpg_battania_pommel_1" />
+      <UsablePiece piece_id="crpg_battania_pommel_2" />
+      <UsablePiece piece_id="crpg_battania_pommel_3" />
+      <UsablePiece piece_id="crpg_battania_pommel_4" />
+      <UsablePiece piece_id="crpg_battania_pommel_5" />
+      <UsablePiece piece_id="crpg_battania_pommel_6" />
+      <UsablePiece piece_id="crpg_battania_pommel_7" />
+      <UsablePiece piece_id="crpg_battania_pommel_8" />
+      <UsablePiece piece_id="crpg_battania_pommel_9" />
+      <UsablePiece piece_id="crpg_wood_pommel_1" />
+      <UsablePiece piece_id="crpg_dagger_blade_1" />
+      <UsablePiece piece_id="crpg_dagger_blade_2" />
+      <UsablePiece piece_id="crpg_dagger_blade_3" />
+      <UsablePiece piece_id="crpg_dagger_blade_3_blunt" />
+      <UsablePiece piece_id="crpg_dagger_blade_4" />
+      <UsablePiece piece_id="crpg_dagger_blade_5" />
+      <UsablePiece piece_id="crpg_dagger_blade_6" />
+      <UsablePiece piece_id="crpg_dagger_blade_6_blunt" />
+      <UsablePiece piece_id="crpg_dagger_blade_7" />
+      <UsablePiece piece_id="crpg_dagger_blade_8" />
+      <UsablePiece piece_id="crpg_dagger_blade_9" />
+      <UsablePiece piece_id="crpg_dagger_blade_10" />
+      <UsablePiece piece_id="crpg_dagger_blade_11" />
+      <UsablePiece piece_id="crpg_dagger_blade_12" />
+      <UsablePiece piece_id="crpg_dagger_blade_13" />
+      <UsablePiece piece_id="crpg_dagger_blade_13_blunt" />
+      <UsablePiece piece_id="crpg_dagger_blade_14" />
+      <UsablePiece piece_id="crpg_mp_empire_pugio_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_pugio_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_pugio_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_pugio_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_dagger_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_dagger_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_dagger_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_dagger_pommel" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_dagger_blade_1" mp_piece="true" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_ThrowingKnife" item_type="Thrown" item_modifier_group="knife_throwing" item_holsters="throwing_knife_2:throwing_knife:throwing_stone:throwing_stone_2" piece_type_to_scale_holster_with="Blade" default_item_holster_position_offset="0,0,-0.1" always_show_holster_with_weapon="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_ThrowingKnife" />
+      <WeaponDescription id="crpg_Dagger" />
+    </WeaponDescriptions>
+    <StatsData weapon_description="crpg_ThrowingKnife">
+      <StatData stat_type="Weight" max_value="2.0" />
+      <StatData stat_type="WeaponReach" max_value="100" />
+      <StatData stat_type="MissileSpeed" max_value="150" />
+      <StatData stat_type="MissileDamage" max_value="200" />
+      <StatData stat_type="Accuracy" max_value="100" />
+    </StatsData>
+    <StatsData weapon_description="crpg_Dagger">
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_empire_dagger_guard_3" />
+      <UsablePiece piece_id="crpg_empire_dagger_guard_4" />
+      <UsablePiece piece_id="crpg_empire_dagger_guard_5" />
+      <UsablePiece piece_id="crpg_empire_dagger_guard_6" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_1" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_2" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_3" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_5" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_6" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_7" />
+      <UsablePiece piece_id="crpg_sturgian_dagger_guard_8" />
+      <UsablePiece piece_id="crpg_khuzait_dagger_guard_5" />
+      <UsablePiece piece_id="crpg_khuzait_dagger_guard_6" />
+      <UsablePiece piece_id="crpg_khuzait_dagger_guard_8" />
+      <UsablePiece piece_id="crpg_khuzait_dagger_guard_9" />
+      <UsablePiece piece_id="crpg_vlandian_dagger_guard_4" />
+      <UsablePiece piece_id="crpg_vlandian_dagger_guard_5" />
+      <UsablePiece piece_id="crpg_vlandian_dagger_guard_6" />
+      <UsablePiece piece_id="crpg_vlandian_dagger_guard_7" />
+      <UsablePiece piece_id="crpg_vlandian_dagger_guard_8" />
+      <UsablePiece piece_id="crpg_cleaver_dagger_guard_1" />
+      <UsablePiece piece_id="crpg_cleaver_dagger_guard_2" />
+      <UsablePiece piece_id="crpg_cleaver_dagger_guard_3" />
+      <UsablePiece piece_id="crpg_cleaver_dagger_guard_4" />
+      <UsablePiece piece_id="crpg_cleaver_dagger_guard_5" />
+      <UsablePiece piece_id="crpg_aserai_dagger_guard_1" />
+      <UsablePiece piece_id="crpg_aserai_dagger_guard_3" />
+      <UsablePiece piece_id="crpg_aserai_dagger_guard_4" />
+      <UsablePiece piece_id="crpg_battania_dagger_guard_8" />
+      <UsablePiece piece_id="crpg_empire_grip_1" />
+      <UsablePiece piece_id="crpg_empire_grip_2" />
+      <UsablePiece piece_id="crpg_empire_grip_3" />
+      <UsablePiece piece_id="crpg_empire_grip_4" />
+      <UsablePiece piece_id="crpg_empire_grip_5" />
+      <UsablePiece piece_id="crpg_empire_grip_6" />
+      <UsablePiece piece_id="crpg_sturgian_grip_1" />
+      <UsablePiece piece_id="crpg_sturgian_grip_2" />
+      <UsablePiece piece_id="crpg_sturgian_grip_3" />
+      <UsablePiece piece_id="crpg_sturgian_grip_4" />
+      <UsablePiece piece_id="crpg_sturgian_grip_5" />
+      <UsablePiece piece_id="crpg_sturgian_grip_6" />
+      <UsablePiece piece_id="crpg_sturgian_grip_7" />
+      <UsablePiece piece_id="crpg_sturgian_grip_8" />
+      <UsablePiece piece_id="crpg_sturgian_grip_9" />
+      <UsablePiece piece_id="crpg_sturgian_grip_10" />
+      <UsablePiece piece_id="crpg_sturgian_grip_11" />
+      <UsablePiece piece_id="crpg_sturgian_grip_12" />
+      <UsablePiece piece_id="crpg_sturgian_grip_13" />
+      <UsablePiece piece_id="crpg_sturgian_grip_14" />
+      <UsablePiece piece_id="crpg_sturgian_grip_34" />
+      <UsablePiece piece_id="crpg_sturgian_grip_35" />
+      <UsablePiece piece_id="crpg_sturgian_grip_37" />
+      <UsablePiece piece_id="crpg_khuzait_grip_2" />
+      <UsablePiece piece_id="crpg_khuzait_grip_4" />
+      <UsablePiece piece_id="crpg_khuzait_grip_5" />
+      <UsablePiece piece_id="crpg_khuzait_grip_7" />
+      <UsablePiece piece_id="crpg_vlandian_grip_1" />
+      <UsablePiece piece_id="crpg_vlandian_grip_2" />
+      <UsablePiece piece_id="crpg_vlandian_grip_4" />
+      <UsablePiece piece_id="crpg_vlandian_grip_5" />
+      <UsablePiece piece_id="crpg_vlandian_grip_6" />
+      <UsablePiece piece_id="crpg_vlandian_grip_21" />
+      <UsablePiece piece_id="crpg_vlandian_grip_23" />
+      <UsablePiece piece_id="crpg_cleaver_grip_1" />
+      <UsablePiece piece_id="crpg_cleaver_grip_5" />
+      <UsablePiece piece_id="crpg_aserai_grip_1" />
+      <UsablePiece piece_id="crpg_aserai_grip_3" />
+      <UsablePiece piece_id="crpg_aserai_grip_4" />
+      <UsablePiece piece_id="crpg_aserai_grip_5" />
+      <UsablePiece piece_id="crpg_aserai_grip_6" />
+      <UsablePiece piece_id="crpg_aserai_grip_7" />
+      <UsablePiece piece_id="crpg_aserai_grip_8" />
+      <UsablePiece piece_id="crpg_battania_grip_1" />
+      <UsablePiece piece_id="crpg_battania_grip_3" />
+      <UsablePiece piece_id="crpg_wood_grip_1" />
+      <UsablePiece piece_id="crpg_sickle_grip_1" />
+      <UsablePiece piece_id="crpg_empire_pommel_1" />
+      <UsablePiece piece_id="crpg_empire_pommel_4" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_1" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_3" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_4" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_5" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_7" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_8" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_1" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_3" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_4" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_6" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_7" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_1" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_5" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_6" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_7" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_10" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_1" />
+      <UsablePiece piece_id="crpg_aserai_pommel_3" />
+      <UsablePiece piece_id="crpg_aserai_pommel_8" />
+      <UsablePiece piece_id="crpg_aserai_pommel_9" />
+      <UsablePiece piece_id="crpg_battania_pommel_1" />
+      <UsablePiece piece_id="crpg_battania_pommel_2" />
+      <UsablePiece piece_id="crpg_battania_pommel_9" />
+      <UsablePiece piece_id="crpg_dagger_blade_10" />
+      <UsablePiece piece_id="crpg_dagger_blade_11" />
+      <UsablePiece piece_id="crpg_dagger_blade_12" />
+      <UsablePiece piece_id="crpg_dagger_blade_13" />
+      <UsablePiece piece_id="crpg_dagger_blade_13_blunt" />
+      <UsablePiece piece_id="crpg_dagger_blade_14" />
+      <UsablePiece piece_id="crpg_mp_battania_dagger_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_dagger_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_dagger_grip" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_dagger_pommel" mp_piece="true" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_OneHandedAxe" item_type="OneHandedWeapon" item_modifier_group="axe" item_holsters="axe_right_hip:axe_right_hip_2:mace_right_hip:axe_back" default_item_holster_position_offset="0,0,-0.45" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Blade" build_order="1" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_OneHandedAxe" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_axe_craft_2_head" />
+      <UsablePiece piece_id="crpg_axe_craft_8_head" />
+      <UsablePiece piece_id="crpg_axe_craft_9_head" />
+      <UsablePiece piece_id="crpg_axe_craft_11_head" />
+      <UsablePiece piece_id="crpg_axe_craft_12_head" />
+      <UsablePiece piece_id="crpg_axe_craft_18_head" />
+      <UsablePiece piece_id="crpg_axe_craft_19_head" />
+      <UsablePiece piece_id="crpg_axe_craft_20_head" />
+      <UsablePiece piece_id="crpg_axe_craft_20_head_blunt" />
+      <UsablePiece piece_id="crpg_axe_craft_21_head" />
+      <UsablePiece piece_id="crpg_axe_craft_23_head" />
+      <UsablePiece piece_id="crpg_axe_craft_24_head" />
+      <UsablePiece piece_id="crpg_axe_craft_25_head" />
+      <UsablePiece piece_id="crpg_axe_craft_26_head" />
+      <UsablePiece piece_id="crpg_axe_craft_27_head" />
+      <UsablePiece piece_id="crpg_axe_craft_28_head" />
+      <UsablePiece piece_id="crpg_axe_craft_29_head" />
+      <UsablePiece piece_id="crpg_axe_craft_30_head" />
+      <UsablePiece piece_id="crpg_axe_craft_30_head_blunt" />
+      <UsablePiece piece_id="crpg_axe_craft_32_head" />
+      <UsablePiece piece_id="crpg_axe_craft_32_head_blunt" />
+      <UsablePiece piece_id="crpg_axe_craft_33_head" />
+      <UsablePiece piece_id="crpg_axe_craft_35_head" />
+      <UsablePiece piece_id="crpg_axe_craft_36_head" />
+      <UsablePiece piece_id="crpg_axe_craft_37_head" />
+      <UsablePiece piece_id="crpg_axe_craft_2_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_3_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_5_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_13_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_15_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_16_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_17_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_18_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_19_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_20_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_21_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_22_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_23_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_24_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_25_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_26_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_27_handle" />
+      <UsablePiece piece_id="crpg_sickle_blade_1" />
+      <UsablePiece piece_id="crpg_default_polearm_pommel" />
+      <UsablePiece piece_id="crpg_empire_pommel_1" />
+      <UsablePiece piece_id="crpg_empire_pommel_2" />
+      <UsablePiece piece_id="crpg_empire_pommel_3" />
+      <UsablePiece piece_id="crpg_empire_pommel_4" />
+      <UsablePiece piece_id="crpg_empire_pommel_5" />
+      <UsablePiece piece_id="crpg_empire_pommel_6" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_1" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_5" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_6" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_7" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_1" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_2" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_3" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_4" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_5" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_6" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_7" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_8" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_9" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_10" />
+      <UsablePiece piece_id="crpg_vlandian_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_1" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_2" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_3" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_1" />
+      <UsablePiece piece_id="crpg_aserai_pommel_2" />
+      <UsablePiece piece_id="crpg_aserai_pommel_3" />
+      <UsablePiece piece_id="crpg_aserai_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_5" />
+      <UsablePiece piece_id="crpg_aserai_pommel_8" />
+      <UsablePiece piece_id="crpg_aserai_pommel_9" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_battania_pommel_1" />
+      <UsablePiece piece_id="crpg_battania_pommel_2" />
+      <UsablePiece piece_id="crpg_battania_pommel_3" />
+      <UsablePiece piece_id="crpg_battania_pommel_4" />
+      <UsablePiece piece_id="crpg_battania_pommel_5" />
+      <UsablePiece piece_id="crpg_battania_pommel_6" />
+      <UsablePiece piece_id="crpg_battania_pommel_7" />
+      <UsablePiece piece_id="crpg_battania_pommel_8" />
+      <UsablePiece piece_id="crpg_battania_pommel_9" />
+      <UsablePiece piece_id="crpg_battania_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_wood_pommel_1" />
+      <UsablePiece piece_id="crpg_spear_pommel_1" />
+      <UsablePiece piece_id="crpg_spear_pommel_2" />
+      <UsablePiece piece_id="crpg_spear_pommel_3" />
+      <UsablePiece piece_id="crpg_spear_pommel_4" />
+      <UsablePiece piece_id="crpg_spear_pommel_5" />
+      <UsablePiece piece_id="crpg_spear_pommel_6" />
+      <UsablePiece piece_id="crpg_spear_pommel_7" />
+      <UsablePiece piece_id="crpg_spear_pommel_8" />
+      <UsablePiece piece_id="crpg_spear_pommel_9" />
+      <UsablePiece piece_id="crpg_spear_pommel_10" />
+      <UsablePiece piece_id="crpg_spear_pommel_11" />
+      <UsablePiece piece_id="crpg_spear_pommel_12" />
+      <UsablePiece piece_id="crpg_mp_battania_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_heavy_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_noble_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_heavy_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_cavalry_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_cavalry_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_hatchet_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_hatchet_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_heavy_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_heavy_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturiga_woodsplitter_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturiga_woodsplitter_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_sichel_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_sichel_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_bastard_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_bastard_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_battle_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_battle_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_axe_handle" mp_piece="true" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_TwoHandedAxe" item_type="TwoHandedWeapon" item_modifier_group="axe" item_holsters="axe_back:axe_back_2:axe_back_3:axe_back_4" default_item_holster_position_offset="0,0,-0.65" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Blade" build_order="1" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_OneHandedBastardAxe" />
+      <WeaponDescription id="crpg_TwoHandedAxe" />
+      <WeaponDescription id="crpg_OneHandedBastardAxeAlternative" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_axe_craft_1_head" />
+      <UsablePiece piece_id="crpg_axe_craft_3_head" />
+      <UsablePiece piece_id="crpg_axe_craft_5_head" />
+      <UsablePiece piece_id="crpg_axe_craft_6_head" />
+      <UsablePiece piece_id="crpg_axe_craft_7_head" />
+      <UsablePiece piece_id="crpg_axe_craft_7_head_blunt" />
+      <UsablePiece piece_id="crpg_axe_craft_14_head" />
+      <UsablePiece piece_id="crpg_axe_craft_14_head_blunt" />
+      <UsablePiece piece_id="crpg_axe_craft_15_head" />
+      <UsablePiece piece_id="crpg_axe_craft_16_head" />
+      <UsablePiece piece_id="crpg_axe_craft_17_head" />
+      <UsablePiece piece_id="crpg_axe_craft_38_head" />
+      <UsablePiece piece_id="crpg_axe_craft_22_head" />
+      <UsablePiece piece_id="crpg_axe_craft_34_head" />
+      <UsablePiece piece_id="crpg_axe_craft_1_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_4_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_6_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_7_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_8_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_9_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_10_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_14_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_29_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_30_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_31_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_32_handle" />
+      <UsablePiece piece_id="crpg_default_polearm_pommel" />
+      <UsablePiece piece_id="crpg_empire_pommel_1" />
+      <UsablePiece piece_id="crpg_empire_pommel_2" />
+      <UsablePiece piece_id="crpg_empire_pommel_3" />
+      <UsablePiece piece_id="crpg_empire_pommel_4" />
+      <UsablePiece piece_id="crpg_empire_pommel_5" />
+      <UsablePiece piece_id="crpg_empire_pommel_6" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_1" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_5" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_6" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_7" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_1" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_2" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_3" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_4" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_5" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_6" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_7" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_8" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_9" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_10" />
+      <UsablePiece piece_id="crpg_vlandian_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_1" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_2" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_3" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_1" />
+      <UsablePiece piece_id="crpg_aserai_pommel_2" />
+      <UsablePiece piece_id="crpg_aserai_pommel_3" />
+      <UsablePiece piece_id="crpg_aserai_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_5" />
+      <UsablePiece piece_id="crpg_aserai_pommel_8" />
+      <UsablePiece piece_id="crpg_aserai_pommel_9" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_battania_pommel_1" />
+      <UsablePiece piece_id="crpg_battania_pommel_2" />
+      <UsablePiece piece_id="crpg_battania_pommel_3" />
+      <UsablePiece piece_id="crpg_battania_pommel_4" />
+      <UsablePiece piece_id="crpg_battania_pommel_5" />
+      <UsablePiece piece_id="crpg_battania_pommel_6" />
+      <UsablePiece piece_id="crpg_battania_pommel_7" />
+      <UsablePiece piece_id="crpg_battania_pommel_8" />
+      <UsablePiece piece_id="crpg_battania_pommel_9" />
+      <UsablePiece piece_id="crpg_battania_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_wood_pommel_1" />
+      <UsablePiece piece_id="crpg_spear_pommel_1" />
+      <UsablePiece piece_id="crpg_spear_pommel_2" />
+      <UsablePiece piece_id="crpg_spear_pommel_3" />
+      <UsablePiece piece_id="crpg_spear_pommel_4" />
+      <UsablePiece piece_id="crpg_spear_pommel_5" />
+      <UsablePiece piece_id="crpg_spear_pommel_6" />
+      <UsablePiece piece_id="crpg_spear_pommel_7" />
+      <UsablePiece piece_id="crpg_spear_pommel_8" />
+      <UsablePiece piece_id="crpg_spear_pommel_9" />
+      <UsablePiece piece_id="crpg_spear_pommel_10" />
+      <UsablePiece piece_id="crpg_spear_pommel_11" />
+      <UsablePiece piece_id="crpg_spear_pommel_12" />
+      <UsablePiece piece_id="crpg_mp_vlandia_polearm_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_polearm_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_2haxe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_2haxe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_short_2axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_short_2haxe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_2haxe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_2haxe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_strong_2haxe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_strong_2haxe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_2haxe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_2haxe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_halberd_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_halberd_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_long_2haxe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_long_2haxe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_woodcutters_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_woodcutters_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_billhook_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_billhook_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_bastard_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_bastard_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_battle_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_battle_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_2haxe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_2haxe_handle" mp_piece="true" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_ThrowingAxe" item_type="Thrown" item_modifier_group="axe_throwing" item_holsters="throwing_axe:throwing_axe_2:axe_right_hip_2:axe_back" default_item_holster_position_offset="0,0,0.05" always_show_holster_with_weapon="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Blade" build_order="1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_ThrowingAxe" />
+      <WeaponDescription id="crpg_OneHandedAxe" />
+    </WeaponDescriptions>
+    <StatsData weapon_description="crpg_ThrowingAxe">
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="MissileDamage" max_value="500" />
+      <StatData stat_type="MissileSpeed" max_value="200" />
+      <StatData stat_type="Accuracy" max_value="100" />
+    </StatsData>
+    <StatsData weapon_description="crpg_OneHandedAxe">
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_axe_craft_4_head" />
+      <UsablePiece piece_id="crpg_axe_craft_13_head" />
+      <UsablePiece piece_id="crpg_axe_craft_13_head_blunt" />
+      <UsablePiece piece_id="crpg_axe_craft_31_head" />
+      <UsablePiece piece_id="crpg_axe_craft_11_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_12_handle" />
+      <UsablePiece piece_id="crpg_axe_craft_28_handle" />
+      <UsablePiece piece_id="crpg_mp_vlandian_throwing_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_throwing_axe_head_extra" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_throwing_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_throwing_axe_handle_extra" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_throwing_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_throwing_axe_head_captain" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_throwing_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_throwing_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_throwing_axe_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battanian_throwing_axe_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battanian_throwing_axe_handle" mp_piece="true" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_TwoHandedPolearm" item_type="Polearm" item_modifier_group="polearm" item_holsters="polearm_back:polearm_back_2:polearm_back_3:polearm_back_4" default_item_holster_position_offset="0,0,-0.30" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_OneHandedPolearm" />
+      <WeaponDescription id="crpg_TwoHandedPolearm" />
+      <WeaponDescription id="crpg_TwoHandedPolearm_Couchable" />
+      <WeaponDescription id="crpg_TwoHandedPolearm_Bracing" />
+      <WeaponDescription id="crpg_TwoHandedPolearm_Thrown" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_battania_blade_7" />
+      <UsablePiece piece_id="crpg_axe_craft_10_head" />
+      <UsablePiece piece_id="crpg_spear_blade_1" />
+      <UsablePiece piece_id="crpg_spear_blade_2" />
+      <UsablePiece piece_id="crpg_spear_blade_3" />
+      <UsablePiece piece_id="crpg_spear_blade_4" />
+      <UsablePiece piece_id="crpg_spear_blade_5" />
+      <UsablePiece piece_id="crpg_spear_blade_6" />
+      <UsablePiece piece_id="crpg_spear_blade_7" />
+      <UsablePiece piece_id="crpg_spear_blade_8" />
+      <UsablePiece piece_id="crpg_spear_blade_8_blunt" />
+      <UsablePiece piece_id="crpg_spear_blade_9" />
+      <UsablePiece piece_id="crpg_spear_blade_10" />
+      <UsablePiece piece_id="crpg_spear_blade_11" />
+      <UsablePiece piece_id="crpg_spear_blade_12" />
+      <UsablePiece piece_id="crpg_spear_blade_13" />
+      <UsablePiece piece_id="crpg_spear_blade_14" />
+      <UsablePiece piece_id="crpg_spear_blade_15" />
+      <UsablePiece piece_id="crpg_spear_blade_15_blunt" />
+      <UsablePiece piece_id="crpg_spear_blade_18" />
+      <UsablePiece piece_id="crpg_spear_blade_19" />
+      <UsablePiece piece_id="crpg_spear_blade_19_blunt" />
+      <UsablePiece piece_id="crpg_spear_blade_20" />
+      <UsablePiece piece_id="crpg_spear_blade_20_blunt" />
+      <UsablePiece piece_id="crpg_spear_blade_21" />
+      <UsablePiece piece_id="crpg_spear_blade_22" />
+      <UsablePiece piece_id="crpg_spear_blade_23" />
+      <UsablePiece piece_id="crpg_spear_blade_23_blunt" />
+      <UsablePiece piece_id="crpg_spear_blade_24" />
+      <UsablePiece piece_id="crpg_spear_blade_25" />
+      <UsablePiece piece_id="crpg_spear_blade_26" />
+      <UsablePiece piece_id="crpg_spear_blade_27" />
+      <UsablePiece piece_id="crpg_spear_blade_28" />
+      <UsablePiece piece_id="crpg_spear_blade_29" />
+      <UsablePiece piece_id="crpg_spear_blade_30" />
+      <UsablePiece piece_id="crpg_spear_blade_31" />
+      <UsablePiece piece_id="crpg_spear_blade_32" />
+      <UsablePiece piece_id="crpg_spear_blade_33" />
+      <UsablePiece piece_id="crpg_spear_blade_33_blunt" />
+      <UsablePiece piece_id="crpg_spear_blade_34" />
+      <UsablePiece piece_id="crpg_spear_blade_35" />
+      <UsablePiece piece_id="crpg_spear_blade_35_blunt" />
+      <UsablePiece piece_id="crpg_spear_blade_36" />
+      <UsablePiece piece_id="crpg_spear_blade_37" />
+      <UsablePiece piece_id="crpg_spear_blade_37_blunt" />
+      <UsablePiece piece_id="crpg_spear_blade_38" />
+      <UsablePiece piece_id="crpg_spear_blade_39" />
+      <UsablePiece piece_id="crpg_spear_blade_40" />
+      <UsablePiece piece_id="crpg_spear_blade_41" />
+      <UsablePiece piece_id="crpg_spear_blade_42" />
+      <UsablePiece piece_id="crpg_spear_blade_43" />
+      <UsablePiece piece_id="crpg_spear_blade_44" />
+      <UsablePiece piece_id="crpg_spear_blade_45" />
+      <UsablePiece piece_id="crpg_sickle_blade_1_polearm" />
+      <UsablePiece piece_id="crpg_spear_handle_1" />
+      <UsablePiece piece_id="crpg_spear_handle_3" />
+      <UsablePiece piece_id="crpg_spear_handle_4" />
+      <UsablePiece piece_id="crpg_spear_handle_5" />
+      <UsablePiece piece_id="crpg_spear_handle_6" />
+      <UsablePiece piece_id="crpg_spear_handle_8" />
+      <UsablePiece piece_id="crpg_spear_handle_13" />
+      <UsablePiece piece_id="crpg_spear_handle_14" />
+      <UsablePiece piece_id="crpg_spear_handle_15" />
+      <UsablePiece piece_id="crpg_spear_handle_16" />
+      <UsablePiece piece_id="crpg_spear_handle_17" />
+      <UsablePiece piece_id="crpg_spear_handle_18" />
+      <UsablePiece piece_id="crpg_spear_handle_19" />
+      <UsablePiece piece_id="crpg_spear_handle_20" />
+      <UsablePiece piece_id="crpg_spear_handle_21" />
+      <UsablePiece piece_id="crpg_spear_handle_22" />
+      <UsablePiece piece_id="crpg_spear_handle_23" />
+      <UsablePiece piece_id="crpg_spear_handle_24" />
+      <UsablePiece piece_id="crpg_spear_handle_25" />
+      <UsablePiece piece_id="crpg_spear_handle_26" />
+      <UsablePiece piece_id="crpg_spear_handle_27" />
+      <UsablePiece piece_id="crpg_default_polearm_guard" />
+      <UsablePiece piece_id="crpg_spear_guard_1" />
+      <UsablePiece piece_id="crpg_spear_guard_2" />
+      <UsablePiece piece_id="crpg_spear_guard_3" />
+      <UsablePiece piece_id="crpg_spear_guard_4" />
+      <UsablePiece piece_id="crpg_spear_guard_5" />
+      <UsablePiece piece_id="crpg_spear_guard_6" />
+      <UsablePiece piece_id="crpg_spear_guard_7" />
+      <UsablePiece piece_id="crpg_spear_guard_8" />
+      <UsablePiece piece_id="crpg_spear_guard_9" />
+      <UsablePiece piece_id="crpg_spear_guard_10" />
+      <UsablePiece piece_id="crpg_spear_guard_11" />
+      <UsablePiece piece_id="crpg_spear_guard_12" />
+      <UsablePiece piece_id="crpg_spear_guard_13" />
+      <UsablePiece piece_id="crpg_spear_guard_14" />
+      <UsablePiece piece_id="crpg_spear_guard_15" />
+      <UsablePiece piece_id="crpg_spear_guard_16" />
+      <UsablePiece piece_id="crpg_spear_guard_17" />
+      <UsablePiece piece_id="crpg_spear_guard_18" />
+      <UsablePiece piece_id="crpg_spear_guard_19" />
+      <UsablePiece piece_id="crpg_spear_guard_20" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_1" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_2" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_3" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_4" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_5" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_6" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_7" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_8" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_9" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_10" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_11" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_12" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_13" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_14" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_15" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_16" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_17" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_18" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_19" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_20" />
+      <UsablePiece piece_id="crpg_default_polearm_pommel" />
+      <UsablePiece piece_id="crpg_spear_pommel_1" />
+      <UsablePiece piece_id="crpg_spear_pommel_2" />
+      <UsablePiece piece_id="crpg_spear_pommel_3" />
+      <UsablePiece piece_id="crpg_spear_pommel_4" />
+      <UsablePiece piece_id="crpg_spear_pommel_5" />
+      <UsablePiece piece_id="crpg_spear_pommel_6" />
+      <UsablePiece piece_id="crpg_spear_pommel_7" />
+      <UsablePiece piece_id="crpg_spear_pommel_8" />
+      <UsablePiece piece_id="crpg_spear_pommel_9" />
+      <UsablePiece piece_id="crpg_spear_pommel_10" />
+      <UsablePiece piece_id="crpg_spear_pommel_11" />
+      <UsablePiece piece_id="crpg_spear_pommel_12" />
+      <UsablePiece piece_id="crpg_spear_pommel_13" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_1" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_2" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_3" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_4" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_5" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_6" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_7" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_8" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_9" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_10" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_11" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_12" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_13" />
+      <UsablePiece piece_id="crpg_mp_default_polearm_guard" />
+      <UsablePiece piece_id="crpg_mp_default_polearm_pommel" />
+      <UsablePiece piece_id="crpg_mp_western_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_long_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_cavalry_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_long_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_polearm_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_polearm_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_menavlion_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_cavalry_menavlion_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_menavlion_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_cavalry_menavlion_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_long_menavlion_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_long_menavlion_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_heavy_menavlion_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_heavy_menavlion_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_polearm_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_polearm_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_lance_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_lance_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_short_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_short_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_long_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_cavalry_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_long_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_pike_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_pike_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_glaive_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_scythe_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_2h_sickle_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_shovel_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_glaive_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_heavy_glaive_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_heavy_glaive_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_bamboo_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_long_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_long_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_bamboo_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_long_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_cavalry_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_long_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_short_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_short_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_long_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_long_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_great_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_great_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_lance_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_long_lance_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_heavy_lance_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_lance_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_lance_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_lance_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_bamboo_lance_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_bamboo_lance_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_heavy_lance_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_heavy_lance_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_lance_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_lance_blade_heavy" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_lance_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_lance_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_heavy_lance_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_heavy_lance_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_lance_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_lance_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_long_lance_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_long_lance_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_heavy_lance_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_heavy_lance_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_throwing_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_extra_throwing_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_throwing_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_ash_throwing_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_ash_throwing_spear_blade_extra" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_ash_throwing_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_banner_guard" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_polearm_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_polearm_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_spear_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_spear_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_lance_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_lance_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_pilum_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_pilum_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_pilum_blade_extraammo" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_pilum_handle_extraammo" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_pitchfork_metal_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_pitchfork_wood_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_pitchfork_handle" mp_piece="true" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_Pike" item_type="Polearm" item_modifier_group="polearm" item_holsters="polearm_back:polearm_back_2:polearm_back_3:polearm_back_4" default_item_holster_position_offset="0,0,-0.30" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_TwoHandedPolearm_Pike" />
+      <WeaponDescription id="crpg_TwoHandedPolearm_Bracing" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_spear_blade_1" />
+      <UsablePiece piece_id="crpg_spear_blade_2" />
+      <UsablePiece piece_id="crpg_spear_blade_3" />
+      <UsablePiece piece_id="crpg_spear_blade_4" />
+      <UsablePiece piece_id="crpg_spear_blade_5" />
+      <UsablePiece piece_id="crpg_spear_blade_6" />
+      <UsablePiece piece_id="crpg_spear_blade_7" />
+      <UsablePiece piece_id="crpg_spear_blade_8" />
+      <UsablePiece piece_id="crpg_spear_blade_8_blunt" />
+      <UsablePiece piece_id="crpg_spear_blade_9" />
+      <UsablePiece piece_id="crpg_spear_blade_10" />
+      <UsablePiece piece_id="crpg_spear_blade_11" />
+      <UsablePiece piece_id="crpg_spear_blade_13" />
+      <UsablePiece piece_id="crpg_spear_blade_14" />
+      <UsablePiece piece_id="crpg_spear_blade_15" />
+      <UsablePiece piece_id="crpg_spear_blade_18" />
+      <UsablePiece piece_id="crpg_spear_blade_19" />
+      <UsablePiece piece_id="crpg_spear_blade_20" />
+      <UsablePiece piece_id="crpg_spear_blade_22" />
+      <UsablePiece piece_id="crpg_spear_blade_23" />
+      <UsablePiece piece_id="crpg_spear_blade_24" />
+      <UsablePiece piece_id="crpg_spear_blade_25" />
+      <UsablePiece piece_id="crpg_spear_blade_26" />
+      <UsablePiece piece_id="crpg_spear_blade_27" />
+      <UsablePiece piece_id="crpg_spear_blade_29" />
+      <UsablePiece piece_id="crpg_spear_blade_30" />
+      <UsablePiece piece_id="crpg_spear_blade_32" />
+      <UsablePiece piece_id="crpg_spear_blade_35" />
+      <UsablePiece piece_id="crpg_spear_blade_36" />
+      <UsablePiece piece_id="crpg_spear_blade_37" />
+      <UsablePiece piece_id="crpg_spear_blade_37_blunt" />
+      <UsablePiece piece_id="crpg_spear_blade_38" />
+      <UsablePiece piece_id="crpg_spear_blade_39" />
+      <UsablePiece piece_id="crpg_spear_blade_40" />
+      <UsablePiece piece_id="crpg_spear_blade_41" />
+      <UsablePiece piece_id="crpg_spear_blade_42" />
+      <UsablePiece piece_id="crpg_spear_handle_7" />
+      <UsablePiece piece_id="crpg_spear_handle_27" />
+      <UsablePiece piece_id="crpg_default_polearm_guard" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_11" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_2" />
+      <UsablePiece piece_id="crpg_default_polearm_pommel" />
+      <UsablePiece piece_id="crpg_mp_default_polearm_guard" />
+      <UsablePiece piece_id="crpg_mp_default_polearm_pommel" />
+      <UsablePiece piece_id="crpg_mp_aserai_pike_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_pike_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_pike_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_pike_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_pike_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_pike_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_pitchfork_metal_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_western_pitchfork_wood_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_pike_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_pike_handle" mp_piece="true" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_Javelin" item_type="Thrown" item_modifier_group="spear_dart_throwing" item_holsters="javelins:javelins_2:bow_hip:bow_hip_2" default_item_holster_position_offset="0,0,-0.10" piece_type_to_scale_holster_with="Handle" hidden_piece_types_on_holster="Guard:Handle:Pommel" rotate_weapon_in_holster="true" always_show_holster_with_weapon="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Guard" build_order="1" />
+      <PieceData piece_type="Blade" build_order="2" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_Javelin" />
+      <WeaponDescription id="crpg_OneHandedPolearm_JavelinAlternative" />
+    </WeaponDescriptions>
+    <StatsData weapon_description="crpg_Javelin">
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="MissileDamage" max_value="500" />
+      <StatData stat_type="MissileSpeed" max_value="200" />
+      <StatData stat_type="Accuracy" max_value="100" />
+      <StatData stat_type="StackAmount" max_value="5" />
+    </StatsData>
+    <StatsData weapon_description="crpg_OneHandedPolearm_JavelinAlternative">
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_spear_blade_1" />
+      <UsablePiece piece_id="crpg_spear_blade_9" />
+      <UsablePiece piece_id="crpg_spear_blade_10" />
+      <UsablePiece piece_id="crpg_spear_blade_41" />
+      <UsablePiece piece_id="crpg_spear_blade_14" />
+      <UsablePiece piece_id="crpg_spear_blade_15" />
+      <UsablePiece piece_id="crpg_spear_blade_15_blunt" />
+      <UsablePiece piece_id="crpg_spear_blade_16" />
+      <UsablePiece piece_id="crpg_spear_blade_27" />
+      <UsablePiece piece_id="crpg_spear_blade_35" />
+      <UsablePiece piece_id="crpg_spear_blade_35_blunt" />
+      <UsablePiece piece_id="crpg_spear_blade_37" />
+      <UsablePiece piece_id="crpg_spear_blade_37_blunt" />
+      <UsablePiece piece_id="crpg_spear_blade_38" />
+      <UsablePiece piece_id="crpg_spear_blade_42" />
+      <UsablePiece piece_id="crpg_spear_handle_2" />
+      <UsablePiece piece_id="crpg_spear_handle_9" />
+      <UsablePiece piece_id="crpg_spear_handle_10" />
+      <UsablePiece piece_id="crpg_spear_handle_11" />
+      <UsablePiece piece_id="crpg_spear_handle_12" />
+      <UsablePiece piece_id="crpg_default_polearm_guard" />
+      <UsablePiece piece_id="crpg_spear_guard_15" />
+      <UsablePiece piece_id="crpg_spear_guard_7" />
+      <UsablePiece piece_id="crpg_mp_default_polearm_guard" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_4" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_7" />
+      <UsablePiece piece_id="crpg_mp_spear_guard_15" />
+      <UsablePiece piece_id="crpg_default_polearm_pommel" />
+      <UsablePiece piece_id="crpg_spear_pommel_5" />
+      <UsablePiece piece_id="crpg_spear_pommel_12" />
+      <UsablePiece piece_id="crpg_mp_default_polearm_pommel" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_12" />
+      <UsablePiece piece_id="crpg_mp_spear_pommel_8" />
+      <UsablePiece piece_id="crpg_mp_javelin_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_javelin_blade_captain" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_javelin_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_javelin_blade_extraammo" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_javelin_blade_extraammo_captain" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_javelin_handle_extraammo" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_light_javelin_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_light_javelin_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_pilum_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_pilum_blade_extraammo" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_jereed_blade_captain" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_jereed_blade_extra_captain" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_jereed_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_jereed_blade_extra" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_jereed_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_harpoon_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_harpoon_blade_extra" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_harpoon_blade_strong" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_harpoon_blade_captain" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_harpoon_blade_extra_captain" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_harpoon_blade_strong_captain" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_harpoon_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_javelin_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_javelin_blade_extra" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_javelin_blade_captain" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_javelin_blade_extra_captain" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_javelin_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_plumbata_blade" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_plumbata_handle" mp_piece="true" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_Mace" item_type="OneHandedWeapon" item_modifier_group="mace" item_holsters="mace_right_hip:axe_right_hip_2:axe_right_hip:axe_back" default_item_holster_position_offset="0,0,-0.40" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Blade" build_order="1" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_Mace" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_mace_head_1" />
+      <UsablePiece piece_id="crpg_mace_head_2" />
+      <UsablePiece piece_id="crpg_mace_head_3" />
+      <UsablePiece piece_id="crpg_mace_head_4" />
+      <UsablePiece piece_id="crpg_mace_head_5" />
+      <UsablePiece piece_id="crpg_mace_head_6" />
+      <UsablePiece piece_id="crpg_mace_head_7" />
+      <UsablePiece piece_id="crpg_mace_head_8" />
+      <UsablePiece piece_id="crpg_mace_head_9" />
+      <UsablePiece piece_id="crpg_mace_head_10" />
+      <UsablePiece piece_id="crpg_mace_head_11" />
+      <UsablePiece piece_id="crpg_mace_head_12" />
+      <UsablePiece piece_id="crpg_mace_head_13" />
+      <UsablePiece piece_id="crpg_mace_head_14" />
+      <UsablePiece piece_id="crpg_mace_head_15" />
+      <UsablePiece piece_id="crpg_mace_head_16" />
+      <UsablePiece piece_id="crpg_mace_head_17" />
+      <UsablePiece piece_id="crpg_mace_head_18" />
+      <UsablePiece piece_id="crpg_mace_head_19" />
+      <UsablePiece piece_id="crpg_mace_head_20" />
+      <UsablePiece piece_id="crpg_mace_head_21" />
+      <UsablePiece piece_id="crpg_mace_head_22" />
+      <UsablePiece piece_id="crpg_mace_head_23" />
+      <UsablePiece piece_id="crpg_mace_head_24" />
+      <UsablePiece piece_id="crpg_mace_head_25" />
+      <UsablePiece piece_id="crpg_mace_head_26" />
+      <UsablePiece piece_id="crpg_blacksmith_hammer_tip_1" />
+      <UsablePiece piece_id="crpg_mace_handle_1" />
+      <UsablePiece piece_id="crpg_mace_handle_2" />
+      <UsablePiece piece_id="crpg_mace_handle_3" />
+      <UsablePiece piece_id="crpg_mace_handle_4" />
+      <UsablePiece piece_id="crpg_mace_handle_5" />
+      <UsablePiece piece_id="crpg_mace_handle_6" />
+      <UsablePiece piece_id="crpg_mace_handle_7" />
+      <UsablePiece piece_id="crpg_mace_handle_8" />
+      <UsablePiece piece_id="crpg_mace_handle_9" />
+      <UsablePiece piece_id="crpg_mace_handle_10" />
+      <UsablePiece piece_id="crpg_mace_handle_11" />
+      <UsablePiece piece_id="crpg_mace_handle_12" />
+      <UsablePiece piece_id="crpg_mace_handle_13" />
+      <UsablePiece piece_id="crpg_mace_handle_14" />
+      <UsablePiece piece_id="crpg_mace_handle_15" />
+      <UsablePiece piece_id="crpg_mace_handle_16" />
+      <UsablePiece piece_id="crpg_mace_handle_17" />
+      <UsablePiece piece_id="crpg_sickle_handle_1" />
+      <UsablePiece piece_id="crpg_default_polearm_pommel" />
+      <UsablePiece piece_id="crpg_empire_pommel_1" />
+      <UsablePiece piece_id="crpg_empire_pommel_2" />
+      <UsablePiece piece_id="crpg_empire_pommel_3" />
+      <UsablePiece piece_id="crpg_empire_pommel_4" />
+      <UsablePiece piece_id="crpg_empire_pommel_5" />
+      <UsablePiece piece_id="crpg_empire_pommel_6" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_1" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_2" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_3" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_4" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_5" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_6" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_7" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_8" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_9" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_10" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_11" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_12" />
+      <UsablePiece piece_id="crpg_sturgian_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_sturgian_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_sturgian_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_sturgian_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_1" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_3" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_4" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_5" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_6" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_7" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_1" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_2" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_3" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_4" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_5" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_6" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_7" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_8" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_9" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_10" />
+      <UsablePiece piece_id="crpg_vlandian_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_vlandian_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_vlandian_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_vlandian_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_1" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_2" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_3" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_1" />
+      <UsablePiece piece_id="crpg_aserai_pommel_2" />
+      <UsablePiece piece_id="crpg_aserai_pommel_3" />
+      <UsablePiece piece_id="crpg_aserai_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_5" />
+      <UsablePiece piece_id="crpg_aserai_pommel_6" />
+      <UsablePiece piece_id="crpg_aserai_pommel_8" />
+      <UsablePiece piece_id="crpg_aserai_pommel_9" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_battania_pommel_1" />
+      <UsablePiece piece_id="crpg_battania_pommel_2" />
+      <UsablePiece piece_id="crpg_battania_pommel_3" />
+      <UsablePiece piece_id="crpg_battania_pommel_4" />
+      <UsablePiece piece_id="crpg_battania_pommel_5" />
+      <UsablePiece piece_id="crpg_battania_pommel_6" />
+      <UsablePiece piece_id="crpg_battania_pommel_7" />
+      <UsablePiece piece_id="crpg_battania_pommel_8" />
+      <UsablePiece piece_id="crpg_battania_pommel_9" />
+      <UsablePiece piece_id="crpg_battania_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_wood_pommel_1" />
+      <UsablePiece piece_id="crpg_spear_pommel_1" />
+      <UsablePiece piece_id="crpg_spear_pommel_2" />
+      <UsablePiece piece_id="crpg_spear_pommel_3" />
+      <UsablePiece piece_id="crpg_spear_pommel_4" />
+      <UsablePiece piece_id="crpg_spear_pommel_5" />
+      <UsablePiece piece_id="crpg_spear_pommel_6" />
+      <UsablePiece piece_id="crpg_spear_pommel_7" />
+      <UsablePiece piece_id="crpg_spear_pommel_8" />
+      <UsablePiece piece_id="crpg_spear_pommel_9" />
+      <UsablePiece piece_id="crpg_spear_pommel_10" />
+      <UsablePiece piece_id="crpg_spear_pommel_11" />
+      <UsablePiece piece_id="crpg_spear_pommel_12" />
+      <UsablePiece piece_id="crpg_spear_pommel_13" />
+      <UsablePiece piece_id="crpg_mace_head_30" />
+      <UsablePiece piece_id="crpg_blacksmith_hammer_handle_1" />
+      <UsablePiece piece_id="crpg_mp_vlandian_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_mace_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_cavalry_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_cavalry_mace_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_cavalry_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_cavalry_mace_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandian_military_pick_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_vlandia_military_pick_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_mace_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_heavy_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_heavy_mace_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_cavalry_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_empire_cavalry_mace_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_cavalry_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_cavalry_mace_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_mace_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_heavy_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_khuzait_heavy_mace_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_mace_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_heavy_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_heavy_mace_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_hammer_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_hammer_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_mace_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_mace_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_mace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_mace_handle" mp_piece="true" />
+    </UsablePieces>
+  </CraftingTemplate>
+  <CraftingTemplate id="crpg_TwoHandedMace" item_type="TwoHandedWeapon" item_modifier_group="mace" item_holsters="axe_back:axe_back_2:axe_back_3:axe_back_4" default_item_holster_position_offset="0,0,-0.75" use_weapon_as_holster_mesh="true">
+    <PieceDatas>
+      <PieceData piece_type="Handle" build_order="0" />
+      <PieceData piece_type="Blade" build_order="1" />
+      <PieceData piece_type="Pommel" build_order="-1" />
+    </PieceDatas>
+    <WeaponDescriptions>
+      <WeaponDescription id="crpg_TwoHandedMace" />
+    </WeaponDescriptions>
+    <StatsData>
+      <StatData stat_type="Weight" max_value="7.0" />
+      <StatData stat_type="WeaponReach" max_value="300" />
+      <StatData stat_type="ThrustSpeed" max_value="200" />
+      <StatData stat_type="SwingSpeed" max_value="200" />
+      <StatData stat_type="ThrustDamage" max_value="500" />
+      <StatData stat_type="SwingDamage" max_value="500" />
+      <StatData stat_type="Handling" max_value="200" />
+    </StatsData>
+    <UsablePieces>
+      <UsablePiece piece_id="crpg_axe_craft_1_handle" />
+      <UsablePiece piece_id="crpg_mace_head_24" />
+      <UsablePiece piece_id="crpg_mace_head_31" />
+      <UsablePiece piece_id="crpg_mace_head_32" />
+      <UsablePiece piece_id="crpg_mace_head_33" />
+      <UsablePiece piece_id="crpg_mace_head_34" />
+      <UsablePiece piece_id="crpg_mace_head_35" />
+      <UsablePiece piece_id="crpg_mace_head_36" />
+      <UsablePiece piece_id="crpg_mace_head_37" />
+      <UsablePiece piece_id="crpg_mace_head_38" />
+      <UsablePiece piece_id="crpg_mace_head_39" />
+      <UsablePiece piece_id="crpg_spear_handle_1" />
+      <UsablePiece piece_id="crpg_hammer_head_11" />
+      <UsablePiece piece_id="crpg_default_polearm_pommel" />
+      <UsablePiece piece_id="crpg_empire_pommel_1" />
+      <UsablePiece piece_id="crpg_empire_pommel_2" />
+      <UsablePiece piece_id="crpg_empire_pommel_3" />
+      <UsablePiece piece_id="crpg_empire_pommel_4" />
+      <UsablePiece piece_id="crpg_empire_pommel_5" />
+      <UsablePiece piece_id="crpg_empire_pommel_6" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_empire_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_sturgian_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_1" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_5" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_6" />
+      <UsablePiece piece_id="crpg_khuzait_pommel_7" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_khuzait_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_1" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_2" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_3" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_4" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_5" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_6" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_7" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_8" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_9" />
+      <UsablePiece piece_id="crpg_vlandian_pommel_10" />
+      <UsablePiece piece_id="crpg_vlandian_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_1" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_2" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_3" />
+      <UsablePiece piece_id="crpg_cleaver_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_1" />
+      <UsablePiece piece_id="crpg_aserai_pommel_2" />
+      <UsablePiece piece_id="crpg_aserai_pommel_3" />
+      <UsablePiece piece_id="crpg_aserai_pommel_4" />
+      <UsablePiece piece_id="crpg_aserai_pommel_5" />
+      <UsablePiece piece_id="crpg_aserai_pommel_8" />
+      <UsablePiece piece_id="crpg_aserai_pommel_9" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_2" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_3" />
+      <UsablePiece piece_id="crpg_aserai_noble_pommel_4" />
+      <UsablePiece piece_id="crpg_battania_pommel_1" />
+      <UsablePiece piece_id="crpg_battania_pommel_2" />
+      <UsablePiece piece_id="crpg_battania_pommel_3" />
+      <UsablePiece piece_id="crpg_battania_pommel_4" />
+      <UsablePiece piece_id="crpg_battania_pommel_5" />
+      <UsablePiece piece_id="crpg_battania_pommel_6" />
+      <UsablePiece piece_id="crpg_battania_pommel_7" />
+      <UsablePiece piece_id="crpg_battania_pommel_8" />
+      <UsablePiece piece_id="crpg_battania_pommel_9" />
+      <UsablePiece piece_id="crpg_battania_noble_pommel_1" />
+      <UsablePiece piece_id="crpg_wood_pommel_1" />
+      <UsablePiece piece_id="crpg_spear_pommel_1" />
+      <UsablePiece piece_id="crpg_spear_pommel_2" />
+      <UsablePiece piece_id="crpg_spear_pommel_3" />
+      <UsablePiece piece_id="crpg_spear_pommel_4" />
+      <UsablePiece piece_id="crpg_spear_pommel_5" />
+      <UsablePiece piece_id="crpg_spear_pommel_6" />
+      <UsablePiece piece_id="crpg_spear_pommel_7" />
+      <UsablePiece piece_id="crpg_spear_pommel_8" />
+      <UsablePiece piece_id="crpg_spear_pommel_9" />
+      <UsablePiece piece_id="crpg_spear_pommel_10" />
+      <UsablePiece piece_id="crpg_spear_pommel_11" />
+      <UsablePiece piece_id="crpg_spear_pommel_12" />
+      <UsablePiece piece_id="crpg_mp_sturgia_2hhammer_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_2hhammer_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_aserai_maul_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_sturgia_2hammer_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_battania_2hammer_handle" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mace_handle_18" />
+      <UsablePiece piece_id="crpg_mace_handle_19" />
+      <UsablePiece piece_id="crpg_mace_handle_20" />
+      <UsablePiece piece_id="crpg_mp_test_2hmace_head" mp_piece="true" />
+      <UsablePiece piece_id="crpg_mp_test_2hmace_handle" mp_piece="true" />
+    </UsablePieces>
+  </CraftingTemplate>
+</CraftingTemplates>
