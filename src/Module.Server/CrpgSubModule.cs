@@ -72,7 +72,6 @@ internal class CrpgSubModule : MBSubModuleBase
     private void InitializeGameModels(IGameStarter basicGameStarter)
     {
         basicGameStarter.AddModel(new CrpgAgentStatCalculateModel(_constants));
-        basicGameStarter.AddModel(new CrpgAgentApplyDamageModel(_constants));
     }
 
     /// <summary>

@@ -10,6 +10,35 @@ namespace Crpg.Module.Common.Models;
 /// </summary>
 internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 {
+    private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new()
+    {
+        WeaponClass.Dagger,
+        WeaponClass.OneHandedSword,
+        WeaponClass.TwoHandedSword,
+        WeaponClass.OneHandedAxe,
+        WeaponClass.TwoHandedAxe,
+        WeaponClass.Mace,
+        WeaponClass.Pick,
+        WeaponClass.TwoHandedMace,
+        WeaponClass.OneHandedPolearm,
+        WeaponClass.TwoHandedPolearm,
+        WeaponClass.LowGripPolearm,
+    };
+
+    private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerDraw = new()
+    {
+        WeaponClass.Arrow,
+    };
+
+    private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerThrow = new()
+    {
+        WeaponClass.Stone,
+        WeaponClass.Boulder,
+        WeaponClass.ThrowingAxe,
+        WeaponClass.ThrowingKnife,
+        WeaponClass.Javelin,
+    };
+
     private readonly CrpgConstants _constants;
 
     public CrpgAgentStatCalculateModel(CrpgConstants constants)
@@ -58,11 +87,28 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         return true;
     }
 
-    public override float GetWeaponDamageMultiplier(BasicCharacterObject agentCharacter, IAgentOriginBase agentOrigin,
-        Formation agentFormation, WeaponComponentData weapon)
+    public override float GetWeaponDamageMultiplier(BasicCharacterObject character, IAgentOriginBase agentOrigin,
+        Formation agentFormation, WeaponComponentData weaponComponent)
     {
-        // TODO: implement power skills here?
-        return 1f;
+        if (WeaponClassesAffectedByPowerStrike.Contains(weaponComponent.WeaponClass))
+        {
+            int powerStrike = character.GetSkillValue(CrpgSkills.PowerStrike);
+            return MathHelper.ApplyPolynomialFunction(powerStrike, _constants.DamageFactorForPowerStrikeCoefs);
+        }
+
+        if (WeaponClassesAffectedByPowerDraw.Contains(weaponComponent.WeaponClass))
+        {
+            int powerDraw = character.GetSkillValue(CrpgSkills.PowerDraw);
+            return MathHelper.ApplyPolynomialFunction(powerDraw, _constants.DamageFactorForPowerDrawCoefs);
+        }
+
+        if (WeaponClassesAffectedByPowerThrow.Contains(weaponComponent.WeaponClass))
+        {
+            int powerThrow = character.GetSkillValue(CrpgSkills.PowerThrow);
+            return MathHelper.ApplyPolynomialFunction(powerThrow, _constants.DamageFactorForPowerThrowCoefs);
+        }
+
+        return 1;
     }
 
     public override float GetKnockBackResistance(Agent agent)
@@ -87,6 +133,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
     public override float GetDismountResistance(Agent agent)
     {
+        // TODO: depends on riding skills?
         return 0.5f;
     }
 
