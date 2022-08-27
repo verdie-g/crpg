@@ -55,8 +55,12 @@ public record DeleteUserCommand : IMediatorRequest
 
             _db.UserItems.RemoveRange(user.Items);
             _db.Characters.RemoveRange(user.Characters);
-            _db.PartyItems.RemoveRange(user.Party!.Items);
-            _db.Parties.Remove(user.Party);
+            if (user.Party != null)
+            {
+                _db.PartyItems.RemoveRange(user.Party!.Items);
+                _db.Parties.Remove(user.Party);
+            }
+
             await _db.SaveChangesAsync(cancellationToken);
             Logger.LogInformation("{0} left ({1}#{2})", name, user.Platform, user.PlatformUserId);
             return Result.NoErrors;
