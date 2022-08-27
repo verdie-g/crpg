@@ -2,6 +2,7 @@ ServerName cRPG Beta
 GameType cRPGBattle
 WelcomeMessage yoyoyooooo
 add_map_to_automated_battle_pool mp_duel_001
+add_map_to_automated_battle_pool mp_battle_map_002
 CultureTeam1 vlandia
 CultureTeam2 battania
 RoundPreparationTimeLimit 2
