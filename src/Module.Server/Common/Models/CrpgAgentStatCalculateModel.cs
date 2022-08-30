@@ -92,19 +92,19 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     {
         if (WeaponClassesAffectedByPowerStrike.Contains(weaponComponent.WeaponClass))
         {
-            int powerStrike = character.GetSkillValue(CrpgSkills.PowerStrike);
+            int powerStrike = GetEffectiveSkill(character, agentOrigin, agentFormation, CrpgSkills.PowerStrike);
             return MathHelper.ApplyPolynomialFunction(powerStrike, _constants.DamageFactorForPowerStrikeCoefs);
         }
 
         if (WeaponClassesAffectedByPowerDraw.Contains(weaponComponent.WeaponClass))
         {
-            int powerDraw = character.GetSkillValue(CrpgSkills.PowerDraw);
+            int powerDraw = GetEffectiveSkill(character, agentOrigin, agentFormation, CrpgSkills.PowerDraw);
             return MathHelper.ApplyPolynomialFunction(powerDraw, _constants.DamageFactorForPowerDrawCoefs);
         }
 
         if (WeaponClassesAffectedByPowerThrow.Contains(weaponComponent.WeaponClass))
         {
-            int powerThrow = character.GetSkillValue(CrpgSkills.PowerThrow);
+            int powerThrow = GetEffectiveSkill(character, agentOrigin, agentFormation, CrpgSkills.PowerThrow);
             return MathHelper.ApplyPolynomialFunction(powerThrow, _constants.DamageFactorForPowerThrowCoefs);
         }
 
@@ -172,7 +172,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         EquipmentElement mount = agent.SpawnEquipment[EquipmentIndex.ArmorItemEndSlot];
         EquipmentElement mountHarness = agent.SpawnEquipment[EquipmentIndex.HorseHarness];
         int ridingSkill = agent.RiderAgent != null
-            ? agent.RiderAgent.Character.GetSkillValue(DefaultSkills.Riding)
+            ? GetEffectiveSkill(agent.RiderAgent.Character, agent.RiderAgent.Origin, agent.RiderAgent.Formation, DefaultSkills.Riding)
             : 100;
         props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (1.0f + ridingSkill * 0.0035f);
         props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.22f * (1.0f + ridingSkill * 0.0032f);
@@ -216,7 +216,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         WeaponComponentData? secondaryItem = wieldedItemIndex4 != EquipmentIndex.None
             ? equipment[wieldedItemIndex4].CurrentUsageItem
             : null;
-        agentDrivenProperties.SwingSpeedMultiplier = 0.93f + 0.0007f * character.GetSkillValue(primaryItem?.RelevantSkill ?? DefaultSkills.Athletics);
+        int itemSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, primaryItem?.RelevantSkill ?? DefaultSkills.Athletics);
+        agentDrivenProperties.SwingSpeedMultiplier = 0.93f + 0.0007f * itemSkill;
         agentDrivenProperties.ThrustOrRangedReadySpeedMultiplier = agentDrivenProperties.SwingSpeedMultiplier;
         agentDrivenProperties.HandlingMultiplier = 1f;
         agentDrivenProperties.ShieldBashStunDurationMultiplier = 1f;
@@ -227,7 +228,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         SetAllWeaponInaccuracy(agent, agentDrivenProperties, (int)wieldedItemIndex3, equippedItem);
         const float movementSpeed = 0.8f; // TODO: should probably not be a constant.
         agentDrivenProperties.MaxSpeedMultiplier = 1.05f * movementSpeed * (100.0f / (100.0f + weaponsEncumbrance));
-        int ridingSkill = character.GetSkillValue(DefaultSkills.Riding);
+        int ridingSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, DefaultSkills.Riding);
         if (equippedItem != null)
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
@@ -305,7 +306,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             }
         }
 
-        int shieldSkill = character.GetSkillValue(CrpgSkills.Shield);
+        int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
         agentDrivenProperties.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.CoverageFactorForShieldCoefs);
         float ridingAttribute = agent.MountAgent?.GetAgentDrivenPropertyValue(DrivenProperty.AttributeRiding) ?? 1f;
         agentDrivenProperties.AttributeRiding = ridingSkill * ridingAttribute;
