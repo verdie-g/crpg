@@ -183,7 +183,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             : 1f;
     }
 
-    private void UpdateHumanAgentStats(Agent agent, AgentDrivenProperties agentDrivenProperties)
+    private void UpdateHumanAgentStats(Agent agent, AgentDrivenProperties props)
     {
         BasicCharacterObject character = agent.Character;
         MissionEquipment equipment = agent.Equipment;
@@ -204,7 +204,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             weaponsEncumbrance += 1.5f * equipment[wieldedItemIndex2].Item.Weight;
         }
 
-        agentDrivenProperties.WeaponsEncumbrance = weaponsEncumbrance;
+        props.WeaponsEncumbrance = weaponsEncumbrance;
         EquipmentIndex wieldedItemIndex3 = agent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
         WeaponComponentData? equippedItem = wieldedItemIndex3 != EquipmentIndex.None
             ? equipment[wieldedItemIndex3].CurrentUsageItem
@@ -217,104 +217,104 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             ? equipment[wieldedItemIndex4].CurrentUsageItem
             : null;
         int itemSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, primaryItem?.RelevantSkill ?? DefaultSkills.Athletics);
-        agentDrivenProperties.SwingSpeedMultiplier = 0.93f + 0.0007f * itemSkill;
-        agentDrivenProperties.ThrustOrRangedReadySpeedMultiplier = agentDrivenProperties.SwingSpeedMultiplier;
-        agentDrivenProperties.HandlingMultiplier = 1f;
-        agentDrivenProperties.ShieldBashStunDurationMultiplier = 1f;
-        agentDrivenProperties.KickStunDurationMultiplier = 1f;
-        agentDrivenProperties.ReloadSpeed = agentDrivenProperties.SwingSpeedMultiplier;
-        agentDrivenProperties.MissileSpeedMultiplier = 1f;
-        agentDrivenProperties.ReloadMovementPenaltyFactor = 1f;
-        SetAllWeaponInaccuracy(agent, agentDrivenProperties, (int)wieldedItemIndex3, equippedItem);
+        props.SwingSpeedMultiplier = 0.93f + 0.0007f * itemSkill;
+        props.ThrustOrRangedReadySpeedMultiplier = props.SwingSpeedMultiplier;
+        props.HandlingMultiplier = 1f;
+        props.ShieldBashStunDurationMultiplier = 1f;
+        props.KickStunDurationMultiplier = 1f;
+        props.ReloadSpeed = props.SwingSpeedMultiplier;
+        props.MissileSpeedMultiplier = 1f;
+        props.ReloadMovementPenaltyFactor = 1f;
+        SetAllWeaponInaccuracy(agent, props, (int)wieldedItemIndex3, equippedItem);
         const float movementSpeed = 0.8f; // TODO: should probably not be a constant.
-        agentDrivenProperties.MaxSpeedMultiplier = 1.05f * movementSpeed * (100.0f / (100.0f + weaponsEncumbrance));
+        props.MaxSpeedMultiplier = 1.05f * movementSpeed * (100.0f / (100.0f + weaponsEncumbrance));
         int ridingSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, DefaultSkills.Riding);
         if (equippedItem != null)
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
-            agentDrivenProperties.WeaponInaccuracy = GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
+            props.WeaponInaccuracy = GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
             if (equippedItem.IsRangedWeapon)
             {
                 if (!agent.HasMount)
                 {
                     float num5 = Math.Max(0.0f, 1.0f - weaponSkill / 500.0f);
-                    agentDrivenProperties.WeaponMaxMovementAccuracyPenalty = 0.125f * num5;
-                    agentDrivenProperties.WeaponMaxUnsteadyAccuracyPenalty = 0.1f * num5;
+                    props.WeaponMaxMovementAccuracyPenalty = 0.125f * num5;
+                    props.WeaponMaxUnsteadyAccuracyPenalty = 0.1f * num5;
                 }
                 else
                 {
                     float num6 = Math.Max(0.0f, (1.0f - weaponSkill / 500.0f) * (1.0f - ridingSkill / 1800.0f));
-                    agentDrivenProperties.WeaponMaxMovementAccuracyPenalty = 0.025f * num6;
-                    agentDrivenProperties.WeaponMaxUnsteadyAccuracyPenalty = 0.06f * num6;
+                    props.WeaponMaxMovementAccuracyPenalty = 0.025f * num6;
+                    props.WeaponMaxUnsteadyAccuracyPenalty = 0.06f * num6;
                 }
 
-                agentDrivenProperties.WeaponMaxMovementAccuracyPenalty = Math.Max(0.0f, agentDrivenProperties.WeaponMaxMovementAccuracyPenalty);
-                agentDrivenProperties.WeaponMaxUnsteadyAccuracyPenalty = Math.Max(0.0f, agentDrivenProperties.WeaponMaxUnsteadyAccuracyPenalty);
+                props.WeaponMaxMovementAccuracyPenalty = Math.Max(0.0f, props.WeaponMaxMovementAccuracyPenalty);
+                props.WeaponMaxUnsteadyAccuracyPenalty = Math.Max(0.0f, props.WeaponMaxUnsteadyAccuracyPenalty);
                 if (equippedItem.RelevantSkill == DefaultSkills.Bow)
                 {
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 60.0f) / 75.0f, 0.0f, 1f);
-                    agentDrivenProperties.WeaponMaxMovementAccuracyPenalty *= 6f;
-                    agentDrivenProperties.WeaponMaxUnsteadyAccuracyPenalty *= 4.5f / MBMath.Lerp(0.75f, 2f, amount);
+                    props.WeaponMaxMovementAccuracyPenalty *= 6f;
+                    props.WeaponMaxUnsteadyAccuracyPenalty *= 4.5f / MBMath.Lerp(0.75f, 2f, amount);
                 }
                 else if (equippedItem.RelevantSkill == DefaultSkills.Throwing)
                 {
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 89.0f) / 13.0f, 0.0f, 1f);
-                    agentDrivenProperties.WeaponMaxUnsteadyAccuracyPenalty *= 3.5f * MBMath.Lerp(1.5f, 0.8f, amount);
+                    props.WeaponMaxUnsteadyAccuracyPenalty *= 3.5f * MBMath.Lerp(1.5f, 0.8f, amount);
                 }
                 else if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
                 {
-                    agentDrivenProperties.WeaponMaxMovementAccuracyPenalty *= 2.5f;
-                    agentDrivenProperties.WeaponMaxUnsteadyAccuracyPenalty *= 1.2f;
+                    props.WeaponMaxMovementAccuracyPenalty *= 2.5f;
+                    props.WeaponMaxUnsteadyAccuracyPenalty *= 1.2f;
                 }
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
                 {
-                    agentDrivenProperties.WeaponBestAccuracyWaitTime = 0.3f + (95.75f - equippedItem.ThrustSpeed) * 0.005f;
+                    props.WeaponBestAccuracyWaitTime = 0.3f + (95.75f - equippedItem.ThrustSpeed) * 0.005f;
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 60.0f) / 75.0f, 0.0f, 1f);
-                    agentDrivenProperties.WeaponUnsteadyBeginTime = 0.1f + weaponSkill * 0.001f * MBMath.Lerp(1f, 2f, amount);
+                    props.WeaponUnsteadyBeginTime = 0.1f + weaponSkill * 0.001f * MBMath.Lerp(1f, 2f, amount);
                     if (agent.IsAIControlled)
                     {
-                        agentDrivenProperties.WeaponUnsteadyBeginTime *= 4f;
+                        props.WeaponUnsteadyBeginTime *= 4f;
                     }
 
-                    agentDrivenProperties.WeaponUnsteadyEndTime = 2f + agentDrivenProperties.WeaponUnsteadyBeginTime;
-                    agentDrivenProperties.WeaponRotationalAccuracyPenaltyInRadians = 0.1f;
+                    props.WeaponUnsteadyEndTime = 2f + props.WeaponUnsteadyBeginTime;
+                    props.WeaponRotationalAccuracyPenaltyInRadians = 0.1f;
                 }
                 else if (equippedItem.WeaponClass is WeaponClass.Javelin or WeaponClass.ThrowingAxe or WeaponClass.ThrowingKnife)
                 {
-                    agentDrivenProperties.WeaponBestAccuracyWaitTime = 0.4f + (89.0f - equippedItem.ThrustSpeed) * 0.03f;
-                    agentDrivenProperties.WeaponUnsteadyBeginTime = 2.5f + weaponSkill * 0.01f;
-                    agentDrivenProperties.WeaponUnsteadyEndTime = 10f + agentDrivenProperties.WeaponUnsteadyBeginTime;
-                    agentDrivenProperties.WeaponRotationalAccuracyPenaltyInRadians = 0.025f;
+                    props.WeaponBestAccuracyWaitTime = 0.4f + (89.0f - equippedItem.ThrustSpeed) * 0.03f;
+                    props.WeaponUnsteadyBeginTime = 2.5f + weaponSkill * 0.01f;
+                    props.WeaponUnsteadyEndTime = 10f + props.WeaponUnsteadyBeginTime;
+                    props.WeaponRotationalAccuracyPenaltyInRadians = 0.025f;
                     if (equippedItem.WeaponClass == WeaponClass.ThrowingAxe)
                     {
-                        agentDrivenProperties.WeaponInaccuracy *= 6.6f;
+                        props.WeaponInaccuracy *= 6.6f;
                     }
                 }
                 else
                 {
-                    agentDrivenProperties.WeaponBestAccuracyWaitTime = 0.1f;
-                    agentDrivenProperties.WeaponUnsteadyBeginTime = 0.0f;
-                    agentDrivenProperties.WeaponUnsteadyEndTime = 0.0f;
-                    agentDrivenProperties.WeaponRotationalAccuracyPenaltyInRadians = 0.1f;
+                    props.WeaponBestAccuracyWaitTime = 0.1f;
+                    props.WeaponUnsteadyBeginTime = 0.0f;
+                    props.WeaponUnsteadyEndTime = 0.0f;
+                    props.WeaponRotationalAccuracyPenaltyInRadians = 0.1f;
                 }
             }
             else if (equippedItem.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
             {
-                agentDrivenProperties.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.005f;
-                agentDrivenProperties.WeaponUnsteadyEndTime = 3.0f + weaponSkill * 0.01f;
+                props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.005f;
+                props.WeaponUnsteadyEndTime = 3.0f + weaponSkill * 0.01f;
             }
         }
 
         int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
-        agentDrivenProperties.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.CoverageFactorForShieldCoefs);
+        props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.CoverageFactorForShieldCoefs);
         float ridingAttribute = agent.MountAgent?.GetAgentDrivenPropertyValue(DrivenProperty.AttributeRiding) ?? 1f;
-        agentDrivenProperties.AttributeRiding = ridingSkill * ridingAttribute;
+        props.AttributeRiding = ridingSkill * ridingAttribute;
         // TODO: AttributeHorseArchery doesn't seem to have any effect for now.
-        agentDrivenProperties.AttributeHorseArchery = Game.Current.BasicModels.StrikeMagnitudeModel.CalculateHorseArcheryFactor(character);
-        agentDrivenProperties.BipedalRangedReadySpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReadySpeedMultiplier);
-        agentDrivenProperties.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
+        props.AttributeHorseArchery = Game.Current.BasicModels.StrikeMagnitudeModel.CalculateHorseArcheryFactor(character);
+        props.BipedalRangedReadySpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReadySpeedMultiplier);
+        props.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
 
-        SetAiRelatedProperties(agent, agentDrivenProperties, equippedItem, secondaryItem);
+        SetAiRelatedProperties(agent, props, equippedItem, secondaryItem);
     }
 }
