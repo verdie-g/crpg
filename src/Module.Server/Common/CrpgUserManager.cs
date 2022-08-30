@@ -24,6 +24,11 @@ internal class CrpgUserManager : MissionNetwork
         _crpgClient = crpgClient;
     }
 
+    public override void OnPlayerDisconnectedFromServer(NetworkCommunicator networkPeer)
+    {
+        RewardMultiplierByPlayerId.Remove(networkPeer.VirtualPlayer.Id);
+    }
+
     protected override void HandleEarlyNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
     {
         base.HandleEarlyNewClientAfterLoadingFinished(networkPeer);
