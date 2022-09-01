@@ -178,7 +178,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         const float combatMovementSpeed = 0.8f; // TODO: should probably not be a constant.
         props.CombatMaxSpeedMultiplier = bipedalCombatSpeedMinMultiplier + (bipedalCombatSpeedMaxMultiplier - bipedalCombatSpeedMinMultiplier) * combatMovementSpeed;
 
-        agent.BaseHealthLimit = 100f; // TODO: get character health.
+        int strength = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
+        int ironFlesh = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.IronFlesh);
+        agent.BaseHealthLimit = (int)(_constants.DefaultHealthPoints
+                                      + MathHelper.ApplyPolynomialFunction(strength, _constants.HealthPointsForStrengthCoefs)
+                                      + MathHelper.ApplyPolynomialFunction(ironFlesh, _constants.HealthPointsForIronFleshCoefs));
         agent.HealthLimit = agent.BaseHealthLimit;
         agent.Health = agent.HealthLimit;
     }
