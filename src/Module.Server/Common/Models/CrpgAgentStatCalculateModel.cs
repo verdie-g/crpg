@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Helpers;
+﻿using Crpg.Module.Battle;
+using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -44,6 +45,22 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     public CrpgAgentStatCalculateModel(CrpgConstants constants)
     {
         _constants = constants;
+    }
+
+    public override int GetEffectiveSkill(
+        BasicCharacterObject agentCharacter,
+        IAgentOriginBase agentOrigin,
+        Formation agentFormation,
+        SkillObject skill)
+    {
+        // Current (1.8.0), only predefined characters can be spawned so we can't use the character to carry the crpg
+        // skills. To hack around that the skills are carried by a custom implementation of the IAgentOriginBase.
+        if (agentOrigin is CrpgBattleAgentOrigin crpgOrigin)
+        {
+            return crpgOrigin.Skills.GetPropertyValue(skill);
+        }
+
+        return base.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
     }
 
     public override void InitializeAgentStats(
@@ -139,6 +156,17 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
     private void InitializeHumanAgentStats(Agent agent, Equipment equipment, AgentDrivenProperties props)
     {
+        // Dirty hack, part of the work-around to have skills without spawning custom characters.
+        var crpgRepresentative = GameNetwork.IsClientOrReplay
+            ? GameNetwork.MyPeer.GetComponent<CrpgRepresentative>()
+            : null; // For the server, the origin is set in CrpgBattleSpawningBehavior.
+        if (crpgRepresentative != null && crpgRepresentative.Peer.BodyProperties == agent.BodyPropertiesValue)
+        {
+            var characteristics = crpgRepresentative.User!.Character.Characteristics;
+            var mbSkills = CrpgBattleSpawningBehavior.CreateCharacterSkills(characteristics);
+            agent.Origin = new CrpgBattleAgentOrigin(agent.Origin?.Troop, mbSkills);
+        }
+
         props.SetStat(DrivenProperty.UseRealisticBlocking, MultiplayerOptions.OptionType.UseRealisticBlocking.GetBoolValue() ? 1f : 0.0f);
         props.ArmorHead = equipment.GetHeadArmorSum();
         props.ArmorTorso = equipment.GetHumanBodyArmorSum();

@@ -178,6 +178,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             BasicCultureObject teamCulture = missionPeer.Team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
             var peerClass = MultiplayerClassDivisions.GetMPHeroClasses().Skip(5).First();
             // var character = CreateCharacter(crpgRepresentative.User.Character, _constants);
+            var characterSkills = CreateCharacterSkills(crpgRepresentative.User.Character.Characteristics);
             var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
             var character = peerClass.HeroCharacter;
 
@@ -190,6 +191,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             AgentBuildData agentBuildData = new AgentBuildData(character)
                 .MissionPeer(missionPeer)
                 .Equipment(characterEquipment)
+                .TroopOrigin(new CrpgBattleAgentOrigin(character, characterSkills))
                 .Team(missionPeer.Team)
                 .VisualsIndex(0)
                 .IsFemale(missionPeer.Peer.IsFemale)
@@ -213,28 +215,36 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
     private BasicCharacterObject CreateCharacter(CrpgCharacter crpgCharacter, CrpgConstants constants)
     {
-        CharacterSkills skills = new();
-        skills.SetPropertyValue(CrpgSkills.Strength, crpgCharacter.Characteristics.Attributes.Strength);
-        skills.SetPropertyValue(CrpgSkills.Agility, crpgCharacter.Characteristics.Attributes.Agility);
-
-        skills.SetPropertyValue(CrpgSkills.IronFlesh, crpgCharacter.Characteristics.Skills.IronFlesh);
-        skills.SetPropertyValue(CrpgSkills.PowerStrike, crpgCharacter.Characteristics.Skills.PowerStrike);
-        skills.SetPropertyValue(CrpgSkills.PowerDraw, crpgCharacter.Characteristics.Skills.PowerDraw);
-        skills.SetPropertyValue(CrpgSkills.PowerThrow, crpgCharacter.Characteristics.Skills.PowerThrow);
-        skills.SetPropertyValue(DefaultSkills.Athletics, crpgCharacter.Characteristics.Skills.Athletics * 20 + 2 * crpgCharacter.Characteristics.Attributes.Agility);
-        skills.SetPropertyValue(DefaultSkills.Riding, crpgCharacter.Characteristics.Skills.Riding * 20);
-        skills.SetPropertyValue(CrpgSkills.WeaponMaster, crpgCharacter.Characteristics.Skills.WeaponMaster);
-        skills.SetPropertyValue(CrpgSkills.MountedArchery, crpgCharacter.Characteristics.Skills.MountedArchery);
-
-        skills.SetPropertyValue(DefaultSkills.OneHanded, crpgCharacter.Characteristics.WeaponProficiencies.OneHanded);
-        skills.SetPropertyValue(DefaultSkills.TwoHanded, crpgCharacter.Characteristics.WeaponProficiencies.TwoHanded);
-        skills.SetPropertyValue(DefaultSkills.Polearm, crpgCharacter.Characteristics.WeaponProficiencies.Polearm);
-        skills.SetPropertyValue(DefaultSkills.Bow, crpgCharacter.Characteristics.WeaponProficiencies.Bow);
-        skills.SetPropertyValue(DefaultSkills.Crossbow, crpgCharacter.Characteristics.WeaponProficiencies.Crossbow);
-        skills.SetPropertyValue(DefaultSkills.Throwing, crpgCharacter.Characteristics.WeaponProficiencies.Throwing);
-
+        var skills = CreateCharacterSkills(crpgCharacter.Characteristics);
         return CrpgCharacterObject.New(new TextObject(crpgCharacter.Name), skills, constants);
     }
+
+#pragma warning disable SA1202 // Suppress the static warning.
+    internal static CharacterSkills CreateCharacterSkills(CrpgCharacterCharacteristics characteristics)
+    {
+        CharacterSkills skills = new();
+        skills.SetPropertyValue(CrpgSkills.Strength, characteristics.Attributes.Strength);
+        skills.SetPropertyValue(CrpgSkills.Agility, characteristics.Attributes.Agility);
+
+        skills.SetPropertyValue(CrpgSkills.IronFlesh, characteristics.Skills.IronFlesh);
+        skills.SetPropertyValue(CrpgSkills.PowerStrike, characteristics.Skills.PowerStrike);
+        skills.SetPropertyValue(CrpgSkills.PowerDraw, characteristics.Skills.PowerDraw);
+        skills.SetPropertyValue(CrpgSkills.PowerThrow, characteristics.Skills.PowerThrow);
+        skills.SetPropertyValue(DefaultSkills.Athletics, characteristics.Skills.Athletics * 20 + 2 * characteristics.Attributes.Agility);
+        skills.SetPropertyValue(DefaultSkills.Riding, characteristics.Skills.Riding * 20);
+        skills.SetPropertyValue(CrpgSkills.WeaponMaster, characteristics.Skills.WeaponMaster);
+        skills.SetPropertyValue(CrpgSkills.MountedArchery, characteristics.Skills.MountedArchery);
+
+        skills.SetPropertyValue(DefaultSkills.OneHanded, characteristics.WeaponProficiencies.OneHanded);
+        skills.SetPropertyValue(DefaultSkills.TwoHanded, characteristics.WeaponProficiencies.TwoHanded);
+        skills.SetPropertyValue(DefaultSkills.Polearm, characteristics.WeaponProficiencies.Polearm);
+        skills.SetPropertyValue(DefaultSkills.Bow, characteristics.WeaponProficiencies.Bow);
+        skills.SetPropertyValue(DefaultSkills.Crossbow, characteristics.WeaponProficiencies.Crossbow);
+        skills.SetPropertyValue(DefaultSkills.Throwing, characteristics.WeaponProficiencies.Throwing);
+
+        return skills;
+    }
+#pragma warning restore SA1202
 
     private Equipment CreateCharacterEquipment(IList<CrpgEquippedItem> equippedItems)
     {
