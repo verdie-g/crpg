@@ -30,12 +30,6 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_desert_scale_shoulders" name="{=sbbNL1qF}Reinforced Scale Pauldrons" mesh="aserai_scale_b_shoulder" culture="Culture.aserai" weight="4.2" appearance="3" Type="Cape">
-    <ItemComponent>
-      <Armor body_armor="18" arm_armor="8" modifier_group="plate" material_type="Plate" />
-    </ItemComponent>
-    <Flags />
-  </Item>
   <Item id="crpg_a_aserai_scale_b_shoulder_a" name="{=FQdTo5ay}Scale Shoulder Guards" mesh="aserai_scale_b_shoulder_a" culture="Culture.aserai" weight="4" appearance="3" Type="Cape">
     <ItemComponent>
       <Armor body_armor="14" arm_armor="7" modifier_group="plate" material_type="Plate" />
@@ -45,12 +39,6 @@
   <Item id="crpg_a_aserai_scale_b_shoulder_b" name="{=U0zBG3F9}Scale Pauldrons" mesh="aserai_scale_b_shoulder_b" culture="Culture.aserai" weight="2" appearance="3" Type="Cape">
     <ItemComponent>
       <Armor body_armor="2" arm_armor="8" modifier_group="plate" material_type="Plate" />
-    </ItemComponent>
-    <Flags />
-  </Item>
-  <Item id="crpg_a_aserai_scale_b_shoulder_c" name="{=imHoaCGi}Bronze Scale Shoulder Guards" mesh="aserai_scale_b_shoulder_c" culture="Culture.aserai" weight="4.4" appearance="3" Type="Cape">
-    <ItemComponent>
-      <Armor body_armor="14" arm_armor="7" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>
@@ -322,12 +310,6 @@
     </ItemComponent>
     <Flags />
   </Item>
-  <Item id="crpg_noble_pauldron_with_scarf" name="{=*}Reinforced Ornate Pauldrons" mesh="noble_pauldron_with_scarf" culture="Culture.vlandia" weight="3.2" appearance="7" Type="Cape">
-    <ItemComponent>
-      <Armor body_armor="20" arm_armor="12" modifier_group="plate" material_type="Plate" />
-    </ItemComponent>
-    <Flags />
-  </Item>
   <Item id="crpg_pauldron_over_scale_armor" name="{=*}Reinforced Ornate Pauldrons over Scale" mesh="pauldron_over_scale_armor" culture="Culture.vlandia" weight="3.4" appearance="7" Type="Cape">
     <ItemComponent>
       <Armor body_armor="22" arm_armor="12" modifier_group="plate" material_type="Plate" />
@@ -469,12 +451,6 @@
   <Item id="crpg_female_hood" name="{=*}Cotton Hood" mesh="female_peasant_cape_a" culture="Culture.neutral_culture" weight="0.5" appearance="1" Type="Cape">
     <ItemComponent>
       <Armor body_armor="2" modifier_group="cloth_unarmoured" material_type="Cloth" />
-    </ItemComponent>
-    <Flags Civilian="true" UseTeamColor="true" />
-  </Item>
-  <Item id="crpg_female_scarf" name="{=*}Thick Scarf" mesh="female_peasant_cape_b" culture="Culture.neutral_culture" weight="0.6" appearance="1" Type="Cape">
-    <ItemComponent>
-      <Armor body_armor="3" modifier_group="cloth_unarmoured" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
   </Item>
