@@ -7,14 +7,14 @@ add_map_to_automated_battle_pool mp_battle_map_003
 CultureTeam1 vlandia
 CultureTeam2 battania
 RoundPreparationTimeLimit 2
-MaxNumberOfPlayers 1
+MaxNumberOfPlayers 24
 AutoTeamBalanceThreshold 0
 FriendlyFireDamageMeleeFriendPercent 50
 FriendlyFireDamageMeleeSelfPercent 0
 FriendlyFireDamageRangedFriendPercent 50
 FriendlyFireDamageRangedSelfPercent 0
 MinNumberOfPlayersForMatchStart 0
-NumberOfBotsTeam1 2
+NumberOfBotsTeam1 3
 NumberOfBotsTeam2 3
 RoundTotal 10
 MapTimeLimit 8
