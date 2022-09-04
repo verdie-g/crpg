@@ -4,7 +4,6 @@ WelcomeMessage yoyoyooooo
 add_map_to_automated_battle_pool mp_battle_map_001
 add_map_to_automated_battle_pool mp_battle_map_002
 add_map_to_automated_battle_pool mp_battle_map_003
-add_map_to_automated_battle_pool mp_compact
 CultureTeam1 vlandia
 CultureTeam2 battania
 RoundPreparationTimeLimit 2
