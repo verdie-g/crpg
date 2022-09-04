@@ -130,7 +130,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
     public override float GetKnockBackResistance(Agent agent)
     {
-        return 0.25f;
+        return 0.25f; // Same value as MultiplayerAgentStatCalculateModel.
     }
 
     public override float GetKnockDownResistance(Agent agent, StrikeType strikeType = StrikeType.Invalid)
@@ -172,17 +172,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.ArmorTorso = equipment.GetHumanBodyArmorSum();
         props.ArmorLegs = equipment.GetLegArmorSum();
         props.ArmorArms = equipment.GetArmArmorSum();
-        props.TopSpeedReachDuration = 2.3f; // Acceleration. TODO: should probably not be a constant.
-        float bipedalCombatSpeedMinMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMinMultiplier);
-        float bipedalCombatSpeedMaxMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMaxMultiplier);
-        const float combatMovementSpeed = 0.8f; // TODO: should probably not be a constant.
-        props.CombatMaxSpeedMultiplier = bipedalCombatSpeedMinMultiplier + (bipedalCombatSpeedMaxMultiplier - bipedalCombatSpeedMinMultiplier) * combatMovementSpeed;
 
-        int strength = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
-        int ironFlesh = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.IronFlesh);
+        int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
+        int ironFleshSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.IronFlesh);
         agent.BaseHealthLimit = (int)(_constants.DefaultHealthPoints
-                                      + MathHelper.ApplyPolynomialFunction(strength, _constants.HealthPointsForStrengthCoefs)
-                                      + MathHelper.ApplyPolynomialFunction(ironFlesh, _constants.HealthPointsForIronFleshCoefs));
+                                      + MathHelper.ApplyPolynomialFunction(strengthAttribute, _constants.HealthPointsForStrengthCoefs)
+                                      + MathHelper.ApplyPolynomialFunction(ironFleshSkill, _constants.HealthPointsForIronFleshCoefs));
         agent.HealthLimit = agent.BaseHealthLimit;
         agent.Health = agent.HealthLimit;
     }
@@ -237,6 +232,28 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         }
 
         props.WeaponsEncumbrance = weaponsEncumbrance;
+
+        float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
+        float agentWeight = agent.Monster.Weight;
+        int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
+        props.TopSpeedReachDuration = 2f / MathF.Max((200f + athleticsSkill) / 300f * (agentWeight / (agentWeight + totalEncumbrance)), 0.3f);
+        float speed = 0.7f + 0.00070000015f * athleticsSkill;
+        float weightSpeedPenalty = MathF.Max(0.2f * (1f - athleticsSkill * 0.001f), 0f) * totalEncumbrance / agentWeight;
+        float maxSpeedMultiplier = MBMath.ClampFloat(speed - weightSpeedPenalty, 0f, 0.91f);
+        float atmosphereSpeedPenalty = agent.Mission.Scene.IsAtmosphereIndoor && agent.Mission.Scene.GetRainDensity() > 0
+            ? 0.9f
+            : 1f;
+        props.MaxSpeedMultiplier = atmosphereSpeedPenalty * maxSpeedMultiplier;
+        float bipedalCombatSpeedMinMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMinMultiplier);
+        float bipedalCombatSpeedMaxMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMaxMultiplier);
+        props.CombatMaxSpeedMultiplier =
+            MathF.Min(
+                MBMath.Lerp(
+                    bipedalCombatSpeedMaxMultiplier,
+                    bipedalCombatSpeedMinMultiplier,
+                    MathF.Min(totalEncumbrance / agentWeight, 1f)),
+                1f);
+
         EquipmentIndex wieldedItemIndex3 = agent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
         WeaponComponentData? equippedItem = wieldedItemIndex3 != EquipmentIndex.None
             ? equipment[wieldedItemIndex3].CurrentUsageItem
@@ -258,8 +275,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.MissileSpeedMultiplier = 1f;
         props.ReloadMovementPenaltyFactor = 1f;
         SetAllWeaponInaccuracy(agent, props, (int)wieldedItemIndex3, equippedItem);
-        const float movementSpeed = 0.8f; // TODO: should probably not be a constant.
-        props.MaxSpeedMultiplier = 1.05f * movementSpeed * (100.0f / (100.0f + weaponsEncumbrance));
         int ridingSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, DefaultSkills.Riding);
         if (equippedItem != null)
         {
