@@ -30,6 +30,7 @@ internal class ItemExporter : IDataExporter
 
     private static readonly HashSet<string> BlacklistedItems = new()
     {
+        "a_aserai_scale_b_shoulder_c", // Name conflict with aserai_scale_shoulder_a.
         "a_aserai_scale_b_shoulder_e", // Name conflict with a_aserai_scale_b_shoulder_c rank 2.
         "a_brass_lamellar_shoulder_b", // Name conflict with a_brass_lamellar_shoulder_white_a rank 2.
         "a_brass_lamellar_shoulder_white_b", // Name conflict a_brass_lamellar_shoulder_b.
@@ -51,12 +52,14 @@ internal class ItemExporter : IDataExporter
         "bound_horsemans_kite_shield", // Name conflict with northern_scouts_shield.
         "camel_tournament", // Name conflict with camel.
         "desert_round_shield", // Name conflict with bound_desert_round_shield rank 2.
+        "desert_scale_shoulders", // Name conflict with a_aserai_scale_b_shoulder_b rank 2.
         "eastern_leather_boots", // Name conflict with leather_boots.
         "empire_crown_v2", // Name conflict with empire_crown_west.
         "empire_horse_tournament", // Name conflict with empire_horse.
         "empire_lance_1_t3_blunt", // Name conflict with vlandia_lance_1_t3_blunt.
         "empire_sword_1_t2", // Name conflict with iron_spatha_sword_t2.
         "empire_sword_1_t2_blunt", // Name conflict with iron_spatha_sword_t2.
+        "female_scarf", // Name conflict with scarf rank 1.
         "grapeshot_fire_projectile", // Can't be equipped.
         "grapeshot_fire_stack", // Can't be equipped.
         "grapeshot_projectile", // Can't be equipped.
@@ -72,6 +75,7 @@ internal class ItemExporter : IDataExporter
         "longbow_recurve_desert_bow", // Name conflict with tribal_bow rank 1.
         "lordly_padded_mitten", // Name conflict with padded_mitten rank 3.
         "mule_unmountable", // Can't be equipped.
+        "noble_pauldron_with_scarf", // Name conflict with noble_pauldron rank 2.
         "pack_camel_unmountable", // Can't be equipped.
         "pot", // Can't be equipped.
         "reinforced_kite_shield", // Name conflict with western_kite_shield rank 2.
@@ -293,6 +297,31 @@ internal class ItemExporter : IDataExporter
                     var damageFactorAttr = damageNode.Attributes!["damage_factor"];
                     float damageFactor = float.Parse(damageFactorAttr.Value) / 2f;
                     damageFactorAttr.Value = damageFactor.ToString(CultureInfo.InvariantCulture);
+                }
+            }
+            else if (node1.Name == "Item")
+            {
+                string type = node1.Attributes!["Type"].Value;
+                if (type == "Horse")
+                {
+                    var horseNode = node1.SelectNodes("ItemComponent/Horse")?.Cast<XmlNode>().First()!;
+                    var chargeDamageAttr = horseNode.Attributes!["charge_damage"];
+                    int chargeDamage = int.Parse(chargeDamageAttr.Value) / 3;
+                    chargeDamageAttr.Value = chargeDamage.ToString(CultureInfo.InvariantCulture);
+                }
+                else if (type == "Shield")
+                {
+                    var weaponNode = node1.SelectNodes("ItemComponent/Weapon")?.Cast<XmlNode>().First()!;
+                    var hitPointsAttr = weaponNode.Attributes!["hit_points"];
+                    int hitPoints = int.Parse(hitPointsAttr.Value) / 2;
+                    hitPointsAttr.Value = hitPoints.ToString(CultureInfo.InvariantCulture);
+                }
+                else if (type == "Bow")
+                {
+                    var weaponNode = node1.SelectNodes("ItemComponent/Weapon")?.Cast<XmlNode>().First()!;
+                    var thrustDamageAttr = weaponNode.Attributes!["thrust_damage"];
+                    int thrustDamage = int.Parse(thrustDamageAttr.Value) / 2;
+                    thrustDamageAttr.Value = thrustDamage.ToString(CultureInfo.InvariantCulture);
                 }
             }
             else if (node1.Name == "CraftingTemplate")
