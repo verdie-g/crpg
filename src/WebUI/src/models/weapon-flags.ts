@@ -22,6 +22,7 @@ enum WeaponFlags {
   NoBlood = 'NoBlood',
   PenaltyWithShield = 'PenaltyWithShield',
   CanDismount = 'CanDismount',
+  CanHook = 'CanHook',
   MissileWithPhysics = 'MissileWithPhysics',
   MultiplePenetration = 'MultiplePenetration',
   CanKnockDown = 'CanKnockDown',
