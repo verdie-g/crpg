@@ -156,7 +156,9 @@
         <div class="column" v-if="userItemToReplace">
           <h3>
             Replace
-            <strong :class="userItemRankClass(userItemToReplace)">{{ userItemToReplace.baseItem.name }}</strong>
+            <strong :class="userItemRankClass(userItemToReplace)">
+              {{ userItemToReplace.baseItem.name }}
+            </strong>
           </h3>
           <item-properties :item="userItemToReplace.baseItem" :rank="userItemToReplace.rank" />
           <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
@@ -192,7 +194,9 @@
         <div class="column" v-if="selectedUserItem">
           <h3>
             Replace with
-            <strong :class="userItemRankClass(selectedUserItem)">{{ selectedUserItem.baseItem.name }}</strong>
+            <strong :class="userItemRankClass(selectedUserItem)">
+              {{ selectedUserItem.baseItem.name }}
+            </strong>
           </h3>
           <div class="content">
             <item-properties :item="selectedUserItem.baseItem" :rank="selectedUserItem.rank" />
@@ -216,7 +220,7 @@ import { filterUserItemsFittingInSlot } from '@/services/item-service';
 import { notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
 import EquippedItem from '@/models/equipped-item';
-import UserItem from "@/models/user-item";
+import UserItem from '@/models/user-item';
 
 @Component({
   components: { CharacterStatsComponent, ItemProperties },

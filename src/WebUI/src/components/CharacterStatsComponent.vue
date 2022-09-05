@@ -39,17 +39,15 @@
       </b-field>
       <!-- TODO: align correctly -->
       <b-field horizontal label="KDA" class="characteristic-field">
-        <b-input
-          size="is-small"
-          :value="getKda()"
-          readonly
-        />
+        <b-input size="is-small" :value="getKda()" readonly />
       </b-field>
     </div>
 
     <div class="characteristic-section" v-if="characteristics !== null">
       <h2 class="title is-4">
-        Attributes ({{ characteristics.attributes.points + characteristicsDelta.attributes.points }})
+        Attributes ({{
+          characteristics.attributes.points + characteristicsDelta.attributes.points
+        }})
         <b-tooltip
           label="Convert 1 attribute point to 2 skill points"
           class="convert-button"
@@ -348,7 +346,8 @@
     <div class="characteristic-section" v-if="characteristics !== null">
       <h2 class="title is-4">
         Weapon Proficiencies ({{
-          characteristics.weaponProficiencies.points + characteristicsDelta.weaponProficiencies.points
+          characteristics.weaponProficiencies.points +
+          characteristicsDelta.weaponProficiencies.points
         }})
       </h2>
       <b-field horizontal label="One Handed" class="characteristic-field">
@@ -523,7 +522,9 @@ export default class CharacterCharacteristicsComponent extends Vue {
     return (
       this.characteristics.attributes.points + this.characteristicsDelta.attributes.points >= 0 &&
       this.characteristics.skills.points + this.characteristicsDelta.skills.points >= 0 &&
-      this.characteristics.weaponProficiencies.points + this.characteristicsDelta.weaponProficiencies.points >= 0 &&
+      this.characteristics.weaponProficiencies.points +
+        this.characteristicsDelta.weaponProficiencies.points >=
+        0 &&
       this.allCurrentSkillRequirementsSatisfied
     );
   }
@@ -576,14 +577,18 @@ export default class CharacterCharacteristicsComponent extends Vue {
       return '0/0/0';
     }
 
-    const ratio = statistics.deaths === 0
-      ? '∞'
-      : Math.round(100 * (statistics.kills + statistics.assists) / statistics.deaths) / 100;
+    const ratio =
+      statistics.deaths === 0
+        ? '∞'
+        : Math.round((100 * (statistics.kills + statistics.assists)) / statistics.deaths) / 100;
     return `${statistics.kills}/${statistics.deaths}/${statistics.assists} (${ratio})`;
   }
 
   convertCharacteristics(conversion: CharacteristicConversion): Promise<CharacterCharacteristics> {
-    return userModule.convertCharacterCharacteristics({ characterId: this.character.id, conversion });
+    return userModule.convertCharacterCharacteristics({
+      characterId: this.character.id,
+      conversion,
+    });
   }
 
   getInputProps(
@@ -591,7 +596,9 @@ export default class CharacterCharacteristicsComponent extends Vue {
     characteristicKey: CharacteristicKey
   ): { value: number; min: number; max: number; controls: boolean } {
     const initialValue = (this.characteristics[characteristicSectionKey] as any)[characteristicKey];
-    const deltaValue = (this.characteristicsDelta[characteristicSectionKey] as any)[characteristicKey];
+    const deltaValue = (this.characteristicsDelta[characteristicSectionKey] as any)[
+      characteristicKey
+    ];
     const initialPoints = this.characteristics[characteristicSectionKey].points;
     const deltaPoints = this.characteristicsDelta[characteristicSectionKey].points;
 
@@ -613,22 +620,30 @@ export default class CharacterCharacteristicsComponent extends Vue {
     };
   }
 
-  onInput(characteristicSectionKey: CharacteristicSectionKey, characteristicKey: CharacteristicKey, newCharacteristicValue: number): void {
+  onInput(
+    characteristicSectionKey: CharacteristicSectionKey,
+    characteristicKey: CharacteristicKey,
+    newCharacteristicValue: number
+  ): void {
     const characteristicInitialSection = this.characteristics![characteristicSectionKey] as any;
     const characteristicDeltaSection = this.characteristicsDelta[characteristicSectionKey] as any;
 
-    const oldCharacteristicValue = characteristicInitialSection[characteristicKey] + characteristicDeltaSection[characteristicKey];
+    const oldCharacteristicValue =
+      characteristicInitialSection[characteristicKey] +
+      characteristicDeltaSection[characteristicKey];
     characteristicDeltaSection.points +=
       this.characteristicCost(characteristicSectionKey, characteristicKey, oldCharacteristicValue) -
       this.characteristicCost(characteristicSectionKey, characteristicKey, newCharacteristicValue);
-    characteristicDeltaSection[characteristicKey] = newCharacteristicValue - characteristicInitialSection[characteristicKey];
+    characteristicDeltaSection[characteristicKey] =
+      newCharacteristicValue - characteristicInitialSection[characteristicKey];
 
     if (characteristicKey === 'agility') {
       this.characteristicsDelta.weaponProficiencies.points +=
         this.wppForAgility(newCharacteristicValue) - this.wppForAgility(oldCharacteristicValue);
     } else if (characteristicKey === 'weaponMaster') {
       this.characteristicsDelta.weaponProficiencies.points +=
-        this.wppForWeaponMaster(newCharacteristicValue) - this.wppForWeaponMaster(oldCharacteristicValue);
+        this.wppForWeaponMaster(newCharacteristicValue) -
+        this.wppForWeaponMaster(oldCharacteristicValue);
     }
   }
 
@@ -672,7 +687,11 @@ export default class CharacterCharacteristicsComponent extends Vue {
       case 'powerThrow':
         return (
           skill <=
-          Math.floor((this.characteristics.attributes.strength + this.characteristicsDelta.attributes.strength) / 3)
+          Math.floor(
+            (this.characteristics.attributes.strength +
+              this.characteristicsDelta.attributes.strength) /
+              3
+          )
         );
 
       case 'athletics':
@@ -680,14 +699,22 @@ export default class CharacterCharacteristicsComponent extends Vue {
       case 'weaponMaster':
         return (
           skill <=
-          Math.floor((this.characteristics.attributes.agility + this.characteristicsDelta.attributes.agility) / 3)
+          Math.floor(
+            (this.characteristics.attributes.agility +
+              this.characteristicsDelta.attributes.agility) /
+              3
+          )
         );
 
       case 'mountedArchery':
       case 'shield':
         return (
           skill <=
-          Math.floor((this.characteristics.attributes.agility + this.characteristicsDelta.attributes.agility) / 6)
+          Math.floor(
+            (this.characteristics.attributes.agility +
+              this.characteristicsDelta.attributes.agility) /
+              6
+          )
         );
 
       default:
@@ -695,9 +722,15 @@ export default class CharacterCharacteristicsComponent extends Vue {
     }
   }
 
-  characteristicCost(characteristicSectionKey: CharacteristicSectionKey, characteristicKey: CharacteristicKey, characteristic: number): number {
+  characteristicCost(
+    characteristicSectionKey: CharacteristicSectionKey,
+    characteristicKey: CharacteristicKey,
+    characteristic: number
+  ): number {
     if (characteristicSectionKey === 'weaponProficiencies') {
-      return Math.floor(applyPolynomialFunction(characteristic, Constants.weaponProficiencyCostCoefs));
+      return Math.floor(
+        applyPolynomialFunction(characteristic, Constants.weaponProficiencyCostCoefs)
+      );
     }
 
     return characteristic;
@@ -714,26 +747,41 @@ export default class CharacterCharacteristicsComponent extends Vue {
         characterId: this.character.id,
         characteristics: {
           attributes: {
-            points: this.characteristics.attributes.points + this.characteristicsDelta.attributes.points,
-            strength: this.characteristics.attributes.strength + this.characteristicsDelta.attributes.strength,
-            agility: this.characteristics.attributes.agility + this.characteristicsDelta.attributes.agility,
+            points:
+              this.characteristics.attributes.points + this.characteristicsDelta.attributes.points,
+            strength:
+              this.characteristics.attributes.strength +
+              this.characteristicsDelta.attributes.strength,
+            agility:
+              this.characteristics.attributes.agility +
+              this.characteristicsDelta.attributes.agility,
           },
           skills: {
             points: this.characteristics.skills.points + this.characteristicsDelta.skills.points,
-            ironFlesh: this.characteristics.skills.ironFlesh + this.characteristicsDelta.skills.ironFlesh,
-            powerStrike: this.characteristics.skills.powerStrike + this.characteristicsDelta.skills.powerStrike,
-            powerDraw: this.characteristics.skills.powerDraw + this.characteristicsDelta.skills.powerDraw,
-            powerThrow: this.characteristics.skills.powerThrow + this.characteristicsDelta.skills.powerThrow,
-            athletics: this.characteristics.skills.athletics + this.characteristicsDelta.skills.athletics,
+            ironFlesh:
+              this.characteristics.skills.ironFlesh + this.characteristicsDelta.skills.ironFlesh,
+            powerStrike:
+              this.characteristics.skills.powerStrike +
+              this.characteristicsDelta.skills.powerStrike,
+            powerDraw:
+              this.characteristics.skills.powerDraw + this.characteristicsDelta.skills.powerDraw,
+            powerThrow:
+              this.characteristics.skills.powerThrow + this.characteristicsDelta.skills.powerThrow,
+            athletics:
+              this.characteristics.skills.athletics + this.characteristicsDelta.skills.athletics,
             riding: this.characteristics.skills.riding + this.characteristicsDelta.skills.riding,
-            weaponMaster: this.characteristics.skills.weaponMaster + this.characteristicsDelta.skills.weaponMaster,
+            weaponMaster:
+              this.characteristics.skills.weaponMaster +
+              this.characteristicsDelta.skills.weaponMaster,
             mountedArchery:
-              this.characteristics.skills.mountedArchery + this.characteristicsDelta.skills.mountedArchery,
+              this.characteristics.skills.mountedArchery +
+              this.characteristicsDelta.skills.mountedArchery,
             shield: this.characteristics.skills.shield + this.characteristicsDelta.skills.shield,
           },
           weaponProficiencies: {
             points:
-              this.characteristics.weaponProficiencies.points + this.characteristicsDelta.weaponProficiencies.points,
+              this.characteristics.weaponProficiencies.points +
+              this.characteristicsDelta.weaponProficiencies.points,
             oneHanded:
               this.characteristics.weaponProficiencies.oneHanded +
               this.characteristicsDelta.weaponProficiencies.oneHanded,
@@ -741,8 +789,11 @@ export default class CharacterCharacteristicsComponent extends Vue {
               this.characteristics.weaponProficiencies.twoHanded +
               this.characteristicsDelta.weaponProficiencies.twoHanded,
             polearm:
-              this.characteristics.weaponProficiencies.polearm + this.characteristicsDelta.weaponProficiencies.polearm,
-            bow: this.characteristics.weaponProficiencies.bow + this.characteristicsDelta.weaponProficiencies.bow,
+              this.characteristics.weaponProficiencies.polearm +
+              this.characteristicsDelta.weaponProficiencies.polearm,
+            bow:
+              this.characteristics.weaponProficiencies.bow +
+              this.characteristicsDelta.weaponProficiencies.bow,
             throwing:
               this.characteristics.weaponProficiencies.throwing +
               this.characteristicsDelta.weaponProficiencies.throwing,

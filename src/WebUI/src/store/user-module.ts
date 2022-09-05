@@ -143,7 +143,13 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
-  replaceCharactersItem({ toReplace, replaceWith }: { toReplace: UserItem; replaceWith: UserItem }) {
+  replaceCharactersItem({
+    toReplace,
+    replaceWith,
+  }: {
+    toReplace: UserItem;
+    replaceWith: UserItem;
+  }) {
     Object.values(this.equippedItemsByCharacterId).forEach(characterEquippedItems => {
       characterEquippedItems.forEach(equippedItem => {
         if (equippedItem.userItem.id === toReplace.id) {
