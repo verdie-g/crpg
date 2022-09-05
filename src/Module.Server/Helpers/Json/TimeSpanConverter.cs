@@ -9,7 +9,7 @@ internal class TimeSpanConverter : JsonConverter<TimeSpan>
 {
     public override void WriteJson(JsonWriter writer, TimeSpan value, JsonSerializer serializer)
     {
-        writer.WriteValue((ulong)value.TotalMilliseconds);
+        writer.WriteValue((long)value.TotalMilliseconds);
     }
 
     public override TimeSpan ReadJson(JsonReader reader, Type objectType, TimeSpan existingValue, bool hasExistingValue,
@@ -20,6 +20,6 @@ internal class TimeSpanConverter : JsonConverter<TimeSpan>
             throw new JsonException("Expected integer for timespan type");
         }
 
-        return TimeSpan.FromMilliseconds((ulong)reader.Value);
+        return TimeSpan.FromMilliseconds((long)reader.Value);
     }
 }
