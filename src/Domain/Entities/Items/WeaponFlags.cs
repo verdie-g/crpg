@@ -1,7 +1,8 @@
 namespace Crpg.Domain.Entities.Items;
 
 /// <summary>
-/// Various properties of a <see cref="ItemWeaponComponent"/>.
+/// Various properties of a <see cref="ItemWeaponComponent"/>. Should be synchronized
+/// with TaleWorlds.Core.WeaponFlags.
 /// </summary>
 [Flags]
 public enum WeaponFlags : long
@@ -29,14 +30,15 @@ public enum WeaponFlags : long
     NoBlood = 0x400000,
     PenaltyWithShield = 0x800000,
     CanDismount = 0x1000000,
-    MissileWithPhysics = 0x2000000,
-    MultiplePenetration = 0x4000000,
-    CanKnockDown = 0x8000000,
+    CanHook = 0x2000000,
+    CanKnockDown = 0x4000000,
+    CanCrushThrough = 0x8000000,
     CanBlockRanged = 0x10000000,
-    LeavesTrail = 0x20000000,
-    CanCrushThrough = 0x40000000,
-    UseHandAsThrowBase = 0x80000000,
-    AmmoBreaksOnBounceBack = 0x100000000,
-    AmmoCanBreakOnBounceBack = 0x200000000,
-    AmmoSticksWhenShot = 0x400000000,
+    MissileWithPhysics = 0x20000000,
+    MultiplePenetration = 0x40000000,
+    LeavesTrail = 0x80000000,
+    UseHandAsThrowBase = 0x100000000,
+    AmmoBreaksOnBounceBack = 0x1000000000,
+    AmmoCanBreakOnBounceBack = 0x2000000000,
+    AmmoSticksWhenShot = 0x4000000000,
 }
