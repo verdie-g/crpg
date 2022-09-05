@@ -1704,7 +1704,7 @@
     "weight": 27.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 12,
+      "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth"
@@ -1899,7 +1899,7 @@
     "weight": 21.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 9,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth"
@@ -1914,7 +1914,7 @@
     "weight": 23.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 10,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth"
@@ -1929,7 +1929,7 @@
     "weight": 24.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 8,
+      "bodyArmor": 2,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth"
@@ -2964,7 +2964,7 @@
     "weight": 30.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 15,
+      "bodyArmor": 5,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
@@ -2979,7 +2979,7 @@
     "weight": 76.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 40,
+      "bodyArmor": 13,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -2994,7 +2994,7 @@
     "weight": 125.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 50,
+      "bodyArmor": 16,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -4919,7 +4919,7 @@
     "weight": 130.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 10,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
@@ -4934,7 +4934,7 @@
     "weight": 130.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 10,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
@@ -4949,7 +4949,7 @@
     "weight": 130.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 10,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
@@ -5041,7 +5041,7 @@
     "weight": 26.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 78,
+      "bodyArmor": 26,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -5167,7 +5167,7 @@
     "weight": 130.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 64,
+      "bodyArmor": 21,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -5182,7 +5182,7 @@
     "weight": 120.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 55,
+      "bodyArmor": 18,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -6065,7 +6065,7 @@
     "weight": 22.5,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 12,
+      "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth"
@@ -8970,7 +8970,7 @@
     "weight": 26.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 77,
+      "bodyArmor": 25,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -9504,7 +9504,7 @@
     "weight": 90.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 58,
+      "bodyArmor": 19,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Plate"
@@ -9519,7 +9519,7 @@
     "weight": 80.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 60,
+      "bodyArmor": 20,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -9534,7 +9534,7 @@
     "weight": 65.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 52,
+      "bodyArmor": 17,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -10734,7 +10734,7 @@
     "weight": 22.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 9,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
@@ -10779,7 +10779,7 @@
     "weight": 135.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 75,
+      "bodyArmor": 25,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -13187,7 +13187,7 @@
     "weight": 20.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 10,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
@@ -13498,7 +13498,7 @@
     "weight": 145.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 68,
+      "bodyArmor": 22,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Plate"
@@ -13829,7 +13829,7 @@
     "weight": 120.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 10,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth"
@@ -13844,7 +13844,7 @@
     "weight": 120.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 10,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth"
@@ -13859,7 +13859,7 @@
     "weight": 120.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 10,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth"
@@ -15070,7 +15070,7 @@
     "weight": 30.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 20,
+      "bodyArmor": 6,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
@@ -15085,7 +15085,7 @@
     "weight": 35.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 15,
+      "bodyArmor": 5,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
@@ -15160,7 +15160,7 @@
     "weight": 82.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 41,
+      "bodyArmor": 13,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -17765,7 +17765,7 @@
     "weight": 26.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 76,
+      "bodyArmor": 25,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -19024,7 +19024,7 @@
     "weight": 25.5,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 16,
+      "bodyArmor": 5,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -19068,7 +19068,7 @@
     "weight": 70.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 38,
+      "bodyArmor": 12,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -19083,7 +19083,7 @@
     "weight": 23.5,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 12,
+      "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -19376,7 +19376,7 @@
     "weight": 26.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 15,
+      "bodyArmor": 5,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
@@ -19597,7 +19597,7 @@
     "weight": 85.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 52,
+      "bodyArmor": 17,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
