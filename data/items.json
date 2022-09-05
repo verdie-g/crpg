@@ -1704,7 +1704,7 @@
     "weight": 27.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 4,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth"
@@ -1899,7 +1899,7 @@
     "weight": 21.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 3,
+      "bodyArmor": 2,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth"
@@ -2951,7 +2951,7 @@
       "bodyLength": 98,
       "chargeDamage": 3,
       "maneuver": 56,
-      "speed": 32,
+      "speed": 33,
       "hitPoints": 250
     },
     "weapons": []
@@ -2964,7 +2964,7 @@
     "weight": 30.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 5,
+      "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
@@ -4906,7 +4906,7 @@
       "bodyLength": 95,
       "chargeDamage": 3,
       "maneuver": 65,
-      "speed": 32,
+      "speed": 33,
       "hitPoints": 215
     },
     "weapons": []
@@ -5041,7 +5041,7 @@
     "weight": 26.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 26,
+      "bodyArmor": 25,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -5212,9 +5212,9 @@
     "weight": 415.0,
     "mount": {
       "bodyLength": 119,
-      "chargeDamage": 4,
+      "chargeDamage": 3,
       "maneuver": 68,
-      "speed": 35,
+      "speed": 36,
       "hitPoints": 240
     },
     "weapons": []
@@ -5488,7 +5488,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 28,
+        "thrustDamage": 19,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 86,
         "swingDamage": 0,
@@ -5522,7 +5522,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 31,
+        "thrustDamage": 21,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
         "swingDamage": 0,
@@ -6065,7 +6065,7 @@
     "weight": 22.5,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 4,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth"
@@ -6406,7 +6406,7 @@
       "bodyLength": 100,
       "chargeDamage": 8,
       "maneuver": 50,
-      "speed": 44,
+      "speed": 45,
       "hitPoints": 200
     },
     "weapons": []
@@ -7687,7 +7687,7 @@
       "bodyLength": 110,
       "chargeDamage": 3,
       "maneuver": 61,
-      "speed": 34,
+      "speed": 35,
       "hitPoints": 200
     },
     "weapons": []
@@ -9337,7 +9337,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 30,
+        "thrustDamage": 21,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 45,
         "swingDamage": 0,
@@ -9519,7 +9519,7 @@
     "weight": 80.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 20,
+      "bodyArmor": 19,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -9981,7 +9981,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 27,
+        "thrustDamage": 19,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 55,
         "swingDamage": 0,
@@ -10493,7 +10493,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 22,
+        "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 75,
         "swingDamage": 0,
@@ -10734,7 +10734,7 @@
     "weight": 22.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 3,
+      "bodyArmor": 2,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
@@ -10779,7 +10779,7 @@
     "weight": 135.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 25,
+      "bodyArmor": 24,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -13396,7 +13396,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 32,
+        "thrustDamage": 22,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 58,
         "swingDamage": 0,
@@ -13481,7 +13481,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 34,
+        "thrustDamage": 24,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 79,
         "swingDamage": 0,
@@ -13797,7 +13797,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 23,
+        "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 70,
         "swingDamage": 0,
@@ -13814,9 +13814,9 @@
     "weight": 300.0,
     "mount": {
       "bodyLength": 92,
-      "chargeDamage": 1,
+      "chargeDamage": 0,
       "maneuver": 48,
-      "speed": 22,
+      "speed": 23,
       "hitPoints": 100
     },
     "weapons": []
@@ -14144,7 +14144,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 40,
+        "thrustDamage": 28,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 115,
         "swingDamage": 0,
@@ -14178,7 +14178,7 @@
       "bodyLength": 111,
       "chargeDamage": 3,
       "maneuver": 76,
-      "speed": 48,
+      "speed": 49,
       "hitPoints": 230
     },
     "weapons": []
@@ -14206,9 +14206,9 @@
     "weight": 440.0,
     "mount": {
       "bodyLength": 114,
-      "chargeDamage": 5,
+      "chargeDamage": 4,
       "maneuver": 66,
-      "speed": 35,
+      "speed": 36,
       "hitPoints": 300
     },
     "weapons": []
@@ -14221,7 +14221,7 @@
     "weight": 400.0,
     "mount": {
       "bodyLength": 115,
-      "chargeDamage": 5,
+      "chargeDamage": 4,
       "maneuver": 65,
       "speed": 48,
       "hitPoints": 270
@@ -14238,7 +14238,7 @@
       "bodyLength": 100,
       "chargeDamage": 3,
       "maneuver": 76,
-      "speed": 41,
+      "speed": 42,
       "hitPoints": 230
     },
     "weapons": []
@@ -14253,7 +14253,7 @@
       "bodyLength": 110,
       "chargeDamage": 3,
       "maneuver": 72,
-      "speed": 50,
+      "speed": 51,
       "hitPoints": 225
     },
     "weapons": []
@@ -14268,7 +14268,7 @@
       "bodyLength": 109,
       "chargeDamage": 4,
       "maneuver": 71,
-      "speed": 44,
+      "speed": 45,
       "hitPoints": 250
     },
     "weapons": []
@@ -14298,7 +14298,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 47,
+        "thrustDamage": 33,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
         "swingDamage": 0,
@@ -14362,7 +14362,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 35,
+        "thrustDamage": 24,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 70,
         "swingDamage": 0,
@@ -14546,7 +14546,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 26,
+        "thrustDamage": 18,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 82,
         "swingDamage": 0,
@@ -15085,7 +15085,7 @@
     "weight": 35.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 5,
+      "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
@@ -15926,7 +15926,7 @@
       "bodyLength": 105,
       "chargeDamage": 1,
       "maneuver": 39,
-      "speed": 25,
+      "speed": 26,
       "hitPoints": 230
     },
     "weapons": []
@@ -18772,9 +18772,9 @@
     "weight": 550.0,
     "mount": {
       "bodyLength": 115,
-      "chargeDamage": 5,
+      "chargeDamage": 4,
       "maneuver": 69,
-      "speed": 35,
+      "speed": 36,
       "hitPoints": 290
     },
     "weapons": []
@@ -18992,7 +18992,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 23,
+        "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 65,
         "swingDamage": 0,
@@ -19083,7 +19083,7 @@
     "weight": 23.5,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 4,
+      "bodyArmor": 3,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
@@ -19115,7 +19115,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 31,
+        "thrustDamage": 21,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 80,
         "swingDamage": 0,
@@ -19224,7 +19224,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 33,
+        "thrustDamage": 23,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 80,
         "swingDamage": 0,
@@ -19303,7 +19303,7 @@
       "bodyLength": 100,
       "chargeDamage": 6,
       "maneuver": 55,
-      "speed": 44,
+      "speed": 45,
       "hitPoints": 130
     },
     "weapons": []
@@ -19376,7 +19376,7 @@
     "weight": 26.0,
     "armor": {
       "headArmor": 0,
-      "bodyArmor": 5,
+      "bodyArmor": 4,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
@@ -19941,7 +19941,7 @@
       "bodyLength": 100,
       "chargeDamage": 3,
       "maneuver": 62,
-      "speed": 32,
+      "speed": 33,
       "hitPoints": 220
     },
     "weapons": []
@@ -20757,7 +20757,7 @@
       "bodyLength": 108,
       "chargeDamage": 2,
       "maneuver": 70,
-      "speed": 48,
+      "speed": 49,
       "hitPoints": 200
     },
     "weapons": []
@@ -20772,7 +20772,7 @@
       "bodyLength": 111,
       "chargeDamage": 3,
       "maneuver": 73,
-      "speed": 35,
+      "speed": 36,
       "hitPoints": 240
     },
     "weapons": []
@@ -20785,9 +20785,9 @@
     "weight": 430.0,
     "mount": {
       "bodyLength": 115,
-      "chargeDamage": 4,
+      "chargeDamage": 3,
       "maneuver": 66,
-      "speed": 32,
+      "speed": 33,
       "hitPoints": 290
     },
     "weapons": []
@@ -20800,7 +20800,7 @@
     "weight": 405.0,
     "mount": {
       "bodyLength": 94,
-      "chargeDamage": 3,
+      "chargeDamage": 2,
       "maneuver": 78,
       "speed": 37,
       "hitPoints": 250
@@ -20815,7 +20815,7 @@
     "weight": 415.0,
     "mount": {
       "bodyLength": 100,
-      "chargeDamage": 3,
+      "chargeDamage": 2,
       "maneuver": 74,
       "speed": 40,
       "hitPoints": 210
@@ -20830,9 +20830,9 @@
     "weight": 420.0,
     "mount": {
       "bodyLength": 109,
-      "chargeDamage": 4,
+      "chargeDamage": 3,
       "maneuver": 68,
-      "speed": 38,
+      "speed": 39,
       "hitPoints": 240
     },
     "weapons": []
@@ -21211,7 +21211,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 15,
+        "thrustDamage": 10,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
         "swingDamage": 0,
@@ -21245,7 +21245,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 15,
+        "thrustDamage": 10,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 84,
         "swingDamage": 0,
@@ -21352,7 +21352,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 35,
+        "thrustDamage": 24,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 65,
         "swingDamage": 0,
@@ -21992,9 +21992,9 @@
     "weight": 462.0,
     "mount": {
       "bodyLength": 109,
-      "chargeDamage": 4,
+      "chargeDamage": 3,
       "maneuver": 55,
-      "speed": 35,
+      "speed": 36,
       "hitPoints": 200
     },
     "weapons": []
@@ -22910,7 +22910,7 @@
       "bodyLength": 105,
       "chargeDamage": 4,
       "maneuver": 67,
-      "speed": 35,
+      "speed": 36,
       "hitPoints": 220
     },
     "weapons": []
@@ -22925,7 +22925,7 @@
       "bodyLength": 105,
       "chargeDamage": 8,
       "maneuver": 50,
-      "speed": 29,
+      "speed": 30,
       "hitPoints": 200
     },
     "weapons": []
@@ -24127,7 +24127,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 38,
+        "thrustDamage": 26,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 78,
         "swingDamage": 0,
@@ -24161,7 +24161,7 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 36,
+        "thrustDamage": 25,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 78,
         "swingDamage": 0,

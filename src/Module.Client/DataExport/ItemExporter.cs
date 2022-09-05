@@ -291,7 +291,7 @@ internal class ItemExporter : IDataExporter
             else if (node1.Name == "CraftingPiece")
             {
                 ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
-                    v => (float.Parse(v) / 2f).ToString(CultureInfo.InvariantCulture));
+                    v => (float.Parse(v) * 0.35f).ToString(CultureInfo.InvariantCulture));
             }
             else if (node1.Name == "Item")
             {
@@ -299,26 +299,26 @@ internal class ItemExporter : IDataExporter
                 if (type == "Horse")
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "charge_damage",
-                        v => (int.Parse(v) / 3).ToString(CultureInfo.InvariantCulture));
+                        v => ((int)(int.Parse(v) * 0.33f)).ToString(CultureInfo.InvariantCulture));
                     ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "speed",
-                        v => ((int)(int.Parse(v) / 1.35f)).ToString(CultureInfo.InvariantCulture));
+                        v => ((int)(int.Parse(v) * 0.75f)).ToString(CultureInfo.InvariantCulture));
                 }
                 else if (type == "HorseHarness")
                 {
                     // Single player horse harness can go up to 78 amor when the highest you can find in native mp is 26
                     // so let's divide the armor by 3. The weight doesn't change because it's good enough.
                     ModifyChildNodesAttribute(node1, "ItemComponent/Armor", "body_armor",
-                        v => (int.Parse(v) / 3).ToString(CultureInfo.InvariantCulture));
+                        v => ((int)(int.Parse(v) * 0.33f)).ToString(CultureInfo.InvariantCulture));
                 }
                 else if (type == "Shield")
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "hit_points",
-                        v => (int.Parse(v) / 2).ToString(CultureInfo.InvariantCulture));
+                        v => ((int)(int.Parse(v) * 0.5f)).ToString(CultureInfo.InvariantCulture));
                 }
                 else if (type == "Bow")
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
-                        v => (int.Parse(v) / 2).ToString(CultureInfo.InvariantCulture));
+                        v => ((int)(int.Parse(v) * 0.35f)).ToString(CultureInfo.InvariantCulture));
                 }
             }
             else if (node1.Name == "CraftingTemplate")
