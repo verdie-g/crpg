@@ -72,13 +72,13 @@
   </Item>
   <Item id="crpg_mule" name="{=CB97qhVM}Mule" mesh="mule_mesh" item_category="sumpter_horse" value="120" weight="300" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.mule" maneuver="48" speed="22" charge_damage="1" body_length="92" is_mountable="true" extra_health="0" is_pack_animal="true" />
+      <Horse monster="Monster.mule" maneuver="48" speed="23" charge_damage="0" body_length="92" is_mountable="true" extra_health="0" is_pack_animal="true" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
   <Item id="crpg_pack_camel" name="{=DlPOte0H}Pack Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" value="140" weight="520" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="39" speed="25" charge_damage="1" body_length="105" extra_health="30" is_pack_animal="true" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="39" speed="26" charge_damage="1" body_length="105" extra_health="30" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
@@ -119,7 +119,7 @@
   </Item>
   <Item id="crpg_battania_horse" name="{=sgfKrAaZ}Battanian Pony" mesh="horse_brown" subtype="horse" item_category="horse" culture="Culture.battania" weight="410" difficulty="10" appearance="0.7" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="56" speed="32" charge_damage="3" body_length="98" is_mountable="true" extra_health="50" skeleton_scale="battania_horse">
+      <Horse monster="Monster.horse" maneuver="56" speed="33" charge_damage="3" body_length="98" is_mountable="true" extra_health="50" skeleton_scale="battania_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane_2" affected_by_cover="true" />
           <Mesh name="horse_trotter" />
@@ -137,7 +137,7 @@
   </Item>
   <Item id="crpg_empire_horse" name="{=IOt4KTHs}Midlands Palfrey" mesh="horse_brown" subtype="horse" item_category="horse" culture="Culture.empire" weight="370" difficulty="10" appearance="0.7" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="61" speed="34" charge_damage="3" body_length="110" is_mountable="true" extra_health="0" skeleton_scale="empire_horse">
+      <Horse monster="Monster.horse" maneuver="61" speed="35" charge_damage="3" body_length="110" is_mountable="true" extra_health="0" skeleton_scale="empire_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane_2" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -190,7 +190,7 @@
   </Item>
   <Item id="crpg_sturgia_horse" name="{=QwiI8Uho}Sturgian Trotter" mesh="horse_brown" subtype="horse" item_category="horse" culture="Culture.sturgia" weight="405" difficulty="10" appearance="0.7" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="62" speed="32" charge_damage="3" body_length="100" is_mountable="true" extra_health="20" skeleton_scale="sturgia_horse">
+      <Horse monster="Monster.horse" maneuver="62" speed="33" charge_damage="3" body_length="100" is_mountable="true" extra_health="20" skeleton_scale="sturgia_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane_2" affected_by_cover="true" />
           <Mesh name="horse_trotter" />
@@ -215,7 +215,7 @@
   </Item>
   <Item id="crpg_vlandia_horse" name="{=AIu3kKvz}Saddle Horse" mesh="horse_brown" subtype="horse" item_category="horse" culture="Culture.vlandia" weight="462" difficulty="10" appearance="0.7" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="55" speed="35" charge_damage="4" body_length="109" is_mountable="true" skeleton_scale="vlandia_horse">
+      <Horse monster="Monster.horse" maneuver="55" speed="36" charge_damage="3" body_length="109" is_mountable="true" skeleton_scale="vlandia_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane_2" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -250,13 +250,13 @@
   </Item>
   <Item id="crpg_camel" name="{=CQBiJLgv}Camel" mesh="camel_mesh" item_category="horse" culture="Culture.aserai" weight="500" difficulty="10" appearance="0.7" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="65" speed="32" charge_damage="3" body_length="95" extra_health="15" is_pack_animal="false" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="65" speed="33" charge_damage="3" body_length="95" extra_health="15" is_pack_animal="false" is_mountable="true" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
   <Item id="crpg_t2_aserai_horse" name="{=gnvIGThE}Aserai Horse" mesh="horse_brown" subtype="horse" item_category="war_horse" culture="Culture.aserai" weight="400" difficulty="60" appearance="1" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="70" speed="48" charge_damage="2" body_length="108" is_mountable="true" skeleton_scale="aserai_horse" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="70" speed="49" charge_damage="2" body_length="108" is_mountable="true" skeleton_scale="aserai_horse" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -291,7 +291,7 @@
   </Item>
   <Item id="crpg_t2_battania_horse" name="{=tZN9H492}Battanian Warmount" mesh="horse_brown" subtype="horse" item_category="war_horse" culture="Culture.battania" weight="420" difficulty="60" appearance="1" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="73" speed="35" charge_damage="3" body_length="111" is_mountable="true" extra_health="40" skeleton_scale="battania_horse">
+      <Horse monster="Monster.horse" maneuver="73" speed="36" charge_damage="3" body_length="111" is_mountable="true" extra_health="40" skeleton_scale="battania_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane_2" affected_by_cover="true" />
           <Mesh name="horse_trotter" />
@@ -309,7 +309,7 @@
   </Item>
   <Item id="crpg_t2_empire_horse" name="{=mVAaWp5U}Imperial Charger" mesh="horse_brown" subtype="horse" item_category="war_horse" culture="Culture.empire" weight="430" difficulty="60" appearance="1" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="66" speed="32" charge_damage="4" body_length="115" is_mountable="true" extra_health="90" skeleton_scale="empire_horse">
+      <Horse monster="Monster.horse" maneuver="66" speed="33" charge_damage="3" body_length="115" is_mountable="true" extra_health="90" skeleton_scale="empire_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane_2" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -344,7 +344,7 @@
   </Item>
   <Item id="crpg_t2_khuzait_horse" name="{=PZPphq6H}Steppe Warhorse" mesh="horse_brown" item_category="war_horse" culture="Culture.khuzait" subtype="horse" weight="405" difficulty="60" appearance="1" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="78" speed="37" charge_damage="3" body_length="94" is_mountable="true" extra_health="50" skeleton_scale="khuzait_horse">
+      <Horse monster="Monster.horse" maneuver="78" speed="37" charge_damage="2" body_length="94" is_mountable="true" extra_health="50" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -362,7 +362,7 @@
   </Item>
   <Item id="crpg_t2_sturgia_horse" name="{=Ejx5lXjk}Sturgian Chaser" mesh="horse_brown" subtype="horse" item_category="war_horse" culture="Culture.sturgia" weight="415" difficulty="60" appearance="1" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="74" speed="40" charge_damage="3" body_length="100" is_mountable="true" extra_health="10" skeleton_scale="sturgia_horse">
+      <Horse monster="Monster.horse" maneuver="74" speed="40" charge_damage="2" body_length="100" is_mountable="true" extra_health="10" skeleton_scale="sturgia_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane_2" affected_by_cover="true" />
           <Mesh name="horse_trotter" />
@@ -387,7 +387,7 @@
   </Item>
   <Item id="crpg_t2_vlandia_horse" name="{=MqBSmahz}Vlandian Courser" mesh="horse_brown" subtype="horse" item_category="war_horse" culture="Culture.vlandia" weight="420" difficulty="60" appearance="1" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="68" speed="38" charge_damage="4" body_length="109" is_mountable="true" extra_health="40" skeleton_scale="vlandia_horse">
+      <Horse monster="Monster.horse" maneuver="68" speed="39" charge_damage="3" body_length="109" is_mountable="true" extra_health="40" skeleton_scale="vlandia_horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane_2" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -422,7 +422,7 @@
   </Item>
   <Item id="crpg_war_camel" name="{=baIE2VQW}War Camel" mesh="camel_mesh" item_category="war_horse" culture="Culture.aserai" weight="500" difficulty="60" appearance="1" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="67" speed="35" charge_damage="4" body_length="105" extra_health="20" is_pack_animal="false" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="67" speed="36" charge_damage="4" body_length="105" extra_health="20" is_pack_animal="false" is_mountable="true" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
@@ -463,7 +463,7 @@
   </Item>
   <Item id="crpg_charger" name="{=h5kfaD4v}Charger" mesh="horse_brown" item_category="war_horse" difficulty="60" weight="415" appearance="1" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="68" speed="35" charge_damage="4" body_length="119" is_mountable="true" extra_health="40" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="68" speed="36" charge_damage="3" body_length="119" is_mountable="true" extra_health="40" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -487,7 +487,7 @@
   </Item>
   <Item id="crpg_noble_horse_southern" name="{=Q4sO8AZd}Nahasawi" mesh="horse_brown" item_category="horse" subtype="horse" weight="405" difficulty="90" is_merchandise="false" culture="Culture.aserai" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="72" speed="50" charge_damage="3" body_length="110" is_mountable="true" extra_health="25" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="72" speed="51" charge_damage="3" body_length="110" is_mountable="true" extra_health="25" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -522,7 +522,7 @@
   </Item>
   <Item id="crpg_noble_horse_imperial" name="{=ueSnrLRy}Cossian" mesh="horse_brown" item_category="horse" subtype="horse" is_merchandise="false" weight="440" culture="Culture.empire" difficulty="90" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="66" speed="35" charge_damage="5" body_length="114" is_mountable="true" extra_health="100" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="66" speed="36" charge_damage="4" body_length="114" is_mountable="true" extra_health="100" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -575,7 +575,7 @@
   </Item>
   <Item id="crpg_noble_horse_northern" name="{=jhgVsWKr}Tyal Horse" mesh="horse_brown" item_category="horse" culture="Culture.sturgia" is_merchandise="false" subtype="horse" weight="417" difficulty="90" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="41" charge_damage="3" body_length="100" is_mountable="true" extra_health="30" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="42" charge_damage="3" body_length="100" is_mountable="true" extra_health="30" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -599,7 +599,7 @@
   </Item>
   <Item id="crpg_noble_horse_western" name="{=SZrd85Uh}Destrier" mesh="horse_brown" culture="Culture.vlandia" item_category="horse" is_merchandise="false" subtype="horse" weight="420" difficulty="90" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="71" speed="44" charge_damage="4" body_length="109" is_mountable="true" extra_health="50" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="71" speed="45" charge_damage="4" body_length="109" is_mountable="true" extra_health="50" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -634,13 +634,13 @@
   </Item>
   <Item id="crpg_special_camel" name="{=Goloz0Vm}Husnphree" is_merchandise="false" culture="Culture.aserai" mesh="camel_mesh" item_category="horse" weight="550" difficulty="90" appearance="1" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.camel" maneuver="69" speed="35" charge_damage="5" body_length="115" extra_health="90" is_pack_animal="false" is_mountable="true" />
+      <Horse monster="Monster.camel" maneuver="69" speed="36" charge_damage="4" body_length="115" extra_health="90" is_pack_animal="false" is_mountable="true" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
   <Item id="crpg_noble_horse_battania" name="{=ccLDacS4}Battanian Thoroughbred" mesh="horse_brown" item_category="horse" is_merchandise="false" culture="Culture.battania" subtype="horse" weight="390" difficulty="90" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="76" speed="48" charge_damage="3" body_length="111" is_mountable="true" extra_health="30" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="76" speed="49" charge_damage="3" body_length="111" is_mountable="true" extra_health="30" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -664,7 +664,7 @@
   </Item>
   <Item id="crpg_noble_horse_khamseen" name="{=tBCm7Qqw}Khamseen" mesh="horse_brown" item_category="horse" subtype="horse" weight="400" difficulty="60" is_merchandise="false" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="65" speed="48" charge_damage="5" body_length="115" is_mountable="true" extra_health="70" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="65" speed="48" charge_damage="4" body_length="115" is_mountable="true" extra_health="70" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -717,7 +717,7 @@
   </Item>
   <Item id="crpg_storm_charger" name="{=1aOuyULB}Storm Charger" mesh="horse_brown" is_merchandise="false" item_category="war_horse" difficulty="100" weight="430" appearance="1" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" mane_mesh="horse_mane" maneuver="55" speed="44" charge_damage="6" body_length="100" is_mountable="true" extra_health="-70" modifier_group="horse">
+      <Horse monster="Monster.horse" mane_mesh="horse_mane" maneuver="55" speed="45" charge_damage="6" body_length="100" is_mountable="true" extra_health="-70" modifier_group="horse">
         <Materials>
           <Material name="horse_brown_mat">
             <MeshMultipliers>
@@ -749,7 +749,7 @@
   </Item>
   <Item id="crpg_war_horse" name="{=UqdZmdcf}War Horse" mesh="horse_brown" item_category="war_horse" is_merchandise="false" difficulty="80" weight="500" appearance="1" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse_2" maneuver="50" speed="29" charge_damage="8" body_length="105" is_mountable="true" extra_health="0" modifier_group="horse">
+      <Horse monster="Monster.horse_2" maneuver="50" speed="30" charge_damage="8" body_length="105" is_mountable="true" extra_health="0" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -819,7 +819,7 @@
   </Item>
   <Item id="crpg_desert_war_horse" name="{=24xuA5G2}Desert War Horse" mesh="horse_brown" item_category="war_horse" culture="Culture.aserai" is_merchandise="false" difficulty="80" weight="480" appearance="1" Type="Horse">
     <ItemComponent>
-      <Horse monster="Monster.horse" maneuver="50" speed="44" charge_damage="8" body_length="100" is_mountable="true" modifier_group="horse">
+      <Horse monster="Monster.horse" maneuver="50" speed="45" charge_damage="8" body_length="100" is_mountable="true" modifier_group="horse">
         <AdditionalMeshes>
           <Mesh name="horse_mane" affected_by_cover="true" />
         </AdditionalMeshes>
@@ -854,7 +854,7 @@
   </Item>
   <Item multiplayer_item="false" id="crpg_bandit_saddle_desert" name="{=8PXbyI2r}Rugged Beduin Saddle" mesh="bandit_saddle_desert" culture="Culture.aserai" subtype="body_armor" weight="21" difficulty="0" appearance="1" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="3" mane_cover_type="none" family_type="1" modifier_group="cloth" reins_mesh="bandit_saddle_desert_rein" material_type="Cloth" />
+      <Armor body_armor="2" mane_cover_type="none" family_type="1" modifier_group="cloth" reins_mesh="bandit_saddle_desert_rein" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
     <Flags />
@@ -896,7 +896,7 @@
   </Item>
   <Item id="crpg_celtic_frost" name="{=XkwOTdVQ}Celtic Frost" mesh="horse_harness_saxon_new" is_merchandise="false" weight="26" appearance="0.5" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="26" mane_cover_type="all" maneuver_bonus="0" speed_bonus="0" reins_mesh="horse_harness_saxon_new_rein" charge_bonus="0" family_type="1" modifier_group="chain" material_type="Chainmail" />
+      <Armor body_armor="25" mane_cover_type="all" maneuver_bonus="0" speed_bonus="0" reins_mesh="horse_harness_saxon_new_rein" charge_bonus="0" family_type="1" modifier_group="chain" material_type="Chainmail" />
     </ItemComponent>
     <Flags Civilian="true" />
     <Flags />
@@ -924,28 +924,28 @@
   </Item>
   <Item multiplayer_item="false" id="crpg_stripped_leather_harness" name="{=Yh7Dorsr}Striped Leather Harness" mesh="horse_harness_imperial_a_clotest" culture="Culture.empire" subtype="body_armor" weight="26" difficulty="0" appearance="1" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="5" mane_cover_type="none" family_type="1" modifier_group="leather" reins_mesh="horse_harness_imperial_a_rein" material_type="Leather" />
+      <Armor body_armor="4" mane_cover_type="none" family_type="1" modifier_group="leather" reins_mesh="horse_harness_imperial_a_rein" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
     <Flags />
   </Item>
   <Item id="crpg_imperial_riding_harness" name="{=NUmDuEqI}Imperial Riding Harness" mesh="horse_harness_a_new" culture="Culture.empire" weight="22" appearance="1" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="3" mane_cover_type="none" family_type="1" modifier_group="leather" reins_mesh="horse_harness_a_new_rein" material_type="Leather" />
+      <Armor body_armor="2" mane_cover_type="none" family_type="1" modifier_group="leather" reins_mesh="horse_harness_a_new_rein" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
     <Flags />
   </Item>
   <Item multiplayer_item="false" id="crpg_half_scale_barding" name="{=*}Cataphract Half Scale Barding" mesh="horse_harness_imperial_c_clotest" culture="Culture.empire" subtype="body_armor" weight="80" difficulty="0" appearance="0.5" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="20" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_imperial_c_rein" material_type="Chainmail" />
+      <Armor body_armor="19" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_imperial_c_rein" material_type="Chainmail" />
     </ItemComponent>
     <Flags Civilian="true" />
     <Flags />
   </Item>
   <Item multiplayer_item="false" id="crpg_imperial_scale_barding" name="{=ds1nrqNv}Cataphract Scale Barding" mesh="horse_harness_imperial_b_clotest" culture="Culture.empire" subtype="body_armor" weight="135" difficulty="0" appearance="0.5" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="25" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_imperial_b_rein" material_type="Chainmail" />
+      <Armor body_armor="24" mane_cover_type="all" family_type="1" modifier_group="chain" reins_mesh="horse_harness_imperial_b_rein" material_type="Chainmail" />
     </ItemComponent>
     <Flags Civilian="true" />
     <Flags />
@@ -959,14 +959,14 @@
   </Item>
   <Item multiplayer_item="false" id="crpg_desert_cloth_harness" name="{=LhUhcbzI}Beduin Cloth Saddle" mesh="horse_harness_aserai_a_clotest" culture="Culture.aserai" subtype="body_armor" weight="22.5" difficulty="0" appearance="1" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="4" mane_cover_type="none" reins_mesh="horse_harness_aserai_a_rein" family_type="1" modifier_group="cloth" material_type="Cloth" />
+      <Armor body_armor="3" mane_cover_type="none" reins_mesh="horse_harness_aserai_a_rein" family_type="1" modifier_group="cloth" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
     <Flags />
   </Item>
   <Item multiplayer_item="false" id="crpg_aseran_village_harness" name="{=79bPUaOK}Beduin Common Saddle" mesh="horse_harness_aserai_b_clotest" culture="Culture.aserai" subtype="body_armor" weight="27" difficulty="0" appearance="1" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="4" mane_cover_type="none" family_type="1" modifier_group="cloth" reins_mesh="horse_harness_aserai_b_rein" material_type="Cloth" />
+      <Armor body_armor="3" mane_cover_type="none" family_type="1" modifier_group="cloth" reins_mesh="horse_harness_aserai_b_rein" material_type="Cloth" />
     </ItemComponent>
     <Flags Civilian="true" />
     <Flags />
@@ -987,7 +987,7 @@
   </Item>
   <Item multiplayer_item="false" id="crpg_steppe_harness" name="{=OaQE1Frx}Steppe Saddle" mesh="horse_harness_khuzait_b_clotest" culture="Culture.khuzait" subtype="body_armor" weight="23.5" difficulty="0" appearance="1" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="4" mane_cover_type="none" family_type="1" modifier_group="chain" reins_mesh="horse_harness_khuzait_b_rein" material_type="Chainmail" />
+      <Armor body_armor="3" mane_cover_type="none" family_type="1" modifier_group="chain" reins_mesh="horse_harness_khuzait_b_rein" material_type="Chainmail" />
     </ItemComponent>
     <Flags Civilian="true" />
     <Flags />
@@ -1015,7 +1015,7 @@
   </Item>
   <Item id="crpg_northern_noble_harness" name="{=lZZOQsxc}Rough Cavalry Saddle" mesh="horse_harness_sturgia_b_clotest" culture="Culture.sturgia" weight="35" appearance="1" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="5" mane_cover_type="none" family_type="1" modifier_group="leather" reins_mesh="horse_harness_sturgia_b_rein" material_type="Leather" />
+      <Armor body_armor="4" mane_cover_type="none" family_type="1" modifier_group="leather" reins_mesh="horse_harness_sturgia_b_rein" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
     <Flags />
@@ -1029,7 +1029,7 @@
   </Item>
   <Item id="crpg_battania_horse_harness" name="{=33aaUcaX}Battania Horse Harness" mesh="battania_horse_harness" culture="Culture.battania" weight="30" appearance="1" Type="HorseHarness">
     <ItemComponent>
-      <Armor body_armor="5" mane_cover_type="none" family_type="1" modifier_group="leather" material_type="Leather" />
+      <Armor body_armor="4" mane_cover_type="none" family_type="1" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
     <Flags Civilian="true" />
     <Flags />
