@@ -949,7 +949,7 @@
       "bodyLength": 108,
       "chargeDamage": 3,
       "maneuver": 56,
-      "speed": 54,
+      "speed": 40,
       "hitPoints": 200
     },
     "weapons": []
@@ -2951,7 +2951,7 @@
       "bodyLength": 98,
       "chargeDamage": 3,
       "maneuver": 56,
-      "speed": 44,
+      "speed": 32,
       "hitPoints": 250
     },
     "weapons": []
@@ -4906,7 +4906,7 @@
       "bodyLength": 95,
       "chargeDamage": 3,
       "maneuver": 65,
-      "speed": 44,
+      "speed": 32,
       "hitPoints": 215
     },
     "weapons": []
@@ -5214,7 +5214,7 @@
       "bodyLength": 119,
       "chargeDamage": 4,
       "maneuver": 68,
-      "speed": 48,
+      "speed": 35,
       "hitPoints": 240
     },
     "weapons": []
@@ -6406,7 +6406,7 @@
       "bodyLength": 100,
       "chargeDamage": 8,
       "maneuver": 50,
-      "speed": 60,
+      "speed": 44,
       "hitPoints": 200
     },
     "weapons": []
@@ -7687,7 +7687,7 @@
       "bodyLength": 110,
       "chargeDamage": 3,
       "maneuver": 61,
-      "speed": 47,
+      "speed": 34,
       "hitPoints": 200
     },
     "weapons": []
@@ -10463,7 +10463,7 @@
       "bodyLength": 94,
       "chargeDamage": 2,
       "maneuver": 65,
-      "speed": 54,
+      "speed": 40,
       "hitPoints": 220
     },
     "weapons": []
@@ -11599,7 +11599,7 @@
       "bodyLength": 94,
       "chargeDamage": 2,
       "maneuver": 69,
-      "speed": 46,
+      "speed": 34,
       "hitPoints": 210
     },
     "weapons": []
@@ -13816,7 +13816,7 @@
       "bodyLength": 92,
       "chargeDamage": 1,
       "maneuver": 48,
-      "speed": 31,
+      "speed": 22,
       "hitPoints": 100
     },
     "weapons": []
@@ -14163,7 +14163,7 @@
       "bodyLength": 115,
       "chargeDamage": 11,
       "maneuver": 65,
-      "speed": 65,
+      "speed": 48,
       "hitPoints": 270
     },
     "weapons": []
@@ -14178,7 +14178,7 @@
       "bodyLength": 111,
       "chargeDamage": 3,
       "maneuver": 76,
-      "speed": 66,
+      "speed": 48,
       "hitPoints": 230
     },
     "weapons": []
@@ -14193,7 +14193,7 @@
       "bodyLength": 98,
       "chargeDamage": 3,
       "maneuver": 82,
-      "speed": 57,
+      "speed": 42,
       "hitPoints": 260
     },
     "weapons": []
@@ -14208,7 +14208,7 @@
       "bodyLength": 114,
       "chargeDamage": 5,
       "maneuver": 66,
-      "speed": 48,
+      "speed": 35,
       "hitPoints": 300
     },
     "weapons": []
@@ -14223,7 +14223,7 @@
       "bodyLength": 115,
       "chargeDamage": 5,
       "maneuver": 65,
-      "speed": 65,
+      "speed": 48,
       "hitPoints": 270
     },
     "weapons": []
@@ -14238,7 +14238,7 @@
       "bodyLength": 100,
       "chargeDamage": 3,
       "maneuver": 76,
-      "speed": 56,
+      "speed": 41,
       "hitPoints": 230
     },
     "weapons": []
@@ -14253,7 +14253,7 @@
       "bodyLength": 110,
       "chargeDamage": 3,
       "maneuver": 72,
-      "speed": 68,
+      "speed": 50,
       "hitPoints": 225
     },
     "weapons": []
@@ -14268,7 +14268,7 @@
       "bodyLength": 109,
       "chargeDamage": 4,
       "maneuver": 71,
-      "speed": 60,
+      "speed": 44,
       "hitPoints": 250
     },
     "weapons": []
@@ -15706,7 +15706,7 @@
       "bodyLength": 102,
       "chargeDamage": 1,
       "maneuver": 52,
-      "speed": 37,
+      "speed": 27,
       "hitPoints": 200
     },
     "weapons": []
@@ -15926,7 +15926,7 @@
       "bodyLength": 105,
       "chargeDamage": 1,
       "maneuver": 39,
-      "speed": 35,
+      "speed": 25,
       "hitPoints": 230
     },
     "weapons": []
@@ -18774,7 +18774,7 @@
       "bodyLength": 115,
       "chargeDamage": 5,
       "maneuver": 69,
-      "speed": 48,
+      "speed": 35,
       "hitPoints": 290
     },
     "weapons": []
@@ -19243,7 +19243,7 @@
       "bodyLength": 100,
       "chargeDamage": 6,
       "maneuver": 50,
-      "speed": 45,
+      "speed": 33,
       "hitPoints": 200
     },
     "weapons": []
@@ -19303,7 +19303,7 @@
       "bodyLength": 100,
       "chargeDamage": 6,
       "maneuver": 55,
-      "speed": 60,
+      "speed": 44,
       "hitPoints": 130
     },
     "weapons": []
@@ -19941,7 +19941,7 @@
       "bodyLength": 100,
       "chargeDamage": 3,
       "maneuver": 62,
-      "speed": 44,
+      "speed": 32,
       "hitPoints": 220
     },
     "weapons": []
@@ -20742,7 +20742,7 @@
       "bodyLength": 102,
       "chargeDamage": 1,
       "maneuver": 41,
-      "speed": 34,
+      "speed": 25,
       "hitPoints": 260
     },
     "weapons": []
@@ -20757,7 +20757,7 @@
       "bodyLength": 108,
       "chargeDamage": 2,
       "maneuver": 70,
-      "speed": 66,
+      "speed": 48,
       "hitPoints": 200
     },
     "weapons": []
@@ -20772,7 +20772,7 @@
       "bodyLength": 111,
       "chargeDamage": 3,
       "maneuver": 73,
-      "speed": 48,
+      "speed": 35,
       "hitPoints": 240
     },
     "weapons": []
@@ -20787,7 +20787,7 @@
       "bodyLength": 115,
       "chargeDamage": 4,
       "maneuver": 66,
-      "speed": 44,
+      "speed": 32,
       "hitPoints": 290
     },
     "weapons": []
@@ -20802,7 +20802,7 @@
       "bodyLength": 94,
       "chargeDamage": 3,
       "maneuver": 78,
-      "speed": 50,
+      "speed": 37,
       "hitPoints": 250
     },
     "weapons": []
@@ -20817,7 +20817,7 @@
       "bodyLength": 100,
       "chargeDamage": 3,
       "maneuver": 74,
-      "speed": 54,
+      "speed": 40,
       "hitPoints": 210
     },
     "weapons": []
@@ -20832,7 +20832,7 @@
       "bodyLength": 109,
       "chargeDamage": 4,
       "maneuver": 68,
-      "speed": 52,
+      "speed": 38,
       "hitPoints": 240
     },
     "weapons": []
@@ -21994,7 +21994,7 @@
       "bodyLength": 109,
       "chargeDamage": 4,
       "maneuver": 55,
-      "speed": 48,
+      "speed": 35,
       "hitPoints": 200
     },
     "weapons": []
@@ -22910,7 +22910,7 @@
       "bodyLength": 105,
       "chargeDamage": 4,
       "maneuver": 67,
-      "speed": 48,
+      "speed": 35,
       "hitPoints": 220
     },
     "weapons": []
@@ -22925,7 +22925,7 @@
       "bodyLength": 105,
       "chargeDamage": 8,
       "maneuver": 50,
-      "speed": 40,
+      "speed": 29,
       "hitPoints": 200
     },
     "weapons": []

@@ -300,6 +300,8 @@ internal class ItemExporter : IDataExporter
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "charge_damage",
                         v => (int.Parse(v) / 3).ToString(CultureInfo.InvariantCulture));
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "speed",
+                        v => ((int)(int.Parse(v) / 1.35f)).ToString(CultureInfo.InvariantCulture));
                 }
                 else if (type == "HorseHarness")
                 {
