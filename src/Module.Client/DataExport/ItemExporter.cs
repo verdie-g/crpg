@@ -290,38 +290,33 @@ internal class ItemExporter : IDataExporter
             }
             else if (node1.Name == "CraftingPiece")
             {
-                // Because characteristics can be increased in cRPG, weapons can be way too powerful. To compensate that
-                // the damage factor is divided by two.
-                foreach (var damageNode in node1.SelectNodes("BladeData/*")!.Cast<XmlNode>())
-                {
-                    var damageFactorAttr = damageNode.Attributes!["damage_factor"];
-                    float damageFactor = float.Parse(damageFactorAttr.Value) / 2f;
-                    damageFactorAttr.Value = damageFactor.ToString(CultureInfo.InvariantCulture);
-                }
+                ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
+                    v => (float.Parse(v) / 2f).ToString(CultureInfo.InvariantCulture));
             }
             else if (node1.Name == "Item")
             {
                 string type = node1.Attributes!["Type"].Value;
                 if (type == "Horse")
                 {
-                    var horseNode = node1.SelectNodes("ItemComponent/Horse")?.Cast<XmlNode>().First()!;
-                    var chargeDamageAttr = horseNode.Attributes!["charge_damage"];
-                    int chargeDamage = int.Parse(chargeDamageAttr.Value) / 3;
-                    chargeDamageAttr.Value = chargeDamage.ToString(CultureInfo.InvariantCulture);
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "charge_damage",
+                        v => (int.Parse(v) / 3).ToString(CultureInfo.InvariantCulture));
+                }
+                else if (type == "HorseHarness")
+                {
+                    // Single player horse harness can go up to 78 amor when the highest you can find in native mp is 26
+                    // so let's divide the armor by 3. The weight doesn't change because it's good enough.
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Armor", "body_armor",
+                        v => (int.Parse(v) / 3).ToString(CultureInfo.InvariantCulture));
                 }
                 else if (type == "Shield")
                 {
-                    var weaponNode = node1.SelectNodes("ItemComponent/Weapon")?.Cast<XmlNode>().First()!;
-                    var hitPointsAttr = weaponNode.Attributes!["hit_points"];
-                    int hitPoints = int.Parse(hitPointsAttr.Value) / 2;
-                    hitPointsAttr.Value = hitPoints.ToString(CultureInfo.InvariantCulture);
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "hit_points",
+                        v => (int.Parse(v) / 2).ToString(CultureInfo.InvariantCulture));
                 }
                 else if (type == "Bow")
                 {
-                    var weaponNode = node1.SelectNodes("ItemComponent/Weapon")?.Cast<XmlNode>().First()!;
-                    var thrustDamageAttr = weaponNode.Attributes!["thrust_damage"];
-                    int thrustDamage = int.Parse(thrustDamageAttr.Value) / 2;
-                    thrustDamageAttr.Value = thrustDamage.ToString(CultureInfo.InvariantCulture);
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
+                        v => (int.Parse(v) / 2).ToString(CultureInfo.InvariantCulture));
                 }
             }
             else if (node1.Name == "CraftingTemplate")
@@ -386,6 +381,18 @@ internal class ItemExporter : IDataExporter
     {
         const string prefix = "crpg_";
         return s.StartsWith(prefix, StringComparison.Ordinal) ? prefix : prefix + s;
+    }
+
+    private static void ModifyChildNodesAttribute(XmlNode parentNode,
+        string childXPath,
+        string attributeName,
+        Func<string, string> modify)
+    {
+        foreach (var childNode in parentNode.SelectNodes(childXPath)!.Cast<XmlNode>())
+        {
+            var attr = childNode.Attributes![attributeName];
+            attr.Value = modify(attr.Value);
+        }
     }
 
     private static void RegisterMbObjects<T>(XmlDocument doc, Game game) where T : MBObjectBase, new()
