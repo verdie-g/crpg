@@ -20,7 +20,7 @@ NumberOfBotsTeam1 3
 NumberOfBotsTeam2 3
 RoundTotal 10
 MapTimeLimit 8
-RoundTimeLimit 180
+RoundTimeLimit 300
 WarmupTimeLimit 1
 start_game
 enable_automated_battle_switching
