@@ -25,7 +25,7 @@ server {
         etag on;
     }
 
-    location ~ \.(ico|png|jpg) {
+    location ~ \.(ico|png|jpg|zip) {
         # Assets don't contain fingerprints (hashes) and should be cached
         # for a limited period of time.
         etag on;
