@@ -25,14 +25,7 @@
         </div>
         <div v-else>
           <!-- if no character -->
-          To create a character, simply launch a
-          <a
-            href="https://www.nexusmods.com/mountandblade2bannerlord/mods/2208?tab=files"
-            target="_blank"
-          >
-            DefendTheVirgin
-          </a>
-          game.
+          To create a character, simply join a cRPG server.
         </div>
       </div>
     </div>
