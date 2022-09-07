@@ -304,8 +304,8 @@ internal class ItemExporter : IDataExporter
             }
             else if (node1.Name == "Item")
             {
-                string type = node1.Attributes!["Type"].Value;
-                if (type == "Horse")
+                var type = (ItemObject.ItemTypeEnum)Enum.Parse(typeof(ItemObject.ItemTypeEnum), node1.Attributes!["Type"].Value);
+                if (type == ItemObject.ItemTypeEnum.Horse)
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "charge_damage",
                         v => ((int)(int.Parse(v) * 0.33f)).ToString(CultureInfo.InvariantCulture));
@@ -315,19 +315,19 @@ internal class ItemExporter : IDataExporter
                         v => (int.Parse(v) - 30).ToString(CultureInfo.InvariantCulture),
                         "0");
                 }
-                else if (type == "HorseHarness")
+                else if (type == ItemObject.ItemTypeEnum.HorseHarness)
                 {
                     // Single player horse harness can go up to 78 amor when the highest you can find in native mp is 26
                     // so let's divide the armor by 3. The weight doesn't change because it's good enough.
                     ModifyChildNodesAttribute(node1, "ItemComponent/Armor", "body_armor",
                         v => ((int)(int.Parse(v) * 0.33f)).ToString(CultureInfo.InvariantCulture));
                 }
-                else if (type == "Shield")
+                else if (type == ItemObject.ItemTypeEnum.Shield)
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "hit_points",
                         v => ((int)(int.Parse(v) * 0.5f)).ToString(CultureInfo.InvariantCulture));
                 }
-                else if (type == "Bow")
+                else if (type == ItemObject.ItemTypeEnum.Bow)
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
                         v => ((int)(int.Parse(v) * 0.35f)).ToString(CultureInfo.InvariantCulture));
