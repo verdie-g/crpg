@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.Runtime.CompilerServices;
+using System.Xml.Linq;
 using Crpg.Module.Battle;
 using Crpg.Module.Common;
 using Crpg.Module.Common.Models;
@@ -98,21 +99,36 @@ internal class CrpgSubModule : MBSubModuleBase
 #if CRPG_EXPORT
     private void ExportData()
     {
-        const string outputPath = "../../CrpgData";
         IDataExporter[] exporters =
         {
             new ItemExporter(),
-            new SettlementExporter(),
+            // new SettlementExporter(),
         };
 
-        Directory.CreateDirectory(outputPath);
-        InformationManager.DisplayMessage(new InformationMessage($"Exporting data to {Path.GetFullPath(outputPath)}."));
-        Task.WhenAll(exporters.Select(e => e.Export(outputPath))).ContinueWith(t =>
+        InformationManager.DisplayMessage(new InformationMessage("Exporting data."));
+        string gitRepoPath = FindGitRepositoryRootPath();
+        Task.WhenAll(exporters.Select(e => e.Export(gitRepoPath))).ContinueWith(t =>
         {
             InformationManager.DisplayMessage(t.IsFaulted
                 ? new InformationMessage(t.Exception!.Message)
                 : new InformationMessage("Done."));
         });
+    }
+
+    private string FindGitRepositoryRootPath([CallerFilePath] string currentFilePath = default!)
+    {
+        var dir = Directory.GetParent(currentFilePath);
+        while (dir != null)
+        {
+            if (Directory.Exists(Path.Combine(dir.FullName, ".git")))
+            {
+                return dir.FullName;
+            }
+
+            dir = dir.Parent;
+        }
+
+        throw new InvalidOperationException("Could not find cRPG git repository");
     }
 #endif
 }

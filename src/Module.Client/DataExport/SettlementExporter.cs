@@ -12,7 +12,7 @@ internal class SettlementExporter : IDataExporter
 {
     private const string SettlementsFile = "../../Modules/SandBox/ModuleData/settlements.xml";
 
-    public Task Export(string outputPath)
+    public Task Export(string gitRepoPath)
     {
         List<CrpgSettlementCreation> settlements = new();
 
@@ -51,7 +51,7 @@ internal class SettlementExporter : IDataExporter
             Converters = new JsonConverter[] { new ArrayStringEnumFlagsConverter(), new StringEnumConverter() },
         });
 
-        using StreamWriter s = new(Path.Combine(outputPath, "settlements.json"));
+        using StreamWriter s = new(Path.Combine(gitRepoPath, "data", "settlements.json"));
         serializer.Serialize(s, settlements);
         return Task.CompletedTask;
     }
