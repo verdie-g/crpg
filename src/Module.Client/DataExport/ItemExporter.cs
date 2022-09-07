@@ -100,25 +100,27 @@ internal class ItemExporter : IDataExporter
         "woodland_throwing_axe_1_t1", // Name conflict with highland_throwing_axe_1_t2.
     };
 
-    public Task Export(string outputPath)
+    public async Task Export(string gitRepoPath)
     {
+        string moduleDataPath = Path.Combine(gitRepoPath, "src/Module.Server/ModuleData");
+
         var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
         game.Initialize();
 
         var craftingPiecesDoc = LoadMbDocument(CraftingPiecesFilePath);
         RegisterMbObjects<CraftingPiece>(craftingPiecesDoc, game);
-        craftingPiecesDoc.Save(Path.Combine(outputPath, Path.GetFileName(CraftingPiecesFilePath)));
+        craftingPiecesDoc.Save(Path.Combine(moduleDataPath, Path.GetFileName(CraftingPiecesFilePath)));
 
         var weaponDescriptionsDoc = LoadMbDocument(WeaponDescriptionsFilePath);
         RegisterMbObjects<WeaponDescription>(weaponDescriptionsDoc, game);
-        weaponDescriptionsDoc.Save(Path.Combine(outputPath, Path.GetFileName(WeaponDescriptionsFilePath)));
+        weaponDescriptionsDoc.Save(Path.Combine(moduleDataPath, Path.GetFileName(WeaponDescriptionsFilePath)));
 
         var craftingTemplatesDoc = LoadMbDocument(CraftingTemplatesFilePath);
         RegisterMbObjects<CraftingTemplate>(craftingTemplatesDoc, game);
-        craftingTemplatesDoc.Save(Path.Combine(outputPath, Path.GetFileName(CraftingTemplatesFilePath)));
+        craftingTemplatesDoc.Save(Path.Combine(moduleDataPath, Path.GetFileName(CraftingTemplatesFilePath)));
 
-        string itemsOutputPath = Path.Combine(outputPath, "items");
-        Directory.CreateDirectory(itemsOutputPath);
+        string moduleDataItemsPath = Path.Combine(moduleDataPath, "items");
+        Directory.CreateDirectory(moduleDataItemsPath);
 
         var mbItems = Enumerable.Empty<ItemObject>();
         foreach (string filePath in Directory.EnumerateFiles(ItemFilesPath))
@@ -126,7 +128,7 @@ internal class ItemExporter : IDataExporter
             var itemsDoc = LoadMbDocument(filePath);
             RegisterMbObjects<ItemObject>(itemsDoc, game);
             mbItems = mbItems.Concat(DeserializeMbItems(itemsDoc, game));
-            itemsDoc.Save(Path.Combine(itemsOutputPath, Path.GetFileName(filePath)));
+            itemsDoc.Save(Path.Combine(moduleDataItemsPath, Path.GetFileName(filePath)));
         }
 
         mbItems = mbItems
@@ -134,10 +136,15 @@ internal class ItemExporter : IDataExporter
             .OrderBy(i => i.StringId)
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
+        SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));
 
-        Directory.CreateDirectory(outputPath);
-        SerializeCrpgItems(crpgItems, outputPath);
-        return GenerateItemsThumbnail(mbItems, Path.Combine(outputPath, "item-thumbnails"));
+        const string itemThumbnailsTempPath = "../../crpg-items";
+        string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
+
+        Directory.CreateDirectory(itemThumbnailsTempPath);
+        await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);
+        Directory.Delete(itemThumbnailsPath, recursive: true);
+        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);
     }
 
     private static CrpgItemCreation MbToCrpgItem(ItemObject mbItem)

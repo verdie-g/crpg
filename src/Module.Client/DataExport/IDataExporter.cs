@@ -2,5 +2,5 @@
 
 public interface IDataExporter
 {
-    Task Export(string outputPath);
+    Task Export(string gitRepoPath);
 }
