@@ -91,7 +91,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
             {
                 ("crpg_vlandia_bandit_c", ItemSlot.Body),
                 ("crpg_rough_tied_boots", ItemSlot.Leg),
-                ("crpg_training_bow", ItemSlot.Weapon0),
+                ("crpg_hunting_bow", ItemSlot.Weapon0),
                 ("crpg_default_arrows", ItemSlot.Weapon1),
                 ("crpg_peasant_hatchet_1_t1", ItemSlot.Weapon2),
             },
