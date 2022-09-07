@@ -10,7 +10,7 @@
   </CraftedItem>
   <Item id="crpg_crossbow_a_blunt" name="{=*}Sparring Crossbow" body_name="bo_cross_bow_heavy" mesh="crossbow_a" culture="Culture.vlandia" weight="1.0" appearance="0.8" difficulty="0" Type="Crossbow" is_merchandise="false" AmmoOffset="0.0, 0.02131, 0.24650" item_holsters="crossbow_back:bow_hip:mace_right_hip:bow_hip_2" holster_position_shift="0.02,0,-0.4">
     <ItemComponent>
-      <Weapon weapon_class="Crossbow" ammo_class="Bolt" missile_speed="77" accuracy="95" thrust_damage="26" thrust_speed="46" speed_rating="62" weapon_length="95" ammo_limit="1" thrust_damage_type="Pierce" item_usage="crossbow_fast" reload_phase_count="2" physics_material="wood_weapon" center_of_mass="0,0,0.4" item_modifier_group="crossbow">
+      <Weapon weapon_class="Crossbow" ammo_class="Bolt" missile_speed="77" accuracy="95" thrust_damage="50" thrust_speed="46" speed_rating="62" weapon_length="95" ammo_limit="1" thrust_damage_type="Pierce" item_usage="crossbow_fast" reload_phase_count="2" physics_material="wood_weapon" center_of_mass="0,0,0.4" item_modifier_group="crossbow">
         <WeaponFlags RangedWeapon="true" HasString="true" NotUsableWithOneHand="true" TwoHandIdleOnMount="true" />
       </Weapon>
     </ItemComponent>

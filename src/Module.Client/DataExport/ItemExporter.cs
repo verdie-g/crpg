@@ -335,7 +335,7 @@ internal class ItemExporter : IDataExporter
                 else if (type == ItemObject.ItemTypeEnum.Crossbow)
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
-                        v => ((int)(int.Parse(v) * 0.35f)).ToString(CultureInfo.InvariantCulture));
+                        v => ((int)(int.Parse(v) * 0.67f)).ToString(CultureInfo.InvariantCulture));
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed",
                         v => ((int)(int.Parse(v) * 0.50f)).ToString(CultureInfo.InvariantCulture));
                 }
