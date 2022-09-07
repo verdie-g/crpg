@@ -5554,7 +5554,7 @@
           "StringHeldByHand",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 23,
+        "thrustDamage": 44,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 40,
         "swingDamage": 0,
@@ -5586,7 +5586,7 @@
           "StringHeldByHand",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 26,
+        "thrustDamage": 50,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 46,
         "swingDamage": 0,
@@ -5620,7 +5620,7 @@
           "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 28,
+        "thrustDamage": 54,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 40,
         "swingDamage": 0,
@@ -5653,7 +5653,7 @@
           "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 31,
+        "thrustDamage": 59,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 39,
         "swingDamage": 0,
@@ -5686,7 +5686,7 @@
           "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 32,
+        "thrustDamage": 62,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 46,
         "swingDamage": 0,
@@ -5718,7 +5718,7 @@
           "StringHeldByHand",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 26,
+        "thrustDamage": 51,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 41,
         "swingDamage": 0,
@@ -5752,7 +5752,7 @@
           "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 35,
+        "thrustDamage": 67,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 47,
         "swingDamage": 0,
@@ -5784,7 +5784,7 @@
           "StringHeldByHand",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 29,
+        "thrustDamage": 56,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 42,
         "swingDamage": 0,
