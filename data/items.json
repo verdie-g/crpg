@@ -5545,7 +5545,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 80,
+        "handling": 40,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5554,9 +5554,9 @@
           "StringHeldByHand",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 67,
+        "thrustDamage": 23,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 80,
+        "thrustSpeed": 40,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 70
@@ -5577,7 +5577,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 92,
+        "handling": 46,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5586,9 +5586,9 @@
           "StringHeldByHand",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 75,
+        "thrustDamage": 26,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 92,
+        "thrustSpeed": 46,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 62
@@ -5609,7 +5609,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 80,
+        "handling": 40,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5620,9 +5620,9 @@
           "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 82,
+        "thrustDamage": 28,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 80,
+        "thrustSpeed": 40,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 61
@@ -5643,7 +5643,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 78,
+        "handling": 39,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5653,9 +5653,9 @@
           "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 89,
+        "thrustDamage": 31,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 78,
+        "thrustSpeed": 39,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 60
@@ -5676,7 +5676,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 92,
+        "handling": 46,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5686,9 +5686,9 @@
           "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 93,
+        "thrustDamage": 32,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 92,
+        "thrustSpeed": 46,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 62
@@ -5709,7 +5709,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 82,
+        "handling": 41,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5718,9 +5718,9 @@
           "StringHeldByHand",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 77,
+        "thrustDamage": 26,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 82,
+        "thrustSpeed": 41,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 75
@@ -5741,7 +5741,7 @@
         "stackAmount": 1,
         "length": 90,
         "balance": 0.0,
-        "handling": 95,
+        "handling": 47,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5752,9 +5752,9 @@
           "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 100,
+        "thrustDamage": 35,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 95,
+        "thrustSpeed": 47,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 63
@@ -5775,7 +5775,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 85,
+        "handling": 42,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5784,9 +5784,9 @@
           "StringHeldByHand",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 85,
+        "thrustDamage": 29,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 85,
+        "thrustSpeed": 42,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 80

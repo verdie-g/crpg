@@ -332,6 +332,13 @@ internal class ItemExporter : IDataExporter
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
                         v => ((int)(int.Parse(v) * 0.35f)).ToString(CultureInfo.InvariantCulture));
                 }
+                else if (type == ItemObject.ItemTypeEnum.Crossbow)
+                {
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
+                        v => ((int)(int.Parse(v) * 0.35f)).ToString(CultureInfo.InvariantCulture));
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed",
+                        v => ((int)(int.Parse(v) * 0.50f)).ToString(CultureInfo.InvariantCulture));
+                }
             }
             else if (node1.Name == "CraftingTemplate")
             {
