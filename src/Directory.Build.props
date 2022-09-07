@@ -10,7 +10,8 @@
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
         <InvariantGlobalization>true</InvariantGlobalization>
 
-        <Version>0.1.0</Version>
+        <!-- Use Bannerlord version + cRPG version for the revision number -->
+        <Version>1.8.0.1</Version>
         <!-- Flag to enable to add revision id to the assembly version -->
         <SourceControlInformationFeatureSupported>true</SourceControlInformationFeatureSupported>
         <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
