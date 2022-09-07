@@ -93,6 +93,7 @@ internal class ItemExporter : IDataExporter
         "sturgian_helmet_b_open", // Name conflict with sturgian_helmet_open.
         "sturgian_lamellar_gambeson", // Name conflict with sturgian_lamellar_gambeson_heavy.
         "torch", // Invisible.
+        "tournament_bolts", // Bolts with blunt damage -> Shotgun effect, over-powered.
         "vlandia_horse_tournament", // Name conflict with vlandia_horse.
         "vlandia_mace_3_t5", // Name conflict with pernach_mace_t3.
         "womens_headwrap_c", // Name conflict with head_wrapped.
