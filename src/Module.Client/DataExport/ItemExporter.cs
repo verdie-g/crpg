@@ -83,6 +83,7 @@ internal class ItemExporter : IDataExporter
         "reinforced_padded_mitten", // Name conflict with padded_mitten rank 2.
         "southern_lamellar_armor", // Name conflict with desert_lamellar.
         "southern_lord_helmet", // Name conflict with desert_helmet rank 3.
+        "storm_charger", // Extremely shit horse.
         "strapped_round_shield", // Name conflict with leather_round_shield rank 2.
         "stronger_eastern_wicker_shield", // Name conflict with eastern_wicker_shield rank 2.
         "stronger_footmans_wicker_shield", // Name conflict with footmans_wicker_shield rank 2.
@@ -310,6 +311,9 @@ internal class ItemExporter : IDataExporter
                         v => ((int)(int.Parse(v) * 0.33f)).ToString(CultureInfo.InvariantCulture));
                     ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "speed",
                         v => ((int)(int.Parse(v) * 0.75f)).ToString(CultureInfo.InvariantCulture));
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "extra_health",
+                        v => (int.Parse(v) - 30).ToString(CultureInfo.InvariantCulture),
+                        "0");
                 }
                 else if (type == "HorseHarness")
                 {
@@ -396,11 +400,24 @@ internal class ItemExporter : IDataExporter
     private static void ModifyChildNodesAttribute(XmlNode parentNode,
         string childXPath,
         string attributeName,
-        Func<string, string> modify)
+        Func<string, string> modify,
+        string? defaultValue = null)
     {
         foreach (var childNode in parentNode.SelectNodes(childXPath)!.Cast<XmlNode>())
         {
             var attr = childNode.Attributes![attributeName];
+            if (attr == null)
+            {
+                if (defaultValue == null)
+                {
+                    throw new KeyNotFoundException($"Attribute '{attributeName}' was not found and no default was provided");
+                }
+
+                attr = childNode.OwnerDocument!.CreateAttribute(attributeName);
+                attr.Value = defaultValue;
+                childNode.Attributes.Append(attr);
+            }
+
             attr.Value = modify(attr.Value);
         }
     }
