@@ -10,7 +10,16 @@
         />
       </div>
 
-      <b-field horizontal label="Generation" class="characteristic-field is-marginless">
+      <b-field horizontal class="characteristic-field is-marginless">
+        <template v-slot:label>
+          <b-tooltip
+            label="Number of times you retired this character."
+            position="is-left"
+            multilined
+          >
+            Generation
+          </b-tooltip>
+        </template>
         <b-numberinput
           size="is-small"
           :editable="false"
