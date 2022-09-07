@@ -950,7 +950,7 @@
       "chargeDamage": 3,
       "maneuver": 56,
       "speed": 40,
-      "hitPoints": 200
+      "hitPoints": 170
     },
     "weapons": []
   },
@@ -2952,7 +2952,7 @@
       "chargeDamage": 3,
       "maneuver": 56,
       "speed": 33,
-      "hitPoints": 250
+      "hitPoints": 220
     },
     "weapons": []
   },
@@ -4907,7 +4907,7 @@
       "chargeDamage": 3,
       "maneuver": 65,
       "speed": 33,
-      "hitPoints": 215
+      "hitPoints": 185
     },
     "weapons": []
   },
@@ -5215,7 +5215,7 @@
       "chargeDamage": 3,
       "maneuver": 68,
       "speed": 36,
-      "hitPoints": 240
+      "hitPoints": 210
     },
     "weapons": []
   },
@@ -6407,7 +6407,7 @@
       "chargeDamage": 8,
       "maneuver": 50,
       "speed": 45,
-      "hitPoints": 200
+      "hitPoints": 170
     },
     "weapons": []
   },
@@ -7688,7 +7688,7 @@
       "chargeDamage": 3,
       "maneuver": 61,
       "speed": 35,
-      "hitPoints": 200
+      "hitPoints": 170
     },
     "weapons": []
   },
@@ -10464,7 +10464,7 @@
       "chargeDamage": 2,
       "maneuver": 65,
       "speed": 40,
-      "hitPoints": 220
+      "hitPoints": 190
     },
     "weapons": []
   },
@@ -11600,7 +11600,7 @@
       "chargeDamage": 2,
       "maneuver": 69,
       "speed": 34,
-      "hitPoints": 210
+      "hitPoints": 180
     },
     "weapons": []
   },
@@ -13817,7 +13817,7 @@
       "chargeDamage": 0,
       "maneuver": 48,
       "speed": 23,
-      "hitPoints": 100
+      "hitPoints": 70
     },
     "weapons": []
   },
@@ -14164,7 +14164,7 @@
       "chargeDamage": 11,
       "maneuver": 65,
       "speed": 48,
-      "hitPoints": 270
+      "hitPoints": 240
     },
     "weapons": []
   },
@@ -14179,7 +14179,7 @@
       "chargeDamage": 3,
       "maneuver": 76,
       "speed": 49,
-      "hitPoints": 230
+      "hitPoints": 200
     },
     "weapons": []
   },
@@ -14194,7 +14194,7 @@
       "chargeDamage": 3,
       "maneuver": 82,
       "speed": 42,
-      "hitPoints": 260
+      "hitPoints": 230
     },
     "weapons": []
   },
@@ -14209,7 +14209,7 @@
       "chargeDamage": 4,
       "maneuver": 66,
       "speed": 36,
-      "hitPoints": 300
+      "hitPoints": 270
     },
     "weapons": []
   },
@@ -14224,7 +14224,7 @@
       "chargeDamage": 4,
       "maneuver": 65,
       "speed": 48,
-      "hitPoints": 270
+      "hitPoints": 240
     },
     "weapons": []
   },
@@ -14239,7 +14239,7 @@
       "chargeDamage": 3,
       "maneuver": 76,
       "speed": 42,
-      "hitPoints": 230
+      "hitPoints": 200
     },
     "weapons": []
   },
@@ -14254,7 +14254,7 @@
       "chargeDamage": 3,
       "maneuver": 72,
       "speed": 51,
-      "hitPoints": 225
+      "hitPoints": 195
     },
     "weapons": []
   },
@@ -14269,7 +14269,7 @@
       "chargeDamage": 4,
       "maneuver": 71,
       "speed": 45,
-      "hitPoints": 250
+      "hitPoints": 220
     },
     "weapons": []
   },
@@ -15707,7 +15707,7 @@
       "chargeDamage": 1,
       "maneuver": 52,
       "speed": 27,
-      "hitPoints": 200
+      "hitPoints": 170
     },
     "weapons": []
   },
@@ -15927,7 +15927,7 @@
       "chargeDamage": 1,
       "maneuver": 39,
       "speed": 26,
-      "hitPoints": 230
+      "hitPoints": 200
     },
     "weapons": []
   },
@@ -18775,7 +18775,7 @@
       "chargeDamage": 4,
       "maneuver": 69,
       "speed": 36,
-      "hitPoints": 290
+      "hitPoints": 260
     },
     "weapons": []
   },
@@ -19244,7 +19244,7 @@
       "chargeDamage": 6,
       "maneuver": 50,
       "speed": 33,
-      "hitPoints": 200
+      "hitPoints": 170
     },
     "weapons": []
   },
@@ -19290,21 +19290,6 @@
       "armArmor": 3,
       "legArmor": 5,
       "materialType": "Leather"
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_storm_charger",
-    "name": "Storm Charger",
-    "culture": "Neutral",
-    "type": "Mount",
-    "weight": 430.0,
-    "mount": {
-      "bodyLength": 100,
-      "chargeDamage": 6,
-      "maneuver": 55,
-      "speed": 45,
-      "hitPoints": 130
     },
     "weapons": []
   },
@@ -19942,7 +19927,7 @@
       "chargeDamage": 3,
       "maneuver": 62,
       "speed": 33,
-      "hitPoints": 220
+      "hitPoints": 190
     },
     "weapons": []
   },
@@ -20743,7 +20728,7 @@
       "chargeDamage": 1,
       "maneuver": 41,
       "speed": 25,
-      "hitPoints": 260
+      "hitPoints": 230
     },
     "weapons": []
   },
@@ -20758,7 +20743,7 @@
       "chargeDamage": 2,
       "maneuver": 70,
       "speed": 49,
-      "hitPoints": 200
+      "hitPoints": 170
     },
     "weapons": []
   },
@@ -20773,7 +20758,7 @@
       "chargeDamage": 3,
       "maneuver": 73,
       "speed": 36,
-      "hitPoints": 240
+      "hitPoints": 210
     },
     "weapons": []
   },
@@ -20788,7 +20773,7 @@
       "chargeDamage": 3,
       "maneuver": 66,
       "speed": 33,
-      "hitPoints": 290
+      "hitPoints": 260
     },
     "weapons": []
   },
@@ -20803,7 +20788,7 @@
       "chargeDamage": 2,
       "maneuver": 78,
       "speed": 37,
-      "hitPoints": 250
+      "hitPoints": 220
     },
     "weapons": []
   },
@@ -20818,7 +20803,7 @@
       "chargeDamage": 2,
       "maneuver": 74,
       "speed": 40,
-      "hitPoints": 210
+      "hitPoints": 180
     },
     "weapons": []
   },
@@ -20833,7 +20818,7 @@
       "chargeDamage": 3,
       "maneuver": 68,
       "speed": 39,
-      "hitPoints": 240
+      "hitPoints": 210
     },
     "weapons": []
   },
@@ -21966,7 +21951,7 @@
       "chargeDamage": 3,
       "maneuver": 55,
       "speed": 36,
-      "hitPoints": 200
+      "hitPoints": 170
     },
     "weapons": []
   },
@@ -22882,7 +22867,7 @@
       "chargeDamage": 4,
       "maneuver": 67,
       "speed": 36,
-      "hitPoints": 220
+      "hitPoints": 190
     },
     "weapons": []
   },
@@ -22897,7 +22882,7 @@
       "chargeDamage": 8,
       "maneuver": 50,
       "speed": 30,
-      "hitPoints": 200
+      "hitPoints": 170
     },
     "weapons": []
   },
