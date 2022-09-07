@@ -21143,35 +21143,6 @@
     ]
   },
   {
-    "id": "crpg_tournament_bolts",
-    "name": "Tournament Bolts",
-    "culture": "Neutral",
-    "type": "Bolts",
-    "weight": 0.05,
-    "weapons": [
-      {
-        "class": "Bolt",
-        "accuracy": 100,
-        "missileSpeed": 10,
-        "stackAmount": 20,
-        "length": 47,
-        "balance": 0.0,
-        "handling": 0,
-        "bodyArmor": 0,
-        "flags": [
-          "AttachAmmoToVisual",
-          "Consumable"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 0,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 0
-      }
-    ]
-  },
-  {
     "id": "crpg_trailed_desert_helmet",
     "name": "Helmet with Turban and Coif",
     "culture": "Aserai",
