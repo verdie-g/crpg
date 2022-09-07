@@ -14,7 +14,7 @@ CultureTeam1 vlandia
 CultureTeam2 battania
 RoundPreparationTimeLimit 2
 MaxNumberOfPlayers 120
-AutoTeamBalanceThreshold 1
+AutoTeamBalanceThreshold 2
 FriendlyFireDamageMeleeFriendPercent 50
 FriendlyFireDamageMeleeSelfPercent 0
 FriendlyFireDamageRangedFriendPercent 50
