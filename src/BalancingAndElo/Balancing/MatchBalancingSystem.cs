@@ -121,12 +121,12 @@ namespace Crpg.BalancingAndRating.Balancing
 
             weakTeam.OrderBy(c => c.RatingPMean(1));
             strongTeam.OrderBy(c => c.RatingPMean(1));
-            ClanGroup weakClanGroupToSwap = weakTeam.First();
+            ClanGroup weakClanGroupToSwap;
             int i = 0;
             bool swapfound = false;
-            while ( (i < clanGroupGameMatch.TeamA.Count) & swapfound)
-                {
-                    List<ClanGroup>? suitableClanGroupsCandidate = MatchBalancingHelpers.FindSuitableSwap(weakTeam.ElementAt(i), strongTeam,diff);
+            while ((i < weakTeam.Count) & swapfound)
+                    weakClanGroupToSwap = weakTeam.ElementAt(i);
+                    List<ClanGroup>? suitableClanGroupsCandidate = MatchBalancingHelpers.FindSuitableSwap(weakClanGroupToSwap, strongTeam,diff);
                     if (suitableClanGroupsCandidate.Count == 0)
                         {
                         i++;

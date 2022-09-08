@@ -47,7 +47,7 @@ namespace Crpg.BalancingAndRating.Balancing
             return RatingHelpers.ComputeTeamRatingPowerSum(members, p);
         }
 
-        public int RatingPMean(int p)
+        public int RatingPMean(int p=1)
         {
             return RatingHelpers.ComputeTeamRatingPowerMean(members, p);
         }
@@ -55,5 +55,21 @@ namespace Crpg.BalancingAndRating.Balancing
         public List<User> MemberList() { return members; }
 
         private List<User> members = new();
+    }
+    public class ClanGroupCompare : IComparer<ClanGroup>
+    {
+        // Compares by Rating
+        public int Compare(ClanGroup x, ClanGroup y)
+        {
+            if (x.RatingPMean.CompareTo(y.RatingPmean) != 0)
+            {
+                return x.RatingPMean.CompareTo(y.RatingPmean);
+            }
+
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

@@ -84,20 +84,18 @@ namespace Crpg.BalancingAndRating.Balancing
             }
             return count;
         }
+        public static ClanGroup FindClanGroupByRatingBelowSize(List<ClanGroup> clanGroups, double desiredLevel, double maxSize)
+        {
+         int index=clanGroups.BinarySearch()
+        }
         public static List<ClanGroup> FindSuitableSwap(ClanGroup weakClanGroup, List<ClanGroup> strongTeam ,double diff)
         {
             List<ClanGroup> selectedClanGroups = new();
+            sele
             return selectedClanGroups;
         }
 
-        /* public static List<User> LargestDifferencing(List<User> userList)
-         {
-             List<ClanGroup> clanGroups = new();
-             clanGroups = ConvertUserListToClanGroups(userList);
-             clanGroups.OrderByDescending(c => c.Size());
 
-
-         }*/
 
 
 
