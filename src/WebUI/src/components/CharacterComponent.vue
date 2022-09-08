@@ -267,20 +267,21 @@ export default class CharacterComponent extends Vue {
   }
 
   get itemToReplaceUpgradeInfo(): { upgradable: boolean; reason: string } {
-    const info = { upgradable: true, reason: '' };
-    if (this.userItemToReplace === null) {
-      return info;
-    }
+    // const info = { upgradable: true, reason: '' };
+    // if (this.userItemToReplace === null) {
+    //   return info;
+    // }
 
-    if (this.userItemToReplace.rank === 3) {
-      info.upgradable = false;
-      info.reason = 'Max rank reached (3)';
-    } else if (userModule.user!.heirloomPoints === 0) {
-      info.upgradable = false;
-      info.reason = 'Not enough heirloom points';
-    }
+    // if (this.userItemToReplace.rank === 3) {
+    //   info.upgradable = false;
+    //   info.reason = 'Max rank reached (3)';
+    // } else if (userModule.user!.heirloomPoints === 0) {
+    //   info.upgradable = false;
+    //   info.reason = 'Not enough heirloom points';
+    // }
 
-    return info;
+    // return info;
+    return { upgradable: false, reason: 'Heirloom are disabled for now' };
   }
 
   created() {
