@@ -150,8 +150,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
     public override float GetDismountResistance(Agent agent)
     {
-        // TODO: depends on riding skills?
-        return 0.5f;
+        int ridingSkills = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Riding);
+        return 0.0025f * ridingSkills;
     }
 
     private void InitializeHumanAgentStats(Agent agent, Equipment equipment, AgentDrivenProperties props)
