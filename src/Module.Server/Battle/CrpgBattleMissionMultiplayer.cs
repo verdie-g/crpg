@@ -79,6 +79,11 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     {
     }
 
+    protected override void HandleLateNewClientAfterSynchronized(NetworkCommunicator networkPeer)
+    {
+        Mission.Current.GetMissionBehavior<MultiplayerTeamSelectComponent>().AutoAssignTeam(networkPeer);
+    }
+
     private void AddTeams()
     {
         BasicCultureObject cultureTeam1 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());

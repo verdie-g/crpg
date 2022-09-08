@@ -79,7 +79,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MultiplayerTimerComponent(), // round timer
                     new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
                     new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
-                    new MultiplayerTeamSelectComponent(), // logic to change team, autoselect
+                    new NoTeamSelectComponent(), // logic to change team, autoselect
                     new MissionHardBorderPlacer(),
                     new MissionBoundaryPlacer(), // set walkable boundaries
                     new AgentVictoryLogic(), // AI cheering when winning round
