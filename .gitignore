@@ -438,3 +438,4 @@ src/WebUI/public/items/
 *.jwk
 *.png
 *.ico
+*.zip
