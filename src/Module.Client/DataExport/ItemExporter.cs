@@ -320,7 +320,7 @@ internal class ItemExporter : IDataExporter
                     // Single player horse harness can go up to 78 amor when the highest you can find in native mp is 26
                     // so let's divide the armor by 3. The weight doesn't change because it's good enough.
                     ModifyChildNodesAttribute(node1, "ItemComponent/Armor", "body_armor",
-                        v => ((int)(int.Parse(v) * 0.33f)).ToString(CultureInfo.InvariantCulture));
+                        v => ((int)(int.Parse(v) * 0.27f)).ToString(CultureInfo.InvariantCulture));
                 }
                 else if (type == ItemObject.ItemTypeEnum.Shield)
                 {
