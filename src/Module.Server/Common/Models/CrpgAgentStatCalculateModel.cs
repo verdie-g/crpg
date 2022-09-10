@@ -63,6 +63,26 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         return base.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
     }
 
+    public override float GetWeaponInaccuracy(
+        Agent agent,
+        WeaponComponentData weapon,
+        int weaponSkill)
+    {
+        float inaccuracy = 0.0f;
+        if (weapon.IsRangedWeapon)
+        {
+            inaccuracy = (100 - weapon.Accuracy)
+                * (4 - 0.015f * weaponSkill) // 1 for 200 wpf.
+                * 0.001f;
+        }
+        else if (weapon.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
+        {
+            inaccuracy = 1.0f - weaponSkill * 0.01f;
+        }
+
+        return MathF.Max(inaccuracy, 0.0f);
+    }
+
     public override void InitializeAgentStats(
        Agent agent,
        Equipment spawnEquipment,
