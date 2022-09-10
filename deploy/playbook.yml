@@ -2,9 +2,13 @@
   become: yes
   roles:
     - nginx
-    - postgresql
-    - datadog
-    - dotnet
+    # - postgresql
+    # - datadog
+    # - dotnet
     - crpg-web-api
-    - crpg-strategus
     - crpg-web-ui
+- hosts: gameservers
+  become: yes
+  roles:
+    - datadog
+    - crpg-game-server

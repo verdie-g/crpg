@@ -2,28 +2,32 @@ import { Vue } from 'vue-property-decorator';
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
 import * as userService from '@/services/users-service';
+import * as itemService from '@/services/item-service'
 import User from '@/models/user';
 import Character from '@/models/character';
 import Item from '@/models/item';
 import ItemSlot from '@/models/item-slot';
+import CharacterCharacteristics from '@/models/character-characteristics';
 import CharacterStatistics from '@/models/character-statistics';
-import StatisticConversion from '@/models/statistic-conversion';
+import CharacteristicConversion from '@/models/characteristic-conversion';
 import Ban from '@/models/ban';
 import Role from '@/models/role';
 import CharacterUpdate from '@/models/character-update';
 import EquippedItem from '@/models/equipped-item';
 import Clan from '@/models/clan';
+import UserItem from '@/models/user-item';
 
 @Module({ store, dynamic: true, name: 'user' })
 class UserModule extends VuexModule {
   user: User | null = null;
   userLoading = false;
-  userItems: Item[] = [];
+  userItems: UserItem[] = [];
   clan: Clan | null = null;
   userBans: Ban[] = [];
 
   characters: Character[] = [];
   equippedItemsByCharacterId: { [id: number]: EquippedItem[] } = {};
+  characteristicsByCharacterId: { [id: number]: CharacterCharacteristics } = {};
   statisticsByCharacterId: { [id: number]: CharacterStatistics } = {};
 
   get isSignedIn(): boolean {
@@ -34,10 +38,17 @@ class UserModule extends VuexModule {
     return this.user!.role === Role.Moderator || this.user!.role === Role.Admin;
   }
 
+  get characterCharacteristics() {
+    return (id: number) => {
+      const characteristics = this.characteristicsByCharacterId[id];
+      return characteristics === undefined ? null : characteristics;
+    };
+  }
+
   get characterStatistics() {
     return (id: number) => {
-      const stats = this.statisticsByCharacterId[id];
-      return stats === undefined ? null : stats;
+      const statistics = this.statisticsByCharacterId[id];
+      return statistics === undefined ? null : statistics;
     };
   }
 
@@ -71,23 +82,28 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
+  addGold(gain: number) {
+    this.user!.gold += gain;
+  }
+
+  @Mutation
   addHeirloomPoints(points: number) {
     this.user!.heirloomPoints += points;
   }
 
   @Mutation
-  setUserItems(userItems: Item[]) {
+  setUserItems(userItems: UserItem[]) {
     this.userItems = userItems;
   }
 
   @Mutation
-  addUserItem(item: Item) {
-    this.userItems.push(item);
+  addUserItem(userItem: UserItem) {
+    this.userItems.push(userItem);
   }
 
   @Mutation
-  removeUserItem(item: Item) {
-    const itemIdx = this.userItems.findIndex(i => i.id === item.id);
+  removeUserItem(userItem: UserItem) {
+    const itemIdx = this.userItems.findIndex(ui => ui.id === userItem.id);
     if (itemIdx !== -1) {
       this.userItems.splice(itemIdx, 1);
     }
@@ -113,33 +129,51 @@ class UserModule extends VuexModule {
   setCharacterItem({
     characterId,
     slot,
-    item,
+    userItem,
   }: {
     characterId: number;
     slot: ItemSlot;
-    item: Item | null;
+    userItem: UserItem | null;
   }) {
     const characterEquippedItems = this.equippedItemsByCharacterId[characterId];
     const equippedItemIdx = characterEquippedItems.findIndex(ei => ei.slot === slot);
     if (equippedItemIdx === -1) {
-      if (item !== null) {
-        characterEquippedItems.push({ slot, item });
+      if (userItem !== null) {
+        characterEquippedItems.push({ slot, userItem });
       }
-    } else if (item !== null) {
-      characterEquippedItems[equippedItemIdx].item = item;
+    } else if (userItem !== null) {
+      characterEquippedItems[equippedItemIdx].userItem = userItem;
     } else {
       characterEquippedItems.splice(equippedItemIdx, 1);
     }
   }
 
   @Mutation
-  replaceCharactersItem({ toReplace, replaceWith }: { toReplace: Item; replaceWith: Item }) {
+  replaceCharactersItem({
+    toReplace,
+    replaceWith,
+  }: {
+    toReplace: UserItem;
+    replaceWith: UserItem;
+  }) {
     Object.values(this.equippedItemsByCharacterId).forEach(characterEquippedItems => {
       characterEquippedItems.forEach(equippedItem => {
-        if (equippedItem.item.id === toReplace.id) {
-          equippedItem.item = replaceWith;
+        if (equippedItem.userItem.id === toReplace.id) {
+          equippedItem.userItem = replaceWith;
         }
       });
+    });
+  }
+
+  @Mutation
+  removeCharactersItem(toRemove: UserItem) {
+    Object.values(this.equippedItemsByCharacterId).forEach(characterEquippedItems => {
+      const index = characterEquippedItems.findIndex(
+        equippedItem => equippedItem.userItem.id === toRemove.id
+      );
+      if (index !== -1) {
+        characterEquippedItems.splice(index, 1);
+      }
     });
   }
 
@@ -149,28 +183,39 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
-  setCharacterStatistics({
+  setCharacterCharacteristics({
     characterId,
-    stats,
+    characteristics,
   }: {
     characterId: number;
-    stats: CharacterStatistics;
+    characteristics: CharacterCharacteristics;
   }) {
-    Vue.set(this.statisticsByCharacterId, characterId, stats);
+    Vue.set(this.characteristicsByCharacterId, characterId, characteristics);
+  }
+
+  @Mutation
+  setCharacterStatistics({
+    characterId,
+    statistics,
+  }: {
+    characterId: number;
+    statistics: CharacterStatistics;
+  }) {
+    Vue.set(this.statisticsByCharacterId, characterId, statistics);
   }
 
   @Mutation
   convertAttributeToSkills(characterId: number) {
-    const stats = this.statisticsByCharacterId[characterId];
-    stats.attributes.points -= 1;
-    stats.skills.points += 2;
+    const characteristics = this.characteristicsByCharacterId[characterId];
+    characteristics.attributes.points -= 1;
+    characteristics.skills.points += 2;
   }
 
   @Mutation
   convertSkillsToAttribute(characterId: number) {
-    const stats = this.statisticsByCharacterId[characterId];
-    stats.attributes.points += 1;
-    stats.skills.points -= 2;
+    const characteristics = this.characteristicsByCharacterId[characterId];
+    characteristics.attributes.points += 1;
+    characteristics.skills.points -= 2;
   }
 
   @Mutation
@@ -225,15 +270,15 @@ class UserModule extends VuexModule {
   replaceItem({
     character,
     slot,
-    item,
+    userItem,
   }: {
     character: Character;
     slot: ItemSlot;
-    item: Item | null;
+    userItem: UserItem | null;
   }): Promise<EquippedItem[]> {
-    this.setCharacterItem({ characterId: character.id, slot, item });
+    this.setCharacterItem({ characterId: character.id, slot, userItem });
     return userService.updateCharacterItems(character.id, [
-      { itemId: item === null ? null : item.id, slot },
+      { userItemId: userItem === null ? null : userItem.id, slot },
     ]);
   }
 
@@ -245,17 +290,28 @@ class UserModule extends VuexModule {
 
   @Action
   async buyItem(item: Item) {
-    await userService.buyItem(item.id);
-    this.addUserItem(item);
-    this.substractGold(item.value);
+    const userItem = await userService.buyItem(item.id);
+    this.addUserItem(userItem);
+    this.substractGold(item.price);
   }
 
   @Action
-  async upgradeItem(item: Item) {
-    const upgradedItem = await userService.upgradeItem(item.id);
+  async upgradeUserItem(userItem: UserItem) {
+    const upgradedUserItem = await userService.upgradeUserItem(userItem.id);
+    this.addUserItem(upgradedUserItem);
     this.addHeirloomPoints(-1);
-    this.replaceCharactersItem({ toReplace: item, replaceWith: upgradedItem });
-    this.removeUserItem(item);
+    this.replaceCharactersItem({ toReplace: userItem, replaceWith: upgradedUserItem });
+    this.removeUserItem(userItem);
+  }
+
+  @Action
+  async sellUserItem(userItem: UserItem): Promise<number> {
+    await userService.sellUserItem(userItem.id);
+    this.removeCharactersItem(userItem);
+    this.removeUserItem(userItem);
+    const salePrice = itemService.computeSalePrice(userItem);
+    this.addGold(salePrice);
+    return salePrice;
   }
 
   @Action({ commit: 'setCharacters' })
@@ -264,9 +320,15 @@ class UserModule extends VuexModule {
   }
 
   @Action
+  async getCharacterCharacteristics(characterId: number): Promise<void> {
+    const characteristics = await userService.getCharacterCharacteristics(characterId);
+    this.setCharacterCharacteristics({ characterId, characteristics });
+  }
+
+  @Action
   async getCharacterStatistics(characterId: number): Promise<void> {
-    const stats = await userService.getCharacterStatistics(characterId);
-    this.setCharacterStatistics({ characterId, stats });
+    const statistics = await userService.getCharacterStatistics(characterId);
+    this.setCharacterStatistics({ characterId, statistics });
   }
 
   @Action
@@ -276,32 +338,32 @@ class UserModule extends VuexModule {
   }
 
   @Action
-  updateCharacterStatistics({
+  updateCharacterCharacteristics({
     characterId,
-    stats,
+    characteristics,
   }: {
     characterId: number;
-    stats: CharacterStatistics;
-  }): Promise<CharacterStatistics> {
-    this.setCharacterStatistics({ characterId, stats });
-    return userService.updateCharacterStatistics(characterId, stats);
+    characteristics: CharacterCharacteristics;
+  }): Promise<CharacterCharacteristics> {
+    this.setCharacterCharacteristics({ characterId, characteristics: characteristics });
+    return userService.updateCharacterCharacteristics(characterId, characteristics);
   }
 
   @Action
-  convertCharacterStatistics({
+  convertCharacterCharacteristics({
     characterId,
     conversion,
   }: {
     characterId: number;
-    conversion: StatisticConversion;
-  }): Promise<CharacterStatistics> {
-    if (conversion === StatisticConversion.AttributesToSkills) {
+    conversion: CharacteristicConversion;
+  }): Promise<CharacterCharacteristics> {
+    if (conversion === CharacteristicConversion.AttributesToSkills) {
       this.convertAttributeToSkills(characterId);
-    } else if (conversion === StatisticConversion.SkillsToAttributes) {
+    } else if (conversion === CharacteristicConversion.SkillsToAttributes) {
       this.convertSkillsToAttribute(characterId);
     }
 
-    return userService.convertCharacterStatistics(characterId, conversion);
+    return userService.convertCharacterCharacteristics(characterId, conversion);
   }
 
   @Action
@@ -310,8 +372,8 @@ class UserModule extends VuexModule {
     character = await userService.retireCharacter(character.id);
     this.replaceCharacter(character);
     this.setCharacterEquippedItems({ characterId: character.id, items: [] });
-    const stats = await userService.getCharacterStatistics(character.id);
-    this.setCharacterStatistics({ characterId: character.id, stats });
+    const characteristics = await userService.getCharacterCharacteristics(character.id);
+    this.setCharacterCharacteristics({ characterId: character.id, characteristics });
   }
 
   @Action
@@ -319,8 +381,8 @@ class UserModule extends VuexModule {
     character = await userService.respecializeCharacter(character.id);
     this.replaceCharacter(character);
     this.setCharacterEquippedItems({ characterId: character.id, items: [] });
-    const stats = await userService.getCharacterStatistics(character.id);
-    this.setCharacterStatistics({ characterId: character.id, stats });
+    const characteristics = await userService.getCharacterCharacteristics(character.id);
+    this.setCharacterCharacteristics({ characterId: character.id, characteristics });
   }
 
   @Action

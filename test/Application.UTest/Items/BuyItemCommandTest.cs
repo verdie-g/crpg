@@ -1,129 +1,110 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using Moq;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Items
+namespace Crpg.Application.UTest.Items;
+
+public class BuyItemCommandTest : TestBase
 {
-    public class BuyItemCommandTest : TestBase
+    [Test]
+    public async Task Basic()
     {
-        [Test]
-        public async Task Basic()
+        Item item = new() { Id = "0", Price = 100 };
+        User user = new()
         {
-            var user = ArrangeDb.Users.Add(new User { Gold = 100 });
-            var item = ArrangeDb.Items.Add(new Item { Value = 100 });
-            await ArrangeDb.SaveChangesAsync();
+            Gold = 100,
+            Items = { new UserItem { Rank = 1, BaseItem = item } },
+        };
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
 
-            BuyItemCommand.Handler handler = new(ActDb, Mapper);
-            var result = await handler.Handle(new BuyItemCommand
-            {
-                ItemId = item.Entity.Id,
-                UserId = user.Entity.Id,
-            }, CancellationToken.None);
-
-            var userDb = await AssertDb.Users
-                .Include(u => u.Items)
-                .FirstAsync(u => u.Id == user.Entity.Id);
-
-            var boughtItem = result.Data!;
-            Assert.AreEqual(item.Entity.Id, boughtItem.Id);
-            Assert.AreEqual(0, userDb.Gold);
-            Assert.IsTrue(userDb.Items.Any(i => i.ItemId == boughtItem.Id));
-        }
-
-        [Test]
-        public async Task NotFoundItem()
+        BuyItemCommand.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new BuyItemCommand
         {
-            var user = ArrangeDb.Users.Add(new User { Gold = 100 });
-            await ArrangeDb.SaveChangesAsync();
+            ItemId = item.Id,
+            UserId = user.Id,
+        }, CancellationToken.None);
 
-            BuyItemCommand.Handler handler = new(ActDb, Mapper);
-            var result = await handler.Handle(new BuyItemCommand
-            {
-                ItemId = 1,
-                UserId = user.Entity.Id,
-            }, CancellationToken.None);
+        var userDb = await AssertDb.Users
+            .Include(u => u.Items)
+            .FirstAsync(u => u.Id == user.Id);
 
-            Assert.AreEqual(ErrorCode.ItemNotFound, result.Errors![0].Code);
-        }
+        var boughtUserItem = result.Data!;
+        Assert.AreEqual(0, boughtUserItem.Rank);
+        Assert.AreEqual(item.Id, boughtUserItem.BaseItem.Id);
+        Assert.AreEqual(0, userDb.Gold);
+        Assert.IsTrue(userDb.Items.Any(ui => ui.Id == boughtUserItem.Id));
+    }
 
-        [Test]
-        public async Task ErrorIfItemNotRank0()
+    [Test]
+    public async Task NotFoundItem()
+    {
+        var user = ArrangeDb.Users.Add(new User { Gold = 100 });
+        await ArrangeDb.SaveChangesAsync();
+
+        BuyItemCommand.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new BuyItemCommand
         {
-            var user = new User();
-            ArrangeDb.Users.Add(user);
-            var item = new Item { Value = 100, Rank = 1 };
-            ArrangeDb.Items.Add(item);
-            await ArrangeDb.SaveChangesAsync();
+            ItemId = "1",
+            UserId = user.Entity.Id,
+        }, CancellationToken.None);
 
-            BuyItemCommand.Handler handler = new(ActDb, Mapper);
-            var result = await handler.Handle(new BuyItemCommand
-            {
-                ItemId = item.Id,
-                UserId = user.Id,
-            }, CancellationToken.None);
+        Assert.AreEqual(ErrorCode.ItemNotFound, result.Errors![0].Code);
+    }
 
-            Assert.AreEqual(ErrorCode.ItemNotBuyable, result.Errors![0].Code);
-        }
+    [Test]
+    public async Task NotFoundUser()
+    {
+        var item = ArrangeDb.Items.Add(new Item { Price = 100 });
+        await ArrangeDb.SaveChangesAsync();
 
-        [Test]
-        public async Task NotFoundUser()
+        BuyItemCommand.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new BuyItemCommand
         {
-            var item = ArrangeDb.Items.Add(new Item { Value = 100 });
-            await ArrangeDb.SaveChangesAsync();
+            ItemId = item.Entity.Id,
+            UserId = 1,
+        }, CancellationToken.None);
+        Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
+    }
 
-            BuyItemCommand.Handler handler = new(ActDb, Mapper);
-            var result = await handler.Handle(new BuyItemCommand
-            {
-                ItemId = item.Entity.Id,
-                UserId = 1,
-            }, CancellationToken.None);
-            Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
-        }
+    [Test]
+    public async Task NotEnoughGold()
+    {
+        var user = ArrangeDb.Users.Add(new User { Gold = 100 });
+        var item = ArrangeDb.Items.Add(new Item { Price = 101 });
+        await ArrangeDb.SaveChangesAsync();
 
-        [Test]
-        public async Task NotEnoughGold()
+        BuyItemCommand.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new BuyItemCommand
         {
-            var user = ArrangeDb.Users.Add(new User { Gold = 100 });
-            var item = ArrangeDb.Items.Add(new Item { Value = 101 });
-            await ArrangeDb.SaveChangesAsync();
+            ItemId = item.Entity.Id,
+            UserId = user.Entity.Id,
+        }, CancellationToken.None);
+        Assert.AreEqual(ErrorCode.NotEnoughGold, result.Errors![0].Code);
+    }
 
-            BuyItemCommand.Handler handler = new(ActDb, Mapper);
-            var result = await handler.Handle(new BuyItemCommand
-            {
-                ItemId = item.Entity.Id,
-                UserId = user.Entity.Id,
-            }, CancellationToken.None);
-            Assert.AreEqual(ErrorCode.NotEnoughGold, result.Errors![0].Code);
-        }
-
-        [Test]
-        public async Task AlreadyOwningItem()
+    [Test]
+    public async Task AlreadyOwningItem()
+    {
+        Item item = new() { Price = 100 };
+        User user = new()
         {
-            var item = ArrangeDb.Items.Add(new Item { Value = 100 });
-            var user = ArrangeDb.Users.Add(new User
-            {
-                Gold = 100,
-                Items = new List<UserItem> { new() { ItemId = item.Entity.Id } },
-            });
-            await ArrangeDb.SaveChangesAsync();
+            Gold = 100,
+            Items = new List<UserItem> { new() { Rank = 0, BaseItemId = item.Id } },
+        };
+        ArrangeDb.Items.Add(item);
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
 
-            BuyItemCommand.Handler handler = new(ActDb, Mapper);
-            var result = await handler.Handle(new BuyItemCommand
-            {
-                ItemId = item.Entity.Id,
-                UserId = user.Entity.Id,
-            }, CancellationToken.None);
-            Assert.AreEqual(ErrorCode.ItemAlreadyOwned, result.Errors![0].Code);
-        }
+        BuyItemCommand.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new BuyItemCommand
+        {
+            ItemId = item.Id,
+            UserId = user.Id,
+        }, CancellationToken.None);
+        Assert.AreEqual(ErrorCode.ItemAlreadyOwned, result.Errors![0].Code);
     }
 }

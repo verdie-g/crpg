@@ -1,8 +1,7 @@
-﻿namespace Crpg.Application.Games.Models
+﻿namespace Crpg.Application.Games.Models;
+
+public record GameUserReward
 {
-    public record GameUserReward
-    {
-        public int Gold { get; init; }
-        public int Experience { get; init; }
-    }
+    public int Gold { get; init; }
+    public int Experience { get; init; }
 }

@@ -1,44 +1,38 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
-using Crpg.Application.Characters.Models;
-using Crpg.Application.Common.Interfaces;
+﻿using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
-using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
-namespace Crpg.Application.Characters.Commands
+namespace Crpg.Application.Characters.Commands;
+
+public record SwitchCharacterAutoRepairCommand : IMediatorRequest
 {
-    public record SwitchCharacterAutoRepairCommand : IMediatorRequest
+    public int CharacterId { get; init; }
+    public int UserId { get; init; }
+    public bool AutoRepair { get; init; }
+
+    internal class Handler : IMediatorRequestHandler<SwitchCharacterAutoRepairCommand>
     {
-        public int CharacterId { get; init; }
-        public int UserId { get; init; }
-        public bool AutoRepair { get; init; }
+        private readonly ICrpgDbContext _db;
 
-        internal class Handler : IMediatorRequestHandler<SwitchCharacterAutoRepairCommand>
+        public Handler(ICrpgDbContext db)
         {
-            private readonly ICrpgDbContext _db;
+            _db = db;
+        }
 
-            public Handler(ICrpgDbContext db)
+        public async Task<Result> Handle(SwitchCharacterAutoRepairCommand req, CancellationToken cancellationToken)
+        {
+            var character = await _db.Characters.FirstOrDefaultAsync(c =>
+                c.UserId == req.UserId && c.Id == req.CharacterId, cancellationToken);
+            if (character == null)
             {
-                _db = db;
+                return new Result(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
             }
 
-            public async Task<Result> Handle(SwitchCharacterAutoRepairCommand req, CancellationToken cancellationToken)
-            {
-                var character = await _db.Characters.FirstOrDefaultAsync(c =>
-                    c.UserId == req.UserId && c.Id == req.CharacterId, cancellationToken);
-                if (character == null)
-                {
-                    return new Result(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
-                }
+            character.AutoRepair = req.AutoRepair;
 
-                character.AutoRepair = req.AutoRepair;
-
-                await _db.SaveChangesAsync(cancellationToken);
-                return new Result();
-            }
+            await _db.SaveChangesAsync(cancellationToken);
+            return new Result();
         }
     }
 }

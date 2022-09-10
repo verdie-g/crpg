@@ -1,14 +1,15 @@
 import User from '@/models/user';
 import Character from '@/models/character';
-import Item from '@/models/item';
 import { UpdateCharacterRequest } from '@/models/update-character-request';
+import CharacterCharacteristics from '@/models/character-characteristics';
 import CharacterStatistics from '@/models/character-statistics';
-import StatisticConversion from '@/models/statistic-conversion';
+import CharacteristicConversion from '@/models/characteristic-conversion';
 import Ban from '@/models/ban';
 import EquippedItem from '@/models/equipped-item';
 import EquippedItemId from '@/models/equipped-item-id';
 import { get, post, put, del } from './crpg-client';
 import Clan from '@/models/clan';
+import UserItem from '@/models/user-item';
 
 export function getUser(): Promise<User> {
   return get('/users/self');
@@ -18,7 +19,7 @@ export function deleteUser(): Promise<void> {
   return del('/users/self');
 }
 
-export function getUserItems(): Promise<Item[]> {
+export function getUserItems(): Promise<UserItem[]> {
   return get('/users/self/items');
 }
 
@@ -57,30 +58,40 @@ export function switchCharacterAutoRepair(characterId: number, autoRepair: boole
   return put(`/users/self/characters/${characterId}/auto-repair`, { autoRepair });
 }
 
+export function getCharacterCharacteristics(
+  characterId: number
+): Promise<CharacterCharacteristics> {
+  return get(`/users/self/characters/${characterId}/characteristics`);
+}
+
 export function getCharacterStatistics(characterId: number): Promise<CharacterStatistics> {
   return get(`/users/self/characters/${characterId}/statistics`);
 }
 
-export function updateCharacterStatistics(
+export function updateCharacterCharacteristics(
   characterId: number,
-  req: CharacterStatistics
-): Promise<CharacterStatistics> {
-  return put(`/users/self/characters/${characterId}/statistics`, req);
+  req: CharacterCharacteristics
+): Promise<CharacterCharacteristics> {
+  return put(`/users/self/characters/${characterId}/characteristics`, req);
 }
 
-export function convertCharacterStatistics(
+export function convertCharacterCharacteristics(
   characterId: number,
-  conversion: StatisticConversion
-): Promise<CharacterStatistics> {
-  return put(`/users/self/characters/${characterId}/statistics/convert`, { conversion });
+  conversion: CharacteristicConversion
+): Promise<CharacterCharacteristics> {
+  return put(`/users/self/characters/${characterId}/characteristics/convert`, { conversion });
 }
 
-export function buyItem(itemId: number): Promise<Item> {
+export function buyItem(itemId: string): Promise<UserItem> {
   return post('/users/self/items', { itemId });
 }
 
-export function upgradeItem(itemId: number): Promise<Item> {
-  return put(`/users/self/items/${itemId}/upgrade`);
+export function upgradeUserItem(userItemId: number): Promise<UserItem> {
+  return put(`/users/self/items/${userItemId}/upgrade`);
+}
+
+export function sellUserItem(userItemId: number): Promise<UserItem> {
+  return del(`/users/self/items/${userItemId}`);
 }
 
 export function getCharacters(): Promise<Character[]> {

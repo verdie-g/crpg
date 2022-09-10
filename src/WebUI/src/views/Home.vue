@@ -53,25 +53,20 @@ export default class Home extends Vue {
     {
       question: 'Is the mod available?',
       answer:
-        'The mod was announced recently in this' +
-        ' <a href="https://forums.taleworlds.com/index.php?threads/crpg.432051" target="_blank">Forum thread</a>.' +
-        ' As TaleWorlds has not provided the tools to make multiplayer mods yet, only a singleplayer mod is available on' +
-        ' <a href="https://www.nexusmods.com/mountandblade2bannerlord/mods/2208?tab=files" target="_blank">Nexus Mods</a>.' +
-        ' Follow the development on the <a href="https://discord.gg/83RJDN9" target="_blank">Discord</a> or' +
-        ' <a href="https://forum.c-rpg.eu" target="_blank">forum</a>.',
+        'The mod is currently in beta. See the message in #bl-developement-updates on the ' +
+        '<a href="https://discord.gg/83RJDN9" target="_blank">Discord</a> to join it.',
     },
     {
       question: 'How to create a new character?',
-      answer: 'Simply launch a DefendTheVirgin game and a level character 1 should be created.',
+      answer: 'Simply join a cRPG server and a level 1 character will be created.',
     },
     {
       question: 'How to gain experience and gold?',
-      answer: 'Experience and gold are gained by playing the singleplayer cRPG mod.',
+      answer: 'Experience and gold are gained every minute by playing on a cRPG server.',
     },
     {
       question: 'Will my progress (experience, gold) be saved until the official release of cRPG?',
-      answer:
-        'Once the multiplayer mods are available and that cRPG is released, the database will be wiped.',
+      answer: 'Once cRPG is officialy released, the database will be wiped.',
     },
     {
       question:
@@ -84,7 +79,7 @@ export default class Home extends Vue {
       question: 'What is retiring?',
       answer:
         'When a cRPG character reaches level 31, it can be retired. Retiring a character resets it to level 1 but grants an' +
-        ' experience bonus multiplier and an heirloom point which can used on an item to increase its statistics.',
+        ' experience bonus multiplier and an heirloom point which can used on an item to increase its characteristics.',
     },
     {
       question: 'What is respecialization?',
@@ -92,10 +87,16 @@ export default class Home extends Vue {
         'If you want to play a different class of soldier, you can respecialize (or respec) to reset your character stats for the' +
         ' cost of half of your experience.',
     },
-    // {
-    // question: 'Can I host my own cRPG game server?',
-    // answer: 'For security and maintainability reasons, players won't be able to host their own server.','
-    // },
+    {
+      question: 'Can I host my own cRPG game server?',
+      answer:
+        "For security and operability reasons, players won't be able to host their own server.",
+    },
+    {
+      question: 'Can I play if I bought the game in the Epic or GOG Store?',
+      answer:
+        'No, only Steam will be supported for now but having other platforms was thought in the early design of cRPG.',
+    },
     {
       question: 'Is the project open-source?',
       answer: 'Not decided yet.',

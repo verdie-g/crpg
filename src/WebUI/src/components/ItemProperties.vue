@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div v-for="field in itemDescriptor.fields">{{ field[0] }}: {{ field[1] }}</div>
+    <div v-for="field in itemDescriptor.fields" :key="field[0]">{{ field[0] }}: {{ field[1] }}</div>
     <b-tabs v-if="itemDescriptor.modes.length" :value="weaponIdx" class="weapon-tabs">
-      <b-tab-item v-for="mode in itemDescriptor.modes" :label="mode.name">
+      <b-tab-item v-for="mode in itemDescriptor.modes" :key="mode.name" :label="mode.name">
         <div v-for="field in mode.fields">
           {{ field[0] }}: {{ field[1] }}
           <br />
         </div>
-        <b-taglist class="flags">
-          <b-tag v-for="flag in mode.flags" type="is-info">{{ flag }}</b-tag>
+        <b-taglist class="flags pt-2">
+          <b-tag v-for="flag in mode.flags" :key="flag" type="is-info">{{ flag }}</b-tag>
         </b-taglist>
       </b-tab-item>
     </b-tabs>
@@ -24,10 +24,11 @@ import { ItemDescriptor } from '@/models/item-descriptor';
 @Component
 export default class ItemProperties extends Vue {
   @Prop(Object) readonly item: Item;
+  @Prop(Number) readonly rank: number;
   @Prop(Number) readonly weaponIdx: number;
 
   get itemDescriptor(): ItemDescriptor {
-    return getItemDescriptor(this.item);
+    return getItemDescriptor(this.item, this.rank);
   }
 }
 </script>

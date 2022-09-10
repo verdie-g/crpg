@@ -1,9 +1,8 @@
-﻿namespace Crpg.Domain.Entities.Clans
+﻿namespace Crpg.Domain.Entities.Clans;
+
+public enum ClanMemberRole
 {
-    public enum ClanMemberRole
-    {
-        Member,
-        Officer,
-        Leader,
-    }
+    Member,
+    Officer,
+    Leader,
 }

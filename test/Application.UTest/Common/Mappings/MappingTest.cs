@@ -1,18 +1,16 @@
 using AutoMapper;
 using Crpg.Application.Common.Mappings;
 using NUnit.Framework;
-using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
-namespace Crpg.Application.UTest.Common.Mappings
+namespace Crpg.Application.UTest.Common.Mappings;
+
+public class MappingTest
 {
-    public class MappingTest
-    {
-        private static readonly IConfigurationProvider ConfigurationProvider = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
+    private static readonly IConfigurationProvider ConfigurationProvider = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
 
-        [Test]
-        public void ShouldHaveValidConfiguration()
-        {
-            ConfigurationProvider.AssertConfigurationIsValid();
-        }
+    [Test]
+    public void ShouldHaveValidConfiguration()
+    {
+        ConfigurationProvider.AssertConfigurationIsValid();
     }
 }

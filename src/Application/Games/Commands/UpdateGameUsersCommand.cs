@@ -1,152 +1,149 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
+using Crpg.Application.Characters.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Models;
 using Crpg.Domain.Entities.Characters;
-using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
 
-namespace Crpg.Application.Games.Commands
+namespace Crpg.Application.Games.Commands;
+
+/// <summary>
+/// Give gold experience and break items of game users.
+/// </summary>
+public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
 {
-    /// <summary>
-    /// Give gold experience and break items of game users.
-    /// </summary>
-    public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
+    public IList<GameUserUpdate> Updates { get; init; } = Array.Empty<GameUserUpdate>();
+
+    internal class Handler : IMediatorRequestHandler<UpdateGameUsersCommand, UpdateGameUsersResult>
     {
-        public IList<GameUserUpdate> Updates { get; init; } = Array.Empty<GameUserUpdate>();
+        private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateGameUsersCommand>();
 
-        internal class Handler : IMediatorRequestHandler<UpdateGameUsersCommand, UpdateGameUsersResult>
+        private readonly ICrpgDbContext _db;
+        private readonly IMapper _mapper;
+        private readonly ICharacterService _characterService;
+
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService)
         {
-            private static readonly ILogger Logger = LoggerFactory.CreateLogger<UpdateGameUsersCommand>();
+            _db = db;
+            _mapper = mapper;
+            _characterService = characterService;
+        }
 
-            private readonly ICrpgDbContext _db;
-            private readonly IMapper _mapper;
-            private readonly ICharacterService _characterService;
-
-            public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService)
+        public async Task<Result<UpdateGameUsersResult>> Handle(UpdateGameUsersCommand req,
+            CancellationToken cancellationToken)
+        {
+            var charactersById = await LoadCharacters(req.Updates, cancellationToken);
+            List<(User user, GameUserEffectiveReward reward, List<GameUserBrokenItem> brokenItems)> results = new(req.Updates.Count);
+            foreach (var update in req.Updates)
             {
-                _db = db;
-                _mapper = mapper;
-                _characterService = characterService;
-            }
-
-            public async Task<Result<UpdateGameUsersResult>> Handle(UpdateGameUsersCommand req,
-                CancellationToken cancellationToken)
-            {
-                var charactersById = await LoadCharacters(req.Updates, cancellationToken);
-                List<(Character character, List<GameUserBrokenItem> brokenItems)> results = new();
-                foreach (var update in req.Updates)
+                if (!charactersById.TryGetValue(update.CharacterId, out Character? character))
                 {
-                    if (!charactersById.TryGetValue(update.CharacterId, out Character? character))
-                    {
-                        Logger.LogWarning("Character with id '{0}' doesn't exist", update.CharacterId);
-                        continue;
-                    }
-
-                    GiveReward(character, update.Reward);
-                    var brokenItems = await RepairOrBreakItems(character, update.BrokenItems, cancellationToken);
-                    results.Add((character, brokenItems));
+                    Logger.LogWarning("Character with id '{0}' doesn't exist", update.CharacterId);
+                    continue;
                 }
 
-                await _db.SaveChangesAsync(cancellationToken);
-                return new(new UpdateGameUsersResult
+                var reward = GiveReward(character, update.Reward);
+                UpdateStatistics(character, update.Statistics);
+                var brokenItems = await RepairOrBreakItems(character, update.BrokenItems, cancellationToken);
+                results.Add((character.User!, reward, brokenItems));
+            }
+
+            await _db.SaveChangesAsync(cancellationToken);
+            return new(new UpdateGameUsersResult
+            {
+                UpdateResults = results.Select(r => new UpdateGameUserResult
                 {
-                    UpdateResults = results.Select(r => new UpdateGameUserResult
-                    {
-                        User = _mapper.Map<GameUser>(r.character.User),
-                        BrokenItems = r.brokenItems,
-                    }).ToArray(),
-                });
-            }
+                    User = _mapper.Map<GameUser>(r.user),
+                    EffectiveReward = r.reward,
+                    BrokenItems = r.brokenItems,
+                }).ToArray(),
+            });
+        }
 
-            private async Task<Dictionary<int, Character>> LoadCharacters(IList<GameUserUpdate> updates, CancellationToken cancellationToken)
+        private async Task<Dictionary<int, Character>> LoadCharacters(IList<GameUserUpdate> updates, CancellationToken cancellationToken)
+        {
+            int[] characterIds = updates.Select(u => u.CharacterId).ToArray();
+            var charactersById = await _db.Characters
+                .Include(c => c.User)
+                .Where(c => characterIds.Contains(c.Id))
+                .ToDictionaryAsync(c => c.Id, cancellationToken);
+
+            // Load items in a separate query to avoid cartesian explosion. The items will be automatically set
+            // to their respective character.
+            await _db.EquippedItems
+                .Where(ei => characterIds.Contains(ei.CharacterId))
+                .Include(ei => ei.UserItem!.BaseItem)
+                .LoadAsync(cancellationToken);
+
+            return charactersById;
+        }
+
+        private GameUserEffectiveReward GiveReward(Character character, GameUserReward reward)
+        {
+            int level = character.Level;
+            int experience = character.Experience;
+
+            character.User!.Gold += reward.Gold;
+            _characterService.GiveExperience(character, reward.Experience);
+
+            return new GameUserEffectiveReward
             {
-                int[] characterIds = updates.Select(u => u.CharacterId).ToArray();
-                var charactersById = await _db.Characters
-                    .Include(c => c.User)
-                    .Where(c => characterIds.Contains(c.Id))
-                    .ToDictionaryAsync(c => c.Id, cancellationToken);
+                Experience = character.Experience - experience,
+                Gold = reward.Gold,
+                LevelUp = character.Level != level,
+            };
+        }
 
-                // Load items in a separate query to avoid cartesian explosion. The items will be automatically set
-                // to their respective character.
-                await _db.EquippedItems
-                    .Where(ei => characterIds.Contains(ei.CharacterId))
-                    .Include(ei => ei.Item)
-                    .LoadAsync(cancellationToken);
+        private void UpdateStatistics(Character character, CharacterStatisticsViewModel statistics)
+        {
+            character.Statistics.Kills += statistics.Kills;
+            character.Statistics.Deaths += statistics.Deaths;
+            character.Statistics.Assists += statistics.Assists;
+            character.Statistics.PlayTime += statistics.PlayTime;
+        }
 
-                return charactersById;
-            }
-
-            private void GiveReward(Character character, GameUserReward reward)
+        private Task<List<GameUserBrokenItem>> RepairOrBreakItems(Character character, IEnumerable<GameUserBrokenItem> itemsToRepair,
+            CancellationToken cancellationToken)
+        {
+            List<GameUserBrokenItem> brokenItems = new();
+            foreach (var itemToRepair in itemsToRepair)
             {
-                character.User!.Gold += reward.Gold;
-                _characterService.GiveExperience(character, reward.Experience);
-            }
-
-            private Task<List<GameUserBrokenItem>> RepairOrBreakItems(Character character, IEnumerable<GameUserBrokenItem> itemsToRepair,
-                CancellationToken cancellationToken)
-            {
-                List<GameUserBrokenItem> brokenItems = new();
-                foreach (var itemToRepair in itemsToRepair)
+                if (character.AutoRepair && character.User!.Gold >= itemToRepair.RepairCost)
                 {
-                    if (character.AutoRepair && character.User!.Gold >= itemToRepair.RepairCost)
-                    {
-                        character.User.Gold -= itemToRepair.RepairCost;
-                        continue;
-                    }
-
-                    brokenItems.Add(itemToRepair);
+                    character.User.Gold -= itemToRepair.RepairCost;
+                    continue;
                 }
 
-                return brokenItems.Count == 0
-                    ? Task.FromResult(brokenItems)
-                    : DowngradeItems(character, brokenItems, cancellationToken);
+                brokenItems.Add(itemToRepair);
             }
 
-            private async Task<List<GameUserBrokenItem>> DowngradeItems(Character character, List<GameUserBrokenItem> brokenItems, CancellationToken cancellationToken)
+            return brokenItems.Count == 0
+                ? Task.FromResult(brokenItems)
+                : DowngradeItems(brokenItems, cancellationToken);
+        }
+
+        private async Task<List<GameUserBrokenItem>> DowngradeItems(List<GameUserBrokenItem> brokenItems, CancellationToken cancellationToken)
+        {
+            int[] userItemIds = brokenItems.Select(bi => bi.UserItemId).ToArray();
+            var userItems = await _db.UserItems
+                .Where(ui => userItemIds.Contains(ui.Id))
+                .ToArrayAsync(cancellationToken);
+            foreach (var userItem in userItems)
             {
-                var brokenItemIds = brokenItems.Select(bi => bi.ItemId).ToArray();
-                var downrankedItemsByOriginalItemId = await _db.Items
-                    .AsNoTracking()
-                    .Join(_db.Items, i => i.BaseItemId, i => i.BaseItemId, (i, f) => new { Original = i, Family = f })
-                    .Where(o => brokenItemIds.Contains(o.Original.Id) && o.Family.Rank == o.Original.Rank - 1)
-                    .ToDictionaryAsync(o => o.Original.Id, o => o.Family, cancellationToken);
-
-                var equippedItemsByItemId = (await _db.EquippedItems
-                        .Where(ei => ei.CharacterId == character.Id && brokenItemIds.Contains(ei.ItemId))
-                        .ToArrayAsync(cancellationToken))
-                    .ToLookup(ei => ei.ItemId);
-
-                foreach (var brokenItemId in brokenItemIds)
+                if (userItem.Rank > -3)
                 {
-                    _db.Entry(new UserItem { UserId = character.UserId, ItemId = brokenItemId }).State = EntityState.Deleted;
-                    if (downrankedItemsByOriginalItemId.TryGetValue(brokenItemId, out var downrankedItem))
-                    {
-                        UserItem downrankedUserItem = new() { UserId = character.UserId, ItemId = downrankedItem.Id };
-                        character.User!.Items.Add(downrankedUserItem);
-
-                        foreach (var equippedItems in equippedItemsByItemId[brokenItemId])
-                        {
-                            equippedItems.UserItem = downrankedUserItem;
-                        }
-                    }
-                    else
-                    {
-                        _db.EquippedItems.RemoveRange(equippedItemsByItemId[brokenItemId]);
-                    }
+                    // TODO: check user item with this rank already exist
+                    userItem.Rank -= 1;
                 }
-
-                return brokenItems;
             }
+
+            return brokenItems;
         }
     }
 }

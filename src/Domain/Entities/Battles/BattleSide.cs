@@ -1,8 +1,7 @@
-﻿namespace Crpg.Domain.Entities.Battles
+﻿namespace Crpg.Domain.Entities.Battles;
+
+public enum BattleSide
 {
-    public enum BattleSide
-    {
-        Attacker,
-        Defender,
-    }
+    Attacker,
+    Defender,
 }

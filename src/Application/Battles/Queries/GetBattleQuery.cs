@@ -1,5 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Crpg.Application.Battles.Models;
@@ -9,41 +7,40 @@ using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities.Battles;
 using Microsoft.EntityFrameworkCore;
 
-namespace Crpg.Application.Battles.Queries
+namespace Crpg.Application.Battles.Queries;
+
+public record GetBattleQuery : IMediatorRequest<BattleViewModel>
 {
-    public record GetBattleQuery : IMediatorRequest<BattleViewModel>
+    public int BattleId { get; init; }
+
+    internal class Handler : IMediatorRequestHandler<GetBattleQuery, BattleViewModel>
     {
-        public int BattleId { get; init; }
+        private readonly ICrpgDbContext _db;
+        private readonly IMapper _mapper;
 
-        internal class Handler : IMediatorRequestHandler<GetBattleQuery, BattleViewModel>
+        public Handler(ICrpgDbContext db, IMapper mapper)
         {
-            private readonly ICrpgDbContext _db;
-            private readonly IMapper _mapper;
+            _db = db;
+            _mapper = mapper;
+        }
 
-            public Handler(ICrpgDbContext db, IMapper mapper)
+        public async Task<Result<BattleViewModel>> Handle(GetBattleQuery req, CancellationToken cancellationToken)
+        {
+            var battle = await _db.Battles
+                .ProjectTo<BattleViewModel>(_mapper.ConfigurationProvider)
+                .FirstOrDefaultAsync(b => b.Id == req.BattleId, cancellationToken);
+            if (battle == null)
             {
-                _db = db;
-                _mapper = mapper;
+                return new(CommonErrors.BattleNotFound(req.BattleId));
             }
 
-            public async Task<Result<BattleViewModel>> Handle(GetBattleQuery req, CancellationToken cancellationToken)
+            // Battles in preparation shouldn't be visible to anyone but only to parties in sight on the map.
+            if (battle.Phase == BattlePhase.Preparation)
             {
-                var battle = await _db.Battles
-                    .ProjectTo<BattleViewModel>(_mapper.ConfigurationProvider)
-                    .FirstOrDefaultAsync(b => b.Id == req.BattleId, cancellationToken);
-                if (battle == null)
-                {
-                    return new(CommonErrors.BattleNotFound(req.BattleId));
-                }
-
-                // Battles in preparation shouldn't be visible to anyone but only to heroes in sight on the map.
-                if (battle.Phase == BattlePhase.Preparation)
-                {
-                    return new(CommonErrors.BattleInvalidPhase(req.BattleId, battle.Phase));
-                }
-
-                return new(battle);
+                return new(CommonErrors.BattleInvalidPhase(req.BattleId, battle.Phase));
             }
+
+            return new(battle);
         }
     }
 }

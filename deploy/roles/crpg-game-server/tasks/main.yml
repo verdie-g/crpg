@@ -1,0 +1,20 @@
+---
+- name: create user
+  user:
+   name: "{{ crpg_game_server_user }}"
+   comment: Owner of the cRPG Game Server
+
+- name: add non-free apt repository
+  apt_repository:
+      repo: deb http://deb.debian.org/debian bullseye main contrib non-free
+      state: present
+
+- name: allow installation of i386 libraries
+  command: dpkg --add-architecture i386
+
+- name: install steamcmd
+  apt:
+      pkg:
+          - lib32gcc-s1
+          - steamcmd
+      update_cache: yes

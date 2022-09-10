@@ -1,54 +1,52 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Crpg.Application.Characters.Queries;
 using Crpg.Application.Common.Results;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Characters
+namespace Crpg.Application.UTest.Characters;
+
+public class GetUserCharacterItemsQueryTest : TestBase
 {
-    public class GetUserCharacterItemsQueryTest : TestBase
+    [Test]
+    public async Task ShouldReturnErrorIfCharacterDoesntExist()
     {
-        [Test]
-        public async Task ShouldReturnErrorIfCharacterDoesntExist()
+        GetUserCharacterItemsQuery.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new GetUserCharacterItemsQuery
         {
-            GetUserCharacterItemsQuery.Handler handler = new(ActDb, Mapper);
-            var result = await handler.Handle(new GetUserCharacterItemsQuery
-            {
-                CharacterId = 1,
-                UserId = 2,
-            }, CancellationToken.None);
+            CharacterId = 1,
+            UserId = 2,
+        }, CancellationToken.None);
 
-            Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
-        }
+        Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
+    }
 
-        [Test]
-        public async Task ShouldReturnCharacterItems()
+    [Test]
+    public async Task ShouldReturnCharacterItems()
+    {
+        UserItem userItem1 = new() { BaseItem = new Item { Id = "1" } };
+        UserItem userItem2 = new() { BaseItem = new Item { Id = "2" } };
+        Character character = new()
         {
-            var character = new Character
+            Name = "toto",
+            UserId = 2,
+            EquippedItems =
             {
-                Name = "toto",
-                UserId = 2,
-                EquippedItems =
-                {
-                    new EquippedItem { Item = new Item(), Slot = ItemSlot.Body },
-                    new EquippedItem { Item = new Item(), Slot = ItemSlot.Weapon0 },
-                },
-            };
-            ArrangeDb.Characters.Add(character);
-            await ArrangeDb.SaveChangesAsync();
+                new EquippedItem { UserItem = userItem1, Slot = ItemSlot.Body },
+                new EquippedItem { UserItem = userItem2, Slot = ItemSlot.Weapon0 },
+            },
+        };
+        ArrangeDb.Characters.Add(character);
+        await ArrangeDb.SaveChangesAsync();
 
-            GetUserCharacterItemsQuery.Handler handler = new(ActDb, Mapper);
-            var result = await handler.Handle(new GetUserCharacterItemsQuery
-            {
-                CharacterId = character.Id,
-                UserId = 2,
-            }, CancellationToken.None);
+        GetUserCharacterItemsQuery.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new GetUserCharacterItemsQuery
+        {
+            CharacterId = character.Id,
+            UserId = 2,
+        }, CancellationToken.None);
 
-            Assert.IsNull(result.Errors);
-            Assert.AreEqual(2, result.Data!.Count);
-        }
+        Assert.IsNull(result.Errors);
+        Assert.AreEqual(2, result.Data!.Count);
     }
 }

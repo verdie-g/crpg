@@ -1,12 +1,11 @@
-﻿namespace Crpg.Domain.Entities.Users
+﻿namespace Crpg.Domain.Entities.Users;
+
+/// <summary>
+/// Platform used by a user to play Bannerlord.
+/// </summary>
+public enum Platform
 {
-    /// <summary>
-    /// Platform used by a user to play Bannerlord.
-    /// </summary>
-    public enum Platform
-    {
-        Steam,
-        Epic,
-        Gog,
-    }
+    Steam,
+    Epic,
+    Gog,
 }

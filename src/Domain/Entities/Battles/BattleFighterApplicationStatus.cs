@@ -1,23 +1,22 @@
-﻿namespace Crpg.Domain.Entities.Battles
+﻿namespace Crpg.Domain.Entities.Battles;
+
+/// <summary>
+/// Status of a <see cref="BattleFighterApplication"/>.
+/// </summary>
+public enum BattleFighterApplicationStatus
 {
     /// <summary>
-    /// Status of a <see cref="BattleFighterApplication"/>.
+    /// <see cref="BattleFighterApplication"/> is waiting for a response.
     /// </summary>
-    public enum BattleFighterApplicationStatus
-    {
-        /// <summary>
-        /// <see cref="BattleFighterApplication"/> is waiting for a response.
-        /// </summary>
-        Pending,
+    Pending,
 
-        /// <summary>
-        /// <see cref="BattleFighterApplication"/> was declined.
-        /// </summary>
-        Declined,
+    /// <summary>
+    /// <see cref="BattleFighterApplication"/> was declined.
+    /// </summary>
+    Declined,
 
-        /// <summary>
-        /// <see cref="BattleFighterApplication"/> was accepted.
-        /// </summary>
-        Accepted,
-    }
+    /// <summary>
+    /// <see cref="BattleFighterApplication"/> was accepted.
+    /// </summary>
+    Accepted,
 }

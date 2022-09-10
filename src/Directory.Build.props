@@ -1,0 +1,38 @@
+<Project>
+    <PropertyGroup>
+        <LangVersion>10.0</LangVersion>
+        <!-- Enable C# 8 nullable and treat its warnings as errors -->
+        <Nullable>enable</Nullable>
+        <WarningsAsErrors>CS8073;CS8597;CS8600;CS8601;CS8602;CS8603;CS8604;CS8605;CS8606;CS8607;CS8608;CS8609;CS8610;CS8611;CS8612;CS8613;CS8614;CS8615;CS8616;CS8617;CS8618;CS8619;CS8620;CS8621;CS8622;CS8624;CS8625;CS8626;CS8629;CS8631;CS8632;CS8633;CS8634;CS8638;CS8643;CS8644;CS8645;CS8653;CS8654;CS8655;CS8667;CS8714</WarningsAsErrors>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <!-- Required for StyleCopAnalyzers to analyze comments. -->
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <InvariantGlobalization>true</InvariantGlobalization>
+
+        <!-- Use Bannerlord version + cRPG version for the revision number -->
+        <Version>1.8.0.4</Version>
+        <!-- Flag to enable to add revision id to the assembly version -->
+        <SourceControlInformationFeatureSupported>true</SourceControlInformationFeatureSupported>
+        <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
+    </PropertyGroup>
+
+    <!-- Define revision id to be added to the assembly version -->
+    <Target Name="InitializeSourceRevisionId" BeforeTargets="AddSourceRevisionToInformationalVersion">
+        <Exec Command="git describe --long --always --dirty --exclude=* --abbrev=8" ConsoleToMSBuild="true"
+              IgnoreExitCode="false" StandardOutputImportance="low" EchoOff="true">
+            <Output TaskParameter="ConsoleOutput" PropertyName="SourceRevisionId" />
+        </Exec>
+    </Target>
+
+    <ItemGroup>
+        <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>

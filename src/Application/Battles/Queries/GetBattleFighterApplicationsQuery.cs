@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AutoMapper;
 using Crpg.Application.Battles.Models;
 using Crpg.Application.Common.Interfaces;
@@ -12,53 +7,52 @@ using Crpg.Domain.Entities.Battles;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
-namespace Crpg.Application.Battles.Queries
-{
-    public record GetBattleFighterApplicationsQuery : IMediatorRequest<IList<BattleFighterApplicationViewModel>>
-    {
-        public int HeroId { get; init; }
-        public int BattleId { get; init; }
-        public IList<BattleFighterApplicationStatus> Statuses { get; init; } = Array.Empty<BattleFighterApplicationStatus>();
+namespace Crpg.Application.Battles.Queries;
 
-        public class Validator : AbstractValidator<GetBattleFighterApplicationsQuery>
+public record GetBattleFighterApplicationsQuery : IMediatorRequest<IList<BattleFighterApplicationViewModel>>
+{
+    public int PartyId { get; init; }
+    public int BattleId { get; init; }
+    public IList<BattleFighterApplicationStatus> Statuses { get; init; } = Array.Empty<BattleFighterApplicationStatus>();
+
+    public class Validator : AbstractValidator<GetBattleFighterApplicationsQuery>
+    {
+        public Validator()
         {
-            public Validator()
-            {
-                RuleFor(a => a.Statuses).ForEach(s => s.IsInEnum());
-            }
+            RuleFor(a => a.Statuses).ForEach(s => s.IsInEnum());
+        }
+    }
+
+    internal class Handler : IMediatorRequestHandler<GetBattleFighterApplicationsQuery, IList<BattleFighterApplicationViewModel>>
+    {
+        private readonly ICrpgDbContext _db;
+        private readonly IMapper _mapper;
+
+        public Handler(ICrpgDbContext db, IMapper mapper)
+        {
+            _db = db;
+            _mapper = mapper;
         }
 
-        internal class Handler : IMediatorRequestHandler<GetBattleFighterApplicationsQuery, IList<BattleFighterApplicationViewModel>>
+        public async Task<Result<IList<BattleFighterApplicationViewModel>>> Handle(
+            GetBattleFighterApplicationsQuery req, CancellationToken cancellationToken)
         {
-            private readonly ICrpgDbContext _db;
-            private readonly IMapper _mapper;
-
-            public Handler(ICrpgDbContext db, IMapper mapper)
+            var battle = await _db.Battles
+                .AsSplitQuery()
+                .Include(b => b.Fighters.Where(f => f.PartyId == req.PartyId))
+                .Include(b => b.FighterApplications.Where(a => req.Statuses.Contains(a.Status)))
+                .ThenInclude(a => a.Party!).ThenInclude(h => h.User)
+                .FirstOrDefaultAsync(b => b.Id == req.BattleId, cancellationToken);
+            if (battle == null)
             {
-                _db = db;
-                _mapper = mapper;
+                return new(CommonErrors.BattleNotFound(req.BattleId));
             }
 
-            public async Task<Result<IList<BattleFighterApplicationViewModel>>> Handle(
-                GetBattleFighterApplicationsQuery req, CancellationToken cancellationToken)
-            {
-                var battle = await _db.Battles
-                    .AsSplitQuery()
-                    .Include(b => b.Fighters.Where(f => f.HeroId == req.HeroId))
-                    .Include(b => b.FighterApplications.Where(a => req.Statuses.Contains(a.Status)))
-                    .ThenInclude(a => a.Hero!).ThenInclude(h => h.User)
-                    .FirstOrDefaultAsync(b => b.Id == req.BattleId, cancellationToken);
-                if (battle == null)
-                {
-                    return new(CommonErrors.BattleNotFound(req.BattleId));
-                }
-
-                BattleFighter? fighter = battle.Fighters.FirstOrDefault();
-                // If the fighter is a commander, return all applications of their side else return only the hero applications.
-                var applications = battle.FighterApplications
-                    .Where(a => a.HeroId == req.HeroId || (fighter != null && fighter.Commander && a.Side == fighter.Side));
-                return new(_mapper.Map<IList<BattleFighterApplicationViewModel>>(applications));
-            }
+            BattleFighter? fighter = battle.Fighters.FirstOrDefault();
+            // If the fighter is a commander, return all applications of their side else return only the party applications.
+            var applications = battle.FighterApplications
+                .Where(a => a.PartyId == req.PartyId || (fighter != null && fighter.Commander && a.Side == fighter.Side));
+            return new(_mapper.Map<IList<BattleFighterApplicationViewModel>>(applications));
         }
     }
 }

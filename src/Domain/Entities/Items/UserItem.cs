@@ -1,24 +1,27 @@
-using System.Collections.Generic;
 using Crpg.Domain.Common;
-using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Users;
 
-namespace Crpg.Domain.Entities.Items
+namespace Crpg.Domain.Entities.Items;
+
+/// <summary>
+/// Item owned by a <see cref="User"/>.
+/// </summary>
+public class UserItem : AuditableEntity
 {
+    public int Id { get; set; }
+    public int UserId { get; set; }
+    public string BaseItemId { get; set; } = string.Empty;
+
     /// <summary>
-    /// Item owned by a <see cref="User"/>.
+    /// 0 by default. { -1, -2, -3 } for levels of broken. { 1, 2, 3 } for levels of looming.
     /// </summary>
-    public class UserItem : AuditableEntity
-    {
-        public int UserId { get; set; }
-        public int ItemId { get; set; }
+    public int Rank { get; set; }
 
-        public User? User { get; set; }
-        public Item? Item { get; set; }
+    public User? User { get; set; }
+    public Item? BaseItem { get; set; }
 
-        /// <summary>
-        /// Characters with that item equipped.
-        /// </summary>
-        public List<EquippedItem> EquippedItems { get; set; } = new();
-    }
+    /// <summary>
+    /// Characters with that item equipped.
+    /// </summary>
+    public List<EquippedItem> EquippedItems { get; set; } = new();
 }

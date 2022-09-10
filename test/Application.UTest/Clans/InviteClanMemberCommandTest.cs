@@ -1,251 +1,245 @@
-﻿using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Crpg.Application.Clans.Commands;
+﻿using Crpg.Application.Clans.Commands;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Clans
+namespace Crpg.Application.UTest.Clans;
+
+public class InviteClanMemberCommandTest : TestBase
 {
-    public class InviteClanMemberCommandTest : TestBase
+    private static readonly IClanService ClanService = new ClanService();
+
+    [Test]
+    public async Task ShouldReturnErrorIfUserNotFound()
     {
-        private static readonly IClanService ClanService = new ClanService();
+        Clan clan = new();
+        ArrangeDb.Clans.Add(clan);
+        await ArrangeDb.SaveChangesAsync();
 
-        [Test]
-        public async Task ShouldReturnErrorIfUserNotFound()
+        var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
         {
-            var clan = new Clan();
-            ArrangeDb.Clans.Add(clan);
-            await ArrangeDb.SaveChangesAsync();
+            UserId = 1,
+            ClanId = clan.Id,
+            InviteeId = 1,
+        }, CancellationToken.None);
 
-            var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
-            {
-                UserId = 1,
-                ClanId = clan.Id,
-                InviteeId = 1,
-            }, CancellationToken.None);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.UserNotFound, res.Errors![0].Code);
+    }
 
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.UserNotFound, res.Errors![0].Code);
-        }
+    [Test]
+    public async Task IfRequestShouldReturnErrorIfUserAlreadyInTheClan()
+    {
+        Clan clan = new();
+        ArrangeDb.Clans.Add(clan);
+        User user = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
 
-        [Test]
-        public async Task IfRequestShouldReturnErrorIfUserAlreadyInTheClan()
+        var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
         {
-            var clan = new Clan();
-            ArrangeDb.Clans.Add(clan);
-            var user = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
-            ArrangeDb.Users.Add(user);
-            await ArrangeDb.SaveChangesAsync();
+            UserId = user.Id,
+            ClanId = clan.Id,
+            InviteeId = user.Id,
+        }, CancellationToken.None);
 
-            var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
-            {
-                UserId = user.Id,
-                ClanId = clan.Id,
-                InviteeId = user.Id,
-            }, CancellationToken.None);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.UserAlreadyInTheClan, res.Errors![0].Code);
+    }
 
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.UserAlreadyInTheClan, res.Errors![0].Code);
-        }
+    [Test]
+    public async Task IfRequestShouldCreateOneIfNotAlreadyExists()
+    {
+        Clan clan = new();
+        ArrangeDb.Clans.Add(clan);
+        User user = new();
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
 
-        [Test]
-        public async Task IfRequestShouldCreateOneIfNotAlreadyExists()
+        var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
         {
-            var clan = new Clan();
-            ArrangeDb.Clans.Add(clan);
-            var user = new User();
-            ArrangeDb.Users.Add(user);
-            await ArrangeDb.SaveChangesAsync();
+            UserId = user.Id,
+            ClanId = clan.Id,
+            InviteeId = user.Id,
+        }, CancellationToken.None);
 
-            var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
-            {
-                UserId = user.Id,
-                ClanId = clan.Id,
-                InviteeId = user.Id,
-            }, CancellationToken.None);
+        var invitation = res.Data!;
+        Assert.IsNull(res.Errors);
+        Assert.NotZero(invitation.Id);
+        Assert.AreEqual(user.Id, invitation.Invitee.Id);
+        Assert.AreEqual(user.Id, invitation.Inviter.Id);
+        Assert.AreEqual(ClanInvitationType.Request, invitation.Type);
+        Assert.AreEqual(ClanInvitationStatus.Pending, invitation.Status);
+    }
 
-            var invitation = res.Data!;
-            Assert.IsNull(res.Errors);
-            Assert.NotZero(invitation.Id);
-            Assert.AreEqual(user.Id, invitation.Invitee.Id);
-            Assert.AreEqual(user.Id, invitation.Inviter.Id);
-            Assert.AreEqual(ClanInvitationType.Request, invitation.Type);
-            Assert.AreEqual(ClanInvitationStatus.Pending, invitation.Status);
-        }
-
-        [Test]
-        public async Task IfRequestShouldReturnExistingPendingRequest()
+    [Test]
+    public async Task IfRequestShouldReturnExistingPendingRequest()
+    {
+        Clan clan = new();
+        ArrangeDb.Clans.Add(clan);
+        User user = new();
+        ArrangeDb.Users.Add(user);
+        ClanInvitation invitation = new()
         {
-            var clan = new Clan();
-            ArrangeDb.Clans.Add(clan);
-            var user = new User();
-            ArrangeDb.Users.Add(user);
-            var invitation = new ClanInvitation
-            {
-                Clan = clan,
-                Invitee = user,
-                Inviter = user,
-                Type = ClanInvitationType.Request,
-                Status = ClanInvitationStatus.Pending,
-            };
-            ArrangeDb.ClanInvitations.Add(invitation);
-            await ArrangeDb.SaveChangesAsync();
+            Clan = clan,
+            Invitee = user,
+            Inviter = user,
+            Type = ClanInvitationType.Request,
+            Status = ClanInvitationStatus.Pending,
+        };
+        ArrangeDb.ClanInvitations.Add(invitation);
+        await ArrangeDb.SaveChangesAsync();
 
-            var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
-            {
-                UserId = user.Id,
-                ClanId = clan.Id,
-                InviteeId = user.Id,
-            }, CancellationToken.None);
-
-            Assert.IsNull(res.Errors);
-            Assert.AreEqual(invitation.Id, res.Data!.Id);
-        }
-
-        [Test]
-        public async Task IfOfferButInviteeAlreadyInTheClanShouldReturnError()
+        var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
         {
-            var clan = new Clan();
-            ArrangeDb.Clans.Add(clan);
-            var invitee = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
-            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
-            ArrangeDb.Users.AddRange(invitee, inviter);
-            await ArrangeDb.SaveChangesAsync();
+            UserId = user.Id,
+            ClanId = clan.Id,
+            InviteeId = user.Id,
+        }, CancellationToken.None);
 
-            var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
-            {
-                UserId = inviter.Id,
-                ClanId = clan.Id,
-                InviteeId = invitee.Id,
-            }, CancellationToken.None);
+        Assert.IsNull(res.Errors);
+        Assert.AreEqual(invitation.Id, res.Data!.Id);
+    }
 
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.UserAlreadyInTheClan, res.Errors![0].Code);
-        }
+    [Test]
+    public async Task IfOfferButInviteeAlreadyInTheClanShouldReturnError()
+    {
+        Clan clan = new();
+        ArrangeDb.Clans.Add(clan);
+        User invitee = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
+        User inviter = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
+        ArrangeDb.Users.AddRange(invitee, inviter);
+        await ArrangeDb.SaveChangesAsync();
 
-        [Test]
-        public async Task IfOfferButInviterNotInAClanShouldReturnError()
+        var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
         {
-            var clan = new Clan();
-            ArrangeDb.Clans.Add(clan);
-            var invitee = new User();
-            var inviter = new User();
-            ArrangeDb.Users.AddRange(invitee, inviter);
-            await ArrangeDb.SaveChangesAsync();
+            UserId = inviter.Id,
+            ClanId = clan.Id,
+            InviteeId = invitee.Id,
+        }, CancellationToken.None);
 
-            var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
-            {
-                UserId = inviter.Id,
-                ClanId = clan.Id,
-                InviteeId = invitee.Id,
-            }, CancellationToken.None);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.UserAlreadyInTheClan, res.Errors![0].Code);
+    }
 
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.UserNotInAClan, res.Errors![0].Code);
-        }
+    [Test]
+    public async Task IfOfferButInviterNotInAClanShouldReturnError()
+    {
+        Clan clan = new();
+        ArrangeDb.Clans.Add(clan);
+        User invitee = new();
+        User inviter = new();
+        ArrangeDb.Users.AddRange(invitee, inviter);
+        await ArrangeDb.SaveChangesAsync();
 
-        [Test]
-        public async Task IfOfferButInviterNotInTheClanShouldReturnError()
+        var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
         {
-            var clan = new Clan();
-            ArrangeDb.Clans.Add(clan);
-            var invitee = new User();
-            var inviter = new User { ClanMembership = new ClanMember { Clan = new Clan(), Role = ClanMemberRole.Officer } };
-            ArrangeDb.Users.AddRange(invitee, inviter);
-            await ArrangeDb.SaveChangesAsync();
+            UserId = inviter.Id,
+            ClanId = clan.Id,
+            InviteeId = invitee.Id,
+        }, CancellationToken.None);
 
-            var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
-            {
-                UserId = inviter.Id,
-                ClanId = clan.Id,
-                InviteeId = invitee.Id,
-            }, CancellationToken.None);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.UserNotInAClan, res.Errors![0].Code);
+    }
 
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.UserNotAClanMember, res.Errors![0].Code);
-        }
+    [Test]
+    public async Task IfOfferButInviterNotInTheClanShouldReturnError()
+    {
+        Clan clan = new();
+        ArrangeDb.Clans.Add(clan);
+        User invitee = new();
+        User inviter = new() { ClanMembership = new ClanMember { Clan = new Clan(), Role = ClanMemberRole.Officer } };
+        ArrangeDb.Users.AddRange(invitee, inviter);
+        await ArrangeDb.SaveChangesAsync();
 
-        [Test]
-        public async Task IfOfferButInviterNotOfficerOrLeaderShouldReturnError()
+        var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
         {
-            var clan = new Clan();
-            ArrangeDb.Clans.Add(clan);
-            var invitee = new User();
-            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
-            ArrangeDb.Users.AddRange(invitee, inviter);
-            await ArrangeDb.SaveChangesAsync();
+            UserId = inviter.Id,
+            ClanId = clan.Id,
+            InviteeId = invitee.Id,
+        }, CancellationToken.None);
 
-            var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
-            {
-                UserId = inviter.Id,
-                ClanId = clan.Id,
-                InviteeId = invitee.Id,
-            }, CancellationToken.None);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.UserNotAClanMember, res.Errors![0].Code);
+    }
 
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.ClanMemberRoleNotMet, res.Errors![0].Code);
-        }
+    [Test]
+    public async Task IfOfferButInviterNotOfficerOrLeaderShouldReturnError()
+    {
+        Clan clan = new();
+        ArrangeDb.Clans.Add(clan);
+        User invitee = new();
+        User inviter = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Member } };
+        ArrangeDb.Users.AddRange(invitee, inviter);
+        await ArrangeDb.SaveChangesAsync();
 
-        [Test]
-        public async Task IfOfferShouldReturnExistingPendingOffer()
+        var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
         {
-            var clan = new Clan();
-            ArrangeDb.Clans.Add(clan);
-            var invitee = new User();
-            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
-            ArrangeDb.Users.AddRange(invitee, inviter);
-            var offer = new ClanInvitation
-            {
-                Clan = clan,
-                Invitee = invitee,
-                Inviter = inviter,
-                Type = ClanInvitationType.Offer,
-                Status = ClanInvitationStatus.Pending,
-            };
-            ArrangeDb.ClanInvitations.Add(offer);
-            await ArrangeDb.SaveChangesAsync();
+            UserId = inviter.Id,
+            ClanId = clan.Id,
+            InviteeId = invitee.Id,
+        }, CancellationToken.None);
 
-            var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
-            {
-                UserId = inviter.Id,
-                ClanId = clan.Id,
-                InviteeId = invitee.Id,
-            }, CancellationToken.None);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.ClanMemberRoleNotMet, res.Errors![0].Code);
+    }
 
-            Assert.IsNull(res.Errors);
-            Assert.AreEqual(offer.Id, res.Data!.Id);
-        }
-
-        [Test]
-        public async Task IfOfferShouldCreateOneIfNotAlreadyExists()
+    [Test]
+    public async Task IfOfferShouldReturnExistingPendingOffer()
+    {
+        Clan clan = new();
+        ArrangeDb.Clans.Add(clan);
+        User invitee = new();
+        User inviter = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
+        ArrangeDb.Users.AddRange(invitee, inviter);
+        ClanInvitation offer = new()
         {
-            var clan = new Clan();
-            ArrangeDb.Clans.Add(clan);
-            var invitee = new User();
-            var inviter = new User { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
-            ArrangeDb.Users.AddRange(invitee, inviter);
-            await ArrangeDb.SaveChangesAsync();
+            Clan = clan,
+            Invitee = invitee,
+            Inviter = inviter,
+            Type = ClanInvitationType.Offer,
+            Status = ClanInvitationStatus.Pending,
+        };
+        ArrangeDb.ClanInvitations.Add(offer);
+        await ArrangeDb.SaveChangesAsync();
 
-            var a = ActDb.Users.ToArray();
+        var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
+        {
+            UserId = inviter.Id,
+            ClanId = clan.Id,
+            InviteeId = invitee.Id,
+        }, CancellationToken.None);
 
-            var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
-            {
-                UserId = inviter.Id,
-                ClanId = clan.Id,
-                InviteeId = invitee.Id,
-            }, CancellationToken.None);
+        Assert.IsNull(res.Errors);
+        Assert.AreEqual(offer.Id, res.Data!.Id);
+    }
 
-            var invitation = res.Data!;
-            Assert.IsNull(res.Errors);
-            Assert.NotZero(invitation.Id);
-            Assert.AreEqual(invitee.Id, invitation.Invitee.Id);
-            Assert.AreEqual(inviter.Id, invitation.Inviter.Id);
-            Assert.AreEqual(ClanInvitationType.Offer, invitation.Type);
-            Assert.AreEqual(ClanInvitationStatus.Pending, invitation.Status);
-        }
+    [Test]
+    public async Task IfOfferShouldCreateOneIfNotAlreadyExists()
+    {
+        Clan clan = new();
+        ArrangeDb.Clans.Add(clan);
+        User invitee = new();
+        User inviter = new() { ClanMembership = new ClanMember { Clan = clan, Role = ClanMemberRole.Officer } };
+        ArrangeDb.Users.AddRange(invitee, inviter);
+        await ArrangeDb.SaveChangesAsync();
+
+        var res = await new InviteClanMemberCommand.Handler(ActDb, Mapper, ClanService).Handle(new InviteClanMemberCommand
+        {
+            UserId = inviter.Id,
+            ClanId = clan.Id,
+            InviteeId = invitee.Id,
+        }, CancellationToken.None);
+
+        var invitation = res.Data!;
+        Assert.IsNull(res.Errors);
+        Assert.NotZero(invitation.Id);
+        Assert.AreEqual(invitee.Id, invitation.Invitee.Id);
+        Assert.AreEqual(inviter.Id, invitation.Inviter.Id);
+        Assert.AreEqual(ClanInvitationType.Offer, invitation.Type);
+        Assert.AreEqual(ClanInvitationStatus.Pending, invitation.Status);
     }
 }

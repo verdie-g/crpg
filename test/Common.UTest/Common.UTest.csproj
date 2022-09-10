@@ -1,22 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-        <RootNamespace>Crpg.Common.UTest</RootNamespace>
-        <AssemblyName>Crpg.Common.UTest</AssemblyName>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Crpg.Common.UTest</RootNamespace>
+    <AssemblyName>Crpg.Common.UTest</AssemblyName>
+  </PropertyGroup>
 
-    <Import Project="../../src/Shared.targets" />
+  <Import Project="../../src/Directory.Build.props" />
 
-    <ItemGroup>
-        <PackageReference Include="Moq" Version="4.16.1" />
-        <PackageReference Include="nunit" Version="3.13.2" />
-        <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.18.1" />
+    <PackageReference Include="nunit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\src\Common\Common.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Common\Common.csproj" />
+  </ItemGroup>
 
 </Project>

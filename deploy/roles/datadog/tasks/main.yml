@@ -3,97 +3,26 @@
   include_role:
     name: datadog.datadog
   vars:
-    datadog_agent_major_version: "7"
-    datadog_config:
-      logs_enabled: true
-      apm_config: # tracing
-        enabled: true
-      process_config: # live processes
-        enabled: "true"
-    datadog_checks:
-      nginx:
-        init_config:
-        instances:
-        - nginx_status_url: http://localhost:81/nginx_status
-        logs:
-        - type: file
-          path: /var/log/nginx/access.log
-          service: "{{ crpg_reverse_proxy_service_name }}"
-          source: nginx
-        - type: file
-          path: /var/log/nginx/error.log
-          service: "{{ crpg_reverse_proxy_service_name }}"
-          source: nginx
-      postgres:
-        init_config:
-        instances:
-        - host: localhost
-          port: 5432
-          dbname: "{{ crpg_db }}"
-          username: "{{ datadog_db_user }}"
-          dbm: true
-          custom_queries:
-          - metric_prefix: crpg
-            query: SELECT
-              (SELECT COUNT(*) FROM users) AS users,
-              (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 month') AS active_users_30d,
-              (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 week') AS active_users_7d,
-              (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 day') AS active_users_1d,
-              (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '15 min') AS active_users_15min
-            columns:
-            - name: users
-              type: gauge
-            - name: active_users_30d
-              type: gauge
-            - name: active_users_7d
-              type: gauge
-            - name: active_users_1d
-              type: gauge
-            - name: active_users_15min
-              type: gauge
-        logs:
-        - type: file
-          path: /var/log/postgresql/postgresql.csv
-          service: "{{ crpg_db_service_name }}"
-          source: postgresql
-          log_processing_rules:
-          - type: multi_line
-            pattern: \d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])
-            name: new_log_start_with_date
-      csharp:
-        init_config:
-        instances:
-        logs:
-        - type: file
-          path: "{{ crpg_api_log_file }}"
-          service: "{{ crpg_api_service_name }}"
-          source: csharp
-        - type: file
-          path: "{{ crpg_strategus_log_file }}"
-          service: "{{ crpg_strategus_service_name }}"
-          source: csharp
-      http_check:
-        init_config:
-        instances:
-        - name: cRPG Web API
-          url: "http://localhost:{{ crpg_api_port }}/health"
-          content_match: ^Healthy$
-          service: "{{ crpg_api_service_name }}"
-          min_collection_interval: 60
-        - name: Steam Open-ID
-          url: https://steamcommunity.com/openid
-          service: steam
-          min_collection_interval: 60
-          tls_verify: false
-          tls_ignore_warning: true
-      tls:
-        init_config:
-        instances:
-          - server: localhost
+      datadog_agent_major_version: "7"
+      datadog_config:
+          logs_enabled: true
+          apm_config: # Tracing
+              enabled: true
+          process_config: # Live processes
+              enabled: "true"
+          otlp_config: # OpenTelemetry
+              receiver:
+                  protocols:
+                      grpc:
 
 - name: Install Datadog .NET Tracer
   apt:
     deb: "https://github.com/DataDog/dd-trace-dotnet/releases/download/v{{ datadog_dotnet_tracer_version }}/datadog-dotnet-apm_{{ datadog_dotnet_tracer_version }}_amd64.deb"
+
+- name: Make Datadog .NET Tracer script executable
+  file:
+    dest: /opt/datadog/createLogPath.sh
+    mode: +x
 
 - name: Initialize Datadog .NET Tracer
   command: /opt/datadog/createLogPath.sh

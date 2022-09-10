@@ -1,354 +1,351 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Crpg.Application.Battles.Commands;
+﻿using Crpg.Application.Battles.Commands;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Characters;
-using Crpg.Domain.Entities.Heroes;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Battles
+namespace Crpg.Application.UTest.Battles;
+
+public class RespondToBattleMercenaryApplicationCommandTest : TestBase
 {
-    public class RespondToBattleMercenaryApplicationCommandTest : TestBase
+    [Test]
+    public async Task ShouldReturnErrorIfPartyIsNotFound()
     {
-        [Test]
-        public async Task ShouldReturnErrorIfHeroIsNotFound()
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
         {
-            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
-            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
-            {
-                HeroId = 99,
-                MercenaryApplicationId = 99,
-                Accept = true,
-            }, CancellationToken.None);
+            PartyId = 99,
+            MercenaryApplicationId = 99,
+            Accept = true,
+        }, CancellationToken.None);
 
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.HeroNotFound, res.Errors![0].Code);
-        }
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
+    }
 
-        [Test]
-        public async Task ShouldReturnErrorIfApplicationIsNotFound()
+    [Test]
+    public async Task ShouldReturnErrorIfApplicationIsNotFound()
+    {
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
+        await ArrangeDb.SaveChangesAsync();
+
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
         {
-            Hero hero = new() { User = new User() };
-            ArrangeDb.Heroes.Add(hero);
-            await ArrangeDb.SaveChangesAsync();
+            PartyId = party.Id,
+            MercenaryApplicationId = 99,
+            Accept = true,
+        }, CancellationToken.None);
 
-            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
-            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
-            {
-                HeroId = hero.Id,
-                MercenaryApplicationId = 99,
-                Accept = true,
-            }, CancellationToken.None);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.ApplicationNotFound, res.Errors![0].Code);
+    }
 
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.ApplicationNotFound, res.Errors![0].Code);
-        }
+    [Test]
+    public async Task ShouldReturnErrorIfPartyIsNotAFighter()
+    {
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
 
-        [Test]
-        public async Task ShouldReturnErrorIfHeroIsNotAFighter()
+        Battle battle = new()
         {
-            Hero hero = new() { User = new User() };
-            ArrangeDb.Heroes.Add(hero);
+            Phase = BattlePhase.Hiring,
+        };
+        ArrangeDb.Battles.Add(battle);
 
-            Battle battle = new()
-            {
-                Phase = BattlePhase.Hiring,
-            };
-            ArrangeDb.Battles.Add(battle);
-
-            BattleMercenaryApplication application = new()
-            {
-                Side = BattleSide.Attacker,
-                Status = BattleMercenaryApplicationStatus.Pending,
-                Battle = battle,
-                Character = new Character { User = new User() },
-            };
-            ArrangeDb.BattleMercenaryApplications.Add(application);
-            await ArrangeDb.SaveChangesAsync();
-
-            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
-            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
-            {
-                HeroId = hero.Id,
-                MercenaryApplicationId = application.Id,
-                Accept = true,
-            }, CancellationToken.None);
-
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.HeroNotAFighter, res.Errors![0].Code);
-        }
-
-        [Test]
-        public async Task ShouldReturnErrorIfHeroAndCharacterNotOnTheSameSide()
+        BattleMercenaryApplication application = new()
         {
-            Hero hero = new() { User = new User() };
-            ArrangeDb.Heroes.Add(hero);
+            Side = BattleSide.Attacker,
+            Status = BattleMercenaryApplicationStatus.Pending,
+            Battle = battle,
+            Character = new Character { User = new User() },
+        };
+        ArrangeDb.BattleMercenaryApplications.Add(application);
+        await ArrangeDb.SaveChangesAsync();
 
-            Battle battle = new()
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
+        {
+            PartyId = party.Id,
+            MercenaryApplicationId = application.Id,
+            Accept = true,
+        }, CancellationToken.None);
+
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.PartyNotAFighter, res.Errors![0].Code);
+    }
+
+    [Test]
+    public async Task ShouldReturnErrorIfPartyAndCharacterNotOnTheSameSide()
+    {
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
+
+        Battle battle = new()
+        {
+            Phase = BattlePhase.Hiring,
+            Fighters =
             {
-                Phase = BattlePhase.Hiring,
-                Fighters =
+                new BattleFighter
                 {
-                    new BattleFighter
-                    {
-                        Side = BattleSide.Defender,
-                        Commander = false,
-                        Hero = hero,
-                    },
+                    Side = BattleSide.Defender,
+                    Commander = false,
+                    Party = party,
                 },
-            };
-            ArrangeDb.Battles.Add(battle);
+            },
+        };
+        ArrangeDb.Battles.Add(battle);
 
-            BattleMercenaryApplication application = new()
-            {
-                Side = BattleSide.Attacker,
-                Status = BattleMercenaryApplicationStatus.Pending,
-                Battle = battle,
-                Character = new Character { User = new User() },
-            };
-            ArrangeDb.BattleMercenaryApplications.Add(application);
-            await ArrangeDb.SaveChangesAsync();
-
-            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
-            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
-            {
-                HeroId = hero.Id,
-                MercenaryApplicationId = application.Id,
-                Accept = true,
-            }, CancellationToken.None);
-
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.HeroesNotOnTheSameSide, res.Errors![0].Code);
-        }
-
-        [TestCase(BattlePhase.Preparation)]
-        [TestCase(BattlePhase.Scheduled)]
-        [TestCase(BattlePhase.Live)]
-        [TestCase(BattlePhase.End)]
-        public async Task ShouldReturnErrorIfBattleIsNotInHiringPhase(BattlePhase battlePhase)
+        BattleMercenaryApplication application = new()
         {
-            Hero hero = new() { User = new User() };
-            ArrangeDb.Heroes.Add(hero);
+            Side = BattleSide.Attacker,
+            Status = BattleMercenaryApplicationStatus.Pending,
+            Battle = battle,
+            Character = new Character { User = new User() },
+        };
+        ArrangeDb.BattleMercenaryApplications.Add(application);
+        await ArrangeDb.SaveChangesAsync();
 
-            Battle battle = new()
-            {
-                Phase = battlePhase,
-                Fighters =
-                {
-                    new BattleFighter
-                    {
-                        Side = BattleSide.Attacker,
-                        Commander = false,
-                        Hero = hero,
-                    },
-                },
-            };
-            ArrangeDb.Battles.Add(battle);
-
-            BattleMercenaryApplication application = new()
-            {
-                Side = BattleSide.Attacker,
-                Status = BattleMercenaryApplicationStatus.Pending,
-                Battle = battle,
-                Character = new Character { User = new User() },
-            };
-            ArrangeDb.BattleMercenaryApplications.Add(application);
-            await ArrangeDb.SaveChangesAsync();
-
-            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
-            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
-            {
-                HeroId = hero.Id,
-                MercenaryApplicationId = application.Id,
-                Accept = true,
-            }, CancellationToken.None);
-
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.BattleInvalidPhase, res.Errors![0].Code);
-        }
-
-        [TestCase(BattleMercenaryApplicationStatus.Declined)]
-        [TestCase(BattleMercenaryApplicationStatus.Accepted)]
-        public async Task ShouldReturnErrorIfApplicationIsClosed(BattleMercenaryApplicationStatus applicationStatus)
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
         {
-            Hero hero = new() { User = new User() };
-            ArrangeDb.Heroes.Add(hero);
+            PartyId = party.Id,
+            MercenaryApplicationId = application.Id,
+            Accept = true,
+        }, CancellationToken.None);
 
-            Battle battle = new()
-            {
-                Phase = BattlePhase.Hiring,
-                Fighters =
-                {
-                    new BattleFighter
-                    {
-                        Side = BattleSide.Attacker,
-                        Commander = false,
-                        Hero = hero,
-                    },
-                },
-            };
-            ArrangeDb.Battles.Add(battle);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.PartiesNotOnTheSameSide, res.Errors![0].Code);
+    }
 
-            BattleMercenaryApplication application = new()
-            {
-                Side = BattleSide.Attacker,
-                Status = applicationStatus,
-                Battle = battle,
-                Character = new Character { User = new User() },
-            };
-            ArrangeDb.BattleMercenaryApplications.Add(application);
-            await ArrangeDb.SaveChangesAsync();
+    [TestCase(BattlePhase.Preparation)]
+    [TestCase(BattlePhase.Scheduled)]
+    [TestCase(BattlePhase.Live)]
+    [TestCase(BattlePhase.End)]
+    public async Task ShouldReturnErrorIfBattleIsNotInHiringPhase(BattlePhase battlePhase)
+    {
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
 
-            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
-            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
-            {
-                HeroId = hero.Id,
-                MercenaryApplicationId = application.Id,
-                Accept = true,
-            }, CancellationToken.None);
-
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.ApplicationClosed, res.Errors![0].Code);
-        }
-
-        [Test]
-        public async Task ShouldDeclineApplication()
+        Battle battle = new()
         {
-            Hero hero = new() { User = new User() };
-            ArrangeDb.Heroes.Add(hero);
-
-            Battle battle = new()
+            Phase = battlePhase,
+            Fighters =
             {
-                Phase = BattlePhase.Hiring,
-                Fighters =
+                new BattleFighter
                 {
-                    new BattleFighter
-                    {
-                        Side = BattleSide.Attacker,
-                        Commander = false,
-                        Hero = hero,
-                    },
+                    Side = BattleSide.Attacker,
+                    Commander = false,
+                    Party = party,
                 },
-            };
-            ArrangeDb.Battles.Add(battle);
+            },
+        };
+        ArrangeDb.Battles.Add(battle);
 
-            BattleMercenaryApplication application = new()
-            {
-                Side = BattleSide.Attacker,
-                Status = BattleMercenaryApplicationStatus.Pending,
-                Battle = battle,
-                Character = new Character { User = new User() },
-            };
-            ArrangeDb.BattleMercenaryApplications.Add(application);
-            await ArrangeDb.SaveChangesAsync();
-
-            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
-            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
-            {
-                HeroId = hero.Id,
-                MercenaryApplicationId = application.Id,
-                Accept = false,
-            }, CancellationToken.None);
-
-            Assert.IsNull(res.Errors);
-            var applicationVm = res.Data!;
-            Assert.AreEqual(application.Id, applicationVm.Id);
-            Assert.AreEqual(BattleMercenaryApplicationStatus.Declined, applicationVm.Status);
-
-            Assert.AreEqual(0, await AssertDb.BattleMercenaries.CountAsync());
-        }
-
-        [Test]
-        public async Task ShouldAcceptApplication()
+        BattleMercenaryApplication application = new()
         {
-            User applyingUser = new()
-            {
-                Characters = { new Character(), new Character() },
-            };
-            ArrangeDb.Users.Add(applyingUser);
+            Side = BattleSide.Attacker,
+            Status = BattleMercenaryApplicationStatus.Pending,
+            Battle = battle,
+            Character = new Character { User = new User() },
+        };
+        ArrangeDb.BattleMercenaryApplications.Add(application);
+        await ArrangeDb.SaveChangesAsync();
 
-            Hero hero = new() { User = new User() };
-            ArrangeDb.Heroes.Add(hero);
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
+        {
+            PartyId = party.Id,
+            MercenaryApplicationId = application.Id,
+            Accept = true,
+        }, CancellationToken.None);
 
-            Battle battle = new()
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.BattleInvalidPhase, res.Errors![0].Code);
+    }
+
+    [TestCase(BattleMercenaryApplicationStatus.Declined)]
+    [TestCase(BattleMercenaryApplicationStatus.Accepted)]
+    public async Task ShouldReturnErrorIfApplicationIsClosed(BattleMercenaryApplicationStatus applicationStatus)
+    {
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
+
+        Battle battle = new()
+        {
+            Phase = BattlePhase.Hiring,
+            Fighters =
             {
-                Phase = BattlePhase.Hiring,
-                Fighters =
+                new BattleFighter
                 {
-                    new BattleFighter
-                    {
-                        Side = BattleSide.Attacker,
-                        Commander = false,
-                        Hero = hero,
-                    },
+                    Side = BattleSide.Attacker,
+                    Commander = false,
+                    Party = party,
                 },
-            };
-            ArrangeDb.Battles.Add(battle);
+            },
+        };
+        ArrangeDb.Battles.Add(battle);
 
-            BattleMercenaryApplication application = new()
+        BattleMercenaryApplication application = new()
+        {
+            Side = BattleSide.Attacker,
+            Status = applicationStatus,
+            Battle = battle,
+            Character = new Character { User = new User() },
+        };
+        ArrangeDb.BattleMercenaryApplications.Add(application);
+        await ArrangeDb.SaveChangesAsync();
+
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
+        {
+            PartyId = party.Id,
+            MercenaryApplicationId = application.Id,
+            Accept = true,
+        }, CancellationToken.None);
+
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.ApplicationClosed, res.Errors![0].Code);
+    }
+
+    [Test]
+    public async Task ShouldDeclineApplication()
+    {
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
+
+        Battle battle = new()
+        {
+            Phase = BattlePhase.Hiring,
+            Fighters =
             {
-                Side = BattleSide.Attacker,
+                new BattleFighter
+                {
+                    Side = BattleSide.Attacker,
+                    Commander = false,
+                    Party = party,
+                },
+            },
+        };
+        ArrangeDb.Battles.Add(battle);
+
+        BattleMercenaryApplication application = new()
+        {
+            Side = BattleSide.Attacker,
+            Status = BattleMercenaryApplicationStatus.Pending,
+            Battle = battle,
+            Character = new Character { User = new User() },
+        };
+        ArrangeDb.BattleMercenaryApplications.Add(application);
+        await ArrangeDb.SaveChangesAsync();
+
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
+        {
+            PartyId = party.Id,
+            MercenaryApplicationId = application.Id,
+            Accept = false,
+        }, CancellationToken.None);
+
+        Assert.IsNull(res.Errors);
+        var applicationVm = res.Data!;
+        Assert.AreEqual(application.Id, applicationVm.Id);
+        Assert.AreEqual(BattleMercenaryApplicationStatus.Declined, applicationVm.Status);
+
+        Assert.AreEqual(0, await AssertDb.BattleMercenaries.CountAsync());
+    }
+
+    [Test]
+    public async Task ShouldAcceptApplication()
+    {
+        User applyingUser = new()
+        {
+            Characters = { new Character(), new Character() },
+        };
+        ArrangeDb.Users.Add(applyingUser);
+
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
+
+        Battle battle = new()
+        {
+            Phase = BattlePhase.Hiring,
+            Fighters =
+            {
+                new BattleFighter
+                {
+                    Side = BattleSide.Attacker,
+                    Commander = false,
+                    Party = party,
+                },
+            },
+        };
+        ArrangeDb.Battles.Add(battle);
+
+        BattleMercenaryApplication application = new()
+        {
+            Side = BattleSide.Attacker,
+            Status = BattleMercenaryApplicationStatus.Pending,
+            Battle = battle,
+            Character = applyingUser.Characters[0],
+        };
+        BattleMercenaryApplication[] otherApplications =
+        {
+            new() // Should get deleted.
+            {
                 Status = BattleMercenaryApplicationStatus.Pending,
                 Battle = battle,
                 Character = applyingUser.Characters[0],
-            };
-            BattleMercenaryApplication[] otherApplications =
+            },
+            new() // Should stay.
             {
-                new() // Should get deleted.
-                {
-                    Status = BattleMercenaryApplicationStatus.Pending,
-                    Battle = battle,
-                    Character = applyingUser.Characters[0],
-                },
-                new() // Should stay.
-                {
-                    Status = BattleMercenaryApplicationStatus.Accepted,
-                    Battle = battle,
-                    Character = applyingUser.Characters[0],
-                },
-                new() // Should stay.
-                {
-                    Status = BattleMercenaryApplicationStatus.Pending,
-                    Battle = new Battle(),
-                    Character = applyingUser.Characters[1],
-                },
-                new() // Should get deleted.
-                {
-                    Status = BattleMercenaryApplicationStatus.Pending,
-                    Battle = battle,
-                    Character = applyingUser.Characters[1],
-                },
-                new() // Should stay.
-                {
-                    Status = BattleMercenaryApplicationStatus.Pending,
-                    Battle = battle,
-                    Character = new Character { User = new User() },
-                },
-            };
-            ArrangeDb.BattleMercenaryApplications.Add(application);
-            ArrangeDb.BattleMercenaryApplications.AddRange(otherApplications);
-            await ArrangeDb.SaveChangesAsync();
-
-            RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
-            var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
+                Status = BattleMercenaryApplicationStatus.Accepted,
+                Battle = battle,
+                Character = applyingUser.Characters[0],
+            },
+            new() // Should stay.
             {
-                HeroId = hero.Id,
-                MercenaryApplicationId = application.Id,
-                Accept = true,
-            }, CancellationToken.None);
+                Status = BattleMercenaryApplicationStatus.Pending,
+                Battle = new Battle(),
+                Character = applyingUser.Characters[1],
+            },
+            new() // Should get deleted.
+            {
+                Status = BattleMercenaryApplicationStatus.Pending,
+                Battle = battle,
+                Character = applyingUser.Characters[1],
+            },
+            new() // Should stay.
+            {
+                Status = BattleMercenaryApplicationStatus.Pending,
+                Battle = battle,
+                Character = new Character { User = new User() },
+            },
+        };
+        ArrangeDb.BattleMercenaryApplications.Add(application);
+        ArrangeDb.BattleMercenaryApplications.AddRange(otherApplications);
+        await ArrangeDb.SaveChangesAsync();
 
-            Assert.IsNull(res.Errors);
-            var applicationVm = res.Data!;
-            Assert.AreEqual(application.Id, applicationVm.Id);
-            Assert.AreEqual(BattleMercenaryApplicationStatus.Accepted, applicationVm.Status);
+        RespondToBattleMercenaryApplicationCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterClassModel>());
+        var res = await handler.Handle(new RespondToBattleMercenaryApplicationCommand
+        {
+            PartyId = party.Id,
+            MercenaryApplicationId = application.Id,
+            Accept = true,
+        }, CancellationToken.None);
 
-            Assert.AreEqual(1, await AssertDb.BattleMercenaries.CountAsync());
-            Assert.AreEqual(4, await AssertDb.BattleMercenaryApplications.CountAsync());
-        }
+        Assert.IsNull(res.Errors);
+        var applicationVm = res.Data!;
+        Assert.AreEqual(application.Id, applicationVm.Id);
+        Assert.AreEqual(BattleMercenaryApplicationStatus.Accepted, applicationVm.Status);
+
+        Assert.AreEqual(1, await AssertDb.BattleMercenaries.CountAsync());
+        Assert.AreEqual(4, await AssertDb.BattleMercenaryApplications.CountAsync());
     }
 }

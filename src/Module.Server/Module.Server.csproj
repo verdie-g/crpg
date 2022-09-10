@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProcessorArchitecture>AMD64</ProcessorArchitecture> <!-- avoids architecture mismatch warnings -->
+    <RootNamespace>Crpg.Module</RootNamespace>
+    <AssemblyName>Crpg.Module</AssemblyName>
+    <ModuleName>cRPG</ModuleName>
+    <OutputPath>$(MB_SERVER_PATH)\Modules\$(ModuleName)\bin\Win64_Shipping_Server</OutputPath>
+    <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
+
+    <!-- Avoid generating pdb in release configuration -->
+    <DebugSymbols Condition="'$(Configuration)' == 'Release'">false</DebugSymbols>
+    <DebugType Condition="'$(Configuration)' == 'Release'">None</DebugType>
+
+    <DefineConstants>$(DefineConstants);CRPG_SERVER</DefineConstants>
+  </PropertyGroup>
+
+  <Target Name="CheckMbPathDefined" BeforeTargets="GetReferenceAssemblyPaths">
+    <Error Text="Environment variable MB_SERVER_PATH should be set to your Bannerlord server installation path" Condition="'$(MB_SERVER_PATH)' == ''" />
+  </Target>
+
+  <ItemGroup>
+    <ContentWithTargetPath Include="..\..\data\constants.json" Link="ModuleData\constants.json" TargetPath="..\..\ModuleData\constants.json" CopyToOutputDirectory="PreserveNewest" />
+    <ContentWithTargetPath Include="SubModule.xml;ds_config_crpg.txt;ModuleData\**\*;GUI\**\*.xml" TargetPath="..\..\%(Identity)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="$(MB_SERVER_PATH)\bin\Win64_Shipping_Server\TaleWorlds.*.dll">
+      <Private>False</Private>
+    </Reference>
+
+    <Reference Include="$(MB_SERVER_PATH)\bin\Win64_Shipping_Server\Newtonsoft.Json.dll">
+      <Private>False</Private>
+    </Reference>
+
+    <!-- Remove native library (not .NET). -->
+    <Reference Remove="$(MB_SERVER_PATH)/bin/Win64_Shipping_Server/TaleWorlds.Native.dll" />
+    <!-- These libraries cause dependency conflicts. -->
+    <Reference Remove="$(MB_SERVER_PATH)/bin/Win64_Shipping_Server/TaleWorlds.Starter.DotNetCore.dll" />
+    <Reference Remove="$(MB_SERVER_PATH)/bin/Win64_Shipping_Server/TaleWorlds.MountAndBlade.DedicatedCustomServer.WebPanel.dll" />
+    <Reference Remove="$(MB_SERVER_PATH)/bin/Win64_Shipping_Server/TaleWorlds.MountAndBlade.DedicatedCustomServer.WebPanel.Views.dll" />
+  </ItemGroup>
+
+</Project>

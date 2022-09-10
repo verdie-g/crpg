@@ -2,7 +2,7 @@
 
 To export item thumbnails and the items.json file, follow the instructions:
 
-- Set the `MBPATH` environment variable to your Bannerlord path (e.g. C:/Program Files/steam/steamapps/common/Mount & Blade 2: Bannerlord)
+- Set the `MB_CLIENT_PATH` environment variable to your Bannerlord path (e.g. C:/Program Files/steam/steamapps/common/Mount & Blade 2: Bannerlord)
 - Enable the `Export Items` option by removing these lines in the file CrpgSubModule.cs
 ```diff
 @@ -91,10 +91,8 @@ namespace Crpg.GameMod
@@ -24,4 +24,4 @@ To export item thumbnails and the items.json file, follow the instructions:
 - Max out the quality of your game as the quality of the images depend on it
 - Click on the `Export Items` button in the menu
 - Wait for the "Done" message
-- Items are exported in `$MBPATH/Items`
+- Items are exported in `$MB_CLIENT_PATH/Items`

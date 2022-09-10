@@ -1,204 +1,201 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Crpg.Application.Common.Results;
+﻿using Crpg.Application.Common.Results;
 using Crpg.Application.Settlements.Commands;
-using Crpg.Domain.Entities.Heroes;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Settlements
+namespace Crpg.Application.UTest.Settlements;
+
+public class UpdateSettlementCommandTest : TestBase
 {
-    public class UpdateSettlementCommandTest : TestBase
+    [Test]
+    public async Task ShouldReturnErrorIfPartyIsNotFound()
     {
-        [Test]
-        public async Task ShouldReturnErrorIfHeroIsNotFound()
+        UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
+        var res = await handler.Handle(new UpdateSettlementCommand
         {
-            UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new UpdateSettlementCommand
-            {
-                HeroId = 1,
-                SettlementId = 2,
-                Troops = 0,
-            }, CancellationToken.None);
+            PartyId = 1,
+            SettlementId = 2,
+            Troops = 0,
+        }, CancellationToken.None);
 
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.HeroNotFound, res.Errors![0].Code);
-        }
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
+    }
 
-        [Test]
-        public async Task ShouldReturnErrorIfHeroNotInASettlement()
+    [Test]
+    public async Task ShouldReturnErrorIfPartyNotInASettlement()
+    {
+        Party party = new() { Status = PartyStatus.Idle, User = new User() };
+        ArrangeDb.Parties.Add(party);
+        await ArrangeDb.SaveChangesAsync();
+
+        UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
+        var res = await handler.Handle(new UpdateSettlementCommand
         {
-            Hero hero = new() { Status = HeroStatus.Idle, User = new User() };
-            ArrangeDb.Heroes.Add(hero);
-            await ArrangeDb.SaveChangesAsync();
+            PartyId = party.Id,
+            SettlementId = 1,
+            Troops = 0,
+        }, CancellationToken.None);
 
-            UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new UpdateSettlementCommand
-            {
-                HeroId = hero.Id,
-                SettlementId = 1,
-                Troops = 0,
-            }, CancellationToken.None);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.PartyNotInASettlement, res.Errors![0].Code);
+    }
 
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.HeroNotInASettlement, res.Errors![0].Code);
-        }
+    [Test]
+    public async Task ShouldReturnErrorIfPartyNotInTheSpecifiedSettlement()
+    {
+        Settlement settlement = new();
+        ArrangeDb.Settlements.Add(settlement);
 
-        [Test]
-        public async Task ShouldReturnErrorIfHeroNotInTheSpecifiedSettlement()
+        Party party = new()
         {
-            Settlement settlement = new();
-            ArrangeDb.Settlements.Add(settlement);
+            Status = PartyStatus.IdleInSettlement,
+            TargetedSettlement = settlement,
+            User = new User(),
+        };
+        ArrangeDb.Parties.Add(party);
 
-            Hero hero = new()
-            {
-                Status = HeroStatus.IdleInSettlement,
-                TargetedSettlement = settlement,
-                User = new User(),
-            };
-            ArrangeDb.Heroes.Add(hero);
+        await ArrangeDb.SaveChangesAsync();
 
-            await ArrangeDb.SaveChangesAsync();
-
-            UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new UpdateSettlementCommand
-            {
-                HeroId = hero.Id,
-                SettlementId = 99,
-                Troops = 0,
-            }, CancellationToken.None);
-
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.HeroNotInASettlement, res.Errors![0].Code);
-        }
-
-        [Test]
-        public async Task ShouldReturnErrorIfHeroIsGivingTroopTheyDontHave()
+        UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
+        var res = await handler.Handle(new UpdateSettlementCommand
         {
-            Settlement settlement = new();
-            ArrangeDb.Settlements.Add(settlement);
+            PartyId = party.Id,
+            SettlementId = 99,
+            Troops = 0,
+        }, CancellationToken.None);
 
-            Hero hero = new()
-            {
-                Status = HeroStatus.IdleInSettlement,
-                Troops = 5,
-                TargetedSettlement = settlement,
-                User = new User(),
-            };
-            ArrangeDb.Heroes.Add(hero);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.PartyNotInASettlement, res.Errors![0].Code);
+    }
 
-            await ArrangeDb.SaveChangesAsync();
+    [Test]
+    public async Task ShouldReturnErrorIfPartyIsGivingTroopTheyDontHave()
+    {
+        Settlement settlement = new();
+        ArrangeDb.Settlements.Add(settlement);
 
-            UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new UpdateSettlementCommand
-            {
-                HeroId = hero.Id,
-                SettlementId = settlement.Id,
-                Troops = 6,
-            }, CancellationToken.None);
-
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.HeroNotEnoughTroops, res.Errors![0].Code);
-        }
-
-        [Test]
-        public async Task ShouldReturnErrorIfHeroIsTakingTroopsFromANotOwnedSettlement()
+        Party party = new()
         {
-            Settlement settlement = new() { Troops = 10 };
-            ArrangeDb.Settlements.Add(settlement);
+            Status = PartyStatus.IdleInSettlement,
+            Troops = 5,
+            TargetedSettlement = settlement,
+            User = new User(),
+        };
+        ArrangeDb.Parties.Add(party);
 
-            Hero hero = new()
-            {
-                Status = HeroStatus.IdleInSettlement,
-                Troops = 5,
-                TargetedSettlement = settlement,
-                User = new User(),
-            };
-            ArrangeDb.Heroes.Add(hero);
+        await ArrangeDb.SaveChangesAsync();
 
-            await ArrangeDb.SaveChangesAsync();
-
-            UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new UpdateSettlementCommand
-            {
-                HeroId = hero.Id,
-                SettlementId = settlement.Id,
-                Troops = 5,
-            }, CancellationToken.None);
-
-            Assert.IsNotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.HeroNotSettlementOwner, res.Errors![0].Code);
-        }
-
-        [Test]
-        public async Task ShouldGiveTroopsToSettlement()
+        UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
+        var res = await handler.Handle(new UpdateSettlementCommand
         {
-            Settlement settlement = new()
-            {
-                Troops = 20,
-            };
-            ArrangeDb.Settlements.Add(settlement);
+            PartyId = party.Id,
+            SettlementId = settlement.Id,
+            Troops = 6,
+        }, CancellationToken.None);
 
-            Hero hero = new()
-            {
-                Status = HeroStatus.RecruitingInSettlement,
-                Troops = 10,
-                TargetedSettlement = settlement,
-                User = new User(),
-            };
-            ArrangeDb.Heroes.Add(hero);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.PartyNotEnoughTroops, res.Errors![0].Code);
+    }
 
-            await ArrangeDb.SaveChangesAsync();
+    [Test]
+    public async Task ShouldReturnErrorIfPartyIsTakingTroopsFromANotOwnedSettlement()
+    {
+        Settlement settlement = new() { Troops = 10 };
+        ArrangeDb.Settlements.Add(settlement);
 
-            UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new UpdateSettlementCommand
-            {
-                HeroId = hero.Id,
-                SettlementId = settlement.Id,
-                Troops = 30,
-            }, CancellationToken.None);
-
-            Assert.IsNull(res.Errors);
-            var settlementVm = res.Data!;
-            Assert.AreEqual(settlement.Id, settlementVm.Id);
-            Assert.AreEqual(30, AssertDb.Settlements.Find(settlement.Id).Troops);
-        }
-
-        [Test]
-        public async Task ShouldTakeTroopsFromSettlement()
+        Party party = new()
         {
-            Settlement settlement = new()
-            {
-                Troops = 20,
-            };
-            ArrangeDb.Settlements.Add(settlement);
+            Status = PartyStatus.IdleInSettlement,
+            Troops = 5,
+            TargetedSettlement = settlement,
+            User = new User(),
+        };
+        ArrangeDb.Parties.Add(party);
 
-            Hero hero = new()
-            {
-                Status = HeroStatus.IdleInSettlement,
-                Troops = 10,
-                TargetedSettlement = settlement,
-                User = new User(),
-            };
-            ArrangeDb.Heroes.Add(hero);
+        await ArrangeDb.SaveChangesAsync();
 
-            settlement.Owner = hero;
-            await ArrangeDb.SaveChangesAsync();
+        UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
+        var res = await handler.Handle(new UpdateSettlementCommand
+        {
+            PartyId = party.Id,
+            SettlementId = settlement.Id,
+            Troops = 5,
+        }, CancellationToken.None);
 
-            UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
-            var res = await handler.Handle(new UpdateSettlementCommand
-            {
-                HeroId = hero.Id,
-                SettlementId = settlement.Id,
-                Troops = 10,
-            }, CancellationToken.None);
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.PartyNotSettlementOwner, res.Errors![0].Code);
+    }
 
-            Assert.IsNull(res.Errors);
-            var settlementVm = res.Data!;
-            Assert.AreEqual(settlement.Id, settlementVm.Id);
-            Assert.AreEqual(20, AssertDb.Heroes.Find(hero.Id).Troops);
-            Assert.AreEqual(10, AssertDb.Settlements.Find(settlement.Id).Troops);
-        }
+    [Test]
+    public async Task ShouldGiveTroopsToSettlement()
+    {
+        Settlement settlement = new()
+        {
+            Troops = 20,
+        };
+        ArrangeDb.Settlements.Add(settlement);
+
+        Party party = new()
+        {
+            Status = PartyStatus.RecruitingInSettlement,
+            Troops = 10,
+            TargetedSettlement = settlement,
+            User = new User(),
+        };
+        ArrangeDb.Parties.Add(party);
+
+        await ArrangeDb.SaveChangesAsync();
+
+        UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
+        var res = await handler.Handle(new UpdateSettlementCommand
+        {
+            PartyId = party.Id,
+            SettlementId = settlement.Id,
+            Troops = 30,
+        }, CancellationToken.None);
+
+        Assert.IsNull(res.Errors);
+        var settlementVm = res.Data!;
+        Assert.AreEqual(settlement.Id, settlementVm.Id);
+        Assert.AreEqual(30, AssertDb.Settlements.Find(settlement.Id)!.Troops);
+    }
+
+    [Test]
+    public async Task ShouldTakeTroopsFromSettlement()
+    {
+        Settlement settlement = new()
+        {
+            Troops = 20,
+        };
+        ArrangeDb.Settlements.Add(settlement);
+
+        Party party = new()
+        {
+            Status = PartyStatus.IdleInSettlement,
+            Troops = 10,
+            TargetedSettlement = settlement,
+            User = new User(),
+        };
+        ArrangeDb.Parties.Add(party);
+
+        settlement.Owner = party;
+        await ArrangeDb.SaveChangesAsync();
+
+        UpdateSettlementCommand.Handler handler = new(ActDb, Mapper);
+        var res = await handler.Handle(new UpdateSettlementCommand
+        {
+            PartyId = party.Id,
+            SettlementId = settlement.Id,
+            Troops = 10,
+        }, CancellationToken.None);
+
+        Assert.IsNull(res.Errors);
+        var settlementVm = res.Data!;
+        Assert.AreEqual(settlement.Id, settlementVm.Id);
+        Assert.AreEqual(20, AssertDb.Parties.Find(party.Id)!.Troops);
+        Assert.AreEqual(10, AssertDb.Settlements.Find(settlement.Id)!.Troops);
     }
 }

@@ -1,61 +1,56 @@
-using System;
-using System.Threading.Tasks;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
-using Crpg.Persistence;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
 
-namespace Persistence.UTest
+namespace Crpg.Persistence.UTest;
+
+public class CrpgDbContextTest
 {
-    public class CrpgDbContextTest
+    [Test]
+    public async Task AuditableEntitySetCreatedAtOnCreation()
     {
-        [Test]
-        public async Task AuditableEntitySetCreatedAtOnCreation()
-        {
-            var options = new DbContextOptionsBuilder<CrpgDbContext>()
-                .UseInMemoryDatabase(Guid.NewGuid().ToString())
-                .Options;
+        var options = new DbContextOptionsBuilder<CrpgDbContext>()
+            .UseInMemoryDatabase(Guid.NewGuid().ToString())
+            .Options;
 
-            var dt = new DateTimeOffset(new DateTime(2000, 01, 02));
-            var idt = new Mock<IDateTimeOffset>();
-            idt.SetupGet(i => i.Now).Returns(dt);
-            var db = new CrpgDbContext(options, idt.Object);
+        DateTime dt = new(2000, 01, 02);
+        Mock<IDateTime> idt = new();
+        idt.SetupGet(i => i.UtcNow).Returns(dt);
+        CrpgDbContext db = new(options, idt.Object);
 
-            var character = new Character();
-            db.Add(character);
-            await db.SaveChangesAsync();
+        Character character = new();
+        db.Add(character);
+        await db.SaveChangesAsync();
 
-            Assert.AreEqual(dt, character.UpdatedAt);
-            Assert.AreEqual(dt, character.CreatedAt);
-        }
+        Assert.AreEqual(dt, character.UpdatedAt);
+        Assert.AreEqual(dt, character.CreatedAt);
+    }
 
-        [Test]
-        public async Task AuditableEntitySetModifiedAtOnUpdate()
-        {
-            var options = new DbContextOptionsBuilder<CrpgDbContext>()
-                .UseInMemoryDatabase(Guid.NewGuid().ToString())
-                .Options;
+    [Test]
+    public async Task AuditableEntitySetModifiedAtOnUpdate()
+    {
+        var options = new DbContextOptionsBuilder<CrpgDbContext>()
+            .UseInMemoryDatabase(Guid.NewGuid().ToString())
+            .Options;
 
-            var dt1 = new DateTimeOffset(new DateTime(2000, 01, 02));
-            var dt2 = new DateTimeOffset(new DateTime(2000, 01, 03));
-            var idt = new Mock<IDateTimeOffset>();
-            idt.SetupSequence(i => i.Now)
-               .Returns(dt1) // LastModifiedAt
-               .Returns(dt1) // CreatedAt
-               .Returns(dt2); // LastModifiedAt
-            var db = new CrpgDbContext(options, idt.Object);
+        DateTime dt1 = new(2000, 01, 02);
+        DateTime dt2 = new(2000, 01, 03);
+        Mock<IDateTime> idt = new();
+        idt.SetupSequence(i => i.UtcNow)
+            .Returns(dt1) // LastModifiedAt
+            .Returns(dt1) // CreatedAt
+            .Returns(dt2); // LastModifiedAt
+        CrpgDbContext db = new(options, idt.Object);
 
-            var character = new Character();
-            db.Add(character);
-            await db.SaveChangesAsync();
+        Character character = new();
+        db.Add(character);
+        await db.SaveChangesAsync();
 
-            character.Name = "toto";
-            await db.SaveChangesAsync();
+        character.Name = "toto";
+        await db.SaveChangesAsync();
 
-            Assert.AreEqual(dt2, character.UpdatedAt);
-        }
+        Assert.AreEqual(dt2, character.UpdatedAt);
     }
 }

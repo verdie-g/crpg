@@ -1,13 +1,12 @@
-using Crpg.Application.Common.Mappings;
-using Crpg.Domain.Entities;
+﻿using Crpg.Application.Common.Mappings;
 using Crpg.Domain.Entities.Characters;
 
-namespace Crpg.Application.Characters.Models
+namespace Crpg.Application.Characters.Models;
+
+public record CharacterStatisticsViewModel : IMapFrom<CharacterStatistics>
 {
-    public record CharacterStatisticsViewModel : IMapFrom<CharacterStatistics>
-    {
-        public CharacterAttributesViewModel Attributes { get; init; } = new();
-        public CharacterSkillsViewModel Skills { get; init; } = new();
-        public CharacterWeaponProficienciesViewModel WeaponProficiencies { get; init; } = new();
-    }
+    public int Kills { get; init; }
+    public int Deaths { get; init; }
+    public int Assists { get; init; }
+    public TimeSpan PlayTime { get; init; }
 }

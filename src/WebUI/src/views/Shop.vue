@@ -17,7 +17,7 @@
                 <div class="card-image">
                   <figure class="image">
                     <img
-                      :src="`${publicPath}items/${item.templateMbId}.png`"
+                      :src="`${publicPath}items/${item.id}.png`"
                       alt="item image"
                       loading="lazy"
                     />
@@ -26,19 +26,19 @@
                 <div class="card-content content">
                   <h4>{{ item.name }}</h4>
                   <div class="content">
-                    <item-properties :item="item" :weapon-idx="weaponIdx" />
+                    <item-properties :item="item" :rank="0" :weapon-idx="weaponIdx" />
                   </div>
                 </div>
                 <footer class="card-footer">
                   <b-button
                     icon-left="coins"
                     expanded
-                    :disabled="item.value > gold || userItems[item.id]"
+                    :disabled="item.price > gold || ownedItems[item.id]"
                     :loading="buyingItems[item.id]"
                     @click="buy(item)"
                     :title="buyButtonTitle(item)"
                   >
-                    {{ item.value }}
+                    {{ item.price }}
                   </b-button>
                 </footer>
               </div>
@@ -111,6 +111,7 @@ import ShopFilters from '@/models/shop-filters';
 import ItemType from '@/models/item-type';
 import { filterItemsByType } from '@/services/item-service';
 import Culture from '@/models/culture';
+import UserItem from '@/models/user-item';
 
 @Component({
   components: { ShopFilterForm: ShopFiltersForm, ItemProperties },
@@ -119,14 +120,14 @@ export default class Shop extends Vue {
   publicPath = process.env.BASE_URL;
 
   // items for which buy request was sent
-  buyingItems: Record<number, boolean> = {};
+  buyingItems: Record<string, boolean> = {};
 
   itemsPerPage = 20;
 
   // items owned by the user
-  get userItems(): Record<number, boolean> {
-    return userModule.userItems.reduce((res: Record<number, boolean>, i: Item) => {
-      res[i.id] = true;
+  get ownedItems(): Record<string, boolean> {
+    return userModule.userItems.reduce((res: Record<string, boolean>, ui: UserItem) => {
+      res[ui.baseItem.id] = true;
       return res;
     }, {});
   }
@@ -174,7 +175,7 @@ export default class Shop extends Vue {
   get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
     const filteredItems = itemModule.items.filter(
       i =>
-        (this.filters.showOwned || this.userItems[i.id] === undefined) &&
+        (this.filters.showOwned || this.ownedItems[i.id] === undefined) &&
         // When the user filters by a culture, Neutral items are always added in the result.
         (this.filters.culture === null ||
           i.culture === this.filters.culture ||
@@ -202,15 +203,15 @@ export default class Shop extends Vue {
     Vue.set(this.buyingItems, item.id, true);
     await userModule.buyItem(item);
     Vue.set(this.buyingItems, item.id, false);
-    notify(`Bought ${item.name} for ${item.value} gold`);
+    notify(`Bought ${item.name} for ${item.price} gold`);
   }
 
   buyButtonTitle(item: Item): string {
-    if (this.userItems[item.id]) {
+    if (this.ownedItems[item.id]) {
       return 'You already own this item';
     }
 
-    if (item.value > this.gold) {
+    if (item.price > this.gold) {
       return 'Not enough gold';
     }
 

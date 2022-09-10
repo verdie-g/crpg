@@ -1,24 +1,19 @@
 {
-  "Serilog": {
-    "MinimumLevel": {
+  "Logging": {
+    "LogLevel": {
       "Default": "Information",
-      "Override": {
-        "Microsoft": "Warning",
-        "Microsoft.Hosting.Lifetime": "Information",
-        "IdentityServer4": "Warning"
-      }
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information",
+      "IdentityServer4": "Warning"
     },
-    "WriteTo": [
-      {
-        "Name": "File",
-        "Args": {
-          "Path": "{{ crpg_api_log_file }}",
-          "Formatter": "Serilog.Formatting.Compact.RenderedCompactJsonFormatter, Serilog.Formatting.Compact",
-          "Buffered": true,
-          "FlushToDiskInterval": "00:00:15"
-        }
+    "Console": {
+      "FormatterName": "json",
+      "FormatterOptions": {
+        "IncludeScopes": true,
+        "TimestampFormat": "o",
+        "UseUtcTimestamp": true
       }
-    ]
+    }
   },
   "IdentityServer": {
     "Authority": "https://api.{{ crpg_domain_name }}",

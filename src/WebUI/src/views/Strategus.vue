@@ -18,20 +18,20 @@
       @click="onMapClick"
     >
       <l-control-zoom position="bottomright" />
-      <locate-hero-control position="bottomright" />
+      <locate-party-control position="bottomright" />
       <l-control-mouse-position />
       <l-tile-layer :url="url" :attribution="attribution" />
-      <hero v-if="hero" :hero="hero" :self="true" />
-      <l-polyline v-if="heroMovementLine !== null" v-bind="heroMovementLine" />
+      <party v-if="party" :party="party" :self="true" />
+      <l-polyline v-if="partyMovementLine !== null" v-bind="partyMovementLine" />
       <l-marker-cluster
         :options="{ removeOutsideVisibleBounds: true, maxClusterRadius: markerClusterRadius }"
       >
-        <hero
-          v-for="vh in visibleHeroes"
-          :key="'hero-' + vh.id"
-          :hero="vh"
+        <party
+          v-for="vh in visibleParties"
+          :key="'party-' + vh.id"
+          :party="vh"
           :self="false"
-          @click="onHeroClick(vh)"
+          @click="onPartyClick(vh)"
         />
         <settlement
           v-for="settlement in settlements"
@@ -50,7 +50,7 @@ import { LatLng, LatLngBounds, CRS, LeafletMouseEvent } from 'leaflet';
 import { LMap, LControlZoom, LTileLayer, LCircleMarker, LPolyline } from 'vue2-leaflet';
 import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster';
 import LControlMousePosition from '@/components/strategus/LControlMousePosition.vue';
-import LocateHeroControl from '@/components/strategus/LocateHeroControl.vue';
+import LocatePartyControl from '@/components/strategus/LocatePartyControl.vue';
 import { promptMovementType } from '@/components/strategus/MoveDialog.vue';
 import Settlement from '@/models/settlement-public';
 import SettlementType from '@/models/settlement-type';
@@ -60,11 +60,11 @@ import SettlementComponent from '@/components/strategus/SettlementComponent.vue'
 import RegistrationDialog from '@/components/strategus/RegistrationDialog.vue';
 import SettlementDialog from '@/components/strategus/SettlementDialog.vue';
 import Constants from '../../../../data/constants.json';
-import Hero from '@/models/hero';
-import HeroComponent from '@/components/strategus/HeroComponent.vue';
-import HeroVisible from '@/models/hero-visible';
-import HeroStatus from '@/models/hero-status';
-import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
+import Party from '@/models/party';
+import PartyComponent from '@/components/strategus/PartyComponent.vue';
+import PartyVisible from '@/models/party-visible';
+import PartyStatus from '@/models/party-status';
+import PartyStatusUpdateRequest from '@/models/party-status-update-request';
 import { positionToLatLng } from '@/utils/geometry';
 import { Position } from 'geojson';
 import MovementType from '@/models/movement-type';
@@ -82,12 +82,12 @@ const dialogs = {
     LTileLayer,
     LCircleMarker,
     LControlMousePosition,
-    LocateHeroControl,
+    LocatePartyControl,
     LPolyline,
     'l-marker-cluster': Vue2LeafletMarkerCluster,
     ...dialogs,
     settlement: SettlementComponent,
-    hero: HeroComponent,
+    party: PartyComponent,
   },
 })
 export default class Strategus extends Vue {
@@ -112,7 +112,7 @@ export default class Strategus extends Vue {
 
   // Register here handlers for all events that can emitted from a dialog.
   dialogEventHandlers = {
-    heroSpawn: this.heroSpawn,
+    partySpawn: this.partySpawn,
   };
 
   get settlements(): Settlement[] {
@@ -126,13 +126,13 @@ export default class Strategus extends Vue {
     );
   }
 
-  get hero(): Hero | null {
-    return strategusModule.hero;
+  get party(): Party | null {
+    return strategusModule.party;
   }
 
   // Returns the polyline props if the user is moving, else null.
-  get heroMovementLine(): any {
-    if (this.hero === null) {
+  get partyMovementLine(): any {
+    if (this.party === null) {
       return null;
     }
 
@@ -141,25 +141,25 @@ export default class Strategus extends Vue {
 
     let color: string;
     let positions: Position[];
-    switch (this.hero.status) {
-      case HeroStatus.MovingToPoint:
-        positions = this.hero.waypoints.coordinates;
+    switch (this.party.status) {
+      case PartyStatus.MovingToPoint:
+        positions = this.party.waypoints.coordinates;
         color = moveColor;
         break;
-      case HeroStatus.FollowingHero:
-        positions = [this.hero.targetedHero.position.coordinates];
+      case PartyStatus.FollowingParty:
+        positions = [this.party.targetedParty.position.coordinates];
         color = moveColor;
         break;
-      case HeroStatus.MovingToSettlement:
-        positions = [this.hero.targetedSettlement.position.coordinates];
+      case PartyStatus.MovingToSettlement:
+        positions = [this.party.targetedSettlement.position.coordinates];
         color = moveColor;
         break;
-      case HeroStatus.MovingToAttackHero:
-        positions = [this.hero.targetedHero.position.coordinates];
+      case PartyStatus.MovingToAttackParty:
+        positions = [this.party.targetedParty.position.coordinates];
         color = attackColor;
         break;
-      case HeroStatus.MovingToAttackSettlement:
-        positions = [this.hero.targetedSettlement.position.coordinates];
+      case PartyStatus.MovingToAttackSettlement:
+        positions = [this.party.targetedSettlement.position.coordinates];
         color = attackColor;
         break;
       default:
@@ -167,13 +167,13 @@ export default class Strategus extends Vue {
     }
 
     return {
-      latLngs: [this.hero.position.coordinates, ...positions].map(positionToLatLng),
+      latLngs: [this.party.position.coordinates, ...positions].map(positionToLatLng),
       color,
     };
   }
 
-  get visibleHeroes(): HeroVisible[] {
-    return strategusModule.visibleHeroes;
+  get visibleParties(): PartyVisible[] {
+    return strategusModule.visibleParties;
   }
 
   get map(): LMap {
@@ -191,8 +191,8 @@ export default class Strategus extends Vue {
         // Not registered to strategus.
         strategusModule.pushDialog('RegistrationDialog');
       } else {
-        this.heroSpawn();
-        if (strategusService.inSettlementStatuses.has(this.hero!.status)) {
+        this.partySpawn();
+        if (strategusService.inSettlementStatuses.has(this.party!.status)) {
           strategusModule.pushDialog('SettlementDialog');
         }
       }
@@ -233,10 +233,10 @@ export default class Strategus extends Vue {
     return map.latLngToLayerPoint(a).distanceTo(map.latLngToLayerPoint(b));
   }
 
-  heroSpawn() {
+  partySpawn() {
     strategusModule.getUpdate();
     this.updateIntervalId = setInterval(() => strategusModule.getUpdate(), 60 * 1000);
-    this.map.mapObject.flyTo(positionToLatLng(this.hero!.position.coordinates), 5, {
+    this.map.mapObject.flyTo(positionToLatLng(this.party!.position.coordinates), 5, {
       animate: false,
     });
   }
@@ -245,21 +245,21 @@ export default class Strategus extends Vue {
     const clickCoordinates = [event.latlng.lng, event.latlng.lat];
     let coordinates =
       event.originalEvent.shiftKey &&
-      this.hero !== null &&
-      this.hero.status === HeroStatus.MovingToPoint
-        ? [...this.hero.waypoints.coordinates, clickCoordinates]
+      this.party !== null &&
+      this.party.status === PartyStatus.MovingToPoint
+        ? [...this.party.waypoints.coordinates, clickCoordinates]
         : [clickCoordinates];
 
-    this.moveHero({
-      status: HeroStatus.MovingToPoint,
+    this.moveParty({
+      status: PartyStatus.MovingToPoint,
       waypoints: { type: 'MultiPoint', coordinates },
     });
   }
 
-  async onHeroClick(hero: Hero) {
+  async onPartyClick(party: Party) {
     const movement = await promptMovementType(
       this.$refs.map as Vue,
-      positionToLatLng(hero.position.coordinates),
+      positionToLatLng(party.position.coordinates),
       [MovementType.Follow, MovementType.Attack]
     );
 
@@ -267,21 +267,23 @@ export default class Strategus extends Vue {
       return;
     }
 
-    this.moveHero({
+    this.moveParty({
       status:
-        movement === MovementType.Follow ? HeroStatus.FollowingHero : HeroStatus.MovingToAttackHero,
-      targetedHeroId: hero.id,
+        movement === MovementType.Follow
+          ? PartyStatus.FollowingParty
+          : PartyStatus.MovingToAttackParty,
+      targetedPartyId: party.id,
     });
   }
 
   async onSettlementClick(settlement: Settlement) {
-    if (this.hero === null) {
+    if (this.party === null) {
       return;
     }
 
     if (
-      strategusService.inSettlementStatuses.has(this.hero.status) &&
-      this.hero.targetedSettlement.id === settlement.id
+      strategusService.inSettlementStatuses.has(this.party.status) &&
+      this.party.targetedSettlement.id === settlement.id
     ) {
       strategusModule.pushDialog('SettlementDialog');
       return;
@@ -297,25 +299,25 @@ export default class Strategus extends Vue {
       return;
     }
 
-    this.moveHero({
+    this.moveParty({
       status:
         movement === MovementType.Move
-          ? HeroStatus.MovingToSettlement
-          : HeroStatus.MovingToAttackSettlement,
+          ? PartyStatus.MovingToSettlement
+          : PartyStatus.MovingToAttackSettlement,
       targetedSettlementId: settlement.id,
     });
   }
 
-  moveHero(updateRequest: Partial<HeroStatusUpdateRequest>) {
-    if (this.hero === null) {
+  moveParty(updateRequest: Partial<PartyStatusUpdateRequest>) {
+    if (this.party === null) {
       return;
     }
 
     strategusModule
-      .updateHeroStatus({
-        status: HeroStatus.MovingToPoint,
+      .updatePartyStatus({
+        status: PartyStatus.MovingToPoint,
         waypoints: { type: 'MultiPoint', coordinates: [] },
-        targetedHeroId: 0,
+        targetedPartyId: 0,
         targetedSettlementId: 0,
         ...updateRequest,
       })

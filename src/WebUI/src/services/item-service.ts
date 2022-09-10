@@ -7,6 +7,9 @@ import WeaponFlags from '@/models/weapon-flags';
 import ItemSlot from '@/models/item-slot';
 import ItemWeaponComponent from '@/models/item-weapon-component';
 import WeaponClass from '@/models/weapon-class';
+import UserItem from '@/models/user-item';
+import { applyPolynomialFunction } from '@/utils/math';
+import Constants from '../../../../data/constants.json';
 
 export const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.Undefined]: 'Undefined',
@@ -41,39 +44,40 @@ const damageTypeToStr: Record<DamageType, string> = {
 
 // Set null flag we don't to display
 const weaponFlagsStr: Record<WeaponFlags, string | null> = {
-  [WeaponFlags.MeleeWeapon]: 'Melee',
-  [WeaponFlags.RangedWeapon]: 'Ranged',
-  [WeaponFlags.FirearmAmmo]: null,
-  [WeaponFlags.NotUsableWithOneHand]: 'TwoHandOnly',
-  [WeaponFlags.NotUsableWithTwoHand]: 'OneHandOnly',
-  [WeaponFlags.WideGrip]: 'WideGrip',
-  [WeaponFlags.AttachAmmoToVisual]: null,
-  [WeaponFlags.Consumable]: null,
-  [WeaponFlags.HasHitPoints]: null,
-  [WeaponFlags.HasString]: null,
-  [WeaponFlags.StringHeldByHand]: null,
-  [WeaponFlags.UnloadWhenSheathed]: null,
-  [WeaponFlags.AffectsArea]: 'AffectsArea',
   [WeaponFlags.AffectsAreaBig]: 'AffectsAreaBig',
-  [WeaponFlags.Burning]: 'Burning',
-  [WeaponFlags.BonusAgainstShield]: 'BonusAgainstShield',
-  [WeaponFlags.CanPenetrateShield]: 'PenetrateShield',
-  [WeaponFlags.CantReloadOnHorseback]: 'HorseReload',
-  [WeaponFlags.AutoReload]: 'AutoReload',
-  [WeaponFlags.TwoHandIdleOnMount]: 'IdleOnMount',
-  [WeaponFlags.NoBlood]: null,
-  [WeaponFlags.PenaltyWithShield]: 'PenaltyWithShield',
-  [WeaponFlags.CanDismount]: null,
-  [WeaponFlags.MissileWithPhysics]: null,
-  [WeaponFlags.MultiplePenetration]: 'MultiplePenetration',
-  [WeaponFlags.CanKnockDown]: 'KnockDown',
-  [WeaponFlags.CanBlockRanged]: 'BlockRanged',
-  [WeaponFlags.LeavesTrail]: null,
-  [WeaponFlags.CanCrushThrough]: 'CrushThrough',
-  [WeaponFlags.UseHandAsThrowBase]: null,
+  [WeaponFlags.AffectsArea]: 'AffectsArea',
   [WeaponFlags.AmmoBreaksOnBounceBack]: null,
   [WeaponFlags.AmmoCanBreakOnBounceBack]: null,
   [WeaponFlags.AmmoSticksWhenShot]: null,
+  [WeaponFlags.AttachAmmoToVisual]: null,
+  [WeaponFlags.AutoReload]: 'AutoReload',
+  [WeaponFlags.BonusAgainstShield]: 'BonusAgainstShield',
+  [WeaponFlags.Burning]: 'Burning',
+  [WeaponFlags.CanBlockRanged]: 'CanBlockRanged',
+  [WeaponFlags.CanCrushThrough]: 'CrushThrough',
+  [WeaponFlags.CanDismount]: 'CanDismount',
+  [WeaponFlags.CanHook]: 'CanHook',
+  [WeaponFlags.CanKnockDown]: 'CanKnockDown',
+  [WeaponFlags.CanPenetrateShield]: 'CanPenetrateShield',
+  [WeaponFlags.CantReloadOnHorseback]: 'CantReloadOnHorseback',
+  [WeaponFlags.Consumable]: null,
+  [WeaponFlags.FirearmAmmo]: null,
+  [WeaponFlags.HasHitPoints]: null,
+  [WeaponFlags.HasString]: null,
+  [WeaponFlags.LeavesTrail]: null,
+  [WeaponFlags.MeleeWeapon]: 'MeleeWeapon',
+  [WeaponFlags.MissileWithPhysics]: null,
+  [WeaponFlags.MultiplePenetration]: 'MultiplePenetration',
+  [WeaponFlags.NoBlood]: null,
+  [WeaponFlags.NotUsableWithOneHand]: 'TwoHandOnly',
+  [WeaponFlags.NotUsableWithTwoHand]: 'OneHandOnly',
+  [WeaponFlags.PenaltyWithShield]: 'PenaltyWithShield',
+  [WeaponFlags.RangedWeapon]: 'RangedWeapon',
+  [WeaponFlags.StringHeldByHand]: null,
+  [WeaponFlags.TwoHandIdleOnMount]: 'TwoHandIdleOnMount',
+  [WeaponFlags.UnloadWhenSheathed]: null,
+  [WeaponFlags.UseHandAsThrowBase]: null,
+  [WeaponFlags.WideGrip]: 'WideGrip',
 };
 
 const weaponTypes: ItemType[] = [
@@ -185,79 +189,90 @@ export function getItems(): Promise<Item[]> {
 }
 
 // Inspired by TooltipVMExtensions.UpdateTooltip.
-export function getItemDescriptor(item: Item): ItemDescriptor {
+export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor {
   const props: ItemDescriptor = {
     fields: [
-      ['Type', itemTypeToStr[item.type]],
-      ['Culture', item.culture],
-      ['Weight', item.weight],
+      ['Type', itemTypeToStr[baseItem.type]],
+      ['Culture', baseItem.culture],
+      ['Weight', baseItem.weight],
     ],
     modes: [],
   };
 
-  if (item.armor !== null) {
-    if (item.armor.headArmor !== 0) {
-      props.fields.push(['Head Armor', item.armor.headArmor]);
+  if (baseItem.armor !== null) {
+    if (baseItem.armor.headArmor !== 0) {
+      props.fields.push(['Head Armor', baseItem.armor.headArmor]);
     }
 
-    if (item.armor.bodyArmor !== 0) {
+    if (baseItem.armor.bodyArmor !== 0) {
       props.fields.push([
-        item.type === ItemType.MountHarness ? 'Mount Armor' : 'Body Armor',
-        item.armor!.bodyArmor,
+        baseItem.type === ItemType.MountHarness ? 'Mount Armor' : 'Body Armor',
+        baseItem.armor!.bodyArmor,
       ]);
     }
 
-    if (item.armor.armArmor !== 0) {
-      props.fields.push(['Arm Armor', item.armor.armArmor]);
+    if (baseItem.armor.armArmor !== 0) {
+      props.fields.push(['Arm Armor', baseItem.armor.armArmor]);
     }
 
-    if (item.armor.legArmor !== 0) {
-      props.fields.push(['Leg Armor', item.armor.legArmor]);
+    if (baseItem.armor.legArmor !== 0) {
+      props.fields.push(['Leg Armor', baseItem.armor.legArmor]);
     }
   }
 
-  if (item.mount !== null) {
+  if (baseItem.mount !== null) {
     props.fields.push(
-      ['Charge Damage', item.mount.chargeDamage],
-      ['Speed', item.mount.speed],
-      ['Maneuver', item.mount.maneuver],
-      ['Hit Points', item.mount.hitPoints]
+      ['Charge Damage', baseItem.mount.chargeDamage],
+      ['Speed', baseItem.mount.speed],
+      ['Maneuver', baseItem.mount.maneuver],
+      ['Hit Points', baseItem.mount.hitPoints]
     );
   }
 
   // Special cases for item types with only one weapon mode.
-  if (item.type === ItemType.Arrows || item.type === ItemType.Bolts) {
+  if (baseItem.type === ItemType.Arrows || baseItem.type === ItemType.Bolts) {
     props.fields.push(
-      ['Speed', item.weapons[0].missileSpeed],
+      ['Speed', baseItem.weapons[0].missileSpeed],
       [
         'Damage',
-        getDamageFieldValue(item.weapons[0].thrustDamage, item.weapons[0].thrustDamageType),
+        getDamageFieldValue(baseItem.weapons[0].thrustDamage, baseItem.weapons[0].thrustDamageType),
       ],
-      ['Length', item.weapons[0].length],
-      ['Ammo', item.weapons[0].stackAmount]
+      ['Length', baseItem.weapons[0].length],
+      ['Ammo', baseItem.weapons[0].stackAmount]
     );
-  } else if (item.type === ItemType.Shield) {
+  } else if (baseItem.type === ItemType.Shield) {
     props.fields.push(
-      ['Speed', item.weapons[0].swingSpeed],
-      ['Durability', item.weapons[0].stackAmount],
-      ['Armor', item.weapons[0].bodyArmor],
-      ['Length', item.weapons[0].length]
+      ['Speed', baseItem.weapons[0].swingSpeed],
+      ['Durability', baseItem.weapons[0].stackAmount],
+      ['Armor', baseItem.weapons[0].bodyArmor],
+      ['Length', baseItem.weapons[0].length]
     );
-  } else if (item.type === ItemType.Bow || item.type === ItemType.Crossbow) {
-    props.fields.push(
-      [
-        'Damage',
-        getDamageFieldValue(item.weapons[0].thrustDamage, item.weapons[0].thrustDamageType),
-      ],
-      ['Fire Rate', item.weapons[0].swingSpeed],
-      ['Accuracy', item.weapons[0].accuracy],
-      ['Missile Speed', item.weapons[0].missileSpeed],
-      ['Length', item.weapons[0].length]
-    );
-  } else if (item.type === ItemType.Banner) {
-    props.fields.push(['Length', item.weapons[0].length]);
+  } else if (baseItem.type === ItemType.Bow || baseItem.type === ItemType.Crossbow) {
+    baseItem.weapons.forEach(weapon => {
+      const weaponFields: [string, any][] = [
+        [
+          'Damage',
+          getDamageFieldValue(
+            baseItem.weapons[0].thrustDamage,
+            baseItem.weapons[0].thrustDamageType
+          ),
+        ],
+        ['Fire Rate', baseItem.weapons[0].swingSpeed],
+        ['Accuracy', baseItem.weapons[0].accuracy],
+        ['Missile Speed', baseItem.weapons[0].missileSpeed],
+        ['Length', baseItem.weapons[0].length],
+      ];
+
+      props.modes.push({
+        name: getWeaponClassShortName(weapon.class),
+        fields: weaponFields,
+        flags: getWeaponFlags(weapon.flags),
+      });
+    });
+  } else if (baseItem.type === ItemType.Banner) {
+    props.fields.push(['Length', baseItem.weapons[0].length]);
   } else {
-    item.weapons.forEach(weapon => {
+    baseItem.weapons.forEach(weapon => {
       const itemType = itemTypeByWeaponClass[weapon.class];
       const weaponFields: [string, any][] = [];
       if (
@@ -288,8 +303,8 @@ export function getItemDescriptor(item: Item): ItemDescriptor {
   return props;
 }
 
-export function filterItemsFittingInSlot(items: Item[], slot: ItemSlot): Item[] {
-  return items.filter(i => itemTypesBySlot[slot].includes(i.type));
+export function filterUserItemsFittingInSlot(items: UserItem[], slot: ItemSlot): UserItem[] {
+  return items.filter(i => itemTypesBySlot[slot].includes(i.baseItem.type));
 }
 
 export function filterItemsByType(
@@ -318,4 +333,10 @@ export function filterItemsByType(
   }
 
   return filteredItems;
+}
+
+export function computeSalePrice(item: UserItem): number {
+  const salePrice = applyPolynomialFunction(item.baseItem.price, Constants.itemSellCostCoefs);
+  // Floor salePrice to match behaviour of backend int typecast
+  return Math.floor(salePrice);
 }

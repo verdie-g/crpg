@@ -9,7 +9,7 @@
       </p>
       <div class="buttons">
         <b-button
-          v-if="hero.status !== 'RecruitingInSettlement'"
+          v-if="party.status !== 'RecruitingInSettlement'"
           type="is-primary"
           size="is-medium"
           @click="recruitTroops(true)"
@@ -36,29 +36,29 @@
 import { Vue, Component } from 'vue-property-decorator';
 import strategusModule from '@/store/strategus-module';
 import SettlementPublic from '@/models/settlement-public';
-import Hero from '@/models/hero';
-import HeroStatus from '@/models/hero-status';
+import Party from '@/models/party';
+import PartyStatus from '@/models/party-status';
 
 @Component
 export default class SettlementDialog extends Vue {
   recruitTroopsLoading = false;
 
   get settlement(): SettlementPublic {
-    return strategusModule.hero!.targetedSettlement;
+    return strategusModule.party!.targetedSettlement;
   }
 
-  get hero(): Hero {
-    return strategusModule.hero!;
+  get party(): Party {
+    return strategusModule.party!;
   }
 
   recruitTroops(enable: boolean) {
     this.recruitTroopsLoading = true;
-    const status = enable ? HeroStatus.RecruitingInSettlement : HeroStatus.IdleInSettlement;
+    const status = enable ? PartyStatus.RecruitingInSettlement : PartyStatus.IdleInSettlement;
     strategusModule
-      .updateHeroStatus({
+      .updatePartyStatus({
         status,
         waypoints: { type: 'MultiPoint', coordinates: [] },
-        targetedHeroId: 0,
+        targetedPartyId: 0,
         targetedSettlementId: this.settlement.id,
       })
       .finally(() => (this.recruitTroopsLoading = false));

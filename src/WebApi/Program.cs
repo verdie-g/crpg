@@ -1,61 +1,144 @@
-using System;
-using System.IO;
-using System.Threading;
+using System.Reflection;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using AspNet.Security.OpenId;
+using AspNet.Security.OpenId.Steam;
+using AutoMapper;
+using Crpg.Application;
+using Crpg.Application.Common.Interfaces;
+using Crpg.Application.Steam;
 using Crpg.Application.System.Commands;
-using Crpg.Logging;
+using Crpg.Application.Users.Commands;
+using Crpg.Application.Users.Models;
+using Crpg.Common.Helpers;
+using Crpg.Common.Json;
+using Crpg.Domain.Entities.Users;
 using Crpg.Persistence;
-using Crpg.Sdk.Abstractions.Events;
-using Crpg.WebApi;
+using Crpg.Sdk;
+using Crpg.WebApi.Identity;
+using Crpg.WebApi.Services;
+using IdentityServer4;
+using IdentityServer4.Models;
 using MediatR;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using NetTopologySuite.Geometries;
+using NetTopologySuite.IO.Converters;
 using Npgsql;
-using ILogger = Microsoft.Extensions.Logging.ILogger;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
 
-string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? Environments.Development;
+var appEnv = ApplicationEnvironmentProvider.FromEnvironment();
 
-IConfiguration configuration = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile($"appsettings.{env}.json", true, true)
-    .AddEnvironmentVariables()
-    .Build();
+var builder = WebApplication.CreateBuilder(args);
 
-LoggerFactory.Initialize(configuration);
+builder.Services
+    .AddSdk(builder.Configuration, appEnv)
+    .AddPersistence(builder.Configuration, appEnv)
+    .AddApplication()
+    // .AddHostedService<StrategusWorker>() Disable strategus for now.
+    .AddHttpContextAccessor() // Injects IHttpContextAccessor
+    .AddScoped<ICurrentUserService, CurrentUserService>()
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen(ConfigureSwagger)
+    .AddCors(opts => ConfigureCors(opts, builder.Configuration))
+    .AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new TimeSpanConverter());
+        options.JsonSerializerOptions.Converters.Add(new GeoJsonConverterFactory(GeometryFactory.Default));
+        options.JsonSerializerOptions.Converters.Add(new JsonArrayStringEnumFlagsConverterFactory());
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
 
-var host = Host.CreateDefaultBuilder(args)
-    .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>())
-    .UseLogging()
-    .Build();
+builder.Services.AddHealthChecks();
 
-ILogger logger = LoggerFactory.CreateLogger("Program");
-using (IServiceScope scope = host.Services.CreateScope())
+builder.Services.AddIdentity<UserViewModel, IdentityRole>()
+    .AddRoleStore<NullRoleStore>()
+    .AddUserStore<CustomUserStore>();
+
+builder.Services.AddIdentityServer()
+    .AddAspNetIdentity<UserViewModel>()
+    .AddProfileService<CustomProfileService>()
+    .AddInMemoryClients(builder.Configuration.GetSection("IdentityServer:Clients"))
+    .AddInMemoryPersistedGrants()
+    .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
+    .AddInMemoryApiScopes(IdentityServerConfig.GetApiScopes())
+    // DeveloperSigningCredential drawback is that it never get rotated but since new deployment recreate
+    // all files this is fine.
+    .AddDeveloperSigningCredential(filename: Path.Combine(Directory.GetCurrentDirectory(), "crpg.jwk"));
+
+builder.Services.AddAuthentication()
+    .AddJwtBearer(opts => ConfigureJwtBearer(opts, builder.Configuration))
+    .AddSteam(opts => ConfigureSteamAuthentication(opts, builder.Configuration));
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("User", BuildRolePolicy(Role.User, Role.Moderator, Role.Admin));
+    options.AddPolicy("Moderator", BuildRolePolicy(Role.Moderator, Role.Admin));
+    options.AddPolicy("Admin", BuildRolePolicy(Role.Admin));
+    options.AddPolicy("Game", BuildScopePolicy("game_api"));
+});
+
+var app = builder.Build();
+// Get the ASP.NET Core logger and store in a static variable.
+LoggerFactory.Initialize(app.Services.GetRequiredService<ILoggerFactory>());
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else if (app.Environment.IsProduction())
+{
+    // https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx#use-a-reverse-proxy-server
+    app.UseForwardedHeaders(new ForwardedHeadersOptions
+    {
+        ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost,
+    });
+}
+
+app
+    .UseSwagger()
+    .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Crpg API"))
+    .UseRouting()
+    .UseCors()
+    .UseIdentityServer()
+    .UseAuthorization()
+    .UseEndpoints(endpoints =>
+    {
+        endpoints.MapHealthChecks("/health");
+        endpoints.MapControllers();
+    });
+
+ILogger logger = LoggerFactory.CreateLogger<Program>();
+using (IServiceScope scope = app.Services.CreateScope())
 {
     IServiceProvider services = scope.ServiceProvider;
     var mediator = services.GetRequiredService<IMediator>();
-    var eventRaiser = services.GetRequiredService<IEventService>();
     var db = services.GetRequiredService<CrpgDbContext>();
 
     string? skipMigrationStr = Environment.GetEnvironmentVariable("CRPG_SKIP_DB_MIGRATION");
     bool skipMigration = skipMigrationStr != null && bool.Parse(skipMigrationStr);
-    bool hasConnectionString = configuration.GetConnectionString("Crpg") != null;
+    bool hasConnectionString = app.Configuration.GetConnectionString("Crpg") != null;
     if (hasConnectionString && !skipMigration)
     {
         try
         {
             await db.Database.MigrateAsync();
-            var conn = (NpgsqlConnection)db.Database.GetDbConnection();
+            var conn = (NpgsqlConnection)db.Database.GetDbConnection(); // Don't dispose!
             conn.Open();
             conn.ReloadTypes();
         }
         catch (Exception ex)
         {
             logger.LogCritical(ex, "An error occurred while migrating the database.");
-            LoggerFactory.Close();
+            LoggerFactory.Dispose();
             return 1;
         }
     }
@@ -63,24 +146,126 @@ using (IServiceScope scope = host.Services.CreateScope())
     var res = await mediator.Send(new SeedDataCommand(), CancellationToken.None);
     if (res.Errors != null)
     {
-        LoggerFactory.Close();
+        LoggerFactory.Dispose();
         return 1;
     }
-
-    eventRaiser.Raise(EventLevel.Info, "cRPG Web API has started", string.Empty);
 }
 
 try
 {
-    await host.RunAsync();
+    await app.RunAsync();
     return 0;
 }
 catch (Exception ex)
 {
-    logger.LogCritical(ex, "Host terminated unexpectedly");
+    logger.LogCritical(ex, "Application terminated unexpectedly");
     return 1;
 }
 finally
 {
-    LoggerFactory.Close();
+    LoggerFactory.Dispose();
+}
+
+static AuthorizationPolicy BuildRolePolicy(params Role[] roles) =>
+    new AuthorizationPolicyBuilder()
+        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+        .RequireAuthenticatedUser()
+        .RequireClaim("scope", "user_api")
+        .RequireRole(roles.Select(r => r.ToString()))
+        .Build();
+
+static AuthorizationPolicy BuildScopePolicy(string scope) =>
+    new AuthorizationPolicyBuilder()
+        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+        .RequireAuthenticatedUser()
+        .RequireClaim("scope", scope)
+        .Build();
+
+static void ConfigureCors(CorsOptions options, IConfiguration configuration)
+{
+    List<Client> clients = new();
+    configuration.GetSection("IdentityServer:Clients").Bind(clients);
+
+    // Get allowed origins from clients' redirect uris.
+    string[] allowedOrigins = clients
+        .SelectMany(c => c.RedirectUris)
+        .Select(uri => new Uri(uri).GetLeftPart(UriPartial.Authority))
+        .Distinct()
+        .ToArray();
+
+    options.AddDefaultPolicy(builder => builder
+        .WithOrigins(allowedOrigins)
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .SetPreflightMaxAge(TimeSpan.FromMinutes(10)));
+}
+
+static void ConfigureSwagger(SwaggerGenOptions options)
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Crpg API", Version = "v1" });
+
+    string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    options.IncludeXmlComments(xmlPath);
+
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Scheme = "bearer",
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer",
+                },
+            },
+            new List<string>()
+        },
+    });
+}
+
+static void ConfigureJwtBearer(JwtBearerOptions options, IConfiguration configuration)
+{
+    options.Authority = configuration["IdentityServer:Authority"];
+
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        // If the audience claim is not used, the audience check can be turned off
+        ValidateAudience = false,
+        ValidTypes = new[] { "at+jwt" },
+    };
+}
+
+static void ConfigureSteamAuthentication(SteamAuthenticationOptions options, IConfiguration configuration)
+{
+    options.ApplicationKey = configuration["IdentityServer:Providers:Steam:ApplicationKey"];
+    options.Events.OnAuthenticated = OnSteamUserAuthenticated;
+}
+
+static async Task OnSteamUserAuthenticated(OpenIdAuthenticatedContext ctx)
+{
+    var mediator = ctx.HttpContext.RequestServices.GetRequiredService<IMediator>();
+    var mapper = ctx.HttpContext.RequestServices.GetRequiredService<IMapper>();
+    var logger = ctx.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
+
+    var player = ctx.UserPayload!.RootElement
+        .GetProperty(SteamAuthenticationConstants.Parameters.Response)
+        .GetProperty(SteamAuthenticationConstants.Parameters.Players)[0]
+        .ToObject<SteamPlayer>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+    var result = await mediator.Send(mapper.Map<UpsertUserCommand>(player));
+    await ctx.HttpContext.SignInAsync(new IdentityServerUser(result.Data!.Id.ToString()));
+
+    // Delete temporary cookie used during external authentication
+    await ctx.HttpContext.SignOutAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
+
+    logger.LogInformation("User '{0}' signed in", result.Data!.Id);
 }

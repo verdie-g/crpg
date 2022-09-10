@@ -1,7 +1,20 @@
-namespace Crpg.Application.Common.Interfaces
+using Crpg.Domain.Entities.Users;
+
+namespace Crpg.Application.Common.Interfaces;
+
+public interface ICurrentUserService
 {
-    public interface ICurrentUserService
+    public UserClaims? User { get; }
+}
+
+public class UserClaims
+{
+    public UserClaims(int id, Role role)
     {
-        int UserId { get; }
+        Id = id;
+        Role = role;
     }
+
+    public int Id { get; }
+    public Role Role { get; }
 }

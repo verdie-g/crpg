@@ -3,9 +3,9 @@ import SettlementPublic from '@/models/settlement-public';
 import { Result } from '@/models/result';
 import StrategusUpdate from '@/models/strategus-update';
 import Region from '@/models/region';
-import Hero from '@/models/hero';
-import HeroStatusUpdateRequest from '@/models/hero-status-update-request';
-import HeroStatus from '@/models/hero-status';
+import Party from '@/models/party';
+import PartyStatusUpdateRequest from '@/models/party-status-update-request';
+import PartyStatus from '@/models/party-status';
 
 export const regionToStr: Record<Region, string> = {
   [Region.Europe]: 'Europe',
@@ -13,9 +13,9 @@ export const regionToStr: Record<Region, string> = {
   [Region.Asia]: 'Asia',
 };
 
-export const inSettlementStatuses = new Set<HeroStatus>([
-  HeroStatus.IdleInSettlement,
-  HeroStatus.RecruitingInSettlement,
+export const inSettlementStatuses = new Set<PartyStatus>([
+  PartyStatus.IdleInSettlement,
+  PartyStatus.RecruitingInSettlement,
 ]);
 
 export function getSettlements(): Promise<SettlementPublic> {
@@ -23,13 +23,13 @@ export function getSettlements(): Promise<SettlementPublic> {
 }
 
 export function getUpdate(): Promise<Result<StrategusUpdate>> {
-  return tryGet('/heroes/self/update');
+  return tryGet('/parties/self/update');
 }
 
-export function updateHeroStatus(update: HeroStatusUpdateRequest): Promise<Hero> {
-  return put('/heroes/self/status', update);
+export function updatePartyStatus(update: PartyStatusUpdateRequest): Promise<Party> {
+  return put('/parties/self/status', update);
 }
 
-export function registerUser(region: Region): Promise<Hero> {
-  return post('/heroes', { region });
+export function registerUser(region: Region): Promise<Party> {
+  return post('/parties', { region });
 }

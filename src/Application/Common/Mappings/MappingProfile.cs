@@ -1,48 +1,44 @@
-using System;
-using System.Linq;
 using System.Reflection;
 using AutoMapper;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Crpg.Application.Common.Mappings
+namespace Crpg.Application.Common.Mappings;
+
+/// <summary>
+/// AutoMapper's profile. Used by IServiceCollection.AddAutoMapper.
+/// </summary>
+public class MappingProfile : Profile
 {
-    /// <summary>
-    /// AutoMapper's profile. Used by <see cref="IServiceCollection.AddAutoMapper"/>.
-    /// </summary>
-    public class MappingProfile : Profile
+    private const string MappingMethodName = nameof(IMapFrom<object>.Mapping);
+    private static readonly Type MapFromInterfaceType = typeof(IMapFrom<>);
+
+    public MappingProfile()
     {
-        private const string MappingMethodName = nameof(IMapFrom<object>.Mapping);
-        private static readonly Type MapFromInterfaceType = typeof(IMapFrom<>);
+        ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
+    }
 
-        public MappingProfile()
+    /// <summary>
+    /// Calls <see cref="IMapFrom{TSource}.Mapping"/>(this) on all types implementing <see cref="IMapFrom{TSource}"/>.
+    /// </summary>
+    /// <param name="assembly">Assembly to scan.</param>
+    private void ApplyMappingsFromAssembly(Assembly assembly)
+    {
+        foreach (var type in assembly.GetExportedTypes())
         {
-            ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
-        }
+            var interfaces = type
+                .GetInterfaces()
+                .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == MapFromInterfaceType)
+                .ToList();
 
-        /// <summary>
-        /// Calls <see cref="IMapFrom{TSource}.Mapping"/>(this) on all types implementing <see cref="IMapFrom{TSource}"/>.
-        /// </summary>
-        /// <param name="assembly">Assembly to scan.</param>
-        private void ApplyMappingsFromAssembly(Assembly assembly)
-        {
-            foreach (var type in assembly.GetExportedTypes())
+            if (interfaces.Count == 0)
             {
-                var interfaces = type
-                    .GetInterfaces()
-                    .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == MapFromInterfaceType)
-                    .ToList();
+                continue;
+            }
 
-                if (interfaces.Count == 0)
-                {
-                    continue;
-                }
-
-                var instance = Activator.CreateInstance(type);
-                foreach (var i in interfaces)
-                {
-                    var methodInfo = i.GetMethod(MappingMethodName);
-                    methodInfo?.Invoke(instance, new object[] { this });
-                }
+            object? instance = Activator.CreateInstance(type);
+            foreach (var i in interfaces)
+            {
+                var methodInfo = i.GetMethod(MappingMethodName);
+                methodInfo?.Invoke(instance, new object[] { this });
             }
         }
     }

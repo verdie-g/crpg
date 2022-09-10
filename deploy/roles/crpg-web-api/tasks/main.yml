@@ -1,19 +1,4 @@
 ---
-- name: Add Microsoft package signing key to the list of trusted keys
-  apt:
-    deb: https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb
-
-- name: Make sure HTTPS is supported by apt
-  apt:
-    name: apt-transport-https
-    state: present
-
-- name: Install .NET Core Runtime
-  apt:
-    name: "aspnetcore-runtime-{{ dotnet_version }}"
-    state: present
-    update_cache: yes
-
 - name: Create cRPG Web API user
   user:
    name: "{{ crpg_api_user }}"
@@ -85,7 +70,7 @@
 
 - name: Stop cRPG Web API
   service:
-    name: crpg
+    name: "{{ crpg_api_service_name }}"
     enabled: yes
     state: stopped
 
@@ -96,18 +81,14 @@
 - name: Swap old and new version (2/2)
   command: "mv {{ crpg_api_path }}_new {{ crpg_api_path }}"
 
-- name: Create or truncate log file
-  copy:
-    content: ""
-    dest: "{{ crpg_api_log_file }}"
-    force: no
-    mode: 0644
-    group: "{{ crpg_api_user }}"
-    owner: "{{ crpg_api_user }}"
+- name: remove log file
+  file:
+    path: "{{ crpg_api_log_file }}"
+    state: absent
 
 - name: Start cRPG Web API
   service:
-    name: crpg
+    name: "{{ crpg_api_service_name }}"
     enabled: yes
     state: started
 

@@ -1,116 +1,111 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Crpg.Application.Common.Results;
+﻿using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Settlements.Queries;
 using Crpg.Domain.Entities;
-using Crpg.Domain.Entities.Heroes;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using Moq;
 using NetTopologySuite.Geometries;
 using NUnit.Framework;
 
-namespace Crpg.Application.UTest.Settlements
+namespace Crpg.Application.UTest.Settlements;
+
+public class GetSettlementShopItemsQueryTest : TestBase
 {
-    public class GetSettlementShopItemsQueryTest : TestBase
+    [Test]
+    public async Task ShouldReturnErrorIfUserNotFound()
     {
-        [Test]
-        public async Task ShouldReturnErrorIfUserNotFound()
+        GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
+        var res = await handler.Handle(new GetSettlementShopItemsQuery
         {
-            GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
-            var res = await handler.Handle(new GetSettlementShopItemsQuery
-            {
-                HeroId = 1,
-                SettlementId = 2,
-            }, CancellationToken.None);
+            PartyId = 1,
+            SettlementId = 2,
+        }, CancellationToken.None);
 
-            Assert.NotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.HeroNotFound, res.Errors![0].Code);
-        }
+        Assert.NotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.PartyNotFound, res.Errors![0].Code);
+    }
 
-        [Test]
-        public async Task ShouldReturnErrorIfSettlementNotFound()
+    [Test]
+    public async Task ShouldReturnErrorIfSettlementNotFound()
+    {
+        Party party = new() { User = new User() };
+        ArrangeDb.Parties.Add(party);
+        await ArrangeDb.SaveChangesAsync();
+
+        GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
+        var res = await handler.Handle(new GetSettlementShopItemsQuery
         {
-            var hero = new Hero { User = new User() };
-            ArrangeDb.Heroes.Add(hero);
-            await ArrangeDb.SaveChangesAsync();
+            PartyId = party.Id,
+            SettlementId = 2,
+        }, CancellationToken.None);
 
-            GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, Mock.Of<IStrategusMap>());
-            var res = await handler.Handle(new GetSettlementShopItemsQuery
-            {
-                HeroId = hero.Id,
-                SettlementId = 2,
-            }, CancellationToken.None);
+        Assert.NotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.SettlementNotFound, res.Errors![0].Code);
+    }
 
-            Assert.NotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.SettlementNotFound, res.Errors![0].Code);
-        }
+    [Test]
+    public async Task ShouldReturnErrorIfSettlementTooFar()
+    {
+        Point userPosition = new(1, 2);
+        Point settlementPosition = new(3, 4);
 
-        [Test]
-        public async Task ShouldReturnErrorIfSettlementTooFar()
+        Mock<IStrategusMap> strategusMapMock = new();
+        strategusMapMock
+            .Setup(m => m.ArePointsAtInteractionDistance(userPosition, settlementPosition))
+            .Returns(false);
+
+        Party party = new() { Position = userPosition, User = new User() };
+        ArrangeDb.Parties.Add(party);
+        Settlement settlement = new() { Position = settlementPosition };
+        ArrangeDb.Settlements.Add(settlement);
+        await ArrangeDb.SaveChangesAsync();
+
+        GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
+        var res = await handler.Handle(new GetSettlementShopItemsQuery
         {
-            var userPosition = new Point(1, 2);
-            var settlementPosition = new Point(3, 4);
+            PartyId = party.Id,
+            SettlementId = settlement.Id,
+        }, CancellationToken.None);
 
-            var strategusMapMock = new Mock<IStrategusMap>();
-            strategusMapMock
-                .Setup(m => m.ArePointsAtInteractionDistance(userPosition, settlementPosition))
-                .Returns(false);
+        Assert.NotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.SettlementTooFar, res.Errors![0].Code);
+    }
 
-            var hero = new Hero { Position = userPosition, User = new User() };
-            ArrangeDb.Heroes.Add(hero);
-            var settlement = new Settlement { Position = settlementPosition };
-            ArrangeDb.Settlements.Add(settlement);
-            await ArrangeDb.SaveChangesAsync();
+    [Test]
+    public async Task ShouldReturnItemsForTheSettlementCulture()
+    {
+        Point userPosition = new(1, 2);
+        Point settlementPosition = new(3, 4);
 
-            GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
-            var res = await handler.Handle(new GetSettlementShopItemsQuery
-            {
-                HeroId = hero.Id,
-                SettlementId = settlement.Id,
-            }, CancellationToken.None);
+        Mock<IStrategusMap> strategusMapMock = new();
+        strategusMapMock
+            .Setup(m => m.ArePointsAtInteractionDistance(userPosition, settlementPosition))
+            .Returns(true);
 
-            Assert.NotNull(res.Errors);
-            Assert.AreEqual(ErrorCode.SettlementTooFar, res.Errors![0].Code);
-        }
-
-        [Test]
-        public async Task ShouldReturnItemsForTheSettlementCulture()
+        Party party = new() { Position = userPosition, User = new User() };
+        ArrangeDb.Parties.Add(party);
+        Settlement settlement = new() { Position = settlementPosition, Culture = Culture.Battania };
+        ArrangeDb.Settlements.Add(settlement);
+        Item[] items =
         {
-            var userPosition = new Point(1, 2);
-            var settlementPosition = new Point(3, 4);
+            new() { Id = "0", Culture = Culture.Aserai },
+            new() { Id = "1", Culture = Culture.Battania },
+            new() { Id = "2", Culture = Culture.Battania },
+        };
+        ArrangeDb.Items.AddRange(items);
+        await ArrangeDb.SaveChangesAsync();
 
-            var strategusMapMock = new Mock<IStrategusMap>();
-            strategusMapMock
-                .Setup(m => m.ArePointsAtInteractionDistance(userPosition, settlementPosition))
-                .Returns(true);
+        GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
+        var res = await handler.Handle(new GetSettlementShopItemsQuery
+        {
+            PartyId = party.Id,
+            SettlementId = settlement.Id,
+        }, CancellationToken.None);
 
-            var hero = new Hero { Position = userPosition, User = new User() };
-            ArrangeDb.Heroes.Add(hero);
-            var settlement = new Settlement { Position = settlementPosition, Culture = Culture.Battania };
-            ArrangeDb.Settlements.Add(settlement);
-            var items = new[]
-            {
-                new Item { Culture = Culture.Aserai, Rank = 0 },
-                new Item { Culture = Culture.Aserai, Rank = 1 },
-                new Item { Culture = Culture.Battania, Rank = 2 },
-                new Item { Culture = Culture.Battania, Rank = 0 },
-                new Item { Culture = Culture.Battania, Rank = 0 },
-            };
-            ArrangeDb.Items.AddRange(items);
-            await ArrangeDb.SaveChangesAsync();
-
-            GetSettlementShopItemsQuery.Handler handler = new(ActDb, Mapper, strategusMapMock.Object);
-            var res = await handler.Handle(new GetSettlementShopItemsQuery
-            {
-                HeroId = hero.Id,
-                SettlementId = settlement.Id,
-            }, CancellationToken.None);
-
-            Assert.Null(res.Errors);
-            Assert.AreEqual(2, res.Data!.Count);
-        }
+        Assert.Null(res.Errors);
+        Assert.AreEqual(2, res.Data!.Count);
     }
 }

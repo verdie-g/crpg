@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Module>
+  <Name value="cRPG"/>
+  <Id value="cRPG"/>
+  <Version value="v1.8.0.4"/>
+  <ModuleCategory value="Multiplayer"/>
+  <DependedModules>
+    <DependedModule Id="Native" DependentVersion="e1.8.0" Optional="false"/>
+  </DependedModules>
+  <SubModules>
+    <SubModule>
+      <Name value="cRPG"/>
+      <DLLName value="Crpg.Module.dll"/>
+      <SubModuleClassType value="Crpg.Module.CrpgSubModule"/>
+      <Tags />
+    </SubModule>
+  </SubModules>
+  <Xmls>
+    <XmlNode>
+      <XmlName id="GameText" path="multiplayer_strings"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="CraftingPieces" path="crafting_pieces"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="WeaponDescriptions" path="weapon_descriptions"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="CraftingTemplates" path="crafting_templates"/>
+    </XmlNode>
+    <XmlNode>
+      <XmlName id="Items" path="items"/>
+    </XmlNode>
+  </Xmls>
+</Module>
