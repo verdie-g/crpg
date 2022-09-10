@@ -7,7 +7,7 @@
           {{ field[0] }}: {{ field[1] }}
           <br />
         </div>
-        <b-taglist class="flags">
+        <b-taglist class="flags pt-2">
           <b-tag v-for="flag in mode.flags" :key="flag" type="is-info">{{ flag }}</b-tag>
         </b-taglist>
       </b-tab-item>
