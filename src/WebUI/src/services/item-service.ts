@@ -248,16 +248,27 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ['Length', baseItem.weapons[0].length]
     );
   } else if (baseItem.type === ItemType.Bow || baseItem.type === ItemType.Crossbow) {
-    props.fields.push(
-      [
-        'Damage',
-        getDamageFieldValue(baseItem.weapons[0].thrustDamage, baseItem.weapons[0].thrustDamageType),
-      ],
-      ['Fire Rate', baseItem.weapons[0].swingSpeed],
-      ['Accuracy', baseItem.weapons[0].accuracy],
-      ['Missile Speed', baseItem.weapons[0].missileSpeed],
-      ['Length', baseItem.weapons[0].length]
-    );
+    baseItem.weapons.forEach(weapon => {
+      const weaponFields: [string, any][] = [
+        [
+          'Damage',
+          getDamageFieldValue(
+            baseItem.weapons[0].thrustDamage,
+            baseItem.weapons[0].thrustDamageType
+          ),
+        ],
+        ['Fire Rate', baseItem.weapons[0].swingSpeed],
+        ['Accuracy', baseItem.weapons[0].accuracy],
+        ['Missile Speed', baseItem.weapons[0].missileSpeed],
+        ['Length', baseItem.weapons[0].length],
+      ];
+
+      props.modes.push({
+        name: getWeaponClassShortName(weapon.class),
+        fields: weaponFields,
+        flags: getWeaponFlags(weapon.flags),
+      });
+    });
   } else if (baseItem.type === ItemType.Banner) {
     props.fields.push(['Length', baseItem.weapons[0].length]);
   } else {
