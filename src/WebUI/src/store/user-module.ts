@@ -1,3 +1,4 @@
+import { computeSalePrice } from '@/services/characters-service'
 import { Vue } from 'vue-property-decorator';
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
@@ -81,6 +82,11 @@ class UserModule extends VuexModule {
   }
 
   @Mutation
+  addGold(gain: number) {
+    this.user!.gold += gain;
+  }
+
+  @Mutation
   addHeirloomPoints(points: number) {
     this.user!.heirloomPoints += points;
   }
@@ -156,6 +162,18 @@ class UserModule extends VuexModule {
           equippedItem.userItem = replaceWith;
         }
       });
+    });
+  }
+
+  @Mutation
+  removeCharactersItem(toRemove: UserItem) {
+    Object.values(this.equippedItemsByCharacterId).forEach(characterEquippedItems => {
+      const index = characterEquippedItems.findIndex(
+        equippedItem => equippedItem.userItem.id === toRemove.id
+      );
+      if (index !== -1) {
+        characterEquippedItems.splice(index, 1);
+      }
     });
   }
 
@@ -284,6 +302,16 @@ class UserModule extends VuexModule {
     this.addHeirloomPoints(-1);
     this.replaceCharactersItem({ toReplace: userItem, replaceWith: upgradedUserItem });
     this.removeUserItem(userItem);
+  }
+
+  @Action
+  async sellUserItem(userItem: UserItem): Promise<number> {
+    await userService.sellUserItem(userItem.id);
+    this.removeCharactersItem(userItem);
+    this.removeUserItem(userItem);
+    const salePrice = computeSalePrice(userItem);
+    this.addGold(salePrice);
+    return salePrice;
   }
 
   @Action({ commit: 'setCharacters' })

@@ -90,6 +90,10 @@ export function upgradeUserItem(userItemId: number): Promise<UserItem> {
   return put(`/users/self/items/${userItemId}/upgrade`);
 }
 
+export function sellUserItem(userItemId: number): Promise<UserItem> {
+  return del(`/users/self/items/${userItemId}`);
+}
+
 export function getCharacters(): Promise<Character[]> {
   return get('/users/self/characters');
 }
