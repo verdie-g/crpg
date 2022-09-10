@@ -550,6 +550,15 @@ public record SeedDataCommand : IMediatorRequest
                 AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/79/79a8119bd2a027755f93872d0d09b959909a0405_medium.jpg"),
                 AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/79/79a8119bd2a027755f93872d0d09b959909a0405_full.jpg"),
             };
+            User krog = new()
+            {
+                PlatformUserId = "76561198070447937",
+                Name = "krog",
+                Gold = 40000,
+                AvatarSmall = new Uri("https://avatars.cloudflare.steamstatic.com/7668d01f842476a42dac041f85c9b336161bdbd0.jpg"),
+                AvatarMedium = new Uri("https://avatars.cloudflare.steamstatic.com/7668d01f842476a42dac041f85c9b336161bdbd0_medium.jpg"),
+                AvatarFull = new Uri("https://avatars.cloudflare.steamstatic.com/7668d01f842476a42dac041f85c9b336161bdbd0_full.jpg"),
+            };
 
             User[] newUsers =
             {
@@ -558,7 +567,7 @@ public record SeedDataCommand : IMediatorRequest
                 ecko, neostralie, zorguy, azuma, elmaryk, namidaka, laHire, manik, ajroselle, skrael, bedo, lambic,
                 sanasar, vlad007, canp0g, shark, noobAmphetamine, mundete, aroyFalconer, insanitoid, scarface,
                 xDem, disorot, ace, sagar, greenShadow, hannibaru, drexx, xarosh, tipsyToby, localAlpha, alex,
-                kedrynFuel, luqero, ilya, eztli, telesto, kypak, devoidDragon,
+                kedrynFuel, luqero, ilya, eztli, telesto, kypak, devoidDragon, krog
             };
 
             var existingUsers = await _db.Users.ToDictionaryAsync(u => (u.Platform, u.PlatformUserId));
@@ -614,11 +623,16 @@ public record SeedDataCommand : IMediatorRequest
                 User = sellka,
                 Name = sellka.Name,
             };
+            Character krogCharacter0 = new()
+            {
+                User = krog,
+                Name = krog.Name,
+            };
 
             Character[] newCharacters =
             {
                 takeoCharacter0, takeoCharacter1, takeoCharacter2, falcomCharacter0, victorhh888Character0,
-                sellkaCharacter0,
+                sellkaCharacter0, krogCharacter0
             };
 
             var existingCharacters = await _db.Characters.ToDictionaryAsync(c => c.Name);
