@@ -76,7 +76,9 @@ internal class CrpgAgentHudViewModel : ViewModel
 
         if (_experience != user.Character.Experience)
         {
-            LevelProgression = ComputeLevelProgression(user);
+            float levelProgression = ComputeLevelProgression(user);
+            // Clamp if for some reason the level and experience are not synchronized.
+            LevelProgression = MathF.Clamp(levelProgression, 0.0f, 1.0f);
             _experience = user.Character.Experience;
         }
 
