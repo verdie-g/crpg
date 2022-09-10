@@ -173,6 +173,15 @@
           >
             Upgrade
           </b-button>
+          <b-button
+            size="is-medium"
+            type="is-danger"
+            icon-left="coins"
+            expanded
+            @click="sellItem"
+          >
+            Sell
+          </b-button>
         </div>
         <div class="column user-items">
           <div v-if="fittingUserItems.length" class="columns is-multiline">
@@ -217,7 +226,7 @@ import ItemSlot from '@/models/item-slot';
 import Item from '@/models/item';
 import { computeAverageRepairCost } from '@/services/characters-service';
 import { filterUserItemsFittingInSlot } from '@/services/item-service';
-import { notify } from '@/services/notifications-service';
+import { NotificationType, notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
 import EquippedItem from '@/models/equipped-item';
 import UserItem from '@/models/user-item';
@@ -367,6 +376,15 @@ export default class CharacterComponent extends Vue {
 
   upgradeItem(): void {
     userModule.upgradeUserItem(this.userItemToReplace!);
+    (this.$refs.replaceItemModal as any).close();
+  }
+
+  async sellItem(): Promise<void> {
+    const salePrice = await userModule.sellUserItem(this.userItemToReplace!);
+    notify(
+      `Sold ${this.userItemToReplace?.baseItem.name} for ${salePrice} gold`,
+      NotificationType.Info
+    );
     (this.$refs.replaceItemModal as any).close();
   }
 
