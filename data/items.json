@@ -5277,22 +5277,6 @@
     ]
   },
   {
-    "id": "crpg_celtic_frost",
-    "name": "Celtic Frost",
-    "culture": "Neutral",
-    "type": "MountHarness",
-    "price": 7397,
-    "weight": 26.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 21,
-      "armArmor": 0,
-      "legArmor": 0,
-      "materialType": "Chainmail"
-    },
-    "weapons": []
-  },
-  {
     "id": "crpg_celtic_throwing_dagger",
     "name": "Highland Throwing Dagger",
     "culture": "Battania",
@@ -9358,22 +9342,6 @@
         "swingSpeed": 82
       }
     ]
-  },
-  {
-    "id": "crpg_fortunas_choice",
-    "name": "Fortunas Choice",
-    "culture": "Neutral",
-    "type": "MountHarness",
-    "price": 6673,
-    "weight": 26.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 20,
-      "armArmor": 0,
-      "legArmor": 0,
-      "materialType": "Chainmail"
-    },
-    "weapons": []
   },
   {
     "id": "crpg_full_helm_over_arming_coif",
@@ -18557,22 +18525,6 @@
       "armArmor": 1,
       "legArmor": 1,
       "materialType": "Cloth"
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_saddle_of_aeneas",
-    "name": "Saddle of Aeneas",
-    "culture": "Neutral",
-    "type": "MountHarness",
-    "price": 6673,
-    "weight": 26.0,
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 20,
-      "armArmor": 0,
-      "legArmor": 0,
-      "materialType": "Chainmail"
     },
     "weapons": []
   },

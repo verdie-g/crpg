@@ -89,6 +89,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MultiplayerGameNotificationsComponent(), // used to send notifications (e.g. flag captured, round won) to peer
                     new MissionOptionsComponent(),
                     new MissionScoreboardComponent(new BattleScoreboardData()), // score board
+                    new MissionAgentPanicHandler(),
                     new EquipmentControllerLeaveLogic(),
                     new MultiplayerPreloadHelper(),
 #if CRPG_SERVER

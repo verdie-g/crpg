@@ -51,6 +51,7 @@ internal class ItemExporter : IDataExporter
         "boulder", // Can't be equipped.
         "bound_horsemans_kite_shield", // Name conflict with northern_scouts_shield.
         "camel_tournament", // Name conflict with camel.
+        "celtic_frost", // Completely unbalanced harness.
         "desert_round_shield", // Name conflict with bound_desert_round_shield rank 2.
         "desert_scale_shoulders", // Name conflict with a_aserai_scale_b_shoulder_b rank 2.
         "eastern_leather_boots", // Name conflict with leather_boots.
@@ -60,6 +61,7 @@ internal class ItemExporter : IDataExporter
         "empire_sword_1_t2", // Name conflict with iron_spatha_sword_t2.
         "empire_sword_1_t2_blunt", // Name conflict with iron_spatha_sword_t2.
         "female_scarf", // Name conflict with scarf rank 1.
+        "fortunas_choice", // Completely unbalanced harness.
         "grapeshot_fire_projectile", // Can't be equipped.
         "grapeshot_fire_stack", // Can't be equipped.
         "grapeshot_projectile", // Can't be equipped.
@@ -81,6 +83,7 @@ internal class ItemExporter : IDataExporter
         "reinforced_kite_shield", // Name conflict with western_kite_shield rank 2.
         "reinforced_mail_mitten", // Name conflict with mail_mitten rank 2.
         "reinforced_padded_mitten", // Name conflict with padded_mitten rank 2.
+        "saddle_of_aeneas", // Completely unbalanced harness.
         "southern_lamellar_armor", // Name conflict with desert_lamellar.
         "southern_lord_helmet", // Name conflict with desert_helmet rank 3.
         "storm_charger", // Extremely shit horse.
