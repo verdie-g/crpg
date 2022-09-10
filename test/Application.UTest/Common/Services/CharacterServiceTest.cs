@@ -108,7 +108,7 @@ public class CharacterServiceTest
         if (respecialization)
         {
             Assert.AreEqual(4, character.Characteristics.Attributes.Points);
-            Assert.AreEqual(4, character.Characteristics.Skills.Points);
+            Assert.AreEqual(6, character.Characteristics.Skills.Points);
             Assert.AreEqual(410, character.Characteristics.WeaponProficiencies.Points);
         }
         else

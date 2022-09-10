@@ -49,13 +49,13 @@ internal class CharacterService : ICharacterService
         {
             Attributes = new CharacterAttributes
             {
-                Points = respecialization ? (character.Level - 1) * _constants.AttributePointsPerLevel : _constants.DefaultAttributePoints,
+                Points = _constants.DefaultAttributePoints + (respecialization ? (character.Level - 1) * _constants.AttributePointsPerLevel : 0),
                 Strength = _constants.DefaultStrength,
                 Agility = _constants.DefaultAgility,
             },
             Skills = new CharacterSkills
             {
-                Points = respecialization ? (character.Level - 1) * _constants.SkillPointsPerLevel : _constants.DefaultSkillPoints,
+                Points = _constants.DefaultSkillPoints + (respecialization ? (character.Level - 1) * _constants.SkillPointsPerLevel : 0),
             },
             WeaponProficiencies = new CharacterWeaponProficiencies
             {
