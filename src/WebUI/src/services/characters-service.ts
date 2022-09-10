@@ -12,9 +12,3 @@ export function computeAverageRepairCost(equippedItems: EquippedItem[]): number 
     0
   );
 }
-
-export function computeSalePrice(item: UserItem): number {
-  const salePrice = applyPolynomialFunction(item.baseItem.price, Constants.itemSellCostCoefs);
-  // Floor salePrice to match behaviour of backend int typecast
-  return Math.floor(salePrice);
-}

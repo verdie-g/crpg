@@ -1,8 +1,8 @@
-import { computeSalePrice } from '@/services/characters-service'
 import { Vue } from 'vue-property-decorator';
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
 import * as userService from '@/services/users-service';
+import * as itemService from '@/services/item-service'
 import User from '@/models/user';
 import Character from '@/models/character';
 import Item from '@/models/item';
@@ -309,7 +309,7 @@ class UserModule extends VuexModule {
     await userService.sellUserItem(userItem.id);
     this.removeCharactersItem(userItem);
     this.removeUserItem(userItem);
-    const salePrice = computeSalePrice(userItem);
+    const salePrice = itemService.computeSalePrice(userItem);
     this.addGold(salePrice);
     return salePrice;
   }

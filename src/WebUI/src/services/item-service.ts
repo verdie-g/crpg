@@ -8,6 +8,8 @@ import ItemSlot from '@/models/item-slot';
 import ItemWeaponComponent from '@/models/item-weapon-component';
 import WeaponClass from '@/models/weapon-class';
 import UserItem from '@/models/user-item';
+import { applyPolynomialFunction } from '@/utils/math';
+import Constants from '../../../../data/constants.json';
 
 export const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.Undefined]: 'Undefined',
@@ -320,4 +322,10 @@ export function filterItemsByType(
   }
 
   return filteredItems;
+}
+
+export function computeSalePrice(item: UserItem): number {
+  const salePrice = applyPolynomialFunction(item.baseItem.price, Constants.itemSellCostCoefs);
+  // Floor salePrice to match behaviour of backend int typecast
+  return Math.floor(salePrice);
 }
