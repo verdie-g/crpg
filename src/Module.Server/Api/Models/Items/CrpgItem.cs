@@ -1,17 +1,13 @@
 ﻿namespace Crpg.Module.Api.Models.Items;
 
 // Copy of Crpg.Application.Items.Model.ItemViewModel
-internal class CrpgItem : CrpgItemCreation
-{
-    public int Price { get; set; }
-}
-
-internal class CrpgItemCreation
+internal class CrpgItem
 {
     public string Id { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
     public CrpgCulture Culture { get; set; }
     public CrpgItemType Type { get; set; }
+    public int Price { get; set; }
     public float Weight { get; set; }
 
     public CrpgItemArmorComponent? Armor { get; set; }

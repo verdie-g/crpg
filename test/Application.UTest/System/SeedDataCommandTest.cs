@@ -25,7 +25,6 @@ public class SeedDataCommandTest : TestBase
     private static readonly IStrategusMap StrategusMap = Mock.Of<IStrategusMap>();
     private static readonly ItemModifiers ItemModifiers = new FileItemModifiersSource().LoadItemModifiers();
     private static readonly ItemModifierService ItemModifierService = new(ItemModifiers);
-    private static readonly ItemPriceModel ItemPriceModel = new();
 
     [Test]
     public async Task ShouldInsertItemsFromItemSource()
@@ -40,7 +39,7 @@ public class SeedDataCommandTest : TestBase
 
         SeedDataCommand.Handler seedDataCommandHandler = new(ActDb, itemsSource.Object, CreateAppEnv(),
             CharacterService, ExperienceTable, StrategusMap, Mock.Of<ISettlementsSource>(),
-            ItemPriceModel, ItemModifierService);
+            ItemModifierService);
         await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
 
         var items = await AssertDb.Items.ToArrayAsync();
@@ -57,7 +56,7 @@ public class SeedDataCommandTest : TestBase
 
         SeedDataCommand.Handler seedDataCommandHandler = new(ActDb, itemsSource.Object, CreateAppEnv(),
             CharacterService, ExperienceTable, StrategusMap, Mock.Of<ISettlementsSource>(),
-            ItemPriceModel, ItemModifierService);
+            ItemModifierService);
         await seedDataCommandHandler.Handle(new SeedDataCommand(), CancellationToken.None);
         var items = await AssertDb.Items.ToArrayAsync();
         Assert.AreEqual(1, items.Length);
@@ -120,8 +119,7 @@ public class SeedDataCommandTest : TestBase
             .Returns((Point point, Region _, Region _) => point);
 
         SeedDataCommand.Handler handler = new(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,
-            ExperienceTable, strategusMapMock.Object, settlementsSource.Object, ItemPriceModel,
-            ItemModifierService);
+            ExperienceTable, strategusMapMock.Object, settlementsSource.Object, ItemModifierService);
         await handler.Handle(new SeedDataCommand(), CancellationToken.None);
 
         var settlements = await AssertDb.Settlements.ToArrayAsync();
@@ -204,7 +202,7 @@ public class SeedDataCommandTest : TestBase
             .Returns(new Point(5, 6));
 
         SeedDataCommand.Handler handler = new(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,
-            ExperienceTable, strategusMapMock.Object, settlementsSource.Object, ItemPriceModel, ItemModifierService);
+            ExperienceTable, strategusMapMock.Object, settlementsSource.Object, ItemModifierService);
         await handler.Handle(new SeedDataCommand(), CancellationToken.None);
 
         var settlements = await AssertDb.Settlements.ToArrayAsync();
@@ -240,8 +238,7 @@ public class SeedDataCommandTest : TestBase
             .ReturnsAsync(Array.Empty<SettlementCreation>());
 
         SeedDataCommand.Handler handler = new(ActDb, Mock.Of<IItemsSource>(), CreateAppEnv(), CharacterService,
-            ExperienceTable, StrategusMap, settlementsSource.Object, ItemPriceModel,
-            ItemModifierService);
+            ExperienceTable, StrategusMap, settlementsSource.Object, ItemModifierService);
         await handler.Handle(new SeedDataCommand(), CancellationToken.None);
 
         var settlements = await AssertDb.Settlements.ToArrayAsync();

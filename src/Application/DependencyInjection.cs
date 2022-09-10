@@ -27,7 +27,6 @@ public static class DependencyInjection
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestInstrumentationBehavior<,>))
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>))
             .AddSingleton<IItemModifierService>(itemModifierService)
-            .AddSingleton<ItemPriceModel>()
             .AddSingleton<IExperienceTable>(experienceTable)
             .AddSingleton<ICharacterService>(characterService)
             .AddSingleton<IUserService>(userService)

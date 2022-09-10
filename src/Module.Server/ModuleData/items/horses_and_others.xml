@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
-  <Item id="crpg_sumpter_horse" name="{=KFGfTXqE}Sumpter Horse" mesh="horse_brown" item_category="sumpter_horse" difficulty="0" weight="430" value="110" Type="Horse">
+  <Item id="crpg_sumpter_horse" name="{=KFGfTXqE}Sumpter Horse" mesh="horse_brown" item_category="sumpter_horse" difficulty="0" weight="430" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="41" speed="25" charge_damage="1" body_length="102" is_mountable="true" is_pack_animal="true" extra_health="10" modifier_group="horse">
         <AdditionalMeshes>
@@ -70,13 +70,13 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_mule" name="{=CB97qhVM}Mule" mesh="mule_mesh" item_category="sumpter_horse" value="120" weight="300" Type="Horse">
+  <Item id="crpg_mule" name="{=CB97qhVM}Mule" mesh="mule_mesh" item_category="sumpter_horse" weight="300" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.mule" maneuver="48" speed="23" charge_damage="0" body_length="92" is_mountable="true" extra_health="-50" is_pack_animal="true" />
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_pack_camel" name="{=DlPOte0H}Pack Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" value="140" weight="520" Type="Horse">
+  <Item id="crpg_pack_camel" name="{=DlPOte0H}Pack Camel" mesh="camel_mesh" item_category="sumpter_horse" culture="Culture.aserai" weight="520" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.camel" maneuver="39" speed="26" charge_damage="1" body_length="105" extra_health="-20" is_pack_animal="true" is_mountable="true" />
     </ItemComponent>
@@ -1058,28 +1058,28 @@
     <Flags Civilian="true" />
     <Flags />
   </Item>
-  <Item id="crpg_banner_mid" name="{=wpaVnRZG}Triangle Banner" is_merchandise="false" body_name="bo_spear_b" recalculate_body="true" mesh="battle_flag_triangle" using_tableau="true" value="100" weight="4" appearance="1" Type="Banner" item_holsters="polearm_back:polearm_back_2">
+  <Item id="crpg_banner_mid" name="{=wpaVnRZG}Triangle Banner" is_merchandise="false" body_name="bo_spear_b" recalculate_body="true" mesh="battle_flag_triangle" using_tableau="true" weight="4" appearance="1" Type="Banner" item_holsters="polearm_back:polearm_back_2">
     <ItemComponent>
       <Weapon weapon_class="Banner" speed_rating="82" item_usage="banner" position="0.0, 0.0, -0.8" physics_material="wood_weapon" weapon_length="200">
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" DropOnWeaponChange="true" HeldInOffHand="true" HasToBeHeldUp="true" />
   </Item>
-  <Item id="crpg_banner_big" name="{=WePcpx0u}Big Banner" is_merchandise="false" body_name="bo_spear_b" recalculate_body="true" mesh="battle_flag_big" using_tableau="true" value="100" weight="4" appearance="1" Type="Banner" item_holsters="polearm_back:polearm_back_2">
+  <Item id="crpg_banner_big" name="{=WePcpx0u}Big Banner" is_merchandise="false" body_name="bo_spear_b" recalculate_body="true" mesh="battle_flag_big" using_tableau="true" weight="4" appearance="1" Type="Banner" item_holsters="polearm_back:polearm_back_2">
     <ItemComponent>
       <Weapon weapon_class="Banner" speed_rating="82" item_usage="banner" position="0.0, 0.0, -0.8" physics_material="wood_weapon" weapon_length="350">
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" DropOnWeaponChange="true" HeldInOffHand="true" HasToBeHeldUp="true" />
   </Item>
-  <Item id="crpg_campaign_banner_small" name="{=rO0oKtAo}Campaign Banner Small" is_merchandise="false" body_name="bo_spear_b" recalculate_body="true" mesh="campaign_flag" using_tableau="true" value="100" weight="4" appearance="1" Type="Banner" item_holsters="polearm_back:polearm_back_2">
+  <Item id="crpg_campaign_banner_small" name="{=rO0oKtAo}Campaign Banner Small" is_merchandise="false" body_name="bo_spear_b" recalculate_body="true" mesh="campaign_flag" using_tableau="true" weight="4" appearance="1" Type="Banner" item_holsters="polearm_back:polearm_back_2">
     <ItemComponent>
       <Weapon weapon_class="Banner" speed_rating="82" item_usage="banner" position="0.0, 0.0, -0.8" physics_material="wood_weapon" weapon_length="104">
       </Weapon>
     </ItemComponent>
     <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" DropOnWeaponChange="true" HeldInOffHand="true" HasToBeHeldUp="true" />
   </Item>
-  <Item id="crpg_bo_staff" name="{=yy7RvQKN}Bo staff" is_merchandise="false" body_name="bo_spear_b" recalculate_body="true" mesh="axe_craft_32_handle" using_tableau="true" value="5" subtype="two_handed_wpn" weight="1" difficulty="0" appearance="1" Type="Polearm" item_holsters="polearm_back:polearm_back_2">
+  <Item id="crpg_bo_staff" name="{=yy7RvQKN}Bo staff" is_merchandise="false" body_name="bo_spear_b" recalculate_body="true" mesh="axe_craft_32_handle" using_tableau="true" subtype="two_handed_wpn" weight="1" difficulty="0" appearance="1" Type="Polearm" item_holsters="polearm_back:polearm_back_2">
     <ItemComponent>
       <Weapon weapon_class="TwoHandedPolearm" weapon_balance="100" thrust_speed="100" speed_rating="100" physics_material="wood_weapon" weapon_length="100" position="0.0, 0.0, 0.3" swing_damage="5" thrust_damage="2" swing_damage_type="Blunt" thrust_damage_type="Blunt" item_usage="polearm_block_swing_thrust">
         <WeaponFlags MeleeWeapon="true" PenaltyWithShield="true" NotUsableWithOneHand="true" TwoHandIdleOnMount="true" WideGrip="true" />

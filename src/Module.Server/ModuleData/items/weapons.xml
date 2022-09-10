@@ -107,7 +107,7 @@
       <Piece id="crpg_default_polearm_pommel" Type="Pommel" />
     </Pieces>
   </CraftedItem>
-  <Item id="crpg_horse_whip" name="{=HclLXEaT}Horse Whip" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="horse_whip" weight="0.2" value="1" Type="OneHandedWeapon" item_holsters="sword_left_hip">
+  <Item id="crpg_horse_whip" name="{=HclLXEaT}Horse Whip" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="horse_whip" weight="0.2" Type="OneHandedWeapon" item_holsters="sword_left_hip">
     <ItemComponent>
       <Weapon weapon_class="OneHandedSword" weapon_balance="100" thrust_speed="79" speed_rating="99" physics_material="wood_weapon" missile_speed="0" weapon_length="95" thrust_damage="6" thrust_damage_type="Blunt" swing_damage="5" swing_damage_type="Blunt" item_usage="onehanded_block_shield_swing">
         <WeaponFlags MeleeWeapon="true" />
@@ -1984,7 +1984,7 @@
       <Piece id="crpg_empire_pommel_1" Type="Pommel" scale_factor="110" />
     </Pieces>
   </CraftedItem>
-  <Item id="crpg_throwing_stone" name="{=1CPdu9K0}Stone" is_merchandise="false" body_name="bo_throwing_stone" holster_body_name="bo_axe_short" holster_mesh="stone_holster" holster_mesh_with_weapon="stone_holster" mesh="throwing_stone" value="2" weight="0.1" appearance="0.1" Type="Thrown" item_holsters="throwing_stone:throwing_stone_2">
+  <Item id="crpg_throwing_stone" name="{=1CPdu9K0}Stone" is_merchandise="false" body_name="bo_throwing_stone" holster_body_name="bo_axe_short" holster_mesh="stone_holster" holster_mesh_with_weapon="stone_holster" mesh="throwing_stone" weight="0.1" appearance="0.1" Type="Thrown" item_holsters="throwing_stone:throwing_stone_2">
     <ItemComponent>
       <Weapon weapon_class="Stone" ammo_class="Stone" stack_amount="14" physics_material="missile" accuracy="45" thrust_speed="102" speed_rating="102" missile_speed="40" weapon_length="10" thrust_damage="15" item_usage="stone" rotation="100,30,20" passby_sound_code="" rotation_speed="0, -3.0, 0">
         <WeaponFlags RangedWeapon="true" Consumable="true" AutoReload="true" UnloadWhenSheathed="true" UseHandAsThrowBase="true" />

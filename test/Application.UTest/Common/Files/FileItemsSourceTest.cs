@@ -100,4 +100,23 @@ public class FileItemsSourceTest
             Assert.Fail($"Test items detected:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
         }
     }
+
+    [Test]
+    public async Task CheckPositivePrices()
+    {
+        var items = await new FileItemsSource().LoadItems();
+        List<string> errors = new();
+        foreach (var item in items)
+        {
+            if (item.Price <= 0)
+            {
+                errors.Add(item.Id);
+            }
+        }
+
+        if (errors.Count != 0)
+        {
+            Assert.Fail($"Items with zero or negative price:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
+        }
+    }
 }

@@ -35,13 +35,11 @@ public record SeedDataCommand : IMediatorRequest
         private readonly IExperienceTable _experienceTable;
         private readonly IStrategusMap _strategusMap;
         private readonly ISettlementsSource _settlementsSource;
-        private readonly ItemPriceModel _itemPriceModel;
         private readonly IItemModifierService _itemModifierService;
 
         public Handler(ICrpgDbContext db, IItemsSource itemsSource, IApplicationEnvironment appEnv,
             ICharacterService characterService, IExperienceTable experienceTable, IStrategusMap strategusMap,
-            ISettlementsSource settlementsSource, ItemPriceModel itemPriceModel,
-            IItemModifierService itemModifierService)
+            ISettlementsSource settlementsSource, IItemModifierService itemModifierService)
         {
             _db = db;
             _itemsSource = itemsSource;
@@ -50,7 +48,6 @@ public record SeedDataCommand : IMediatorRequest
             _experienceTable = experienceTable;
             _strategusMap = strategusMap;
             _settlementsSource = settlementsSource;
-            _itemPriceModel = itemPriceModel;
             _itemModifierService = itemModifierService;
         }
 
@@ -1511,7 +1508,6 @@ public record SeedDataCommand : IMediatorRequest
             foreach (ItemCreation item in itemsById.Values)
             {
                 Item baseItem = ItemCreationToItem(item);
-                baseItem.Price = _itemPriceModel.ComputeItemPrice(baseItem);
                 CreateOrUpdateItem(dbItemsById, baseItem);
             }
 
@@ -1572,6 +1568,7 @@ public record SeedDataCommand : IMediatorRequest
                 Name = item.Name,
                 Culture = item.Culture,
                 Type = item.Type,
+                Price = item.Price,
                 Weight = item.Weight,
             };
 

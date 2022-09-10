@@ -149,14 +149,15 @@ internal class ItemExporter : IDataExporter
         Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);
     }
 
-    private static CrpgItemCreation MbToCrpgItem(ItemObject mbItem)
+    private static CrpgItem MbToCrpgItem(ItemObject mbItem)
     {
-        CrpgItemCreation crpgItem = new()
+        CrpgItem crpgItem = new()
         {
             Id = mbItem.StringId,
             Name = mbItem.Name.ToString(),
             Culture = MbToCrpgCulture(mbItem.Culture),
             Type = MbToCrpgItemType(mbItem.Type),
+            Price = mbItem.Value,
             Weight = mbItem.Weight,
         };
 
@@ -304,6 +305,13 @@ internal class ItemExporter : IDataExporter
             }
             else if (node1.Name == "Item")
             {
+                // Remove the price attribute so it is recomputed using our model.
+                var valueAttr = node1.Attributes["value"];
+                if (valueAttr != null)
+                {
+                    node1.Attributes.Remove(valueAttr);
+                }
+
                 var type = (ItemObject.ItemTypeEnum)Enum.Parse(typeof(ItemObject.ItemTypeEnum), node1.Attributes!["Type"].Value);
                 if (type == ItemObject.ItemTypeEnum.Horse)
                 {
@@ -440,7 +448,7 @@ internal class ItemExporter : IDataExporter
         }
     }
 
-    private static void SerializeCrpgItems(IEnumerable<CrpgItemCreation> items, string outputPath)
+    private static void SerializeCrpgItems(IEnumerable<CrpgItem> items, string outputPath)
     {
         var serializer = JsonSerializer.Create(new JsonSerializerSettings
         {
