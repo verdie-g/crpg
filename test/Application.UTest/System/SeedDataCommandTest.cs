@@ -51,7 +51,7 @@ public class SeedDataCommandTest : TestBase
     {
         Mock<IItemsSource> itemsSource = new();
         itemsSource.SetupSequence(s => s.LoadItems())
-            .ReturnsAsync(new[] { new ItemCreation { Id = "a", Type = ItemType.HeadArmor, Armor = new ItemArmorComponentViewModel() } })
+            .ReturnsAsync(new[] { new ItemCreation { Id = "a", Type = ItemType.HeadArmor, Price = 20, Armor = new ItemArmorComponentViewModel() } })
             .ReturnsAsync(Array.Empty<ItemCreation>());
 
         SeedDataCommand.Handler seedDataCommandHandler = new(ActDb, itemsSource.Object, CreateAppEnv(),
