@@ -61,5 +61,6 @@ public class CharacterConfiguration : IEntityTypeConfiguration<Character>
         builder.Property(s => s.Kills).HasColumnName("kills");
         builder.Property(s => s.Deaths).HasColumnName("deaths");
         builder.Property(s => s.Assists).HasColumnName("assists");
+        builder.Property(s => s.PlayTime).HasColumnName("play_time");
     }
 }
