@@ -5,4 +5,5 @@ export default interface ShopFilters {
   type: ItemType | null;
   culture: Culture | null;
   showOwned: boolean;
+  showAffordable: boolean;
 }
