@@ -44,6 +44,11 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         base.OnMissionTick(dt);
     }
 
+    public override bool IsThereAgentAction(Agent userAgent, Agent otherAgent)
+    {
+        return true;
+    }
+
     protected override void AddRemoveMessageHandlers(
         GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
     {
