@@ -94,7 +94,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MultiplayerPreloadHelper(),
 #if CRPG_SERVER
                     roundController,
-                    new CrpgBattleMissionMultiplayer(crpgClient),
+                    new CrpgBattleMissionMultiplayer(crpgClient, _constants),
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
                     new SpawnComponent(new BattleSpawnFrameBehavior(), new CrpgBattleSpawningBehavior(_constants, roundController)),
                     new AgentHumanAILogic(), // bot intelligence

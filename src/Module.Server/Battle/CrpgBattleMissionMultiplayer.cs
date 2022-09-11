@@ -3,6 +3,7 @@ using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
+using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -14,6 +15,8 @@ namespace Crpg.Module.Battle;
 internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 {
     private readonly ICrpgClient _crpgClient;
+    private readonly CrpgConstants _constants;
+    private readonly Random _random = new();
 
     private Dictionary<PlayerId, CrpgCharacterStatistics> _lastRoundAllTotalStats = new();
 
@@ -22,9 +25,10 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     public override bool AllowCustomPlayerBanners() => false;
     public override bool UseRoundController() => true;
 
-    public CrpgBattleMissionMultiplayer(ICrpgClient crpgClient)
+    public CrpgBattleMissionMultiplayer(ICrpgClient crpgClient, CrpgConstants constants)
     {
         _crpgClient = crpgClient;
+        _constants = constants;
     }
 
     public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
@@ -153,7 +157,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
                 CharacterId = crpgRepresentative.User.Character.Id,
                 Reward = new CrpgUserReward { Experience = 0, Gold = 0 },
                 Statistics = new CrpgCharacterStatistics { Kills = 0, Deaths = 0, Assists = 0, PlayTime = TimeSpan.Zero },
-                BrokenItems = Array.Empty<CrpgUserBrokenItem>(), // TODO
+                BrokenItems = BreakItems(crpgRepresentative),
             };
 
             SetReward(userUpdate, crpgRepresentative, ticks);
@@ -214,6 +218,33 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             : 1;
     }
 
+    private IList<CrpgUserBrokenItem> BreakItems(CrpgRepresentative crpgRepresentative)
+    {
+        if (crpgRepresentative.SpawnTeamThisRound == null)
+        {
+            return Array.Empty<CrpgUserBrokenItem>();
+        }
+
+        List<CrpgUserBrokenItem> brokenItems = new();
+        foreach (var equippedItem in crpgRepresentative.User!.Character.EquippedItems)
+        {
+            var mbItem = Game.Current.ObjectManager.GetObject<ItemObject>(equippedItem.UserItem.BaseItemId);
+            if (_random.NextDouble() >= _constants.ItemBreakChance)
+            {
+                continue;
+            }
+
+            int repairCost = (int)MathHelper.ApplyPolynomialFunction(mbItem.Value, _constants.ItemRepairCostCoefs);
+            brokenItems.Add(new CrpgUserBrokenItem
+            {
+                UserItemId = equippedItem.UserItem.Id,
+                RepairCost = repairCost,
+            });
+        }
+
+        return brokenItems;
+    }
+
     private void SetStatistics(CrpgUserUpdate userUpdate, NetworkCommunicator networkPeer,
         Dictionary<PlayerId, CrpgCharacterStatistics> newRoundAllTotalStats)
     {
@@ -257,12 +288,13 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 
             crpgRepresentative.User = updateResult.User;
 
-            if (updateResult.EffectiveReward.Experience != 0 && updateResult.EffectiveReward.Gold != 0)
+            GameNetwork.BeginModuleEventAsServer(crpgRepresentative.GetNetworkPeer());
+            GameNetwork.WriteMessage(new CrpgRewardUser
             {
-                GameNetwork.BeginModuleEventAsServer(crpgRepresentative.GetNetworkPeer());
-                GameNetwork.WriteMessage(new CrpgRewardUser { Reward = updateResult.EffectiveReward });
-                GameNetwork.EndModuleEventAsServer();
-            }
+                Reward = updateResult.EffectiveReward,
+                RepairCost = updateResult.BrokenItems.Sum(b => b.RepairCost),
+            });
+            GameNetwork.EndModuleEventAsServer();
         }
     }
 

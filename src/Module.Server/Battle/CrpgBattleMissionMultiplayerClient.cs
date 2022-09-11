@@ -86,8 +86,24 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     private void HandleRewardUser(CrpgRewardUser message)
     {
         var reward = message.Reward;
-        InformationManager.DisplayMessage(new InformationMessage($"Gained {reward.Experience} experience.", new Color(218, 112, 214)));
-        InformationManager.DisplayMessage(new InformationMessage($"Gained {reward.Gold} gold.", new Color(65, 105, 225)));
+        if (reward.Experience != 0)
+        {
+            InformationManager.DisplayMessage(new InformationMessage($"Gained {reward.Experience} experience.",
+                new Color(218, 112, 214)));
+        }
+
+        if (reward.Gold != 0)
+        {
+            InformationManager.DisplayMessage(new InformationMessage($"Gained {reward.Gold} gold.",
+                new Color(65, 105, 225)));
+        }
+
+        if (message.RepairCost != 0)
+        {
+            InformationManager.DisplayMessage(new InformationMessage($"Lost {message.RepairCost} gold for upkeep.",
+                new Color(0.74f, 0.28f, 0.01f)));
+        }
+
         if (reward.LevelUp)
         {
             InformationManager.DisplayMessage(new InformationMessage

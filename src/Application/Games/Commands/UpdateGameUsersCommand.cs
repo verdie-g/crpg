@@ -117,15 +117,13 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
                 if (character.AutoRepair && character.User!.Gold >= itemToRepair.RepairCost)
                 {
                     character.User.Gold -= itemToRepair.RepairCost;
-                    continue;
                 }
 
                 brokenItems.Add(itemToRepair);
             }
 
-            return brokenItems.Count == 0
-                ? Task.FromResult(brokenItems)
-                : DowngradeItems(brokenItems, cancellationToken);
+            return Task.FromResult(brokenItems);
+            // TODO: downgrade items.
         }
 
         private async Task<List<GameUserBrokenItem>> DowngradeItems(List<GameUserBrokenItem> brokenItems, CancellationToken cancellationToken)
