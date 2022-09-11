@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <nav v-if="user">
+  <div class="is-flex-grow-1 is-flex is-flex-direction-column">
+    <nav v-if="user" class="is-flex-grow-0">
       <b-navbar fixed-top :close-on-click="false">
         <template slot="brand">
           <b-navbar-item tag="router-link" :to="{ path: '/' }">cRPG</b-navbar-item>
@@ -56,11 +56,11 @@
       </b-navbar>
     </nav>
 
-    <main>
+    <main class="is-flex-grow-1">
       <router-view />
     </main>
     <!-- Display or not the footer depending on the current page -->
-    <footer v-if="$route.meta.footer === true || $route.meta.footer === undefined" class="footer">
+    <footer v-if="$route.meta.footer === true || $route.meta.footer === undefined" class="footer is-flex-grow-0">
       <div class="level">
         <div class="level-item">
           <a href="https://www.patreon.com/crpg" target="_blank" title="Donate on Patreon">
