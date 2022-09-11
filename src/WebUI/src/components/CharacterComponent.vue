@@ -120,7 +120,7 @@
 
       <br />
 
-      <b-tooltip label="Respecialize character." multilined>
+      <b-tooltip label="Respecialize character." multilined class="mr-2">
         <b-button
           type="is-warning"
           icon-left="angle-double-down"
@@ -134,6 +134,7 @@
       <b-tooltip
         label="Reset character to level 1 to grant a bonus multiplier and an heirloom point. (lvl > 30)"
         multilined
+        class="mr-2"
       >
         <b-button
           type="is-warning"
