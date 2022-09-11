@@ -210,7 +210,7 @@
           <div class="column">
             <div v-if="fittingUserItems.length" class="user-items columns is-multiline is-justify-content-end">
               <div
-                class="column is-narrow user-item user-item__action"
+                class="column is-narrow user-item user-item__action is-relative"
                 v-for="userItem in fittingUserItems"
                 v-bind:key="userItem.id"
                 @click="selectedUserItem = userItem"
@@ -218,6 +218,21 @@
                 <display-user-item
                   :user-item="userItem"
                 />
+                <div
+                  v-if="selectedUserItem && selectedUserItem.id === userItem.id"
+                  class="confirm-selection__overlay px-2 py-3 is-flex is-flex-direction-column is-align-items-center is-justify-content-center has-text-centered"
+                  @click="confirmItemSelection"
+                >
+                  <span class="is-size-6">
+                    Replace with:
+                  </span>
+                  <div>
+                    <strong :class="userItemRankClass(selectedUserItem)" class="is-size-5">
+                      {{ selectedUserItem.baseItem.name }}
+                    </strong>
+                  </div>
+                  <b-icon icon="check" size="is-large" />
+                </div>
               </div>
             </div>
             <div v-else class="py-3 has-text-centered">
@@ -227,18 +242,6 @@
               <template v-else>
                 You don't own any items of this type.
               </template>
-            </div>
-          </div>
-          <div v-if="selectedUserItem">
-            <h3>
-              Replace with
-              <strong :class="userItemRankClass(selectedUserItem)">
-                {{ selectedUserItem.baseItem.name }}
-              </strong>
-            </h3>
-            <div class="content">
-              <item-properties :item="selectedUserItem.baseItem" :rank="selectedUserItem.rank" />
-              <b-button size="is-medium" icon-left="check" expanded @click="confirmItemSelection" />
             </div>
           </div>
         </div>
@@ -572,5 +575,20 @@ export default class CharacterComponent extends Vue {
 }
 .item-rank3 {
   color: #774fc2;
+}
+
+.confirm-selection__overlay {
+  border-radius: 50%;
+  opacity: 0.85;
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  top: 20%;
+  bottom: 20%;
+  background-color: #bdbdbd;
+  transition: background-color 200ms;
+  &:hover {
+    background-color: #c8e1c8;
+  }
 }
 </style>
