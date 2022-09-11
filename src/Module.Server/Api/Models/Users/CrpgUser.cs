@@ -1,4 +1,5 @@
 ﻿using Crpg.Module.Api.Models.Characters;
+using Crpg.Module.Api.Models.Restrictions;
 
 namespace Crpg.Module.Api.Models.Users;
 
@@ -10,5 +11,5 @@ internal class CrpgUser
     public string PlatformUserId { get; set; } = string.Empty;
     public int Gold { get; set; }
     public CrpgCharacter Character { get; set; } = default!;
-    public CrpgBan? Ban { get; set; }
+    public IList<CrpgRestriction> Restrictions { get; set; } = Array.Empty<CrpgRestriction>();
 }

@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <div class="section" v-if="bansData.length">
-      <h2 class="title">Bans</h2>
-      <b-table :data="bansData" :columns="bansColumns"></b-table>
+    <div class="section" v-if="restrictionsData.length">
+      <h2 class="title">Restrictions</h2>
+      <b-table :data="restrictionsData" :columns="restrictionsColumns"></b-table>
     </div>
 
     <div class="section">
@@ -26,19 +26,19 @@ import { timestampToTimeString } from '@/utils/date';
 @Component
 export default class Settings extends Vue {
   created(): void {
-    userModule.getUserBans();
+    userModule.getUserRestrictions();
   }
 
-  get bansData() {
-    return userModule.userBans.map(b => ({
+  get restrictionsData() {
+    return userModule.userRestrictions.map(b => ({
       ...b,
       createdAt: b.createdAt.toDateString(),
       duration: timestampToTimeString(b.duration),
-      bannedBy: `${b.bannedByUser.name} (${b.bannedByUser.platformUserId})`,
+      restrictedBy: `${b.restrictedByUser.name} (${b.restrictedByUser.platformUserId})`,
     }));
   }
 
-  get bansColumns() {
+  get restrictionsColumns() {
     return [
       {
         field: 'id',
@@ -58,7 +58,7 @@ export default class Settings extends Vue {
         label: 'Reason',
       },
       {
-        field: 'bannedBy',
+        field: 'restrictedBy',
         label: 'By',
       },
     ];

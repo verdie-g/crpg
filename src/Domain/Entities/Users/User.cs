@@ -3,6 +3,7 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Parties;
+using Crpg.Domain.Entities.Restrictions;
 
 namespace Crpg.Domain.Entities.Users;
 
@@ -42,7 +43,7 @@ public class User : AuditableEntity
 
     public IList<UserItem> Items { get; set; } = new List<UserItem>();
     public IList<Character> Characters { get; set; } = new List<Character>();
-    public IList<Ban> Bans { get; set; } = new List<Ban>();
+    public IList<Restriction> Restrictions { get; set; } = new List<Restriction>();
     public ClanMember? ClanMembership { get; set; }
     public Party? Party { get; set; }
 }

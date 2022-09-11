@@ -1,4 +1,5 @@
 ﻿using Crpg.Module.Api;
+using Crpg.Module.Api.Models.Restrictions;
 using Crpg.Module.Api.Models.Users;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -81,9 +82,9 @@ internal class CrpgUserManager : MissionNetwork
             return;
         }
 
-        if (crpgUser.Ban != null)
+        if (crpgUser.Restrictions.FirstOrDefault(r => r.Type == CrpgRestrictionType.Join) != null)
         {
-            Debug.Print($"Kick banned user {userName} ({platform}#{platformUserId})");
+            Debug.Print($"Kick join restricted user {userName} ({platform}#{platformUserId})");
             KickPeer(networkPeer, DisconnectType.BannedByPoll);
             return;
         }

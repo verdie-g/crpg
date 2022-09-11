@@ -1,17 +1,17 @@
 ﻿using AutoMapper;
-using Crpg.Application.Bans.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Application.Restrictions.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Crpg.Application.Bans.Queries;
+namespace Crpg.Application.Restrictions.Queries;
 
-public record GetUserBansQuery : IMediatorRequest<IList<BanViewModel>>
+public record GetUserRestrictionsQuery : IMediatorRequest<IList<RestrictionViewModel>>
 {
     public int UserId { get; init; }
 
-    internal class Handler : IMediatorRequestHandler<GetUserBansQuery, IList<BanViewModel>>
+    internal class Handler : IMediatorRequestHandler<GetUserRestrictionsQuery, IList<RestrictionViewModel>>
     {
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
@@ -22,16 +22,16 @@ public record GetUserBansQuery : IMediatorRequest<IList<BanViewModel>>
             _mapper = mapper;
         }
 
-        public async Task<Result<IList<BanViewModel>>> Handle(GetUserBansQuery request, CancellationToken cancellationToken)
+        public async Task<Result<IList<RestrictionViewModel>>> Handle(GetUserRestrictionsQuery request, CancellationToken cancellationToken)
         {
             var user = await _db.Users
                 .AsNoTracking()
-                .Include(u => u.Bans).ThenInclude(b => b.BannedByUser)
+                .Include(u => u.Restrictions).ThenInclude(r => r.RestrictedByUser)
                 .FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
 
             return user == null
                 ? new(CommonErrors.UserNotFound(request.UserId))
-                : new(_mapper.Map<BanViewModel[]>(user.Bans));
+                : new(_mapper.Map<RestrictionViewModel[]>(user.Restrictions));
         }
     }
 }

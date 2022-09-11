@@ -1,9 +1,9 @@
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Parties;
+using Crpg.Domain.Entities.Restrictions;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +18,7 @@ public interface ICrpgDbContext
     DbSet<Item> Items { get; }
     DbSet<UserItem> UserItems { get; }
     DbSet<EquippedItem> EquippedItems { get; }
-    DbSet<Ban> Bans { get; }
+    DbSet<Restriction> Restrictions { get; }
     DbSet<Clan> Clans { get; }
     DbSet<ClanMember> ClanMembers { get; }
     DbSet<ClanInvitation> ClanInvitations { get; }

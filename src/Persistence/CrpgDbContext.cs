@@ -7,6 +7,7 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Parties;
+using Crpg.Domain.Entities.Restrictions;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
@@ -23,6 +24,7 @@ public class CrpgDbContext : DbContext, ICrpgDbContext
     {
         NpgsqlConnection.GlobalTypeMapper.MapEnum<Platform>();
         NpgsqlConnection.GlobalTypeMapper.MapEnum<Role>();
+        NpgsqlConnection.GlobalTypeMapper.MapEnum<RestrictionType>();
         NpgsqlConnection.GlobalTypeMapper.MapEnum<Culture>();
         NpgsqlConnection.GlobalTypeMapper.MapEnum<ItemType>();
         NpgsqlConnection.GlobalTypeMapper.MapEnum<ItemSlot>();
@@ -58,7 +60,7 @@ public class CrpgDbContext : DbContext, ICrpgDbContext
     public DbSet<Item> Items { get; set; } = default!;
     public DbSet<UserItem> UserItems { get; set; } = default!;
     public DbSet<EquippedItem> EquippedItems { get; set; } = default!;
-    public DbSet<Ban> Bans { get; set; } = default!;
+    public DbSet<Restriction> Restrictions { get; set; } = default!;
     public DbSet<Clan> Clans { get; set; } = default!;
     public DbSet<ClanMember> ClanMembers { get; set; } = default!;
     public DbSet<ClanInvitation> ClanInvitations { get; set; } = default!;
@@ -114,6 +116,7 @@ public class CrpgDbContext : DbContext, ICrpgDbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(CrpgDbContext).Assembly);
         modelBuilder.HasPostgresEnum<Platform>();
         modelBuilder.HasPostgresEnum<Role>();
+        modelBuilder.HasPostgresEnum<RestrictionType>();
         modelBuilder.HasPostgresEnum<Culture>();
         modelBuilder.HasPostgresEnum<ItemType>();
         modelBuilder.HasPostgresEnum<ItemSlot>();

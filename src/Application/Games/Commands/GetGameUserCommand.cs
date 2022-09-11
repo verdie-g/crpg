@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using Crpg.Application.Bans.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Models;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
@@ -120,7 +118,6 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
         {
             var user = await _db.Users
                 .Include(u => u.Characters.Where(c => c.Name == req.UserName).Take(1))
-                .Include(u => u.Bans.OrderByDescending(b => b.Id).Take(1))
                 .FirstOrDefaultAsync(u => u.Platform == req.Platform && u.PlatformUserId == req.PlatformUserId,
                     cancellationToken);
 
@@ -129,6 +126,17 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 user = CreateUser(req.Platform, req.PlatformUserId, req.UserName);
                 _db.Users.Add(user);
                 Logger.LogInformation("{0} joined ({1}#{2})", req.UserName, req.Platform, req.PlatformUserId);
+            }
+            else
+            {
+                // Get the last restriction by type.
+                await _db.Entry(user)
+                    .Collection(u => u.Restrictions)
+                    .Query()
+                    .GroupBy(r => r.Type)
+                    // ReSharper disable once SimplifyLinqExpressionUseMinByAndMaxBy (https://github.com/dotnet/efcore/issues/25566)
+                    .Select(g => g.OrderByDescending(r => r.CreatedAt).FirstOrDefault())
+                    .LoadAsync(cancellationToken);
             }
 
             Character? newCharacter = null;
@@ -155,8 +163,11 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 Logger.LogInformation("User '{0}' created character '{1}'", user.Id, newCharacter.Id);
             }
 
+
             var gameUser = _mapper.Map<GameUserViewModel>(user);
-            gameUser.Ban = _mapper.Map<BanViewModel>(GetActiveBan(user.Bans.FirstOrDefault()));
+            gameUser.Restrictions = gameUser.Restrictions
+                .Where(r => _dateTime.UtcNow < r.CreatedAt + r.Duration)
+                .ToArray();
             return new(gameUser);
         }
 
@@ -240,11 +251,6 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
             }
 
             return equippedItems;
-        }
-
-        private Ban? GetActiveBan(Ban? lastBan)
-        {
-            return lastBan != null && lastBan.CreatedAt + lastBan.Duration > _dateTime.UtcNow ? lastBan : null;
         }
     }
 }
