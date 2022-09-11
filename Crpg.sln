@@ -43,11 +43,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.Server", "src\Module
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.Client", "src\Module.Client\Module.Client.csproj", "{4A8C7B47-6A77-47D0-BEAC-7BF2C4952B31}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.Server.Utest", "test\BalancingAndElo.Utest\Module.Server.Utest.csproj", "{146E4DA6-3FBE-4656-83A1-B8A37A3D5642}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4E19AEDB-C392-41BA-AF6F-FDB015DC3EA3} = {4E19AEDB-C392-41BA-AF6F-FDB015DC3EA3}
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -226,18 +221,6 @@ Global
 		{4A8C7B47-6A77-47D0-BEAC-7BF2C4952B31}.Release|x64.Build.0 = Release|Any CPU
 		{4A8C7B47-6A77-47D0-BEAC-7BF2C4952B31}.Release|x86.ActiveCfg = Release|Any CPU
 		{4A8C7B47-6A77-47D0-BEAC-7BF2C4952B31}.Release|x86.Build.0 = Release|Any CPU
-		{146E4DA6-3FBE-4656-83A1-B8A37A3D5642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{146E4DA6-3FBE-4656-83A1-B8A37A3D5642}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{146E4DA6-3FBE-4656-83A1-B8A37A3D5642}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{146E4DA6-3FBE-4656-83A1-B8A37A3D5642}.Debug|x64.Build.0 = Debug|Any CPU
-		{146E4DA6-3FBE-4656-83A1-B8A37A3D5642}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{146E4DA6-3FBE-4656-83A1-B8A37A3D5642}.Debug|x86.Build.0 = Debug|Any CPU
-		{146E4DA6-3FBE-4656-83A1-B8A37A3D5642}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{146E4DA6-3FBE-4656-83A1-B8A37A3D5642}.Release|Any CPU.Build.0 = Release|Any CPU
-		{146E4DA6-3FBE-4656-83A1-B8A37A3D5642}.Release|x64.ActiveCfg = Release|Any CPU
-		{146E4DA6-3FBE-4656-83A1-B8A37A3D5642}.Release|x64.Build.0 = Release|Any CPU
-		{146E4DA6-3FBE-4656-83A1-B8A37A3D5642}.Release|x86.ActiveCfg = Release|Any CPU
-		{146E4DA6-3FBE-4656-83A1-B8A37A3D5642}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -257,7 +240,6 @@ Global
 		{9AF9F1A6-9A96-4E15-97A9-17A4996FE110} = {52AD2564-92E7-4BEC-BE3A-F2C4E4F841B1}
 		{4E19AEDB-C392-41BA-AF6F-FDB015DC3EA3} = {52AD2564-92E7-4BEC-BE3A-F2C4E4F841B1}
 		{4A8C7B47-6A77-47D0-BEAC-7BF2C4952B31} = {52AD2564-92E7-4BEC-BE3A-F2C4E4F841B1}
-		{146E4DA6-3FBE-4656-83A1-B8A37A3D5642} = {28C4EC63-349A-4D4E-8831-77D014AAE188}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {40CA755A-A917-468D-80F2-E4988A5ECE5C}
