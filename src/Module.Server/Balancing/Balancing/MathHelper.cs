@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Crpg.BalancingAndRating.Balancing
+namespace Crpg.Module.Balancing
 {
     public static class MathHelper
     {

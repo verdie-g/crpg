@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Crpg.BalancingAndRating.Balancing;
+using Crpg.Module.Balancing;
 
 
 
-namespace Crpg.BalancingAndRating.Balancing
+namespace Crpg.Module.Balancing
 {
     public static class MatchBalancingHelpers
     {
@@ -84,16 +84,35 @@ namespace Crpg.BalancingAndRating.Balancing
             }
             return count;
         }
-        public static ClanGroup FindClanGroupByRatingBelowSize(List<ClanGroup> clanGroups, double desiredLevel, double maxSize)
+        public static ClanGroup FakeClanGroupRatedAt(double rating)
         {
-         int index=clanGroups.BinarySearch()
+            ClanGroup clanGroup = new ClanGroup(){ };
+            User fakeUser = new User()
+            {Name="a5d8z63xsa", Rating =rating};
+            clanGroup.Add(fakeUser);
+            return clanGroup;
         }
-        public static List<ClanGroup> FindSuitableSwap(ClanGroup weakClanGroup, List<ClanGroup> strongTeam ,double diff)
+
+       /* public static ClanGroup FindClanGroupByRatingBelowSizeRec(List<ClanGroup> clanGroups, double desiredLevel, double maxSize, List<string> list = new List<string>() { }; )
+        {
+            clanGroups.Sort();
+            int index = clanGroups.BinarySearch(FakeClanGroupRatedAt(desiredLevel));
+            if (clanGroups.ElementAt(~index).Size() < maxSize)
+            {
+                return clanGroups.ElementAt(~index);
+            }
+            else if (clanGroups.ElementAt(~index-1).Size() < maxSize)
+            {
+                return clanGroups.ElementAt(~index - 1);
+            }
+
+        }
+        public static List<User> FindSuitableSwap(ClanGroup weakClanGroup, List<ClanGroup> strongTeam ,double diff)
         {
             List<ClanGroup> selectedClanGroups = new();
-            sele
-            return selectedClanGroups;
-        }
+           sele
+          return selectedClanGroups;
+        }*/
 
 
 
@@ -132,7 +151,7 @@ namespace Crpg.BalancingAndRating.Balancing
                 indexSortingMap = indexSortingMap.Reverse().ToArray();
             }
 
-            var partitions = new PriorityQueue<PartitionNode<T> , double>(weights.Length);
+            var partitions = new PriorityQueue<PartitionNode<T>>();
             // iteration on weights
             for (var i = 0; i < weights.Length; i++)
             {

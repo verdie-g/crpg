@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Crpg.BalancingAndRating.Balancing
+namespace Crpg.Module.Balancing
 {
     public class Clan 
     {

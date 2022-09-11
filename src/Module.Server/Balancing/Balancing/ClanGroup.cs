@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Crpg.BalancingAndRating.Balancing
+namespace Crpg.Module.Balancing
 {
     public class ClanGroup
     {
@@ -61,9 +61,9 @@ namespace Crpg.BalancingAndRating.Balancing
         // Compares by Rating
         public int Compare(ClanGroup x, ClanGroup y)
         {
-            if (x.RatingPMean.CompareTo(y.RatingPmean) != 0)
+            if (x.RatingPMean().CompareTo(y.RatingPMean()) != 0)
             {
-                return x.RatingPMean.CompareTo(y.RatingPmean);
+                return x.RatingPMean().CompareTo(y.RatingPMean());
             }
 
             else

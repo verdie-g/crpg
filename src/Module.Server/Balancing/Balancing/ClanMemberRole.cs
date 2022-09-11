@@ -1,4 +1,4 @@
-﻿namespace Crpg.BalancingAndRating.Balancing
+﻿namespace Crpg.Module.Balancing
 {
     public enum ClanMemberRole
     {

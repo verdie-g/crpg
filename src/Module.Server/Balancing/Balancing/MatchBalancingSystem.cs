@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Crpg.BalancingAndRating.Balancing;
-namespace Crpg.BalancingAndRating.Balancing
+using Crpg.Module.Balancing;
+namespace Crpg.Module.Balancing
 {
     /// <summary>
     /// i don't know yet.
@@ -26,7 +26,7 @@ namespace Crpg.BalancingAndRating.Balancing
             allUsers.AddRange(gameMatch.Waiting);
             GameMatch returnedGameMatch = new();
             bool teamA = true;
-            foreach (User player in allUsers.OrderByDescending(u => u.Elo))
+            foreach (User player in allUsers.OrderByDescending(u => u.Rating))
             {
                 if (teamA)
                 {
@@ -52,10 +52,10 @@ namespace Crpg.BalancingAndRating.Balancing
             int i = 0;
             User[] players = new User[allUsers.Count];
             double[] elos = new double[allUsers.Count];
-            foreach (User player in allUsers.OrderByDescending(u => u.Elo))
+            foreach (User player in allUsers.OrderByDescending(u => u.Rating))
             {
                 players[i] = player;
-                elos[i] = player.Elo;
+                elos[i] = player.Rating;
                 i++;
             }
             var partition = MatchBalancingHelpers.Heuristic(players, elos, 2);
@@ -85,7 +85,7 @@ namespace Crpg.BalancingAndRating.Balancing
             returnedGameMatch.TeamB = MatchBalancingHelpers.ConvertClanGroupsToUserList(partition.Partition[1].ToList());
             return returnedGameMatch;
         }
-        public GameMatch BalanceTeamOfSimilarSizes(GameMatch gameMatch, double threshold = 0.10)
+       /* public GameMatch BalanceTeamOfSimilarSizes(GameMatch gameMatch, double threshold = 0.10)
         {
             double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
             GameMatch returnedGameMatch = new();
@@ -98,9 +98,9 @@ namespace Crpg.BalancingAndRating.Balancing
 
             }
             return returnedGameMatch;
-        }
+        }*/
 
-        public GameMatch DoASwap(GameMatch gameMatch)
+        /*public GameMatch DoASwap(GameMatch gameMatch)
         {
             double diff = RatingHelpers.ComputeTeamRatingDifference(gameMatch);
             ClanGroupsGameMatch clanGroupGameMatch = MatchBalancingHelpers.ConvertGameMatchToClanGroupsGameMatchList(gameMatch);
@@ -121,10 +121,12 @@ namespace Crpg.BalancingAndRating.Balancing
 
             weakTeam.OrderBy(c => c.RatingPMean(1));
             strongTeam.OrderBy(c => c.RatingPMean(1));
-            ClanGroup weakClanGroupToSwap;
+            
             int i = 0;
             bool swapfound = false;
+            ClanGroup weakClanGroupToSwap;
             while ((i < weakTeam.Count) & swapfound)
+                     
                     weakClanGroupToSwap = weakTeam.ElementAt(i);
                     List<ClanGroup>? suitableClanGroupsCandidate = MatchBalancingHelpers.FindSuitableSwap(weakClanGroupToSwap, strongTeam,diff);
                     if (suitableClanGroupsCandidate.Count == 0)
@@ -145,7 +147,7 @@ namespace Crpg.BalancingAndRating.Balancing
                         }
              return MatchBalancingHelpers.ConvertClanGroupsGameMatchToGameMatchList(clanGroupGameMatch);
 
-        }
+        }*/
 
         
 
@@ -165,4 +167,4 @@ namespace Crpg.BalancingAndRating.Balancing
         }
         */
     }
-}
+

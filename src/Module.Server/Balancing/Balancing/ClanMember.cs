@@ -1,4 +1,4 @@
-﻿namespace Crpg.BalancingAndRating.Balancing
+﻿namespace Crpg.Module.Balancing
 {
     /// <summary>
     /// Represents a clan membership for a user.
