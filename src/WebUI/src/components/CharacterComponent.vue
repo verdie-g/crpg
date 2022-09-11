@@ -111,7 +111,7 @@
         multilined
       >
         <div class="field">
-          <b-switch :value="character.autoRepair" @input="onAutoRepairSwitch">
+          <b-switch :value="character.autoRepair" @input="onAutoRepairSwitch" disabled>
             Automatically repair damaged items (average repair cost
             {{ averageRepairCost }} gold)
           </b-switch>
