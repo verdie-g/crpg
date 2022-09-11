@@ -13,6 +13,7 @@ using Crpg.Application.Items.Queries;
 using Crpg.Application.Users.Commands;
 using Crpg.Application.Users.Models;
 using Crpg.Application.Users.Queries;
+using Crpg.Domain.Entities.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,6 +28,19 @@ public class UsersController : BaseController
     [HttpGet("self")]
     public Task<ActionResult<Result<UserViewModel>>> GetUser()
         => ResultToActionAsync(Mediator.Send(new GetUserQuery { UserId = CurrentUser.User!.Id }));
+
+    /// <summary>
+    /// Get user by their platform id.
+    /// </summary>
+    [HttpGet("self")]
+    public Task<ActionResult<Result<UserPublicViewModel>>> GetUserByPlatformId(
+        [FromQuery] Platform platform,
+        [FromQuery] string platformUserId)
+        => ResultToActionAsync(Mediator.Send(new GetUserByPlatformIdQuery
+        {
+            Platform = platform,
+            PlatformUserId = platformUserId,
+        }));
 
     /// <summary>
     /// Deletes current user.
