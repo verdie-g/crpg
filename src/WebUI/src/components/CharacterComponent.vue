@@ -200,7 +200,7 @@
                   type="is-danger"
                   icon-left="coins"
                   expanded
-                  @click="sellItem"
+                  @click="showSellItemConfirmation(userItemToReplace)"
                 >
                   Sell
                 </b-button>
@@ -244,6 +244,51 @@
         </div>
       </div>
     </b-modal>
+
+    <b-modal :active.sync="isConfirmSellItemModalActive" scroll="keep" ref="confirmSellItemModal">
+      <div
+        v-if="userItemToSell"
+        class="columns is-flex-direction-column is-marginless is-align-items-center sell-item-modal has-background-white"
+      >
+        <div class="column">
+          <div class="has-text-centered">
+            <span class="is-size-4">
+              Are you sure you want to sell
+              <strong :class="userItemRankClass(userItemToSell)">{{ userItemToSell.baseItem.name }}</strong>?
+            </span>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="user-item">
+            <display-user-item
+              :user-item="userItemToSell"
+            />
+          </div>
+        </div>
+
+        <div class="column">
+          <b-button
+            size="is-medium"
+            type="is-danger"
+            icon-left="coins"
+            expanded
+            @click="confirmSellItem"
+          >
+            Sell
+          </b-button>
+          <b-button
+            size="is-medium"
+            type="is-secondary"
+            icon-left="xmark"
+            expanded
+            @click="cancelSellItem"
+          >
+            Cancel
+          </b-button>
+        </div>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -271,8 +316,10 @@ export default class CharacterComponent extends Vue {
   // modal stuff
   itemSlot = ItemSlot;
   isReplaceItemModalActive = false;
+  isConfirmSellItemModalActive = false;
   userItemToReplace: UserItem | null = null;
   userItemToReplaceSlot: ItemSlot | null = null;
+  userItemToSell: UserItem | null = null;
   selectedUserItem: UserItem | null = null;
 
   get characterEquippedItems(): EquippedItem[] | null {
@@ -302,8 +349,8 @@ export default class CharacterComponent extends Vue {
     return this.userItemToReplaceSlot === null
       ? []
       : filterUserItemsFittingInSlot(userModule.userItems, this.userItemToReplaceSlot).filter(
-          ui => this.userItemToReplace === null || ui.id !== this.userItemToReplace.id
-        );
+        ui => this.userItemToReplace === null || ui.id !== this.userItemToReplace.id
+      );
   }
 
   get itemToReplaceUpgradeInfo(): { upgradable: boolean; reason: string } {
@@ -410,13 +457,14 @@ export default class CharacterComponent extends Vue {
     (this.$refs.replaceItemModal as any).close();
   }
 
-  async sellItem(): Promise<void> {
+  async confirmSellItem(): Promise<void> {
     const salePrice = await userModule.sellUserItem(this.userItemToReplace!);
     notify(
       `Sold ${this.userItemToReplace?.baseItem.name} for ${salePrice} gold`,
       NotificationType.Info
     );
     (this.$refs.replaceItemModal as any).close();
+    (this.$refs.confirmSellItemModal as any).close();
   }
 
   confirmItemSelection(): void {
@@ -426,6 +474,18 @@ export default class CharacterComponent extends Vue {
       userItem: this.selectedUserItem!,
     });
     this.isReplaceItemModalActive = false;
+  }
+
+  showSellItemConfirmation(userItem: UserItem): void {
+    this.isConfirmSellItemModalActive = true
+    this.userItemToSell = userItem
+  }
+
+
+
+  cancelSellItem(userItem: UserItem): void {
+    this.isConfirmSellItemModalActive = false
+    this.userItemToSell = null
   }
 }
 </script>
