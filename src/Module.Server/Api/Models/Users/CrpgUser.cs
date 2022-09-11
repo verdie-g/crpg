@@ -2,7 +2,7 @@
 
 namespace Crpg.Module.Api.Models.Users;
 
-// Copy of Crpg.Application.Games.Models.GameUser
+// Copy of Crpg.Application.Games.Models.GameUserViewModel
 internal class CrpgUser
 {
     public int Id { get; set; }

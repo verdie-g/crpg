@@ -19,13 +19,13 @@ namespace Crpg.Application.Games.Commands;
 /// <summary>
 /// Get or create a user with its character.
 /// </summary>
-public record GetGameUserCommand : IMediatorRequest<GameUser>
+public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
 {
     public Platform Platform { get; init; }
     public string PlatformUserId { get; init; } = default!;
     public string UserName { get; init; } = default!;
 
-    internal class Handler : IMediatorRequestHandler<GetGameUserCommand, GameUser>
+    internal class Handler : IMediatorRequestHandler<GetGameUserCommand, GameUserViewModel>
     {
         internal static readonly (string id, ItemSlot slot)[][] DefaultItemSets =
         {
@@ -116,7 +116,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
             _characterService = characterService;
         }
 
-        public async Task<Result<GameUser>> Handle(GetGameUserCommand req, CancellationToken cancellationToken)
+        public async Task<Result<GameUserViewModel>> Handle(GetGameUserCommand req, CancellationToken cancellationToken)
         {
             var user = await _db.Users
                 .Include(u => u.Characters.Where(c => c.Name == req.UserName).Take(1))
@@ -144,7 +144,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
                 await _db.Entry(user.Characters[0])
                     .Collection(c => c.EquippedItems)
                     .Query()
-                    .Include(ei => ei.UserItem!.BaseItem)
+                    .Include(ei => ei.UserItem)
                     .LoadAsync(cancellationToken);
             }
 
@@ -155,7 +155,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
                 Logger.LogInformation("User '{0}' created character '{1}'", user.Id, newCharacter.Id);
             }
 
-            var gameUser = _mapper.Map<GameUser>(user);
+            var gameUser = _mapper.Map<GameUserViewModel>(user);
             gameUser.Ban = _mapper.Map<BanViewModel>(GetActiveBan(user.Bans.FirstOrDefault()));
             return new(gameUser);
         }

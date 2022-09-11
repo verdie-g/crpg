@@ -14,7 +14,7 @@ public class GamesController : BaseController
     /// Get or create user.
     /// </summary>
     [HttpGet("users")]
-    public Task<ActionResult<Result<GameUser>>> GetUser([FromQuery] Platform platform,
+    public Task<ActionResult<Result<GameUserViewModel>>> GetUser([FromQuery] Platform platform,
         [FromQuery] string platformUserId, [FromQuery] string userName) =>
         ResultToActionAsync(Mediator.Send(new GetGameUserCommand
         {

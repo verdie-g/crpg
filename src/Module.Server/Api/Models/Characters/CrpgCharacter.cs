@@ -2,7 +2,7 @@
 
 namespace Crpg.Module.Api.Models.Characters;
 
-// Copy of Crpg.Application.Characters.Models.CharacterViewModel
+// Copy of Crpg.Application.Characters.Models.GameCharacterViewModel
 internal class CrpgCharacter
 {
     public int Id { get; set; }

@@ -59,7 +59,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             {
                 UpdateResults = results.Select(r => new UpdateGameUserResult
                 {
-                    User = _mapper.Map<GameUser>(r.user),
+                    User = _mapper.Map<GameUserViewModel>(r.user),
                     EffectiveReward = r.reward,
                     BrokenItems = r.brokenItems,
                 }).ToArray(),
@@ -78,7 +78,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             // to their respective character.
             await _db.EquippedItems
                 .Where(ei => characterIds.Contains(ei.CharacterId))
-                .Include(ei => ei.UserItem!.BaseItem)
+                .Include(ei => ei.UserItem)
                 .LoadAsync(cancellationToken);
 
             return charactersById;
