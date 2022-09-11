@@ -38,18 +38,6 @@
           {{ props.row.role }}
         </b-table-column>
 
-        <b-dropdown aria-role="list" v-if="isLeader">
-          <b-dropdown-item aria-role="listitem" @click="updateMember(selectedMember, 'Member')">
-            Member
-          </b-dropdown-item>
-          <b-dropdown-item aria-role="listitem" @click="updateMember(selectedMember, 'Officer')">
-            Officer
-          </b-dropdown-item>
-          <b-dropdown-item aria-role="listitem" @click="updateMember(selectedMember, 'Leader')">
-            Leader
-          </b-dropdown-item>
-        </b-dropdown>
-
         <b-table-column v-slot="props">
           <template v-if="memberKickable(props.row)">
             <b-tooltip position="is-top">
@@ -157,33 +145,6 @@ export default class ClanComponent extends Vue {
     }
 
     return selfMember.role === ClanMemberRole.Officer || selfMember.role === ClanMemberRole.Leader;
-  }
-
-  get isLeader(): boolean {
-    const selfMember = this.selfMember;
-    if (selfMember === null) {
-      return false;
-    }
-
-    return selfMember.role === ClanMemberRole.Leader;
-  }
-
-  get isOfficer(): boolean {
-    const selfMember = this.selfMember;
-    if (selfMember === null) {
-      return false;
-    }
-
-    return selfMember.role === ClanMemberRole.Officer;
-  }
-
-  get isMember(): boolean {
-    const selfMember = this.selfMember;
-    if (selfMember === null) {
-      return false;
-    }
-
-    return selfMember.role === ClanMemberRole.Member;
   }
 
   set selectedMemberRole(role: ClanMemberRole | undefined) {
