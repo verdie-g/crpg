@@ -71,6 +71,10 @@ public record UpdateClanMemberCommand : IMediatorRequest<ClanMemberViewModel>
             }
 
             toUpdateUser.ClanMembership!.Role = req.Role;
+            if (req.Role == ClanMemberRole.Leader) // If user is giving their leader role.
+            {
+                user.ClanMembership.Role = ClanMemberRole.Officer;
+            }
 
             await _db.SaveChangesAsync(cancellationToken);
             Logger.LogInformation("User '{0}' updated member '{1}' from clan '{2}'", req.UserId,
