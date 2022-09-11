@@ -12,11 +12,11 @@ namespace Crpg.Module.Battle;
 internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 {
     private readonly CrpgConstants _constants;
-    private readonly MultiplayerRoundController _roundController;
+    private readonly MultiplayerRoundController? _roundController;
     private MissionTimer? _spawnTimer;
     private bool _botsSpawned;
 
-    public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController roundController)
+    public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController? roundController)
     {
         _constants = constants;
         _roundController = roundController;
@@ -25,20 +25,26 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     public override void Initialize(SpawnComponent spawnComponent)
     {
         base.Initialize(spawnComponent);
-        _roundController.OnRoundStarted += RequestStartSpawnSession;
-        _roundController.OnRoundEnding += RequestStopSpawnSession;
+        if (_roundController != null)
+        {
+            _roundController.OnRoundStarted += RequestStartSpawnSession;
+            _roundController.OnRoundEnding += RequestStopSpawnSession;
+        }
     }
 
     public override void Clear()
     {
         base.Clear();
-        _roundController.OnRoundStarted -= RequestStartSpawnSession;
-        _roundController.OnRoundEnding -= RequestStopSpawnSession;
+        if (_roundController != null)
+        {
+            _roundController.OnRoundStarted -= RequestStartSpawnSession;
+            _roundController.OnRoundEnding -= RequestStopSpawnSession;
+        }
     }
 
     public override void OnTick(float dt)
     {
-        if (IsSpawningEnabled && IsRoundInProgress())
+        if ((IsSpawningEnabled && IsRoundInProgress()) || _roundController == null)
         {
             SpawnAgents();
         }
@@ -59,17 +65,17 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
     protected override bool IsRoundInProgress()
     {
-        return _roundController.IsRoundInProgress;
+        return _roundController?.IsRoundInProgress ?? false;
     }
 
     protected override void SpawnAgents()
     {
-        if (_spawnTimer!.Check())
+        if (_roundController != null && _spawnTimer!.Check())
         {
             return;
         }
 
-        if (!_botsSpawned)
+        if (!_botsSpawned || _roundController == null)
         {
             SpawnBotAgents();
             _botsSpawned = true;
@@ -112,7 +118,16 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
             BasicCultureObject teamCulture = team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
             int numberOfBots = Mission.AttackerTeam == team ? botsTeam1 : botsTeam2;
-            for (int i = 0; i < numberOfBots; i += 1)
+            int botsAlive = 0;
+            foreach (Agent a in team.ActiveAgents)
+            {
+                if (a.IsAIControlled && a.IsHuman)
+                {
+                    botsAlive++;
+                }
+            }
+
+            for (int i = 0 + botsAlive; i < numberOfBots; i += 1)
             {
                 MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
                     .GetMPHeroClasses()
@@ -208,8 +223,11 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             Agent agent = Mission.SpawnAgent(agentBuildData);
             agent.WieldInitialWeapons();
 
-            missionPeer.SpawnCountThisRound += 1;
-            crpgRepresentative.SpawnTeamThisRound = missionPeer.Team;
+            if (_roundController != null)
+            {
+                missionPeer.SpawnCountThisRound += 1;
+                crpgRepresentative.SpawnTeamThisRound = missionPeer.Team;
+            }
         }
     }
 
