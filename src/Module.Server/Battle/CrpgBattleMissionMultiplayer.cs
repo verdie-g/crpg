@@ -37,6 +37,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         base.AfterStart();
         RoundController.OnPreRoundEnding += OnPreRoundEnding;
         RoundController.OnPostRoundEnded += OnPostRoundEnd;
+        WarmupComponent.OnWarmupEnded += OnWarmupEnding;
 
         AddTeams();
     }
@@ -45,6 +46,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     {
         RoundController.OnPostRoundEnded -= OnPostRoundEnd;
         RoundController.OnPreRoundEnding -= OnPreRoundEnding;
+        WarmupComponent.OnWarmupEnding -= OnWarmupEnding;
         base.OnRemoveBehavior();
     }
 
@@ -92,6 +94,11 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
         Banner bannerTeam2 = new(cultureTeam2.BannerKey, cultureTeam2.BackgroundColor2, cultureTeam2.ForegroundColor2);
         Mission.Teams.Add(BattleSideEnum.Defender, cultureTeam2.BackgroundColor2, cultureTeam2.ForegroundColor2, bannerTeam2, false, true);
+    }
+
+    private void OnWarmupEnding()
+    {
+        NotificationsComponent.WarmupEnding();
     }
 
     private void OnPreRoundEnding()
