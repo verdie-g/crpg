@@ -234,6 +234,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         skills.SetPropertyValue(DefaultSkills.Riding, characteristics.Skills.Riding * 20);
         skills.SetPropertyValue(CrpgSkills.WeaponMaster, characteristics.Skills.WeaponMaster);
         skills.SetPropertyValue(CrpgSkills.MountedArchery, characteristics.Skills.MountedArchery);
+        skills.SetPropertyValue(CrpgSkills.Shield, characteristics.Skills.Shield);
 
         skills.SetPropertyValue(DefaultSkills.OneHanded, characteristics.WeaponProficiencies.OneHanded);
         skills.SetPropertyValue(DefaultSkills.TwoHanded, characteristics.WeaponProficiencies.TwoHanded);
