@@ -43,7 +43,7 @@
             <b-tooltip position="is-top">
               <b-icon
                 icon="cog"
-                class="is-clickable"
+                class="action-icon__hover is-clickable"
                 @click.native="selected(props.row)"
               />
               <template v-slot:content>
@@ -236,4 +236,12 @@ export default class ClanComponent extends Vue {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.action-icon__hover {
+  opacity: 0.4;
+  transition: opacity 250ms;
+  &:hover {
+    opacity: 1;
+  }
+}
+</style>
