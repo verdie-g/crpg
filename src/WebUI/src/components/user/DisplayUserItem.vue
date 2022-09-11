@@ -1,6 +1,6 @@
 <template>
   <div>
-    <figure class="image">
+    <figure class="image mb-2">
       <img :src="userItemImage(userItem)" alt="item image" />
     </figure>
     <h4 :class="userItemRankClass(userItem)">{{ userItem.baseItem.name }}</h4>
@@ -12,7 +12,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import ItemProperties from '@/components/ItemProperties.vue';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
-import UserItem from "@/models/user-item";
+import UserItem from '@/models/user-item';
 
 @Component({
   components: { CharacterStatsComponent, ItemProperties },

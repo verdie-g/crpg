@@ -153,62 +153,93 @@
     </div>
 
     <b-modal :active.sync="isReplaceItemModalActive" scroll="keep" ref="replaceItemModal">
-      <div class="columns is-marginless replace-item-modal">
-        <div class="column" v-if="userItemToReplace">
-          <h3>
-            Replace
-            <strong :class="userItemRankClass(userItemToReplace)">
-              {{ userItemToReplace.baseItem.name }}
-            </strong>
+      <div class="replace-item-modal is-flex is-flex-direction-column px-4 py-4">
+        <div class="is-flex-shrink-1">
+          <h3 class="is-size-4 mb-2">
+            Replace {{ userItemToReplaceSlot }}
+            <span v-if="userItemToReplace" :class="userItemRankClass(userItemToReplace)">
+              (<strong>{{ userItemToReplace.baseItem.name }}</strong>)
+            </span>
           </h3>
-          <item-properties :item="userItemToReplace.baseItem" :rank="userItemToReplace.rank" />
-          <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
-          <b-button
-            size="is-medium"
-            type="is-warning"
-            icon-left="angle-double-up"
-            expanded
-            :disabled="!itemToReplaceUpgradeInfo.upgradable"
-            :title="itemToReplaceUpgradeInfo.reason"
-            @click="upgradeItem"
-          >
-            Upgrade
-          </b-button>
-          <b-button
-            size="is-medium"
-            type="is-danger"
-            icon-left="coins"
-            expanded
-            @click="sellItem"
-          >
-            Sell
-          </b-button>
         </div>
-        <div class="column user-items">
-          <div v-if="fittingUserItems.length" class="columns is-multiline">
-            <div
-              class="column is-narrow user-item"
-              v-for="userItem in fittingUserItems"
-              v-bind:key="userItem.id"
-              @click="selectedUserItem = userItem"
-            >
-              <display-user-item
-                :user-item="userItem"
-              />
+        <div class="columns">
+          <div class="column is-flex is-flex-direction-column is-align-items-center" v-if="userItemToReplace">
+            <div class="is-flex-grow-1 is-align-self-center is-flex is-align-items-center">
+              <div class="user-item">
+                <display-user-item
+                  :user-item="userItemToReplace"
+                />
+              </div>
+            </div>
+            <div class="is-flex-shrink-1 columns mt-3">
+              <div class="column">
+                <b-button
+                  size="is-medium"
+                  expanded
+                  @click="unequipItem"
+                >
+                  Unequip
+                </b-button>
+              </div>
+              <div class="column">
+                <b-button
+                  size="is-medium"
+                  type="is-warning"
+                  icon-left="angle-double-up"
+                  expanded
+                  :disabled="!itemToReplaceUpgradeInfo.upgradable"
+                  :title="itemToReplaceUpgradeInfo.reason"
+                  @click="upgradeItem"
+                >
+                  Upgrade
+                </b-button>
+              </div>
+              <div class="column">
+                <b-button
+                  size="is-medium"
+                  type="is-danger"
+                  icon-left="coins"
+                  expanded
+                  @click="sellItem"
+                >
+                  Sell
+                </b-button>
+              </div>
             </div>
           </div>
-          <div v-else>You don't own any item for this type.</div>
-        </div>
-        <div class="column" v-if="selectedUserItem">
-          <h3>
-            Replace with
-            <strong :class="userItemRankClass(selectedUserItem)">
-              {{ selectedUserItem.baseItem.name }}
-            </strong>
-          </h3>
-          <div class="content">
-            <item-properties :item="selectedUserItem.baseItem" :rank="selectedUserItem.rank" />
-            <b-button size="is-medium" icon-left="check" expanded @click="confirmItemSelection" />
+          <div class="column">
+            <div v-if="fittingUserItems.length" class="user-items columns is-multiline is-justify-content-end">
+              <div
+                class="column is-narrow user-item user-item__action"
+                v-for="userItem in fittingUserItems"
+                v-bind:key="userItem.id"
+                @click="selectedUserItem = userItem"
+              >
+                <display-user-item
+                  :user-item="userItem"
+                />
+              </div>
+            </div>
+            <div v-else class="py-3 has-text-centered">
+              <template v-if="userItemToReplace">
+                You don't own any other items of this type.
+              </template>
+              <template v-else>
+                You don't own any items of this type.
+              </template>
+            </div>
+          </div>
+          <div v-if="selectedUserItem">
+            <h3>
+              Replace with
+              <strong :class="userItemRankClass(selectedUserItem)">
+                {{ selectedUserItem.baseItem.name }}
+              </strong>
+            </h3>
+            <div class="content">
+              <item-properties :item="selectedUserItem.baseItem" :rank="selectedUserItem.rank" />
+              <b-button size="is-medium" icon-left="check" expanded @click="confirmItemSelection" />
+            </div>
           </div>
         </div>
       </div>
@@ -450,10 +481,14 @@ export default class CharacterComponent extends Vue {
 
 .user-item {
   width: 256px;
-  cursor: pointer;
 
-  &:hover {
-    background-color: #fafafa; // TODO: use bulma variable
+  // Only apply hover styles to items with a click action
+  &__action {
+    cursor: pointer;
+    // Apply hover effect to any user-items with the hover-action class
+    &:hover {
+      background-color: #fafafa; // TODO: use bulma variable
+    }
   }
 }
 
