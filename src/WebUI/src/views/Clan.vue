@@ -38,15 +38,75 @@
           {{ props.row.role }}
         </b-table-column>
 
-        <b-table-column v-slot="props" cell-class="is-clickable">
-          <b-icon
-            icon="ban"
-            @click.native="kickMember(props.row)"
-            v-if="memberKickable(props.row)"
-          />
+        <b-table-column v-slot="props">
+          <div v-if="memberKickable(props.row)" class="is-flex is-justify-content-end">
+            <b-tooltip position="is-top">
+              <b-icon
+                icon="cog"
+                class="action-icon__hover is-clickable"
+                @click.native="selected(props.row)"
+              />
+              <template v-slot:content>
+                Click to manage this member of the clan.
+              </template>
+            </b-tooltip>
+          </div>
         </b-table-column>
       </b-table>
     </div>
+
+    <b-modal display="inline-block" v-model="isManageMemberWindowActive">
+      <div v-if="selectedMember && selectedMember.user" class="card">
+        <div class="card-header is-align-items-center px-3 py-3">
+          <b-icon
+            icon="user-cog"
+            size="is-large"
+            class="mr-2"
+          />
+          <h2 class="title is-3">
+            Managing {{ selectedMember.user.name }}
+          </h2>
+        </div>
+
+        <div class="card-content">
+          <div class="columns is-flex-direction-column px-1">
+            <div class="pt-3 pb-4">
+              <b-field label="Role">
+                <b-radio
+                  v-model="selectedMemberRole"
+                  native-value="Member"
+                >
+                  Member
+                </b-radio>
+                <b-radio
+                  v-model="selectedMemberRole"
+                  native-value="Officer"
+                >
+                  Officer
+                </b-radio>
+                <b-radio
+                  v-model="selectedMemberRole"
+                  native-value="Leader"
+                >
+                  Leader
+                </b-radio>
+              </b-field>
+            </div>
+
+            <div>
+              <b-button
+                icon-left="user-minus"
+                type="is-danger"
+                class="is-clickable mt-5"
+                @click.native="kickMember(selectedMember)"
+              >
+                Kick Member
+              </b-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </b-modal>
   </section>
 </template>
 
@@ -67,6 +127,8 @@ export default class ClanComponent extends Vue {
   clan: Clan | null = null;
   members: ClanMember[] = [];
   applicationSent = false;
+  isManageMemberWindowActive = false;
+  selectedMember: ClanMember | null = null;
 
   get selfMember(): ClanMember | null {
     // Clan or current user not loaded yet.
@@ -87,6 +149,23 @@ export default class ClanComponent extends Vue {
     return selfMember.role === ClanMemberRole.Officer || selfMember.role === ClanMemberRole.Leader;
   }
 
+  set selectedMemberRole(role: ClanMemberRole | undefined) {
+    const member = this.selectedMember
+    if (!member || !role) {
+      return
+    }
+    this.updateMember(member, role)
+  }
+
+  get selectedMemberRole(): ClanMemberRole | undefined {
+    return this.selectedMember?.role
+  }
+
+  selected(member: ClanMember) {
+    this.selectedMember = member;
+    this.isManageMemberWindowActive = true;
+  }
+
   created() {
     const clanId = parseInt(this.$route.params.id as string);
     if (Number.isNaN(clanId)) {
@@ -99,6 +178,10 @@ export default class ClanComponent extends Vue {
   }
 
   memberKickable(member: ClanMember): boolean {
+    if (member === null) {
+      return false;
+    }
+
     const selfMember = this.selfMember;
     if (
       selfMember !== null &&
@@ -135,8 +218,30 @@ export default class ClanComponent extends Vue {
       notify('Clan member kicked');
       arrayRemove(this.members, m => m === member);
     }
+    this.selectedMember = null;
+    this.isManageMemberWindowActive = false;
+  }
+
+  async updateMember(member: ClanMember, selectedRole: ClanMemberRole) {
+    await clanModule
+      .updateClanMember({
+        clanId: this.clan!.id,
+        memberId: member.user.id,
+        role: selectedRole,
+      })
+      .then(() => notify('Member updated'));
+    clanService.getClanMembers(this.clan!.id).then(m => (this.members = m));
+    this.isManageMemberWindowActive = false;
   }
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.action-icon__hover {
+  opacity: 0.4;
+  transition: opacity 250ms;
+  &:hover {
+    opacity: 1;
+  }
+}
+</style>
