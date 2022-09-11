@@ -18,6 +18,10 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
     public override void OnRemoveBehavior()
     {
         base.OnRemoveBehavior();
+        if (!GameNetwork.IsServer)
+        {
+            return;
+        }
 
         SpawnComponent spawnComponent = Mission.GetMissionBehavior<SpawnComponent>();
         MultiplayerRoundController multiplayerRoundController = Mission.GetMissionBehavior<MultiplayerRoundController>();
