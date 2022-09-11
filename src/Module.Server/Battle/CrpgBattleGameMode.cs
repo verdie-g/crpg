@@ -68,7 +68,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
         CrpgHttpClient crpgClient = new();
         MultiplayerRoundController roundController = new(); // starts/stops round, ends match
 #endif
-
+        MultiplayerWarmupComponent warmup = new CrpgWarmupComponent(_constants);
         MissionState.OpenNew(
             Name,
             new MissionInitializerRecord(scene),
@@ -92,6 +92,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MissionAgentPanicHandler(),
                     new EquipmentControllerLeaveLogic(),
                     new MultiplayerPreloadHelper(),
+                    warmup,
 #if CRPG_SERVER
                     roundController,
                     new CrpgBattleMissionMultiplayer(crpgClient, _constants),
@@ -100,6 +101,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new AgentHumanAILogic(), // bot intelligence
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
                     new CrpgUserManager(crpgClient),
+                    new CrpgWarmupOverrideLogic(_constants),
 #else
                     new MultiplayerRoundComponent(),
                     new MissionMatchHistoryComponent(),
