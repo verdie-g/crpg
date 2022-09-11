@@ -191,11 +191,9 @@
               v-bind:key="userItem.id"
               @click="selectedUserItem = userItem"
             >
-              <figure class="image">
-                <img :src="userItemImage(userItem)" alt="item image" />
-              </figure>
-              <h4 :class="userItemRankClass(userItem)">{{ userItem.baseItem.name }}</h4>
-              <item-properties :item="userItem.baseItem" :rank="userItem.rank" />
+              <display-user-item
+                :user-item="userItem"
+              />
             </div>
           </div>
           <div v-else>You don't own any item for this type.</div>
@@ -230,9 +228,10 @@ import { NotificationType, notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
 import EquippedItem from '@/models/equipped-item';
 import UserItem from '@/models/user-item';
+import DisplayUserItem from '@/components/user/DisplayUserItem.vue';
 
 @Component({
-  components: { CharacterStatsComponent, ItemProperties },
+  components: { DisplayUserItem, CharacterStatsComponent, ItemProperties },
 })
 export default class CharacterComponent extends Vue {
   @Prop(Object) readonly character: Character;
