@@ -19,10 +19,11 @@ public class Result
     /// <summary>
     /// Record a new result from a match between two players.
     /// </summary>
-    /// <param name="winner"></param>
-    /// <param name="loser"></param>
-    /// <param name="isDraw"></param>
-    public Result(Rating winner, Rating loser,float percentage, bool isDraw = false)
+    /// <param name="winner">winner.</param>
+    /// <param name="loser">loser.</param>
+    /// <param name="isDraw">is it a draw.</param>
+    /// <param name="percentage">percentage.</param>
+    public Result(Rating winner, Rating loser, float percentage, bool isDraw = false)
     {
         if (!ValidPlayers(winner, loser))
         {
@@ -35,21 +36,9 @@ public class Result
     }
 
     /// <summary>
-    /// Check that we're not doing anything silly like recording a match with only one player.
-    /// </summary>
-    /// <param name="player1"></param>
-    /// <param name="player2"></param>
-    /// <returns></returns>
-    private static bool ValidPlayers(Rating player1, Rating player2)
-    {
-        return player1 != player2;
-    }
-
-    /// <summary>
     /// Test whether a particular player participated in the match represented by this result.
     /// </summary>
-    /// <param name="player"></param>
-    /// <returns></returns>
+    /// <param name="player">player.</param>
     public bool Participated(Rating player)
     {
         return player == _winner || player == _loser;
@@ -58,8 +47,7 @@ public class Result
     /// <summary>
     /// Returns the "score" for a match.
     /// </summary>
-    /// <param name="player"></param>
-    /// <returns></returns>
+    /// <param name="player">player.</param>
     public double GetScore(Rating player)
     {
         double score;
@@ -88,8 +76,7 @@ public class Result
     /// <summary>
     /// Given a particular player, returns the opponent.
     /// </summary>
-    /// <param name="player"></param>
-    /// <returns></returns>
+    /// <param name="player">player.</param>
     public Rating GetOpponent(Rating player)
     {
         Rating opponent;
@@ -119,8 +106,19 @@ public class Result
     {
         return _loser;
     }
+
     public float GetPercentage()
     {
         return _percentage;
+    }
+
+    /// <summary>
+    /// Check that we're not doing anything silly like recording a match with only one player.
+    /// </summary>
+    /// <param name="player1">player1.</param>
+    /// <param name="player2">player2.</param>
+    private static bool ValidPlayers(Rating player1, Rating player2)
+    {
+        return player1 != player2;
     }
 }

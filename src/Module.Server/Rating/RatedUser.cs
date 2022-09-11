@@ -8,10 +8,9 @@ internal class RatedUser
 {
     public RatedUser(CrpgUser user, RatingCalculator calculator, float rating, float ratingDeviation, float volatility)
     {
-        Rating = new Rating(calculator,rating,ratingDeviation,volatility);
+        Rating = new Rating(calculator, rating, ratingDeviation, volatility);
     }
+
     public CrpgUser Crpguser { get; set; } = new CrpgUser();
     public Rating Rating;
-
-
 }
