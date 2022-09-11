@@ -39,16 +39,18 @@
         </b-table-column>
 
         <b-table-column v-slot="props">
-          <template v-if="memberKickable(props.row)">
+          <div v-if="memberKickable(props.row)" class="is-flex is-justify-content-end">
             <b-tooltip position="is-top">
-              <b-button type="is-primary" icon-left="cog" @click="selected(props.row)">
-                Manage
-              </b-button>
+              <b-icon
+                icon="cog"
+                class="is-clickable"
+                @click.native="selected(props.row)"
+              />
               <template v-slot:content>
                 Click to manage this member of the clan.
               </template>
             </b-tooltip>
-          </template>
+          </div>
         </b-table-column>
       </b-table>
     </div>
