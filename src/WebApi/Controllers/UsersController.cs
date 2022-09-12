@@ -32,7 +32,7 @@ public class UsersController : BaseController
     /// <summary>
     /// Get user by their platform id.
     /// </summary>
-    [HttpGet("self")]
+    [HttpGet]
     public Task<ActionResult<Result<UserPublicViewModel>>> GetUserByPlatformId(
         [FromQuery] Platform platform,
         [FromQuery] string platformUserId)
