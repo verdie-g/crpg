@@ -28,7 +28,7 @@ public record GetUserByPlatformIdQuery : IMediatorRequest<UserPublicViewModel>
         public async Task<Result<UserPublicViewModel>> Handle(GetUserByPlatformIdQuery req, CancellationToken cancellationToken)
         {
             var user = await _db.Users
-                .ProjectTo<UserViewModel>(_mapper.ConfigurationProvider)
+                .ProjectTo<UserPublicViewModel>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync(u => u.Platform == req.Platform && u.PlatformUserId == req.PlatformUserId, cancellationToken);
             return user == null
                 ? new(CommonErrors.UserNotFound(req.Platform, req.PlatformUserId))
