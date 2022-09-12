@@ -29,19 +29,9 @@
               placeholder="Platform-specific User ID"
               required
               v-model="platformUserId"
+              :loading="pendingDebounce || pendingLookupUser"
             />
           </b-field>
-        </div>
-
-        <div class="is-paddingless is-flex-grow-0 has-text-centered">
-          <b-button
-            icon-left="search"
-            type="is-primary"
-            :loading="pendingLookupUser"
-            @click.native="lookupUser"
-          >
-            Lookup
-          </b-button>
         </div>
       </div>
       <div class="column">
@@ -115,7 +105,8 @@ import User from '@/models/user'
 import { NotificationType, notify } from '@/services/notifications-service'
 import restrictionModule from '@/store/restriction-module'
 import userModule from '@/store/user-module'
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { debounce } from '@/utils/debounce'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 
 @Component({
   components: {
@@ -135,12 +126,30 @@ export default class CreateRestrictionModal extends Vue {
   matchedUser: User | null = null;
   pendingLookupUser = false;
   pendingCreateRestriction = false;
+  pendingDebounce = false;
+  debouncedInputHandler: () => any | undefined;
+
+  created(): void {
+    this.debouncedInputHandler = debounce(() => this.handleDebouncedInput(), 2000);
+  }
 
   get isModalActive(): boolean {
     return this.value;
   }
   set isModalActive(val: boolean) {
     this.$emit('input', val);
+  }
+
+  @Watch('selectedPlatform')
+  @Watch('platformUserId')
+  handleInput() {
+    this.pendingDebounce = true;
+    this.debouncedInputHandler();
+  }
+
+  handleDebouncedInput() {
+    this.pendingDebounce = false;
+    void this.lookupUser();
   }
 
   async lookupUser(): Promise<void> {
@@ -158,6 +167,7 @@ export default class CreateRestrictionModal extends Vue {
     try {
       this.matchedUser = await userModule.getUserByPlatform(payload);
     } catch (err) {
+      this.matchedUser = null;
       console.error('Failed to lookup User by Platform and PlatformUserId.', payload);
       throw err;
     } finally {
