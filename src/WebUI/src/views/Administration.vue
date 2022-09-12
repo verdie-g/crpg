@@ -29,6 +29,7 @@ export default class Administration extends Vue {
       restrictedUser: `${r.restrictedUser!.name} (${r.restrictedUser!.platformUserId})`,
       createdAt: r.createdAt.toDateString(),
       duration: timestampToTimeString(r.duration),
+      type: r.type,
       reason: r.reason,
       restrictedByUser: `${r.restrictedByUser.name} (${r.restrictedByUser.platformUserId})`,
     }));
@@ -52,6 +53,10 @@ export default class Administration extends Vue {
       {
         field: 'duration',
         label: 'Duration',
+      },
+      {
+        field: 'type',
+        label: 'Type',
       },
       {
         field: 'reason',

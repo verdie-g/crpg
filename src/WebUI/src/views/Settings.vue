@@ -54,6 +54,10 @@ export default class Settings extends Vue {
         label: 'Duration',
       },
       {
+        field: 'type',
+        label: 'Type',
+      },
+      {
         field: 'reason',
         label: 'Reason',
       },
