@@ -73,21 +73,23 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         WeaponComponentData weapon,
         int weaponSkill)
     {
-        float weaponInaccuracy;
-        float wpfInaccuracy;
         float inaccuracy = 0.0f;
 
-        float accuracyX = 45; // Lowest accuracy that corresponds to stones. It's our lower calibration bound
-        float valueAt100Accuracy = 10; // Inaccuracy for the most accurate weapon.
-        float valueAtAccuracyX = 60; // Inaccuracy at x absciss which correspond to equipping stones.
-        float parabolMinimumAbciss = 100; // set at 100 so WeaponInaccuracy is strictly monotonous.
+        const float accuracyPointA = 45; // Abscissa of the lowest accuracy (point A) that corresponds to stones at the moment. It's our lower calibration bound.
+        const float valueAtAccuracyPointA = 100; // Inaccuracy at point A abscissa which corresponds to equipping stones.
+        const float parabolOffset = 20; // Inaccuracy for the most accurate weapon.
+        const float parabolMinAbscissa = 140; // Set at 100 so the weapon component is strictly monotonous.
 
-        float a = valueAtAccuracyX - valueAt100Accuracy; // Parameter for the polynomial , do not change.
+        const float a = valueAtAccuracyPointA - parabolOffset; // Parameter for the polynomial, do not change.
         if (weapon.IsRangedWeapon)
         {
-            weaponInaccuracy = ((parabolMinimumAbciss - weapon.Accuracy) * (parabolMinimumAbciss - weapon.Accuracy) * a / ((100 - accuracyX) * (100 - accuracyX))) + valueAt100Accuracy;
-            wpfInaccuracy = 0.2F * (float)Math.Pow(10.0, (200.0 - (double)weaponSkill) / 200.0); // 1 for 200 wpf.
-            inaccuracy = weaponInaccuracy * wpfInaccuracy * 0.001f;
+            float weaponComponent = (parabolMinAbscissa - weapon.Accuracy)
+                * (parabolMinAbscissa - weapon.Accuracy)
+                * a
+                / ((parabolMinAbscissa - accuracyPointA) * (100 - accuracyPointA))
+                + parabolOffset;
+            float skillComponent = 0.2f * (float)Math.Pow(10.0, (200.0 - weaponSkill) / 200.0);
+            inaccuracy = (weaponComponent * skillComponent + (100 - weapon.Accuracy)) * 0.001f;
         }
         else if (weapon.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
         {
