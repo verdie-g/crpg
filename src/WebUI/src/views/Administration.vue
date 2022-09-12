@@ -2,24 +2,43 @@
   <div class="container">
     <div class="section">
       <h2 class="title">Restrictions</h2>
+      <b-button
+        type="is-primary"
+        @click="isAddRestrictionModalActive = true"
+      >
+        Add Restriction
+      </b-button>
       <b-table
         :data="restrictionsData"
         :columns="restrictionsColumns"
-        v-if="restrictionsData.length" />
+        v-if="restrictionsData.length"
+      />
     </div>
+    <create-restriction-modal
+      v-if="isAddRestrictionModalActive"
+      v-model="isAddRestrictionModalActive"
+      @created="fetchRestrictions"
+    />
   </div>
 </template>
 
 <script lang="ts">
+import CreateRestrictionModal from '@/components/admin/restrictions/CreateRestrictionModal.vue'
 import { Component, Vue } from 'vue-property-decorator';
 import restrictionModule from '@/store/restriction-module';
 import { timestampToTimeString } from '@/utils/date';
 
-@Component
+@Component({
+  components: {
+    CreateRestrictionModal
+  },
+})
 export default class Administration extends Vue {
+  isAddRestrictionModalActive = false;
+
   created(): void {
     if (restrictionModule.restrictions.length === 0) {
-      restrictionModule.getRestrictions();
+      this.fetchRestrictions();
     }
   }
 
@@ -67,6 +86,10 @@ export default class Administration extends Vue {
         label: 'By',
       },
     ];
+  }
+
+  fetchRestrictions () {
+    restrictionModule.getRestrictions();
   }
 }
 </script>

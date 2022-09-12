@@ -1,3 +1,5 @@
+import RestrictionType from '@/models/restriction-type'
+import { createRestriction } from '@/services/restriction-service'
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
 import * as restrictionService from '@/services/restriction-service';
@@ -15,6 +17,21 @@ class RestrictionModules extends VuexModule {
   @Action({ commit: 'setRestrictions' })
   getRestrictions() {
     return restrictionService.getRestrictions();
+  }
+
+  @Action
+  createRestriction({
+    restrictedUserId,
+    type,
+    reason,
+    duration,
+  }: {
+    restrictedUserId: number;
+    type: RestrictionType;
+    reason: string;
+    duration?: number;
+  }) {
+    return restrictionService.createRestriction(restrictedUserId, type, reason, duration);
   }
 }
 

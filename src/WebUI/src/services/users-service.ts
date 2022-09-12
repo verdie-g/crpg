@@ -1,3 +1,4 @@
+import Platform from '@/models/platform'
 import User from '@/models/user';
 import Character from '@/models/character';
 import { UpdateCharacterRequest } from '@/models/update-character-request';
@@ -17,6 +18,10 @@ export function getUser(): Promise<User> {
 
 export function deleteUser(): Promise<void> {
   return del('/users/self');
+}
+
+export function getUserByPlatform(platform: Platform, platformUserId: string): Promise<User> {
+  return get(`/users?platform=${platform}&platformUserId=${platformUserId}`);
 }
 
 export function getUserItems(): Promise<UserItem[]> {

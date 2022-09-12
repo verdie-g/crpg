@@ -1,3 +1,4 @@
+import Platform from '@/models/platform'
 import { Vue } from 'vue-property-decorator';
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
@@ -243,6 +244,17 @@ class UserModule extends VuexModule {
   @Action({ commit: 'setUser' })
   getUser() {
     return userService.getUser();
+  }
+
+  @Action
+  getUserByPlatform({
+    platform,
+    platformUserId,
+  }: {
+    platform: Platform;
+    platformUserId: string;
+  }): Promise<User> {
+    return userService.getUserByPlatform(platform, platformUserId);
   }
 
   @Action({ commit: 'setUserItems' })
