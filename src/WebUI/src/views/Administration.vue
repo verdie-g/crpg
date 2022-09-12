@@ -5,6 +5,7 @@
       <div class="is-flex is-justify-content-end mb-3">
         <b-button
           type="is-primary"
+          icon-left="ban"
           @click="isAddRestrictionModalActive = true"
         >
           Add Restriction
