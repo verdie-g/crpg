@@ -51,7 +51,7 @@ export async function signInSilent(): Promise<string | null> {
   return user !== null ? user.access_token : null;
 }
 
-export async function signInCallback(): Promise<User | undefined> {
+export async function signInCallback(): Promise<User> {
   const mgr = new UserManager({
     response_mode: 'query', // eslint-disable-line @typescript-eslint/naming-convention
   });
