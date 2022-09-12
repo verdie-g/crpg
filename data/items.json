@@ -596,36 +596,6 @@
     ]
   },
   {
-    "id": "crpg_aserai_axe_2_t2_blunt",
-    "name": "Sparring Bamboo Handled Axe",
-    "culture": "Aserai",
-    "type": "OneHandedWeapon",
-    "price": 2481,
-    "weight": 1.02,
-    "weapons": [
-      {
-        "class": "OneHandedAxe",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 62,
-        "balance": 0.98,
-        "handling": 97,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "BonusAgainstShield"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 96,
-        "swingDamage": 18,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 99
-      }
-    ]
-  },
-  {
     "id": "crpg_aserai_battle_crown",
     "name": "Ornate Desert Battle Crown",
     "culture": "Aserai",
@@ -1503,35 +1473,6 @@
     ]
   },
   {
-    "id": "crpg_aserai_sword_1_t2_blunt",
-    "name": "Sparring Flyssa",
-    "culture": "Aserai",
-    "type": "OneHandedWeapon",
-    "price": 2974,
-    "weight": 1.53,
-    "weapons": [
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 116,
-        "balance": 0.48,
-        "handling": 85,
-        "bodyArmor": 1,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 10,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 90,
-        "swingDamage": 19,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 84
-      }
-    ]
-  },
-  {
     "id": "crpg_aserai_sword_2_t2",
     "name": "Iron Scimitar",
     "culture": "Aserai",
@@ -1556,35 +1497,6 @@
         "thrustSpeed": 92,
         "swingDamage": 21,
         "swingDamageType": "Cut",
-        "swingSpeed": 92
-      }
-    ]
-  },
-  {
-    "id": "crpg_aserai_sword_2_t2_blunt",
-    "name": "Sparring Scimitar",
-    "culture": "Aserai",
-    "type": "OneHandedWeapon",
-    "price": 2772,
-    "weight": 1.38,
-    "weapons": [
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 103,
-        "balance": 0.74,
-        "handling": 92,
-        "bodyArmor": 3,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 9,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 92,
-        "swingDamage": 17,
-        "swingDamageType": "Blunt",
         "swingSpeed": 92
       }
     ]
@@ -2197,38 +2109,6 @@
     ]
   },
   {
-    "id": "crpg_battania_2haxe_1_t2_blunt",
-    "name": "Sparring Two Handed Axe",
-    "culture": "Battania",
-    "type": "TwoHandedWeapon",
-    "price": 3873,
-    "weight": 1.4,
-    "weapons": [
-      {
-        "class": "TwoHandedAxe",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 100,
-        "balance": 0.64,
-        "handling": 80,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "NotUsableWithOneHand",
-          "BonusAgainstShield",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 97,
-        "swingDamage": 27,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 89
-      }
-    ]
-  },
-  {
     "id": "crpg_battania_2hsword_1_t2",
     "name": "Iron Broadsword",
     "culture": "Battania",
@@ -2254,36 +2134,6 @@
         "thrustSpeed": 94,
         "swingDamage": 33,
         "swingDamageType": "Cut",
-        "swingSpeed": 97
-      }
-    ]
-  },
-  {
-    "id": "crpg_battania_2hsword_1_t2_blunt",
-    "name": "Sparring Twohander",
-    "culture": "Battania",
-    "type": "TwoHandedWeapon",
-    "price": 5856,
-    "weight": 1.99,
-    "weapons": [
-      {
-        "class": "TwoHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 96,
-        "balance": 0.9,
-        "handling": 89,
-        "bodyArmor": 1,
-        "flags": [
-          "MeleeWeapon",
-          "NotUsableWithOneHand"
-        ],
-        "thrustDamage": 12,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 94,
-        "swingDamage": 30,
-        "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
     ]
@@ -3684,35 +3534,6 @@
     ]
   },
   {
-    "id": "crpg_battania_sword_1_t2_blunt",
-    "name": "Sparring Broadsword",
-    "culture": "Battania",
-    "type": "OneHandedWeapon",
-    "price": 3660,
-    "weight": 1.88,
-    "weapons": [
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 92,
-        "balance": 0.53,
-        "handling": 90,
-        "bodyArmor": 3,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 13,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 87,
-        "swingDamage": 23,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 86
-      }
-    ]
-  },
-  {
     "id": "crpg_battania_sword_2_t3",
     "name": "Broad Ridged Shortsword",
     "culture": "Battania",
@@ -3841,36 +3662,6 @@
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 165,
-        "length": 70,
-        "balance": 0.0,
-        "handling": 82,
-        "bodyArmor": 1,
-        "flags": [
-          "HasHitPoints",
-          "CanBlockRanged"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 82,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 82
-      }
-    ]
-  },
-  {
-    "id": "crpg_battania_targe_b_sparring",
-    "name": "Sparring Targe",
-    "culture": "Battania",
-    "type": "Shield",
-    "price": 2121,
-    "weight": 2.5,
-    "weapons": [
-      {
-        "class": "LargeShield",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 130,
         "length": 70,
         "balance": 0.0,
         "handling": 82,
@@ -4414,39 +4205,6 @@
     ]
   },
   {
-    "id": "crpg_billhook_polearm_t2_blunt",
-    "name": "Sparring Billhook",
-    "culture": "Vlandia",
-    "type": "Polearm",
-    "price": 7236,
-    "weight": 1.69,
-    "weapons": [
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 138,
-        "balance": 0.53,
-        "handling": 70,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "NotUsableWithOneHand",
-          "WideGrip",
-          "TwoHandIdleOnMount",
-          "MissileWithPhysics"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 94,
-        "swingDamage": 33,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 86
-      }
-    ]
-  },
-  {
     "id": "crpg_black_heart_2haxe_t3",
     "name": "Black Heart",
     "culture": "Neutral",
@@ -4745,36 +4503,6 @@
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 122,
-        "length": 60,
-        "balance": 0.0,
-        "handling": 82,
-        "bodyArmor": 1,
-        "flags": [
-          "HasHitPoints",
-          "CanBlockRanged"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 82,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 82
-      }
-    ]
-  },
-  {
-    "id": "crpg_bound_desert_round_sparring_shield",
-    "name": "Desert Round Sparring Shield",
-    "culture": "Aserai",
-    "type": "Shield",
-    "price": 747,
-    "weight": 7.3,
-    "weapons": [
-      {
-        "class": "LargeShield",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 105,
         "length": 60,
         "balance": 0.0,
         "handling": 82,
@@ -5815,39 +5543,6 @@
     ]
   },
   {
-    "id": "crpg_crossbow_a_blunt",
-    "name": "Sparring Crossbow",
-    "culture": "Vlandia",
-    "type": "Crossbow",
-    "price": 5961,
-    "weight": 1.0,
-    "weapons": [
-      {
-        "class": "Crossbow",
-        "accuracy": 95,
-        "missileSpeed": 77,
-        "stackAmount": 1,
-        "length": 95,
-        "balance": 0.0,
-        "handling": 46,
-        "bodyArmor": 0,
-        "flags": [
-          "RangedWeapon",
-          "NotUsableWithOneHand",
-          "HasString",
-          "StringHeldByHand",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 50,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 46,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 62
-      }
-    ]
-  },
-  {
     "id": "crpg_crossbow_b",
     "name": "Heavy Crossbow",
     "culture": "Empire",
@@ -6633,58 +6328,6 @@
     ]
   },
   {
-    "id": "crpg_desert_throwing_knife_blunt",
-    "name": "Sparring Throwing Dagger",
-    "culture": "Aserai",
-    "type": "Thrown",
-    "price": 1607,
-    "weight": 0.86,
-    "weapons": [
-      {
-        "class": "ThrowingKnife",
-        "accuracy": 95,
-        "missileSpeed": 32,
-        "stackAmount": 3,
-        "length": 43,
-        "balance": 1.0,
-        "handling": 116,
-        "bodyArmor": 0,
-        "flags": [
-          "RangedWeapon",
-          "Consumable",
-          "UnloadWhenSheathed",
-          "AutoReload",
-          "AmmoBreaksOnBounceBack"
-        ],
-        "thrustDamage": 9,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 98,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 120
-      },
-      {
-        "class": "Dagger",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 43,
-        "balance": 1.0,
-        "handling": 116,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 11,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 98,
-        "swingDamage": 11,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 120
-      }
-    ]
-  },
-  {
     "id": "crpg_desert_war_horse",
     "name": "Desert War Horse",
     "culture": "Aserai",
@@ -6902,59 +6545,6 @@
         "swingDamage": 0,
         "swingDamageType": "Undefined",
         "swingSpeed": 92
-      }
-    ]
-  },
-  {
-    "id": "crpg_eastern_javelin_1_t2_blunt",
-    "name": "Sparring Javelin",
-    "culture": "Khuzait",
-    "type": "Thrown",
-    "price": 1775,
-    "weight": 0.93,
-    "weapons": [
-      {
-        "class": "Javelin",
-        "accuracy": 92,
-        "missileSpeed": 29,
-        "stackAmount": 4,
-        "length": 82,
-        "balance": 1.0,
-        "handling": 99,
-        "bodyArmor": 0,
-        "flags": [
-          "RangedWeapon",
-          "Consumable",
-          "UnloadWhenSheathed",
-          "AutoReload",
-          "AmmoBreaksOnBounceBack"
-        ],
-        "thrustDamage": 23,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 97,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 106
-      },
-      {
-        "class": "OneHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 82,
-        "balance": 0.73,
-        "handling": 94,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "WideGrip"
-        ],
-        "thrustDamage": 9,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 97,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 91
       }
     ]
   },
@@ -7189,58 +6779,6 @@
         ],
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 96,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 90
-      }
-    ]
-  },
-  {
-    "id": "crpg_eastern_spear_1_t2_blunt",
-    "name": "Sparring Jagged Spear",
-    "culture": "Aserai",
-    "type": "Polearm",
-    "price": 1290,
-    "weight": 1.54,
-    "weapons": [
-      {
-        "class": "OneHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 141,
-        "balance": 0.0,
-        "handling": 76,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "WideGrip"
-        ],
-        "thrustDamage": 9,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 89,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 53
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 141,
-        "balance": 0.67,
-        "handling": 74,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "NotUsableWithOneHand",
-          "WideGrip",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 11,
-        "thrustDamageType": "Blunt",
         "thrustSpeed": 96,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
@@ -7738,36 +7276,6 @@
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 130,
-        "length": 90,
-        "balance": 0.0,
-        "handling": 82,
-        "bodyArmor": 1,
-        "flags": [
-          "HasHitPoints",
-          "CanBlockRanged"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 82,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 82
-      }
-    ]
-  },
-  {
-    "id": "crpg_eastern_wicker_sparring_shield",
-    "name": "Wicker Square Tournament Shield",
-    "culture": "Khuzait",
-    "type": "Shield",
-    "price": 1691,
-    "weight": 2.7,
-    "weapons": [
-      {
-        "class": "LargeShield",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 110,
         "length": 90,
         "balance": 0.0,
         "handling": 82,
@@ -12640,58 +12148,6 @@
     ]
   },
   {
-    "id": "crpg_khuzait_polearm_1_t4_blunt",
-    "name": "Sparring Glaive",
-    "culture": "Khuzait",
-    "type": "Polearm",
-    "price": 14697,
-    "weight": 2.04,
-    "weapons": [
-      {
-        "class": "OneHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 145,
-        "balance": 0.0,
-        "handling": 73,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "WideGrip"
-        ],
-        "thrustDamage": 8,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 84,
-        "swingDamage": 13,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 43
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 145,
-        "balance": 0.43,
-        "handling": 71,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "NotUsableWithOneHand",
-          "WideGrip",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 9,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 92,
-        "swingDamage": 46,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 83
-      }
-    ]
-  },
-  {
     "id": "crpg_khuzait_polearm_2_t5",
     "name": "Long Glaive",
     "culture": "Khuzait",
@@ -12784,35 +12240,6 @@
         "thrustSpeed": 94,
         "swingDamage": 18,
         "swingDamageType": "Cut",
-        "swingSpeed": 100
-      }
-    ]
-  },
-  {
-    "id": "crpg_khuzait_sword_1_t2_blunt",
-    "name": "Sparring Saber",
-    "culture": "Khuzait",
-    "type": "OneHandedWeapon",
-    "price": 2763,
-    "weight": 1.23,
-    "weapons": [
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 90,
-        "balance": 1.0,
-        "handling": 101,
-        "bodyArmor": 3,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 10,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 94,
-        "swingDamage": 16,
-        "swingDamageType": "Blunt",
         "swingSpeed": 100
       }
     ]
@@ -15860,36 +15287,6 @@
     ]
   },
   {
-    "id": "crpg_northern_round_sparring_shield",
-    "name": "Sparring Round Shield",
-    "culture": "Neutral",
-    "type": "Shield",
-    "price": 1823,
-    "weight": 3.3,
-    "weapons": [
-      {
-        "class": "LargeShield",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 120,
-        "length": 70,
-        "balance": 0.0,
-        "handling": 82,
-        "bodyArmor": 5,
-        "flags": [
-          "HasHitPoints",
-          "CanBlockRanged"
-        ],
-        "thrustDamage": 5,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 82,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 87
-      }
-    ]
-  },
-  {
     "id": "crpg_northern_scouts_shield",
     "name": "Sturdy Cavalry Kite Shield",
     "culture": "Sturgia",
@@ -15964,58 +15361,6 @@
         ],
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 89,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 70
-      }
-    ]
-  },
-  {
-    "id": "crpg_northern_spear_1_t2_blunt",
-    "name": "Sparring Spear",
-    "culture": "Sturgia",
-    "type": "Polearm",
-    "price": 918,
-    "weight": 2.11,
-    "weapons": [
-      {
-        "class": "OneHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 173,
-        "balance": 0.0,
-        "handling": 60,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "WideGrip"
-        ],
-        "thrustDamage": 8,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 82,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 20
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 173,
-        "balance": 0.0,
-        "handling": 57,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "NotUsableWithOneHand",
-          "WideGrip",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 9,
-        "thrustDamageType": "Blunt",
         "thrustSpeed": 89,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
@@ -16256,60 +15601,6 @@
     ]
   },
   {
-    "id": "crpg_northern_throwing_axe_1_t1_blunt",
-    "name": "Sparring Throwing Axe",
-    "culture": "Sturgia",
-    "type": "Thrown",
-    "price": 2507,
-    "weight": 0.71,
-    "weapons": [
-      {
-        "class": "ThrowingAxe",
-        "accuracy": 93,
-        "missileSpeed": 27,
-        "stackAmount": 3,
-        "length": 37,
-        "balance": 1.0,
-        "handling": 112,
-        "bodyArmor": 0,
-        "flags": [
-          "RangedWeapon",
-          "Consumable",
-          "UnloadWhenSheathed",
-          "BonusAgainstShield",
-          "AutoReload",
-          "AmmoBreaksOnBounceBack"
-        ],
-        "thrustDamage": 22,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 100,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 117
-      },
-      {
-        "class": "OneHandedAxe",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 37,
-        "balance": 1.0,
-        "handling": 112,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "BonusAgainstShield"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 100,
-        "swingDamage": 11,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 117
-      }
-    ]
-  },
-  {
     "id": "crpg_northern_tunic",
     "name": "Varyag Tunic",
     "culture": "Sturgia",
@@ -16430,36 +15721,6 @@
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 85,
-        "length": 170,
-        "balance": 0.0,
-        "handling": 82,
-        "bodyArmor": 1,
-        "flags": [
-          "HasHitPoints",
-          "CanBlockRanged"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 82,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 82
-      }
-    ]
-  },
-  {
-    "id": "crpg_old_kite_sparring_shield",
-    "name": "Makeshift Kite Sparring Shield",
-    "culture": "Neutral",
-    "type": "Shield",
-    "price": 853,
-    "weight": 4.2,
-    "weapons": [
-      {
-        "class": "LargeShield",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 72,
         "length": 170,
         "balance": 0.0,
         "handling": 82,
@@ -18606,35 +17867,6 @@
     ]
   },
   {
-    "id": "crpg_seax_blunt",
-    "name": "Sparring Seax",
-    "culture": "Sturgia",
-    "type": "OneHandedWeapon",
-    "price": 834,
-    "weight": 0.44,
-    "weapons": [
-      {
-        "class": "Dagger",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 52,
-        "balance": 1.0,
-        "handling": 118,
-        "bodyArmor": 1,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 11,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 103,
-        "swingDamage": 6,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 127
-      }
-    ]
-  },
-  {
     "id": "crpg_segmented_cervelliere_over_laced_coif",
     "name": "Segmented Cervelliere over Laced Coif",
     "culture": "Vlandia",
@@ -20555,36 +19787,6 @@
     ]
   },
   {
-    "id": "crpg_sturgia_axe_2_t2_blunt",
-    "name": "Sparring Galloglaich Axe",
-    "culture": "Sturgia",
-    "type": "OneHandedWeapon",
-    "price": 2686,
-    "weight": 1.03,
-    "weapons": [
-      {
-        "class": "OneHandedAxe",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 65,
-        "balance": 0.91,
-        "handling": 95,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "BonusAgainstShield"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Undefined",
-        "thrustSpeed": 96,
-        "swingDamage": 19,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 97
-      }
-    ]
-  },
-  {
     "id": "crpg_sturgia_axe_3_t3",
     "name": "Commoner Axe",
     "culture": "Sturgia",
@@ -21201,35 +20403,6 @@
         "thrustSpeed": 95,
         "swingDamage": 16,
         "swingDamageType": "Cut",
-        "swingSpeed": 104
-      }
-    ]
-  },
-  {
-    "id": "crpg_sturgia_sword_1_t2_blunt",
-    "name": "Sparring Blade",
-    "culture": "Sturgia",
-    "type": "OneHandedWeapon",
-    "price": 2545,
-    "weight": 1.11,
-    "weapons": [
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 83,
-        "balance": 1.0,
-        "handling": 105,
-        "bodyArmor": 1,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 10,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 95,
-        "swingDamage": 15,
-        "swingDamageType": "Blunt",
         "swingSpeed": 104
       }
     ]
@@ -22996,100 +22169,6 @@
     ]
   },
   {
-    "id": "crpg_vlandia_lance_1_t3_blunt",
-    "name": "Sparring Lance",
-    "culture": "Vlandia",
-    "type": "Polearm",
-    "price": 1572,
-    "weight": 1.96,
-    "weapons": [
-      {
-        "class": "OneHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 194,
-        "balance": 0.0,
-        "handling": 59,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "WideGrip"
-        ],
-        "thrustDamage": 9,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 82,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 18
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 194,
-        "balance": 0.0,
-        "handling": 56,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "NotUsableWithOneHand",
-          "WideGrip",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 11,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 90,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 66
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 194,
-        "balance": 0.0,
-        "handling": 59,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "WideGrip"
-        ],
-        "thrustDamage": 9,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 82,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 18
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 194,
-        "balance": 0.0,
-        "handling": 56,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "NotUsableWithOneHand",
-          "WideGrip",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 11,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 90,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 66
-      }
-    ]
-  },
-  {
     "id": "crpg_vlandia_lance_2_t4",
     "name": "Knight Lance",
     "culture": "Vlandia",
@@ -23554,35 +22633,6 @@
         "thrustSpeed": 93,
         "swingDamage": 20,
         "swingDamageType": "Cut",
-        "swingSpeed": 92
-      }
-    ]
-  },
-  {
-    "id": "crpg_vlandia_sword_1_t2_blunt",
-    "name": "Sparring Arming Sword",
-    "culture": "Vlandia",
-    "type": "OneHandedWeapon",
-    "price": 3091,
-    "weight": 1.34,
-    "weapons": [
-      {
-        "class": "OneHandedSword",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 103,
-        "balance": 0.75,
-        "handling": 92,
-        "bodyArmor": 3,
-        "flags": [
-          "MeleeWeapon"
-        ],
-        "thrustDamage": 11,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 93,
-        "swingDamage": 18,
-        "swingDamageType": "Blunt",
         "swingSpeed": 92
       }
     ]
@@ -24112,59 +23162,6 @@
     ]
   },
   {
-    "id": "crpg_western_javelin_1_t2_blunt",
-    "name": "Sparring Blunt Javelin",
-    "culture": "Neutral",
-    "type": "Thrown",
-    "price": 1047,
-    "weight": 0.91,
-    "weapons": [
-      {
-        "class": "Javelin",
-        "accuracy": 92,
-        "missileSpeed": 29,
-        "stackAmount": 4,
-        "length": 65,
-        "balance": 1.0,
-        "handling": 102,
-        "bodyArmor": 0,
-        "flags": [
-          "RangedWeapon",
-          "Consumable",
-          "UnloadWhenSheathed",
-          "AutoReload",
-          "AmmoBreaksOnBounceBack"
-        ],
-        "thrustDamage": 19,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 97,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 112
-      },
-      {
-        "class": "OneHandedPolearm",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 65,
-        "balance": 0.99,
-        "handling": 95,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "WideGrip"
-        ],
-        "thrustDamage": 8,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 97,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 99
-      }
-    ]
-  },
-  {
     "id": "crpg_western_javelin_2_t3",
     "name": "Lowland Javelin",
     "culture": "Vlandia",
@@ -24301,36 +23298,6 @@
     ]
   },
   {
-    "id": "crpg_western_kite_sparring_shield",
-    "name": "Kite Sparring Shield",
-    "culture": "Neutral",
-    "type": "Shield",
-    "price": 1405,
-    "weight": 4.7,
-    "weapons": [
-      {
-        "class": "LargeShield",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 132,
-        "length": 110,
-        "balance": 0.0,
-        "handling": 82,
-        "bodyArmor": 1,
-        "flags": [
-          "HasHitPoints",
-          "CanBlockRanged"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 82,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 82
-      }
-    ]
-  },
-  {
     "id": "crpg_western_plated_helmet",
     "name": "Plated Helmet with Sideguards",
     "culture": "Vlandia",
@@ -24359,36 +23326,6 @@
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 137,
-        "length": 85,
-        "balance": 0.0,
-        "handling": 82,
-        "bodyArmor": 1,
-        "flags": [
-          "HasHitPoints",
-          "CanBlockRanged"
-        ],
-        "thrustDamage": 0,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 82,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 82
-      }
-    ]
-  },
-  {
-    "id": "crpg_western_riders_kite_sparring_shield",
-    "name": "Horseman Sparring Kite Shield",
-    "culture": "Neutral",
-    "type": "Shield",
-    "price": 1232,
-    "weight": 4.7,
-    "weapons": [
-      {
-        "class": "LargeShield",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 117,
         "length": 85,
         "balance": 0.0,
         "handling": 82,
