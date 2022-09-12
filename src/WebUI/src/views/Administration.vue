@@ -2,12 +2,14 @@
   <div class="container">
     <div class="section">
       <h2 class="title">Restrictions</h2>
-      <b-button
-        type="is-primary"
-        @click="isAddRestrictionModalActive = true"
-      >
-        Add Restriction
-      </b-button>
+      <div class="is-flex is-justify-content-end mb-3">
+        <b-button
+          type="is-primary"
+          @click="isAddRestrictionModalActive = true"
+        >
+          Add Restriction
+        </b-button>
+      </div>
       <b-table
         :data="restrictionsData"
         :columns="restrictionsColumns"
