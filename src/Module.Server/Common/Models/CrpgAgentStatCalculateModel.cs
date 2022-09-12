@@ -78,8 +78,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         float inaccuracy = 0.0f;
 
         float accuracyX = 45; // Lowest accuracy that corresponds to stones. It's our lower calibration bound
-        float valueAt100Accuracy = 10; // Innacuracy for the most accurate weapon.
-        float valueAtAccuracyX = 60; // Inacuracy at x absciss which correspond to equipping stones.
+        float valueAt100Accuracy = 10; // Inaccuracy for the most accurate weapon.
+        float valueAtAccuracyX = 60; // Inaccuracy at x absciss which correspond to equipping stones.
         float parabolMinimumAbciss = 100; // set at 100 so WeaponInaccuracy is strictly monotonous.
 
         float a = valueAtAccuracyX - valueAt100Accuracy; // Parameter for the polynomial , do not change.
