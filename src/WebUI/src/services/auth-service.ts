@@ -1,5 +1,6 @@
-import { UserManager } from 'oidc-client';
+import { User, UserManager } from 'oidc-client';
 import Role from '../models/role';
+import router from '../router/index';
 
 const userManager = new UserManager({
   authority: process.env.VUE_APP_API_BASE_URL,
@@ -42,20 +43,20 @@ export async function getDecodedToken(): Promise<TokenPayload | null> {
 }
 
 export function signIn(): Promise<void> {
-  return userManager.signinRedirect();
+  return userManager.signinRedirect({ state: { url: router.currentRoute.fullPath } });
 }
 
 export async function signInSilent(): Promise<string | null> {
-  const user = await userManager.signinSilent();
+  const user = await userManager.signinSilent({ state: { url: router.currentRoute.fullPath } });
   return user !== null ? user.access_token : null;
 }
 
-export async function signInCallback(): Promise<void> {
+export async function signInCallback(): Promise<User> {
   const mgr = new UserManager({
     response_mode: 'query', // eslint-disable-line @typescript-eslint/naming-convention
   });
 
-  await mgr.signinRedirectCallback();
+  return mgr.signinRedirectCallback();
 }
 
 export function signOut(): Promise<void> {

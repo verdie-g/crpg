@@ -119,8 +119,10 @@ export default class App extends Vue {
       // If the 'code' parameter is present in the query, this is the response
       // of the authorization endpoint and it should be processed
       if (this.$route.query.code !== undefined) {
-        await signInCallback();
-        this.$router.replace(''); // clear query parameters
+        const user = await signInCallback();
+        if (user.state && user.state.url) {
+          this.$router.replace(user.state.url);
+        }
         await userModule.getUser();
         return;
       }
