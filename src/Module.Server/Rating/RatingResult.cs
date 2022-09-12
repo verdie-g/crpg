@@ -1,39 +1,39 @@
-﻿using System;
-
-namespace Crpg.Module.Balancing;
+﻿namespace Crpg.Module.Rating;
 
 /// <summary>
 /// Represents the result of a match between two players.
 /// </summary>
-public class Result
+public class RatingResult
 {
-    private const double PointsForWin = 1.0;
-    private const double PointsForLoss = 0.0;
-    private const double PointsForDraw = 0.5;
+    private const float PointsForWin = 1.0f;
+    private const float PointsForLoss = 0.0f;
+    private const float PointsForDraw = 0.5f;
 
     private readonly bool _isDraw;
-    private readonly Rating _winner;
-    private readonly Rating _loser;
-    private readonly float _percentage;
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="RatingResult"/> class.
     /// Record a new result from a match between two players.
     /// </summary>
     /// <param name="winner">winner.</param>
     /// <param name="loser">loser.</param>
     /// <param name="isDraw">is it a draw.</param>
     /// <param name="percentage">percentage.</param>
-    public Result(Rating winner, Rating loser, float percentage, bool isDraw = false)
+    public RatingResult(Rating winner, Rating loser, float percentage, bool isDraw = false)
     {
         if (!ValidPlayers(winner, loser))
         {
             throw new ArgumentException("Players winner and loser are the same player");
         }
 
-        _winner = winner;
-        _loser = loser;
+        Winner = winner;
+        Loser = loser;
         _isDraw = isDraw;
     }
+
+    public Rating Winner { get; }
+    public Rating Loser { get; }
+    public float Percentage { get; }
 
     /// <summary>
     /// Test whether a particular player participated in the match represented by this result.
@@ -41,28 +41,28 @@ public class Result
     /// <param name="player">player.</param>
     public bool Participated(Rating player)
     {
-        return player == _winner || player == _loser;
+        return player == Winner || player == Loser;
     }
 
     /// <summary>
     /// Returns the "score" for a match.
     /// </summary>
     /// <param name="player">player.</param>
-    public double GetScore(Rating player)
+    public float GetScore(Rating player)
     {
-        double score;
+        float score;
 
-        if (_winner == player)
+        if (Winner == player)
         {
             score = PointsForWin;
         }
-        else if (_loser == player)
+        else if (Loser == player)
         {
             score = PointsForLoss;
         }
         else
         {
-            throw new ArgumentException("Player did not participate in match", "player");
+            throw new ArgumentException("Player did not participate in match", nameof(player));
         }
 
         if (_isDraw)
@@ -81,35 +81,20 @@ public class Result
     {
         Rating opponent;
 
-        if (_winner == player)
+        if (Winner == player)
         {
-            opponent = _loser;
+            opponent = Loser;
         }
-        else if (_loser == player)
+        else if (Loser == player)
         {
-            opponent = _winner;
+            opponent = Winner;
         }
         else
         {
-            throw new ArgumentException("Player did not participate in match", "player");
+            throw new ArgumentException("Player did not participate in match", nameof(player));
         }
 
         return opponent;
-    }
-
-    public Rating GetWinner()
-    {
-        return _winner;
-    }
-
-    public Rating GetLoser()
-    {
-        return _loser;
-    }
-
-    public float GetPercentage()
-    {
-        return _percentage;
     }
 
     /// <summary>

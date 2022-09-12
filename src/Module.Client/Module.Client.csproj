@@ -27,6 +27,7 @@
     <ContentWithTargetPath Include="ModuleData\**\*;GUI\**\*.xml" TargetPath="..\..\%(Identity)" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="..\Module.Server\**\*$(DefaultLanguageSourceExtension)" />
     <Compile Remove="..\Module.Server\$(BaseIntermediateOutputPath)\**;..\Module.Server\$(BaseOutputPath)\**" />
+    <Compile Remove="..\Module.Server\Rating\**" />
   </ItemGroup>
 
   <ItemGroup>
