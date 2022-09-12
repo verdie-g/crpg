@@ -38,7 +38,12 @@
         <div v-show="matchedUser" class="is-flex is-flex-direction-column is-align-items-center">
           <div class="has-text-centered pb-4">
             <h3 class="is-size-4">
-              Matched User:
+              <template v-if="matchedUser">
+                Matched User:
+              </template>
+              <template v-else>
+                No User Matched.
+              </template>
             </h3>
           </div>
           <div class="has-text-centered">
@@ -49,10 +54,13 @@
               :src="matchedUser ? matchedUser.avatar : undefined"
             />
           </div>
-          <div class="matched-user--name has-text-centered is-size-5 mt-3">
-            <strong v-if="matchedUser">
+          <div class="matched-user--name has-text-centered mt-3">
+            <strong v-if="matchedUser" class="is-size-5">
               {{ matchedUser.name }}
             </strong>
+            <span v-else class="is-size-6 has-text-grey">
+              Enter a valid ID for the selected platform to add a restriction.
+            </span>
           </div>
           <div class="pt-2 is-align-self-stretch">
             <div class="is-flex">
