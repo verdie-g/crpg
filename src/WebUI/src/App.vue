@@ -72,7 +72,7 @@
         </div>
 
         <div class="level-item">
-          <a href="https://discord.gg/83RJDN9" target="_blank" title="Join our Discord">
+          <a href="https://discord.gg/c-rpg" target="_blank" title="Join our Discord">
             <b-icon icon="discord" pack="fab" size="is-large" aria-label="cRPG Discord" />
           </a>
         </div>

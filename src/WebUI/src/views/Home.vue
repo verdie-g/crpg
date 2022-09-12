@@ -54,7 +54,7 @@ export default class Home extends Vue {
       question: 'Is the mod available?',
       answer:
         'The mod is currently in beta. See the message in #bl-developement-updates on the ' +
-        '<a href="https://discord.gg/83RJDN9" target="_blank">Discord</a> to join it.',
+        '<a href="https://discord.gg/c-rpg" target="_blank">Discord</a> to join it.',
     },
     {
       question: 'How to create a new character?',
