@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Battle;
+﻿using Crpg.Module.Api.Models.Users;
+using Crpg.Module.Battle;
 using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -11,6 +12,10 @@ namespace Crpg.Module.Common.Models;
 /// </summary>
 internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 {
+    // Hack to workaround not being able to spawn custom character. In the client this property is set so the
+    // StatCalculateModel has access to the cRPG user.
+    public static CrpgUser? MyUser { get; set; }
+
     private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new()
     {
         WeaponClass.Dagger,
@@ -177,12 +182,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     private void InitializeHumanAgentStats(Agent agent, Equipment equipment, AgentDrivenProperties props)
     {
         // Dirty hack, part of the work-around to have skills without spawning custom characters.
-        var crpgRepresentative = GameNetwork.IsClientOrReplay
-            ? GameNetwork.MyPeer.GetComponent<CrpgRepresentative>()
+        var crpgUser = GameNetwork.IsClientOrReplay
+            ? MyUser
             : null; // For the server, the origin is set in CrpgBattleSpawningBehavior.
-        if (crpgRepresentative != null && crpgRepresentative.Peer.BodyProperties == agent.BodyPropertiesValue)
+        if (crpgUser != null)
         {
-            var characteristics = crpgRepresentative.User!.Character.Characteristics;
+            var characteristics = crpgUser.Character.Characteristics;
             var mbSkills = CrpgBattleSpawningBehavior.CreateCharacterSkills(characteristics);
             agent.Origin = new CrpgBattleAgentOrigin(agent.Origin?.Troop, mbSkills);
         }

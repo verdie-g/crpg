@@ -1,4 +1,5 @@
 ﻿using Crpg.Module.Common;
+using Crpg.Module.Common.Models;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -68,6 +69,9 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
 
     private void HandleUpdateCrpgUser(UpdateCrpgUser message)
     {
+        // Hack to workaround not being able to spawn custom character.
+        CrpgAgentStatCalculateModel.MyUser = message.User;
+
         // Print a welcome message to new players. For convenience, new player are considered character of generation
         // 0 and small level. This doesn't handle the case of second characters for the same user but it's good enough.
         if (RoundComponent.RoundCount > 1 || RoundComponent.CurrentRoundState == MultiplayerRoundState.Ending)
