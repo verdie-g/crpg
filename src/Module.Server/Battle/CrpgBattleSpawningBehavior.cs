@@ -118,14 +118,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
             BasicCultureObject teamCulture = team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
             int numberOfBots = Mission.AttackerTeam == team ? botsTeam1 : botsTeam2;
-            int botsAlive = 0;
-            foreach (Agent a in team.ActiveAgents)
-            {
-                if (a.IsAIControlled && a.IsHuman)
-                {
-                    botsAlive++;
-                }
-            }
+            int botsAlive = team.ActiveAgents.Count(a => a.IsAIControlled && a.IsHuman);
 
             for (int i = 0 + botsAlive; i < numberOfBots; i += 1)
             {

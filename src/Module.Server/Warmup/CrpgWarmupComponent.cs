@@ -1,10 +1,10 @@
 ﻿using Crpg.Module.Battle;
 using TaleWorlds.MountAndBlade;
 
-namespace Crpg.Module.Common;
+namespace Crpg.Module.Common.Warmup;
 
 /// <summary>
-/// Custom Warmup component so we can load the cRPG Spawn behavior as soon as Warmup ends
+/// Custom warmup component so we can load the <see cref="CrpgBattleSpawningBehavior"/> as soon as warmup ends.
 /// </summary>
 internal class CrpgWarmupComponent : MultiplayerWarmupComponent
 {

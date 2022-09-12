@@ -1,4 +1,5 @@
 using Crpg.Module.Common;
+using Crpg.Module.Common.Warmup;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Source.Missions;
@@ -68,7 +69,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
         CrpgHttpClient crpgClient = new();
         MultiplayerRoundController roundController = new(); // starts/stops round, ends match
 #endif
-        MultiplayerWarmupComponent warmup = new CrpgWarmupComponent(_constants);
+
         MissionState.OpenNew(
             Name,
             new MissionInitializerRecord(scene),
@@ -92,7 +93,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MissionAgentPanicHandler(),
                     new EquipmentControllerLeaveLogic(),
                     new MultiplayerPreloadHelper(),
-                    warmup,
+                    new CrpgWarmupComponent(_constants),
 #if CRPG_SERVER
                     roundController,
                     new CrpgBattleMissionMultiplayer(crpgClient, _constants),
