@@ -109,7 +109,8 @@ public class UpdateGameUsersCommandTest : TestBase
         characterServiceMock.VerifyAll();
     }
 
-    [Test, Ignore("Downgrading items is not ready")]
+    [Test]
+    [Ignore("Downgrading items is not ready")]
     public async Task BreakingAllCharacterItemsWithAutoRepairShouldRepairThemIfEnoughGold()
     {
         User user = new()
@@ -187,7 +188,8 @@ public class UpdateGameUsersCommandTest : TestBase
         Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon3].UserItemId, actualItemsBySlot[ItemSlot.Weapon3].UserItem.Id);
     }
 
-    [Test, Ignore("Downgrading items is not ready")]
+    [Test]
+    [Ignore("Downgrading items is not ready")]
     public async Task BreakingAllCharacterItemsWithoutAutoRepairShouldBreakThem()
     {
         UserItem userItem0 = new() { Rank = 3, BaseItem = new Item { Id = "0" } };

@@ -163,7 +163,6 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 Logger.LogInformation("User '{0}' created character '{1}'", user.Id, newCharacter.Id);
             }
 
-
             var gameUser = _mapper.Map<GameUserViewModel>(user);
             gameUser.Restrictions = gameUser.Restrictions
                 .Where(r => _dateTime.UtcNow < r.CreatedAt + r.Duration)

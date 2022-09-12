@@ -5,7 +5,8 @@
       <b-table
         :data="restrictionsData"
         :columns="restrictionsColumns"
-        v-if="restrictionsData.length" />
+        v-if="restrictionsData.length"
+      />
     </div>
   </div>
 </template>
