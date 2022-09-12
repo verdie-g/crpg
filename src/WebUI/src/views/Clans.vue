@@ -27,12 +27,12 @@
 
       <b-table
         id="clansTable"
-        :data="pageItems"
+        :data="pageClans"
         :hoverable="true"
         :loading="clansLoading"
         :row-class="() => 'is-clickable'"
         @click="onRowClick"
-        :per-page="itemsPerPage"
+        :per-page="clansPerPage"
         :current-page="currentPage"
       >
         <b-table-column field="tag" label="Tag" width="100" v-slot="props">
@@ -56,7 +56,7 @@
       <b-pagination
         :total="clans.length"
         :current.sync="currentPage"
-        :per-page="itemsPerPage"
+        :per-page="clansPerPage"
         order="is-centered"
         range-before="2"
         range-after="2"
@@ -116,7 +116,7 @@ import ClanWithMemberCount from '@/models/clan-with-member-count';
 @Component
 export default class Clans extends Vue {
   clansLoading = false;
-  itemsPerPage = 10;
+  clansPerPage = 20;
 
   get userClan(): Clan | null {
     return userModule.clan;
@@ -124,10 +124,6 @@ export default class Clans extends Vue {
 
   get userClanRoute(): string {
     return this.userClan === null ? '' : `clans/${this.userClan.id}`;
-  }
-
-  get rows(): number {
-    return this.clans.length;
   }
 
   get clans(): ClanWithMemberCount[] {
@@ -143,7 +139,7 @@ export default class Clans extends Vue {
       this.$router.replace('clans?page=' + 1);
       return 1;
     }
-    const minPage = Math.ceil(this.clans.length / this.itemsPerPage);
+    const minPage = Math.ceil(this.clans.length / this.clansPerPage);
     if (currentPage > minPage) {
       this.$router.replace('clans?page=' + minPage);
       return minPage;
@@ -151,9 +147,9 @@ export default class Clans extends Vue {
     return currentPage;
   }
 
-  get pageItems(): ClanWithMemberCount[] {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
+  get pageClans(): ClanWithMemberCount[] {
+    const startIndex = (this.currentPage - 1) * this.clansPerPage;
+    const endIndex = startIndex + this.clansPerPage;
     return this.clans.slice(startIndex, endIndex);
   }
 
