@@ -1,4 +1,4 @@
-﻿using Crpg.Module.Api.Models.Users;
+using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Battle;
 using Crpg.Module.Helpers;
 using TaleWorlds.Core;
@@ -73,12 +73,21 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         WeaponComponentData weapon,
         int weaponSkill)
     {
+        float weaponInaccuracy;
+        float wpfInaccuracy;
         float inaccuracy = 0.0f;
+
+        float accuracyX = 45; // Lowest accuracy that corresponds to stones. It's our lower calibration bound
+        float valueAt100Accuracy = 10; // Inaccuracy for the most accurate weapon.
+        float valueAtAccuracyX = 60; // Inaccuracy at x absciss which correspond to equipping stones.
+        float parabolMinimumAbciss = 100; // set at 100 so WeaponInaccuracy is strictly monotonous.
+
+        float a = valueAtAccuracyX - valueAt100Accuracy; // Parameter for the polynomial , do not change.
         if (weapon.IsRangedWeapon)
         {
-            inaccuracy = (100 - weapon.Accuracy)
-                * (4 - 0.015f * weaponSkill) // 1 for 200 wpf.
-                * 0.001f;
+            weaponInaccuracy = ((parabolMinimumAbciss - weapon.Accuracy) * (parabolMinimumAbciss - weapon.Accuracy) * a / ((100 - accuracyX) * (100 - accuracyX))) + valueAt100Accuracy;
+            wpfInaccuracy = 0.2F * (float)Math.Pow(10.0, (200.0 - (double)weaponSkill) / 200.0); // 1 for 200 wpf.
+            inaccuracy = weaponInaccuracy * wpfInaccuracy * 0.001f;
         }
         else if (weapon.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
         {
