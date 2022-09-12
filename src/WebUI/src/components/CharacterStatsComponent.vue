@@ -497,7 +497,7 @@ import CharacteristicConversion from '@/models/characteristic-conversion';
 import CharacterUpdate from '@/models/character-update';
 import { applyPolynomialFunction } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
-import { deltaTimeToRelativeTimeString } from "@/utils/date";
+import { timestampToTimeString } from "@/utils/date";
 
 type CharacteristicSectionKey = keyof CharacterCharacteristics;
 type AttributeKey = keyof CharacterAttributes;
@@ -602,7 +602,7 @@ export default class CharacterCharacteristicsComponent extends Vue {
     if (statistics === null) {
       return undefined;
     }
-    return deltaTimeToRelativeTimeString(statistics.playTime);
+    return timestampToTimeString(statistics.playTime);
   }
 
   convertCharacteristics(conversion: CharacteristicConversion): Promise<CharacterCharacteristics> {
