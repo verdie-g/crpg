@@ -11,6 +11,7 @@ public class CharacterConfiguration : IEntityTypeConfiguration<Character>
         builder.HasIndex(c => new { c.UserId, c.Name }).IsUnique();
         builder.OwnsOne(c => c.Characteristics, ConfigureCharacterCharacteristics);
         builder.OwnsOne(c => c.Statistics, ConfigureCharacterStatistics);
+        builder.OwnsOne(c => c.Rating, ConfigureCharacterRating);
     }
 
     private static void ConfigureCharacterCharacteristics(OwnedNavigationBuilder<Character, CharacterCharacteristics> builder)
@@ -62,5 +63,10 @@ public class CharacterConfiguration : IEntityTypeConfiguration<Character>
         builder.Property(s => s.Deaths).HasColumnName("deaths");
         builder.Property(s => s.Assists).HasColumnName("assists");
         builder.Property(s => s.PlayTime).HasColumnName("play_time");
+    }
+
+    private void ConfigureCharacterRating(OwnedNavigationBuilder<Character, CharacterRating> builder)
+    {
+        builder.Property(r => r.Value).HasColumnName("rating");
     }
 }

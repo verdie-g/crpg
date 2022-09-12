@@ -35,6 +35,9 @@ public class Constants
     public float[] DurabilityFactorForShieldCoefs { get; set; } = Array.Empty<float>();
     public float[] CoverageFactorForShieldCoefs { get; set; } = Array.Empty<float>();
     public float[] SpeedFactorForShieldCoefs { get; set; } = Array.Empty<float>();
+    public float DefaultRating { get; set; }
+    public float DefaultRatingDeviation { get; set; }
+    public float DefaultRatingVolatility { get; set; }
     public Role DefaultRole { get; set; }
     public int DefaultGold { get; set; }
     public int DefaultHeirloomPoints { get; set; }
