@@ -11,6 +11,10 @@ internal class CrpgCharacter
     public int Level { get; set; }
     public int Experience { get; set; }
     public float ExperienceMultiplier { get; set; }
+    public float Rating { get; set; }
+    public float RatingDeviation { get; set; }
+    public float Volatility { get; set; }
+
     public bool SkippedTheFun { get; set; }
     public bool AutoRepair { get; set; }
     public CrpgCharacterCharacteristics Characteristics { get; set; } = new();
