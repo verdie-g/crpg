@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents the result of a match between two players.
 /// </summary>
-public class RatingResult
+internal class CrpgRatingResult
 {
     private const float PointsForWin = 1.0f;
     private const float PointsForLoss = 0.0f;
@@ -12,14 +12,14 @@ public class RatingResult
     private readonly bool _isDraw;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="RatingResult"/> class.
+    /// Initializes a new instance of the <see cref="CrpgRatingResult"/> class.
     /// Record a new result from a match between two players.
     /// </summary>
     /// <param name="winner">winner.</param>
     /// <param name="loser">loser.</param>
     /// <param name="isDraw">is it a draw.</param>
     /// <param name="percentage">percentage.</param>
-    public RatingResult(Rating winner, Rating loser, float percentage, bool isDraw = false)
+    public CrpgRatingResult(CrpgRating winner, CrpgRating loser, float percentage, bool isDraw = false)
     {
         if (!ValidPlayers(winner, loser))
         {
@@ -28,18 +28,19 @@ public class RatingResult
 
         Winner = winner;
         Loser = loser;
+        Percentage = percentage;
         _isDraw = isDraw;
     }
 
-    public Rating Winner { get; }
-    public Rating Loser { get; }
+    public CrpgRating Winner { get; }
+    public CrpgRating Loser { get; }
     public float Percentage { get; }
 
     /// <summary>
     /// Test whether a particular player participated in the match represented by this result.
     /// </summary>
     /// <param name="player">player.</param>
-    public bool Participated(Rating player)
+    public bool Participated(CrpgRating player)
     {
         return player == Winner || player == Loser;
     }
@@ -48,7 +49,7 @@ public class RatingResult
     /// Returns the "score" for a match.
     /// </summary>
     /// <param name="player">player.</param>
-    public float GetScore(Rating player)
+    public float GetScore(CrpgRating player)
     {
         float score;
 
@@ -77,9 +78,9 @@ public class RatingResult
     /// Given a particular player, returns the opponent.
     /// </summary>
     /// <param name="player">player.</param>
-    public Rating GetOpponent(Rating player)
+    public CrpgRating GetOpponent(CrpgRating player)
     {
-        Rating opponent;
+        CrpgRating opponent;
 
         if (Winner == player)
         {
@@ -102,7 +103,7 @@ public class RatingResult
     /// </summary>
     /// <param name="player1">player1.</param>
     /// <param name="player2">player2.</param>
-    private static bool ValidPlayers(Rating player1, Rating player2)
+    private static bool ValidPlayers(CrpgRating player1, CrpgRating player2)
     {
         return player1 != player2;
     }

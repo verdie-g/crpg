@@ -3,25 +3,20 @@
 /// <summary>
 /// This class holds the results accumulated over a rating period.
 /// </summary>
-public class RatingPeriodResults
+internal class CrpgRatingPeriodResults
 {
-    private readonly List<RatingResult> _results = new();
-    private readonly HashSet<Rating> _participants = new();
+    private readonly List<CrpgRatingResult> _results = new();
+    private readonly HashSet<CrpgRating> _participants = new();
 
-    public void AddResult(Rating winner, Rating loser, float percentage)
+    public void AddResult(CrpgRating winner, CrpgRating loser, float percentage)
     {
-        var result = new RatingResult(winner, loser, percentage);
-
+        CrpgRatingResult result = new(winner, loser, percentage);
         _results.Add(result);
     }
 
-    /// <summary>
-    /// Get a list of the results for a given player.
-    /// </summary>
-    /// <param name="player">player.</param>
-    public IList<RatingResult> GetResults(Rating player)
+    public IList<CrpgRatingResult> GetPlayerResults(CrpgRating player)
     {
-        var filteredResults = new List<RatingResult>();
+        List<CrpgRatingResult> filteredResults = new();
 
         foreach (var result in _results)
         {
@@ -37,7 +32,7 @@ public class RatingPeriodResults
     /// <summary>
     /// Get all the participants whose results are being tracked.
     /// </summary>
-    public IEnumerable<Rating> GetParticipants()
+    public IEnumerable<CrpgRating> GetParticipants()
     {
         // Run through the results and make sure all players have been pushed into the participants set.
         foreach (var result in _results)
@@ -53,17 +48,14 @@ public class RatingPeriodResults
     /// Add a participant to the rating period, e.g. so that their rating will
     /// still be calculated even if they don't actually compete.
     /// </summary>
-    /// <param name="rating">rating.</param>
-    public void AddParticipant(Rating rating)
+    public void AddParticipant(CrpgRating rating)
     {
         _participants.Add(rating);
     }
 
-    /// <summary>
-    /// Clear the result set.
-    /// </summary>
     public void Clear()
     {
         _results.Clear();
+        _participants.Clear();
     }
 }
