@@ -442,4 +442,4 @@ src/WebUI/public/items/
 
 # cRPG Launcher
 !*.ico
-!src/cRPGUpdater/cRPGUpdater/Properties/PublishProfiles/FolderProfile.pubxml
+!src/cRPGUpdater/Properties/PublishProfiles/FolderProfile.pubxml
