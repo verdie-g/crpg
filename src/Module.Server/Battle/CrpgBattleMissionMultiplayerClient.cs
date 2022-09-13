@@ -45,6 +45,11 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         base.OnMissionTick(dt);
     }
 
+    public override void AfterStart()
+    {
+        Mission.Current.SetMissionMode(TaleWorlds.Core.MissionMode.Battle, true);
+    }
+
     protected override void AddRemoveMessageHandlers(
         GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
     {
