@@ -2,8 +2,21 @@
   <section class="section">
     <div class="container">
       <div class="columns is-vcentered">
-        <h1 class="column is-size-2">Clans</h1>
-        <div class="column is-narrow">
+        <h1 class="column is-one-fifth clanTitle is-size-3">Clans</h1>
+
+        <div class="column">
+          <b-input
+            v-model="filterText"
+            placeholder="Search..."
+            type="search"
+            icon="search"
+            size="is-medium"
+          ></b-input>
+        </div>
+
+        <div class="column"></div>
+
+        <div class="buttons column">
           <b-button
             type="is-link"
             size="is-medium"
@@ -54,7 +67,7 @@
       </b-table>
 
       <b-pagination
-        :total="clans.length"
+        :total="tableClans.length"
         :current.sync="currentPage"
         :per-page="clansPerPage"
         order="is-centered"
@@ -107,7 +120,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import clanModule from '@/store/clan-module';
 import Clan from '@/models/clan';
 import userModule from '@/store/user-module';
@@ -117,6 +130,10 @@ import ClanWithMemberCount from '@/models/clan-with-member-count';
 export default class Clans extends Vue {
   clansLoading = false;
   clansPerPage = 20;
+  filterText = '';
+  currentPage = 1;
+  tableClans = [] as ClanWithMemberCount[];
+  pageClans = [] as ClanWithMemberCount[];
 
   get userClan(): Clan | null {
     return userModule.clan;
@@ -130,37 +147,78 @@ export default class Clans extends Vue {
     return clanModule.clans;
   }
 
-  get currentPage(): number {
-    const currentPage = this.$route.query.page
-      ? parseInt(this.$route.query.page as string, 10)
-      : undefined;
-
-    if (!currentPage) {
-      this.$router.replace('clans?page=' + 1);
-      return 1;
-    }
-    const minPage = Math.ceil(this.clans.length / this.clansPerPage);
-    if (currentPage > minPage) {
-      this.$router.replace('clans?page=' + minPage);
-      return minPage;
-    }
-    return currentPage;
-  }
-
-  get pageClans(): ClanWithMemberCount[] {
-    const startIndex = (this.currentPage - 1) * this.clansPerPage;
-    const endIndex = startIndex + this.clansPerPage;
-    return this.clans.slice(startIndex, endIndex);
-  }
-
-  created(): void {
+  async created(): Promise<void> {
     this.clansLoading = true;
-    clanModule.getClans().finally(() => (this.clansLoading = false));
+    clanModule.getClans().finally(() => {
+      this.tableClans = this.getTableClans(this.clans);
+      this.clansLoading = false;
+      this.pageClans = this.getPageClans();
+    });
     userModule.getUserClan();
+
+    const currentPage = this.getCurrentPageQueryParameter();
+    if (currentPage) this.currentPage = currentPage;
   }
 
   onRowClick(clan: ClanWithMemberCount): void {
     this.$router.push({ path: `clans/${clan.clan.id}` });
+  }
+
+  getTableClans(clans: ClanWithMemberCount[]): ClanWithMemberCount[] {
+    return clans.filter(clan => {
+      if (!this.filterText) return true;
+      const isFilterMatchingClanName =
+        clan.clan.name.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1;
+      return isFilterMatchingClanName;
+    });
+  }
+
+  getPageClans(): ClanWithMemberCount[] {
+    const startIndex = (this.currentPage - 1) * this.clansPerPage;
+    const endIndex = startIndex + this.clansPerPage;
+    return this.tableClans.slice(startIndex, endIndex).filter(clan => {
+      if (!this.filterText) return true;
+      const isFilterMatchingClanName =
+        clan.clan.name.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1;
+      return isFilterMatchingClanName;
+    });
+  }
+
+  updateCurrentPage(): void {
+    const currentPage = this.getCurrentPageQueryParameter();
+
+    if (!currentPage) {
+      this.$router.replace('clans?page=' + 1);
+      this.currentPage = 1;
+    } else {
+      const minPage = Math.ceil(this.tableClans.length / this.clansPerPage);
+      if (currentPage > minPage) {
+        this.$router.replace('clans?page=' + minPage);
+        this.currentPage = minPage;
+      } else {
+        this.currentPage = currentPage;
+      }
+    }
+  }
+
+  getCurrentPageQueryParameter(): number | null {
+    return this.$route.query.page ? parseInt(this.$route.query.page as string, 10) : null;
+  }
+
+  @Watch('filterText')
+  onFilterTextChanged(): void {
+    this.currentPage = 1;
+    if (this.$router.currentRoute.query.page + '' !== '1') {
+      this.$router.replace('clans?page=' + 1);
+    }
+    this.tableClans = this.getTableClans(this.clans);
+    this.pageClans = this.getPageClans();
+  }
+
+  @Watch('$route.query.page')
+  onPageQueryParameterChanged(): void {
+    this.updateCurrentPage();
+    this.pageClans = this.getPageClans();
   }
 }
 </script>
@@ -172,5 +230,8 @@ export default class Clans extends Vue {
   width: 20px;
   height: 20px;
   vertical-align: text-bottom;
+}
+.clanTitle {
+  display: contents;
 }
 </style>
