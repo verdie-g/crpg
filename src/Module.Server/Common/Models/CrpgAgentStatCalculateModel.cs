@@ -99,6 +99,34 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         return MathF.Max(inaccuracy, 0.0f);
     }
 
+    // GetBowInaccuracy has nearly the same code as GetWeaponInaccuracy but it should stay in case of any further archery adjustments
+    public float GetBowInaccuracy(
+        Agent agent,
+        WeaponComponentData weapon,
+        int weaponSkill)
+    {
+        float inaccuracy = 0.0f;
+
+        const float accuracyPointA = 45; // Abscissa of the lowest accuracy (point A) that corresponds to stones at the moment. It's our lower calibration bound.
+        const float valueAtAccuracyPointA = 100; // Inaccuracy at point A abscissa which corresponds to equipping stones.
+        const float parabolOffset = 20; // Inaccuracy for the most accurate weapon.
+        const float parabolMinAbscissa = 140; // Set at 100 so the weapon component is strictly monotonous.
+
+        const float a = valueAtAccuracyPointA - parabolOffset; // Parameter for the polynomial, do not change.
+        if (weapon.IsRangedWeapon)
+        {
+            float weaponComponent = (parabolMinAbscissa - weapon.Accuracy)
+                * (parabolMinAbscissa - weapon.Accuracy)
+                * a
+                / ((parabolMinAbscissa - accuracyPointA) * (100 - accuracyPointA))
+                + parabolOffset;
+            float skillComponent = 0.4f * (float)Math.Pow(10.0, (200f - weaponSkill) / 200f);
+            inaccuracy = (weaponComponent * skillComponent + (100 - weapon.Accuracy)) * 0.001f;
+        }
+
+        return MathF.Max(inaccuracy, 0.0f);
+    }
+
     public override void InitializeAgentStats(
        Agent agent,
        Equipment spawnEquipment,
@@ -315,7 +343,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         if (equippedItem != null)
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
-            props.WeaponInaccuracy = GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
+            props.WeaponInaccuracy = equippedItem.WeaponClass == WeaponClass.Bow ? GetBowInaccuracy(agent, equippedItem, weaponSkill) : GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
             if (equippedItem.IsRangedWeapon)
             {
                 if (!agent.HasMount)
@@ -352,9 +380,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
                 {
+                    int powerDraw = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.PowerDraw);
                     props.WeaponBestAccuracyWaitTime = 0.3f + (95.75f - equippedItem.ThrustSpeed) * 0.005f;
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 60.0f) / 75.0f, 0.0f, 1f);
-                    props.WeaponUnsteadyBeginTime = 0.1f + weaponSkill * 0.001f * MBMath.Lerp(1f, 2f, amount);
+
+                    props.WeaponUnsteadyBeginTime = 0.06f + weaponSkill * 0.001f * MBMath.Lerp(1f, 2f, amount) + (powerDraw * powerDraw / 10 * 0.4f);
                     if (agent.IsAIControlled)
                     {
                         props.WeaponUnsteadyBeginTime *= 4f;
@@ -363,7 +393,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponUnsteadyEndTime = 2f + props.WeaponUnsteadyBeginTime;
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.1f;
                 }
-                else if (equippedItem.WeaponClass is WeaponClass.Javelin or WeaponClass.ThrowingAxe or WeaponClass.ThrowingKnife)
+                else if (equippedItem.WeaponClass is WeaponClass.Javelin or WeaponClass.ThrowingAxe or WeaponClass.ThrowingKnife or WeaponClass.Stone)
                 {
                     props.WeaponBestAccuracyWaitTime = 0.4f + (89.0f - equippedItem.ThrustSpeed) * 0.03f;
                     props.WeaponUnsteadyBeginTime = 2.5f + weaponSkill * 0.01f;
