@@ -1,10 +1,10 @@
 <template>
   <section class="section">
     <div class="container">
-      <h1 class="is-size-2">Create a new clan</h1>
+      <h1 class="is-size-2">{{ $t('clanCreationCreateNewClan') }}</h1>
       <form @submit.prevent="onSubmit">
         <b-field grouped>
-          <b-field label="Tag">
+          <b-field :label="$t('clanCreationTag')">
             <b-input
               v-model="tag"
               :minlength="tagMinLength"
@@ -23,7 +23,7 @@
           </b-field>
         </b-field>
 
-        <b-field label="Name">
+        <b-field :label="$t('clanCreationName')">
           <b-input v-model="name" :minlength="nameMinLength" :maxlength="nameMaxLength" required />
         </b-field>
 
@@ -45,7 +45,7 @@
           type="is-primary"
           tag="input"
           native-type="submit"
-          value="Create"
+          :value="$t('clanCreationCreate')"
           :loading="creatingClan"
         />
       </form>
@@ -91,7 +91,7 @@ export default class ClanCreationComponent extends Vue {
         bannerKey: this.bannerKey,
       })
       .then(clan => {
-        notify('Clan created');
+        notify(this.$t('clanCreationCreated').toString());
         this.$router.push({ name: 'clan', params: { id: clan.id.toString() } });
       })
       .finally(() => (this.creatingClan = false));

@@ -214,16 +214,16 @@ export default class Shop extends Vue {
     Vue.set(this.buyingItems, item.id, true);
     await userModule.buyItem(item);
     Vue.set(this.buyingItems, item.id, false);
-    notify(`Bought ${item.name} for ${item.price} gold`);
+    notify(this.$t('shopBoughtItem', { itemName: item.name, itemPrice: item.price }).toString());
   }
 
   buyButtonTitle(item: Item): string {
     if (this.ownedItems[item.id]) {
-      return 'You already own this item';
+      return this.$t('shopAlreadyOwn').toString();
     }
 
     if (item.price > this.gold) {
-      return 'Not enough gold';
+      return this.$t('shopNotEnoughMoney').toString();
     }
 
     return '';

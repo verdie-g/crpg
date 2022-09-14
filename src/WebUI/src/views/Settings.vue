@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <div class="section" v-if="restrictionsData.length">
-      <h2 class="title">Restrictions</h2>
+      <h2 class="title">{{ $t('settingsRestrictions') }}</h2>
       <b-table :data="restrictionsData" :columns="restrictionsColumns"></b-table>
     </div>
 
     <div class="section">
-      <h2 class="title">Delete account</h2>
+      <h2 class="title">{{ $t('settingsDeleteAccount') }}</h2>
       <div class="content">
-        <p>Make your character, items, gold and all your progression disappear.</p>
+        <p>{{ $t('settingsDeleteAccountDescription') }}</p>
         <b-button type="is-danger is-medium" @click="onDeleteAccountDialog">
-          Delete your account
+          {{ $t('settingsDeleteAccountButton') }}
         </b-button>
       </div>
     </div>
@@ -42,37 +42,38 @@ export default class Settings extends Vue {
     return [
       {
         field: 'id',
-        label: 'ID',
+        label: this.$t('settingsRestrictionColumnID'),
         numeric: true,
       },
       {
         field: 'createdAt',
-        label: 'Created At',
+        label: this.$t('settingsRestrictionColumnRestrictedUser'),
       },
       {
         field: 'duration',
-        label: 'Duration',
+        label: this.$t('settingsRestrictionColumnDuration'),
       },
       {
         field: 'type',
-        label: 'Type',
+        label: this.$t('settingsRestrictionColumnType'),
       },
       {
         field: 'reason',
-        label: 'Reason',
+        label: this.$t('settingsRestrictionColumnReason'),
       },
       {
         field: 'restrictedBy',
-        label: 'By',
+        label: this.$t('settingsRestrictionColumnRestrictedByUser'),
       },
     ];
   }
 
   onDeleteAccountDialog(): void {
     this.$buefy.dialog.confirm({
-      title: 'Deleting account',
-      message: 'Are you sure you want to delete your account? This action cannot be undone.',
-      confirmText: 'Delete account',
+      title: this.$t('settingsDeleteDialogTitle').toString(),
+      message: this.$t('settingsDeleteDialogMessage').toString(),
+      confirmText: this.$t('settingsDeleteDialogConfirmText').toString(),
+      cancelText: this.$t('settingsDeleteDialogCancelText').toString(),
       type: 'is-danger',
       hasIcon: true,
       onConfirm: () => {

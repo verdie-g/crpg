@@ -7,7 +7,12 @@
             v-for="character in characters"
             v-bind:key="character.id"
             :active="selectedCharacter && character.id === selectedCharacter.id"
-            :label="`${character.name} (lvl ${character.level})`"
+            :label="
+              $t('charactersCreateCharacterUsernameAndLevel', {
+                username: character.username,
+                userlevel: character.userlevel,
+              })
+            "
             @click="selectCharacter(character)"
           />
         </b-menu-list>
@@ -25,7 +30,7 @@
         </div>
         <div v-else>
           <!-- if no character -->
-          To create a character, simply join a cRPG server.
+          {{ $t('charactersCreateCharacter') }}
         </div>
       </div>
     </div>

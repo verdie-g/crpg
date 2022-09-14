@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="section">
-      <h2 class="title">Restrictions</h2>
+      <h2 class="title">{{ $t('administrationRestrictions') }}</h2>
       <b-table
         :data="restrictionsData"
         :columns="restrictionsColumns"
@@ -40,32 +40,32 @@ export default class Administration extends Vue {
     return [
       {
         field: 'id',
-        label: 'ID',
+        label: this.$t('administrationRestrictionColumnID'),
         numeric: true,
       },
       {
         field: 'restrictedUser',
-        label: 'User',
+        label: this.$t('administrationRestrictionColumnRestrictedUser'),
       },
       {
         field: 'createdAt',
-        label: 'Created At',
+        label: this.$t('administrationRestrictionColumnCreatedAt'),
       },
       {
         field: 'duration',
-        label: 'Duration',
+        label: this.$t('administrationRestrictionColumnDuration'),
       },
       {
         field: 'type',
-        label: 'Type',
+        label: this.$t('administrationRestrictionColumnType'),
       },
       {
         field: 'reason',
-        label: 'Reason',
+        label: this.$t('administrationRestrictionColumnReason'),
       },
       {
         field: 'restrictedByUser',
-        label: 'By',
+        label: this.$t('administrationRestrictionColumnRestrictedByUser'),
       },
     ];
   }

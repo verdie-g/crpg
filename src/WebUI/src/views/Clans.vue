@@ -2,7 +2,7 @@
   <section class="section">
     <div class="container">
       <div class="columns is-vcentered">
-        <h1 class="column is-size-2">Clans</h1>
+        <h1 class="column is-size-2">{{ $t('clansTitle') }}</h1>
         <div class="column is-narrow">
           <b-field>
             <p class="control">
@@ -20,7 +20,7 @@
                 :to="userClanRoute"
                 :disabled="userClan === null"
               >
-                My clan
+                {{ $t('clansMyClan') }}
               </b-button>
             </p>
             <p class="control">
@@ -31,7 +31,7 @@
                 :to="{ name: 'clan-create' }"
                 :disabled="userClan !== null"
               >
-                Create new clan
+                {{ $t('clansCreateNewClan') }}
               </b-button>
             </p>
           </b-field>
@@ -48,7 +48,7 @@
         :per-page="clansPerPage"
         :current-page="currentPage"
       >
-        <b-table-column field="tag" label="Tag" width="100" v-slot="props">
+        <b-table-column field="tag" :label="$t('clansTag')" width="100" v-slot="props">
           <div
             class="box clan-color"
             :style="`background-color: ${argbIntToHexColor(props.row.clan.primaryColor)}`"
@@ -56,16 +56,16 @@
           {{ props.row.clan.tag }}
         </b-table-column>
 
-        <b-table-column field="name" label="Name" v-slot="props">
+        <b-table-column field="name" :label="$t('clansName')" v-slot="props">
           {{ props.row.clan.name }}
         </b-table-column>
 
-        <b-table-column field="memberCount" label="Members" v-slot="props">
+        <b-table-column field="memberCount" :label="$t('clansMembers')" v-slot="props">
           {{ props.row.memberCount }}
         </b-table-column>
 
         <template #empty>
-          <div class="has-text-centered">No clans</div>
+          <div class="has-text-centered">{{ $t('clansNoClans') }}</div>
         </template>
       </b-table>
 

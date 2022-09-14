@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="section">
-      <h2 class="title">404 Not Found</h2>
-      <h3 class="subtitle">The page you requested could not be found</h3>
+      <h2 class="title">{{ $t('notFoundTitle') }}</h2>
+      <h3 class="subtitle">{{ $t('notFoundDescription') }}</h3>
     </div>
   </div>
 </template>

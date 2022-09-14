@@ -1,10 +1,17 @@
 <template>
   <section class="section">
     <div class="container" v-if="clan !== null">
-      <h1 class="is-size-2">[{{ clan.tag }}] {{ clan.name }} Applications</h1>
+      <h1 class="is-size-2">
+        {{
+          $t('clanApplicationsApplicationsWithTagAndName', {
+            clanTag: clan.tag,
+            clanName: clan.name,
+          })
+        }}
+      </h1>
 
       <b-table :data="applications" :hoverable="true">
-        <b-table-column field="name" label="Name" v-slot="props">
+        <b-table-column field="name" :label="$t('clanApplicationsName')" v-slot="props">
           {{ props.row.invitee.name }}
           <platform
             :platform="props.row.invitee.platform"
@@ -18,7 +25,7 @@
         </b-table-column>
 
         <template #empty>
-          <div class="has-text-centered">No applications</div>
+          <div class="has-text-centered">{{ $t('clanApplicationsNoApplications') }}</div>
         </template>
       </b-table>
     </div>
@@ -55,11 +62,15 @@ export default class ClanApplicationsComponent extends Vue {
   }
 
   accept(application: ClanInvitation) {
-    this.respondToClanInvitation(application, true).then(() => notify('Application accepted'));
+    this.respondToClanInvitation(application, true).then(() =>
+      notify(this.$t('clanApplicationsApplicationAccepted').toString())
+    );
   }
 
   decline(application: ClanInvitation) {
-    this.respondToClanInvitation(application, false).then(() => notify('Application declined'));
+    this.respondToClanInvitation(application, false).then(() =>
+      notify(this.$t('clanApplicationsApplicationDeclined').toString())
+    );
   }
 
   async respondToClanInvitation(application: ClanInvitation, accept: boolean) {

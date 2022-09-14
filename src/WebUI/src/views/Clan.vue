@@ -11,7 +11,7 @@
             tag="router-link"
             :to="{ name: 'clan-applications', params: { id: $route.params.id } }"
           >
-            Clan Applications
+            {{ $t('clanApplications') }}
           </b-button>
           <b-button
             v-else
@@ -20,13 +20,13 @@
             @click="apply"
             :disabled="applicationSent"
           >
-            Apply to join
+            {{ $t('clanApplyToJoin') }}
           </b-button>
         </div>
       </div>
 
       <b-table :data="members" :hoverable="true">
-        <b-table-column field="name" label="Name" v-slot="props">
+        <b-table-column field="name" :label="$t('clanName')" v-slot="props">
           {{ props.row.user.name }}
           <platform
             :platform="props.row.user.platform"
@@ -34,7 +34,7 @@
           />
         </b-table-column>
 
-        <b-table-column field="role" label="Role" v-slot="props">
+        <b-table-column field="role" :label="$t('clanRole')" v-slot="props">
           {{ props.row.role }}
         </b-table-column>
 
@@ -46,7 +46,7 @@
                 class="action-icon__hover is-clickable"
                 @click.native="selected(props.row)"
               />
-              <template v-slot:content>Click to manage this member of the clan.</template>
+              <template v-slot:content>{{ $t('clanManageClanMember') }}</template>
             </b-tooltip>
           </div>
         </b-table-column>
@@ -57,16 +57,24 @@
       <div v-if="selectedMember && selectedMember.user" class="card">
         <div class="card-header is-align-items-center px-3 py-3">
           <b-icon icon="user-cog" size="is-large" class="mr-2" />
-          <h2 class="title is-3">Managing {{ selectedMember.user.name }}</h2>
+          <h2 class="title is-3">
+            {{ $t('clanManageClanMemberWithMembername', { username: selectedMember.user.name }) }}
+          </h2>
         </div>
 
         <div class="card-content">
           <div class="columns is-flex-direction-column px-1">
             <div class="pt-3 pb-4">
               <b-field label="Role">
-                <b-radio v-model="selectedMemberRole" native-value="Member">Member</b-radio>
-                <b-radio v-model="selectedMemberRole" native-value="Officer">Officer</b-radio>
-                <b-radio v-model="selectedMemberRole" native-value="Leader">Leader</b-radio>
+                <b-radio v-model="selectedMemberRole" native-value="Member">
+                  {{ $t('clanMember') }}
+                </b-radio>
+                <b-radio v-model="selectedMemberRole" native-value="Officer">
+                  {{ $t('clanOfficer') }}
+                </b-radio>
+                <b-radio v-model="selectedMemberRole" native-value="Leader">
+                  {{ $t('clanLeader') }}
+                </b-radio>
               </b-field>
             </div>
 
@@ -77,7 +85,7 @@
                 class="is-clickable mt-5"
                 @click.native="kickMember(selectedMember)"
               >
-                Kick Member
+                {{ $t('clanKickMember') }}
               </b-button>
             </div>
           </div>
@@ -183,16 +191,16 @@ export default class ClanComponent extends Vue {
     this.applicationSent = true;
     clanService
       .inviteToClan(this.clan!.id, userModule.user!.id)
-      .then(() => notify('Application sent!'));
+      .then(() => notify(this.$t('clanApplicationSent').toString()));
   }
 
   async kickMember(member: ClanMember) {
     await clanModule.kickClanMember({ clanId: this.clan!.id, userId: member.user.id });
     if (member.user.id === this.selfMember?.user.id) {
-      notify('Clan left');
+      notify(this.$t('clanClanLeft').toString());
       this.$router.push({ name: 'clans' });
     } else {
-      notify('Clan member kicked');
+      notify(this.$t('clanMemberKicked').toString());
       arrayRemove(this.members, m => m === member);
     }
     this.selectedMember = null;
@@ -206,7 +214,7 @@ export default class ClanComponent extends Vue {
         memberId: member.user.id,
         role: selectedRole,
       })
-      .then(() => notify('Member updated'));
+      .then(() => notify(this.$t('clanMemberUpdated').toString()));
     clanService.getClanMembers(this.clan!.id).then(m => (this.members = m));
     this.isManageMemberWindowActive = false;
   }

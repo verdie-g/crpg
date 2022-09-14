@@ -9,7 +9,10 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/css/fontawesome.css';
 import 'leaflet/dist/leaflet.css';
 import '@/assets/scss/index.scss';
+import VueI18n from 'vue-i18n';
+import en from '@/resources/i18n/i18n_en';
 
+Vue.use(VueI18n);
 Vue.use(Buefy, {
   defaultIconPack: 'fas',
 });
@@ -24,7 +27,16 @@ Icon.Default.mergeOptions({
 
 Vue.config.productionTip = false;
 
+const i18n = new VueI18n({
+  locale: 'en', // set locale
+  fallbackLocale: 'en',
+  messages: {
+    en,
+  },
+});
+
 new Vue({
+  i18n,
   router,
   store,
   render: h => h(App),
