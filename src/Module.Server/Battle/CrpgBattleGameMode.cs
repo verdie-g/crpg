@@ -102,7 +102,6 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new AgentHumanAILogic(), // bot intelligence
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
                     new CrpgUserManager(crpgClient),
-                    new CrpgWarmupOverrideLogic(_constants),
 #else
                     new MultiplayerRoundComponent(),
                     new MissionMatchHistoryComponent(),
