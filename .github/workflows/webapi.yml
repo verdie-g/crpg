@@ -15,5 +15,12 @@ jobs:
         dotnet-version: '6.0.101' # SDK Version
     - name: Build
       run: dotnet build --configuration Release src/WebApi
-    - name: Test
-      run: dotnet test
+    # Call test on each project individually so the windows-only launcher is not restored.
+    - name: Test Application
+      run: dotnet test test/Application.UTest
+    - name: Test Common
+      run: dotnet test test/Common.UTest
+    - name: Test Persistence
+      run: dotnet test test/Persistence.UTest
+    - name: Test Sdk
+      run: dotnet test test/Sdk.UTest
