@@ -343,6 +343,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 {
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 89.0f) / 13.0f, 0.0f, 1f);
                     props.WeaponMaxUnsteadyAccuracyPenalty *= 3.5f * MBMath.Lerp(1.5f, 0.8f, amount);
+                    props.WeaponInaccuracy *= 1.5f;
                 }
                 else if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
                 {
@@ -363,10 +364,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponUnsteadyEndTime = 2f + props.WeaponUnsteadyBeginTime;
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.1f;
                 }
-                else if (equippedItem.WeaponClass is WeaponClass.Javelin or WeaponClass.ThrowingAxe or WeaponClass.ThrowingKnife)
+                else if (equippedItem.WeaponClass is WeaponClass.Javelin or WeaponClass.ThrowingAxe or WeaponClass.ThrowingKnife or WeaponClass.Stone)
                 {
+                    int powerThrow = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.PowerThrow);
                     props.WeaponBestAccuracyWaitTime = 0.4f + (89.0f - equippedItem.ThrustSpeed) * 0.03f;
-                    props.WeaponUnsteadyBeginTime = 2.5f + weaponSkill * 0.01f;
+                    props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.006f + (powerThrow * powerThrow / 10 * 0.4f);
                     props.WeaponUnsteadyEndTime = 10f + props.WeaponUnsteadyBeginTime;
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.025f;
                 }
