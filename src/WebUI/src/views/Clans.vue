@@ -11,6 +11,7 @@
             type="search"
             icon="search"
             size="is-medium"
+            @input="onFilterTextChanged"
           ></b-input>
         </div>
 
@@ -165,23 +166,25 @@ export default class Clans extends Vue {
   }
 
   getTableClans(clans: ClanWithMemberCount[]): ClanWithMemberCount[] {
-    return clans.filter(clan => {
-      if (!this.filterText) return true;
-      const isFilterMatchingClanName =
-        clan.clan.name.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1;
-      return isFilterMatchingClanName;
-    });
+    if (!this.filterText) return this.clans;
+    return clans.filter(
+      clan =>
+        clan.clan.name.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1 ||
+        clan.clan.tag.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1
+    );
   }
 
   getPageClans(): ClanWithMemberCount[] {
     const startIndex = (this.currentPage - 1) * this.clansPerPage;
     const endIndex = startIndex + this.clansPerPage;
-    return this.tableClans.slice(startIndex, endIndex).filter(clan => {
-      if (!this.filterText) return true;
-      const isFilterMatchingClanName =
-        clan.clan.name.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1;
-      return isFilterMatchingClanName;
-    });
+    const pageClans = this.tableClans.slice(startIndex, endIndex);
+    if (!this.filterText) return pageClans;
+
+    return pageClans.filter(
+      clan =>
+        clan.clan.name.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1 ||
+        clan.clan.tag.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1
+    );
   }
 
   updateCurrentPage(): void {
@@ -205,7 +208,6 @@ export default class Clans extends Vue {
     return this.$route.query.page ? parseInt(this.$route.query.page as string, 10) : null;
   }
 
-  @Watch('filterText')
   onFilterTextChanged(): void {
     this.currentPage = 1;
     if (this.$router.currentRoute.query.page + '' !== '1') {
