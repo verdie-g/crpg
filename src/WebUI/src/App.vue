@@ -1,19 +1,47 @@
 <template>
   <div class="is-flex-grow-1 is-flex is-flex-direction-column">
-    <nav v-if="user" class="is-flex-grow-0">
+    <nav>
       <b-navbar fixed-top :close-on-click="false">
-        <template slot="brand">
-          <b-navbar-item tag="router-link" :to="{ path: '/' }">cRPG</b-navbar-item>
+        <template slot="brand" v-if="user">
+          <b-navbar-item tag="router-link" :to="{ path: '/' }">
+            {{ $t('appHome') }}
+          </b-navbar-item>
         </template>
 
-        <template slot="start">
-          <b-navbar-item tag="router-link" :to="{ path: '/characters' }">Characters</b-navbar-item>
-          <b-navbar-item tag="router-link" :to="{ path: '/shop' }">Shop</b-navbar-item>
-          <b-navbar-item tag="router-link" :to="{ path: '/clans' }">Clans</b-navbar-item>
+        <template slot="start" v-if="user">
+          <b-navbar-item tag="router-link" :to="{ path: '/characters' }">
+            {{ $t('appCharacters') }}
+          </b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ path: '/shop' }">
+            {{ $t('appShop') }}
+          </b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ path: '/clans' }">
+            {{ $t('appClans') }}
+          </b-navbar-item>
           <!-- <b-navbar-item tag="router-link" :to="{ path: '/strategus' }">Strategus</b-navbar-item> -->
         </template>
 
         <template slot="end">
+          <div class="navbar-end">
+            <b-dropdown
+              v-model="language"
+              @change="onLanguageChanged"
+              position="is-bottom-left"
+              aria-role="menu"
+            >
+              <template #trigger>
+                <a class="navbar-item" role="button">
+                  <span>{{ $t('languageDropDownText') }}</span>
+                  <b-icon icon="caret-down"></b-icon>
+                </a>
+              </template>
+
+              <b-dropdown-item v-for="language in languages" :value="language" :key="language">
+                {{ $t(language) }}
+              </b-dropdown-item>
+            </b-dropdown>
+          </div>
+
           <b-navbar-item tag="div" v-if="user">
             <div class="media">
               <div class="media-content">
@@ -33,20 +61,20 @@
                   <b-dropdown-item has-link aria-role="menuitem" v-if="isModeratorOrAdmin">
                     <router-link to="/admin">
                       <b-icon icon="user-shield" />
-                      Administration
+                      {{ $t('appAdministration') }}
                     </router-link>
                   </b-dropdown-item>
 
                   <b-dropdown-item has-link aria-role="menuitem">
                     <router-link to="/settings">
                       <b-icon icon="cog" />
-                      Settings
+                      {{ $t('appSettings') }}
                     </router-link>
                   </b-dropdown-item>
 
                   <b-dropdown-item value="home" aria-role="menuitem" @click="signOut">
                     <b-icon icon="sign-out-alt" />
-                    Sign out
+                    {{ $t('appSignOut') }}
                   </b-dropdown-item>
                 </b-dropdown>
               </figure>
@@ -66,19 +94,19 @@
     >
       <div class="level">
         <div class="level-item">
-          <a href="https://www.patreon.com/crpg" target="_blank" title="Donate on Patreon">
+          <a href="https://www.patreon.com/crpg" target="_blank" :title="this.$t('appDonate')">
             <b-icon icon="patreon" pack="fab" size="is-large" aria-label="cRPG Patreon" />
           </a>
         </div>
 
         <div class="level-item">
-          <a href="https://discord.gg/c-rpg" target="_blank" title="Join our Discord">
+          <a href="https://discord.gg/c-rpg" target="_blank" :title="this.$t('appJoinDiscord')">
             <b-icon icon="discord" pack="fab" size="is-large" aria-label="cRPG Discord" />
           </a>
         </div>
 
         <div class="level-item">
-          <a href="https://forum.c-rpg.eu" target="_blank" title="Join our Forum">
+          <a href="https://forum.c-rpg.eu" target="_blank" :title="this.$t('appJoinForum')">
             <b-icon icon="discourse" pack="fab" size="is-large" aria-label="cRPG Forum" />
           </a>
         </div>
@@ -87,7 +115,7 @@
           <a
             href="https://store.steampowered.com/app/261550/Mount__Blade_II_Bannerlord"
             target="_blank"
-            title="Buy the game"
+            :title="this.$t('appBuyGame')"
           >
             <b-icon icon="steam" pack="fab" size="is-large" aria-label="Mount & Blade Steam page" />
           </a>
@@ -101,16 +129,30 @@
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import User from '@/models/user';
+import Language from '@/models/language';
 import { signInCallback, signOut, signInSilent } from './services/auth-service';
+import { i18n } from './main';
 
 @Component
 export default class App extends Vue {
+  language = Language.English;
+  languageStoreKey = 'language';
+
   get user(): User | null {
     return userModule.user;
   }
 
   get isModeratorOrAdmin() {
     return userModule.isModeratorOrAdmin;
+  }
+
+  get languages(): Language[] {
+    const languages = Object.values(Language);
+    const index = languages.indexOf(this.language, 0);
+    if (index > -1) {
+      languages.splice(index, 1);
+    }
+    return languages;
   }
 
   async beforeCreate() {
@@ -145,8 +187,24 @@ export default class App extends Vue {
     }
   }
 
+  mounted() {
+    const storedLanguage = localStorage.getItem(this.languageStoreKey);
+    if (storedLanguage) {
+      const language = Object.values(Language).find(l => l === storedLanguage);
+      if (language) {
+        this.language = language;
+        i18n.locale = language;
+      }
+    }
+  }
+
   signOut(): void {
     signOut();
+  }
+
+  onLanguageChanged(language: string): void {
+    i18n.locale = language;
+    localStorage.setItem(this.languageStoreKey, language);
   }
 }
 </script>

@@ -29,9 +29,9 @@ export default class MoveDialogComponent extends Vue {
   @Prop(Array) readonly movementTypes: MovementType[];
 
   movementTypesStr: Record<MovementType, string> = {
-    [MovementType.Move]: 'Move',
-    [MovementType.Follow]: 'Follow',
-    [MovementType.Attack]: 'Attack',
+    [MovementType.Move]: this.$t('strategusMoveDialogMove').toString(),
+    [MovementType.Follow]: this.$t('strategusMoveDialogFollow').toString(),
+    [MovementType.Attack]: this.$t('strategusMoveDialogAttack').toString(),
   };
 
   mounted() {

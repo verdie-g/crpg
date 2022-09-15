@@ -2,6 +2,7 @@ import { getToken, signIn } from '@/services/auth-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import { sleep } from '@/utils/promise';
 import { ErrorType, Result } from '@/models/result';
+import { i18n } from '@/main';
 
 export const API_BASE_URL = process.env.VUE_APP_API_BASE_URL;
 
@@ -17,7 +18,7 @@ async function trySend(method: string, path: string, body?: any): Promise<Result
   });
 
   if (response.status === 401) {
-    notify('Session expired', NotificationType.Warning);
+    notify(i18n.t('sessionExpired').toString(), NotificationType.Warning);
     sleep(1000).then(() => signIn());
     return null!;
   }

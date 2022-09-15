@@ -11,6 +11,7 @@ import 'leaflet/dist/leaflet.css';
 import '@/assets/scss/index.scss';
 import VueI18n from 'vue-i18n';
 import en from '@/resources/i18n/i18n_en';
+import de from '@/resources/i18n/i18n_de';
 
 Vue.use(VueI18n);
 Vue.use(Buefy, {
@@ -32,6 +33,7 @@ const i18n = new VueI18n({
   fallbackLocale: 'en',
   messages: {
     en,
+    de,
   },
 });
 
@@ -41,3 +43,5 @@ new Vue({
   store,
   render: h => h(App),
 }).$mount('#app');
+
+export { i18n };

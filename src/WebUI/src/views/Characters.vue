@@ -8,7 +8,7 @@
             v-bind:key="character.id"
             :active="selectedCharacter && character.id === selectedCharacter.id"
             :label="
-              $t('charactersCreateCharacterUsernameAndLevel', {
+              $t('charactersUsernameAndLevel', {
                 username: character.username,
                 userlevel: character.userlevel,
               })

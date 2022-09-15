@@ -1,18 +1,13 @@
 <template>
   <div class="content is-medium">
-    <h2>Welcome to Strategus</h2>
-    <p>
-      Strategus is a multiplayer campaign for cRPG where players can aquire fiefs and land and
-      gather armies on a real-time map. Strategus expands the world of cRPG to a browser-based map
-      of Calradia, where players take their armies into battle against other players or serve as a
-      mercenary in scheduled battles on the cRPG servers.
-    </p>
+    <h2>{{ $t('strategusRegistrationDialogWelcome') }}</h2>
+    <p>{{ $t('strategusRegistrationDialogDescription') }}</p>
 
-    <p>To start playing, you must first select your region.</p>
+    <p>{{ $t('strategusRegistrationDialogSelectRegion') }}</p>
     <form @submit.prevent="onSubmit">
       <b-field>
         <b-select
-          placeholder="Select a region"
+          :placeholder="$t('strategusRegistrationDialogSelectRegionPlaceholder')"
           :icon="regionIcon"
           required
           v-model="selectedRegion"

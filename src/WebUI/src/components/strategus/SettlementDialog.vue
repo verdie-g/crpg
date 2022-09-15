@@ -3,9 +3,12 @@
     <div class="content is-medium">
       <h2>{{ settlement.name }}</h2>
       <p>
-        Culture: {{ settlement.culture }}
+        {{
+          ($t('strategusSettlementDialogSettlementCulture'),
+          { settlementCulture: settlement.culture })
+        }}
         <br />
-        Garrison: 2515
+        {{ $t('strategusSettlementDialogGarrison') }}
       </p>
       <div class="buttons">
         <b-button
@@ -15,7 +18,7 @@
           @click="recruitTroops(true)"
           :loading="recruitTroopsLoading"
         >
-          Start recruiting troops
+          {{ $t('strategusSettlementDialogStartRecruitingTroops') }}
         </b-button>
         <b-button
           v-else
@@ -24,7 +27,7 @@
           @click="recruitTroops(false)"
           :loading="recruitTroopsLoading"
         >
-          Stop recruiting troops
+          {{ $t('strategusSettlementDialogStopRecruitingTroops') }}
         </b-button>
         <b-button type="is-link" size="is-medium">Shop</b-button>
       </div>

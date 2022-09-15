@@ -106,35 +106,32 @@
         </div>
       </div>
 
-      <b-tooltip
-        label="Some of your items might break at the end of a round. Switch automatic repair on so you don't have to repair manually."
-        multilined
-      >
+      <b-tooltip :label="$t('characterComponentRepairDescription')" multilined>
         <div class="field">
           <b-switch :value="character.autoRepair" @input="onAutoRepairSwitch" disabled>
-            Automatically repair damaged items (average repair cost
-            {{ averageRepairCost }} gold)
+            {{
+              this.$t('characterComponentAutoRepairDescription', {
+                averageRepairCost: averageRepairCost,
+              })
+            }}
           </b-switch>
         </div>
       </b-tooltip>
 
       <br />
 
-      <b-tooltip label="Respecialize character." multilined>
+      <b-tooltip :label="$t('characterComponentRespecializeDescription')" multilined>
         <b-button
           type="is-warning"
           icon-left="angle-double-down"
           expanded
           @click="openRespecializeCharacterDialog"
         >
-          Respecialize
+          {{ this.$t('characterComponentRespecialize') }}
         </b-button>
       </b-tooltip>
 
-      <b-tooltip
-        label="Reset character to level 1 to grant a bonus multiplier and an heirloom point. (lvl > 30)"
-        multilined
-      >
+      <b-tooltip :label="$t('characterComponentRetireDescription')" multilined>
         <b-button
           type="is-warning"
           icon-left="baby"
@@ -142,12 +139,12 @@
           :disabled="character.level < 31"
           @click="openRetireCharacterDialog"
         >
-          Retire
+          {{ this.$t('characterComponentRetire') }}
         </b-button>
       </b-tooltip>
 
       <b-button type="is-danger" icon-left="trash" @click="openDeleteCharacterDialog">
-        Delete
+        {{ this.$t('characterComponentDelete') }}
       </b-button>
     </div>
 
@@ -155,13 +152,15 @@
       <div class="columns is-marginless replace-item-modal">
         <div class="column" v-if="userItemToReplace">
           <h3>
-            Replace
+            {{ this.$t('characterComponentReplace') }}
             <strong :class="userItemRankClass(userItemToReplace)">
               {{ userItemToReplace.baseItem.name }}
             </strong>
           </h3>
           <item-properties :item="userItemToReplace.baseItem" :rank="userItemToReplace.rank" />
-          <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
+          <b-button size="is-medium" expanded @click="unequipItem">
+            {{ this.$t('characterComponentUnequip') }}
+          </b-button>
           <b-button
             size="is-medium"
             type="is-warning"
@@ -171,10 +170,10 @@
             :title="itemToReplaceUpgradeInfo.reason"
             @click="upgradeItem"
           >
-            Upgrade
+            {{ this.$t('characterComponentUpgrade') }}
           </b-button>
           <b-button size="is-medium" type="is-danger" icon-left="coins" expanded @click="sellItem">
-            Sell
+            {{ this.$t('characterComponentSell') }}
           </b-button>
         </div>
         <div class="column user-items">
@@ -192,11 +191,11 @@
               <item-properties :item="userItem.baseItem" :rank="userItem.rank" />
             </div>
           </div>
-          <div v-else>You don't own any item for this type.</div>
+          <div v-else>{{ this.$t('characterComponentNoItemOfType') }}</div>
         </div>
         <div class="column" v-if="selectedUserItem">
           <h3>
-            Replace with
+            {{ this.$t('characterComponentReplaceWith') }}
             <strong :class="userItemRankClass(selectedUserItem)">
               {{ selectedUserItem.baseItem.name }}
             </strong>
@@ -283,7 +282,7 @@ export default class CharacterComponent extends Vue {
     // }
 
     // return info;
-    return { upgradable: false, reason: 'Heirloom are disabled for now' };
+    return { upgradable: false, reason: this.$t('characterComponentHeirloomDisabled').toString() };
   }
 
   created() {
@@ -304,45 +303,55 @@ export default class CharacterComponent extends Vue {
 
   openRespecializeCharacterDialog(): void {
     this.$buefy.dialog.confirm({
-      title: 'Respecialize character',
-      message: `Are you sure you want to respecialize your character ${this.character.name} lvl. ${this.character.level}?
-        This action cannot be undone.`,
-      confirmText: 'Respecialize Character',
+      title: this.$t('characterComponentRespecializeDialogTitle').toString(),
+      message: this.$t('characterComponentRespecializeDialogMessage', {
+        characterName: this.character.name,
+        characterLevel: this.character.level,
+      }).toString(),
+      confirmText: this.$t('characterComponentRespecializeDialogConfirmText').toString(),
+      cancelText: this.$t('characterComponentRespecializeDialogCancelText').toString(),
       type: 'is-danger',
       hasIcon: true,
       onConfirm: () => {
         userModule.respecializeCharacter(this.character);
-        notify('Character respecialized');
+        notify(this.$t('characterComponentRespecializeSuccess').toString());
       },
     });
   }
 
   openRetireCharacterDialog(): void {
     this.$buefy.dialog.confirm({
-      title: 'Retiring character',
-      message: `Are you sure you want to retire your character ${this.character.name} lvl. ${this.character.level}?
-        This action cannot be undone.`,
-      confirmText: 'Retire',
+      title: this.$t('characterComponentRetireDialogTitle').toString(),
+      message: this.$t('characterComponentRetireDialogMessage', {
+        characterName: this.character.name,
+        characterLevel: this.character.level,
+      }).toString(),
+      confirmText: this.$t('characterComponentRetireDialogConfirmText').toString(),
+      cancelText: this.$t('characterComponentRetireDialogCancelText').toString(),
       type: 'is-warning',
+
       hasIcon: true,
       onConfirm: () => {
         userModule.retireCharacter(this.character);
-        notify('Character retired');
+        notify(this.$t('characterComponentRetireSuccess').toString());
       },
     });
   }
 
   openDeleteCharacterDialog(): void {
     this.$buefy.dialog.confirm({
-      title: 'Deleting character',
-      message: `Are you sure you want to delete your character ${this.character.name} lvl. ${this.character.level}?
-        This action cannot be undone.`,
-      confirmText: 'Delete Character',
+      title: this.$t('characterComponentDeleteDialogTitle').toString(),
+      message: this.$t('characterComponentDeleteDialogMessage', {
+        characterName: this.character.name,
+        characterLevel: this.character.level,
+      }).toString(),
+      confirmText: this.$t('characterComponentDeleteDialogConfirmText').toString(),
+      cancelText: this.$t('characterComponentDeleteDialogCancelText').toString(),
       type: 'is-danger',
       hasIcon: true,
       onConfirm: () => {
         userModule.deleteCharacter(this.character);
-        notify('Character deleted');
+        notify(this.$t('characterComponentDeleteSuccess').toString());
       },
     });
   }
