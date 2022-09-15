@@ -133,8 +133,6 @@ export default class Clans extends Vue {
   clansPerPage = 20;
   filterText = '';
   currentPage = 1;
-  tableClans = [] as ClanWithMemberCount[];
-  pageClans = [] as ClanWithMemberCount[];
 
   get userClan(): Clan | null {
     return userModule.clan;
@@ -148,33 +146,16 @@ export default class Clans extends Vue {
     return clanModule.clans;
   }
 
-  async created(): Promise<void> {
-    this.clansLoading = true;
-    clanModule.getClans().finally(() => {
-      this.tableClans = this.getTableClans(this.clans);
-      this.clansLoading = false;
-      this.pageClans = this.getPageClans();
-    });
-    userModule.getUserClan();
-
-    const currentPage = this.getCurrentPageQueryParameter();
-    if (currentPage) this.currentPage = currentPage;
-  }
-
-  onRowClick(clan: ClanWithMemberCount): void {
-    this.$router.push({ path: `clans/${clan.clan.id}` });
-  }
-
-  getTableClans(clans: ClanWithMemberCount[]): ClanWithMemberCount[] {
+  get tableClans(): ClanWithMemberCount[] {
     if (!this.filterText) return this.clans;
-    return clans.filter(
+    return this.clans.filter(
       clan =>
         clan.clan.name.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1 ||
         clan.clan.tag.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1
     );
   }
 
-  getPageClans(): ClanWithMemberCount[] {
+  get pageClans(): ClanWithMemberCount[] {
     const startIndex = (this.currentPage - 1) * this.clansPerPage;
     const endIndex = startIndex + this.clansPerPage;
     const pageClans = this.tableClans.slice(startIndex, endIndex);
@@ -185,6 +166,19 @@ export default class Clans extends Vue {
         clan.clan.name.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1 ||
         clan.clan.tag.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1
     );
+  }
+
+  async created(): Promise<void> {
+    this.clansLoading = true;
+    clanModule.getClans().finally(() => (this.clansLoading = false));
+    userModule.getUserClan();
+
+    const currentPage = this.getCurrentPageQueryParameter();
+    if (currentPage) this.currentPage = currentPage;
+  }
+
+  onRowClick(clan: ClanWithMemberCount): void {
+    this.$router.push({ path: `clans/${clan.clan.id}` });
   }
 
   updateCurrentPage(): void {
@@ -213,14 +207,11 @@ export default class Clans extends Vue {
     if (this.$router.currentRoute.query.page + '' !== '1') {
       this.$router.replace('clans?page=' + 1);
     }
-    this.tableClans = this.getTableClans(this.clans);
-    this.pageClans = this.getPageClans();
   }
 
   @Watch('$route.query.page')
   onPageQueryParameterChanged(): void {
     this.updateCurrentPage();
-    this.pageClans = this.getPageClans();
   }
 }
 </script>
