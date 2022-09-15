@@ -6,11 +6,13 @@ using Gameloop.Vdf;
 using Gameloop.Vdf.Linq;
 using Microsoft.Win32;
 
+namespace Crpg.Launcher;
+
 internal static class Program
 {
-    private const string CrpgWebsite = @"http://c-rpg.eu";
-    private const string CrpgModFile = @"cRPG.zip";
-    private const string DownloadUrl = CrpgWebsite + @"/" + CrpgModFile;
+    private const string CrpgWebsite = "http://c-rpg.eu";
+    private const string CrpgModFile = "cRPG.zip";
+    private const string DownloadUrl = CrpgWebsite + "/" + CrpgModFile;
     private const string UserRoot = "HKEY_CURRENT_USER";
     private const string Subkey = @"Software\Valve\Steam";
     private const string KeyName = UserRoot + "\\" + Subkey;
@@ -18,7 +20,7 @@ internal static class Program
     private const string CrpgLauncherVersion = @"\CrpgLauncherVersion.txt";
 
     [STAThread]
-    private static void Main(string[] args)
+    private static void Main()
     {
         MainAsync().GetAwaiter().GetResult();
     }
@@ -87,8 +89,8 @@ internal static class Program
         if (targetPath == string.Empty)
         {
             var result = MessageBox.Show("Could not find your Mount & Blade II Bannerlord location.\n\nPlease select your Mount & Blade II Bannerlord directory.", "Mount & Blade II Bannerlord not found",
-                                 MessageBoxButtons.OKCancel,
-                                 MessageBoxIcon.Warning);
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning);
             if (result != DialogResult.OK)
             {
                 return;
@@ -111,8 +113,8 @@ internal static class Program
         if (!File.Exists(blPathExe))
         {
             MessageBox.Show("Could not find your Bannerlord.exe", "Bannerlord.exe not found",
-                                 MessageBoxButtons.OK,
-                                 MessageBoxIcon.Error);
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
 
             if (crpgLauncherConfigFound) // Delete config if file was invalid
             {
@@ -129,8 +131,8 @@ internal static class Program
                 if (!IsProcessRunning("steam"))
                 {
                     var result = MessageBox.Show("Steam is not running. You need to run steam to play cRPG.", "Steam is not running",
-                                    MessageBoxButtons.AbortRetryIgnore,
-                                    MessageBoxIcon.Warning);
+                        MessageBoxButtons.AbortRetryIgnore,
+                        MessageBoxIcon.Warning);
                     if (result == DialogResult.Abort)
                     {
                         return;
@@ -203,8 +205,8 @@ internal static class Program
         catch (HttpRequestException)
         {
             MessageBox.Show("Could not check for any updates.", "Update check failed",
-                                 MessageBoxButtons.OK,
-                                 MessageBoxIcon.Warning);
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
             return (false, null);
         }
 
