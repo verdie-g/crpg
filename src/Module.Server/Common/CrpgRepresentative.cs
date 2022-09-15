@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Api.Models.Users;
+﻿using Crpg.Module.Api.Models.Clans;
+using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Common.Network;
 using TaleWorlds.MountAndBlade;
 
@@ -23,6 +24,8 @@ internal class CrpgRepresentative : MissionRepresentativeBase
             }
         }
     }
+
+    public CrpgClan? Clan { get; set; }
 
     public int RewardMultiplier
     {

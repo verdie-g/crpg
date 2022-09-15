@@ -36,7 +36,10 @@
         :current-page="currentPage"
       >
         <b-table-column field="tag" label="Tag" width="100" v-slot="props">
-          <div class="box clan-color" :style="`background-color: ${props.row.clan.color}`"></div>
+          <div
+            class="box clan-color"
+            :style="`background-color: ${argbIntToHexColor(props.row.clan.primaryColor)}`"
+          ></div>
           {{ props.row.clan.tag }}
         </b-table-column>
 
@@ -112,6 +115,7 @@ import clanModule from '@/store/clan-module';
 import Clan from '@/models/clan';
 import userModule from '@/store/user-module';
 import ClanWithMemberCount from '@/models/clan-with-member-count';
+import { argbIntToHexColor } from '@/utils/color';
 
 @Component
 export default class Clans extends Vue {
@@ -161,6 +165,10 @@ export default class Clans extends Vue {
 
   onRowClick(clan: ClanWithMemberCount): void {
     this.$router.push({ path: `clans/${clan.clan.id}` });
+  }
+
+  argbIntToHexColor(argb: number): string {
+    return argbIntToHexColor(argb);
   }
 }
 </script>

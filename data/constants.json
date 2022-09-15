@@ -40,9 +40,10 @@
   "clanTagMinLength": 2,
   "clanTagMaxLength": 4,
   "clanTagRegex": "^[a-zA-Z0-9]*$",
-  "clanColorRegex": "^#[a-fA-F0-9]{6}$",
   "clanNameMinLength": 5,
   "clanNameMaxLength": 30,
+  "clanBannerKeyMaxLength": 3000,
+  "clanBannerKeyRegex": "^(-?\\d+\\.)*-?\\d+$",
   "strategusMapWidth": 256,
   "strategusMapHeight": 215,
   "strategusEquivalentDistance": 0.2, /* Distance at which two points are consider equivalent. */

@@ -196,6 +196,26 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 : SpawnComponent.GetSpawnFrame(missionPeer.Team, hasMount, true);
             Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
 
+            uint color1;
+            uint color2;
+            Banner? banner;
+            if (crpgRepresentative.Clan != null)
+            {
+                color1 = crpgRepresentative.Clan.PrimaryColor;
+                color2 = crpgRepresentative.Clan.SecondaryColor;
+                TryParseBanner(crpgRepresentative.Clan.BannerKey, out banner);
+            }
+            else
+            {
+                color1 = missionPeer.Team == Mission.AttackerTeam
+                    ? teamCulture.Color
+                    : teamCulture.ClothAlternativeColor;
+                color2 = missionPeer.Team == Mission.AttackerTeam
+                    ? teamCulture.Color2
+                    : teamCulture.ClothAlternativeColor2;
+                banner = null;
+            }
+
             AgentBuildData agentBuildData = new AgentBuildData(character)
                 .MissionPeer(missionPeer)
                 .Equipment(characterEquipment)
@@ -203,12 +223,9 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 .Team(missionPeer.Team)
                 .VisualsIndex(0)
                 .IsFemale(missionPeer.Peer.IsFemale)
-                .ClothingColor1(missionPeer.Team == Mission.AttackerTeam
-                    ? teamCulture.Color
-                    : teamCulture.ClothAlternativeColor)
-                .ClothingColor2(missionPeer.Team == Mission.AttackerTeam
-                    ? teamCulture.Color2
-                    : teamCulture.ClothAlternativeColor2)
+                .ClothingColor1(color1)
+                .ClothingColor2(color2)
+                .Banner(banner)
                 .BodyProperties(GetBodyProperties(missionPeer, teamCulture))
                 .InitialPosition(in spawnFrame.origin)
                 .InitialDirection(in initialDirection);
@@ -281,6 +298,20 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
         EquipmentElement equipmentElement = new(itemObject);
         equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
+    }
+
+    private bool TryParseBanner(string bannerKey, out Banner? banner)
+    {
+        try
+        {
+            banner = new Banner(bannerKey);
+            return true;
+        }
+        catch
+        {
+            banner = null;
+            return false;
+        }
     }
 
     private static readonly Dictionary<CrpgItemSlot, EquipmentIndex> ItemSlotToIndex = new()

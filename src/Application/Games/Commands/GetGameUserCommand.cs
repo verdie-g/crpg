@@ -118,6 +118,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
         {
             var user = await _db.Users
                 .Include(u => u.Characters.Where(c => c.Name == req.UserName).Take(1))
+                .Include(u => u.ClanMembership)
                 .FirstOrDefaultAsync(u => u.Platform == req.Platform && u.PlatformUserId == req.PlatformUserId,
                     cancellationToken);
 

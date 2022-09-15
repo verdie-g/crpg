@@ -656,80 +656,106 @@ public record SeedDataCommand : IMediatorRequest
             Clan pecores = new()
             {
                 Tag = "PEC",
-                Color = "#3273DC",
+                PrimaryColor = 1234567,
+                SecondaryColor = 890,
                 Name = "Pecores",
+                BannerKey = string.Empty,
             };
             Clan ats = new()
             {
                 Tag = "ATS",
-                Color = "#FF3860",
+                PrimaryColor = 1234567,
+                SecondaryColor = 890,
                 Name = "Among The Shadows",
+                BannerKey = string.Empty,
             };
             Clan legio = new()
             {
                 Tag = "LEG",
-                Color = "#FFDD57",
+                PrimaryColor = 1234567,
+                SecondaryColor = 890,
                 Name = "Legio",
+                BannerKey = string.Empty,
             };
             Clan theGrey = new()
             {
                 Tag = "GREY",
-                Color = "#7A7A7A",
+                PrimaryColor = 1234567,
+                SecondaryColor = 890,
                 Name = "The Grey",
+                BannerKey = string.Empty,
             };
             Clan ode = new()
             {
                 Tag = "OdE",
-                Color = "#00D1B2",
+                PrimaryColor = 1234567,
+                SecondaryColor = 890,
                 Name = "Ordre de l'étoile",
+                BannerKey = string.Empty,
             };
             Clan virginDefenders = new()
             {
                 Tag = "VD",
-                Color = "#FF7D97",
+                PrimaryColor = 1234567,
+                SecondaryColor = 890,
                 Name = "Virgin Defenders",
+                BannerKey = string.Empty,
             };
             Clan randomClan = new()
             {
                 Tag = "RC",
-                Color = "#F5F5F5",
+                PrimaryColor = 1234567,
+                SecondaryColor = 890,
                 Name = "Random Clan",
+                BannerKey = string.Empty,
             };
             Clan abcClan = new()
             {
                 Tag = "ABC",
-                Color = "#5D3C43",
+                PrimaryColor = 1234567,
+                SecondaryColor = 890,
                 Name = "ABC",
+                BannerKey = string.Empty,
             };
             Clan defClan = new()
             {
                 Tag = "DEF",
-                Color = "#65B1A6",
+                PrimaryColor = 1234567,
+                SecondaryColor = 890,
                 Name = "DEF",
+                BannerKey = string.Empty,
             };
             Clan ghiClan = new()
             {
                 Tag = "GHI",
-                Color = "#1A544C",
+                PrimaryColor = 1234567,
+                SecondaryColor = 890,
                 Name = "GHI",
+                BannerKey = string.Empty,
             };
             Clan jklClan = new()
             {
                 Tag = "JKL",
-                Color = "#10044F",
+                PrimaryColor = 1234567,
+                SecondaryColor = 890,
                 Name = "JKL",
+                BannerKey = string.Empty,
             };
             Clan mnoClan = new()
             {
                 Tag = "MNO",
-                Color = "#5A541C",
+                PrimaryColor = 1234567,
+                SecondaryColor = 890,
                 Name = "MNO",
+                BannerKey = string.Empty,
             };
             Clan pqrClan = new()
             {
                 Tag = "PQR",
-                Color = "#123456",
+                PrimaryColor = 1234567,
+                SecondaryColor = 890,
                 Name = "Plan QR",
+                BannerKey = string.Empty,
             };
             Clan[] newClans =
             {

@@ -16,7 +16,7 @@ namespace Crpg.WebApi.Controllers;
 [Produces(MediaTypeNames.Application.Json)]
 public abstract class BaseController : ControllerBase
 {
-    // Constants used by Authorize attributes in controllers. Their values are the policies defined in Startup.
+    // Constants used by Authorize attributes in controllers. Their values are the policies defined in Program.
     protected const string UserPolicy = "User";
     protected const string ModeratorPolicy = "Moderator";
     protected const string AdminPolicy = "Admin";

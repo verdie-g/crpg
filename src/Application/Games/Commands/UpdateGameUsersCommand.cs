@@ -70,7 +70,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
         {
             int[] characterIds = updates.Select(u => u.CharacterId).ToArray();
             var charactersById = await _db.Characters
-                .Include(c => c.User)
+                .Include(c => c.User!.ClanMembership)
                 .Where(c => characterIds.Contains(c.Id))
                 .ToDictionaryAsync(c => c.Id, cancellationToken);
 

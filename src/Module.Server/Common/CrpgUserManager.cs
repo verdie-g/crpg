@@ -1,4 +1,5 @@
 ﻿using Crpg.Module.Api;
+using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Api.Models.Restrictions;
 using Crpg.Module.Api.Models.Users;
 using TaleWorlds.Core;
@@ -19,10 +20,12 @@ internal class CrpgUserManager : MissionNetwork
     private static readonly Dictionary<PlayerId, int> RewardMultiplierByPlayerId = new();
 
     private readonly ICrpgClient _crpgClient;
+    private Dictionary<int, CrpgClan> _clans;
 
     public CrpgUserManager(ICrpgClient crpgClient)
     {
         _crpgClient = crpgClient;
+        _clans = new Dictionary<int, CrpgClan>();
     }
 
     public override void OnPlayerDisconnectedFromServer(NetworkCommunicator networkPeer)
@@ -70,10 +73,22 @@ internal class CrpgUserManager : MissionNetwork
         string userName = vp.UserName;
 
         CrpgUser crpgUser;
+        CrpgClan? crpgClan = null;
         try
         {
-            var res = await _crpgClient.GetUserAsync(platform, platformUserId, userName);
-            crpgUser = res.Data!;
+            var userRes = await _crpgClient.GetUserAsync(platform, platformUserId, userName);
+            crpgUser = userRes.Data!;
+
+            if (crpgUser.ClanMembership != null)
+            {
+                int clanId = crpgUser.ClanMembership.ClanId;
+                if (!_clans.TryGetValue(clanId, out crpgClan))
+                {
+                    var clanRes = await _crpgClient.GetClanAsync(clanId);
+                    crpgClan = clanRes.Data!;
+                    _clans[clanId] = crpgClan;
+                }
+            }
         }
         catch (Exception e)
         {
@@ -91,6 +106,7 @@ internal class CrpgUserManager : MissionNetwork
 
         var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
         crpgRepresentative.User = crpgUser;
+        crpgRepresentative.Clan = crpgClan;
         crpgRepresentative.RewardMultiplier =
             RewardMultiplierByPlayerId.TryGetValue(vp.Id, out int lastMissionMultiplier)
                 ? lastMissionMultiplier
