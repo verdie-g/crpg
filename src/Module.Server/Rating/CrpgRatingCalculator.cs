@@ -5,14 +5,9 @@ using System.Diagnostics.CodeAnalysis;
 namespace Crpg.Module.Rating;
 
 [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1312:Variable names should begin with lower-case letter", Justification = "a and A are used in the formulas")]
-[SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1204:Static elements should appear before instance elements", Justification = "It's ok")]
-public class RatingCalculator
+internal static class CrpgRatingCalculator
 {
-    private const double DefaultRating = 1500.0;
-    private const double DefaultDeviation = 350;
-    private const double DefaultVolatility = 0.06;
-    private const double DefaultTau = 0.75;
-    private const double Multiplier = 173.7178;
+    private const double Tau = 0.75;
     private const double ConvergenceTolerance = 0.000001;
 
     /// <summary>
@@ -21,21 +16,21 @@ public class RatingCalculator
     /// will have see their deviation increase (in line with Prof Glickman's paper).
     /// Note that this method will clear the results held in the association result set.
     /// </summary>
-    public void UpdateRatings(RatingPeriodResults results)
+    public static void UpdateRatings(CrpgRatingPeriodResults results)
     {
         foreach (var player in results.GetParticipants())
         {
-            if (results.GetResults(player).Count > 0)
+            if (results.GetPlayerResults(player).Count > 0)
             {
-                CalculateNewRating(player, results.GetResults(player));
+                CalculateNewRating(player, results.GetPlayerResults(player));
             }
             else
             {
-                // if a player does not compete during the rating period, then only Step 6 applies.
+                // If a player does not compete during the rating period, then only step 6 applies.
                 // the player's rating and volatility parameters remain the same but deviation increases
-                player.WorkingRating = player.GetGlicko2Rating();
-                player.WorkingRatingDeviation = CalculateNewRatingDeviation(player.GetGlicko2RatingDeviation(), player.GetVolatility());
-                player.WorkingVolatility = player.GetVolatility();
+                player.WorkingRating = player.Glicko2Rating;
+                player.WorkingRatingDeviation = CalculateNewRatingDeviation(player.Glicko2RatingDeviation, player.Volatility);
+                player.WorkingVolatility = player.Volatility;
             }
         }
 
@@ -44,60 +39,15 @@ public class RatingCalculator
         {
             player.FinaliseRating();
         }
-
-        // lastly, clear the result set down in anticipation of the next rating period
-        results.Clear();
-    }
-
-    /// <summary>
-    /// Converts from the value used within the algorithm to a rating in
-    /// the same range as traditional Elo et al.
-    /// </summary>
-    /// <param name="rating">Rating in Glicko-2 scale.</param>
-    /// <returns>Rating in Glicko scale.</returns>
-    public double ConvertRatingToOriginalGlickoScale(double rating)
-    {
-        return rating * Multiplier + DefaultRating;
-    }
-
-    /// <summary>
-    /// Converts from a rating in the same range as traditional Elo
-    /// et al to the value used within the algorithm.
-    /// </summary>
-    /// <param name="rating">Rating in Glicko scale.</param>
-    /// <returns>Rating in Glicko-2 scale.</returns>
-    public double ConvertRatingToGlicko2Scale(double rating)
-    {
-        return (rating - DefaultRating) / Multiplier;
-    }
-
-    /// <summary>
-    /// Converts from the value used within the algorithm to a
-    /// rating deviation in the same range as traditional Elo et al.
-    /// </summary>
-    public double ConvertRatingDeviationToOriginalGlickoScale(double ratingDeviation)
-    {
-        return ratingDeviation * Multiplier;
-    }
-
-    /// <summary>
-    /// Converts from a rating deviation in the same range as traditional Elo et al
-    /// to the value used within the algorithm.
-    /// </summary>
-    /// <param name="ratingDeviation">Rating deviation in Glicko scale.</param>
-    /// <returns>Rating deviation in Glicko-2 scale.</returns>
-    public double ConvertRatingDeviationToGlicko2Scale(double ratingDeviation)
-    {
-        return ratingDeviation / Multiplier;
     }
 
     /// <summary>
     /// This is the function processing described in step 5 of Glickman's paper.
     /// </summary>
-    private void CalculateNewRating(Rating player, IList<RatingResult> results)
+    private static void CalculateNewRating(CrpgRating player, IList<CrpgRatingResult> results)
     {
-        double phi = player.GetGlicko2RatingDeviation();
-        double sigma = player.GetVolatility();
+        double phi = player.Glicko2RatingDeviation;
+        double sigma = player.Volatility;
         double a = Math.Log(Math.Pow(sigma, 2));
         double delta = Delta(player, results);
         double v = V(player, results);
@@ -112,24 +62,24 @@ public class RatingCalculator
         else
         {
             double k = 1;
-            B = a - k * Math.Abs(DefaultTau);
+            B = a - k * Math.Abs(Tau);
 
-            while (F(B, delta, phi, v, a, DefaultTau) < 0)
+            while (F(B, delta, phi, v, a, Tau) < 0)
             {
                 k++;
-                B = a - k * Math.Abs(DefaultTau);
+                B = a - k * Math.Abs(Tau);
             }
         }
 
         // step 5.3
-        double fA = F(A, delta, phi, v, a, DefaultTau);
-        double fB = F(B, delta, phi, v, a, DefaultTau);
+        double fA = F(A, delta, phi, v, a, Tau);
+        double fB = F(B, delta, phi, v, a, Tau);
 
         // step 5.4
         while (Math.Abs(B - A) > ConvergenceTolerance)
         {
             double C = A + (A - B) * fA / (fB - fA);
-            double fC = F(C, delta, phi, v, a, DefaultTau);
+            double fC = F(C, delta, phi, v, a, Tau);
 
             if (fC * fB < 0)
             {
@@ -147,7 +97,7 @@ public class RatingCalculator
 
         double newSigma = Math.Exp(A / 2.0);
 
-        player.SetWorkingVolatility(newSigma);
+        player.WorkingVolatility = newSigma;
 
         // Step 6
         double phiStar = CalculateNewRatingDeviation(phi, newSigma);
@@ -157,8 +107,7 @@ public class RatingCalculator
 
         // note that the newly calculated rating values are stored in a "working" area in the Rating object
         // this avoids us attempting to calculate subsequent participants' ratings against a moving target
-        player.SetWorkingRating(
-            player.GetGlicko2Rating() + Math.Pow(newPhi, 2) * OutcomeBasedRating(player, results));
+        player.WorkingRating = player.Glicko2Rating + Math.Pow(newPhi, 2) * OutcomeBasedRating(player, results);
         player.WorkingRatingDeviation = newPhi;
     }
 
@@ -186,38 +135,38 @@ public class RatingCalculator
     /// <summary>
     /// This is the main function in step 3 of Glickman's paper.
     /// </summary>
-    private static double V(Rating player, IEnumerable<RatingResult> results)
+    private static double V(CrpgRating player, IEnumerable<CrpgRatingResult> results)
     {
         double v = 0.0;
 
         foreach (var result in results)
         {
             v += result.Percentage
-                * (Math.Pow(G(result.GetOpponent(player).GetGlicko2RatingDeviation()), 2)
-                    * E(player.GetGlicko2Rating(), result.GetOpponent(player).GetGlicko2Rating(), result.GetOpponent(player).GetGlicko2RatingDeviation())
-                    * (1.0 - E(player.GetGlicko2Rating(), result.GetOpponent(player).GetGlicko2Rating(), result.GetOpponent(player).GetGlicko2RatingDeviation())));
+                * (Math.Pow(G(result.GetOpponent(player).Glicko2RatingDeviation), 2)
+                    * E(player.Glicko2Rating, result.GetOpponent(player).Glicko2Rating, result.GetOpponent(player).Glicko2RatingDeviation)
+                    * (1.0 - E(player.Glicko2Rating, result.GetOpponent(player).Glicko2Rating, result.GetOpponent(player).Glicko2RatingDeviation)));
         }
 
         return Math.Pow(v, -1);
     }
 
     /// <summary>This is a formula as per step 4 of Glickman's paper.</summary>
-    private double Delta(Rating player, IList<RatingResult> results)
+    private static double Delta(CrpgRating player, IList<CrpgRatingResult> results)
     {
         return V(player, results) * OutcomeBasedRating(player, results);
     }
 
     /// <summary>This is a formula as per step 4 of Glickman's paper.</summary>
     /// <returns>Expected rating based on outcomes.</returns>
-    private static double OutcomeBasedRating(Rating player, IEnumerable<RatingResult> results)
+    private static double OutcomeBasedRating(CrpgRating player, IEnumerable<CrpgRatingResult> results)
     {
         double outcomeBasedRating = 0;
 
         foreach (var result in results)
         {
             outcomeBasedRating += G(
-                result.Percentage * result.GetOpponent(player).GetGlicko2RatingDeviation() * result.GetScore(player)
-                - E(player.GetGlicko2Rating(), result.GetOpponent(player).GetGlicko2Rating(), result.GetOpponent(player).GetGlicko2RatingDeviation()));
+                result.Percentage * result.GetOpponent(player).Glicko2RatingDeviation * result.GetScore(player)
+                - E(player.Glicko2Rating, result.GetOpponent(player).Glicko2Rating, result.GetOpponent(player).Glicko2RatingDeviation));
         }
 
         return outcomeBasedRating;

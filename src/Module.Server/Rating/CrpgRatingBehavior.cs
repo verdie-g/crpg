@@ -7,18 +7,16 @@ namespace Crpg.Module.Rating;
 
 internal class CrpgRatingBehavior : MissionBehavior
 {
-    private readonly Dictionary<PlayerId, CrpgRatedUser> _ratedUsers;
-    private readonly RatingCalculator _calculator;
-    private RatingPeriodResults _results;
+    private readonly Dictionary<PlayerId, CrpgRating> _playerRatings;
+    private readonly CrpgRatingPeriodResults _results;
 
     public CrpgRatingBehavior()
     {
-        _ratedUsers = new Dictionary<PlayerId, CrpgRatedUser>();
-        _calculator = new RatingCalculator();
-        _results = new RatingPeriodResults();
+        _playerRatings = new Dictionary<PlayerId, CrpgRating>();
+        _results = new CrpgRatingPeriodResults();
     }
 
-    public override MissionBehaviorType BehaviorType => MissionBehaviorType.Logic;
+    public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
 
     public override void OnAgentHit(
         Agent affectedAgent,
@@ -27,8 +25,8 @@ internal class CrpgRatingBehavior : MissionBehavior
         in Blow blow,
         in AttackCollisionData attackCollisionData)
     {
-        if (!TryGetRatedUser(affectorAgent, out var ratedAffector)
-            || !TryGetRatedUser(affectedAgent, out var ratedAffected))
+        if (!TryGetRating(affectorAgent, out var affectorRating)
+            || !TryGetRating(affectedAgent, out var affectedRating))
         {
             return;
         }
@@ -36,35 +34,38 @@ internal class CrpgRatingBehavior : MissionBehavior
         // TODO: self hit
         // TODO: team hit
         float inflictedRatio = blow.InflictedDamage / affectedAgent.BaseHealthLimit;
-        _results.AddResult(ratedAffector.Rating, ratedAffected.Rating, inflictedRatio);
+        _results.AddResult(affectorRating, affectedRating, inflictedRatio);
     }
 
     public Dictionary<PlayerId, CrpgCharacterRating> ComputeRatingsAndReset()
     {
-        Dictionary<PlayerId, CrpgCharacterRating> ratings = new(_ratedUsers.Count);
-        foreach (var user in _ratedUsers)
+        CrpgRatingCalculator.UpdateRatings(_results);
+        Dictionary<PlayerId, CrpgCharacterRating> characterRatings = new(_playerRatings.Count);
+        foreach (var playerRating in _playerRatings)
         {
-            _calculator.UpdateRatings(_results);
-            // user.Character.Character.Rating = (float) user.Rating.GetRating();
-            // user.Character.Character.RatingDeviation = (float)user.Rating.GetRatingDeviation();
-            // user.Character.Character.Volatility = (float)user.Rating.GetVolatility();
+            characterRatings[playerRating.Key] = new CrpgCharacterRating
+            {
+                Value = (float)playerRating.Value.Glicko2Rating,
+                Deviation = (float)playerRating.Value.Glicko2RatingDeviation,
+                Volatility = (float)playerRating.Value.Volatility,
+            };
         }
 
-        _results = new RatingPeriodResults();
-        _ratedUsers.Clear();
+        _results.Clear();
+        _playerRatings.Clear();
 
-        return ratings;
+        return characterRatings;
     }
 
-    private bool TryGetRatedUser(Agent agent, out CrpgRatedUser ratedUser)
+    private bool TryGetRating(Agent agent, out CrpgRating rating)
     {
-        ratedUser = null!;
+        rating = null!;
         if (agent.MissionPeer == null)
         {
             return false;
         }
 
-        if (!_ratedUsers.TryGetValue(agent.MissionPeer.Peer.Id, out ratedUser))
+        if (!_playerRatings.TryGetValue(agent.MissionPeer.Peer.Id, out rating))
         {
             var crpgRepresentative = agent.MissionPeer?.Peer.GetComponent<CrpgRepresentative>();
             if (crpgRepresentative == null)
@@ -72,8 +73,10 @@ internal class CrpgRatingBehavior : MissionBehavior
                 return false;
             }
 
-            ratedUser = new CrpgRatedUser(crpgRepresentative, _calculator);
-            _ratedUsers[crpgRepresentative.MissionPeer.Peer.Id] = ratedUser;
+            var characterRating = crpgRepresentative.User!.Character.Rating;
+            rating = new(characterRating.Value, characterRating.Deviation, characterRating.Volatility);
+            _playerRatings[crpgRepresentative.MissionPeer.Peer.Id] = rating;
+            _results.AddParticipant(rating);
         }
 
         return true;

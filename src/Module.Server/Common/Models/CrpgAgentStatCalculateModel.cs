@@ -369,10 +369,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponUnsteadyBeginTime = 2.5f + weaponSkill * 0.01f;
                     props.WeaponUnsteadyEndTime = 10f + props.WeaponUnsteadyBeginTime;
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.025f;
-                    if (equippedItem.WeaponClass == WeaponClass.ThrowingAxe)
-                    {
-                        props.WeaponInaccuracy *= 6.6f;
-                    }
                 }
                 else
                 {
