@@ -1,6 +1,6 @@
 <template>
   <form>
-    <b-field label="Type">
+    <b-field :label="$t('shopFiltersFormItemType')">
       <b-dropdown v-model="type" aria-role="list">
         <template #trigger>
           <b-button type="is-primary" icon-right="caret-down">
@@ -9,10 +9,10 @@
         </template>
 
         <b-dropdown-item :value="null" :key="0" aria-role="listitem">
-          <span>Any</span>
+          <span>{{ $t('shopFiltersFormAny') }}</span>
         </b-dropdown-item>
         <b-dropdown-item
-          v-for="([value, name], idx) in Object.entries(allTypes)"
+          v-for="([value, name], idx) in allTypes.entries()"
           :value="value"
           :key="idx + 1"
           aria-role="listitem"
@@ -22,7 +22,7 @@
       </b-dropdown>
     </b-field>
 
-    <b-field label="Culture">
+    <b-field :label="$t('shopFiltersFormCulture')">
       <b-dropdown v-model="culture" aria-role="list">
         <template #trigger>
           <b-button type="is-primary" icon-right="caret-down">
@@ -31,7 +31,7 @@
         </template>
 
         <b-dropdown-item :value="null" :key="0" aria-role="listitem">
-          <span>Any</span>
+          <span>{{ $t('shopFiltersFormAny') }}</span>
         </b-dropdown-item>
         <b-dropdown-item
           v-for="(culture, idx) in allCultures"
@@ -45,11 +45,11 @@
     </b-field>
 
     <b-field>
-      <b-checkbox v-model="showOwned">Show owned items</b-checkbox>
+      <b-checkbox v-model="showOwned">{{ $t('shopFiltersShowOwnedItems') }}</b-checkbox>
     </b-field>
 
     <b-field>
-      <b-checkbox v-model="showAffordable">Show only affordable items</b-checkbox>
+      <b-checkbox v-model="showAffordable">{{ $t('shopFiltersShowAffordableItems') }}</b-checkbox>
     </b-field>
   </form>
 </template>
@@ -57,7 +57,7 @@
 <script lang="ts">
 import { Component, Model, Vue } from 'vue-property-decorator';
 import { itemTypeToStr } from '@/services/item-service';
-import { recordFilter } from '@/utils/record';
+import { mapFilter } from '@/utils/map';
 import ItemType from '@/models/item-type';
 import ShopFilters from '@/models/shop-filters';
 import Culture from '@/models/culture';
@@ -76,11 +76,13 @@ export default class ShopFiltersForm extends Vue {
   readonly filter: ShopFilters;
 
   hiddenItemTypes = [ItemType.Undefined, ItemType.Pistol, ItemType.Musket, ItemType.Bullets];
-  allTypes = recordFilter(itemTypeToStr, t => !this.hiddenItemTypes.includes(t));
+  allTypes = mapFilter(itemTypeToStr(), t => !this.hiddenItemTypes.includes(t));
   allCultures = Object.values(Culture).filter(c => c !== Culture.Neutral);
 
   get typeString(): string {
-    return this.type === null ? 'Any' : itemTypeToStr[this.type];
+    if (this.type === null) return this.$t('shopFiltersFormAny').toString();
+    const translatedItemType = itemTypeToStr().get(this.type);
+    return !!translatedItemType ? translatedItemType : this.$t('shopFiltersFormAny').toString();
   }
 
   get type(): ItemType | null {
@@ -96,7 +98,7 @@ export default class ShopFiltersForm extends Vue {
   }
 
   get cultureString(): string {
-    return this.culture === null ? 'Any' : this.culture;
+    return this.culture === null ? this.$t('shopFiltersFormAny').toString() : this.culture;
   }
 
   get culture(): Culture | null {

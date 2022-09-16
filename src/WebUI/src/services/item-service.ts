@@ -10,30 +10,33 @@ import WeaponClass from '@/models/weapon-class';
 import UserItem from '@/models/user-item';
 import { applyPolynomialFunction } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
+import { i18n } from '@/main';
 
-export const itemTypeToStr: Record<ItemType, string> = {
-  [ItemType.Undefined]: 'Undefined',
-  [ItemType.HeadArmor]: 'Head Armor',
-  [ItemType.ShoulderArmor]: 'Shoulder Armor',
-  [ItemType.BodyArmor]: 'Body Armor',
-  [ItemType.HandArmor]: 'Hand Armor',
-  [ItemType.LegArmor]: 'Leg Armor',
-  [ItemType.MountHarness]: 'Mount Harness',
-  [ItemType.Mount]: 'Mount',
-  [ItemType.Shield]: 'Shield',
-  [ItemType.Bow]: 'Bow',
-  [ItemType.Crossbow]: 'Crossbow',
-  [ItemType.OneHandedWeapon]: 'One Handed Weapon',
-  [ItemType.TwoHandedWeapon]: 'Two Handed Weapon',
-  [ItemType.Polearm]: 'Polearm',
-  [ItemType.Thrown]: 'Thrown',
-  [ItemType.Arrows]: 'Arrows',
-  [ItemType.Bolts]: 'Bolts',
-  [ItemType.Pistol]: 'Pistol',
-  [ItemType.Musket]: 'Musket',
-  [ItemType.Bullets]: 'Bullets',
-  [ItemType.Banner]: 'Banner',
-};
+export function itemTypeToStr(): Map<ItemType, string> {
+  const result = new Map<ItemType, string>();
+  result.set(ItemType.Undefined, i18n.t('shopFiltersFormItemTypeUndefined').toString());
+  result.set(ItemType.HeadArmor, i18n.t('shopFiltersFormItemTypeHeadArmor').toString());
+  result.set(ItemType.ShoulderArmor, i18n.t('shopFiltersFormItemTypeShoulderArmor').toString());
+  result.set(ItemType.BodyArmor, i18n.t('shopFiltersFormItemTypeBodyArmor').toString());
+  result.set(ItemType.HandArmor, i18n.t('shopFiltersFormItemTypeHandArmor').toString());
+  result.set(ItemType.LegArmor, i18n.t('shopFiltersFormItemTypeLegArmor').toString());
+  result.set(ItemType.MountHarness, i18n.t('shopFiltersFormItemTypeMountHarness').toString());
+  result.set(ItemType.Mount, i18n.t('shopFiltersFormItemTypeMount').toString());
+  result.set(ItemType.Shield, i18n.t('shopFiltersFormItemTypeShield').toString());
+  result.set(ItemType.Bow, i18n.t('shopFiltersFormItemTypeBow').toString());
+  result.set(ItemType.Crossbow, i18n.t('shopFiltersFormItemTypeCrossbow').toString());
+  result.set(ItemType.OneHandedWeapon, i18n.t('shopFiltersFormItemTypeOneHandedWeapon').toString());
+  result.set(ItemType.TwoHandedWeapon, i18n.t('shopFiltersFormItemTypeTwoHandedWeapon').toString());
+  result.set(ItemType.Polearm, i18n.t('shopFiltersFormItemTypePolearm').toString());
+  result.set(ItemType.Thrown, i18n.t('shopFiltersFormItemTypeThrown').toString());
+  result.set(ItemType.Arrows, i18n.t('shopFiltersFormItemTypeArrows').toString());
+  result.set(ItemType.Bolts, i18n.t('shopFiltersFormItemTypeBolts').toString());
+  result.set(ItemType.Pistol, i18n.t('shopFiltersFormItemTypePistol').toString());
+  result.set(ItemType.Musket, i18n.t('shopFiltersFormItemTypeMusket').toString());
+  result.set(ItemType.Bullets, i18n.t('shopFiltersFormItemTypeBullets').toString());
+  result.set(ItemType.Banner, i18n.t('shopFiltersFormItemTypeBanner').toString());
+  return result;
+}
 
 const damageTypeToStr: Record<DamageType, string> = {
   [DamageType.Undefined]: '',
@@ -192,7 +195,7 @@ export function getItems(): Promise<Item[]> {
 export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor {
   const props: ItemDescriptor = {
     fields: [
-      ['Type', itemTypeToStr[baseItem.type]],
+      ['Type', itemTypeToStr().get(baseItem.type)],
       ['Culture', baseItem.culture],
       ['Weight', baseItem.weight],
     ],

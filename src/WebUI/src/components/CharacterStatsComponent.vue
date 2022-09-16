@@ -13,11 +13,11 @@
       <b-field horizontal class="characteristic-field is-marginless">
         <template v-slot:label>
           <b-tooltip
-            label="Number of times you retired this character."
+            :label="$t('characterStatsComponentAmountOfRetires')"
             position="is-left"
             multilined
           >
-            Generation
+            {{ $t('characterStatsComponentGeneration') }}
           </b-tooltip>
         </template>
         <b-numberinput
@@ -28,7 +28,11 @@
           :controls="false"
         />
       </b-field>
-      <b-field horizontal label="Level" class="characteristic-field is-marginless">
+      <b-field
+        horizontal
+        :label="$t('characterStatsComponentLevel')"
+        class="characteristic-field is-marginless"
+      >
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -37,7 +41,11 @@
           :controls="false"
         />
       </b-field>
-      <b-field horizontal label="Experience" class="characteristic-field is-marginless">
+      <b-field
+        horizontal
+        :label="$t('characterStatsComponentExperience')"
+        class="characteristic-field is-marginless"
+      >
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -47,18 +55,21 @@
         />
       </b-field>
       <!-- TODO: align correctly -->
-      <b-field horizontal label="KDA" class="characteristic-field">
+      <b-field horizontal :label="$t('characterStatsComponentKDA')" class="characteristic-field">
         <b-input size="is-small" :value="getKda()" readonly />
       </b-field>
     </div>
 
     <div class="characteristic-section" v-if="characteristics !== null">
       <h2 class="title is-4">
-        Attributes ({{
-          characteristics.attributes.points + characteristicsDelta.attributes.points
-        }})
+        {{
+          $t('characterStatsComponentAttributes', {
+            attributePoints:
+              characteristics.attributes.points + characteristicsDelta.attributes.points,
+          })
+        }}
         <b-tooltip
-          label="Convert 1 attribute point to 2 skill points"
+          :label="$t('characterStatsComponentConvertAttributeToSkillPoints')"
           class="convert-button"
           v-if="characteristics.attributes.points + characteristicsDelta.attributes.points >= 1"
         >
@@ -74,10 +85,10 @@
       <b-field horizontal class="characteristic-field">
         <template v-slot:label>
           <b-tooltip position="is-left" multilined>
-            Strength
+            {{ $t('characterStatsComponentStrength') }}
             <template v-slot:content>
-              Increases your health points.
-              <s>Allows you to use higher tier weapons and armor.</s>
+              {{ $t('characterStatsComponentStrengthDescription1') }}
+              <s>{{ $t('characterStatsComponentStrengthDescription2') }}</s>
             </template>
           </b-tooltip>
         </template>
@@ -94,11 +105,11 @@
       <b-field horizontal class="characteristic-field">
         <template v-slot:label>
           <b-tooltip
-            label="Increases your weapon points and makes you move a bit faster."
+            :label="$t('characterStatsComponentAgilityDescription')"
             position="is-left"
             multilined
           >
-            Agility
+            {{ $t('characterStatsComponentAgility') }}
           </b-tooltip>
         </template>
         <b-numberinput
@@ -114,9 +125,13 @@
 
     <div class="characteristic-section" v-if="characteristics !== null">
       <h2 class="title is-4">
-        Skills ({{ characteristics.skills.points + characteristicsDelta.skills.points }})
+        {{
+          $t('characterStatsComponentSkills', {
+            skillPoints: characteristics.skills.points + characteristicsDelta.skills.points,
+          })
+        }}
         <b-tooltip
-          label="Convert 2 skill points to 1 attribute point"
+          :label="$t('characterStatsComponentConvertSkillToAttributePoints')"
           class="convert-button"
           v-if="characteristics.skills.points + characteristicsDelta.skills.points >= 2"
         >
@@ -136,11 +151,11 @@
       >
         <template v-slot:label>
           <b-tooltip position="is-left" multilined>
-            Iron Flesh
+            {{ $t('characterStatsComponentIronFlesh') }}
             <template v-slot:content>
-              Increases your health
-              <s>and reduces the negative impact armor has on weapon points</s>
-              . Requires 3 strength per level.
+              {{ $t('characterStatsComponentIronFleshDescription1') }}
+              <s>{{ $t('characterStatsComponentIronFleshDescription2') }}</s>
+              {{ $t('characterStatsComponentIronFleshDescription3') }}
             </template>
           </b-tooltip>
         </template>
@@ -161,11 +176,11 @@
       >
         <template v-slot:label>
           <b-tooltip
-            label="Increases melee damage. Requires 3 strength per level."
+            :label="$t('characterStatsComponentPowerStrikeDescription')"
             position="is-left"
             multilined
           >
-            Power Strike
+            {{ $t('characterStatsComponentPowerStrike') }}
           </b-tooltip>
         </template>
         <b-numberinput
@@ -185,11 +200,11 @@
       >
         <template v-slot:label>
           <b-tooltip position="is-left" multilined>
-            Power Draw
+            {{ $t('characterStatsComponentPowerDraw') }}
             <template v-slot:content>
-              Increases bow damage.
-              <s>Allows you to use higher tiers bow.</s>
-              Requires 3 strength per level.
+              {{ $t('characterStatsComponentPowerDrawDescription1') }}
+              <s>{{ $t('characterStatsComponentPowerDrawDescription2') }}</s>
+              {{ $t('characterStatsComponentPowerDrawDescription3') }}
             </template>
           </b-tooltip>
         </template>
@@ -210,11 +225,11 @@
       >
         <template v-slot:label>
           <b-tooltip position="is-left" multilined>
-            Power Throw
+            {{ $t('characterStatsComponentPowerThrow') }}
             <template v-slot:content>
-              Increases throw damage.
-              <s>Allows you to use higher tier weapons.</s>
-              Requires 3 strength per level.
+              {{ $t('characterStatsComponentPowerThrowDescription1') }}
+              <s>{{ $t('characterStatsComponentPowerThrowDescription2') }}</s>
+              {{ $t('characterStatsComponentPowerThrowDescription3') }}
             </template>
           </b-tooltip>
         </template>
@@ -235,11 +250,11 @@
       >
         <template v-slot:label>
           <b-tooltip
-            label="Increases running speed. Requires 3 agility per level."
+            :label="$t('characterStatsComponentAthleticsDescription')"
             position="is-left"
             multilined
           >
-            Athletics
+            {{ $t('characterStatsComponentAthletics') }}
           </b-tooltip>
         </template>
         <b-numberinput
@@ -259,11 +274,12 @@
       >
         <template v-slot:label>
           <b-tooltip position="is-left" multilined>
-            Riding
+            {{ $t('characterStatsComponentRiding') }}
+
             <template v-slot:content>
-              Increases riding speed, acceleration and maneuver.
-              <s>Allows you to ride higher tier mounts.</s>
-              Requires 3 agility per level.
+              {{ $t('characterStatsComponentRidingDescription1') }}
+              <s>{{ $t('characterStatsComponentRidingDescription2') }}</s>
+              {{ $t('characterStatsComponentRidingDescription3') }}
             </template>
           </b-tooltip>
         </template>
@@ -284,11 +300,11 @@
       >
         <template v-slot:label>
           <b-tooltip
-            label="Gives weapon points. Requires 3 agility per level."
+            :label="$t('characterStatsComponentWeaponMasterDescription')"
             position="is-left"
             multilined
           >
-            Weapon Master
+            {{ $t('characterStatsComponentWeaponMaster') }}
           </b-tooltip>
         </template>
         <b-numberinput
@@ -308,10 +324,10 @@
       >
         <template v-slot:label>
           <b-tooltip position="is-left" multilined>
-            Mounted Archery
+            {{ $t('characterStatsComponentMountedArchery') }}
             <template v-slot:content>
-              <s>Reduces penalty for using ranged weapons on a moving mount by 10% per level.</s>
-              Requires 6 agility per level.
+              <s>{{ $t('characterStatsComponentMountedArcheryDescription1') }}</s>
+              {{ $t('characterStatsComponentMountedArcheryDescription2') }}
             </template>
           </b-tooltip>
         </template>
@@ -332,12 +348,12 @@
       >
         <template v-slot:label>
           <b-tooltip position="is-left" multilined>
-            Shield
+            {{ $t('characterStatsComponentShield') }}
             <template v-slot:content>
-              <s>Improves shield durability, shield speed and</s>
-              increases coverage from ranged attacks.
-              <s>Allows you to use higher tier shields.</s>
-              Requires 6 agility per level.
+              <s>{{ $t('characterStatsComponentShieldDescription1') }}</s>
+              {{ $t('characterStatsComponentShieldDescription2') }}
+              <s>{{ $t('characterStatsComponentShieldDescription3') }}</s>
+              {{ $t('characterStatsComponentShieldDescription4') }}
             </template>
           </b-tooltip>
         </template>
@@ -354,12 +370,19 @@
 
     <div class="characteristic-section" v-if="characteristics !== null">
       <h2 class="title is-4">
-        Weapon Proficiencies ({{
-          characteristics.weaponProficiencies.points +
-          characteristicsDelta.weaponProficiencies.points
-        }})
+        {{
+          $t('characterStatsComponentWeaponProficiencies', {
+            proficienciyPoints:
+              characteristics.weaponProficiencies.points +
+              characteristicsDelta.weaponProficiencies.points,
+          })
+        }}
       </h2>
-      <b-field horizontal label="One Handed" class="characteristic-field">
+      <b-field
+        horizontal
+        :label="$t('characterStatsComponentOneHanded')"
+        class="characteristic-field"
+      >
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -370,7 +393,11 @@
         />
       </b-field>
 
-      <b-field horizontal label="Two Handed" class="characteristic-field">
+      <b-field
+        horizontal
+        :label="$t('characterStatsComponentTwoHanded')"
+        class="characteristic-field"
+      >
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -381,7 +408,11 @@
         />
       </b-field>
 
-      <b-field horizontal label="Polearm" class="characteristic-field">
+      <b-field
+        horizontal
+        :label="$t('characterStatsComponentPolearm')"
+        class="characteristic-field"
+      >
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -392,7 +423,7 @@
         />
       </b-field>
 
-      <b-field horizontal label="Bow" class="characteristic-field">
+      <b-field horizontal :label="$t('characterStatsComponentBow')" class="characteristic-field">
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -403,7 +434,11 @@
         />
       </b-field>
 
-      <b-field horizontal label="Crossbow" class="characteristic-field">
+      <b-field
+        horizontal
+        :label="$t('characterStatsComponentCrossbow')"
+        class="characteristic-field"
+      >
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -414,7 +449,11 @@
         />
       </b-field>
 
-      <b-field horizontal label="Throwing" class="characteristic-field">
+      <b-field
+        horizontal
+        :label="$t('characterStatsComponentThrowing')"
+        class="characteristic-field"
+      >
         <b-numberinput
           size="is-small"
           :editable="false"
@@ -429,7 +468,7 @@
     <b-field horizontal>
       <p class="control">
         <b-button size="is-medium" icon-left="undo" :disabled="!wasChangeMade" @click="reset">
-          Reset
+          {{ $t('characterStatsComponentReset') }}
         </b-button>
         <b-button
           size="is-medium"
@@ -438,7 +477,7 @@
           @click="commit"
           :loading="updatingCharacteristics"
         >
-          Commit
+          {{ $t('characterStatsComponentCommit') }}
         </b-button>
       </p>
     </b-field>
@@ -455,7 +494,9 @@
         <form @submit.prevent="onCharacterUpdateSubmit">
           <div class="modal-card" style="width: auto">
             <header class="modal-card-head">
-              <p class="modal-card-title">Character Update</p>
+              <p class="modal-card-title">
+                {{ $t('characterStatsComponentCharacterUpdateTitle') }}
+              </p>
             </header>
 
             <section class="modal-card-body">
@@ -471,8 +512,12 @@
             </section>
 
             <footer class="modal-card-foot">
-              <button class="button" type="button" @click="closeCharacterUpdateModal">Close</button>
-              <button class="button is-primary">Update</button>
+              <button class="button" type="button" @click="closeCharacterUpdateModal">
+                {{ $t('characterStatsComponentCharacterUpdateClose') }}
+              </button>
+              <button class="button is-primary">
+                {{ $t('characterStatsComponentCharacterUpdateUpdate') }}
+              </button>
             </footer>
           </div>
         </form>
@@ -814,7 +859,7 @@ export default class CharacterCharacteristicsComponent extends Vue {
       })
       .then(() => {
         this.updatingCharacteristics = false;
-        notify('Character characteristics updated');
+        notify(this.$t('characterStatsComponentCharacterCharacteristicsUpdated').toString());
       });
     this.reset();
   }
@@ -838,7 +883,7 @@ export default class CharacterCharacteristicsComponent extends Vue {
         characterId: this.character.id,
         characterUpdate: this.characterUpdate,
       })
-      .then(() => notify('Character updated!'));
+      .then(() => notify(this.$t('characterStatsComponentCharacterUpdated').toString()));
     this.closeCharacterUpdateModal();
   }
 
