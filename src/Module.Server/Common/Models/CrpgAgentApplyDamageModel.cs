@@ -32,7 +32,7 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
         }
 
         // For bashes (with and without shield)
-        if (collisionData.IsAlternativeAttack && !weapon.IsEmpty)
+        if (collisionData.IsAlternativeAttack && !weapon.IsEmpty && !attackInformation.IsFriendlyFire)
         {
             finalDamage = 1f;
         }
