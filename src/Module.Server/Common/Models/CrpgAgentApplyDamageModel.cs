@@ -1,4 +1,5 @@
 ﻿using Crpg.Module.Helpers;
+using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Models;
@@ -30,6 +31,42 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             finalDamage /= MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.DurabilityFactorForShieldCoefs);
         }
 
+        // For bashes (with and without shield)
+        if (collisionData.IsAlternativeAttack && !weapon.IsEmpty)
+        {
+            finalDamage = 1f;
+        }
+
         return finalDamage;
     }
+
+    public override void CalculateCollisionStunMultipliers(Agent attackerAgent, Agent defenderAgent, bool isAlternativeAttack, CombatCollisionResult collisionResult, WeaponComponentData attackerWeapon, WeaponComponentData defenderWeapon, out float attackerStunMultiplier, out float defenderStunMultiplier)
+    {
+        attackerStunMultiplier = 1f;
+        if (collisionResult == CombatCollisionResult.Blocked && defenderAgent.WieldedOffhandWeapon.IsShield())
+        {
+            int shieldSkill = 0;
+            if (defenderAgent.Origin is CrpgBattleAgentOrigin crpgOrigin)
+            {
+                shieldSkill = crpgOrigin.Skills.GetPropertyValue(CrpgSkills.Shield);
+            }
+
+            if (shieldSkill > _constants.ShieldDefendStunMultiplierForSkill.Length)
+            {
+                shieldSkill = _constants.ShieldDefendStunMultiplierForSkill.Length - 1;
+            }
+
+            defenderStunMultiplier = _constants.ShieldDefendStunMultiplierForSkill[shieldSkill];
+
+            if (!defenderAgent.IsAIControlled)
+            {
+                Console.WriteLine("defenderStunMultiplier: " + defenderStunMultiplier + " | shieldSkill: " + shieldSkill);
+            }
+
+            return;
+        }
+
+        defenderStunMultiplier = 1f;
+    }
+
 }
