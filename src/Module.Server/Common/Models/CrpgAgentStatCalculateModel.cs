@@ -81,6 +81,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         const float parabolMinAbscissa = 140; // Set at 100 so the weapon component is strictly monotonous.
 
         const float a = valueAtAccuracyPointA - parabolOffset; // Parameter for the polynomial, do not change.
+
+        float skillComponentMultiplier = weapon.WeaponClass == WeaponClass.Bow ? 0.4f : 0.2f;
+
         if (weapon.IsRangedWeapon)
         {
             float weaponComponent = (parabolMinAbscissa - weapon.Accuracy)
@@ -88,7 +91,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 * a
                 / ((parabolMinAbscissa - accuracyPointA) * (100 - accuracyPointA))
                 + parabolOffset;
-            float skillComponent = 0.2f * (float)Math.Pow(10.0, (200.0 - weaponSkill) / 200.0);
+            float skillComponent = skillComponentMultiplier * (float)Math.Pow(10.0, (200.0 - weaponSkill) / 200.0);
             inaccuracy = (weaponComponent * skillComponent + (100 - weapon.Accuracy)) * 0.001f;
         }
         else if (weapon.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
@@ -343,7 +346,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         if (equippedItem != null)
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
-            props.WeaponInaccuracy = equippedItem.WeaponClass == WeaponClass.Bow ? GetBowInaccuracy(agent, equippedItem, weaponSkill) : GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
+            props.WeaponInaccuracy = GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
             if (equippedItem.IsRangedWeapon)
             {
                 if (!agent.HasMount)
