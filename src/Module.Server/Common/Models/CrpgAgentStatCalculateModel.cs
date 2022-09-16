@@ -326,17 +326,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 }
                 else
                 {
-                    int mountedRangedSkill = 0;
-                    if (agent.Origin is CrpgBattleAgentOrigin crpgOrigin)
-                    {
-                        mountedRangedSkill = crpgOrigin.Skills.GetPropertyValue(CrpgSkills.MountedArchery);
-                    }
-
+                    int mountedArcherySkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.MountedArchery);
                     // float num6 = Math.Max(0.0f, (1.0f - weaponSkill / 500.0f) * (1.0f - ridingSkill / 1800.0f));
                     float num6 = 1;
                     props.WeaponMaxMovementAccuracyPenalty = 0.025f * num6;
                     props.WeaponMaxUnsteadyAccuracyPenalty = 0.06f * num6;
-                    props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedRangedSkill];
+                    props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
                 }
 
                 props.WeaponMaxMovementAccuracyPenalty = Math.Max(0.0f, props.WeaponMaxMovementAccuracyPenalty);
