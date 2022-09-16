@@ -16,6 +16,10 @@ server {
 
     include /etc/nginx/snippets/crpg-ssl.conf;
 
+    # Close slow connections.
+    client_body_timeout 5s;
+    client_header_timeout 5s;
+
     # If the browser can render compressed files, give it the pre-compressed version.
     gzip_static on;
 

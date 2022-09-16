@@ -4,24 +4,37 @@
       <div class="columns is-vcentered">
         <h1 class="column is-size-2">Clans</h1>
         <div class="column is-narrow">
-          <b-button
-            type="is-link"
-            size="is-medium"
-            tag="router-link"
-            :to="userClanRoute"
-            :disabled="userClan === null"
-          >
-            My clan
-          </b-button>
-          <b-button
-            type="is-link"
-            size="is-medium"
-            tag="router-link"
-            :to="{ name: 'clan-create' }"
-            :disabled="userClan !== null"
-          >
-            Create new clan
-          </b-button>
+          <b-field>
+            <p class="control">
+              <b-input placeholder="Search..."
+                       type="search"
+                       icon="search"
+                       size="is-medium"
+                       v-model.lazy="clanSearchQuery" />
+            </p>
+            <p class="control">
+              <b-button
+                type="is-link"
+                size="is-medium"
+                tag="router-link"
+                :to="userClanRoute"
+                :disabled="userClan === null"
+              >
+                My clan
+              </b-button>
+            </p>
+            <p class="control">
+              <b-button
+                type="is-link"
+                size="is-medium"
+                tag="router-link"
+                :to="{ name: 'clan-create' }"
+                :disabled="userClan !== null"
+              >
+                Create new clan
+              </b-button>
+            </p>
+          </b-field>
         </div>
       </div>
 
@@ -57,7 +70,7 @@
       </b-table>
 
       <b-pagination
-        :total="clans.length"
+        :total="filteredClans.length"
         :current.sync="currentPage"
         :per-page="clansPerPage"
         order="is-centered"
@@ -119,6 +132,7 @@ import { argbIntToHexColor } from '@/utils/color';
 
 @Component
 export default class Clans extends Vue {
+  clanSearchQuery = '';
   clansLoading = false;
   clansPerPage = 20;
 
@@ -130,8 +144,14 @@ export default class Clans extends Vue {
     return this.userClan === null ? '' : `clans/${this.userClan.id}`;
   }
 
-  get clans(): ClanWithMemberCount[] {
-    return clanModule.clans;
+  get filteredClans(): ClanWithMemberCount[] {
+    if (this.clanSearchQuery.length === 0) {
+      return clanModule.clans;
+    }
+
+    const q = this.clanSearchQuery.toLowerCase();
+    return clanModule.clans.filter(c =>
+      c.clan.tag.toLowerCase().includes(q) || c.clan.name.toLowerCase().includes(q));
   }
 
   get currentPage(): number {
@@ -143,7 +163,7 @@ export default class Clans extends Vue {
       this.$router.replace('clans?page=' + 1);
       return 1;
     }
-    const minPage = Math.ceil(this.clans.length / this.clansPerPage);
+    const minPage = Math.ceil(this.filteredClans.length / this.clansPerPage);
     if (currentPage > minPage) {
       this.$router.replace('clans?page=' + minPage);
       return minPage;
@@ -154,7 +174,7 @@ export default class Clans extends Vue {
   get pageClans(): ClanWithMemberCount[] {
     const startIndex = (this.currentPage - 1) * this.clansPerPage;
     const endIndex = startIndex + this.clansPerPage;
-    return this.clans.slice(startIndex, endIndex);
+    return this.filteredClans.slice(startIndex, endIndex);
   }
 
   created(): void {
