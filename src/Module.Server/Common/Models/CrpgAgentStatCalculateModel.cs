@@ -102,34 +102,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         return MathF.Max(inaccuracy, 0.0f);
     }
 
-    // GetBowInaccuracy has nearly the same code as GetWeaponInaccuracy but it should stay in case of any further archery adjustments
-    public float GetBowInaccuracy(
-        Agent agent,
-        WeaponComponentData weapon,
-        int weaponSkill)
-    {
-        float inaccuracy = 0.0f;
-
-        const float accuracyPointA = 45; // Abscissa of the lowest accuracy (point A) that corresponds to stones at the moment. It's our lower calibration bound.
-        const float valueAtAccuracyPointA = 100; // Inaccuracy at point A abscissa which corresponds to equipping stones.
-        const float parabolOffset = 20; // Inaccuracy for the most accurate weapon.
-        const float parabolMinAbscissa = 140; // Set at 100 so the weapon component is strictly monotonous.
-
-        const float a = valueAtAccuracyPointA - parabolOffset; // Parameter for the polynomial, do not change.
-        if (weapon.IsRangedWeapon)
-        {
-            float weaponComponent = (parabolMinAbscissa - weapon.Accuracy)
-                * (parabolMinAbscissa - weapon.Accuracy)
-                * a
-                / ((parabolMinAbscissa - accuracyPointA) * (100 - accuracyPointA))
-                + parabolOffset;
-            float skillComponent = 0.4f * (float)Math.Pow(10.0, (200f - weaponSkill) / 200f);
-            inaccuracy = (weaponComponent * skillComponent + (100 - weapon.Accuracy)) * 0.001f;
-        }
-
-        return MathF.Max(inaccuracy, 0.0f);
-    }
-
     public override void InitializeAgentStats(
        Agent agent,
        Equipment spawnEquipment,
