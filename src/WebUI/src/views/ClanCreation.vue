@@ -14,11 +14,11 @@
             />
           </b-field>
 
-          <b-field label="Primary Color">
+          <b-field :label="$t('clanCreationPrimaryColor')">
             <b-input type="color" v-model="primaryColor" required style="width: 77px" />
           </b-field>
 
-          <b-field label="Seconday Color">
+          <b-field :label="$t('clanCreationSecondaryColor')">
             <b-input type="color" v-model="secondaryColor" required style="width: 77px" />
           </b-field>
         </b-field>
@@ -29,8 +29,10 @@
 
         <b-field>
           <template #label>
-            Banner Key (generate one on
-            <a href="https://bannerlord.party" target="_blank">bannerlord.party</a>
+            {{ $t('clanCreationGenerateDescription1') }}
+            <a href="https://bannerlord.party" target="_blank">
+              {{ $t('clanCreationGenerateDescription2') }}
+            </a>
             )
           </template>
           <b-input

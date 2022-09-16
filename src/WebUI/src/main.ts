@@ -29,7 +29,7 @@ Icon.Default.mergeOptions({
 Vue.config.productionTip = false;
 
 const i18n = new VueI18n({
-  locale: 'en', // set locale
+  locale: navigator.language,
   fallbackLocale: 'en',
   messages: {
     en,

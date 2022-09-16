@@ -6,11 +6,13 @@
         <div class="column is-narrow">
           <b-field>
             <p class="control">
-              <b-input placeholder="Search..."
-                       type="search"
-                       icon="search"
-                       size="is-medium"
-                       v-model.lazy="clanSearchQuery" />
+              <b-input
+                :placeholder="$t('clansSearch')"
+                type="search"
+                icon="search"
+                size="is-medium"
+                v-model.lazy="clanSearchQuery"
+              />
             </p>
             <p class="control">
               <b-button
@@ -150,8 +152,9 @@ export default class Clans extends Vue {
     }
 
     const q = this.clanSearchQuery.toLowerCase();
-    return clanModule.clans.filter(c =>
-      c.clan.tag.toLowerCase().includes(q) || c.clan.name.toLowerCase().includes(q));
+    return clanModule.clans.filter(
+      c => c.clan.tag.toLowerCase().includes(q) || c.clan.name.toLowerCase().includes(q)
+    );
   }
 
   get currentPage(): number {

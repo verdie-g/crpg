@@ -1,6 +1,7 @@
 const en = {
   // App
   languageDropDownText: 'Language',
+  // No need to translate these languages
   de: 'Deutsch',
   en: 'English',
   appHome: 'cRPG',
@@ -158,10 +159,13 @@ const en = {
 
   clanCreationCreateNewClan: 'Create a new clan',
   clanCreationTag: 'Tag',
-  clanCreationColor: 'Color',
   clanCreationName: 'Name',
   clanCreationCreate: 'Create',
   clanCreationCreated: 'Clan created',
+  clanCreationGenerateDescription1: 'Banner Key (generate one on',
+  clanCreationGenerateDescription2: 'bannerlord.party',
+  clanCreationPrimaryColor: 'Primary Color',
+  clanCreationSecondaryColor: 'Secondary Color',
 
   clansTitle: 'Clans',
   clansSearch: 'Search...',
