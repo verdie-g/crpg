@@ -19,7 +19,7 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
     // public override float CalculateShieldDamage only has dmg as parameter. Therefore it cannot be used to get any Skill values.
     public override float CalculateDamage(in AttackInformation attackInformation, in AttackCollisionData collisionData, in MissionWeapon weapon, float baseDamage)
     {
-        float finalDamage = baseDamage;
+        float finalDamage = base.CalculateDamage(attackInformation, collisionData, weapon, baseDamage);
         if (collisionData.AttackBlockedWithShield)
         {
             int shieldSkill = 0;
