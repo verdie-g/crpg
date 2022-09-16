@@ -198,12 +198,12 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
             uint color1;
             uint color2;
-            Banner? banner;
+            // Banner? banner;
             if (crpgRepresentative.Clan != null)
             {
                 color1 = crpgRepresentative.Clan.PrimaryColor;
                 color2 = crpgRepresentative.Clan.SecondaryColor;
-                TryParseBanner(crpgRepresentative.Clan.BannerKey, out banner);
+                // TryParseBanner(crpgRepresentative.Clan.BannerKey, out banner);
             }
             else
             {
@@ -213,7 +213,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 color2 = missionPeer.Team == Mission.AttackerTeam
                     ? teamCulture.Color2
                     : teamCulture.ClothAlternativeColor2;
-                banner = null;
+                // banner = null;
             }
 
             AgentBuildData agentBuildData = new AgentBuildData(character)
@@ -225,7 +225,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 .IsFemale(missionPeer.Peer.IsFemale)
                 .ClothingColor1(color1)
                 .ClothingColor2(color2)
-                .Banner(banner)
+                // .Banner(banner)
                 .BodyProperties(GetBodyProperties(missionPeer, teamCulture))
                 .InitialPosition(in spawnFrame.origin)
                 .InitialDirection(in initialDirection);
