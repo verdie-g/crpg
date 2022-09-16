@@ -58,11 +58,6 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
 
             defenderStunMultiplier = _constants.ShieldDefendStunMultiplierForSkill[shieldSkill];
 
-            if (!defenderAgent.IsAIControlled)
-            {
-                Console.WriteLine("defenderStunMultiplier: " + defenderStunMultiplier + " | shieldSkill: " + shieldSkill);
-            }
-
             return;
         }
 
