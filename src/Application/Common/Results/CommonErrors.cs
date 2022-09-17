@@ -1,6 +1,7 @@
 ﻿using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Users;
 
 namespace Crpg.Application.Common.Results;
 
@@ -282,6 +283,12 @@ internal static class CommonErrors
     {
         Title = "User was not found",
         Detail = $"User with id '{userId}' was not found",
+    };
+
+    public static Error UserNotFound(Platform platform, string platformUserId) => new(ErrorType.NotFound, ErrorCode.UserNotFound)
+    {
+        Title = "User was not found",
+        Detail = $"User with '{platformUserId}' on platform '{platform}' was not found",
     };
 
     public static Error UserNotInAClan(int userId) => new(ErrorType.Forbidden, ErrorCode.UserNotInAClan)

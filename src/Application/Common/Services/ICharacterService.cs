@@ -40,6 +40,12 @@ internal class CharacterService : ICharacterService
         character.ExperienceMultiplier = _constants.DefaultExperienceMultiplier;
         character.SkippedTheFun = false;
         character.AutoRepair = _constants.DefaultAutoRepair;
+        character.Rating = new CharacterRating
+        {
+            Value = _constants.DefaultRating,
+            Deviation = _constants.DefaultRatingDeviation,
+            Volatility = _constants.DefaultRatingVolatility,
+        };
     }
 
     /// <inheritdoc />

@@ -1,3 +1,5 @@
+using Crpg.Application.Clans.Models;
+using Crpg.Application.Clans.Queries;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Games.Commands;
 using Crpg.Application.Games.Models;
@@ -29,4 +31,16 @@ public class GamesController : BaseController
     [HttpPut("users")]
     public Task<ActionResult<Result<UpdateGameUsersResult>>> UpdateUsers([FromBody] UpdateGameUsersCommand cmd) =>
         ResultToActionAsync(Mediator.Send(cmd));
+
+    // TODO: this endpoint is a duplicate of /clans/{id} because I could not find a good way for an endpoint to allow
+    // both the user and game policies.
+
+    /// <summary>
+    /// Gets a clan from its id.
+    /// </summary>
+    /// <response code="200">Ok.</response>
+    /// <response code="404">Clan was not found.</response>
+    [HttpGet("clans/{id}")]
+    public Task<ActionResult<Result<ClanViewModel>>> GetClan([FromRoute] int id) =>
+        ResultToActionAsync(Mediator.Send(new GetClanQuery { ClanId = id }));
 }

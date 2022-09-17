@@ -158,7 +158,9 @@ export default class Shop extends Vue {
       showOwned:
         this.$route.query.showOwned !== undefined ? this.$route.query.showOwned === 'true' : true,
       showAffordable:
-        this.$route.query.showAffordable !== undefined ? this.$route.query.showAffordable === 'true' : false,
+        this.$route.query.showAffordable !== undefined
+          ? this.$route.query.showAffordable === 'true'
+          : false,
     };
   }
 
@@ -176,20 +178,20 @@ export default class Shop extends Vue {
   }
 
   get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
-    const filteredItems = itemModule.items.filter(
-      i => {
-        if (!this.filters.showOwned && this.ownedItems[i.id] !== undefined) {
-          return false
-        }
-        if (this.filters.showAffordable && userModule.user?.gold && i.price > userModule.user.gold) {
-          return false
-        }
-        // When the user filters by a culture, Neutral items are always added in the result.
-        return (this.filters.culture === null ||
-          i.culture === this.filters.culture ||
-          i.culture === Culture.Neutral)
+    const filteredItems = itemModule.items.filter(i => {
+      if (!this.filters.showOwned && this.ownedItems[i.id] !== undefined) {
+        return false;
       }
-    );
+      if (this.filters.showAffordable && userModule.user?.gold && i.price > userModule.user.gold) {
+        return false;
+      }
+      // When the user filters by a culture, Neutral items are always added in the result.
+      return (
+        this.filters.culture === null ||
+        i.culture === this.filters.culture ||
+        i.culture === Culture.Neutral
+      );
+    });
     return filterItemsByType(filteredItems, this.filters.type);
   }
 

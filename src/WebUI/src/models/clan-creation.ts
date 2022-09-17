@@ -1,5 +1,7 @@
 export default interface ClanCreation {
   tag: string;
-  color: string;
+  primaryColor: number;
+  secondaryColor: number;
   name: string;
+  bannerKey: string;
 }

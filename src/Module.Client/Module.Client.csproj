@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -27,6 +27,7 @@
     <ContentWithTargetPath Include="ModuleData\**\*;GUI\**\*.xml" TargetPath="..\..\%(Identity)" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="..\Module.Server\**\*$(DefaultLanguageSourceExtension)" />
     <Compile Remove="..\Module.Server\$(BaseIntermediateOutputPath)\**;..\Module.Server\$(BaseOutputPath)\**" />
+    <Compile Remove="..\Module.Server\Rating\**" />
   </ItemGroup>
 
   <ItemGroup>

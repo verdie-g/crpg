@@ -5,6 +5,7 @@ using Crpg.Domain.Entities.Battles;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Parties;
+using Crpg.Domain.Entities.Restrictions;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
 using Crpg.Persistence;
@@ -42,57 +43,12 @@ namespace Crpg.Persistence.Migrations
             NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "party_status", new[] { "idle", "idle_in_settlement", "recruiting_in_settlement", "moving_to_point", "following_party", "moving_to_settlement", "moving_to_attack_party", "moving_to_attack_settlement", "in_battle" });
             NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "platform", new[] { "steam", "epic", "gog" });
             NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "region", new[] { "europe", "north_america", "asia" });
+            NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "restriction_type", new[] { "join", "chat" });
             NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "role", new[] { "user", "moderator", "admin" });
             NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "settlement_type", new[] { "village", "castle", "town" });
             NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "weapon_class", new[] { "undefined", "dagger", "one_handed_sword", "two_handed_sword", "one_handed_axe", "two_handed_axe", "mace", "pick", "two_handed_mace", "one_handed_polearm", "two_handed_polearm", "low_grip_polearm", "arrow", "bolt", "cartridge", "bow", "crossbow", "stone", "boulder", "throwing_axe", "throwing_knife", "javelin", "pistol", "musket", "small_shield", "large_shield", "banner" });
             NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "postgis");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("Crpg.Domain.Entities.Ban", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BannedByUserId")
-                        .HasColumnType("integer")
-                        .HasColumnName("banned_by_user_id");
-
-                    b.Property<int>("BannedUserId")
-                        .HasColumnType("integer")
-                        .HasColumnName("banned_user_id");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_at");
-
-                    b.Property<TimeSpan>("Duration")
-                        .HasColumnType("interval")
-                        .HasColumnName("duration");
-
-                    b.Property<string>("Reason")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("reason");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("updated_at");
-
-                    b.HasKey("Id")
-                        .HasName("pk_bans");
-
-                    b.HasIndex("BannedByUserId")
-                        .HasDatabaseName("ix_bans_banned_by_user_id");
-
-                    b.HasIndex("BannedUserId")
-                        .HasDatabaseName("ix_bans_banned_user_id");
-
-                    b.ToTable("bans", (string)null);
-                });
 
             modelBuilder.Entity("Crpg.Domain.Entities.Battles.Battle", b =>
                 {
@@ -397,10 +353,10 @@ namespace Crpg.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Color")
+                    b.Property<string>("BannerKey")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("color");
+                        .HasColumnName("banner_key");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
@@ -410,6 +366,14 @@ namespace Crpg.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("name");
+
+                    b.Property<long>("PrimaryColor")
+                        .HasColumnType("bigint")
+                        .HasColumnName("primary_color");
+
+                    b.Property<long>("SecondaryColor")
+                        .HasColumnType("bigint")
+                        .HasColumnName("secondary_color");
 
                     b.Property<string>("Tag")
                         .IsRequired()
@@ -723,6 +687,56 @@ namespace Crpg.Persistence.Migrations
                     b.ToTable("party_items", (string)null);
                 });
 
+            modelBuilder.Entity("Crpg.Domain.Entities.Restrictions.Restriction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<TimeSpan>("Duration")
+                        .HasColumnType("interval")
+                        .HasColumnName("duration");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("reason");
+
+                    b.Property<int>("RestrictedByUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("restricted_by_user_id");
+
+                    b.Property<int>("RestrictedUserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("restricted_user_id");
+
+                    b.Property<RestrictionType>("Type")
+                        .HasColumnType("restriction_type")
+                        .HasColumnName("type");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id")
+                        .HasName("pk_restrictions");
+
+                    b.HasIndex("RestrictedByUserId")
+                        .HasDatabaseName("ix_restrictions_restricted_by_user_id");
+
+                    b.HasIndex("RestrictedUserId")
+                        .HasDatabaseName("ix_restrictions_restricted_user_id");
+
+                    b.ToTable("restrictions", (string)null);
+                });
+
             modelBuilder.Entity("Crpg.Domain.Entities.Settlements.Settlement", b =>
                 {
                     b.Property<int>("Id")
@@ -886,27 +900,6 @@ namespace Crpg.Persistence.Migrations
                         .HasDatabaseName("ix_users_platform_platform_user_id");
 
                     b.ToTable("users", (string)null);
-                });
-
-            modelBuilder.Entity("Crpg.Domain.Entities.Ban", b =>
-                {
-                    b.HasOne("Crpg.Domain.Entities.Users.User", "BannedByUser")
-                        .WithMany()
-                        .HasForeignKey("BannedByUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_bans_users_banned_by_user_id");
-
-                    b.HasOne("Crpg.Domain.Entities.Users.User", "BannedUser")
-                        .WithMany("Bans")
-                        .HasForeignKey("BannedUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_bans_users_banned_user_id");
-
-                    b.Navigation("BannedByUser");
-
-                    b.Navigation("BannedUser");
                 });
 
             modelBuilder.Entity("Crpg.Domain.Entities.Battles.BattleFighter", b =>
@@ -1174,6 +1167,33 @@ namespace Crpg.Persistence.Migrations
                                 .IsRequired();
                         });
 
+                    b.OwnsOne("Crpg.Domain.Entities.Characters.CharacterRating", "Rating", b1 =>
+                        {
+                            b1.Property<int>("CharacterId")
+                                .HasColumnType("integer")
+                                .HasColumnName("id");
+
+                            b1.Property<float>("Deviation")
+                                .HasColumnType("real")
+                                .HasColumnName("rating_deviation");
+
+                            b1.Property<float>("Value")
+                                .HasColumnType("real")
+                                .HasColumnName("rating");
+
+                            b1.Property<float>("Volatility")
+                                .HasColumnType("real")
+                                .HasColumnName("rating_volatility");
+
+                            b1.HasKey("CharacterId");
+
+                            b1.ToTable("characters");
+
+                            b1.WithOwner()
+                                .HasForeignKey("CharacterId")
+                                .HasConstraintName("fk_characters_characters_id");
+                        });
+
                     b.OwnsOne("Crpg.Domain.Entities.Characters.CharacterStatistics", "Statistics", b1 =>
                         {
                             b1.Property<int>("CharacterId")
@@ -1206,6 +1226,9 @@ namespace Crpg.Persistence.Migrations
                         });
 
                     b.Navigation("Characteristics")
+                        .IsRequired();
+
+                    b.Navigation("Rating")
                         .IsRequired();
 
                     b.Navigation("Statistics")
@@ -1662,6 +1685,27 @@ namespace Crpg.Persistence.Migrations
                     b.Navigation("Party");
                 });
 
+            modelBuilder.Entity("Crpg.Domain.Entities.Restrictions.Restriction", b =>
+                {
+                    b.HasOne("Crpg.Domain.Entities.Users.User", "RestrictedByUser")
+                        .WithMany()
+                        .HasForeignKey("RestrictedByUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_restrictions_users_restricted_by_user_id");
+
+                    b.HasOne("Crpg.Domain.Entities.Users.User", "RestrictedUser")
+                        .WithMany("Restrictions")
+                        .HasForeignKey("RestrictedUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_restrictions_users_restricted_user_id");
+
+                    b.Navigation("RestrictedByUser");
+
+                    b.Navigation("RestrictedUser");
+                });
+
             modelBuilder.Entity("Crpg.Domain.Entities.Settlements.Settlement", b =>
                 {
                     b.HasOne("Crpg.Domain.Entities.Parties.Party", "Owner")
@@ -1740,8 +1784,6 @@ namespace Crpg.Persistence.Migrations
 
             modelBuilder.Entity("Crpg.Domain.Entities.Users.User", b =>
                 {
-                    b.Navigation("Bans");
-
                     b.Navigation("Characters");
 
                     b.Navigation("ClanMembership");
@@ -1749,6 +1791,8 @@ namespace Crpg.Persistence.Migrations
                     b.Navigation("Items");
 
                     b.Navigation("Party");
+
+                    b.Navigation("Restrictions");
                 });
 #pragma warning restore 612, 618
         }

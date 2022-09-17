@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Battle;
+using Crpg.Module.Api.Models.Users;
+using Crpg.Module.Battle;
 using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -11,6 +12,10 @@ namespace Crpg.Module.Common.Models;
 /// </summary>
 internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 {
+    // Hack to workaround not being able to spawn custom character. In the client this property is set so the
+    // StatCalculateModel has access to the cRPG user.
+    public static CrpgUser? MyUser { get; set; }
+
     private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new()
     {
         WeaponClass.Dagger,
@@ -69,11 +74,25 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int weaponSkill)
     {
         float inaccuracy = 0.0f;
+
+        const float accuracyPointA = 45; // Abscissa of the lowest accuracy (point A) that corresponds to stones at the moment. It's our lower calibration bound.
+        const float valueAtAccuracyPointA = 100; // Inaccuracy at point A abscissa which corresponds to equipping stones.
+        const float parabolOffset = 20; // Inaccuracy for the most accurate weapon.
+        const float parabolMinAbscissa = 140; // Set at 100 so the weapon component is strictly monotonous.
+
+        const float a = valueAtAccuracyPointA - parabolOffset; // Parameter for the polynomial, do not change.
+
+        float skillComponentMultiplier = weapon.WeaponClass == WeaponClass.Bow ? 0.4f : 0.2f;
+
         if (weapon.IsRangedWeapon)
         {
-            inaccuracy = (100 - weapon.Accuracy)
-                * (4 - 0.015f * weaponSkill) // 1 for 200 wpf.
-                * 0.001f;
+            float weaponComponent = (parabolMinAbscissa - weapon.Accuracy)
+                * (parabolMinAbscissa - weapon.Accuracy)
+                * a
+                / ((parabolMinAbscissa - accuracyPointA) * (100 - accuracyPointA))
+                + parabolOffset;
+            float skillComponent = skillComponentMultiplier * (float)Math.Pow(10.0, (200.0 - weaponSkill) / 200.0);
+            inaccuracy = (weaponComponent * skillComponent + (100 - weapon.Accuracy)) * 0.001f;
         }
         else if (weapon.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
         {
@@ -177,12 +196,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     private void InitializeHumanAgentStats(Agent agent, Equipment equipment, AgentDrivenProperties props)
     {
         // Dirty hack, part of the work-around to have skills without spawning custom characters.
-        var crpgRepresentative = GameNetwork.IsClientOrReplay
-            ? GameNetwork.MyPeer.GetComponent<CrpgRepresentative>()
+        var crpgUser = GameNetwork.IsClientOrReplay
+            ? MyUser
             : null; // For the server, the origin is set in CrpgBattleSpawningBehavior.
-        if (crpgRepresentative != null && crpgRepresentative.Peer.BodyProperties == agent.BodyPropertiesValue)
+        if (crpgUser != null)
         {
-            var characteristics = crpgRepresentative.User!.Character.Characteristics;
+            var characteristics = crpgUser.Character.Characteristics;
             var mbSkills = CrpgBattleSpawningBehavior.CreateCharacterSkills(characteristics);
             agent.Origin = new CrpgBattleAgentOrigin(agent.Origin?.Troop, mbSkills);
         }
@@ -310,9 +329,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 }
                 else
                 {
-                    float num6 = Math.Max(0.0f, (1.0f - weaponSkill / 500.0f) * (1.0f - ridingSkill / 1800.0f));
+                    int mountedArcherySkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.MountedArchery);
+                    // float num6 = Math.Max(0.0f, (1.0f - weaponSkill / 500.0f) * (1.0f - ridingSkill / 1800.0f));
+                    float num6 = 1;
                     props.WeaponMaxMovementAccuracyPenalty = 0.025f * num6;
                     props.WeaponMaxUnsteadyAccuracyPenalty = 0.06f * num6;
+                    props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
                 }
 
                 props.WeaponMaxMovementAccuracyPenalty = Math.Max(0.0f, props.WeaponMaxMovementAccuracyPenalty);
@@ -327,6 +349,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 {
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 89.0f) / 13.0f, 0.0f, 1f);
                     props.WeaponMaxUnsteadyAccuracyPenalty *= 3.5f * MBMath.Lerp(1.5f, 0.8f, amount);
+                    props.WeaponInaccuracy *= 1.5f;
                 }
                 else if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
                 {
@@ -336,9 +359,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
                 {
+                    int powerDraw = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.PowerDraw);
                     props.WeaponBestAccuracyWaitTime = 0.3f + (95.75f - equippedItem.ThrustSpeed) * 0.005f;
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 60.0f) / 75.0f, 0.0f, 1f);
-                    props.WeaponUnsteadyBeginTime = 0.1f + weaponSkill * 0.001f * MBMath.Lerp(1f, 2f, amount);
+
+                    props.WeaponUnsteadyBeginTime = 0.06f + weaponSkill * 0.001f * MBMath.Lerp(1f, 2f, amount) + (powerDraw * powerDraw / 10 * 0.4f);
                     if (agent.IsAIControlled)
                     {
                         props.WeaponUnsteadyBeginTime *= 4f;
@@ -347,16 +372,13 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponUnsteadyEndTime = 2f + props.WeaponUnsteadyBeginTime;
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.1f;
                 }
-                else if (equippedItem.WeaponClass is WeaponClass.Javelin or WeaponClass.ThrowingAxe or WeaponClass.ThrowingKnife)
+                else if (equippedItem.WeaponClass is WeaponClass.Javelin or WeaponClass.ThrowingAxe or WeaponClass.ThrowingKnife or WeaponClass.Stone)
                 {
+                    int powerThrow = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.PowerThrow);
                     props.WeaponBestAccuracyWaitTime = 0.4f + (89.0f - equippedItem.ThrustSpeed) * 0.03f;
-                    props.WeaponUnsteadyBeginTime = 2.5f + weaponSkill * 0.01f;
+                    props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.006f + (powerThrow * powerThrow / 10 * 0.4f);
                     props.WeaponUnsteadyEndTime = 10f + props.WeaponUnsteadyBeginTime;
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.025f;
-                    if (equippedItem.WeaponClass == WeaponClass.ThrowingAxe)
-                    {
-                        props.WeaponInaccuracy *= 6.6f;
-                    }
                 }
                 else
                 {

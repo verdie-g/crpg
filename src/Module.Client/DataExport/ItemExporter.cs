@@ -18,7 +18,17 @@ internal class ItemExporter : IDataExporter
     private const string CraftingPiecesFilePath = "../../Modules/Native/ModuleData/crafting_pieces.xml";
     private const string WeaponDescriptionsFilePath = "../../Modules/Native/ModuleData/weapon_descriptions.xml";
     private const string CraftingTemplatesFilePath = "../../Modules/Native/ModuleData/crafting_templates.xml";
-    private const string ItemFilesPath = "../../Modules/SandBoxCore/ModuleData/items";
+    private static readonly string[] ItemFilePaths =
+    {
+        "../../Modules/SandBoxCore/ModuleData/items/head_armors.xml",
+        "../../Modules/SandBoxCore/ModuleData/items/shoulder_armors.xml",
+        "../../Modules/SandBoxCore/ModuleData/items/body_armors.xml",
+        "../../Modules/SandBoxCore/ModuleData/items/arm_armors.xml",
+        "../../Modules/SandBoxCore/ModuleData/items/leg_armors.xml",
+        "../../Modules/SandBoxCore/ModuleData/items/horses_and_others.xml",
+        "../../Modules/SandBoxCore/ModuleData/items/shields.xml",
+        "../../Modules/SandBoxCore/ModuleData/items/weapons.xml",
+    };
 
     private static readonly HashSet<ItemObject.ItemTypeEnum> BlacklistedItemTypes = new()
     {
@@ -57,9 +67,7 @@ internal class ItemExporter : IDataExporter
         "eastern_leather_boots", // Name conflict with leather_boots.
         "empire_crown_v2", // Name conflict with empire_crown_west.
         "empire_horse_tournament", // Name conflict with empire_horse.
-        "empire_lance_1_t3_blunt", // Name conflict with vlandia_lance_1_t3_blunt.
         "empire_sword_1_t2", // Name conflict with iron_spatha_sword_t2.
-        "empire_sword_1_t2_blunt", // Name conflict with iron_spatha_sword_t2.
         "female_scarf", // Name conflict with scarf rank 1.
         "fortunas_choice", // Completely unbalanced harness.
         "grapeshot_fire_projectile", // Can't be equipped.
@@ -128,7 +136,7 @@ internal class ItemExporter : IDataExporter
         Directory.CreateDirectory(moduleDataItemsPath);
 
         var mbItems = Enumerable.Empty<ItemObject>();
-        foreach (string filePath in Directory.EnumerateFiles(ItemFilesPath))
+        foreach (string filePath in ItemFilePaths)
         {
             var itemsDoc = LoadMbDocument(filePath);
             RegisterMbObjects<ItemObject>(itemsDoc, game);

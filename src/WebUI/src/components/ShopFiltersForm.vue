@@ -66,7 +66,12 @@ import Culture from '@/models/culture';
 export default class ShopFiltersForm extends Vue {
   @Model('input', {
     type: Object,
-    default: (): ShopFilters => ({ type: null, culture: null, showOwned: true, showAffordable: false }),
+    default: (): ShopFilters => ({
+      type: null,
+      culture: null,
+      showOwned: true,
+      showAffordable: false,
+    }),
   })
   readonly filter: ShopFilters;
 

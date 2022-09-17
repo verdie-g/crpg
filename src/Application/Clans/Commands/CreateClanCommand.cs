@@ -17,8 +17,10 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
 {
     public int UserId { get; init; }
     public string Tag { get; init; } = string.Empty;
-    public string Color { get; init; } = string.Empty;
+    public uint PrimaryColor { get; init; }
+    public uint SecondaryColor { get; init; }
     public string Name { get; init; } = string.Empty;
+    public string BannerKey { get; init; } = string.Empty;
 
     public class Validator : AbstractValidator<CreateClanCommand>
     {
@@ -29,17 +31,22 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
                 .MaximumLength(constants.ClanTagMaxLength)
                 .Matches(new Regex(constants.ClanTagRegex, RegexOptions.Compiled));
 
-            RuleFor(c => c.Color)
-                .Matches(new Regex(constants.ClanColorRegex, RegexOptions.Compiled));
-
             RuleFor(c => c.Name)
                 .MinimumLength(constants.ClanNameMinLength)
                 .MaximumLength(constants.ClanNameMaxLength);
+
+            RuleFor(c => c.BannerKey)
+                .MinimumLength(0)
+                .MaximumLength(constants.ClanBannerKeyMaxLength)
+                .Matches(new Regex(constants.ClanBannerKeyRegex, RegexOptions.Compiled));
         }
     }
 
     internal class Handler : IMediatorRequestHandler<CreateClanCommand, ClanViewModel>
     {
+        /// <summary>Mask to get alpha from ARGB to avoid having invisible colors.</summary>
+        private const uint AlphaMask = 0xFF000000;
+
         private static readonly ILogger Logger = LoggerFactory.CreateLogger<CreateClanCommand>();
 
         private readonly ICrpgDbContext _db;
@@ -78,8 +85,10 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
             clan = new Clan
             {
                 Tag = req.Tag,
-                Color = req.Color.ToUpperInvariant(),
+                PrimaryColor = req.PrimaryColor | AlphaMask,
+                SecondaryColor = req.SecondaryColor | AlphaMask,
                 Name = req.Name,
+                BannerKey = req.BannerKey,
                 Members =
                 {
                     new ClanMember

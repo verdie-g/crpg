@@ -12,14 +12,24 @@ public class Clan : AuditableEntity
     public string Tag { get; set; } = string.Empty;
 
     /// <summary>
-    /// Hex color of the clan (e.g. #FA60EE).
+    /// Primary color (ARGB32) of the clan.
     /// </summary>
-    public string Color { get; set; } = string.Empty;
+    public uint PrimaryColor { get; set; }
+
+    /// <summary>
+    /// Secondary color (ARGB32) of the clan.
+    /// </summary>
+    public uint SecondaryColor { get; set; }
 
     /// <summary>
     /// Full name of the clan.
     /// </summary>
     public string Name { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Bannerlord's banner key of the clan.
+    /// </summary>
+    public string BannerKey { get; set; } = string.Empty;
 
     public IList<ClanMember> Members { get; set; } = new List<ClanMember>();
     public IList<ClanInvitation> Invitations { get; set; } = new List<ClanInvitation>();

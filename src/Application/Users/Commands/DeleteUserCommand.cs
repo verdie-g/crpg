@@ -3,6 +3,7 @@ using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities;
+using Crpg.Domain.Entities.Restrictions;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -11,7 +12,7 @@ using LoggerFactory = Crpg.Logging.LoggerFactory;
 namespace Crpg.Application.Users.Commands;
 
 /// <summary>
-/// Deletes all entities related to user except <see cref="Ban"/>s and reset user info.
+/// Deletes all entities related to user except <see cref="Restriction"/>s and reset user info.
 /// </summary>
 public record DeleteUserCommand : IMediatorRequest
 {
