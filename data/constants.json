@@ -6,7 +6,7 @@
   "weaponProficiencyCostCoefs": [0.0001666, 0.0, 3.0, 0.0],
   "defaultExperienceMultiplier": 1.0,
   "experienceMultiplierForGenerationCoefs": [0.03, 1.0],
-  "respecializeExperiencePenaltyCoefs": [1.0, 0.0],
+  "respecializeExperiencePenaltyCoefs": [0.33, 0.0],
   "minimumRetirementLevel": 31,
   "itemRepairCostCoefs": [0.07, 0.0],
   "itemBreakChance": 0.08,

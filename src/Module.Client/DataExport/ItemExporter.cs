@@ -61,7 +61,6 @@ internal class ItemExporter : IDataExporter
         "boulder", // Can't be equipped.
         "bound_horsemans_kite_shield", // Name conflict with northern_scouts_shield.
         "camel_tournament", // Name conflict with camel.
-        "celtic_frost", // Completely unbalanced harness.
         "desert_round_shield", // Name conflict with bound_desert_round_shield rank 2.
         "desert_scale_shoulders", // Name conflict with a_aserai_scale_b_shoulder_b rank 2.
         "eastern_leather_boots", // Name conflict with leather_boots.
@@ -69,7 +68,6 @@ internal class ItemExporter : IDataExporter
         "empire_horse_tournament", // Name conflict with empire_horse.
         "empire_sword_1_t2", // Name conflict with iron_spatha_sword_t2.
         "female_scarf", // Name conflict with scarf rank 1.
-        "fortunas_choice", // Completely unbalanced harness.
         "grapeshot_fire_projectile", // Can't be equipped.
         "grapeshot_fire_stack", // Can't be equipped.
         "grapeshot_projectile", // Can't be equipped.
@@ -91,10 +89,8 @@ internal class ItemExporter : IDataExporter
         "reinforced_kite_shield", // Name conflict with western_kite_shield rank 2.
         "reinforced_mail_mitten", // Name conflict with mail_mitten rank 2.
         "reinforced_padded_mitten", // Name conflict with padded_mitten rank 2.
-        "saddle_of_aeneas", // Completely unbalanced harness.
         "southern_lamellar_armor", // Name conflict with desert_lamellar.
         "southern_lord_helmet", // Name conflict with desert_helmet rank 3.
-        "storm_charger", // Extremely shit horse.
         "strapped_round_shield", // Name conflict with leather_round_shield rank 2.
         "stronger_eastern_wicker_shield", // Name conflict with eastern_wicker_shield rank 2.
         "stronger_footmans_wicker_shield", // Name conflict with footmans_wicker_shield rank 2.
@@ -111,6 +107,19 @@ internal class ItemExporter : IDataExporter
         "womens_headwrap_c", // Name conflict with head_wrapped.
         "wooden_sword_t2", // Name conflict with wooden_sword_t1.
         "woodland_throwing_axe_1_t1", // Name conflict with highland_throwing_axe_1_t2.
+
+        // Extremely shit horse.
+        "storm_charger",
+
+        // Completely unbalanced harnesses.
+        "fortunas_choice",
+        "saddle_of_aeneas",
+        "celtic_frost",
+
+        // Disable crossbows you can walk with while reloading until we can balance them.
+        "crossbow_a",
+        "crossbow_e",
+        "crossbow_g",
     };
 
     public async Task Export(string gitRepoPath)

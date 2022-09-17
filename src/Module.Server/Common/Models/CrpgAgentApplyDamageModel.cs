@@ -38,8 +38,8 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             Console.WriteLine("Ist Throwing WUrfspeer big");
         }
 
-        // For bashes (with and without shield)
-        if (collisionData.IsAlternativeAttack && !weapon.IsEmpty)
+        // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
+        if (collisionData.IsAlternativeAttack && !weapon.IsEmpty && !attackInformation.IsFriendlyFire)
         {
             finalDamage = 1f;
         }
