@@ -158,9 +158,8 @@
           <h3 class="is-size-4 mb-2">
             Replace {{ userItemToReplaceSlot }}
             <span v-if="userItemToReplace" :class="userItemRankClass(userItemToReplace)">
-              (
+              -
               <strong>{{ userItemToReplace.baseItem.name }}</strong>
-              )
             </span>
           </h3>
         </div>
