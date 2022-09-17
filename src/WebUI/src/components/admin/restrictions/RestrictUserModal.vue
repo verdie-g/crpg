@@ -71,6 +71,13 @@
                   v-model="newRestrictionReason"
                 />
               </b-field>
+              <b-field label="Duration (mins)" class="is-flex-grow-1 mr-2">
+                <b-input
+                  placeholder="Duration"
+                  required
+                  v-model="newRestrictionDuration"
+                />
+              </b-field>
               <b-field label="Type">
                 <b-select
                   placeholder="Type"
@@ -115,6 +122,7 @@ import restrictionModule from '@/store/restriction-module'
 import userModule from '@/store/user-module'
 import { debounce } from '@/utils/debounce'
 import { Component, Prop, Vue, Watch, VModel } from 'vue-property-decorator'
+import RestrictionCreation from '@/models/restriction-creation';
 
 @Component({
   components: {
@@ -130,6 +138,7 @@ export default class RestrictUserModal extends Vue {
   selectedPlatform: Platform | null = Platform.Steam;
   platformUserId: string | null = null;
   newRestrictionType: RestrictionType | null = RestrictionType.Join;
+  newRestrictionDuration = 0;
   newRestrictionReason: string | null = null;
   matchedUser: User | null = null;
   pendingLookupUser = false;
@@ -177,16 +186,21 @@ export default class RestrictUserModal extends Vue {
   }
 
   async restrictTargetUser(): Promise<void> {
+    if (this.pendingCreateRestriction) {
+      return
+    }
     const restrictedUserId = this.matchedUser?.id;
     const reason = this.newRestrictionReason;
     const type = this.newRestrictionType;
-    if (!restrictedUserId || !reason || !type) {
+    if (!restrictedUserId || !reason || !type || Number.isNaN(this.newRestrictionDuration)) {
       return;
     }
-    const payload = {
+    const duration = Number(this.newRestrictionDuration) * 60;
+    const payload: RestrictionCreation = {
       restrictedUserId,
       reason,
       type,
+      duration,
     }
     this.pendingCreateRestriction = true;
     try {
