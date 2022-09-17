@@ -439,3 +439,6 @@ src/WebUI/public/items/
 *.png
 *.ico
 *.zip
+
+# cRPG Launcher
+!src/cRPGUpdater/Properties/PublishProfiles/FolderProfile.pubxml

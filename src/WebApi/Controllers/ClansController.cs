@@ -128,7 +128,7 @@ public class ClansController : BaseController
     /// <returns>The created or existing invitation.</returns>
     /// <response code="200">Responded successfully.</response>
     /// <response code="400">Bad Request.</response>
-    [HttpPut("{clanId}/invitations/{invitationId}/responses")]
+    [HttpPut("{clanId}/invitations/{invitationId}/response")]
     public Task<ActionResult<Result<ClanInvitationViewModel>>> RespondToClanInvitation([FromRoute] int clanId,
         [FromRoute] int invitationId, [FromBody] RespondClanInvitationCommand invite)
     {

@@ -1,37 +1,42 @@
 <template>
   <div class="container">
     <div class="section">
-      <h2 class="title">Bans</h2>
-      <b-table :data="bansData" :columns="bansColumns" v-if="bansData.length" />
+      <h2 class="title">Restrictions</h2>
+      <b-table
+        :data="restrictionsData"
+        :columns="restrictionsColumns"
+        v-if="restrictionsData.length"
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import banModule from '@/store/ban-module';
+import restrictionModule from '@/store/restriction-module';
 import { timestampToTimeString } from '@/utils/date';
 
 @Component
 export default class Administration extends Vue {
   created(): void {
-    if (banModule.bans.length === 0) {
-      banModule.getBans();
+    if (restrictionModule.restrictions.length === 0) {
+      restrictionModule.getRestrictions();
     }
   }
 
-  get bansData() {
-    return banModule.bans.map(b => ({
-      id: b.id,
-      bannedUser: `${b.bannedUser!.name} (${b.bannedUser!.platformUserId})`,
-      createdAt: b.createdAt.toDateString(),
-      duration: timestampToTimeString(b.duration),
-      reason: b.reason,
-      bannedBy: `${b.bannedByUser.name} (${b.bannedByUser.platformUserId})`,
+  get restrictionsData() {
+    return restrictionModule.restrictions.map(r => ({
+      id: r.id,
+      restrictedUser: `${r.restrictedUser!.name} (${r.restrictedUser!.platformUserId})`,
+      createdAt: r.createdAt.toDateString(),
+      duration: timestampToTimeString(r.duration),
+      type: r.type,
+      reason: r.reason,
+      restrictedByUser: `${r.restrictedByUser.name} (${r.restrictedByUser.platformUserId})`,
     }));
   }
 
-  get bansColumns() {
+  get restrictionsColumns() {
     return [
       {
         field: 'id',
@@ -39,7 +44,7 @@ export default class Administration extends Vue {
         numeric: true,
       },
       {
-        field: 'bannedUser',
+        field: 'restrictedUser',
         label: 'User',
       },
       {
@@ -51,11 +56,15 @@ export default class Administration extends Vue {
         label: 'Duration',
       },
       {
+        field: 'type',
+        label: 'Type',
+      },
+      {
         field: 'reason',
         label: 'Reason',
       },
       {
-        field: 'bannedBy',
+        field: 'restrictedByUser',
         label: 'By',
       },
     ];

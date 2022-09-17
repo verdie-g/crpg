@@ -4,7 +4,7 @@ import { UpdateCharacterRequest } from '@/models/update-character-request';
 import CharacterCharacteristics from '@/models/character-characteristics';
 import CharacterStatistics from '@/models/character-statistics';
 import CharacteristicConversion from '@/models/characteristic-conversion';
-import Ban from '@/models/ban';
+import Restriction from '@/models/restriction';
 import EquippedItem from '@/models/equipped-item';
 import EquippedItemId from '@/models/equipped-item-id';
 import { get, post, put, del } from './crpg-client';
@@ -98,7 +98,7 @@ export function getCharacters(): Promise<Character[]> {
   return get('/users/self/characters');
 }
 
-export async function getUserBans(): Promise<Ban[]> {
-  const bans: Ban[] = await get('/users/self/bans');
-  return bans.map(b => ({ ...b, createdAt: new Date(b.createdAt) }));
+export async function getUserRestrictions(): Promise<Restriction[]> {
+  const restrictions: Restriction[] = await get('/users/self/restrictions');
+  return restrictions.map(b => ({ ...b, createdAt: new Date(b.createdAt) }));
 }

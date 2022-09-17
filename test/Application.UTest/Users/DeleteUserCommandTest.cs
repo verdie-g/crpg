@@ -6,6 +6,7 @@ using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Parties;
+using Crpg.Domain.Entities.Restrictions;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,7 @@ public class DeleteUserCommandTest : TestBase
         {
             Characters = new List<Character> { new() { EquippedItems = new List<EquippedItem> { new() } } },
             Items = new List<UserItem> { new() { BaseItem = new Item { Id = "1" } } },
-            Bans = new List<Ban> { new() },
+            Restrictions = new List<Restriction> { new() },
             ClanMembership = new ClanMember { Clan = new Clan() },
             Party = new Party
             {
@@ -59,7 +60,7 @@ public class DeleteUserCommandTest : TestBase
         Assert.ThrowsAsync<InvalidOperationException>(() => AssertDb.PartyItems.FirstAsync(oi =>
             oi.PartyId == user.Id));
         Assert.DoesNotThrowAsync(() => AssertDb.Items.FirstAsync(i => i.Id == itemId));
-        Assert.DoesNotThrowAsync(() => AssertDb.Bans.FirstAsync(b => b.BannedUserId == user.Id));
+        Assert.DoesNotThrowAsync(() => AssertDb.Restrictions.FirstAsync(r => r.RestrictedUserId == user.Id));
         Assert.DoesNotThrowAsync(() => AssertDb.Clans.FirstAsync(c => c.Id == clanId));
         Assert.DoesNotThrowAsync(() => AssertDb.Items.FirstAsync(i => i.Id == partyItemId));
     }

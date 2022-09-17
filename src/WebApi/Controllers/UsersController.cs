@@ -1,6 +1,4 @@
 using System.Net;
-using Crpg.Application.Bans.Models;
-using Crpg.Application.Bans.Queries;
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Characters.Models;
 using Crpg.Application.Characters.Queries;
@@ -10,9 +8,12 @@ using Crpg.Application.Common.Results;
 using Crpg.Application.Items.Commands;
 using Crpg.Application.Items.Models;
 using Crpg.Application.Items.Queries;
+using Crpg.Application.Restrictions.Models;
+using Crpg.Application.Restrictions.Queries;
 using Crpg.Application.Users.Commands;
 using Crpg.Application.Users.Models;
 using Crpg.Application.Users.Queries;
+using Crpg.Domain.Entities.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,6 +28,19 @@ public class UsersController : BaseController
     [HttpGet("self")]
     public Task<ActionResult<Result<UserViewModel>>> GetUser()
         => ResultToActionAsync(Mediator.Send(new GetUserQuery { UserId = CurrentUser.User!.Id }));
+
+    /// <summary>
+    /// Get user by their platform id.
+    /// </summary>
+    [HttpGet]
+    public Task<ActionResult<Result<UserPublicViewModel>>> GetUserByPlatformId(
+        [FromQuery] Platform platform,
+        [FromQuery] string platformUserId)
+        => ResultToActionAsync(Mediator.Send(new GetUserByPlatformIdQuery
+        {
+            Platform = platform,
+            PlatformUserId = platformUserId,
+        }));
 
     /// <summary>
     /// Deletes current user.
@@ -283,10 +297,10 @@ public class UsersController : BaseController
     }
 
     /// <summary>
-    /// Gets all current user's bans.
+    /// Gets all current user's restrictions.
     /// </summary>
     /// <response code="200">Ok.</response>
-    [HttpGet("self/bans")]
-    public Task<ActionResult<Result<IList<BanViewModel>>>> GetUserBans() =>
-        ResultToActionAsync(Mediator.Send(new GetUserBansQuery { UserId = CurrentUser.User!.Id }));
+    [HttpGet("self/restrictions")]
+    public Task<ActionResult<Result<IList<RestrictionViewModel>>>> GetUserRestrictions() =>
+        ResultToActionAsync(Mediator.Send(new GetUserRestrictionsQuery { UserId = CurrentUser.User!.Id }));
 }

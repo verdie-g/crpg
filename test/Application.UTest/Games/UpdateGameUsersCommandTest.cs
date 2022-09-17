@@ -94,7 +94,7 @@ public class UpdateGameUsersCommandTest : TestBase
         Assert.AreEqual(1000 + 200, data.UpdateResults[0].User.Gold);
         Assert.AreEqual("a", data.UpdateResults[0].User.Character.Name);
         Assert.AreEqual(1, data.UpdateResults[0].User.Character.EquippedItems.Count);
-        Assert.IsNull(data.UpdateResults[0].User.Ban);
+        Assert.IsEmpty(data.UpdateResults[0].User.Restrictions);
         Assert.AreEqual(10, data.UpdateResults[0].EffectiveReward.Experience);
         Assert.AreEqual(200, data.UpdateResults[0].EffectiveReward.Gold);
         Assert.IsFalse(data.UpdateResults[0].EffectiveReward.LevelUp);
@@ -109,7 +109,8 @@ public class UpdateGameUsersCommandTest : TestBase
         characterServiceMock.VerifyAll();
     }
 
-    [Test, Ignore("Downgrading items is not ready")]
+    [Test]
+    [Ignore("Downgrading items is not ready")]
     public async Task BreakingAllCharacterItemsWithAutoRepairShouldRepairThemIfEnoughGold()
     {
         User user = new()
@@ -187,7 +188,8 @@ public class UpdateGameUsersCommandTest : TestBase
         Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon3].UserItemId, actualItemsBySlot[ItemSlot.Weapon3].UserItem.Id);
     }
 
-    [Test, Ignore("Downgrading items is not ready")]
+    [Test]
+    [Ignore("Downgrading items is not ready")]
     public async Task BreakingAllCharacterItemsWithoutAutoRepairShouldBreakThem()
     {
         UserItem userItem0 = new() { Rank = 3, BaseItem = new Item { Id = "0" } };

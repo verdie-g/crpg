@@ -120,7 +120,7 @@
 
       <br />
 
-      <b-tooltip label="Respecialize character." multilined class="mr-2">
+      <b-tooltip label="Respecialize character for a third of its experience." multilined>
         <b-button
           type="is-warning"
           icon-left="angle-double-down"
@@ -271,6 +271,19 @@
         </div>
 
         <div class="column">
+          <item-properties :item="userItemToReplace.baseItem" :rank="userItemToReplace.rank" />
+          <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
+          <b-button
+            size="is-medium"
+            type="is-warning"
+            icon-left="angle-double-up"
+            expanded
+            :disabled="!itemToReplaceUpgradeInfo.upgradable"
+            :title="itemToReplaceUpgradeInfo.reason"
+            @click="upgradeItem"
+          >
+            Upgrade
+          </b-button>
           <b-button
             size="is-medium"
             type="is-danger"
@@ -301,7 +314,6 @@ import ItemProperties from '@/components/ItemProperties.vue';
 import userModule from '@/store/user-module';
 import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
-import Item from '@/models/item';
 import { computeAverageRepairCost } from '@/services/characters-service';
 import { filterUserItemsFittingInSlot } from '@/services/item-service';
 import { NotificationType, notify } from '@/services/notifications-service';

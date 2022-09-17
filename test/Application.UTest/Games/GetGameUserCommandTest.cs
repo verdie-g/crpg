@@ -1,9 +1,9 @@
 ﻿using Crpg.Application.Common.Files;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Commands;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
+using Crpg.Domain.Entities.Restrictions;
 using Crpg.Domain.Entities.Users;
 using Crpg.Sdk;
 using Crpg.Sdk.Abstractions;
@@ -51,7 +51,7 @@ public class GetGameUserCommandTest : TestBase
         Assert.AreEqual("1", gameUser.PlatformUserId);
         Assert.AreEqual("a", gameUser.Character.Name);
         Assert.IsNotEmpty(gameUser.Character.EquippedItems);
-        Assert.IsNull(gameUser.Ban);
+        Assert.IsEmpty(gameUser.Restrictions);
 
         // Check that default values were set for user and character.
         userServiceMock.Verify(us => us.SetDefaultValuesForUser(It.IsAny<User>()));
@@ -94,7 +94,7 @@ public class GetGameUserCommandTest : TestBase
         Assert.AreEqual(user.PlatformUserId, gameUser.PlatformUserId);
         Assert.AreEqual("a", gameUser.Character.Name);
         Assert.IsNotEmpty(gameUser.Character.EquippedItems);
-        Assert.IsNull(gameUser.Ban);
+        Assert.IsEmpty(gameUser.Restrictions);
 
         // Check that default values were set for character.
         userServiceMock.Verify(us => us.SetDefaultValuesForUser(It.IsAny<User>()), Times.Never);
@@ -223,7 +223,7 @@ public class GetGameUserCommandTest : TestBase
     }
 
     [Test]
-    public async Task BanShouldntBeNullForBannedUser()
+    public async Task RestrictionsShouldntBeEmptyForRestrictedUser()
     {
         var userService = Mock.Of<IUserService>();
         var characterService = Mock.Of<ICharacterService>();
@@ -232,12 +232,31 @@ public class GetGameUserCommandTest : TestBase
         {
             Platform = Platform.Steam,
             PlatformUserId = "1",
-            Bans = new List<Ban>
+            Restrictions = new List<Restriction>
             {
                 new()
                 {
-                    CreatedAt = new DateTime(2000, 1, 1),
+                    Type = RestrictionType.Chat,
                     Duration = TimeSpan.FromDays(1),
+                    CreatedAt = new DateTime(1999, 1, 1),
+                },
+                new()
+                {
+                    Type = RestrictionType.Chat,
+                    Duration = TimeSpan.FromDays(1),
+                    CreatedAt = new DateTime(2000, 1, 1),
+                },
+                new()
+                {
+                    Type = RestrictionType.Join,
+                    Duration = TimeSpan.FromDays(1),
+                    CreatedAt = new DateTime(1999, 1, 1),
+                },
+                new()
+                {
+                    Type = RestrictionType.Join,
+                    Duration = TimeSpan.FromDays(1),
+                    CreatedAt = new DateTime(2000, 1, 1),
                 },
             },
         };
@@ -260,11 +279,11 @@ public class GetGameUserCommandTest : TestBase
         }, CancellationToken.None);
 
         var gamerUser = result.Data!;
-        Assert.NotNull(gamerUser.Ban);
+        Assert.AreEqual(2, gamerUser.Restrictions.Count);
     }
 
     [Test]
-    public async Task BanShouldBeNullForUnbannedUser()
+    public async Task RestrictionsShouldBeEmptyForUnrestrictedUser()
     {
         var userService = Mock.Of<IUserService>();
         var characterService = Mock.Of<ICharacterService>();
@@ -272,17 +291,31 @@ public class GetGameUserCommandTest : TestBase
         User user = new()
         {
             PlatformUserId = "1",
-            Bans = new List<Ban>
+            Restrictions = new List<Restriction>
             {
                 new()
                 {
-                    CreatedAt = new DateTime(2000, 1, 1),
+                    Type = RestrictionType.Join,
                     Duration = TimeSpan.FromDays(1),
+                    CreatedAt = new DateTime(2000, 1, 1),
                 },
                 new()
                 {
-                    CreatedAt = new DateTime(2000, 1, 1, 6, 0, 0),
+                    Type = RestrictionType.Join,
                     Duration = TimeSpan.Zero,
+                    CreatedAt = new DateTime(2000, 1, 1, 6, 0, 0),
+                },
+                new()
+                {
+                    Type = RestrictionType.Chat,
+                    Duration = TimeSpan.FromDays(1),
+                    CreatedAt = new DateTime(2000, 1, 1),
+                },
+                new()
+                {
+                    Type = RestrictionType.Chat,
+                    Duration = TimeSpan.Zero,
+                    CreatedAt = new DateTime(2000, 1, 1, 6, 0, 0),
                 },
             },
         };
@@ -305,7 +338,7 @@ public class GetGameUserCommandTest : TestBase
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
-        Assert.Null(gameUser.Ban);
+        Assert.IsEmpty(gameUser.Restrictions);
     }
 
     [Test]

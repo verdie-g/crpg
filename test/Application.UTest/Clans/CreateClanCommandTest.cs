@@ -19,14 +19,18 @@ public class CreateClanCommandTest : TestBase
         {
             UserId = user.Id,
             Tag = "TW",
-            Color = "#12abd3",
+            PrimaryColor = 0xFFFFFFFF,
+            SecondaryColor = 0xFF000000,
             Name = "TaleWorlds",
+            BannerKey = "abc",
         }, CancellationToken.None);
 
         var clan = result.Data!;
         Assert.AreEqual("TW", clan.Tag);
-        Assert.AreEqual("#12ABD3", clan.Color);
+        Assert.AreEqual(0xFFFFFFFF, clan.PrimaryColor);
+        Assert.AreEqual(0xFF000000, clan.SecondaryColor);
         Assert.AreEqual("TaleWorlds", clan.Name);
+        Assert.AreEqual("abc", clan.BannerKey);
 
         Assert.That(AssertDb.Clans, Has.Exactly(1).Matches<Clan>(c => c.Id == clan.Id));
         Assert.That(AssertDb.ClanMembers, Has.Exactly(1)
@@ -40,8 +44,10 @@ public class CreateClanCommandTest : TestBase
         {
             UserId = 1,
             Tag = "TW",
-            Color = "#12abd3",
+            PrimaryColor = 0xFFFFFFFF,
+            SecondaryColor = 0xFF000000,
             Name = "TaleWorlds",
+            BannerKey = string.Empty,
         }, CancellationToken.None);
 
         Assert.NotNull(result.Errors);
@@ -60,8 +66,10 @@ public class CreateClanCommandTest : TestBase
         {
             UserId = user.Id,
             Tag = "TW",
-            Color = "#12abd3",
+            PrimaryColor = 0xFFFFFFFF,
+            SecondaryColor = 0xFF000000,
             Name = "TaleWorlds",
+            BannerKey = string.Empty,
         }, CancellationToken.None);
 
         Assert.NotNull(result.Errors);
@@ -81,8 +89,10 @@ public class CreateClanCommandTest : TestBase
         {
             UserId = user.Id,
             Tag = "TW",
-            Color = "#12abd3",
+            PrimaryColor = 0xFFFFFFFF,
+            SecondaryColor = 0xFF000000,
             Name = "TaleWorlds",
+            BannerKey = string.Empty,
         }, CancellationToken.None);
 
         Assert.NotNull(result.Errors);
@@ -102,8 +112,10 @@ public class CreateClanCommandTest : TestBase
         {
             UserId = user.Id,
             Tag = "TW",
-            Color = "#12abd3",
+            PrimaryColor = 0xFFFFFFFF,
+            SecondaryColor = 0xFF000000,
             Name = "TaleWorlds",
+            BannerKey = string.Empty,
         }, CancellationToken.None);
 
         Assert.NotNull(result.Errors);

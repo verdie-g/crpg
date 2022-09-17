@@ -46,9 +46,7 @@
                 class="action-icon__hover is-clickable"
                 @click.native="selected(props.row)"
               />
-              <template v-slot:content>
-                Click to manage this member of the clan.
-              </template>
+              <template v-slot:content>Click to manage this member of the clan.</template>
             </b-tooltip>
           </div>
         </b-table-column>
@@ -58,38 +56,17 @@
     <b-modal display="inline-block" v-model="isManageMemberWindowActive">
       <div v-if="selectedMember && selectedMember.user" class="card">
         <div class="card-header is-align-items-center px-3 py-3">
-          <b-icon
-            icon="user-cog"
-            size="is-large"
-            class="mr-2"
-          />
-          <h2 class="title is-3">
-            Managing {{ selectedMember.user.name }}
-          </h2>
+          <b-icon icon="user-cog" size="is-large" class="mr-2" />
+          <h2 class="title is-3">Managing {{ selectedMember.user.name }}</h2>
         </div>
 
         <div class="card-content">
           <div class="columns is-flex-direction-column px-1">
             <div class="pt-3 pb-4">
               <b-field label="Role">
-                <b-radio
-                  v-model="selectedMemberRole"
-                  native-value="Member"
-                >
-                  Member
-                </b-radio>
-                <b-radio
-                  v-model="selectedMemberRole"
-                  native-value="Officer"
-                >
-                  Officer
-                </b-radio>
-                <b-radio
-                  v-model="selectedMemberRole"
-                  native-value="Leader"
-                >
-                  Leader
-                </b-radio>
+                <b-radio v-model="selectedMemberRole" native-value="Member">Member</b-radio>
+                <b-radio v-model="selectedMemberRole" native-value="Officer">Officer</b-radio>
+                <b-radio v-model="selectedMemberRole" native-value="Leader">Leader</b-radio>
               </b-field>
             </div>
 
@@ -150,15 +127,15 @@ export default class ClanComponent extends Vue {
   }
 
   set selectedMemberRole(role: ClanMemberRole | undefined) {
-    const member = this.selectedMember
+    const member = this.selectedMember;
     if (!member || !role) {
-      return
+      return;
     }
-    this.updateMember(member, role)
+    this.updateMember(member, role);
   }
 
   get selectedMemberRole(): ClanMemberRole | undefined {
-    return this.selectedMember?.role
+    return this.selectedMember?.role;
   }
 
   selected(member: ClanMember) {
