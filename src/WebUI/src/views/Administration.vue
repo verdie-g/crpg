@@ -17,7 +17,7 @@
         v-if="restrictionsData.length"
       />
     </div>
-    <create-restriction-modal
+    <restrict-user-modal
       v-if="isAddRestrictionModalActive"
       v-model="isAddRestrictionModalActive"
       @created="fetchRestrictions"
@@ -26,14 +26,14 @@
 </template>
 
 <script lang="ts">
-import CreateRestrictionModal from '@/components/admin/restrictions/CreateRestrictionModal.vue'
+import RestrictUserModal from '@/components/admin/restrictions/RestrictUserModal.vue'
 import { Component, Vue } from 'vue-property-decorator';
 import restrictionModule from '@/store/restriction-module';
 import { timestampToTimeString } from '@/utils/date';
 
 @Component({
   components: {
-    CreateRestrictionModal
+    RestrictUserModal
   },
 })
 export default class Administration extends Vue {

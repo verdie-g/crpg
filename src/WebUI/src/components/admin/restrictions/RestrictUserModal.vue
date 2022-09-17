@@ -121,7 +121,7 @@ import { Component, Prop, Vue, Watch, VModel } from 'vue-property-decorator'
     PlatformModal
   },
 })
-export default class CreateRestrictionModal extends Vue {
+export default class RestrictUserModal extends Vue {
   @VModel({ type: Boolean }) isModalActive: boolean;
   @Prop(String) readonly title: string;
 
