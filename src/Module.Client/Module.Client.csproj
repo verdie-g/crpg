@@ -13,7 +13,7 @@
     <DebugSymbols Condition="'$(Configuration)' == 'Release'">false</DebugSymbols>
     <DebugType Condition="'$(Configuration)' == 'Release'">None</DebugType>
 
-    <DefineConstants>$(DefineConstants);CRPG_CLIENT;CRPG_EXPORT</DefineConstants>
+    <DefineConstants>$(DefineConstants);CRPG_CLIENT</DefineConstants>
   </PropertyGroup>
 
   <Target Name="CheckMbPathDefined" BeforeTargets="GetReferenceAssemblyPaths">
@@ -28,6 +28,9 @@
     <Compile Include="..\Module.Server\**\*$(DefaultLanguageSourceExtension)" />
     <Compile Remove="..\Module.Server\$(BaseIntermediateOutputPath)\**;..\Module.Server\$(BaseOutputPath)\**" />
     <Compile Remove="..\Module.Server\Rating\**" />
+    <Compile Remove="..\Module.Server\Api\*Client.cs" />
+    <Compile Remove="..\Module.Server\Battle\CrpgBattleMissionMultiplayer.cs" />
+    <Compile Remove="..\Module.Server\Common\CrpgUserManager.cs" />
   </ItemGroup>
 
   <ItemGroup>
