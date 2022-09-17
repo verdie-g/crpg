@@ -18,7 +18,7 @@ internal class CrpgItemValueModel : ItemValueModel
     }
 
     // this method takes a value between 0 and 10 and outputs a value between 0 and 10
-    public float AdjustedTier(float tier)
+    public float GetAdjustedTier(float tier)
     {
         const float a = 300;
         const float b = 60;
@@ -28,28 +28,54 @@ internal class CrpgItemValueModel : ItemValueModel
         return tierPolynome * tierPolynomeScaler;
 
     }
-    public override float GetEquipmentValueFromTier(float tier)
+    public override float GetEquipmentValueFromTier(float tier) // i'd like to trash this function but since it's in ItemValueModel Implementation i don't know what do to with it (namidaka)
     {
-        return tier;
+        return GetAdjustedTier(tier);
     }
 
     public override int CalculateValue(ItemObject item)
     {
-        int desiredArmorMaxPrice;
-        int desiredHorseMaxPrice;
-        int desiredBannerMaxPrice;
-        int desiredArmorMaxPrice;
-        return item.ItemComponent switch
+        int desiredHeadArmorMaxPrice = 9754;
+        int desiredCapeArmorMaxPrice = 11441;
+        int desiredBodyArmorMaxPrice= 31632;
+        int desiredHandArmorMaxPrice = 6000;
+        int desiredLegArmorMaxPrice = 4662;
+        int desiredHorseHarnessMaxPrice = ;
+        int desiredHorseMaxPrice = 59405;
+        int desiredShieldMaxPrice= 9235;
+        int desiredBowMaxPrice = 12264;
+        int desiredCrossbowMaxPrice = 19755;
+        int desiredOneHandedWeaponMaxPrice = 9100;
+        int desiredTwoHandedWeaponMaxPrice = 14000;
+        int desiredPolearmMaxPrice= 16175;
+        int desiredThrownMaxPrice = 7385;
+        int desiredArrowsMaxPrice = 3858;
+        int desiredBoltsMaxPrice = 8195;
+        int desiredBannerMaxPrice = 50;
+        return item.ItemComponent.Item.ItemType switch
         {
-            ArmorComponent armorComponent => (int) GetEquipmentValueFromTier(item.Tierf),
-            HorseComponent horseComponent => (int) GetEquipmentValueFromTier(item.Tierf),
-            BannerComponent bannerComponent => (int) GetEquipmentValueFromTier(item.Tierf),
-            WeaponComponent weaponComponent => (int) GetEquipmentValueFromTier(item.Tierf),
-            _ => 0f,
+            ItemObject.ItemTypeEnum.HeadArmor => (int)GetAdjustedTier(item.Tierf) * desiredHeadArmorMaxPrice / 10 ,
+            ItemObject.ItemTypeEnum.Cape => (int)GetAdjustedTier(item.Tierf) * desiredCapeArmorMaxPrice / 10 ,
+            ItemObject.ItemTypeEnum.BodyArmor => (int)GetAdjustedTier(item.Tierf) * desiredBodyArmorMaxPrice / 10,
+            ItemObject.ItemTypeEnum.HandArmor => (int)GetAdjustedTier(item.Tierf) * desiredHandArmorMaxPrice / 10,
+            ItemObject.ItemTypeEnum.LegArmor => (int)GetAdjustedTier(item.Tierf) * desiredLegArmorMaxPrice / 10,
+            ItemObject.ItemTypeEnum.HorseHarness => (int)GetAdjustedTier(item.Tierf) * desiredHorseHarnessMaxPrice / 10,
+            ItemObject.ItemTypeEnum.Horse => (int)GetAdjustedTier(item.Tierf) * desiredHorseMaxPrice / 10,
+            ItemObject.ItemTypeEnum.Shield => (int)GetAdjustedTier(item.Tierf) * desiredShieldMaxPrice / 10,
+            ItemObject.ItemTypeEnum.Bow => (int)GetAdjustedTier(item.Tierf) * desiredBowMaxPrice / 10,
+            ItemObject.ItemTypeEnum.Crossbow => (int)GetAdjustedTier(item.Tierf) * desiredCrossbowMaxPrice / 10,
+            ItemObject.ItemTypeEnum.OneHandedWeapon => (int)GetAdjustedTier(item.Tierf) * desiredOneHandedWeaponMaxPrice / 10,
+            ItemObject.ItemTypeEnum.TwoHandedWeapon => (int)GetAdjustedTier(item.Tierf) * desiredTwoHandedWeaponMaxPrice / 10,
+            ItemObject.ItemTypeEnum.Polearm => (int)GetAdjustedTier(item.Tierf) * desiredPolearmMaxPrice / 10,
+            ItemObject.ItemTypeEnum.Thrown => (int)GetAdjustedTier(item.Tierf) * desiredThrownMaxPrice / 10,
+            ItemObject.ItemTypeEnum.Arrows => (int)GetAdjustedTier(item.Tierf) * desiredArrowsMaxPrice / 10,
+            ItemObject.ItemTypeEnum.Bolts => (int)GetAdjustedTier(item.Tierf) * desiredBoltsMaxPrice / 10,
+            ItemObject.ItemTypeEnum.Banner => (int)GetAdjustedTier(item.Tierf) * desiredBannerMaxPrice / 10,
+            _ => 0,
         };
     }
 
-    private void CalculateArmorTier(ArmorComponent armorComponent, out ItemObject.ItemTypeEnum armorType, out float armorTier)
+    private float CalculateArmorTier(ArmorComponent armorComponent)
     {
         float armorValue = 1.2f * armorComponent.HeadArmor
             + 1.0f * armorComponent.BodyArmor
@@ -65,11 +91,11 @@ internal class CrpgItemValueModel : ItemValueModel
             ItemObject.ItemTypeEnum.HorseHarness => 20f,
             _ => throw new ArgumentOutOfRangeException(),
         };
-        armorType = armorComponent.Item.ItemType;
-        armorTier = 10 * armorValue / bestArmorValue;
+        float armorTier = 10 * armorValue / bestArmorValue;
+        return armorTier;
     }
 
-    private float CalculateHorseTier(HorseComponent horseComponent,out )
+    private float CalculateHorseTier(HorseComponent horseComponent)
     {
             float horseValue =
             1.5f * horseComponent.ChargeDamage
@@ -77,13 +103,14 @@ internal class CrpgItemValueModel : ItemValueModel
             + 0.6f * horseComponent.Maneuver
             + 0.1f * horseComponent.HitPoints;
             float bestHorseValue = 125.5f;
-            return 10 * horseValue / bestHorseValue;            
+            return 10 * horseValue / bestHorseValue;
     }
 
     private float CalculateBannerTier(BannerComponent bannerComponent)
     {
-        return GetBaseTierValueForBannerEffect(bannerComponent.BannerEffect)
-            + bannerComponent.BannerLevel;
+        // return GetBaseTierValueForBannerEffect(bannerComponent.BannerEffect)
+        // *bannerComponent.BannerLevel;
+        return 10f;
     }
 
     private float GetBaseTierValueForBannerEffect(BannerComponent.BannerItemEffects bannerEffect)
@@ -125,6 +152,10 @@ internal class CrpgItemValueModel : ItemValueModel
                 * CalculateDamageTypeFactor(weapon.SwingDamageType)
                 * (float)Math.Pow(weapon.SwingSpeed * 0.01f, 1.5f)
                 * 1.1f;
+            if (thrustTier > swingTier)
+            {
+                float tier = 
+            }
             float tier = Math.Max(thrustTier, swingTier);
 
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.NotUsableWithOneHand))
