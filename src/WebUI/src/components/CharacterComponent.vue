@@ -206,7 +206,7 @@
           <div class="column">
             <div
               v-if="fittingUserItems.length"
-              class="user-items columns is-multiline is-justify-content-end"
+              class="user-items columns is-multiline is-justify-content-center"
             >
               <div
                 class="column is-narrow user-item user-item__action is-relative"
