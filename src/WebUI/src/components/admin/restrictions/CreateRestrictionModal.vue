@@ -114,7 +114,7 @@ import { NotificationType, notify } from '@/services/notifications-service'
 import restrictionModule from '@/store/restriction-module'
 import userModule from '@/store/user-module'
 import { debounce } from '@/utils/debounce'
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Prop, Vue, Watch, VModel } from 'vue-property-decorator'
 
 @Component({
   components: {
@@ -122,7 +122,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
   },
 })
 export default class CreateRestrictionModal extends Vue {
-  @Prop(Boolean) readonly value: boolean;
+  @VModel({ type: Boolean }) isModalActive: boolean;
   @Prop(String) readonly title: string;
 
   availablePlatforms = Object.keys(Platform);
@@ -139,13 +139,6 @@ export default class CreateRestrictionModal extends Vue {
 
   created(): void {
     this.debouncedInputHandler = debounce(() => this.handleDebouncedInput(), 2000);
-  }
-
-  get isModalActive(): boolean {
-    return this.value;
-  }
-  set isModalActive(val: boolean) {
-    this.$emit('input', val);
   }
 
   @Watch('selectedPlatform')
