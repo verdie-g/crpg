@@ -24,7 +24,7 @@
                   </figure>
                 </div>
                 <div class="card-content content">
-                  <h4>{{ item.name }}</h4>
+                  <h4>{{ $t(item.id) }}</h4>
                   <div class="content">
                     <item-properties :item="item" :rank="0" :weapon-idx="weaponIdx" />
                   </div>

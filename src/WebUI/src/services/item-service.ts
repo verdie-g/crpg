@@ -195,75 +195,77 @@ export function getItems(): Promise<Item[]> {
 export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor {
   const props: ItemDescriptor = {
     fields: [
-      ['Type', itemTypeToStr().get(baseItem.type)],
-      ['Culture', baseItem.culture],
-      ['Weight', baseItem.weight],
+      [i18n.t('itemPropertiesType').toString(), itemTypeToStr().get(baseItem.type)],
+      [i18n.t('itemPropertiesCulture').toString(), baseItem.culture],
+      [i18n.t('itemPropertiesWeight').toString(), baseItem.weight],
     ],
     modes: [],
   };
 
   if (baseItem.armor !== null) {
     if (baseItem.armor.headArmor !== 0) {
-      props.fields.push(['Head Armor', baseItem.armor.headArmor]);
+      props.fields.push([i18n.t('itemPropertiesHeadArmor').toString(), baseItem.armor.headArmor]);
     }
 
     if (baseItem.armor.bodyArmor !== 0) {
       props.fields.push([
-        baseItem.type === ItemType.MountHarness ? 'Mount Armor' : 'Body Armor',
+        baseItem.type === ItemType.MountHarness
+          ? i18n.t('itemPropertiesMountArmor').toString()
+          : i18n.t('itemPropertiesBodyArmor').toString(),
         baseItem.armor!.bodyArmor,
       ]);
     }
 
     if (baseItem.armor.armArmor !== 0) {
-      props.fields.push(['Arm Armor', baseItem.armor.armArmor]);
+      props.fields.push([i18n.t('itemPropertiesArmArmor').toString(), baseItem.armor.armArmor]);
     }
 
     if (baseItem.armor.legArmor !== 0) {
-      props.fields.push(['Leg Armor', baseItem.armor.legArmor]);
+      props.fields.push([i18n.t('itemPropertiesLegArmor').toString(), baseItem.armor.legArmor]);
     }
   }
 
   if (baseItem.mount !== null) {
     props.fields.push(
-      ['Charge Damage', baseItem.mount.chargeDamage],
-      ['Speed', baseItem.mount.speed],
-      ['Maneuver', baseItem.mount.maneuver],
-      ['Hit Points', baseItem.mount.hitPoints]
+      [i18n.t('itemPropertiesChargeDamage').toString(), baseItem.mount.chargeDamage],
+      [i18n.t('itemPropertiesSpeed').toString(), baseItem.mount.speed],
+      [i18n.t('itemPropertiesManeuver').toString(), baseItem.mount.maneuver],
+      [i18n.t('itemPropertiesHitPoints').toString(), baseItem.mount.hitPoints]
     );
   }
 
   // Special cases for item types with only one weapon mode.
   if (baseItem.type === ItemType.Arrows || baseItem.type === ItemType.Bolts) {
     props.fields.push(
-      ['Speed', baseItem.weapons[0].missileSpeed],
+      [i18n.t('itemPropertiesSpeed').toString(), baseItem.weapons[0].missileSpeed],
       [
-        'Damage',
+        i18n.t('itemPropertiesDamage').toString(),
         getDamageFieldValue(baseItem.weapons[0].thrustDamage, baseItem.weapons[0].thrustDamageType),
       ],
-      ['Length', baseItem.weapons[0].length],
-      ['Ammo', baseItem.weapons[0].stackAmount]
+      [i18n.t('itemPropertiesLength').toString(), baseItem.weapons[0].length],
+      [i18n.t('itemPropertiesAmmo').toString(), baseItem.weapons[0].stackAmount]
     );
   } else if (baseItem.type === ItemType.Shield) {
     props.fields.push(
-      ['Speed', baseItem.weapons[0].swingSpeed],
-      ['Durability', baseItem.weapons[0].stackAmount],
-      ['Armor', baseItem.weapons[0].bodyArmor],
-      ['Length', baseItem.weapons[0].length]
+      [i18n.t('itemPropertiesSpeed').toString(), baseItem.weapons[0].swingSpeed],
+      [i18n.t('itemPropertiesDurability').toString(), baseItem.weapons[0].stackAmount],
+      [i18n.t('itemPropertiesArmor').toString(), baseItem.weapons[0].bodyArmor],
+      [i18n.t('itemPropertiesLength').toString(), baseItem.weapons[0].length]
     );
   } else if (baseItem.type === ItemType.Bow || baseItem.type === ItemType.Crossbow) {
     baseItem.weapons.forEach(weapon => {
       const weaponFields: [string, any][] = [
         [
-          'Damage',
+          i18n.t('itemPropertiesDamage').toString(),
           getDamageFieldValue(
             baseItem.weapons[0].thrustDamage,
             baseItem.weapons[0].thrustDamageType
           ),
         ],
-        ['Fire Rate', baseItem.weapons[0].swingSpeed],
-        ['Accuracy', baseItem.weapons[0].accuracy],
-        ['Missile Speed', baseItem.weapons[0].missileSpeed],
-        ['Length', baseItem.weapons[0].length],
+        [i18n.t('itemPropertiesFireRate').toString(), baseItem.weapons[0].swingSpeed],
+        [i18n.t('itemPropertiesAccuracy').toString(), baseItem.weapons[0].accuracy],
+        [i18n.t('itemPropertiesMissileSpeed').toString(), baseItem.weapons[0].missileSpeed],
+        [i18n.t('itemPropertiesLength').toString(), baseItem.weapons[0].length],
       ];
 
       props.modes.push({
@@ -273,7 +275,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       });
     });
   } else if (baseItem.type === ItemType.Banner) {
-    props.fields.push(['Length', baseItem.weapons[0].length]);
+    props.fields.push([i18n.t('itemPropertiesLength').toString(), baseItem.weapons[0].length]);
   } else {
     baseItem.weapons.forEach(weapon => {
       const itemType = itemTypeByWeaponClass[weapon.class];
@@ -286,14 +288,20 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
         weaponFields.push(...getDamageFields(weapon));
       } else if (itemType === ItemType.Thrown) {
         weaponFields.push(
-          ['Damage', getDamageFieldValue(weapon.thrustDamage, weapon.thrustDamageType)],
-          ['Fire Rate', weapon.missileSpeed],
-          ['Accuracy', weapon.accuracy],
-          ['Stack Amount', weapon.stackAmount]
+          [
+            i18n.t('itemPropertiesDamage').toString(),
+            getDamageFieldValue(weapon.thrustDamage, weapon.thrustDamageType),
+          ],
+          [i18n.t('itemPropertiesFireRate').toString(), weapon.missileSpeed],
+          [i18n.t('itemPropertiesAccuracy').toString(), weapon.accuracy],
+          [i18n.t('itemPropertiesStackAmount').toString(), weapon.stackAmount]
         );
       }
 
-      weaponFields.push(['Handling', weapon.handling], ['Length', weapon.length]);
+      weaponFields.push(
+        [i18n.t('itemPropertiesHandling').toString(), weapon.handling],
+        [i18n.t('itemPropertiesLength').toString(), weapon.length]
+      );
 
       props.modes.push({
         name: getWeaponClassShortName(weapon.class),
