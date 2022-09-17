@@ -1,107 +1,109 @@
 <template>
-  <div class="columns container is-fluid">
+  <div class="columns container">
     <character-stats-component
       v-if="character !== null"
       :character="character"
       class="column character-stats"
     />
 
-    <div class="column character-items">
-      <div class="columns item-boxes">
-        <div class="column is-narrow gear-column">
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)">
-            <img
-              v-if="userItemsBySlot[itemSlot.Head]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Head])"
-              alt="Head armor"
-            />
-            <img v-else src="../assets/head-armor.png" alt="Head armor" class="item-placeholder" />
+    <div class="column character-items is-flex is-flex-direction-column is-align-items-center">
+      <div>
+        <div class="columns is-flex item-boxes mb-3">
+          <div class="column is-narrow gear-column">
+            <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)">
+              <img
+                v-if="userItemsBySlot[itemSlot.Head]"
+                :src="userItemImage(userItemsBySlot[itemSlot.Head])"
+                alt="Head armor"
+              />
+              <img v-else src="../assets/head-armor.png" alt="Head armor" class="item-placeholder" />
+            </div>
+            <div class="box item-box" @click="openReplaceItemModal(itemSlot.Shoulder)">
+              <img
+                v-if="userItemsBySlot[itemSlot.Shoulder]"
+                :src="userItemImage(userItemsBySlot[itemSlot.Shoulder])"
+                alt="Shoulder"
+              />
+              <img v-else src="../assets/cape.png" alt="Shoulder" class="item-placeholder" />
+            </div>
+            <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)">
+              <img
+                v-if="userItemsBySlot[itemSlot.Body]"
+                :src="userItemImage(userItemsBySlot[itemSlot.Body])"
+                alt="Body armor"
+              />
+              <img v-else src="../assets/body-armor.png" alt="Body armor" class="item-placeholder" />
+            </div>
+            <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)">
+              <img
+                v-if="userItemsBySlot[itemSlot.Hand]"
+                :src="userItemImage(userItemsBySlot[itemSlot.Hand])"
+                alt="Hand armor"
+              />
+              <img v-else src="../assets/hand-armor.png" alt="Hand armor" class="item-placeholder" />
+            </div>
+            <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)">
+              <img
+                v-if="userItemsBySlot[itemSlot.Leg]"
+                :src="userItemImage(userItemsBySlot[itemSlot.Leg])"
+                alt="Leg armor"
+              />
+              <img v-else src="../assets/leg-armor.png" alt="Leg armor" class="item-placeholder" />
+            </div>
           </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Shoulder)">
-            <img
-              v-if="userItemsBySlot[itemSlot.Shoulder]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Shoulder])"
-              alt="Shoulder"
-            />
-            <img v-else src="../assets/cape.png" alt="Shoulder" class="item-placeholder" />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)">
-            <img
-              v-if="userItemsBySlot[itemSlot.Body]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Body])"
-              alt="Body armor"
-            />
-            <img v-else src="../assets/body-armor.png" alt="Body armor" class="item-placeholder" />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)">
-            <img
-              v-if="userItemsBySlot[itemSlot.Hand]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Hand])"
-              alt="Hand armor"
-            />
-            <img v-else src="../assets/hand-armor.png" alt="Hand armor" class="item-placeholder" />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)">
-            <img
-              v-if="userItemsBySlot[itemSlot.Leg]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Leg])"
-              alt="Leg armor"
-            />
-            <img v-else src="../assets/leg-armor.png" alt="Leg armor" class="item-placeholder" />
-          </div>
-        </div>
 
-        <div class="column is-narrow mount-column">
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.MountHarness)">
-            <img
-              v-if="userItemsBySlot[itemSlot.MountHarness]"
-              :src="userItemImage(userItemsBySlot[itemSlot.MountHarness])"
-              alt="Mount harness"
-            />
-            <img
-              v-else
-              src="../assets/horse-harness.png"
-              alt="Horse harness"
-              class="item-placeholder"
-            />
+          <div class="column is-narrow mount-column">
+            <div class="box item-box" @click="openReplaceItemModal(itemSlot.MountHarness)">
+              <img
+                v-if="userItemsBySlot[itemSlot.MountHarness]"
+                :src="userItemImage(userItemsBySlot[itemSlot.MountHarness])"
+                alt="Mount harness"
+              />
+              <img
+                v-else
+                src="../assets/horse-harness.png"
+                alt="Horse harness"
+                class="item-placeholder"
+              />
+            </div>
+            <div class="box item-box" @click="openReplaceItemModal(itemSlot.Mount)">
+              <img
+                v-if="userItemsBySlot[itemSlot.Mount]"
+                :src="userItemImage(userItemsBySlot[itemSlot.Mount])"
+                alt="Mount"
+              />
+            </div>
           </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Mount)">
-            <img
-              v-if="userItemsBySlot[itemSlot.Mount]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Mount])"
-              alt="Mount"
-            />
-          </div>
-        </div>
 
-        <div class="column is-narrow weapon-column">
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon0)">
-            <img
-              v-if="userItemsBySlot[itemSlot.Weapon0]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Weapon0])"
-              alt="First weapon"
-            />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)">
-            <img
-              v-if="userItemsBySlot[itemSlot.Weapon1]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Weapon1])"
-              alt="Second weapon"
-            />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)">
-            <img
-              v-if="userItemsBySlot[itemSlot.Weapon2]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Weapon2])"
-              alt="Third weapon"
-            />
-          </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)">
-            <img
-              v-if="userItemsBySlot[itemSlot.Weapon3]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Weapon3])"
-              alt="Fourth Weapon"
-            />
+          <div class="column is-narrow weapon-column">
+            <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon0)">
+              <img
+                v-if="userItemsBySlot[itemSlot.Weapon0]"
+                :src="userItemImage(userItemsBySlot[itemSlot.Weapon0])"
+                alt="First weapon"
+              />
+            </div>
+            <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)">
+              <img
+                v-if="userItemsBySlot[itemSlot.Weapon1]"
+                :src="userItemImage(userItemsBySlot[itemSlot.Weapon1])"
+                alt="Second weapon"
+              />
+            </div>
+            <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)">
+              <img
+                v-if="userItemsBySlot[itemSlot.Weapon2]"
+                :src="userItemImage(userItemsBySlot[itemSlot.Weapon2])"
+                alt="Third weapon"
+              />
+            </div>
+            <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)">
+              <img
+                v-if="userItemsBySlot[itemSlot.Weapon3]"
+                :src="userItemImage(userItemsBySlot[itemSlot.Weapon3])"
+                alt="Fourth Weapon"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -120,35 +122,34 @@
 
       <br />
 
-      <b-tooltip label="Respecialize character for a third of its experience." multilined>
-        <b-button
-          type="is-warning"
-          icon-left="angle-double-down"
-          expanded
-          @click="openRespecializeCharacterDialog"
-        >
-          Respecialize
-        </b-button>
-      </b-tooltip>
+      <div class="columns pt-3">
+        <div class="column">
+          <b-button
+            type="is-warning"
+            icon-left="angle-double-down"
+            @click="openRespecializeCharacterDialog"
+          >
+            Respecialize
+          </b-button>
+        </div>
 
-      <b-tooltip
-        label="Reset character to level 1 to grant a bonus multiplier and an heirloom point. (lvl > 30)"
-        multilined
-      >
-        <b-button
-          type="is-warning"
-          icon-left="baby"
-          expanded
-          :disabled="character.level < 31"
-          @click="openRetireCharacterDialog"
-        >
-          Retire
-        </b-button>
-      </b-tooltip>
+        <div class="column">
+          <b-button
+            type="is-warning"
+            icon-left="baby"
+            :disabled="character.level < 31"
+            @click="openRetireCharacterDialog"
+          >
+            Retire
+          </b-button>
+        </div>
 
-      <b-button type="is-danger" icon-left="trash" @click="openDeleteCharacterDialog">
-        Delete
-      </b-button>
+        <div class="column">
+          <b-button type="is-danger" icon-left="trash" @click="openDeleteCharacterDialog">
+            Delete
+          </b-button>
+        </div>
+      </div>
     </div>
 
     <b-modal :active.sync="isReplaceItemModalActive" scroll="keep" ref="replaceItemModal">
