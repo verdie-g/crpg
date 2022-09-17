@@ -21,7 +21,7 @@ internal class CrpgItemValueModel : ItemValueModel
     public float GetAdjustedTier(float tier)
     {
         const float a = 300;
-        const float b = 200;
+        const float b = 700;
         const float c = 50;
         float tierPolynome = (float)(a * Math.Pow(tier, 2) + b * tier + c);
         float tierPolynomeScaler = 10 / ((float)(a * Math.Pow(10, 2) + b * 10 + c));
@@ -233,7 +233,7 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
         float extra = 0f;
-        if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
+        /*if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
             extra += -3.0f;
         }
@@ -247,13 +247,13 @@ internal class CrpgItemValueModel : ItemValueModel
             && !weaponComponent.PrimaryWeapon.WeaponFlags.HasAnyFlag(WeaponFlags.CantReloadOnHorseback))
         {
             extra += 0.5f;
-        }
+        }*/
 
-        return 0.15f * weapon.ThrustDamage
-            + 0.01f * weapon.SwingSpeed
-            + 0.01f * weapon.MissileSpeed
-            + 0.01f * weapon.Accuracy
-            + extra - 3f;
+        return weapon.ThrustDamage
+            * weapon.SwingSpeed
+            * weapon.MissileSpeed
+            * weapon.Accuracy
+            / 135360;
     }
 
     private float CalculateShieldTier(WeaponComponent weaponComponent)
