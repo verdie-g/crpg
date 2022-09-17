@@ -31,7 +31,6 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             finalDamage /= MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.DurabilityFactorForShieldCoefs);
         }
 
-
         /*
         if (weapon.CurrentUsageItem.IsConsumable && weapon.CurrentUsageItem.IsPolearm)
         {
@@ -77,5 +76,4 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
 
         defenderStunMultiplier = 1f;
     }
-
 }
