@@ -156,85 +156,91 @@
       <div class="replace-item-modal is-flex is-flex-direction-column px-4 py-4">
         <div class="is-flex-shrink-1">
           <h3 class="is-size-4 mb-2">
-            Replace {{ userItemToReplaceSlot }}
+            <template v-if="userItemToReplace">Replace</template>
+            <template v-else>Equip</template>
+            {{ userItemToReplaceSlot }}
             <span v-if="userItemToReplace" :class="userItemRankClass(userItemToReplace)">
               -
               <strong>{{ userItemToReplace.baseItem.name }}</strong>
             </span>
           </h3>
         </div>
-        <div class="columns">
-          <div
-            class="column is-flex is-flex-direction-column is-align-items-center"
-            v-if="userItemToReplace"
-          >
-            <div class="is-flex-grow-1 is-align-self-center is-flex is-align-items-center">
-              <div class="user-item">
-                <display-user-item :user-item="userItemToReplace" />
-              </div>
-            </div>
-            <div class="is-flex-shrink-1 columns mt-3">
-              <div class="column">
-                <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
-              </div>
-              <div class="column">
-                <b-button
-                  size="is-medium"
-                  type="is-warning"
-                  icon-left="angle-double-up"
-                  expanded
-                  :disabled="!itemToReplaceUpgradeInfo.upgradable"
-                  :title="itemToReplaceUpgradeInfo.reason"
-                  @click="upgradeItem"
-                >
-                  Upgrade
-                </b-button>
-              </div>
-              <div class="column">
-                <b-button
-                  size="is-medium"
-                  type="is-danger"
-                  icon-left="coins"
-                  expanded
-                  @click="showSellItemConfirmation(userItemToReplace)"
-                >
-                  Sell
-                </b-button>
-              </div>
-            </div>
-          </div>
-          <div class="column">
+        <div class="modal--content is-flex-grow-0 is-flex-shrink-1 is-flex">
+          <div class="columns">
             <div
-              v-if="fittingUserItems.length"
-              class="user-items columns is-multiline is-justify-content-center"
+              class="column is-flex is-flex-direction-column is-align-items-center"
+              v-if="userItemToReplace"
             >
-              <div
-                class="column is-narrow user-item user-item__action is-relative"
-                v-for="userItem in fittingUserItems"
-                v-bind:key="userItem.id"
-                @click="selectedUserItem = userItem"
-              >
-                <display-user-item :user-item="userItem" />
-                <div
-                  v-if="selectedUserItem && selectedUserItem.id === userItem.id"
-                  class="confirm-selection__overlay px-2 py-3 is-flex is-flex-direction-column is-align-items-center is-justify-content-center has-text-centered"
-                  @click="confirmItemSelection"
-                >
-                  <span class="is-size-6">Replace with:</span>
-                  <div>
-                    <strong :class="userItemRankClass(selectedUserItem)" class="is-size-5">
-                      {{ selectedUserItem.baseItem.name }}
-                    </strong>
-                  </div>
-                  <b-icon icon="check" size="is-large" />
+              <div class="is-flex-grow-1 is-align-self-center is-flex is-align-items-center">
+                <div class="user-item">
+                  <display-user-item :user-item="userItemToReplace" />
                 </div>
               </div>
             </div>
-            <div v-else class="py-3 has-text-centered">
-              <template v-if="userItemToReplace">
-                You don't own any other items of this type.
-              </template>
-              <template v-else>You don't own any items of this type.</template>
+            <div class="user-items column is-flex is-flex-direction-column">
+              <div
+                v-if="fittingUserItems.length"
+                class="columns is-multiline is-justify-content-center"
+              >
+                <div
+                  class="column is-narrow user-item user-item__action is-relative"
+                  v-for="userItem in fittingUserItems"
+                  v-bind:key="userItem.id"
+                  @click="selectedUserItem = userItem"
+                >
+                  <display-user-item :user-item="userItem" />
+                  <div
+                    v-if="selectedUserItem && selectedUserItem.id === userItem.id"
+                    class="confirm-selection__overlay px-2 py-3 is-flex is-flex-direction-column is-align-items-center is-justify-content-center has-text-centered"
+                    @click="confirmItemSelection"
+                  >
+                    <span class="is-size-6">Replace with:</span>
+                    <div>
+                      <strong :class="userItemRankClass(selectedUserItem)" class="is-size-5">
+                        {{ selectedUserItem.baseItem.name }}
+                      </strong>
+                    </div>
+                    <b-icon icon="check" size="is-large" />
+                  </div>
+                </div>
+              </div>
+              <div v-else class="py-3 has-text-centered">
+                <template v-if="userItemToReplace">
+                  You don't own any other items of this type.
+                </template>
+                <template v-else>You don't own any items of this type.</template>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-if="userItemToReplace" class="is-flex-shrink-0">
+          <div class="is-flex-shrink-1 columns mt-3">
+            <div class="column">
+              <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
+            </div>
+            <div class="column">
+              <b-button
+                size="is-medium"
+                type="is-warning"
+                icon-left="angle-double-up"
+                expanded
+                :disabled="!itemToReplaceUpgradeInfo.upgradable"
+                :title="itemToReplaceUpgradeInfo.reason"
+                @click="upgradeItem"
+              >
+                Upgrade
+              </b-button>
+            </div>
+            <div class="column">
+              <b-button
+                size="is-medium"
+                type="is-danger"
+                icon-left="coins"
+                expanded
+                @click="showSellItemConfirmation(userItemToReplace)"
+              >
+                Sell
+              </b-button>
             </div>
           </div>
         </div>
@@ -533,17 +539,20 @@ export default class CharacterComponent extends Vue {
 }
 
 .replace-item-modal {
-  overflow-y: auto;
   background-color: #fff; // TODO: replace with bulma variable
   // inherit modal height
   max-height: inherit;
-}
 
-.user-items {
-  overflow: auto;
+  .modal--content {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    .user-items {
+      overflow-y: auto;
 
-  & > .columns {
-    justify-content: center;
+      & > .columns {
+        justify-content: center;
+      }
+    }
   }
 }
 
