@@ -4,7 +4,7 @@
     "name": "Scale Shoulder Guards",
     "culture": "Aserai",
     "type": "ShoulderArmor",
-    "price": 3467,
+    "price": 9556,
     "weight": 4.0,
     "armor": {
       "headArmor": 0,
@@ -20,7 +20,7 @@
     "name": "Scale Pauldrons",
     "culture": "Aserai",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 6139,
     "weight": 2.0,
     "armor": {
       "headArmor": 0,
@@ -36,7 +36,7 @@
     "name": "Brass Scale Pauldrons",
     "culture": "Aserai",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 6139,
     "weight": 2.2,
     "armor": {
       "headArmor": 0,
@@ -52,7 +52,7 @@
     "name": "Simple Cape",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 0.5,
     "armor": {
       "headArmor": 0,
@@ -68,7 +68,7 @@
     "name": "Bronze Lamellar Shoulder Guards",
     "culture": "Khuzait",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 1.6,
     "armor": {
       "headArmor": 0,
@@ -84,7 +84,7 @@
     "name": "Lamellar Shoulder Guards",
     "culture": "Sturgia",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 5.0,
     "armor": {
       "headArmor": 0,
@@ -100,7 +100,7 @@
     "name": "Legionary Studded Harness",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 1189,
+    "price": 6139,
     "weight": 3.6,
     "armor": {
       "headArmor": 0,
@@ -116,7 +116,7 @@
     "name": "Plate Pauldrons",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 6139,
     "weight": 2.2,
     "armor": {
       "headArmor": 0,
@@ -132,7 +132,7 @@
     "name": "Cured Studded Leather Shoulders",
     "culture": "Khuzait",
     "type": "ShoulderArmor",
-    "price": 2328,
+    "price": 7278,
     "weight": 2.5,
     "armor": {
       "headArmor": 0,
@@ -148,7 +148,7 @@
     "name": "Reinforced Studded Neckguard",
     "culture": "Khuzait",
     "type": "ShoulderArmor",
-    "price": 2328,
+    "price": 8417,
     "weight": 1.9,
     "armor": {
       "headArmor": 0,
@@ -164,7 +164,7 @@
     "name": "Decorated Lamellar Leather Shoulder Guards",
     "culture": "Khuzait",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 6139,
     "weight": 1.3,
     "armor": {
       "headArmor": 0,
@@ -180,7 +180,7 @@
     "name": "Decorated Steel Lamellar Shoulder Pieces",
     "culture": "Khuzait",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 6139,
     "weight": 2.8,
     "armor": {
       "headArmor": 0,
@@ -196,7 +196,7 @@
     "name": "Bronze Pauldrons with Neck Guard",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 3467,
+    "price": 8417,
     "weight": 3.5,
     "armor": {
       "headArmor": 0,
@@ -212,7 +212,7 @@
     "name": "Bronze Pauldrons ",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 2.5,
     "armor": {
       "headArmor": 0,
@@ -335,7 +335,7 @@
     "name": "Armored Bearskin",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 2328,
+    "price": 7278,
     "weight": 7.0,
     "armor": {
       "headArmor": 0,
@@ -396,7 +396,7 @@
     "name": "Short Handled Bardiche",
     "culture": "Aserai",
     "type": "TwoHandedWeapon",
-    "price": 1445,
+    "price": 2840,
     "weight": 1.6,
     "weapons": [
       {
@@ -428,7 +428,7 @@
     "name": "Executioner Axe",
     "culture": "Aserai",
     "type": "TwoHandedWeapon",
-    "price": 1445,
+    "price": 2840,
     "weight": 1.88,
     "weapons": [
       {
@@ -540,7 +540,7 @@
     "name": "Wood Splitter Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.15,
     "weapons": [
       {
@@ -570,7 +570,7 @@
     "name": "Bamboo Handled Ascia Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.02,
     "weapons": [
       {
@@ -600,7 +600,7 @@
     "name": "Ornate Desert Battle Crown",
     "culture": "Aserai",
     "type": "HeadArmor",
-    "price": 5872,
+    "price": 6842,
     "weight": 2.8,
     "armor": {
       "headArmor": 44,
@@ -616,7 +616,7 @@
     "name": "Southern Reinforced Mail Armor",
     "culture": "Aserai",
     "type": "BodyArmor",
-    "price": 12682,
+    "price": 15841,
     "weight": 22.0,
     "armor": {
       "headArmor": 0,
@@ -1000,7 +1000,7 @@
     "name": "Ringmail Shoulder Guard",
     "culture": "Aserai",
     "type": "ShoulderArmor",
-    "price": 1189,
+    "price": 6139,
     "weight": 2.5,
     "armor": {
       "headArmor": 0,
@@ -1146,7 +1146,7 @@
     "name": "Heavy Horsemans Mace",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.86,
     "weapons": [
       {
@@ -1175,7 +1175,7 @@
     "name": "Spiralled Mace",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 2.05,
     "weapons": [
       {
@@ -1320,7 +1320,7 @@
     "name": "Robe over Mail Shirt",
     "culture": "Aserai",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 8.2,
     "armor": {
       "headArmor": 0,
@@ -1336,7 +1336,7 @@
     "name": "Mastercrafted Southern Scale over Chain Mail",
     "culture": "Aserai",
     "type": "BodyArmor",
-    "price": 22157,
+    "price": 25315,
     "weight": 22.0,
     "armor": {
       "headArmor": 0,
@@ -1352,7 +1352,7 @@
     "name": "Mastercrafted Southern Scale Mail",
     "culture": "Aserai",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 18.0,
     "armor": {
       "headArmor": 0,
@@ -1368,7 +1368,7 @@
     "name": "Bronze Scale Shoulder Guards",
     "culture": "Aserai",
     "type": "ShoulderArmor",
-    "price": 3467,
+    "price": 9556,
     "weight": 1.8,
     "armor": {
       "headArmor": 0,
@@ -1384,7 +1384,7 @@
     "name": "Long Sleeved Bronze Scale Shoulder Guards",
     "culture": "Aserai",
     "type": "ShoulderArmor",
-    "price": 5745,
+    "price": 10695,
     "weight": 2.2,
     "armor": {
       "headArmor": 0,
@@ -1400,7 +1400,7 @@
     "name": "Bronze Scale Pauldrons",
     "culture": "Aserai",
     "type": "ShoulderArmor",
-    "price": 2328,
+    "price": 8417,
     "weight": 1.9,
     "armor": {
       "headArmor": 0,
@@ -1416,7 +1416,7 @@
     "name": "Decorated Bronze Scale Pauldrons",
     "culture": "Aserai",
     "type": "ShoulderArmor",
-    "price": 1189,
+    "price": 7278,
     "weight": 2.4,
     "armor": {
       "headArmor": 0,
@@ -1432,7 +1432,7 @@
     "name": "Decorated Long Sleeve Bronze Scale Pauldrons",
     "culture": "Aserai",
     "type": "ShoulderArmor",
-    "price": 2328,
+    "price": 7278,
     "weight": 2.8,
     "armor": {
       "headArmor": 0,
@@ -1448,7 +1448,7 @@
     "name": "Iron Flyssa",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.53,
     "weapons": [
       {
@@ -1477,7 +1477,7 @@
     "name": "Iron Scimitar",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.38,
     "weapons": [
       {
@@ -1715,7 +1715,7 @@
     "name": "Avalanche",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 1445,
+    "price": 2840,
     "weight": 1.36,
     "weapons": [
       {
@@ -1763,7 +1763,7 @@
     "name": "Bamboo Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.21,
     "weapons": [
       {
@@ -1793,7 +1793,7 @@
     "name": "Banded Leather over Mail",
     "culture": "Vlandia",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 8.6,
     "armor": {
       "headArmor": 0,
@@ -1873,7 +1873,7 @@
     "name": "Rugged Gambeson",
     "culture": "Looters",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 2.2,
     "armor": {
       "headArmor": 0,
@@ -2052,7 +2052,7 @@
     "name": "Simple Bastard Sword",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.25,
     "weapons": [
       {
@@ -2081,7 +2081,7 @@
     "name": "Square Bit Two Handed Axe",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 50,
+    "price": 1445,
     "weight": 1.4,
     "weapons": [
       {
@@ -2113,7 +2113,7 @@
     "name": "Iron Broadsword",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 1445,
+    "price": 2840,
     "weight": 1.99,
     "weapons": [
       {
@@ -2211,7 +2211,7 @@
     "name": "Northlander Wide Fullered Greatsword",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 1445,
+    "price": 2840,
     "weight": 2.08,
     "weapons": [
       {
@@ -2312,7 +2312,7 @@
     "name": "Highland Fine Two Handed Sword",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 2840,
+    "price": 4235,
     "weight": 1.63,
     "weapons": [
       {
@@ -2380,7 +2380,7 @@
     "name": "Battanian Mountain Blade",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 2840,
+    "price": 4235,
     "weight": 1.22,
     "weapons": [
       {
@@ -2448,7 +2448,7 @@
     "name": "Norse Hatchet",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.09,
     "weapons": [
       {
@@ -2478,7 +2478,7 @@
     "name": "One Handed Bearded Axe",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.03,
     "weapons": [
       {
@@ -2602,7 +2602,7 @@
     "name": "Woodland Fur Cloak",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 4.5,
     "armor": {
       "headArmor": 0,
@@ -2634,7 +2634,7 @@
     "name": "Tartan Cloak",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 0.5,
     "armor": {
       "headArmor": 0,
@@ -2650,7 +2650,7 @@
     "name": "Tartan Cape",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 0.8,
     "armor": {
       "headArmor": 0,
@@ -2666,7 +2666,7 @@
     "name": "Chained Fur Cloak",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 1189,
+    "price": 6139,
     "weight": 1.5,
     "armor": {
       "headArmor": 0,
@@ -2746,7 +2746,7 @@
     "name": "Fringed Steel Cap with Cheek Guards",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 3.0,
     "armor": {
       "headArmor": 36,
@@ -2778,7 +2778,7 @@
     "name": "Steel Cap with Cheek Guards",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 2961,
+    "price": 3931,
     "weight": 2.9,
     "armor": {
       "headArmor": 32,
@@ -2826,7 +2826,7 @@
     "name": "Fringed Decorated Bronze Cap with Cheek Guards",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 3.3,
     "armor": {
       "headArmor": 37,
@@ -2858,7 +2858,7 @@
     "name": "Ridged Decorated Steel Cap with Cheek Guards",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 4902,
+    "price": 5872,
     "weight": 3.2,
     "armor": {
       "headArmor": 41,
@@ -2970,7 +2970,7 @@
     "name": "Half Scaled Barding",
     "culture": "Battania",
     "type": "MountHarness",
-    "price": 1040,
+    "price": 1535,
     "weight": 76.0,
     "armor": {
       "headArmor": 0,
@@ -3062,7 +3062,7 @@
     "name": "Highland Large Shield",
     "culture": "Battania",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 3.5,
     "weapons": [
       {
@@ -3108,7 +3108,7 @@
     "name": "Highland Tartan with Chest Plate",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 6.5,
     "armor": {
       "headArmor": 0,
@@ -3323,7 +3323,7 @@
     "name": "Engraved Backsword",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 955,
+    "price": 1860,
     "weight": 1.77,
     "weapons": [
       {
@@ -3382,7 +3382,7 @@
     "name": "Decorated Broadsword",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 955,
+    "price": 1860,
     "weight": 1.17,
     "weapons": [
       {
@@ -3412,7 +3412,7 @@
     "name": "Rhomphaia",
     "culture": "Battania",
     "type": "Polearm",
-    "price": 4887,
+    "price": 6500,
     "weight": 1.2,
     "weapons": [
       {
@@ -3445,7 +3445,7 @@
     "name": "Heavy Tartan Scarf",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 0.55,
     "armor": {
       "headArmor": 0,
@@ -3461,7 +3461,7 @@
     "name": "Reinforced Harness with Cape",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 6139,
     "weight": 1.6,
     "armor": {
       "headArmor": 0,
@@ -3477,7 +3477,7 @@
     "name": "Shoulder Harness",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 1.0,
     "armor": {
       "headArmor": 0,
@@ -3493,7 +3493,7 @@
     "name": "Tartan Shoulder Harness",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 1.3,
     "armor": {
       "headArmor": 0,
@@ -3509,7 +3509,7 @@
     "name": "Ridged Iron Broadsword",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 2.09,
     "weapons": [
       {
@@ -3538,7 +3538,7 @@
     "name": "Broad Ridged Shortsword",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.35,
     "weapons": [
       {
@@ -3567,7 +3567,7 @@
     "name": "Broadsword",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.75,
     "weapons": [
       {
@@ -3654,7 +3654,7 @@
     "name": "Targe",
     "culture": "Battania",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 2.5,
     "weapons": [
       {
@@ -3684,7 +3684,7 @@
     "name": "Scale Warlord Armor",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 15841,
+    "price": 18999,
     "weight": 19.0,
     "armor": {
       "headArmor": 0,
@@ -3732,7 +3732,7 @@
     "name": "Heavy Warlord Pauldrons",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 8023,
+    "price": 14112,
     "weight": 4.0,
     "armor": {
       "headArmor": 0,
@@ -3780,7 +3780,7 @@
     "name": "Woodland Cape",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 1.4,
     "armor": {
       "headArmor": 0,
@@ -3796,7 +3796,7 @@
     "name": "Woodland Garments",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 1.2,
     "armor": {
       "headArmor": 0,
@@ -3812,7 +3812,7 @@
     "name": "Heavy Mail Vest",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 3208,
+    "price": 6366,
     "weight": 10.7,
     "armor": {
       "headArmor": 0,
@@ -3860,7 +3860,7 @@
     "name": "Highland Reinforced Mail",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 16.6,
     "armor": {
       "headArmor": 0,
@@ -3876,7 +3876,7 @@
     "name": "Mail Shoulder Pieces",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 4.5,
     "armor": {
       "headArmor": 0,
@@ -3892,7 +3892,7 @@
     "name": "Mail Shoulder Reinforcements",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 4.5,
     "armor": {
       "headArmor": 0,
@@ -3924,7 +3924,7 @@
     "name": "Cured Leather Shoulder Pieces",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 1.2,
     "armor": {
       "headArmor": 0,
@@ -4004,7 +4004,7 @@
     "name": "Highland Scale Armor over Cloth",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 3208,
+    "price": 6366,
     "weight": 11.4,
     "armor": {
       "headArmor": 0,
@@ -4050,7 +4050,7 @@
     "name": "Battle Axe",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.01,
     "weapons": [
       {
@@ -4128,7 +4128,7 @@
     "name": "Bear Pelt",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 1189,
+    "price": 7278,
     "weight": 2.3,
     "armor": {
       "headArmor": 0,
@@ -4160,7 +4160,7 @@
     "name": "Belted Leather Cuirass",
     "culture": "Khuzait",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 1.9,
     "armor": {
       "headArmor": 0,
@@ -4176,7 +4176,7 @@
     "name": "Billhook",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 1662,
+    "price": 3275,
     "weight": 1.69,
     "weapons": [
       {
@@ -4209,7 +4209,7 @@
     "name": "Black Heart",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 1445,
+    "price": 2840,
     "weight": 1.64,
     "weapons": [
       {
@@ -4241,7 +4241,7 @@
     "name": "Blunt Arrows",
     "culture": "Khuzait",
     "type": "Arrows",
-    "price": 50,
+    "price": 430,
     "weight": 0.05,
     "weapons": [
       {
@@ -4303,7 +4303,7 @@
     "name": "Stacked Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 430,
+    "price": 811,
     "weight": 0.048,
     "weapons": [
       {
@@ -4420,7 +4420,7 @@
     "name": "Bolted Leather Strips",
     "culture": "Khuzait",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 6139,
     "weight": 0.5,
     "armor": {
       "headArmor": 0,
@@ -4436,7 +4436,7 @@
     "name": "Bone Crusher",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.49,
     "weapons": [
       {
@@ -4525,7 +4525,7 @@
     "name": "Bracketed Heater Shield",
     "culture": "Vlandia",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 4.7,
     "weapons": [
       {
@@ -4571,7 +4571,7 @@
     "name": "Brass Turbaned Helmet with Leather Flaps",
     "culture": "Aserai",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 1.9,
     "armor": {
       "headArmor": 37,
@@ -4619,7 +4619,7 @@
     "name": "Brass Southern Helmet with Leather Flaps",
     "culture": "Aserai",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 1.8,
     "armor": {
       "headArmor": 36,
@@ -4667,7 +4667,7 @@
     "name": "Bronze Lamellar Shoulder Pieces",
     "culture": "Khuzait",
     "type": "ShoulderArmor",
-    "price": 4606,
+    "price": 9556,
     "weight": 3.5,
     "armor": {
       "headArmor": 0,
@@ -4683,7 +4683,7 @@
     "name": "Lamellar Pauldrons",
     "culture": "Sturgia",
     "type": "ShoulderArmor",
-    "price": 4606,
+    "price": 9556,
     "weight": 5.0,
     "armor": {
       "headArmor": 0,
@@ -4699,7 +4699,7 @@
     "name": "Decorated Scale Shoulder Guards",
     "culture": "Sturgia",
     "type": "ShoulderArmor",
-    "price": 4606,
+    "price": 9556,
     "weight": 2.2,
     "armor": {
       "headArmor": 0,
@@ -4744,7 +4744,7 @@
     "name": "Broad Falchion",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 2.14,
     "weapons": [
       {
@@ -4802,7 +4802,7 @@
     "name": "Buckled Mail Armor",
     "culture": "Looters",
     "type": "BodyArmor",
-    "price": 3208,
+    "price": 6366,
     "weight": 12.3,
     "armor": {
       "headArmor": 0,
@@ -5093,7 +5093,7 @@
     "name": "Cervelliere over Laced Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 1990,
+    "price": 2961,
     "weight": 2.1,
     "armor": {
       "headArmor": 29,
@@ -5141,7 +5141,7 @@
     "name": "Chain Mail Horse Armor",
     "culture": "Neutral",
     "type": "MountHarness",
-    "price": 2030,
+    "price": 2525,
     "weight": 120.0,
     "armor": {
       "headArmor": 0,
@@ -5157,7 +5157,7 @@
     "name": "Reinforced Mail Shoulders",
     "culture": "Vlandia",
     "type": "ShoulderArmor",
-    "price": 3467,
+    "price": 8417,
     "weight": 1.4,
     "armor": {
       "headArmor": 0,
@@ -5316,7 +5316,7 @@
     "name": "Spiked Helmet with Closed Turban ",
     "culture": "Aserai",
     "type": "HeadArmor",
-    "price": 1020,
+    "price": 1990,
     "weight": 2.4,
     "armor": {
       "headArmor": 23,
@@ -5348,7 +5348,7 @@
     "name": "Northern Closed Warlord Helmet",
     "culture": "Sturgia",
     "type": "HeadArmor",
-    "price": 7813,
+    "price": 8783,
     "weight": 3.7,
     "armor": {
       "headArmor": 51,
@@ -5582,7 +5582,7 @@
     "name": "Arbalest",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 3991,
+    "price": 5961,
     "weight": 3.0,
     "weapons": [
       {
@@ -5751,7 +5751,7 @@
     "name": "Crude Hide Armor",
     "culture": "Khuzait",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 2.4,
     "armor": {
       "headArmor": 0,
@@ -5829,7 +5829,7 @@
     "name": "Dawnbreaker",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.9,
     "weapons": [
       {
@@ -5874,7 +5874,7 @@
     "name": "Decorated Plate Boots",
     "culture": "Empire",
     "type": "LegArmor",
-    "price": 2356,
+    "price": 2817,
     "weight": 2.3,
     "armor": {
       "headArmor": 0,
@@ -5922,7 +5922,7 @@
     "name": "Huscarl Decorated Mail Shirt",
     "culture": "Sturgia",
     "type": "BodyArmor",
-    "price": 3208,
+    "price": 6366,
     "weight": 10.7,
     "armor": {
       "headArmor": 0,
@@ -6045,7 +6045,7 @@
     "name": "Woven Shoulder Pad",
     "culture": "Aserai",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 1.8,
     "armor": {
       "headArmor": 0,
@@ -6093,7 +6093,7 @@
     "name": "Mamluke Helmet with Mail",
     "culture": "Aserai",
     "type": "HeadArmor",
-    "price": 5872,
+    "price": 6842,
     "weight": 2.9,
     "armor": {
       "headArmor": 45,
@@ -6125,7 +6125,7 @@
     "name": "Leather Shoulder Guard",
     "culture": "Aserai",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 1.8,
     "armor": {
       "headArmor": 0,
@@ -6186,7 +6186,7 @@
     "name": "Desert Oval Shield",
     "culture": "Aserai",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 4.7,
     "weapons": [
       {
@@ -6248,7 +6248,7 @@
     "name": "Robe over Mail Hauberk",
     "culture": "Aserai",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 8.9,
     "armor": {
       "headArmor": 0,
@@ -6364,7 +6364,7 @@
     "name": "Early Retirement",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 2840,
+    "price": 4235,
     "weight": 1.32,
     "weapons": [
       {
@@ -6432,7 +6432,7 @@
     "name": "Polesword",
     "culture": "Aserai",
     "type": "Polearm",
-    "price": 3275,
+    "price": 4887,
     "weight": 2.45,
     "weapons": [
       {
@@ -6659,7 +6659,7 @@
     "name": "Lancer Lamellar Armor",
     "culture": "Khuzait",
     "type": "BodyArmor",
-    "price": 9524,
+    "price": 12682,
     "weight": 13.0,
     "armor": {
       "headArmor": 0,
@@ -6675,7 +6675,7 @@
     "name": "Mirrored Brigandine Armor",
     "culture": "Khuzait",
     "type": "BodyArmor",
-    "price": 12682,
+    "price": 15841,
     "weight": 18.6,
     "armor": {
       "headArmor": 0,
@@ -6707,7 +6707,7 @@
     "name": "Brigandine Vest",
     "culture": "Khuzait",
     "type": "BodyArmor",
-    "price": 3208,
+    "price": 6366,
     "weight": 14.2,
     "armor": {
       "headArmor": 0,
@@ -7025,7 +7025,7 @@
     "name": "Steel Mace",
     "culture": "Khuzait",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.88,
     "weapons": [
       {
@@ -7054,7 +7054,7 @@
     "name": "Stitched Cured Leather Coat",
     "culture": "Khuzait",
     "type": "BodyArmor",
-    "price": 3208,
+    "price": 6366,
     "weight": 8.4,
     "armor": {
       "headArmor": 0,
@@ -7086,7 +7086,7 @@
     "name": "Reinforced Studded Shoulder Guards",
     "culture": "Khuzait",
     "type": "ShoulderArmor",
-    "price": 3467,
+    "price": 9556,
     "weight": 2.3,
     "armor": {
       "headArmor": 0,
@@ -7102,7 +7102,7 @@
     "name": "Jagged Throwing Spear",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 50,
+    "price": 1662,
     "weight": 1.43,
     "weapons": [
       {
@@ -7177,7 +7177,7 @@
     "name": "Triangular Throwing Spear",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 1662,
+    "price": 3275,
     "weight": 1.57,
     "weapons": [
       {
@@ -7252,7 +7252,7 @@
     "name": "Heavy Lancer Helmet",
     "culture": "Khuzait",
     "type": "HeadArmor",
-    "price": 7813,
+    "price": 8783,
     "weight": 4.0,
     "armor": {
       "headArmor": 51,
@@ -7268,7 +7268,7 @@
     "name": "Wicker Square Shield",
     "culture": "Khuzait",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 2.7,
     "weapons": [
       {
@@ -7330,7 +7330,7 @@
     "name": "Decorated Oval Shield",
     "culture": "Aserai",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 4.7,
     "weapons": [
       {
@@ -7360,7 +7360,7 @@
     "name": "Jeweled Plumed Battle Crown",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 5872,
+    "price": 6842,
     "weight": 2.1,
     "armor": {
       "headArmor": 45,
@@ -7376,7 +7376,7 @@
     "name": "Imperial Plumed Helmet",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 6842,
+    "price": 7813,
     "weight": 3.1,
     "armor": {
       "headArmor": 48,
@@ -7392,7 +7392,7 @@
     "name": "Heavy Cloak",
     "culture": "Neutral",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 0.5,
     "armor": {
       "headArmor": 0,
@@ -7488,7 +7488,7 @@
     "name": "Royal Cataphract Helmet",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 7813,
+    "price": 8783,
     "weight": 3.7,
     "armor": {
       "headArmor": 51,
@@ -7536,7 +7536,7 @@
     "name": "Cavalryman Mail Shirt",
     "culture": "Empire",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 8.3,
     "armor": {
       "headArmor": 0,
@@ -7764,7 +7764,7 @@
     "name": "Decorated Legionary Mail",
     "culture": "Empire",
     "type": "BodyArmor",
-    "price": 9524,
+    "price": 12682,
     "weight": 22.0,
     "armor": {
       "headArmor": 0,
@@ -7841,7 +7841,7 @@
     "name": "Imperial Light Mace",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.9,
     "weapons": [
       {
@@ -7870,7 +7870,7 @@
     "name": "Calradic Mace",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.8,
     "weapons": [
       {
@@ -7899,7 +7899,7 @@
     "name": "Light Royal Mace",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 2.3,
     "weapons": [
       {
@@ -7928,7 +7928,7 @@
     "name": "Cataphract Mace",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 2.24,
     "weapons": [
       {
@@ -8044,7 +8044,7 @@
     "name": "Bronze Plate Pauldrons",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 2.4,
     "armor": {
       "headArmor": 0,
@@ -8060,7 +8060,7 @@
     "name": "Iron Plate Pauldrons",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 6139,
     "weight": 2.2,
     "armor": {
       "headArmor": 0,
@@ -8198,7 +8198,7 @@
     "name": "Spatha With Narrow Fuller",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.37,
     "weapons": [
       {
@@ -8227,7 +8227,7 @@
     "name": "Spatha",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.41,
     "weapons": [
       {
@@ -8395,7 +8395,7 @@
     "name": "Infantryman Gambeson",
     "culture": "Empire",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 2.1,
     "armor": {
       "headArmor": 0,
@@ -8411,7 +8411,7 @@
     "name": "Infantryman Gambeson over Leather Jacket",
     "culture": "Empire",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 1.8,
     "armor": {
       "headArmor": 0,
@@ -8427,7 +8427,7 @@
     "name": "Infantryman Gambeson with Skirts",
     "culture": "Empire",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 2.0,
     "armor": {
       "headArmor": 0,
@@ -8443,7 +8443,7 @@
     "name": "Infantryman Gambeson with Straps",
     "culture": "Empire",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 1.6,
     "armor": {
       "headArmor": 0,
@@ -8507,7 +8507,7 @@
     "name": "Legionary Padded Straps",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 1189,
+    "price": 7278,
     "weight": 1.6,
     "armor": {
       "headArmor": 0,
@@ -8523,7 +8523,7 @@
     "name": "Execution Axe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 1445,
+    "price": 2840,
     "weight": 1.37,
     "weapons": [
       {
@@ -8555,7 +8555,7 @@
     "name": "Falchion",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.69,
     "weapons": [
       {
@@ -8616,7 +8616,7 @@
     "name": "Cotton Hood",
     "culture": "Neutral",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 0.5,
     "armor": {
       "headArmor": 0,
@@ -8734,7 +8734,7 @@
     "name": "Flat Heater Shield",
     "culture": "Vlandia",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 4.7,
     "weapons": [
       {
@@ -8826,7 +8826,7 @@
     "name": "Fortified Kite Shield",
     "culture": "Neutral",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 5.4,
     "weapons": [
       {
@@ -8920,7 +8920,7 @@
     "name": "Full Helm over Padded Cap",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 6842,
+    "price": 7813,
     "weight": 3.1,
     "armor": {
       "headArmor": 48,
@@ -8936,7 +8936,7 @@
     "name": "Full Helm over Padded Cloth",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 6842,
+    "price": 7813,
     "weight": 3.6,
     "armor": {
       "headArmor": 48,
@@ -9112,7 +9112,7 @@
     "name": "Heavy Aketon",
     "culture": "Vlandia",
     "type": "BodyArmor",
-    "price": 3208,
+    "price": 6366,
     "weight": 2.0,
     "armor": {
       "headArmor": 0,
@@ -9128,7 +9128,7 @@
     "name": "Harpoon",
     "culture": "Sturgia",
     "type": "Thrown",
-    "price": 50,
+    "price": 783,
     "weight": 1.35,
     "weapons": [
       {
@@ -9245,7 +9245,7 @@
     "name": "Closed Huscarl Helmet",
     "culture": "Sturgia",
     "type": "HeadArmor",
-    "price": 7813,
+    "price": 8783,
     "weight": 4.4,
     "armor": {
       "headArmor": 51,
@@ -9293,7 +9293,7 @@
     "name": "Green Hood",
     "culture": "Vlandia",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 0.5,
     "armor": {
       "headArmor": 0,
@@ -9309,7 +9309,7 @@
     "name": "Guarded Armwraps",
     "culture": "Battania",
     "type": "HandArmor",
-    "price": 50,
+    "price": 645,
     "weight": 0.4,
     "armor": {
       "headArmor": 0,
@@ -9341,7 +9341,7 @@
     "name": "Kettle over Laced Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 2961,
+    "price": 3931,
     "weight": 3.0,
     "armor": {
       "headArmor": 33,
@@ -9405,7 +9405,7 @@
     "name": "Reinforced Half Plate Barding",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 2525,
+    "price": 3020,
     "weight": 90.0,
     "armor": {
       "headArmor": 0,
@@ -9437,7 +9437,7 @@
     "name": "Half Mail Barding",
     "culture": "Vlandia",
     "type": "MountHarness",
-    "price": 2030,
+    "price": 2525,
     "weight": 65.0,
     "armor": {
       "headArmor": 0,
@@ -9611,7 +9611,7 @@
     "name": "Heavy Heater Shield",
     "culture": "Vlandia",
     "type": "Shield",
-    "price": 968,
+    "price": 1887,
     "weight": 3.3,
     "weapons": [
       {
@@ -9641,7 +9641,7 @@
     "name": "Heavy Nasalhelm over Leather",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 6842,
+    "price": 7813,
     "weight": 3.4,
     "armor": {
       "headArmor": 48,
@@ -9657,7 +9657,7 @@
     "name": "Heavy Nasalhelm over Mail",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 7813,
+    "price": 8783,
     "weight": 3.6,
     "armor": {
       "headArmor": 51,
@@ -9673,7 +9673,7 @@
     "name": "Heavy Nasalhelm over Padding",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 6842,
+    "price": 7813,
     "weight": 3.0,
     "armor": {
       "headArmor": 48,
@@ -9957,7 +9957,7 @@
     "name": "Decorated Round Shield",
     "culture": "Battania",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 4.7,
     "weapons": [
       {
@@ -10265,7 +10265,7 @@
     "name": "Hood",
     "culture": "Vlandia",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 0.4,
     "armor": {
       "headArmor": 0,
@@ -10452,7 +10452,7 @@
     "name": "Tzikourion",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.08,
     "weapons": [
       {
@@ -10530,7 +10530,7 @@
     "name": "Luxury Lamellar Vest over Leather",
     "culture": "Empire",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 15.0,
     "armor": {
       "headArmor": 0,
@@ -10546,7 +10546,7 @@
     "name": "Heavy Lamellar Pauldrons",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 5745,
+    "price": 11834,
     "weight": 3.5,
     "armor": {
       "headArmor": 0,
@@ -10626,7 +10626,7 @@
     "name": "Infantryman Mail Vest",
     "culture": "Empire",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 9.8,
     "armor": {
       "headArmor": 0,
@@ -10642,7 +10642,7 @@
     "name": "Legionary Helm",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 3.2,
     "armor": {
       "headArmor": 36,
@@ -10674,7 +10674,7 @@
     "name": "Lightweight Padded Coif",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 50,
+    "price": 1020,
     "weight": 0.5,
     "armor": {
       "headArmor": 14,
@@ -10806,7 +10806,7 @@
     "name": "Legionary Reinforced Studded Harness",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 1189,
+    "price": 7278,
     "weight": 3.9,
     "armor": {
       "headArmor": 0,
@@ -10822,7 +10822,7 @@
     "name": "Pilum",
     "culture": "Empire",
     "type": "Polearm",
-    "price": 50,
+    "price": 1662,
     "weight": 1.19,
     "weapons": [
       {
@@ -10900,7 +10900,7 @@
     "name": "Iron Spatha",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.69,
     "weapons": [
       {
@@ -10945,7 +10945,7 @@
     "name": "Feathered Spangenhelm over Leather",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 3.2,
     "armor": {
       "headArmor": 36,
@@ -10993,7 +10993,7 @@
     "name": "Iron Nasalhelm over Coif",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 6842,
+    "price": 7813,
     "weight": 3.6,
     "armor": {
       "headArmor": 48,
@@ -11009,7 +11009,7 @@
     "name": "Iron Nasalhelm over Mail",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 6842,
+    "price": 7813,
     "weight": 3.3,
     "armor": {
       "headArmor": 48,
@@ -11057,7 +11057,7 @@
     "name": "Iron Roundkettle over Mail",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 2.85,
     "armor": {
       "headArmor": 36,
@@ -11073,7 +11073,7 @@
     "name": "Iron Spiked Kettle over Mail",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 2961,
+    "price": 3931,
     "weight": 2.85,
     "armor": {
       "headArmor": 33,
@@ -11149,7 +11149,7 @@
     "name": "Judgement",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.83,
     "weapons": [
       {
@@ -11178,7 +11178,7 @@
     "name": "Justicier",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 1445,
+    "price": 2840,
     "weight": 1.41,
     "weapons": [
       {
@@ -11308,7 +11308,7 @@
     "name": "Kettle Hat over Padded Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 2.6,
     "armor": {
       "headArmor": 36,
@@ -11324,7 +11324,7 @@
     "name": "Kettle Helmet over Arming Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 2961,
+    "price": 3931,
     "weight": 2.3,
     "armor": {
       "headArmor": 32,
@@ -11372,7 +11372,7 @@
     "name": "Kettle Helmet over Padded Cap",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 2961,
+    "price": 3931,
     "weight": 2.25,
     "armor": {
       "headArmor": 33,
@@ -11388,7 +11388,7 @@
     "name": "Kettle Helmet over Padded Cloth",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 2961,
+    "price": 3931,
     "weight": 2.6,
     "armor": {
       "headArmor": 33,
@@ -11404,7 +11404,7 @@
     "name": "Kettle Helmet over Padded Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 2.68,
     "armor": {
       "headArmor": 36,
@@ -11420,7 +11420,7 @@
     "name": "Kettle Helmet with Leather",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 2961,
+    "price": 3931,
     "weight": 2.4,
     "armor": {
       "headArmor": 33,
@@ -11436,7 +11436,7 @@
     "name": "Kettle Helmet with Mail",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 2.9,
     "armor": {
       "headArmor": 36,
@@ -11452,7 +11452,7 @@
     "name": "Khuzait Battle Crown",
     "culture": "Khuzait",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 2.7,
     "armor": {
       "headArmor": 36,
@@ -11516,7 +11516,7 @@
     "name": "Ornate Steel Cap",
     "culture": "Khuzait",
     "type": "HeadArmor",
-    "price": 1020,
+    "price": 1990,
     "weight": 1.4,
     "armor": {
       "headArmor": 22,
@@ -11580,7 +11580,7 @@
     "name": "Reinforced Mirror Armor",
     "culture": "Khuzait",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 2.4,
     "armor": {
       "headArmor": 0,
@@ -11833,7 +11833,7 @@
     "name": "Reinforced Leather Pauldrons",
     "culture": "Khuzait",
     "type": "ShoulderArmor",
-    "price": 1189,
+    "price": 6139,
     "weight": 1.5,
     "armor": {
       "headArmor": 0,
@@ -11878,7 +11878,7 @@
     "name": "Eastern Heavy Mace",
     "culture": "Khuzait",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 2.35,
     "weapons": [
       {
@@ -11907,7 +11907,7 @@
     "name": "Fine Steel Mace",
     "culture": "Khuzait",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 2.12,
     "weapons": [
       {
@@ -11936,7 +11936,7 @@
     "name": "Heavy Flanged Mace",
     "culture": "Khuzait",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 2.29,
     "weapons": [
       {
@@ -11965,7 +11965,7 @@
     "name": "Noble Lancer Helmet",
     "culture": "Khuzait",
     "type": "HeadArmor",
-    "price": 6842,
+    "price": 7813,
     "weight": 3.4,
     "armor": {
       "headArmor": 48,
@@ -11981,7 +11981,7 @@
     "name": "Furred Noble Lancer Helmet",
     "culture": "Khuzait",
     "type": "HeadArmor",
-    "price": 5872,
+    "price": 6842,
     "weight": 3.4,
     "armor": {
       "headArmor": 45,
@@ -11997,7 +11997,7 @@
     "name": "Plumed Noble Lancer Helmet with Neckguard",
     "culture": "Khuzait",
     "type": "HeadArmor",
-    "price": 6842,
+    "price": 7813,
     "weight": 3.6,
     "armor": {
       "headArmor": 48,
@@ -12100,7 +12100,7 @@
     "name": "Glaive",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 4887,
+    "price": 6500,
     "weight": 2.04,
     "weapons": [
       {
@@ -12204,7 +12204,7 @@
     "name": "Mirrored Leather Armor",
     "culture": "Khuzait",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 2.4,
     "armor": {
       "headArmor": 0,
@@ -12220,7 +12220,7 @@
     "name": "Iron Saber",
     "culture": "Khuzait",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.23,
     "weapons": [
       {
@@ -12381,7 +12381,7 @@
     "name": "Knight's Fall",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.9,
     "weapons": [
       {
@@ -12426,7 +12426,7 @@
     "name": "Laced Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 50,
+    "price": 1020,
     "weight": 0.6,
     "armor": {
       "headArmor": 14,
@@ -12506,7 +12506,7 @@
     "name": "Lamellar Shoulder Pieces",
     "culture": "Khuzait",
     "type": "ShoulderArmor",
-    "price": 4606,
+    "price": 9556,
     "weight": 5.0,
     "armor": {
       "headArmor": 0,
@@ -12568,7 +12568,7 @@
     "name": "Large Franziska Axe",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.21,
     "weapons": [
       {
@@ -12840,7 +12840,7 @@
     "name": "Leather Lamellar Shoulder Guards",
     "culture": "Khuzait",
     "type": "ShoulderArmor",
-    "price": 2328,
+    "price": 7278,
     "weight": 2.3,
     "armor": {
       "headArmor": 0,
@@ -12856,7 +12856,7 @@
     "name": "Large Round Shield",
     "culture": "Sturgia",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 6.9,
     "weapons": [
       {
@@ -12886,7 +12886,7 @@
     "name": "Leather Scale Armor",
     "culture": "Vlandia",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 6.9,
     "armor": {
       "headArmor": 0,
@@ -12918,7 +12918,7 @@
     "name": "Leather Strips over Padded Robe",
     "culture": "Aserai",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 5.5,
     "armor": {
       "headArmor": 0,
@@ -12966,7 +12966,7 @@
     "name": "Leather Studded Helm over Roughscale",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 1020,
+    "price": 1990,
     "weight": 2.1,
     "armor": {
       "headArmor": 22,
@@ -13078,7 +13078,7 @@
     "name": "Roundkettle Helmet",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 2.8,
     "armor": {
       "headArmor": 36,
@@ -13142,7 +13142,7 @@
     "name": "Warlord Helmet over Mail",
     "culture": "Sturgia",
     "type": "HeadArmor",
-    "price": 6842,
+    "price": 7813,
     "weight": 3.1,
     "armor": {
       "headArmor": 48,
@@ -13158,7 +13158,7 @@
     "name": "Leopard Pelt",
     "culture": "Aserai",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 2.0,
     "armor": {
       "headArmor": 0,
@@ -13190,7 +13190,7 @@
     "name": "Light Cavalry Kite Shield",
     "culture": "Neutral",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 1.9,
     "weapons": [
       {
@@ -13313,7 +13313,7 @@
     "name": "Long Padded Robe",
     "culture": "Aserai",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 3.9,
     "armor": {
       "headArmor": 0,
@@ -13579,7 +13579,7 @@
     "name": "Mail Shirt",
     "culture": "Vlandia",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 7.5,
     "armor": {
       "headArmor": 0,
@@ -13595,7 +13595,7 @@
     "name": "Mail Shoulder Guards",
     "culture": "Sturgia",
     "type": "ShoulderArmor",
-    "price": 1189,
+    "price": 6139,
     "weight": 2.7,
     "armor": {
       "headArmor": 0,
@@ -13893,7 +13893,7 @@
     "name": "Narrow Sword",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.52,
     "weapons": [
       {
@@ -13922,7 +13922,7 @@
     "name": "Nasal Cervelliere over Laced Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 1990,
+    "price": 2961,
     "weight": 2.1,
     "armor": {
       "headArmor": 28,
@@ -13938,7 +13938,7 @@
     "name": "Nasal Cervelliere over Mail Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 2.6,
     "armor": {
       "headArmor": 36,
@@ -13954,7 +13954,7 @@
     "name": "Nasal Cervelliere over Padded Cap",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 1020,
+    "price": 1990,
     "weight": 2.0,
     "armor": {
       "headArmor": 22,
@@ -13986,7 +13986,7 @@
     "name": "Steel Cap with Nose Guard",
     "culture": "Sturgia",
     "type": "HeadArmor",
-    "price": 1020,
+    "price": 1990,
     "weight": 1.8,
     "armor": {
       "headArmor": 22,
@@ -14018,7 +14018,7 @@
     "name": "Nasal Helmet over Laced Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 2961,
+    "price": 3931,
     "weight": 2.3,
     "armor": {
       "headArmor": 32,
@@ -14034,7 +14034,7 @@
     "name": "Nasal Helmet over Mail",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 3.1,
     "armor": {
       "headArmor": 36,
@@ -14066,7 +14066,7 @@
     "name": "Nasal Helmet over Padded Cloth",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 1990,
+    "price": 2961,
     "weight": 2.2,
     "armor": {
       "headArmor": 29,
@@ -14082,7 +14082,7 @@
     "name": "Nasal Helmet over Padded Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 2.4,
     "armor": {
       "headArmor": 36,
@@ -14098,7 +14098,7 @@
     "name": "Nasal Helmet with Leather",
     "culture": "Sturgia",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 2.2,
     "armor": {
       "headArmor": 37,
@@ -14130,7 +14130,7 @@
     "name": "Nasalhelm over Leather",
     "culture": "Sturgia",
     "type": "HeadArmor",
-    "price": 1020,
+    "price": 1990,
     "weight": 1.9,
     "armor": {
       "headArmor": 23,
@@ -14146,7 +14146,7 @@
     "name": "Nasalhelm over Mail",
     "culture": "Sturgia",
     "type": "HeadArmor",
-    "price": 2961,
+    "price": 3931,
     "weight": 2.8,
     "armor": {
       "headArmor": 33,
@@ -14162,7 +14162,7 @@
     "name": "Noble Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 50,
+    "price": 1271,
     "weight": 0.8,
     "weapons": [
       {
@@ -14325,7 +14325,7 @@
     "name": "Noble Long Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 50,
+    "price": 1271,
     "weight": 0.8,
     "weapons": [
       {
@@ -14360,7 +14360,7 @@
     "name": "Ornate Pauldrons",
     "culture": "Vlandia",
     "type": "ShoulderArmor",
-    "price": 2328,
+    "price": 7278,
     "weight": 1.2,
     "armor": {
       "headArmor": 0,
@@ -14376,7 +14376,7 @@
     "name": "Ornate Pauldrons with Cape",
     "culture": "Vlandia",
     "type": "ShoulderArmor",
-    "price": 6884,
+    "price": 11834,
     "weight": 1.8,
     "armor": {
       "headArmor": 0,
@@ -14507,7 +14507,7 @@
     "name": "Closed Mail Goggled Helmet",
     "culture": "Sturgia",
     "type": "HeadArmor",
-    "price": 7813,
+    "price": 8783,
     "weight": 3.65,
     "armor": {
       "headArmor": 51,
@@ -14523,7 +14523,7 @@
     "name": "Bronze Scale Vest over Gambeson",
     "culture": "Sturgia",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 15.0,
     "armor": {
       "headArmor": 0,
@@ -14654,7 +14654,7 @@
     "name": "Leather Tabard over Mail",
     "culture": "Sturgia",
     "type": "BodyArmor",
-    "price": 9524,
+    "price": 12682,
     "weight": 10.0,
     "armor": {
       "headArmor": 0,
@@ -14754,7 +14754,7 @@
     "name": "Northlander Broad Axe",
     "culture": "Sturgia",
     "type": "TwoHandedWeapon",
-    "price": 1445,
+    "price": 2840,
     "weight": 1.3,
     "weapons": [
       {
@@ -14786,7 +14786,7 @@
     "name": "Simple Raider Battle Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.15,
     "weapons": [
       {
@@ -14816,7 +14816,7 @@
     "name": "Bronze Bracers",
     "culture": "Sturgia",
     "type": "HandArmor",
-    "price": 4215,
+    "price": 4810,
     "weight": 1.3,
     "armor": {
       "headArmor": 0,
@@ -14832,7 +14832,7 @@
     "name": "Heavy Lamellar over Mail",
     "culture": "Sturgia",
     "type": "BodyArmor",
-    "price": 22157,
+    "price": 25315,
     "weight": 23.6,
     "armor": {
       "headArmor": 0,
@@ -14848,7 +14848,7 @@
     "name": "Coat Of Plates",
     "culture": "Sturgia",
     "type": "BodyArmor",
-    "price": 15841,
+    "price": 18999,
     "weight": 21.0,
     "armor": {
       "headArmor": 0,
@@ -15048,7 +15048,7 @@
     "name": "Broad Blade Javelin",
     "culture": "Sturgia",
     "type": "Thrown",
-    "price": 50,
+    "price": 783,
     "weight": 1.11,
     "weapons": [
       {
@@ -15149,7 +15149,7 @@
     "name": "Light Saddle",
     "culture": "Sturgia",
     "type": "MountHarness",
-    "price": 50,
+    "price": 545,
     "weight": 30.0,
     "armor": {
       "headArmor": 0,
@@ -15197,7 +15197,7 @@
     "name": "Short Gambeson over Tunic",
     "culture": "Sturgia",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 1.5,
     "armor": {
       "headArmor": 0,
@@ -15213,7 +15213,7 @@
     "name": "Huscarl Plated Boots",
     "culture": "Sturgia",
     "type": "LegArmor",
-    "price": 1894,
+    "price": 2356,
     "weight": 2.9,
     "armor": {
       "headArmor": 0,
@@ -15261,7 +15261,7 @@
     "name": "Round Shield",
     "culture": "Sturgia",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 3.3,
     "weapons": [
       {
@@ -15291,7 +15291,7 @@
     "name": "Sturdy Cavalry Kite Shield",
     "culture": "Sturgia",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 4.7,
     "weapons": [
       {
@@ -15551,7 +15551,7 @@
     "name": "Raider Throwing Axe",
     "culture": "Sturgia",
     "type": "Thrown",
-    "price": 50,
+    "price": 783,
     "weight": 0.71,
     "weapons": [
       {
@@ -15637,7 +15637,7 @@
     "name": "Decorated Eastern Shield",
     "culture": "Neutral",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 4.7,
     "weapons": [
       {
@@ -15743,7 +15743,7 @@
     "name": "Spiked Helmet with Open Turban",
     "culture": "Aserai",
     "type": "HeadArmor",
-    "price": 1020,
+    "price": 1990,
     "weight": 1.3,
     "armor": {
       "headArmor": 22,
@@ -15791,7 +15791,7 @@
     "name": "Open Padded Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 50,
+    "price": 1020,
     "weight": 0.6,
     "armor": {
       "headArmor": 14,
@@ -15807,7 +15807,7 @@
     "name": "Ornate Adarga",
     "culture": "Aserai",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 4.7,
     "weapons": [
       {
@@ -15837,7 +15837,7 @@
     "name": "Wooden Oval Shield",
     "culture": "Aserai",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 2.1,
     "weapons": [
       {
@@ -15899,7 +15899,7 @@
     "name": "Padded Cloth with Strips",
     "culture": "Empire",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 2.2,
     "armor": {
       "headArmor": 0,
@@ -15931,7 +15931,7 @@
     "name": "Padded Half Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 50,
+    "price": 1020,
     "weight": 0.7,
     "armor": {
       "headArmor": 14,
@@ -15979,7 +15979,7 @@
     "name": "Padded Leather Shirt",
     "culture": "Vlandia",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 1.8,
     "armor": {
       "headArmor": 0,
@@ -15995,7 +15995,7 @@
     "name": "Padded Leather Shoulders",
     "culture": "Vlandia",
     "type": "ShoulderArmor",
-    "price": 1189,
+    "price": 6139,
     "weight": 1.4,
     "armor": {
       "headArmor": 0,
@@ -16027,7 +16027,7 @@
     "name": "Padded Short Coat",
     "culture": "Vlandia",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 2.2,
     "armor": {
       "headArmor": 0,
@@ -16043,7 +16043,7 @@
     "name": "Padded Vambraces",
     "culture": "Neutral",
     "type": "HandArmor",
-    "price": 50,
+    "price": 645,
     "weight": 0.1,
     "armor": {
       "headArmor": 0,
@@ -16059,7 +16059,7 @@
     "name": "Patched Gambeson",
     "culture": "Empire",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 2.4,
     "armor": {
       "headArmor": 0,
@@ -16075,7 +16075,7 @@
     "name": "Legionary Cape",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 3467,
+    "price": 9556,
     "weight": 3.5,
     "armor": {
       "headArmor": 0,
@@ -16091,7 +16091,7 @@
     "name": "Reinforced Ornate Pauldrons over Scale",
     "culture": "Vlandia",
     "type": "ShoulderArmor",
-    "price": 11441,
+    "price": 16391,
     "weight": 3.4,
     "armor": {
       "headArmor": 0,
@@ -16107,7 +16107,7 @@
     "name": "Pauldrons with Cape",
     "culture": "Vlandia",
     "type": "ShoulderArmor",
-    "price": 2328,
+    "price": 7278,
     "weight": 1.3,
     "armor": {
       "headArmor": 0,
@@ -16123,7 +16123,7 @@
     "name": "Pavise Shield",
     "culture": "Vlandia",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 7.0,
     "weapons": [
       {
@@ -16153,7 +16153,7 @@
     "name": "Peaked Fur Hood",
     "culture": "Khuzait",
     "type": "HeadArmor",
-    "price": 50,
+    "price": 1020,
     "weight": 0.7,
     "armor": {
       "headArmor": 13,
@@ -16169,7 +16169,7 @@
     "name": "Peaked Helmet over Laced Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 2.8,
     "armor": {
       "headArmor": 37,
@@ -16217,7 +16217,7 @@
     "name": "Peaked Helmet over Padded Cloth",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 2.5,
     "armor": {
       "headArmor": 36,
@@ -16233,7 +16233,7 @@
     "name": "Hoe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 50,
+    "price": 1445,
     "weight": 1.57,
     "weapons": [
       {
@@ -16671,7 +16671,7 @@
     "name": "Militia Pernach",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.76,
     "weapons": [
       {
@@ -16700,7 +16700,7 @@
     "name": "Piercing Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 430,
+    "price": 811,
     "weight": 0.041,
     "weapons": [
       {
@@ -16793,7 +16793,7 @@
     "name": "Plated Striped Vambraces",
     "culture": "Empire",
     "type": "HandArmor",
-    "price": 4215,
+    "price": 4810,
     "weight": 1.4,
     "armor": {
       "headArmor": 0,
@@ -16841,7 +16841,7 @@
     "name": "Plumed Lamellar Helmet",
     "culture": "Khuzait",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 2.8,
     "armor": {
       "headArmor": 36,
@@ -16857,7 +16857,7 @@
     "name": "Plumed Nomad Helmet",
     "culture": "Khuzait",
     "type": "HeadArmor",
-    "price": 2961,
+    "price": 3931,
     "weight": 2.6,
     "armor": {
       "headArmor": 32,
@@ -16873,7 +16873,7 @@
     "name": "Pointed Falchion",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 955,
+    "price": 1860,
     "weight": 1.68,
     "weapons": [
       {
@@ -16918,7 +16918,7 @@
     "name": "Pointed Skullcap over Laced Coif",
     "culture": "Aserai",
     "type": "HeadArmor",
-    "price": 2961,
+    "price": 3931,
     "weight": 2.2,
     "armor": {
       "headArmor": 32,
@@ -16934,7 +16934,7 @@
     "name": "Pointed Skullcap over Gambeson",
     "culture": "Aserai",
     "type": "HeadArmor",
-    "price": 2961,
+    "price": 3931,
     "weight": 2.2,
     "armor": {
       "headArmor": 32,
@@ -16950,7 +16950,7 @@
     "name": "Pointed Skullcap over Mail Coif",
     "culture": "Aserai",
     "type": "HeadArmor",
-    "price": 3931,
+    "price": 4902,
     "weight": 2.8,
     "armor": {
       "headArmor": 37,
@@ -17198,7 +17198,7 @@
     "name": "Ranger Mail",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 12.0,
     "armor": {
       "headArmor": 0,
@@ -17285,7 +17285,7 @@
     "name": "Red Tabard over Mail Hauberk",
     "culture": "Vlandia",
     "type": "BodyArmor",
-    "price": 9524,
+    "price": 12682,
     "weight": 15.0,
     "armor": {
       "headArmor": 0,
@@ -17377,7 +17377,7 @@
     "name": "Reinforced Suede Armor",
     "culture": "Khuzait",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 2.3,
     "armor": {
       "headArmor": 0,
@@ -17393,7 +17393,7 @@
     "name": "Reinforced Suede Boots",
     "culture": "Khuzait",
     "type": "LegArmor",
-    "price": 2356,
+    "price": 2817,
     "weight": 1.0,
     "armor": {
       "headArmor": 0,
@@ -17409,7 +17409,7 @@
     "name": "Reinforced Suede Shoulder Guards",
     "culture": "Khuzait",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 0.9,
     "armor": {
       "headArmor": 0,
@@ -17538,7 +17538,7 @@
     "name": "Heavy Ring Mail",
     "culture": "Aserai",
     "type": "BodyArmor",
-    "price": 3208,
+    "price": 6366,
     "weight": 10.5,
     "armor": {
       "headArmor": 0,
@@ -17554,7 +17554,7 @@
     "name": "Rough Bearskin",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 3467,
+    "price": 9556,
     "weight": 2.3,
     "armor": {
       "headArmor": 0,
@@ -17570,7 +17570,7 @@
     "name": "Rough Fur Armor",
     "culture": "Looters",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 1.3,
     "armor": {
       "headArmor": 0,
@@ -17698,7 +17698,7 @@
     "name": "Roundkettle over Cloth",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 1990,
+    "price": 2961,
     "weight": 2.0,
     "armor": {
       "headArmor": 28,
@@ -17714,7 +17714,7 @@
     "name": "Light Roundkettle over Leather",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 1020,
+    "price": 1990,
     "weight": 2.2,
     "armor": {
       "headArmor": 22,
@@ -17794,7 +17794,7 @@
     "name": "Rugged Scale Armor",
     "culture": "Battania",
     "type": "BodyArmor",
-    "price": 3208,
+    "price": 6366,
     "weight": 10.7,
     "armor": {
       "headArmor": 0,
@@ -17810,7 +17810,7 @@
     "name": "Scale Shoulderguards",
     "culture": "Vlandia",
     "type": "ShoulderArmor",
-    "price": 5745,
+    "price": 10695,
     "weight": 1.7,
     "armor": {
       "headArmor": 0,
@@ -17826,7 +17826,7 @@
     "name": "Scarf",
     "culture": "Neutral",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 0.5,
     "armor": {
       "headArmor": 0,
@@ -17903,7 +17903,7 @@
     "name": "Segmented Cervelliere over Mail Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 1990,
+    "price": 2961,
     "weight": 2.9,
     "armor": {
       "headArmor": 28,
@@ -17919,7 +17919,7 @@
     "name": "Segmented Cervelliere over Padded Cloth",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 1990,
+    "price": 2961,
     "weight": 2.8,
     "armor": {
       "headArmor": 28,
@@ -17967,7 +17967,7 @@
     "name": "Segmented Skullcap over Padded Cloth",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 1990,
+    "price": 2961,
     "weight": 2.6,
     "armor": {
       "headArmor": 28,
@@ -17983,7 +17983,7 @@
     "name": "Segmented Skullcap over Padded Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 1990,
+    "price": 2961,
     "weight": 2.3,
     "armor": {
       "headArmor": 29,
@@ -17999,7 +17999,7 @@
     "name": "Sentinel",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 1445,
+    "price": 2840,
     "weight": 1.44,
     "weapons": [
       {
@@ -18029,7 +18029,7 @@
     "name": "Light Shishpar Mace",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.67,
     "weapons": [
       {
@@ -18058,7 +18058,7 @@
     "name": "Short Padded Robe",
     "culture": "Aserai",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 1.3,
     "armor": {
       "headArmor": 0,
@@ -18074,7 +18074,7 @@
     "name": "Short Sword",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.49,
     "weapons": [
       {
@@ -18103,7 +18103,7 @@
     "name": "Simple Scimitar",
     "culture": "Khuzait",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.23,
     "weapons": [
       {
@@ -18186,7 +18186,7 @@
     "name": "Simple Saber ",
     "culture": "Khuzait",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.46,
     "weapons": [
       {
@@ -18215,7 +18215,7 @@
     "name": "Simple Sparth Axe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 50,
+    "price": 1445,
     "weight": 1.13,
     "weapons": [
       {
@@ -18279,7 +18279,7 @@
     "name": "Sleeveless Padded Short Coat",
     "culture": "Vlandia",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 2.0,
     "armor": {
       "headArmor": 0,
@@ -18311,7 +18311,7 @@
     "name": "Small Bit Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.12,
     "weapons": [
       {
@@ -18341,7 +18341,7 @@
     "name": "Small Flat Heater Shield",
     "culture": "Vlandia",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 2.5,
     "weapons": [
       {
@@ -18401,7 +18401,7 @@
     "name": "Small Spurred Axe",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.05,
     "weapons": [
       {
@@ -18531,7 +18531,7 @@
     "name": "Reinforced Oval Shield",
     "culture": "Aserai",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 4.7,
     "weapons": [
       {
@@ -18561,7 +18561,7 @@
     "name": "Short Cloak",
     "culture": "Aserai",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 0.4,
     "armor": {
       "headArmor": 0,
@@ -18577,7 +18577,7 @@
     "name": "Bamboo Handled Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 0.96,
     "weapons": [
       {
@@ -18813,7 +18813,7 @@
     "name": "Spiked Helmet",
     "culture": "Khuzait",
     "type": "HeadArmor",
-    "price": 6842,
+    "price": 7813,
     "weight": 3.5,
     "armor": {
       "headArmor": 48,
@@ -18829,7 +18829,7 @@
     "name": "Spiked Helmet with Facemask",
     "culture": "Khuzait",
     "type": "HeadArmor",
-    "price": 7813,
+    "price": 8783,
     "weight": 4.5,
     "armor": {
       "headArmor": 51,
@@ -18845,7 +18845,7 @@
     "name": "Spiked Kettle over Mail",
     "culture": "Empire",
     "type": "HeadArmor",
-    "price": 1990,
+    "price": 2961,
     "weight": 3.1,
     "armor": {
       "headArmor": 27,
@@ -18877,7 +18877,7 @@
     "name": "Star Falchion",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 2.3,
     "weapons": [
       {
@@ -18906,7 +18906,7 @@
     "name": "Steel Shestopyor",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 2.24,
     "weapons": [
       {
@@ -18981,7 +18981,7 @@
     "name": "Steppe Arrows",
     "culture": "Khuzait",
     "type": "Arrows",
-    "price": 50,
+    "price": 430,
     "weight": 0.036,
     "weapons": [
       {
@@ -19107,7 +19107,7 @@
     "name": "Lamellar Half Barding",
     "culture": "Khuzait",
     "type": "MountHarness",
-    "price": 1040,
+    "price": 1535,
     "weight": 70.0,
     "armor": {
       "headArmor": 0,
@@ -19174,7 +19174,7 @@
     "name": "Infantry Steel Helmet",
     "culture": "Khuzait",
     "type": "HeadArmor",
-    "price": 2961,
+    "price": 3931,
     "weight": 2.2,
     "armor": {
       "headArmor": 33,
@@ -19206,7 +19206,7 @@
     "name": "Cured Leather Pauldrons",
     "culture": "Khuzait",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 0.7,
     "armor": {
       "headArmor": 0,
@@ -19305,7 +19305,7 @@
     "name": "Stitched Leather over Mail",
     "culture": "Aserai",
     "type": "BodyArmor",
-    "price": 12682,
+    "price": 15841,
     "weight": 15.1,
     "armor": {
       "headArmor": 0,
@@ -19321,7 +19321,7 @@
     "name": "Stitched Leather Shoulders",
     "culture": "Sturgia",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 1.5,
     "armor": {
       "headArmor": 0,
@@ -19385,7 +19385,7 @@
     "name": "Strapped Mail Chausses",
     "culture": "Vlandia",
     "type": "LegArmor",
-    "price": 3278,
+    "price": 3739,
     "weight": 3.0,
     "armor": {
       "headArmor": 0,
@@ -19433,7 +19433,7 @@
     "name": "Reinforced Oaken Kite Shield",
     "culture": "Neutral",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 5.8,
     "weapons": [
       {
@@ -19539,7 +19539,7 @@
     "name": "Neckguard with Bronze Plate Pauldrons",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 3467,
+    "price": 9556,
     "weight": 3.6,
     "armor": {
       "headArmor": 0,
@@ -19571,7 +19571,7 @@
     "name": "Studded Leather over Aketon",
     "culture": "Khuzait",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 4.4,
     "armor": {
       "headArmor": 0,
@@ -19587,7 +19587,7 @@
     "name": "Studded Leather Vambraces",
     "culture": "Khuzait",
     "type": "HandArmor",
-    "price": 645,
+    "price": 1240,
     "weight": 0.9,
     "armor": {
       "headArmor": 0,
@@ -19619,7 +19619,7 @@
     "name": "Iron Round Shield",
     "culture": "Aserai",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 7.3,
     "weapons": [
       {
@@ -19649,7 +19649,7 @@
     "name": "Reinforced Mail Barding",
     "culture": "Khuzait",
     "type": "MountHarness",
-    "price": 2030,
+    "price": 2525,
     "weight": 85.0,
     "armor": {
       "headArmor": 0,
@@ -19665,7 +19665,7 @@
     "name": "Studded Leather Armor",
     "culture": "Khuzait",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 2.4,
     "armor": {
       "headArmor": 0,
@@ -19697,7 +19697,7 @@
     "name": "Drilled Two Handed Axe",
     "culture": "Sturgia",
     "type": "TwoHandedWeapon",
-    "price": 1445,
+    "price": 2840,
     "weight": 1.32,
     "weapons": [
       {
@@ -19729,7 +19729,7 @@
     "name": "Northlander Decorated Two Handed Axe",
     "culture": "Sturgia",
     "type": "TwoHandedWeapon",
-    "price": 1445,
+    "price": 2840,
     "weight": 1.68,
     "weapons": [
       {
@@ -19761,7 +19761,7 @@
     "name": "Galloglaich Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.03,
     "weapons": [
       {
@@ -19791,7 +19791,7 @@
     "name": "Commoner Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 0.94,
     "weapons": [
       {
@@ -19821,7 +19821,7 @@
     "name": "Veteran Warrior Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.19,
     "weapons": [
       {
@@ -20269,7 +20269,7 @@
     "name": "Iron Rimmed Large Round Shield",
     "culture": "Sturgia",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 7.3,
     "weapons": [
       {
@@ -20383,7 +20383,7 @@
     "name": "Tapered Blade",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.11,
     "weapons": [
       {
@@ -20412,7 +20412,7 @@
     "name": "Backsword",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.18,
     "weapons": [
       {
@@ -20441,7 +20441,7 @@
     "name": "Pointy Warsword",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.14,
     "weapons": [
       {
@@ -20589,7 +20589,7 @@
     "name": "Huscarl Hauberk",
     "culture": "Sturgia",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 8.3,
     "armor": {
       "headArmor": 0,
@@ -20605,7 +20605,7 @@
     "name": "Jeweled Fur Rimmed Helmet",
     "culture": "Sturgia",
     "type": "HeadArmor",
-    "price": 4902,
+    "price": 5872,
     "weight": 2.4,
     "armor": {
       "headArmor": 41,
@@ -20685,7 +20685,7 @@
     "name": "Heavy Lamellar over Mail Armor",
     "culture": "Sturgia",
     "type": "BodyArmor",
-    "price": 18999,
+    "price": 22157,
     "weight": 24.0,
     "armor": {
       "headArmor": 0,
@@ -20717,7 +20717,7 @@
     "name": "Heavy Lamellar Vest",
     "culture": "Sturgia",
     "type": "BodyArmor",
-    "price": 9524,
+    "price": 12682,
     "weight": 8.3,
     "armor": {
       "headArmor": 0,
@@ -20749,7 +20749,7 @@
     "name": "Warlord Helmet with Nose Guard",
     "culture": "Sturgia",
     "type": "HeadArmor",
-    "price": 7813,
+    "price": 8783,
     "weight": 3.5,
     "armor": {
       "headArmor": 51,
@@ -21407,7 +21407,7 @@
     "name": "Tribal Steppe Shield",
     "culture": "Khuzait",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 4.7,
     "weapons": [
       {
@@ -21533,7 +21533,7 @@
     "name": "Tyrhung",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.95,
     "weapons": [
       {
@@ -21562,7 +21562,7 @@
     "name": "Broad Tzikourion",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.23,
     "weapons": [
       {
@@ -21608,7 +21608,7 @@
     "name": "Decorated Leather Harness",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 1189,
+    "price": 6139,
     "weight": 2.5,
     "armor": {
       "headArmor": 0,
@@ -21624,7 +21624,7 @@
     "name": "Decorated Leather Harness over Mail",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 5745,
+    "price": 11834,
     "weight": 13.2,
     "armor": {
       "headArmor": 0,
@@ -21640,7 +21640,7 @@
     "name": "Decorated Leather Harness with Padding",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 2328,
+    "price": 8417,
     "weight": 3.2,
     "armor": {
       "headArmor": 0,
@@ -21656,7 +21656,7 @@
     "name": "Caped Leather Harness",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 1189,
+    "price": 6139,
     "weight": 2.7,
     "armor": {
       "headArmor": 0,
@@ -21672,7 +21672,7 @@
     "name": "Decorated Leather Harness over Scale",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 9162,
+    "price": 14112,
     "weight": 14.0,
     "armor": {
       "headArmor": 0,
@@ -21688,7 +21688,7 @@
     "name": "Fortified Mercenary Armor",
     "culture": "Vlandia",
     "type": "BodyArmor",
-    "price": 6366,
+    "price": 9524,
     "weight": 8.2,
     "armor": {
       "headArmor": 0,
@@ -21782,7 +21782,7 @@
     "name": "Visored Helmet over Padded Coif",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 6842,
+    "price": 7813,
     "weight": 3.3,
     "armor": {
       "headArmor": 48,
@@ -21831,7 +21831,7 @@
     "name": "Wide Fullered Broad Two Hander",
     "culture": "Vlandia",
     "type": "TwoHandedWeapon",
-    "price": 2840,
+    "price": 4235,
     "weight": 1.92,
     "weapons": [
       {
@@ -21861,7 +21861,7 @@
     "name": "Thamaskene Steel Two Hander",
     "culture": "Vlandia",
     "type": "TwoHandedWeapon",
-    "price": 2840,
+    "price": 4235,
     "weight": 2.04,
     "weapons": [
       {
@@ -21891,7 +21891,7 @@
     "name": "Infantry Axe",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 0.92,
     "weapons": [
       {
@@ -21921,7 +21921,7 @@
     "name": "Spiked Battle Axe",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.1,
     "weapons": [
       {
@@ -22031,7 +22031,7 @@
     "name": "Heavy Mail Hauberk",
     "culture": "Vlandia",
     "type": "BodyArmor",
-    "price": 9524,
+    "price": 12682,
     "weight": 12.0,
     "armor": {
       "headArmor": 0,
@@ -22362,7 +22362,7 @@
     "name": "Fullered Cavalry Mace",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 2.1,
     "weapons": [
       {
@@ -22561,7 +22561,7 @@
     "name": "Voulge",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 6500,
+    "price": 8112,
     "weight": 1.51,
     "weapons": [
       {
@@ -22613,7 +22613,7 @@
     "name": "Iron Arming Sword",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.34,
     "weapons": [
       {
@@ -22790,7 +22790,7 @@
     "name": "Closed Knight Helmet",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 5872,
+    "price": 6842,
     "weight": 2.2,
     "armor": {
       "headArmor": 45,
@@ -22806,7 +22806,7 @@
     "name": "Knight Helmet with Bronze Faceguard",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 5872,
+    "price": 6842,
     "weight": 2.3,
     "armor": {
       "headArmor": 44,
@@ -22854,7 +22854,7 @@
     "name": "Lowland Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 50,
+    "price": 430,
     "weight": 0.06,
     "weapons": [
       {
@@ -23097,7 +23097,7 @@
     "name": "Crowned Plate Helmet",
     "culture": "Vlandia",
     "type": "HeadArmor",
-    "price": 6842,
+    "price": 7813,
     "weight": 3.6,
     "armor": {
       "headArmor": 48,
@@ -23166,7 +23166,7 @@
     "name": "Lowland Javelin",
     "culture": "Vlandia",
     "type": "Thrown",
-    "price": 50,
+    "price": 783,
     "weight": 1.2,
     "weapons": [
       {
@@ -23219,7 +23219,7 @@
     "name": "Hooked Javelin",
     "culture": "Vlandia",
     "type": "Thrown",
-    "price": 50,
+    "price": 783,
     "weight": 1.41,
     "weapons": [
       {
@@ -23622,7 +23622,7 @@
     "name": "Francesca",
     "culture": "Vlandia",
     "type": "Thrown",
-    "price": 50,
+    "price": 783,
     "weight": 0.68,
     "weapons": [
       {
@@ -23676,7 +23676,7 @@
     "name": "White Tabard over Mail Hauberk",
     "culture": "Vlandia",
     "type": "BodyArmor",
-    "price": 9524,
+    "price": 12682,
     "weight": 15.0,
     "armor": {
       "headArmor": 0,
@@ -23692,7 +23692,7 @@
     "name": "Wide Heater Shield",
     "culture": "Vlandia",
     "type": "Shield",
-    "price": 50,
+    "price": 968,
     "weight": 4.7,
     "weapons": [
       {
@@ -23825,7 +23825,7 @@
     "name": "Wolf Pelt Cape",
     "culture": "Battania",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 6139,
     "weight": 1.8,
     "armor": {
       "headArmor": 0,
@@ -23841,7 +23841,7 @@
     "name": "Wolf Head",
     "culture": "Battania",
     "type": "HeadArmor",
-    "price": 50,
+    "price": 1020,
     "weight": 1.3,
     "armor": {
       "headArmor": 16,
@@ -23974,7 +23974,7 @@
     "name": "Woodland Axe",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 50,
+    "price": 955,
     "weight": 1.27,
     "weapons": [
       {
@@ -24150,7 +24150,7 @@
     "name": "Woven Leather Bracers",
     "culture": "Empire",
     "type": "HandArmor",
-    "price": 50,
+    "price": 645,
     "weight": 0.8,
     "armor": {
       "headArmor": 0,
@@ -24166,7 +24166,7 @@
     "name": "Boarskin Leather Coat",
     "culture": "Empire",
     "type": "BodyArmor",
-    "price": 50,
+    "price": 3208,
     "weight": 5.1,
     "armor": {
       "headArmor": 0,
@@ -24182,7 +24182,7 @@
     "name": "Woven Leather Shoulders",
     "culture": "Empire",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 6139,
     "weight": 1.6,
     "armor": {
       "headArmor": 0,
@@ -24262,7 +24262,7 @@
     "name": "Wrapped Leather Boots",
     "culture": "Battania",
     "type": "LegArmor",
-    "price": 50,
+    "price": 511,
     "weight": 1.0,
     "armor": {
       "headArmor": 0,
@@ -24278,7 +24278,7 @@
     "name": "Shawl",
     "culture": "Neutral",
     "type": "ShoulderArmor",
-    "price": 50,
+    "price": 5000,
     "weight": 0.5,
     "armor": {
       "headArmor": 0,
