@@ -31,10 +31,36 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             finalDamage /= MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.DurabilityFactorForShieldCoefs);
         }
 
-        /*
-        if (weapon.CurrentUsageItem.IsConsumable && weapon.CurrentUsageItem.IsPolearm)
+        if(!weapon.IsEmpty)
         {
-            Console.WriteLine("Ist Throwing WUrfspeer big");
+            if (weapon.CurrentUsageItem.IsConsumable && weapon.CurrentUsageItem.IsPolearm)
+            {
+                Console.WriteLine("Ist Throwing WUrfspeer big");
+            }
+            if (weapon.CurrentUsageItem.IsPolearm)
+            {
+                Console.WriteLine("Ist IsPolearm");
+            }
+            if (collisionData.StrikeType == (int)StrikeType.Thrust)
+            {
+                Console.WriteLine("Ist Thrust");
+            }
+            if (collisionData.DamageType == (int)DamageTypes.Pierce)
+            {
+                Console.WriteLine("Ist Pierce");
+            }
+            if (weapon.CurrentUsageItem.IsRangedWeapon)
+            {
+                Console.WriteLine("Ist IsRangedWeapon");
+            }
+            if (weapon.CurrentUsageItem.IsAmmo)
+            {
+                Console.WriteLine("Ist IsAmmo");
+            }
+            if (weapon.CurrentUsageItem.IsConsumable)
+            {
+                Console.WriteLine("Ist IsConsumable");
+            }
         }
 
         // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
@@ -42,13 +68,13 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
         {
             finalDamage = 1f;
         }
-        else if (!attackInformation.IsVictimAgentHuman && collisionData.StrikeType == (int)StrikeType.Thrust && collisionData.DamageType == (int)DamageTypes.Pierce &&
+        else if (!weapon.IsEmpty && !attackInformation.IsVictimAgentHuman && !attackInformation.DoesAttackerHaveMountAgent && collisionData.StrikeType == (int)StrikeType.Thrust && collisionData.DamageType == (int)DamageTypes.Pierce &&
             (weapon.CurrentUsageItem.IsPolearm && !weapon.CurrentUsageItem.IsConsumable && !weapon.CurrentUsageItem.IsRangedWeapon && !weapon.CurrentUsageItem.IsAmmo))
         {
             Console.WriteLine("Damage boosted from " + finalDamage + " to " + finalDamage * 2);
             finalDamage *= _constants.PolearmThrustMultiplierAgainstCav;
         }
-        */
+        
 
         return finalDamage;
     }
