@@ -1,0 +1,9 @@
+/** Shared SCSS Variables copied from Bulma source due to their incompatible SASS format **/
+
+// Breakpoints
+
+$gap: 32px !default;
+$tablet: 769px !default;
+$desktop: 960px + (2 * $gap) !default;
+$widescreen: 1152px + (2 * $gap) !default;
+$fullhd: 1344px + (2 * $gap) !default;
