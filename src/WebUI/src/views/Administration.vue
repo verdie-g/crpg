@@ -8,7 +8,7 @@
           icon-left="ban"
           @click="isAddRestrictionModalActive = true"
         >
-          Add Restriction
+          Restrict User
         </b-button>
       </div>
       <b-table
