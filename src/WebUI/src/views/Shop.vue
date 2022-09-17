@@ -20,11 +20,13 @@
                       :src="`${publicPath}items/${item.id}.png`"
                       alt="item image"
                       loading="lazy"
-                      style="height: 120px;"
+                      style="height: 120px"
                     />
                   </figure>
                 </div>
-                <div class="card-content content is-flex-grow-1 is-flex is-flex-direction-column px-4">
+                <div
+                  class="card-content content is-flex-grow-1 is-flex is-flex-direction-column px-4"
+                >
                   <h4 class="px-1">{{ item.name }}</h4>
                   <div class="content is-flex-grow-1 is-flex">
                     <item-properties :item="item" :rank="0" :weapon-idx="weaponIdx" />

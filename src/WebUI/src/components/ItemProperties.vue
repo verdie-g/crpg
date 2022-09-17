@@ -1,7 +1,11 @@
 <template>
   <div class="is-flex is-flex-direction-column is-flex-grow-1">
     <div class="columns is-flex-wrap-wrap">
-      <div v-for="field in itemDescriptor.fields" :key="field[0]" class="column is-half is-flex is-flex-direction-column">
+      <div
+        v-for="field in itemDescriptor.fields"
+        :key="field[0]"
+        class="column is-half is-flex is-flex-direction-column"
+      >
         <span class="is-size-7">{{ field[0] }}</span>
         <strong>{{ field[1] }}</strong>
       </div>
@@ -9,7 +13,8 @@
     <b-tabs v-if="itemDescriptor.modes.length > 1" :value="weaponIdx" class="weapon-tabs">
       <b-tab-item v-for="mode in itemDescriptor.modes" :key="mode.name" :label="mode.name">
         <div v-for="field in mode.fields">
-          <strong>{{ field[1] }}</strong> {{ field[0] }}
+          <strong>{{ field[1] }}</strong>
+          {{ field[0] }}
           <br />
         </div>
         <b-taglist class="flags px-1 pt-2">
@@ -18,10 +23,15 @@
       </b-tab-item>
     </b-tabs>
     <div v-else class="is-flex is-flex-direction-column is-flex-grow-1">
-      <div v-for="mode in itemDescriptor.modes" :key="mode.name" class="is-flex is-flex-direction-column is-flex-grow-1">
+      <div
+        v-for="mode in itemDescriptor.modes"
+        :key="mode.name"
+        class="is-flex is-flex-direction-column is-flex-grow-1"
+      >
         <div class="is-flex-grow-1">
           <div v-for="field in mode.fields">
-            <strong>{{ field[1] }}</strong> {{ field[0] }}
+            <strong>{{ field[1] }}</strong>
+            {{ field[0] }}
             <br />
           </div>
         </div>
