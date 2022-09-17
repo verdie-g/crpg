@@ -29,11 +29,7 @@
 
         <b-field>
           <template #label>
-            {{ $t('clanCreationGenerateDescription1') }}
-            <a href="https://bannerlord.party" target="_blank">
-              {{ $t('clanCreationGenerateDescription2') }}
-            </a>
-            )
+            <div v-html="$t('clanCreationGenerateDescription')" />
           </template>
           <b-input
             v-model="bannerKey"

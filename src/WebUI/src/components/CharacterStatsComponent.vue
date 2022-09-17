@@ -87,8 +87,7 @@
           <b-tooltip position="is-left" multilined>
             {{ $t('characterStatsComponentStrength') }}
             <template v-slot:content>
-              {{ $t('characterStatsComponentStrengthDescription1') }}
-              <s>{{ $t('characterStatsComponentStrengthDescription2') }}</s>
+              <div v-html="$t('characterStatsComponentStrengthDescription')" />
             </template>
           </b-tooltip>
         </template>
@@ -153,9 +152,7 @@
           <b-tooltip position="is-left" multilined>
             {{ $t('characterStatsComponentIronFlesh') }}
             <template v-slot:content>
-              {{ $t('characterStatsComponentIronFleshDescription1') }}
-              <s>{{ $t('characterStatsComponentIronFleshDescription2') }}</s>
-              {{ $t('characterStatsComponentIronFleshDescription3') }}
+              <div v-html="$t('characterStatsComponentIronFleshDescription')" />
             </template>
           </b-tooltip>
         </template>
@@ -202,9 +199,7 @@
           <b-tooltip position="is-left" multilined>
             {{ $t('characterStatsComponentPowerDraw') }}
             <template v-slot:content>
-              {{ $t('characterStatsComponentPowerDrawDescription1') }}
-              <s>{{ $t('characterStatsComponentPowerDrawDescription2') }}</s>
-              {{ $t('characterStatsComponentPowerDrawDescription3') }}
+              <div v-html="$t('characterStatsComponentPowerDrawDescription')" />
             </template>
           </b-tooltip>
         </template>
@@ -227,9 +222,7 @@
           <b-tooltip position="is-left" multilined>
             {{ $t('characterStatsComponentPowerThrow') }}
             <template v-slot:content>
-              {{ $t('characterStatsComponentPowerThrowDescription1') }}
-              <s>{{ $t('characterStatsComponentPowerThrowDescription2') }}</s>
-              {{ $t('characterStatsComponentPowerThrowDescription3') }}
+              <div v-html="$t('characterStatsComponentPowerThrowDescription')" />
             </template>
           </b-tooltip>
         </template>
@@ -277,9 +270,7 @@
             {{ $t('characterStatsComponentRiding') }}
 
             <template v-slot:content>
-              {{ $t('characterStatsComponentRidingDescription1') }}
-              <s>{{ $t('characterStatsComponentRidingDescription2') }}</s>
-              {{ $t('characterStatsComponentRidingDescription3') }}
+              <div v-html="$t('characterStatsComponentRidingDescription')" />
             </template>
           </b-tooltip>
         </template>
@@ -326,8 +317,7 @@
           <b-tooltip position="is-left" multilined>
             {{ $t('characterStatsComponentMountedArchery') }}
             <template v-slot:content>
-              <s>{{ $t('characterStatsComponentMountedArcheryDescription1') }}</s>
-              {{ $t('characterStatsComponentMountedArcheryDescription2') }}
+              <div v-html="$t('characterStatsComponentMountedArcheryDescription')" />
             </template>
           </b-tooltip>
         </template>
@@ -350,10 +340,7 @@
           <b-tooltip position="is-left" multilined>
             {{ $t('characterStatsComponentShield') }}
             <template v-slot:content>
-              <s>{{ $t('characterStatsComponentShieldDescription1') }}</s>
-              {{ $t('characterStatsComponentShieldDescription2') }}
-              <s>{{ $t('characterStatsComponentShieldDescription3') }}</s>
-              {{ $t('characterStatsComponentShieldDescription4') }}
+              <div v-html="$t('characterStatsComponentShieldDescription')" />
             </template>
           </b-tooltip>
         </template>

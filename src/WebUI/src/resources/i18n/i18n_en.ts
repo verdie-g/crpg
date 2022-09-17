@@ -77,8 +77,8 @@ const en = {
   characterStatsComponentConvertAttributeToSkillPoints:
     'Convert 1 attribute point to 2 skill points',
   characterStatsComponentStrength: 'Strength',
-  characterStatsComponentStrengthDescription1: 'Increases your health points.',
-  characterStatsComponentStrengthDescription2: 'Allows you to use higher tier weapons and armor.',
+  characterStatsComponentStrengthDescription:
+    'Increases your health points.<br> <s>Allows you to use higher tier weapons and armor.</s>',
   characterStatsComponentAgility: 'Agility',
   characterStatsComponentAgilityDescription:
     'Increases your weapon points and makes you move a bit faster.',
@@ -86,40 +86,33 @@ const en = {
   characterStatsComponentConvertSkillToAttributePoints:
     'Convert 2 skill points to 1 attribute point',
   characterStatsComponentIronFlesh: 'Iron Flesh',
-  characterStatsComponentIronFleshDescription1: 'Increases your health',
-  characterStatsComponentIronFleshDescription2:
-    'and reduces the negative impact armor has on weapon points',
-  characterStatsComponentIronFleshDescription3: '. Requires 3 strength per level.',
+  characterStatsComponentIronFleshDescription:
+    'Increases your health.<br><s>Reduces the negative impact armor has on weapon points</s><br>Requires 3 strength per level.',
   characterStatsComponentPowerStrike: 'Power Strike',
   characterStatsComponentPowerStrikeDescription:
     'Increases melee damage. Requires 3 strength per level.',
   characterStatsComponentPowerDraw: 'Power Draw',
-  characterStatsComponentPowerDrawDescription1: 'Increases bow damage.',
-  characterStatsComponentPowerDrawDescription2: 'Allows you to use higher tiers bow.',
-  characterStatsComponentPowerDrawDescription3: 'Requires 3 strength per level.',
+  characterStatsComponentPowerDrawDescription:
+    'Increases bow damage.<br><s>Allows you to use higher tiers bow.</s><br>Requires 3 strength per level.',
   characterStatsComponentPowerThrow: 'Power Throw',
-  characterStatsComponentPowerThrowDescription1: 'Increases throw damage.',
-  characterStatsComponentPowerThrowDescription2: 'Allows you to use higher tier weapons.',
-  characterStatsComponentPowerThrowDescription3: 'Requires 3 strength per level.',
+  characterStatsComponentPowerThrowDescription:
+    'Increases throw damage.<br><s>Allows you to use higher tier weapons.</s><br>Requires 3 strength per level.',
   characterStatsComponentAthletics: 'Athletics',
   characterStatsComponentAthleticsDescription:
     'Increases running speed. Requires 3 agility per level.',
   characterStatsComponentRiding: 'Riding',
-  characterStatsComponentRidingDescription1: 'Increases riding speed, acceleration and maneuver.',
-  characterStatsComponentRidingDescription2: 'Allows you to ride higher tier mounts.',
-  characterStatsComponentRidingDescription3: 'Requires 3 agility per level.',
+  characterStatsComponentRidingDescription:
+    'Increases riding speed, acceleration and maneuver.<br><s>Allows you to ride higher tier mounts.</s><br>Requires 3 agility per level.',
   characterStatsComponentWeaponMaster: 'Weapon Master',
   characterStatsComponentWeaponMasterDescription:
     'Gives weapon points. Requires 3 agility per level.',
   characterStatsComponentMountedArchery: 'Mounted Archery',
-  characterStatsComponentMountedArcheryDescription1:
-    'Reduces penalty for using ranged weapons on a moving mount by 10% per level.',
-  characterStatsComponentMountedArcheryDescription2: 'Requires 6 agility per level.',
+  characterStatsComponentMountedArcheryDescription:
+    '<s>Reduces penalty for using ranged weapons on a moving mount by 10% per level.</s><br>Requires 6 agility per level.',
   characterStatsComponentShield: 'Shield',
-  characterStatsComponentShieldDescription1: 'Improves shield durability, shield speed and',
-  characterStatsComponentShieldDescription2: 'increases coverage from ranged attacks.',
-  characterStatsComponentShieldDescription3: 'Allows you to use higher tier shields.',
-  characterStatsComponentShieldDescription4: 'Requires 6 agility per level.',
+  characterStatsComponentShieldDescription:
+    'Increases coverage from ranged attacks.<br><s>Improves shield durability and shield speed.</s><br>' +
+    '<s>Allows you to use higher tier shields.</s><br>Requires 6 agility per level.',
   characterStatsComponentWeaponProficiencies: 'Weapon Proficiencies ({proficienciyPoints})',
   characterStatsComponentOneHanded: 'One Handed',
   characterStatsComponentTwoHanded: 'Two Handed',
@@ -162,8 +155,8 @@ const en = {
   clanCreationName: 'Name',
   clanCreationCreate: 'Create',
   clanCreationCreated: 'Clan created',
-  clanCreationGenerateDescription1: 'Banner Key (generate one on',
-  clanCreationGenerateDescription2: 'bannerlord.party',
+  clanCreationGenerateDescription:
+    'Banner Key (generate one on <a href="https://bannerlord.party" target="_blank">bannerlord.party</a>)',
   clanCreationPrimaryColor: 'Primary Color',
   clanCreationSecondaryColor: 'Secondary Color',
 
@@ -178,9 +171,8 @@ const en = {
 
   // Home
   homeTitle: 'cRPG',
-  homeDescriptionPart1: 'cRPG is a mod for',
-  homeDescriptionPartBannerlord: 'Mount & Blade II: Bannerlord',
-  homeDescriptionPart2:
+  homeDescriptionPart:
+    'cRPG is a mod for <a href="https://discord.gg/c-rpg" target="_blank">Mount & Blade II: Bannerlord</a>' +
     ". It adds persistence to the multiplayer. You start as a peasant and you'll develop your unique character with different stats and items.",
   homeSignIn: 'Sign in through Steam',
   homeFAQTitle: 'F.A.Q',

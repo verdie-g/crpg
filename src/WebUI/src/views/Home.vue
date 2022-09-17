@@ -3,16 +3,7 @@
     <section class="section">
       <div class="content is-large">
         <h1>{{ $t('homeTitle') }}</h1>
-        <p>
-          {{ $t('homeDescriptionPart1') }}
-          <a
-            href="https://store.steampowered.com/app/261550/Mount__Blade_II_Bannerlord"
-            target="_blank"
-          >
-            {{ $t('homeDescriptionPartBannerlord') }}
-          </a>
-          {{ $t('homeDescriptionPart2') }}
-        </p>
+        <p v-html="$t('homeDescriptionPart')"></p>
 
         <b-button
           size="is-large"

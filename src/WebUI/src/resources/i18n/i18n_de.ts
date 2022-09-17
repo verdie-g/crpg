@@ -79,9 +79,8 @@ const de = {
   characterStatsComponentConvertAttributeToSkillPoints:
     'Konvertiere einen Attributspunkt in zwei Skillpunkte',
   characterStatsComponentStrength: 'Stärke',
-  characterStatsComponentStrengthDescription1: 'Erhöht deine Lebenspunkte.',
-  characterStatsComponentStrengthDescription2:
-    'Erlaubt dir bessere Waffen und Rüstung zu verwenden.',
+  characterStatsComponentStrengthDescription:
+    'Erhöht deine Lebenspunkte.<br><s>Erlaubt dir bessere Waffen und Rüstung zu verwenden.</s>',
   characterStatsComponentAgility: 'Beweglichkeit',
   characterStatsComponentAgilityDescription:
     'Erhöht deine Waffenpunkte und lässt dich schneller bewegen.',
@@ -89,45 +88,33 @@ const de = {
   characterStatsComponentConvertSkillToAttributePoints:
     'Konvertiere zwei Skillpunkte zu einem Attributspunkt',
   characterStatsComponentIronFlesh: 'Eisenhaut',
-  characterStatsComponentIronFleshDescription1: 'Erhöht deine Lebenspunkte.',
-  characterStatsComponentIronFleshDescription2:
-    'und verringert die negativen Effekte, die Rüstungen auf Waffenpunkte haben',
-  characterStatsComponentIronFleshDescription3: '. Benötigt drei Stärke pro Level.',
+  characterStatsComponentIronFleshDescription:
+    'Erhöht deine Lebenspunkte.<br><s>Verringert die negativen Effekte, die Rüstungen auf Waffenpunkte haben.</s><br>Benötigt drei Stärke pro Level.',
   characterStatsComponentPowerStrike: 'Schlagkraft',
   characterStatsComponentPowerStrikeDescription:
     'Erhöht deinen Nahkampfschaden. Benötigt drei Stärke pro Level.',
   characterStatsComponentPowerDraw: 'Kraftvoller Zug',
-  characterStatsComponentPowerDrawDescription1:
-    'Erhöht den Schaden, den du mit einem Bogen verursachst.',
-  characterStatsComponentPowerDrawDescription2: 'Erlaubt dir die Benutzung besserer Bögen.',
-  characterStatsComponentPowerDrawDescription3: 'Benötigt drei Stärke pro Level.',
+  characterStatsComponentPowerDrawDescription:
+    'Erhöht den Schaden, den du mit einem Bogen verursachst.<br><s>Erlaubt dir die Benutzung besserer Bögen.</s><br>Benötigt drei Stärke pro Level.',
   characterStatsComponentPowerThrow: 'Kraftvoller Wurf',
-  characterStatsComponentPowerThrowDescription1:
-    'Erhöht den Schaden, den du mit Wurfgegenständen verursachst.',
-  characterStatsComponentPowerThrowDescription2:
-    'Erlaubt dir die Benutzung besserer Wurfgegenstände.',
-  characterStatsComponentPowerThrowDescription3: 'Benötigt drei Stärke pro Level.',
+  characterStatsComponentPowerThrowDescription:
+    'Erhöht den Schaden, den du mit Wurfgegenständen verursachst.<br><s>Erlaubt dir die Benutzung besserer Wurfgegenstände.</s><br>Benötigt drei Stärke pro Level.',
   characterStatsComponentAthletics: 'Athletik',
   characterStatsComponentAthleticsDescription:
     'Erhöht deine Laufgeschwindigkeit. Benötigt drei Beweglichkeit pro Level.',
   characterStatsComponentRiding: 'Reiten',
-  characterStatsComponentRidingDescription1:
-    'Erhöht deine Reitgeschwindigkeit, deine Manövrierfähigkeit zu Pferde und die Beschleunigung deines Pferdes.',
-  characterStatsComponentRidingDescription2: 'Erlaubt dir das Reiten besserer Pferde.',
-  characterStatsComponentRidingDescription3: 'Benötigt drei Beweglichkeit pro Level.',
+  characterStatsComponentRidingDescription:
+    'Erhöht deine Reitgeschwindigkeit, deine Manövrierfähigkeit zu Pferde und die Beschleunigung deines Pferdes.<br><s>Erlaubt dir das Reiten besserer Pferde.</s><br>Benötigt drei Beweglichkeit pro Level.',
   characterStatsComponentWeaponMaster: 'Waffenmeister',
   characterStatsComponentWeaponMasterDescription:
     'Gibt dir Waffenpunkte. Benötigt drei Beweglichkeit pro Level.',
   characterStatsComponentMountedArchery: 'Berittenes Bogenschießen',
-  characterStatsComponentMountedArcheryDescription1:
-    'Verringert den Malus für das Benutzen von Fernkampfwaffen auf einem Pferd um 10% pro Level.',
-  characterStatsComponentMountedArcheryDescription2: 'Benötigt sechs Beweglichkeit pro Level.',
+  characterStatsComponentMountedArcheryDescription:
+    '<s>Verringert den Malus für das Benutzen von Fernkampfwaffen auf einem Pferd um 10% pro Level.</s><br>Benötigt sechs Beweglichkeit pro Level.',
   characterStatsComponentShield: 'Schild',
-  characterStatsComponentShieldDescription1:
-    'Verbessert die Haltbarkeit von Schilden, die Geschwindigkeit und',
-  characterStatsComponentShieldDescription2: 'verbessert die Deckung vor Fernkampfangriffen.',
-  characterStatsComponentShieldDescription3: 'Erlaubt dir die Benutzung besserer Schilde.',
-  characterStatsComponentShieldDescription4: 'Benötigt sechs Beweglichkeit pro Level.',
+  characterStatsComponentShieldDescription:
+    'Verbessert die Deckung vor Fernkampfangriffen.<br><s>Verbessert die Haltbarkeit und Geschwindigkeit von Schilden.</s><br>' +
+    '<s>Erlaubt dir die Benutzung besserer Schilde.</s><br>Benötigt sechs Beweglichkeit pro Level.',
   characterStatsComponentWeaponProficiencies: 'Waffenfertigkeiten ({proficienciyPoints})',
   characterStatsComponentOneHanded: 'Einhänder',
   characterStatsComponentTwoHanded: 'Zweihänder',
@@ -170,8 +157,8 @@ const de = {
   clanCreationName: 'Name',
   clanCreationCreate: 'Anlegen',
   clanCreationCreated: 'Clan angelegt',
-  clanCreationGenerateDescription1: 'Banner Schlüssel (generiere einen auf',
-  clanCreationGenerateDescription2: 'bannerlord.party',
+  clanCreationGenerateDescription:
+    'Banner Schlüssel (generiere einen auf <a href="https://bannerlord.party" target="_blank">bannerlord.party</a>)',
   clanCreationPrimaryColor: 'Primäre Farbe',
   clanCreationSecondaryColor: 'Sekundäre Farbe',
 
@@ -186,15 +173,14 @@ const de = {
 
   // Home
   homeTitle: 'cRPG',
-  homeDescriptionPart1: 'cRPG ist eine Mod für',
-  homeDescriptionPartBannerlord: 'Mount & Blade II: Bannerlord',
-  homeDescriptionPart2:
+  homeDescriptionPart:
+    'cRPG ist eine Mod für <a href="https://discord.gg/c-rpg" target="_blank">Mount & Blade II: Bannerlord</a>' +
     '. Du startest als Bauer und entwickelst dich zu einem einzigartigen Charakter mit deinen bevorzugten Eigenschaften und den Waffen und Rüstungen deiner Wahl.',
   homeSignIn: 'Über Steam einloggen',
   homeFAQTitle: 'F.A.Q',
   homeQuestion1: 'Ist die Mod verfügbar?',
   homeAnswer1:
-    'Die Mod befindet sich aktuell in der Beta. Sieh dir die Nachrichten in #bl-developement-updates auf unserem <a href="https://discord.gg/c-rpg" target="_blank">Discord Server</a> an um der Beta beizutreten.',
+    'Die Mod befindet sich aktuell in der Beta. Sieh dir die Nachrichten in #bl-developement-updates auf unserem <a href="https://discord.gg/c-rpg" target="_blank">Discord Server</a> an um an der Beta teilzunehmen.',
   homeQuestion2: 'Wie lege ich einen neuen Charakter an?',
   homeAnswer2:
     'Betritt einfach einen cRPG Server und ein Charakter mit Level 1 wird automatisch angelegt.',
@@ -207,7 +193,7 @@ const de = {
   homeQuestion5:
     'Ich habe meine Steam Account umbenannt und es wurde ein neuer Charakter mit Level 1. Wie kann ich meinen originalen Charakter wieder spielen?',
   homeAnswer5:
-    'Wenn du dich auf einen cRPG server verbindest, wird nach einem Charakter gesucht der mit deinem Steamname übereinstimmt. Wird kein Charaketer gefunden' +
+    'Wenn du dich auf einen cRPG server verbindest, wird nach einem Charakter gesucht der mit deinem Steamnamen übereinstimmt. Wird kein Charakter gefunden' +
     ', wird ein neuer angelegt. Um deinen originalen Charakter wieder zu spielen, musst du auf der Webseite deinen Charakter umbennen zu deinem Steamnamen.',
   homeQuestion6: 'Was ist der Ruhestand?',
   homeAnswer6:
@@ -218,7 +204,7 @@ const de = {
     'Wenn dir deine Attributs-, Skill- und Waffenpunkte nicht mehr zusagen, kannst du deinen Charakter zurücksetzen. Dein Charakter verliert dadurch die Hälfte seiner aktuellen Erfahrungspunkte.',
   homeQuestion8: 'Kann ich meinen eigenen cRPG Server hosten?',
   homeAnswer8:
-    'Aus Durchführbarkeits- und Sicherheitsgründen wird es Spieler nicht erlaubt sein selbst cRPG Server zu hosten.',
+    'Aus Durchführbarkeits- und Sicherheitsgründen wird es Spielern nicht erlaubt sein selbst cRPG Server zu hosten.',
   homeQuestion9: 'Kann ich cRPG spielen wenn ich das Spiel im Epic oder GOG Store gekauft habe?',
   homeAnswer9: 'Nein, aktuell wird nur Steam unterstützt aber das könnte sich in Zukunft ändern.',
   homeQuestion10: 'Ist das Project open-source?',
