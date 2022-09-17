@@ -17,45 +17,67 @@ internal class CrpgItemValueModel : ItemValueModel
         };
     }
 
-    public override float GetEquipmentValueFromTier(float tier)
+    // this method takes a value between 0 and 10 and outputs a value between 0 and 10
+    public float AdjustedTier(float tier)
     {
         const float a = 300;
         const float b = 60;
         const float c = 50;
-        return (float)(a * Math.Pow(tier, 2) + b * tier + c);
+        float tierPolynome = (float)(a * Math.Pow(tier, 2) + b * tier + c);
+        float tierPolynomeScaler = 10 / ((float)(a * Math.Pow(10, 2) + b * 10 + c));
+        return tierPolynome * tierPolynomeScaler;
+
+    }
+    public override float GetEquipmentValueFromTier(float tier)
+    {
+        return tier;
     }
 
     public override int CalculateValue(ItemObject item)
     {
-        return (int)GetEquipmentValueFromTier(item.Tierf);
+        int desiredArmorMaxPrice;
+        int desiredHorseMaxPrice;
+        int desiredBannerMaxPrice;
+        int desiredArmorMaxPrice;
+        return item.ItemComponent switch
+        {
+            ArmorComponent armorComponent => (int) GetEquipmentValueFromTier(item.Tierf),
+            HorseComponent horseComponent => (int) GetEquipmentValueFromTier(item.Tierf),
+            BannerComponent bannerComponent => (int) GetEquipmentValueFromTier(item.Tierf),
+            WeaponComponent weaponComponent => (int) GetEquipmentValueFromTier(item.Tierf),
+            _ => 0f,
+        };
     }
 
-    private float CalculateArmorTier(ArmorComponent armorComponent)
+    private void CalculateArmorTier(ArmorComponent armorComponent, out ItemObject.ItemTypeEnum armorType, out float armorTier)
     {
-        float tier = 1.2f * armorComponent.HeadArmor
+        float armorValue = 1.2f * armorComponent.HeadArmor
             + 1.0f * armorComponent.BodyArmor
             + 1.0f * armorComponent.ArmArmor
             + 1.0f * armorComponent.LegArmor;
-        float typeMultiplier = armorComponent.Item.ItemType switch
+        float bestArmorValue = armorComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.HeadArmor => 1.2f,
-            ItemObject.ItemTypeEnum.Cape => 1.8f,
-            ItemObject.ItemTypeEnum.BodyArmor => 1f,
-            ItemObject.ItemTypeEnum.HandArmor => 1.7f,
-            ItemObject.ItemTypeEnum.LegArmor => 1.6f,
-            ItemObject.ItemTypeEnum.HorseHarness => 2.5f,
+            ItemObject.ItemTypeEnum.HeadArmor => 54 * 1.2f,
+            ItemObject.ItemTypeEnum.Cape => 34f,
+            ItemObject.ItemTypeEnum.BodyArmor => 94f,
+            ItemObject.ItemTypeEnum.HandArmor => 25f,
+            ItemObject.ItemTypeEnum.LegArmor => 26f,
+            ItemObject.ItemTypeEnum.HorseHarness => 20f,
             _ => throw new ArgumentOutOfRangeException(),
         };
-
-        return tier * typeMultiplier * 0.1f - 0.4f;
+        armorType = armorComponent.Item.ItemType;
+        armorTier = 10 * armorValue / bestArmorValue;
     }
 
-    private float CalculateHorseTier(HorseComponent horseComponent)
+    private float CalculateHorseTier(HorseComponent horseComponent,out )
     {
-        return 0.05f * (1.5f * horseComponent.ChargeDamage
+            float horseValue =
+            1.5f * horseComponent.ChargeDamage
             + 1.0f * horseComponent.Speed
             + 0.6f * horseComponent.Maneuver
-            + 0.1f * horseComponent.HitPoints);
+            + 0.1f * horseComponent.HitPoints;
+            float bestHorseValue = 125.5f;
+            return 10 * horseValue / bestHorseValue;            
     }
 
     private float CalculateBannerTier(BannerComponent bannerComponent)
