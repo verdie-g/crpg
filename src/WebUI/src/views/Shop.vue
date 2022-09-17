@@ -112,7 +112,7 @@ import { notify } from '@/services/notifications-service';
 import ShopFiltersForm from '@/components/ShopFiltersForm.vue';
 import ShopFilters from '@/models/shop-filters';
 import ItemType from '@/models/item-type';
-import { filterItemsByType } from '@/services/item-service';
+import { filterItems } from '@/services/item-service';
 import Culture from '@/models/culture';
 import UserItem from '@/models/user-item';
 
@@ -164,10 +164,13 @@ export default class Shop extends Vue {
         this.$route.query.showAffordable !== undefined
           ? this.$route.query.showAffordable === 'true'
           : false,
+      shopSearchQuery: this.$route.query.shopSearchQuery
+        ? (this.$route.query.shopSearchQuery as string)
+        : '',
     };
   }
 
-  set filters({ type, culture, showOwned, showAffordable }: ShopFilters) {
+  set filters({ type, culture, showOwned, showAffordable, shopSearchQuery }: ShopFilters) {
     this.$router.push({
       query: {
         ...this.$route.query,
@@ -176,6 +179,7 @@ export default class Shop extends Vue {
         showOwned: showOwned === true ? undefined : false.toString(),
         showAffordable: showAffordable === true ? true.toString() : undefined,
         page: '1',
+        shopSearchQuery: shopSearchQuery,
       },
     });
   }
@@ -195,7 +199,7 @@ export default class Shop extends Vue {
         i.culture === Culture.Neutral
       );
     });
-    return filterItemsByType(filteredItems, this.filters.type);
+    return filterItems(filteredItems, this.filters.type, this.filters.shopSearchQuery);
   }
 
   get pageItems(): { item: Item; weaponIdx: number | undefined }[] {

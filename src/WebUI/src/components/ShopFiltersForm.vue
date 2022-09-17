@@ -1,5 +1,16 @@
 <template>
   <form>
+    <b-field>
+      <p class="control">
+        <b-input
+          placeholder="Search..."
+          type="search"
+          icon="search"
+          size="is-medium"
+          v-model.lazy="shopSearchQuery"
+        />
+      </p>
+    </b-field>
     <b-field label="Type">
       <b-dropdown v-model="type" aria-role="list">
         <template #trigger>
@@ -71,6 +82,7 @@ export default class ShopFiltersForm extends Vue {
       culture: null,
       showOwned: true,
       showAffordable: false,
+      shopSearchQuery: '',
     }),
   })
   readonly filter: ShopFilters;
@@ -127,12 +139,21 @@ export default class ShopFiltersForm extends Vue {
     this.emitInput({ showAffordable });
   }
 
+  get shopSearchQuery(): string {
+    return this.filter.shopSearchQuery;
+  }
+
+  set shopSearchQuery(shopSearchQuery: string) {
+    this.emitInput({ shopSearchQuery });
+  }
+
   emitInput(shopFilters: Partial<ShopFilters>) {
     this.$emit('input', {
       type: this.type,
       culture: this.culture,
       showOwned: this.showOwned,
       showAffordable: this.showAffordable,
+      shopSearchQuery: this.shopSearchQuery,
       ...shopFilters,
     });
   }

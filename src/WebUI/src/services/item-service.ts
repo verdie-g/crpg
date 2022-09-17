@@ -307,19 +307,22 @@ export function filterUserItemsFittingInSlot(items: UserItem[], slot: ItemSlot):
   return items.filter(i => itemTypesBySlot[slot].includes(i.baseItem.type));
 }
 
-export function filterItemsByType(
+export function filterItems(
   items: Item[],
-  type: ItemType | null
+  type: ItemType | null,
+  searchQuery: string
 ): { item: Item; weaponIdx: number | undefined }[] {
   if (type === null) {
-    return items.map(i => ({ item: i, weaponIdx: undefined }));
+    return items
+      .filter(i => matchesItem(i, searchQuery))
+      .map(i => ({ item: i, weaponIdx: undefined }));
   }
 
   const filteredItems = [];
   // eslint-disable-next-line no-restricted-syntax
   for (const item of items) {
     if (item.weapons.length === 0) {
-      if (item.type === type) {
+      if (item.type === type && matchesItem(item, searchQuery)) {
         filteredItems.push({ item, weaponIdx: undefined });
       }
 
@@ -327,12 +330,19 @@ export function filterItemsByType(
     }
 
     const weaponIdx = item.weapons.findIndex(w => itemTypeByWeaponClass[w.class] === type);
-    if (weaponIdx !== -1) {
+    if (weaponIdx !== -1 && matchesItem(item, searchQuery)) {
       filteredItems.push({ item, weaponIdx });
     }
   }
 
   return filteredItems;
+}
+
+function matchesItem(item: Item, searchQuery: string): boolean {
+  if (searchQuery.length === 0) return true;
+
+  const lowerCaseSearchQuery = searchQuery.toLowerCase();
+  return item.name.toLowerCase().includes(lowerCaseSearchQuery);
 }
 
 export function computeSalePrice(item: UserItem): number {
