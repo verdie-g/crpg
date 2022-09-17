@@ -43,16 +43,13 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             {
                 finalDamage *= _constants.PolearmThrustMultiplierAgainstCav;
             }
+
             // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
             else if (collisionData.IsAlternativeAttack && !attackInformation.IsFriendlyFire)
             {
                 finalDamage = 1f;
             }
-
         }
-
-        
-
 
         return finalDamage;
     }
