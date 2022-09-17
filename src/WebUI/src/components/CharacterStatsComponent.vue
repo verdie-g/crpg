@@ -23,7 +23,6 @@
         <b-numberinput
           size="is-small"
           :editable="false"
-          controls-position="compact"
           :value="character.generation"
           :controls="false"
         />
@@ -32,7 +31,6 @@
         <b-numberinput
           size="is-small"
           :editable="false"
-          controls-position="compact"
           :value="character.level"
           :controls="false"
         />
@@ -41,17 +39,16 @@
         <b-numberinput
           size="is-small"
           :editable="false"
-          controls-position="compact"
           :value="character.experience"
           :controls="false"
         />
       </b-field>
       <!-- TODO: align correctly -->
       <b-field horizontal label="KDA" class="characteristic-field">
-        <b-input size="is-small" :value="getKda()" readonly />
+        <b-input size="is-small" :value="getKda()" readonly :expanded="false" />
       </b-field>
       <b-field horizontal label="Playtime" class="characteristic-field">
-        <b-input size="is-small" :value="getPlaytime()" readonly />
+        <b-input size="is-small" :value="getPlaytime()" readonly :expanded="false" />
       </b-field>
     </div>
 
@@ -497,7 +494,7 @@ import CharacteristicConversion from '@/models/characteristic-conversion';
 import CharacterUpdate from '@/models/character-update';
 import { applyPolynomialFunction } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
-import { timestampToTimeString } from "@/utils/date";
+import { timestampToTimeString } from '@/utils/date';
 
 type CharacteristicSectionKey = keyof CharacterCharacteristics;
 type AttributeKey = keyof CharacterAttributes;
@@ -602,7 +599,7 @@ export default class CharacterCharacteristicsComponent extends Vue {
     if (statistics === null) {
       return undefined;
     }
-    return timestampToTimeString(statistics.playTime);
+    return timestampToTimeString(statistics.playTime, true);
   }
 
   convertCharacteristics(conversion: CharacteristicConversion): Promise<CharacterCharacteristics> {
@@ -861,8 +858,18 @@ export default class CharacterCharacteristicsComponent extends Vue {
 }
 </script>
 
-<style lang="scss">
-.characteristic-field {
+<style scoped lang="scss">
+@import '../assets/scss/mixins/breakpoints';
+
+::v-deep .characteristic-field {
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.25rem;
+
+  @include mobile {
+    flex-direction: column !important;
+  }
+
   &:not(:last-child) {
     margin-bottom: 0;
   }
@@ -872,16 +879,26 @@ export default class CharacterCharacteristicsComponent extends Vue {
   }
 
   .field-label {
+    flex-grow: 3;
+    flex-shrink: 0;
     padding-top: 0;
+    line-height: initial;
+  }
+  .field-body {
+    min-width: 115px;
+    flex-grow: 2;
+    line-height: initial;
+
+    input {
+      text-align: center;
+    }
   }
 
   button.button.is-small {
     border-radius: 0;
   }
 }
-</style>
 
-<style scoped lang="scss">
 .character-name {
   display: flex;
 
@@ -902,8 +919,6 @@ export default class CharacterCharacteristicsComponent extends Vue {
   margin-bottom: 20px;
 
   h2 {
-    margin-bottom: 1rem;
-
     .convert-button {
       margin-left: 8px;
       cursor: pointer;
