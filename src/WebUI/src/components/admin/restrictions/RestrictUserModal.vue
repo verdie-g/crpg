@@ -166,7 +166,7 @@ export default class RestrictUserModal extends Vue {
     this.pendingCreateRestriction = false;
     this.pendingLookupUser = true;
     try {
-      this.matchedUser = await userModule.getUserByPlatform(payload);
+      this.matchedUser = await userModule.getUserByPlatformUserId(payload);
     } catch (err) {
       this.matchedUser = null;
       console.error('Failed to lookup User by Platform and PlatformUserId.', payload);

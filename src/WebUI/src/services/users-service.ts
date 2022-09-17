@@ -20,7 +20,7 @@ export function deleteUser(): Promise<void> {
   return del('/users/self');
 }
 
-export function getUserByPlatform(platform: Platform, platformUserId: string): Promise<User> {
+export function getUserByPlatformUserId(platform: Platform, platformUserId: string): Promise<User> {
   return get(`/users?platform=${platform}&platformUserId=${platformUserId}`);
 }
 

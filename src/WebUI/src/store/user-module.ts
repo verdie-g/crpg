@@ -247,14 +247,14 @@ class UserModule extends VuexModule {
   }
 
   @Action
-  getUserByPlatform({
+  getUserByPlatformUserId({
     platform,
     platformUserId,
   }: {
     platform: Platform;
     platformUserId: string;
   }): Promise<User> {
-    return userService.getUserByPlatform(platform, platformUserId);
+    return userService.getUserByPlatformUserId(platform, platformUserId);
   }
 
   @Action({ commit: 'setUserItems' })
