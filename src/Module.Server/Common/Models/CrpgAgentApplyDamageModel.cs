@@ -31,11 +31,25 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             finalDamage /= MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.DurabilityFactorForShieldCoefs);
         }
 
+
+        /*
+        if (weapon.CurrentUsageItem.IsConsumable && weapon.CurrentUsageItem.IsPolearm)
+        {
+            Console.WriteLine("Ist Throwing WUrfspeer big");
+        }
+
         // For bashes (with and without shield)
         if (collisionData.IsAlternativeAttack && !weapon.IsEmpty)
         {
             finalDamage = 1f;
         }
+        else if (!attackInformation.IsVictimAgentHuman && collisionData.StrikeType == (int)StrikeType.Thrust && collisionData.DamageType == (int)DamageTypes.Pierce &&
+            (weapon.CurrentUsageItem.IsPolearm && !weapon.CurrentUsageItem.IsConsumable && !weapon.CurrentUsageItem.IsRangedWeapon && !weapon.CurrentUsageItem.IsAmmo))
+        {
+            Console.WriteLine("Damage boosted from " + finalDamage + " to " + finalDamage * 2);
+            finalDamage *= 2;
+        }
+        */
 
         return finalDamage;
     }
