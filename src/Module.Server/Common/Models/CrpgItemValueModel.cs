@@ -21,7 +21,7 @@ internal class CrpgItemValueModel : ItemValueModel
     public float GetAdjustedTier(float tier)
     {
         const float a = 300;
-        const float b = 1000;
+        const float b = 200;
         const float c = 50;
         float tierPolynome = (float)(a * Math.Pow(tier, 2) + b * tier + c);
         float tierPolynomeScaler = 10 / ((float)(a * Math.Pow(10, 2) + b * 10 + c));
@@ -60,7 +60,7 @@ internal class CrpgItemValueModel : ItemValueModel
         return item.ItemComponent.Item.ItemType switch
         {
             ItemObject.ItemTypeEnum.HeadArmor => (int)(GetAdjustedTier(item.Tierf) * (desiredHeadArmorMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.Cape => (int)(GetAdjustedTier(item.Tierf) * (desiredCapeArmorMaxPrice - 50 ) / 10 + 5000),
+            ItemObject.ItemTypeEnum.Cape => (int)(GetAdjustedTier(item.Tierf) * (desiredCapeArmorMaxPrice - 50 ) / 10 + 50),
             ItemObject.ItemTypeEnum.BodyArmor => (int)(GetAdjustedTier(item.Tierf) * (desiredBodyArmorMaxPrice - 50) / 10 + 50),
             ItemObject.ItemTypeEnum.HandArmor => (int)(GetAdjustedTier(item.Tierf) * (desiredHandArmorMaxPrice - 50) / 10 + 50),
             ItemObject.ItemTypeEnum.LegArmor => (int)(GetAdjustedTier(item.Tierf) * (desiredLegArmorMaxPrice - 50) / 10 + 50),
