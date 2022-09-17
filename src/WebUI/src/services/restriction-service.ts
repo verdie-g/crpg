@@ -7,7 +7,7 @@ export async function getRestrictions(): Promise<Restriction[]> {
   return restrictions.map(b => ({ ...b, createdAt: new Date(b.createdAt) }));
 }
 
-export function createRestriction(
+export function restrictUser(
   restrictedUserId: number,
   type: RestrictionType,
   reason: string,
