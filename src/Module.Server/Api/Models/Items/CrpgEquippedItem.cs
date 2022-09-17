@@ -1,7 +1,7 @@
 ﻿namespace Crpg.Module.Api.Models.Items;
 
 /// <summary>
-/// Copy of Crpg.Application.Items.Models.EquippedItemViewModel.
+/// Copy of Crpg.Application.Items.Models.GameEquippedItemViewModel.
 /// </summary>
 internal class CrpgEquippedItem
 {

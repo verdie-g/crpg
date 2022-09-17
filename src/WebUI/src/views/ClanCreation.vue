@@ -14,19 +14,31 @@
             />
           </b-field>
 
-          <b-field label="Color">
-            <b-input
-              type="color"
-              v-model="color"
-              :pattern="colorRegex"
-              required
-              style="width: 77px"
-            />
+          <b-field label="Primary Color">
+            <b-input type="color" v-model="primaryColor" required style="width: 77px" />
+          </b-field>
+
+          <b-field label="Seconday Color">
+            <b-input type="color" v-model="secondaryColor" required style="width: 77px" />
           </b-field>
         </b-field>
 
         <b-field label="Name">
           <b-input v-model="name" :minlength="nameMinLength" :maxlength="nameMaxLength" required />
+        </b-field>
+
+        <b-field>
+          <template #label>
+            Banner Key (generate one on
+            <a href="https://bannerlord.party" target="_blank">bannerlord.party</a>
+            )
+          </template>
+          <b-input
+            v-model="bannerKey"
+            :maxlength="bannerKeyMaxLength"
+            :pattern="bannerKeyRegex"
+            required
+          />
         </b-field>
 
         <b-button
@@ -46,6 +58,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import Constants from '../../../../data/constants.json';
 import clanModule from '@/store/clan-module';
 import { notify } from '@/services/notifications-service';
+import { hexColorToArgbInt } from '@/utils/color';
 
 @Component
 export default class ClanCreationComponent extends Vue {
@@ -56,17 +69,27 @@ export default class ClanCreationComponent extends Vue {
   tagMaxLength = Constants.clanTagMaxLength;
   tagRegex = Constants.clanTagRegex;
 
-  color = '#000000';
-  colorRegex = Constants.clanColorRegex;
+  primaryColor = '#000000';
+  secondaryColor = '#000000';
 
   name = '';
   nameMinLength = Constants.clanNameMinLength;
   nameMaxLength = Constants.clanNameMaxLength;
 
+  bannerKey = '';
+  bannerKeyMaxLength = Constants.clanBannerKeyMaxLength;
+  bannerKeyRegex = Constants.clanBannerKeyRegex;
+
   onSubmit() {
     this.creatingClan = true;
     clanModule
-      .createClan({ tag: this.tag, color: this.color, name: this.name })
+      .createClan({
+        tag: this.tag,
+        primaryColor: hexColorToArgbInt(this.primaryColor),
+        secondaryColor: hexColorToArgbInt(this.secondaryColor),
+        name: this.name,
+        bannerKey: this.bannerKey,
+      })
       .then(clan => {
         notify('Clan created');
         this.$router.push({ name: 'clan', params: { id: clan.id.toString() } });

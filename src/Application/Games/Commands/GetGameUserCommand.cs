@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using Crpg.Application.Bans.Models;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Models;
-using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Characters;
 using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Users;
@@ -19,13 +17,13 @@ namespace Crpg.Application.Games.Commands;
 /// <summary>
 /// Get or create a user with its character.
 /// </summary>
-public record GetGameUserCommand : IMediatorRequest<GameUser>
+public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
 {
     public Platform Platform { get; init; }
     public string PlatformUserId { get; init; } = default!;
     public string UserName { get; init; } = default!;
 
-    internal class Handler : IMediatorRequestHandler<GetGameUserCommand, GameUser>
+    internal class Handler : IMediatorRequestHandler<GetGameUserCommand, GameUserViewModel>
     {
         internal static readonly (string id, ItemSlot slot)[][] DefaultItemSets =
         {
@@ -116,11 +114,11 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
             _characterService = characterService;
         }
 
-        public async Task<Result<GameUser>> Handle(GetGameUserCommand req, CancellationToken cancellationToken)
+        public async Task<Result<GameUserViewModel>> Handle(GetGameUserCommand req, CancellationToken cancellationToken)
         {
             var user = await _db.Users
                 .Include(u => u.Characters.Where(c => c.Name == req.UserName).Take(1))
-                .Include(u => u.Bans.OrderByDescending(b => b.Id).Take(1))
+                .Include(u => u.ClanMembership)
                 .FirstOrDefaultAsync(u => u.Platform == req.Platform && u.PlatformUserId == req.PlatformUserId,
                     cancellationToken);
 
@@ -129,6 +127,17 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
                 user = CreateUser(req.Platform, req.PlatformUserId, req.UserName);
                 _db.Users.Add(user);
                 Logger.LogInformation("{0} joined ({1}#{2})", req.UserName, req.Platform, req.PlatformUserId);
+            }
+            else
+            {
+                // Get the last restriction by type.
+                await _db.Entry(user)
+                    .Collection(u => u.Restrictions)
+                    .Query()
+                    .GroupBy(r => r.Type)
+                    // ReSharper disable once SimplifyLinqExpressionUseMinByAndMaxBy (https://github.com/dotnet/efcore/issues/25566)
+                    .Select(g => g.OrderByDescending(r => r.CreatedAt).FirstOrDefault())
+                    .LoadAsync(cancellationToken);
             }
 
             Character? newCharacter = null;
@@ -144,7 +153,7 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
                 await _db.Entry(user.Characters[0])
                     .Collection(c => c.EquippedItems)
                     .Query()
-                    .Include(ei => ei.UserItem!.BaseItem)
+                    .Include(ei => ei.UserItem)
                     .LoadAsync(cancellationToken);
             }
 
@@ -155,8 +164,10 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
                 Logger.LogInformation("User '{0}' created character '{1}'", user.Id, newCharacter.Id);
             }
 
-            var gameUser = _mapper.Map<GameUser>(user);
-            gameUser.Ban = _mapper.Map<BanViewModel>(GetActiveBan(user.Bans.FirstOrDefault()));
+            var gameUser = _mapper.Map<GameUserViewModel>(user);
+            gameUser.Restrictions = gameUser.Restrictions
+                .Where(r => _dateTime.UtcNow < r.CreatedAt + r.Duration)
+                .ToArray();
             return new(gameUser);
         }
 
@@ -240,11 +251,6 @@ public record GetGameUserCommand : IMediatorRequest<GameUser>
             }
 
             return equippedItems;
-        }
-
-        private Ban? GetActiveBan(Ban? lastBan)
-        {
-            return lastBan != null && lastBan.CreatedAt + lastBan.Duration > _dateTime.UtcNow ? lastBan : null;
         }
     }
 }

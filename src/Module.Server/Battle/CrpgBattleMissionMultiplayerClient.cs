@@ -1,4 +1,5 @@
 ﻿using Crpg.Module.Common;
+using Crpg.Module.Common.Models;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -44,6 +45,11 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         base.OnMissionTick(dt);
     }
 
+    public override void AfterStart()
+    {
+        Mission.Current.SetMissionMode(TaleWorlds.Core.MissionMode.Battle, true);
+    }
+
     protected override void AddRemoveMessageHandlers(
         GameNetwork.NetworkMessageHandlerRegistererContainer registerer)
     {
@@ -68,6 +74,9 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
 
     private void HandleUpdateCrpgUser(UpdateCrpgUser message)
     {
+        // Hack to workaround not being able to spawn custom character.
+        CrpgAgentStatCalculateModel.MyUser = message.User;
+
         // Print a welcome message to new players. For convenience, new player are considered character of generation
         // 0 and small level. This doesn't handle the case of second characters for the same user but it's good enough.
         if (RoundComponent.RoundCount > 1 || RoundComponent.CurrentRoundState == MultiplayerRoundState.Ending)
@@ -86,8 +95,24 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     private void HandleRewardUser(CrpgRewardUser message)
     {
         var reward = message.Reward;
-        InformationManager.DisplayMessage(new InformationMessage($"Gained {reward.Experience} experience.", new Color(218, 112, 214)));
-        InformationManager.DisplayMessage(new InformationMessage($"Gained {reward.Gold} gold.", new Color(65, 105, 225)));
+        if (reward.Experience != 0)
+        {
+            InformationManager.DisplayMessage(new InformationMessage($"Gained {reward.Experience} experience.",
+                new Color(218, 112, 214)));
+        }
+
+        if (reward.Gold != 0)
+        {
+            InformationManager.DisplayMessage(new InformationMessage($"Gained {reward.Gold} gold.",
+                new Color(65, 105, 225)));
+        }
+
+        if (message.RepairCost != 0)
+        {
+            InformationManager.DisplayMessage(new InformationMessage($"Lost {message.RepairCost} gold for upkeep.",
+                new Color(0.74f, 0.28f, 0.01f)));
+        }
+
         if (reward.LevelUp)
         {
             InformationManager.DisplayMessage(new InformationMessage

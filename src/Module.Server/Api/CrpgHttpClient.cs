@@ -2,6 +2,7 @@
 using System.Net.Http.Headers;
 using System.Text;
 using Crpg.Module.Api.Models;
+using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Helpers.Json;
 using Newtonsoft.Json;
@@ -56,6 +57,11 @@ internal class CrpgHttpClient : ICrpgClient
             ["userName"] = userName,
         };
         return Get<CrpgUser>("games/users", queryParameters, cancellationToken);
+    }
+
+    public Task<CrpgResult<CrpgClan>> GetClanAsync(int clanId, CancellationToken cancellationToken = default)
+    {
+        return Get<CrpgClan>("games/clans/" + clanId, null, cancellationToken);
     }
 
     public Task<CrpgResult<CrpgUsersUpdateResponse>> UpdateUsersAsync(CrpgGameUsersUpdateRequest req, CancellationToken cancellationToken = default)
@@ -121,7 +127,7 @@ internal class CrpgHttpClient : ICrpgClient
 
             if (!res.IsSuccessStatusCode)
             {
-                throw new Exception(json);
+                throw new Exception($"{res.StatusCode}: {json}");
             }
 
             return JsonConvert.DeserializeObject<CrpgResult<TResponse>>(json, _serializerSettings);

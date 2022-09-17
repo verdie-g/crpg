@@ -59,7 +59,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             {
                 UpdateResults = results.Select(r => new UpdateGameUserResult
                 {
-                    User = _mapper.Map<GameUser>(r.user),
+                    User = _mapper.Map<GameUserViewModel>(r.user),
                     EffectiveReward = r.reward,
                     BrokenItems = r.brokenItems,
                 }).ToArray(),
@@ -70,7 +70,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
         {
             int[] characterIds = updates.Select(u => u.CharacterId).ToArray();
             var charactersById = await _db.Characters
-                .Include(c => c.User)
+                .Include(c => c.User!.ClanMembership)
                 .Where(c => characterIds.Contains(c.Id))
                 .ToDictionaryAsync(c => c.Id, cancellationToken);
 
@@ -78,7 +78,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             // to their respective character.
             await _db.EquippedItems
                 .Where(ei => characterIds.Contains(ei.CharacterId))
-                .Include(ei => ei.UserItem!.BaseItem)
+                .Include(ei => ei.UserItem)
                 .LoadAsync(cancellationToken);
 
             return charactersById;
@@ -117,15 +117,13 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
                 if (character.AutoRepair && character.User!.Gold >= itemToRepair.RepairCost)
                 {
                     character.User.Gold -= itemToRepair.RepairCost;
-                    continue;
                 }
 
                 brokenItems.Add(itemToRepair);
             }
 
-            return brokenItems.Count == 0
-                ? Task.FromResult(brokenItems)
-                : DowngradeItems(brokenItems, cancellationToken);
+            return Task.FromResult(brokenItems);
+            // TODO: downgrade items.
         }
 
         private async Task<List<GameUserBrokenItem>> DowngradeItems(List<GameUserBrokenItem> brokenItems, CancellationToken cancellationToken)

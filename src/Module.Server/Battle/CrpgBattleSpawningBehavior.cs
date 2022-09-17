@@ -12,11 +12,11 @@ namespace Crpg.Module.Battle;
 internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 {
     private readonly CrpgConstants _constants;
-    private readonly MultiplayerRoundController _roundController;
+    private readonly MultiplayerRoundController? _roundController;
     private MissionTimer? _spawnTimer;
     private bool _botsSpawned;
 
-    public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController roundController)
+    public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController? roundController)
     {
         _constants = constants;
         _roundController = roundController;
@@ -25,20 +25,26 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     public override void Initialize(SpawnComponent spawnComponent)
     {
         base.Initialize(spawnComponent);
-        _roundController.OnRoundStarted += RequestStartSpawnSession;
-        _roundController.OnRoundEnding += RequestStopSpawnSession;
+        if (_roundController != null)
+        {
+            _roundController.OnRoundStarted += RequestStartSpawnSession;
+            _roundController.OnRoundEnding += RequestStopSpawnSession;
+        }
     }
 
     public override void Clear()
     {
         base.Clear();
-        _roundController.OnRoundStarted -= RequestStartSpawnSession;
-        _roundController.OnRoundEnding -= RequestStopSpawnSession;
+        if (_roundController != null)
+        {
+            _roundController.OnRoundStarted -= RequestStartSpawnSession;
+            _roundController.OnRoundEnding -= RequestStopSpawnSession;
+        }
     }
 
     public override void OnTick(float dt)
     {
-        if (IsSpawningEnabled && IsRoundInProgress())
+        if ((IsSpawningEnabled && IsRoundInProgress()) || _roundController == null)
         {
             SpawnAgents();
         }
@@ -59,17 +65,17 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
     protected override bool IsRoundInProgress()
     {
-        return _roundController.IsRoundInProgress;
+        return _roundController?.IsRoundInProgress ?? false;
     }
 
     protected override void SpawnAgents()
     {
-        if (_spawnTimer!.Check())
+        if (_roundController != null && _spawnTimer!.Check())
         {
             return;
         }
 
-        if (!_botsSpawned)
+        if (!_botsSpawned || _roundController == null)
         {
             SpawnBotAgents();
             _botsSpawned = true;
@@ -112,7 +118,9 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
             BasicCultureObject teamCulture = team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
             int numberOfBots = Mission.AttackerTeam == team ? botsTeam1 : botsTeam2;
-            for (int i = 0; i < numberOfBots; i += 1)
+            int botsAlive = team.ActiveAgents.Count(a => a.IsAIControlled && a.IsHuman);
+
+            for (int i = 0 + botsAlive; i < numberOfBots; i += 1)
             {
                 MultiplayerClassDivisions.MPHeroClass botClass = MultiplayerClassDivisions
                     .GetMPHeroClasses()
@@ -188,6 +196,26 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 : SpawnComponent.GetSpawnFrame(missionPeer.Team, hasMount, true);
             Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
 
+            uint color1;
+            uint color2;
+            // Banner? banner;
+            if (crpgRepresentative.Clan != null)
+            {
+                color1 = crpgRepresentative.Clan.PrimaryColor;
+                color2 = crpgRepresentative.Clan.SecondaryColor;
+                // TryParseBanner(crpgRepresentative.Clan.BannerKey, out banner);
+            }
+            else
+            {
+                color1 = missionPeer.Team == Mission.AttackerTeam
+                    ? teamCulture.Color
+                    : teamCulture.ClothAlternativeColor;
+                color2 = missionPeer.Team == Mission.AttackerTeam
+                    ? teamCulture.Color2
+                    : teamCulture.ClothAlternativeColor2;
+                // banner = null;
+            }
+
             AgentBuildData agentBuildData = new AgentBuildData(character)
                 .MissionPeer(missionPeer)
                 .Equipment(characterEquipment)
@@ -195,12 +223,9 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 .Team(missionPeer.Team)
                 .VisualsIndex(0)
                 .IsFemale(missionPeer.Peer.IsFemale)
-                .ClothingColor1(missionPeer.Team == Mission.AttackerTeam
-                    ? teamCulture.Color
-                    : teamCulture.ClothAlternativeColor)
-                .ClothingColor2(missionPeer.Team == Mission.AttackerTeam
-                    ? teamCulture.Color2
-                    : teamCulture.ClothAlternativeColor2)
+                .ClothingColor1(color1)
+                .ClothingColor2(color2)
+                // .Banner(banner)
                 .BodyProperties(GetBodyProperties(missionPeer, teamCulture))
                 .InitialPosition(in spawnFrame.origin)
                 .InitialDirection(in initialDirection);
@@ -208,8 +233,11 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             Agent agent = Mission.SpawnAgent(agentBuildData);
             agent.WieldInitialWeapons();
 
-            missionPeer.SpawnCountThisRound += 1;
-            crpgRepresentative.SpawnTeamThisRound = missionPeer.Team;
+            if (_roundController != null)
+            {
+                missionPeer.SpawnCountThisRound += 1;
+                crpgRepresentative.SpawnTeamThisRound = missionPeer.Team;
+            }
         }
     }
 
@@ -234,6 +262,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         skills.SetPropertyValue(DefaultSkills.Riding, characteristics.Skills.Riding * 20);
         skills.SetPropertyValue(CrpgSkills.WeaponMaster, characteristics.Skills.WeaponMaster);
         skills.SetPropertyValue(CrpgSkills.MountedArchery, characteristics.Skills.MountedArchery);
+        skills.SetPropertyValue(CrpgSkills.Shield, characteristics.Skills.Shield);
 
         skills.SetPropertyValue(DefaultSkills.OneHanded, characteristics.WeaponProficiencies.OneHanded);
         skills.SetPropertyValue(DefaultSkills.TwoHanded, characteristics.WeaponProficiencies.TwoHanded);
@@ -252,7 +281,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         foreach (var equippedItem in equippedItems)
         {
             var index = ItemSlotToIndex[equippedItem.Slot];
-            AddEquipment(equipment, index, equippedItem.UserItem.BaseItem.Id);
+            AddEquipment(equipment, index, equippedItem.UserItem.BaseItemId);
         }
 
         return equipment;
@@ -269,6 +298,20 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
         EquipmentElement equipmentElement = new(itemObject);
         equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
+    }
+
+    private bool TryParseBanner(string bannerKey, out Banner? banner)
+    {
+        try
+        {
+            banner = new Banner(bannerKey);
+            return true;
+        }
+        catch
+        {
+            banner = null;
+            return false;
+        }
     }
 
     private static readonly Dictionary<CrpgItemSlot, EquipmentIndex> ItemSlotToIndex = new()

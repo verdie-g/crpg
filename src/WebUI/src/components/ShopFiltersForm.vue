@@ -47,6 +47,10 @@
     <b-field>
       <b-checkbox v-model="showOwned">Show owned items</b-checkbox>
     </b-field>
+
+    <b-field>
+      <b-checkbox v-model="showAffordable">Show only affordable items</b-checkbox>
+    </b-field>
   </form>
 </template>
 
@@ -62,7 +66,12 @@ import Culture from '@/models/culture';
 export default class ShopFiltersForm extends Vue {
   @Model('input', {
     type: Object,
-    default: (): ShopFilters => ({ type: null, culture: null, showOwned: true }),
+    default: (): ShopFilters => ({
+      type: null,
+      culture: null,
+      showOwned: true,
+      showAffordable: false,
+    }),
   })
   readonly filter: ShopFilters;
 
@@ -110,11 +119,20 @@ export default class ShopFiltersForm extends Vue {
     this.emitInput({ showOwned });
   }
 
+  get showAffordable(): boolean {
+    return this.filter.showAffordable;
+  }
+
+  set showAffordable(showAffordable: boolean) {
+    this.emitInput({ showAffordable });
+  }
+
   emitInput(shopFilters: Partial<ShopFilters>) {
     this.$emit('input', {
       type: this.type,
       culture: this.culture,
       showOwned: this.showOwned,
+      showAffordable: this.showAffordable,
       ...shopFilters,
     });
   }

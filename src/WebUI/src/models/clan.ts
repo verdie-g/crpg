@@ -1,6 +1,8 @@
 export default interface Clan {
   id: number;
   tag: string;
-  color: string;
+  primaryColor: string;
+  secondaryColor: string;
   name: string;
+  bannerKey: string;
 }

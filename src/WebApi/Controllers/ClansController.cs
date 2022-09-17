@@ -1,4 +1,7 @@
-﻿using Crpg.Application.Clans.Commands;
+﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Crpg.Application.Clans.Commands;
 using Crpg.Application.Clans.Models;
 using Crpg.Application.Clans.Queries;
 using Crpg.Application.Common.Results;
@@ -33,16 +36,16 @@ public class ClansController : BaseController
     /// Update a clan member.
     /// </summary>
     /// <param name="clanId">Clan id.</param>
-    /// <param name="memberId">Member id.</param>
+    /// <param name="userId">User id.</param>
     /// <param name="req">The entire member with the updated values.</param>
     /// <returns>The updated member.</returns>
     /// <response code="200">Updated.</response>
     /// <response code="400">Bad Request.</response>
     [HttpPut("{clanId}/members/{userId}")]
     public Task<ActionResult<Result<ClanMemberViewModel>>> UpdateClanMember([FromRoute] int clanId,
-        [FromRoute] int memberId, [FromBody] UpdateClanMemberCommand req)
+        [FromRoute] int userId, [FromBody] UpdateClanMemberCommand req)
     {
-        req = req with { UserId = CurrentUser.User!.Id, ClanId = clanId, MemberId = memberId };
+        req = req with { UserId = CurrentUser.User!.Id, ClanId = clanId, MemberId = userId };
         return ResultToActionAsync(Mediator.Send(req));
     }
 

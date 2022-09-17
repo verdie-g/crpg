@@ -1,4 +1,5 @@
 using Crpg.Module.Common;
+using Crpg.Module.Common.Warmup;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Source.Missions;
@@ -92,9 +93,10 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MissionAgentPanicHandler(),
                     new EquipmentControllerLeaveLogic(),
                     new MultiplayerPreloadHelper(),
+                    new CrpgWarmupComponent(_constants),
 #if CRPG_SERVER
                     roundController,
-                    new CrpgBattleMissionMultiplayer(crpgClient),
+                    new CrpgBattleMissionMultiplayer(crpgClient, _constants),
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
                     new SpawnComponent(new BattleSpawnFrameBehavior(), new CrpgBattleSpawningBehavior(_constants, roundController)),
                     new AgentHumanAILogic(), // bot intelligence

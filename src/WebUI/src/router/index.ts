@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter, { NavigationGuard, NavigationGuardNext, Route } from 'vue-router';
 import queryString, { ParsedQuery } from 'query-string';
 import Role from '@/models/role';
-import { getDecodedToken, getToken } from '@/services/auth-service';
+import { getDecodedToken, getToken, signInSilent } from '@/services/auth-service';
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
@@ -27,7 +27,13 @@ function combineGuards(...guards: NavigationGuard[]): NavigationGuard {
 
 const isSignedInGuard: NavigationGuard = async (to, from, next) => {
   if ((await getToken()) === null) {
-    next('/');
+    try {
+      const token = await signInSilent();
+      if (token) next();
+      else next('/');
+    } catch {
+      next('/');
+    }
   } else {
     next();
   }
