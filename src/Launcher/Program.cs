@@ -47,6 +47,9 @@ internal static class Program
         }
 
         string? steamInstallPath = (string?)Registry.GetValue(KeyName, "SteamPath", null);
+        string exeRelativePath = @"\bin\Win64_Shipping_Client\Bannerlord.exe";
+
+        bool executableFound = false;
         if (!crpgLauncherConfigFound)
         {
             if (steamInstallPath != null)
@@ -72,19 +75,23 @@ internal static class Program
                     string? path = libraryVdf.Value[index]?["path"]?.ToString();
                     path += @"\steamapps\common\Mount & Blade II Bannerlord";
                     steamBlPaths.Add(path);
+
                     counter++;
                 }
 
                 foreach (string steamBlPath in steamBlPaths)
                 {
-                    if (Directory.Exists(steamBlPath))
+                    if (Directory.Exists(steamBlPath) && File.Exists(steamBlPath + exeRelativePath))
                     {
                         targetPath = steamBlPath;
+                        executableFound = true;
                         break;
                     }
                 }
             }
         }
+
+        string blPathExe = targetPath + exeRelativePath;
 
         if (targetPath == string.Empty)
         {
@@ -109,8 +116,7 @@ internal static class Program
             }
         }
 
-        string blPathExe = targetPath + @"\bin\Win64_Shipping_Client\Bannerlord.exe";
-        if (!File.Exists(blPathExe))
+        if (!File.Exists(blPathExe) && !executableFound)
         {
             MessageBox.Show("Could not find your Bannerlord.exe", "Bannerlord.exe not found",
                 MessageBoxButtons.OK,
