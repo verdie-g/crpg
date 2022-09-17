@@ -31,50 +31,28 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             finalDamage /= MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.DurabilityFactorForShieldCoefs);
         }
 
-        if(!weapon.IsEmpty)
+        if (!weapon.IsEmpty)
         {
-            if (weapon.CurrentUsageItem.IsConsumable && weapon.CurrentUsageItem.IsPolearm)
+            bool weaponHasThrowingMode = weapon.GetConsumableIfAny(out var consumableWeapon);
+            bool weaponIsMelee = !weapon.CurrentUsageItem.IsConsumable && weapon.CurrentUsageItem.IsMeleeWeapon;
+            bool weaponIsPolearm = weapon.CurrentUsageItem.IsPolearm;
+            bool wasThrustAttackPierceDamage = collisionData.StrikeType == (int)StrikeType.Thrust && collisionData.DamageType == (int)DamageTypes.Pierce;
+
+            // Bonus dmg with spears against horses (does only work with "main" spears - not javelins etc)
+            if (!attackInformation.IsVictimAgentHuman && !attackInformation.DoesAttackerHaveMountAgent && weaponIsPolearm && weaponIsMelee && wasThrustAttackPierceDamage && !weaponHasThrowingMode)
             {
-                Console.WriteLine("Ist Throwing WUrfspeer big");
+                finalDamage *= _constants.PolearmThrustMultiplierAgainstCav;
             }
-            if (weapon.CurrentUsageItem.IsPolearm)
+            // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
+            else if (collisionData.IsAlternativeAttack && !attackInformation.IsFriendlyFire)
             {
-                Console.WriteLine("Ist IsPolearm");
+                finalDamage = 1f;
             }
-            if (collisionData.StrikeType == (int)StrikeType.Thrust)
-            {
-                Console.WriteLine("Ist Thrust");
-            }
-            if (collisionData.DamageType == (int)DamageTypes.Pierce)
-            {
-                Console.WriteLine("Ist Pierce");
-            }
-            if (weapon.CurrentUsageItem.IsRangedWeapon)
-            {
-                Console.WriteLine("Ist IsRangedWeapon");
-            }
-            if (weapon.CurrentUsageItem.IsAmmo)
-            {
-                Console.WriteLine("Ist IsAmmo");
-            }
-            if (weapon.CurrentUsageItem.IsConsumable)
-            {
-                Console.WriteLine("Ist IsConsumable");
-            }
+
         }
 
-        // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
-        if (collisionData.IsAlternativeAttack && !weapon.IsEmpty && !attackInformation.IsFriendlyFire)
-        {
-            finalDamage = 1f;
-        }
-        else if (!weapon.IsEmpty && !attackInformation.IsVictimAgentHuman && !attackInformation.DoesAttackerHaveMountAgent && collisionData.StrikeType == (int)StrikeType.Thrust && collisionData.DamageType == (int)DamageTypes.Pierce &&
-            (weapon.CurrentUsageItem.IsPolearm && !weapon.CurrentUsageItem.IsConsumable && !weapon.CurrentUsageItem.IsRangedWeapon && !weapon.CurrentUsageItem.IsAmmo))
-        {
-            Console.WriteLine("Damage boosted from " + finalDamage + " to " + finalDamage * 2);
-            finalDamage *= _constants.PolearmThrustMultiplierAgainstCav;
-        }
         
+
 
         return finalDamage;
     }
