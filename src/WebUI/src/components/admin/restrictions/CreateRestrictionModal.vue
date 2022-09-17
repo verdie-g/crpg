@@ -138,7 +138,7 @@ export default class CreateRestrictionModal extends Vue {
   debouncedInputHandler: () => any | undefined;
 
   created(): void {
-    this.debouncedInputHandler = debounce(() => this.handleDebouncedInput(), 2000);
+    this.debouncedInputHandler = debounce(() => this.handleDebouncedInput(), 500);
   }
 
   @Watch('selectedPlatform')
