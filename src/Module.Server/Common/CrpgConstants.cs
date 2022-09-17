@@ -36,7 +36,6 @@ internal class CrpgConstants
     public float[] CoverageFactorForShieldCoefs { get; set; } = Array.Empty<float>();
     public float[] MountedRangedSkillInaccurary { get; set; } = Array.Empty<float>();
     public float[] ShieldDefendStunMultiplierForSkill { get; set; } = Array.Empty<float>();
-    public float PolearmThrustMultiplierAgainstCav { get; set; }
     public float DefaultRating { get; set; }
     public float DefaultRatingDeviation { get; set; }
     public float DefaultRatingVolatility { get; set; }

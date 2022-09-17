@@ -33,7 +33,6 @@
   "coverageFactorForShieldCoefs": [0.12, 0.0],
   "mountedRangedSkillInaccurary": [0.1, 0.15, 0.228, 0.334, 0.468, 0.63, 0.82, 1.038],
   "shieldDefendStunMultiplierForSkill": [2, 1.6, 1.26, 0.98, 0.76, 0.6, 0.5, 0.46],
-  "polearmThrustMultiplierAgainstCav": 2.0,
   "defaultRating": 1500.0,
   "defaultRatingDeviation": 350.0,
   "defaultRatingVolatility": 0.06,

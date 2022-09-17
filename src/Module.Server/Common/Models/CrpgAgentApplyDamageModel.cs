@@ -33,15 +33,10 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
 
         if (!weapon.IsEmpty)
         {
-            bool weaponHasThrowingMode = weapon.GetConsumableIfAny(out var consumableWeapon);
-            bool weaponIsMelee = !weapon.CurrentUsageItem.IsConsumable && weapon.CurrentUsageItem.IsMeleeWeapon;
-            bool weaponIsPolearm = weapon.CurrentUsageItem.IsPolearm;
-            bool wasThrustAttackPierceDamage = collisionData.StrikeType == (int)StrikeType.Thrust && collisionData.DamageType == (int)DamageTypes.Pierce;
-
             // Bonus dmg with spears against horses (does only work with "main" spears - not javelins etc)
-            if (!attackInformation.IsVictimAgentHuman && !attackInformation.DoesAttackerHaveMountAgent && weaponIsPolearm && weaponIsMelee && wasThrustAttackPierceDamage && !weaponHasThrowingMode)
+            if (!attackInformation.IsVictimAgentHuman && !attackInformation.DoesAttackerHaveMountAgent && weapon.CurrentUsageItem.IsPolearm && !weapon.CurrentUsageItem.IsConsumable && weapon.CurrentUsageItem.IsMeleeWeapon && collisionData.StrikeType == (int)StrikeType.Thrust && collisionData.DamageType == (int)DamageTypes.Pierce && !weapon.GetConsumableIfAny(out var consumableWeapon))
             {
-                finalDamage *= _constants.PolearmThrustMultiplierAgainstCav;
+                finalDamage *= 1.75f; // 75% bonus dmg against horses
             }
 
             // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
