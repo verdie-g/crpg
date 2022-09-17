@@ -164,9 +164,13 @@ internal static class Program
             File.WriteAllText(configPath, targetPath);
         }
 
-        if (updateAvailable)
+
+        string modulesPath = targetPath + @"\Modules";
+        string crpgPath = modulesPath + @"\cRPG";
+
+        if (updateAvailable || !Directory.Exists(crpgPath))
         {
-            bool updated = await UpdateFiles(DownloadUrl, targetPath);
+            bool updated = await UpdateFiles(DownloadUrl, crpgPath);
             if (updated)
             {
                 File.WriteAllText(versionPath, tag ?? "error");
@@ -200,7 +204,7 @@ internal static class Program
         var res = await httpClient.SendAsync(req, HttpCompletionOption.ResponseHeadersRead);
         if (res.StatusCode == HttpStatusCode.NotModified)
         {
-            return (false, null);
+            return (false, tag);
         }
 
         try
@@ -219,10 +223,8 @@ internal static class Program
         return (true, tag);
     }
 
-    private static async Task<bool> UpdateFiles(string downloadUrl, string targetPath)
+    private static async Task<bool> UpdateFiles(string downloadUrl, string crpgPath)
     {
-        string modulesPath = targetPath + @"\Modules";
-        string crpgPath = modulesPath + @"\cRPG";
 
         string timeStamp = DateTime.Now.ToFileTime().ToString();
         string downloadPath = Path.GetTempPath() + @"\cRPG" + timeStamp + ".zip";
