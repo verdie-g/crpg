@@ -35,26 +35,26 @@ internal class CrpgItemValueModel : ItemValueModel
 
     public override int CalculateValue(ItemObject item)
     {
-        int desiredHeadArmorMaxPrice = 9754;
-        int desiredCapeArmorMaxPrice = 11441;
-        int desiredBodyArmorMaxPrice = 31632;
-        int desiredHandArmorMaxPrice = 6000;
-        int desiredLegArmorMaxPrice = 4662;
-        int desiredHorseHarnessMaxPrice = 5000;
-        int desiredHorseMaxPrice = 59405;
-        int desiredShieldMaxPrice= 9235;
-        int desiredBowMaxPrice = 12264;
-        int desiredCrossbowMaxPrice = 19755;
-        int desiredOneHandedWeaponMaxPrice = 9100;
-        int desiredTwoHandedWeaponMaxPrice = 14000;
-        int desiredPolearmMaxPrice= 16175;
-        int desiredThrownMaxPrice = 7385;
-        int desiredArrowsMaxPrice = 3858;
-        int desiredBoltsMaxPrice = 8195;
+        int desiredHeadArmorMaxPrice = 9754; // work as intended
+        int desiredCapeArmorMaxPrice = 11441; // work as intended
+        int desiredBodyArmorMaxPrice = 31632; // work as intended
+        int desiredHandArmorMaxPrice = 6000; // work as intended
+        int desiredLegArmorMaxPrice = 4662; // work as intended
+        int desiredHorseHarnessMaxPrice = 20000; // work as intended
+        int desiredHorseMaxPrice = 14000; // work as intended
+        int desiredShieldMaxPrice = 9235; // work as intended
+        int desiredBowMaxPrice = 12264; // work as intended
+        int desiredCrossbowMaxPrice = 18000; // work as intended
+        int desiredOneHandedWeaponMaxPrice = 9100;  // does not work as intended but may mean that onehanded are to be buffed
+        int desiredTwoHandedWeaponMaxPrice = 14000; // kinda work as intended but no by design
+        int desiredPolearmMaxPrice = 16175; // kinda work as intended but not by design
+        int desiredThrownMaxPrice = 7385; // kinda work as intended but not by design
+        int desiredArrowsMaxPrice = 3858; // work as intended
+        int desiredBoltsMaxPrice = 16000; // work as intended yet
         int desiredBannerMaxPrice = 50;
-        if (item?.ItemComponent?.Item?.ItemType == null)
+        if (item!.ItemComponent?.Item?.ItemType == null)
         {
-            return 0;
+            return (int)(GetAdjustedTier(item.Tierf) * (desiredHorseMaxPrice - 50) / 10 + 50);
         }
 
         return item.ItemComponent.Item.ItemType switch
@@ -65,7 +65,6 @@ internal class CrpgItemValueModel : ItemValueModel
             ItemObject.ItemTypeEnum.HandArmor => (int)(GetAdjustedTier(item.Tierf) * (desiredHandArmorMaxPrice - 50) / 10 + 50),
             ItemObject.ItemTypeEnum.LegArmor => (int)(GetAdjustedTier(item.Tierf) * (desiredLegArmorMaxPrice - 50) / 10 + 50),
             ItemObject.ItemTypeEnum.HorseHarness => (int) (GetAdjustedTier(item.Tierf) * (desiredHorseHarnessMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.Horse => (int)(GetAdjustedTier(item.Tierf) * (desiredHorseMaxPrice - 50) / 10 + 50),
             ItemObject.ItemTypeEnum.Shield => (int)(GetAdjustedTier(item.Tierf) * (desiredShieldMaxPrice - 50) / 10 + 50),
             ItemObject.ItemTypeEnum.Bow => (int)(GetAdjustedTier(item.Tierf) * (desiredBowMaxPrice - 50) / 10 + 50),
             ItemObject.ItemTypeEnum.Crossbow =>(int)(GetAdjustedTier(item.Tierf) * (desiredCrossbowMaxPrice - 50) / 10 + 50),
@@ -76,7 +75,7 @@ internal class CrpgItemValueModel : ItemValueModel
             ItemObject.ItemTypeEnum.Arrows => (int)(GetAdjustedTier(item.Tierf) * (desiredArrowsMaxPrice - 50) / 10 + 50),
             ItemObject.ItemTypeEnum.Bolts => (int)(GetAdjustedTier(item.Tierf) * (desiredBoltsMaxPrice - 50) / 10 + 50),
             ItemObject.ItemTypeEnum.Banner => (int)(GetAdjustedTier(item.Tierf) * (desiredBannerMaxPrice -50) / 10 + 50),
-            _ => 0,
+            _ => 6969,
         };
     }
 
@@ -108,7 +107,7 @@ internal class CrpgItemValueModel : ItemValueModel
             + 0.6f * horseComponent.Maneuver
             + 0.1f * horseComponent.HitPoints;
             float bestHorseValue = 125.5f;
-            return 10 * horseValue / bestHorseValue;
+            return 10f * horseValue / bestHorseValue;
     }
 
     private float CalculateBannerTier(BannerComponent bannerComponent)
@@ -192,10 +191,10 @@ internal class CrpgItemValueModel : ItemValueModel
 
         if (weaponComponent.Weapons.Count <= 1)
         {
-            return maxTier;
+            return maxTier * 1.5f;
         }
 
-        return maxTier * (float)Math.Pow(1f + (secondMaxTier + 1.5f) / (maxTier + 2.5f), 0.2f);
+        return maxTier * (float)Math.Pow(1f + (secondMaxTier + 1.5f) / (maxTier + 2.5f), 0.2f) * 1.5f;
     }
 
     private float CalculateDamageTypeFactor(DamageTypes damageType)
@@ -232,13 +231,14 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateRangedWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        float extra = 0f;
-        /*if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
+        float scaler = 1440257f;
+
+        if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
-            extra += -3.0f;
+            scaler = 4094370f;
         }
 
-        if (weapon.ItemUsage.Contains("light"))
+        /*if (weapon.ItemUsage.Contains("light"))
         {
             extra += 1.25f;
         }
@@ -253,7 +253,7 @@ internal class CrpgItemValueModel : ItemValueModel
             * weapon.SwingSpeed
             * weapon.MissileSpeed
             * weapon.Accuracy
-            / 1440257f;
+            / scaler;
     }
 
     private float CalculateShieldTier(WeaponComponent weaponComponent)
@@ -263,12 +263,13 @@ internal class CrpgItemValueModel : ItemValueModel
                 1.0f * weapon.MaxDataValue
                 + 3.0f * weapon.BodyArmor
                 + 1.0f * weapon.ThrustSpeed)
-            / (6f + weaponComponent.Item.Weight) * 0.10f;
+            / (6f + weaponComponent.Item.Weight) / 48.6419f * 10f;
     }
 
     private float CalculateAmmoTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        return 100f * weapon.MissileDamage * weapon.MissileDamage * weapon.MaxDataValue / 368f;
+        return 10f * weapon.MissileDamage * weapon.MissileDamage * weapon.MaxDataValue / 368f * CalculateDamageTypeFactor(weapon.ThrustDamageType);
+        ;
     }
 }
