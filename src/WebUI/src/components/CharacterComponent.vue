@@ -152,7 +152,7 @@
       </b-button>
     </div>
 
-    <b-modal :active.sync="isReplaceItemModalActive" scroll="keep" ref="replaceItemModal">
+    <b-modal :active.sync="isReplaceItemModalActive" ref="replaceItemModal">
       <div class="replace-item-modal is-flex is-flex-direction-column px-4 py-4">
         <div class="is-flex-shrink-1">
           <h3 class="is-size-4 mb-2">
@@ -533,6 +533,7 @@ export default class CharacterComponent extends Vue {
 }
 
 .replace-item-modal {
+  overflow-y: auto;
   background-color: #fff; // TODO: replace with bulma variable
   // inherit modal height
   max-height: inherit;
