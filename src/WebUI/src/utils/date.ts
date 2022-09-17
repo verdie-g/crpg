@@ -1,4 +1,4 @@
-export function timestampToTimeString(ts: number): string {
+export function timestampToTimeString(ts: number, concise = false): string {
   const date = new Date(ts);
   const year = date.getFullYear() - 1970;
   const month = date.getMonth();
@@ -26,6 +26,10 @@ export function timestampToTimeString(ts: number): string {
 
   if (minutes !== 0) {
     timeParts.push(`${minutes} minute${minutes > 1 ? 's' : ''}`);
+  }
+
+  if (concise) {
+    return timeParts.slice(0, 2).join(' ');
   }
 
   return timeParts.join(' ');
