@@ -93,7 +93,7 @@
                 type="is-danger"
                 :disabled="!matchedUser || pendingCreateRestriction"
                 :loading="pendingCreateRestriction"
-                @click.native="banTargetUser"
+                @click.native="restrictTargetUser"
               >
                 Restrict
               </b-button>
@@ -176,7 +176,7 @@ export default class RestrictUserModal extends Vue {
     }
   }
 
-  async banTargetUser(): Promise<void> {
+  async restrictTargetUser(): Promise<void> {
     const restrictedUserId = this.matchedUser?.id;
     const reason = this.newRestrictionReason;
     const type = this.newRestrictionType;
