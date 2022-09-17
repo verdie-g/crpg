@@ -47,7 +47,7 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             (weapon.CurrentUsageItem.IsPolearm && !weapon.CurrentUsageItem.IsConsumable && !weapon.CurrentUsageItem.IsRangedWeapon && !weapon.CurrentUsageItem.IsAmmo))
         {
             Console.WriteLine("Damage boosted from " + finalDamage + " to " + finalDamage * 2);
-            finalDamage *= 2;
+            finalDamage *= _constants.PolearmThrustMultiplierAgainstCav;
         }
         */
 
