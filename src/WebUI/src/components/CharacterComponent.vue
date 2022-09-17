@@ -158,28 +158,25 @@
           <h3 class="is-size-4 mb-2">
             Replace {{ userItemToReplaceSlot }}
             <span v-if="userItemToReplace" :class="userItemRankClass(userItemToReplace)">
-              (<strong>{{ userItemToReplace.baseItem.name }}</strong>)
+              (
+              <strong>{{ userItemToReplace.baseItem.name }}</strong>
+              )
             </span>
           </h3>
         </div>
         <div class="columns">
-          <div class="column is-flex is-flex-direction-column is-align-items-center" v-if="userItemToReplace">
+          <div
+            class="column is-flex is-flex-direction-column is-align-items-center"
+            v-if="userItemToReplace"
+          >
             <div class="is-flex-grow-1 is-align-self-center is-flex is-align-items-center">
               <div class="user-item">
-                <display-user-item
-                  :user-item="userItemToReplace"
-                />
+                <display-user-item :user-item="userItemToReplace" />
               </div>
             </div>
             <div class="is-flex-shrink-1 columns mt-3">
               <div class="column">
-                <b-button
-                  size="is-medium"
-                  expanded
-                  @click="unequipItem"
-                >
-                  Unequip
-                </b-button>
+                <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
               </div>
               <div class="column">
                 <b-button
@@ -208,24 +205,23 @@
             </div>
           </div>
           <div class="column">
-            <div v-if="fittingUserItems.length" class="user-items columns is-multiline is-justify-content-end">
+            <div
+              v-if="fittingUserItems.length"
+              class="user-items columns is-multiline is-justify-content-end"
+            >
               <div
                 class="column is-narrow user-item user-item__action is-relative"
                 v-for="userItem in fittingUserItems"
                 v-bind:key="userItem.id"
                 @click="selectedUserItem = userItem"
               >
-                <display-user-item
-                  :user-item="userItem"
-                />
+                <display-user-item :user-item="userItem" />
                 <div
                   v-if="selectedUserItem && selectedUserItem.id === userItem.id"
                   class="confirm-selection__overlay px-2 py-3 is-flex is-flex-direction-column is-align-items-center is-justify-content-center has-text-centered"
                   @click="confirmItemSelection"
                 >
-                  <span class="is-size-6">
-                    Replace with:
-                  </span>
+                  <span class="is-size-6">Replace with:</span>
                   <div>
                     <strong :class="userItemRankClass(selectedUserItem)" class="is-size-5">
                       {{ selectedUserItem.baseItem.name }}
@@ -239,9 +235,7 @@
               <template v-if="userItemToReplace">
                 You don't own any other items of this type.
               </template>
-              <template v-else>
-                You don't own any items of this type.
-              </template>
+              <template v-else>You don't own any items of this type.</template>
             </div>
           </div>
         </div>
@@ -257,16 +251,17 @@
           <div class="has-text-centered">
             <span class="is-size-4">
               Are you sure you want to sell
-              <strong :class="userItemRankClass(userItemToSell)">{{ userItemToSell.baseItem.name }}</strong>?
+              <strong :class="userItemRankClass(userItemToSell)">
+                {{ userItemToSell.baseItem.name }}
+              </strong>
+              ?
             </span>
           </div>
         </div>
 
         <div class="column">
           <div class="user-item">
-            <display-user-item
-              :user-item="userItemToSell"
-            />
+            <display-user-item :user-item="userItemToSell" />
           </div>
         </div>
 
@@ -364,8 +359,8 @@ export default class CharacterComponent extends Vue {
     return this.userItemToReplaceSlot === null
       ? []
       : filterUserItemsFittingInSlot(userModule.userItems, this.userItemToReplaceSlot).filter(
-        ui => this.userItemToReplace === null || ui.id !== this.userItemToReplace.id
-      );
+          ui => this.userItemToReplace === null || ui.id !== this.userItemToReplace.id
+        );
   }
 
   get itemToReplaceUpgradeInfo(): { upgradable: boolean; reason: string } {
@@ -492,15 +487,13 @@ export default class CharacterComponent extends Vue {
   }
 
   showSellItemConfirmation(userItem: UserItem): void {
-    this.isConfirmSellItemModalActive = true
-    this.userItemToSell = userItem
+    this.isConfirmSellItemModalActive = true;
+    this.userItemToSell = userItem;
   }
 
-
-
-  cancelSellItem(userItem: UserItem): void {
-    this.isConfirmSellItemModalActive = false
-    this.userItemToSell = null
+  cancelSellItem(): void {
+    this.isConfirmSellItemModalActive = false;
+    this.userItemToSell = null;
   }
 }
 </script>
