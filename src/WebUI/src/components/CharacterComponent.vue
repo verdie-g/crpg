@@ -271,19 +271,6 @@
         </div>
 
         <div class="column">
-          <item-properties :item="userItemToReplace.baseItem" :rank="userItemToReplace.rank" />
-          <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
-          <b-button
-            size="is-medium"
-            type="is-warning"
-            icon-left="angle-double-up"
-            expanded
-            :disabled="!itemToReplaceUpgradeInfo.upgradable"
-            :title="itemToReplaceUpgradeInfo.reason"
-            @click="upgradeItem"
-          >
-            Upgrade
-          </b-button>
           <b-button
             size="is-medium"
             type="is-danger"
