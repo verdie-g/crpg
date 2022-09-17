@@ -10,12 +10,10 @@ export function debounce(
 
     interval = setTimeout(() => {
       interval = undefined;
-      console.info('there it is 1')
       if (!immediate) callback(args);
     }, wait);
 
     if (immediate && !interval) {
-      console.info('there it is 2')
       callback(args)
     }
   };
