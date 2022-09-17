@@ -40,7 +40,7 @@ internal class CrpgItemValueModel : ItemValueModel
         int desiredBodyArmorMaxPrice= 31632;
         int desiredHandArmorMaxPrice = 6000;
         int desiredLegArmorMaxPrice = 4662;
-        int desiredHorseHarnessMaxPrice = ;
+        int desiredHorseHarnessMaxPrice = 5000;
         int desiredHorseMaxPrice = 59405;
         int desiredShieldMaxPrice= 9235;
         int desiredBowMaxPrice = 12264;
@@ -152,10 +152,6 @@ internal class CrpgItemValueModel : ItemValueModel
                 * CalculateDamageTypeFactor(weapon.SwingDamageType)
                 * (float)Math.Pow(weapon.SwingSpeed * 0.01f, 1.5f)
                 * 1.1f;
-            if (thrustTier > swingTier)
-            {
-                float tier = 
-            }
             float tier = Math.Max(thrustTier, swingTier);
 
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.NotUsableWithOneHand))
