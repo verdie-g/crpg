@@ -367,7 +367,7 @@
     "name": "Imperial Arrows",
     "culture": "Empire",
     "type": "Arrows",
-    "price": 157,
+    "price": 55,
     "weight": 0.05,
     "weapons": [
       {
@@ -2007,7 +2007,7 @@
     "name": "Barbed Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 157,
+    "price": 1356,
     "weight": 0.05,
     "weapons": [
       {
@@ -4241,7 +4241,7 @@
     "name": "Blunt Arrows",
     "culture": "Khuzait",
     "type": "Arrows",
-    "price": 548,
+    "price": 35187,
     "weight": 0.05,
     "weapons": [
       {
@@ -4303,7 +4303,7 @@
     "name": "Stacked Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 901,
+    "price": 194536,
     "weight": 0.048,
     "weapons": [
       {
@@ -4332,7 +4332,7 @@
     "name": "Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 656,
+    "price": 110506,
     "weight": 0.048,
     "weapons": [
       {
@@ -4361,7 +4361,7 @@
     "name": "Light Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 574,
+    "price": 85081,
     "weight": 0.048,
     "weapons": [
       {
@@ -4390,7 +4390,7 @@
     "name": "Light Bolts",
     "culture": "Neutral",
     "type": "Bolts",
-    "price": 632,
+    "price": 34574,
     "weight": 0.05,
     "weapons": [
       {
@@ -5444,7 +5444,7 @@
     "name": "Simple Short Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 239005,
+    "price": 3178,
     "weight": 0.3,
     "weapons": [
       {
@@ -5479,7 +5479,7 @@
     "name": "Steppe Recurve Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 334542,
+    "price": 4244,
     "weight": 0.3,
     "weapons": [
       {
@@ -5514,7 +5514,7 @@
     "name": "Simple Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 1936325,
+    "price": 20709,
     "weight": 1.0,
     "weapons": [
       {
@@ -5547,7 +5547,7 @@
     "name": "Heavy Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 5589276,
+    "price": 55842,
     "weight": 2.7,
     "weapons": [
       {
@@ -5582,7 +5582,7 @@
     "name": "Arbalest",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 7946218,
+    "price": 77947,
     "weight": 3.0,
     "weapons": [
       {
@@ -5616,7 +5616,7 @@
     "name": "Hickory Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 10307201,
+    "price": 99160,
     "weight": 2.2,
     "weapons": [
       {
@@ -5650,7 +5650,7 @@
     "name": "Light Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 3941076,
+    "price": 39891,
     "weight": 2.2,
     "weapons": [
       {
@@ -5683,7 +5683,7 @@
     "name": "Bound Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 14664533,
+    "price": 139604,
     "weight": 2.0,
     "weapons": [
       {
@@ -5718,7 +5718,7 @@
     "name": "Fine Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 6980487,
+    "price": 68644,
     "weight": 2.2,
     "weapons": [
       {
@@ -5984,7 +5984,7 @@
     "name": "Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 120,
+    "price": 55,
     "weight": 0.043,
     "weapons": [
       {
@@ -9210,7 +9210,7 @@
     "name": "Longbow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 219951,
+    "price": 2955,
     "weight": 0.4,
     "weapons": [
       {
@@ -9767,7 +9767,7 @@
     "name": "Stacked Steppe Arrows",
     "culture": "Khuzait",
     "type": "Arrows",
-    "price": 713,
+    "price": 50083,
     "weight": 0.036,
     "weapons": [
       {
@@ -9892,7 +9892,7 @@
     "name": "Ranger Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 143997,
+    "price": 2126,
     "weight": 0.4,
     "weapons": [
       {
@@ -10417,7 +10417,7 @@
     "name": "Hunting Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 102261,
+    "price": 1613,
     "weight": 0.3,
     "weapons": [
       {
@@ -13377,7 +13377,7 @@
     "name": "Lowland Longbow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 290103,
+    "price": 3720,
     "weight": 0.5,
     "weapons": [
       {
@@ -13464,7 +13464,7 @@
     "name": "Yew Bow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 419924,
+    "price": 5057,
     "weight": 0.5,
     "weapons": [
       {
@@ -13794,7 +13794,7 @@
     "name": "Mountain Hunting Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 102261,
+    "price": 1609,
     "weight": 0.3,
     "weapons": [
       {
@@ -14162,7 +14162,7 @@
     "name": "Noble Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 1012130,
+    "price": 10970,
     "weight": 0.8,
     "weapons": [
       {
@@ -14325,7 +14325,7 @@
     "name": "Noble Long Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 1135754,
+    "price": 12264,
     "weight": 0.8,
     "weapons": [
       {
@@ -14392,7 +14392,7 @@
     "name": "Nomad Bow",
     "culture": "Aserai",
     "type": "Bow",
-    "price": 419924,
+    "price": 5099,
     "weight": 0.5,
     "weapons": [
       {
@@ -14587,7 +14587,7 @@
     "name": "Nordic Shortbow",
     "culture": "Sturgia",
     "type": "Bow",
-    "price": 201688,
+    "price": 2746,
     "weight": 0.3,
     "weapons": [
       {
@@ -16700,7 +16700,7 @@
     "name": "Piercing Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 934,
+    "price": 315589,
     "weight": 0.041,
     "weapons": [
       {
@@ -17169,7 +17169,7 @@
     "name": "Range Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 266,
+    "price": 2242,
     "weight": 0.043,
     "weapons": [
       {
@@ -18981,7 +18981,7 @@
     "name": "Steppe Arrows",
     "culture": "Khuzait",
     "type": "Arrows",
-    "price": 405,
+    "price": 22915,
     "weight": 0.036,
     "weapons": [
       {
@@ -19010,7 +19010,7 @@
     "name": "Steppe Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 102261,
+    "price": 1586,
     "weight": 0.3,
     "weapons": [
       {
@@ -19139,7 +19139,7 @@
     "name": "Heavy Recurve Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 290103,
+    "price": 3708,
     "weight": 0.3,
     "weapons": [
       {
@@ -19254,7 +19254,7 @@
     "name": "Steppe War Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 419924,
+    "price": 5161,
     "weight": 0.3,
     "weapons": [
       {
@@ -21183,7 +21183,7 @@
     "name": "Tournament Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 157,
+    "price": 55,
     "weight": 0.043,
     "weapons": [
       {
@@ -21228,7 +21228,7 @@
     "name": "Practice Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 108723,
+    "price": 1660,
     "weight": 0.3,
     "weapons": [
       {
@@ -21263,7 +21263,7 @@
     "name": "Practice Longbow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 89932,
+    "price": 1487,
     "weight": 0.5,
     "weapons": [
       {
@@ -21372,7 +21372,7 @@
     "name": "Tribesman Bow",
     "culture": "Aserai",
     "type": "Bow",
-    "price": 407133,
+    "price": 4921,
     "weight": 0.5,
     "weapons": [
       {
@@ -22854,7 +22854,7 @@
     "name": "Lowland Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 427,
+    "price": 24778,
     "weight": 0.06,
     "weapons": [
       {
@@ -24004,7 +24004,7 @@
     "name": "Woodland Longbow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 573679,
+    "price": 6632,
     "weight": 0.1,
     "weapons": [
       {
@@ -24039,7 +24039,7 @@
     "name": "Woodland Yew Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 432913,
+    "price": 5276,
     "weight": 0.5,
     "weapons": [
       {

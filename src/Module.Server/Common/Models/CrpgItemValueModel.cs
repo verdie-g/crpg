@@ -37,7 +37,7 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         int desiredHeadArmorMaxPrice = 9754;
         int desiredCapeArmorMaxPrice = 11441;
-        int desiredBodyArmorMaxPrice= 31632;
+        int desiredBodyArmorMaxPrice = 31632;
         int desiredHandArmorMaxPrice = 6000;
         int desiredLegArmorMaxPrice = 4662;
         int desiredHorseHarnessMaxPrice = 5000;
@@ -253,7 +253,7 @@ internal class CrpgItemValueModel : ItemValueModel
             * weapon.SwingSpeed
             * weapon.MissileSpeed
             * weapon.Accuracy
-            / 135360;
+            / 1440257f;
     }
 
     private float CalculateShieldTier(WeaponComponent weaponComponent)
@@ -269,7 +269,6 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateAmmoTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        return weapon.MissileDamage * 1f
-            + Math.Max(0, weapon.MaxDataValue - 20) * 0.1f;
+        return 100f * weapon.MissileDamage * weapon.MissileDamage * weapon.MaxDataValue / 368f;
     }
 }
