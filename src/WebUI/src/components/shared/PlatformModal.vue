@@ -4,12 +4,7 @@
       <div v-if="icon || title" class="card-header">
         <div class="card-header-title is-flex is-align-items-center">
           <div class="is-flex-grow-0">
-            <b-icon
-              v-if="icon"
-              :icon="icon"
-              size="is-medium"
-              class="mr-1"
-            />
+            <b-icon v-if="icon" :icon="icon" size="is-medium" class="mr-1" />
           </div>
           <div class="is-flex-grow-1">
             <span class="is-size-4">
@@ -34,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class PlatformModal extends Vue {
@@ -42,15 +37,14 @@ export default class PlatformModal extends Vue {
   @Prop(String) readonly title: string;
   @Prop(String) readonly icon: string;
 
-  get isModalActive (): boolean {
-    return this.value
+  get isModalActive(): boolean {
+    return this.value;
   }
-  set isModalActive (val: boolean) {
-    this.$emit('input', val)
+
+  set isModalActive(val: boolean) {
+    this.$emit('input', val);
   }
 }
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

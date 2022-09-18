@@ -1,24 +1,13 @@
 <template>
-  <platform-modal
-    v-model="isModalActive"
-    title="Restrict User"
-    icon="ban"
-  >
+  <platform-modal v-model="isModalActive" title="Restrict User" icon="ban">
     <div class="columns">
       <div class="column is-flex is-flex-direction-column">
-        <div class="is-flex-grow-1 is-flex is-flex-direction-column is-align-items-stretch is-justify-content-center">
+        <div
+          class="is-flex-grow-1 is-flex is-flex-direction-column is-align-items-stretch is-justify-content-center"
+        >
           <b-field horizontal label="Platform">
-            <b-select
-              placeholder="Select a Platform"
-              required
-              expanded
-              v-model="selectedPlatform"
-            >
-              <option
-                v-for="platform in availablePlatforms"
-                :key="platform"
-                :value="platform"
-              >
+            <b-select placeholder="Select a Platform" required expanded v-model="selectedPlatform">
+              <option v-for="platform in availablePlatforms" :key="platform" :value="platform">
                 {{ platform }}
               </option>
             </b-select>
@@ -38,12 +27,8 @@
         <div v-show="matchedUser" class="is-flex is-flex-direction-column is-align-items-center">
           <div class="has-text-centered pb-4">
             <h3 class="is-size-4">
-              <template v-if="matchedUser">
-                Matched User:
-              </template>
-              <template v-else>
-                No User Matched.
-              </template>
+              <template v-if="matchedUser">Matched User:</template>
+              <template v-else>No User Matched.</template>
             </h3>
           </div>
           <div class="has-text-centered">
@@ -72,18 +57,10 @@
                 />
               </b-field>
               <b-field label="Duration (mins)" class="is-flex-grow-1 mr-2">
-                <b-input
-                  placeholder="Duration"
-                  required
-                  v-model="newRestrictionDuration"
-                />
+                <b-input placeholder="Duration" required v-model="newRestrictionDuration" />
               </b-field>
               <b-field label="Type">
-                <b-select
-                  placeholder="Type"
-                  required
-                  v-model="newRestrictionType"
-                >
+                <b-select placeholder="Type" required v-model="newRestrictionType">
                   <option
                     v-for="platform in availableRestrictionTypes"
                     :key="platform"
@@ -113,20 +90,20 @@
 </template>
 
 <script lang="ts">
-import PlatformModal from '@/components/shared/PlatformModal.vue'
-import Platform from '@/models/platform'
-import RestrictionType from '@/models/restriction-type'
-import User from '@/models/user'
-import { NotificationType, notify } from '@/services/notifications-service'
-import restrictionModule from '@/store/restriction-module'
-import userModule from '@/store/user-module'
-import { debounce } from '@/utils/debounce'
-import { Component, Prop, Vue, Watch, VModel } from 'vue-property-decorator'
+import PlatformModal from '@/components/shared/PlatformModal.vue';
+import Platform from '@/models/platform';
+import RestrictionType from '@/models/restriction-type';
+import User from '@/models/user';
+import { NotificationType, notify } from '@/services/notifications-service';
+import restrictionModule from '@/store/restriction-module';
+import userModule from '@/store/user-module';
+import { debounce } from '@/utils/debounce';
+import { Component, Prop, Vue, Watch, VModel } from 'vue-property-decorator';
 import RestrictionCreation from '@/models/restriction-creation';
 
 @Component({
   components: {
-    PlatformModal
+    PlatformModal,
   },
 })
 export default class RestrictUserModal extends Vue {
@@ -170,8 +147,8 @@ export default class RestrictUserModal extends Vue {
     }
     const payload = {
       platform,
-      platformUserId
-    }
+      platformUserId,
+    };
     this.pendingCreateRestriction = false;
     this.pendingLookupUser = true;
     try {
@@ -187,7 +164,7 @@ export default class RestrictUserModal extends Vue {
 
   async restrictTargetUser(): Promise<void> {
     if (this.pendingCreateRestriction) {
-      return
+      return;
     }
     const restrictedUserId = this.matchedUser?.id;
     const reason = this.newRestrictionReason;
@@ -201,7 +178,7 @@ export default class RestrictUserModal extends Vue {
       reason,
       type,
       duration,
-    }
+    };
     this.pendingCreateRestriction = true;
     try {
       await restrictionModule.createRestriction(payload);
@@ -223,6 +200,7 @@ export default class RestrictUserModal extends Vue {
 .matched-user--name {
   min-height: 1em;
 }
+
 .matched-user--avatar {
   width: 64px;
   height: 64px;
