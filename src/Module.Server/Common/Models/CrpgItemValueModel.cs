@@ -34,7 +34,7 @@ internal class CrpgItemValueModel : ItemValueModel
 
     public float CrpgGetEquipmentValueFromTier(float tier, int desiredMaxPrice, int desiredTierZeroPrice)
     {
-        return GetAdjustedTier(tier) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredStartingPrice;
+        return GetAdjustedTier(tier) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredTierZeroPrice;
     }
 
     public override float GetEquipmentValueFromTier(float tier) // i'd like to trash this function but since it's in ItemValueModel Implementation and it doesn't allow me to add more inputs (namidaka)
