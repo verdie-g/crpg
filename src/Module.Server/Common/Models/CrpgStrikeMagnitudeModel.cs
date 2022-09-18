@@ -8,7 +8,7 @@ namespace Crpg.Module.Common.Models;
 /// <summary>
 /// Used to adjust raw dmg calculations.
 /// </summary>
-internal class CrpgStrikeMagnitudeModel : StrikeMagnitudeCalculationModel
+internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
 {
     private readonly CrpgConstants _constants;
 
@@ -62,25 +62,5 @@ internal class CrpgStrikeMagnitudeModel : StrikeMagnitudeCalculationModel
         }
 
         return result;
-    }
-
-    public override float CalculateStrikeMagnitudeForSwing(BasicCharacterObject attackerCharacter, BasicCharacterObject attackerCaptainCharacter, float swingSpeed, float impactPoint, float weaponWeight, WeaponComponentData weaponUsageComponent, float weaponLength, float weaponInertia, float weaponCoM, float extraLinearSpeed, bool doesAttackerHaveMount)
-    {
-        return CombatStatCalculator.CalculateStrikeMagnitudeForSwing(swingSpeed, impactPoint, weaponWeight, weaponLength, weaponInertia, weaponCoM, extraLinearSpeed);
-    }
-
-    public override float CalculateStrikeMagnitudeForThrust(BasicCharacterObject attackerCharacter, BasicCharacterObject attackerCaptainCharacter, float thrustWeaponSpeed, float weaponWeight, WeaponComponentData weaponUsageComponent, float extraLinearSpeed, bool doesAttackerHaveMount, bool isThrown = false)
-    {
-        return CombatStatCalculator.CalculateStrikeMagnitudeForThrust(thrustWeaponSpeed, weaponWeight, extraLinearSpeed, isThrown);
-    }
-
-    public override float CalculateSpeedBonusMultiplierForMissile(BasicCharacterObject attackerCharacter, WeaponClass ammoClass)
-    {
-        return 0f;
-    }
-
-    public override float CalculateHorseArcheryFactor(BasicCharacterObject characterObject)
-    {
-        return 100f;
     }
 }
