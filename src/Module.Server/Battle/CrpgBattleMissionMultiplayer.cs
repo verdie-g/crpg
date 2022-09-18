@@ -12,7 +12,7 @@ using TaleWorlds.PlayerServices;
 
 namespace Crpg.Module.Battle;
 
-internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
+internal class CrpgBattleMissionMultiplayer : MissionMultiplayerFlagDomination
 {
     private readonly ICrpgClient _crpgClient;
     private readonly CrpgConstants _constants;
@@ -26,14 +26,10 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     public override bool UseRoundController() => true;
 
     public CrpgBattleMissionMultiplayer(ICrpgClient crpgClient, CrpgConstants constants)
+        : base(MissionLobbyComponent.MultiplayerGameType.Battle)
     {
         _crpgClient = crpgClient;
         _constants = constants;
-    }
-
-    public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
-    {
-        return MissionLobbyComponent.MultiplayerGameType.Battle;
     }
 
     public override void AfterStart()
