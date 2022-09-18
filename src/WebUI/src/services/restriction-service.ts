@@ -1,5 +1,4 @@
 import Restriction from '@/models/restriction';
-import RestrictionType from '@/models/restriction-type'
 import { get, post } from '@/services/crpg-client';
 import RestrictionCreation from '@/models/restriction-creation';
 

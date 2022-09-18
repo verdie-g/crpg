@@ -1,4 +1,4 @@
-import Platform from '@/models/platform'
+import Platform from '@/models/platform';
 import User from '@/models/user';
 import Character from '@/models/character';
 import { UpdateCharacterRequest } from '@/models/update-character-request';

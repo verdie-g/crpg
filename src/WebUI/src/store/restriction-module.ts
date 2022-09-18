@@ -1,5 +1,3 @@
-import RestrictionType from '@/models/restriction-type'
-import { restrictUser } from '@/services/restriction-service'
 import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import store from '@/store';
 import * as restrictionService from '@/services/restriction-service';
