@@ -55,4 +55,5 @@ public enum ErrorCode
     UserNotAClanMember,
     UserNotFound,
     UserNotInAClan,
+    UserRoleNotMet,
 }

@@ -81,6 +81,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         const float parabolMinAbscissa = 140; // Set at 100 so the weapon component is strictly monotonous.
 
         const float a = valueAtAccuracyPointA - parabolOffset; // Parameter for the polynomial, do not change.
+
+        float skillComponentMultiplier = weapon.WeaponClass == WeaponClass.Bow ? 0.4f : 0.2f;
+
         if (weapon.IsRangedWeapon)
         {
             float weaponComponent = (parabolMinAbscissa - weapon.Accuracy)
@@ -88,7 +91,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 * a
                 / ((parabolMinAbscissa - accuracyPointA) * (100 - accuracyPointA))
                 + parabolOffset;
-            float skillComponent = 0.2f * (float)Math.Pow(10.0, (200.0 - weaponSkill) / 200.0);
+            float skillComponent = skillComponentMultiplier * (float)Math.Pow(10.0, (200.0 - weaponSkill) / 200.0);
             inaccuracy = (weaponComponent * skillComponent + (100 - weapon.Accuracy)) * 0.001f;
         }
         else if (weapon.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
@@ -326,9 +329,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 }
                 else
                 {
-                    float num6 = Math.Max(0.0f, (1.0f - weaponSkill / 500.0f) * (1.0f - ridingSkill / 1800.0f));
+                    int mountedArcherySkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.MountedArchery);
+                    // float num6 = Math.Max(0.0f, (1.0f - weaponSkill / 500.0f) * (1.0f - ridingSkill / 1800.0f));
+                    float num6 = 1;
                     props.WeaponMaxMovementAccuracyPenalty = 0.025f * num6;
                     props.WeaponMaxUnsteadyAccuracyPenalty = 0.06f * num6;
+                    props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
                 }
 
                 props.WeaponMaxMovementAccuracyPenalty = Math.Max(0.0f, props.WeaponMaxMovementAccuracyPenalty);
@@ -353,9 +359,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
                 {
+                    int powerDraw = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.PowerDraw);
                     props.WeaponBestAccuracyWaitTime = 0.3f + (95.75f - equippedItem.ThrustSpeed) * 0.005f;
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 60.0f) / 75.0f, 0.0f, 1f);
-                    props.WeaponUnsteadyBeginTime = 0.1f + weaponSkill * 0.001f * MBMath.Lerp(1f, 2f, amount);
+
+                    props.WeaponUnsteadyBeginTime = 0.06f + weaponSkill * 0.001f * MBMath.Lerp(1f, 2f, amount) + (powerDraw * powerDraw / 10 * 0.4f);
                     if (agent.IsAIControlled)
                     {
                         props.WeaponUnsteadyBeginTime *= 4f;

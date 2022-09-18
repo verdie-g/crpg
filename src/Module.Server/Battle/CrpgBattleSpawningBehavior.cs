@@ -198,22 +198,20 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
             uint color1;
             uint color2;
-            Banner? banner;
-            if (crpgRepresentative.Clan != null)
+            if (crpgRepresentative.Clan != null && TryParseBanner(crpgRepresentative.Clan.BannerKey, out var banner))
             {
                 color1 = crpgRepresentative.Clan.PrimaryColor;
                 color2 = crpgRepresentative.Clan.SecondaryColor;
-                TryParseBanner(crpgRepresentative.Clan.BannerKey, out banner);
             }
             else
             {
+                banner = new Banner(teamCulture.BannerKey);
                 color1 = missionPeer.Team == Mission.AttackerTeam
                     ? teamCulture.Color
                     : teamCulture.ClothAlternativeColor;
                 color2 = missionPeer.Team == Mission.AttackerTeam
                     ? teamCulture.Color2
                     : teamCulture.ClothAlternativeColor2;
-                banner = null;
             }
 
             AgentBuildData agentBuildData = new AgentBuildData(character)
@@ -300,18 +298,116 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
     }
 
+
+    private string? CheckIconList(int id)
+    {
+        foreach (BannerIconGroup bannerIconGroup in BannerManager.Instance.BannerIconGroups)
+        {
+            if (bannerIconGroup.AllBackgrounds.ContainsKey(id))
+            {
+                return bannerIconGroup.AllBackgrounds[id];
+            }
+            else if (bannerIconGroup.AllIcons.ContainsKey(id))
+            {
+                return bannerIconGroup.AllIcons[id].MaterialName;
+            }
+        }
+
+        return null;
+    }
+
     private bool TryParseBanner(string bannerKey, out Banner? banner)
     {
-        try
+        banner = null;
+        string[] array = bannerKey.Split('.');
+
+        string fixedBannerCode = string.Empty;
+        // The maximum size of the banner is Banner.BannerFullSize. But apparently negative values do not cause crashes. Anyway added some checks with tolerance to parse the banner.
+        int maxX = 2 * (Banner.BannerFullSize / 2);
+        int minX = 2 * -1 * (Banner.BannerFullSize / 2);
+        int maxY = maxX;
+        int minY = minX;
+
+        /*
+         * Format values seperated by dots (.)
+         * Icons / Colors found inside of the banner_icons.xml
+         * --------
+         * iconId
+         * colorId
+         * colorId2
+         * sizeX
+         * sizeY
+         * posX  (total canvas size is Banner.BannerFullSize but being out of these doesn't seem to cause any issues)
+         * posY
+         * stroke (0 or 1)
+         * mirror (0 or 1)
+         * rotation (0-359)
+         */
+
+        int iconCounter = 0;
+        int num = 0;
+        while (num + 10 <= array.Length)
         {
-            banner = new Banner(bannerKey);
-            return true;
+            // 10 is the icon limit. If you try more then 10 icons you won't even spawn.. if you have like 20+ the server might crash.
+            if (iconCounter == 10)
+            {
+                return false;
+            }
+
+            if (int.TryParse(array[num], out int iconId))
+            {
+                if (CheckIconList(iconId) == null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+            if (!int.TryParse(array[num + 1], out int colorId1) || !BannerManager.Instance.ReadOnlyColorPalette.ContainsKey(colorId1)
+            || !int.TryParse(array[num + 2], out int colorId2) || !BannerManager.Instance.ReadOnlyColorPalette.ContainsKey(colorId2)
+            || !int.TryParse(array[num + 3], out int sizeX)
+            || !int.TryParse(array[num + 4], out int sizeY)
+            || !int.TryParse(array[num + 5], out int posX) || posX > maxX || posX < minX
+            || !int.TryParse(array[num + 6], out int posY) || posY > maxY || posY < minY
+            || !int.TryParse(array[num + 7], out int drawStroke) || drawStroke > 1 || drawStroke < 0
+            || !int.TryParse(array[num + 8], out int mirrior) || mirrior > 1 || mirrior < 0)
+            {
+                return false;
+            }
+
+            if (!int.TryParse(array[num + 9], out int rotation))
+            {
+                return false;
+            }
+            else
+            {
+                rotation %= 360;
+                if (rotation < 0)
+                {
+                    rotation += 360;
+                }
+            }
+
+            fixedBannerCode += $"{iconId}.{colorId1}.{colorId2}.{sizeX}.{sizeY}.{posX}.{posY}.{drawStroke}.{mirrior}.{rotation}.";
+            num += 10;
+            iconCounter++;
         }
-        catch
+
+        if (iconCounter == 0)
         {
-            banner = null;
             return false;
         }
+
+        if (fixedBannerCode[fixedBannerCode.Length - 1] == '.')
+        {
+            fixedBannerCode = fixedBannerCode.Substring(0, fixedBannerCode.Length - 1);
+        }
+
+        banner = new Banner(fixedBannerCode);
+        return true;
     }
 
     private static readonly Dictionary<CrpgItemSlot, EquipmentIndex> ItemSlotToIndex = new()

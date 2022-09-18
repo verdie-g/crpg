@@ -297,10 +297,17 @@ public class UsersController : BaseController
     }
 
     /// <summary>
-    /// Gets all current user's restrictions.
+    /// Get all restrictions for a user.
     /// </summary>
+    /// <param name="id">The user id.</param>
     /// <response code="200">Ok.</response>
-    [HttpGet("self/restrictions")]
-    public Task<ActionResult<Result<IList<RestrictionViewModel>>>> GetUserRestrictions() =>
-        ResultToActionAsync(Mediator.Send(new GetUserRestrictionsQuery { UserId = CurrentUser.User!.Id }));
+    [HttpGet("{id}/restrictions")]
+    public Task<ActionResult<Result<IList<RestrictionViewModel>>>> GetUserRestrictions(int id)
+    {
+        var resultTask = CurrentUser.User!.Id != id && CurrentUser.User.Role == Role.User
+            ? Task.FromResult(new Result<IList<RestrictionViewModel>>(new Error(ErrorType.Forbidden, ErrorCode.UserRoleNotMet)))
+            : Mediator.Send(new GetUserRestrictionsQuery { UserId = CurrentUser.User!.Id });
+
+        return ResultToActionAsync(resultTask);
+    }
 }
