@@ -159,7 +159,6 @@ export default class RestrictUserModal extends Vue {
       this.matchedUser = await userModule.getUserByPlatformUserId(payload);
     } catch (err) {
       this.matchedUser = null;
-      console.error('Failed to lookup User by Platform and PlatformUserId.', payload);
       throw err;
     } finally {
       this.pendingLookupUser = false;
@@ -187,7 +186,6 @@ export default class RestrictUserModal extends Vue {
     try {
       await restrictionModule.createRestriction(payload);
     } catch (err) {
-      console.error('Failed to create Restriction for User', payload);
       notify('Failed to restrict user.', NotificationType.Error);
       throw err;
     } finally {
