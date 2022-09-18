@@ -18,13 +18,17 @@ internal class CrpgItemValueModel : ItemValueModel
     }
 
     // this method takes a value between 0 and 10 and outputs a value between 0 and 10
+    // It uses a degree 2 polynomial.
+    // b is responsible for the linear part.
+    // a is responsible for the quadratic part. a Linear fonction is not enough because it doesn't reflect how the best items are more
+    // than just linearly better.
     public float GetAdjustedTier(float tier)
     {
         const float a = 300;
         const float b = 700;
-        const float c = 50;
+        const float c =0;
         float tierPolynome = (float)(a * Math.Pow(tier, 2) + b * tier + c);
-        float tierPolynomeScaler = 10 / ((float)(a * Math.Pow(10, 2) + b * 10 + c));
+        float tierPolynomeScaler = 10 / ((float)(a * Math.Pow(10, 2) + b * 10 + c)); // this part will make sure that GetAdjustedTier(10)=10
         return tierPolynome * tierPolynomeScaler;
     }
 
