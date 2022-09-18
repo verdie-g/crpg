@@ -205,9 +205,13 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             }
             else
             {
-                banner = Banner.CreateRandomClanBanner();
-                color1 = banner.GetPrimaryColor();
-                color2 = banner.GetSecondaryColor();
+                banner = new Banner(teamCulture.BannerKey);
+                color1 = missionPeer.Team == Mission.AttackerTeam
+                    ? teamCulture.Color
+                    : teamCulture.ClothAlternativeColor;
+                color2 = missionPeer.Team == Mission.AttackerTeam
+                    ? teamCulture.Color2
+                    : teamCulture.ClothAlternativeColor2;
             }
 
             AgentBuildData agentBuildData = new AgentBuildData(character)
