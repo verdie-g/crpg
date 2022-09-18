@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column is-flex is-flex-direction-column">
         <div
-          class="is-flex-grow-1 is-flex is-flex-direction-column is-align-items-stretch is-justify-content-center"
+          class="is-flex-grow-1 is-flex is-flex-direction-column is-align-items-stretch is-justify-content-end"
         >
           <b-field horizontal label="Platform">
             <b-select placeholder="Select a Platform" required expanded v-model="selectedPlatform">
@@ -23,7 +23,7 @@
           </b-field>
         </div>
       </div>
-      <div class="column">
+      <div class="column pb-0">
         <div v-show="matchedUser" class="is-flex is-flex-direction-column is-align-items-center">
           <div class="has-text-centered pb-4">
             <h3 class="is-size-4">
@@ -56,7 +56,7 @@
                   v-model="newRestrictionReason"
                 />
               </b-field>
-              <b-field label="Duration (mins)" class="is-flex-grow-1 mr-2">
+              <b-field label="Duration (mins)" class="is-flex-grow-1 is-flex-shrink-2 mr-2">
                 <b-input placeholder="Duration" required v-model="newRestrictionDuration" />
               </b-field>
               <b-field label="Type">
