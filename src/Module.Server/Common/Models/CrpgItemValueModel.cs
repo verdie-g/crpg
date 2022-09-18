@@ -64,7 +64,7 @@ internal class CrpgItemValueModel : ItemValueModel
         int desiredBannerMaxPrice = 50;
         if (item!.ItemComponent?.Item?.ItemType == null)
         {
-            return (GetAdjustedTier(item.Tierf) * (desiredHorseMaxPrice - 50) / 10 + 50);
+            return CrpgGetEquipmentValueFromTier(item.Tierf, desiredHorseMaxPrice, 50);
         }
 
         return item.ItemComponent.Item.ItemType switch
