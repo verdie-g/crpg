@@ -31,10 +31,19 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             finalDamage /= MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.DurabilityFactorForShieldCoefs);
         }
 
-        // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
-        if (collisionData.IsAlternativeAttack && !weapon.IsEmpty && !attackInformation.IsFriendlyFire)
+        if (!weapon.IsEmpty)
         {
-            finalDamage = 1f;
+            // Bonus dmg with spears against horses (does only work with "main" spears - not javelins etc)
+            if (!attackInformation.IsVictimAgentHuman && !attackInformation.DoesAttackerHaveMountAgent && weapon.CurrentUsageItem.IsPolearm && !weapon.CurrentUsageItem.IsConsumable && weapon.CurrentUsageItem.IsMeleeWeapon && collisionData.StrikeType == (int)StrikeType.Thrust && collisionData.DamageType == (int)DamageTypes.Pierce && !weapon.GetConsumableIfAny(out var consumableWeapon))
+            {
+                finalDamage *= 1.75f; // 75% bonus dmg against horses
+            }
+
+            // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
+            else if (collisionData.IsAlternativeAttack && !attackInformation.IsFriendlyFire)
+            {
+                finalDamage = 1f;
+            }
         }
 
         return finalDamage;
@@ -63,5 +72,4 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
 
         defenderStunMultiplier = 1f;
     }
-
 }
