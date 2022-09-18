@@ -98,7 +98,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     roundController,
                     new CrpgBattleMissionMultiplayer(crpgClient, _constants),
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
-                    new SpawnComponent(new FlagDominationSpawnFrameBehavior(), new CrpgBattleSpawningBehavior(_constants, roundController)),
+                    new SpawnComponent(new BattleSpawnFrameBehavior(), new CrpgBattleSpawningBehavior(_constants, roundController)),
                     new AgentHumanAILogic(), // bot intelligence
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
                     new CrpgUserManager(crpgClient),
