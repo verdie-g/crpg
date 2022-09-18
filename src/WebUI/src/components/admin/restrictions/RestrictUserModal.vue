@@ -71,21 +71,25 @@
                 </b-select>
               </b-field>
             </div>
-            <b-field class="is-flex is-justify-content-center">
-              <b-button
-                icon-left="ban"
-                type="is-danger"
-                :disabled="!matchedUser || pendingCreateRestriction"
-                :loading="pendingCreateRestriction"
-                @click.native="restrictTargetUser"
-              >
-                Restrict
-              </b-button>
-            </b-field>
           </div>
         </div>
       </div>
     </div>
+    <template #actions>
+      <div class="is-flex-grow-1 is-flex is-justify-content-center">
+        <div>
+          <b-button
+            icon-left="ban"
+            type="is-danger"
+            :disabled="!matchedUser || pendingCreateRestriction"
+            :loading="pendingCreateRestriction"
+            @click.native="restrictTargetUser"
+          >
+            Restrict
+          </b-button>
+        </div>
+      </div>
+    </template>
   </platform-modal>
 </template>
 
