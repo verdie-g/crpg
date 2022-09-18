@@ -24,6 +24,9 @@
       <div class="card-content">
         <slot name="default" />
       </div>
+      <footer v-if="$slots.actions" class="modal-card-foot">
+        <slot name="actions" />
+      </footer>
     </div>
   </b-modal>
 </template>
