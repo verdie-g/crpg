@@ -392,6 +392,11 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             iconCounter++;
         }
 
+        if (iconCounter == 0)
+        {
+            return false;
+        }
+
         if (fixedBannerCode[fixedBannerCode.Length - 1] == '.')
         {
             fixedBannerCode = fixedBannerCode.Substring(0, fixedBannerCode.Length - 1);
