@@ -26,31 +26,37 @@ internal class CrpgItemValueModel : ItemValueModel
         float tierPolynome = (float)(a * Math.Pow(tier, 2) + b * tier + c);
         float tierPolynomeScaler = 10 / ((float)(a * Math.Pow(10, 2) + b * 10 + c));
         return tierPolynome * tierPolynomeScaler;
-
     }
-    public override float GetEquipmentValueFromTier(float tier) // i'd like to trash this function but since it's in ItemValueModel Implementation i don't know what do to with it (namidaka)
+
+    public float CrpgGetEquipmentValueFromTier(float tier, int desiredMaxPrice, int desiredTierZeroPrice)
     {
-        return GetAdjustedTier(tier);
+        return GetAdjustedTier(tier) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredStartingPrice;
+    }
+
+    public override float GetEquipmentValueFromTier(float tier) // i'd like to trash this function but since it's in ItemValueModel Implementation and it doesn't allow me to add more inputs (namidaka)
+    {
+        float whocares = 0;
+        return whocares;
     }
 
     public override int CalculateValue(ItemObject item)
     {
-        int desiredHeadArmorMaxPrice = 9754; // work as intended
-        int desiredCapeArmorMaxPrice = 11441; // work as intended
-        int desiredBodyArmorMaxPrice = 31632; // work as intended
-        int desiredHandArmorMaxPrice = 6000; // work as intended
-        int desiredLegArmorMaxPrice = 4662; // work as intended
-        int desiredHorseHarnessMaxPrice = 20000; // work as intended
-        int desiredHorseMaxPrice = 14000; // work as intended
-        int desiredShieldMaxPrice = 9235; // work as intended
-        int desiredBowMaxPrice = 12264; // work as intended
-        int desiredCrossbowMaxPrice = 18000; // work as intended
+        int desiredHeadArmorMaxPrice = 9754;
+        int desiredCapeArmorMaxPrice = 11441;
+        int desiredBodyArmorMaxPrice = 31632;
+        int desiredHandArmorMaxPrice = 6000;
+        int desiredLegArmorMaxPrice = 4662;
+        int desiredHorseHarnessMaxPrice = 20000;
+        int desiredHorseMaxPrice = 14000;
+        int desiredShieldMaxPrice = 9235;
+        int desiredBowMaxPrice = 12264;
+        int desiredCrossbowMaxPrice = 18000;
         int desiredOneHandedWeaponMaxPrice = 9100;  // does not work as intended but may mean that onehanded are to be buffed
         int desiredTwoHandedWeaponMaxPrice = 14000; // kinda work as intended but no by design
         int desiredPolearmMaxPrice = 16175; // kinda work as intended but not by design
         int desiredThrownMaxPrice = 7385; // kinda work as intended but not by design
-        int desiredArrowsMaxPrice = 3858; // work as intended
-        int desiredBoltsMaxPrice = 16000; // work as intended yet
+        int desiredArrowsMaxPrice = 3858; 
+        int desiredBoltsMaxPrice = 16000; // doesn't work as intended yet
         int desiredBannerMaxPrice = 50;
         if (item!.ItemComponent?.Item?.ItemType == null)
         {
@@ -59,23 +65,23 @@ internal class CrpgItemValueModel : ItemValueModel
 
         return item.ItemComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.HeadArmor => (int)(GetAdjustedTier(item.Tierf) * (desiredHeadArmorMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.Cape => (int)(GetAdjustedTier(item.Tierf) * (desiredCapeArmorMaxPrice - 50 ) / 10 + 50),
-            ItemObject.ItemTypeEnum.BodyArmor => (int)(GetAdjustedTier(item.Tierf) * (desiredBodyArmorMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.HandArmor => (int)(GetAdjustedTier(item.Tierf) * (desiredHandArmorMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.LegArmor => (int)(GetAdjustedTier(item.Tierf) * (desiredLegArmorMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.HorseHarness => (int) (GetAdjustedTier(item.Tierf) * (desiredHorseHarnessMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.Shield => (int)(GetAdjustedTier(item.Tierf) * (desiredShieldMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.Bow => (int)(GetAdjustedTier(item.Tierf) * (desiredBowMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.Crossbow =>(int)(GetAdjustedTier(item.Tierf) * (desiredCrossbowMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.OneHandedWeapon => (int)(GetAdjustedTier(item.Tierf) * (desiredOneHandedWeaponMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.TwoHandedWeapon => (int)(GetAdjustedTier(item.Tierf) * (desiredTwoHandedWeaponMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.Polearm => (int)(GetAdjustedTier(item.Tierf) * (desiredPolearmMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.Thrown => (int)(GetAdjustedTier(item.Tierf) * (desiredThrownMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.Arrows => (int)(GetAdjustedTier(item.Tierf) * (desiredArrowsMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.Bolts => (int)(GetAdjustedTier(item.Tierf) * (desiredBoltsMaxPrice - 50) / 10 + 50),
-            ItemObject.ItemTypeEnum.Banner => (int)(GetAdjustedTier(item.Tierf) * (desiredBannerMaxPrice -50) / 10 + 50),
-            _ => 6969,
+            ItemObject.ItemTypeEnum.HeadArmor => (int)CrpgGetEquipmentValueFromTier(item.Tierf,desiredHeadArmorMaxPrice,50),
+            ItemObject.ItemTypeEnum.Cape => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredCapeArmorMaxPrice, 50),
+            ItemObject.ItemTypeEnum.BodyArmor => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredBodyArmorMaxPrice, 50),
+            ItemObject.ItemTypeEnum.HandArmor => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredHandArmorMaxPrice, 50),
+            ItemObject.ItemTypeEnum.LegArmor => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredLegArmorMaxPrice, 50),
+            ItemObject.ItemTypeEnum.HorseHarness => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredHorseHarnessMaxPrice, 50),
+            ItemObject.ItemTypeEnum.Shield => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredShieldMaxPrice, 50),
+            ItemObject.ItemTypeEnum.Bow => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredBowMaxPrice, 50),
+            ItemObject.ItemTypeEnum.Crossbow =>(int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredCrossbowMaxPrice, 50),
+            ItemObject.ItemTypeEnum.OneHandedWeapon => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredOneHandedWeaponMaxPrice, 50),
+            ItemObject.ItemTypeEnum.TwoHandedWeapon => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredTwoHandedWeaponMaxPrice, 50),
+            ItemObject.ItemTypeEnum.Polearm => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredPolearmMaxPrice, 50),
+            ItemObject.ItemTypeEnum.Thrown => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredThrownMaxPrice, 50),
+            ItemObject.ItemTypeEnum.Arrows => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredArrowsMaxPrice, 50),
+            ItemObject.ItemTypeEnum.Bolts => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredBoltsMaxPrice, 50),
+            ItemObject.ItemTypeEnum.Banner => (int)CrpgGetEquipmentValueFromTier(item.Tierf, desiredBannerMaxPrice, 50),
+            _ => 6969, //noice
         };
     }
 

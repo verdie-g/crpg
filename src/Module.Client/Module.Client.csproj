@@ -13,7 +13,7 @@
     <DebugSymbols Condition="'$(Configuration)' == 'Release'">false</DebugSymbols>
     <DebugType Condition="'$(Configuration)' == 'Release'">None</DebugType>
 
-    <DefineConstants>$(DefineConstants);CRPG_CLIENT</DefineConstants>
+    <DefineConstants>$(DefineConstants);CRPG_CLIENT;CRPG_EXPORT</DefineConstants>
   </PropertyGroup>
 
   <Target Name="CheckMbPathDefined" BeforeTargets="GetReferenceAssemblyPaths">
@@ -51,5 +51,7 @@
     <!-- This library causes dependency conflict. -->
     <Reference Remove="$(MB_CLIENT_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Starter.DotNetCore.dll" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
