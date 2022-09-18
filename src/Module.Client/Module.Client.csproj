@@ -51,7 +51,4 @@
     <!-- This library causes dependency conflict. -->
     <Reference Remove="$(MB_CLIENT_PATH)/bin/Win64_Shipping_Client/TaleWorlds.Starter.DotNetCore.dll" />
   </ItemGroup>
-
-  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
-
 </Project>
