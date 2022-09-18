@@ -8,7 +8,7 @@ namespace Crpg.Module.Common.Models;
 /// <summary>
 /// Used to adjust raw dmg calculations.
 /// </summary>
-internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
+internal class CrpgStrikeMagnitudeModel : StrikeMagnitudeCalculationModel
 {
     private readonly CrpgConstants _constants;
 
@@ -20,12 +20,9 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
     public override float ComputeRawDamage(DamageTypes damageType, float magnitude, float armorEffectiveness, float absorbedDamageRatio)
     {
         float bluntDamageFactorByDamageType = GetBluntDamageFactorByDamageType(damageType);
-        float bluntDamageFactorByDamageTypeNew = GetBluntDamageFactorByDamageTypeNew(damageType);
         float num = 100f / (100f + armorEffectiveness);
         float num2 = magnitude * num;
         float num3 = bluntDamageFactorByDamageType * num2;
-        float num3New = bluntDamageFactorByDamageTypeNew * num2;
-        Console.WriteLine("Dmgtype: "+damageType.ToString());
         if (damageType != DamageTypes.Blunt)
         {
             float num4;
@@ -43,14 +40,9 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
             }
 
             num3 += (1f - bluntDamageFactorByDamageType) * num4;
-            num3New += (1f - bluntDamageFactorByDamageTypeNew) * num4;
         }
-        float finalRawDmg = num3 * absorbedDamageRatio;
-        float newFinalRawDmg = num3New * absorbedDamageRatio;
-        Console.WriteLine("Old raw dmg: " + finalRawDmg);
-        Console.WriteLine("New raw dmg: " + newFinalRawDmg);
-        Console.WriteLine("Name: "+this.GetType().ToString());
-        return finalRawDmg;
+
+        return num3 * absorbedDamageRatio;
     }
 
     public override float GetBluntDamageFactorByDamageType(DamageTypes damageType)
@@ -59,36 +51,36 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         switch (damageType)
         {
             case DamageTypes.Blunt:
-                result = 1f;
+                result = 1f; // Native 1f
                 break;
             case DamageTypes.Cut:
-                result = 0.1f;
+                result = 0.25f; // Native .1f
                 break;
             case DamageTypes.Pierce:
-                result = 0.25f;
+                result = 0.30f; // Native .25f
                 break;
         }
 
         return result;
     }
-    public float GetBluntDamageFactorByDamageTypeNew(DamageTypes damageType)
+
+    public override float CalculateStrikeMagnitudeForSwing(BasicCharacterObject attackerCharacter, BasicCharacterObject attackerCaptainCharacter, float swingSpeed, float impactPoint, float weaponWeight, WeaponComponentData weaponUsageComponent, float weaponLength, float weaponInertia, float weaponCoM, float extraLinearSpeed, bool doesAttackerHaveMount)
     {
-        float result = 0f;
-        switch (damageType)
-        {
-            case DamageTypes.Blunt:
-                result = 1f;
-                break;
-            case DamageTypes.Cut:
-                result = 0.2f;
-                break;
-            case DamageTypes.Pierce:
-                result = 0.3f;
-                break;
-        }
-
-        return result;
+        return CombatStatCalculator.CalculateStrikeMagnitudeForSwing(swingSpeed, impactPoint, weaponWeight, weaponLength, weaponInertia, weaponCoM, extraLinearSpeed);
     }
 
+    public override float CalculateStrikeMagnitudeForThrust(BasicCharacterObject attackerCharacter, BasicCharacterObject attackerCaptainCharacter, float thrustWeaponSpeed, float weaponWeight, WeaponComponentData weaponUsageComponent, float extraLinearSpeed, bool doesAttackerHaveMount, bool isThrown = false)
+    {
+        return CombatStatCalculator.CalculateStrikeMagnitudeForThrust(thrustWeaponSpeed, weaponWeight, extraLinearSpeed, isThrown);
+    }
 
+    public override float CalculateSpeedBonusMultiplierForMissile(BasicCharacterObject attackerCharacter, WeaponClass ammoClass)
+    {
+        return 0f;
+    }
+
+    public override float CalculateHorseArcheryFactor(BasicCharacterObject characterObject)
+    {
+        return 100f;
+    }
 }

@@ -281,7 +281,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         foreach (var equippedItem in equippedItems)
         {
             var index = ItemSlotToIndex[equippedItem.Slot];
-            Console.WriteLine(equippedItem.UserItem.BaseItemId);
             AddEquipment(equipment, index, equippedItem.UserItem.BaseItemId);
         }
 
