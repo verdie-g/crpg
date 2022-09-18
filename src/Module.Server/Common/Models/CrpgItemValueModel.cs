@@ -248,17 +248,6 @@ internal class CrpgItemValueModel : ItemValueModel
             scaler = 4094370f;
         }
 
-        /*if (weapon.ItemUsage.Contains("light"))
-        {
-            extra += 1.25f;
-        }
-
-        if (!weaponComponent.PrimaryWeapon.ItemUsage.Contains("long_bow")
-            && !weaponComponent.PrimaryWeapon.WeaponFlags.HasAnyFlag(WeaponFlags.CantReloadOnHorseback))
-        {
-            extra += 0.5f;
-        }*/
-
         return weapon.ThrustDamage
             * weapon.SwingSpeed
             * weapon.MissileSpeed
