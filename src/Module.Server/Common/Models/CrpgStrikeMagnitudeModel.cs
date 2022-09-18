@@ -54,10 +54,10 @@ internal class CrpgStrikeMagnitudeModel : StrikeMagnitudeCalculationModel
                 result = 1f; // Native 1f
                 break;
             case DamageTypes.Cut:
-                result = 0.25f; // Native .1f
+                result = 0.35f; // Native .1f
                 break;
             case DamageTypes.Pierce:
-                result = 0.30f; // Native .25f
+                result = .4f; // Native .25f
                 break;
         }
 
