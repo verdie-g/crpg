@@ -11,6 +11,7 @@ internal class CrpgUser
     public Platform Platform { get; set; }
     public string PlatformUserId { get; set; } = string.Empty;
     public int Gold { get; set; }
+    public CrpgUserRole Role { get; set; }
     public CrpgCharacter Character { get; set; } = default!;
     public IList<CrpgRestriction> Restrictions { get; set; } = Array.Empty<CrpgRestriction>();
     public CrpgClanMember? ClanMembership { get; set; }
