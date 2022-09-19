@@ -12,7 +12,6 @@ internal static class Program
 {
     private const string CrpgWebsite = "http://c-rpg.eu";
     private const string CrpgModFile = "cRPG.zip";
-    private const string DownloadUrl = CrpgWebsite + "/" + CrpgModFile;
     private const string UserRoot = "HKEY_CURRENT_USER";
     private const string Subkey = @"Software\Valve\Steam";
     private const string KeyName = UserRoot + "\\" + Subkey;
@@ -32,8 +31,6 @@ internal static class Program
         string targetPath = string.Empty;
         string configPath = crpgDocumentPath + CrpgLauncherConfig;
         string versionPath = crpgDocumentPath + CrpgLauncherVersion;
-
-        var (updateAvailable, tag) = await UpdateAvailable(versionPath);
 
         if (Directory.Exists(crpgDocumentPath) && File.Exists(configPath))
         {
@@ -92,7 +89,6 @@ internal static class Program
         }
 
         string blPathExe = targetPath + exeRelativePath;
-
         if (targetPath == string.Empty)
         {
             var result = MessageBox.Show("Could not find your Mount & Blade II Bannerlord location.\n\nPlease select your Mount & Blade II Bannerlord directory.", "Mount & Blade II Bannerlord not found",
@@ -164,18 +160,10 @@ internal static class Program
             File.WriteAllText(configPath, targetPath);
         }
 
-
         string modulesPath = targetPath + @"\Modules";
         string crpgPath = modulesPath + @"\cRPG";
 
-        if (updateAvailable || !Directory.Exists(crpgPath))
-        {
-            bool updated = await UpdateFiles(DownloadUrl, crpgPath);
-            if (updated)
-            {
-                File.WriteAllText(versionPath, tag ?? "error");
-            }
-        }
+        await UpdateCrpg(versionPath, crpgPath);
 
         ProcessStartInfo startInfo = new();
         startInfo.WorkingDirectory = Path.GetDirectoryName(blPathExe);
@@ -186,7 +174,7 @@ internal static class Program
         Process.Start(startInfo);
     }
 
-    private static async Task<(bool updateAvailable, string? tag)> UpdateAvailable(string versionPath)
+    private static async Task UpdateCrpg(string versionPath, string crpgPath)
     {
         string? tag = null;
         if (File.Exists(versionPath))
@@ -202,54 +190,48 @@ internal static class Program
         }
 
         var res = await httpClient.SendAsync(req, HttpCompletionOption.ResponseHeadersRead);
-        if (res.StatusCode == HttpStatusCode.NotModified)
+
+        if (res.StatusCode == HttpStatusCode.NotModified && Directory.Exists(crpgPath))
         {
-            return (false, tag);
+            return;
         }
 
         try
         {
             res.EnsureSuccessStatusCode();
+
+            string timeStamp = DateTime.Now.ToFileTime().ToString();
+            string downloadPath = Path.GetTempPath() + @"\cRPG" + timeStamp + ".zip";
+
+            using (var resultStream = await res.Content.ReadAsStreamAsync())
+            using (var fileStream = File.Create(downloadPath))
+            {
+                await resultStream.CopyToAsync(fileStream);
+            }
+
+            if (!File.Exists(downloadPath))
+            {
+                return;
+            }
+
+            if (Directory.Exists(crpgPath))
+            {
+                Directory.Delete(crpgPath, true);
+            }
+
+            Directory.CreateDirectory(crpgPath);
+            ZipFile.ExtractToDirectory(downloadPath, crpgPath);
+            File.Delete(downloadPath);
             tag = res.Headers.ETag?.Tag;
+            File.WriteAllText(versionPath, tag ?? "error");
         }
         catch (HttpRequestException)
         {
             MessageBox.Show("Could not check for any updates.", "Update check failed",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
-            return (false, null);
+            return;
         }
-
-        return (true, tag);
-    }
-
-    private static async Task<bool> UpdateFiles(string downloadUrl, string crpgPath)
-    {
-
-        string timeStamp = DateTime.Now.ToFileTime().ToString();
-        string downloadPath = Path.GetTempPath() + @"\cRPG" + timeStamp + ".zip";
-
-        var httpClient = new HttpClient();
-        var httpResult = await httpClient.GetAsync(downloadUrl);
-        using var resultStream = await httpResult.Content.ReadAsStreamAsync();
-        using var fileStream = File.Create(downloadPath);
-        resultStream.CopyTo(fileStream);
-        fileStream.Close();
-
-        if (!File.Exists(downloadPath))
-        {
-            return false;
-        }
-
-        if (Directory.Exists(crpgPath))
-        {
-            Directory.Delete(crpgPath, true);
-        }
-
-        Directory.CreateDirectory(crpgPath);
-        ZipFile.ExtractToDirectory(downloadPath, crpgPath);
-        File.Delete(downloadPath);
-        return true;
     }
 
     private static bool IsProcessRunning(string name)
