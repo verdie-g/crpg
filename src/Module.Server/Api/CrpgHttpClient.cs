@@ -139,13 +139,14 @@ internal class CrpgHttpClient : ICrpgClient
 
     private async Task RefreshAccessToken()
     {
+        string crpgApiKey = Environment.GetEnvironmentVariable("CRPG_API_KEY") ?? "tototo";
         Debug.Print("Refreshing access token");
         var tokenRequest = new[]
         {
             new KeyValuePair<string, string>("grant_type", "client_credentials"),
             new KeyValuePair<string, string>("scope", "game_api"),
             new KeyValuePair<string, string>("client_id", "crpg-game-server"),
-            new KeyValuePair<string, string>("client_secret", "tototo"),
+            new KeyValuePair<string, string>("client_secret", crpgApiKey),
         };
 
         var tokenResponse = await _httpClient.PostAsync("connect/token", new FormUrlEncodedContent(tokenRequest));
