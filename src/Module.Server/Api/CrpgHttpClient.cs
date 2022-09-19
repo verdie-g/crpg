@@ -9,6 +9,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
+using TaleWorlds.Library;
+using Platform = Crpg.Module.Api.Models.Users.Platform;
 
 namespace Crpg.Module.Api;
 
@@ -114,13 +116,12 @@ internal class CrpgHttpClient : ICrpgClient
                 await RefreshAccessToken();
             }
 
-            // TODO: log request
+            Debug.Print($"Sending {msg.Method} {msg.RequestUri}");
             var res = await _httpClient.SendAsync(msg, cancellationToken);
             string json = await res.Content.ReadAsStringAsync();
 
             if (res.StatusCode == HttpStatusCode.Unauthorized)
             {
-                // TODO: log warn unauthorized.
                 _httpClient.DefaultRequestHeaders.Authorization = null;
                 continue;
             }
@@ -138,13 +139,14 @@ internal class CrpgHttpClient : ICrpgClient
 
     private async Task RefreshAccessToken()
     {
-        // TODO: log refreshing
+        string crpgApiKey = Environment.GetEnvironmentVariable("CRPG_API_KEY") ?? "tototo";
+        Debug.Print("Refreshing access token");
         var tokenRequest = new[]
         {
             new KeyValuePair<string, string>("grant_type", "client_credentials"),
             new KeyValuePair<string, string>("scope", "game_api"),
             new KeyValuePair<string, string>("client_id", "crpg-game-server"),
-            new KeyValuePair<string, string>("client_secret", "tototo"),
+            new KeyValuePair<string, string>("client_secret", crpgApiKey),
         };
 
         var tokenResponse = await _httpClient.PostAsync("connect/token", new FormUrlEncodedContent(tokenRequest));
@@ -156,6 +158,6 @@ internal class CrpgHttpClient : ICrpgClient
 
         string accessToken = JObject.Parse(tokenResponseBody)["access_token"].ToString();
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-        // TODO: log refresh ok
+        Debug.Print("Access token successfully refreshed");
     }
 }

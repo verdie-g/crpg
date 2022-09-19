@@ -83,10 +83,25 @@ public record SeedDataCommand : IMediatorRequest
             {
                 PlatformUserId = "76561197979511363",
                 Name = "Namidaka",
+                Gold = 100000,
+                Characters = new List<Character>
+                { new Character { Name = "namichar" } },
                 AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273.jpg"),
                 AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273_medium.jpg"),
                 AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273_full.jpg"),
             };
+            User kinngrimm = new()
+            {
+                PlatformUserId = "76561197998594278",
+                Name = "Kinngrimm",
+                Gold = 100000,
+                Characters = new List<Character>
+                { new Character { Name = "kinnchar" } },
+                AvatarSmall = new Uri("https://avatars.cloudflare.steamstatic.com/ed4f240198b8ad5ceebe4fad0160f13c1e0c3a1f.jpg"),
+                AvatarMedium = new Uri("https://avatars.cloudflare.steamstatic.com/ed4f240198b8ad5ceebe4fad0160f13c1e0c3a1f_medium.jpg"),
+                AvatarFull = new Uri("https://avatars.cloudflare.steamstatic.com/ed4f240198b8ad5ceebe4fad0160f13c1e0c3a1f_full.jpg"),
+            };
+
             User laHire = new()
             {
                 PlatformUserId = "76561198012340299",
@@ -656,16 +671,16 @@ public record SeedDataCommand : IMediatorRequest
             Clan pecores = new()
             {
                 Tag = "PEC",
-                PrimaryColor = 1234567,
-                SecondaryColor = 890,
+                PrimaryColor = 4278190318,
+                SecondaryColor = 4294957414,
                 Name = "Pecores",
                 BannerKey = string.Empty,
             };
             Clan ats = new()
             {
                 Tag = "ATS",
-                PrimaryColor = 1234567,
-                SecondaryColor = 890,
+                PrimaryColor = 4281348144,
+                SecondaryColor = 4281348144,
                 Name = "Among The Shadows",
                 BannerKey = string.Empty,
             };

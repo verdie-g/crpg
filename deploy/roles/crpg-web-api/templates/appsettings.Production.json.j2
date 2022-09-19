@@ -39,7 +39,11 @@
       {
         "ClientId": "crpg-forum",
         "ClientName": "cRPG Forum",
-        "ClientSecrets": [{ "Value": "3BHLkNM+dJ+MLqerWsCwXQjRDb5vwzioY7/W8DcOM3A=" }],
+        "ClientSecrets": [
+        {% for crpg_api_key in crpg_api_keys %}
+          { "Value": "{{ crpg_api_key }}" },
+        {% endfor %}
+        ],
         "AllowedGrantTypes": ["authorization_code"],
         "AllowedScopes": ["openid", "profile"],
         "RedirectUris": ["https://forum.{{ crpg_domain_name }}/auth/oidc/callback"],
