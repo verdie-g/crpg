@@ -192,8 +192,7 @@ public record SeedDataCommand : IMediatorRequest
             };
             User brainfart = new()
             {
-                PlatformUserId = "76561198007258336",
-                Name = "Brainfart",
+                PlatformUserId = "76561198007258336", Name = "Brainfart",
                 AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/06/06be92280c028dbf83951ccaa7857d1b46f50401.jpg"),
                 AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/06/06be92280c028dbf83951ccaa7857d1b46f50401_medium.jpg"),
                 AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/06/06be92280c028dbf83951ccaa7857d1b46f50401_full.jpg"),
@@ -672,16 +671,16 @@ public record SeedDataCommand : IMediatorRequest
             Clan pecores = new()
             {
                 Tag = "PEC",
-                PrimaryColor = 1234567,
-                SecondaryColor = 890,
+                PrimaryColor = 4278190318,
+                SecondaryColor = 4294957414,
                 Name = "Pecores",
                 BannerKey = string.Empty,
             };
             Clan ats = new()
             {
                 Tag = "ATS",
-                PrimaryColor = 1234567,
-                SecondaryColor = 890,
+                PrimaryColor = 4281348144,
+                SecondaryColor = 4281348144,
                 Name = "Among The Shadows",
                 BannerKey = string.Empty,
             };
