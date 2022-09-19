@@ -128,7 +128,7 @@ import clanModule from '@/store/clan-module';
 import Clan from '@/models/clan';
 import userModule from '@/store/user-module';
 import ClanWithMemberCount from '@/models/clan-with-member-count';
-import { argbIntToHexColor } from '@/utils/color';
+import { argbIntToRgbHexColor } from '@/utils/color';
 
 @Component
 export default class Clans extends Vue {
@@ -188,7 +188,7 @@ export default class Clans extends Vue {
   }
 
   argbIntToHexColor(argb: number): string {
-    return argbIntToHexColor(argb);
+    return argbIntToRgbHexColor(argb);
   }
 }
 </script>

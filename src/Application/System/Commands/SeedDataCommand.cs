@@ -656,16 +656,16 @@ public record SeedDataCommand : IMediatorRequest
             Clan pecores = new()
             {
                 Tag = "PEC",
-                PrimaryColor = 1234567,
-                SecondaryColor = 890,
+                PrimaryColor = 4278190318,
+                SecondaryColor = 4294957414,
                 Name = "Pecores",
                 BannerKey = string.Empty,
             };
             Clan ats = new()
             {
                 Tag = "ATS",
-                PrimaryColor = 1234567,
-                SecondaryColor = 890,
+                PrimaryColor = 4281348144,
+                SecondaryColor = 4281348144,
                 Name = "Among The Shadows",
                 BannerKey = string.Empty,
             };

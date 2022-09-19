@@ -58,7 +58,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import Constants from '../../../../data/constants.json';
 import clanModule from '@/store/clan-module';
 import { notify } from '@/services/notifications-service';
-import { hexColorToArgbInt } from '@/utils/color';
+import { rgbHexColorToArgbInt } from '@/utils/color';
 
 @Component
 export default class ClanCreationComponent extends Vue {
@@ -85,8 +85,8 @@ export default class ClanCreationComponent extends Vue {
     clanModule
       .createClan({
         tag: this.tag,
-        primaryColor: hexColorToArgbInt(this.primaryColor),
-        secondaryColor: hexColorToArgbInt(this.secondaryColor),
+        primaryColor: rgbHexColorToArgbInt(this.primaryColor),
+        secondaryColor: rgbHexColorToArgbInt(this.secondaryColor),
         name: this.name,
         bannerKey: this.bannerKey,
       })
