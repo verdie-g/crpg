@@ -112,9 +112,7 @@
       >
         <div class="field">
           <b-switch :value="character.autoRepair" @input="onAutoRepairSwitch" disabled>
-            Automatically repair damaged items
-            - Average repair cost {{ maxAverageRepairCost }} gold
-            - Max repair cost {{ maxRepairCost }} gold
+            Automatically repair damaged items - Average repair cost {{ maxAverageRepairCost }} gold - Max repair cost {{ maxRepairCost }} gold
           </b-switch>
         </div>
       </b-tooltip>
