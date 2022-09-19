@@ -232,14 +232,12 @@
               </b-button>
             </div>
             <div class="column">
-              <b-button
-                size="is-medium"
-                type="is-danger"
-                icon-left="coins"
-                expanded
-                @click="showSellItemConfirmation(userItemToReplace)"
-              >
-                Sell
+              <b-button size="is-medium"
+                        type="is-danger"
+                        icon-left="coins"
+                        expanded
+                        @click="showSellItemConfirmation(userItemToReplace)">
+                Sell for {{ userItemToReplaceSalePrice }} gold
               </b-button>
             </div>
           </div>
@@ -271,14 +269,12 @@
         </div>
 
         <div class="column">
-          <b-button
-            size="is-medium"
-            type="is-danger"
-            icon-left="coins"
-            expanded
-            @click="confirmSellItem"
-          >
-            Sell
+          <b-button size="is-medium"
+                    type="is-danger"
+                    icon-left="coins"
+                    expanded
+                    @click="confirmSellItem">
+            Sell for {{ userItemToReplaceSalePrice }} gold
           </b-button>
           <b-button
             size="is-medium"
@@ -302,7 +298,7 @@ import userModule from '@/store/user-module';
 import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
 import { computeMaxRepairCost, computeAverageRepairCost } from '@/services/characters-service';
-import { filterUserItemsFittingInSlot } from '@/services/item-service';
+import { filterUserItemsFittingInSlot, computeSalePrice } from '@/services/item-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
 import EquippedItem from '@/models/equipped-item';
@@ -378,6 +374,14 @@ export default class CharacterComponent extends Vue {
 
     // return info;
     return { upgradable: false, reason: 'Heirloom are disabled for now' };
+  }
+
+  get userItemToReplaceSalePrice(): number {
+    if (this.userItemToReplace === null) {
+      return 0;
+    }
+
+    return computeSalePrice(this.userItemToReplace);
   }
 
   created() {
