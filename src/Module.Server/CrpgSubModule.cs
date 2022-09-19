@@ -1,14 +1,12 @@
-﻿using System.Runtime.CompilerServices;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 using Crpg.Module.Battle;
 using Crpg.Module.Common;
+using Crpg.Module.Common.GameHandler;
 using Crpg.Module.Common.Models;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
-using Crpg.Module.Common.GameHandler;
 
 #if CRPG_CLIENT
 using TaleWorlds.Engine.GauntletUI;

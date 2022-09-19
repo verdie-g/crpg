@@ -1,16 +1,24 @@
-﻿using TaleWorlds.MountAndBlade;
+﻿using Crpg.Module.Common.GameHandler;
+using TaleWorlds.Core;
+using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.ChatCommands;
 internal abstract class ChatCommand
 {
-    public string Command { get; private set; }
-    public List<string> Pattern { get; private set; }
-    protected string Description { get; private set; }
-
-    public ChatCommand(string command, List<string> pattern)
+    private string _command = string.Empty;
+    public string Command
     {
-        Command = command.ToLower();
-        Pattern = pattern;
+        get => _command;
+        protected set => _command = value.ToLower();
+    }
+
+    protected List<string> Pattern { get; set; }
+    protected string Description { get; set; }
+
+    public ChatCommand()
+    {
+        Command = "ping".ToLower();
+        Pattern = new string[] { string.Empty }.ToList();
         Description = $"Description here";
     }
 
@@ -114,5 +122,10 @@ internal abstract class ChatCommand
         }
 
         return (false, null);
+    }
+
+    protected virtual CrpgChatBox GetChat()
+    {
+        return Game.Current.GetGameHandler<CrpgChatBox>();
     }
 }

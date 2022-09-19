@@ -85,6 +85,14 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
         }
     }
 
+    public override void OnBeforeSave()
+    {
+    }
+
+    public override void OnAfterSave()
+    {
+    }
+
     protected override void OnTick(float dt)
     {
         if (GameNetwork.IsServer && _isNetworkInitialized)
