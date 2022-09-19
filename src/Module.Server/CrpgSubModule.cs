@@ -24,18 +24,18 @@ internal class CrpgSubModule : MBSubModuleBase
 {
     private CrpgConstants _constants = default!;
 
+#if CRPG_SERVER
     public override void OnGameInitializationFinished(Game game)
     {
         base.OnGameInitializationFinished(game);
 
-#if CRPG_SERVER
         if (game.GetGameHandler<CrpgChatBox>() == null)
         {
             game.AddGameHandler<CrpgChatBox>();
         }
-#endif
 
     }
+#endif
 
     protected override void OnSubModuleLoad()
     {
