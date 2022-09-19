@@ -8,6 +8,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.ModuleManager;
 using TaleWorlds.MountAndBlade;
+using Crpg.Module.Common.GameHandler;
 
 #if CRPG_CLIENT
 using TaleWorlds.Engine.GauntletUI;
@@ -24,6 +25,19 @@ namespace Crpg.Module;
 internal class CrpgSubModule : MBSubModuleBase
 {
     private CrpgConstants _constants = default!;
+
+    public override void OnGameInitializationFinished(Game game)
+    {
+        base.OnGameInitializationFinished(game);
+
+#if CRPG_SERVER
+        if (game.GetGameHandler<CrpgChatBox>() == null)
+        {
+            game.AddGameHandler<CrpgChatBox>();
+        }
+#endif
+
+    }
 
     protected override void OnSubModuleLoad()
     {

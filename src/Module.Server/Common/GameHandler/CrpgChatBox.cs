@@ -48,14 +48,6 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
         _chatBox.OnMessageReceivedAtDedicatedServer = (Action<NetworkCommunicator, string>)Delegate.Combine(_chatBox.OnMessageReceivedAtDedicatedServer, new Action<NetworkCommunicator, string>(OnMessageReceivedAtDedicatedServer));
     }
 
-    public override void OnAfterSave()
-    {
-    }
-
-    public override void OnBeforeSave()
-    {
-    }
-
     public void ServerSendMessageToPlayer(NetworkCommunicator targetPlayer, Color color, string message)
     {
         if (!targetPlayer.IsSynchronized)

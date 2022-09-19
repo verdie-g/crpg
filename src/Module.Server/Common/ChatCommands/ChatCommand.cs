@@ -5,13 +5,13 @@ internal abstract class ChatCommand
 {
     public string Command { get; private set; }
     public List<string> Pattern { get; private set; }
-    private readonly string description;
+    protected string Description { get; private set; }
 
     public ChatCommand(string command, List<string> pattern)
     {
         Command = command.ToLower();
         Pattern = pattern;
-        description = $"Description here";
+        Description = $"Description here";
     }
 
     public virtual bool Execute(NetworkCommunicator fromPeer, string cmd, List<string> parameters)
@@ -43,10 +43,7 @@ internal abstract class ChatCommand
     }
 
     // Parameters contains the parsed parameters
-    protected virtual void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<dynamic> parameters)
-    {
-        // Do stuff in here
-    }
+    protected abstract void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<dynamic> parameters);
 
     // Called when the command fails.
     protected virtual void ExecuteFailed(NetworkCommunicator fromPeer)
@@ -59,14 +56,28 @@ internal abstract class ChatCommand
         int formatLen = pattern.Length;
         int parameterLen = pattern.Length;
         List<dynamic> parsedItems = new();
+        if (formatLen == 0 && parameterLen == 0)
+        {
+            return (true, parsedItems);
+        }
+
         if (parameterLen >= formatLen)
         {
             try
             {
                 for (int i = 0; i < formatLen; i++)
                 {
+                    /*
+                     * i & d = int
+                     * f = float
+                     * s = string
+                     * p = player id
+                     */
                     switch (pattern[i])
                     {
+                        case 'p':
+
+                            break;
                         case 'i':
                         case 'd':
                             parsedItems.Add(int.Parse(parameters[i]));
