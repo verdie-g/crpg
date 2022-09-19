@@ -10,3 +10,12 @@ export function computeMaxRepairCost(equippedItems: EquippedItem[]): number {
     0
   );
 }
+export function computeAverageRepairCost(equippedItems: EquippedItem[]): number {
+  return (
+    equippedItems.reduce(
+      (cost, ei) =>
+        cost + applyPolynomialFunction(ei.userItem.baseItem.price, Constants.itemRepairCostCoefs),
+      0
+    ) * Constants.itemBreakChance
+  );
+}
