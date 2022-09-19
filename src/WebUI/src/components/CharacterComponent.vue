@@ -112,7 +112,8 @@
       >
         <div class="field">
           <b-switch :value="character.autoRepair" @input="onAutoRepairSwitch" disabled>
-            Automatically repair damaged items - Average repair cost {{ maxAverageRepairCost }} gold - Max repair cost {{ maxRepairCost }} gold
+            Automatically repair damaged items - Average repair cost {{ maxAverageRepairCost }} gold
+            - Max repair cost {{ maxRepairCost }} gold
           </b-switch>
         </div>
       </b-tooltip>
@@ -216,8 +217,7 @@ import ItemProperties from '@/components/ItemProperties.vue';
 import userModule from '@/store/user-module';
 import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
-  import { computeMaxRepairCost, computeAverageRepairCost }
-  from '@/services/characters-service';
+import { computeMaxRepairCost, computeAverageRepairCost } from '@/services/characters-service';
 import { filterUserItemsFittingInSlot } from '@/services/item-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
