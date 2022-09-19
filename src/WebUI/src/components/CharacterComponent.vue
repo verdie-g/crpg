@@ -232,11 +232,13 @@
               </b-button>
             </div>
             <div class="column">
-              <b-button size="is-medium"
-                        type="is-danger"
-                        icon-left="coins"
-                        expanded
-                        @click="showSellItemConfirmation(userItemToReplace)">
+              <b-button
+                size="is-medium"
+                type="is-danger"
+                icon-left="coins"
+                expanded
+                @click="showSellItemConfirmation(userItemToReplace)"
+              >
                 Sell for {{ userItemToReplaceSalePrice }} gold
               </b-button>
             </div>
@@ -269,11 +271,13 @@
         </div>
 
         <div class="column">
-          <b-button size="is-medium"
-                    type="is-danger"
-                    icon-left="coins"
-                    expanded
-                    @click="confirmSellItem">
+          <b-button
+            size="is-medium"
+            type="is-danger"
+            icon-left="coins"
+            expanded
+            @click="confirmSellItem"
+          >
             Sell for {{ userItemToReplaceSalePrice }} gold
           </b-button>
           <b-button
