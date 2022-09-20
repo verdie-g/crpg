@@ -59,7 +59,6 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
             registerer.Register<UpdateCrpgUser>(HandleUpdateCrpgUser);
             registerer.Register<CrpgRewardUser>(HandleRewardUser);
             registerer.Register<CrpgRewardError>(HandleRewardError);
-            registerer.Register<CrpgServerMessage>(HandleCrpgServerMessage);
         }
     }
 
@@ -128,10 +127,5 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     private void HandleRewardError(CrpgRewardError message)
     {
         InformationManager.DisplayMessage(new InformationMessage("Could not join cRPG main server. Your reward was lost.", new Color(0.75f, 0.01f, 0.01f)));
-    }
-
-    private void HandleCrpgServerMessage(CrpgServerMessage message)
-    {
-        InformationManager.DisplayMessage(new InformationMessage(message.Message, new Color(message.Red, message.Green, message.Blue, message.Alpha)));
     }
 }

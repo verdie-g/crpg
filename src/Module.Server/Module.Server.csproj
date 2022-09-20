@@ -44,8 +44,5 @@
   <ItemGroup>
     <InternalsVisibleTo Include="$(AssemblyName).UTest" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\ChatCommands\AdminCommands\" />
-  </ItemGroup>
 
 </Project>

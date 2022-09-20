@@ -16,10 +16,6 @@ internal class ChatCommandHandler
     public static bool CheckForCommand(NetworkCommunicator fromPeer, string cmd)
     {
         string[] tmpParams = cmd.Split(' ');
-        if (tmpParams.Length == 0)
-        {
-            return false;
-        }
 
         List<string> parameters = tmpParams.ToList();
         string lowerCaseCmd = parameters[0];

@@ -17,7 +17,7 @@ internal abstract class ChatCommand
 
     public ChatCommand()
     {
-        Command = "ping".ToLower();
+        Command = string.Empty;
         Pattern = new string[] { string.Empty }.ToList();
         Description = $"Description here";
     }
@@ -51,7 +51,7 @@ internal abstract class ChatCommand
     }
 
     // Parameters contains the parsed parameters
-    protected abstract void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<dynamic> parameters);
+    protected abstract void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<object> parameters);
 
     // Called when the command fails.
     protected virtual void ExecuteFailed(NetworkCommunicator fromPeer)
@@ -59,11 +59,11 @@ internal abstract class ChatCommand
         // Example: Invalid usage.. please type !command ID Message
     }
 
-    protected (bool succes, List<dynamic>? values) Sscanf(List<string> parameters, string pattern)
+    protected (bool succes, List<object>? values) Sscanf(List<string> parameters, string pattern)
     {
         int formatLen = pattern.Length;
         int parameterLen = pattern.Length;
-        List<dynamic> parsedItems = new();
+        List<object> parsedItems = new();
         if (formatLen == 0 && parameterLen == 0)
         {
             return (true, parsedItems);
@@ -84,6 +84,15 @@ internal abstract class ChatCommand
                     switch (pattern[i])
                     {
                         case 'p':
+                            int id = int.Parse(parameters[i]);
+                            foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
+                            {
+                                if (networkPeer.IsSynchronized && networkPeer.Index == id)
+                                {
+                                    parsedItems.Add(networkPeer);
+                                    break;
+                                }
+                            }
 
                             break;
                         case 'i':

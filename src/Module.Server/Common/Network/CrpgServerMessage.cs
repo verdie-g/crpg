@@ -7,59 +7,50 @@ namespace Crpg.Module.Common.Network;
 [DefineGameNetworkMessageTypeForMod(GameNetworkMessageSendType.FromServer)]
 internal sealed class CrpgServerMessage : GameNetworkMessage
 {
-        public string Message
+        private static readonly CompressionInfo.Float FloatCompressionInfo = new(0.0f, 1.1f, 7);
+        public string? Message
         {
             get;
-            private set;
+            set;
         }
 
         public float Red
         {
             get;
-            private set;
+            set;
         }
 
         public float Green
         {
             get;
-            private set;
+            set;
         }
 
         public float Blue
         {
             get;
-            private set;
+            set;
         }
 
         public float Alpha
         {
             get;
-            private set;
+            set;
         }
 
         public bool IsMessageTextId
         {
             get;
-            private set;
-        }
-
-        public CrpgServerMessage(Color color, string message, bool isMessageTextId = false)
-        {
-            Message = message;
-            Red = color.Red;
-            Green = color.Green;
-            Blue = color.Blue;
-            Alpha = color.Alpha;
-            IsMessageTextId = isMessageTextId;
+            set;
         }
 
         protected override void OnWrite()
         {
             WriteStringToPacket(Message);
-            WriteFloatToPacket(Red, CompressionInfo.Float.FullPrecision);
-            WriteFloatToPacket(Green, CompressionInfo.Float.FullPrecision);
-            WriteFloatToPacket(Blue, CompressionInfo.Float.FullPrecision);
-            WriteFloatToPacket(Alpha, CompressionInfo.Float.FullPrecision);
+            WriteFloatToPacket(Red, FloatCompressionInfo);
+            WriteFloatToPacket(Green, FloatCompressionInfo);
+            WriteFloatToPacket(Blue, FloatCompressionInfo);
+            WriteFloatToPacket(Alpha, FloatCompressionInfo);
             WriteBoolToPacket(IsMessageTextId);
         }
 
@@ -67,10 +58,10 @@ internal sealed class CrpgServerMessage : GameNetworkMessage
         {
             bool bufferReadValid = true;
             Message = ReadStringFromPacket(ref bufferReadValid);
-            Red = ReadFloatFromPacket(CompressionInfo.Float.FullPrecision, ref bufferReadValid);
-            Green = ReadFloatFromPacket(CompressionInfo.Float.FullPrecision, ref bufferReadValid);
-            Blue = ReadFloatFromPacket(CompressionInfo.Float.FullPrecision, ref bufferReadValid);
-            Alpha = ReadFloatFromPacket(CompressionInfo.Float.FullPrecision, ref bufferReadValid);
+            Red = ReadFloatFromPacket(FloatCompressionInfo, ref bufferReadValid);
+            Green = ReadFloatFromPacket(FloatCompressionInfo, ref bufferReadValid);
+            Blue = ReadFloatFromPacket(FloatCompressionInfo, ref bufferReadValid);
+            Alpha = ReadFloatFromPacket(FloatCompressionInfo, ref bufferReadValid);
             IsMessageTextId = ReadBoolFromPacket(ref bufferReadValid);
             return bufferReadValid;
         }

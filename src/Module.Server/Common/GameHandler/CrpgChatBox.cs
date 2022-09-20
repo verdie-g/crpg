@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using Crpg.Module.Common.ChatCommands;
+using Crpg.Module.Common.ChatCommands.UserCommands;
 using Crpg.Module.Common.Network;
 using Crpg.Module.Helpers;
 using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+#if CRPG_SERVER
+using TaleWorlds.MountAndBlade.DedicatedCustomServer;
+#endif
+using TaleWorlds.MountAndBlade.Network.Messages;
 
 namespace Crpg.Module.Common.GameHandler;
 internal class CrpgChatBox : TaleWorlds.Core.GameHandler
@@ -40,12 +45,17 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
     public CrpgChatBox()
     {
         _queuedServerMessages = null;
+
+#if CRPG_SERVER
+        DedicatedCustomGameServerState.OnActivated += DedicatedCustomGameServerStateActivated;
+#endif
     }
 
     public void DedicatedCustomGameServerStateActivated()
     {
         _chatBox = Game.Current.GetGameHandler<ChatBox>();
         _chatBox.OnMessageReceivedAtDedicatedServer = (Action<NetworkCommunicator, string>)Delegate.Combine(_chatBox.OnMessageReceivedAtDedicatedServer, new Action<NetworkCommunicator, string>(OnMessageReceivedAtDedicatedServer));
+
     }
 
     public void ServerSendMessageToPlayer(NetworkCommunicator targetPlayer, Color color, string message)
@@ -59,7 +69,15 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
         if (targetPlayer.IsServerPeer == false && targetPlayer.IsSynchronized)
         {
             GameNetwork.BeginModuleEventAsServer(targetPlayer);
-            GameNetwork.WriteMessage(new CrpgServerMessage(color, message, false));
+            GameNetwork.WriteMessage(new CrpgServerMessage
+            {
+                Message = message,
+                Red = color.Red,
+                Green = color.Green,
+                Blue = color.Blue,
+                Alpha = color.Alpha,
+                IsMessageTextId = false,
+            });
             GameNetwork.EndModuleEventAsServer();
             /*
             if (!targetPlayer.IsInBList || !targetPlayer.IsInCList)
@@ -83,6 +101,26 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
         {
             ChatCommandHandler.CheckForCommand(fromPeer, message.Substring(1));
         }
+    }
+
+    protected override void OnGameNetworkBegin()
+    {
+        _queuedServerMessages = new List<QueuedMessageInfo>();
+        _isNetworkInitialized = true;
+        AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
+
+#if CRPG_SERVER
+        ChatCommandHandler.RegisterCommand(new PingCmd());
+        ChatCommandHandler.RegisterCommand(new PlayerlistCmd());
+        ChatCommandHandler.RegisterCommand(new KickCmd());
+#endif
+
+    }
+
+    protected override void OnGameNetworkEnd()
+    {
+        base.OnGameNetworkEnd();
+        AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Remove);
     }
 
     public override void OnBeforeSave()
@@ -113,9 +151,24 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
         }
     }
 
-    protected override void OnGameNetworkBegin()
+    private void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode mode)
     {
-        _queuedServerMessages = new List<QueuedMessageInfo>();
-        _isNetworkInitialized = true;
+        GameNetwork.NetworkMessageHandlerRegisterer networkMessageHandlerRegisterer = new(mode);
+        if (GameNetwork.IsClient)
+        {
+            networkMessageHandlerRegisterer.Register<CrpgServerMessage>(HandleCrpgServerMessage);
+            return;
+        }
+    }
+
+    private void HandleCrpgServerMessage(CrpgServerMessage message)
+    {
+        if (message.Message == null)
+        {
+            return;
+        }
+
+        string msg = message.IsMessageTextId ? GameTexts.FindText(message.Message, null).ToString() : message.Message;
+        InformationManager.DisplayMessage(new InformationMessage(msg, new Color(message.Red, message.Green, message.Blue, message.Alpha)));
     }
 }

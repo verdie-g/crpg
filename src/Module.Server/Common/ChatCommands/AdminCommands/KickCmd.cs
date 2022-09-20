@@ -2,18 +2,20 @@
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.ChatCommands.UserCommands;
-internal class PingCmd : ChatCommand
+internal class KickCmd : AdminCmd
 {
-    public PingCmd()
+    public KickCmd()
         : base()
     {
-        Command = "ping";
-        Pattern = new string[] { string.Empty }.ToList();
+        Command = "kick";
+        Pattern = new string[] { "p" }.ToList();
     }
 
     protected override void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
     {
         CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, new TaleWorlds.Library.Color(1, 0, 0), "Pong!");
+        var targetPeer = (NetworkCommunicator)parameters[0];
+
+        crpgChat.ServerSendMessageToPlayer(fromPeer, new TaleWorlds.Library.Color(1, 0, 0), "Kick: "+ targetPeer.UserName);
     }
 }
