@@ -46,6 +46,15 @@
           :controls="false"
         />
       </b-field>
+      <b-field horizontal label="HealthPoints" class="characteristic-field">
+        <b-numberinput
+          size="is-small"
+          :editable="false"
+          controls-position="compact"
+          :value="computeHealthPoints()"
+          :controls="false"
+        />
+      </b-field>
       <!-- TODO: align correctly -->
       <b-field horizontal label="KDA" class="characteristic-field">
         <b-input size="is-small" :value="getKda()" readonly />
@@ -594,10 +603,11 @@ export default class CharacterCharacteristicsComponent extends Vue {
     return `${statistics.kills}/${statistics.deaths}/${statistics.assists} (${ratio})`;
   }
   computeHealthPoints(): number {
-      return computeHealthPoints(this.getInputProps('skills', 'ironFlesh').value,this.getInputProps('attributes', 'strength').value);
-
-
-    }
+    return computeHealthPoints(
+      this.getInputProps('skills', 'ironFlesh').value,
+      this.getInputProps('attributes', 'strength').value
+    );
+  }
 
   convertCharacteristics(conversion: CharacteristicConversion): Promise<CharacterCharacteristics> {
     return userModule.convertCharacterCharacteristics({
