@@ -1,5 +1,6 @@
 ﻿using Crpg.Module.Common.GameHandler;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.Diamond;
 
 namespace Crpg.Module.Common.ChatCommands.UserCommands;
 internal class KickCmd : AdminCmd
@@ -8,14 +9,37 @@ internal class KickCmd : AdminCmd
         : base()
     {
         Command = "kick";
-        Pattern = new string[] { "p" }.ToList();
+        Description = $"'{ChatCommandHandler.CommandPrefix}{Command} PLAYERID' to kick a player.";
+        PatternList = new Pattern[] { new Pattern("p", ExecuteKickByNetworkPeer), new Pattern("s", ExecuteKickByName) }.ToList();
     }
 
-    protected override void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
+    protected override void ExecuteFailed(NetworkCommunicator fromPeer)
+    {
+        CrpgChatBox crpgChat = GetChat();
+        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorInfo, $"Wrong usage. Type {Description}");
+    }
+
+    private void ExecuteKickByNetworkPeer(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
     {
         CrpgChatBox crpgChat = GetChat();
         var targetPeer = (NetworkCommunicator)parameters[0];
+        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorFatal, $"You have kicked {targetPeer.UserName}.");
+        var disconnectInfo = fromPeer.PlayerConnectionInfo.GetParameter<DisconnectInfo>("DisconnectInfo") ?? new DisconnectInfo();
+        disconnectInfo.Type = DisconnectType.KickedByHost;
+        targetPeer.PlayerConnectionInfo.AddParameter("DisconnectInfo", disconnectInfo);
+        GameNetwork.AddNetworkPeerToDisconnectAsServer(targetPeer);
+    }
 
-        crpgChat.ServerSendMessageToPlayer(fromPeer, new TaleWorlds.Library.Color(1, 0, 0), "Kick: "+ targetPeer.UserName);
+    private void ExecuteKickByName(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
+    {
+        string targetName = (string)parameters[0];
+        var (success, targetPeer) = GetPlayerByName(fromPeer, targetName);
+        if (!success || targetPeer == null)
+        {
+            return;
+        }
+
+        parameters = new List<object> { targetPeer };
+        ExecuteKickByNetworkPeer(fromPeer, cmd, parameters);
     }
 }

@@ -8,12 +8,12 @@ internal class PingCmd : ChatCommand
         : base()
     {
         Command = "ping";
-        Pattern = new string[] { string.Empty }.ToList();
+        PatternList = new Pattern[] { new Pattern(string.Empty, ExecuteSuccess) }.ToList();
     }
 
-    protected override void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
+    private void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
     {
         CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, new TaleWorlds.Library.Color(1, 0, 0), "Pong!");
+        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorSuccess, "Pong!");
     }
 }

@@ -2,24 +2,21 @@
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.ChatCommands.UserCommands;
-internal class AdminCmd : ChatCommand
+internal abstract class AdminCmd : ChatCommand
 {
     public AdminCmd()
         : base()
     {
         Command = string.Empty;
-        Pattern = new string[] { string.Empty }.ToList();
+        PatternList = new Pattern[] { }.ToList();
     }
 
     protected override bool CheckRequirements(NetworkCommunicator fromPeer)
     {
-        base.CheckRequirements(fromPeer);
-        bool isAdmin = true;
+        bool hasAccess = base.CheckRequirements(fromPeer);
         // TODO: Add cRPG admin check
-        return isAdmin;
+        hasAccess = true;
+        return hasAccess;
     }
 
-    protected override void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
-    {
-    }
 }

@@ -6,19 +6,32 @@ namespace Crpg.Module.Common.ChatCommands;
 internal abstract class ChatCommand
 {
     private string _command = string.Empty;
+    protected class Pattern
+    {
+        public string Value { get; set; } = string.Empty;
+        public delegate void CallFunc(NetworkCommunicator networkPeer, string cmd, List<object> parameters);
+        public CallFunc? Function { get; private set; }
+
+        public Pattern(string pattern, CallFunc function)
+        {
+            Value = pattern;
+            Function = function;
+        }
+    }
+
     public string Command
     {
         get => _command;
         protected set => _command = value.ToLower();
     }
 
-    protected List<string> Pattern { get; set; }
+    protected List<Pattern> PatternList { get; set; }
     protected string Description { get; set; }
 
     public ChatCommand()
     {
         Command = string.Empty;
-        Pattern = new string[] { string.Empty }.ToList();
+        PatternList = new Pattern[] { }.ToList();
         Description = $"Description here";
     }
 
@@ -29,12 +42,12 @@ internal abstract class ChatCommand
             return false;
         }
 
-        foreach (string pattern in Pattern)
+        foreach (Pattern pattern in PatternList)
         {
-            var (succes, list) = Sscanf(parameters, pattern);
-            if (succes && list != null)
+            var (succes, list) = Sscanf(parameters, pattern.Value);
+            if (succes && list != null && pattern.Function != null)
             {
-                ExecuteSuccess(fromPeer, cmd, list);
+                pattern.Function(fromPeer, cmd, list);
                 return true;
             }
         }
@@ -50,21 +63,18 @@ internal abstract class ChatCommand
         return true;
     }
 
-    // Parameters contains the parsed parameters
-    protected abstract void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<object> parameters);
-
     // Called when the command fails.
     protected virtual void ExecuteFailed(NetworkCommunicator fromPeer)
     {
         // Example: Invalid usage.. please type !command ID Message
     }
 
-    protected (bool succes, List<object>? values) Sscanf(List<string> parameters, string pattern)
+    protected (bool success, List<object>? values) Sscanf(List<string> parameters, string pattern)
     {
         int formatLen = pattern.Length;
-        int parameterLen = pattern.Length;
+        int parameterLen = parameters.Count;
         List<object> parsedItems = new();
-        if (formatLen == 0 && parameterLen == 0)
+        if (formatLen == 0)
         {
             return (true, parsedItems);
         }
@@ -85,13 +95,20 @@ internal abstract class ChatCommand
                     {
                         case 'p':
                             int id = int.Parse(parameters[i]);
+                            bool found = false;
                             foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
                             {
                                 if (networkPeer.IsSynchronized && networkPeer.Index == id)
                                 {
                                     parsedItems.Add(networkPeer);
+                                    found = true;
                                     break;
                                 }
+                            }
+
+                            if (!found)
+                            {
+                                throw new Exception("No player found.");
                             }
 
                             break;
@@ -133,8 +150,62 @@ internal abstract class ChatCommand
         return (false, null);
     }
 
+    protected virtual (bool success, NetworkCommunicator? peer) GetPlayerByName(NetworkCommunicator fromPeer, string targetName)
+    {
+        CrpgChatBox crpgChat = GetChat();
+
+        List<NetworkCommunicator> playerList = GetNetworkPeerByName(targetName);
+        if (playerList.Count == 0)
+        {
+            crpgChat.ServerSendMessageToPlayer(fromPeer, new TaleWorlds.Library.Color(1, 1, 0), "No matching name found.");
+            return (false, null);
+        }
+
+        if (playerList.Count > 1)
+        {
+            crpgChat.ServerSendMessageToPlayer(fromPeer, new TaleWorlds.Library.Color(1, 1, 0), "More than one match found. Please try the ID instead.");
+            PrintPlayerList(fromPeer, playerList);
+            return (false, null);
+        }
+
+        return (true, playerList[0]);
+    }
+
     protected virtual CrpgChatBox GetChat()
     {
         return Game.Current.GetGameHandler<CrpgChatBox>();
+    }
+
+    protected List<NetworkCommunicator> GetNetworkPeerByName(string name)
+    {
+        List<NetworkCommunicator> peerList = new();
+        if (GameNetwork.NetworkPeers == null)
+        {
+            return peerList;
+        }
+
+        name = name.ToLower().Trim().Replace(" ", string.Empty);
+        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
+        {
+            if (networkPeer.UserName.ToLower().Trim().Replace(" ", string.Empty).Contains(name))
+            {
+                peerList.Add(networkPeer);
+            }
+        }
+
+        return peerList;
+    }
+
+    protected void PrintPlayerList (NetworkCommunicator fromPeer, List<NetworkCommunicator> peerList)
+    {
+        CrpgChatBox crpgChat = GetChat();
+        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorInfo, "- Players -");
+        foreach (NetworkCommunicator networkPeer in peerList)
+        {
+            if (networkPeer.IsSynchronized)
+            {
+                crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorWarning, $"{networkPeer.Index} | '{networkPeer.UserName}'");
+            }
+        }
     }
 }

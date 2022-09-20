@@ -8,19 +8,11 @@ internal class PlayerlistCmd : AdminCmd
         : base()
     {
         Command = "pl";
-        Pattern = new string[] { string.Empty }.ToList();
+        PatternList = new Pattern[] { new Pattern(string.Empty, ExecuteSuccess) }.ToList();
     }
 
-    protected override void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
+    private void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
     {
-        CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, new TaleWorlds.Library.Color(.8f, .8f, 0), "- Playerlist -");
-        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
-        {
-            if (networkPeer.IsSynchronized)
-            {
-                crpgChat.ServerSendMessageToPlayer(fromPeer, new TaleWorlds.Library.Color(1, 1, 0), $"{networkPeer.UserName} - {networkPeer.Index}");
-            }
-        }
+        PrintPlayerList(fromPeer, GameNetwork.NetworkPeers.ToList());
     }
 }

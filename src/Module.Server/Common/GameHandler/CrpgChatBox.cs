@@ -113,6 +113,9 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
         ChatCommandHandler.RegisterCommand(new PingCmd());
         ChatCommandHandler.RegisterCommand(new PlayerlistCmd());
         ChatCommandHandler.RegisterCommand(new KickCmd());
+        ChatCommandHandler.RegisterCommand(new KillCmd());
+        ChatCommandHandler.RegisterCommand(new TeleportCmd());
+        ChatCommandHandler.RegisterCommand(new MuteCmd());
 #endif
 
     }
