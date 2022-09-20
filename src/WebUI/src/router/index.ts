@@ -118,6 +118,12 @@ const routes = [
     beforeEnter: isSignedInGuard,
   },
   {
+    path: '/clans/:id/settings',
+    name: 'clan-settings',
+    component: () => import('../views/ClanSettings.vue'),
+    beforeEnter: isSignedInGuard,
+  },
+  {
     path: '/clans/:id/applications',
     name: 'clan-applications',
     component: () => import('../views/ClanApplications.vue'),
