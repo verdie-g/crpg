@@ -487,6 +487,7 @@ import CharacterCharacteristics from '@/models/character-characteristics';
 import Character from '@/models/character';
 import userModule from '@/store/user-module';
 import { notify } from '@/services/notifications-service';
+import { computeHealthPoints } from '@/services/characters-service';
 import CharacterAttributes from '@/models/character-attributes';
 import CharacterSkills from '@/models/character-skills';
 import CharacterWeaponProficiencies from '@/models/character-weapon-proficiencies';
@@ -592,6 +593,11 @@ export default class CharacterCharacteristicsComponent extends Vue {
         : Math.round((100 * (statistics.kills + statistics.assists)) / statistics.deaths) / 100;
     return `${statistics.kills}/${statistics.deaths}/${statistics.assists} (${ratio})`;
   }
+  computeHealthPoints(): number {
+      return computeHealthPoints(this.getInputProps('skills', 'ironFlesh').value,this.getInputProps('attributes', 'strength').value);
+
+
+    }
 
   convertCharacteristics(conversion: CharacteristicConversion): Promise<CharacterCharacteristics> {
     return userModule.convertCharacterCharacteristics({

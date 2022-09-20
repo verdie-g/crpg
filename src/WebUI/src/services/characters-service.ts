@@ -19,3 +19,6 @@ export function computeAverageRepairCost(equippedItems: EquippedItem[]): number 
     ) * Constants.itemBreakChance
   );
 }
+export function computeHealthPoints(ironFlesh: number, strength: number): number {
+  return Constants.defaultHealthPoints + 2 * ironFlesh + strength;
+}
