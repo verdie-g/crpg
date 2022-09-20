@@ -5,6 +5,7 @@ using Crpg.Application.Common;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;
 using Crpg.Application.Common.Results;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Clans;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
     public uint SecondaryColor { get; init; }
     public string Name { get; init; } = string.Empty;
     public string BannerKey { get; init; } = string.Empty;
+    public Region Region { get; init; }
 
     public class Validator : AbstractValidator<CreateClanCommand>
     {
@@ -89,6 +91,7 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
                 SecondaryColor = req.SecondaryColor | AlphaMask,
                 Name = req.Name,
                 BannerKey = req.BannerKey,
+                Region = req.Region,
                 Members =
                 {
                     new ClanMember

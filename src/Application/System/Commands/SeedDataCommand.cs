@@ -675,6 +675,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 4294957414,
                 Name = "Pecores",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan ats = new()
             {
@@ -683,6 +684,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 4281348144,
                 Name = "Among The Shadows",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan legio = new()
             {
@@ -691,6 +693,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Legio",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan theGrey = new()
             {
@@ -699,6 +702,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "The Grey",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan ode = new()
             {
@@ -707,6 +711,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Ordre de l'étoile",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan virginDefenders = new()
             {
@@ -715,6 +720,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Virgin Defenders",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan randomClan = new()
             {
@@ -723,6 +729,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Random Clan",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan abcClan = new()
             {
@@ -731,6 +738,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "ABC",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan defClan = new()
             {
@@ -739,6 +747,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "DEF",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan ghiClan = new()
             {
@@ -747,6 +756,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "GHI",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan jklClan = new()
             {
@@ -755,6 +765,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "JKL",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan mnoClan = new()
             {
@@ -763,6 +774,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "MNO",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan pqrClan = new()
             {
@@ -771,6 +783,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Plan QR",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan[] newClans =
             {

@@ -12,6 +12,7 @@ internal interface IClanService
     Error? CheckClanMembership(User user, int clanId);
     Task<Result<ClanMember>> JoinClan(ICrpgDbContext db, User user, int clanId, CancellationToken cancellationToken);
     Task<Result> LeaveClan(ICrpgDbContext db, ClanMember member, CancellationToken cancellationToken);
+    Task<Result<Clan>> GetClan(ICrpgDbContext db, int clanId, CancellationToken cancellationToken);
 }
 
 internal class ClanService : IClanService
@@ -94,5 +95,19 @@ internal class ClanService : IClanService
 
         db.ClanMembers.Remove(member);
         return Result.NoErrors;
+    }
+
+    public async Task<Result<Clan>> GetClan(ICrpgDbContext db, int clanId, CancellationToken cancellationToken)
+    {
+        var clan = await db.Clans
+                .Where(c => c.Id == clanId)
+                .FirstOrDefaultAsync(cancellationToken);
+
+        if (clan == null)
+        {
+            return new(CommonErrors.ClanNotFound(clanId));
+        }
+
+        return new(clan);
     }
 }
