@@ -3,7 +3,7 @@
     <div class="container">
       <div class="columns">
         <aside class="column is-narrow shop-filters">
-          <shop-filter-form v-model="filters" />
+          <shop-filter-form v-model="filters" :sortableProperties="sortableProperties" />
         </aside>
 
         <div class="column">
@@ -29,7 +29,7 @@
                 >
                   <h4 class="px-1">{{ item.name }}</h4>
                   <div class="content is-flex-grow-1 is-flex">
-                    <item-properties :item="item" :rank="0" :weapon-idx="weaponIdx" />
+                    <item-properties :item="item" :weapon-idx="weaponIdx" />
                   </div>
                 </div>
                 <footer class="card-footer">
@@ -166,6 +166,11 @@ export default class Shop extends Vue {
       itemsPerPage: this.$route.query.itemsPerPage
         ? Number.parseInt(this.$route.query.itemsPerPage as string)
         : 20,
+      sortBy: this.$route.query.sortBy ? (this.$route.query.sortBy as string) : 'Price',
+      sortDesc:
+        this.$route.query.sortDesc !== undefined
+          ? this.$route.query.sortDesc === true.toString()
+          : false,
     };
   }
 
@@ -176,6 +181,8 @@ export default class Shop extends Vue {
     showAffordable,
     searchQuery,
     itemsPerPage,
+    sortBy,
+    sortDesc
   }: ShopFilters) {
     this.$router.push({
       query: {
@@ -187,6 +194,8 @@ export default class Shop extends Vue {
         page: '1',
         searchQuery: searchQuery,
         itemsPerPage: itemsPerPage.toString(),
+        sortBy: sortBy,
+        sortDesc: sortDesc === true ? true.toString() : false.toString(),
       },
     });
   }
@@ -212,6 +221,8 @@ export default class Shop extends Vue {
         i.culture === Culture.Neutral
       );
     });
+
+    filteredItems = sortItems(filteredItems, this.filters.sortBy, this.filters.sortDesc);
     return filterItemsByType(filteredItems, this.filters.type);
   }
 
@@ -223,6 +234,11 @@ export default class Shop extends Vue {
     const startIndex = (this.currentPage - 1) * this.filters.itemsPerPage;
     const endIndex = startIndex + this.filters.itemsPerPage;
     return this.filteredItems.slice(startIndex, endIndex);
+  }
+
+  get sortableProperties(): string[] {
+    if (!this.$route.query.type) return ['Weight'];
+    return getSortableProperties(this.filteredItems);
   }
 
   created(): void {

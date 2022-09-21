@@ -190,7 +190,7 @@ export function getItems(): Promise<Item[]> {
 }
 
 // Inspired by TooltipVMExtensions.UpdateTooltip.
-export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor {
+export function getItemDescriptor(baseItem: Item): ItemDescriptor {
   const props: ItemDescriptor = {
     fields: [
       ['Type', itemTypeToStr[baseItem.type]],
@@ -357,4 +357,72 @@ export function computeArmorSetPieceStrengthRequirement(equippedItems: EquippedI
     .filter(e => e.userItem.baseItem.armor != null)
     .forEach((ei, i) => (armorsRequirement[i] = ei.userItem.baseItem.requirement));
   return Math.trunc(generalizedMean(10, armorsRequirement));
+}
+
+export function sortItems(items: Item[], sortBy: string, sortDesc: boolean): Item[] {
+  return items.sort((i1, i2) => {
+    if (sortBy === 'Price') {
+      if (sortDesc) return i2.price - i1.price;
+      return i1.price - i2.price;
+    }
+    const itemDesc1 = getItemDescriptor(i1);
+    const itemDesc2 = getItemDescriptor(i2);
+    let field1 = itemDesc1.fields.find(field => field[0] === sortBy);
+    let field2 = itemDesc2.fields.find(field => field[0] === sortBy);
+
+    if (!field1 && !field2) {
+      field1 = itemDesc1.modes
+        .map(mode => mode.fields)
+        .flatMap(f => f)
+        .find(field => field[0] === sortBy);
+
+      field2 = itemDesc2.modes
+        .map(mode => mode.fields)
+        .flatMap(f => f)
+        .find(field => field[0] === sortBy);
+    }
+
+    let value1 = !!field1 ? field1[1] : '';
+    let value2 = !!field2 ? field2[1] : '';
+    if (isNaN(Number(value1))) {
+      const value1WithoutLetters = value1.replace(/\D/g, '');
+      if (!isNaN(Number(value1WithoutLetters))) value1 = value1WithoutLetters;
+    }
+
+    if (isNaN(Number(value2))) {
+      const value2WithoutLetters = value2.replace(/\D/g, '');
+      if (!isNaN(Number(value2WithoutLetters))) value2 = value2WithoutLetters;
+    }
+
+    if (!isNaN(Number(value1)) || !isNaN(Number(value2))) {
+      if (sortDesc) return value2 - value1;
+      return value1 - value2;
+    }
+
+    if (value1 || value2) {
+      return value1 > value2 && sortDesc ? -1 : 1;
+    }
+
+    return -1;
+  });
+}
+
+export function getSortableProperties(
+  items: { item: Item; weaponIdx: number | undefined }[]
+): string[] {
+  const sortableItemProperties = items
+    .map(r => getItemDescriptor(r.item).fields.map(field => field[0]))
+    .flat()
+    .filter(
+      (itemProperty, index, self) =>
+        itemProperty !== 'Type' &&
+        itemProperty !== 'Culture' &&
+        self.indexOf(itemProperty) === index
+    );
+  const sortableWeaponProperties = items
+    .map(r => getItemDescriptor(r.item).modes.map(mode => mode.fields.map(field => field[0])))
+    .flat()
+    .flat()
+    .filter((itemProperty, index, self) => self.indexOf(itemProperty) === index);
+  return sortableItemProperties.concat(sortableWeaponProperties);
 }

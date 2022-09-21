@@ -55,6 +55,32 @@
       </b-dropdown>
     </b-field>
 
+	<b-field label="Sort By">
+      <b-dropdown v-model="sortBy" aria-role="list">
+        <template #trigger>
+          <b-button type="is-primary" icon-right="caret-down">{{ sortBy }}</b-button>
+        </template>
+        <b-dropdown-item :value="null" :key="0" aria-role="listitem">
+          <span>Price</span>
+        </b-dropdown-item>
+        <b-dropdown-item
+          v-for="sortableProperty in sortableProperties"
+          :value="sortableProperty"
+          :key="sortableProperty"
+          aria-role="listitem"
+        >
+          <span>{{ sortableProperty }}</span>
+        </b-dropdown-item>
+      </b-dropdown>
+      <p class="control">
+        <b-button
+          type="is-primary"
+          :icon-right="sortButtonIcon"
+          @click="onSortDirectionButtonClicked"
+        />
+      </p>
+    </b-field>
+ 
     <b-field label="Items per page">
       <b-dropdown v-model="itemsPerPage" aria-role="list">
         <template #trigger>
@@ -85,7 +111,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Model, Vue } from 'vue-property-decorator';
+import { Component, Model, Prop, Vue } from 'vue-property-decorator';
 import { itemTypeToStr } from '@/services/item-service';
 import { recordFilter } from '@/utils/record';
 import ItemType from '@/models/item-type';
@@ -103,9 +129,13 @@ export default class ShopFiltersForm extends Vue {
       showAffordable: false,
       searchQuery: '',
       itemsPerPage: 20,
+      sortBy: '',
+      sortDesc: false,
     }),
   })
   readonly filter: ShopFilters;
+  @Prop(Array)
+  readonly sortableProperties: string[];
   itemsPerPageValues = [20, 40, 60, 80, 100];
 
   hiddenItemTypes = [ItemType.Undefined, ItemType.Pistol, ItemType.Musket, ItemType.Bullets];
@@ -125,7 +155,7 @@ export default class ShopFiltersForm extends Vue {
       return;
     }
 
-    this.emitInput({ type });
+    this.emitInput({ type, sortBy: 'Price' });
   }
 
   get cultureString(): string {
@@ -175,6 +205,23 @@ export default class ShopFiltersForm extends Vue {
   set itemsPerPage(itemsPerPage: number) {
     this.emitInput({ itemsPerPage });
   }
+  
+  get sortBy(): string {
+    return this.filter.sortBy;
+  }
+  set sortBy(sortBy: string) {
+    this.emitInput({ sortBy });
+  }
+  get sortDesc(): boolean {
+    return this.filter.sortDesc;
+  }
+  set sortDesc(sortDesc: boolean) {
+    this.emitInput({ sortDesc });
+  }
+  get sortButtonIcon() {
+    if (this.sortDesc) return 'arrow-down';
+    return 'arrow-up';
+  }
 
   emitInput(shopFilters: Partial<ShopFilters>) {
     this.$emit('input', {
@@ -184,8 +231,14 @@ export default class ShopFiltersForm extends Vue {
       showAffordable: this.showAffordable,
       searchQuery: this.searchQuery,
       itemsPerPage: this.itemsPerPage,
+      sortBy: this.sortBy,
+      sortDesc: this.sortDesc,
       ...shopFilters,
     });
+  }
+
+  onSortDirectionButtonClicked(): void {
+    this.sortDesc = !this.sortDesc;
   }
 }
 </script>
