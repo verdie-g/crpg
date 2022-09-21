@@ -55,7 +55,7 @@
           :controls="false"
         />
       </b-field>
-      <b-field horizontal label="HealthPoints" class="characteristic-field">
+      <b-field horizontal label="Health Points" class="characteristic-field">
         <b-numberinput
           size="is-small"
           :editable="false"
