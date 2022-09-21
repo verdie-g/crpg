@@ -3,7 +3,7 @@
     <div class="container">
       <div class="columns">
         <aside class="column is-narrow shop-filters">
-          <shop-filter-form v-model="filters" />
+          <shop-filter-form v-model="filters" :sortableProperties="sortableProperties" />
         </aside>
 
         <div class="column">
@@ -29,7 +29,7 @@
                 >
                   <h4 class="px-1">{{ item.name }}</h4>
                   <div class="content is-flex-grow-1 is-flex">
-                    <item-properties :item="item" :rank="0" :weapon-idx="weaponIdx" />
+                    <item-properties :item="item" :weapon-idx="weaponIdx" />
                   </div>
                 </div>
                 <footer class="card-footer">
@@ -112,7 +112,13 @@ import { notify } from '@/services/notifications-service';
 import ShopFiltersForm from '@/components/ShopFiltersForm.vue';
 import ShopFilters from '@/models/shop-filters';
 import ItemType from '@/models/item-type';
-import { filterItemsByType } from '@/services/item-service';
+import {
+  filterItemsByType,
+  getItemDescriptor,
+  getSortableProperties,
+  itemTypeToStr,
+  sortItems,
+} from '@/services/item-service';
 import Culture from '@/models/culture';
 import UserItem from '@/models/user-item';
 
@@ -164,10 +170,15 @@ export default class Shop extends Vue {
         this.$route.query.showAffordable !== undefined
           ? this.$route.query.showAffordable === 'true'
           : false,
+      sortBy: this.$route.query.sortBy ? (this.$route.query.sortBy as string) : 'Price',
+      sortDesc:
+        this.$route.query.sortDesc !== undefined
+          ? this.$route.query.sortDesc === true.toString()
+          : false,
     };
   }
 
-  set filters({ type, culture, showOwned, showAffordable }: ShopFilters) {
+  set filters({ type, culture, showOwned, showAffordable, sortBy, sortDesc }: ShopFilters) {
     this.$router.push({
       query: {
         ...this.$route.query,
@@ -176,12 +187,14 @@ export default class Shop extends Vue {
         showOwned: showOwned === true ? undefined : false.toString(),
         showAffordable: showAffordable === true ? true.toString() : undefined,
         page: '1',
+        sortBy: sortBy,
+        sortDesc: sortDesc === true ? true.toString() : false.toString(),
       },
     });
   }
 
   get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
-    const filteredItems = itemModule.items.filter(i => {
+    let filteredItems = itemModule.items.filter(i => {
       if (!this.filters.showOwned && this.ownedItems[i.id] !== undefined) {
         return false;
       }
@@ -195,6 +208,8 @@ export default class Shop extends Vue {
         i.culture === Culture.Neutral
       );
     });
+
+    filteredItems = sortItems(filteredItems, this.filters.sortBy, this.filters.sortDesc);
     return filterItemsByType(filteredItems, this.filters.type);
   }
 
@@ -206,6 +221,11 @@ export default class Shop extends Vue {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     return this.filteredItems.slice(startIndex, endIndex);
+  }
+
+  get sortableProperties(): string[] {
+    if (!this.$route.query.type) return ['Weight'];
+    return getSortableProperties(this.filteredItems);
   }
 
   created(): void {

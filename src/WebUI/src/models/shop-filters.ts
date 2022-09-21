@@ -6,4 +6,6 @@ export default interface ShopFilters {
   culture: Culture | null;
   showOwned: boolean;
   showAffordable: boolean;
+  sortBy: string;
+  sortDesc: boolean;
 }

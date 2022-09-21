@@ -52,11 +52,10 @@ import { ItemDescriptor } from '@/models/item-descriptor';
 @Component
 export default class ItemProperties extends Vue {
   @Prop(Object) readonly item: Item;
-  @Prop(Number) readonly rank: number;
   @Prop(Number) readonly weaponIdx: number;
 
   get itemDescriptor(): ItemDescriptor {
-    return getItemDescriptor(this.item, this.rank);
+    return getItemDescriptor(this.item);
   }
 }
 </script>
