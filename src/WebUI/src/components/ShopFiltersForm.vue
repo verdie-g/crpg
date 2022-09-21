@@ -7,7 +7,7 @@
           type="search"
           icon="search"
           size="is-medium"
-          v-model.lazy="shopSearchQuery"
+          v-model.lazy="searchQuery"
         />
       </p>
     </b-field>
@@ -82,7 +82,7 @@ export default class ShopFiltersForm extends Vue {
       culture: null,
       showOwned: true,
       showAffordable: false,
-      shopSearchQuery: '',
+      searchQuery: '',
     }),
   })
   readonly filter: ShopFilters;
@@ -139,12 +139,12 @@ export default class ShopFiltersForm extends Vue {
     this.emitInput({ showAffordable });
   }
 
-  get shopSearchQuery(): string {
-    return this.filter.shopSearchQuery;
+  get searchQuery(): string {
+    return this.filter.searchQuery;
   }
 
-  set shopSearchQuery(shopSearchQuery: string) {
-    this.emitInput({ shopSearchQuery });
+  set searchQuery(searchQuery: string) {
+    this.emitInput({ searchQuery });
   }
 
   emitInput(shopFilters: Partial<ShopFilters>) {
@@ -153,7 +153,7 @@ export default class ShopFiltersForm extends Vue {
       culture: this.culture,
       showOwned: this.showOwned,
       showAffordable: this.showAffordable,
-      shopSearchQuery: this.shopSearchQuery,
+      searchQuery: this.searchQuery,
       ...shopFilters,
     });
   }
