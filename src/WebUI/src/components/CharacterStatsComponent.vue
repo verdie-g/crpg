@@ -45,6 +45,14 @@
           :value="character.experience"
           :controls="false"
         />
+        <b-field horizontal label="Experience till next level" class="characteristic-field is-marginless">
+        <b-numberinput
+          size="is-small"
+          :editable="false"
+          controls-position="compact"
+          :value="experienceTillNextLevel()"
+          :controls="false"
+        />
       </b-field>
       <b-field horizontal label="HealthPoints" class="characteristic-field">
         <b-numberinput
@@ -496,7 +504,7 @@ import CharacterCharacteristics from '@/models/character-characteristics';
 import Character from '@/models/character';
 import userModule from '@/store/user-module';
 import { notify } from '@/services/notifications-service';
-import { computeHealthPoints } from '@/services/characters-service';
+import { computeHealthPoints, computeHowMuchXPTillNextLevel } from '@/services/characters-service';
 import CharacterAttributes from '@/models/character-attributes';
 import CharacterSkills from '@/models/character-skills';
 import CharacterWeaponProficiencies from '@/models/character-weapon-proficiencies';
@@ -607,6 +615,9 @@ export default class CharacterCharacteristicsComponent extends Vue {
       this.getInputProps('skills', 'ironFlesh').value,
       this.getInputProps('attributes', 'strength').value
     );
+  }
+  experienceTillNextLevel(): number {
+    return computeHowMuchXPTillNextLevel(this.character.experience, this.character.level);
   }
 
   convertCharacteristics(conversion: CharacteristicConversion): Promise<CharacterCharacteristics> {
