@@ -22,12 +22,14 @@ export function computeAverageRepairCost(equippedItems: EquippedItem[]): number 
 export function computeHealthPoints(ironFlesh: number, strength: number): number {
   return Constants.defaultHealthPoints + 2 * ironFlesh + strength;
 }
-export function computeHowMuchXPTillNextLevel(currentXP: number, currentLvl: number): number {
+export function getExperienceForLevel(level: number): number {
   const a = Constants.experienceForLevelCoefs[0];
   const b = Constants.experienceForLevelCoefs[1];
   const c = Constants.experienceForLevelCoefs[2];
-  const nextLevel = currentLvl + 1;
-  let xpForNextLevel = 0;
-  xpForNextLevel = a * Math.pow(1.26, nextLevel) + b * nextLevel + c;
-  return Math.trunc(xpForNextLevel);
+  return a * Math.pow(1.26, level) + b * level + c;
+}
+
+export function computeHowMuchXPTillNextLevel(currentXP: number, currentLvl: number): number {
+  const nextlevelxp = getExperienceForLevel(currentLvl + 1);
+  return Math.trunc(nextlevelxp - currentXP);
 }
