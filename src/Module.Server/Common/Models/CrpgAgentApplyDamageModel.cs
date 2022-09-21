@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Helpers;
+﻿using System.Reflection;
+using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
@@ -19,6 +20,55 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
     // public override float CalculateShieldDamage only has dmg as parameter. Therefore it cannot be used to get any Skill values.
     public override float CalculateDamage(in AttackInformation attackInformation, in AttackCollisionData collisionData, in MissionWeapon weapon, float baseDamage)
     {
+        if (!attackInformation.IsAttackerAIControlled && !attackInformation.IsVictimAgentSameWithAttackerAgent)
+        {
+            Agent? attacker = null;
+            Agent? victim = null;
+            foreach (Agent a in Mission.Current.AllAgents)
+            {
+                if (attacker == null && a.Origin == attackInformation.AttackerAgentOrigin)
+                {
+                    attacker = a;
+                }
+                else if (victim == null && a.Origin == attackInformation.VictimAgentOrigin)
+                {
+                    victim = a;
+                }
+
+                if (attacker != null && victim != null)
+                {
+                    break;
+                }
+            }
+
+            bool isFriendlyHit = false;
+
+            if (attacker != null && victim != null)
+            {
+                if (attacker.IsMount && attacker.RiderAgent != null)
+                {
+                    attacker = attacker.RiderAgent;
+                }
+
+                if (victim.IsMount && victim.RiderAgent != null)
+                {
+                    victim = victim.RiderAgent;
+                }
+
+                if (attacker.Team.Side == victim.Team.Side)
+                {
+                    isFriendlyHit = true;
+                }
+
+                if (isFriendlyHit)
+                {
+                    Type type = attackInformation.GetType();
+                    FieldInfo ffField = type.GetField("IsFriendlyFire");
+                    ffField.SetValue(attackInformation, true);
+                }
+            }
+        }
+
         float finalDamage = base.CalculateDamage(attackInformation, collisionData, weapon, baseDamage);
         if (collisionData.AttackBlockedWithShield)
         {
