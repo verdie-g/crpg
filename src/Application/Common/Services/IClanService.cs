@@ -12,7 +12,6 @@ internal interface IClanService
     Error? CheckClanMembership(User user, int clanId);
     Task<Result<ClanMember>> JoinClan(ICrpgDbContext db, User user, int clanId, CancellationToken cancellationToken);
     Task<Result> LeaveClan(ICrpgDbContext db, ClanMember member, CancellationToken cancellationToken);
-    Task<Result<Clan>> GetClan(ICrpgDbContext db, int clanId, CancellationToken cancellationToken);
 }
 
 internal class ClanService : IClanService

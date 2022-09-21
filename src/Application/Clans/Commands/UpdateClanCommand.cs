@@ -9,6 +9,7 @@ using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Users;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using LoggerFactory = Crpg.Logging.LoggerFactory;
 
@@ -45,13 +46,14 @@ public record UpdateClanCommand : IMediatorRequest<ClanViewModel>
 
         public async Task<Result<ClanViewModel>> Handle(UpdateClanCommand req, CancellationToken cancellationToken)
         {
-            var clanRes = await _clanService.GetClan(_db, req.ClanId, cancellationToken);
-            if (clanRes.Errors != null)
-            {
-                return new(clanRes.Errors);
-            }
+            var clan = await _db.Clans
+                .Where(c => c.Id == req.ClanId)
+                .FirstOrDefaultAsync(cancellationToken);
 
-            Clan clan = clanRes.Data!;
+            if (clan == null)
+            {
+                return new(CommonErrors.ClanNotFound(req.ClanId));
+            }
 
             var userRes = await _clanService.GetClanMember(_db, req.UserId, req.ClanId, cancellationToken);
             if (userRes.Errors != null)
@@ -69,7 +71,7 @@ public record UpdateClanCommand : IMediatorRequest<ClanViewModel>
             clan.Region = req.Region;
 
             await _db.SaveChangesAsync(cancellationToken);
-            Logger.LogInformation("User '{0}' updated Clan '{1}'", req.UserId, req.ClanId);
+            Logger.LogInformation("User '{0}' updated clan '{1}'", req.UserId, req.ClanId);
             return new(_mapper.Map<ClanViewModel>(clan));
         }
     }

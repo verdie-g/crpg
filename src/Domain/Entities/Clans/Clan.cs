@@ -32,7 +32,7 @@ public class Clan : AuditableEntity
     public string BannerKey { get; set; } = string.Empty;
 
     /// <summary>
-    /// Bannerlord's banner key of the clan.
+    /// Region of the clan.
     /// </summary>
     public Region Region { get; set; }
 
