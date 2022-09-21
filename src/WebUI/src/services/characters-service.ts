@@ -26,3 +26,12 @@ export function computeHealthPoints(ironFlesh: number, strength: number): number
     applyPolynomialFunction(ironFlesh, Constants.healthPointsForStrengthCoefs)
   );
 }
+export function computeHowMuchXPTillNextLevel(currentXP: number, currentLvl: number): number {
+  let a = Constants.experienceForLevelCoefs[0];
+  let b = Constants.experienceForLevelCoefs[1];
+  let c = Constants.experienceForLevelCoefs[2];
+  let nextLevel = currentLvl + 1;
+  let xpForNextLevel = 0;
+  xpForNextLevel = a * Math.pow(1.26, nextLevel) + b * nextLevel + c;
+  return Math.trunc(xpForNextLevel);
+}
