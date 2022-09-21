@@ -51,7 +51,7 @@
           size="is-small"
           :editable="false"
           controls-position="compact"
-          :value="HealthPoints()"
+          :value="healthPoints()"
           :controls="false"
         />
       </b-field>
@@ -602,7 +602,7 @@ export default class CharacterCharacteristicsComponent extends Vue {
         : Math.round((100 * (statistics.kills + statistics.assists)) / statistics.deaths) / 100;
     return `${statistics.kills}/${statistics.deaths}/${statistics.assists} (${ratio})`;
   }
-  HealthPoints(): number {
+  healthPoints(): number {
     return computeHealthPoints(
       this.getInputProps('skills', 'ironFlesh').value,
       this.getInputProps('attributes', 'strength').value
