@@ -17,6 +17,10 @@ using TaleWorlds.MountAndBlade.Network.Messages;
 namespace Crpg.Module.Common.GameHandler;
 internal class CrpgChatBox : TaleWorlds.Core.GameHandler
 {
+    public static readonly Color ColorInfo = new(0.25f, 0.75f, 1f);
+    public static readonly Color ColorWarning = new(1f, 1f, 0f);
+    public static readonly Color ColorSuccess = new(0f, 1f, 0f);
+    public static readonly Color ColorFatal = new(1f, 0f, 0f);
     private class QueuedMessageInfo
     {
         public NetworkCommunicator SourcePeer { get; private set; }
@@ -55,7 +59,6 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
     {
         _chatBox = Game.Current.GetGameHandler<ChatBox>();
         _chatBox.OnMessageReceivedAtDedicatedServer = (Action<NetworkCommunicator, string>)Delegate.Combine(_chatBox.OnMessageReceivedAtDedicatedServer, new Action<NetworkCommunicator, string>(OnMessageReceivedAtDedicatedServer));
-
     }
 
     public void ServerSendMessageToPlayer(NetworkCommunicator targetPlayer, Color color, string message)
@@ -103,6 +106,14 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
         }
     }
 
+    public override void OnBeforeSave()
+    {
+    }
+
+    public override void OnAfterSave()
+    {
+    }
+
     protected override void OnGameNetworkBegin()
     {
         _queuedServerMessages = new List<QueuedMessageInfo>();
@@ -124,14 +135,6 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
     {
         base.OnGameNetworkEnd();
         AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Remove);
-    }
-
-    public override void OnBeforeSave()
-    {
-    }
-
-    public override void OnAfterSave()
-    {
     }
 
     protected override void OnTick(float dt)

@@ -14,6 +14,6 @@ internal class PingCmd : ChatCommand
     private void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
     {
         CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorSuccess, "Pong!");
+        crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorSuccess, "Pong!");
     }
 }

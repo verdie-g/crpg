@@ -22,5 +22,4 @@ internal abstract class AdminCmd : ChatCommand
 
         return true;
     }
-
 }

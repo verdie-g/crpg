@@ -16,7 +16,8 @@ internal class BanCmd : AdminCmd
     {
         Command = "ban";
         Description = $"'{ChatCommandHandler.CommandPrefix}{Command} PLAYERID DURATION REASON' to ban a player.";
-        PatternList = new Pattern[] {
+        PatternList = new Pattern[]
+        {
             new Pattern("dps", ExecuteBanByNetworkPeer), // !ban PLAYERID DURATION REASON
             new Pattern("sds", ExecuteBanByName), // !ban NamePattern DURATION REASON
         }.ToList();
@@ -25,7 +26,7 @@ internal class BanCmd : AdminCmd
     protected override void ExecuteFailed(NetworkCommunicator fromPeer)
     {
         CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorInfo, $"Wrong usage. Type {Description}");
+        crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorInfo, $"Wrong usage. Type {Description}");
     }
 
     private void ExecuteBanByNetworkPeer(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
@@ -52,9 +53,8 @@ internal class BanCmd : AdminCmd
             return;
         }
 
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorFatal, $"You were banned by {fromPeer.UserName} until {banUntilDate.ToString("dd.MM.yy HH:mm")}.");
-        crpgChat.ServerSendMessageToPlayer(targetPeer, ChatCommandHandler.ColorFatal, $"You banned {targetPeer.UserName} until {banUntilDate.ToString("dd.MM.yy HH:mm")}.");
-
+        crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorFatal, $"You were banned by {fromPeer.UserName} until {banUntilDate.ToString("dd.MM.yy HH:mm")}.");
+        crpgChat.ServerSendMessageToPlayer(targetPeer, CrpgChatBox.ColorFatal, $"You banned {targetPeer.UserName} until {banUntilDate.ToString("dd.MM.yy HH:mm")}.");
     }
 
     private void ExecuteBanByName(NetworkCommunicator fromPeer, string cmd, List<object> parameters)

@@ -17,7 +17,7 @@ internal class KillCmd : AdminCmd
     protected override void ExecuteFailed(NetworkCommunicator fromPeer)
     {
         CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorInfo, $"Wrong usage. Type {Description}");
+        crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorInfo, $"Wrong usage. Type {Description}");
     }
 
     private void ExecuteKillByNetworkPeer(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
@@ -28,7 +28,7 @@ internal class KillCmd : AdminCmd
         Agent agent = targetPeer.ControlledAgent;
         if (agent == null || agent.Health <= 0)
         {
-            crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorWarning, $"{targetPeer.UserName} is not alive.");
+            crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorWarning, $"{targetPeer.UserName} is not alive.");
             return;
         }
 
@@ -48,8 +48,8 @@ internal class KillCmd : AdminCmd
         blow.DamageCalculated = true;
         agent.RegisterBlow(blow, default);
 
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorSuccess, $"You have killed {targetPeer.UserName}.");
-        crpgChat.ServerSendMessageToPlayer(targetPeer, ChatCommandHandler.ColorFatal, $"You were killed by {fromPeer.UserName}.");
+        crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorSuccess, $"You have killed {targetPeer.UserName}.");
+        crpgChat.ServerSendMessageToPlayer(targetPeer, CrpgChatBox.ColorFatal, $"You were killed by {fromPeer.UserName}.");
     }
 
     private void ExecuteKillByName(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
