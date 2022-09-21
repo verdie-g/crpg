@@ -45,7 +45,8 @@
           :value="character.experience"
           :controls="false"
         />
-        <b-field horizontal label="Experience till next level" class="characteristic-field is-marginless">
+      </b-field>
+      <b-field horizontal label="Next level in" class="characteristic-field is-marginless">
         <b-numberinput
           size="is-small"
           :editable="false"
