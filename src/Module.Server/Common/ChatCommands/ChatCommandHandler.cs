@@ -7,6 +7,10 @@ using TaleWorlds.MountAndBlade;
 namespace Crpg.Module.Common.ChatCommands;
 internal class ChatCommandHandler
 {
+    public static readonly Color ColorInfo = new(0.25f, 0.75f, 1f);
+    public static readonly Color ColorWarning = new(1f, 1f, 0f);
+    public static readonly Color ColorSuccess = new(0f, 1f, 0f);
+    public static readonly Color ColorFatal = new(1f, 0f, 0f);
     public static readonly char CommandPrefix = '!';
     private static readonly List<ChatCommand> RegisteredCommands = new();
 

@@ -28,7 +28,7 @@ internal class MuteCmd : AdminCmd
     protected override void ExecuteFailed(NetworkCommunicator fromPeer)
     {
         CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorInfo, $"Wrong usage. Type {Description}");
+        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorInfo, $"Wrong usage. Type {Description}");
     }
 
     private void ExecuteMuteByNetworkPeer(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
@@ -58,14 +58,14 @@ internal class MuteCmd : AdminCmd
         // Call webrequest. Muted until muteUntilDate
         if (duration == 0)
         {
-            crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorSuccess, $"You were unmuted by {fromPeer.UserName}.");
-            crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorSuccess, $"You muted {targetPeer.UserName} until {muteUntilDate.ToString("dd.MM.yy HH:mm")}.");
+            crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorSuccess, $"You were unmuted by {fromPeer.UserName}.");
+            crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorSuccess, $"You muted {targetPeer.UserName} until {muteUntilDate.ToString("dd.MM.yy HH:mm")}.");
             targetPeer.IsMuted = false;
         }
         else
         {
-            crpgChat.ServerSendMessageToPlayer(targetPeer, CrpgChatBox.ColorFatal, $"You were muted by {fromPeer.UserName} until {muteUntilDate.ToString("dd.MM.yy HH:mm")}.");
-            crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorFatal, $"You muted {targetPeer.UserName} until {muteUntilDate.ToString("dd.MM.yy HH:mm")}.");
+            crpgChat.ServerSendMessageToPlayer(targetPeer, ChatCommandHandler.ColorFatal, $"You were muted by {fromPeer.UserName} until {muteUntilDate.ToString("dd.MM.yy HH:mm")}.");
+            crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorFatal, $"You muted {targetPeer.UserName} until {muteUntilDate.ToString("dd.MM.yy HH:mm")}.");
             targetPeer.IsMuted = true;
         }
     }

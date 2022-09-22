@@ -16,14 +16,14 @@ internal class KickCmd : AdminCmd
     protected override void ExecuteFailed(NetworkCommunicator fromPeer)
     {
         CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorInfo, $"Wrong usage. Type {Description}");
+        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorInfo, $"Wrong usage. Type {Description}");
     }
 
     private void ExecuteKickByNetworkPeer(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
     {
         CrpgChatBox crpgChat = GetChat();
         var targetPeer = (NetworkCommunicator)parameters[0];
-        crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorFatal, $"You have kicked {targetPeer.UserName}.");
+        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorFatal, $"You have kicked {targetPeer.UserName}.");
         var disconnectInfo = fromPeer.PlayerConnectionInfo.GetParameter<DisconnectInfo>("DisconnectInfo") ?? new DisconnectInfo();
         disconnectInfo.Type = DisconnectType.KickedByHost;
         targetPeer.PlayerConnectionInfo.AddParameter("DisconnectInfo", disconnectInfo);

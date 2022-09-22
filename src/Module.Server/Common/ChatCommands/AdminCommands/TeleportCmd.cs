@@ -17,7 +17,7 @@ internal class TeleportCmd : AdminCmd
     protected override void ExecuteFailed(NetworkCommunicator fromPeer)
     {
         CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorInfo, $"Wrong usage. Type {Description}");
+        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorInfo, $"Wrong usage. Type {Description}");
     }
 
     private void ExecuteTeleportByNetworkPeer(NetworkCommunicator fromPeer, string cmd, List<object> parameters)
@@ -30,13 +30,13 @@ internal class TeleportCmd : AdminCmd
         Agent agent2 = targetPeer2.ControlledAgent;
         if (agent1 == null || agent1.Health <= 0)
         {
-            crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorWarning, targetPeer1.UserName + " is not alive.");
+            crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorWarning, targetPeer1.UserName + " is not alive.");
             return;
         }
 
         if (agent2 == null || agent2.Health <= 0)
         {
-            crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorWarning, targetPeer2.UserName + " is not alive.");
+            crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorWarning, targetPeer2.UserName + " is not alive.");
             return;
         }
 
@@ -49,9 +49,9 @@ internal class TeleportCmd : AdminCmd
             agent1.TeleportToPosition(agent2.Position);
         }
 
-        crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorSuccess, $"You teleported {targetPeer1.UserName} to {targetPeer2.UserName}.");
-        crpgChat.ServerSendMessageToPlayer(targetPeer2, CrpgChatBox.ColorWarning, $"{fromPeer.UserName} teleported {targetPeer1.UserName} to you.");
-        crpgChat.ServerSendMessageToPlayer(targetPeer1, CrpgChatBox.ColorWarning, $"You were teleported to {targetPeer2.UserName} by {fromPeer.UserName}.");
+        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorSuccess, $"You teleported {targetPeer1.UserName} to {targetPeer2.UserName}.");
+        crpgChat.ServerSendMessageToPlayer(targetPeer2, ChatCommandHandler.ColorWarning, $"{fromPeer.UserName} teleported {targetPeer1.UserName} to you.");
+        crpgChat.ServerSendMessageToPlayer(targetPeer1, ChatCommandHandler.ColorWarning, $"You were teleported to {targetPeer2.UserName} by {fromPeer.UserName}.");
     }
 
     private void ExecuteTeleportByName(NetworkCommunicator fromPeer, string cmd, List<object> parameters)

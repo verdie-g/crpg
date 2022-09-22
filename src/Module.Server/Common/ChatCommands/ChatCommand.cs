@@ -158,13 +158,13 @@ internal abstract class ChatCommand
         List<NetworkCommunicator> playerList = GetNetworkPeerByName(targetName);
         if (playerList.Count == 0)
         {
-            crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorFatal, "No matching name found.");
+            crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorFatal, "No matching name found.");
             return (false, null);
         }
 
         if (playerList.Count > 1)
         {
-            crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorWarning, "More than one match found. Please try the ID instead.");
+            crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorWarning, "More than one match found. Please try the ID instead.");
             PrintPlayerList(fromPeer, playerList);
             return (false, null);
         }
@@ -200,13 +200,13 @@ internal abstract class ChatCommand
     protected void PrintPlayerList(NetworkCommunicator fromPeer, List<NetworkCommunicator> peerList)
     {
         CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorInfo, "- Players -");
+        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorInfo, "- Players -");
         foreach (NetworkCommunicator networkPeer in peerList)
         {
             var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
             if (networkPeer.IsSynchronized && crpgRepresentative.User != null)
             {
-                crpgChat.ServerSendMessageToPlayer(fromPeer, CrpgChatBox.ColorWarning, $"{crpgRepresentative.User.Id} | '{networkPeer.UserName}'");
+                crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorWarning, $"{crpgRepresentative.User.Id} | '{networkPeer.UserName}'");
             }
         }
     }
