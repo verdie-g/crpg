@@ -37,6 +37,11 @@ public record BuyItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.ItemNotFound(req.ItemId));
             }
 
+            if (item.Type == ItemType.Banner)
+            {
+                return new(CommonErrors.ItemNotBuyable(req.ItemId));
+            }
+
             var user = await _db.Users
                 .Include(u => u.Items)
                 .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
