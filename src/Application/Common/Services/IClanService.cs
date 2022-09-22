@@ -96,17 +96,4 @@ internal class ClanService : IClanService
         return Result.NoErrors;
     }
 
-    public async Task<Result<Clan>> GetClan(ICrpgDbContext db, int clanId, CancellationToken cancellationToken)
-    {
-        var clan = await db.Clans
-                .Where(c => c.Id == clanId)
-                .FirstOrDefaultAsync(cancellationToken);
-
-        if (clan == null)
-        {
-            return new(CommonErrors.ClanNotFound(clanId));
-        }
-
-        return new(clan);
-    }
 }
