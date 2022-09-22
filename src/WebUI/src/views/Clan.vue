@@ -26,38 +26,46 @@
       </div>
 
       <b-table :data="members" :hoverable="true">
-          <b-table-column field="name" label="Name" v-slot="props">
-            <figure v-if="props.row.user.avatar" class="image is-32x32" style="display: inline-block; margin: 0 5px; vertical-align: middle">
-              <img class="is-rounded" :src="props.row.user.avatar">
-            </figure>
-            <span style="vertical-align: middle">
-              {{ props.row.user.name }}
-            </span>
-            <platform
-              style="vertical-align: middle"
-              :platform="props.row.user.platform"
-              :platformUserId="props.row.user.platformUserId"
-            />
-          </b-table-column>
+        <b-table-column field="name" label="Name" v-slot="props">
+          <figure
+            v-if="props.row.user.avatar"
+            class="image is-32x32"
+            style="display: inline-block; margin: 0 5px; vertical-align: middle"
+          >
+            <img class="is-rounded" :src="props.row.user.avatar" />
+          </figure>
+          <span style="vertical-align: middle">
+            {{ props.row.user.name }}
+          </span>
+          <platform
+            style="vertical-align: middle"
+            :platform="props.row.user.platform"
+            :platformUserId="props.row.user.platformUserId"
+          />
+        </b-table-column>
 
-          <b-table-column field="role" label="Role" v-slot="props">
-            <span style="vertical-align: middle">
-              {{ props.row.role }}
-            </span>
-          </b-table-column>
+        <b-table-column field="role" label="Role" v-slot="props">
+          <span style="vertical-align: middle">
+            {{ props.row.role }}
+          </span>
+        </b-table-column>
 
-          <b-table-column v-slot="props">
-            <div v-if="memberKickable(props.row)" class="is-flex is-justify-content-end" style="vertical-align: middle">
-              <b-tooltip position="is-top">
-                <b-icon
-                  icon="cog"
-                  class="action-icon__hover is-clickable"
-                  @click.native="selected(props.row)"
-                />
-                <template v-slot:content>Click to manage this member of the clan.</template>
-              </b-tooltip>
-            </div>
-          </b-table-column>
+        <b-table-column v-slot="props">
+          <div
+            v-if="memberKickable(props.row)"
+            class="is-flex is-justify-content-end"
+            style="vertical-align: middle"
+          >
+            <b-tooltip position="is-top">
+              <b-icon
+                icon="cog"
+                class="action-icon__hover is-clickable"
+                @click.native="selected(props.row)"
+              />
+              <template v-slot:content>Click to manage this member of the clan.</template>
+            </b-tooltip>
+          </div>
+        </b-table-column>
       </b-table>
     </div>
 
@@ -115,7 +123,6 @@ export default class ClanComponent extends Vue {
   isManageMemberWindowActive = false;
   selectedMember: ClanMember | null = null;
 
-
   get selfMember(): ClanMember | null {
     // Clan or current user not loaded yet.
     if (this.clan === null || userModule.user === null) {
@@ -161,14 +168,14 @@ export default class ClanComponent extends Vue {
 
     clanService.getClan(clanId).then(c => (this.clan = c));
     clanService.getClanMembers(clanId).then(m => {
-      m.sort(function compareFn(a: ClanMember, b: ClanMember):number {
-        if (a.role === 'Leader' && b.role === 'Officer' || b.role === 'Member') {
+      m.sort(function compareFn(a: ClanMember, b: ClanMember): number {
+        if ((a.role === 'Leader' && b.role === 'Officer') || b.role === 'Member') {
           return -1;
         }
-          return 0;
+        return 0;
       });
-      this.members = m
-      });
+      this.members = m;
+    });
   }
 
   memberKickable(member: ClanMember): boolean {

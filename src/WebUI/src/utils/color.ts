@@ -3,5 +3,5 @@
 }
 
 export function argbIntToRgbHexColor(argb: number) {
-  return '#' + (argb & 0xFFFFFF).toString(16).padStart(6, '0');
+  return '#' + (argb & 0xffffff).toString(16).padStart(6, '0');
 }

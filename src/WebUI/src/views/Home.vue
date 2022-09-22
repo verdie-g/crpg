@@ -26,7 +26,11 @@
           Sign in through Steam
         </b-button>
 
-        <p>Join our community on <a href="https://discord.gg/c-rpg" target="_blank">Discord</a>.</p>
+        <p>
+          Join our community on
+          <a href="https://discord.gg/c-rpg" target="_blank">Discord</a>
+          .
+        </p>
       </div>
     </section>
   </div>
@@ -56,5 +60,4 @@ export default class Home extends Vue {
 }
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
