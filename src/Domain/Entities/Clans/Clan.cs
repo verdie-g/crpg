@@ -31,6 +31,11 @@ public class Clan : AuditableEntity
     /// </summary>
     public string BannerKey { get; set; } = string.Empty;
 
+    /// <summary>
+    /// Region of the clan.
+    /// </summary>
+    public Region Region { get; set; }
+
     public IList<ClanMember> Members { get; set; } = new List<ClanMember>();
     public IList<ClanInvitation> Invitations { get; set; } = new List<ClanInvitation>();
 }
