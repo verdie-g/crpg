@@ -179,7 +179,15 @@ export default class Shop extends Vue {
     };
   }
 
-  set filters({ type, culture, showOwned, showAffordable, sortBy, sortDesc, searchQuery }: ShopFilters) {
+  set filters({
+    type,
+    culture,
+    showOwned,
+    showAffordable,
+    sortBy,
+    sortDesc,
+    searchQuery,
+  }: ShopFilters) {
     this.$router.push({
       query: {
         ...this.$route.query,
@@ -228,7 +236,6 @@ export default class Shop extends Vue {
   }
 
   get sortableProperties(): string[] {
-    if (!this.$route.query.type) return ['Weight'];
     return getSortableProperties(this.filteredItems);
   }
 

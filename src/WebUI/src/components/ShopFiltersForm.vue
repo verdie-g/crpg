@@ -64,9 +64,9 @@
           <span>Price</span>
         </b-dropdown-item>
         <b-dropdown-item
-          v-for="sortableProperty in sortableProperties"
+          v-for="(sortableProperty, i) in sortableProperties"
           :value="sortableProperty"
-          :key="sortableProperty"
+          :key="sortableProperty + i"
           aria-role="listitem"
         >
           <span>{{ sortableProperty }}</span>
@@ -170,6 +170,8 @@ export default class ShopFiltersForm extends Vue {
   }
 
   get sortBy(): string {
+    if (!this.sortableProperties.some(sortableProp => this.filter.sortBy === sortableProp))
+      return 'Price';
     return this.filter.sortBy;
   }
   set sortBy(sortBy: string) {
@@ -184,7 +186,7 @@ export default class ShopFiltersForm extends Vue {
   get sortButtonIcon() {
     if (this.sortDesc) return 'arrow-down';
     return 'arrow-up';
-  }  
+  }
   get searchQuery(): string {
     return this.filter.searchQuery;
   }
