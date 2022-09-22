@@ -26,11 +26,24 @@ internal static class Program
 
     private static async Task MainAsync()
     {
-        string crpgDocumentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Mount and Blade II Bannerlord\Configs";
+        string documentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Mount and Blade II Bannerlord";
+        string crpgDocumentPath = documentPath + @"\Configs";
         bool crpgLauncherConfigFound = false;
         string targetPath = string.Empty;
         string configPath = crpgDocumentPath + CrpgLauncherConfig;
         string versionPath = crpgDocumentPath + CrpgLauncherVersion;
+
+        // Check for first BL start after clean (re)installation and create directories if they do not exist
+        if (!Directory.Exists(documentPath))
+        {
+            Directory.CreateDirectory(documentPath);
+        }
+
+        if (!Directory.Exists(crpgDocumentPath))
+        {
+            Directory.CreateDirectory(crpgDocumentPath);
+        }
+
 
         if (Directory.Exists(crpgDocumentPath) && File.Exists(configPath))
         {
@@ -177,7 +190,9 @@ internal static class Program
     private static async Task UpdateCrpg(string versionPath, string crpgPath)
     {
         string? tag = null;
-        if (File.Exists(versionPath))
+
+        // If there is no cRPG directory and also no version number - don't even bother reading the file
+        if (File.Exists(versionPath) && Directory.Exists(crpgPath))
         {
             tag = File.ReadAllText(versionPath);
         }
@@ -191,7 +206,7 @@ internal static class Program
 
         var res = await httpClient.SendAsync(req, HttpCompletionOption.ResponseHeadersRead);
 
-        if (res.StatusCode == HttpStatusCode.NotModified && Directory.Exists(crpgPath))
+        if (res.StatusCode == HttpStatusCode.NotModified)
         {
             return;
         }

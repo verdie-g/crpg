@@ -8,4 +8,5 @@ export default interface ShopFilters {
   showAffordable: boolean;
   sortBy: string;
   sortDesc: boolean;
+  searchQuery: string;
 }

@@ -175,10 +175,11 @@ export default class Shop extends Vue {
         this.$route.query.sortDesc !== undefined
           ? this.$route.query.sortDesc === true.toString()
           : false,
+      searchQuery: this.$route.query.searchQuery ? (this.$route.query.searchQuery as string) : '',
     };
   }
 
-  set filters({ type, culture, showOwned, showAffordable, sortBy, sortDesc }: ShopFilters) {
+  set filters({ type, culture, showOwned, showAffordable, sortBy, sortDesc, searchQuery }: ShopFilters) {
     this.$router.push({
       query: {
         ...this.$route.query,
@@ -189,6 +190,7 @@ export default class Shop extends Vue {
         page: '1',
         sortBy: sortBy,
         sortDesc: sortDesc === true ? true.toString() : false.toString(),
+        searchQuery: searchQuery,
       },
     });
   }
@@ -201,6 +203,8 @@ export default class Shop extends Vue {
       if (this.filters.showAffordable && userModule.user?.gold && i.price > userModule.user.gold) {
         return false;
       }
+      if (!this.matchesItem(i, this.filters.searchQuery)) return false;
+
       // When the user filters by a culture, Neutral items are always added in the result.
       return (
         this.filters.culture === null ||
@@ -250,6 +254,17 @@ export default class Shop extends Vue {
     }
 
     return '';
+  }
+
+  matchesItem(item: Item, searchQuery: string): boolean {
+    if (searchQuery.length === 0) return true;
+
+    const lowerCaseSearchQuery = searchQuery.toLowerCase();
+    return (
+      item.name.toLowerCase().includes(lowerCaseSearchQuery) ||
+      item.culture.toLowerCase().includes(lowerCaseSearchQuery) ||
+      itemTypeToStr[item.type].toLowerCase().includes(lowerCaseSearchQuery)
+    );
   }
 }
 </script>

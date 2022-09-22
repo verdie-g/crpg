@@ -1,5 +1,6 @@
-ServerName cRPG Beta - EU 01
+ServerName cRPG Test
 GameType cRPGBattle
+GamePassword yoyo
 WelcomeMessage yoyoyooooo
 add_map_to_automated_battle_pool mp_battle_map_001
 add_map_to_automated_battle_pool mp_sergeant_map_013

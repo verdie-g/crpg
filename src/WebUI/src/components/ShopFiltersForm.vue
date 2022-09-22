@@ -1,5 +1,16 @@
 <template>
   <form>
+    <b-field>
+      <p class="control">
+        <b-input
+          placeholder="Search..."
+          type="search"
+          icon="search"
+          size="is-medium"
+          v-model.lazy="searchQuery"
+        />
+      </p>
+    </b-field>
     <b-field label="Type">
       <b-dropdown v-model="type" aria-role="list">
         <template #trigger>
@@ -99,6 +110,7 @@ export default class ShopFiltersForm extends Vue {
       showAffordable: false,
       sortBy: '',
       sortDesc: false,
+      searchQuery: '',
     }),
   })
   readonly filter: ShopFilters;
@@ -172,6 +184,12 @@ export default class ShopFiltersForm extends Vue {
   get sortButtonIcon() {
     if (this.sortDesc) return 'arrow-down';
     return 'arrow-up';
+  }  
+  get searchQuery(): string {
+    return this.filter.searchQuery;
+  }
+  set searchQuery(searchQuery: string) {
+    this.emitInput({ searchQuery });
   }
 
   emitInput(shopFilters: Partial<ShopFilters>) {
@@ -182,6 +200,7 @@ export default class ShopFiltersForm extends Vue {
       showAffordable: this.showAffordable,
       sortBy: this.sortBy,
       sortDesc: this.sortDesc,
+      searchQuery: this.searchQuery,
       ...shopFilters,
     });
   }
