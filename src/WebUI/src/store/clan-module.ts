@@ -5,7 +5,9 @@ import Clan from '@/models/clan';
 import ClanCreation from '@/models/clan-creation';
 import ClanWithMemberCount from '@/models/clan-with-member-count';
 import ClanMemberRole from '@/models/clan-member-role';
+import Region from '@/models/region';
 import ClanMember from '@/models/clan-member';
+import ClanUpdate from '@/models/clan-update';
 
 @Module({ store, dynamic: true, name: 'clan' })
 class ClanModule extends VuexModule {
@@ -24,6 +26,11 @@ class ClanModule extends VuexModule {
   @Action
   createClan(clan: ClanCreation): Promise<Clan> {
     return clanService.createClan(clan);
+  }
+
+  @Action
+  updateClan({ clanId, clanUpdate }: { clanId: number; clanUpdate: ClanUpdate }): Promise<Clan> {
+    return clanService.updateClan(clanId, clanUpdate);
   }
 
   @Action

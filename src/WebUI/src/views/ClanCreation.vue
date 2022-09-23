@@ -3,6 +3,24 @@
     <div class="container">
       <h1 class="is-size-2">Create a new clan</h1>
       <form @submit.prevent="onSubmit">
+        <b-field label="Region">
+          <b-dropdown v-model="translatedRegion" aria-role="menu">
+            <template #trigger>
+              <a class="navbar-item" role="button">
+                <span>{{ translatedRegion.translation }}</span>
+                <b-icon icon="caret-down"></b-icon>
+              </a>
+            </template>
+
+            <b-dropdown-item
+              v-for="translatedRegion in translatedRegions"
+              :value="translatedRegion"
+              :key="translatedRegion.region"
+            >
+              {{ translatedRegion.translation }}
+            </b-dropdown-item>
+          </b-dropdown>
+        </b-field>
         <b-field grouped>
           <b-field label="Tag">
             <b-input
@@ -59,6 +77,7 @@ import Constants from '../../../../data/constants.json';
 import clanModule from '@/store/clan-module';
 import { notify } from '@/services/notifications-service';
 import { rgbHexColorToArgbInt } from '@/utils/color';
+import { getTranslatedRegions } from '@/services/region-service';
 
 @Component
 export default class ClanCreationComponent extends Vue {
@@ -80,6 +99,9 @@ export default class ClanCreationComponent extends Vue {
   bannerKeyMaxLength = Constants.clanBannerKeyMaxLength;
   bannerKeyRegex = Constants.clanBannerKeyRegex;
 
+  translatedRegions = getTranslatedRegions();
+  translatedRegion = this.translatedRegions[0];
+
   onSubmit() {
     this.creatingClan = true;
     clanModule
@@ -89,6 +111,7 @@ export default class ClanCreationComponent extends Vue {
         secondaryColor: rgbHexColorToArgbInt(this.secondaryColor),
         name: this.name,
         bannerKey: this.bannerKey,
+        region: this.translatedRegion.region,
       })
       .then(clan => {
         notify('Clan created');

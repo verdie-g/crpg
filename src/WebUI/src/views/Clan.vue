@@ -22,6 +22,15 @@
           >
             Apply to join
           </b-button>
+          <b-button
+            v-if="canUpdateClan"
+            size="is-medium"
+            type="is-link"
+            tag="router-link"
+            :to="{ name: 'clan-settings', params: { id: $route.params.id } }"
+          >
+            <b-icon pack="fas" icon="cog"></b-icon>
+          </b-button>
         </div>
       </div>
 
@@ -124,6 +133,12 @@ export default class ClanComponent extends Vue {
     }
 
     return selfMember.role === ClanMemberRole.Officer || selfMember.role === ClanMemberRole.Leader;
+  }
+
+  get canUpdateClan(): boolean {
+    const selfMember = this.selfMember;
+    if (selfMember === null) return false;
+    return selfMember.role === ClanMemberRole.Leader;
   }
 
   set selectedMemberRole(role: ClanMemberRole | undefined) {
