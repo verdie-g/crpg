@@ -6,7 +6,7 @@ namespace Crpg.Module.Common.ChatCommands;
 
 internal abstract class ChatCommand
 {
-    private string _command = string.Empty;
+    //private string _command = string.Empty;
 
     protected enum ParameterType
     {
@@ -31,11 +31,7 @@ internal abstract class ChatCommand
         }
     }
 
-    public string Command
-    {
-        get => _command;
-        protected set => _command = value.ToLower();
-    }
+    public string Command { get; protected set; }
 
     protected List<Pattern> PatternList { get; set; }
     protected string Description { get; set; }

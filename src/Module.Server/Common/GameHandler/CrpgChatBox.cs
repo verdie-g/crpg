@@ -98,7 +98,7 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
     {
         if (message[0] == ChatCommandHandler.CommandPrefix)
         {
-            ChatCommandHandler.CheckForCommand(fromPeer, message.Substring(1));
+            ChatCommandHandler.TryExecuteCommand(fromPeer, message.Substring(1));
         }
     }
 
@@ -135,20 +135,22 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
 
     protected override void OnTick(float dt)
     {
-        if (GameNetwork.IsServer && _isNetworkInitialized)
+        if (!GameNetwork.IsServer || !_isNetworkInitialized)
         {
-            for (int j = 0; j < _queuedServerMessages?.Count; j++)
+            return;
+        }
+
+        for (int j = 0; j < _queuedServerMessages?.Count; j++)
+        {
+            QueuedMessageInfo queuedMessageInfo2 = _queuedServerMessages[j];
+            if (queuedMessageInfo2.SourcePeer.IsSynchronized)
             {
-                QueuedMessageInfo queuedMessageInfo2 = _queuedServerMessages[j];
-                if (queuedMessageInfo2.SourcePeer.IsSynchronized)
-                {
-                    ServerSendMessageToPlayer(queuedMessageInfo2.SourcePeer, queuedMessageInfo2.Message);
-                    _queuedServerMessages.RemoveAt(j);
-                }
-                else if (queuedMessageInfo2.IsExpired)
-                {
-                    _queuedServerMessages.RemoveAt(j);
-                }
+                ServerSendMessageToPlayer(queuedMessageInfo2.SourcePeer, queuedMessageInfo2.Message);
+                _queuedServerMessages.RemoveAt(j);
+            }
+            else if (queuedMessageInfo2.IsExpired)
+            {
+                _queuedServerMessages.RemoveAt(j);
             }
         }
     }
@@ -159,7 +161,6 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
         if (GameNetwork.IsClient)
         {
             networkMessageHandlerRegisterer.Register<CrpgServerMessage>(HandleCrpgServerMessage);
-            return;
         }
     }
 

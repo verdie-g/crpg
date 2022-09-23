@@ -14,15 +14,11 @@ internal class ChatCommandHandler
     public static readonly char CommandPrefix = '!';
     private static readonly List<ChatCommand> RegisteredCommands = new();
 
-    public ChatCommandHandler()
+    public static bool TryExecuteCommand(NetworkCommunicator fromPeer, string cmd)
     {
-    }
+        string[] cmdTokens = cmd.Split(' ');
 
-    public static bool CheckForCommand(NetworkCommunicator fromPeer, string cmd)
-    {
-        string[] tmpParams = cmd.Split(' ');
-
-        List<string> parameters = tmpParams.ToList();
+        List<string> parameters = cmdTokens.ToList();
         string lowerCaseCmd = parameters[0];
         parameters.RemoveAt(0);
 
