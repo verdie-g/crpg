@@ -14,7 +14,7 @@
                 v-model.lazy="clanSearchQuery"
               />
             </p>
-            <p class="control">
+            <p class="control" v-if="userClan !== null">
               <b-button
                 type="is-link"
                 size="is-medium"
@@ -25,7 +25,7 @@
                 My clan
               </b-button>
             </p>
-            <p class="control" v-if="userClan === null">
+            <p class="control" v-else>
               <b-button
                 type="is-link"
                 size="is-medium"

@@ -6,8 +6,8 @@ import ClanInvitation from '@/models/clan-invitation';
 import ClanInvitationStatus from '@/models/clan-invitation-status';
 import ClanInvitationType from '@/models/clan-invitation-type';
 import ClanMember from '@/models/clan-member';
-import Region from '@/models/region';
 import ClanMemberRole from '@/models/clan-member-role';
+import ClanUpdate from '@/models/clan-update';
 
 export function getClan(id: number): Promise<Clan> {
   return get(`/clans/${id}`);
@@ -57,8 +57,8 @@ export function createClan(clan: ClanCreation): Promise<Clan> {
   return post('/clans', clan);
 }
 
-export function updateClan(clanId: number, region: Region): Promise<Clan> {
-  return put(`/clans/${clanId}`, { region });
+export function updateClan(clanId: number, clanUpdate: ClanUpdate): Promise<Clan> {
+  return put(`/clans/${clanId}`, clanUpdate);
 }
 
 export function kickClanMember(clanId: number, memberId: number): Promise<void> {

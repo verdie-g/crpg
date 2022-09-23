@@ -153,10 +153,6 @@ export default class ClanComponent extends Vue {
     return this.selectedMember?.role;
   }
 
-  get clanSettingsRoute(): string {
-    return this.clan === null ? '' : `clans/${this.clan.id}/settings`;
-  }
-
   selected(member: ClanMember) {
     this.selectedMember = member;
     this.isManageMemberWindowActive = true;

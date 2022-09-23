@@ -29,6 +29,18 @@
           </b-dropdown-item>
         </b-dropdown>
       </b-field>
+      <b-field>
+        <p class="control">
+          <b-button
+            size="is-medium"
+            @click="submitClanUpdate"
+            icon-left="check"
+            :disabled="disableUpdateButton"
+          >
+            Update
+          </b-button>
+        </p>
+      </b-field>
     </div>
   </section>
 </template>
@@ -44,22 +56,25 @@ import { getTranslatedRegions } from '@/services/region-service';
 import { notify } from '@/services/notifications-service';
 
 @Component
-export default class Settings extends Vue {
+export default class ClanSettings extends Vue {
   clan: Clan | null = null;
   translatedRegions = getTranslatedRegions();
+  clanUpdate: ClanUpdate = {
+    region: Region.Europe,
+  };
+  originalClanUpdate: ClanUpdate | null;
 
   get translatedRegion(): TranslatedRegion {
-    const region = this.clan?.region || Region.Europe;
+    const region = this.clanUpdate?.region || Region.Europe;
     return this.translatedRegions.find(tr => tr.region === region) || this.translatedRegions[1];
   }
 
   set translatedRegion(translatedRegion: TranslatedRegion) {
-    if (this.clan) {
-      this.submitClanUpdate({
-        clanId: this.clan.id,
-        region: translatedRegion.region,
-      } as ClanUpdate);
-    }
+    this.clanUpdate = { ...this.clanUpdate, region: translatedRegion.region };
+  }
+
+  get disableUpdateButton(): boolean {
+    return this.clanUpdate.region === this.originalClanUpdate?.region;
   }
 
   created() {
@@ -69,14 +84,28 @@ export default class Settings extends Vue {
       return;
     }
 
-    clanService.getClan(clanId).then(clan => (this.clan = clan));
+    clanService.getClan(clanId).then(clan => {
+      this.initClanUpdates(clan);
+      this.clan = clan;
+    });
   }
 
-  submitClanUpdate(clanUpdate: ClanUpdate): void {
-    clanModule.updateClan(clanUpdate).then(clan => {
-      this.clan = clan;
-      notify('Clan updated!');
-    });
+  submitClanUpdate(): void {
+    clanModule
+      .updateClan({
+        clanId: this.clan!.id,
+        clanUpdate: this.clanUpdate,
+      })
+      .then(clan => {
+        this.clan = clan;
+        this.initClanUpdates(clan);
+        notify('Clan updated!');
+      });
+  }
+
+  initClanUpdates(clan: Clan) {
+    this.clanUpdate = { region: clan.region };
+    this.originalClanUpdate = this.clanUpdate;
   }
 }
 </script>
