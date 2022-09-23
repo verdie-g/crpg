@@ -85,7 +85,14 @@ public record SeedDataCommand : IMediatorRequest
                 Name = "Namidaka",
                 Gold = 100000,
                 Characters = new List<Character>
-                { new Character { Name = "namichar" } },
+                    {
+                        new Character
+                        {
+                        Name = "namichar",
+                        Level = 10,
+                        Experience = 146457,
+                        },
+                    },
                 AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273.jpg"),
                 AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273_medium.jpg"),
                 AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273_full.jpg"),

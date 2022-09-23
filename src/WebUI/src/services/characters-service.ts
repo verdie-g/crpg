@@ -26,3 +26,10 @@ export function computeHealthPoints(ironFlesh: number, strength: number): number
     applyPolynomialFunction(strength, Constants.healthPointsForStrengthCoefs)
   );
 }
+
+export function getExperienceForLevel(level: number): number {
+  const a = Constants.experienceForLevelCoefs[0];
+  const b = Constants.experienceForLevelCoefs[1];
+  const c = Constants.experienceForLevelCoefs[2];
+  return Math.trunc(Math.max(a * Math.pow(1.26, level) + b * level + c, 0));
+}

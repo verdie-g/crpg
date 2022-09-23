@@ -38,11 +38,20 @@
         />
       </b-field>
       <b-field horizontal label="Experience" class="characteristic-field is-marginless">
-        <b-numberinput
+        <b-input
           size="is-small"
           :editable="false"
           controls-position="compact"
-          :value="character.experience"
+          :value="experience()"
+          :controls="false"
+        />
+      </b-field>
+      <b-field horizontal label="Health Points" class="characteristic-field">
+        <b-input
+          size="is-small"
+          :editable="false"
+          controls-position="compact"
+          :value="HealthPoints"
           :controls="false"
         />
       </b-field>
@@ -496,7 +505,7 @@ import CharacterCharacteristics from '@/models/character-characteristics';
 import Character from '@/models/character';
 import userModule from '@/store/user-module';
 import { notify } from '@/services/notifications-service';
-import { computeHealthPoints } from '@/services/characters-service';
+import { computeHealthPoints, getExperienceForLevel } from '@/services/characters-service';
 import CharacterAttributes from '@/models/character-attributes';
 import CharacterSkills from '@/models/character-skills';
 import CharacterWeaponProficiencies from '@/models/character-weapon-proficiencies';
@@ -606,6 +615,14 @@ export default class CharacterCharacteristicsComponent extends Vue {
     return computeHealthPoints(
       this.getInputProps('skills', 'ironFlesh').value,
       this.getInputProps('attributes', 'strength').value
+    );
+  }
+
+  experience(): string {
+    return (
+      this.character.experience.toString() +
+      ' / ' +
+      getExperienceForLevel(this.character.level + 1).toString()
     );
   }
 
