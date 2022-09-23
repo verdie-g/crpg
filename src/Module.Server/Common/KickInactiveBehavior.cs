@@ -11,7 +11,7 @@ namespace Crpg.Module.Common;
 /// </summary>
 internal class KickInactiveBehavior : MissionBehavior
 {
-    private static readonly MissionTime InactiveTimeLimit = MissionTime.Seconds(30);
+    private static readonly MissionTime InactiveTimeLimit = MissionTime.Seconds(45);
 
     private readonly MultiplayerWarmupComponent _warmupComponent;
     private readonly MultiplayerGameNotificationsComponent _notificationsComponent;
@@ -95,7 +95,7 @@ internal class KickInactiveBehavior : MissionBehavior
                 return;
             }
 
-            if (MissionTime.Now - lastActiveStatus.LastActive > InactiveTimeLimit - MissionTime.Seconds(10) && !lastActiveStatus.Warned)
+            if (MissionTime.Now - lastActiveStatus.LastActive > InactiveTimeLimit - MissionTime.Seconds(15) && !lastActiveStatus.Warned)
             {
                 _notificationsComponent.PlayerIsInactive(networkPeer);
                 lastActiveStatus.Warned = true;
