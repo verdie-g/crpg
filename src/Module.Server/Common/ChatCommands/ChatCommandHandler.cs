@@ -19,7 +19,7 @@ internal class ChatCommandHandler
         string[] cmdTokens = cmd.Split(' ');
 
         List<string> parameters = cmdTokens.ToList();
-        string lowerCaseCmd = parameters[0];
+        string lowerCaseCmd = parameters[0].ToLower();
         parameters.RemoveAt(0);
 
         foreach (ChatCommand command in RegisteredCommands)
