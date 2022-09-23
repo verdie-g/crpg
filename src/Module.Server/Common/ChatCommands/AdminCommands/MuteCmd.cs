@@ -20,8 +20,8 @@ internal class MuteCmd : AdminCmd
         Description = $"'{ChatCommandHandler.CommandPrefix}{Command} PLAYERID' to mute a player.";
         PatternList = new Pattern[]
         {
-            new Pattern("dps", ExecuteMuteByNetworkPeer), // !mute PLAYERID DURATION REASON
-            new Pattern("sds", ExecuteMuteByName), // !mute NamePattern DURATION REASON
+            new Pattern(new ParameterType[] { ParameterType.Integer, ParameterType.PlayerId, ParameterType.String }.ToList(), ExecuteMuteByNetworkPeer),
+            new Pattern(new ParameterType[] { ParameterType.String, ParameterType.Integer, ParameterType.String }.ToList(), ExecuteMuteByName),
         }.ToList();
     }
 

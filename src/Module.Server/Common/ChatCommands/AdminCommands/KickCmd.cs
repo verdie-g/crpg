@@ -10,7 +10,11 @@ internal class KickCmd : AdminCmd
     {
         Command = "kick";
         Description = $"'{ChatCommandHandler.CommandPrefix}{Command} PLAYERID' to kick a player.";
-        PatternList = new Pattern[] { new Pattern("p", ExecuteKickByNetworkPeer), new Pattern("s", ExecuteKickByName) }.ToList();
+        PatternList = new Pattern[]
+        {
+            new Pattern(new ParameterType[] { ParameterType.PlayerId }.ToList(), ExecuteKickByNetworkPeer),
+            new Pattern(new ParameterType[] { ParameterType.String }.ToList(), ExecuteKickByName),
+        }.ToList();
     }
 
     protected override void ExecuteFailed(NetworkCommunicator fromPeer)

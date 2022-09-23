@@ -11,7 +11,11 @@ internal class TeleportCmd : AdminCmd
     {
         Command = "tp";
         Description = $"'{ChatCommandHandler.CommandPrefix}{Command} PLAYERID_FROM PLAYER_ID_TO' to teleport ID1 to ID2.";
-        PatternList = new Pattern[] { new Pattern("pp", ExecuteTeleportByNetworkPeer), new Pattern("ss", ExecuteTeleportByName) }.ToList();
+        PatternList = new Pattern[]
+        {
+            new Pattern(new ParameterType[] { ParameterType.PlayerId, ParameterType.PlayerId }.ToList(), ExecuteTeleportByNetworkPeer),
+            new Pattern(new ParameterType[] { ParameterType.String, ParameterType.String }.ToList(), ExecuteTeleportByName),
+        }.ToList();
     }
 
     protected override void ExecuteFailed(NetworkCommunicator fromPeer)

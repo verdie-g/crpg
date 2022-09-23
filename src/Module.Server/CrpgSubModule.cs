@@ -28,10 +28,7 @@ internal class CrpgSubModule : MBSubModuleBase
     {
         base.OnGameInitializationFinished(game);
 
-        if (game.GetGameHandler<CrpgChatBox>() == null)
-        {
-            game.AddGameHandler<CrpgChatBox>();
-        }
+        game.AddGameHandler<CrpgChatBox>();
     }
 
     protected override void OnSubModuleLoad()

@@ -3,16 +3,28 @@ using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.ChatCommands;
+
 internal abstract class ChatCommand
 {
     private string _command = string.Empty;
+
+    protected enum ParameterType
+    {
+        Integer,
+        Decimal = Integer,
+        Float,
+        PlayerId,
+        String,
+        Text = String,
+    }
+
     protected class Pattern
     {
-        public string Value { get; set; } = string.Empty;
+        public List<ParameterType> Value { get; set; } = new();
         public delegate void CallFunc(NetworkCommunicator networkPeer, string cmd, List<object> parameters);
         public CallFunc? Function { get; private set; }
 
-        public Pattern(string pattern, CallFunc function)
+        public Pattern(List<ParameterType> pattern, CallFunc function)
         {
             Value = pattern;
             Function = function;
@@ -44,7 +56,7 @@ internal abstract class ChatCommand
 
         foreach (Pattern pattern in PatternList)
         {
-            var (succes, list) = Sscanf(parameters, pattern.Value);
+            var (succes, list) = ValidateInputFormat(parameters, pattern.Value);
             if (succes && list != null && pattern.Function != null)
             {
                 pattern.Function(fromPeer, cmd, list);
@@ -69,9 +81,9 @@ internal abstract class ChatCommand
         // Example: Invalid usage.. please type !command ID Message
     }
 
-    protected (bool success, List<object>? values) Sscanf(List<string> parameters, string pattern)
+    protected (bool success, List<object>? values) ValidateInputFormat(List<string> parameters, List<ParameterType> pattern)
     {
-        int formatLen = pattern.Length;
+        int formatLen = pattern.Count;
         int parameterLen = parameters.Count;
         List<object> parsedItems = new();
         if (formatLen == 0)
@@ -85,15 +97,9 @@ internal abstract class ChatCommand
             {
                 for (int i = 0; i < formatLen; i++)
                 {
-                    /*
-                     * i & d = int
-                     * f = float
-                     * s = string
-                     * p = player id
-                     */
                     switch (pattern[i])
                     {
-                        case 'p':
+                        case ParameterType.PlayerId:
                             int id = int.Parse(parameters[i]);
                             bool found = false;
                             foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
@@ -113,14 +119,13 @@ internal abstract class ChatCommand
                             }
 
                             break;
-                        case 'i':
-                        case 'd':
+                        case ParameterType.Integer:
                             parsedItems.Add(int.Parse(parameters[i]));
                             break;
-                        case 'f':
+                        case ParameterType.Float:
                             parsedItems.Add(float.Parse(parameters[i]));
                             break;
-                        case 's':
+                        case ParameterType.String:
                             if (i >= formatLen - 1)
                             {
                                 string rest = parameters[formatLen - 1];

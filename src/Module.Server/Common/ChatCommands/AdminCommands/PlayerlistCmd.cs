@@ -8,7 +8,10 @@ internal class PlayerlistCmd : AdminCmd
         : base()
     {
         Command = "pl";
-        PatternList = new Pattern[] { new Pattern(string.Empty, ExecuteSuccess) }.ToList();
+        PatternList = new Pattern[]
+        {
+            new Pattern(new ParameterType[] { }.ToList(), ExecuteSuccess),
+        }.ToList();
     }
 
     private void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, List<object> parameters)

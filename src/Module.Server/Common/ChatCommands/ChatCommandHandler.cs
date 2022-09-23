@@ -39,6 +39,7 @@ internal class ChatCommandHandler
         return false;
     }
 
+    // Hacky workaround until we can actually control which message should be sent to everyone.
     public static async Task HideChatInput(NetworkCommunicator fromPeer)
     {
         bool muted = fromPeer.IsMuted;

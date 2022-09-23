@@ -11,7 +11,11 @@ internal class KillCmd : AdminCmd
     {
         Command = "kill";
         Description = $"'{ChatCommandHandler.CommandPrefix}{Command} PLAYERID' to kill a player.";
-        PatternList = new Pattern[] { new Pattern("p", ExecuteKillByNetworkPeer), new Pattern("s", ExecuteKillByName) }.ToList();
+        PatternList = new Pattern[]
+        {
+            new Pattern(new ParameterType[] { ParameterType.PlayerId }.ToList(), ExecuteKillByNetworkPeer),
+            new Pattern(new ParameterType[] { ParameterType.String }.ToList(), ExecuteKillByName),
+        }.ToList();
     }
 
     protected override void ExecuteFailed(NetworkCommunicator fromPeer)
@@ -32,22 +36,12 @@ internal class KillCmd : AdminCmd
             return;
         }
 
-        Blow blow = new(agent.Index);
-        blow.DamageType = DamageTypes.Blunt;
-        blow.BoneIndex = agent.Monster.HeadLookDirectionBoneIndex;
-        blow.Position = agent.Position;
-        blow.Position.z += agent.GetEyeGlobalHeight();
-        blow.BaseMagnitude = 2000f;
-        blow.WeaponRecord.FillAsMeleeBlow(null, null, -1, -1);
-        blow.InflictedDamage = 2000;
-        blow.SwingDirection = agent.LookDirection;
-        blow.SwingDirection = agent.Frame.rotation.TransformToParent(new Vec3(0f, 1f));
-        blow.SwingDirection.Normalize();
-
-        blow.Direction = blow.SwingDirection;
-        blow.DamageCalculated = true;
-        agent.RegisterBlow(blow, default);
-
+        Blow b = new(agent.Index);
+        b.DamageType = DamageTypes.Invalid;
+        b.BaseMagnitude = 10000f;
+        b.Position = agent.Position;
+        b.DamagedPercentage = 1f;
+        agent.Die(b, Agent.KillInfo.Gravity);
         crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorSuccess, $"You have killed {targetPeer.UserName}.");
         crpgChat.ServerSendMessageToPlayer(targetPeer, ChatCommandHandler.ColorFatal, $"You were killed by {fromPeer.UserName}.");
     }

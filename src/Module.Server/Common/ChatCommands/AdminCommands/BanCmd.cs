@@ -18,8 +18,8 @@ internal class BanCmd : AdminCmd
         Description = $"'{ChatCommandHandler.CommandPrefix}{Command} PLAYERID DURATION REASON' to ban a player.";
         PatternList = new Pattern[]
         {
-            new Pattern("dps", ExecuteBanByNetworkPeer), // !ban PLAYERID DURATION REASON
-            new Pattern("sds", ExecuteBanByName), // !ban NamePattern DURATION REASON
+            new Pattern(new ParameterType[] { ParameterType.Integer, ParameterType.PlayerId, ParameterType.String }.ToList(), ExecuteBanByNetworkPeer), // !ban PLAYERID DURATION REASON
+            new Pattern(new ParameterType[] { ParameterType.String, ParameterType.Integer, ParameterType.String }.ToList(), ExecuteBanByName), // !ban NamePattern DURATION REASON
         }.ToList();
     }
 
