@@ -9,4 +9,5 @@ internal class CrpgClan
     public uint SecondaryColor { get; set; }
     public string Name { get; set; } = string.Empty;
     public string BannerKey { get; set; } = string.Empty;
+    public string Region { get; set; } = string.Empty;
 }

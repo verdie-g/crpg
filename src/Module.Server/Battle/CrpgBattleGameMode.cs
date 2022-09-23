@@ -69,6 +69,8 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
         CrpgHttpClient crpgClient = new();
         MultiplayerRoundController roundController = new(); // starts/stops round, ends match
 #endif
+        MultiplayerGameNotificationsComponent notificationsComponent = new(); // used to send notifications (e.g. flag captured, round won) to peer
+        CrpgWarmupComponent warmupComponent = new(_constants);
 
         MissionState.OpenNew(
             Name,
@@ -87,21 +89,22 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new AgentVictoryLogic(), // AI cheering when winning round
                     new MissionBoundaryCrossingHandler(), // kills agent out of mission boundaries
                     new MultiplayerPollComponent(), // poll logic to kick player, ban player, change game
-                    new MultiplayerGameNotificationsComponent(), // used to send notifications (e.g. flag captured, round won) to peer
                     new MissionOptionsComponent(),
                     new MissionScoreboardComponent(new BattleScoreboardData()), // score board
                     new MissionAgentPanicHandler(),
                     new EquipmentControllerLeaveLogic(),
                     new MultiplayerPreloadHelper(),
-                    new CrpgWarmupComponent(_constants),
+                    warmupComponent,
 #if CRPG_SERVER
                     roundController,
                     new CrpgBattleMissionMultiplayer(crpgClient, _constants),
+                    notificationsComponent,
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
                     new SpawnComponent(new BattleSpawnFrameBehavior(), new CrpgBattleSpawningBehavior(_constants, roundController)),
                     new AgentHumanAILogic(), // bot intelligence
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
                     new CrpgUserManager(crpgClient),
+                    new KickInactiveBehavior(warmupComponent, notificationsComponent),
 #else
                     new MultiplayerRoundComponent(),
                     new MissionMatchHistoryComponent(),

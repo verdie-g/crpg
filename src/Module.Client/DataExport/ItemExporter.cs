@@ -320,6 +320,8 @@ internal class ItemExporter : IDataExporter
             }
             else if (node1.Name == "CraftingPiece")
             {
+                ModifyChildNodesAttribute(node1, "BladeData", "stack_amount",
+                        v => ((int)(int.Parse(v) * 0.75f)).ToString(CultureInfo.InvariantCulture));
                 ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
                     v => (float.Parse(v) * 0.35f).ToString(CultureInfo.InvariantCulture));
             }

@@ -55,6 +55,15 @@
           :controls="false"
         />
       </b-field>
+      <b-field horizontal label="Health Points" class="characteristic-field">
+        <b-numberinput
+          size="is-small"
+          :editable="false"
+          controls-position="compact"
+          :value="healthPoints"
+          :controls="false"
+        />
+      </b-field>
       <!-- TODO: align correctly -->
       <b-field horizontal label="KDA" class="characteristic-field">
         <b-input size="is-small" :value="getKda()" readonly />

@@ -371,6 +371,10 @@ namespace Crpg.Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("primary_color");
 
+                    b.Property<Region>("Region")
+                        .HasColumnType("region")
+                        .HasColumnName("region");
+
                     b.Property<long>("SecondaryColor")
                         .HasColumnType("bigint")
                         .HasColumnName("secondary_color");

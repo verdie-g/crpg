@@ -112,7 +112,7 @@ import { notify } from '@/services/notifications-service';
 import ShopFiltersForm from '@/components/ShopFiltersForm.vue';
 import ShopFilters from '@/models/shop-filters';
 import ItemType from '@/models/item-type';
-import { filterItemsByType } from '@/services/item-service';
+import { filterItemsByType, itemTypeToStr } from '@/services/item-service';
 import Culture from '@/models/culture';
 import UserItem from '@/models/user-item';
 
@@ -164,10 +164,11 @@ export default class Shop extends Vue {
         this.$route.query.showAffordable !== undefined
           ? this.$route.query.showAffordable === 'true'
           : false,
+      searchQuery: this.$route.query.searchQuery ? (this.$route.query.searchQuery as string) : '',
     };
   }
 
-  set filters({ type, culture, showOwned, showAffordable }: ShopFilters) {
+  set filters({ type, culture, showOwned, showAffordable, searchQuery }: ShopFilters) {
     this.$router.push({
       query: {
         ...this.$route.query,
@@ -176,18 +177,25 @@ export default class Shop extends Vue {
         showOwned: showOwned === true ? undefined : false.toString(),
         showAffordable: showAffordable === true ? true.toString() : undefined,
         page: '1',
+        searchQuery: searchQuery,
       },
     });
   }
 
   get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
     const filteredItems = itemModule.items.filter(i => {
+      if (i.type === ItemType.Banner) {
+        return false;
+      }
+
       if (!this.filters.showOwned && this.ownedItems[i.id] !== undefined) {
         return false;
       }
       if (this.filters.showAffordable && userModule.user?.gold && i.price > userModule.user.gold) {
         return false;
       }
+      if (!this.matchesItem(i, this.filters.searchQuery)) return false;
+
       // When the user filters by a culture, Neutral items are always added in the result.
       return (
         this.filters.culture === null ||
@@ -230,6 +238,17 @@ export default class Shop extends Vue {
     }
 
     return '';
+  }
+
+  matchesItem(item: Item, searchQuery: string): boolean {
+    if (searchQuery.length === 0) return true;
+
+    const lowerCaseSearchQuery = searchQuery.toLowerCase();
+    return (
+      item.name.toLowerCase().includes(lowerCaseSearchQuery) ||
+      item.culture.toLowerCase().includes(lowerCaseSearchQuery) ||
+      itemTypeToStr[item.type].toLowerCase().includes(lowerCaseSearchQuery)
+    );
   }
 }
 </script>

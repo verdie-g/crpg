@@ -2,6 +2,7 @@
 - name: Install PostgreSQL
   apt:
     name:
+    - python3-psycopg2
     - acl # needed by postgresql_user module (https://github.com/georchestra/ansible/issues/55#issuecomment-588313638)
     - postgresql
     - postgresql-client

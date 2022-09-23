@@ -189,7 +189,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             var characterSkills = CreateCharacterSkills(crpgRepresentative.User.Character.Characteristics);
             var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
             var character = peerClass.HeroCharacter;
-
+            missionPeer.SelectedTroopIndex = -1; // Set index to -1 to reset MPPerk selection
             bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
             MatrixFrame spawnFrame = missionPeer.GetAmountOfAgentVisualsForPeer() > 0
                 ? missionPeer.GetAgentVisualForPeer(0).GetFrame()
