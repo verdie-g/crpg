@@ -299,7 +299,8 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             GameNetwork.WriteMessage(new CrpgRewardUser
             {
                 Reward = updateResult.EffectiveReward,
-                RepairCost = updateResult.BrokenItems.Sum(b => b.RepairCost),
+                RepairCost = updateResult.RepairedItems.Sum(r => r.RepairCost),
+                SoldItemIds = updateResult.RepairedItems.Where(r => r.Sold).Select(r => r.ItemId).ToList(),
             });
             GameNetwork.EndModuleEventAsServer();
         }

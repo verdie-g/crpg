@@ -71,7 +71,7 @@ public record SeedDataCommand : IMediatorRequest
             User takeo = new()
             {
                 PlatformUserId = "76561197987525637",
-                Name = "takeoshigeru",
+                Name = "takeo",
                 Gold = 30000,
                 HeirloomPoints = 2,
                 Role = Role.Admin,
