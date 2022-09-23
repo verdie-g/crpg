@@ -151,7 +151,15 @@ export default class ClanComponent extends Vue {
     }
 
     clanService.getClan(clanId).then(c => (this.clan = c));
-    clanService.getClanMembers(clanId).then(m => (this.members = m));
+    clanService.getClanMembers(clanId).then(m => {
+      m.sort(function compareFn(a: ClanMember, b: ClanMember): number {
+        if ((a.role === 'Leader' && b.role === 'Officer') || b.role === 'Member') {
+          return -1;
+        }
+        return 0;
+      });
+      this.members = m;
+    });
   }
 
   memberKickable(member: ClanMember): boolean {
