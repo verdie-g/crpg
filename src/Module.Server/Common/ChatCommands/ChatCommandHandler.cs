@@ -1,51 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TaleWorlds.Library;
+﻿using Crpg.Module.Common.ChatCommands.Admin;
+using Crpg.Module.Common.ChatCommands.User;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.ChatCommands;
+
 internal class ChatCommandHandler
 {
-    public static readonly Color ColorInfo = new(0.25f, 0.75f, 1f);
-    public static readonly Color ColorWarning = new(1f, 1f, 0f);
-    public static readonly Color ColorSuccess = new(0f, 1f, 0f);
-    public static readonly Color ColorFatal = new(1f, 0f, 0f);
     public static readonly char CommandPrefix = '!';
-    private static readonly List<ChatCommand> RegisteredCommands = new();
 
-    public static bool TryExecuteCommand(NetworkCommunicator fromPeer, string cmd)
+    private static readonly ChatCommand[] Commands =
     {
-        string[] cmdTokens = cmd.Split(' ');
+        new PingCommand(),
+        new PlayerListCommand(),
+        new KickCommand(),
+        new KillCommand(),
+        new TeleportCommand(),
+        new MuteCommand(),
+    };
 
-        List<string> parameters = cmdTokens.ToList();
-        string lowerCaseCmd = parameters[0].ToLower();
-        parameters.RemoveAt(0);
-
-        foreach (ChatCommand command in RegisteredCommands)
+    public static bool TryExecuteCommand(NetworkCommunicator fromPeer, string input)
+    {
+        string[] tokens = input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        if (tokens.Length == 0)
         {
-            if (command.Command == lowerCaseCmd)
-            {
-                _ = HideChatInput(fromPeer);
-                command.Execute(fromPeer, lowerCaseCmd, parameters);
-                return true;
-            }
+            return false;
         }
 
-        return false;
+        string name = tokens[0].ToLowerInvariant();
+        var command = Commands.FirstOrDefault(c => c.Name == name);
+        if (command == null)
+        {
+            return false;
+        }
+
+        _ = HideChatInput(fromPeer);
+        command.Execute(fromPeer, name, tokens.Skip(1).ToArray());
+        return true;
     }
 
     // Hacky workaround until we can actually control which message should be sent to everyone.
-    public static async Task HideChatInput(NetworkCommunicator fromPeer)
+    private static async Task HideChatInput(NetworkCommunicator fromPeer)
     {
         bool muted = fromPeer.IsMuted;
         fromPeer.IsMuted = true;
         await Task.Delay(100);
         fromPeer.IsMuted = muted;
-    }
-
-    public static void RegisterCommand(ChatCommand cmd)
-    {
-        RegisteredCommands.Add(cmd);
     }
 }

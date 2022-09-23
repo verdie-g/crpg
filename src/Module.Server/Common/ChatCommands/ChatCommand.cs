@@ -1,63 +1,39 @@
 ﻿using Crpg.Module.Common.GameHandler;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.ChatCommands;
 
 internal abstract class ChatCommand
 {
-    //private string _command = string.Empty;
+    protected static readonly Color ColorInfo = new(0.25f, 0.75f, 1f);
+    protected static readonly Color ColorWarning = new(1f, 1f, 0f);
+    protected static readonly Color ColorSuccess = new(0f, 1f, 0f);
+    protected static readonly Color ColorFatal = new(1f, 0f, 0f);
 
-    protected enum ParameterType
-    {
-        Integer,
-        Decimal = Integer,
-        Float,
-        PlayerId,
-        String,
-        Text = String,
-    }
+    public string Name { get; protected set; } = string.Empty;
 
-    protected class Pattern
-    {
-        public List<ParameterType> Value { get; set; } = new();
-        public delegate void CallFunc(NetworkCommunicator networkPeer, string cmd, List<object> parameters);
-        public CallFunc? Function { get; private set; }
+    /// <summary>A command can accepts several arguments types, the first one that matches the input is used.</summary>
+    protected CommandOverload[] Overloads { get; set; } = Array.Empty<CommandOverload>();
+    protected string Description { get; set; } = string.Empty;
 
-        public Pattern(List<ParameterType> pattern, CallFunc function)
-        {
-            Value = pattern;
-            Function = function;
-        }
-    }
-
-    public string Command { get; protected set; }
-
-    protected List<Pattern> PatternList { get; set; }
-    protected string Description { get; set; }
-
-    public ChatCommand()
-    {
-        Command = string.Empty;
-        PatternList = new Pattern[] { }.ToList();
-        Description = $"Description here";
-    }
-
-    public virtual bool Execute(NetworkCommunicator fromPeer, string cmd, List<string> parameters)
+    public bool Execute(NetworkCommunicator fromPeer, string commandName, string[] arguments)
     {
         if (!CheckRequirements(fromPeer))
         {
             return false;
         }
 
-        foreach (Pattern pattern in PatternList)
+        foreach (CommandOverload overload in Overloads)
         {
-            var (succes, list) = ValidateInputFormat(parameters, pattern.Value);
-            if (succes && list != null && pattern.Function != null)
+            if (!TryParseArguments(arguments, overload.ParameterTypes, out object[]? parsedArguments))
             {
-                pattern.Function(fromPeer, cmd, list);
-                return true;
+                continue;
             }
+
+            overload.Execute(fromPeer, commandName, parsedArguments!);
+            return true;
         }
 
         ExecuteFailed(fromPeer);
@@ -77,108 +53,50 @@ internal abstract class ChatCommand
         // Example: Invalid usage.. please type !command ID Message
     }
 
-    protected (bool success, List<object>? values) ValidateInputFormat(List<string> parameters, List<ParameterType> pattern)
-    {
-        int formatLen = pattern.Count;
-        int parameterLen = parameters.Count;
-        List<object> parsedItems = new();
-        if (formatLen == 0)
-        {
-            return (true, parsedItems);
-        }
-
-        if (parameterLen >= formatLen)
-        {
-            try
-            {
-                for (int i = 0; i < formatLen; i++)
-                {
-                    switch (pattern[i])
-                    {
-                        case ParameterType.PlayerId:
-                            int id = int.Parse(parameters[i]);
-                            bool found = false;
-                            foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
-                            {
-                                var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-                                if (networkPeer.IsSynchronized && crpgRepresentative.User?.Id == id)
-                                {
-                                    parsedItems.Add(networkPeer);
-                                    found = true;
-                                    break;
-                                }
-                            }
-
-                            if (!found)
-                            {
-                                throw new Exception("No player found.");
-                            }
-
-                            break;
-                        case ParameterType.Integer:
-                            parsedItems.Add(int.Parse(parameters[i]));
-                            break;
-                        case ParameterType.Float:
-                            parsedItems.Add(float.Parse(parameters[i]));
-                            break;
-                        case ParameterType.String:
-                            if (i >= formatLen - 1)
-                            {
-                                string rest = parameters[formatLen - 1];
-                                for (int j = formatLen; j < parameterLen; j++)
-                                {
-                                    rest += " " + parameters[j];
-                                }
-
-                                parsedItems.Add(rest);
-                            }
-                            else
-                            {
-                                parsedItems.Add(parameters[i]);
-                            }
-
-                            break;
-                    }
-                }
-            }
-            catch
-            {
-                return (false, null);
-            }
-
-            return (true, parsedItems);
-        }
-
-        return (false, null);
-    }
-
-    protected virtual (bool success, NetworkCommunicator? peer) GetPlayerByName(NetworkCommunicator fromPeer, string targetName)
+    protected bool TryGetPlayerByName(NetworkCommunicator fromPeer, string targetName, out NetworkCommunicator? peer)
     {
         CrpgChatBox crpgChat = GetChat();
 
-        List<NetworkCommunicator> playerList = GetNetworkPeerByName(targetName);
-        if (playerList.Count == 0)
+        List<NetworkCommunicator> peers = GetNetworkPeerByName(targetName);
+        if (peers.Count == 0)
         {
-            crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorFatal, "No matching name found.");
-            return (false, null);
+            crpgChat.ServerSendMessageToPlayer(fromPeer, ColorFatal, "No matching name found.");
+            peer = null;
+            return false;
         }
 
-        if (playerList.Count > 1)
+        if (peers.Count > 1)
         {
-            crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorWarning, "More than one match found. Please try the ID instead.");
-            PrintPlayerList(fromPeer, playerList);
-            return (false, null);
+            crpgChat.ServerSendMessageToPlayer(fromPeer, ColorWarning, "More than one match found. Please try the ID instead.");
+            PrintPlayerList(fromPeer, peers);
+            peer = null;
+            return false;
         }
 
-        return (true, playerList[0]);
+        peer = peers[0];
+        return true;
     }
 
-    protected virtual CrpgChatBox GetChat()
+    protected CrpgChatBox GetChat()
     {
         return Game.Current.GetGameHandler<CrpgChatBox>();
     }
 
-    protected List<NetworkCommunicator> GetNetworkPeerByName(string name)
+    protected void PrintPlayerList(NetworkCommunicator fromPeer, List<NetworkCommunicator> peerList)
+    {
+        CrpgChatBox crpgChat = GetChat();
+        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorInfo, "- Players -");
+        foreach (NetworkCommunicator networkPeer in peerList)
+        {
+            var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
+            if (networkPeer.IsSynchronized && crpgRepresentative.User != null)
+            {
+                crpgChat.ServerSendMessageToPlayer(fromPeer, ColorWarning, $"{crpgRepresentative.User.Id} | '{networkPeer.UserName}'");
+            }
+        }
+    }
+
+    private List<NetworkCommunicator> GetNetworkPeerByName(string name)
     {
         List<NetworkCommunicator> peerList = new();
         if (GameNetwork.NetworkPeers == null)
@@ -198,17 +116,82 @@ internal abstract class ChatCommand
         return peerList;
     }
 
-    protected void PrintPlayerList(NetworkCommunicator fromPeer, List<NetworkCommunicator> peerList)
+    private bool TryParseArguments(string[] arguments, ChatCommandParameterType[] expectedTypes, out object[]? parsedArguments)
     {
-        CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorInfo, "- Players -");
-        foreach (NetworkCommunicator networkPeer in peerList)
+        parsedArguments = new object[expectedTypes.Length];
+        if (arguments.Length < expectedTypes.Length)
         {
-            var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-            if (networkPeer.IsSynchronized && crpgRepresentative.User != null)
+            return false;
+        }
+
+        for (int i = 0; i < arguments.Length; i++)
+        {
+            switch (expectedTypes[i])
             {
-                crpgChat.ServerSendMessageToPlayer(fromPeer, ChatCommandHandler.ColorWarning, $"{crpgRepresentative.User.Id} | '{networkPeer.UserName}'");
+                case ChatCommandParameterType.Int32:
+                    if (!int.TryParse(arguments[i], out int parsedInt))
+                    {
+                        return false;
+                    }
+
+                    parsedArguments[i] = parsedInt;
+                    break;
+                case ChatCommandParameterType.Float32:
+                    if (!float.TryParse(arguments[i], out float parsedFloat))
+                    {
+                        return false;
+                    }
+
+                    parsedArguments[i] = parsedFloat;
+                    break;
+                case ChatCommandParameterType.String:
+                    parsedArguments[i] = i < arguments.Length - 1
+                        ? arguments[i]
+                        : string.Join(" ", arguments.Skip(i));
+
+                    break;
+                case ChatCommandParameterType.PlayerId:
+                    if (!int.TryParse(arguments[i], out int id))
+                    {
+                        return false;
+                    }
+
+                    foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
+                    {
+                        var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
+                        if (networkPeer.IsSynchronized && crpgRepresentative.User?.Id == id)
+                        {
+                            parsedArguments[i] = networkPeer;
+                            break;
+                        }
+                    }
+
+                    return false;
             }
         }
+
+        return true;
+    }
+
+    protected enum ChatCommandParameterType
+    {
+        Int32,
+        Float32,
+        String,
+        PlayerId,
+    }
+
+    protected class CommandOverload
+    {
+        public ChatCommandParameterType[] ParameterTypes { get; }
+        public CommandFunc Execute { get; }
+
+        public CommandOverload(ChatCommandParameterType[] parameterTypes, CommandFunc execute)
+        {
+            ParameterTypes = parameterTypes;
+            Execute = execute;
+        }
+
+        public delegate void CommandFunc(NetworkCommunicator networkPeer, string cmd, object[] parameters);
     }
 }

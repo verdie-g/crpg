@@ -1,50 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Crpg.Module.Common.ChatCommands;
-using Crpg.Module.Common.ChatCommands.UserCommands;
+﻿using Crpg.Module.Common.ChatCommands;
 using Crpg.Module.Common.Network;
-using Crpg.Module.Helpers;
-using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 #if CRPG_SERVER
 using TaleWorlds.MountAndBlade.DedicatedCustomServer;
 #endif
-using TaleWorlds.MountAndBlade.Network.Messages;
 
 namespace Crpg.Module.Common.GameHandler;
+
 internal class CrpgChatBox : TaleWorlds.Core.GameHandler
 {
-    private class QueuedMessageInfo
-    {
-        public NetworkCommunicator SourcePeer { get; private set; }
-        public string Message { get; private set; }
-        public Color Color { get; private set; }
-        private const float _timeOutDuration = 3f;
-        private readonly DateTime _creationTime;
-        public bool IsExpired => (DateTime.Now - _creationTime).TotalSeconds >= _timeOutDuration;
-        public QueuedMessageInfo(NetworkCommunicator sourcePeer, Color color, string message)
-        {
-            SourcePeer = sourcePeer;
-            Message = message;
-            Color = color;
-            _creationTime = DateTime.Now;
-        }
+    private ChatBox? _chatBox;
+    private List<QueuedMessageInfo> _queuedServerMessages;
+    private bool _isNetworkInitialized;
 
-        public QueuedMessageInfo(NetworkCommunicator sourcePeer, string message)
-            : this(sourcePeer, new Color(1, 1, 1), message)
-        {
-        }
-    }
-
-    private static ChatBox? _chatBox;
-    private static List<QueuedMessageInfo>? _queuedServerMessages;
-    private bool _isNetworkInitialized = false;
     public CrpgChatBox()
     {
-        _queuedServerMessages = null;
+        _queuedServerMessages = new();
 
 #if CRPG_SERVER
         DedicatedCustomGameServerState.OnActivated += DedicatedCustomGameServerStateActivated;
@@ -61,11 +34,11 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
     {
         if (!targetPlayer.IsSynchronized)
         {
-            _queuedServerMessages?.Add(new QueuedMessageInfo(targetPlayer, message));
+            _queuedServerMessages.Add(new QueuedMessageInfo(targetPlayer, message));
             return;
         }
 
-        if (targetPlayer.IsServerPeer == false && targetPlayer.IsSynchronized)
+        if (!targetPlayer.IsServerPeer && targetPlayer.IsSynchronized)
         {
             GameNetwork.BeginModuleEventAsServer(targetPlayer);
             GameNetwork.WriteMessage(new CrpgServerMessage
@@ -78,14 +51,6 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
                 IsMessageTextId = false,
             });
             GameNetwork.EndModuleEventAsServer();
-            /*
-            if (!targetPlayer.IsInBList || !targetPlayer.IsInCList)
-            {
-                GameNetwork.BeginModuleEventAsServer(targetPlayer);
-                GameNetwork.WriteMessage(new CrpgServerMessage(color, message, false));
-                GameNetwork.EndModuleEventAsServer();
-            }
-            */
         }
     }
 
@@ -115,16 +80,6 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
         _queuedServerMessages = new List<QueuedMessageInfo>();
         _isNetworkInitialized = true;
         AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
-
-#if CRPG_SERVER
-        ChatCommandHandler.RegisterCommand(new PingCmd());
-        ChatCommandHandler.RegisterCommand(new PlayerlistCmd());
-        ChatCommandHandler.RegisterCommand(new KickCmd());
-        ChatCommandHandler.RegisterCommand(new KillCmd());
-        ChatCommandHandler.RegisterCommand(new TeleportCmd());
-        ChatCommandHandler.RegisterCommand(new MuteCmd());
-#endif
-
     }
 
     protected override void OnGameNetworkEnd()
@@ -140,17 +95,17 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
             return;
         }
 
-        for (int j = 0; j < _queuedServerMessages?.Count; j++)
+        for (int i = 0; i < _queuedServerMessages.Count; i++)
         {
-            QueuedMessageInfo queuedMessageInfo2 = _queuedServerMessages[j];
+            QueuedMessageInfo queuedMessageInfo2 = _queuedServerMessages[i];
             if (queuedMessageInfo2.SourcePeer.IsSynchronized)
             {
                 ServerSendMessageToPlayer(queuedMessageInfo2.SourcePeer, queuedMessageInfo2.Message);
-                _queuedServerMessages.RemoveAt(j);
+                _queuedServerMessages.RemoveAt(i);
             }
             else if (queuedMessageInfo2.IsExpired)
             {
-                _queuedServerMessages.RemoveAt(j);
+                _queuedServerMessages.RemoveAt(i);
             }
         }
     }
@@ -166,12 +121,32 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
 
     private void HandleCrpgServerMessage(CrpgServerMessage message)
     {
-        if (message.Message == null)
+        string msg = message.IsMessageTextId ? GameTexts.FindText(message.Message).ToString() : message.Message;
+        InformationManager.DisplayMessage(new InformationMessage(msg, new Color(message.Red, message.Green, message.Blue, message.Alpha)));
+    }
+
+    private class QueuedMessageInfo
+    {
+        private const float TimeOutDuration = 3f;
+
+        private readonly DateTime _creationTime;
+
+        public QueuedMessageInfo(NetworkCommunicator sourcePeer, Color color, string message)
         {
-            return;
+            SourcePeer = sourcePeer;
+            Message = message;
+            Color = color;
+            _creationTime = DateTime.Now;
         }
 
-        string msg = message.IsMessageTextId ? GameTexts.FindText(message.Message, null).ToString() : message.Message;
-        InformationManager.DisplayMessage(new InformationMessage(msg, new Color(message.Red, message.Green, message.Blue, message.Alpha)));
+        public QueuedMessageInfo(NetworkCommunicator sourcePeer, string message)
+            : this(sourcePeer, new Color(1, 1, 1), message)
+        {
+        }
+
+        public NetworkCommunicator SourcePeer { get; }
+        public string Message { get; }
+        public Color Color { get; }
+        public bool IsExpired => (DateTime.Now - _creationTime).TotalSeconds >= TimeOutDuration;
     }
 }
