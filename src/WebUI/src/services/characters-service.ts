@@ -23,6 +23,6 @@ export function computeHealthPoints(ironFlesh: number, strength: number): number
   return (
     Constants.defaultHealthPoints +
     applyPolynomialFunction(ironFlesh, Constants.healthPointsForIronFleshCoefs) +
-    applyPolynomialFunction(ironFlesh, Constants.healthPointsForStrengthCoefs)
+    applyPolynomialFunction(strength, Constants.healthPointsForStrengthCoefs)
   );
 }
