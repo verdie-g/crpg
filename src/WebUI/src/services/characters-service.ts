@@ -22,7 +22,7 @@ export function computeAverageRepairCost(equippedItems: EquippedItem[]): number 
 export function computeHealthPoints(ironFlesh: number, strength: number): number {
   return (
     Constants.defaultHealthPoints +
-    applyPolynomialFunction(ironFlesh, Constants.healthPointsForIronFleshCoefs) +
+    applyPolynomialFunction(strength, Constants.healthPointsForIronFleshCoefs) +
     applyPolynomialFunction(ironFlesh, Constants.healthPointsForStrengthCoefs)
   );
 }
