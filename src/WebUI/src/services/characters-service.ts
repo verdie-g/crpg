@@ -27,13 +27,9 @@ export function computeHealthPoints(ironFlesh: number, strength: number): number
   );
 }
 
-export function computeHowMuchXPTillNextLevel(currentXP: number, currentLvl: number): number {
-  const nextlevelxp = getExperienceForLevel(currentLvl + 1);
-  return Math.trunc(nextlevelxp - currentXP);
-}
 export function getExperienceForLevel(level: number): number {
   const a = Constants.experienceForLevelCoefs[0];
   const b = Constants.experienceForLevelCoefs[1];
   const c = Constants.experienceForLevelCoefs[2];
-  return a * Math.pow(1.26, level) + b * level + c;
+  return Math.trunc(Math.max(a * Math.pow(1.26, level) + b * level + c, 0));
 }

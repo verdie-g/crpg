@@ -38,25 +38,16 @@
         />
       </b-field>
       <b-field horizontal label="Experience" class="characteristic-field is-marginless">
-        <b-numberinput
+        <b-input
           size="is-small"
           :editable="false"
           controls-position="compact"
-          :value="character.experience"
-          :controls="false"
-        />
-      </b-field>
-      <b-field horizontal label="Next level in" class="characteristic-field is-marginless">
-        <b-numberinput
-          size="is-small"
-          :editable="false"
-          controls-position="compact"
-          :value="experienceTillNextLevel()"
+          :value="experience()"
           :controls="false"
         />
       </b-field>
       <b-field horizontal label="Health Points" class="characteristic-field">
-        <b-numberinput
+        <b-input
           size="is-small"
           :editable="false"
           controls-position="compact"
@@ -505,7 +496,7 @@ import CharacterCharacteristics from '@/models/character-characteristics';
 import Character from '@/models/character';
 import userModule from '@/store/user-module';
 import { notify } from '@/services/notifications-service';
-import { computeHealthPoints, computeHowMuchXPTillNextLevel } from '@/services/characters-service';
+import { computeHealthPoints, getExperienceForLevel } from '@/services/characters-service';
 import CharacterAttributes from '@/models/character-attributes';
 import CharacterSkills from '@/models/character-skills';
 import CharacterWeaponProficiencies from '@/models/character-weapon-proficiencies';
@@ -617,8 +608,13 @@ export default class CharacterCharacteristicsComponent extends Vue {
       this.getInputProps('attributes', 'strength').value
     );
   }
-  experienceTillNextLevel(): number {
-    return computeHowMuchXPTillNextLevel(this.character.experience, this.character.level);
+
+  experience(): string {
+    return (
+      this.character.experience.toString() +
+      ' / ' +
+      getExperienceForLevel(this.character.level + 1).toString()
+    );
   }
 
   convertCharacteristics(conversion: CharacteristicConversion): Promise<CharacterCharacteristics> {
