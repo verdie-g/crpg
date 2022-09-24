@@ -1623,6 +1623,13 @@
       <Piece id="crpg_vlandian_pommel_2" Type="Pommel" scale_factor="90" />
     </Pieces>
   </CraftedItem>
+  <CraftedItem id="crpg_vlandia_mace_3_t5" name="{=rnzpyc0N}Pernach" crafting_template="crpg_Mace" culture="Culture.vlandia">
+    <Pieces>
+      <Piece id="crpg_mace_head_2" Type="Blade" />
+      <Piece id="crpg_mace_handle_9" Type="Handle" />
+      <Piece id="crpg_spear_pommel_9" Type="Pommel" scale_factor="108" />
+    </Pieces>
+  </CraftedItem>
   <CraftedItem id="crpg_empire_mace_4_t5" name="{=UMX05EQF}Light Royal Mace" crafting_template="crpg_Mace" culture="Culture.empire">
     <Pieces>
       <Piece id="crpg_mace_head_13" Type="Blade" />
@@ -2068,6 +2075,38 @@
   <Item id="crpg_bolt_a" name="{=g7vxJhiz}Light Bolts" body_name="bo_capsule_arrow" holster_body_name="bo_axe_short" mesh="bolt_bl_a" holster_mesh="bolt_bl_a_quiver" flying_mesh="bolt_bl_flying" holster_mesh_with_weapon="bolt_bl_a_quiver" weight="0.05" appearance="1" Type="Bolts" item_holsters="quiver_bolts:quiver_bolts_2:quiver_back_middle:quiver_back_top">
     <ItemComponent>
       <Weapon weapon_class="Bolt" stack_amount="10" thrust_speed="0" thrust_damage="2" thrust_damage_type="Pierce" speed_rating="0" missile_speed="10" weapon_length="47" item_usage="" passby_sound_code="event:/mission/combat/missile/passby" rotation="180, 0, 0" physics_material="missile" sticking_position="0,-0.47,0" sticking_rotation="90,0,0" center_of_mass="0,0,-0.1" item_modifier_group="bolt">
+        <WeaponFlags AttachAmmoToVisual="true" Consumable="true" AmmoSticksWhenShot="true" AmmoBreaksOnBounceBack="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags ForceAttachOffHandPrimaryItemBone="true" />
+  </Item>
+  <Item id="crpg_bolt_b" name="{=wrbea2oa}Bolts" body_name="bo_capsule_arrow" holster_body_name="bo_axe_short" mesh="bolt_bl_b" holster_mesh="bolt_bl_b_quiver" flying_mesh="bolt_bl_flying" holster_mesh_with_weapon="bolt_bl_b_quiver" culture="Culture.vlandia" weight="0.08" appearance="1" Type="Bolts" item_holsters="quiver_bolts:quiver_bolts_2:quiver_back_middle:quiver_back_top">
+    <ItemComponent>
+      <Weapon weapon_class="Bolt" stack_amount="9" thrust_speed="0" thrust_damage="4" thrust_damage_type="Pierce" speed_rating="0" missile_speed="10" weapon_length="47" item_usage="" passby_sound_code="event:/mission/combat/missile/passby" rotation="180, 0, 0" physics_material="missile" sticking_position="0,-0.47,0" sticking_rotation="90,0,0" center_of_mass="0,0,-0.1" item_modifier_group="bolt">
+        <WeaponFlags AttachAmmoToVisual="true" Consumable="true" AmmoSticksWhenShot="true" AmmoBreaksOnBounceBack="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags ForceAttachOffHandPrimaryItemBone="true" />
+  </Item>
+  <Item id="crpg_bolt_c" name="{=wi53b5PG}Heavy Bolts" body_name="bo_capsule_arrow" holster_body_name="bo_axe_short" mesh="bolt_bl_c" holster_mesh="bolt_bl_c_quiver" holster_mesh_with_weapon="bolt_bl_c_quiver" flying_mesh="bolt_bl_flying" culture="Culture.vlandia" weight="0.04" appearance="1" Type="Bolts" item_holsters="quiver_bolts:quiver_bolts_2:quiver_back_middle:quiver_back_top">
+    <ItemComponent>
+      <Weapon weapon_class="Bolt" stack_amount="9" thrust_speed="0" thrust_damage="5" thrust_damage_type="Pierce" speed_rating="0" missile_speed="10" weapon_length="37" item_usage="" passby_sound_code="event:/mission/combat/missile/passby" rotation="180, 0, 0" physics_material="missile" sticking_position="0,-0.37,0" sticking_rotation="90,0,0" center_of_mass="0,0,-0.1" item_modifier_group="bolt">
+        <WeaponFlags AttachAmmoToVisual="true" Consumable="true" AmmoSticksWhenShot="true" AmmoBreaksOnBounceBack="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags ForceAttachOffHandPrimaryItemBone="true" />
+  </Item>
+  <Item id="crpg_bolt_d" name="{=hN4wE2gG}Heavy Quarrels" body_name="bo_capsule_arrow" holster_body_name="bo_axe_short" mesh="bolt_bl_d" holster_mesh="bolt_bl_d_quiver" holster_mesh_with_weapon="bolt_bl_d_quiver" flying_mesh="bolt_bl_flying" culture="Culture.empire" weight="0.06" appearance="1" Type="Bolts" item_holsters="quiver_bolts:quiver_bolts_2:quiver_back_middle:quiver_back_top">
+    <ItemComponent>
+      <Weapon weapon_class="Bolt" stack_amount="9" thrust_speed="0" thrust_damage="3" thrust_damage_type="Pierce" speed_rating="0" missile_speed="10" weapon_length="37" item_usage="" passby_sound_code="event:/mission/combat/missile/passby" rotation="180, 0, 0" physics_material="missile" sticking_position="0,-0.37,0" sticking_rotation="90,0,0" center_of_mass="0,0,-0.1" item_modifier_group="bolt">
+        <WeaponFlags AttachAmmoToVisual="true" Consumable="true" AmmoSticksWhenShot="true" AmmoBreaksOnBounceBack="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags ForceAttachOffHandPrimaryItemBone="true" />
+  </Item>
+  <Item id="crpg_bolt_e" name="{=I67Avuos}Light Quarrels" body_name="bo_capsule_arrow" holster_body_name="bo_axe_short" mesh="bolt_bl_e" holster_mesh="bolt_bl_e_quiver" holster_mesh_with_weapon="bolt_bl_e_quiver" flying_mesh="bolt_bl_flying" culture="Culture.empire" weight="0.04" appearance="1" Type="Bolts" item_holsters="quiver_bolts:quiver_bolts_2:quiver_back_middle:quiver_back_top">
+    <ItemComponent>
+      <Weapon weapon_class="Bolt" stack_amount="9" thrust_speed="0" thrust_damage="1" thrust_damage_type="Pierce" speed_rating="0" missile_speed="10" weapon_length="37" item_usage="" passby_sound_code="event:/mission/combat/missile/passby" rotation="180, 0, 0" physics_material="missile" sticking_position="0,-0.37,0" sticking_rotation="90,0,0" center_of_mass="0,0,-0.1" item_modifier_group="bolt">
         <WeaponFlags AttachAmmoToVisual="true" Consumable="true" AmmoSticksWhenShot="true" AmmoBreaksOnBounceBack="true" />
       </Weapon>
     </ItemComponent>

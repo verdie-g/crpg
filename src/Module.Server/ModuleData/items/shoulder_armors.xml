@@ -138,6 +138,12 @@
     </ItemComponent>
     <Flags />
   </Item>
+  <Item id="crpg_battania_civil_cloak" name="{=*}Fringed Cape" mesh="battania_civil_cloak" culture="Culture.battania" subtype="body_armor" weight="0.5" difficulty="0" appearance="1.5" Type="Cape">
+    <ItemComponent>
+      <Armor body_armor="2" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags UseTeamColor="true" />
+  </Item>
   <Item id="crpg_battania_cloak_b" name="{=lVtoBMhp}Tartan Cape" mesh="battania_cloak_b" culture="Culture.battania" subtype="body_armor" weight="0.8" difficulty="0" appearance="1.5" Type="Cape">
     <ItemComponent>
       <Armor body_armor="4" modifier_group="cloth_unarmoured" material_type="Cloth" />
