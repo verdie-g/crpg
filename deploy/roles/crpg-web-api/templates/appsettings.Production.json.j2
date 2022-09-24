@@ -39,11 +39,7 @@
       {
         "ClientId": "crpg-forum",
         "ClientName": "cRPG Forum",
-        "ClientSecrets": [
-        {% for crpg_api_key in crpg_api_keys %}
-          { "Value": "{{ crpg_api_key }}" },
-        {% endfor %}
-        ],
+        "ClientSecrets": [{ "Value": "3BHLkNM+dJ+MLqerWsCwXQjRDb5vwzioY7/W8DcOM3A=" }],
         "AllowedGrantTypes": ["authorization_code"],
         "AllowedScopes": ["openid", "profile"],
         "RedirectUris": ["https://forum.{{ crpg_domain_name }}/auth/oidc/callback"],
@@ -58,7 +54,11 @@
       {
         "ClientId": "crpg-game-server",
         "ClientName": "cRPG Game Server",
-        "ClientSecrets": [{ "Value": "rA1Rpt3Nf9mwBQNsWP2Zzl+DrFkhnHVki8uwN1pycCU=" }],
+        "ClientSecrets": [
+        {% for crpg_api_key in crpg_api_keys %}
+          { "Value": "{{ crpg_api_key }}" },
+        {% endfor %}
+        ],
         "AllowedGrantTypes": ["client_credentials"],
         "AllowedScopes": ["openid", "game_api"],
         "AccessTokenLifetime": 31536000
