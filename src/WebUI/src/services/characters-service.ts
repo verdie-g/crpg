@@ -31,5 +31,9 @@ export function getExperienceForLevel(level: number): number {
   const a = Constants.experienceForLevelCoefs[0];
   const b = Constants.experienceForLevelCoefs[1];
   const c = Constants.experienceForLevelCoefs[2];
-  return Math.trunc(Math.max(a * Math.pow(1.26, level) + b * level + c, 0));
+  if (level <= 30) {
+    return Math.trunc(Math.max(a * Math.pow(1.26, level) + b * level + c, 0));
+  } else {
+    return getExperienceForLevel(level - 1) * 2;
+  }
 }
