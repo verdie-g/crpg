@@ -38,22 +38,7 @@
         />
       </b-field>
       <b-field horizontal label="Experience" class="characteristic-field is-marginless">
-        <b-input
-          size="is-small"
-          :editable="false"
-          controls-position="compact"
-          :value="experience()"
-          :controls="false"
-        />
-      </b-field>
-      <b-field horizontal label="Health Points" class="characteristic-field">
-        <b-input
-          size="is-small"
-          :editable="false"
-          controls-position="compact"
-          :value="HealthPoints"
-          :controls="false"
-        />
+        <b-input size="is-small" :value="experience" readonly />
       </b-field>
       <b-field horizontal label="Health Points" class="characteristic-field">
         <b-numberinput
@@ -611,6 +596,7 @@ export default class CharacterCharacteristicsComponent extends Vue {
         : Math.round((100 * (statistics.kills + statistics.assists)) / statistics.deaths) / 100;
     return `${statistics.kills}/${statistics.deaths}/${statistics.assists} (${ratio})`;
   }
+
   get healthPoints(): number {
     return computeHealthPoints(
       this.getInputProps('skills', 'ironFlesh').value,
@@ -618,7 +604,7 @@ export default class CharacterCharacteristicsComponent extends Vue {
     );
   }
 
-  experience(): string {
+  get experience(): string {
     return (
       this.character.experience.toString() +
       ' / ' +
@@ -637,6 +623,10 @@ export default class CharacterCharacteristicsComponent extends Vue {
     characteristicSectionKey: CharacteristicSectionKey,
     characteristicKey: CharacteristicKey
   ): { value: number; min: number; max: number; controls: boolean } {
+    if (this.characteristics === null) {
+      return { value: 0, min: 0, max: 0, controls: false };
+    }
+
     const initialValue = (this.characteristics[characteristicSectionKey] as any)[characteristicKey];
     const deltaValue = (this.characteristicsDelta[characteristicSectionKey] as any)[
       characteristicKey
