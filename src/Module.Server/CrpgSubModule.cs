@@ -14,7 +14,9 @@ using TaleWorlds.TwoDimension;
 #endif
 
 #if CRPG_EXPORT
+using System.Runtime.CompilerServices;
 using Crpg.Module.DataExport;
+using TaleWorlds.Library;
 using TaleWorlds.Localization;
 #endif
 

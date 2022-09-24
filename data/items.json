@@ -5524,7 +5524,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 40,
+        "handling": 28,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5537,7 +5537,7 @@
         ],
         "thrustDamage": 54,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 40,
+        "thrustSpeed": 28,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 61
@@ -5559,7 +5559,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 39,
+        "handling": 27,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5571,7 +5571,7 @@
         ],
         "thrustDamage": 59,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 39,
+        "thrustSpeed": 27,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 60
@@ -5593,7 +5593,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 46,
+        "handling": 32,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5605,7 +5605,7 @@
         ],
         "thrustDamage": 62,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 46,
+        "thrustSpeed": 32,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 62
@@ -5627,7 +5627,7 @@
         "stackAmount": 1,
         "length": 90,
         "balance": 0.0,
-        "handling": 47,
+        "handling": 33,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5640,7 +5640,7 @@
         ],
         "thrustDamage": 67,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 47,
+        "thrustSpeed": 33,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 63
@@ -6408,7 +6408,7 @@
         "class": "Javelin",
         "accuracy": 92,
         "missileSpeed": 29,
-        "stackAmount": 2,
+        "stackAmount": 3,
         "length": 82,
         "balance": 1.0,
         "handling": 100,
@@ -14850,7 +14850,7 @@
         "class": "Javelin",
         "accuracy": 92,
         "missileSpeed": 29,
-        "stackAmount": 2,
+        "stackAmount": 3,
         "length": 68,
         "balance": 1.0,
         "handling": 99,
@@ -23021,7 +23021,7 @@
         "class": "Javelin",
         "accuracy": 92,
         "missileSpeed": 29,
-        "stackAmount": 2,
+        "stackAmount": 3,
         "length": 65,
         "balance": 1.0,
         "handling": 102,
