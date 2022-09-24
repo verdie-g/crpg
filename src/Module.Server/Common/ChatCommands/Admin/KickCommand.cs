@@ -12,8 +12,8 @@ internal class KickCommand : AdminCommand
         Description = $"'{ChatCommandHandler.CommandPrefix}{Name} PLAYERID [REASON]' to kick a player.";
         Overloads = new CommandOverload[]
         {
-            new(new[] { ChatCommandParameterType.PlayerId }, ExecuteKickByNetworkPeer),
             new(new[] { ChatCommandParameterType.PlayerId, ChatCommandParameterType.String }, ExecuteKickByNetworkPeer),
+            new(new[] { ChatCommandParameterType.PlayerId }, ExecuteKickByNetworkPeer),
             new(new[] { ChatCommandParameterType.String, ChatCommandParameterType.String }, ExecuteKickByName),
             new(new[] { ChatCommandParameterType.String }, ExecuteKickByName),
         };
