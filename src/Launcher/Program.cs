@@ -10,248 +10,184 @@ namespace Crpg.Launcher;
 
 internal static class Program
 {
-    private const string CrpgWebsite = "http://c-rpg.eu";
-    private const string CrpgModFile = "cRPG.zip";
-    private const string UserRoot = "HKEY_CURRENT_USER";
-    private const string Subkey = @"Software\Valve\Steam";
-    private const string KeyName = UserRoot + "\\" + Subkey;
-    private const string CrpgLauncherConfig = @"\CrpgLauncherPath.txt";
-    private const string CrpgLauncherVersion = @"\CrpgLauncherVersion.txt";
+    private const string BannerlordExePath = "bin/Win64_Shipping_Client/Bannerlord.exe";
+    private const string BannerlordCrpgPath = "Modules/cRPG";
+    private const string BannerlordSteamPath = "steamapps/common/Mount & Blade II Bannerlord";
+    private const string CrpgZipUrl = "https://c-rpg.eu/cRPG.zip";
 
     [STAThread]
-    private static void Main()
+    internal static void Main()
     {
-        MainAsync().GetAwaiter().GetResult();
+        MainAsync().Wait();
     }
 
     private static async Task MainAsync()
     {
-        string documentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Mount and Blade II Bannerlord";
-        string crpgDocumentPath = documentPath + @"\Configs";
-        bool crpgLauncherConfigFound = false;
-        string targetPath = string.Empty;
-        string configPath = crpgDocumentPath + CrpgLauncherConfig;
-        string versionPath = crpgDocumentPath + CrpgLauncherVersion;
-
-        // Check for first BL start after clean (re)installation and create directories if they do not exist
-        if (!Directory.Exists(documentPath))
+        string? bannerlordPath = ResolveBannerlordPath();
+        if (bannerlordPath == null)
         {
-            Directory.CreateDirectory(documentPath);
-        }
-
-        if (!Directory.Exists(crpgDocumentPath))
-        {
-            Directory.CreateDirectory(crpgDocumentPath);
-        }
-
-
-        if (Directory.Exists(crpgDocumentPath) && File.Exists(configPath))
-        {
-            crpgLauncherConfigFound = true;
-            targetPath = File.ReadAllText(configPath);
-            if (!Directory.Exists(targetPath))
-            {
-                crpgLauncherConfigFound = false;
-                File.Delete(configPath);
-            }
-        }
-
-        string? steamInstallPath = (string?)Registry.GetValue(KeyName, "SteamPath", null);
-        string exeRelativePath = @"\bin\Win64_Shipping_Client\Bannerlord.exe";
-
-        bool executableFound = false;
-        if (!crpgLauncherConfigFound)
-        {
-            if (steamInstallPath != null)
-            {
-                string steamLibraryVdfPath = steamInstallPath + "\\steamapps\\libraryfolders.vdf";
-                VProperty libraryVdf = VdfConvert.Deserialize(File.ReadAllText(steamLibraryVdfPath));
-
-                List<string> steamBlPaths = new();
-                int counter = 0;
-                while (true)
-                {
-                    string index = counter.ToString();
-                    if (libraryVdf.Value[index] == null)
-                    {
-                        break;
-                    }
-
-                    if (libraryVdf.Value[index]?["path"] == null)
-                    {
-                        continue;
-                    }
-
-                    string? path = libraryVdf.Value[index]?["path"]?.ToString();
-                    path += @"\steamapps\common\Mount & Blade II Bannerlord";
-                    steamBlPaths.Add(path);
-
-                    counter++;
-                }
-
-                foreach (string steamBlPath in steamBlPaths)
-                {
-                    if (Directory.Exists(steamBlPath) && File.Exists(steamBlPath + exeRelativePath))
-                    {
-                        targetPath = steamBlPath;
-                        executableFound = true;
-                        break;
-                    }
-                }
-            }
-        }
-
-        string blPathExe = targetPath + exeRelativePath;
-        if (targetPath == string.Empty)
-        {
-            var result = MessageBox.Show("Could not find your Mount & Blade II Bannerlord location.\n\nPlease select your Mount & Blade II Bannerlord directory.", "Mount & Blade II Bannerlord not found",
-                MessageBoxButtons.OKCancel,
-                MessageBoxIcon.Warning);
-            if (result != DialogResult.OK)
-            {
-                return;
-            }
-
-            using (var fbd = new FolderBrowserDialog())
-            {
-                DialogResult pickedDir = fbd.ShowDialog();
-
-                if (pickedDir != DialogResult.OK || string.IsNullOrWhiteSpace(fbd.SelectedPath))
-                {
-                    return;
-                }
-
-                targetPath = fbd.SelectedPath;
-            }
-        }
-
-        if (!File.Exists(blPathExe) && !executableFound)
-        {
-            MessageBox.Show("Could not find your Bannerlord.exe", "Bannerlord.exe not found",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-
-            if (crpgLauncherConfigFound) // Delete config if file was invalid
-            {
-                File.Delete(configPath);
-            }
-
+            MessageBox.Show("Could not find the location of your Bannerlord installation.", "Bannerlord not found",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 
-        if (steamInstallPath != null && Directory.Exists(steamInstallPath))
+        if (!CheckSteamIsRunning())
         {
-            while (true)
+            MessageBox.Show("Steam is not running. You need to run steam to play cRPG.", "Steam is not running",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        try
+        {
+            await UpdateCrpgAsync(bannerlordPath);
+        }
+        catch
+        {
+            MessageBox.Show(
+                "Could not update cRPG. The game will still launch but you might get a version mismatch error",
+                "cRPG update failed",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        string bannerlordExePath = Path.Combine(bannerlordPath, BannerlordExePath);
+        Process.Start(new ProcessStartInfo
+        {
+            WorkingDirectory = Path.GetDirectoryName(bannerlordExePath),
+            FileName = "Bannerlord.exe",
+            Arguments = "_MODULES_*Native*cRPG*_MODULES_ /multiplayer",
+            UseShellExecute = true,
+        });
+    }
+
+    private static string? ResolveBannerlordPath()
+    {
+        string? bannerlordPath = ResolveBannerlordPathFromRegistry();
+        if (bannerlordPath != null)
+        {
+            return bannerlordPath;
+        }
+
+        string bannerlordPathFile = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            "Mount and Blade II Bannerlord/cRPG/BannerlordPath.txt");
+        if (File.Exists(bannerlordPathFile))
+        {
+            bannerlordPath = File.ReadAllText(bannerlordPathFile);
+            if (File.Exists(bannerlordPath))
             {
-                if (!IsProcessRunning("steam"))
-                {
-                    var result = MessageBox.Show("Steam is not running. You need to run steam to play cRPG.", "Steam is not running",
-                        MessageBoxButtons.AbortRetryIgnore,
-                        MessageBoxIcon.Warning);
-                    if (result == DialogResult.Abort)
-                    {
-                        return;
-                    }
-                    else if (result == DialogResult.Retry)
-                    {
-                        continue;
-                    }
-                    else if (result == DialogResult.Ignore)
-                    {
-                        break;
-                    }
-                }
-                else
-                {
-                    break;
-                }
+                return bannerlordPath;
             }
         }
 
-        if (!crpgLauncherConfigFound)
+        bannerlordPath = OpenDialogForBannerlordPath();
+        if (bannerlordPath != null)
         {
-            File.WriteAllText(configPath, targetPath);
+            Directory.CreateDirectory(Directory.GetParent(bannerlordPathFile)!.FullName);
+            File.WriteAllText(bannerlordPathFile, bannerlordPath);
+            return bannerlordPath;
         }
 
-        string modulesPath = targetPath + @"\Modules";
-        string crpgPath = modulesPath + @"\cRPG";
-
-        await UpdateCrpg(versionPath, crpgPath);
-
-        ProcessStartInfo startInfo = new();
-        startInfo.WorkingDirectory = Path.GetDirectoryName(blPathExe);
-        startInfo.FileName = "Bannerlord.exe";
-        startInfo.Arguments = "_MODULES_*Native*cRPG*_MODULES_ /multiplayer";
-        startInfo.UseShellExecute = true;
-
-        Process.Start(startInfo);
+        return null;
     }
 
-    private static async Task UpdateCrpg(string versionPath, string crpgPath)
+    private static string? ResolveBannerlordPathFromRegistry()
     {
-        string? tag = null;
-
-        // If there is no cRPG directory and also no version number - don't even bother reading the file
-        if (File.Exists(versionPath) && Directory.Exists(crpgPath))
+        string? steamPath = (string?)Registry.GetValue("HKEY_CURRENT_USER\\Software\\Valve\\Steam", "SteamPath", null);
+        if (steamPath == null)
         {
-            tag = File.ReadAllText(versionPath);
+            return null;
         }
 
-        using HttpClient httpClient = new() { BaseAddress = new Uri(CrpgWebsite) };
-        HttpRequestMessage req = new(HttpMethod.Get, CrpgModFile);
+        VProperty vdf = VdfConvert.Deserialize(File.ReadAllText(Path.Combine(steamPath, "steamapps/libraryfolders.vdf")));
+
+        for (int i = 0; ; i += 1)
+        {
+            string index = i.ToString();
+            if (vdf.Value[index] == null)
+            {
+                break;
+            }
+
+            string? path = vdf.Value[index]?["path"]?.ToString();
+            if (path == null)
+            {
+                continue;
+            }
+
+            string bannerlordPath = Path.Combine(path, BannerlordSteamPath);
+            if (File.Exists(Path.Combine(bannerlordPath, BannerlordExePath)))
+            {
+                return bannerlordPath;
+            }
+        }
+
+        return null;
+    }
+
+    private static string? OpenDialogForBannerlordPath()
+    {
+        var dialogResult = MessageBox.Show(
+            "Could not find your Mount & Blade II Bannerlord location.\n\nPlease select your Mount & Blade II Bannerlord directory.",
+            "Mount & Blade II Bannerlord not found",
+            MessageBoxButtons.OKCancel,
+            MessageBoxIcon.Warning);
+        if (dialogResult != DialogResult.OK)
+        {
+            return null;
+        }
+
+        using var fbd = new FolderBrowserDialog();
+        dialogResult = fbd.ShowDialog();
+
+        if (dialogResult != DialogResult.OK
+            || fbd.SelectedPath == null
+            || !File.Exists(Path.Combine(fbd.SelectedPath, BannerlordExePath)))
+        {
+            return null;
+        }
+
+        return fbd.SelectedPath;
+    }
+
+    private static bool CheckSteamIsRunning()
+    {
+        return Process.GetProcessesByName("steam").Length != 0;
+    }
+
+    private static async Task UpdateCrpgAsync(string bannerlordPath)
+    {
+        string crpgPath = Path.Combine(bannerlordPath, BannerlordCrpgPath);
+        string tagPath = Path.Combine(crpgPath, "Tag.txt");
+        string? tag = File.Exists(tagPath) ? File.ReadAllText(tagPath) : null;
+
+        using HttpClient httpClient = new();
+        HttpRequestMessage req = new(HttpMethod.Get, CrpgZipUrl);
         if (tag != null)
         {
             req.Headers.IfNoneMatch.Add(new EntityTagHeaderValue(tag));
         }
 
         var res = await httpClient.SendAsync(req, HttpCompletionOption.ResponseHeadersRead);
-
         if (res.StatusCode == HttpStatusCode.NotModified)
         {
             return;
         }
 
-        try
+        res.EnsureSuccessStatusCode();
+
+        using (var contentStream = await res.Content.ReadAsStreamAsync())
+        using (ZipArchive archive = new(contentStream))
         {
-            res.EnsureSuccessStatusCode();
-
-            string timeStamp = DateTime.Now.ToFileTime().ToString();
-            string downloadPath = Path.GetTempPath() + @"\cRPG" + timeStamp + ".zip";
-
-            using (var resultStream = await res.Content.ReadAsStreamAsync())
-            using (var fileStream = File.Create(downloadPath))
-            {
-                await resultStream.CopyToAsync(fileStream);
-            }
-
-            if (!File.Exists(downloadPath))
-            {
-                return;
-            }
-
-            if (Directory.Exists(crpgPath))
-            {
-                Directory.Delete(crpgPath, true);
-            }
-
+            Directory.Delete(crpgPath, true);
             Directory.CreateDirectory(crpgPath);
-            ZipFile.ExtractToDirectory(downloadPath, crpgPath);
-            File.Delete(downloadPath);
-            tag = res.Headers.ETag?.Tag;
-            File.WriteAllText(versionPath, tag ?? "error");
+            archive.ExtractToDirectory(crpgPath); // No async overload :(
         }
-        catch (HttpRequestException)
-        {
-            MessageBox.Show("Could not check for any updates.", "Update check failed",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Warning);
-            return;
-        }
-    }
 
-    private static bool IsProcessRunning(string name)
-    {
-        Process[] pname = Process.GetProcessesByName(name);
-        return pname.Length != 0;
+        tag = res.Headers.ETag?.Tag;
+        if (tag != null)
+        {
+            File.WriteAllText(tagPath, tag);
+        }
     }
 }
