@@ -4390,14 +4390,14 @@
     "name": "Light Bolts",
     "culture": "Neutral",
     "type": "Bolts",
-    "price": 1317,
+    "price": 530,
     "weight": 0.05,
     "weapons": [
       {
         "class": "Bolt",
         "accuracy": 100,
         "missileSpeed": 10,
-        "stackAmount": 20,
+        "stackAmount": 10,
         "length": 47,
         "balance": 0.0,
         "handling": 0,
