@@ -43,8 +43,11 @@ internal static class MathHelper
 
     // this is a solution for RecursivePolynomialFunction with firstTermsOfEachSequence.Length = 3
     // i have no intention of solving it for firstTermsOfEachSequence.Length = n
-    public static float RecursivePolynomialFunctionOfDegree2(int level, float initialValue, float initialSpeed, float initialAcceleration)
+    public static float RecursivePolynomialFunctionOfDegree2(int level, float[] recursiveCoeffs)
     {
+        float initialValue = recursiveCoeffs[0];
+        float initialSpeed = recursiveCoeffs[1];
+        float initialAcceleration = recursiveCoeffs[2];
         float[] coeffs = new float[] { initialAcceleration / 2f, initialSpeed - initialAcceleration / 2f, initialValue };
         return ApplyPolynomialFunction(level, coeffs);
     }
