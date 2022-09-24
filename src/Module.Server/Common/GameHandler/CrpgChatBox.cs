@@ -59,6 +59,21 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
         ServerSendMessageToPlayer(targetPlayer, new Color(1, 1, 1), message);
     }
 
+    public void ServerSendServerMessageToEveryone(Color color, string message)
+    {
+        GameNetwork.BeginBroadcastModuleEvent();
+        GameNetwork.WriteMessage(new CrpgServerMessage
+        {
+            Message = message,
+            Red = color.Red,
+            Green = color.Green,
+            Blue = color.Blue,
+            Alpha = color.Alpha,
+            IsMessageTextId = false,
+        });
+        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.IncludeUnsynchronizedClients);
+    }
+
     public void OnMessageReceivedAtDedicatedServer(NetworkCommunicator fromPeer, string message)
     {
         if (message[0] == ChatCommandHandler.CommandPrefix)
