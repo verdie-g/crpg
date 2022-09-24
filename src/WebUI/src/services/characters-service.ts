@@ -34,6 +34,6 @@ export function getExperienceForLevel(level: number): number {
   if (level <= 30) {
     return Math.trunc(Math.max(a * Math.pow(1.26, level) + b * level + c, 0));
   } else {
-    return getExperienceForLevel(level - 1) * 2;
+    return getExperienceForLevel(30) * Math.pow(2, level - 30);
   }
 }
