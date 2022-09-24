@@ -7,7 +7,7 @@ namespace Crpg.Module.Common.ChatCommands;
 
 internal abstract class ChatCommand
 {
-    protected static readonly Color ColorInfo = new(0.25f, 0.75f, 1f);
+    protected static readonly Color ColorInfo = new(1f, 0.65f, 0f);
     protected static readonly Color ColorWarning = new(1f, 1f, 0f);
     protected static readonly Color ColorSuccess = new(0f, 1f, 0f);
     protected static readonly Color ColorFatal = new(1f, 0f, 0f);
@@ -22,6 +22,7 @@ internal abstract class ChatCommand
     {
         if (!CheckRequirements(fromPeer))
         {
+            GetChat().ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Insufficient permissions.");
             return false;
         }
 
@@ -124,7 +125,7 @@ internal abstract class ChatCommand
             return false;
         }
 
-        for (int i = 0; i < arguments.Length; i++)
+        for (int i = 0; i < expectedTypes.Length; i++)
         {
             switch (expectedTypes[i])
             {
@@ -145,7 +146,7 @@ internal abstract class ChatCommand
                     parsedArguments[i] = parsedFloat;
                     break;
                 case ChatCommandParameterType.String:
-                    parsedArguments[i] = i < arguments.Length - 1
+                    parsedArguments[i] = i < expectedTypes.Length - 1
                         ? arguments[i]
                         : string.Join(" ", arguments.Skip(i));
 
@@ -156,14 +157,21 @@ internal abstract class ChatCommand
                         return false;
                     }
 
+                    bool playerFound = false;
                     foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
                     {
                         var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
                         if (networkPeer.IsSynchronized && crpgRepresentative.User?.Id == id)
                         {
                             parsedArguments[i] = networkPeer;
+                            playerFound = true;
                             break;
                         }
+                    }
+
+                    if (playerFound)
+                    {
+                        break;
                     }
 
                     return false;

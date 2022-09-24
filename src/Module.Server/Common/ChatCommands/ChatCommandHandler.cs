@@ -15,7 +15,8 @@ internal class ChatCommandHandler
         new KickCommand(),
         new KillCommand(),
         new TeleportCommand(),
-        new MuteCommand(),
+        // new MuteCommand(), // Both disabled until missing API endpoints were implemented.
+        // new BanCommand(),
     };
 
     public static bool TryExecuteCommand(NetworkCommunicator fromPeer, string input)

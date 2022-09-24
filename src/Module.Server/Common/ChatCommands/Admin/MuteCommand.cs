@@ -38,7 +38,10 @@ internal class MuteCommand : AdminCommand
             return;
         }
 
-        arguments = new object[] { targetPeer! };
+        int duration = (int)arguments[1];
+        string reason = (string)arguments[2];
+
+        arguments = new object[] { targetPeer!, duration, reason };
         ExecuteMuteByNetworkPeer(fromPeer, cmd, arguments);
     }
 
@@ -46,15 +49,11 @@ internal class MuteCommand : AdminCommand
     {
         CrpgChatBox crpgChat = GetChat();
         var targetPeer = (NetworkCommunicator)arguments[0];
-        double duration = (double)arguments[1];
+        int duration = (int)arguments[1];
         string reason = (string)arguments[2];
         MuteDuration durationType = MuteDuration.Days;
-        if (arguments.Length == 4)
-        {
-            durationType = (MuteDuration)arguments[3];
-        }
 
-        DateTime muteUntilDate = DateTime.Now.AddMinutes(duration * (int)durationType);
+        DateTime muteUntilDate = DateTime.Now.AddMinutes(GetDurationMultiplier(durationType, duration));
 
         // Call mute for backend
         var adminCrpgRepresentative = fromPeer.GetComponent<CrpgRepresentative>();
@@ -77,6 +76,19 @@ internal class MuteCommand : AdminCommand
             crpgChat.ServerSendMessageToPlayer(targetPeer, ColorFatal, $"You were muted by {fromPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
             crpgChat.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You muted {targetPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
             targetPeer.IsMuted = true;
+        }
+    }
+
+    private int GetDurationMultiplier(MuteDuration md, int duration)
+    {
+        switch (md)
+        {
+            case MuteDuration.Hours:
+                return duration * 60;
+            case MuteDuration.Days:
+                return duration * 60 * 24;
+            default:
+                return duration;
         }
     }
 }
