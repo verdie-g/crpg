@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Api.Models.Characters;
+﻿using System.Reflection;
+using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Common;
 using TaleWorlds.Core;
@@ -189,7 +190,9 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             var characterSkills = CreateCharacterSkills(crpgRepresentative.User.Character.Characteristics);
             var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
             var character = peerClass.HeroCharacter;
-            missionPeer.SelectedTroopIndex = -1; // Set index to -1 to reset MPPerk selection
+
+            // Used to reset the selected perks for the current troop. Otherwise the player might have addional stats.
+            missionPeer.GetType().GetMethod("ResetSelectedPerks", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(missionPeer, null);
             bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
             MatrixFrame spawnFrame = missionPeer.GetAmountOfAgentVisualsForPeer() > 0
                 ? missionPeer.GetAgentVisualForPeer(0).GetFrame()
