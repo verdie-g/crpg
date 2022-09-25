@@ -1,8 +1,10 @@
 ﻿using Crpg.Module.Common;
 using Crpg.Module.Common.Models;
 using Crpg.Module.Common.Network;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.ObjectSystem;
 
 namespace Crpg.Module.Battle;
 
@@ -110,6 +112,17 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         if (message.RepairCost != 0)
         {
             InformationManager.DisplayMessage(new InformationMessage($"Lost {message.RepairCost} gold for upkeep.",
+                new Color(0.74f, 0.28f, 0.01f)));
+        }
+
+        if (message.SoldItemIds.Count != 0)
+        {
+            var soldItemNames = message.SoldItemIds
+                .Select(i => MBObjectManager.Instance.GetObject<ItemObject>(i)?.Value)
+                .Where(i => i != null);
+            string soldItemNamesStr = string.Join(", ", message.SoldItemIds);
+            string s = message.SoldItemIds.Count > 1 ? "s" : string.Empty;
+            InformationManager.DisplayMessage(new InformationMessage($"Sold item{s} {soldItemNamesStr} to pay for upkeep.",
                 new Color(0.74f, 0.28f, 0.01f)));
         }
 

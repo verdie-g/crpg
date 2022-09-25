@@ -216,6 +216,12 @@
     </ItemComponent>
     <Flags UseTeamColor="true" />
   </Item>
+  <Item id="crpg_aserai_lord_helmet_a" name="{=*}Noble Crowned Lord Helmet" mesh="aserai_lord_helmet_a" culture="Culture.aserai" is_merchandise="false" subtype="head_armor" weight="3.4" difficulty="0" appearance="4.5" Type="HeadArmor">
+    <ItemComponent>
+      <Armor head_armor="45" has_gender_variations="false" hair_cover_type="all" beard_cover_type="type3" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
   <Item id="crpg_southern_noble_helmet" name="{=*}Noble Steel Cap" mesh="aserai_lord_helmet_b" culture="Culture.aserai" subtype="head_armor" weight="3.5" difficulty="0" appearance="5.4" Type="HeadArmor">
     <ItemComponent>
       <Armor head_armor="46" has_gender_variations="false" hair_cover_type="all" beard_cover_type="type3" modifier_group="plate" material_type="Plate" />
@@ -611,6 +617,12 @@
       <Armor head_armor="3" has_gender_variations="false" hair_cover_type="all" modifier_group="cloth_unarmoured" material_type="Cloth" beard_cover_type="type3" />
     </ItemComponent>
     <Flags Civilian="true" UseTeamColor="true" />
+  </Item>
+  <Item id="crpg_womens_headwrap_c" name="{=Qyg2bJLX}Rural Head Wrap" mesh="womens_headwrap_c" culture="Culture.vlandia" weight="0.1" appearance="1" Type="HeadArmor">
+    <ItemComponent>
+      <Armor head_armor="1" has_gender_variations="false" hair_cover_type="all" modifier_group="cloth_unarmoured" material_type="Cloth" />
+    </ItemComponent>
+    <Flags Civilian="true" />
   </Item>
   <Item id="crpg_head_wrapping" name="{=sDKfIQbO}Peasant Head Wrapping" mesh="head_scarf_d" culture="Culture.vlandia" weight="0.05" appearance="0.5" Type="HeadArmor">
     <ItemComponent>
@@ -1137,6 +1149,18 @@
   <Item id="crpg_sturgian_helmet_base" name="{=Nv0eZmGL}Steel Nasal Cap" mesh="sturgian_helmet_base" culture="Culture.sturgia" weight="2.4" appearance="1.6" Type="HeadArmor">
     <ItemComponent>
       <Armor head_armor="35" has_gender_variations="false" hair_cover_type="type3" beard_cover_type="none" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_sturgian_helmet_b_open" name="{=LRbGXEw2}Plumed Decorated Mailed Nasal Helmet" mesh="sturgian_helmet_b_open" culture="Culture.sturgia" weight="3.2" appearance="3.4" Type="HeadArmor">
+    <ItemComponent>
+      <Armor head_armor="49" has_gender_variations="false" hair_cover_type="all" beard_cover_type="type2" modifier_group="plate" material_type="Plate" />
+    </ItemComponent>
+    <Flags />
+  </Item>
+  <Item id="crpg_sturgian_helmet_b_close" name="{=zBRB0P5M}Closed Decorated Goggled Helmet" mesh="sturgian_helmet_b_close" culture="Culture.sturgia" weight="3.8" appearance="2" Type="HeadArmor">
+    <ItemComponent>
+      <Armor head_armor="54" has_gender_variations="false" hair_cover_type="all" beard_cover_type="all" modifier_group="plate" material_type="Plate" />
     </ItemComponent>
     <Flags />
   </Item>

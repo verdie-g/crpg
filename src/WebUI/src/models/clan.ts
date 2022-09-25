@@ -1,3 +1,4 @@
+import Region from './region';
 export default interface Clan {
   id: number;
   tag: string;
@@ -5,4 +6,5 @@ export default interface Clan {
   secondaryColor: string;
   name: string;
   bannerKey: string;
+  region: Region;
 }

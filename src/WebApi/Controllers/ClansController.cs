@@ -73,6 +73,21 @@ public class ClansController : BaseController
     }
 
     /// <summary>
+    /// Updates a clan.
+    /// </summary>
+    /// <param name="clanId">Clan id.</param>
+    /// <param name="clan">The clan update.</param>
+    /// <returns>The updated clan.</returns>
+    /// <response code="200">Updated.</response>
+    /// <response code="400">Bad Request.</response>
+    [HttpPut("{clanId}")]
+    public Task<ActionResult<Result<ClanViewModel>>> UpdateClan([FromRoute] int clanId, [FromBody] UpdateClanCommand clan)
+    {
+       clan = clan with { UserId = CurrentUser.User!.Id, ClanId = clanId };
+       return ResultToActionAsync(Mediator.Send(clan));
+    }
+
+    /// <summary>
     /// Kick a clan member of leave a clan.
     /// </summary>
     /// <returns>The created clan.</returns>
