@@ -78,6 +78,12 @@
         </div>
 
         <div class="level-item">
+          <a href="https://www.moddb.com/mods/crpg" target="_blank" title="Download the mod on Moddb">
+            <b-icon icon="wrench" size="is-large" aria-label="cRPG Moddb" />
+          </a>
+        </div>
+
+        <div class="level-item">
           <a
             href="https://store.steampowered.com/app/261550/Mount__Blade_II_Bannerlord"
             target="_blank"
