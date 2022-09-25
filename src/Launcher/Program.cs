@@ -9,14 +9,16 @@ using Microsoft.Win32;
 string? bannerlordPath = ResolveBannerlordPath();
 if (bannerlordPath == null)
 {
-    Console.WriteLine("Could not find the location of your Bannerlord installation. Contact a moderator on discord.");
+    Console.WriteLine("Could not find the location of your Bannerlord installation. Contact a moderator on discord. Press enter to exit.");
     Console.Read();
     return;
 }
 
+Console.WriteLine($"Using Bannerlord installed at '{bannerlordPath}'");
+
 if (!CheckSteamIsRunning())
 {
-    Console.WriteLine("Steam is not running. Run it and try again.");
+    Console.WriteLine("Steam is not running. Run it and try again. Press enter to exit.");
     Console.Read();
     return;
 }
@@ -25,9 +27,9 @@ try
 {
     await UpdateCrpgAsync(bannerlordPath);
 }
-catch
+catch (Exception e)
 {
-    Console.WriteLine("Could not update cRPG. The game will still launch but you might get a version mismatch error.");
+    Console.WriteLine($"Could not update cRPG (error: {e.Message}). The game will still launch but you might get a version mismatch error. Press enter to continue.");
     Console.Read();
 }
 
@@ -161,7 +163,11 @@ static async Task UpdateCrpgAsync(string bannerlordPath)
 
     using (ZipArchive archive = new(ms))
     {
-        Directory.Delete(crpgPath, true);
+        if (Directory.Exists(crpgPath))
+        {
+            Directory.Delete(crpgPath, true);
+        }
+
         Directory.CreateDirectory(crpgPath);
         archive.ExtractToDirectory(crpgPath); // No async overload :(
     }
