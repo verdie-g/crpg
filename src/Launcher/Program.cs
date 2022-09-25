@@ -155,8 +155,11 @@ static async Task UpdateCrpgAsync(string bannerlordPath)
 
     res.EnsureSuccessStatusCode();
 
-    await using (var contentStream = await res.Content.ReadAsStreamAsync())
-    using (ZipArchive archive = new(contentStream))
+    long contentLength = res.Content.Headers.ContentLength!.Value;
+    await using var contentStream = await res.Content.ReadAsStreamAsync();
+    using MemoryStream ms = await DownloadWithProgressBarAsync(contentStream, contentLength);
+
+    using (ZipArchive archive = new(ms))
     {
         Directory.Delete(crpgPath, true);
         Directory.CreateDirectory(crpgPath);
@@ -168,4 +171,24 @@ static async Task UpdateCrpgAsync(string bannerlordPath)
     {
         File.WriteAllText(tagPath, tag);
     }
+}
+
+static async Task<MemoryStream> DownloadWithProgressBarAsync(Stream stream, long length)
+{
+    MemoryStream ms = new();
+    byte[] buffer = new byte[100 * 1000];
+    int totalBytesRead = 0;
+    int bytesRead;
+    while ((bytesRead = await stream.ReadAsync(buffer)) != 0)
+    {
+        ms.Write(buffer, 0, bytesRead);
+
+        totalBytesRead += bytesRead;
+        float progression = (float)Math.Round(100 * (float)totalBytesRead / length, 2);
+        string lengthStr = length.ToString();
+        string totalBytesReadStr = totalBytesRead.ToString().PadLeft(lengthStr.Length);
+        Console.WriteLine($"Downloading {totalBytesReadStr} / {lengthStr} ({progression}%)");
+    }
+
+    return ms;
 }
