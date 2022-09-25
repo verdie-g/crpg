@@ -1,24 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>Crpg.Launcher</RootNamespace>
     <AssemblyName>Crpg.Launcher</AssemblyName>
-    <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>crpg_launcher_icon.ico</ApplicationIcon>
-    <NoWin32Manifest>true</NoWin32Manifest>
-    <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>true</SelfContained>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <PublishReadyToRun>true</PublishReadyToRun>
+    <SelfContained>true</SelfContained>
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishSingleFile>true</PublishSingleFile>
   </PropertyGroup>
-
-  <!--
-  <ItemGroup>
-    <Content Include="crpg_launcher_icon.ico" />
-  </ItemGroup>
-  -->
 
   <ItemGroup>
     <PackageReference Include="Gameloop.Vdf" Version="0.6.2" />
