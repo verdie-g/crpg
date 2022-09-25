@@ -37,21 +37,6 @@
         "AllowOfflineAccess": true
       },
       {
-        "ClientId": "crpg-forum",
-        "ClientName": "cRPG Forum",
-        "ClientSecrets": [{ "Value": "3BHLkNM+dJ+MLqerWsCwXQjRDb5vwzioY7/W8DcOM3A=" }],
-        "AllowedGrantTypes": ["authorization_code"],
-        "AllowedScopes": ["openid", "profile"],
-        "RedirectUris": ["https://forum.{{ crpg_domain_name }}/auth/oidc/callback"],
-        "PostLogoutRedirectUris": ["https://forum.{{ crpg_domain_name }}"],
-        "AccessTokenType": "Jwt",
-        "AccessTokenLifetime": 3600,
-        "IdentityTokenLifetime": 300,
-        "RequirePkce": false,
-        "AllowAccessTokensViaBrowser": true,
-        "AllowOfflineAccess": true
-      },
-      {
         "ClientId": "crpg-game-server",
         "ClientName": "cRPG Game Server",
         "ClientSecrets": [

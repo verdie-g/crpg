@@ -78,12 +78,6 @@
         </div>
 
         <div class="level-item">
-          <a href="https://forum.c-rpg.eu" target="_blank" title="Join our Forum">
-            <b-icon icon="discourse" pack="fab" size="is-large" aria-label="cRPG Forum" />
-          </a>
-        </div>
-
-        <div class="level-item">
           <a
             href="https://store.steampowered.com/app/261550/Mount__Blade_II_Bannerlord"
             target="_blank"
