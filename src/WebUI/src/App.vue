@@ -10,6 +10,7 @@
           <b-navbar-item tag="router-link" :to="{ path: '/characters' }">Characters</b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ path: '/shop' }">Shop</b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ path: '/clans' }">Clans</b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ path: '/users' }">Users</b-navbar-item>
           <!-- <b-navbar-item tag="router-link" :to="{ path: '/strategus' }">Strategus</b-navbar-item> -->
         </template>
 

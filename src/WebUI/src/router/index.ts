@@ -130,6 +130,18 @@ const routes = [
     beforeEnter: isSignedInGuard,
   },
   {
+    path: '/users',
+    name: 'users',
+    component: () => import('../views/Users.vue'),
+    beforeEnter: isSignedInGuard,
+  },
+  {
+    path: '/users/:id',
+    name: 'user',
+    component: () => import('../views/User.vue'),
+    beforeEnter: isSignedInGuard,
+  },
+  {
     path: '/strategus',
     name: 'strategus',
     component: () => import('../views/Strategus.vue'),

@@ -12,4 +12,13 @@ export default interface User {
   avatarSmall: string;
   avatarMedium: string;
   avatarFull: string;
+  userProfile: UserProfile;
+}
+
+export interface UserProfile {
+  id: number;
+  text: string;
+  privacyShowSkills: boolean;
+  privacyShowItems: boolean;
+  privacyShowWeaponProficiencies: boolean;
 }

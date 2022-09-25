@@ -10,9 +10,14 @@ import EquippedItemId from '@/models/equipped-item-id';
 import { get, post, put, del } from './crpg-client';
 import Clan from '@/models/clan';
 import UserItem from '@/models/user-item';
+import userModule from '@/store/user-module';
 
 export function getUser(): Promise<User> {
   return get('/users/self');
+}
+
+export function getUserById(id: number): Promise<User> {
+  return userModule.getUser();
 }
 
 export function deleteUser(): Promise<void> {
@@ -96,6 +101,11 @@ export function sellUserItem(userItemId: number): Promise<UserItem> {
 
 export function getCharacters(): Promise<Character[]> {
   return get('/users/self/characters');
+}
+
+export function getCharactersByUserId(userId: number): Promise<Character[]> {
+  return userModule.getCharacters();
+  // return get(`/u/sers/${userId}/characters`);
 }
 
 export async function getUserRestrictions(): Promise<Restriction[]> {
