@@ -201,7 +201,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
             uint color1;
             uint color2;
-            if (crpgRepresentative.Clan != null /*&& TryParseBanner(crpgRepresentative.Clan.BannerKey, out var banner)*/)
+            if (crpgRepresentative.Clan != null && TryParseBanner(missionPeer.Peer.BannerCode, out var banner))
             {
                 color1 = crpgRepresentative.Clan.PrimaryColor;
                 color2 = crpgRepresentative.Clan.SecondaryColor;
@@ -214,7 +214,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 color2 = missionPeer.Team == Mission.AttackerTeam
                     ? teamCulture.Color2
                     : teamCulture.ClothAlternativeColor2;
-               // TryParseBanner(teamCulture.BannerKey, out banner);
+                TryParseBanner(teamCulture.BannerKey, out banner);
             }
 
             AgentBuildData agentBuildData = new AgentBuildData(character)
@@ -229,12 +229,11 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 .BodyProperties(GetBodyProperties(missionPeer, teamCulture))
                 .InitialPosition(in spawnFrame.origin)
                 .InitialDirection(in initialDirection);
-            /*
-             * if (banner != null)
+
+            if (banner != null)
             {
                 agentBuildData.Banner(banner);
             }
-            */
 
             Agent agent = Mission.SpawnAgent(agentBuildData);
             agent.WieldInitialWeapons();

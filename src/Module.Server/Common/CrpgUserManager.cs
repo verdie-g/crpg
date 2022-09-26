@@ -42,7 +42,25 @@ internal class CrpgUserManager : MissionNetwork
     protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
     {
         base.HandleNewClientAfterSynchronized(networkPeer);
-        _ = SetCrpgComponentAsync(networkPeer);
+        InitCrpgComponentAndBanner(networkPeer);
+    }
+
+    private async void InitCrpgComponentAndBanner(NetworkCommunicator networkPeer)
+    {
+        await SetCrpgComponentAsync(networkPeer);
+        var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
+        if (crpgRepresentative == null || crpgRepresentative.Clan == null)
+        {
+            return;
+        }
+
+        Console.WriteLine("Sending bannerkey: " + crpgRepresentative.Clan.BannerKey);
+        networkPeer.VirtualPlayer.BannerCode = crpgRepresentative.Clan.BannerKey;
+        GameNetwork.BeginBroadcastModuleEvent();
+        GameNetwork.WriteMessage(new NetworkMessages.FromServer.CreateBanner(networkPeer, crpgRepresentative.Clan.BannerKey));
+        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.IncludeUnsynchronizedClients);
+        Console.WriteLine(" ");
+        Console.WriteLine("After setting bannerkey: " + crpgRepresentative.Clan.BannerKey);
     }
 
     protected override void OnEndMission()
