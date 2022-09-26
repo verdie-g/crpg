@@ -78,8 +78,8 @@
         </div>
 
         <div class="level-item">
-          <a href="https://forum.c-rpg.eu" target="_blank" title="Join our Forum">
-            <b-icon icon="discourse" pack="fab" size="is-large" aria-label="cRPG Forum" />
+          <a href="https://www.moddb.com/mods/crpg" target="_blank" title="Download the mod on Moddb">
+            <b-icon icon="wrench" size="is-large" aria-label="cRPG Moddb" />
           </a>
         </div>
 

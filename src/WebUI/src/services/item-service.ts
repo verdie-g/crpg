@@ -318,16 +318,15 @@ export function filterItemsByType(
   const filteredItems = [];
   // eslint-disable-next-line no-restricted-syntax
   for (const item of items) {
-    if (item.weapons.length === 0) {
-      if (item.type === type) {
-        filteredItems.push({ item, weaponIdx: undefined });
-      }
-
+    const weaponIdx = item.weapons.findIndex(w => itemTypeByWeaponClass[w.class] === type);
+    // An expection is made for thrown to also see the throwable polearms.
+    if (item.type !== type && (type !== ItemType.Thrown || weaponIdx === -1)) {
       continue; // eslint-disable-line no-continue
     }
 
-    const weaponIdx = item.weapons.findIndex(w => itemTypeByWeaponClass[w.class] === type);
-    if (weaponIdx !== -1) {
+    if (item.weapons.length === 0) {
+      filteredItems.push({ item, weaponIdx: undefined });
+    } else if (weaponIdx !== -1) {
       filteredItems.push({ item, weaponIdx });
     }
   }

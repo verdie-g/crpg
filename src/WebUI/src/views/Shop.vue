@@ -184,6 +184,10 @@ export default class Shop extends Vue {
 
   get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
     const filteredItems = itemModule.items.filter(i => {
+      if (i.type === ItemType.Banner) {
+        return false;
+      }
+
       if (!this.filters.showOwned && this.ownedItems[i.id] !== undefined) {
         return false;
       }

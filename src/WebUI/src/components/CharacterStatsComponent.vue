@@ -38,11 +38,14 @@
         />
       </b-field>
       <b-field horizontal label="Experience" class="characteristic-field is-marginless">
+        <b-input size="is-small" :value="experience" readonly />
+      </b-field>
+      <b-field horizontal label="Health Points" class="characteristic-field">
         <b-numberinput
           size="is-small"
           :editable="false"
           controls-position="compact"
-          :value="character.experience"
+          :value="healthPoints"
           :controls="false"
         />
       </b-field>
@@ -310,8 +313,8 @@
           <b-tooltip position="is-left" multilined>
             Mounted Archery
             <template v-slot:content>
-              <s>Reduces penalty for using ranged weapons on a moving mount by 10% per level.</s>
-              Requires 6 agility per level.
+              Reduces penalty for using ranged weapons on a moving mount by 10% per level. Requires
+              6 agility per level.
             </template>
           </b-tooltip>
         </template>
@@ -334,7 +337,8 @@
           <b-tooltip position="is-left" multilined>
             Shield
             <template v-slot:content>
-              <s>Improves shield durability, shield speed and</s>
+              Improves shield durability,
+              <s>shield speed and</s>
               increases coverage from ranged attacks.
               <s>Allows you to use higher tier shields.</s>
               Requires 6 agility per level.
@@ -487,6 +491,7 @@ import CharacterCharacteristics from '@/models/character-characteristics';
 import Character from '@/models/character';
 import userModule from '@/store/user-module';
 import { notify } from '@/services/notifications-service';
+import { computeHealthPoints, getExperienceForLevel } from '@/services/characters-service';
 import CharacterAttributes from '@/models/character-attributes';
 import CharacterSkills from '@/models/character-skills';
 import CharacterWeaponProficiencies from '@/models/character-weapon-proficiencies';
@@ -593,6 +598,21 @@ export default class CharacterCharacteristicsComponent extends Vue {
     return `${statistics.kills}/${statistics.deaths}/${statistics.assists} (${ratio})`;
   }
 
+  get healthPoints(): number {
+    return computeHealthPoints(
+      this.getInputProps('skills', 'ironFlesh').value,
+      this.getInputProps('attributes', 'strength').value
+    );
+  }
+
+  get experience(): string {
+    return (
+      this.character.experience.toString() +
+      ' / ' +
+      getExperienceForLevel(this.character.level + 1).toString()
+    );
+  }
+
   convertCharacteristics(conversion: CharacteristicConversion): Promise<CharacterCharacteristics> {
     return userModule.convertCharacterCharacteristics({
       characterId: this.character.id,
@@ -604,6 +624,10 @@ export default class CharacterCharacteristicsComponent extends Vue {
     characteristicSectionKey: CharacteristicSectionKey,
     characteristicKey: CharacteristicKey
   ): { value: number; min: number; max: number; controls: boolean } {
+    if (this.characteristics === null) {
+      return { value: 0, min: 0, max: 0, controls: false };
+    }
+
     const initialValue = (this.characteristics[characteristicSectionKey] as any)[characteristicKey];
     const deltaValue = (this.characteristicsDelta[characteristicSectionKey] as any)[
       characteristicKey

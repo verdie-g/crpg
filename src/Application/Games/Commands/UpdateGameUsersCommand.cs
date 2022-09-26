@@ -27,19 +27,21 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
         private readonly ICharacterService _characterService;
+        private readonly IItemService _itemService;
 
-        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService)
+        public Handler(ICrpgDbContext db, IMapper mapper, ICharacterService characterService, IItemService itemService)
         {
             _db = db;
             _mapper = mapper;
             _characterService = characterService;
+            _itemService = itemService;
         }
 
         public async Task<Result<UpdateGameUsersResult>> Handle(UpdateGameUsersCommand req,
             CancellationToken cancellationToken)
         {
             var charactersById = await LoadCharacters(req.Updates, cancellationToken);
-            List<(User user, GameUserEffectiveReward reward, List<GameUserBrokenItem> brokenItems)> results = new(req.Updates.Count);
+            List<(User user, GameUserEffectiveReward reward, List<GameRepairedItem> repairedItems)> results = new(req.Updates.Count);
             foreach (var update in req.Updates)
             {
                 if (!charactersById.TryGetValue(update.CharacterId, out Character? character))
@@ -61,7 +63,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
                 {
                     User = _mapper.Map<GameUserViewModel>(r.user),
                     EffectiveReward = r.reward,
-                    BrokenItems = r.brokenItems,
+                    RepairedItems = r.repairedItems,
                 }).ToArray(),
             });
         }
@@ -108,22 +110,47 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             character.Statistics.PlayTime += statistics.PlayTime;
         }
 
-        private Task<List<GameUserBrokenItem>> RepairOrBreakItems(Character character, IEnumerable<GameUserBrokenItem> itemsToRepair,
+        private async Task<List<GameRepairedItem>> RepairOrBreakItems(Character character, IList<GameUserBrokenItem> itemsToRepair,
             CancellationToken cancellationToken)
         {
-            List<GameUserBrokenItem> brokenItems = new();
+            List<GameRepairedItem> repairedItems = new();
             foreach (var itemToRepair in itemsToRepair)
             {
-                if (character.AutoRepair && character.User!.Gold >= itemToRepair.RepairCost)
+                if (character.User!.Gold >= itemToRepair.RepairCost)
                 {
                     character.User.Gold -= itemToRepair.RepairCost;
+                    repairedItems.Add(new GameRepairedItem
+                    {
+                        ItemId = string.Empty,
+                        RepairCost = itemToRepair.RepairCost,
+                        Sold = false,
+                    });
                 }
+                else
+                {
+                    var userItem = await _db.UserItems
+                        .Include(ui => ui.BaseItem)
+                        .Include(ui => ui.EquippedItems)
+                        .FirstOrDefaultAsync(ui => ui.Id == itemToRepair.UserItemId, cancellationToken);
+                    if (userItem == null)
+                    {
+                        Logger.LogWarning("Trying to sell an item that was probably already sold");
+                        continue;
+                    }
 
-                brokenItems.Add(itemToRepair);
+                    _itemService.SellUserItem(_db, userItem);
+                    Logger.LogInformation("User '{0}' sold item '{1}' to pay their debt", character.UserId, userItem.BaseItemId);
+                    repairedItems.Add(new GameRepairedItem
+                    {
+                        ItemId = userItem.BaseItemId,
+                        RepairCost = 0,
+                        Sold = true,
+                    });
+                }
             }
 
-            return Task.FromResult(brokenItems);
-            // TODO: downgrade items.
+            return repairedItems;
+            // TODO: downgrade items. check auto-repair.
         }
 
         private async Task<List<GameUserBrokenItem>> DowngradeItems(List<GameUserBrokenItem> brokenItems, CancellationToken cancellationToken)

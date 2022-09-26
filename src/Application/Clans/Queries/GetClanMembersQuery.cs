@@ -25,7 +25,7 @@ public record GetClanMembersQuery : IMediatorRequest<IList<ClanMemberViewModel>>
         public async Task<Result<IList<ClanMemberViewModel>>> Handle(GetClanMembersQuery req, CancellationToken cancellationToken)
         {
             var clan = await _db.Clans
-                .Include(c => c.Members).ThenInclude(c => c.User)
+                .Include(c => c.Members.OrderByDescending(m => m.Role)).ThenInclude(c => c.User)
                 .Where(c => c.Id == req.ClanId)
                 .FirstOrDefaultAsync(cancellationToken);
 

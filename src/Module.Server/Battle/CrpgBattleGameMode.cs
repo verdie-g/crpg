@@ -95,6 +95,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new EquipmentControllerLeaveLogic(),
                     new MultiplayerPreloadHelper(),
                     warmupComponent,
+                    notificationsComponent,
 #if CRPG_SERVER
                     roundController,
                     new CrpgBattleMissionMultiplayer(crpgClient, _constants),
