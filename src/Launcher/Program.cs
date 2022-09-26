@@ -29,7 +29,8 @@ try
 }
 catch (Exception e)
 {
-    Console.WriteLine($"Could not update cRPG (error: {e.Message}). The game will still launch but you might get a version mismatch error. Press enter to continue.");
+    Console.WriteLine("Could not update cRPG. The game will still launch but you might get a version mismatch error. Press enter to continue.");
+    Console.WriteLine(e);
     Console.Read();
 }
 
