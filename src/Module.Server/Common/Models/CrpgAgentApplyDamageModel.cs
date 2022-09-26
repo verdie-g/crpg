@@ -26,6 +26,7 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             if (attackInformation.VictimAgentOrigin is CrpgBattleAgentOrigin crpgOrigin)
             {
                 shieldSkill = crpgOrigin.Skills.GetPropertyValue(CrpgSkills.Shield);
+                Console.WriteLine("(shieldSkill, _constants.DurabilityFactorForShieldRecursiveCoefs)" + MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.DurabilityFactorForShieldRecursiveCoefs));
             }
 
             finalDamage /= MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.DurabilityFactorForShieldRecursiveCoefs);
@@ -58,6 +59,8 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             if (defenderAgent.Origin is CrpgBattleAgentOrigin crpgOrigin)
             {
                 shieldSkill = crpgOrigin.Skills.GetPropertyValue(CrpgSkills.Shield);
+                Console.WriteLine("(shieldSkill, _constants.ShieldDefendStunMultiplierForSkillRevursiveCoefs) " + MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.ShieldDefendStunMultiplierForSkillRevursiveCoefs));
+
             }
 
             defenderStunMultiplier = MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.ShieldDefendStunMultiplierForSkillRevursiveCoefs);
