@@ -313,8 +313,8 @@
           <b-tooltip position="is-left" multilined>
             Mounted Archery
             <template v-slot:content>
-              <s>Reduces penalty for using ranged weapons on a moving mount by 10% per level.</s>
-              Requires 6 agility per level.
+              Reduces penalty for using ranged weapons on a moving mount by 10% per level. Requires
+              6 agility per level.
             </template>
           </b-tooltip>
         </template>
@@ -337,7 +337,8 @@
           <b-tooltip position="is-left" multilined>
             Shield
             <template v-slot:content>
-              <s>Improves shield durability, shield speed and</s>
+              Improves shield durability,
+              <s>shield speed and</s>
               increases coverage from ranged attacks.
               <s>Allows you to use higher tier shields.</s>
               Requires 6 agility per level.

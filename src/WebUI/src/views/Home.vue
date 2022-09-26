@@ -26,7 +26,7 @@
           Sign in through Steam
         </b-button>
 
-        <p>Join our community on <a href="https://discord.gg/c-rpg" target="_blank">Discord</a>.</p>
+        <p>Join our community on <a href="https://discord.gg/c-rpg" target="_blank">Discord</a> and download the mod on <a href="https://www.moddb.com/mods/crpg" target="_blank">Moddb</a>.</p>
       </div>
     </section>
   </div>

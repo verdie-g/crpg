@@ -1084,6 +1084,22 @@
     ]
   },
   {
+    "id": "crpg_aserai_lord_helmet_a",
+    "name": "Noble Crowned Lord Helmet",
+    "culture": "Aserai",
+    "type": "HeadArmor",
+    "price": 7043,
+    "weight": 3.4,
+    "armor": {
+      "headArmor": 45,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Plate"
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_aserai_mace_1_t2",
     "name": "Militia Mace",
     "culture": "Aserai",
@@ -2614,6 +2630,22 @@
     "weapons": []
   },
   {
+    "id": "crpg_battania_civil_cloak",
+    "name": "Fringed Cape",
+    "culture": "Battania",
+    "type": "ShoulderArmor",
+    "price": 208,
+    "weight": 0.5,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 2,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Cloth"
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_battania_civil_hood",
     "name": "Cloth Hood",
     "culture": "Battania",
@@ -2882,6 +2914,22 @@
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Plate"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_battania_female_civil_a",
+    "name": "Tartan Dress",
+    "culture": "Battania",
+    "type": "BodyArmor",
+    "price": 743,
+    "weight": 0.7,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 4,
+      "armArmor": 2,
+      "legArmor": 2,
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -4390,14 +4438,14 @@
     "name": "Light Bolts",
     "culture": "Neutral",
     "type": "Bolts",
-    "price": 1317,
+    "price": 530,
     "weight": 0.05,
     "weapons": [
       {
         "class": "Bolt",
         "accuracy": 100,
         "missileSpeed": 10,
-        "stackAmount": 20,
+        "stackAmount": 10,
         "length": 47,
         "balance": 0.0,
         "handling": 0,
@@ -4407,6 +4455,126 @@
           "Consumable"
         ],
         "thrustDamage": 2,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 0,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 0
+      }
+    ]
+  },
+  {
+    "id": "crpg_bolt_b",
+    "name": "Bolts",
+    "culture": "Vlandia",
+    "type": "Bolts",
+    "price": 3210,
+    "weight": 0.08,
+    "weapons": [
+      {
+        "class": "Bolt",
+        "accuracy": 100,
+        "missileSpeed": 10,
+        "stackAmount": 9,
+        "length": 47,
+        "balance": 0.0,
+        "handling": 0,
+        "bodyArmor": 0,
+        "flags": [
+          "AttachAmmoToVisual",
+          "Consumable"
+        ],
+        "thrustDamage": 4,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 0,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 0
+      }
+    ]
+  },
+  {
+    "id": "crpg_bolt_c",
+    "name": "Heavy Bolts",
+    "culture": "Vlandia",
+    "type": "Bolts",
+    "price": 6729,
+    "weight": 0.04,
+    "weapons": [
+      {
+        "class": "Bolt",
+        "accuracy": 100,
+        "missileSpeed": 10,
+        "stackAmount": 9,
+        "length": 37,
+        "balance": 0.0,
+        "handling": 0,
+        "bodyArmor": 0,
+        "flags": [
+          "AttachAmmoToVisual",
+          "Consumable"
+        ],
+        "thrustDamage": 5,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 0,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 0
+      }
+    ]
+  },
+  {
+    "id": "crpg_bolt_d",
+    "name": "Heavy Quarrels",
+    "culture": "Empire",
+    "type": "Bolts",
+    "price": 1340,
+    "weight": 0.06,
+    "weapons": [
+      {
+        "class": "Bolt",
+        "accuracy": 100,
+        "missileSpeed": 10,
+        "stackAmount": 9,
+        "length": 37,
+        "balance": 0.0,
+        "handling": 0,
+        "bodyArmor": 0,
+        "flags": [
+          "AttachAmmoToVisual",
+          "Consumable"
+        ],
+        "thrustDamage": 3,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 0,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 0
+      }
+    ]
+  },
+  {
+    "id": "crpg_bolt_e",
+    "name": "Light Quarrels",
+    "culture": "Empire",
+    "type": "Bolts",
+    "price": 131,
+    "weight": 0.04,
+    "weapons": [
+      {
+        "class": "Bolt",
+        "accuracy": 100,
+        "missileSpeed": 10,
+        "stackAmount": 9,
+        "length": 37,
+        "balance": 0.0,
+        "handling": 0,
+        "bodyArmor": 0,
+        "flags": [
+          "AttachAmmoToVisual",
+          "Consumable"
+        ],
+        "thrustDamage": 1,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
         "swingDamage": 0,
@@ -4517,6 +4685,36 @@
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
+      }
+    ]
+  },
+  {
+    "id": "crpg_bound_horsemans_kite_shield",
+    "name": "Cavalry Kite Shield",
+    "culture": "Neutral",
+    "type": "Shield",
+    "price": 1858,
+    "weight": 5.5,
+    "weapons": [
+      {
+        "class": "LargeShield",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 112,
+        "length": 78,
+        "balance": 0.0,
+        "handling": 82,
+        "bodyArmor": 8,
+        "flags": [
+          "HasHitPoints",
+          "CanBlockRanged"
+        ],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 82,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 94
       }
     ]
   },
@@ -5524,7 +5722,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 40,
+        "handling": 28,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5537,7 +5735,7 @@
         ],
         "thrustDamage": 54,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 40,
+        "thrustSpeed": 28,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 61
@@ -5559,7 +5757,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 39,
+        "handling": 27,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5571,7 +5769,7 @@
         ],
         "thrustDamage": 59,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 39,
+        "thrustSpeed": 27,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 60
@@ -5593,7 +5791,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 46,
+        "handling": 32,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5605,7 +5803,7 @@
         ],
         "thrustDamage": 62,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 46,
+        "thrustSpeed": 32,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 62
@@ -5627,7 +5825,7 @@
         "stackAmount": 1,
         "length": 90,
         "balance": 0.0,
-        "handling": 47,
+        "handling": 33,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -5640,7 +5838,7 @@
         ],
         "thrustDamage": 67,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 47,
+        "thrustSpeed": 33,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 63
@@ -6408,7 +6606,7 @@
         "class": "Javelin",
         "accuracy": 92,
         "missileSpeed": 29,
-        "stackAmount": 2,
+        "stackAmount": 3,
         "length": 82,
         "balance": 1.0,
         "handling": 100,
@@ -6568,6 +6766,22 @@
       "armArmor": 7,
       "legArmor": 10,
       "materialType": "Plate"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_eastern_leather_boots",
+    "name": "Leather Riding Boots",
+    "culture": "Khuzait",
+    "type": "LegArmor",
+    "price": 450,
+    "weight": 1.1,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 6,
+      "materialType": "Leather"
     },
     "weapons": []
   },
@@ -14850,7 +15064,7 @@
         "class": "Javelin",
         "accuracy": 92,
         "missileSpeed": 29,
-        "stackAmount": 2,
+        "stackAmount": 3,
         "length": 68,
         "balance": 1.0,
         "handling": 99,
@@ -18396,6 +18610,22 @@
     ]
   },
   {
+    "id": "crpg_southern_lamellar_armor",
+    "name": "Bronze Lamellar Vest over Gambeson",
+    "culture": "Aserai",
+    "type": "BodyArmor",
+    "price": 9439,
+    "weight": 9.5,
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 37,
+      "armArmor": 2,
+      "legArmor": 8,
+      "materialType": "Plate"
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_southern_moccasins",
     "name": "Moccasins",
     "culture": "Aserai",
@@ -20534,6 +20764,38 @@
     "weapons": []
   },
   {
+    "id": "crpg_sturgian_helmet_b_close",
+    "name": "Closed Decorated Goggled Helmet",
+    "culture": "Sturgia",
+    "type": "HeadArmor",
+    "price": 9754,
+    "weight": 3.8,
+    "armor": {
+      "headArmor": 54,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Plate"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_sturgian_helmet_b_open",
+    "name": "Plumed Decorated Mailed Nasal Helmet",
+    "culture": "Sturgia",
+    "type": "HeadArmor",
+    "price": 8194,
+    "weight": 3.2,
+    "armor": {
+      "headArmor": 49,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Plate"
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_sturgian_helmet_base",
     "name": "Steel Nasal Cap",
     "culture": "Sturgia",
@@ -22288,6 +22550,35 @@
     ]
   },
   {
+    "id": "crpg_vlandia_mace_3_t5",
+    "name": "Pernach",
+    "culture": "Vlandia",
+    "type": "OneHandedWeapon",
+    "price": 2395,
+    "weight": 1.92,
+    "weapons": [
+      {
+        "class": "Mace",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 69,
+        "balance": 0.61,
+        "handling": 94,
+        "bodyArmor": 0,
+        "flags": [
+          "MeleeWeapon"
+        ],
+        "thrustDamage": 0,
+        "thrustDamageType": "Undefined",
+        "thrustSpeed": 87,
+        "swingDamage": 23,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 88
+      }
+    ]
+  },
+  {
     "id": "crpg_vlandia_noble_sword_1_t5",
     "name": "Decorated Arming Sword",
     "culture": "Vlandia",
@@ -23021,7 +23312,7 @@
         "class": "Javelin",
         "accuracy": 92,
         "missileSpeed": 29,
-        "stackAmount": 2,
+        "stackAmount": 3,
         "length": 65,
         "balance": 1.0,
         "handling": 102,
@@ -23760,6 +24051,22 @@
     "type": "HeadArmor",
     "price": 86,
     "weight": 0.2,
+    "armor": {
+      "headArmor": 1,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Cloth"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_womens_headwrap_c",
+    "name": "Rural Head Wrap",
+    "culture": "Vlandia",
+    "type": "HeadArmor",
+    "price": 86,
+    "weight": 0.1,
     "armor": {
       "headArmor": 1,
       "bodyArmor": 0,

@@ -176,6 +176,14 @@
     </ItemComponent>
     <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
   </Item>
+  <Item id="crpg_bound_horsemans_kite_shield" name="{=FxnFBhrF}Cavalry Kite Shield" body_name="bo_cap_kite_shield_h" shield_body_name="bo_kite_shield_h" recalculate_body="false" mesh="kite_shield_h" using_tableau="true" weight="5.5" appearance="1" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
+    <ItemComponent>
+      <Weapon weapon_class="LargeShield" body_armor="8" thrust_speed="82" thrust_damage_type="Blunt" speed_rating="94" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" center_of_mass="0.0,0.1,0.1" hit_points="112">
+        <WeaponFlags CanBlockRanged="true" HasHitPoints="true" />
+      </Weapon>
+    </ItemComponent>
+    <Flags WoodenParry="true" HeldInOffHand="true" ForceAttachOffHandSecondaryItemBone="true" />
+  </Item>
   <Item multiplayer_item="false" id="crpg_reinforced_horsemans_kite_shield" name="{=jqWBGBo7}Reinforced Cavalry Small Shield" body_name="bo_cap_kite_shield_j" shield_body_name="bo_kite_shield_j" recalculate_body="false" mesh="kite_shield_j" using_tableau="true" weight="5.8" difficulty="0" appearance="0.6" Type="Shield" item_holsters="shield_kite:shield_2:shield_3:shield_4" has_lower_holster_priority="true" holster_position_shift="-0.1,-0.1,-0.025">
     <ItemComponent>
       <Weapon weapon_class="LargeShield" body_armor="1" thrust_damage="5" thrust_damage_type="Blunt" thrust_speed="82" speed_rating="82" item_usage="shield" position="0.0, 0.00, 0.00" rotation="0.0,10.0,40.00" physics_material="wood_shield" weapon_length="78" hit_points="132" center_of_mass="0, 0, 0" item_modifier_group="shield_wood">
