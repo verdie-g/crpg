@@ -3,4 +3,12 @@
   <string id="str_multiplayer_official_game_type_name.cRPGBattle" text="{=*}cRPG Battle" />
   <string id="str_multiplayer_official_game_type_explainer.cRPGBattle" text="{=*}·   Kill the entire enemy team to win{newline}·   Gain experience and gold every minute{newline}·   Upgrade your character on c-rpg.eu" />
   <string id="str_multiplayer_game_type.cRPGBattle" text="{=*}cRPG Battle" />
+
+  <!-- Maps -->
+  <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=!}Abandoned" />
+  <string id="str_multiplayer_scene_name.crpg_battle_banditvalley" text="{=!}Bandit valley" />
+  <string id="str_multiplayer_scene_name.crpg_battle_islandvillage" text="{=!}Island Village" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=!}Sanctuary" />
+  <string id="str_multiplayer_scene_name.crpg_battle_swampbrawl" text="{=!}Swamp Brawl"/>
+  <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=!}Vatnborg" />
 </strings>
