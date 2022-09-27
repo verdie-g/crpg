@@ -18,8 +18,7 @@ internal static class CrpgItemRequirementModel
             throw new ArgumentException(item.Name.ToString(), "is not an armor item");
         }
 
-        int requirement = (int)(item.Tierf * (float)(strengthRequirementForTierTenArmor / 10f));
-        return requirement;
+        return (int)(item.Tierf * (strengthRequirementForTierTenArmor / 10f));
     }
 
     public static int ComputeArmorSetPieceStrengthRequirement(List<ItemObject> armors)
@@ -29,8 +28,7 @@ internal static class CrpgItemRequirementModel
             return 0;
         }
 
-        int[] armorsRequirement = armors.Select(a => ComputeArmorPieceStrengthRequirement(a)).ToArray();
-        int armorSetRequirement = (int)MathHelper.GeneralizedMean(10, armorsRequirement.Select(value => (float)value).ToArray());
-        return armorSetRequirement;
+        float[] armorsRequirement = armors.Select(a => (float)ComputeArmorPieceStrengthRequirement(a)).ToArray();
+        return (int)MathHelper.GeneralizedMean(10, armorsRequirement);
     }
 }
