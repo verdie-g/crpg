@@ -90,12 +90,12 @@ public class UpdateGameUsersCommandTest : TestBase
                         Assists = 7,
                         PlayTime = TimeSpan.FromSeconds(8),
                     },
-                    Rating = new CharacterRatingViewModel
-                    {
-                        Value = 4,
-                        Deviation = 5,
-                        Volatility = 6,
-                    },
+                    // Rating = new CharacterRatingViewModel
+                    // {
+                    //     Value = 4,
+                    //     Deviation = 5,
+                    //     Volatility = 6,
+                    // },
                 },
             },
         }, CancellationToken.None);
@@ -119,9 +119,9 @@ public class UpdateGameUsersCommandTest : TestBase
         Assert.AreEqual(8, dbCharacter.Statistics.Deaths);
         Assert.AreEqual(10, dbCharacter.Statistics.Assists);
         Assert.AreEqual(TimeSpan.FromSeconds(12), dbCharacter.Statistics.PlayTime);
-        Assert.AreEqual(4, dbCharacter.Rating.Value);
-        Assert.AreEqual(5, dbCharacter.Rating.Deviation);
-        Assert.AreEqual(6, dbCharacter.Rating.Volatility);
+        // Assert.AreEqual(4, dbCharacter.Rating.Value);
+        // Assert.AreEqual(5, dbCharacter.Rating.Deviation);
+        // Assert.AreEqual(6, dbCharacter.Rating.Volatility);
 
         characterServiceMock.VerifyAll();
     }
