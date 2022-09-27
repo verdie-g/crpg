@@ -7,4 +7,5 @@ export default interface ShopFilters {
   showOwned: boolean;
   showAffordable: boolean;
   searchQuery: string;
+  itemsPerPage: number;
 }
