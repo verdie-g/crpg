@@ -1645,6 +1645,7 @@ public record SeedDataCommand : IMediatorRequest
                 Type = item.Type,
                 Price = item.Price,
                 Weight = item.Weight,
+                Requirement = item.Requirement,
             };
 
             if (item.Armor != null)
