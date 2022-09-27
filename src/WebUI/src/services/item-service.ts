@@ -201,7 +201,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
   };
 
   if (baseItem.armor !== null) {
-    props.fields.push(['Strength Requirement', baseItem.strRequirement]);
+    props.fields.push(['Strength Requirement', baseItem.requirement]);
     if (baseItem.armor.headArmor !== 0) {
       props.fields.push(['Head Armor', baseItem.armor.headArmor]);
     }
@@ -346,7 +346,7 @@ export function ComputeArmorSetPieceStrengthRequirement(itemArray: EquippedItem[
   const equippedArmorItems = itemArray.filter(item => {
     return item.userItem.baseItem.armor !== null;
   });
-  const armorsrequirement = equippedArmorItems.map(obj => obj.userItem.baseItem.strRequirement);
+  const armorsrequirement = equippedArmorItems.map(obj => obj.userItem.baseItem.requirement);
   const armorSetRequirementTimeTwo = generalizedMean(10, armorsrequirement) * 2;
   return Math.trunc(armorSetRequirementTimeTwo) / 2;
 }

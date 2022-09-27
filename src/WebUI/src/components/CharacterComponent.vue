@@ -109,6 +109,14 @@
         label="Some of your items might break at the end of a round. Switch automatic repair on so you don't have to repair manually."
         multilined
       >
+        <div class="field">Armor set strength requirement is {{ strengthRequirement }}</div>
+      </b-tooltip>
+
+      <br />
+      <b-tooltip
+        label="Some of your items might break at the end of a round. Switch automatic repair on so you don't have to repair manually."
+        multilined
+      >
         <div class="field">
           <b-switch :value="character.autoRepair" @input="onAutoRepairSwitch" disabled>
             Automatically repair damaged items
@@ -301,7 +309,11 @@ import ItemProperties from '@/components/ItemProperties.vue';
 import userModule from '@/store/user-module';
 import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
-import { filterUserItemsFittingInSlot, computeSalePrice } from '@/services/item-service';
+import {
+  filterUserItemsFittingInSlot,
+  computeSalePrice,
+  ComputeArmorSetPieceStrengthRequirement,
+} from '@/services/item-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
 import CharacterOverallItemsStatsComponent from '@/components/CharacterOverallItemsStatsComponent.vue';
