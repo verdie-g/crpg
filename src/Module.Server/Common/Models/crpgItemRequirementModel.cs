@@ -29,7 +29,6 @@ internal static class CrpgItemRequirementModel
         }
 
         List<float> armorsRequirement = armors.Select(a => (float)ComputeArmorPieceStrengthRequirement(a)).ToList();
-        ;
         for (int i = armorsRequirement.Count() + 1; i <= 5; i++)
         {
             armorsRequirement.ToList().Add(0f);
