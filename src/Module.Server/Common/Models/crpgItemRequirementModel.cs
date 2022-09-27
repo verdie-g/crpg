@@ -21,6 +21,7 @@ internal static class CrpgItemRequirementModel
         return (int)(item.Tierf * (strengthRequirementForTierTenArmor / 10f));
     }
 
+    // make sure this method does the same thing as the one in the webui.
     public static int ComputeArmorSetPieceStrengthRequirement(List<ItemObject> armors)
     {
         if (armors == null)
