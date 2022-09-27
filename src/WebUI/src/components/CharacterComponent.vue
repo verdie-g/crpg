@@ -150,6 +150,8 @@
       <b-button type="is-danger" icon-left="trash" @click="openDeleteCharacterDialog">
         Delete
       </b-button>
+
+      <character-overall-items-stats-component :equippedItems="characterEquippedItems" />
     </div>
 
     <b-modal :active.sync="isReplaceItemModalActive" ref="replaceItemModal">
@@ -305,12 +307,18 @@ import { computeMaxRepairCost, computeAverageRepairCost } from '@/services/chara
 import { filterUserItemsFittingInSlot, computeSalePrice } from '@/services/item-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
+import CharacterOverallItemsStatsComponent from '@/components/CharacterOverallItemsStatsComponent.vue';
 import EquippedItem from '@/models/equipped-item';
 import UserItem from '@/models/user-item';
 import DisplayUserItem from '@/components/user/DisplayUserItem.vue';
 
 @Component({
-  components: { DisplayUserItem, CharacterStatsComponent, ItemProperties },
+  components: {
+    DisplayUserItem,
+    CharacterStatsComponent,
+    ItemProperties,
+    CharacterOverallItemsStatsComponent,
+  },
 })
 export default class CharacterComponent extends Vue {
   @Prop(Object) readonly character: Character;
