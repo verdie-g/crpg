@@ -69,7 +69,7 @@
 import EquippedItem from '@/models/equipped-item';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { computeAverageRepairCost, computeMaxRepairCost } from '@/services/characters-service';
-import { ComputeArmorSetPieceStrengthRequirement } from '@/services/item-service';
+import { computeArmorSetPieceStrengthRequirement } from '@/services/item-service';
 
 @Component
 export default class CharacterOverallItemsStatsComponent extends Vue {
@@ -77,7 +77,7 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
 
   get itemStats(): Record<string, number> {
     const result = {
-      ArmorSetRequirement: 0,
+      armorSetRequirement: 0,
       price: 0,
       maxRepairCost: 0,
       averageRepairCost: 0,
@@ -89,7 +89,7 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     };
 
     if (!this.equippedItems) return result;
-    ComputeArmorSetPieceStrengthRequirement(this.equippedItems);
+    result.armorSetRequirement = computeArmorSetPieceStrengthRequirement(this.equippedItems);
     result.maxRepairCost = Math.floor(computeMaxRepairCost(this.equippedItems));
     result.averageRepairCost = Math.floor(computeAverageRepairCost(this.equippedItems));
     this.equippedItems.forEach(item => {

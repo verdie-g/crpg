@@ -342,7 +342,7 @@ export function computeSalePrice(item: UserItem): number {
   return Math.floor(salePrice);
 }
 
-export function ComputeArmorSetPieceStrengthRequirement(equipedItems: EquippedItem[]): number {
+export function computeArmorSetPieceStrengthRequirement(equipedItems: EquippedItem[]): number {
   const armorsrequirement = equipedItems
     .filter(ei => {
       return ei.userItem.baseItem.armor !== null;
