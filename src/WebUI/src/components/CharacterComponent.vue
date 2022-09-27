@@ -105,7 +105,6 @@
           </div>
         </div>
       </div>
-
       <b-tooltip
         label="Some of your items might break at the end of a round. Switch automatic repair on so you don't have to repair manually."
         multilined
@@ -343,6 +342,13 @@ export default class CharacterComponent extends Vue {
       userItemsBySlot[ei.slot] = ei.userItem;
       return userItemsBySlot;
     }, {} as Record<ItemSlot, UserItem>);
+  }
+
+  get strengthRequirement(): number {
+    if (this.characterEquippedItems == null) {
+      return 0;
+    }
+    return ComputeArmorSetPieceStrengthRequirement(this.characterEquippedItems);
   }
 
   get fittingUserItems(): UserItem[] {

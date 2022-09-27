@@ -8,8 +8,9 @@ import ItemSlot from '@/models/item-slot';
 import ItemWeaponComponent from '@/models/item-weapon-component';
 import WeaponClass from '@/models/weapon-class';
 import UserItem from '@/models/user-item';
-import { applyPolynomialFunction } from '@/utils/math';
+import { applyPolynomialFunction, generalizedMean } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
+import EquippedItem from '@/models/equipped-item';
 
 export const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.Undefined]: 'Undefined',
@@ -200,6 +201,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
   };
 
   if (baseItem.armor !== null) {
+    props.fields.push(['Strength Requirement', baseItem.strRequirement]);
     if (baseItem.armor.headArmor !== 0) {
       props.fields.push(['Head Armor', baseItem.armor.headArmor]);
     }
@@ -338,4 +340,13 @@ export function computeSalePrice(item: UserItem): number {
   const salePrice = applyPolynomialFunction(item.baseItem.price, Constants.itemSellCostCoefs);
   // Floor salePrice to match behaviour of backend int typecast
   return Math.floor(salePrice);
+}
+
+export function ComputeArmorSetPieceStrengthRequirement(itemArray: EquippedItem[]): number {
+  const equippedArmorItems = itemArray.filter(item => {
+    return item.userItem.baseItem.armor !== null;
+  });
+  const armorsrequirement = equippedArmorItems.map(obj => obj.userItem.baseItem.strRequirement);
+  const armorSetRequirementTimeTwo = generalizedMean(10, armorsrequirement) * 2;
+  return Math.trunc(armorSetRequirementTimeTwo) / 2;
 }

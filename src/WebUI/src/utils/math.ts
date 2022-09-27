@@ -6,3 +6,11 @@ export function applyPolynomialFunction(x: number, coefficients: number[]): numb
 
   return r;
 }
+export function generalizedMean(n: number, numbers: number[]): number {
+  const normN =
+    numbers.reduce((accumulator, current) => {
+      return accumulator + Math.pow(current, n);
+    }, 0) / n;
+  const generalizedMean = Math.pow(normN, 1 / n);
+  return generalizedMean;
+}
