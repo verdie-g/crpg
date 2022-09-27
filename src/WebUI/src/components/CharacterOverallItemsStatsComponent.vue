@@ -1,37 +1,70 @@
 <template>
   <div>
-    <b-field horizontal label="Price" class="characteristic-field is-marginless">
-      <b-input size="is-small" :editable="false" :value="itemStats.price.toLocaleString()" />
-    </b-field>
-    <b-field horizontal label="Max repair costs" class="characteristic-field is-marginless">
-      <b-input
-        size="is-small"
-        :editable="false"
-        :value="itemStats.maxRepairCost.toLocaleString()"
-      />
-    </b-field>
-    <b-field horizontal label="Weight" class="characteristic-field is-marginless">
-      <b-input size="is-small" :editable="false" :value="itemStats.weight" />
-    </b-field>
-    <b-field horizontal label="Head Armor" class="characteristic-field is-marginless">
-      <b-input size="is-small" :editable="false" :value="itemStats.headArmor" />
-    </b-field>
-    <b-field horizontal label="Body Armor" class="characteristic-field is-marginless">
-      <b-input size="is-small" :editable="false" :value="itemStats.bodyArmor" />
-    </b-field>
-    <b-field horizontal label="Arm Armor" class="characteristic-field is-marginless">
-      <b-input size="is-small" :editable="false" :value="itemStats.armArmor" />
-    </b-field>
-    <b-field horizontal label="Leg Armor" class="characteristic-field is-marginless">
-      <b-input size="is-small" :editable="false" :value="itemStats.legArmor" />
-    </b-field>
+    <table width="250px">
+      <tr>
+        <td><b>Price</b></td>
+        <td>
+          {{ itemStats.price.toLocaleString() }}
+          <b-icon icon="coins" size="is-small" />
+        </td>
+      </tr>
+      <tr>
+        <td><b>Max repair costs</b></td>
+        <td>
+          {{ itemStats.maxRepairCost.toLocaleString() }}
+          <b-icon icon="coins" size="is-small" />
+        </td>
+      </tr>
+      <tr>
+        <td><b>Average repair costs</b></td>
+        <td>
+          {{ itemStats.averageRepairCost.toLocaleString() }}
+          <b-icon icon="coins" size="is-small" />
+        </td>
+      </tr>
+      <tr>
+        <td><b>Weight</b></td>
+        <td>
+          {{ itemStats.weight }}
+          <b-icon icon="weight-hanging" size="is-small" />
+        </td>
+      </tr>
+      <tr>
+        <td><b>Head Armor</b></td>
+        <td>
+          {{ itemStats.headArmor }}
+          <b-icon icon="shield-alt" size="is-small" />
+        </td>
+      </tr>
+      <tr>
+        <td><b>Body Armor</b></td>
+        <td>
+          {{ itemStats.bodyArmor }}
+          <b-icon icon="shield-alt" size="is-small" />
+        </td>
+      </tr>
+      <tr>
+        <td><b>Arm Armor</b></td>
+        <td>
+          {{ itemStats.armArmor }}
+          <b-icon icon="shield-alt" size="is-small" />
+        </td>
+      </tr>
+      <tr>
+        <td><b>Leg Armor</b></td>
+        <td>
+          {{ itemStats.legArmor }}
+          <b-icon icon="shield-alt" size="is-small" />
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script lang="ts">
 import EquippedItem from '@/models/equipped-item';
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { computeMaxRepairCost } from '@/services/characters-service';
+import { computeAverageRepairCost, computeMaxRepairCost } from '@/services/characters-service';
 
 @Component
 export default class CharacterOverallItemsStatsComponent extends Vue {
@@ -41,6 +74,7 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     const result = {
       price: 0,
       maxRepairCost: 0,
+      averageRepairCost: 0,
       weight: 0,
       headArmor: 0,
       bodyArmor: 0,
@@ -51,6 +85,7 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     if (!this.equippedItems) return result;
 
     result.maxRepairCost = Math.floor(computeMaxRepairCost(this.equippedItems));
+    result.averageRepairCost = Math.floor(computeAverageRepairCost(this.equippedItems));
     this.equippedItems.forEach(item => {
       const armor = item.userItem.baseItem.armor;
       result.price += item.userItem.baseItem.price;
@@ -69,4 +104,8 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+td {
+  padding: 3px;
+}
+</style>
