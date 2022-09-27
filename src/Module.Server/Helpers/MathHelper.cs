@@ -16,8 +16,7 @@ internal static class MathHelper
     public static float GeneralizedMean(int n, float[] numbers)
     {
         float normN = (float)numbers.Sum(x => Math.Pow(x, n)) / (float)n;
-        float generalizedMean = (float)Math.Pow(normN, 1 / (float)n);
-        return generalizedMean;
+        return (float)Math.Pow(normN, 1 / (float)n);
     }
 
     // this is a solution for RecursivePolynomialFunction with firstTermsOfEachSequence.Length = 3
