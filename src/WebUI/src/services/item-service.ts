@@ -201,7 +201,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
   };
 
   if (baseItem.armor !== null) {
-    props.fields.push(['Strength Requirement', baseItem.requirement]);
+    props.fields.push(['Requirement', baseItem.requirement + ' STR']);
     if (baseItem.armor.headArmor !== 0) {
       props.fields.push(['Head Armor', baseItem.armor.headArmor]);
     }
@@ -342,11 +342,11 @@ export function computeSalePrice(item: UserItem): number {
   return Math.floor(salePrice);
 }
 
-export function ComputeArmorSetPieceStrengthRequirement(itemArray: EquippedItem[]): number {
-  const equippedArmorItems = itemArray.filter(item => {
-    return item.userItem.baseItem.armor !== null;
-  });
-  const armorsrequirement = equippedArmorItems.map(obj => obj.userItem.baseItem.requirement);
-  const armorSetRequirementTimeTwo = generalizedMean(10, armorsrequirement) * 2;
-  return Math.trunc(armorSetRequirementTimeTwo) / 2;
+export function ComputeArmorSetPieceStrengthRequirement(equipedItems: EquippedItem[]): number {
+  const armorsrequirement = equipedItems
+    .filter(ei => {
+      return ei.userItem.baseItem.armor !== null;
+    })
+    .map(ei => ei.userItem.baseItem.requirement);
+  return Math.trunc(generalizedMean(10, armorsrequirement));
 }

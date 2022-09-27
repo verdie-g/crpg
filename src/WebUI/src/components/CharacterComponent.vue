@@ -108,9 +108,7 @@
       <b-tooltip
         label="Some of your items might break at the end of a round. Switch automatic repair on so you don't have to repair manually."
         multilined
-      >
-        <div class="field">Armor set strength requirement is {{ strengthRequirement }}</div>
-      </b-tooltip>
+      ></b-tooltip>
 
       <br />
       <b-tooltip
@@ -309,11 +307,7 @@ import ItemProperties from '@/components/ItemProperties.vue';
 import userModule from '@/store/user-module';
 import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
-import {
-  filterUserItemsFittingInSlot,
-  computeSalePrice,
-  ComputeArmorSetPieceStrengthRequirement,
-} from '@/services/item-service';
+import { filterUserItemsFittingInSlot, computeSalePrice } from '@/services/item-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
 import CharacterOverallItemsStatsComponent from '@/components/CharacterOverallItemsStatsComponent.vue';
@@ -354,13 +348,6 @@ export default class CharacterComponent extends Vue {
       userItemsBySlot[ei.slot] = ei.userItem;
       return userItemsBySlot;
     }, {} as Record<ItemSlot, UserItem>);
-  }
-
-  get strengthRequirement(): number {
-    if (this.characterEquippedItems == null) {
-      return 0;
-    }
-    return ComputeArmorSetPieceStrengthRequirement(this.characterEquippedItems);
   }
 
   get fittingUserItems(): UserItem[] {
