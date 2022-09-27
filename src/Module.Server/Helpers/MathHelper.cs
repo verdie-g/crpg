@@ -12,11 +12,23 @@ internal static class MathHelper
 
         return r;
     }
+    
     public static float GeneralizedMean(int n, float[] numbers)
     {
         float floatn = (float)n;
         float normN = (float)numbers.Sum(x => Math.Pow(x, n)) / floatn;
         float generalizedMean = (float)Math.Pow(normN, 1 / floatn);
         return generalizedMean;
+    }
+
+    // this is a solution for RecursivePolynomialFunction with firstTermsOfEachSequence.Length = 3
+    // i have no intention of solving it for firstTermsOfEachSequence.Length = n
+    public static float RecursivePolynomialFunctionOfDegree2(int level, float[] recursiveCoeffs)
+    {
+        float initialValue = recursiveCoeffs[0];
+        float initialSpeed = recursiveCoeffs[1];
+        float initialAcceleration = recursiveCoeffs[2];
+        float[] coeffs = new float[] { initialAcceleration / 2f, initialSpeed - initialAcceleration / 2f, initialValue };
+        return ApplyPolynomialFunction(level, coeffs);
     }
 }
