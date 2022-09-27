@@ -105,6 +105,7 @@
           </div>
         </div>
       </div>
+
       <b-tooltip
         label="Some of your items might break at the end of a round. Switch automatic repair on so you don't have to repair manually."
         multilined
