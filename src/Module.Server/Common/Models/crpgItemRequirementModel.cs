@@ -28,12 +28,13 @@ internal static class CrpgItemRequirementModel
             return 0;
         }
 
-        List<float> armorsRequirement = armors.Select(a => (float)ComputeArmorPieceStrengthRequirement(a)).ToList();
-        for (int i = armorsRequirement.Count() + 1; i <= 5; i++)
+        const int numberOfArmorItemTypes = 5;
+        float[] armorsRequirements = new float[numberOfArmorItemTypes];
+        for (int i = 0; i < armors.Count; i++)
         {
-            armorsRequirement.ToList().Add(0f);
+            armorsRequirements[i] = ComputeArmorPieceStrengthRequirement(armors[i]);
         }
 
-        return (int)MathHelper.GeneralizedMean(10, armorsRequirement.ToArray());
+        return (int)MathHelper.GeneralizedMean(10, armorsRequirements);
     }
 }
