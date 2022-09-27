@@ -342,11 +342,9 @@ export function computeSalePrice(item: UserItem): number {
   return Math.floor(salePrice);
 }
 
-export function computeArmorSetPieceStrengthRequirement(equipedItems: EquippedItem[]): number {
-  const armorsrequirement = equipedItems
-    .filter(ei => {
-      return ei.userItem.baseItem.armor !== null;
-    })
-    .map(ei => ei.userItem.baseItem.requirement);
-  return Math.trunc(generalizedMean(10, armorsrequirement));
+export function computeArmorSetPieceStrengthRequirement(equippedItems: EquippedItem[]): number {
+  const numberOfArmorItemTypes = 5;
+  const armorsRequirement = new Array(numberOfArmorItemTypes).fill(0);
+  equippedItems.forEach((ei, i) => (armorsRequirement[i] = ei.userItem.baseItem.requirement));
+  return Math.trunc(generalizedMean(10, armorsRequirement));
 }

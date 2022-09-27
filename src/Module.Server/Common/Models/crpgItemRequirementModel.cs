@@ -21,6 +21,7 @@ internal static class CrpgItemRequirementModel
         return (int)(item.Tierf * (strengthRequirementForTierTenArmor / 10f));
     }
 
+    // make sure this method does the same thing as the one in the webui.
     public static int ComputeArmorSetPieceStrengthRequirement(List<ItemObject> armors)
     {
         if (armors == null)
@@ -28,7 +29,13 @@ internal static class CrpgItemRequirementModel
             return 0;
         }
 
-        float[] armorsRequirement = armors.Select(a => (float)ComputeArmorPieceStrengthRequirement(a)).ToArray();
-        return (int)MathHelper.GeneralizedMean(10, armorsRequirement);
+        const int numberOfArmorItemTypes = 5;
+        float[] armorsRequirements = new float[numberOfArmorItemTypes];
+        for (int i = 0; i < armors.Count; i++)
+        {
+            armorsRequirements[i] = ComputeArmorPieceStrengthRequirement(armors[i]);
+        }
+
+        return (int)MathHelper.GeneralizedMean(10, armorsRequirements);
     }
 }
