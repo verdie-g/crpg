@@ -10,6 +10,6 @@ export function generalizedMean(n: number, numbers: number[]): number {
   const normN =
     numbers.reduce((accumulator, current) => {
       return accumulator + Math.pow(current, n);
-    }, 0) / n;
+    }, 0) / 5;
   return Math.pow(normN, 1 / n);
 }
