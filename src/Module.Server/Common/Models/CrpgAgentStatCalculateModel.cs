@@ -280,7 +280,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             Math.Max(CrpgItemRequirementModel.ComputeArmorSetPieceStrengthRequirement(GetArmorItemObjectList(agent.SpawnEquipment)) - strengthAttribute, 0);
         float impactOfStrReqOnSpeedFactor = 0.2f;
         float impactOfStrReqOnSpeed = 1 / (1 + distanceToStrRequirement * impactOfStrReqOnSpeedFactor);
-        props.TopSpeedReachDuration = 2f / MathF.Max((200f + athleticsSkill) / 300f * (agentWeight / (agentWeight + totalEncumbrance)) * distanceToStrRequirement * impactOfStrReqOnSpeed, 0.3f);
+        props.TopSpeedReachDuration = 2f / MathF.Max((200f + athleticsSkill) / 300f * (agentWeight / (agentWeight + totalEncumbrance)) * impactOfStrReqOnSpeed, 0.3f);
         float speed = 0.7f + 0.00070000015f * athleticsSkill;
         float weightSpeedPenalty = MathF.Max(0.2f * (1f - athleticsSkill * 0.001f), 0f) * totalEncumbrance / agentWeight / impactOfStrReqOnSpeed;
         float maxSpeedMultiplier = MBMath.ClampFloat(speed - weightSpeedPenalty, 0f, 0.91f);
