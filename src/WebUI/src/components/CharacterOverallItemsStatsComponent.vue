@@ -3,7 +3,7 @@
     <table width="300px">
       <tr>
         <td><b>Armor Set Requirement</b></td>
-        <td>{{ itemStats.ArmorSetRequirement.toLocaleString() }} STR</td>
+        <td>{{ itemStats.armorSetRequirement.toLocaleString() }} STR</td>
       </tr>
       <tr>
         <td><b>Price</b></td>
