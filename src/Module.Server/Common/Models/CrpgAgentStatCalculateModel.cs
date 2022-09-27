@@ -275,14 +275,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
         float agentWeight = agent.Monster.Weight;
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
-        int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
-        float distanceToStrRequirement =
-            Math.Max(CrpgItemRequirementModel.ComputeArmorSetPieceStrengthRequirement(GetArmorItemObjectList(agent.SpawnEquipment)) - strengthAttribute, 0);
-        float impactOfStrReqOnSpeedFactor = 0.2f;
-        float impactOfStrReqOnSpeed = 1 / (1 + distanceToStrRequirement * impactOfStrReqOnSpeedFactor);
-        props.TopSpeedReachDuration = 2f / MathF.Max((200f + athleticsSkill) / 300f * (agentWeight / (agentWeight + totalEncumbrance)) * impactOfStrReqOnSpeed, 0.3f);
+        props.TopSpeedReachDuration = 2f / MathF.Max((200f + athleticsSkill) / 300f * (agentWeight / (agentWeight + totalEncumbrance)) * ImpactOfStrReqOnSpeed(agent), 0.3f);
         float speed = 0.7f + 0.00070000015f * athleticsSkill;
-        float weightSpeedPenalty = MathF.Max(0.2f * (1f - athleticsSkill * 0.001f), 0f) * totalEncumbrance / agentWeight / impactOfStrReqOnSpeed;
+        float weightSpeedPenalty = MathF.Max(0.2f * (1f - athleticsSkill * 0.001f), 0f) * totalEncumbrance / agentWeight / ImpactOfStrReqOnSpeed(agent);
         float maxSpeedMultiplier = MBMath.ClampFloat(speed - weightSpeedPenalty, 0f, 0.91f);
         float atmosphereSpeedPenalty = agent.Mission.Scene.IsAtmosphereIndoor && agent.Mission.Scene.GetRainDensity() > 0
             ? 0.9f
@@ -425,5 +420,13 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         }
 
         return armorItemObjectList;
+    }
+
+    private float ImpactOfStrReqOnSpeed(Agent agent)
+    {
+        int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
+        float distanceToStrRequirement = Math.Max(CrpgItemRequirementModel.ComputeArmorSetPieceStrengthRequirement(GetArmorItemObjectList(agent.SpawnEquipment)) - strengthAttribute, 0);
+        float impactOfStrReqOnSpeedFactor = 0.2f;
+        return 1 / (1 + distanceToStrRequirement * impactOfStrReqOnSpeedFactor);
     }
 }
