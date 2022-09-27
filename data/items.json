@@ -6,6 +6,7 @@
     "type": "ShoulderArmor",
     "price": 4904,
     "weight": 4.0,
+    "requirement": 14,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -22,6 +23,7 @@
     "type": "ShoulderArmor",
     "price": 1482,
     "weight": 2.0,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -38,6 +40,7 @@
     "type": "ShoulderArmor",
     "price": 1267,
     "weight": 2.2,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -54,6 +57,7 @@
     "type": "ShoulderArmor",
     "price": 208,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 1,
@@ -70,6 +74,7 @@
     "type": "ShoulderArmor",
     "price": 566,
     "weight": 1.6,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -86,6 +91,7 @@
     "type": "ShoulderArmor",
     "price": 717,
     "weight": 5.0,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -102,6 +108,7 @@
     "type": "ShoulderArmor",
     "price": 1713,
     "weight": 3.6,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -118,6 +125,7 @@
     "type": "ShoulderArmor",
     "price": 1068,
     "weight": 2.2,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -134,6 +142,7 @@
     "type": "ShoulderArmor",
     "price": 2798,
     "weight": 2.5,
+    "requirement": 10,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -150,6 +159,7 @@
     "type": "ShoulderArmor",
     "price": 3436,
     "weight": 1.9,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 17,
@@ -166,6 +176,7 @@
     "type": "ShoulderArmor",
     "price": 1068,
     "weight": 1.3,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -182,6 +193,7 @@
     "type": "ShoulderArmor",
     "price": 1482,
     "weight": 2.8,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -198,6 +210,7 @@
     "type": "ShoulderArmor",
     "price": 4138,
     "weight": 3.5,
+    "requirement": 13,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 13,
@@ -214,6 +227,7 @@
     "type": "ShoulderArmor",
     "price": 717,
     "weight": 2.5,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -230,6 +244,7 @@
     "type": "Shield",
     "price": 1608,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -260,6 +275,7 @@
     "type": "BodyArmor",
     "price": 2303,
     "weight": 3.4,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 13,
@@ -276,6 +292,7 @@
     "type": "OneHandedWeapon",
     "price": 2558,
     "weight": 1.69,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -305,6 +322,7 @@
     "type": "HeadArmor",
     "price": 1536,
     "weight": 0.4,
+    "requirement": 8,
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -321,6 +339,7 @@
     "type": "BodyArmor",
     "price": 856,
     "weight": 0.3,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -337,6 +356,7 @@
     "type": "ShoulderArmor",
     "price": 3109,
     "weight": 7.0,
+    "requirement": 11,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -353,6 +373,7 @@
     "type": "HandArmor",
     "price": 254,
     "weight": 0.2,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -369,6 +390,7 @@
     "type": "Arrows",
     "price": 50,
     "weight": 0.05,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Arrow",
@@ -398,6 +420,7 @@
     "type": "TwoHandedWeapon",
     "price": 5828,
     "weight": 1.6,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -430,6 +453,7 @@
     "type": "TwoHandedWeapon",
     "price": 5386,
     "weight": 1.88,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -462,6 +486,7 @@
     "type": "TwoHandedWeapon",
     "price": 6985,
     "weight": 1.49,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -494,6 +519,7 @@
     "type": "BodyArmor",
     "price": 11191,
     "weight": 11.0,
+    "requirement": 13,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 29,
@@ -510,6 +536,7 @@
     "type": "BodyArmor",
     "price": 10829,
     "weight": 17.0,
+    "requirement": 13,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 25,
@@ -526,6 +553,7 @@
     "type": "BodyArmor",
     "price": 11559,
     "weight": 18.0,
+    "requirement": 13,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 27,
@@ -542,6 +570,7 @@
     "type": "OneHandedWeapon",
     "price": 1729,
     "weight": 1.15,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -572,6 +601,7 @@
     "type": "OneHandedWeapon",
     "price": 1640,
     "weight": 1.02,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -602,6 +632,7 @@
     "type": "HeadArmor",
     "price": 6769,
     "weight": 2.8,
+    "requirement": 19,
     "armor": {
       "headArmor": 44,
       "bodyArmor": 0,
@@ -618,6 +649,7 @@
     "type": "BodyArmor",
     "price": 15556,
     "weight": 22.0,
+    "requirement": 16,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 31,
@@ -634,6 +666,7 @@
     "type": "BodyArmor",
     "price": 11559,
     "weight": 19.0,
+    "requirement": 13,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 31,
@@ -650,6 +683,7 @@
     "type": "BodyArmor",
     "price": 8141,
     "weight": 15.0,
+    "requirement": 10,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 31,
@@ -666,6 +700,7 @@
     "type": "BodyArmor",
     "price": 11559,
     "weight": 18.0,
+    "requirement": 13,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 31,
@@ -682,6 +717,7 @@
     "type": "BodyArmor",
     "price": 1808,
     "weight": 0.8,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -698,6 +734,7 @@
     "type": "BodyArmor",
     "price": 975,
     "weight": 1.1,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -714,6 +751,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 0.9,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -730,6 +768,7 @@
     "type": "HeadArmor",
     "price": 229,
     "weight": 0.2,
+    "requirement": 1,
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -746,6 +785,7 @@
     "type": "BodyArmor",
     "price": 856,
     "weight": 1.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -762,6 +802,7 @@
     "type": "HeadArmor",
     "price": 287,
     "weight": 0.2,
+    "requirement": 2,
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -778,6 +819,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 1.1,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -794,6 +836,7 @@
     "type": "HeadArmor",
     "price": 287,
     "weight": 0.1,
+    "requirement": 2,
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -810,6 +853,7 @@
     "type": "BodyArmor",
     "price": 856,
     "weight": 1.1,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -826,6 +870,7 @@
     "type": "HeadArmor",
     "price": 287,
     "weight": 0.1,
+    "requirement": 2,
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -842,6 +887,7 @@
     "type": "HeadArmor",
     "price": 229,
     "weight": 0.2,
+    "requirement": 1,
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -858,6 +904,7 @@
     "type": "HeadArmor",
     "price": 351,
     "weight": 0.2,
+    "requirement": 2,
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -874,6 +921,7 @@
     "type": "HeadArmor",
     "price": 6237,
     "weight": 2.8,
+    "requirement": 18,
     "armor": {
       "headArmor": 42,
       "bodyArmor": 0,
@@ -890,6 +938,7 @@
     "type": "BodyArmor",
     "price": 1099,
     "weight": 0.9,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -906,6 +955,7 @@
     "type": "BodyArmor",
     "price": 535,
     "weight": 0.8,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -922,6 +972,7 @@
     "type": "HeadArmor",
     "price": 176,
     "weight": 0.3,
+    "requirement": 1,
     "armor": {
       "headArmor": 3,
       "bodyArmor": 0,
@@ -938,6 +989,7 @@
     "type": "HeadArmor",
     "price": 229,
     "weight": 0.4,
+    "requirement": 1,
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -954,6 +1006,7 @@
     "type": "BodyArmor",
     "price": 30426,
     "weight": 28.0,
+    "requirement": 23,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 51,
@@ -970,6 +1023,7 @@
     "type": "Mount",
     "price": 9024,
     "weight": 375.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 108,
       "chargeDamage": 3,
@@ -986,6 +1040,7 @@
     "type": "BodyArmor",
     "price": 2133,
     "weight": 4.4,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 13,
@@ -1002,6 +1057,7 @@
     "type": "ShoulderArmor",
     "price": 1713,
     "weight": 2.5,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -1018,6 +1074,7 @@
     "type": "Polearm",
     "price": 2047,
     "weight": 1.85,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -1090,6 +1147,7 @@
     "type": "HeadArmor",
     "price": 7043,
     "weight": 3.4,
+    "requirement": 20,
     "armor": {
       "headArmor": 45,
       "bodyArmor": 0,
@@ -1106,6 +1164,7 @@
     "type": "OneHandedWeapon",
     "price": 995,
     "weight": 1.88,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -1135,6 +1194,7 @@
     "type": "OneHandedWeapon",
     "price": 1185,
     "weight": 1.32,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -1164,6 +1224,7 @@
     "type": "OneHandedWeapon",
     "price": 1669,
     "weight": 1.86,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -1193,6 +1254,7 @@
     "type": "OneHandedWeapon",
     "price": 2126,
     "weight": 2.05,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -1222,6 +1284,7 @@
     "type": "OneHandedWeapon",
     "price": 3151,
     "weight": 1.73,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1251,6 +1314,7 @@
     "type": "OneHandedWeapon",
     "price": 3253,
     "weight": 1.78,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1280,6 +1344,7 @@
     "type": "OneHandedWeapon",
     "price": 3236,
     "weight": 1.73,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1309,6 +1374,7 @@
     "type": "OneHandedWeapon",
     "price": 3037,
     "weight": 1.63,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1338,6 +1404,7 @@
     "type": "BodyArmor",
     "price": 10122,
     "weight": 8.2,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 25,
@@ -1354,6 +1421,7 @@
     "type": "BodyArmor",
     "price": 25290,
     "weight": 22.0,
+    "requirement": 21,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 51,
@@ -1370,6 +1438,7 @@
     "type": "BodyArmor",
     "price": 9778,
     "weight": 18.0,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 35,
@@ -1386,6 +1455,7 @@
     "type": "ShoulderArmor",
     "price": 4513,
     "weight": 1.8,
+    "requirement": 14,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -1402,6 +1472,7 @@
     "type": "ShoulderArmor",
     "price": 6173,
     "weight": 2.2,
+    "requirement": 16,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -1418,6 +1489,7 @@
     "type": "ShoulderArmor",
     "price": 3779,
     "weight": 1.9,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -1434,6 +1506,7 @@
     "type": "ShoulderArmor",
     "price": 2503,
     "weight": 2.4,
+    "requirement": 9,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -1450,6 +1523,7 @@
     "type": "ShoulderArmor",
     "price": 3109,
     "weight": 2.8,
+    "requirement": 11,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -1466,6 +1540,7 @@
     "type": "OneHandedWeapon",
     "price": 2036,
     "weight": 1.53,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1495,6 +1570,7 @@
     "type": "OneHandedWeapon",
     "price": 2129,
     "weight": 1.38,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1524,6 +1600,7 @@
     "type": "OneHandedWeapon",
     "price": 2558,
     "weight": 1.45,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1553,6 +1630,7 @@
     "type": "OneHandedWeapon",
     "price": 2443,
     "weight": 1.84,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1582,6 +1660,7 @@
     "type": "OneHandedWeapon",
     "price": 2793,
     "weight": 1.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1611,6 +1690,7 @@
     "type": "OneHandedWeapon",
     "price": 2927,
     "weight": 1.6,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1640,6 +1720,7 @@
     "type": "OneHandedWeapon",
     "price": 3055,
     "weight": 1.43,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -1669,6 +1750,7 @@
     "type": "BodyArmor",
     "price": 1366,
     "weight": 0.8,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -1685,6 +1767,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -1701,6 +1784,7 @@
     "type": "HeadArmor",
     "price": 176,
     "weight": 0.2,
+    "requirement": 1,
     "armor": {
       "headArmor": 3,
       "bodyArmor": 0,
@@ -1717,6 +1801,7 @@
     "type": "MountHarness",
     "price": 980,
     "weight": 27.0,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -1733,6 +1818,7 @@
     "type": "TwoHandedWeapon",
     "price": 6398,
     "weight": 1.36,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -1765,6 +1851,7 @@
     "type": "BodyArmor",
     "price": 535,
     "weight": 0.2,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -1781,6 +1868,7 @@
     "type": "OneHandedWeapon",
     "price": 2099,
     "weight": 1.21,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -1811,6 +1899,7 @@
     "type": "BodyArmor",
     "price": 9439,
     "weight": 8.6,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 29,
@@ -1827,6 +1916,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 0.6,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -1843,6 +1933,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -1859,6 +1950,7 @@
     "type": "BodyArmor",
     "price": 2133,
     "weight": 0.9,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -1875,6 +1967,7 @@
     "type": "BodyArmor",
     "price": 1808,
     "weight": 1.0,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -1891,6 +1984,7 @@
     "type": "BodyArmor",
     "price": 3244,
     "weight": 2.2,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -1907,6 +2001,7 @@
     "type": "BodyArmor",
     "price": 636,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -1923,6 +2018,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 21.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -1939,6 +2035,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 23.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -1955,6 +2052,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 24.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -1971,6 +2069,7 @@
     "type": "Banner",
     "price": 50,
     "weight": 4.0,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Banner",
@@ -1998,6 +2097,7 @@
     "type": "Banner",
     "price": 50,
     "weight": 4.0,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Banner",
@@ -2025,6 +2125,7 @@
     "type": "Arrows",
     "price": 98,
     "weight": 0.05,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Arrow",
@@ -2054,6 +2155,7 @@
     "type": "BodyArmor",
     "price": 5561,
     "weight": 3.1,
+    "requirement": 8,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 22,
@@ -2070,6 +2172,7 @@
     "type": "OneHandedWeapon",
     "price": 1883,
     "weight": 1.25,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2099,6 +2202,7 @@
     "type": "TwoHandedWeapon",
     "price": 3642,
     "weight": 1.4,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -2131,6 +2235,7 @@
     "type": "TwoHandedWeapon",
     "price": 5117,
     "weight": 1.99,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedSword",
@@ -2161,6 +2266,7 @@
     "type": "TwoHandedWeapon",
     "price": 7499,
     "weight": 1.85,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2229,6 +2335,7 @@
     "type": "TwoHandedWeapon",
     "price": 6650,
     "weight": 2.08,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedSword",
@@ -2259,6 +2366,7 @@
     "type": "TwoHandedWeapon",
     "price": 13165,
     "weight": 1.52,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2330,6 +2438,7 @@
     "type": "TwoHandedWeapon",
     "price": 8051,
     "weight": 1.63,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2398,6 +2507,7 @@
     "type": "TwoHandedWeapon",
     "price": 9037,
     "weight": 1.22,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -2466,6 +2576,7 @@
     "type": "OneHandedWeapon",
     "price": 1824,
     "weight": 1.09,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -2496,6 +2607,7 @@
     "type": "OneHandedWeapon",
     "price": 2333,
     "weight": 1.03,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -2526,6 +2638,7 @@
     "type": "OneHandedWeapon",
     "price": 2778,
     "weight": 1.05,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -2556,6 +2669,7 @@
     "type": "HeadArmor",
     "price": 5727,
     "weight": 2.3,
+    "requirement": 17,
     "armor": {
       "headArmor": 40,
       "bodyArmor": 0,
@@ -2572,6 +2686,7 @@
     "type": "BodyArmor",
     "price": 1099,
     "weight": 0.6,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -2588,6 +2703,7 @@
     "type": "BodyArmor",
     "price": 1808,
     "weight": 0.4,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -2604,6 +2720,7 @@
     "type": "BodyArmor",
     "price": 2133,
     "weight": 0.6,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -2620,6 +2737,7 @@
     "type": "ShoulderArmor",
     "price": 717,
     "weight": 4.5,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -2636,6 +2754,7 @@
     "type": "ShoulderArmor",
     "price": 208,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -2652,6 +2771,7 @@
     "type": "HeadArmor",
     "price": 351,
     "weight": 0.3,
+    "requirement": 2,
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -2668,6 +2788,7 @@
     "type": "ShoulderArmor",
     "price": 208,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -2684,6 +2805,7 @@
     "type": "ShoulderArmor",
     "price": 431,
     "weight": 0.8,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -2700,6 +2822,7 @@
     "type": "ShoulderArmor",
     "price": 1713,
     "weight": 1.5,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -2716,6 +2839,7 @@
     "type": "HeadArmor",
     "price": 494,
     "weight": 0.5,
+    "requirement": 3,
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -2732,6 +2856,7 @@
     "type": "BodyArmor",
     "price": 1230,
     "weight": 0.9,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -2748,6 +2873,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 0.8,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -2764,6 +2890,7 @@
     "type": "BodyArmor",
     "price": 975,
     "weight": 0.7,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -2780,6 +2907,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 3.0,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -2796,6 +2924,7 @@
     "type": "HeadArmor",
     "price": 4545,
     "weight": 3.2,
+    "requirement": 15,
     "armor": {
       "headArmor": 35,
       "bodyArmor": 0,
@@ -2812,6 +2941,7 @@
     "type": "HeadArmor",
     "price": 3900,
     "weight": 2.9,
+    "requirement": 14,
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -2828,6 +2958,7 @@
     "type": "HeadArmor",
     "price": 3696,
     "weight": 3.0,
+    "requirement": 13,
     "armor": {
       "headArmor": 31,
       "bodyArmor": 0,
@@ -2844,6 +2975,7 @@
     "type": "HeadArmor",
     "price": 5238,
     "weight": 3.1,
+    "requirement": 16,
     "armor": {
       "headArmor": 38,
       "bodyArmor": 0,
@@ -2860,6 +2992,7 @@
     "type": "HeadArmor",
     "price": 5001,
     "weight": 3.3,
+    "requirement": 16,
     "armor": {
       "headArmor": 37,
       "bodyArmor": 0,
@@ -2876,6 +3009,7 @@
     "type": "HeadArmor",
     "price": 4545,
     "weight": 3.3,
+    "requirement": 15,
     "armor": {
       "headArmor": 35,
       "bodyArmor": 0,
@@ -2892,6 +3026,7 @@
     "type": "HeadArmor",
     "price": 5979,
     "weight": 3.2,
+    "requirement": 18,
     "armor": {
       "headArmor": 41,
       "bodyArmor": 0,
@@ -2908,6 +3043,7 @@
     "type": "HeadArmor",
     "price": 5727,
     "weight": 3.3,
+    "requirement": 17,
     "armor": {
       "headArmor": 40,
       "bodyArmor": 0,
@@ -2924,6 +3060,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 0.7,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -2940,6 +3077,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 0.7,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -2956,6 +3094,7 @@
     "type": "LegArmor",
     "price": 450,
     "weight": 1.5,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -2972,6 +3111,7 @@
     "type": "HeadArmor",
     "price": 1809,
     "weight": 1.3,
+    "requirement": 8,
     "armor": {
       "headArmor": 20,
       "bodyArmor": 0,
@@ -2988,6 +3128,7 @@
     "type": "Mount",
     "price": 7925,
     "weight": 410.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 98,
       "chargeDamage": 3,
@@ -3004,6 +3145,7 @@
     "type": "MountHarness",
     "price": 1451,
     "weight": 30.0,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -3020,6 +3162,7 @@
     "type": "MountHarness",
     "price": 5981,
     "weight": 76.0,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -3036,6 +3179,7 @@
     "type": "MountHarness",
     "price": 9337,
     "weight": 125.0,
+    "requirement": 15,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 13,
@@ -3052,6 +3196,7 @@
     "type": "Shield",
     "price": 4317,
     "weight": 3.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -3082,6 +3227,7 @@
     "type": "Shield",
     "price": 4955,
     "weight": 3.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -3112,6 +3258,7 @@
     "type": "Shield",
     "price": 3837,
     "weight": 3.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -3142,6 +3289,7 @@
     "type": "LegArmor",
     "price": 356,
     "weight": 1.0,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3158,6 +3306,7 @@
     "type": "BodyArmor",
     "price": 3045,
     "weight": 6.5,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -3174,6 +3323,7 @@
     "type": "BodyArmor",
     "price": 1507,
     "weight": 3.2,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -3190,6 +3340,7 @@
     "type": "BodyArmor",
     "price": 975,
     "weight": 2.4,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -3206,6 +3357,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.8,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3222,6 +3374,7 @@
     "type": "BodyArmor",
     "price": 1366,
     "weight": 0.7,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -3238,6 +3391,7 @@
     "type": "OneHandedWeapon",
     "price": 1020,
     "weight": 1.34,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -3267,6 +3421,7 @@
     "type": "OneHandedWeapon",
     "price": 1441,
     "weight": 2.13,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -3296,6 +3451,7 @@
     "type": "OneHandedWeapon",
     "price": 825,
     "weight": 1.42,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -3325,6 +3481,7 @@
     "type": "BodyArmor",
     "price": 24212,
     "weight": 24.0,
+    "requirement": 20,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 53,
@@ -3341,6 +3498,7 @@
     "type": "BodyArmor",
     "price": 24748,
     "weight": 23.0,
+    "requirement": 20,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 48,
@@ -3357,6 +3515,7 @@
     "type": "HandArmor",
     "price": 3361,
     "weight": 0.6,
+    "requirement": 17,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3373,6 +3532,7 @@
     "type": "OneHandedWeapon",
     "price": 4141,
     "weight": 1.77,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -3403,6 +3563,7 @@
     "type": "OneHandedWeapon",
     "price": 2651,
     "weight": 1.54,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -3432,6 +3593,7 @@
     "type": "OneHandedWeapon",
     "price": 4257,
     "weight": 1.17,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -3462,6 +3624,7 @@
     "type": "Polearm",
     "price": 13278,
     "weight": 1.2,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -3495,6 +3658,7 @@
     "type": "ShoulderArmor",
     "price": 431,
     "weight": 0.55,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -3511,6 +3675,7 @@
     "type": "ShoulderArmor",
     "price": 1267,
     "weight": 1.6,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 9,
@@ -3527,6 +3692,7 @@
     "type": "ShoulderArmor",
     "price": 431,
     "weight": 1.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -3543,6 +3709,7 @@
     "type": "ShoulderArmor",
     "price": 885,
     "weight": 1.3,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -3559,6 +3726,7 @@
     "type": "OneHandedWeapon",
     "price": 1711,
     "weight": 2.09,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -3588,6 +3756,7 @@
     "type": "OneHandedWeapon",
     "price": 2111,
     "weight": 1.35,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -3617,6 +3786,7 @@
     "type": "OneHandedWeapon",
     "price": 2264,
     "weight": 1.75,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -3646,6 +3816,7 @@
     "type": "OneHandedWeapon",
     "price": 2691,
     "weight": 1.49,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -3675,6 +3846,7 @@
     "type": "OneHandedWeapon",
     "price": 3020,
     "weight": 1.27,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -3704,6 +3876,7 @@
     "type": "Shield",
     "price": 3823,
     "weight": 2.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -3734,6 +3907,7 @@
     "type": "BodyArmor",
     "price": 19172,
     "weight": 19.0,
+    "requirement": 18,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 37,
@@ -3750,6 +3924,7 @@
     "type": "LegArmor",
     "price": 4662,
     "weight": 2.6,
+    "requirement": 24,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3766,6 +3941,7 @@
     "type": "HandArmor",
     "price": 6000,
     "weight": 1.5,
+    "requirement": 24,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3782,6 +3958,7 @@
     "type": "ShoulderArmor",
     "price": 9142,
     "weight": 4.0,
+    "requirement": 21,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 20,
@@ -3798,6 +3975,7 @@
     "type": "LegArmor",
     "price": 450,
     "weight": 1.0,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -3814,6 +3992,7 @@
     "type": "BodyArmor",
     "price": 11933,
     "weight": 14.0,
+    "requirement": 13,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 31,
@@ -3830,6 +4009,7 @@
     "type": "ShoulderArmor",
     "price": 431,
     "weight": 1.4,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -3846,6 +4026,7 @@
     "type": "BodyArmor",
     "price": 3244,
     "weight": 1.2,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -3862,6 +4043,7 @@
     "type": "BodyArmor",
     "price": 6650,
     "weight": 10.7,
+    "requirement": 9,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 28,
@@ -3878,6 +4060,7 @@
     "type": "BodyArmor",
     "price": 4805,
     "weight": 10.7,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 23,
@@ -3894,6 +4077,7 @@
     "type": "BodyArmor",
     "price": 8457,
     "weight": 14.7,
+    "requirement": 11,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 32,
@@ -3910,6 +4094,7 @@
     "type": "BodyArmor",
     "price": 9106,
     "weight": 16.6,
+    "requirement": 11,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 34,
@@ -3926,6 +4111,7 @@
     "type": "ShoulderArmor",
     "price": 717,
     "weight": 4.5,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -3942,6 +4128,7 @@
     "type": "ShoulderArmor",
     "price": 885,
     "weight": 4.5,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -3958,6 +4145,7 @@
     "type": "HeadArmor",
     "price": 8495,
     "weight": 3.4,
+    "requirement": 22,
     "armor": {
       "headArmor": 50,
       "bodyArmor": 0,
@@ -3974,6 +4162,7 @@
     "type": "ShoulderArmor",
     "price": 566,
     "weight": 1.2,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -3990,6 +4179,7 @@
     "type": "HeadArmor",
     "price": 9431,
     "weight": 3.1,
+    "requirement": 23,
     "armor": {
       "headArmor": 53,
       "bodyArmor": 0,
@@ -4006,6 +4196,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.3,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -4022,6 +4213,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 0.8,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -4038,6 +4230,7 @@
     "type": "BodyArmor",
     "price": 18233,
     "weight": 22.4,
+    "requirement": 17,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 42,
@@ -4054,6 +4247,7 @@
     "type": "BodyArmor",
     "price": 7229,
     "weight": 11.4,
+    "requirement": 10,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 31,
@@ -4070,6 +4264,7 @@
     "type": "Shield",
     "price": 1669,
     "weight": 3.6,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -4100,6 +4295,7 @@
     "type": "OneHandedWeapon",
     "price": 2290,
     "weight": 1.01,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -4130,6 +4326,7 @@
     "type": "TwoHandedWeapon",
     "price": 5056,
     "weight": 1.12,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -4162,6 +4359,7 @@
     "type": "HeadArmor",
     "price": 2420,
     "weight": 1.4,
+    "requirement": 10,
     "armor": {
       "headArmor": 24,
       "bodyArmor": 0,
@@ -4178,6 +4376,7 @@
     "type": "ShoulderArmor",
     "price": 2503,
     "weight": 2.3,
+    "requirement": 9,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -4194,6 +4393,7 @@
     "type": "LegArmor",
     "price": 356,
     "weight": 1.1,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -4210,6 +4410,7 @@
     "type": "BodyArmor",
     "price": 3661,
     "weight": 1.9,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 19,
@@ -4226,6 +4427,7 @@
     "type": "Polearm",
     "price": 7350,
     "weight": 1.69,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -4259,6 +4461,7 @@
     "type": "TwoHandedWeapon",
     "price": 5378,
     "weight": 1.64,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -4291,6 +4494,7 @@
     "type": "Arrows",
     "price": 1080,
     "weight": 0.05,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Arrow",
@@ -4320,6 +4524,7 @@
     "type": "Polearm",
     "price": 50,
     "weight": 1.0,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -4353,6 +4558,7 @@
     "type": "Arrows",
     "price": 2504,
     "weight": 0.048,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Arrow",
@@ -4382,6 +4588,7 @@
     "type": "Arrows",
     "price": 1536,
     "weight": 0.048,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Arrow",
@@ -4411,6 +4618,7 @@
     "type": "Arrows",
     "price": 1234,
     "weight": 0.048,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Arrow",
@@ -4440,6 +4648,7 @@
     "type": "Bolts",
     "price": 530,
     "weight": 0.05,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bolt",
@@ -4470,6 +4679,7 @@
     "type": "Bolts",
     "price": 3210,
     "weight": 0.08,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bolt",
@@ -4500,6 +4710,7 @@
     "type": "Bolts",
     "price": 6729,
     "weight": 0.04,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bolt",
@@ -4530,6 +4741,7 @@
     "type": "Bolts",
     "price": 1340,
     "weight": 0.06,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bolt",
@@ -4560,6 +4772,7 @@
     "type": "Bolts",
     "price": 131,
     "weight": 0.04,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bolt",
@@ -4590,6 +4803,7 @@
     "type": "ShoulderArmor",
     "price": 1068,
     "weight": 0.5,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -4606,6 +4820,7 @@
     "type": "OneHandedWeapon",
     "price": 2269,
     "weight": 1.49,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -4635,6 +4850,7 @@
     "type": "Shield",
     "price": 1348,
     "weight": 7.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -4665,6 +4881,7 @@
     "type": "Shield",
     "price": 1368,
     "weight": 7.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -4695,6 +4912,7 @@
     "type": "Shield",
     "price": 1858,
     "weight": 5.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -4725,6 +4943,7 @@
     "type": "Shield",
     "price": 2955,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -4755,6 +4974,7 @@
     "type": "HeadArmor",
     "price": 6500,
     "weight": 2.55,
+    "requirement": 19,
     "armor": {
       "headArmor": 43,
       "bodyArmor": 0,
@@ -4771,6 +4991,7 @@
     "type": "HeadArmor",
     "price": 5001,
     "weight": 1.9,
+    "requirement": 16,
     "armor": {
       "headArmor": 37,
       "bodyArmor": 0,
@@ -4787,6 +5008,7 @@
     "type": "HeadArmor",
     "price": 5479,
     "weight": 2.3,
+    "requirement": 17,
     "armor": {
       "headArmor": 39,
       "bodyArmor": 0,
@@ -4803,6 +5025,7 @@
     "type": "HeadArmor",
     "price": 6237,
     "weight": 2.5,
+    "requirement": 18,
     "armor": {
       "headArmor": 42,
       "bodyArmor": 0,
@@ -4819,6 +5042,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 1.8,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -4835,6 +5059,7 @@
     "type": "HeadArmor",
     "price": 5238,
     "weight": 2.2,
+    "requirement": 16,
     "armor": {
       "headArmor": 38,
       "bodyArmor": 0,
@@ -4851,6 +5076,7 @@
     "type": "BodyArmor",
     "price": 20623,
     "weight": 22.0,
+    "requirement": 18,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 46,
@@ -4867,6 +5093,7 @@
     "type": "ShoulderArmor",
     "price": 5311,
     "weight": 3.5,
+    "requirement": 15,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -4883,6 +5110,7 @@
     "type": "ShoulderArmor",
     "price": 5311,
     "weight": 5.0,
+    "requirement": 15,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -4899,6 +5127,7 @@
     "type": "ShoulderArmor",
     "price": 5311,
     "weight": 2.2,
+    "requirement": 15,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -4915,6 +5144,7 @@
     "type": "OneHandedWeapon",
     "price": 2772,
     "weight": 1.67,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -4944,6 +5174,7 @@
     "type": "OneHandedWeapon",
     "price": 2159,
     "weight": 2.14,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -4973,6 +5204,7 @@
     "type": "OneHandedWeapon",
     "price": 2613,
     "weight": 1.39,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -5002,6 +5234,7 @@
     "type": "BodyArmor",
     "price": 7229,
     "weight": 12.3,
+    "requirement": 10,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 28,
@@ -5018,6 +5251,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -5034,6 +5268,7 @@
     "type": "BodyArmor",
     "price": 535,
     "weight": 0.4,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -5050,6 +5285,7 @@
     "type": "HandArmor",
     "price": 353,
     "weight": 0.5,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -5066,6 +5302,7 @@
     "type": "Mount",
     "price": 8766,
     "weight": 500.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 95,
       "chargeDamage": 3,
@@ -5082,6 +5319,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 130.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -5098,6 +5336,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 130.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -5114,6 +5353,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 130.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -5130,6 +5370,7 @@
     "type": "Banner",
     "price": 50,
     "weight": 4.0,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Banner",
@@ -5157,6 +5398,7 @@
     "type": "OneHandedWeapon",
     "price": 976,
     "weight": 0.78,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Dagger",
@@ -5209,6 +5451,7 @@
     "type": "Thrown",
     "price": 695,
     "weight": 0.8,
+    "requirement": 0,
     "weapons": [
       {
         "class": "ThrowingKnife",
@@ -5261,6 +5504,7 @@
     "type": "HeadArmor",
     "price": 1670,
     "weight": 1.9,
+    "requirement": 8,
     "armor": {
       "headArmor": 19,
       "bodyArmor": 0,
@@ -5277,6 +5521,7 @@
     "type": "HeadArmor",
     "price": 1809,
     "weight": 2.0,
+    "requirement": 8,
     "armor": {
       "headArmor": 20,
       "bodyArmor": 0,
@@ -5293,6 +5538,7 @@
     "type": "HeadArmor",
     "price": 3305,
     "weight": 2.1,
+    "requirement": 12,
     "armor": {
       "headArmor": 29,
       "bodyArmor": 0,
@@ -5309,6 +5555,7 @@
     "type": "HeadArmor",
     "price": 1809,
     "weight": 2.1,
+    "requirement": 8,
     "armor": {
       "headArmor": 20,
       "bodyArmor": 0,
@@ -5325,6 +5572,7 @@
     "type": "MountHarness",
     "price": 14945,
     "weight": 130.0,
+    "requirement": 20,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 17,
@@ -5341,6 +5589,7 @@
     "type": "MountHarness",
     "price": 10618,
     "weight": 120.0,
+    "requirement": 16,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -5357,6 +5606,7 @@
     "type": "ShoulderArmor",
     "price": 4138,
     "weight": 1.4,
+    "requirement": 13,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -5373,6 +5623,7 @@
     "type": "Mount",
     "price": 9549,
     "weight": 415.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 119,
       "chargeDamage": 3,
@@ -5389,6 +5640,7 @@
     "type": "Shield",
     "price": 4814,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -5419,6 +5671,7 @@
     "type": "TwoHandedWeapon",
     "price": 10288,
     "weight": 2.28,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -5487,6 +5740,7 @@
     "type": "OneHandedWeapon",
     "price": 2457,
     "weight": 1.8,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -5516,6 +5770,7 @@
     "type": "HeadArmor",
     "price": 2259,
     "weight": 2.4,
+    "requirement": 10,
     "armor": {
       "headArmor": 23,
       "bodyArmor": 0,
@@ -5532,6 +5787,7 @@
     "type": "HeadArmor",
     "price": 9113,
     "weight": 3.2,
+    "requirement": 23,
     "armor": {
       "headArmor": 52,
       "bodyArmor": 0,
@@ -5548,6 +5804,7 @@
     "type": "HeadArmor",
     "price": 8802,
     "weight": 3.7,
+    "requirement": 22,
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -5564,6 +5821,7 @@
     "type": "HeadArmor",
     "price": 351,
     "weight": 0.6,
+    "requirement": 2,
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -5580,6 +5838,7 @@
     "type": "BodyArmor",
     "price": 1655,
     "weight": 0.8,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -5596,6 +5855,7 @@
     "type": "HeadArmor",
     "price": 351,
     "weight": 0.4,
+    "requirement": 2,
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -5612,6 +5872,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.4,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -5628,6 +5889,7 @@
     "type": "BodyArmor",
     "price": 23682,
     "weight": 23.2,
+    "requirement": 20,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 50,
@@ -5644,6 +5906,7 @@
     "type": "Bow",
     "price": 3166,
     "weight": 0.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -5679,6 +5942,7 @@
     "type": "Bow",
     "price": 4233,
     "weight": 0.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -5714,6 +5978,7 @@
     "type": "Crossbow",
     "price": 7704,
     "weight": 2.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Crossbow",
@@ -5749,6 +6014,7 @@
     "type": "Crossbow",
     "price": 10462,
     "weight": 3.0,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Crossbow",
@@ -5783,6 +6049,7 @@
     "type": "Crossbow",
     "price": 13075,
     "weight": 2.2,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Crossbow",
@@ -5817,6 +6084,7 @@
     "type": "Crossbow",
     "price": 18000,
     "weight": 2.0,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Crossbow",
@@ -5852,6 +6120,7 @@
     "type": "BodyArmor",
     "price": 3450,
     "weight": 2.4,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 13,
@@ -5868,6 +6137,7 @@
     "type": "Shield",
     "price": 1609,
     "weight": 7.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -5898,6 +6168,7 @@
     "type": "BodyArmor",
     "price": 975,
     "weight": 0.6,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -5914,6 +6185,7 @@
     "type": "BodyArmor",
     "price": 440,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -5930,6 +6202,7 @@
     "type": "OneHandedWeapon",
     "price": 2174,
     "weight": 1.9,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -5959,6 +6232,7 @@
     "type": "HeadArmor",
     "price": 9113,
     "weight": 3.2,
+    "requirement": 23,
     "armor": {
       "headArmor": 52,
       "bodyArmor": 0,
@@ -5975,6 +6249,7 @@
     "type": "LegArmor",
     "price": 2933,
     "weight": 2.3,
+    "requirement": 18,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -5991,6 +6266,7 @@
     "type": "HandArmor",
     "price": 4038,
     "weight": 1.5,
+    "requirement": 19,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -6007,6 +6283,7 @@
     "type": "HeadArmor",
     "price": 351,
     "weight": 0.4,
+    "requirement": 2,
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -6023,6 +6300,7 @@
     "type": "BodyArmor",
     "price": 7527,
     "weight": 10.7,
+    "requirement": 10,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 25,
@@ -6039,6 +6317,7 @@
     "type": "BodyArmor",
     "price": 1230,
     "weight": 0.6,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -6055,6 +6334,7 @@
     "type": "Shield",
     "price": 2352,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -6085,6 +6365,7 @@
     "type": "Arrows",
     "price": 50,
     "weight": 0.043,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Arrow",
@@ -6114,6 +6395,7 @@
     "type": "HeadArmor",
     "price": 351,
     "weight": 0.4,
+    "requirement": 2,
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -6130,6 +6412,7 @@
     "type": "MountHarness",
     "price": 980,
     "weight": 22.5,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -6146,6 +6429,7 @@
     "type": "ShoulderArmor",
     "price": 208,
     "weight": 1.8,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -6162,6 +6446,7 @@
     "type": "HeadArmor",
     "price": 351,
     "weight": 0.2,
+    "requirement": 2,
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -6178,6 +6463,7 @@
     "type": "HeadArmor",
     "price": 1536,
     "weight": 1.2,
+    "requirement": 8,
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -6194,6 +6480,7 @@
     "type": "HeadArmor",
     "price": 7043,
     "weight": 2.9,
+    "requirement": 20,
     "armor": {
       "headArmor": 45,
       "bodyArmor": 0,
@@ -6210,6 +6497,7 @@
     "type": "BodyArmor",
     "price": 15130,
     "weight": 16.5,
+    "requirement": 15,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 48,
@@ -6226,6 +6514,7 @@
     "type": "ShoulderArmor",
     "price": 566,
     "weight": 1.8,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -6242,6 +6531,7 @@
     "type": "OneHandedWeapon",
     "price": 2573,
     "weight": 1.93,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -6271,6 +6561,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.0,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -6287,6 +6578,7 @@
     "type": "Shield",
     "price": 2689,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -6317,6 +6609,7 @@
     "type": "BodyArmor",
     "price": 4565,
     "weight": 1.3,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -6333,6 +6626,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 1.6,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -6349,6 +6643,7 @@
     "type": "BodyArmor",
     "price": 10122,
     "weight": 8.9,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 25,
@@ -6365,6 +6660,7 @@
     "type": "BodyArmor",
     "price": 25837,
     "weight": 20.0,
+    "requirement": 21,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 47,
@@ -6381,6 +6677,7 @@
     "type": "Thrown",
     "price": 913,
     "weight": 0.86,
+    "requirement": 0,
     "weapons": [
       {
         "class": "ThrowingKnife",
@@ -6433,6 +6730,7 @@
     "type": "Mount",
     "price": 10522,
     "weight": 480.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 100,
       "chargeDamage": 8,
@@ -6449,6 +6747,7 @@
     "type": "BodyArmor",
     "price": 636,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -6465,6 +6764,7 @@
     "type": "TwoHandedWeapon",
     "price": 9255,
     "weight": 1.32,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -6533,6 +6833,7 @@
     "type": "Polearm",
     "price": 10224,
     "weight": 2.45,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -6585,6 +6886,7 @@
     "type": "HeadArmor",
     "price": 351,
     "weight": 0.3,
+    "requirement": 2,
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -6601,6 +6903,7 @@
     "type": "Thrown",
     "price": 806,
     "weight": 0.91,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Javelin",
@@ -6654,6 +6957,7 @@
     "type": "Thrown",
     "price": 903,
     "weight": 1.11,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Javelin",
@@ -6707,6 +7011,7 @@
     "type": "Thrown",
     "price": 2101,
     "weight": 1.2,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Javelin",
@@ -6760,6 +7065,7 @@
     "type": "BodyArmor",
     "price": 12697,
     "weight": 13.0,
+    "requirement": 14,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 39,
@@ -6776,6 +7082,7 @@
     "type": "LegArmor",
     "price": 450,
     "weight": 1.1,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -6792,6 +7099,7 @@
     "type": "BodyArmor",
     "price": 15988,
     "weight": 18.6,
+    "requirement": 16,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 36,
@@ -6808,6 +7116,7 @@
     "type": "HandArmor",
     "price": 5576,
     "weight": 1.7,
+    "requirement": 23,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -6824,6 +7133,7 @@
     "type": "BodyArmor",
     "price": 7229,
     "weight": 14.2,
+    "requirement": 10,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 34,
@@ -6840,6 +7150,7 @@
     "type": "BodyArmor",
     "price": 1230,
     "weight": 0.4,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -6856,6 +7167,7 @@
     "type": "Polearm",
     "price": 1337,
     "weight": 1.53,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -6908,6 +7220,7 @@
     "type": "Polearm",
     "price": 1874,
     "weight": 2.17,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -6960,6 +7273,7 @@
     "type": "Polearm",
     "price": 1462,
     "weight": 1.73,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -7034,6 +7348,7 @@
     "type": "Polearm",
     "price": 2110,
     "weight": 2.01,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -7090,6 +7405,7 @@
     "type": "Polearm",
     "price": 2660,
     "weight": 1.4,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -7142,6 +7458,7 @@
     "type": "OneHandedWeapon",
     "price": 2220,
     "weight": 1.88,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -7171,6 +7488,7 @@
     "type": "BodyArmor",
     "price": 6094,
     "weight": 8.4,
+    "requirement": 9,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 20,
@@ -7187,6 +7505,7 @@
     "type": "BodyArmor",
     "price": 5051,
     "weight": 3.0,
+    "requirement": 8,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -7203,6 +7522,7 @@
     "type": "ShoulderArmor",
     "price": 4904,
     "weight": 2.3,
+    "requirement": 14,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 17,
@@ -7219,6 +7539,7 @@
     "type": "Polearm",
     "price": 3380,
     "weight": 1.43,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -7294,6 +7615,7 @@
     "type": "Polearm",
     "price": 7172,
     "weight": 1.57,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -7369,6 +7691,7 @@
     "type": "HeadArmor",
     "price": 8802,
     "weight": 4.0,
+    "requirement": 22,
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -7385,6 +7708,7 @@
     "type": "Shield",
     "price": 2855,
     "weight": 2.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -7415,6 +7739,7 @@
     "type": "HandArmor",
     "price": 254,
     "weight": 0.3,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -7431,6 +7756,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.0,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -7447,6 +7773,7 @@
     "type": "Shield",
     "price": 3330,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -7477,6 +7804,7 @@
     "type": "HeadArmor",
     "price": 7043,
     "weight": 2.1,
+    "requirement": 20,
     "armor": {
       "headArmor": 45,
       "bodyArmor": 0,
@@ -7493,6 +7821,7 @@
     "type": "HeadArmor",
     "price": 7898,
     "weight": 3.1,
+    "requirement": 21,
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -7509,6 +7838,7 @@
     "type": "ShoulderArmor",
     "price": 566,
     "weight": 0.5,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -7525,6 +7855,7 @@
     "type": "HeadArmor",
     "price": 4325,
     "weight": 2.1,
+    "requirement": 15,
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -7541,6 +7872,7 @@
     "type": "HeadArmor",
     "price": 287,
     "weight": 0.3,
+    "requirement": 2,
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -7557,6 +7889,7 @@
     "type": "HeadArmor",
     "price": 351,
     "weight": 0.5,
+    "requirement": 2,
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -7573,6 +7906,7 @@
     "type": "BodyArmor",
     "price": 1366,
     "weight": 0.7,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -7589,6 +7923,7 @@
     "type": "BodyArmor",
     "price": 975,
     "weight": 0.6,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -7605,6 +7940,7 @@
     "type": "HeadArmor",
     "price": 8802,
     "weight": 3.7,
+    "requirement": 22,
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -7621,6 +7957,7 @@
     "type": "HeadArmor",
     "price": 7608,
     "weight": 3.4,
+    "requirement": 20,
     "armor": {
       "headArmor": 47,
       "bodyArmor": 0,
@@ -7637,6 +7974,7 @@
     "type": "Mount",
     "price": 8703,
     "weight": 370.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 110,
       "chargeDamage": 3,
@@ -7653,6 +7991,7 @@
     "type": "BodyArmor",
     "price": 9778,
     "weight": 8.3,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 27,
@@ -7669,6 +8008,7 @@
     "type": "LegArmor",
     "price": 356,
     "weight": 0.8,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -7685,6 +8025,7 @@
     "type": "HeadArmor",
     "price": 7608,
     "weight": 3.4,
+    "requirement": 20,
     "armor": {
       "headArmor": 47,
       "bodyArmor": 0,
@@ -7701,6 +8042,7 @@
     "type": "Polearm",
     "price": 1470,
     "weight": 1.95,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -7773,6 +8115,7 @@
     "type": "Polearm",
     "price": 2062,
     "weight": 2.22,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -7827,6 +8170,7 @@
     "type": "Polearm",
     "price": 2673,
     "weight": 2.04,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -7881,6 +8225,7 @@
     "type": "BodyArmor",
     "price": 12697,
     "weight": 22.0,
+    "requirement": 14,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 30,
@@ -7897,6 +8242,7 @@
     "type": "BodyArmor",
     "price": 15130,
     "weight": 28.0,
+    "requirement": 15,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 36,
@@ -7913,6 +8259,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.2,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -7929,6 +8276,7 @@
     "type": "OneHandedWeapon",
     "price": 706,
     "weight": 1.14,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -7958,6 +8306,7 @@
     "type": "OneHandedWeapon",
     "price": 2263,
     "weight": 1.9,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -7987,6 +8336,7 @@
     "type": "OneHandedWeapon",
     "price": 2130,
     "weight": 1.8,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -8016,6 +8366,7 @@
     "type": "OneHandedWeapon",
     "price": 2140,
     "weight": 2.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -8045,6 +8396,7 @@
     "type": "OneHandedWeapon",
     "price": 2371,
     "weight": 2.24,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -8074,6 +8426,7 @@
     "type": "OneHandedWeapon",
     "price": 2902,
     "weight": 1.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -8103,6 +8456,7 @@
     "type": "OneHandedWeapon",
     "price": 2860,
     "weight": 1.49,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -8132,6 +8486,7 @@
     "type": "OneHandedWeapon",
     "price": 2495,
     "weight": 1.46,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -8161,6 +8516,7 @@
     "type": "ShoulderArmor",
     "price": 885,
     "weight": 2.4,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -8177,6 +8533,7 @@
     "type": "ShoulderArmor",
     "price": 1068,
     "weight": 2.2,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -8193,6 +8550,7 @@
     "type": "Polearm",
     "price": 12201,
     "weight": 1.81,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -8247,6 +8605,7 @@
     "type": "Polearm",
     "price": 12317,
     "weight": 1.81,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -8299,6 +8658,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 1.0,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -8315,6 +8675,7 @@
     "type": "OneHandedWeapon",
     "price": 2235,
     "weight": 1.37,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -8344,6 +8705,7 @@
     "type": "OneHandedWeapon",
     "price": 2235,
     "weight": 1.41,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -8373,6 +8735,7 @@
     "type": "OneHandedWeapon",
     "price": 2517,
     "weight": 1.48,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -8402,6 +8765,7 @@
     "type": "OneHandedWeapon",
     "price": 2504,
     "weight": 1.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -8431,6 +8795,7 @@
     "type": "OneHandedWeapon",
     "price": 2869,
     "weight": 1.37,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -8460,6 +8825,7 @@
     "type": "Thrown",
     "price": 879,
     "weight": 0.96,
+    "requirement": 0,
     "weapons": [
       {
         "class": "ThrowingKnife",
@@ -8512,6 +8878,7 @@
     "type": "BodyArmor",
     "price": 3661,
     "weight": 2.1,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -8528,6 +8895,7 @@
     "type": "BodyArmor",
     "price": 4101,
     "weight": 1.8,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -8544,6 +8912,7 @@
     "type": "BodyArmor",
     "price": 4101,
     "weight": 2.0,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -8560,6 +8929,7 @@
     "type": "BodyArmor",
     "price": 4101,
     "weight": 1.6,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -8576,6 +8946,7 @@
     "type": "BodyArmor",
     "price": 4330,
     "weight": 1.5,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -8592,6 +8963,7 @@
     "type": "BodyArmor",
     "price": 4330,
     "weight": 1.9,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 17,
@@ -8608,6 +8980,7 @@
     "type": "BodyArmor",
     "price": 4565,
     "weight": 2.0,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -8624,6 +8997,7 @@
     "type": "ShoulderArmor",
     "price": 2224,
     "weight": 1.6,
+    "requirement": 9,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 9,
@@ -8640,6 +9014,7 @@
     "type": "TwoHandedWeapon",
     "price": 6461,
     "weight": 1.37,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -8672,6 +9047,7 @@
     "type": "OneHandedWeapon",
     "price": 1661,
     "weight": 1.69,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -8701,6 +9077,7 @@
     "type": "HeadArmor",
     "price": 6237,
     "weight": 3.1,
+    "requirement": 18,
     "armor": {
       "headArmor": 42,
       "bodyArmor": 0,
@@ -8717,6 +9094,7 @@
     "type": "HeadArmor",
     "price": 128,
     "weight": 0.1,
+    "requirement": 0,
     "armor": {
       "headArmor": 2,
       "bodyArmor": 0,
@@ -8733,6 +9111,7 @@
     "type": "ShoulderArmor",
     "price": 208,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -8749,6 +9128,7 @@
     "type": "Polearm",
     "price": 2083,
     "weight": 2.81,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -8803,6 +9183,7 @@
     "type": "BodyArmor",
     "price": 856,
     "weight": 0.7,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -8819,6 +9200,7 @@
     "type": "LegArmor",
     "price": 272,
     "weight": 0.5,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -8835,6 +9217,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.4,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -8851,6 +9234,7 @@
     "type": "Shield",
     "price": 2901,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -8881,6 +9265,7 @@
     "type": "LegArmor",
     "price": 272,
     "weight": 1.0,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -8897,6 +9282,7 @@
     "type": "BodyArmor",
     "price": 636,
     "weight": 0.6,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -8913,6 +9299,7 @@
     "type": "Shield",
     "price": 2352,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -8943,6 +9330,7 @@
     "type": "Shield",
     "price": 4113,
     "weight": 5.4,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -8973,6 +9361,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.0,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -8989,6 +9378,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.2,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -9005,6 +9395,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.25,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -9021,6 +9412,7 @@
     "type": "HeadArmor",
     "price": 8495,
     "weight": 3.7,
+    "requirement": 22,
     "armor": {
       "headArmor": 50,
       "bodyArmor": 0,
@@ -9037,6 +9429,7 @@
     "type": "HeadArmor",
     "price": 7898,
     "weight": 3.1,
+    "requirement": 21,
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -9053,6 +9446,7 @@
     "type": "HeadArmor",
     "price": 7898,
     "weight": 3.6,
+    "requirement": 21,
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -9069,6 +9463,7 @@
     "type": "BodyArmor",
     "price": 2480,
     "weight": 4.0,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -9085,6 +9480,7 @@
     "type": "BodyArmor",
     "price": 2303,
     "weight": 3.1,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -9101,6 +9497,7 @@
     "type": "BodyArmor",
     "price": 2303,
     "weight": 2.1,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -9117,6 +9514,7 @@
     "type": "HeadArmor",
     "price": 420,
     "weight": 0.35,
+    "requirement": 3,
     "armor": {
       "headArmor": 7,
       "bodyArmor": 0,
@@ -9133,6 +9531,7 @@
     "type": "HeadArmor",
     "price": 846,
     "weight": 0.6,
+    "requirement": 5,
     "armor": {
       "headArmor": 12,
       "bodyArmor": 0,
@@ -9149,6 +9548,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 0.6,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -9165,6 +9565,7 @@
     "type": "BodyArmor",
     "price": 1230,
     "weight": 0.9,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -9181,6 +9582,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 0.4,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -9197,6 +9599,7 @@
     "type": "BodyArmor",
     "price": 1230,
     "weight": 0.8,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -9213,6 +9616,7 @@
     "type": "BodyArmor",
     "price": 975,
     "weight": 2.3,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -9229,6 +9633,7 @@
     "type": "BodyArmor",
     "price": 6094,
     "weight": 2.0,
+    "requirement": 9,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -9245,6 +9650,7 @@
     "type": "Thrown",
     "price": 1446,
     "weight": 1.35,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Javelin",
@@ -9298,6 +9704,7 @@
     "type": "OneHandedWeapon",
     "price": 1076,
     "weight": 0.93,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Dagger",
@@ -9327,6 +9734,7 @@
     "type": "Bow",
     "price": 2942,
     "weight": 0.4,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -9362,6 +9770,7 @@
     "type": "HeadArmor",
     "price": 8802,
     "weight": 4.4,
+    "requirement": 22,
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -9378,6 +9787,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.1,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -9394,6 +9804,7 @@
     "type": "HeadArmor",
     "price": 8495,
     "weight": 3.4,
+    "requirement": 22,
     "armor": {
       "headArmor": 50,
       "bodyArmor": 0,
@@ -9410,6 +9821,7 @@
     "type": "ShoulderArmor",
     "price": 312,
     "weight": 0.5,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -9426,6 +9838,7 @@
     "type": "HandArmor",
     "price": 743,
     "weight": 0.4,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -9442,6 +9855,7 @@
     "type": "HandArmor",
     "price": 1080,
     "weight": 0.6,
+    "requirement": 8,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -9458,6 +9872,7 @@
     "type": "HeadArmor",
     "price": 4110,
     "weight": 3.0,
+    "requirement": 14,
     "armor": {
       "headArmor": 33,
       "bodyArmor": 0,
@@ -9474,6 +9889,7 @@
     "type": "HeadArmor",
     "price": 5238,
     "weight": 3.6,
+    "requirement": 16,
     "armor": {
       "headArmor": 38,
       "bodyArmor": 0,
@@ -9490,6 +9906,7 @@
     "type": "HeadArmor",
     "price": 4325,
     "weight": 3.0,
+    "requirement": 15,
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -9506,6 +9923,7 @@
     "type": "BodyArmor",
     "price": 440,
     "weight": 0.7,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -9522,6 +9940,7 @@
     "type": "MountHarness",
     "price": 11979,
     "weight": 90.0,
+    "requirement": 18,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -9538,6 +9957,7 @@
     "type": "MountHarness",
     "price": 13421,
     "weight": 80.0,
+    "requirement": 19,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -9554,6 +9974,7 @@
     "type": "MountHarness",
     "price": 10618,
     "weight": 65.0,
+    "requirement": 16,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -9570,6 +9991,7 @@
     "type": "BodyArmor",
     "price": 11559,
     "weight": 9.5,
+    "requirement": 13,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 27,
@@ -9586,6 +10008,7 @@
     "type": "HeadArmor",
     "price": 176,
     "weight": 0.2,
+    "requirement": 1,
     "armor": {
       "headArmor": 3,
       "bodyArmor": 0,
@@ -9602,6 +10025,7 @@
     "type": "HeadArmor",
     "price": 128,
     "weight": 0.1,
+    "requirement": 0,
     "armor": {
       "headArmor": 2,
       "bodyArmor": 0,
@@ -9618,6 +10042,7 @@
     "type": "HeadArmor",
     "price": 86,
     "weight": 0.3,
+    "requirement": 0,
     "armor": {
       "headArmor": 1,
       "bodyArmor": 0,
@@ -9634,6 +10059,7 @@
     "type": "HeadArmor",
     "price": 86,
     "weight": 0.05,
+    "requirement": 0,
     "armor": {
       "headArmor": 1,
       "bodyArmor": 0,
@@ -9650,6 +10076,7 @@
     "type": "HeadArmor",
     "price": 176,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 3,
       "bodyArmor": 0,
@@ -9666,6 +10093,7 @@
     "type": "HeadArmor",
     "price": 176,
     "weight": 0.3,
+    "requirement": 1,
     "armor": {
       "headArmor": 3,
       "bodyArmor": 0,
@@ -9682,6 +10110,7 @@
     "type": "HeadArmor",
     "price": 176,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 3,
       "bodyArmor": 0,
@@ -9698,6 +10127,7 @@
     "type": "Shield",
     "price": 1846,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -9728,6 +10158,7 @@
     "type": "Shield",
     "price": 7019,
     "weight": 3.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -9758,6 +10189,7 @@
     "type": "HeadArmor",
     "price": 7898,
     "weight": 3.4,
+    "requirement": 21,
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -9774,6 +10206,7 @@
     "type": "HeadArmor",
     "price": 8802,
     "weight": 3.6,
+    "requirement": 22,
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -9790,6 +10223,7 @@
     "type": "HeadArmor",
     "price": 7898,
     "weight": 3.0,
+    "requirement": 21,
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -9806,6 +10240,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.1,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -9822,6 +10257,7 @@
     "type": "BodyArmor",
     "price": 975,
     "weight": 0.9,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -9838,6 +10274,7 @@
     "type": "BodyArmor",
     "price": 975,
     "weight": 1.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -9854,6 +10291,7 @@
     "type": "Shield",
     "price": 4884,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -9884,6 +10322,7 @@
     "type": "Arrows",
     "price": 804,
     "weight": 0.036,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Arrow",
@@ -9913,6 +10352,7 @@
     "type": "HeadArmor",
     "price": 2586,
     "weight": 2.5,
+    "requirement": 11,
     "armor": {
       "headArmor": 25,
       "bodyArmor": 0,
@@ -9929,6 +10369,7 @@
     "type": "BodyArmor",
     "price": 636,
     "weight": 0.4,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -9945,6 +10386,7 @@
     "type": "LegArmor",
     "price": 356,
     "weight": 1.0,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -9961,6 +10403,7 @@
     "type": "BodyArmor",
     "price": 1655,
     "weight": 1.5,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 9,
@@ -9977,6 +10420,7 @@
     "type": "HandArmor",
     "price": 904,
     "weight": 0.8,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -9993,6 +10437,7 @@
     "type": "LegArmor",
     "price": 672,
     "weight": 1.0,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -10009,6 +10454,7 @@
     "type": "Bow",
     "price": 2112,
     "weight": 0.4,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -10044,6 +10490,7 @@
     "type": "Shield",
     "price": 4429,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -10074,6 +10521,7 @@
     "type": "Shield",
     "price": 3234,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -10104,6 +10552,7 @@
     "type": "Polearm",
     "price": 1388,
     "weight": 2.46,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -10198,6 +10647,7 @@
     "type": "Polearm",
     "price": 2024,
     "weight": 2.03,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -10272,6 +10722,7 @@
     "type": "Polearm",
     "price": 2584,
     "weight": 1.85,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -10328,6 +10779,7 @@
     "type": "Thrown",
     "price": 1996,
     "weight": 0.69,
+    "requirement": 0,
     "weapons": [
       {
         "class": "ThrowingAxe",
@@ -10382,6 +10834,7 @@
     "type": "ShoulderArmor",
     "price": 312,
     "weight": 0.4,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -10398,6 +10851,7 @@
     "type": "TwoHandedWeapon",
     "price": 5018,
     "weight": 1.52,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -10430,6 +10884,7 @@
     "type": "OneHandedWeapon",
     "price": 1045,
     "weight": 0.82,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Dagger",
@@ -10459,6 +10914,7 @@
     "type": "OneHandedWeapon",
     "price": 50,
     "weight": 0.2,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -10488,6 +10944,7 @@
     "type": "Shield",
     "price": 2069,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -10518,6 +10975,7 @@
     "type": "Mount",
     "price": 9666,
     "weight": 380.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 94,
       "chargeDamage": 2,
@@ -10534,6 +10992,7 @@
     "type": "Bow",
     "price": 1599,
     "weight": 0.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -10569,6 +11028,7 @@
     "type": "OneHandedWeapon",
     "price": 2242,
     "weight": 1.08,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -10599,6 +11059,7 @@
     "type": "HeadArmor",
     "price": 128,
     "weight": 0.2,
+    "requirement": 0,
     "armor": {
       "headArmor": 2,
       "bodyArmor": 0,
@@ -10615,6 +11076,7 @@
     "type": "HeadArmor",
     "price": 9113,
     "weight": 3.2,
+    "requirement": 23,
     "armor": {
       "headArmor": 52,
       "bodyArmor": 0,
@@ -10631,6 +11093,7 @@
     "type": "BodyArmor",
     "price": 26950,
     "weight": 22.1,
+    "requirement": 21,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 48,
@@ -10647,6 +11110,7 @@
     "type": "BodyArmor",
     "price": 9106,
     "weight": 15.0,
+    "requirement": 11,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 33,
@@ -10663,6 +11127,7 @@
     "type": "ShoulderArmor",
     "price": 7098,
     "weight": 3.5,
+    "requirement": 18,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 17,
@@ -10679,6 +11144,7 @@
     "type": "HeadArmor",
     "price": 351,
     "weight": 0.3,
+    "requirement": 2,
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -10695,6 +11161,7 @@
     "type": "HeadArmor",
     "price": 1670,
     "weight": 1.7,
+    "requirement": 8,
     "armor": {
       "headArmor": 19,
       "bodyArmor": 0,
@@ -10711,6 +11178,7 @@
     "type": "BodyArmor",
     "price": 8141,
     "weight": 8.6,
+    "requirement": 10,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 31,
@@ -10727,6 +11195,7 @@
     "type": "BodyArmor",
     "price": 8141,
     "weight": 10.2,
+    "requirement": 10,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 31,
@@ -10743,6 +11212,7 @@
     "type": "BodyArmor",
     "price": 10473,
     "weight": 9.8,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 26,
@@ -10759,6 +11229,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 3.2,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -10775,6 +11246,7 @@
     "type": "BodyArmor",
     "price": 4565,
     "weight": 2.8,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -10791,6 +11263,7 @@
     "type": "HeadArmor",
     "price": 1054,
     "weight": 0.5,
+    "requirement": 6,
     "armor": {
       "headArmor": 14,
       "bodyArmor": 0,
@@ -10807,6 +11280,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 22.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -10823,6 +11297,7 @@
     "type": "BodyArmor",
     "price": 1655,
     "weight": 0.9,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -10839,6 +11314,7 @@
     "type": "BodyArmor",
     "price": 31026,
     "weight": 21.4,
+    "requirement": 23,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 57,
@@ -10855,6 +11331,7 @@
     "type": "MountHarness",
     "price": 20000,
     "weight": 135.0,
+    "requirement": 24,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 20,
@@ -10871,6 +11348,7 @@
     "type": "Polearm",
     "price": 1107,
     "weight": 1.94,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -10923,6 +11401,7 @@
     "type": "ShoulderArmor",
     "price": 2224,
     "weight": 3.9,
+    "requirement": 9,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -10939,6 +11418,7 @@
     "type": "Polearm",
     "price": 3656,
     "weight": 1.19,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -11017,6 +11497,7 @@
     "type": "OneHandedWeapon",
     "price": 1766,
     "weight": 1.69,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -11046,6 +11527,7 @@
     "type": "HeadArmor",
     "price": 2757,
     "weight": 3.2,
+    "requirement": 11,
     "armor": {
       "headArmor": 26,
       "bodyArmor": 0,
@@ -11062,6 +11544,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 3.2,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -11078,6 +11561,7 @@
     "type": "HeadArmor",
     "price": 6237,
     "weight": 3.3,
+    "requirement": 18,
     "armor": {
       "headArmor": 42,
       "bodyArmor": 0,
@@ -11094,6 +11578,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.2,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -11110,6 +11595,7 @@
     "type": "HeadArmor",
     "price": 7898,
     "weight": 3.6,
+    "requirement": 21,
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -11126,6 +11612,7 @@
     "type": "HeadArmor",
     "price": 7898,
     "weight": 3.3,
+    "requirement": 21,
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -11142,6 +11629,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.1,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -11158,6 +11646,7 @@
     "type": "HeadArmor",
     "price": 3498,
     "weight": 2.2,
+    "requirement": 13,
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -11174,6 +11663,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 2.85,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -11190,6 +11680,7 @@
     "type": "HeadArmor",
     "price": 4110,
     "weight": 2.85,
+    "requirement": 14,
     "armor": {
       "headArmor": 33,
       "bodyArmor": 0,
@@ -11206,6 +11697,7 @@
     "type": "Shield",
     "price": 2115,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -11236,6 +11728,7 @@
     "type": "Shield",
     "price": 2224,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -11266,6 +11759,7 @@
     "type": "OneHandedWeapon",
     "price": 1686,
     "weight": 1.83,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -11295,6 +11789,7 @@
     "type": "TwoHandedWeapon",
     "price": 5609,
     "weight": 1.41,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedSword",
@@ -11325,6 +11820,7 @@
     "type": "TwoHandedWeapon",
     "price": 7729,
     "weight": 1.76,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -11393,6 +11889,7 @@
     "type": "HeadArmor",
     "price": 6237,
     "weight": 2.9,
+    "requirement": 18,
     "armor": {
       "headArmor": 42,
       "bodyArmor": 0,
@@ -11409,6 +11906,7 @@
     "type": "HeadArmor",
     "price": 4325,
     "weight": 2.4,
+    "requirement": 15,
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -11425,6 +11923,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 2.6,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -11441,6 +11940,7 @@
     "type": "HeadArmor",
     "price": 3900,
     "weight": 2.3,
+    "requirement": 14,
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -11457,6 +11957,7 @@
     "type": "HeadArmor",
     "price": 4545,
     "weight": 2.5,
+    "requirement": 15,
     "armor": {
       "headArmor": 35,
       "bodyArmor": 0,
@@ -11473,6 +11974,7 @@
     "type": "HeadArmor",
     "price": 5727,
     "weight": 2.8,
+    "requirement": 17,
     "armor": {
       "headArmor": 40,
       "bodyArmor": 0,
@@ -11489,6 +11991,7 @@
     "type": "HeadArmor",
     "price": 4110,
     "weight": 2.25,
+    "requirement": 14,
     "armor": {
       "headArmor": 33,
       "bodyArmor": 0,
@@ -11505,6 +12008,7 @@
     "type": "HeadArmor",
     "price": 4110,
     "weight": 2.6,
+    "requirement": 14,
     "armor": {
       "headArmor": 33,
       "bodyArmor": 0,
@@ -11521,6 +12025,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 2.68,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -11537,6 +12042,7 @@
     "type": "HeadArmor",
     "price": 4110,
     "weight": 2.4,
+    "requirement": 14,
     "armor": {
       "headArmor": 33,
       "bodyArmor": 0,
@@ -11553,6 +12059,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 2.9,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -11569,6 +12076,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 2.7,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -11585,6 +12093,7 @@
     "type": "BodyArmor",
     "price": 1507,
     "weight": 2.4,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -11601,6 +12110,7 @@
     "type": "BodyArmor",
     "price": 1230,
     "weight": 2.7,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -11617,6 +12127,7 @@
     "type": "BodyArmor",
     "price": 1230,
     "weight": 2.7,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -11633,6 +12144,7 @@
     "type": "HeadArmor",
     "price": 2103,
     "weight": 1.4,
+    "requirement": 9,
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -11649,6 +12161,7 @@
     "type": "LegArmor",
     "price": 356,
     "weight": 0.9,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -11665,6 +12178,7 @@
     "type": "BodyArmor",
     "price": 1230,
     "weight": 0.8,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -11681,6 +12195,7 @@
     "type": "BodyArmor",
     "price": 1366,
     "weight": 0.9,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -11697,6 +12212,7 @@
     "type": "BodyArmor",
     "price": 3045,
     "weight": 2.4,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -11713,6 +12229,7 @@
     "type": "Mount",
     "price": 9072,
     "weight": 365.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 94,
       "chargeDamage": 2,
@@ -11729,6 +12246,7 @@
     "type": "Polearm",
     "price": 1557,
     "weight": 1.91,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -11803,6 +12321,7 @@
     "type": "Polearm",
     "price": 1994,
     "weight": 1.94,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -11875,6 +12394,7 @@
     "type": "Polearm",
     "price": 2548,
     "weight": 1.9,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -11950,6 +12470,7 @@
     "type": "ShoulderArmor",
     "price": 1713,
     "weight": 1.5,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -11966,6 +12487,7 @@
     "type": "OneHandedWeapon",
     "price": 1136,
     "weight": 1.73,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -11995,6 +12517,7 @@
     "type": "OneHandedWeapon",
     "price": 1957,
     "weight": 2.35,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -12024,6 +12547,7 @@
     "type": "OneHandedWeapon",
     "price": 2030,
     "weight": 2.12,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -12053,6 +12577,7 @@
     "type": "OneHandedWeapon",
     "price": 2054,
     "weight": 2.29,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -12082,6 +12607,7 @@
     "type": "HeadArmor",
     "price": 7898,
     "weight": 3.4,
+    "requirement": 21,
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -12098,6 +12624,7 @@
     "type": "HeadArmor",
     "price": 7043,
     "weight": 3.4,
+    "requirement": 20,
     "armor": {
       "headArmor": 45,
       "bodyArmor": 0,
@@ -12114,6 +12641,7 @@
     "type": "HeadArmor",
     "price": 7898,
     "weight": 3.6,
+    "requirement": 21,
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -12130,6 +12658,7 @@
     "type": "OneHandedWeapon",
     "price": 2900,
     "weight": 1.8,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -12159,6 +12688,7 @@
     "type": "OneHandedWeapon",
     "price": 3130,
     "weight": 1.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -12188,6 +12718,7 @@
     "type": "OneHandedWeapon",
     "price": 3194,
     "weight": 1.8,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -12217,6 +12748,7 @@
     "type": "Polearm",
     "price": 13591,
     "weight": 2.04,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -12269,6 +12801,7 @@
     "type": "Polearm",
     "price": 19508,
     "weight": 1.4,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -12321,6 +12854,7 @@
     "type": "BodyArmor",
     "price": 3244,
     "weight": 2.4,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -12337,6 +12871,7 @@
     "type": "OneHandedWeapon",
     "price": 1829,
     "weight": 1.23,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -12366,6 +12901,7 @@
     "type": "OneHandedWeapon",
     "price": 2629,
     "weight": 1.35,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -12395,6 +12931,7 @@
     "type": "OneHandedWeapon",
     "price": 2681,
     "weight": 1.4,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -12424,6 +12961,7 @@
     "type": "OneHandedWeapon",
     "price": 2815,
     "weight": 1.55,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -12453,6 +12991,7 @@
     "type": "OneHandedWeapon",
     "price": 2744,
     "weight": 1.62,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -12482,6 +13021,7 @@
     "type": "BodyArmor",
     "price": 17772,
     "weight": 16.0,
+    "requirement": 17,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 42,
@@ -12498,6 +13038,7 @@
     "type": "OneHandedWeapon",
     "price": 1609,
     "weight": 1.9,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -12527,6 +13068,7 @@
     "type": "HeadArmor",
     "price": 351,
     "weight": 0.4,
+    "requirement": 2,
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -12543,6 +13085,7 @@
     "type": "HeadArmor",
     "price": 1054,
     "weight": 0.6,
+    "requirement": 6,
     "armor": {
       "headArmor": 14,
       "bodyArmor": 0,
@@ -12559,6 +13102,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.6,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -12575,6 +13119,7 @@
     "type": "LegArmor",
     "price": 89,
     "weight": 0.6,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -12591,6 +13136,7 @@
     "type": "LegArmor",
     "price": 2684,
     "weight": 3.5,
+    "requirement": 17,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -12607,6 +13153,7 @@
     "type": "HandArmor",
     "price": 5168,
     "weight": 1.8,
+    "requirement": 22,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -12623,6 +13170,7 @@
     "type": "ShoulderArmor",
     "price": 5311,
     "weight": 5.0,
+    "requirement": 15,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -12639,6 +13187,7 @@
     "type": "BodyArmor",
     "price": 29832,
     "weight": 24.1,
+    "requirement": 23,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 52,
@@ -12655,6 +13204,7 @@
     "type": "Shield",
     "price": 2072,
     "weight": 7.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -12685,6 +13235,7 @@
     "type": "OneHandedWeapon",
     "price": 2031,
     "weight": 1.21,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -12715,6 +13266,7 @@
     "type": "BodyArmor",
     "price": 2303,
     "weight": 1.2,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -12731,6 +13283,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 2.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -12747,6 +13300,7 @@
     "type": "Thrown",
     "price": 784,
     "weight": 0.86,
+    "requirement": 0,
     "weapons": [
       {
         "class": "ThrowingKnife",
@@ -12799,6 +13353,7 @@
     "type": "BodyArmor",
     "price": 4565,
     "weight": 9.6,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 22,
@@ -12815,6 +13370,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 2.5,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -12831,6 +13387,7 @@
     "type": "LegArmor",
     "price": 272,
     "weight": 0.8,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -12847,6 +13404,7 @@
     "type": "Shield",
     "price": 1374,
     "weight": 6.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -12877,6 +13435,7 @@
     "type": "HeadArmor",
     "price": 494,
     "weight": 0.4,
+    "requirement": 3,
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -12893,6 +13452,7 @@
     "type": "LegArmor",
     "price": 450,
     "weight": 0.9,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -12909,6 +13469,7 @@
     "type": "BodyArmor",
     "price": 1507,
     "weight": 0.7,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -12925,6 +13486,7 @@
     "type": "HandArmor",
     "price": 353,
     "weight": 0.4,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -12941,6 +13503,7 @@
     "type": "BodyArmor",
     "price": 7831,
     "weight": 14.0,
+    "requirement": 10,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 24,
@@ -12957,6 +13520,7 @@
     "type": "ShoulderArmor",
     "price": 2798,
     "weight": 2.3,
+    "requirement": 10,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -12973,6 +13537,7 @@
     "type": "Shield",
     "price": 3336,
     "weight": 6.9,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -13003,6 +13568,7 @@
     "type": "BodyArmor",
     "price": 4101,
     "weight": 6.9,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -13019,6 +13585,7 @@
     "type": "LegArmor",
     "price": 200,
     "weight": 0.7,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -13035,6 +13602,7 @@
     "type": "BodyArmor",
     "price": 10122,
     "weight": 5.5,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 36,
@@ -13051,6 +13619,7 @@
     "type": "HeadArmor",
     "price": 494,
     "weight": 0.5,
+    "requirement": 3,
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -13067,6 +13636,7 @@
     "type": "HeadArmor",
     "price": 659,
     "weight": 0.7,
+    "requirement": 4,
     "armor": {
       "headArmor": 10,
       "bodyArmor": 0,
@@ -13083,6 +13653,7 @@
     "type": "HeadArmor",
     "price": 2103,
     "weight": 2.1,
+    "requirement": 9,
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -13099,6 +13670,7 @@
     "type": "HeadArmor",
     "price": 846,
     "weight": 0.8,
+    "requirement": 5,
     "armor": {
       "headArmor": 12,
       "bodyArmor": 0,
@@ -13115,6 +13687,7 @@
     "type": "BodyArmor",
     "price": 2662,
     "weight": 2.1,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -13131,6 +13704,7 @@
     "type": "HeadArmor",
     "price": 5727,
     "weight": 2.7,
+    "requirement": 17,
     "armor": {
       "headArmor": 40,
       "bodyArmor": 0,
@@ -13147,6 +13721,7 @@
     "type": "HeadArmor",
     "price": 6237,
     "weight": 3.4,
+    "requirement": 18,
     "armor": {
       "headArmor": 42,
       "bodyArmor": 0,
@@ -13163,6 +13738,7 @@
     "type": "HeadArmor",
     "price": 6500,
     "weight": 3.5,
+    "requirement": 19,
     "armor": {
       "headArmor": 43,
       "bodyArmor": 0,
@@ -13179,6 +13755,7 @@
     "type": "HeadArmor",
     "price": 5238,
     "weight": 3.7,
+    "requirement": 16,
     "armor": {
       "headArmor": 38,
       "bodyArmor": 0,
@@ -13195,6 +13772,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 2.8,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -13211,6 +13789,7 @@
     "type": "HeadArmor",
     "price": 3498,
     "weight": 2.2,
+    "requirement": 13,
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -13227,6 +13806,7 @@
     "type": "BodyArmor",
     "price": 17318,
     "weight": 19.0,
+    "requirement": 17,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 34,
@@ -13243,6 +13823,7 @@
     "type": "HeadArmor",
     "price": 9754,
     "weight": 3.8,
+    "requirement": 24,
     "armor": {
       "headArmor": 54,
       "bodyArmor": 0,
@@ -13259,6 +13840,7 @@
     "type": "HeadArmor",
     "price": 7898,
     "weight": 3.1,
+    "requirement": 21,
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -13275,6 +13857,7 @@
     "type": "ShoulderArmor",
     "price": 431,
     "weight": 2.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -13291,6 +13874,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 20.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -13307,6 +13891,7 @@
     "type": "Shield",
     "price": 2729,
     "weight": 1.9,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -13337,6 +13922,7 @@
     "type": "OneHandedWeapon",
     "price": 1538,
     "weight": 1.8,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -13366,6 +13952,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.4,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -13382,6 +13969,7 @@
     "type": "BodyArmor",
     "price": 440,
     "weight": 1.6,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -13398,6 +13986,7 @@
     "type": "BodyArmor",
     "price": 2480,
     "weight": 2.6,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -13414,6 +14003,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 0.6,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -13430,6 +14020,7 @@
     "type": "BodyArmor",
     "price": 3045,
     "weight": 3.9,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -13446,6 +14037,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.4,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -13462,6 +14054,7 @@
     "type": "HeadArmor",
     "price": 2757,
     "weight": 2.1,
+    "requirement": 11,
     "armor": {
       "headArmor": 26,
       "bodyArmor": 0,
@@ -13478,6 +14071,7 @@
     "type": "HandArmor",
     "price": 5576,
     "weight": 1.7,
+    "requirement": 23,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -13494,6 +14088,7 @@
     "type": "Bow",
     "price": 3709,
     "weight": 0.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -13529,6 +14124,7 @@
     "type": "Thrown",
     "price": 806,
     "weight": 0.81,
+    "requirement": 0,
     "weapons": [
       {
         "class": "ThrowingKnife",
@@ -13581,6 +14177,7 @@
     "type": "Bow",
     "price": 5047,
     "weight": 0.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -13616,6 +14213,7 @@
     "type": "MountHarness",
     "price": 16549,
     "weight": 145.0,
+    "requirement": 21,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -13632,6 +14230,7 @@
     "type": "LegArmor",
     "price": 1249,
     "weight": 1.8,
+    "requirement": 11,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -13648,6 +14247,7 @@
     "type": "LegArmor",
     "price": 3465,
     "weight": 2.9,
+    "requirement": 20,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -13664,6 +14264,7 @@
     "type": "HeadArmor",
     "price": 1536,
     "weight": 1.7,
+    "requirement": 8,
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -13680,6 +14281,7 @@
     "type": "HandArmor",
     "price": 4038,
     "weight": 1.4,
+    "requirement": 19,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -13696,6 +14298,7 @@
     "type": "BodyArmor",
     "price": 10122,
     "weight": 7.5,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 25,
@@ -13712,6 +14315,7 @@
     "type": "ShoulderArmor",
     "price": 1713,
     "weight": 2.7,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -13728,6 +14332,7 @@
     "type": "BodyArmor",
     "price": 1808,
     "weight": 2.9,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -13744,6 +14349,7 @@
     "type": "HeadArmor",
     "price": 86,
     "weight": 0.1,
+    "requirement": 0,
     "armor": {
       "headArmor": 1,
       "bodyArmor": 0,
@@ -13760,6 +14366,7 @@
     "type": "Polearm",
     "price": 1446,
     "weight": 2.09,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -13814,6 +14421,7 @@
     "type": "Polearm",
     "price": 1147,
     "weight": 2.17,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -13866,6 +14474,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 0.5,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -13882,6 +14491,7 @@
     "type": "OneHandedWeapon",
     "price": 1454,
     "weight": 2.16,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -13911,6 +14521,7 @@
     "type": "Bow",
     "price": 1595,
     "weight": 0.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -13946,6 +14557,7 @@
     "type": "Mount",
     "price": 4092,
     "weight": 300.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 92,
       "chargeDamage": 0,
@@ -13962,6 +14574,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 120.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -13978,6 +14591,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 120.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -13994,6 +14608,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 120.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -14010,6 +14625,7 @@
     "type": "OneHandedWeapon",
     "price": 2355,
     "weight": 1.52,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -14039,6 +14655,7 @@
     "type": "HeadArmor",
     "price": 3117,
     "weight": 2.1,
+    "requirement": 12,
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -14055,6 +14672,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 2.6,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -14071,6 +14689,7 @@
     "type": "HeadArmor",
     "price": 2103,
     "weight": 2.0,
+    "requirement": 9,
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -14087,6 +14706,7 @@
     "type": "HeadArmor",
     "price": 2586,
     "weight": 2.2,
+    "requirement": 11,
     "armor": {
       "headArmor": 25,
       "bodyArmor": 0,
@@ -14103,6 +14723,7 @@
     "type": "HeadArmor",
     "price": 2103,
     "weight": 1.8,
+    "requirement": 9,
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -14119,6 +14740,7 @@
     "type": "HeadArmor",
     "price": 2757,
     "weight": 2.0,
+    "requirement": 11,
     "armor": {
       "headArmor": 26,
       "bodyArmor": 0,
@@ -14135,6 +14757,7 @@
     "type": "HeadArmor",
     "price": 3900,
     "weight": 2.3,
+    "requirement": 14,
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -14151,6 +14774,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 3.1,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -14167,6 +14791,7 @@
     "type": "HeadArmor",
     "price": 5238,
     "weight": 3.3,
+    "requirement": 16,
     "armor": {
       "headArmor": 38,
       "bodyArmor": 0,
@@ -14183,6 +14808,7 @@
     "type": "HeadArmor",
     "price": 3305,
     "weight": 2.2,
+    "requirement": 12,
     "armor": {
       "headArmor": 29,
       "bodyArmor": 0,
@@ -14199,6 +14825,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 2.4,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -14215,6 +14842,7 @@
     "type": "HeadArmor",
     "price": 5001,
     "weight": 2.2,
+    "requirement": 16,
     "armor": {
       "headArmor": 37,
       "bodyArmor": 0,
@@ -14231,6 +14859,7 @@
     "type": "HeadArmor",
     "price": 5479,
     "weight": 2.5,
+    "requirement": 17,
     "armor": {
       "headArmor": 39,
       "bodyArmor": 0,
@@ -14247,6 +14876,7 @@
     "type": "HeadArmor",
     "price": 2259,
     "weight": 1.9,
+    "requirement": 10,
     "armor": {
       "headArmor": 23,
       "bodyArmor": 0,
@@ -14263,6 +14893,7 @@
     "type": "HeadArmor",
     "price": 4110,
     "weight": 2.8,
+    "requirement": 14,
     "armor": {
       "headArmor": 33,
       "bodyArmor": 0,
@@ -14279,6 +14910,7 @@
     "type": "Bow",
     "price": 10969,
     "weight": 0.8,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -14314,6 +14946,7 @@
     "type": "Mount",
     "price": 13600,
     "weight": 400.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 115,
       "chargeDamage": 11,
@@ -14330,6 +14963,7 @@
     "type": "Mount",
     "price": 12741,
     "weight": 390.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 111,
       "chargeDamage": 3,
@@ -14346,6 +14980,7 @@
     "type": "Mount",
     "price": 12096,
     "weight": 426.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 98,
       "chargeDamage": 3,
@@ -14362,6 +14997,7 @@
     "type": "Mount",
     "price": 9599,
     "weight": 440.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 114,
       "chargeDamage": 4,
@@ -14378,6 +15014,7 @@
     "type": "Mount",
     "price": 11596,
     "weight": 400.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 115,
       "chargeDamage": 4,
@@ -14394,6 +15031,7 @@
     "type": "Mount",
     "price": 11431,
     "weight": 417.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 100,
       "chargeDamage": 3,
@@ -14410,6 +15048,7 @@
     "type": "Mount",
     "price": 12664,
     "weight": 405.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 110,
       "chargeDamage": 3,
@@ -14426,6 +15065,7 @@
     "type": "Mount",
     "price": 11706,
     "weight": 420.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 109,
       "chargeDamage": 4,
@@ -14442,6 +15082,7 @@
     "type": "Bow",
     "price": 12264,
     "weight": 0.8,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -14477,6 +15118,7 @@
     "type": "ShoulderArmor",
     "price": 3109,
     "weight": 1.2,
+    "requirement": 11,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -14493,6 +15135,7 @@
     "type": "ShoulderArmor",
     "price": 7585,
     "weight": 1.8,
+    "requirement": 19,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -14509,6 +15152,7 @@
     "type": "Bow",
     "price": 5089,
     "weight": 0.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -14544,6 +15188,7 @@
     "type": "HeadArmor",
     "price": 229,
     "weight": 0.3,
+    "requirement": 1,
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -14560,6 +15205,7 @@
     "type": "HeadArmor",
     "price": 3696,
     "weight": 2.1,
+    "requirement": 13,
     "armor": {
       "headArmor": 31,
       "bodyArmor": 0,
@@ -14576,6 +15222,7 @@
     "type": "HeadArmor",
     "price": 846,
     "weight": 0.6,
+    "requirement": 5,
     "armor": {
       "headArmor": 12,
       "bodyArmor": 0,
@@ -14592,6 +15239,7 @@
     "type": "HeadArmor",
     "price": 494,
     "weight": 0.3,
+    "requirement": 3,
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -14608,6 +15256,7 @@
     "type": "BodyArmor",
     "price": 8457,
     "weight": 10.7,
+    "requirement": 11,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 24,
@@ -14624,6 +15273,7 @@
     "type": "HeadArmor",
     "price": 8802,
     "weight": 3.65,
+    "requirement": 22,
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -14640,6 +15290,7 @@
     "type": "BodyArmor",
     "price": 9106,
     "weight": 15.0,
+    "requirement": 11,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 28,
@@ -14656,6 +15307,7 @@
     "type": "BodyArmor",
     "price": 5561,
     "weight": 14.0,
+    "requirement": 8,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 28,
@@ -14672,6 +15324,7 @@
     "type": "HeadArmor",
     "price": 420,
     "weight": 0.4,
+    "requirement": 3,
     "armor": {
       "headArmor": 7,
       "bodyArmor": 0,
@@ -14688,6 +15341,7 @@
     "type": "BodyArmor",
     "price": 1230,
     "weight": 1.1,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -14704,6 +15358,7 @@
     "type": "Bow",
     "price": 2733,
     "weight": 0.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -14739,6 +15394,7 @@
     "type": "BodyArmor",
     "price": 1968,
     "weight": 1.8,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -14755,6 +15411,7 @@
     "type": "BodyArmor",
     "price": 2303,
     "weight": 2.9,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -14771,6 +15428,7 @@
     "type": "BodyArmor",
     "price": 12697,
     "weight": 10.0,
+    "requirement": 14,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 30,
@@ -14787,6 +15445,7 @@
     "type": "BodyArmor",
     "price": 856,
     "weight": 0.6,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -14803,6 +15462,7 @@
     "type": "TwoHandedWeapon",
     "price": 7327,
     "weight": 1.48,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -14871,6 +15531,7 @@
     "type": "TwoHandedWeapon",
     "price": 6392,
     "weight": 1.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -14903,6 +15564,7 @@
     "type": "OneHandedWeapon",
     "price": 2220,
     "weight": 1.15,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -14933,6 +15595,7 @@
     "type": "HandArmor",
     "price": 4776,
     "weight": 1.3,
+    "requirement": 21,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -14949,6 +15612,7 @@
     "type": "BodyArmor",
     "price": 25290,
     "weight": 23.6,
+    "requirement": 21,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 51,
@@ -14965,6 +15629,7 @@
     "type": "BodyArmor",
     "price": 18699,
     "weight": 21.0,
+    "requirement": 17,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 45,
@@ -14981,6 +15646,7 @@
     "type": "BodyArmor",
     "price": 535,
     "weight": 0.7,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -14997,6 +15663,7 @@
     "type": "HeadArmor",
     "price": 574,
     "weight": 0.5,
+    "requirement": 4,
     "armor": {
       "headArmor": 9,
       "bodyArmor": 0,
@@ -15013,6 +15680,7 @@
     "type": "HeadArmor",
     "price": 8495,
     "weight": 3.2,
+    "requirement": 22,
     "armor": {
       "headArmor": 50,
       "bodyArmor": 0,
@@ -15029,6 +15697,7 @@
     "type": "Shield",
     "price": 2518,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -15059,6 +15728,7 @@
     "type": "Thrown",
     "price": 627,
     "weight": 0.98,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Javelin",
@@ -15112,6 +15782,7 @@
     "type": "Thrown",
     "price": 1224,
     "weight": 1.08,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Javelin",
@@ -15165,6 +15836,7 @@
     "type": "Thrown",
     "price": 1287,
     "weight": 1.11,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Javelin",
@@ -15218,6 +15890,7 @@
     "type": "BodyArmor",
     "price": 4805,
     "weight": 8.9,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 26,
@@ -15234,6 +15907,7 @@
     "type": "BodyArmor",
     "price": 5303,
     "weight": 4.4,
+    "requirement": 8,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -15250,6 +15924,7 @@
     "type": "BodyArmor",
     "price": 1655,
     "weight": 0.9,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 9,
@@ -15266,6 +15941,7 @@
     "type": "MountHarness",
     "price": 2004,
     "weight": 30.0,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -15282,6 +15958,7 @@
     "type": "MountHarness",
     "price": 1451,
     "weight": 35.0,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -15298,6 +15975,7 @@
     "type": "BodyArmor",
     "price": 4330,
     "weight": 1.6,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -15314,6 +15992,7 @@
     "type": "BodyArmor",
     "price": 3450,
     "weight": 1.5,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -15330,6 +16009,7 @@
     "type": "LegArmor",
     "price": 2446,
     "weight": 2.9,
+    "requirement": 16,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -15346,6 +16026,7 @@
     "type": "HandArmor",
     "price": 3361,
     "weight": 1.5,
+    "requirement": 17,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -15362,6 +16043,7 @@
     "type": "MountHarness",
     "price": 7019,
     "weight": 82.0,
+    "requirement": 13,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -15378,6 +16060,7 @@
     "type": "Shield",
     "price": 3004,
     "weight": 3.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -15408,6 +16091,7 @@
     "type": "Shield",
     "price": 2602,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -15438,6 +16122,7 @@
     "type": "Polearm",
     "price": 1047,
     "weight": 2.11,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -15490,6 +16175,7 @@
     "type": "Polearm",
     "price": 1776,
     "weight": 1.79,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -15542,6 +16228,7 @@
     "type": "Polearm",
     "price": 1990,
     "weight": 1.87,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -15594,6 +16281,7 @@
     "type": "Polearm",
     "price": 2634,
     "weight": 1.92,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -15668,6 +16356,7 @@
     "type": "Thrown",
     "price": 1865,
     "weight": 0.71,
+    "requirement": 0,
     "weapons": [
       {
         "class": "ThrowingAxe",
@@ -15722,6 +16411,7 @@
     "type": "BodyArmor",
     "price": 1099,
     "weight": 0.4,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -15738,6 +16428,7 @@
     "type": "HeadArmor",
     "price": 7608,
     "weight": 3.6,
+    "requirement": 20,
     "armor": {
       "headArmor": 47,
       "bodyArmor": 0,
@@ -15754,6 +16445,7 @@
     "type": "Shield",
     "price": 4038,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -15784,6 +16476,7 @@
     "type": "Mount",
     "price": 6287,
     "weight": 420.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 102,
       "chargeDamage": 1,
@@ -15800,6 +16493,7 @@
     "type": "Shield",
     "price": 1826,
     "weight": 3.6,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -15830,6 +16524,7 @@
     "type": "Shield",
     "price": 1519,
     "weight": 4.2,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -15860,6 +16555,7 @@
     "type": "HeadArmor",
     "price": 2103,
     "weight": 1.3,
+    "requirement": 9,
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -15876,6 +16572,7 @@
     "type": "HeadArmor",
     "price": 351,
     "weight": 0.5,
+    "requirement": 2,
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -15892,6 +16589,7 @@
     "type": "HeadArmor",
     "price": 1536,
     "weight": 1.6,
+    "requirement": 8,
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -15908,6 +16606,7 @@
     "type": "HeadArmor",
     "price": 1054,
     "weight": 0.6,
+    "requirement": 6,
     "armor": {
       "headArmor": 14,
       "bodyArmor": 0,
@@ -15924,6 +16623,7 @@
     "type": "Shield",
     "price": 3427,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -15954,6 +16654,7 @@
     "type": "Shield",
     "price": 3091,
     "weight": 2.1,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -15984,6 +16685,7 @@
     "type": "Mount",
     "price": 5150,
     "weight": 520.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 105,
       "chargeDamage": 1,
@@ -16000,6 +16702,7 @@
     "type": "HeadArmor",
     "price": 750,
     "weight": 0.2,
+    "requirement": 4,
     "armor": {
       "headArmor": 11,
       "bodyArmor": 0,
@@ -16016,6 +16719,7 @@
     "type": "BodyArmor",
     "price": 3045,
     "weight": 2.2,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -16032,6 +16736,7 @@
     "type": "BodyArmor",
     "price": 4565,
     "weight": 2.4,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -16048,6 +16753,7 @@
     "type": "HeadArmor",
     "price": 1054,
     "weight": 0.7,
+    "requirement": 6,
     "armor": {
       "headArmor": 14,
       "bodyArmor": 0,
@@ -16064,6 +16770,7 @@
     "type": "HeadArmor",
     "price": 750,
     "weight": 0.4,
+    "requirement": 4,
     "armor": {
       "headArmor": 11,
       "bodyArmor": 0,
@@ -16080,6 +16787,7 @@
     "type": "BodyArmor",
     "price": 2662,
     "weight": 3.2,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -16096,6 +16804,7 @@
     "type": "BodyArmor",
     "price": 4101,
     "weight": 1.8,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -16112,6 +16821,7 @@
     "type": "ShoulderArmor",
     "price": 1961,
     "weight": 1.4,
+    "requirement": 8,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -16128,6 +16838,7 @@
     "type": "HandArmor",
     "price": 1080,
     "weight": 0.6,
+    "requirement": 8,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -16144,6 +16855,7 @@
     "type": "BodyArmor",
     "price": 3244,
     "weight": 2.2,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -16160,6 +16872,7 @@
     "type": "HandArmor",
     "price": 743,
     "weight": 0.1,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -16176,6 +16889,7 @@
     "type": "BodyArmor",
     "price": 3244,
     "weight": 2.4,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -16192,6 +16906,7 @@
     "type": "ShoulderArmor",
     "price": 4513,
     "weight": 3.5,
+    "requirement": 14,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -16208,6 +16923,7 @@
     "type": "ShoulderArmor",
     "price": 11441,
     "weight": 3.4,
+    "requirement": 24,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 22,
@@ -16224,6 +16940,7 @@
     "type": "ShoulderArmor",
     "price": 3109,
     "weight": 1.3,
+    "requirement": 11,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -16240,6 +16957,7 @@
     "type": "Shield",
     "price": 3534,
     "weight": 7.0,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -16270,6 +16988,7 @@
     "type": "HeadArmor",
     "price": 947,
     "weight": 0.7,
+    "requirement": 5,
     "armor": {
       "headArmor": 13,
       "bodyArmor": 0,
@@ -16286,6 +17005,7 @@
     "type": "HeadArmor",
     "price": 5001,
     "weight": 2.8,
+    "requirement": 16,
     "armor": {
       "headArmor": 37,
       "bodyArmor": 0,
@@ -16302,6 +17022,7 @@
     "type": "HeadArmor",
     "price": 5727,
     "weight": 2.8,
+    "requirement": 17,
     "armor": {
       "headArmor": 40,
       "bodyArmor": 0,
@@ -16318,6 +17039,7 @@
     "type": "HeadArmor",
     "price": 6237,
     "weight": 3.0,
+    "requirement": 18,
     "armor": {
       "headArmor": 42,
       "bodyArmor": 0,
@@ -16334,6 +17056,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 2.5,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -16350,6 +17073,7 @@
     "type": "TwoHandedWeapon",
     "price": 2500,
     "weight": 1.57,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -16422,6 +17146,7 @@
     "type": "BodyArmor",
     "price": 636,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -16438,6 +17163,7 @@
     "type": "OneHandedWeapon",
     "price": 451,
     "weight": 1.4,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -16467,6 +17193,7 @@
     "type": "OneHandedWeapon",
     "price": 405,
     "weight": 1.48,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -16497,6 +17224,7 @@
     "type": "OneHandedWeapon",
     "price": 888,
     "weight": 1.05,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -16527,6 +17255,7 @@
     "type": "TwoHandedWeapon",
     "price": 4602,
     "weight": 1.84,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedMace",
@@ -16559,6 +17288,7 @@
     "type": "TwoHandedWeapon",
     "price": 4323,
     "weight": 1.96,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedMace",
@@ -16591,6 +17321,7 @@
     "type": "OneHandedWeapon",
     "price": 1125,
     "weight": 1.05,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -16621,6 +17352,7 @@
     "type": "Polearm",
     "price": 771,
     "weight": 1.92,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -16673,6 +17405,7 @@
     "type": "Polearm",
     "price": 889,
     "weight": 1.47,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -16725,6 +17458,7 @@
     "type": "Polearm",
     "price": 1394,
     "weight": 2.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -16758,6 +17492,7 @@
     "type": "OneHandedWeapon",
     "price": 1205,
     "weight": 1.18,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -16788,6 +17523,7 @@
     "type": "OneHandedWeapon",
     "price": 2048,
     "weight": 1.76,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -16817,6 +17553,7 @@
     "type": "Arrows",
     "price": 3858,
     "weight": 0.041,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Arrow",
@@ -16846,6 +17583,7 @@
     "type": "HeadArmor",
     "price": 176,
     "weight": 0.2,
+    "requirement": 1,
     "armor": {
       "headArmor": 3,
       "bodyArmor": 0,
@@ -16862,6 +17600,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -16878,6 +17617,7 @@
     "type": "BodyArmor",
     "price": 21619,
     "weight": 19.0,
+    "requirement": 19,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 38,
@@ -16894,6 +17634,7 @@
     "type": "LegArmor",
     "price": 3465,
     "weight": 2.7,
+    "requirement": 20,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -16910,6 +17651,7 @@
     "type": "HandArmor",
     "price": 4776,
     "weight": 1.4,
+    "requirement": 21,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -16926,6 +17668,7 @@
     "type": "HeadArmor",
     "price": 2420,
     "weight": 2.1,
+    "requirement": 10,
     "armor": {
       "headArmor": 24,
       "bodyArmor": 0,
@@ -16942,6 +17685,7 @@
     "type": "HeadArmor",
     "price": 7608,
     "weight": 2.9,
+    "requirement": 20,
     "armor": {
       "headArmor": 47,
       "bodyArmor": 0,
@@ -16958,6 +17702,7 @@
     "type": "HeadArmor",
     "price": 4770,
     "weight": 2.8,
+    "requirement": 16,
     "armor": {
       "headArmor": 36,
       "bodyArmor": 0,
@@ -16974,6 +17719,7 @@
     "type": "HeadArmor",
     "price": 3900,
     "weight": 2.6,
+    "requirement": 14,
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -16990,6 +17736,7 @@
     "type": "OneHandedWeapon",
     "price": 3336,
     "weight": 1.68,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17019,6 +17766,7 @@
     "type": "HeadArmor",
     "price": 3498,
     "weight": 2.1,
+    "requirement": 13,
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -17035,6 +17783,7 @@
     "type": "HeadArmor",
     "price": 3900,
     "weight": 2.2,
+    "requirement": 14,
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -17051,6 +17800,7 @@
     "type": "HeadArmor",
     "price": 3900,
     "weight": 2.2,
+    "requirement": 14,
     "armor": {
       "headArmor": 32,
       "bodyArmor": 0,
@@ -17067,6 +17817,7 @@
     "type": "HeadArmor",
     "price": 5001,
     "weight": 2.8,
+    "requirement": 16,
     "armor": {
       "headArmor": 37,
       "bodyArmor": 0,
@@ -17083,6 +17834,7 @@
     "type": "HeadArmor",
     "price": 4545,
     "weight": 2.6,
+    "requirement": 15,
     "armor": {
       "headArmor": 35,
       "bodyArmor": 0,
@@ -17099,6 +17851,7 @@
     "type": "Polearm",
     "price": 5388,
     "weight": 1.8,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -17153,6 +17906,7 @@
     "type": "OneHandedWeapon",
     "price": 852,
     "weight": 0.76,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Dagger",
@@ -17205,6 +17959,7 @@
     "type": "Polearm",
     "price": 50,
     "weight": 2.0,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -17238,6 +17993,7 @@
     "type": "HandArmor",
     "price": 254,
     "weight": 0.4,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -17254,6 +18010,7 @@
     "type": "LegArmor",
     "price": 356,
     "weight": 0.8,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -17270,6 +18027,7 @@
     "type": "BodyArmor",
     "price": 535,
     "weight": 0.9,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -17286,6 +18044,7 @@
     "type": "Arrows",
     "price": 119,
     "weight": 0.043,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Arrow",
@@ -17315,6 +18074,7 @@
     "type": "BodyArmor",
     "price": 9778,
     "weight": 12.0,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 32,
@@ -17331,6 +18091,7 @@
     "type": "TwoHandedWeapon",
     "price": 13493,
     "weight": 1.64,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17402,6 +18163,7 @@
     "type": "BodyArmor",
     "price": 13485,
     "weight": 15.0,
+    "requirement": 14,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 34,
@@ -17418,6 +18180,7 @@
     "type": "Shield",
     "price": 2226,
     "weight": 4.6,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -17448,6 +18211,7 @@
     "type": "Shield",
     "price": 1771,
     "weight": 5.8,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -17478,6 +18242,7 @@
     "type": "HandArmor",
     "price": 4038,
     "weight": 1.0,
+    "requirement": 19,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -17494,6 +18259,7 @@
     "type": "BodyArmor",
     "price": 3045,
     "weight": 2.3,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -17510,6 +18276,7 @@
     "type": "LegArmor",
     "price": 2933,
     "weight": 1.0,
+    "requirement": 18,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -17526,6 +18293,7 @@
     "type": "ShoulderArmor",
     "price": 717,
     "weight": 0.9,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -17542,6 +18310,7 @@
     "type": "TwoHandedWeapon",
     "price": 10043,
     "weight": 1.86,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17610,6 +18379,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.2,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -17626,6 +18396,7 @@
     "type": "OneHandedWeapon",
     "price": 2790,
     "weight": 1.53,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -17655,6 +18426,7 @@
     "type": "BodyArmor",
     "price": 6650,
     "weight": 10.5,
+    "requirement": 9,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 20,
@@ -17671,6 +18443,7 @@
     "type": "ShoulderArmor",
     "price": 4513,
     "weight": 2.3,
+    "requirement": 14,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -17687,6 +18460,7 @@
     "type": "BodyArmor",
     "price": 2851,
     "weight": 1.3,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -17703,6 +18477,7 @@
     "type": "BodyArmor",
     "price": 11933,
     "weight": 14.0,
+    "requirement": 13,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 36,
@@ -17719,6 +18494,7 @@
     "type": "LegArmor",
     "price": 450,
     "weight": 0.9,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -17735,6 +18511,7 @@
     "type": "HandArmor",
     "price": 1080,
     "weight": 0.6,
+    "requirement": 8,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -17751,6 +18528,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 0.4,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -17767,6 +18545,7 @@
     "type": "HeadArmor",
     "price": 420,
     "weight": 0.5,
+    "requirement": 3,
     "armor": {
       "headArmor": 7,
       "bodyArmor": 0,
@@ -17783,6 +18562,7 @@
     "type": "HeadArmor",
     "price": 2757,
     "weight": 2.2,
+    "requirement": 11,
     "armor": {
       "headArmor": 26,
       "bodyArmor": 0,
@@ -17799,6 +18579,7 @@
     "type": "HandArmor",
     "price": 254,
     "weight": 0.5,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -17815,6 +18596,7 @@
     "type": "HeadArmor",
     "price": 3117,
     "weight": 2.0,
+    "requirement": 12,
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -17831,6 +18613,7 @@
     "type": "HeadArmor",
     "price": 2103,
     "weight": 2.2,
+    "requirement": 9,
     "armor": {
       "headArmor": 22,
       "bodyArmor": 0,
@@ -17847,6 +18630,7 @@
     "type": "HeadArmor",
     "price": 4325,
     "weight": 2.8,
+    "requirement": 15,
     "armor": {
       "headArmor": 34,
       "bodyArmor": 0,
@@ -17863,6 +18647,7 @@
     "type": "HeadArmor",
     "price": 3696,
     "weight": 2.4,
+    "requirement": 13,
     "armor": {
       "headArmor": 31,
       "bodyArmor": 0,
@@ -17879,6 +18664,7 @@
     "type": "HeadArmor",
     "price": 2757,
     "weight": 2.0,
+    "requirement": 11,
     "armor": {
       "headArmor": 26,
       "bodyArmor": 0,
@@ -17895,6 +18681,7 @@
     "type": "BodyArmor",
     "price": 440,
     "weight": 0.6,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -17911,6 +18698,7 @@
     "type": "BodyArmor",
     "price": 6650,
     "weight": 10.7,
+    "requirement": 9,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 31,
@@ -17927,6 +18715,7 @@
     "type": "ShoulderArmor",
     "price": 6173,
     "weight": 1.7,
+    "requirement": 16,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -17943,6 +18732,7 @@
     "type": "ShoulderArmor",
     "price": 208,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -17959,6 +18749,7 @@
     "type": "OneHandedWeapon",
     "price": 559,
     "weight": 0.44,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Dagger",
@@ -17988,6 +18779,7 @@
     "type": "HeadArmor",
     "price": 2420,
     "weight": 2.3,
+    "requirement": 10,
     "armor": {
       "headArmor": 24,
       "bodyArmor": 0,
@@ -18004,6 +18796,7 @@
     "type": "HeadArmor",
     "price": 2757,
     "weight": 2.85,
+    "requirement": 11,
     "armor": {
       "headArmor": 26,
       "bodyArmor": 0,
@@ -18020,6 +18813,7 @@
     "type": "HeadArmor",
     "price": 3117,
     "weight": 2.9,
+    "requirement": 12,
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -18036,6 +18830,7 @@
     "type": "HeadArmor",
     "price": 3117,
     "weight": 2.8,
+    "requirement": 12,
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -18052,6 +18847,7 @@
     "type": "HeadArmor",
     "price": 1407,
     "weight": 1.2,
+    "requirement": 7,
     "armor": {
       "headArmor": 17,
       "bodyArmor": 0,
@@ -18068,6 +18864,7 @@
     "type": "HeadArmor",
     "price": 6237,
     "weight": 3.2,
+    "requirement": 18,
     "armor": {
       "headArmor": 42,
       "bodyArmor": 0,
@@ -18084,6 +18881,7 @@
     "type": "HeadArmor",
     "price": 3117,
     "weight": 2.6,
+    "requirement": 12,
     "armor": {
       "headArmor": 28,
       "bodyArmor": 0,
@@ -18100,6 +18898,7 @@
     "type": "HeadArmor",
     "price": 3305,
     "weight": 2.3,
+    "requirement": 12,
     "armor": {
       "headArmor": 29,
       "bodyArmor": 0,
@@ -18116,6 +18915,7 @@
     "type": "TwoHandedWeapon",
     "price": 6432,
     "weight": 1.44,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedSword",
@@ -18146,6 +18946,7 @@
     "type": "OneHandedWeapon",
     "price": 1909,
     "weight": 1.67,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -18175,6 +18976,7 @@
     "type": "BodyArmor",
     "price": 2851,
     "weight": 1.3,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -18191,6 +18993,7 @@
     "type": "OneHandedWeapon",
     "price": 1872,
     "weight": 1.49,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -18220,6 +19023,7 @@
     "type": "OneHandedWeapon",
     "price": 1899,
     "weight": 1.23,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -18249,6 +19053,7 @@
     "type": "Polearm",
     "price": 971,
     "weight": 1.62,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -18303,6 +19108,7 @@
     "type": "OneHandedWeapon",
     "price": 2048,
     "weight": 1.46,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -18332,6 +19138,7 @@
     "type": "TwoHandedWeapon",
     "price": 2925,
     "weight": 1.13,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -18364,6 +19171,7 @@
     "type": "BodyArmor",
     "price": 2303,
     "weight": 1.8,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -18380,6 +19188,7 @@
     "type": "BodyArmor",
     "price": 4330,
     "weight": 2.2,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -18396,6 +19205,7 @@
     "type": "BodyArmor",
     "price": 3244,
     "weight": 2.0,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -18412,6 +19222,7 @@
     "type": "BodyArmor",
     "price": 1808,
     "weight": 0.4,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -18428,6 +19239,7 @@
     "type": "OneHandedWeapon",
     "price": 1637,
     "weight": 1.12,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -18458,6 +19270,7 @@
     "type": "Shield",
     "price": 2921,
     "weight": 2.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -18488,6 +19301,7 @@
     "type": "Shield",
     "price": 1963,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -18518,6 +19332,7 @@
     "type": "OneHandedWeapon",
     "price": 1737,
     "weight": 1.05,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -18548,6 +19363,7 @@
     "type": "TwoHandedWeapon",
     "price": 10927,
     "weight": 1.52,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -18616,6 +19432,7 @@
     "type": "BodyArmor",
     "price": 9439,
     "weight": 9.5,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 37,
@@ -18632,6 +19449,7 @@
     "type": "LegArmor",
     "price": 139,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -18648,6 +19466,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.5,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -18664,6 +19483,7 @@
     "type": "Shield",
     "price": 2865,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -18694,6 +19514,7 @@
     "type": "ShoulderArmor",
     "price": 208,
     "weight": 0.4,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -18710,6 +19531,7 @@
     "type": "OneHandedWeapon",
     "price": 1672,
     "weight": 0.96,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -18740,6 +19562,7 @@
     "type": "Polearm",
     "price": 1806,
     "weight": 1.82,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -18792,6 +19615,7 @@
     "type": "Polearm",
     "price": 2161,
     "weight": 1.96,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -18844,6 +19668,7 @@
     "type": "Thrown",
     "price": 1996,
     "weight": 0.69,
+    "requirement": 0,
     "weapons": [
       {
         "class": "ThrowingAxe",
@@ -18898,6 +19723,7 @@
     "type": "HeadArmor",
     "price": 1809,
     "weight": 1.2,
+    "requirement": 8,
     "armor": {
       "headArmor": 20,
       "bodyArmor": 0,
@@ -18914,6 +19740,7 @@
     "type": "HeadArmor",
     "price": 1536,
     "weight": 1.9,
+    "requirement": 8,
     "armor": {
       "headArmor": 18,
       "bodyArmor": 0,
@@ -18930,6 +19757,7 @@
     "type": "Mount",
     "price": 9902,
     "weight": 550.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 115,
       "chargeDamage": 4,
@@ -18946,6 +19774,7 @@
     "type": "HeadArmor",
     "price": 7898,
     "weight": 3.5,
+    "requirement": 21,
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -18962,6 +19791,7 @@
     "type": "HeadArmor",
     "price": 8802,
     "weight": 4.5,
+    "requirement": 22,
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -18978,6 +19808,7 @@
     "type": "HeadArmor",
     "price": 2934,
     "weight": 3.1,
+    "requirement": 12,
     "armor": {
       "headArmor": 27,
       "bodyArmor": 0,
@@ -18994,6 +19825,7 @@
     "type": "HeadArmor",
     "price": 5479,
     "weight": 2.5,
+    "requirement": 17,
     "armor": {
       "headArmor": 39,
       "bodyArmor": 0,
@@ -19010,6 +19842,7 @@
     "type": "OneHandedWeapon",
     "price": 1970,
     "weight": 2.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -19039,6 +19872,7 @@
     "type": "OneHandedWeapon",
     "price": 1617,
     "weight": 2.24,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -19068,6 +19902,7 @@
     "type": "Shield",
     "price": 5028,
     "weight": 4.0,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -19098,6 +19933,7 @@
     "type": "BodyArmor",
     "price": 856,
     "weight": 0.6,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -19114,6 +19950,7 @@
     "type": "Arrows",
     "price": 448,
     "weight": 0.036,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Arrow",
@@ -19143,6 +19980,7 @@
     "type": "Bow",
     "price": 1571,
     "weight": 0.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -19178,6 +20016,7 @@
     "type": "BodyArmor",
     "price": 1808,
     "weight": 0.6,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -19194,6 +20033,7 @@
     "type": "MountHarness",
     "price": 1451,
     "weight": 25.5,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -19210,6 +20050,7 @@
     "type": "Shield",
     "price": 4324,
     "weight": 2.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -19240,6 +20081,7 @@
     "type": "MountHarness",
     "price": 5981,
     "weight": 70.0,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -19256,6 +20098,7 @@
     "type": "MountHarness",
     "price": 980,
     "weight": 23.5,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -19272,6 +20115,7 @@
     "type": "Bow",
     "price": 3697,
     "weight": 0.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -19307,6 +20151,7 @@
     "type": "HeadArmor",
     "price": 4110,
     "weight": 2.2,
+    "requirement": 14,
     "armor": {
       "headArmor": 33,
       "bodyArmor": 0,
@@ -19323,6 +20168,7 @@
     "type": "LegArmor",
     "price": 272,
     "weight": 0.8,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -19339,6 +20185,7 @@
     "type": "ShoulderArmor",
     "price": 717,
     "weight": 0.7,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -19355,6 +20202,7 @@
     "type": "HandArmor",
     "price": 1701,
     "weight": 0.5,
+    "requirement": 11,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -19371,6 +20219,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 0.4,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -19387,6 +20236,7 @@
     "type": "Bow",
     "price": 5152,
     "weight": 0.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -19422,6 +20272,7 @@
     "type": "Mount",
     "price": 8063,
     "weight": 460.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 100,
       "chargeDamage": 6,
@@ -19438,6 +20289,7 @@
     "type": "BodyArmor",
     "price": 15988,
     "weight": 15.1,
+    "requirement": 16,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 36,
@@ -19454,6 +20306,7 @@
     "type": "ShoulderArmor",
     "price": 885,
     "weight": 1.5,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 7,
@@ -19470,6 +20323,7 @@
     "type": "BodyArmor",
     "price": 2480,
     "weight": 1.5,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 12,
@@ -19486,6 +20340,7 @@
     "type": "LegArmor",
     "price": 356,
     "weight": 0.9,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -19502,6 +20357,7 @@
     "type": "HandArmor",
     "price": 468,
     "weight": 0.5,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -19518,6 +20374,7 @@
     "type": "LegArmor",
     "price": 3748,
     "weight": 3.0,
+    "requirement": 21,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -19534,6 +20391,7 @@
     "type": "LegArmor",
     "price": 356,
     "weight": 0.7,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -19550,6 +20408,7 @@
     "type": "MountHarness",
     "price": 1451,
     "weight": 26.0,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -19566,6 +20425,7 @@
     "type": "Shield",
     "price": 2992,
     "weight": 5.8,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -19596,6 +20456,7 @@
     "type": "Shield",
     "price": 2038,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -19626,6 +20487,7 @@
     "type": "Shield",
     "price": 2463,
     "weight": 4.8,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -19656,6 +20518,7 @@
     "type": "BodyArmor",
     "price": 2303,
     "weight": 1.2,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -19672,6 +20535,7 @@
     "type": "ShoulderArmor",
     "price": 4904,
     "weight": 3.6,
+    "requirement": 14,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -19688,6 +20552,7 @@
     "type": "BodyArmor",
     "price": 1968,
     "weight": 1.6,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -19704,6 +20569,7 @@
     "type": "BodyArmor",
     "price": 4101,
     "weight": 4.4,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -19720,6 +20586,7 @@
     "type": "HandArmor",
     "price": 1479,
     "weight": 0.9,
+    "requirement": 10,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -19736,6 +20603,7 @@
     "type": "BodyArmor",
     "price": 1099,
     "weight": 0.7,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 8,
@@ -19752,6 +20620,7 @@
     "type": "Shield",
     "price": 3094,
     "weight": 7.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -19782,6 +20651,7 @@
     "type": "MountHarness",
     "price": 10618,
     "weight": 85.0,
+    "requirement": 16,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -19798,6 +20668,7 @@
     "type": "BodyArmor",
     "price": 3878,
     "weight": 2.4,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -19814,6 +20685,7 @@
     "type": "HandArmor",
     "price": 468,
     "weight": 0.7,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -19830,6 +20702,7 @@
     "type": "TwoHandedWeapon",
     "price": 6347,
     "weight": 1.32,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -19862,6 +20735,7 @@
     "type": "TwoHandedWeapon",
     "price": 6593,
     "weight": 1.68,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -19894,6 +20768,7 @@
     "type": "OneHandedWeapon",
     "price": 1737,
     "weight": 1.03,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -19924,6 +20799,7 @@
     "type": "OneHandedWeapon",
     "price": 2149,
     "weight": 0.94,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -19954,6 +20830,7 @@
     "type": "OneHandedWeapon",
     "price": 2199,
     "weight": 1.19,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -19984,6 +20861,7 @@
     "type": "OneHandedWeapon",
     "price": 2754,
     "weight": 1.05,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -20014,6 +20892,7 @@
     "type": "LegArmor",
     "price": 356,
     "weight": 1.55,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -20030,6 +20909,7 @@
     "type": "LegArmor",
     "price": 450,
     "weight": 1.8,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -20046,6 +20926,7 @@
     "type": "LegArmor",
     "price": 272,
     "weight": 1.2,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -20062,6 +20943,7 @@
     "type": "LegArmor",
     "price": 200,
     "weight": 1.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -20078,6 +20960,7 @@
     "type": "BodyArmor",
     "price": 21619,
     "weight": 18.0,
+    "requirement": 19,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 46,
@@ -20094,6 +20977,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.8,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -20110,6 +20994,7 @@
     "type": "Mount",
     "price": 8481,
     "weight": 405.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 100,
       "chargeDamage": 3,
@@ -20126,6 +21011,7 @@
     "type": "Polearm",
     "price": 2069,
     "weight": 1.88,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -20198,6 +21084,7 @@
     "type": "Polearm",
     "price": 2610,
     "weight": 2.16,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -20270,6 +21157,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.4,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -20286,6 +21174,7 @@
     "type": "OneHandedWeapon",
     "price": 2672,
     "weight": 1.54,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -20315,6 +21204,7 @@
     "type": "OneHandedWeapon",
     "price": 1492,
     "weight": 1.54,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -20344,6 +21234,7 @@
     "type": "OneHandedWeapon",
     "price": 2536,
     "weight": 1.54,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -20373,6 +21264,7 @@
     "type": "OneHandedWeapon",
     "price": 1209,
     "weight": 1.34,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -20402,6 +21294,7 @@
     "type": "Shield",
     "price": 2802,
     "weight": 7.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -20432,6 +21325,7 @@
     "type": "Shield",
     "price": 1523,
     "weight": 7.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -20462,6 +21356,7 @@
     "type": "Polearm",
     "price": 11576,
     "weight": 1.83,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -20516,6 +21411,7 @@
     "type": "OneHandedWeapon",
     "price": 1572,
     "weight": 1.11,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -20545,6 +21441,7 @@
     "type": "OneHandedWeapon",
     "price": 2000,
     "weight": 1.18,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -20574,6 +21471,7 @@
     "type": "OneHandedWeapon",
     "price": 2207,
     "weight": 1.14,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -20603,6 +21501,7 @@
     "type": "OneHandedWeapon",
     "price": 2651,
     "weight": 1.41,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -20632,6 +21531,7 @@
     "type": "OneHandedWeapon",
     "price": 2504,
     "weight": 1.23,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -20661,6 +21561,7 @@
     "type": "OneHandedWeapon",
     "price": 2952,
     "weight": 1.52,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -20690,6 +21591,7 @@
     "type": "HeadArmor",
     "price": 7608,
     "weight": 2.2,
+    "requirement": 20,
     "armor": {
       "headArmor": 47,
       "bodyArmor": 0,
@@ -20706,6 +21608,7 @@
     "type": "BodyArmor",
     "price": 15130,
     "weight": 14.5,
+    "requirement": 15,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 32,
@@ -20722,6 +21625,7 @@
     "type": "BodyArmor",
     "price": 9439,
     "weight": 8.3,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 25,
@@ -20738,6 +21642,7 @@
     "type": "HeadArmor",
     "price": 5979,
     "weight": 2.4,
+    "requirement": 18,
     "armor": {
       "headArmor": 41,
       "bodyArmor": 0,
@@ -20754,6 +21659,7 @@
     "type": "BodyArmor",
     "price": 31632,
     "weight": 28.6,
+    "requirement": 24,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 49,
@@ -20770,6 +21676,7 @@
     "type": "HeadArmor",
     "price": 9754,
     "weight": 3.8,
+    "requirement": 24,
     "armor": {
       "headArmor": 54,
       "bodyArmor": 0,
@@ -20786,6 +21693,7 @@
     "type": "HeadArmor",
     "price": 8194,
     "weight": 3.2,
+    "requirement": 21,
     "armor": {
       "headArmor": 49,
       "bodyArmor": 0,
@@ -20802,6 +21710,7 @@
     "type": "HeadArmor",
     "price": 4545,
     "weight": 2.4,
+    "requirement": 15,
     "armor": {
       "headArmor": 35,
       "bodyArmor": 0,
@@ -20818,6 +21727,7 @@
     "type": "HeadArmor",
     "price": 9431,
     "weight": 3.8,
+    "requirement": 23,
     "armor": {
       "headArmor": 53,
       "bodyArmor": 0,
@@ -20834,6 +21744,7 @@
     "type": "HeadArmor",
     "price": 8194,
     "weight": 3.15,
+    "requirement": 21,
     "armor": {
       "headArmor": 49,
       "bodyArmor": 0,
@@ -20850,6 +21761,7 @@
     "type": "BodyArmor",
     "price": 22639,
     "weight": 24.0,
+    "requirement": 19,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 50,
@@ -20866,6 +21778,7 @@
     "type": "BodyArmor",
     "price": 29244,
     "weight": 28.0,
+    "requirement": 22,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 50,
@@ -20882,6 +21795,7 @@
     "type": "BodyArmor",
     "price": 12312,
     "weight": 8.3,
+    "requirement": 14,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 35,
@@ -20898,6 +21812,7 @@
     "type": "HeadArmor",
     "price": 8495,
     "weight": 3.6,
+    "requirement": 22,
     "armor": {
       "headArmor": 50,
       "bodyArmor": 0,
@@ -20914,6 +21829,7 @@
     "type": "HeadArmor",
     "price": 8802,
     "weight": 3.5,
+    "requirement": 22,
     "armor": {
       "headArmor": 51,
       "bodyArmor": 0,
@@ -20930,6 +21846,7 @@
     "type": "HeadArmor",
     "price": 9431,
     "weight": 3.8,
+    "requirement": 23,
     "armor": {
       "headArmor": 53,
       "bodyArmor": 0,
@@ -20946,6 +21863,7 @@
     "type": "Mount",
     "price": 5175,
     "weight": 430.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 102,
       "chargeDamage": 1,
@@ -20962,6 +21880,7 @@
     "type": "Mount",
     "price": 11780,
     "weight": 400.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 108,
       "chargeDamage": 2,
@@ -20978,6 +21897,7 @@
     "type": "Mount",
     "price": 10055,
     "weight": 420.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 111,
       "chargeDamage": 3,
@@ -20994,6 +21914,7 @@
     "type": "Mount",
     "price": 8862,
     "weight": 430.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 115,
       "chargeDamage": 3,
@@ -21010,6 +21931,7 @@
     "type": "Mount",
     "price": 10487,
     "weight": 405.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 94,
       "chargeDamage": 2,
@@ -21026,6 +21948,7 @@
     "type": "Mount",
     "price": 10592,
     "weight": 415.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 100,
       "chargeDamage": 2,
@@ -21042,6 +21965,7 @@
     "type": "Mount",
     "price": 10055,
     "weight": 420.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 109,
       "chargeDamage": 3,
@@ -21058,6 +21982,7 @@
     "type": "Shield",
     "price": 9108,
     "weight": 2.1,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -21088,6 +22013,7 @@
     "type": "HeadArmor",
     "price": 5238,
     "weight": 2.2,
+    "requirement": 16,
     "armor": {
       "headArmor": 38,
       "bodyArmor": 0,
@@ -21104,6 +22030,7 @@
     "type": "BodyArmor",
     "price": 975,
     "weight": 0.9,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -21120,6 +22047,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.3,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -21136,6 +22064,7 @@
     "type": "Polearm",
     "price": 2037,
     "weight": 2.78,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -21190,6 +22119,7 @@
     "type": "OneHandedWeapon",
     "price": 2593,
     "weight": 1.47,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -21219,6 +22149,7 @@
     "type": "BodyArmor",
     "price": 975,
     "weight": 1.0,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -21235,6 +22166,7 @@
     "type": "HeadArmor",
     "price": 574,
     "weight": 0.5,
+    "requirement": 4,
     "armor": {
       "headArmor": 9,
       "bodyArmor": 0,
@@ -21251,6 +22183,7 @@
     "type": "Thrown",
     "price": 50,
     "weight": 0.1,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Stone",
@@ -21284,6 +22217,7 @@
     "type": "BodyArmor",
     "price": 535,
     "weight": 0.4,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -21300,6 +22234,7 @@
     "type": "HeadArmor",
     "price": 287,
     "weight": 0.5,
+    "requirement": 2,
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -21316,6 +22251,7 @@
     "type": "HeadArmor",
     "price": 420,
     "weight": 0.7,
+    "requirement": 3,
     "armor": {
       "headArmor": 7,
       "bodyArmor": 0,
@@ -21332,6 +22268,7 @@
     "type": "BodyArmor",
     "price": 856,
     "weight": 0.5,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -21348,6 +22285,7 @@
     "type": "Arrows",
     "price": 50,
     "weight": 0.043,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Arrow",
@@ -21377,6 +22315,7 @@
     "type": "HeadArmor",
     "price": 1809,
     "weight": 2.2,
+    "requirement": 8,
     "armor": {
       "headArmor": 20,
       "bodyArmor": 0,
@@ -21393,6 +22332,7 @@
     "type": "Bow",
     "price": 1646,
     "weight": 0.3,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -21428,6 +22368,7 @@
     "type": "Bow",
     "price": 1473,
     "weight": 0.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -21463,6 +22404,7 @@
     "type": "Polearm",
     "price": 1377,
     "weight": 1.83,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -21537,6 +22479,7 @@
     "type": "Bow",
     "price": 4911,
     "weight": 0.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -21572,6 +22515,7 @@
     "type": "Shield",
     "price": 3625,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -21602,6 +22546,7 @@
     "type": "HeadArmor",
     "price": 420,
     "weight": 0.6,
+    "requirement": 3,
     "armor": {
       "headArmor": 7,
       "bodyArmor": 0,
@@ -21618,6 +22563,7 @@
     "type": "BodyArmor",
     "price": 743,
     "weight": 0.3,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -21634,6 +22580,7 @@
     "type": "BodyArmor",
     "price": 1099,
     "weight": 0.7,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -21650,6 +22597,7 @@
     "type": "BodyArmor",
     "price": 856,
     "weight": 0.6,
+    "requirement": 2,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -21666,6 +22614,7 @@
     "type": "HeadArmor",
     "price": 229,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -21682,6 +22631,7 @@
     "type": "LegArmor",
     "price": 800,
     "weight": 0.9,
+    "requirement": 8,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -21698,6 +22648,7 @@
     "type": "OneHandedWeapon",
     "price": 2200,
     "weight": 1.95,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -21727,6 +22678,7 @@
     "type": "OneHandedWeapon",
     "price": 2086,
     "weight": 1.23,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -21757,6 +22709,7 @@
     "type": "HeadArmor",
     "price": 659,
     "weight": 0.6,
+    "requirement": 4,
     "armor": {
       "headArmor": 10,
       "bodyArmor": 0,
@@ -21773,6 +22726,7 @@
     "type": "ShoulderArmor",
     "price": 1713,
     "weight": 2.5,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -21789,6 +22743,7 @@
     "type": "ShoulderArmor",
     "price": 7098,
     "weight": 13.2,
+    "requirement": 18,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -21805,6 +22760,7 @@
     "type": "ShoulderArmor",
     "price": 3779,
     "weight": 3.2,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -21821,6 +22777,7 @@
     "type": "ShoulderArmor",
     "price": 1961,
     "weight": 2.7,
+    "requirement": 8,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -21837,6 +22794,7 @@
     "type": "ShoulderArmor",
     "price": 9692,
     "weight": 14.0,
+    "requirement": 21,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 19,
@@ -21853,6 +22811,7 @@
     "type": "BodyArmor",
     "price": 10122,
     "weight": 8.2,
+    "requirement": 12,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 24,
@@ -21869,6 +22828,7 @@
     "type": "Shield",
     "price": 4695,
     "weight": 3.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -21899,6 +22859,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.2,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -21915,6 +22876,7 @@
     "type": "HeadArmor",
     "price": 9113,
     "weight": 3.6,
+    "requirement": 23,
     "armor": {
       "headArmor": 52,
       "bodyArmor": 0,
@@ -21931,6 +22893,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.3,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -21947,6 +22910,7 @@
     "type": "HeadArmor",
     "price": 7898,
     "weight": 3.3,
+    "requirement": 21,
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -21963,6 +22927,7 @@
     "type": "TwoHandedWeapon",
     "price": 5017,
     "weight": 1.72,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedAxe",
@@ -21996,6 +22961,7 @@
     "type": "TwoHandedWeapon",
     "price": 9156,
     "weight": 1.92,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedSword",
@@ -22026,6 +22992,7 @@
     "type": "TwoHandedWeapon",
     "price": 9327,
     "weight": 2.04,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedSword",
@@ -22056,6 +23023,7 @@
     "type": "OneHandedWeapon",
     "price": 1686,
     "weight": 0.92,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -22086,6 +23054,7 @@
     "type": "OneHandedWeapon",
     "price": 2371,
     "weight": 1.1,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -22116,6 +23085,7 @@
     "type": "BodyArmor",
     "price": 2303,
     "weight": 2.9,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -22132,6 +23102,7 @@
     "type": "BodyArmor",
     "price": 636,
     "weight": 1.8,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -22148,6 +23119,7 @@
     "type": "BodyArmor",
     "price": 188,
     "weight": 0.4,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 1,
@@ -22164,6 +23136,7 @@
     "type": "HeadArmor",
     "price": 846,
     "weight": 0.5,
+    "requirement": 5,
     "armor": {
       "headArmor": 12,
       "bodyArmor": 0,
@@ -22180,6 +23153,7 @@
     "type": "HeadArmor",
     "price": 494,
     "weight": 0.45,
+    "requirement": 3,
     "armor": {
       "headArmor": 8,
       "bodyArmor": 0,
@@ -22196,6 +23170,7 @@
     "type": "BodyArmor",
     "price": 12697,
     "weight": 12.0,
+    "requirement": 14,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 28,
@@ -22212,6 +23187,7 @@
     "type": "HeadArmor",
     "price": 229,
     "weight": 0.35,
+    "requirement": 1,
     "armor": {
       "headArmor": 4,
       "bodyArmor": 0,
@@ -22228,6 +23204,7 @@
     "type": "Mount",
     "price": 8294,
     "weight": 462.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 109,
       "chargeDamage": 3,
@@ -22244,6 +23221,7 @@
     "type": "Polearm",
     "price": 1628,
     "weight": 2.12,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -22338,6 +23316,7 @@
     "type": "Polearm",
     "price": 2115,
     "weight": 1.99,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -22410,6 +23389,7 @@
     "type": "Polearm",
     "price": 2620,
     "weight": 2.21,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -22482,6 +23462,7 @@
     "type": "HeadArmor",
     "price": 3498,
     "weight": 3.0,
+    "requirement": 13,
     "armor": {
       "headArmor": 30,
       "bodyArmor": 0,
@@ -22498,6 +23479,7 @@
     "type": "OneHandedWeapon",
     "price": 675,
     "weight": 1.38,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -22527,6 +23509,7 @@
     "type": "OneHandedWeapon",
     "price": 2181,
     "weight": 2.1,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -22556,6 +23539,7 @@
     "type": "OneHandedWeapon",
     "price": 2395,
     "weight": 1.92,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Mace",
@@ -22585,6 +23569,7 @@
     "type": "OneHandedWeapon",
     "price": 2783,
     "weight": 1.34,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -22614,6 +23599,7 @@
     "type": "OneHandedWeapon",
     "price": 2886,
     "weight": 1.4,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -22643,6 +23629,7 @@
     "type": "OneHandedWeapon",
     "price": 2805,
     "weight": 1.55,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -22672,6 +23659,7 @@
     "type": "OneHandedWeapon",
     "price": 2397,
     "weight": 1.37,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -22701,6 +23689,7 @@
     "type": "Polearm",
     "price": 2592,
     "weight": 3.19,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedPolearm",
@@ -22755,6 +23744,7 @@
     "type": "Polearm",
     "price": 16944,
     "weight": 1.51,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -22807,6 +23797,7 @@
     "type": "OneHandedWeapon",
     "price": 1969,
     "weight": 1.34,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -22836,6 +23827,7 @@
     "type": "OneHandedWeapon",
     "price": 2421,
     "weight": 1.45,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -22865,6 +23857,7 @@
     "type": "OneHandedWeapon",
     "price": 2876,
     "weight": 1.41,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -22894,6 +23887,7 @@
     "type": "OneHandedWeapon",
     "price": 2944,
     "weight": 1.54,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -22923,6 +23917,7 @@
     "type": "OneHandedWeapon",
     "price": 2835,
     "weight": 1.9,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -22952,6 +23947,7 @@
     "type": "BodyArmor",
     "price": 440,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -22968,6 +23964,7 @@
     "type": "BodyArmor",
     "price": 440,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -22984,6 +23981,7 @@
     "type": "HeadArmor",
     "price": 7043,
     "weight": 2.2,
+    "requirement": 20,
     "armor": {
       "headArmor": 45,
       "bodyArmor": 0,
@@ -23000,6 +23998,7 @@
     "type": "HeadArmor",
     "price": 6769,
     "weight": 2.3,
+    "requirement": 19,
     "armor": {
       "headArmor": 44,
       "bodyArmor": 0,
@@ -23016,6 +24015,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.6,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -23032,6 +24032,7 @@
     "type": "BodyArmor",
     "price": 350,
     "weight": 0.7,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -23048,6 +24049,7 @@
     "type": "Arrows",
     "price": 473,
     "weight": 0.06,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Arrow",
@@ -23077,6 +24079,7 @@
     "type": "Mount",
     "price": 9700,
     "weight": 500.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 105,
       "chargeDamage": 4,
@@ -23093,6 +24096,7 @@
     "type": "Mount",
     "price": 8063,
     "weight": 500.0,
+    "requirement": 0,
     "mount": {
       "bodyLength": 105,
       "chargeDamage": 8,
@@ -23109,6 +24113,7 @@
     "type": "TwoHandedWeapon",
     "price": 9836,
     "weight": 1.54,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -23177,6 +24182,7 @@
     "type": "TwoHandedWeapon",
     "price": 7378,
     "weight": 1.67,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -23245,6 +24251,7 @@
     "type": "TwoHandedWeapon",
     "price": 7264,
     "weight": 1.67,
+    "requirement": 0,
     "weapons": [
       {
         "class": "TwoHandedSword",
@@ -23275,6 +24282,7 @@
     "type": "HeadArmor",
     "price": 7323,
     "weight": 3.4,
+    "requirement": 20,
     "armor": {
       "headArmor": 46,
       "bodyArmor": 0,
@@ -23291,6 +24299,7 @@
     "type": "HeadArmor",
     "price": 7898,
     "weight": 3.6,
+    "requirement": 21,
     "armor": {
       "headArmor": 48,
       "bodyArmor": 0,
@@ -23307,6 +24316,7 @@
     "type": "Thrown",
     "price": 555,
     "weight": 0.91,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Javelin",
@@ -23360,6 +24370,7 @@
     "type": "Thrown",
     "price": 1289,
     "weight": 1.2,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Javelin",
@@ -23413,6 +24424,7 @@
     "type": "Thrown",
     "price": 1527,
     "weight": 1.41,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Javelin",
@@ -23466,6 +24478,7 @@
     "type": "Shield",
     "price": 2352,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -23496,6 +24509,7 @@
     "type": "HeadArmor",
     "price": 9113,
     "weight": 3.9,
+    "requirement": 23,
     "armor": {
       "headArmor": 52,
       "bodyArmor": 0,
@@ -23512,6 +24526,7 @@
     "type": "Shield",
     "price": 2146,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -23542,6 +24557,7 @@
     "type": "BodyArmor",
     "price": 15130,
     "weight": 15.0,
+    "requirement": 15,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 32,
@@ -23558,6 +24574,7 @@
     "type": "Polearm",
     "price": 1589,
     "weight": 1.83,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -23610,6 +24627,7 @@
     "type": "Polearm",
     "price": 874,
     "weight": 1.89,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -23662,6 +24680,7 @@
     "type": "Polearm",
     "price": 1319,
     "weight": 2.07,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -23736,6 +24755,7 @@
     "type": "Polearm",
     "price": 2161,
     "weight": 2.06,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -23816,6 +24836,7 @@
     "type": "Thrown",
     "price": 1643,
     "weight": 0.68,
+    "requirement": 0,
     "weapons": [
       {
         "class": "ThrowingAxe",
@@ -23870,6 +24891,7 @@
     "type": "BodyArmor",
     "price": 13485,
     "weight": 15.0,
+    "requirement": 14,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 34,
@@ -23886,6 +24908,7 @@
     "type": "Shield",
     "price": 3727,
     "weight": 4.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -23916,6 +24939,7 @@
     "type": "Polearm",
     "price": 2088,
     "weight": 2.02,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedPolearm",
@@ -23990,6 +25014,7 @@
     "type": "OneHandedWeapon",
     "price": 2890,
     "weight": 1.55,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -24019,6 +25044,7 @@
     "type": "ShoulderArmor",
     "price": 1068,
     "weight": 1.8,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -24035,6 +25061,7 @@
     "type": "HeadArmor",
     "price": 1284,
     "weight": 1.3,
+    "requirement": 7,
     "armor": {
       "headArmor": 16,
       "bodyArmor": 0,
@@ -24051,6 +25078,7 @@
     "type": "HeadArmor",
     "price": 86,
     "weight": 0.2,
+    "requirement": 0,
     "armor": {
       "headArmor": 1,
       "bodyArmor": 0,
@@ -24067,6 +25095,7 @@
     "type": "HeadArmor",
     "price": 86,
     "weight": 0.1,
+    "requirement": 0,
     "armor": {
       "headArmor": 1,
       "bodyArmor": 0,
@@ -24083,6 +25112,7 @@
     "type": "TwoHandedWeapon",
     "price": 1290,
     "weight": 0.55,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -24154,6 +25184,7 @@
     "type": "OneHandedWeapon",
     "price": 685,
     "weight": 0.58,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedSword",
@@ -24184,6 +25215,7 @@
     "type": "OneHandedWeapon",
     "price": 2065,
     "weight": 1.27,
+    "requirement": 0,
     "weapons": [
       {
         "class": "OneHandedAxe",
@@ -24214,6 +25246,7 @@
     "type": "Bow",
     "price": 6624,
     "weight": 0.1,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -24249,6 +25282,7 @@
     "type": "Bow",
     "price": 5267,
     "weight": 0.5,
+    "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
@@ -24284,6 +25318,7 @@
     "type": "Shield",
     "price": 1742,
     "weight": 4.0,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -24314,6 +25349,7 @@
     "type": "Shield",
     "price": 1812,
     "weight": 3.7,
+    "requirement": 0,
     "weapons": [
       {
         "class": "LargeShield",
@@ -24344,6 +25380,7 @@
     "type": "LegArmor",
     "price": 356,
     "weight": 0.7,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -24360,6 +25397,7 @@
     "type": "HandArmor",
     "price": 598,
     "weight": 0.8,
+    "requirement": 5,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -24376,6 +25414,7 @@
     "type": "BodyArmor",
     "price": 3450,
     "weight": 5.1,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -24392,6 +25431,7 @@
     "type": "ShoulderArmor",
     "price": 1482,
     "weight": 1.6,
+    "requirement": 7,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 6,
@@ -24408,6 +25448,7 @@
     "type": "BodyArmor",
     "price": 2303,
     "weight": 4.7,
+    "requirement": 4,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -24424,6 +25465,7 @@
     "type": "HeadArmor",
     "price": 351,
     "weight": 0.8,
+    "requirement": 2,
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
@@ -24440,6 +25482,7 @@
     "type": "HeadArmor",
     "price": 846,
     "weight": 0.5,
+    "requirement": 5,
     "armor": {
       "headArmor": 12,
       "bodyArmor": 0,
@@ -24456,6 +25499,7 @@
     "type": "HeadArmor",
     "price": 287,
     "weight": 0.2,
+    "requirement": 2,
     "armor": {
       "headArmor": 5,
       "bodyArmor": 0,
@@ -24472,6 +25516,7 @@
     "type": "LegArmor",
     "price": 555,
     "weight": 1.0,
+    "requirement": 6,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,
@@ -24488,6 +25533,7 @@
     "type": "ShoulderArmor",
     "price": 208,
     "weight": 0.5,
+    "requirement": 1,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -24504,6 +25550,7 @@
     "type": "LegArmor",
     "price": 272,
     "weight": 0.8,
+    "requirement": 3,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 0,

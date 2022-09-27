@@ -2,6 +2,7 @@
 using System.Xml;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Items;
+using Crpg.Module.Common.Models;
 using Crpg.Module.Helpers.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -164,7 +165,8 @@ internal class ItemExporter : IDataExporter
             Type = MbToCrpgItemType(mbItem.Type),
             Price = mbItem.Value,
             Weight = mbItem.Weight,
-        };
+            Requirement = mbItem.ArmorComponent != null ? CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem) : 0,
+    };
 
         if (mbItem.ArmorComponent != null)
         {
