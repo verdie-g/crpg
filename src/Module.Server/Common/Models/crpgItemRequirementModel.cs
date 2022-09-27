@@ -7,7 +7,8 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 
 namespace Crpg.Module.Common.Models;
-public static class CrpgItemRequirementModel
+
+internal static class CrpgItemRequirementModel
 {
     public static float ComputeArmorPieceStrengthRequirement(ItemObject item)
     {
