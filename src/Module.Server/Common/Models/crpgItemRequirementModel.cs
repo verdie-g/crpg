@@ -14,7 +14,7 @@ internal static class CrpgItemRequirementModel
     {
         int strengthRequirementForTierTenArmor = 24; // Tiers are calulated in CrpgValueModel. 0<Tier=<10 . By design the best armor is always at Ten.
         if (item.ArmorComponent == null)
-        {z
+        {
             throw new ArgumentException(item.Name.ToString(), "is not an armor item");
         }
 
@@ -30,8 +30,8 @@ internal static class CrpgItemRequirementModel
             return 0;
         }
 
-        float[] armorsrequirement = armors.Select(a => ComputeArmorPieceStrengthRequirement(a)).ToArray();
-        int armorSetRequirementTimeTwo = (int)(MathHelper.GeneralizedMean(10, armorsrequirement) * 2f);
+        float[] armorsRequirement = armors.Select(a => ComputeArmorPieceStrengthRequirement(a)).ToArray();
+        int armorSetRequirementTimeTwo = (int)(MathHelper.GeneralizedMean(10, armorsRequirement) * 2f);
         return armorSetRequirementTimeTwo / 2f;
     }
 }
