@@ -165,7 +165,7 @@ internal class ItemExporter : IDataExporter
             Type = MbToCrpgItemType(mbItem.Type),
             Price = mbItem.Value,
             Weight = mbItem.Weight,
-            Requirement = mbItem.ArmorComponent != null ? CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem) : 0f,
+            Requirement = mbItem.ArmorComponent != null ? CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem) : 0,
     };
 
         if (mbItem.ArmorComponent != null)
