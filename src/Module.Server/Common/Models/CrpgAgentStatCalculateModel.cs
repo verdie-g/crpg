@@ -240,7 +240,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int ridingSkill = agent.RiderAgent != null
             ? GetEffectiveSkill(agent.RiderAgent.Character, agent.RiderAgent.Origin, agent.RiderAgent.Formation, DefaultSkills.Riding)
             : 100;
-        props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (1.0f + ridingSkill * 0.0035f);
+        int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
+        float distanceToStrRequirement =
+            Math.Max(CrpgItemRequirementModel.ComputeArmorSetPieceStrengthRequirement(GetArmorItemObjectList(agent.SpawnEquipment)) - strengthAttribute, 0);
+        float impactOfStrReqFactor = 0.2f;
+        float impactOfStrReq = 1 / (1 + distanceToStrRequirement * impactOfStrReqFactor);
+        props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (1.0f + ridingSkill * 0.0035f) * impactOfStrReq;
         props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.22f * (1.0f + ridingSkill * 0.0032f);
         props.TopSpeedReachDuration = Game.Current.BasicModels.RidingModel.CalculateAcceleration(in mount, in mountHarness, ridingSkill);
         float weightFactor = mount.Weight / 2.0f + (mountHarness.IsEmpty ? 0.0f : mountHarness.Weight);
@@ -275,9 +280,14 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
         float agentWeight = agent.Monster.Weight;
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
-        props.TopSpeedReachDuration = 2f / MathF.Max((200f + athleticsSkill) / 300f * (agentWeight / (agentWeight + totalEncumbrance)), 0.3f);
+        int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
+        float distanceToStrRequirement =
+            Math.Max(CrpgItemRequirementModel.ComputeArmorSetPieceStrengthRequirement(GetArmorItemObjectList(agent.SpawnEquipment)) - strengthAttribute, 0);
+        float impactOfStrReqOnSpeedFactor = 0.2f;
+        float impactOfStrReqOnSpeed = 1 / (1 + distanceToStrRequirement * impactOfStrReqOnSpeedFactor);
+        props.TopSpeedReachDuration = 2f / MathF.Max((200f + athleticsSkill) / 300f * (agentWeight / (agentWeight + totalEncumbrance)) * distanceToStrRequirement * impactOfStrReqOnSpeed, 0.3f);
         float speed = 0.7f + 0.00070000015f * athleticsSkill;
-        float weightSpeedPenalty = MathF.Max(0.2f * (1f - athleticsSkill * 0.001f), 0f) * totalEncumbrance / agentWeight;
+        float weightSpeedPenalty = MathF.Max(0.2f * (1f - athleticsSkill * 0.001f), 0f) * totalEncumbrance / agentWeight / impactOfStrReqOnSpeed;
         float maxSpeedMultiplier = MBMath.ClampFloat(speed - weightSpeedPenalty, 0f, 0.91f);
         float atmosphereSpeedPenalty = agent.Mission.Scene.IsAtmosphereIndoor && agent.Mission.Scene.GetRainDensity() > 0
             ? 0.9f
@@ -405,5 +415,20 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
 
         SetAiRelatedProperties(agent, props, equippedItem, secondaryItem);
+    }
+
+    private List<ItemObject> GetArmorItemObjectList(Equipment equipment)
+    {
+        List<ItemObject> armorItemObjectList = new();
+        for (EquipmentIndex equipmentIndex = EquipmentIndex.NumAllWeaponSlots; equipmentIndex < EquipmentIndex.ArmorItemEndSlot; equipmentIndex++)
+        {
+            EquipmentElement equipmentElement = equipment[equipmentIndex];
+            if (equipmentElement.Item != null)
+            {
+                armorItemObjectList.Add(equipmentElement.Item);
+            }
+        }
+
+        return armorItemObjectList;
     }
 }
