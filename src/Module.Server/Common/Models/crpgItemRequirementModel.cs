@@ -12,7 +12,7 @@ internal static class CrpgItemRequirementModel
 {
     public static float ComputeArmorPieceStrengthRequirement(ItemObject item)
     {
-        int strengthRequirementForTierTenArmor = 24;
+        int strengthRequirementForTierTenArmor = 24; // Tiers are calulated in CrpgValueModel. 0<Tier=<10 . By design the best armor is always at Ten.
         if (item.ArmorComponent == null)
         {
             throw new ArgumentException(item.ItemComponent.GetName().ToString(), "is not an armor item");
