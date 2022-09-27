@@ -119,7 +119,7 @@
 
       <br />
 
-      <b-tooltip label="Respecialize character for a third of its experience." multilined>
+      <b-tooltip label="Respecialize character." multilined>
         <b-button
           type="is-warning"
           icon-left="angle-double-down"
