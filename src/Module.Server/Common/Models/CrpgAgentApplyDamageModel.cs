@@ -20,7 +20,7 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
     public override float CalculateDamage(in AttackInformation attackInformation, in AttackCollisionData collisionData, in MissionWeapon weapon, float baseDamage)
     {
         float finalDamage = base.CalculateDamage(attackInformation, collisionData, weapon, baseDamage);
-        if (collisionData.AttackBlockedWithShield)
+        if (collisionData.AttackBlockedWithShield && finalDamage > 0)
         {
             int shieldSkill = 0;
             if (attackInformation.VictimAgentOrigin is CrpgBattleAgentOrigin crpgOrigin)
@@ -28,7 +28,7 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
                 shieldSkill = crpgOrigin.Skills.GetPropertyValue(CrpgSkills.Shield);
             }
 
-            finalDamage /= MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.DurabilityFactorForShieldCoefs);
+            finalDamage /= MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.DurabilityFactorForShieldRecursiveCoefs);
         }
 
         if (!weapon.IsEmpty)
@@ -60,12 +60,7 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
                 shieldSkill = crpgOrigin.Skills.GetPropertyValue(CrpgSkills.Shield);
             }
 
-            if (shieldSkill > _constants.ShieldDefendStunMultiplierForSkill.Length)
-            {
-                shieldSkill = _constants.ShieldDefendStunMultiplierForSkill.Length - 1;
-            }
-
-            defenderStunMultiplier = _constants.ShieldDefendStunMultiplierForSkill[shieldSkill];
+            defenderStunMultiplier = 1 / MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.ShieldDefendStunMultiplierForSkillRecursiveCoefs);
 
             return;
         }

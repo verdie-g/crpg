@@ -184,11 +184,16 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 continue;
             }
 
+            var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
+            if (!DoesEquipmentContainWeapon(characterEquipment)) // Disallow spawning without weapons.
+            {
+                continue;
+            }
+
             BasicCultureObject teamCulture = missionPeer.Team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
             var peerClass = MultiplayerClassDivisions.GetMPHeroClasses().Skip(5).First();
             // var character = CreateCharacter(crpgRepresentative.User.Character, _constants);
             var characterSkills = CreateCharacterSkills(crpgRepresentative.User.Character.Characteristics);
-            var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
             var character = peerClass.HeroCharacter;
 
             // Used to reset the selected perks for the current troop. Otherwise the player might have addional stats.
@@ -288,6 +293,19 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         }
 
         return equipment;
+    }
+
+    private bool DoesEquipmentContainWeapon(Equipment equipment)
+    {
+        for (var i = EquipmentIndex.WeaponItemBeginSlot; i < EquipmentIndex.ExtraWeaponSlot; i += 1)
+        {
+            if (!equipment[i].IsEmpty)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void AddEquipment(Equipment equipments, EquipmentIndex idx, string itemId)
