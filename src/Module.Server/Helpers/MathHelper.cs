@@ -15,7 +15,7 @@ internal static class MathHelper
 
     public static float GeneralizedMean(int n, float[] numbers)
     {
-        float normN = (float)numbers.Sum(x => Math.Pow(x, n)) / n;
+        float normN = (float)numbers.Sum(x => Math.Pow(x, n)) / numbers.Count();
         return (float)Math.Pow(normN, 1f / n);
     }
 

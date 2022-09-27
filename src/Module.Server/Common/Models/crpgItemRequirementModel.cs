@@ -28,7 +28,13 @@ internal static class CrpgItemRequirementModel
             return 0;
         }
 
-        float[] armorsRequirement = armors.Select(a => (float)ComputeArmorPieceStrengthRequirement(a)).ToArray();
-        return (int)MathHelper.GeneralizedMean(10, armorsRequirement);
+        List<float> armorsRequirement = armors.Select(a => (float)ComputeArmorPieceStrengthRequirement(a)).ToList();
+        ;
+        for (int i = armorsRequirement.Count() + 1; i <= 5; i++)
+        {
+            armorsRequirement.ToList().Add(0f);
+        }
+
+        return (int)MathHelper.GeneralizedMean(10, armorsRequirement.ToArray());
     }
 }
