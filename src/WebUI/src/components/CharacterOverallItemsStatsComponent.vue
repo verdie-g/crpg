@@ -3,33 +3,33 @@
     <table width="300px">
       <tr>
         <td><b>Armor Set Requirement</b></td>
-        <td>{{ itemStats.armorSetRequirement.toLocaleString() }} STR</td>
+        <td>{{ itemStats.armorSetRequirement.toLocaleString('en-US') }} STR</td>
       </tr>
       <tr>
         <td><b>Price</b></td>
         <td>
-          {{ itemStats.price.toLocaleString() }}
+          {{ itemStats.price.toLocaleString('en-US') }}
           <b-icon icon="coins" size="is-small" />
         </td>
       </tr>
       <tr>
         <td><b>Max repair costs</b></td>
         <td>
-          {{ itemStats.maxRepairCost.toLocaleString() }}
+          {{ itemStats.maxRepairCost.toLocaleString('en-US') }}
           <b-icon icon="coins" size="is-small" />
         </td>
       </tr>
       <tr>
         <td><b>Average repair costs</b></td>
         <td>
-          {{ itemStats.averageRepairCost.toLocaleString() }}
+          {{ itemStats.averageRepairCost.toLocaleString('en-US') }}
           <b-icon icon="coins" size="is-small" />
         </td>
       </tr>
       <tr>
         <td><b>Weight</b></td>
         <td>
-          {{ itemStats.weight }}
+          {{ itemStats.weight.toLocaleString('en-US') }}
           <b-icon icon="weight-hanging" size="is-small" />
         </td>
       </tr>
@@ -95,7 +95,7 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     this.equippedItems.forEach(item => {
       const armor = item.userItem.baseItem.armor;
       result.price += item.userItem.baseItem.price;
-      result.weight += item.userItem.baseItem.weight;
+      result.weight += Number.parseFloat(item.userItem.baseItem.weight.toFixed(2));
 
       if (armor) {
         result.headArmor += armor.headArmor;
