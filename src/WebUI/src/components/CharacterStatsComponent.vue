@@ -38,7 +38,17 @@
         />
       </b-field>
       <b-field horizontal label="Experience" class="characteristic-field is-marginless">
-        <b-input size="is-small" :value="experience" readonly />
+        <b-progress
+          class="experience-progress-bar"
+          type="is-info"
+          size="is-medium"
+          :max="nextLevelExperience"
+          :value="this.character.experience"
+          show-value="true"
+          format="raw"
+        >
+          {{ (nextLevelExperience - this.character.experience).toLocaleString('en-US') }} XP left
+        </b-progress>
       </b-field>
       <b-field horizontal label="Health Points" class="characteristic-field">
         <b-numberinput
@@ -605,12 +615,8 @@ export default class CharacterCharacteristicsComponent extends Vue {
     );
   }
 
-  get experience(): string {
-    return (
-      this.character.experience.toString() +
-      ' / ' +
-      getExperienceForLevel(this.character.level + 1).toString()
-    );
+  get nextLevelExperience(): number {
+    return getExperienceForLevel(this.character.level + 1);
   }
 
   convertCharacteristics(conversion: CharacteristicConversion): Promise<CharacterCharacteristics> {
@@ -894,6 +900,11 @@ export default class CharacterCharacteristicsComponent extends Vue {
 </style>
 
 <style scoped lang="scss">
+.experience-progress-bar {
+  width: 300px;
+  height: 30px;
+  margin-top: 4px;
+}
 .character-name {
   display: flex;
 
