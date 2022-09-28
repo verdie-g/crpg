@@ -1,14 +1,18 @@
 ﻿using System.Globalization;
+using System.Runtime.Serialization;
 using System.Xml;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Common.Models;
 using Crpg.Module.Helpers.Json;
+using MountAndBlade.CampaignBehaviors;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
+using TaleWorlds.CampaignSystem.Extensions;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.View.Screens;
 using TaleWorlds.MountAndBlade.View.Tableaus;
 using TaleWorlds.ObjectSystem;
 
@@ -165,8 +169,17 @@ internal class ItemExporter : IDataExporter
             Type = MbToCrpgItemType(mbItem.Type),
             Price = mbItem.Value,
             Weight = mbItem.Weight,
-            Requirement = mbItem.ArmorComponent != null ? CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem) : 0,
-    };
+            Requirement = mbItem.ItemType switch
+            {
+                ItemObject.ItemTypeEnum.HeadArmor => CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem),
+                ItemObject.ItemTypeEnum.BodyArmor => CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem),
+                ItemObject.ItemTypeEnum.Cape => CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem),
+                ItemObject.ItemTypeEnum.HandArmor => CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem),
+                ItemObject.ItemTypeEnum.LegArmor => CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem),
+                ItemObject.ItemTypeEnum.Crossbow => CrpgItemRequirementModel.ComputeCrossbowRequirement(mbItem),
+                _ => 0,
+            },
+        };
 
         if (mbItem.ArmorComponent != null)
         {
