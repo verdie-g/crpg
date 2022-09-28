@@ -199,27 +199,27 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
     ],
     modes: [],
   };
-
-  switch (baseItem.type) {
-    case ItemType.HeadArmor:
-    props.fields.push(['Requirement', baseItem.requirement + ' STR']);
-    break;
-    case ItemType.BodyArmor:
-    props.fields.push(['Requirement', baseItem.requirement + ' STR']);
-    break;
-    case ItemType.ShoulderArmor:
-    props.fields.push(['Requirement', baseItem.requirement + ' STR']);
-    break;
-    case ItemType.HandArmor:
-    props.fields.push(['Requirement', baseItem.requirement + ' STR']);
-    break;
-    case ItemType.LegArmor:
-    props.fields.push(['Requirement', baseItem.requirement + ' STR']);
-    break;
-    case ItemType.Crossbow:
-    props.fields.push(['Requirement', baseItem.requirement + ' STR']);
-    break;
-  }
+  if (baseItem.armor !== null) {
+    switch (baseItem.type) {
+      case ItemType.HeadArmor:
+        props.fields.push(['Requirement', baseItem.requirement + ' STR']);
+        break;
+      case ItemType.BodyArmor:
+        props.fields.push(['Requirement', baseItem.requirement + ' STR']);
+        break;
+      case ItemType.ShoulderArmor:
+        props.fields.push(['Requirement', baseItem.requirement + ' STR']);
+        break;
+      case ItemType.HandArmor:
+        props.fields.push(['Requirement', baseItem.requirement + ' STR']);
+        break;
+      case ItemType.LegArmor:
+        props.fields.push(['Requirement', baseItem.requirement + ' STR']);
+        break;
+      case ItemType.Crossbow:
+        props.fields.push(['Requirement', baseItem.requirement + ' STR']);
+        break;
+    }
     if (baseItem.armor.headArmor !== 0) {
       props.fields.push(['Head Armor', baseItem.armor.headArmor]);
     }
