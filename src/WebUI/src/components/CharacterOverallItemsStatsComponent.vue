@@ -29,7 +29,7 @@
       <tr>
         <td><b>Weight</b></td>
         <td>
-          {{ itemStats.weight }}
+          {{ itemStats.weight.toLocaleString() }}
           <b-icon icon="weight-hanging" size="is-small" />
         </td>
       </tr>
@@ -95,7 +95,7 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     this.equippedItems.forEach(item => {
       const armor = item.userItem.baseItem.armor;
       result.price += item.userItem.baseItem.price;
-      result.weight += item.userItem.baseItem.weight;
+      result.weight += Math.round(item.userItem.baseItem.weight * 100) / 100;
 
       if (armor) {
         result.headArmor += armor.headArmor;
