@@ -47,7 +47,8 @@
           show-value="true"
           format="raw"
         >
-          {{ (nextLevelExperience - this.character.experience).toLocaleString('en-US') }} XP left
+          {{ this.character.experience.toLocaleString('en-US') }} /
+          {{ nextLevelExperience.toLocaleString('en-US') }}
         </b-progress>
       </b-field>
       <b-field horizontal label="Health Points" class="characteristic-field">
