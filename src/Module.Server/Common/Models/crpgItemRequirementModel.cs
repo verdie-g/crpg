@@ -5,11 +5,26 @@ using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Models;
 
 internal static class CrpgItemRequirementModel
 {
+    public static int ComputeItemRequirement(ItemObject item)
+    {
+        return item.ItemType switch
+        {
+            ItemObject.ItemTypeEnum.HeadArmor => ComputeArmorPieceStrengthRequirement(item),
+            ItemObject.ItemTypeEnum.BodyArmor => ComputeArmorPieceStrengthRequirement(item),
+            ItemObject.ItemTypeEnum.Cape => ComputeArmorPieceStrengthRequirement(item),
+            ItemObject.ItemTypeEnum.HandArmor => ComputeArmorPieceStrengthRequirement(item),
+            ItemObject.ItemTypeEnum.LegArmor => ComputeArmorPieceStrengthRequirement(item),
+            ItemObject.ItemTypeEnum.Crossbow => ComputeCrossbowRequirement(item),
+            _ => 0,
+        };
+    }
+
     public static int ComputeArmorPieceStrengthRequirement(ItemObject item)
     {
         int strengthRequirementForTierTenArmor = 24; // Tiers are calulated in CrpgValueModel. 0<Tier=<10 . By design the best armor is always at Ten.

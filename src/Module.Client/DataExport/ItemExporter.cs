@@ -169,16 +169,7 @@ internal class ItemExporter : IDataExporter
             Type = MbToCrpgItemType(mbItem.Type),
             Price = mbItem.Value,
             Weight = mbItem.Weight,
-            Requirement = mbItem.ItemType switch
-            {
-                ItemObject.ItemTypeEnum.HeadArmor => CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem),
-                ItemObject.ItemTypeEnum.BodyArmor => CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem),
-                ItemObject.ItemTypeEnum.Cape => CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem),
-                ItemObject.ItemTypeEnum.HandArmor => CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem),
-                ItemObject.ItemTypeEnum.LegArmor => CrpgItemRequirementModel.ComputeArmorPieceStrengthRequirement(mbItem),
-                ItemObject.ItemTypeEnum.Crossbow => CrpgItemRequirementModel.ComputeCrossbowRequirement(mbItem),
-                _ => 0,
-            },
+            Requirement = CrpgItemRequirementModel.ComputeItemRequirement(mbItem),
         };
 
         if (mbItem.ArmorComponent != null)
