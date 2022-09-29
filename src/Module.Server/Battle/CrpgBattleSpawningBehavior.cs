@@ -2,6 +2,7 @@
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Common;
+using Crpg.Module.Common.GameHandler;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
@@ -13,14 +14,13 @@ namespace Crpg.Module.Battle;
 internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 {
     private const float TotalSpawnDuration = 30f;
-    private const float SpawnCavalryDelay = 4f;
-    private const float RoundEndCheckDelay = SpawnCavalryDelay + 1f;
+    private const float CavalrySpawnDelay = 6f;
+    private const float RoundEndCheckDelay = CavalrySpawnDelay + 1f;
     private readonly CrpgConstants _constants;
     private readonly MultiplayerRoundController? _roundController;
     private MissionTimer? _spawnTimer;
     private MissionTimer? _spawnTimerCavalryDelay;
-    // _roundEndCheckDelay -> Used to declare when the round end timer starts. Necessary because otherwise it might happen that one player quits before cav spawns. That might lead to a lose for the team which is waiting for their cav spawns. Not sure about the tick order. Thats why we declare an extra timer.
-    private MissionTimer? _roundEndCheckDelay;
+    private MissionTimer? _roundEndCheckDelay;    // Used to declare when the round end timer starts. Necessary because otherwise it might happen that one player quits before cav spawns. That might lead to a lose for the team which is waiting for their cav spawns. Not sure about the tick order. Thats why we declare an extra timer.
     private bool _botsSpawned;
 
     public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController? roundController)
@@ -61,9 +61,11 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     {
         base.RequestStartSpawnSession();
         _botsSpawned = false;
-        _spawnTimer = new MissionTimer(TotalSpawnDuration); // Limit spawning for 30 seconds.
-        _spawnTimerCavalryDelay = new MissionTimer(SpawnCavalryDelay); // Cav will spawn 4 seconds later.
-        _roundEndCheckDelay = new MissionTimer(RoundEndCheckDelay); // Enable round end check after 5 seconds
+        // The preparationTimeLimit should be added to all spawn values cause the actual spawn phase starts before the preparation time ends. So it's always time+preparationTimeLimit
+        int preparationTimeLimit = MultiplayerOptions.OptionType.RoundPreparationTimeLimit.GetIntValue();
+        _spawnTimer = new MissionTimer(TotalSpawnDuration + preparationTimeLimit); // Limit spawning for 30 seconds.
+        _spawnTimerCavalryDelay = new MissionTimer(CavalrySpawnDelay + preparationTimeLimit); // Cav will spawn 6 seconds later.
+        _roundEndCheckDelay = new MissionTimer(RoundEndCheckDelay + preparationTimeLimit); // Enable round end check after 7 seconds
         ResetSpawnTeams();
     }
 
@@ -106,6 +108,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             if (crpgRepresentative != null)
             {
                 crpgRepresentative.SpawnTeamThisRound = null;
+                crpgRepresentative.NotifiedAboutSpawnDelay = false;
             }
         }
     }
@@ -181,6 +184,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     {
         BasicCultureObject cultureTeam1 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
         BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
+        CrpgChatBox crpgChat = Game.Current.GetGameHandler<CrpgChatBox>();//?.ServerSendServerMessageToEveryone(new Color(1f, 1f, 0f), $"Cavalry will spawn in {CavalrySpawnDelay} seconds!");
 
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
@@ -199,13 +203,18 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
             var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
             bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
-            if (hasMount && !_spawnTimerCavalryDelay!.Check()) // Disallow spawning cavalry before the 4sec delay ended.
+
+            // Disallow spawning cavalry before the cav spawn delay ended.
+            if (hasMount && _spawnTimerCavalryDelay != null && !_spawnTimerCavalryDelay.Check()) 
             {
-                Console.WriteLine("_spawnTimerCavalryDelay " + missionPeer.Name);
+                if (!crpgRepresentative.NotifiedAboutSpawnDelay)
+                {
+                    crpgChat.ServerSendMessageToPlayer(networkPeer, new Color(1f, 1f, 0f), $"Cavalry will spawn in {CavalrySpawnDelay} seconds!");
+                    crpgRepresentative.NotifiedAboutSpawnDelay = true;
+                }
+
                 continue;
             }
-
-            Console.WriteLine("spawning " + missionPeer.Name);
 
             if (!DoesEquipmentContainWeapon(characterEquipment)) // Disallow spawning without weapons.
             {

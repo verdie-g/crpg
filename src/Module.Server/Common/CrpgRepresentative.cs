@@ -45,6 +45,9 @@ internal class CrpgRepresentative : MissionRepresentativeBase
     /// <summary>The team the user has spawn in. Used to give the correct reward multiplier even after changing team.</summary>
     public Team? SpawnTeamThisRound { get; set; }
 
+    /// <summary>Manages if the player was informed that he/she as a rider will spawn with a small delay.</summary>
+    public bool NotifiedAboutSpawnDelay { get; set; }
+
     public void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode mode)
     {
         if (GameNetwork.IsClientOrReplay)
