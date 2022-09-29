@@ -2,6 +2,7 @@
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Common;
+using Crpg.Module.Common.GameHandler;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
@@ -64,6 +65,34 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         return false;
     }
 
+    private async void InitTeamhitProtection(int seconds)
+    {
+        int meleeDamageOther = MultiplayerOptions.OptionType.FriendlyFireDamageMeleeFriendPercent.GetIntValue();
+        int rangedDamageOther = MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.GetIntValue();
+        int meleeDamageSelf = MultiplayerOptions.OptionType.FriendlyFireDamageMeleeSelfPercent.GetIntValue();
+        int rangedDamageSelf = MultiplayerOptions.OptionType.FriendlyFireDamageRangedSelfPercent.GetIntValue();
+        MultiplayerOptions.OptionType.FriendlyFireDamageMeleeFriendPercent.SetValue(0);
+        MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.SetValue(0);
+        MultiplayerOptions.OptionType.FriendlyFireDamageMeleeSelfPercent.SetValue(0);
+        MultiplayerOptions.OptionType.FriendlyFireDamageRangedSelfPercent.SetValue(0);
+        CrpgChatBox crpgChat = Game.Current.GetGameHandler<CrpgChatBox>();
+        for (int i = MultiplayerOptions.OptionType.RoundPreparationTimeLimit.GetIntValue() + seconds; i > 0; i--)
+        {
+            if (i <= seconds)
+            {
+                crpgChat.ServerSendServerMessageToEveryone(new Color(1f, 1f, 0), "Teamhit protection ends in " + i + "..");
+            }
+
+            await Task.Delay(1000);
+        }
+
+        MultiplayerOptions.OptionType.FriendlyFireDamageMeleeFriendPercent.SetValue(meleeDamageOther);
+        MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.SetValue(rangedDamageOther);
+        MultiplayerOptions.OptionType.FriendlyFireDamageMeleeSelfPercent.SetValue(meleeDamageSelf);
+        MultiplayerOptions.OptionType.FriendlyFireDamageRangedSelfPercent.SetValue(rangedDamageSelf);
+        crpgChat.ServerSendServerMessageToEveryone(new Color(1f, 1f, 0), "Teamhit protection ended.");
+    }
+
     protected override bool IsRoundInProgress()
     {
         return _roundController?.IsRoundInProgress ?? false;
@@ -80,6 +109,11 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         {
             SpawnBotAgents();
             _botsSpawned = true;
+
+            if (_roundController != null)
+            {
+                InitTeamhitProtection(5);
+            }
         }
 
         SpawnPeerAgents();
