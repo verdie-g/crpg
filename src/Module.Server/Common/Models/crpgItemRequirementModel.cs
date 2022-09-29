@@ -13,19 +13,22 @@ internal static class CrpgItemRequirementModel
 {
     public static int ComputeItemRequirement(ItemObject item)
     {
-        return item.ItemType switch
+        switch (item.ItemType)
         {
-            ItemObject.ItemTypeEnum.HeadArmor => ComputeArmorPieceStrengthRequirement(item),
-            ItemObject.ItemTypeEnum.BodyArmor => ComputeArmorPieceStrengthRequirement(item),
-            ItemObject.ItemTypeEnum.Cape => ComputeArmorPieceStrengthRequirement(item),
-            ItemObject.ItemTypeEnum.HandArmor => ComputeArmorPieceStrengthRequirement(item),
-            ItemObject.ItemTypeEnum.LegArmor => ComputeArmorPieceStrengthRequirement(item),
-            ItemObject.ItemTypeEnum.Crossbow => ComputeCrossbowRequirement(item),
-            _ => 0,
-        };
+            case ItemObject.ItemTypeEnum.HeadArmor:
+            case ItemObject.ItemTypeEnum.BodyArmor:
+            case ItemObject.ItemTypeEnum.Cape:
+            case ItemObject.ItemTypeEnum.HandArmor:
+            case ItemObject.ItemTypeEnum.LegArmor:
+                return ComputeArmorPieceStrengthRequirement(item);
+            case ItemObject.ItemTypeEnum.Crossbow:
+                return ComputeCrossbowRequirement(item);
+        }
+
+        return 0;
     }
 
-    public static int ComputeArmorPieceStrengthRequirement(ItemObject item)
+    private static int ComputeArmorPieceStrengthRequirement(ItemObject item)
     {
         int strengthRequirementForTierTenArmor = 24; // Tiers are calulated in CrpgValueModel. 0<Tier=<10 . By design the best armor is always at Ten.
         if (item.ArmorComponent == null)
@@ -37,7 +40,7 @@ internal static class CrpgItemRequirementModel
     }
 
     // make sure this method does the same thing as the one in the webui.
-    public static int ComputeArmorSetPieceStrengthRequirement(List<ItemObject> armors)
+    private static int ComputeArmorSetPieceStrengthRequirement(List<ItemObject> armors)
     {
         if (armors == null)
         {
@@ -54,7 +57,7 @@ internal static class CrpgItemRequirementModel
         return (int)MathHelper.GeneralizedMean(10, armorsRequirements);
     }
 
-    public static int ComputeCrossbowRequirement(ItemObject item)
+    private static int ComputeCrossbowRequirement(ItemObject item)
     {
         int strengthRequirementForTierTenCrossbow = 18; // Tiers are calulated in CrpgValueModel. 0<Tier=<10 . By design the best armor is always at Ten.
         if (item.ItemType != ItemObject.ItemTypeEnum.Crossbow)
