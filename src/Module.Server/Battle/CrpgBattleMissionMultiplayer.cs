@@ -127,11 +127,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             return;
         }
 
-        if (!_wereFlagsRemoved)
-        {
-            CheckRemovalOfFlags();
-        }
-
+        CheckRemovalOfFlags();
         CheckMorales();
         TickFlags();
     }
@@ -366,6 +362,12 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 
     private void CheckRemovalOfFlags()
     {
+        if (_wereFlagsRemoved
+            || _flags.Length == 0) // Protection against maps with no flags.
+        {
+            return;
+        }
+
         _checkFlagRemovalTimer ??= new Timer(Mission.CurrentTime, CrpgBattleMissionMultiplayerClient.FlagsRemovalTime);
         if (!_checkFlagRemovalTimer.Check(Mission.CurrentTime))
         {
