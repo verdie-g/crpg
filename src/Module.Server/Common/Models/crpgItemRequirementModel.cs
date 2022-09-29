@@ -28,19 +28,8 @@ internal static class CrpgItemRequirementModel
         return 0;
     }
 
-    private static int ComputeArmorPieceStrengthRequirement(ItemObject item)
-    {
-        int strengthRequirementForTierTenArmor = 24; // Tiers are calulated in CrpgValueModel. 0<Tier=<10 . By design the best armor is always at Ten.
-        if (item.ArmorComponent == null)
-        {
-            throw new ArgumentException(item.Name.ToString(), "is not an armor item");
-        }
-
-        return (int)(item.Tierf * (strengthRequirementForTierTenArmor / 10f));
-    }
-
     // make sure this method does the same thing as the one in the webui.
-    private static int ComputeArmorSetPieceStrengthRequirement(List<ItemObject> armors)
+    public static int ComputeArmorSetPieceStrengthRequirement(List<ItemObject> armors)
     {
         if (armors == null)
         {
@@ -55,6 +44,17 @@ internal static class CrpgItemRequirementModel
         }
 
         return (int)MathHelper.GeneralizedMean(10, armorsRequirements);
+    }
+
+    private static int ComputeArmorPieceStrengthRequirement(ItemObject item)
+    {
+        int strengthRequirementForTierTenArmor = 24; // Tiers are calulated in CrpgValueModel. 0<Tier=<10 . By design the best armor is always at Ten.
+        if (item.ArmorComponent == null)
+        {
+            throw new ArgumentException(item.Name.ToString(), "is not an armor item");
+        }
+
+        return (int)(item.Tierf * (strengthRequirementForTierTenArmor / 10f));
     }
 
     private static int ComputeCrossbowRequirement(ItemObject item)
