@@ -527,6 +527,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     private async Task UpdateCrpgUsersAsync()
     {
         int ticks = ComputeTicks();
+        Debug.Print($"Ticks for round with {GameNetwork.NetworkPeers.Count()}: {ticks}");
 
         Dictionary<int, CrpgRepresentative> crpgRepresentativeByUserId = new();
         var newRoundAllTotalStats = new Dictionary<PlayerId, CrpgCharacterStatistics>();
