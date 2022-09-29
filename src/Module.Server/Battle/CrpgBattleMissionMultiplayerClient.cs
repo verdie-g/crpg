@@ -308,7 +308,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
             var soldItemNames = message.SoldItemIds
                 .Select(i => MBObjectManager.Instance.GetObject<ItemObject>(i)?.Value)
                 .Where(i => i != null);
-            string soldItemNamesStr = string.Join(", ", message.SoldItemIds);
+            string soldItemNamesStr = string.Join(", ", soldItemNames);
             string s = message.SoldItemIds.Count > 1 ? "s" : string.Empty;
             InformationManager.DisplayMessage(new InformationMessage($"Sold item{s} {soldItemNamesStr} to pay for upkeep.",
                 new Color(0.74f, 0.28f, 0.01f)));
