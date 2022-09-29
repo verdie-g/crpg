@@ -1,18 +1,14 @@
 ﻿using System.Globalization;
-using System.Runtime.Serialization;
 using System.Xml;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Common.Models;
 using Crpg.Module.Helpers.Json;
-using MountAndBlade.CampaignBehaviors;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using TaleWorlds.CampaignSystem.Extensions;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.View.Screens;
 using TaleWorlds.MountAndBlade.View.Tableaus;
 using TaleWorlds.ObjectSystem;
 
