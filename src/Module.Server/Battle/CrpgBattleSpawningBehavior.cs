@@ -12,9 +12,15 @@ namespace Crpg.Module.Battle;
 
 internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 {
+    private const float TotalSpawnDuration = 30f;
+    private const float SpawnCavalryDelay = 4f;
+    private const float RoundEndCheckDelay = SpawnCavalryDelay + 1f;
     private readonly CrpgConstants _constants;
     private readonly MultiplayerRoundController? _roundController;
     private MissionTimer? _spawnTimer;
+    private MissionTimer? _spawnTimerCavalryDelay;
+    // _roundEndCheckDelay -> Used to declare when the round end timer starts. Necessary because otherwise it might happen that one player quits before cav spawns. That might lead to a lose for the team which is waiting for their cav spawns. Not sure about the tick order. Thats why we declare an extra timer.
+    private MissionTimer? _roundEndCheckDelay;
     private bool _botsSpawned;
 
     public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController? roundController)
@@ -55,13 +61,20 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     {
         base.RequestStartSpawnSession();
         _botsSpawned = false;
-        _spawnTimer = new MissionTimer(30f); // Limit spawning for 30 seconds.
+        _spawnTimer = new MissionTimer(TotalSpawnDuration); // Limit spawning for 30 seconds.
+        _spawnTimerCavalryDelay = new MissionTimer(SpawnCavalryDelay); // Cav will spawn 4 seconds later.
+        _roundEndCheckDelay = new MissionTimer(RoundEndCheckDelay); // Enable round end check after 5 seconds
         ResetSpawnTeams();
     }
 
     public override bool AllowEarlyAgentVisualsDespawning(MissionPeer missionPeer)
     {
         return false;
+    }
+
+    public bool SpawnDelayEnded()
+    {
+        return _roundEndCheckDelay != null && _roundEndCheckDelay!.Check();
     }
 
     protected override bool IsRoundInProgress()
@@ -185,6 +198,15 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             }
 
             var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
+            bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
+            if (hasMount && !_spawnTimerCavalryDelay!.Check()) // Disallow spawning cavalry before the 4sec delay ended.
+            {
+                Console.WriteLine("_spawnTimerCavalryDelay " + missionPeer.Name);
+                continue;
+            }
+
+            Console.WriteLine("spawning " + missionPeer.Name);
+
             if (!DoesEquipmentContainWeapon(characterEquipment)) // Disallow spawning without weapons.
             {
                 continue;
@@ -198,7 +220,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
             // Used to reset the selected perks for the current troop. Otherwise the player might have addional stats.
             missionPeer.GetType().GetMethod("ResetSelectedPerks", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(missionPeer, null);
-            bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
             MatrixFrame spawnFrame = missionPeer.GetAmountOfAgentVisualsForPeer() > 0
                 ? missionPeer.GetAgentVisualForPeer(0).GetFrame()
                 : SpawnComponent.GetSpawnFrame(missionPeer.Team, hasMount, true);

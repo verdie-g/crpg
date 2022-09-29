@@ -167,7 +167,13 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 
         bool defenderTeamAlive = Mission.DefenderTeam.ActiveAgents.Count > 0;
         bool attackerTeamAlive = Mission.AttackerTeam.ActiveAgents.Count > 0;
-        return !defenderTeamAlive || !attackerTeamAlive;
+        CrpgBattleSpawningBehavior spawningBehavior = (CrpgBattleSpawningBehavior)SpawnComponent.SpawningBehavior;
+        if (spawningBehavior.SpawnDelayEnded())
+        {
+            Console.WriteLine("SpawnDelayEnded!");
+        }
+
+        return (!defenderTeamAlive || !attackerTeamAlive) && spawningBehavior.SpawnDelayEnded();
     }
 
     public override void OnAgentBuild(Agent agent, Banner banner)
