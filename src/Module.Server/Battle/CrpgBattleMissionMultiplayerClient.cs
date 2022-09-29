@@ -14,7 +14,7 @@ namespace Crpg.Module.Battle;
 internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
 {
     internal const int FlagsCount = 3;
-    internal const int FlagsRemovalTime = 180;
+    internal const int FlagsRemovalTime = 120;
 
     /// <summary>The teams owning the flags.</summary>
     private readonly Team?[] _flagOwners = new Team[FlagsCount];
