@@ -199,9 +199,17 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
     ],
     modes: [],
   };
-
+  switch (baseItem.type) {
+    case ItemType.HeadArmor:
+    case ItemType.BodyArmor:
+    case ItemType.ShoulderArmor:
+    case ItemType.HandArmor:
+    case ItemType.LegArmor:
+    case ItemType.Crossbow:
+      props.fields.push(['Requirement', baseItem.requirement + ' STR']);
+      break;
+  }
   if (baseItem.armor !== null) {
-    props.fields.push(['Requirement', baseItem.requirement + ' STR']);
     if (baseItem.armor.headArmor !== 0) {
       props.fields.push(['Head Armor', baseItem.armor.headArmor]);
     }

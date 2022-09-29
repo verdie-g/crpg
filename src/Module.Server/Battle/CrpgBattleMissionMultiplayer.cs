@@ -21,7 +21,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     private const uint FlagNeutralColor2 = uint.MaxValue;
     private const float FlagAttackRange = 6f;
     private const float FlagAttackRangeSquared = FlagAttackRange * FlagAttackRange;
-    private const float MoraleGainOnTick = 0.0006f;
+    private const float MoraleGainOnTick = 0.001f;
     private const float MoraleGainMultiplierLastFlag = 3f;
 
     private readonly CrpgBattleMissionMultiplayerClient _battleClient;
@@ -29,14 +29,11 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     private readonly CrpgConstants _constants;
     private readonly Random _random = new();
 
-    /// <summary>The teams owning the flags.</summary>
-    private readonly Team?[] _flagOwners = new Team[CrpgBattleMissionMultiplayerClient.FlagsCount];
-
-    private readonly int[,] _agentCountsAroundFlags = new int[CrpgBattleMissionMultiplayerClient.FlagsCount, (int)BattleSideEnum.NumSides];
-
     /// <summary>A number between -1.0 and 1.0. Less than 0 means the defenders are winning. Greater than 0 for attackers.</summary>
     private float _morale;
     private FlagCapturePoint[] _flags = Array.Empty<FlagCapturePoint>();
+    private Team?[] _flagOwners = Array.Empty<Team>();
+    private int[,] _agentCountsAroundFlags = new int[0, 0];
 
     /// <summary>True if captures points were removed and only one remains.</summary>
     private bool _wereFlagsRemoved;
@@ -76,8 +73,8 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     {
         base.OnBehaviorInitialize();
 
+        ResetFlags();
         _morale = 0f;
-        _flags = Mission.Current.MissionObjects.FindAllWithType<FlagCapturePoint>().ToArray();
         // TODO: SetTeamColorsWithAllSynched
     }
 
@@ -90,13 +87,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 
     public override void OnClearScene()
     {
-        _flags = Mission.Current.MissionObjects.FindAllWithType<FlagCapturePoint>().ToArray();
-        foreach (var flag in _flags)
-        {
-            flag.ResetPointAsServer(FlagNeutralColor1, FlagNeutralColor2);
-            _flagOwners[flag.FlagIndex] = null;
-        }
-
+        ResetFlags();
         _morale = 0.0f;
         _checkFlagRemovalTimer = null;
         _wereFlagsRemoved = false;
@@ -127,11 +118,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             return;
         }
 
-        if (!_wereFlagsRemoved)
-        {
-            CheckRemovalOfFlags();
-        }
-
+        CheckRemovalOfFlags();
         CheckMorales();
         TickFlags();
     }
@@ -223,6 +210,17 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
         Banner bannerTeam2 = new(cultureTeam2.BannerKey, cultureTeam2.BackgroundColor2, cultureTeam2.ForegroundColor2);
         Mission.Teams.Add(BattleSideEnum.Defender, cultureTeam2.BackgroundColor2, cultureTeam2.ForegroundColor2, bannerTeam2, false, true);
+    }
+
+    private void ResetFlags()
+    {
+        _flags = Mission.Current.MissionObjects.FindAllWithType<FlagCapturePoint>().ToArray();
+        _flagOwners = new Team[_flags.Length];
+        _agentCountsAroundFlags = new int[_flags.Length, (int)BattleSideEnum.NumSides];
+        foreach (var flag in _flags)
+        {
+            flag.ResetPointAsServer(FlagNeutralColor1, FlagNeutralColor2);
+        }
     }
 
     private void CheckMorales()
@@ -372,88 +370,25 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 
     private void CheckRemovalOfFlags()
     {
+        if (_wereFlagsRemoved
+            || _flags.Length == 0) // Protection against maps with no flags.
+        {
+            return;
+        }
+
         _checkFlagRemovalTimer ??= new Timer(Mission.CurrentTime, CrpgBattleMissionMultiplayerClient.FlagsRemovalTime);
         if (!_checkFlagRemovalTimer.Check(Mission.CurrentTime))
         {
             return;
         }
 
-        List<BattleSideEnum> sidesToRemoveFlagFrom = new();
-        bool allFlagsCaptured = _flags.All(flag => GetFlagOwner(flag) != null);
-        foreach (Team team in Mission.Teams)
-        {
-            if (team.Side == BattleSideEnum.None)
-            {
-                continue;
-            }
+        var flagsToRemove = _flags.ToArray();
+        flagsToRemove.Shuffle();
+        var flagIndexesToRemove = new HashSet<int>(flagsToRemove
+            .Take(flagsToRemove.Length - 1)
+            .Select(RemoveFlag));
 
-            if (_flags.Any(flag => GetFlagOwner(flag) == team)) // Has the team at least one flag?
-            {
-                sidesToRemoveFlagFrom.Add(team.Side);
-                continue;
-            }
-
-            int moraleSide = team.Side == BattleSideEnum.Defender ? -1 : 1;
-            if (allFlagsCaptured)
-            {
-                _morale -= 0.1f * moraleSide * 2.0f;
-                sidesToRemoveFlagFrom.Add(team.Side.GetOppositeSide());
-            }
-            else
-            {
-                _morale -= 0.1f * moraleSide;
-                sidesToRemoveFlagFrom.Add(BattleSideEnum.None);
-            }
-
-            _morale = MBMath.ClampFloat(_morale, -1f, 1f);
-        }
-
-        List<int> flagIndexesToRemove = new();
-        List<FlagCapturePoint> remainingFlags = _flags.ToList();
-        foreach (BattleSideEnum side in sidesToRemoveFlagFrom)
-        {
-            if (side == BattleSideEnum.None)
-            {
-                var randomUncapFlag = remainingFlags.GetRandomElementWithPredicate(flag => GetFlagOwner(flag) == null);
-                flagIndexesToRemove.Add(RemoveFlag(randomUncapFlag));
-            }
-            else
-            {
-                List<KeyValuePair<FlagCapturePoint, int>> flagsLeastAttackers = new();
-                foreach (FlagCapturePoint flag in remainingFlags)
-                {
-                    if (GetFlagOwner(flag)?.Side != side)
-                    {
-                        continue;
-                    }
-
-                    int attackers = GetNumberOfAttackersAroundFlag(flag);
-                    if (flagsLeastAttackers.Count == 0)
-                    {
-                        flagsLeastAttackers.Add(new KeyValuePair<FlagCapturePoint, int>(flag, attackers));
-                    }
-                    else if (flagsLeastAttackers.Any(a => a.Value > attackers))
-                    {
-                        flagsLeastAttackers.Clear();
-                        flagsLeastAttackers.Add(new KeyValuePair<FlagCapturePoint, int>(flag, attackers));
-                    }
-                    else if (flagsLeastAttackers.Any(a => a.Value == attackers))
-                    {
-                        flagsLeastAttackers.Add(new KeyValuePair<FlagCapturePoint, int>(flag, attackers));
-                    }
-                }
-
-                flagIndexesToRemove.Add(RemoveFlag(flagsLeastAttackers.GetRandomElement().Key));
-            }
-
-            FlagCapturePoint flagToRemove = remainingFlags.First(flag => flag.FlagIndex == flagIndexesToRemove.Last());
-            remainingFlags.Remove(flagToRemove);
-        }
-
-        flagIndexesToRemove.Sort();
-        int first = flagIndexesToRemove[0];
-        int second = flagIndexesToRemove[1];
-        FlagCapturePoint remainingFlag = _flags.First(flag => flag.FlagIndex != first && flag.FlagIndex != second);
+        var remainingFlag = _flags.First(flag => !flagIndexesToRemove.Contains(flag.FlagIndex));
         NotificationsComponent.FlagXRemaining(remainingFlag);
 
         GameNetwork.BeginBroadcastModuleEvent();
@@ -465,8 +400,8 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
 
         _wereFlagsRemoved = true;
-        Debug.Print("Flags were removed");
         _battleClient.ChangeNumberOfFlags();
+        Debug.Print("Flags were removed");
     }
 
     private Team? GetFlagOwner(FlagCapturePoint flag)
@@ -598,6 +533,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     private async Task UpdateCrpgUsersAsync()
     {
         int ticks = ComputeTicks();
+        Debug.Print($"Ticks for round with {GameNetwork.NetworkPeers.Count()}: {ticks}");
 
         Dictionary<int, CrpgRepresentative> crpgRepresentativeByUserId = new();
         var newRoundAllTotalStats = new Dictionary<PlayerId, CrpgCharacterStatistics>();

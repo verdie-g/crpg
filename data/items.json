@@ -1801,7 +1801,7 @@
     "type": "MountHarness",
     "price": 980,
     "weight": 27.0,
-    "requirement": 3,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -2018,7 +2018,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 21.0,
-    "requirement": 2,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -2035,7 +2035,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 23.0,
-    "requirement": 2,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -2052,7 +2052,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 24.0,
-    "requirement": 2,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -3145,7 +3145,7 @@
     "type": "MountHarness",
     "price": 1451,
     "weight": 30.0,
-    "requirement": 4,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -3162,7 +3162,7 @@
     "type": "MountHarness",
     "price": 5981,
     "weight": 76.0,
-    "requirement": 12,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -3179,7 +3179,7 @@
     "type": "MountHarness",
     "price": 9337,
     "weight": 125.0,
-    "requirement": 15,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 13,
@@ -5319,7 +5319,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 130.0,
-    "requirement": 2,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -5336,7 +5336,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 130.0,
-    "requirement": 2,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -5353,7 +5353,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 130.0,
-    "requirement": 2,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -5572,7 +5572,7 @@
     "type": "MountHarness",
     "price": 14945,
     "weight": 130.0,
-    "requirement": 20,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 17,
@@ -5589,7 +5589,7 @@
     "type": "MountHarness",
     "price": 10618,
     "weight": 120.0,
-    "requirement": 16,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -5978,7 +5978,7 @@
     "type": "Crossbow",
     "price": 7704,
     "weight": 2.7,
-    "requirement": 0,
+    "requirement": 11,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6014,7 +6014,7 @@
     "type": "Crossbow",
     "price": 10462,
     "weight": 3.0,
-    "requirement": 0,
+    "requirement": 13,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6049,7 +6049,7 @@
     "type": "Crossbow",
     "price": 13075,
     "weight": 2.2,
-    "requirement": 0,
+    "requirement": 15,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6084,7 +6084,7 @@
     "type": "Crossbow",
     "price": 18000,
     "weight": 2.0,
-    "requirement": 0,
+    "requirement": 18,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6412,7 +6412,7 @@
     "type": "MountHarness",
     "price": 980,
     "weight": 22.5,
-    "requirement": 3,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -9940,7 +9940,7 @@
     "type": "MountHarness",
     "price": 11979,
     "weight": 90.0,
-    "requirement": 18,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 15,
@@ -9957,7 +9957,7 @@
     "type": "MountHarness",
     "price": 13421,
     "weight": 80.0,
-    "requirement": 19,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 16,
@@ -9974,7 +9974,7 @@
     "type": "MountHarness",
     "price": 10618,
     "weight": 65.0,
-    "requirement": 16,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,
@@ -11280,7 +11280,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 22.0,
-    "requirement": 2,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -11331,7 +11331,7 @@
     "type": "MountHarness",
     "price": 20000,
     "weight": 135.0,
-    "requirement": 24,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 20,
@@ -13874,7 +13874,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 20.0,
-    "requirement": 2,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -14213,7 +14213,7 @@
     "type": "MountHarness",
     "price": 16549,
     "weight": 145.0,
-    "requirement": 21,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 18,
@@ -14574,7 +14574,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 120.0,
-    "requirement": 2,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -14591,7 +14591,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 120.0,
-    "requirement": 2,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -14608,7 +14608,7 @@
     "type": "MountHarness",
     "price": 589,
     "weight": 120.0,
-    "requirement": 2,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 2,
@@ -15941,7 +15941,7 @@
     "type": "MountHarness",
     "price": 2004,
     "weight": 30.0,
-    "requirement": 6,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 5,
@@ -15958,7 +15958,7 @@
     "type": "MountHarness",
     "price": 1451,
     "weight": 35.0,
-    "requirement": 4,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -16043,7 +16043,7 @@
     "type": "MountHarness",
     "price": 7019,
     "weight": 82.0,
-    "requirement": 13,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 11,
@@ -20033,7 +20033,7 @@
     "type": "MountHarness",
     "price": 1451,
     "weight": 25.5,
-    "requirement": 4,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -20081,7 +20081,7 @@
     "type": "MountHarness",
     "price": 5981,
     "weight": 70.0,
-    "requirement": 12,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 10,
@@ -20098,7 +20098,7 @@
     "type": "MountHarness",
     "price": 980,
     "weight": 23.5,
-    "requirement": 3,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 3,
@@ -20408,7 +20408,7 @@
     "type": "MountHarness",
     "price": 1451,
     "weight": 26.0,
-    "requirement": 4,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 4,
@@ -20651,7 +20651,7 @@
     "type": "MountHarness",
     "price": 10618,
     "weight": 85.0,
-    "requirement": 16,
+    "requirement": 0,
     "armor": {
       "headArmor": 0,
       "bodyArmor": 14,

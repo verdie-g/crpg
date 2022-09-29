@@ -13,12 +13,10 @@ namespace Crpg.Module.Battle;
 
 internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
 {
-    internal const int FlagsCount = 3;
-    internal const int FlagsRemovalTime = 180;
+    internal const int FlagsRemovalTime = 120;
 
-    /// <summary>The teams owning the flags.</summary>
-    private readonly Team?[] _flagOwners = new Team[FlagsCount];
     private FlagCapturePoint[] _flags = Array.Empty<FlagCapturePoint>();
+    private Team?[] _flagOwners = Array.Empty<Team>();
     private bool _notifiedForFlagRemoval;
     private float _remainingTimeForBellSoundToStop = float.MinValue;
     private SoundEvent? _bellSoundEvent;
@@ -39,8 +37,6 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     public override void OnBehaviorInitialize()
     {
         base.OnBehaviorInitialize();
-        _flags = Mission.Current.MissionObjects.FindAllWithType<FlagCapturePoint>().ToArray();
-
         RoundComponent.OnPreparationEnded += OnPreparationEnded;
         MissionNetworkComponent.OnMyClientSynchronized += OnMyClientSynchronized;
     }
@@ -90,11 +86,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     public override void OnClearScene()
     {
         _notifiedForFlagRemoval = false;
-        _flags = Mission.Current.MissionObjects.FindAllWithType<FlagCapturePoint>().ToArray();
-        foreach (var flag in _flags)
-        {
-            _flagOwners[flag.FlagIndex] = null;
-        }
+        ResetFlags();
 
         if (_bellSoundEvent != null)
         {
@@ -229,7 +221,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
 
     private void OnPreparationEnded()
     {
-        _flags = Mission.Current.MissionObjects.FindAllWithType<FlagCapturePoint>().ToArray();
+        ResetFlags();
         OnFlagNumberChangedEvent?.Invoke();
         foreach (var flag in _flags)
         {
@@ -262,6 +254,12 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     private void OnFlagsRemoved(FlagDominationFlagsRemovedMessage message)
     {
         ChangeNumberOfFlags();
+    }
+
+    private void ResetFlags()
+    {
+        _flags = Mission.Current.MissionObjects.FindAllWithType<FlagCapturePoint>().ToArray();
+        _flagOwners = new Team[_flags.Length];
     }
 
     private void HandleUpdateCrpgUser(UpdateCrpgUser message)
@@ -310,7 +308,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
             var soldItemNames = message.SoldItemIds
                 .Select(i => MBObjectManager.Instance.GetObject<ItemObject>(i)?.Value)
                 .Where(i => i != null);
-            string soldItemNamesStr = string.Join(", ", message.SoldItemIds);
+            string soldItemNamesStr = string.Join(", ", soldItemNames);
             string s = message.SoldItemIds.Count > 1 ? "s" : string.Empty;
             InformationManager.DisplayMessage(new InformationMessage($"Sold item{s} {soldItemNamesStr} to pay for upkeep.",
                 new Color(0.74f, 0.28f, 0.01f)));
