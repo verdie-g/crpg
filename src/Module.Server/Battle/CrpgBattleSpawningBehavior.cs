@@ -193,7 +193,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     {
         BasicCultureObject cultureTeam1 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
         BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
-        CrpgChatBox crpgChat = Game.Current.GetGameHandler<CrpgChatBox>();
 
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
@@ -285,10 +284,18 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
             Agent agent = Mission.SpawnAgent(agentBuildData);
             agent.WieldInitialWeapons();
+
             if (_roundController != null)
             {
                 missionPeer.SpawnCountThisRound += 1;
                 crpgRepresentative.SpawnTeamThisRound = missionPeer.Team;
+
+                GameNetwork.BeginModuleEventAsServer(networkPeer);
+                GameNetwork.WriteMessage(new CrpgSoundEvent
+                {
+                    SoundEvent = "event:/ui/multiplayer/match_ready",
+                });
+                GameNetwork.EndModuleEventAsServer();
             }
         }
     }
