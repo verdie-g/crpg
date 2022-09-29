@@ -372,82 +372,11 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             return;
         }
 
-        List<BattleSideEnum> sidesToRemoveFlagFrom = new();
-        bool allFlagsCaptured = _flags.All(flag => GetFlagOwner(flag) != null);
-        foreach (Team team in Mission.Teams)
-        {
-            if (team.Side == BattleSideEnum.None)
-            {
-                continue;
-            }
-
-            if (_flags.Any(flag => GetFlagOwner(flag) == team)) // Has the team at least one flag?
-            {
-                sidesToRemoveFlagFrom.Add(team.Side);
-                continue;
-            }
-
-            int moraleSide = team.Side == BattleSideEnum.Defender ? -1 : 1;
-            if (allFlagsCaptured)
-            {
-                _morale -= 0.1f * moraleSide * 2.0f;
-                sidesToRemoveFlagFrom.Add(team.Side.GetOppositeSide());
-            }
-            else
-            {
-                _morale -= 0.1f * moraleSide;
-                sidesToRemoveFlagFrom.Add(BattleSideEnum.None);
-            }
-
-            _morale = MBMath.ClampFloat(_morale, -1f, 1f);
-        }
-
-        List<int> flagIndexesToRemove = new();
-        List<FlagCapturePoint> remainingFlags = _flags.ToList();
-        foreach (BattleSideEnum side in sidesToRemoveFlagFrom)
-        {
-            if (side == BattleSideEnum.None)
-            {
-                var randomUncapFlag = remainingFlags.GetRandomElementWithPredicate(flag => GetFlagOwner(flag) == null);
-                flagIndexesToRemove.Add(RemoveFlag(randomUncapFlag));
-            }
-            else
-            {
-                List<KeyValuePair<FlagCapturePoint, int>> flagsLeastAttackers = new();
-                foreach (FlagCapturePoint flag in remainingFlags)
-                {
-                    if (GetFlagOwner(flag)?.Side != side)
-                    {
-                        continue;
-                    }
-
-                    int attackers = GetNumberOfAttackersAroundFlag(flag);
-                    if (flagsLeastAttackers.Count == 0)
-                    {
-                        flagsLeastAttackers.Add(new KeyValuePair<FlagCapturePoint, int>(flag, attackers));
-                    }
-                    else if (flagsLeastAttackers.Any(a => a.Value > attackers))
-                    {
-                        flagsLeastAttackers.Clear();
-                        flagsLeastAttackers.Add(new KeyValuePair<FlagCapturePoint, int>(flag, attackers));
-                    }
-                    else if (flagsLeastAttackers.Any(a => a.Value == attackers))
-                    {
-                        flagsLeastAttackers.Add(new KeyValuePair<FlagCapturePoint, int>(flag, attackers));
-                    }
-                }
-
-                flagIndexesToRemove.Add(RemoveFlag(flagsLeastAttackers.GetRandomElement().Key));
-            }
-
-            FlagCapturePoint flagToRemove = remainingFlags.First(flag => flag.FlagIndex == flagIndexesToRemove.Last());
-            remainingFlags.Remove(flagToRemove);
-        }
-
-        flagIndexesToRemove.Sort();
-        int first = flagIndexesToRemove[0];
-        int second = flagIndexesToRemove[1];
-        FlagCapturePoint remainingFlag = _flags.First(flag => flag.FlagIndex != first && flag.FlagIndex != second);
+        var flagsToRemove = _flags.ToArray();
+        flagsToRemove.Shuffle();
+        int firstToRemoveIdx = RemoveFlag(flagsToRemove[0]);
+        int secondToRemoveIdx = RemoveFlag(flagsToRemove[1]);
+        FlagCapturePoint remainingFlag = _flags.First(flag => flag.FlagIndex != firstToRemoveIdx && flag.FlagIndex != secondToRemoveIdx);
         NotificationsComponent.FlagXRemaining(remainingFlag);
 
         GameNetwork.BeginBroadcastModuleEvent();
