@@ -201,20 +201,10 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
   };
   switch (baseItem.type) {
     case ItemType.HeadArmor:
-      props.fields.push(['Requirement', baseItem.requirement + ' STR']);
-      break;
     case ItemType.BodyArmor:
-      props.fields.push(['Requirement', baseItem.requirement + ' STR']);
-      break;
     case ItemType.ShoulderArmor:
-      props.fields.push(['Requirement', baseItem.requirement + ' STR']);
-      break;
     case ItemType.HandArmor:
-      props.fields.push(['Requirement', baseItem.requirement + ' STR']);
-      break;
     case ItemType.LegArmor:
-      props.fields.push(['Requirement', baseItem.requirement + ' STR']);
-      break;
     case ItemType.Crossbow:
       props.fields.push(['Requirement', baseItem.requirement + ' STR']);
       break;
