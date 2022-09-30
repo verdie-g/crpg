@@ -2,25 +2,33 @@
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Common;
+using Crpg.Module.Common.GameHandler;
+using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
+using TaleWorlds.PlayerServices;
 
 namespace Crpg.Module.Battle;
 
 internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 {
+    private const float TotalSpawnDuration = 30f;
+    private const float CavalrySpawnDelay = 6f;
     private readonly CrpgConstants _constants;
     private readonly MultiplayerRoundController? _roundController;
+    private readonly HashSet<PlayerId> notifiedPlayersAboutDelayedSpawn;
     private MissionTimer? _spawnTimer;
+    private MissionTimer? _cavalrySpawnDelay;
     private bool _botsSpawned;
 
     public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController? roundController)
     {
         _constants = constants;
         _roundController = roundController;
+        notifiedPlayersAboutDelayedSpawn = new();
     }
 
     public override void Initialize(SpawnComponent spawnComponent)
@@ -55,13 +63,21 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     {
         base.RequestStartSpawnSession();
         _botsSpawned = false;
-        _spawnTimer = new MissionTimer(30f); // Limit spawning for 30 seconds.
+        // The preparationTimeLimit should be added to all spawn values cause the actual spawn phase starts before the preparation time ends. So it's always time+preparationTimeLimit
+        int preparationTimeLimit = MultiplayerOptions.OptionType.RoundPreparationTimeLimit.GetIntValue();
+        _spawnTimer = new MissionTimer(TotalSpawnDuration + preparationTimeLimit); // Limit spawning for 30 seconds.
+        _cavalrySpawnDelay = new MissionTimer(CavalrySpawnDelay + preparationTimeLimit); // Cav will spawn 6 seconds later.
         ResetSpawnTeams();
     }
 
     public override bool AllowEarlyAgentVisualsDespawning(MissionPeer missionPeer)
     {
         return false;
+    }
+
+    public bool SpawnDelayEnded()
+    {
+        return _cavalrySpawnDelay != null && _cavalrySpawnDelay!.Check();
     }
 
     protected override bool IsRoundInProgress()
@@ -95,6 +111,8 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 crpgRepresentative.SpawnTeamThisRound = null;
             }
         }
+
+        notifiedPlayersAboutDelayedSpawn.Clear();
     }
 
     private void SpawnBotAgents()
@@ -190,6 +208,25 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 continue;
             }
 
+            bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
+            // Disallow spawning cavalry before the cav spawn delay ended.
+            if (hasMount && (!_cavalrySpawnDelay?.Check() ?? false))
+            {
+                if (notifiedPlayersAboutDelayedSpawn.Add(networkPeer.VirtualPlayer.Id))
+                {
+                    GameNetwork.BeginModuleEventAsServer(networkPeer);
+                    GameNetwork.WriteMessage(new CrpgNotification
+                    {
+                        Message = $"Cavalry will spawn in {CavalrySpawnDelay} seconds!",
+                        IsMessageTextId = false,
+                        SoundEvent = string.Empty,
+                    });
+                    GameNetwork.EndModuleEventAsServer();
+                }
+
+                continue;
+            }
+
             BasicCultureObject teamCulture = missionPeer.Team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
             var peerClass = MultiplayerClassDivisions.GetMPHeroClasses().Skip(5).First();
             // var character = CreateCharacter(crpgRepresentative.User.Character, _constants);
@@ -198,7 +235,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
             // Used to reset the selected perks for the current troop. Otherwise the player might have addional stats.
             missionPeer.GetType().GetMethod("ResetSelectedPerks", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(missionPeer, null);
-            bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
             MatrixFrame spawnFrame = missionPeer.GetAmountOfAgentVisualsForPeer() > 0
                 ? missionPeer.GetAgentVisualForPeer(0).GetFrame()
                 : SpawnComponent.GetSpawnFrame(missionPeer.Team, hasMount, true);
