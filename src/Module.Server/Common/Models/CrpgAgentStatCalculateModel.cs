@@ -165,7 +165,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             return MathHelper.ApplyPolynomialFunction(powerThrow, _constants.DamageFactorForPowerThrowCoefs);
         }
 
-        if (weaponComponent.WeaponClass == WeaponClass.Crossbow)
+        if (weaponComponent.WeaponClass == WeaponClass.Bolt)
         {
             return 1 / (CrossbowMissileSpeedMultiplier * CrossbowMissileSpeedMultiplier);
         }
