@@ -333,8 +333,56 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
 
     private void HandleNotification(CrpgNotification notification)
     {
-        TextObject msg = notification.IsMessageTextId ? GameTexts.FindText(notification.Message) : new TextObject(notification.Message);
-        MBInformationManager.AddQuickInformation(msg, 0, null, notification.SoundEvent);
+        string message = notification.IsMessageTextId ? GameTexts.FindText(notification.Message).ToString() : notification.Message;
+
+        // Notifcation like "Flag A and B were removed"
+        if (notification.Type == CrpgNotification.NotificationType.Notification)
+        {
+            MBInformationManager.AddQuickInformation(new TextObject(AddLineBreaksToText(message)), 0, null, notification.SoundEvent);
+        }
+
+        // Red announcement like "A new update is available. Please update your client" (Lobbyscreen)
+        else if (notification.Type == CrpgNotification.NotificationType.Announcement)
+        {
+            InformationManager.AddSystemNotification(AddLineBreaksToText(message));
+        }
+
+        // Plays a sound event
+        else if (notification.Type == CrpgNotification.NotificationType.Sound)
+        {
+            SoundEvent.CreateEventFromString(notification.SoundEvent, Mission.Scene).Play();
+        }
     }
 
+    private string AddLineBreaksToText(string text)
+    {
+        if (text.Length < 100)
+        {
+            return text;
+        }
+
+        List<string> words = text.Split(' ').ToList();
+        if (words.Count == 1)
+        {
+            return text;
+        }
+
+        string result = string.Empty;
+        int currentLetterCount = 0;
+        foreach (string word in words)
+        {
+            currentLetterCount += word.Length + 1; // + 1 for spaces
+            result += word;
+            if (currentLetterCount > 100)
+            {
+                currentLetterCount = word.Length;
+                result += "{newline}";
+                continue;
+            }
+
+            result += " ";
+        }
+
+        return result;
+    }
 }
