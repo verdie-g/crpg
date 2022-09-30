@@ -20,9 +20,9 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     private const float RoundEndCheckDelay = CavalrySpawnDelay + 1f;
     private readonly CrpgConstants _constants;
     private readonly MultiplayerRoundController? _roundController;
-    private readonly HashSet<PlayerId> notifiedAboutDelayedSpawn = new();
+    private readonly HashSet<PlayerId> notifiedPlayersAboutDelayedSpawn;
     private MissionTimer? _spawnTimer;
-    private MissionTimer? _spawnTimerCavalryDelay;
+    private MissionTimer? _cavalrySpawnDelay;
 
     /// <summary>
     /// Used to declare when the round end timer starts. Necessary because otherwise it might happen that one player quits before cav spawns.
@@ -35,6 +35,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     {
         _constants = constants;
         _roundController = roundController;
+        notifiedPlayersAboutDelayedSpawn = new();
     }
 
     public override void Initialize(SpawnComponent spawnComponent)
@@ -72,7 +73,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         // The preparationTimeLimit should be added to all spawn values cause the actual spawn phase starts before the preparation time ends. So it's always time+preparationTimeLimit
         int preparationTimeLimit = MultiplayerOptions.OptionType.RoundPreparationTimeLimit.GetIntValue();
         _spawnTimer = new MissionTimer(TotalSpawnDuration + preparationTimeLimit); // Limit spawning for 30 seconds.
-        _spawnTimerCavalryDelay = new MissionTimer(CavalrySpawnDelay + preparationTimeLimit); // Cav will spawn 6 seconds later.
+        _cavalrySpawnDelay = new MissionTimer(CavalrySpawnDelay + preparationTimeLimit); // Cav will spawn 6 seconds later.
         _roundEndCheckDelay = new MissionTimer(RoundEndCheckDelay + preparationTimeLimit); // Enable round end check after 7 seconds
         ResetSpawnTeams();
     }
@@ -119,7 +120,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             }
         }
 
-        notifiedAboutDelayedSpawn.Clear();
+        notifiedPlayersAboutDelayedSpawn.Clear();
     }
 
     private void SpawnBotAgents()
@@ -217,9 +218,9 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
             bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
             // Disallow spawning cavalry before the cav spawn delay ended.
-            if (hasMount && _spawnTimerCavalryDelay != null && !_spawnTimerCavalryDelay.Check())
+            if (hasMount && (!_cavalrySpawnDelay?.Check() ?? false))
             {
-                if (!notifiedAboutDelayedSpawn.Contains(networkPeer.VirtualPlayer.Id))
+                if (notifiedPlayersAboutDelayedSpawn.Add(networkPeer.VirtualPlayer.Id))
                 {
                     GameNetwork.BeginModuleEventAsServer(networkPeer);
                     GameNetwork.WriteMessage(new CrpgNotification
@@ -229,7 +230,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                         SoundEvent = string.Empty,
                     });
                     GameNetwork.EndModuleEventAsServer();
-                    notifiedAboutDelayedSpawn.Add(networkPeer.VirtualPlayer.Id);
                 }
 
                 continue;
@@ -289,13 +289,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             {
                 missionPeer.SpawnCountThisRound += 1;
                 crpgRepresentative.SpawnTeamThisRound = missionPeer.Team;
-
-                GameNetwork.BeginModuleEventAsServer(networkPeer);
-                GameNetwork.WriteMessage(new CrpgSoundEvent
-                {
-                    SoundEvent = "event:/ui/multiplayer/match_ready",
-                });
-                GameNetwork.EndModuleEventAsServer();
             }
         }
     }
