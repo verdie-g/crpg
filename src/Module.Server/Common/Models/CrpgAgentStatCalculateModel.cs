@@ -354,8 +354,13 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 }
                 else if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
                 {
-                    props.WeaponMaxMovementAccuracyPenalty *= 2.5f;
-                    props.WeaponMaxUnsteadyAccuracyPenalty *= 1.2f;
+                    props.WeaponMaxMovementAccuracyPenalty *= 1f;
+                    props.WeaponMaxUnsteadyAccuracyPenalty = 0.5f;
+                    props.WeaponRotationalAccuracyPenaltyInRadians *= 1f;
+                    props.ThrustOrRangedReadySpeedMultiplier *= 0.75f * (float)Math.Pow(2, weaponSkill / 191);
+                    props.WeaponInaccuracy /= 2;
+                    props.ReloadSpeed *= 0.65f;
+                    props.MissileSpeedMultiplier *= 1.4f;
                 }
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
