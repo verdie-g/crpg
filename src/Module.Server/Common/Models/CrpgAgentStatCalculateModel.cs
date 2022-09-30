@@ -12,6 +12,7 @@ namespace Crpg.Module.Common.Models;
 /// </summary>
 internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 {
+    private const float CrossbowMissileSpeedMultiplier = 1.4f;
     // Hack to workaround not being able to spawn custom character. In the client this property is set so the
     // StatCalculateModel has access to the cRPG user.
     public static CrpgUser? MyUser { get; set; }
@@ -162,6 +163,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         {
             int powerThrow = GetEffectiveSkill(character, agentOrigin, agentFormation, CrpgSkills.PowerThrow);
             return MathHelper.ApplyPolynomialFunction(powerThrow, _constants.DamageFactorForPowerThrowCoefs);
+        }
+
+        if (weaponComponent.WeaponClass == WeaponClass.Crossbow)
+        {
+            return 1 / (CrossbowMissileSpeedMultiplier * CrossbowMissileSpeedMultiplier);
         }
 
         return 1;
@@ -360,7 +366,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.ThrustOrRangedReadySpeedMultiplier *= 0.75f * (float)Math.Pow(2, weaponSkill / 191);
                     props.WeaponInaccuracy /= 2;
                     props.ReloadSpeed *= 0.65f;
-                    props.MissileSpeedMultiplier *= 1.4f;              }
+                    props.MissileSpeedMultiplier *= CrossbowMissileSpeedMultiplier;
+                }
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
                 {
