@@ -168,12 +168,13 @@ class UserModule extends VuexModule {
   @Mutation
   removeCharactersItem(toRemove: UserItem) {
     Object.values(this.equippedItemsByCharacterId).forEach(characterEquippedItems => {
-      const index = characterEquippedItems.findIndex(
+      const equippedItemsToRemove = characterEquippedItems.filter(
         equippedItem => equippedItem.userItem.id === toRemove.id
       );
-      if (index !== -1) {
-        characterEquippedItems.splice(index, 1);
-      }
+      equippedItemsToRemove.forEach(item => {
+        const index = characterEquippedItems.indexOf(item);
+        if (index !== -1) characterEquippedItems.splice(index, 1);
+      });
     });
   }
 

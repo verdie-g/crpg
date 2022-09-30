@@ -1,6 +1,6 @@
 <template>
   <div>
-    <figure class="image mb-2">
+    <figure class="image mb-2" v-if="showImage">
       <img :src="userItemImage(userItem)" alt="item image" />
     </figure>
     <h4 :class="userItemRankClass(userItem)">{{ userItem.baseItem.name }}</h4>
@@ -19,6 +19,7 @@ import UserItem from '@/models/user-item';
 })
 export default class DisplayUserItem extends Vue {
   @Prop(Object) readonly userItem: UserItem;
+  @Prop(Boolean) readonly showImage: boolean;
 
   userItemImage(userItem: UserItem): string {
     return `${process.env.BASE_URL}items/${userItem.baseItem.id}.png`;

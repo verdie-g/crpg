@@ -325,6 +325,12 @@ export function filterUserItemsFittingInSlot(items: UserItem[], slot: ItemSlot):
   return items.filter(i => itemTypesBySlot[slot].includes(i.baseItem.type));
 }
 
+export function getSlotsForUserItem(item: UserItem): ItemSlot[] {
+  return Object.entries(itemTypesBySlot)
+    .filter(([, value]) => value.includes(item.baseItem.type))
+    .flatMap(([key]) => key as ItemSlot);
+}
+
 export function filterItemsByType(
   items: Item[],
   type: ItemType | null
@@ -358,13 +364,107 @@ export function computeSalePrice(item: UserItem): number {
   return Math.floor(salePrice);
 }
 
-export function computeArmorSetPieceStrengthRequirement(equippedItems: EquippedItem[]): number {
+export function computeArmorSetPieceStrengthRequirement(items: UserItem[]): number {
   const numberOfArmorItemTypes = 5;
   const armorsRequirement = new Array(numberOfArmorItemTypes).fill(0);
-  equippedItems
-    .filter(e => armorTypes.includes(e.userItem.baseItem.type))
-    .forEach((ei, i) => (armorsRequirement[i] = ei.userItem.baseItem.requirement));
+  items
+    .filter(e => armorTypes.includes(e.baseItem.type))
+    .forEach((ei, i) => (armorsRequirement[i] = ei.baseItem.requirement));
   return Math.trunc(
     generalizedMean(Constants.armorSetRequirementPowerMeanPValue, armorsRequirement)
   );
+}
+
+export function sortUserItems(
+  userItems: UserItem[],
+  sortBy: string,
+  sortDesc: boolean
+): UserItem[] {
+  return userItems.sort((i1, i2) => compareItems(i1.baseItem, i2.baseItem, sortBy, sortDesc));
+}
+
+export function getSortableProperties(items: Item[]): string[] {
+  let sortableItemProperties = ['Price'];
+  sortableItemProperties = sortableItemProperties.concat(
+    items
+      .map(item => getItemDescriptor(item, 0).fields.map(field => field[0]))
+      .flat()
+      .filter(
+        (itemProperty, index, self) =>
+          itemProperty !== 'Type' &&
+          itemProperty !== 'Culture' &&
+          self.indexOf(itemProperty) === index
+      )
+  );
+  const sortableWeaponProperties = items
+    .map(item => getItemDescriptor(item, 0).modes.map(mode => mode.fields.map(field => field[0])))
+    .flat()
+    .flat()
+    .filter(
+      (itemProperty, index, self) =>
+        sortableItemProperties.indexOf(itemProperty) === -1 && self.indexOf(itemProperty) === index
+    );
+  return sortableItemProperties.concat(sortableWeaponProperties);
+}
+
+function compareItems(i1: Item, i2: Item, sortBy: string, sortDesc: boolean): number {
+  if (sortBy === 'Price') {
+    if (sortDesc) return i2.price - i1.price;
+    return i1.price - i2.price;
+  }
+  const itemDesc1 = getItemDescriptor(i1, 0);
+  const itemDesc2 = getItemDescriptor(i2, 0);
+  let field1 = itemDesc1.fields.find(field => field[0] === sortBy);
+  let field2 = itemDesc2.fields.find(field => field[0] === sortBy);
+
+  if (!field1 && !field2) {
+    field1 = itemDesc1.modes
+      .map(mode => mode.fields)
+      .flatMap(f => f)
+      .find(field => field[0] === sortBy);
+
+    field2 = itemDesc2.modes
+      .map(mode => mode.fields)
+      .flatMap(f => f)
+      .find(field => field[0] === sortBy);
+  }
+
+  let value1 = !!field1 ? field1[1] : '';
+  let value2 = !!field2 ? field2[1] : '';
+  if (isNaN(Number(value1))) {
+    const value1WithoutLetters = value1.replace(/\D/g, '');
+    if (!isNaN(Number(value1WithoutLetters))) value1 = value1WithoutLetters;
+  }
+
+  if (isNaN(Number(value2))) {
+    const value2WithoutLetters = value2.replace(/\D/g, '');
+    if (!isNaN(Number(value2WithoutLetters))) value2 = value2WithoutLetters;
+  }
+
+  if (!isNaN(Number(value1)) || !isNaN(Number(value2))) {
+    if (sortDesc) return value2 - value1;
+    return value1 - value2;
+  }
+
+  if (value1 || value2) {
+    return value1 > value2 && sortDesc ? -1 : 1;
+  }
+
+  return -1;
+}
+
+export function itemFitsInFreeWeaponSlot(
+  equippedItems: EquippedItem[],
+  userItem: UserItem
+): boolean {
+  const userItemsFittingInWeaponSlot = filterUserItemsFittingInSlot([userItem], ItemSlot.Weapon0);
+  if (!userItemsFittingInWeaponSlot.length) return false;
+  const weaponSlotsInUse = equippedItems.filter(
+    item =>
+      item.slot === ItemSlot.Weapon0 ||
+      item.slot === ItemSlot.Weapon1 ||
+      item.slot === ItemSlot.Weapon2 ||
+      item.slot === ItemSlot.Weapon3
+  );
+  return weaponSlotsInUse.length < 4;
 }

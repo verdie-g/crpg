@@ -9,42 +9,43 @@
     <div class="column character-items">
       <div class="columns item-boxes">
         <div class="column is-narrow gear-column">
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Head)">
+          <div :class="getBoxClasses(itemSlot.Head)" @click="onItemClicked(itemSlot.Head)">
             <img
-              v-if="userItemsBySlot[itemSlot.Head]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Head])"
+              v-if="userItemBySlot[itemSlot.Head]"
+              :src="userItemImage(userItemBySlot[itemSlot.Head])"
               alt="Head armor"
             />
+
             <img v-else src="../assets/head-armor.png" alt="Head armor" class="item-placeholder" />
           </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Shoulder)">
+          <div :class="getBoxClasses(itemSlot.Shoulder)" @click="onItemClicked(itemSlot.Shoulder)">
             <img
-              v-if="userItemsBySlot[itemSlot.Shoulder]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Shoulder])"
+              v-if="userItemBySlot[itemSlot.Shoulder]"
+              :src="userItemImage(userItemBySlot[itemSlot.Shoulder])"
               alt="Shoulder"
             />
             <img v-else src="../assets/cape.png" alt="Shoulder" class="item-placeholder" />
           </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Body)">
+          <div :class="getBoxClasses(itemSlot.Body)" @click="onItemClicked(itemSlot.Body)">
             <img
-              v-if="userItemsBySlot[itemSlot.Body]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Body])"
+              v-if="userItemBySlot[itemSlot.Body]"
+              :src="userItemImage(userItemBySlot[itemSlot.Body])"
               alt="Body armor"
             />
             <img v-else src="../assets/body-armor.png" alt="Body armor" class="item-placeholder" />
           </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Hand)">
+          <div :class="getBoxClasses(itemSlot.Hand)" @click="onItemClicked(itemSlot.Hand)">
             <img
-              v-if="userItemsBySlot[itemSlot.Hand]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Hand])"
+              v-if="userItemBySlot[itemSlot.Hand]"
+              :src="userItemImage(userItemBySlot[itemSlot.Hand])"
               alt="Hand armor"
             />
             <img v-else src="../assets/hand-armor.png" alt="Hand armor" class="item-placeholder" />
           </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Leg)">
+          <div :class="getBoxClasses(itemSlot.Leg)" @click="onItemClicked(itemSlot.Leg)">
             <img
-              v-if="userItemsBySlot[itemSlot.Leg]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Leg])"
+              v-if="userItemBySlot[itemSlot.Leg]"
+              :src="userItemImage(userItemBySlot[itemSlot.Leg])"
               alt="Leg armor"
             />
             <img v-else src="../assets/leg-armor.png" alt="Leg armor" class="item-placeholder" />
@@ -52,10 +53,13 @@
         </div>
 
         <div class="column is-narrow mount-column">
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.MountHarness)">
+          <div
+            :class="getBoxClasses(itemSlot.MountHarness)"
+            @click="onItemClicked(itemSlot.MountHarness)"
+          >
             <img
-              v-if="userItemsBySlot[itemSlot.MountHarness]"
-              :src="userItemImage(userItemsBySlot[itemSlot.MountHarness])"
+              v-if="userItemBySlot[itemSlot.MountHarness]"
+              :src="userItemImage(userItemBySlot[itemSlot.MountHarness])"
               alt="Mount harness"
             />
             <img
@@ -65,41 +69,41 @@
               class="item-placeholder"
             />
           </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Mount)">
+          <div :class="getBoxClasses(itemSlot.Mount)" @click="onItemClicked(itemSlot.Mount)">
             <img
-              v-if="userItemsBySlot[itemSlot.Mount]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Mount])"
+              v-if="userItemBySlot[itemSlot.Mount]"
+              :src="userItemImage(userItemBySlot[itemSlot.Mount])"
               alt="Mount"
             />
           </div>
         </div>
 
         <div class="column is-narrow weapon-column">
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon0)">
+          <div :class="getBoxClasses(itemSlot.Weapon0)" @click="onItemClicked(itemSlot.Weapon0)">
             <img
-              v-if="userItemsBySlot[itemSlot.Weapon0]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Weapon0])"
+              v-if="userItemBySlot[itemSlot.Weapon0]"
+              :src="userItemImage(userItemBySlot[itemSlot.Weapon0])"
               alt="First weapon"
             />
           </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon1)">
+          <div :class="getBoxClasses(itemSlot.Weapon1)" @click="onItemClicked(itemSlot.Weapon1)">
             <img
-              v-if="userItemsBySlot[itemSlot.Weapon1]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Weapon1])"
+              v-if="userItemBySlot[itemSlot.Weapon1]"
+              :src="userItemImage(userItemBySlot[itemSlot.Weapon1])"
               alt="Second weapon"
             />
           </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon2)">
+          <div :class="getBoxClasses(itemSlot.Weapon2)" @click="onItemClicked(itemSlot.Weapon2)">
             <img
-              v-if="userItemsBySlot[itemSlot.Weapon2]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Weapon2])"
+              v-if="userItemBySlot[itemSlot.Weapon2]"
+              :src="userItemImage(userItemBySlot[itemSlot.Weapon2])"
               alt="Third weapon"
             />
           </div>
-          <div class="box item-box" @click="openReplaceItemModal(itemSlot.Weapon3)">
+          <div :class="getBoxClasses(itemSlot.Weapon3)" @click="onItemClicked(itemSlot.Weapon3)">
             <img
-              v-if="userItemsBySlot[itemSlot.Weapon3]"
-              :src="userItemImage(userItemsBySlot[itemSlot.Weapon3])"
+              v-if="userItemBySlot[itemSlot.Weapon3]"
+              :src="userItemImage(userItemBySlot[itemSlot.Weapon3])"
               alt="Fourth Weapon"
             />
           </div>
@@ -150,149 +154,17 @@
         Delete
       </b-button>
 
-      <character-overall-items-stats-component :equippedItems="characterEquippedItems" />
+      <character-overall-items-stats-component :items="characterEquippedUserItems" />
     </div>
 
-    <b-modal :active.sync="isReplaceItemModalActive" ref="replaceItemModal">
-      <div class="replace-item-modal is-flex is-flex-direction-column px-4 py-4">
-        <div class="is-flex-shrink-1">
-          <h3 class="is-size-4 mb-2">
-            <template v-if="userItemToReplace">Replace</template>
-            <template v-else>Equip</template>
-            {{ userItemToReplaceSlot }}
-            <span v-if="userItemToReplace" :class="userItemRankClass(userItemToReplace)">
-              -
-              <strong>{{ userItemToReplace.baseItem.name }}</strong>
-            </span>
-          </h3>
-        </div>
-        <div class="modal--content is-flex-grow-0 is-flex-shrink-1 is-flex">
-          <div class="columns">
-            <div
-              class="column is-flex is-flex-direction-column is-align-items-center"
-              v-if="userItemToReplace"
-            >
-              <div class="is-flex-grow-1 is-align-self-center is-flex is-align-items-center">
-                <div class="user-item">
-                  <display-user-item :user-item="userItemToReplace" />
-                </div>
-              </div>
-            </div>
-            <div class="user-items column is-flex is-flex-direction-column">
-              <div
-                v-if="fittingUserItems.length"
-                class="columns is-multiline is-justify-content-center"
-              >
-                <div
-                  class="column is-narrow user-item user-item__action is-relative"
-                  v-for="userItem in fittingUserItems"
-                  v-bind:key="userItem.id"
-                  @click="selectedUserItem = userItem"
-                >
-                  <display-user-item :user-item="userItem" />
-                  <div
-                    v-if="selectedUserItem && selectedUserItem.id === userItem.id"
-                    class="confirm-selection__overlay px-2 py-3 is-flex is-flex-direction-column is-align-items-center is-justify-content-center has-text-centered"
-                    @click="confirmItemSelection"
-                  >
-                    <span class="is-size-6">Replace with:</span>
-                    <div>
-                      <strong :class="userItemRankClass(selectedUserItem)" class="is-size-5">
-                        {{ selectedUserItem.baseItem.name }}
-                      </strong>
-                    </div>
-                    <b-icon icon="check" size="is-large" />
-                  </div>
-                </div>
-              </div>
-              <div v-else class="py-3 has-text-centered">
-                <template v-if="userItemToReplace">
-                  You don't own any other items of this type.
-                </template>
-                <template v-else>You don't own any items of this type.</template>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div v-if="userItemToReplace" class="is-flex-shrink-0">
-          <div class="is-flex-shrink-1 columns mt-3">
-            <div class="column">
-              <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
-            </div>
-            <div class="column">
-              <b-button
-                size="is-medium"
-                type="is-warning"
-                icon-left="angle-double-up"
-                expanded
-                :disabled="!itemToReplaceUpgradeInfo.upgradable"
-                :title="itemToReplaceUpgradeInfo.reason"
-                @click="upgradeItem"
-              >
-                Upgrade
-              </b-button>
-            </div>
-            <div class="column">
-              <b-button
-                size="is-medium"
-                type="is-danger"
-                icon-left="coins"
-                expanded
-                @click="showSellItemConfirmation(userItemToReplace)"
-              >
-                Sell for {{ userItemToReplaceSalePrice }} gold
-              </b-button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </b-modal>
-
-    <b-modal :active.sync="isConfirmSellItemModalActive" scroll="keep" ref="confirmSellItemModal">
-      <div
-        v-if="userItemToSell"
-        class="columns is-flex-direction-column is-marginless is-align-items-center sell-item-modal has-background-white"
-      >
-        <div class="column">
-          <div class="has-text-centered">
-            <span class="is-size-4">
-              Are you sure you want to sell
-              <strong :class="userItemRankClass(userItemToSell)">
-                {{ userItemToSell.baseItem.name }}
-              </strong>
-              ?
-            </span>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="user-item">
-            <display-user-item :user-item="userItemToSell" />
-          </div>
-        </div>
-
-        <div class="column">
-          <b-button
-            size="is-medium"
-            type="is-danger"
-            icon-left="coins"
-            expanded
-            @click="confirmSellItem"
-          >
-            Sell for {{ userItemToReplaceSalePrice }} gold
-          </b-button>
-          <b-button
-            size="is-medium"
-            type="is-secondary"
-            icon-left="xmark"
-            expanded
-            @click="cancelSellItem"
-          >
-            Cancel
-          </b-button>
-        </div>
-      </div>
-    </b-modal>
+    <character-items-component
+      :character="character"
+      :item-filter="selectedItemSlot"
+      @equip="equip"
+      @unequip="unequip"
+      @selectItemSlot="selectItem"
+      @deselectItemSlot="deselectItem"
+    />
   </div>
 </template>
 
@@ -302,55 +174,49 @@ import ItemProperties from '@/components/ItemProperties.vue';
 import userModule from '@/store/user-module';
 import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
-import { filterUserItemsFittingInSlot, computeSalePrice } from '@/services/item-service';
-import { NotificationType, notify } from '@/services/notifications-service';
+import { notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
 import CharacterOverallItemsStatsComponent from '@/components/CharacterOverallItemsStatsComponent.vue';
+import CharacterItemsComponent from '@/components/CharacterItemsComponent.vue';
 import EquippedItem from '@/models/equipped-item';
 import UserItem from '@/models/user-item';
-import DisplayUserItem from '@/components/user/DisplayUserItem.vue';
+import { getSlotsForUserItem, itemFitsInFreeWeaponSlot } from '@/services/item-service';
 
 @Component({
   components: {
-    DisplayUserItem,
     CharacterStatsComponent,
     ItemProperties,
     CharacterOverallItemsStatsComponent,
+    CharacterItemsComponent,
   },
 })
 export default class CharacterComponent extends Vue {
   @Prop(Object) readonly character: Character;
 
-  // modal stuff
   itemSlot = ItemSlot;
-  isReplaceItemModalActive = false;
-  isConfirmSellItemModalActive = false;
+  selectedItemSlot: string | null = null;
   userItemToReplace: UserItem | null = null;
   userItemToReplaceSlot: ItemSlot | null = null;
   userItemToSell: UserItem | null = null;
   selectedUserItem: UserItem | null = null;
 
-  get characterEquippedItems(): EquippedItem[] | null {
-    return userModule.characterEquippedItems(this.character.id);
+  get characterEquippedItems(): EquippedItem[] {
+    return userModule.characterEquippedItems(this.character.id) || [];
   }
 
-  get userItemsBySlot(): Record<ItemSlot, UserItem> {
+  get characterEquippedUserItems(): UserItem[] | [] {
+    return this.characterEquippedItems?.map(ei => ei.userItem) || [];
+  }
+
+  get userItemBySlot(): Record<ItemSlot, UserItem | undefined> {
     if (this.characterEquippedItems === null) {
       return {} as Record<ItemSlot, UserItem>;
     }
 
-    return this.characterEquippedItems.reduce((userItemsBySlot, ei) => {
-      userItemsBySlot[ei.slot] = ei.userItem;
-      return userItemsBySlot;
+    return this.characterEquippedItems.reduce((userItemBySlot, ei) => {
+      userItemBySlot[ei.slot] = ei.userItem;
+      return userItemBySlot;
     }, {} as Record<ItemSlot, UserItem>);
-  }
-
-  get fittingUserItems(): UserItem[] {
-    return this.userItemToReplaceSlot === null
-      ? []
-      : filterUserItemsFittingInSlot(userModule.userItems, this.userItemToReplaceSlot).filter(
-          ui => this.userItemToReplace === null || ui.id !== this.userItemToReplace.id
-        );
   }
 
   get itemToReplaceUpgradeInfo(): { upgradable: boolean; reason: string } {
@@ -371,12 +237,45 @@ export default class CharacterComponent extends Vue {
     return { upgradable: false, reason: 'Heirloom are disabled for now' };
   }
 
-  get userItemToReplaceSalePrice(): number {
-    if (this.userItemToReplace === null) {
-      return 0;
-    }
+  getBoxClasses(itemSlot: ItemSlot) {
+    let classes = 'box item-box';
+    const item = this.selectedUserItem;
+    if (!item) return classes;
 
-    return computeSalePrice(this.userItemToReplace);
+    const slotsForUserItem = getSlotsForUserItem(item);
+    if (slotsForUserItem.length > 1) {
+      const weapon0 = this.userItemBySlot[ItemSlot.Weapon0];
+      const weapon1 = this.userItemBySlot[ItemSlot.Weapon1];
+      const weapon2 = this.userItemBySlot[ItemSlot.Weapon2];
+      const weapon3 = this.userItemBySlot[ItemSlot.Weapon3];
+      if (
+        !itemFitsInFreeWeaponSlot(this.characterEquippedItems, item) &&
+        this.characterEquippedItems.some(equippedItem => equippedItem.userItem.id === item.id)
+      ) {
+        if (weapon0 && weapon0.id === item.id) {
+          if (itemSlot === ItemSlot.Weapon0) return (classes += ' circle-sketch-highlight');
+        } else if (weapon1 && weapon1.id === item.id) {
+          if (itemSlot === ItemSlot.Weapon1) return (classes += ' circle-sketch-highlight');
+        } else if (weapon2 && weapon2.id === item.id) {
+          if (itemSlot === ItemSlot.Weapon2) return (classes += ' circle-sketch-highlight');
+        } else if (weapon3 && weapon3.id === item.id) {
+          if (itemSlot === ItemSlot.Weapon3) return (classes += ' circle-sketch-highlight');
+        }
+        return classes;
+      }
+
+      if (!this.userItemBySlot[ItemSlot.Weapon0]) {
+        if (itemSlot == ItemSlot.Weapon0) return (classes += ' circle-sketch-highlight');
+      } else if (!this.userItemBySlot[ItemSlot.Weapon1]) {
+        if (itemSlot == ItemSlot.Weapon1) return (classes += ' circle-sketch-highlight');
+      } else if (!this.userItemBySlot[ItemSlot.Weapon2]) {
+        if (itemSlot == ItemSlot.Weapon2) return (classes += ' circle-sketch-highlight');
+      } else if (!this.userItemBySlot[ItemSlot.Weapon3]) {
+        if (itemSlot == ItemSlot.Weapon3) return (classes += ' circle-sketch-highlight');
+      } else if (itemSlot == ItemSlot.Weapon0) return (classes += ' circle-sketch-highlight');
+    } else if (slotsForUserItem[0] === itemSlot) return (classes += ' circle-sketch-highlight');
+
+    return classes;
   }
 
   created() {
@@ -440,58 +339,63 @@ export default class CharacterComponent extends Vue {
     });
   }
 
-  openReplaceItemModal(slot: ItemSlot): void {
-    this.userItemToReplace = this.userItemsBySlot[slot] ? this.userItemsBySlot[slot] : null;
-    this.userItemToReplaceSlot = slot;
-    this.selectedUserItem = null;
-    if (userModule.userItems.length === 0) {
-      userModule.getUserItems();
-    }
-
-    this.isReplaceItemModalActive = true;
-  }
-
-  unequipItem(): void {
-    userModule.replaceItem({
-      character: this.character,
-      slot: this.userItemToReplaceSlot!,
-      userItem: null,
-    });
-    (this.$refs.replaceItemModal as any).close();
-  }
-
   upgradeItem(): void {
     userModule.upgradeUserItem(this.userItemToReplace!);
     (this.$refs.replaceItemModal as any).close();
   }
 
-  async confirmSellItem(): Promise<void> {
-    const salePrice = await userModule.sellUserItem(this.userItemToReplace!);
-    notify(
-      `Sold ${this.userItemToReplace?.baseItem.name} for ${salePrice} gold`,
-      NotificationType.Info
-    );
-    (this.$refs.replaceItemModal as any).close();
-    (this.$refs.confirmSellItemModal as any).close();
+  onItemClicked(slot: ItemSlot) {
+    const userItem = this.userItemBySlot[slot];
+    if (userItem) this.unequip(userItem, slot);
+    else this.selectedItemSlot = slot;
   }
 
-  confirmItemSelection(): void {
+  selectItem(userItem: UserItem) {
+    this.selectedUserItem = userItem;
+  }
+
+  deselectItem() {
+    this.selectedUserItem = null;
+  }
+
+  equip(userItem: UserItem) {
+    const result = getSlotsForUserItem(userItem);
+    let slot = result[0];
+    if (result.length > 1) {
+      if (!this.userItemBySlot[ItemSlot.Weapon0]) slot = ItemSlot.Weapon0;
+      else if (!this.userItemBySlot[ItemSlot.Weapon1]) slot = ItemSlot.Weapon1;
+      else if (!this.userItemBySlot[ItemSlot.Weapon2]) slot = ItemSlot.Weapon2;
+      else if (!this.userItemBySlot[ItemSlot.Weapon3]) slot = ItemSlot.Weapon3;
+      else slot = ItemSlot.Weapon0;
+    }
+
     userModule.replaceItem({
       character: this.character,
-      slot: this.userItemToReplaceSlot!,
-      userItem: this.selectedUserItem!,
+      slot: slot,
+      userItem: userItem,
     });
-    this.isReplaceItemModalActive = false;
   }
 
-  showSellItemConfirmation(userItem: UserItem): void {
-    this.isConfirmSellItemModalActive = true;
-    this.userItemToSell = userItem;
-  }
+  unequip(userItem: UserItem, itemSlot: ItemSlot | null) {
+    const result = getSlotsForUserItem(userItem);
+    if (!itemSlot) {
+      itemSlot = result[0];
+      if (result.length > 1) {
+        if (this.userItemBySlot[ItemSlot.Weapon0]?.id === userItem.id) itemSlot = ItemSlot.Weapon0;
+        else if (this.userItemBySlot[ItemSlot.Weapon1]?.id === userItem.id)
+          itemSlot = ItemSlot.Weapon1;
+        else if (this.userItemBySlot[ItemSlot.Weapon2]?.id === userItem.id)
+          itemSlot = ItemSlot.Weapon2;
+        else if (this.userItemBySlot[ItemSlot.Weapon3]?.id === userItem.id)
+          itemSlot = ItemSlot.Weapon3;
+      }
+    }
 
-  cancelSellItem(): void {
-    this.isConfirmSellItemModalActive = false;
-    this.userItemToSell = null;
+    userModule.replaceItem({
+      character: this.character,
+      slot: itemSlot,
+      userItem: null,
+    });
   }
 }
 </script>
@@ -531,24 +435,6 @@ export default class CharacterComponent extends Vue {
   }
 }
 
-.replace-item-modal {
-  background-color: #fff; // TODO: replace with bulma variable
-  // inherit modal height
-  max-height: inherit;
-
-  .modal--content {
-    overflow-y: hidden;
-    overflow-x: hidden;
-    .user-items {
-      overflow-y: auto;
-
-      & > .columns {
-        justify-content: center;
-      }
-    }
-  }
-}
-
 .user-item {
   width: 256px;
 
@@ -584,18 +470,44 @@ export default class CharacterComponent extends Vue {
   color: #774fc2;
 }
 
-.confirm-selection__overlay {
-  border-radius: 50%;
-  opacity: 0.85;
+.circle-sketch-highlight {
+  position: relative;
+  font-size: 32px;
+  font-weight: 500;
+}
+.circle-sketch-highlight:before {
+  content: '';
+  z-index: 1;
+  left: 0.04em;
+  top: -0.1em;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #ef8c22;
   position: absolute;
-  left: 20%;
-  right: 20%;
-  top: 20%;
-  bottom: 20%;
-  background-color: #bdbdbd;
-  transition: background-color 200ms;
-  &:hover {
-    background-color: #c8e1c8;
-  }
+  border-right-color: transparent;
+  width: 100%;
+  height: 1em;
+  transform: rotate(1deg);
+  opacity: 0.7;
+  border-radius: 50%;
+  padding: 1em 1.5em;
+}
+.circle-sketch-highlight:after {
+  content: '';
+  z-index: 1;
+  left: 0em;
+  top: 0em;
+  padding: 0.8em 0.8em;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #ef8c22;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  position: absolute;
+  width: 100%;
+  height: 1em;
+  transform: rotate(-1deg);
+  opacity: 0.7;
+  border-radius: 50%;
 }
 </style>
