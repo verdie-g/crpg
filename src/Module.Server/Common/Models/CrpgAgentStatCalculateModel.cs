@@ -360,7 +360,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.ThrustOrRangedReadySpeedMultiplier *= 0.75f * (float)Math.Pow(2, weaponSkill / 191);
                     props.WeaponInaccuracy /= 2;
                     props.ReloadSpeed *= 0.65f;
-                    props.MissileSpeedMultiplier *= 1.4f;
+                    props.MissileSpeedMultiplier *= 1.4f;              }
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
                 {
