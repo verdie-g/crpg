@@ -312,7 +312,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.ShieldBashStunDurationMultiplier = 1f;
         props.KickStunDurationMultiplier = 1f;
         props.ReloadSpeed = props.SwingSpeedMultiplier;
-        props.MissileSpeedMultiplier = 1f; // multiplies missile speed by 1.4 and damage by 1.4² = 1.96 (invisible)
+        props.MissileSpeedMultiplier = 1.4f; // multiplies missile speed by 1.4 and damage by 1.4² = 1.96 (invisible)
         props.ReloadMovementPenaltyFactor = 1f;
         SetAllWeaponInaccuracy(agent, props, (int)wieldedItemIndex3, equippedItem);
         int ridingSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, DefaultSkills.Riding);
