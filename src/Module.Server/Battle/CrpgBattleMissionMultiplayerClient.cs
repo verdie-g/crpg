@@ -190,7 +190,6 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
             registerer.Register<CrpgRewardUser>(HandleRewardUser);
             registerer.Register<CrpgRewardError>(HandleRewardError);
             registerer.Register<CrpgNotification>(HandleNotification);
-            registerer.Register<CrpgSoundEvent>(HandleSoundEvent);
             registerer.Register<FlagDominationMoraleChangeMessage>(OnMoraleChange);
             registerer.Register<FlagDominationCapturePointMessage>(OnCapturePoint);
             registerer.Register<FlagDominationFlagsRemovedMessage>(OnFlagsRemoved);
