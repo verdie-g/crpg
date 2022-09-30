@@ -36,134 +36,46 @@
 
     <div class="card-content">
       <div class="columns item-boxes">
-        <div class="column is-narrow">
-          <div
-            v-for="index in 4"
-            v-bind:key="index"
-            class="box item-box"
-            @mouseover="selectItem(0, index - 1)"
-            @mouseleave="deselectItem"
-            @click="changeEquipState(0, index - 1)"
-          >
-            <b-tooltip type="is-dark" position="is-bottom" multilined append-to-body>
-              <template v-slot:content>
-                <div v-html="getTooltip(0, index - 1)" />
-              </template>
-              <img
-                v-if="getInventoryItem(0, index - 1)"
-                :src="userItemImage(getInventoryItem(0, index - 1))"
-              />
-              <b-icon
-                v-if="isEquippedItem(0, index - 1)"
-                class="equipped-icon"
-                type="is-success"
-                icon="user-plus"
-                size="is-small"
-              ></b-icon>
-              <b-button
-                v-if="showLockedButton(0, index - 1)"
-                class="lock-button"
-                type="is-info"
-                :icon-right="getLockButtonIcon(0, index - 1)"
-                size="is-small"
-                @click.stop="lockButtonClicked(0, index - 1)"
-              />
-              <b-button
-                v-if="selectedItem && selectedItem === getInventoryItem(0, index - 1)"
-                class="sell-button"
-                type="is-danger"
-                icon-right="coins"
-                size="is-small"
-                @click.stop="sellItemModal = true"
-              />
-            </b-tooltip>
-          </div>
-        </div>
-        <div class="column is-narrow">
-          <div
-            v-for="index in 4"
-            v-bind:key="index"
-            class="box item-box"
-            @mouseover="selectItem(1, index - 1)"
-            @mouseleave="deselectItem"
-            @click="changeEquipState(1, index - 1)"
-          >
-            <b-tooltip type="is-dark" position="is-bottom" multilined append-to-body>
-              <template v-slot:content>
-                <div v-html="getTooltip(1, index - 1)" />
-              </template>
-              <img
-                v-if="getInventoryItem(1, index - 1)"
-                :src="userItemImage(getInventoryItem(1, index - 1))"
-              />
-              <b-icon
-                v-if="isEquippedItem(1, index - 1)"
-                class="equipped-icon"
-                type="is-success"
-                icon="user-plus"
-                size="is-small"
-              ></b-icon>
-              <b-button
-                v-if="showLockedButton(1, index - 1)"
-                class="lock-button"
-                type="is-info"
-                :icon-right="getLockButtonIcon(1, index - 1)"
-                size="is-small"
-                @click.stop="lockButtonClicked(1, index - 1)"
-              />
-              <b-button
-                v-if="selectedItem && selectedItem === getInventoryItem(1, index - 1)"
-                class="sell-button"
-                type="is-danger"
-                icon-right="coins"
-                size="is-small"
-                @click.stop="sellItemModal = true"
-              />
-            </b-tooltip>
-          </div>
-        </div>
-        <div class="column is-narrow">
-          <div
-            v-for="index in 4"
-            v-bind:key="index"
-            class="box item-box"
-            @mouseover="selectItem(2, index - 1)"
-            @mouseleave="deselectItem"
-            @click="changeEquipState(2, index - 1)"
-          >
-            <b-tooltip type="is-dark" position="is-bottom" multilined append-to-body>
-              <template v-slot:content>
-                <div v-html="getTooltip(2, index - 1)" />
-              </template>
-              <img
-                v-if="getInventoryItem(2, index - 1)"
-                :src="userItemImage(getInventoryItem(2, index - 1))"
-              />
-              <b-icon
-                v-if="isEquippedItem(2, index - 1)"
-                class="equipped-icon"
-                type="is-success"
-                icon="user-plus"
-                size="is-small"
-              ></b-icon>
-              <b-button
-                v-if="showLockedButton(2, index - 1)"
-                class="lock-button"
-                type="is-info"
-                :icon-right="getLockButtonIcon(2, index - 1)"
-                size="is-small"
-                @click.stop="lockButtonClicked(2, index - 1)"
-              />
-              <b-button
-                v-if="selectedItem && selectedItem === getInventoryItem(2, index - 1)"
-                class="sell-button"
-                type="is-danger"
-                icon-right="coins"
-                size="is-small"
-                @click.stop="sellItemModal = true"
-              />
-            </b-tooltip>
-          </div>
+        <div
+          v-for="(n, index) in itemsPerPage"
+          v-bind:key="index"
+          class="box item-box"
+          @mouseover="selectItem(index)"
+          @mouseleave="deselectItem"
+          @click="changeEquipState"
+        >
+          <b-tooltip type="is-dark" position="is-bottom" multilined append-to-body>
+            <template v-slot:content>
+              <item-tooltip-component :user-item="selectedItem" />
+            </template>
+            <img
+              v-if="filteredItems[index * currentPage]"
+              :src="userItemImage(filteredItems[index * currentPage])"
+            />
+            <b-icon
+              v-if="isEquippedItem(index)"
+              class="equipped-icon"
+              type="is-success"
+              icon="user-plus"
+              size="is-small"
+            ></b-icon>
+            <b-button
+              v-if="showLockedButton(index)"
+              class="lock-button"
+              type="is-info"
+              :icon-right="getLockButtonIcon(index)"
+              size="is-small"
+              @click.stop="lockButtonClicked(index)"
+            />
+            <b-button
+              v-if="selectedItem && selectedItem === filteredItems[index * currentPage]"
+              class="sell-button"
+              type="is-danger"
+              icon-right="coins"
+              size="is-small"
+              @click.stop="sellItemModal = true"
+            />
+          </b-tooltip>
         </div>
       </div>
       <b-pagination
@@ -258,14 +170,15 @@ import {
 import userModule from '@/store/user-module';
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import CharacterOverallItemsStatsComponent from '@/components/CharacterOverallItemsStatsComponent.vue';
+import ItemTooltipComponent from '@/components/ItemTooltipComponent.vue';
 import DisplayUserItem from '@/components/user/DisplayUserItem.vue';
 import { NotificationType, notify } from '@/services/notifications-service';
-import { computeAverageRepairCost, computeMaxRepairCost } from '@/services/characters-service';
 
 @Component({
   components: {
     DisplayUserItem,
     CharacterOverallItemsStatsComponent,
+    ItemTooltipComponent,
   },
 })
 export default class CharacterItemsComponent extends Vue {
@@ -282,7 +195,7 @@ export default class CharacterItemsComponent extends Vue {
     'Head Armor',
     'Shoulder Armor',
     'Body Armor',
-    'Arm Armor',
+    'Hand Armor',
     'Leg Armor',
     'Mount',
     'Mount Harness',
@@ -292,10 +205,7 @@ export default class CharacterItemsComponent extends Vue {
   lockedItem = null as UserItem | null;
   sortBy = 'Price';
   sortDesc = true;
-  selectedItemIndex = {
-    column: 0,
-    row: 0,
-  };
+  selectedItemIndex = null as number | null;
 
   created() {
     return userModule.getUserItems();
@@ -348,7 +258,7 @@ export default class CharacterItemsComponent extends Vue {
           this.sortBy,
           this.sortDesc
         );
-      case 'Arm Armor':
+      case 'Hand Armor':
         return this.sortUserItems(
           filterUserItemsFittingInSlot(userModule.userItems, ItemSlot.Hand),
           this.sortBy,
@@ -407,22 +317,16 @@ export default class CharacterItemsComponent extends Vue {
     return 'arrow-up';
   }
 
-  lockButtonClicked(column: number, row: number) {
-    const clickedItem = this.getInventoryItem(column, row);
+  lockButtonClicked(index: number) {
+    const clickedItem = this.filteredItems[index * this.currentPage];
     if (clickedItem === this.lockedItem) this.lockedItem = null;
     else this.lockedItem = clickedItem;
   }
 
-  getLockButtonIcon(column: number, row: number): string {
+  getLockButtonIcon(index: number): string {
     if (!this.lockedItem) return 'lock-open';
-    if (this.getInventoryItem(column, row) === this.lockedItem) return 'lock';
+    if (this.filteredItems[index * this.currentPage] === this.lockedItem) return 'lock';
     return 'lock-open';
-  }
-
-  getInventoryItem(column: number, row: number): UserItem | null {
-    const itemIndex = row * 3 + column;
-    if (this.pageItems.length >= itemIndex) return this.pageItems[itemIndex];
-    return null;
   }
 
   userItemImage(userItem: UserItem): string {
@@ -433,37 +337,8 @@ export default class CharacterItemsComponent extends Vue {
     return userItem === null ? '' : `item-rank${userItem.rank}`;
   }
 
-  getTooltip(column: number, row: number): string {
-    const inventoryItem = this.getInventoryItem(column, row);
-    let result = '';
-    if (inventoryItem) {
-      result = '<b>' + inventoryItem.baseItem.name + '</b>';
-      result += '<table width="200px">';
-      result += '<tr>';
-      result += '<td>Price</td>';
-      result += '<td>' + inventoryItem.baseItem.price.toLocaleString('en-US') + '</td>';
-      result += '</tr>';
-      result += '<tr>';
-      result += '<td>Max repair costs</td>';
-      result +=
-        '<td>' +
-        parseFloat(computeMaxRepairCost([inventoryItem]).toFixed(2)).toLocaleString('en-US') +
-        '</td>';
-      result += '</tr>';
-      result += '<tr>';
-      result += '<td>Average repair costs</td>';
-      result +=
-        '<td>' +
-        parseFloat(computeAverageRepairCost([inventoryItem]).toFixed(2)).toLocaleString('en-US') +
-        '</td>';
-      result += '</tr>';
-      result += '</table>';
-    }
-    return result;
-  }
-
-  isEquippedItem(column: number, row: number): boolean {
-    const inventoryItem = this.getInventoryItem(column, row);
+  isEquippedItem(index: number): boolean {
+    const inventoryItem = this.filteredItems[index * this.currentPage];
     if (!inventoryItem) return false;
     return this.equippedItems.some(equippedItem => equippedItem.userItem.id === inventoryItem.id);
   }
@@ -472,13 +347,13 @@ export default class CharacterItemsComponent extends Vue {
     return this.equippedItems.some(equippedItem => equippedItem.userItem.id === userItem.id);
   }
 
-  changeEquipState(column: number, row: number) {
-    const userItem = this.getInventoryItem(column, row);
-    if (!userItem) return;
-    if (itemFitsInFreeWeaponSlot(this.equippedItems, userItem)) this.$emit('equip', userItem);
-    else if (this.isEquippedItemByItem(userItem)) this.$emit('unequip', userItem);
-    else this.$emit('equip', userItem);
-    this.selectItem(this.selectedItemIndex.column, this.selectedItemIndex.row);
+  changeEquipState() {
+    if (!this.selectedItem) return;
+    if (itemFitsInFreeWeaponSlot(this.equippedItems, this.selectedItem))
+      this.$emit('equip', this.selectedItem);
+    else if (this.isEquippedItemByItem(this.selectedItem)) this.$emit('unequip', this.selectedItem);
+    else this.$emit('equip', this.selectedItem);
+    if (this.selectedItemIndex !== null) this.selectItem(this.selectedItemIndex);
   }
 
   async confirmSellItem(): Promise<void> {
@@ -489,21 +364,22 @@ export default class CharacterItemsComponent extends Vue {
     this.sellItemModal = false;
   }
 
-  showLockedButton(column: number, row: number) {
-    const inventoryItem = this.getInventoryItem(column, row);
+  showLockedButton(index: number) {
+    const inventoryItem = this.filteredItems[index * this.currentPage];
     return (
       (this.selectedItem && this.selectedItem === inventoryItem) ||
       (this.lockedItem && this.lockedItem === inventoryItem)
     );
   }
 
-  selectItem(column: number, row: number) {
-    this.selectedItemIndex = { column: column, row: row };
-    this.selectedItem = this.getInventoryItem(column, row);
+  selectItem(index: number) {
+    this.selectedItemIndex = index;
+    this.selectedItem = this.filteredItems[index * this.currentPage];
     this.emitSelectedItem();
   }
 
   deselectItem() {
+    if (this.sellItemModal) return;
     this.selectedItem = null;
     this.emitSelectedItem();
   }
@@ -544,7 +420,7 @@ export default class CharacterItemsComponent extends Vue {
         this.itemsFilter = 'Body Armor';
         break;
       case ItemSlot.Hand:
-        this.itemsFilter = 'Arm Armor';
+        this.itemsFilter = 'Hand Armor';
         break;
       case ItemSlot.Leg:
         this.itemsFilter = 'Leg Armor';
@@ -572,6 +448,8 @@ export default class CharacterItemsComponent extends Vue {
   background-size: 190px;
   background-position: 180px 0px;
   padding-bottom: 8px; // so the silhouette's feet ain't cropped
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .item-box {
@@ -582,6 +460,7 @@ export default class CharacterItemsComponent extends Vue {
   padding: 0;
   cursor: pointer;
   text-align: center; // to align horizontally placeholder
+  margin: 0.8em;
 
   &:hover {
     box-shadow: 0 5px 8px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);

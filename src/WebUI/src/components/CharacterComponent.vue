@@ -9,7 +9,7 @@
     <div class="column character-items">
       <div class="columns item-boxes">
         <div class="column is-narrow gear-column">
-          <div :class="getBoxClasses(itemSlot.Head)" @click="onItemClicked(itemSlot.Head)">
+          <div :class="getBoxClasses(itemSlot.Head)" @click="onItemBoxClicked(itemSlot.Head)">
             <img
               v-if="userItemBySlot[itemSlot.Head]"
               :src="userItemImage(userItemBySlot[itemSlot.Head])"
@@ -18,7 +18,10 @@
 
             <img v-else src="../assets/head-armor.png" alt="Head armor" class="item-placeholder" />
           </div>
-          <div :class="getBoxClasses(itemSlot.Shoulder)" @click="onItemClicked(itemSlot.Shoulder)">
+          <div
+            :class="getBoxClasses(itemSlot.Shoulder)"
+            @click="onItemBoxClicked(itemSlot.Shoulder)"
+          >
             <img
               v-if="userItemBySlot[itemSlot.Shoulder]"
               :src="userItemImage(userItemBySlot[itemSlot.Shoulder])"
@@ -26,7 +29,7 @@
             />
             <img v-else src="../assets/cape.png" alt="Shoulder" class="item-placeholder" />
           </div>
-          <div :class="getBoxClasses(itemSlot.Body)" @click="onItemClicked(itemSlot.Body)">
+          <div :class="getBoxClasses(itemSlot.Body)" @click="onItemBoxClicked(itemSlot.Body)">
             <img
               v-if="userItemBySlot[itemSlot.Body]"
               :src="userItemImage(userItemBySlot[itemSlot.Body])"
@@ -34,7 +37,7 @@
             />
             <img v-else src="../assets/body-armor.png" alt="Body armor" class="item-placeholder" />
           </div>
-          <div :class="getBoxClasses(itemSlot.Hand)" @click="onItemClicked(itemSlot.Hand)">
+          <div :class="getBoxClasses(itemSlot.Hand)" @click="onItemBoxClicked(itemSlot.Hand)">
             <img
               v-if="userItemBySlot[itemSlot.Hand]"
               :src="userItemImage(userItemBySlot[itemSlot.Hand])"
@@ -42,7 +45,7 @@
             />
             <img v-else src="../assets/hand-armor.png" alt="Hand armor" class="item-placeholder" />
           </div>
-          <div :class="getBoxClasses(itemSlot.Leg)" @click="onItemClicked(itemSlot.Leg)">
+          <div :class="getBoxClasses(itemSlot.Leg)" @click="onItemBoxClicked(itemSlot.Leg)">
             <img
               v-if="userItemBySlot[itemSlot.Leg]"
               :src="userItemImage(userItemBySlot[itemSlot.Leg])"
@@ -55,7 +58,7 @@
         <div class="column is-narrow mount-column">
           <div
             :class="getBoxClasses(itemSlot.MountHarness)"
-            @click="onItemClicked(itemSlot.MountHarness)"
+            @click="onItemBoxClicked(itemSlot.MountHarness)"
           >
             <img
               v-if="userItemBySlot[itemSlot.MountHarness]"
@@ -69,7 +72,7 @@
               class="item-placeholder"
             />
           </div>
-          <div :class="getBoxClasses(itemSlot.Mount)" @click="onItemClicked(itemSlot.Mount)">
+          <div :class="getBoxClasses(itemSlot.Mount)" @click="onItemBoxClicked(itemSlot.Mount)">
             <img
               v-if="userItemBySlot[itemSlot.Mount]"
               :src="userItemImage(userItemBySlot[itemSlot.Mount])"
@@ -79,28 +82,28 @@
         </div>
 
         <div class="column is-narrow weapon-column">
-          <div :class="getBoxClasses(itemSlot.Weapon0)" @click="onItemClicked(itemSlot.Weapon0)">
+          <div :class="getBoxClasses(itemSlot.Weapon0)" @click="onItemBoxClicked(itemSlot.Weapon0)">
             <img
               v-if="userItemBySlot[itemSlot.Weapon0]"
               :src="userItemImage(userItemBySlot[itemSlot.Weapon0])"
               alt="First weapon"
             />
           </div>
-          <div :class="getBoxClasses(itemSlot.Weapon1)" @click="onItemClicked(itemSlot.Weapon1)">
+          <div :class="getBoxClasses(itemSlot.Weapon1)" @click="onItemBoxClicked(itemSlot.Weapon1)">
             <img
               v-if="userItemBySlot[itemSlot.Weapon1]"
               :src="userItemImage(userItemBySlot[itemSlot.Weapon1])"
               alt="Second weapon"
             />
           </div>
-          <div :class="getBoxClasses(itemSlot.Weapon2)" @click="onItemClicked(itemSlot.Weapon2)">
+          <div :class="getBoxClasses(itemSlot.Weapon2)" @click="onItemBoxClicked(itemSlot.Weapon2)">
             <img
               v-if="userItemBySlot[itemSlot.Weapon2]"
               :src="userItemImage(userItemBySlot[itemSlot.Weapon2])"
               alt="Third weapon"
             />
           </div>
-          <div :class="getBoxClasses(itemSlot.Weapon3)" @click="onItemClicked(itemSlot.Weapon3)">
+          <div :class="getBoxClasses(itemSlot.Weapon3)" @click="onItemBoxClicked(itemSlot.Weapon3)">
             <img
               v-if="userItemBySlot[itemSlot.Weapon3]"
               :src="userItemImage(userItemBySlot[itemSlot.Weapon3])"
@@ -204,8 +207,8 @@ export default class CharacterComponent extends Vue {
     return userModule.characterEquippedItems(this.character.id) || [];
   }
 
-  get characterEquippedUserItems(): UserItem[] | [] {
-    return this.characterEquippedItems?.map(ei => ei.userItem) || [];
+  get characterEquippedUserItems(): UserItem[] {
+    return this.characterEquippedItems.map(ei => ei.userItem);
   }
 
   get userItemBySlot(): Record<ItemSlot, UserItem | undefined> {
@@ -237,44 +240,36 @@ export default class CharacterComponent extends Vue {
     return { upgradable: false, reason: 'Heirloom are disabled for now' };
   }
 
-  getBoxClasses(itemSlot: ItemSlot) {
+  getBoxClasses(itemSlot: ItemSlot): string {
     let classes = 'box item-box';
     const item = this.selectedUserItem;
     if (!item) return classes;
 
     const slotsForUserItem = getSlotsForUserItem(item);
     if (slotsForUserItem.length > 1) {
-      const weapon0 = this.userItemBySlot[ItemSlot.Weapon0];
-      const weapon1 = this.userItemBySlot[ItemSlot.Weapon1];
-      const weapon2 = this.userItemBySlot[ItemSlot.Weapon2];
-      const weapon3 = this.userItemBySlot[ItemSlot.Weapon3];
+      const weaponSlots = [ItemSlot.Weapon0, ItemSlot.Weapon1, ItemSlot.Weapon2, ItemSlot.Weapon3];
       if (
         !itemFitsInFreeWeaponSlot(this.characterEquippedItems, item) &&
         this.characterEquippedItems.some(equippedItem => equippedItem.userItem.id === item.id)
       ) {
-        if (weapon0 && weapon0.id === item.id) {
-          if (itemSlot === ItemSlot.Weapon0) return (classes += ' circle-sketch-highlight');
-        } else if (weapon1 && weapon1.id === item.id) {
-          if (itemSlot === ItemSlot.Weapon1) return (classes += ' circle-sketch-highlight');
-        } else if (weapon2 && weapon2.id === item.id) {
-          if (itemSlot === ItemSlot.Weapon2) return (classes += ' circle-sketch-highlight');
-        } else if (weapon3 && weapon3.id === item.id) {
-          if (itemSlot === ItemSlot.Weapon3) return (classes += ' circle-sketch-highlight');
+        for (let weaponSlot of weaponSlots) {
+          if (this.userItemBySlot[weaponSlot] && this.userItemBySlot[weaponSlot]!.id === item.id) {
+            if (itemSlot === weaponSlot) return (classes += ' circle-sketch-highlight');
+            return classes;
+          }
         }
         return classes;
       }
 
-      if (!this.userItemBySlot[ItemSlot.Weapon0]) {
-        if (itemSlot == ItemSlot.Weapon0) return (classes += ' circle-sketch-highlight');
-      } else if (!this.userItemBySlot[ItemSlot.Weapon1]) {
-        if (itemSlot == ItemSlot.Weapon1) return (classes += ' circle-sketch-highlight');
-      } else if (!this.userItemBySlot[ItemSlot.Weapon2]) {
-        if (itemSlot == ItemSlot.Weapon2) return (classes += ' circle-sketch-highlight');
-      } else if (!this.userItemBySlot[ItemSlot.Weapon3]) {
-        if (itemSlot == ItemSlot.Weapon3) return (classes += ' circle-sketch-highlight');
-      } else if (itemSlot == ItemSlot.Weapon0) return (classes += ' circle-sketch-highlight');
+      for (let weaponSlot of weaponSlots) {
+        if (!this.userItemBySlot[weaponSlot]) {
+          if (itemSlot === weaponSlot) return (classes += ' circle-sketch-highlight');
+          return classes;
+        }
+      }
+      if (itemSlot == ItemSlot.Weapon0) return (classes += ' circle-sketch-highlight');
+      return classes;
     } else if (slotsForUserItem[0] === itemSlot) return (classes += ' circle-sketch-highlight');
-
     return classes;
   }
 
@@ -344,7 +339,7 @@ export default class CharacterComponent extends Vue {
     (this.$refs.replaceItemModal as any).close();
   }
 
-  onItemClicked(slot: ItemSlot) {
+  onItemBoxClicked(slot: ItemSlot) {
     const userItem = this.userItemBySlot[slot];
     if (userItem) this.unequip(userItem, slot);
     else this.selectedItemSlot = slot;
