@@ -282,6 +282,13 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             {
                 missionPeer.SpawnCountThisRound += 1;
                 crpgRepresentative.SpawnTeamThisRound = missionPeer.Team;
+                GameNetwork.BeginModuleEventAsServer(networkPeer);
+                GameNetwork.WriteMessage(new CrpgNotification
+                {
+                    Type = CrpgNotification.NotificationType.Sound,
+                    SoundEvent = "event:/ui/multiplayer/match_ready",
+                });
+                GameNetwork.EndModuleEventAsServer();
             }
         }
     }
