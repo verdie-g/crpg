@@ -339,8 +339,4 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         MBInformationManager.AddQuickInformation(msg, 0, null, notification.SoundEvent);
     }
 
-    private void HandleSoundEvent(CrpgSoundEvent message)
-    {
-        SoundEvent.CreateEventFromString(message.SoundEvent, Mission.Scene).Play();
-    }
 }
