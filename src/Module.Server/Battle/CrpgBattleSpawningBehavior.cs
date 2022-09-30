@@ -17,18 +17,11 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 {
     private const float TotalSpawnDuration = 30f;
     private const float CavalrySpawnDelay = 6f;
-    private const float RoundEndCheckDelay = CavalrySpawnDelay + 1f;
     private readonly CrpgConstants _constants;
     private readonly MultiplayerRoundController? _roundController;
     private readonly HashSet<PlayerId> notifiedPlayersAboutDelayedSpawn;
     private MissionTimer? _spawnTimer;
     private MissionTimer? _cavalrySpawnDelay;
-
-    /// <summary>
-    /// Used to declare when the round end timer starts. Necessary because otherwise it might happen that one player quits before cav spawns.
-    /// That might lead to a lose for the team which is waiting for their cav spawns. Not sure about the tick order. Thats why we declare an extra timer.
-    /// </summary>
-    private MissionTimer? _roundEndCheckDelay;
     private bool _botsSpawned;
 
     public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController? roundController)
@@ -74,7 +67,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         int preparationTimeLimit = MultiplayerOptions.OptionType.RoundPreparationTimeLimit.GetIntValue();
         _spawnTimer = new MissionTimer(TotalSpawnDuration + preparationTimeLimit); // Limit spawning for 30 seconds.
         _cavalrySpawnDelay = new MissionTimer(CavalrySpawnDelay + preparationTimeLimit); // Cav will spawn 6 seconds later.
-        _roundEndCheckDelay = new MissionTimer(RoundEndCheckDelay + preparationTimeLimit); // Enable round end check after 7 seconds
         ResetSpawnTeams();
     }
 
@@ -85,7 +77,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
     public bool SpawnDelayEnded()
     {
-        return _roundEndCheckDelay != null && _roundEndCheckDelay!.Check();
+        return _cavalrySpawnDelay != null && _cavalrySpawnDelay!.Check();
     }
 
     protected override bool IsRoundInProgress()
