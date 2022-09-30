@@ -319,7 +319,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         if (equippedItem != null)
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
-            props.WeaponInaccuracy = GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
+            props.WeaponInaccuracy = 0;
+            //props.WeaponInaccuracy = GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
             if (equippedItem.IsRangedWeapon)
             {
                 if (!agent.HasMount)
