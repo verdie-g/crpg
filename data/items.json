@@ -5976,9 +5976,9 @@
     "name": "Heavy Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 13877,
+    "price": 7704,
     "weight": 2.7,
-    "requirement": 15,
+    "requirement": 11,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6012,9 +6012,9 @@
     "name": "Arbalest",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 18829,
+    "price": 10342,
     "weight": 3.0,
-    "requirement": 18,
+    "requirement": 13,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6047,9 +6047,9 @@
     "name": "Hickory Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 23988,
+    "price": 13075,
     "weight": 2.2,
-    "requirement": 21,
+    "requirement": 15,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6082,9 +6082,9 @@
     "name": "Bound Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 32967,
+    "price": 17809,
     "weight": 2.0,
-    "requirement": 25,
+    "requirement": 17,
     "weapons": [
       {
         "class": "Crossbow",

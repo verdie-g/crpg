@@ -240,7 +240,7 @@ internal class CrpgItemValueModel : ItemValueModel
 
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
-            scaler = 4094370f;
+            scaler = 5732118f;
         }
 
         return weapon.ThrustDamage
