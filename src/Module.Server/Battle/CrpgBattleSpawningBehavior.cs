@@ -114,11 +114,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.SetValue(0);
         MultiplayerOptions.OptionType.FriendlyFireDamageMeleeSelfPercent.SetValue(0);
         MultiplayerOptions.OptionType.FriendlyFireDamageRangedSelfPercent.SetValue(0);
-        for (int i = MultiplayerOptions.OptionType.RoundPreparationTimeLimit.GetIntValue() + seconds; i > 0; i--)
-        {
-            await Task.Delay(1000);
-        }
-
+        await Task.Delay(seconds * 1000);
         MultiplayerOptions.OptionType.FriendlyFireDamageMeleeFriendPercent.SetValue(meleeDamageOther);
         MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.SetValue(rangedDamageOther);
         MultiplayerOptions.OptionType.FriendlyFireDamageMeleeSelfPercent.SetValue(meleeDamageSelf);
