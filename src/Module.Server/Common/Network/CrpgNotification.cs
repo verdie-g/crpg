@@ -14,7 +14,7 @@ internal sealed class CrpgNotification : GameNetworkMessage
         End,
     }
 
-    private static readonly CompressionInfo.Integer Int32CompressionInfo = new(0, (int)NotificationType.End - 1, true);
+    private static readonly CompressionInfo.Integer NotificationCompressionInfo = new(0, (int)NotificationType.End - 1, true);
 
 
     public string Message { get; set; } = default!;
@@ -26,7 +26,7 @@ internal sealed class CrpgNotification : GameNetworkMessage
     protected override void OnWrite()
     {
         WriteStringToPacket(Message);
-        WriteIntToPacket((int)Type, Int32CompressionInfo);
+        WriteIntToPacket((int)Type, NotificationCompressionInfo);
         WriteBoolToPacket(IsMessageTextId);
         WriteStringToPacket(SoundEvent);
     }
@@ -35,7 +35,7 @@ internal sealed class CrpgNotification : GameNetworkMessage
     {
         bool bufferReadValid = true;
         Message = ReadStringFromPacket(ref bufferReadValid);
-        Type = (NotificationType)ReadIntFromPacket(Int32CompressionInfo, ref bufferReadValid);
+        Type = (NotificationType)ReadIntFromPacket(NotificationCompressionInfo, ref bufferReadValid);
         IsMessageTextId = ReadBoolFromPacket(ref bufferReadValid);
         SoundEvent = ReadStringFromPacket(ref bufferReadValid);
         return bufferReadValid;

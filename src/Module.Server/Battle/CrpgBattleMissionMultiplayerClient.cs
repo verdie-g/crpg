@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Common;
+﻿using System.Text;
+using Crpg.Module.Common;
 using Crpg.Module.Common.Models;
 using Crpg.Module.Common.Network;
 using NetworkMessages.FromServer;
@@ -356,33 +357,30 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
 
     private string AddLineBreaksToText(string text)
     {
-        if (text.Length < 100)
+        string[] words = text.Split(' ');
+        if (words.Length < 2)
         {
             return text;
         }
 
-        List<string> words = text.Split(' ').ToList();
-        if (words.Count == 1)
-        {
-            return text;
-        }
-
-        string result = string.Empty;
+        StringBuilder result = new();
         int currentLetterCount = 0;
+        string linebreak = "{newline}";
         foreach (string word in words)
         {
             currentLetterCount += word.Length + 1; // + 1 for spaces
-            result += word;
+            result.Append(word);
             if (currentLetterCount > 100)
             {
-                currentLetterCount = word.Length;
-                result += "{newline}";
+                currentLetterCount = 0;
+                result.Append(linebreak);
                 continue;
             }
 
-            result += " ";
+            result.Append(' ');
         }
 
-        return result;
+        result.Length -= " ".Length;
+        return result.ToString();
     }
 }
