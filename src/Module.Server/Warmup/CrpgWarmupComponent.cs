@@ -14,18 +14,19 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
 
     private readonly CrpgConstants _constants;
     private readonly bool _alwaysStartMatchAfterWarmup;
+    private readonly MultiplayerGameNotificationsComponent _notificationsComponent;
     private bool _overridenSpawningBehavior;
 
-    public CrpgWarmupComponent(CrpgConstants constants, bool alwaysStartMatchAfterWarmup = false)
+    public CrpgWarmupComponent(CrpgConstants constants, MultiplayerGameNotificationsComponent notificationsComponent, bool alwaysStartMatchAfterWarmup = false)
     {
         _constants = constants;
+        _notificationsComponent = notificationsComponent;
         _alwaysStartMatchAfterWarmup = alwaysStartMatchAfterWarmup;
     }
 
-    public override void AfterStart()
+    public override void OnBehaviorInitialize()
     {
-        base.AfterStart();
-
+        base.OnBehaviorInitialize();
         base.OnWarmupEnding += OnWarmupEnding;
     }
 
@@ -92,6 +93,6 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
 
     private new void OnWarmupEnding()
     {
-        Mission.GetMissionBehavior<MultiplayerGameNotificationsComponent>()?.WarmupEnding();
+        _notificationsComponent.WarmupEnding();
     }
 }

@@ -71,7 +71,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 #endif
         CrpgBattleMissionMultiplayerClient battleClient = new();
         MultiplayerGameNotificationsComponent notificationsComponent = new(); // used to send notifications (e.g. flag captured, round won) to peer
-        CrpgWarmupComponent warmupComponent = new(_constants);
+        CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent);
 
         MissionState.OpenNew(
             Name,
