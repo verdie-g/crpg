@@ -75,14 +75,8 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.SetValue(0);
         MultiplayerOptions.OptionType.FriendlyFireDamageMeleeSelfPercent.SetValue(0);
         MultiplayerOptions.OptionType.FriendlyFireDamageRangedSelfPercent.SetValue(0);
-        CrpgChatBox crpgChat = Game.Current.GetGameHandler<CrpgChatBox>();
         for (int i = MultiplayerOptions.OptionType.RoundPreparationTimeLimit.GetIntValue() + seconds; i > 0; i--)
         {
-            if (i <= seconds)
-            {
-                crpgChat.ServerSendServerMessageToEveryone(new Color(1f, 1f, 0), "Teamhit protection ends in " + i + "..");
-            }
-
             await Task.Delay(1000);
         }
 
@@ -90,7 +84,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.SetValue(rangedDamageOther);
         MultiplayerOptions.OptionType.FriendlyFireDamageMeleeSelfPercent.SetValue(meleeDamageSelf);
         MultiplayerOptions.OptionType.FriendlyFireDamageRangedSelfPercent.SetValue(rangedDamageSelf);
-        crpgChat.ServerSendServerMessageToEveryone(new Color(1f, 1f, 0), "Teamhit protection ended.");
+        Game.Current.GetGameHandler<CrpgChatBox>().ServerSendServerMessageToEveryone(new Color(1f, 1f, 0), "Teamhit protection ended.");
     }
 
     protected override bool IsRoundInProgress()
