@@ -91,7 +91,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             WeaponClass.ThrowingAxe => 1f,
             WeaponClass.ThrowingKnife => 1f,
             WeaponClass.Javelin => 1f,
-            _ => throw new NotImplementedException(),
+            _ => 1f,
         };
 
         if (weapon.IsRangedWeapon)
