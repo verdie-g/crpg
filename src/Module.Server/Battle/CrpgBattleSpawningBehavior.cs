@@ -103,6 +103,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
         SpawnPeerAgents();
     }
+
     private async void InitTeamhitProtection(int seconds)
     {
         int meleeDamageOther = MultiplayerOptions.OptionType.FriendlyFireDamageMeleeFriendPercent.GetIntValue();
