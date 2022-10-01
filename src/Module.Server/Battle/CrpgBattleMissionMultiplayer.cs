@@ -82,6 +82,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     {
         RoundController.OnPostRoundEnded -= OnPostRoundEnd;
         RoundController.OnPreRoundEnding -= OnPreRoundEnding;
+        WarmupComponent.OnWarmupEnding -= OnWarmupEnding;
         base.OnRemoveBehavior();
     }
 
