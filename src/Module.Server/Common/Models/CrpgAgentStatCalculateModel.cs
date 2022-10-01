@@ -369,7 +369,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponMaxUnsteadyAccuracyPenalty = 0.5f; // override to remove impact of wpf on this property
                     props.WeaponRotationalAccuracyPenaltyInRadians *= 1f;
                     props.ThrustOrRangedReadySpeedMultiplier *= 0.2625f * (float)Math.Pow(2, weaponSkill / 191); // Multiplying make Windup time slower a 0 wpf, faster  at 80 wpf
-                    props.WeaponInaccuracy /= 2;
                     props.ReloadSpeed *= 0.65f;
                 }
 
