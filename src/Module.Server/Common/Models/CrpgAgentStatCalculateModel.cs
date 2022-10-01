@@ -165,11 +165,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             return MathHelper.ApplyPolynomialFunction(powerThrow, _constants.DamageFactorForPowerThrowCoefs);
         }
 
-        if (weaponComponent.WeaponClass == WeaponClass.Bolt)
-        {
-            return 1 / (CrossbowMissileSpeedMultiplier * CrossbowMissileSpeedMultiplier);
-        }
-
         return 1;
     }
 
@@ -361,12 +356,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 else if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
                 {
                     props.WeaponMaxMovementAccuracyPenalty *= 1f;
-                    props.WeaponMaxUnsteadyAccuracyPenalty = 0.5f; // remove impact of wpf on this property
+                    props.WeaponMaxUnsteadyAccuracyPenalty = 0.5f; // override to remove impact of wpf on this property
                     props.WeaponRotationalAccuracyPenaltyInRadians *= 1f;
-                    props.ThrustOrRangedReadySpeedMultiplier *= 0.75f * (float)Math.Pow(2, weaponSkill / 191); // Windup time is now slower a 0 wpf, faster  at 80 wpf
+                    props.ThrustOrRangedReadySpeedMultiplier *= 0.2625f * (float)Math.Pow(2, weaponSkill / 191); // Multiplying make Windup time slower a 0 wpf, faster  at 80 wpf
                     props.WeaponInaccuracy /= 2;
                     props.ReloadSpeed *= 0.65f;
-                    props.MissileSpeedMultiplier *= CrossbowMissileSpeedMultiplier;
                 }
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
