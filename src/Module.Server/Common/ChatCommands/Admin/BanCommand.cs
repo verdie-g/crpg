@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using Crpg.Module.Common.GameHandler;
+using Crpg.Module.Common.Network;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
 
@@ -54,10 +55,18 @@ internal class BanCommand : AdminCommand
             return;
         }
 
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You were banned by {fromPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}. Reason: {reason}");
-        crpgChat.ServerSendMessageToPlayer(targetPeer, ColorFatal, $"You banned {targetPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}.");
+        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You banned {targetPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}.");
         crpgChat.ServerSendServerMessageToEveryone(ColorFatal, $"{targetPeer.UserName} was banned by {fromPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}. Reason: {reason}");
-        await Task.Delay(2500);
+
+        GameNetwork.BeginModuleEventAsServer(targetPeer);
+        GameNetwork.WriteMessage(new CrpgNotification
+        {
+            Type = CrpgNotification.NotificationType.Announcement,
+            Message = $"Banned by {fromPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}. Reason: {reason}",
+        });
+        GameNetwork.EndModuleEventAsServer();
+
+        await Task.Delay(250);
         if (!targetPeer.IsConnectionActive)
         {
             return;
