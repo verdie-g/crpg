@@ -16,7 +16,6 @@ internal sealed class CrpgNotification : GameNetworkMessage
 
     private static readonly CompressionInfo.Integer Int32CompressionInfo = new(0, (int)NotificationType.End - 1, true);
 
-
     public string Message { get; set; } = default!;
     public NotificationType Type { get; set; } = default!;
 
