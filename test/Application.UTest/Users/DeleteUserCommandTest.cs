@@ -46,7 +46,9 @@ public class DeleteUserCommandTest : TestBase
             UserId = user.Id,
         }, CancellationToken.None);
 
-        var dbUser = await AssertDb.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
+        var dbUser = await AssertDb.Users
+            .IgnoreQueryFilters()
+            .FirstOrDefaultAsync(u => u.Id == user.Id);
         Assert.IsNotNull(dbUser);
         Assert.IsNotNull(dbUser!.DeletedAt);
 
