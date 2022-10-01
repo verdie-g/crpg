@@ -65,28 +65,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         return false;
     }
 
-    private async void InitTeamhitProtection(int seconds)
-    {
-        int meleeDamageOther = MultiplayerOptions.OptionType.FriendlyFireDamageMeleeFriendPercent.GetIntValue();
-        int rangedDamageOther = MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.GetIntValue();
-        int meleeDamageSelf = MultiplayerOptions.OptionType.FriendlyFireDamageMeleeSelfPercent.GetIntValue();
-        int rangedDamageSelf = MultiplayerOptions.OptionType.FriendlyFireDamageRangedSelfPercent.GetIntValue();
-        MultiplayerOptions.OptionType.FriendlyFireDamageMeleeFriendPercent.SetValue(0);
-        MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.SetValue(0);
-        MultiplayerOptions.OptionType.FriendlyFireDamageMeleeSelfPercent.SetValue(0);
-        MultiplayerOptions.OptionType.FriendlyFireDamageRangedSelfPercent.SetValue(0);
-        for (int i = MultiplayerOptions.OptionType.RoundPreparationTimeLimit.GetIntValue() + seconds; i > 0; i--)
-        {
-            await Task.Delay(1000);
-        }
-
-        MultiplayerOptions.OptionType.FriendlyFireDamageMeleeFriendPercent.SetValue(meleeDamageOther);
-        MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.SetValue(rangedDamageOther);
-        MultiplayerOptions.OptionType.FriendlyFireDamageMeleeSelfPercent.SetValue(meleeDamageSelf);
-        MultiplayerOptions.OptionType.FriendlyFireDamageRangedSelfPercent.SetValue(rangedDamageSelf);
-        Game.Current.GetGameHandler<CrpgChatBox>().ServerSendServerMessageToEveryone(new Color(1f, 1f, 0), "Teamhit protection ended.");
-    }
-
     protected override bool IsRoundInProgress()
     {
         return _roundController?.IsRoundInProgress ?? false;
@@ -111,6 +89,27 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         }
 
         SpawnPeerAgents();
+    }
+    private async void InitTeamhitProtection(int seconds)
+    {
+        int meleeDamageOther = MultiplayerOptions.OptionType.FriendlyFireDamageMeleeFriendPercent.GetIntValue();
+        int rangedDamageOther = MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.GetIntValue();
+        int meleeDamageSelf = MultiplayerOptions.OptionType.FriendlyFireDamageMeleeSelfPercent.GetIntValue();
+        int rangedDamageSelf = MultiplayerOptions.OptionType.FriendlyFireDamageRangedSelfPercent.GetIntValue();
+        MultiplayerOptions.OptionType.FriendlyFireDamageMeleeFriendPercent.SetValue(0);
+        MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.SetValue(0);
+        MultiplayerOptions.OptionType.FriendlyFireDamageMeleeSelfPercent.SetValue(0);
+        MultiplayerOptions.OptionType.FriendlyFireDamageRangedSelfPercent.SetValue(0);
+        for (int i = MultiplayerOptions.OptionType.RoundPreparationTimeLimit.GetIntValue() + seconds; i > 0; i--)
+        {
+            await Task.Delay(1000);
+        }
+
+        MultiplayerOptions.OptionType.FriendlyFireDamageMeleeFriendPercent.SetValue(meleeDamageOther);
+        MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.SetValue(rangedDamageOther);
+        MultiplayerOptions.OptionType.FriendlyFireDamageMeleeSelfPercent.SetValue(meleeDamageSelf);
+        MultiplayerOptions.OptionType.FriendlyFireDamageRangedSelfPercent.SetValue(rangedDamageSelf);
+        Game.Current.GetGameHandler<CrpgChatBox>().ServerSendServerMessageToEveryone(new Color(1f, 1f, 0), "Teamhit protection ended.");
     }
 
     private void ResetSpawnTeams()
