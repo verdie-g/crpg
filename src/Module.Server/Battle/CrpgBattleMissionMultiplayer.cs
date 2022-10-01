@@ -65,7 +65,6 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         base.AfterStart();
         RoundController.OnPreRoundEnding += OnPreRoundEnding;
         RoundController.OnPostRoundEnded += OnPostRoundEnd;
-        WarmupComponent.OnWarmupEnding += OnWarmupEnding;
 
         AddTeams();
     }
@@ -579,11 +578,6 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             Debug.Print("Couldn't update users: " + e);
             SendErrorToPeers(crpgRepresentativeByUserId);
         }
-    }
-
-    private void OnWarmupEnding()
-    {
-        NotificationsComponent.WarmupEnding();
     }
 
     private int ComputeTicks()

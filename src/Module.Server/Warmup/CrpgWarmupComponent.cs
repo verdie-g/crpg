@@ -22,6 +22,13 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
         _alwaysStartMatchAfterWarmup = alwaysStartMatchAfterWarmup;
     }
 
+    public override void AfterStart()
+    {
+        base.AfterStart();
+
+        base.OnWarmupEnding += OnWarmupEnding;
+    }
+
     public override void OnMissionTick(float dt)
     {
         base.OnMissionTick(dt);
@@ -68,6 +75,7 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
 
     public override void OnRemoveBehavior()
     {
+        base.OnWarmupEnding -= OnWarmupEnding;
         base.OnRemoveBehavior();
         if (!GameNetwork.IsServer)
         {
@@ -80,5 +88,10 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
         MultiplayerRoundController multiplayerRoundController = Mission.GetMissionBehavior<MultiplayerRoundController>();
         spawnComponent.SetNewSpawnFrameBehavior(new FlagDominationSpawnFrameBehavior());
         spawnComponent.SetNewSpawningBehavior(new CrpgBattleSpawningBehavior(_constants, multiplayerRoundController));
+    }
+
+    private new void OnWarmupEnding()
+    {
+        Mission.GetMissionBehavior<MultiplayerGameNotificationsComponent>()?.WarmupEnding();
     }
 }
