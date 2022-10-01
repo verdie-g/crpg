@@ -361,9 +361,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 else if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
                 {
                     props.WeaponMaxMovementAccuracyPenalty *= 1f;
-                    props.WeaponMaxUnsteadyAccuracyPenalty = 0.5f;
+                    props.WeaponMaxUnsteadyAccuracyPenalty = 0.5f; // remove impact of wpf on this property
                     props.WeaponRotationalAccuracyPenaltyInRadians *= 1f;
-                    props.ThrustOrRangedReadySpeedMultiplier *= 0.75f * (float)Math.Pow(2, weaponSkill / 191);
+                    props.ThrustOrRangedReadySpeedMultiplier *= 0.75f * (float)Math.Pow(2, weaponSkill / 191); // Windup time is now slower a 0 wpf, faster  at 80 wpf
                     props.WeaponInaccuracy /= 2;
                     props.ReloadSpeed *= 0.65f;
                     props.MissileSpeedMultiplier *= CrossbowMissileSpeedMultiplier;
