@@ -69,9 +69,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     }
 
     public override float GetWeaponInaccuracy(
-    Agent agent,
-    WeaponComponentData weapon,
-    int weaponSkill)
+        Agent agent,
+        WeaponComponentData weapon,
+        int weaponSkill)
     {
         float inaccuracy = 0.0f;
 
