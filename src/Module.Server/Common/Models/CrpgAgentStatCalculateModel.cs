@@ -82,7 +82,17 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
         const float a = valueAtAccuracyPointA - parabolOffset; // Parameter for the polynomial, do not change.
 
-        float skillComponentMultiplier = weapon.WeaponClass == WeaponClass.Bow ? 0.4f : 0.2f;
+        float skillComponentMultiplier = 0.2f;
+        float weaponClassMultiplier = weapon.WeaponClass switch
+        {
+            WeaponClass.Bow => 2f,
+            WeaponClass.Crossbow => 0.5f,
+            WeaponClass.Stone => 1f,
+            WeaponClass.ThrowingAxe => 1f,
+            WeaponClass.ThrowingKnife => 1f,
+            WeaponClass.Javelin => 1f,
+            _ => throw new NotImplementedException(),
+        };
 
         if (weapon.IsRangedWeapon)
         {
@@ -93,6 +103,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 + parabolOffset;
             float skillComponent = skillComponentMultiplier * (float)Math.Pow(10.0, (200.0 - weaponSkill) / 200.0);
             inaccuracy = (weaponComponent * skillComponent + (100 - weapon.Accuracy)) * 0.001f;
+            inaccuracy *= weaponClassMultiplier;
         }
         else if (weapon.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
         {
@@ -358,7 +369,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponMaxUnsteadyAccuracyPenalty = 0.5f; // override to remove impact of wpf on this property
                     props.WeaponRotationalAccuracyPenaltyInRadians *= 1f;
                     props.ThrustOrRangedReadySpeedMultiplier *= 0.2625f * (float)Math.Pow(2, weaponSkill / 191); // Multiplying make Windup time slower a 0 wpf, faster  at 80 wpf
-                    props.WeaponInaccuracy /= 2;
                     props.ReloadSpeed *= 0.65f;
                 }
 
