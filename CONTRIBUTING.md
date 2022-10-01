@@ -50,7 +50,7 @@ The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the foll
 
 ### Web API (src/WebApi)
 
-- Download [.NET 5 SDK](https://dotnet.microsoft.com/download)
+- Download [.NET 6 SDK](https://dotnet.microsoft.com/download)
 - Download your favorite IDE: [Visual Studio](https://visualstudio.microsoft.com/vs), [Visual Studio Code](https://code.visualstudio.com), [Rider](https://www.jetbrains.com/rider)...
 - Open the solution file Crpg.sln
 - Set the `IdentityServer:Providers:Steam:ApplicationKey` in
