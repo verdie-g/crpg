@@ -26,15 +26,18 @@ internal class AnnouncementCommand : AdminCommand
     {
         string message = (string)arguments[0];
 
-        foreach (NetworkCommunicator targetPeer in GameNetwork.NetworkPeers.Where((NetworkCommunicator x) => !x.IsServerPeer && x.IsSynchronized))
+        foreach (NetworkCommunicator targetPeer in GameNetwork.NetworkPeers)
         {
-            GameNetwork.BeginModuleEventAsServer(targetPeer);
-            GameNetwork.WriteMessage(new CrpgNotification
+            if (!targetPeer.IsServerPeer && targetPeer.IsSynchronized)
             {
-                Type = CrpgNotification.NotificationType.Announcement,
-                Message = message,
-            });
-            GameNetwork.EndModuleEventAsServer();
+                GameNetwork.BeginModuleEventAsServer(targetPeer);
+                GameNetwork.WriteMessage(new CrpgNotification
+                {
+                    Type = CrpgNotification.NotificationType.Announcement,
+                    Message = message,
+                });
+                GameNetwork.EndModuleEventAsServer();
+            }
         }
     }
 }
