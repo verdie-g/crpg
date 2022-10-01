@@ -143,6 +143,12 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
             Character? newCharacter = null;
             if (user.Characters.Count == 0)
             {
+                if (await HasRecentlyCreatedACharacter(user.Id))
+                {
+                    Logger.LogInformation("User '{0}' tried to create two characters in a short time window", user.Id);
+                    return new(CommonErrors.CharacterRecentlyCreated(user.Id));
+                }
+
                 var itemSet = await GiveUserRandomItemSet(user);
                 newCharacter = CreateCharacter(req.UserName, itemSet);
                 user.Characters.Add(newCharacter);
@@ -182,6 +188,21 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
 
             _userService.SetDefaultValuesForUser(user);
             return user;
+        }
+
+        /// <summary>
+        /// To protect against players creating many characters to sell the peasant items, we check that no other
+        /// character was created in the last hour.
+        /// </summary>
+        private Task<bool> HasRecentlyCreatedACharacter(int userId)
+        {
+            if (userId == default)
+            {
+                return Task.FromResult(false);
+            }
+
+            return _db.Characters.AnyAsync(c =>
+                c.UserId == userId && _dateTime.UtcNow < c.CreatedAt + TimeSpan.FromHours(1));
         }
 
         private Character CreateCharacter(string name, IList<EquippedItem> equippedItems)

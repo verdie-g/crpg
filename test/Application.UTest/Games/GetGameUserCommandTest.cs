@@ -1,4 +1,5 @@
 ﻿using Crpg.Application.Common.Files;
+using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Application.Games.Commands;
 using Crpg.Domain.Entities.Characters;
@@ -74,7 +75,16 @@ public class GetGameUserCommandTest : TestBase
         Mock<IUserService> userServiceMock = new();
         Mock<ICharacterService> characterServiceMock = new();
 
-        User user = new() { Platform = Platform.Steam, PlatformUserId = "1", Gold = 1000 };
+        User user = new()
+        {
+            Platform = Platform.Steam,
+            PlatformUserId = "1",
+            Gold = 1000,
+            Characters =
+            {
+                new Character { CreatedAt = DateTime.UtcNow.AddHours(-2) },
+            },
+        };
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
@@ -89,6 +99,7 @@ public class GetGameUserCommandTest : TestBase
         }, CancellationToken.None);
 
         var gameUser = result.Data!;
+        Assert.IsNull(result.Errors);
         Assert.AreEqual(user.Id, gameUser.Id);
         Assert.AreEqual(user.Platform, gameUser.Platform);
         Assert.AreEqual(user.PlatformUserId, gameUser.PlatformUserId);
@@ -108,7 +119,40 @@ public class GetGameUserCommandTest : TestBase
 
         Assert.IsNotNull(dbUser);
         Assert.IsNotEmpty(dbUser!.Characters);
-        Assert.IsNotEmpty(dbUser.Characters[0].EquippedItems);
+        Assert.IsNotEmpty(dbUser.Characters[1].EquippedItems);
+    }
+
+    [Test]
+    public async Task ShouldNotCreateCharacterIfOneWasCreatedRecently()
+    {
+        Mock<IUserService> userServiceMock = new();
+        Mock<ICharacterService> characterServiceMock = new();
+
+        User user = new()
+        {
+            Platform = Platform.Steam,
+            PlatformUserId = "1",
+            Gold = 1000,
+            Characters =
+            {
+                new Character { CreatedAt = DateTime.UtcNow.AddMinutes(-5) },
+            },
+        };
+        ArrangeDb.Users.Add(user);
+        await ArrangeDb.SaveChangesAsync();
+
+        GetGameUserCommand.Handler handler = new(ActDb, Mapper, new MachineDateTime(),
+            new ThreadSafeRandom(), userServiceMock.Object, characterServiceMock.Object);
+
+        var res = await handler.Handle(new GetGameUserCommand
+        {
+            Platform = user.Platform,
+            PlatformUserId = user.PlatformUserId,
+            UserName = "a",
+        }, CancellationToken.None);
+
+        Assert.IsNotNull(res.Errors);
+        Assert.AreEqual(ErrorCode.CharacterRecentlyCreated, res.Errors![0].Code);
     }
 
     [Test]
