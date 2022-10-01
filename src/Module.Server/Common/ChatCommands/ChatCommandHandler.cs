@@ -15,6 +15,7 @@ internal class ChatCommandHandler
         new KickCommand(),
         new KillCommand(),
         new TeleportCommand(),
+        new AnnouncementCommand(),
         // new MuteCommand(), // Both disabled until missing API endpoints were implemented.
         // new BanCommand(),
     };
