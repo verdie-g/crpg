@@ -365,11 +365,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 }
                 else if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
                 {
-                    props.WeaponMaxMovementAccuracyPenalty *= 1f;
-                    props.WeaponMaxUnsteadyAccuracyPenalty = 0.5f; // override to remove impact of wpf on this property
-                    props.WeaponRotationalAccuracyPenaltyInRadians *= 1f;
-                    props.ThrustOrRangedReadySpeedMultiplier *= 0.2625f * (float)Math.Pow(2, weaponSkill / 191f); // Multiplying make windup time slower a 0 wpf, faster at 80 wpf
-                    props.ReloadSpeed *= 0.65f;
+                    props.WeaponInaccuracy /= ImpactOfStrReqOnCrossbows(agent, 0.2f);
+                    props.WeaponMaxMovementAccuracyPenalty /= ImpactOfStrReqOnCrossbows(agent, 0.2f);
+                    props.WeaponMaxUnsteadyAccuracyPenalty = 0.5f / ImpactOfStrReqOnCrossbows(agent, 0.1f); // override to remove impact of wpf on this property
+                    props.WeaponRotationalAccuracyPenaltyInRadians /= ImpactOfStrReqOnCrossbows(agent, 0.3f);
+                    props.ThrustOrRangedReadySpeedMultiplier *= 0.2625f * (float)Math.Pow(2, weaponSkill / 191f) * ImpactOfStrReqOnCrossbows(agent, 0.1f); // Multiplying make windup time slower a 0 wpf, faster at 80 wpf
+                    props.ReloadSpeed *= 0.65f * ImpactOfStrReqOnCrossbows(agent, 0.3f);
                 }
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
@@ -445,5 +446,15 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         float distanceToStrRequirement = Math.Max(setRequirement - strengthAttribute, 0);
         float impactOfStrReqOnSpeedFactor = 0.2f; // tweak here
         return 1 / (1 + distanceToStrRequirement * impactOfStrReqOnSpeedFactor);
+    }
+
+    private float ImpactOfStrReqOnCrossbows(Agent agent, float impact)
+    {
+        EquipmentIndex wieldedCrossbowIndex = agent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
+        ItemObject equippedItem = agent.SpawnEquipment[wieldedCrossbowIndex].Item;
+        int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
+        float setRequirement = CrpgItemRequirementModel.ComputeItemRequirement(equippedItem);
+        float distanceToStrRequirement = Math.Max(setRequirement - strengthAttribute, 0);
+        return 1 / (1 + distanceToStrRequirement * impact);
     }
 }
