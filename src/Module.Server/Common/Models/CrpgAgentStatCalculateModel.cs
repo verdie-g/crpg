@@ -12,7 +12,6 @@ namespace Crpg.Module.Common.Models;
 /// </summary>
 internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 {
-    private const float CrossbowMissileSpeedMultiplier = 1.4f;
     // Hack to workaround not being able to spawn custom character. In the client this property is set so the
     // StatCalculateModel has access to the cRPG user.
     public static CrpgUser? MyUser { get; set; }
