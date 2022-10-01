@@ -344,7 +344,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         // Red announcement like "A new update is available. Please update your client" (Lobbyscreen)
         else if (notification.Type == CrpgNotification.NotificationType.Announcement)
         {
-            InformationManager.AddSystemNotification(AddLineBreaksToText(message));
+            InformationManager.AddSystemNotification(message);
         }
 
         // Plays a sound event
