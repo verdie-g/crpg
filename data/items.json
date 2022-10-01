@@ -24090,23 +24090,6 @@
     "weapons": []
   },
   {
-    "id": "crpg_war_horse",
-    "name": "War Horse",
-    "culture": "Neutral",
-    "type": "Mount",
-    "price": 8063,
-    "weight": 500.0,
-    "requirement": 0,
-    "mount": {
-      "bodyLength": 105,
-      "chargeDamage": 8,
-      "maneuver": 50,
-      "speed": 30,
-      "hitPoints": 150
-    },
-    "weapons": []
-  },
-  {
     "id": "crpg_war_razor_2hsword_t4",
     "name": "War Razor",
     "culture": "Neutral",

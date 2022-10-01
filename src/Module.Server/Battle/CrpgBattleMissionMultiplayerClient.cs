@@ -300,7 +300,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
                 ? (new Color(65, 105, 225), "Gained")
                 : (new Color(0.74f, 0.28f, 0.01f), "Lost");
             InformationManager.DisplayMessage(
-                new InformationMessage($"{verb} {reward.Gold} gold (reward: {gain}, upkeep: {message.RepairCost}).",
+                new InformationMessage($"{verb} {gain} gold (reward: {reward.Gold}, upkeep: {message.RepairCost}).",
                     color));
         }
 
