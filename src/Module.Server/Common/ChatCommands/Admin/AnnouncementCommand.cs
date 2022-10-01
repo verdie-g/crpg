@@ -24,7 +24,7 @@ internal class AnnouncementCommand : AdminCommand
 
     private void ExecuteAnnouncement(NetworkCommunicator fromPeer, string cmd, object[] arguments)
     {
-        string message = $"{fromPeer.UserName}: {(string)arguments[0]}";
+        string message = (string)arguments[0];
 
         foreach (NetworkCommunicator targetPeer in GameNetwork.NetworkPeers.Where((NetworkCommunicator x) => !x.IsServerPeer && x.IsSynchronized))
         {
