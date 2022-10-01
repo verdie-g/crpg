@@ -97,14 +97,14 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
             if (_roundController != null)
             {
-                InitTeamhitProtection(5);
+                _ = InitTeamhitProtection(5);
             }
         }
 
         SpawnPeerAgents();
     }
 
-    private async void InitTeamhitProtection(int seconds)
+    private async Task InitTeamhitProtection(int seconds)
     {
         int meleeDamageOther = MultiplayerOptions.OptionType.FriendlyFireDamageMeleeFriendPercent.GetIntValue();
         int rangedDamageOther = MultiplayerOptions.OptionType.FriendlyFireDamageRangedFriendPercent.GetIntValue();
