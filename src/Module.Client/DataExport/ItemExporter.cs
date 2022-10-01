@@ -106,6 +106,9 @@ internal class ItemExporter : IDataExporter
         "crossbow_a",
         "crossbow_e",
         "crossbow_g",
+
+        // Makes some play crash.
+        "war_horse",
     };
 
     public async Task Export(string gitRepoPath)

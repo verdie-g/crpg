@@ -22,7 +22,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     private const float FlagAttackRange = 6f;
     private const float FlagAttackRangeSquared = FlagAttackRange * FlagAttackRange;
     private const float MoraleGainOnTick = 0.002f;
-    private const float MoraleGainMultiplierLastFlag = 3f;
+    private const float MoraleGainMultiplierLastFlag = 2f;
 
     private readonly CrpgBattleMissionMultiplayerClient _battleClient;
     private readonly ICrpgClient _crpgClient;
@@ -154,7 +154,8 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 
         bool defenderTeamAlive = Mission.DefenderTeam.ActiveAgents.Count > 0;
         bool attackerTeamAlive = Mission.AttackerTeam.ActiveAgents.Count > 0;
-        return !defenderTeamAlive || !attackerTeamAlive;
+        CrpgBattleSpawningBehavior spawningBehavior = (CrpgBattleSpawningBehavior)SpawnComponent.SpawningBehavior;
+        return (!defenderTeamAlive || !attackerTeamAlive) && spawningBehavior.SpawnDelayEnded();
     }
 
     public override void OnAgentBuild(Agent agent, Banner banner)
