@@ -478,10 +478,15 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
     private void CrossbowReqMessage(int distanceToStrRequirement, ItemObject equippedItem, Agent agent)
     {
-        bool displayCrossbowReqMessage = distanceToStrRequirement > 0 && equippedItem.StringId != _lastEquippedItemId && agent.IsMine;
+        if (!agent.IsMine)
+        {
+            return;
+        }
+
+        bool displayCrossbowReqMessage = distanceToStrRequirement > 0 && equippedItem.StringId != _lastEquippedItemId;
+        _lastEquippedItemId = equippedItem.StringId;
         if (displayCrossbowReqMessage)
         {
-            _lastEquippedItemId = equippedItem.StringId;
             float crossbowDistanceToStrRequirementRatio = Math.Min(distanceToStrRequirement / 15f, 1f);
             Color messageColor = Color.Lerp(new Color(1f, 1f, 1f), new Color(1f, 0, 0), crossbowDistanceToStrRequirementRatio);
             string requirementMessage = "You need " + Math.Round(distanceToStrRequirement + 0.5).ToString(CultureInfo.InvariantCulture) + " more to properly handle this crossbow";
