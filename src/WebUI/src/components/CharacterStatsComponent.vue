@@ -42,7 +42,7 @@
           class="experience-progress-bar"
           type="is-info"
           size="is-medium"
-          :max="nextLevelExperience"
+          :max="relativeCurrentNextLevelExperience"
           :value="relativeCurrentLevelExperience"
           show-value
           format="raw"
@@ -618,6 +618,10 @@ export default class CharacterCharacteristicsComponent extends Vue {
 
   get relativeCurrentLevelExperience(): number {
     return this.character.experience - getExperienceForLevel(this.character.level);
+  }
+
+  get relativeCurrentNextLevelExperience(): number {
+    return getExperienceForLevel(this.character.level + 1) - getExperienceForLevel(this.character.level);
   }
 
   get nextLevelExperience(): number {
