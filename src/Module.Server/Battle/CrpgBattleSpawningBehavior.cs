@@ -214,6 +214,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                     GameNetwork.BeginModuleEventAsServer(networkPeer);
                     GameNetwork.WriteMessage(new CrpgNotification
                     {
+                        Type = CrpgNotification.NotificationType.Notification,
                         Message = $"Cavalry will spawn in {CavalrySpawnDelay} seconds!",
                         IsMessageTextId = false,
                         SoundEvent = string.Empty,
