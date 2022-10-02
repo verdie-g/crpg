@@ -478,7 +478,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
     private void CrossbowReqMessage(int distanceToStrRequirement, ItemObject equippedItem, Agent agent)
     {
-        bool displayCrossbowReqMessage = distanceToStrRequirement > 0 & equippedItem.StringId != _lastEquippedItemId & agent.IsMine;
+        bool displayCrossbowReqMessage = distanceToStrRequirement > 0 && equippedItem.StringId != _lastEquippedItemId && agent.IsMine;
         _lastEquippedItemId = equippedItem.StringId;
         if (displayCrossbowReqMessage)
         {
