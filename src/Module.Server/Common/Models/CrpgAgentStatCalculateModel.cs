@@ -374,7 +374,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.ThrustOrRangedReadySpeedMultiplier *= 0.2625f * (float)Math.Pow(2, weaponSkill / 191f) * ImpactOfStrReqOnCrossbows(agent, 0.3f, primaryItem); // Multiplying make windup time slower a 0 wpf, faster at 80 wpf
                     props.ReloadSpeed *= 0.65f * ImpactOfStrReqOnCrossbows(agent, 0.15f, primaryItem);
                     props.ReloadMovementPenaltyFactor = 1f / ImpactOfStrReqOnCrossbows(agent, 1f, primaryItem);
-                    CrossbowReqMessage((int)CrossbowDistanceToStrRequirement(agent, primaryItem), primaryItem!);
                 }
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
@@ -473,18 +472,5 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
         float setRequirement = CrpgItemRequirementModel.ComputeItemRequirement(equippedItem);
         return Math.Max(setRequirement - strengthAttribute, 0);
-    }
-
-    private void CrossbowReqMessage(int distanceToStrRequirement, ItemObject equippedItem)
-    {
-        bool displayCrossbowReqMessage = distanceToStrRequirement > 0 & equippedItem.StringId != _lastEquippedItemId;
-        _lastEquippedItemId = equippedItem.StringId;
-        if (displayCrossbowReqMessage)
-        {
-            float crossbowDistanceToStrRequirementRatio = Math.Min(distanceToStrRequirement / 15f, 1f);
-            Color messageColor = Color.Lerp(new Color(1f, 1f, 1f), new Color(1f, 0, 0), crossbowDistanceToStrRequirementRatio);
-            string requirementMessage = "You need " + Math.Round(distanceToStrRequirement + 0.5).ToString(CultureInfo.InvariantCulture) + " more to properly handle this crossbow";
-            InformationManager.DisplayMessage(new InformationMessage(requirementMessage, messageColor));
-        }
     }
 }
