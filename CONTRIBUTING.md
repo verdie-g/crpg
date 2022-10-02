@@ -1,5 +1,8 @@
 # How to contribute to cRPG
 
+Contributors should follow [Google Engineering Practices](https://google.github.io/eng-practices)! For example too large
+PRs or PRs with no context might get ignored.
+
 ## Report a bug
 
 - **Do not open GitHub issue if the bug is a security vulnerability in cRPG**, and instead follow
