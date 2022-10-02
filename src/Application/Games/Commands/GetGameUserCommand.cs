@@ -201,7 +201,9 @@ public record GetGameUserCommand : IMediatorRequest<GameUserViewModel>
                 return Task.FromResult(false);
             }
 
-            return _db.Characters.AnyAsync(c =>
+            return _db.Characters
+                .IgnoreQueryFilters()
+                .AnyAsync(c =>
                 c.UserId == userId && _dateTime.UtcNow < c.CreatedAt + TimeSpan.FromHours(1));
         }
 

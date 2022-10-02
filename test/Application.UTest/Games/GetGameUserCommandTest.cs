@@ -122,8 +122,8 @@ public class GetGameUserCommandTest : TestBase
         Assert.IsNotEmpty(dbUser.Characters[1].EquippedItems);
     }
 
-    [Test]
-    public async Task ShouldNotCreateCharacterIfOneWasCreatedRecently()
+    [Theory]
+    public async Task ShouldNotCreateCharacterIfOneWasCreatedRecently(bool characterDeleted)
     {
         Mock<IUserService> userServiceMock = new();
         Mock<ICharacterService> characterServiceMock = new();
@@ -135,7 +135,11 @@ public class GetGameUserCommandTest : TestBase
             Gold = 1000,
             Characters =
             {
-                new Character { CreatedAt = DateTime.UtcNow.AddMinutes(-5) },
+                new Character
+                {
+                    CreatedAt = DateTime.UtcNow.AddMinutes(-5),
+                    DeletedAt = characterDeleted ? DateTime.UtcNow.AddMinutes(-3) : null,
+                },
             },
         };
         ArrangeDb.Users.Add(user);
