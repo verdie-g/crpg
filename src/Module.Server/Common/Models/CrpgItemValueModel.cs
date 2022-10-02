@@ -29,8 +29,8 @@ internal class CrpgItemValueModel : ItemValueModel
         int desiredBodyArmorMaxPrice = 31632;
         int desiredHandArmorMaxPrice = 6000;
         int desiredLegArmorMaxPrice = 4662;
-        int desiredHorseHarnessMaxPrice = 20000;
-        int desiredHorseMaxPrice = 14000;
+        int desiredHorseHarnessMaxPrice = 26000;
+        int desiredHorseMaxPrice = 18000;
         int desiredShieldMaxPrice = 9235;
         int desiredBowMaxPrice = 12264;
         int desiredCrossbowMaxPrice = 18000;
@@ -89,19 +89,23 @@ internal class CrpgItemValueModel : ItemValueModel
         float armorPower = 1.2f * armorComponent.HeadArmor
             + 1.0f * armorComponent.BodyArmor
             + 1.0f * armorComponent.ArmArmor
-            + 1.0f * armorComponent.LegArmor;
+            + 0.8f * armorComponent.LegArmor;
         float bestArmorPower = armorComponent.Item.ItemType switch
         {
             ItemObject.ItemTypeEnum.HeadArmor => 54 * 1.2f,
             ItemObject.ItemTypeEnum.Cape => 34f,
-            ItemObject.ItemTypeEnum.BodyArmor => 94f,
+            ItemObject.ItemTypeEnum.BodyArmor => 48.2288f,
             ItemObject.ItemTypeEnum.HandArmor => 25f,
             ItemObject.ItemTypeEnum.LegArmor => 26f,
             ItemObject.ItemTypeEnum.HorseHarness => 20f,
             _ => throw new ArgumentOutOfRangeException(),
         };
-        float armorTier = 10 * armorPower / bestArmorPower;
-        return armorTier;
+
+        return armorComponent.Item.ItemType switch
+        {
+            ItemObject.ItemTypeEnum.HorseHarness => 10 * armorPower / bestArmorPower,
+            _ => 10 * armorPower / (bestArmorPower * (float)Math.Pow(armorComponent.Item.Weight, 0.2f)),
+        };
     }
 
     private float CalculateHorseTier(HorseComponent horseComponent)
