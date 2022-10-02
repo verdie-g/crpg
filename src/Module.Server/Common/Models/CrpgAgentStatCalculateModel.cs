@@ -459,7 +459,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             return 1;
         }
 
-        float distanceToStrRequirement = CrossbowDistanceToStrRequirement( agent, equippedItem);
+        float distanceToStrRequirement = CrossbowDistanceToStrRequirement(agent, equippedItem);
         return 1 / (1 + distanceToStrRequirement * impact);
     }
 
@@ -486,7 +486,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             string requirementMessage = "You need " + Math.Round(distancetoStrRequirement + 0.5).ToString() + " more to properly handle this crossbow";
             InformationManager.DisplayMessage(new InformationMessage(requirementMessage, messageColor));
             lastequippedItem = equippedItem.StringId;
-
         }
     }
 }
