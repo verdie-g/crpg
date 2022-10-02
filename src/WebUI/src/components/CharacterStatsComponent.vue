@@ -43,8 +43,8 @@
           type="is-info"
           size="is-medium"
           :max="nextLevelExperience"
-          :value="this.character.experience"
-          show-value="true"
+          :value="relativeCurrentLevelExperience"
+          show-value
           format="raw"
         >
           {{ this.character.experience.toLocaleString('en-US') }} /
@@ -614,6 +614,10 @@ export default class CharacterCharacteristicsComponent extends Vue {
       this.getInputProps('skills', 'ironFlesh').value,
       this.getInputProps('attributes', 'strength').value
     );
+  }
+
+  get relativeCurrentLevelExperience(): number {
+    return this.character.experience - getExperienceForLevel(this.character.level);
   }
 
   get nextLevelExperience(): number {
