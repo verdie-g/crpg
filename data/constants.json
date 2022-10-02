@@ -24,7 +24,7 @@
   "defaultSkillPoints": 2,
   "skillPointsPerLevel": 1,
   "healthPointsForStrengthCoefs": [1.0, 0.0],
-  "healthPointsForIronFleshCoefs": [2.0, 0.0],
+  "healthPointsForIronFleshCoefs": [3.0, 0.0],
   "damageFactorForPowerStrikeCoefs": [0.08, 1.0],
   "damageFactorForPowerDrawCoefs": [0.14, 1.0],
   "damageFactorForPowerThrowCoefs": [0.10, 1.0],
