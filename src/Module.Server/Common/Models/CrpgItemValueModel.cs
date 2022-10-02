@@ -92,11 +92,11 @@ internal class CrpgItemValueModel : ItemValueModel
             + 0.8f * armorComponent.LegArmor;
         float bestArmorPower = armorComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.HeadArmor => 54 * 1.2f,
-            ItemObject.ItemTypeEnum.Cape => 34f,
+            ItemObject.ItemTypeEnum.HeadArmor => 50.7206461f,
+            ItemObject.ItemTypeEnum.Cape => 26.6184727f,
             ItemObject.ItemTypeEnum.BodyArmor => 48.2288f,
-            ItemObject.ItemTypeEnum.HandArmor => 25f,
-            ItemObject.ItemTypeEnum.LegArmor => 26f,
+            ItemObject.ItemTypeEnum.HandArmor => 23.0526978f,
+            ItemObject.ItemTypeEnum.LegArmor => 17.1818002f,
             ItemObject.ItemTypeEnum.HorseHarness => 20f,
             _ => throw new ArgumentOutOfRangeException(),
         };
