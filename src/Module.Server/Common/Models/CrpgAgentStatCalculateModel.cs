@@ -412,6 +412,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.005f;
                 props.WeaponUnsteadyEndTime = 3.0f + weaponSkill * 0.01f;
             }
+
             CrossbowReqMessage((int)CrossbowDistanceToStrRequirement(agent, primaryItem), primaryItem!, agent);
         }
 
