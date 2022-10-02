@@ -12,7 +12,7 @@ namespace Crpg.Module.Common.Models;
 /// </summary>
 internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 {
-    private string lastequippedItemName = "lol"; // hack to not make informationmanager spam messages everytime UpdateHumanAgentStats is called
+    private string lastEquippedItemName = string.Empty;
 
     // Hack to workaround not being able to spawn custom character. In the client this property is set so the
     // StatCalculateModel has access to the cRPG user.
@@ -374,7 +374,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.ThrustOrRangedReadySpeedMultiplier *= 0.2625f * (float)Math.Pow(2, weaponSkill / 191f) * ImpactOfStrReqOnCrossbows(agent, 0.3f, primaryItem!); // Multiplying make windup time slower a 0 wpf, faster at 80 wpf
                     props.ReloadSpeed *= 0.65f * ImpactOfStrReqOnCrossbows(agent, 0.15f, primaryItem!);
                     props.ReloadMovementPenaltyFactor = 1f / ImpactOfStrReqOnCrossbows(agent, 1f, primaryItem!);
-                    CrossbowReqMessage((int)CrossbowDistanceToStrRequirement(agent, primaryItem!), primaryItem!, ref lastequippedItemName);
+                    CrossbowReqMessage((int)CrossbowDistanceToStrRequirement(agent, primaryItem!), primaryItem!, ref lastEquippedItemName);
                 }
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
@@ -475,17 +475,16 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         return Math.Max(setRequirement - strengthAttribute, 0);
     }
 
-    private void CrossbowReqMessage(int distancetoStrRequirement, ItemObject equippedItem, ref string lastequippedItem)
+    private void CrossbowReqMessage(int distancetoStrRequirement, ItemObject equippedItem, ref string lastEquippedItem)
     {
-        bool displayCrossbowReqMessage = distancetoStrRequirement > 0 & equippedItem.StringId != lastequippedItem;
-
+        bool displayCrossbowReqMessage = distancetoStrRequirement > 0 & equippedItem.StringId != lastEquippedItem;
+        lastEquippedItem = equippedItem.StringId;
         if (displayCrossbowReqMessage)
         {
             float crossbowDistanceToStrRequirementRatio = Math.Min((float)distancetoStrRequirement / 15f, 1f);
             Color messageColor = Color.Lerp(new Color(1f, 1f, 1f), new Color(1f, 0, 0), crossbowDistanceToStrRequirementRatio);
             string requirementMessage = "You need " + Math.Round(distancetoStrRequirement + 0.5).ToString() + " more to properly handle this crossbow";
             InformationManager.DisplayMessage(new InformationMessage(requirementMessage, messageColor));
-            lastequippedItem = equippedItem.StringId;
         }
     }
 }
