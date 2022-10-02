@@ -374,7 +374,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.ThrustOrRangedReadySpeedMultiplier *= 0.2625f * (float)Math.Pow(2, weaponSkill / 191f) * ImpactOfStrReqOnCrossbows(agent, 0.3f, primaryItem); // Multiplying make windup time slower a 0 wpf, faster at 80 wpf
                     props.ReloadSpeed *= 0.65f * ImpactOfStrReqOnCrossbows(agent, 0.15f, primaryItem);
                     props.ReloadMovementPenaltyFactor = 1f / ImpactOfStrReqOnCrossbows(agent, 1f, primaryItem);
-                    CrossbowReqMessage((int)CrossbowDistanceToStrRequirement(agent, primaryItem), primaryItem!);
                 }
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
@@ -413,6 +412,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.005f;
                 props.WeaponUnsteadyEndTime = 3.0f + weaponSkill * 0.01f;
             }
+            CrossbowReqMessage((int)CrossbowDistanceToStrRequirement(agent, primaryItem), primaryItem!, agent);
         }
 
         int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
@@ -475,9 +475,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         return Math.Max(setRequirement - strengthAttribute, 0);
     }
 
-    private void CrossbowReqMessage(int distanceToStrRequirement, ItemObject equippedItem)
+    private void CrossbowReqMessage(int distanceToStrRequirement, ItemObject equippedItem, Agent agent)
     {
-        bool displayCrossbowReqMessage = distanceToStrRequirement > 0 & equippedItem.StringId != _lastEquippedItemId;
+        bool displayCrossbowReqMessage = distanceToStrRequirement > 0 & equippedItem.StringId != _lastEquippedItemId & agent.IsMine;
         _lastEquippedItemId = equippedItem.StringId;
         if (displayCrossbowReqMessage)
         {
