@@ -12,10 +12,10 @@ namespace Crpg.Module.Common.Models;
 /// </summary>
 internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 {
-    private string lastequippedItemName = "lol"; //hack to not make informationmanager spam messages everytime UpdateHumanAgentStats is called
+    private string lastequippedItemName = "lol"; // hack to not make informationmanager spam messages everytime UpdateHumanAgentStats is called
+
     // Hack to workaround not being able to spawn custom character. In the client this property is set so the
     // StatCalculateModel has access to the cRPG user.
-
     public static CrpgUser? MyUser { get; set; }
 
     private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new()
@@ -374,7 +374,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.ThrustOrRangedReadySpeedMultiplier *= 0.2625f * (float)Math.Pow(2, weaponSkill / 191f) * ImpactOfStrReqOnCrossbows(agent, 0.3f, primaryItem!); // Multiplying make windup time slower a 0 wpf, faster at 80 wpf
                     props.ReloadSpeed *= 0.65f * ImpactOfStrReqOnCrossbows(agent, 0.15f, primaryItem!);
                     props.ReloadMovementPenaltyFactor = 1f / ImpactOfStrReqOnCrossbows(agent, 1f, primaryItem!);
-                    CrossbowReqMessage((int)CrossbowDistanceToStrRequirement(agent, primaryItem!));
+                    CrossbowReqMessage((int)CrossbowDistanceToStrRequirement(agent, primaryItem!), primaryItem!, ref lastequippedItemName);
                 }
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
