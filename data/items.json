@@ -1021,7 +1021,7 @@
     "name": "Desert Horse",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 9024,
+    "price": 11597,
     "weight": 375.0,
     "requirement": 0,
     "mount": {
@@ -1799,7 +1799,7 @@
     "name": "Beduin Common Saddle",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 440,
+    "price": 1259,
     "weight": 27.0,
     "requirement": 0,
     "armor": {
@@ -2016,7 +2016,7 @@
     "name": "Rugged Beduin Saddle",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 303,
+    "price": 751,
     "weight": 21.0,
     "requirement": 0,
     "armor": {
@@ -2033,7 +2033,7 @@
     "name": "Rugged Fur Saddle",
     "culture": "Battania",
     "type": "MountHarness",
-    "price": 297,
+    "price": 751,
     "weight": 23.0,
     "requirement": 0,
     "armor": {
@@ -2050,7 +2050,7 @@
     "name": "Rugged Saddle",
     "culture": "Neutral",
     "type": "MountHarness",
-    "price": 295,
+    "price": 751,
     "weight": 24.0,
     "requirement": 0,
     "armor": {
@@ -3126,7 +3126,7 @@
     "name": "Battanian Pony",
     "culture": "Battania",
     "type": "Mount",
-    "price": 7925,
+    "price": 10184,
     "weight": 410.0,
     "requirement": 0,
     "mount": {
@@ -3143,7 +3143,7 @@
     "name": "Battania Horse Harness",
     "culture": "Battania",
     "type": "MountHarness",
-    "price": 598,
+    "price": 1873,
     "weight": 30.0,
     "requirement": 0,
     "armor": {
@@ -3160,7 +3160,7 @@
     "name": "Half Scaled Barding",
     "culture": "Battania",
     "type": "MountHarness",
-    "price": 1558,
+    "price": 7764,
     "weight": 76.0,
     "requirement": 0,
     "armor": {
@@ -3177,7 +3177,7 @@
     "name": "Scale Barding",
     "culture": "Battania",
     "type": "MountHarness",
-    "price": 1974,
+    "price": 12130,
     "weight": 125.0,
     "requirement": 0,
     "armor": {
@@ -5300,7 +5300,7 @@
     "name": "Camel",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 8766,
+    "price": 11266,
     "weight": 500.0,
     "requirement": 0,
     "mount": {
@@ -5317,7 +5317,7 @@
     "name": "Camel Saddle",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 215,
+    "price": 751,
     "weight": 130.0,
     "requirement": 0,
     "armor": {
@@ -5334,7 +5334,7 @@
     "name": "Camel Saddle with Heavy Load",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 215,
+    "price": 751,
     "weight": 130.0,
     "requirement": 0,
     "armor": {
@@ -5351,7 +5351,7 @@
     "name": "Camel Saddle with Light Load",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 215,
+    "price": 751,
     "weight": 130.0,
     "requirement": 0,
     "armor": {
@@ -5570,7 +5570,7 @@
     "name": "Reinforced Chainmail Barding",
     "culture": "Vlandia",
     "type": "MountHarness",
-    "price": 2929,
+    "price": 19424,
     "weight": 130.0,
     "requirement": 0,
     "armor": {
@@ -5587,7 +5587,7 @@
     "name": "Chain Mail Horse Armor",
     "culture": "Neutral",
     "type": "MountHarness",
-    "price": 2231,
+    "price": 13796,
     "weight": 120.0,
     "requirement": 0,
     "armor": {
@@ -5621,7 +5621,7 @@
     "name": "Charger",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 9549,
+    "price": 12273,
     "weight": 415.0,
     "requirement": 0,
     "mount": {
@@ -6410,7 +6410,7 @@
     "name": "Beduin Cloth Saddle",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 458,
+    "price": 1259,
     "weight": 22.5,
     "requirement": 0,
     "armor": {
@@ -6728,7 +6728,7 @@
     "name": "Desert War Horse",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 10522,
+    "price": 13524,
     "weight": 480.0,
     "requirement": 0,
     "mount": {
@@ -7972,7 +7972,7 @@
     "name": "Midlands Palfrey",
     "culture": "Empire",
     "type": "Mount",
-    "price": 8703,
+    "price": 11184,
     "weight": 370.0,
     "requirement": 0,
     "mount": {
@@ -9938,7 +9938,7 @@
     "name": "Reinforced Half Plate Barding",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 2705,
+    "price": 15567,
     "weight": 90.0,
     "requirement": 0,
     "armor": {
@@ -9955,7 +9955,7 @@
     "name": "Cataphract Half Scale Barding",
     "culture": "Empire",
     "type": "MountHarness",
-    "price": 3100,
+    "price": 17443,
     "weight": 80.0,
     "requirement": 0,
     "armor": {
@@ -9972,7 +9972,7 @@
     "name": "Half Mail Barding",
     "culture": "Vlandia",
     "type": "MountHarness",
-    "price": 2688,
+    "price": 13796,
     "weight": 65.0,
     "requirement": 0,
     "armor": {
@@ -10973,7 +10973,7 @@
     "name": "Hunter",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 9666,
+    "price": 12423,
     "weight": 380.0,
     "requirement": 0,
     "mount": {
@@ -11278,7 +11278,7 @@
     "name": "Imperial Riding Harness",
     "culture": "Empire",
     "type": "MountHarness",
-    "price": 300,
+    "price": 751,
     "weight": 22.0,
     "requirement": 0,
     "armor": {
@@ -11329,7 +11329,7 @@
     "name": "Cataphract Scale Barding",
     "culture": "Empire",
     "type": "MountHarness",
-    "price": 3738,
+    "price": 26000,
     "weight": 135.0,
     "requirement": 0,
     "armor": {
@@ -12227,7 +12227,7 @@
     "name": "Steppe Horse",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 9072,
+    "price": 11659,
     "weight": 365.0,
     "requirement": 0,
     "mount": {
@@ -13872,7 +13872,7 @@
     "name": "Light Harness",
     "culture": "Neutral",
     "type": "MountHarness",
-    "price": 306,
+    "price": 751,
     "weight": 20.0,
     "requirement": 0,
     "armor": {
@@ -14211,7 +14211,7 @@
     "name": "Reinforced Plate Barding",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 3095,
+    "price": 21511,
     "weight": 145.0,
     "requirement": 0,
     "armor": {
@@ -14555,7 +14555,7 @@
     "name": "Mule",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 4092,
+    "price": 5251,
     "weight": 300.0,
     "requirement": 0,
     "mount": {
@@ -14572,7 +14572,7 @@
     "name": "Mule Harness with Pack",
     "culture": "Neutral",
     "type": "MountHarness",
-    "price": 218,
+    "price": 751,
     "weight": 120.0,
     "requirement": 0,
     "armor": {
@@ -14589,7 +14589,7 @@
     "name": "Mule Harness with Baskets",
     "culture": "Neutral",
     "type": "MountHarness",
-    "price": 218,
+    "price": 751,
     "weight": 120.0,
     "requirement": 0,
     "armor": {
@@ -14606,7 +14606,7 @@
     "name": "Mule Harness with Bags",
     "culture": "Neutral",
     "type": "MountHarness",
-    "price": 218,
+    "price": 751,
     "weight": 120.0,
     "requirement": 0,
     "armor": {
@@ -14944,7 +14944,7 @@
     "name": "Pureblood",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 13600,
+    "price": 17485,
     "weight": 400.0,
     "requirement": 0,
     "mount": {
@@ -14961,7 +14961,7 @@
     "name": "Battanian Thoroughbred",
     "culture": "Battania",
     "type": "Mount",
-    "price": 12741,
+    "price": 16380,
     "weight": 390.0,
     "requirement": 0,
     "mount": {
@@ -14978,7 +14978,7 @@
     "name": "Asaligat",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 12096,
+    "price": 15550,
     "weight": 426.0,
     "requirement": 0,
     "mount": {
@@ -14995,7 +14995,7 @@
     "name": "Cossian",
     "culture": "Empire",
     "type": "Mount",
-    "price": 9599,
+    "price": 12337,
     "weight": 440.0,
     "requirement": 0,
     "mount": {
@@ -15012,7 +15012,7 @@
     "name": "Khamseen",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 11596,
+    "price": 14906,
     "weight": 400.0,
     "requirement": 0,
     "mount": {
@@ -15029,7 +15029,7 @@
     "name": "Tyal Horse",
     "culture": "Sturgia",
     "type": "Mount",
-    "price": 11431,
+    "price": 14695,
     "weight": 417.0,
     "requirement": 0,
     "mount": {
@@ -15046,7 +15046,7 @@
     "name": "Nahasawi",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 12664,
+    "price": 16281,
     "weight": 405.0,
     "requirement": 0,
     "mount": {
@@ -15063,7 +15063,7 @@
     "name": "Destrier",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 11706,
+    "price": 15048,
     "weight": 420.0,
     "requirement": 0,
     "mount": {
@@ -15939,7 +15939,7 @@
     "name": "Light Saddle",
     "culture": "Sturgia",
     "type": "MountHarness",
-    "price": 787,
+    "price": 2592,
     "weight": 30.0,
     "requirement": 0,
     "armor": {
@@ -15956,7 +15956,7 @@
     "name": "Rough Cavalry Saddle",
     "culture": "Sturgia",
     "type": "MountHarness",
-    "price": 576,
+    "price": 1873,
     "weight": 35.0,
     "requirement": 0,
     "armor": {
@@ -16041,7 +16041,7 @@
     "name": "Ring Mail Barding",
     "culture": "Sturgia",
     "type": "MountHarness",
-    "price": 1749,
+    "price": 9114,
     "weight": 82.0,
     "requirement": 0,
     "armor": {
@@ -16474,7 +16474,7 @@
     "name": "Work Horse",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 6287,
+    "price": 8076,
     "weight": 420.0,
     "requirement": 0,
     "mount": {
@@ -16683,7 +16683,7 @@
     "name": "Pack Camel",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 5150,
+    "price": 6613,
     "weight": 520.0,
     "requirement": 0,
     "mount": {
@@ -19755,7 +19755,7 @@
     "name": "Husnphree",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 9902,
+    "price": 12727,
     "weight": 550.0,
     "requirement": 0,
     "mount": {
@@ -20031,7 +20031,7 @@
     "name": "Steppe Fur Harness",
     "culture": "Khuzait",
     "type": "MountHarness",
-    "price": 622,
+    "price": 1873,
     "weight": 25.5,
     "requirement": 0,
     "armor": {
@@ -20079,7 +20079,7 @@
     "name": "Lamellar Half Barding",
     "culture": "Khuzait",
     "type": "MountHarness",
-    "price": 1596,
+    "price": 7764,
     "weight": 70.0,
     "requirement": 0,
     "armor": {
@@ -20096,7 +20096,7 @@
     "name": "Steppe Saddle",
     "culture": "Khuzait",
     "type": "MountHarness",
-    "price": 454,
+    "price": 1259,
     "weight": 23.5,
     "requirement": 0,
     "armor": {
@@ -20270,7 +20270,7 @@
     "name": "Steppe Charger",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 8063,
+    "price": 10360,
     "weight": 460.0,
     "requirement": 0,
     "mount": {
@@ -20406,7 +20406,7 @@
     "name": "Striped Leather Harness",
     "culture": "Empire",
     "type": "MountHarness",
-    "price": 619,
+    "price": 1873,
     "weight": 26.0,
     "requirement": 0,
     "armor": {
@@ -20649,7 +20649,7 @@
     "name": "Reinforced Mail Barding",
     "culture": "Khuzait",
     "type": "MountHarness",
-    "price": 2477,
+    "price": 13796,
     "weight": 85.0,
     "requirement": 0,
     "armor": {
@@ -20992,7 +20992,7 @@
     "name": "Sturgian Trotter",
     "culture": "Sturgia",
     "type": "Mount",
-    "price": 8481,
+    "price": 10899,
     "weight": 405.0,
     "requirement": 0,
     "mount": {
@@ -21861,7 +21861,7 @@
     "name": "Sumpter Horse",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 5175,
+    "price": 6645,
     "weight": 430.0,
     "requirement": 0,
     "mount": {
@@ -21878,7 +21878,7 @@
     "name": "Aserai Horse",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 11780,
+    "price": 15143,
     "weight": 400.0,
     "requirement": 0,
     "mount": {
@@ -21895,7 +21895,7 @@
     "name": "Battanian Warmount",
     "culture": "Battania",
     "type": "Mount",
-    "price": 10055,
+    "price": 12924,
     "weight": 420.0,
     "requirement": 0,
     "mount": {
@@ -21912,7 +21912,7 @@
     "name": "Imperial Charger",
     "culture": "Empire",
     "type": "Mount",
-    "price": 8862,
+    "price": 11389,
     "weight": 430.0,
     "requirement": 0,
     "mount": {
@@ -21929,7 +21929,7 @@
     "name": "Steppe Warhorse",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 10487,
+    "price": 13479,
     "weight": 405.0,
     "requirement": 0,
     "mount": {
@@ -21946,7 +21946,7 @@
     "name": "Sturgian Chaser",
     "culture": "Sturgia",
     "type": "Mount",
-    "price": 10592,
+    "price": 13614,
     "weight": 415.0,
     "requirement": 0,
     "mount": {
@@ -21963,7 +21963,7 @@
     "name": "Vlandian Courser",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 10055,
+    "price": 12924,
     "weight": 420.0,
     "requirement": 0,
     "mount": {
@@ -23202,7 +23202,7 @@
     "name": "Saddle Horse",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 8294,
+    "price": 10658,
     "weight": 462.0,
     "requirement": 0,
     "mount": {
@@ -24077,7 +24077,7 @@
     "name": "War Camel",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 9700,
+    "price": 12467,
     "weight": 500.0,
     "requirement": 0,
     "mount": {
