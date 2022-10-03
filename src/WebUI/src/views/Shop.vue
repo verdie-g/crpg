@@ -112,7 +112,13 @@ import { notify } from '@/services/notifications-service';
 import ShopFiltersForm from '@/components/ShopFiltersForm.vue';
 import ShopFilters from '@/models/shop-filters';
 import ItemType from '@/models/item-type';
-import { filterItemsByType, itemTypeToStr } from '@/services/item-service';
+import {
+  filterItemsByType,
+  getItemDescriptor,
+  getSortableProperties,
+  itemTypeToStr,
+  sortItems,
+} from '@/services/item-service';
 import Culture from '@/models/culture';
 import UserItem from '@/models/user-item';
 
