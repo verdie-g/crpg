@@ -114,7 +114,6 @@ import ShopFilters from '@/models/shop-filters';
 import ItemType from '@/models/item-type';
 import {
   filterItemsByType,
-  getItemDescriptor,
   getSortableProperties,
   itemTypeToStr,
   sortItems,
