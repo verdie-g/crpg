@@ -57,8 +57,9 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<Stea
 
         public async Task<Result<UserViewModel>> Handle(UpsertUserCommand request, CancellationToken cancellationToken)
         {
-            var user =
-                await _db.Users.FirstOrDefaultAsync(u => u.PlatformUserId == request.PlatformUserId, cancellationToken)
+            var user = await _db.Users
+                           .IgnoreQueryFilters()
+                           .FirstOrDefaultAsync(u => u.PlatformUserId == request.PlatformUserId, cancellationToken)
                 ?? new User { Platform = Platform.Steam, PlatformUserId = request.PlatformUserId };
 
             user.Name = request.Name;

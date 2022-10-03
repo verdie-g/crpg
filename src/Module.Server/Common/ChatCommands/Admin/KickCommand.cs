@@ -1,4 +1,5 @@
 ﻿using Crpg.Module.Common.GameHandler;
+using Crpg.Module.Common.Network;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
 
@@ -54,9 +55,17 @@ internal class KickCommand : AdminCommand
         }
 
         crpgChat.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You have kicked {targetPeer.UserName}.");
-        crpgChat.ServerSendMessageToPlayer(targetPeer, ColorFatal, $"You were kicked by {targetPeer.UserName}.{(reason != null ? $" Reason: {reason}" : string.Empty)}");
         crpgChat.ServerSendServerMessageToEveryone(ColorFatal, $"{targetPeer.UserName} was kicked by {fromPeer.UserName}.{(reason != null ? $" Reason: {reason}" : string.Empty)}");
-        await Task.Delay(2500);
+
+        GameNetwork.BeginModuleEventAsServer(targetPeer);
+        GameNetwork.WriteMessage(new CrpgNotification
+        {
+            Type = CrpgNotification.NotificationType.Announcement,
+            Message = $"Kicked by {targetPeer.UserName}.{(reason != null ? $" Reason: {reason}" : string.Empty)}",
+        });
+        GameNetwork.EndModuleEventAsServer();
+
+        await Task.Delay(250);
         if (!targetPeer.IsConnectionActive)
         {
             return;

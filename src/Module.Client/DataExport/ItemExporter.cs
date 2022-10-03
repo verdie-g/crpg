@@ -2,6 +2,7 @@
 using System.Xml;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Items;
+using Crpg.Module.Common.Models;
 using Crpg.Module.Helpers.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -105,6 +106,9 @@ internal class ItemExporter : IDataExporter
         "crossbow_a",
         "crossbow_e",
         "crossbow_g",
+
+        // Makes some play crash.
+        "war_horse",
     };
 
     public async Task Export(string gitRepoPath)
@@ -164,6 +168,7 @@ internal class ItemExporter : IDataExporter
             Type = MbToCrpgItemType(mbItem.Type),
             Price = mbItem.Value,
             Weight = mbItem.Weight,
+            Requirement = CrpgItemRequirementModel.ComputeItemRequirement(mbItem),
         };
 
         if (mbItem.ArmorComponent != null)
@@ -351,8 +356,8 @@ internal class ItemExporter : IDataExporter
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
                         v => ((int)(int.Parse(v) * 0.67f)).ToString(CultureInfo.InvariantCulture));
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed",
-                        v => ((int)(int.Parse(v) * 0.35f)).ToString(CultureInfo.InvariantCulture));
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed",
+                    v => ((int)(int.Parse(v) * 1.4f)).ToString(CultureInfo.InvariantCulture));
                 }
                 else if (type == ItemObject.ItemTypeEnum.Bolts)
                 {

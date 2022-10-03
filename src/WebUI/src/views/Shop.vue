@@ -51,7 +51,7 @@
           <b-pagination
             :total="filteredItems.length"
             :current.sync="currentPage"
-            :per-page="itemsPerPage"
+            :per-page="this.filters.itemsPerPage"
             order="is-centered"
             range-before="2"
             range-after="2"
@@ -130,8 +130,6 @@ export default class Shop extends Vue {
   // items for which buy request was sent
   buyingItems: Record<string, boolean> = {};
 
-  itemsPerPage = 20;
-
   // items owned by the user
   get ownedItems(): Record<string, boolean> {
     return userModule.userItems.reduce((res: Record<string, boolean>, ui: UserItem) => {
@@ -151,7 +149,7 @@ export default class Shop extends Vue {
     if (
       !this.filteredItems ||
       !pageQuery ||
-      pageQuery > Math.ceil(this.filteredItems.length / this.itemsPerPage)
+      pageQuery > Math.ceil(this.filteredItems.length / this.filters.itemsPerPage)
     ) {
       return 1;
     }
@@ -175,6 +173,9 @@ export default class Shop extends Vue {
           ? this.$route.query.sortDesc === true.toString()
           : false,
       searchQuery: this.$route.query.searchQuery ? (this.$route.query.searchQuery as string) : '',
+      itemsPerPage: this.$route.query.itemsPerPage
+        ? Number.parseInt(this.$route.query.itemsPerPage as string)
+        : 20,
     };
   }
 
@@ -186,6 +187,7 @@ export default class Shop extends Vue {
     sortBy,
     sortDesc,
     searchQuery,
+    itemsPerPage,
   }: ShopFilters) {
     this.$router.push({
       query: {
@@ -198,6 +200,7 @@ export default class Shop extends Vue {
         sortBy: sortBy,
         sortDesc: sortDesc === true ? true.toString() : false.toString(),
         searchQuery: searchQuery,
+        itemsPerPage: itemsPerPage.toString(),
       },
     });
   }
@@ -232,8 +235,8 @@ export default class Shop extends Vue {
       return [];
     }
 
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
+    const startIndex = (this.currentPage - 1) * this.filters.itemsPerPage;
+    const endIndex = startIndex + this.filters.itemsPerPage;
     return this.filteredItems.slice(startIndex, endIndex);
   }
 

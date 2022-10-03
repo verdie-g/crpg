@@ -13,6 +13,7 @@ public enum ErrorCode
     CharacterLevelRequirementNotMet,
     CharacterNameAlreadyUsed,
     CharacterNotFound,
+    CharacterRecentlyCreated,
     CharacteristicDecreased,
     ClanInvitationClosed,
     ClanInvitationNotFound,

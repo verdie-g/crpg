@@ -9,4 +9,5 @@ export default interface ShopFilters {
   sortBy: string;
   sortDesc: boolean;
   searchQuery: string;
+  itemsPerPage: number;
 }

@@ -19,6 +19,11 @@ public class Character : AuditableEntity
     public bool SkippedTheFun { get; set; }
     public bool AutoRepair { get; set; }
 
+    /// <summary>
+    /// Not null if the character was deleted.
+    /// </summary>
+    public DateTime? DeletedAt { get; set; }
+
     public CharacterCharacteristics Characteristics { get; set; } = new();
     public IList<EquippedItem> EquippedItems { get; set; } = new List<EquippedItem>();
     public CharacterStatistics Statistics { get; set; } = new();
