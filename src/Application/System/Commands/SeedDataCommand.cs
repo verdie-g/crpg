@@ -97,6 +97,17 @@ public record SeedDataCommand : IMediatorRequest
                 AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273_medium.jpg"),
                 AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273_full.jpg"),
             };
+            User thradok = new()
+            {
+                PlatformUserId = "76561198011271387",
+                Name = "Thradok Odai",
+                Gold = 100000,
+                Characters = new List<Character>
+                    { new Character { Name = "Thradok Odai" } },
+                AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb.jpg"),
+                AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_medium.jpg"),
+                AvatarFull = new Uri("https://avatars.cloudflare.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg"),
+            };
             User kinngrimm = new()
             {
                 PlatformUserId = "76561197998594278",
@@ -599,7 +610,7 @@ public record SeedDataCommand : IMediatorRequest
                 ecko, neostralie, zorguy, azuma, elmaryk, namidaka, laHire, manik, ajroselle, skrael, bedo, lambic,
                 sanasar, vlad007, canp0g, shark, noobAmphetamine, mundete, aroyFalconer, insanitoid, scarface,
                 xDem, disorot, ace, sagar, greenShadow, hannibaru, drexx, xarosh, tipsyToby, localAlpha, alex,
-                kedrynFuel, luqero, ilya, eztli, telesto, kypak, devoidDragon, krog,
+                kedrynFuel, luqero, ilya, eztli, telesto, kypak, devoidDragon, krog, thradok,
             };
 
             var existingUsers = await _db.Users.ToDictionaryAsync(u => (u.Platform, u.PlatformUserId));
