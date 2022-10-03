@@ -55,6 +55,12 @@ internal static class CommonErrors
         Detail = $"Character with id '{characterId}' for user with id '{userId}' was not found",
     };
 
+    public static Error CharacterRecentlyCreated(int userId) => new(ErrorType.Forbidden, ErrorCode.CharacterRecentlyCreated)
+    {
+        Title = "A character was already recently created",
+        Detail = $"User {userId} created another character recently and can't create a new one after some time",
+    };
+
     public static Error CharacteristicDecreased() => new(ErrorType.Validation, ErrorCode.CharacteristicDecreased)
     {
         Title = "A characteristic was decreased when it is not allowed",

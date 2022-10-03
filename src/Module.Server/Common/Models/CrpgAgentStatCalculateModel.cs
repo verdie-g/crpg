@@ -1,3 +1,4 @@
+using System.Globalization;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Battle;
 using Crpg.Module.Helpers;
@@ -46,6 +47,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     };
 
     private readonly CrpgConstants _constants;
+    private string _lastEquippedItemId = string.Empty;
 
     public CrpgAgentStatCalculateModel(CrpgConstants constants)
     {
@@ -82,7 +84,17 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
         const float a = valueAtAccuracyPointA - parabolOffset; // Parameter for the polynomial, do not change.
 
-        float skillComponentMultiplier = weapon.WeaponClass == WeaponClass.Bow ? 0.4f : 0.2f;
+        float skillComponentMultiplier = 0.2f;
+        float weaponClassMultiplier = weapon.WeaponClass switch
+        {
+            WeaponClass.Bow => 2f,
+            WeaponClass.Crossbow => 0.5f,
+            WeaponClass.Stone => 1f,
+            WeaponClass.ThrowingAxe => 1f,
+            WeaponClass.ThrowingKnife => 1f,
+            WeaponClass.Javelin => 1f,
+            _ => 1f,
+        };
 
         if (weapon.IsRangedWeapon)
         {
@@ -93,6 +105,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 + parabolOffset;
             float skillComponent = skillComponentMultiplier * (float)Math.Pow(10.0, (200.0 - weaponSkill) / 200.0);
             inaccuracy = (weaponComponent * skillComponent + (100 - weapon.Accuracy)) * 0.001f;
+            inaccuracy *= weaponClassMultiplier;
         }
         else if (weapon.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
         {
@@ -275,9 +288,10 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
         float agentWeight = agent.Monster.Weight;
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
-        props.TopSpeedReachDuration = 2f / MathF.Max((200f + athleticsSkill) / 300f * (agentWeight / (agentWeight + totalEncumbrance)), 0.3f);
+        float impactOfStrReqOnSpeed = ImpactOfStrReqOnSpeed(agent);
+        props.TopSpeedReachDuration = 2f / MathF.Max((200f + athleticsSkill) / 300f * (agentWeight / (agentWeight + totalEncumbrance)) * impactOfStrReqOnSpeed, 0.3f);
         float speed = 0.7f + 0.00070000015f * athleticsSkill;
-        float weightSpeedPenalty = MathF.Max(0.2f * (1f - athleticsSkill * 0.001f), 0f) * totalEncumbrance / agentWeight;
+        float weightSpeedPenalty = MathF.Max(0.2f * (1f - athleticsSkill * 0.001f), 0f) * totalEncumbrance / agentWeight / impactOfStrReqOnSpeed;
         float maxSpeedMultiplier = MBMath.ClampFloat(speed - weightSpeedPenalty, 0f, 0.91f);
         float atmosphereSpeedPenalty = agent.Mission.Scene.IsAtmosphereIndoor && agent.Mission.Scene.GetRainDensity() > 0
             ? 0.9f
@@ -353,8 +367,13 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 }
                 else if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
                 {
-                    props.WeaponMaxMovementAccuracyPenalty *= 2.5f;
-                    props.WeaponMaxUnsteadyAccuracyPenalty *= 1.2f;
+                    props.WeaponInaccuracy /= ImpactOfStrReqOnCrossbows(agent, 1f, primaryItem);
+                    props.WeaponMaxMovementAccuracyPenalty /= ImpactOfStrReqOnCrossbows(agent, 0.2f, primaryItem);
+                    props.WeaponMaxUnsteadyAccuracyPenalty = 0.5f / ImpactOfStrReqOnCrossbows(agent, 0.05f, primaryItem); // override to remove impact of wpf on this property
+                    props.WeaponRotationalAccuracyPenaltyInRadians /= ImpactOfStrReqOnCrossbows(agent, 0.3f, primaryItem);
+                    props.ThrustOrRangedReadySpeedMultiplier *= 0.2625f * (float)Math.Pow(2, weaponSkill / 191f) * ImpactOfStrReqOnCrossbows(agent, 0.3f, primaryItem); // Multiplying make windup time slower a 0 wpf, faster at 80 wpf
+                    props.ReloadSpeed *= 0.65f * ImpactOfStrReqOnCrossbows(agent, 0.15f, primaryItem);
+                    props.ReloadMovementPenaltyFactor = 1f / ImpactOfStrReqOnCrossbows(agent, 1f, primaryItem);
                 }
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
@@ -363,7 +382,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponBestAccuracyWaitTime = 0.3f + (95.75f - equippedItem.ThrustSpeed) * 0.005f;
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 60.0f) / 75.0f, 0.0f, 1f);
 
-                    props.WeaponUnsteadyBeginTime = 0.06f + weaponSkill * 0.001f * MBMath.Lerp(1f, 2f, amount) + (powerDraw * powerDraw / 10 * 0.4f);
+                    props.WeaponUnsteadyBeginTime = 0.06f + weaponSkill * 0.001f * MBMath.Lerp(1f, 2f, amount) + powerDraw * powerDraw / 10f * 0.4f;
                     if (agent.IsAIControlled)
                     {
                         props.WeaponUnsteadyBeginTime *= 4f;
@@ -376,7 +395,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 {
                     int powerThrow = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.PowerThrow);
                     props.WeaponBestAccuracyWaitTime = 0.4f + (89.0f - equippedItem.ThrustSpeed) * 0.03f;
-                    props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.006f + (powerThrow * powerThrow / 10 * 0.4f);
+                    props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.006f + powerThrow * powerThrow / 10f * 0.4f;
                     props.WeaponUnsteadyEndTime = 10f + props.WeaponUnsteadyBeginTime;
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.025f;
                 }
@@ -405,5 +424,53 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
 
         SetAiRelatedProperties(agent, props, equippedItem, secondaryItem);
+    }
+
+    private List<ItemObject> GetArmorItemObjectList(Equipment equipment)
+    {
+        List<ItemObject> armorItemObjectList = new();
+        for (EquipmentIndex equipmentIndex = EquipmentIndex.NumAllWeaponSlots; equipmentIndex < EquipmentIndex.ArmorItemEndSlot; equipmentIndex++)
+        {
+            EquipmentElement equipmentElement = equipment[equipmentIndex];
+            if (equipmentElement.Item != null)
+            {
+                armorItemObjectList.Add(equipmentElement.Item);
+            }
+        }
+
+        return armorItemObjectList;
+    }
+
+    private float ImpactOfStrReqOnSpeed(Agent agent)
+    {
+        int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
+        var equippedArmors = GetArmorItemObjectList(agent.SpawnEquipment);
+        float setRequirement = CrpgItemRequirementModel.ComputeArmorSetPieceStrengthRequirement(equippedArmors);
+        float distanceToStrRequirement = Math.Max(setRequirement - strengthAttribute, 0);
+        float impactOfStrReqOnSpeedFactor = 0.2f; // tweak here
+        return 1 / (1 + distanceToStrRequirement * impactOfStrReqOnSpeedFactor);
+    }
+
+    private float ImpactOfStrReqOnCrossbows(Agent agent, float impact, ItemObject? equippedItem)
+    {
+        if (equippedItem == null)
+        {
+            return 1;
+        }
+
+        float distanceToStrRequirement = CrossbowDistanceToStrRequirement(agent, equippedItem);
+        return 1 / (1 + distanceToStrRequirement * impact);
+    }
+
+    private float CrossbowDistanceToStrRequirement(Agent agent, ItemObject? equippedItem)
+    {
+        if (equippedItem == null)
+        {
+            return 0;
+        }
+
+        int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
+        float setRequirement = CrpgItemRequirementModel.ComputeItemRequirement(equippedItem);
+        return Math.Max(setRequirement - strengthAttribute, 0);
     }
 }

@@ -14,12 +14,20 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
 
     private readonly CrpgConstants _constants;
     private readonly bool _alwaysStartMatchAfterWarmup;
+    private readonly MultiplayerGameNotificationsComponent _notificationsComponent;
     private bool _overridenSpawningBehavior;
 
-    public CrpgWarmupComponent(CrpgConstants constants, bool alwaysStartMatchAfterWarmup = false)
+    public CrpgWarmupComponent(CrpgConstants constants, MultiplayerGameNotificationsComponent notificationsComponent, bool alwaysStartMatchAfterWarmup = false)
     {
         _constants = constants;
+        _notificationsComponent = notificationsComponent;
         _alwaysStartMatchAfterWarmup = alwaysStartMatchAfterWarmup;
+    }
+
+    public override void OnBehaviorInitialize()
+    {
+        base.OnBehaviorInitialize();
+        base.OnWarmupEnding += OnWarmupEnding;
     }
 
     public override void OnMissionTick(float dt)
@@ -68,6 +76,7 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
 
     public override void OnRemoveBehavior()
     {
+        base.OnWarmupEnding -= OnWarmupEnding;
         base.OnRemoveBehavior();
         if (!GameNetwork.IsServer)
         {
@@ -80,5 +89,10 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
         MultiplayerRoundController multiplayerRoundController = Mission.GetMissionBehavior<MultiplayerRoundController>();
         spawnComponent.SetNewSpawnFrameBehavior(new FlagDominationSpawnFrameBehavior());
         spawnComponent.SetNewSpawningBehavior(new CrpgBattleSpawningBehavior(_constants, multiplayerRoundController));
+    }
+
+    private new void OnWarmupEnding()
+    {
+        _notificationsComponent.WarmupEnding();
     }
 }

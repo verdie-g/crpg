@@ -9,5 +9,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     public void Configure(EntityTypeBuilder<User> builder)
     {
         builder.HasIndex(u => new { u.Platform, u.PlatformUserId }).IsUnique();
+        builder.HasQueryFilter(u => u.DeletedAt == null);
     }
 }

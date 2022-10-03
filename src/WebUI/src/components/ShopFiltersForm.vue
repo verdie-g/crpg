@@ -1,5 +1,16 @@
 <template>
   <form>
+    <b-field>
+      <p class="control">
+        <b-input
+          placeholder="Search..."
+          type="search"
+          icon="search"
+          size="is-medium"
+          v-model.lazy="searchQuery"
+        />
+      </p>
+    </b-field>
     <b-field label="Type">
       <b-dropdown v-model="type" aria-role="list">
         <template #trigger>
@@ -44,6 +55,25 @@
       </b-dropdown>
     </b-field>
 
+    <b-field label="Items per page">
+      <b-dropdown v-model="itemsPerPage" aria-role="list">
+        <template #trigger>
+          <b-button type="is-primary" icon-right="caret-down">
+            {{ itemsPerPage }}
+          </b-button>
+        </template>
+
+        <b-dropdown-item
+          v-for="itemsPerPageValue in itemsPerPageValues"
+          :value="itemsPerPageValue"
+          :key="itemsPerPageValue"
+          aria-role="listitem"
+        >
+          <span>{{ itemsPerPageValue }}</span>
+        </b-dropdown-item>
+      </b-dropdown>
+    </b-field>
+
     <b-field>
       <b-checkbox v-model="showOwned">Show owned items</b-checkbox>
     </b-field>
@@ -71,9 +101,12 @@ export default class ShopFiltersForm extends Vue {
       culture: null,
       showOwned: true,
       showAffordable: false,
+      searchQuery: '',
+      itemsPerPage: 20,
     }),
   })
   readonly filter: ShopFilters;
+  itemsPerPageValues = [20, 40, 60, 80, 100];
 
   hiddenItemTypes = [ItemType.Undefined, ItemType.Pistol, ItemType.Musket, ItemType.Bullets];
   allTypes = recordFilter(itemTypeToStr, t => !this.hiddenItemTypes.includes(t));
@@ -127,12 +160,30 @@ export default class ShopFiltersForm extends Vue {
     this.emitInput({ showAffordable });
   }
 
+  get searchQuery(): string {
+    return this.filter.searchQuery;
+  }
+
+  set searchQuery(searchQuery: string) {
+    this.emitInput({ searchQuery });
+  }
+
+  get itemsPerPage(): number {
+    return this.filter.itemsPerPage;
+  }
+
+  set itemsPerPage(itemsPerPage: number) {
+    this.emitInput({ itemsPerPage });
+  }
+
   emitInput(shopFilters: Partial<ShopFilters>) {
     this.$emit('input', {
       type: this.type,
       culture: this.culture,
       showOwned: this.showOwned,
       showAffordable: this.showAffordable,
+      searchQuery: this.searchQuery,
+      itemsPerPage: this.itemsPerPage,
       ...shopFilters,
     });
   }

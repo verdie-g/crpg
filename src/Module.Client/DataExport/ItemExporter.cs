@@ -2,6 +2,7 @@
 using System.Xml;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Items;
+using Crpg.Module.Common.Models;
 using Crpg.Module.Helpers.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -46,30 +47,19 @@ internal class ItemExporter : IDataExporter
         "a_brass_lamellar_shoulder_white_b", // Name conflict a_brass_lamellar_shoulder_b.
         "arming_coif", // Name conflict with imperial_leather_coif.
         "aserai_horse_tournament", // Name conflict with aserai_horse.
-        "aserai_lord_helmet_a", // Name conflict with southern_lord_helmet.
         "ballista_projectile", // Can't be equipped.
         "ballista_projectile_burning", // Can't be equipped.
-        "battania_civil_cloak", // Name conflict with battania_cloak.
-        "battania_female_civil_a", // Name conflict with battania_dress_b.
         "battania_horse_tournament", // Name conflict with battania_horse.
         "battania_shield_targe_a", // Name conflict with battania_targe_b rank 2.
         "battered_kite_shield", // Name conflict with western_kite_shield rank -2.
-        "bolt_b", // Name conflict with bolt_a.
-        "bolt_c", // Name conflict with bolt_a.
-        "bolt_d", // Name conflict with bolt_a.
-        "bolt_e", // Name conflict with bolt_a.
         "boulder", // Can't be equipped.
-        "bound_horsemans_kite_shield", // Name conflict with northern_scouts_shield.
         "camel_tournament", // Name conflict with camel.
-        "celtic_frost", // Completely unbalanced harness.
         "desert_round_shield", // Name conflict with bound_desert_round_shield rank 2.
         "desert_scale_shoulders", // Name conflict with a_aserai_scale_b_shoulder_b rank 2.
-        "eastern_leather_boots", // Name conflict with leather_boots.
         "empire_crown_v2", // Name conflict with empire_crown_west.
         "empire_horse_tournament", // Name conflict with empire_horse.
         "empire_sword_1_t2", // Name conflict with iron_spatha_sword_t2.
         "female_scarf", // Name conflict with scarf rank 1.
-        "fortunas_choice", // Completely unbalanced harness.
         "grapeshot_fire_projectile", // Can't be equipped.
         "grapeshot_fire_stack", // Can't be equipped.
         "grapeshot_projectile", // Can't be equipped.
@@ -91,26 +81,34 @@ internal class ItemExporter : IDataExporter
         "reinforced_kite_shield", // Name conflict with western_kite_shield rank 2.
         "reinforced_mail_mitten", // Name conflict with mail_mitten rank 2.
         "reinforced_padded_mitten", // Name conflict with padded_mitten rank 2.
-        "saddle_of_aeneas", // Completely unbalanced harness.
-        "southern_lamellar_armor", // Name conflict with desert_lamellar.
         "southern_lord_helmet", // Name conflict with desert_helmet rank 3.
-        "storm_charger", // Extremely shit horse.
         "strapped_round_shield", // Name conflict with leather_round_shield rank 2.
         "stronger_eastern_wicker_shield", // Name conflict with eastern_wicker_shield rank 2.
         "stronger_footmans_wicker_shield", // Name conflict with footmans_wicker_shield rank 2.
         "sturgia_horse_tournament", // Name conflict with sturgia_horse.
         "sturgia_old_shield_c", // Name conflict with leather_round_shield rank 2.
-        "sturgia_old_shield_c", // Name conflict with strapped_round_shield.
-        "sturgian_helmet_b_close", // Name conflict with closed_goggled_helmet.
-        "sturgian_helmet_b_open", // Name conflict with sturgian_helmet_open.
         "sturgian_lamellar_gambeson", // Name conflict with sturgian_lamellar_gambeson_heavy.
         "torch", // Invisible.
         "tournament_bolts", // Bolts with blunt damage -> Shotgun effect, over-powered.
         "vlandia_horse_tournament", // Name conflict with vlandia_horse.
-        "vlandia_mace_3_t5", // Name conflict with pernach_mace_t3.
-        "womens_headwrap_c", // Name conflict with head_wrapped.
         "wooden_sword_t2", // Name conflict with wooden_sword_t1.
         "woodland_throwing_axe_1_t1", // Name conflict with highland_throwing_axe_1_t2.
+
+        // Extremely shit horse.
+        "storm_charger",
+
+        // Completely unbalanced harnesses.
+        "fortunas_choice",
+        "saddle_of_aeneas",
+        "celtic_frost",
+
+        // Disable crossbows you can walk with while reloading until we can balance them.
+        "crossbow_a",
+        "crossbow_e",
+        "crossbow_g",
+
+        // Makes some play crash.
+        "war_horse",
     };
 
     public async Task Export(string gitRepoPath)
@@ -170,6 +168,7 @@ internal class ItemExporter : IDataExporter
             Type = MbToCrpgItemType(mbItem.Type),
             Price = mbItem.Value,
             Weight = mbItem.Weight,
+            Requirement = CrpgItemRequirementModel.ComputeItemRequirement(mbItem),
         };
 
         if (mbItem.ArmorComponent != null)
@@ -311,6 +310,8 @@ internal class ItemExporter : IDataExporter
             }
             else if (node1.Name == "CraftingPiece")
             {
+                ModifyChildNodesAttribute(node1, "BladeData", "stack_amount",
+                        v => ((int)(int.Parse(v) * 0.75f)).ToString(CultureInfo.InvariantCulture));
                 ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
                     v => (float.Parse(v) * 0.35f).ToString(CultureInfo.InvariantCulture));
             }
@@ -355,8 +356,13 @@ internal class ItemExporter : IDataExporter
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
                         v => ((int)(int.Parse(v) * 0.67f)).ToString(CultureInfo.InvariantCulture));
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed",
-                        v => ((int)(int.Parse(v) * 0.50f)).ToString(CultureInfo.InvariantCulture));
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed",
+                    v => ((int)(int.Parse(v) * 1.4f)).ToString(CultureInfo.InvariantCulture));
+                }
+                else if (type == ItemObject.ItemTypeEnum.Bolts)
+                {
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "stack_amount",
+                        v => ((int)(int.Parse(v) * 0.5f)).ToString(CultureInfo.InvariantCulture));
                 }
             }
             else if (node1.Name == "CraftingTemplate")

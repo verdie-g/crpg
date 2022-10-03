@@ -8,8 +8,9 @@ import ItemSlot from '@/models/item-slot';
 import ItemWeaponComponent from '@/models/item-weapon-component';
 import WeaponClass from '@/models/weapon-class';
 import UserItem from '@/models/user-item';
-import { applyPolynomialFunction } from '@/utils/math';
+import { applyPolynomialFunction, generalizedMean } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
+import EquippedItem from '@/models/equipped-item';
 
 export const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.Undefined]: 'Undefined',
@@ -198,7 +199,16 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
     ],
     modes: [],
   };
-
+  switch (baseItem.type) {
+    case ItemType.HeadArmor:
+    case ItemType.BodyArmor:
+    case ItemType.ShoulderArmor:
+    case ItemType.HandArmor:
+    case ItemType.LegArmor:
+    case ItemType.Crossbow:
+      props.fields.push(['Requirement', baseItem.requirement + ' STR']);
+      break;
+  }
   if (baseItem.armor !== null) {
     if (baseItem.armor.headArmor !== 0) {
       props.fields.push(['Head Armor', baseItem.armor.headArmor]);
@@ -318,16 +328,15 @@ export function filterItemsByType(
   const filteredItems = [];
   // eslint-disable-next-line no-restricted-syntax
   for (const item of items) {
-    if (item.weapons.length === 0) {
-      if (item.type === type) {
-        filteredItems.push({ item, weaponIdx: undefined });
-      }
-
+    const weaponIdx = item.weapons.findIndex(w => itemTypeByWeaponClass[w.class] === type);
+    // An expection is made for thrown to also see the throwable polearms.
+    if (item.type !== type && (type !== ItemType.Thrown || weaponIdx === -1)) {
       continue; // eslint-disable-line no-continue
     }
 
-    const weaponIdx = item.weapons.findIndex(w => itemTypeByWeaponClass[w.class] === type);
-    if (weaponIdx !== -1) {
+    if (item.weapons.length === 0) {
+      filteredItems.push({ item, weaponIdx: undefined });
+    } else if (weaponIdx !== -1) {
       filteredItems.push({ item, weaponIdx });
     }
   }
@@ -339,4 +348,13 @@ export function computeSalePrice(item: UserItem): number {
   const salePrice = applyPolynomialFunction(item.baseItem.price, Constants.itemSellCostCoefs);
   // Floor salePrice to match behaviour of backend int typecast
   return Math.floor(salePrice);
+}
+
+export function computeArmorSetPieceStrengthRequirement(equippedItems: EquippedItem[]): number {
+  const numberOfArmorItemTypes = 5;
+  const armorsRequirement = new Array(numberOfArmorItemTypes).fill(0);
+  equippedItems
+    .filter(e => e.userItem.baseItem.armor != null)
+    .forEach((ei, i) => (armorsRequirement[i] = ei.userItem.baseItem.requirement));
+  return Math.trunc(generalizedMean(10, armorsRequirement));
 }

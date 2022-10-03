@@ -715,41 +715,6 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_war_horse" name="{=UqdZmdcf}War Horse" mesh="horse_brown" item_category="war_horse" is_merchandise="false" difficulty="80" weight="500" appearance="1" Type="Horse">
-    <ItemComponent>
-      <Horse monster="Monster.horse_2" maneuver="50" speed="30" charge_damage="8" body_length="105" is_mountable="true" extra_health="-50" modifier_group="horse">
-        <AdditionalMeshes>
-          <Mesh name="horse_mane" affected_by_cover="true" />
-        </AdditionalMeshes>
-        <Materials>
-          <Material name="horse_brown_mat">
-            <MeshMultipliers>
-              <MeshMultiplier mesh_multiplier="FF010101" percentage="0.75" />
-              <MeshMultiplier mesh_multiplier="FF909090" percentage="0.25" />
-            </MeshMultipliers>
-          </Material>
-          <Material name="horse_black_mat">
-            <MeshMultipliers>
-              <MeshMultiplier mesh_multiplier="FF010101" percentage="0.75" />
-              <MeshMultiplier mesh_multiplier="FF909090" percentage="0.25" />
-            </MeshMultipliers>
-          </Material>
-          <Material name="horse_grey_mat">
-            <MeshMultipliers>
-              <MeshMultiplier mesh_multiplier="FF303030" percentage="0.75" />
-              <MeshMultiplier mesh_multiplier="FF909090" percentage="0.25" />
-            </MeshMultipliers>
-          </Material>
-          <Material name="horse_white_mat">
-            <MeshMultipliers>
-              <MeshMultiplier mesh_multiplier="FF303030" percentage="1.0" />
-            </MeshMultipliers>
-          </Material>
-        </Materials>
-      </Horse>
-    </ItemComponent>
-    <Flags Civilian="true" />
-  </Item>
   <Item id="crpg_steppe_war_horse" name="{=igAT9Eqb}Steppe Charger" mesh="horse_brown" item_category="war_horse" culture="Culture.khuzait" is_merchandise="false" difficulty="80" weight="460" appearance="1" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="50" speed="33" charge_damage="6" body_length="100" is_mountable="true" modifier_group="horse" extra_health="-50">

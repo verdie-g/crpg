@@ -71,6 +71,22 @@ public class BuyItemCommandTest : TestBase
     }
 
     [Test]
+    public async Task InvalidItemType()
+    {
+        var user = ArrangeDb.Users.Add(new User { Gold = 100 });
+        var item = ArrangeDb.Items.Add(new Item { Type = ItemType.Banner, Price = 100 });
+        await ArrangeDb.SaveChangesAsync();
+
+        BuyItemCommand.Handler handler = new(ActDb, Mapper);
+        var result = await handler.Handle(new BuyItemCommand
+        {
+            ItemId = item.Entity.Id,
+            UserId = user.Entity.Id,
+        }, CancellationToken.None);
+        Assert.AreEqual(ErrorCode.ItemNotBuyable, result.Errors![0].Code);
+    }
+
+    [Test]
     public async Task NotEnoughGold()
     {
         var user = ArrangeDb.Users.Add(new User { Gold = 100 });

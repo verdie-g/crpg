@@ -20,7 +20,7 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
     public override float CalculateDamage(in AttackInformation attackInformation, in AttackCollisionData collisionData, in MissionWeapon weapon, float baseDamage)
     {
         float finalDamage = base.CalculateDamage(attackInformation, collisionData, weapon, baseDamage);
-        if (collisionData.AttackBlockedWithShield)
+        if (collisionData.AttackBlockedWithShield && finalDamage > 0)
         {
             int shieldSkill = 0;
             if (attackInformation.VictimAgentOrigin is CrpgBattleAgentOrigin crpgOrigin)
@@ -28,13 +28,22 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
                 shieldSkill = crpgOrigin.Skills.GetPropertyValue(CrpgSkills.Shield);
             }
 
-            finalDamage /= MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.DurabilityFactorForShieldCoefs);
+            finalDamage /= MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.DurabilityFactorForShieldRecursiveCoefs);
         }
 
-        // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
-        if (collisionData.IsAlternativeAttack && !weapon.IsEmpty && !attackInformation.IsFriendlyFire)
+        if (!weapon.IsEmpty)
         {
-            finalDamage = 1f;
+            // Bonus dmg with spears against horses (does only work with "main" spears - not javelins etc)
+            if (!attackInformation.IsVictimAgentHuman && !attackInformation.DoesAttackerHaveMountAgent && weapon.CurrentUsageItem.IsPolearm && !weapon.CurrentUsageItem.IsConsumable && weapon.CurrentUsageItem.IsMeleeWeapon && collisionData.StrikeType == (int)StrikeType.Thrust && collisionData.DamageType == (int)DamageTypes.Pierce && !weapon.GetConsumableIfAny(out var consumableWeapon))
+            {
+                finalDamage *= 1.85f; // 85% bonus dmg against horses
+            }
+
+            // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
+            else if (collisionData.IsAlternativeAttack && !attackInformation.IsFriendlyFire)
+            {
+                finalDamage = 1f;
+            }
         }
 
         return finalDamage;
@@ -51,17 +60,11 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
                 shieldSkill = crpgOrigin.Skills.GetPropertyValue(CrpgSkills.Shield);
             }
 
-            if (shieldSkill > _constants.ShieldDefendStunMultiplierForSkill.Length)
-            {
-                shieldSkill = _constants.ShieldDefendStunMultiplierForSkill.Length - 1;
-            }
-
-            defenderStunMultiplier = _constants.ShieldDefendStunMultiplierForSkill[shieldSkill];
+            defenderStunMultiplier = 1 / MathHelper.RecursivePolynomialFunctionOfDegree2(shieldSkill, _constants.ShieldDefendStunMultiplierForSkillRecursiveCoefs);
 
             return;
         }
 
         defenderStunMultiplier = 1f;
     }
-
 }

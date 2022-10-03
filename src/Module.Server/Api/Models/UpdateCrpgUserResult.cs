@@ -9,5 +9,5 @@ internal class UpdateCrpgUserResult
 {
     public CrpgUser User { get; set; } = default!;
     public CrpgUserEffectiveReward EffectiveReward { get; set; } = default!;
-    public IList<CrpgUserBrokenItem> BrokenItems { get; set; } = Array.Empty<CrpgUserBrokenItem>();
+    public IList<CrpgRepairedItem> RepairedItems { get; set; } = Array.Empty<CrpgRepairedItem>();
 }

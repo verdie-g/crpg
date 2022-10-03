@@ -13,19 +13,22 @@
               v-for="{ item, weaponIdx } in pageItems"
               v-bind:key="item.id"
             >
-              <div class="card item-card">
+              <div class="card item-card is-flex is-flex-direction-column">
                 <div class="card-image">
                   <figure class="image">
                     <img
                       :src="`${publicPath}items/${item.id}.png`"
                       alt="item image"
                       loading="lazy"
+                      style="height: 120px"
                     />
                   </figure>
                 </div>
-                <div class="card-content content">
-                  <h4>{{ item.name }}</h4>
-                  <div class="content">
+                <div
+                  class="card-content content is-flex-grow-1 is-flex is-flex-direction-column px-4"
+                >
+                  <h4 class="px-1">{{ item.name }}</h4>
+                  <div class="content is-flex-grow-1 is-flex">
                     <item-properties :item="item" :rank="0" :weapon-idx="weaponIdx" />
                   </div>
                 </div>
@@ -48,7 +51,7 @@
           <b-pagination
             :total="filteredItems.length"
             :current.sync="currentPage"
-            :per-page="itemsPerPage"
+            :per-page="this.filters.itemsPerPage"
             order="is-centered"
             range-before="2"
             range-after="2"
@@ -109,7 +112,7 @@ import { notify } from '@/services/notifications-service';
 import ShopFiltersForm from '@/components/ShopFiltersForm.vue';
 import ShopFilters from '@/models/shop-filters';
 import ItemType from '@/models/item-type';
-import { filterItemsByType } from '@/services/item-service';
+import { filterItemsByType, itemTypeToStr } from '@/services/item-service';
 import Culture from '@/models/culture';
 import UserItem from '@/models/user-item';
 
@@ -121,8 +124,6 @@ export default class Shop extends Vue {
 
   // items for which buy request was sent
   buyingItems: Record<string, boolean> = {};
-
-  itemsPerPage = 20;
 
   // items owned by the user
   get ownedItems(): Record<string, boolean> {
@@ -143,7 +144,7 @@ export default class Shop extends Vue {
     if (
       !this.filteredItems ||
       !pageQuery ||
-      pageQuery > Math.ceil(this.filteredItems.length / this.itemsPerPage)
+      pageQuery > Math.ceil(this.filteredItems.length / this.filters.itemsPerPage)
     ) {
       return 1;
     }
@@ -161,10 +162,21 @@ export default class Shop extends Vue {
         this.$route.query.showAffordable !== undefined
           ? this.$route.query.showAffordable === 'true'
           : false,
+      searchQuery: this.$route.query.searchQuery ? (this.$route.query.searchQuery as string) : '',
+      itemsPerPage: this.$route.query.itemsPerPage
+        ? Number.parseInt(this.$route.query.itemsPerPage as string)
+        : 20,
     };
   }
 
-  set filters({ type, culture, showOwned, showAffordable }: ShopFilters) {
+  set filters({
+    type,
+    culture,
+    showOwned,
+    showAffordable,
+    searchQuery,
+    itemsPerPage,
+  }: ShopFilters) {
     this.$router.push({
       query: {
         ...this.$route.query,
@@ -173,18 +185,26 @@ export default class Shop extends Vue {
         showOwned: showOwned === true ? undefined : false.toString(),
         showAffordable: showAffordable === true ? true.toString() : undefined,
         page: '1',
+        searchQuery: searchQuery,
+        itemsPerPage: itemsPerPage.toString(),
       },
     });
   }
 
   get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
     const filteredItems = itemModule.items.filter(i => {
+      if (i.type === ItemType.Banner) {
+        return false;
+      }
+
       if (!this.filters.showOwned && this.ownedItems[i.id] !== undefined) {
         return false;
       }
       if (this.filters.showAffordable && userModule.user?.gold && i.price > userModule.user.gold) {
         return false;
       }
+      if (!this.matchesItem(i, this.filters.searchQuery)) return false;
+
       // When the user filters by a culture, Neutral items are always added in the result.
       return (
         this.filters.culture === null ||
@@ -200,8 +220,8 @@ export default class Shop extends Vue {
       return [];
     }
 
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
+    const startIndex = (this.currentPage - 1) * this.filters.itemsPerPage;
+    const endIndex = startIndex + this.filters.itemsPerPage;
     return this.filteredItems.slice(startIndex, endIndex);
   }
 
@@ -227,6 +247,17 @@ export default class Shop extends Vue {
     }
 
     return '';
+  }
+
+  matchesItem(item: Item, searchQuery: string): boolean {
+    if (searchQuery.length === 0) return true;
+
+    const lowerCaseSearchQuery = searchQuery.toLowerCase();
+    return (
+      item.name.toLowerCase().includes(lowerCaseSearchQuery) ||
+      item.culture.toLowerCase().includes(lowerCaseSearchQuery) ||
+      itemTypeToStr[item.type].toLowerCase().includes(lowerCaseSearchQuery)
+    );
   }
 }
 </script>

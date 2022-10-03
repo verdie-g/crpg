@@ -1,7 +1,13 @@
 ---
+- name: Install required packages
+  apt:
+    name:
+      - gnupg
+      - ufw
+
 - name: Set up the apt repository to use mainline nginx packages
   apt_repository:
-    repo: deb http://nginx.org/packages/mainline/debian buster nginx
+    repo: deb http://nginx.org/packages/mainline/debian bullseye nginx
     state: present
     filename: nginx
     update_cache: no
@@ -13,7 +19,7 @@
 
 - name: Install Nginx
   apt:
-    name: "nginx={{ nginx_version }}-1~buster"
+    name: "nginx={{ nginx_version }}-1~bullseye"
     update_cache: yes
 
 - name: Download opentracing for nginx
@@ -31,17 +37,19 @@
 - name: Uncompress tracer for Datadog
   shell: "gunzip -c {{ datadog_tracer.dest }} > /usr/local/lib/libdd_opentracing_plugin.so"
 
-- name: Create cRPG SSL snippet file
-  template:
-    src: nginx-ssl-snippet.conf.j2
-    dest: /etc/nginx/snippets/crpg-ssl.conf
-    mode: 0644
-
 - name: Create Nginx configuration file
   template:
     src: nginx.conf.j2
     dest: /etc/nginx/nginx.conf
     mode: 0644
+
+- name: Create virtual server directory
+  file:
+      path: /etc/nginx/sites-enabled
+      state: directory
+      owner: root
+      group: root
+      mode: u=rwx,g=rx,o=rx
 
 - name: Create cRPG UI virtual server configuration file
   template:
@@ -54,6 +62,20 @@
     src: "nginx-api.{{ crpg_domain_name }}.j2"
     dest: "/etc/nginx/sites-enabled/api.{{ crpg_domain_name }}"
     mode: 0644
+
+- name: Create snippets directory
+  file:
+      path: /etc/nginx/snippets
+      state: directory
+      owner: root
+      group: root
+      mode: u=rwx,g=rx,o=rx
+
+- name: Create cRPG SSL snippet file
+  template:
+      src: nginx-ssl-snippet.conf.j2
+      dest: /etc/nginx/snippets/crpg-ssl.conf
+      mode: 0644
 
 - name: Create Datadog tracing configuration file
   template:

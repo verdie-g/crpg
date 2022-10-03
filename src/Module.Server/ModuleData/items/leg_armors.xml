@@ -72,6 +72,12 @@
     </ItemComponent>
     <Flags />
   </Item>
+  <Item id="crpg_eastern_leather_boots" name="{=Ga5mCiLp}Leather Riding Boots" mesh="plated_leather_armor_boot" culture="Culture.khuzait" weight="1.1" appearance="1" Type="LegArmor">
+    <ItemComponent>
+      <Armor leg_armor="6" covers_legs="true" modifier_group="leather" material_type="Leather" />
+    </ItemComponent>
+    <Flags Civilian="true" />
+  </Item>
   <Item id="crpg_khuzait_curved_boots" name="{=D9JrTpwU}Curved Boots" mesh="khuzait_leather_boots" culture="Culture.khuzait" weight="0.9" appearance="1" Type="LegArmor">
     <ItemComponent>
       <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />

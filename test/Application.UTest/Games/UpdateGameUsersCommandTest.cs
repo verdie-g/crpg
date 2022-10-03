@@ -17,7 +17,8 @@ public class UpdateGameUsersCommandTest : TestBase
     public void ShouldDoNothingForEmptyUpdates()
     {
         Mock<ICharacterService> characterServiceMock = new();
-        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
+        Mock<IItemService> itemServiceMock = new();
+        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, itemServiceMock.Object);
         Assert.DoesNotThrowAsync(() => handler.Handle(new UpdateGameUsersCommand(), CancellationToken.None));
     }
 
@@ -52,6 +53,12 @@ public class UpdateGameUsersCommandTest : TestBase
                         Assists = 3,
                         PlayTime = TimeSpan.FromSeconds(4),
                     },
+                    Rating = new CharacterRating
+                    {
+                        Value = 1,
+                        Deviation = 2,
+                        Volatility = 3,
+                    },
                 },
             },
         };
@@ -62,7 +69,8 @@ public class UpdateGameUsersCommandTest : TestBase
         characterServiceMock
             .Setup(cs => cs.GiveExperience(It.IsAny<Character>(), 10))
             .Callback((Character c, int xp) => c.Experience += xp);
-        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
+        Mock<IItemService> itemServiceMock = new();
+        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, itemServiceMock.Object);
         var result = await handler.Handle(new UpdateGameUsersCommand
         {
             Updates = new[]
@@ -82,6 +90,12 @@ public class UpdateGameUsersCommandTest : TestBase
                         Assists = 7,
                         PlayTime = TimeSpan.FromSeconds(8),
                     },
+                    // Rating = new CharacterRatingViewModel
+                    // {
+                    //     Value = 4,
+                    //     Deviation = 5,
+                    //     Volatility = 6,
+                    // },
                 },
             },
         }, CancellationToken.None);
@@ -98,19 +112,21 @@ public class UpdateGameUsersCommandTest : TestBase
         Assert.AreEqual(10, data.UpdateResults[0].EffectiveReward.Experience);
         Assert.AreEqual(200, data.UpdateResults[0].EffectiveReward.Gold);
         Assert.IsFalse(data.UpdateResults[0].EffectiveReward.LevelUp);
-        Assert.IsEmpty(data.UpdateResults[0].BrokenItems);
+        Assert.IsEmpty(data.UpdateResults[0].RepairedItems);
 
         var dbCharacter = await AssertDb.Characters.FirstAsync(c => c.Id == user.Characters[0].Id);
         Assert.AreEqual(6, dbCharacter.Statistics.Kills);
         Assert.AreEqual(8, dbCharacter.Statistics.Deaths);
         Assert.AreEqual(10, dbCharacter.Statistics.Assists);
         Assert.AreEqual(TimeSpan.FromSeconds(12), dbCharacter.Statistics.PlayTime);
+        // Assert.AreEqual(4, dbCharacter.Rating.Value);
+        // Assert.AreEqual(5, dbCharacter.Rating.Deviation);
+        // Assert.AreEqual(6, dbCharacter.Rating.Volatility);
 
         characterServiceMock.VerifyAll();
     }
 
     [Test]
-    [Ignore("Downgrading items is not ready")]
     public async Task BreakingAllCharacterItemsWithAutoRepairShouldRepairThemIfEnoughGold()
     {
         User user = new()
@@ -143,7 +159,8 @@ public class UpdateGameUsersCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         Mock<ICharacterService> characterServiceMock = new();
-        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
+        Mock<IItemService> itemServiceMock = new();
+        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, itemServiceMock.Object);
         var result = await handler.Handle(new UpdateGameUsersCommand
         {
             Updates = new[]
@@ -171,7 +188,7 @@ public class UpdateGameUsersCommandTest : TestBase
 
         var data = result.Data!;
         Assert.AreEqual(10000 - 3850, data.UpdateResults[0].User.Gold);
-        Assert.AreEqual(0, data.UpdateResults[0].BrokenItems.Count);
+        Assert.AreEqual(11, data.UpdateResults[0].RepairedItems.Count);
 
         var expectedItemsBySlot = user.Characters[0].EquippedItems.ToDictionary(ei => ei.Slot);
         var actualItemsBySlot = data.UpdateResults[0].User.Character.EquippedItems.ToDictionary(ei => ei.Slot);
@@ -236,7 +253,8 @@ public class UpdateGameUsersCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         Mock<ICharacterService> characterServiceMock = new();
-        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
+        Mock<IItemService> itemServiceMock = new();
+        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, itemServiceMock.Object);
 
         var result = await handler.Handle(new UpdateGameUsersCommand
         {
@@ -265,7 +283,7 @@ public class UpdateGameUsersCommandTest : TestBase
 
         var data = result.Data!;
         Assert.AreEqual(10000, data.UpdateResults[0].User.Gold);
-        Assert.AreEqual(11, data.UpdateResults[0].BrokenItems.Count);
+        Assert.AreEqual(11, data.UpdateResults[0].RepairedItems.Count);
 
         user = await AssertDb.Users
             .Include(u => u.Characters).ThenInclude(c => c.EquippedItems).ThenInclude(ei => ei.UserItem)
@@ -317,7 +335,8 @@ public class UpdateGameUsersCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         Mock<ICharacterService> characterServiceMock = new();
-        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object);
+        Mock<IItemService> itemServiceMock = new();
+        UpdateGameUsersCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, itemServiceMock.Object);
         var result = await handler.Handle(new UpdateGameUsersCommand
         {
             Updates = new[]
@@ -338,6 +357,7 @@ public class UpdateGameUsersCommandTest : TestBase
 
         var data = result.Data!;
         Assert.AreEqual(0, data.UpdateResults[0].User.Gold);
-        // Assert.AreEqual(1, data.UpdateResults[0].BrokenItems.Count); // not enough gold to repair the last one.
+        Assert.AreEqual(4, data.UpdateResults[0].RepairedItems.Count);
+        Assert.AreEqual(1, data.UpdateResults[0].RepairedItems.Count(i => i.Sold)); // not enough gold to repair the last one.
     }
 }
