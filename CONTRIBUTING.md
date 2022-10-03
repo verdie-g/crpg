@@ -51,6 +51,11 @@ The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the foll
 
 ## Run
 
+### VS Code .devcontainer (Docker)
+- Install VS Code extention [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- Run the `Remote-Containers: Open Folder in Container` command from the Command Palette (F1)
+- [more info](https://code.visualstudio.com/docs/remote/containers)
+
 ### Web API (src/WebApi)
 
 - Download [.NET 6 SDK](https://dotnet.microsoft.com/download)
