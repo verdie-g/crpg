@@ -74,6 +74,12 @@ By default, the Web API uses an in-memory database so no DBMS need to be downloa
 
 The client relies on the server so you have to run both.
 
+
+### VS Code .devcontainer (Docker)
+- Install VS Code extention [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- Run the `Remote-Containers: Open Folder in Container` command from the Command Palette (F1)
+- [more info](https://code.visualstudio.com/docs/remote/containers)
+
 ### Strategus (src/Strategus)
 
 Strategus is a standalone program but if you want to share its data with the
