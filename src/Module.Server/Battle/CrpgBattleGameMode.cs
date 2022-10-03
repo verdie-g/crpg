@@ -106,6 +106,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
                     new CrpgUserManager(crpgClient),
                     new KickInactiveBehavior(warmupComponent, notificationsComponent),
+                    new MapVoteComponent(),
 #else
                     new MultiplayerRoundComponent(),
                     new MissionMatchHistoryComponent(),
