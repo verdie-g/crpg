@@ -15,7 +15,8 @@ internal class MapVoteComponent : MissionBehavior
 {
     private const int MaxMapsToVote = 5; // Only 5 maps fit in the intermission screen.
 
-    private string[]? _maps;
+    /// <summary>The entire map pool. Needs to be static to survive the mission change.</summary>
+    private static string[]? _maps;
 
     public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
 
