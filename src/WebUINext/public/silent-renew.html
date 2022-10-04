@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>silent-renew</title>
+</head>
+<body>
+  <script>
+    window.onload = function () {
+      // Inspired by oidc-client -> IFrameWindow.notifyParent
+      window.parent.postMessage(window.location.href, location.protocol + "//" + location.host);
+    };
+  </script>
+</body>
+</html>
