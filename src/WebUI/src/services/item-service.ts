@@ -370,12 +370,13 @@ export function sortItems(items: Item[], sortBy: string, sortDesc: boolean): Ite
     let field1 = itemDesc1.fields.find(field => field[0] === sortBy);
     let field2 = itemDesc2.fields.find(field => field[0] === sortBy);
 
-    if (!field1 && !field2) {
+    if (!field1) {
       field1 = itemDesc1.modes
         .map(mode => mode.fields)
         .flatMap(f => f)
         .find(field => field[0] === sortBy);
-
+    }
+    if (!field2) {
       field2 = itemDesc2.modes
         .map(mode => mode.fields)
         .flatMap(f => f)
