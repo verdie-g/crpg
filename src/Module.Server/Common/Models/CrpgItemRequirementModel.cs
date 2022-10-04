@@ -29,7 +29,7 @@ internal class CrpgItemRequirementModel
     }
 
     // make sure this method does the same thing as the one in the webui.
-    public static int ComputeArmorSetPieceStrengthRequirement(List<ItemObject> armors)
+    public int ComputeArmorSetPieceStrengthRequirement(List<ItemObject> armors)
     {
         if (armors == null)
         {
@@ -43,7 +43,7 @@ internal class CrpgItemRequirementModel
             armorsRequirements[i] = ComputeArmorPieceStrengthRequirement(armors[i]);
         }
 
-        return (int)MathHelper.GeneralizedMean(10, armorsRequirements);
+        return (int)MathHelper.GeneralizedMean(_constants.ArmorSetRequirementPowerMeanPValue, armorsRequirements);
     }
 
     private static int ComputeArmorPieceStrengthRequirement(ItemObject item)
