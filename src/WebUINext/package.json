@@ -15,13 +15,16 @@
   "dependencies": {
     "pinia": "^2.0.22",
     "vue": "^3.2.40",
+    "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
+    "@intlify/vite-plugin-vue-i18n": "^6.0.3",
     "@pinia/testing": "^0.0.14",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^11.0.2",
+    "@vue/test-utils": "^2.1.0",
     "@vueuse/core": "^9.3.0",
     "@vueuse/head": "^0.8.2",
     "autoprefixer": "^10.4.12",
@@ -30,6 +33,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.5.1",
+    "jsdom": "^20.0.1",
     "postcss": "^8.4.17",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
@@ -38,6 +42,8 @@
     "typescript": "^4.8.4",
     "unplugin-auto-import": "^0.11.2",
     "vite": "^3.1.4",
+    "vite-plugin-pages": "^0.26.0",
+    "vite-plugin-vue-layouts": "^0.7.0",
     "vitest": "^0.23.4",
     "vue-tsc": "^0.40.13"
   },

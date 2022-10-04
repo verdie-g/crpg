@@ -1,12 +1,11 @@
 <script setup lang="ts">
+import { type BootModule } from '~/types/boot';
+
 useHead({
   title: 'Hi Mark',
 });
-
-const r = import.meta.env.VITE_API_BASE_URL;
 </script>
 
 <template>
-  <div>Hi Mark</div>
-</template>>
-
+  <RouterView />
+</template>

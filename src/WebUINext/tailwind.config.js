@@ -1,3 +1,4 @@
+// @ts-check
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['index.html', './src/**/*.{js,jsx,ts,tsx,vue,html}'],
@@ -12,11 +13,11 @@ module.exports = {
     },
 
     // TODO:
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      white: '#ffffff',
-    },
+    // colors: {
+    //   transparent: 'transparent',
+    //   current: 'currentColor',
+    //   white: '#ffffff',
+    // },
 
     ////////////////////////////////
 
