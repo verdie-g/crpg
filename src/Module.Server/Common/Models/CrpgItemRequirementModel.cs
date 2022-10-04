@@ -3,8 +3,14 @@ using TaleWorlds.Core;
 
 namespace Crpg.Module.Common.Models;
 
-internal static class CrpgItemRequirementModel
+internal class CrpgItemRequirementModel
 {
+    private readonly CrpgConstants _constants;
+    public CrpgItemRequirementModel(CrpgConstants constants)
+    {
+        _constants = constants;
+    }
+
     public static int ComputeItemRequirement(ItemObject item)
     {
         switch (item.ItemType)

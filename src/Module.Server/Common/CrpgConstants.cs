@@ -61,4 +61,5 @@ internal class CrpgConstants
     public int StrategusMaxPartyTroops { get; set; }
     public int StrategusBattleInitiationDurationHours { get; set; }
     public int StrategusBattleHiringDurationHours { get; set; }
+    public float ArmorSetRequirementPowerMeanPValue { get; set; }
 }

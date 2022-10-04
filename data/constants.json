@@ -59,5 +59,6 @@
   "strategusBattleInitiationDurationHours": 24,
   "strategusBattleHiringDurationHours": 12,
   "strategusMercenaryMaxWage": 100000,
-  "strategusMercenaryNoteMaxLength": 64
+  "strategusMercenaryNoteMaxLength": 64,
+  "armorSetRequirementPowerMeanPValue": 4 
 }
