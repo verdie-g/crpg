@@ -112,15 +112,14 @@
       >
         <div class="field">
           <b-switch :value="character.autoRepair" @input="onAutoRepairSwitch" disabled>
-            Automatically repair damaged items (average repair cost
-            {{ averageRepairCost }} gold)
+            Automatically repair damaged items
           </b-switch>
         </div>
       </b-tooltip>
 
       <br />
 
-      <b-tooltip label="Respecialize character for a third of its experience." multilined>
+      <b-tooltip label="Respecialize character." multilined>
         <b-button
           type="is-warning"
           icon-left="angle-double-down"
@@ -134,6 +133,7 @@
       <b-tooltip
         label="Reset character to level 1 to grant a bonus multiplier and an heirloom point. (lvl > 30)"
         multilined
+        class="mr-2"
       >
         <b-button
           type="is-warning"
@@ -149,62 +149,147 @@
       <b-button type="is-danger" icon-left="trash" @click="openDeleteCharacterDialog">
         Delete
       </b-button>
+
+      <character-overall-items-stats-component :equippedItems="characterEquippedItems" />
     </div>
 
-    <b-modal :active.sync="isReplaceItemModalActive" scroll="keep" ref="replaceItemModal">
-      <div class="columns is-marginless replace-item-modal">
-        <div class="column" v-if="userItemToReplace">
-          <h3>
-            Replace
-            <strong :class="userItemRankClass(userItemToReplace)">
-              {{ userItemToReplace.baseItem.name }}
-            </strong>
+    <b-modal :active.sync="isReplaceItemModalActive" ref="replaceItemModal">
+      <div class="replace-item-modal is-flex is-flex-direction-column px-4 py-4">
+        <div class="is-flex-shrink-1">
+          <h3 class="is-size-4 mb-2">
+            <template v-if="userItemToReplace">Replace</template>
+            <template v-else>Equip</template>
+            {{ userItemToReplaceSlot }}
+            <span v-if="userItemToReplace" :class="userItemRankClass(userItemToReplace)">
+              -
+              <strong>{{ userItemToReplace.baseItem.name }}</strong>
+            </span>
           </h3>
-          <item-properties :item="userItemToReplace.baseItem" :rank="userItemToReplace.rank" />
-          <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
-          <b-button
-            size="is-medium"
-            type="is-warning"
-            icon-left="angle-double-up"
-            expanded
-            :disabled="!itemToReplaceUpgradeInfo.upgradable"
-            :title="itemToReplaceUpgradeInfo.reason"
-            @click="upgradeItem"
-          >
-            Upgrade
-          </b-button>
-          <b-button size="is-medium" type="is-danger" icon-left="coins" expanded @click="sellItem">
-            Sell
-          </b-button>
         </div>
-        <div class="column user-items">
-          <div v-if="fittingUserItems.length" class="columns is-multiline">
+        <div class="modal--content is-flex-grow-0 is-flex-shrink-1 is-flex">
+          <div class="columns">
             <div
-              class="column is-narrow user-item"
-              v-for="userItem in fittingUserItems"
-              v-bind:key="userItem.id"
-              @click="selectedUserItem = userItem"
+              class="column is-flex is-flex-direction-column is-align-items-center"
+              v-if="userItemToReplace"
             >
-              <figure class="image">
-                <img :src="userItemImage(userItem)" alt="item image" />
-              </figure>
-              <h4 :class="userItemRankClass(userItem)">{{ userItem.baseItem.name }}</h4>
-              <item-properties :item="userItem.baseItem" :rank="userItem.rank" />
+              <div class="is-flex-grow-1 is-align-self-center is-flex is-align-items-center">
+                <div class="user-item">
+                  <display-user-item :user-item="userItemToReplace" />
+                </div>
+              </div>
+            </div>
+            <div class="user-items column is-flex is-flex-direction-column">
+              <div
+                v-if="fittingUserItems.length"
+                class="columns is-multiline is-justify-content-center"
+              >
+                <div
+                  class="column is-narrow user-item user-item__action is-relative"
+                  v-for="userItem in fittingUserItems"
+                  v-bind:key="userItem.id"
+                  @click="selectedUserItem = userItem"
+                >
+                  <display-user-item :user-item="userItem" />
+                  <div
+                    v-if="selectedUserItem && selectedUserItem.id === userItem.id"
+                    class="confirm-selection__overlay px-2 py-3 is-flex is-flex-direction-column is-align-items-center is-justify-content-center has-text-centered"
+                    @click="confirmItemSelection"
+                  >
+                    <span class="is-size-6">Replace with:</span>
+                    <div>
+                      <strong :class="userItemRankClass(selectedUserItem)" class="is-size-5">
+                        {{ selectedUserItem.baseItem.name }}
+                      </strong>
+                    </div>
+                    <b-icon icon="check" size="is-large" />
+                  </div>
+                </div>
+              </div>
+              <div v-else class="py-3 has-text-centered">
+                <template v-if="userItemToReplace">
+                  You don't own any other items of this type.
+                </template>
+                <template v-else>You don't own any items of this type.</template>
+              </div>
             </div>
           </div>
-          <div v-else>You don't own any item for this type.</div>
         </div>
-        <div class="column" v-if="selectedUserItem">
-          <h3>
-            Replace with
-            <strong :class="userItemRankClass(selectedUserItem)">
-              {{ selectedUserItem.baseItem.name }}
-            </strong>
-          </h3>
-          <div class="content">
-            <item-properties :item="selectedUserItem.baseItem" :rank="selectedUserItem.rank" />
-            <b-button size="is-medium" icon-left="check" expanded @click="confirmItemSelection" />
+        <div v-if="userItemToReplace" class="is-flex-shrink-0">
+          <div class="is-flex-shrink-1 columns mt-3">
+            <div class="column">
+              <b-button size="is-medium" expanded @click="unequipItem">Unequip</b-button>
+            </div>
+            <div class="column">
+              <b-button
+                size="is-medium"
+                type="is-warning"
+                icon-left="angle-double-up"
+                expanded
+                :disabled="!itemToReplaceUpgradeInfo.upgradable"
+                :title="itemToReplaceUpgradeInfo.reason"
+                @click="upgradeItem"
+              >
+                Upgrade
+              </b-button>
+            </div>
+            <div class="column">
+              <b-button
+                size="is-medium"
+                type="is-danger"
+                icon-left="coins"
+                expanded
+                @click="showSellItemConfirmation(userItemToReplace)"
+              >
+                Sell for {{ userItemToReplaceSalePrice }} gold
+              </b-button>
+            </div>
           </div>
+        </div>
+      </div>
+    </b-modal>
+
+    <b-modal :active.sync="isConfirmSellItemModalActive" scroll="keep" ref="confirmSellItemModal">
+      <div
+        v-if="userItemToSell"
+        class="columns is-flex-direction-column is-marginless is-align-items-center sell-item-modal has-background-white"
+      >
+        <div class="column">
+          <div class="has-text-centered">
+            <span class="is-size-4">
+              Are you sure you want to sell
+              <strong :class="userItemRankClass(userItemToSell)">
+                {{ userItemToSell.baseItem.name }}
+              </strong>
+              ?
+            </span>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="user-item">
+            <display-user-item :user-item="userItemToSell" />
+          </div>
+        </div>
+
+        <div class="column">
+          <b-button
+            size="is-medium"
+            type="is-danger"
+            icon-left="coins"
+            expanded
+            @click="confirmSellItem"
+          >
+            Sell for {{ userItemToReplaceSalePrice }} gold
+          </b-button>
+          <b-button
+            size="is-medium"
+            type="is-secondary"
+            icon-left="xmark"
+            expanded
+            @click="cancelSellItem"
+          >
+            Cancel
+          </b-button>
         </div>
       </div>
     </b-modal>
@@ -217,15 +302,21 @@ import ItemProperties from '@/components/ItemProperties.vue';
 import userModule from '@/store/user-module';
 import Character from '@/models/character';
 import ItemSlot from '@/models/item-slot';
-import { computeAverageRepairCost } from '@/services/characters-service';
-import { filterUserItemsFittingInSlot } from '@/services/item-service';
+import { filterUserItemsFittingInSlot, computeSalePrice } from '@/services/item-service';
 import { NotificationType, notify } from '@/services/notifications-service';
 import CharacterStatsComponent from '@/components/CharacterStatsComponent.vue';
+import CharacterOverallItemsStatsComponent from '@/components/CharacterOverallItemsStatsComponent.vue';
 import EquippedItem from '@/models/equipped-item';
 import UserItem from '@/models/user-item';
+import DisplayUserItem from '@/components/user/DisplayUserItem.vue';
 
 @Component({
-  components: { CharacterStatsComponent, ItemProperties },
+  components: {
+    DisplayUserItem,
+    CharacterStatsComponent,
+    ItemProperties,
+    CharacterOverallItemsStatsComponent,
+  },
 })
 export default class CharacterComponent extends Vue {
   @Prop(Object) readonly character: Character;
@@ -233,8 +324,10 @@ export default class CharacterComponent extends Vue {
   // modal stuff
   itemSlot = ItemSlot;
   isReplaceItemModalActive = false;
+  isConfirmSellItemModalActive = false;
   userItemToReplace: UserItem | null = null;
   userItemToReplaceSlot: ItemSlot | null = null;
+  userItemToSell: UserItem | null = null;
   selectedUserItem: UserItem | null = null;
 
   get characterEquippedItems(): EquippedItem[] | null {
@@ -250,14 +343,6 @@ export default class CharacterComponent extends Vue {
       userItemsBySlot[ei.slot] = ei.userItem;
       return userItemsBySlot;
     }, {} as Record<ItemSlot, UserItem>);
-  }
-
-  get averageRepairCost(): number {
-    if (this.characterEquippedItems === null) {
-      return 0;
-    }
-
-    return Math.floor(computeAverageRepairCost(this.characterEquippedItems));
   }
 
   get fittingUserItems(): UserItem[] {
@@ -284,6 +369,14 @@ export default class CharacterComponent extends Vue {
 
     // return info;
     return { upgradable: false, reason: 'Heirloom are disabled for now' };
+  }
+
+  get userItemToReplaceSalePrice(): number {
+    if (this.userItemToReplace === null) {
+      return 0;
+    }
+
+    return computeSalePrice(this.userItemToReplace);
   }
 
   created() {
@@ -372,13 +465,14 @@ export default class CharacterComponent extends Vue {
     (this.$refs.replaceItemModal as any).close();
   }
 
-  async sellItem(): Promise<void> {
+  async confirmSellItem(): Promise<void> {
     const salePrice = await userModule.sellUserItem(this.userItemToReplace!);
     notify(
       `Sold ${this.userItemToReplace?.baseItem.name} for ${salePrice} gold`,
       NotificationType.Info
     );
     (this.$refs.replaceItemModal as any).close();
+    (this.$refs.confirmSellItemModal as any).close();
   }
 
   confirmItemSelection(): void {
@@ -388,6 +482,16 @@ export default class CharacterComponent extends Vue {
       userItem: this.selectedUserItem!,
     });
     this.isReplaceItemModalActive = false;
+  }
+
+  showSellItemConfirmation(userItem: UserItem): void {
+    this.isConfirmSellItemModalActive = true;
+    this.userItemToSell = userItem;
+  }
+
+  cancelSellItem(): void {
+    this.isConfirmSellItemModalActive = false;
+    this.userItemToSell = null;
   }
 }
 </script>
@@ -431,22 +535,30 @@ export default class CharacterComponent extends Vue {
   background-color: #fff; // TODO: replace with bulma variable
   // inherit modal height
   max-height: inherit;
-}
 
-.user-items {
-  overflow: auto;
+  .modal--content {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    .user-items {
+      overflow-y: auto;
 
-  & > .columns {
-    justify-content: center;
+      & > .columns {
+        justify-content: center;
+      }
+    }
   }
 }
 
 .user-item {
   width: 256px;
-  cursor: pointer;
 
-  &:hover {
-    background-color: #fafafa; // TODO: use bulma variable
+  // Only apply hover styles to items with a click action
+  &__action {
+    cursor: pointer;
+    // Apply hover effect to any user-items with the hover-action class
+    &:hover {
+      background-color: #fafafa; // TODO: use bulma variable
+    }
   }
 }
 
@@ -470,5 +582,20 @@ export default class CharacterComponent extends Vue {
 }
 .item-rank3 {
   color: #774fc2;
+}
+
+.confirm-selection__overlay {
+  border-radius: 50%;
+  opacity: 0.85;
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  top: 20%;
+  bottom: 20%;
+  background-color: #bdbdbd;
+  transition: background-color 200ms;
+  &:hover {
+    background-color: #c8e1c8;
+  }
 }
 </style>

@@ -1,5 +1,8 @@
 # How to contribute to cRPG
 
+Contributors should follow [Google Engineering Practices](https://google.github.io/eng-practices)! For example too large
+PRs or PRs with no context might get ignored.
+
 ## Report a bug
 
 - **Do not open GitHub issue if the bug is a security vulnerability in cRPG**, and instead follow
@@ -48,9 +51,14 @@ The UI was bootstrapped using [Vue CLI](https://cli.vuejs.org). It uses the foll
 
 ## Run
 
+### VS Code .devcontainer (Docker)
+- Install VS Code extention [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- Run the `Remote-Containers: Open Folder in Container` command from the Command Palette (F1)
+- [more info](https://code.visualstudio.com/docs/remote/containers)
+
 ### Web API (src/WebApi)
 
-- Download [.NET 5 SDK](https://dotnet.microsoft.com/download)
+- Download [.NET 6 SDK](https://dotnet.microsoft.com/download)
 - Download your favorite IDE: [Visual Studio](https://visualstudio.microsoft.com/vs), [Visual Studio Code](https://code.visualstudio.com), [Rider](https://www.jetbrains.com/rider)...
 - Open the solution file Crpg.sln
 - Set the `IdentityServer:Providers:Steam:ApplicationKey` in

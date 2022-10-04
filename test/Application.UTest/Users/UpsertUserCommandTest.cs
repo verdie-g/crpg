@@ -92,7 +92,8 @@ public class UpsertUserCommandTest : TestBase
             PlatformUserId = "13948192759205810",
         }, CancellationToken.None);
 
-        var dbUser = await AssertDb.Users.FindAsync(user.Id);
+        var dbUser = await AssertDb.Users
+            .FirstAsync(u => u.Id == user.Id);
         Assert.IsNull(dbUser!.DeletedAt);
     }
 

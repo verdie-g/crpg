@@ -1,6 +1,9 @@
 using Crpg.Application.Characters.Commands;
 using Crpg.Application.Common.Results;
 using Crpg.Domain.Entities.Characters;
+using Crpg.Sdk.Abstractions;
+using Microsoft.EntityFrameworkCore;
+using Moq;
 using NUnit.Framework;
 
 namespace Crpg.Application.UTest.Characters;
@@ -10,37 +13,43 @@ public class DeleteCharacterCommandTest : TestBase
     [Test]
     public async Task WhenCharacterExists()
     {
-        var e = ArrangeDb.Characters.Add(new Character
+        var character = new Character
         {
             Name = "sword",
             UserId = 1,
-        });
+        };
+        ArrangeDb.Characters.Add(character);
         await ArrangeDb.SaveChangesAsync();
 
-        DeleteCharacterCommand.Handler handler = new(ActDb);
+        DeleteCharacterCommand.Handler handler = new(ActDb, Mock.Of<IDateTime>());
         await handler.Handle(new DeleteCharacterCommand
         {
-            CharacterId = e.Entity.Id,
-            UserId = e.Entity.UserId,
+            CharacterId = character.Id,
+            UserId = character.UserId,
         }, CancellationToken.None);
 
-        Assert.IsNull(await AssertDb.Characters.FindAsync(e.Entity.Id));
+        var characterDb = await AssertDb.Characters
+            .IgnoreQueryFilters()
+            .FirstOrDefaultAsync(c => c.Id == character.Id);
+        Assert.IsNotNull(characterDb);
+        Assert.IsNotNull(characterDb!.DeletedAt);
     }
 
     [Test]
     public async Task WhenCharacterExistsButNotOwnedByUser()
     {
-        var e = ArrangeDb.Characters.Add(new Character
+        var character = new Character
         {
             Name = "sword",
             UserId = 2,
-        });
+        };
+        ArrangeDb.Characters.Add(character);
         await ArrangeDb.SaveChangesAsync();
 
-        DeleteCharacterCommand.Handler handler = new(ActDb);
+        DeleteCharacterCommand.Handler handler = new(ActDb, Mock.Of<IDateTime>());
         var result = await handler.Handle(new DeleteCharacterCommand
         {
-            CharacterId = e.Entity.Id,
+            CharacterId = character.Id,
             UserId = 1,
         }, CancellationToken.None);
 
@@ -50,7 +59,7 @@ public class DeleteCharacterCommandTest : TestBase
     [Test]
     public async Task WhenCharacterDoesntExist()
     {
-        DeleteCharacterCommand.Handler handler = new(ActDb);
+        DeleteCharacterCommand.Handler handler = new(ActDb, Mock.Of<IDateTime>());
         var result = await handler.Handle(new DeleteCharacterCommand { CharacterId = 1 }, CancellationToken.None);
         Assert.AreEqual(ErrorCode.CharacterNotFound, result.Errors![0].Code);
     }

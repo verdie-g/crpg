@@ -20,14 +20,12 @@ public record SellUserItemCommand : IMediatorRequest
         private static readonly ILogger Logger = LoggerFactory.CreateLogger<SellUserItemCommand>();
 
         private readonly ICrpgDbContext _db;
-        private readonly IItemModifierService _itemModifierService;
-        private readonly Constants _constants;
+        private readonly IItemService _itemService;
 
-        public Handler(ICrpgDbContext db, IItemModifierService itemModifierService, Constants constants)
+        public Handler(ICrpgDbContext db, IItemService itemService)
         {
             _db = db;
-            _itemModifierService = itemModifierService;
-            _constants = constants;
+            _itemService = itemService;
         }
 
         public async Task<Result> Handle(SellUserItemCommand req, CancellationToken cancellationToken)
@@ -43,14 +41,10 @@ public record SellUserItemCommand : IMediatorRequest
                 return new Result(CommonErrors.UserItemNotFound(req.UserItemId));
             }
 
-            int price = _itemModifierService.ModifyItem(userItem.BaseItem!, userItem.Rank).Price;
-            userItem.User!.Gold += (int)MathHelper.ApplyPolynomialFunction(price, _constants.ItemSellCostCoefs);
-            _db.EquippedItems.RemoveRange(userItem.EquippedItems);
-            _db.UserItems.Remove(userItem);
-
+            _itemService.SellUserItem(_db, userItem);
             await _db.SaveChangesAsync(cancellationToken);
 
-            Logger.LogInformation("User '{0}' sold item '{1}'", req.UserId, req.UserItemId);
+            Logger.LogInformation("User '{0}' sold item '{1}'", req.UserId, userItem.BaseItemId);
             return new Result();
         }
     }

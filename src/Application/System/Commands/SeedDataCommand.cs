@@ -71,7 +71,7 @@ public record SeedDataCommand : IMediatorRequest
             User takeo = new()
             {
                 PlatformUserId = "76561197987525637",
-                Name = "takeoshigeru",
+                Name = "takeo",
                 Gold = 30000,
                 HeirloomPoints = 2,
                 Role = Role.Admin,
@@ -83,9 +83,52 @@ public record SeedDataCommand : IMediatorRequest
             {
                 PlatformUserId = "76561197979511363",
                 Name = "Namidaka",
+                Gold = 100000,
+                Characters = new List<Character>
+                    {
+                        new Character
+                        {
+                        Name = "namichar",
+                        Level = 10,
+                        Experience = 146457,
+                        },
+                    },
                 AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273.jpg"),
                 AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273_medium.jpg"),
                 AvatarFull = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/703178fb540263bd30d5b84562b1167985603273_full.jpg"),
+            };
+            User thradok = new()
+            {
+                PlatformUserId = "76561198011271387",
+                Name = "Thradok Odai",
+                Gold = 100000,
+                Characters = new List<Character>
+                    { new Character { Name = "Thradok Odai" } },
+                AvatarSmall = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb.jpg"),
+                AvatarMedium = new Uri("https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_medium.jpg"),
+                AvatarFull = new Uri("https://avatars.cloudflare.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg"),
+            };
+            User kinngrimm = new()
+            {
+                PlatformUserId = "76561197998594278",
+                Name = "Kinngrimm",
+                Gold = 100000,
+                Characters = new List<Character>
+                { new Character { Name = "kinnchar" } },
+                AvatarSmall = new Uri("https://avatars.cloudflare.steamstatic.com/ed4f240198b8ad5ceebe4fad0160f13c1e0c3a1f.jpg"),
+                AvatarMedium = new Uri("https://avatars.cloudflare.steamstatic.com/ed4f240198b8ad5ceebe4fad0160f13c1e0c3a1f_medium.jpg"),
+                AvatarFull = new Uri("https://avatars.cloudflare.steamstatic.com/ed4f240198b8ad5ceebe4fad0160f13c1e0c3a1f_full.jpg"),
+            };
+            User orle = new()
+            {
+                PlatformUserId = "76561198016876889",
+                Name = "orle",
+                Gold = 100000,
+                Characters = new List<Character>
+                { new Character { Name = "orlechar" } },
+                AvatarSmall = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d.jpg"),
+                AvatarMedium = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_medium.jpg"),
+                AvatarFull = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_full.jpg"),
             };
             User laHire = new()
             {
@@ -562,12 +605,12 @@ public record SeedDataCommand : IMediatorRequest
 
             User[] newUsers =
             {
-                takeo, baronCyborg, magnuclean, knitler, tjens, lerch, buddha, lancelot, bakhrat, distance,
+                takeo, orle, baronCyborg, magnuclean, knitler, tjens, lerch, buddha, lancelot, bakhrat, distance,
                 victorhh888, schumetzq, bryggan, ikarooz, kiwi, brainfart, falcom, opset, leanir, sellka, firebat,
                 ecko, neostralie, zorguy, azuma, elmaryk, namidaka, laHire, manik, ajroselle, skrael, bedo, lambic,
                 sanasar, vlad007, canp0g, shark, noobAmphetamine, mundete, aroyFalconer, insanitoid, scarface,
                 xDem, disorot, ace, sagar, greenShadow, hannibaru, drexx, xarosh, tipsyToby, localAlpha, alex,
-                kedrynFuel, luqero, ilya, eztli, telesto, kypak, devoidDragon, krog,
+                kedrynFuel, luqero, ilya, eztli, telesto, kypak, devoidDragon, krog, thradok,
             };
 
             var existingUsers = await _db.Users.ToDictionaryAsync(u => (u.Platform, u.PlatformUserId));
@@ -656,18 +699,20 @@ public record SeedDataCommand : IMediatorRequest
             Clan pecores = new()
             {
                 Tag = "PEC",
-                PrimaryColor = 1234567,
-                SecondaryColor = 890,
+                PrimaryColor = 4278190318,
+                SecondaryColor = 4294957414,
                 Name = "Pecores",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan ats = new()
             {
                 Tag = "ATS",
-                PrimaryColor = 1234567,
-                SecondaryColor = 890,
+                PrimaryColor = 4281348144,
+                SecondaryColor = 4281348144,
                 Name = "Among The Shadows",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan legio = new()
             {
@@ -676,6 +721,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Legio",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan theGrey = new()
             {
@@ -684,6 +730,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "The Grey",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan ode = new()
             {
@@ -692,6 +739,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Ordre de l'étoile",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan virginDefenders = new()
             {
@@ -700,6 +748,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Virgin Defenders",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan randomClan = new()
             {
@@ -708,6 +757,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Random Clan",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan abcClan = new()
             {
@@ -716,6 +766,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "ABC",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan defClan = new()
             {
@@ -724,6 +775,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "DEF",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan ghiClan = new()
             {
@@ -732,6 +784,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "GHI",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan jklClan = new()
             {
@@ -740,6 +793,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "JKL",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan mnoClan = new()
             {
@@ -748,6 +802,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "MNO",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan pqrClan = new()
             {
@@ -756,6 +811,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Plan QR",
                 BannerKey = string.Empty,
+                Region = Region.Europe,
             };
             Clan[] newClans =
             {
@@ -1610,6 +1666,7 @@ public record SeedDataCommand : IMediatorRequest
                 Type = item.Type,
                 Price = item.Price,
                 Weight = item.Weight,
+                Requirement = item.Requirement,
             };
 
             if (item.Armor != null)

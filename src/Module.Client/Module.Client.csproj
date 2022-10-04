@@ -28,6 +28,9 @@
     <Compile Include="..\Module.Server\**\*$(DefaultLanguageSourceExtension)" />
     <Compile Remove="..\Module.Server\$(BaseIntermediateOutputPath)\**;..\Module.Server\$(BaseOutputPath)\**" />
     <Compile Remove="..\Module.Server\Rating\**" />
+    <Compile Remove="..\Module.Server\Api\*Client.cs" />
+    <Compile Remove="..\Module.Server\Battle\CrpgBattleMissionMultiplayer.cs" />
+    <Compile Remove="..\Module.Server\Common\CrpgUserManager.cs" />
   </ItemGroup>
 
   <ItemGroup>
