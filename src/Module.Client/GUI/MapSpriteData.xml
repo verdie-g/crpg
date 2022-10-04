@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>41</SpriteSheetCount>
+      <SpriteSheetCount>52</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -59,6 +59,17 @@
       <SpriteSheetSize ID="39" Width="1920" Height="1080" />
       <SpriteSheetSize ID="40" Width="1920" Height="1080" />
       <SpriteSheetSize ID="41" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="42" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="43" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="44" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="45" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="46" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="47" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="48" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="49" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="50" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="51" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="52" Width="1920" Height="1080" />
     </SpriteCategory>
   </SpriteCategories>
   <SpriteParts>
@@ -431,6 +442,114 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>41</SheetID>
+      <Name>mp_tdm_map_004a_w</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>42</SheetID>
+      <Name>crpg_battle_abandoned</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>43</SheetID>
+      <Name>crpg_battle_onomasticon</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>44</SheetID>
+      <Name>crpg_battle_sanctuary</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>45</SheetID>
+      <Name>crpg_battle_dragonsroost</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>46</SheetID>
+      <Name>crpg_battle_sandpit</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>47</SheetID>
+      <Name>crpg_battle_acaciacitadel</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>48</SheetID>
+      <Name>crpg_battle_vatnborg</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>49</SheetID>
+      <Name>crpg_battle_swampbrawl</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>50</SheetID>
+      <Name>crpg_battle_sallyout</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>51</SheetID>
+      <Name>crpg_battle_skolderby</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>52</SheetID>
+      <Name>crpg_battle_banditvalley</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -596,6 +715,50 @@
     <GenericSprite>
       <Name>mp_tdm_map_004a_w</Name>
       <SpritePartName>mp_tdm_map_004a_w</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_abandoned</Name>
+      <SpritePartName>crpg_battle_abandoned</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_onomasticon</Name>
+      <SpritePartName>crpg_battle_onomasticon</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_sanctuary</Name>
+      <SpritePartName>crpg_battle_sanctuary</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_dragonsroost</Name>
+      <SpritePartName>crpg_battle_dragonsroost</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_sandpit</Name>
+      <SpritePartName>crpg_battle_sandpit</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_acaciacitadel</Name>
+      <SpritePartName>crpg_battle_acaciacitadel</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_vatnborg</Name>
+      <SpritePartName>crpg_battle_vatnborg</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_swampbrawl</Name>
+      <SpritePartName>crpg_battle_swampbrawl</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_sallyout</Name>
+      <SpritePartName>crpg_battle_sallyout</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_skolderby</Name>
+      <SpritePartName>crpg_battle_skolderby</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_banditvalley</Name>
+      <SpritePartName>crpg_battle_banditvalley</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>

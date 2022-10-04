@@ -6,11 +6,14 @@
 
   <!-- Maps -->
   <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=!}Abandoned" />
+  <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=!}Acacia Citadel" />
   <string id="str_multiplayer_scene_name.crpg_battle_banditvalley" text="{=!}Bandit valley" />
-  <string id="str_multiplayer_scene_name.crpg_battle_islandvillage" text="{=!}Island Village" />
+  <string id="str_multiplayer_scene_name.crpg_battle_dragonsroost" text="{=!}Dragon's Roost" />
   <string id="str_multiplayer_scene_name.crpg_battle_onomasticon" text="{=!}Onomasticon" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sallyout" text="{=!}Sally Out" />
   <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=!}Sanctuary" />
   <string id="str_multiplayer_scene_name.crpg_battle_sandpit" text="{=!}Sandpit" />
+  <string id="str_multiplayer_scene_name.crpg_battle_skolderby" text="{=!}Skolderby" />
   <string id="str_multiplayer_scene_name.crpg_battle_swampbrawl" text="{=!}Swamp Brawl"/>
   <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=!}Vatnborg" />
 </strings>
