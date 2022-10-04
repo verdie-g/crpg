@@ -433,6 +433,9 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 vetur.config.js
 
+# c8/istanbul
+coverage/
+
 # cRPG
 src/WebUI/public/items/
 *.jwk

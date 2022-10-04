@@ -11,17 +11,18 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"]
   },
+  "baseUrl": ".",
+  "paths": {
+    "~/*": ["src/*"],
+    "~~/*": ["/*"],
+
+  },
   "types": [
     "vite/client",
     "vitest/globals",
     "vite-plugin-pages/client",
     "vite-plugin-vue-layouts/client"
   ],
-  "paths": {
-    "~/*": ["src/*"],
-    "@/*": ["src/*"],
-    "~~/*": ["/*"],
-    "@@/*": ["/*"]
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"]
+  "include": ["vite.config.*", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
+  "exclude": ["node_modules"]
 }

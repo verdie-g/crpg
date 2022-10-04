@@ -1,3 +1,5 @@
+// https://eslint.org/docs/latest/user-guide/configuring/
+
 module.exports = {
   ignorePatterns: ['node_modules', 'dist', '.eslintrc.js'],
   root: true,

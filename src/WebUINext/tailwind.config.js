@@ -1,3 +1,5 @@
+// https://tailwindcss.com/docs/installation
+
 // @ts-check
 /** @type {import('tailwindcss').Config} */
 module.exports = {

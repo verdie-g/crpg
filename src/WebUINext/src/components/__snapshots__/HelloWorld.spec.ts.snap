@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`displays message 1`] = `"<div>Hello world</div>"`;
