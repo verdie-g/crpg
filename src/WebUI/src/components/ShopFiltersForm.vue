@@ -11,6 +11,7 @@
         />
       </p>
     </b-field>
+
     <b-field label="Type">
       <b-dropdown v-model="type" aria-role="list">
         <template #trigger>
@@ -55,7 +56,7 @@
       </b-dropdown>
     </b-field>
 
-	<b-field label="Sort By">
+    <b-field label="Sort By">
       <b-dropdown v-model="sortBy" aria-role="list">
         <template #trigger>
           <b-button type="is-primary" icon-right="caret-down">{{ sortBy }}</b-button>
@@ -80,7 +81,7 @@
         />
       </p>
     </b-field>
- 
+
     <b-field label="Items per page">
       <b-dropdown v-model="itemsPerPage" aria-role="list">
         <template #trigger>
@@ -205,19 +206,23 @@ export default class ShopFiltersForm extends Vue {
   set itemsPerPage(itemsPerPage: number) {
     this.emitInput({ itemsPerPage });
   }
-  
+
   get sortBy(): string {
     return this.filter.sortBy;
   }
+
   set sortBy(sortBy: string) {
     this.emitInput({ sortBy });
   }
+
   get sortDesc(): boolean {
     return this.filter.sortDesc;
   }
+
   set sortDesc(sortDesc: boolean) {
     this.emitInput({ sortDesc });
   }
+
   get sortButtonIcon() {
     if (this.sortDesc) return 'arrow-down';
     return 'arrow-up';

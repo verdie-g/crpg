@@ -423,6 +423,9 @@ export function getSortableProperties(
     .map(r => getItemDescriptor(r.item).modes.map(mode => mode.fields.map(field => field[0])))
     .flat()
     .flat()
-    .filter((itemProperty, index, self) => self.indexOf(itemProperty) === index);
+    .filter(
+      (itemProperty, index, self) =>
+        sortableItemProperties.indexOf(itemProperty) === -1 && self.indexOf(itemProperty) === index
+    );
   return sortableItemProperties.concat(sortableWeaponProperties);
 }

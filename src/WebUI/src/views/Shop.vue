@@ -114,7 +114,6 @@ import ShopFilters from '@/models/shop-filters';
 import ItemType from '@/models/item-type';
 import {
   filterItemsByType,
-  getItemDescriptor,
   getSortableProperties,
   itemTypeToStr,
   sortItems,
@@ -188,7 +187,7 @@ export default class Shop extends Vue {
     searchQuery,
     itemsPerPage,
     sortBy,
-    sortDesc
+    sortDesc,
   }: ShopFilters) {
     this.$router.push({
       query: {
@@ -207,7 +206,7 @@ export default class Shop extends Vue {
   }
 
   get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
-    const filteredItems = itemModule.items.filter(i => {
+    let filteredItems = itemModule.items.filter(i => {
       if (i.type === ItemType.Banner) {
         return false;
       }
@@ -243,7 +242,6 @@ export default class Shop extends Vue {
   }
 
   get sortableProperties(): string[] {
-    if (!this.$route.query.type) return ['Weight'];
     return getSortableProperties(this.filteredItems);
   }
 
