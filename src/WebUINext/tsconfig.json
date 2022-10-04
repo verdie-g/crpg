@@ -9,20 +9,37 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"]
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "src/*"
+      ],
+      "~~/*": [
+        "*"
+      ],
+    },
+    "types": [
+      "vite/client",
+      "vitest/globals",
+      "vite-plugin-pages/client",
+      "vite-plugin-vue-layouts/client",
+      "@intlify/vite-plugin-vue-i18n/client",
+    ],
   },
-  "baseUrl": ".",
-  "paths": {
-    "~/*": ["src/*"],
-    "~~/*": ["/*"],
-
-  },
-  "types": [
-    "vite/client",
-    "vitest/globals",
-    "vite-plugin-pages/client",
-    "vite-plugin-vue-layouts/client"
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.vue"
   ],
-  "include": ["vite.config.*", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

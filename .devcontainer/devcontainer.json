@@ -24,7 +24,6 @@
                 "esbenp.prettier-vscode",
                 "eamodio.gitlens",
                 "Vue.volar",
-                "Vue.vscode-typescript-vue-plugin",
                 "bradlc.vscode-tailwindcss",
                 "naumovs.color-highlight"
             ]

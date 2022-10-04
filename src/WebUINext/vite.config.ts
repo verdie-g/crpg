@@ -9,7 +9,7 @@ import Layouts from 'vite-plugin-vue-layouts';
 import Components from 'unplugin-vue-components/vite';
 import VueI18n from '@intlify/vite-plugin-vue-i18n';
 import AutoImport from 'unplugin-auto-import/vite';
-import Analyzer from 'rollup-plugin-analyzer';
+import Visualizer from 'rollup-plugin-visualizer';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -42,7 +42,13 @@ export default defineConfig({
       dts: 'src/components.d.ts',
     }),
 
-    Analyzer({ summaryOnly: true }),
+    // https://github.com/btd/rollup-plugin-visualizerhttps://github.com/btd/rollup-plugin-visualizer
+    Visualizer({
+      template: 'sunburst',
+      gzipSize: true,
+      open: true,
+      brotliSize: true,
+    }),
 
     // https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n
     VueI18n({
