@@ -26,6 +26,13 @@ internal class MapVoteComponent : MissionBehavior
         _maps ??= mapVoteItems.Keys.ToArray(); // _maps is null only when the first mission ends.
 
         _maps.Shuffle();
+        // Remove the current map from the next map vote.
+        int currentMapIndex = Array.IndexOf(_maps, Mission.SceneName);
+        if (currentMapIndex != -1 && currentMapIndex < MaxMapsToVote && _maps.Length > MaxMapsToVote)
+        {
+            _maps[currentMapIndex] = _maps[MaxMapsToVote];
+        }
+
         mapVoteItems.Clear();
         for (int i = 0; i < Math.Min(_maps.Length, MaxMapsToVote); i += 1)
         {
