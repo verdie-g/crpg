@@ -10,6 +10,7 @@ import Components from 'unplugin-vue-components/vite';
 import VueI18n from '@intlify/vite-plugin-vue-i18n';
 import AutoImport from 'unplugin-auto-import/vite';
 import Visualizer from 'rollup-plugin-visualizer';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -55,6 +56,14 @@ export default defineConfig({
       runtimeOnly: true,
       compositionOnly: true,
       include: [fileURLToPath(new URL('./locales/**', import.meta.url))],
+    }),
+
+    // https://github.com/vbenjs/vite-plugin-svg-icons
+    createSvgIconsPlugin({
+      // Specify the icon folder to be cached
+      iconDirs: [fileURLToPath(new URL('./src/assets/icons-sprite', import.meta.url))],
+      // Specify symbolId format
+      symbolId: 'icon-[dir]-[name]',
     }),
   ],
 

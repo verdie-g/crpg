@@ -2,12 +2,13 @@ import { setActivePinia, createPinia } from 'pinia';
 import mockUserResponse from '@@/mocks/user.json';
 import { useUserStore } from './example';
 
-vi.mock('~/services/user', () => {
+vi.mock('@/services/example', () => {
   return {
     getUser: vi.fn().mockResolvedValue(mockUserResponse),
   };
 });
 
+// https://pinia.vuejs.org/cookbook/testing.html#unit-testing-a-store
 describe('userStore', () => {
   let store: ReturnType<typeof useUserStore>;
 

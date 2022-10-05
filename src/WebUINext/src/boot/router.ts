@@ -1,7 +1,7 @@
 import {
   createRouter,
   createWebHistory,
-  RouteRecordRaw,
+  type RouteRecordRaw,
   type RouterScrollBehavior,
 } from 'vue-router';
 import { setupLayouts } from 'virtual:generated-layouts';

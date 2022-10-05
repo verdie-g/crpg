@@ -2,7 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 // import { getToken, signIn } from '@/services/auth-service'; // TODO:
 // import { NotificationType, notify } from '@/services/notifications-service'; // TODO:
 import { sleep } from '@/utils/promise';
-import { ErrorType, Result } from '@/models/result';
+import { ErrorType, type Result } from '@/models/result';
 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -21,7 +21,7 @@ async function trySend(method: string, path: string, body?: any): Promise<Result
   if (response.status === StatusCodes.UNAUTHORIZED) {
     // notify('Session expired', NotificationType.Warning); // TODO:
     await sleep(1000);
-    // signIn(); // TODO:
+    // await signIn(); // TODO:
     return null!;
   }
 
@@ -39,11 +39,13 @@ async function send(method: string, path: string, body?: any): Promise<any> {
     return result.data;
   }
 
-  if (result.errors[0].type === ErrorType.InternalError) {
-    // notify(result.errors![0].title!, NotificationType.Error); // TODO:
+  const [error] = result.errors || [];
+
+  if (error?.type === ErrorType.InternalError) {
+    // notify(error.title!, NotificationType.Error); // TODO:
     throw new Error('Server error');
   } else {
-    // notify(result.errors![0].title!, NotificationType.Warning); // TODO:
+    // notify(error.title!, NotificationType.Warning); // TODO:
     throw new Error('Bad request');
   }
 }

@@ -28,6 +28,7 @@ describe('Example component unit testing', () => {
     expect(wrapper.find('[data-aq-example-computed]').text()).toEqual('Applejack - example cmp');
   });
 
+  // https://test-utils.vuejs.org/guide/essentials/event-handling.html
   it('emit', async () => {
     const { wrapper } = factory();
 
@@ -42,6 +43,7 @@ describe('Example component unit testing', () => {
     ]);
   });
 
+  // https://test-utils.vuejs.org/guide/advanced/reusability-composition.html
   it('with composable', async () => {
     const { wrapper } = factory();
 
@@ -54,6 +56,7 @@ describe('Example component unit testing', () => {
     expect(composableNodeEl.text()).toEqual('1');
   });
 
+  // https://pinia.vuejs.org/cookbook/testing.html#unit-testing-components
   it('with store', async () => {
     const { wrapper, store } = factory({
       initialState: { user: { name: 'Twilight Sparkle', role: 'Royalty' } },
@@ -70,6 +73,7 @@ describe('Example component unit testing', () => {
     expect(store.fetch).toHaveBeenCalledTimes(1);
   });
 
+  // https://vitest.dev/guide/snapshot.html
   it('snapshot', async () => {
     const { wrapper } = factory();
 

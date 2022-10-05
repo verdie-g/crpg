@@ -1,6 +1,6 @@
 // TODO:
 import type Role from '@/models/role';
-import type { RouteLocationNormalized } from 'vue-router';
+import type { RouteLocationNormalized, NavigationGuard } from 'vue-router';
 // import { getDecodedToken, getToken, signInSilent } from '@/services/auth-service';
 
 const routeHasAnyRoles = (route: RouteLocationNormalized): boolean =>
@@ -9,7 +9,10 @@ const routeHasAnyRoles = (route: RouteLocationNormalized): boolean =>
 const userAllowedAccess = (route: RouteLocationNormalized, roles: Array<`${Role}`>): boolean =>
   routeHasAnyRoles(route) && Boolean(route.meta?.roles?.some(role => roles.includes(role)));
 
-export default (to: RouteLocationNormalized) => {
+const authRouterMiddleware: NavigationGuard = to => {
   // TODO:
+
   return true;
 };
+
+export default authRouterMiddleware;
