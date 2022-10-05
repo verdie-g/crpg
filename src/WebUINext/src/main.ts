@@ -1,11 +1,11 @@
 import { createApp } from 'vue';
-import { type BootModule } from './types/boot';
+import { type BootModule } from './types/boot-module';
 import './index.css';
 import App from './App.vue';
 
 const app = createApp(App);
 
-// AUTOLOAD
+// Load plugins
 Object.values(import.meta.glob<{ install: BootModule }>('./boot/*.ts', { eager: true })).forEach(
   module => module.install?.(app)
 );

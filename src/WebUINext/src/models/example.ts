@@ -1,4 +1,4 @@
-export interface IUserState {
+export interface User {
   name: string;
   role: string;
 }

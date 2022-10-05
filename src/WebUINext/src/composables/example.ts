@@ -1,7 +1,7 @@
 export const useCounter = () => {
-  const counter = ref(0);
+  const counter = ref<number>(0);
 
-  const increase = () => {
+  const increase = (): void => {
     counter.value += 1;
   };
 

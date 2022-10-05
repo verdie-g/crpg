@@ -32,14 +32,14 @@ export default defineConfig({
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       imports: ['vue', 'vue-router', 'vue-i18n', 'pinia', 'vitest', '@vueuse/head'],
-      dts: 'src/auto-imports.d.ts',
+      dts: 'src/types/vite-auto-imports.d.ts',
       vueTemplate: true,
     }),
 
     // https://github.com/antfu/unplugin-vue-components
     Components({
       extensions: ['vue'],
-      dts: 'src/components.d.ts',
+      dts: 'src/types/vite-components.d.ts',
     }),
 
     // https://github.com/btd/rollup-plugin-visualizerhttps://github.com/btd/rollup-plugin-visualizer
@@ -73,8 +73,8 @@ export default defineConfig({
 
   resolve: {
     alias: {
-      '~': fileURLToPath(new URL('./src', import.meta.url)),
-      '~~': fileURLToPath(new URL('./', import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@@': fileURLToPath(new URL('./', import.meta.url)),
     },
   },
 

@@ -1,4 +1,4 @@
-import { useCounter } from './counter';
+import { useCounter } from './example';
 
 it('increase counter on call', () => {
   const { counter, increase } = useCounter();

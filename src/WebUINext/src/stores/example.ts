@@ -1,9 +1,8 @@
-import { defineStore } from 'pinia';
-import { getUser } from '~/services/user';
-import { type IUserState } from '~/models/user';
+import { getUser } from '@/services/example';
+import type { User } from '@/models/example';
 
 export const useUserStore = defineStore('user', {
-  state: (): IUserState => ({
+  state: (): User => ({
     name: '',
     role: '',
   }),

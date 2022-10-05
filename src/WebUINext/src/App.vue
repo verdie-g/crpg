@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useHead({
-  title: 'Hi Mark',
+  title: 'Index Page',
 });
 </script>
 

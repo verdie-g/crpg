@@ -1,0 +1,16 @@
+// Vitest Snapshot v1
+
+exports[`Example component unit testing > snapshot 1`] = `
+"<div>
+  <!--  -->
+  <div> prop: <span data-aq-example-prop=\\"\\">Applejack</span></div>
+  <div> ref: <span data-aq-example-ref=\\"\\">example cmp</span></div>
+  <div> computed: <span data-aq-example-computed=\\"\\">Applejack - example cmp</span></div>
+  <div> emit: <button data-aq-example-emit=\\"\\"> Emit, bro </button></div><!--  -->
+  <div> composable state: <span data-aq-example-composable=\\"\\">0</span></div>
+  <div> composable methods <button data-aq-example-composable-method=\\"\\">click bro</button></div><!--  -->
+  <div> store action: <button data-aq-example-store-action=\\"\\">fetch user</button></div>
+  <div> store state: <span data-aq-example-store-state=\\"\\"></span></div>
+  <div> store getter: <span data-aq-example-store-getter=\\"\\"> </span></div>
+</div>"
+`;
