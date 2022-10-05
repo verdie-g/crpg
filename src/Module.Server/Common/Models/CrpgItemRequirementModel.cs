@@ -3,13 +3,9 @@ using TaleWorlds.Core;
 
 namespace Crpg.Module.Common.Models;
 
-internal class CrpgItemRequirementModel
+internal static class CrpgItemRequirementModel
 {
     private readonly CrpgConstants _constants;
-    public CrpgItemRequirementModel(CrpgConstants constants)
-    {
-        _constants = constants;
-    }
 
     public static int ComputeItemRequirement(ItemObject item)
     {
@@ -29,7 +25,7 @@ internal class CrpgItemRequirementModel
     }
 
     // make sure this method does the same thing as the one in the webui.
-    public int ComputeArmorSetPieceStrengthRequirement(List<ItemObject> armors)
+    public static int ComputeArmorSetPieceStrengthRequirement(List<ItemObject> armors, CrpgConstants constants)
     {
         if (armors == null)
         {
@@ -43,7 +39,7 @@ internal class CrpgItemRequirementModel
             armorsRequirements[i] = ComputeArmorPieceStrengthRequirement(armors[i]);
         }
 
-        return (int)MathHelper.GeneralizedMean(_constants.ArmorSetRequirementPowerMeanPValue, armorsRequirements);
+        return (int)MathHelper.GeneralizedMean(constants.ArmorSetRequirementPowerMeanPValue, armorsRequirements);
     }
 
     private static int ComputeArmorPieceStrengthRequirement(ItemObject item)
