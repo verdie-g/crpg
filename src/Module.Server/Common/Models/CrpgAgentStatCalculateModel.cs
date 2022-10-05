@@ -445,7 +445,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     {
         int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
         var equippedArmors = GetArmorItemObjectList(agent.SpawnEquipment);
-        float setRequirement = CrpgItemRequirementModel.ComputeArmorSetPieceStrengthRequirement(equippedArmors, _constants);
+        CrpgItemRequirementModel reqModel = new(_constants);
+        float setRequirement = reqModel.ComputeArmorSetPieceStrengthRequirement(equippedArmors);
         float distanceToStrRequirement = Math.Max(setRequirement - strengthAttribute, 0);
         float impactOfStrReqOnSpeedFactor = 0.2f; // tweak here
         return 1 / (1 + distanceToStrRequirement * impactOfStrReqOnSpeedFactor);
