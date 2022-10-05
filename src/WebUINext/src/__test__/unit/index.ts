@@ -1,6 +1,5 @@
-// https://vitest.dev/config/#setupfiles (1)
-// https://github.com/sheremet-va/vi-fetch (2)
-
+// Mock fetch API
+// https://github.com/sheremet-va/vi-fetch
 import 'vi-fetch/setup';
 import { mockFetch } from 'vi-fetch';
 
@@ -11,5 +10,3 @@ mockFetch.setOptions({
 beforeEach(() => {
   mockFetch.clearAll();
 });
-
-export {};

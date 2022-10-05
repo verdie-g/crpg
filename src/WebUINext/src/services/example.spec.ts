@@ -1,5 +1,5 @@
 import { mockGet } from 'vi-fetch';
-import mockUserResponse from '@@/mocks/user.json';
+import mockUserResponse from '@/__mocks__/user.json';
 import type { Result } from '@/models/result';
 import type { User } from '@/models/example';
 

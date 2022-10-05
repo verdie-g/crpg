@@ -39,7 +39,6 @@ export default defineConfig({
 
     // https://github.com/antfu/unplugin-vue-components
     Components({
-      extensions: ['vue'],
       dts: 'src/types/vite-components.d.ts',
     }),
 

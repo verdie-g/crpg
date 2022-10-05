@@ -1,5 +1,5 @@
 import { setActivePinia, createPinia } from 'pinia';
-import mockUserResponse from '@@/mocks/user.json';
+import mockUserResponse from '@/__mocks__/user.json';
 import { useUserStore } from './example';
 
 vi.mock('@/services/example', () => {

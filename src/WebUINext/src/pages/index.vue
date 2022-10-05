@@ -1,6 +1,4 @@
-<script setup lang="ts">
-console.log('ex. env', import.meta.env.VITE_API_BASE_URL);
-</script>
+<script setup lang="ts"></script>
 
 <route lang="yaml">
 meta:
