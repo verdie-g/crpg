@@ -356,5 +356,7 @@ export function computeArmorSetPieceStrengthRequirement(equippedItems: EquippedI
   equippedItems
     .filter(e => e.userItem.baseItem.armor != null)
     .forEach((ei, i) => (armorsRequirement[i] = ei.userItem.baseItem.requirement));
-  return Math.trunc(generalizedMean(10, armorsRequirement));
+  return Math.trunc(
+    generalizedMean(Constants.armorSetRequirementPowerMeanPValue, armorsRequirement)
+  );
 }
