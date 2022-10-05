@@ -5,7 +5,6 @@ using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.Network;
 
 namespace Crpg.Module.Common.Models;
 

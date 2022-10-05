@@ -5,8 +5,6 @@ namespace Crpg.Module.Common.Models;
 
 internal static class CrpgItemRequirementModel
 {
-    private readonly CrpgConstants _constants;
-
     public static int ComputeItemRequirement(ItemObject item)
     {
         switch (item.ItemType)
