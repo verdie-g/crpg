@@ -75,7 +75,7 @@ export default defineConfig({
     setupFiles: ['./src/__test__/unit/index.ts'],
     coverage: {
       reporter: ['json', 'text', 'html'],
-      exclude: ['node_modules/', './src/__test__/unit/index.ts'],
+      exclude: ['node_modules/', './src/__test__/unit/index.ts', '**/*.spec.ts'],
     },
   },
 

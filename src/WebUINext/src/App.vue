@@ -1,8 +1,4 @@
-<script setup lang="ts">
-useHead({
-  title: 'Index Page',
-});
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <RouterView />

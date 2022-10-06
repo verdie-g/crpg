@@ -9,7 +9,7 @@ import generatedRoutes from 'virtual:generated-pages';
 import queryString from 'query-string';
 
 import { type BootModule } from '@/types/boot-module';
-import authMiddleware from '@/middlewares/auth';
+import { authRouterMiddleware } from '@/middlewares/auth';
 
 const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
   if (savedPosition) {
@@ -25,9 +25,8 @@ const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
 const parseQuery = (query: string) => {
   return queryString.parse(query, {
     arrayFormat: 'bracket',
-    // TODO: fix
-    // parseNumbers: true,
-    // parseBooleans: true,
+    parseNumbers: true,
+    parseBooleans: true,
   });
 };
 
@@ -54,11 +53,12 @@ export const install: BootModule = app => {
     but ?types=HeadArmor is parsed as "HeadArmor" (not an array).
     To solve this issue query-string library adds brackets for arrays ?types[]=HeadArmor.
     */
+    // @ts-ignore // FIXME: fix
     parseQuery,
     stringifyQuery,
   });
 
-  router.beforeEach(authMiddleware); // TODO: need implementation
+  router.beforeEach(authRouterMiddleware); // TODO: need implementation
 
   app.use(router);
 };

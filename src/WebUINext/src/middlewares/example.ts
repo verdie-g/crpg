@@ -1,10 +1,16 @@
-import type { NavigationGuard } from 'vue-router';
+import type { RouteLocationNormalized, NavigationGuard } from 'vue-router';
 
-const exampleRouterMiddleware: NavigationGuard = (to, from) => {
+const canUserAccess = (route: RouteLocationNormalized): Promise<boolean> =>
+  new Promise(resolve => resolve(route.name === 'admin' ? false : true));
+
+export const exampleRouterMiddleware: NavigationGuard = async (to, _from, _next) => {
   // use return instead next()
   // return { name: 'index' }
   // return '/'
+
+  const canAccess = await canUserAccess(to);
+
+  if (!canAccess) return { name: 'login' };
+
   return true;
 };
-
-export default exampleRouterMiddleware;
