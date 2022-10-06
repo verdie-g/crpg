@@ -37,7 +37,7 @@ internal class CrpgItemValueModel : ItemValueModel
         int desiredOneHandedWeaponMaxPrice = 9100;  // does not work as intended but may mean that onehanded are to be buffed
         int desiredTwoHandedWeaponMaxPrice = 14000; // kinda work as intended but no by design
         int desiredPolearmMaxPrice = 16175; // kinda work as intended but not by design
-        int desiredThrownMaxPrice = 7385; // kinda work as intended but not by design
+        int desiredThrownMaxPrice = 7385; // throwing spears not considered as thrown
         int desiredArrowsMaxPrice = 3858;
         int desiredBoltsMaxPrice = 16000; // doesn't work as intended yet
         int desiredBannerMaxPrice = 50;
@@ -148,7 +148,11 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         return weaponComponent.Item?.WeaponDesign == null
             ? CalculateTierNonCraftedWeapon(weaponComponent)
-            : CalculateTierMeleeWeapon(weaponComponent);
+            : weaponComponent.GetItemType() switch
+            {
+                ItemObject.ItemTypeEnum.Thrown => CalculateThrownWeaponTier(weaponComponent),
+                _ => CalculateTierMeleeWeapon(weaponComponent),
+            };
     }
 
     private float CalculateTierMeleeWeapon(WeaponComponent weaponComponent)
@@ -237,8 +241,21 @@ internal class CrpgItemValueModel : ItemValueModel
         }
     }
 
-    private float CalculateRangedWeaponTier(WeaponComponent weaponComponent)
+    private float CalculateThrownWeaponTier(WeaponComponent weaponComponent)
     {
+        WeaponComponentData weapon = weaponComponent.Weapons[0];
+        float scaler = 2986099.2f;
+
+        return weapon.ThrustDamage
+            * weapon.SwingSpeed
+            * weapon.MissileSpeed
+            * weapon.Accuracy
+            * weapon.MaxDataValue
+            / scaler;
+    }
+
+    private float CalculateRangedWeaponTier(WeaponComponent weaponComponent)
+            {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
         float scaler = 1440257f;
 
