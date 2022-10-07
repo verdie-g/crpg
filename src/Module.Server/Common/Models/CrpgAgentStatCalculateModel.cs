@@ -47,11 +47,13 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     };
 
     private readonly CrpgConstants _constants;
+    private readonly CrpgItemRequirementModel reqModel;
     private string _lastEquippedItemId = string.Empty;
 
     public CrpgAgentStatCalculateModel(CrpgConstants constants)
     {
         _constants = constants;
+        reqModel = new(_constants);
     }
 
     public override int GetEffectiveSkill(
@@ -445,7 +447,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     {
         int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
         var equippedArmors = GetArmorItemObjectList(agent.SpawnEquipment);
-        CrpgItemRequirementModel reqModel = new(_constants);
         float setRequirement = reqModel.ComputeArmorSetPieceStrengthRequirement(equippedArmors);
         float distanceToStrRequirement = Math.Max(setRequirement - strengthAttribute, 0);
         float impactOfStrReqOnSpeedFactor = 0.2f; // tweak here
