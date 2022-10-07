@@ -255,7 +255,7 @@ internal class CrpgItemValueModel : ItemValueModel
     }
 
     private float CalculateRangedWeaponTier(WeaponComponent weaponComponent)
-            {
+    {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
         float scaler = 1440257f;
 
