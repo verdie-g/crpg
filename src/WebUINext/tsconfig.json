@@ -24,9 +24,6 @@
       "@@/*": [
         "/*"
       ],
-      "@tailwindConfig": [
-        "tailwind.config.js"
-      ],
     },
     "types": [
       "vite/client",

@@ -19,6 +19,8 @@ export const install: BootModule = app => {
       labelClass: 'btn__label',
     },
     dropdown: {
+      override: true,
+
       menuClass: 'dropdown-menu',
       itemClass: 'dropdown-item',
       itemActiveClass: 'dropdown-item-active',

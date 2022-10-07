@@ -83,7 +83,6 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '@@': fileURLToPath(new URL('./', import.meta.url)),
-      '@tailwindConfig': fileURLToPath(new URL('tailwind.config.js', import.meta.url)),
     },
   },
 
@@ -92,9 +91,5 @@ export default defineConfig({
     commonjsOptions: {
       transformMixedEsModules: true,
     },
-  },
-
-  optimizeDeps: {
-    include: ['@tailwindConfig'],
   },
 });
