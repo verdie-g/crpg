@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+  }
+
+  h1 {
+  }
+
+  h2 {
+  }
+
+  h3 {
+  }
+}
+
+/*  */
+.btn {
+  @apply rounded border-2 py-2 px-4 font-semibold;
+}
+
+.btn_variant-primary {
+  @apply border-transparent bg-blue-500 text-white;
+}
+
+.btn_variant-primary:hover {
+  @apply bg-blue-700;
+}
+
+.btn_outlined-primary {
+  @apply border-blue-500 bg-transparent text-blue-700;
+}
+
+.btn_outlined-primary:hover {
+  @apply bg-blue-500 text-white;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  @apply z-10 w-full rounded-sm bg-main-dark text-main  shadow-lg dark:bg-main dark:text-main-dark;
+}
+
+.dropdown-item {
+  @apply w-full cursor-pointer p-1 text-main dark:bg-main dark:text-main-dark;
+}
+
+.dropdown-item-active {
+  @apply bg-highlight-background text-highlight dark:bg-highlight-background-dark dark:text-highlight-dark;
+}

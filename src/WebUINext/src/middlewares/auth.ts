@@ -9,7 +9,7 @@ const routeHasAnyRoles = (route: RouteLocationNormalized): boolean =>
 const userAllowedAccess = (route: RouteLocationNormalized, roles: Array<`${Role}`>): boolean =>
   routeHasAnyRoles(route) && Boolean(route.meta?.roles?.some(role => roles.includes(role)));
 
-export const authRouterMiddleware: NavigationGuard = async (to, _from, _next) => {
+export const authRouterMiddleware: NavigationGuard = async to => {
   // TODO:
 
   return true;

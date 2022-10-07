@@ -1,4 +1,5 @@
 // https://tailwindcss.com/docs/installation
+const colors = require('tailwindcss/colors');
 
 // @ts-check
 /** @type {import('tailwindcss').Config} */
@@ -23,7 +24,26 @@ module.exports = {
 
     ////////////////////////////////
 
-    extend: {},
+    extend: {
+      colors: {
+        main: {
+          DEFAULT: colors.gray[700],
+          dark: '#ffffff',
+        },
+        primary: {
+          DEFAULT: '#1fb6ff',
+          dark: '#ffffff',
+        },
+        highlight: {
+          DEFAULT: colors.red[700],
+          dark: colors.violet[800],
+        },
+        'highlight-background': {
+          DEFAULT: colors.yellow[400],
+          dark: '#1fb6ff',
+        },
+      },
+    },
   },
   plugins: [],
 };

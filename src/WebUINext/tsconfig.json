@@ -22,7 +22,10 @@
         "src/*"
       ],
       "@@/*": [
-        "*"
+        "/*"
+      ],
+      "@tailwindConfig": [
+        "tailwind.config.js"
       ],
     },
     "types": [
