@@ -5449,7 +5449,7 @@
     "name": "Highland Throwing Dagger",
     "culture": "Battania",
     "type": "Thrown",
-    "price": 695,
+    "price": 770,
     "weight": 0.8,
     "requirement": 0,
     "weapons": [
@@ -6675,7 +6675,7 @@
     "name": "Tribesman Throwing Daggers",
     "culture": "Aserai",
     "type": "Thrown",
-    "price": 913,
+    "price": 744,
     "weight": 0.86,
     "requirement": 0,
     "weapons": [
@@ -6901,7 +6901,7 @@
     "name": "Jagged Javelin",
     "culture": "Khuzait",
     "type": "Thrown",
-    "price": 806,
+    "price": 4169,
     "weight": 0.91,
     "requirement": 0,
     "weapons": [
@@ -6955,7 +6955,7 @@
     "name": "Horseman Javelin",
     "culture": "Khuzait",
     "type": "Thrown",
-    "price": 903,
+    "price": 5348,
     "weight": 1.11,
     "requirement": 0,
     "weapons": [
@@ -7009,7 +7009,7 @@
     "name": "Jereed",
     "culture": "Aserai",
     "type": "Thrown",
-    "price": 2101,
+    "price": 7385,
     "weight": 1.2,
     "requirement": 0,
     "weapons": [
@@ -8823,7 +8823,7 @@
     "name": "Broad Bladed Throwing Knives",
     "culture": "Empire",
     "type": "Thrown",
-    "price": 879,
+    "price": 852,
     "weight": 0.96,
     "requirement": 0,
     "weapons": [
@@ -9648,7 +9648,7 @@
     "name": "Harpoon",
     "culture": "Sturgia",
     "type": "Thrown",
-    "price": 1446,
+    "price": 7302,
     "weight": 1.35,
     "requirement": 0,
     "weapons": [
@@ -10777,7 +10777,7 @@
     "name": "Highland Throwing Axe",
     "culture": "Battania",
     "type": "Thrown",
-    "price": 1996,
+    "price": 1975,
     "weight": 0.69,
     "requirement": 0,
     "weapons": [
@@ -13298,7 +13298,7 @@
     "name": "Leafblade Throwing Knife",
     "culture": "Battania",
     "type": "Thrown",
-    "price": 784,
+    "price": 770,
     "weight": 0.86,
     "requirement": 0,
     "weapons": [
@@ -14122,7 +14122,7 @@
     "name": "Lowland Throwing Knife",
     "culture": "Battania",
     "type": "Thrown",
-    "price": 806,
+    "price": 752,
     "weight": 0.81,
     "requirement": 0,
     "weapons": [
@@ -15726,7 +15726,7 @@
     "name": "Fish Harpoon",
     "culture": "Sturgia",
     "type": "Thrown",
-    "price": 627,
+    "price": 3726,
     "weight": 0.98,
     "requirement": 0,
     "weapons": [
@@ -15780,7 +15780,7 @@
     "name": "Woodland Javelin",
     "culture": "Battania",
     "type": "Thrown",
-    "price": 1224,
+    "price": 6143,
     "weight": 1.08,
     "requirement": 0,
     "weapons": [
@@ -15834,7 +15834,7 @@
     "name": "Broad Blade Javelin",
     "culture": "Sturgia",
     "type": "Thrown",
-    "price": 1287,
+    "price": 6634,
     "weight": 1.11,
     "requirement": 0,
     "weapons": [
@@ -16354,7 +16354,7 @@
     "name": "Raider Throwing Axe",
     "culture": "Sturgia",
     "type": "Thrown",
-    "price": 1865,
+    "price": 2031,
     "weight": 0.71,
     "requirement": 0,
     "weapons": [
@@ -19666,7 +19666,7 @@
     "name": "Tribesman Throwing Axe",
     "culture": "Aserai",
     "type": "Thrown",
-    "price": 1996,
+    "price": 1975,
     "weight": 0.69,
     "requirement": 0,
     "weapons": [
@@ -24297,7 +24297,7 @@
     "name": "Simple Javelin",
     "culture": "Neutral",
     "type": "Thrown",
-    "price": 555,
+    "price": 3288,
     "weight": 0.91,
     "requirement": 0,
     "weapons": [
@@ -24351,7 +24351,7 @@
     "name": "Lowland Javelin",
     "culture": "Vlandia",
     "type": "Thrown",
-    "price": 1289,
+    "price": 5875,
     "weight": 1.2,
     "requirement": 0,
     "weapons": [
@@ -24405,7 +24405,7 @@
     "name": "Hooked Javelin",
     "culture": "Vlandia",
     "type": "Thrown",
-    "price": 1527,
+    "price": 7350,
     "weight": 1.41,
     "requirement": 0,
     "weapons": [
@@ -24817,7 +24817,7 @@
     "name": "Francesca",
     "culture": "Vlandia",
     "type": "Thrown",
-    "price": 1643,
+    "price": 1789,
     "weight": 0.68,
     "requirement": 0,
     "weapons": [
