@@ -7,9 +7,9 @@ internal class CrpgItemRequirementModel
 {
     private readonly CrpgConstants _constants;
     public CrpgItemRequirementModel(CrpgConstants constants)
-        {
+    {
         _constants = constants;
-        }
+    }
 
     public static int ComputeItemRequirement(ItemObject item)
     {
