@@ -122,6 +122,13 @@ describe('Example component unit test', () => {
     expect(mockedPush).toBeCalledWith({ name: 'index' });
   });
 
+  // https://stackoverflow.com/questions/72260793/best-way-to-mock-stub-vue-i18n-translations-in-a-vue3-component-when-using-vites/73630072#73630072
+  it('with i18n', async () => {
+    const { wrapper } = factory();
+
+    expect(wrapper.find('[data-aq-example-i18n]').text()).toEqual('button.back');
+  });
+
   // https://vitest.dev/guide/snapshot.html
   it.skip('snapshot', async () => {
     const { wrapper } = factory();

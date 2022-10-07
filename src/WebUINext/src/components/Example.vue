@@ -56,7 +56,11 @@ const emit = defineEmits<{
 const route = useRoute();
 const router = useRouter();
 
+// i18n
+const { t } = useI18n();
+
 // TODO: more examples..
+// vuelidate
 </script>
 
 <template>
@@ -156,5 +160,27 @@ const router = useRouter();
     <br />
 
     <!--  -->
+
+    <div>
+      i18n
+      <span data-aq-example-i18n>
+        {{ t('button.back') }}
+      </span>
+    </div>
+
+    <br />
+    <br />
+
+    <!--  -->
+
+    <div>
+      children component
+      <SvgIcon
+        data-aq-example-children-component
+        name="example"
+        viewBox="0 0 32 32"
+        class="w-12"
+      ></SvgIcon>
+    </div>
   </div>
 </template>

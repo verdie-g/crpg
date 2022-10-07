@@ -1,10 +1,10 @@
 <script setup lang="ts">
-console.log('ex. env', import.meta.env.VITE_API_BASE_URL);
+console.log('example env', import.meta.env.VITE_API_BASE_URL);
 </script>
 
 <route lang="yaml">
 meta:
-  layout: default
+  layout: example
 </route>
 
 <template>

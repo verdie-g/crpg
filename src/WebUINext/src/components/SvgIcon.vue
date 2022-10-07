@@ -1,5 +1,5 @@
 <template>
-  <svg aria-hidden="true" class="fill-current">
+  <svg aria-hidden="true" class="fill-current" :viewBox="viewBox">
     <use :href="symbolId" />
   </svg>
 </template>
@@ -9,6 +9,7 @@
 interface Props {
   prefix?: string;
   name: string;
+  viewBox: string;
 }
 
 const { prefix = 'icon', name } = defineProps<Props>();

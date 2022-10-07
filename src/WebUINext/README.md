@@ -9,7 +9,7 @@
 
 - Styles (HTML/CSS) agreements TODO: Tailwind.css examples
 
-- Icon managment TODO: svg sprite https://github.com/vbenjs/vite-plugin-svg-icons
+- Icon managment TODO: svg sprite https://github.com/vbenjs/vite-plugin-svg-icons + https://jakearchibald.github.io/svgomg/ + svgo settings
 
 - Image managment TODO: format, optimization, .etc. ref https://web.dev/fast/#optimize-your-images
 
