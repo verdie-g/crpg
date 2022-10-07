@@ -5,7 +5,7 @@ namespace Crpg.Module.Common.Models;
 
 internal class CrpgItemRequirementModel
 {
-    private CrpgConstants _constants;
+    private readonly CrpgConstants _constants;
     public CrpgItemRequirementModel(CrpgConstants constants)
         {
         _constants = constants;
