@@ -38,9 +38,10 @@ internal class CrpgItemValueModel : ItemValueModel
         int desiredTwoHandedWeaponMaxPrice = 14000;
         int desiredPolearmMaxPrice = 20000;
         int desiredThrownMaxPrice = 7385;
-        int desiredArrowsMaxPrice = 3858;
-        int desiredBoltsMaxPrice = 16000; // doesn't work as intended yet
+        int desiredArrowsMaxPrice = 4500;
+        int desiredBoltsMaxPrice = 8200;
         int desiredBannerMaxPrice = 50;
+
         return item.ItemType switch
         {
             ItemObject.ItemTypeEnum.HeadArmor => GetEquipmentValueFromTier(item.Tierf, desiredHeadArmorMaxPrice, 50),
@@ -86,7 +87,8 @@ internal class CrpgItemValueModel : ItemValueModel
 
     private float CalculateArmorTier(ArmorComponent armorComponent)
     {
-        float armorPower = 1.2f * armorComponent.HeadArmor
+        float armorPower =
+              1.2f * armorComponent.HeadArmor
             + 1.0f * armorComponent.BodyArmor
             + 1.0f * armorComponent.ArmArmor
             + 0.8f * armorComponent.LegArmor;
@@ -111,7 +113,7 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateHorseTier(HorseComponent horseComponent)
     {
             float horsePower =
-            1.5f * horseComponent.ChargeDamage
+              1.5f * horseComponent.ChargeDamage
             + 1.0f * horseComponent.Speed
             + 0.6f * horseComponent.Maneuver
             + 0.1f * horseComponent.HitPoints;
@@ -166,13 +168,16 @@ internal class CrpgItemValueModel : ItemValueModel
             _ => 1f,
         };
         float maxTier = float.MinValue;
+
         foreach (var weapon in weaponComponent.Weapons)
         {
-            float thrustTier = (float)Math.Pow(weapon.ThrustDamage, 2.25f)
+            float thrustTier =
+                  (float)Math.Pow(weapon.ThrustDamage, 2.25f)
                 * CalculateDamageTypeFactor(weapon.ThrustDamageType)
                 * (float)Math.Pow(weapon.ThrustSpeed * 0.01f, 3f)
                 * 1f;
-            float swingTier = (float)Math.Pow(weapon.SwingDamage, 2.25f)
+            float swingTier =
+                  (float)Math.Pow(weapon.SwingDamage, 2.25f)
                 * CalculateDamageTypeFactor(weapon.SwingDamageType)
                 * (float)Math.Pow(weapon.SwingSpeed * 0.01f, 3f)
                 * 1.1f;
@@ -200,7 +205,11 @@ internal class CrpgItemValueModel : ItemValueModel
 
             float lengthTier = weapon.WeaponLength * 0.01f;
             float handlingFactor = weapon.Handling / 100f;
-            tier = 0.06f * (tier * (float)Math.Pow(1f + lengthTier, 1.75f)) * (float)Math.Pow(handlingFactor, 3f);
+            tier =
+                  0.06f
+                * (tier * (float)Math.Pow(1f + lengthTier, 1.75f))
+                * (float)Math.Pow(handlingFactor, 3f);
+
             if (tier >= maxTier)
             {
                 maxTier = tier;
@@ -245,7 +254,8 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         WeaponComponentData weapon = weaponComponent.Weapons.MaxBy(a => a.MaxDataValue);
         float scaler = 125416166.4f;
-        return weapon.ThrustDamage
+        return
+              weapon.ThrustDamage
             * weapon.ThrustDamage
             * weapon.SwingSpeed
             * weapon.MissileSpeed
@@ -258,34 +268,49 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateRangedWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        float scaler = 1440257f;
+        float scaler = 0.27364886f;
 
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
-            scaler = 5732118f;
+            scaler = 3.8178947156399532384f;
         }
 
-        return weapon.ThrustDamage
-            * weapon.ThrustDamage
-            * weapon.SwingSpeed
-            * weapon.MissileSpeed
-            * weapon.Accuracy
+        return
+              weapon.ThrustDamage / 100f
+            * weapon.ThrustDamage / 100f
+            * weapon.SwingSpeed / 100f
+            * weapon.MissileSpeed / 10f
+            * weapon.Accuracy / 10f
             / scaler;
     }
 
     private float CalculateShieldTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        return (
-                1.0f * weapon.MaxDataValue
+        return
+                 (1.0f * weapon.MaxDataValue
                 + 3.0f * weapon.BodyArmor
                 + 1.0f * weapon.ThrustSpeed)
-            / (6f + weaponComponent.Item.Weight) / 48.6419f * 10f;
+                / (6f + weaponComponent.Item.Weight)
+                / 48.6419f
+                * 10f;
     }
 
     private float CalculateAmmoTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        return 10f * CalculateDamageTypeFactor(weapon.ThrustDamageType) * weapon.MissileDamage * weapon.MissileDamage * weapon.MaxDataValue / 368f * CalculateDamageTypeFactor(weapon.ThrustDamageType);
+        float scaler = weaponComponent.Item.ItemType switch
+        {
+            ItemObject.ItemTypeEnum.Arrows => 388.7999856f,
+            ItemObject.ItemTypeEnum.Bolts => 225f,
+            _ => 10f,
+        };
+        return
+            10f
+          * CalculateDamageTypeFactor(weapon.ThrustDamageType)
+          * weapon.MissileDamage * weapon.MissileDamage
+          * weapon.MaxDataValue
+          * CalculateDamageTypeFactor(weapon.ThrustDamageType)
+          / scaler;
     }
 }

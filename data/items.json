@@ -2123,7 +2123,7 @@
     "name": "Barbed Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 98,
+    "price": 102,
     "weight": 0.05,
     "requirement": 0,
     "weapons": [
@@ -4492,7 +4492,7 @@
     "name": "Blunt Arrows",
     "culture": "Khuzait",
     "type": "Arrows",
-    "price": 4257,
+    "price": 4500,
     "weight": 0.05,
     "requirement": 0,
     "weapons": [
@@ -4556,7 +4556,7 @@
     "name": "Stacked Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 2504,
+    "price": 2653,
     "weight": 0.048,
     "requirement": 0,
     "weapons": [
@@ -4586,7 +4586,7 @@
     "name": "Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 1536,
+    "price": 1631,
     "weight": 0.048,
     "requirement": 0,
     "weapons": [
@@ -4616,7 +4616,7 @@
     "name": "Light Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 1234,
+    "price": 1311,
     "weight": 0.048,
     "requirement": 0,
     "weapons": [
@@ -4646,7 +4646,7 @@
     "name": "Light Bolts",
     "culture": "Neutral",
     "type": "Bolts",
-    "price": 530,
+    "price": 532,
     "weight": 0.05,
     "requirement": 0,
     "weapons": [
@@ -4677,7 +4677,7 @@
     "name": "Bolts",
     "culture": "Vlandia",
     "type": "Bolts",
-    "price": 3210,
+    "price": 3743,
     "weight": 0.08,
     "requirement": 0,
     "weapons": [
@@ -4708,7 +4708,7 @@
     "name": "Heavy Bolts",
     "culture": "Vlandia",
     "type": "Bolts",
-    "price": 6729,
+    "price": 8200,
     "weight": 0.04,
     "requirement": 0,
     "weapons": [
@@ -4739,7 +4739,7 @@
     "name": "Heavy Quarrels",
     "culture": "Empire",
     "type": "Bolts",
-    "price": 1340,
+    "price": 1461,
     "weight": 0.06,
     "requirement": 0,
     "weapons": [
@@ -4770,7 +4770,7 @@
     "name": "Light Quarrels",
     "culture": "Empire",
     "type": "Bolts",
-    "price": 131,
+    "price": 122,
     "weight": 0.04,
     "requirement": 0,
     "weapons": [
@@ -5904,7 +5904,7 @@
     "name": "Simple Short Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 261133,
+    "price": 1351,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -5940,7 +5940,7 @@
     "name": "Steppe Recurve Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 436674,
+    "price": 2011,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -5976,9 +5976,9 @@
     "name": "Heavy Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 16315292,
+    "price": 5403,
     "weight": 2.7,
-    "requirement": 600,
+    "requirement": 9,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6012,9 +6012,9 @@
     "name": "Arbalest",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 14537260,
+    "price": 8377,
     "weight": 3.0,
-    "requirement": -570,
+    "requirement": 11,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6047,9 +6047,9 @@
     "name": "Hickory Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 7663823,
+    "price": 11518,
     "weight": 2.2,
-    "requirement": -415,
+    "requirement": 14,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6082,9 +6082,9 @@
     "name": "Bound Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 979931,
+    "price": 18000,
     "weight": 2.0,
-    "requirement": -149,
+    "requirement": 18,
     "weapons": [
       {
         "class": "Crossbow",
@@ -9732,7 +9732,7 @@
     "name": "Longbow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 283554,
+    "price": 1438,
     "weight": 0.4,
     "requirement": 0,
     "weapons": [
@@ -10320,7 +10320,7 @@
     "name": "Stacked Steppe Arrows",
     "culture": "Khuzait",
     "type": "Arrows",
-    "price": 804,
+    "price": 856,
     "weight": 0.036,
     "requirement": 0,
     "weapons": [
@@ -10452,7 +10452,7 @@
     "name": "Ranger Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 159526,
+    "price": 940,
     "weight": 0.4,
     "requirement": 0,
     "weapons": [
@@ -10990,7 +10990,7 @@
     "name": "Hunting Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 76362,
+    "price": 568,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -14086,7 +14086,7 @@
     "name": "Lowland Longbow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 437388,
+    "price": 2013,
     "weight": 0.5,
     "requirement": 0,
     "weapons": [
@@ -14175,7 +14175,7 @@
     "name": "Yew Bow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 627239,
+    "price": 2690,
     "weight": 0.5,
     "requirement": 0,
     "weapons": [
@@ -14519,7 +14519,7 @@
     "name": "Mountain Hunting Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 76116,
+    "price": 566,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -14908,7 +14908,7 @@
     "name": "Noble Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 2274127,
+    "price": 8081,
     "weight": 0.8,
     "requirement": 0,
     "weapons": [
@@ -15080,7 +15080,7 @@
     "name": "Noble Long Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 3619025,
+    "price": 12264,
     "weight": 0.8,
     "requirement": 0,
     "weapons": [
@@ -15150,7 +15150,7 @@
     "name": "Nomad Bow",
     "culture": "Aserai",
     "type": "Bow",
-    "price": 732930,
+    "price": 3057,
     "weight": 0.5,
     "requirement": 0,
     "weapons": [
@@ -15356,7 +15356,7 @@
     "name": "Nordic Shortbow",
     "culture": "Sturgia",
     "type": "Bow",
-    "price": 181726,
+    "price": 1033,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -17551,7 +17551,7 @@
     "name": "Piercing Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 3858,
+    "price": 4079,
     "weight": 0.041,
     "requirement": 0,
     "weapons": [
@@ -18042,7 +18042,7 @@
     "name": "Range Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 119,
+    "price": 125,
     "weight": 0.043,
     "requirement": 0,
     "weapons": [
@@ -19948,7 +19948,7 @@
     "name": "Steppe Arrows",
     "culture": "Khuzait",
     "type": "Arrows",
-    "price": 448,
+    "price": 477,
     "weight": 0.036,
     "requirement": 0,
     "weapons": [
@@ -19978,7 +19978,7 @@
     "name": "Steppe Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 74688,
+    "price": 559,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -20113,7 +20113,7 @@
     "name": "Heavy Recurve Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 372353,
+    "price": 1774,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -20234,7 +20234,7 @@
     "name": "Steppe War Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 642237,
+    "price": 2743,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -22330,7 +22330,7 @@
     "name": "Practice Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 36615,
+    "price": 359,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -22366,7 +22366,7 @@
     "name": "Practice Longbow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 31872,
+    "price": 331,
     "weight": 0.5,
     "requirement": 0,
     "weapons": [
@@ -22477,7 +22477,7 @@
     "name": "Tribesman Bow",
     "culture": "Aserai",
     "type": "Bow",
-    "price": 703309,
+    "price": 2955,
     "weight": 0.5,
     "requirement": 0,
     "weapons": [
@@ -24047,7 +24047,7 @@
     "name": "Lowland Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 473,
+    "price": 505,
     "weight": 0.06,
     "requirement": 0,
     "weapons": [
@@ -25227,7 +25227,7 @@
     "name": "Woodland Longbow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 1136552,
+    "price": 4419,
     "weight": 0.1,
     "requirement": 0,
     "weapons": [
@@ -25263,7 +25263,7 @@
     "name": "Woodland Yew Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 762556,
+    "price": 3159,
     "weight": 0.5,
     "requirement": 0,
     "weapons": [
