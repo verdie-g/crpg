@@ -1,5 +1,6 @@
 using Crpg.Application.Clans.Commands;
 using Crpg.Application.Common.Results;
+using Crpg.Domain.Entities;
 using Crpg.Domain.Entities.Clans;
 using Crpg.Domain.Entities.Users;
 using NUnit.Framework;
@@ -23,6 +24,7 @@ public class CreateClanCommandTest : TestBase
             SecondaryColor = 0xFF000000,
             Name = "TaleWorlds",
             BannerKey = "abc",
+            Region = Region.NorthAmerica,
         }, CancellationToken.None);
 
         var clan = result.Data!;
@@ -31,6 +33,7 @@ public class CreateClanCommandTest : TestBase
         Assert.AreEqual(0xFF000000, clan.SecondaryColor);
         Assert.AreEqual("TaleWorlds", clan.Name);
         Assert.AreEqual("abc", clan.BannerKey);
+        Assert.AreEqual(Region.NorthAmerica, clan.Region);
 
         Assert.That(AssertDb.Clans, Has.Exactly(1).Matches<Clan>(c => c.Id == clan.Id));
         Assert.That(AssertDb.ClanMembers, Has.Exactly(1)
