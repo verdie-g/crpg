@@ -34,7 +34,7 @@ internal class CrpgItemValueModel : ItemValueModel
         int desiredShieldMaxPrice = 9235;
         int desiredBowMaxPrice = 12264;
         int desiredCrossbowMaxPrice = 18000;
-        int desiredOneHandedWeaponMaxPrice = 16000;
+        int desiredOneHandedWeaponMaxPrice = 7500;
         int desiredTwoHandedWeaponMaxPrice = 14000;
         int desiredPolearmMaxPrice = 20000;
         int desiredThrownMaxPrice = 7385;
