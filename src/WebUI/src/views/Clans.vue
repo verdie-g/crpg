@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <b-tabs v-model="activeRegionTab">
+      <b-tabs v-model="selectedRegion">
         <b-tab-item
           v-for="[regionValue, regionStr] in regions"
           :value="regionValue"
@@ -147,7 +147,6 @@ export default class Clans extends Vue {
   clanSearchQuery = '';
   clansLoading = false;
   clansPerPage = 20;
-  activeRegionTab = Region.Europe;
 
   get regions(): [string, string][] {
     return Object.entries(regionToStr);
@@ -163,7 +162,7 @@ export default class Clans extends Vue {
 
   get filteredClans(): ClanWithMemberCount[] {
     const filteredClans = clanModule.clans.filter(
-      clan => clan.clan.region === this.activeRegionTab
+      clan => clan.clan.region === this.selectedRegion
     );
     if (this.clanSearchQuery.length === 0) {
       return filteredClans;
@@ -173,6 +172,19 @@ export default class Clans extends Vue {
     return filteredClans.filter(
       c => c.clan.tag.toLowerCase().includes(q) || c.clan.name.toLowerCase().includes(q)
     );
+  }
+
+  get selectedRegion(): Region {
+    return this.$route.query.region ? (this.$route.query.region as Region) : Region.Europe;
+  }
+
+  set selectedRegion(region: Region) {
+    this.$router.replace({
+      query: {
+        ...this.$route.query,
+        region,
+      }
+    });
   }
 
   get currentPage(): number {

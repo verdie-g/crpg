@@ -712,7 +712,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 4281348144,
                 Name = "Among The Shadows",
                 BannerKey = string.Empty,
-                Region = Region.Europe,
+                Region = Region.NorthAmerica,
             };
             Clan legio = new()
             {
@@ -757,7 +757,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "Random Clan",
                 BannerKey = string.Empty,
-                Region = Region.Europe,
+                Region = Region.Asia,
             };
             Clan abcClan = new()
             {
@@ -766,7 +766,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "ABC",
                 BannerKey = string.Empty,
-                Region = Region.Europe,
+                Region = Region.Asia,
             };
             Clan defClan = new()
             {
@@ -775,7 +775,7 @@ public record SeedDataCommand : IMediatorRequest
                 SecondaryColor = 890,
                 Name = "DEF",
                 BannerKey = string.Empty,
-                Region = Region.Europe,
+                Region = Region.NorthAmerica,
             };
             Clan ghiClan = new()
             {
