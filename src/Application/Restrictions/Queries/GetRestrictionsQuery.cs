@@ -27,6 +27,7 @@ public record GetRestrictionsQuery : IMediatorRequest<IList<RestrictionViewModel
             return new(await _db.Restrictions
                 .Include(r => r.RestrictedUser)
                 .Include(r => r.RestrictedByUser)
+                .OrderByDescending(r => r.Id)
                 .ProjectTo<RestrictionViewModel>(_mapper.ConfigurationProvider)
                 .ToArrayAsync(cancellationToken));
         }
