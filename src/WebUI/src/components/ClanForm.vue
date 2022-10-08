@@ -80,7 +80,7 @@
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import Constants from '../../../../data/constants.json';
 import Region, { TranslatedRegion } from '@/models/region';
-import { ClanFormMode, ClanFormModeVariant } from '@/models/clan-form';
+import { ClanFormMode, ClanEditionMode } from '@/models/clan-form';
 import Clan from '@/models/clan';
 import { getTranslatedRegions } from '@/services/region-service';
 
@@ -90,22 +90,28 @@ export default class ClanFormComponent extends Vue {
   @Prop(Number) readonly id?: number;
   @Prop({ type: Boolean, default: false }) readonly isLoading: boolean;
 
-  @Prop({ type: String, default: '' }) readonly tag: string;
-  @Prop({ type: String, default: '' }) readonly name: string;
-  @Prop({ type: String, default: '' }) readonly bannerKey: string;
-  @Prop({ type: String, default: Region.Europe }) readonly region: Region;
-  @Prop({ type: String, default: '#000000' }) readonly primaryColor: string;
-  @Prop({ type: String, default: '#000000' }) readonly secondaryColor: string;
+  @Prop({
+    type: Object,
+    default: () => ({
+      region: Region.Europe,
+      name: '',
+      tag: '',
+      primaryColor: '#000000',
+      secondaryColor: '#000000',
+      bannerKey: '',
+    }),
+  })
+  readonly clan: Omit<Clan, 'id'>;
 
-  formModes = ClanFormModeVariant;
+  formModes = ClanEditionMode;
 
   formModel: Omit<Clan, 'id'> = {
+    region: Region.Europe,
+    name: '',
     tag: '',
     primaryColor: '',
     secondaryColor: '',
-    name: '',
     bannerKey: '',
-    region: Region.Europe,
   };
 
   tagMinLength: number = Constants.clanTagMinLength;
@@ -122,13 +128,7 @@ export default class ClanFormComponent extends Vue {
 
   constructor() {
     super();
-
-    this.formModel.tag = this.tag;
-    this.formModel.name = this.name;
-    this.formModel.bannerKey = this.bannerKey;
-    this.formModel.region = this.region;
-    this.formModel.primaryColor = this.primaryColor;
-    this.formModel.secondaryColor = this.secondaryColor;
+    this.formModel = { ...this.clan };
   }
 
   get translatedRegion(): TranslatedRegion {

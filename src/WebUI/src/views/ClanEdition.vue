@@ -2,7 +2,7 @@
   <section class="section">
     <div class="container" v-if="clan !== null">
       <div class="columns is-vcentered">
-        <h1 class="column is-size-2">[{{ clan.tag }}] {{ clan.name }} - Settings</h1>
+        <h1 class="column is-size-2">[{{ clan.tag }}] {{ clan.name }} - Edit</h1>
         <div class="column is-narrow">
           <b-button
             type="is-link"
@@ -17,7 +17,7 @@
       </div>
 
       <ClanFormComponent
-        v-bind="{ ...clan, mode: clanFormMode, isLoading: updatingClan }"
+        v-bind="{ clan, mode: clanFormMode, isLoading: updatingClan }"
         @submit="update"
       />
     </div>
@@ -28,16 +28,16 @@
 import { Component, Vue } from 'vue-property-decorator';
 import * as clanService from '@/services/clan-service';
 import Clan from '@/models/clan';
-import { ClanFormMode, ClanFormModeVariant } from '@/models/clan-form';
+import { ClanFormMode, ClanEditionMode } from '@/models/clan-form';
 import { notify } from '@/services/notifications-service';
 import ClanFormComponent from '@/components/ClanForm.vue';
 
 @Component({
   components: { ClanFormComponent },
 })
-export default class ClanSettings extends Vue {
+export default class ClanEdition extends Vue {
   clan: Clan | null = null;
-  clanFormMode: ClanFormMode = ClanFormModeVariant.Update;
+  clanFormMode: ClanFormMode = ClanEditionMode.Update;
   updatingClan = false;
 
   async created() {
@@ -48,23 +48,16 @@ export default class ClanSettings extends Vue {
       return;
     }
 
-    const clan = await clanService.getClan(clanId);
-
-    this.clan = clan;
+    this.clan = await clanService.getClan(clanId);
   }
 
   async update(payload: Clan): Promise<void> {
-    if (this.clan?.id) {
+    if (this.clan) {
       this.updatingClan = true;
-      const clan = await clanService.updateClan(this.clan.id, payload);
-      this.clan = clan;
-
+      this.clan = await clanService.updateClan(this.clan.id, payload);
       this.updatingClan = false;
       notify('Clan updated!');
-      return;
     }
-
-    notify('Clan not found!');
   }
 }
 </script>

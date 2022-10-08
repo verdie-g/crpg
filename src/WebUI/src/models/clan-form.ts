@@ -1,6 +1,6 @@
-export enum ClanFormModeVariant {
+export enum ClanEditionMode {
   Create = 'Create',
   Update = 'Update',
 }
 
-export type ClanFormMode = `${ClanFormModeVariant}`;
+export type ClanFormMode = `${ClanEditionMode}`;

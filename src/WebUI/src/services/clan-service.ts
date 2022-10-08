@@ -6,11 +6,11 @@ import ClanInvitationStatus from '@/models/clan-invitation-status';
 import ClanInvitationType from '@/models/clan-invitation-type';
 import ClanMember from '@/models/clan-member';
 import ClanMemberRole from '@/models/clan-member-role';
-import ClanDTO from '@/models/clan-dto';
+import ClanEdition from '@/models/clan-edition';
 
 import { rgbHexColorToArgbInt, argbIntToRgbHexColor } from '@/utils/color';
 
-const mapClanRequest = (payload: Omit<Clan, 'id'>): Omit<ClanDTO, 'id'> => {
+const mapClanRequest = (payload: Omit<Clan, 'id'>): Omit<ClanEdition, 'id'> => {
   return {
     ...payload,
     primaryColor: rgbHexColorToArgbInt(payload.primaryColor),
@@ -18,7 +18,7 @@ const mapClanRequest = (payload: Omit<Clan, 'id'>): Omit<ClanDTO, 'id'> => {
   };
 };
 
-const mapClanResponse = (payload: ClanDTO): Clan => {
+const mapClanResponse = (payload: ClanEdition): Clan => {
   return {
     ...payload,
     primaryColor: argbIntToRgbHexColor(payload.primaryColor),
@@ -27,9 +27,8 @@ const mapClanResponse = (payload: ClanDTO): Clan => {
 };
 
 export async function getClan(id: number): Promise<Clan> {
-  const response = (await get(`/clans/${id}`)) as ClanDTO;
-
-  return mapClanResponse(response);
+  const response = await get(`/clans/${id}`);
+  return mapClanResponse(response as ClanEdition);
 }
 
 export function getClanMembers(id: number): Promise<ClanMember[]> {
@@ -73,15 +72,13 @@ export function getClans(): Promise<ClanWithMemberCount[]> {
 }
 
 export async function createClan(clan: Omit<Clan, 'id'>): Promise<Clan> {
-  const response = (await post('/clans', mapClanRequest(clan))) as ClanDTO;
-
-  return mapClanResponse(response);
+  const response = await post('/clans', mapClanRequest(clan));
+  return mapClanResponse(response as ClanEdition);
 }
 
 export async function updateClan(clanId: number, clan: Clan): Promise<Clan> {
-  const response = (await put(`/clans/${clanId}`, mapClanRequest(clan))) as ClanDTO;
-
-  return mapClanResponse(response);
+  const response = await put(`/clans/${clanId}`, mapClanRequest(clan));
+  return mapClanResponse(response as ClanEdition);
 }
 
 export function kickClanMember(clanId: number, memberId: number): Promise<void> {

@@ -1,6 +1,6 @@
 import Region from './region';
 
-export default interface ClanDTO {
+export default interface ClanEdition {
   id: number;
   tag: string;
   primaryColor: number;
