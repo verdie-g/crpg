@@ -95,7 +95,7 @@ public record UpdateClanCommand : IMediatorRequest<ClanViewModel>
             }
 
             var conflictingClan = await _db.Clans
-                .FirstOrDefaultAsync(c => c.Tag == req.Tag || c.Name == req.Name, cancellationToken);
+                .FirstOrDefaultAsync(c => c.Id != clan.Id && (c.Tag == req.Tag || c.Name == req.Name), cancellationToken);
             if (conflictingClan != null)
             {
                 return conflictingClan.Tag == req.Tag
