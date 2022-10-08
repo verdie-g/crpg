@@ -34,10 +34,10 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
                 .Matches(new Regex(constants.ClanTagRegex, RegexOptions.Compiled));
 
             RuleFor(c => c.PrimaryColor)
-                .GreaterThan(constants.ClanColorMinValue);
+                .GreaterThanOrEqualTo(constants.ClanColorMinValue);
 
             RuleFor(c => c.SecondaryColor)
-                .GreaterThan(constants.ClanColorMinValue);
+                .GreaterThanOrEqualTo(constants.ClanColorMinValue);
 
             RuleFor(c => c.Name)
                 .MinimumLength(constants.ClanNameMinLength)
