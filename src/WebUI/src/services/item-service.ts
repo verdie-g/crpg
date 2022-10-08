@@ -93,6 +93,14 @@ const weaponTypes: ItemType[] = [
   ItemType.Bolts,
 ];
 
+const armorTypes: ItemType[] = [
+  ItemType.HeadArmor,
+  ItemType.ShoulderArmor,
+  ItemType.BodyArmor,
+  ItemType.HandArmor,
+  ItemType.LegArmor,
+];
+
 const itemTypesBySlot: Record<ItemSlot, ItemType[]> = {
   [ItemSlot.Head]: [ItemType.HeadArmor],
   [ItemSlot.Shoulder]: [ItemType.ShoulderArmor],
@@ -354,7 +362,7 @@ export function computeArmorSetPieceStrengthRequirement(equippedItems: EquippedI
   const numberOfArmorItemTypes = 5;
   const armorsRequirement = new Array(numberOfArmorItemTypes).fill(0);
   equippedItems
-    .filter(e => e.userItem.baseItem.armor != null)
+    .filter(e => armorTypes.includes(e.userItem.baseItem.type))
     .forEach((ei, i) => (armorsRequirement[i] = ei.userItem.baseItem.requirement));
   return Math.trunc(
     generalizedMean(Constants.armorSetRequirementPowerMeanPValue, armorsRequirement)
