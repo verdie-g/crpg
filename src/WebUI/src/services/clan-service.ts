@@ -6,7 +6,7 @@ import ClanInvitationStatus from '@/models/clan-invitation-status';
 import ClanInvitationType from '@/models/clan-invitation-type';
 import ClanMember from '@/models/clan-member';
 import ClanMemberRole from '@/models/clan-member-role';
-import ClanEdition from '@/models/clan-edition';
+import { ClanEdition } from '@/models/clan-edition';
 
 import { rgbHexColorToArgbInt, argbIntToRgbHexColor } from '@/utils/color';
 

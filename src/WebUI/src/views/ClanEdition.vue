@@ -28,7 +28,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import * as clanService from '@/services/clan-service';
 import Clan from '@/models/clan';
-import { ClanFormMode, ClanEditionMode } from '@/models/clan-form';
+import { ClanEditionModes, ClanEditionMode } from '@/models/clan-edition';
 import { notify } from '@/services/notifications-service';
 import ClanFormComponent from '@/components/ClanForm.vue';
 
@@ -37,7 +37,7 @@ import ClanFormComponent from '@/components/ClanForm.vue';
 })
 export default class ClanEdition extends Vue {
   clan: Clan | null = null;
-  clanFormMode: ClanFormMode = ClanEditionMode.Update;
+  clanFormMode: ClanEditionMode = ClanEditionModes.Update;
   updatingClan = false;
 
   async created() {

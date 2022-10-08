@@ -1,6 +1,6 @@
 import Region from './region';
 
-export default interface ClanEdition {
+export interface ClanEdition {
   id: number;
   tag: string;
   primaryColor: number;
@@ -9,3 +9,10 @@ export default interface ClanEdition {
   bannerKey: string;
   region: Region;
 }
+
+export enum ClanEditionModes {
+  Create = 'Create',
+  Update = 'Update',
+}
+
+export type ClanEditionMode = `${ClanEditionModes}`;

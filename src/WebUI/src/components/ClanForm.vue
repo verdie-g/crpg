@@ -80,13 +80,13 @@
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import Constants from '../../../../data/constants.json';
 import Region, { TranslatedRegion } from '@/models/region';
-import { ClanFormMode, ClanEditionMode } from '@/models/clan-form';
+import { ClanEditionModes, ClanEditionMode } from '@/models/clan-edition';
 import Clan from '@/models/clan';
 import { getTranslatedRegions } from '@/services/region-service';
 
 @Component
 export default class ClanFormComponent extends Vue {
-  @Prop(String) readonly mode: ClanFormMode;
+  @Prop(String) readonly mode: ClanEditionMode;
   @Prop(Number) readonly id?: number;
   @Prop({ type: Boolean, default: false }) readonly isLoading: boolean;
 
@@ -103,7 +103,7 @@ export default class ClanFormComponent extends Vue {
   })
   readonly clan: Omit<Clan, 'id'>;
 
-  formModes = ClanEditionMode;
+  formModes = ClanEditionModes;
 
   formModel: Omit<Clan, 'id'> = {
     region: Region.Europe,
