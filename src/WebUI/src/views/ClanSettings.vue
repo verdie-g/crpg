@@ -15,32 +15,11 @@
           </b-button>
         </div>
       </div>
-      <b-field label="Region">
-        <b-dropdown v-model="translatedRegion" position="is-bottom-left" aria-role="menu">
-          <template #trigger>
-            <a class="navbar-item" role="button">
-              <span>{{ translatedRegion.translation }}</span>
-              <b-icon icon="caret-down"></b-icon>
-            </a>
-          </template>
 
-          <b-dropdown-item v-for="t in translatedRegions" :value="t" :key="t.region">
-            {{ t.translation }}
-          </b-dropdown-item>
-        </b-dropdown>
-      </b-field>
-      <b-field>
-        <p class="control">
-          <b-button
-            size="is-medium"
-            @click="submitClanUpdate"
-            icon-left="check"
-            :disabled="disableUpdateButton"
-          >
-            Update
-          </b-button>
-        </p>
-      </b-field>
+      <ClanFormComponent
+        v-bind="{ ...clan, mode: clanFormMode, isLoading: updatingClan }"
+        @submit="update"
+      />
     </div>
   </section>
 </template>
@@ -48,64 +27,44 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import * as clanService from '@/services/clan-service';
-import Region, { TranslatedRegion } from '@/models/region';
 import Clan from '@/models/clan';
-import ClanUpdate from '@/models/clan-update';
-import clanModule from '@/store/clan-module';
-import { getTranslatedRegions } from '@/services/region-service';
+import { ClanFormMode, ClanFormModeVariant } from '@/models/clan-form';
 import { notify } from '@/services/notifications-service';
+import ClanFormComponent from '@/components/ClanForm.vue';
 
-@Component
+@Component({
+  components: { ClanFormComponent },
+})
 export default class ClanSettings extends Vue {
   clan: Clan | null = null;
-  translatedRegions = getTranslatedRegions();
-  clanUpdate: ClanUpdate = {
-    region: Region.Europe,
-  };
-  originalClanUpdate: ClanUpdate | null;
+  clanFormMode: ClanFormMode = ClanFormModeVariant.Update;
+  updatingClan = false;
 
-  get translatedRegion(): TranslatedRegion {
-    const region = this.clanUpdate?.region || Region.Europe;
-    return this.translatedRegions.find(tr => tr.region === region) || this.translatedRegions[1];
-  }
-
-  set translatedRegion(translatedRegion: TranslatedRegion) {
-    this.clanUpdate = { ...this.clanUpdate, region: translatedRegion.region };
-  }
-
-  get disableUpdateButton(): boolean {
-    return this.clanUpdate.region === this.originalClanUpdate?.region;
-  }
-
-  created() {
+  async created() {
     const clanId = parseInt(this.$route.params.id as string);
+
     if (Number.isNaN(clanId)) {
       this.$router.push({ name: 'not-found' });
       return;
     }
 
-    clanService.getClan(clanId).then(clan => {
-      this.initClanUpdates(clan);
+    const clan = await clanService.getClan(clanId);
+
+    this.clan = clan;
+  }
+
+  async update(payload: Clan): Promise<void> {
+    if (this.clan?.id) {
+      this.updatingClan = true;
+      const clan = await clanService.updateClan(this.clan.id, payload);
       this.clan = clan;
-    });
-  }
 
-  submitClanUpdate(): void {
-    clanModule
-      .updateClan({
-        clanId: this.clan!.id,
-        clanUpdate: this.clanUpdate,
-      })
-      .then(clan => {
-        this.clan = clan;
-        this.initClanUpdates(clan);
-        notify('Clan updated!');
-      });
-  }
+      this.updatingClan = false;
+      notify('Clan updated!');
+      return;
+    }
 
-  initClanUpdates(clan: Clan) {
-    this.clanUpdate = { region: clan.region };
-    this.originalClanUpdate = this.clanUpdate;
+    notify('Clan not found!');
   }
 }
 </script>
