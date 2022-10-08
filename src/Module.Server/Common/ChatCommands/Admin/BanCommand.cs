@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using Crpg.Module.Common.GameHandler;
 using Crpg.Module.Common.Network;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
@@ -15,10 +14,11 @@ internal class BanCommand : AdminCommand
         Days = 1440,
     }
 
-    public BanCommand()
+    public BanCommand(ChatCommandsComponent chatComponent)
+        : base(chatComponent)
     {
         Name = "ban";
-        Description = $"'{ChatCommandHandler.CommandPrefix}{Name} PLAYERID DURATION REASON' to ban a player.";
+        Description = $"'{ChatCommandsComponent.CommandPrefix}{Name} PLAYERID DURATION REASON' to ban a player.";
         Overloads = new CommandOverload[]
         {
             new(new[] { ChatCommandParameterType.Int32, ChatCommandParameterType.PlayerId, ChatCommandParameterType.String }, ExecuteBanByNetworkPeer), // !ban PLAYERID DURATION REASON
@@ -28,13 +28,11 @@ internal class BanCommand : AdminCommand
 
     protected override void ExecuteFailed(NetworkCommunicator fromPeer)
     {
-        CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
+        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
     private async void ExecuteBanByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
     {
-        CrpgChatBox crpgChat = GetChat();
         var targetPeer = (NetworkCommunicator)arguments[0];
         int duration = (int)arguments[1];
         string reason = (string)arguments[2];
@@ -55,8 +53,8 @@ internal class BanCommand : AdminCommand
             return;
         }
 
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You banned {targetPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}.");
-        crpgChat.ServerSendServerMessageToEveryone(ColorFatal, $"{targetPeer.UserName} was banned by {fromPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}. Reason: {reason}");
+        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You banned {targetPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}.");
+        ChatComponent.ServerSendServerMessageToEveryone(ColorFatal, $"{targetPeer.UserName} was banned by {fromPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}. Reason: {reason}");
 
         GameNetwork.BeginModuleEventAsServer(targetPeer);
         GameNetwork.WriteMessage(new CrpgNotification
@@ -86,7 +84,7 @@ internal class BanCommand : AdminCommand
             return;
         }
 
-        arguments = new object[] { targetPeer!, arguments[1], arguments[2] };
+        arguments = new[] { targetPeer!, arguments[1], arguments[2] };
         ExecuteBanByNetworkPeer(fromPeer, cmd, arguments);
     }
 

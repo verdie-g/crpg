@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using Crpg.Module.Common.GameHandler;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.ChatCommands.Admin;
@@ -13,10 +12,11 @@ internal class MuteCommand : AdminCommand
         Days = 1440,
     }
 
-    public MuteCommand()
+    public MuteCommand(ChatCommandsComponent chatComponent)
+        : base(chatComponent)
     {
         Name = "mute";
-        Description = $"'{ChatCommandHandler.CommandPrefix}{Name} PLAYERID' to mute a player.";
+        Description = $"'{ChatCommandsComponent.CommandPrefix}{Name} PLAYERID' to mute a player.";
         Overloads = new CommandOverload[]
         {
             new(new[] { ChatCommandParameterType.Int32, ChatCommandParameterType.PlayerId, ChatCommandParameterType.String }, ExecuteMuteByNetworkPeer),
@@ -26,8 +26,7 @@ internal class MuteCommand : AdminCommand
 
     protected override void ExecuteFailed(NetworkCommunicator fromPeer)
     {
-        CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
+        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
     private void ExecuteMuteByName(NetworkCommunicator fromPeer, string cmd, object[] arguments)
@@ -47,7 +46,6 @@ internal class MuteCommand : AdminCommand
 
     private void ExecuteMuteByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
     {
-        CrpgChatBox crpgChat = GetChat();
         var targetPeer = (NetworkCommunicator)arguments[0];
         int duration = (int)arguments[1];
         string reason = (string)arguments[2];
@@ -67,14 +65,14 @@ internal class MuteCommand : AdminCommand
         // Call webrequest. Muted until muteUntilDate
         if (duration == 0)
         {
-            crpgChat.ServerSendMessageToPlayer(fromPeer, ColorSuccess, $"You were unmuted by {fromPeer.UserName}.");
-            crpgChat.ServerSendMessageToPlayer(fromPeer, ColorSuccess, $"You muted {targetPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorSuccess, $"You were unmuted by {fromPeer.UserName}.");
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorSuccess, $"You muted {targetPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
             targetPeer.IsMuted = false;
         }
         else
         {
-            crpgChat.ServerSendMessageToPlayer(targetPeer, ColorFatal, $"You were muted by {fromPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
-            crpgChat.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You muted {targetPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
+            ChatComponent.ServerSendMessageToPlayer(targetPeer, ColorFatal, $"You were muted by {fromPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You muted {targetPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
             targetPeer.IsMuted = true;
         }
     }

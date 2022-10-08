@@ -1,15 +1,15 @@
-﻿using Crpg.Module.Common.GameHandler;
-using Crpg.Module.Common.Network;
+﻿using Crpg.Module.Common.Network;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.ChatCommands.Admin;
 
 internal class AnnouncementCommand : AdminCommand
 {
-    public AnnouncementCommand()
+    public AnnouncementCommand(ChatCommandsComponent chatComponent)
+        : base(chatComponent)
     {
         Name = "a";
-        Description = $"'{ChatCommandHandler.CommandPrefix}{Name} message' to send an admin announcement.";
+        Description = $"'{ChatCommandsComponent.CommandPrefix}{Name} message' to send an admin announcement.";
         Overloads = new CommandOverload[]
         {
             new(new[] { ChatCommandParameterType.String }, ExecuteAnnouncement),
@@ -18,8 +18,7 @@ internal class AnnouncementCommand : AdminCommand
 
     protected override void ExecuteFailed(NetworkCommunicator fromPeer)
     {
-        CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
+        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
     private void ExecuteAnnouncement(NetworkCommunicator fromPeer, string cmd, object[] arguments)

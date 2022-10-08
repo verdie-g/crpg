@@ -1,4 +1,5 @@
 using Crpg.Module.Common;
+using Crpg.Module.Common.ChatCommands;
 using Crpg.Module.Common.Warmup;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -72,6 +73,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
         CrpgBattleMissionMultiplayerClient battleClient = new();
         MultiplayerGameNotificationsComponent notificationsComponent = new(); // used to send notifications (e.g. flag captured, round won) to peer
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent);
+        ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
 
         MissionState.OpenNew(
             Name,
@@ -97,6 +99,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MultiplayerPreloadHelper(),
                     warmupComponent,
                     notificationsComponent,
+                    new ChatCommandsComponent(chatBox),
 #if CRPG_SERVER
                     roundController,
                     new CrpgBattleMissionMultiplayer(battleClient, crpgClient, _constants),

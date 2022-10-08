@@ -1,34 +1,38 @@
-﻿using Crpg.Module.Common.ChatCommands;
+﻿using Crpg.Module.Common.ChatCommands.Admin;
+using Crpg.Module.Common.ChatCommands.User;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
-#if CRPG_SERVER
-using TaleWorlds.MountAndBlade.DedicatedCustomServer;
-#endif
 
-namespace Crpg.Module.Common.GameHandler;
+namespace Crpg.Module.Common.ChatCommands;
 
-internal class CrpgChatBox : TaleWorlds.Core.GameHandler
+internal class ChatCommandsComponent : MissionBehavior
 {
-    private ChatBox? _chatBox;
-    private List<QueuedMessageInfo> _queuedServerMessages;
-    private bool _isNetworkInitialized;
+    public const char CommandPrefix = '!';
 
-    public CrpgChatBox()
+    private readonly ChatBox _chatBox;
+    private readonly List<QueuedMessageInfo> _queuedServerMessages;
+    private readonly ChatCommand[] _commands;
+
+    public ChatCommandsComponent(ChatBox chatBox)
     {
-        _queuedServerMessages = new();
-
-#if CRPG_SERVER
-        DedicatedCustomGameServerState.OnActivated += DedicatedCustomGameServerStateActivated;
-#endif
+        _chatBox = chatBox;
+        _queuedServerMessages = new List<QueuedMessageInfo>();
+        _commands = new ChatCommand[]
+        {
+            new PingCommand(this),
+            new PlayerListCommand(this),
+            new KickCommand(this),
+            new KillCommand(this),
+            new TeleportCommand(this),
+            new AnnouncementCommand(this),
+            // new MuteCommand(), // Both disabled until missing API endpoints were implemented.
+            // new BanCommand(),
+        };
     }
 
-    public void DedicatedCustomGameServerStateActivated()
-    {
-        _chatBox = Game.Current.GetGameHandler<ChatBox>();
-        _chatBox.OnMessageReceivedAtDedicatedServer = (Action<NetworkCommunicator, string>)Delegate.Combine(_chatBox.OnMessageReceivedAtDedicatedServer, new Action<NetworkCommunicator, string>(OnMessageReceivedAtDedicatedServer));
-    }
+    public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
 
     public void ServerSendMessageToPlayer(NetworkCommunicator targetPlayer, Color color, string message)
     {
@@ -74,55 +78,72 @@ internal class CrpgChatBox : TaleWorlds.Core.GameHandler
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.IncludeUnsynchronizedClients);
     }
 
-    public void OnMessageReceivedAtDedicatedServer(NetworkCommunicator fromPeer, string message)
+    public override void OnBehaviorInitialize()
     {
-        if (message[0] == ChatCommandHandler.CommandPrefix)
+        AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
+        _chatBox.OnMessageReceivedAtDedicatedServer = (Action<NetworkCommunicator, string>)Delegate.Combine(
+            OnMessageReceivedAtDedicatedServer,
+            _chatBox.OnMessageReceivedAtDedicatedServer);
+    }
+
+    public override void OnRemoveBehavior()
+    {
+        AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Remove);
+        _chatBox.OnMessageReceivedAtDedicatedServer = (Action<NetworkCommunicator, string>)Delegate.Remove(
+            OnMessageReceivedAtDedicatedServer,
+            _chatBox.OnMessageReceivedAtDedicatedServer)!;
+    }
+
+#if CRPG_SERVER
+    public override void OnMissionTick(float dt)
+    {
+        for (int i = 0; i < _queuedServerMessages.Count; i++)
         {
-            ChatCommandHandler.TryExecuteCommand(fromPeer, message.Substring(1));
+            QueuedMessageInfo queuedMessageInfo = _queuedServerMessages[i];
+            if (queuedMessageInfo.SourcePeer.IsSynchronized)
+            {
+                ServerSendMessageToPlayer(queuedMessageInfo.SourcePeer, queuedMessageInfo.Message);
+                _queuedServerMessages.RemoveAt(i);
+            }
+            else if (queuedMessageInfo.IsExpired)
+            {
+                _queuedServerMessages.RemoveAt(i);
+            }
         }
     }
+#endif
 
-    public override void OnBeforeSave()
+    private void OnMessageReceivedAtDedicatedServer(NetworkCommunicator fromPeer, string message)
     {
-    }
-
-    public override void OnAfterSave()
-    {
-    }
-
-    protected override void OnGameNetworkBegin()
-    {
-        _queuedServerMessages = new List<QueuedMessageInfo>();
-        _isNetworkInitialized = true;
-        AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
-    }
-
-    protected override void OnGameNetworkEnd()
-    {
-        base.OnGameNetworkEnd();
-        AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Remove);
-    }
-
-    protected override void OnTick(float dt)
-    {
-        if (!GameNetwork.IsServer || !_isNetworkInitialized)
+        if (message[0] != CommandPrefix)
         {
             return;
         }
 
-        for (int i = 0; i < _queuedServerMessages.Count; i++)
+        string[] tokens = message.Substring(1).Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        if (tokens.Length == 0)
         {
-            QueuedMessageInfo queuedMessageInfo2 = _queuedServerMessages[i];
-            if (queuedMessageInfo2.SourcePeer.IsSynchronized)
-            {
-                ServerSendMessageToPlayer(queuedMessageInfo2.SourcePeer, queuedMessageInfo2.Message);
-                _queuedServerMessages.RemoveAt(i);
-            }
-            else if (queuedMessageInfo2.IsExpired)
-            {
-                _queuedServerMessages.RemoveAt(i);
-            }
+            return;
         }
+
+        string name = tokens[0].ToLowerInvariant();
+        var command = _commands.FirstOrDefault(c => c.Name == name);
+        if (command == null)
+        {
+            return;
+        }
+
+        _ = HideChatInput(fromPeer);
+        command.Execute(fromPeer, name, tokens.Skip(1).ToArray());
+    }
+
+    // Hacky workaround until we can actually control which message should be sent to everyone.
+    private async Task HideChatInput(NetworkCommunicator fromPeer)
+    {
+        bool muted = fromPeer.IsMuted;
+        fromPeer.IsMuted = true;
+        await Task.Delay(100);
+        fromPeer.IsMuted = muted;
     }
 
     private void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode mode)

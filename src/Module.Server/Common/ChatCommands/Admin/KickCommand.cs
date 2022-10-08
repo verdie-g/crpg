@@ -1,5 +1,4 @@
-﻿using Crpg.Module.Common.GameHandler;
-using Crpg.Module.Common.Network;
+﻿using Crpg.Module.Common.Network;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
 
@@ -7,10 +6,11 @@ namespace Crpg.Module.Common.ChatCommands.Admin;
 
 internal class KickCommand : AdminCommand
 {
-    public KickCommand()
+    public KickCommand(ChatCommandsComponent chatComponent)
+        : base(chatComponent)
     {
         Name = "kick";
-        Description = $"'{ChatCommandHandler.CommandPrefix}{Name} PLAYERID [REASON]' to kick a player.";
+        Description = $"'{ChatCommandsComponent.CommandPrefix}{Name} PLAYERID [REASON]' to kick a player.";
         Overloads = new CommandOverload[]
         {
             new(new[] { ChatCommandParameterType.PlayerId, ChatCommandParameterType.String }, ExecuteKickByNetworkPeer),
@@ -22,8 +22,7 @@ internal class KickCommand : AdminCommand
 
     protected override void ExecuteFailed(NetworkCommunicator fromPeer)
     {
-        CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
+        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
     private void ExecuteKickByName(NetworkCommunicator fromPeer, string cmd, object[] arguments)
@@ -46,7 +45,6 @@ internal class KickCommand : AdminCommand
 
     private async void ExecuteKickByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
     {
-        CrpgChatBox crpgChat = GetChat();
         var targetPeer = (NetworkCommunicator)arguments[0];
         string? reason = null;
         if (arguments.Length > 1 && arguments[1] != null)
@@ -54,8 +52,8 @@ internal class KickCommand : AdminCommand
             reason = (string)arguments[1];
         }
 
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You have kicked {targetPeer.UserName}.");
-        crpgChat.ServerSendServerMessageToEveryone(ColorFatal, $"{targetPeer.UserName} was kicked by {fromPeer.UserName}.{(reason != null ? $" Reason: {reason}" : string.Empty)}");
+        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You have kicked {targetPeer.UserName}.");
+        ChatComponent.ServerSendServerMessageToEveryone(ColorFatal, $"{targetPeer.UserName} was kicked by {fromPeer.UserName}.{(reason != null ? $" Reason: {reason}" : string.Empty)}");
 
         GameNetwork.BeginModuleEventAsServer(targetPeer);
         GameNetwork.WriteMessage(new CrpgNotification

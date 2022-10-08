@@ -1,6 +1,4 @@
-﻿using Crpg.Module.Common.GameHandler;
-using TaleWorlds.Core;
-using TaleWorlds.Library;
+﻿using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.ChatCommands;
@@ -17,12 +15,18 @@ internal abstract class ChatCommand
     /// <summary>A command can accepts several arguments types, the first one that matches the input is used.</summary>
     protected CommandOverload[] Overloads { get; set; } = Array.Empty<CommandOverload>();
     protected string Description { get; set; } = string.Empty;
+    protected readonly ChatCommandsComponent ChatComponent;
+
+    protected ChatCommand(ChatCommandsComponent chatComponent)
+    {
+        ChatComponent = chatComponent;
+    }
 
     public bool Execute(NetworkCommunicator fromPeer, string commandName, string[] arguments)
     {
         if (!CheckRequirements(fromPeer))
         {
-            GetChat().ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Insufficient permissions.");
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, "Insufficient permissions.");
             return false;
         }
 
@@ -56,45 +60,23 @@ internal abstract class ChatCommand
 
     protected bool TryGetPlayerByName(NetworkCommunicator fromPeer, string targetName, out NetworkCommunicator? peer)
     {
-        CrpgChatBox crpgChat = GetChat();
-
         List<NetworkCommunicator> peers = GetNetworkPeerByName(targetName);
         if (peers.Count == 0)
         {
-            crpgChat.ServerSendMessageToPlayer(fromPeer, ColorFatal, "No matching name found.");
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, "No matching name found.");
             peer = null;
             return false;
         }
 
         if (peers.Count > 1)
         {
-            crpgChat.ServerSendMessageToPlayer(fromPeer, ColorWarning, "More than one match found. Please try the ID instead.");
-            PrintPlayerList(fromPeer, peers);
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorWarning, "More than one match found. Please try the ID instead.");
             peer = null;
             return false;
         }
 
         peer = peers[0];
         return true;
-    }
-
-    protected CrpgChatBox GetChat()
-    {
-        return Game.Current.GetGameHandler<CrpgChatBox>();
-    }
-
-    protected void PrintPlayerList(NetworkCommunicator fromPeer, List<NetworkCommunicator> peerList)
-    {
-        CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorInfo, "- Players -");
-        foreach (NetworkCommunicator networkPeer in peerList)
-        {
-            var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-            if (networkPeer.IsSynchronized && crpgRepresentative.User != null)
-            {
-                crpgChat.ServerSendMessageToPlayer(fromPeer, ColorWarning, $"{crpgRepresentative.User.Id} | '{networkPeer.UserName}'");
-            }
-        }
     }
 
     private List<NetworkCommunicator> GetNetworkPeerByName(string name)
