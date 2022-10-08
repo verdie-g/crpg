@@ -3,22 +3,20 @@
     <div class="container">
       <form @submit.prevent="onSubmit">
         <b-field label="Region">
-          <b-dropdown @change="setRegion" aria-role="menu">
-            <template #trigger>
-              <a class="navbar-item" role="button">
-                <span>{{ translatedRegion.translation }}</span>
-                <b-icon icon="caret-down"></b-icon>
-              </a>
-            </template>
-
-            <b-dropdown-item
-              v-for="translatedRegion in translatedRegions"
-              :value="translatedRegion"
-              :key="translatedRegion.region"
+          <b-select
+            placeholder="Select a region"
+            :icon="selectedRegionIcon"
+            required
+            v-model="formModel.region"
+          >
+            <option
+              v-for="[regionValue, regionStr] in regions"
+              :value="regionValue"
+              :key="regionValue"
             >
-              {{ translatedRegion.translation }}
-            </b-dropdown-item>
-          </b-dropdown>
+              {{ regionStr }}
+            </option>
+          </b-select>
         </b-field>
 
         <b-field grouped>
@@ -79,10 +77,10 @@
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import Constants from '../../../../data/constants.json';
-import Region, { TranslatedRegion } from '@/models/region';
+import Region from '@/models/region';
 import { ClanEditionModes, ClanEditionMode } from '@/models/clan-edition';
 import Clan from '@/models/clan';
-import { getTranslatedRegions } from '@/services/region-service';
+import { regionIcons, regionToStr } from '@/services/region-service';
 
 @Component
 export default class ClanFormComponent extends Vue {
@@ -124,22 +122,17 @@ export default class ClanFormComponent extends Vue {
   bannerKeyMaxLength: number = Constants.clanBannerKeyMaxLength;
   bannerKeyRegex: string = Constants.clanBannerKeyRegex;
 
-  translatedRegions = getTranslatedRegions();
-
   constructor() {
     super();
     this.formModel = { ...this.clan };
   }
 
-  get translatedRegion(): TranslatedRegion {
-    return (
-      this.translatedRegions.find(tr => tr.region === this.formModel.region) ||
-      this.translatedRegions[0]
-    );
+  get regions(): [string, string][] {
+    return Object.entries(regionToStr);
   }
 
-  setRegion(val: TranslatedRegion): void {
-    this.formModel.region = val.region;
+  get selectedRegionIcon(): string {
+    return regionIcons[this.formModel.region];
   }
 
   @Emit('submit')
