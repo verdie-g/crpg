@@ -119,6 +119,7 @@ internal abstract class ChatCommand
 
                     parsedArguments[i] = parsedInt;
                     break;
+
                 case ChatCommandParameterType.Float32:
                     if (!float.TryParse(arguments[i], out float parsedFloat))
                     {
@@ -127,37 +128,93 @@ internal abstract class ChatCommand
 
                     parsedArguments[i] = parsedFloat;
                     break;
+
                 case ChatCommandParameterType.String:
                     parsedArguments[i] = i < expectedTypes.Length - 1
                         ? arguments[i]
                         : string.Join(" ", arguments.Skip(i));
-
                     break;
-                case ChatCommandParameterType.PlayerId:
-                    if (!int.TryParse(arguments[i], out int id))
+
+                case ChatCommandParameterType.TimeSpan:
+                    if (!TryParseTimeSpan(arguments[i], out var timeSpan))
                     {
                         return false;
                     }
 
-                    bool playerFound = false;
-                    foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
+                    parsedArguments[i] = timeSpan;
+                    break;
+
+                case ChatCommandParameterType.PlayerId:
+                    if (!TryParsePlayerId(arguments[i], out var networkPeer))
                     {
-                        var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-                        if (networkPeer.IsSynchronized && crpgRepresentative.User?.Id == id)
-                        {
-                            parsedArguments[i] = networkPeer;
-                            playerFound = true;
-                            break;
-                        }
+                        return false;
                     }
 
-                    if (playerFound)
-                    {
-                        break;
-                    }
-
-                    return false;
+                    parsedArguments[i] = networkPeer!;
+                    break;
             }
+        }
+
+        return true;
+    }
+
+    private bool TryParsePlayerId(string input, out NetworkCommunicator? networkPeer)
+    {
+        if (!int.TryParse(input, out int id))
+        {
+            networkPeer = null;
+            return false;
+        }
+
+        foreach (NetworkCommunicator p in GameNetwork.NetworkPeers)
+        {
+            var crpgRepresentative = p.GetComponent<CrpgRepresentative>();
+            if (p.IsSynchronized && crpgRepresentative.User?.Id == id)
+            {
+                networkPeer = p;
+                return true;
+            }
+        }
+
+        networkPeer = null;
+        return false;
+    }
+
+    /// <summary>Parses input such as "15m". Unit supported s, m, h, d.</summary>
+    private bool TryParseTimeSpan(string input, out TimeSpan timeSpan)
+    {
+        if (input == "0")
+        {
+            timeSpan = TimeSpan.Zero;
+            return false;
+        }
+
+        if (input.Length < 2) // At least one number and a unit.
+        {
+            return false;
+        }
+
+        if (!int.TryParse(input.Substring(0, input.Length - 1), out int inputInt))
+        {
+            return false;
+        }
+
+        switch (input[input.Length - 1])
+        {
+            case 's':
+                timeSpan = TimeSpan.FromSeconds(inputInt);
+                break;
+            case 'm':
+                timeSpan = TimeSpan.FromMinutes(inputInt);
+                break;
+            case 'h':
+                timeSpan = TimeSpan.FromHours(inputInt);
+                break;
+            case 'd':
+                timeSpan = TimeSpan.FromDays(inputInt);
+                break;
+            default:
+                return false;
         }
 
         return true;
@@ -168,6 +225,7 @@ internal abstract class ChatCommand
         Int32,
         Float32,
         String,
+        TimeSpan,
         PlayerId,
     }
 

@@ -7,13 +7,6 @@ namespace Crpg.Module.Common.ChatCommands.Admin;
 
 internal class BanCommand : AdminCommand
 {
-    private enum BanDuration
-    {
-        Minutes = 1,
-        Hours = 60,
-        Days = 1440,
-    }
-
     public BanCommand(ChatCommandsComponent chatComponent)
         : base(chatComponent)
     {
@@ -21,8 +14,8 @@ internal class BanCommand : AdminCommand
         Description = $"'{ChatCommandsComponent.CommandPrefix}{Name} PLAYERID DURATION REASON' to ban a player.";
         Overloads = new CommandOverload[]
         {
-            new(new[] { ChatCommandParameterType.Int32, ChatCommandParameterType.PlayerId, ChatCommandParameterType.String }, ExecuteBanByNetworkPeer), // !ban PLAYERID DURATION REASON
-            new(new[] { ChatCommandParameterType.String, ChatCommandParameterType.Int32, ChatCommandParameterType.String }, ExecuteBanByName), // !ban NamePattern DURATION REASON
+            new(new[] { ChatCommandParameterType.String, ChatCommandParameterType.TimeSpan, ChatCommandParameterType.String }, ExecuteBanByNetworkPeer), // !ban PLAYERID DURATION REASON
+            new(new[] { ChatCommandParameterType.String, ChatCommandParameterType.TimeSpan, ChatCommandParameterType.String }, ExecuteBanByName), // !ban NamePattern DURATION REASON
         };
     }
 
@@ -34,15 +27,10 @@ internal class BanCommand : AdminCommand
     private async void ExecuteBanByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
     {
         var targetPeer = (NetworkCommunicator)arguments[0];
-        int duration = (int)arguments[1];
+        var duration = (TimeSpan)arguments[1];
         string reason = (string)arguments[2];
-        BanDuration durationType = BanDuration.Days;
-        if (arguments.Length == 4)
-        {
-            durationType = (BanDuration)arguments[3];
-        }
 
-        DateTime banUntilDate = DateTime.Now.AddMinutes(GetDurationMultiplier(durationType, duration));
+        DateTime banUntilDate = DateTime.UtcNow.Add(duration);
 
         // TODO: Add web request to save the restriction
         // Call webrequest. Banned until banUntilDate
@@ -86,18 +74,5 @@ internal class BanCommand : AdminCommand
 
         arguments = new[] { targetPeer!, arguments[1], arguments[2] };
         ExecuteBanByNetworkPeer(fromPeer, cmd, arguments);
-    }
-
-    private int GetDurationMultiplier(BanDuration md, int duration)
-    {
-        switch (md)
-        {
-            case BanDuration.Hours:
-                return duration * 60;
-            case BanDuration.Days:
-                return duration * 60 * 24;
-            default:
-                return duration;
-        }
     }
 }

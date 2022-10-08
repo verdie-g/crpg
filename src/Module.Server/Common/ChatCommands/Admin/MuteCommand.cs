@@ -5,13 +5,6 @@ namespace Crpg.Module.Common.ChatCommands.Admin;
 
 internal class MuteCommand : AdminCommand
 {
-    private enum MuteDuration
-    {
-        Minutes = 1,
-        Hours = 60,
-        Days = 1440,
-    }
-
     public MuteCommand(ChatCommandsComponent chatComponent)
         : base(chatComponent)
     {
@@ -19,8 +12,8 @@ internal class MuteCommand : AdminCommand
         Description = $"'{ChatCommandsComponent.CommandPrefix}{Name} PLAYERID' to mute a player.";
         Overloads = new CommandOverload[]
         {
-            new(new[] { ChatCommandParameterType.Int32, ChatCommandParameterType.PlayerId, ChatCommandParameterType.String }, ExecuteMuteByNetworkPeer),
-            new(new[] { ChatCommandParameterType.String, ChatCommandParameterType.Int32, ChatCommandParameterType.String }, ExecuteMuteByName),
+            new(new[] { ChatCommandParameterType.PlayerId, ChatCommandParameterType.TimeSpan, ChatCommandParameterType.String }, ExecuteMuteByNetworkPeer), // !mute PLAYERID DURATION REASON
+            new(new[] { ChatCommandParameterType.String, ChatCommandParameterType.TimeSpan, ChatCommandParameterType.String }, ExecuteMuteByName), // !mute NAMEPATTERN DURATION REASON
         };
     }
 
@@ -47,11 +40,10 @@ internal class MuteCommand : AdminCommand
     private void ExecuteMuteByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
     {
         var targetPeer = (NetworkCommunicator)arguments[0];
-        int duration = (int)arguments[1];
+        var duration = (TimeSpan)arguments[1];
         string reason = (string)arguments[2];
-        MuteDuration durationType = MuteDuration.Days;
 
-        DateTime muteUntilDate = DateTime.Now.AddMinutes(GetDurationMultiplier(durationType, duration));
+        DateTime muteUntilDate = DateTime.UtcNow.Add(duration);
 
         // Call mute for backend
         var adminCrpgRepresentative = fromPeer.GetComponent<CrpgRepresentative>();
@@ -63,7 +55,7 @@ internal class MuteCommand : AdminCommand
 
         // TODO: Add web request to save the restriction
         // Call webrequest. Muted until muteUntilDate
-        if (duration == 0)
+        if (duration == TimeSpan.Zero)
         {
             ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorSuccess, $"You were unmuted by {fromPeer.UserName}.");
             ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorSuccess, $"You muted {targetPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
@@ -74,19 +66,6 @@ internal class MuteCommand : AdminCommand
             ChatComponent.ServerSendMessageToPlayer(targetPeer, ColorFatal, $"You were muted by {fromPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
             ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You muted {targetPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
             targetPeer.IsMuted = true;
-        }
-    }
-
-    private int GetDurationMultiplier(MuteDuration md, int duration)
-    {
-        switch (md)
-        {
-            case MuteDuration.Hours:
-                return duration * 60;
-            case MuteDuration.Days:
-                return duration * 60 * 24;
-            default:
-                return duration;
         }
     }
 }
