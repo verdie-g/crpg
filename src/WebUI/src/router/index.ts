@@ -118,9 +118,9 @@ const routes = [
     beforeEnter: isSignedInGuard,
   },
   {
-    path: '/clans/:id/settings',
-    name: 'clan-settings',
-    component: () => import('../views/ClanSettings.vue'),
+    path: '/clans/:id/edit',
+    name: 'clan-edition',
+    component: () => import('../views/ClanEdition.vue'),
     beforeEnter: isSignedInGuard,
   },
   {

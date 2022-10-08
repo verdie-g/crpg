@@ -27,7 +27,7 @@
             size="is-medium"
             type="is-link"
             tag="router-link"
-            :to="{ name: 'clan-settings', params: { id: $route.params.id } }"
+            :to="{ name: 'clan-edition', params: { id: $route.params.id } }"
           >
             <b-icon pack="fas" icon="cog"></b-icon>
           </b-button>
