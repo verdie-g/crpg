@@ -7,12 +7,6 @@ import Party from '@/models/party';
 import PartyStatusUpdateRequest from '@/models/party-status-update-request';
 import PartyStatus from '@/models/party-status';
 
-export const regionToStr: Record<Region, string> = {
-  [Region.Europe]: 'Europe',
-  [Region.NorthAmerica]: 'North America',
-  [Region.Asia]: 'Asia',
-};
-
 export const inSettlementStatuses = new Set<PartyStatus>([
   PartyStatus.IdleInSettlement,
   PartyStatus.RecruitingInSettlement,

@@ -1,9 +1,13 @@
-import Region, { TranslatedRegion } from '@/models/region';
+import Region from '@/models/region';
 
-export function getTranslatedRegions(): TranslatedRegion[] {
-  return Object.values(Region)
-    .map(r => {
-      return { region: r, translation: r } as TranslatedRegion;
-    })
-    .sort((r1, r2) => (r1.translation > r2.translation ? 1 : -1));
-}
+export const regionToStr: Record<Region, string> = {
+  [Region.Europe]: 'Europe',
+  [Region.NorthAmerica]: 'North America',
+  [Region.Asia]: 'Asia',
+};
+
+export const regionIcons: Record<Region, string> = {
+  [Region.Europe]: 'globe-europe',
+  [Region.NorthAmerica]: 'globe-americas',
+  [Region.Asia]: 'globe-asia',
+};

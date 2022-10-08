@@ -17,7 +17,6 @@ import { notify } from '@/services/notifications-service';
 import * as clanService from '@/services/clan-service';
 import { ClanEditionModes, ClanEditionMode } from '@/models/clan-edition';
 import Clan from '@/models/clan';
-
 import ClanFormComponent from '@/components/ClanForm.vue';
 
 @Component({
