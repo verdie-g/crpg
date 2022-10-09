@@ -1,5 +1,4 @@
 using Crpg.Module.Common;
-using Crpg.Module.Common.ChatCommands;
 using Crpg.Module.Common.Warmup;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -7,6 +6,7 @@ using TaleWorlds.MountAndBlade.Source.Missions;
 
 #if CRPG_SERVER
 using Crpg.Module.Api;
+using Crpg.Module.Common.ChatCommands;
 #else
 using Crpg.Module.GUI;
 using TaleWorlds.MountAndBlade.View;
@@ -99,7 +99,6 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MultiplayerPreloadHelper(),
                     warmupComponent,
                     notificationsComponent,
-                    new ChatCommandsComponent(chatBox),
 #if CRPG_SERVER
                     roundController,
                     new CrpgBattleMissionMultiplayer(battleClient, crpgClient, _constants),
@@ -110,6 +109,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new CrpgUserManager(crpgClient),
                     new KickInactiveBehavior(warmupComponent, notificationsComponent),
                     new MapVoteComponent(),
+                    new ChatCommandsComponent(chatBox, crpgClient),
 #else
                     new MultiplayerRoundComponent(),
                     new MissionMatchHistoryComponent(),

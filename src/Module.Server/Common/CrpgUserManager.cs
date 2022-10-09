@@ -104,6 +104,11 @@ internal class CrpgUserManager : MissionNetwork
             return;
         }
 
+        if (crpgUser.Restrictions.FirstOrDefault(r => r.Type == CrpgRestrictionType.Chat) != null)
+        {
+            networkPeer.IsMuted = true;
+        }
+
         var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
         crpgRepresentative.User = crpgUser;
         crpgRepresentative.Clan = crpgClan;

@@ -3,6 +3,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Clans;
+using Crpg.Module.Api.Models.Restrictions;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Helpers.Json;
 using Newtonsoft.Json;
@@ -69,6 +70,11 @@ internal class CrpgHttpClient : ICrpgClient
     public Task<CrpgResult<CrpgUsersUpdateResponse>> UpdateUsersAsync(CrpgGameUsersUpdateRequest req, CancellationToken cancellationToken = default)
     {
         return Put<CrpgGameUsersUpdateRequest, CrpgUsersUpdateResponse>("games/users", req, cancellationToken);
+    }
+
+    public Task<CrpgResult<CrpgRestriction>> RestrictUserAsync(CrpgRestrictionRequest req, CancellationToken cancellationToken = default)
+    {
+        return Post<CrpgRestrictionRequest, CrpgRestriction>("games/restrictions", req, cancellationToken);
     }
 
     public void Dispose() => _httpClient.Dispose();

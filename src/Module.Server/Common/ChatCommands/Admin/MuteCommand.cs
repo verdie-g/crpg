@@ -1,13 +1,18 @@
-﻿using System.Globalization;
+﻿using Crpg.Module.Api;
+using Crpg.Module.Api.Models.Restrictions;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.ChatCommands.Admin;
 
 internal class MuteCommand : AdminCommand
 {
-    public MuteCommand(ChatCommandsComponent chatComponent)
+    private readonly ICrpgClient _crpgClient;
+
+    public MuteCommand(ChatCommandsComponent chatComponent, ICrpgClient crpgClient)
         : base(chatComponent)
     {
+        _crpgClient = crpgClient;
         Name = "mute";
         Description = $"'{ChatCommandsComponent.CommandPrefix}{Name} PLAYERID' to mute a player.";
         Overloads = new CommandOverload[]
@@ -39,32 +44,49 @@ internal class MuteCommand : AdminCommand
 
     private void ExecuteMuteByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
     {
+        _ = ExecuteMuteByNetworkPeerAsync(fromPeer, cmd, arguments);
+    }
+
+    private async Task ExecuteMuteByNetworkPeerAsync(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    {
         var targetPeer = (NetworkCommunicator)arguments[0];
         var duration = (TimeSpan)arguments[1];
         string reason = (string)arguments[2];
 
-        DateTime muteUntilDate = DateTime.UtcNow.Add(duration);
-
-        // Call mute for backend
-        var adminCrpgRepresentative = fromPeer.GetComponent<CrpgRepresentative>();
-        var victimCrpgRepresentative = targetPeer.GetComponent<CrpgRepresentative>();
-        if (adminCrpgRepresentative?.User?.Character == null && victimCrpgRepresentative?.User?.Character == null)
+        int? restrictedByUserId = fromPeer.GetComponent<CrpgRepresentative>()?.User?.Id;
+        int? restrictedUserId = targetPeer.GetComponent<CrpgRepresentative>()?.User?.Id;
+        if (restrictedUserId == null || restrictedByUserId == null)
         {
             return;
         }
 
-        // TODO: Add web request to save the restriction
-        // Call webrequest. Muted until muteUntilDate
+        try
+        {
+            await _crpgClient.RestrictUserAsync(new CrpgRestrictionRequest
+            {
+                RestrictedUserId = restrictedUserId.Value,
+                Duration = duration,
+                Type = CrpgRestrictionType.Chat,
+                Reason = reason,
+                RestrictedByUserId = restrictedByUserId.Value,
+            });
+        }
+        catch (Exception e)
+        {
+            Debug.Print("Could not mute: " + e);
+            return;
+        }
+
         if (duration == TimeSpan.Zero)
         {
-            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorSuccess, $"You were unmuted by {fromPeer.UserName}.");
-            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorSuccess, $"You muted {targetPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
+            ChatComponent.ServerSendMessageToPlayer(targetPeer, ColorSuccess, $"You were unmuted by {fromPeer.UserName}.");
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorSuccess, $"You unmuted {targetPeer.UserName}.");
             targetPeer.IsMuted = false;
         }
         else
         {
-            ChatComponent.ServerSendMessageToPlayer(targetPeer, ColorFatal, $"You were muted by {fromPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
-            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You muted {targetPeer.UserName} until {muteUntilDate.ToString(CultureInfo.InvariantCulture)}.");
+            ChatComponent.ServerSendMessageToPlayer(targetPeer, ColorFatal, $"You were muted by {fromPeer.UserName} for {duration}.");
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You muted {targetPeer.UserName} for {duration}.");
             targetPeer.IsMuted = true;
         }
     }

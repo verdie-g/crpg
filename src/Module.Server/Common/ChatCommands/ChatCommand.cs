@@ -10,17 +10,18 @@ internal abstract class ChatCommand
     protected static readonly Color ColorSuccess = new(0f, 1f, 0f);
     protected static readonly Color ColorFatal = new(1f, 0f, 0f);
 
-    public string Name { get; protected set; } = string.Empty;
-
-    /// <summary>A command can accepts several arguments types, the first one that matches the input is used.</summary>
-    protected CommandOverload[] Overloads { get; set; } = Array.Empty<CommandOverload>();
-    protected string Description { get; set; } = string.Empty;
     protected readonly ChatCommandsComponent ChatComponent;
+
+    public string Name { get; protected set; } = string.Empty;
 
     protected ChatCommand(ChatCommandsComponent chatComponent)
     {
         ChatComponent = chatComponent;
     }
+
+    /// <summary>A command can accepts several arguments types, the first one that matches the input is used.</summary>
+    protected CommandOverload[] Overloads { get; set; } = Array.Empty<CommandOverload>();
+    protected string Description { get; set; } = string.Empty;
 
     public bool Execute(NetworkCommunicator fromPeer, string commandName, string[] arguments)
     {

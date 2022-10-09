@@ -1,5 +1,7 @@
-﻿using System.Globalization;
+﻿using Crpg.Module.Api;
+using Crpg.Module.Api.Models.Restrictions;
 using Crpg.Module.Common.Network;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
 
@@ -7,14 +9,17 @@ namespace Crpg.Module.Common.ChatCommands.Admin;
 
 internal class BanCommand : AdminCommand
 {
-    public BanCommand(ChatCommandsComponent chatComponent)
+    private readonly ICrpgClient _crpgClient;
+
+    public BanCommand(ChatCommandsComponent chatComponent, ICrpgClient crpgClient)
         : base(chatComponent)
     {
+        _crpgClient = crpgClient;
         Name = "ban";
         Description = $"'{ChatCommandsComponent.CommandPrefix}{Name} PLAYERID DURATION REASON' to ban a player.";
         Overloads = new CommandOverload[]
         {
-            new(new[] { ChatCommandParameterType.String, ChatCommandParameterType.TimeSpan, ChatCommandParameterType.String }, ExecuteBanByNetworkPeer), // !ban PLAYERID DURATION REASON
+            new(new[] { ChatCommandParameterType.PlayerId, ChatCommandParameterType.TimeSpan, ChatCommandParameterType.String }, ExecuteBanByNetworkPeer), // !ban PLAYERID DURATION REASON
             new(new[] { ChatCommandParameterType.String, ChatCommandParameterType.TimeSpan, ChatCommandParameterType.String }, ExecuteBanByName), // !ban NamePattern DURATION REASON
         };
     }
@@ -24,31 +29,56 @@ internal class BanCommand : AdminCommand
         ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
-    private async void ExecuteBanByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteBanByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    {
+        _ = ExecuteBanByNetworkPeerAsync(fromPeer, cmd, arguments);
+    }
+
+    private async Task ExecuteBanByNetworkPeerAsync(NetworkCommunicator fromPeer, string cmd, object[] arguments)
     {
         var targetPeer = (NetworkCommunicator)arguments[0];
         var duration = (TimeSpan)arguments[1];
         string reason = (string)arguments[2];
 
-        DateTime banUntilDate = DateTime.UtcNow.Add(duration);
-
-        // TODO: Add web request to save the restriction
-        // Call webrequest. Banned until banUntilDate
-        var adminCrpgRepresentative = fromPeer.GetComponent<CrpgRepresentative>();
-        var victimCrpgRepresentative = targetPeer.GetComponent<CrpgRepresentative>();
-        if (adminCrpgRepresentative?.User?.Character == null && victimCrpgRepresentative?.User?.Character == null)
+        int? restrictedByUserId = fromPeer.GetComponent<CrpgRepresentative>()?.User?.Id;
+        int? restrictedUserId = targetPeer.GetComponent<CrpgRepresentative>()?.User?.Id;
+        if (restrictedUserId == null || restrictedByUserId == null)
         {
             return;
         }
 
-        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You banned {targetPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}.");
-        ChatComponent.ServerSendServerMessageToEveryone(ColorFatal, $"{targetPeer.UserName} was banned by {fromPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}. Reason: {reason}");
+        try
+        {
+            await _crpgClient.RestrictUserAsync(new CrpgRestrictionRequest
+            {
+                RestrictedUserId = restrictedUserId.Value,
+                Duration = duration,
+                Type = CrpgRestrictionType.Join,
+                Reason = reason,
+                RestrictedByUserId = restrictedByUserId.Value,
+            });
+        }
+        catch (Exception e)
+        {
+            Debug.Print("Could not ban: " + e);
+            return;
+        }
+
+        if (duration == TimeSpan.Zero)
+        {
+            ChatComponent.ServerSendMessageToPlayer(targetPeer, ColorSuccess, $"You were unbanned by {fromPeer.UserName}.");
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorSuccess, $"You unbanned {targetPeer.UserName}.");
+            return;
+        }
+
+        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You banned {targetPeer.UserName} for {duration}.");
+        ChatComponent.ServerSendServerMessageToEveryone(ColorFatal, $"{targetPeer.UserName} was banned by {fromPeer.UserName} for {duration}. Reason: {reason}");
 
         GameNetwork.BeginModuleEventAsServer(targetPeer);
         GameNetwork.WriteMessage(new CrpgNotification
         {
             Type = CrpgNotification.NotificationType.Announcement,
-            Message = $"Banned by {fromPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}. Reason: {reason}",
+            Message = $"Banned by {fromPeer.UserName} for {duration}. Reason: {reason}",
         });
         GameNetwork.EndModuleEventAsServer();
 

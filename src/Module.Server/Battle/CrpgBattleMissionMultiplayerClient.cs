@@ -191,6 +191,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
             registerer.Register<CrpgRewardUser>(HandleRewardUser);
             registerer.Register<CrpgRewardError>(HandleRewardError);
             registerer.Register<CrpgNotification>(HandleNotification);
+            registerer.Register<CrpgServerMessage>(HandleServerMessage);
             registerer.Register<FlagDominationMoraleChangeMessage>(OnMoraleChange);
             registerer.Register<FlagDominationCapturePointMessage>(OnCapturePoint);
             registerer.Register<FlagDominationFlagsRemovedMessage>(OnFlagsRemoved);
@@ -353,6 +354,12 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         {
             SoundEvent.CreateEventFromString(notification.SoundEvent, Mission.Scene).Play();
         }
+    }
+
+    private void HandleServerMessage(CrpgServerMessage message)
+    {
+        string msg = message.IsMessageTextId ? GameTexts.FindText(message.Message).ToString() : message.Message;
+        InformationManager.DisplayMessage(new InformationMessage(msg, new Color(message.Red, message.Green, message.Blue, message.Alpha)));
     }
 
     private string AddLineBreaksToText(string text)

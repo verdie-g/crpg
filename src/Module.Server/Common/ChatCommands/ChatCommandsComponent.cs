@@ -1,9 +1,12 @@
-﻿using Crpg.Module.Common.ChatCommands.Admin;
-using Crpg.Module.Common.ChatCommands.User;
+﻿using Crpg.Module.Api;
 using Crpg.Module.Common.Network;
-using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+
+#if CRPG_SERVER
+using Crpg.Module.Common.ChatCommands.Admin;
+using Crpg.Module.Common.ChatCommands.User;
+#endif
 
 namespace Crpg.Module.Common.ChatCommands;
 
@@ -15,10 +18,11 @@ internal class ChatCommandsComponent : MissionBehavior
     private readonly List<QueuedMessageInfo> _queuedServerMessages;
     private readonly ChatCommand[] _commands;
 
-    public ChatCommandsComponent(ChatBox chatBox)
+    public ChatCommandsComponent(ChatBox chatBox, ICrpgClient crpgClient)
     {
         _chatBox = chatBox;
         _queuedServerMessages = new List<QueuedMessageInfo>();
+#if CRPG_SERVER
         _commands = new ChatCommand[]
         {
             new PingCommand(this),
@@ -27,9 +31,12 @@ internal class ChatCommandsComponent : MissionBehavior
             new KillCommand(this),
             new TeleportCommand(this),
             new AnnouncementCommand(this),
-            // new MuteCommand(), // Both disabled until missing API endpoints were implemented.
-            // new BanCommand(),
+            new MuteCommand(this, crpgClient),
+            new BanCommand(this, crpgClient),
         };
+#else
+        _commands = Array.Empty<ChatCommand>();
+#endif
     }
 
     public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
@@ -80,7 +87,6 @@ internal class ChatCommandsComponent : MissionBehavior
 
     public override void OnBehaviorInitialize()
     {
-        AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
         _chatBox.OnMessageReceivedAtDedicatedServer = (Action<NetworkCommunicator, string>)Delegate.Combine(
             OnMessageReceivedAtDedicatedServer,
             _chatBox.OnMessageReceivedAtDedicatedServer);
@@ -88,7 +94,6 @@ internal class ChatCommandsComponent : MissionBehavior
 
     public override void OnRemoveBehavior()
     {
-        AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Remove);
         _chatBox.OnMessageReceivedAtDedicatedServer = (Action<NetworkCommunicator, string>)Delegate.Remove(
             OnMessageReceivedAtDedicatedServer,
             _chatBox.OnMessageReceivedAtDedicatedServer)!;
@@ -144,21 +149,6 @@ internal class ChatCommandsComponent : MissionBehavior
         fromPeer.IsMuted = true;
         await Task.Delay(100);
         fromPeer.IsMuted = muted;
-    }
-
-    private void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode mode)
-    {
-        GameNetwork.NetworkMessageHandlerRegisterer networkMessageHandlerRegisterer = new(mode);
-        if (GameNetwork.IsClient)
-        {
-            networkMessageHandlerRegisterer.Register<CrpgServerMessage>(HandleCrpgServerMessage);
-        }
-    }
-
-    private void HandleCrpgServerMessage(CrpgServerMessage message)
-    {
-        string msg = message.IsMessageTextId ? GameTexts.FindText(message.Message).ToString() : message.Message;
-        InformationManager.DisplayMessage(new InformationMessage(msg, new Color(message.Red, message.Green, message.Blue, message.Alpha)));
     }
 
     private class QueuedMessageInfo
