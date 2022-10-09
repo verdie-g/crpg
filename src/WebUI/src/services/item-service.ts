@@ -301,7 +301,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       } else if (itemType === ItemType.Thrown) {
         weaponFields.push(
           ['Damage', getDamageFieldValue(weapon.thrustDamage, weapon.thrustDamageType)],
-          ['Missile Speed', weapon.missileSpeed],
+          ['Fire Rate', weapon.missileSpeed],
           ['Accuracy', weapon.accuracy],
           ['Stack Amount', weapon.stackAmount]
         );
