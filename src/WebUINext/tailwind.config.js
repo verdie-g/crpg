@@ -23,27 +23,25 @@ module.exports = {
     // },
 
     ////////////////////////////////
-
     extend: {
       colors: {
-        main: {
-          DEFAULT: colors.gray[700],
-          dark: '#ffffff',
-        },
-        primary: {
-          DEFAULT: '#1fb6ff',
-          dark: '#ffffff',
-        },
-        highlight: {
-          DEFAULT: colors.red[700],
-          dark: colors.violet[800],
-        },
-        'highlight-background': {
-          DEFAULT: colors.yellow[400],
-          dark: '#1fb6ff',
-        },
+        primary: '#D39A07',
+        secondary: '#9E07D3',
+        danger: '#E90202',
+        neutral: '#FFF9E2',
+        todo: '#675746', // need a name
+        todo2: '#DECDBA', // need a name
+        todo3: '#FFEDAF',
+        //
+        todo4: '#A69787', // checkbox border
+        todo5: '#FEF2E6', // checkbox bg
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // https://github.com/tailwindlabs/tailwindcss-forms
+    // require('@tailwindcss/forms')({
+    //   strategy: 'class',
+    // }),
+  ],
 };

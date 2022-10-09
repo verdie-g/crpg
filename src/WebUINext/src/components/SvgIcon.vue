@@ -16,3 +16,9 @@ const { prefix = 'icon', name } = defineProps<Props>();
 
 const symbolId = computed(() => `#${prefix}-${name}`);
 </script>
+
+<script lang="ts">
+export default {
+  name: 'SvgIcon',
+};
+</script>

@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import 'virtual:svg-icons-register';
 import { type BootModule } from './types/boot-module';
-import './assets/styles/vendors/tailwind.css';
+import './assets/styles/index.css';
 
 import App from './App.vue';
 

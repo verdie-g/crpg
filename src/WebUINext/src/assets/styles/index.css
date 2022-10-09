@@ -1,2 +1,109 @@
-@import 'vendors/oruga.scss';
-@import 'vendors/tailwind.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+  }
+
+  h1 {
+  }
+
+  h2 {
+  }
+
+  h3 {
+  }
+}
+
+.btn {
+  @apply rounded-lg py-2 px-4 font-bold;
+}
+
+.btn__label {
+  @apply flex flex-wrap items-center justify-center gap-2 text-center;
+}
+
+.btn_variant-primary {
+  @apply bg-primary bg-opacity-50  text-white;
+}
+
+.btn_variant-secondary {
+  @apply bg-secondary bg-opacity-50 text-white;
+}
+
+.btn_variant-danger {
+  @apply bg-danger bg-opacity-50 text-white;
+}
+
+.btn_variant-neutral {
+  @apply bg-neutral text-black;
+}
+
+.btn_variant-todo {
+  @apply bg-todo text-white;
+}
+
+.btn_variant-todo2 {
+  @apply bg-todo2 text-white;
+}
+/* Dropdown */
+
+.checkbox {
+  @apply relative inline-flex cursor-pointer select-none items-center;
+}
+
+.checkbox__check {
+  @apply inline-block h-6 w-6 select-none appearance-none rounded-md border border-solid border-todo4 bg-todo5 p-0 align-middle focus:ring-0;
+}
+
+.checkbox__check_checked {
+  @apply bg-todo4;
+}
+
+.checkbox__label {
+  @apply pl-2;
+}
+
+.input {
+}
+
+.input_expanded {
+  @apply w-full flex-shrink flex-grow;
+}
+
+.input__input {
+  @apply w-full appearance-none rounded-md border border-todo4 bg-todo5 py-2 px-3 leading-none;
+}
+
+.input__input_variant-counter {
+  @apply w-10 border-transparent bg-transparent px-0 text-center;
+}
+/*  */
+.field {
+  @apply flex flex-grow flex-col gap-4;
+}
+
+.field_grouped {
+  @apply flex flex-row;
+}
+
+.field_horizontal {
+  @apply flex-row;
+}
+
+.field_label {
+}
+
+.field__label_horizontal {
+  @apply flex-grow;
+  flex-basis: 0;
+}
+
+.field__body {
+}
+
+.field__body_horizontal {
+  @apply flex flex-grow-[5] gap-4;
+  flex-basis: 0;
+}
