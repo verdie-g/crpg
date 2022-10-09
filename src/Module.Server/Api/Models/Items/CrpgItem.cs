@@ -9,7 +9,7 @@ internal class CrpgItem
     public CrpgItemType Type { get; set; }
     public int Price { get; set; }
     public float Weight { get; set; }
-    public float Tierf { get; set; }
+    public float Tier { get; set; }
     public int Requirement { get; set; }
 
     public CrpgItemArmorComponent? Armor { get; set; }
