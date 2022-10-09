@@ -275,7 +275,6 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
             baseItem.weapons[0].thrustDamageType
           ),
         ],
-        ['Fire Rate', baseItem.weapons[0].swingSpeed],
         ['Accuracy', baseItem.weapons[0].accuracy],
         ['Missile Speed', baseItem.weapons[0].missileSpeed],
         ['Length', baseItem.weapons[0].length],
