@@ -1,5 +1,5 @@
 // https://tailwindcss.com/docs/installation
-const colors = require('tailwindcss/colors');
+// const colors = require('tailwindcss/colors');
 
 // @ts-check
 /** @type {import('tailwindcss').Config} */
@@ -36,12 +36,12 @@ module.exports = {
         todo4: '#A69787', // checkbox border
         todo5: '#FEF2E6', // checkbox bg
       },
+
+      minWidth: {
+        48: '12rem' /* 192px */,
+      },
     },
   },
-  plugins: [
-    // https://github.com/tailwindlabs/tailwindcss-forms
-    // require('@tailwindcss/forms')({
-    //   strategy: 'class',
-    // }),
-  ],
+
+  plugins: [],
 };

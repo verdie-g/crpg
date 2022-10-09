@@ -5,6 +5,21 @@ const inputModelPriceFrom = ref<number>(0);
 const inputModelPriceTo = ref<number>(0);
 
 const inputModelIronFlesh = ref<number>(4);
+
+const dropDownList = ref([
+  {
+    value: 'easy',
+    title: 'Easy',
+  },
+  {
+    value: 'medium',
+    title: 'Medium',
+  },
+  {
+    value: 'hard',
+    title: 'Hard',
+  },
+]);
 </script>
 
 <route lang="yaml">
@@ -39,6 +54,22 @@ meta:
 
       <br />
 
+      <div class="flex gap-2">
+        <ODropdown placeholder="Difficulty" aria-role="list">
+          <template #trigger>
+            <OButton variant="primary" type="button">
+              Dropdown
+              <SvgIcon name="chevron-down" viewBox="0 0 24 24" class="w-6"></SvgIcon>
+            </OButton>
+          </template>
+          <ODropdownItem v-for="dropdownItem in dropDownList" :value="dropdownItem.value" disabled>
+            <span>{{ dropdownItem.title }}</span>
+          </ODropdownItem>
+        </ODropdown>
+      </div>
+
+      <br />
+
       <div class="flex w-1/4 flex-col gap-4">
         <OCheckbox>Show owned items</OCheckbox>
         <OCheckbox v-model="checkboxModel">Show only affordable items</OCheckbox>
@@ -54,6 +85,7 @@ meta:
 
         <div class="flex gap-x-8 gap-y-2">
           <div>Iron Flesh</div>
+          <!-- TODO: to plus-minus-input component :)  -->
           <OField grouped>
             <OButton variant="neutral">-</OButton>
             <OInput v-model="inputModelIronFlesh" readonly variant="counter" />
@@ -100,29 +132,10 @@ meta:
           </div>
         </div>
       </div>
+
+      <br />
+
+      <!--  -->
     </div>
-
-    <!-- <div class="flex gap-2">
-      <ODropdown placeholder="Difficulty" aria-role="list">
-        <template #trigger>
-          <OButton variant="primary" type="button" class="w-32">
-            <div class="flex justify-between">
-              <span>dqdq</span>
-              <o-icon icon="caret-down"></o-icon>
-            </div>
-          </OButton>
-        </template>
-
-        <ODropdownItem value="easy">
-          <span>Easy</span>
-        </ODropdownItem>
-        <ODropdownItem value="medium">
-          <span>Medium</span>
-        </ODropdownItem>
-        <ODropdownItem value="hard">
-          <span>Hard</span>
-        </ODropdownItem>
-      </ODropdown>
-    </div> -->
   </div>
 </template>
