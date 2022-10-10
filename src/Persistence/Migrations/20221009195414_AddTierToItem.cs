@@ -3,7 +3,7 @@
 #nullable disable
 
 namespace Crpg.Persistence.Migrations;
-    
+
     public partial class AddTierToItem : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
