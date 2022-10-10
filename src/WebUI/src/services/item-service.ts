@@ -204,9 +204,21 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ['Type', itemTypeToStr[baseItem.type]],
       ['Culture', baseItem.culture],
       ['Weight', baseItem.weight],
+      [
+        'Max Repair Cost',
+        Math.floor(applyPolynomialFunction(baseItem.price, Constants.itemRepairCostCoefs)),
+      ],
+      [
+        'Average Repair Cost',
+        Math.floor(
+          applyPolynomialFunction(baseItem.price, Constants.itemRepairCostCoefs) *
+            Constants.itemBreakChance
+        ),
+      ],
     ],
     modes: [],
   };
+
   switch (baseItem.type) {
     case ItemType.HeadArmor:
     case ItemType.BodyArmor:
