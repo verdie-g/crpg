@@ -4,9 +4,9 @@
 
 namespace Crpg.Persistence.Migrations;
 
-    public partial class AddTierToItem : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
+public partial class AddTierToItem : Migration
+{
+    protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<float>(
                 name: "tier",
@@ -22,4 +22,4 @@ namespace Crpg.Persistence.Migrations;
                 name: "tier",
                 table: "items");
         }
-    }
+}
