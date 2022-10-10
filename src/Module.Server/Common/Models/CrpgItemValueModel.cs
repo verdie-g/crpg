@@ -25,77 +25,86 @@ internal class CrpgItemValueModel : ItemValueModel
 
     public override int CalculateValue(ItemObject item)
     {
-        int desiredHeadArmorMaxPrice = 9754;
-        int desiredCapeArmorMaxPrice = 11441;
-        int desiredBodyArmorMaxPrice = 31632;
-        int desiredHandArmorMaxPrice = 6000;
-        int desiredLegArmorMaxPrice = 4662;
-        int desiredHorseHarnessMaxPrice = 26000;
-        int desiredHorseMaxPrice = 18000;
-        int desiredShieldMaxPrice = 9235;
-        int desiredBowMaxPrice = 12264;
-        int desiredCrossbowMaxPrice = 18000;
-        int desiredOneHandedWeaponMaxPrice = 7500;
-        int desiredTwoHandedWeaponMaxPrice = 14000;
-        int desiredPolearmMaxPrice = 20000;
-        int desiredThrownMaxPrice = 7385;
-        int desiredArrowsMaxPrice = 4500;
-        int desiredBoltsMaxPrice = 8200;
-        int desiredBannerMaxPrice = 50;
+        int desiredPrice;
+        float[] itemPriceCoeffs = new float[] { 300f, 700f, 0f };
+        float[] armorPriceCoeffs = new float[] { 1f, 4f, 0f, 0f, 0f };
 
-        return item.ItemType switch
+        switch (item.ItemType)
         {
-            ItemObject.ItemTypeEnum.HeadArmor => GetEquipmentValueFromArmorTier(item.Tierf, desiredHeadArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Cape => GetEquipmentValueFromArmorTier(item.Tierf, desiredCapeArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.BodyArmor => GetEquipmentValueFromArmorTier(item.Tierf, desiredBodyArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.HandArmor => GetEquipmentValueFromArmorTier(item.Tierf, desiredHandArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.LegArmor => GetEquipmentValueFromArmorTier(item.Tierf, desiredLegArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.HorseHarness => GetEquipmentValueFromTier(item.Tierf, desiredHorseHarnessMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Shield => GetEquipmentValueFromTier(item.Tierf, desiredShieldMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Bow => GetEquipmentValueFromTier(item.Tierf, desiredBowMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Crossbow =>GetEquipmentValueFromTier(item.Tierf, desiredCrossbowMaxPrice, 50),
-            ItemObject.ItemTypeEnum.OneHandedWeapon => GetEquipmentValueFromTier(item.Tierf, desiredOneHandedWeaponMaxPrice, 50),
-            ItemObject.ItemTypeEnum.TwoHandedWeapon => GetEquipmentValueFromTier(item.Tierf, desiredTwoHandedWeaponMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Polearm => GetEquipmentValueFromTier(item.Tierf, desiredPolearmMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Thrown => GetEquipmentValueFromTier(item.Tierf, desiredThrownMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Arrows => GetEquipmentValueFromTier(item.Tierf, desiredArrowsMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Bolts => GetEquipmentValueFromTier(item.Tierf, desiredBoltsMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Banner => GetEquipmentValueFromTier(item.Tierf, desiredBannerMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Horse => GetEquipmentValueFromTier(item.Tierf, desiredHorseMaxPrice, 50),
-            _ => throw new ArgumentOutOfRangeException(),
-        };
+            case ItemObject.ItemTypeEnum.HeadArmor:
+                desiredPrice = 9754;
+                goto Armor;
+            case ItemObject.ItemTypeEnum.Cape:
+                desiredPrice = 11441;
+                goto Armor;
+            case ItemObject.ItemTypeEnum.BodyArmor:
+                desiredPrice = 31632;
+                goto Armor;
+            case ItemObject.ItemTypeEnum.HandArmor:
+                desiredPrice = 6000;
+                goto Armor;
+            case ItemObject.ItemTypeEnum.LegArmor:
+                desiredPrice = 4662;
+                goto Armor;
+            Armor:
+                return GetEquipmentValueFromTier(item.Tierf, desiredPrice, 50, armorPriceCoeffs);
+
+            case ItemObject.ItemTypeEnum.HorseHarness:
+                desiredPrice = 26000;
+                goto NotArmor;
+            case ItemObject.ItemTypeEnum.Shield:
+                desiredPrice = 9235;
+                goto NotArmor;
+            case ItemObject.ItemTypeEnum.Bow:
+                desiredPrice = 12264;
+                goto NotArmor;
+            case ItemObject.ItemTypeEnum.Crossbow:
+                desiredPrice = 18000;
+                goto NotArmor;
+            case ItemObject.ItemTypeEnum.OneHandedWeapon:
+                desiredPrice = 7500;
+                goto NotArmor;
+            case ItemObject.ItemTypeEnum.TwoHandedWeapon:
+                desiredPrice = 14000;
+                goto NotArmor;
+            case ItemObject.ItemTypeEnum.Polearm:
+                desiredPrice = 20000;
+                goto NotArmor;
+            case ItemObject.ItemTypeEnum.Thrown:
+                desiredPrice = 7385;
+                goto NotArmor;
+            case ItemObject.ItemTypeEnum.Arrows:
+                desiredPrice = 4500;
+                goto NotArmor;
+            case ItemObject.ItemTypeEnum.Bolts:
+                desiredPrice = 8200;
+                goto NotArmor;
+            case ItemObject.ItemTypeEnum.Banner:
+                desiredPrice = 9754;
+                goto NotArmor;
+            case ItemObject.ItemTypeEnum.Horse:
+                desiredPrice = 50;
+                goto NotArmor;
+            NotArmor:
+                return GetEquipmentValueFromTier(item.Tierf, desiredPrice, 50, itemPriceCoeffs);
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
-    private int GetEquipmentValueFromTier(float tier, int desiredMaxPrice, int desiredTierZeroPrice)
+    private int GetEquipmentValueFromTier(float tier, int desiredMaxPrice, int desiredTierZeroPrice, float[] priceCoeffs)
     {
         // this method takes a value between 0 and 10 and outputs a value between 0 and 10
         // It uses a degree 2 polynomial.
 
-        static float GetPriceTier(float tier)
+        static float GetPriceTier(float tier, float[] coeffs)
         {
-            float[] coeffs = new float[] { 300f, 700f, 0f };
             float tierPolynome = MathHelper.ApplyPolynomialFunction(tier, coeffs);
             float tierPolynomeScaler = 10 / MathHelper.ApplyPolynomialFunction(10f, coeffs); // this part will make sure that GetAdjustedTier(10)=10
             return tierPolynome * tierPolynomeScaler;
         }
 
-        return (int)(GetPriceTier(tier) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredTierZeroPrice);
-    }
-
-    private int GetEquipmentValueFromArmorTier(float tier, int desiredMaxPrice, int desiredTierZeroPrice)
-    {
-        // this method takes a value between 0 and 10 and outputs a value between 0 and 10
-        // It uses a degree 5 polynomial.
-
-        static float GetPriceTier(float tier)
-        {
-            float[] coeffs = new float[] { 1f, 4f, 0f, 0f, 0f };
-            float tierPolynome = MathHelper.ApplyPolynomialFunction(tier, coeffs);
-            float tierPolynomeScaler = 10 / MathHelper.ApplyPolynomialFunction(10f, coeffs); // this part will make sure that GetAdjustedTier(10)=10
-            return tierPolynome * tierPolynomeScaler;
-        }
-
-        return (int)(GetPriceTier(tier) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredTierZeroPrice);
+        return (int)(GetPriceTier(tier, priceCoeffs) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredTierZeroPrice);
     }
 
     private float CalculateArmorTier(ArmorComponent armorComponent)
