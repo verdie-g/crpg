@@ -491,6 +491,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             return false;
         }
 
-        return equippedItem.WeaponComponent.Weapons.Max(a => a.SwingDamage) > 0;
+        return equippedItem.WeaponComponent.Weapons.Any(a => a.SwingDamage > 0);
     }
 }
