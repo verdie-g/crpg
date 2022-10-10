@@ -1,6 +1,6 @@
-﻿using TaleWorlds.Core;
+﻿using Crpg.Module.Helpers;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
-
 namespace Crpg.Module.Common.Models;
 
 internal class CrpgItemValueModel : ItemValueModel
@@ -44,11 +44,11 @@ internal class CrpgItemValueModel : ItemValueModel
 
         return item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.HeadArmor => GetEquipmentValueFromTier(item.Tierf, desiredHeadArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Cape => GetEquipmentValueFromTier(item.Tierf, desiredCapeArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.BodyArmor => GetEquipmentValueFromTier(item.Tierf, desiredBodyArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.HandArmor => GetEquipmentValueFromTier(item.Tierf, desiredHandArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.LegArmor => GetEquipmentValueFromTier(item.Tierf, desiredLegArmorMaxPrice, 50),
+            ItemObject.ItemTypeEnum.HeadArmor => GetEquipmentValueFromArmorTier(item.Tierf, desiredHeadArmorMaxPrice, 50),
+            ItemObject.ItemTypeEnum.Cape => GetEquipmentValueFromArmorTier(item.Tierf, desiredCapeArmorMaxPrice, 50),
+            ItemObject.ItemTypeEnum.BodyArmor => GetEquipmentValueFromArmorTier(item.Tierf, desiredBodyArmorMaxPrice, 50),
+            ItemObject.ItemTypeEnum.HandArmor => GetEquipmentValueFromArmorTier(item.Tierf, desiredHandArmorMaxPrice, 50),
+            ItemObject.ItemTypeEnum.LegArmor => GetEquipmentValueFromArmorTier(item.Tierf, desiredLegArmorMaxPrice, 50),
             ItemObject.ItemTypeEnum.HorseHarness => GetEquipmentValueFromTier(item.Tierf, desiredHorseHarnessMaxPrice, 50),
             ItemObject.ItemTypeEnum.Shield => GetEquipmentValueFromTier(item.Tierf, desiredShieldMaxPrice, 50),
             ItemObject.ItemTypeEnum.Bow => GetEquipmentValueFromTier(item.Tierf, desiredBowMaxPrice, 50),
@@ -74,11 +74,27 @@ internal class CrpgItemValueModel : ItemValueModel
         // than just linearly better.
         static float GetAdjustedTier(float tier)
         {
-            const float a = 300;
-            const float b = 700;
-            const float c = 0;
-            float tierPolynome = (float)(a * Math.Pow(tier, 2) + b * tier + c);
-            float tierPolynomeScaler = 10 / ((float)(a * Math.Pow(10, 2) + b * 10 + c)); // this part will make sure that GetAdjustedTier(10)=10
+            float[] coeffs = new float[] { 300f, 700f, 0f };
+            float tierPolynome = MathHelper.ApplyPolynomialFunction(tier, coeffs);
+            float tierPolynomeScaler = 10 / MathHelper.ApplyPolynomialFunction(10f, coeffs); // this part will make sure that GetAdjustedTier(10)=10
+            return tierPolynome * tierPolynomeScaler;
+        }
+
+        return (int)(GetAdjustedTier(tier) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredTierZeroPrice);
+    }
+
+    private int GetEquipmentValueFromArmorTier(float tier, int desiredMaxPrice, int desiredTierZeroPrice)
+    {
+        // this method takes a value between 0 and 10 and outputs a value between 0 and 10
+        // It uses a degree 2 polynomial.
+        // b is responsible for the linear part.
+        // a is responsible for the quadratic part. a Linear fonction is not enough because it doesn't reflect how the best items are more
+        // than just linearly better.
+        static float GetAdjustedTier(float tier)
+        {
+            float[] coeffs = new float[] { 1f, 4f, 0f, 0f, 0f };
+            float tierPolynome = MathHelper.ApplyPolynomialFunction(tier, coeffs);
+            float tierPolynomeScaler = 10 / MathHelper.ApplyPolynomialFunction(10f, coeffs); // this part will make sure that GetAdjustedTier(10)=10
             return tierPolynome * tierPolynomeScaler;
         }
 
@@ -94,11 +110,11 @@ internal class CrpgItemValueModel : ItemValueModel
             + 0.8f * armorComponent.LegArmor;
         float bestArmorPower = armorComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.HeadArmor => 50.7206461f,
-            ItemObject.ItemTypeEnum.Cape => 26.6184727f,
-            ItemObject.ItemTypeEnum.BodyArmor => 48.2288f,
-            ItemObject.ItemTypeEnum.HandArmor => 23.0526978f,
-            ItemObject.ItemTypeEnum.LegArmor => 17.1818002f,
+            ItemObject.ItemTypeEnum.HeadArmor => 42.97396516366097f,
+            ItemObject.ItemTypeEnum.Cape => 22.78413760635767f,
+            ItemObject.ItemTypeEnum.BodyArmor => 46.60400548816f,
+            ItemObject.ItemTypeEnum.HandArmor => 17.7773674822320f,
+            ItemObject.ItemTypeEnum.LegArmor => 14.261151471078207f,
             ItemObject.ItemTypeEnum.HorseHarness => 20f,
             _ => throw new ArgumentOutOfRangeException(),
         };
@@ -106,7 +122,7 @@ internal class CrpgItemValueModel : ItemValueModel
         return armorComponent.Item.ItemType switch
         {
             ItemObject.ItemTypeEnum.HorseHarness => 10 * armorPower / bestArmorPower,
-            _ => 10 * armorPower / (bestArmorPower * (float)Math.Pow(armorComponent.Item.Weight, 0.2f)),
+            _ => 10 * armorPower / (bestArmorPower * (float)Math.Pow(armorComponent.Item.Weight + 4, 0.2f)),
         };
     }
 
