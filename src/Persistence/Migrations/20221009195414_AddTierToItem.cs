@@ -2,8 +2,8 @@
 
 #nullable disable
 
-namespace Crpg.Persistence.Migrations
-{
+namespace Crpg.Persistence.Migrations;
+    
     public partial class AddTierToItem : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,4 +23,3 @@ namespace Crpg.Persistence.Migrations
                 table: "items");
         }
     }
-}
