@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Helpers;
+﻿using System.Collections.ObjectModel;
+using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 
@@ -6,6 +7,29 @@ namespace Crpg.Module.Common.Models;
 
 internal class CrpgItemValueModel : ItemValueModel
 {
+    private static readonly float[] ItemPriceCoeffs = new float[] { 300f, 700f, 0f };
+    private static readonly float[] ArmorPriceCoeffs = new float[] { 1f, 4f, 0f, 0f, 0f };
+    private static readonly Dictionary<ItemObject.ItemTypeEnum, (int, float[])> PricesAndCoeffs = new()
+    {
+        [ItemObject.ItemTypeEnum.HeadArmor] = (9754, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Cape] = (11441, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.BodyArmor] = (31632, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.HandArmor] = (6000, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.LegArmor] = (4662, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.HorseHarness] = (26000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Horse] = (18000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Shield] = (9235, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Bow] = (12264, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Crossbow] = (18000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.OneHandedWeapon] = (7500, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.TwoHandedWeapon] = (14000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Polearm] = (20000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Thrown] = (7385, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Arrows] = (4500, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Bolts] = (8200, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Banner] = (50, ItemPriceCoeffs),
+    };
+
     public override float CalculateTier(ItemObject item)
     {
         return item.ItemComponent switch
@@ -25,29 +49,7 @@ internal class CrpgItemValueModel : ItemValueModel
 
     public override int CalculateValue(ItemObject item)
     {
-        float[] itemPriceCoeffs = new float[] { 300f, 700f, 0f };
-        float[] armorPriceCoeffs = new float[] { 1f, 4f, 0f, 0f, 0f };
-        Dictionary<ItemObject.ItemTypeEnum, (int, float[])> pricesandCoeffs = new()
-        {
-            [ItemObject.ItemTypeEnum.HeadArmor] = (9754, armorPriceCoeffs),
-            [ItemObject.ItemTypeEnum.Cape] = (11441, armorPriceCoeffs),
-            [ItemObject.ItemTypeEnum.BodyArmor] = (31632, armorPriceCoeffs),
-            [ItemObject.ItemTypeEnum.HandArmor] = (6000, armorPriceCoeffs),
-            [ItemObject.ItemTypeEnum.LegArmor] = (4662, armorPriceCoeffs),
-            [ItemObject.ItemTypeEnum.HorseHarness] = (26000, itemPriceCoeffs),
-            [ItemObject.ItemTypeEnum.Horse] = (18000, itemPriceCoeffs),
-            [ItemObject.ItemTypeEnum.Shield] = (9235, itemPriceCoeffs),
-            [ItemObject.ItemTypeEnum.Bow] = (12264, itemPriceCoeffs),
-            [ItemObject.ItemTypeEnum.Crossbow] = (18000, itemPriceCoeffs),
-            [ItemObject.ItemTypeEnum.OneHandedWeapon] = (7500, itemPriceCoeffs),
-            [ItemObject.ItemTypeEnum.TwoHandedWeapon] = (14000, itemPriceCoeffs),
-            [ItemObject.ItemTypeEnum.Polearm] = (20000, itemPriceCoeffs),
-            [ItemObject.ItemTypeEnum.Thrown] = (7385, itemPriceCoeffs),
-            [ItemObject.ItemTypeEnum.Arrows] = (4500, itemPriceCoeffs),
-            [ItemObject.ItemTypeEnum.Bolts] = (8200, itemPriceCoeffs),
-            [ItemObject.ItemTypeEnum.Banner] = (50, itemPriceCoeffs),
-        };
-        return GetEquipmentValueFromTier(item.Tierf, pricesandCoeffs[item.ItemType], 50);
+        return GetEquipmentValueFromTier(item.Tierf, PricesAndCoeffs[item.ItemType], 50);
     }
 
     private int GetEquipmentValueFromTier(float tier, (int desiredMaxPrice, float[] priceCoeffs) input, int desiredTierZeroPrice)
