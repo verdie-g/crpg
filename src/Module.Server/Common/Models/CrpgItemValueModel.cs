@@ -1,6 +1,7 @@
 ﻿using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+
 namespace Crpg.Module.Common.Models;
 
 internal class CrpgItemValueModel : ItemValueModel
@@ -69,10 +70,8 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         // this method takes a value between 0 and 10 and outputs a value between 0 and 10
         // It uses a degree 2 polynomial.
-        // b is responsible for the linear part.
-        // a is responsible for the quadratic part. a Linear fonction is not enough because it doesn't reflect how the best items are more
-        // than just linearly better.
-        static float GetAdjustedTier(float tier)
+
+        static float GetPriceTier(float tier)
         {
             float[] coeffs = new float[] { 300f, 700f, 0f };
             float tierPolynome = MathHelper.ApplyPolynomialFunction(tier, coeffs);
@@ -80,17 +79,15 @@ internal class CrpgItemValueModel : ItemValueModel
             return tierPolynome * tierPolynomeScaler;
         }
 
-        return (int)(GetAdjustedTier(tier) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredTierZeroPrice);
+        return (int)(GetPriceTier(tier) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredTierZeroPrice);
     }
 
     private int GetEquipmentValueFromArmorTier(float tier, int desiredMaxPrice, int desiredTierZeroPrice)
     {
         // this method takes a value between 0 and 10 and outputs a value between 0 and 10
-        // It uses a degree 2 polynomial.
-        // b is responsible for the linear part.
-        // a is responsible for the quadratic part. a Linear fonction is not enough because it doesn't reflect how the best items are more
-        // than just linearly better.
-        static float GetAdjustedTier(float tier)
+        // It uses a degree 5 polynomial.
+
+        static float GetPriceTier(float tier)
         {
             float[] coeffs = new float[] { 1f, 4f, 0f, 0f, 0f };
             float tierPolynome = MathHelper.ApplyPolynomialFunction(tier, coeffs);
@@ -98,7 +95,7 @@ internal class CrpgItemValueModel : ItemValueModel
             return tierPolynome * tierPolynomeScaler;
         }
 
-        return (int)(GetAdjustedTier(tier) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredTierZeroPrice);
+        return (int)(GetPriceTier(tier) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredTierZeroPrice);
     }
 
     private float CalculateArmorTier(ArmorComponent armorComponent)
