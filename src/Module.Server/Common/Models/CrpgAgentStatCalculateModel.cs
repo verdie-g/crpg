@@ -335,6 +335,13 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
             props.WeaponInaccuracy = GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
+            if (agent.HasMount)
+            {
+                // SwingSpeed Nerf on Horseback
+                float swingSpeedFactor = 1f / Math.Max( equippedItem.WeaponLength / 100f, 1f);
+                props.SwingSpeedMultiplier *= HasSwingDamage(primaryItem) ? swingSpeedFactor : 1f;
+            }
+
             if (equippedItem.IsRangedWeapon)
             {
                 if (!agent.HasMount)
@@ -345,6 +352,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 }
                 else
                 {
+                    // Mounted Archery
                     int mountedArcherySkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.MountedArchery);
                     // float num6 = Math.Max(0.0f, (1.0f - weaponSkill / 500.0f) * (1.0f - ridingSkill / 1800.0f));
                     float num6 = 1;
@@ -474,5 +482,15 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
         float setRequirement = CrpgItemRequirementModel.ComputeItemRequirement(equippedItem);
         return Math.Max(setRequirement - strengthAttribute, 0);
+    }
+
+    private bool HasSwingDamage(ItemObject? equippedItem)
+    {
+        if (equippedItem == null)
+        {
+            return false;
+        }
+
+        return equippedItem.WeaponComponent.Weapons.Max(a => a.SwingDamage) > 0;
     }
 }
