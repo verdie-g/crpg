@@ -275,7 +275,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             float closestAgentDistanceToFlagSquared = 16f; // Where does this number come from?
             foreach (Agent agent in Mission.Current.GetAgentsInRange(flag.Position.AsVec2, FlagAttackRange))
             {
-                if (!agent.IsHuman || !agent.IsActive())
+                if (!agent.IsActive() || !agent.IsHuman || agent.HasMount)
                 {
                     continue;
                 }
