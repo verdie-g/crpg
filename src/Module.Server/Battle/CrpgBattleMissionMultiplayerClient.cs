@@ -29,7 +29,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     public event Action<FlagCapturePoint, Team?>? OnCapturePointOwnerChangedEvent;
 
     public override bool IsGameModeUsingGold => false;
-    public override bool IsGameModeTactical => true;
+    public override bool IsGameModeTactical => _flags.Length != 0;
     public override bool IsGameModeUsingRoundCountdown => true;
     public override MissionLobbyComponent.MultiplayerGameType GameType => MissionLobbyComponent.MultiplayerGameType.Battle;
     public override bool IsGameModeUsingCasualGold => false;
@@ -41,6 +41,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         base.OnBehaviorInitialize();
         RoundComponent.OnPreparationEnded += OnPreparationEnded;
         MissionNetworkComponent.OnMyClientSynchronized += OnMyClientSynchronized;
+        ResetFlags(); // Get the flags early so it's available for the HUD.
     }
 
     public override void OnRemoveBehavior()
@@ -63,6 +64,11 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     public override void OnMissionTick(float dt)
     {
         base.OnMissionTick(dt);
+        if (_flags.Length == 0) // Protection against scene with no maps.
+        {
+            return;
+        }
+
         if (_remainingTimeForBellSoundToStop > 0.0)
         {
             _remainingTimeForBellSoundToStop -= dt;
@@ -200,7 +206,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
 
     protected override int GetWarningTimer()
     {
-        if (!IsRoundInProgress)
+        if (!IsRoundInProgress || _flags.Length == 0)
         {
             return 0;
         }
@@ -226,6 +232,11 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     private void OnPreparationEnded()
     {
         ResetFlags();
+        if (_flags.Length == 0)
+        {
+            return;
+        }
+
         OnFlagNumberChangedEvent?.Invoke();
         foreach (var flag in _flags)
         {

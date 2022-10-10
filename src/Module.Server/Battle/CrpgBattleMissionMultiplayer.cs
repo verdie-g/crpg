@@ -64,7 +64,6 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     {
         base.AfterStart();
         RoundController.OnPreRoundEnding += OnPreRoundEnding;
-        RoundController.OnPostRoundEnded += OnPostRoundEnd;
 
         AddTeams();
     }
@@ -80,7 +79,6 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 
     public override void OnRemoveBehavior()
     {
-        RoundController.OnPostRoundEnded -= OnPostRoundEnd;
         RoundController.OnPreRoundEnding -= OnPreRoundEnding;
         base.OnRemoveBehavior();
     }
@@ -113,7 +111,8 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         base.OnMissionTick(dt);
         if (MissionLobbyComponent.CurrentMultiplayerState != MissionLobbyComponent.MultiplayerGameState.Playing
             || !RoundController.IsRoundInProgress
-            || !CanGameModeSystemsTickThisFrame)
+            || !CanGameModeSystemsTickThisFrame
+            || _flags.Length == 0) // Protection against scene with no flags.
         {
             return;
         }
@@ -130,7 +129,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             return false;
         }
 
-        if (Math.Abs(_morale) >= 1.0)
+        if (_flags.Length != 0 && Math.Abs(_morale) >= 1.0)
         {
             if (!_wereFlagsRemoved)
             {
@@ -365,8 +364,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 
     private void CheckRemovalOfFlags()
     {
-        if (_wereFlagsRemoved
-            || _flags.Length == 0) // Protection against maps with no flags.
+        if (_wereFlagsRemoved)
         {
             return;
         }
@@ -506,10 +504,6 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
 
         CheerForRoundEnd(roundResult);
         _ = UpdateCrpgUsersAsync();
-    }
-
-    private void OnPostRoundEnd()
-    {
     }
 
     private void CheerForRoundEnd(CaptureTheFlagCaptureResultEnum roundResult)
