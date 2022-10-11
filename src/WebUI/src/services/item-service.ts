@@ -270,6 +270,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ['Length', baseItem.weapons[0].length]
     );
   } else if (baseItem.type === ItemType.Bow || baseItem.type === ItemType.Crossbow) {
+    props.fields.push(['Class', baseItem.weapons[0].itemUsage]);
     baseItem.weapons.forEach(weapon => {
       const weaponFields: [string, any][] = [
         [
