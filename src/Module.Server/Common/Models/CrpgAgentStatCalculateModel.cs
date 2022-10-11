@@ -326,7 +326,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.HandlingMultiplier = 1f;
         props.ShieldBashStunDurationMultiplier = 1f;
         props.KickStunDurationMultiplier = 1f;
-        props.ReloadSpeed = props.SwingSpeedMultiplier;
+        props.ReloadSpeed = equippedItem == null ? props.SwingSpeedMultiplier : equippedItem.SwingSpeed / 100 + 0.001f * itemSkill;
         props.MissileSpeedMultiplier = 1f;
         props.ReloadMovementPenaltyFactor = 1f;
         SetAllWeaponInaccuracy(agent, props, (int)wieldedItemIndex3, equippedItem);

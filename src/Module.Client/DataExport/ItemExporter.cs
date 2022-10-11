@@ -106,6 +106,15 @@ internal class ItemExporter : IDataExporter
         "war_horse",
     };
 
+    private static readonly Dictionary<string, string> ItemUsageDictionary = new()
+    {
+        ["arrow_top"] = "Top Load",
+        ["arrow_right"] = "Right Load",
+        ["crossbow"] = "Heavy Crossbow",
+        ["long_bow"] = "Long Bow",
+        ["bow"] = "Short Bow",
+    };
+
     public async Task Export(string gitRepoPath)
     {
         string moduleDataPath = Path.Combine(gitRepoPath, "src/Module.Server/ModuleData");
@@ -196,6 +205,7 @@ internal class ItemExporter : IDataExporter
             crpgItem.Weapons = mbItem.WeaponComponent.Weapons.Select(w => new CrpgItemWeaponComponent
             {
                 Class = MbToCrpgWeaponClass(w.WeaponClass),
+                ItemUsage = ItemUsageDictionary.TryGetValue(w.ItemUsage, out string itemUsage) ? itemUsage : string.Empty,
                 Accuracy = w.Accuracy,
                 MissileSpeed = w.MissileSpeed,
                 StackAmount = w.MaxDataValue,

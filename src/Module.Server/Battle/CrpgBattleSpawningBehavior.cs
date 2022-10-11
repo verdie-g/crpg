@@ -325,7 +325,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             var index = ItemSlotToIndex[equippedItem.Slot];
             AddEquipment(equipment, index, equippedItem.UserItem.BaseItemId);
         }
-
+        
         return equipment;
     }
 

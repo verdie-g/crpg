@@ -6,6 +6,7 @@
 public class ItemWeaponComponent : ICloneable
 {
     public WeaponClass Class { get; set; }
+    public string ItemUsage { get; set; } = string.Empty;
     public int Accuracy { get; set; }
     public int MissileSpeed { get; set; }
 
