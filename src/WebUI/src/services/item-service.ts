@@ -204,17 +204,8 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ['Type', itemTypeToStr[baseItem.type]],
       ['Culture', baseItem.culture],
       ['Weight', baseItem.weight],
-      [
-        'Max Repair Cost',
-        Math.floor(applyPolynomialFunction(baseItem.price, Constants.itemRepairCostCoefs)),
-      ],
-      [
-        'Average Repair Cost',
-        Math.floor(
-          applyPolynomialFunction(baseItem.price, Constants.itemRepairCostCoefs) *
-            Constants.itemBreakChance
-        ),
-      ],
+      ['Max Repair Cost', computeMaxRepairCost([baseItem.price])],
+      ['Average Repair Cost', computeAverageRepairCost([baseItem.price])],
     ],
     modes: [],
   };
@@ -367,6 +358,25 @@ export function computeSalePrice(item: UserItem): number {
   const salePrice = applyPolynomialFunction(item.baseItem.price, Constants.itemSellCostCoefs);
   // Floor salePrice to match behaviour of backend int typecast
   return Math.floor(salePrice);
+}
+
+// TODO: handle upgrade items.
+export function computeMaxRepairCost(prices: number[]): number {
+  return Math.floor(
+    prices.reduce(
+      (total, price) => total + applyPolynomialFunction(price, Constants.itemRepairCostCoefs),
+      0
+    )
+  );
+}
+
+export function computeAverageRepairCost(prices: number[]): number {
+  return Math.floor(
+    prices.reduce(
+      (total, price) => total + applyPolynomialFunction(price, Constants.itemRepairCostCoefs),
+      0
+    ) * Constants.itemBreakChance
+  );
 }
 
 export function computeArmorSetPieceStrengthRequirement(equippedItems: EquippedItem[]): number {

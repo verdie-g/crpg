@@ -68,8 +68,11 @@
 <script lang="ts">
 import EquippedItem from '@/models/equipped-item';
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { computeAverageRepairCost, computeMaxRepairCost } from '@/services/characters-service';
-import { computeArmorSetPieceStrengthRequirement } from '@/services/item-service';
+import {
+  computeArmorSetPieceStrengthRequirement,
+  computeAverageRepairCost,
+  computeMaxRepairCost,
+} from '@/services/item-service';
 
 @Component
 export default class CharacterOverallItemsStatsComponent extends Vue {
@@ -90,8 +93,12 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
 
     if (!this.equippedItems) return result;
     result.armorSetRequirement = computeArmorSetPieceStrengthRequirement(this.equippedItems);
-    result.maxRepairCost = Math.floor(computeMaxRepairCost(this.equippedItems));
-    result.averageRepairCost = Math.floor(computeAverageRepairCost(this.equippedItems));
+    result.maxRepairCost = computeMaxRepairCost(
+      this.equippedItems.map(item => item.userItem.baseItem.price)
+    );
+    result.averageRepairCost = computeAverageRepairCost(
+      this.equippedItems.map(item => item.userItem.baseItem.price)
+    );
     this.equippedItems.forEach(item => {
       const armor = item.userItem.baseItem.armor;
       result.price += item.userItem.baseItem.price;
