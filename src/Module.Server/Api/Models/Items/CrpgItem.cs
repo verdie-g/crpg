@@ -76,6 +76,7 @@ internal class CrpgItemMountComponent
 internal class CrpgItemWeaponComponent
 {
     public CrpgWeaponClass Class { get; set; }
+    public string ItemUsage { get; set; } = string.Empty;
     public int Accuracy { get; set; }
     public int MissileSpeed { get; set; }
     public int StackAmount { get; set; }

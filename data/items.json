@@ -248,6 +248,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 100,
@@ -296,6 +297,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -394,6 +396,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "Top Load",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 30,
@@ -424,6 +427,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -457,6 +461,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -490,6 +495,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -574,6 +580,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -605,6 +612,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1078,6 +1086,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1098,6 +1107,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1120,6 +1130,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1168,6 +1179,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1198,6 +1210,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1228,6 +1241,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1258,6 +1272,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1288,6 +1303,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1318,6 +1334,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1348,6 +1365,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1378,6 +1396,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1544,6 +1563,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1574,6 +1594,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1604,6 +1625,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1634,6 +1656,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1664,6 +1687,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1694,6 +1718,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1724,6 +1749,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1822,6 +1848,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1872,6 +1899,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2073,6 +2101,7 @@
     "weapons": [
       {
         "class": "Banner",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2101,6 +2130,7 @@
     "weapons": [
       {
         "class": "Banner",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2129,6 +2159,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "Right Load",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 20,
@@ -2176,6 +2207,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2206,6 +2238,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2239,6 +2272,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2270,6 +2304,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2289,6 +2324,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2309,6 +2345,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2339,6 +2376,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2370,6 +2408,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2390,6 +2429,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2411,6 +2451,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2442,6 +2483,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2461,6 +2503,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2481,6 +2524,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2511,6 +2555,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2530,6 +2575,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2550,6 +2596,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2580,6 +2627,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2611,6 +2659,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2642,6 +2691,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3200,6 +3250,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 215,
@@ -3231,6 +3282,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 240,
@@ -3262,6 +3314,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 195,
@@ -3395,6 +3448,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3425,6 +3479,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3455,6 +3510,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3536,6 +3592,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3567,6 +3624,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3597,6 +3655,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3628,6 +3687,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3730,6 +3790,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3760,6 +3821,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3790,6 +3852,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3820,6 +3883,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3850,6 +3914,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3880,6 +3945,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 165,
@@ -4268,6 +4334,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 85,
@@ -4299,6 +4366,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -4330,6 +4398,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -4431,6 +4500,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -4465,6 +4535,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -4498,6 +4569,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "Right Load",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 30,
@@ -4528,6 +4600,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -4562,6 +4635,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "Right Load",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 32,
@@ -4592,6 +4666,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "Right Load",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 24,
@@ -4622,6 +4697,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "Right Load",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 21,
@@ -4652,6 +4728,7 @@
     "weapons": [
       {
         "class": "Bolt",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 10,
@@ -4683,6 +4760,7 @@
     "weapons": [
       {
         "class": "Bolt",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 9,
@@ -4714,6 +4792,7 @@
     "weapons": [
       {
         "class": "Bolt",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 9,
@@ -4745,6 +4824,7 @@
     "weapons": [
       {
         "class": "Bolt",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 9,
@@ -4776,6 +4856,7 @@
     "weapons": [
       {
         "class": "Bolt",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 9,
@@ -4824,6 +4905,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -4854,6 +4936,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 120,
@@ -4885,6 +4968,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 122,
@@ -4916,6 +5000,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 112,
@@ -4947,6 +5032,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 185,
@@ -5148,6 +5234,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5178,6 +5265,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5208,6 +5296,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5374,6 +5463,7 @@
     "weapons": [
       {
         "class": "Banner",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5402,6 +5492,7 @@
     "weapons": [
       {
         "class": "Dagger",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5421,6 +5512,7 @@
       },
       {
         "class": "ThrowingKnife",
+        "itemUsage": "",
         "accuracy": 95,
         "missileSpeed": 32,
         "stackAmount": 1,
@@ -5455,6 +5547,7 @@
     "weapons": [
       {
         "class": "ThrowingKnife",
+        "itemUsage": "",
         "accuracy": 95,
         "missileSpeed": 32,
         "stackAmount": 2,
@@ -5478,6 +5571,7 @@
       },
       {
         "class": "Dagger",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5644,6 +5738,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 275,
@@ -5675,6 +5770,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5694,6 +5790,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5714,6 +5811,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5744,6 +5842,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5910,6 +6009,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Short Bow",
         "accuracy": 93,
         "missileSpeed": 73,
         "stackAmount": 1,
@@ -5946,6 +6046,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Short Bow",
         "accuracy": 94,
         "missileSpeed": 78,
         "stackAmount": 1,
@@ -5982,6 +6083,7 @@
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "Heavy Crossbow",
         "accuracy": 96,
         "missileSpeed": 112,
         "stackAmount": 1,
@@ -6018,6 +6120,7 @@
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "Heavy Crossbow",
         "accuracy": 98,
         "missileSpeed": 121,
         "stackAmount": 1,
@@ -6053,6 +6156,7 @@
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "Heavy Crossbow",
         "accuracy": 99,
         "missileSpeed": 126,
         "stackAmount": 1,
@@ -6088,6 +6192,7 @@
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "Heavy Crossbow",
         "accuracy": 100,
         "missileSpeed": 135,
         "stackAmount": 1,
@@ -6141,6 +6246,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 145,
@@ -6206,6 +6312,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -6338,6 +6445,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 150,
@@ -6369,6 +6477,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "Right Load",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 27,
@@ -6535,6 +6644,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -6582,6 +6692,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 170,
@@ -6681,6 +6792,7 @@
     "weapons": [
       {
         "class": "ThrowingKnife",
+        "itemUsage": "",
         "accuracy": 95,
         "missileSpeed": 32,
         "stackAmount": 2,
@@ -6704,6 +6816,7 @@
       },
       {
         "class": "Dagger",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -6768,6 +6881,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -6787,6 +6901,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -6807,6 +6922,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -6837,6 +6953,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -6857,6 +6974,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -6907,6 +7025,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "",
         "accuracy": 92,
         "missileSpeed": 29,
         "stackAmount": 3,
@@ -6930,6 +7049,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -6961,6 +7081,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 3,
@@ -6984,6 +7105,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7015,6 +7137,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 3,
@@ -7038,6 +7161,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7171,6 +7295,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7191,6 +7316,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7224,6 +7350,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7244,6 +7371,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7277,6 +7405,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7297,6 +7426,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7319,6 +7449,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7352,6 +7483,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7374,6 +7506,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7409,6 +7542,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7429,6 +7563,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7462,6 +7597,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7543,6 +7679,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7563,6 +7700,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7585,6 +7723,7 @@
       },
       {
         "class": "Javelin",
+        "itemUsage": "",
         "accuracy": 92,
         "missileSpeed": 27,
         "stackAmount": 1,
@@ -7619,6 +7758,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7639,6 +7779,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7661,6 +7802,7 @@
       },
       {
         "class": "Javelin",
+        "itemUsage": "",
         "accuracy": 92,
         "missileSpeed": 27,
         "stackAmount": 1,
@@ -7712,6 +7854,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 130,
@@ -7777,6 +7920,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 205,
@@ -8046,6 +8190,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8066,6 +8211,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8088,6 +8234,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8119,6 +8266,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8141,6 +8289,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8174,6 +8323,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8196,6 +8346,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8280,6 +8431,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8310,6 +8462,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8340,6 +8493,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8370,6 +8524,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8400,6 +8555,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8430,6 +8586,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8460,6 +8617,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8490,6 +8648,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8554,6 +8713,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8575,6 +8735,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8609,6 +8770,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8629,6 +8791,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8679,6 +8842,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8709,6 +8873,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8739,6 +8904,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8769,6 +8935,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8799,6 +8966,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8829,6 +8997,7 @@
     "weapons": [
       {
         "class": "ThrowingKnife",
+        "itemUsage": "",
         "accuracy": 95,
         "missileSpeed": 32,
         "stackAmount": 2,
@@ -8852,6 +9021,7 @@
       },
       {
         "class": "Dagger",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9018,6 +9188,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9051,6 +9222,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9132,6 +9304,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9154,6 +9327,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9238,6 +9412,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 155,
@@ -9303,6 +9478,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 150,
@@ -9334,6 +9510,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 265,
@@ -9654,6 +9831,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 3,
@@ -9677,6 +9855,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9708,6 +9887,7 @@
     "weapons": [
       {
         "class": "Dagger",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9738,6 +9918,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Long Bow",
         "accuracy": 88,
         "missileSpeed": 70,
         "stackAmount": 1,
@@ -10131,6 +10312,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 117,
@@ -10162,6 +10344,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 255,
@@ -10295,6 +10478,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 250,
@@ -10326,6 +10510,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "Right Load",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 36,
@@ -10458,6 +10643,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Long Bow",
         "accuracy": 83,
         "missileSpeed": 65,
         "stackAmount": 1,
@@ -10494,6 +10680,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 220,
@@ -10525,6 +10712,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 200,
@@ -10556,6 +10744,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10576,6 +10765,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10598,6 +10788,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10618,6 +10809,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10651,6 +10843,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10671,6 +10864,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10693,6 +10887,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10726,6 +10921,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10748,6 +10944,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10783,6 +10980,7 @@
     "weapons": [
       {
         "class": "ThrowingAxe",
+        "itemUsage": "",
         "accuracy": 93,
         "missileSpeed": 27,
         "stackAmount": 2,
@@ -10807,6 +11005,7 @@
       },
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10855,6 +11054,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10888,6 +11088,7 @@
     "weapons": [
       {
         "class": "Dagger",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10918,6 +11119,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10948,6 +11150,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
@@ -10996,6 +11199,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Short Bow",
         "accuracy": 85,
         "missileSpeed": 64,
         "stackAmount": 1,
@@ -11032,6 +11236,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11352,6 +11557,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11372,6 +11578,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11422,6 +11629,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11443,6 +11651,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11466,6 +11675,7 @@
       },
       {
         "class": "Javelin",
+        "itemUsage": "",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 1,
@@ -11501,6 +11711,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11701,6 +11912,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 135,
@@ -11732,6 +11944,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 142,
@@ -11763,6 +11976,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11793,6 +12007,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11824,6 +12039,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11843,6 +12059,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11863,6 +12080,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12250,6 +12468,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12270,6 +12489,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12292,6 +12512,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12325,6 +12546,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12345,6 +12567,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12367,6 +12590,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12398,6 +12622,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12419,6 +12644,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12442,6 +12668,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12491,6 +12718,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12521,6 +12749,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12551,6 +12780,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12581,6 +12811,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12662,6 +12893,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12692,6 +12924,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12722,6 +12955,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12752,6 +12986,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12772,6 +13007,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12805,6 +13041,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12825,6 +13062,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12875,6 +13113,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12905,6 +13144,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12935,6 +13175,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12965,6 +13206,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12995,6 +13237,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13042,6 +13285,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13208,6 +13452,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 185,
@@ -13239,6 +13484,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13304,6 +13550,7 @@
     "weapons": [
       {
         "class": "ThrowingKnife",
+        "itemUsage": "",
         "accuracy": 95,
         "missileSpeed": 32,
         "stackAmount": 2,
@@ -13327,6 +13574,7 @@
       },
       {
         "class": "Dagger",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13408,6 +13656,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 107,
@@ -13541,6 +13790,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 240,
@@ -13895,6 +14145,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 102,
@@ -13926,6 +14177,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -14092,6 +14344,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Long Bow",
         "accuracy": 94,
         "missileSpeed": 74,
         "stackAmount": 1,
@@ -14128,6 +14381,7 @@
     "weapons": [
       {
         "class": "ThrowingKnife",
+        "itemUsage": "",
         "accuracy": 95,
         "missileSpeed": 32,
         "stackAmount": 2,
@@ -14151,6 +14405,7 @@
       },
       {
         "class": "Dagger",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -14181,6 +14436,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Long Bow",
         "accuracy": 94,
         "missileSpeed": 79,
         "stackAmount": 1,
@@ -14370,6 +14626,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -14392,6 +14649,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -14425,6 +14683,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -14445,6 +14704,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -14495,6 +14755,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -14525,6 +14786,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Short Bow",
         "accuracy": 82,
         "missileSpeed": 67,
         "stackAmount": 1,
@@ -14629,6 +14891,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -14914,6 +15177,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Short Bow",
         "accuracy": 100,
         "missileSpeed": 90,
         "stackAmount": 1,
@@ -15086,6 +15350,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Long Bow",
         "accuracy": 98,
         "missileSpeed": 85,
         "stackAmount": 1,
@@ -15156,6 +15421,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Long Bow",
         "accuracy": 91,
         "missileSpeed": 77,
         "stackAmount": 1,
@@ -15362,6 +15628,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Short Bow",
         "accuracy": 95,
         "missileSpeed": 71,
         "stackAmount": 1,
@@ -15466,6 +15733,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -15485,6 +15753,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -15505,6 +15774,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -15535,6 +15805,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -15568,6 +15839,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -15701,6 +15973,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 160,
@@ -15732,6 +16005,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "",
         "accuracy": 92,
         "missileSpeed": 29,
         "stackAmount": 3,
@@ -15755,6 +16029,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -15786,6 +16061,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "",
         "accuracy": 92,
         "missileSpeed": 29,
         "stackAmount": 3,
@@ -15809,6 +16085,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -15840,6 +16117,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 3,
@@ -15863,6 +16141,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16064,6 +16343,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
@@ -16095,6 +16375,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 150,
@@ -16126,6 +16407,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16146,6 +16428,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16179,6 +16462,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16199,6 +16483,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16232,6 +16517,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16252,6 +16538,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16285,6 +16572,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16305,6 +16593,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16327,6 +16616,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16360,6 +16650,7 @@
     "weapons": [
       {
         "class": "ThrowingAxe",
+        "itemUsage": "",
         "accuracy": 93,
         "missileSpeed": 27,
         "stackAmount": 2,
@@ -16384,6 +16675,7 @@
       },
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16449,6 +16741,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 240,
@@ -16497,6 +16790,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 95,
@@ -16528,6 +16822,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 85,
@@ -16627,6 +16922,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 210,
@@ -16658,6 +16954,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 125,
@@ -16961,6 +17258,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 280,
@@ -17077,6 +17375,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17097,6 +17396,7 @@
       },
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17119,6 +17419,7 @@
       },
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17167,6 +17468,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17197,6 +17499,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17228,6 +17531,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17259,6 +17563,7 @@
     "weapons": [
       {
         "class": "TwoHandedMace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17292,6 +17597,7 @@
     "weapons": [
       {
         "class": "TwoHandedMace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17325,6 +17631,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17356,6 +17663,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17376,6 +17684,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17409,6 +17718,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17429,6 +17739,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17462,6 +17773,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17496,6 +17808,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17527,6 +17840,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17557,6 +17871,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "Right Load",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 23,
@@ -17740,6 +18055,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17855,6 +18171,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17876,6 +18193,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17910,6 +18228,7 @@
     "weapons": [
       {
         "class": "Dagger",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17929,6 +18248,7 @@
       },
       {
         "class": "ThrowingKnife",
+        "itemUsage": "",
         "accuracy": 95,
         "missileSpeed": 33,
         "stackAmount": 1,
@@ -17963,6 +18283,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18048,6 +18369,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "Right Load",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 27,
@@ -18095,6 +18417,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18115,6 +18438,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18136,6 +18460,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18184,6 +18509,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
@@ -18215,6 +18541,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 132,
@@ -18314,6 +18641,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18333,6 +18661,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18353,6 +18682,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18400,6 +18730,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18753,6 +19084,7 @@
     "weapons": [
       {
         "class": "Dagger",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18919,6 +19251,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18950,6 +19283,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18997,6 +19331,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19027,6 +19362,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19057,6 +19393,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19079,6 +19416,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19112,6 +19450,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19142,6 +19481,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19243,6 +19583,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19274,6 +19615,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 110,
@@ -19305,6 +19647,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 125,
@@ -19336,6 +19679,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19367,6 +19711,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19386,6 +19731,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19406,6 +19752,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19487,6 +19834,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 180,
@@ -19535,6 +19883,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19566,6 +19915,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19586,6 +19936,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19619,6 +19970,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19639,6 +19991,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19672,6 +20025,7 @@
     "weapons": [
       {
         "class": "ThrowingAxe",
+        "itemUsage": "",
         "accuracy": 93,
         "missileSpeed": 27,
         "stackAmount": 2,
@@ -19696,6 +20050,7 @@
       },
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19846,6 +20201,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19876,6 +20232,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19906,6 +20263,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 260,
@@ -19954,6 +20312,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "Right Load",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 24,
@@ -19984,6 +20343,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Short Bow",
         "accuracy": 80,
         "missileSpeed": 68,
         "stackAmount": 1,
@@ -20054,6 +20414,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 190,
@@ -20119,6 +20480,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Short Bow",
         "accuracy": 91,
         "missileSpeed": 76,
         "stackAmount": 1,
@@ -20240,6 +20602,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Short Bow",
         "accuracy": 95,
         "missileSpeed": 80,
         "stackAmount": 1,
@@ -20429,6 +20792,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 215,
@@ -20460,6 +20824,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 130,
@@ -20491,6 +20856,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 135,
@@ -20624,6 +20990,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 260,
@@ -20706,6 +21073,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20739,6 +21107,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20772,6 +21141,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20803,6 +21173,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20834,6 +21205,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20865,6 +21237,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21015,6 +21388,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21035,6 +21409,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21057,6 +21432,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21088,6 +21464,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21108,6 +21485,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21130,6 +21508,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21178,6 +21557,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21208,6 +21588,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21238,6 +21619,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21268,6 +21650,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21298,6 +21681,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 240,
@@ -21329,6 +21713,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
@@ -21360,6 +21745,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21382,6 +21768,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21415,6 +21802,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21445,6 +21833,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21475,6 +21864,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21505,6 +21895,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21535,6 +21926,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21565,6 +21957,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21986,6 +22379,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 270,
@@ -22068,6 +22462,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22090,6 +22485,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22123,6 +22519,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22187,6 +22584,7 @@
     "weapons": [
       {
         "class": "Stone",
+        "itemUsage": "",
         "accuracy": 45,
         "missileSpeed": 40,
         "stackAmount": 14,
@@ -22289,6 +22687,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "Right Load",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 30,
@@ -22336,6 +22735,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Short Bow",
         "accuracy": 99,
         "missileSpeed": 84,
         "stackAmount": 1,
@@ -22372,6 +22772,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Long Bow",
         "accuracy": 100,
         "missileSpeed": 84,
         "stackAmount": 1,
@@ -22408,6 +22809,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22428,6 +22830,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22450,6 +22853,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22483,6 +22887,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Long Bow",
         "accuracy": 94,
         "missileSpeed": 73,
         "stackAmount": 1,
@@ -22519,6 +22924,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 220,
@@ -22652,6 +23058,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22682,6 +23089,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22832,6 +23240,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 215,
@@ -22931,6 +23340,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22965,6 +23375,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22996,6 +23407,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23027,6 +23439,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23058,6 +23471,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23225,6 +23639,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23245,6 +23660,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23267,6 +23683,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23287,6 +23704,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23320,6 +23738,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23340,6 +23759,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23362,6 +23782,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23393,6 +23814,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23413,6 +23835,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23435,6 +23858,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23483,6 +23907,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23513,6 +23938,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23543,6 +23969,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23573,6 +24000,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23603,6 +24031,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23633,6 +24062,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23663,6 +24093,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23693,6 +24124,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23715,6 +24147,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23748,6 +24181,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23768,6 +24202,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23801,6 +24236,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23831,6 +24267,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23861,6 +24298,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23891,6 +24329,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23921,6 +24360,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24053,6 +24493,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "Top Load",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 25,
@@ -24100,6 +24541,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24119,6 +24561,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24139,6 +24582,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24169,6 +24613,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24188,6 +24633,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24208,6 +24654,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24238,6 +24685,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24303,6 +24751,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "",
         "accuracy": 92,
         "missileSpeed": 29,
         "stackAmount": 3,
@@ -24326,6 +24775,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24357,6 +24807,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 3,
@@ -24380,6 +24831,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24411,6 +24863,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 3,
@@ -24434,6 +24887,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24465,6 +24919,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 150,
@@ -24513,6 +24968,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 137,
@@ -24561,6 +25017,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24581,6 +25038,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24614,6 +25072,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24634,6 +25093,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24667,6 +25127,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24687,6 +25148,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24709,6 +25171,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24742,6 +25205,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24764,6 +25228,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24788,6 +25253,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24823,6 +25289,7 @@
     "weapons": [
       {
         "class": "ThrowingAxe",
+        "itemUsage": "",
         "accuracy": 93,
         "missileSpeed": 27,
         "stackAmount": 2,
@@ -24847,6 +25314,7 @@
       },
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24895,6 +25363,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 225,
@@ -24926,6 +25395,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24946,6 +25416,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24968,6 +25439,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25001,6 +25473,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25099,6 +25572,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25119,6 +25593,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25140,6 +25615,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25171,6 +25647,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25202,6 +25679,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25233,6 +25711,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Long Bow",
         "accuracy": 94,
         "missileSpeed": 82,
         "stackAmount": 1,
@@ -25269,6 +25748,7 @@
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "Long Bow",
         "accuracy": 92,
         "missileSpeed": 76,
         "stackAmount": 1,
@@ -25305,6 +25785,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 97,
@@ -25336,6 +25817,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 90,

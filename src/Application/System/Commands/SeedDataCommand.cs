@@ -1716,6 +1716,7 @@ public record SeedDataCommand : IMediatorRequest
             return new()
             {
                 Class = weaponComponent.Class,
+                ItemUsage = weaponComponent.ItemUsage,
                 Accuracy = weaponComponent.Accuracy,
                 MissileSpeed = weaponComponent.MissileSpeed,
                 StackAmount = weaponComponent.StackAmount,
