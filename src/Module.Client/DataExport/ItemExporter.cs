@@ -116,6 +116,7 @@ internal class ItemExporter : IDataExporter
         ["arrow_top"] = "Top Load",
         ["arrow_right"] = "Right Load",
         ["crossbow"] = "Heavy Crossbow",
+        ["crossbow_light"] = "Light Crossbow",
         ["long_bow"] = "Long Bow",
         ["bow"] = "Short Bow",
     };
