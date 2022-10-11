@@ -68,20 +68,24 @@ internal class ReassignTeamComponent : MissionBehavior
             return;
         }
 
-        int attackerPlayerCount = _multiplayerTeamSelectComponent.GetPlayerCountForTeam(Mission.Current.AttackerTeam);
-        int defenderPlayerCount = _multiplayerTeamSelectComponent.GetPlayerCountForTeam(Mission.Current.DefenderTeam);
-        int teamBalanceDifference = MultiplayerTeamSelectComponent.GetAutoTeamBalanceDifference((AutoTeamBalanceLimits)MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.GetIntValue());
-        bool isTeamBalance = Math.Abs(attackerPlayerCount - defenderPlayerCount) > teamBalanceDifference;
+        bool isTeamBalance = false;
+        if (_isAutobalanceCheck)
+        {
+            int attackerPlayerCount = _multiplayerTeamSelectComponent.GetPlayerCountForTeam(Mission.Current.AttackerTeam);
+            int defenderPlayerCount = _multiplayerTeamSelectComponent.GetPlayerCountForTeam(Mission.Current.DefenderTeam);
+            int teamBalanceDifference = MultiplayerTeamSelectComponent.GetAutoTeamBalanceDifference((AutoTeamBalanceLimits)MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.GetIntValue());
+            isTeamBalance = Math.Abs(attackerPlayerCount - defenderPlayerCount) > teamBalanceDifference;
+        }
 
         // If he was moved by autobalance
-        if (_isAutobalanceCheck && isTeamBalance)
+        if (isTeamBalance)
         {
             _playerTeamList[playerId] = newTeam;
             return;
         }
 
         // If he rejoined his old team or his newTeam is his oldTeam
-        if (!isTeamBalance && (newTeam == previousTeam || _playerTeamList[playerId] == newTeam))
+        if (newTeam == previousTeam || _playerTeamList[playerId] == newTeam)
         {
             return;
         }
