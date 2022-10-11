@@ -9,7 +9,7 @@ internal class CrpgItemValueModel : ItemValueModel
 {
     private static readonly float[] ItemPriceCoeffs = new float[] { 300f, 700f, 0f };
     private static readonly float[] ArmorPriceCoeffs = new float[] { 1f, 4f, 0f, 0f, 0f };
-    private static readonly Dictionary<ItemObject.ItemTypeEnum, (int, float[])> PricesAndCoeffs = new()
+    private static readonly Dictionary<ItemObject.ItemTypeEnum, (int desiredMaxPrice, float[] priceCoeffs)> PricesAndCoeffs = new()
     {
         [ItemObject.ItemTypeEnum.HeadArmor] = (9754, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.Cape] = (11441, ArmorPriceCoeffs),
@@ -49,10 +49,10 @@ internal class CrpgItemValueModel : ItemValueModel
 
     public override int CalculateValue(ItemObject item)
     {
-        return GetEquipmentValueFromTier(item.Tierf, PricesAndCoeffs[item.ItemType], 50);
+        return GetEquipmentValueFromTier(item.Tierf, PricesAndCoeffs[item.ItemType].desiredMaxPrice, PricesAndCoeffs[item.ItemType].priceCoeffs, 50);
     }
 
-    private int GetEquipmentValueFromTier(float tier, (int desiredMaxPrice, float[] priceCoeffs) input, int desiredTierZeroPrice)
+    private int GetEquipmentValueFromTier(float tier, int desiredMaxPrice, float[] priceCoeffs, int desiredTierZeroPrice)
     {
         // this method takes a value between 0 and 10 and outputs a value between 0 and 10
         // It uses a degree 2 polynomial.
@@ -64,7 +64,7 @@ internal class CrpgItemValueModel : ItemValueModel
             return tierPolynome * tierPolynomeScaler;
         }
 
-        return (int)(GetPriceTier(tier, input.priceCoeffs) * (input.desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredTierZeroPrice);
+        return (int)(GetPriceTier(tier, priceCoeffs) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredTierZeroPrice);
     }
 
     private float CalculateArmorTier(ArmorComponent armorComponent)
