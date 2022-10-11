@@ -74,6 +74,8 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
         MultiplayerGameNotificationsComponent notificationsComponent = new(); // used to send notifications (e.g. flag captured, round won) to peer
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent);
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
+        MissionScoreboardComponent missionScoreboardComponent = new(new BattleScoreboardData());
+        NoTeamSelectComponent noTeamSelectComponent = new();
 
         MissionState.OpenNew(
             Name,
@@ -86,14 +88,14 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MultiplayerTimerComponent(), // round timer
                     new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
                     new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
-                    new NoTeamSelectComponent(), // logic to change team, autoselect
+                    noTeamSelectComponent, // logic to change team, autoselect
                     new MissionHardBorderPlacer(),
                     new MissionBoundaryPlacer(), // set walkable boundaries
                     new AgentVictoryLogic(), // AI cheering when winning round
                     new MissionBoundaryCrossingHandler(), // kills agent out of mission boundaries
                     new MultiplayerPollComponent(), // poll logic to kick player, ban player, change game
                     new MissionOptionsComponent(),
-                    new MissionScoreboardComponent(new BattleScoreboardData()), // score board
+                    missionScoreboardComponent, // score board
                     new MissionAgentPanicHandler(),
                     new EquipmentControllerLeaveLogic(),
                     new MultiplayerPreloadHelper(),
@@ -109,6 +111,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new CrpgUserManager(crpgClient),
                     new KickInactiveBehavior(warmupComponent, notificationsComponent),
                     new MapVoteComponent(),
+                    new ReassignTeamComponent(missionScoreboardComponent, noTeamSelectComponent, roundController),
                     new ChatCommandsComponent(chatBox, crpgClient),
 #else
                     new MultiplayerRoundComponent(),
