@@ -1358,6 +1358,11 @@ namespace Crpg.Persistence.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("primary_handling");
 
+                            b1.Property<string>("ItemUsage")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("primary_weapon_item_usage");
+
                             b1.Property<int>("Length")
                                 .HasColumnType("integer")
                                 .HasColumnName("primary_length");
@@ -1433,6 +1438,11 @@ namespace Crpg.Persistence.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("secondary_handling");
 
+                            b1.Property<string>("ItemUsage")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("secondary_weapon_item_usage");
+
                             b1.Property<int>("Length")
                                 .HasColumnType("integer")
                                 .HasColumnName("secondary_length");
@@ -1507,6 +1517,11 @@ namespace Crpg.Persistence.Migrations
                             b1.Property<int>("Handling")
                                 .HasColumnType("integer")
                                 .HasColumnName("tertiary_handling");
+
+                            b1.Property<string>("ItemUsage")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("tertiary_weapon_item_usage");
 
                             b1.Property<int>("Length")
                                 .HasColumnType("integer")
