@@ -6003,7 +6003,7 @@
     "name": "Simple Short Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 1351,
+    "price": 1130,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -6040,7 +6040,7 @@
     "name": "Steppe Recurve Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 2011,
+    "price": 1724,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -6077,9 +6077,9 @@
     "name": "Heavy Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 5403,
+    "price": 4444,
     "weight": 2.7,
-    "requirement": 9,
+    "requirement": 8,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6114,9 +6114,9 @@
     "name": "Arbalest",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 8377,
+    "price": 6512,
     "weight": 3.0,
-    "requirement": 11,
+    "requirement": 10,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6150,9 +6150,9 @@
     "name": "Hickory Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 11518,
+    "price": 10887,
     "weight": 2.2,
-    "requirement": 14,
+    "requirement": 13,
     "weapons": [
       {
         "class": "Crossbow",
@@ -9912,7 +9912,7 @@
     "name": "Longbow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 1438,
+    "price": 484,
     "weight": 0.4,
     "requirement": 0,
     "weapons": [
@@ -10637,7 +10637,7 @@
     "name": "Ranger Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 940,
+    "price": 439,
     "weight": 0.4,
     "requirement": 0,
     "weapons": [
@@ -11193,7 +11193,7 @@
     "name": "Hunting Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 568,
+    "price": 409,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -14338,7 +14338,7 @@
     "name": "Lowland Longbow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 2013,
+    "price": 824,
     "weight": 0.5,
     "requirement": 0,
     "weapons": [
@@ -14430,7 +14430,7 @@
     "name": "Yew Bow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 2690,
+    "price": 2007,
     "weight": 0.5,
     "requirement": 0,
     "weapons": [
@@ -14780,7 +14780,7 @@
     "name": "Mountain Hunting Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 566,
+    "price": 373,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -15171,7 +15171,7 @@
     "name": "Noble Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 8081,
+    "price": 12264,
     "weight": 0.8,
     "requirement": 0,
     "weapons": [
@@ -15344,7 +15344,7 @@
     "name": "Noble Long Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 12264,
+    "price": 11337,
     "weight": 0.8,
     "requirement": 0,
     "weapons": [
@@ -15415,7 +15415,7 @@
     "name": "Nomad Bow",
     "culture": "Aserai",
     "type": "Bow",
-    "price": 3057,
+    "price": 1849,
     "weight": 0.5,
     "requirement": 0,
     "weapons": [
@@ -15622,7 +15622,7 @@
     "name": "Nordic Shortbow",
     "culture": "Sturgia",
     "type": "Bow",
-    "price": 1033,
+    "price": 829,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -20337,7 +20337,7 @@
     "name": "Steppe Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 559,
+    "price": 340,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -20474,7 +20474,7 @@
     "name": "Heavy Recurve Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 1774,
+    "price": 1302,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -20596,7 +20596,7 @@
     "name": "Steppe War Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 2743,
+    "price": 2050,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -22729,7 +22729,7 @@
     "name": "Practice Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 359,
+    "price": 334,
     "weight": 0.3,
     "requirement": 0,
     "weapons": [
@@ -22766,7 +22766,7 @@
     "name": "Practice Longbow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 331,
+    "price": 258,
     "weight": 0.5,
     "requirement": 0,
     "weapons": [
@@ -22881,7 +22881,7 @@
     "name": "Tribesman Bow",
     "culture": "Aserai",
     "type": "Bow",
-    "price": 2955,
+    "price": 1599,
     "weight": 0.5,
     "requirement": 0,
     "weapons": [
@@ -25705,7 +25705,7 @@
     "name": "Woodland Longbow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 4419,
+    "price": 3066,
     "weight": 0.1,
     "requirement": 0,
     "weapons": [
@@ -25742,7 +25742,7 @@
     "name": "Woodland Yew Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 3159,
+    "price": 2339,
     "weight": 0.5,
     "requirement": 0,
     "weapons": [
