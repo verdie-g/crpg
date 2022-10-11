@@ -344,6 +344,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
             if (equippedItem.IsRangedWeapon)
             {
+                props.ThrustOrRangedReadySpeedMultiplier = equippedItem.ThrustSpeed / 100f + 0.001f * itemSkill;
                 if (!agent.HasMount)
                 {
                     float num5 = Math.Max(0.0f, 1.0f - weaponSkill / 500.0f);
@@ -368,7 +369,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 60.0f) / 75.0f, 0.0f, 1f);
                     props.WeaponMaxMovementAccuracyPenalty *= 6f;
                     props.WeaponMaxUnsteadyAccuracyPenalty *= 4.5f / MBMath.Lerp(0.75f, 2f, amount);
-                    props.ThrustOrRangedReadySpeedMultiplier = equippedItem.ThrustSpeed / 100f + 0.001f * itemSkill;
                 }
                 else if (equippedItem.RelevantSkill == DefaultSkills.Throwing)
                 {
