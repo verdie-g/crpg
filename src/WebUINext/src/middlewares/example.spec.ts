@@ -28,6 +28,6 @@ describe('router middleware/guard example', () => {
     };
 
     // @ts-ignore need mock next fn :(
-    expect(await exampleRouterMiddleware(to, from, next)).toBeTruthy();
+    expect(await exampleRouterMiddleware(to, from)).toBeTruthy();
   });
 });

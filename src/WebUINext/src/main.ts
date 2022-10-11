@@ -1,7 +1,9 @@
 import { createApp } from 'vue';
 import 'virtual:svg-icons-register';
 import { type BootModule } from './types/boot-module';
-import './assets/styles/index.css';
+
+import './assets/styles/tailwind.css';
+import './assets/styles/themes/oruga-tailwind-favoras/index.css';
 
 import App from './App.vue';
 

@@ -4,10 +4,11 @@ import SvgIcon from '@/components/SvgIcon.vue';
 it('should correct href attribute', () => {
   const wrapper = mount(SvgIcon, {
     props: {
-      prefix: 'testPrefix',
       name: 'testIcon',
+      viewBox: '0 0 20 20',
     },
   });
 
-  expect(wrapper.find('use').attributes('href')).toEqual('#testPrefix-testIcon');
+  expect(wrapper.find('use').attributes('href')).toEqual('#icon-testIcon');
+  expect(wrapper.find('svg').attributes('viewBox')).toEqual('0 0 20 20');
 });

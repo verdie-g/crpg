@@ -1,5 +1,8 @@
 <script setup lang="ts">
 const checkboxModel = ref<boolean>(true);
+const radioModel = ref<string>('Jack');
+const switchModel = ref<boolean>(false);
+
 const inputModelName = ref<string>('RainbowDash');
 const inputModelPriceFrom = ref<number>(0);
 const inputModelPriceTo = ref<number>(0);
@@ -20,6 +23,58 @@ const dropDownList = ref([
     title: 'Hard',
   },
 ]);
+
+const tableData = ref([
+  {
+    id: 1,
+    first_name: 'Jesse',
+    last_name: 'Simmons',
+    date: '2016-10-15 13:43:27',
+    gender: 'Male',
+  },
+  {
+    id: 2,
+    first_name: 'John',
+    last_name: 'Jacobs',
+    date: '2016-12-15 06:00:53',
+    gender: 'Male',
+  },
+  {
+    id: 3,
+    first_name: 'Tina',
+    last_name: 'Gilbert',
+    date: '2016-04-26 06:26:28',
+    gender: 'Female',
+  },
+]);
+
+const tableColumns = ref([
+  {
+    field: 'id',
+    label: 'ID',
+    width: '40',
+    numeric: true,
+  },
+  {
+    field: 'first_name',
+    label: 'First Name',
+  },
+  {
+    field: 'last_name',
+    label: 'Last Name',
+  },
+  {
+    field: 'date',
+    label: 'Date',
+    position: 'centered',
+  },
+  {
+    field: 'gender',
+    label: 'Gender',
+  },
+]);
+
+const activeTab = ref('0');
 </script>
 
 <route lang="yaml">
@@ -71,8 +126,22 @@ meta:
       <br />
 
       <div class="flex w-1/4 flex-col gap-4">
-        <OCheckbox>Show owned items</OCheckbox>
-        <OCheckbox v-model="checkboxModel">Show only affordable items</OCheckbox>
+        <OField>
+          <OCheckbox>Show owned items</OCheckbox>
+        </OField>
+
+        <OField>
+          <OCheckbox v-model="checkboxModel">Show only affordable items</OCheckbox>
+        </OField>
+
+        <OField>
+          <ORadio v-model="radioModel" native-value="Flint">Radio example</ORadio>
+          <ORadio v-model="radioModel" native-value="Jack">Radio example</ORadio>
+        </OField>
+
+        <OField>
+          <OSwitch v-model="switchModel">Switch example</OSwitch>
+        </OField>
 
         <OField label="Name" horizontal>
           <OInput v-model="inputModelName" expanded />
@@ -131,10 +200,38 @@ meta:
             </div>
           </div>
         </div>
+
+        <br />
+
+        <div class="bg-white p-4">
+          <OTable :data="tableData" bordered striped narrowed hoverable>
+            <OTableColumn v-for="column in tableColumns" v-bind="column" #default="{ row }">
+              {{ row[column.field] }}
+            </OTableColumn>
+          </OTable>
+        </div>
       </div>
 
       <br />
 
+      <div class="bg-white p-4">
+        <OTabs v-model="activeTab" type="boxed">
+          <OTabItem value="0" label="Pictures">Lorem ipsum dolor sit amet.</OTabItem>
+          <OTabItem value="1" label="Music">
+            Lorem
+            <br />
+            ipsum
+            <br />
+            dolor
+            <br />
+            sit
+            <br />
+            amet.
+          </OTabItem>
+        </OTabs>
+      </div>
+
+      <br />
       <!--  -->
     </div>
   </div>

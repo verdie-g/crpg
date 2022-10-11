@@ -7,14 +7,14 @@
 <script setup lang="ts">
 // ref: https://github.com/vbenjs/vite-plugin-svg-icons#vue-way
 interface Props {
-  prefix?: string;
+  basePrefix?: string;
   name: string;
   viewBox: string;
 }
 
-const { prefix = 'icon', name } = defineProps<Props>();
+const { basePrefix = 'icon', name, viewBox } = defineProps<Props>();
 
-const symbolId = computed(() => `#${prefix}-${name}`);
+const symbolId = computed(() => `#${basePrefix}-${name}`);
 </script>
 
 <script lang="ts">

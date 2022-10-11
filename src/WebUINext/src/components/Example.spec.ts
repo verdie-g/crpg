@@ -114,7 +114,7 @@ describe('Example component unit test', () => {
     expect(wrapper.find('[data-aq-example-route-path]').text()).toEqual(TEST_PATH);
   });
 
-  it.only('with router', async () => {
+  it('with router', async () => {
     const { wrapper } = factory();
 
     await wrapper.find('[data-aq-example-router-push]').trigger('click');

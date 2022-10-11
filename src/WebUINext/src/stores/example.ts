@@ -13,8 +13,6 @@ export const useUserStore = defineStore('user', {
 
   actions: {
     async fetch() {
-      console.log(';wdwd');
-
       this.$patch(await getUser());
     },
   },
