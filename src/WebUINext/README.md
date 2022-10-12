@@ -71,7 +71,7 @@ Theme dir (CSS + icons): `src/assets/themes`
 
 Available global components `src/boot/oruga-ui.ts`
 
-https://oruga.io/documentation/#themes
+Playground: `/playground/oruga`
 
 ### Icon
 Just add an SVG icon as in the example: `src/assets/themes/oruga-tailwind-favoras/icons/arrow-up.ts`
