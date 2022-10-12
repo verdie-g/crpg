@@ -391,7 +391,7 @@
     "culture": "Empire",
     "type": "Arrows",
     "price": 50,
-    "weight": 0.05,
+    "weight": 3.75,
     "requirement": 0,
     "weapons": [
       {
@@ -2154,7 +2154,7 @@
     "culture": "Neutral",
     "type": "Arrows",
     "price": 102,
-    "weight": 0.05,
+    "weight": 3.75,
     "requirement": 0,
     "weapons": [
       {
@@ -4564,7 +4564,7 @@
     "culture": "Khuzait",
     "type": "Arrows",
     "price": 4500,
-    "weight": 0.05,
+    "weight": 3.75,
     "requirement": 0,
     "weapons": [
       {
@@ -4630,7 +4630,7 @@
     "culture": "Neutral",
     "type": "Arrows",
     "price": 2653,
-    "weight": 0.048,
+    "weight": 3.6,
     "requirement": 0,
     "weapons": [
       {
@@ -4661,7 +4661,7 @@
     "culture": "Neutral",
     "type": "Arrows",
     "price": 1631,
-    "weight": 0.048,
+    "weight": 3.6,
     "requirement": 0,
     "weapons": [
       {
@@ -4692,7 +4692,7 @@
     "culture": "Neutral",
     "type": "Arrows",
     "price": 1311,
-    "weight": 0.048,
+    "weight": 3.6,
     "requirement": 0,
     "weapons": [
       {
@@ -6472,7 +6472,7 @@
     "culture": "Neutral",
     "type": "Arrows",
     "price": 50,
-    "weight": 0.043,
+    "weight": 3.225,
     "requirement": 0,
     "weapons": [
       {
@@ -10505,7 +10505,7 @@
     "culture": "Khuzait",
     "type": "Arrows",
     "price": 856,
-    "weight": 0.036,
+    "weight": 2.7,
     "requirement": 0,
     "weapons": [
       {
@@ -17866,7 +17866,7 @@
     "culture": "Neutral",
     "type": "Arrows",
     "price": 4079,
-    "weight": 0.041,
+    "weight": 3.075,
     "requirement": 0,
     "weapons": [
       {
@@ -18364,7 +18364,7 @@
     "culture": "Neutral",
     "type": "Arrows",
     "price": 125,
-    "weight": 0.043,
+    "weight": 3.225,
     "requirement": 0,
     "weapons": [
       {
@@ -20307,7 +20307,7 @@
     "culture": "Khuzait",
     "type": "Arrows",
     "price": 477,
-    "weight": 0.036,
+    "weight": 2.7,
     "requirement": 0,
     "weapons": [
       {
@@ -22682,7 +22682,7 @@
     "culture": "Neutral",
     "type": "Arrows",
     "price": 50,
-    "weight": 0.043,
+    "weight": 3.225,
     "requirement": 0,
     "weapons": [
       {
@@ -24488,7 +24488,7 @@
     "culture": "Neutral",
     "type": "Arrows",
     "price": 505,
-    "weight": 0.06,
+    "weight": 4.5,
     "requirement": 0,
     "weapons": [
       {

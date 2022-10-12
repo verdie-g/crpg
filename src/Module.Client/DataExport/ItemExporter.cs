@@ -375,6 +375,10 @@ internal class ItemExporter : IDataExporter
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "stack_amount",
                         v => ((int)(int.Parse(v) * 0.5f)).ToString(CultureInfo.InvariantCulture));
                 }
+                else if (type == ItemObject.ItemTypeEnum.Arrows)
+                {
+                    node1.Attributes["weight"].Value = (float.Parse(node1.Attributes["weight"].Value) * 75f).ToString();
+                }
             }
             else if (node1.Name == "CraftingTemplate")
             {
