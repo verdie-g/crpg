@@ -130,7 +130,7 @@ describe('Example component unit test', () => {
   });
 
   // https://vitest.dev/guide/snapshot.html
-  it.skip('snapshot', async () => {
+  it('snapshot', async () => {
     const { wrapper } = factory();
 
     // for update snapshot, use `-- -u`  ex: npm run test:unit src/components/ -- -u
