@@ -1,6 +1,3 @@
-// https://tailwindcss.com/docs/installation
-// const colors = require('tailwindcss/colors');
-
 // @ts-check
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -16,29 +13,26 @@ module.exports = {
     },
 
     // TODO:
-    // colors: {
-    //   transparent: 'transparent',
-    //   current: 'currentColor',
-    //   white: '#ffffff',
-    // },
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      white: '#ffffff',
+      black: '#000000',
+      //
+      primary: '#D39A07',
+      secondary: '#9E07D3',
+      danger: '#E90202',
+      neutral: '#FFF9E2',
+      todo: '#675746', // bnt color, need a name
+      todo2: '#DECDBA', // bnt color, need a name
+      todo3: '#FFEDAF', // bnt color, need a name
+      todo4: '#A69787', // checkbox border
+      todo5: '#FEF2E6', // checkbox bg
+      todo6: '#FAD4AC', // table td border
+    },
 
     ////////////////////////////////
     extend: {
-      colors: {
-        primary: '#D39A07',
-        secondary: '#9E07D3',
-        danger: '#E90202',
-        neutral: '#FFF9E2',
-        todo: '#675746', // need a name
-        todo2: '#DECDBA', // need a name
-        todo3: '#FFEDAF',
-        //
-        todo4: '#A69787', // checkbox border
-        todo5: '#FEF2E6', // checkbox bg
-
-        todo6: '#FAD4AC', // table td border
-      },
-
       minWidth: {
         48: '12rem' /* 192px */,
         9: '2.25rem' /* 36px */,

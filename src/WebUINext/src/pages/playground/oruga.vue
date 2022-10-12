@@ -181,7 +181,7 @@ meta:
           <div class="col-span-1">
             <div class="grid grid-cols-2 gap-2">
               <OButton variant="neutral" icon-left="reset">Reset</OButton>
-              <OButton variant="neutral" icon-left="check">Commit</OButton>
+              <OButton variant="neutral" icon-left="check-2">Commit</OButton>
             </div>
           </div>
         </div>

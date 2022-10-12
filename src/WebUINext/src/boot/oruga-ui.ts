@@ -27,7 +27,10 @@ export const install: BootModule = app => {
     import.meta.glob<IconDefinition>('../assets/themes/oruga-tailwind-favoras/icons/*.ts', {
       eager: true,
     })
-  ).forEach(icon => library.add(icon));
+  ).forEach(icon =>
+    // ref https://dev.to/astagi/add-custom-icons-to-font-awesome-4m67
+    library.add(icon)
+  );
 
   app.component('OIcon', OIcon);
 
