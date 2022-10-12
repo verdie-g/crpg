@@ -344,7 +344,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
             if (equippedItem.IsRangedWeapon)
             {
-                props.ThrustOrRangedReadySpeedMultiplier = equippedItem.ThrustSpeed / 100f + 0.001f * itemSkill;
+                props.ThrustOrRangedReadySpeedMultiplier = 0.90f + 0.001f * itemSkill;
                 if (!agent.HasMount)
                 {
                     float num5 = Math.Max(0.0f, 1.0f - weaponSkill / 500.0f);
