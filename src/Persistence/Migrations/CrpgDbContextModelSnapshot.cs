@@ -548,6 +548,10 @@ namespace Crpg.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("requirement");
 
+                    b.Property<float>("Tier")
+                        .HasColumnType("real")
+                        .HasColumnName("tier");
+
                     b.Property<ItemType>("Type")
                         .HasColumnType("item_type")
                         .HasColumnName("type");

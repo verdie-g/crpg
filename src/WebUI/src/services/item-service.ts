@@ -204,6 +204,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ['Type', itemTypeToStr[baseItem.type]],
       ['Culture', baseItem.culture],
       ['Weight', baseItem.weight],
+      ['Tier', baseItem.tierf.toFixed(1)],
     ],
     modes: [],
   };
