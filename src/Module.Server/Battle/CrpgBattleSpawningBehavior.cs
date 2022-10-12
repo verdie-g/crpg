@@ -320,15 +320,11 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     private Equipment CreateCharacterEquipment(IList<CrpgEquippedItem> equippedItems)
     {
         Equipment equipment = new();
-        /*foreach (var equippedItem in equippedItems)
+        foreach (var equippedItem in equippedItems)
         {
             var index = ItemSlotToIndex[equippedItem.Slot];
             AddEquipment(equipment, index, equippedItem.UserItem.BaseItemId);
-        }*/
-        AddEquipment(equipment, EquipmentIndex.Weapon0, "crpg_noble_bow");
-        AddEquipment(equipment, EquipmentIndex.Weapon1, "crpg_noble_long_bow");
-        AddEquipment(equipment, EquipmentIndex.Weapon2, "crpg_glen_ranger_bow.");
-        AddEquipment(equipment, EquipmentIndex.Weapon3, "crpg_bodkin_arrows_a");
+        }
 
         return equipment;
     }
