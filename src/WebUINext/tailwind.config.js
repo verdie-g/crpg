@@ -35,10 +35,13 @@ module.exports = {
         //
         todo4: '#A69787', // checkbox border
         todo5: '#FEF2E6', // checkbox bg
+
+        todo6: '#FAD4AC', // table td border
       },
 
       minWidth: {
         48: '12rem' /* 192px */,
+        9: '2.25rem' /* 36px */,
       },
     },
   },

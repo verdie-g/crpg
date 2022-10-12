@@ -3,6 +3,7 @@
 }
 
 .o-btn__wrapper {
+  @apply relative inline-flex w-full items-center justify-center gap-2;
 }
 
 .o-btn__label {
@@ -31,4 +32,13 @@
 
 .o-btn--todo2 {
   @apply bg-todo2 text-white;
+}
+
+.o-btn__icon {
+}
+
+.o-btn__icon-left {
+}
+
+.o-btn__icon-right {
 }

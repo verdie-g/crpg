@@ -1,0 +1,28 @@
+.o-ctrl-input {
+  @apply relative block;
+}
+
+.o-input {
+  @apply w-full appearance-none rounded-md border border-todo4 bg-todo5 py-2 px-3 leading-none;
+}
+
+.o-input--counter {
+  @apply w-10 border-transparent bg-transparent px-0 text-center;
+}
+
+.o-input-iconspace-left {
+  @apply pl-9;
+}
+
+.o-input__icon-left,
+.o-input__icon-right {
+  @apply absolute top-0 z-10 h-full w-9;
+}
+
+.o-input__icon-left {
+  @apply left-0;
+}
+
+.o-input__icon-right {
+  @apply right-0;
+}

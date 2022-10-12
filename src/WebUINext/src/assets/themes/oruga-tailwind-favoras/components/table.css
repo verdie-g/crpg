@@ -1,5 +1,5 @@
 .o-table {
-  @apply table w-full border-separate border-spacing-0 bg-white;
+  @apply table w-full border-separate border-spacing-0;
 }
 
 .o-table--bordered {
@@ -53,18 +53,39 @@
   @apply border-b-2 border-solid border-todo4;
 }
 
+.o-table__th-current-sort {
+  @apply border-b-black;
+}
+
 .o-table__th--centered {
   @apply text-center;
 }
 
+.o-table__th--sortable {
+  @apply cursor-pointer;
+}
+
+.o-table__th--sortable:hover {
+  @apply border-b-black;
+}
+
+.o-table__th--unselectable {
+  @apply select-none;
+}
+
 .o-table__th__sort-icon {
+  @apply absolute right-0 top-1/2 flex -translate-y-1/2 transform;
 }
 
 .o-table__td {
   @apply px-3 py-2 text-left align-top;
-  @apply border-b border-solid border-todo4;
+  @apply border-b border-solid border-todo6;
 }
 
 .o-table__td--centered {
   @apply text-center;
+}
+
+.o-table__pagination {
+  @apply flex items-center justify-between;
 }

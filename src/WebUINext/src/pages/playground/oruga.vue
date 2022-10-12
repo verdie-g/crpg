@@ -24,6 +24,8 @@ const dropDownList = ref([
   },
 ]);
 
+const currentTablePage = ref<number>(1);
+
 const tableData = ref([
   {
     id: 1,
@@ -46,13 +48,20 @@ const tableData = ref([
     date: '2016-04-26 06:26:28',
     gender: 'Female',
   },
+  {
+    id: 4,
+    first_name: 'Tina',
+    last_name: 'Gilbert',
+    date: '2016-04-26 06:26:28',
+    gender: 'Female',
+  },
 ]);
 
 const tableColumns = ref([
   {
     field: 'id',
     label: 'ID',
-    width: '40',
+    width: '60',
     numeric: true,
   },
   {
@@ -97,14 +106,11 @@ meta:
         <OButton variant="todo">todo</OButton>
         <OButton variant="todo2">todo2</OButton>
 
-        <OButton variant="todo">
-          <SvgIcon name="download" viewBox="0 0 24 24" class="w-4"></SvgIcon>
-          Download cRPG
-        </OButton>
+        <OButton variant="todo" icon-left="download">Download cRPG</OButton>
 
-        <SvgIcon name="steam" viewBox="0 0 40 40" class="w-10 text-todo"></SvgIcon>
-        <SvgIcon name="discord" viewBox="0 0 46 36" class="w-10 text-todo"></SvgIcon>
-        <SvgIcon name="patreon" viewBox="0 0 40 40" class="w-10 text-todo"></SvgIcon>
+        <OIcon class="text-todo" icon="steam" size="large" />
+        <OIcon class="text-todo" icon="discord" size="large" />
+        <OIcon class="text-todo" icon="patreon" size="large" />
       </div>
 
       <br />
@@ -112,10 +118,7 @@ meta:
       <div class="flex gap-2">
         <ODropdown placeholder="Difficulty" aria-role="list">
           <template #trigger>
-            <OButton variant="primary" type="button">
-              Dropdown
-              <SvgIcon name="chevron-down" viewBox="0 0 24 24" class="w-6"></SvgIcon>
-            </OButton>
+            <OButton variant="primary" type="button" icon-right="chevron-down">Dropdown</OButton>
           </template>
           <ODropdownItem v-for="dropdownItem in dropDownList" :value="dropdownItem.value" disabled>
             <span>{{ dropdownItem.title }}</span>
@@ -144,7 +147,7 @@ meta:
         </OField>
 
         <OField label="Name" horizontal>
-          <OInput v-model="inputModelName" expanded />
+          <OInput v-model="inputModelName" expanded variant="info" />
         </OField>
 
         <OField label="Price" horizontal>
@@ -169,43 +172,43 @@ meta:
         <div class="grid grid-cols-4 gap-8">
           <div class="col-span-3">
             <div class="grid grid-cols-3 gap-8">
-              <OButton variant="primary">
-                <SvgIcon name="shevron" viewBox="0 0 19 21" class="w-4"></SvgIcon>
-                Respecialize
-              </OButton>
-
-              <OButton variant="secondary">
-                <SvgIcon name="child" viewBox="0 0 18 24" class="w-4"></SvgIcon>
-                Retire
-              </OButton>
-
-              <OButton variant="danger">
-                <SvgIcon name="trash" viewBox="0 0 21 24" class="w-4"></SvgIcon>
-                Delete
-              </OButton>
+              <OButton variant="primary" icon-left="chevron-down-double">Respecialize</OButton>
+              <OButton variant="secondary" icon-left="child">Retire</OButton>
+              <OButton variant="danger" icon-left="trash">Delete</OButton>
             </div>
           </div>
 
           <div class="col-span-1">
             <div class="grid grid-cols-2 gap-2">
-              <OButton variant="neutral">
-                <SvgIcon name="reset" viewBox="0 0 24 24" class="w-4"></SvgIcon>
-                Reset
-              </OButton>
-
-              <OButton variant="neutral">
-                <SvgIcon name="check" viewBox="0 0 22 16" class="w-4"></SvgIcon>
-                Commit
-              </OButton>
+              <OButton variant="neutral" icon-left="reset">Reset</OButton>
+              <OButton variant="neutral" icon-left="check">Commit</OButton>
             </div>
           </div>
         </div>
 
         <br />
 
-        <div class="bg-white p-4">
-          <OTable :data="tableData" bordered striped narrowed hoverable>
-            <OTableColumn v-for="column in tableColumns" v-bind="column" #default="{ row }">
+        <div class="">
+          <!-- loading -->
+          <OTable
+            :data="tableData"
+            v-model:current-page="currentTablePage"
+            paginated
+            :per-page="2"
+            default-sort="id"
+            default-sort-direction="asc"
+            pagination-position="bottom"
+            aria-next-label="Next page"
+            aria-previous-label="Previous page"
+            aria-page-label="Page"
+            aria-current-label="Current page"
+          >
+            <OTableColumn
+              v-for="column in tableColumns"
+              v-bind="column"
+              sortable
+              #default="{ row }"
+            >
               {{ row[column.field] }}
             </OTableColumn>
           </OTable>

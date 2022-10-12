@@ -170,17 +170,5 @@ const { t } = useI18n();
 
     <br />
     <br />
-
-    <!--  -->
-
-    <div>
-      children component
-      <SvgIcon
-        data-aq-example-children-component
-        name="example"
-        viewBox="0 0 32 32"
-        class="w-12"
-      ></SvgIcon>
-    </div>
   </div>
 </template>

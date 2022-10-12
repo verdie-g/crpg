@@ -10,7 +10,6 @@ import Components from 'unplugin-vue-components/vite';
 import VueI18n from '@intlify/vite-plugin-vue-i18n';
 import AutoImport from 'unplugin-auto-import/vite';
 import Visualizer from 'rollup-plugin-visualizer';
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -24,11 +23,11 @@ export default defineConfig({
   plugins: [
     Vue({ reactivityTransform: true }),
 
-    // https://github.com/hannoeru/vite-plugin-pages
-    Pages({ exclude: ['**/*.spec*'] }),
-
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
     Layouts(),
+
+    // https://github.com/hannoeru/vite-plugin-pages
+    Pages({ exclude: ['**/*.spec*'] }),
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
@@ -37,6 +36,7 @@ export default defineConfig({
       vueTemplate: true,
     }),
 
+    // TODO: maybe uninstall
     // https://github.com/antfu/unplugin-vue-components
     Components({
       dts: 'src/types/vite-components.d.ts',
@@ -46,7 +46,6 @@ export default defineConfig({
     Visualizer({
       template: 'sunburst',
       gzipSize: true,
-      open: true,
       brotliSize: true,
     }),
 
@@ -55,14 +54,6 @@ export default defineConfig({
       runtimeOnly: true,
       compositionOnly: true,
       include: [fileURLToPath(new URL('./locales/**', import.meta.url))],
-    }),
-
-    // https://github.com/vbenjs/vite-plugin-svg-icons
-    createSvgIconsPlugin({
-      // Specify the icon folder to be cached
-      iconDirs: [fileURLToPath(new URL('./src/assets/icons-sprite', import.meta.url))],
-      // Specify symbolId format
-      symbolId: 'icon-[dir]-[name]',
     }),
   ],
 
@@ -83,13 +74,6 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '@@': fileURLToPath(new URL('./', import.meta.url)),
-    },
-  },
-
-  build: {
-    target: 'esnext',
-    commonjsOptions: {
-      transformMixedEsModules: true,
     },
   },
 });
