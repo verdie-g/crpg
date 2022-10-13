@@ -14,7 +14,7 @@ namespace Crpg.Module.Common.Models;
 internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 {
     // Hack to workaround not being able to spawn custom character. In the client this property is set so the
-    // StatCalculateModel has access to the cRPG user.a
+    // StatCalculateModel has access to the cRPG user.
     public static CrpgUser? MyUser { get; set; }
 
     private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new()
