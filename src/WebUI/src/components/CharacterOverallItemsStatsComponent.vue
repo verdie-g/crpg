@@ -94,10 +94,10 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     if (!this.equippedItems) return result;
     result.armorSetRequirement = computeArmorSetPieceStrengthRequirement(this.equippedItems);
     result.maxRepairCost = computeMaxRepairCost(
-      this.equippedItems.map(item => item.userItem.baseItem.price)
+      this.equippedItems.map(item => item.userItem.baseItem)
     );
     result.averageRepairCost = computeAverageRepairCost(
-      this.equippedItems.map(item => item.userItem.baseItem.price)
+      this.equippedItems.map(item => item.userItem.baseItem)
     );
     this.equippedItems.forEach(item => {
       const armor = item.userItem.baseItem.armor;

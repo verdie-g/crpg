@@ -204,8 +204,8 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ['Type', itemTypeToStr[baseItem.type]],
       ['Culture', baseItem.culture],
       ['Weight', baseItem.weight],
-      ['Max Repair Cost', computeMaxRepairCost([baseItem.price])],
-      ['Average Repair Cost', computeAverageRepairCost([baseItem.price])],
+      ['Max Repair Cost', computeMaxRepairCost([baseItem])],
+      ['Average Repair Cost', computeAverageRepairCost([baseItem])],
     ],
     modes: [],
   };
@@ -361,19 +361,19 @@ export function computeSalePrice(item: UserItem): number {
 }
 
 // TODO: handle upgrade items.
-export function computeMaxRepairCost(prices: number[]): number {
+export function computeMaxRepairCost(items: Item[]): number {
   return Math.floor(
-    prices.reduce(
-      (total, price) => total + applyPolynomialFunction(price, Constants.itemRepairCostCoefs),
+    items.reduce(
+      (total, item) => total + applyPolynomialFunction(item.price, Constants.itemRepairCostCoefs),
       0
     )
   );
 }
 
-export function computeAverageRepairCost(prices: number[]): number {
+export function computeAverageRepairCost(items: Item[]): number {
   return Math.floor(
-    prices.reduce(
-      (total, price) => total + applyPolynomialFunction(price, Constants.itemRepairCostCoefs),
+    items.reduce(
+      (total, item) => total + applyPolynomialFunction(item.price, Constants.itemRepairCostCoefs),
       0
     ) * Constants.itemBreakChance
   );
