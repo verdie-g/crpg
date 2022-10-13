@@ -106,15 +106,6 @@ internal class ItemExporter : IDataExporter
         "war_horse",
     };
 
-    private static readonly Dictionary<string, string> ItemUsageDictionary = new()
-    {
-        ["arrow_top"] = "Top Load",
-        ["arrow_right"] = "Right Load",
-        ["crossbow"] = "Heavy Crossbow",
-        ["crossbow_light"] = "Light Crossbow",
-        ["long_bow"] = "Long Bow",
-        ["bow"] = "Short Bow",
-    };
     private static readonly Dictionary<string, (string aimSpeed, string reloadSpeed, string damage, string missileSpeed)> BowStats = new()
     {
         // short bows
@@ -232,7 +223,7 @@ internal class ItemExporter : IDataExporter
             crpgItem.Weapons = mbItem.WeaponComponent.Weapons.Select(w => new CrpgItemWeaponComponent
             {
                 Class = MbToCrpgWeaponClass(w.WeaponClass),
-                ItemUsage = ItemUsageDictionary.TryGetValue(w.ItemUsage, out string itemUsage) ? itemUsage : string.Empty,
+                ItemUsage = w.ItemUsage,
                 Accuracy = w.Accuracy,
                 MissileSpeed = w.MissileSpeed,
                 StackAmount = w.MaxDataValue,
