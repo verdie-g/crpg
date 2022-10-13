@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using System.Xml;
-using System.Xml.Linq;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Common.Models;
@@ -9,7 +8,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Tableaus;
 using TaleWorlds.ObjectSystem;
