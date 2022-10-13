@@ -102,11 +102,6 @@ internal class ItemExporter : IDataExporter
         "saddle_of_aeneas",
         "celtic_frost",
 
-        // Disable crossbows you can walk with while reloading until we can balance them.
-        "crossbow_a",
-        "crossbow_e",
-        "crossbow_g",
-
         // Makes some play crash.
         "war_horse",
     };
@@ -359,6 +354,9 @@ internal class ItemExporter : IDataExporter
                         v => ((int)(int.Parse(v) * 0.67f)).ToString(CultureInfo.InvariantCulture));
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed",
                     v => ((int)(int.Parse(v) * 1.4f)).ToString(CultureInfo.InvariantCulture));
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "item_usage",
+                    v => "crossbow");
+
                 }
                 else if (type == ItemObject.ItemTypeEnum.Bolts)
                 {
