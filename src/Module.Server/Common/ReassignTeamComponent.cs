@@ -30,17 +30,17 @@ internal class ReassignTeamComponent : MissionBehavior
         base.OnBehaviorInitialize();
         _missionScoreboardComponent.OnPlayerSideChanged += OnPlayerChangeSide;
         Mission.Current.OnMissionReset += OnMissionReset;
-        _roundController.OnRoundEnding += OnRoundEnding;
+        _roundController.OnRoundStarted += OnRoundStarted;
     }
 
-    private void OnRoundEnding()
+    private void OnRoundStarted()
     {
         _isAutobalanceCheck = false;
     }
 
     private void OnMissionReset(object sender, PropertyChangedEventArgs e)
     {
-        _isAutobalanceCheck = true && MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.GetIntValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions) != 0;
+        _isAutobalanceCheck = MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.GetIntValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions) != 0;
     }
 
     private void OnPlayerChangeSide(Team previousTeam, Team newTeam, MissionPeer peer)
