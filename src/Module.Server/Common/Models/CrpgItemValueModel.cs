@@ -1,10 +1,35 @@
-﻿using TaleWorlds.Core;
+﻿using System.Collections.ObjectModel;
+using Crpg.Module.Helpers;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
 
 namespace Crpg.Module.Common.Models;
 
 internal class CrpgItemValueModel : ItemValueModel
 {
+    private static readonly float[] ItemPriceCoeffs = new float[] { 300f, 700f, 0f };
+    private static readonly float[] ArmorPriceCoeffs = new float[] { 1f, 4f, 0f, 0f, 0f };
+    private static readonly Dictionary<ItemObject.ItemTypeEnum, (int desiredMaxPrice, float[] priceCoeffs)> PricesAndCoeffs = new()
+    {
+        [ItemObject.ItemTypeEnum.HeadArmor] = (9754, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Cape] = (11441, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.BodyArmor] = (31632, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.HandArmor] = (6000, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.LegArmor] = (4662, ArmorPriceCoeffs),
+        [ItemObject.ItemTypeEnum.HorseHarness] = (26000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Horse] = (18000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Shield] = (9235, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Bow] = (12264, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Crossbow] = (18000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.OneHandedWeapon] = (7500, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.TwoHandedWeapon] = (14000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Polearm] = (20000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Thrown] = (7385, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Arrows] = (4500, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Bolts] = (8200, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Banner] = (50, ItemPriceCoeffs),
+    };
+
     public override float CalculateTier(ItemObject item)
     {
         return item.ItemComponent switch
@@ -24,65 +49,22 @@ internal class CrpgItemValueModel : ItemValueModel
 
     public override int CalculateValue(ItemObject item)
     {
-        int desiredHeadArmorMaxPrice = 9754;
-        int desiredCapeArmorMaxPrice = 11441;
-        int desiredBodyArmorMaxPrice = 31632;
-        int desiredHandArmorMaxPrice = 6000;
-        int desiredLegArmorMaxPrice = 4662;
-        int desiredHorseHarnessMaxPrice = 26000;
-        int desiredHorseMaxPrice = 18000;
-        int desiredShieldMaxPrice = 9235;
-        int desiredBowMaxPrice = 12264;
-        int desiredCrossbowMaxPrice = 18000;
-        int desiredOneHandedWeaponMaxPrice = 7500;
-        int desiredTwoHandedWeaponMaxPrice = 14000;
-        int desiredPolearmMaxPrice = 20000;
-        int desiredThrownMaxPrice = 7385;
-        int desiredArrowsMaxPrice = 4500;
-        int desiredBoltsMaxPrice = 8200;
-        int desiredBannerMaxPrice = 50;
-
-        return item.ItemType switch
-        {
-            ItemObject.ItemTypeEnum.HeadArmor => GetEquipmentValueFromTier(item.Tierf, desiredHeadArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Cape => GetEquipmentValueFromTier(item.Tierf, desiredCapeArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.BodyArmor => GetEquipmentValueFromTier(item.Tierf, desiredBodyArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.HandArmor => GetEquipmentValueFromTier(item.Tierf, desiredHandArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.LegArmor => GetEquipmentValueFromTier(item.Tierf, desiredLegArmorMaxPrice, 50),
-            ItemObject.ItemTypeEnum.HorseHarness => GetEquipmentValueFromTier(item.Tierf, desiredHorseHarnessMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Shield => GetEquipmentValueFromTier(item.Tierf, desiredShieldMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Bow => GetEquipmentValueFromTier(item.Tierf, desiredBowMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Crossbow =>GetEquipmentValueFromTier(item.Tierf, desiredCrossbowMaxPrice, 50),
-            ItemObject.ItemTypeEnum.OneHandedWeapon => GetEquipmentValueFromTier(item.Tierf, desiredOneHandedWeaponMaxPrice, 50),
-            ItemObject.ItemTypeEnum.TwoHandedWeapon => GetEquipmentValueFromTier(item.Tierf, desiredTwoHandedWeaponMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Polearm => GetEquipmentValueFromTier(item.Tierf, desiredPolearmMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Thrown => GetEquipmentValueFromTier(item.Tierf, desiredThrownMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Arrows => GetEquipmentValueFromTier(item.Tierf, desiredArrowsMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Bolts => GetEquipmentValueFromTier(item.Tierf, desiredBoltsMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Banner => GetEquipmentValueFromTier(item.Tierf, desiredBannerMaxPrice, 50),
-            ItemObject.ItemTypeEnum.Horse => GetEquipmentValueFromTier(item.Tierf, desiredHorseMaxPrice, 50),
-            _ => throw new ArgumentOutOfRangeException(),
-        };
+        return GetEquipmentValueFromTier(item.Tierf, PricesAndCoeffs[item.ItemType].desiredMaxPrice, PricesAndCoeffs[item.ItemType].priceCoeffs, 50);
     }
 
-    private int GetEquipmentValueFromTier(float tier, int desiredMaxPrice, int desiredTierZeroPrice)
+    private int GetEquipmentValueFromTier(float tier, int desiredMaxPrice, float[] priceCoeffs, int desiredTierZeroPrice)
     {
         // this method takes a value between 0 and 10 and outputs a value between 0 and 10
         // It uses a degree 2 polynomial.
-        // b is responsible for the linear part.
-        // a is responsible for the quadratic part. a Linear fonction is not enough because it doesn't reflect how the best items are more
-        // than just linearly better.
-        static float GetAdjustedTier(float tier)
+
+        static float GetPriceTier(float tier, float[] coeffs)
         {
-            const float a = 300;
-            const float b = 700;
-            const float c = 0;
-            float tierPolynome = (float)(a * Math.Pow(tier, 2) + b * tier + c);
-            float tierPolynomeScaler = 10 / ((float)(a * Math.Pow(10, 2) + b * 10 + c)); // this part will make sure that GetAdjustedTier(10)=10
+            float tierPolynome = MathHelper.ApplyPolynomialFunction(tier, coeffs);
+            float tierPolynomeScaler = 10 / MathHelper.ApplyPolynomialFunction(10f, coeffs); // this part will make sure that GetAdjustedTier(10)=10
             return tierPolynome * tierPolynomeScaler;
         }
 
-        return (int)(GetAdjustedTier(tier) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredTierZeroPrice);
+        return (int)(GetPriceTier(tier, priceCoeffs) * (desiredMaxPrice - desiredTierZeroPrice) / 10 + desiredTierZeroPrice);
     }
 
     private float CalculateArmorTier(ArmorComponent armorComponent)
@@ -94,11 +76,11 @@ internal class CrpgItemValueModel : ItemValueModel
             + 0.8f * armorComponent.LegArmor;
         float bestArmorPower = armorComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.HeadArmor => 50.7206461f,
-            ItemObject.ItemTypeEnum.Cape => 26.6184727f,
-            ItemObject.ItemTypeEnum.BodyArmor => 48.2288f,
-            ItemObject.ItemTypeEnum.HandArmor => 23.0526978f,
-            ItemObject.ItemTypeEnum.LegArmor => 17.1818002f,
+            ItemObject.ItemTypeEnum.HeadArmor => 42.97396516366097f,
+            ItemObject.ItemTypeEnum.Cape => 22.78413760635767f,
+            ItemObject.ItemTypeEnum.BodyArmor => 46.60400548816f,
+            ItemObject.ItemTypeEnum.HandArmor => 17.7773674822320f,
+            ItemObject.ItemTypeEnum.LegArmor => 14.261151471078207f,
             ItemObject.ItemTypeEnum.HorseHarness => 20f,
             _ => throw new ArgumentOutOfRangeException(),
         };
@@ -106,7 +88,7 @@ internal class CrpgItemValueModel : ItemValueModel
         return armorComponent.Item.ItemType switch
         {
             ItemObject.ItemTypeEnum.HorseHarness => 10 * armorPower / bestArmorPower,
-            _ => 10 * armorPower / (bestArmorPower * (float)Math.Pow(armorComponent.Item.Weight, 0.2f)),
+            _ => 10 * armorPower / (bestArmorPower * (float)Math.Pow(armorComponent.Item.Weight + 4, 0.2f)),
         };
     }
 

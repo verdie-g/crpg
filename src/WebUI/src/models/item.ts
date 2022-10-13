@@ -12,6 +12,7 @@ export default interface Item {
   culture: Culture;
   weight: number;
   requirement: number;
+  tierf: number;
 
   armor: ItemArmorComponent | null;
   mount: ItemMountComponent | null;

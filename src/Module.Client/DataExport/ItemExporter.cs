@@ -168,6 +168,7 @@ internal class ItemExporter : IDataExporter
             Type = MbToCrpgItemType(mbItem.Type),
             Price = mbItem.Value,
             Weight = mbItem.Weight,
+            Tier = mbItem.Tierf,
             Requirement = CrpgItemRequirementModel.ComputeItemRequirement(mbItem),
         };
 
