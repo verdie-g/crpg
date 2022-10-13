@@ -14,7 +14,7 @@ namespace Crpg.Module.Common.Models;
 internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 {
     // Hack to workaround not being able to spawn custom character. In the client this property is set so the
-    // StatCalculateModel has access to the cRPG user.
+    // StatCalculateModel has access to the cRPG user.a
     public static CrpgUser? MyUser { get; set; }
 
     private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new()
@@ -78,18 +78,10 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int weaponSkill)
     {
         float inaccuracy = 0.0f;
-
-        const float accuracyPointA = 45; // Abscissa of the lowest accuracy (point A) that corresponds to stones at the moment. It's our lower calibration bound.
-        const float valueAtAccuracyPointA = 100; // Inaccuracy at point A abscissa which corresponds to equipping stones.
-        const float parabolOffset = 20; // Inaccuracy for the most accurate weapon.
-        const float parabolMinAbscissa = 140; // Set at 100 so the weapon component is strictly monotonous.
-
-        const float a = valueAtAccuracyPointA - parabolOffset; // Parameter for the polynomial, do not change.
-
-        float skillComponentMultiplier = 0.2f;
+        float skillComponentMultiplier = 1f;
         float weaponClassMultiplier = weapon.WeaponClass switch
         {
-            WeaponClass.Bow => 2f,
+            WeaponClass.Bow => 1.4f,
             WeaponClass.Crossbow => 0.5f,
             WeaponClass.Stone => 1f,
             WeaponClass.ThrowingAxe => 1f,
@@ -100,13 +92,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
         if (weapon.IsRangedWeapon)
         {
-            float weaponComponent = (parabolMinAbscissa - weapon.Accuracy)
-                * (parabolMinAbscissa - weapon.Accuracy)
-                * a
-                / ((parabolMinAbscissa - accuracyPointA) * (100 - accuracyPointA))
-                + parabolOffset;
-            float skillComponent = skillComponentMultiplier * (float)Math.Pow(10.0, (200.0 - weaponSkill) / 200.0);
-            inaccuracy = (weaponComponent * skillComponent + (100 - weapon.Accuracy)) * 0.001f;
+            float weaponComponent = 0.1f / ((float)Math.Pow(weapon.Accuracy / 100f, 5f));
+            float skillComponent = skillComponentMultiplier * 1000000f / (1000000f + 0.01f * (float)Math.Pow(weaponSkill, 4));
+            inaccuracy = weaponComponent * skillComponent;
             inaccuracy *= weaponClassMultiplier;
         }
         else if (weapon.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
@@ -326,7 +314,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.HandlingMultiplier = 1f;
         props.ShieldBashStunDurationMultiplier = 1f;
         props.KickStunDurationMultiplier = 1f;
-        props.ReloadSpeed = equippedItem == null ? props.SwingSpeedMultiplier : equippedItem.SwingSpeed / 100f + 0.001f * itemSkill;
+        props.ReloadSpeed = equippedItem == null ? props.SwingSpeedMultiplier : (equippedItem.SwingSpeed - 30f) / 100f + 0.003f * itemSkill;
         props.MissileSpeedMultiplier = 1f;
         props.ReloadMovementPenaltyFactor = 1f;
         SetAllWeaponInaccuracy(agent, props, (int)wieldedItemIndex3, equippedItem);
@@ -344,7 +332,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
             if (equippedItem.IsRangedWeapon)
             {
-                props.ThrustOrRangedReadySpeedMultiplier = 0.90f + 0.001f * itemSkill;
+                props.ThrustOrRangedReadySpeedMultiplier = 0.70f + 0.003f * itemSkill;
+                InformationManager.DisplayMessage(new InformationMessage(props.WeaponInaccuracy.ToString()));
                 if (!agent.HasMount)
                 {
                     float num5 = Math.Max(0.0f, 1.0f - weaponSkill / 500.0f);
@@ -393,7 +382,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponBestAccuracyWaitTime = 0.3f + (95.75f - equippedItem.ThrustSpeed) * 0.005f;
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 60.0f) / 75.0f, 0.0f, 1f);
 
-                    props.WeaponUnsteadyBeginTime = 0.06f + weaponSkill * 0.001f * MBMath.Lerp(1f, 2f, amount) + powerDraw * powerDraw / 10f * 0.4f;
+                    props.WeaponUnsteadyBeginTime = 0.06f + weaponSkill * 0.005f * MBMath.Lerp(1f, 2f, amount) + powerDraw * powerDraw / 10f * 0.4f;
                     if (agent.IsAIControlled)
                     {
                         props.WeaponUnsteadyBeginTime *= 4f;
