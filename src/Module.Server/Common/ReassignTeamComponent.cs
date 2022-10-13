@@ -36,13 +36,11 @@ internal class ReassignTeamComponent : MissionBehavior
     private void OnRoundEnding()
     {
         _isAutobalanceCheck = false;
-        Console.WriteLine("Round ending");
     }
 
     private void OnMissionReset(object sender, PropertyChangedEventArgs e)
     {
         _isAutobalanceCheck = true && MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.GetIntValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions) != 0;
-        Console.WriteLine("Autobalance check.. _isAutobalanceCheck " + _isAutobalanceCheck);
     }
 
     private void OnPlayerChangeSide(Team previousTeam, Team newTeam, MissionPeer peer)
@@ -81,12 +79,6 @@ internal class ReassignTeamComponent : MissionBehavior
         if (isTeamBalance)
         {
             _playerTeamList[playerId] = newTeam;
-            return;
-        }
-
-        // If he rejoined his old team or his newTeam is his oldTeam
-        if (newTeam == previousTeam || _playerTeamList[playerId] == newTeam)
-        {
             return;
         }
 
