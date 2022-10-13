@@ -15,7 +15,7 @@ namespace Crpg.Module.Battle;
 internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 {
     private const float TotalSpawnDuration = 30f;
-    private const float CavalrySpawnDelay = 6f;
+    private const float CavalrySpawnDelay = 10f;
     private readonly CrpgConstants _constants;
     private readonly MultiplayerRoundController? _roundController;
     private readonly HashSet<PlayerId> _notifiedPlayersAboutDelayedSpawn;
