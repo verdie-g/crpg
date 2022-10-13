@@ -6267,7 +6267,7 @@
     "type": "Bow",
     "price": 4677,
     "weight": 0.3,
-    "tier": 2.64168024,
+    "tier": 5.767609,
     "requirement": 0,
     "weapons": [
       {
@@ -6305,7 +6305,7 @@
     "type": "Bow",
     "price": 7807,
     "weight": 0.3,
-    "tier": 3.43385,
+    "tier": 7.760288,
     "requirement": 0,
     "weapons": [
       {
@@ -6341,13 +6341,14 @@
     "name": "Simple Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 1688,
+    "price": 1736,
     "weight": 1.0,
-    "tier": 2.38533115,
+    "tier": 2.43214417,
     "requirement": 4,
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "crossbow",
         "accuracy": 80,
         "missileSpeed": 84,
         "stackAmount": 1,
@@ -6378,7 +6379,8 @@
     "type": "Crossbow",
     "price": 4444,
     "weight": 2.7,
-    "requirement": 9,
+    "tier": 4.45097446,
+    "requirement": 8,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6415,7 +6417,8 @@
     "type": "Crossbow",
     "price": 6512,
     "weight": 3.0,
-    "requirement": 11,
+    "tier": 5.598078,
+    "requirement": 10,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6451,7 +6454,8 @@
     "type": "Crossbow",
     "price": 10887,
     "weight": 2.2,
-    "requirement": 14,
+    "tier": 7.54119253,
+    "requirement": 13,
     "weapons": [
       {
         "class": "Crossbow",
@@ -6485,13 +6489,14 @@
     "name": "Light Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 3665,
+    "price": 4315,
     "weight": 2.2,
-    "tier": 3.95219135,
+    "tier": 4.3712306,
     "requirement": 7,
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "crossbow",
         "accuracy": 85,
         "missileSpeed": 91,
         "stackAmount": 1,
@@ -6558,13 +6563,14 @@
     "name": "Fine Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 6907,
+    "price": 9467,
     "weight": 2.2,
-    "tier": 5.795764,
-    "requirement": 10,
+    "tier": 6.961578,
+    "requirement": 12,
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "crossbow",
         "accuracy": 90,
         "missileSpeed": 98,
         "stackAmount": 1,
@@ -10423,7 +10429,7 @@
     "type": "Bow",
     "price": 3617,
     "weight": 0.4,
-    "tier": 2.75529766,
+    "tier": 4.947286,
     "requirement": 0,
     "weapons": [
       {
@@ -11186,7 +11192,7 @@
     "type": "Bow",
     "price": 2394,
     "weight": 0.4,
-    "tier": 2.05154777,
+    "tier": 3.83657074,
     "requirement": 0,
     "weapons": [
       {
@@ -11755,7 +11761,7 @@
     "type": "Bow",
     "price": 2190,
     "weight": 0.3,
-    "tier": 1.40090775,
+    "tier": 3.626508,
     "requirement": 0,
     "weapons": [
       {
@@ -15036,7 +15042,7 @@
     "type": "Bow",
     "price": 4433,
     "weight": 0.5,
-    "tier": 3.43670774,
+    "tier": 5.58759165,
     "requirement": 0,
     "weapons": [
       {
@@ -15130,7 +15136,7 @@
     "type": "Bow",
     "price": 5709,
     "weight": 0.5,
-    "tier": 4.12753248,
+    "tier": 6.482747,
     "requirement": 0,
     "weapons": [
       {
@@ -15494,7 +15500,7 @@
     "type": "Bow",
     "price": 1858,
     "weight": 0.3,
-    "tier": 1.3985517,
+    "tier": 3.26297951,
     "requirement": 0,
     "weapons": [
       {
@@ -15906,7 +15912,7 @@
     "type": "Bow",
     "price": 10098,
     "weight": 0.8,
-    "tier": 7.91437531,
+    "tier": 8.973666,
     "requirement": 0,
     "weapons": [
       {
@@ -16088,7 +16094,7 @@
     "type": "Bow",
     "price": 12263,
     "weight": 0.8,
-    "tier": 10.0,
+    "tier": 9.999999,
     "requirement": 0,
     "weapons": [
       {
@@ -16162,7 +16168,7 @@
     "type": "Bow",
     "price": 6188,
     "weight": 0.5,
-    "tier": 4.466677,
+    "tier": 6.79264355,
     "requirement": 0,
     "weapons": [
       {
@@ -16380,7 +16386,7 @@
     "type": "Bow",
     "price": 3663,
     "weight": 0.3,
-    "tier": 2.19370532,
+    "tier": 4.98538065,
     "requirement": 0,
     "weapons": [
       {
@@ -21278,7 +21284,7 @@
     "type": "Bow",
     "price": 1241,
     "weight": 0.3,
-    "tier": 1.38480544,
+    "tier": 2.49320269,
     "requirement": 0,
     "weapons": [
       {
@@ -21421,7 +21427,7 @@
     "type": "Bow",
     "price": 4863,
     "weight": 0.3,
-    "tier": 3.16623425,
+    "tier": 5.90214348,
     "requirement": 0,
     "weapons": [
       {
@@ -21549,7 +21555,7 @@
     "type": "Bow",
     "price": 6743,
     "weight": 0.3,
-    "tier": 4.177309,
+    "tier": 7.137197,
     "requirement": 0,
     "weapons": [
       {
@@ -23772,7 +23778,7 @@
     "type": "Bow",
     "price": 629,
     "weight": 0.3,
-    "tier": 0.951793134,
+    "tier": 1.51823473,
     "requirement": 0,
     "weapons": [
       {
@@ -23810,7 +23816,7 @@
     "type": "Bow",
     "price": 550,
     "weight": 0.5,
-    "tier": 0.8840525,
+    "tier": 1.36627126,
     "requirement": 0,
     "weapons": [
       {
@@ -23927,7 +23933,7 @@
     "type": "Bow",
     "price": 5212,
     "weight": 0.5,
-    "tier": 4.37424564,
+    "tier": 6.147076,
     "requirement": 0,
     "weapons": [
       {
@@ -26840,7 +26846,7 @@
     "type": "Bow",
     "price": 8579,
     "weight": 0.1,
-    "tier": 5.577162,
+    "tier": 8.186812,
     "requirement": 0,
     "weapons": [
       {
@@ -26878,7 +26884,7 @@
     "type": "Bow",
     "price": 8824,
     "weight": 0.5,
-    "tier": 4.55727434,
+    "tier": 8.31837749,
     "requirement": 0,
     "weapons": [
       {
