@@ -384,11 +384,13 @@ internal class ItemExporter : IDataExporter
                 }
                 else if (type == ItemObject.ItemTypeEnum.Bow)
                 {
-                    SetChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
-                        BowStats[node1.Attributes["id"].Value].damage);
-                    InformationManager.DisplayMessage(new InformationMessage(BowStats[node1.Attributes["id"].Value].damage.ToString()));
+                    if (BowStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue))
+                    {
+                    SetChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", newvalue.damage);
+                    InformationManager.DisplayMessage(new InformationMessage(newvalue.damage.ToString()));
+                    }
 
-    }
+                }
                 else if (type == ItemObject.ItemTypeEnum.Crossbow)
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
