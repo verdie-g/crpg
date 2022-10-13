@@ -204,7 +204,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ['Type', itemTypeToStr[baseItem.type]],
       ['Culture', baseItem.culture],
       ['Weight', baseItem.weight],
-      ['Tier', baseItem.tierf.toFixed(1)],
+      ['Tier', baseItem.tier.toFixed(1)],
       ['Max Repair Cost', computeMaxRepairCost([baseItem])],
       ['Average Repair Cost', computeAverageRepairCost([baseItem])],
     ],
