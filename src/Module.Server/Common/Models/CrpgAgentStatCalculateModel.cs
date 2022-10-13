@@ -314,7 +314,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.HandlingMultiplier = 1f;
         props.ShieldBashStunDurationMultiplier = 1f;
         props.KickStunDurationMultiplier = 1f;
-        props.ReloadSpeed = equippedItem == null ? props.SwingSpeedMultiplier : (equippedItem.SwingSpeed - 30f) / 100f + 0.003f * itemSkill;
+        props.ReloadSpeed = equippedItem == null ? props.SwingSpeedMultiplier : (equippedItem.SwingSpeed / 100f) * (0.6f + 0.0001f * itemSkill + 0.0000125f * itemSkill * itemSkill);
         props.MissileSpeedMultiplier = 1f;
         props.ReloadMovementPenaltyFactor = 1f;
         SetAllWeaponInaccuracy(agent, props, (int)wieldedItemIndex3, equippedItem);
@@ -332,7 +332,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
             if (equippedItem.IsRangedWeapon)
             {
-                props.ThrustOrRangedReadySpeedMultiplier = 0.70f + 0.003f * itemSkill;
+                props.ThrustOrRangedReadySpeedMultiplier = 0.45f + 0.0035f * itemSkill;
                 InformationManager.DisplayMessage(new InformationMessage(props.WeaponInaccuracy.ToString()));
                 if (!agent.HasMount)
                 {
