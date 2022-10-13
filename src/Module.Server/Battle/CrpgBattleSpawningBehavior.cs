@@ -232,7 +232,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             var character = peerClass.HeroCharacter;
 
             // Used to reset the selected perks for the current troop. Otherwise the player might have addional stats.
-            missionPeer.GetType().GetMethod("ResetSelectedPerks", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(missionPeer, null);
+            missionPeer.SelectedTroopIndex = -1;
             MatrixFrame spawnFrame = missionPeer.GetAmountOfAgentVisualsForPeer() > 0
                 ? missionPeer.GetAgentVisualForPeer(0).GetFrame()
                 : SpawnComponent.GetSpawnFrame(missionPeer.Team, hasMount, true);
