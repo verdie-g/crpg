@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Xml;
+using System.Xml.Linq;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Common.Models;
@@ -382,15 +383,10 @@ internal class ItemExporter : IDataExporter
                 }
                 else if (type == ItemObject.ItemTypeEnum.Bow)
                 {
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
-                        v => BowStats[node1.Attributes["id"].Value].damage);
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed",
-                        v => BowStats[node1.Attributes["id"].Value].aimSpeed);
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "speed_rating",
-                        v => BowStats[node1.Attributes["id"].Value].reloadSpeed);
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed",
-                        v => BowStats[node1.Attributes["id"].Value].missileSpeed);
-                }
+                    SetChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
+                        BowStats[node1.Attributes["id"].Value].damage);
+
+    }
                 else if (type == ItemObject.ItemTypeEnum.Crossbow)
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
@@ -495,6 +491,31 @@ internal class ItemExporter : IDataExporter
             attr.Value = modify(attr.Value);
         }
     }
+    private static void SetChildNodesAttribute(XmlNode parentNode,
+    string childXPath,
+    string attributeName,
+    string newvalue,
+    string? defaultValue = null)
+    {
+        foreach (var childNode in parentNode.SelectNodes(childXPath)!.Cast<XmlNode>())
+        {
+            var attr = childNode.Attributes![attributeName];
+            if (attr == null)
+            {
+                if (defaultValue == null)
+                {
+                    throw new KeyNotFoundException($"Attribute '{attributeName}' was not found and no default was provided");
+                }
+
+                attr = childNode.OwnerDocument!.CreateAttribute(attributeName);
+                attr.Value = defaultValue;
+                childNode.Attributes.Append(attr);
+            }
+
+            attr.Value = newvalue;
+        }
+    }
+
 
     private static void RegisterMbObjects<T>(XmlDocument doc, Game game) where T : MBObjectBase, new()
     {
