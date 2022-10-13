@@ -333,7 +333,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             if (equippedItem.IsRangedWeapon)
             {
                 props.ThrustOrRangedReadySpeedMultiplier = 0.45f + 0.0035f * itemSkill;
-                InformationManager.DisplayMessage(new InformationMessage(props.WeaponInaccuracy.ToString()));
                 if (!agent.HasMount)
                 {
                     float num5 = Math.Max(0.0f, 1.0f - weaponSkill / 500.0f);
