@@ -6236,6 +6236,41 @@
     ]
   },
   {
+    "id": "crpg_crossbow_a",
+    "name": "Simple Crossbow",
+    "culture": "Empire",
+    "type": "Crossbow",
+    "price": 1688,
+    "weight": 1.0,
+    "tier": 2.38533115,
+    "requirement": 4,
+    "weapons": [
+      {
+        "class": "Crossbow",
+        "accuracy": 80,
+        "missileSpeed": 84,
+        "stackAmount": 1,
+        "length": 95,
+        "balance": 0.0,
+        "handling": 80,
+        "bodyArmor": 0,
+        "flags": [
+          "RangedWeapon",
+          "NotUsableWithOneHand",
+          "HasString",
+          "StringHeldByHand",
+          "TwoHandIdleOnMount"
+        ],
+        "thrustDamage": 44,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 80,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 70
+      }
+    ]
+  },
+  {
     "id": "crpg_crossbow_b",
     "name": "Heavy Crossbow",
     "culture": "Empire",
@@ -6345,6 +6380,41 @@
     ]
   },
   {
+    "id": "crpg_crossbow_e",
+    "name": "Light Crossbow",
+    "culture": "Vlandia",
+    "type": "Crossbow",
+    "price": 3665,
+    "weight": 2.2,
+    "tier": 3.95219135,
+    "requirement": 7,
+    "weapons": [
+      {
+        "class": "Crossbow",
+        "accuracy": 85,
+        "missileSpeed": 91,
+        "stackAmount": 1,
+        "length": 95,
+        "balance": 0.0,
+        "handling": 82,
+        "bodyArmor": 0,
+        "flags": [
+          "RangedWeapon",
+          "NotUsableWithOneHand",
+          "HasString",
+          "StringHeldByHand",
+          "TwoHandIdleOnMount"
+        ],
+        "thrustDamage": 51,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 82,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 75
+      }
+    ]
+  },
+  {
     "id": "crpg_crossbow_f",
     "name": "Bound Crossbow",
     "culture": "Vlandia",
@@ -6378,6 +6448,41 @@
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 63
+      }
+    ]
+  },
+  {
+    "id": "crpg_crossbow_g",
+    "name": "Fine Crossbow",
+    "culture": "Vlandia",
+    "type": "Crossbow",
+    "price": 6907,
+    "weight": 2.2,
+    "tier": 5.795764,
+    "requirement": 10,
+    "weapons": [
+      {
+        "class": "Crossbow",
+        "accuracy": 90,
+        "missileSpeed": 98,
+        "stackAmount": 1,
+        "length": 95,
+        "balance": 0.0,
+        "handling": 85,
+        "bodyArmor": 0,
+        "flags": [
+          "RangedWeapon",
+          "NotUsableWithOneHand",
+          "HasString",
+          "StringHeldByHand",
+          "TwoHandIdleOnMount"
+        ],
+        "thrustDamage": 56,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 85,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 80
       }
     ]
   },

@@ -103,9 +103,6 @@ internal class ItemExporter : IDataExporter
         "celtic_frost",
 
         // Disable crossbows you can walk with while reloading until we can balance them.
-        "crossbow_a",
-        "crossbow_e",
-        "crossbow_g",
 
         // Makes some play crash.
         "war_horse",
