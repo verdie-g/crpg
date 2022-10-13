@@ -373,7 +373,8 @@ internal class ItemExporter : IDataExporter
                 }
                 else if (type == ItemObject.ItemTypeEnum.Bow)
                 {
-                    if (BowStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue))
+                    // needed because at this point there are still bows in the xml node that are going to get removed later.
+                    if (BowStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue)) 
                     {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", v => newvalue.damage.ToString());
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "speed_rating", v => newvalue.reloadSpeed.ToString());
