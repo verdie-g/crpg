@@ -256,10 +256,8 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             scaler = 2.344371f;
             return
-                weapon.ThrustDamage / 100f
-                * weapon.ThrustDamage / 100f
-                * weapon.SwingSpeed / 100f
-                * weapon.SwingSpeed / 100f
+                 weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
+                * weapon.SwingSpeed / 100f * weapon.SwingSpeed / 100f
                 * weapon.MissileSpeed / 10f
                 * weapon.Accuracy / 10f
                 * (float)Math.Pow(weapon.ThrustSpeed, 0.5f) / 10f
@@ -267,10 +265,8 @@ internal class CrpgItemValueModel : ItemValueModel
         }
 
         return
-              weapon.ThrustDamage / 100f
-            * weapon.ThrustDamage / 100f
-            * weapon.SwingSpeed / 100f
-            * weapon.SwingSpeed / 100f
+              weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
+            * weapon.SwingSpeed / 100f * weapon.SwingSpeed / 100f
             * weapon.MissileSpeed / 10f
             * weapon.Accuracy / 10f
             * weapon.ThrustSpeed / 10f
