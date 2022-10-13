@@ -144,6 +144,12 @@ const itemTypeByWeaponClass: Record<WeaponClass, ItemType> = {
   [WeaponClass.LargeShield]: ItemType.Shield,
   [WeaponClass.Banner]: ItemType.Banner,
 };
+const itemUsageStr = new Map<string, string>([
+  ['long_bow', 'Long Bow'],
+  ['bow', 'Bow'],
+  ['crossbow', 'Heavy Crossbow'],
+  ['crossbow_light', 'Regular Crossbow'],
+]);
 
 function getDamageFieldValue(damage: number, damageType: DamageType): string {
   return `${damage}${damageTypeToStr[damageType]}`;
@@ -270,6 +276,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ['Length', baseItem.weapons[0].length]
     );
   } else if (baseItem.type === ItemType.Bow || baseItem.type === ItemType.Crossbow) {
+    props.fields.push(['Class', itemUsageStr.get(baseItem.weapons[0].itemUsage)]);
     baseItem.weapons.forEach(weapon => {
       const weaponFields: [string, any][] = [
         [
@@ -282,6 +289,8 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
         ['Accuracy', baseItem.weapons[0].accuracy],
         ['Missile Speed', baseItem.weapons[0].missileSpeed],
         ['Length', baseItem.weapons[0].length],
+        ['Reload Speed', baseItem.weapons[0].swingSpeed],
+        ['Aim Speed', baseItem.weapons[0].thrustSpeed],
       ];
 
       props.modes.push({

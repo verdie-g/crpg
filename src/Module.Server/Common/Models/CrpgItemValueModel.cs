@@ -250,19 +250,27 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateRangedWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        float scaler = 0.27364886f;
+        float scaler = 2.25911027452941f;
 
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
-            scaler = 3.8178947156399532384f;
+            scaler = 2.344371f;
+            return
+                 weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
+                * weapon.SwingSpeed / 100f * weapon.SwingSpeed / 100f
+                * weapon.MissileSpeed / 10f
+                * weapon.Accuracy / 10f
+                * (float)Math.Pow(weapon.ThrustSpeed, 0.5f) / 10f
+                / scaler;
         }
 
         return
-              weapon.ThrustDamage / 100f
-            * weapon.ThrustDamage / 100f
-            * weapon.SwingSpeed / 100f
+              weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
+            * weapon.SwingSpeed / 100f * weapon.SwingSpeed / 100f
             * weapon.MissileSpeed / 10f
             * weapon.Accuracy / 10f
+            * weapon.ThrustSpeed / 10f
+            * (weapon.ItemUsage == "long_bow" ? 0.9f : 1f)
             / scaler;
     }
 

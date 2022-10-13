@@ -263,6 +263,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 100,
@@ -313,6 +314,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -416,6 +418,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "arrow_top",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 30,
@@ -447,6 +450,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -481,6 +485,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -515,6 +520,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_widegrip_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -603,6 +609,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -635,6 +642,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1135,6 +1143,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1155,6 +1164,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1177,6 +1187,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_couch",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1227,6 +1238,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1258,6 +1270,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1289,6 +1302,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1320,6 +1334,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1351,6 +1366,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1382,6 +1398,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1413,6 +1430,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1444,6 +1462,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1619,6 +1638,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1650,6 +1670,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1681,6 +1702,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1712,6 +1734,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1743,6 +1766,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1774,6 +1798,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1805,6 +1830,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1908,6 +1934,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_widegrip_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -1960,6 +1987,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2172,6 +2200,7 @@
     "weapons": [
       {
         "class": "Banner",
+        "itemUsage": "banner",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2201,6 +2230,7 @@
     "weapons": [
       {
         "class": "Banner",
+        "itemUsage": "banner",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2230,6 +2260,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 20,
@@ -2279,6 +2310,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2310,6 +2342,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_widegrip_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2344,6 +2377,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2376,6 +2410,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2395,6 +2430,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2415,6 +2451,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2446,6 +2483,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2478,6 +2516,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2498,6 +2537,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2519,6 +2559,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2551,6 +2592,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2570,6 +2612,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2590,6 +2633,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2621,6 +2665,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2640,6 +2685,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2660,6 +2706,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2691,6 +2738,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2723,6 +2771,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -2755,6 +2804,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3345,6 +3395,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "hand_shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 215,
@@ -3377,6 +3428,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "hand_shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 240,
@@ -3409,6 +3461,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "hand_shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 195,
@@ -3549,6 +3602,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3580,6 +3634,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3611,6 +3666,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3696,6 +3752,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3728,6 +3785,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3759,6 +3817,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3791,6 +3850,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3898,6 +3958,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3929,6 +3990,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3960,6 +4022,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -3991,6 +4054,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -4022,6 +4086,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -4053,6 +4118,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 165,
@@ -4463,6 +4529,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 85,
@@ -4495,6 +4562,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -4527,6 +4595,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_widegrip_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -4633,6 +4702,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -4668,6 +4738,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_widegrip_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -4702,6 +4773,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 30,
@@ -4733,6 +4805,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_swing_thrust",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -4768,6 +4841,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 32,
@@ -4799,6 +4873,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 24,
@@ -4830,6 +4905,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 21,
@@ -4861,6 +4937,7 @@
     "weapons": [
       {
         "class": "Bolt",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 10,
@@ -4893,6 +4970,7 @@
     "weapons": [
       {
         "class": "Bolt",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 9,
@@ -4925,6 +5003,7 @@
     "weapons": [
       {
         "class": "Bolt",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 9,
@@ -4957,6 +5036,7 @@
     "weapons": [
       {
         "class": "Bolt",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 9,
@@ -4989,6 +5069,7 @@
     "weapons": [
       {
         "class": "Bolt",
+        "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 9,
@@ -5039,6 +5120,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5070,6 +5152,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 120,
@@ -5102,6 +5185,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 122,
@@ -5134,6 +5218,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 112,
@@ -5166,6 +5251,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 185,
@@ -5378,6 +5464,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5409,6 +5496,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5440,6 +5528,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5615,6 +5704,7 @@
     "weapons": [
       {
         "class": "Banner",
+        "itemUsage": "banner",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5644,6 +5734,7 @@
     "weapons": [
       {
         "class": "Dagger",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5663,6 +5754,7 @@
       },
       {
         "class": "ThrowingKnife",
+        "itemUsage": "throwing_knife",
         "accuracy": 95,
         "missileSpeed": 32,
         "stackAmount": 1,
@@ -5698,6 +5790,7 @@
     "weapons": [
       {
         "class": "ThrowingKnife",
+        "itemUsage": "throwing_knife",
         "accuracy": 95,
         "missileSpeed": 32,
         "stackAmount": 2,
@@ -5721,6 +5814,7 @@
       },
       {
         "class": "Dagger",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5896,6 +5990,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 275,
@@ -5928,6 +6023,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5947,6 +6043,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5967,6 +6064,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -5998,6 +6096,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -6166,19 +6265,20 @@
     "name": "Simple Short Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 1351,
+    "price": 4677,
     "weight": 0.3,
-    "tier": 2.64168024,
+    "tier": 5.767609,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "bow",
         "accuracy": 93,
-        "missileSpeed": 73,
+        "missileSpeed": 83,
         "stackAmount": 1,
         "length": 110,
         "balance": 0.0,
-        "handling": 86,
+        "handling": 104,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -6189,12 +6289,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 11,
+        "thrustDamage": 13,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 86,
+        "thrustSpeed": 104,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 88
+        "swingSpeed": 98
       }
     ]
   },
@@ -6203,19 +6303,20 @@
     "name": "Steppe Recurve Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 2011,
+    "price": 7807,
     "weight": 0.3,
-    "tier": 3.43385,
+    "tier": 7.760288,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "bow",
         "accuracy": 94,
-        "missileSpeed": 78,
+        "missileSpeed": 88,
         "stackAmount": 1,
         "length": 108,
         "balance": 0.0,
-        "handling": 87,
+        "handling": 106,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -6226,12 +6327,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 12,
+        "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 87,
+        "thrustSpeed": 106,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 89
+        "swingSpeed": 101
       }
     ]
   },
@@ -6240,13 +6341,14 @@
     "name": "Simple Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 1688,
+    "price": 1736,
     "weight": 1.0,
-    "tier": 2.38533115,
+    "tier": 2.43214417,
     "requirement": 4,
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "crossbow",
         "accuracy": 80,
         "missileSpeed": 84,
         "stackAmount": 1,
@@ -6275,13 +6377,14 @@
     "name": "Heavy Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 5403,
+    "price": 4444,
     "weight": 2.7,
-    "tier": 5.009365,
-    "requirement": 9,
+    "tier": 4.45097446,
+    "requirement": 8,
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "crossbow",
         "accuracy": 96,
         "missileSpeed": 112,
         "stackAmount": 1,
@@ -6312,13 +6415,14 @@
     "name": "Arbalest",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 8377,
+    "price": 6512,
     "weight": 3.0,
-    "tier": 6.4869833,
-    "requirement": 11,
+    "tier": 5.598078,
+    "requirement": 10,
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "crossbow",
         "accuracy": 98,
         "missileSpeed": 121,
         "stackAmount": 1,
@@ -6348,13 +6452,14 @@
     "name": "Hickory Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 11518,
+    "price": 10887,
     "weight": 2.2,
-    "tier": 7.78676033,
-    "requirement": 14,
+    "tier": 7.54119253,
+    "requirement": 13,
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "crossbow",
         "accuracy": 99,
         "missileSpeed": 126,
         "stackAmount": 1,
@@ -6384,13 +6489,14 @@
     "name": "Light Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 3665,
+    "price": 4315,
     "weight": 2.2,
-    "tier": 3.95219135,
+    "tier": 4.3712306,
     "requirement": 7,
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "crossbow",
         "accuracy": 85,
         "missileSpeed": 91,
         "stackAmount": 1,
@@ -6426,6 +6532,7 @@
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "crossbow",
         "accuracy": 100,
         "missileSpeed": 135,
         "stackAmount": 1,
@@ -6456,13 +6563,14 @@
     "name": "Fine Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 6907,
+    "price": 9467,
     "weight": 2.2,
-    "tier": 5.795764,
-    "requirement": 10,
+    "tier": 6.961578,
+    "requirement": 12,
     "weapons": [
       {
         "class": "Crossbow",
+        "itemUsage": "crossbow",
         "accuracy": 90,
         "missileSpeed": 98,
         "stackAmount": 1,
@@ -6516,6 +6624,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 145,
@@ -6584,6 +6693,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -6723,6 +6833,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 150,
@@ -6755,6 +6866,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 27,
@@ -6930,6 +7042,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -6979,6 +7092,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 170,
@@ -7083,6 +7197,7 @@
     "weapons": [
       {
         "class": "ThrowingKnife",
+        "itemUsage": "throwing_knife",
         "accuracy": 95,
         "missileSpeed": 32,
         "stackAmount": 2,
@@ -7106,6 +7221,7 @@
       },
       {
         "class": "Dagger",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7173,6 +7289,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7192,6 +7309,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7212,6 +7330,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7243,6 +7362,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7263,6 +7383,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7315,6 +7436,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "throwing_javelin",
         "accuracy": 92,
         "missileSpeed": 29,
         "stackAmount": 3,
@@ -7338,6 +7460,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7370,6 +7493,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "throwing_javelin",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 3,
@@ -7393,6 +7517,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7425,6 +7550,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "throwing_javelin",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 3,
@@ -7448,6 +7574,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7588,6 +7715,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7608,6 +7736,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7642,6 +7771,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7662,6 +7792,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7696,6 +7827,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7716,6 +7848,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7738,6 +7871,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7772,6 +7906,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7794,6 +7929,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7830,6 +7966,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7850,6 +7987,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7884,6 +8022,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7969,6 +8108,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -7989,6 +8129,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8011,6 +8152,7 @@
       },
       {
         "class": "Javelin",
+        "itemUsage": "polearm_thrown",
         "accuracy": 92,
         "missileSpeed": 27,
         "stackAmount": 1,
@@ -8046,6 +8188,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8066,6 +8209,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8088,6 +8232,7 @@
       },
       {
         "class": "Javelin",
+        "itemUsage": "polearm_thrown",
         "accuracy": 92,
         "missileSpeed": 27,
         "stackAmount": 1,
@@ -8141,6 +8286,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 130,
@@ -8209,6 +8355,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 205,
@@ -8493,6 +8640,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8513,6 +8661,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8535,6 +8684,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_couch",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8567,6 +8717,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8589,6 +8740,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8623,6 +8775,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8645,6 +8798,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8733,6 +8887,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8764,6 +8919,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8795,6 +8951,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8826,6 +8983,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8857,6 +9015,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8888,6 +9047,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8919,6 +9079,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -8950,6 +9111,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9017,6 +9179,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9038,6 +9201,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9073,6 +9237,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9093,6 +9258,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9145,6 +9311,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9176,6 +9343,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9207,6 +9375,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9238,6 +9407,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9269,6 +9439,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9300,6 +9471,7 @@
     "weapons": [
       {
         "class": "ThrowingKnife",
+        "itemUsage": "throwing_knife",
         "accuracy": 95,
         "missileSpeed": 32,
         "stackAmount": 2,
@@ -9323,6 +9495,7 @@
       },
       {
         "class": "Dagger",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9498,6 +9671,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_widegrip_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9532,6 +9706,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9617,6 +9792,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_pike",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9639,6 +9815,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -9727,6 +9904,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 155,
@@ -9795,6 +9973,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 150,
@@ -9827,6 +10006,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 265,
@@ -10165,6 +10345,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "throwing_javelin",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 3,
@@ -10188,6 +10369,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10220,6 +10402,7 @@
     "weapons": [
       {
         "class": "Dagger",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -10244,19 +10427,20 @@
     "name": "Longbow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 1438,
+    "price": 3617,
     "weight": 0.4,
-    "tier": 2.75529766,
+    "tier": 4.947286,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "long_bow",
         "accuracy": 88,
-        "missileSpeed": 70,
+        "missileSpeed": 91,
         "stackAmount": 1,
         "length": 111,
         "balance": 0.0,
-        "handling": 45,
+        "handling": 89,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -10267,12 +10451,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 12,
+        "thrustDamage": 15,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 45,
+        "thrustSpeed": 89,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 85
+        "swingSpeed": 88
       }
     ]
   },
@@ -10666,6 +10850,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 117,
@@ -10698,6 +10883,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 255,
@@ -10838,6 +11024,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "hand_shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 250,
@@ -10870,6 +11057,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 36,
@@ -11002,19 +11190,20 @@
     "name": "Ranger Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 940,
+    "price": 2394,
     "weight": 0.4,
-    "tier": 2.05154777,
+    "tier": 3.83657074,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "long_bow",
         "accuracy": 83,
-        "missileSpeed": 65,
+        "missileSpeed": 92,
         "stackAmount": 1,
         "length": 113,
         "balance": 0.0,
-        "handling": 55,
+        "handling": 87,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -11025,9 +11214,9 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 11,
+        "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 55,
+        "thrustSpeed": 87,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 86
@@ -11046,6 +11235,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 220,
@@ -11078,6 +11268,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 200,
@@ -11110,6 +11301,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11130,6 +11322,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11152,6 +11345,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_couch",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11172,6 +11366,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11206,6 +11401,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11226,6 +11422,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11248,6 +11445,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11282,6 +11480,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11304,6 +11503,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11340,6 +11540,7 @@
     "weapons": [
       {
         "class": "ThrowingAxe",
+        "itemUsage": "throwing_axe",
         "accuracy": 93,
         "missileSpeed": 27,
         "stackAmount": 2,
@@ -11364,6 +11565,7 @@
       },
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11414,6 +11616,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_widegrip_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11448,6 +11651,7 @@
     "weapons": [
       {
         "class": "Dagger",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11479,6 +11683,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11510,6 +11715,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 105,
@@ -11553,19 +11759,20 @@
     "name": "Hunting Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 568,
+    "price": 2190,
     "weight": 0.3,
-    "tier": 1.40090775,
+    "tier": 3.626508,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "bow",
         "accuracy": 85,
-        "missileSpeed": 64,
+        "missileSpeed": 83,
         "stackAmount": 1,
         "length": 110,
         "balance": 0.0,
-        "handling": 75,
+        "handling": 102,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -11576,12 +11783,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 9,
+        "thrustDamage": 11,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 75,
+        "thrustSpeed": 102,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 87
+        "swingSpeed": 97
       }
     ]
   },
@@ -11597,6 +11804,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11935,6 +12143,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -11955,6 +12164,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12007,6 +12217,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12028,6 +12239,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12051,6 +12263,7 @@
       },
       {
         "class": "Javelin",
+        "itemUsage": "polearm_thrown",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 1,
@@ -12087,6 +12300,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12298,6 +12512,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 135,
@@ -12330,6 +12545,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 142,
@@ -12362,6 +12578,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12393,6 +12610,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12425,6 +12643,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12444,6 +12663,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12464,6 +12684,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12873,6 +13094,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12893,6 +13115,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12915,6 +13138,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12949,6 +13173,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12969,6 +13194,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -12991,6 +13217,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_couch",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13023,6 +13250,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13044,6 +13272,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13067,6 +13296,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_couch",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13118,6 +13348,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13149,6 +13380,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13180,6 +13412,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13211,6 +13444,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13296,6 +13530,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13327,6 +13562,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13358,6 +13594,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13389,6 +13626,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13409,6 +13647,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13443,6 +13682,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13463,6 +13703,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13515,6 +13756,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13546,6 +13788,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13577,6 +13820,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13608,6 +13852,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13639,6 +13884,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13688,6 +13934,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13863,6 +14110,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 185,
@@ -13895,6 +14143,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -13963,6 +14212,7 @@
     "weapons": [
       {
         "class": "ThrowingKnife",
+        "itemUsage": "throwing_knife",
         "accuracy": 95,
         "missileSpeed": 32,
         "stackAmount": 2,
@@ -13986,6 +14236,7 @@
       },
       {
         "class": "Dagger",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -14071,6 +14322,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 107,
@@ -14211,6 +14463,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "hand_shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 240,
@@ -14585,6 +14838,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 102,
@@ -14617,6 +14871,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -14785,19 +15040,20 @@
     "name": "Lowland Longbow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 2013,
+    "price": 4433,
     "weight": 0.5,
-    "tier": 3.43670774,
+    "tier": 5.58759165,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "long_bow",
         "accuracy": 94,
-        "missileSpeed": 74,
+        "missileSpeed": 92,
         "stackAmount": 1,
         "length": 120,
         "balance": 0.0,
-        "handling": 58,
+        "handling": 91,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -14808,12 +15064,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 13,
+        "thrustDamage": 15,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 58,
+        "thrustSpeed": 91,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 80
+        "swingSpeed": 89
       }
     ]
   },
@@ -14829,6 +15085,7 @@
     "weapons": [
       {
         "class": "ThrowingKnife",
+        "itemUsage": "throwing_knife",
         "accuracy": 95,
         "missileSpeed": 32,
         "stackAmount": 2,
@@ -14852,6 +15109,7 @@
       },
       {
         "class": "Dagger",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -14876,19 +15134,20 @@
     "name": "Yew Bow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 2690,
+    "price": 5709,
     "weight": 0.5,
-    "tier": 4.12753248,
+    "tier": 6.482747,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "long_bow",
         "accuracy": 94,
-        "missileSpeed": 79,
+        "missileSpeed": 91,
         "stackAmount": 1,
         "length": 117,
         "balance": 0.0,
-        "handling": 79,
+        "handling": 89,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -14899,12 +15158,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 13,
+        "thrustDamage": 17,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 79,
+        "thrustSpeed": 89,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 90
+        "swingSpeed": 86
       }
     ]
   },
@@ -15082,6 +15341,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_pike",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -15104,6 +15364,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -15138,6 +15399,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -15158,6 +15420,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -15210,6 +15473,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -15234,19 +15498,20 @@
     "name": "Mountain Hunting Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 566,
+    "price": 1858,
     "weight": 0.3,
-    "tier": 1.3985517,
+    "tier": 3.26297951,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "bow",
         "accuracy": 82,
-        "missileSpeed": 67,
+        "missileSpeed": 84,
         "stackAmount": 1,
         "length": 108,
         "balance": 0.0,
-        "handling": 70,
+        "handling": 98,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -15257,12 +15522,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 9,
+        "thrustDamage": 11,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 70,
+        "thrustSpeed": 98,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 86
+        "swingSpeed": 95
       }
     ]
   },
@@ -15350,6 +15615,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -15644,19 +15910,20 @@
     "name": "Noble Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 8081,
+    "price": 10098,
     "weight": 0.8,
-    "tier": 7.91437531,
+    "tier": 8.973666,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "bow",
         "accuracy": 100,
-        "missileSpeed": 90,
+        "missileSpeed": 85,
         "stackAmount": 1,
         "length": 116,
         "balance": 0.0,
-        "handling": 115,
+        "handling": 106,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -15667,12 +15934,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 16,
+        "thrustDamage": 15,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 115,
+        "thrustSpeed": 106,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 94
+        "swingSpeed": 100
       }
     ]
   },
@@ -15825,15 +16092,16 @@
     "name": "Noble Long Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 12264,
+    "price": 12263,
     "weight": 0.8,
-    "tier": 10.0,
+    "tier": 9.999999,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "long_bow",
         "accuracy": 98,
-        "missileSpeed": 85,
+        "missileSpeed": 94,
         "stackAmount": 1,
         "length": 118,
         "balance": 0.0,
@@ -15848,12 +16116,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 19,
+        "thrustDamage": 20,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 91
+        "swingSpeed": 87
       }
     ]
   },
@@ -15898,19 +16166,20 @@
     "name": "Nomad Bow",
     "culture": "Aserai",
     "type": "Bow",
-    "price": 3057,
+    "price": 6188,
     "weight": 0.5,
-    "tier": 4.466677,
+    "tier": 6.79264355,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "long_bow",
         "accuracy": 91,
-        "missileSpeed": 77,
+        "missileSpeed": 91,
         "stackAmount": 1,
         "length": 114,
         "balance": 0.0,
-        "handling": 70,
+        "handling": 92,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -15921,12 +16190,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 14,
+        "thrustDamage": 17,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 70,
+        "thrustSpeed": 92,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 89
+        "swingSpeed": 88
       }
     ]
   },
@@ -16115,19 +16384,20 @@
     "name": "Nordic Shortbow",
     "culture": "Sturgia",
     "type": "Bow",
-    "price": 1033,
+    "price": 3663,
     "weight": 0.3,
-    "tier": 2.19370532,
+    "tier": 4.98538065,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "bow",
         "accuracy": 95,
-        "missileSpeed": 71,
+        "missileSpeed": 84,
         "stackAmount": 1,
         "length": 108,
         "balance": 0.0,
-        "handling": 82,
+        "handling": 100,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -16138,12 +16408,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 10,
+        "thrustDamage": 12,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 82,
+        "thrustSpeed": 100,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 89
+        "swingSpeed": 99
       }
     ]
   },
@@ -16231,6 +16501,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16250,6 +16521,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16270,6 +16542,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16301,6 +16574,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_widegrip_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16335,6 +16609,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16475,6 +16750,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 160,
@@ -16507,6 +16783,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "throwing_javelin",
         "accuracy": 92,
         "missileSpeed": 29,
         "stackAmount": 3,
@@ -16530,6 +16807,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16562,6 +16840,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "throwing_javelin",
         "accuracy": 92,
         "missileSpeed": 29,
         "stackAmount": 3,
@@ -16585,6 +16864,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16617,6 +16897,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "throwing_javelin",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 3,
@@ -16640,6 +16921,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16852,6 +17134,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "hand_shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
@@ -16884,6 +17167,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 150,
@@ -16916,6 +17200,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16936,6 +17221,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16970,6 +17256,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -16990,6 +17277,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17024,6 +17312,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17044,6 +17333,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17078,6 +17368,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17098,6 +17389,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17120,6 +17412,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17154,6 +17447,7 @@
     "weapons": [
       {
         "class": "ThrowingAxe",
+        "itemUsage": "throwing_axe",
         "accuracy": 93,
         "missileSpeed": 27,
         "stackAmount": 2,
@@ -17178,6 +17472,7 @@
       },
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17246,6 +17541,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 240,
@@ -17296,6 +17592,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 95,
@@ -17328,6 +17625,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 85,
@@ -17432,6 +17730,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 210,
@@ -17464,6 +17763,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 125,
@@ -17784,6 +18084,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 280,
@@ -17906,6 +18207,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_rshield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17926,6 +18228,7 @@
       },
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17948,6 +18251,7 @@
       },
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -17998,6 +18302,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18029,6 +18334,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18061,6 +18367,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18093,6 +18400,7 @@
     "weapons": [
       {
         "class": "TwoHandedMace",
+        "itemUsage": "twohanded_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18127,6 +18435,7 @@
     "weapons": [
       {
         "class": "TwoHandedMace",
+        "itemUsage": "twohanded_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18161,6 +18470,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18193,6 +18503,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18213,6 +18524,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18247,6 +18559,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18267,6 +18580,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18301,6 +18615,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18336,6 +18651,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18368,6 +18684,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18399,6 +18716,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 23,
@@ -18592,6 +18910,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18713,6 +19032,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18734,6 +19054,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18769,6 +19090,7 @@
     "weapons": [
       {
         "class": "Dagger",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18788,6 +19110,7 @@
       },
       {
         "class": "ThrowingKnife",
+        "itemUsage": "throwing_knife",
         "accuracy": 95,
         "missileSpeed": 33,
         "stackAmount": 1,
@@ -18823,6 +19146,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_thrust",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18912,6 +19236,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 27,
@@ -18961,6 +19286,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -18981,6 +19307,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19002,6 +19329,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19052,6 +19380,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
@@ -19084,6 +19413,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 132,
@@ -19188,6 +19518,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19207,6 +19538,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19227,6 +19559,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19276,6 +19609,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19649,6 +19983,7 @@
     "weapons": [
       {
         "class": "Dagger",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19824,6 +20159,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19856,6 +20192,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19905,6 +20242,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19936,6 +20274,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19967,6 +20306,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_pike",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -19989,6 +20329,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20023,6 +20364,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20054,6 +20396,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20160,6 +20503,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20192,6 +20536,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 110,
@@ -20224,6 +20569,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 125,
@@ -20256,6 +20602,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20288,6 +20635,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20307,6 +20655,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20327,6 +20676,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20412,6 +20762,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 180,
@@ -20462,6 +20813,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20494,6 +20846,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20514,6 +20867,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20548,6 +20902,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20568,6 +20923,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20602,6 +20958,7 @@
     "weapons": [
       {
         "class": "ThrowingAxe",
+        "itemUsage": "throwing_axe",
         "accuracy": 93,
         "missileSpeed": 27,
         "stackAmount": 2,
@@ -20626,6 +20983,7 @@
       },
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20784,6 +21142,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20815,6 +21174,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -20846,6 +21206,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 260,
@@ -20896,6 +21257,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 24,
@@ -20920,19 +21282,20 @@
     "name": "Steppe Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 559,
+    "price": 1241,
     "weight": 0.3,
-    "tier": 1.38480544,
+    "tier": 2.49320269,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "bow",
         "accuracy": 80,
-        "missileSpeed": 68,
+        "missileSpeed": 83,
         "stackAmount": 1,
         "length": 110,
         "balance": 0.0,
-        "handling": 65,
+        "handling": 96,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -20943,12 +21306,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 9,
+        "thrustDamage": 10,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 65,
+        "thrustSpeed": 96,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 86
+        "swingSpeed": 94
       }
     ]
   },
@@ -21000,6 +21363,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 190,
@@ -21061,19 +21425,20 @@
     "name": "Heavy Recurve Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 1774,
+    "price": 4863,
     "weight": 0.3,
-    "tier": 3.16623425,
+    "tier": 5.90214348,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "bow",
         "accuracy": 91,
-        "missileSpeed": 76,
+        "missileSpeed": 85,
         "stackAmount": 1,
         "length": 106,
         "balance": 0.0,
-        "handling": 80,
+        "handling": 102,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -21084,12 +21449,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 12,
+        "thrustDamage": 13,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 80,
+        "thrustSpeed": 102,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 87
+        "swingSpeed": 100
       }
     ]
   },
@@ -21188,19 +21553,20 @@
     "name": "Steppe War Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 2743,
+    "price": 6743,
     "weight": 0.3,
-    "tier": 4.177309,
+    "tier": 7.137197,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "bow",
         "accuracy": 95,
-        "missileSpeed": 80,
+        "missileSpeed": 87,
         "stackAmount": 1,
         "length": 107,
         "balance": 0.0,
-        "handling": 80,
+        "handling": 108,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -21211,12 +21577,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 13,
+        "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 80,
+        "thrustSpeed": 108,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 89
+        "swingSpeed": 96
       }
     ]
   },
@@ -21394,6 +21760,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 215,
@@ -21426,6 +21793,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 130,
@@ -21458,6 +21826,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 135,
@@ -21598,6 +21967,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 260,
@@ -21684,6 +22054,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_widegrip_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21718,6 +22089,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_widegrip_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21752,6 +22124,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21784,6 +22157,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21816,6 +22190,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -21848,6 +22223,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22006,6 +22382,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22026,6 +22403,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22048,6 +22426,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_couch",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22080,6 +22459,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22100,6 +22480,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22122,6 +22503,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_couch",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22172,6 +22554,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22203,6 +22586,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22234,6 +22618,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22265,6 +22650,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22296,6 +22682,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "hand_shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 240,
@@ -22328,6 +22715,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "hand_shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 140,
@@ -22360,6 +22748,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22382,6 +22771,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22416,6 +22806,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22447,6 +22838,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22478,6 +22870,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22509,6 +22902,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22540,6 +22934,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -22571,6 +22966,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23016,6 +23412,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 270,
@@ -23102,6 +23499,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_pike",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23124,6 +23522,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23158,6 +23557,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23225,6 +23625,7 @@
     "weapons": [
       {
         "class": "Stone",
+        "itemUsage": "stone",
         "accuracy": 45,
         "missileSpeed": 40,
         "stackAmount": 14,
@@ -23332,6 +23733,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "arrow_right",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 30,
@@ -23374,19 +23776,20 @@
     "name": "Practice Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 359,
+    "price": 629,
     "weight": 0.3,
-    "tier": 0.951793134,
+    "tier": 1.51823473,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "bow",
         "accuracy": 99,
-        "missileSpeed": 84,
+        "missileSpeed": 89,
         "stackAmount": 1,
         "length": 106,
         "balance": 0.0,
-        "handling": 92,
+        "handling": 106,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -23399,10 +23802,10 @@
         ],
         "thrustDamage": 6,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 92,
+        "thrustSpeed": 106,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 87
+        "swingSpeed": 101
       }
     ]
   },
@@ -23411,19 +23814,20 @@
     "name": "Practice Longbow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 331,
+    "price": 550,
     "weight": 0.5,
-    "tier": 0.8840525,
+    "tier": 1.36627126,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "long_bow",
         "accuracy": 100,
-        "missileSpeed": 84,
+        "missileSpeed": 94,
         "stackAmount": 1,
         "length": 120,
         "balance": 0.0,
-        "handling": 84,
+        "handling": 94,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -23434,12 +23838,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 6,
+        "thrustDamage": 7,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 84,
+        "thrustSpeed": 94,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 80
+        "swingSpeed": 89
       }
     ]
   },
@@ -23455,6 +23859,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23475,6 +23880,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23497,6 +23903,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23524,19 +23931,20 @@
     "name": "Tribesman Bow",
     "culture": "Aserai",
     "type": "Bow",
-    "price": 2955,
+    "price": 5212,
     "weight": 0.5,
-    "tier": 4.37424564,
+    "tier": 6.147076,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "long_bow",
         "accuracy": 94,
-        "missileSpeed": 73,
+        "missileSpeed": 92,
         "stackAmount": 1,
         "length": 115,
         "balance": 0.0,
-        "handling": 65,
+        "handling": 90,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -23547,12 +23955,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 14,
+        "thrustDamage": 16,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 65,
+        "thrustSpeed": 90,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 89
+        "swingSpeed": 88
       }
     ]
   },
@@ -23568,6 +23976,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 220,
@@ -23708,6 +24117,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23739,6 +24149,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -23897,6 +24308,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "hand_shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 215,
@@ -24001,6 +24413,7 @@
     "weapons": [
       {
         "class": "TwoHandedAxe",
+        "itemUsage": "twohanded_widegrip_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24036,6 +24449,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24068,6 +24482,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24100,6 +24515,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24132,6 +24548,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24308,6 +24725,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24328,6 +24746,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24350,6 +24769,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_couch",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24370,6 +24790,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24404,6 +24825,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24424,6 +24846,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24446,6 +24869,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_couch",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24478,6 +24902,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24498,6 +24923,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24520,6 +24946,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_couch",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24570,6 +24997,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24601,6 +25029,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24632,6 +25061,7 @@
     "weapons": [
       {
         "class": "Mace",
+        "itemUsage": "onehanded_block_shield_tipdraw_swing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24663,6 +25093,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24694,6 +25125,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24725,6 +25157,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24756,6 +25189,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24787,6 +25221,7 @@
     "weapons": [
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_pike",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24809,6 +25244,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24843,6 +25279,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24863,6 +25300,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24897,6 +25335,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24928,6 +25367,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24959,6 +25399,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -24990,6 +25431,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25021,6 +25463,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25160,6 +25603,7 @@
     "weapons": [
       {
         "class": "Arrow",
+        "itemUsage": "arrow_top",
         "accuracy": 100,
         "missileSpeed": 10,
         "stackAmount": 25,
@@ -25209,6 +25653,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25228,6 +25673,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25248,6 +25694,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25279,6 +25726,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25298,6 +25746,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25318,6 +25767,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25349,6 +25799,7 @@
     "weapons": [
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25417,6 +25868,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "throwing_javelin",
         "accuracy": 92,
         "missileSpeed": 29,
         "stackAmount": 3,
@@ -25440,6 +25892,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25472,6 +25925,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "throwing_javelin",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 3,
@@ -25495,6 +25949,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25527,6 +25982,7 @@
     "weapons": [
       {
         "class": "Javelin",
+        "itemUsage": "throwing_javelin",
         "accuracy": 92,
         "missileSpeed": 28,
         "stackAmount": 3,
@@ -25550,6 +26006,7 @@
       },
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25582,6 +26039,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 150,
@@ -25632,6 +26090,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 137,
@@ -25682,6 +26141,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25702,6 +26162,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25736,6 +26197,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25756,6 +26218,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25790,6 +26253,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25810,6 +26274,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25832,6 +26297,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25866,6 +26332,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25888,6 +26355,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25912,6 +26380,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -25948,6 +26417,7 @@
     "weapons": [
       {
         "class": "ThrowingAxe",
+        "itemUsage": "throwing_axe",
         "accuracy": 93,
         "missileSpeed": 27,
         "stackAmount": 2,
@@ -25972,6 +26442,7 @@
       },
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -26022,6 +26493,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 225,
@@ -26054,6 +26526,7 @@
     "weapons": [
       {
         "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -26074,6 +26547,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -26096,6 +26570,7 @@
       },
       {
         "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_bracing",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -26130,6 +26605,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -26233,6 +26709,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_rshield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -26253,6 +26730,7 @@
       },
       {
         "class": "TwoHandedSword",
+        "itemUsage": "twohanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -26274,6 +26752,7 @@
       },
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -26306,6 +26785,7 @@
     "weapons": [
       {
         "class": "OneHandedSword",
+        "itemUsage": "onehanded_block_shield_swing_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -26338,6 +26818,7 @@
     "weapons": [
       {
         "class": "OneHandedAxe",
+        "itemUsage": "onehanded_shield_axe",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -26363,19 +26844,20 @@
     "name": "Woodland Longbow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 4419,
+    "price": 8579,
     "weight": 0.1,
-    "tier": 5.577162,
+    "tier": 8.186812,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "long_bow",
         "accuracy": 94,
-        "missileSpeed": 82,
+        "missileSpeed": 92,
         "stackAmount": 1,
         "length": 118,
         "balance": 0.0,
-        "handling": 78,
+        "handling": 89,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -26386,12 +26868,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 15,
+        "thrustDamage": 19,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 78,
+        "thrustSpeed": 89,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 88
+        "swingSpeed": 86
       }
     ]
   },
@@ -26400,19 +26882,20 @@
     "name": "Woodland Yew Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 3159,
+    "price": 8824,
     "weight": 0.5,
-    "tier": 4.55727434,
+    "tier": 8.31837749,
     "requirement": 0,
     "weapons": [
       {
         "class": "Bow",
+        "itemUsage": "long_bow",
         "accuracy": 92,
-        "missileSpeed": 76,
+        "missileSpeed": 92,
         "stackAmount": 1,
         "length": 115,
         "balance": 0.0,
-        "handling": 78,
+        "handling": 94,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -26423,12 +26906,12 @@
           "AutoReload",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 14,
+        "thrustDamage": 18,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 78,
+        "thrustSpeed": 94,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 91
+        "swingSpeed": 90
       }
     ]
   },
@@ -26444,6 +26927,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 97,
@@ -26476,6 +26960,7 @@
     "weapons": [
       {
         "class": "LargeShield",
+        "itemUsage": "shield",
         "accuracy": 100,
         "missileSpeed": 0,
         "stackAmount": 90,
