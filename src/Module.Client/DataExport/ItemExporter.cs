@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Tableaus;
 using TaleWorlds.ObjectSystem;
@@ -385,6 +386,7 @@ internal class ItemExporter : IDataExporter
                 {
                     SetChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
                         BowStats[node1.Attributes["id"].Value].damage);
+                    InformationManager.DisplayMessage(new InformationMessage(BowStats[node1.Attributes["id"].Value].damage.ToString()));
 
     }
                 else if (type == ItemObject.ItemTypeEnum.Crossbow)
