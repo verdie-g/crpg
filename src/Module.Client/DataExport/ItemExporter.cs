@@ -376,10 +376,10 @@ internal class ItemExporter : IDataExporter
                     // needed because at this point there are still bows in the xml node that are going to get removed later.
                     if (BowStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue)) 
                     {
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", v => newvalue.damage.ToString());
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "speed_rating", v => newvalue.reloadSpeed.ToString());
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed", v => newvalue.aimSpeed.ToString());
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed", v => newvalue.missileSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", v => newvalue.damage.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "speed_rating", v => newvalue.reloadSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed", v => newvalue.aimSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed", v => newvalue.missileSpeed.ToString());
                     }
                 }
                 else if (type == ItemObject.ItemTypeEnum.Crossbow)
