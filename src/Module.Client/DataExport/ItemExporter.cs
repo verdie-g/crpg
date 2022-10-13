@@ -132,7 +132,7 @@ internal class ItemExporter : IDataExporter
         ["crpg_training_bow"] = ("106", "101", "6", "89"),
 
         // long bows
-        ["crpg_long_noble_bow"] = ("90", "87", "20", "94"),
+        ["crpg_noble_long_bow"] = ("90", "87", "20", "94"),
         ["crpg_woodland_longbow"] = ("89","86","18","92"),
         ["crpg_woodland_yew_bow"] = ("94", "90", "15", "92"),
         ["crpg_lowland_yew_bow"] = ("89", "86", "15", "91"),
@@ -386,10 +386,11 @@ internal class ItemExporter : IDataExporter
                 {
                     if (BowStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue))
                     {
-                    SetChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", newvalue.damage);
-                    InformationManager.DisplayMessage(new InformationMessage(newvalue.damage.ToString()));
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", v => newvalue.damage);
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "speed_rating", v => newvalue.reloadSpeed);
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed", v => newvalue.aimSpeed);
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed", v => newvalue.missileSpeed);
                     }
-
                 }
                 else if (type == ItemObject.ItemTypeEnum.Crossbow)
                 {
@@ -495,31 +496,6 @@ internal class ItemExporter : IDataExporter
             attr.Value = modify(attr.Value);
         }
     }
-    private static void SetChildNodesAttribute(XmlNode parentNode,
-    string childXPath,
-    string attributeName,
-    string newvalue,
-    string? defaultValue = null)
-    {
-        foreach (var childNode in parentNode.SelectNodes(childXPath)!.Cast<XmlNode>())
-        {
-            var attr = childNode.Attributes![attributeName];
-            if (attr == null)
-            {
-                if (defaultValue == null)
-                {
-                    throw new KeyNotFoundException($"Attribute '{attributeName}' was not found and no default was provided");
-                }
-
-                attr = childNode.OwnerDocument!.CreateAttribute(attributeName);
-                attr.Value = defaultValue;
-                childNode.Attributes.Append(attr);
-            }
-
-            attr.Value = newvalue;
-        }
-    }
-
 
     private static void RegisterMbObjects<T>(XmlDocument doc, Game game) where T : MBObjectBase, new()
     {
