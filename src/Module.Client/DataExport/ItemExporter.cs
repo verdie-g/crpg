@@ -109,16 +109,16 @@ internal class ItemExporter : IDataExporter
     private static readonly Dictionary<string, (int aimSpeed, int reloadSpeed, int damage, int missileSpeed)> BowStats = new()
     {
         // short bows
-        ["crpg_noble_bow"] = (106, 100,15,85),
-        ["crpg_steppe_war_bow"] = (108, 96, 14, 87),
-        ["crpg_composite_steppe_bow"] = (106, 101, 14, 88),
-        ["crpg_steppe_heavy_bow"] = (102, 100, 13, 85),
-        ["crpg_composite_bow"] = (104, 98, 13, 83),
-        ["crpg_nordic_shortbow"] = (100, 99, 12, 84),
-        ["crpg_hunting_bow"] = (102, 97, 11, 83),
-        ["crpg_mountain_hunting_bow"] = (98, 95, 11, 84),
-        ["crpg_steppe_bow"] = (96, 94, 10, 83),
-        ["crpg_training_bow"] = (106, 101, 6, 89),
+        ["crpg_noble_bow"] = (99, 100, 15, 85),
+        ["crpg_steppe_war_bow"] = (101, 96, 14, 87),
+        ["crpg_composite_steppe_bow"] = (99, 101, 14, 88),
+        ["crpg_steppe_heavy_bow"] = (95, 100, 13, 85),
+        ["crpg_composite_bow"] = (97, 98, 13, 83),
+        ["crpg_nordic_shortbow"] = (93, 99, 12, 84),
+        ["crpg_hunting_bow"] = (95, 97, 11, 83),
+        ["crpg_mountain_hunting_bow"] = (91, 95, 11, 84),
+        ["crpg_steppe_bow"] = (89, 94, 10, 83),
+        ["crpg_training_bow"] = (99, 101, 6, 89),
 
         // long bows
         ["crpg_noble_long_bow"] = (90, 87, 20, 94),
