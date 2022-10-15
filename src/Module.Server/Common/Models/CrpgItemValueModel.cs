@@ -96,11 +96,11 @@ internal class CrpgItemValueModel : ItemValueModel
     {
             float horsePower =
              // 1.5f * horseComponent.ChargeDamage
-              (float)Math.Pow(horseComponent.Speed, 1.5f)
-            * (float)Math.Pow(horseComponent.Maneuver, 1.7f)
-            * (float)Math.Pow(horseComponent.HitPoints + horseComponent.HitPointBonus, 1f)
-            + 10f * (float)Math.Pow(horseComponent.ChargeDamage, 4f);
-            float bestHorsePower = 102466101f;
+              (float)Math.Pow(horseComponent.Speed, 1.65f)
+            * (float)Math.Pow(horseComponent.Maneuver, 1.85f)
+            * (float)Math.Pow(horseComponent.HitPoints + horseComponent.HitPointBonus, 1.2f)
+            + 300f * (float)Math.Pow(horseComponent.ChargeDamage, 4f) + 800000f * horseComponent.ChargeDamage;
+            float bestHorsePower = 1015355876f;
             return 10f * horsePower / bestHorsePower;
     }
 
