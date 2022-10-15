@@ -1,0 +1,45 @@
+.o-pag {
+  @apply flex items-center justify-between p-1 text-center;
+}
+
+.o-pag--simple {
+  @apply justify-start;
+}
+
+.o-pag__link {
+  @apply inline-flex items-center justify-center;
+  @apply cursor-pointer select-none appearance-none shadow-none;
+  @apply relative;
+  @apply align-top leading-none;
+  @apply rounded-md border border-solid border-todo4;
+  @apply m-1 h-9 min-w-9 p-2;
+}
+
+.o-pag__link:hover {
+  @apply border-todo;
+}
+
+.o-pag__link--disabled {
+  @apply pointer-events-none opacity-50;
+}
+
+.o-pag__link--current {
+  @apply pointer-events-none border-primary bg-primary text-white;
+}
+
+.o-pag__previous {
+  @apply order-2;
+}
+
+.o-pag__next {
+  @apply order-3;
+}
+
+.o-pag__list {
+  @apply flex flex-wrap items-center justify-start;
+  @apply order-1 flex-shrink flex-grow;
+  @apply m-0 list-none p-0 text-center;
+}
+
+.o-pag__info {
+}

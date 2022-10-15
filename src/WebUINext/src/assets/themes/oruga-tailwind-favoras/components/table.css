@@ -1,0 +1,91 @@
+.o-table {
+  @apply table w-full border-separate border-spacing-0;
+}
+
+.o-table--bordered {
+}
+
+.o-table--bordered td,
+.o-table--bordered th {
+  @apply border border-solid border-todo4;
+}
+
+.o-table--bordered tr:last-child td,
+.o-table--bordered tr:last-child th {
+  @apply border border-solid border-todo4;
+}
+
+.o-table--striped {
+}
+
+.o-table--striped tbody tr:not(.o-table__tr--selected):nth-child(2n) {
+  @apply bg-todo5;
+}
+
+.o-table--narrowed {
+}
+
+.o-table--narrowed td,
+.o-table--narrowed th {
+  @apply py-1 px-2;
+}
+
+.o-table--hoverable {
+}
+
+.o-table--hoverable tbody tr:not(.o-table__tr--selected):hover {
+  @apply bg-todo5;
+}
+
+.o-table--table__empty {
+}
+
+.o-table__root {
+  @apply relative;
+}
+
+.o-table__wrapper {
+  @apply relative;
+}
+
+.o-table__th {
+  @apply relative px-3 py-2 text-left align-top font-semibold;
+  @apply border-b-2 border-solid border-todo4;
+}
+
+.o-table__th-current-sort {
+  @apply border-b-black;
+}
+
+.o-table__th--centered {
+  @apply text-center;
+}
+
+.o-table__th--sortable {
+  @apply cursor-pointer;
+}
+
+.o-table__th--sortable:hover {
+  @apply border-b-black;
+}
+
+.o-table__th--unselectable {
+  @apply select-none;
+}
+
+.o-table__th__sort-icon {
+  @apply absolute right-0 top-1/2 flex -translate-y-1/2 transform;
+}
+
+.o-table__td {
+  @apply px-3 py-2 text-left align-top;
+  @apply border-b border-solid border-todo6;
+}
+
+.o-table__td--centered {
+  @apply text-center;
+}
+
+.o-table__pagination {
+  @apply flex items-center justify-between;
+}
