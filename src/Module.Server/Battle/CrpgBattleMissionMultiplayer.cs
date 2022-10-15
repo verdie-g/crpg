@@ -184,11 +184,6 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     {
     }
 
-    protected override void HandleLateNewClientAfterSynchronized(NetworkCommunicator networkPeer)
-    {
-        Mission.Current.GetMissionBehavior<MultiplayerTeamSelectComponent>().AutoAssignTeam(networkPeer);
-    }
-
     protected override void HandleNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
     {
         GameNetwork.BeginModuleEventAsServer(networkPeer);

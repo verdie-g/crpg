@@ -75,7 +75,6 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent);
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
         MissionScoreboardComponent missionScoreboardComponent = new(new BattleScoreboardData());
-        NoTeamSelectComponent noTeamSelectComponent = new();
 
         MissionState.OpenNew(
             Name,
@@ -88,7 +87,6 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new MultiplayerTimerComponent(), // round timer
                     new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
                     new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
-                    noTeamSelectComponent, // logic to change team, autoselect
                     new MissionHardBorderPlacer(),
                     new MissionBoundaryPlacer(), // set walkable boundaries
                     new AgentVictoryLogic(), // AI cheering when winning round
@@ -104,6 +102,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 #if CRPG_SERVER
                     roundController,
                     new CrpgBattleMissionMultiplayer(battleClient, crpgClient, _constants),
+                    new ReassignTeamComponent(missionScoreboardComponent, roundController), // logic to change team, autoselect
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
                     new SpawnComponent(new BattleSpawnFrameBehavior(), new CrpgBattleSpawningBehavior(_constants, roundController)),
                     new AgentHumanAILogic(), // bot intelligence
@@ -111,10 +110,10 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new CrpgUserManager(crpgClient),
                     new KickInactiveBehavior(warmupComponent, notificationsComponent),
                     new MapVoteComponent(),
-                    new ReassignTeamComponent(missionScoreboardComponent, noTeamSelectComponent, roundController),
                     new ChatCommandsComponent(chatBox, crpgClient),
 #else
                     new MultiplayerRoundComponent(),
+                    new NoTeamSelectComponent(),
                     new MissionMatchHistoryComponent(),
 #endif
                 });

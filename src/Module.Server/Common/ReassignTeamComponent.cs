@@ -7,19 +7,17 @@ namespace Crpg.Module.Common;
 /// <summary>
 /// Used to reassign the team when a player reconnects -> Avoid random team.
 /// </summary>
-internal class ReassignTeamComponent : MissionBehavior
+internal class ReassignTeamComponent : NoTeamSelectComponent
 {
     public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
     private readonly MissionScoreboardComponent _missionScoreboardComponent;
     private readonly Dictionary<PlayerId, Team> _playerTeamList;
-    private readonly MultiplayerTeamSelectComponent _multiplayerTeamSelectComponent;
     private readonly MultiplayerRoundController _roundController;
     private bool _isAutobalanceCheck;
 
-    public ReassignTeamComponent(MissionScoreboardComponent missionScoreboardComponent, MultiplayerTeamSelectComponent multiplayerTeamSelectComponent, MultiplayerRoundController roundController)
+    public ReassignTeamComponent(MissionScoreboardComponent missionScoreboardComponent, MultiplayerRoundController roundController)
     {
         _missionScoreboardComponent = missionScoreboardComponent;
-        _multiplayerTeamSelectComponent = multiplayerTeamSelectComponent;
         _roundController = roundController;
         _isAutobalanceCheck = false;
         _playerTeamList = new Dictionary<PlayerId, Team>();
@@ -29,8 +27,13 @@ internal class ReassignTeamComponent : MissionBehavior
     {
         base.OnBehaviorInitialize();
         _missionScoreboardComponent.OnPlayerSideChanged += OnPlayerChangeSide;
-        Mission.Current.OnMissionReset += OnMissionReset;
+        Mission.OnMissionReset += OnMissionReset;
         _roundController.OnRoundStarted += OnRoundStarted;
+    }
+
+    protected override void HandleLateNewClientAfterSynchronized(NetworkCommunicator networkPeer)
+    {
+        AutoAssignTeam(networkPeer);
     }
 
     private void OnRoundStarted()
@@ -69,9 +72,9 @@ internal class ReassignTeamComponent : MissionBehavior
         bool isTeamBalance = false;
         if (_isAutobalanceCheck)
         {
-            int attackerPlayerCount = _multiplayerTeamSelectComponent.GetPlayerCountForTeam(Mission.Current.AttackerTeam);
-            int defenderPlayerCount = _multiplayerTeamSelectComponent.GetPlayerCountForTeam(Mission.Current.DefenderTeam);
-            int teamBalanceDifference = MultiplayerTeamSelectComponent.GetAutoTeamBalanceDifference((AutoTeamBalanceLimits)MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.GetIntValue());
+            int attackerPlayerCount = GetPlayerCountForTeam(Mission.Current.AttackerTeam);
+            int defenderPlayerCount = GetPlayerCountForTeam(Mission.Current.DefenderTeam);
+            int teamBalanceDifference = GetAutoTeamBalanceDifference((AutoTeamBalanceLimits)MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.GetIntValue());
             isTeamBalance = Math.Abs(attackerPlayerCount - defenderPlayerCount) > teamBalanceDifference;
         }
 
@@ -83,6 +86,6 @@ internal class ReassignTeamComponent : MissionBehavior
         }
 
         Team targetTeam = _playerTeamList[playerId].Side == Mission.Teams.Defender.Side ? Mission.Teams.Defender : Mission.Teams.Attacker;
-        _multiplayerTeamSelectComponent.ChangeTeamServer(networkPeer, targetTeam);
+        ChangeTeamServer(networkPeer, targetTeam);
     }
 }
