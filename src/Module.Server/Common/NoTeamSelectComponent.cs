@@ -4,7 +4,7 @@ using TaleWorlds.MountAndBlade;
 namespace Crpg.Module.Common;
 
 /// <summary>
-/// Disables team selection. Auto select is done in <see cref="CrpgBattleMissionMultiplayer.HandleLateNewClientAfterSynchronized"/>.
+/// Disables team selection. Auto select is done in <see cref="ReassignTeamComponent.HandleLateNewClientAfterSynchronized"/>.
 /// </summary>
 internal class NoTeamSelectComponent : MultiplayerTeamSelectComponent
 {
