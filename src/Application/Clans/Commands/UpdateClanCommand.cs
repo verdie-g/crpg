@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using AutoMapper;
 using Crpg.Application.Clans.Models;
 using Crpg.Application.Common;
@@ -19,12 +20,37 @@ public record UpdateClanCommand : IMediatorRequest<ClanViewModel>
 {
     public int UserId { get; init; }
     public int ClanId { get; init; }
+    public string Tag { get; init; } = string.Empty;
+    public string Name { get; init; } = string.Empty;
+    public uint PrimaryColor { get; init; }
+    public uint SecondaryColor { get; init; }
+    public string BannerKey { get; init; } = string.Empty;
     public Region Region { get; init; }
 
     public class Validator : AbstractValidator<UpdateClanCommand>
     {
-        public Validator()
+        public Validator(Constants constants)
         {
+            RuleFor(c => c.Tag)
+                .MinimumLength(constants.ClanTagMinLength)
+                .MaximumLength(constants.ClanTagMaxLength)
+                .Matches(new Regex(constants.ClanTagRegex, RegexOptions.Compiled));
+
+            RuleFor(c => c.PrimaryColor)
+                .GreaterThanOrEqualTo(constants.ClanColorMinValue);
+
+            RuleFor(c => c.SecondaryColor)
+                .GreaterThanOrEqualTo(constants.ClanColorMinValue);
+
+            RuleFor(c => c.Name)
+                .MinimumLength(constants.ClanNameMinLength)
+                .MaximumLength(constants.ClanNameMaxLength);
+
+            RuleFor(c => c.BannerKey)
+                .MinimumLength(0)
+                .MaximumLength(constants.ClanBannerKeyMaxLength)
+                .Matches(new Regex(constants.ClanBannerKeyRegex, RegexOptions.Compiled));
+
             RuleFor(cmd => cmd.Region).IsInEnum();
         }
     }
@@ -68,6 +94,20 @@ public record UpdateClanCommand : IMediatorRequest<ClanViewModel>
                     user.ClanMembership.Role));
             }
 
+            var conflictingClan = await _db.Clans
+                .FirstOrDefaultAsync(c => c.Id != clan.Id && (c.Tag == req.Tag || c.Name == req.Name), cancellationToken);
+            if (conflictingClan != null)
+            {
+                return conflictingClan.Tag == req.Tag
+                    ? new(CommonErrors.ClanTagAlreadyUsed(conflictingClan.Tag))
+                    : new(CommonErrors.ClanNameAlreadyUsed(conflictingClan.Name));
+            }
+
+            clan.Tag = req.Tag;
+            clan.PrimaryColor = req.PrimaryColor;
+            clan.SecondaryColor = req.SecondaryColor;
+            clan.Name = req.Name;
+            clan.BannerKey = req.BannerKey;
             clan.Region = req.Region;
 
             await _db.SaveChangesAsync(cancellationToken);

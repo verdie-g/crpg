@@ -95,5 +95,4 @@ internal class ClanService : IClanService
         db.ClanMembers.Remove(member);
         return Result.NoErrors;
     }
-
 }

@@ -6,6 +6,7 @@ namespace Crpg.Application.Items.Models;
 public record ItemWeaponComponentViewModel : IMapFrom<ItemWeaponComponent>
 {
     public WeaponClass Class { get; init; }
+    public string ItemUsage { get; init; } = string.Empty;
     public int Accuracy { get; init; }
     public int MissileSpeed { get; init; }
     public int StackAmount { get; init; }

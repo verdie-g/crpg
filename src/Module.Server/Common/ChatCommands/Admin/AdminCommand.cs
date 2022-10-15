@@ -5,6 +5,11 @@ namespace Crpg.Module.Common.ChatCommands.Admin;
 
 internal abstract class AdminCommand : ChatCommand
 {
+    protected AdminCommand(ChatCommandsComponent chatComponent)
+        : base(chatComponent)
+    {
+    }
+
     protected override bool CheckRequirements(NetworkCommunicator fromPeer)
     {
         var crpgUser = fromPeer.GetComponent<CrpgRepresentative>()?.User;

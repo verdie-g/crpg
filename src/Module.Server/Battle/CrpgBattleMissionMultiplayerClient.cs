@@ -1,28 +1,47 @@
-﻿using Crpg.Module.Common;
+﻿using System.Text;
+using Crpg.Module.Common;
 using Crpg.Module.Common.Models;
 using Crpg.Module.Common.Network;
+using NetworkMessages.FromServer;
 using TaleWorlds.Core;
+using TaleWorlds.Engine;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.Objects;
 using TaleWorlds.ObjectSystem;
 
 namespace Crpg.Module.Battle;
 
-internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBaseClient
+internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
 {
+    internal const int FlagsRemovalTime = 120;
+
+    private FlagCapturePoint[] _flags = Array.Empty<FlagCapturePoint>();
+    private Team?[] _flagOwners = Array.Empty<Team>();
+    private bool _notifiedForFlagRemoval;
+    private float _remainingTimeForBellSoundToStop = float.MinValue;
+    private SoundEvent? _bellSoundEvent;
     private CrpgRepresentative? _crpgRepresentative;
 
+    public event Action<BattleSideEnum, float>? OnMoraleChangedEvent;
+    public event Action? OnFlagNumberChangedEvent;
+    public event Action<FlagCapturePoint, Team?>? OnCapturePointOwnerChangedEvent;
+
     public override bool IsGameModeUsingGold => false;
-    public override bool IsGameModeTactical => false;
+    public override bool IsGameModeTactical => _flags.Length != 0;
     public override bool IsGameModeUsingRoundCountdown => true;
     public override MissionLobbyComponent.MultiplayerGameType GameType => MissionLobbyComponent.MultiplayerGameType.Battle;
     public override bool IsGameModeUsingCasualGold => false;
+    public IEnumerable<FlagCapturePoint> AllCapturePoints => _flags;
+    public bool AreMoralesIndependent => false;
 
     public override void OnBehaviorInitialize()
     {
         base.OnBehaviorInitialize();
         RoundComponent.OnPreparationEnded += OnPreparationEnded;
         MissionNetworkComponent.OnMyClientSynchronized += OnMyClientSynchronized;
+        ResetFlags(); // Get the flags early so it's available for the HUD.
     }
 
     public override void OnRemoveBehavior()
@@ -45,11 +64,127 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     public override void OnMissionTick(float dt)
     {
         base.OnMissionTick(dt);
+        if (_flags.Length == 0) // Protection against scene with no maps.
+        {
+            return;
+        }
+
+        if (_remainingTimeForBellSoundToStop > 0.0)
+        {
+            _remainingTimeForBellSoundToStop -= dt;
+        }
+
+        if (_bellSoundEvent == null
+            || (_remainingTimeForBellSoundToStop > 0.0
+            && MissionLobbyComponent.CurrentMultiplayerState == MissionLobbyComponent.MultiplayerGameState.Playing))
+        {
+            return;
+        }
+
+        _remainingTimeForBellSoundToStop = float.MinValue;
+        _bellSoundEvent.Stop();
+        _bellSoundEvent = null;
     }
 
     public override void AfterStart()
     {
-        Mission.Current.SetMissionMode(TaleWorlds.Core.MissionMode.Battle, true);
+        Mission.Current.SetMissionMode(MissionMode.Battle, true);
+    }
+
+    public override void OnClearScene()
+    {
+        _notifiedForFlagRemoval = false;
+        ResetFlags();
+
+        if (_bellSoundEvent != null)
+        {
+            _remainingTimeForBellSoundToStop = float.MinValue;
+            _bellSoundEvent.Stop();
+            _bellSoundEvent = null;
+        }
+    }
+
+    public void ChangeMorale(float morale)
+    {
+        for (BattleSideEnum side = BattleSideEnum.Defender; side < BattleSideEnum.NumSides; side += 1)
+        {
+            float num = (morale + 1.0f) / 2.0f;
+            if (side == BattleSideEnum.Defender)
+            {
+                OnMoraleChangedEvent?.Invoke(BattleSideEnum.Defender, 1f - num);
+            }
+            else if (side == BattleSideEnum.Attacker)
+            {
+                OnMoraleChangedEvent?.Invoke(BattleSideEnum.Attacker, num);
+            }
+        }
+
+        BattleSideEnum mySide = _crpgRepresentative?.MissionPeer.Team.Side ?? BattleSideEnum.None;
+        if (mySide == BattleSideEnum.None)
+        {
+            return;
+        }
+
+        float absMorale = MathF.Abs(morale);
+        if (_remainingTimeForBellSoundToStop < 0.0)
+        {
+            _remainingTimeForBellSoundToStop = absMorale < 0.6 || absMorale >= 1.0
+                ? float.MinValue
+                : float.MaxValue;
+            if (_remainingTimeForBellSoundToStop <= 0.0)
+            {
+                return;
+            }
+
+            _bellSoundEvent =
+                (mySide == BattleSideEnum.Defender && morale >= 0.6f) ||
+                (mySide == BattleSideEnum.Attacker && morale <= -0.6f)
+                    ? SoundEvent.CreateEventFromString("event:/multiplayer/warning_bells_defender", Mission.Scene)
+                    : SoundEvent.CreateEventFromString("event:/multiplayer/warning_bells_attacker", Mission.Scene);
+            MatrixFrame flagGlobalFrame = _flags
+                .Where(flag => !flag.IsDeactivated)
+                .GetRandomElementInefficiently()
+                .GameEntity.GetGlobalFrame();
+            _bellSoundEvent.PlayInPosition(flagGlobalFrame.origin + flagGlobalFrame.rotation.u * 3f);
+        }
+        else
+        {
+            if (absMorale < 1.0 && absMorale >= 0.6)
+            {
+                return;
+            }
+
+            _remainingTimeForBellSoundToStop = float.MinValue;
+        }
+    }
+
+    public void CaptureFlag(FlagCapturePoint flag, Team owner)
+    {
+        _flagOwners[flag.FlagIndex] = owner;
+        OnCapturePointOwnerChangedEvent?.Invoke(flag, owner);
+
+        var myTeam = _crpgRepresentative?.MissionPeer.Team;
+        if (myTeam == null)
+        {
+            return;
+        }
+
+        MatrixFrame cameraFrame = Mission.Current.GetCameraFrame();
+        Vec3 position = cameraFrame.origin + cameraFrame.rotation.u;
+        string eventStr = myTeam == owner
+            ? "event:/alerts/report/flag_captured"
+            : "event:/alerts/report/flag_lost";
+        MBSoundEvent.PlaySound(SoundEvent.GetEventIdFromString(eventStr), position);
+    }
+
+    public void ChangeNumberOfFlags()
+    {
+        OnFlagNumberChangedEvent?.Invoke();
+    }
+
+    public Team? GetFlagOwner(FlagCapturePoint flag)
+    {
+        return _flagOwners[flag.FlagIndex];
     }
 
     protected override void AddRemoveMessageHandlers(
@@ -61,17 +196,85 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
             registerer.Register<UpdateCrpgUser>(HandleUpdateCrpgUser);
             registerer.Register<CrpgRewardUser>(HandleRewardUser);
             registerer.Register<CrpgRewardError>(HandleRewardError);
+            registerer.Register<CrpgNotification>(HandleNotification);
+            registerer.Register<CrpgServerMessage>(HandleServerMessage);
+            registerer.Register<FlagDominationMoraleChangeMessage>(OnMoraleChange);
+            registerer.Register<FlagDominationCapturePointMessage>(OnCapturePoint);
+            registerer.Register<FlagDominationFlagsRemovedMessage>(OnFlagsRemoved);
         }
+    }
+
+    protected override int GetWarningTimer()
+    {
+        if (!IsRoundInProgress || _flags.Length < 2)
+        {
+            return 0;
+        }
+
+        float timerStart = MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue() - FlagsRemovalTime;
+        float timerEnd = timerStart + 30f;
+        if (RoundComponent.RemainingRoundTime < timerStart
+            || RoundComponent.RemainingRoundTime > timerEnd)
+        {
+            return 0;
+        }
+
+        int warningTimer = MathF.Ceiling(30.0f - timerEnd - RoundComponent.RemainingRoundTime);
+        if (!_notifiedForFlagRemoval)
+        {
+            _notifiedForFlagRemoval = true;
+            NotificationsComponent.FlagsWillBeRemovedInXSeconds(30);
+        }
+
+        return warningTimer;
     }
 
     private void OnPreparationEnded()
     {
+        ResetFlags();
+        if (_flags.Length == 0)
+        {
+            return;
+        }
+
+        OnFlagNumberChangedEvent?.Invoke();
+        foreach (var flag in _flags)
+        {
+            OnCapturePointOwnerChangedEvent?.Invoke(flag, null);
+        }
     }
 
     private void OnMyClientSynchronized()
     {
         _crpgRepresentative = GameNetwork.MyPeer.GetComponent<CrpgRepresentative>();
         _crpgRepresentative.AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
+    }
+
+    private void OnMoraleChange(FlagDominationMoraleChangeMessage message)
+    {
+        ChangeMorale(message.Morale);
+    }
+
+    private void OnCapturePoint(FlagDominationCapturePointMessage message)
+    {
+        var capturedFlag = _flags.FirstOrDefault(flag => flag.FlagIndex == message.FlagIndex);
+        if (capturedFlag == null)
+        {
+            return;
+        }
+
+        CaptureFlag(capturedFlag, message.OwnerTeam);
+    }
+
+    private void OnFlagsRemoved(FlagDominationFlagsRemovedMessage message)
+    {
+        ChangeNumberOfFlags();
+    }
+
+    private void ResetFlags()
+    {
+        _flags = Mission.Current.MissionObjects.FindAllWithType<FlagCapturePoint>().ToArray();
+        _flagOwners = new Team[_flags.Length];
     }
 
     private void HandleUpdateCrpgUser(UpdateCrpgUser message)
@@ -103,16 +306,15 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
                 new Color(218, 112, 214)));
         }
 
-        if (reward.Gold != 0)
+        int gain = reward.Gold - message.RepairCost;
+        if (gain != 0)
         {
-            InformationManager.DisplayMessage(new InformationMessage($"Gained {reward.Gold} gold.",
-                new Color(65, 105, 225)));
-        }
-
-        if (message.RepairCost != 0)
-        {
-            InformationManager.DisplayMessage(new InformationMessage($"Lost {message.RepairCost} gold for upkeep.",
-                new Color(0.74f, 0.28f, 0.01f)));
+            (Color color, string verb) = gain > 0
+                ? (new Color(65, 105, 225), "Gained")
+                : (new Color(0.74f, 0.28f, 0.01f), "Lost");
+            InformationManager.DisplayMessage(
+                new InformationMessage($"{verb} {gain} gold (reward: {reward.Gold}, upkeep: {message.RepairCost}).",
+                    color));
         }
 
         if (message.SoldItemIds.Count != 0)
@@ -120,7 +322,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
             var soldItemNames = message.SoldItemIds
                 .Select(i => MBObjectManager.Instance.GetObject<ItemObject>(i)?.Value)
                 .Where(i => i != null);
-            string soldItemNamesStr = string.Join(", ", message.SoldItemIds);
+            string soldItemNamesStr = string.Join(", ", soldItemNames);
             string s = message.SoldItemIds.Count > 1 ? "s" : string.Empty;
             InformationManager.DisplayMessage(new InformationMessage($"Sold item{s} {soldItemNamesStr} to pay for upkeep.",
                 new Color(0.74f, 0.28f, 0.01f)));
@@ -140,5 +342,63 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     private void HandleRewardError(CrpgRewardError message)
     {
         InformationManager.DisplayMessage(new InformationMessage("Could not join cRPG main server. Your reward was lost.", new Color(0.75f, 0.01f, 0.01f)));
+    }
+
+    private void HandleNotification(CrpgNotification notification)
+    {
+        string message = notification.IsMessageTextId ? GameTexts.FindText(notification.Message).ToString() : notification.Message;
+
+        // Notifcation like "Flag A and B were removed"
+        if (notification.Type == CrpgNotification.NotificationType.Notification)
+        {
+            MBInformationManager.AddQuickInformation(new TextObject(AddLineBreaksToText(message)), 0, null, notification.SoundEvent);
+        }
+
+        // Red announcement like "A new update is available. Please update your client" (Lobbyscreen)
+        else if (notification.Type == CrpgNotification.NotificationType.Announcement)
+        {
+            InformationManager.AddSystemNotification(message);
+        }
+
+        // Plays a sound event
+        else if (notification.Type == CrpgNotification.NotificationType.Sound)
+        {
+            SoundEvent.CreateEventFromString(notification.SoundEvent, Mission.Scene).Play();
+        }
+    }
+
+    private void HandleServerMessage(CrpgServerMessage message)
+    {
+        string msg = message.IsMessageTextId ? GameTexts.FindText(message.Message).ToString() : message.Message;
+        InformationManager.DisplayMessage(new InformationMessage(msg, new Color(message.Red, message.Green, message.Blue, message.Alpha)));
+    }
+
+    private string AddLineBreaksToText(string text)
+    {
+        string[] words = text.Split(' ');
+        if (words.Length < 2)
+        {
+            return text;
+        }
+
+        StringBuilder result = new();
+        int currentLetterCount = 0;
+        string linebreak = "{newline}";
+        foreach (string word in words)
+        {
+            currentLetterCount += word.Length + 1; // + 1 for spaces
+            result.Append(word);
+            if (currentLetterCount > 100)
+            {
+                currentLetterCount = 0;
+                result.Append(linebreak);
+                continue;
+            }
+
+            result.Append(' ');
+        }
+
+        result.Length -= " ".Length;
+        return result.ToString();
     }
 }

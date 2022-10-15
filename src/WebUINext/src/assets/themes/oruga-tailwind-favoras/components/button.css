@@ -1,0 +1,44 @@
+.o-btn {
+  @apply rounded-lg py-2 px-4 font-bold;
+}
+
+.o-btn__wrapper {
+  @apply relative inline-flex w-full items-center justify-center gap-2;
+}
+
+.o-btn__label {
+  @apply flex flex-wrap items-center justify-center gap-2 text-center;
+}
+
+.o-btn--primary {
+  @apply bg-primary bg-opacity-50 text-white;
+}
+
+.o-btn--secondary {
+  @apply bg-secondary bg-opacity-50 text-white;
+}
+
+.o-btn--danger {
+  @apply bg-danger bg-opacity-50 text-white;
+}
+
+.o-btn--neutral {
+  @apply bg-neutral text-black;
+}
+
+.o-btn--todo {
+  @apply bg-todo text-white;
+}
+
+.o-btn--todo2 {
+  @apply bg-todo2 text-white;
+}
+
+.o-btn__icon {
+}
+
+.o-btn__icon-left {
+}
+
+.o-btn__icon-right {
+}

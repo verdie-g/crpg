@@ -4,7 +4,8 @@ namespace Crpg.Module.Common.ChatCommands.Admin;
 
 internal class PlayerListCommand : AdminCommand
 {
-    public PlayerListCommand()
+    public PlayerListCommand(ChatCommandsComponent chatComponent)
+        : base(chatComponent)
     {
         Name = "pl";
         Overloads = new CommandOverload[]
@@ -15,6 +16,14 @@ internal class PlayerListCommand : AdminCommand
 
     private void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, object[] arguments)
     {
-        PrintPlayerList(fromPeer, GameNetwork.NetworkPeers.ToList());
+        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, "- Players -");
+        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
+        {
+            var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
+            if (networkPeer.IsSynchronized && crpgRepresentative.User != null)
+            {
+                ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorWarning, $"{crpgRepresentative.User.Id} | '{networkPeer.UserName}'");
+            }
+        }
     }
 }

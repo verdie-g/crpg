@@ -8,8 +8,9 @@ import ItemSlot from '@/models/item-slot';
 import ItemWeaponComponent from '@/models/item-weapon-component';
 import WeaponClass from '@/models/weapon-class';
 import UserItem from '@/models/user-item';
-import { applyPolynomialFunction } from '@/utils/math';
+import { applyPolynomialFunction, generalizedMean } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
+import EquippedItem from '@/models/equipped-item';
 
 export const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.Undefined]: 'Undefined',
@@ -92,6 +93,14 @@ const weaponTypes: ItemType[] = [
   ItemType.Bolts,
 ];
 
+const armorTypes: ItemType[] = [
+  ItemType.HeadArmor,
+  ItemType.ShoulderArmor,
+  ItemType.BodyArmor,
+  ItemType.HandArmor,
+  ItemType.LegArmor,
+];
+
 const itemTypesBySlot: Record<ItemSlot, ItemType[]> = {
   [ItemSlot.Head]: [ItemType.HeadArmor],
   [ItemSlot.Shoulder]: [ItemType.ShoulderArmor],
@@ -135,6 +144,12 @@ const itemTypeByWeaponClass: Record<WeaponClass, ItemType> = {
   [WeaponClass.LargeShield]: ItemType.Shield,
   [WeaponClass.Banner]: ItemType.Banner,
 };
+const itemUsageStr = new Map<string, string>([
+  ['long_bow', 'Long Bow'],
+  ['bow', 'Bow'],
+  ['crossbow', 'Heavy Crossbow'],
+  ['crossbow_light', 'Regular Crossbow'],
+]);
 
 function getDamageFieldValue(damage: number, damageType: DamageType): string {
   return `${damage}${damageTypeToStr[damageType]}`;
@@ -195,10 +210,23 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ['Type', itemTypeToStr[baseItem.type]],
       ['Culture', baseItem.culture],
       ['Weight', baseItem.weight],
+      ['Tier', baseItem.tier.toFixed(1)],
+      ['Max Repair Cost', computeMaxRepairCost([baseItem])],
+      ['Average Repair Cost', computeAverageRepairCost([baseItem])],
     ],
     modes: [],
   };
 
+  switch (baseItem.type) {
+    case ItemType.HeadArmor:
+    case ItemType.BodyArmor:
+    case ItemType.ShoulderArmor:
+    case ItemType.HandArmor:
+    case ItemType.LegArmor:
+    case ItemType.Crossbow:
+      props.fields.push(['Requirement', baseItem.requirement + ' STR']);
+      break;
+  }
   if (baseItem.armor !== null) {
     if (baseItem.armor.headArmor !== 0) {
       props.fields.push(['Head Armor', baseItem.armor.headArmor]);
@@ -248,6 +276,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ['Length', baseItem.weapons[0].length]
     );
   } else if (baseItem.type === ItemType.Bow || baseItem.type === ItemType.Crossbow) {
+    props.fields.push(['Class', itemUsageStr.get(baseItem.weapons[0].itemUsage)]);
     baseItem.weapons.forEach(weapon => {
       const weaponFields: [string, any][] = [
         [
@@ -257,10 +286,11 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
             baseItem.weapons[0].thrustDamageType
           ),
         ],
-        ['Fire Rate', baseItem.weapons[0].swingSpeed],
         ['Accuracy', baseItem.weapons[0].accuracy],
         ['Missile Speed', baseItem.weapons[0].missileSpeed],
         ['Length', baseItem.weapons[0].length],
+        ['Reload Speed', baseItem.weapons[0].swingSpeed],
+        ['Aim Speed', baseItem.weapons[0].thrustSpeed],
       ];
 
       props.modes.push({
@@ -338,4 +368,34 @@ export function computeSalePrice(item: UserItem): number {
   const salePrice = applyPolynomialFunction(item.baseItem.price, Constants.itemSellCostCoefs);
   // Floor salePrice to match behaviour of backend int typecast
   return Math.floor(salePrice);
+}
+
+// TODO: handle upgrade items.
+export function computeMaxRepairCost(items: Item[]): number {
+  return Math.floor(
+    items.reduce(
+      (total, item) => total + applyPolynomialFunction(item.price, Constants.itemRepairCostCoefs),
+      0
+    )
+  );
+}
+
+export function computeAverageRepairCost(items: Item[]): number {
+  return Math.floor(
+    items.reduce(
+      (total, item) => total + applyPolynomialFunction(item.price, Constants.itemRepairCostCoefs),
+      0
+    ) * Constants.itemBreakChance
+  );
+}
+
+export function computeArmorSetPieceStrengthRequirement(equippedItems: EquippedItem[]): number {
+  const numberOfArmorItemTypes = 5;
+  const armorsRequirement = new Array(numberOfArmorItemTypes).fill(0);
+  equippedItems
+    .filter(e => armorTypes.includes(e.userItem.baseItem.type))
+    .forEach((ei, i) => (armorsRequirement[i] = ei.userItem.baseItem.requirement));
+  return Math.trunc(
+    generalizedMean(Constants.armorSetRequirementPowerMeanPValue, armorsRequirement)
+  );
 }

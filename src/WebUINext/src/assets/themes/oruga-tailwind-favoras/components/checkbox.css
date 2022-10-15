@@ -1,0 +1,23 @@
+.o-chk {
+  @apply relative inline-flex select-none items-center;
+}
+
+.o-chk--checked {
+}
+
+.o-chk__check {
+  @apply inline-block h-6 w-6 rounded-md bg-todo5 p-0 align-middle focus:ring-0;
+  @apply border border-solid border-todo4;
+  @apply cursor-pointer select-none appearance-none;
+}
+
+.o-chk__check--checked {
+  @apply bg-todo4;
+}
+
+.o-chk__check--indeterminate {
+}
+
+.o-chk__label {
+  @apply cursor-pointer pl-2;
+}

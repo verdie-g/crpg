@@ -3,6 +3,8 @@ using Crpg.Application.Clans.Queries;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Games.Commands;
 using Crpg.Application.Games.Models;
+using Crpg.Application.Restrictions.Commands;
+using Crpg.Application.Restrictions.Models;
 using Crpg.Domain.Entities.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -43,4 +45,10 @@ public class GamesController : BaseController
     [HttpGet("clans/{id}")]
     public Task<ActionResult<Result<ClanViewModel>>> GetClan([FromRoute] int id) =>
         ResultToActionAsync(Mediator.Send(new GetClanQuery { ClanId = id }));
+
+    [HttpPost("restrictions")]
+    public Task<ActionResult<Result<RestrictionViewModel>>> RestrictUser([FromBody] RestrictCommand req)
+    {
+        return ResultToActionAsync(Mediator.Send(req));
+    }
 }

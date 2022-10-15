@@ -13,6 +13,8 @@ public record ItemViewModel : IMapFrom<Item>
     public ItemType Type { get; init; }
     public Culture Culture { get; init; }
     public float Weight { get; init; }
+    public float Tier { get; init; }
+    public int Requirement { get; init; }
 
     public ItemArmorComponentViewModel? Armor { get; init; }
     public ItemMountComponentViewModel? Mount { get; init; }

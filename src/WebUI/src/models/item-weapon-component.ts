@@ -4,6 +4,7 @@ import WeaponClass from '@/models/weapon-class';
 
 export default interface ItemWeaponComponent {
   class: WeaponClass;
+  itemUsage: string;
   accuracy: number;
   missileSpeed: number;
   stackAmount: number;

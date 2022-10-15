@@ -15,6 +15,8 @@ public class Item : AuditableEntity, ICloneable
     public Culture Culture { get; set; }
     public ItemType Type { get; set; }
     public int Price { get; set; }
+    public float Tier { get; set; }
+    public int Requirement { get; set; }
     public float Weight { get; set; }
 
     /// <summary>

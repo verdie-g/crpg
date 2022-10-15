@@ -301,6 +301,10 @@ namespace Crpg.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("deleted_at");
+
                     b.Property<int>("Experience")
                         .HasColumnType("integer")
                         .HasColumnName("experience");
@@ -339,7 +343,8 @@ namespace Crpg.Persistence.Migrations
 
                     b.HasIndex("UserId", "Name")
                         .IsUnique()
-                        .HasDatabaseName("ix_characters_user_id_name");
+                        .HasDatabaseName("ix_characters_user_id_name")
+                        .HasFilter("deleted_at IS NULL");
 
                     b.ToTable("characters", (string)null);
                 });
@@ -538,6 +543,14 @@ namespace Crpg.Persistence.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("integer")
                         .HasColumnName("price");
+
+                    b.Property<int>("Requirement")
+                        .HasColumnType("integer")
+                        .HasColumnName("requirement");
+
+                    b.Property<float>("Tier")
+                        .HasColumnType("real")
+                        .HasColumnName("tier");
 
                     b.Property<ItemType>("Type")
                         .HasColumnType("item_type")
@@ -1345,6 +1358,11 @@ namespace Crpg.Persistence.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("primary_handling");
 
+                            b1.Property<string>("ItemUsage")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("primary_weapon_item_usage");
+
                             b1.Property<int>("Length")
                                 .HasColumnType("integer")
                                 .HasColumnName("primary_length");
@@ -1420,6 +1438,11 @@ namespace Crpg.Persistence.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("secondary_handling");
 
+                            b1.Property<string>("ItemUsage")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("secondary_weapon_item_usage");
+
                             b1.Property<int>("Length")
                                 .HasColumnType("integer")
                                 .HasColumnName("secondary_length");
@@ -1494,6 +1517,11 @@ namespace Crpg.Persistence.Migrations
                             b1.Property<int>("Handling")
                                 .HasColumnType("integer")
                                 .HasColumnName("tertiary_handling");
+
+                            b1.Property<string>("ItemUsage")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("tertiary_weapon_item_usage");
 
                             b1.Property<int>("Length")
                                 .HasColumnType("integer")

@@ -52,6 +52,7 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
 
                 var reward = GiveReward(character, update.Reward);
                 UpdateStatistics(character, update.Statistics);
+                // UpdateRating(character, update.Rating);
                 var brokenItems = await RepairOrBreakItems(character, update.BrokenItems, cancellationToken);
                 results.Add((character.User!, reward, brokenItems));
             }
@@ -108,6 +109,13 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
             character.Statistics.Deaths += statistics.Deaths;
             character.Statistics.Assists += statistics.Assists;
             character.Statistics.PlayTime += statistics.PlayTime;
+        }
+
+        private void UpdateRating(Character character, CharacterRatingViewModel rating)
+        {
+            character.Rating.Value = rating.Value;
+            character.Rating.Deviation = rating.Deviation;
+            character.Rating.Volatility = rating.Volatility;
         }
 
         private async Task<List<GameRepairedItem>> RepairOrBreakItems(Character character, IList<GameUserBrokenItem> itemsToRepair,

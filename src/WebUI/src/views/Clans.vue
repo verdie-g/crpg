@@ -39,12 +39,12 @@
         </div>
       </div>
 
-      <b-tabs v-model="activeRegionTab">
+      <b-tabs v-model="selectedRegion">
         <b-tab-item
-          v-for="translatedRegion in translatedRegions"
-          :value="translatedRegion.translation"
-          :key="translatedRegion.region"
-          :label="translatedRegion.translation"
+          v-for="[regionValue, regionStr] in regions"
+          :value="regionValue"
+          :key="regionValue"
+          :label="regionStr"
         >
           <b-table
             id="clansTable"
@@ -139,15 +139,18 @@ import Clan from '@/models/clan';
 import userModule from '@/store/user-module';
 import ClanWithMemberCount from '@/models/clan-with-member-count';
 import { argbIntToRgbHexColor } from '@/utils/color';
-import { getTranslatedRegions } from '@/services/region-service';
+import { regionToStr } from '@/services/region-service';
+import Region from '@/models/region';
 
 @Component
 export default class Clans extends Vue {
   clanSearchQuery = '';
   clansLoading = false;
   clansPerPage = 20;
-  translatedRegions = getTranslatedRegions();
-  activeRegionTab = 0;
+
+  get regions(): [string, string][] {
+    return Object.entries(regionToStr);
+  }
 
   get userClan(): Clan | null {
     return userModule.clan;
@@ -159,7 +162,7 @@ export default class Clans extends Vue {
 
   get filteredClans(): ClanWithMemberCount[] {
     const filteredClans = clanModule.clans.filter(
-      clan => clan.clan.region === this.translatedRegions[this.activeRegionTab].region
+      clan => clan.clan.region === this.selectedRegion
     );
     if (this.clanSearchQuery.length === 0) {
       return filteredClans;
@@ -171,18 +174,30 @@ export default class Clans extends Vue {
     );
   }
 
+  get selectedRegion(): Region {
+    return this.$route.query.region ? (this.$route.query.region as Region) : Region.Europe;
+  }
+
+  set selectedRegion(region: Region) {
+    this.$router.replace({
+      query: {
+        ...this.$route.query,
+        region,
+      }
+    });
+  }
+
   get currentPage(): number {
     const currentPage = this.$route.query.page
       ? parseInt(this.$route.query.page as string, 10)
       : undefined;
-
     if (!currentPage) {
-      this.$router.replace('clans?page=' + 1);
       return 1;
     }
+
     const minPage = Math.ceil(this.filteredClans.length / this.clansPerPage);
     if (currentPage > minPage) {
-      this.$router.replace('clans?page=' + minPage);
+      this.$router.replace({ name: 'clans', params: { page: minPage.toString() } });
       return minPage;
     }
     return currentPage;

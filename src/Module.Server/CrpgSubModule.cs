@@ -1,7 +1,6 @@
 ﻿using System.Xml.Linq;
 using Crpg.Module.Battle;
 using Crpg.Module.Common;
-using Crpg.Module.Common.GameHandler;
 using Crpg.Module.Common.Models;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
@@ -25,13 +24,6 @@ namespace Crpg.Module;
 internal class CrpgSubModule : MBSubModuleBase
 {
     private CrpgConstants _constants = default!;
-
-    public override void OnGameInitializationFinished(Game game)
-    {
-        base.OnGameInitializationFinished(game);
-
-        game.AddGameHandler<CrpgChatBox>();
-    }
 
     protected override void OnSubModuleLoad()
     {

@@ -29,7 +29,8 @@ try
 }
 catch (Exception e)
 {
-    Console.WriteLine($"Could not update cRPG (error: {e.Message}). The game will still launch but you might get a version mismatch error. Press enter to continue.");
+    Console.WriteLine("Could not update cRPG. The game will still launch but you might get a version mismatch error. Press enter to continue.");
+    Console.WriteLine(e);
     Console.Read();
 }
 
@@ -81,7 +82,13 @@ static string? ResolveBannerlordPathFromRegistry()
         return null;
     }
 
-    VProperty vdf = VdfConvert.Deserialize(File.ReadAllText(Path.Combine(steamPath, "steamapps/libraryfolders.vdf")));
+    string vdfPath = Path.Combine(steamPath, "steamapps/libraryfolders.vdf");
+    if (!File.Exists(vdfPath))
+    {
+        return null;
+    }
+
+    VProperty vdf = VdfConvert.Deserialize(File.ReadAllText(vdfPath));
 
     for (int i = 0; ; i += 1)
     {

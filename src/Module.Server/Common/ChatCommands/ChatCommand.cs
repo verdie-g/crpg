@@ -1,6 +1,4 @@
-﻿using Crpg.Module.Common.GameHandler;
-using TaleWorlds.Core;
-using TaleWorlds.Library;
+﻿using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.ChatCommands;
@@ -12,7 +10,14 @@ internal abstract class ChatCommand
     protected static readonly Color ColorSuccess = new(0f, 1f, 0f);
     protected static readonly Color ColorFatal = new(1f, 0f, 0f);
 
+    protected readonly ChatCommandsComponent ChatComponent;
+
     public string Name { get; protected set; } = string.Empty;
+
+    protected ChatCommand(ChatCommandsComponent chatComponent)
+    {
+        ChatComponent = chatComponent;
+    }
 
     /// <summary>A command can accepts several arguments types, the first one that matches the input is used.</summary>
     protected CommandOverload[] Overloads { get; set; } = Array.Empty<CommandOverload>();
@@ -22,7 +27,7 @@ internal abstract class ChatCommand
     {
         if (!CheckRequirements(fromPeer))
         {
-            GetChat().ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Insufficient permissions.");
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, "Insufficient permissions.");
             return false;
         }
 
@@ -56,45 +61,23 @@ internal abstract class ChatCommand
 
     protected bool TryGetPlayerByName(NetworkCommunicator fromPeer, string targetName, out NetworkCommunicator? peer)
     {
-        CrpgChatBox crpgChat = GetChat();
-
         List<NetworkCommunicator> peers = GetNetworkPeerByName(targetName);
         if (peers.Count == 0)
         {
-            crpgChat.ServerSendMessageToPlayer(fromPeer, ColorFatal, "No matching name found.");
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, "No matching name found.");
             peer = null;
             return false;
         }
 
         if (peers.Count > 1)
         {
-            crpgChat.ServerSendMessageToPlayer(fromPeer, ColorWarning, "More than one match found. Please try the ID instead.");
-            PrintPlayerList(fromPeer, peers);
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorWarning, "More than one match found. Please try the ID instead.");
             peer = null;
             return false;
         }
 
         peer = peers[0];
         return true;
-    }
-
-    protected CrpgChatBox GetChat()
-    {
-        return Game.Current.GetGameHandler<CrpgChatBox>();
-    }
-
-    protected void PrintPlayerList(NetworkCommunicator fromPeer, List<NetworkCommunicator> peerList)
-    {
-        CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorInfo, "- Players -");
-        foreach (NetworkCommunicator networkPeer in peerList)
-        {
-            var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-            if (networkPeer.IsSynchronized && crpgRepresentative.User != null)
-            {
-                crpgChat.ServerSendMessageToPlayer(fromPeer, ColorWarning, $"{crpgRepresentative.User.Id} | '{networkPeer.UserName}'");
-            }
-        }
     }
 
     private List<NetworkCommunicator> GetNetworkPeerByName(string name)
@@ -137,6 +120,7 @@ internal abstract class ChatCommand
 
                     parsedArguments[i] = parsedInt;
                     break;
+
                 case ChatCommandParameterType.Float32:
                     if (!float.TryParse(arguments[i], out float parsedFloat))
                     {
@@ -145,37 +129,93 @@ internal abstract class ChatCommand
 
                     parsedArguments[i] = parsedFloat;
                     break;
+
                 case ChatCommandParameterType.String:
                     parsedArguments[i] = i < expectedTypes.Length - 1
                         ? arguments[i]
                         : string.Join(" ", arguments.Skip(i));
-
                     break;
-                case ChatCommandParameterType.PlayerId:
-                    if (!int.TryParse(arguments[i], out int id))
+
+                case ChatCommandParameterType.TimeSpan:
+                    if (!TryParseTimeSpan(arguments[i], out var timeSpan))
                     {
                         return false;
                     }
 
-                    bool playerFound = false;
-                    foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
+                    parsedArguments[i] = timeSpan;
+                    break;
+
+                case ChatCommandParameterType.PlayerId:
+                    if (!TryParsePlayerId(arguments[i], out var networkPeer))
                     {
-                        var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-                        if (networkPeer.IsSynchronized && crpgRepresentative.User?.Id == id)
-                        {
-                            parsedArguments[i] = networkPeer;
-                            playerFound = true;
-                            break;
-                        }
+                        return false;
                     }
 
-                    if (playerFound)
-                    {
-                        break;
-                    }
-
-                    return false;
+                    parsedArguments[i] = networkPeer!;
+                    break;
             }
+        }
+
+        return true;
+    }
+
+    private bool TryParsePlayerId(string input, out NetworkCommunicator? networkPeer)
+    {
+        if (!int.TryParse(input, out int id))
+        {
+            networkPeer = null;
+            return false;
+        }
+
+        foreach (NetworkCommunicator p in GameNetwork.NetworkPeers)
+        {
+            var crpgRepresentative = p.GetComponent<CrpgRepresentative>();
+            if (p.IsSynchronized && crpgRepresentative.User?.Id == id)
+            {
+                networkPeer = p;
+                return true;
+            }
+        }
+
+        networkPeer = null;
+        return false;
+    }
+
+    /// <summary>Parses input such as "15m". Unit supported s, m, h, d.</summary>
+    private bool TryParseTimeSpan(string input, out TimeSpan timeSpan)
+    {
+        if (input == "0")
+        {
+            timeSpan = TimeSpan.Zero;
+            return false;
+        }
+
+        if (input.Length < 2) // At least one number and a unit.
+        {
+            return false;
+        }
+
+        if (!int.TryParse(input.Substring(0, input.Length - 1), out int inputInt))
+        {
+            return false;
+        }
+
+        switch (input[input.Length - 1])
+        {
+            case 's':
+                timeSpan = TimeSpan.FromSeconds(inputInt);
+                break;
+            case 'm':
+                timeSpan = TimeSpan.FromMinutes(inputInt);
+                break;
+            case 'h':
+                timeSpan = TimeSpan.FromHours(inputInt);
+                break;
+            case 'd':
+                timeSpan = TimeSpan.FromDays(inputInt);
+                break;
+            default:
+                return false;
         }
 
         return true;
@@ -186,6 +226,7 @@ internal abstract class ChatCommand
         Int32,
         Float32,
         String,
+        TimeSpan,
         PlayerId,
     }
 

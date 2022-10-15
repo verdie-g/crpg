@@ -13,7 +13,7 @@
       <b-field>
         <b-select
           placeholder="Select a region"
-          :icon="regionIcon"
+          :icon="selectedRegionIcon"
           required
           v-model="selectedRegion"
         >
@@ -40,9 +40,9 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import * as strategusService from '@/services/strategus-service';
 import strategusModule from '@/store/strategus-module';
 import Region from '@/models/region';
+import { regionToStr, regionIcons } from '@/services/region-service';
 
 @Component
 export default class RegistrationDialog extends Vue {
@@ -50,20 +50,11 @@ export default class RegistrationDialog extends Vue {
   registering = false;
 
   get regions(): [string, string][] {
-    return Object.entries(strategusService.regionToStr);
+    return Object.entries(regionToStr);
   }
 
-  get regionIcon(): string {
-    switch (this.selectedRegion) {
-      case Region.Europe:
-        return 'globe-europe';
-      case Region.NorthAmerica:
-        return 'globe-americas';
-      case Region.Asia:
-        return 'globe-asia';
-      default:
-        return 'globe';
-    }
+  get selectedRegionIcon(): string {
+    return this.selectedRegion !== null ? regionIcons[this.selectedRegion] : '';
   }
 
   onSubmit() {

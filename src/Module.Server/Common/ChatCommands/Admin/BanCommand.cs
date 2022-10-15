@@ -1,5 +1,7 @@
-﻿using System.Globalization;
-using Crpg.Module.Common.GameHandler;
+﻿using Crpg.Module.Api;
+using Crpg.Module.Api.Models.Restrictions;
+using Crpg.Module.Common.Network;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Diamond;
 
@@ -7,57 +9,80 @@ namespace Crpg.Module.Common.ChatCommands.Admin;
 
 internal class BanCommand : AdminCommand
 {
-    private enum BanDuration
-    {
-        Minutes = 1,
-        Hours = 60,
-        Days = 1440,
-    }
+    private readonly ICrpgClient _crpgClient;
 
-    public BanCommand()
+    public BanCommand(ChatCommandsComponent chatComponent, ICrpgClient crpgClient)
+        : base(chatComponent)
     {
+        _crpgClient = crpgClient;
         Name = "ban";
-        Description = $"'{ChatCommandHandler.CommandPrefix}{Name} PLAYERID DURATION REASON' to ban a player.";
+        Description = $"'{ChatCommandsComponent.CommandPrefix}{Name} PLAYERID DURATION REASON' to ban a player.";
         Overloads = new CommandOverload[]
         {
-            new(new[] { ChatCommandParameterType.Int32, ChatCommandParameterType.PlayerId, ChatCommandParameterType.String }, ExecuteBanByNetworkPeer), // !ban PLAYERID DURATION REASON
-            new(new[] { ChatCommandParameterType.String, ChatCommandParameterType.Int32, ChatCommandParameterType.String }, ExecuteBanByName), // !ban NamePattern DURATION REASON
+            new(new[] { ChatCommandParameterType.PlayerId, ChatCommandParameterType.TimeSpan, ChatCommandParameterType.String }, ExecuteBanByNetworkPeer), // !ban PLAYERID DURATION REASON
+            new(new[] { ChatCommandParameterType.String, ChatCommandParameterType.TimeSpan, ChatCommandParameterType.String }, ExecuteBanByName), // !ban NamePattern DURATION REASON
         };
     }
 
     protected override void ExecuteFailed(NetworkCommunicator fromPeer)
     {
-        CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
+        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
-    private async void ExecuteBanByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteBanByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
     {
-        CrpgChatBox crpgChat = GetChat();
+        _ = ExecuteBanByNetworkPeerAsync(fromPeer, cmd, arguments);
+    }
+
+    private async Task ExecuteBanByNetworkPeerAsync(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    {
         var targetPeer = (NetworkCommunicator)arguments[0];
-        int duration = (int)arguments[1];
+        var duration = (TimeSpan)arguments[1];
         string reason = (string)arguments[2];
-        BanDuration durationType = BanDuration.Days;
-        if (arguments.Length == 4)
-        {
-            durationType = (BanDuration)arguments[3];
-        }
 
-        DateTime banUntilDate = DateTime.Now.AddMinutes(GetDurationMultiplier(durationType, duration));
-
-        // TODO: Add web request to save the restriction
-        // Call webrequest. Banned until banUntilDate
-        var adminCrpgRepresentative = fromPeer.GetComponent<CrpgRepresentative>();
-        var victimCrpgRepresentative = targetPeer.GetComponent<CrpgRepresentative>();
-        if (adminCrpgRepresentative?.User?.Character == null && victimCrpgRepresentative?.User?.Character == null)
+        int? restrictedByUserId = fromPeer.GetComponent<CrpgRepresentative>()?.User?.Id;
+        int? restrictedUserId = targetPeer.GetComponent<CrpgRepresentative>()?.User?.Id;
+        if (restrictedUserId == null || restrictedByUserId == null)
         {
             return;
         }
 
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You were banned by {fromPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}. Reason: {reason}");
-        crpgChat.ServerSendMessageToPlayer(targetPeer, ColorFatal, $"You banned {targetPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}.");
-        crpgChat.ServerSendServerMessageToEveryone(ColorFatal, $"{targetPeer.UserName} was banned by {fromPeer.UserName} until {banUntilDate.ToString(CultureInfo.InvariantCulture)}. Reason: {reason}");
-        await Task.Delay(2500);
+        try
+        {
+            await _crpgClient.RestrictUserAsync(new CrpgRestrictionRequest
+            {
+                RestrictedUserId = restrictedUserId.Value,
+                Duration = duration,
+                Type = CrpgRestrictionType.Join,
+                Reason = reason,
+                RestrictedByUserId = restrictedByUserId.Value,
+            });
+        }
+        catch (Exception e)
+        {
+            Debug.Print("Could not ban: " + e);
+            return;
+        }
+
+        if (duration == TimeSpan.Zero)
+        {
+            ChatComponent.ServerSendMessageToPlayer(targetPeer, ColorSuccess, $"You were unbanned by {fromPeer.UserName}.");
+            ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorSuccess, $"You unbanned {targetPeer.UserName}.");
+            return;
+        }
+
+        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorFatal, $"You banned {targetPeer.UserName} for {duration}.");
+        ChatComponent.ServerSendServerMessageToEveryone(ColorFatal, $"{targetPeer.UserName} was banned by {fromPeer.UserName} for {duration}. Reason: {reason}");
+
+        GameNetwork.BeginModuleEventAsServer(targetPeer);
+        GameNetwork.WriteMessage(new CrpgNotification
+        {
+            Type = CrpgNotification.NotificationType.Announcement,
+            Message = $"Banned by {fromPeer.UserName} for {duration}. Reason: {reason}",
+        });
+        GameNetwork.EndModuleEventAsServer();
+
+        await Task.Delay(250);
         if (!targetPeer.IsConnectionActive)
         {
             return;
@@ -77,20 +102,7 @@ internal class BanCommand : AdminCommand
             return;
         }
 
-        arguments = new object[] { targetPeer!, arguments[1], arguments[2] };
+        arguments = new[] { targetPeer!, arguments[1], arguments[2] };
         ExecuteBanByNetworkPeer(fromPeer, cmd, arguments);
-    }
-
-    private int GetDurationMultiplier(BanDuration md, int duration)
-    {
-        switch (md)
-        {
-            case BanDuration.Hours:
-                return duration * 60;
-            case BanDuration.Days:
-                return duration * 60 * 24;
-            default:
-                return duration;
-        }
     }
 }

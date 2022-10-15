@@ -3,4 +3,19 @@
   <string id="str_multiplayer_official_game_type_name.cRPGBattle" text="{=*}cRPG Battle" />
   <string id="str_multiplayer_official_game_type_explainer.cRPGBattle" text="{=*}·   Kill the entire enemy team to win{newline}·   Gain experience and gold every minute{newline}·   Upgrade your character on c-rpg.eu" />
   <string id="str_multiplayer_game_type.cRPGBattle" text="{=*}cRPG Battle" />
+
+  <!-- Maps -->
+  <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=!}Abandoned" />
+  <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=!}Acacia Citadel" />
+  <string id="str_multiplayer_scene_name.crpg_battle_banditvalley" text="{=!}Bandit valley" />
+  <string id="str_multiplayer_scene_name.crpg_battle_dragonsroost" text="{=!}Dragon's Roost" />
+  <string id="str_multiplayer_scene_name.crpg_battle_elysium" text="{=!}Elysium" />
+  <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=!}Ghost Town" />
+  <string id="str_multiplayer_scene_name.crpg_battle_onomasticon" text="{=!}Onomasticon" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sallyout" text="{=!}Sally Out" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=!}Sanctuary" />
+  <string id="str_multiplayer_scene_name.crpg_battle_sandpit" text="{=!}Sandpit" />
+  <string id="str_multiplayer_scene_name.crpg_battle_skolderby" text="{=!}Skolderby" />
+  <string id="str_multiplayer_scene_name.crpg_battle_swampbrawl" text="{=!}Swamp Brawl"/>
+  <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=!}Vatnborg" />
 </strings>

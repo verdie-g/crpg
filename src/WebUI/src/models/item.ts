@@ -11,6 +11,8 @@ export default interface Item {
   type: ItemType;
   culture: Culture;
   weight: number;
+  requirement: number;
+  tier: number;
 
   armor: ItemArmorComponent | null;
   mount: ItemMountComponent | null;

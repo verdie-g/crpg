@@ -1,3 +1,4 @@
+using System.Globalization;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Battle;
 using Crpg.Module.Helpers;
@@ -46,10 +47,13 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     };
 
     private readonly CrpgConstants _constants;
+    private readonly CrpgItemRequirementModel reqModel;
+    private string _lastEquippedItemId = string.Empty;
 
     public CrpgAgentStatCalculateModel(CrpgConstants constants)
     {
         _constants = constants;
+        reqModel = new(_constants);
     }
 
     public override int GetEffectiveSkill(
@@ -74,25 +78,24 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int weaponSkill)
     {
         float inaccuracy = 0.0f;
-
-        const float accuracyPointA = 45; // Abscissa of the lowest accuracy (point A) that corresponds to stones at the moment. It's our lower calibration bound.
-        const float valueAtAccuracyPointA = 100; // Inaccuracy at point A abscissa which corresponds to equipping stones.
-        const float parabolOffset = 20; // Inaccuracy for the most accurate weapon.
-        const float parabolMinAbscissa = 140; // Set at 100 so the weapon component is strictly monotonous.
-
-        const float a = valueAtAccuracyPointA - parabolOffset; // Parameter for the polynomial, do not change.
-
-        float skillComponentMultiplier = weapon.WeaponClass == WeaponClass.Bow ? 0.4f : 0.2f;
+        float skillComponentMultiplier = 1f;
+        float weaponClassMultiplier = weapon.WeaponClass switch
+        {
+            WeaponClass.Bow => 1.4f,
+            WeaponClass.Crossbow => 0.5f,
+            WeaponClass.Stone => 1f,
+            WeaponClass.ThrowingAxe => 1f,
+            WeaponClass.ThrowingKnife => 1f,
+            WeaponClass.Javelin => 1f,
+            _ => 1f,
+        };
 
         if (weapon.IsRangedWeapon)
         {
-            float weaponComponent = (parabolMinAbscissa - weapon.Accuracy)
-                * (parabolMinAbscissa - weapon.Accuracy)
-                * a
-                / ((parabolMinAbscissa - accuracyPointA) * (100 - accuracyPointA))
-                + parabolOffset;
-            float skillComponent = skillComponentMultiplier * (float)Math.Pow(10.0, (200.0 - weaponSkill) / 200.0);
-            inaccuracy = (weaponComponent * skillComponent + (100 - weapon.Accuracy)) * 0.001f;
+            float weaponComponent = 0.1f / ((float)Math.Pow(weapon.Accuracy / 100f, 5f));
+            float skillComponent = skillComponentMultiplier * 1000000f / (1000000f + 0.01f * (float)Math.Pow(weaponSkill, 4));
+            inaccuracy = weaponComponent * skillComponent;
+            inaccuracy *= weaponClassMultiplier;
         }
         else if (weapon.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
         {
@@ -240,8 +243,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int ridingSkill = agent.RiderAgent != null
             ? GetEffectiveSkill(agent.RiderAgent.Character, agent.RiderAgent.Origin, agent.RiderAgent.Formation, DefaultSkills.Riding)
             : 100;
-        props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (1.0f + ridingSkill * 0.0035f);
-        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.22f * (1.0f + ridingSkill * 0.0032f);
+        props.MountManeuver = mount.GetModifiedMountManeuver(in mountHarness) * (0.5f + ridingSkill * 0.0025f);
+        props.MountSpeed = (mount.GetModifiedMountSpeed(in mountHarness) + 1) * 0.22f * (1.0f + ridingSkill * 0.00275f);
         props.TopSpeedReachDuration = Game.Current.BasicModels.RidingModel.CalculateAcceleration(in mount, in mountHarness, ridingSkill);
         float weightFactor = mount.Weight / 2.0f + (mountHarness.IsEmpty ? 0.0f : mountHarness.Weight);
         props.MountDashAccelerationMultiplier = weightFactor > 200.0
@@ -275,9 +278,10 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
         float agentWeight = agent.Monster.Weight;
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
-        props.TopSpeedReachDuration = 2f / MathF.Max((200f + athleticsSkill) / 300f * (agentWeight / (agentWeight + totalEncumbrance)), 0.3f);
+        float impactOfStrReqOnSpeed = ImpactOfStrReqOnSpeed(agent);
+        props.TopSpeedReachDuration = 2f / MathF.Max((200f + athleticsSkill) / 300f * (agentWeight / (agentWeight + totalEncumbrance)) * impactOfStrReqOnSpeed, 0.3f);
         float speed = 0.7f + 0.00070000015f * athleticsSkill;
-        float weightSpeedPenalty = MathF.Max(0.2f * (1f - athleticsSkill * 0.001f), 0f) * totalEncumbrance / agentWeight;
+        float weightSpeedPenalty = MathF.Max(0.2f * (1f - athleticsSkill * 0.001f), 0f) * totalEncumbrance / agentWeight / impactOfStrReqOnSpeed;
         float maxSpeedMultiplier = MBMath.ClampFloat(speed - weightSpeedPenalty, 0f, 0.91f);
         float atmosphereSpeedPenalty = agent.Mission.Scene.IsAtmosphereIndoor && agent.Mission.Scene.GetRainDensity() > 0
             ? 0.9f
@@ -310,7 +314,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.HandlingMultiplier = 1f;
         props.ShieldBashStunDurationMultiplier = 1f;
         props.KickStunDurationMultiplier = 1f;
-        props.ReloadSpeed = props.SwingSpeedMultiplier;
+        props.ReloadSpeed = equippedItem == null ? props.SwingSpeedMultiplier : (equippedItem.SwingSpeed / 100f) * (0.6f + 0.0001f * itemSkill + 0.0000125f * itemSkill * itemSkill);
         props.MissileSpeedMultiplier = 1f;
         props.ReloadMovementPenaltyFactor = 1f;
         SetAllWeaponInaccuracy(agent, props, (int)wieldedItemIndex3, equippedItem);
@@ -319,8 +323,16 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
             props.WeaponInaccuracy = GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
+            if (agent.HasMount)
+            {
+                // SwingSpeed Nerf on Horseback
+                float swingSpeedFactor = 1f / Math.Max( equippedItem.WeaponLength / 100f, 1f);
+                props.SwingSpeedMultiplier *= HasSwingDamage(primaryItem) ? swingSpeedFactor : 1f;
+            }
+
             if (equippedItem.IsRangedWeapon)
             {
+                props.ThrustOrRangedReadySpeedMultiplier = 0.45f + 0.0035f * itemSkill;
                 if (!agent.HasMount)
                 {
                     float num5 = Math.Max(0.0f, 1.0f - weaponSkill / 500.0f);
@@ -329,6 +341,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 }
                 else
                 {
+                    // Mounted Archery
                     int mountedArcherySkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.MountedArchery);
                     // float num6 = Math.Max(0.0f, (1.0f - weaponSkill / 500.0f) * (1.0f - ridingSkill / 1800.0f));
                     float num6 = 1;
@@ -353,8 +366,13 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 }
                 else if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
                 {
-                    props.WeaponMaxMovementAccuracyPenalty *= 2.5f;
-                    props.WeaponMaxUnsteadyAccuracyPenalty *= 1.2f;
+                    props.WeaponInaccuracy /= ImpactOfStrReqOnCrossbows(agent, 1f, primaryItem);
+                    props.WeaponMaxMovementAccuracyPenalty /= ImpactOfStrReqOnCrossbows(agent, 0.2f, primaryItem);
+                    props.WeaponMaxUnsteadyAccuracyPenalty = 0.5f / ImpactOfStrReqOnCrossbows(agent, 0.05f, primaryItem); // override to remove impact of wpf on this property
+                    props.WeaponRotationalAccuracyPenaltyInRadians /= ImpactOfStrReqOnCrossbows(agent, 0.3f, primaryItem);
+                    props.ThrustOrRangedReadySpeedMultiplier *= 0.2625f * (float)Math.Pow(2, weaponSkill / 191f) * ImpactOfStrReqOnCrossbows(agent, 0.3f, primaryItem); // Multiplying make windup time slower a 0 wpf, faster at 80 wpf
+                    props.ReloadSpeed *= ImpactOfStrReqOnCrossbows(agent, 0.15f, primaryItem);
+                    props.ReloadMovementPenaltyFactor = 1f / ImpactOfStrReqOnCrossbows(agent, 1f, primaryItem);
                 }
 
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
@@ -363,7 +381,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponBestAccuracyWaitTime = 0.3f + (95.75f - equippedItem.ThrustSpeed) * 0.005f;
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 60.0f) / 75.0f, 0.0f, 1f);
 
-                    props.WeaponUnsteadyBeginTime = 0.06f + weaponSkill * 0.001f * MBMath.Lerp(1f, 2f, amount) + powerDraw * powerDraw / 10f * 0.4f;
+                    props.WeaponUnsteadyBeginTime = 0.06f + weaponSkill * 0.00175f * MBMath.Lerp(1f, 2f, amount) + powerDraw * powerDraw / 10f * 0.35f;
                     if (agent.IsAIControlled)
                     {
                         props.WeaponUnsteadyBeginTime *= 4f;
@@ -405,5 +423,63 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
 
         SetAiRelatedProperties(agent, props, equippedItem, secondaryItem);
+    }
+
+    private List<ItemObject> GetArmorItemObjectList(Equipment equipment)
+    {
+        List<ItemObject> armorItemObjectList = new();
+        for (EquipmentIndex equipmentIndex = EquipmentIndex.NumAllWeaponSlots; equipmentIndex < EquipmentIndex.ArmorItemEndSlot; equipmentIndex++)
+        {
+            EquipmentElement equipmentElement = equipment[equipmentIndex];
+            if (equipmentElement.Item != null)
+            {
+                armorItemObjectList.Add(equipmentElement.Item);
+            }
+        }
+
+        return armorItemObjectList;
+    }
+
+    private float ImpactOfStrReqOnSpeed(Agent agent)
+    {
+        int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
+        var equippedArmors = GetArmorItemObjectList(agent.SpawnEquipment);
+        float setRequirement = reqModel.ComputeArmorSetPieceStrengthRequirement(equippedArmors);
+        float distanceToStrRequirement = Math.Max(setRequirement - strengthAttribute, 0);
+        float impactOfStrReqOnSpeedFactor = 0.2f; // tweak here
+        return 1 / (1 + distanceToStrRequirement * impactOfStrReqOnSpeedFactor);
+    }
+
+    private float ImpactOfStrReqOnCrossbows(Agent agent, float impact, ItemObject? equippedItem)
+    {
+        if (equippedItem == null)
+        {
+            return 1;
+        }
+
+        float distanceToStrRequirement = CrossbowDistanceToStrRequirement(agent, equippedItem);
+        return 1 / (1 + distanceToStrRequirement * impact);
+    }
+
+    private float CrossbowDistanceToStrRequirement(Agent agent, ItemObject? equippedItem)
+    {
+        if (equippedItem == null)
+        {
+            return 0;
+        }
+
+        int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
+        float setRequirement = CrpgItemRequirementModel.ComputeItemRequirement(equippedItem);
+        return Math.Max(setRequirement - strengthAttribute, 0);
+    }
+
+    private bool HasSwingDamage(ItemObject? equippedItem)
+    {
+        if (equippedItem == null)
+        {
+            return false;
+        }
+
+        return equippedItem.WeaponComponent.Weapons.Any(a => a.SwingDamage > 0);
     }
 }

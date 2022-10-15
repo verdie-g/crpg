@@ -9,6 +9,8 @@ internal class CrpgItem
     public CrpgItemType Type { get; set; }
     public int Price { get; set; }
     public float Weight { get; set; }
+    public float Tier { get; set; }
+    public int Requirement { get; set; }
 
     public CrpgItemArmorComponent? Armor { get; set; }
     public CrpgItemMountComponent? Mount { get; set; }
@@ -75,6 +77,7 @@ internal class CrpgItemMountComponent
 internal class CrpgItemWeaponComponent
 {
     public CrpgWeaponClass Class { get; set; }
+    public string ItemUsage { get; set; } = string.Empty;
     public int Accuracy { get; set; }
     public int MissileSpeed { get; set; }
     public int StackAmount { get; set; }

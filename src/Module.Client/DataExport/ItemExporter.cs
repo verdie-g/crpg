@@ -2,6 +2,7 @@
 using System.Xml;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Items;
+using Crpg.Module.Common.Models;
 using Crpg.Module.Helpers.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -101,10 +102,35 @@ internal class ItemExporter : IDataExporter
         "saddle_of_aeneas",
         "celtic_frost",
 
-        // Disable crossbows you can walk with while reloading until we can balance them.
-        "crossbow_a",
-        "crossbow_e",
-        "crossbow_g",
+        // Makes some play crash.
+        "war_horse",
+    };
+
+    private static readonly Dictionary<string, (int aimSpeed, int reloadSpeed, int damage, int missileSpeed)> BowStats = new()
+    {
+        // short bows
+        ["crpg_noble_bow"] = (99, 100, 15, 85),
+        ["crpg_steppe_war_bow"] = (101, 96, 14, 87),
+        ["crpg_composite_steppe_bow"] = (99, 101, 14, 88),
+        ["crpg_steppe_heavy_bow"] = (95, 100, 13, 85),
+        ["crpg_composite_bow"] = (97, 98, 13, 83),
+        ["crpg_nordic_shortbow"] = (93, 99, 12, 84),
+        ["crpg_hunting_bow"] = (95, 97, 11, 83),
+        ["crpg_mountain_hunting_bow"] = (91, 95, 11, 84),
+        ["crpg_steppe_bow"] = (89, 94, 10, 83),
+        ["crpg_training_bow"] = (99, 101, 6, 89),
+
+        // long bows
+        ["crpg_noble_long_bow"] = (90, 87, 20, 94),
+        ["crpg_woodland_longbow"] = (89,86,19,92),
+        ["crpg_woodland_yew_bow"] = (94, 90, 18, 92),
+        ["crpg_lowland_yew_bow"] = (89, 86, 17, 91),
+        ["crpg_nomad_bow"] = (92, 88, 17, 91),
+        ["crpg_tribal_bow"] = (90, 88, 16, 92),
+        ["crpg_lowland_longbow"] = (91, 89, 15, 92),
+        ["crpg_glen_ranger_bow"] = (89, 88, 15, 91),
+        ["crpg_highland_ranger_bow"] = (87, 86, 14, 92),
+        ["crpg_training_longbow"] = (94, 89, 7, 94),
     };
 
     public async Task Export(string gitRepoPath)
@@ -164,6 +190,8 @@ internal class ItemExporter : IDataExporter
             Type = MbToCrpgItemType(mbItem.Type),
             Price = mbItem.Value,
             Weight = mbItem.Weight,
+            Tier = mbItem.Tierf,
+            Requirement = CrpgItemRequirementModel.ComputeItemRequirement(mbItem),
         };
 
         if (mbItem.ArmorComponent != null)
@@ -195,6 +223,7 @@ internal class ItemExporter : IDataExporter
             crpgItem.Weapons = mbItem.WeaponComponent.Weapons.Select(w => new CrpgItemWeaponComponent
             {
                 Class = MbToCrpgWeaponClass(w.WeaponClass),
+                ItemUsage = w.ItemUsage,
                 Accuracy = w.Accuracy,
                 MissileSpeed = w.MissileSpeed,
                 StackAmount = w.MaxDataValue,
@@ -335,7 +364,7 @@ internal class ItemExporter : IDataExporter
                     // Single player horse harness can go up to 78 amor when the highest you can find in native mp is 26
                     // so let's divide the armor by 3. The weight doesn't change because it's good enough.
                     ModifyChildNodesAttribute(node1, "ItemComponent/Armor", "body_armor",
-                        v => ((int)(int.Parse(v) * 0.27f)).ToString(CultureInfo.InvariantCulture));
+                        v => ((int)(int.Parse(v) * 0.5f)).ToString(CultureInfo.InvariantCulture));
                 }
                 else if (type == ItemObject.ItemTypeEnum.Shield)
                 {
@@ -344,15 +373,24 @@ internal class ItemExporter : IDataExporter
                 }
                 else if (type == ItemObject.ItemTypeEnum.Bow)
                 {
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
-                        v => ((int)(int.Parse(v) * 0.2f)).ToString(CultureInfo.InvariantCulture));
+                    // needed because at this point there are still bows in the xml node that are going to get removed later.
+                    if (BowStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue)) 
+                    {
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", v => newvalue.damage.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "speed_rating", v => newvalue.reloadSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed", v => newvalue.aimSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed", v => newvalue.missileSpeed.ToString());
+                    }
                 }
                 else if (type == ItemObject.ItemTypeEnum.Crossbow)
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
                         v => ((int)(int.Parse(v) * 0.67f)).ToString(CultureInfo.InvariantCulture));
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed",
-                        v => ((int)(int.Parse(v) * 0.35f)).ToString(CultureInfo.InvariantCulture));
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed",
+                    v => ((int)(int.Parse(v) * 1.4f)).ToString(CultureInfo.InvariantCulture));
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "item_usage",
+                    v => "crossbow");
+
                 }
                 else if (type == ItemObject.ItemTypeEnum.Bolts)
                 {

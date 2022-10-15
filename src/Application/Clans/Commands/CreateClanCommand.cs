@@ -18,9 +18,9 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
 {
     public int UserId { get; init; }
     public string Tag { get; init; } = string.Empty;
+    public string Name { get; init; } = string.Empty;
     public uint PrimaryColor { get; init; }
     public uint SecondaryColor { get; init; }
-    public string Name { get; init; } = string.Empty;
     public string BannerKey { get; init; } = string.Empty;
     public Region Region { get; init; }
 
@@ -33,6 +33,12 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
                 .MaximumLength(constants.ClanTagMaxLength)
                 .Matches(new Regex(constants.ClanTagRegex, RegexOptions.Compiled));
 
+            RuleFor(c => c.PrimaryColor)
+                .GreaterThanOrEqualTo(constants.ClanColorMinValue);
+
+            RuleFor(c => c.SecondaryColor)
+                .GreaterThanOrEqualTo(constants.ClanColorMinValue);
+
             RuleFor(c => c.Name)
                 .MinimumLength(constants.ClanNameMinLength)
                 .MaximumLength(constants.ClanNameMaxLength);
@@ -41,14 +47,13 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
                 .MinimumLength(0)
                 .MaximumLength(constants.ClanBannerKeyMaxLength)
                 .Matches(new Regex(constants.ClanBannerKeyRegex, RegexOptions.Compiled));
+
+            RuleFor(cmd => cmd.Region).IsInEnum();
         }
     }
 
     internal class Handler : IMediatorRequestHandler<CreateClanCommand, ClanViewModel>
     {
-        /// <summary>Mask to get alpha from ARGB to avoid having invisible colors.</summary>
-        private const uint AlphaMask = 0xFF000000;
-
         private static readonly ILogger Logger = LoggerFactory.CreateLogger<CreateClanCommand>();
 
         private readonly ICrpgDbContext _db;
@@ -75,20 +80,20 @@ public record CreateClanCommand : IMediatorRequest<ClanViewModel>
                 return new(CommonErrors.UserAlreadyInAClan(req.UserId));
             }
 
-            var clan = await _db.Clans
+            var conflictingClan = await _db.Clans
                 .FirstOrDefaultAsync(c => c.Tag == req.Tag || c.Name == req.Name, cancellationToken);
-            if (clan != null)
+            if (conflictingClan != null)
             {
-                return clan.Tag == req.Tag
-                    ? new(CommonErrors.ClanTagAlreadyUsed(clan.Tag))
-                    : new(CommonErrors.ClanNameAlreadyUsed(clan.Name));
+                return conflictingClan.Tag == req.Tag
+                    ? new(CommonErrors.ClanTagAlreadyUsed(conflictingClan.Tag))
+                    : new(CommonErrors.ClanNameAlreadyUsed(conflictingClan.Name));
             }
 
-            clan = new Clan
+            var clan = new Clan
             {
                 Tag = req.Tag,
-                PrimaryColor = req.PrimaryColor | AlphaMask,
-                SecondaryColor = req.SecondaryColor | AlphaMask,
+                PrimaryColor = req.PrimaryColor,
+                SecondaryColor = req.SecondaryColor,
                 Name = req.Name,
                 BannerKey = req.BannerKey,
                 Region = req.Region,

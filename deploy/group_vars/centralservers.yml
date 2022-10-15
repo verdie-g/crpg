@@ -54,7 +54,7 @@ datadog_checks:
               custom_queries:
                   - metric_prefix: crpg
                     query: SELECT
-                        (SELECT COUNT(*) FROM users) AS users,
+                        (SELECT COUNT(*) FROM users WHERE deleted_at IS NOT NULL) AS users,
                         (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 month') AS active_users_30d,
                         (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 week') AS active_users_7d,
                         (SELECT COUNT(*) FROM users WHERE updated_at > now() - INTERVAL '1 day') AS active_users_1d,

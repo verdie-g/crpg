@@ -45,7 +45,16 @@ module.exports = {
     'no-param-reassign': 'off',
     'no-return-assign': 'off',
     'no-shadow': 'off',
+    'no-unneeded-ternary': 'error',
     'vue/require-v-for-key': 'off',
     'vue/valid-v-for': 'off',
   },
+  overrides: [
+    {
+      files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
+      env: {
+        jest: true,
+      },
+    },
+  ],
 };

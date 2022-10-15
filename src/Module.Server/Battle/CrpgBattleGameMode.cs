@@ -6,6 +6,7 @@ using TaleWorlds.MountAndBlade.Source.Missions;
 
 #if CRPG_SERVER
 using Crpg.Module.Api;
+using Crpg.Module.Common.ChatCommands;
 #else
 using Crpg.Module.GUI;
 using TaleWorlds.MountAndBlade.View;
@@ -69,8 +70,10 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
         CrpgHttpClient crpgClient = new();
         MultiplayerRoundController roundController = new(); // starts/stops round, ends match
 #endif
+        CrpgBattleMissionMultiplayerClient battleClient = new();
         MultiplayerGameNotificationsComponent notificationsComponent = new(); // used to send notifications (e.g. flag captured, round won) to peer
-        CrpgWarmupComponent warmupComponent = new(_constants);
+        CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent);
+        ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
 
         MissionState.OpenNew(
             Name,
@@ -79,7 +82,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                 new MissionBehavior[]
                 {
                     MissionLobbyComponent.CreateBehavior(),
-                    new CrpgBattleMissionMultiplayerClient(),
+                    battleClient,
                     new MultiplayerTimerComponent(), // round timer
                     new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
                     new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
@@ -95,16 +98,18 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new EquipmentControllerLeaveLogic(),
                     new MultiplayerPreloadHelper(),
                     warmupComponent,
+                    notificationsComponent,
 #if CRPG_SERVER
                     roundController,
-                    new CrpgBattleMissionMultiplayer(crpgClient, _constants),
-                    notificationsComponent,
+                    new CrpgBattleMissionMultiplayer(battleClient, crpgClient, _constants),
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
                     new SpawnComponent(new BattleSpawnFrameBehavior(), new CrpgBattleSpawningBehavior(_constants, roundController)),
                     new AgentHumanAILogic(), // bot intelligence
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
                     new CrpgUserManager(crpgClient),
                     new KickInactiveBehavior(warmupComponent, notificationsComponent),
+                    new MapVoteComponent(),
+                    new ChatCommandsComponent(chatBox, crpgClient),
 #else
                     new MultiplayerRoundComponent(),
                     new MissionMatchHistoryComponent(),

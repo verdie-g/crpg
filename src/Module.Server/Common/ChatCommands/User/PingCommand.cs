@@ -1,11 +1,11 @@
-﻿using Crpg.Module.Common.GameHandler;
-using TaleWorlds.MountAndBlade;
+﻿using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.ChatCommands.User;
 
 internal class PingCommand : ChatCommand
 {
-    public PingCommand()
+    public PingCommand(ChatCommandsComponent chatComponent)
+        : base(chatComponent)
     {
         Name = "ping";
         Overloads = new CommandOverload[]
@@ -16,7 +16,6 @@ internal class PingCommand : ChatCommand
 
     private void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, object[] arguments)
     {
-        CrpgChatBox crpgChat = GetChat();
-        crpgChat.ServerSendMessageToPlayer(fromPeer, ColorSuccess, "Pong!");
+        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorSuccess, "Pong!");
     }
 }
