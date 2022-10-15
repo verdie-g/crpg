@@ -206,7 +206,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
 
     protected override int GetWarningTimer()
     {
-        if (!IsRoundInProgress || _flags.Length == 0)
+        if (!IsRoundInProgress || _flags.Length < 2)
         {
             return 0;
         }

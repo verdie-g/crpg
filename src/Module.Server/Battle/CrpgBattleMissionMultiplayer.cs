@@ -382,19 +382,19 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             .Select(RemoveFlag));
 
         var remainingFlag = _flags.First(flag => !flagIndexesToRemove.Contains(flag.FlagIndex));
-        NotificationsComponent.FlagXRemaining(remainingFlag);
-
-        GameNetwork.BeginBroadcastModuleEvent();
-        GameNetwork.WriteMessage(new FlagDominationMoraleChangeMessage(_morale));
-        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
-
-        GameNetwork.BeginBroadcastModuleEvent();
-        GameNetwork.WriteMessage(new FlagDominationFlagsRemovedMessage());
-        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
-
         _wereFlagsRemoved = true;
-        _battleClient.ChangeNumberOfFlags();
-        Debug.Print("Flags were removed");
+
+        if (flagIndexesToRemove.Count > 0) // In case there is only one flag on the map.
+        {
+            NotificationsComponent.FlagXRemaining(remainingFlag);
+
+            GameNetwork.BeginBroadcastModuleEvent();
+            GameNetwork.WriteMessage(new FlagDominationFlagsRemovedMessage());
+            GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+
+            _battleClient.ChangeNumberOfFlags();
+            Debug.Print("Flags were removed");
+        }
     }
 
     private Team? GetFlagOwner(FlagCapturePoint flag)
