@@ -1,5 +1,6 @@
 ﻿using Crpg.Module.Helpers;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common.Models;
@@ -67,4 +68,16 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
 
         defenderStunMultiplier = 1f;
     }
+
+    public override bool DecideMountRearedByBlow(Agent attackerAgent, Agent victimAgent, in AttackCollisionData collisionData, WeaponComponentData attackerWeapon, in Blow blow)
+    {
+        float damageMultiplierOfCombatDifficulty = Mission.Current.GetDamageMultiplierOfCombatDifficulty(victimAgent, attackerAgent);
+        if (attackerWeapon != null && attackerWeapon.WeaponFlags.HasAnyFlag(WeaponFlags.WideGrip) && blow.StrikeType == StrikeType.Thrust && collisionData.ThrustTipHit && attackerAgent != null && !attackerAgent.HasMount && victimAgent.GetAgentFlags().HasAnyFlag(AgentFlag.CanRear) && victimAgent.MovementVelocity.y > 0.1f && Vec3.DotProduct(blow.Direction, victimAgent.Frame.rotation.f) < -0.35f)
+        {
+            return (float)collisionData.InflictedDamage >= ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.MakesRearAttackDamageThreshold) * damageMultiplierOfCombatDifficulty;
+        }
+
+        return false;
+    }
+
 }
