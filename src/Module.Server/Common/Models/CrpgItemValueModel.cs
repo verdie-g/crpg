@@ -16,8 +16,8 @@ internal class CrpgItemValueModel : ItemValueModel
         [ItemObject.ItemTypeEnum.BodyArmor] = (31632, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.HandArmor] = (6000, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.LegArmor] = (4662, ArmorPriceCoeffs),
-        [ItemObject.ItemTypeEnum.HorseHarness] = (26000, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Horse] = (18000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.HorseHarness] = (35000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Horse] = (25000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Shield] = (9235, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Bow] = (12264, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Crossbow] = (18000, ItemPriceCoeffs),
@@ -81,7 +81,7 @@ internal class CrpgItemValueModel : ItemValueModel
             ItemObject.ItemTypeEnum.BodyArmor => 46.60400548816f,
             ItemObject.ItemTypeEnum.HandArmor => 17.7773674822320f,
             ItemObject.ItemTypeEnum.LegArmor => 14.261151471078207f,
-            ItemObject.ItemTypeEnum.HorseHarness => 20f,
+            ItemObject.ItemTypeEnum.HorseHarness => 37f,
             _ => throw new ArgumentOutOfRangeException(),
         };
 
@@ -95,11 +95,12 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateHorseTier(HorseComponent horseComponent)
     {
             float horsePower =
-              1.5f * horseComponent.ChargeDamage
-            + 1.0f * horseComponent.Speed
-            + 0.6f * horseComponent.Maneuver
-            + 0.1f * horseComponent.HitPoints;
-            float bestHorsePower = 125.5f;
+             // 1.5f * horseComponent.ChargeDamage
+              (float)Math.Pow(horseComponent.Speed, 1.5f)
+            * (float)Math.Pow(horseComponent.Maneuver, 1.7f)
+            * (float)Math.Pow(horseComponent.HitPoints + horseComponent.HitPointBonus, 1f)
+            + 10f * (float)Math.Pow(horseComponent.ChargeDamage, 4f);
+            float bestHorsePower = 102466101f;
             return 10f * horsePower / bestHorsePower;
     }
 
