@@ -408,7 +408,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 int mountedArcherySkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.MountedArchery);
 
                 float weaponMaxMovementAccuracyPenalty = 0.03f / _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
-                float weaponMaxUnsteadyAccuracyPenalty = 0.03f / _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
+                float weaponMaxUnsteadyAccuracyPenalty = 0.15f / _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
                 if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
                 {
                     weaponMaxUnsteadyAccuracyPenalty /= ImpactOfStrReqOnCrossbows(agent, 0.2f, primaryItem);
