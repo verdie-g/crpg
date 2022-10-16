@@ -1,7 +1,11 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>
-    <RouterView />
-  </div>
+  <RouterView v-slot="{ Component }">
+    <Suspense>
+      <div>
+        <component :is="Component" />
+      </div>
+    </Suspense>
+  </RouterView>
 </template>
