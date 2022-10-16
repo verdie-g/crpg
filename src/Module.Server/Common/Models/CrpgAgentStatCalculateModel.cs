@@ -418,8 +418,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 props.WeaponMaxMovementAccuracyPenalty = Math.Min(weaponMaxMovementAccuracyPenalty, 1f);
                 props.WeaponMaxUnsteadyAccuracyPenalty = Math.Min(weaponMaxUnsteadyAccuracyPenalty, 1f);
                 props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
-
             }
+
             InformationManager.DisplayMessage(new InformationMessage("maxmovpen" + props.WeaponMaxMovementAccuracyPenalty.ToString()));
             InformationManager.DisplayMessage(new InformationMessage("maxunstpen" + props.WeaponMaxUnsteadyAccuracyPenalty.ToString()));
             InformationManager.DisplayMessage(new InformationMessage("WeaponInn" + props.WeaponInaccuracy.ToString()));
@@ -429,8 +429,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.AttributeShieldMissileCollisionBodySizeAdder = MathHelper.ApplyPolynomialFunction(shieldSkill, _constants.CoverageFactorForShieldCoefs);
         float ridingAttribute = agent.MountAgent?.GetAgentDrivenPropertyValue(DrivenProperty.AttributeRiding) ?? 1f;
         props.AttributeRiding = ridingSkill * ridingAttribute;
-        // TODO: AttributeHorseArchery doesn't seem to have any effect for now.
-        props.AttributeHorseArchery = Game.Current.BasicModels.StrikeMagnitudeModel.CalculateHorseArcheryFactor(character);
         props.BipedalRangedReadySpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReadySpeedMultiplier);
         props.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
 
