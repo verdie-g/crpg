@@ -325,11 +325,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             if (agent.HasMount)
             {
                 // SwingSpeed Nerf on Horseback
-                float swingSpeedFactor = 1f / Math.Max( equippedItem.WeaponLength / 100f, 1f);
+                float swingSpeedFactor = 1f / Math.Max(equippedItem.WeaponLength / 100f, 1f);
                 props.SwingSpeedMultiplier *= HasSwingDamage(primaryItem) ? swingSpeedFactor : 1f;
             }
 
-                // Ranged Behavior
+            // Ranged Behavior
             if (equippedItem.IsRangedWeapon)
             {
                 props.ThrustOrRangedReadySpeedMultiplier = 0.45f + 0.0035f * itemSkill;
@@ -404,13 +404,25 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             // Mounted Archery
 
             if (agent.HasMount)
-                {
+            {
                 int mountedArcherySkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.MountedArchery);
-                float num6 = 1;
-                props.WeaponMaxMovementAccuracyPenalty = 0.025f * num6;
-                props.WeaponMaxUnsteadyAccuracyPenalty = 0.06f * num6;
-                props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
+
+                float weaponMaxMovementAccuracyPenalty = 0.03f / _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
+                float weaponMaxUnsteadyAccuracyPenalty = 0.03f / _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
+                if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
+                {
+                    weaponMaxUnsteadyAccuracyPenalty /= ImpactOfStrReqOnCrossbows(agent, 0.2f, primaryItem);
+                    weaponMaxMovementAccuracyPenalty /= ImpactOfStrReqOnCrossbows(agent, 0.2f, primaryItem);
                 }
+
+                props.WeaponMaxMovementAccuracyPenalty = Math.Min(weaponMaxMovementAccuracyPenalty, 1f);
+                props.WeaponMaxUnsteadyAccuracyPenalty = Math.Min(weaponMaxUnsteadyAccuracyPenalty, 1f);
+                props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
+
+            }
+            InformationManager.DisplayMessage(new InformationMessage("maxmovpen" + props.WeaponMaxMovementAccuracyPenalty.ToString()));
+            InformationManager.DisplayMessage(new InformationMessage("maxunstpen" + props.WeaponMaxUnsteadyAccuracyPenalty.ToString()));
+            InformationManager.DisplayMessage(new InformationMessage("WeaponInn" + props.WeaponInaccuracy.ToString()));
         }
 
         int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
