@@ -3,7 +3,7 @@ import { VueWaitKey } from '@/boot/wait';
 
 /*
 A loader manager for vue3 with reactive method
-in component:
+use in component:
 
 import { useWait } from '@/composables/use-wait.ts'
 const $w = useWait();

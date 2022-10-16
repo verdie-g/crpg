@@ -58,7 +58,7 @@ export const install: BootModule = app => {
     stringifyQuery,
   });
 
-  router.beforeEach(authRouterMiddleware); // TODO: need implementation
+  router.beforeEach(authRouterMiddleware);
 
   app.use(router);
 };

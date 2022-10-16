@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+
 import { type BootModule } from './types/boot-module';
 
 import './assets/styles/tailwind.css';

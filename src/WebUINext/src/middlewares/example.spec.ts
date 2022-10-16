@@ -1,33 +1,24 @@
+import { getRoute, next } from '@/__mocks__/router';
 import { exampleRouterMiddleware } from './example';
+
+const from = getRoute();
 
 describe('router middleware/guard example', () => {
   it('redirect to login', async () => {
-    const from = {
-      name: 'index',
-      path: '/',
-    };
-
-    const to = {
+    const to = getRoute({
       name: 'admin',
       path: '/admin',
-    };
+    });
 
-    // @ts-ignore need mock next fn :(
-    expect(await exampleRouterMiddleware(to, from)).toEqual({ name: 'login' });
+    expect(await exampleRouterMiddleware(to, from, next)).toEqual({ name: 'login' });
   });
 
   it('ok', async () => {
-    const from = {
-      name: 'index',
-      path: '/',
-    };
-
-    const to = {
+    const to = getRoute({
       name: 'user',
       path: '/user',
-    };
+    });
 
-    // @ts-ignore need mock next fn :(
-    expect(await exampleRouterMiddleware(to, from)).toBeTruthy();
+    expect(await exampleRouterMiddleware(to, from, next)).toEqual(true);
   });
 });

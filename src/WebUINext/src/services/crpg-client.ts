@@ -1,18 +1,18 @@
 import { StatusCodes } from 'http-status-codes';
-// import { getToken, signIn } from '@/services/auth-service'; // TODO:
+import { getToken, signInSilent } from '@/services/auth-service';
 // import { NotificationType, notify } from '@/services/notifications-service'; // TODO:
 import { sleep } from '@/utils/promise';
-import { ErrorType, type Result } from '@/models/result';
+import { ErrorType, type Result } from '@/models/crpg-client-result';
 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 async function trySend(method: string, path: string, body?: any): Promise<Result<any>> {
-  // const token = await getToken(); // TODO:
+  const token = await getToken();
 
   const response = await fetch(API_BASE_URL + path, {
     method,
     headers: {
-      // Authorization: `Bearer ${token}`, // TODO:
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
     body: body != null ? JSON.stringify(body) : undefined,
@@ -21,8 +21,11 @@ async function trySend(method: string, path: string, body?: any): Promise<Result
   if (response.status === StatusCodes.UNAUTHORIZED) {
     // notify('Session expired', NotificationType.Warning); // TODO:
     await sleep(1000);
-    // await signIn(); // TODO:
+
+    await signInSilent().catch();
+
     return null!;
+    // return trySend(method, path, body);
   }
 
   return response.status !== StatusCodes.NO_CONTENT ? await response.json() : null;

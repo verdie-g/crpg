@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useUserStore } from '@/stores/user';
+import { login } from '@/services/auth-service';
+
+const { user } = toRefs(useUserStore());
+</script>
 
 <route lang="yaml">
 meta:
@@ -6,5 +11,12 @@ meta:
 </route>
 
 <template>
-  <div>Main page</div>
+  <div>
+    <h1>Main page</h1>
+    <div>
+      <div v-if="!user">
+        <OButton variant="primary" @click="login">Login</OButton>
+      </div>
+    </div>
+  </div>
 </template>
