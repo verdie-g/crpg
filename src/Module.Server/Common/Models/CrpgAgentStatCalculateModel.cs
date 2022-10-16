@@ -84,9 +84,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             WeaponClass.Bow => 1.4f,
             WeaponClass.Crossbow => 0.5f,
             WeaponClass.Stone => 1f,
-            WeaponClass.ThrowingAxe => 1f,
-            WeaponClass.ThrowingKnife => 1f,
-            WeaponClass.Javelin => 1f,
+            WeaponClass.ThrowingAxe => 1.5f,
+            WeaponClass.ThrowingKnife => 1.5f,
+            WeaponClass.Javelin => 1.5f,
             _ => 1f,
         };
 
@@ -310,7 +310,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             : null;
         int itemSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, primaryItem?.RelevantSkill ?? DefaultSkills.Athletics);
         props.SwingSpeedMultiplier = 0.93f + 0.0007f * itemSkill;
-        props.ThrustOrRangedReadySpeedMultiplier = props.SwingSpeedMultiplier;
         props.HandlingMultiplier = 1f;
         props.ShieldBashStunDurationMultiplier = 1f;
         props.KickStunDurationMultiplier = 1f;
@@ -330,41 +329,18 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 props.SwingSpeedMultiplier *= HasSwingDamage(primaryItem) ? swingSpeedFactor : 1f;
             }
 
+                // Ranged Behavior
             if (equippedItem.IsRangedWeapon)
             {
                 props.ThrustOrRangedReadySpeedMultiplier = 0.45f + 0.0035f * itemSkill;
-                if (!agent.HasMount)
-                {
-                    float num5 = Math.Max(0.0f, 1.0f - weaponSkill / 500.0f);
-                    props.WeaponMaxMovementAccuracyPenalty = 0.125f * num5;
-                    props.WeaponMaxUnsteadyAccuracyPenalty = 0.1f * num5;
-                }
-                else
-                {
-                    // Mounted Archery
-                    int mountedArcherySkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.MountedArchery);
-                    // float num6 = Math.Max(0.0f, (1.0f - weaponSkill / 500.0f) * (1.0f - ridingSkill / 1800.0f));
-                    float num6 = 1;
-                    props.WeaponMaxMovementAccuracyPenalty = 0.025f * num6;
-                    props.WeaponMaxUnsteadyAccuracyPenalty = 0.06f * num6;
-                    props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
-                }
+                float maxMovementAccuracyPenaltyMultiplier = Math.Max(0.0f, 1.0f - weaponSkill / 500.0f);
+                float weaponMaxMovementAccuracyPenalty = 0.125f * maxMovementAccuracyPenaltyMultiplier;
+                float weaponMaxUnsteadyAccuracyPenalty = 0.1f * maxMovementAccuracyPenaltyMultiplier;
+                props.WeaponMaxMovementAccuracyPenalty = Math.Max(0.0f, weaponMaxMovementAccuracyPenalty);
+                props.WeaponMaxUnsteadyAccuracyPenalty = Math.Max(0.0f, weaponMaxUnsteadyAccuracyPenalty);
 
-                props.WeaponMaxMovementAccuracyPenalty = Math.Max(0.0f, props.WeaponMaxMovementAccuracyPenalty);
-                props.WeaponMaxUnsteadyAccuracyPenalty = Math.Max(0.0f, props.WeaponMaxUnsteadyAccuracyPenalty);
-                if (equippedItem.RelevantSkill == DefaultSkills.Bow)
-                {
-                    float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 60.0f) / 75.0f, 0.0f, 1f);
-                    props.WeaponMaxMovementAccuracyPenalty *= 6f;
-                    props.WeaponMaxUnsteadyAccuracyPenalty *= 4.5f / MBMath.Lerp(0.75f, 2f, amount);
-                }
-                else if (equippedItem.RelevantSkill == DefaultSkills.Throwing)
-                {
-                    float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 89.0f) / 13.0f, 0.0f, 1f);
-                    props.WeaponMaxUnsteadyAccuracyPenalty *= 3.5f * MBMath.Lerp(1.5f, 0.8f, amount);
-                    props.WeaponInaccuracy *= 1.5f;
-                }
-                else if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
+                // Crossbows
+                if (equippedItem.RelevantSkill == DefaultSkills.Crossbow)
                 {
                     props.WeaponInaccuracy /= ImpactOfStrReqOnCrossbows(agent, 1f, primaryItem);
                     props.WeaponMaxMovementAccuracyPenalty /= ImpactOfStrReqOnCrossbows(agent, 0.2f, primaryItem);
@@ -375,29 +351,40 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.ReloadMovementPenaltyFactor = 1f / ImpactOfStrReqOnCrossbows(agent, 1f, primaryItem);
                 }
 
+                // Bows
                 if (equippedItem.WeaponClass == WeaponClass.Bow)
                 {
-                    int powerDraw = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.PowerDraw);
+                    // Movement Penalty
+                    float scale = MBMath.ClampFloat((equippedItem.ThrustSpeed - 60.0f) / 75.0f, 0.0f, 1f);
+                    props.WeaponMaxMovementAccuracyPenalty *= 6f;
+                    props.WeaponMaxUnsteadyAccuracyPenalty *= 4.5f / MBMath.Lerp(0.75f, 2f, scale);
+
+                    // Aim Speed
                     props.WeaponBestAccuracyWaitTime = 0.3f + (95.75f - equippedItem.ThrustSpeed) * 0.005f;
                     float amount = MBMath.ClampFloat((equippedItem.ThrustSpeed - 60.0f) / 75.0f, 0.0f, 1f);
 
+                    // Hold Time
+                    int powerDraw = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.PowerDraw);
                     props.WeaponUnsteadyBeginTime = 0.06f + weaponSkill * 0.00175f * MBMath.Lerp(1f, 2f, amount) + powerDraw * powerDraw / 10f * 0.35f;
-                    if (agent.IsAIControlled)
-                    {
-                        props.WeaponUnsteadyBeginTime *= 4f;
-                    }
-
                     props.WeaponUnsteadyEndTime = 2f + props.WeaponUnsteadyBeginTime;
+
+                    // Rotation Penalty
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.1f;
                 }
+
+                // Throwing
                 else if (equippedItem.WeaponClass is WeaponClass.Javelin or WeaponClass.ThrowingAxe or WeaponClass.ThrowingKnife or WeaponClass.Stone)
                 {
+                    float unsteadyAccuracyPenaltyScaler = MBMath.ClampFloat((equippedItem.ThrustSpeed - 89.0f) / 13.0f, 0.0f, 1f);
+                    props.WeaponMaxUnsteadyAccuracyPenalty *= 3.5f * MBMath.Lerp(1.5f, 0.8f, unsteadyAccuracyPenaltyScaler);
                     int powerThrow = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.PowerThrow);
                     props.WeaponBestAccuracyWaitTime = 0.4f + (89.0f - equippedItem.ThrustSpeed) * 0.03f;
                     props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.006f + powerThrow * powerThrow / 10f * 0.4f;
                     props.WeaponUnsteadyEndTime = 10f + props.WeaponUnsteadyBeginTime;
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.025f;
                 }
+
+                // Rest? Will not touch. It may affect other mechanics like Catapults etc...
                 else
                 {
                     props.WeaponBestAccuracyWaitTime = 0.1f;
@@ -406,11 +393,24 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.1f;
                 }
             }
+
+            // does this govern couching?
             else if (equippedItem.WeaponFlags.HasAllFlags(WeaponFlags.WideGrip))
             {
                 props.WeaponUnsteadyBeginTime = 1.0f + weaponSkill * 0.005f;
                 props.WeaponUnsteadyEndTime = 3.0f + weaponSkill * 0.01f;
             }
+
+            // Mounted Archery
+
+            if (agent.HasMount)
+                {
+                int mountedArcherySkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.MountedArchery);
+                float num6 = 1;
+                props.WeaponMaxMovementAccuracyPenalty = 0.025f * num6;
+                props.WeaponMaxUnsteadyAccuracyPenalty = 0.06f * num6;
+                props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
+                }
         }
 
         int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
