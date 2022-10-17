@@ -563,7 +563,7 @@
     </SpritePart>
     <SpritePart>
       <SheetID>54</SheetID>
-      <Name>crpg_battle_elysium</Name>
+      <Name>crpg_battle_cabbagepatch</Name>
       <Width>1920</Width>
       <Height>1080</Height>
       <SheetX>0</SheetX>
@@ -785,8 +785,8 @@
       <SpritePartName>crpg_battle_ghosttown</SpritePartName>
     </GenericSprite>
     <GenericSprite>
-      <Name>crpg_battle_elysium</Name>
-      <SpritePartName>crpg_battle_elysium</SpritePartName>
+      <Name>crpg_battle_cabbagepatch</Name>
+      <SpritePartName>crpg_battle_cabbagepatch</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
