@@ -12,11 +12,8 @@ const userAllowedAccess = (route: RouteLocationNormalized, role: Role): boolean 
 export const authRouterMiddleware: NavigationGuard = async to => {
   /*
     (1) service route, for example - oidc callback pages: /signin-callback, /signin-silent-callback
-
     (2) user is not logged in, try signInSilent then fetch user data ()
-
     (3) to-route has a role requirement
-
     (3) user has access
   */
 

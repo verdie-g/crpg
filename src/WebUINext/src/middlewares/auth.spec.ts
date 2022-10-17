@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils';
 import Role from '@/models/role';
 import Platform from '@/models/platform';
 import User from '@/models/user';
+import { getRoute, next } from '@/__mocks__/router';
 
 const mockedSignInSilent = vi.fn();
 vi.mock('@/services/auth-service', () => {
@@ -14,7 +15,7 @@ vi.mock('@/services/auth-service', () => {
 import { useUserStore } from '@/stores/user';
 import { authRouterMiddleware } from './auth';
 
-// TODO:
+// need for testing with pinia-store
 mount(
   defineComponent({
     template: `<div></div>`,
@@ -32,12 +33,7 @@ beforeEach(() => {
   userStore.$reset();
 });
 
-const from = {
-  name: 'index',
-  path: '/',
-};
-
-const getUser = (): User => ({
+const getUser = (user: Partial<User> = {}): User => ({
   id: 1,
   platform: Platform.Steam,
   platformUserId: 123,
@@ -48,34 +44,35 @@ const getUser = (): User => ({
   avatarSmall: '',
   avatarMedium: '',
   avatarFull: '',
+  ...user,
 });
 
+const from = getRoute();
+
 it('skip any route validation', async () => {
-  const to = {
+  const to = getRoute({
     name: 'skip-auth-route',
     path: '/skip-auth-route',
     meta: {
+      layout: 'default',
       skipAuth: true,
     },
-  };
+  });
 
-  // @ts-ignore need mock next() fn :(
-  expect(await authRouterMiddleware(to, from)).toEqual(true);
+  expect(await authRouterMiddleware(to, from, next)).toEqual(true);
 
   expect(userStore.fetchUser).not.toBeCalled();
   expect(mockedSignInSilent).not.toBeCalled();
 });
 
-describe('route requires User role', () => {
-  const to = {
+describe('route not requires any role', () => {
+  const to = getRoute({
     name: 'user',
     path: '/user',
-    meta: {},
-  };
+  });
 
   it('!user - no token -> try to signInSilent and fetch user', async () => {
-    // @ts-ignore need mock next() fn :(
-    expect(await authRouterMiddleware(to, from)).toEqual(true);
+    expect(await authRouterMiddleware(to, from, next)).toEqual(true);
 
     expect(mockedSignInSilent).toBeCalled();
     expect(userStore.fetchUser).not.toBeCalled();
@@ -84,8 +81,7 @@ describe('route requires User role', () => {
   it('!user - has token -> try to signInSilent and fetch user', async () => {
     mockedSignInSilent.mockResolvedValueOnce('test_token');
 
-    // @ts-ignore need mock next() fn :(
-    expect(await authRouterMiddleware(to, from)).toEqual(true);
+    expect(await authRouterMiddleware(to, from, next)).toEqual(true);
 
     expect(mockedSignInSilent).toBeCalled();
     expect(userStore.fetchUser).toBeCalled();
@@ -93,58 +89,45 @@ describe('route requires User role', () => {
 });
 
 describe('route requires role', () => {
-  const to = {
+  const to = getRoute({
     name: 'user',
     path: '/user',
     meta: {
       roles: ['User'],
     },
-  };
+  });
 
   it('!user + no token -> go to index page', async () => {
-    // @ts-ignore need mock next() fn :(
-    expect(await authRouterMiddleware(to, from)).toEqual({ name: 'index' });
+    expect(await authRouterMiddleware(to, from, next)).toEqual({ name: 'index' });
   });
 
   it('user with role:User -> validation passed', async () => {
-    userStore.user = {
-      ...getUser(),
-      role: Role.User,
-    };
+    userStore.user = getUser({ role: Role.User });
 
-    // @ts-ignore need mock next() fn :(
-    expect(await authRouterMiddleware(to, from)).toEqual(true);
+    expect(await authRouterMiddleware(to, from, next)).toEqual(true);
     expect(mockedSignInSilent).not.toBeCalled();
     expect(userStore.fetchUser).not.toBeCalled();
   });
 });
 
 describe('with Admin role', () => {
-  const to = {
+  const to = getRoute({
     name: 'admin',
     path: '/admin',
     meta: {
       roles: ['Admin'],
     },
-  };
+  });
 
   it('user with role:User -> go to index page', async () => {
-    userStore.user = {
-      ...getUser(),
-      role: Role.User,
-    };
+    userStore.user = getUser({ role: Role.User });
 
-    // @ts-ignore need mock next() fn :(
-    expect(await authRouterMiddleware(to, from)).toEqual({ name: 'index' });
+    expect(await authRouterMiddleware(to, from, next)).toEqual({ name: 'index' });
   });
 
   it('user with role:Admin -> validation passed', async () => {
-    userStore.user = {
-      ...getUser(),
-      role: Role.Admin,
-    };
+    userStore.user = getUser({ role: Role.Admin });
 
-    // @ts-ignore need mock next() fn :(`
-    expect(await authRouterMiddleware(to, from)).toEqual(true);
+    expect(await authRouterMiddleware(to, from, next)).toEqual(true);
   });
 });
