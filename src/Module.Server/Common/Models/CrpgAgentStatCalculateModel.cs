@@ -419,10 +419,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 props.WeaponMaxUnsteadyAccuracyPenalty = Math.Min(weaponMaxUnsteadyAccuracyPenalty, 1f);
                 props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
             }
-
-            InformationManager.DisplayMessage(new InformationMessage("maxmovpen" + props.WeaponMaxMovementAccuracyPenalty.ToString()));
-            InformationManager.DisplayMessage(new InformationMessage("maxunstpen" + props.WeaponMaxUnsteadyAccuracyPenalty.ToString()));
-            InformationManager.DisplayMessage(new InformationMessage("WeaponInn" + props.WeaponInaccuracy.ToString()));
         }
 
         int shieldSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.Shield);
