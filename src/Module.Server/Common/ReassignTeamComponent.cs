@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.PlayerServices;
 
@@ -6,12 +7,14 @@ namespace Crpg.Module.Common;
 
 /// <summary>
 /// Used to reassign the team when a player reconnects -> Avoid random team.
+/// This component is for the server. The client doe not have a round controller and also doesn't need to run any of this code.
+/// The <see cref="NoTeamSelectComponent"/> is still used to disable the team selection menu.
 /// </summary>
 internal class ReassignTeamComponent : NoTeamSelectComponent
 {
     public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
     private readonly MissionScoreboardComponent _missionScoreboardComponent;
-    private readonly Dictionary<PlayerId, Team> _playerTeamList;
+    private readonly Dictionary<PlayerId, BattleSideEnum> _playerTeamList;
     private readonly MultiplayerRoundController _roundController;
     private bool _isAutobalanceCheck;
 
@@ -20,7 +23,7 @@ internal class ReassignTeamComponent : NoTeamSelectComponent
         _missionScoreboardComponent = missionScoreboardComponent;
         _roundController = roundController;
         _isAutobalanceCheck = false;
-        _playerTeamList = new Dictionary<PlayerId, Team>();
+        _playerTeamList = new Dictionary<PlayerId, BattleSideEnum>();
     }
 
     public override void OnBehaviorInitialize()
@@ -36,14 +39,21 @@ internal class ReassignTeamComponent : NoTeamSelectComponent
         AutoAssignTeam(networkPeer);
     }
 
+    /// <summary>
+    /// Disables the check if autobalance was running.
+    /// </summary>
     private void OnRoundStarted()
     {
         _isAutobalanceCheck = false;
     }
 
+    /// <summary>
+    /// Between the calls of <see cref="OnRoundStarted"/> and <see cref="OnMissionReset"/> the autobalance runs.
+    /// Therefore we allow teamswitches in the time between both method calls.
+    /// </summary>
     private void OnMissionReset(object sender, PropertyChangedEventArgs e)
     {
-        _isAutobalanceCheck = MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.GetIntValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions) != 0;
+        _isAutobalanceCheck = MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.GetIntValue(MultiplayerOptions.MultiplayerOptionsAccessMode.CurrentMapOptions) != (int)AutoTeamBalanceLimits.Off;
     }
 
     private void OnPlayerChangeSide(Team previousTeam, Team newTeam, MissionPeer peer)
@@ -60,32 +70,31 @@ internal class ReassignTeamComponent : NoTeamSelectComponent
         // First connect
         if (previousTeam == null && !_playerTeamList.ContainsKey(playerId))
         {
-            _playerTeamList.Add(playerId, newTeam);
+            _playerTeamList.Add(playerId, newTeam.Side);
             return;
         }
 
-        if (newTeam == previousTeam || _playerTeamList[playerId].Side == newTeam.Side)
+        if (newTeam == previousTeam || _playerTeamList[playerId] == newTeam.Side)
         {
             return;
-        }
-
-        bool isTeamBalance = false;
-        if (_isAutobalanceCheck)
-        {
-            int attackerPlayerCount = GetPlayerCountForTeam(Mission.Current.AttackerTeam);
-            int defenderPlayerCount = GetPlayerCountForTeam(Mission.Current.DefenderTeam);
-            int teamBalanceDifference = GetAutoTeamBalanceDifference((AutoTeamBalanceLimits)MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.GetIntValue());
-            isTeamBalance = Math.Abs(attackerPlayerCount - defenderPlayerCount) > teamBalanceDifference;
         }
 
         // If he was moved by autobalance
-        if (isTeamBalance)
+        if (_isAutobalanceCheck && AreTeamsBalanced())
         {
-            _playerTeamList[playerId] = newTeam;
+            _playerTeamList[playerId] = newTeam.Side;
             return;
         }
 
-        Team targetTeam = _playerTeamList[playerId].Side == Mission.Teams.Defender.Side ? Mission.Teams.Defender : Mission.Teams.Attacker;
+        Team targetTeam = _playerTeamList[playerId] == Mission.Teams.Defender.Side ? Mission.Teams.Defender : Mission.Teams.Attacker;
         ChangeTeamServer(networkPeer, targetTeam);
+    }
+
+    private bool AreTeamsBalanced()
+    {
+        int attackerPlayerCount = GetPlayerCountForTeam(Mission.Current.AttackerTeam);
+        int defenderPlayerCount = GetPlayerCountForTeam(Mission.Current.DefenderTeam);
+        int teamBalanceDifference = GetAutoTeamBalanceDifference((AutoTeamBalanceLimits)MultiplayerOptions.OptionType.AutoTeamBalanceThreshold.GetIntValue());
+        return Math.Abs(attackerPlayerCount - defenderPlayerCount) > teamBalanceDifference;
     }
 }
