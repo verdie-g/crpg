@@ -308,9 +308,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         WeaponComponentData? secondaryItem = wieldedItemIndex4 != EquipmentIndex.None
             ? equipment[wieldedItemIndex4].CurrentUsageItem
             : null;
-        WeaponClass currentItemMode = primaryItem?.WeaponComponent.Weapons[agent.WieldedWeapon.CurrentUsageIndex].WeaponClass ?? WeaponClass.Undefined;
-        SkillObject currentItemRelevantSkill = TaleWorlds.Core.WeaponComponentData.GetRelevantSkillFromWeaponClass(currentItemMode);
-        int itemSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, currentItemRelevantSkill ?? DefaultSkills.Athletics);
+        int itemSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, equippedItem?.RelevantSkill ?? DefaultSkills.Athletics);
         props.SwingSpeedMultiplier = 0.93f + 0.0007f * itemSkill;
         props.HandlingMultiplier = 1f;
         props.ShieldBashStunDurationMultiplier = 1f;
