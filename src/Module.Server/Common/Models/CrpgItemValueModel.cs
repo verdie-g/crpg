@@ -23,7 +23,7 @@ internal class CrpgItemValueModel : ItemValueModel
         [ItemObject.ItemTypeEnum.Crossbow] = (18000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.OneHandedWeapon] = (7500, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.TwoHandedWeapon] = (14000, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Polearm] = (20000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Polearm] = (16175, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Thrown] = (7385, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Arrows] = (4500, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Bolts] = (8200, ItemPriceCoeffs),
@@ -144,9 +144,9 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         float weaponScaler = weaponComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.OneHandedWeapon => 58.854553f,
+            ItemObject.ItemTypeEnum.OneHandedWeapon => 51.481019181948f,
             ItemObject.ItemTypeEnum.TwoHandedWeapon => 116.82765f,
-            ItemObject.ItemTypeEnum.Polearm => 59.05128f,
+            ItemObject.ItemTypeEnum.Polearm => 26.96976208667952f,
             _ => 1f,
         };
         float maxTier = float.MinValue;
@@ -205,9 +205,9 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         return damageType switch
         {
-            DamageTypes.Blunt => 1.8f,
-            DamageTypes.Pierce => 1f,
-            _ => 1.15f,
+            DamageTypes.Blunt => 2f,
+            DamageTypes.Pierce => 1.75f,
+            _ => 1.0f,
         };
     }
 
@@ -235,11 +235,10 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateThrownWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons.MaxBy(a => a.MaxDataValue);
-        float scaler = 125416166.4f;
+        float scaler = 1654160.4f;
         return
               weapon.ThrustDamage
             * weapon.ThrustDamage
-            * weapon.SwingSpeed
             * weapon.MissileSpeed
             * weapon.Accuracy
             * weapon.MaxDataValue
@@ -300,7 +299,6 @@ internal class CrpgItemValueModel : ItemValueModel
           * CalculateDamageTypeFactor(weapon.ThrustDamageType)
           * weapon.MissileDamage * weapon.MissileDamage
           * weapon.MaxDataValue
-          * CalculateDamageTypeFactor(weapon.ThrustDamageType)
           / scaler;
     }
 }

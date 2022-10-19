@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Tableaus;
 using TaleWorlds.ObjectSystem;
@@ -122,7 +123,7 @@ internal class ItemExporter : IDataExporter
 
         // long bows
         ["crpg_noble_long_bow"] = (90, 87, 20, 94),
-        ["crpg_woodland_longbow"] = (89,86,19,92),
+        ["crpg_woodland_longbow"] = (89, 86, 19, 92),
         ["crpg_woodland_yew_bow"] = (94, 90, 18, 92),
         ["crpg_lowland_yew_bow"] = (89, 86, 17, 91),
         ["crpg_nomad_bow"] = (92, 88, 17, 91),
@@ -131,6 +132,105 @@ internal class ItemExporter : IDataExporter
         ["crpg_glen_ranger_bow"] = (89, 88, 15, 91),
         ["crpg_highland_ranger_bow"] = (87, 86, 14, 92),
         ["crpg_training_longbow"] = (94, 89, 7, 94),
+    };
+    private static readonly Dictionary<string, (int swingSpeed, int swingDamage, int thrustSpeed, int thrustDamage)> ModifiedCraftedItemsStats = new()
+    {
+        // OneHanded
+        // Decorated BroadSword
+        ["crpg_battania_noble_sword_3_t5"] = (0, 0, 0, 0),
+        // Decorated Arming Sword
+        ["crpg_vlandia_noble_sword_1_t5"] = (0, 4, 0, 0),
+        // Arming Sword with Circle
+        ["crpg_vlandia_noble_sword_2_t5"] = (0, 0, 0, 0),
+        // Highland Broad Blade
+        ["crpg_battania_sword_5_t5"] = (0, 0, 0, 0),
+        // Engrave Angular Kaskara
+        ["crpg_aserai_noble_sword_4_t5"] = (0, 4, 0, 0),
+        // Thamaskene Steel Warsword
+        ["crpg_sturgia_noble_sword_1_t5"] = (0, 3, 0, 0),
+        // Decorated Fullered Sword
+        ["crpg_sturgia_noble_sword_3_t5"] = (0, 3, 0, 0),
+        // Decorated Saber
+        ["crpg_khuzait_noble_sword_1_t5"] = (0, 3, 0, 0),
+        // Polearms6
+        // Glaive
+        ["crpg_khuzait_polearm_1_t4"] = (0, 0, 0, 0),
+        // Voulge
+        ["crpg_vlandia_polearm_1_t5"] = (0, 0, 0, 0),
+        // Long Glaive
+        ["crpg_khuzait_polearm_2_t5"] = (0, 0, 0, 0),
+        // Menavlion
+        ["crpg_empire_polearm_1_t4"] = (0, 6, 0, 0),
+        // Romphaia
+        ["crpg_battania_polearm_1_t5"] = (0, 3, 0, 0),
+        // Polesword
+        ["crpg_easter_polesword_t4"] = (0, 0, 4, 0),
+        // Fine Steel Menavlion
+        ["crpg_empire_polearm_2_t5"] = (0, 0, 0, 0),
+        // Thin Fine Steel Hewing Spear
+        ["crpg_eastern_spear_5_t5"] = (0, 0, 0, 0),
+        // Jagged Throwing Spear
+        ["crpg_eastern_throwing_spear_1_t3"] = (0, 0, 0, 0),
+        // Triangular Throwing Spear
+        ["crpg_eastern_throwing_spear_2_t4"] = (0, 0, 0, 1),
+        // Pillum
+        ["crpg_imperial_throwing_spear_1_t4"] = (0, 0 , 0, 0),
+    };
+    private static readonly Dictionary<string, (float damageFactor, float weightFactor, int stackAmount)> BladeNerfs = new()
+    {
+        // glaive
+        ["crpg_spear_blade_19"] = (0.71f, 1.3f, 2),
+        // voulge
+        ["crpg_axe_craft_10_head"] = (0.71f, 1f, 2),
+        // long glaive
+        ["crpg_spear_blade_24"] = (0.71f, 1f, 2),
+        // menavlion
+        ["crpg_spear_blade_7"] = (0.71f, 1.7f, 2),
+        // romphaia
+        ["crpg_spear_blade_44"] = (0.71f, 1f, 2),
+        // polesword
+        ["crpg_spear_blade_22"] = (0.71f, 1f, 2),
+        // fine steel menavlion
+        ["crpg_spear_blade_18"] = (0.71f, 1f, 2),
+        // warrazor
+        ["crpg_spear_blade_43"] = (0.71f, 1f, 2),
+        // Decorated Broadsword
+        ["crpg_battania_noble_blade_2"] = (1f, 1.3f, 2),
+        // Highland Broad Blade
+        ["crpg_battania_blade_5"] = (1f, 1.2f, 2),
+        // Arming Sword with Circle
+        ["crpg_vlandian_noble_blade_1"] = (1f, 1.3f, 2),
+        // Decorated Armingsword
+        ["crpg_vlandian_noble_blade_4"] = (1f, 1.3f, 2),
+        // Engraved Angular Kaskara
+        ["crpg_aserai_noble_blade_3"] = (1f, 1.2f, 2),
+        // Engraved Backsword
+        ["crpg_battania_noble_blade_1"] = (1f, 0.8f, 2),
+        // Highland Throwing Axe - Tribesman Throwing Axe - Francesca
+        ["crpg_axe_craft_4_head"] = (1.80f, 1f, 3),
+        // Raider Throwing Axe
+        ["crpg_axe_craft_13_head"] = (1.80f, 1f, 3),
+        // Thin Fine Steel Hewing Spear - Jereed
+        ["crpg_spear_blade_27"] = (0.85f, 1f, 3),
+        // Hooked Javelin - Harpoon
+        ["crpg_spear_blade_10"] = (0.85f, 1f, 3),
+        // javelin
+        ["crpg_spear_blade_15"] = (1.225f, 1f, 1),
+        //daggers
+        ["crpg_dagger_blade_10"] = (1.6f, 1f, 9),
+        ["crpg_dagger_blade_11"] = (1.6f, 1f, 9),
+        ["crpg_dagger_blade_12"] = (1.6f, 1f, 9),
+        ["crpg_dagger_blade_13"] = (1.6f, 1f, 9),
+
+    };
+    private static readonly Dictionary<string, (string newTemplate, string newBlade, string newGuard, string newHandle, float newBladeSize,float newHandleSize, string newPommel)> ThrowingSpears = new()
+    {
+        // Jagged Throwing Spear
+        ["crpg_eastern_throwing_spear_1_t3"] = ("crpg_Javelin", "crpg_spear_blade_15", "crpg_default_polearm_guard", "crpg_spear_handle_11", 350f, 175f, "crpg_spear_pommel_5"),
+        // Pilum
+        ["crpg_imperial_throwing_spear_1_t4"] = ("crpg_Javelin", "crpg_spear_blade_15", "crpg_default_polearm_guard", "crpg_spear_handle_11", 375f, 200f, "crpg_spear_pommel_5"),
+        // Triangular Throwing Spear
+        ["crpg_eastern_throwing_spear_2_t4"] = ("crpg_Javelin", "crpg_spear_blade_15", "crpg_default_polearm_guard", "crpg_spear_handle_11", 300f, 225f, "crpg_spear_pommel_5"),
     };
 
     public async Task Export(string gitRepoPath)
@@ -170,14 +270,14 @@ internal class ItemExporter : IDataExporter
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
         SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));
-
+        /*
         const string itemThumbnailsTempPath = "../../crpg-items";
         string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
 
         Directory.CreateDirectory(itemThumbnailsTempPath);
         await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);
         Directory.Delete(itemThumbnailsPath, recursive: true);
-        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);
+        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);*/
     }
 
     private static CrpgItem MbToCrpgItem(ItemObject mbItem)
@@ -326,18 +426,55 @@ internal class ItemExporter : IDataExporter
             node1.Attributes!["id"].Value = PrefixCrpg(node1.Attributes["id"].Value);
             if (node1.Name == "CraftedItem")
             {
-                node1.Attributes!["crafting_template"].Value = PrefixCrpg(node1.Attributes["crafting_template"].Value);
-                foreach (var pieceNode in node1.FirstChild.ChildNodes.Cast<XmlNode>())
-                {
-                    pieceNode.Attributes!["id"].Value = PrefixCrpg(pieceNode.Attributes["id"].Value);
+                 node1.Attributes!["crafting_template"].Value = PrefixCrpg(node1.Attributes["crafting_template"].Value);
+                 foreach (var pieceNode in node1.FirstChild.ChildNodes.Cast<XmlNode>())
+                 {
+                        pieceNode.Attributes!["id"].Value = PrefixCrpg(pieceNode.Attributes["id"].Value);
+                 }
+
+                // needed because at this point there are still bows in the xml node that are going to get removed later.
+
+                 if (ModifiedCraftedItemsStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue))
+                 {
+                    AddNodeAttribute(node1, "swing_speed", v => newvalue.swingSpeed.ToString(), "0");
+                    AddNodeAttribute(node1, "swing_damage", v => newvalue.swingDamage.ToString(), "0");
+                    AddNodeAttribute(node1, "thrust_speed", v => newvalue.thrustSpeed.ToString(), "0");
+                    AddNodeAttribute(node1, "thrust_damage", v => newvalue.thrustDamage.ToString(), "0");
+                 }
+
+                 if (ThrowingSpears.TryGetValue(node1.Attributes["id"].Value, out var newThrowingSpear))
+                 {
+                    node1.Attributes!["crafting_template"].Value = "crpg_Javelin";
+                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Blade",
+                        v => newThrowingSpear.newBlade);
+                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "scale_factor", "Type", "Blade",
+                        v => newThrowingSpear.newBladeSize.ToString());
+                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Guard",
+                        v => newThrowingSpear.newGuard);
+                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Handle",
+                        v => newThrowingSpear.newHandle);
+                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "scale_factor", "Type", "Handle",
+                         v => newThrowingSpear.newHandleSize.ToString());
+                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Pommel",
+                        v => newThrowingSpear.newPommel);
                 }
             }
             else if (node1.Name == "CraftingPiece")
             {
                 ModifyChildNodesAttribute(node1, "BladeData", "stack_amount",
-                        v => ((int)(int.Parse(v) * 0.75f)).ToString(CultureInfo.InvariantCulture));
+                    v => ((int)(int.Parse(v) * 0.75f)).ToString(CultureInfo.InvariantCulture));
                 ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
                     v => (float.Parse(v) * 0.35f).ToString(CultureInfo.InvariantCulture));
+
+                if (BladeNerfs.TryGetValue(node1.Attributes["id"].Value, out var newvalue))
+                {
+                    ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
+                        v => (float.Parse(v) * newvalue.damageFactor).ToString(CultureInfo.InvariantCulture));
+                    AddNodeAttribute(node1, "weight",
+                        v => (float.Parse(v) * newvalue.weightFactor).ToString(), "0");
+                    ModifyChildNodesAttribute(node1, "BladeData", "stack_amount",
+                        v => newvalue.stackAmount.ToString(CultureInfo.InvariantCulture));
+                }
             }
             else if (node1.Name == "Item")
             {
@@ -374,7 +511,7 @@ internal class ItemExporter : IDataExporter
                 else if (type == ItemObject.ItemTypeEnum.Bow)
                 {
                     // needed because at this point there are still bows in the xml node that are going to get removed later.
-                    if (BowStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue)) 
+                    if (BowStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue))
                     {
                         ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", v => newvalue.damage.ToString());
                         ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "speed_rating", v => newvalue.reloadSpeed.ToString());
@@ -486,6 +623,57 @@ internal class ItemExporter : IDataExporter
             attr.Value = modify(attr.Value);
         }
     }
+    private static void ModifyChildNodesAttributewithCondition(XmlNode parentNode,
+    string childXPath,
+    string attributeName,
+    string attributeFiltered,
+    string attributeFilteredValue,
+    Func<string, string> modify,
+    string? defaultValue = null)
+    {
+        foreach (var childNode in parentNode.SelectNodes(childXPath)!.Cast<XmlNode>())
+        {
+            if (childNode.Attributes[attributeFiltered].Value == attributeFilteredValue)
+            {
+                var attr = childNode.Attributes![attributeName];
+                if (attr == null)
+                {
+                    if (defaultValue == null)
+                    {
+                        throw new KeyNotFoundException($"Attribute '{attributeName}' was not found and no default was provided");
+                    }
+
+                    attr = childNode.OwnerDocument!.CreateAttribute(attributeName);
+                    attr.Value = defaultValue;
+                    childNode.Attributes.Append(attr);
+                }
+
+                attr.Value = modify(attr.Value);
+            }
+        }
+    }
+
+    private static void AddNodeAttribute(XmlNode node,
+    string attributeName,
+    Func<string, string> modify,
+    string? defaultValue = null)
+    {
+        var attr = node.Attributes![attributeName];
+        if (attr == null)
+        {
+            if (defaultValue == null)
+            {
+                throw new KeyNotFoundException($"Attribute '{attributeName}' was not found and no default was provided");
+            }
+
+            attr = node.OwnerDocument!.CreateAttribute(attributeName);
+            attr.Value = defaultValue;
+            node.Attributes.Append(attr);
+        }
+
+        attr.Value = modify(attr.Value);
+    }
+
 
     private static void RegisterMbObjects<T>(XmlDocument doc, Game game) where T : MBObjectBase, new()
     {
