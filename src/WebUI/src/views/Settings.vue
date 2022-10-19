@@ -9,11 +9,28 @@
       <h2 class="title">Delete account</h2>
       <div class="content">
         <p>Make your character, items, gold and all your progression disappear.</p>
-        <b-button type="is-danger is-medium" @click="onDeleteAccountDialog">
+        <b-button type="is-danger is-medium" @click="isDeleteAcountDialogActive = true">
           Delete your account
         </b-button>
       </div>
     </div>
+
+    <b-modal
+      v-if="user"
+      v-model="isDeleteAcountDialogActive"
+      has-modal-card
+      trap-focus
+      aria-role="dialog"
+      aria-modal
+    >
+      <template #default="props">
+        <UserConfirmDeleteForm
+          :userName="user.name"
+          @close="props.close"
+          @submit="onDeleteAccount"
+        />
+      </template>
+    </b-modal>
   </div>
 </template>
 
@@ -21,12 +38,22 @@
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import { signOut } from '@/services/auth-service';
+import User from '@/models/user';
 import { timestampToTimeString } from '@/utils/date';
+import UserConfirmDeleteForm from '@/components/UserConfirmDeleteForm.vue';
 
-@Component
+@Component({
+  components: { UserConfirmDeleteForm },
+})
 export default class Settings extends Vue {
+  isDeleteAcountDialogActive = false;
+
   created(): void {
     userModule.getUserRestrictions();
+  }
+
+  get user(): User | null {
+    return userModule.user;
   }
 
   get restrictionsData() {
@@ -68,18 +95,10 @@ export default class Settings extends Vue {
     ];
   }
 
-  onDeleteAccountDialog(): void {
-    this.$buefy.dialog.confirm({
-      title: 'Deleting account',
-      message: 'Are you sure you want to delete your account? This action cannot be undone.',
-      confirmText: 'Delete account',
-      type: 'is-danger',
-      hasIcon: true,
-      onConfirm: () => {
-        userModule.deleteUser();
-        signOut();
-      },
-    });
+  onDeleteAccount(): void {
+    this.isDeleteAcountDialogActive = false;
+    userModule.deleteUser();
+    signOut();
   }
 }
 </script>
