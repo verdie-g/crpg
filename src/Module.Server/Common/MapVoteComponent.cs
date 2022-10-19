@@ -30,7 +30,7 @@ internal class MapVoteComponent : MissionBehavior
         int currentMapIndex = Array.IndexOf(_maps, Mission.SceneName);
         if (currentMapIndex != -1 && currentMapIndex < MaxMapsToVote && _maps.Length > MaxMapsToVote)
         {
-            _maps[currentMapIndex] = _maps[MaxMapsToVote];
+            (_maps[currentMapIndex], _maps[MaxMapsToVote]) = (_maps[MaxMapsToVote], _maps[currentMapIndex]);
         }
 
         mapVoteItems.Clear();
