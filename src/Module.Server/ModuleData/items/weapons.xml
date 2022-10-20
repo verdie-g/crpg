@@ -1448,7 +1448,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_vlandia_2hsword_2_t5" name="{=VAO11FSu}Thamaskene Steel Two Hander" crafting_template="crpg_TwoHandedSword" culture="Culture.vlandia" swing_speed="6" swing_damage="6" thrust_speed="0" thrust_damage="8">
     <Pieces>
-      <Piece id="crpg_aserai_blade_5" Type="Blade" scale_factor="110" />
+      <Piece id="crpg_vlandian_blade_3" Type="Blade" scale_factor="110" />
       <Piece id="crpg_vlandian_guard_8" Type="Guard" scale_factor="100" />
       <Piece id="crpg_vlandian_grip_7" Type="Handle" scale_factor="100" />
       <Piece id="crpg_vlandian_pommel_9" Type="Pommel" scale_factor="100" />

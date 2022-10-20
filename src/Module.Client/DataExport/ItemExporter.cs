@@ -232,22 +232,22 @@ internal class ItemExporter : IDataExporter
         // Raider Throwing Axe
         ["crpg_axe_craft_13_head"] = (1.5f, 1f, 1f, 4),
         // Thin Fine Steel Hewing Spear - Jereed
-        ["crpg_spear_blade_27"] = (0.85f, 1f, 1f, 3),
+        ["crpg_spear_blade_27"] = (0.85f, 0.85f, 1f, 3),
         // Hooked Javelin - Harpoon
-        ["crpg_spear_blade_10"] = (0.85f, 1f, 1f, 3),
+        ["crpg_spear_blade_10"] = (0.85f, 0.85f, 1f, 3),
         // javelin
-        ["crpg_spear_blade_15"] = (1.225f, 1f, 1f, 1),
+        ["crpg_spear_blade_15"] = (1.225f, 1.225f, 1f, 1),
         // daggers
-        ["crpg_dagger_blade_10"] = (1.6f, 1f, 1f, 9),
-        ["crpg_dagger_blade_11"] = (1.6f, 1f, 1f, 9),
-        ["crpg_dagger_blade_12"] = (1.6f, 1f, 1f, 9),
-        ["crpg_dagger_blade_13"] = (1.6f, 1f, 1f, 9),
+        ["crpg_dagger_blade_10"] = (1.6f, 1.6f, 1f, 9),
+        ["crpg_dagger_blade_11"] = (1.6f, 1.6f, 1f, 9),
+        ["crpg_dagger_blade_12"] = (1.6f, 1.6f, 1f, 9),
+        ["crpg_dagger_blade_13"] = (1.6f, 1.6f, 1f, 9),
         // Falx , Reaper Falx
         ["crpg_battania_blade_6"] = (0.82f, 1f, 1f, 0),
         // Broad Kaskara
         ["crpg_aserai_blade_5"] = (0.85f, 1f, 1f, 0),
         // Wide Fullered Broad Two Hander - Thamaskene Steel Two Hander - Wide Fullered Broad Arming Sword
-        ["crpg_vlandian_blade_3"] = (0.85f, 0.5f, 1f, 0),
+        ["crpg_vlandian_blade_3"] = (0.85f, 0.53f, 1f, 0),
     };
     private static readonly Dictionary<string, (string newBlade, string newHandle, float newBladeSize, float newHandleSize)> ThrowingAxes = new()
     {
@@ -265,7 +265,7 @@ internal class ItemExporter : IDataExporter
         // Broad Kaskara
         ["crpg_southern_broad_2hsword_t4"] = ("crpg_aserai_blade_5", 120f),
         // Thamaskene
-        ["crpg_vlandia_2hsword_2_t5"] = ("crpg_aserai_blade_5", 110f),
+        ["crpg_vlandia_2hsword_2_t5"] = ("crpg_vlandian_blade_3", 119f),
         // Wide Fullered Broad Sword
         ["crpg_vlandia_2hsword_1_t5"] = ("crpg_vlandian_blade_3", 120f),
     };
@@ -536,7 +536,7 @@ internal class ItemExporter : IDataExporter
                 if (BladeNerfs.TryGetValue(node1.Attributes["id"].Value, out var newBladeStats))
                 {
                     ModifyChildNodesAttributewithCondition(node1, "BladeData/*", "damage_factor", "damage_type", "Pierce",
-                        v => newBladeStats.thrustDamageFactor.ToString(CultureInfo.InvariantCulture));
+                        v => (float.Parse(v) * newBladeStats.thrustDamageFactor).ToString(CultureInfo.InvariantCulture));
                     ModifyChildNodesAttributewithCondition(node1, "BladeData/*", "damage_factor", "damage_type", "Cut",
                         v => (float.Parse(v) * newBladeStats.swingDamageFactor).ToString(CultureInfo.InvariantCulture));
                     AddNodeAttribute(node1, "weight",
