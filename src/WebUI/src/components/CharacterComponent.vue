@@ -146,12 +146,38 @@
         </b-button>
       </b-tooltip>
 
-      <b-button type="is-danger" icon-left="trash" @click="openDeleteCharacterDialog">
+      <b-button type="is-danger" icon-left="trash" @click="isDeleteCharacterDialogActive = true">
         Delete
       </b-button>
 
       <character-overall-items-stats-component :equippedItems="characterEquippedItems" />
     </div>
+
+    <b-modal
+      v-model="isDeleteCharacterDialogActive"
+      has-modal-card
+      trap-focus
+      aria-role="dialog"
+      aria-modal
+    >
+      <template #default="props">
+        <ConfirmActionForm
+          :confirmValue="character.name"
+          @close="props.close"
+          @submit="onDeleteCharacter"
+        >
+          <template #title>Deleting character</template>
+          <template #description>
+            <p>
+              Are you sure you want to delete your character {{ character.name }} lvl.
+              {{ character.level }}
+              <br />
+              This action cannot be undone.
+            </p>
+          </template>
+        </ConfirmActionForm>
+      </template>
+    </b-modal>
 
     <b-modal :active.sync="isReplaceItemModalActive" ref="replaceItemModal">
       <div class="replace-item-modal is-flex is-flex-direction-column px-4 py-4">
@@ -309,6 +335,7 @@ import CharacterOverallItemsStatsComponent from '@/components/CharacterOverallIt
 import EquippedItem from '@/models/equipped-item';
 import UserItem from '@/models/user-item';
 import DisplayUserItem from '@/components/user/DisplayUserItem.vue';
+import ConfirmActionForm from '@/components/ConfirmActionForm.vue';
 
 @Component({
   components: {
@@ -316,6 +343,7 @@ import DisplayUserItem from '@/components/user/DisplayUserItem.vue';
     CharacterStatsComponent,
     ItemProperties,
     CharacterOverallItemsStatsComponent,
+    ConfirmActionForm,
   },
 })
 export default class CharacterComponent extends Vue {
@@ -329,6 +357,8 @@ export default class CharacterComponent extends Vue {
   userItemToReplaceSlot: ItemSlot | null = null;
   userItemToSell: UserItem | null = null;
   selectedUserItem: UserItem | null = null;
+
+  isDeleteCharacterDialogActive = false;
 
   get characterEquippedItems(): EquippedItem[] | null {
     return userModule.characterEquippedItems(this.character.id);
@@ -425,19 +455,9 @@ export default class CharacterComponent extends Vue {
     });
   }
 
-  openDeleteCharacterDialog(): void {
-    this.$buefy.dialog.confirm({
-      title: 'Deleting character',
-      message: `Are you sure you want to delete your character ${this.character.name} lvl. ${this.character.level}?
-        This action cannot be undone.`,
-      confirmText: 'Delete Character',
-      type: 'is-danger',
-      hasIcon: true,
-      onConfirm: () => {
-        userModule.deleteCharacter(this.character);
-        notify('Character deleted');
-      },
-    });
+  onDeleteCharacter(): void {
+    userModule.deleteCharacter(this.character);
+    notify('Character deleted');
   }
 
   openReplaceItemModal(slot: ItemSlot): void {

@@ -2,7 +2,9 @@
   <form @submit.prevent="onSubmit">
     <div class="modal-card" style="width: auto">
       <header class="modal-card-head">
-        <p class="modal-card-title">Deleting account</p>
+        <p class="modal-card-title">
+          <slot name="title" />
+        </p>
         <button type="button" class="delete" @click="$emit('close')" />
       </header>
 
@@ -13,31 +15,22 @@
           </div>
 
           <div class="media-content">
-            <p>
-              Are you sure you want to delete your account?
-              <br />
-              This action cannot be undone.
-            </p>
+            <slot name="description" />
           </div>
         </div>
 
         <p>Enter the following to confirm:</p>
         <p class="mb-1">
-          <b>{{ userName }}</b>
+          <b>{{ confirmValue }}</b>
         </p>
         <b-field style="">
-          <b-input v-model="userNameModel" required style="width: 250px" />
+          <b-input v-model="confirmModel" required style="width: 250px" />
         </b-field>
       </section>
 
       <footer class="modal-card-foot is-justify-content-flex-end">
         <b-button label="Cancel" @click="$emit('close')" />
-        <b-button
-          label="Delete acount"
-          native-type="submit"
-          type="is-danger"
-          :disabled="!isValid"
-        />
+        <b-button label="Delete" native-type="submit" type="is-danger" :disabled="!isValid" />
       </footer>
     </div>
   </form>
@@ -47,13 +40,13 @@
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 
 @Component
-export default class ClanFormComponent extends Vue {
-  @Prop(String) readonly userName: string;
+export default class ConfirmActionForm extends Vue {
+  @Prop(String) readonly confirmValue: string;
 
-  userNameModel: string = '';
+  confirmModel = '';
 
   get isValid() {
-    return this.userName === this.userNameModel;
+    return this.confirmValue === this.confirmModel;
   }
 
   @Emit('submit')

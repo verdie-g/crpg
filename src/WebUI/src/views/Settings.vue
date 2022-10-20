@@ -24,11 +24,16 @@
       aria-modal
     >
       <template #default="props">
-        <UserConfirmDeleteForm
-          :userName="user.name"
-          @close="props.close"
-          @submit="onDeleteAccount"
-        />
+        <ConfirmActionForm :confirmValue="user.name" @close="props.close" @submit="onDeleteAccount">
+          <template #title>Deleting account</template>
+          <template #description>
+            <p>
+              Are you sure you want to delete your account?
+              <br />
+              This action cannot be undone.
+            </p>
+          </template>
+        </ConfirmActionForm>
       </template>
     </b-modal>
   </div>
@@ -40,10 +45,10 @@ import userModule from '@/store/user-module';
 import { signOut } from '@/services/auth-service';
 import User from '@/models/user';
 import { timestampToTimeString } from '@/utils/date';
-import UserConfirmDeleteForm from '@/components/UserConfirmDeleteForm.vue';
+import ConfirmActionForm from '@/components/ConfirmActionForm.vue';
 
 @Component({
-  components: { UserConfirmDeleteForm },
+  components: { ConfirmActionForm },
 })
 export default class Settings extends Vue {
   isDeleteAcountDialogActive = false;
