@@ -23,8 +23,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     private MissionTimer? _spawnTimer;
     private MissionTimer? _cavalrySpawnDelay;
     private bool _botsSpawned;
-    private int _bannerCounter = 14;
-    private int _bannerProg = 0;
 
     public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController? roundController)
     {
