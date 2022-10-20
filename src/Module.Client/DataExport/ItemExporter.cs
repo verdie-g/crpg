@@ -497,46 +497,56 @@ internal class ItemExporter : IDataExporter
                  // Bows
                  if (ModifiedCraftedItemsStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue))
                  {
-                    AddNodeAttribute(node1, "swing_speed", v => newvalue.swingSpeed.ToString(), "0");
-                    AddNodeAttribute(node1, "swing_damage", v => newvalue.swingDamage.ToString(), "0");
-                    AddNodeAttribute(node1, "thrust_speed", v => newvalue.thrustSpeed.ToString(), "0");
-                    AddNodeAttribute(node1, "thrust_damage", v => newvalue.thrustDamage.ToString(), "0");
+                    ModifyNodeAttribute(node1, "swing_speed", v => newvalue.swingSpeed.ToString(), "0");
+                    ModifyNodeAttribute(node1, "swing_damage", v => newvalue.swingDamage.ToString(), "0");
+                    ModifyNodeAttribute(node1, "thrust_speed", v => newvalue.thrustSpeed.ToString(), "0");
+                    ModifyNodeAttribute(node1, "thrust_damage", v => newvalue.thrustDamage.ToString(), "0");
                  }
 
                  // Throwing Spears
                  if (ThrowingSpears.TryGetValue(node1.Attributes["id"].Value, out var newThrowingSpear))
                  {
                     node1.Attributes!["crafting_template"].Value = "crpg_Javelin";
-                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Blade",
-                        v => newThrowingSpear.newBlade);
-                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "scale_factor", "Type", "Blade",
-                        v => newThrowingSpear.newBladeSize.ToString());
-                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Guard",
-                        v => newThrowingSpear.newGuard);
-                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Handle",
-                        v => newThrowingSpear.newHandle);
-                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "scale_factor", "Type", "Handle",
-                         v => newThrowingSpear.newHandleSize.ToString());
-                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Pommel",
-                        v => newThrowingSpear.newPommel);
-                 }
+                    ModifyChildNodesAttribute(node1, "Pieces/*", "id",
+                        v => newThrowingSpear.newBlade,
+                        FilterNodeByAttribute("Type", "Blade"));
+                    ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
+                        v => newThrowingSpear.newBladeSize.ToString(),
+                        FilterNodeByAttribute("Type", "Blade"));
+                    ModifyChildNodesAttribute(node1, "Pieces/*", "id",
+                        v => newThrowingSpear.newGuard,
+                        FilterNodeByAttribute("Type", "Guard"));
+                    ModifyChildNodesAttribute(node1, "Pieces/*", "id",
+                        v => newThrowingSpear.newHandle,
+                        FilterNodeByAttribute("Type", "Handle"));
+                    ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
+                        v => newThrowingSpear.newHandleSize.ToString(),
+                        FilterNodeByAttribute("Type", "Handle"));
+                    ModifyChildNodesAttribute(node1, "Pieces/*", "id",
+                        v => newThrowingSpear.newPommel,
+                        FilterNodeByAttribute("Type", "Pommel"));
+                }
 
                  // Throwing Axes
                  if (Axes.TryGetValue(node1.Attributes["id"].Value, out var newThrowingAxe))
                  {
-                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Handle",
-                        v => newThrowingAxe.newHandle);
-                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "scale_factor", "Type", "Handle",
-                         v => newThrowingAxe.newHandleSize.ToString());
+                    ModifyChildNodesAttribute(node1, "Pieces/*", "id",
+                        v => newThrowingAxe.newHandle,
+                        FilterNodeByAttribute("Type", "Handle"));
+                    ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
+                         v => newThrowingAxe.newHandleSize.ToString(),
+                         FilterNodeByAttribute("Type", "Handle"));
                  }
 
                 // TwoHanded
                  if (TwoHanded.TryGetValue(node1.Attributes["id"].Value, out var newTwoHanded))
                 {
-                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Blade",
-                        v => newTwoHanded.newBlade);
-                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "scale_factor", "Type", "Blade",
-                        v => newTwoHanded.newBladeSize.ToString());
+                    ModifyChildNodesAttribute(node1, "Pieces/*", "id",
+                        v => newTwoHanded.newBlade,
+                        FilterNodeByAttribute("Type", "Blade"));
+                    ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
+                        v => newTwoHanded.newBladeSize.ToString(),
+                        FilterNodeByAttribute("Type", "Blade"));
                 }
             }
             else if (node1.Name == "CraftingPiece")
@@ -548,11 +558,13 @@ internal class ItemExporter : IDataExporter
 
                 if (BladeNerfs.TryGetValue(node1.Attributes["id"].Value, out var newBladeStats))
                 {
-                    ModifyChildNodesAttributewithCondition(node1, "BladeData/*", "damage_factor", "damage_type", "Pierce",
-                        v => (float.Parse(v) * newBladeStats.thrustDamageFactor).ToString(CultureInfo.InvariantCulture));
-                    ModifyChildNodesAttributewithCondition(node1, "BladeData/*", "damage_factor", "damage_type", "Cut",
-                        v => (float.Parse(v) * newBladeStats.swingDamageFactor).ToString(CultureInfo.InvariantCulture));
-                    AddNodeAttribute(node1, "weight",
+                    ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
+                        v => (float.Parse(v) * newBladeStats.thrustDamageFactor).ToString(CultureInfo.InvariantCulture),
+                        FilterNodeByAttribute("damage_type", "Pierce"));
+                    ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
+                        v => (float.Parse(v) * newBladeStats.swingDamageFactor).ToString(CultureInfo.InvariantCulture),
+                        FilterNodeByAttribute("damage_type", "Cut"));
+                    ModifyNodeAttribute(node1, "weight",
                         v => (float.Parse(v) * newBladeStats.weightFactor).ToString(), "0");
                     ModifyChildNodesAttribute(node1, "BladeData", "stack_amount",
                         v => newBladeStats.stackAmount.ToString(CultureInfo.InvariantCulture));
@@ -587,7 +599,7 @@ internal class ItemExporter : IDataExporter
                         v => ((int)(int.Parse(v) * 0.75f)).ToString(CultureInfo.InvariantCulture));
                     ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "extra_health",
                         v => (int.Parse(v) - 50).ToString(CultureInfo.InvariantCulture),
-                        "0");
+                        defaultValue: "0");
                 }
                 else if (type == ItemObject.ItemTypeEnum.HorseHarness)
                 {
@@ -695,10 +707,16 @@ internal class ItemExporter : IDataExporter
         string childXPath,
         string attributeName,
         Func<string, string> modify,
+        Func<XmlNode, bool>? filter = null,
         string? defaultValue = null)
     {
         foreach (var childNode in parentNode.SelectNodes(childXPath)!.Cast<XmlNode>())
         {
+            if (filter != null && !filter(childNode))
+            {
+                continue;
+            }
+
             var attr = childNode.Attributes![attributeName];
             if (attr == null)
             {
@@ -716,40 +734,16 @@ internal class ItemExporter : IDataExporter
         }
     }
 
-    private static void ModifyChildNodesAttributewithCondition(XmlNode parentNode,
-    string childXPath,
-    string attributeName,
-    string attributeFiltered,
-    string attributeFilteredValue,
-    Func<string, string> modify,
-    string? defaultValue = null)
+    private static Func<XmlNode, bool> FilterNodeByAttribute(string attributeName, string attributeValue)
     {
-        foreach (var childNode in parentNode.SelectNodes(childXPath)!.Cast<XmlNode>())
-        {
-            if (childNode.Attributes[attributeFiltered].Value == attributeFilteredValue)
-            {
-                var attr = childNode.Attributes![attributeName];
-                if (attr == null)
-                {
-                    if (defaultValue == null)
-                    {
-                        throw new KeyNotFoundException($"Attribute '{attributeName}' was not found and no default was provided");
-                    }
-
-                    attr = childNode.OwnerDocument!.CreateAttribute(attributeName);
-                    attr.Value = defaultValue;
-                    childNode.Attributes.Append(attr);
-                }
-
-                attr.Value = modify(attr.Value);
-            }
-        }
+        return n => n.Attributes[attributeName].Value == attributeValue;
     }
 
-    private static void AddNodeAttribute(XmlNode node,
-    string attributeName,
-    Func<string, string> modify,
-    string? defaultValue = null)
+    private static void ModifyNodeAttribute(
+        XmlNode node,
+        string attributeName,
+        Func<string, string> modify,
+        string? defaultValue = null)
     {
         var attr = node.Attributes![attributeName];
         if (attr == null)
