@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Tableaus;
 using TaleWorlds.ObjectSystem;
@@ -133,6 +132,7 @@ internal class ItemExporter : IDataExporter
         ["crpg_highland_ranger_bow"] = (87, 86, 14, 92),
         ["crpg_training_longbow"] = (94, 89, 7, 94),
     };
+
     private static readonly Dictionary<string, (int swingSpeed, int swingDamage, int thrustSpeed, int thrustDamage)> CraftedItemsStatsOffset = new()
     {
         // OneHanded
@@ -203,6 +203,7 @@ internal class ItemExporter : IDataExporter
         // Avalanche
         ["crpg_avalanche_2haxe"] = (12, 6, 0, 0),
     };
+
     private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float weightFactor, int stackAmount)> Blades = new()
     {
         // glaive
@@ -263,7 +264,8 @@ internal class ItemExporter : IDataExporter
         // Avalanche
         ["crpg_axe_craft_7_head"] = (1.0f, 1f, 0.8f, 0),
     };
-    private static readonly Dictionary<string, (string newHandle, float newHandleSize)> Axes = new()
+
+    private static readonly Dictionary<string, (string handle, float handleSize)> Axes = new()
     {
         // Throwing Axes
         // Tribesman Throwing Axe
@@ -272,7 +274,8 @@ internal class ItemExporter : IDataExporter
         // Avalanche
         ["crpg_avalanche_2haxe"] = ("crpg_axe_craft_4_handle", 110f),
     };
-    private static readonly Dictionary<string, (string newBlade, float newBladeSize)> TwoHanded = new()
+
+    private static readonly Dictionary<string, (string blade, float bladeSize)> TwoHanded = new()
     {
         // Falx
         ["crpg_battania_2hsword_4_t4"] = ("crpg_battania_blade_6", 152f),
@@ -287,7 +290,8 @@ internal class ItemExporter : IDataExporter
         // Wide Fullered Broad Sword
         ["crpg_vlandia_2hsword_1_t5"] = ("crpg_vlandian_blade_3", 120f),
     };
-    private static readonly Dictionary<string, (string newTemplate, string newBlade, string newGuard, string newHandle, float newBladeSize, float newHandleSize, string newPommel)> ThrowingSpears = new()
+
+    private static readonly Dictionary<string, (string template, string blade, string guard, string handle, float bladeSize, float handleSize, string pommel)> ThrowingSpears = new()
     {
         // Jagged Throwing Spear
         ["crpg_eastern_throwing_spear_1_t3"] = ("crpg_Javelin", "crpg_spear_blade_15", "crpg_default_polearm_guard", "crpg_spear_handle_11", 350f, 175f, "crpg_spear_pommel_5"),
@@ -496,54 +500,54 @@ internal class ItemExporter : IDataExporter
 
                  if (CraftedItemsStatsOffset.TryGetValue(node1.Attributes["id"].Value, out var offsets))
                  {
-                    ModifyNodeAttribute(node1, "swing_speed", v => offsets.swingSpeed.ToString(), "0");
-                    ModifyNodeAttribute(node1, "swing_damage", v => offsets.swingDamage.ToString(), "0");
-                    ModifyNodeAttribute(node1, "thrust_speed", v => offsets.thrustSpeed.ToString(), "0");
-                    ModifyNodeAttribute(node1, "thrust_damage", v => offsets.thrustDamage.ToString(), "0");
+                     ModifyNodeAttribute(node1, "swing_speed", _ => offsets.swingSpeed.ToString(), "0");
+                     ModifyNodeAttribute(node1, "swing_damage", _ => offsets.swingDamage.ToString(), "0");
+                     ModifyNodeAttribute(node1, "thrust_speed", _ => offsets.thrustSpeed.ToString(), "0");
+                     ModifyNodeAttribute(node1, "thrust_damage", _ => offsets.thrustDamage.ToString(), "0");
                  }
 
                  if (ThrowingSpears.TryGetValue(node1.Attributes["id"].Value, out var newThrowingSpear))
                  {
-                    node1.Attributes!["crafting_template"].Value = "crpg_Javelin";
-                    ModifyChildNodesAttribute(node1, "Pieces/*", "id",
-                        v => newThrowingSpear.newBlade,
-                        FilterNodeByAttribute("Type", "Blade"));
-                    ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
-                        v => newThrowingSpear.newBladeSize.ToString(),
-                        FilterNodeByAttribute("Type", "Blade"));
-                    ModifyChildNodesAttribute(node1, "Pieces/*", "id",
-                        v => newThrowingSpear.newGuard,
-                        FilterNodeByAttribute("Type", "Guard"));
-                    ModifyChildNodesAttribute(node1, "Pieces/*", "id",
-                        v => newThrowingSpear.newHandle,
-                        FilterNodeByAttribute("Type", "Handle"));
-                    ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
-                        v => newThrowingSpear.newHandleSize.ToString(),
-                        FilterNodeByAttribute("Type", "Handle"));
-                    ModifyChildNodesAttribute(node1, "Pieces/*", "id",
-                        v => newThrowingSpear.newPommel,
-                        FilterNodeByAttribute("Type", "Pommel"));
-                }
+                     node1.Attributes!["crafting_template"].Value = "crpg_Javelin";
+                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
+                         _ => newThrowingSpear.blade,
+                         FilterNodeByAttribute("Type", "Blade"));
+                     ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
+                         _ => newThrowingSpear.bladeSize.ToString(CultureInfo.InvariantCulture),
+                         FilterNodeByAttribute("Type", "Blade"));
+                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
+                         _ => newThrowingSpear.guard,
+                         FilterNodeByAttribute("Type", "Guard"));
+                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
+                         _ => newThrowingSpear.handle,
+                         FilterNodeByAttribute("Type", "Handle"));
+                     ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
+                         _ => newThrowingSpear.handleSize.ToString(CultureInfo.InvariantCulture),
+                         FilterNodeByAttribute("Type", "Handle"));
+                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
+                         _ => newThrowingSpear.pommel,
+                         FilterNodeByAttribute("Type", "Pommel"));
+                 }
 
                  if (Axes.TryGetValue(node1.Attributes["id"].Value, out var newAxe))
                  {
                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
-                        v => newAxe.newHandle,
+                        _ => newAxe.handle,
                         FilterNodeByAttribute("Type", "Handle"));
                     ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
-                         v => newAxe.newHandleSize.ToString(),
+                         _ => newAxe.handleSize.ToString(CultureInfo.InvariantCulture),
                          FilterNodeByAttribute("Type", "Handle"));
                  }
 
                  if (TwoHanded.TryGetValue(node1.Attributes["id"].Value, out var newTwoHanded))
-                {
-                    ModifyChildNodesAttribute(node1, "Pieces/*", "id",
-                        v => newTwoHanded.newBlade,
-                        FilterNodeByAttribute("Type", "Blade"));
-                    ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
-                        v => newTwoHanded.newBladeSize.ToString(),
-                        FilterNodeByAttribute("Type", "Blade"));
-                }
+                 {
+                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
+                         _ => newTwoHanded.blade,
+                         FilterNodeByAttribute("Type", "Blade"));
+                     ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
+                         _ => newTwoHanded.bladeSize.ToString(CultureInfo.InvariantCulture),
+                         FilterNodeByAttribute("Type", "Blade"));
+                 }
             }
             else if (node1.Name == "CraftingPiece")
             {
@@ -561,9 +565,9 @@ internal class ItemExporter : IDataExporter
                         v => (float.Parse(v) * newBladeStats.swingDamageFactor).ToString(CultureInfo.InvariantCulture),
                         FilterNodeByAttribute("damage_type", "Cut"));
                     ModifyNodeAttribute(node1, "weight",
-                        v => (float.Parse(v) * newBladeStats.weightFactor).ToString(), "0");
+                        v => (float.Parse(v) * newBladeStats.weightFactor).ToString(CultureInfo.InvariantCulture), "0");
                     ModifyChildNodesAttribute(node1, "BladeData", "stack_amount",
-                        v => newBladeStats.stackAmount.ToString(CultureInfo.InvariantCulture));
+                        _ => newBladeStats.stackAmount.ToString(CultureInfo.InvariantCulture));
                 }
             }
             else if (node1.Name == "Item")
@@ -580,11 +584,11 @@ internal class ItemExporter : IDataExporter
                 if (node1.Attributes["id"].Value == "crpg_throwing_stone")
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "accuracy",
-                        v => "100");
+                        _ => "100");
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "stack_amount",
-                        v => "10");
+                        _ => "10");
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
-                        v => "8");
+                        _ => "8");
                 }
                 else if (type == ItemObject.ItemTypeEnum.Horse)
                 {
@@ -613,10 +617,10 @@ internal class ItemExporter : IDataExporter
                     // needed because at this point there are still bows in the xml node that are going to get removed later.
                     if (BowStats.TryGetValue(node1.Attributes["id"].Value, out var newBow))
                     {
-                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", v => newBow.damage.ToString());
-                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "speed_rating", v => newBow.reloadSpeed.ToString());
-                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed", v => newBow.aimSpeed.ToString());
-                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed", v => newBow.missileSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", _ => newBow.damage.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "speed_rating", _ => newBow.reloadSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed", _ => newBow.aimSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed", _ => newBow.missileSpeed.ToString());
                     }
                 }
                 else if (type == ItemObject.ItemTypeEnum.Crossbow)
@@ -626,7 +630,7 @@ internal class ItemExporter : IDataExporter
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed",
                     v => ((int)(int.Parse(v) * 1.4f)).ToString(CultureInfo.InvariantCulture));
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "item_usage",
-                    v => "crossbow");
+                    _ => "crossbow");
                 }
                 else if (type == ItemObject.ItemTypeEnum.Bolts)
                 {
@@ -712,20 +716,7 @@ internal class ItemExporter : IDataExporter
                 continue;
             }
 
-            var attr = childNode.Attributes![attributeName];
-            if (attr == null)
-            {
-                if (defaultValue == null)
-                {
-                    throw new KeyNotFoundException($"Attribute '{attributeName}' was not found and no default was provided");
-                }
-
-                attr = childNode.OwnerDocument!.CreateAttribute(attributeName);
-                attr.Value = defaultValue;
-                childNode.Attributes.Append(attr);
-            }
-
-            attr.Value = modify(attr.Value);
+            ModifyNodeAttribute(childNode, attributeName, modify, defaultValue);
         }
     }
 
