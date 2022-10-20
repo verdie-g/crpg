@@ -203,7 +203,7 @@ internal class ItemExporter : IDataExporter
         // Avalanche
         ["crpg_avalanche_2haxe"] = (12, 6, 0, 0),
     };
-    private static readonly Dictionary<string, (float swingDamageFactor,float thrustDamageFactor, float weightFactor, int stackAmount)> BladeNerfs = new()
+    private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float weightFactor, int stackAmount)> BladeNerfs = new()
     {
         // glaive
         ["crpg_spear_blade_19"] = (0.71f, 1f, 1.3f, 2),
@@ -334,14 +334,13 @@ internal class ItemExporter : IDataExporter
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
         SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));
-        /*
         const string itemThumbnailsTempPath = "../../crpg-items";
         string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
 
         Directory.CreateDirectory(itemThumbnailsTempPath);
         await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);
         Directory.Delete(itemThumbnailsPath, recursive: true);
-        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);*/
+        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);
     }
 
     private static CrpgItem MbToCrpgItem(ItemObject mbItem)
@@ -504,6 +503,7 @@ internal class ItemExporter : IDataExporter
                     AddNodeAttribute(node1, "thrust_speed", v => newvalue.thrustSpeed.ToString(), "0");
                     AddNodeAttribute(node1, "thrust_damage", v => newvalue.thrustDamage.ToString(), "0");
                  }
+
                  // Throwing Spears
                  if (ThrowingSpears.TryGetValue(node1.Attributes["id"].Value, out var newThrowingSpear))
                  {
@@ -532,7 +532,7 @@ internal class ItemExporter : IDataExporter
                  }
 
                 // TwoHanded
-                if (TwoHanded.TryGetValue(node1.Attributes["id"].Value, out var newTwoHanded))
+                 if (TwoHanded.TryGetValue(node1.Attributes["id"].Value, out var newTwoHanded))
                 {
                     ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Blade",
                         v => newTwoHanded.newBlade);
