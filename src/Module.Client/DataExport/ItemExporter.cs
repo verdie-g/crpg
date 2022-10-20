@@ -197,9 +197,9 @@ internal class ItemExporter : IDataExporter
         // Battanian Mountain Blade
         ["battania_2hsword_5_t5"] = (0, 0, 0, 0),
         // Bearded Axe
-        ["crpg_battania_axe_2_t4"] = (2, 13, 0, 0),
+        ["crpg_bearded_axe_t3"] = (4, 13, 0, 0),
         // Avalanche
-        ["crpg_avalanche_2haxe"] = (2, 13, 0, 0),
+        ["crpg_avalanche_2haxe"] = (14, 0, 0, 0),
 
 
     };
@@ -260,11 +260,17 @@ internal class ItemExporter : IDataExporter
         ["crpg_khuzait_blade_8"] = (1f, 0.933f, 1f, 0),
         // War Razor
         ["crpg_cleaver_blade_5"] = (0.974f, 1f, 1f, 0),
+        // Avalanche
+        ["crpg_axe_craft_7_head"] = (1f, 1f, 1f, 0),
     };
-    private static readonly Dictionary<string, (string newBlade, string newHandle, float newBladeSize, float newHandleSize)> ThrowingAxes = new()
+    private static readonly Dictionary<string, (string newHandle, float newHandleSize)> Axes = new()
     {
+        // Throwing Axes
         // Tribesman Throwing Axe
-        ["crpg_southern_throwing_axe_1_t4"] = ("crpg_axe_craft_4_head", "crpg_axe_craft_12_handle", 100f, 115f),
+        ["crpg_southern_throwing_axe_1_t4"] = ("crpg_axe_craft_12_handle", 115f),
+        // Two Handed Axes
+        // Avalanche
+        ["crpg_avalanche_2haxe"] = ("crpg_axe_craft_4_handle", 110f),
     };
     private static readonly Dictionary<string, (string newBlade, float newBladeSize)> TwoHanded = new()
     {
@@ -280,8 +286,6 @@ internal class ItemExporter : IDataExporter
         ["crpg_vlandia_2hsword_2_t5"] = ("crpg_vlandian_blade_3", 119f),
         // Wide Fullered Broad Sword
         ["crpg_vlandia_2hsword_1_t5"] = ("crpg_vlandian_blade_3", 120f),
-        // avalanche
-        ["crpg_avalanche_2haxe"] = ("crpg_axe_craft_7_head", 110f),
     };
     private static readonly Dictionary<string, (string newTemplate, string newBlade, string newGuard, string newHandle, float newBladeSize, float newHandleSize, string newPommel)> ThrowingSpears = new()
     {
@@ -519,12 +523,8 @@ internal class ItemExporter : IDataExporter
                  }
 
                  // Throwing Axes
-                 if (ThrowingAxes.TryGetValue(node1.Attributes["id"].Value, out var newThrowingAxe))
+                 if (Axes.TryGetValue(node1.Attributes["id"].Value, out var newThrowingAxe))
                  {
-                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Blade",
-                        v => newThrowingAxe.newBlade);
-                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "scale_factor", "Type", "Blade",
-                        v => newThrowingAxe.newBladeSize.ToString());
                     ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Handle",
                         v => newThrowingAxe.newHandle);
                     ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "scale_factor", "Type", "Handle",
