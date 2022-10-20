@@ -187,22 +187,26 @@ internal class ItemExporter : IDataExporter
         // Falx
         ["crpg_battania_2hsword_4_t4"] = (8, 0, 0, 0),
         // Reaper Falx
-        ["crpg_reaper_falx"] = (6, 1, 0, 0),
+        ["crpg_reaper_falx"] = (6, 0, 0, 0),
         // Broad Kaskara
-        ["crpg_southern_broad_2hsword_t4"] = (12, 0, 0, 0),
+        ["crpg_southern_broad_2hsword_t4"] = (2, 3, 0, 0),
         // Thamaskene Steel Two Hander
-        ["crpg_vlandia_2hsword_2_t5"] = (7, 5, 0, 8),
+        ["crpg_vlandia_2hsword_2_t5"] = (8, 6, 0, 8),
         // Wide Fullered Broad Sword
         ["crpg_vlandia_2hsword_1_t5"] = (7, 7, 0, 5),
         // Battanian Mountain Blade
-        ["battania_2hsword_5_t5"] = (1, 0, 0, 0),
+        ["battania_2hsword_5_t5"] = (0, 0, 0, 0),
+        // Bearded Axe
+        ["crpg_battania_axe_2_t4"] = (2, 13, 0, 0),
+        // Avalanche
+        ["crpg_avalanche_2haxe"] = (2, 13, 0, 0),
 
 
     };
     private static readonly Dictionary<string, (float swingDamageFactor,float thrustDamageFactor, float weightFactor, int stackAmount)> BladeNerfs = new()
     {
         // glaive
-        ["crpg_spear_blade_19"] = (0.71f, 1f,1.3f, 2),
+        ["crpg_spear_blade_19"] = (0.71f, 1f, 1.3f, 2),
         // voulge
         ["crpg_axe_craft_10_head"] = (0.71f, 1f, 1f, 2),
         // long glaive
@@ -247,11 +251,15 @@ internal class ItemExporter : IDataExporter
         // Falx , Reaper Falx
         ["crpg_battania_blade_6"] = (0.82f, 1f, 1.1f, 0),
         // Broad Kaskara
-        ["crpg_aserai_blade_5"] = (0.85f, 1f, 1f, 0),
+        ["crpg_aserai_blade_5"] = (0.85f, 0.8f, 1f, 0),
         // Wide Fullered Broad Two Hander - Thamaskene Steel Two Hander - Wide Fullered Broad Arming Sword
         ["crpg_vlandian_blade_3"] = (0.75f, 0.41f, 1f, 0),
         // Battanian Mountain Blade  - Highland Broad Blade
-        ["crpg_battania_blade_5"] = (1f, 0.736f, 1f, 0),
+        ["crpg_battania_blade_5"] = (0.951f, 0.736f, 1.1f, 0),
+        // Ridged Great Saber - Ridged Saber  - Wind Fury
+        ["crpg_khuzait_blade_8"] = (1f, 0.933f, 1f, 0),
+        // War Razor
+        ["crpg_cleaver_blade_5"] = (0.974f, 1f, 1f, 0),
     };
     private static readonly Dictionary<string, (string newBlade, string newHandle, float newBladeSize, float newHandleSize)> ThrowingAxes = new()
     {
@@ -267,11 +275,13 @@ internal class ItemExporter : IDataExporter
         // Battanian Mountain Blade
         ["crpg_battania_2hsword_5_t5"] = ("crpg_battania_blade_5", 130f),
         // Broad Kaskara
-        ["crpg_southern_broad_2hsword_t4"] = ("crpg_aserai_blade_5", 120f),
+        ["crpg_southern_broad_2hsword_t4"] = ("crpg_aserai_blade_5", 117f),
         // Thamaskene
         ["crpg_vlandia_2hsword_2_t5"] = ("crpg_vlandian_blade_3", 119f),
         // Wide Fullered Broad Sword
         ["crpg_vlandia_2hsword_1_t5"] = ("crpg_vlandian_blade_3", 120f),
+        // avalanche
+        ["crpg_avalanche_2haxe"] = ("crpg_axe_craft_7_head", 110f),
     };
     private static readonly Dictionary<string, (string newTemplate, string newBlade, string newGuard, string newHandle, float newBladeSize, float newHandleSize, string newPommel)> ThrowingSpears = new()
     {
