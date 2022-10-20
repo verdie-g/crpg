@@ -494,7 +494,6 @@ internal class ItemExporter : IDataExporter
                         pieceNode.Attributes!["id"].Value = PrefixCrpg(pieceNode.Attributes["id"].Value);
                  }
 
-                 // Bows
                  if (ModifiedCraftedItemsStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue))
                  {
                     ModifyNodeAttribute(node1, "swing_speed", v => newvalue.swingSpeed.ToString(), "0");
@@ -503,7 +502,6 @@ internal class ItemExporter : IDataExporter
                     ModifyNodeAttribute(node1, "thrust_damage", v => newvalue.thrustDamage.ToString(), "0");
                  }
 
-                 // Throwing Spears
                  if (ThrowingSpears.TryGetValue(node1.Attributes["id"].Value, out var newThrowingSpear))
                  {
                     node1.Attributes!["crafting_template"].Value = "crpg_Javelin";
@@ -527,7 +525,6 @@ internal class ItemExporter : IDataExporter
                         FilterNodeByAttribute("Type", "Pommel"));
                 }
 
-                 // Throwing Axes
                  if (Axes.TryGetValue(node1.Attributes["id"].Value, out var newThrowingAxe))
                  {
                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
@@ -538,7 +535,6 @@ internal class ItemExporter : IDataExporter
                          FilterNodeByAttribute("Type", "Handle"));
                  }
 
-                // TwoHanded
                  if (TwoHanded.TryGetValue(node1.Attributes["id"].Value, out var newTwoHanded))
                 {
                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
