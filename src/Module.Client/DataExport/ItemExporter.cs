@@ -336,7 +336,6 @@ internal class ItemExporter : IDataExporter
         SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));
         const string itemThumbnailsTempPath = "../../crpg-items";
         string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
-
         Directory.CreateDirectory(itemThumbnailsTempPath);
         await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);
         Directory.Delete(itemThumbnailsPath, recursive: true);
