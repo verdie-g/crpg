@@ -133,7 +133,7 @@ internal class ItemExporter : IDataExporter
         ["crpg_highland_ranger_bow"] = (87, 86, 14, 92),
         ["crpg_training_longbow"] = (94, 89, 7, 94),
     };
-    private static readonly Dictionary<string, (int swingSpeed, int swingDamage, int thrustSpeed, int thrustDamage)> ModifiedCraftedItemsStats = new()
+    private static readonly Dictionary<string, (int swingSpeed, int swingDamage, int thrustSpeed, int thrustDamage)> CraftedItemsStatsOffset = new()
     {
         // OneHanded
         // Decorated BroadSword
@@ -203,7 +203,7 @@ internal class ItemExporter : IDataExporter
         // Avalanche
         ["crpg_avalanche_2haxe"] = (12, 6, 0, 0),
     };
-    private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float weightFactor, int stackAmount)> BladeNerfs = new()
+    private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float weightFactor, int stackAmount)> Blades = new()
     {
         // glaive
         ["crpg_spear_blade_19"] = (0.71f, 1f, 1.3f, 2),
@@ -494,12 +494,12 @@ internal class ItemExporter : IDataExporter
                         pieceNode.Attributes!["id"].Value = PrefixCrpg(pieceNode.Attributes["id"].Value);
                  }
 
-                 if (ModifiedCraftedItemsStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue))
+                 if (CraftedItemsStatsOffset.TryGetValue(node1.Attributes["id"].Value, out var offsets))
                  {
-                    ModifyNodeAttribute(node1, "swing_speed", v => newvalue.swingSpeed.ToString(), "0");
-                    ModifyNodeAttribute(node1, "swing_damage", v => newvalue.swingDamage.ToString(), "0");
-                    ModifyNodeAttribute(node1, "thrust_speed", v => newvalue.thrustSpeed.ToString(), "0");
-                    ModifyNodeAttribute(node1, "thrust_damage", v => newvalue.thrustDamage.ToString(), "0");
+                    ModifyNodeAttribute(node1, "swing_speed", v => offsets.swingSpeed.ToString(), "0");
+                    ModifyNodeAttribute(node1, "swing_damage", v => offsets.swingDamage.ToString(), "0");
+                    ModifyNodeAttribute(node1, "thrust_speed", v => offsets.thrustSpeed.ToString(), "0");
+                    ModifyNodeAttribute(node1, "thrust_damage", v => offsets.thrustDamage.ToString(), "0");
                  }
 
                  if (ThrowingSpears.TryGetValue(node1.Attributes["id"].Value, out var newThrowingSpear))
@@ -525,13 +525,13 @@ internal class ItemExporter : IDataExporter
                         FilterNodeByAttribute("Type", "Pommel"));
                 }
 
-                 if (Axes.TryGetValue(node1.Attributes["id"].Value, out var newThrowingAxe))
+                 if (Axes.TryGetValue(node1.Attributes["id"].Value, out var newAxe))
                  {
                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
-                        v => newThrowingAxe.newHandle,
+                        v => newAxe.newHandle,
                         FilterNodeByAttribute("Type", "Handle"));
                     ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
-                         v => newThrowingAxe.newHandleSize.ToString(),
+                         v => newAxe.newHandleSize.ToString(),
                          FilterNodeByAttribute("Type", "Handle"));
                  }
 
@@ -552,7 +552,7 @@ internal class ItemExporter : IDataExporter
                 ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
                     v => (float.Parse(v) * 0.35f).ToString(CultureInfo.InvariantCulture));
 
-                if (BladeNerfs.TryGetValue(node1.Attributes["id"].Value, out var newBladeStats))
+                if (Blades.TryGetValue(node1.Attributes["id"].Value, out var newBladeStats))
                 {
                     ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
                         v => (float.Parse(v) * newBladeStats.thrustDamageFactor).ToString(CultureInfo.InvariantCulture),
@@ -576,7 +576,7 @@ internal class ItemExporter : IDataExporter
                 }
 
                 var type = (ItemObject.ItemTypeEnum)Enum.Parse(typeof(ItemObject.ItemTypeEnum), node1.Attributes!["Type"].Value);
-                // stones
+
                 if (node1.Attributes["id"].Value == "crpg_throwing_stone")
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "accuracy",
@@ -586,8 +586,7 @@ internal class ItemExporter : IDataExporter
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
                         v => "8");
                 }
-
-                if (type == ItemObject.ItemTypeEnum.Horse)
+                else if (type == ItemObject.ItemTypeEnum.Horse)
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "charge_damage",
                         v => ((int)(int.Parse(v) * 0.33f)).ToString(CultureInfo.InvariantCulture));
@@ -609,15 +608,15 @@ internal class ItemExporter : IDataExporter
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "hit_points",
                         v => ((int)(int.Parse(v) * 0.5f)).ToString(CultureInfo.InvariantCulture));
                 }
-                else if (type == ItemObject.ItemTypeEnum.Bow | type == ItemObject.ItemTypeEnum.Thrown)
+                else if (type == ItemObject.ItemTypeEnum.Bow || type == ItemObject.ItemTypeEnum.Thrown)
                 {
                     // needed because at this point there are still bows in the xml node that are going to get removed later.
-                    if (BowStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue))
+                    if (BowStats.TryGetValue(node1.Attributes["id"].Value, out var newBow))
                     {
-                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", v => newvalue.damage.ToString());
-                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "speed_rating", v => newvalue.reloadSpeed.ToString());
-                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed", v => newvalue.aimSpeed.ToString());
-                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed", v => newvalue.missileSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", v => newBow.damage.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "speed_rating", v => newBow.reloadSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed", v => newBow.aimSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed", v => newBow.missileSpeed.ToString());
                     }
                 }
                 else if (type == ItemObject.ItemTypeEnum.Crossbow)
