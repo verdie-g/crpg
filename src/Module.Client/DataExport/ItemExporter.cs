@@ -152,11 +152,13 @@ internal class ItemExporter : IDataExporter
         ["crpg_sturgia_noble_sword_3_t5"] = (0, 3, 0, 0),
         // Decorated Saber
         ["crpg_khuzait_noble_sword_1_t5"] = (0, 3, 0, 0),
+        // Calradic Mace
+        ["crpg_empire_mace_3_t4"] = (0, 4, 0, 0),
         // Polearms6
         // Glaive
         ["crpg_khuzait_polearm_1_t4"] = (0, 0, 0, 0),
         // Voulge
-        ["crpg_vlandia_polearm_1_t5"] = (0, 0, 0, 0),
+        ["crpg_vlandia_polearm_1_t5"] = (1, 0, 0, 0),
         // Long Glaive
         ["crpg_khuzait_polearm_2_t5"] = (0, 2, 0, 0),
         // Menavlion
@@ -197,11 +199,9 @@ internal class ItemExporter : IDataExporter
         // Battanian Mountain Blade
         ["battania_2hsword_5_t5"] = (0, 0, 0, 0),
         // Bearded Axe
-        ["crpg_bearded_axe_t3"] = (4, 13, 0, 0),
+        ["crpg_bearded_axe_t3"] = (1, 13, 0, 0),
         // Avalanche
-        ["crpg_avalanche_2haxe"] = (14, 0, 0, 0),
-
-
+        ["crpg_avalanche_2haxe"] = (12, 6, 0, 0),
     };
     private static readonly Dictionary<string, (float swingDamageFactor,float thrustDamageFactor, float weightFactor, int stackAmount)> BladeNerfs = new()
     {
@@ -261,7 +261,7 @@ internal class ItemExporter : IDataExporter
         // War Razor
         ["crpg_cleaver_blade_5"] = (0.974f, 1f, 1f, 0),
         // Avalanche
-        ["crpg_axe_craft_7_head"] = (1f, 1f, 1f, 0),
+        ["crpg_axe_craft_7_head"] = (1.0f, 1f, 0.8f, 0),
     };
     private static readonly Dictionary<string, (string newHandle, float newHandleSize)> Axes = new()
     {

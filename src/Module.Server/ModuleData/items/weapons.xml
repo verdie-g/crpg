@@ -220,7 +220,7 @@
       <Piece id="crpg_empire_pommel_6" Type="Pommel" scale_factor="93" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_avalanche_2haxe" name="{=IClH3Pus}Avalanche" crafting_template="crpg_TwoHandedAxe" is_merchandise="false" swing_speed="14" swing_damage="0" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_avalanche_2haxe" name="{=IClH3Pus}Avalanche" crafting_template="crpg_TwoHandedAxe" is_merchandise="false" swing_speed="12" swing_damage="6" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_axe_craft_7_head" Type="Blade" />
       <Piece id="crpg_axe_craft_4_handle" Type="Handle" scale_factor="110" />
@@ -378,7 +378,7 @@
       <Piece id="crpg_axe_craft_8_handle" Type="Handle" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_bearded_axe_t3" name="{=Mb0CuONB}Bearded Axe" crafting_template="crpg_TwoHandedAxe" swing_speed="4" swing_damage="13" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_bearded_axe_t3" name="{=Mb0CuONB}Bearded Axe" crafting_template="crpg_TwoHandedAxe" swing_speed="1" swing_damage="13" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_axe_craft_3_head" Type="Blade" scale_factor="100" />
       <Piece id="crpg_axe_craft_29_handle" Type="Handle" scale_factor="100" />
@@ -676,7 +676,7 @@
       <Piece id="crpg_default_polearm_pommel" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_vlandia_polearm_1_t5" name="{=zbsajPMp}Voulge" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_vlandia_polearm_1_t5" name="{=zbsajPMp}Voulge" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" swing_speed="1" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_axe_craft_10_head" Type="Blade" scale_factor="100" />
       <Piece id="crpg_default_polearm_guard" Type="Guard" scale_factor="100" />
@@ -1584,7 +1584,7 @@
       <Piece id="crpg_empire_pommel_5" Type="Pommel" scale_factor="90" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_empire_mace_3_t4" name="{=YLplNGxb}Calradic Mace" crafting_template="crpg_Mace" culture="Culture.empire">
+  <CraftedItem id="crpg_empire_mace_3_t4" name="{=YLplNGxb}Calradic Mace" crafting_template="crpg_Mace" culture="Culture.empire" swing_speed="0" swing_damage="4" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_mace_head_8" Type="Blade" />
       <Piece id="crpg_mace_handle_10" Type="Handle" />

@@ -143,7 +143,7 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         float weaponScaler = weaponComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.OneHandedWeapon => 51.481019181948f,
+            ItemObject.ItemTypeEnum.OneHandedWeapon => 44.76610788925f,
             ItemObject.ItemTypeEnum.TwoHandedWeapon => 78.7250303112145f,
             ItemObject.ItemTypeEnum.Polearm => 23.88739876f,
             _ => 1f,
@@ -292,8 +292,8 @@ internal class CrpgItemValueModel : ItemValueModel
         WeaponComponentData weapon = weaponComponent.Weapons[0];
         float scaler = weaponComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.Arrows => 644.000034148f,
-            ItemObject.ItemTypeEnum.Bolts => 393.75f,
+            ItemObject.ItemTypeEnum.Arrows => 1127f,
+            ItemObject.ItemTypeEnum.Bolts => 689.0625f,
             _ => 10f,
         };
         return
