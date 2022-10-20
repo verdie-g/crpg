@@ -158,7 +158,7 @@ internal class ItemExporter : IDataExporter
         // Voulge
         ["crpg_vlandia_polearm_1_t5"] = (0, 0, 0, 0),
         // Long Glaive
-        ["crpg_khuzait_polearm_2_t5"] = (0, 0, 0, 0),
+        ["crpg_khuzait_polearm_2_t5"] = (0, 2, 0, 0),
         // Menavlion
         ["crpg_empire_polearm_1_t4"] = (0, 6, 0, 0),
         // Romphaia
@@ -170,60 +170,106 @@ internal class ItemExporter : IDataExporter
         // Thin Fine Steel Hewing Spear
         ["crpg_eastern_spear_5_t5"] = (0, 0, 0, 0),
         // Jagged Throwing Spear
-        ["crpg_eastern_throwing_spear_1_t3"] = (0, 0, 0, 0),
+        ["crpg_eastern_throwing_spear_1_t3"] = (0, 0, 0, 5),
         // Triangular Throwing Spear
-        ["crpg_eastern_throwing_spear_2_t4"] = (0, 0, 0, 1),
+        ["crpg_eastern_throwing_spear_2_t4"] = (0, 0, 0, 6),
         // Pillum
-        ["crpg_imperial_throwing_spear_1_t4"] = (0, 0 , 0, 0),
-    };
-    private static readonly Dictionary<string, (float damageFactor, float weightFactor, int stackAmount)> BladeNerfs = new()
-    {
+        ["crpg_imperial_throwing_spear_1_t4"] = (0, 0, 0, 5),
+        // Practice Spear
+        ["crpg_practice_spear_t1"] = (1, 0, 0, 0),
+        // Billhook
+        ["crpg_billhook_polearm_t2"] = (0, 2, 0, 0),
+        // Scythe
+        ["crpg_peasant_polearm_1_t1"] = (5, 11, 0, 0),
         // glaive
-        ["crpg_spear_blade_19"] = (0.71f, 1.3f, 2),
-        // voulge
-        ["crpg_axe_craft_10_head"] = (0.71f, 1f, 2),
-        // long glaive
-        ["crpg_spear_blade_24"] = (0.71f, 1f, 2),
-        // menavlion
-        ["crpg_spear_blade_7"] = (0.71f, 1.7f, 2),
-        // romphaia
-        ["crpg_spear_blade_44"] = (0.71f, 1f, 2),
-        // polesword
-        ["crpg_spear_blade_22"] = (0.71f, 1f, 2),
-        // fine steel menavlion
-        ["crpg_spear_blade_18"] = (0.71f, 1f, 2),
-        // warrazor
-        ["crpg_spear_blade_43"] = (0.71f, 1f, 2),
-        // Decorated Broadsword
-        ["crpg_battania_noble_blade_2"] = (1f, 1.3f, 2),
-        // Highland Broad Blade
-        ["crpg_battania_blade_5"] = (1f, 1.2f, 2),
-        // Arming Sword with Circle
-        ["crpg_vlandian_noble_blade_1"] = (1f, 1.3f, 2),
-        // Decorated Armingsword
-        ["crpg_vlandian_noble_blade_4"] = (1f, 1.3f, 2),
-        // Engraved Angular Kaskara
-        ["crpg_aserai_noble_blade_3"] = (1f, 1.2f, 2),
-        // Engraved Backsword
-        ["crpg_battania_noble_blade_1"] = (1f, 0.8f, 2),
-        // Highland Throwing Axe - Tribesman Throwing Axe - Francesca
-        ["crpg_axe_craft_4_head"] = (1.80f, 1f, 3),
-        // Raider Throwing Axe
-        ["crpg_axe_craft_13_head"] = (1.80f, 1f, 3),
-        // Thin Fine Steel Hewing Spear - Jereed
-        ["crpg_spear_blade_27"] = (0.85f, 1f, 3),
-        // Hooked Javelin - Harpoon
-        ["crpg_spear_blade_10"] = (0.85f, 1f, 3),
-        // javelin
-        ["crpg_spear_blade_15"] = (1.225f, 1f, 1),
-        //daggers
-        ["crpg_dagger_blade_10"] = (1.6f, 1f, 9),
-        ["crpg_dagger_blade_11"] = (1.6f, 1f, 9),
-        ["crpg_dagger_blade_12"] = (1.6f, 1f, 9),
-        ["crpg_dagger_blade_13"] = (1.6f, 1f, 9),
+        ["crpg_khuzait_polearm_1_t4"] = (0, 2, 0, 0),
+        // Two Handed
+        // Falx
+        ["crpg_battania_2hsword_4_t4"] = (8, 2, 0, 0),
+        // Reaper Falx
+        ["crpg_reaper_falx"] = (8, 0, 0, 0),
+        // Broad Kaskara
+        ["crpg_southern_broad_2hsword_t4"] = (12, 0, 0, 0),
+        // Thamaskene Steel Two Hander
+        ["crpg_vlandia_2hsword_2_t5"] = (6, 6, 0, 8),
+        // Wide Fullered Broad Sword
+        ["crpg_vlandia_2hsword_1_t5"] = (6, 0, 0, 8),
+
 
     };
-    private static readonly Dictionary<string, (string newTemplate, string newBlade, string newGuard, string newHandle, float newBladeSize,float newHandleSize, string newPommel)> ThrowingSpears = new()
+    private static readonly Dictionary<string, (float swingDamageFactor,float thrustDamageFactor, float weightFactor, int stackAmount)> BladeNerfs = new()
+    {
+        // glaive
+        ["crpg_spear_blade_19"] = (0.71f, 1f,1.3f, 2),
+        // voulge
+        ["crpg_axe_craft_10_head"] = (0.71f, 1f, 1f, 2),
+        // long glaive
+        ["crpg_spear_blade_24"] = (0.71f, 1f, 1f, 2),
+        // menavlion
+        ["crpg_spear_blade_7"] = (0.71f, 1f, 1.7f, 2),
+        // romphaia
+        ["crpg_spear_blade_44"] = (0.71f, 1f, 1f, 2),
+        // polesword
+        ["crpg_spear_blade_22"] = (0.71f, 1f, 1f, 2),
+        // fine steel menavlion
+        ["crpg_spear_blade_18"] = (0.71f, 1f, 1f, 2),
+        // warrazor
+        ["crpg_spear_blade_43"] = (0.71f, 1f, 1f, 2),
+        // Decorated Broadsword
+        ["crpg_battania_noble_blade_2"] = (1f, 1f, 1.3f, 2),
+        // Highland Broad Blade
+        ["crpg_battania_blade_5"] = (1f, 1f, 1.2f, 2),
+        // Arming Sword with Circle
+        ["crpg_vlandian_noble_blade_1"] = (1f, 1f, 1.3f, 2),
+        // Decorated Armingsword
+        ["crpg_vlandian_noble_blade_4"] = (1f, 1f, 1.3f, 2),
+        // Engraved Angular Kaskara
+        ["crpg_aserai_noble_blade_3"] = (1f, 1f, 1.2f, 2),
+        // Engraved Backsword
+        ["crpg_battania_noble_blade_1"] = (1f, 1f, 0.8f, 2),
+        // Highland Throwing Axe - Tribesman Throwing Axe - Francesca
+        ["crpg_axe_craft_4_head"] = (1.72f, 1f, 1f, 3),
+        // Raider Throwing Axe
+        ["crpg_axe_craft_13_head"] = (1.5f, 1f, 1f, 4),
+        // Thin Fine Steel Hewing Spear - Jereed
+        ["crpg_spear_blade_27"] = (0.85f, 1f, 1f, 3),
+        // Hooked Javelin - Harpoon
+        ["crpg_spear_blade_10"] = (0.85f, 1f, 1f, 3),
+        // javelin
+        ["crpg_spear_blade_15"] = (1.225f, 1f, 1f, 1),
+        // daggers
+        ["crpg_dagger_blade_10"] = (1.6f, 1f, 1f, 9),
+        ["crpg_dagger_blade_11"] = (1.6f, 1f, 1f, 9),
+        ["crpg_dagger_blade_12"] = (1.6f, 1f, 1f, 9),
+        ["crpg_dagger_blade_13"] = (1.6f, 1f, 1f, 9),
+        // Falx , Reaper Falx
+        ["crpg_battania_blade_6"] = (0.82f, 1f, 1f, 0),
+        // Broad Kaskara
+        ["crpg_aserai_blade_5"] = (0.85f, 1f, 1f, 0),
+        // Wide Fullered Broad Two Hander - Thamaskene Steel Two Hander - Wide Fullered Broad Arming Sword
+        ["crpg_vlandian_blade_3"] = (0.85f, 0.5f, 1f, 0),
+    };
+    private static readonly Dictionary<string, (string newBlade, string newHandle, float newBladeSize, float newHandleSize)> ThrowingAxes = new()
+    {
+        // Tribesman Throwing Axe
+        ["crpg_southern_throwing_axe_1_t4"] = ("crpg_axe_craft_4_head", "crpg_axe_craft_12_handle", 100f, 115f),
+    };
+    private static readonly Dictionary<string, (string newBlade, float newBladeSize)> TwoHanded = new()
+    {
+        // Falx
+        ["crpg_battania_2hsword_4_t4"] = ("crpg_battania_blade_6", 152f),
+        // Reaper
+        ["crpg_reaper_falx"] = ("crpg_battania_blade_6", 135f),
+        // Battanian Mountain Blade
+        ["crpg_battania_2hsword_5_t5"] = ("crpg_battania_blade_5", 130f),
+        // Broad Kaskara
+        ["crpg_southern_broad_2hsword_t4"] = ("crpg_aserai_blade_5", 120f),
+        // Thamaskene
+        ["crpg_vlandia_2hsword_2_t5"] = ("crpg_aserai_blade_5", 110f),
+        // Wide Fullered Broad Sword
+        ["crpg_vlandia_2hsword_1_t5"] = ("crpg_vlandian_blade_3", 120f),
+    };
+    private static readonly Dictionary<string, (string newTemplate, string newBlade, string newGuard, string newHandle, float newBladeSize, float newHandleSize, string newPommel)> ThrowingSpears = new()
     {
         // Jagged Throwing Spear
         ["crpg_eastern_throwing_spear_1_t3"] = ("crpg_Javelin", "crpg_spear_blade_15", "crpg_default_polearm_guard", "crpg_spear_handle_11", 350f, 175f, "crpg_spear_pommel_5"),
@@ -432,8 +478,7 @@ internal class ItemExporter : IDataExporter
                         pieceNode.Attributes!["id"].Value = PrefixCrpg(pieceNode.Attributes["id"].Value);
                  }
 
-                // needed because at this point there are still bows in the xml node that are going to get removed later.
-
+                 // Bows
                  if (ModifiedCraftedItemsStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue))
                  {
                     AddNodeAttribute(node1, "swing_speed", v => newvalue.swingSpeed.ToString(), "0");
@@ -441,7 +486,7 @@ internal class ItemExporter : IDataExporter
                     AddNodeAttribute(node1, "thrust_speed", v => newvalue.thrustSpeed.ToString(), "0");
                     AddNodeAttribute(node1, "thrust_damage", v => newvalue.thrustDamage.ToString(), "0");
                  }
-
+                 // Throwing Spears
                  if (ThrowingSpears.TryGetValue(node1.Attributes["id"].Value, out var newThrowingSpear))
                  {
                     node1.Attributes!["crafting_template"].Value = "crpg_Javelin";
@@ -457,6 +502,28 @@ internal class ItemExporter : IDataExporter
                          v => newThrowingSpear.newHandleSize.ToString());
                     ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Pommel",
                         v => newThrowingSpear.newPommel);
+                 }
+
+                 // Throwing Axes
+                 if (ThrowingAxes.TryGetValue(node1.Attributes["id"].Value, out var newThrowingAxe))
+                 {
+                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Blade",
+                        v => newThrowingAxe.newBlade);
+                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "scale_factor", "Type", "Blade",
+                        v => newThrowingAxe.newBladeSize.ToString());
+                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Handle",
+                        v => newThrowingAxe.newHandle);
+                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "scale_factor", "Type", "Handle",
+                         v => newThrowingAxe.newHandleSize.ToString());
+                 }
+
+                // TwoHanded
+                if (TwoHanded.TryGetValue(node1.Attributes["id"].Value, out var newTwoHanded))
+                {
+                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "id", "Type", "Blade",
+                        v => newTwoHanded.newBlade);
+                    ModifyChildNodesAttributewithCondition(node1, "Pieces/*", "scale_factor", "Type", "Blade",
+                        v => newTwoHanded.newBladeSize.ToString());
                 }
             }
             else if (node1.Name == "CraftingPiece")
@@ -466,14 +533,16 @@ internal class ItemExporter : IDataExporter
                 ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
                     v => (float.Parse(v) * 0.35f).ToString(CultureInfo.InvariantCulture));
 
-                if (BladeNerfs.TryGetValue(node1.Attributes["id"].Value, out var newvalue))
+                if (BladeNerfs.TryGetValue(node1.Attributes["id"].Value, out var newBladeStats))
                 {
-                    ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
-                        v => (float.Parse(v) * newvalue.damageFactor).ToString(CultureInfo.InvariantCulture));
+                    ModifyChildNodesAttributewithCondition(node1, "BladeData/*", "damage_factor", "damage_type", "Pierce",
+                        v => newBladeStats.thrustDamageFactor.ToString(CultureInfo.InvariantCulture));
+                    ModifyChildNodesAttributewithCondition(node1, "BladeData/*", "damage_factor", "damage_type", "Cut",
+                        v => (float.Parse(v) * newBladeStats.swingDamageFactor).ToString(CultureInfo.InvariantCulture));
                     AddNodeAttribute(node1, "weight",
-                        v => (float.Parse(v) * newvalue.weightFactor).ToString(), "0");
+                        v => (float.Parse(v) * newBladeStats.weightFactor).ToString(), "0");
                     ModifyChildNodesAttribute(node1, "BladeData", "stack_amount",
-                        v => newvalue.stackAmount.ToString(CultureInfo.InvariantCulture));
+                        v => newBladeStats.stackAmount.ToString(CultureInfo.InvariantCulture));
                 }
             }
             else if (node1.Name == "Item")
@@ -486,6 +555,17 @@ internal class ItemExporter : IDataExporter
                 }
 
                 var type = (ItemObject.ItemTypeEnum)Enum.Parse(typeof(ItemObject.ItemTypeEnum), node1.Attributes!["Type"].Value);
+                // stones
+                if (node1.Attributes["id"].Value == "crpg_throwing_stone")
+                {
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "accuracy",
+                        v => "100");
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "stack_amount",
+                        v => "10");
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
+                        v => "8");
+                }
+
                 if (type == ItemObject.ItemTypeEnum.Horse)
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "charge_damage",
@@ -508,7 +588,7 @@ internal class ItemExporter : IDataExporter
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "hit_points",
                         v => ((int)(int.Parse(v) * 0.5f)).ToString(CultureInfo.InvariantCulture));
                 }
-                else if (type == ItemObject.ItemTypeEnum.Bow)
+                else if (type == ItemObject.ItemTypeEnum.Bow | type == ItemObject.ItemTypeEnum.Thrown)
                 {
                     // needed because at this point there are still bows in the xml node that are going to get removed later.
                     if (BowStats.TryGetValue(node1.Attributes["id"].Value, out var newvalue))
@@ -527,7 +607,6 @@ internal class ItemExporter : IDataExporter
                     v => ((int)(int.Parse(v) * 1.4f)).ToString(CultureInfo.InvariantCulture));
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "item_usage",
                     v => "crossbow");
-
                 }
                 else if (type == ItemObject.ItemTypeEnum.Bolts)
                 {
@@ -623,6 +702,7 @@ internal class ItemExporter : IDataExporter
             attr.Value = modify(attr.Value);
         }
     }
+
     private static void ModifyChildNodesAttributewithCondition(XmlNode parentNode,
     string childXPath,
     string attributeName,
@@ -673,7 +753,6 @@ internal class ItemExporter : IDataExporter
 
         attr.Value = modify(attr.Value);
     }
-
 
     private static void RegisterMbObjects<T>(XmlDocument doc, Game game) where T : MBObjectBase, new()
     {
