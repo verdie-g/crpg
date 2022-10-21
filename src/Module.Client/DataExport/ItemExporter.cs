@@ -289,6 +289,7 @@ internal class ItemExporter : IDataExporter
         ["crpg_vlandia_2hsword_2_t5"] = ("crpg_vlandian_blade_3", 119f),
         // Wide Fullered Broad Sword
         ["crpg_vlandia_2hsword_1_t5"] = ("crpg_vlandian_blade_3", 120f),
+        ["crpg_battania_2hsword_5_t5"] = ("crpg_battania_blade_5", 120f),
     };
 
     private static readonly Dictionary<string, (string template, string blade, string guard, string handle, float bladeSize, float handleSize, string pommel)> ThrowingSpears = new()
