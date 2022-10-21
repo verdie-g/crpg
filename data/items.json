@@ -2676,7 +2676,7 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 12,
+        "thrustDamage": 10,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
         "swingDamage": 28,
@@ -2697,7 +2697,7 @@
           "MeleeWeapon",
           "NotUsableWithOneHand"
         ],
-        "thrustDamage": 14,
+        "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 95,
         "swingDamage": 44,
@@ -2717,7 +2717,7 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 12,
+        "thrustDamage": 10,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
         "swingDamage": 28,
@@ -3745,9 +3745,9 @@
     "name": "Engraved Backsword",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 3915,
-    "weight": 1.57,
-    "tier": 6.91784143,
+    "price": 3715,
+    "weight": 1.47,
+    "tier": 6.709769,
     "requirement": 0,
     "weapons": [
       {
@@ -3757,7 +3757,7 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 110,
-        "balance": 0.54,
+        "balance": 0.6,
         "handling": 80,
         "bodyArmor": 3,
         "flags": [
@@ -3767,9 +3767,9 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 35,
+        "swingDamage": 34,
         "swingDamageType": "Cut",
-        "swingSpeed": 86
+        "swingSpeed": 87
       }
     ]
   },
@@ -4097,7 +4097,7 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 12,
+        "thrustDamage": 10,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
         "swingDamage": 24,
