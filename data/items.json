@@ -8962,9 +8962,9 @@
     "name": "Cataphract Mace",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 5203,
-    "weight": 1.47,
-    "tier": 8.142949,
+    "price": 4470,
+    "weight": 1.57,
+    "tier": 7.467455,
     "requirement": 0,
     "weapons": [
       {
@@ -8974,18 +8974,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 92,
-        "balance": 0.63,
-        "handling": 92,
+        "balance": 0.53,
+        "handling": 89,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 91,
-        "swingDamage": 27,
+        "thrustSpeed": 90,
+        "swingDamage": 28,
         "swingDamageType": "Blunt",
-        "swingSpeed": 88
+        "swingSpeed": 86
       }
     ]
   },
