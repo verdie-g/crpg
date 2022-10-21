@@ -411,9 +411,9 @@
     "name": "Imperial Arrows",
     "culture": "Empire",
     "type": "Arrows",
-    "price": 50,
+    "price": 2114,
     "weight": 0.05,
-    "tier": 0.0,
+    "tier": 6.48794031,
     "requirement": 0,
     "weapons": [
       {
@@ -2253,9 +2253,9 @@
     "name": "Barbed Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 106,
+    "price": 1338,
     "weight": 0.05,
-    "tier": 0.543478251,
+    "tier": 4.92122269,
     "requirement": 0,
     "weapons": [
       {
@@ -4762,38 +4762,6 @@
     ]
   },
   {
-    "id": "crpg_blunt_arrows",
-    "name": "Blunt Arrows",
-    "culture": "Khuzait",
-    "type": "Arrows",
-    "price": 1063,
-    "weight": 0.05,
-    "tier": 4.25909472,
-    "requirement": 0,
-    "weapons": [
-      {
-        "class": "Arrow",
-        "itemUsage": "arrow_right",
-        "accuracy": 100,
-        "missileSpeed": 10,
-        "stackAmount": 30,
-        "length": 95,
-        "balance": 0.0,
-        "handling": 0,
-        "bodyArmor": 0,
-        "flags": [
-          "Consumable"
-        ],
-        "thrustDamage": 2,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 0,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 0
-      }
-    ]
-  },
-  {
     "id": "crpg_bo_staff",
     "name": "Bo staff",
     "culture": "Neutral",
@@ -4834,9 +4802,9 @@
     "name": "Stacked Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 2918,
+    "price": 4472,
     "weight": 0.048,
-    "tier": 7.826087,
+    "tier": 9.965476,
     "requirement": 0,
     "weapons": [
       {
@@ -4866,9 +4834,9 @@
     "name": "Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 1787,
+    "price": 2694,
     "weight": 0.048,
-    "tier": 5.869565,
+    "tier": 7.47410727,
     "requirement": 0,
     "weapons": [
       {
@@ -4898,9 +4866,9 @@
     "name": "Light Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 1434,
+    "price": 2143,
     "weight": 0.048,
-    "tier": 5.1358695,
+    "tier": 6.53984356,
     "requirement": 0,
     "weapons": [
       {
@@ -4930,9 +4898,9 @@
     "name": "Light Bolts",
     "culture": "Neutral",
     "type": "Bolts",
-    "price": 532,
+    "price": 8100,
     "weight": 0.05,
-    "tier": 1.77777779,
+    "tier": 9.932048,
     "requirement": 0,
     "weapons": [
       {
@@ -4963,9 +4931,9 @@
     "name": "Bolts",
     "culture": "Vlandia",
     "type": "Bolts",
-    "price": 3743,
+    "price": 7676,
     "weight": 0.08,
-    "tier": 6.4,
+    "tier": 9.639669,
     "requirement": 0,
     "weapons": [
       {
@@ -5029,9 +4997,9 @@
     "name": "Heavy Quarrels",
     "culture": "Empire",
     "type": "Bolts",
-    "price": 1461,
+    "price": 7179,
     "weight": 0.06,
-    "tier": 3.6,
+    "tier": 9.285951,
     "requirement": 0,
     "weapons": [
       {
@@ -5062,9 +5030,9 @@
     "name": "Light Quarrels",
     "culture": "Empire",
     "type": "Bolts",
-    "price": 122,
+    "price": 6261,
     "weight": 0.04,
-    "tier": 0.4,
+    "tier": 8.598347,
     "requirement": 0,
     "weapons": [
       {
@@ -6859,9 +6827,9 @@
     "name": "Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 50,
+    "price": 1771,
     "weight": 0.043,
-    "tier": 0.0,
+    "tier": 5.839146,
     "requirement": 0,
     "weapons": [
       {
@@ -11004,9 +10972,9 @@
     "name": "Stacked Steppe Arrows",
     "culture": "Khuzait",
     "type": "Arrows",
-    "price": 931,
+    "price": 4500,
     "weight": 0.036,
-    "tier": 3.9130435,
+    "tier": 10.0000782,
     "requirement": 0,
     "weapons": [
       {
@@ -18637,9 +18605,9 @@
     "name": "Piercing Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 4500,
+    "price": 3019,
     "weight": 0.041,
-    "tier": 10.0,
+    "tier": 7.980647,
     "requirement": 0,
     "weapons": [
       {
@@ -19157,9 +19125,9 @@
     "name": "Range Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 131,
+    "price": 2201,
     "weight": 0.043,
-    "tier": 0.7336956,
+    "tier": 6.64365053,
     "requirement": 0,
     "weapons": [
       {
@@ -21178,9 +21146,9 @@
     "name": "Steppe Arrows",
     "culture": "Khuzait",
     "type": "Arrows",
-    "price": 515,
+    "price": 2214,
     "weight": 0.036,
-    "tier": 2.60869575,
+    "tier": 6.666719,
     "requirement": 0,
     "weapons": [
       {
@@ -23654,9 +23622,9 @@
     "name": "Tournament Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 50,
+    "price": 3354,
     "weight": 0.043,
-    "tier": 0.0,
+    "tier": 8.474044,
     "requirement": 0,
     "weapons": [
       {
@@ -25524,9 +25492,9 @@
     "name": "Lowland Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 545,
+    "price": 2374,
     "weight": 0.06,
-    "tier": 2.71739125,
+    "tier": 6.944499,
     "requirement": 0,
     "weapons": [
       {

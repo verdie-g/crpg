@@ -90,6 +90,7 @@ internal class ItemExporter : IDataExporter
         "sturgian_lamellar_gambeson", // Name conflict with sturgian_lamellar_gambeson_heavy.
         "torch", // Invisible.
         "tournament_bolts", // Bolts with blunt damage -> Shotgun effect, over-powered.
+        "blunt_arrows", // Same thing as above
         "vlandia_horse_tournament", // Name conflict with vlandia_horse.
         "wooden_sword_t2", // Name conflict with wooden_sword_t1.
         "woodland_throwing_axe_1_t1", // Name conflict with highland_throwing_axe_1_t2.

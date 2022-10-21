@@ -304,17 +304,19 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateAmmoTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        float scaler = weaponComponent.Item.ItemType switch
+        return weaponComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.Arrows => 1127f,
-            ItemObject.ItemTypeEnum.Bolts => 689.0625f,
+            ItemObject.ItemTypeEnum.Arrows => 10f
+          * CalculateDamageTypeFactor(weapon.ThrustDamageType) * CalculateDamageTypeFactor(weapon.ThrustDamageType)
+          * (15 + weapon.MissileDamage) * (15 + weapon.MissileDamage)
+          * weapon.MaxDataValue
+          / 31862f,
+            ItemObject.ItemTypeEnum.Bolts => 10f
+          * CalculateDamageTypeFactor(weapon.ThrustDamageType) * CalculateDamageTypeFactor(weapon.ThrustDamageType)
+          * (50 + weapon.MissileDamage) * (50 + weapon.MissileDamage)
+          * weapon.MaxDataValue
+          / 83376.56f,
             _ => 10f,
         };
-        return
-            10f
-          * CalculateDamageTypeFactor(weapon.ThrustDamageType) * CalculateDamageTypeFactor(weapon.ThrustDamageType)
-          * weapon.MissileDamage * weapon.MissileDamage
-          * weapon.MaxDataValue
-          / scaler;
     }
 }

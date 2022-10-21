@@ -2135,12 +2135,4 @@
     </ItemComponent>
     <Flags ForceAttachOffHandPrimaryItemBone="true" />
   </Item>
-  <Item id="crpg_blunt_arrows" name="{=DC0qJkVs}Blunt Arrows" is_merchandise="false" body_name="bo_capsule_arrow" holster_body_name="bo_axe_short" mesh="arrow_bl_i" holster_mesh="arrow_bl_i_quiver" holster_mesh_with_weapon="arrow_bl_i_quiver" culture="Culture.khuzait" weight="0.05" flying_mesh="arrow_bl_flying" appearance="1" Type="Arrows" item_holsters="quiver_back_middle:quiver_back_top:quiver_bolts:quiver_bolts_2" holster_position_shift="0.0,0.0,0.15">
-    <ItemComponent>
-      <Weapon weapon_class="Arrow" stack_amount="30" physics_material="missile" thrust_speed="0" speed_rating="0" missile_speed="10" weapon_length="95" thrust_damage="2" thrust_damage_type="Blunt" item_usage="arrow_right" passby_sound_code="event:/mission/combat/missile/passby" rotation="0, -80, 25" sticking_position="0,-0.95,0" sticking_rotation="90,0,0" center_of_mass="0,0,-0.13">
-        <WeaponFlags Consumable="true" AmmoSticksWhenShot="true" AmmoBreaksOnBounceBack="true" />
-      </Weapon>
-    </ItemComponent>
-    <Flags />
-  </Item>
 </Items>
