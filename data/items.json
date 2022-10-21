@@ -2658,9 +2658,9 @@
     "name": "Battanian Mountain Blade",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 12613,
-    "weight": 1.49,
-    "tier": 9.437005,
+    "price": 13681,
+    "weight": 1.68,
+    "tier": 9.873212,
     "requirement": 0,
     "weapons": [
       {
@@ -2669,19 +2669,19 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 122,
-        "balance": 0.38,
-        "handling": 84,
+        "length": 140,
+        "balance": 0.07,
+        "handling": 77,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 90,
-        "swingDamage": 27,
+        "thrustSpeed": 89,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
-        "swingSpeed": 81
+        "swingSpeed": 72
       },
       {
         "class": "TwoHandedSword",
@@ -2689,9 +2689,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 122,
-        "balance": 0.93,
-        "handling": 89,
+        "length": 140,
+        "balance": 0.68,
+        "handling": 85,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon",
@@ -2699,10 +2699,10 @@
         ],
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 98,
-        "swingDamage": 39,
+        "thrustSpeed": 95,
+        "swingDamage": 44,
         "swingDamageType": "Cut",
-        "swingSpeed": 97
+        "swingSpeed": 90
       },
       {
         "class": "OneHandedSword",
@@ -2710,19 +2710,19 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 122,
-        "balance": 0.38,
-        "handling": 84,
+        "length": 140,
+        "balance": 0.07,
+        "handling": 77,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 90,
-        "swingDamage": 27,
+        "thrustSpeed": 89,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
-        "swingSpeed": 81
+        "swingSpeed": 72
       }
     ]
   },
