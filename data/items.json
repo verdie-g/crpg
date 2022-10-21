@@ -1455,9 +1455,9 @@
     "name": "Engraved Angular Kaskara",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 5156,
-    "weight": 1.81,
-    "tier": 8.101052,
+    "price": 4118,
+    "weight": 1.99,
+    "tier": 7.12319565,
     "requirement": 0,
     "weapons": [
       {
@@ -1467,18 +1467,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 84,
-        "balance": 0.75,
-        "handling": 94,
+        "balance": 0.63,
+        "handling": 92,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 88,
-        "swingDamage": 32,
+        "thrustSpeed": 87,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
-        "swingSpeed": 92
+        "swingSpeed": 88
       }
     ]
   },
@@ -3745,9 +3745,9 @@
     "name": "Engraved Backsword",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 3715,
-    "weight": 1.47,
-    "tier": 6.709769,
+    "price": 5009,
+    "weight": 1.36,
+    "tier": 7.9690156,
     "requirement": 0,
     "weapons": [
       {
@@ -3756,20 +3756,20 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 110,
-        "balance": 0.6,
-        "handling": 80,
+        "length": 113,
+        "balance": 0.68,
+        "handling": 85,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon",
           "BonusAgainstShield"
         ],
-        "thrustDamage": 15,
+        "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 90,
-        "swingDamage": 34,
+        "thrustSpeed": 92,
+        "swingDamage": 32,
         "swingDamageType": "Cut",
-        "swingSpeed": 87
+        "swingSpeed": 90
       }
     ]
   },
