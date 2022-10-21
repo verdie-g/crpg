@@ -24469,9 +24469,9 @@
     "name": "Spiked Battle Axe",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
-    "price": 786,
-    "weight": 1.13,
-    "tier": 2.515432,
+    "price": 1375,
+    "weight": 0.45,
+    "tier": 3.660769,
     "requirement": 0,
     "weapons": [
       {
@@ -24481,8 +24481,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 89,
-        "balance": 0.43,
-        "handling": 80,
+        "balance": 1.0,
+        "handling": 106,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -24490,10 +24490,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 94,
-        "swingDamage": 28,
+        "thrustSpeed": 103,
+        "swingDamage": 15,
         "swingDamageType": "Cut",
-        "swingSpeed": 82
+        "swingSpeed": 112
       }
     ]
   },
