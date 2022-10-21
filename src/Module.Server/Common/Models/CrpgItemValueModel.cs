@@ -23,7 +23,7 @@ internal class CrpgItemValueModel : ItemValueModel
         [ItemObject.ItemTypeEnum.Crossbow] = (18000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.OneHandedWeapon] = (7500, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.TwoHandedWeapon] = (14000, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Polearm] = (20000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Polearm] = (16175, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Thrown] = (7385, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Arrows] = (4500, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Bolts] = (8200, ItemPriceCoeffs),
@@ -131,7 +131,6 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateWeaponTier(WeaponComponent weaponComponent)
     {
         bool isAThrowingWeapon = weaponComponent.Weapons.Max(a => a.MaxDataValue) >= 1;
-
         return weaponComponent.Item?.WeaponDesign == null
             ? CalculateTierNonCraftedWeapon(weaponComponent)
             :
@@ -144,9 +143,9 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         float weaponScaler = weaponComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.OneHandedWeapon => 58.854553f,
-            ItemObject.ItemTypeEnum.TwoHandedWeapon => 116.82765f,
-            ItemObject.ItemTypeEnum.Polearm => 59.05128f,
+            ItemObject.ItemTypeEnum.OneHandedWeapon => 44.76610788925f,
+            ItemObject.ItemTypeEnum.TwoHandedWeapon => 78.7250303112145f,
+            ItemObject.ItemTypeEnum.Polearm => 23.88739876f,
             _ => 1f,
         };
         float maxTier = float.MinValue;
@@ -179,10 +178,24 @@ internal class CrpgItemValueModel : ItemValueModel
             {
                 tier *= 1.2f;
             }
+            if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanKnockDown))
+            {
+                tier *= 2f;
+            }
+
+            if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanKnockDown))
+            {
+                tier *= 1.5f;
+            }
 
             if (weapon.ThrustDamage > 0)
             {
                 tier *= 1.2f;
+            }
+
+            if (weapon.WeaponClass == WeaponClass.OneHandedAxe || weapon.WeaponClass == WeaponClass.TwoHandedAxe)
+            {
+                tier *= 0.9f;
             }
 
             float lengthTier = weapon.WeaponLength * 0.01f;
@@ -191,6 +204,7 @@ internal class CrpgItemValueModel : ItemValueModel
                   0.06f
                 * (tier * (float)Math.Pow(1f + lengthTier, 1.75f))
                 * (float)Math.Pow(handlingFactor, 3f);
+            tier *= thrustTier > swingTier ? 2f : 1f;
 
             if (tier >= maxTier)
             {
@@ -205,9 +219,9 @@ internal class CrpgItemValueModel : ItemValueModel
     {
         return damageType switch
         {
-            DamageTypes.Blunt => 1.8f,
-            DamageTypes.Pierce => 1f,
-            _ => 1.15f,
+            DamageTypes.Blunt => 2f,
+            DamageTypes.Pierce => 1.75f,
+            _ => 1.0f,
         };
     }
 
@@ -227,6 +241,8 @@ internal class CrpgItemValueModel : ItemValueModel
                 return CalculateAmmoTier(weaponComponent);
             case ItemObject.ItemTypeEnum.Shield:
                 return CalculateShieldTier(weaponComponent);
+            case ItemObject.ItemTypeEnum.Thrown:
+                return CalculateThrownWeaponTier(weaponComponent);
             default:
                 return 0f;
         }
@@ -235,11 +251,10 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateThrownWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons.MaxBy(a => a.MaxDataValue);
-        float scaler = 125416166.4f;
+        float scaler = 1752710.44f;
         return
               weapon.ThrustDamage
             * weapon.ThrustDamage
-            * weapon.SwingSpeed
             * weapon.MissileSpeed
             * weapon.Accuracy
             * weapon.MaxDataValue
@@ -289,18 +304,19 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateAmmoTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        float scaler = weaponComponent.Item.ItemType switch
+        return weaponComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.Arrows => 388.7999856f,
-            ItemObject.ItemTypeEnum.Bolts => 225f,
+            ItemObject.ItemTypeEnum.Arrows => 10f
+          * CalculateDamageTypeFactor(weapon.ThrustDamageType) * CalculateDamageTypeFactor(weapon.ThrustDamageType)
+          * (15 + weapon.MissileDamage) * (15 + weapon.MissileDamage)
+          * weapon.MaxDataValue
+          / 31862f,
+            ItemObject.ItemTypeEnum.Bolts => 10f
+          * CalculateDamageTypeFactor(weapon.ThrustDamageType) * CalculateDamageTypeFactor(weapon.ThrustDamageType)
+          * (50 + weapon.MissileDamage) * (50 + weapon.MissileDamage)
+          * weapon.MaxDataValue
+          / 83376.56f,
             _ => 10f,
         };
-        return
-            10f
-          * CalculateDamageTypeFactor(weapon.ThrustDamageType)
-          * weapon.MissileDamage * weapon.MissileDamage
-          * weapon.MaxDataValue
-          * CalculateDamageTypeFactor(weapon.ThrustDamageType)
-          / scaler;
     }
 }
