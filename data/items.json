@@ -443,9 +443,9 @@
     "name": "Short Handled Bardiche",
     "culture": "Aserai",
     "type": "TwoHandedWeapon",
-    "price": 2819,
+    "price": 2385,
     "weight": 1.6,
-    "tier": 3.91690373,
+    "tier": 3.52521324,
     "requirement": 0,
     "weapons": [
       {
@@ -478,9 +478,9 @@
     "name": "Executioner Axe",
     "culture": "Aserai",
     "type": "TwoHandedWeapon",
-    "price": 1680,
+    "price": 1436,
     "weight": 1.88,
-    "tier": 2.80478835,
+    "tier": 2.52430916,
     "requirement": 0,
     "weapons": [
       {
@@ -513,9 +513,9 @@
     "name": "Heavy Executioner Axe",
     "culture": "Aserai",
     "type": "TwoHandedWeapon",
-    "price": 2185,
+    "price": 1858,
     "weight": 1.49,
-    "tier": 3.33246279,
+    "tier": 2.99921656,
     "requirement": 0,
     "weapons": [
       {
@@ -602,9 +602,9 @@
     "name": "Wood Splitter Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 1046,
+    "price": 896,
     "weight": 1.15,
-    "tier": 3.05932355,
+    "tier": 2.75339079,
     "requirement": 0,
     "weapons": [
       {
@@ -635,9 +635,9 @@
     "name": "Bamboo Handled Ascia Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 930,
+    "price": 799,
     "weight": 1.02,
-    "tier": 2.82603025,
+    "tier": 2.54342723,
     "requirement": 0,
     "weapons": [
       {
@@ -1927,9 +1927,9 @@
     "name": "Avalanche",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 9180,
+    "price": 7633,
     "weight": 1.33,
-    "tier": 7.89352655,
+    "tier": 7.104174,
     "requirement": 0,
     "weapons": [
       {
@@ -1980,9 +1980,9 @@
     "name": "Bamboo Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 818,
+    "price": 705,
     "weight": 1.21,
-    "tier": 2.586697,
+    "tier": 2.32802749,
     "requirement": 0,
     "weapons": [
       {
@@ -2335,9 +2335,9 @@
     "name": "Square Bit Two Handed Axe",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 1208,
+    "price": 1041,
     "weight": 1.4,
-    "tier": 2.24033356,
+    "tier": 2.0163002,
     "requirement": 0,
     "weapons": [
       {
@@ -2731,9 +2731,9 @@
     "name": "Norse Hatchet",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 1016,
+    "price": 871,
     "weight": 1.09,
-    "tier": 3.000768,
+    "tier": 2.70069075,
     "requirement": 0,
     "weapons": [
       {
@@ -2764,9 +2764,9 @@
     "name": "One Handed Bearded Axe",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 1482,
+    "price": 1259,
     "weight": 1.03,
-    "tier": 3.8412838,
+    "tier": 3.45715547,
     "requirement": 0,
     "weapons": [
       {
@@ -2797,9 +2797,9 @@
     "name": "Round Bitted Fine Steel Hatchet",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 1510,
+    "price": 1282,
     "weight": 1.05,
-    "tier": 3.88721085,
+    "tier": 3.49848962,
     "requirement": 0,
     "weapons": [
       {
@@ -4555,9 +4555,9 @@
     "name": "Battle Axe",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 1475,
+    "price": 1253,
     "weight": 1.01,
-    "tier": 3.82976532,
+    "tier": 3.44678855,
     "requirement": 0,
     "weapons": [
       {
@@ -4588,9 +4588,9 @@
     "name": "Bearded Axe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 12496,
+    "price": 10354,
     "weight": 1.12,
-    "tier": 9.387924,
+    "tier": 8.449131,
     "requirement": 0,
     "weapons": [
       {
@@ -4731,9 +4731,9 @@
     "name": "Black Heart",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 1467,
+    "price": 1259,
     "weight": 1.64,
-    "tier": 2.56091356,
+    "tier": 2.30482221,
     "requirement": 0,
     "weapons": [
       {
@@ -9618,9 +9618,9 @@
     "name": "Execution Axe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 3164,
+    "price": 2672,
     "weight": 1.23,
-    "tier": 4.209091,
+    "tier": 3.788182,
     "requirement": 0,
     "weapons": [
       {
@@ -11563,9 +11563,9 @@
     "name": "Hooked Cavalry Axe",
     "culture": "Vlandia",
     "type": "TwoHandedWeapon",
-    "price": 2017,
+    "price": 1718,
     "weight": 1.52,
-    "tier": 3.16371918,
+    "tier": 2.84734726,
     "requirement": 0,
     "weapons": [
       {
@@ -11751,9 +11751,9 @@
     "name": "Tzikourion",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 1032,
+    "price": 883,
     "weight": 1.08,
-    "tier": 3.030806,
+    "tier": 2.72772551,
     "requirement": 0,
     "weapons": [
       {
@@ -14064,9 +14064,9 @@
     "name": "Large Franziska Axe",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 1106,
+    "price": 945,
     "weight": 1.21,
-    "tier": 3.17485714,
+    "tier": 2.85737157,
     "requirement": 0,
     "weapons": [
       {
@@ -16495,9 +16495,9 @@
     "name": "Northlander Broad Axe",
     "culture": "Sturgia",
     "type": "TwoHandedWeapon",
-    "price": 4256,
+    "price": 3576,
     "weight": 1.15,
-    "tier": 5.04212,
+    "tier": 4.5379076,
     "requirement": 0,
     "weapons": [
       {
@@ -16530,9 +16530,9 @@
     "name": "Simple Raider Battle Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 1179,
+    "price": 1007,
     "weight": 1.15,
-    "tier": 3.312854,
+    "tier": 2.98156881,
     "requirement": 0,
     "weapons": [
       {
@@ -18128,9 +18128,9 @@
     "name": "Hoe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 481,
+    "price": 426,
     "weight": 1.57,
-    "tier": 1.10899651,
+    "tier": 0.998096764,
     "requirement": 0,
     "weapons": [
       {
@@ -18288,9 +18288,9 @@
     "name": "Hatchet",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 424,
+    "price": 373,
     "weight": 1.05,
-    "tier": 1.58232737,
+    "tier": 1.42409456,
     "requirement": 0,
     "weapons": [
       {
@@ -18391,9 +18391,9 @@
     "name": "Pickaxe",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 624,
+    "price": 542,
     "weight": 1.05,
-    "tier": 2.13020349,
+    "tier": 1.91718316,
     "requirement": 0,
     "weapons": [
       {
@@ -18572,9 +18572,9 @@
     "name": "Sickle",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 484,
+    "price": 424,
     "weight": 1.18,
-    "tier": 1.75918269,
+    "tier": 1.58326423,
     "requirement": 0,
     "weapons": [
       {
@@ -20317,9 +20317,9 @@
     "name": "Simple Sparth Axe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 1249,
+    "price": 1075,
     "weight": 1.13,
-    "tier": 2.29207158,
+    "tier": 2.06286454,
     "requirement": 0,
     "weapons": [
       {
@@ -20424,9 +20424,9 @@
     "name": "Small Bit Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 1026,
+    "price": 879,
     "weight": 1.12,
-    "tier": 3.019944,
+    "tier": 2.71794915,
     "requirement": 0,
     "weapons": [
       {
@@ -20523,9 +20523,9 @@
     "name": "Small Spurred Axe",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 955,
+    "price": 820,
     "weight": 1.05,
-    "tier": 2.87781954,
+    "tier": 2.590037,
     "requirement": 0,
     "weapons": [
       {
@@ -20734,9 +20734,9 @@
     "name": "Bamboo Handled Axe",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 960,
+    "price": 824,
     "weight": 0.96,
-    "tier": 2.88736844,
+    "tier": 2.59863186,
     "requirement": 0,
     "weapons": [
       {
@@ -21975,9 +21975,9 @@
     "name": "Drilled Two Handed Axe",
     "culture": "Sturgia",
     "type": "TwoHandedWeapon",
-    "price": 3007,
+    "price": 2542,
     "weight": 1.32,
-    "tier": 4.078554,
+    "tier": 3.67069912,
     "requirement": 0,
     "weapons": [
       {
@@ -22010,9 +22010,9 @@
     "name": "Northlander Decorated Two Handed Axe",
     "culture": "Sturgia",
     "type": "TwoHandedWeapon",
-    "price": 2185,
+    "price": 1859,
     "weight": 1.68,
-    "tier": 3.33267522,
+    "tier": 2.99940753,
     "requirement": 0,
     "weapons": [
       {
@@ -22045,9 +22045,9 @@
     "name": "Galloglaich Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 955,
+    "price": 820,
     "weight": 1.03,
-    "tier": 2.87781954,
+    "tier": 2.590037,
     "requirement": 0,
     "weapons": [
       {
@@ -22078,9 +22078,9 @@
     "name": "Commoner Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 1553,
+    "price": 1317,
     "weight": 0.94,
-    "tier": 3.95683479,
+    "tier": 3.56115079,
     "requirement": 0,
     "weapons": [
       {
@@ -22111,9 +22111,9 @@
     "name": "Veteran Warrior Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 1486,
+    "price": 1262,
     "weight": 1.19,
-    "tier": 3.847344,
+    "tier": 3.46260953,
     "requirement": 0,
     "weapons": [
       {
@@ -22144,9 +22144,9 @@
     "name": "Rectangular Bitted Axe",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 1407,
+    "price": 1197,
     "weight": 1.05,
-    "tier": 3.7162056,
+    "tier": 3.344585,
     "requirement": 0,
     "weapons": [
       {
@@ -24070,9 +24070,9 @@
     "name": "Broad Tzikourion",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 951,
+    "price": 816,
     "weight": 1.23,
-    "tier": 2.86812925,
+    "tier": 2.58131623,
     "requirement": 0,
     "weapons": [
       {
@@ -24334,9 +24334,9 @@
     "name": "Short Bill",
     "culture": "Vlandia",
     "type": "TwoHandedWeapon",
-    "price": 1066,
+    "price": 922,
     "weight": 1.72,
-    "tier": 2.050781,
+    "tier": 1.845703,
     "requirement": 0,
     "weapons": [
       {
@@ -24436,9 +24436,9 @@
     "name": "Infantry Axe",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
-    "price": 801,
+    "price": 691,
     "weight": 0.92,
-    "tier": 2.54890966,
+    "tier": 2.29401875,
     "requirement": 0,
     "weapons": [
       {
@@ -24469,9 +24469,9 @@
     "name": "Spiked Battle Axe",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
-    "price": 14238,
-    "weight": 0.63,
-    "tier": 14.2036285,
+    "price": 7419,
+    "weight": 0.71,
+    "tier": 9.940516,
     "requirement": 0,
     "weapons": [
       {
@@ -24481,8 +24481,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 95,
-        "balance": 1.0,
-        "handling": 95,
+        "balance": 0.89,
+        "handling": 91,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -24490,10 +24490,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 100,
+        "thrustSpeed": 98,
         "swingDamage": 36,
         "swingDamageType": "Cut",
-        "swingSpeed": 100
+        "swingSpeed": 96
       }
     ]
   },
@@ -26739,9 +26739,9 @@
     "name": "Woodland Axe",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 1361,
+    "price": 1158,
     "weight": 1.27,
-    "tier": 3.6372292,
+    "tier": 3.273506,
     "requirement": 0,
     "weapons": [
       {
