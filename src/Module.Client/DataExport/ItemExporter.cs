@@ -159,7 +159,7 @@ internal class ItemExporter : IDataExporter
         // Eastern Heavy Mace
         ["crpg_khuzait_mace_2_t4"] = (0, 6, 0, 0),
 
-        // Polearms6
+        // Polearms
         // Glaive
         ["crpg_khuzait_polearm_1_t4"] = (0, 0, 0, 0),
         // Voulge
