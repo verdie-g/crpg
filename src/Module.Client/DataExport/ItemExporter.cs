@@ -202,6 +202,12 @@ internal class ItemExporter : IDataExporter
         ["crpg_bearded_axe_t3"] = (1, 13, 0, 0),
         // Avalanche
         ["crpg_avalanche_2haxe"] = (12, 6, 0, 0),
+        // Engraved BackSword
+        ["crpg_battania_noble_sword_1_t5"] = (0, 4, 0, 0),
+        // Spiked Battle Axe
+        ["crpg_vlandia_axe_2_t4"] = (0, 13, 0, 0),
+        // Cataphract Mace
+        ["crpg_empire_mace_5_t5"] = (0, 5, 0, 0),
     };
 
     private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float weightFactor, int stackAmount)> Blades = new()
@@ -233,7 +239,7 @@ internal class ItemExporter : IDataExporter
         // Engraved Angular Kaskara
         ["crpg_aserai_noble_blade_3"] = (1f, 1f, 1.2f, 2),
         // Engraved Backsword
-        ["crpg_battania_noble_blade_1"] = (1f, 1f, 0.8f, 2),
+        ["crpg_battania_noble_blade_1"] = (1f, 1f, 0.77f, 2),
         // Highland Throwing Axe - Tribesman Throwing Axe - Francesca
         ["crpg_axe_craft_4_head"] = (1.72f, 1f, 1f, 3),
         // Raider Throwing Axe
@@ -256,16 +262,34 @@ internal class ItemExporter : IDataExporter
         // Wide Fullered Broad Two Hander - Thamaskene Steel Two Hander - Wide Fullered Broad Arming Sword
         ["crpg_vlandian_blade_3"] = (0.75f, 0.41f, 1f, 0),
         // Battanian Mountain Blade  - Highland Broad Blade
-        ["crpg_battania_blade_5"] = (0.951f, 0.736f, 1.1f, 0),
+        ["crpg_battania_blade_5"] = (0.951f, 0.63075f, 1.1f, 0),
         // Ridged Great Saber - Ridged Saber  - Wind Fury
         ["crpg_khuzait_blade_8"] = (1f, 0.933f, 1f, 0),
         // War Razor
         ["crpg_cleaver_blade_5"] = (0.974f, 1f, 1f, 0),
         // Avalanche
         ["crpg_axe_craft_7_head"] = (1.0f, 1f, 0.8f, 0),
+        // Spiked Battle Axe
+        ["crpg_axe_craft_25_head"] = (1.0f, 1f, 0.5f, 0),
+        // Cataphract Mace
+        ["crpg_mace_head_7"] = (1.0f, 1f, 0.7f, 0),
     };
+    private static readonly Dictionary<string, (float lengthFactor, float weightFactor)> Handles = new()
+    {
+        // Highland BroadBlade - Engraved Backsword
+        ["crpg_battania_grip_4"] = (1f, 1.0f),
+        // Spiked Battle Axe
+        ["crpg_axe_craft_13_handle"] = (1f, 0.7f),
+        // Cataphract Mace
+        ["crpg_mace_handle_5"] = (1f, 0.6f),
 
-    private static readonly Dictionary<string, (string handle, float handleSize)> Axes = new()
+    };
+    private static readonly Dictionary<string, (float lengthFactor, float weightFactor)> Pommels = new()
+    {
+        // Highland BroadBlade - Engraved Backsword
+        ["crpg_battania_pommel_5"] = (1f, 0.7f),
+    };
+    private static readonly Dictionary<string, (string handle, float handleSize)> AxesAndMaces = new()
     {
         // Throwing Axes
         // Tribesman Throwing Axe
@@ -273,6 +297,11 @@ internal class ItemExporter : IDataExporter
         // Two Handed Axes
         // Avalanche
         ["crpg_avalanche_2haxe"] = ("crpg_axe_craft_4_handle", 110f),
+        // One Handed Axes
+        // Spiked Battle Axe
+        ["crpg_vlandia_axe_2_t4"] = ("crpg_axe_craft_13_handle", 150f),
+        // Cataphract Mace
+        ["crpg_empire_mace_5_t5"] = ("crpg_mace_handle_5", 130f),
     };
 
     private static readonly Dictionary<string, (string blade, float bladeSize)> TwoHanded = new()
@@ -289,8 +318,12 @@ internal class ItemExporter : IDataExporter
         ["crpg_vlandia_2hsword_2_t5"] = ("crpg_vlandian_blade_3", 119f),
         // Wide Fullered Broad Sword
         ["crpg_vlandia_2hsword_1_t5"] = ("crpg_vlandian_blade_3", 120f),
-        ["crpg_battania_2hsword_5_t5"] = ("crpg_battania_blade_5", 120f),
+        // Battanian Mountain Blade
+        ["crpg_battania_2hsword_5_t5"] = ("crpg_battania_blade_5", 152f),
+        // Engraved BackSword
+        ["crpg_battania_noble_sword_1_t5"] = ("crpg_battania_noble_blade_1", 103f),
     };
+
 
     private static readonly Dictionary<string, (string template, string blade, string guard, string handle, float bladeSize, float handleSize, string pommel)> ThrowingSpears = new()
     {
@@ -339,12 +372,13 @@ internal class ItemExporter : IDataExporter
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
         SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));
+        /*
         const string itemThumbnailsTempPath = "../../crpg-items";
         string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
         Directory.CreateDirectory(itemThumbnailsTempPath);
         await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);
         Directory.Delete(itemThumbnailsPath, recursive: true);
-        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);
+        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);*/
     }
 
     private static CrpgItem MbToCrpgItem(ItemObject mbItem)
@@ -530,7 +564,7 @@ internal class ItemExporter : IDataExporter
                          FilterNodeByAttribute("Type", "Pommel"));
                  }
 
-                 if (Axes.TryGetValue(node1.Attributes["id"].Value, out var newAxe))
+                 if (AxesAndMaces.TryGetValue(node1.Attributes["id"].Value, out var newAxe))
                  {
                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
                         _ => newAxe.handle,
@@ -569,6 +603,21 @@ internal class ItemExporter : IDataExporter
                         v => (float.Parse(v) * newBladeStats.weightFactor).ToString(CultureInfo.InvariantCulture), "0");
                     ModifyChildNodesAttribute(node1, "BladeData", "stack_amount",
                         _ => newBladeStats.stackAmount.ToString(CultureInfo.InvariantCulture));
+                }
+
+                if (Handles.TryGetValue(node1.Attributes["id"].Value, out var newHandleStats))
+                {
+                    ModifyNodeAttribute(node1, "weight",
+                        v => (float.Parse(v) * newHandleStats.weightFactor).ToString(CultureInfo.InvariantCulture), "0");
+                    ModifyNodeAttribute(node1, "length",
+                        v => (float.Parse(v) * newHandleStats.lengthFactor).ToString(CultureInfo.InvariantCulture), "0");
+                }
+                if (Pommels.TryGetValue(node1.Attributes["id"].Value, out var newPommelStats))
+                {
+                    ModifyNodeAttribute(node1, "weight",
+                        v => (float.Parse(v) * newPommelStats.weightFactor).ToString(CultureInfo.InvariantCulture), "0");
+                    ModifyNodeAttribute(node1, "length",
+                        v => (float.Parse(v) * newPommelStats.lengthFactor).ToString(CultureInfo.InvariantCulture), "0");
                 }
             }
             else if (node1.Name == "Item")

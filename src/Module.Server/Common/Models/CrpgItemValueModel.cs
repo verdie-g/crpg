@@ -184,6 +184,11 @@ internal class CrpgItemValueModel : ItemValueModel
                 tier *= 1.2f;
             }
 
+            if (weapon.WeaponClass == WeaponClass.OneHandedAxe || weapon.WeaponClass == WeaponClass.TwoHandedAxe)
+            {
+                tier *= 0.9f;
+            }
+
             float lengthTier = weapon.WeaponLength * 0.01f;
             float handlingFactor = weapon.Handling / 100f;
             tier =

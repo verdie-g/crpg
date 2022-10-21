@@ -1327,9 +1327,9 @@
     "name": "Spiralled Mace",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 1760,
-    "weight": 2.05,
-    "tier": 4.28112555,
+    "price": 2274,
+    "weight": 1.55,
+    "tier": 5.013441,
     "requirement": 0,
     "weapons": [
       {
@@ -1339,18 +1339,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 67,
-        "balance": 0.59,
-        "handling": 95,
+        "balance": 0.78,
+        "handling": 97,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 87,
-        "swingDamage": 22,
+        "thrustSpeed": 90,
+        "swingDamage": 21,
         "swingDamageType": "Blunt",
-        "swingSpeed": 87
+        "swingSpeed": 93
       }
     ]
   },
@@ -8962,9 +8962,9 @@
     "name": "Cataphract Mace",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 1650,
-    "weight": 2.24,
-    "tier": 4.11084652,
+    "price": 5203,
+    "weight": 1.47,
+    "tier": 8.142949,
     "requirement": 0,
     "weapons": [
       {
@@ -8973,19 +8973,19 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 75,
-        "balance": 0.38,
-        "handling": 89,
+        "length": 92,
+        "balance": 0.63,
+        "handling": 92,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 85,
-        "swingDamage": 25,
+        "thrustSpeed": 91,
+        "swingDamage": 27,
         "swingDamageType": "Blunt",
-        "swingSpeed": 81
+        "swingSpeed": 88
       }
     ]
   },
@@ -13301,9 +13301,9 @@
     "name": "Eastern Heavy Mace",
     "culture": "Khuzait",
     "type": "OneHandedWeapon",
-    "price": 1056,
-    "weight": 2.35,
-    "tier": 3.07896566,
+    "price": 1325,
+    "weight": 1.85,
+    "tier": 3.57465863,
     "requirement": 0,
     "weapons": [
       {
@@ -13313,18 +13313,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 72,
-        "balance": 0.34,
-        "handling": 88,
+        "balance": 0.5,
+        "handling": 90,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 84,
-        "swingDamage": 23,
+        "thrustSpeed": 88,
+        "swingDamage": 22,
         "swingDamageType": "Blunt",
-        "swingSpeed": 80
+        "swingSpeed": 85
       }
     ]
   },
