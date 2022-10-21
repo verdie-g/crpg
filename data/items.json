@@ -1455,9 +1455,9 @@
     "name": "Engraved Angular Kaskara",
     "culture": "Aserai",
     "type": "OneHandedWeapon",
-    "price": 4118,
-    "weight": 1.99,
-    "tier": 7.12319565,
+    "price": 5156,
+    "weight": 1.81,
+    "tier": 8.101052,
     "requirement": 0,
     "weapons": [
       {
@@ -1467,18 +1467,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 84,
-        "balance": 0.63,
-        "handling": 92,
+        "balance": 0.75,
+        "handling": 94,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 87,
-        "swingDamage": 33,
+        "thrustSpeed": 88,
+        "swingDamage": 32,
         "swingDamageType": "Cut",
-        "swingSpeed": 88
+        "swingSpeed": 92
       }
     ]
   },
@@ -3745,9 +3745,9 @@
     "name": "Engraved Backsword",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 5009,
-    "weight": 1.36,
-    "tier": 7.9690156,
+    "price": 7455,
+    "weight": 1.43,
+    "tier": 9.967188,
     "requirement": 0,
     "weapons": [
       {
@@ -3757,19 +3757,19 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 113,
-        "balance": 0.68,
-        "handling": 85,
+        "balance": 0.62,
+        "handling": 84,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon",
           "BonusAgainstShield"
         ],
-        "thrustDamage": 14,
+        "thrustDamage": 15,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 92,
-        "swingDamage": 32,
+        "thrustSpeed": 91,
+        "swingDamage": 37,
         "swingDamageType": "Cut",
-        "swingSpeed": 90
+        "swingSpeed": 88
       }
     ]
   },
@@ -24469,9 +24469,9 @@
     "name": "Spiked Battle Axe",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
-    "price": 1789,
-    "weight": 1.1,
-    "tier": 4.32499361,
+    "price": 786,
+    "weight": 1.13,
+    "tier": 2.515432,
     "requirement": 0,
     "weapons": [
       {
@@ -24480,9 +24480,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 67,
-        "balance": 0.85,
-        "handling": 94,
+        "length": 89,
+        "balance": 0.43,
+        "handling": 80,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -24491,9 +24491,9 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 26,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
-        "swingSpeed": 95
+        "swingSpeed": 82
       }
     ]
   },
