@@ -178,6 +178,15 @@ internal class CrpgItemValueModel : ItemValueModel
             {
                 tier *= 1.2f;
             }
+            if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanKnockDown))
+            {
+                tier *= 2f;
+            }
+
+            if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanKnockDown))
+            {
+                tier *= 1.5f;
+            }
 
             if (weapon.ThrustDamage > 0)
             {

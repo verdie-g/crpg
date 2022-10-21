@@ -152,8 +152,13 @@ internal class ItemExporter : IDataExporter
         ["crpg_sturgia_noble_sword_3_t5"] = (0, 3, 0, 0),
         // Decorated Saber
         ["crpg_khuzait_noble_sword_1_t5"] = (0, 3, 0, 0),
-        // Calradic Mace
-        ["crpg_empire_mace_3_t4"] = (0, 4, 0, 0),
+        // Spiked Battle Axe
+        ["crpg_vlandia_axe_2_t4"] = (0, 13, 0, 0),
+        // Cataphract Mace
+        ["crpg_empire_mace_5_t5"] = (0, 7, 0, 0),
+        // Eastern Heavy Mace
+        ["crpg_khuzait_mace_2_t4"] = (0, 6, 0, 0),
+
         // Polearms6
         // Glaive
         ["crpg_khuzait_polearm_1_t4"] = (0, 0, 0, 0),
@@ -185,6 +190,7 @@ internal class ItemExporter : IDataExporter
         ["crpg_peasant_polearm_1_t1"] = (5, 11, 0, 0),
         // glaive
         ["crpg_khuzait_polearm_1_t4"] = (0, 2, 0, 0),
+
         // Two Handed
         // Falx
         ["crpg_battania_2hsword_4_t4"] = (8, 0, 0, 0),
@@ -204,10 +210,10 @@ internal class ItemExporter : IDataExporter
         ["crpg_avalanche_2haxe"] = (12, 6, 0, 0),
         // Engraved BackSword
         ["crpg_battania_noble_sword_1_t5"] = (0, 4, 0, 0),
-        // Spiked Battle Axe
-        ["crpg_vlandia_axe_2_t4"] = (0, 13, 0, 0),
-        // Cataphract Mace
-        ["crpg_empire_mace_5_t5"] = (0, 5, 0, 0),
+        // Broad Two Hander
+        ["crpg_western_2hsword_t4"] = (0, 0, 0, 0),
+        // Spiked Mace
+        ["crpg_vlandia_mace_1_t2"] = (0, 13, 0, 0),
     };
 
     private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float weightFactor, int stackAmount)> Blades = new()
@@ -272,7 +278,9 @@ internal class ItemExporter : IDataExporter
         // Spiked Battle Axe
         ["crpg_axe_craft_25_head"] = (1.0f, 1f, 0.5f, 0),
         // Cataphract Mace
-        ["crpg_mace_head_7"] = (1.0f, 1f, 0.7f, 0),
+        ["crpg_mace_head_7"] = (1.0f, 1f, 0.31f, 0),
+        // Eastern Heavy Mace
+        ["crpg_mace_head_11"] = (1.0f, 1f, 0.6f, 0),
     };
     private static readonly Dictionary<string, (float lengthFactor, float weightFactor)> Handles = new()
     {
@@ -289,19 +297,21 @@ internal class ItemExporter : IDataExporter
         // Highland BroadBlade - Engraved Backsword
         ["crpg_battania_pommel_5"] = (1f, 0.7f),
     };
-    private static readonly Dictionary<string, (string handle, float handleSize)> AxesAndMaces = new()
+    private static readonly Dictionary<string, (string handle, float handleSize, float bladeSizeFactor, bool canScaleHead)> AxesAndMaces = new()
     {
         // Throwing Axes
         // Tribesman Throwing Axe
-        ["crpg_southern_throwing_axe_1_t4"] = ("crpg_axe_craft_12_handle", 115f),
+        ["crpg_southern_throwing_axe_1_t4"] = ("crpg_axe_craft_12_handle", 115f, 1f, true),
         // Two Handed Axes
         // Avalanche
-        ["crpg_avalanche_2haxe"] = ("crpg_axe_craft_4_handle", 110f),
+        ["crpg_avalanche_2haxe"] = ("crpg_axe_craft_4_handle", 110f, 1f, false),
         // One Handed Axes
         // Spiked Battle Axe
-        ["crpg_vlandia_axe_2_t4"] = ("crpg_axe_craft_13_handle", 150f),
+        ["crpg_vlandia_axe_2_t4"] = ("crpg_axe_craft_13_handle", 150f, 1f, true),
         // Cataphract Mace
-        ["crpg_empire_mace_5_t5"] = ("crpg_mace_handle_5", 130f),
+        ["crpg_empire_mace_5_t5"] = ("crpg_mace_handle_5", 130f, 1.2f, true),
+        // Spiked Mace
+        ["crpg_vlandia_mace_1_t2"] = ("crpg_mace_handle_6", 110f, 1.0f, true),
     };
 
     private static readonly Dictionary<string, (string blade, float bladeSize)> TwoHanded = new()
@@ -322,6 +332,8 @@ internal class ItemExporter : IDataExporter
         ["crpg_battania_2hsword_5_t5"] = ("crpg_battania_blade_5", 152f),
         // Engraved BackSword
         ["crpg_battania_noble_sword_1_t5"] = ("crpg_battania_noble_blade_1", 103f),
+        // Broad Two Hander
+        ["crpg_western_2hsword_t4"] = ("crpg_vlandian_blade_2", 115f),
     };
 
 
@@ -564,15 +576,21 @@ internal class ItemExporter : IDataExporter
                          FilterNodeByAttribute("Type", "Pommel"));
                  }
 
-                 if (AxesAndMaces.TryGetValue(node1.Attributes["id"].Value, out var newAxe))
+                 if (AxesAndMaces.TryGetValue(node1.Attributes["id"].Value, out var newAxeorMace))
                  {
                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
-                        _ => newAxe.handle,
+                        _ => newAxeorMace.handle,
                         FilterNodeByAttribute("Type", "Handle"));
                     ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
-                         _ => newAxe.handleSize.ToString(CultureInfo.InvariantCulture),
+                         _ => newAxeorMace.handleSize.ToString(CultureInfo.InvariantCulture),
                          FilterNodeByAttribute("Type", "Handle"));
-                 }
+                    if (newAxeorMace.canScaleHead)
+                        {
+                            ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
+                                v => ((int)(float.Parse(v) * newAxeorMace.bladeSizeFactor)).ToString(CultureInfo.InvariantCulture),
+                                FilterNodeByAttribute("Type", "Blade"));
+                        }
+                }
 
                  if (TwoHanded.TryGetValue(node1.Attributes["id"].Value, out var newTwoHanded))
                  {

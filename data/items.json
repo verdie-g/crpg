@@ -8898,9 +8898,9 @@
     "name": "Calradic Mace",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 6276,
+    "price": 3075,
     "weight": 1.8,
-    "tier": 9.052882,
+    "tier": 6.00660563,
     "requirement": 0,
     "weapons": [
       {
@@ -8919,7 +8919,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 89,
-        "swingDamage": 24,
+        "swingDamage": 20,
         "swingDamageType": "Blunt",
         "swingSpeed": 101
       }
@@ -8962,9 +8962,9 @@
     "name": "Cataphract Mace",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 4470,
-    "weight": 1.57,
-    "tier": 7.467455,
+    "price": 7074,
+    "weight": 1.51,
+    "tier": 9.68011951,
     "requirement": 0,
     "weapons": [
       {
@@ -8973,9 +8973,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 92,
-        "balance": 0.53,
-        "handling": 89,
+        "length": 96,
+        "balance": 0.58,
+        "handling": 90,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
@@ -8983,9 +8983,9 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 90,
-        "swingDamage": 28,
+        "swingDamage": 30,
         "swingDamageType": "Blunt",
-        "swingSpeed": 86
+        "swingSpeed": 87
       }
     ]
   },
@@ -13301,9 +13301,9 @@
     "name": "Eastern Heavy Mace",
     "culture": "Khuzait",
     "type": "OneHandedWeapon",
-    "price": 1325,
-    "weight": 1.85,
-    "tier": 3.57465863,
+    "price": 6690,
+    "weight": 1.41,
+    "tier": 9.382929,
     "requirement": 0,
     "weapons": [
       {
@@ -13313,18 +13313,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 72,
-        "balance": 0.5,
-        "handling": 90,
+        "balance": 0.86,
+        "handling": 98,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 88,
-        "swingDamage": 22,
+        "thrustSpeed": 92,
+        "swingDamage": 26,
         "swingDamageType": "Blunt",
-        "swingSpeed": 85
+        "swingSpeed": 95
       }
     ]
   },
@@ -18255,9 +18255,9 @@
     "name": "Wooden Hammer",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 123,
+    "price": 340,
     "weight": 1.48,
-    "tier": 0.438642025,
+    "tier": 1.31592619,
     "requirement": 0,
     "weapons": [
       {
@@ -18321,9 +18321,9 @@
     "name": "Makeshift Sledgehammer",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 1581,
+    "price": 9570,
     "weight": 1.84,
-    "tier": 2.69388127,
+    "tier": 8.081645,
     "requirement": 0,
     "weapons": [
       {
@@ -18356,9 +18356,9 @@
     "name": "Sledgehammer",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 1372,
+    "price": 8081,
     "weight": 1.96,
-    "tier": 2.44684839,
+    "tier": 7.340545,
     "requirement": 0,
     "weapons": [
       {
@@ -24918,9 +24918,9 @@
     "name": "Spiked Mace",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
-    "price": 637,
-    "weight": 1.38,
-    "tier": 2.16283822,
+    "price": 7168,
+    "weight": 1.42,
+    "tier": 9.751786,
     "requirement": 0,
     "weapons": [
       {
@@ -24929,19 +24929,19 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 56,
-        "balance": 0.97,
-        "handling": 101,
+        "length": 60,
+        "balance": 0.88,
+        "handling": 98,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 4,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 93,
-        "swingDamage": 13,
+        "thrustSpeed": 92,
+        "swingDamage": 27,
         "swingDamageType": "Pierce",
-        "swingSpeed": 99
+        "swingSpeed": 96
       }
     ]
   },
@@ -25720,9 +25720,9 @@
     "name": "Broad Two Hander",
     "culture": "Vlandia",
     "type": "TwoHandedWeapon",
-    "price": 9300,
-    "weight": 1.67,
-    "tier": 7.951997,
+    "price": 11698,
+    "weight": 1.84,
+    "tier": 9.048456,
     "requirement": 0,
     "weapons": [
       {
@@ -25731,9 +25731,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 108,
-        "balance": 0.99,
-        "handling": 89,
+        "length": 123,
+        "balance": 0.83,
+        "handling": 87,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon",
@@ -25741,10 +25741,10 @@
         ],
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 96,
-        "swingDamage": 37,
+        "thrustSpeed": 94,
+        "swingDamage": 41,
         "swingDamageType": "Cut",
-        "swingSpeed": 99
+        "swingSpeed": 94
       }
     ]
   },
