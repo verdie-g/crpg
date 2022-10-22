@@ -125,7 +125,7 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             ItemObject.ItemTypeEnum.OneHandedWeapon => 44.76610788925f,
             ItemObject.ItemTypeEnum.TwoHandedWeapon => 78.7250303112145f,
-            ItemObject.ItemTypeEnum.Polearm => 23.88739876f,
+            ItemObject.ItemTypeEnum.Polearm => 51.8201478487f,
             _ => 1f,
         };
         float maxTier = float.MinValue;
@@ -162,11 +162,6 @@ internal class CrpgItemValueModel : ItemValueModel
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanKnockDown))
             {
                 tier *= 2f;
-            }
-
-            if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.MultiplePenetration))
-            {
-                tier *= 1.5f;
             }
 
             if (weapon.ThrustDamage > 0)
