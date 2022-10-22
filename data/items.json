@@ -2658,9 +2658,9 @@
     "name": "Battanian Mountain Blade",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 15904,
+    "price": 17596,
     "weight": 1.37,
-    "tier": 10.7300653,
+    "tier": 11.3430815,
     "requirement": 0,
     "weapons": [
       {
@@ -2700,7 +2700,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 98,
-        "swingDamage": 40,
+        "swingDamage": 41,
         "swingDamageType": "Cut",
         "swingSpeed": 96
       },
@@ -20524,9 +20524,9 @@
     "name": "Broad Kaskara",
     "culture": "Aserai",
     "type": "TwoHandedWeapon",
-    "price": 12925,
-    "weight": 1.52,
-    "tier": 9.566158,
+    "price": 15452,
+    "weight": 1.39,
+    "tier": 10.5608292,
     "requirement": 0,
     "weapons": [
       {
@@ -20536,18 +20536,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 144,
-        "balance": 0.19,
-        "handling": 77,
+        "balance": 0.3,
+        "handling": 80,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 90,
-        "swingDamage": 27,
+        "thrustSpeed": 91,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
-        "swingSpeed": 75
+        "swingSpeed": 78
       },
       {
         "class": "TwoHandedSword",
@@ -20556,8 +20556,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 144,
-        "balance": 0.77,
-        "handling": 85,
+        "balance": 0.86,
+        "handling": 86,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon",
@@ -20565,10 +20565,10 @@
         ],
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 97,
+        "thrustSpeed": 98,
         "swingDamage": 41,
         "swingDamageType": "Cut",
-        "swingSpeed": 93
+        "swingSpeed": 95
       },
       {
         "class": "OneHandedSword",
@@ -20577,18 +20577,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 144,
-        "balance": 0.19,
-        "handling": 77,
+        "balance": 0.3,
+        "handling": 80,
         "bodyArmor": 5,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 90,
-        "swingDamage": 27,
+        "thrustSpeed": 91,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
-        "swingSpeed": 75
+        "swingSpeed": 78
       }
     ]
   },
