@@ -9094,9 +9094,9 @@
     "name": "Menavlion",
     "culture": "Empire",
     "type": "Polearm",
-    "price": 18508,
+    "price": 16387,
     "weight": 1.79,
-    "tier": 10.7723846,
+    "tier": 10.0725775,
     "requirement": 0,
     "weapons": [
       {
@@ -9141,7 +9141,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 34,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
         "swingSpeed": 85
       }
@@ -17145,9 +17145,9 @@
     "name": "Broad Leaf Shaped Spear",
     "culture": "Battania",
     "type": "Polearm",
-    "price": 1821,
-    "weight": 1.79,
-    "tier": 2.694441,
+    "price": 15222,
+    "weight": 1.51,
+    "tier": 9.669015,
     "requirement": 0,
     "weapons": [
       {
@@ -17156,20 +17156,20 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 162,
+        "length": 138,
         "balance": 0.0,
-        "handling": 65,
+        "handling": 70,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
           "WideGrip"
         ],
-        "thrustDamage": 10,
+        "thrustDamage": 17,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 85,
-        "swingDamage": 2,
+        "thrustSpeed": 87,
+        "swingDamage": 3,
         "swingDamageType": "Blunt",
-        "swingSpeed": 32
+        "swingSpeed": 45
       },
       {
         "class": "TwoHandedPolearm",
@@ -17177,9 +17177,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 162,
-        "balance": 0.21,
-        "handling": 62,
+        "length": 138,
+        "balance": 0.48,
+        "handling": 67,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -17187,12 +17187,12 @@
           "WideGrip",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 12,
+        "thrustDamage": 20,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 93,
+        "thrustSpeed": 95,
         "swingDamage": 12,
         "swingDamageType": "Blunt",
-        "swingSpeed": 76
+        "swingSpeed": 84
       }
     ]
   },
@@ -18223,9 +18223,9 @@
     "name": "Wooden Hammer",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 220,
+    "price": 168,
     "weight": 1.48,
-    "tier": 0.87728405,
+    "tier": 0.6579631,
     "requirement": 0,
     "weapons": [
       {
@@ -18289,9 +18289,9 @@
     "name": "Makeshift Sledgehammer",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 4755,
+    "price": 2963,
     "weight": 1.84,
-    "tier": 5.38776255,
+    "tier": 4.04082251,
     "requirement": 0,
     "weapons": [
       {
@@ -18324,9 +18324,9 @@
     "name": "Sledgehammer",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 4050,
+    "price": 2542,
     "weight": 1.96,
-    "tier": 4.893697,
+    "tier": 3.67027259,
     "requirement": 0,
     "weapons": [
       {
@@ -18504,9 +18504,9 @@
     "name": "Scythe",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 34967,
-    "weight": 1.88,
-    "tier": 15.2171059,
+    "price": 21962,
+    "weight": 2.33,
+    "tier": 11.8319483,
     "requirement": 0,
     "weapons": [
       {
@@ -18516,8 +18516,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 96,
-        "balance": 0.77,
-        "handling": 76,
+        "balance": 0.48,
+        "handling": 70,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -18528,10 +18528,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 94,
-        "swingDamage": 35,
+        "thrustSpeed": 91,
+        "swingDamage": 40,
         "swingDamageType": "Pierce",
-        "swingSpeed": 93
+        "swingSpeed": 84
       }
     ]
   },
