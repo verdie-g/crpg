@@ -1927,9 +1927,9 @@
     "name": "Avalanche",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 11055,
-    "weight": 1.18,
-    "tier": 8.766293,
+    "price": 14061,
+    "weight": 1.04,
+    "tier": 10.0242672,
     "requirement": 0,
     "weapons": [
       {
@@ -1939,8 +1939,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 138,
-        "balance": 1.0,
-        "handling": 78,
+        "balance": 0.88,
+        "handling": 83,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -1950,10 +1950,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 99,
-        "swingDamage": 44,
+        "thrustSpeed": 100,
+        "swingDamage": 46,
         "swingDamageType": "Cut",
-        "swingSpeed": 101
+        "swingSpeed": 96
       }
     ]
   },
@@ -9586,9 +9586,9 @@
     "name": "Execution Axe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 3365,
-    "weight": 1.1,
-    "tier": 4.371941,
+    "price": 3792,
+    "weight": 0.97,
+    "tier": 4.70262,
     "requirement": 0,
     "weapons": [
       {
@@ -9598,8 +9598,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 137,
-        "balance": 0.73,
-        "handling": 80,
+        "balance": 0.93,
+        "handling": 84,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -9609,10 +9609,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 100,
-        "swingDamage": 36,
+        "thrustSpeed": 102,
+        "swingDamage": 32,
         "swingDamageType": "Cut",
-        "swingSpeed": 91
+        "swingSpeed": 97
       }
     ]
   },
@@ -16463,9 +16463,9 @@
     "name": "Northlander Broad Axe",
     "culture": "Sturgia",
     "type": "TwoHandedWeapon",
-    "price": 4224,
-    "weight": 1.01,
-    "tier": 5.01969,
+    "price": 3659,
+    "weight": 0.86,
+    "tier": 4.601368,
     "requirement": 0,
     "weapons": [
       {
@@ -16475,8 +16475,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 115,
-        "balance": 0.98,
-        "handling": 87,
+        "balance": 1.0,
+        "handling": 91,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -16486,10 +16486,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 102,
-        "swingDamage": 33,
+        "thrustSpeed": 103,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
-        "swingSpeed": 99
+        "swingSpeed": 104
       }
     ]
   },
