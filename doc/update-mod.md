@@ -5,7 +5,7 @@
 1. Bump the mod version in `Submodule.xml` and `Directory.Build.props`
 2. Run `git commit -m 'mod: set version to W.X.Y.Z'` `git push` `git tag vZ` `git push --tags`
 3. Rebuild Module.Client in release mode
-4. Make sure you have all AssetSources and SceneObj in `%MB_CLIENT_PATH%\Modules\cRPG`
+4. Make sure you have all asset sources in `%MB_CLIENT_PATH%\Modules\cRPG\AssetSources`
 5. Create the folder `%MB_CLIENT_PATH%\Modules\cRPG\Assets`
 6. Copy `%MB_CLIENT_PATH%\Modules\cRPG\Win64_Shipping_Client` to `%MB_CLIENT_PATH%\Modules\cRPG\Win64_Shipping_wEditor`
 7. In `%MB_CLIENT_PATH%\Modules\cRPG\SubModule.xml` replace `<ModuleCategory value="Multiplayer"/>` by `<ModuleCategory value="SinglePlayer"/>`
@@ -37,8 +37,8 @@
 21. Replace the ModuleFolder path with your published path
 22. Run `"%MB_CLIENT_PATH%/bin/Win64_Shipping_Client/TaleWorlds.MountAndBlade.SteamWorkshop.exe" C:\PATH\TO\PUBLISHED\MODULE`
 
-## Code/XML update only
+## Code/XML/Scenes update only
 
-If you are only updating the code and XML, you can do steps [1-3], then
+If you are not updating assets, you can do steps [1-3], then
 copy the files from `%MB_CLIENT_PATH%` to the already existing published
 folder and do step 22.
