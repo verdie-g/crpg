@@ -6233,9 +6233,9 @@
     "name": "Simple Short Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 5158,
+    "price": 4972,
     "weight": 0.3,
-    "tier": 6.10974836,
+    "tier": 5.979754,
     "requirement": 0,
     "weapons": [
       {
@@ -6246,7 +6246,7 @@
         "stackAmount": 1,
         "length": 110,
         "balance": 0.0,
-        "handling": 94,
+        "handling": 92,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -6259,7 +6259,7 @@
         ],
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 94,
+        "thrustSpeed": 92,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 98
@@ -6271,9 +6271,9 @@
     "name": "Steppe Recurve Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 8856,
+    "price": 8533,
     "weight": 0.3,
-    "tier": 8.335487,
+    "tier": 8.161832,
     "requirement": 0,
     "weapons": [
       {
@@ -6284,7 +6284,7 @@
         "stackAmount": 1,
         "length": 108,
         "balance": 0.0,
-        "handling": 96,
+        "handling": 94,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -6297,7 +6297,7 @@
         ],
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 96,
+        "thrustSpeed": 94,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 101
@@ -10349,9 +10349,9 @@
     "name": "Longbow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 3409,
+    "price": 3280,
     "weight": 0.4,
-    "tier": 4.773369,
+    "tier": 4.66236,
     "requirement": 0,
     "weapons": [
       {
@@ -10362,7 +10362,7 @@
         "stackAmount": 1,
         "length": 111,
         "balance": 0.0,
-        "handling": 86,
+        "handling": 84,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -10375,7 +10375,7 @@
         ],
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 86,
+        "thrustSpeed": 84,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 88
@@ -11112,9 +11112,9 @@
     "name": "Ranger Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 2223,
+    "price": 2140,
     "weight": 0.4,
-    "tier": 3.66108537,
+    "tier": 3.57391667,
     "requirement": 0,
     "weapons": [
       {
@@ -11125,7 +11125,7 @@
         "stackAmount": 1,
         "length": 113,
         "balance": 0.0,
-        "handling": 84,
+        "handling": 82,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -11138,7 +11138,7 @@
         ],
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 84,
+        "thrustSpeed": 82,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 86
@@ -11681,9 +11681,9 @@
     "name": "Hunting Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 2278,
+    "price": 2200,
     "weight": 0.3,
-    "tier": 3.71833134,
+    "tier": 3.637498,
     "requirement": 0,
     "weapons": [
       {
@@ -11694,7 +11694,7 @@
         "stackAmount": 1,
         "length": 110,
         "balance": 0.0,
-        "handling": 92,
+        "handling": 90,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -11707,7 +11707,7 @@
         ],
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 92,
+        "thrustSpeed": 90,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
@@ -14936,9 +14936,9 @@
     "name": "Lowland Longbow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 4179,
+    "price": 4021,
     "weight": 0.5,
-    "tier": 5.395299,
+    "tier": 5.27267838,
     "requirement": 0,
     "weapons": [
       {
@@ -14949,7 +14949,7 @@
         "stackAmount": 1,
         "length": 120,
         "balance": 0.0,
-        "handling": 88,
+        "handling": 86,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -14962,7 +14962,7 @@
         ],
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 88,
+        "thrustSpeed": 86,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 89
@@ -15030,9 +15030,9 @@
     "name": "Yew Bow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 5526,
+    "price": 5307,
     "weight": 0.5,
-    "tier": 6.360418,
+    "tier": 6.212501,
     "requirement": 0,
     "weapons": [
       {
@@ -15043,7 +15043,7 @@
         "stackAmount": 1,
         "length": 117,
         "balance": 0.0,
-        "handling": 86,
+        "handling": 84,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -15056,7 +15056,7 @@
         ],
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 86,
+        "thrustSpeed": 84,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 86
@@ -15394,9 +15394,9 @@
     "name": "Mountain Hunting Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 1918,
+    "price": 1851,
     "weight": 0.3,
-    "tier": 3.330756,
+    "tier": 3.255057,
     "requirement": 0,
     "weapons": [
       {
@@ -15407,7 +15407,7 @@
         "stackAmount": 1,
         "length": 108,
         "balance": 0.0,
-        "handling": 88,
+        "handling": 86,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -15420,7 +15420,7 @@
         ],
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 88,
+        "thrustSpeed": 86,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 95
@@ -15806,9 +15806,9 @@
     "name": "Noble Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 11691,
+    "price": 11257,
     "weight": 0.8,
-    "tier": 9.737917,
+    "tier": 9.535043,
     "requirement": 0,
     "weapons": [
       {
@@ -15819,7 +15819,7 @@
         "stackAmount": 1,
         "length": 116,
         "balance": 0.0,
-        "handling": 96,
+        "handling": 94,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -15832,7 +15832,7 @@
         ],
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 96,
+        "thrustSpeed": 94,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 100
@@ -15988,9 +15988,9 @@
     "name": "Noble Long Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 12264,
+    "price": 11760,
     "weight": 0.8,
-    "tier": 10.0,
+    "tier": 9.770115,
     "requirement": 0,
     "weapons": [
       {
@@ -16001,7 +16001,7 @@
         "stackAmount": 1,
         "length": 118,
         "balance": 0.0,
-        "handling": 87,
+        "handling": 85,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -16014,7 +16014,7 @@
         ],
         "thrustDamage": 19,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 87,
+        "thrustSpeed": 85,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 87
@@ -16062,9 +16062,9 @@
     "name": "Nomad Bow",
     "culture": "Aserai",
     "type": "Bow",
-    "price": 6000,
+    "price": 5769,
     "weight": 0.5,
-    "tier": 6.672047,
+    "tier": 6.52211475,
     "requirement": 0,
     "weapons": [
       {
@@ -16075,7 +16075,7 @@
         "stackAmount": 1,
         "length": 114,
         "balance": 0.0,
-        "handling": 89,
+        "handling": 87,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -16088,7 +16088,7 @@
         ],
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 89,
+        "thrustSpeed": 87,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 88
@@ -16280,9 +16280,9 @@
     "name": "Nordic Shortbow",
     "culture": "Sturgia",
     "type": "Bow",
-    "price": 3911,
+    "price": 3767,
     "weight": 0.3,
-    "tier": 5.185861,
+    "tier": 5.07062,
     "requirement": 0,
     "weapons": [
       {
@@ -16293,7 +16293,7 @@
         "stackAmount": 1,
         "length": 108,
         "balance": 0.0,
-        "handling": 90,
+        "handling": 88,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -16306,7 +16306,7 @@
         ],
         "thrustDamage": 11,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 90,
+        "thrustSpeed": 88,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 99
@@ -21178,9 +21178,9 @@
     "name": "Steppe Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 1238,
+    "price": 1196,
     "weight": 0.3,
-    "tier": 2.488439,
+    "tier": 2.43056846,
     "requirement": 0,
     "weapons": [
       {
@@ -21191,7 +21191,7 @@
         "stackAmount": 1,
         "length": 110,
         "balance": 0.0,
-        "handling": 86,
+        "handling": 84,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -21204,7 +21204,7 @@
         ],
         "thrustDamage": 9,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 86,
+        "thrustSpeed": 84,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 94
@@ -21321,9 +21321,9 @@
     "name": "Heavy Recurve Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 5346,
+    "price": 5149,
     "weight": 0.3,
-    "tier": 6.23922157,
+    "tier": 6.10358667,
     "requirement": 0,
     "weapons": [
       {
@@ -21334,7 +21334,7 @@
         "stackAmount": 1,
         "length": 106,
         "balance": 0.0,
-        "handling": 92,
+        "handling": 90,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -21347,7 +21347,7 @@
         ],
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 92,
+        "thrustSpeed": 90,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 100
@@ -21449,9 +21449,9 @@
     "name": "Steppe War Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 7667,
+    "price": 7395,
     "weight": 0.3,
-    "tier": 7.681002,
+    "tier": 7.52424669,
     "requirement": 0,
     "weapons": [
       {
@@ -21462,7 +21462,7 @@
         "stackAmount": 1,
         "length": 107,
         "balance": 0.0,
-        "handling": 98,
+        "handling": 96,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -21475,7 +21475,7 @@
         ],
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 98,
+        "thrustSpeed": 96,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 96
@@ -23672,9 +23672,9 @@
     "name": "Practice Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 524,
+    "price": 510,
     "weight": 0.3,
-    "tier": 1.31340587,
+    "tier": 1.28604329,
     "requirement": 0,
     "weapons": [
       {
@@ -23685,7 +23685,7 @@
         "stackAmount": 1,
         "length": 106,
         "balance": 0.0,
-        "handling": 96,
+        "handling": 94,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -23698,7 +23698,7 @@
         ],
         "thrustDamage": 5,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 96,
+        "thrustSpeed": 94,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 101
@@ -23710,9 +23710,9 @@
     "name": "Practice Longbow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 430,
+    "price": 419,
     "weight": 0.5,
-    "tier": 1.11386561,
+    "tier": 1.089385,
     "requirement": 0,
     "weapons": [
       {
@@ -23723,7 +23723,7 @@
         "stackAmount": 1,
         "length": 120,
         "balance": 0.0,
-        "handling": 91,
+        "handling": 89,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -23736,7 +23736,7 @@
         ],
         "thrustDamage": 6,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 91,
+        "thrustSpeed": 89,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 89
@@ -23827,9 +23827,9 @@
     "name": "Tribesman Bow",
     "culture": "Aserai",
     "type": "Bow",
-    "price": 4982,
+    "price": 4789,
     "weight": 0.5,
-    "tier": 5.98637438,
+    "tier": 5.84875631,
     "requirement": 0,
     "weapons": [
       {
@@ -23840,7 +23840,7 @@
         "stackAmount": 1,
         "length": 115,
         "balance": 0.0,
-        "handling": 87,
+        "handling": 85,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -23853,7 +23853,7 @@
         ],
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 87,
+        "thrustSpeed": 85,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 88
@@ -26740,9 +26740,9 @@
     "name": "Woodland Longbow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 8489,
+    "price": 8144,
     "weight": 0.1,
-    "tier": 8.138365,
+    "tier": 7.9491,
     "requirement": 0,
     "weapons": [
       {
@@ -26753,7 +26753,7 @@
         "stackAmount": 1,
         "length": 118,
         "balance": 0.0,
-        "handling": 86,
+        "handling": 84,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -26766,7 +26766,7 @@
         ],
         "thrustDamage": 18,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 86,
+        "thrustSpeed": 84,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 86
@@ -26778,9 +26778,9 @@
     "name": "Woodland Yew Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 8665,
+    "price": 8332,
     "weight": 0.5,
-    "tier": 8.233434,
+    "tier": 8.052479,
     "requirement": 0,
     "weapons": [
       {
@@ -26791,7 +26791,7 @@
         "stackAmount": 1,
         "length": 115,
         "balance": 0.0,
-        "handling": 91,
+        "handling": 89,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -26804,7 +26804,7 @@
         ],
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 91,
+        "thrustSpeed": 89,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 90
