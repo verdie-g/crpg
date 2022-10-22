@@ -192,17 +192,17 @@ internal class ItemExporter : IDataExporter
 
         // Two Handed
         // Falx
-        ["crpg_battania_2hsword_4_t4"] = (8, 0, 0, 0),
+        ["crpg_battania_2hsword_4_t4"] = (0, 4, 0, 0),
         // Reaper Falx
-        ["crpg_reaper_falx"] = (6, 0, 0, 0),
+        ["crpg_reaper_falx"] = (0, 4, 0, 0),
         // Broad Kaskara
-        ["crpg_southern_broad_2hsword_t4"] = (2, 3, 0, 0),
+        ["crpg_southern_broad_2hsword_t4"] = (0, 6, 0, 0),
         // Thamaskene Steel Two Hander
-        ["crpg_vlandia_2hsword_2_t5"] = (8, 6, 0, 8),
+        ["crpg_vlandia_2hsword_2_t5"] = (0, 8, 0, 8),
         // Wide Fullered Broad Sword
-        ["crpg_vlandia_2hsword_1_t5"] = (7, 7, 0, 5),
+        ["crpg_vlandia_2hsword_1_t5"] = (0, 9, 0, 5),
         // Battanian Mountain Blade
-        ["battania_2hsword_5_t5"] = (0, 0, 0, 0),
+        ["battania_2hsword_5_t5"] = (0, 2, 0, 0),
         // Bearded Axe
         ["crpg_bearded_axe_t3"] = (1, 13, 0, 0),
         // Avalanche
@@ -264,15 +264,15 @@ internal class ItemExporter : IDataExporter
         ["crpg_dagger_blade_12"] = (1.6f, 1.6f, 1f, 9),
         ["crpg_dagger_blade_13"] = (1.6f, 1.6f, 1f, 9),
         // Falx , Reaper Falx
-        ["crpg_battania_blade_6"] = (0.82f, 1f, 1.1f, 0),
+        ["crpg_battania_blade_6"] = (0.82f, 1f, 0.85f, 0),
         // Broad Kaskara
-        ["crpg_aserai_blade_5"] = (0.85f, 0.8f, 1f, 0),
+        ["crpg_aserai_blade_5"] = (0.85f, 0.8f, 0.85f, 0),
         // Wide Fullered Broad Two Hander - Thamaskene Steel Two Hander - Wide Fullered Broad Arming Sword
-        ["crpg_vlandian_blade_3"] = (0.75f, 0.41f, 1f, 0),
+        ["crpg_vlandian_blade_3"] = (0.75f, 0.41f, 0.75f, 0),
         // Battanian Mountain Blade  - Highland Broad Blade
-        ["crpg_battania_blade_5"] = (0.951f, 0.63075f, 1.1f, 0),
+        ["crpg_battania_blade_5"] = (0.951f, 0.63075f, 0.85f, 0),
         // Ridged Great Saber - Ridged Saber  - Wind Fury
-        ["crpg_khuzait_blade_8"] = (1f, 0.933f, 1f, 0),
+        ["crpg_khuzait_blade_8"] = (1f, 0.933f, 0.85f, 0),
         // War Razor
         ["crpg_cleaver_blade_5"] = (0.974f, 1f, 1f, 0),
         // Avalanche
@@ -394,12 +394,12 @@ internal class ItemExporter : IDataExporter
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
         SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));
-        const string itemThumbnailsTempPath = "../../crpg-items";
+        /*const string itemThumbnailsTempPath = "../../crpg-items";
         string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
         Directory.CreateDirectory(itemThumbnailsTempPath);
         await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);
         Directory.Delete(itemThumbnailsPath, recursive: true);
-        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);
+        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);*/
     }
 
     private static CrpgItem MbToCrpgItem(ItemObject mbItem)
