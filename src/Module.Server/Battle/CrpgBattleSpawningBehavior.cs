@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Text;
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Common;
@@ -240,12 +241,10 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
             uint color1;
             uint color2;
-            // Banner? banner;
-            if (crpgRepresentative.Clan != null)
+            if (crpgRepresentative.Clan != null && TryParseBanner(crpgRepresentative.Clan.BannerKey, out var banner))
             {
                 color1 = crpgRepresentative.Clan.PrimaryColor;
                 color2 = crpgRepresentative.Clan.SecondaryColor;
-                // TryParseBanner(crpgRepresentative.Clan.BannerKey, out banner);
             }
             else
             {
@@ -255,7 +254,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 color2 = missionPeer.Team == Mission.AttackerTeam
                     ? teamCulture.Color2
                     : teamCulture.ClothAlternativeColor2;
-                // banner = null;
+                TryParseBanner(teamCulture.BannerKey, out banner);
             }
 
             AgentBuildData agentBuildData = new AgentBuildData(character)
@@ -267,10 +266,14 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 .IsFemale(missionPeer.Peer.IsFemale)
                 .ClothingColor1(color1)
                 .ClothingColor2(color2)
-                // .Banner(banner)
                 .BodyProperties(GetBodyProperties(missionPeer, teamCulture))
                 .InitialPosition(in spawnFrame.origin)
                 .InitialDirection(in initialDirection);
+
+            if (banner != null)
+            {
+                agentBuildData.Banner(banner);
+            }
 
             Agent agent = Mission.SpawnAgent(agentBuildData);
             agent.WieldInitialWeapons();
@@ -357,16 +360,119 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
 
     private bool TryParseBanner(string bannerKey, out Banner? banner)
     {
-        try
+        banner = null;
+
+        if (bannerKey.Length > 100)
         {
-            banner = new Banner(bannerKey);
-            return true;
-        }
-        catch
-        {
-            banner = null;
             return false;
         }
+
+        string[] array = bannerKey.Split('.');
+
+        StringBuilder fixedBannerCode = new();
+        // The maximum size of the banner is Banner.BannerFullSize. But apparently negative values do not cause crashes. Anyway added some checks with tolerance to parse the banner.
+        int maxX = 2 * Banner.BannerFullSize;
+        int minX = -2 * Banner.BannerFullSize;
+        int maxY = maxX;
+        int minY = minX;
+
+        /*
+         * Format values seperated by dots (.)
+         * Icons / Colors found inside of the banner_icons.xml
+         * --------
+         * iconId
+         * colorId
+         * colorId2
+         * sizeX
+         * sizeY
+         * posX  (total canvas size is Banner.BannerFullSize but being out of these doesn't seem to cause any issues)
+         * posY
+         * stroke (0 or 1)
+         * mirror (0 or 1)
+         * rotation (0-359)
+         */
+
+        for (int i = 0; i + 10 <= array.Length; i += 10)
+        {
+            if (int.TryParse(array[i], out int iconId))
+            {
+                if (!CheckIconList(iconId))
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+            if (!int.TryParse(array[i + 1], out int colorId1) || !BannerManager.Instance.ReadOnlyColorPalette.ContainsKey(colorId1)
+            || !int.TryParse(array[i + 2], out int colorId2) || !BannerManager.Instance.ReadOnlyColorPalette.ContainsKey(colorId2)
+            || !int.TryParse(array[i + 3], out int sizeX)
+            || !int.TryParse(array[i + 4], out int sizeY)
+            || !int.TryParse(array[i + 5], out int posX) || posX > maxX || posX < minX
+            || !int.TryParse(array[i + 6], out int posY) || posY > maxY || posY < minY
+            || !int.TryParse(array[i + 7], out int drawStroke) || drawStroke > 1 || drawStroke < 0
+            || !int.TryParse(array[i + 8], out int mirror) || mirror > 1 || mirror < 0)
+            {
+                return false;
+            }
+
+            if (!int.TryParse(array[i + 9], out int rotation))
+            {
+                return false;
+            }
+            else
+            {
+                rotation %= 360;
+                if (rotation < 0)
+                {
+                    rotation += 360;
+                }
+            }
+
+            fixedBannerCode.Append(iconId);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(colorId1);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(colorId2);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(sizeX);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(sizeY);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(posX);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(posY);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(drawStroke);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(mirror);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(rotation);
+            fixedBannerCode.Append(".");
+        }
+
+        if (fixedBannerCode.Length > 0)
+        {
+            fixedBannerCode.Length -= ".".Length;
+        }
+
+        banner = new Banner(fixedBannerCode.ToString());
+        return true;
+    }
+
+    private bool CheckIconList(int id)
+    {
+        foreach (BannerIconGroup bannerIconGroup in BannerManager.Instance.BannerIconGroups)
+        {
+            if (bannerIconGroup.AllBackgrounds.ContainsKey(id) || bannerIconGroup.AllIcons.ContainsKey(id))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private static readonly Dictionary<CrpgItemSlot, EquipmentIndex> ItemSlotToIndex = new()
