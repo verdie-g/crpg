@@ -35,7 +35,7 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
         if (!weapon.IsEmpty)
         {
             // Bonus dmg with spears against horses (does only work with "main" spears - not javelins etc)
-            if (!attackInformation.IsVictimAgentHuman && !attackInformation.DoesAttackerHaveMountAgent && weapon.CurrentUsageItem.IsPolearm && !weapon.CurrentUsageItem.IsConsumable && weapon.CurrentUsageItem.IsMeleeWeapon && collisionData.StrikeType == (int)StrikeType.Thrust && collisionData.DamageType == (int)DamageTypes.Pierce && !weapon.GetConsumableIfAny(out var consumableWeapon))
+            if (!attackInformation.IsVictimAgentHuman && !attackInformation.DoesAttackerHaveMountAgent && weapon.CurrentUsageItem.IsPolearm && !weapon.CurrentUsageItem.IsConsumable && weapon.CurrentUsageItem.IsMeleeWeapon && collisionData.StrikeType == (int)StrikeType.Thrust && collisionData.DamageType == (int)DamageTypes.Pierce && !weapon.IsAnyConsumable())
             {
                 finalDamage *= 1.85f; // 85% bonus dmg against horses
             }
@@ -75,8 +75,10 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
         if (attackerWeapon != null
             && attackerWeapon.WeaponFlags.HasAnyFlag(WeaponFlags.WideGrip)
             && blow.StrikeType == StrikeType.Thrust && collisionData.ThrustTipHit
+            && blow.DamageType == DamageTypes.Pierce
             && attackerAgent != null
             && !attackerAgent.HasMount
+            && !attackerAgent.WieldedWeapon.IsAnyConsumable() // Consumable = any kind of throwing
             && victimAgent.GetAgentFlags().HasAnyFlag(AgentFlag.CanRear)
             && victimAgent.MovementVelocity.y > 0.1f
             && Vec3.DotProduct(blow.Direction, victimAgent.Frame.rotation.f) < -0.35f)
