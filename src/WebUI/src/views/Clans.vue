@@ -161,9 +161,7 @@ export default class Clans extends Vue {
   }
 
   get filteredClans(): ClanWithMemberCount[] {
-    const filteredClans = clanModule.clans.filter(
-      clan => clan.clan.region === this.selectedRegion
-    );
+    const filteredClans = clanModule.clans.filter(clan => clan.clan.region === this.selectedRegion);
     if (this.clanSearchQuery.length === 0) {
       return filteredClans;
     }
@@ -183,7 +181,7 @@ export default class Clans extends Vue {
       query: {
         ...this.$route.query,
         region,
-      }
+      },
     });
   }
 

@@ -1,0 +1,29 @@
+If necessary: How to create a test cert etc:
+
+makecert -r -pe -n "CN=cRPG" -ss CA -sr CurrentUser ^
+         -a sha256 -cy authority -sky signature -sv cRPGCA.pvk cRPGCA.cer
+
+
+certutil -user -addstore Root cRPGCA.cer
+
+makecert -pe -n "CN=cRPG Team" -a sha256 -cy end ^
+         -sky signature ^
+         -ic cRPGCA.cer -iv cRPGCA.pvk ^
+         -sv cRPGSPC.pvk cRPGSPC.cer
+
+
+
+pvk2pfx -pvk cRPGSPC.pvk -spc cRPGSPC.cer -pfx cRPGSPC.pfx -po imINqzFmX9K6G1Bg3KncO8Pdy8gqd
+
+
+CertPW and stuff:
+
+Signature PW: 			4808G$#GDGvscGFTEH%!1NDVZC@3Mi
+Subject key / Private PW: 	B0rFB2UI0LvuM9$ONjzTFlog#UA9ox
+
+
+How to sign:
+
+signtool sign /v /f cRPGSPC.pfx /p imINqzFmX9K6G1Bg3KncO8Pdy8gqd ^
+              /t http://timestamp.digicert.com cRPG.exe
+	       

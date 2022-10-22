@@ -78,18 +78,23 @@
         </div>
 
         <div class="level-item">
-          <a href="https://www.moddb.com/mods/crpg" target="_blank" title="Download the mod on Moddb">
+          <a href="https://www.moddb.com/mods/crpg" target="_blank" title="See the mod on Moddb">
             <b-icon icon="wrench" size="is-large" aria-label="cRPG Moddb" />
           </a>
         </div>
 
         <div class="level-item">
           <a
-            href="https://store.steampowered.com/app/261550/Mount__Blade_II_Bannerlord"
+            href="https://steamcommunity.com/sharedfiles/filedetails/?id=2878356589"
             target="_blank"
-            title="Buy the game"
+            title="Download the mod on the Steam Workshop"
           >
-            <b-icon icon="steam" pack="fab" size="is-large" aria-label="Mount & Blade Steam page" />
+            <b-icon
+              icon="steam"
+              pack="fab"
+              size="is-large"
+              aria-label="cRPG on the Steam Workshop"
+            />
           </a>
         </div>
       </div>
