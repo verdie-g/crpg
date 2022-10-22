@@ -26,7 +26,18 @@
           Sign in through Steam
         </b-button>
 
-        <p>Join our community on <a href="https://discord.gg/c-rpg" target="_blank">Discord</a> and download the mod on <a href="https://www.moddb.com/mods/crpg" target="_blank">Moddb</a>.</p>
+        <p>
+          Join our community on
+          <a href="https://discord.gg/c-rpg" target="_blank">Discord</a>
+          and download the mod on the
+          <a
+            href="https://steamcommunity.com/sharedfiles/filedetails/?id=2878356589"
+            target="_blank"
+          >
+            Steam Workshop
+          </a>
+          .
+        </p>
       </div>
     </section>
   </div>
@@ -56,5 +67,4 @@ export default class Home extends Vue {
 }
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

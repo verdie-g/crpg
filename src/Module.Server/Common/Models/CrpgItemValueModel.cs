@@ -105,27 +105,7 @@ internal class CrpgItemValueModel : ItemValueModel
 
     private float CalculateBannerTier(BannerComponent bannerComponent)
     {
-        // return GetBaseTierValueForBannerEffect(bannerComponent.BannerEffect)
-        // *bannerComponent.BannerLevel;
         return 10f;
-    }
-
-    private float GetBaseTierValueForBannerEffect(BannerComponent.BannerItemEffects bannerEffect)
-    {
-        return bannerEffect switch
-        {
-            BannerComponent.BannerItemEffects.IncreasedDamageAgainstMountedTroops => 1f,
-            BannerComponent.BannerItemEffects.IncreasedRangedDamage => 1f,
-            BannerComponent.BannerItemEffects.IncreasedRangedWeaponAccuracy => 1f,
-            BannerComponent.BannerItemEffects.IncreasedChargeDamage => 1f,
-            BannerComponent.BannerItemEffects.DecreasedMoraleShock => 1f,
-            BannerComponent.BannerItemEffects.DecreasedMeleeAttackDamage => 1f,
-            BannerComponent.BannerItemEffects.DecreasedRangedAttackDamage => 1f,
-            BannerComponent.BannerItemEffects.DecreasedShieldDamage => 1f,
-            BannerComponent.BannerItemEffects.IncreasedTroopMovementSpeed => 1f,
-            BannerComponent.BannerItemEffects.IncreasedMountMovementSpeed => 1f,
-            _ => 1f,
-        };
     }
 
     private float CalculateWeaponTier(WeaponComponent weaponComponent)
@@ -179,9 +159,24 @@ internal class CrpgItemValueModel : ItemValueModel
                 tier *= 1.2f;
             }
 
+            if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanKnockDown))
+            {
+                tier *= 2f;
+            }
+
+            if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanKnockDown))
+            {
+                tier *= 1.5f;
+            }
+
             if (weapon.ThrustDamage > 0)
             {
                 tier *= 1.2f;
+            }
+
+            if (weapon.WeaponClass == WeaponClass.OneHandedAxe || weapon.WeaponClass == WeaponClass.TwoHandedAxe)
+            {
+                tier *= 0.9f;
             }
 
             float lengthTier = weapon.WeaponLength * 0.01f;
@@ -290,17 +285,19 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateAmmoTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        float scaler = weaponComponent.Item.ItemType switch
+        return weaponComponent.Item.ItemType switch
         {
-            ItemObject.ItemTypeEnum.Arrows => 1127f,
-            ItemObject.ItemTypeEnum.Bolts => 689.0625f,
+            ItemObject.ItemTypeEnum.Arrows => 10f
+          * CalculateDamageTypeFactor(weapon.ThrustDamageType) * CalculateDamageTypeFactor(weapon.ThrustDamageType)
+          * (15 + weapon.MissileDamage) * (15 + weapon.MissileDamage)
+          * weapon.MaxDataValue
+          / 31862f,
+            ItemObject.ItemTypeEnum.Bolts => 10f
+          * CalculateDamageTypeFactor(weapon.ThrustDamageType) * CalculateDamageTypeFactor(weapon.ThrustDamageType)
+          * (50 + weapon.MissileDamage) * (50 + weapon.MissileDamage)
+          * weapon.MaxDataValue
+          / 83376.56f,
             _ => 10f,
         };
-        return
-            10f
-          * CalculateDamageTypeFactor(weapon.ThrustDamageType) * CalculateDamageTypeFactor(weapon.ThrustDamageType)
-          * weapon.MissileDamage * weapon.MissileDamage
-          * weapon.MaxDataValue
-          / scaler;
     }
 }
