@@ -280,9 +280,11 @@ internal class ItemExporter : IDataExporter
         // Spiked Battle Axe
         ["crpg_axe_craft_25_head"] = (1.0f, 1f, 0.5f, 0),
         // Cataphract Mace
-        ["crpg_mace_head_7"] = (1.0f, 1f, 0.31f, 0),
+        ["crpg_mace_head_7"] = (1.0f, 1f, 0.18f, 0),
         // Eastern Heavy Mace
-        ["crpg_mace_head_11"] = (1.0f, 1f, 0.6f, 0),
+        ["crpg_mace_head_11"] = (1.0f, 1f, 0.18f, 0),
+        // Spiked Mace
+        ["crpg_mace_head_22"] = (1.0f, 1f, 0.30f, 0),
     };
 
     private static readonly Dictionary<string, (float lengthFactor, float weightFactor)> Handles = new()
@@ -313,9 +315,11 @@ internal class ItemExporter : IDataExporter
         // Spiked Battle Axe
         ["crpg_vlandia_axe_2_t4"] = ("crpg_axe_craft_13_handle", 150f, 1f, true),
         // Cataphract Mace
-        ["crpg_empire_mace_5_t5"] = ("crpg_mace_handle_5", 130f, 1.2f, true),
+        ["crpg_empire_mace_5_t5"] = ("crpg_mace_handle_5", 130f, 1.4f, true),
         // Spiked Mace
-        ["crpg_vlandia_mace_1_t2"] = ("crpg_mace_handle_6", 110f, 1.0f, true),
+        ["crpg_vlandia_mace_1_t2"] = ("crpg_mace_handle_6", 110f, 1.5f, true),
+        // Eastern Heavy Mace
+        ["crpg_khuzait_mace_2_t4"] = ("crpg_mace_handle_6", 110f, 1.6f, true),
     };
 
     private static readonly Dictionary<string, (string blade, float bladeSize)> TwoHanded = new()
@@ -387,8 +391,7 @@ internal class ItemExporter : IDataExporter
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
         SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));
-        /*
-        const string itemThumbnailsTempPath = "../../crpg-items";
+        /*const string itemThumbnailsTempPath = "../../crpg-items";
         string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
         Directory.CreateDirectory(itemThumbnailsTempPath);
         await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);

@@ -164,7 +164,7 @@ internal class CrpgItemValueModel : ItemValueModel
                 tier *= 2f;
             }
 
-            if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanKnockDown))
+            if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.MultiplePenetration))
             {
                 tier *= 1.5f;
             }

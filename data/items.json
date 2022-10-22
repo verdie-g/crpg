@@ -8930,9 +8930,9 @@
     "name": "Cataphract Mace",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 7074,
-    "weight": 1.51,
-    "tier": 9.68011951,
+    "price": 7419,
+    "weight": 1.47,
+    "tier": 9.940193,
     "requirement": 0,
     "weapons": [
       {
@@ -8941,19 +8941,19 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 96,
-        "balance": 0.58,
-        "handling": 90,
+        "length": 100,
+        "balance": 0.61,
+        "handling": 91,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 90,
-        "swingDamage": 30,
+        "thrustSpeed": 91,
+        "swingDamage": 29,
         "swingDamageType": "Blunt",
-        "swingSpeed": 87
+        "swingSpeed": 88
       }
     ]
   },
@@ -13269,9 +13269,9 @@
     "name": "Eastern Heavy Mace",
     "culture": "Khuzait",
     "type": "OneHandedWeapon",
-    "price": 6690,
-    "weight": 1.41,
-    "tier": 9.382929,
+    "price": 6611,
+    "weight": 1.27,
+    "tier": 9.320403,
     "requirement": 0,
     "weapons": [
       {
@@ -13280,8 +13280,8 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 72,
-        "balance": 0.86,
+        "length": 77,
+        "balance": 0.87,
         "handling": 98,
         "bodyArmor": 0,
         "flags": [
@@ -13289,10 +13289,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 92,
-        "swingDamage": 26,
+        "thrustSpeed": 94,
+        "swingDamage": 25,
         "swingDamageType": "Blunt",
-        "swingSpeed": 95
+        "swingSpeed": 96
       }
     ]
   },
@@ -18223,9 +18223,9 @@
     "name": "Wooden Hammer",
     "culture": "Neutral",
     "type": "OneHandedWeapon",
-    "price": 340,
+    "price": 220,
     "weight": 1.48,
-    "tier": 1.31592619,
+    "tier": 0.87728405,
     "requirement": 0,
     "weapons": [
       {
@@ -18289,9 +18289,9 @@
     "name": "Makeshift Sledgehammer",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 9570,
+    "price": 4755,
     "weight": 1.84,
-    "tier": 8.081645,
+    "tier": 5.38776255,
     "requirement": 0,
     "weapons": [
       {
@@ -18324,9 +18324,9 @@
     "name": "Sledgehammer",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 8081,
+    "price": 4050,
     "weight": 1.96,
-    "tier": 7.340545,
+    "tier": 4.893697,
     "requirement": 0,
     "weapons": [
       {
@@ -24886,9 +24886,9 @@
     "name": "Spiked Mace",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
-    "price": 7168,
-    "weight": 1.42,
-    "tier": 9.751786,
+    "price": 6928,
+    "weight": 1.43,
+    "tier": 9.568303,
     "requirement": 0,
     "weapons": [
       {
@@ -24897,9 +24897,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 60,
-        "balance": 0.88,
-        "handling": 98,
+        "length": 67,
+        "balance": 0.82,
+        "handling": 97,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
@@ -24909,7 +24909,7 @@
         "thrustSpeed": 92,
         "swingDamage": 27,
         "swingDamageType": "Pierce",
-        "swingSpeed": 96
+        "swingSpeed": 94
       }
     ]
   },

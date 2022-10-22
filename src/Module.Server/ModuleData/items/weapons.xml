@@ -1496,7 +1496,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_vlandia_mace_1_t2" name="{=7jH0kuof}Spiked Mace" crafting_template="crpg_Mace" culture="Culture.vlandia" swing_speed="0" swing_damage="13" thrust_speed="0" thrust_damage="0">
     <Pieces>
-      <Piece id="crpg_mace_head_22" Type="Blade" scale_factor="110" />
+      <Piece id="crpg_mace_head_22" Type="Blade" scale_factor="165" />
       <Piece id="crpg_mace_handle_6" Type="Handle" scale_factor="110" />
     </Pieces>
   </CraftedItem>
@@ -1599,8 +1599,8 @@
   </CraftedItem>
   <CraftedItem id="crpg_khuzait_mace_2_t4" name="{=fcgDtZy7}Eastern Heavy Mace" crafting_template="crpg_Mace" culture="Culture.khuzait" swing_speed="0" swing_damage="6" thrust_speed="0" thrust_damage="0">
     <Pieces>
-      <Piece id="crpg_mace_head_11" Type="Blade" scale_factor="100" />
-      <Piece id="crpg_mace_handle_5" Type="Handle" scale_factor="100" />
+      <Piece id="crpg_mace_head_11" Type="Blade" scale_factor="160" />
+      <Piece id="crpg_mace_handle_6" Type="Handle" scale_factor="110" />
     </Pieces>
   </CraftedItem>
   <CraftedItem id="crpg_khuzait_mace_3_t4" name="{=b88lWWOo}Fine Steel Mace" crafting_template="crpg_Mace" culture="Culture.khuzait">
@@ -1639,7 +1639,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_empire_mace_5_t5" name="{=Kv4zAMIh}Cataphract Mace" crafting_template="crpg_Mace" culture="Culture.empire" swing_speed="0" swing_damage="7" thrust_speed="0" thrust_damage="0">
     <Pieces>
-      <Piece id="crpg_mace_head_7" Type="Blade" scale_factor="120" />
+      <Piece id="crpg_mace_head_7" Type="Blade" scale_factor="140" />
       <Piece id="crpg_mace_handle_5" Type="Handle" scale_factor="130" />
     </Pieces>
   </CraftedItem>
