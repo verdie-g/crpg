@@ -146,9 +146,9 @@ internal class ItemExporter : IDataExporter
         // Highland Broad Blade
         ["crpg_battania_sword_5_t5"] = (0, 0, 0, 0),
         // Engrave Angular Kaskara
-        ["crpg_aserai_noble_sword_4_t5"] = (0, 4, 0, 0),
+        ["crpg_aserai_noble_sword_4_t5"] = (0, 0, 0, 0),
         // Thamaskene Steel Warsword
-        ["crpg_sturgia_noble_sword_1_t5"] = (0, 3, 0, 0),
+        ["crpg_sturgia_noble_sword_1_t5"] = (0, 0, 0, 0),
         // Decorated Fullered Sword
         ["crpg_sturgia_noble_sword_3_t5"] = (0, 3, 0, 0),
         // Decorated Saber
@@ -162,15 +162,15 @@ internal class ItemExporter : IDataExporter
 
         // Polearms
         // Glaive
-        ["crpg_khuzait_polearm_1_t4"] = (0, 4, 0, 0),
+        ["crpg_khuzait_polearm_1_t4"] = (0, 0, 0, 0),
         // Voulge
-        ["crpg_vlandia_polearm_1_t5"] = (1, 2, 0, 0),
+        ["crpg_vlandia_polearm_1_t5"] = (0, 0, 0, 0),
         // Long Glaive
-        ["crpg_khuzait_polearm_2_t5"] = (0, 2, 0, 0),
+        ["crpg_khuzait_polearm_2_t5"] = (0, 0, 0, 0),
         // Menavlion
-        ["crpg_empire_polearm_1_t4"] = (0, 8, 0, 0),
+        ["crpg_empire_polearm_1_t4"] = (0, 0, 0, 0),
         // Romphaia
-        ["crpg_battania_polearm_1_t5"] = (0, 11, 0, 0),
+        ["crpg_battania_polearm_1_t5"] = (0, 0, 0, 0),
         // Polesword
         ["crpg_easter_polesword_t4"] = (0, 0, 4, 0),
         // Fine Steel Menavlion
@@ -192,15 +192,15 @@ internal class ItemExporter : IDataExporter
 
         // Two Handed
         // Falx
-        ["crpg_battania_2hsword_4_t4"] = (0, 4, 0, 0),
+        ["crpg_battania_2hsword_4_t4"] = (0, 0, 0, 0),
         // Reaper Falx
-        ["crpg_reaper_falx"] = (0, 4, 0, 0),
+        ["crpg_reaper_falx"] = (0, 0, 0, 0),
         // Broad Kaskara
         ["crpg_southern_broad_2hsword_t4"] = (0, 6, 0, 0),
         // Thamaskene Steel Two Hander
-        ["crpg_vlandia_2hsword_2_t5"] = (0, 8, 0, 8),
+        ["crpg_vlandia_2hsword_2_t5"] = (0, 0, 0, 0),
         // Wide Fullered Broad Sword
-        ["crpg_vlandia_2hsword_1_t5"] = (0, 9, 0, 5),
+        ["crpg_vlandia_2hsword_1_t5"] = (0, 0, 0, 5),
         // Battanian Mountain Blade
         ["battania_2hsword_5_t5"] = (0, 2, 0, 0),
         // Bearded Axe
@@ -218,15 +218,15 @@ internal class ItemExporter : IDataExporter
     private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float weightFactor, int stackAmount)> Blades = new()
     {
         // glaive
-        ["crpg_spear_blade_19"] = (0.8392f, 1f, 0.5f, 2),
+        ["crpg_spear_blade_19"] = (0.92f, 1f, 0.5f, 2),
         // voulge
         ["crpg_axe_craft_10_head"] = (0.8392f, 1f, 0.5f, 2),
         // long glaive
-        ["crpg_spear_blade_24"] = (0.8165f, 1f, 0.5f, 2),
+        ["crpg_spear_blade_24"] = (0.846f, 1f, 0.5f, 2),
         // menavlion
-        ["crpg_spear_blade_7"] = (0.8165f, 1f, 0.5f, 2),
+        ["crpg_spear_blade_7"] = (1.027f, 1f, 0.5f, 2),
         // romphaia
-        ["crpg_spear_blade_44"] = (0.8165f, 1f, 0.5f, 2),
+        ["crpg_spear_blade_44"] = (1.08f, 1f, 0.5f, 2),
         // polesword
         ["crpg_spear_blade_22"] = (0.8165f, 1f, 0.5f, 2),
         // fine steel menavlion
@@ -245,7 +245,7 @@ internal class ItemExporter : IDataExporter
         // Decorated Armingsword
         ["crpg_vlandian_noble_blade_4"] = (1f, 1f, 1.3f, 2),
         // Engraved Angular Kaskara
-        ["crpg_aserai_noble_blade_3"] = (1f, 1f, 1.2f, 2),
+        ["crpg_aserai_noble_blade_3"] = (1.12f, 1f, 1.2f, 2),
         // Engraved Backsword
         ["crpg_battania_noble_blade_1"] = (1f, 1f, 0.77f, 2),
         // Highland Throwing Axe - Tribesman Throwing Axe - Francesca
@@ -264,11 +264,11 @@ internal class ItemExporter : IDataExporter
         ["crpg_dagger_blade_12"] = (1.6f, 1.6f, 1f, 9),
         ["crpg_dagger_blade_13"] = (1.6f, 1.6f, 1f, 9),
         // Falx , Reaper Falx
-        ["crpg_battania_blade_6"] = (0.82f, 1f, 0.85f, 0),
+        ["crpg_battania_blade_6"] = (0.915f, 1f, 0.85f, 0),
         // Broad Kaskara
         ["crpg_aserai_blade_5"] = (0.85f, 0.8f, 0.85f, 0),
         // Wide Fullered Broad Two Hander - Thamaskene Steel Two Hander - Wide Fullered Broad Arming Sword
-        ["crpg_vlandian_blade_3"] = (0.75f, 0.41f, 0.75f, 0),
+        ["crpg_vlandian_blade_3"] = (1.008f, 0.509f, 0.75f, 0),
         // Battanian Mountain Blade  - Highland Broad Blade
         ["crpg_battania_blade_5"] = (0.951f, 0.63075f, 0.85f, 0),
         // Ridged Great Saber - Ridged Saber  - Wind Fury
