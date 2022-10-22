@@ -78,7 +78,7 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
             && blow.DamageType == DamageTypes.Pierce
             && attackerAgent != null
             && !attackerAgent.HasMount
-            && !attackerAgent.WieldedWeapon.IsAnyConsumable()
+            && !attackerAgent.WieldedWeapon.IsAnyConsumable() // Consumable = any kind of throwing
             && victimAgent.GetAgentFlags().HasAnyFlag(AgentFlag.CanRear)
             && victimAgent.MovementVelocity.y > 0.1f
             && Vec3.DotProduct(blow.Direction, victimAgent.Frame.rotation.f) < -0.35f)
