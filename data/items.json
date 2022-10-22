@@ -2531,7 +2531,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 88,
-        "swingDamage": 31,
+        "swingDamage": 30,
         "swingDamageType": "Cut",
         "swingSpeed": 72
       },
@@ -2574,7 +2574,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 88,
-        "swingDamage": 31,
+        "swingDamage": 30,
         "swingDamageType": "Cut",
         "swingSpeed": 72
       }
@@ -3843,9 +3843,9 @@
     "name": "Rhomphaia",
     "culture": "Battania",
     "type": "Polearm",
-    "price": 15507,
+    "price": 16956,
     "weight": 1.0,
-    "tier": 9.769154,
+    "tier": 10.2644081,
     "requirement": 0,
     "weapons": [
       {
@@ -3868,7 +3868,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
-        "swingDamage": 45,
+        "swingDamage": 46,
         "swingDamageType": "Cut",
         "swingSpeed": 84
       }
@@ -9117,7 +9117,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 88,
-        "swingDamage": 19,
+        "swingDamage": 13,
         "swingDamageType": "Cut",
         "swingSpeed": 53
       },
@@ -13537,7 +13537,7 @@
         "thrustDamage": 9,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 17,
+        "swingDamage": 14,
         "swingDamageType": "Cut",
         "swingSpeed": 52
       },
@@ -13593,7 +13593,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 13,
+        "swingDamage": 11,
         "swingDamageType": "Cut",
         "swingSpeed": 39
       },
@@ -19175,9 +19175,9 @@
     "name": "Reaper",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 15504,
+    "price": 16962,
     "weight": 1.75,
-    "tier": 10.580617,
+    "tier": 11.1170082,
     "requirement": 0,
     "weapons": [
       {
@@ -19197,7 +19197,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 88,
-        "swingDamage": 31,
+        "swingDamage": 30,
         "swingDamageType": "Cut",
         "swingSpeed": 75
       },
@@ -19219,7 +19219,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 95,
-        "swingDamage": 45,
+        "swingDamage": 46,
         "swingDamageType": "Cut",
         "swingSpeed": 93
       },
@@ -19240,7 +19240,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 88,
-        "swingDamage": 31,
+        "swingDamage": 30,
         "swingDamageType": "Cut",
         "swingSpeed": 75
       }
@@ -22443,9 +22443,9 @@
     "name": "Thamaskene Steel Warsword",
     "culture": "Sturgia",
     "type": "OneHandedWeapon",
-    "price": 6011,
+    "price": 3847,
     "weight": 1.54,
-    "tier": 8.836141,
+    "tier": 6.847343,
     "requirement": 0,
     "weapons": [
       {
@@ -22464,7 +22464,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 28,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 100
       }
@@ -24338,9 +24338,9 @@
     "name": "Wide Fullered Broad Two Hander",
     "culture": "Vlandia",
     "type": "TwoHandedWeapon",
-    "price": 11996,
+    "price": 14481,
     "weight": 1.79,
-    "tier": 9.176424,
+    "tier": 10.18899,
     "requirement": 0,
     "weapons": [
       {
@@ -24357,10 +24357,10 @@
           "MeleeWeapon",
           "NotUsableWithOneHand"
         ],
-        "thrustDamage": 13,
+        "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 42,
+        "swingDamage": 44,
         "swingDamageType": "Cut",
         "swingSpeed": 93
       }
@@ -24371,9 +24371,9 @@
     "name": "Thamaskene Steel Two Hander",
     "culture": "Vlandia",
     "type": "TwoHandedWeapon",
-    "price": 11785,
+    "price": 15691,
     "weight": 1.75,
-    "tier": 9.085829,
+    "tier": 10.650485,
     "requirement": 0,
     "weapons": [
       {
@@ -24390,10 +24390,10 @@
           "MeleeWeapon",
           "NotUsableWithOneHand"
         ],
-        "thrustDamage": 16,
+        "thrustDamage": 10,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 95,
-        "swingDamage": 41,
+        "swingDamage": 44,
         "swingDamageType": "Cut",
         "swingSpeed": 94
       }
@@ -25168,9 +25168,9 @@
     "name": "Voulge",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 15747,
+    "price": 12510,
     "weight": 1.16,
-    "tier": 9.852674,
+    "tier": 8.665041,
     "requirement": 0,
     "weapons": [
       {
@@ -25190,9 +25190,9 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 17,
+        "swingDamage": 15,
         "swingDamageType": "Cut",
-        "swingSpeed": 50
+        "swingSpeed": 49
       },
       {
         "class": "TwoHandedPolearm",
@@ -25201,7 +25201,7 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 143,
-        "balance": 0.59,
+        "balance": 0.56,
         "handling": 70,
         "bodyArmor": 0,
         "flags": [
@@ -25213,9 +25213,9 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 99,
-        "swingDamage": 49,
+        "swingDamage": 47,
         "swingDamageType": "Cut",
-        "swingSpeed": 87
+        "swingSpeed": 86
       }
     ]
   },
@@ -25352,9 +25352,9 @@
     "name": "Wide Fullered Broad Arming Sword",
     "culture": "Vlandia",
     "type": "OneHandedWeapon",
-    "price": 839,
+    "price": 2286,
     "weight": 1.56,
-    "tier": 2.632354,
+    "tier": 5.0287075,
     "requirement": 0,
     "weapons": [
       {
@@ -25370,10 +25370,10 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 7,
+        "thrustDamage": 9,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 21,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       }

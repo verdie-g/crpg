@@ -63,8 +63,8 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_vlandian_blade_3" name="{=mak3naEe}Wide Fullered Broad Two Hander Blade" tier="5" piece_type="Blade" mesh="vlandian_blade_3" culture="Culture.vlandia" length="99.4" weight="1.0125">
     <BladeData stack_amount="0" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="vlandian_blade_2_scabbard_2">
-      <Thrust damage_type="Pierce" damage_factor="0.4592" />
-      <Swing damage_type="Cut" damage_factor="1.07625" />
+      <Thrust damage_type="Pierce" damage_factor="0.57008" />
+      <Swing damage_type="Cut" damage_factor="1.44648" />
     </BladeData>
     <Materials>
       <Material id="Iron6" count="4" />
@@ -782,7 +782,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_battania_blade_6" name="{=IUlApNGp}Long Falx Blade" tier="4" piece_type="Blade" mesh="battania_blade_6" culture="Culture.battania" length="95.6" weight="0.85" excluded_item_usage_features="thrust">
     <BladeData stack_amount="0" physics_material="metal_weapon" body_name="bo_sword_one_handed">
-      <Swing damage_type="Cut" damage_factor="1.3489" />
+      <Swing damage_type="Cut" damage_factor="1.505175" />
     </BladeData>
     <Flags>
       <Flag name="BonusAgainstShield" />
@@ -1433,7 +1433,7 @@
   <CraftingPiece id="crpg_aserai_noble_blade_3" name="{=RdVX1jC0}Engraved Kaskara Blade" tier="5" piece_type="Blade" mesh="aserai_noble_blade_3" culture="Culture.aserai" length="71" weight="1.08">
     <BladeData stack_amount="2" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="aserai_noble_blade_3_scabbard_3">
       <Thrust damage_type="Pierce" damage_factor="0.91" />
-      <Swing damage_type="Cut" damage_factor="1.47" />
+      <Swing damage_type="Cut" damage_factor="1.6464" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -4966,7 +4966,7 @@
   <CraftingPiece id="crpg_spear_blade_19" name="{=OBeOZ27b}Glaive Head" tier="4" piece_type="Blade" mesh="spear_blade_19" length="37.4" weight="0.2204">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
       <Thrust damage_type="Pierce" damage_factor="0.595" />
-      <Swing damage_type="Cut" damage_factor="1.116136" />
+      <Swing damage_type="Cut" damage_factor="1.2236" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="1" />
@@ -4984,7 +4984,7 @@
   <CraftingPiece id="crpg_spear_blade_24" name="{=bjQ8J71a}Long Glaive Head" tier="5" piece_type="Blade" mesh="spear_blade_24" length="68" weight="0.25">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
       <Thrust damage_type="Pierce" damage_factor="0.875" />
-      <Swing damage_type="Cut" damage_factor="1.400298" />
+      <Swing damage_type="Cut" damage_factor="1.45089" />
     </BladeData>
     <Materials>
       <Material id="Iron5" count="2" />
@@ -5001,7 +5001,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_spear_blade_44" name="{=PmPxx2gK}Bent Razor Head" tier="4" piece_type="Blade" mesh="spear_blade_44" length="80" weight="0.215" excluded_item_usage_features="shield:thrust">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
-      <Swing damage_type="Cut" damage_factor="1.171677" />
+      <Swing damage_type="Cut" damage_factor="1.5498" />
     </BladeData>
     <Flags>
       <Flag name="CanHook" />
@@ -5060,7 +5060,7 @@
   <CraftingPiece id="crpg_spear_blade_7" name="{=dXRt8jY4}Menavlion Head" tier="4" piece_type="Blade" mesh="spear_blade_7" length="52.924" weight="0.1828">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
       <Thrust damage_type="Pierce" damage_factor="0.98" />
-      <Swing damage_type="Cut" damage_factor="1.000213" />
+      <Swing damage_type="Cut" damage_factor="1.258075" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="1" />
