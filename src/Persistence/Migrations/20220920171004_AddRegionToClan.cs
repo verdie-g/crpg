@@ -1,8 +1,6 @@
 ﻿using Crpg.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-#nullable disable
-
 namespace Crpg.Persistence.Migrations;
 
 public partial class AddRegionToClan : Migration
@@ -24,4 +22,3 @@ public partial class AddRegionToClan : Migration
             table: "clans");
     }
 }
-

@@ -621,7 +621,9 @@ export default class CharacterCharacteristicsComponent extends Vue {
   }
 
   get relativeCurrentNextLevelExperience(): number {
-    return getExperienceForLevel(this.character.level + 1) - getExperienceForLevel(this.character.level);
+    return (
+      getExperienceForLevel(this.character.level + 1) - getExperienceForLevel(this.character.level)
+    );
   }
 
   get nextLevelExperience(): number {

@@ -283,6 +283,7 @@ internal class ItemExporter : IDataExporter
         // Eastern Heavy Mace
         ["crpg_mace_head_11"] = (1.0f, 1f, 0.6f, 0),
     };
+
     private static readonly Dictionary<string, (float lengthFactor, float weightFactor)> Handles = new()
     {
         // Highland BroadBlade - Engraved Backsword
@@ -291,13 +292,14 @@ internal class ItemExporter : IDataExporter
         ["crpg_axe_craft_13_handle"] = (1f, 0.7f),
         // Cataphract Mace
         ["crpg_mace_handle_5"] = (1f, 0.6f),
-
     };
+
     private static readonly Dictionary<string, (float lengthFactor, float weightFactor)> Pommels = new()
     {
         // Highland BroadBlade - Engraved Backsword
         ["crpg_battania_pommel_5"] = (1f, 0.7f),
     };
+
     private static readonly Dictionary<string, (string handle, float handleSize, float bladeSizeFactor, bool canScaleHead)> AxesAndMaces = new()
     {
         // Throwing Axes
@@ -336,7 +338,6 @@ internal class ItemExporter : IDataExporter
         // Broad Two Hander
         ["crpg_western_2hsword_t4"] = ("crpg_vlandian_blade_2", 115f),
     };
-
 
     private static readonly Dictionary<string, (string template, string blade, string guard, string handle, float bladeSize, float handleSize, string pommel)> ThrowingSpears = new()
     {
@@ -630,6 +631,7 @@ internal class ItemExporter : IDataExporter
                     ModifyNodeAttribute(node1, "length",
                         v => (float.Parse(v) * newHandleStats.lengthFactor).ToString(CultureInfo.InvariantCulture), "0");
                 }
+
                 if (Pommels.TryGetValue(node1.Attributes["id"].Value, out var newPommelStats))
                 {
                     ModifyNodeAttribute(node1, "weight",
