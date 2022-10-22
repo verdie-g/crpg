@@ -110,28 +110,28 @@ internal class ItemExporter : IDataExporter
     private static readonly Dictionary<string, (int aimSpeed, int reloadSpeed, int damage, int missileSpeed)> BowStats = new()
     {
         // short bows
-        ["crpg_noble_bow"] = (96, 100, 14, 85),
-        ["crpg_steppe_war_bow"] = (98, 96, 13, 87),
-        ["crpg_composite_steppe_bow"] = (96, 101, 13, 88),
-        ["crpg_steppe_heavy_bow"] = (92, 100, 12, 85),
-        ["crpg_composite_bow"] = (94, 98, 12, 83),
-        ["crpg_nordic_shortbow"] = (90, 99, 11, 84),
-        ["crpg_hunting_bow"] = (92, 97, 10, 83),
-        ["crpg_mountain_hunting_bow"] = (88, 95, 10, 84),
-        ["crpg_steppe_bow"] = (86, 94, 9, 83),
-        ["crpg_training_bow"] = (96, 101, 5, 89),
+        ["crpg_noble_bow"] = (94, 100, 14, 85),
+        ["crpg_steppe_war_bow"] = (96, 96, 13, 87),
+        ["crpg_composite_steppe_bow"] = (94, 101, 13, 88),
+        ["crpg_steppe_heavy_bow"] = (90, 100, 12, 85),
+        ["crpg_composite_bow"] = (92, 98, 12, 83),
+        ["crpg_nordic_shortbow"] = (88, 99, 11, 84),
+        ["crpg_hunting_bow"] = (90, 97, 10, 83),
+        ["crpg_mountain_hunting_bow"] = (86, 95, 10, 84),
+        ["crpg_steppe_bow"] = (84, 94, 9, 83),
+        ["crpg_training_bow"] = (94, 101, 5, 89),
 
         // long bows
-        ["crpg_noble_long_bow"] = (87, 87, 19, 94),
-        ["crpg_woodland_longbow"] = (86, 86, 18, 92),
-        ["crpg_woodland_yew_bow"] = (91, 90, 17, 92),
-        ["crpg_lowland_yew_bow"] = (86, 86, 16, 91),
-        ["crpg_nomad_bow"] = (89, 88, 16, 91),
-        ["crpg_tribal_bow"] = (87, 88, 15, 92),
-        ["crpg_lowland_longbow"] = (88, 89, 14, 92),
-        ["crpg_glen_ranger_bow"] = (86, 88, 14, 91),
-        ["crpg_highland_ranger_bow"] = (84, 86, 13, 92),
-        ["crpg_training_longbow"] = (91, 89, 6, 94),
+        ["crpg_noble_long_bow"] = (85, 87, 19, 94),
+        ["crpg_woodland_longbow"] = (84, 86, 18, 92),
+        ["crpg_woodland_yew_bow"] = (89, 90, 17, 92),
+        ["crpg_lowland_yew_bow"] = (84, 86, 16, 91),
+        ["crpg_nomad_bow"] = (87, 88, 16, 91),
+        ["crpg_tribal_bow"] = (85, 88, 15, 92),
+        ["crpg_lowland_longbow"] = (86, 89, 14, 92),
+        ["crpg_glen_ranger_bow"] = (84, 88, 14, 91),
+        ["crpg_highland_ranger_bow"] = (82, 86, 13, 92),
+        ["crpg_training_longbow"] = (89, 89, 6, 94),
     };
 
     private static readonly Dictionary<string, (int swingSpeed, int swingDamage, int thrustSpeed, int thrustDamage)> CraftedItemsStatsOffset = new()
