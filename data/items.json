@@ -4588,9 +4588,9 @@
     "name": "Bearded Axe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 22375,
-    "weight": 1.12,
-    "tier": 12.930953,
+    "price": 12951,
+    "weight": 1.24,
+    "tier": 9.576808,
     "requirement": 0,
     "weapons": [
       {
@@ -4600,8 +4600,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 104,
-        "balance": 0.94,
-        "handling": 86,
+        "balance": 0.81,
+        "handling": 84,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -4611,10 +4611,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 100,
-        "swingDamage": 44,
+        "thrustSpeed": 99,
+        "swingDamage": 42,
         "swingDamageType": "Cut",
-        "swingSpeed": 98
+        "swingSpeed": 94
       }
     ]
   },

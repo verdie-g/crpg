@@ -255,7 +255,7 @@ internal class ItemExporter : IDataExporter
         // Engraved Backsword
         ["crpg_battania_noble_blade_1"] = (1.121f, 1f, 1f, 0.77f, 2),
         // Bearded Axe
-        ["crpg_axe_craft_3_head"] = (1.419f, 1f, 1f, 1f, 2),
+        ["crpg_axe_craft_3_head"] = (1.28f, 1f, 1f, 1.2f, 2),
         // Highland Throwing Axe - Tribesman Throwing Axe - Francesca
         ["crpg_axe_craft_4_head"] = (1.72f, 1f, 1f, 1f, 3),
         // Raider Throwing Axe
