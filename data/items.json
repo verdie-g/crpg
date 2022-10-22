@@ -9094,9 +9094,9 @@
     "name": "Menavlion",
     "culture": "Empire",
     "type": "Polearm",
-    "price": 11168,
+    "price": 18508,
     "weight": 1.79,
-    "tier": 8.128438,
+    "tier": 10.7723846,
     "requirement": 0,
     "weapons": [
       {
@@ -9117,7 +9117,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 9,
+        "swingDamage": 10,
         "swingDamageType": "Cut",
         "swingSpeed": 46
       },
@@ -9141,7 +9141,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 30,
+        "swingDamage": 34,
         "swingDamageType": "Cut",
         "swingSpeed": 85
       }
