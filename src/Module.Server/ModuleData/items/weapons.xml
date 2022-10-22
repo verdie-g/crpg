@@ -320,7 +320,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_vlandia_axe_2_t4" name="{=SDBvC0ON}Spiked Battle Axe" crafting_template="crpg_OneHandedAxe" culture="Culture.vlandia" swing_speed="0" swing_damage="13" thrust_speed="0" thrust_damage="0">
     <Pieces>
-      <Piece id="crpg_axe_craft_25_head" Type="Blade" scale_factor="100" />
+      <Piece id="crpg_axe_craft_25_head" Type="Blade" scale_factor="150" />
       <Piece id="crpg_axe_craft_13_handle" Type="Handle" scale_factor="150" />
     </Pieces>
   </CraftedItem>

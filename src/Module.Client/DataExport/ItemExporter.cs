@@ -278,7 +278,7 @@ internal class ItemExporter : IDataExporter
         // Avalanche
         ["crpg_axe_craft_7_head"] = (1.0f, 1f, 0.8f, 0),
         // Spiked Battle Axe
-        ["crpg_axe_craft_25_head"] = (1.0f, 1f, 0.5f, 0),
+        ["crpg_axe_craft_25_head"] = (1.0f, 1f, 0.36f, 0),
         // Cataphract Mace
         ["crpg_mace_head_7"] = (1.0f, 1f, 0.18f, 0),
         // Eastern Heavy Mace
@@ -313,7 +313,10 @@ internal class ItemExporter : IDataExporter
         ["crpg_avalanche_2haxe"] = ("crpg_axe_craft_4_handle", 110f, 1f, false),
         // One Handed Axes
         // Spiked Battle Axe
-        ["crpg_vlandia_axe_2_t4"] = ("crpg_axe_craft_13_handle", 150f, 1f, true),
+        ["crpg_vlandia_axe_2_t4"] = ("crpg_axe_craft_13_handle", 150f, 1.5f, true),
+
+        // Maces
+
         // Cataphract Mace
         ["crpg_empire_mace_5_t5"] = ("crpg_mace_handle_5", 130f, 1.4f, true),
         // Spiked Mace
