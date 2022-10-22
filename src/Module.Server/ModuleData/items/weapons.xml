@@ -61,7 +61,7 @@
       <Piece id="crpg_spear_handle_1" Type="Handle" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_peasant_polearm_1_t1" name="{=aGbTPme1}Scythe" crafting_template="crpg_TwoHandedPolearm" item_modifier_group="cheap_weapon" swing_speed="5" swing_damage="11" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_peasant_polearm_1_t1" name="{=aGbTPme1}Scythe" crafting_template="crpg_TwoHandedPolearm" item_modifier_group="cheap_weapon" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_spear_blade_31" Type="Blade" scale_factor="100" />
       <Piece id="crpg_spear_handle_1" Type="Handle" scale_factor="100" />
@@ -99,7 +99,7 @@
       <Piece id="crpg_wood_pommel_1" Type="Pommel" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_practice_spear_t1" name="{=H9hzBJz3}Practice Spear" is_merchandise="false" crafting_template="crpg_TwoHandedPolearm" has_modifier="false" swing_speed="1" swing_damage="0" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_practice_spear_t1" name="{=H9hzBJz3}Practice Spear" is_merchandise="false" crafting_template="crpg_TwoHandedPolearm" has_modifier="false" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_spear_blade_34" Type="Blade" />
       <Piece id="crpg_default_polearm_guard" Type="Guard" />
@@ -220,7 +220,7 @@
       <Piece id="crpg_empire_pommel_6" Type="Pommel" scale_factor="93" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_avalanche_2haxe" name="{=IClH3Pus}Avalanche" crafting_template="crpg_TwoHandedAxe" is_merchandise="false" swing_speed="12" swing_damage="6" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_avalanche_2haxe" name="{=IClH3Pus}Avalanche" crafting_template="crpg_TwoHandedAxe" is_merchandise="false" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_axe_craft_7_head" Type="Blade" />
       <Piece id="crpg_axe_craft_4_handle" Type="Handle" scale_factor="110" />
@@ -318,7 +318,7 @@
       <Piece id="crpg_axe_craft_27_handle" Type="Handle" scale_factor="90" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_vlandia_axe_2_t4" name="{=SDBvC0ON}Spiked Battle Axe" crafting_template="crpg_OneHandedAxe" culture="Culture.vlandia" swing_speed="0" swing_damage="13" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_vlandia_axe_2_t4" name="{=SDBvC0ON}Spiked Battle Axe" crafting_template="crpg_OneHandedAxe" culture="Culture.vlandia" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_axe_craft_25_head" Type="Blade" scale_factor="150" />
       <Piece id="crpg_axe_craft_13_handle" Type="Handle" scale_factor="150" />
@@ -378,7 +378,7 @@
       <Piece id="crpg_axe_craft_8_handle" Type="Handle" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_bearded_axe_t3" name="{=Mb0CuONB}Bearded Axe" crafting_template="crpg_TwoHandedAxe" swing_speed="1" swing_damage="13" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_bearded_axe_t3" name="{=Mb0CuONB}Bearded Axe" crafting_template="crpg_TwoHandedAxe" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_axe_craft_3_head" Type="Blade" scale_factor="100" />
       <Piece id="crpg_axe_craft_29_handle" Type="Handle" scale_factor="100" />
@@ -507,7 +507,7 @@
       <Piece id="crpg_spear_handle_21" Type="Handle" scale_factor="90" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_eastern_throwing_spear_1_t3" name="{=EgrNdBct}Jagged Throwing Spear" crafting_template="crpg_Javelin" culture="Culture.khuzait" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="5">
+  <CraftedItem id="crpg_eastern_throwing_spear_1_t3" name="{=EgrNdBct}Jagged Throwing Spear" crafting_template="crpg_Javelin" culture="Culture.khuzait" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_spear_blade_15" Type="Blade" scale_factor="350" />
       <Piece id="crpg_spear_handle_11" Type="Handle" scale_factor="175" />
@@ -559,7 +559,7 @@
       <Piece id="crpg_spear_pommel_11" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_eastern_throwing_spear_2_t4" name="{=kJzIZMBR}Triangular Throwing Spear" crafting_template="crpg_Javelin" culture="Culture.khuzait" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="6">
+  <CraftedItem id="crpg_eastern_throwing_spear_2_t4" name="{=kJzIZMBR}Triangular Throwing Spear" crafting_template="crpg_Javelin" culture="Culture.khuzait" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_spear_blade_15" Type="Blade" scale_factor="300" />
       <Piece id="crpg_default_polearm_guard" Type="Guard" scale_factor="90" />
@@ -567,7 +567,7 @@
       <Piece id="crpg_spear_pommel_5" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_imperial_throwing_spear_1_t4" name="{=rkqaCud5}Pilum" crafting_template="crpg_Javelin" culture="Culture.empire" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="5">
+  <CraftedItem id="crpg_imperial_throwing_spear_1_t4" name="{=rkqaCud5}Pilum" crafting_template="crpg_Javelin" culture="Culture.empire" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_spear_blade_15" Type="Blade" scale_factor="375" />
       <Piece id="crpg_default_polearm_guard" Type="Guard" scale_factor="100" />
@@ -628,7 +628,7 @@
       <Piece id="crpg_spear_handle_7" Type="Handle" scale_factor="110" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_billhook_polearm_t2" name="{=Dj64aJKQ}Billhook" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" swing_speed="0" swing_damage="2" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_billhook_polearm_t2" name="{=Dj64aJKQ}Billhook" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_spear_blade_33" Type="Blade" scale_factor="100" />
       <Piece id="crpg_default_polearm_guard" Type="Guard" scale_factor="100" />
@@ -660,7 +660,7 @@
       <Piece id="crpg_default_polearm_pommel" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_easter_polesword_t4" name="{=1mCmYNl6}Polesword" crafting_template="crpg_TwoHandedPolearm" culture="Culture.aserai" swing_speed="0" swing_damage="0" thrust_speed="4" thrust_damage="0">
+  <CraftedItem id="crpg_easter_polesword_t4" name="{=1mCmYNl6}Polesword" crafting_template="crpg_TwoHandedPolearm" culture="Culture.aserai" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_spear_blade_22" Type="Blade" scale_factor="100" />
       <Piece id="crpg_default_polearm_guard" Type="Guard" scale_factor="100" />
@@ -1150,7 +1150,7 @@
       <Piece id="crpg_battania_pommel_8" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_vlandia_noble_sword_1_t5" name="{=Zcaucj4W}Decorated Arming Sword" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.vlandia" swing_speed="0" swing_damage="4" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_vlandia_noble_sword_1_t5" name="{=Zcaucj4W}Decorated Arming Sword" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.vlandia" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_vlandian_noble_blade_4" Type="Blade" scale_factor="105" />
       <Piece id="crpg_vlandian_noble_guard_3" Type="Guard" scale_factor="100" />
@@ -1238,7 +1238,7 @@
       <Piece id="crpg_aserai_noble_pommel_1" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_khuzait_noble_sword_1_t5" name="{=v7WQhge3}Decorated Saber" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.khuzait" swing_speed="0" swing_damage="3" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_khuzait_noble_sword_1_t5" name="{=v7WQhge3}Decorated Saber" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.khuzait" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_khuzait_noble_blade_2" Type="Blade" scale_factor="100" />
       <Piece id="crpg_khuzait_noble_guard_1" Type="Guard" scale_factor="100" />
@@ -1278,7 +1278,7 @@
       <Piece id="crpg_sturgian_noble_pommel_4" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_sturgia_noble_sword_3_t5" name="{=QA5zGCKf}Decorated Fullered Sword" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.sturgia" swing_speed="0" swing_damage="3" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_sturgia_noble_sword_3_t5" name="{=QA5zGCKf}Decorated Fullered Sword" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.sturgia" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_sturgian_noble_blade_1" Type="Blade" scale_factor="100" />
       <Piece id="crpg_sturgian_noble_guard_3" Type="Guard" scale_factor="100" />
@@ -1294,7 +1294,7 @@
       <Piece id="crpg_sturgian_noble_pommel_1" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_battania_noble_sword_1_t5" name="{=VucrovFw}Engraved Backsword" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.battania" swing_speed="0" swing_damage="4" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_battania_noble_sword_1_t5" name="{=VucrovFw}Engraved Backsword" crafting_template="crpg_OneHandedSword" is_merchandise="false" culture="Culture.battania" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_battania_noble_blade_1" Type="Blade" scale_factor="103" />
       <Piece id="crpg_battania_noble_guard_1" Type="Guard" scale_factor="100" />
@@ -1422,7 +1422,7 @@
       <Piece id="crpg_cleaver_pommel_2" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_southern_broad_2hsword_t4" name="{=LVQworUy}Broad Kaskara" crafting_template="crpg_TwoHandedSword" culture="Culture.aserai" swing_speed="0" swing_damage="6" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_southern_broad_2hsword_t4" name="{=LVQworUy}Broad Kaskara" crafting_template="crpg_TwoHandedSword" culture="Culture.aserai" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_aserai_blade_5" Type="Blade" scale_factor="117" />
       <Piece id="crpg_aserai_guard_8" Type="Guard" scale_factor="100" />
@@ -1438,7 +1438,7 @@
       <Piece id="crpg_battania_pommel_9" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_vlandia_2hsword_1_t5" name="{=9ZiUK3JJ}Wide Fullered Broad Two Hander" crafting_template="crpg_TwoHandedSword" culture="Culture.vlandia" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="5">
+  <CraftedItem id="crpg_vlandia_2hsword_1_t5" name="{=9ZiUK3JJ}Wide Fullered Broad Two Hander" crafting_template="crpg_TwoHandedSword" culture="Culture.vlandia" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_vlandian_blade_3" Type="Blade" scale_factor="120" />
       <Piece id="crpg_vlandian_guard_7" Type="Guard" scale_factor="100" />
@@ -1494,7 +1494,7 @@
       <Piece id="crpg_battania_pommel_7" Type="Pommel" scale_factor="90" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_vlandia_mace_1_t2" name="{=7jH0kuof}Spiked Mace" crafting_template="crpg_Mace" culture="Culture.vlandia" swing_speed="0" swing_damage="13" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_vlandia_mace_1_t2" name="{=7jH0kuof}Spiked Mace" crafting_template="crpg_Mace" culture="Culture.vlandia" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_mace_head_22" Type="Blade" scale_factor="165" />
       <Piece id="crpg_mace_handle_6" Type="Handle" scale_factor="110" />
@@ -1597,7 +1597,7 @@
       <Piece id="crpg_mace_handle_5" Type="Handle" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_khuzait_mace_2_t4" name="{=fcgDtZy7}Eastern Heavy Mace" crafting_template="crpg_Mace" culture="Culture.khuzait" swing_speed="0" swing_damage="6" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_khuzait_mace_2_t4" name="{=fcgDtZy7}Eastern Heavy Mace" crafting_template="crpg_Mace" culture="Culture.khuzait" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_mace_head_11" Type="Blade" scale_factor="160" />
       <Piece id="crpg_mace_handle_6" Type="Handle" scale_factor="110" />
@@ -1637,7 +1637,7 @@
       <Piece id="crpg_empire_noble_pommel_1" Type="Pommel" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_empire_mace_5_t5" name="{=Kv4zAMIh}Cataphract Mace" crafting_template="crpg_Mace" culture="Culture.empire" swing_speed="0" swing_damage="7" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_empire_mace_5_t5" name="{=Kv4zAMIh}Cataphract Mace" crafting_template="crpg_Mace" culture="Culture.empire" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_mace_head_7" Type="Blade" scale_factor="140" />
       <Piece id="crpg_mace_handle_5" Type="Handle" scale_factor="130" />
