@@ -503,8 +503,8 @@
   </CraftedItem>
   <CraftedItem id="crpg_northern_spear_2_t3" name="{=xTyib5ms}Broad Leaf Shaped Spear" crafting_template="crpg_TwoHandedPolearm" culture="Culture.battania">
     <Pieces>
-      <Piece id="crpg_spear_blade_40" Type="Blade" scale_factor="90" />
-      <Piece id="crpg_spear_handle_21" Type="Handle" scale_factor="90" />
+      <Piece id="crpg_spear_blade_40" Type="Blade" scale_factor="99" />
+      <Piece id="crpg_spear_handle_21" Type="Handle" scale_factor="70" />
     </Pieces>
   </CraftedItem>
   <CraftedItem id="crpg_eastern_throwing_spear_1_t3" name="{=EgrNdBct}Jagged Throwing Spear" crafting_template="crpg_Javelin" culture="Culture.khuzait" swing_speed="0" swing_damage="0" thrust_speed="0" thrust_damage="0">

@@ -218,21 +218,23 @@ internal class ItemExporter : IDataExporter
     private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float bluntDamageFactor, float weightFactor, int stackAmount)> Blades = new()
     {
         // glaive
-        ["crpg_spear_blade_19"] = (0.92f, 1f, 1f, 0.5f, 2),
+        ["crpg_spear_blade_19"] = (0.73f, 1f, 1f, 0.92f, 2),
         // voulge
-        ["crpg_axe_craft_10_head"] = (0.8392f, 1f, 1f, 0.5f, 2),
+        ["crpg_axe_craft_10_head"] = (0.73f, 1f, 1f, 0.95f, 2),
         // long glaive
-        ["crpg_spear_blade_24"] = (0.846f, 1f, 1f, 0.5f, 2),
+        ["crpg_spear_blade_24"] = (0.73f, 1f, 1f, 0.96f, 2),
         // menavlion
-        ["crpg_spear_blade_7"] = (1.027f, 1f, 1f, 0.5f, 2),
+        ["crpg_spear_blade_7"] = (0.775f, 1f, 1f, 0.95f, 2),
         // romphaia
-        ["crpg_spear_blade_44"] = (1.05f, 1f, 1f, 0.5f, 2),
+        ["crpg_spear_blade_44"] = (0.7f, 1f, 1f, 0.95f, 2),
         // polesword
-        ["crpg_spear_blade_22"] = (0.92f, 1f, 1f, 0.25f, 2),
+        ["crpg_spear_blade_22"] = (0.7f, 1f, 1f, 0.95f, 2),
         // fine steel menavlion
-        ["crpg_spear_blade_18"] = (0.8165f, 1f, 1f, 0.5f, 2),
+        ["crpg_spear_blade_18"] = (0.777f, 1f, 1f, 0.95f, 2),
         // BillHook
-        ["crpg_spear_blade_33"] = (0.879f, 1f, 1f, 0.5f, 2),
+        ["crpg_spear_blade_33"] = (0.7f, 1f, 1f, 0.95f, 2),
+        // practice spear
+        ["crpg_spear_blade_34"] = (1.086f, 1f, 1f, 1f, 2),
 
         // warrazor
         ["crpg_spear_blade_43"] = (0.71f, 1f, 1f, 1f, 2),
@@ -286,13 +288,15 @@ internal class ItemExporter : IDataExporter
         // Spiked Battle Axe
         ["crpg_axe_craft_25_head"] = (1.54f, 1f, 1f, 0.36f, 0),
         // Cataphract Mace
-        ["crpg_mace_head_7"] = (1.0f, 1f, 1.318f, 0.18f, 0),
+        ["crpg_mace_head_7"] = (1f, 1f, 1.37f, 0.21f, 0),
         // Eastern Heavy Mace
-        ["crpg_mace_head_11"] = (1.0f, 1f, 1.3157f, 0.18f, 0),
+        ["crpg_mace_head_11"] = (1f, 1f, 1.38f, 0.21f, 0),
         // Spiked Mace
-        ["crpg_mace_head_22"] = (1.0f, 1.92f, 1f, 0.30f, 0),
+        ["crpg_mace_head_22"] = (1.0f, 1.92f, 1f, 0.33f, 0),
         // Scythe
-        ["crpg_spear_blade_31"] = (1.0f, 2f, 1f, 0.45f, 0),
+        ["crpg_spear_blade_31"] = (1.0f, 1.5f, 1f, 0.75f, 0),
+        // Broad Leaf Shaped Spears
+        ["crpg_spear_blade_40"] = (1f, 1.65f, 1f, 1f, 0),
     };
 
     private static readonly Dictionary<string, (float lengthFactor, float weightFactor)> Handles = new()
@@ -313,7 +317,7 @@ internal class ItemExporter : IDataExporter
         ["crpg_vlandian_pommel_9"] = (1f, 0.7f),
     };
 
-    private static readonly Dictionary<string, (string handle, float handleSize, float bladeSizeFactor, bool canScaleHead)> AxesAndMaces = new()
+    private static readonly Dictionary<string, (string handle, float handleSize, float bladeSizeFactor, bool canScaleHead)> AxesMacesandSpears = new()
     {
         // Throwing Axes
         // Tribesman Throwing Axe
@@ -333,6 +337,10 @@ internal class ItemExporter : IDataExporter
         ["crpg_vlandia_mace_1_t2"] = ("crpg_mace_handle_6", 110f, 1.5f, true),
         // Eastern Heavy Mace
         ["crpg_khuzait_mace_2_t4"] = ("crpg_mace_handle_6", 110f, 1.6f, true),
+
+        // Spears
+        // Broad Leaf Shaped Spear
+        ["crpg_northern_spear_2_t3"] = ("crpg_spear_handle_21", 70f, 1.1f, true),
     };
 
     private static readonly Dictionary<string, (string blade, float bladeSize)> TwoHanded = new()
@@ -593,7 +601,7 @@ internal class ItemExporter : IDataExporter
                          FilterNodeByAttribute("Type", "Pommel"));
                  }
 
-                 if (AxesAndMaces.TryGetValue(node1.Attributes["id"].Value, out var newAxeorMace))
+                 if (AxesMacesandSpears.TryGetValue(node1.Attributes["id"].Value, out var newAxeorMace))
                  {
                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
                         _ => newAxeorMace.handle,
