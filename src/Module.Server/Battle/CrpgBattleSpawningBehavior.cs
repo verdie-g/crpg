@@ -362,7 +362,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     {
         banner = null;
 
-        if (bannerKey.Length > 100)
+        if (bannerKey.Length > _constants.ClanBannerKeyMaxLength)
         {
             return false;
         }
