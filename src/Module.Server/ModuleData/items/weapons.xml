@@ -204,7 +204,7 @@
       <Piece id="crpg_axe_craft_6_handle" Type="Handle" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_reaper_falx" name="{=oXrbTRJo}Reaper" crafting_template="crpg_TwoHandedSword" is_merchandise="false" swing_speed="6" swing_damage="0" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_reaper_falx" name="{=oXrbTRJo}Reaper" crafting_template="crpg_TwoHandedSword" is_merchandise="false" swing_speed="0" swing_damage="4" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_battania_blade_6" Type="Blade" scale_factor="135" />
       <Piece id="crpg_cleaver_guard_3" Type="Guard" scale_factor="108" />
@@ -1374,7 +1374,7 @@
       <Piece id="crpg_aserai_pommel_9" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_battania_2hsword_4_t4" name="{=QLcP8bIs}Falx" crafting_template="crpg_TwoHandedSword" culture="Culture.battania" swing_speed="8" swing_damage="0" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_battania_2hsword_4_t4" name="{=QLcP8bIs}Falx" crafting_template="crpg_TwoHandedSword" culture="Culture.battania" swing_speed="0" swing_damage="4" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_battania_blade_6" Type="Blade" scale_factor="152" />
       <Piece id="crpg_sturgian_guard_6" Type="Guard" scale_factor="100" />
@@ -1422,7 +1422,7 @@
       <Piece id="crpg_cleaver_pommel_2" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_southern_broad_2hsword_t4" name="{=LVQworUy}Broad Kaskara" crafting_template="crpg_TwoHandedSword" culture="Culture.aserai" swing_speed="2" swing_damage="3" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_southern_broad_2hsword_t4" name="{=LVQworUy}Broad Kaskara" crafting_template="crpg_TwoHandedSword" culture="Culture.aserai" swing_speed="0" swing_damage="6" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_aserai_blade_5" Type="Blade" scale_factor="117" />
       <Piece id="crpg_aserai_guard_8" Type="Guard" scale_factor="100" />
@@ -1438,7 +1438,7 @@
       <Piece id="crpg_battania_pommel_9" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_vlandia_2hsword_1_t5" name="{=9ZiUK3JJ}Wide Fullered Broad Two Hander" crafting_template="crpg_TwoHandedSword" culture="Culture.vlandia" swing_speed="7" swing_damage="7" thrust_speed="0" thrust_damage="5">
+  <CraftedItem id="crpg_vlandia_2hsword_1_t5" name="{=9ZiUK3JJ}Wide Fullered Broad Two Hander" crafting_template="crpg_TwoHandedSword" culture="Culture.vlandia" swing_speed="0" swing_damage="9" thrust_speed="0" thrust_damage="5">
     <Pieces>
       <Piece id="crpg_vlandian_blade_3" Type="Blade" scale_factor="120" />
       <Piece id="crpg_vlandian_guard_7" Type="Guard" scale_factor="100" />
@@ -1446,7 +1446,7 @@
       <Piece id="crpg_vlandian_pommel_4" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_vlandia_2hsword_2_t5" name="{=VAO11FSu}Thamaskene Steel Two Hander" crafting_template="crpg_TwoHandedSword" culture="Culture.vlandia" swing_speed="8" swing_damage="6" thrust_speed="0" thrust_damage="8">
+  <CraftedItem id="crpg_vlandia_2hsword_2_t5" name="{=VAO11FSu}Thamaskene Steel Two Hander" crafting_template="crpg_TwoHandedSword" culture="Culture.vlandia" swing_speed="0" swing_damage="8" thrust_speed="0" thrust_damage="8">
     <Pieces>
       <Piece id="crpg_vlandian_blade_3" Type="Blade" scale_factor="119" />
       <Piece id="crpg_vlandian_guard_8" Type="Guard" scale_factor="100" />
