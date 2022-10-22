@@ -285,10 +285,10 @@
       <Material id="Iron3" count="3" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_aserai_blade_5" name="{=pX4nTZOI}Fine Steel Broad Kaskara" tier="4" piece_type="Blade" mesh="aserai_blade_5" culture="Culture.battania" length="108.9" weight="0.9350001">
+  <CraftingPiece id="crpg_aserai_blade_5" name="{=pX4nTZOI}Fine Steel Broad Kaskara" tier="4" piece_type="Blade" mesh="aserai_blade_5" culture="Culture.battania" length="108.9" weight="0.825">
     <BladeData stack_amount="0" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="aserai_blade_5_scabbard_5">
       <Thrust damage_type="Pierce" damage_factor="0.672" />
-      <Swing damage_type="Cut" damage_factor="1.365" />
+      <Swing damage_type="Cut" damage_factor="1.43325" />
     </BladeData>
     <Materials>
       <Material id="Iron5" count="5" />
@@ -702,7 +702,7 @@
   <CraftingPiece id="crpg_battania_blade_5" name="{=swb45HVS}Mountain Blade" tier="5" piece_type="Blade" mesh="battania_blade_5" culture="Culture.battania" length="80.8" weight="0.6885">
     <BladeData stack_amount="0" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="battania_blade_5_scabbard_5">
       <Thrust damage_type="Pierce" damage_factor="0.68138" />
-      <Swing damage_type="Cut" damage_factor="1.4063" />
+      <Swing damage_type="Cut" damage_factor="1.441458" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />

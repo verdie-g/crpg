@@ -272,11 +272,11 @@ internal class ItemExporter : IDataExporter
         // Falx , Reaper Falx
         ["crpg_battania_blade_6"] = (0.915f, 1f, 1f, 0.85f, 0),
         // Broad Kaskara
-        ["crpg_aserai_blade_5"] = (1f, 0.8f, 1f, 0.85f, 0),
+        ["crpg_aserai_blade_5"] = (1.05f, 0.8f, 1f, 0.75f, 0),
         // Wide Fullered Broad Two Hander - Thamaskene Steel Two Hander - Wide Fullered Broad Arming Sword
         ["crpg_vlandian_blade_3"] = (1.008f, 0.8f, 1f, 0.75f, 0),
         // Battanian Mountain Blade  - Highland Broad Blade
-        ["crpg_battania_blade_5"] = (0.98f, 0.628f, 1f, 0.85f, 0),
+        ["crpg_battania_blade_5"] = (1.0045f, 0.628f, 1f, 0.85f, 0),
         // Ridged Great Saber - Ridged Saber  - Wind Fury
         ["crpg_khuzait_blade_8"] = (1f, 0.933f, 1f, 0.85f, 0),
         // War Razor
@@ -338,11 +338,9 @@ internal class ItemExporter : IDataExporter
     private static readonly Dictionary<string, (string blade, float bladeSize)> TwoHanded = new()
     {
         // Falx
-        ["crpg_battania_2hsword_4_t4"] = ("crpg_battania_blade_6", 152f),
+        ["crpg_battania_2hsword_4_t4"] = ("crpg_battania_blade_6", 142f),
         // Reaper
-        ["crpg_reaper_falx"] = ("crpg_battania_blade_6", 135f),
-        // Battanian Mountain Blade
-        ["crpg_battania_2hsword_5_t5"] = ("crpg_battania_blade_5", 130f),
+        ["crpg_reaper_falx"] = ("crpg_battania_blade_6", 128f),
         // Broad Kaskara
         ["crpg_southern_broad_2hsword_t4"] = ("crpg_aserai_blade_5", 117f),
         // Thamaskene
@@ -350,7 +348,7 @@ internal class ItemExporter : IDataExporter
         // Wide Fullered Broad Sword
         ["crpg_vlandia_2hsword_1_t5"] = ("crpg_vlandian_blade_3", 120f),
         // Battanian Mountain Blade
-        ["crpg_battania_2hsword_5_t5"] = ("crpg_battania_blade_5", 152f),
+        ["crpg_battania_2hsword_5_t5"] = ("crpg_battania_blade_5", 165f),
         // Engraved BackSword
         ["crpg_battania_noble_sword_1_t5"] = ("crpg_battania_noble_blade_1", 103f),
         // Broad Two Hander

@@ -2509,9 +2509,9 @@
     "name": "Falx",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 17146,
-    "weight": 1.71,
-    "tier": 11.1831083,
+    "price": 18914,
+    "weight": 1.63,
+    "tier": 11.8003187,
     "requirement": 0,
     "weapons": [
       {
@@ -2520,9 +2520,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 151,
-        "balance": 0.1,
-        "handling": 78,
+        "length": 142,
+        "balance": 0.25,
+        "handling": 81,
         "bodyArmor": 2,
         "flags": [
           "MeleeWeapon",
@@ -2530,10 +2530,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 88,
+        "thrustSpeed": 89,
         "swingDamage": 30,
         "swingDamageType": "Cut",
-        "swingSpeed": 72
+        "swingSpeed": 77
       },
       {
         "class": "TwoHandedSword",
@@ -2541,9 +2541,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 151,
-        "balance": 0.71,
-        "handling": 85,
+        "length": 142,
+        "balance": 0.83,
+        "handling": 87,
         "bodyArmor": 2,
         "flags": [
           "MeleeWeapon",
@@ -2552,10 +2552,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 95,
-        "swingDamage": 46,
+        "thrustSpeed": 96,
+        "swingDamage": 45,
         "swingDamageType": "Cut",
-        "swingSpeed": 91
+        "swingSpeed": 94
       },
       {
         "class": "OneHandedSword",
@@ -2563,9 +2563,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 151,
-        "balance": 0.1,
-        "handling": 78,
+        "length": 142,
+        "balance": 0.25,
+        "handling": 81,
         "bodyArmor": 2,
         "flags": [
           "MeleeWeapon",
@@ -2573,10 +2573,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 88,
+        "thrustSpeed": 89,
         "swingDamage": 30,
         "swingDamageType": "Cut",
-        "swingSpeed": 72
+        "swingSpeed": 77
       }
     ]
   },
@@ -2658,9 +2658,9 @@
     "name": "Battanian Mountain Blade",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 17596,
-    "weight": 1.37,
-    "tier": 11.3430815,
+    "price": 17776,
+    "weight": 1.46,
+    "tier": 11.4065361,
     "requirement": 0,
     "weapons": [
       {
@@ -2669,19 +2669,19 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 140,
-        "balance": 0.33,
-        "handling": 83,
+        "length": 151,
+        "balance": 0.15,
+        "handling": 78,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 92,
-        "swingDamage": 28,
+        "thrustSpeed": 90,
+        "swingDamage": 29,
         "swingDamageType": "Cut",
-        "swingSpeed": 80
+        "swingSpeed": 74
       },
       {
         "class": "TwoHandedSword",
@@ -2689,9 +2689,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 140,
-        "balance": 0.88,
-        "handling": 88,
+        "length": 151,
+        "balance": 0.76,
+        "handling": 85,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon",
@@ -2699,10 +2699,10 @@
         ],
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 98,
-        "swingDamage": 41,
+        "thrustSpeed": 97,
+        "swingDamage": 44,
         "swingDamageType": "Cut",
-        "swingSpeed": 96
+        "swingSpeed": 92
       },
       {
         "class": "OneHandedSword",
@@ -2710,19 +2710,19 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 140,
-        "balance": 0.33,
-        "handling": 83,
+        "length": 151,
+        "balance": 0.15,
+        "handling": 78,
         "bodyArmor": 3,
         "flags": [
           "MeleeWeapon"
         ],
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 92,
-        "swingDamage": 28,
+        "thrustSpeed": 90,
+        "swingDamage": 29,
         "swingDamageType": "Cut",
-        "swingSpeed": 80
+        "swingSpeed": 74
       }
     ]
   },
@@ -19175,9 +19175,9 @@
     "name": "Reaper",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 16962,
-    "weight": 1.75,
-    "tier": 11.1170082,
+    "price": 15414,
+    "weight": 1.69,
+    "tier": 10.5465355,
     "requirement": 0,
     "weapons": [
       {
@@ -19186,9 +19186,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 141,
-        "balance": 0.19,
-        "handling": 78,
+        "length": 134,
+        "balance": 0.29,
+        "handling": 80,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -19196,10 +19196,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 88,
+        "thrustSpeed": 89,
         "swingDamage": 30,
         "swingDamageType": "Cut",
-        "swingSpeed": 75
+        "swingSpeed": 78
       },
       {
         "class": "TwoHandedSword",
@@ -19207,9 +19207,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 141,
-        "balance": 0.79,
-        "handling": 85,
+        "length": 134,
+        "balance": 0.85,
+        "handling": 86,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -19219,9 +19219,9 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 95,
-        "swingDamage": 46,
+        "swingDamage": 44,
         "swingDamageType": "Cut",
-        "swingSpeed": 93
+        "swingSpeed": 95
       },
       {
         "class": "OneHandedSword",
@@ -19229,9 +19229,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 141,
-        "balance": 0.19,
-        "handling": 78,
+        "length": 134,
+        "balance": 0.29,
+        "handling": 80,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -19239,10 +19239,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 88,
+        "thrustSpeed": 89,
         "swingDamage": 30,
         "swingDamageType": "Cut",
-        "swingSpeed": 75
+        "swingSpeed": 78
       }
     ]
   },
