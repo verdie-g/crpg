@@ -20,7 +20,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     private readonly HashSet<PlayerId> _notifiedPlayersAboutDelayedSpawn;
     private MissionTimer? _spawnTimer;
     private MissionTimer? _cavalrySpawnDelayTimer;
-    private int _currentCavalrySpawnDelay;
     private bool _botsSpawned;
 
     public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController? roundController)
@@ -28,7 +27,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         _constants = constants;
         _roundController = roundController;
         _notifiedPlayersAboutDelayedSpawn = new HashSet<PlayerId>();
-        _currentCavalrySpawnDelay = 0;
     }
 
     public override void Initialize(SpawnComponent spawnComponent)
@@ -62,10 +60,9 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     public override void RequestStartSpawnSession()
     {
         base.RequestStartSpawnSession();
-        _currentCavalrySpawnDelay = GetCavalrySpawnDelay();
         _botsSpawned = false;
         _spawnTimer = new MissionTimer(TotalSpawnDuration); // Limit spawning for 30 seconds.
-        _cavalrySpawnDelayTimer = new MissionTimer(_currentCavalrySpawnDelay); // Cav will spawn X seconds later.
+        _cavalrySpawnDelayTimer = new MissionTimer(GetCavalrySpawnDelay()); // Cav will spawn X seconds later.
         ResetSpawnTeams();
     }
 
@@ -250,7 +247,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                     GameNetwork.WriteMessage(new CrpgNotification
                     {
                         Type = CrpgNotification.NotificationType.Notification,
-                        Message = $"Cavalry will spawn in {_currentCavalrySpawnDelay} seconds!",
+                        Message = $"Cavalry will spawn in {_cavalrySpawnDelayTimer?.GetTimerDuration()} seconds!",
                         IsMessageTextId = false,
                         SoundEvent = string.Empty,
                     });
