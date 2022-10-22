@@ -358,28 +358,11 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
     }
 
-    private string? CheckIconList(int id)
-    {
-        foreach (BannerIconGroup bannerIconGroup in BannerManager.Instance.BannerIconGroups)
-        {
-            if (bannerIconGroup.AllBackgrounds.ContainsKey(id))
-            {
-                return bannerIconGroup.AllBackgrounds[id];
-            }
-            else if (bannerIconGroup.AllIcons.ContainsKey(id))
-            {
-                return bannerIconGroup.AllIcons[id].MaterialName;
-            }
-        }
-
-        return null;
-    }
-
     private bool TryParseBanner(string bannerKey, out Banner? banner)
     {
         banner = null;
 
-        if (bannerKey.Length > 250)
+        if (bannerKey.Length > 100)
         {
             return false;
         }
@@ -409,12 +392,11 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
          * rotation (0-359)
          */
 
-        int num = 0;
-        while (num + 10 <= array.Length)
+        for (int i = 0; i + 10 <= array.Length; i += 10)
         {
-            if (int.TryParse(array[num], out int iconId))
+            if (int.TryParse(array[i], out int iconId))
             {
-                if (CheckIconList(iconId) == null)
+                if (!CheckIconList(iconId))
                 {
                     return false;
                 }
@@ -424,19 +406,19 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 return false;
             }
 
-            if (!int.TryParse(array[num + 1], out int colorId1) || !BannerManager.Instance.ReadOnlyColorPalette.ContainsKey(colorId1)
-            || !int.TryParse(array[num + 2], out int colorId2) || !BannerManager.Instance.ReadOnlyColorPalette.ContainsKey(colorId2)
-            || !int.TryParse(array[num + 3], out int sizeX)
-            || !int.TryParse(array[num + 4], out int sizeY)
-            || !int.TryParse(array[num + 5], out int posX) || posX > maxX || posX < minX
-            || !int.TryParse(array[num + 6], out int posY) || posY > maxY || posY < minY
-            || !int.TryParse(array[num + 7], out int drawStroke) || drawStroke > 1 || drawStroke < 0
-            || !int.TryParse(array[num + 8], out int mirrior) || mirrior > 1 || mirrior < 0)
+            if (!int.TryParse(array[i + 1], out int colorId1) || !BannerManager.Instance.ReadOnlyColorPalette.ContainsKey(colorId1)
+            || !int.TryParse(array[i + 2], out int colorId2) || !BannerManager.Instance.ReadOnlyColorPalette.ContainsKey(colorId2)
+            || !int.TryParse(array[i + 3], out int sizeX)
+            || !int.TryParse(array[i + 4], out int sizeY)
+            || !int.TryParse(array[i + 5], out int posX) || posX > maxX || posX < minX
+            || !int.TryParse(array[i + 6], out int posY) || posY > maxY || posY < minY
+            || !int.TryParse(array[i + 7], out int drawStroke) || drawStroke > 1 || drawStroke < 0
+            || !int.TryParse(array[i + 8], out int mirror) || mirror > 1 || mirror < 0)
             {
                 return false;
             }
 
-            if (!int.TryParse(array[num + 9], out int rotation))
+            if (!int.TryParse(array[i + 9], out int rotation))
             {
                 return false;
             }
@@ -449,17 +431,48 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 }
             }
 
-            fixedBannerCode.Append($"{iconId}.{colorId1}.{colorId2}.{sizeX}.{sizeY}.{posX}.{posY}.{drawStroke}.{mirrior}.{rotation}.");
-            num += 10;
+            fixedBannerCode.Append(iconId);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(colorId1);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(colorId2);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(sizeX);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(sizeY);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(posX);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(posY);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(drawStroke);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(mirror);
+            fixedBannerCode.Append(".");
+            fixedBannerCode.Append(rotation);
+            fixedBannerCode.Append(".");
         }
 
-        if (fixedBannerCode[fixedBannerCode.Length - 1] == '.')
+        if (fixedBannerCode.Length > 0)
         {
-            fixedBannerCode.Remove(fixedBannerCode.Length - 1, 1);
+            fixedBannerCode.Length -= ".".Length;
         }
 
         banner = new Banner(fixedBannerCode.ToString());
         return true;
+    }
+
+    private bool CheckIconList(int id)
+    {
+        foreach (BannerIconGroup bannerIconGroup in BannerManager.Instance.BannerIconGroups)
+        {
+            if (bannerIconGroup.AllBackgrounds.ContainsKey(id) || bannerIconGroup.AllIcons.ContainsKey(id))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private static readonly Dictionary<CrpgItemSlot, EquipmentIndex> ItemSlotToIndex = new()
