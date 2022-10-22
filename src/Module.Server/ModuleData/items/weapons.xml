@@ -644,7 +644,7 @@
       <Piece id="crpg_default_polearm_pommel" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_empire_polearm_1_t4" name="{=7LmUe8fQ}Menavlion" crafting_template="crpg_TwoHandedPolearm" culture="Culture.empire" swing_speed="0" swing_damage="6" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_empire_polearm_1_t4" name="{=7LmUe8fQ}Menavlion" crafting_template="crpg_TwoHandedPolearm" culture="Culture.empire" swing_speed="0" swing_damage="8" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_spear_blade_7" Type="Blade" scale_factor="100" />
       <Piece id="crpg_spear_guard_14" Type="Guard" scale_factor="100" />
@@ -652,7 +652,7 @@
       <Piece id="crpg_default_polearm_pommel" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_khuzait_polearm_1_t4" name="{=6hwZwODh}Glaive" crafting_template="crpg_TwoHandedPolearm" culture="Culture.khuzait" swing_speed="0" swing_damage="2" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_khuzait_polearm_1_t4" name="{=6hwZwODh}Glaive" crafting_template="crpg_TwoHandedPolearm" culture="Culture.khuzait" swing_speed="0" swing_damage="4" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_spear_blade_19" Type="Blade" scale_factor="100" />
       <Piece id="crpg_default_polearm_guard" Type="Guard" scale_factor="100" />
@@ -668,7 +668,7 @@
       <Piece id="crpg_default_polearm_pommel" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_battania_polearm_1_t5" name="{=V4b2ZRTH}Rhomphaia" crafting_template="crpg_TwoHandedPolearm" culture="Culture.battania" swing_speed="0" swing_damage="3" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_battania_polearm_1_t5" name="{=V4b2ZRTH}Rhomphaia" crafting_template="crpg_TwoHandedPolearm" culture="Culture.battania" swing_speed="0" swing_damage="11" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_spear_blade_44" Type="Blade" scale_factor="90" />
       <Piece id="crpg_spear_guard_7" Type="Guard" scale_factor="90" />
@@ -676,7 +676,7 @@
       <Piece id="crpg_default_polearm_pommel" Type="Pommel" scale_factor="100" />
     </Pieces>
   </CraftedItem>
-  <CraftedItem id="crpg_vlandia_polearm_1_t5" name="{=zbsajPMp}Voulge" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" swing_speed="1" swing_damage="0" thrust_speed="0" thrust_damage="0">
+  <CraftedItem id="crpg_vlandia_polearm_1_t5" name="{=zbsajPMp}Voulge" crafting_template="crpg_TwoHandedPolearm" culture="Culture.vlandia" swing_speed="1" swing_damage="2" thrust_speed="0" thrust_damage="0">
     <Pieces>
       <Piece id="crpg_axe_craft_10_head" Type="Blade" scale_factor="100" />
       <Piece id="crpg_default_polearm_guard" Type="Guard" scale_factor="100" />

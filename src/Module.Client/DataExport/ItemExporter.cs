@@ -162,15 +162,15 @@ internal class ItemExporter : IDataExporter
 
         // Polearms
         // Glaive
-        ["crpg_khuzait_polearm_1_t4"] = (0, 0, 0, 0),
+        ["crpg_khuzait_polearm_1_t4"] = (0, 4, 0, 0),
         // Voulge
-        ["crpg_vlandia_polearm_1_t5"] = (1, 0, 0, 0),
+        ["crpg_vlandia_polearm_1_t5"] = (1, 2, 0, 0),
         // Long Glaive
         ["crpg_khuzait_polearm_2_t5"] = (0, 2, 0, 0),
         // Menavlion
-        ["crpg_empire_polearm_1_t4"] = (0, 6, 0, 0),
+        ["crpg_empire_polearm_1_t4"] = (0, 8, 0, 0),
         // Romphaia
-        ["crpg_battania_polearm_1_t5"] = (0, 3, 0, 0),
+        ["crpg_battania_polearm_1_t5"] = (0, 11, 0, 0),
         // Polesword
         ["crpg_easter_polesword_t4"] = (0, 0, 4, 0),
         // Fine Steel Menavlion
@@ -189,8 +189,6 @@ internal class ItemExporter : IDataExporter
         ["crpg_billhook_polearm_t2"] = (0, 2, 0, 0),
         // Scythe
         ["crpg_peasant_polearm_1_t1"] = (5, 11, 0, 0),
-        // glaive
-        ["crpg_khuzait_polearm_1_t4"] = (0, 2, 0, 0),
 
         // Two Handed
         // Falx
@@ -220,19 +218,22 @@ internal class ItemExporter : IDataExporter
     private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float weightFactor, int stackAmount)> Blades = new()
     {
         // glaive
-        ["crpg_spear_blade_19"] = (0.71f, 1f, 1.3f, 2),
+        ["crpg_spear_blade_19"] = (0.8392f, 1f, 0.5f, 2),
         // voulge
-        ["crpg_axe_craft_10_head"] = (0.71f, 1f, 1f, 2),
+        ["crpg_axe_craft_10_head"] = (0.8392f, 1f, 0.5f, 2),
         // long glaive
-        ["crpg_spear_blade_24"] = (0.71f, 1f, 1f, 2),
+        ["crpg_spear_blade_24"] = (0.8165f, 1f, 0.5f, 2),
         // menavlion
-        ["crpg_spear_blade_7"] = (0.71f, 1f, 1.7f, 2),
+        ["crpg_spear_blade_7"] = (0.8165f, 1f, 0.5f, 2),
         // romphaia
-        ["crpg_spear_blade_44"] = (0.71f, 1f, 1f, 2),
+        ["crpg_spear_blade_44"] = (0.8165f, 1f, 0.5f, 2),
         // polesword
-        ["crpg_spear_blade_22"] = (0.71f, 1f, 1f, 2),
+        ["crpg_spear_blade_22"] = (0.8165f, 1f, 0.5f, 2),
         // fine steel menavlion
-        ["crpg_spear_blade_18"] = (0.71f, 1f, 1f, 2),
+        ["crpg_spear_blade_18"] = (0.8165f, 1f, 0.5f, 2),
+        // BillHook
+        ["crpg_spear_blade_33"] = (0.8165f, 1f, 0.5f, 2),
+
         // warrazor
         ["crpg_spear_blade_43"] = (0.71f, 1f, 1f, 2),
         // Decorated Broadsword
@@ -386,12 +387,13 @@ internal class ItemExporter : IDataExporter
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
         SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));
+        /*
         const string itemThumbnailsTempPath = "../../crpg-items";
         string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
         Directory.CreateDirectory(itemThumbnailsTempPath);
         await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);
         Directory.Delete(itemThumbnailsPath, recursive: true);
-        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);
+        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);*/
     }
 
     private static CrpgItem MbToCrpgItem(ItemObject mbItem)
