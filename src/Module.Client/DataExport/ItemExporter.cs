@@ -284,7 +284,7 @@ internal class ItemExporter : IDataExporter
         // War Razor
         ["crpg_cleaver_blade_5"] = (0.974f, 1f, 1f, 1f, 0),
         // Avalanche - Northlander Broad Axe
-        ["crpg_axe_craft_7_head"] = (1.2708f, 1f, 1f, 0.6f, 0),
+        ["crpg_axe_craft_7_head"] = (1.16f, 1f, 1f, 0.6f, 0),
         // Spiked Battle Axe
         ["crpg_axe_craft_25_head"] = (1.54f, 1f, 1f, 0.36f, 0),
         // Cataphract Mace

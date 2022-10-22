@@ -4340,7 +4340,7 @@
   <CraftingPiece id="crpg_axe_craft_7_head" name="{=USWfzbuW}Northern Broad Great Axe Head" tier="3" piece_type="Blade" mesh="axe_craft_7_head" distance_to_next_piece="14.96" distance_to_previous_piece="2.712" weight="0.43776">
     <BuildData piece_offset="-5.424" />
     <BladeData stack_amount="0" blade_length="28.366" blade_width="28.192" physics_material="metal_weapon" body_name="bo_axe_longer_b">
-      <Swing damage_type="Cut" damage_factor="1.467774" />
+      <Swing damage_type="Cut" damage_factor="1.3398" />
     </BladeData>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />

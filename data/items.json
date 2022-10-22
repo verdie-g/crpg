@@ -443,9 +443,9 @@
     "name": "Short Handled Bardiche",
     "culture": "Aserai",
     "type": "TwoHandedWeapon",
-    "price": 2385,
+    "price": 5017,
     "weight": 1.6,
-    "tier": 3.52521324,
+    "tier": 5.562003,
     "requirement": 0,
     "weapons": [
       {
@@ -478,9 +478,9 @@
     "name": "Executioner Axe",
     "culture": "Aserai",
     "type": "TwoHandedWeapon",
-    "price": 1436,
+    "price": 2895,
     "weight": 1.88,
-    "tier": 2.52430916,
+    "tier": 3.98279881,
     "requirement": 0,
     "weapons": [
       {
@@ -513,9 +513,9 @@
     "name": "Heavy Executioner Axe",
     "culture": "Aserai",
     "type": "TwoHandedWeapon",
-    "price": 1858,
+    "price": 3831,
     "weight": 1.49,
-    "tier": 2.99921656,
+    "tier": 4.73209667,
     "requirement": 0,
     "weapons": [
       {
@@ -1927,9 +1927,9 @@
     "name": "Avalanche",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 7995,
+    "price": 12678,
     "weight": 1.18,
-    "tier": 7.295351,
+    "tier": 9.463848,
     "requirement": 0,
     "weapons": [
       {
@@ -1951,7 +1951,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 99,
-        "swingDamage": 48,
+        "swingDamage": 44,
         "swingDamageType": "Cut",
         "swingSpeed": 89
       }
@@ -2335,9 +2335,9 @@
     "name": "Square Bit Two Handed Axe",
     "culture": "Battania",
     "type": "TwoHandedWeapon",
-    "price": 1041,
+    "price": 2034,
     "weight": 1.4,
-    "tier": 2.0163002,
+    "tier": 3.1812737,
     "requirement": 0,
     "weapons": [
       {
@@ -4588,9 +4588,9 @@
     "name": "Bearded Axe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 9810,
+    "price": 22375,
     "weight": 1.12,
-    "tier": 8.195675,
+    "tier": 12.930953,
     "requirement": 0,
     "weapons": [
       {
@@ -4731,9 +4731,9 @@
     "name": "Black Heart",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 1259,
+    "price": 2505,
     "weight": 1.64,
-    "tier": 2.30482221,
+    "tier": 3.63649726,
     "requirement": 0,
     "weapons": [
       {
@@ -9586,9 +9586,9 @@
     "name": "Execution Axe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 8567,
+    "price": 13394,
     "weight": 1.1,
-    "tier": 7.58924866,
+    "tier": 9.757766,
     "requirement": 0,
     "weapons": [
       {
@@ -9610,7 +9610,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
-        "swingDamage": 46,
+        "swingDamage": 42,
         "swingDamageType": "Cut",
         "swingSpeed": 91
       }
@@ -11531,9 +11531,9 @@
     "name": "Hooked Cavalry Axe",
     "culture": "Vlandia",
     "type": "TwoHandedWeapon",
-    "price": 1718,
+    "price": 3518,
     "weight": 1.52,
-    "tier": 2.84734726,
+    "tier": 4.49248171,
     "requirement": 0,
     "weapons": [
       {
@@ -16463,9 +16463,9 @@
     "name": "Northlander Broad Axe",
     "culture": "Sturgia",
     "type": "TwoHandedWeapon",
-    "price": 9778,
+    "price": 16307,
     "weight": 1.01,
-    "tier": 8.180582,
+    "tier": 10.87876,
     "requirement": 0,
     "weapons": [
       {
@@ -16487,7 +16487,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 102,
-        "swingDamage": 41,
+        "swingDamage": 38,
         "swingDamageType": "Cut",
         "swingSpeed": 99
       }
@@ -18096,9 +18096,9 @@
     "name": "Hoe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 426,
+    "price": 746,
     "weight": 1.57,
-    "tier": 0.998096764,
+    "tier": 1.5747751,
     "requirement": 0,
     "weapons": [
       {
@@ -20285,9 +20285,9 @@
     "name": "Simple Sparth Axe",
     "culture": "Neutral",
     "type": "TwoHandedWeapon",
-    "price": 1075,
+    "price": 2107,
     "weight": 1.13,
-    "tier": 2.06286454,
+    "tier": 3.254742,
     "requirement": 0,
     "weapons": [
       {
@@ -21943,9 +21943,9 @@
     "name": "Drilled Two Handed Axe",
     "culture": "Sturgia",
     "type": "TwoHandedWeapon",
-    "price": 2542,
+    "price": 5372,
     "weight": 1.32,
-    "tier": 3.67069912,
+    "tier": 5.7915473,
     "requirement": 0,
     "weapons": [
       {
@@ -21978,9 +21978,9 @@
     "name": "Northlander Decorated Two Handed Axe",
     "culture": "Sturgia",
     "type": "TwoHandedWeapon",
-    "price": 1859,
+    "price": 3832,
     "weight": 1.68,
-    "tier": 2.99940753,
+    "tier": 4.73239851,
     "requirement": 0,
     "weapons": [
       {
@@ -24302,9 +24302,9 @@
     "name": "Short Bill",
     "culture": "Vlandia",
     "type": "TwoHandedWeapon",
-    "price": 922,
+    "price": 1777,
     "weight": 1.72,
-    "tier": 1.845703,
+    "tier": 2.91210938,
     "requirement": 0,
     "weapons": [
       {
