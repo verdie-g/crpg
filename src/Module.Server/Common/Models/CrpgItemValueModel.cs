@@ -105,27 +105,7 @@ internal class CrpgItemValueModel : ItemValueModel
 
     private float CalculateBannerTier(BannerComponent bannerComponent)
     {
-        // return GetBaseTierValueForBannerEffect(bannerComponent.BannerEffect)
-        // *bannerComponent.BannerLevel;
         return 10f;
-    }
-
-    private float GetBaseTierValueForBannerEffect(BannerComponent.BannerItemEffects bannerEffect)
-    {
-        return bannerEffect switch
-        {
-            BannerComponent.BannerItemEffects.IncreasedDamageAgainstMountedTroops => 1f,
-            BannerComponent.BannerItemEffects.IncreasedRangedDamage => 1f,
-            BannerComponent.BannerItemEffects.IncreasedRangedWeaponAccuracy => 1f,
-            BannerComponent.BannerItemEffects.IncreasedChargeDamage => 1f,
-            BannerComponent.BannerItemEffects.DecreasedMoraleShock => 1f,
-            BannerComponent.BannerItemEffects.DecreasedMeleeAttackDamage => 1f,
-            BannerComponent.BannerItemEffects.DecreasedRangedAttackDamage => 1f,
-            BannerComponent.BannerItemEffects.DecreasedShieldDamage => 1f,
-            BannerComponent.BannerItemEffects.IncreasedTroopMovementSpeed => 1f,
-            BannerComponent.BannerItemEffects.IncreasedMountMovementSpeed => 1f,
-            _ => 1f,
-        };
     }
 
     private float CalculateWeaponTier(WeaponComponent weaponComponent)
