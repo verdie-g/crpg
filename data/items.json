@@ -1136,9 +1136,9 @@
     "name": "Mamluke Lance",
     "culture": "Aserai",
     "type": "Polearm",
-    "price": 6283,
+    "price": 997,
     "weight": 1.85,
-    "tier": 5.836168,
+    "tier": 1.76721346,
     "requirement": 0,
     "weapons": [
       {
@@ -3843,9 +3843,9 @@
     "name": "Rhomphaia",
     "culture": "Battania",
     "type": "Polearm",
-    "price": 11500,
-    "weight": 1.2,
-    "tier": 8.264354,
+    "price": 2091,
+    "weight": 1.1,
+    "tier": 2.953128,
     "requirement": 0,
     "weapons": [
       {
@@ -3855,8 +3855,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 203,
-        "balance": 0.23,
-        "handling": 66,
+        "balance": 0.35,
+        "handling": 69,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -3867,10 +3867,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 98,
-        "swingDamage": 38,
+        "thrustSpeed": 99,
+        "swingDamage": 36,
         "swingDamageType": "Cut",
-        "swingSpeed": 76
+        "swingSpeed": 80
       }
     ]
   },
@@ -4695,9 +4695,9 @@
     "name": "Billhook",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 15960,
-    "weight": 1.69,
-    "tier": 9.926431,
+    "price": 2416,
+    "weight": 1.58,
+    "tier": 3.2444427,
     "requirement": 0,
     "weapons": [
       {
@@ -4707,8 +4707,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 138,
-        "balance": 0.53,
-        "handling": 70,
+        "balance": 0.62,
+        "handling": 73,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -4719,10 +4719,10 @@
         ],
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
-        "thrustSpeed": 94,
-        "swingDamage": 39,
+        "thrustSpeed": 96,
+        "swingDamage": 37,
         "swingDamageType": "Cut",
-        "swingSpeed": 86
+        "swingSpeed": 88
       }
     ]
   },
@@ -7323,9 +7323,9 @@
     "name": "Polesword",
     "culture": "Aserai",
     "type": "Polearm",
-    "price": 2607,
-    "weight": 2.45,
-    "tier": 3.40715718,
+    "price": 798,
+    "weight": 2.23,
+    "tier": 1.495031,
     "requirement": 0,
     "weapons": [
       {
@@ -7336,18 +7336,18 @@
         "stackAmount": 0,
         "length": 202,
         "balance": 0.0,
-        "handling": 60,
+        "handling": 64,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
           "WideGrip"
         ],
-        "thrustDamage": 8,
+        "thrustDamage": 9,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 83,
+        "thrustSpeed": 86,
         "swingDamage": 3,
         "swingDamageType": "Cut",
-        "swingSpeed": 17
+        "swingSpeed": 18
       },
       {
         "class": "TwoHandedPolearm",
@@ -7357,7 +7357,7 @@
         "stackAmount": 0,
         "length": 202,
         "balance": 0.0,
-        "handling": 57,
+        "handling": 61,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -7367,10 +7367,10 @@
         ],
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 91,
-        "swingDamage": 37,
+        "thrustSpeed": 93,
+        "swingDamage": 36,
         "swingDamageType": "Cut",
-        "swingSpeed": 63
+        "swingSpeed": 68
       }
     ]
   },
@@ -7676,9 +7676,9 @@
     "name": "Jagged Spear",
     "culture": "Aserai",
     "type": "Polearm",
-    "price": 4331,
+    "price": 743,
     "weight": 1.53,
-    "tier": 4.6734786,
+    "tier": 1.41514683,
     "requirement": 0,
     "weapons": [
       {
@@ -7732,9 +7732,9 @@
     "name": "Narrow Long Headed Spear",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 3301,
+    "price": 602,
     "weight": 2.17,
-    "tier": 3.95458555,
+    "tier": 1.19746339,
     "requirement": 0,
     "weapons": [
       {
@@ -7788,9 +7788,9 @@
     "name": "Weighted Steppe Spear",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 1880,
+    "price": 395,
     "weight": 1.73,
-    "tier": 2.75288,
+    "tier": 0.8335824,
     "requirement": 0,
     "weapons": [
       {
@@ -7867,9 +7867,9 @@
     "name": "Fine Steel Leaf Spear",
     "culture": "Aserai",
     "type": "Polearm",
-    "price": 8247,
+    "price": 1241,
     "weight": 2.01,
-    "tier": 6.837206,
+    "tier": 2.07033157,
     "requirement": 0,
     "weapons": [
       {
@@ -7927,9 +7927,9 @@
     "name": "Thin Fine Steel Hewing Spear",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 3707,
+    "price": 659,
     "weight": 1.4,
-    "tier": 4.24979258,
+    "tier": 1.28685308,
     "requirement": 0,
     "weapons": [
       {
@@ -8555,9 +8555,9 @@
     "name": "Light Cavalry Lance",
     "culture": "Empire",
     "type": "Polearm",
-    "price": 1759,
+    "price": 376,
     "weight": 1.95,
-    "tier": 2.63328767,
+    "tier": 0.7973694,
     "requirement": 0,
     "weapons": [
       {
@@ -8632,9 +8632,9 @@
     "name": "Courser Lance",
     "culture": "Empire",
     "type": "Polearm",
-    "price": 1269,
+    "price": 297,
     "weight": 2.22,
-    "tier": 2.10260773,
+    "tier": 0.6366775,
     "requirement": 0,
     "weapons": [
       {
@@ -8690,9 +8690,9 @@
     "name": "Cataphract Lance",
     "culture": "Empire",
     "type": "Polearm",
-    "price": 2745,
+    "price": 523,
     "weight": 2.04,
-    "tier": 3.52129388,
+    "tier": 1.066261,
     "requirement": 0,
     "weapons": [
       {
@@ -9094,9 +9094,9 @@
     "name": "Menavlion",
     "culture": "Empire",
     "type": "Polearm",
-    "price": 16175,
-    "weight": 2.06,
-    "tier": 10.0,
+    "price": 3601,
+    "weight": 1.71,
+    "tier": 4.174557,
     "requirement": 0,
     "weapons": [
       {
@@ -9107,7 +9107,7 @@
         "stackAmount": 0,
         "length": 159,
         "balance": 0.0,
-        "handling": 70,
+        "handling": 76,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -9116,10 +9116,10 @@
         ],
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 84,
-        "swingDamage": 13,
+        "thrustSpeed": 87,
+        "swingDamage": 15,
         "swingDamageType": "Cut",
-        "swingSpeed": 36
+        "swingSpeed": 49
       },
       {
         "class": "TwoHandedPolearm",
@@ -9128,8 +9128,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 159,
-        "balance": 0.29,
-        "handling": 68,
+        "balance": 0.59,
+        "handling": 75,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -9140,10 +9140,10 @@
         ],
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 92,
-        "swingDamage": 40,
+        "thrustSpeed": 95,
+        "swingDamage": 35,
         "swingDamageType": "Cut",
-        "swingSpeed": 78
+        "swingSpeed": 87
       }
     ]
   },
@@ -9152,9 +9152,9 @@
     "name": "Fine Steel Menavlion",
     "culture": "Empire",
     "type": "Polearm",
-    "price": 2617,
-    "weight": 1.81,
-    "tier": 3.41615677,
+    "price": 903,
+    "weight": 1.58,
+    "tier": 1.64239466,
     "requirement": 0,
     "weapons": [
       {
@@ -9165,7 +9165,7 @@
         "stackAmount": 0,
         "length": 208,
         "balance": 0.0,
-        "handling": 56,
+        "handling": 60,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -9173,10 +9173,10 @@
         ],
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 82,
-        "swingDamage": 4,
+        "thrustSpeed": 85,
+        "swingDamage": 3,
         "swingDamageType": "Cut",
-        "swingSpeed": 16
+        "swingSpeed": 17
       },
       {
         "class": "TwoHandedPolearm",
@@ -9186,7 +9186,7 @@
         "stackAmount": 0,
         "length": 208,
         "balance": 0.0,
-        "handling": 52,
+        "handling": 56,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -9196,10 +9196,10 @@
         ],
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 91,
-        "swingDamage": 45,
+        "thrustSpeed": 93,
+        "swingDamage": 44,
         "swingDamageType": "Cut",
-        "swingSpeed": 59
+        "swingSpeed": 65
       }
     ]
   },
@@ -9707,9 +9707,9 @@
     "name": "Fine Pike",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 1014,
+    "price": 253,
     "weight": 2.81,
-    "tier": 1.78969932,
+    "tier": 0.541927636,
     "requirement": 0,
     "weapons": [
       {
@@ -11216,9 +11216,9 @@
     "name": "Reinforced Highland Spear",
     "culture": "Battania",
     "type": "Polearm",
-    "price": 501,
+    "price": 157,
     "weight": 2.46,
-    "tier": 1.027362,
+    "tier": 0.311089069,
     "requirement": 0,
     "weapons": [
       {
@@ -11316,9 +11316,9 @@
     "name": "Steel Tipped Hooked Spear",
     "culture": "Battania",
     "type": "Polearm",
-    "price": 1291,
+    "price": 300,
     "weight": 2.03,
-    "tier": 2.127749,
+    "tier": 0.6442903,
     "requirement": 0,
     "weapons": [
       {
@@ -11395,9 +11395,9 @@
     "name": "Highland War Spear",
     "culture": "Battania",
     "type": "Polearm",
-    "price": 7238,
+    "price": 1117,
     "weight": 1.85,
-    "tier": 6.33949,
+    "tier": 1.91962135,
     "requirement": 0,
     "weapons": [
       {
@@ -12058,9 +12058,9 @@
     "name": "Short Militia Spear",
     "culture": "Empire",
     "type": "Polearm",
-    "price": 949,
+    "price": 242,
     "weight": 1.94,
-    "tier": 1.70359147,
+    "tier": 0.5158539,
     "requirement": 0,
     "weapons": [
       {
@@ -12983,9 +12983,9 @@
     "name": "Light Steppe Rider Lance",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 1536,
+    "price": 340,
     "weight": 1.91,
-    "tier": 2.40122533,
+    "tier": 0.7271,
     "requirement": 0,
     "weapons": [
       {
@@ -13062,9 +13062,9 @@
     "name": "Heavy Cavalry Lance",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 3728,
+    "price": 661,
     "weight": 1.94,
-    "tier": 4.26457071,
+    "tier": 1.29132807,
     "requirement": 0,
     "weapons": [
       {
@@ -13139,9 +13139,9 @@
     "name": "Noble Cavalry Lance",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 6057,
+    "price": 968,
     "weight": 1.9,
-    "tier": 5.711699,
+    "tier": 1.7295239,
     "requirement": 0,
     "weapons": [
       {
@@ -13515,9 +13515,9 @@
     "name": "Glaive",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 15565,
-    "weight": 2.17,
-    "tier": 9.7893095,
+    "price": 2547,
+    "weight": 2.04,
+    "tier": 3.357408,
     "requirement": 0,
     "weapons": [
       {
@@ -13528,18 +13528,18 @@
         "stackAmount": 0,
         "length": 145,
         "balance": 0.0,
-        "handling": 70,
+        "handling": 73,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
           "WideGrip"
         ],
-        "thrustDamage": 9,
+        "thrustDamage": 7,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 83,
-        "swingDamage": 11,
+        "thrustSpeed": 84,
+        "swingDamage": 12,
         "swingDamageType": "Cut",
-        "swingSpeed": 38
+        "swingSpeed": 43
       },
       {
         "class": "TwoHandedPolearm",
@@ -13548,8 +13548,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 145,
-        "balance": 0.33,
-        "handling": 68,
+        "balance": 0.43,
+        "handling": 71,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -13557,12 +13557,12 @@
           "WideGrip",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 11,
+        "thrustDamage": 8,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 91,
-        "swingDamage": 40,
+        "thrustSpeed": 92,
+        "swingDamage": 38,
         "swingDamageType": "Cut",
-        "swingSpeed": 80
+        "swingSpeed": 83
       }
     ]
   },
@@ -13571,9 +13571,9 @@
     "name": "Long Glaive",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 16296,
-    "weight": 1.4,
-    "tier": 10.0414448,
+    "price": 3250,
+    "weight": 1.27,
+    "tier": 3.91656613,
     "requirement": 0,
     "weapons": [
       {
@@ -13584,7 +13584,7 @@
         "stackAmount": 0,
         "length": 206,
         "balance": 0.0,
-        "handling": 64,
+        "handling": 67,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -13592,10 +13592,10 @@
         ],
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 87,
-        "swingDamage": 7,
+        "thrustSpeed": 89,
+        "swingDamage": 10,
         "swingDamageType": "Cut",
-        "swingSpeed": 24
+        "swingSpeed": 32
       },
       {
         "class": "TwoHandedPolearm",
@@ -13604,8 +13604,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 206,
-        "balance": 0.03,
-        "handling": 61,
+        "balance": 0.17,
+        "handling": 64,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -13615,10 +13615,10 @@
         ],
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 95,
-        "swingDamage": 47,
+        "thrustSpeed": 97,
+        "swingDamage": 45,
         "swingDamageType": "Cut",
-        "swingSpeed": 70
+        "swingSpeed": 75
       }
     ]
   },
@@ -15230,9 +15230,9 @@
     "name": "Notched Military Fork",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 661,
+    "price": 189,
     "weight": 2.09,
-    "tier": 1.29122615,
+    "tier": 0.390988141,
     "requirement": 0,
     "weapons": [
       {
@@ -15288,9 +15288,9 @@
     "name": "Military Fork",
     "culture": "Sturgia",
     "type": "Polearm",
-    "price": 750,
+    "price": 206,
     "weight": 2.17,
-    "tier": 1.42569721,
+    "tier": 0.431706458,
     "requirement": 0,
     "weapons": [
       {
@@ -17089,9 +17089,9 @@
     "name": "Short Simple Raider Spear",
     "culture": "Sturgia",
     "type": "Polearm",
-    "price": 1210,
+    "price": 287,
     "weight": 2.11,
-    "tier": 2.03325677,
+    "tier": 0.6156778,
     "requirement": 0,
     "weapons": [
       {
@@ -17145,9 +17145,9 @@
     "name": "Broad Leaf Shaped Spear",
     "culture": "Battania",
     "type": "Polearm",
-    "price": 1906,
+    "price": 399,
     "weight": 1.79,
-    "tier": 2.77820444,
+    "tier": 0.8412508,
     "requirement": 0,
     "weapons": [
       {
@@ -17201,9 +17201,9 @@
     "name": "Jagged Fine Steel Spear",
     "culture": "Sturgia",
     "type": "Polearm",
-    "price": 8742,
+    "price": 1302,
     "weight": 1.87,
-    "tier": 7.0703373,
+    "tier": 2.14092445,
     "requirement": 0,
     "weapons": [
       {
@@ -17257,9 +17257,9 @@
     "name": "Fine Steel Hewing Spear",
     "culture": "Sturgia",
     "type": "Polearm",
-    "price": 2834,
+    "price": 536,
     "weight": 1.92,
-    "tier": 3.5938344,
+    "tier": 1.08822656,
     "requirement": 0,
     "weapons": [
       {
@@ -18392,9 +18392,9 @@
     "name": "Iron Pitchfork",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 1049,
+    "price": 259,
     "weight": 1.92,
-    "tier": 1.83430159,
+    "tier": 0.5554334,
     "requirement": 0,
     "weapons": [
       {
@@ -18448,9 +18448,9 @@
     "name": "Pitchfork",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 2215,
+    "price": 446,
     "weight": 1.47,
-    "tier": 3.06717157,
+    "tier": 0.928751051,
     "requirement": 0,
     "weapons": [
       {
@@ -18504,9 +18504,9 @@
     "name": "Scythe",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 6532,
+    "price": 1028,
     "weight": 2.7,
-    "tier": 5.97087955,
+    "tier": 1.80800474,
     "requirement": 0,
     "weapons": [
       {
@@ -18921,9 +18921,9 @@
     "name": "Practice Spear",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 15029,
+    "price": 2041,
     "weight": 1.8,
-    "tier": 9.600543,
+    "tier": 2.90708041,
     "requirement": 0,
     "weapons": [
       {
@@ -20195,9 +20195,9 @@
     "name": "Simple Pike",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 514,
+    "price": 160,
     "weight": 1.62,
-    "tier": 1.04941666,
+    "tier": 0.3177673,
     "requirement": 0,
     "weapons": [
       {
@@ -20735,9 +20735,9 @@
     "name": "Knob Headed Spear",
     "culture": "Aserai",
     "type": "Polearm",
-    "price": 3122,
+    "price": 577,
     "weight": 1.82,
-    "tier": 3.819292,
+    "tier": 1.15649593,
     "requirement": 0,
     "weapons": [
       {
@@ -20791,9 +20791,9 @@
     "name": "Long Thamaskene Tipped Spear",
     "culture": "Aserai",
     "type": "Polearm",
-    "price": 4578,
+    "price": 776,
     "weight": 1.96,
-    "tier": 4.832937,
+    "tier": 1.46343148,
     "requirement": 0,
     "weapons": [
       {
@@ -22271,9 +22271,9 @@
     "name": "Druzhinnik Lance",
     "culture": "Sturgia",
     "type": "Polearm",
-    "price": 7987,
+    "price": 1210,
     "weight": 1.88,
-    "tier": 6.71201563,
+    "tier": 2.0324235,
     "requirement": 0,
     "weapons": [
       {
@@ -22348,9 +22348,9 @@
     "name": "Heavy Druzhinnik Lance",
     "culture": "Sturgia",
     "type": "Polearm",
-    "price": 6619,
+    "price": 1039,
     "weight": 2.16,
-    "tier": 6.01745462,
+    "tier": 1.82210791,
     "requirement": 0,
     "weapons": [
       {
@@ -22637,9 +22637,9 @@
     "name": "Warrazor",
     "culture": "Sturgia",
     "type": "Polearm",
-    "price": 1954,
+    "price": 406,
     "weight": 1.83,
-    "tier": 2.82413244,
+    "tier": 0.8551579,
     "requirement": 0,
     "weapons": [
       {
@@ -23388,9 +23388,9 @@
     "name": "Thamaskene Pike",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 935,
+    "price": 239,
     "weight": 2.78,
-    "tier": 1.68540072,
+    "tier": 0.5103457,
     "requirement": 0,
     "weapons": [
       {
@@ -23748,9 +23748,9 @@
     "name": "Triangular Headed Spear",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 938,
+    "price": 240,
     "weight": 1.83,
-    "tier": 1.68884885,
+    "tier": 0.5113898,
     "requirement": 0,
     "weapons": [
       {
@@ -24614,9 +24614,9 @@
     "name": "Light Lance",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 1198,
+    "price": 285,
     "weight": 2.12,
-    "tier": 2.018712,
+    "tier": 0.6112735,
     "requirement": 0,
     "weapons": [
       {
@@ -24714,9 +24714,9 @@
     "name": "Knight Lance",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 4052,
+    "price": 706,
     "weight": 1.99,
-    "tier": 4.48792458,
+    "tier": 1.35896039,
     "requirement": 0,
     "weapons": [
       {
@@ -24791,9 +24791,9 @@
     "name": "Heavy Knight Lance",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 5626,
+    "price": 913,
     "weight": 2.21,
-    "tier": 5.46761227,
+    "tier": 1.65561354,
     "requirement": 0,
     "weapons": [
       {
@@ -25110,9 +25110,9 @@
     "name": "Pike",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 856,
+    "price": 225,
     "weight": 3.19,
-    "tier": 1.57733667,
+    "tier": 0.477623433,
     "requirement": 0,
     "weapons": [
       {
@@ -25168,9 +25168,9 @@
     "name": "Voulge",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 15698,
-    "weight": 1.51,
-    "tier": 9.83569,
+    "price": 2934,
+    "weight": 1.3,
+    "tier": 3.67294812,
     "requirement": 0,
     "weapons": [
       {
@@ -25181,7 +25181,7 @@
         "stackAmount": 0,
         "length": 143,
         "balance": 0.0,
-        "handling": 66,
+        "handling": 70,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -25189,10 +25189,10 @@
         ],
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 87,
-        "swingDamage": 9,
+        "thrustSpeed": 89,
+        "swingDamage": 12,
         "swingDamageType": "Cut",
-        "swingSpeed": 33
+        "swingSpeed": 43
       },
       {
         "class": "TwoHandedPolearm",
@@ -25201,8 +25201,8 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 143,
-        "balance": 0.26,
-        "handling": 63,
+        "balance": 0.45,
+        "handling": 67,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -25212,10 +25212,10 @@
         ],
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 94,
-        "swingDamage": 47,
+        "thrustSpeed": 97,
+        "swingDamage": 43,
         "swingDamageType": "Cut",
-        "swingSpeed": 77
+        "swingSpeed": 83
       }
     ]
   },
@@ -26030,9 +26030,9 @@
     "name": "Simple Commoner Spear",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 2514,
+    "price": 490,
     "weight": 1.83,
-    "tier": 3.3285954,
+    "tier": 1.00791121,
     "requirement": 0,
     "weapons": [
       {
@@ -26086,9 +26086,9 @@
     "name": "Simple Short Spear",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 560,
+    "price": 169,
     "weight": 1.89,
-    "tier": 1.12745953,
+    "tier": 0.341398984,
     "requirement": 0,
     "weapons": [
       {
@@ -26142,9 +26142,9 @@
     "name": "Tall Tipped Long Spear",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 639,
+    "price": 185,
     "weight": 2.07,
-    "tier": 1.25663,
+    "tier": 0.380512267,
     "requirement": 0,
     "weapons": [
       {
@@ -26221,9 +26221,9 @@
     "name": "Long Fine Steel Spear",
     "culture": "Empire",
     "type": "Polearm",
-    "price": 1143,
+    "price": 275,
     "weight": 2.06,
-    "tier": 1.95137417,
+    "tier": 0.590883434,
     "requirement": 0,
     "weapons": [
       {
@@ -26415,9 +26415,9 @@
     "name": "Wide Leaf Spear",
     "culture": "Neutral",
     "type": "Polearm",
-    "price": 1303,
+    "price": 302,
     "weight": 2.02,
-    "tier": 2.141769,
+    "tier": 0.648535669,
     "requirement": 0,
     "weapons": [
       {
