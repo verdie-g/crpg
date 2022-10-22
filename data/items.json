@@ -13515,9 +13515,9 @@
     "name": "Glaive",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 46784,
+    "price": 64120,
     "weight": 1.82,
-    "tier": 17.7756977,
+    "tier": 21.0011063,
     "requirement": 0,
     "weapons": [
       {
@@ -13537,7 +13537,7 @@
         "thrustDamage": 9,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 15,
+        "swingDamage": 17,
         "swingDamageType": "Cut",
         "swingSpeed": 52
       },
@@ -13560,7 +13560,7 @@
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 39,
+        "swingDamage": 42,
         "swingDamageType": "Cut",
         "swingSpeed": 89
       }
