@@ -7,6 +7,7 @@ using TaleWorlds.MountAndBlade.Source.Missions;
 #if CRPG_SERVER
 using Crpg.Module.Api;
 using Crpg.Module.Common.ChatCommands;
+using Crpg.Module.Rating;
 #else
 using Crpg.Module.GUI;
 using TaleWorlds.MountAndBlade.View;
@@ -69,11 +70,12 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 #if CRPG_SERVER
         CrpgHttpClient crpgClient = new();
         MultiplayerRoundController roundController = new(); // starts/stops round, ends match
+        RoundRewardBehavior roundRewardComponent = new(roundController, crpgClient, _constants);
+        ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
 #endif
         CrpgBattleMissionMultiplayerClient battleClient = new();
         MultiplayerGameNotificationsComponent notificationsComponent = new(); // used to send notifications (e.g. flag captured, round won) to peer
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent);
-        ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
 
         MissionState.OpenNew(
             Name,
@@ -101,7 +103,8 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     notificationsComponent,
 #if CRPG_SERVER
                     roundController,
-                    new CrpgBattleMissionMultiplayer(battleClient, crpgClient, _constants),
+                    new CrpgBattleMissionMultiplayer(battleClient),
+                    roundRewardComponent,
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
                     new SpawnComponent(new BattleSpawnFrameBehavior(), new CrpgBattleSpawningBehavior(_constants, roundController)),
                     new AgentHumanAILogic(), // bot intelligence

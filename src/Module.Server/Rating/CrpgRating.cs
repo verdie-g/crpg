@@ -2,11 +2,9 @@
 
 /// <summary>
 /// Holds an individual's Glicko-2 rating.
-/// Glicko-2 ratings are an average skill value, a standard deviation and a volatility
-/// (how consistent the player is). Prof Glickman's paper on the algorithm allows scaling
-/// of these values to be more directly comparable with existing rating systems such as
-/// Elo or USCF's derivation thereof. This implementation outputs ratings at this larger
-/// scale.
+/// Glicko-2 ratings are an average skill value, a standard deviation and a volatility (how consistent the player is).
+/// Glickman's paper on the algorithm allows scaling of these values to be more directly comparable with existing rating
+/// systems such as Elo or USCF's derivation thereof. This implementation outputs ratings at this larger scale.
 /// </summary>
 internal class CrpgRating
 {
@@ -44,11 +42,11 @@ internal class CrpgRating
     /// </summary>
     public double Glicko2RatingDeviation
     {
-        get => _rating / Multiplier;
+        get => _ratingDeviation / Multiplier;
         private set => _ratingDeviation = value * Multiplier;
     }
 
-    public void FinaliseRating()
+    public void FinalizeRating()
     {
         Glicko2Rating = WorkingRating;
         Glicko2RatingDeviation = WorkingRatingDeviation;

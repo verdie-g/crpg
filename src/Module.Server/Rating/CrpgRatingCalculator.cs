@@ -20,24 +20,24 @@ internal static class CrpgRatingCalculator
     {
         foreach (var player in results.GetParticipants())
         {
-            if (results.GetPlayerResults(player).Count > 0)
+            var playerResults = results.GetPlayerResults(player);
+            if (playerResults.Count > 0)
             {
-                CalculateNewRating(player, results.GetPlayerResults(player));
+                CalculateNewRating(player, playerResults);
             }
             else
             {
-                // If a player does not compete during the rating period, then only step 6 applies.
-                // the player's rating and volatility parameters remain the same but deviation increases
+                // If a player does not compete during the rating period, then only step 6 applies. The player's rating
+                // and volatility parameters remain the same but deviation increases
                 player.WorkingRating = player.Glicko2Rating;
                 player.WorkingRatingDeviation = CalculateNewRatingDeviation(player.Glicko2RatingDeviation, player.Volatility);
                 player.WorkingVolatility = player.Volatility;
             }
         }
 
-        // now iterate through the participants and confirm their new ratings
         foreach (var player in results.GetParticipants())
         {
-            player.FinaliseRating();
+            player.FinalizeRating();
         }
     }
 
