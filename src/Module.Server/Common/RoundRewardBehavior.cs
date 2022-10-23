@@ -76,7 +76,7 @@ internal class RoundRewardBehavior : MissionBehavior
             return;
         }
 
-        float inflictedRatio = blow.InflictedDamage / affectedAgent.BaseHealthLimit;
+        float inflictedRatio = MathF.Clamp(blow.InflictedDamage / affectedAgent.BaseHealthLimit, 0f, 1f);
         _ratingResults.AddResult(affectorRating, affectedRating, inflictedRatio);
     }
 
