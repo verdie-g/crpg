@@ -435,7 +435,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
          * mirror (0 or 1)
          * rotation (0-359)
          */
-
+        int iconCounter = 0;
         for (int i = 0; i + 10 <= array.Length; i += 10)
         {
             if (int.TryParse(array[i], out int iconId))
@@ -495,6 +495,12 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             fixedBannerCode.Append(".");
             fixedBannerCode.Append(rotation);
             fixedBannerCode.Append(".");
+            iconCounter++;
+        }
+
+        if (iconCounter == 0)
+        {
+            return false;
         }
 
         if (fixedBannerCode.Length > 0)
