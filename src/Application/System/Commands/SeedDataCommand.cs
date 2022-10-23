@@ -1668,6 +1668,7 @@ public record SeedDataCommand : IMediatorRequest
                 Weight = item.Weight,
                 Tier = item.Tier,
                 Requirement = item.Requirement,
+                Flags = item.Flags,
             };
 
             if (item.Armor != null)

@@ -14,6 +14,7 @@ public record ItemCreation
     public float Tier { get; init; }
     public int Requirement { get; init; }
     public int Rank { get; init; }
+    public ItemFlags Flags { get; init; }
 
     public ItemArmorComponentViewModel? Armor { get; init; }
     public ItemMountComponentViewModel? Mount { get; init; }

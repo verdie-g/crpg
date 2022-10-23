@@ -21,7 +21,7 @@ internal class AnnouncementCommand : AdminCommand
         ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
-    private void ExecuteAnnouncement(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteAnnouncement(NetworkCommunicator fromPeer, object[] arguments)
     {
         string message = (string)arguments[0];
 

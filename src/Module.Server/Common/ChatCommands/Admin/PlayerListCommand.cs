@@ -14,7 +14,7 @@ internal class PlayerListCommand : AdminCommand
         };
     }
 
-    private void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteSuccess(NetworkCommunicator fromPeer, object[] arguments)
     {
         ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, "- Players -");
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)

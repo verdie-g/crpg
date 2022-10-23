@@ -349,6 +349,7 @@ internal class ItemExporter : IDataExporter
             Weight = mbItem.Weight,
             Tier = mbItem.Tierf,
             Requirement = CrpgItemRequirementModel.ComputeItemRequirement(mbItem),
+            Flags = MbToCrpgItemFlags(mbItem.ItemFlags),
         };
 
         if (mbItem.ArmorComponent != null)
@@ -409,6 +410,9 @@ internal class ItemExporter : IDataExporter
         ItemObject.ItemTypeEnum.Cape => CrpgItemType.ShoulderArmor, // Cape is a bad name.
         _ => (CrpgItemType)Enum.Parse(typeof(CrpgItemType), t.ToString()),
     };
+
+    private static CrpgItemFlags MbToCrpgItemFlags(ItemFlags f) =>
+        (CrpgItemFlags)Enum.Parse(typeof(CrpgItemFlags), f.ToString());
 
     private static CrpgCulture MbToCrpgCulture(BasicCultureObject? culture) => culture == null
         ? CrpgCulture.Neutral // Consider no culture as neutral.

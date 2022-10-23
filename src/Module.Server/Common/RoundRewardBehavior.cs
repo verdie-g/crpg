@@ -76,8 +76,7 @@ internal class RoundRewardBehavior : MissionBehavior
             return;
         }
 
-        float inflictedRatio = blow.InflictedDamage / affectedAgent.BaseHealthLimit;
-        Debug.Print($"{blow.InflictedDamage} / {affectedAgent.BaseHealthLimit} = {inflictedRatio}");
+        float inflictedRatio = MathF.Clamp(blow.InflictedDamage / affectedAgent.BaseHealthLimit, 0f, 1f);
         _ratingResults.AddResult(affectorRating, affectedRating, inflictedRatio);
     }
 
@@ -207,14 +206,12 @@ internal class RoundRewardBehavior : MissionBehavior
             return crpgRepresentative.User!.Character.Rating;
         }
 
-        var a = new CrpgCharacterRating
+        return new CrpgCharacterRating
         {
             Value = (float)rating.Glicko2Rating,
             Deviation = (float)rating.Glicko2RatingDeviation,
             Volatility = (float)rating.Volatility,
         };
-        Debug.Print($"{crpgRepresentative.Peer.UserName}: {a.Value - a.Deviation * 2} ({a.Value} {a.Deviation})");
-        return a;
     }
 
     private IList<CrpgUserBrokenItem> BreakItems(CrpgRepresentative crpgRepresentative)

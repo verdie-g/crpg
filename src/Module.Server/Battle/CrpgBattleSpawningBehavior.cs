@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using System.Text;
+﻿using System.Text;
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Items;
 using Crpg.Module.Common;
@@ -18,7 +17,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     private const float TotalSpawnDuration = 30f;
     private readonly CrpgConstants _constants;
     private readonly MultiplayerRoundController? _roundController;
-    private readonly HashSet<PlayerId> _notifiedPlayersAboutDelayedSpawn;
+    private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
     private MissionTimer? _spawnTimer;
     private MissionTimer? _cavalrySpawnDelayTimer;
     private bool _botsSpawned;
@@ -27,7 +26,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
     {
         _constants = constants;
         _roundController = roundController;
-        _notifiedPlayersAboutDelayedSpawn = new HashSet<PlayerId>();
+        _notifiedPlayersAboutSpawnRestriction = new HashSet<PlayerId>();
     }
 
     public override void Initialize(SpawnComponent spawnComponent)
@@ -142,7 +141,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             }
         }
 
-        _notifiedPlayersAboutDelayedSpawn.Clear();
+        _notifiedPlayersAboutSpawnRestriction.Clear();
     }
 
     private void SpawnBotAgents()
@@ -235,6 +234,19 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
             if (!DoesEquipmentContainWeapon(characterEquipment)) // Disallow spawning without weapons.
             {
+                if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
+                {
+                    GameNetwork.BeginModuleEventAsServer(networkPeer);
+                    GameNetwork.WriteMessage(new CrpgNotification
+                    {
+                        Type = CrpgNotification.NotificationType.Notification,
+                        Message = "You should have at least one weapon equipped to spawn!",
+                        IsMessageTextId = false,
+                        SoundEvent = string.Empty,
+                    });
+                    GameNetwork.EndModuleEventAsServer();
+                }
+
                 continue;
             }
 
@@ -242,7 +254,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             // Disallow spawning cavalry before the cav spawn delay ended.
             if (hasMount && (!_cavalrySpawnDelayTimer?.Check() ?? false))
             {
-                if (_notifiedPlayersAboutDelayedSpawn.Add(networkPeer.VirtualPlayer.Id))
+                if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
                 {
                     GameNetwork.BeginModuleEventAsServer(networkPeer);
                     GameNetwork.WriteMessage(new CrpgNotification

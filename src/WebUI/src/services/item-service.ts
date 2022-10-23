@@ -11,6 +11,7 @@ import UserItem from '@/models/user-item';
 import { applyPolynomialFunction, generalizedMean } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
 import EquippedItem from '@/models/equipped-item';
+import ItemFlags from '@/models/item-flags';
 
 export const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.Undefined]: 'Undefined',
@@ -34,6 +35,28 @@ export const itemTypeToStr: Record<ItemType, string> = {
   [ItemType.Musket]: 'Musket',
   [ItemType.Bullets]: 'Bullets',
   [ItemType.Banner]: 'Banner',
+};
+
+// Set null flag we don't to display
+const itemFlagsStr: Record<ItemFlags, string | null> = {
+  [ItemFlags.ForceAttachOffHandPrimaryItemBone]: null,
+  [ItemFlags.ForceAttachOffHandSecondaryItemBone]: null,
+  [ItemFlags.NotUsableByFemale]: null,
+  [ItemFlags.NotUsableByMale]: null,
+  [ItemFlags.DropOnWeaponChange]: 'DropOnWeaponChange',
+  [ItemFlags.DropOnAnyAction]: 'DropOnAnyAction',
+  [ItemFlags.CannotBePickedUp]: null,
+  [ItemFlags.CanBePickedUpFromCorpse]: null,
+  [ItemFlags.QuickFadeOut]: null,
+  [ItemFlags.WoodenAttack]: null,
+  [ItemFlags.WoodenParry]: null,
+  [ItemFlags.HeldInOffHand]: null,
+  [ItemFlags.HasToBeHeldUp]: null,
+  [ItemFlags.UseTeamColor]: 'UseTeamColor',
+  [ItemFlags.Civilian]: null,
+  [ItemFlags.DoNotScaleBodyAccordingToWeaponLength]: null,
+  [ItemFlags.DoesNotHideChest]: null,
+  [ItemFlags.NotStackable]: 'NotStackable',
 };
 
 const damageTypeToStr: Record<DamageType, string> = {
@@ -195,6 +218,10 @@ function getWeaponClassShortName(weaponClass: WeaponClass): string {
   }
 }
 
+function getItemFlags(flags: ItemFlags[]): string[] {
+  return flags.map(flag => itemFlagsStr[flag]).filter(flagStr => flagStr !== null) as string[];
+}
+
 function getWeaponFlags(flags: WeaponFlags[]): string[] {
   return flags.map(flag => weaponFlagsStr[flag]).filter(flagStr => flagStr !== null) as string[];
 }
@@ -213,6 +240,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ['Tier', baseItem.tier.toFixed(1)],
       ['Repair Cost', computeMaxRepairCost([baseItem])],
     ],
+    flags: getItemFlags(baseItem.flags),
     modes: [],
   };
 

@@ -7,10 +7,13 @@
   <!-- Maps -->
   <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=!}Abandoned" />
   <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=!}Acacia Citadel" />
+  <string id="str_multiplayer_scene_name.crpg_battle_auglirefortress" text="{=!}Auglire Fortress" />
   <string id="str_multiplayer_scene_name.crpg_battle_banditvalley" text="{=!}Bandit valley" />
+  <string id="str_multiplayer_scene_name.crpg_battle_bazaar" text="{=!}Bazaar" />
   <string id="str_multiplayer_scene_name.crpg_battle_cabbagepatch" text="{=!}Cabbage Patch" />
   <string id="str_multiplayer_scene_name.crpg_battle_dragonsroost" text="{=!}Dragon's Roost" />
   <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=!}Ghost Town" />
+  <string id="str_multiplayer_scene_name.crpg_battle_kalmara" text="{=!}Kalmara" />
   <string id="str_multiplayer_scene_name.crpg_battle_onomasticon" text="{=!}Onomasticon" />
   <string id="str_multiplayer_scene_name.crpg_battle_sallyout" text="{=!}Sally Out" />
   <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=!}Sanctuary" />

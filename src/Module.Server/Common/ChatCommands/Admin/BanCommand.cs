@@ -29,12 +29,12 @@ internal class BanCommand : AdminCommand
         ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
-    private void ExecuteBanByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteBanByNetworkPeer(NetworkCommunicator fromPeer, object[] arguments)
     {
-        _ = ExecuteBanByNetworkPeerAsync(fromPeer, cmd, arguments);
+        _ = ExecuteBanByNetworkPeerAsync(fromPeer, arguments);
     }
 
-    private async Task ExecuteBanByNetworkPeerAsync(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private async Task ExecuteBanByNetworkPeerAsync(NetworkCommunicator fromPeer, object[] arguments)
     {
         var targetPeer = (NetworkCommunicator)arguments[0];
         var duration = (TimeSpan)arguments[1];
@@ -94,7 +94,7 @@ internal class BanCommand : AdminCommand
         GameNetwork.AddNetworkPeerToDisconnectAsServer(targetPeer);
     }
 
-    private void ExecuteBanByName(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteBanByName(NetworkCommunicator fromPeer, object[] arguments)
     {
         string targetName = (string)arguments[0];
         if (!TryGetPlayerByName(fromPeer, targetName, out var targetPeer))
@@ -103,6 +103,6 @@ internal class BanCommand : AdminCommand
         }
 
         arguments = new[] { targetPeer!, arguments[1], arguments[2] };
-        ExecuteBanByNetworkPeer(fromPeer, cmd, arguments);
+        ExecuteBanByNetworkPeer(fromPeer, arguments);
     }
 }

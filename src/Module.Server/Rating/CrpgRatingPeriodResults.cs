@@ -14,10 +14,9 @@ internal class CrpgRatingPeriodResults
         _results.Add(result);
     }
 
-    public IList<CrpgRatingResult> GetPlayerResults(CrpgRating player)
+    public CrpgRatingResult[] GetPlayerResults(CrpgRating player)
     {
         List<CrpgRatingResult> filteredResults = new();
-
         foreach (var result in _results)
         {
             if (result.Participated(player))
@@ -26,7 +25,7 @@ internal class CrpgRatingPeriodResults
             }
         }
 
-        return filteredResults;
+        return filteredResults.ToArray();
     }
 
     /// <summary>

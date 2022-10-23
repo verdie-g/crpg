@@ -36,6 +36,7 @@ public class ItemWeaponComponent : ICloneable
     public object Clone() => new ItemWeaponComponent
     {
         Class = Class,
+        ItemUsage = ItemUsage,
         Accuracy = Accuracy,
         MissileSpeed = MissileSpeed,
         StackAmount = StackAmount,

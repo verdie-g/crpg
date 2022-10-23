@@ -10,6 +10,9 @@
         <strong>{{ field[1] }}</strong>
       </div>
     </div>
+    <b-taglist class="flags">
+      <b-tag v-for="flag in itemDescriptor.flags" :key="flag" type="is-info">{{ flag }}</b-tag>
+    </b-taglist>
     <b-tabs v-if="itemDescriptor.modes.length > 1" :value="weaponIdx" class="weapon-tabs">
       <b-tab-item v-for="mode in itemDescriptor.modes" :key="mode.name" :label="mode.name">
         <div v-for="field in mode.fields">

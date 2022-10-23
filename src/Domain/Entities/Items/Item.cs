@@ -18,6 +18,7 @@ public class Item : AuditableEntity, ICloneable
     public float Tier { get; set; }
     public int Requirement { get; set; }
     public float Weight { get; set; }
+    public ItemFlags Flags { get; set; }
 
     /// <summary>
     /// Armor component of an item. If not null, the item is an armor.
@@ -74,8 +75,11 @@ public class Item : AuditableEntity, ICloneable
         Name = Name,
         Culture = Culture,
         Type = Type,
+        Tier = Tier,
+        Requirement = Requirement,
         Price = Price,
         Weight = Weight,
+        Flags = Flags,
         Armor = (ItemArmorComponent?)Armor?.Clone(),
         Mount = (ItemMountComponent?)Mount?.Clone(),
         PrimaryWeapon = (ItemWeaponComponent?)PrimaryWeapon?.Clone(),

@@ -21,7 +21,7 @@ internal static class CrpgRatingCalculator
         foreach (var player in results.GetParticipants())
         {
             var playerResults = results.GetPlayerResults(player);
-            if (playerResults.Count > 0)
+            if (playerResults.Length > 0)
             {
                 CalculateNewRating(player, playerResults);
             }
@@ -44,7 +44,7 @@ internal static class CrpgRatingCalculator
     /// <summary>
     /// This is the function processing described in step 5 of Glickman's paper.
     /// </summary>
-    private static void CalculateNewRating(CrpgRating player, IList<CrpgRatingResult> results)
+    private static void CalculateNewRating(CrpgRating player, CrpgRatingResult[] results)
     {
         double phi = player.Glicko2RatingDeviation;
         double sigma = player.Volatility;
@@ -105,8 +105,8 @@ internal static class CrpgRatingCalculator
         // Step 7
         double newPhi = 1.0 / Math.Sqrt(1.0 / Math.Pow(phiStar, 2) + 1.0 / v);
 
-        // note that the newly calculated rating values are stored in a "working" area in the Rating object
-        // this avoids us attempting to calculate subsequent participants' ratings against a moving target
+        // Note that the newly calculated rating values are stored in a "working" area in the Rating object
+        // this avoids us attempting to calculate subsequent participants' ratings against a moving target.
         player.WorkingRating = player.Glicko2Rating + Math.Pow(newPhi, 2) * OutcomeBasedRating(player, results);
         player.WorkingRatingDeviation = newPhi;
     }
@@ -135,38 +135,39 @@ internal static class CrpgRatingCalculator
     /// <summary>
     /// This is the main function in step 3 of Glickman's paper.
     /// </summary>
-    private static double V(CrpgRating player, IEnumerable<CrpgRatingResult> results)
+    private static double V(CrpgRating player, CrpgRatingResult[] results)
     {
         double v = 0.0;
 
         foreach (var result in results)
         {
-            v += result.Percentage
-                * (Math.Pow(G(result.GetOpponent(player).Glicko2RatingDeviation), 2)
-                    * E(player.Glicko2Rating, result.GetOpponent(player).Glicko2Rating, result.GetOpponent(player).Glicko2RatingDeviation)
-                    * (1.0 - E(player.Glicko2Rating, result.GetOpponent(player).Glicko2Rating, result.GetOpponent(player).Glicko2RatingDeviation)));
+            var opponent = result.GetOpponent(player);
+            v += Math.Pow(G(opponent.Glicko2RatingDeviation), 2)
+                 * E(player.Glicko2Rating, opponent.Glicko2Rating, opponent.Glicko2RatingDeviation)
+                 * (1.0 - E(player.Glicko2Rating, opponent.Glicko2Rating, opponent.Glicko2RatingDeviation));
         }
 
         return Math.Pow(v, -1);
     }
 
     /// <summary>This is a formula as per step 4 of Glickman's paper.</summary>
-    private static double Delta(CrpgRating player, IList<CrpgRatingResult> results)
+    private static double Delta(CrpgRating player, CrpgRatingResult[] results)
     {
         return V(player, results) * OutcomeBasedRating(player, results);
     }
 
     /// <summary>This is a formula as per step 4 of Glickman's paper.</summary>
     /// <returns>Expected rating based on outcomes.</returns>
-    private static double OutcomeBasedRating(CrpgRating player, IEnumerable<CrpgRatingResult> results)
+    private static double OutcomeBasedRating(CrpgRating player, CrpgRatingResult[] results)
     {
         double outcomeBasedRating = 0;
-
         foreach (var result in results)
         {
-            outcomeBasedRating += G(
-                result.Percentage * result.GetOpponent(player).Glicko2RatingDeviation * result.GetScore(player)
-                - E(player.Glicko2Rating, result.GetOpponent(player).Glicko2Rating, result.GetOpponent(player).Glicko2RatingDeviation));
+            var opponent = result.GetOpponent(player);
+            outcomeBasedRating +=
+                G(opponent.Glicko2RatingDeviation)
+                * result.GetScore(player)
+                - E(player.Glicko2Rating, opponent.Glicko2Rating, opponent.Glicko2RatingDeviation);
         }
 
         return outcomeBasedRating;

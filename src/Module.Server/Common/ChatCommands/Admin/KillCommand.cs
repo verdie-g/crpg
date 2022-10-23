@@ -22,7 +22,7 @@ internal class KillCommand : AdminCommand
         ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
-    private void ExecuteKillByName(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteKillByName(NetworkCommunicator fromPeer, object[] arguments)
     {
         string targetName = (string)arguments[0];
         if (!TryGetPlayerByName(fromPeer, targetName, out var targetPeer))
@@ -31,10 +31,10 @@ internal class KillCommand : AdminCommand
         }
 
         arguments = new object[] { targetPeer! };
-        ExecuteKillByNetworkPeer(fromPeer, cmd, arguments);
+        ExecuteKillByNetworkPeer(fromPeer, arguments);
     }
 
-    private void ExecuteKillByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteKillByNetworkPeer(NetworkCommunicator fromPeer, object[] arguments)
     {
         var targetPeer = (NetworkCommunicator)arguments[0];
 
