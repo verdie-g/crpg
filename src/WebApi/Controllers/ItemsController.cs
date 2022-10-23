@@ -14,7 +14,7 @@ public class ItemsController : BaseController
     /// </summary>
     /// <response code="200">Ok.</response>
     [HttpGet]
-    [ResponseCache(Duration = 60 * 60 * 6)] // 6 hours
+    [ResponseCache(Duration = 60 * 60 * 1)] // 1 hours
     public Task<ActionResult<Result<IList<ItemViewModel>>>> GetItemsList() =>
         ResultToActionAsync(Mediator.Send(new GetItemsQuery()));
 }
