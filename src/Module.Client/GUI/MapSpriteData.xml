@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>54</SpriteSheetCount>
+      <SpriteSheetCount>57</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -72,6 +72,9 @@
       <SpriteSheetSize ID="52" Width="1920" Height="1080" />
       <SpriteSheetSize ID="53" Width="1920" Height="1080" />
       <SpriteSheetSize ID="54" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="55" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="56" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="57" Width="1920" Height="1080" />
     </SpriteCategory>
   </SpriteCategories>
   <SpriteParts>
@@ -570,6 +573,33 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>55</SheetID>
+      <Name>crpg_battle_auglirefortress</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>56</SheetID>
+      <Name>crpg_battle_kalmara</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
+    <SpritePart>
+      <SheetID>57</SheetID>
+      <Name>crpg_battle_bazaar</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -787,6 +817,18 @@
     <GenericSprite>
       <Name>crpg_battle_cabbagepatch</Name>
       <SpritePartName>crpg_battle_cabbagepatch</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_auglirefortress</Name>
+      <SpritePartName>crpg_battle_auglirefortress</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_kalmara</Name>
+      <SpritePartName>crpg_battle_kalmara</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_bazaar</Name>
+      <SpritePartName>crpg_battle_bazaar</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
