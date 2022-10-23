@@ -110,178 +110,112 @@ internal class ItemExporter : IDataExporter
     private static readonly Dictionary<string, (int aimSpeed, int reloadSpeed, int damage, int missileSpeed)> BowStats = new()
     {
         // short bows
-        ["crpg_noble_bow"] = (99, 100, 15, 85),
-        ["crpg_steppe_war_bow"] = (101, 96, 14, 87),
-        ["crpg_composite_steppe_bow"] = (99, 101, 14, 88),
-        ["crpg_steppe_heavy_bow"] = (95, 100, 13, 85),
-        ["crpg_composite_bow"] = (97, 98, 13, 83),
-        ["crpg_nordic_shortbow"] = (93, 99, 12, 84),
-        ["crpg_hunting_bow"] = (95, 97, 11, 83),
-        ["crpg_mountain_hunting_bow"] = (91, 95, 11, 84),
-        ["crpg_steppe_bow"] = (89, 94, 10, 83),
-        ["crpg_training_bow"] = (99, 101, 6, 89),
+        ["crpg_noble_bow"] = (94, 100, 14, 85),
+        ["crpg_steppe_war_bow"] = (96, 96, 13, 87),
+        ["crpg_composite_steppe_bow"] = (94, 101, 13, 88),
+        ["crpg_steppe_heavy_bow"] = (90, 100, 12, 85),
+        ["crpg_composite_bow"] = (92, 98, 12, 83),
+        ["crpg_nordic_shortbow"] = (88, 99, 11, 84),
+        ["crpg_hunting_bow"] = (90, 97, 10, 83),
+        ["crpg_mountain_hunting_bow"] = (86, 95, 10, 84),
+        ["crpg_steppe_bow"] = (84, 94, 9, 83),
+        ["crpg_training_bow"] = (94, 101, 5, 89),
 
         // long bows
-        ["crpg_noble_long_bow"] = (90, 87, 20, 94),
-        ["crpg_woodland_longbow"] = (89, 86, 19, 92),
-        ["crpg_woodland_yew_bow"] = (94, 90, 18, 92),
-        ["crpg_lowland_yew_bow"] = (89, 86, 17, 91),
-        ["crpg_nomad_bow"] = (92, 88, 17, 91),
-        ["crpg_tribal_bow"] = (90, 88, 16, 92),
-        ["crpg_lowland_longbow"] = (91, 89, 15, 92),
-        ["crpg_glen_ranger_bow"] = (89, 88, 15, 91),
-        ["crpg_highland_ranger_bow"] = (87, 86, 14, 92),
-        ["crpg_training_longbow"] = (94, 89, 7, 94),
+        ["crpg_noble_long_bow"] = (85, 87, 19, 94),
+        ["crpg_woodland_longbow"] = (84, 86, 18, 92),
+        ["crpg_woodland_yew_bow"] = (89, 90, 17, 92),
+        ["crpg_lowland_yew_bow"] = (84, 86, 16, 91),
+        ["crpg_nomad_bow"] = (87, 88, 16, 91),
+        ["crpg_tribal_bow"] = (85, 88, 15, 92),
+        ["crpg_lowland_longbow"] = (86, 89, 14, 92),
+        ["crpg_glen_ranger_bow"] = (84, 88, 14, 91),
+        ["crpg_highland_ranger_bow"] = (82, 86, 13, 92),
+        ["crpg_training_longbow"] = (89, 89, 6, 94),
     };
 
-    private static readonly Dictionary<string, (int swingSpeed, int swingDamage, int thrustSpeed, int thrustDamage)> CraftedItemsStatsOffset = new()
-    {
-        // OneHanded
-        // Decorated BroadSword
-        ["crpg_battania_noble_sword_3_t5"] = (0, 0, 0, 0),
-        // Decorated Arming Sword
-        ["crpg_vlandia_noble_sword_1_t5"] = (0, 4, 0, 0),
-        // Arming Sword with Circle
-        ["crpg_vlandia_noble_sword_2_t5"] = (0, 0, 0, 0),
-        // Highland Broad Blade
-        ["crpg_battania_sword_5_t5"] = (0, 0, 0, 0),
-        // Engrave Angular Kaskara
-        ["crpg_aserai_noble_sword_4_t5"] = (0, 4, 0, 0),
-        // Thamaskene Steel Warsword
-        ["crpg_sturgia_noble_sword_1_t5"] = (0, 3, 0, 0),
-        // Decorated Fullered Sword
-        ["crpg_sturgia_noble_sword_3_t5"] = (0, 3, 0, 0),
-        // Decorated Saber
-        ["crpg_khuzait_noble_sword_1_t5"] = (0, 3, 0, 0),
-        // Spiked Battle Axe
-        ["crpg_vlandia_axe_2_t4"] = (0, 13, 0, 0),
-        // Cataphract Mace
-        ["crpg_empire_mace_5_t5"] = (0, 7, 0, 0),
-        // Eastern Heavy Mace
-        ["crpg_khuzait_mace_2_t4"] = (0, 6, 0, 0),
-
-        // Polearms
-        // Glaive
-        ["crpg_khuzait_polearm_1_t4"] = (0, 0, 0, 0),
-        // Voulge
-        ["crpg_vlandia_polearm_1_t5"] = (1, 0, 0, 0),
-        // Long Glaive
-        ["crpg_khuzait_polearm_2_t5"] = (0, 2, 0, 0),
-        // Menavlion
-        ["crpg_empire_polearm_1_t4"] = (0, 6, 0, 0),
-        // Romphaia
-        ["crpg_battania_polearm_1_t5"] = (0, 3, 0, 0),
-        // Polesword
-        ["crpg_easter_polesword_t4"] = (0, 0, 4, 0),
-        // Fine Steel Menavlion
-        ["crpg_empire_polearm_2_t5"] = (0, 0, 0, 0),
-        // Thin Fine Steel Hewing Spear
-        ["crpg_eastern_spear_5_t5"] = (0, 0, 0, 0),
-        // Jagged Throwing Spear
-        ["crpg_eastern_throwing_spear_1_t3"] = (0, 0, 0, 5),
-        // Triangular Throwing Spear
-        ["crpg_eastern_throwing_spear_2_t4"] = (0, 0, 0, 6),
-        // Pillum
-        ["crpg_imperial_throwing_spear_1_t4"] = (0, 0, 0, 5),
-        // Practice Spear
-        ["crpg_practice_spear_t1"] = (1, 0, 0, 0),
-        // Billhook
-        ["crpg_billhook_polearm_t2"] = (0, 2, 0, 0),
-        // Scythe
-        ["crpg_peasant_polearm_1_t1"] = (5, 11, 0, 0),
-        // glaive
-        ["crpg_khuzait_polearm_1_t4"] = (0, 2, 0, 0),
-
-        // Two Handed
-        // Falx
-        ["crpg_battania_2hsword_4_t4"] = (8, 0, 0, 0),
-        // Reaper Falx
-        ["crpg_reaper_falx"] = (6, 0, 0, 0),
-        // Broad Kaskara
-        ["crpg_southern_broad_2hsword_t4"] = (2, 3, 0, 0),
-        // Thamaskene Steel Two Hander
-        ["crpg_vlandia_2hsword_2_t5"] = (8, 6, 0, 8),
-        // Wide Fullered Broad Sword
-        ["crpg_vlandia_2hsword_1_t5"] = (7, 7, 0, 5),
-        // Battanian Mountain Blade
-        ["battania_2hsword_5_t5"] = (0, 0, 0, 0),
-        // Bearded Axe
-        ["crpg_bearded_axe_t3"] = (1, 13, 0, 0),
-        // Avalanche
-        ["crpg_avalanche_2haxe"] = (12, 6, 0, 0),
-        // Engraved BackSword
-        ["crpg_battania_noble_sword_1_t5"] = (0, 4, 0, 0),
-        // Broad Two Hander
-        ["crpg_western_2hsword_t4"] = (0, 0, 0, 0),
-        // Spiked Mace
-        ["crpg_vlandia_mace_1_t2"] = (0, 13, 0, 0),
-    };
-
-    private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float weightFactor, int stackAmount)> Blades = new()
+    private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float bluntDamageFactor, float weightFactor, int stackAmount)> Blades = new()
     {
         // glaive
-        ["crpg_spear_blade_19"] = (0.71f, 1f, 1.3f, 2),
+        ["crpg_spear_blade_19"] = (0.7369f, 1f, 1f, 0.65f, 2),
         // voulge
-        ["crpg_axe_craft_10_head"] = (0.71f, 1f, 1f, 2),
+        ["crpg_axe_craft_10_head"] = (0.7488f, 1f, 1f, 0.85f, 2),
         // long glaive
-        ["crpg_spear_blade_24"] = (0.71f, 1f, 1f, 2),
+        ["crpg_spear_blade_24"] = (0.793f, 1f, 1f, 0.96f, 2),
         // menavlion
-        ["crpg_spear_blade_7"] = (0.71f, 1f, 1.7f, 2),
+        ["crpg_spear_blade_7"] = (0.85f, 1f, 1f, 1.3f, 2),
         // romphaia
-        ["crpg_spear_blade_44"] = (0.71f, 1f, 1f, 2),
+        ["crpg_spear_blade_44"] = (0.7f, 1f, 1f, 0.95f, 2),
         // polesword
-        ["crpg_spear_blade_22"] = (0.71f, 1f, 1f, 2),
+        ["crpg_spear_blade_22"] = (0.7f, 1f, 1f, 0.95f, 2),
         // fine steel menavlion
-        ["crpg_spear_blade_18"] = (0.71f, 1f, 1f, 2),
+        ["crpg_spear_blade_18"] = (0.8545f, 1f, 1f, 0.95f, 2),
+        // BillHook
+        ["crpg_spear_blade_33"] = (0.7f, 1f, 1f, 0.95f, 2),
+        // practice spear
+        ["crpg_spear_blade_34"] = (1.086f, 1f, 1f, 1f, 2),
+
         // warrazor
-        ["crpg_spear_blade_43"] = (0.71f, 1f, 1f, 2),
+        ["crpg_spear_blade_43"] = (0.71f, 1f, 1f, 1f, 2),
         // Decorated Broadsword
-        ["crpg_battania_noble_blade_2"] = (1f, 1f, 1.3f, 2),
+        ["crpg_battania_noble_blade_2"] = (1f, 1f, 1f, 1.3f, 2),
+        // Decorated Arming Sword
+        ["crpg_vlandian_noble_blade_4"] = (1.148f, 1f, 1f, 1.3f, 2),
+        // Decorated Fullered Sword
+        ["crpg_sturgian_noble_blade_1"] = (1.125f, 1f, 1f, 1.0f, 2),
+        // Decorated Saber - Tall Gripped Ild Sword
+        ["crpg_khuzait_noble_blade_2"] = (1.107f, 1f, 1f, 1.0f, 2),
         // Highland Broad Blade
-        ["crpg_battania_blade_5"] = (1f, 1f, 1.2f, 2),
+        ["crpg_battania_blade_5"] = (1f, 1f, 1f, 1.2f, 2),
         // Arming Sword with Circle
-        ["crpg_vlandian_noble_blade_1"] = (1f, 1f, 1.3f, 2),
-        // Decorated Armingsword
-        ["crpg_vlandian_noble_blade_4"] = (1f, 1f, 1.3f, 2),
+        ["crpg_vlandian_noble_blade_1"] = (1f, 1f, 1f, 1.3f, 2),
         // Engraved Angular Kaskara
-        ["crpg_aserai_noble_blade_3"] = (1f, 1f, 1.2f, 2),
+        ["crpg_aserai_noble_blade_3"] = (1.12f, 1f, 1f, 1.2f, 2),
         // Engraved Backsword
-        ["crpg_battania_noble_blade_1"] = (1f, 1f, 0.77f, 2),
+        ["crpg_battania_noble_blade_1"] = (1.121f, 1f, 1f, 0.77f, 2),
+        // Bearded Axe
+        ["crpg_axe_craft_3_head"] = (1.28f, 1f, 1f, 1.2f, 2),
         // Highland Throwing Axe - Tribesman Throwing Axe - Francesca
-        ["crpg_axe_craft_4_head"] = (1.72f, 1f, 1f, 3),
+        ["crpg_axe_craft_4_head"] = (1.72f, 1f, 1f, 1f, 3),
         // Raider Throwing Axe
-        ["crpg_axe_craft_13_head"] = (1.5f, 1f, 1f, 4),
+        ["crpg_axe_craft_13_head"] = (1.5f, 1f, 1f, 1f, 4),
         // Thin Fine Steel Hewing Spear - Jereed
-        ["crpg_spear_blade_27"] = (0.85f, 0.85f, 1f, 3),
+        ["crpg_spear_blade_27"] = (0.85f, 0.85f, 1f, 1f, 3),
         // Hooked Javelin - Harpoon
-        ["crpg_spear_blade_10"] = (0.85f, 0.85f, 1f, 3),
+        ["crpg_spear_blade_10"] = (0.85f, 0.85f, 1f, 1f, 3),
         // javelin
-        ["crpg_spear_blade_15"] = (1.225f, 1.225f, 1f, 1),
+        ["crpg_spear_blade_15"] = (1.225f, 1.4f, 1f, 1f, 1),
         // daggers
-        ["crpg_dagger_blade_10"] = (1.6f, 1.6f, 1f, 9),
-        ["crpg_dagger_blade_11"] = (1.6f, 1.6f, 1f, 9),
-        ["crpg_dagger_blade_12"] = (1.6f, 1.6f, 1f, 9),
-        ["crpg_dagger_blade_13"] = (1.6f, 1.6f, 1f, 9),
+        ["crpg_dagger_blade_10"] = (1.6f, 1.6f, 1f, 1f, 9),
+        ["crpg_dagger_blade_11"] = (1.6f, 1.6f, 1f, 1f, 9),
+        ["crpg_dagger_blade_12"] = (1.6f, 1.6f, 1f, 1f, 9),
+        ["crpg_dagger_blade_13"] = (1.6f, 1.6f, 1f, 1f, 9),
         // Falx , Reaper Falx
-        ["crpg_battania_blade_6"] = (0.82f, 1f, 1.1f, 0),
+        ["crpg_battania_blade_6"] = (0.915f, 1f, 1f, 0.85f, 0),
         // Broad Kaskara
-        ["crpg_aserai_blade_5"] = (0.85f, 0.8f, 1f, 0),
+        ["crpg_aserai_blade_5"] = (1.05f, 0.8f, 1f, 0.75f, 0),
         // Wide Fullered Broad Two Hander - Thamaskene Steel Two Hander - Wide Fullered Broad Arming Sword
-        ["crpg_vlandian_blade_3"] = (0.75f, 0.41f, 1f, 0),
+        ["crpg_vlandian_blade_3"] = (1.008f, 0.8f, 1f, 0.75f, 0),
         // Battanian Mountain Blade  - Highland Broad Blade
-        ["crpg_battania_blade_5"] = (0.951f, 0.63075f, 1.1f, 0),
+        ["crpg_battania_blade_5"] = (1.0045f, 0.628f, 1f, 0.85f, 0),
         // Ridged Great Saber - Ridged Saber  - Wind Fury
-        ["crpg_khuzait_blade_8"] = (1f, 0.933f, 1f, 0),
+        ["crpg_khuzait_blade_8"] = (1f, 0.933f, 1f, 0.85f, 0),
         // War Razor
-        ["crpg_cleaver_blade_5"] = (0.974f, 1f, 1f, 0),
-        // Avalanche
-        ["crpg_axe_craft_7_head"] = (1.0f, 1f, 0.8f, 0),
+        ["crpg_cleaver_blade_5"] = (0.974f, 1f, 1f, 1f, 0),
+        // Avalanche - Northlander Broad Axe
+        ["crpg_axe_craft_7_head"] = (1.16f, 1f, 1f, 0.6f, 0),
         // Spiked Battle Axe
-        ["crpg_axe_craft_25_head"] = (1.0f, 1f, 0.5f, 0),
+        ["crpg_axe_craft_25_head"] = (1.54f, 1f, 1f, 0.36f, 0),
         // Cataphract Mace
-        ["crpg_mace_head_7"] = (1.0f, 1f, 0.31f, 0),
+        ["crpg_mace_head_7"] = (1f, 1f, 1.37f, 0.21f, 0),
         // Eastern Heavy Mace
-        ["crpg_mace_head_11"] = (1.0f, 1f, 0.6f, 0),
+        ["crpg_mace_head_11"] = (1f, 1f, 1.38f, 0.21f, 0),
+        // Spiked Mace
+        ["crpg_mace_head_22"] = (1.0f, 1.92f, 1f, 0.33f, 0),
+        // Scythe
+        ["crpg_spear_blade_31"] = (1.0f, 1.5f, 1f, 0.75f, 0),
+        // Broad Leaf Shaped Spears
+        ["crpg_spear_blade_40"] = (1f, 1.65f, 1f, 1f, 0),
     };
 
     private static readonly Dictionary<string, (float lengthFactor, float weightFactor)> Handles = new()
@@ -298,9 +232,11 @@ internal class ItemExporter : IDataExporter
     {
         // Highland BroadBlade - Engraved Backsword
         ["crpg_battania_pommel_5"] = (1f, 0.7f),
+        // Thamaskene Steel Two Handed Sword
+        ["crpg_vlandian_pommel_9"] = (1f, 0.7f),
     };
 
-    private static readonly Dictionary<string, (string handle, float handleSize, float bladeSizeFactor, bool canScaleHead)> AxesAndMaces = new()
+    private static readonly Dictionary<string, (string handle, float handleSize, float bladeSizeFactor, bool canScaleHead)> AxesMacesandSpears = new()
     {
         // Throwing Axes
         // Tribesman Throwing Axe
@@ -310,21 +246,28 @@ internal class ItemExporter : IDataExporter
         ["crpg_avalanche_2haxe"] = ("crpg_axe_craft_4_handle", 110f, 1f, false),
         // One Handed Axes
         // Spiked Battle Axe
-        ["crpg_vlandia_axe_2_t4"] = ("crpg_axe_craft_13_handle", 150f, 1f, true),
+        ["crpg_vlandia_axe_2_t4"] = ("crpg_axe_craft_13_handle", 150f, 1.5f, true),
+
+        // Maces
+
         // Cataphract Mace
-        ["crpg_empire_mace_5_t5"] = ("crpg_mace_handle_5", 130f, 1.2f, true),
+        ["crpg_empire_mace_5_t5"] = ("crpg_mace_handle_5", 130f, 1.4f, true),
         // Spiked Mace
-        ["crpg_vlandia_mace_1_t2"] = ("crpg_mace_handle_6", 110f, 1.0f, true),
+        ["crpg_vlandia_mace_1_t2"] = ("crpg_mace_handle_6", 110f, 1.5f, true),
+        // Eastern Heavy Mace
+        ["crpg_khuzait_mace_2_t4"] = ("crpg_mace_handle_6", 110f, 1.6f, true),
+
+        // Spears
+        // Broad Leaf Shaped Spear
+        ["crpg_northern_spear_2_t3"] = ("crpg_spear_handle_21", 70f, 1.1f, true),
     };
 
     private static readonly Dictionary<string, (string blade, float bladeSize)> TwoHanded = new()
     {
         // Falx
-        ["crpg_battania_2hsword_4_t4"] = ("crpg_battania_blade_6", 152f),
+        ["crpg_battania_2hsword_4_t4"] = ("crpg_battania_blade_6", 142f),
         // Reaper
-        ["crpg_reaper_falx"] = ("crpg_battania_blade_6", 135f),
-        // Battanian Mountain Blade
-        ["crpg_battania_2hsword_5_t5"] = ("crpg_battania_blade_5", 130f),
+        ["crpg_reaper_falx"] = ("crpg_battania_blade_6", 128f),
         // Broad Kaskara
         ["crpg_southern_broad_2hsword_t4"] = ("crpg_aserai_blade_5", 117f),
         // Thamaskene
@@ -332,7 +275,7 @@ internal class ItemExporter : IDataExporter
         // Wide Fullered Broad Sword
         ["crpg_vlandia_2hsword_1_t5"] = ("crpg_vlandian_blade_3", 120f),
         // Battanian Mountain Blade
-        ["crpg_battania_2hsword_5_t5"] = ("crpg_battania_blade_5", 152f),
+        ["crpg_battania_2hsword_5_t5"] = ("crpg_battania_blade_5", 165f),
         // Engraved BackSword
         ["crpg_battania_noble_sword_1_t5"] = ("crpg_battania_noble_blade_1", 103f),
         // Broad Two Hander
@@ -550,14 +493,6 @@ internal class ItemExporter : IDataExporter
                         pieceNode.Attributes!["id"].Value = PrefixCrpg(pieceNode.Attributes["id"].Value);
                  }
 
-                 if (CraftedItemsStatsOffset.TryGetValue(node1.Attributes["id"].Value, out var offsets))
-                 {
-                     ModifyNodeAttribute(node1, "swing_speed", _ => offsets.swingSpeed.ToString(), "0");
-                     ModifyNodeAttribute(node1, "swing_damage", _ => offsets.swingDamage.ToString(), "0");
-                     ModifyNodeAttribute(node1, "thrust_speed", _ => offsets.thrustSpeed.ToString(), "0");
-                     ModifyNodeAttribute(node1, "thrust_damage", _ => offsets.thrustDamage.ToString(), "0");
-                 }
-
                  if (ThrowingSpears.TryGetValue(node1.Attributes["id"].Value, out var newThrowingSpear))
                  {
                      node1.Attributes!["crafting_template"].Value = "crpg_Javelin";
@@ -581,7 +516,7 @@ internal class ItemExporter : IDataExporter
                          FilterNodeByAttribute("Type", "Pommel"));
                  }
 
-                 if (AxesAndMaces.TryGetValue(node1.Attributes["id"].Value, out var newAxeorMace))
+                 if (AxesMacesandSpears.TryGetValue(node1.Attributes["id"].Value, out var newAxeorMace))
                  {
                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
                         _ => newAxeorMace.handle,
@@ -622,6 +557,9 @@ internal class ItemExporter : IDataExporter
                     ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
                         v => (float.Parse(v) * newBladeStats.swingDamageFactor).ToString(CultureInfo.InvariantCulture),
                         FilterNodeByAttribute("damage_type", "Cut"));
+                    ModifyChildNodesAttribute(node1, "BladeData/*", "damage_factor",
+                        v => (float.Parse(v) * newBladeStats.bluntDamageFactor).ToString(CultureInfo.InvariantCulture),
+                        FilterNodeByAttribute("damage_type", "Blunt"));
                     ModifyNodeAttribute(node1, "weight",
                         v => (float.Parse(v) * newBladeStats.weightFactor).ToString(CultureInfo.InvariantCulture), "0");
                     ModifyChildNodesAttribute(node1, "BladeData", "stack_amount",

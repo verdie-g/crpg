@@ -125,7 +125,7 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             ItemObject.ItemTypeEnum.OneHandedWeapon => 44.76610788925f,
             ItemObject.ItemTypeEnum.TwoHandedWeapon => 78.7250303112145f,
-            ItemObject.ItemTypeEnum.Polearm => 23.88739876f,
+            ItemObject.ItemTypeEnum.Polearm => 28.6f,
             _ => 1f,
         };
         float maxTier = float.MinValue;
@@ -161,22 +161,27 @@ internal class CrpgItemValueModel : ItemValueModel
 
             if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanKnockDown))
             {
-                tier *= 2f;
+                tier *= 1.5f;
             }
 
-            if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.CanKnockDown))
+            if (weapon.WeaponFlags.HasAnyFlag(WeaponFlags.MultiplePenetration))
             {
-                tier *= 1.5f;
+                tier *= 1.33f;
             }
 
             if (weapon.ThrustDamage > 0)
             {
-                tier *= 1.2f;
+                tier *= 1.15f;
             }
 
-            if (weapon.WeaponClass == WeaponClass.OneHandedAxe || weapon.WeaponClass == WeaponClass.TwoHandedAxe)
+            if (weapon.WeaponClass == WeaponClass.OneHandedAxe)
             {
                 tier *= 0.9f;
+            }
+
+            if (weapon.WeaponClass == WeaponClass.TwoHandedAxe)
+            {
+                tier *= 1.42f;
             }
 
             float lengthTier = weapon.WeaponLength * 0.01f;
@@ -246,7 +251,7 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateRangedWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        float scaler = 1.89337500529988296f;
+        float scaler = 1.64240474087867393f;
 
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
