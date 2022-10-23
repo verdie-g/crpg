@@ -134,87 +134,6 @@ internal class ItemExporter : IDataExporter
         ["crpg_training_longbow"] = (89, 89, 6, 94),
     };
 
-    private static readonly Dictionary<string, (int swingSpeed, int swingDamage, int thrustSpeed, int thrustDamage)> CraftedItemsStatsOffset = new()
-    {
-        // OneHanded
-        // Decorated BroadSword
-        ["crpg_battania_noble_sword_3_t5"] = (0, 0, 0, 0),
-        // Decorated Arming Sword
-        ["crpg_vlandia_noble_sword_1_t5"] = (0, 0, 0, 0),
-        // Arming Sword with Circle
-        ["crpg_vlandia_noble_sword_2_t5"] = (0, 0, 0, 0),
-        // Highland Broad Blade
-        ["crpg_battania_sword_5_t5"] = (0, 0, 0, 0),
-        // Engrave Angular Kaskara
-        ["crpg_aserai_noble_sword_4_t5"] = (0, 0, 0, 0),
-        // Thamaskene Steel Warsword
-        ["crpg_sturgia_noble_sword_1_t5"] = (0, 0, 0, 0),
-        // Decorated Fullered Sword
-        ["crpg_sturgia_noble_sword_3_t5"] = (0, 0, 0, 0),
-        // Decorated Saber
-        ["crpg_khuzait_noble_sword_1_t5"] = (0, 0, 0, 0),
-        // Spiked Battle Axe
-        ["crpg_vlandia_axe_2_t4"] = (0, 0, 0, 0),
-        // Cataphract Mace
-        ["crpg_empire_mace_5_t5"] = (0, 0, 0, 0),
-        // Eastern Heavy Mace
-        ["crpg_khuzait_mace_2_t4"] = (0, 0, 0, 0),
-
-        // Polearms
-        // Glaive
-        ["crpg_khuzait_polearm_1_t4"] = (0, 0, 0, 0),
-        // Voulge
-        ["crpg_vlandia_polearm_1_t5"] = (0, 0, 0, 0),
-        // Long Glaive
-        ["crpg_khuzait_polearm_2_t5"] = (0, 0, 0, 0),
-        // Menavlion
-        ["crpg_empire_polearm_1_t4"] = (0, 0, 0, 0),
-        // Romphaia
-        ["crpg_battania_polearm_1_t5"] = (0, 0, 0, 0),
-        // Polesword
-        ["crpg_easter_polesword_t4"] = (0, 0, 0, 0),
-        // Fine Steel Menavlion
-        ["crpg_empire_polearm_2_t5"] = (0, 0, 0, 0),
-        // Thin Fine Steel Hewing Spear
-        ["crpg_eastern_spear_5_t5"] = (0, 0, 0, 0),
-        // Jagged Throwing Spear
-        ["crpg_eastern_throwing_spear_1_t3"] = (0, 0, 0, 0),
-        // Triangular Throwing Spear
-        ["crpg_eastern_throwing_spear_2_t4"] = (0, 0, 0, 0),
-        // Pillum
-        ["crpg_imperial_throwing_spear_1_t4"] = (0, 0, 0, 0),
-        // Practice Spear
-        ["crpg_practice_spear_t1"] = (0, 0, 0, 0),
-        // Billhook
-        ["crpg_billhook_polearm_t2"] = (0, 0, 0, 0),
-        // Scythe
-        ["crpg_peasant_polearm_1_t1"] = (0, 0, 0, 0),
-
-        // Two Handed
-        // Falx
-        ["crpg_battania_2hsword_4_t4"] = (0, 0, 0, 0),
-        // Reaper Falx
-        ["crpg_reaper_falx"] = (0, 0, 0, 0),
-        // Broad Kaskara
-        ["crpg_southern_broad_2hsword_t4"] = (0, 0, 0, 0),
-        // Thamaskene Steel Two Hander
-        ["crpg_vlandia_2hsword_2_t5"] = (0, 0, 0, 0),
-        // Wide Fullered Broad Sword
-        ["crpg_vlandia_2hsword_1_t5"] = (0, 0, 0, 0),
-        // Battanian Mountain Blade
-        ["battania_2hsword_5_t5"] = (0, 0, 0, 0),
-        // Bearded Axe
-        ["crpg_bearded_axe_t3"] = (0, 0, 0, 0),
-        // Avalanche
-        ["crpg_avalanche_2haxe"] = (0, 0, 0, 0),
-        // Engraved BackSword
-        ["crpg_battania_noble_sword_1_t5"] = (0, 0, 0, 0),
-        // Broad Two Hander
-        ["crpg_western_2hsword_t4"] = (0, 0, 0, 0),
-        // Spiked Mace
-        ["crpg_vlandia_mace_1_t2"] = (0, 0, 0, 0),
-    };
-
     private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float bluntDamageFactor, float weightFactor, int stackAmount)> Blades = new()
     {
         // glaive
@@ -568,14 +487,6 @@ internal class ItemExporter : IDataExporter
                  foreach (var pieceNode in node1.FirstChild.ChildNodes.Cast<XmlNode>())
                  {
                         pieceNode.Attributes!["id"].Value = PrefixCrpg(pieceNode.Attributes["id"].Value);
-                 }
-
-                 if (CraftedItemsStatsOffset.TryGetValue(node1.Attributes["id"].Value, out var offsets))
-                 {
-                     ModifyNodeAttribute(node1, "swing_speed", _ => offsets.swingSpeed.ToString(), "0");
-                     ModifyNodeAttribute(node1, "swing_damage", _ => offsets.swingDamage.ToString(), "0");
-                     ModifyNodeAttribute(node1, "thrust_speed", _ => offsets.thrustSpeed.ToString(), "0");
-                     ModifyNodeAttribute(node1, "thrust_damage", _ => offsets.thrustDamage.ToString(), "0");
                  }
 
                  if (ThrowingSpears.TryGetValue(node1.Attributes["id"].Value, out var newThrowingSpear))
