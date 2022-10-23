@@ -178,6 +178,7 @@ internal class CrpgItemValueModel : ItemValueModel
             {
                 tier *= 0.9f;
             }
+
             if (weapon.WeaponClass == WeaponClass.TwoHandedAxe)
             {
                 tier *= 1.42f;
