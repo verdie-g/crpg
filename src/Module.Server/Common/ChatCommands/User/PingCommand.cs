@@ -14,7 +14,7 @@ internal class PingCommand : ChatCommand
         };
     }
 
-    private void ExecuteSuccess(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteSuccess(NetworkCommunicator fromPeer, object[] arguments)
     {
         ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorSuccess, "Pong!");
     }

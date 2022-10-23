@@ -21,7 +21,7 @@ internal class TeleportCommand : AdminCommand
         ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
-    private void ExecuteTeleportByName(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteTeleportByName(NetworkCommunicator fromPeer, object[] arguments)
     {
         string targetName1 = (string)arguments[0];
         string targetName2 = (string)arguments[1];
@@ -32,10 +32,10 @@ internal class TeleportCommand : AdminCommand
         }
 
         arguments = new object[] { targetPeer1!, targetPeer2! };
-        ExecuteTeleportByNetworkPeer(fromPeer, cmd, arguments);
+        ExecuteTeleportByNetworkPeer(fromPeer, arguments);
     }
 
-    private void ExecuteTeleportByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteTeleportByNetworkPeer(NetworkCommunicator fromPeer, object[] arguments)
     {
         var targetPeer1 = (NetworkCommunicator)arguments[0];
         var targetPeer2 = (NetworkCommunicator)arguments[1];

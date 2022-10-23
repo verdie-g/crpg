@@ -25,7 +25,7 @@ internal class KickCommand : AdminCommand
         ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
-    private void ExecuteKickByName(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteKickByName(NetworkCommunicator fromPeer, object[] arguments)
     {
         string targetName = (string)arguments[0];
         if (!TryGetPlayerByName(fromPeer, targetName, out var targetPeer))
@@ -40,10 +40,10 @@ internal class KickCommand : AdminCommand
         }
 
         arguments = new object[] { targetPeer!, reason! };
-        ExecuteKickByNetworkPeer(fromPeer, cmd, arguments);
+        ExecuteKickByNetworkPeer(fromPeer, arguments);
     }
 
-    private async void ExecuteKickByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private async void ExecuteKickByNetworkPeer(NetworkCommunicator fromPeer, object[] arguments)
     {
         var targetPeer = (NetworkCommunicator)arguments[0];
         string? reason = null;

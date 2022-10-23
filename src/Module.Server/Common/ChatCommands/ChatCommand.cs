@@ -23,7 +23,7 @@ internal abstract class ChatCommand
     protected CommandOverload[] Overloads { get; set; } = Array.Empty<CommandOverload>();
     protected string Description { get; set; } = string.Empty;
 
-    public bool Execute(NetworkCommunicator fromPeer, string commandName, string[] arguments)
+    public bool Execute(NetworkCommunicator fromPeer, string[] arguments)
     {
         if (!CheckRequirements(fromPeer))
         {
@@ -38,7 +38,7 @@ internal abstract class ChatCommand
                 continue;
             }
 
-            overload.Execute(fromPeer, commandName, parsedArguments!);
+            overload.Execute(fromPeer, parsedArguments!);
             return true;
         }
 
@@ -241,6 +241,6 @@ internal abstract class ChatCommand
             Execute = execute;
         }
 
-        public delegate void CommandFunc(NetworkCommunicator networkPeer, string cmd, object[] parameters);
+        public delegate void CommandFunc(NetworkCommunicator networkPeer, object[] parameters);
     }
 }

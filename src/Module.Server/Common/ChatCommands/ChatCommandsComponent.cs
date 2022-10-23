@@ -140,7 +140,7 @@ internal class ChatCommandsComponent : MissionBehavior
         }
 
         _ = HideChatInput(fromPeer);
-        command.Execute(fromPeer, name, tokens.Skip(1).ToArray());
+        command.Execute(fromPeer, tokens.Skip(1).ToArray());
     }
 
     // Hacky workaround until we can actually control which message should be sent to everyone.

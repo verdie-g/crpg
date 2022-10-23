@@ -27,7 +27,7 @@ internal class MuteCommand : AdminCommand
         ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
-    private void ExecuteMuteByName(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteMuteByName(NetworkCommunicator fromPeer, object[] arguments)
     {
         string targetName = (string)arguments[0];
         if (!TryGetPlayerByName(fromPeer, targetName, out var targetPeer))
@@ -39,15 +39,15 @@ internal class MuteCommand : AdminCommand
         string reason = (string)arguments[2];
 
         arguments = new object[] { targetPeer!, duration, reason };
-        ExecuteMuteByNetworkPeer(fromPeer, cmd, arguments);
+        ExecuteMuteByNetworkPeer(fromPeer, arguments);
     }
 
-    private void ExecuteMuteByNetworkPeer(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void ExecuteMuteByNetworkPeer(NetworkCommunicator fromPeer, object[] arguments)
     {
-        _ = ExecuteMuteByNetworkPeerAsync(fromPeer, cmd, arguments);
+        _ = ExecuteMuteByNetworkPeerAsync(fromPeer, arguments);
     }
 
-    private async Task ExecuteMuteByNetworkPeerAsync(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private async Task ExecuteMuteByNetworkPeerAsync(NetworkCommunicator fromPeer, object[] arguments)
     {
         var targetPeer = (NetworkCommunicator)arguments[0];
         var duration = (TimeSpan)arguments[1];

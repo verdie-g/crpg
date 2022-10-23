@@ -22,7 +22,7 @@ internal class SuicideCommand : AdminCommand
         ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
-    private void Execute(NetworkCommunicator fromPeer, string cmd, object[] arguments)
+    private void Execute(NetworkCommunicator fromPeer, object[] arguments)
     {
         Agent agent = fromPeer.ControlledAgent;
         if (agent == null || agent.Health <= 0)
