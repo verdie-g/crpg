@@ -1,5 +1,6 @@
 export interface ItemDescriptor {
   fields: [string, any][];
+  flags: string[];
   modes: ItemMode[];
 }
 
