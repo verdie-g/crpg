@@ -26,6 +26,7 @@ internal class ChatCommandsComponent : MissionBehavior
         _commands = new ChatCommand[]
         {
             new PingCommand(this),
+            new SuicideCommand(this),
             new PlayerListCommand(this),
             new KickCommand(this),
             new KillCommand(this),
