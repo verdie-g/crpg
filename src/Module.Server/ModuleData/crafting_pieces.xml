@@ -4941,11 +4941,11 @@
       <Material id="Iron5" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_axe_craft_10_head" name="{=LNDbMUK0}Voulge Head" tier="4" piece_type="Blade" mesh="axe_craft_10_head" distance_to_next_piece="23" distance_to_previous_piece="4" weight="0.665">
+  <CraftingPiece id="crpg_axe_craft_10_head" name="{=LNDbMUK0}Voulge Head" tier="4" piece_type="Blade" mesh="axe_craft_10_head" distance_to_next_piece="23" distance_to_previous_piece="4" weight="0.595">
     <BuildData piece_offset="-8" />
     <BladeData stack_amount="2" blade_length="23.118" blade_width="18.371" physics_material="metal_weapon" body_name="bo_axe_longer_b">
       <Thrust damage_type="Pierce" damage_factor="0.91" />
-      <Swing damage_type="Cut" damage_factor="1.20085" />
+      <Swing damage_type="Cut" damage_factor="1.231776" />
     </BladeData>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
@@ -4957,16 +4957,16 @@
   <CraftingPiece id="crpg_spear_blade_18" name="{=qSV6C2tp}Swordstaff Head" tier="5" piece_type="Blade" mesh="spear_blade_18" length="70" weight="0.86412">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
       <Thrust damage_type="Pierce" damage_factor="0.98" />
-      <Swing damage_type="Cut" damage_factor="1.25097" />
+      <Swing damage_type="Cut" damage_factor="1.375745" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_spear_blade_19" name="{=OBeOZ27b}Glaive Head" tier="4" piece_type="Blade" mesh="spear_blade_19" length="37.4" weight="0.405536">
+  <CraftingPiece id="crpg_spear_blade_19" name="{=OBeOZ27b}Glaive Head" tier="4" piece_type="Blade" mesh="spear_blade_19" length="37.4" weight="0.28652">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
       <Thrust damage_type="Pierce" damage_factor="0.595" />
-      <Swing damage_type="Cut" damage_factor="0.9709001" />
+      <Swing damage_type="Cut" damage_factor="0.980077" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="1" />
@@ -4984,7 +4984,7 @@
   <CraftingPiece id="crpg_spear_blade_24" name="{=bjQ8J71a}Long Glaive Head" tier="5" piece_type="Blade" mesh="spear_blade_24" length="68" weight="0.48">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
       <Thrust damage_type="Pierce" damage_factor="0.875" />
-      <Swing damage_type="Cut" damage_factor="1.25195" />
+      <Swing damage_type="Cut" damage_factor="1.359995" />
     </BladeData>
     <Materials>
       <Material id="Iron5" count="2" />
@@ -5057,10 +5057,10 @@
       <Material id="Iron3" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_spear_blade_7" name="{=dXRt8jY4}Menavlion Head" tier="4" piece_type="Blade" mesh="spear_blade_7" length="52.924" weight="0.34732">
+  <CraftingPiece id="crpg_spear_blade_7" name="{=dXRt8jY4}Menavlion Head" tier="4" piece_type="Blade" mesh="spear_blade_7" length="52.924" weight="0.47528">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
       <Thrust damage_type="Pierce" damage_factor="0.98" />
-      <Swing damage_type="Cut" damage_factor="0.949375" />
+      <Swing damage_type="Cut" damage_factor="1.04125" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="1" />

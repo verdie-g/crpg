@@ -218,19 +218,19 @@ internal class ItemExporter : IDataExporter
     private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float bluntDamageFactor, float weightFactor, int stackAmount)> Blades = new()
     {
         // glaive
-        ["crpg_spear_blade_19"] = (0.73f, 1f, 1f, 0.92f, 2),
+        ["crpg_spear_blade_19"] = (0.7369f, 1f, 1f, 0.65f, 2),
         // voulge
-        ["crpg_axe_craft_10_head"] = (0.73f, 1f, 1f, 0.95f, 2),
+        ["crpg_axe_craft_10_head"] = (0.7488f, 1f, 1f, 0.85f, 2),
         // long glaive
-        ["crpg_spear_blade_24"] = (0.73f, 1f, 1f, 0.96f, 2),
+        ["crpg_spear_blade_24"] = (0.793f, 1f, 1f, 0.96f, 2),
         // menavlion
-        ["crpg_spear_blade_7"] = (0.775f, 1f, 1f, 0.95f, 2),
+        ["crpg_spear_blade_7"] = (0.85f, 1f, 1f, 1.3f, 2),
         // romphaia
         ["crpg_spear_blade_44"] = (0.7f, 1f, 1f, 0.95f, 2),
         // polesword
         ["crpg_spear_blade_22"] = (0.7f, 1f, 1f, 0.95f, 2),
         // fine steel menavlion
-        ["crpg_spear_blade_18"] = (0.777f, 1f, 1f, 0.95f, 2),
+        ["crpg_spear_blade_18"] = (0.8545f, 1f, 1f, 0.95f, 2),
         // BillHook
         ["crpg_spear_blade_33"] = (0.7f, 1f, 1f, 0.95f, 2),
         // practice spear
