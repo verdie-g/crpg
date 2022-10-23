@@ -9,12 +9,13 @@ public record ItemViewModel : IMapFrom<Item>
 {
     public string Id { get; init; } = string.Empty;
     public string Name { get; init; } = string.Empty;
-    public int Price { get; init; }
-    public ItemType Type { get; init; }
     public Culture Culture { get; init; }
-    public float Weight { get; init; }
+    public ItemType Type { get; init; }
+    public int Price { get; init; }
     public float Tier { get; init; }
     public int Requirement { get; init; }
+    public float Weight { get; init; }
+    public ItemFlags Flags { get; init; }
 
     public ItemArmorComponentViewModel? Armor { get; init; }
     public ItemMountComponentViewModel? Mount { get; init; }
