@@ -2,7 +2,6 @@ using Crpg.Module.Common;
 using Crpg.Module.Common.Warmup;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.MountAndBlade.Source.Missions;
 
 #if CRPG_SERVER
 using Crpg.Module.Api;
@@ -10,8 +9,12 @@ using Crpg.Module.Common.ChatCommands;
 using Crpg.Module.Rating;
 #else
 using Crpg.Module.GUI;
+using TaleWorlds.MountAndBlade.GauntletUI.Mission;
+using TaleWorlds.MountAndBlade.GauntletUI.Mission.Multiplayer;
+using TaleWorlds.MountAndBlade.Source.Missions;
 using TaleWorlds.MountAndBlade.View;
 using TaleWorlds.MountAndBlade.View.MissionViews;
+using TaleWorlds.MountAndBlade.View.MissionViews.Multiplayer;
 #endif
 
 namespace Crpg.Module.Battle;
@@ -36,13 +39,15 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
     public static MissionView[] OpenCrpgBattle(Mission mission)
     {
         CrpgExperienceTable experienceTable = new(_constants);
+        MissionView crpgEscapeMenu = ViewCreatorManager.CreateMissionView<CrpgMissionMultiplayerEscapeMenu>(isNetwork: false, null, "Battle");
+
         return new[]
         {
             ViewCreator.CreateMultiplayerFactionBanVoteUIHandler(),
             ViewCreator.CreateMissionAgentStatusUIHandler(mission),
             ViewCreator.CreateMissionMainAgentEquipmentController(mission), // Pick/drop items.
             ViewCreator.CreateMissionMainAgentCheerBarkControllerView(mission),
-            ViewCreator.CreateMissionMultiplayerEscapeMenu("Battle"),
+            crpgEscapeMenu,
             ViewCreator.CreateMissionAgentLabelUIHandler(mission),
             ViewCreator.CreateMultiplayerTeamSelectUIHandler(),
             ViewCreator.CreateMissionScoreBoardUIHandler(mission, false),
