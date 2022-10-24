@@ -25,7 +25,7 @@ public class SkipTheFunCommandTest : TestBase
         ArrangeDb.Characters.Add(character);
         await ArrangeDb.SaveChangesAsync();
 
-        SkipTheFunCommand.Handler handler = new(ActDb, characterServiceMock.Object, experienceTableMock.Object, Constants);
+        SkipTheFunCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, experienceTableMock.Object, Constants);
         var result = await handler.Handle(new SkipTheFunCommand
         {
             CharacterId = character.Id,
@@ -52,7 +52,7 @@ public class SkipTheFunCommandTest : TestBase
         Mock<IExperienceTable> experienceTableMock = new();
         Mock<ICharacterService> characterServiceMock = new();
 
-        SkipTheFunCommand.Handler handler = new(ActDb, characterServiceMock.Object, experienceTableMock.Object, Constants);
+        SkipTheFunCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, experienceTableMock.Object, Constants);
         var result = await handler.Handle(new SkipTheFunCommand
         {
             CharacterId = character.Id,
@@ -70,7 +70,7 @@ public class SkipTheFunCommandTest : TestBase
         ArrangeDb.Users.Add(user);
         await ArrangeDb.SaveChangesAsync();
 
-        SkipTheFunCommand.Handler handler = new(ActDb, Mock.Of<ICharacterService>(),
+        SkipTheFunCommand.Handler handler = new(ActDb, Mapper, Mock.Of<ICharacterService>(),
             Mock.Of<IExperienceTable>(), Constants);
         var result = await handler.Handle(new SkipTheFunCommand
         {
