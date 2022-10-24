@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
+using Crpg.Module.Common;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
+using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.GauntletUI.Mission.Multiplayer;
 using TaleWorlds.MountAndBlade.View;
 using TaleWorlds.MountAndBlade.ViewModelCollection.EscapeMenu;
@@ -14,9 +17,18 @@ namespace Crpg.Module.GUI;
 internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
 {
     private const string CrpgWebsite = "https://c-rpg.eu";
+    private const int BottomMenuOffset = 2; // -2 = Insert new buttons right before the 'Option' button
+    private NoTeamSelectComponent? _multiplayerTeamSelectComponent;
     public CrpgEscapeMenu(string gameType)
         : base(gameType)
     {
+    }
+
+
+    public override void OnMissionScreenInitialize()
+    {
+        base.OnMissionScreenInitialize();
+        _multiplayerTeamSelectComponent = Mission.GetMissionBehavior<NoTeamSelectComponent>();
     }
 
     protected override List<EscapeMenuItemVM> GetEscapeMenuItems()
@@ -27,7 +39,32 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
             _ = ExecuteOpenCrpgWebsite();
         }, null, () => Tuple.Create(false, TextObject.Empty), false);
 
-        items.Insert(items.Count - 2, crpgWebsiteButton); // -2 = Insert new button right before the 'Option' button
+        MissionPeer myMissionPeer = GameNetwork.MyPeer.GetComponent<MissionPeer>();
+        if (myMissionPeer != null)
+        {
+            string spectatorButtonLabel = "Join the game";
+            if (myMissionPeer.Team?.Side != TaleWorlds.Core.BattleSideEnum.None)
+            {
+                spectatorButtonLabel = "Join spectators";
+            }
+
+            EscapeMenuItemVM spectatorButton = new(new TextObject(spectatorButtonLabel, null), _ =>
+            {
+                if (myMissionPeer.Team?.Side == BattleSideEnum.None)
+                {
+                    _multiplayerTeamSelectComponent?.RequestTeamChange(true);
+                }
+                else
+                {
+                    _multiplayerTeamSelectComponent?.RequestTeamChange(false);
+                }
+
+                OnEscapeMenuToggled(false);
+            }, null, () => Tuple.Create(false, TextObject.Empty), false);
+            items.Insert(items.Count - BottomMenuOffset, spectatorButton);
+        }
+
+        items.Insert(items.Count - BottomMenuOffset, crpgWebsiteButton);
 
         return items;
     }

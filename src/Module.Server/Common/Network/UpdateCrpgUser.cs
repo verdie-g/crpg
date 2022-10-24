@@ -10,13 +10,14 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
 {
     private static readonly CompressionInfo.Integer GenerationCompressionInfo = new(0, 100, true);
     private static readonly CompressionInfo.Integer ExperienceCompressionInfo = new(0, int.MaxValue, true);
+    private static readonly CompressionInfo.Integer RoleCompressionInfo = new(0, 3, true);
     private static readonly CompressionInfo.Integer LevelCompressionInfo = new(0, 50, true);
     private static readonly CompressionInfo.Integer SkillCompressionInfo = new(0, 16384, true);
-
     public CrpgUser User { get; set; } = default!;
 
     protected override void OnWrite()
     {
+        WriteIntToPacket((int)User.Role, RoleCompressionInfo);
         WriteIntToPacket(User.Character.Generation, GenerationCompressionInfo);
         WriteIntToPacket(User.Character.Level, LevelCompressionInfo);
         WriteIntToPacket(User.Character.Experience, ExperienceCompressionInfo);
@@ -28,6 +29,7 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
         bool bufferReadValid = true;
         User = new CrpgUser
         {
+            Role = (CrpgUserRole)ReadIntFromPacket(RoleCompressionInfo, ref bufferReadValid),
             Character = new CrpgCharacter
             {
                 Generation = ReadIntFromPacket(GenerationCompressionInfo, ref bufferReadValid),
