@@ -10,11 +10,8 @@ using Crpg.Module.Common.ChatCommands;
 using Crpg.Module.Rating;
 #else
 using Crpg.Module.GUI;
-using TaleWorlds.MountAndBlade.GauntletUI.Mission;
-using TaleWorlds.MountAndBlade.GauntletUI.Mission.Multiplayer;
 using TaleWorlds.MountAndBlade.View;
 using TaleWorlds.MountAndBlade.View.MissionViews;
-using TaleWorlds.MountAndBlade.View.MissionViews.Multiplayer;
 #endif
 
 namespace Crpg.Module.Battle;
