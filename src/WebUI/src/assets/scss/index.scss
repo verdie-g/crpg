@@ -9,10 +9,3 @@ body {
     display: flex;
     flex-direction: column;
 }
-
-// steam issue fix https://github.com/verdie-g/crpg/issues/508
-.button *,
-.confirm-selection__overlay *
-{
-    pointer-events: none;
-}
