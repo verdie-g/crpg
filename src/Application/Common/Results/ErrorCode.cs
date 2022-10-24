@@ -10,6 +10,7 @@ public enum ErrorCode
     BattleInvalidPhase,
     BattleNotFound,
     BattleTooFar,
+    CharacterGenerationRequirement,
     CharacterLevelRequirementNotMet,
     CharacterNameAlreadyUsed,
     CharacterNotFound,

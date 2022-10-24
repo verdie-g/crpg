@@ -37,6 +37,12 @@ internal static class CommonErrors
         Detail = $"Battle with id '{battleId}' is too far to perform the requested action",
     };
 
+    public static Error CharacterGenerationRequirement(int characterId, int userId, int req) => new(ErrorType.NotFound, ErrorCode.CharacterGenerationRequirement)
+    {
+        Title = "Character generation requirement not met",
+        Detail = $"Character with id '{characterId}' for user with id '{userId}' should be of generation {req} to perform this action",
+    };
+
     public static Error CharacterLevelRequirementNotMet(int requiredLevel, int actualLevel) => new(ErrorType.Validation, ErrorCode.CharacterLevelRequirementNotMet)
     {
         Title = "Unmet level requirement",

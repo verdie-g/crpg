@@ -37,6 +37,11 @@ public record SkipTheFunCommand : IMediatorRequest
                 return new Result(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
             }
 
+            if (character.Generation != 0)
+            {
+                return new Result(CommonErrors.CharacterGenerationRequirement(req.CharacterId, req.UserId, 0));
+            }
+
             character.SkippedTheFun = true;
             character.Level = 25;
             character.Experience = _experienceTable.GetExperienceForLevel(character.Level);

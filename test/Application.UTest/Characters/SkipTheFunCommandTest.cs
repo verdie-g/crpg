@@ -18,7 +18,7 @@ public class SkipTheFunCommandTest : TestBase
 
         Mock<ICharacterService> characterServiceMock = new();
 
-        Character character = new() { Generation = 2, Level = 3, Experience = 250 };
+        Character character = new() { Generation = 0, Level = 3, Experience = 250 };
         ArrangeDb.Characters.Add(character);
         await ArrangeDb.SaveChangesAsync();
 
@@ -31,12 +31,33 @@ public class SkipTheFunCommandTest : TestBase
 
         Assert.IsNull(result.Errors);
         character = AssertDb.Characters.First(c => c.Id == character.Id);
-        Assert.AreEqual(2, character.Generation);
+        Assert.AreEqual(0, character.Generation);
         Assert.AreEqual(25, character.Level);
         Assert.AreEqual(30000, character.Experience);
         Assert.IsTrue(character.SkippedTheFun);
 
         characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true), Times.Once);
+    }
+
+    [Test]
+    public async Task ShouldReturnErrorIfCharacterIsGeneration1()
+    {
+        Character character = new() { Generation = 1, Level = 3, Experience = 250 };
+        ArrangeDb.Characters.Add(character);
+        await ArrangeDb.SaveChangesAsync();
+
+        Mock<IExperienceTable> experienceTableMock = new();
+        Mock<ICharacterService> characterServiceMock = new();
+
+        SkipTheFunCommand.Handler handler = new(ActDb, characterServiceMock.Object, experienceTableMock.Object);
+        var result = await handler.Handle(new SkipTheFunCommand
+        {
+            CharacterId = character.Id,
+            UserId = character.UserId,
+        }, CancellationToken.None);
+
+        Assert.IsNotNull(result.Errors);
+        Assert.AreEqual(ErrorCode.CharacterGenerationRequirement, result.Errors![0].Code);
     }
 
     [Test]
