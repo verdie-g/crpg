@@ -60,7 +60,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
             ViewCreator.CreateMissionMainAgentEquipDropView(mission),
             ViewCreator.CreateMissionBoundaryCrossingView(),
             new MissionBoundaryWallView(),
-            new SpectatorCameraView(),
+            new CrpgSpectatorCameraView(),
             new CrpgAgentHud(experienceTable),
         };
     }
