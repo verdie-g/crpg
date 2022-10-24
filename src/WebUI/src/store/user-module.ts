@@ -386,6 +386,14 @@ class UserModule extends VuexModule {
   }
 
   @Action
+  async skipTheFunCharacter(character: Character): Promise<void> {
+    character = await userService.skipTheFunCharacter(character.id);
+    this.replaceCharacter(character);
+    const characteristics = await userService.getCharacterCharacteristics(character.id);
+    this.setCharacterCharacteristics({ characterId: character.id, characteristics });
+  }
+
+  @Action
   deleteCharacter(character: Character): Promise<void> {
     this.removeCharacter(character);
     return userService.deleteCharacter(character.id);

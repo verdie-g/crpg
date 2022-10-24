@@ -133,7 +133,6 @@
       <b-tooltip
         label="Reset character to level 1 to grant a bonus multiplier and an heirloom point. (lvl > 30)"
         multilined
-        class="mr-2"
       >
         <b-button
           type="is-warning"
@@ -143,6 +142,22 @@
           @click="openRetireCharacterDialog"
         >
           Retire
+        </b-button>
+      </b-tooltip>
+
+      <b-tooltip
+        :label="`Upgrade your character to level ${skipTheFunLevel} but locks its experience permanently.`"
+        multilined
+        class="mr-2"
+      >
+        <b-button
+          type="is-warning"
+          icon-left="baby"
+          expanded
+          :disabled="character.generation > 0 || character.level > skipTheFunLevel"
+          @click="openSkipTheFunCharacterDialog"
+        >
+          Skip the fun
         </b-button>
       </b-tooltip>
 
@@ -324,6 +339,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import Constants from '../../../../data/constants.json';
 import ItemProperties from '@/components/ItemProperties.vue';
 import userModule from '@/store/user-module';
 import Character from '@/models/character';
@@ -409,6 +425,10 @@ export default class CharacterComponent extends Vue {
     return computeSalePrice(this.userItemToReplace);
   }
 
+  get skipTheFunLevel(): number {
+    return Constants.skipTheFunLevel;
+  }
+
   created() {
     userModule.getCharacterItems(this.character.id);
   }
@@ -451,6 +471,20 @@ export default class CharacterComponent extends Vue {
       onConfirm: () => {
         userModule.retireCharacter(this.character);
         notify('Character retired');
+      },
+    });
+  }
+
+  openSkipTheFunCharacterDialog(): void {
+    this.$buefy.dialog.confirm({
+      title: 'Skip-the-fun character',
+      message: `Skip-the-fun will lock your character to level ${this.skipTheFunLevel} so you won't be able to gain any experience. This action cannot be undone.`,
+      confirmText: 'Confirm',
+      type: 'is-warning',
+      hasIcon: true,
+      onConfirm: () => {
+        userModule.skipTheFunCharacter(this.character);
+        notify('Character skipped-the-fun');
       },
     });
   }

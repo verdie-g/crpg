@@ -39,6 +39,10 @@ export function respecializeCharacter(characterId: number): Promise<Character> {
   return put(`/users/self/characters/${characterId}/respecialize`);
 }
 
+export function skipTheFunCharacter(characterId: number): Promise<Character> {
+  return put(`/users/self/characters/${characterId}/skip-the-fun`);
+}
+
 export function deleteCharacter(characterId: number): Promise<void> {
   return del(`/users/self/characters/${characterId}`);
 }

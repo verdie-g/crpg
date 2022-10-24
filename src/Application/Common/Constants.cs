@@ -17,6 +17,7 @@ public class Constants
     public float[] ItemSellCostCoefs { get; set; } = Array.Empty<float>();
     public int MinimumLevel { get; set; }
     public int MaximumLevel { get; set; }
+    public int SkipTheFunLevel { get; set; }
     public float[] ExperienceForLevelCoefs { get; set; } = Array.Empty<float>();
     public int DefaultStrength { get; set; }
     public int DefaultAgility { get; set; }

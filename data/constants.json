@@ -13,6 +13,7 @@
   "itemSellCostCoefs": [0.5, 0.0],
   "minimumLevel": 1,
   "maximumLevel": 38,
+  "skipTheFunLevel": 25,
   "experienceForLevelCoefs": [3937.0, 13750.0, -30750.0],
   "defaultStrength": 3,
   "defaultAgility": 3,

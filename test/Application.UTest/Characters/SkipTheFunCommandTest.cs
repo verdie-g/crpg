@@ -1,4 +1,5 @@
 ﻿using Crpg.Application.Characters.Commands;
+using Crpg.Application.Common;
 using Crpg.Application.Common.Results;
 using Crpg.Application.Common.Services;
 using Crpg.Domain.Entities.Characters;
@@ -10,6 +11,8 @@ namespace Crpg.Application.UTest.Characters;
 
 public class SkipTheFunCommandTest : TestBase
 {
+    private static readonly Constants Constants = new() { SkipTheFunLevel = 25 };
+
     [Test]
     public async Task ShouldSkipTheFunCorrectly()
     {
@@ -22,7 +25,7 @@ public class SkipTheFunCommandTest : TestBase
         ArrangeDb.Characters.Add(character);
         await ArrangeDb.SaveChangesAsync();
 
-        SkipTheFunCommand.Handler handler = new(ActDb, characterServiceMock.Object, experienceTableMock.Object);
+        SkipTheFunCommand.Handler handler = new(ActDb, characterServiceMock.Object, experienceTableMock.Object, Constants);
         var result = await handler.Handle(new SkipTheFunCommand
         {
             CharacterId = character.Id,
@@ -49,7 +52,7 @@ public class SkipTheFunCommandTest : TestBase
         Mock<IExperienceTable> experienceTableMock = new();
         Mock<ICharacterService> characterServiceMock = new();
 
-        SkipTheFunCommand.Handler handler = new(ActDb, characterServiceMock.Object, experienceTableMock.Object);
+        SkipTheFunCommand.Handler handler = new(ActDb, characterServiceMock.Object, experienceTableMock.Object, Constants);
         var result = await handler.Handle(new SkipTheFunCommand
         {
             CharacterId = character.Id,
@@ -68,7 +71,7 @@ public class SkipTheFunCommandTest : TestBase
         await ArrangeDb.SaveChangesAsync();
 
         SkipTheFunCommand.Handler handler = new(ActDb, Mock.Of<ICharacterService>(),
-            Mock.Of<IExperienceTable>());
+            Mock.Of<IExperienceTable>(), Constants);
         var result = await handler.Handle(new SkipTheFunCommand
         {
             UserId = user.Id,
