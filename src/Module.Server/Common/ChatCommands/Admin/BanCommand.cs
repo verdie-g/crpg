@@ -24,11 +24,6 @@ internal class BanCommand : AdminCommand
         };
     }
 
-    protected override void ExecuteFailed(NetworkCommunicator fromPeer)
-    {
-        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
-    }
-
     private void ExecuteBanByNetworkPeer(NetworkCommunicator fromPeer, object[] arguments)
     {
         _ = ExecuteBanByNetworkPeerAsync(fromPeer, arguments);

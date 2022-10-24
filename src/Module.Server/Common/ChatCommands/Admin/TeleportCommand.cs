@@ -16,11 +16,6 @@ internal class TeleportCommand : AdminCommand
         };
     }
 
-    protected override void ExecuteFailed(NetworkCommunicator fromPeer)
-    {
-        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
-    }
-
     private void ExecuteTeleportByName(NetworkCommunicator fromPeer, object[] arguments)
     {
         string targetName1 = (string)arguments[0];

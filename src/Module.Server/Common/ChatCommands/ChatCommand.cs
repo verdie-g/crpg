@@ -23,12 +23,12 @@ internal abstract class ChatCommand
     protected CommandOverload[] Overloads { get; set; } = Array.Empty<CommandOverload>();
     protected string Description { get; set; } = string.Empty;
 
-    public bool Execute(NetworkCommunicator fromPeer, string[] arguments)
+    public void Execute(NetworkCommunicator fromPeer, string[] arguments)
     {
         if (!CheckRequirements(fromPeer))
         {
             ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, "Insufficient permissions.");
-            return false;
+            return;
         }
 
         foreach (CommandOverload overload in Overloads)
@@ -39,11 +39,10 @@ internal abstract class ChatCommand
             }
 
             overload.Execute(fromPeer, parsedArguments!);
-            return true;
+            return;
         }
 
-        ExecuteFailed(fromPeer);
-        return false;
+        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
     }
 
     // Used to check for permissions
@@ -51,12 +50,6 @@ internal abstract class ChatCommand
     {
         // Check requirements (is Clan leader / Admin rank etc)
         return true;
-    }
-
-    // Called when the command fails.
-    protected virtual void ExecuteFailed(NetworkCommunicator fromPeer)
-    {
-        // Example: Invalid usage.. please type !command ID Message
     }
 
     protected bool TryGetPlayerByName(NetworkCommunicator fromPeer, string targetName, out NetworkCommunicator? peer)

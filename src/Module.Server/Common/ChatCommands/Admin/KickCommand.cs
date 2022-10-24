@@ -20,11 +20,6 @@ internal class KickCommand : AdminCommand
         };
     }
 
-    protected override void ExecuteFailed(NetworkCommunicator fromPeer)
-    {
-        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
-    }
-
     private void ExecuteKickByName(NetworkCommunicator fromPeer, object[] arguments)
     {
         string targetName = (string)arguments[0];

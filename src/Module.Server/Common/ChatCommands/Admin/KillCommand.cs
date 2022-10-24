@@ -17,11 +17,6 @@ internal class KillCommand : AdminCommand
         };
     }
 
-    protected override void ExecuteFailed(NetworkCommunicator fromPeer)
-    {
-        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
-    }
-
     private void ExecuteKillByName(NetworkCommunicator fromPeer, object[] arguments)
     {
         string targetName = (string)arguments[0];

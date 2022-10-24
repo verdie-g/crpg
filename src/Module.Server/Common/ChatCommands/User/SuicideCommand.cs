@@ -17,11 +17,6 @@ internal class SuicideCommand : AdminCommand
         };
     }
 
-    protected override void ExecuteFailed(NetworkCommunicator fromPeer)
-    {
-        ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorInfo, $"Wrong usage. Type {Description}");
-    }
-
     private void Execute(NetworkCommunicator fromPeer, object[] arguments)
     {
         Agent agent = fromPeer.ControlledAgent;
