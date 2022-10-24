@@ -435,7 +435,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
          * mirror (0 or 1)
          * rotation (0-359)
          */
-        int iconCounter = 0;
         for (int i = 0; i + 10 <= array.Length; i += 10)
         {
             if (int.TryParse(array[i], out int iconId))
@@ -451,13 +450,13 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             }
 
             if (!int.TryParse(array[i + 1], out int colorId1) || !BannerManager.Instance.ReadOnlyColorPalette.ContainsKey(colorId1)
-            || !int.TryParse(array[i + 2], out int colorId2) || !BannerManager.Instance.ReadOnlyColorPalette.ContainsKey(colorId2)
-            || !int.TryParse(array[i + 3], out int sizeX)
-            || !int.TryParse(array[i + 4], out int sizeY)
-            || !int.TryParse(array[i + 5], out int posX) || posX > maxX || posX < minX
-            || !int.TryParse(array[i + 6], out int posY) || posY > maxY || posY < minY
-            || !int.TryParse(array[i + 7], out int drawStroke) || drawStroke > 1 || drawStroke < 0
-            || !int.TryParse(array[i + 8], out int mirror) || mirror > 1 || mirror < 0)
+                || !int.TryParse(array[i + 2], out int colorId2) || !BannerManager.Instance.ReadOnlyColorPalette.ContainsKey(colorId2)
+                || !int.TryParse(array[i + 3], out int sizeX)
+                || !int.TryParse(array[i + 4], out int sizeY)
+                || !int.TryParse(array[i + 5], out int posX) || posX > maxX || posX < minX
+                || !int.TryParse(array[i + 6], out int posY) || posY > maxY || posY < minY
+                || !int.TryParse(array[i + 7], out int drawStroke) || drawStroke > 1 || drawStroke < 0
+                || !int.TryParse(array[i + 8], out int mirror) || mirror > 1 || mirror < 0)
             {
                 return false;
             }
@@ -495,18 +494,14 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             fixedBannerCode.Append(".");
             fixedBannerCode.Append(rotation);
             fixedBannerCode.Append(".");
-            iconCounter++;
         }
 
-        if (iconCounter == 0)
+        if (fixedBannerCode.Length == 0)
         {
             return false;
         }
 
-        if (fixedBannerCode.Length > 0)
-        {
-            fixedBannerCode.Length -= ".".Length;
-        }
+        fixedBannerCode.Length -= ".".Length;
 
         banner = new Banner(fixedBannerCode.ToString());
         return true;
