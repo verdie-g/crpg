@@ -14,7 +14,7 @@ public class SkipTheFunCommandTest : TestBase
     public async Task ShouldSkipTheFunCorrectly()
     {
         Mock<IExperienceTable> experienceTableMock = new();
-        experienceTableMock.Setup(et => et.GetExperienceForLevel(30)).Returns(30000);
+        experienceTableMock.Setup(et => et.GetExperienceForLevel(25)).Returns(30000);
 
         Mock<ICharacterService> characterServiceMock = new();
 
@@ -32,7 +32,7 @@ public class SkipTheFunCommandTest : TestBase
         Assert.IsNull(result.Errors);
         character = AssertDb.Characters.First(c => c.Id == character.Id);
         Assert.AreEqual(2, character.Generation);
-        Assert.AreEqual(30, character.Level);
+        Assert.AreEqual(25, character.Level);
         Assert.AreEqual(30000, character.Experience);
         Assert.IsTrue(character.SkippedTheFun);
 

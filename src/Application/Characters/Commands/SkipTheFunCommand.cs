@@ -37,17 +37,15 @@ public record SkipTheFunCommand : IMediatorRequest
                 return new Result(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
             }
 
-            // TODO: allow skip the fun on already skipped the fun character?
-
             character.SkippedTheFun = true;
-            character.Level = 30;
+            character.Level = 25;
             character.Experience = _experienceTable.GetExperienceForLevel(character.Level);
             _characterService.ResetCharacterCharacteristics(character, respecialization: true);
 
             await _db.SaveChangesAsync(cancellationToken);
 
-            Logger.LogInformation("User '{0}' skipped then fun character '{1}'", req.UserId, req.CharacterId);
-            return new Result();
+            Logger.LogInformation("User '{0}' skipped-the-fun character '{1}'", req.UserId, req.CharacterId);
+            return Result.NoErrors;
         }
     }
 }

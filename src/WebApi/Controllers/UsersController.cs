@@ -141,6 +141,23 @@ public class UsersController : BaseController
     }
 
     /// <summary>
+    /// Skip-the-fun character.
+    /// </summary>
+    /// <param name="id">Character id.</param>
+    /// <returns>The updated character characteristics.</returns>
+    /// <response code="204">Done.</response>
+    /// <response code="400">Bad Request.</response>
+    [HttpPut("self/characters/{id}/skip-the-fun")]
+    public Task<ActionResult> SkipTheFunCharacter([FromRoute] int id)
+    {
+        return ResultToActionAsync(Mediator.Send(new SkipTheFunCommand
+        {
+            CharacterId = id,
+            UserId = CurrentUser.User!.Id,
+        }));
+    }
+
+    /// <summary>
     /// Get character items for the current user.
     /// </summary>
     /// <param name="id">Character id.</param>
