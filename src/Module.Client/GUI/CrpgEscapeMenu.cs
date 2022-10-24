@@ -24,7 +24,6 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
     {
     }
 
-
     public override void OnMissionScreenInitialize()
     {
         base.OnMissionScreenInitialize();
@@ -42,23 +41,10 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
         MissionPeer myMissionPeer = GameNetwork.MyPeer.GetComponent<MissionPeer>();
         if (myMissionPeer != null)
         {
-            string spectatorButtonLabel = "Join the game";
-            if (myMissionPeer.Team?.Side != TaleWorlds.Core.BattleSideEnum.None)
-            {
-                spectatorButtonLabel = "Join spectators";
-            }
-
+            string spectatorButtonLabel = myMissionPeer.Team?.Side != BattleSideEnum.None ? "Join spectators" : "Join the game";
             EscapeMenuItemVM spectatorButton = new(new TextObject(spectatorButtonLabel, null), _ =>
             {
-                if (myMissionPeer.Team?.Side == BattleSideEnum.None)
-                {
-                    _multiplayerTeamSelectComponent?.RequestTeamChange(true);
-                }
-                else
-                {
-                    _multiplayerTeamSelectComponent?.RequestTeamChange(false);
-                }
-
+                _multiplayerTeamSelectComponent?.RequestTeamChange(myMissionPeer.Team?.Side == BattleSideEnum.None);
                 OnEscapeMenuToggled(false);
             }, null, () => Tuple.Create(false, TextObject.Empty), false);
             items.Insert(items.Count - BottomMenuOffset, spectatorButton);
