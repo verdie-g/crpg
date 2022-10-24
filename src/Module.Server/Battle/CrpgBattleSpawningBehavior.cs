@@ -283,24 +283,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 : SpawnComponent.GetSpawnFrame(missionPeer.Team, hasMount, true);
             Vec2 initialDirection = spawnFrame.rotation.f.AsVec2.Normalized();
 
-            uint color1;
-            uint color2;
-            if (crpgRepresentative.Clan != null && TryParseBanner(crpgRepresentative.Clan.BannerKey, out var banner))
-            {
-                color1 = crpgRepresentative.Clan.PrimaryColor;
-                color2 = crpgRepresentative.Clan.SecondaryColor;
-            }
-            else
-            {
-                color1 = missionPeer.Team == Mission.AttackerTeam
-                    ? teamCulture.Color
-                    : teamCulture.ClothAlternativeColor;
-                color2 = missionPeer.Team == Mission.AttackerTeam
-                    ? teamCulture.Color2
-                    : teamCulture.ClothAlternativeColor2;
-                TryParseBanner(teamCulture.BannerKey, out banner);
-            }
-
             AgentBuildData agentBuildData = new AgentBuildData(character)
                 .MissionPeer(missionPeer)
                 .Equipment(characterEquipment)
@@ -308,15 +290,27 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
                 .Team(missionPeer.Team)
                 .VisualsIndex(0)
                 .IsFemale(missionPeer.Peer.IsFemale)
-                .ClothingColor1(color1)
-                .ClothingColor2(color2)
                 .BodyProperties(GetBodyProperties(missionPeer, teamCulture))
                 .InitialPosition(in spawnFrame.origin)
                 .InitialDirection(in initialDirection);
 
-            if (banner != null)
+            if (crpgRepresentative.Clan != null)
             {
-                agentBuildData.Banner(banner);
+                agentBuildData.ClothingColor1(crpgRepresentative.Clan.PrimaryColor);
+                agentBuildData.ClothingColor2(crpgRepresentative.Clan.SecondaryColor);
+                if (TryParseBanner(crpgRepresentative.Clan.BannerKey, out var banner))
+                {
+                    agentBuildData.Banner(banner);
+                }
+            }
+            else
+            {
+                agentBuildData.ClothingColor1(missionPeer.Team == Mission.AttackerTeam
+                    ? teamCulture.Color
+                    : teamCulture.ClothAlternativeColor);
+                agentBuildData.ClothingColor2(missionPeer.Team == Mission.AttackerTeam
+                    ? teamCulture.Color2
+                    : teamCulture.ClothAlternativeColor2);
             }
 
             Agent agent = Mission.SpawnAgent(agentBuildData);
