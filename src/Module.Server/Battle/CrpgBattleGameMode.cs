@@ -39,7 +39,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
     public static MissionView[] OpenCrpgBattle(Mission mission)
     {
         CrpgExperienceTable experienceTable = new(_constants);
-        MissionView crpgEscapeMenu = ViewCreatorManager.CreateMissionView<CrpgMissionMultiplayerEscapeMenu>(isNetwork: false, null, new object[1]
+        MissionView crpgEscapeMenu = ViewCreatorManager.CreateMissionView<CrpgMissionMultiplayerEscapeMenu>(isNetwork: false, null, new object[]
         {
             "Battle",
         });

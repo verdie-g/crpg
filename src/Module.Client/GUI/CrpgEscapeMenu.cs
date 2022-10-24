@@ -20,27 +20,27 @@ public class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
 
     protected override List<EscapeMenuItemVM> GetEscapeMenuItems()
     {
-        List<EscapeMenuItemVM> list = base.GetEscapeMenuItems();
-        var crpgWebsiteButton = new EscapeMenuItemVM(new TextObject("cRPG Website", null),  o =>
+        List<EscapeMenuItemVM> items = base.GetEscapeMenuItems();
+        EscapeMenuItemVM crpgWebsiteButton = new(new TextObject("Character & Shop", null),  _ =>
         {
-            InformationManager.DisplayMessage(new InformationMessage("Opening cRPG website.."));
-            ExecuteOpenLink(CrpgWebsite);
-        }, null, () => new Tuple<bool, TextObject>(false, TextObject.Empty), false);
+            _ = ExecuteOpenCrpgWebsite();
+        }, null, () => Tuple.Create(false, TextObject.Empty), false);
 
-        list.Insert(list.Count - 2, crpgWebsiteButton); // -2 = Insert new button right before the 'Option' button
+        items.Insert(items.Count - 2, crpgWebsiteButton); // -2 = Insert new button right before the 'Option' button
 
-        return list;
+        return items;
     }
 
-    private void ExecuteOpenLink(string url)
+    private async Task ExecuteOpenCrpgWebsite()
     {
         // Try to open the website through steam. If it fails it will use the default webbrowser.
-        if (!string.IsNullOrEmpty(url) && !PlatformServices.Instance.ShowOverlayForWebPage(url).Result)
+        if (!string.IsNullOrEmpty(CrpgWebsite) && !await PlatformServices.Instance.ShowOverlayForWebPage(CrpgWebsite))
         {
-            Process.Start(new ProcessStartInfo(url)
+            Process.Start(new ProcessStartInfo(CrpgWebsite)
             {
                 UseShellExecute = true,
-            });
+            }).Dispose();
+            InformationManager.DisplayMessage(new InformationMessage("Please check your webbrowser.."));
         }
     }
 }
