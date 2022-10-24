@@ -9,8 +9,9 @@ using TaleWorlds.PlatformService;
 
 namespace Crpg.Module.GUI;
 
+// We need to use the OverrideView here since the CrpgEscapeMenu constructor requires a parameter.
 [OverrideView(typeof(CrpgMissionMultiplayerEscapeMenu))]
-public class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
+internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
 {
     private const string CrpgWebsite = "https://c-rpg.eu";
     public CrpgEscapeMenu(string gameType)
@@ -34,7 +35,7 @@ public class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
     private async Task ExecuteOpenCrpgWebsite()
     {
         // Try to open the website through steam. If it fails it will use the default webbrowser.
-        if (!string.IsNullOrEmpty(CrpgWebsite) && !await PlatformServices.Instance.ShowOverlayForWebPage(CrpgWebsite))
+        if (!await PlatformServices.Instance.ShowOverlayForWebPage(CrpgWebsite))
         {
             Process.Start(new ProcessStartInfo(CrpgWebsite)
             {
