@@ -228,7 +228,8 @@
                   class="column is-narrow user-item user-item__action is-relative"
                   v-for="userItem in fittingUserItems"
                   v-bind:key="userItem.id"
-                  @click="selectedUserItem = userItem"
+                  @mouseover="selectedUserItem = userItem"
+                  @mouseleave="selectedUserItem = null"
                 >
                   <display-user-item :user-item="userItem" />
                   <div
