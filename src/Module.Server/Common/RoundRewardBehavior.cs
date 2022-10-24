@@ -113,14 +113,15 @@ internal class RoundRewardBehavior : MissionBehavior
     private async Task UpdateCrpgUsersAsync()
     {
         int ticks = ComputeTicks();
-        Debug.Print($"Ticks for round with {GameNetwork.NetworkPeers.Count()}: {ticks}");
 
         CrpgRatingCalculator.UpdateRatings(_ratingResults);
 
         Dictionary<int, CrpgRepresentative> crpgRepresentativeByUserId = new();
         var newRoundAllTotalStats = new Dictionary<PlayerId, CrpgCharacterStatistics>();
         List<CrpgUserUpdate> userUpdates = new();
-        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
+        var networkPeers = GameNetwork.NetworkPeers.ToArray();
+        bool rewardMultiplierEnabled = networkPeers.Length > 4;
+        foreach (NetworkCommunicator networkPeer in networkPeers)
         {
             var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
             if (crpgRepresentative?.User == null)
@@ -139,7 +140,7 @@ internal class RoundRewardBehavior : MissionBehavior
                 BrokenItems = BreakItems(crpgRepresentative),
             };
 
-            SetReward(userUpdate, crpgRepresentative, ticks);
+            SetReward(userUpdate, crpgRepresentative, ticks, rewardMultiplierEnabled);
             SetStatistics(userUpdate, networkPeer, newRoundAllTotalStats);
 
             userUpdates.Add(userUpdate);
@@ -180,7 +181,8 @@ internal class RoundRewardBehavior : MissionBehavior
         return 1 + (int)roundDuration / 60;
     }
 
-    private void SetReward(CrpgUserUpdate userUpdate, CrpgRepresentative crpgRepresentative, int ticks)
+    private void SetReward(CrpgUserUpdate userUpdate, CrpgRepresentative crpgRepresentative, int ticks,
+        bool rewardMultiplierEnabled)
     {
         if (crpgRepresentative.SpawnTeamThisRound == null)
         {
@@ -194,9 +196,10 @@ internal class RoundRewardBehavior : MissionBehavior
             Gold = totalRewardMultiplier * 50,
         };
 
-        crpgRepresentative.RewardMultiplier = _roundController.RoundWinner == crpgRepresentative.SpawnTeamThisRound.Side
-            ? Math.Min(5, crpgRepresentative.RewardMultiplier + 1)
-            : 1;
+        crpgRepresentative.RewardMultiplier =
+            _roundController.RoundWinner == crpgRepresentative.SpawnTeamThisRound.Side && rewardMultiplierEnabled
+                ? Math.Min(5, crpgRepresentative.RewardMultiplier + 1)
+                : 1;
     }
 
     private CrpgCharacterRating GetNewRating(CrpgRepresentative crpgRepresentative)
