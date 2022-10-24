@@ -63,9 +63,17 @@ it('getUser', async () => {
   expect(mockGetUser).toHaveBeenCalled();
 });
 
-it('login', async () => {
-  mockSigninRedirect.mockResolvedValue(true);
+it('login - signInSilent', async () => {
+  mockSigninSilent.mockResolvedValue({ access_token: 'access_token' });
   await login();
+  expect(mockSigninSilent).toHaveBeenCalled();
+  expect(mockSigninRedirect).not.toHaveBeenCalled();
+});
+
+it('login - signinRedirect', async () => {
+  mockSigninSilent.mockResolvedValue(null);
+  await login();
+  expect(mockSigninSilent).toHaveBeenCalled();
   expect(mockSigninRedirect).toHaveBeenCalled();
 });
 

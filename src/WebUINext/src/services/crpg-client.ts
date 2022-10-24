@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-import { getToken, signInSilent } from '@/services/auth-service';
+import { getToken, login } from '@/services/auth-service';
 // import { NotificationType, notify } from '@/services/notifications-service'; // TODO:
 import { sleep } from '@/utils/promise';
 import { ErrorType, type Result } from '@/models/crpg-client-result';
@@ -21,11 +21,9 @@ async function trySend(method: string, path: string, body?: any): Promise<Result
   if (response.status === StatusCodes.UNAUTHORIZED) {
     // notify('Session expired', NotificationType.Warning); // TODO:
     await sleep(1000);
-
-    await signInSilent().catch();
+    await login();
 
     return null!;
-    // return trySend(method, path, body);
   }
 
   return response.status !== StatusCodes.NO_CONTENT ? await response.json() : null;

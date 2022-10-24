@@ -29,8 +29,6 @@ export const userManager = new UserManager({
 
 export const getUser = () => userManager.getUser();
 
-export const login = () => userManager.signinRedirect();
-
 export const signInSilent = async () => {
   try {
     const user = await userManager.signinSilent();
@@ -38,6 +36,14 @@ export const signInSilent = async () => {
   } catch (error) {
     // hide the oidc-client warning - login_require
     return null;
+  }
+};
+
+export const login = async (): Promise<void> => {
+  const token = await signInSilent();
+
+  if (!token) {
+    userManager.signinRedirect();
   }
 };
 
