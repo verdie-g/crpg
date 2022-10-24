@@ -48,8 +48,13 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
                 return new(CommonErrors.CharacterNotFound(req.CharacterId, req.UserId));
             }
 
-            character.Experience = (int)MathHelper.ApplyPolynomialFunction(character.Experience, _constants.RespecializeExperiencePenaltyCoefs);
-            character.Level = _experienceTable.GetLevelForExperience(character.Experience);
+            if (!character.SkippedTheFun)
+            {
+                character.Experience = (int)MathHelper.ApplyPolynomialFunction(character.Experience,
+                    _constants.RespecializeExperiencePenaltyCoefs);
+                character.Level = _experienceTable.GetLevelForExperience(character.Experience);
+            }
+
             character.EquippedItems.Clear(); // Unequip all items.
             character.Statistics.Kills = 0;
             character.Statistics.Deaths = 0;

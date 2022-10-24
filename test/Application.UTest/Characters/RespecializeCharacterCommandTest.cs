@@ -27,6 +27,7 @@ public class RespecializeCharacterCommandTest : TestBase
             Level = 3,
             Experience = 150,
             ExperienceMultiplier = 1.1f,
+            SkippedTheFun = false,
             EquippedItems =
             {
                 new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Head },
@@ -62,6 +63,58 @@ public class RespecializeCharacterCommandTest : TestBase
         Assert.AreEqual(2, character.Generation);
         Assert.AreEqual(2, character.Level);
         Assert.AreEqual(75, character.Experience);
+        Assert.AreEqual(1.1f, character.ExperienceMultiplier);
+        Assert.IsEmpty(character.EquippedItems);
+        Assert.AreEqual(0, character.Statistics.Kills);
+        Assert.AreEqual(0, character.Statistics.Deaths);
+        Assert.AreEqual(0, character.Statistics.Assists);
+        Assert.AreEqual(TimeSpan.FromSeconds(4), character.Statistics.PlayTime);
+        characterServiceMock.Verify(cs => cs.ResetCharacterCharacteristics(It.IsAny<Character>(), true));
+    }
+
+    [Test]
+    public async Task RespecializeSkippedTheFunCharacterShouldNotChangeLevel()
+    {
+        Character character = new()
+        {
+            Generation = 0,
+            Level = 3,
+            Experience = 150,
+            ExperienceMultiplier = 1.1f,
+            SkippedTheFun = true,
+            EquippedItems =
+            {
+                new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Head },
+                new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Body },
+                new EquippedItem { UserItem = new UserItem(), Slot = ItemSlot.Weapon0 },
+            },
+            Statistics = new CharacterStatistics
+            {
+                Kills = 1,
+                Deaths = 2,
+                Assists = 3,
+                PlayTime = TimeSpan.FromSeconds(4),
+            },
+        };
+        ArrangeDb.Add(character);
+        await ArrangeDb.SaveChangesAsync();
+
+        Mock<IExperienceTable> experienceTableMock = new();
+        Mock<ICharacterService> characterServiceMock = new();
+
+        RespecializeCharacterCommand.Handler handler = new(ActDb, Mapper, characterServiceMock.Object, experienceTableMock.Object, Constants);
+        await handler.Handle(new RespecializeCharacterCommand
+        {
+            CharacterId = character.Id,
+            UserId = character.UserId,
+        }, CancellationToken.None);
+
+        character = await AssertDb.Characters
+            .Include(c => c.EquippedItems)
+            .FirstAsync(c => c.Id == character.Id);
+        Assert.AreEqual(0, character.Generation);
+        Assert.AreEqual(3, character.Level);
+        Assert.AreEqual(150, character.Experience);
         Assert.AreEqual(1.1f, character.ExperienceMultiplier);
         Assert.IsEmpty(character.EquippedItems);
         Assert.AreEqual(0, character.Statistics.Kills);
