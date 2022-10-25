@@ -1,0 +1,95 @@
+[
+  {
+    "id": "crpg_bo_staff",
+    "name": "Bo staff",
+    "culture": "Neutral",
+    "type": "Polearm",
+    "price": 50,
+    "tier": 0,
+    "requirement": 0,
+    "weight": 1,
+    "flags": ["WoodenParry", "DoNotScaleBodyAccordingToWeaponLength"],
+    "armor": null,
+    "mount": null
+  },
+  {
+    "id": "crpg_desert_fabric_shoulderpad",
+    "name": "Woven Shoulder Pad",
+    "culture": "Aserai",
+    "type": "ShoulderArmor",
+    "price": 50,
+    "tier": 0.6176064,
+    "requirement": 1,
+    "weight": 1.8,
+    "flags": ["UseTeamColor", "Civilian"],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 2,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Cloth"
+    },
+    "mount": null,
+    "weapons": []
+  },
+  {
+    "id": "crpg_bandit_saddle_desert",
+    "name": "Rugged Beduin Saddle",
+    "culture": "Aserai",
+    "type": "MountHarness",
+    "price": 1096,
+    "tier": 1.081081,
+    "requirement": 0,
+    "weight": 21,
+    "flags": ["Civilian"],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 4,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Cloth"
+    },
+    "mount": null,
+    "weapons": []
+  },
+  {
+    "id": "crpg_mule",
+    "name": "Mule",
+    "culture": "Neutral",
+    "type": "Mount",
+    "price": 177,
+    "tier": 0.24507165,
+    "requirement": 0,
+    "weight": 300,
+    "flags": ["Civilian"],
+    "armor": null,
+    "mount": {
+      "bodyLength": 92,
+      "chargeDamage": 0,
+      "maneuver": 48,
+      "speed": 23,
+      "hitPoints": 50
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_folded_town_boots",
+    "name": "Folded Town Boots",
+    "culture": "Empire",
+    "type": "LegArmor",
+    "price": 57,
+    "tier": 1.6263028,
+    "requirement": 3,
+    "weight": 1,
+    "flags": ["Civilian"],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 4,
+      "materialType": "Leather"
+    },
+    "mount": null,
+    "weapons": []
+  }
+]

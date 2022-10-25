@@ -6,6 +6,7 @@ import { ItemDescriptor } from '@/models/item-descriptor';
 import WeaponFlags from '@/models/weapon-flags';
 import ItemSlot from '@/models/item-slot';
 import ItemWeaponComponent from '@/models/item-weapon-component';
+import type ItemArmorComponent from '@/models/item-armor-component';
 import WeaponClass from '@/models/weapon-class';
 import UserItem from '@/models/user-item';
 import { applyPolynomialFunction } from '@/utils/math';
@@ -403,5 +404,42 @@ export function computeAverageRepairCostByMinute(items: Item[]): number {
   return Math.floor(
     items.reduce((total, item) => total + item.price * Constants.itemRepairCostPerSecond * 60, 0) *
       Constants.itemBreakChance
+  );
+}
+
+export function computeOverallPrice(items: Item[]): number {
+  return items.reduce((total, item) => total + item.price, 0);
+}
+
+export function computeOverallWeight(items: Item[]): number {
+  return items
+    .filter(item => ![ItemType.Mount, ItemType.MountHarness].includes(item.type))
+    .reduce((total, item) => total + item.weight, 0);
+}
+
+interface OverallArmor extends Omit<ItemArmorComponent, 'materialType'> {
+  mountArmor: number;
+}
+
+export function computeOverallArmor(items: Item[]): OverallArmor {
+  return items.reduce(
+    (total, item) => {
+      if (item.type === ItemType.MountHarness) {
+        total.mountArmor += item.armor!.bodyArmor;
+      } else if (armorTypes.includes(item.type)) {
+        total.headArmor += item.armor!.headArmor;
+        total.bodyArmor += item.armor!.bodyArmor;
+        total.armArmor += item.armor!.armArmor;
+        total.legArmor += item.armor!.legArmor;
+      }
+      return total;
+    },
+    {
+      headArmor: 0,
+      bodyArmor: 0,
+      armArmor: 0,
+      legArmor: 0,
+      mountArmor: 0,
+    }
   );
 }

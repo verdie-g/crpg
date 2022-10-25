@@ -622,6 +622,17 @@ public record SeedDataCommand : IMediatorRequest
                 AvatarMedium = new Uri("https://avatars.cloudflare.steamstatic.com/7668d01f842476a42dac041f85c9b336161bdbd0_medium.jpg"),
                 AvatarFull = new Uri("https://avatars.cloudflare.steamstatic.com/7668d01f842476a42dac041f85c9b336161bdbd0_full.jpg"),
             };
+            User lubu = new()
+            {
+                PlatformUserId = "76561197971167194",
+                Name = "Lubu",
+                Gold = 100000,
+                Characters = new List<Character>
+                    { new Character { Name = "Lubu" } },
+                AvatarSmall = new Uri("https://avatars.akamai.steamstatic.com/5a0f0fa337c14ff8e0a477250ce674130e7c2471.jpg"),
+                AvatarMedium = new Uri("https://avatars.akamai.steamstatic.com/5a0f0fa337c14ff8e0a477250ce674130e7c2471_medium.jpg"),
+                AvatarFull = new Uri("https://avatars.akamai.steamstatic.com/5a0f0fa337c14ff8e0a477250ce674130e7c2471_full.jpg"),
+            };
 
             User[] newUsers =
             {
@@ -630,7 +641,7 @@ public record SeedDataCommand : IMediatorRequest
                 ecko, neostralie, zorguy, azuma, elmaryk, namidaka, laHire, manik, ajroselle, skrael, bedo, lambic,
                 sanasar, vlad007, canp0g, shark, noobAmphetamine, mundete, aroyFalconer, insanitoid, scarface,
                 xDem, disorot, ace, sagar, greenShadow, hannibaru, drexx, xarosh, tipsyToby, localAlpha, alex,
-                kedrynFuel, luqero, ilya, eztli, telesto, kypak, devoidDragon, krog, thradok,
+                kedrynFuel, luqero, ilya, eztli, telesto, kypak, devoidDragon, krog, thradok, lubu,
             };
 
             var existingUsers = await _db.Users.ToDictionaryAsync(u => (u.Platform, u.PlatformUserId));
