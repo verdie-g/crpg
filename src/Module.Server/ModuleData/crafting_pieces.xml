@@ -699,10 +699,10 @@
       <Material id="Iron4" count="3" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_battania_blade_5" name="{=swb45HVS}Mountain Blade" tier="5" piece_type="Blade" mesh="battania_blade_5" culture="Culture.battania" length="80.8" weight="0.6885">
+  <CraftingPiece id="crpg_battania_blade_5" name="{=swb45HVS}Mountain Blade" tier="5" piece_type="Blade" mesh="battania_blade_5" culture="Culture.battania" length="80.8" weight="0.81">
     <BladeData stack_amount="0" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="battania_blade_5_scabbard_5">
       <Thrust damage_type="Pierce" damage_factor="0.68138" />
-      <Swing damage_type="Cut" damage_factor="1.441458" />
+      <Swing damage_type="Cut" damage_factor="1.502795" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -780,9 +780,9 @@
       <Material id="Iron4" count="3" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_battania_blade_6" name="{=IUlApNGp}Long Falx Blade" tier="4" piece_type="Blade" mesh="battania_blade_6" culture="Culture.battania" length="95.6" weight="0.85" excluded_item_usage_features="thrust">
+  <CraftingPiece id="crpg_battania_blade_6" name="{=IUlApNGp}Long Falx Blade" tier="4" piece_type="Blade" mesh="battania_blade_6" culture="Culture.battania" length="95.6" weight="1.05" excluded_item_usage_features="thrust">
     <BladeData stack_amount="0" physics_material="metal_weapon" body_name="bo_sword_one_handed">
-      <Swing damage_type="Cut" damage_factor="1.505175" />
+      <Swing damage_type="Cut" damage_factor="1.56275" />
     </BladeData>
     <Flags>
       <Flag name="BonusAgainstShield" />
@@ -4492,7 +4492,7 @@
   <CraftingPiece id="crpg_axe_craft_4_head" name="{=fdR6zYiP}Franziska Head" tier="4" piece_type="Blade" mesh="axe_craft_4_head" distance_to_next_piece="5.787" distance_to_previous_piece="1.483" weight="0.453" is_default="true">
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.7458" />
+      <Swing damage_type="Cut" damage_factor="1.624" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />
