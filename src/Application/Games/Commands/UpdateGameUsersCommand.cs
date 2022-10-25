@@ -113,9 +113,10 @@ public record UpdateGameUsersCommand : IMediatorRequest<UpdateGameUsersResult>
 
         private void UpdateRating(Character character, CharacterRatingViewModel rating)
         {
-            character.Rating.Value = rating.Value;
-            character.Rating.Deviation = rating.Deviation;
-            character.Rating.Volatility = rating.Volatility;
+            // Disable rating because sometimes it was infinite and would break the JSON serialization.
+            character.Rating.Value = 1500; // rating.Value;
+            character.Rating.Deviation = 350; // rating.Deviation;
+            character.Rating.Volatility = 0.06f; // rating.Volatility;
         }
 
         private async Task<List<GameRepairedItem>> RepairOrBreakItems(Character character, IList<GameUserBrokenItem> itemsToRepair,
