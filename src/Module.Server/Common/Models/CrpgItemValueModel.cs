@@ -124,7 +124,7 @@ internal class CrpgItemValueModel : ItemValueModel
         float weaponScaler = weaponComponent.Item.ItemType switch
         {
             ItemObject.ItemTypeEnum.OneHandedWeapon => 44.76610788925f,
-            ItemObject.ItemTypeEnum.TwoHandedWeapon => 78.7250303112145f,
+            ItemObject.ItemTypeEnum.TwoHandedWeapon => 92.89804473393f,
             ItemObject.ItemTypeEnum.Polearm => 28.6f,
             _ => 1f,
         };
@@ -210,6 +210,15 @@ internal class CrpgItemValueModel : ItemValueModel
             _ => 1.0f,
         };
     }
+    private float CalculateDamageTypeFactorForThrown(DamageTypes damageType)
+    {
+        return damageType switch
+        {
+            DamageTypes.Blunt => 2f,
+            DamageTypes.Pierce => 1.75f,
+            _ => 1.25f,
+        };
+    }
 
     private float CalculateTierNonCraftedWeapon(WeaponComponent weaponComponent)
     {
@@ -244,7 +253,7 @@ internal class CrpgItemValueModel : ItemValueModel
             * weapon.MissileSpeed
             * weapon.Accuracy
             * weapon.MaxDataValue
-            * CalculateDamageTypeFactor(weapon.ThrustDamageType)
+            * CalculateDamageTypeFactorForThrown(weapon.ThrustDamageType)
             / scaler;
     }
 

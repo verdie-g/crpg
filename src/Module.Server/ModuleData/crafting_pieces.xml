@@ -63,7 +63,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_vlandian_blade_3" name="{=mak3naEe}Wide Fullered Broad Two Hander Blade" tier="5" piece_type="Blade" mesh="vlandian_blade_3" culture="Culture.vlandia" length="99.4" weight="1.0125">
     <BladeData stack_amount="0" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="vlandian_blade_2_scabbard_2">
-      <Thrust damage_type="Pierce" damage_factor="0.896" />
+      <Thrust damage_type="Pierce" damage_factor="1.232" />
       <Swing damage_type="Cut" damage_factor="1.44648" />
     </BladeData>
     <Materials>
@@ -287,7 +287,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_aserai_blade_5" name="{=pX4nTZOI}Fine Steel Broad Kaskara" tier="4" piece_type="Blade" mesh="aserai_blade_5" culture="Culture.battania" length="108.9" weight="0.825">
     <BladeData stack_amount="0" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="aserai_blade_5_scabbard_5">
-      <Thrust damage_type="Pierce" damage_factor="0.672" />
+      <Thrust damage_type="Pierce" damage_factor="0.924" />
       <Swing damage_type="Cut" damage_factor="1.43325" />
     </BladeData>
     <Materials>
@@ -699,10 +699,10 @@
       <Material id="Iron4" count="3" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_battania_blade_5" name="{=swb45HVS}Mountain Blade" tier="5" piece_type="Blade" mesh="battania_blade_5" culture="Culture.battania" length="80.8" weight="0.6885">
+  <CraftingPiece id="crpg_battania_blade_5" name="{=swb45HVS}Mountain Blade" tier="5" piece_type="Blade" mesh="battania_blade_5" culture="Culture.battania" length="80.8" weight="0.81">
     <BladeData stack_amount="0" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="battania_blade_5_scabbard_5">
-      <Thrust damage_type="Pierce" damage_factor="0.68138" />
-      <Swing damage_type="Cut" damage_factor="1.441458" />
+      <Thrust damage_type="Pierce" damage_factor="1.02207" />
+      <Swing damage_type="Cut" damage_factor="1.502795" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -780,9 +780,9 @@
       <Material id="Iron4" count="3" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_battania_blade_6" name="{=IUlApNGp}Long Falx Blade" tier="4" piece_type="Blade" mesh="battania_blade_6" culture="Culture.battania" length="95.6" weight="0.85" excluded_item_usage_features="thrust">
+  <CraftingPiece id="crpg_battania_blade_6" name="{=IUlApNGp}Long Falx Blade" tier="4" piece_type="Blade" mesh="battania_blade_6" culture="Culture.battania" length="95.6" weight="1.05" excluded_item_usage_features="thrust">
     <BladeData stack_amount="0" physics_material="metal_weapon" body_name="bo_sword_one_handed">
-      <Swing damage_type="Cut" damage_factor="1.505175" />
+      <Swing damage_type="Cut" damage_factor="1.56275" />
     </BladeData>
     <Flags>
       <Flag name="BonusAgainstShield" />
@@ -962,7 +962,7 @@
   <CraftingPiece id="crpg_khuzait_blade_8" name="{=19a3jJ1s}Ridged Great Saber Blade" tier="4" piece_type="Blade" mesh="khuzait_blade_8" culture="Culture.khuzait" length="99" weight="0.9350001">
     <BuildData previous_piece_offset="-0.25" />
     <BladeData stack_amount="0" physics_material="metal_weapon" body_name="bo_sword_one_handed" holster_mesh="khuzait_blade_8_scabbard_8">
-      <Thrust damage_type="Pierce" damage_factor="0.816375" />
+      <Thrust damage_type="Pierce" damage_factor="0.9625" />
       <Swing damage_type="Cut" damage_factor="1.365" />
     </BladeData>
     <Materials>
@@ -4492,7 +4492,7 @@
   <CraftingPiece id="crpg_axe_craft_4_head" name="{=fdR6zYiP}Franziska Head" tier="4" piece_type="Blade" mesh="axe_craft_4_head" distance_to_next_piece="5.787" distance_to_previous_piece="1.483" weight="0.453" is_default="true">
     <BuildData piece_offset="-2.966" />
     <BladeData stack_amount="3" blade_length="10.566" blade_width="19.257" physics_material="metal_weapon" body_name="bo_axe_longer_b" holster_mesh="throwing_axe_quiver_1">
-      <Swing damage_type="Cut" damage_factor="1.7458" />
+      <Swing damage_type="Cut" damage_factor="1.624" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="3" />

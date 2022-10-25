@@ -176,7 +176,7 @@ internal class ItemExporter : IDataExporter
         // Bearded Axe
         ["crpg_axe_craft_3_head"] = (1.28f, 1f, 1f, 1.2f, 2),
         // Highland Throwing Axe - Tribesman Throwing Axe - Francesca
-        ["crpg_axe_craft_4_head"] = (1.72f, 1f, 1f, 1f, 3),
+        ["crpg_axe_craft_4_head"] = (1.6f, 1f, 1f, 1f, 3),
         // Raider Throwing Axe
         ["crpg_axe_craft_13_head"] = (1.5f, 1f, 1f, 1f, 4),
         // Thin Fine Steel Hewing Spear - Jereed
@@ -191,15 +191,15 @@ internal class ItemExporter : IDataExporter
         ["crpg_dagger_blade_12"] = (1.6f, 1.6f, 1f, 1f, 9),
         ["crpg_dagger_blade_13"] = (1.6f, 1.6f, 1f, 1f, 9),
         // Falx , Reaper Falx
-        ["crpg_battania_blade_6"] = (0.915f, 1f, 1f, 0.85f, 0),
+        ["crpg_battania_blade_6"] = (0.95f, 1f, 1f, 1.05f, 0),
         // Broad Kaskara
-        ["crpg_aserai_blade_5"] = (1.05f, 0.8f, 1f, 0.75f, 0),
+        ["crpg_aserai_blade_5"] = (1.05f, 1.1f, 1f, 0.75f, 0),
         // Wide Fullered Broad Two Hander - Thamaskene Steel Two Hander - Wide Fullered Broad Arming Sword
-        ["crpg_vlandian_blade_3"] = (1.008f, 0.8f, 1f, 0.75f, 0),
+        ["crpg_vlandian_blade_3"] = (1.008f, 1.1f, 1f, 0.75f, 0),
         // Battanian Mountain Blade  - Highland Broad Blade
-        ["crpg_battania_blade_5"] = (1.0045f, 0.628f, 1f, 0.85f, 0),
+        ["crpg_battania_blade_5"] = (1.047244f, 0.942f, 1f, 1f, 0),
         // Ridged Great Saber - Ridged Saber  - Wind Fury
-        ["crpg_khuzait_blade_8"] = (1f, 0.933f, 1f, 0.85f, 0),
+        ["crpg_khuzait_blade_8"] = (1f, 1.1f, 1f, 0.85f, 0),
         // War Razor
         ["crpg_cleaver_blade_5"] = (0.974f, 1f, 1f, 1f, 0),
         // Avalanche - Northlander Broad Axe
