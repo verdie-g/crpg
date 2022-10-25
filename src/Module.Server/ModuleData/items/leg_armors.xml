@@ -24,7 +24,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_battania_leather_boots" name="{=*}Highborn Leather Boots" mesh="battania_leather_boots_a" culture="Culture.battania" weight="1.0" difficulty="0" appearance="1" Type="LegArmor">
+  <Item id="crpg_battania_leather_boots" name="{=4Ygp7P0Y}Highborn Leather Boots" mesh="battania_leather_boots_a" culture="Culture.battania" weight="1.0" difficulty="0" appearance="1" Type="LegArmor">
     <ItemComponent>
       <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>
@@ -174,7 +174,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_empire_horseman_boots" name="{=*}Horseman Boots" mesh="empire_horseman_boots" culture="Culture.empire" weight="0.8" difficulty="0" appearance="1.3" Type="LegArmor">
+  <Item id="crpg_empire_horseman_boots" name="{=uvSXUgT8}Horseman Boots" mesh="empire_horseman_boots" culture="Culture.empire" weight="0.8" difficulty="0" appearance="1.3" Type="LegArmor">
     <ItemComponent>
       <Armor leg_armor="5" covers_legs="true" modifier_group="leather" material_type="Leather" />
     </ItemComponent>

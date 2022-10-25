@@ -1222,20 +1222,20 @@
   },
   {
     "id": "crpg_aserai_horse",
-    "name": "Desert Horse",
+    "name": "Nahasawi",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 3387,
-    "weight": 375.0,
-    "tier": 3.05943155,
+    "price": 3948,
+    "weight": 400.0,
+    "tier": 3.37550426,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 108,
-      "chargeDamage": 3,
-      "maneuver": 56,
+      "bodyLength": 100,
+      "chargeDamage": 4,
+      "maneuver": 59,
       "speed": 40,
       "hitPoints": 150
     },
@@ -2444,80 +2444,6 @@
     "weapons": []
   },
   {
-    "id": "crpg_banner_big",
-    "name": "Big Banner",
-    "culture": "Neutral",
-    "type": "Banner",
-    "price": 50,
-    "weight": 4.0,
-    "tier": 0.0,
-    "requirement": 0,
-    "flags": [
-      "ForceAttachOffHandPrimaryItemBone",
-      "DropOnWeaponChange",
-      "WoodenParry",
-      "HeldInOffHand",
-      "HasToBeHeldUp"
-    ],
-    "weapons": [
-      {
-        "class": "Banner",
-        "itemUsage": "banner",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 350,
-        "balance": 0.0,
-        "handling": 0,
-        "bodyArmor": 0,
-        "flags": [],
-        "thrustDamage": 0,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 0,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 82
-      }
-    ]
-  },
-  {
-    "id": "crpg_banner_mid",
-    "name": "Triangle Banner",
-    "culture": "Neutral",
-    "type": "Banner",
-    "price": 50,
-    "weight": 4.0,
-    "tier": 0.0,
-    "requirement": 0,
-    "flags": [
-      "ForceAttachOffHandPrimaryItemBone",
-      "DropOnWeaponChange",
-      "WoodenParry",
-      "HeldInOffHand",
-      "HasToBeHeldUp"
-    ],
-    "weapons": [
-      {
-        "class": "Banner",
-        "itemUsage": "banner",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 200,
-        "balance": 0.0,
-        "handling": 0,
-        "bodyArmor": 0,
-        "flags": [],
-        "thrustDamage": 0,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 0,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 82
-      }
-    ]
-  },
-  {
     "id": "crpg_barbed_arrows",
     "name": "Barbed Arrows",
     "culture": "Neutral",
@@ -3678,21 +3604,21 @@
   },
   {
     "id": "crpg_battania_horse",
-    "name": "Battanian Pony",
+    "name": "Battanian Hobby",
     "culture": "Battania",
     "type": "Mount",
-    "price": 3535,
-    "weight": 410.0,
-    "tier": 3.14501929,
+    "price": 4065,
+    "weight": 380.0,
+    "tier": 3.43897128,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 98,
-      "chargeDamage": 3,
-      "maneuver": 56,
-      "speed": 33,
+      "chargeDamage": 6,
+      "maneuver": 57,
+      "speed": 34,
       "hitPoints": 200
     },
     "weapons": []
@@ -6198,19 +6124,19 @@
     "name": "Camel",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 3789,
+    "price": 3409,
     "weight": 500.0,
-    "tier": 3.288253,
+    "tier": 3.07213545,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 95,
-      "chargeDamage": 3,
-      "maneuver": 65,
+      "chargeDamage": 6,
+      "maneuver": 60,
       "speed": 33,
-      "hitPoints": 165
+      "hitPoints": 175
     },
     "weapons": []
   },
@@ -6580,19 +6506,19 @@
     "name": "Charger",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 7161,
-    "weight": 415.0,
-    "tier": 4.87594271,
+    "price": 5586,
+    "weight": 430.0,
+    "tier": 4.193274,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 119,
-      "chargeDamage": 3,
-      "maneuver": 68,
+      "bodyLength": 107,
+      "chargeDamage": 7,
+      "maneuver": 67,
       "speed": 36,
-      "hitPoints": 190
+      "hitPoints": 170
     },
     "weapons": []
   },
@@ -6991,7 +6917,7 @@
   },
   {
     "id": "crpg_crossbow_a",
-    "name": "Simple Crossbow",
+    "name": "Simple Light Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
     "price": 1736,
@@ -7219,7 +7145,7 @@
   },
   {
     "id": "crpg_crossbow_g",
-    "name": "Fine Crossbow",
+    "name": "Fine Light Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
     "price": 9467,
@@ -9345,19 +9271,19 @@
     "name": "Midlands Palfrey",
     "culture": "Empire",
     "type": "Mount",
-    "price": 3081,
-    "weight": 370.0,
-    "tier": 2.87662673,
+    "price": 2639,
+    "weight": 390.0,
+    "tier": 2.59622812,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 110,
-      "chargeDamage": 3,
-      "maneuver": 61,
+      "bodyLength": 102,
+      "chargeDamage": 6,
+      "maneuver": 55,
       "speed": 35,
-      "hitPoints": 150
+      "hitPoints": 160
     },
     "weapons": []
   },
@@ -9986,9 +9912,9 @@
     "name": "Menavlion",
     "culture": "Empire",
     "type": "Polearm",
-    "price": 16174,
+    "price": 14713,
     "weight": 1.92,
-    "tier": 9.999672,
+    "tier": 9.487821,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -9998,21 +9924,20 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 159,
+        "length": 163,
         "balance": 0.0,
-        "handling": 73,
+        "handling": 72,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
-          "WideGrip",
-          "CanDismount"
+          "WideGrip"
         ],
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
         "swingDamage": 10,
         "swingDamageType": "Cut",
-        "swingSpeed": 42
+        "swingSpeed": 40
       },
       {
         "class": "TwoHandedPolearm",
@@ -10020,23 +9945,22 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 159,
-        "balance": 0.41,
-        "handling": 71,
+        "length": 163,
+        "balance": 0.38,
+        "handling": 70,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
           "NotUsableWithOneHand",
           "WideGrip",
-          "TwoHandIdleOnMount",
-          "CanDismount"
+          "TwoHandIdleOnMount"
         ],
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
         "swingDamage": 39,
         "swingDamageType": "Cut",
-        "swingSpeed": 82
+        "swingSpeed": 81
       }
     ]
   },
@@ -12848,19 +12772,19 @@
     "name": "Hunter",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 6650,
-    "weight": 380.0,
-    "tier": 4.66319656,
+    "price": 4784,
+    "weight": 390.0,
+    "tier": 3.80959272,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 94,
-      "chargeDamage": 2,
+      "bodyLength": 101,
+      "chargeDamage": 5,
       "maneuver": 65,
-      "speed": 40,
-      "hitPoints": 170
+      "speed": 36,
+      "hitPoints": 165
     },
     "weapons": []
   },
@@ -14291,19 +14215,19 @@
     "name": "Steppe Horse",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 4579,
-    "weight": 365.0,
-    "tier": 3.706744,
+    "price": 3493,
+    "weight": 320.0,
+    "tier": 3.1207242,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 94,
-      "chargeDamage": 2,
-      "maneuver": 69,
-      "speed": 34,
-      "hitPoints": 160
+      "chargeDamage": 5,
+      "maneuver": 67,
+      "speed": 33,
+      "hitPoints": 150
     },
     "weapons": []
   },
@@ -14312,9 +14236,9 @@
     "name": "Light Steppe Rider Lance",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 1119,
+    "price": 1120,
     "weight": 1.91,
-    "tier": 1.9219954,
+    "tier": 1.923088,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -14324,7 +14248,7 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 189,
+        "length": 198,
         "balance": 0.0,
         "handling": 60,
         "bodyArmor": 0,
@@ -14345,9 +14269,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 189,
+        "length": 198,
         "balance": 0.0,
-        "handling": 57,
+        "handling": 56,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -14360,30 +14284,7 @@
         "thrustSpeed": 91,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 69
-      },
-      {
-        "class": "TwoHandedPolearm",
-        "itemUsage": "polearm_bracing",
-        "accuracy": 0,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 189,
-        "balance": 0.0,
-        "handling": 57,
-        "bodyArmor": 0,
-        "flags": [
-          "MeleeWeapon",
-          "NotUsableWithOneHand",
-          "WideGrip",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 12,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 91,
-        "swingDamage": 0,
-        "swingDamageType": "Undefined",
-        "swingSpeed": 69
+        "swingSpeed": 67
       }
     ]
   },
@@ -14860,9 +14761,9 @@
     "name": "Glaive",
     "culture": "Khuzait",
     "type": "Polearm",
-    "price": 15076,
+    "price": 14905,
     "weight": 1.89,
-    "tier": 9.61714,
+    "tier": 9.556345,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -14872,9 +14773,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 145,
+        "length": 149,
         "balance": 0.0,
-        "handling": 76,
+        "handling": 75,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -14885,7 +14786,7 @@
         "thrustSpeed": 85,
         "swingDamage": 11,
         "swingDamageType": "Cut",
-        "swingSpeed": 49
+        "swingSpeed": 48
       },
       {
         "class": "TwoHandedPolearm",
@@ -14893,8 +14794,8 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 145,
-        "balance": 0.59,
+        "length": 149,
+        "balance": 0.56,
         "handling": 74,
         "bodyArmor": 0,
         "flags": [
@@ -14908,7 +14809,7 @@
         "thrustSpeed": 94,
         "swingDamage": 35,
         "swingDamageType": "Cut",
-        "swingSpeed": 87
+        "swingSpeed": 86
       }
     ]
   },
@@ -17444,23 +17345,44 @@
     ]
   },
   {
-    "id": "crpg_noble_horse",
-    "name": "Pureblood",
-    "culture": "Neutral",
+    "id": "crpg_noble_camel",
+    "name": "Nahasa Camel",
+    "culture": "Aserai",
     "type": "Mount",
-    "price": 19408,
-    "weight": 400.0,
-    "tier": 8.6850605,
+    "price": 11550,
+    "weight": 540.0,
+    "tier": 6.46289873,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 115,
-      "chargeDamage": 11,
-      "maneuver": 65,
-      "speed": 48,
+      "bodyLength": 110,
+      "chargeDamage": 4,
+      "maneuver": 72,
+      "speed": 36,
       "hitPoints": 220
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_noble_horse",
+    "name": "Pureblood",
+    "culture": "Neutral",
+    "type": "Mount",
+    "price": 14194,
+    "weight": 470.0,
+    "tier": 7.276252,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 108,
+      "chargeDamage": 8,
+      "maneuver": 70,
+      "speed": 48,
+      "hitPoints": 170
     },
     "weapons": []
   },
@@ -17469,19 +17391,19 @@
     "name": "Battanian Thoroughbred",
     "culture": "Battania",
     "type": "Mount",
-    "price": 21997,
-    "weight": 390.0,
-    "tier": 9.314342,
+    "price": 26212,
+    "weight": 420.0,
+    "tier": 10.2651968,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 111,
-      "chargeDamage": 3,
-      "maneuver": 76,
-      "speed": 49,
-      "hitPoints": 180
+      "bodyLength": 102,
+      "chargeDamage": 8,
+      "maneuver": 72,
+      "speed": 41,
+      "hitPoints": 270
     },
     "weapons": []
   },
@@ -17490,19 +17412,19 @@
     "name": "Asaligat",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 25000,
-    "weight": 426.0,
-    "tier": 10.0000029,
+    "price": 29970,
+    "weight": 450.0,
+    "tier": 11.0507994,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 98,
-      "chargeDamage": 3,
+      "bodyLength": 105,
+      "chargeDamage": 7,
       "maneuver": 82,
-      "speed": 42,
-      "hitPoints": 210
+      "speed": 47,
+      "hitPoints": 195
     },
     "weapons": []
   },
@@ -17511,19 +17433,19 @@
     "name": "Cossian",
     "culture": "Empire",
     "type": "Mount",
-    "price": 11401,
-    "weight": 440.0,
-    "tier": 6.41439629,
+    "price": 14930,
+    "weight": 500.0,
+    "tier": 7.48885965,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 114,
-      "chargeDamage": 4,
-      "maneuver": 66,
-      "speed": 36,
-      "hitPoints": 250
+      "bodyLength": 109,
+      "chargeDamage": 10,
+      "maneuver": 71,
+      "speed": 46,
+      "hitPoints": 180
     },
     "weapons": []
   },
@@ -17532,19 +17454,19 @@
     "name": "Khamseen",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 19021,
-    "weight": 400.0,
-    "tier": 8.587405,
+    "price": 13397,
+    "weight": 480.0,
+    "tier": 7.03934956,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 115,
-      "chargeDamage": 4,
+      "bodyLength": 107,
+      "chargeDamage": 9,
       "maneuver": 65,
       "speed": 48,
-      "hitPoints": 220
+      "hitPoints": 185
     },
     "weapons": []
   },
@@ -17553,61 +17475,61 @@
     "name": "Tyal Horse",
     "culture": "Sturgia",
     "type": "Mount",
-    "price": 14030,
-    "weight": 417.0,
-    "tier": 7.22790241,
+    "price": 17840,
+    "weight": 490.0,
+    "tier": 8.28327,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 100,
-      "chargeDamage": 3,
+      "bodyLength": 106,
+      "chargeDamage": 10,
       "maneuver": 76,
       "speed": 42,
-      "hitPoints": 180
+      "hitPoints": 200
     },
     "weapons": []
   },
   {
     "id": "crpg_noble_horse_southern",
-    "name": "Nahasawi",
+    "name": "Wadar Hotblood",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 19489,
-    "weight": 405.0,
-    "tier": 8.705149,
+    "price": 27192,
+    "weight": 485.0,
+    "tier": 10.4752178,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 104,
+      "chargeDamage": 7,
+      "maneuver": 78,
+      "speed": 51,
+      "hitPoints": 180
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_noble_horse_western",
+    "name": "Royal Destrier",
+    "culture": "Vlandia",
+    "type": "Mount",
+    "price": 15529,
+    "weight": 540.0,
+    "tier": 7.658159,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 110,
-      "chargeDamage": 3,
-      "maneuver": 72,
-      "speed": 51,
-      "hitPoints": 175
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_noble_horse_western",
-    "name": "Destrier",
-    "culture": "Vlandia",
-    "type": "Mount",
-    "price": 17180,
-    "weight": 420.0,
-    "tier": 8.109203,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 109,
-      "chargeDamage": 4,
-      "maneuver": 71,
-      "speed": 45,
-      "hitPoints": 200
+      "chargeDamage": 11,
+      "maneuver": 73,
+      "speed": 39,
+      "hitPoints": 220
     },
     "weapons": []
   },
@@ -18897,9 +18819,9 @@
     "name": "Broad Leaf Shaped Spear",
     "culture": "Battania",
     "type": "Polearm",
-    "price": 10809,
+    "price": 11479,
     "weight": 1.51,
-    "tier": 7.979894,
+    "tier": 8.255506,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -18909,9 +18831,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 138,
+        "length": 149,
         "balance": 0.0,
-        "handling": 70,
+        "handling": 69,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -18922,7 +18844,7 @@
         "thrustSpeed": 87,
         "swingDamage": 3,
         "swingDamageType": "Blunt",
-        "swingSpeed": 45
+        "swingSpeed": 42
       },
       {
         "class": "TwoHandedPolearm",
@@ -18930,9 +18852,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 138,
-        "balance": 0.48,
-        "handling": 67,
+        "length": 149,
+        "balance": 0.41,
+        "handling": 66,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -18945,7 +18867,7 @@
         "thrustSpeed": 95,
         "swingDamage": 12,
         "swingDamageType": "Blunt",
-        "swingSpeed": 84
+        "swingSpeed": 82
       }
     ]
   },
@@ -19233,19 +19155,19 @@
     "name": "Work Horse",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 1098,
-    "weight": 420.0,
-    "tier": 1.39160049,
+    "price": 1120,
+    "weight": 490.0,
+    "tier": 1.41302669,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 102,
+      "bodyLength": 103,
       "chargeDamage": 1,
-      "maneuver": 52,
-      "speed": 27,
-      "hitPoints": 150
+      "maneuver": 50,
+      "speed": 26,
+      "hitPoints": 170
     },
     "weapons": []
   },
@@ -21829,6 +21751,27 @@
     "weapons": []
   },
   {
+    "id": "crpg_saddle_horse",
+    "name": "Saddle Horse",
+    "culture": "Neutral",
+    "type": "Mount",
+    "price": 1928,
+    "weight": 420.0,
+    "tier": 2.09593177,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 100,
+      "chargeDamage": 3,
+      "maneuver": 52,
+      "speed": 27,
+      "hitPoints": 210
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_scale_armor",
     "name": "Rugged Scale Armor",
     "culture": "Battania",
@@ -22849,12 +22792,12 @@
   },
   {
     "id": "crpg_southern_spear_3_t3",
-    "name": "Knob Headed Spear",
+    "name": "Knob Headed Spear with Frills",
     "culture": "Aserai",
     "type": "Polearm",
-    "price": 2204,
+    "price": 2293,
     "weight": 1.82,
-    "tier": 3.05704784,
+    "tier": 3.13674521,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -22864,7 +22807,7 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 170,
+        "length": 174,
         "balance": 0.0,
         "handling": 64,
         "bodyArmor": 0,
@@ -22877,7 +22820,7 @@
         "thrustSpeed": 84,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 30
+        "swingSpeed": 29
       },
       {
         "class": "TwoHandedPolearm",
@@ -22885,8 +22828,8 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 170,
-        "balance": 0.16,
+        "length": 174,
+        "balance": 0.14,
         "handling": 61,
         "bodyArmor": 0,
         "flags": [
@@ -22958,6 +22901,63 @@
         "swingDamage": 0,
         "swingDamageType": "Undefined",
         "swingSpeed": 71
+      }
+    ]
+  },
+  {
+    "id": "crpg_southern_spear_4_t3",
+    "name": "Knob Headed Spear",
+    "culture": "Aserai",
+    "type": "Polearm",
+    "price": 2204,
+    "weight": 1.82,
+    "tier": 3.05704784,
+    "requirement": 0,
+    "flags": [],
+    "weapons": [
+      {
+        "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 170,
+        "balance": 0.0,
+        "handling": 64,
+        "bodyArmor": 0,
+        "flags": [
+          "MeleeWeapon",
+          "WideGrip"
+        ],
+        "thrustDamage": 12,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 84,
+        "swingDamage": 0,
+        "swingDamageType": "Undefined",
+        "swingSpeed": 30
+      },
+      {
+        "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 170,
+        "balance": 0.16,
+        "handling": 61,
+        "bodyArmor": 0,
+        "flags": [
+          "MeleeWeapon",
+          "NotUsableWithOneHand",
+          "WideGrip",
+          "TwoHandIdleOnMount"
+        ],
+        "thrustDamage": 14,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 92,
+        "swingDamage": 0,
+        "swingDamageType": "Undefined",
+        "swingSpeed": 74
       }
     ]
   },
@@ -23069,16 +23069,16 @@
     "name": "Husnphree",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 12072,
+    "price": 12256,
     "weight": 550.0,
-    "tier": 6.63016462,
+    "tier": 6.688189,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 115,
-      "chargeDamage": 4,
+      "bodyLength": 110,
+      "chargeDamage": 9,
       "maneuver": 69,
       "speed": 36,
       "hitPoints": 240
@@ -24540,22 +24540,22 @@
   },
   {
     "id": "crpg_sturgia_horse",
-    "name": "Sturgian Trotter",
+    "name": "Sturgian Native",
     "culture": "Sturgia",
     "type": "Mount",
-    "price": 3499,
-    "weight": 405.0,
-    "tier": 3.12410069,
+    "price": 3655,
+    "weight": 440.0,
+    "tier": 3.21351385,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 100,
-      "chargeDamage": 3,
-      "maneuver": 62,
-      "speed": 33,
-      "hitPoints": 170
+      "bodyLength": 104,
+      "chargeDamage": 5,
+      "maneuver": 63,
+      "speed": 36,
+      "hitPoints": 150
     },
     "weapons": []
   },
@@ -25565,127 +25565,253 @@
   },
   {
     "id": "crpg_t2_aserai_horse",
-    "name": "Aserai Horse",
+    "name": "Darshi Horse",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 11440,
-    "weight": 400.0,
-    "tier": 6.42710638,
+    "price": 6493,
+    "weight": 360.0,
+    "tier": 4.59616947,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 108,
-      "chargeDamage": 2,
-      "maneuver": 70,
-      "speed": 49,
+      "bodyLength": 99,
+      "chargeDamage": 5,
+      "maneuver": 73,
+      "speed": 38,
       "hitPoints": 150
     },
     "weapons": []
   },
   {
     "id": "crpg_t2_battania_horse",
-    "name": "Battanian Warmount",
+    "name": "Glintor Pony",
     "culture": "Battania",
     "type": "Mount",
-    "price": 8918,
-    "weight": 420.0,
-    "tier": 5.55651855,
+    "price": 6987,
+    "weight": 450.0,
+    "tier": 4.804594,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 111,
-      "chargeDamage": 3,
-      "maneuver": 73,
-      "speed": 36,
-      "hitPoints": 190
+      "bodyLength": 98,
+      "chargeDamage": 7,
+      "maneuver": 66,
+      "speed": 33,
+      "hitPoints": 220
     },
     "weapons": []
   },
   {
     "id": "crpg_t2_empire_horse",
-    "name": "Imperial Charger",
+    "name": "Canterion Charger",
     "culture": "Empire",
     "type": "Mount",
-    "price": 8203,
-    "weight": 430.0,
-    "tier": 5.288164,
+    "price": 3904,
+    "weight": 460.0,
+    "tier": 3.35184765,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 115,
-      "chargeDamage": 3,
-      "maneuver": 66,
-      "speed": 33,
-      "hitPoints": 240
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_t2_khuzait_horse",
-    "name": "Steppe Warhorse",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 13182,
-    "weight": 405.0,
-    "tier": 6.97446537,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 94,
-      "chargeDamage": 2,
-      "maneuver": 78,
+      "bodyLength": 103,
+      "chargeDamage": 8,
+      "maneuver": 60,
       "speed": 37,
-      "hitPoints": 200
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_t2_sturgia_horse",
-    "name": "Sturgian Chaser",
-    "culture": "Sturgia",
-    "type": "Mount",
-    "price": 8789,
-    "weight": 415.0,
-    "tier": 5.50872755,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 100,
-      "chargeDamage": 2,
-      "maneuver": 74,
-      "speed": 40,
       "hitPoints": 160
     },
     "weapons": []
   },
   {
+    "id": "crpg_t2_khuzait_horse",
+    "name": "Steppe Hunter",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 8542,
+    "weight": 300.0,
+    "tier": 5.41682339,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 95,
+      "chargeDamage": 6,
+      "maneuver": 69,
+      "speed": 35,
+      "hitPoints": 210
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_t2_sturgia_horse",
+    "name": "Revyl Chaser",
+    "culture": "Sturgia",
+    "type": "Mount",
+    "price": 5476,
+    "weight": 450.0,
+    "tier": 4.142133,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 108,
+      "chargeDamage": 6,
+      "maneuver": 63,
+      "speed": 42,
+      "hitPoints": 150
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_t2_vlandia_horse",
-    "name": "Vlandian Courser",
+    "name": "Valanby Courser",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 8930,
-    "weight": 420.0,
-    "tier": 5.561001,
+    "price": 3956,
+    "weight": 475.0,
+    "tier": 3.38008571,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 109,
-      "chargeDamage": 3,
-      "maneuver": 68,
+      "chargeDamage": 9,
+      "maneuver": 58,
+      "speed": 34,
+      "hitPoints": 190
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_t3_aserai_horse",
+    "name": "Askarat",
+    "culture": "Aserai",
+    "type": "Mount",
+    "price": 16161,
+    "weight": 500.0,
+    "tier": 7.83354425,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 103,
+      "chargeDamage": 6,
+      "maneuver": 73,
+      "speed": 48,
+      "hitPoints": 170
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_t3_battania_horse",
+    "name": "Swenryn Pony",
+    "culture": "Battania",
+    "type": "Mount",
+    "price": 15292,
+    "weight": 430.0,
+    "tier": 7.59168768,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 100,
+      "chargeDamage": 7,
+      "maneuver": 69,
+      "speed": 39,
+      "hitPoints": 240
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_t3_empire_horse",
+    "name": "Palmatian",
+    "culture": "Empire",
+    "type": "Mount",
+    "price": 9271,
+    "weight": 520.0,
+    "tier": 5.68495655,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 9,
+      "maneuver": 66,
+      "speed": 44,
+      "hitPoints": 170
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_t3_khuzait_horse",
+    "name": "Karahan",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 19062,
+    "weight": 460.0,
+    "tier": 8.597762,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 106,
+      "chargeDamage": 6,
+      "maneuver": 77,
+      "speed": 45,
+      "hitPoints": 185
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_t3_sturgia_horse",
+    "name": "Omor Trotter",
+    "culture": "Sturgia",
+    "type": "Mount",
+    "price": 10376,
+    "weight": 500.0,
+    "tier": 6.07264042,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 105,
+      "chargeDamage": 8,
+      "maneuver": 71,
       "speed": 39,
       "hitPoints": 190
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_t3_vlandia_horse",
+    "name": "Destrier",
+    "culture": "Vlandia",
+    "type": "Mount",
+    "price": 8981,
+    "weight": 550.0,
+    "tier": 5.57957458,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 110,
+      "chargeDamage": 10,
+      "maneuver": 68,
+      "speed": 36,
+      "hitPoints": 210
     },
     "weapons": []
   },
@@ -27130,21 +27256,21 @@
   },
   {
     "id": "crpg_vlandia_horse",
-    "name": "Saddle Horse",
+    "name": "Rouncey",
     "culture": "Vlandia",
     "type": "Mount",
-    "price": 2481,
-    "weight": 462.0,
-    "tier": 2.49140072,
+    "price": 2723,
+    "weight": 425.0,
+    "tier": 2.65105367,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
-      "bodyLength": 109,
-      "chargeDamage": 3,
-      "maneuver": 55,
-      "speed": 36,
+      "bodyLength": 102,
+      "chargeDamage": 7,
+      "maneuver": 61,
+      "speed": 33,
       "hitPoints": 150
     },
     "weapons": []
@@ -28117,19 +28243,19 @@
     "name": "War Camel",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 5521,
+    "price": 6239,
     "weight": 500.0,
-    "tier": 4.16329956,
+    "tier": 4.48656464,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 105,
-      "chargeDamage": 4,
+      "chargeDamage": 7,
       "maneuver": 67,
       "speed": 36,
-      "hitPoints": 170
+      "hitPoints": 180
     },
     "weapons": []
   },
@@ -28764,9 +28890,9 @@
     "name": "Tall Tipped Long Spear",
     "culture": "Vlandia",
     "type": "Polearm",
-    "price": 489,
+    "price": 494,
     "weight": 2.07,
-    "tier": 1.005835,
+    "tier": 1.014865,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -28776,9 +28902,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 196,
+        "length": 208,
         "balance": 0.0,
-        "handling": 54,
+        "handling": 53,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -28789,7 +28915,7 @@
         "thrustSpeed": 79,
         "swingDamage": 0,
         "swingDamageType": "Undefined",
-        "swingSpeed": 17
+        "swingSpeed": 16
       },
       {
         "class": "TwoHandedPolearm",
@@ -28797,9 +28923,66 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 196,
+        "length": 208,
         "balance": 0.0,
-        "handling": 50,
+        "handling": 49,
+        "bodyArmor": 0,
+        "flags": [
+          "MeleeWeapon",
+          "NotUsableWithOneHand",
+          "WideGrip",
+          "TwoHandIdleOnMount"
+        ],
+        "thrustDamage": 11,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 88,
+        "swingDamage": 0,
+        "swingDamageType": "Undefined",
+        "swingSpeed": 56
+      }
+    ]
+  },
+  {
+    "id": "crpg_western_spear_4_t3",
+    "name": "Tall Tipped Spear",
+    "culture": "Vlandia",
+    "type": "Polearm",
+    "price": 465,
+    "weight": 2.1,
+    "tier": 0.963538468,
+    "requirement": 0,
+    "flags": [],
+    "weapons": [
+      {
+        "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 199,
+        "balance": 0.0,
+        "handling": 53,
+        "bodyArmor": 0,
+        "flags": [
+          "MeleeWeapon",
+          "WideGrip"
+        ],
+        "thrustDamage": 9,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 79,
+        "swingDamage": 0,
+        "swingDamageType": "Undefined",
+        "swingSpeed": 16
+      },
+      {
+        "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_long_shield_thrust",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 199,
+        "balance": 0.0,
+        "handling": 49,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -28820,9 +29003,9 @@
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
-        "length": 196,
+        "length": 199,
         "balance": 0.0,
-        "handling": 50,
+        "handling": 49,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
@@ -28862,9 +29045,7 @@
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon",
-          "WideGrip",
-          "CanDismount",
-          "MissileWithPhysics"
+          "WideGrip"
         ],
         "thrustDamage": 11,
         "thrustDamageType": "Pierce",
@@ -28887,9 +29068,7 @@
           "MeleeWeapon",
           "NotUsableWithOneHand",
           "WideGrip",
-          "TwoHandIdleOnMount",
-          "CanDismount",
-          "MissileWithPhysics"
+          "TwoHandIdleOnMount"
         ],
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
@@ -28897,10 +29076,44 @@
         "swingDamage": 0,
         "swingDamageType": "Undefined",
         "swingSpeed": 51
+      }
+    ]
+  },
+  {
+    "id": "crpg_western_spear_5_t4",
+    "name": "Fine Steel Spear",
+    "culture": "Empire",
+    "type": "Polearm",
+    "price": 845,
+    "weight": 2.06,
+    "tier": 1.56192434,
+    "requirement": 0,
+    "flags": [],
+    "weapons": [
+      {
+        "class": "OneHandedPolearm",
+        "itemUsage": "onehanded_polearm_block_long_rshield_thrust",
+        "accuracy": 0,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 235,
+        "balance": 0.0,
+        "handling": 50,
+        "bodyArmor": 0,
+        "flags": [
+          "MeleeWeapon",
+          "WideGrip"
+        ],
+        "thrustDamage": 11,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 78,
+        "swingDamage": 0,
+        "swingDamageType": "Undefined",
+        "swingSpeed": 14
       },
       {
         "class": "TwoHandedPolearm",
-        "itemUsage": "polearm_bracing",
+        "itemUsage": "polearm_block_long_shield_thrust",
         "accuracy": 0,
         "missileSpeed": 0,
         "stackAmount": 0,
@@ -28912,9 +29125,7 @@
           "MeleeWeapon",
           "NotUsableWithOneHand",
           "WideGrip",
-          "TwoHandIdleOnMount",
-          "CanDismount",
-          "MissileWithPhysics"
+          "TwoHandIdleOnMount"
         ],
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",

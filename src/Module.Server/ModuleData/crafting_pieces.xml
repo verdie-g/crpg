@@ -5226,6 +5226,101 @@
       <Material id="Iron2" count="2" />
     </Materials>
   </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_1" name="{=CYVjEcPQ}Long Fanion Banner" tier="5" piece_type="Guard" mesh="spear_banner_1" culture="Culture.neutral_culture" length="20.4" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_2" name="{=CYVjEcPQ}Long Fanion Banner" tier="4" piece_type="Guard" mesh="spear_banner_2" culture="Culture.neutral_culture" length="12.8" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_3" name="{=HA4O76ri}Ribbon" tier="3" piece_type="Guard" mesh="spear_banner_3" culture="Culture.neutral_culture" length="9.2" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_4" name="{=gM8zaQ8l}Gonfalon Banner" tier="3" piece_type="Guard" mesh="spear_banner_4" culture="Culture.neutral_culture" length="35.5" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_5" name="{=oeELDZRo}Horizontal Rectangular Banner" tier="3" piece_type="Guard" mesh="spear_banner_5" culture="Culture.neutral_culture" length="20.2" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_6" name="{=Vf2wKojF}Fanion Banner" tier="3" piece_type="Guard" mesh="spear_banner_6" culture="Culture.neutral_culture" length="16.8" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_9" name="{=aaYy1btG}Swallowtail Banner" tier="4" piece_type="Guard" mesh="spear_banner_9" culture="Culture.neutral_culture" length="20" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_10" name="{=tooJPhpa}Thin Swallowtail Banner" tier="3" piece_type="Guard" mesh="spear_banner_10" culture="Culture.neutral_culture" length="12" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_12" name="{=FDscHYmZ}Oriflamme Banner" tier="5" piece_type="Guard" mesh="spear_banner_12" culture="Culture.neutral_culture" length="12.8" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_15" name="{=q9K7Y2pZ}Cloth Banner" tier="2" piece_type="Guard" mesh="spear_banner_15" culture="Culture.neutral_culture" length="3.5" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_16" name="{=wTSBQduq}Horse Tail Frills" tier="3" piece_type="Guard" mesh="spear_banner_16" culture="Culture.neutral_culture" length="4" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_17" name="{=YFkEsUhn}Red Horse Tail Frills" tier="4" piece_type="Guard" mesh="spear_banner_17" culture="Culture.neutral_culture" length="8.84" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_18" name="{=r9NcHImd}Triple Gonfalon Banner" tier="4" piece_type="Guard" mesh="spear_banner_18" culture="Culture.neutral_culture" length="55.2" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_19" name="{=ubnADEGb}Swallow-tail with Tongue" tier="4" piece_type="Guard" mesh="spear_banner_19" culture="Culture.neutral_culture" length="19.2" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_20" name="{=Jbaj33wV}Long Rectangular Banner" tier="3" piece_type="Guard" mesh="spear_banner_3" culture="Culture.neutral_culture" length="9.2" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_21" name="{=GJYbHthS}Swallow-Tail with Two Tongues" tier="4" piece_type="Guard" mesh="spear_banner_21" culture="Culture.neutral_culture" length="17.2" weight="0">
+    <Materials>
+      <Material id="Iron4" count="1" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_22" name="{=6uyVChLK}Rectangular Banner" tier="3" piece_type="Guard" mesh="spear_banner_22" culture="Culture.neutral_culture" length="61.3" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_23" name="{=f3zHQAs9}Abnormal Pennon Banner" tier="4" piece_type="Guard" mesh="spear_banner_23" culture="Culture.neutral_culture" length="30.2" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
+  <CraftingPiece id="crpg_spear_banner_24" name="{=f3zHQAs9}Abnormal Pennon Banner" tier="4" piece_type="Guard" mesh="spear_banner_23" culture="Culture.neutral_culture" length="30.2" weight="0">
+    <Materials>
+      <Material id="Iron4" count="0" />
+    </Materials>
+  </CraftingPiece>
   <CraftingPiece id="crpg_spear_guard_3" name="{=Vf2wKojF}Blunt Wings" tier="4" piece_type="Guard" mesh="spear_guard_3" culture="Culture.empire" length="12.5" weight="0">
     <Materials>
       <Material id="Iron4" count="1" />
