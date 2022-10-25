@@ -193,13 +193,13 @@ internal class ItemExporter : IDataExporter
         // Falx , Reaper Falx
         ["crpg_battania_blade_6"] = (0.95f, 1f, 1f, 1.05f, 0),
         // Broad Kaskara
-        ["crpg_aserai_blade_5"] = (1.05f, 0.8f, 1f, 0.75f, 0),
+        ["crpg_aserai_blade_5"] = (1.05f, 1.1f, 1f, 0.75f, 0),
         // Wide Fullered Broad Two Hander - Thamaskene Steel Two Hander - Wide Fullered Broad Arming Sword
-        ["crpg_vlandian_blade_3"] = (1.008f, 0.8f, 1f, 0.75f, 0),
+        ["crpg_vlandian_blade_3"] = (1.008f, 1.1f, 1f, 0.75f, 0),
         // Battanian Mountain Blade  - Highland Broad Blade
-        ["crpg_battania_blade_5"] = (1.047244f, 0.628f, 1f, 1f, 0),
+        ["crpg_battania_blade_5"] = (1.047244f, 0.942f, 1f, 1f, 0),
         // Ridged Great Saber - Ridged Saber  - Wind Fury
-        ["crpg_khuzait_blade_8"] = (1f, 0.933f, 1f, 0.85f, 0),
+        ["crpg_khuzait_blade_8"] = (1f, 1.1f, 1f, 0.85f, 0),
         // War Razor
         ["crpg_cleaver_blade_5"] = (0.974f, 1f, 1f, 1f, 0),
         // Avalanche - Northlander Broad Axe
