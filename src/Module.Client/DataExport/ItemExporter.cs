@@ -11,7 +11,6 @@ using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Tableaus;
 using TaleWorlds.ObjectSystem;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Crpg.Module.DataExport;
 
