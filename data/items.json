@@ -449,9 +449,9 @@
     "name": "Imperial Arrows",
     "culture": "Empire",
     "type": "Arrows",
-    "price": 2114,
+    "price": 1616,
     "weight": 0.05,
-    "tier": 6.48794031,
+    "tier": 5.52546835,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -2448,9 +2448,9 @@
     "name": "Barbed Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 1338,
+    "price": 1812,
     "weight": 0.05,
-    "tier": 4.92122269,
+    "tier": 5.92007351,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -5261,9 +5261,9 @@
     "name": "Stacked Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 4472,
+    "price": 4121,
     "weight": 0.048,
-    "tier": 9.965476,
+    "tier": 9.520603,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -5294,9 +5294,9 @@
     "name": "Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 2694,
+    "price": 3537,
     "weight": 0.048,
-    "tier": 7.47410727,
+    "tier": 8.733389,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -5327,9 +5327,9 @@
     "name": "Light Bodkin Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 2143,
+    "price": 3296,
     "weight": 0.048,
-    "tier": 6.53984356,
+    "tier": 8.39045,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -5360,9 +5360,45 @@
     "name": "Light Bolts",
     "culture": "Neutral",
     "type": "Bolts",
-    "price": 8100,
+    "price": 5107,
+    "weight": 0.04,
+    "tier": 7.659239,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone"
+    ],
+    "weapons": [
+      {
+        "class": "Bolt",
+        "itemUsage": "",
+        "accuracy": 100,
+        "missileSpeed": 10,
+        "stackAmount": 12,
+        "length": 47,
+        "balance": 0.0,
+        "handling": 0,
+        "bodyArmor": 0,
+        "flags": [
+          "AttachAmmoToVisual",
+          "Consumable"
+        ],
+        "thrustDamage": 6,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 0,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 0
+      }
+    ]
+  },
+  {
+    "id": "crpg_bolt_b",
+    "name": "Bolts",
+    "culture": "Vlandia",
+    "type": "Bolts",
+    "price": 6641,
     "weight": 0.05,
-    "tier": 9.932048,
+    "tier": 8.888707,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -5382,43 +5418,7 @@
           "AttachAmmoToVisual",
           "Consumable"
         ],
-        "thrustDamage": 2,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 0,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 0
-      }
-    ]
-  },
-  {
-    "id": "crpg_bolt_b",
-    "name": "Bolts",
-    "culture": "Vlandia",
-    "type": "Bolts",
-    "price": 7676,
-    "weight": 0.08,
-    "tier": 9.639669,
-    "requirement": 0,
-    "flags": [
-      "ForceAttachOffHandPrimaryItemBone"
-    ],
-    "weapons": [
-      {
-        "class": "Bolt",
-        "itemUsage": "",
-        "accuracy": 100,
-        "missileSpeed": 10,
-        "stackAmount": 9,
-        "length": 47,
-        "balance": 0.0,
-        "handling": 0,
-        "bodyArmor": 0,
-        "flags": [
-          "AttachAmmoToVisual",
-          "Consumable"
-        ],
-        "thrustDamage": 4,
+        "thrustDamage": 9,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
         "swingDamage": 0,
@@ -5433,7 +5433,7 @@
     "culture": "Vlandia",
     "type": "Bolts",
     "price": 8200,
-    "weight": 0.04,
+    "weight": 0.06,
     "tier": 10.0,
     "requirement": 0,
     "flags": [
@@ -5445,7 +5445,7 @@
         "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 10,
-        "stackAmount": 9,
+        "stackAmount": 8,
         "length": 37,
         "balance": 0.0,
         "handling": 0,
@@ -5454,7 +5454,7 @@
           "AttachAmmoToVisual",
           "Consumable"
         ],
-        "thrustDamage": 5,
+        "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
         "swingDamage": 0,
@@ -5468,9 +5468,9 @@
     "name": "Heavy Quarrels",
     "culture": "Empire",
     "type": "Bolts",
-    "price": 7179,
-    "weight": 0.06,
-    "tier": 9.285951,
+    "price": 3738,
+    "weight": 0.03,
+    "tier": 6.39489746,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -5481,7 +5481,7 @@
         "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 10,
-        "stackAmount": 9,
+        "stackAmount": 14,
         "length": 37,
         "balance": 0.0,
         "handling": 0,
@@ -5504,9 +5504,9 @@
     "name": "Light Quarrels",
     "culture": "Empire",
     "type": "Bolts",
-    "price": 6261,
-    "weight": 0.04,
-    "tier": 8.598347,
+    "price": 2600,
+    "weight": 0.02,
+    "tier": 5.15461874,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -5517,7 +5517,7 @@
         "itemUsage": "",
         "accuracy": 100,
         "missileSpeed": 10,
-        "stackAmount": 9,
+        "stackAmount": 16,
         "length": 37,
         "balance": 0.0,
         "handling": 0,
@@ -5526,7 +5526,7 @@
           "AttachAmmoToVisual",
           "Consumable"
         ],
-        "thrustDamage": 1,
+        "thrustDamage": 0,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
         "swingDamage": 0,
@@ -6838,9 +6838,9 @@
     "name": "Simple Short Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 4972,
+    "price": 5619,
     "weight": 0.3,
-    "tier": 5.979754,
+    "tier": 6.42293835,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -6879,9 +6879,9 @@
     "name": "Steppe Recurve Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 8533,
+    "price": 9181,
     "weight": 0.3,
-    "tier": 8.161832,
+    "tier": 8.50634,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -6920,21 +6920,21 @@
     "name": "Simple Light Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 1736,
+    "price": 1256,
     "weight": 1.0,
-    "tier": 2.43214417,
-    "requirement": 4,
+    "tier": 1.94002438,
+    "requirement": 3,
     "flags": [],
     "weapons": [
       {
         "class": "Crossbow",
-        "itemUsage": "crossbow",
-        "accuracy": 80,
+        "itemUsage": "crossbow_light",
+        "accuracy": 75,
         "missileSpeed": 84,
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 80,
+        "handling": 95,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -6943,12 +6943,12 @@
           "StringHeldByHand",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 44,
+        "thrustDamage": 23,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 80,
+        "thrustSpeed": 95,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 70
+        "swingSpeed": 75
       }
     ]
   },
@@ -6957,171 +6957,19 @@
     "name": "Heavy Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 4444,
-    "weight": 2.7,
-    "tier": 4.45097446,
-    "requirement": 8,
-    "flags": [],
-    "weapons": [
-      {
-        "class": "Crossbow",
-        "itemUsage": "crossbow",
-        "accuracy": 96,
-        "missileSpeed": 112,
-        "stackAmount": 1,
-        "length": 95,
-        "balance": 0.0,
-        "handling": 80,
-        "bodyArmor": 0,
-        "flags": [
-          "RangedWeapon",
-          "NotUsableWithOneHand",
-          "HasString",
-          "StringHeldByHand",
-          "CanPenetrateShield",
-          "CantReloadOnHorseback",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 54,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 80,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 61
-      }
-    ]
-  },
-  {
-    "id": "crpg_crossbow_c",
-    "name": "Arbalest",
-    "culture": "Vlandia",
-    "type": "Crossbow",
-    "price": 6512,
+    "price": 7429,
     "weight": 3.0,
-    "tier": 5.598078,
+    "tier": 6.04871845,
     "requirement": 10,
     "flags": [],
     "weapons": [
       {
         "class": "Crossbow",
         "itemUsage": "crossbow",
-        "accuracy": 98,
-        "missileSpeed": 121,
+        "accuracy": 97,
+        "missileSpeed": 115,
         "stackAmount": 1,
         "length": 95,
-        "balance": 0.0,
-        "handling": 78,
-        "bodyArmor": 0,
-        "flags": [
-          "RangedWeapon",
-          "NotUsableWithOneHand",
-          "HasString",
-          "StringHeldByHand",
-          "CantReloadOnHorseback",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 59,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 78,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 60
-      }
-    ]
-  },
-  {
-    "id": "crpg_crossbow_d",
-    "name": "Hickory Crossbow",
-    "culture": "Empire",
-    "type": "Crossbow",
-    "price": 10887,
-    "weight": 2.2,
-    "tier": 7.54119253,
-    "requirement": 13,
-    "flags": [],
-    "weapons": [
-      {
-        "class": "Crossbow",
-        "itemUsage": "crossbow",
-        "accuracy": 99,
-        "missileSpeed": 126,
-        "stackAmount": 1,
-        "length": 95,
-        "balance": 0.0,
-        "handling": 92,
-        "bodyArmor": 0,
-        "flags": [
-          "RangedWeapon",
-          "NotUsableWithOneHand",
-          "HasString",
-          "StringHeldByHand",
-          "CantReloadOnHorseback",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 62,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 92,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 62
-      }
-    ]
-  },
-  {
-    "id": "crpg_crossbow_e",
-    "name": "Light Crossbow",
-    "culture": "Vlandia",
-    "type": "Crossbow",
-    "price": 4315,
-    "weight": 2.2,
-    "tier": 4.3712306,
-    "requirement": 7,
-    "flags": [],
-    "weapons": [
-      {
-        "class": "Crossbow",
-        "itemUsage": "crossbow",
-        "accuracy": 85,
-        "missileSpeed": 91,
-        "stackAmount": 1,
-        "length": 95,
-        "balance": 0.0,
-        "handling": 82,
-        "bodyArmor": 0,
-        "flags": [
-          "RangedWeapon",
-          "NotUsableWithOneHand",
-          "HasString",
-          "StringHeldByHand",
-          "TwoHandIdleOnMount"
-        ],
-        "thrustDamage": 51,
-        "thrustDamageType": "Pierce",
-        "thrustSpeed": 82,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 75
-      }
-    ]
-  },
-  {
-    "id": "crpg_crossbow_f",
-    "name": "Bound Crossbow",
-    "culture": "Vlandia",
-    "type": "Crossbow",
-    "price": 18000,
-    "weight": 2.0,
-    "tier": 10.0,
-    "requirement": 18,
-    "flags": [],
-    "weapons": [
-      {
-        "class": "Crossbow",
-        "itemUsage": "crossbow",
-        "accuracy": 100,
-        "missileSpeed": 135,
-        "stackAmount": 1,
-        "length": 90,
         "balance": 0.0,
         "handling": 95,
         "bodyArmor": 0,
@@ -7134,9 +6982,85 @@
           "CantReloadOnHorseback",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 67,
+        "thrustDamage": 45,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 95,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 69
+      }
+    ]
+  },
+  {
+    "id": "crpg_crossbow_c",
+    "name": "Arbalest",
+    "culture": "Vlandia",
+    "type": "Crossbow",
+    "price": 10357,
+    "weight": 3.8,
+    "tier": 7.329433,
+    "requirement": 13,
+    "flags": [],
+    "weapons": [
+      {
+        "class": "Crossbow",
+        "itemUsage": "crossbow",
+        "accuracy": 98,
+        "missileSpeed": 120,
+        "stackAmount": 1,
+        "length": 95,
+        "balance": 0.0,
+        "handling": 90,
+        "bodyArmor": 0,
+        "flags": [
+          "RangedWeapon",
+          "NotUsableWithOneHand",
+          "HasString",
+          "StringHeldByHand",
+          "CantReloadOnHorseback",
+          "TwoHandIdleOnMount"
+        ],
+        "thrustDamage": 50,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 90,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 66
+      }
+    ]
+  },
+  {
+    "id": "crpg_crossbow_d",
+    "name": "Hickory Crossbow",
+    "culture": "Empire",
+    "type": "Crossbow",
+    "price": 13897,
+    "weight": 4.6,
+    "tier": 8.657219,
+    "requirement": 15,
+    "flags": [],
+    "weapons": [
+      {
+        "class": "Crossbow",
+        "itemUsage": "crossbow",
+        "accuracy": 99,
+        "missileSpeed": 125,
+        "stackAmount": 1,
+        "length": 95,
+        "balance": 0.0,
+        "handling": 85,
+        "bodyArmor": 0,
+        "flags": [
+          "RangedWeapon",
+          "NotUsableWithOneHand",
+          "HasString",
+          "StringHeldByHand",
+          "CantReloadOnHorseback",
+          "TwoHandIdleOnMount"
+        ],
+        "thrustDamage": 55,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 85,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 63
@@ -7144,21 +7068,21 @@
     ]
   },
   {
-    "id": "crpg_crossbow_g",
-    "name": "Fine Light Crossbow",
+    "id": "crpg_crossbow_e",
+    "name": "Light Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 9467,
-    "weight": 2.2,
-    "tier": 6.961578,
-    "requirement": 12,
+    "price": 2534,
+    "weight": 1.5,
+    "tier": 3.126688,
+    "requirement": 5,
     "flags": [],
     "weapons": [
       {
         "class": "Crossbow",
-        "itemUsage": "crossbow",
-        "accuracy": 90,
-        "missileSpeed": 98,
+        "itemUsage": "crossbow_light",
+        "accuracy": 80,
+        "missileSpeed": 91,
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
@@ -7171,12 +7095,88 @@
           "StringHeldByHand",
           "TwoHandIdleOnMount"
         ],
-        "thrustDamage": 56,
+        "thrustDamage": 30,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
-        "swingSpeed": 80
+        "swingSpeed": 65
+      }
+    ]
+  },
+  {
+    "id": "crpg_crossbow_f",
+    "name": "Bound Crossbow",
+    "culture": "Vlandia",
+    "type": "Crossbow",
+    "price": 18000,
+    "weight": 5.2,
+    "tier": 10.0,
+    "requirement": 18,
+    "flags": [],
+    "weapons": [
+      {
+        "class": "Crossbow",
+        "itemUsage": "crossbow",
+        "accuracy": 100,
+        "missileSpeed": 130,
+        "stackAmount": 1,
+        "length": 90,
+        "balance": 0.0,
+        "handling": 80,
+        "bodyArmor": 0,
+        "flags": [
+          "RangedWeapon",
+          "NotUsableWithOneHand",
+          "HasString",
+          "StringHeldByHand",
+          "CanPenetrateShield",
+          "CantReloadOnHorseback",
+          "TwoHandIdleOnMount"
+        ],
+        "thrustDamage": 60,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 80,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 60
+      }
+    ]
+  },
+  {
+    "id": "crpg_crossbow_g",
+    "name": "Fine Light Crossbow",
+    "culture": "Vlandia",
+    "type": "Crossbow",
+    "price": 4089,
+    "weight": 2.0,
+    "tier": 4.229077,
+    "requirement": 7,
+    "flags": [],
+    "weapons": [
+      {
+        "class": "Crossbow",
+        "itemUsage": "crossbow_light",
+        "accuracy": 85,
+        "missileSpeed": 98,
+        "stackAmount": 1,
+        "length": 95,
+        "balance": 0.0,
+        "handling": 80,
+        "bodyArmor": 0,
+        "flags": [
+          "RangedWeapon",
+          "NotUsableWithOneHand",
+          "HasString",
+          "StringHeldByHand",
+          "TwoHandIdleOnMount"
+        ],
+        "thrustDamage": 36,
+        "thrustDamageType": "Pierce",
+        "thrustSpeed": 80,
+        "swingDamage": 0,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 55
       }
     ]
   },
@@ -7480,9 +7480,9 @@
     "name": "Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 1771,
+    "price": 1534,
     "weight": 0.043,
-    "tier": 5.839146,
+    "tier": 5.35355043,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -11308,9 +11308,9 @@
     "name": "Longbow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 3280,
+    "price": 3641,
     "weight": 0.4,
-    "tier": 4.66236,
+    "tier": 4.967237,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -12025,9 +12025,9 @@
     "name": "Stacked Steppe Arrows",
     "culture": "Khuzait",
     "type": "Arrows",
-    "price": 4500,
+    "price": 3305,
     "weight": 0.036,
-    "tier": 10.0000782,
+    "tier": 8.403999,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -12184,9 +12184,9 @@
     "name": "Ranger Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 2140,
+    "price": 2453,
     "weight": 0.4,
-    "tier": 3.57391667,
+    "tier": 3.89616847,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -12793,9 +12793,9 @@
     "name": "Hunting Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 2200,
+    "price": 2505,
     "weight": 0.3,
-    "tier": 3.637498,
+    "tier": 3.94736767,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -16358,9 +16358,9 @@
     "name": "Lowland Longbow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 4021,
+    "price": 4388,
     "weight": 0.5,
-    "tier": 5.27267838,
+    "tier": 5.554347,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -16458,9 +16458,9 @@
     "name": "Yew Bow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 5307,
+    "price": 6157,
     "weight": 0.5,
-    "tier": 6.212501,
+    "tier": 6.77266741,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -16849,9 +16849,9 @@
     "name": "Mountain Hunting Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 1851,
+    "price": 2171,
     "weight": 0.3,
-    "tier": 3.255057,
+    "tier": 3.60671234,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -17308,9 +17308,9 @@
     "name": "Noble Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 11257,
+    "price": 12345,
     "weight": 0.8,
-    "tier": 9.535043,
+    "tier": 10.036891,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -17538,9 +17538,9 @@
     "name": "Noble Long Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 11760,
+    "price": 13460,
     "weight": 0.8,
-    "tier": 9.770115,
+    "tier": 10.528636,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -17617,9 +17617,9 @@
     "name": "Nomad Bow",
     "culture": "Aserai",
     "type": "Bow",
-    "price": 5769,
+    "price": 6437,
     "weight": 0.5,
-    "tier": 6.52211475,
+    "tier": 6.94860268,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -17865,9 +17865,9 @@
     "name": "Nordic Shortbow",
     "culture": "Sturgia",
     "type": "Bow",
-    "price": 3767,
+    "price": 4174,
     "weight": 0.3,
-    "tier": 5.07062,
+    "tier": 5.391411,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -20428,9 +20428,9 @@
     "name": "Piercing Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 3019,
+    "price": 4500,
     "weight": 0.041,
-    "tier": 7.980647,
+    "tier": 10.000165,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -20997,9 +20997,9 @@
     "name": "Range Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 2201,
+    "price": 2109,
     "weight": 0.043,
-    "tier": 6.64365053,
+    "tier": 6.477796,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -23294,9 +23294,9 @@
     "name": "Steppe Arrows",
     "culture": "Khuzait",
     "type": "Arrows",
-    "price": 2214,
+    "price": 2674,
     "weight": 0.036,
-    "tier": 6.666719,
+    "tier": 7.441468,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -23327,9 +23327,9 @@
     "name": "Steppe Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 1196,
+    "price": 1412,
     "weight": 0.3,
-    "tier": 2.43056846,
+    "tier": 2.72180223,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -23491,9 +23491,9 @@
     "name": "Heavy Recurve Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 5149,
+    "price": 5622,
     "weight": 0.3,
-    "tier": 6.10358667,
+    "tier": 6.42483044,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -23634,9 +23634,9 @@
     "name": "Steppe War Bow",
     "culture": "Khuzait",
     "type": "Bow",
-    "price": 7395,
+    "price": 8697,
     "weight": 0.3,
-    "tier": 7.52424669,
+    "tier": 8.250273,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -26180,9 +26180,9 @@
     "name": "Tournament Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 3354,
+    "price": 2536,
     "weight": 0.043,
-    "tier": 8.474044,
+    "tier": 7.2169385,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -26234,9 +26234,9 @@
     "name": "Practice Bow",
     "culture": "Neutral",
     "type": "Bow",
-    "price": 510,
+    "price": 537,
     "weight": 0.3,
-    "tier": 1.28604329,
+    "tier": 1.34032714,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -26275,9 +26275,9 @@
     "name": "Practice Longbow",
     "culture": "Vlandia",
     "type": "Bow",
-    "price": 419,
+    "price": 445,
     "weight": 0.5,
-    "tier": 1.089385,
+    "tier": 1.14758039,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -26396,9 +26396,9 @@
     "name": "Tribesman Bow",
     "culture": "Aserai",
     "type": "Bow",
-    "price": 4789,
+    "price": 5335,
     "weight": 0.5,
-    "tier": 5.84875631,
+    "tier": 6.231212,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -28210,9 +28210,9 @@
     "name": "Lowland Arrows",
     "culture": "Neutral",
     "type": "Arrows",
-    "price": 2374,
+    "price": 2731,
     "weight": 0.06,
-    "tier": 6.944499,
+    "tier": 7.53316,
     "requirement": 0,
     "flags": [],
     "weapons": [
@@ -29601,9 +29601,9 @@
     "name": "Woodland Longbow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 8144,
+    "price": 9489,
     "weight": 0.1,
-    "tier": 7.9491,
+    "tier": 8.665852,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
@@ -29642,9 +29642,9 @@
     "name": "Woodland Yew Bow",
     "culture": "Battania",
     "type": "Bow",
-    "price": 8332,
+    "price": 8956,
     "weight": 0.5,
-    "tier": 8.052479,
+    "tier": 8.388393,
     "requirement": 0,
     "flags": [
       "ForceAttachOffHandPrimaryItemBone"
