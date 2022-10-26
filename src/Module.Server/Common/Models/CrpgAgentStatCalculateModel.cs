@@ -1,5 +1,3 @@
-using System.Globalization;
-using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Battle;
 using Crpg.Module.Helpers;
 using TaleWorlds.Core;
@@ -13,10 +11,6 @@ namespace Crpg.Module.Common.Models;
 /// </summary>
 internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 {
-    // Hack to workaround not being able to spawn custom character. In the client this property is set so the
-    // StatCalculateModel has access to the cRPG user.
-    public static CrpgUser? MyUser { get; set; }
-
     private static readonly HashSet<WeaponClass> WeaponClassesAffectedByPowerStrike = new()
     {
         WeaponClass.Dagger,
@@ -48,12 +42,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
     private readonly CrpgConstants _constants;
     private readonly CrpgItemRequirementModel reqModel;
-    private string _lastEquippedItemId = string.Empty;
 
     public CrpgAgentStatCalculateModel(CrpgConstants constants)
     {
         _constants = constants;
-        reqModel = new(_constants);
+        reqModel = new CrpgItemRequirementModel(_constants);
     }
 
     public override int GetEffectiveSkill(
@@ -114,7 +107,11 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         agentDrivenProperties.ArmorEncumbrance = spawnEquipment.GetTotalWeightOfArmor(agent.IsHuman);
         if (agent.IsHuman)
         {
-            InitializeHumanAgentStats(agent, spawnEquipment, agentDrivenProperties);
+            // For human players, this is now done once in UpdateAgentStats (part of the big characteristic hack).
+            if (agent.IsAIControlled)
+            {
+                InitializeHumanAgentStats(agent, spawnEquipment, agentDrivenProperties);
+            }
         }
         else
         {
@@ -198,17 +195,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
     private void InitializeHumanAgentStats(Agent agent, Equipment equipment, AgentDrivenProperties props)
     {
-        // Dirty hack, part of the work-around to have skills without spawning custom characters.
-        var crpgUser = GameNetwork.IsClientOrReplay
-            ? MyUser
-            : null; // For the server, the origin is set in CrpgBattleSpawningBehavior.
-        if (crpgUser != null)
-        {
-            var characteristics = crpgUser.Character.Characteristics;
-            var mbSkills = CrpgBattleSpawningBehavior.CreateCharacterSkills(characteristics);
-            agent.Origin = new CrpgBattleAgentOrigin(agent.Origin?.Troop, mbSkills);
-        }
-
         props.SetStat(DrivenProperty.UseRealisticBlocking, MultiplayerOptions.OptionType.UseRealisticBlocking.GetBoolValue() ? 1f : 0.0f);
         props.ArmorHead = equipment.GetHeadArmorSum();
         props.ArmorTorso = equipment.GetHumanBodyArmorSum();
@@ -254,6 +240,20 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
     private void UpdateHumanAgentStats(Agent agent, AgentDrivenProperties props)
     {
+        // Dirty hack, part of the work-around to have skills without spawning custom characters. This hack should be
+        // be performed in InitializeHumanAgentStats but the MissionPeer is not available there.
+        if (GameNetwork.IsClientOrReplay) // Server-side the hacky AgentOrigin is directly passed to the AgentBuildData.
+        {
+            var crpgUser = agent.MissionPeer?.GetComponent<CrpgRepresentative>()?.User;
+            if (crpgUser != null && agent.Origin is not CrpgBattleAgentOrigin)
+            {
+                var characteristics = crpgUser.Character.Characteristics;
+                var mbSkills = CrpgBattleSpawningBehavior.CreateCharacterSkills(characteristics);
+                agent.Origin = new CrpgBattleAgentOrigin(agent.Origin?.Troop, mbSkills);
+                InitializeAgentStats(agent, agent.SpawnEquipment, props, null!);
+            }
+        }
+
         BasicCharacterObject character = agent.Character;
         MissionEquipment equipment = agent.Equipment;
         float weaponsEncumbrance = equipment.GetTotalWeightOfWeapons();
