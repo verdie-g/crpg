@@ -350,7 +350,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.ThrustOrRangedReadySpeedMultiplier *= 0.4f * (float)Math.Pow(2, weaponSkill / 191f) * ImpactOfStrReqOnCrossbows(agent, 0.3f, primaryItem); // Multiplying make windup time slower a 0 wpf, faster at 80 wpf
                     props.ReloadSpeed *= ImpactOfStrReqOnCrossbows(agent, 0.15f, primaryItem);
                     props.ReloadMovementPenaltyFactor = 100f * ImpactOfStrReqOnCrossbows(agent, 1f, primaryItem);
-                    InformationManager.DisplayMessage(new InformationMessage(props.ReloadMovementPenaltyFactor.ToString()));
                 }
 
                 // Bows
