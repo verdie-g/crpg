@@ -1,6 +1,14 @@
+const mockGetToken = vi.fn();
+const mockLogin = vi.fn();
+
+vi.mock('@/services/auth-service', () => ({
+  getToken: mockGetToken,
+  login: mockLogin,
+}));
+
 import { mockGet, mockPost, mockPut, mockDelete } from 'vi-fetch';
 import { get, post, put, del } from './crpg-client';
-import { ErrorType, type Result } from '@/models/result';
+import { ErrorType, type Result } from '@/models/crpg-client-result';
 
 describe('get', () => {
   const path = '/test-get';
