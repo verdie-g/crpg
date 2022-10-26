@@ -132,6 +132,37 @@ internal class ItemExporter : IDataExporter
         ["crpg_glen_ranger_bow"] = (84, 88, 14, 91),
         ["crpg_highland_ranger_bow"] = (82, 86, 13, 92),
         ["crpg_training_longbow"] = (89, 89, 6, 94),
+
+    };
+    private static readonly Dictionary<string, (int damage, int missileSpeed, int ammo, float weight)> Bolts = new()
+    {
+        ["crpg_bolt_e"] = (0, 10, 16, 0.02f),
+        ["crpg_bolt_d"] = (3, 10, 14, 0.03f),
+        ["crpg_bolt_a"] = (6, 10, 12, 0.04f),
+        ["crpg_bolt_b"] = (9, 10, 10, 0.05f),
+        ["crpg_bolt_c"] = (12, 10, 8, 0.06f),
+    };
+
+
+    private static readonly Dictionary<string, (int damage, int accuracy, int missileSpeed, int reloadSpeed, int aimSpeed, float weight)> CrossbowsStats = new()
+    {
+        // Light Crossbows
+        // Simple Light Crossbow
+        ["crpg_crossbow_a"] = (23, 75, 84, 75, 95, 1f),
+        // Light Crossbow
+        ["crpg_crossbow_e"] = (30, 80, 91, 65, 85, 1.5f),
+        // Fine Light Crossbow
+        ["crpg_crossbow_g"] = (36, 85, 98, 55, 80, 2f),
+
+        // Heavy Crossbows
+        // Heavy Crossbow
+        ["crpg_crossbow_b"] = (45, 97, 115, 69, 95, 3f),
+        // Arbalest
+        ["crpg_crossbow_c"] = (50, 98, 120, 66, 90, 3.8f),
+        // Hickory Crossbow
+        ["crpg_crossbow_d"] = (55, 99, 125, 63, 85, 4.6f),
+        // Bound Crossbow
+        ["crpg_crossbow_f"] = (60, 100, 130, 60, 80, 5.2f),
     };
 
     private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float bluntDamageFactor, float weightFactor, int stackAmount)> Blades = new()
@@ -637,17 +668,25 @@ internal class ItemExporter : IDataExporter
                 }
                 else if (type == ItemObject.ItemTypeEnum.Crossbow)
                 {
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage",
-                        v => ((int)(int.Parse(v) * 0.67f)).ToString(CultureInfo.InvariantCulture));
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed",
-                    v => ((int)(int.Parse(v) * 1.4f)).ToString(CultureInfo.InvariantCulture));
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "item_usage",
-                    _ => "crossbow");
+                    if (CrossbowsStats.TryGetValue(node1.Attributes["id"].Value, out var newCrossbow))
+                    {
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", _ => newCrossbow.damage.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "speed_rating", _ => newCrossbow.reloadSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed", _ => newCrossbow.aimSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "accuracy", _ => newCrossbow.accuracy.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed", _ => newCrossbow.missileSpeed.ToString());
+                        ModifyNodeAttribute(node1, "weight", _ => newCrossbow.weight.ToString());
+                    }
                 }
                 else if (type == ItemObject.ItemTypeEnum.Bolts)
                 {
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "stack_amount",
-                        v => ((int)(int.Parse(v) * 0.5f)).ToString(CultureInfo.InvariantCulture));
+                    if (Bolts.TryGetValue(node1.Attributes["id"].Value, out var newBolts))
+                    {
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", _ => newBolts.damage.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed", _ => newBolts.missileSpeed.ToString());
+                        ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "stack_amount", _ => newBolts.ammo.ToString());
+                        ModifyNodeAttribute(node1, "weight", _ => newBolts.weight.ToString());
+                    }
                 }
             }
             else if (node1.Name == "CraftingTemplate")

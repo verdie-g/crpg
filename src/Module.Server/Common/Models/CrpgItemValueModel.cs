@@ -260,27 +260,29 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateRangedWeaponTier(WeaponComponent weaponComponent)
     {
         WeaponComponentData weapon = weaponComponent.Weapons[0];
-        float scaler = 1.64240474087867393f;
+        float scaler = 1.560284f;
 
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
-            scaler = 2.344371f;
+
+            float crossbowscaler = 2.5115519025f;
             return
                  weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
-                * weapon.SwingSpeed / 100f * weapon.SwingSpeed / 100f
+                * weapon.SwingSpeed / 100f
                 * weapon.MissileSpeed / 10f
                 * weapon.Accuracy / 10f
                 * (float)Math.Pow(weapon.ThrustSpeed, 0.5f) / 10f
-                / scaler;
+                * (weapon.ItemUsage == "crossbow_light" ? 2f : 1f)
+                / crossbowscaler;
         }
 
         return
               weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
-            * weapon.SwingSpeed / 100f * weapon.SwingSpeed / 100f
+            * weapon.SwingSpeed / 100f
             * weapon.MissileSpeed / 10f
             * weapon.Accuracy / 10f
             * weapon.ThrustSpeed / 10f
-            * (weapon.ItemUsage == "long_bow" ? 0.75f : 1f)
+            * (weapon.ItemUsage == "long_bow" ? 0.668f : 1f)
             / scaler;
     }
 
@@ -303,14 +305,15 @@ internal class CrpgItemValueModel : ItemValueModel
         {
             ItemObject.ItemTypeEnum.Arrows => 10f
           * CalculateDamageTypeFactor(weapon.ThrustDamageType) * CalculateDamageTypeFactor(weapon.ThrustDamageType)
-          * (15 + weapon.MissileDamage) * (15 + weapon.MissileDamage)
-          * weapon.MaxDataValue
-          / 31862f,
+          * (10 + weapon.MissileDamage) * (10 + weapon.MissileDamage)
+          * (float)Math.Pow(weapon.MaxDataValue, 0.3f)
+          / 1537.6f,
+
             ItemObject.ItemTypeEnum.Bolts => 10f
           * CalculateDamageTypeFactor(weapon.ThrustDamageType) * CalculateDamageTypeFactor(weapon.ThrustDamageType)
-          * (50 + weapon.MissileDamage) * (50 + weapon.MissileDamage)
-          * weapon.MaxDataValue
-          / 83376.56f,
+          * (22 + weapon.MissileDamage) * (22 + weapon.MissileDamage)
+          * (float)Math.Pow(weapon.MaxDataValue, 0.3f)
+          / 6606.34f,
             _ => 10f,
         };
     }
