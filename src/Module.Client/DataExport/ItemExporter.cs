@@ -11,6 +11,7 @@ using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.View.Tableaus;
 using TaleWorlds.ObjectSystem;
+using static TaleWorlds.Core.ItemObject;
 
 namespace Crpg.Module.DataExport;
 
@@ -359,13 +360,13 @@ internal class ItemExporter : IDataExporter
             .OrderBy(i => i.StringId)
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
-        SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));
+        SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));/*
         const string itemThumbnailsTempPath = "../../crpg-items";
         string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
         Directory.CreateDirectory(itemThumbnailsTempPath);
         await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);
         Directory.Delete(itemThumbnailsPath, recursive: true);
-        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);
+        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);*/
     }
 
     private static CrpgItem MbToCrpgItem(ItemObject mbItem)
@@ -643,10 +644,14 @@ internal class ItemExporter : IDataExporter
                         v => (int.Parse(v) - 50).ToString(CultureInfo.InvariantCulture),
                         defaultValue: "0");
                 }
+                else if (type == ItemObject.ItemTypeEnum.HeadArmor || type == ItemObject.ItemTypeEnum.BodyArmor || type == ItemObject.ItemTypeEnum.Cape || type == ItemObject.ItemTypeEnum.LegArmor || type == ItemObject.ItemTypeEnum.HandArmor)
+                {
+
+                    ModifyNodeAttribute(node1, "weight",
+                        _ => ModifyArmorWeight(node1, type).ToString());
+                }
                 else if (type == ItemObject.ItemTypeEnum.HorseHarness)
                 {
-                    // Single player horse harness can go up to 78 amor when the highest you can find in native mp is 26
-                    // so let's divide the armor by 3. The weight doesn't change because it's good enough.
                     ModifyChildNodesAttribute(node1, "ItemComponent/Armor", "body_armor",
                         v => ((int)(int.Parse(v) * 0.5f)).ToString(CultureInfo.InvariantCulture));
                 }
@@ -796,6 +801,27 @@ internal class ItemExporter : IDataExporter
         }
 
         attr.Value = modify(attr.Value);
+    }
+
+    private static float ModifyArmorWeight(XmlNode node, ItemObject.ItemTypeEnum type)
+    {
+        XmlNode armorNode = node.SelectNodes("ItemComponent/Armor")!.Cast<XmlNode>().First();
+        float armorPower =
+            1f * (armorNode.Attributes["head_armor"] == null ? 0f : float.Parse(armorNode.Attributes["head_armor"].Value))
+          + 1.0f * (armorNode.Attributes["body_armor"] == null ? 0f : float.Parse(armorNode.Attributes["body_armor"].Value))
+          + 1.2f * (armorNode.Attributes["arm_armor"] == null ? 0f : float.Parse(armorNode.Attributes["arm_armor"].Value))
+          + 1.2f * (armorNode.Attributes["leg_armor"] == null ? 0f : float.Parse(armorNode.Attributes["leg_armor"].Value));
+        float bestArmorPower = type switch
+        {
+            ItemObject.ItemTypeEnum.HeadArmor => 150f,
+            ItemObject.ItemTypeEnum.Cape => 120f,
+            ItemObject.ItemTypeEnum.BodyArmor => 60f,
+            ItemObject.ItemTypeEnum.HandArmor => 80f,
+            ItemObject.ItemTypeEnum.LegArmor => 150f,
+            ItemObject.ItemTypeEnum.HorseHarness => 37f,
+            _ => throw new ArgumentOutOfRangeException(),
+        };
+        return 10 * armorPower / bestArmorPower;
     }
 
     private static void RegisterMbObjects<T>(XmlDocument doc, Game game) where T : MBObjectBase, new()
