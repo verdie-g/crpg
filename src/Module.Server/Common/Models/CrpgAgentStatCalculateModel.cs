@@ -274,7 +274,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         }
 
         props.WeaponsEncumbrance = weaponsEncumbrance;
-        float strengthSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
+        int strengthSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
         float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
         float agentWeight = agent.Monster.Weight;
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
@@ -284,7 +284,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.TopSpeedReachDuration = 0.5f * (1f + perceivedWeight / 25f);
         float speed = 0.7f + 0.001f * athleticsSkill;
         props.MaxSpeedMultiplier = speed * (1 - perceivedWeight / 80f);
-        InformationManager.DisplayMessage(new InformationMessage(props.MaxSpeedMultiplier.ToString()));
         float bipedalCombatSpeedMinMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMinMultiplier);
         float bipedalCombatSpeedMaxMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMaxMultiplier);
         props.CombatMaxSpeedMultiplier =
