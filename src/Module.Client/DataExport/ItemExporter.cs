@@ -105,6 +105,9 @@ internal class ItemExporter : IDataExporter
 
         // Makes some play crash.
         "war_horse",
+
+        // Glitched.
+        "camel_saddle_a",
     };
 
     private static readonly Dictionary<string, (int aimSpeed, int reloadSpeed, int damage, int missileSpeed)> BowStats = new()

@@ -1195,13 +1195,6 @@
     <Flags Civilian="true" />
     <Flags />
   </Item>
-  <Item id="crpg_camel_saddle_a" name="{=ZJYVpjuR}Camel Saddle with Heavy Load" is_merchandise="false" mesh="camel_saddle_a" culture="Culture.aserai" weight="130" appearance="1" Type="HorseHarness">
-    <ItemComponent>
-      <Armor body_armor="5" mane_cover_type="none" family_type="2" material_type="Leather" />
-    </ItemComponent>
-    <Flags Civilian="true" />
-    <Flags />
-  </Item>
   <Item id="crpg_camel_saddle_b" name="{=OflbQCw6}Camel Saddle with Light Load" is_merchandise="false" mesh="camel_saddle_b" culture="Culture.aserai" weight="130" appearance="1" Type="HorseHarness">
     <ItemComponent>
       <Armor body_armor="5" mane_cover_type="none" family_type="2" material_type="Leather" />

@@ -6162,27 +6162,6 @@
     "weapons": []
   },
   {
-    "id": "crpg_camel_saddle_a",
-    "name": "Camel Saddle with Heavy Load",
-    "culture": "Aserai",
-    "type": "MountHarness",
-    "price": 1461,
-    "weight": 130.0,
-    "tier": 1.35135138,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "armor": {
-      "headArmor": 0,
-      "bodyArmor": 5,
-      "armArmor": 0,
-      "legArmor": 0,
-      "materialType": "Leather"
-    },
-    "weapons": []
-  },
-  {
     "id": "crpg_camel_saddle_b",
     "name": "Camel Saddle with Light Load",
     "culture": "Aserai",
