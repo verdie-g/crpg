@@ -62,6 +62,15 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             return crpgOrigin.Skills.GetPropertyValue(skill);
         }
 
+        // The previous check is only applied applied for the current player. For other players, the client doesn't have
+        // their skills. It was not an issue except for athletics. the big disparity between the client and server
+        // would make some players walk but very fast as if they shat themselves. To fix that we hardcode a 60 athletics
+        // so it forces the game to use the run animation instead of the walk one.
+        if (skill == DefaultSkills.Athletics)
+        {
+            return 60;
+        }
+
         return base.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
     }
 
@@ -107,11 +116,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         agentDrivenProperties.ArmorEncumbrance = spawnEquipment.GetTotalWeightOfArmor(agent.IsHuman);
         if (agent.IsHuman)
         {
-            // For human players, this is now done once in UpdateAgentStats (part of the big characteristic hack).
-            if (agent.IsAIControlled)
-            {
-                InitializeHumanAgentStats(agent, spawnEquipment, agentDrivenProperties);
-            }
+            InitializeHumanAgentStats(agent, spawnEquipment, agentDrivenProperties);
         }
         else
         {
