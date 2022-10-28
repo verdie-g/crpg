@@ -292,7 +292,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 MBMath.Lerp(
                     bipedalCombatSpeedMaxMultiplier,
                     bipedalCombatSpeedMinMultiplier,
-                    MathF.Min(totalEncumbrance / agentWeight, 1f)),
+                    MathF.Min(perceivedWeight / 80, 1f)),
                 1f);
 
         EquipmentIndex wieldedItemIndex3 = agent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
