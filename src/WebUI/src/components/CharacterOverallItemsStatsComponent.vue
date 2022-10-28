@@ -2,10 +2,6 @@
   <div>
     <table width="300px">
       <tr>
-        <td><b>Armor Set Requirement</b></td>
-        <td>{{ itemStats.armorSetRequirement.toLocaleString('en-US') }} STR</td>
-      </tr>
-      <tr>
         <td><b>Price</b></td>
         <td>
           {{ itemStats.price.toLocaleString('en-US') }}
@@ -68,11 +64,7 @@
 <script lang="ts">
 import EquippedItem from '@/models/equipped-item';
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import {
-  computeArmorSetPieceStrengthRequirement,
-  computeAverageRepairCost,
-  computeMaxRepairCost,
-} from '@/services/item-service';
+import { computeAverageRepairCost, computeMaxRepairCost } from '@/services/item-service';
 
 @Component
 export default class CharacterOverallItemsStatsComponent extends Vue {
@@ -80,7 +72,6 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
 
   get itemStats(): Record<string, number> {
     const result = {
-      armorSetRequirement: 0,
       price: 0,
       maxRepairCost: 0,
       averageRepairCost: 0,
@@ -92,7 +83,6 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     };
 
     if (!this.equippedItems) return result;
-    result.armorSetRequirement = computeArmorSetPieceStrengthRequirement(this.equippedItems);
     result.maxRepairCost = computeMaxRepairCost(
       this.equippedItems.map(item => item.userItem.baseItem)
     );
