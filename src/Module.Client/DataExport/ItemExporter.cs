@@ -132,8 +132,8 @@ internal class ItemExporter : IDataExporter
         ["crpg_glen_ranger_bow"] = (84, 88, 14, 91),
         ["crpg_highland_ranger_bow"] = (82, 86, 13, 92),
         ["crpg_training_longbow"] = (89, 89, 6, 94),
-
     };
+
     private static readonly Dictionary<string, (int damage, int missileSpeed, int ammo, float weight)> Bolts = new()
     {
         ["crpg_bolt_e"] = (0, 10, 16, 0.02f),
@@ -142,7 +142,6 @@ internal class ItemExporter : IDataExporter
         ["crpg_bolt_b"] = (9, 10, 10, 0.05f),
         ["crpg_bolt_c"] = (12, 10, 8, 0.06f),
     };
-
 
     private static readonly Dictionary<string, (int damage, int accuracy, int missileSpeed, int reloadSpeed, int aimSpeed, float weight)> CrossbowsStats = new()
     {
@@ -643,10 +642,18 @@ internal class ItemExporter : IDataExporter
                         v => (int.Parse(v) - 50).ToString(CultureInfo.InvariantCulture),
                         defaultValue: "0");
                 }
+                else if (
+                       type == ItemObject.ItemTypeEnum.HeadArmor
+                    || type == ItemObject.ItemTypeEnum.BodyArmor
+                    || type == ItemObject.ItemTypeEnum.Cape
+                    || type == ItemObject.ItemTypeEnum.LegArmor
+                    || type == ItemObject.ItemTypeEnum.HandArmor)
+                {
+                    ModifyNodeAttribute(node1, "weight",
+                        _ => ModifyArmorWeight(node1, type).ToString());
+                }
                 else if (type == ItemObject.ItemTypeEnum.HorseHarness)
                 {
-                    // Single player horse harness can go up to 78 amor when the highest you can find in native mp is 26
-                    // so let's divide the armor by 3. The weight doesn't change because it's good enough.
                     ModifyChildNodesAttribute(node1, "ItemComponent/Armor", "body_armor",
                         v => ((int)(int.Parse(v) * 0.5f)).ToString(CultureInfo.InvariantCulture));
                 }
@@ -796,6 +803,27 @@ internal class ItemExporter : IDataExporter
         }
 
         attr.Value = modify(attr.Value);
+    }
+
+    private static float ModifyArmorWeight(XmlNode node, ItemObject.ItemTypeEnum type)
+    {
+        XmlNode armorNode = node.SelectNodes("ItemComponent/Armor")!.Cast<XmlNode>().First();
+        float armorPower =
+            1.0f * (armorNode.Attributes["head_armor"] == null ? 0f : float.Parse(armorNode.Attributes["head_armor"].Value))
+          + 1.0f * (armorNode.Attributes["body_armor"] == null ? 0f : float.Parse(armorNode.Attributes["body_armor"].Value))
+          + 1.4f * (armorNode.Attributes["arm_armor"] == null ? 0f : float.Parse(armorNode.Attributes["arm_armor"].Value))
+          + 1.2f * (armorNode.Attributes["leg_armor"] == null ? 0f : float.Parse(armorNode.Attributes["leg_armor"].Value));
+        float bestArmorPower = type switch
+        {
+            ItemObject.ItemTypeEnum.HeadArmor => 150f,
+            ItemObject.ItemTypeEnum.Cape => 120f,
+            ItemObject.ItemTypeEnum.BodyArmor => 40f,
+            ItemObject.ItemTypeEnum.HandArmor => 80f,
+            ItemObject.ItemTypeEnum.LegArmor => 150f,
+            ItemObject.ItemTypeEnum.HorseHarness => 37f,
+            _ => throw new ArgumentOutOfRangeException(),
+        };
+        return 10 * armorPower / bestArmorPower;
     }
 
     private static void RegisterMbObjects<T>(XmlDocument doc, Game game) where T : MBObjectBase, new()
