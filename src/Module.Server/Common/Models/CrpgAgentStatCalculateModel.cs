@@ -286,7 +286,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         float impactOfStrReqOnSpeed = ImpactOfStrReqOnSpeed(agent);
         float freeWeight = 3f * (1 + (strengthSkill - 3f) / 30f);
         float perceivedWeight = Math.Max(totalEncumbrance - freeWeight, 0f) / (1f + (strengthSkill - 3) / 5f);
-        props.TopSpeedReachDuration = 0.5f * (1f + perceivedWeight / 25f);
+        props.TopSpeedReachDuration = 1.2f * (1f + perceivedWeight / 25f);
         float speed = 0.7f + 0.001f * athleticsSkill;
         props.MaxSpeedMultiplier = speed * (1 - perceivedWeight / 80f);
         float bipedalCombatSpeedMinMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMinMultiplier);
