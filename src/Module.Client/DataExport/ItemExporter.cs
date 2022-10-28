@@ -133,8 +133,8 @@ internal class ItemExporter : IDataExporter
         ["crpg_glen_ranger_bow"] = (84, 88, 14, 91),
         ["crpg_highland_ranger_bow"] = (82, 86, 13, 92),
         ["crpg_training_longbow"] = (89, 89, 6, 94),
-
     };
+
     private static readonly Dictionary<string, (int damage, int missileSpeed, int ammo, float weight)> Bolts = new()
     {
         ["crpg_bolt_e"] = (0, 10, 16, 0.02f),
@@ -143,7 +143,6 @@ internal class ItemExporter : IDataExporter
         ["crpg_bolt_b"] = (9, 10, 10, 0.05f),
         ["crpg_bolt_c"] = (12, 10, 8, 0.06f),
     };
-
 
     private static readonly Dictionary<string, (int damage, int accuracy, int missileSpeed, int reloadSpeed, int aimSpeed, float weight)> CrossbowsStats = new()
     {
@@ -360,13 +359,13 @@ internal class ItemExporter : IDataExporter
             .OrderBy(i => i.StringId)
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
-        SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));/*
+        SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));
         const string itemThumbnailsTempPath = "../../crpg-items";
         string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
         Directory.CreateDirectory(itemThumbnailsTempPath);
         await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);
         Directory.Delete(itemThumbnailsPath, recursive: true);
-        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);*/
+        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);
     }
 
     private static CrpgItem MbToCrpgItem(ItemObject mbItem)
@@ -644,9 +643,13 @@ internal class ItemExporter : IDataExporter
                         v => (int.Parse(v) - 50).ToString(CultureInfo.InvariantCulture),
                         defaultValue: "0");
                 }
-                else if (type == ItemObject.ItemTypeEnum.HeadArmor || type == ItemObject.ItemTypeEnum.BodyArmor || type == ItemObject.ItemTypeEnum.Cape || type == ItemObject.ItemTypeEnum.LegArmor || type == ItemObject.ItemTypeEnum.HandArmor)
+                else if (
+                       type == ItemObject.ItemTypeEnum.HeadArmor
+                    || type == ItemObject.ItemTypeEnum.BodyArmor
+                    || type == ItemObject.ItemTypeEnum.Cape
+                    || type == ItemObject.ItemTypeEnum.LegArmor
+                    || type == ItemObject.ItemTypeEnum.HandArmor)
                 {
-
                     ModifyNodeAttribute(node1, "weight",
                         _ => ModifyArmorWeight(node1, type).ToString());
                 }
@@ -807,15 +810,15 @@ internal class ItemExporter : IDataExporter
     {
         XmlNode armorNode = node.SelectNodes("ItemComponent/Armor")!.Cast<XmlNode>().First();
         float armorPower =
-            1f * (armorNode.Attributes["head_armor"] == null ? 0f : float.Parse(armorNode.Attributes["head_armor"].Value))
+            1.0f * (armorNode.Attributes["head_armor"] == null ? 0f : float.Parse(armorNode.Attributes["head_armor"].Value))
           + 1.0f * (armorNode.Attributes["body_armor"] == null ? 0f : float.Parse(armorNode.Attributes["body_armor"].Value))
-          + 1.2f * (armorNode.Attributes["arm_armor"] == null ? 0f : float.Parse(armorNode.Attributes["arm_armor"].Value))
+          + 1.4f * (armorNode.Attributes["arm_armor"] == null ? 0f : float.Parse(armorNode.Attributes["arm_armor"].Value))
           + 1.2f * (armorNode.Attributes["leg_armor"] == null ? 0f : float.Parse(armorNode.Attributes["leg_armor"].Value));
         float bestArmorPower = type switch
         {
             ItemObject.ItemTypeEnum.HeadArmor => 150f,
             ItemObject.ItemTypeEnum.Cape => 120f,
-            ItemObject.ItemTypeEnum.BodyArmor => 60f,
+            ItemObject.ItemTypeEnum.BodyArmor => 40f,
             ItemObject.ItemTypeEnum.HandArmor => 80f,
             ItemObject.ItemTypeEnum.LegArmor => 150f,
             ItemObject.ItemTypeEnum.HorseHarness => 37f,
