@@ -8,8 +8,9 @@ import ItemSlot from '@/models/item-slot';
 import ItemWeaponComponent from '@/models/item-weapon-component';
 import WeaponClass from '@/models/weapon-class';
 import UserItem from '@/models/user-item';
-import { applyPolynomialFunction } from '@/utils/math';
+import { applyPolynomialFunction, generalizedMean } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
+import EquippedItem from '@/models/equipped-item';
 import ItemFlags from '@/models/item-flags';
 
 export const itemTypeToStr: Record<ItemType, string> = {
@@ -243,6 +244,16 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
     modes: [],
   };
 
+  switch (baseItem.type) {
+    case ItemType.HeadArmor:
+    case ItemType.BodyArmor:
+    case ItemType.ShoulderArmor:
+    case ItemType.HandArmor:
+    case ItemType.LegArmor:
+    case ItemType.Crossbow:
+      props.fields.push(['Requirement', baseItem.requirement + ' STR']);
+      break;
+  }
   if (baseItem.armor !== null) {
     if (baseItem.armor.headArmor !== 0) {
       props.fields.push(['Head Armor', baseItem.armor.headArmor]);
@@ -402,5 +413,16 @@ export function computeAverageRepairCost(items: Item[]): number {
       (total, item) => total + applyPolynomialFunction(item.price, Constants.itemRepairCostCoefs),
       0
     ) * Constants.itemBreakChance
+  );
+}
+
+export function computeArmorSetPieceStrengthRequirement(equippedItems: EquippedItem[]): number {
+  const numberOfArmorItemTypes = 5;
+  const armorsRequirement = new Array(numberOfArmorItemTypes).fill(0);
+  equippedItems
+    .filter(e => armorTypes.includes(e.userItem.baseItem.type))
+    .forEach((ei, i) => (armorsRequirement[i] = ei.userItem.baseItem.requirement));
+  return Math.trunc(
+    generalizedMean(Constants.armorSetRequirementPowerMeanPValue, armorsRequirement)
   );
 }
