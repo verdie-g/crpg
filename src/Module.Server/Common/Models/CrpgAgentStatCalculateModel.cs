@@ -68,7 +68,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         // so it forces the game to use the run animation instead of the walk one.
         if (skill == DefaultSkills.Athletics)
         {
-            return 60;
+            return 175;
         }
 
         return base.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
