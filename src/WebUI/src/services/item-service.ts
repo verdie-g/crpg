@@ -8,9 +8,8 @@ import ItemSlot from '@/models/item-slot';
 import ItemWeaponComponent from '@/models/item-weapon-component';
 import WeaponClass from '@/models/weapon-class';
 import UserItem from '@/models/user-item';
-import { applyPolynomialFunction, generalizedMean } from '@/utils/math';
+import { applyPolynomialFunction } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
-import EquippedItem from '@/models/equipped-item';
 import ItemFlags from '@/models/item-flags';
 
 export const itemTypeToStr: Record<ItemType, string> = {
@@ -403,16 +402,5 @@ export function computeAverageRepairCost(items: Item[]): number {
       (total, item) => total + applyPolynomialFunction(item.price, Constants.itemRepairCostCoefs),
       0
     ) * Constants.itemBreakChance
-  );
-}
-
-export function computeArmorSetPieceStrengthRequirement(equippedItems: EquippedItem[]): number {
-  const numberOfArmorItemTypes = 5;
-  const armorsRequirement = new Array(numberOfArmorItemTypes).fill(0);
-  equippedItems
-    .filter(e => armorTypes.includes(e.userItem.baseItem.type))
-    .forEach((ei, i) => (armorsRequirement[i] = ei.userItem.baseItem.requirement));
-  return Math.trunc(
-    generalizedMean(Constants.armorSetRequirementPowerMeanPValue, armorsRequirement)
   );
 }

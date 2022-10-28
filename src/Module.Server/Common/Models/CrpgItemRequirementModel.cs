@@ -1,11 +1,11 @@
-﻿using Crpg.Module.Helpers;
-using TaleWorlds.Core;
+﻿using TaleWorlds.Core;
 
 namespace Crpg.Module.Common.Models;
 
 internal class CrpgItemRequirementModel
 {
     private readonly CrpgConstants _constants;
+
     public CrpgItemRequirementModel(CrpgConstants constants)
     {
         _constants = constants;
@@ -26,24 +26,6 @@ internal class CrpgItemRequirementModel
         }
 
         return 0;
-    }
-
-    // make sure this method does the same thing as the one in the webui.
-    public int ComputeArmorSetPieceStrengthRequirement(List<ItemObject> armors)
-    {
-        if (armors == null)
-        {
-            return 0;
-        }
-
-        const int numberOfArmorItemTypes = 5;
-        float[] armorsRequirements = new float[numberOfArmorItemTypes];
-        for (int i = 0; i < armors.Count; i++)
-        {
-            armorsRequirements[i] = ComputeArmorPieceStrengthRequirement(armors[i]);
-        }
-
-        return (int)MathHelper.GeneralizedMean(_constants.ArmorSetRequirementPowerMeanPValue, armorsRequirements);
     }
 
     private static int ComputeArmorPieceStrengthRequirement(ItemObject item)
