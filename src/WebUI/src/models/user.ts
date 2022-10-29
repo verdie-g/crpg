@@ -9,6 +9,7 @@ export default interface User {
   gold: number;
   heirloomPoints: number;
   role: Role;
+  isDonor: boolean;
   avatarSmall: string;
   avatarMedium: string;
   avatarFull: string;

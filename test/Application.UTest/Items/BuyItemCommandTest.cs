@@ -70,10 +70,10 @@ public class BuyItemCommandTest : TestBase
         Assert.AreEqual(ErrorCode.UserNotFound, result.Errors![0].Code);
     }
 
-    [Test]
-    public async Task InvalidItemType()
+    [Theory]
+    public async Task BannerItem(bool isDonor)
     {
-        var user = ArrangeDb.Users.Add(new User { Gold = 100 });
+        var user = ArrangeDb.Users.Add(new User { Gold = 100, IsDonor = isDonor });
         var item = ArrangeDb.Items.Add(new Item { Type = ItemType.Banner, Price = 100 });
         await ArrangeDb.SaveChangesAsync();
 
@@ -83,7 +83,15 @@ public class BuyItemCommandTest : TestBase
             ItemId = item.Entity.Id,
             UserId = user.Entity.Id,
         }, CancellationToken.None);
-        Assert.AreEqual(ErrorCode.ItemNotBuyable, result.Errors![0].Code);
+
+        if (isDonor)
+        {
+            Assert.IsNull(result.Errors);
+        }
+        else
+        {
+            Assert.AreEqual(ErrorCode.ItemNotBuyable, result.Errors![0].Code);
+        }
     }
 
     [Test]
