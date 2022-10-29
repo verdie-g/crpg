@@ -70,6 +70,10 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         {
             return 175;
         }
+        if (skill == CrpgSkills.Strength)
+        {
+            return 15;
+        }
 
         return base.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
     }
@@ -279,19 +283,15 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         }
 
         props.WeaponsEncumbrance = weaponsEncumbrance;
-
+        int strengthSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
+        float weightReductionFactor = 1f / (1f + (strengthSkill - 3) / 10f);
         float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
-        float agentWeight = agent.Monster.Weight;
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
-        float impactOfStrReqOnSpeed = ImpactOfStrReqOnSpeed(agent);
-        props.TopSpeedReachDuration = 2f / MathF.Max((200f + athleticsSkill) / 300f * (agentWeight / (agentWeight + totalEncumbrance)) * impactOfStrReqOnSpeed, 0.3f);
-        float speed = 0.7f + 0.00070000015f * athleticsSkill;
-        float weightSpeedPenalty = MathF.Max(0.2f * (1f - athleticsSkill * 0.001f), 0f) * totalEncumbrance / agentWeight / impactOfStrReqOnSpeed;
-        float maxSpeedMultiplier = MBMath.ClampFloat(speed - weightSpeedPenalty, 0f, 0.91f);
-        float atmosphereSpeedPenalty = agent.Mission.Scene.IsAtmosphereIndoor && agent.Mission.Scene.GetRainDensity() > 0
-            ? 0.9f
-            : 1f;
-        props.MaxSpeedMultiplier = atmosphereSpeedPenalty * maxSpeedMultiplier;
+        float freeWeight = 3f * (1 + (strengthSkill - 3f) / 30f);
+        float perceivedWeight = Math.Max(totalEncumbrance - freeWeight, 0f) * weightReductionFactor;
+        props.TopSpeedReachDuration = 1f * (1f + perceivedWeight / 40f);
+        float speed = 0.7f + 0.001f * athleticsSkill;
+        props.MaxSpeedMultiplier = MBMath.ClampFloat(speed * (1 - perceivedWeight / 70f), 0.1f, 1.5f);
         float bipedalCombatSpeedMinMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMinMultiplier);
         float bipedalCombatSpeedMaxMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMaxMultiplier);
         props.CombatMaxSpeedMultiplier =
@@ -299,7 +299,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 MBMath.Lerp(
                     bipedalCombatSpeedMaxMultiplier,
                     bipedalCombatSpeedMinMultiplier,
-                    MathF.Min(totalEncumbrance / agentWeight, 1f)),
+                    MathF.Min(totalEncumbrance / 80f, 1f)),
                 1f);
 
         EquipmentIndex wieldedItemIndex3 = agent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
