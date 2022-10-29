@@ -41,12 +41,10 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     };
 
     private readonly CrpgConstants _constants;
-    private readonly CrpgItemRequirementModel reqModel;
 
     public CrpgAgentStatCalculateModel(CrpgConstants constants)
     {
         _constants = constants;
-        reqModel = new CrpgItemRequirementModel(_constants);
     }
 
     public override int GetEffectiveSkill(
@@ -63,12 +61,17 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         }
 
         // The previous check is only applied applied for the current player. For other players, the client doesn't have
-        // their skills. It was not an issue except for athletics. the big disparity between the client and server
-        // would make some players walk but very fast as if they shat themselves. To fix that we hardcode a 60 athletics
-        // so it forces the game to use the run animation instead of the walk one.
+        // their skills. It was not an issue except for movement speed. The big disparity between the client and server
+        // would make some players walk but very fast as if they shat themselves. To fix that we hardcode a default
+        // athletics and strength (which is also used for speed) so it forces the game to use the run animation instead
+        // of the walk one.
         if (skill == DefaultSkills.Athletics)
         {
             return 175;
+        }
+        else if (skill == CrpgSkills.Strength)
+        {
+            return 15;
         }
 
         return base.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
@@ -279,19 +282,15 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         }
 
         props.WeaponsEncumbrance = weaponsEncumbrance;
-
-        float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
-        float agentWeight = agent.Monster.Weight;
+        int strengthSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
-        float impactOfStrReqOnSpeed = ImpactOfStrReqOnSpeed(agent);
-        props.TopSpeedReachDuration = 2f / MathF.Max((200f + athleticsSkill) / 300f * (agentWeight / (agentWeight + totalEncumbrance)) * impactOfStrReqOnSpeed, 0.3f);
-        float speed = 0.7f + 0.00070000015f * athleticsSkill;
-        float weightSpeedPenalty = MathF.Max(0.2f * (1f - athleticsSkill * 0.001f), 0f) * totalEncumbrance / agentWeight / impactOfStrReqOnSpeed;
-        float maxSpeedMultiplier = MBMath.ClampFloat(speed - weightSpeedPenalty, 0f, 0.91f);
-        float atmosphereSpeedPenalty = agent.Mission.Scene.IsAtmosphereIndoor && agent.Mission.Scene.GetRainDensity() > 0
-            ? 0.9f
-            : 1f;
-        props.MaxSpeedMultiplier = atmosphereSpeedPenalty * maxSpeedMultiplier;
+        float weightReductionFactor = 1f / (1f + (strengthSkill - 3) / 10f);
+        float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
+        float freeWeight = 3f * (1 + (strengthSkill - 3f) / 30f);
+        float perceivedWeight = Math.Max(totalEncumbrance - freeWeight, 0f) * weightReductionFactor;
+        props.TopSpeedReachDuration = 0.8f * (1f + perceivedWeight / 40f);
+        float speed = 0.7f + 0.0009f * athleticsSkill;
+        props.MaxSpeedMultiplier = MBMath.ClampFloat(speed * (1 - perceivedWeight / 70f), 0.1f, 1.5f);
         float bipedalCombatSpeedMinMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMinMultiplier);
         float bipedalCombatSpeedMaxMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMaxMultiplier);
         props.CombatMaxSpeedMultiplier =
@@ -299,7 +298,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 MBMath.Lerp(
                     bipedalCombatSpeedMaxMultiplier,
                     bipedalCombatSpeedMinMultiplier,
-                    MathF.Min(totalEncumbrance / agentWeight, 1f)),
+                    MathF.Min(totalEncumbrance / 80f, 1f)),
                 1f);
 
         EquipmentIndex wieldedItemIndex3 = agent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
@@ -437,31 +436,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
 
         SetAiRelatedProperties(agent, props, equippedItem, secondaryItem);
-    }
-
-    private List<ItemObject> GetArmorItemObjectList(Equipment equipment)
-    {
-        List<ItemObject> armorItemObjectList = new();
-        for (EquipmentIndex equipmentIndex = EquipmentIndex.NumAllWeaponSlots; equipmentIndex < EquipmentIndex.ArmorItemEndSlot; equipmentIndex++)
-        {
-            EquipmentElement equipmentElement = equipment[equipmentIndex];
-            if (equipmentElement.Item != null)
-            {
-                armorItemObjectList.Add(equipmentElement.Item);
-            }
-        }
-
-        return armorItemObjectList;
-    }
-
-    private float ImpactOfStrReqOnSpeed(Agent agent)
-    {
-        int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
-        var equippedArmors = GetArmorItemObjectList(agent.SpawnEquipment);
-        float setRequirement = reqModel.ComputeArmorSetPieceStrengthRequirement(equippedArmors);
-        float distanceToStrRequirement = Math.Max(setRequirement - strengthAttribute, 0);
-        float impactOfStrReqOnSpeedFactor = 0.2f; // tweak here
-        return 1 / (1 + distanceToStrRequirement * impactOfStrReqOnSpeedFactor);
     }
 
     private float ImpactOfStrReqOnCrossbows(Agent agent, float impact, ItemObject? equippedItem)

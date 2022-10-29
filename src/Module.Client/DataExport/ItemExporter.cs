@@ -823,15 +823,15 @@ internal class ItemExporter : IDataExporter
           + 1.2f * (armorNode.Attributes["leg_armor"] == null ? 0f : float.Parse(armorNode.Attributes["leg_armor"].Value));
         float bestArmorPower = type switch
         {
-            ItemObject.ItemTypeEnum.HeadArmor => 150f,
-            ItemObject.ItemTypeEnum.Cape => 120f,
-            ItemObject.ItemTypeEnum.BodyArmor => 40f,
-            ItemObject.ItemTypeEnum.HandArmor => 80f,
-            ItemObject.ItemTypeEnum.LegArmor => 150f,
-            ItemObject.ItemTypeEnum.HorseHarness => 37f,
+            ItemObject.ItemTypeEnum.HeadArmor => 661f,
+            ItemObject.ItemTypeEnum.Cape => 449f,
+            ItemObject.ItemTypeEnum.BodyArmor => 244f,
+            ItemObject.ItemTypeEnum.HandArmor => 284f,
+            ItemObject.ItemTypeEnum.LegArmor => 503f,
+            ItemObject.ItemTypeEnum.HorseHarness => 100f,
             _ => throw new ArgumentOutOfRangeException(),
         };
-        return 10 * armorPower / bestArmorPower;
+        return 6 * (float)Math.Pow(armorPower, 1.5f) / bestArmorPower;
     }
 
     private static void RegisterMbObjects<T>(XmlDocument doc, Game game) where T : MBObjectBase, new()
