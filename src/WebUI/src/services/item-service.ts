@@ -113,7 +113,6 @@ const weaponTypes: ItemType[] = [
   ItemType.Thrown,
   ItemType.Arrows,
   ItemType.Bolts,
-  ItemType.Banner,
 ];
 
 const armorTypes: ItemType[] = [
