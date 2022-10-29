@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Crpg.WebApi.Workers;
 
-internal class DonorSynchronizerWorker : IHostedService
+internal class DonorSynchronizerWorker : BackgroundService
 {
     private const int MinAmountCentsForRewards = 500;
 
@@ -20,7 +20,7 @@ internal class DonorSynchronizerWorker : IHostedService
         _serviceScopeFactory = serviceScopeFactory;
     }
 
-    public async Task StartAsync(CancellationToken cancellationToken)
+    protected override async Task ExecuteAsync(CancellationToken cancellationToken)
     {
         string patreonAccessToken = _configuration.GetValue<string>("Patreon:AccessToken");
         if (patreonAccessToken == null)
@@ -74,11 +74,6 @@ internal class DonorSynchronizerWorker : IHostedService
 
             await Task.Delay(TimeSpan.FromHours(1), cancellationToken);
         }
-    }
-
-    public Task StopAsync(CancellationToken cancellationToken)
-    {
-        return Task.CompletedTask;
     }
 
     private class PatreonCampaignMember
