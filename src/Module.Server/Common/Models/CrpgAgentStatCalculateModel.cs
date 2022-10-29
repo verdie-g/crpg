@@ -68,7 +68,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         {
             return 175;
         }
-        if (skill == CrpgSkills.Strength)
+        else if (skill == CrpgSkills.Strength)
         {
             return 15;
         }
