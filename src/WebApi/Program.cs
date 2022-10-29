@@ -17,6 +17,7 @@ using Crpg.Persistence;
 using Crpg.Sdk;
 using Crpg.WebApi.Identity;
 using Crpg.WebApi.Services;
+using Crpg.WebApi.Workers;
 using IdentityServer4;
 using IdentityServer4.Models;
 using MediatR;
@@ -44,6 +45,7 @@ builder.Services
     .AddPersistence(builder.Configuration, appEnv)
     .AddApplication()
     // .AddHostedService<StrategusWorker>() Disable strategus for now.
+    .AddHostedService<DonorSynchronizerWorker>()
     .AddHttpContextAccessor() // Injects IHttpContextAccessor
     .AddScoped<ICurrentUserService, CurrentUserService>()
     .AddEndpointsApiExplorer()
