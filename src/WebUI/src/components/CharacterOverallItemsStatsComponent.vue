@@ -1,12 +1,11 @@
 <template>
   <div>
     <table width="300px">
-        <td><b>Price</b></td>
-        <td>
-          {{ itemStats.price.toLocaleString('en-US') }}
-          <b-icon icon="coins" size="is-small" />
-        </td>
-      </tr>
+      <td><b>Price</b></td>
+      <td>
+        {{ itemStats.price.toLocaleString('en-US') }}
+        <b-icon icon="coins" size="is-small" />
+      </td>
       <tr>
         <td><b>Max repair costs</b></td>
         <td>
@@ -63,10 +62,7 @@
 <script lang="ts">
 import EquippedItem from '@/models/equipped-item';
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import {
-  computeAverageRepairCost,
-  computeMaxRepairCost,
-} from '@/services/item-service';
+import { computeAverageRepairCost, computeMaxRepairCost } from '@/services/item-service';
 
 @Component
 export default class CharacterOverallItemsStatsComponent extends Vue {
