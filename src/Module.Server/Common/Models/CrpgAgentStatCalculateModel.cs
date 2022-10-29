@@ -41,12 +41,10 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
     };
 
     private readonly CrpgConstants _constants;
-    private readonly CrpgItemRequirementModel reqModel;
 
     public CrpgAgentStatCalculateModel(CrpgConstants constants)
     {
         _constants = constants;
-        reqModel = new CrpgItemRequirementModel(_constants);
     }
 
     public override int GetEffectiveSkill(
@@ -284,12 +282,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
         props.WeaponsEncumbrance = weaponsEncumbrance;
         int strengthSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
+        int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
         float weightReductionFactor = 1f / (1f + (strengthSkill - 3) / 10f);
         float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
-        int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
         float freeWeight = 3f * (1 + (strengthSkill - 3f) / 30f);
         float perceivedWeight = Math.Max(totalEncumbrance - freeWeight, 0f) * weightReductionFactor;
-        props.TopSpeedReachDuration = 1f * (1f + perceivedWeight / 40f);
+        props.TopSpeedReachDuration = 0.8f * (1f + perceivedWeight / 40f);
         float speed = 0.7f + 0.001f * athleticsSkill;
         props.MaxSpeedMultiplier = MBMath.ClampFloat(speed * (1 - perceivedWeight / 70f), 0.1f, 1.5f);
         float bipedalCombatSpeedMinMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMinMultiplier);
@@ -437,31 +435,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
 
         SetAiRelatedProperties(agent, props, equippedItem, secondaryItem);
-    }
-
-    private List<ItemObject> GetArmorItemObjectList(Equipment equipment)
-    {
-        List<ItemObject> armorItemObjectList = new();
-        for (EquipmentIndex equipmentIndex = EquipmentIndex.NumAllWeaponSlots; equipmentIndex < EquipmentIndex.ArmorItemEndSlot; equipmentIndex++)
-        {
-            EquipmentElement equipmentElement = equipment[equipmentIndex];
-            if (equipmentElement.Item != null)
-            {
-                armorItemObjectList.Add(equipmentElement.Item);
-            }
-        }
-
-        return armorItemObjectList;
-    }
-
-    private float ImpactOfStrReqOnSpeed(Agent agent)
-    {
-        int strengthAttribute = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
-        var equippedArmors = GetArmorItemObjectList(agent.SpawnEquipment);
-        float setRequirement = reqModel.ComputeArmorSetPieceStrengthRequirement(equippedArmors);
-        float distanceToStrRequirement = Math.Max(setRequirement - strengthAttribute, 0);
-        float impactOfStrReqOnSpeedFactor = 0.2f; // tweak here
-        return 1 / (1 + distanceToStrRequirement * impactOfStrReqOnSpeedFactor);
     }
 
     private float ImpactOfStrReqOnCrossbows(Agent agent, float impact, ItemObject? equippedItem)
