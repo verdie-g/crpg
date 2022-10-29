@@ -109,6 +109,9 @@ internal class ItemExporter : IDataExporter
 
         // Glitched.
         "camel_saddle_a",
+
+        // A real false banner.
+        "campaign_banner_small",
     };
 
     private static readonly Dictionary<string, (int aimSpeed, int reloadSpeed, int damage, int missileSpeed)> BowStats = new()

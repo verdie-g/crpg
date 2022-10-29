@@ -6723,43 +6723,6 @@
     "weapons": []
   },
   {
-    "id": "crpg_campaign_banner_small",
-    "name": "Campaign Banner Small",
-    "culture": "Neutral",
-    "type": "Banner",
-    "price": 50,
-    "weight": 4.0,
-    "tier": 0.0,
-    "requirement": 0,
-    "flags": [
-      "ForceAttachOffHandPrimaryItemBone",
-      "DropOnWeaponChange",
-      "WoodenParry",
-      "HeldInOffHand",
-      "HasToBeHeldUp"
-    ],
-    "weapons": [
-      {
-        "class": "Banner",
-        "itemUsage": "banner",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 104,
-        "balance": 0.0,
-        "handling": 0,
-        "bodyArmor": 0,
-        "flags": [],
-        "thrustDamage": 0,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 0,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 82
-      }
-    ]
-  },
-  {
     "id": "crpg_celtic_dagger",
     "name": "Highland Dagger",
     "culture": "Battania",
