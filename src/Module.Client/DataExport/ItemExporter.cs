@@ -362,13 +362,13 @@ internal class ItemExporter : IDataExporter
             .OrderBy(i => i.StringId)
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
-        SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));
+        SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));/*
         const string itemThumbnailsTempPath = "../../crpg-items";
         string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
         Directory.CreateDirectory(itemThumbnailsTempPath);
         await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);
         Directory.Delete(itemThumbnailsPath, recursive: true);
-        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);
+        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);*/
     }
 
     private static CrpgItem MbToCrpgItem(ItemObject mbItem)
@@ -831,7 +831,7 @@ internal class ItemExporter : IDataExporter
             ItemObject.ItemTypeEnum.HorseHarness => 37f,
             _ => throw new ArgumentOutOfRangeException(),
         };
-        return 10 * armorPower / bestArmorPower;
+        return 10 * (float)Math.Pow(armorPower / bestArmorPower, 1.5f);
     }
 
     private static void RegisterMbObjects<T>(XmlDocument doc, Game game) where T : MBObjectBase, new()
