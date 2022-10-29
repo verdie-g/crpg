@@ -1,4 +1,4 @@
-export default interface CharachterSpeedStats {
+export default interface CharacterSpeedStats {
   freeWeight: number;
   perceivedWeight: number;
   nakedSpeed: number;

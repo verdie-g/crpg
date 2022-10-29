@@ -74,7 +74,7 @@
         <tr>
           <td><b>Free weight</b></td>
           <td>
-            {{ speedStats.freeWeight.toLocaleString('en-US') }} Kg
+            {{ speedStats.freeWeight.toLocaleString('en-US') }}
             <b-icon icon="weight-hanging" size="is-small" />
           </td>
         </tr>
@@ -82,7 +82,7 @@
         <tr>
           <td><b>Perceived weight</b></td>
           <td>
-            {{ speedStats.perceivedWeight.toLocaleString('en-US') }} Kg
+            {{ speedStats.perceivedWeight.toLocaleString('en-US') }}
             <b-icon icon="weight-hanging" size="is-small" />
           </td>
         </tr>
@@ -120,7 +120,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import EquippedItem from '@/models/equipped-item';
 import Character from '@/models/character';
 import type CharacterCharacteristics from '@/models/character-characteristics';
-import type CharachterSpeedStats from '@/models/charachter-speed-stats';
+import type CharacterSpeedStats from '@/models/сharacter-speed-stats';
 import {
   computeArmorSetPieceStrengthRequirement,
   computeAverageRepairCost,
@@ -139,7 +139,7 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     ] as CharacterCharacteristics;
   }
 
-  get speedStats(): CharachterSpeedStats | null {
+  get speedStats(): CharacterSpeedStats | null {
     if (!this.characteristics) return null;
     return computeSpeedStats({
       strength: this.characteristics.attributes.strength,

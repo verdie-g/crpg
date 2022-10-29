@@ -1,6 +1,6 @@
 import { applyPolynomialFunction, clamp } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
-import type CharachterSpeedStats from '@/models/charachter-speed-stats';
+import type CharacterSpeedStats from '@/models/сharacter-speed-stats';
 
 export function computeHealthPoints(ironFlesh: number, strength: number): number {
   return (
@@ -29,7 +29,7 @@ export function computeSpeedStats({
   athletics: number;
   agility: number;
   totalEncumbrance: number;
-}): CharachterSpeedStats {
+}): CharacterSpeedStats {
   const weightReductionFactor = 1 / (1 + (strength - 3) / 10);
 
   const freeWeight = 3 * (1 + (strength - 3) / 30);
