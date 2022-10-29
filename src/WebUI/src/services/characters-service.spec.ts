@@ -3,21 +3,6 @@ import { computeSpeedStats } from '@/services/characters-service';
 const CASES = [
   [
     {
-      strength: 0,
-      agility: 0,
-      athletics: 0,
-      totalEncumbrance: 0,
-    },
-    {
-      freeWeight: 2.7,
-      nakedSpeed: 0.7,
-      perceivedWeight: 0,
-      timeToMaxSpeed: 0.5,
-      сurrentSpeed: 0.7,
-    },
-  ],
-  [
-    {
       strength: 3,
       agility: 3,
       athletics: 0,
@@ -25,10 +10,10 @@ const CASES = [
     },
     {
       freeWeight: 3,
-      nakedSpeed: 0.709,
+      nakedSpeed: 0.7081,
       perceivedWeight: 0,
-      timeToMaxSpeed: 0.5,
-      сurrentSpeed: 0.709,
+      timeToMaxSpeed: 0.8,
+      сurrentSpeed: 0.7081,
     },
   ],
   [
@@ -40,10 +25,10 @@ const CASES = [
     },
     {
       freeWeight: 4.800000000000001,
-      nakedSpeed: 0.903,
-      perceivedWeight: 3.3043478260869565,
-      timeToMaxSpeed: 0.5330434782608695,
-      сurrentSpeed: 0.8657021739130435,
+      nakedSpeed: 0.8826999999999999,
+      perceivedWeight: 5.428571428571429,
+      timeToMaxSpeed: 0.9085714285714286,
+      сurrentSpeed: 0.8142457142857141,
     },
   ],
   [
@@ -55,10 +40,10 @@ const CASES = [
     },
     {
       freeWeight: 3,
-      nakedSpeed: 1.048,
+      nakedSpeed: 1.0131999999999999,
       perceivedWeight: 5,
-      timeToMaxSpeed: 0.55,
-      сurrentSpeed: 0.9825,
+      timeToMaxSpeed: 0.9,
+      сurrentSpeed: 0.9408285714285713,
     },
   ],
 ];

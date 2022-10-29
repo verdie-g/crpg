@@ -1,4 +1,4 @@
-import { applyPolynomialFunction } from '@/utils/math';
+import { applyPolynomialFunction, clamp } from '@/utils/math';
 import Constants from '../../../../data/constants.json';
 import type CharachterSpeedStats from '@/models/charachter-speed-stats';
 
@@ -21,20 +21,23 @@ export function getExperienceForLevel(level: number): number {
 
 export function computeSpeedStats({
   strength,
-  agility,
   athletics,
+  agility,
   totalEncumbrance,
 }: {
   strength: number;
-  agility: number;
   athletics: number;
+  agility: number;
   totalEncumbrance: number;
 }): CharachterSpeedStats {
+  const weightReductionFactor = 1 / (1 + (strength - 3) / 10);
+
   const freeWeight = 3 * (1 + (strength - 3) / 30);
-  const perceivedWeight = Math.max(totalEncumbrance - freeWeight, 0) / (1 + (strength - 3) / 5);
-  const nakedSpeed = 0.7 + 0.001 * (20 * athletics + 3 * agility);
-  const сurrentSpeed = nakedSpeed * (1 - perceivedWeight / 80);
-  const timeToMaxSpeed = 0.5 * (1 + perceivedWeight / 50);
+  const perceivedWeight = Math.max(totalEncumbrance - freeWeight, 0) * weightReductionFactor;
+
+  const nakedSpeed = 0.7 + 0.0009 * (20 * athletics + 3 * agility);
+  const сurrentSpeed = clamp(nakedSpeed * (1 - perceivedWeight / 70), 0.1, 1.5);
+  const timeToMaxSpeed = 0.8 * (1 + perceivedWeight / 40);
 
   return {
     freeWeight,
