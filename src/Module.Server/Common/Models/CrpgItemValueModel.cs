@@ -27,7 +27,7 @@ internal class CrpgItemValueModel : ItemValueModel
         [ItemObject.ItemTypeEnum.Thrown] = (7385, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Arrows] = (4500, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Bolts] = (8200, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Banner] = (50, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Banner] = (7000, ItemPriceCoeffs),
     };
 
     public override float CalculateTier(ItemObject item)
@@ -210,6 +210,7 @@ internal class CrpgItemValueModel : ItemValueModel
             _ => 1.0f,
         };
     }
+
     private float CalculateDamageTypeFactorForThrown(DamageTypes damageType)
     {
         return damageType switch
