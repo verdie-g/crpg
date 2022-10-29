@@ -6,3 +6,7 @@ export function applyPolynomialFunction(x: number, coefficients: number[]): numb
 
   return r;
 }
+
+export function clamp(num: number, min: number, max: number): number {
+  return Math.min(Math.max(num, min), max);
+}

@@ -55,18 +55,89 @@
           <b-icon icon="shield-alt" size="is-small" />
         </td>
       </tr>
+
+      <tr>
+        <td><b>Leg Armor</b></td>
+        <td>
+          {{ itemStats.legArmor }}
+          <b-icon icon="shield-alt" size="is-small" />
+        </td>
+      </tr>
+
+      <template v-if="speedStats">
+        <tr>
+          <td><b>Free weight</b></td>
+          <td>
+            {{ speedStats.freeWeight.toLocaleString('en-US') }}
+            <b-icon icon="weight-hanging" size="is-small" />
+          </td>
+        </tr>
+
+        <tr>
+          <td><b>Perceived weight</b></td>
+          <td>
+            {{ speedStats.perceivedWeight.toLocaleString('en-US') }}
+            <b-icon icon="weight-hanging" size="is-small" />
+          </td>
+        </tr>
+
+        <tr>
+          <td><b>Time to max speed</b></td>
+          <td>
+            {{ speedStats.timeToMaxSpeed.toLocaleString('en-US') }} s
+            <b-icon icon="time" size="is-small" />
+          </td>
+        </tr>
+
+        <tr>
+          <td><b>Naked Speed</b></td>
+          <td>
+            {{ speedStats.nakedSpeed.toLocaleString('en-US') }}
+            <b-icon icon="running" size="is-small" />
+          </td>
+        </tr>
+
+        <tr>
+          <td><b>Current Speed</b></td>
+          <td>
+            {{ speedStats.сurrentSpeed.toLocaleString('en-US') }}
+            <b-icon icon="running" size="is-small" />
+          </td>
+        </tr>
+      </template>
     </table>
   </div>
 </template>
 
 <script lang="ts">
-import EquippedItem from '@/models/equipped-item';
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import EquippedItem from '@/models/equipped-item';
+import Character from '@/models/character';
+import type CharacterCharacteristics from '@/models/character-characteristics';
+import type CharacterSpeedStats from '@/models/сharacter-speed-stats';
 import { computeAverageRepairCost, computeMaxRepairCost } from '@/services/item-service';
+import { computeSpeedStats } from '@/services/characters-service';
 
 @Component
 export default class CharacterOverallItemsStatsComponent extends Vue {
+  @Prop(Object) readonly character: Character;
   @Prop(Array) readonly equippedItems: EquippedItem[] | null;
+
+  get characteristics() {
+    return this.$store.state.user.characteristicsByCharacterId[
+      this.character.id
+    ] as CharacterCharacteristics;
+  }
+
+  get speedStats(): CharacterSpeedStats | null {
+    if (!this.characteristics) return null;
+    return computeSpeedStats({
+      strength: this.characteristics.attributes.strength,
+      agility: this.characteristics.attributes.agility,
+      athletics: this.characteristics.skills.athletics,
+      totalEncumbrance: this.itemStats.weight,
+    });
+  }
 
   get itemStats(): Record<string, number> {
     const result = {
