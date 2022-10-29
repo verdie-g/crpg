@@ -558,12 +558,12 @@ internal class ItemExporter : IDataExporter
                          _ => newAxeorMace.handleSize.ToString(CultureInfo.InvariantCulture),
                          FilterNodeByAttribute("Type", "Handle"));
                     if (newAxeorMace.canScaleHead)
-                        {
-                            ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
-                                v => ((int)(float.Parse(v) * newAxeorMace.bladeSizeFactor)).ToString(CultureInfo.InvariantCulture),
-                                FilterNodeByAttribute("Type", "Blade"));
-                        }
-                }
+                    {
+                        ModifyChildNodesAttribute(node1, "Pieces/*", "scale_factor",
+                            v => ((int)(float.Parse(v) * newAxeorMace.bladeSizeFactor)).ToString(CultureInfo.InvariantCulture),
+                            FilterNodeByAttribute("Type", "Blade"));
+                    }
+                 }
 
                  if (TwoHanded.TryGetValue(node1.Attributes["id"].Value, out var newTwoHanded))
                  {
@@ -645,15 +645,14 @@ internal class ItemExporter : IDataExporter
                         v => (int.Parse(v) - 50).ToString(CultureInfo.InvariantCulture),
                         defaultValue: "0");
                 }
-                else if (
-                       type == ItemObject.ItemTypeEnum.HeadArmor
-                    || type == ItemObject.ItemTypeEnum.BodyArmor
-                    || type == ItemObject.ItemTypeEnum.Cape
-                    || type == ItemObject.ItemTypeEnum.LegArmor
-                    || type == ItemObject.ItemTypeEnum.HandArmor)
+                else if (type is ItemObject.ItemTypeEnum.HeadArmor
+                         or ItemObject.ItemTypeEnum.Cape
+                         or ItemObject.ItemTypeEnum.BodyArmor
+                         or ItemObject.ItemTypeEnum.HandArmor
+                         or ItemObject.ItemTypeEnum.LegArmor)
                 {
                     ModifyNodeAttribute(node1, "weight",
-                        _ => ModifyArmorWeight(node1, type).ToString());
+                        _ => ModifyArmorWeight(node1, type).ToString(CultureInfo.InvariantCulture));
                 }
                 else if (type == ItemObject.ItemTypeEnum.HorseHarness)
                 {
@@ -685,7 +684,7 @@ internal class ItemExporter : IDataExporter
                         ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_speed", _ => newCrossbow.aimSpeed.ToString());
                         ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "accuracy", _ => newCrossbow.accuracy.ToString());
                         ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed", _ => newCrossbow.missileSpeed.ToString());
-                        ModifyNodeAttribute(node1, "weight", _ => newCrossbow.weight.ToString());
+                        ModifyNodeAttribute(node1, "weight", _ => newCrossbow.weight.ToString(CultureInfo.InvariantCulture));
                     }
                 }
                 else if (type == ItemObject.ItemTypeEnum.Bolts)
@@ -695,7 +694,7 @@ internal class ItemExporter : IDataExporter
                         ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "thrust_damage", _ => newBolts.damage.ToString());
                         ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "missile_speed", _ => newBolts.missileSpeed.ToString());
                         ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "stack_amount", _ => newBolts.ammo.ToString());
-                        ModifyNodeAttribute(node1, "weight", _ => newBolts.weight.ToString());
+                        ModifyNodeAttribute(node1, "weight", _ => newBolts.weight.ToString(CultureInfo.InvariantCulture));
                     }
                 }
             }
