@@ -2,6 +2,7 @@
 using Crpg.Module.Battle;
 using Crpg.Module.Common;
 using Crpg.Module.Common.Models;
+using Crpg.Module.Duel;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
 using TaleWorlds.ModuleManager;
@@ -32,6 +33,7 @@ internal class CrpgSubModule : MBSubModuleBase
         _constants = LoadCrpgConstants();
         LoadSpriteSheets();
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode(_constants));
+        TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgDuelGameMode(_constants));
 
 #if CRPG_SERVER
         // Disable culture vote during intermission because there is no concept of cultures in cRPG.
