@@ -68,7 +68,11 @@
         <tr>
           <td><b>Free weight</b></td>
           <td>
-            {{ speedStats.freeWeight.toLocaleString('en-US') }}
+            {{
+              Math.min(itemStats.weight, speedStats.freeWeight).toLocaleString('en-US') +
+              ' / ' +
+              speedStats.freeWeight.toLocaleString('en-US')
+            }}
             <b-icon icon="weight-hanging" size="is-small" />
           </td>
         </tr>
