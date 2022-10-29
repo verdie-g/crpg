@@ -29,6 +29,7 @@ internal class ItemExporter : IDataExporter
         "../../Modules/SandBoxCore/ModuleData/items/horses_and_others.xml",
         "../../Modules/SandBoxCore/ModuleData/items/shields.xml",
         "../../Modules/SandBoxCore/ModuleData/items/weapons.xml",
+        "../../Modules/SandBoxCore/ModuleData/items/banners.xml",
     };
 
     private static readonly HashSet<ItemObject.ItemTypeEnum> BlacklistedItemTypes = new()
@@ -508,6 +509,7 @@ internal class ItemExporter : IDataExporter
                 }
 
                 if (id.IndexOf("dummy", StringComparison.Ordinal) != -1
+                    || id.IndexOf("test", StringComparison.Ordinal) != -1
                     || name.IndexOf('_') != -1
                     || BlacklistedItemTypes.Contains(itemType)
                     || BlacklistedItems.Contains(id))
@@ -696,6 +698,10 @@ internal class ItemExporter : IDataExporter
                         ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "stack_amount", _ => newBolts.ammo.ToString());
                         ModifyNodeAttribute(node1, "weight", _ => newBolts.weight.ToString(CultureInfo.InvariantCulture));
                     }
+                }
+                else if (type == ItemObject.ItemTypeEnum.Banner)
+                {
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Banner", "effect", _ => "None");
                 }
             }
             else if (node1.Name == "CraftingTemplate")

@@ -364,6 +364,42 @@
     ]
   },
   {
+    "id": "crpg_archers_flag_t1",
+    "name": "Archer's Flag",
+    "culture": "Neutral",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
     "id": "crpg_arming_cap",
     "name": "Padded Coif",
     "culture": "Vlandia",
@@ -2442,6 +2478,438 @@
       "materialType": "Cloth"
     },
     "weapons": []
+  },
+  {
+    "id": "crpg_banner_of_desert_winds_t1",
+    "name": "Banner of Desert Winds",
+    "culture": "Aserai",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_banner_of_dust_devils_t3",
+    "name": "Banner of Dust Devils",
+    "culture": "Aserai",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_banner_of_emirs_hawk_t2",
+    "name": "Banner of Emir's Hawk",
+    "culture": "Aserai",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_banner_of_faris_falcon_t1",
+    "name": "Banner of Faris' Falcon",
+    "culture": "Aserai",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_banner_of_iron_shields_t2",
+    "name": "Banner of Iron Shields",
+    "culture": "Sturgia",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_banner_of_oaken_shields_t1",
+    "name": "Banner of Oaken Shields",
+    "culture": "Sturgia",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_banner_of_shifting_sands_t2",
+    "name": "Banner of Shifting Sands",
+    "culture": "Aserai",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_banner_of_steel_shields_t3",
+    "name": "Banner of Steel Shields",
+    "culture": "Sturgia",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_banner_of_sultans_eagle_t3",
+    "name": "Banner of Sultan's Eagle",
+    "culture": "Aserai",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_banner_of_the_horseman_t1",
+    "name": "Banner of the Horseman",
+    "culture": "Vlandia",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_banner_of_the_knight_t3",
+    "name": "Banner of the Knight",
+    "culture": "Vlandia",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_banner_of_the_squire_t2",
+    "name": "Banner of the Squire",
+    "culture": "Vlandia",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
   },
   {
     "id": "crpg_barbed_arrows",
@@ -5257,6 +5725,42 @@
     ]
   },
   {
+    "id": "crpg_boar_bane_flag_t2",
+    "name": "Boar Bane Flag",
+    "culture": "Battania",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
     "id": "crpg_bodkin_arrows_a",
     "name": "Stacked Bodkin Arrows",
     "culture": "Neutral",
@@ -5698,6 +6202,42 @@
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 94
+      }
+    ]
+  },
+  {
+    "id": "crpg_bowmans_flag_t2",
+    "name": "Bowman's Flag",
+    "culture": "Neutral",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
       }
     ]
   },
@@ -6647,6 +7187,42 @@
     ]
   },
   {
+    "id": "crpg_close_shields_banner_t1",
+    "name": "Close Shields Banner",
+    "culture": "Sturgia",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
     "id": "crpg_closed_desert_helmet",
     "name": "Spiked Helmet with Closed Turban ",
     "culture": "Aserai",
@@ -7451,6 +8027,42 @@
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
+      }
+    ]
+  },
+  {
+    "id": "crpg_deer_bane_flag_t1",
+    "name": "Deer Bane Flag",
+    "culture": "Battania",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
       }
     ]
   },
@@ -10842,6 +11454,42 @@
     ]
   },
   {
+    "id": "crpg_fulcum_standard_t2",
+    "name": "Fulcum Standard",
+    "culture": "Empire",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
     "id": "crpg_full_helm_over_arming_coif",
     "name": "Full Helm over Arming Coif",
     "culture": "Vlandia",
@@ -12676,6 +13324,42 @@
     ]
   },
   {
+    "id": "crpg_horse_bane_flag_t3",
+    "name": "Horse Bane Flag",
+    "culture": "Battania",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
     "id": "crpg_horse_whip",
     "name": "Horse Whip",
     "culture": "Neutral",
@@ -13328,6 +14012,42 @@
         "swingDamage": 0,
         "swingDamageType": "Undefined",
         "swingSpeed": 33
+      }
+    ]
+  },
+  {
+    "id": "crpg_iron_banner_t2",
+    "name": "Iron Banner",
+    "culture": "Neutral",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
       }
     ]
   },
@@ -16183,6 +16903,42 @@
     "weapons": []
   },
   {
+    "id": "crpg_locked_shields_banner_t3",
+    "name": "Locked Shields Banner",
+    "culture": "Sturgia",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
     "id": "crpg_long_desert_robe",
     "name": "Long Simple Robe",
     "culture": "Aserai",
@@ -16609,6 +17365,42 @@
       "materialType": "Chainmail"
     },
     "weapons": []
+  },
+  {
+    "id": "crpg_marksmans_flag_t3",
+    "name": "Marksman's Flag",
+    "culture": "Neutral",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
   },
   {
     "id": "crpg_merchants_fur_coat",
@@ -20403,6 +21195,42 @@
     ]
   },
   {
+    "id": "crpg_phalanx_standard_t1",
+    "name": "Phalanx Standard",
+    "culture": "Empire",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
     "id": "crpg_piercing_arrows",
     "name": "Piercing Arrows",
     "culture": "Neutral",
@@ -20432,6 +21260,42 @@
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
+      }
+    ]
+  },
+  {
+    "id": "crpg_pike_wall_banner_t3",
+    "name": "Pike Wall Banner",
+    "culture": "Vlandia",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
       }
     ]
   },
@@ -21024,6 +21888,42 @@
       "materialType": "Chainmail"
     },
     "weapons": []
+  },
+  {
+    "id": "crpg_rangers_flag_t2",
+    "name": "Ranger's Flag",
+    "culture": "Battania",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
   },
   {
     "id": "crpg_reaper_falx",
@@ -21813,6 +22713,42 @@
     "weapons": []
   },
   {
+    "id": "crpg_scouts_flag_t1",
+    "name": "Scout's Flag",
+    "culture": "Battania",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
     "id": "crpg_seax",
     "name": "Seax",
     "culture": "Sturgia",
@@ -22043,6 +22979,42 @@
         "swingDamage": 33,
         "swingDamageType": "Cut",
         "swingSpeed": 105
+      }
+    ]
+  },
+  {
+    "id": "crpg_shield_wall_banner_t2",
+    "name": "Shield Wall Banner",
+    "culture": "Sturgia",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
       }
     ]
   },
@@ -23044,6 +24016,78 @@
     "weapons": []
   },
   {
+    "id": "crpg_spear_bracing_banner_t1",
+    "name": "Spear Bracing Banner",
+    "culture": "Vlandia",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_spear_wall_banner_t2",
+    "name": "Spear Wall Banner",
+    "culture": "Vlandia",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
     "id": "crpg_special_camel",
     "name": "Husnphree",
     "culture": "Aserai",
@@ -23143,6 +24187,222 @@
     "weapons": []
   },
   {
+    "id": "crpg_standard_of_courage_t2",
+    "name": "Standard of Courage",
+    "culture": "Empire",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_standard_of_discipline_t3",
+    "name": "Standard of Discipline",
+    "culture": "Empire",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_standard_of_duty_t1",
+    "name": "Standard of Duty",
+    "culture": "Empire",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_standard_of_fury_t1",
+    "name": "Standard of Fury",
+    "culture": "Neutral",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_standard_of_rage_t2",
+    "name": "Standard of Rage",
+    "culture": "Neutral",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_standard_of_wrath_t3",
+    "name": "Standard of Wrath",
+    "culture": "Neutral",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
     "id": "crpg_star_falchion_sword_t3",
     "name": "Star Falchion",
     "culture": "Neutral",
@@ -23172,6 +24432,42 @@
         "swingDamage": 29,
         "swingDamageType": "Cut",
         "swingSpeed": 70
+      }
+    ]
+  },
+  {
+    "id": "crpg_steel_banner_t3",
+    "name": "Steel Banner",
+    "culture": "Neutral",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
       }
     ]
   },
@@ -23733,6 +25029,42 @@
     "weapons": []
   },
   {
+    "id": "crpg_stone_banner_t1",
+    "name": "Stone Banner",
+    "culture": "Neutral",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
     "id": "crpg_strapped_leather_boots",
     "name": "Strapped Leather Boots",
     "culture": "Empire",
@@ -23813,6 +25145,42 @@
       "materialType": "Cloth"
     },
     "weapons": []
+  },
+  {
+    "id": "crpg_striders_flag_t3",
+    "name": "Strider's Flag",
+    "culture": "Battania",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
   },
   {
     "id": "crpg_stripped_leather_harness",
@@ -26470,6 +27838,222 @@
       "materialType": "Cloth"
     },
     "weapons": []
+  },
+  {
+    "id": "crpg_tug_of_bone_arrow_t2",
+    "name": "Tug of Bone Arrow",
+    "culture": "Khuzait",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_tug_of_the_boundless_horde_t2",
+    "name": "Tug of the Boundless Horde",
+    "culture": "Khuzait",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_tug_of_the_endless _steppe_t3",
+    "name": "Tug of the Endless Steppe",
+    "culture": "Khuzait",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_tug_of_the_roaming_horse_t1",
+    "name": "Tug of the Roaming Horse",
+    "culture": "Khuzait",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_tug_of_whistling_arrow_t3",
+    "name": "Tug of Whistling Arrow",
+    "culture": "Khuzait",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
+  },
+  {
+    "id": "crpg_tug_of_wooden_arrow_t1",
+    "name": "Tug of Wooden Arrow",
+    "culture": "Khuzait",
+    "type": "Banner",
+    "price": 50,
+    "weight": 0.2,
+    "tier": 10.0,
+    "requirement": 0,
+    "flags": [
+      "ForceAttachOffHandPrimaryItemBone",
+      "DropOnWeaponChange",
+      "HeldInOffHand",
+      "HasToBeHeldUp"
+    ],
+    "weapons": [
+      {
+        "class": "Banner",
+        "itemUsage": "banner",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 150,
+        "balance": 1.0,
+        "handling": 78,
+        "bodyArmor": 0,
+        "flags": [],
+        "thrustDamage": 0,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 78,
+        "swingDamage": 6,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 97
+      }
+    ]
   },
   {
     "id": "crpg_tundra_tunic",

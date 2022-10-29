@@ -52,6 +52,7 @@ internal class CrpgSubModule : MBSubModuleBase
         base.InitializeGameStarter(game, starterObject);
         InitializeGameModels(starterObject);
         CrpgSkills.Initialize(game);
+        CrpgBannerEffects.Initialize(game);
         ManagedParameters.Instance.Initialize(ModuleHelper.GetXmlPath("Crpg", "managed_core_parameters"));
 #if CRPG_CLIENT
         game.GameTextManager.LoadGameTexts();

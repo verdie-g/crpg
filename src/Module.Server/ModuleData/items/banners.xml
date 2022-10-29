@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item id="crpg_standard_of_fury_t1" name="{=xbrIp3qS}Standard of Fury" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_battania_tier1" prefab="banner_battania_tier1" culture="Culture.neutral_culture" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_standard_of_rage_t2" name="{=bMI735CY}Standard of Rage" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_battania_tier2" prefab="banner_battania_tier2" culture="Culture.neutral_culture" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_standard_of_wrath_t3" name="{=v652kWEt}Standard of Wrath" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_battania_tier3" prefab="banner_battania_tier3" culture="Culture.neutral_culture" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_deer_bane_flag_t1" name="{=xzzr0WR7}Deer Bane Flag" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_battania_tier1" prefab="banner_battania_tier1" culture="Culture.battania" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_boar_bane_flag_t2" name="{=HAZIchT3}Boar Bane Flag" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_battania_tier2" prefab="banner_battania_tier2" culture="Culture.battania" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_horse_bane_flag_t3" name="{=CdBEdJqV}Horse Bane Flag" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_battania_tier3" prefab="banner_battania_tier3" culture="Culture.battania" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_spear_bracing_banner_t1" name="{=w9bVJ78F}Spear Bracing Banner" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="vlandia_tier_1_banner" prefab="vlandia_tier_1_banner" culture="Culture.vlandia" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_spear_wall_banner_t2" name="{=AEFT6XBM}Spear Wall Banner" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="vlandia_tier_2_banner" prefab="vlandia_tier_2_banner" culture="Culture.vlandia" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_pike_wall_banner_t3" name="{=bFxReZW8}Pike Wall Banner" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="vlandia_tier_3_banner" prefab="vlandia_tier_3_banner" culture="Culture.vlandia" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_archers_flag_t1" name="{=8yEr93Aw}Archer's Flag" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="vlandia_tier_1_banner" prefab="vlandia_tier_1_banner" culture="Culture.neutral_culture" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_bowmans_flag_t2" name="{=AfouAjT5}Bowman's Flag" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="vlandia_tier_2_banner" prefab="vlandia_tier_2_banner" culture="Culture.neutral_culture" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_marksmans_flag_t3" name="{=caWWYP0J}Marksman's Flag" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="vlandia_tier_3_banner" prefab="vlandia_tier_3_banner" culture="Culture.neutral_culture" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_banner_of_faris_falcon_t1" name="{=5Hn58Ra0}Banner of Faris' Falcon" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_aserai_level1" prefab="banner_aserai_level1" culture="Culture.aserai" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_banner_of_emirs_hawk_t2" name="{=EbEmIi5K}Banner of Emir's Hawk" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_aserai_level2" prefab="banner_aserai_level2" culture="Culture.aserai" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_banner_of_sultans_eagle_t3" name="{=iR9jPgOg}Banner of Sultan's Eagle" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_aserai_level3" prefab="banner_aserai_level3" culture="Culture.aserai" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_tug_of_wooden_arrow_t1" name="{=dioBqbxi}Tug of Wooden Arrow" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="khuzait_banner_tier_1" prefab="khuzait_banner_tier_1" culture="Culture.khuzait" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_tug_of_bone_arrow_t2" name="{=ppVcgN5l}Tug of Bone Arrow" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="khuzait_banner_tier_2" prefab="khuzait_banner_tier_2" culture="Culture.khuzait" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_tug_of_whistling_arrow_t3" name="{=rUXo5AsE}Tug of Whistling Arrow" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="khuzait_banner_tier_3" prefab="khuzait_banner_tier_3" culture="Culture.khuzait" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_banner_of_the_horseman_t1" name="{=ETLxYEwL}Banner of the Horseman" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="vlandia_tier_1_banner" prefab="vlandia_tier_1_banner" culture="Culture.vlandia" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_banner_of_the_squire_t2" name="{=eIHsXeC4}Banner of the Squire" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="vlandia_tier_2_banner" prefab="vlandia_tier_2_banner" culture="Culture.vlandia" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_banner_of_the_knight_t3" name="{=QR6AaH9A}Banner of the Knight" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="vlandia_tier_3_banner" prefab="vlandia_tier_3_banner" culture="Culture.vlandia" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_standard_of_duty_t1" name="{=xjgt7gpf}Standard of Duty" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="empire_tier_1_banner" prefab="empire_tier_1_banner" culture="Culture.empire" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_standard_of_courage_t2" name="{=NrXBeKMl}Standard of Courage" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="empire_tier_2_banner" prefab="empire_tier_2_banner" culture="Culture.empire" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_standard_of_discipline_t3" name="{=rZ4iW5vM}Standard of Discipline" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="empire_tier_3_banner" prefab="empire_tier_3_banner" culture="Culture.empire" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_stone_banner_t1" name="{=Cd6mr3q2}Stone Banner" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="sturgia_banner_lvl1" prefab="sturgia_banner_lvl1" culture="Culture.neutral_culture" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_iron_banner_t2" name="{=7mCYbhbp}Iron Banner" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="sturgia_banner_lvl2" prefab="sturgia_banner_lvl2" culture="Culture.neutral_culture" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_steel_banner_t3" name="{=6uSQnTob}Steel Banner" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="sturgia_banner_lvl3" prefab="sturgia_banner_lvl3" culture="Culture.neutral_culture" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_phalanx_standard_t1" name="{=ndfetbYO}Phalanx Standard" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="empire_tier_1_banner" prefab="empire_tier_1_banner" culture="Culture.empire" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_fulcum_standard_t2" name="{=UMW7oc9g}Fulcum Standard" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="empire_tier_2_banner" prefab="empire_tier_2_banner" culture="Culture.empire" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_close_shields_banner_t1" name="{=0heYJNpN}Close Shields Banner" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="sturgia_banner_lvl1" prefab="sturgia_banner_lvl1" culture="Culture.sturgia" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_shield_wall_banner_t2" name="{=fqvQNrqN}Shield Wall Banner" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="sturgia_banner_lvl2" prefab="sturgia_banner_lvl2" culture="Culture.sturgia" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_locked_shields_banner_t3" name="{=CEK9YjWK}Locked Shields Banner" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="sturgia_banner_lvl3" prefab="sturgia_banner_lvl3" culture="Culture.sturgia" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_banner_of_oaken_shields_t1" name="{=VP7YhB8K}Banner of Oaken Shields" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="sturgia_banner_lvl1" prefab="sturgia_banner_lvl1" culture="Culture.sturgia" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_banner_of_iron_shields_t2" name="{=9SbsZJUZ}Banner of Iron Shields" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="sturgia_banner_lvl2" prefab="sturgia_banner_lvl2" culture="Culture.sturgia" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_banner_of_steel_shields_t3" name="{=atPgGfXo}Banner of Steel Shields" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="sturgia_banner_lvl3" prefab="sturgia_banner_lvl3" culture="Culture.sturgia" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_banner_of_desert_winds_t1" name="{=79QBpG6D}Banner of Desert Winds" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_aserai_level1" prefab="banner_aserai_level1" culture="Culture.aserai" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_banner_of_shifting_sands_t2" name="{=p6FU9oQa}Banner of Shifting Sands" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_aserai_level2" prefab="banner_aserai_level2" culture="Culture.aserai" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_banner_of_dust_devils_t3" name="{=e59hZ6Er}Banner of Dust Devils" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_aserai_level3" prefab="banner_aserai_level3" culture="Culture.aserai" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_scouts_flag_t1" name="{=fUugSmen}Scout's Flag" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_battania_tier1" prefab="banner_battania_tier1" culture="Culture.battania" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_rangers_flag_t2" name="{=D3RYsPg5}Ranger's Flag" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_battania_tier2" prefab="banner_battania_tier2" culture="Culture.battania" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_striders_flag_t3" name="{=M3ZTF7rj}Strider's Flag" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="banner_battania_tier3" prefab="banner_battania_tier3" culture="Culture.battania" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_tug_of_the_roaming_horse_t1" name="{=SlmJXyQD}Tug of the Roaming Horse" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="khuzait_banner_tier_1" prefab="khuzait_banner_tier_1" culture="Culture.khuzait" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="1" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_tug_of_the_boundless_horde_t2" name="{=LbvihbBz}Tug of the Boundless Horde" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="khuzait_banner_tier_2" prefab="khuzait_banner_tier_2" culture="Culture.khuzait" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="2" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+  <Item id="crpg_tug_of_the_endless _steppe_t3" name="{=jkEUOujE}Tug of the Endless Steppe" is_merchandise="false" body_name="bo_mace_a" recalculate_body="true" mesh="khuzait_banner_tier_3" prefab="khuzait_banner_tier_3" culture="Culture.khuzait" weight="0.2" Type="Banner" using_tableau="true" item_holsters="abdomen_left">
+    <ItemComponent>
+      <Banner banner_level="3" weapon_class="Banner" effect="None" weapon_balance="100" thrust_speed="78" speed_rating="97" missile_speed="0" weapon_length="150" swing_damage="6" swing_damage_type="Blunt" item_usage="banner" physics_material="metal_weapon" position="0.0, 0.0, -0.8">
+      </Banner>
+    </ItemComponent>
+    <Flags DropOnWeaponChange="true" ForceAttachOffHandPrimaryItemBone="true" HeldInOffHand="true" HasToBeHeldUp="true" CanBePickedUpFromCorpse="false" />
+  </Item>
+</Items>
