@@ -154,21 +154,21 @@ internal class ItemExporter : IDataExporter
     {
         // Light Crossbows
         // Simple Light Crossbow
-        ["crpg_crossbow_a"] = (23, 75, 84, 75, 95, 1f),
+        ["crpg_crossbow_a"] = (23, 75, 84, 75, 96, 1f),
         // Light Crossbow
-        ["crpg_crossbow_e"] = (30, 80, 91, 65, 85, 1.5f),
+        ["crpg_crossbow_e"] = (30, 80, 91, 65, 93, 1.5f),
         // Fine Light Crossbow
-        ["crpg_crossbow_g"] = (36, 85, 98, 55, 80, 2f),
+        ["crpg_crossbow_g"] = (36, 85, 98, 55, 90, 2f),
 
         // Heavy Crossbows
         // Heavy Crossbow
-        ["crpg_crossbow_b"] = (45, 97, 115, 69, 95, 3f),
+        ["crpg_crossbow_b"] = (45, 97, 115, 69, 87, 3f),
         // Arbalest
-        ["crpg_crossbow_c"] = (50, 98, 120, 66, 90, 3.8f),
+        ["crpg_crossbow_c"] = (50, 98, 120, 66, 84, 3.8f),
         // Hickory Crossbow
-        ["crpg_crossbow_d"] = (55, 99, 125, 63, 85, 4.6f),
+        ["crpg_crossbow_d"] = (55, 99, 125, 63, 81, 4.6f),
         // Bound Crossbow
-        ["crpg_crossbow_f"] = (60, 100, 130, 60, 80, 5.2f),
+        ["crpg_crossbow_f"] = (60, 100, 130, 60, 78, 5.2f),
     };
 
     private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float bluntDamageFactor, float weightFactor, int stackAmount)> Blades = new()

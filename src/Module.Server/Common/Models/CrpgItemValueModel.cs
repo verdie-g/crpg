@@ -266,7 +266,7 @@ internal class CrpgItemValueModel : ItemValueModel
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
 
-            float crossbowscaler = 2.5115519025f;
+            float crossbowscaler = 2.479958463230f;
             return
                  weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
                 * weapon.SwingSpeed / 100f
