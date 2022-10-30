@@ -7438,9 +7438,9 @@
     "name": "Simple Light Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 1256,
+    "price": 1265,
     "weight": 1.0,
-    "tier": 1.94002438,
+    "tier": 1.95020831,
     "requirement": 3,
     "flags": [],
     "weapons": [
@@ -7452,7 +7452,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 95,
+        "handling": 96,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7463,7 +7463,7 @@
         ],
         "thrustDamage": 23,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 95,
+        "thrustSpeed": 96,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 75
@@ -7475,9 +7475,9 @@
     "name": "Heavy Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 7429,
+    "price": 6892,
     "weight": 3.0,
-    "tier": 6.04871845,
+    "tier": 5.788435,
     "requirement": 10,
     "flags": [],
     "weapons": [
@@ -7489,7 +7489,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 95,
+        "handling": 87,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7502,7 +7502,7 @@
         ],
         "thrustDamage": 45,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 95,
+        "thrustSpeed": 87,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 69
@@ -7514,10 +7514,10 @@
     "name": "Arbalest",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 10357,
+    "price": 9751,
     "weight": 3.8,
-    "tier": 7.329433,
-    "requirement": 13,
+    "tier": 7.08090544,
+    "requirement": 12,
     "flags": [],
     "weapons": [
       {
@@ -7528,7 +7528,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 90,
+        "handling": 84,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7540,7 +7540,7 @@
         ],
         "thrustDamage": 50,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 90,
+        "thrustSpeed": 84,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 66
@@ -7552,9 +7552,9 @@
     "name": "Hickory Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 13897,
+    "price": 13314,
     "weight": 4.6,
-    "tier": 8.657219,
+    "tier": 8.451065,
     "requirement": 15,
     "flags": [],
     "weapons": [
@@ -7566,7 +7566,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 85,
+        "handling": 81,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7578,7 +7578,7 @@
         ],
         "thrustDamage": 55,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 85,
+        "thrustSpeed": 81,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 63
@@ -7590,9 +7590,9 @@
     "name": "Light Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 2534,
+    "price": 2717,
     "weight": 1.5,
-    "tier": 3.126688,
+    "tier": 3.2705183,
     "requirement": 5,
     "flags": [],
     "weapons": [
@@ -7604,7 +7604,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 85,
+        "handling": 93,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7615,7 +7615,7 @@
         ],
         "thrustDamage": 30,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 85,
+        "thrustSpeed": 93,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 65
@@ -7627,10 +7627,10 @@
     "name": "Bound Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 18000,
+    "price": 17593,
     "weight": 5.2,
-    "tier": 10.0,
-    "requirement": 18,
+    "tier": 9.8742075,
+    "requirement": 17,
     "flags": [],
     "weapons": [
       {
@@ -7641,7 +7641,7 @@
         "stackAmount": 1,
         "length": 90,
         "balance": 0.0,
-        "handling": 80,
+        "handling": 78,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7654,7 +7654,7 @@
         ],
         "thrustDamage": 60,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 80,
+        "thrustSpeed": 78,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 60
@@ -7666,10 +7666,10 @@
     "name": "Fine Light Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 4089,
+    "price": 4501,
     "weight": 2.0,
-    "tier": 4.229077,
-    "requirement": 7,
+    "tier": 4.48561335,
+    "requirement": 8,
     "flags": [],
     "weapons": [
       {
@@ -7680,7 +7680,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 80,
+        "handling": 90,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7691,7 +7691,7 @@
         ],
         "thrustDamage": 36,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 80,
+        "thrustSpeed": 90,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 55
