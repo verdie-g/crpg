@@ -284,12 +284,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.WeaponsEncumbrance = weaponsEncumbrance;
         int strengthSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
-        float weightReductionFactor = 1f / (1f + (strengthSkill - 3) / 10f);
+        float weightReductionFactor = 1f / (1f + (strengthSkill - 3) / 12f);
         float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
         float freeWeight = 3f * (1 + (strengthSkill - 3f) / 30f);
         float perceivedWeight = Math.Max(totalEncumbrance - freeWeight, 0f) * weightReductionFactor;
-        props.TopSpeedReachDuration = 0.8f * (1f + perceivedWeight / 40f);
-        float speed = 0.7f + 0.0009f * athleticsSkill;
+        props.TopSpeedReachDuration = 1.4f * (1f + perceivedWeight / 40f) * (20f / (20f + (float)Math.Pow(athleticsSkill / 100f, 2f)));
+        float speed = 0.7f + 0.000875f * athleticsSkill;
         props.MaxSpeedMultiplier = MBMath.ClampFloat(speed * (1 - perceivedWeight / 70f), 0.1f, 1.5f);
         float bipedalCombatSpeedMinMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMinMultiplier);
         float bipedalCombatSpeedMaxMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMaxMultiplier);
@@ -298,7 +298,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 MBMath.Lerp(
                     bipedalCombatSpeedMaxMultiplier,
                     bipedalCombatSpeedMinMultiplier,
-                    MathF.Min(totalEncumbrance / 80f, 1f)),
+                    MathF.Min(perceivedWeight / 40f, 1f)),
                 1f);
 
         EquipmentIndex wieldedItemIndex3 = agent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
@@ -313,7 +313,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             ? equipment[wieldedItemIndex4].CurrentUsageItem
             : null;
         int itemSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, equippedItem?.RelevantSkill ?? DefaultSkills.Athletics);
-        props.SwingSpeedMultiplier = 0.93f + 0.0007f * itemSkill;
+        props.SwingSpeedMultiplier = 0.70f + 0.0015f * itemSkill;
         props.ThrustOrRangedReadySpeedMultiplier = props.SwingSpeedMultiplier;
         props.HandlingMultiplier = 1f;
         props.ShieldBashStunDurationMultiplier = 1f;
@@ -353,7 +353,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     props.WeaponRotationalAccuracyPenaltyInRadians /= ImpactOfStrReqOnCrossbows(agent, 0.3f, primaryItem);
                     props.ThrustOrRangedReadySpeedMultiplier *= 0.4f * (float)Math.Pow(2, weaponSkill / 191f) * ImpactOfStrReqOnCrossbows(agent, 0.3f, primaryItem); // Multiplying make windup time slower a 0 wpf, faster at 80 wpf
                     props.ReloadSpeed *= ImpactOfStrReqOnCrossbows(agent, 0.15f, primaryItem);
-                    props.ReloadMovementPenaltyFactor = 100f * ImpactOfStrReqOnCrossbows(agent, 1f, primaryItem);
                 }
 
                 // Bows
