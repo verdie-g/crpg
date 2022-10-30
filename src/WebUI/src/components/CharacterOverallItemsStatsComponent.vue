@@ -23,7 +23,7 @@
       <tr>
         <td><b>Weight</b></td>
         <td>
-          {{ itemStats.weight.toLocaleString('en-US') }}
+          {{ itemStats.weight.toLocaleString('en-US', { maximumFractionDigits: 2 }) }}
           <b-icon icon="weight-hanging" size="is-small" />
         </td>
       </tr>
@@ -113,6 +113,7 @@ import type CharacterCharacteristics from '@/models/character-characteristics';
 import type CharacterSpeedStats from '@/models/сharacter-speed-stats';
 import { computeAverageRepairCost, computeMaxRepairCost } from '@/services/item-service';
 import { computeSpeedStats } from '@/services/characters-service';
+import ItemType from '@/models/item-type';
 
 @Component
 export default class CharacterOverallItemsStatsComponent extends Vue {
@@ -154,12 +155,15 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     result.averageRepairCost = computeAverageRepairCost(
       this.equippedItems.map(item => item.userItem.baseItem)
     );
-    this.equippedItems.forEach(item => {
-      const armor = item.userItem.baseItem.armor;
-      result.price += item.userItem.baseItem.price;
-      result.weight += Number.parseFloat(item.userItem.baseItem.weight.toFixed(2));
+    this.equippedItems.forEach(ei => {
+      result.price += ei.userItem.baseItem.price;
 
-      if (armor) {
+      if (ei.userItem.baseItem.type !== ItemType.Mount) {
+        result.weight += ei.userItem.baseItem.weight;
+      }
+
+      const armor = ei.userItem.baseItem.armor;
+      if (armor && ei.userItem.baseItem.type !== ItemType.MountHarness) {
         result.headArmor += armor.headArmor;
         result.bodyArmor += armor.bodyArmor;
         result.armArmor += armor.armArmor;
