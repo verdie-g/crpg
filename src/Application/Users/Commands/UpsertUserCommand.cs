@@ -63,7 +63,6 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<Stea
                 ?? new User { Platform = Platform.Steam, PlatformUserId = request.PlatformUserId };
 
             user.Name = request.Name;
-            user.IsDonor = false;
             user.AvatarSmall = request.Avatar;
             user.AvatarMedium = request.AvatarMedium;
             user.AvatarFull = request.AvatarFull;
