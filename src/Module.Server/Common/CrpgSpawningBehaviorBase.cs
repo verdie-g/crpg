@@ -17,22 +17,15 @@ namespace Crpg.Module.Common;
 internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
 {
     private readonly CrpgConstants _constants;
-    private readonly MultiplayerRoundController? _roundController;
 
-    public CrpgSpawningBehaviorBase(CrpgConstants constants, MultiplayerRoundController? roundController)
+    public CrpgSpawningBehaviorBase(CrpgConstants constants)
     {
         _constants = constants;
-        _roundController = roundController;
     }
 
     public override void Initialize(SpawnComponent spawnComponent)
     {
         base.Initialize(spawnComponent);
-        if (_roundController != null)
-        {
-            _roundController.OnPreparationEnded += RequestStartSpawnSession;
-            _roundController.OnRoundEnding += RequestStopSpawnSession;
-        }
     }
 
     protected virtual bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)
@@ -54,6 +47,10 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
 
             MissionPeer missionPeer = networkPeer.GetComponent<MissionPeer>();
             CrpgRepresentative crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
+            if (missionPeer == null || crpgRepresentative == null || crpgRepresentative.User == null)
+            {
+                return;
+            }
 
             BasicCultureObject teamCulture = missionPeer.Team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
             var peerClass = MultiplayerClassDivisions.GetMPHeroClasses().Skip(5).First();
@@ -97,10 +94,10 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             {
                 agentBuildData.ClothingColor1(crpgRepresentative.Clan.PrimaryColor);
                 agentBuildData.ClothingColor2(crpgRepresentative.Clan.SecondaryColor);
-                // if (TryParseBanner(crpgRepresentative.Clan.BannerKey, out var banner))
-                // {
-                //      agentBuildData.Banner(banner);
-                // }
+                if (TryParseBanner(crpgRepresentative.Clan.BannerKey, out var banner))
+                {
+                    agentBuildData.Banner(banner);
+                }
             }
             else
             {
@@ -118,11 +115,6 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             missionPeer.HasSpawnedAgentVisuals = true;
             AgentVisualSpawnComponent.RemoveAgentVisuals(missionPeer, sync: true);
 
-            if (_roundController != null)
-            {
-                missionPeer.SpawnCountThisRound += 1;
-                crpgRepresentative.SpawnTeamThisRound = missionPeer.Team;
-            }
         }
     }
 

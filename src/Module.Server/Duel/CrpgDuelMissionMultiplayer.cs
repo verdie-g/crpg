@@ -16,6 +16,7 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
             return;
         }
 
+        // Defender Team = Players in duels
         if (affectedAgent.MissionPeer.Team.IsDefender)
         {
             // Set the respawn timer for both players to 5.1sec. 2sec delay + 3 seconds countdown.

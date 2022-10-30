@@ -1,13 +1,7 @@
-﻿using System.Text;
-using Crpg.Module.Api.Models.Characters;
-using Crpg.Module.Api.Models.Items;
-using Crpg.Module.Common;
+﻿using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
-using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.ObjectSystem;
 using TaleWorlds.PlayerServices;
 
 namespace Crpg.Module.Battle;
@@ -23,7 +17,7 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
     private bool _botsSpawned;
 
     public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController? roundController)
-        : base(constants, roundController)
+        : base(constants)
     {
         _constants = constants;
         _roundController = roundController;
@@ -153,6 +147,17 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
         }
 
         return true;
+    }
+
+    protected override void OnPeerSpawned(MissionPeer component)
+    {
+        base.OnPeerSpawned(component);
+
+        if (_roundController != null)
+        {
+            component.SpawnCountThisRound += 1;
+            component.GetNetworkPeer().GetComponent<CrpgRepresentative>().SpawnTeamThisRound = component.Team;
+        }
     }
 
     /// <summary>

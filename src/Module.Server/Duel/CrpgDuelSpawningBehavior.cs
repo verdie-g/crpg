@@ -7,7 +7,7 @@ namespace Crpg.Module.Duel;
 internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
 {
     public CrpgDuelSpawningBehavior(CrpgConstants constants)
-        : base(constants, null)
+        : base(constants)
     {
         IsSpawningEnabled = true;
     }
@@ -69,6 +69,6 @@ internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
 
     protected override void OnPeerSpawned(MissionPeer peer)
     {
-        _ = peer.Representative;
+        _ = peer.Representative; // Get initializes the representative
     }
 }
