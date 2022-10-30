@@ -15,7 +15,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     private const float FlagAttackRange = 6f;
     private const float FlagAttackRangeSquared = FlagAttackRange * FlagAttackRange;
     private const float MoraleGainOnTick = 0.002f;
-    private const float MoraleGainMultiplierLastFlag = 1f;
+    private const float MoraleGainMultiplierLastFlag = 1.5f;
 
     private readonly CrpgBattleMissionMultiplayerClient _battleClient;
 
