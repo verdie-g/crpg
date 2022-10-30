@@ -35,11 +35,10 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
 
         if (_gameType == "Duel")
         {
-            items.RemoveRange(2, 2); // Remove 'Change Culture' and 'Change troop' button
             AddDuelModeOptions(items);
         }
 
-        items.Insert(items.Count - 1, crpgWebsiteButton); // -1 = Insert new button right before the 'Quit' button
+        items.Insert(items.Count - 2, crpgWebsiteButton); // -2 = Insert new button right before the 'Options' button
 
         return items;
     }
@@ -60,7 +59,14 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
     private void AddDuelModeOptions(List<EscapeMenuItemVM> items)
     {
         MissionPeer component = GameNetwork.MyPeer.GetComponent<MissionPeer>();
+
         if (component == null || component.Team == null || component.Representative is not DuelMissionRepresentative)
+        {
+            return;
+        }
+
+        var duelBehavior = Mission.GetMissionBehavior<MissionMultiplayerGameModeDuelClient>();
+        if (duelBehavior?.IsInDuel ?? false)
         {
             return;
         }
@@ -84,7 +90,7 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
         }, null, () => Tuple.Create(false, TextObject.Empty), false);
 
         List<EscapeMenuItemVM> newButtons = new() { preferedArenaInfButton, preferedArenaArcButton, preferedArenaCavButton };
-        items.InsertRange(items.Count - 1, newButtons);
+        items.InsertRange(items.Count - 2, newButtons);
     }
 
     private void DuelModeChangeArena(TroopType troopType)
@@ -112,5 +118,4 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
 
         onMyPreferredZoneChanged(troopType);
     }
-
 }

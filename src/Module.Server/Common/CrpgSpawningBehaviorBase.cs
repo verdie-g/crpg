@@ -18,13 +18,11 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
 {
     private readonly CrpgConstants _constants;
     private readonly MultiplayerRoundController? _roundController;
-    private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
 
     public CrpgSpawningBehaviorBase(CrpgConstants constants, MultiplayerRoundController? roundController)
     {
         _constants = constants;
         _roundController = roundController;
-        _notifiedPlayersAboutSpawnRestriction = new HashSet<PlayerId>();
     }
 
     public override void Initialize(SpawnComponent spawnComponent)
@@ -63,21 +61,17 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             var characterSkills = CreateCharacterSkills(crpgRepresentative.User!.Character.Characteristics);
             var character = peerClass.HeroCharacter;
 
-
             var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
             bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
             bool isRanged = characterEquipment.HasWeaponOfClass(WeaponClass.Bolt) || characterEquipment.HasWeaponOfClass(WeaponClass.Arrow);
 
             ReflectionHelper.SetProperty(character, "DefaultFormationClass", FormationClass.Infantry);
-            Console.WriteLine("Is inf");
             if (hasMount)
             {
-                Console.WriteLine("Is cav");
                 ReflectionHelper.SetProperty(character, "DefaultFormationClass", FormationClass.Cavalry);
             }
             else if (isRanged)
             {
-                Console.WriteLine("Is ranged");
                 ReflectionHelper.SetProperty(character, "DefaultFormationClass", FormationClass.Ranged);
             }
 
@@ -119,7 +113,10 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             }
 
             Agent agent = Mission.SpawnAgent(agentBuildData);
+            OnPeerSpawned(missionPeer);
             agent.WieldInitialWeapons();
+            missionPeer.HasSpawnedAgentVisuals = true;
+            AgentVisualSpawnComponent.RemoveAgentVisuals(missionPeer, sync: true);
 
             if (_roundController != null)
             {
@@ -194,6 +191,10 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
                 agent.WieldInitialWeapons();
             }
         }
+    }
+
+    protected virtual void OnPeerSpawned(MissionPeer component)
+    {
     }
 
     protected bool TryParseBanner(string bannerKey, out Banner? banner)

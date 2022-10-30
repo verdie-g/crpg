@@ -1,6 +1,4 @@
-﻿using Crpg.Module.Battle;
-using Crpg.Module.Common;
-using Crpg.Module.Common.Warmup;
+﻿using Crpg.Module.Common;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.Source.Missions;
@@ -68,7 +66,6 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
 #if CRPG_SERVER
         CrpgHttpClient crpgClient = new();
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
-        MissionMultiplayerDuel duelMission = new();
 #endif
         MissionState.OpenNew(
             Name,
@@ -77,7 +74,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
                 new MissionBehavior[]
                 {
                     MissionLobbyComponent.CreateBehavior(),
-                    new MissionMultiplayerGameModeDuelClient(),
+                    new CrpgDuelMissionMultiplayerClient(),
                     new MultiplayerTimerComponent(), // round timer
                     new MultiplayerGameNotificationsComponent(),
                     new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
@@ -92,9 +89,9 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
                     new MissionScoreboardComponent(new DuelScoreboardData()), // score board
                     new MultiplayerPreloadHelper(),
 #if CRPG_SERVER
-                    duelMission,
+                    new CrpgDuelMissionMultiplayer(),
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
-                    new SpawnComponent(new DuelSpawnFrameBehavior(), new CrpgDuelSpawningBehavior(_constants, duelMission)),
+                    new SpawnComponent(new DuelSpawnFrameBehavior(), new CrpgDuelSpawningBehavior(_constants)),
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
                     new MissionAgentPanicHandler(),
                     new AgentHumanAILogic(), // bot intelligence
