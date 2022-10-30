@@ -56,14 +56,6 @@
         </td>
       </tr>
 
-      <tr>
-        <td><b>Leg Armor</b></td>
-        <td>
-          {{ itemStats.legArmor }}
-          <b-icon icon="shield-alt" size="is-small" />
-        </td>
-      </tr>
-
       <template v-if="speedStats">
         <tr>
           <td><b>Free weight</b></td>
