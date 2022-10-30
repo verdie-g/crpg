@@ -64,7 +64,7 @@ public class RespecializeCharacterCommandTest : TestBase
         Assert.AreEqual(2, character.Level);
         Assert.AreEqual(75, character.Experience);
         Assert.AreEqual(1.1f, character.ExperienceMultiplier);
-        Assert.IsEmpty(character.EquippedItems);
+        Assert.AreEqual(3, character.EquippedItems.Count);
         Assert.AreEqual(0, character.Statistics.Kills);
         Assert.AreEqual(0, character.Statistics.Deaths);
         Assert.AreEqual(0, character.Statistics.Assists);
@@ -116,7 +116,7 @@ public class RespecializeCharacterCommandTest : TestBase
         Assert.AreEqual(3, character.Level);
         Assert.AreEqual(150, character.Experience);
         Assert.AreEqual(1.1f, character.ExperienceMultiplier);
-        Assert.IsEmpty(character.EquippedItems);
+        Assert.AreEqual(3, character.EquippedItems.Count);
         Assert.AreEqual(0, character.Statistics.Kills);
         Assert.AreEqual(0, character.Statistics.Deaths);
         Assert.AreEqual(0, character.Statistics.Assists);
