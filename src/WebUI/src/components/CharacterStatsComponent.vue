@@ -71,17 +71,16 @@
         Attributes ({{
           characteristics.attributes.points + characteristicsDelta.attributes.points
         }})
-        <b-tooltip
-          label="Convert 1 attribute point to 2 skill points"
-          class="convert-button"
-          v-if="characteristics.attributes.points + characteristicsDelta.attributes.points >= 1"
-        >
-          <b-icon
-            icon="exchange-alt"
+        <b-tooltip label="Convert 1 attribute point to 2 skill points" class="convert-button">
+          <b-button
+            :disabled="
+              !(characteristics.attributes.points + characteristicsDelta.attributes.points >= 1)
+            "
             size="is-small"
             type="is-primary"
+            label="Convert to skills"
             @click.native="convertCharacteristics(characteristicisticConversion.AttributesToSkills)"
-          />
+          ></b-button>
         </b-tooltip>
       </h2>
 
@@ -129,17 +128,15 @@
     <div class="characteristic-section" v-if="characteristics !== null">
       <h2 class="title is-4">
         Skills ({{ characteristics.skills.points + characteristicsDelta.skills.points }})
-        <b-tooltip
-          label="Convert 2 skill points to 1 attribute point"
-          class="convert-button"
-          v-if="characteristics.skills.points + characteristicsDelta.skills.points >= 2"
-        >
-          <b-icon
-            icon="exchange-alt"
+
+        <b-tooltip label="Convert 2 skill points to 1 attribute point" class="convert-button">
+          <b-button
+            :disabled="!(characteristics.skills.points + characteristicsDelta.skills.points >= 2)"
             size="is-small"
             type="is-primary"
+            label="Convert to Attributes"
             @click.native="convertCharacteristics(characteristicisticConversion.SkillsToAttributes)"
-          />
+          ></b-button>
         </b-tooltip>
       </h2>
 
