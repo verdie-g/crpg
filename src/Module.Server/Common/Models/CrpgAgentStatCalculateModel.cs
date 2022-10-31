@@ -313,7 +313,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             ? equipment[wieldedItemIndex4].CurrentUsageItem
             : null;
         int itemSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, equippedItem?.RelevantSkill ?? DefaultSkills.Athletics);
-        props.SwingSpeedMultiplier = 0.72f + 0.0014f * itemSkill;
+        props.SwingSpeedMultiplier = 0.725f + 0.001375f * itemSkill;
         props.ThrustOrRangedReadySpeedMultiplier = props.SwingSpeedMultiplier;
         props.HandlingMultiplier = 1f;
         props.ShieldBashStunDurationMultiplier = 1f;
@@ -425,6 +425,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     weaponMaxMovementAccuracyPenalty /= ImpactOfStrReqOnCrossbows(agent, 0.2f, primaryItem);
                 }
 
+                props.WeaponMaxMovementAccuracyPenalty = Math.Min(weaponMaxMovementAccuracyPenalty, 1f);
+                props.WeaponMaxUnsteadyAccuracyPenalty = Math.Min(weaponMaxUnsteadyAccuracyPenalty, 1f);
                 props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
             }
         }
