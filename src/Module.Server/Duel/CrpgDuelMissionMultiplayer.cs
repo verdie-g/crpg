@@ -3,6 +3,12 @@ using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Duel;
 
+/// <summary>
+/// The cRPG Duel implementation.
+/// Unfortunately we cannot just copy the entire MissionMultiplayerDuel class.
+/// A lot of duel GUI elements check for the MissionMultiplayerDuel mission. Without a declared MissionMultiplayerDuel
+/// the game will just crash.
+/// </summary>
 internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
 {
     // If the GameType is duel is crashes after each duel. I was not able to debug it.
