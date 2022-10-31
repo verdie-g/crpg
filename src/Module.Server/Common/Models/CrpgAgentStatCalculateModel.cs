@@ -284,13 +284,16 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.WeaponsEncumbrance = weaponsEncumbrance;
         int strengthSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
-        float weightReductionFactor = 1f / (1f + (strengthSkill - 3) / 12f);
+        float weightReductionFactor = 1f / (1f + (strengthSkill * strengthSkill - 9) / 81f);
         float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
         float freeWeight = 3f * (1 + (strengthSkill - 3f) / 30f);
         float perceivedWeight = Math.Max(totalEncumbrance - freeWeight, 0f) * weightReductionFactor;
         props.TopSpeedReachDuration = 1.4f * (1f + perceivedWeight / 40f) * (20f / (20f + (float)Math.Pow(athleticsSkill / 100f, 2f)));
         float speed = 0.7f + 0.00085f * athleticsSkill;
-        props.MaxSpeedMultiplier = MBMath.ClampFloat(speed * (1 - perceivedWeight / 70f), 0.1f, 1.5f);
+        props.MaxSpeedMultiplier = MBMath.ClampFloat(
+            speed * (float)Math.Pow(361f / (361f + (float)Math.Pow(perceivedWeight, 5f)), 0.05f),
+            0.1f,
+            1.5f);
         float bipedalCombatSpeedMinMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMinMultiplier);
         float bipedalCombatSpeedMaxMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalCombatSpeedMaxMultiplier);
         props.CombatMaxSpeedMultiplier =
