@@ -60,17 +60,6 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
 
             var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
             bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
-            bool isRanged = characterEquipment.HasWeaponOfClass(WeaponClass.Bolt) || characterEquipment.HasWeaponOfClass(WeaponClass.Arrow);
-
-            ReflectionHelper.SetProperty(character, "DefaultFormationClass", FormationClass.Infantry);
-            if (hasMount)
-            {
-                ReflectionHelper.SetProperty(character, "DefaultFormationClass", FormationClass.Cavalry);
-            }
-            else if (isRanged)
-            {
-                ReflectionHelper.SetProperty(character, "DefaultFormationClass", FormationClass.Ranged);
-            }
 
             // Used to reset the selected perks for the current troop. Otherwise the player might have addional stats.
             missionPeer.SelectedTroopIndex = -1;
@@ -114,7 +103,6 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             agent.WieldInitialWeapons();
             missionPeer.HasSpawnedAgentVisuals = true;
             AgentVisualSpawnComponent.RemoveAgentVisuals(missionPeer, sync: true);
-
         }
     }
 

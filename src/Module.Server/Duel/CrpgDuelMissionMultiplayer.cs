@@ -26,15 +26,26 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
         if (affectedAgent.MissionPeer.Team.IsDefender)
         {
             // Set the respawn timer for both players to 5.1sec. 2sec delay + 3 seconds countdown.
-            float respawnDelay = 2.5f; // Has to be bigger than 2.1sec. 2seconds delay and 100ms delay to despawn the agent.
+            float respawnDelay = 5.1f; // Has to be bigger than 2.1sec. 2seconds delay and 100ms delay to despawn the agent.
             affectedAgent.MissionPeer.SpawnTimer.Reset(Mission.CurrentTime, respawnDelay); // was 5.1f
             affectorAgent.MissionPeer.SpawnTimer.Reset(Mission.CurrentTime, respawnDelay);
             base.OnAgentRemoved(affectedAgent, affectorAgent, agentState, blow);
-            _ = RemoveRemainingAgents(affectorAgent.MissionPeer, respawnDelay);
+            _ = RemoveRemainingAgents(affectorAgent.MissionPeer, respawnDelay - 2.5f); // Should not be lower than 2.5f, otherwise the duel score will not increase!
         }
         else
         {
             base.OnAgentRemoved(affectedAgent, affectorAgent, agentState, blow);
+        }
+    }
+
+    protected override void HandleLateNewClientAfterSynchronized(NetworkCommunicator networkPeer)
+    {
+        // Remove player from list to reset preferred arena type.
+        if (SpawnComponent?.SpawningBehavior is CrpgDuelSpawningBehavior duelSpawningBehavior)
+        {
+            MissionPeer missionPeer = networkPeer.GetComponent<MissionPeer>();
+            duelSpawningBehavior.UpdatedPlayerPreferredArenaOnce.Remove(networkPeer.VirtualPlayer.Id);
+            missionPeer?.SpawnTimer?.AdjustStartTime(-3f); // Used to reduce the initial spawn on connect.
         }
     }
 
