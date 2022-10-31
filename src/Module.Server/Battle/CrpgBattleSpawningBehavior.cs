@@ -221,6 +221,7 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             var missionPeer = networkPeer.GetComponent<MissionPeer>();
             var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
             if (!networkPeer.IsSynchronized
+                || missionPeer == null
                 || missionPeer.ControlledAgent != null
                 || missionPeer.HasSpawnedAgentVisuals
                 || missionPeer.Team == null
