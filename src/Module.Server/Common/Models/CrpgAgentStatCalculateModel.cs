@@ -425,6 +425,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                     weaponMaxMovementAccuracyPenalty /= ImpactOfStrReqOnCrossbows(agent, 0.2f, primaryItem);
                 }
 
+                props.WeaponMaxMovementAccuracyPenalty = Math.Min(weaponMaxMovementAccuracyPenalty, 1f);
+                props.WeaponMaxUnsteadyAccuracyPenalty = Math.Min(weaponMaxUnsteadyAccuracyPenalty, 1f);
                 props.WeaponInaccuracy /= _constants.MountedRangedSkillInaccurary[mountedArcherySkill];
             }
         }
