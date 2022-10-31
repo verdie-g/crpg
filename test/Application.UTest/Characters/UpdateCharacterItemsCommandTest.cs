@@ -37,6 +37,8 @@ public class UpdateCharacterItemsCommandTest : TestBase
         UserItem weapon2New = new() { User = user, BaseItem = new Item { Id = "20", Type = ItemType.Shield } };
         UserItem weapon3Old = new() { User = user, BaseItem = new Item { Id = "21", Type = ItemType.OneHandedWeapon } };
         UserItem weapon3New = new() { User = user, BaseItem = new Item { Id = "22", Type = ItemType.TwoHandedWeapon } };
+        UserItem weaponExtraOld = new() { User = user, BaseItem = new Item { Id = "23", Type = ItemType.Banner } };
+        UserItem weaponExtraNew = new() { User = user, BaseItem = new Item { Id = "24", Type = ItemType.Banner } };
 
         Character character = new()
         {
@@ -54,13 +56,14 @@ public class UpdateCharacterItemsCommandTest : TestBase
                 new EquippedItem { UserItem = weapon1Old, Slot = ItemSlot.Weapon1 },
                 new EquippedItem { UserItem = weapon2Old, Slot = ItemSlot.Weapon2 },
                 new EquippedItem { UserItem = weapon3Old, Slot = ItemSlot.Weapon3 },
+                new EquippedItem { UserItem = weaponExtraOld, Slot = ItemSlot.WeaponExtra },
             },
         };
 
         user.Characters.Add(character);
         ArrangeDb.Users.Add(user);
         ArrangeDb.UserItems.AddRange(headNew, shoulderNew, bodyNew, handNew, legNew, mountHarnessNew, mountNew,
-            weapon0New, weapon1New, weapon2New, weapon3New);
+            weapon0New, weapon1New, weapon2New, weapon3New, weaponExtraNew);
         await ArrangeDb.SaveChangesAsync();
 
         UpdateCharacterItemsCommand.Handler handler = new(ActDb, Mapper);
@@ -81,9 +84,11 @@ public class UpdateCharacterItemsCommandTest : TestBase
                 new() { UserItemId = weapon1New.Id, Slot = ItemSlot.Weapon1 },
                 new() { UserItemId = weapon2New.Id, Slot = ItemSlot.Weapon2 },
                 new() { UserItemId = weapon3New.Id, Slot = ItemSlot.Weapon3 },
+                new() { UserItemId = weaponExtraNew.Id, Slot = ItemSlot.WeaponExtra },
             },
         };
         var result = await handler.Handle(cmd, CancellationToken.None);
+        Assert.IsNull(result.Errors);
 
         var userItemIdBySlot = result.Data!.ToDictionary(i => i.Slot, ei => ei.UserItem.Id);
         Assert.AreEqual(headNew.Id, userItemIdBySlot[ItemSlot.Head]);
@@ -97,6 +102,7 @@ public class UpdateCharacterItemsCommandTest : TestBase
         Assert.AreEqual(weapon1New.Id, userItemIdBySlot[ItemSlot.Weapon1]);
         Assert.AreEqual(weapon2New.Id, userItemIdBySlot[ItemSlot.Weapon2]);
         Assert.AreEqual(weapon3New.Id, userItemIdBySlot[ItemSlot.Weapon3]);
+        Assert.AreEqual(weaponExtraNew.Id, userItemIdBySlot[ItemSlot.WeaponExtra]);
     }
 
     [Test]

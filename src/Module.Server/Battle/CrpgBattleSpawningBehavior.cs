@@ -533,5 +533,6 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
         [CrpgItemSlot.Weapon1] = EquipmentIndex.Weapon1,
         [CrpgItemSlot.Weapon2] = EquipmentIndex.Weapon2,
         [CrpgItemSlot.Weapon3] = EquipmentIndex.Weapon3,
+        [CrpgItemSlot.WeaponExtra] = EquipmentIndex.ExtraWeaponSlot,
     };
 }

@@ -45,7 +45,7 @@ public record UpdateCharacterItemsCommand : IMediatorRequest<IList<EquippedItemV
             [ItemType.Pistol] = WeaponSlots,
             [ItemType.Musket] = WeaponSlots,
             [ItemType.Bullets] = WeaponSlots,
-            [ItemType.Banner] = WeaponSlots,
+            [ItemType.Banner] = new[] { ItemSlot.WeaponExtra },
         };
 
         private readonly ICrpgDbContext _db;

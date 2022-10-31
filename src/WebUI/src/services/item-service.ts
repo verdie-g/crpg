@@ -135,6 +135,7 @@ const itemTypesBySlot: Record<ItemSlot, ItemType[]> = {
   [ItemSlot.Weapon1]: weaponTypes,
   [ItemSlot.Weapon2]: weaponTypes,
   [ItemSlot.Weapon3]: weaponTypes,
+  [ItemSlot.WeaponExtra]: [ItemType.Banner],
 };
 
 const itemTypeByWeaponClass: Record<WeaponClass, ItemType> = {

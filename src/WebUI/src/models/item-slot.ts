@@ -10,6 +10,7 @@ enum ItemSlot {
   Weapon1 = 'Weapon1',
   Weapon2 = 'Weapon2',
   Weapon3 = 'Weapon3',
+  WeaponExtra = 'WeaponExtra',
 }
 
 export default ItemSlot;
