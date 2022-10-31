@@ -404,8 +404,8 @@ class UserModule extends VuexModule {
   }
 
   @Action({ commit: 'setUserRestrictions' })
-  getUserRestrictions(): Promise<Restriction[]> {
-    return userService.getUserRestrictions();
+  getUserRestrictions(id: number): Promise<Restriction[]> {
+    return userService.getUserRestrictions(id);
   }
 
   @Action

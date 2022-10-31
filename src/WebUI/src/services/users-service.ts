@@ -10,6 +10,7 @@ import EquippedItemId from '@/models/equipped-item-id';
 import { get, post, put, del } from './crpg-client';
 import Clan from '@/models/clan';
 import UserItem from '@/models/user-item';
+import Platform from '@/models/platform';
 
 export function getUser(): Promise<User> {
   return get('/users/self');
@@ -102,7 +103,11 @@ export function getCharacters(): Promise<Character[]> {
   return get('/users/self/characters');
 }
 
-export async function getUserRestrictions(): Promise<Restriction[]> {
-  const restrictions: Restriction[] = await get('/users/self/restrictions');
+export async function getUserRestrictions(id: number): Promise<Restriction[]> {
+  const restrictions: Restriction[] = await get(`/users/${id}/restrictions`);
   return restrictions.map(b => ({ ...b, createdAt: new Date(b.createdAt) }));
+}
+
+export function getUserByPlatformUserId(platform: Platform, platformUserId: string): Promise<User> {
+  return get(`/users?platform=${platform}&platformUserId=${platformUserId}`);
 }

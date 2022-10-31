@@ -11,6 +11,8 @@ using Crpg.Domain.Entities.Items;
 using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
+using Crpg.Domain.Entities.Restrictions;
+
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using NetTopologySuite.Geometries;
@@ -123,6 +125,7 @@ public record SeedDataCommand : IMediatorRequest
             {
                 PlatformUserId = "76561198016876889",
                 Name = "orle",
+                Role = Role.Admin,
                 Gold = 100000,
                 Characters = new List<Character>
                     {
@@ -647,6 +650,44 @@ public record SeedDataCommand : IMediatorRequest
                 {
                     _db.Users.Add(newUser);
                 }
+            }
+
+            Restriction[] newRestrictions =
+            {
+                new() {
+                    RestrictedUserId = 1,
+                    RestrictedByUserId = 2,
+                    Duration = TimeSpan.FromDays(10),
+                    Type = RestrictionType.Join,
+                    Reason = "noob",
+                },
+                new() {
+                    RestrictedUserId = 1,
+                    RestrictedByUserId = 2,
+                    Duration = TimeSpan.FromDays(10),
+                    Type = RestrictionType.Join,
+                    Reason = "noob",
+                },
+                new() {
+                    RestrictedUserId = 3,
+                    RestrictedByUserId = 2,
+                    Duration = TimeSpan.FromDays(10),
+                    Type = RestrictionType.Join,
+                    Reason = "noob",
+                },
+                new() {
+                    RestrictedUserId = 2,
+                    RestrictedByUserId = 1,
+                    Duration = TimeSpan.FromDays(10),
+                    Type = RestrictionType.Join,
+                    Reason = "noob",
+                },
+            };
+
+             foreach (var newRestriction in newRestrictions)
+            {
+                // TODO: if exist bla bla bla
+                _db.Restrictions.Add(newRestriction);
             }
 
             Character takeoCharacter0 = new()

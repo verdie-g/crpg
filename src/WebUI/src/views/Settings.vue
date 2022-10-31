@@ -54,7 +54,11 @@ export default class Settings extends Vue {
   isDeleteAcountDialogActive = false;
 
   created(): void {
-    userModule.getUserRestrictions();
+    console.log(userModule.user);
+
+    if (userModule.user) {
+      userModule.getUserRestrictions(userModule.user.id);
+    }
   }
 
   get user(): User | null {

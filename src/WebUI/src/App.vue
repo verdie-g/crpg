@@ -57,7 +57,7 @@
     </nav>
 
     <main class="is-flex-grow-1">
-      <router-view />
+      <router-view v-if="!isUserLoading" />
     </main>
     <!-- Display or not the footer depending on the current page -->
     <footer
@@ -118,6 +118,10 @@ export default class App extends Vue {
     return userModule.isModeratorOrAdmin;
   }
 
+  get isUserLoading() {
+    return userModule.userLoading;
+  }
+
   async beforeCreate() {
     userModule.setUserLoading(true);
     try {
@@ -138,6 +142,8 @@ export default class App extends Vue {
         const token = await signInSilent();
         if (token !== null) {
           await userModule.getUser();
+
+          console.log('app', userModule.user);
         }
       } catch {
         // The grant is probably not valid anymore because the server was restarted.

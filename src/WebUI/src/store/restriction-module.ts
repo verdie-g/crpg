@@ -2,6 +2,7 @@ import { Action, getModule, Module, Mutation, VuexModule } from 'vuex-module-dec
 import store from '@/store';
 import * as restrictionService from '@/services/restriction-service';
 import Restriction from '@/models/restriction';
+import RestrictionCreation from '@/models/restriction-creation';
 
 @Module({ store, dynamic: true, name: 'restriction' })
 class RestrictionModules extends VuexModule {
@@ -15,6 +16,11 @@ class RestrictionModules extends VuexModule {
   @Action({ commit: 'setRestrictions' })
   getRestrictions() {
     return restrictionService.getRestrictions();
+  }
+
+  @Action
+  createRestriction(payload: RestrictionCreation) {
+    return restrictionService.restrictUser(payload);
   }
 }
 
