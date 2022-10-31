@@ -392,6 +392,12 @@ internal class CrpgBattleSpawningBehavior : SpawningBehaviorBase
             return;
         }
 
+        if (!Equipment.IsItemFitsToSlot(idx, itemObject))
+        {
+            Debug.Print($"Cannot equip item '{itemId} on slot {idx}");
+            return;
+        }
+
         EquipmentElement equipmentElement = new(itemObject);
         equipments.AddEquipmentToSlotWithoutAgent(idx, equipmentElement);
     }
