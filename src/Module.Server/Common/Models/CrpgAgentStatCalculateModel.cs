@@ -323,6 +323,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.ReloadMovementPenaltyFactor = 1f;
         SetAllWeaponInaccuracy(agent, props, (int)wieldedItemIndex3, equippedItem);
         int ridingSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, DefaultSkills.Riding);
+        props.BipedalRangedReadySpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReadySpeedMultiplier);
+        props.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
+
         if (equippedItem != null)
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
@@ -337,7 +340,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             // Ranged Behavior
             if (equippedItem.IsRangedWeapon)
             {
-                props.ThrustOrRangedReadySpeedMultiplier = equippedItem.ThrustSpeed / 220f + 0.0035f * itemSkill;
+                props.ThrustOrRangedReadySpeedMultiplier = equippedItem.ThrustSpeed / 160f + 0.0015f * itemSkill;
                 float maxMovementAccuracyPenaltyMultiplier = Math.Max(0.0f, 1.0f - weaponSkill / 500.0f);
                 float weaponMaxMovementAccuracyPenalty = 0.125f * maxMovementAccuracyPenaltyMultiplier;
                 float weaponMaxUnsteadyAccuracyPenalty = 0.1f * maxMovementAccuracyPenaltyMultiplier;
@@ -374,6 +377,9 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
                     // Rotation Penalty
                     props.WeaponRotationalAccuracyPenaltyInRadians = 0.1f;
+
+                    props.BipedalRangedReadySpeedMultiplier = 0.5f;
+                    props.BipedalRangedReloadSpeedMultiplier = 0.75F;
                 }
 
                 // Throwing
@@ -431,8 +437,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         props.AttributeRiding = ridingSkill * ridingAttribute;
         // TODO: AttributeHorseArchery doesn't seem to have any effect for now.
         props.AttributeHorseArchery = Game.Current.BasicModels.StrikeMagnitudeModel.CalculateHorseArcheryFactor(character);
-        props.BipedalRangedReadySpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReadySpeedMultiplier);
-        props.BipedalRangedReloadSpeedMultiplier = ManagedParameters.Instance.GetManagedParameter(ManagedParametersEnum.BipedalRangedReloadSpeedMultiplier);
 
         SetAiRelatedProperties(agent, props, equippedItem, secondaryItem);
     }
