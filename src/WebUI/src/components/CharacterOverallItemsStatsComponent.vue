@@ -22,6 +22,13 @@
         </td>
       </tr>
       <tr>
+        <td><b>Health Points</b></td>
+        <td>
+          {{ healthPoints }}
+          <b-icon icon="heart" size="is-small" />
+        </td>
+      </tr>
+      <tr>
         <td><b>Head Armor</b></td>
         <td>
           {{ itemStats.headArmor }}
@@ -116,7 +123,7 @@ import {
   computeAverageRepairCostByMinute,
   computeMaxRepairCostByMinute,
 } from '@/services/item-service';
-import { computeSpeedStats } from '@/services/characters-service';
+import { computeHealthPoints, computeSpeedStats } from '@/services/characters-service';
 import ItemType from '@/models/item-type';
 
 @Component
@@ -128,6 +135,17 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     return this.$store.state.user.characteristicsByCharacterId[
       this.character.id
     ] as CharacterCharacteristics;
+  }
+
+  get healthPoints(): number {
+    if (!this.characteristics) {
+      return 0;
+    }
+
+    return computeHealthPoints(
+      this.characteristics.skills.ironFlesh,
+      this.characteristics.attributes.strength
+    );
   }
 
   get speedStats(): CharacterSpeedStats | null {
@@ -145,11 +163,11 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
       price: 0,
       maxRepairCost: 0,
       averageRepairCost: 0,
-      weight: 0,
       headArmor: 0,
       bodyArmor: 0,
       armArmor: 0,
       legArmor: 0,
+      weight: 0,
     };
 
     if (!this.equippedItems) return result;
