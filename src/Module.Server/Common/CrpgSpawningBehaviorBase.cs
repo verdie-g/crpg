@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Api.Models.Items;
-using Crpg.Module.Common.Network;
-using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
-using TaleWorlds.PlayerServices;
 
 namespace Crpg.Module.Common;
 
@@ -21,11 +16,6 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
     public CrpgSpawningBehaviorBase(CrpgConstants constants)
     {
         _constants = constants;
-    }
-
-    public override void Initialize(SpawnComponent spawnComponent)
-    {
-        base.Initialize(spawnComponent);
     }
 
     protected virtual bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)
@@ -332,6 +322,12 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         if (itemObject == null)
         {
             Debug.Print($"Cannot equip unknown item '{itemId}'");
+            return;
+        }
+
+        if (!Equipment.IsItemFitsToSlot(idx, itemObject))
+        {
+            Debug.Print($"Cannot equip item '{itemId} on slot {idx}");
             return;
         }
 

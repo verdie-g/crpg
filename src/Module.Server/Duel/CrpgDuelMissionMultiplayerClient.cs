@@ -1,5 +1,4 @@
-﻿using Crpg.Module.Common.Network;
-using Crpg.Module.Helpers;
+﻿using Crpg.Module.Duel.Network;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
@@ -48,11 +47,6 @@ internal class CrpgDuelMissionMultiplayerClient : MissionMultiplayerGameModeDuel
         }
 
         Action<TroopType> onMyPreferredZoneChanged = ((DuelMissionRepresentative)myMissionPeer.Representative).OnMyPreferredZoneChanged;
-        if (onMyPreferredZoneChanged == null)
-        {
-            return;
-        }
-
-        onMyPreferredZoneChanged(message.PlayerTroopType);
+        onMyPreferredZoneChanged?.Invoke(message.PlayerTroopType);
     }
 }

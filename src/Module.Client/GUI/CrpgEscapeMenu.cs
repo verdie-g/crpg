@@ -18,11 +18,11 @@ namespace Crpg.Module.GUI;
 internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
 {
     private const string CrpgWebsite = "https://c-rpg.eu";
-    private readonly string _gameType;
+    private readonly bool _isDuelGamemode;
     public CrpgEscapeMenu(string gameType)
         : base(gameType)
     {
-        _gameType = gameType;
+        _isDuelGamemode = gameType == "Duel";
     }
 
     protected override List<EscapeMenuItemVM> GetEscapeMenuItems()
@@ -33,7 +33,7 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
             _ = ExecuteOpenCrpgWebsite();
         }, null, () => Tuple.Create(false, TextObject.Empty), false);
 
-        if (_gameType == "Duel")
+        if (_isDuelGamemode)
         {
             AddDuelModeOptions(items);
         }

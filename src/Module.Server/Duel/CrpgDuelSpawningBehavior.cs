@@ -1,5 +1,5 @@
 ﻿using Crpg.Module.Common;
-using Crpg.Module.Common.Network;
+using Crpg.Module.Duel.Network;
 using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -9,12 +9,6 @@ using TaleWorlds.PlayerServices;
 namespace Crpg.Module.Duel;
 internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
 {
-    public HashSet<PlayerId> UpdatedPlayerPreferredArenaOnce
-    {
-        get;
-        private set;
-    }
-
     private readonly CrpgDuelMissionMultiplayer _duelMission;
 
     public CrpgDuelSpawningBehavior(CrpgConstants constants, CrpgDuelMissionMultiplayer duelMission)
@@ -25,15 +19,7 @@ internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
         _duelMission = duelMission;
     }
 
-    public override void Initialize(SpawnComponent spawnComponent)
-    {
-        base.Initialize(spawnComponent);
-    }
-
-    public override void Clear()
-    {
-        base.Clear();
-    }
+    public HashSet<PlayerId> UpdatedPlayerPreferredArenaOnce { get; private set; }
 
     public override void OnTick(float dt)
     {
