@@ -30,7 +30,6 @@
     <Compile Remove="..\Module.Server\Rating\**" />
     <Compile Remove="..\Module.Server\Api\*Client.cs" />
     <Compile Remove="..\Module.Server\Battle\CrpgBattleMissionMultiplayer.cs" />
-    <Compile Remove="..\Module.Server\Common\CrpgUserManager.cs" />
     <Compile Remove="..\Module.Server\Common\CrpgUserManagerServer.cs" />
     <Compile Remove="..\Module.Server\Common\RoundRewardBehavior.cs" />
     <Compile Remove="..\Module.Server\Duel\CrpgDuelMissionMultiplayer.cs" />

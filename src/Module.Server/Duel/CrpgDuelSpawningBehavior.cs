@@ -27,7 +27,6 @@ internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
         {
             SpawnAgents();
         }
-
         base.OnTick(dt);
     }
 

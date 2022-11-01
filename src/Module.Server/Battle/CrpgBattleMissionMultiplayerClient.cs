@@ -7,6 +7,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.MountAndBlade.Objects;
 using TaleWorlds.ObjectSystem;
 
@@ -21,7 +22,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     private bool _notifiedForFlagRemoval;
     private float _remainingTimeForBellSoundToStop = float.MinValue;
     private SoundEvent? _bellSoundEvent;
-    private CrpgRepresentative? _crpgRepresentative;
+    private MissionPeer? _missionPeer;
 
     public event Action<BattleSideEnum, float>? OnMoraleChangedEvent;
     public event Action? OnFlagNumberChangedEvent;
@@ -34,6 +35,8 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     public override bool IsGameModeUsingCasualGold => false;
     public IEnumerable<FlagCapturePoint> AllCapturePoints => _flags;
     public bool AreMoralesIndependent => false;
+
+    private FlagDominationMissionRepresentative? _myRepresentative;
 
     public override void OnBehaviorInitialize()
     {
@@ -117,7 +120,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
             }
         }
 
-        BattleSideEnum mySide = _crpgRepresentative?.MissionPeer.Team.Side ?? BattleSideEnum.None;
+        BattleSideEnum mySide = _missionPeer?.Team.Side ?? BattleSideEnum.None;
         if (mySide == BattleSideEnum.None)
         {
             return;
@@ -161,7 +164,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         _flagOwners[flag.FlagIndex] = owner;
         OnCapturePointOwnerChangedEvent?.Invoke(flag, owner);
 
-        var myTeam = _crpgRepresentative?.MissionPeer.Team;
+        var myTeam = _missionPeer?.Team;
         if (myTeam == null)
         {
             return;
@@ -242,7 +245,8 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
 
     private void OnMyClientSynchronized()
     {
-        _crpgRepresentative = GameNetwork.MyPeer.GetComponent<CrpgRepresentative>();
+        _missionPeer = GameNetwork.MyPeer.GetComponent<MissionPeer>();
+        _myRepresentative = GameNetwork.MyPeer.GetComponent<FlagDominationMissionRepresentative>();
     }
 
     private void OnMoraleChange(FlagDominationMoraleChangeMessage message)

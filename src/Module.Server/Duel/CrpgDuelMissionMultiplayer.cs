@@ -6,6 +6,7 @@ using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.MissionRepresentatives;
 
 namespace Crpg.Module.Duel;
 
@@ -50,6 +51,11 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
         }
 
         base.OnAgentRemoved(affectedAgent, affectorAgent, agentState, blow);
+    }
+
+    protected override void HandleEarlyNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
+    {
+        networkPeer.AddComponent<FlagDominationMissionRepresentative>();
     }
 
     public override void OnMissionTick(float dt)

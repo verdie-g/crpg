@@ -19,6 +19,7 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
 {
     private const string CrpgWebsite = "https://c-rpg.eu";
     private readonly bool _isDuelGamemode;
+
     public CrpgEscapeMenu(string gameType)
         : base(gameType)
     {
