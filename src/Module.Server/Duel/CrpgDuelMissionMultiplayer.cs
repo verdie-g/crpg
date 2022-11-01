@@ -18,11 +18,12 @@ namespace Crpg.Module.Duel;
 internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
 {
     private readonly CrpgHttpClient _crpgClient;
-    private float _checkUserUpdate = 0;
+    private float _checkUserUpdate;
 
     public CrpgDuelMissionMultiplayer(CrpgHttpClient crpgClient)
     {
         _crpgClient = crpgClient;
+        _checkUserUpdate = 0;
     }
 
     // If the GameType is duel is crashes after each duel. I was not able to debug it.
