@@ -2,6 +2,7 @@
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.MountAndBlade.Objects;
 using TaleWorlds.ObjectSystem;
 using Timer = TaleWorlds.Core.Timer;
@@ -178,6 +179,11 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         GameNetwork.BeginModuleEventAsServer(networkPeer);
         GameNetwork.WriteMessage(new FlagDominationMoraleChangeMessage(_morale));
         GameNetwork.EndModuleEventAsServer();
+    }
+
+    protected override void HandleEarlyNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
+    {
+        networkPeer.AddComponent<FlagDominationMissionRepresentative>();
     }
 
     private void AddTeams()
