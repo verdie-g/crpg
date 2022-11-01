@@ -125,7 +125,27 @@ public record SeedDataCommand : IMediatorRequest
                 Name = "orle",
                 Gold = 100000,
                 Characters = new List<Character>
-                { new Character { Name = "orlechar" } },
+                    {
+                        new Character
+                        {
+                        Name = "orlechar",
+                        Level = 23,
+                        Experience = _experienceTable.GetExperienceForLevel(23) + 200000,
+                        Characteristics = new CharacterCharacteristics
+                            {
+                                Attributes = new CharacterAttributes
+                                { Points = 100 },
+                                Skills = new CharacterSkills
+                                { Points = 100 },
+                            },
+                        },
+                        new Character
+                        {
+                        Name = "orlechar2",
+                        Level = 2,
+                        Experience = _experienceTable.GetExperienceForLevel(2) + 999,
+                        },
+                    },
                 AvatarSmall = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d.jpg"),
                 AvatarMedium = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_medium.jpg"),
                 AvatarFull = new Uri("https://avatars.akamai.steamstatic.com/d51d5155b1a564421c0b3fd5fb7eed7c4474e73d_full.jpg"),
