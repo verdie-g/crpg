@@ -15,18 +15,18 @@ public class ExperienceTableTest
 
     private static readonly ExperienceTable ExperienceTable = new(Constants);
 
-    [TestCase(0, 1)]
-    [TestCase(49, 1)]
-    [TestCase(50, 2)]
-    [TestCase(150, 4)]
+    [TestCase(0, 0)]
+    [TestCase(1, 3539)]
+    [TestCase(30, 4420824)]
+    [TestCase(31, 8841648)]
     public void GetLevelForExperience(int experience, int expectedLevel)
     {
         Assert.AreEqual(expectedLevel, ExperienceTable.GetLevelForExperience(experience));
     }
 
-    [TestCase(1, 0)]
-    [TestCase(2, 50)]
-    [TestCase(3, 100)]
+    [TestCase(1, 2000)]
+    [TestCase(2, 5000)]
+    [TestCase(3, 8000)]
     public void GetExperienceForLevel(int level, int expectedExperience)
     {
         Assert.AreEqual(expectedExperience, ExperienceTable.GetExperienceForLevel(level));

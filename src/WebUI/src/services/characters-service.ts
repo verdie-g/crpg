@@ -13,7 +13,7 @@ export function computeHealthPoints(ironFlesh: number, strength: number): number
 export function getExperienceForLevel(level: number): number {
   if (level <= 30) {
     const scaler = Math.pow(29, 5.65) + 150000 * 29;
-    return Math.trunc(Math.max(Math.pow(level - 1, 5.65) + 150000 * (level - 1), 0));
+    return Math.trunc(4420824 * Math.max(Math.pow(level - 1, 5.65) + 150000 * (level - 1), 0));
   } else {
     return getExperienceForLevel(30) * Math.pow(2, level - 30);
   }
