@@ -66,7 +66,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
 #if CRPG_SERVER
         CrpgHttpClient crpgClient = new();
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
-        CrpgDuelMissionMultiplayer duelMission = new();
+        CrpgDuelMissionMultiplayer duelMission = new(crpgClient);
 #endif
         MissionState.OpenNew(
             Name,
