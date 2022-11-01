@@ -40,7 +40,7 @@ export function computeSpeedStats({
     1.5
   );
   const timeToMaxSpeed =
-    1.4 *
+    1.5 *
     (1 + perceivedWeight / 40) *
     (20 / (20 + Math.pow((20 * athletics + 3 * agility) / 100, 2)));
 
