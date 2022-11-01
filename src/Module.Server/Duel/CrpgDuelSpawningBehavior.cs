@@ -48,8 +48,7 @@ internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
             || missionPeer.Culture == null
             || missionPeer.Representative is not DuelMissionRepresentative
             || !missionPeer.SpawnTimer.Check(Mission.CurrentTime)
-            || crpgRepresentative?.User == null
-            || crpgRepresentative.SpawnTeamThisRound != null)
+            || crpgRepresentative?.User == null)
         {
             return false;
         }
