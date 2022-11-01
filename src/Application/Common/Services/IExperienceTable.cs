@@ -44,10 +44,8 @@ internal class ExperienceTable : IExperienceTable
 
         for (int lvl = _constants.MinimumLevel + 1; lvl <= 30; lvl += 1)
         {
-            float a = _constants.ExperienceForLevelCoefs[0];
-            float b = _constants.ExperienceForLevelCoefs[1];
-            float c = _constants.ExperienceForLevelCoefs[2];
-            table[lvl - _constants.MinimumLevel] = (int)(a * Math.Pow(1.26, lvl) + b * lvl + c);
+            float scaler = (float)Math.Pow(29f, 5.65f) + 150000f * 29f;
+            table[lvl - _constants.MinimumLevel] = (int)(Math.Pow(lvl - 1, 5.65f) + 150000f * (lvl - 1));
         }
 
         for (int lvl = 31; lvl <= _constants.MaximumLevel; lvl += 1)
