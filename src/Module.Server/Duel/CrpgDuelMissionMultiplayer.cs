@@ -30,7 +30,8 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
 
     public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
     {
-        if (!affectedAgent.IsHuman || affectorAgent == null || affectedAgent == null || affectedAgent == affectorAgent)
+        if (!affectedAgent.IsHuman || affectorAgent == null ||
+            affectedAgent == null || affectedAgent == affectorAgent)
         {
             return;
         }

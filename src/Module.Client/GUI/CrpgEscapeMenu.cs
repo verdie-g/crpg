@@ -71,25 +71,25 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
             return;
         }
 
-        EscapeMenuItemVM preferedArenaInfButton = new(new TextObject("Arena: Infantry", null), _ =>
+        EscapeMenuItemVM preferredArenaInfButton = new(new TextObject("Arena: Infantry", null), _ =>
         {
             DuelModeChangeArena(TroopType.Infantry);
             OnEscapeMenuToggled(false);
         }, null, () => Tuple.Create(false, TextObject.Empty), false);
 
-        EscapeMenuItemVM preferedArenaArcButton = new(new TextObject("Arena: Ranged", null), _ =>
+        EscapeMenuItemVM preferredArenaArcButton = new(new TextObject("Arena: Ranged", null), _ =>
         {
             DuelModeChangeArena(TroopType.Ranged);
             OnEscapeMenuToggled(false);
         }, null, () => Tuple.Create(false, TextObject.Empty), false);
 
-        EscapeMenuItemVM preferedArenaCavButton = new(new TextObject("Arena: Cavalry", null), _ =>
+        EscapeMenuItemVM preferredArenaCavButton = new(new TextObject("Arena: Cavalry", null), _ =>
         {
             DuelModeChangeArena(TroopType.Cavalry);
             OnEscapeMenuToggled(false);
         }, null, () => Tuple.Create(false, TextObject.Empty), false);
 
-        List<EscapeMenuItemVM> newButtons = new() { preferedArenaInfButton, preferedArenaArcButton, preferedArenaCavButton };
+        List<EscapeMenuItemVM> newButtons = new() { preferredArenaInfButton, preferredArenaArcButton, preferredArenaCavButton };
         items.InsertRange(items.Count - 2, newButtons);
     }
 
