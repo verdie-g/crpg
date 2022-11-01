@@ -22,13 +22,6 @@
         </td>
       </tr>
       <tr>
-        <td><b>Weight</b></td>
-        <td>
-          {{ itemStats.weight.toLocaleString('en-US', { maximumFractionDigits: 2 }) }}
-          <b-icon icon="weight-hanging" size="is-small" />
-        </td>
-      </tr>
-      <tr>
         <td><b>Head Armor</b></td>
         <td>
           {{ itemStats.headArmor }}
@@ -58,6 +51,13 @@
       </tr>
 
       <template v-if="speedStats">
+        <tr>
+          <td><b>Weight</b></td>
+          <td>
+            {{ itemStats.weight.toLocaleString('en-US', { maximumFractionDigits: 2 }) }}
+            <b-icon icon="weight-hanging" size="is-small" />
+          </td>
+        </tr>
         <tr>
           <td><b>Free weight</b></td>
           <td>
@@ -162,7 +162,10 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     this.equippedItems.forEach(ei => {
       result.price += ei.userItem.baseItem.price;
 
-      if (ei.userItem.baseItem.type !== ItemType.Mount) {
+      if (
+        ei.userItem.baseItem.type !== ItemType.Mount &&
+        ei.userItem.baseItem.type !== ItemType.MountHarness
+      ) {
         result.weight += ei.userItem.baseItem.weight;
       }
 
