@@ -35,6 +35,7 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
         if (!affectedAgent.IsHuman || affectorAgent == null ||
             affectedAgent == null || affectedAgent == affectorAgent)
         {
+            base.OnAgentRemoved(affectedAgent, affectorAgent, agentState, blow);
             return;
         }
 
@@ -45,13 +46,10 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
             float respawnDelay = 5.1f; // Has to be bigger than 2.1sec. 2seconds delay and 100ms delay to despawn the agent.
             affectedAgent.MissionPeer.SpawnTimer.Reset(Mission.CurrentTime, respawnDelay); // was 5.1f
             affectorAgent.MissionPeer.SpawnTimer.Reset(Mission.CurrentTime, respawnDelay);
-            base.OnAgentRemoved(affectedAgent, affectorAgent, agentState, blow);
             _ = RemoveRemainingAgents(affectorAgent.MissionPeer, respawnDelay - 2.5f); // Should not be lower than 2.5f, otherwise the duel score will not increase!
         }
-        else
-        {
-            base.OnAgentRemoved(affectedAgent, affectorAgent, agentState, blow);
-        }
+
+        base.OnAgentRemoved(affectedAgent, affectorAgent, agentState, blow);
     }
 
     public override void OnMissionTick(float dt)
