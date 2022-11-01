@@ -17,7 +17,7 @@
   <SpriteCategories>
     <SpriteCategory>
       <Name>ui_mploading</Name>
-      <SpriteSheetCount>58</SpriteSheetCount>
+      <SpriteSheetCount>59</SpriteSheetCount>
       <SpriteSheetSize ID="1" Width="3840" Height="1935" />
       <SpriteSheetSize ID="2" Width="3840" Height="1935" />
       <SpriteSheetSize ID="3" Width="3383" Height="1902" />
@@ -76,6 +76,7 @@
       <SpriteSheetSize ID="56" Width="1920" Height="1080" />
       <SpriteSheetSize ID="57" Width="1920" Height="1080" />
       <SpriteSheetSize ID="58" Width="1920" Height="1080" />
+      <SpriteSheetSize ID="59" Width="1920" Height="1080" />
     </SpriteCategory>
   </SpriteCategories>
   <SpriteParts>
@@ -610,6 +611,15 @@
       <SheetY>0</SheetY>
       <CategoryName>ui_mploading</CategoryName>
     </SpritePart>
+    <SpritePart>
+      <SheetID>59</SheetID>
+      <Name>crpg_battle_quarry</Name>
+      <Width>1920</Width>
+      <Height>1080</Height>
+      <SheetX>0</SheetX>
+      <SheetY>0</SheetY>
+      <CategoryName>ui_mploading</CategoryName>
+    </SpritePart>
   </SpriteParts>
   <Sprites>
     <GenericSprite>
@@ -843,6 +853,10 @@
     <GenericSprite>
       <Name>crpg_battle_redwoodforest</Name>
       <SpritePartName>crpg_battle_redwoodforest</SpritePartName>
+    </GenericSprite>
+    <GenericSprite>
+      <Name>crpg_battle_quarry</Name>
+      <SpritePartName>crpg_battle_quarry</SpritePartName>
     </GenericSprite>
   </Sprites>
 </SpriteData>
