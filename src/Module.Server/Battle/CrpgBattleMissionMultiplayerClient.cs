@@ -48,7 +48,6 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
       base.OnRemoveBehavior();
       RoundComponent.OnPreparationEnded -= OnPreparationEnded;
       MissionNetworkComponent.OnMyClientSynchronized -= OnMyClientSynchronized;
-      _crpgRepresentative?.AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Remove);
     }
 
     public override void OnGoldAmountChangedForRepresentative(MissionRepresentativeBase representative, int goldAmount)
@@ -244,7 +243,6 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     private void OnMyClientSynchronized()
     {
         _crpgRepresentative = GameNetwork.MyPeer.GetComponent<CrpgRepresentative>();
-        _crpgRepresentative.AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
     }
 
     private void OnMoraleChange(FlagDominationMoraleChangeMessage message)
@@ -337,5 +335,4 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     {
         InformationManager.DisplayMessage(new InformationMessage("Could not join cRPG main server. Your reward was lost.", new Color(0.75f, 0.01f, 0.01f)));
     }
-
 }

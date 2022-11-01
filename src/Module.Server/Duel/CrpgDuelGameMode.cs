@@ -68,6 +68,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
         CrpgDuelMissionMultiplayer duelMission = new(crpgClient);
 #endif
+        CrpgDuelMissionMultiplayerClient duelClient = new();
         MissionState.OpenNew(
             Name,
             new MissionInitializerRecord(scene),
@@ -75,7 +76,10 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
                 new MissionBehavior[]
                 {
                     MissionLobbyComponent.CreateBehavior(),
-                    new CrpgDuelMissionMultiplayerClient(),
+#if CRPG_CLIENT
+                    new CrpgUserManagerClient(), // Needs to be loaded before the Client mission part.
+#endif
+                    duelClient,
                     new MultiplayerTimerComponent(), // round timer
                     new CrpgNotificationComponent(), // Inherits the MultiplayerGameNotificationsComponent component.
                     new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
@@ -97,7 +101,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
                     new MissionAgentPanicHandler(),
                     new AgentHumanAILogic(), // bot intelligence
                     new EquipmentControllerLeaveLogic(),
-                    new CrpgUserManager(crpgClient),
+                    new CrpgUserManagerServer(crpgClient),
                     new ChatCommandsComponent(chatBox, crpgClient),
 #else
                     new MultiplayerAchievementComponent(),

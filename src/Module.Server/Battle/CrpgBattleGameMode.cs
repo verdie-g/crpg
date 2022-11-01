@@ -88,6 +88,9 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                 new MissionBehavior[]
                 {
                     MissionLobbyComponent.CreateBehavior(),
+#if CRPG_CLIENT
+                    new CrpgUserManagerClient(), // Needs to be loaded before the Client mission part.
+#endif
                     battleClient,
                     new MultiplayerTimerComponent(), // round timer
                     new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
@@ -113,7 +116,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     new SpawnComponent(new BattleSpawnFrameBehavior(), new CrpgBattleSpawningBehavior(_constants, roundController)),
                     new AgentHumanAILogic(), // bot intelligence
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
-                    new CrpgUserManager(crpgClient),
+                    new CrpgUserManagerServer(crpgClient),
                     new KickInactiveBehavior(warmupComponent, notificationsComponent),
                     new MapVoteComponent(),
                     new ChatCommandsComponent(chatBox, crpgClient),
