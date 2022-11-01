@@ -18,6 +18,7 @@ namespace Crpg.Module.Duel;
 internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
 {
     private readonly CrpgHttpClient _crpgClient;
+    private float _checkUserUpdate = 0;
 
     public CrpgDuelMissionMultiplayer(CrpgHttpClient crpgClient)
     {
@@ -52,7 +53,6 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
         }
     }
 
-    private float _checkUserUpdate = 0;
     public override void OnMissionTick(float dt)
     {
         base.OnMissionTick(dt);
