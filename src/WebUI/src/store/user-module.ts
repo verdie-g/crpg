@@ -380,7 +380,6 @@ class UserModule extends VuexModule {
   async respecializeCharacter(character: Character): Promise<void> {
     character = await userService.respecializeCharacter(character.id);
     this.replaceCharacter(character);
-    this.setCharacterEquippedItems({ characterId: character.id, items: [] });
     const characteristics = await userService.getCharacterCharacteristics(character.id);
     this.setCharacterCharacteristics({ characterId: character.id, characteristics });
   }
