@@ -10,7 +10,7 @@
   "minimumRetirementLevel": 31,
   "experienceGainPerSecond": 17.0,
   "goldGainPerSecond": 0.8,
-  "itemRepairCostPerSecond": 0.0001,
+  "itemRepairCostPerSecond": 0.00009,
   "itemBreakChance": 0.32,
   "itemSellCostCoefs": [0.5, 0.0],
   "minimumLevel": 1,
