@@ -54,7 +54,7 @@ public record UpgradeUserItemCommand : IMediatorRequest<UserItemViewModel>
             if (userItem.Rank < 0) // repair
             {
                 int price = _itemModifierService.ModifyItem(userItem.BaseItem!, userItem.Rank).Price;
-                int repairCost = (int)MathHelper.ApplyPolynomialFunction(price, _constants.ItemRepairCostCoefs);
+                int repairCost = (int)(price * _constants.ItemRepairCostPerSecond * 60 * 5);
                 if (userItem.User!.Gold < repairCost)
                 {
                     return new(CommonErrors.NotEnoughGold(repairCost, userItem.User!.Gold));

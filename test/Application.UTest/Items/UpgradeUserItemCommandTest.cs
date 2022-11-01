@@ -11,12 +11,11 @@ namespace Crpg.Application.UTest.Items;
 
 public class UpgradeUserItemCommandTest : TestBase
 {
+    /*
     private static readonly Constants Constants = new()
     {
-        ItemRepairCostCoefs = new[] { 0.07f, 0 },
     };
 
-    /*
 
     private Item[] _items = default!;
 
