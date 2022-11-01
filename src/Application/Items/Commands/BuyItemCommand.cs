@@ -37,17 +37,17 @@ public record BuyItemCommand : IMediatorRequest<UserItemViewModel>
                 return new(CommonErrors.ItemNotFound(req.ItemId));
             }
 
-            if (item.Type == ItemType.Banner)
-            {
-                return new(CommonErrors.ItemNotBuyable(req.ItemId));
-            }
-
             var user = await _db.Users
                 .Include(u => u.Items)
                 .FirstOrDefaultAsync(u => u.Id == req.UserId, cancellationToken);
             if (user == null)
             {
                 return new(CommonErrors.UserNotFound(req.UserId));
+            }
+
+            if (item.Type == ItemType.Banner && !user.IsDonor)
+            {
+                return new(CommonErrors.ItemNotBuyable(req.ItemId));
             }
 
             if (user.Items.Any(ui => ui.BaseItemId == req.ItemId && ui.Rank == 0))

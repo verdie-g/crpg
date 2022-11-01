@@ -12,6 +12,7 @@ public record UserViewModel : IMapFrom<User>
     public int Gold { get; init; }
     public int HeirloomPoints { get; init; }
     public Role Role { get; init; }
+    public bool IsDonor { get; init; }
     public Uri? AvatarSmall { get; init; }
     public Uri? AvatarMedium { get; init; }
     public Uri? AvatarFull { get; init; }

@@ -7,7 +7,7 @@
     "price": 2412,
     "weight": 1.551566,
     "tier": 6.512159,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -26,7 +26,7 @@
     "price": 244,
     "weight": 0.6408639,
     "tier": 3.21417117,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -45,7 +45,7 @@
     "price": 187,
     "weight": 0.5416614,
     "tier": 2.90528226,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -64,7 +64,7 @@
     "price": 51,
     "weight": 0.0496846,
     "tier": 0.660593867,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -85,7 +85,7 @@
     "price": 70,
     "weight": 0.2474868,
     "tier": 1.63580811,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -104,7 +104,7 @@
     "price": 86,
     "weight": 0.3253298,
     "tier": 1.95585287,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -123,7 +123,7 @@
     "price": 322,
     "weight": 0.597669,
     "tier": 3.542207,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -142,7 +142,7 @@
     "price": 142,
     "weight": 0.500878,
     "tier": 2.58713651,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -161,7 +161,7 @@
     "price": 819,
     "weight": 0.936652,
     "tier": 4.76204538,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -180,7 +180,7 @@
     "price": 1251,
     "weight": 0.936652,
     "tier": 5.396985,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -199,7 +199,7 @@
     "price": 142,
     "weight": 0.500878,
     "tier": 2.58713651,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -218,7 +218,7 @@
     "price": 243,
     "weight": 0.6999982,
     "tier": 3.20604229,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -237,7 +237,7 @@
     "price": 1746,
     "weight": 1.322896,
     "tier": 5.941728,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -258,7 +258,7 @@
     "price": 86,
     "weight": 0.3253298,
     "tier": 1.95585287,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -317,7 +317,7 @@
     "price": 394,
     "weight": 2.332687,
     "tier": 2.81902623,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -368,7 +368,7 @@
     "name": "Archer's Flag",
     "culture": "Neutral",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -407,7 +407,7 @@
     "price": 312,
     "weight": 0.6932,
     "tier": 3.67068958,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 18,
@@ -426,7 +426,7 @@
     "price": 73,
     "weight": 0.8010539,
     "tier": 1.26306641,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "DoesNotHideChest"
@@ -448,7 +448,7 @@
     "price": 1029,
     "weight": 0.8552338,
     "tier": 5.096438,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -467,7 +467,7 @@
     "price": 55,
     "weight": 0.1818473,
     "tier": 1.37881064,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -635,7 +635,7 @@
     "price": 5943,
     "weight": 10.91807,
     "tier": 6.324882,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -656,7 +656,7 @@
     "price": 5641,
     "weight": 11.08734,
     "tier": 6.23335266,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -677,7 +677,7 @@
     "price": 6350,
     "weight": 11.6578,
     "tier": 6.44292736,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -770,7 +770,7 @@
     "price": 5075,
     "weight": 2.649286,
     "tier": 8.368867,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 44,
@@ -789,7 +789,7 @@
     "price": 10156,
     "weight": 15.2113,
     "tier": 7.338186,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -810,7 +810,7 @@
     "price": 6264,
     "weight": 11.03082,
     "tier": 6.41847229,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -831,7 +831,7 @@
     "price": 3982,
     "weight": 7.822406,
     "tier": 5.652414,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -852,7 +852,7 @@
     "price": 7026,
     "weight": 11.60033,
     "tier": 6.62676954,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -873,7 +873,7 @@
     "price": 238,
     "weight": 1.940833,
     "tier": 2.35870147,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -895,7 +895,7 @@
     "price": 93,
     "weight": 0.946496,
     "tier": 1.5130986,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -917,7 +917,7 @@
     "price": 72,
     "weight": 0.6861882,
     "tier": 1.23665488,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -939,7 +939,7 @@
     "price": 51,
     "weight": 0.07261725,
     "tier": 0.8391783,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -961,7 +961,7 @@
     "price": 82,
     "weight": 0.8010539,
     "tier": 1.39261162,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -983,7 +983,7 @@
     "price": 54,
     "weight": 0.1014857,
     "tier": 1.047492,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -1005,7 +1005,7 @@
     "price": 72,
     "weight": 0.6861882,
     "tier": 1.23665488,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -1027,7 +1027,7 @@
     "price": 54,
     "weight": 0.1014857,
     "tier": 1.047492,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -1049,7 +1049,7 @@
     "price": 82,
     "weight": 0.8010539,
     "tier": 1.39261162,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -1071,7 +1071,7 @@
     "price": 54,
     "weight": 0.1014857,
     "tier": 1.047492,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -1093,7 +1093,7 @@
     "price": 51,
     "weight": 0.07261725,
     "tier": 0.8391783,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -1115,7 +1115,7 @@
     "price": 57,
     "weight": 0.1334064,
     "tier": 1.255043,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -1137,7 +1137,7 @@
     "price": 4371,
     "weight": 2.470721,
     "tier": 8.032074,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 42,
@@ -1156,7 +1156,7 @@
     "price": 108,
     "weight": 1.126099,
     "tier": 1.66216755,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -1178,7 +1178,7 @@
     "price": 58,
     "weight": 0.4360385,
     "tier": 0.921271861,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -1200,7 +1200,7 @@
     "price": 50,
     "weight": 0.04716628,
     "tier": 0.6301733,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -1222,7 +1222,7 @@
     "price": 51,
     "weight": 0.07261725,
     "tier": 0.8391783,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -1243,7 +1243,7 @@
     "price": 29073,
     "weight": 25.85486,
     "tier": 9.774962,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -1285,7 +1285,7 @@
     "price": 352,
     "weight": 2.13376,
     "tier": 2.713727,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -1306,7 +1306,7 @@
     "price": 327,
     "weight": 0.4875217,
     "tier": 3.55942774,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -1403,7 +1403,7 @@
     "price": 5454,
     "weight": 2.740113,
     "tier": 8.535876,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 45,
@@ -1694,7 +1694,7 @@
     "price": 5103,
     "weight": 10.36015,
     "tier": 6.06112146,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -1715,7 +1715,7 @@
     "price": 23458,
     "weight": 21.91179,
     "tier": 9.223638,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -1736,7 +1736,7 @@
     "price": 5497,
     "weight": 9.220755,
     "tier": 6.18861532,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -1757,7 +1757,7 @@
     "price": 2086,
     "weight": 1.341484,
     "tier": 6.25009155,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -1776,7 +1776,7 @@
     "price": 3723,
     "weight": 1.895651,
     "tier": 7.353493,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -1795,7 +1795,7 @@
     "price": 1436,
     "weight": 1.37892,
     "tier": 5.617231,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -1814,7 +1814,7 @@
     "price": 651,
     "weight": 0.9532298,
     "tier": 4.44159651,
-    "requirement": 10,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -1833,7 +1833,7 @@
     "price": 983,
     "weight": 1.195226,
     "tier": 5.02791452,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -2087,7 +2087,7 @@
     "price": 146,
     "weight": 1.3718,
     "tier": 1.931678,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -2109,7 +2109,7 @@
     "price": 52,
     "weight": 0.2426042,
     "tier": 0.630748153,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -2131,7 +2131,7 @@
     "price": 50,
     "weight": 0.04716628,
     "tier": 0.6301733,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -2212,7 +2212,7 @@
     "price": 57,
     "weight": 0.4169436,
     "tier": 0.8891361,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian",
@@ -2271,7 +2271,7 @@
     "price": 4766,
     "weight": 9.274002,
     "tier": 5.94581,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -2292,7 +2292,7 @@
     "price": 72,
     "weight": 0.6861882,
     "tier": 1.23665488,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -2314,7 +2314,7 @@
     "price": 52,
     "weight": 0.2426042,
     "tier": 0.630748153,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -2336,7 +2336,7 @@
     "price": 310,
     "weight": 2.068775,
     "tier": 2.5959,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -2358,7 +2358,7 @@
     "price": 243,
     "weight": 1.693267,
     "tier": 2.378867,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "Civilian",
       "DoesNotHideChest"
@@ -2380,7 +2380,7 @@
     "price": 678,
     "weight": 3.373525,
     "tier": 3.35870838,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -2402,7 +2402,7 @@
     "price": 64,
     "weight": 0.5774073,
     "tier": 1.07899356,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -2484,7 +2484,7 @@
     "name": "Banner of Desert Winds",
     "culture": "Aserai",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -2520,7 +2520,7 @@
     "name": "Banner of Dust Devils",
     "culture": "Aserai",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -2556,7 +2556,7 @@
     "name": "Banner of Emir's Hawk",
     "culture": "Aserai",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -2592,7 +2592,7 @@
     "name": "Banner of Faris' Falcon",
     "culture": "Aserai",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -2628,7 +2628,7 @@
     "name": "Banner of Iron Shields",
     "culture": "Sturgia",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -2664,7 +2664,7 @@
     "name": "Banner of Oaken Shields",
     "culture": "Sturgia",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -2700,7 +2700,7 @@
     "name": "Banner of Shifting Sands",
     "culture": "Aserai",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -2736,7 +2736,7 @@
     "name": "Banner of Steel Shields",
     "culture": "Sturgia",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -2772,7 +2772,7 @@
     "name": "Banner of Sultan's Eagle",
     "culture": "Aserai",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -2808,7 +2808,7 @@
     "name": "Banner of the Horseman",
     "culture": "Vlandia",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -2844,7 +2844,7 @@
     "name": "Banner of the Knight",
     "culture": "Vlandia",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -2880,7 +2880,7 @@
     "name": "Banner of the Squire",
     "culture": "Vlandia",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -2952,7 +2952,7 @@
     "price": 1963,
     "weight": 5.669479,
     "tier": 4.617342,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -3531,7 +3531,7 @@
     "price": 3737,
     "weight": 2.296359,
     "tier": 7.6915,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -3552,7 +3552,7 @@
     "price": 112,
     "weight": 1.099809,
     "tier": 1.69587553,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -3574,7 +3574,7 @@
     "price": 240,
     "weight": 1.815643,
     "tier": 2.36877,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -3596,7 +3596,7 @@
     "price": 321,
     "weight": 2.400299,
     "tier": 2.62958527,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -3618,7 +3618,7 @@
     "price": 86,
     "weight": 0.1963956,
     "tier": 1.96772659,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -3637,7 +3637,7 @@
     "price": 51,
     "weight": 0.03779635,
     "tier": 0.6609824,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -3658,7 +3658,7 @@
     "price": 57,
     "weight": 0.1334064,
     "tier": 1.255043,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -3679,7 +3679,7 @@
     "price": 51,
     "weight": 0.03779635,
     "tier": 0.6609824,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -3700,7 +3700,7 @@
     "price": 59,
     "weight": 0.1069042,
     "tier": 1.31748557,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -3719,7 +3719,7 @@
     "price": 323,
     "weight": 0.5694357,
     "tier": 3.54657364,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -3738,7 +3738,7 @@
     "price": 68,
     "weight": 0.2053926,
     "tier": 1.66762209,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 8,
@@ -3757,7 +3757,7 @@
     "price": 128,
     "weight": 1.260608,
     "tier": 1.81257725,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -3779,7 +3779,7 @@
     "price": 72,
     "weight": 0.6861882,
     "tier": 1.23665488,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -3801,7 +3801,7 @@
     "price": 96,
     "weight": 0.9216977,
     "tier": 1.54684615,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -3823,7 +3823,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 36,
@@ -3842,7 +3842,7 @@
     "price": 2432,
     "weight": 1.879541,
     "tier": 6.82288933,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 35,
@@ -3861,7 +3861,7 @@
     "price": 1824,
     "weight": 1.643141,
     "tier": 6.28948,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 32,
@@ -3880,7 +3880,7 @@
     "price": 1648,
     "weight": 1.566723,
     "tier": 6.10957146,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 31,
@@ -3899,7 +3899,7 @@
     "price": 3169,
     "weight": 2.126303,
     "tier": 7.34704876,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 38,
@@ -3918,7 +3918,7 @@
     "price": 2908,
     "weight": 2.042925,
     "tier": 7.17333746,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 37,
@@ -3937,7 +3937,7 @@
     "price": 2432,
     "weight": 1.879541,
     "tier": 6.82288933,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 35,
@@ -3956,7 +3956,7 @@
     "price": 4046,
     "weight": 2.383009,
     "tier": 7.862266,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 41,
@@ -3975,7 +3975,7 @@
     "price": 3737,
     "weight": 2.296359,
     "tier": 7.6915,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 40,
@@ -3994,7 +3994,7 @@
     "price": 72,
     "weight": 0.6861882,
     "tier": 1.23665488,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -4016,7 +4016,7 @@
     "price": 72,
     "weight": 0.6861882,
     "tier": 1.23665488,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -4038,7 +4038,7 @@
     "price": 82,
     "weight": 0.2304528,
     "tier": 2.481311,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -4059,7 +4059,7 @@
     "price": 423,
     "weight": 0.8118855,
     "tier": 4.05822325,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 20,
@@ -4276,7 +4276,7 @@
     "price": 67,
     "weight": 0.1753114,
     "tier": 2.07319212,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -4297,7 +4297,7 @@
     "price": 637,
     "weight": 3.110729,
     "tier": 3.29335618,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -4318,7 +4318,7 @@
     "price": 165,
     "weight": 1.603371,
     "tier": 2.04104376,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -4340,7 +4340,7 @@
     "price": 93,
     "weight": 0.8486336,
     "tier": 1.51915777,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -4362,7 +4362,7 @@
     "price": 51,
     "weight": 0.2585969,
     "tier": 0.5307568,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian",
@@ -4385,7 +4385,7 @@
     "price": 122,
     "weight": 1.400084,
     "tier": 1.77148223,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian",
@@ -4507,7 +4507,7 @@
     "price": 21839,
     "weight": 20.50747,
     "tier": 9.046491,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -4528,7 +4528,7 @@
     "price": 21464,
     "weight": 21.41676,
     "tier": 9.004022,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -4549,7 +4549,7 @@
     "price": 2147,
     "weight": 2.672598,
     "tier": 7.53477955,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -4714,7 +4714,7 @@
     "price": 59,
     "weight": 0.1233343,
     "tier": 1.316434,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -4733,7 +4733,7 @@
     "price": 191,
     "weight": 0.3608018,
     "tier": 2.92899084,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -4752,7 +4752,7 @@
     "price": 59,
     "weight": 0.1069042,
     "tier": 1.31748557,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -4771,7 +4771,7 @@
     "price": 111,
     "weight": 0.2474868,
     "tier": 2.29013133,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -5001,7 +5001,7 @@
     "price": 14262,
     "weight": 17.92623,
     "tier": 8.055008,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -5022,7 +5022,7 @@
     "price": 4662,
     "weight": 2.078812,
     "tier": 10.000391,
-    "requirement": 24,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -5041,7 +5041,7 @@
     "price": 6000,
     "weight": 4.374566,
     "tier": 10.0001049,
-    "requirement": 24,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -5060,7 +5060,7 @@
     "price": 7676,
     "weight": 2.649252,
     "tier": 8.973369,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -5079,7 +5079,7 @@
     "price": 82,
     "weight": 0.2304528,
     "tier": 2.481311,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -5100,7 +5100,7 @@
     "price": 6833,
     "weight": 11.60033,
     "tier": 6.575598,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -5121,7 +5121,7 @@
     "price": 59,
     "weight": 0.1069042,
     "tier": 1.31748557,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -5140,7 +5140,7 @@
     "price": 696,
     "weight": 3.411644,
     "tier": 3.38493872,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -5162,7 +5162,7 @@
     "price": 2694,
     "weight": 6.314421,
     "tier": 5.058378,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -5183,7 +5183,7 @@
     "price": 1584,
     "weight": 4.746584,
     "tier": 4.33748627,
-    "requirement": 10,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -5204,7 +5204,7 @@
     "price": 4150,
     "weight": 7.973966,
     "tier": 5.718961,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -5225,7 +5225,7 @@
     "price": 4746,
     "weight": 8.486118,
     "tier": 5.938768,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -5246,7 +5246,7 @@
     "price": 86,
     "weight": 0.1963956,
     "tier": 1.96772659,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -5265,7 +5265,7 @@
     "price": 111,
     "weight": 0.2474868,
     "tier": 2.29013133,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -5284,7 +5284,7 @@
     "price": 7636,
     "weight": 3.209259,
     "tier": 9.357523,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 50,
@@ -5303,7 +5303,7 @@
     "price": 70,
     "weight": 0.1494032,
     "tier": 1.64346957,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -5322,7 +5322,7 @@
     "price": 9190,
     "weight": 3.502383,
     "tier": 9.840224,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 53,
@@ -5341,7 +5341,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 46,
@@ -5360,7 +5360,7 @@
     "price": 67,
     "weight": 0.7086849,
     "tier": 1.13793373,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian",
@@ -5383,7 +5383,7 @@
     "price": 13850,
     "weight": 16.5502,
     "tier": 7.99060345,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -5404,7 +5404,7 @@
     "price": 3266,
     "weight": 6.789069,
     "tier": 5.343598,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -5537,7 +5537,7 @@
     "price": 734,
     "weight": 1.067251,
     "tier": 4.819763,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 24,
@@ -5556,7 +5556,7 @@
     "price": 674,
     "weight": 0.6999982,
     "tier": 4.488459,
-    "requirement": 10,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -5575,7 +5575,7 @@
     "price": 67,
     "weight": 0.1753114,
     "tier": 2.07319212,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -5596,7 +5596,7 @@
     "price": 945,
     "weight": 3.64333,
     "tier": 3.71828675,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -5729,7 +5729,7 @@
     "name": "Boar Bane Flag",
     "culture": "Battania",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -6047,7 +6047,7 @@
     "price": 145,
     "weight": 0.3023708,
     "tier": 2.6105814,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -6210,7 +6210,7 @@
     "name": "Bowman's Flag",
     "culture": "Neutral",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -6287,7 +6287,7 @@
     "price": 4714,
     "weight": 2.559484,
     "tier": 8.200937,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 43,
@@ -6306,7 +6306,7 @@
     "price": 2908,
     "weight": 2.042925,
     "tier": 7.17333746,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 37,
@@ -6325,7 +6325,7 @@
     "price": 3445,
     "weight": 2.210786,
     "tier": 7.519766,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 39,
@@ -6344,7 +6344,7 @@
     "price": 4371,
     "weight": 2.470721,
     "tier": 8.032074,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 42,
@@ -6363,7 +6363,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 36,
@@ -6382,7 +6382,7 @@
     "price": 3169,
     "weight": 2.126303,
     "tier": 7.34704876,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 38,
@@ -6401,7 +6401,7 @@
     "price": 17168,
     "weight": 18.39299,
     "tier": 8.473375,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -6422,7 +6422,7 @@
     "price": 2824,
     "weight": 1.610607,
     "tier": 6.807842,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -6441,7 +6441,7 @@
     "price": 2824,
     "weight": 1.610607,
     "tier": 6.807842,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -6460,7 +6460,7 @@
     "price": 2853,
     "weight": 1.53205,
     "tier": 6.82706833,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -6580,7 +6580,7 @@
     "price": 3302,
     "weight": 7.176959,
     "tier": 5.360684,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -6601,7 +6601,7 @@
     "price": 52,
     "weight": 0.2426042,
     "tier": 0.630748153,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian",
@@ -6624,7 +6624,7 @@
     "price": 58,
     "weight": 0.4360385,
     "tier": 0.921271861,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -6646,7 +6646,7 @@
     "price": 65,
     "weight": 0.2799722,
     "tier": 1.82990623,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -6721,43 +6721,6 @@
       "materialType": "Leather"
     },
     "weapons": []
-  },
-  {
-    "id": "crpg_campaign_banner_small",
-    "name": "Campaign Banner Small",
-    "culture": "Neutral",
-    "type": "Banner",
-    "price": 50,
-    "weight": 4.0,
-    "tier": 0.0,
-    "requirement": 0,
-    "flags": [
-      "ForceAttachOffHandPrimaryItemBone",
-      "DropOnWeaponChange",
-      "WoodenParry",
-      "HeldInOffHand",
-      "HasToBeHeldUp"
-    ],
-    "weapons": [
-      {
-        "class": "Banner",
-        "itemUsage": "banner",
-        "accuracy": 100,
-        "missileSpeed": 0,
-        "stackAmount": 0,
-        "length": 104,
-        "balance": 0.0,
-        "handling": 0,
-        "bodyArmor": 0,
-        "flags": [],
-        "thrustDamage": 0,
-        "thrustDamageType": "Blunt",
-        "thrustSpeed": 0,
-        "swingDamage": 0,
-        "swingDamageType": "Blunt",
-        "swingSpeed": 82
-      }
-    ]
   },
   {
     "id": "crpg_celtic_dagger",
@@ -6885,7 +6848,7 @@
     "price": 364,
     "weight": 0.7517617,
     "tier": 3.86501956,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 19,
@@ -6904,7 +6867,7 @@
     "price": 423,
     "weight": 0.8118855,
     "tier": 4.05822325,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -6925,7 +6888,7 @@
     "price": 1332,
     "weight": 1.417577,
     "tier": 5.74653435,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -6946,7 +6909,7 @@
     "price": 423,
     "weight": 0.8118855,
     "tier": 4.05822325,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -7009,7 +6972,7 @@
     "price": 1763,
     "weight": 1.249412,
     "tier": 5.95827055,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -7191,7 +7154,7 @@
     "name": "Close Shields Banner",
     "culture": "Sturgia",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -7230,7 +7193,7 @@
     "price": 644,
     "weight": 1.001248,
     "tier": 4.63106775,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -7251,7 +7214,7 @@
     "price": 8651,
     "weight": 3.403728,
     "tier": 9.680154,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 52,
@@ -7270,7 +7233,7 @@
     "price": 8133,
     "weight": 3.306017,
     "tier": 9.519256,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 51,
@@ -7289,7 +7252,7 @@
     "price": 57,
     "weight": 0.1334064,
     "tier": 1.255043,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -7310,7 +7273,7 @@
     "price": 196,
     "weight": 1.693267,
     "tier": 2.1910615,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -7332,7 +7295,7 @@
     "price": 57,
     "weight": 0.1334064,
     "tier": 1.255043,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -7353,7 +7316,7 @@
     "price": 52,
     "weight": 0.2426042,
     "tier": 0.630748153,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -7375,7 +7338,7 @@
     "price": 21177,
     "weight": 20.57694,
     "tier": 8.971282,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -7475,9 +7438,9 @@
     "name": "Simple Light Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 1256,
+    "price": 1288,
     "weight": 1.0,
-    "tier": 1.94002438,
+    "tier": 1.975053,
     "requirement": 3,
     "flags": [],
     "weapons": [
@@ -7489,7 +7452,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 95,
+        "handling": 96,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7500,7 +7463,7 @@
         ],
         "thrustDamage": 23,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 95,
+        "thrustSpeed": 96,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 75
@@ -7512,9 +7475,9 @@
     "name": "Heavy Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 7429,
+    "price": 7042,
     "weight": 3.0,
-    "tier": 6.04871845,
+    "tier": 5.86217642,
     "requirement": 10,
     "flags": [],
     "weapons": [
@@ -7526,7 +7489,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 95,
+        "handling": 87,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7539,7 +7502,7 @@
         ],
         "thrustDamage": 45,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 95,
+        "thrustSpeed": 87,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 69
@@ -7551,10 +7514,10 @@
     "name": "Arbalest",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 10357,
+    "price": 9969,
     "weight": 3.8,
-    "tier": 7.329433,
-    "requirement": 13,
+    "tier": 7.17111254,
+    "requirement": 12,
     "flags": [],
     "weapons": [
       {
@@ -7565,7 +7528,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 90,
+        "handling": 84,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7577,7 +7540,7 @@
         ],
         "thrustDamage": 50,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 90,
+        "thrustSpeed": 84,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 66
@@ -7589,9 +7552,9 @@
     "name": "Hickory Crossbow",
     "culture": "Empire",
     "type": "Crossbow",
-    "price": 13897,
+    "price": 13617,
     "weight": 4.6,
-    "tier": 8.657219,
+    "tier": 8.558727,
     "requirement": 15,
     "flags": [],
     "weapons": [
@@ -7603,7 +7566,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 85,
+        "handling": 81,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7615,7 +7578,7 @@
         ],
         "thrustDamage": 55,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 85,
+        "thrustSpeed": 81,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 63
@@ -7627,9 +7590,9 @@
     "name": "Light Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 2534,
+    "price": 2771,
     "weight": 1.5,
-    "tier": 3.126688,
+    "tier": 3.312183,
     "requirement": 5,
     "flags": [],
     "weapons": [
@@ -7641,7 +7604,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 85,
+        "handling": 93,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7652,7 +7615,7 @@
         ],
         "thrustDamage": 30,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 85,
+        "thrustSpeed": 93,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 65
@@ -7678,7 +7641,7 @@
         "stackAmount": 1,
         "length": 90,
         "balance": 0.0,
-        "handling": 80,
+        "handling": 78,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7691,7 +7654,7 @@
         ],
         "thrustDamage": 60,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 80,
+        "thrustSpeed": 78,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 60
@@ -7703,10 +7666,10 @@
     "name": "Fine Light Crossbow",
     "culture": "Vlandia",
     "type": "Crossbow",
-    "price": 4089,
+    "price": 4596,
     "weight": 2.0,
-    "tier": 4.229077,
-    "requirement": 7,
+    "tier": 4.54275751,
+    "requirement": 8,
     "flags": [],
     "weapons": [
       {
@@ -7717,7 +7680,7 @@
         "stackAmount": 1,
         "length": 95,
         "balance": 0.0,
-        "handling": 80,
+        "handling": 90,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -7728,7 +7691,7 @@
         ],
         "thrustDamage": 36,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 80,
+        "thrustSpeed": 90,
         "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 55
@@ -7743,7 +7706,7 @@
     "price": 776,
     "weight": 3.761062,
     "tier": 3.50099564,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -7800,7 +7763,7 @@
     "price": 93,
     "weight": 0.8971198,
     "tier": 1.51613748,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -7822,7 +7785,7 @@
     "price": 54,
     "weight": 0.3085689,
     "tier": 0.7611848,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -7879,7 +7842,7 @@
     "price": 8651,
     "weight": 3.403728,
     "tier": 9.680154,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 52,
@@ -7898,7 +7861,7 @@
     "price": 1961,
     "weight": 1.402491,
     "tier": 7.876232,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -7917,7 +7880,7 @@
     "price": 2988,
     "weight": 3.130185,
     "tier": 8.261651,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -7936,7 +7899,7 @@
     "price": 57,
     "weight": 0.1334064,
     "tier": 1.255043,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -7957,7 +7920,7 @@
     "price": 3271,
     "weight": 7.621837,
     "tier": 5.34613752,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -7978,7 +7941,7 @@
     "price": 128,
     "weight": 1.260608,
     "tier": 1.81257725,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -8035,7 +7998,7 @@
     "name": "Deer Bane Flag",
     "culture": "Battania",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -8107,7 +8070,7 @@
     "price": 57,
     "weight": 0.1334064,
     "tier": 1.255043,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -8150,7 +8113,7 @@
     "price": 51,
     "weight": 0.03779635,
     "tier": 0.6609824,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -8172,7 +8135,7 @@
     "price": 57,
     "weight": 0.1334064,
     "tier": 1.255043,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -8194,7 +8157,7 @@
     "price": 312,
     "weight": 0.6932,
     "tier": 3.67068958,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 18,
@@ -8213,7 +8176,7 @@
     "price": 5454,
     "weight": 2.740113,
     "tier": 8.535876,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 45,
@@ -8232,7 +8195,7 @@
     "price": 12311,
     "weight": 13.66726,
     "tier": 7.73671675,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -8253,7 +8216,7 @@
     "price": 70,
     "weight": 0.1494032,
     "tier": 1.64346957,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -8305,7 +8268,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -8364,7 +8327,7 @@
     "price": 1274,
     "weight": 4.875058,
     "tier": 4.06708241,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -8386,7 +8349,7 @@
     "price": 72,
     "weight": 0.6419267,
     "tier": 1.23900425,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -8408,7 +8371,7 @@
     "price": 5103,
     "weight": 10.36015,
     "tier": 6.06112146,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -8429,7 +8392,7 @@
     "price": 22660,
     "weight": 22.48215,
     "tier": 9.137527,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -8530,7 +8493,7 @@
     "price": 65,
     "weight": 0.5152071,
     "tier": 1.11473656,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -8683,7 +8646,7 @@
     "price": 57,
     "weight": 0.1334064,
     "tier": 1.255043,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -8878,7 +8841,7 @@
     "price": 8141,
     "weight": 11.6578,
     "tier": 6.90313625,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -8899,7 +8862,7 @@
     "price": 82,
     "weight": 0.2304528,
     "tier": 2.481311,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -8920,7 +8883,7 @@
     "price": 11074,
     "weight": 15.14849,
     "tier": 7.51490259,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -8941,7 +8904,7 @@
     "price": 5284,
     "weight": 4.114734,
     "tier": 9.660807,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -8960,7 +8923,7 @@
     "price": 3429,
     "weight": 6.597835,
     "tier": 5.418031,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -8981,7 +8944,7 @@
     "price": 128,
     "weight": 1.260608,
     "tier": 1.81257725,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -9348,7 +9311,7 @@
     "price": 2126,
     "weight": 6.314421,
     "tier": 4.72485876,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -9369,7 +9332,7 @@
     "price": 1553,
     "weight": 5.311475,
     "tier": 4.311901,
-    "requirement": 10,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -9390,7 +9353,7 @@
     "price": 2448,
     "weight": 1.435713,
     "tier": 6.5396843,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -9525,7 +9488,7 @@
     "price": 8133,
     "weight": 3.306017,
     "tier": 9.519256,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 51,
@@ -9582,7 +9545,7 @@
     "price": 55,
     "weight": 0.1818473,
     "tier": 1.37881064,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -9603,7 +9566,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -9662,7 +9625,7 @@
     "price": 5454,
     "weight": 2.740113,
     "tier": 8.535876,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 45,
@@ -9681,7 +9644,7 @@
     "price": 6704,
     "weight": 3.018642,
     "tier": 9.031494,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 48,
@@ -9700,7 +9663,7 @@
     "price": 70,
     "weight": 0.1866581,
     "tier": 1.64053428,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -9722,7 +9685,7 @@
     "price": 2216,
     "weight": 1.799568,
     "tier": 6.64612961,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 34,
@@ -9741,7 +9704,7 @@
     "price": 54,
     "weight": 0.1014857,
     "tier": 1.047492,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -9762,7 +9725,7 @@
     "price": 57,
     "weight": 0.1334064,
     "tier": 1.255043,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -9783,7 +9746,7 @@
     "price": 146,
     "weight": 1.3718,
     "tier": 1.931678,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -9805,7 +9768,7 @@
     "price": 96,
     "weight": 0.9216977,
     "tier": 1.54684615,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -9827,7 +9790,7 @@
     "price": 8133,
     "weight": 3.306017,
     "tier": 9.519256,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 51,
@@ -9846,7 +9809,7 @@
     "price": 6268,
     "weight": 2.924803,
     "tier": 8.867176,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 47,
@@ -9886,7 +9849,7 @@
     "price": 4933,
     "weight": 9.812064,
     "tier": 6.003612,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -9907,7 +9870,7 @@
     "price": 67,
     "weight": 0.1753114,
     "tier": 2.07319212,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -9928,7 +9891,7 @@
     "price": 6268,
     "weight": 2.924803,
     "tier": 8.867176,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 47,
@@ -10143,7 +10106,7 @@
     "price": 7115,
     "weight": 12.23773,
     "tier": 6.650053,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -10164,7 +10127,7 @@
     "price": 9758,
     "weight": 14.03279,
     "tier": 7.2577014,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -10185,7 +10148,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 46,
@@ -10468,7 +10431,7 @@
     "price": 109,
     "weight": 0.4099624,
     "tier": 2.27300215,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -10487,7 +10450,7 @@
     "price": 142,
     "weight": 0.500878,
     "tier": 2.58713651,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -10620,7 +10583,7 @@
     "price": 53,
     "weight": 0.1967213,
     "tier": 0.665390849,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian",
@@ -10873,7 +10836,7 @@
     "price": 858,
     "weight": 3.84024,
     "tier": 3.61133766,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -10895,7 +10858,7 @@
     "price": 1045,
     "weight": 4.285419,
     "tier": 3.83300972,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -10917,7 +10880,7 @@
     "price": 1045,
     "weight": 4.285419,
     "tier": 3.83300972,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -10939,7 +10902,7 @@
     "price": 1045,
     "weight": 4.285419,
     "tier": 3.83300972,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -10961,7 +10924,7 @@
     "price": 1156,
     "weight": 4.577073,
     "tier": 3.95076871,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -10983,7 +10946,7 @@
     "price": 1163,
     "weight": 4.493092,
     "tier": 3.95855141,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -11004,7 +10967,7 @@
     "price": 1291,
     "weight": 4.704013,
     "tier": 4.08294249,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -11025,7 +10988,7 @@
     "price": 527,
     "weight": 0.745477,
     "tier": 4.15983534,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -11117,7 +11080,7 @@
     "price": 4371,
     "weight": 2.470721,
     "tier": 8.032074,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 42,
@@ -11136,7 +11099,7 @@
     "price": 50,
     "weight": 0.02567407,
     "tier": 0.4205632,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -11158,7 +11121,7 @@
     "price": 51,
     "weight": 0.03779635,
     "tier": 0.6609824,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -11239,7 +11202,7 @@
     "price": 82,
     "weight": 0.8010539,
     "tier": 1.39261162,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -11261,7 +11224,7 @@
     "price": 58,
     "weight": 0.1254426,
     "tier": 1.66254425,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -11282,7 +11245,7 @@
     "price": 52,
     "weight": 0.2426042,
     "tier": 0.630748153,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -11342,7 +11305,7 @@
     "price": 58,
     "weight": 0.1254426,
     "tier": 1.66254425,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -11363,7 +11326,7 @@
     "price": 64,
     "weight": 0.5356774,
     "tier": 1.08097184,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -11458,7 +11421,7 @@
     "name": "Fulcum Standard",
     "culture": "Empire",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -11497,7 +11460,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 46,
@@ -11516,7 +11479,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 46,
@@ -11535,7 +11498,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 46,
@@ -11554,7 +11517,7 @@
     "price": 7636,
     "weight": 3.209259,
     "tier": 9.357523,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 50,
@@ -11573,7 +11536,7 @@
     "price": 6704,
     "weight": 3.018642,
     "tier": 9.031494,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 48,
@@ -11592,7 +11555,7 @@
     "price": 6704,
     "weight": 3.018642,
     "tier": 9.031494,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 48,
@@ -11611,7 +11574,7 @@
     "price": 455,
     "weight": 2.502916,
     "tier": 2.95650744,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -11632,7 +11595,7 @@
     "price": 369,
     "weight": 2.332687,
     "tier": 2.757743,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -11654,7 +11617,7 @@
     "price": 369,
     "weight": 2.332687,
     "tier": 2.757743,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -11675,7 +11638,7 @@
     "price": 61,
     "weight": 0.1681113,
     "tier": 1.46177042,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -11696,7 +11659,7 @@
     "price": 118,
     "weight": 0.3773303,
     "tier": 2.48146629,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 12,
@@ -11715,7 +11678,7 @@
     "price": 65,
     "weight": 0.6861882,
     "tier": 1.10648072,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "DoesNotHideChest"
@@ -11737,7 +11700,7 @@
     "price": 115,
     "weight": 1.288111,
     "tier": 1.71538854,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -11758,7 +11721,7 @@
     "price": 74,
     "weight": 0.6201677,
     "tier": 1.27280521,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -11780,7 +11743,7 @@
     "price": 128,
     "weight": 1.260608,
     "tier": 1.81257725,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -11802,7 +11765,7 @@
     "price": 96,
     "weight": 0.9216977,
     "tier": 1.54684615,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -11823,7 +11786,7 @@
     "price": 2135,
     "weight": 6.550311,
     "tier": 4.731207,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -11979,7 +11942,7 @@
     "price": 8133,
     "weight": 3.306017,
     "tier": 9.519256,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 51,
@@ -11998,7 +11961,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 46,
@@ -12017,7 +11980,7 @@
     "price": 7636,
     "weight": 3.209259,
     "tier": 9.357523,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 50,
@@ -12036,7 +11999,7 @@
     "price": 53,
     "weight": 0.06943633,
     "tier": 0.989927,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -12057,7 +12020,7 @@
     "price": 144,
     "weight": 0.6481448,
     "tier": 3.14991713,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -12078,7 +12041,7 @@
     "price": 267,
     "weight": 0.9449062,
     "tier": 4.000073,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -12099,7 +12062,7 @@
     "price": 2013,
     "weight": 1.720762,
     "tier": 6.46833,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -12120,7 +12083,7 @@
     "price": 3169,
     "weight": 2.126303,
     "tier": 7.34704876,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 38,
@@ -12139,7 +12102,7 @@
     "price": 2216,
     "weight": 1.799568,
     "tier": 6.64612961,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -12160,7 +12123,7 @@
     "price": 55,
     "weight": 0.3258693,
     "tier": 0.7936434,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -12245,7 +12208,7 @@
     "price": 6277,
     "weight": 11.60033,
     "tier": 6.42208147,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -12264,7 +12227,7 @@
     "price": 50,
     "weight": 0.04716628,
     "tier": 0.6301733,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -12286,7 +12249,7 @@
     "price": 50,
     "weight": 0.02567407,
     "tier": 0.4205632,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -12351,7 +12314,7 @@
     "price": 50,
     "weight": 0.04716628,
     "tier": 0.6301733,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -12373,7 +12336,7 @@
     "price": 50,
     "weight": 0.04716628,
     "tier": 0.6301733,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -12395,7 +12358,7 @@
     "price": 50,
     "weight": 0.04716628,
     "tier": 0.6301733,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -12493,7 +12456,7 @@
     "price": 6704,
     "weight": 3.018642,
     "tier": 9.031494,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 48,
@@ -12512,7 +12475,7 @@
     "price": 8133,
     "weight": 3.306017,
     "tier": 9.519256,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 51,
@@ -12531,7 +12494,7 @@
     "price": 6704,
     "weight": 3.018642,
     "tier": 9.031494,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -12552,7 +12515,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -12573,7 +12536,7 @@
     "price": 96,
     "weight": 0.8727643,
     "tier": 1.54994047,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -12595,7 +12558,7 @@
     "price": 96,
     "weight": 0.8727643,
     "tier": 1.54994047,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -12688,7 +12651,7 @@
     "price": 833,
     "weight": 1.134645,
     "tier": 5.00733852,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 25,
@@ -12707,7 +12670,7 @@
     "price": 64,
     "weight": 0.5356774,
     "tier": 1.08097184,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -12729,7 +12692,7 @@
     "price": 67,
     "weight": 0.1753114,
     "tier": 2.07319212,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -12750,7 +12713,7 @@
     "price": 204,
     "weight": 1.66312,
     "tier": 2.22472358,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -12772,7 +12735,7 @@
     "price": 197,
     "weight": 0.791881,
     "tier": 3.578045,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -12793,7 +12756,7 @@
     "price": 135,
     "weight": 0.3548054,
     "tier": 3.28930068,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -13236,7 +13199,7 @@
     "price": 53,
     "weight": 0.06943633,
     "tier": 0.989927,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -13328,7 +13291,7 @@
     "name": "Horse Bane Flag",
     "culture": "Battania",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -13536,7 +13499,7 @@
     "price": 50,
     "weight": 0.02567407,
     "tier": 0.4205632,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -13558,7 +13521,7 @@
     "price": 8651,
     "weight": 3.403728,
     "tier": 9.680154,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 52,
@@ -13577,7 +13540,7 @@
     "price": 24084,
     "weight": 23.27432,
     "tier": 9.289752,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -13598,7 +13561,7 @@
     "price": 4780,
     "weight": 8.641826,
     "tier": 5.950751,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -13619,7 +13582,7 @@
     "price": 4821,
     "weight": 2.152001,
     "tier": 7.89875841,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -13638,7 +13601,7 @@
     "price": 57,
     "weight": 0.1334064,
     "tier": 1.255043,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -13660,7 +13623,7 @@
     "price": 364,
     "weight": 0.7517617,
     "tier": 3.86501956,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 19,
@@ -13679,7 +13642,7 @@
     "price": 3982,
     "weight": 7.822406,
     "tier": 5.652414,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -13700,7 +13663,7 @@
     "price": 3982,
     "weight": 7.822406,
     "tier": 5.652414,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -13721,7 +13684,7 @@
     "price": 5430,
     "weight": 10.63789,
     "tier": 6.167514,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -13742,7 +13705,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -13763,7 +13726,7 @@
     "price": 1274,
     "weight": 4.875058,
     "tier": 4.06708241,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -13785,7 +13748,7 @@
     "price": 164,
     "weight": 0.4754905,
     "tier": 2.882232,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -13827,7 +13790,7 @@
     "price": 210,
     "weight": 1.754099,
     "tier": 2.248878,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -13849,7 +13812,7 @@
     "price": 31628,
     "weight": 25.85486,
     "tier": 9.999674,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -13946,7 +13909,7 @@
     "price": 523,
     "weight": 0.8075808,
     "tier": 4.149032,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -14020,7 +13983,7 @@
     "name": "Iron Banner",
     "culture": "Neutral",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -14094,7 +14057,7 @@
     "price": 942,
     "weight": 1.203399,
     "tier": 5.193796,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 26,
@@ -14113,7 +14076,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 36,
@@ -14132,7 +14095,7 @@
     "price": 4371,
     "weight": 2.470721,
     "tier": 8.032074,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 42,
@@ -14151,7 +14114,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -14172,7 +14135,7 @@
     "price": 6704,
     "weight": 3.018642,
     "tier": 9.031494,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 48,
@@ -14191,7 +14154,7 @@
     "price": 6704,
     "weight": 3.018642,
     "tier": 9.031494,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 48,
@@ -14210,7 +14173,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 46,
@@ -14229,7 +14192,7 @@
     "price": 1484,
     "weight": 1.491529,
     "tier": 5.928592,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 30,
@@ -14248,7 +14211,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 36,
@@ -14267,7 +14230,7 @@
     "price": 2013,
     "weight": 1.720762,
     "tier": 6.46833,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 33,
@@ -14507,7 +14470,7 @@
     "price": 4371,
     "weight": 2.470721,
     "tier": 8.032074,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 42,
@@ -14526,7 +14489,7 @@
     "price": 2216,
     "weight": 1.799568,
     "tier": 6.64612961,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -14547,7 +14510,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -14568,7 +14531,7 @@
     "price": 1824,
     "weight": 1.643141,
     "tier": 6.28948,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 32,
@@ -14587,7 +14550,7 @@
     "price": 2432,
     "weight": 1.879541,
     "tier": 6.82288933,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 35,
@@ -14606,7 +14569,7 @@
     "price": 3737,
     "weight": 2.296359,
     "tier": 7.6915,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 40,
@@ -14625,7 +14588,7 @@
     "price": 2013,
     "weight": 1.720762,
     "tier": 6.46833,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -14646,7 +14609,7 @@
     "price": 2013,
     "weight": 1.720762,
     "tier": 6.46833,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -14667,7 +14630,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -14688,7 +14651,7 @@
     "price": 2013,
     "weight": 1.720762,
     "tier": 6.46833,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 33,
@@ -14707,7 +14670,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 36,
@@ -14726,7 +14689,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 36,
@@ -14745,7 +14708,7 @@
     "price": 179,
     "weight": 1.544355,
     "tier": 2.108305,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -14767,7 +14730,7 @@
     "price": 128,
     "weight": 1.260608,
     "tier": 1.81257725,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -14789,7 +14752,7 @@
     "price": 128,
     "weight": 1.260608,
     "tier": 1.81257725,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -14811,7 +14774,7 @@
     "price": 562,
     "weight": 0.936664,
     "tier": 4.441247,
-    "requirement": 10,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 22,
@@ -14830,7 +14793,7 @@
     "price": 67,
     "weight": 0.1753114,
     "tier": 2.07319212,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -14851,7 +14814,7 @@
     "price": 128,
     "weight": 1.260608,
     "tier": 1.81257725,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -14873,7 +14836,7 @@
     "price": 152,
     "weight": 1.343709,
     "tier": 1.96540475,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -14895,7 +14858,7 @@
     "price": 641,
     "weight": 3.036959,
     "tier": 3.30023241,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -15156,7 +15119,7 @@
     "price": 323,
     "weight": 0.5694357,
     "tier": 3.54657364,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -15307,7 +15270,7 @@
     "price": 6704,
     "weight": 3.018642,
     "tier": 9.031494,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 48,
@@ -15326,7 +15289,7 @@
     "price": 5454,
     "weight": 2.740113,
     "tier": 8.535876,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 45,
@@ -15345,7 +15308,7 @@
     "price": 6704,
     "weight": 3.018642,
     "tier": 9.031494,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 48,
@@ -15577,7 +15540,7 @@
     "price": 683,
     "weight": 3.297717,
     "tier": 3.365657,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -15773,7 +15736,7 @@
     "price": 12386,
     "weight": 15.59,
     "tier": 7.74963427,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -15827,7 +15790,7 @@
     "price": 57,
     "weight": 0.1334064,
     "tier": 1.255043,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -15848,7 +15811,7 @@
     "price": 164,
     "weight": 0.4754905,
     "tier": 2.882232,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -15870,7 +15833,7 @@
     "price": 52,
     "weight": 0.2426042,
     "tier": 0.630748153,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -15892,7 +15855,7 @@
     "price": 50,
     "weight": 0.01568033,
     "tier": 0.417883784,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -15913,7 +15876,7 @@
     "price": 1657,
     "weight": 1.29863,
     "tier": 7.51152658,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -15932,7 +15895,7 @@
     "price": 4628,
     "weight": 3.860262,
     "tier": 9.317458,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -15951,7 +15914,7 @@
     "price": 2853,
     "weight": 1.53205,
     "tier": 6.82706833,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -15970,7 +15933,7 @@
     "price": 28711,
     "weight": 25.33155,
     "tier": 9.741942,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -16065,7 +16028,7 @@
     "price": 356,
     "weight": 2.366412,
     "tier": 2.724206,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -16087,7 +16050,7 @@
     "price": 72,
     "weight": 0.6419267,
     "tier": 1.23900425,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -16168,7 +16131,7 @@
     "price": 1437,
     "weight": 4.535017,
     "tier": 4.21444941,
-    "requirement": 10,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -16189,7 +16152,7 @@
     "price": 72,
     "weight": 0.6861882,
     "tier": 1.23665488,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -16211,7 +16174,7 @@
     "price": 58,
     "weight": 0.1254426,
     "tier": 1.66254425,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -16270,7 +16233,7 @@
     "price": 68,
     "weight": 0.2053926,
     "tier": 1.66762209,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -16291,7 +16254,7 @@
     "price": 82,
     "weight": 0.2304528,
     "tier": 2.481311,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -16312,7 +16275,7 @@
     "price": 173,
     "weight": 1.515125,
     "tier": 2.07903457,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -16334,7 +16297,7 @@
     "price": 65,
     "weight": 0.2799722,
     "tier": 1.82990623,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -16355,7 +16318,7 @@
     "price": 3280,
     "weight": 7.872819,
     "tier": 5.35036325,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -16376,7 +16339,7 @@
     "price": 827,
     "weight": 0.8713196,
     "tier": 4.77475071,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -16433,7 +16396,7 @@
     "price": 1091,
     "weight": 4.368094,
     "tier": 3.88336635,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -16455,7 +16418,7 @@
     "price": 53,
     "weight": 0.08147737,
     "tier": 1.249583,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -16476,7 +16439,7 @@
     "price": 5845,
     "weight": 9.488012,
     "tier": 6.29560041,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -16498,7 +16461,7 @@
     "price": 68,
     "weight": 0.2053926,
     "tier": 1.66762209,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 8,
@@ -16517,7 +16480,7 @@
     "price": 87,
     "weight": 0.2870449,
     "tier": 2.076526,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 10,
@@ -16536,7 +16499,7 @@
     "price": 562,
     "weight": 0.936664,
     "tier": 4.441247,
-    "requirement": 10,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 22,
@@ -16555,7 +16518,7 @@
     "price": 118,
     "weight": 0.3773303,
     "tier": 2.48146629,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 12,
@@ -16574,7 +16537,7 @@
     "price": 459,
     "weight": 2.747853,
     "tier": 2.9649806,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -16596,7 +16559,7 @@
     "price": 3737,
     "weight": 2.296359,
     "tier": 7.6915,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -16617,7 +16580,7 @@
     "price": 4371,
     "weight": 2.470721,
     "tier": 8.032074,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 42,
@@ -16636,7 +16599,7 @@
     "price": 4714,
     "weight": 2.559484,
     "tier": 8.200937,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -16657,7 +16620,7 @@
     "price": 3169,
     "weight": 2.126303,
     "tier": 7.34704876,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 38,
@@ -16676,7 +16639,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -16697,7 +16660,7 @@
     "price": 1484,
     "weight": 1.491529,
     "tier": 5.928592,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 30,
@@ -16716,7 +16679,7 @@
     "price": 11989,
     "weight": 16.48559,
     "tier": 7.680658,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -16737,7 +16700,7 @@
     "price": 9752,
     "weight": 3.601973,
     "tier": 9.999481,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 54,
@@ -16756,7 +16719,7 @@
     "price": 6704,
     "weight": 3.018642,
     "tier": 9.031494,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 48,
@@ -16775,7 +16738,7 @@
     "price": 59,
     "weight": 0.1069042,
     "tier": 1.31748557,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -16888,7 +16851,7 @@
     "price": 52,
     "weight": 0.2426042,
     "tier": 0.630748153,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -16907,7 +16870,7 @@
     "name": "Locked Shields Banner",
     "culture": "Sturgia",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -16946,7 +16909,7 @@
     "price": 54,
     "weight": 0.3434816,
     "tier": 0.759957135,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -16968,7 +16931,7 @@
     "price": 412,
     "weight": 2.537438,
     "tier": 2.86203647,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -16990,7 +16953,7 @@
     "price": 72,
     "weight": 0.6861882,
     "tier": 1.23665488,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -17012,7 +16975,7 @@
     "price": 601,
     "weight": 3.110729,
     "tier": 3.233477,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -17034,7 +16997,7 @@
     "price": 52,
     "weight": 0.2426042,
     "tier": 0.630748153,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -17056,7 +17019,7 @@
     "price": 942,
     "weight": 1.203399,
     "tier": 5.193796,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -17077,7 +17040,7 @@
     "price": 5284,
     "weight": 4.114734,
     "tier": 9.660807,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -17258,7 +17221,7 @@
     "price": 387,
     "weight": 0.651819,
     "tier": 4.86927176,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -17277,7 +17240,7 @@
     "price": 2685,
     "weight": 1.61804,
     "tier": 8.596329,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -17296,7 +17259,7 @@
     "price": 312,
     "weight": 0.6932,
     "tier": 3.67068958,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 18,
@@ -17315,7 +17278,7 @@
     "price": 2988,
     "weight": 3.130185,
     "tier": 8.261651,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -17334,7 +17297,7 @@
     "price": 5039,
     "weight": 10.30489,
     "tier": 6.039764,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -17355,7 +17318,7 @@
     "price": 327,
     "weight": 0.4875217,
     "tier": 3.55942774,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -17371,7 +17334,7 @@
     "name": "Marksman's Flag",
     "culture": "Neutral",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -17410,7 +17373,7 @@
     "price": 238,
     "weight": 1.940833,
     "tier": 2.35870147,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -17568,7 +17531,7 @@
     "price": 72,
     "weight": 0.6419267,
     "tier": 1.23900425,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -17783,7 +17746,7 @@
     "price": 1191,
     "weight": 1.34489,
     "tier": 5.56338739,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -17804,7 +17767,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 36,
@@ -17823,7 +17786,7 @@
     "price": 562,
     "weight": 0.936664,
     "tier": 4.441247,
-    "requirement": 10,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -17844,7 +17807,7 @@
     "price": 833,
     "weight": 1.134645,
     "tier": 5.00733852,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -17865,7 +17828,7 @@
     "price": 562,
     "weight": 0.936664,
     "tier": 4.441247,
-    "requirement": 10,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 22,
@@ -17884,7 +17847,7 @@
     "price": 942,
     "weight": 1.203399,
     "tier": 5.193796,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -17905,7 +17868,7 @@
     "price": 1824,
     "weight": 1.643141,
     "tier": 6.28948,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -17926,7 +17889,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 36,
@@ -17945,7 +17908,7 @@
     "price": 3169,
     "weight": 2.126303,
     "tier": 7.34704876,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 38,
@@ -17964,7 +17927,7 @@
     "price": 1332,
     "weight": 1.417577,
     "tier": 5.74653435,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -17985,7 +17948,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -18006,7 +17969,7 @@
     "price": 2908,
     "weight": 2.042925,
     "tier": 7.17333746,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 37,
@@ -18025,7 +17988,7 @@
     "price": 3445,
     "weight": 2.210786,
     "tier": 7.519766,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 39,
@@ -18044,7 +18007,7 @@
     "price": 644,
     "weight": 1.001248,
     "tier": 4.63106775,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 23,
@@ -18063,7 +18026,7 @@
     "price": 2013,
     "weight": 1.720762,
     "tier": 6.46833,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 33,
@@ -18353,7 +18316,7 @@
     "price": 992,
     "weight": 1.124234,
     "tier": 5.041769,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -18372,7 +18335,7 @@
     "price": 5374,
     "weight": 2.396324,
     "tier": 8.138913,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -18432,7 +18395,7 @@
     "price": 51,
     "weight": 0.07261725,
     "tier": 0.8391783,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -18453,7 +18416,7 @@
     "price": 1648,
     "weight": 1.566723,
     "tier": 6.10957146,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 31,
@@ -18472,7 +18435,7 @@
     "price": 118,
     "weight": 0.3773303,
     "tier": 2.48146629,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -18493,7 +18456,7 @@
     "price": 68,
     "weight": 0.2053926,
     "tier": 1.66762209,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -18514,7 +18477,7 @@
     "price": 3851,
     "weight": 8.693935,
     "tier": 5.59923744,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -18535,7 +18498,7 @@
     "price": 8133,
     "weight": 3.306017,
     "tier": 9.519256,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 51,
@@ -18554,7 +18517,7 @@
     "price": 4346,
     "weight": 8.903424,
     "tier": 5.793545,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -18575,7 +18538,7 @@
     "price": 2115,
     "weight": 5.223197,
     "tier": 4.7180295,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -18596,7 +18559,7 @@
     "price": 61,
     "weight": 0.1681113,
     "tier": 1.46177042,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -18617,7 +18580,7 @@
     "price": 128,
     "weight": 1.206198,
     "tier": 1.8163501,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -18680,7 +18643,7 @@
     "price": 291,
     "weight": 2.004464,
     "tier": 2.539498,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -18702,7 +18665,7 @@
     "price": 380,
     "weight": 2.366412,
     "tier": 2.785424,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -18723,7 +18686,7 @@
     "price": 7437,
     "weight": 12.47231,
     "tier": 6.73224,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -18744,7 +18707,7 @@
     "price": 80,
     "weight": 0.8247294,
     "tier": 1.35888767,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -18916,7 +18879,7 @@
     "price": 4028,
     "weight": 3.611262,
     "tier": 8.969916,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -18935,7 +18898,7 @@
     "price": 23458,
     "weight": 21.91179,
     "tier": 9.223638,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -18956,7 +18919,7 @@
     "price": 14101,
     "weight": 16.35663,
     "tier": 8.030002,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -18977,7 +18940,7 @@
     "price": 58,
     "weight": 0.4360385,
     "tier": 0.921271861,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -18999,7 +18962,7 @@
     "price": 76,
     "weight": 0.2450832,
     "tier": 1.87255347,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -19020,7 +18983,7 @@
     "price": 7636,
     "weight": 3.209259,
     "tier": 9.357523,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 50,
@@ -19251,7 +19214,7 @@
     "price": 1648,
     "weight": 4.535017,
     "tier": 4.38764572,
-    "requirement": 10,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -19272,7 +19235,7 @@
     "price": 1664,
     "weight": 5.57925,
     "tier": 4.40034962,
-    "requirement": 10,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -19293,7 +19256,7 @@
     "price": 204,
     "weight": 1.66312,
     "tier": 2.22472358,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -19357,7 +19320,7 @@
     "price": 1172,
     "weight": 4.704013,
     "tier": 3.96793,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -19379,7 +19342,7 @@
     "price": 791,
     "weight": 3.526852,
     "tier": 3.52251744,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -19401,7 +19364,7 @@
     "price": 1388,
     "weight": 1.197468,
     "tier": 7.14367151,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -19420,7 +19383,7 @@
     "price": 2147,
     "weight": 2.672598,
     "tier": 7.53477955,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -19850,7 +19813,7 @@
     "price": 109,
     "weight": 1.073727,
     "tier": 1.66558492,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -19872,7 +19835,7 @@
     "price": 6268,
     "weight": 2.924803,
     "tier": 8.867176,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 47,
@@ -20026,7 +19989,7 @@
     "price": 562,
     "weight": 0.936664,
     "tier": 4.441247,
-    "requirement": 10,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -20047,7 +20010,7 @@
     "price": 57,
     "weight": 0.1334064,
     "tier": 1.255043,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -20069,7 +20032,7 @@
     "price": 312,
     "weight": 0.6932,
     "tier": 3.67068958,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 18,
@@ -20088,7 +20051,7 @@
     "price": 164,
     "weight": 0.4754905,
     "tier": 2.882232,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -20207,7 +20170,7 @@
     "price": 101,
     "weight": 0.3311607,
     "tier": 2.27950644,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -20229,7 +20192,7 @@
     "price": 601,
     "weight": 3.110729,
     "tier": 3.233477,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -20250,7 +20213,7 @@
     "price": 1300,
     "weight": 4.918137,
     "tier": 4.091759,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -20271,7 +20234,7 @@
     "price": 164,
     "weight": 0.4754905,
     "tier": 2.882232,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -20292,7 +20255,7 @@
     "price": 101,
     "weight": 0.3311607,
     "tier": 2.27950644,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 11,
@@ -20311,7 +20274,7 @@
     "price": 505,
     "weight": 2.712396,
     "tier": 3.05896664,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -20332,7 +20295,7 @@
     "price": 1045,
     "weight": 4.285419,
     "tier": 3.83300972,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -20354,7 +20317,7 @@
     "price": 415,
     "weight": 0.6702136,
     "tier": 3.85214543,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -20373,7 +20336,7 @@
     "price": 267,
     "weight": 0.9449062,
     "tier": 4.000073,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -20394,7 +20357,7 @@
     "price": 772,
     "weight": 3.488307,
     "tier": 3.496505,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -20415,7 +20378,7 @@
     "price": 144,
     "weight": 0.6481448,
     "tier": 3.14991713,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -20434,7 +20397,7 @@
     "price": 678,
     "weight": 3.373525,
     "tier": 3.35870838,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -20456,7 +20419,7 @@
     "price": 2086,
     "weight": 1.341484,
     "tier": 6.25009155,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -20477,7 +20440,7 @@
     "price": 11445,
     "weight": 3.229628,
     "tier": 10.0010242,
-    "requirement": 24,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -20496,7 +20459,7 @@
     "price": 992,
     "weight": 1.124234,
     "tier": 5.041769,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -20553,7 +20516,7 @@
     "price": 139,
     "weight": 0.425466,
     "tier": 2.68238139,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 13,
@@ -20572,7 +20535,7 @@
     "price": 2908,
     "weight": 2.042925,
     "tier": 7.17333746,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -20593,7 +20556,7 @@
     "price": 3737,
     "weight": 2.296359,
     "tier": 7.6915,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 40,
@@ -20612,7 +20575,7 @@
     "price": 4371,
     "weight": 2.470721,
     "tier": 8.032074,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 42,
@@ -20631,7 +20594,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -20733,7 +20696,7 @@
     "price": 64,
     "weight": 0.5356774,
     "tier": 1.08097184,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -21199,7 +21162,7 @@
     "name": "Phalanx Standard",
     "culture": "Empire",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -21268,7 +21231,7 @@
     "name": "Pike Wall Banner",
     "culture": "Vlandia",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -21307,7 +21270,7 @@
     "price": 50,
     "weight": 0.04716628,
     "tier": 0.6301733,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -21329,7 +21292,7 @@
     "price": 52,
     "weight": 0.2426042,
     "tier": 0.630748153,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -21351,7 +21314,7 @@
     "price": 17125,
     "weight": 20.09225,
     "tier": 8.467605,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -21372,7 +21335,7 @@
     "price": 2685,
     "weight": 1.61804,
     "tier": 8.596329,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -21391,7 +21354,7 @@
     "price": 4028,
     "weight": 3.611262,
     "tier": 8.969916,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -21410,7 +21373,7 @@
     "price": 734,
     "weight": 1.067251,
     "tier": 4.819763,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 24,
@@ -21429,7 +21392,7 @@
     "price": 6268,
     "weight": 2.924803,
     "tier": 8.867176,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 47,
@@ -21448,7 +21411,7 @@
     "price": 2663,
     "weight": 1.960666,
     "tier": 6.99862146,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 36,
@@ -21467,7 +21430,7 @@
     "price": 1824,
     "weight": 1.643141,
     "tier": 6.28948,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 32,
@@ -21519,7 +21482,7 @@
     "price": 1484,
     "weight": 1.491529,
     "tier": 5.928592,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -21540,7 +21503,7 @@
     "price": 1824,
     "weight": 1.643141,
     "tier": 6.28948,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -21561,7 +21524,7 @@
     "price": 1824,
     "weight": 1.643141,
     "tier": 6.28948,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 32,
@@ -21580,7 +21543,7 @@
     "price": 2908,
     "weight": 2.042925,
     "tier": 7.17333746,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 37,
@@ -21599,7 +21562,7 @@
     "price": 2432,
     "weight": 1.879541,
     "tier": 6.82288933,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 35,
@@ -21778,7 +21741,7 @@
     "price": 55,
     "weight": 0.1818473,
     "tier": 1.37881064,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -21800,7 +21763,7 @@
     "price": 67,
     "weight": 0.1753114,
     "tier": 2.07319212,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -21821,7 +21784,7 @@
     "price": 58,
     "weight": 0.4360385,
     "tier": 0.921271861,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -21876,7 +21839,7 @@
     "price": 5270,
     "weight": 9.434359,
     "tier": 6.11608458,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -21894,7 +21857,7 @@
     "name": "Ranger's Flag",
     "culture": "Battania",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -22010,7 +21973,7 @@
     "price": 8544,
     "weight": 12.94592,
     "tier": 6.996175,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -22105,7 +22068,7 @@
     "price": 2988,
     "weight": 3.130185,
     "tier": 8.261651,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -22124,7 +22087,7 @@
     "price": 641,
     "weight": 3.036959,
     "tier": 3.30023241,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -22145,7 +22108,7 @@
     "price": 1961,
     "weight": 1.402491,
     "tier": 7.876232,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -22166,7 +22129,7 @@
     "price": 86,
     "weight": 0.1963956,
     "tier": 1.96772659,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -22259,7 +22222,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 46,
@@ -22311,7 +22274,7 @@
     "price": 2481,
     "weight": 6.982116,
     "tier": 4.94042349,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -22332,7 +22295,7 @@
     "price": 2086,
     "weight": 1.341484,
     "tier": 6.25009155,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -22351,7 +22314,7 @@
     "price": 559,
     "weight": 2.927416,
     "tier": 3.16012216,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -22372,7 +22335,7 @@
     "price": 7258,
     "weight": 11.20067,
     "tier": 6.686974,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -22391,7 +22354,7 @@
     "price": 82,
     "weight": 0.2304528,
     "tier": 2.481311,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -22412,7 +22375,7 @@
     "price": 267,
     "weight": 0.9449062,
     "tier": 4.000073,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -22433,7 +22396,7 @@
     "price": 72,
     "weight": 0.6419267,
     "tier": 1.23900425,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -22455,7 +22418,7 @@
     "price": 61,
     "weight": 0.1681113,
     "tier": 1.46177042,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -22476,7 +22439,7 @@
     "price": 942,
     "weight": 1.203399,
     "tier": 5.193796,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 26,
@@ -22495,7 +22458,7 @@
     "price": 55,
     "weight": 0.1818473,
     "tier": 1.37881064,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -22516,7 +22479,7 @@
     "price": 1191,
     "weight": 1.34489,
     "tier": 5.56338739,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -22537,7 +22500,7 @@
     "price": 562,
     "weight": 0.936664,
     "tier": 4.441247,
-    "requirement": 10,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 22,
@@ -22556,7 +22519,7 @@
     "price": 2216,
     "weight": 1.799568,
     "tier": 6.64612961,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 34,
@@ -22575,7 +22538,7 @@
     "price": 1648,
     "weight": 1.566723,
     "tier": 6.10957146,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -22596,7 +22559,7 @@
     "price": 942,
     "weight": 1.203399,
     "tier": 5.193796,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 26,
@@ -22615,7 +22578,7 @@
     "price": 55,
     "weight": 0.3258693,
     "tier": 0.7936434,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -22658,7 +22621,7 @@
     "price": 2791,
     "weight": 6.081431,
     "tier": 5.109466,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -22679,7 +22642,7 @@
     "price": 3723,
     "weight": 1.895651,
     "tier": 7.353493,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -22698,7 +22661,7 @@
     "price": 51,
     "weight": 0.03779635,
     "tier": 0.6609824,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -22717,7 +22680,7 @@
     "name": "Scout's Flag",
     "culture": "Battania",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -22792,7 +22755,7 @@
     "price": 734,
     "weight": 1.067251,
     "tier": 4.819763,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -22813,7 +22776,7 @@
     "price": 942,
     "weight": 1.203399,
     "tier": 5.193796,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 26,
@@ -22832,7 +22795,7 @@
     "price": 1191,
     "weight": 1.34489,
     "tier": 5.56338739,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 28,
@@ -22851,7 +22814,7 @@
     "price": 1191,
     "weight": 1.34489,
     "tier": 5.56338739,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -22872,7 +22835,7 @@
     "price": 267,
     "weight": 0.6362432,
     "tier": 3.47523928,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -22893,7 +22856,7 @@
     "price": 4371,
     "weight": 2.470721,
     "tier": 8.032074,
-    "requirement": 19,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 42,
@@ -22912,7 +22875,7 @@
     "price": 1191,
     "weight": 1.34489,
     "tier": 5.56338739,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -22933,7 +22896,7 @@
     "price": 1332,
     "weight": 1.417577,
     "tier": 5.74653435,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -22987,7 +22950,7 @@
     "name": "Shield Wall Banner",
     "culture": "Sturgia",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -23059,7 +23022,7 @@
     "price": 545,
     "weight": 2.891201,
     "tier": 3.13330913,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -23283,7 +23246,7 @@
     "price": 369,
     "weight": 2.332687,
     "tier": 2.757743,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -23304,7 +23267,7 @@
     "price": 1146,
     "weight": 4.368094,
     "tier": 3.94132686,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -23325,7 +23288,7 @@
     "price": 683,
     "weight": 3.297717,
     "tier": 3.365657,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -23347,7 +23310,7 @@
     "price": 234,
     "weight": 1.723593,
     "tier": 2.34507322,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian",
@@ -23592,7 +23555,7 @@
     "price": 5122,
     "weight": 8.537916,
     "tier": 6.06749773,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -23613,7 +23576,7 @@
     "price": 50,
     "weight": 0.04435067,
     "tier": 0.8345792,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -23634,7 +23597,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 46,
@@ -23691,7 +23654,7 @@
     "price": 51,
     "weight": 0.03779635,
     "tier": 0.6609824,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -23981,7 +23944,7 @@
     "price": 423,
     "weight": 0.8118855,
     "tier": 4.05822325,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -24002,7 +23965,7 @@
     "price": 312,
     "weight": 0.6932,
     "tier": 3.67068958,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -24020,7 +23983,7 @@
     "name": "Spear Bracing Banner",
     "culture": "Vlandia",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -24056,7 +24019,7 @@
     "name": "Spear Wall Banner",
     "culture": "Vlandia",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -24116,7 +24079,7 @@
     "price": 6704,
     "weight": 3.018642,
     "tier": 9.031494,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 48,
@@ -24135,7 +24098,7 @@
     "price": 8133,
     "weight": 3.306017,
     "tier": 9.519256,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 51,
@@ -24154,7 +24117,7 @@
     "price": 1061,
     "weight": 1.27349,
     "tier": 5.379143,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 27,
@@ -24173,7 +24136,7 @@
     "price": 3445,
     "weight": 2.210786,
     "tier": 7.519766,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -24191,7 +24154,7 @@
     "name": "Standard of Courage",
     "culture": "Empire",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -24227,7 +24190,7 @@
     "name": "Standard of Discipline",
     "culture": "Empire",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -24263,7 +24226,7 @@
     "name": "Standard of Duty",
     "culture": "Empire",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -24299,7 +24262,7 @@
     "name": "Standard of Fury",
     "culture": "Neutral",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -24335,7 +24298,7 @@
     "name": "Standard of Rage",
     "culture": "Neutral",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -24371,7 +24334,7 @@
     "name": "Standard of Wrath",
     "culture": "Neutral",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -24440,7 +24403,7 @@
     "name": "Steel Banner",
     "culture": "Neutral",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -24550,7 +24513,7 @@
     "price": 83,
     "weight": 0.754398,
     "tier": 1.39533412,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -24646,7 +24609,7 @@
     "price": 238,
     "weight": 1.940833,
     "tier": 2.35870147,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -24810,7 +24773,7 @@
     "price": 2013,
     "weight": 1.720762,
     "tier": 6.46833,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 33,
@@ -24829,7 +24792,7 @@
     "price": 58,
     "weight": 0.1254426,
     "tier": 1.66254425,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -24850,7 +24813,7 @@
     "price": 86,
     "weight": 0.1963956,
     "tier": 1.96772659,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -24869,7 +24832,7 @@
     "price": 611,
     "weight": 1.454778,
     "tier": 5.229773,
-    "requirement": 12,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -24890,7 +24853,7 @@
     "price": 72,
     "weight": 0.6861882,
     "tier": 1.23665488,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -24974,7 +24937,7 @@
     "price": 11074,
     "weight": 15.14849,
     "tier": 7.51490259,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -24995,7 +24958,7 @@
     "price": 111,
     "weight": 0.2474868,
     "tier": 2.29013133,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -25014,7 +24977,7 @@
     "price": 424,
     "weight": 2.572118,
     "tier": 2.8894248,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -25033,7 +24996,7 @@
     "name": "Stone Banner",
     "culture": "Neutral",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -25072,7 +25035,7 @@
     "price": 67,
     "weight": 0.1753114,
     "tier": 2.07319212,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -25093,7 +25056,7 @@
     "price": 81,
     "weight": 0.3912731,
     "tier": 2.27566814,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -25114,7 +25077,7 @@
     "price": 3110,
     "weight": 1.729605,
     "tier": 8.95179749,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -25133,7 +25096,7 @@
     "price": 67,
     "weight": 0.1753114,
     "tier": 2.07319212,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -25151,7 +25114,7 @@
     "name": "Strider's Flag",
     "culture": "Battania",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -25325,7 +25288,7 @@
     "price": 367,
     "weight": 2.400299,
     "tier": 2.75189161,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -25347,7 +25310,7 @@
     "price": 2412,
     "weight": 1.551566,
     "tier": 6.512159,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -25366,7 +25329,7 @@
     "price": 272,
     "weight": 2.004464,
     "tier": 2.477559,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -25387,7 +25350,7 @@
     "price": 1054,
     "weight": 4.493092,
     "tier": 3.84297323,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -25408,7 +25371,7 @@
     "price": 471,
     "weight": 1.276774,
     "tier": 4.82587433,
-    "requirement": 11,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -25427,7 +25390,7 @@
     "price": 109,
     "weight": 0.9715126,
     "tier": 1.67237806,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian",
@@ -25509,7 +25472,7 @@
     "price": 950,
     "weight": 4.203272,
     "tier": 3.724272,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -25530,7 +25493,7 @@
     "price": 81,
     "weight": 0.3912731,
     "tier": 2.27566814,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -25769,7 +25732,7 @@
     "price": 67,
     "weight": 0.1753114,
     "tier": 2.07319212,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -25790,7 +25753,7 @@
     "price": 82,
     "weight": 0.2304528,
     "tier": 2.481311,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -25811,7 +25774,7 @@
     "price": 58,
     "weight": 0.1254426,
     "tier": 1.66254425,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -25832,7 +25795,7 @@
     "price": 53,
     "weight": 0.08147737,
     "tier": 1.249583,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -25853,7 +25816,7 @@
     "price": 18148,
     "weight": 19.20239,
     "tier": 8.60248,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -25874,7 +25837,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 46,
@@ -26072,7 +26035,7 @@
     "price": 52,
     "weight": 0.2426042,
     "tier": 0.630748153,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -26579,7 +26542,7 @@
     "price": 6268,
     "weight": 2.924803,
     "tier": 8.867176,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 47,
@@ -26598,7 +26561,7 @@
     "price": 9859,
     "weight": 14.71123,
     "tier": 7.278308,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -26619,7 +26582,7 @@
     "price": 4539,
     "weight": 9.595626,
     "tier": 5.864809,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -26640,7 +26603,7 @@
     "price": 4046,
     "weight": 2.383009,
     "tier": 7.862266,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -26661,7 +26624,7 @@
     "price": 30599,
     "weight": 27.2168,
     "tier": 9.910856,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -26682,7 +26645,7 @@
     "price": 9752,
     "weight": 3.601973,
     "tier": 9.999481,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 54,
@@ -26701,7 +26664,7 @@
     "price": 7160,
     "weight": 3.113464,
     "tier": 9.194939,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 49,
@@ -26720,7 +26683,7 @@
     "price": 2432,
     "weight": 1.879541,
     "tier": 6.82288933,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 35,
@@ -26739,7 +26702,7 @@
     "price": 9190,
     "weight": 3.502383,
     "tier": 9.840224,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 53,
@@ -26758,7 +26721,7 @@
     "price": 7160,
     "weight": 3.113464,
     "tier": 9.194939,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 49,
@@ -26777,7 +26740,7 @@
     "price": 19040,
     "weight": 19.27036,
     "tier": 8.715547,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -26798,7 +26761,7 @@
     "price": 27283,
     "weight": 24.95994,
     "tier": 9.608559,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -26819,7 +26782,7 @@
     "price": 6943,
     "weight": 11.25748,
     "tier": 6.60488749,
-    "requirement": 15,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -26840,7 +26803,7 @@
     "price": 7636,
     "weight": 3.209259,
     "tier": 9.357523,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 50,
@@ -26859,7 +26822,7 @@
     "price": 8133,
     "weight": 3.306017,
     "tier": 9.519256,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 51,
@@ -26878,7 +26841,7 @@
     "price": 9190,
     "weight": 3.502383,
     "tier": 9.840224,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 53,
@@ -27208,7 +27171,7 @@
     "price": 3169,
     "weight": 2.126303,
     "tier": 7.34704876,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 38,
@@ -27227,7 +27190,7 @@
     "price": 96,
     "weight": 0.9216977,
     "tier": 1.54684615,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -27249,7 +27212,7 @@
     "price": 52,
     "weight": 0.2116583,
     "tier": 0.631672263,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "Civilian",
       "DoesNotHideChest"
@@ -27363,7 +27326,7 @@
     "price": 93,
     "weight": 0.946496,
     "tier": 1.5130986,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -27385,7 +27348,7 @@
     "price": 76,
     "weight": 0.2450832,
     "tier": 1.87255347,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -27443,7 +27406,7 @@
     "price": 59,
     "weight": 0.4169436,
     "tier": 0.954998,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -27465,7 +27428,7 @@
     "price": 54,
     "weight": 0.1014857,
     "tier": 1.047492,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -27487,7 +27450,7 @@
     "price": 61,
     "weight": 0.1681113,
     "tier": 1.46177042,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -27508,7 +27471,7 @@
     "price": 83,
     "weight": 0.754398,
     "tier": 1.39533412,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -27563,7 +27526,7 @@
     "price": 423,
     "weight": 0.8118855,
     "tier": 4.05822325,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -27825,7 +27788,7 @@
     "price": 61,
     "weight": 0.1681113,
     "tier": 1.46177042,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -27844,7 +27807,7 @@
     "name": "Tug of Bone Arrow",
     "culture": "Khuzait",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -27880,7 +27843,7 @@
     "name": "Tug of the Boundless Horde",
     "culture": "Khuzait",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -27916,7 +27879,7 @@
     "name": "Tug of the Endless Steppe",
     "culture": "Khuzait",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -27952,7 +27915,7 @@
     "name": "Tug of the Roaming Horse",
     "culture": "Khuzait",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -27988,7 +27951,7 @@
     "name": "Tug of Whistling Arrow",
     "culture": "Khuzait",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -28024,7 +27987,7 @@
     "name": "Tug of Wooden Arrow",
     "culture": "Khuzait",
     "type": "Banner",
-    "price": 50,
+    "price": 7000,
     "weight": 0.2,
     "tier": 10.0,
     "requirement": 0,
@@ -28063,7 +28026,7 @@
     "price": 72,
     "weight": 0.6861882,
     "tier": 1.23665488,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -28085,7 +28048,7 @@
     "price": 109,
     "weight": 1.073727,
     "tier": 1.66558492,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -28107,7 +28070,7 @@
     "price": 82,
     "weight": 0.8010539,
     "tier": 1.39261162,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -28129,7 +28092,7 @@
     "price": 51,
     "weight": 0.07261725,
     "tier": 0.8391783,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -28151,7 +28114,7 @@
     "price": 177,
     "weight": 0.4233689,
     "tier": 3.68892,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -28243,7 +28206,7 @@
     "price": 87,
     "weight": 0.2870449,
     "tier": 2.076526,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -28264,7 +28227,7 @@
     "price": 319,
     "weight": 0.685052,
     "tier": 3.52889371,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -28283,7 +28246,7 @@
     "price": 4796,
     "weight": 2.19577,
     "tier": 7.88756752,
-    "requirement": 18,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -28302,7 +28265,7 @@
     "price": 1450,
     "weight": 1.304394,
     "tier": 5.63292742,
-    "requirement": 13,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -28323,7 +28286,7 @@
     "price": 410,
     "weight": 0.7608473,
     "tier": 3.83736563,
-    "requirement": 9,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -28344,7 +28307,7 @@
     "price": 8460,
     "weight": 2.862394,
     "tier": 9.214151,
-    "requirement": 22,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -28363,7 +28326,7 @@
     "price": 5012,
     "weight": 10.4155,
     "tier": 6.03046656,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -28422,7 +28385,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -28443,7 +28406,7 @@
     "price": 8651,
     "weight": 3.403728,
     "tier": 9.680154,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 52,
@@ -28462,7 +28425,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 46,
@@ -28481,7 +28444,7 @@
     "price": 6704,
     "weight": 3.018642,
     "tier": 9.031494,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -28681,7 +28644,7 @@
     "price": 397,
     "weight": 2.265722,
     "tier": 2.825026,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -28702,7 +28665,7 @@
     "price": 65,
     "weight": 0.5564119,
     "tier": 1.1127131,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -28745,7 +28708,7 @@
     "price": 118,
     "weight": 0.3773303,
     "tier": 2.48146629,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 12,
@@ -28764,7 +28727,7 @@
     "price": 68,
     "weight": 0.2053926,
     "tier": 1.66762209,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 8,
@@ -28783,7 +28746,7 @@
     "price": 7361,
     "weight": 12.70838,
     "tier": 6.71310759,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -28804,7 +28767,7 @@
     "price": 51,
     "weight": 0.07261725,
     "tier": 0.8391783,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -29103,7 +29066,7 @@
     "price": 1484,
     "weight": 1.491529,
     "tier": 5.928592,
-    "requirement": 14,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 30,
@@ -29650,7 +29613,7 @@
     "price": 54,
     "weight": 0.3434816,
     "tier": 0.759957135,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -29672,7 +29635,7 @@
     "price": 55,
     "weight": 0.3258693,
     "tier": 0.7936434,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -29694,7 +29657,7 @@
     "price": 5454,
     "weight": 2.740113,
     "tier": 8.535876,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 45,
@@ -29713,7 +29676,7 @@
     "price": 5075,
     "weight": 2.649286,
     "tier": 8.368867,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 44,
@@ -29732,7 +29695,7 @@
     "price": 52,
     "weight": 0.2426042,
     "tier": 0.630748153,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -29754,7 +29717,7 @@
     "price": 52,
     "weight": 0.2426042,
     "tier": 0.630748153,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -30014,7 +29977,7 @@
     "price": 5851,
     "weight": 2.831956,
     "tier": 8.701975,
-    "requirement": 20,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 46,
@@ -30033,7 +29996,7 @@
     "price": 6704,
     "weight": 3.018642,
     "tier": 9.031494,
-    "requirement": 21,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 48,
@@ -30264,7 +30227,7 @@
     "price": 8651,
     "weight": 3.403728,
     "tier": 9.680154,
-    "requirement": 23,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 52,
@@ -30321,7 +30284,7 @@
     "price": 9762,
     "weight": 14.64911,
     "tier": 7.25846148,
-    "requirement": 17,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -30768,7 +30731,7 @@
     "price": 8544,
     "weight": 12.94592,
     "tier": 6.996175,
-    "requirement": 16,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -30940,7 +30903,7 @@
     "price": 144,
     "weight": 0.3488421,
     "tier": 2.60497785,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -30959,7 +30922,7 @@
     "price": 227,
     "weight": 0.580938,
     "tier": 3.278673,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 16,
@@ -31325,7 +31288,7 @@
     "price": 67,
     "weight": 0.1753114,
     "tier": 2.07319212,
-    "requirement": 4,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -31346,7 +31309,7 @@
     "price": 107,
     "weight": 0.5143418,
     "tier": 2.71574736,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -31365,7 +31328,7 @@
     "price": 762,
     "weight": 3.64333,
     "tier": 3.48220515,
-    "requirement": 8,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -31386,7 +31349,7 @@
     "price": 248,
     "weight": 0.5279489,
     "tier": 3.23004413,
-    "requirement": 7,
+    "requirement": 0,
     "flags": [],
     "armor": {
       "headArmor": 0,
@@ -31405,7 +31368,7 @@
     "price": 367,
     "weight": 2.400299,
     "tier": 2.75189161,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "UseTeamColor"
     ],
@@ -31426,7 +31389,7 @@
     "price": 57,
     "weight": 0.1334064,
     "tier": 1.255043,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -31448,7 +31411,7 @@
     "price": 118,
     "weight": 0.3773303,
     "tier": 2.48146629,
-    "requirement": 5,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -31470,7 +31433,7 @@
     "price": 54,
     "weight": 0.1014857,
     "tier": 1.047492,
-    "requirement": 2,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -31492,7 +31455,7 @@
     "price": 104,
     "weight": 0.2904038,
     "tier": 2.88672733,
-    "requirement": 6,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],
@@ -31513,7 +31476,7 @@
     "price": 51,
     "weight": 0.03779635,
     "tier": 0.6609824,
-    "requirement": 1,
+    "requirement": 0,
     "flags": [
       "UseTeamColor",
       "Civilian"
@@ -31535,7 +31498,7 @@
     "price": 58,
     "weight": 0.1254426,
     "tier": 1.66254425,
-    "requirement": 3,
+    "requirement": 0,
     "flags": [
       "Civilian"
     ],

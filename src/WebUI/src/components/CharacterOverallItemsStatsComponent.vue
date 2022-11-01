@@ -7,24 +7,25 @@
         <b-icon icon="coins" size="is-small" />
       </td>
       <tr>
-        <td><b>Max repair costs</b></td>
+        <td><b>Max repair cost</b></td>
         <td>
-          {{ itemStats.maxRepairCost.toLocaleString('en-US') }}
+          {{ itemStats.maxRepairCost.toLocaleString('en-US', { maximumFractionDigits: 2 }) }} / min
           <b-icon icon="coins" size="is-small" />
         </td>
       </tr>
       <tr>
-        <td><b>Average repair costs</b></td>
+        <td><b>Average repair cost</b></td>
         <td>
-          {{ itemStats.averageRepairCost.toLocaleString('en-US') }}
+          {{ itemStats.averageRepairCost.toLocaleString('en-US', { maximumFractionDigits: 2 }) }} /
+          min
           <b-icon icon="coins" size="is-small" />
         </td>
       </tr>
       <tr>
-        <td><b>Weight</b></td>
+        <td><b>Health Points</b></td>
         <td>
-          {{ itemStats.weight.toLocaleString('en-US') }}
-          <b-icon icon="weight-hanging" size="is-small" />
+          {{ healthPoints }}
+          <b-icon icon="heart" size="is-small" />
         </td>
       </tr>
       <tr>
@@ -55,44 +56,139 @@
           <b-icon icon="shield-alt" size="is-small" />
         </td>
       </tr>
+
+      <template v-if="speedStats">
+        <tr>
+          <td><b>Weight</b></td>
+          <td>
+            {{ itemStats.weight.toLocaleString('en-US', { maximumFractionDigits: 2 }) }}
+            <b-icon icon="weight-hanging" size="is-small" />
+          </td>
+        </tr>
+        <tr>
+          <td><b>Free weight</b></td>
+          <td>
+            {{
+              Math.min(itemStats.weight, speedStats.freeWeight).toLocaleString('en-US') +
+              ' / ' +
+              speedStats.freeWeight.toLocaleString('en-US')
+            }}
+            <b-icon icon="weight-hanging" size="is-small" />
+          </td>
+        </tr>
+
+        <tr>
+          <td><b>Perceived weight</b></td>
+          <td>
+            {{ speedStats.perceivedWeight.toLocaleString('en-US') }}
+            <b-icon icon="weight-hanging" size="is-small" />
+          </td>
+        </tr>
+
+        <tr>
+          <td><b>Time to max speed</b></td>
+          <td>
+            {{ speedStats.timeToMaxSpeed.toLocaleString('en-US') }} s
+            <b-icon icon="time" size="is-small" />
+          </td>
+        </tr>
+
+        <tr>
+          <td><b>Naked Speed</b></td>
+          <td>
+            {{ speedStats.nakedSpeed.toLocaleString('en-US') }}
+            <b-icon icon="running" size="is-small" />
+          </td>
+        </tr>
+
+        <tr>
+          <td><b>Current Speed</b></td>
+          <td>
+            {{ speedStats.сurrentSpeed.toLocaleString('en-US') }}
+            <b-icon icon="running" size="is-small" />
+          </td>
+        </tr>
+      </template>
     </table>
   </div>
 </template>
 
 <script lang="ts">
-import EquippedItem from '@/models/equipped-item';
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { computeAverageRepairCost, computeMaxRepairCost } from '@/services/item-service';
+import EquippedItem from '@/models/equipped-item';
+import Character from '@/models/character';
+import type CharacterCharacteristics from '@/models/character-characteristics';
+import type CharacterSpeedStats from '@/models/сharacter-speed-stats';
+import {
+  computeAverageRepairCostByMinute,
+  computeMaxRepairCostByMinute,
+} from '@/services/item-service';
+import { computeHealthPoints, computeSpeedStats } from '@/services/characters-service';
+import ItemType from '@/models/item-type';
 
 @Component
 export default class CharacterOverallItemsStatsComponent extends Vue {
+  @Prop(Object) readonly character: Character;
   @Prop(Array) readonly equippedItems: EquippedItem[] | null;
+
+  get characteristics() {
+    return this.$store.state.user.characteristicsByCharacterId[
+      this.character.id
+    ] as CharacterCharacteristics;
+  }
+
+  get healthPoints(): number {
+    if (!this.characteristics) {
+      return 0;
+    }
+
+    return computeHealthPoints(
+      this.characteristics.skills.ironFlesh,
+      this.characteristics.attributes.strength
+    );
+  }
+
+  get speedStats(): CharacterSpeedStats | null {
+    if (!this.characteristics) return null;
+    return computeSpeedStats({
+      strength: this.characteristics.attributes.strength,
+      agility: this.characteristics.attributes.agility,
+      athletics: this.characteristics.skills.athletics,
+      totalEncumbrance: this.itemStats.weight,
+    });
+  }
 
   get itemStats(): Record<string, number> {
     const result = {
       price: 0,
       maxRepairCost: 0,
       averageRepairCost: 0,
-      weight: 0,
       headArmor: 0,
       bodyArmor: 0,
       armArmor: 0,
       legArmor: 0,
+      weight: 0,
     };
 
     if (!this.equippedItems) return result;
-    result.maxRepairCost = computeMaxRepairCost(
+    result.maxRepairCost = computeMaxRepairCostByMinute(
       this.equippedItems.map(item => item.userItem.baseItem)
     );
-    result.averageRepairCost = computeAverageRepairCost(
+    result.averageRepairCost = computeAverageRepairCostByMinute(
       this.equippedItems.map(item => item.userItem.baseItem)
     );
-    this.equippedItems.forEach(item => {
-      const armor = item.userItem.baseItem.armor;
-      result.price += item.userItem.baseItem.price;
-      result.weight += Number.parseFloat(item.userItem.baseItem.weight.toFixed(2));
+    this.equippedItems.forEach(ei => {
+      result.price += ei.userItem.baseItem.price;
 
-      if (armor) {
+      if (
+        ei.userItem.baseItem.type !== ItemType.Mount &&
+        ei.userItem.baseItem.type !== ItemType.MountHarness
+      ) {
+        result.weight += ei.userItem.baseItem.weight;
+      }
+
+      const armor = ei.userItem.baseItem.armor;
+      if (armor && ei.userItem.baseItem.type !== ItemType.MountHarness) {
         result.headArmor += armor.headArmor;
         result.bodyArmor += armor.bodyArmor;
         result.armArmor += armor.armArmor;

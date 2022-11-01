@@ -135,6 +135,7 @@ const itemTypesBySlot: Record<ItemSlot, ItemType[]> = {
   [ItemSlot.Weapon1]: weaponTypes,
   [ItemSlot.Weapon2]: weaponTypes,
   [ItemSlot.Weapon3]: weaponTypes,
+  [ItemSlot.WeaponExtra]: [ItemType.Banner],
 };
 
 const itemTypeByWeaponClass: Record<WeaponClass, ItemType> = {
@@ -237,7 +238,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ['Culture', baseItem.culture],
       ['Weight', baseItem.weight.toFixed(2)],
       ['Tier', baseItem.tier.toFixed(1)],
-      ['Repair Cost', computeMaxRepairCost([baseItem])],
+      ['Repair Cost', `${computeAverageRepairCostByMinute([baseItem])} / min`],
     ],
     flags: getItemFlags(baseItem.flags),
     modes: [],
@@ -392,20 +393,15 @@ export function computeSalePrice(item: UserItem): number {
 }
 
 // TODO: handle upgrade items.
-export function computeMaxRepairCost(items: Item[]): number {
+export function computeMaxRepairCostByMinute(items: Item[]): number {
   return Math.floor(
-    items.reduce(
-      (total, item) => total + applyPolynomialFunction(item.price, Constants.itemRepairCostCoefs),
-      0
-    )
+    items.reduce((total, item) => total + item.price * Constants.itemRepairCostPerSecond * 60, 0)
   );
 }
 
-export function computeAverageRepairCost(items: Item[]): number {
+export function computeAverageRepairCostByMinute(items: Item[]): number {
   return Math.floor(
-    items.reduce(
-      (total, item) => total + applyPolynomialFunction(item.price, Constants.itemRepairCostCoefs),
-      0
-    ) * Constants.itemBreakChance
+    items.reduce((total, item) => total + item.price * Constants.itemRepairCostPerSecond * 60, 0) *
+      Constants.itemBreakChance
   );
 }

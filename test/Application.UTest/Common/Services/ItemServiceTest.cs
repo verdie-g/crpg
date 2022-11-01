@@ -70,6 +70,7 @@ public class ItemServiceTest : TestBase
             new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon1 } } },
             new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon2 } } },
             new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.Weapon3 } } },
+            new() { EquippedItems = { new EquippedItem { UserItem = userItem, Slot = ItemSlot.WeaponExtra } } },
         };
         User user = new()
         {
@@ -112,5 +113,6 @@ public class ItemServiceTest : TestBase
         Assert.IsEmpty(user.Characters[8].EquippedItems);
         Assert.IsEmpty(user.Characters[9].EquippedItems);
         Assert.IsEmpty(user.Characters[10].EquippedItems);
+        Assert.IsEmpty(user.Characters[11].EquippedItems);
     }
 }

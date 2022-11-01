@@ -21,6 +21,8 @@
   <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=!}Ghost Town" />
   <string id="str_multiplayer_scene_name.crpg_battle_kalmara" text="{=!}Kalmara" />
   <string id="str_multiplayer_scene_name.crpg_battle_onomasticon" text="{=!}Onomasticon" />
+  <string id="str_multiplayer_scene_name.crpg_battle_quarry" text="{=!}Quarry" />
+  <string id="str_multiplayer_scene_name.crpg_battle_redwoodforest" text="{=!}Red Wood Forest" />
   <string id="str_multiplayer_scene_name.crpg_battle_sallyout" text="{=!}Sally Out" />
   <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=!}Sanctuary" />
   <string id="str_multiplayer_scene_name.crpg_battle_sandpit" text="{=!}Sandpit" />

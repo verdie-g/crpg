@@ -150,6 +150,7 @@ public class UpdateGameUsersCommandTest : TestBase
                         new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "8" } }, Slot = ItemSlot.Weapon1 },
                         new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "9" } }, Slot = ItemSlot.Weapon2 },
                         new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "10" } }, Slot = ItemSlot.Weapon3 },
+                        new EquippedItem { UserItem = new UserItem { BaseItem = new Item { Id = "11" } }, Slot = ItemSlot.WeaponExtra },
                     },
                     AutoRepair = true,
                 },
@@ -181,14 +182,15 @@ public class UpdateGameUsersCommandTest : TestBase
                         new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[8].UserItemId, RepairCost = 500 },
                         new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[9].UserItemId, RepairCost = 550 },
                         new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[10].UserItemId, RepairCost = 600 },
+                        new GameUserBrokenItem { UserItemId = user.Characters[0].EquippedItems[11].UserItemId, RepairCost = 650 },
                     },
                 },
             },
         }, CancellationToken.None);
 
         var data = result.Data!;
-        Assert.AreEqual(10000 - 3850, data.UpdateResults[0].User.Gold);
-        Assert.AreEqual(11, data.UpdateResults[0].RepairedItems.Count);
+        Assert.AreEqual(10000 - 4500, data.UpdateResults[0].User.Gold);
+        Assert.AreEqual(12, data.UpdateResults[0].RepairedItems.Count);
 
         var expectedItemsBySlot = user.Characters[0].EquippedItems.ToDictionary(ei => ei.Slot);
         var actualItemsBySlot = data.UpdateResults[0].User.Character.EquippedItems.ToDictionary(ei => ei.Slot);
@@ -203,6 +205,7 @@ public class UpdateGameUsersCommandTest : TestBase
         Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon1].UserItemId, actualItemsBySlot[ItemSlot.Weapon1].UserItem.Id);
         Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon2].UserItemId, actualItemsBySlot[ItemSlot.Weapon2].UserItem.Id);
         Assert.AreEqual(expectedItemsBySlot[ItemSlot.Weapon3].UserItemId, actualItemsBySlot[ItemSlot.Weapon3].UserItem.Id);
+        Assert.AreEqual(expectedItemsBySlot[ItemSlot.WeaponExtra].UserItemId, actualItemsBySlot[ItemSlot.WeaponExtra].UserItem.Id);
     }
 
     [Test]

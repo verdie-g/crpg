@@ -16,4 +16,5 @@ public enum CrpgItemSlot
     Weapon1,
     Weapon2,
     Weapon3,
+    WeaponExtra,
 }

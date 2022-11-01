@@ -112,7 +112,7 @@ internal class RoundRewardBehavior : MissionBehavior
 
     private async Task UpdateCrpgUsersAsync()
     {
-        int ticks = ComputeTicks();
+        float roundDuration = MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue() - _roundController.RemainingRoundTime;
 
         CrpgRatingCalculator.UpdateRatings(_ratingResults);
 
@@ -137,10 +137,10 @@ internal class RoundRewardBehavior : MissionBehavior
                 Reward = new CrpgUserReward { Experience = 0, Gold = 0 },
                 Statistics = new CrpgCharacterStatistics { Kills = 0, Deaths = 0, Assists = 0, PlayTime = TimeSpan.Zero },
                 Rating = GetNewRating(crpgRepresentative),
-                BrokenItems = BreakItems(crpgRepresentative),
+                BrokenItems = BreakItems(crpgRepresentative, roundDuration),
             };
 
-            SetReward(userUpdate, crpgRepresentative, ticks, rewardMultiplierEnabled);
+            SetReward(userUpdate, crpgRepresentative, roundDuration, rewardMultiplierEnabled);
             SetStatistics(userUpdate, networkPeer, newRoundAllTotalStats);
 
             userUpdates.Add(userUpdate);
@@ -170,30 +170,18 @@ internal class RoundRewardBehavior : MissionBehavior
         }
     }
 
-    private int ComputeTicks()
-    {
-        float roundDuration = MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue() - _roundController.RemainingRoundTime;
-        if (roundDuration < 30)
-        {
-            return 1;
-        }
-
-        return 1 + (int)roundDuration / 60;
-    }
-
-    private void SetReward(CrpgUserUpdate userUpdate, CrpgRepresentative crpgRepresentative, int ticks,
-        bool rewardMultiplierEnabled)
+    private void SetReward(CrpgUserUpdate userUpdate, CrpgRepresentative crpgRepresentative, float roundDuration, bool rewardMultiplierEnabled)
     {
         if (crpgRepresentative.SpawnTeamThisRound == null)
         {
             return;
         }
 
-        int totalRewardMultiplier = crpgRepresentative.RewardMultiplier * ticks;
+        float totalRewardMultiplier = crpgRepresentative.RewardMultiplier * roundDuration;
         userUpdate.Reward = new CrpgUserReward
         {
-            Experience = totalRewardMultiplier * 1000,
-            Gold = totalRewardMultiplier * 50,
+            Experience = (int)(totalRewardMultiplier * _constants.ExperienceGainPerSecond),
+            Gold = (int)(totalRewardMultiplier * _constants.GoldGainPerSecond),
         };
 
         crpgRepresentative.RewardMultiplier =
@@ -217,7 +205,7 @@ internal class RoundRewardBehavior : MissionBehavior
         };
     }
 
-    private IList<CrpgUserBrokenItem> BreakItems(CrpgRepresentative crpgRepresentative)
+    private IList<CrpgUserBrokenItem> BreakItems(CrpgRepresentative crpgRepresentative, float roundDuration)
     {
         if (crpgRepresentative.SpawnTeamThisRound == null)
         {
@@ -233,7 +221,7 @@ internal class RoundRewardBehavior : MissionBehavior
                 continue;
             }
 
-            int repairCost = (int)MathHelper.ApplyPolynomialFunction(mbItem.Value, _constants.ItemRepairCostCoefs);
+            int repairCost = (int)(mbItem.Value * roundDuration * _constants.ItemRepairCostPerSecond);
             brokenItems.Add(new CrpgUserBrokenItem
             {
                 UserItemId = equippedItem.UserItem.Id,

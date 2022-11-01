@@ -41,7 +41,6 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
         public async Task<Result<CharacterViewModel>> Handle(RespecializeCharacterCommand req, CancellationToken cancellationToken)
         {
             var character = await _db.Characters
-                .Include(c => c.EquippedItems)
                 .FirstOrDefaultAsync(c => c.Id == req.CharacterId && c.UserId == req.UserId, cancellationToken);
             if (character == null)
             {
@@ -55,7 +54,6 @@ public record RespecializeCharacterCommand : IMediatorRequest<CharacterViewModel
                 character.Level = _experienceTable.GetLevelForExperience(character.Experience);
             }
 
-            character.EquippedItems.Clear(); // Unequip all items.
             character.Statistics.Kills = 0;
             character.Statistics.Deaths = 0;
             character.Statistics.Assists = 0;

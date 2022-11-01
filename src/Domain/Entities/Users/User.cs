@@ -22,6 +22,11 @@ public class User : AuditableEntity
     public Role Role { get; set; }
 
     /// <summary>
+    /// True if the user is donating on https://www.patreon.com/crpg.
+    /// </summary>
+    public bool IsDonor { get; set; }
+
+    /// <summary>
     /// 32x32.
     /// </summary>
     public Uri? AvatarSmall { get; set; }

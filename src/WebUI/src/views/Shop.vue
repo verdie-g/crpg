@@ -36,7 +36,7 @@
                   <b-button
                     icon-left="coins"
                     expanded
-                    :disabled="item.price > gold || ownedItems[item.id]"
+                    :disabled="!canBuyItem(item)"
                     :loading="buyingItems[item.id]"
                     @click="buy(item)"
                     :title="buyButtonTitle(item)"
@@ -137,6 +137,10 @@ export default class Shop extends Vue {
     return userModule.user == null ? 0 : userModule.user.gold;
   }
 
+  get isUserDonor(): boolean {
+    return userModule.user == null ? false : userModule.user.isDonor;
+  }
+
   get currentPage(): number {
     const pageQuery = this.$route.query.page
       ? parseInt(this.$route.query.page as string, 10)
@@ -193,10 +197,6 @@ export default class Shop extends Vue {
 
   get filteredItems(): { item: Item; weaponIdx: number | undefined }[] {
     const filteredItems = itemModule.items.filter(i => {
-      if (i.type === ItemType.Banner) {
-        return false;
-      }
-
       if (!this.filters.showOwned && this.ownedItems[i.id] !== undefined) {
         return false;
       }
@@ -237,9 +237,21 @@ export default class Shop extends Vue {
     notify(`Bought ${item.name} for ${item.price} gold`);
   }
 
+  canBuyItem(item: Item): boolean {
+    return (
+      this.gold >= item.price &&
+      !this.ownedItems[item.id] &&
+      (item.type !== ItemType.Banner || this.isUserDonor)
+    );
+  }
+
   buyButtonTitle(item: Item): string {
     if (this.ownedItems[item.id]) {
       return 'You already own this item';
+    }
+
+    if (item.type === ItemType.Banner && !this.isUserDonor) {
+      return 'Only donors can buy this item';
     }
 
     if (item.price > this.gold) {

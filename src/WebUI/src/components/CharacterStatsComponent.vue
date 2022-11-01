@@ -51,15 +51,6 @@
           {{ nextLevelExperience.toLocaleString('en-US') }}
         </b-progress>
       </b-field>
-      <b-field horizontal label="Health Points" class="characteristic-field">
-        <b-numberinput
-          size="is-small"
-          :editable="false"
-          controls-position="compact"
-          :value="healthPoints"
-          :controls="false"
-        />
-      </b-field>
       <!-- TODO: align correctly -->
       <b-field horizontal label="KDA" class="characteristic-field">
         <b-input size="is-small" :value="getKda()" readonly />
@@ -71,17 +62,16 @@
         Attributes ({{
           characteristics.attributes.points + characteristicsDelta.attributes.points
         }})
-        <b-tooltip
-          label="Convert 1 attribute point to 2 skill points"
-          class="convert-button"
-          v-if="characteristics.attributes.points + characteristicsDelta.attributes.points >= 1"
-        >
-          <b-icon
-            icon="exchange-alt"
+        <b-tooltip label="Convert 1 attribute point to 2 skill points." class="convert-button">
+          <b-button
+            :disabled="
+              !(characteristics.attributes.points + characteristicsDelta.attributes.points >= 1)
+            "
             size="is-small"
             type="is-primary"
+            label="Convert to skills"
             @click.native="convertCharacteristics(characteristicisticConversion.AttributesToSkills)"
-          />
+          ></b-button>
         </b-tooltip>
       </h2>
 
@@ -129,17 +119,15 @@
     <div class="characteristic-section" v-if="characteristics !== null">
       <h2 class="title is-4">
         Skills ({{ characteristics.skills.points + characteristicsDelta.skills.points }})
-        <b-tooltip
-          label="Convert 2 skill points to 1 attribute point"
-          class="convert-button"
-          v-if="characteristics.skills.points + characteristicsDelta.skills.points >= 2"
-        >
-          <b-icon
-            icon="exchange-alt"
+
+        <b-tooltip label="Convert 2 skill points to 1 attribute point." class="convert-button">
+          <b-button
+            :disabled="!(characteristics.skills.points + characteristicsDelta.skills.points >= 2)"
             size="is-small"
             type="is-primary"
+            label="Convert to attributes"
             @click.native="convertCharacteristics(characteristicisticConversion.SkillsToAttributes)"
-          />
+          ></b-button>
         </b-tooltip>
       </h2>
 
@@ -502,7 +490,7 @@ import CharacterCharacteristics from '@/models/character-characteristics';
 import Character from '@/models/character';
 import userModule from '@/store/user-module';
 import { notify } from '@/services/notifications-service';
-import { computeHealthPoints, getExperienceForLevel } from '@/services/characters-service';
+import { getExperienceForLevel } from '@/services/characters-service';
 import CharacterAttributes from '@/models/character-attributes';
 import CharacterSkills from '@/models/character-skills';
 import CharacterWeaponProficiencies from '@/models/character-weapon-proficiencies';
@@ -607,13 +595,6 @@ export default class CharacterCharacteristicsComponent extends Vue {
         ? '∞'
         : Math.round((100 * (statistics.kills + statistics.assists)) / statistics.deaths) / 100;
     return `${statistics.kills}/${statistics.deaths}/${statistics.assists} (${ratio})`;
-  }
-
-  get healthPoints(): number {
-    return computeHealthPoints(
-      this.getInputProps('skills', 'ironFlesh').value,
-      this.getInputProps('attributes', 'strength').value
-    );
   }
 
   get relativeCurrentLevelExperience(): number {

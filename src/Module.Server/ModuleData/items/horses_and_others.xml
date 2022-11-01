@@ -1202,13 +1202,6 @@
     <Flags Civilian="true" />
     <Flags />
   </Item>
-  <Item id="crpg_campaign_banner_small" name="{=rO0oKtAo}Campaign Banner Small" is_merchandise="false" body_name="bo_spear_b" recalculate_body="true" mesh="campaign_flag" using_tableau="true" weight="4" appearance="1" Type="Banner" item_holsters="polearm_back:polearm_back_2">
-    <ItemComponent>
-      <Weapon weapon_class="Banner" speed_rating="82" item_usage="banner" position="0.0, 0.0, -0.8" physics_material="wood_weapon" weapon_length="104">
-      </Weapon>
-    </ItemComponent>
-    <Flags WoodenParry="true" ForceAttachOffHandPrimaryItemBone="true" DropOnWeaponChange="true" HeldInOffHand="true" HasToBeHeldUp="true" />
-  </Item>
   <Item id="crpg_bo_staff" name="{=yy7RvQKN}Bo staff" is_merchandise="false" body_name="bo_spear_b" recalculate_body="true" mesh="axe_craft_32_handle" using_tableau="true" subtype="two_handed_wpn" weight="1" difficulty="0" appearance="1" Type="Polearm" item_holsters="polearm_back:polearm_back_2">
     <ItemComponent>
       <Weapon weapon_class="TwoHandedPolearm" weapon_balance="100" thrust_speed="100" speed_rating="100" physics_material="wood_weapon" weapon_length="100" position="0.0, 0.0, 0.3" swing_damage="5" thrust_damage="2" swing_damage_type="Blunt" thrust_damage_type="Blunt" item_usage="polearm_block_swing_thrust">

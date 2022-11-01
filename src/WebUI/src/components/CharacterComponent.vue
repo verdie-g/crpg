@@ -165,7 +165,10 @@
         Delete
       </b-button>
 
-      <character-overall-items-stats-component :equippedItems="characterEquippedItems" />
+      <character-overall-items-stats-component
+        :equippedItems="characterEquippedItems"
+        :character="character"
+      />
     </div>
 
     <b-modal

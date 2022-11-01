@@ -22,14 +22,14 @@
     <!--Also used in native_paramaters.xml-->
     <managed_core_parameter id="QuadrupedalRadius" value="0.8"/>
     <!--Also used in native_paramaters.xml-->
-    <managed_core_parameter id="BipedalCombatSpeedMinMultiplier" value="0.74"/>
-    <managed_core_parameter id="BipedalCombatSpeedMaxMultiplier" value="0.84"/>
-    <managed_core_parameter id="BipedalRangedReadySpeedMultiplier" value="0.6"/>
-    <managed_core_parameter id="BipedalRangedReloadSpeedMultiplier" value="0.95"/>
+    <managed_core_parameter id="BipedalCombatSpeedMinMultiplier" value="0.80"/>
+    <managed_core_parameter id="BipedalCombatSpeedMaxMultiplier" value="0.88"/>
+    <managed_core_parameter id="BipedalRangedReadySpeedMultiplier" value="0.5"/>
+    <managed_core_parameter id="BipedalRangedReloadSpeedMultiplier" value="0.25"/>
 
     <!-- damage related -->
     <managed_core_parameter id="DamageInterruptAttackthresholdPierce" value="5.0"/>
-    <managed_core_parameter id="DamageInterruptAttackthresholdCut" value="5.0"/>
+    <managed_core_parameter id="DamageInterruptAttackthresholdCut" value="7.5"/>
     <managed_core_parameter id="DamageInterruptAttackthresholdBlunt" value="5.0"/>
     <managed_core_parameter id="MakesRearAttackDamageThreshold" value="15.0"/>
     <managed_core_parameter id="MissileMinimumDamageToStick" value="3.0"/>
