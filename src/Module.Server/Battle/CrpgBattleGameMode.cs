@@ -75,7 +75,10 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
 #endif
         CrpgBattleMissionMultiplayerClient battleClient = new();
-        MultiplayerGameNotificationsComponent notificationsComponent = new(); // used to send notifications (e.g. flag captured, round won) to peer
+
+        // Inherits the MultiplayerGameNotificationsComponent component.
+        // used to send notifications (e.g. flag captured, round won) to peer
+        CrpgNotificationComponent notificationsComponent = new();
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent);
 
         MissionState.OpenNew(

@@ -77,7 +77,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
                     MissionLobbyComponent.CreateBehavior(),
                     new CrpgDuelMissionMultiplayerClient(),
                     new MultiplayerTimerComponent(), // round timer
-                    new MultiplayerGameNotificationsComponent(),
+                    new CrpgNotificationComponent(), // Inherits the MultiplayerGameNotificationsComponent component.
                     new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
                     new ConsoleMatchStartEndHandler(),
                     new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
