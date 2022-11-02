@@ -29,8 +29,7 @@ internal class CrpgExperienceTable
 
         for (int lvl = _constants.MinimumLevel + 1; lvl <= 30; lvl += 1)
         {
-            float scaler = (float)Math.Pow(29f, 5.65f) + 150000f * 29f;
-            table[lvl - _constants.MinimumLevel] = 4420824 * (int)(Math.Pow(lvl - 1, 5.65f) + 150000f * (lvl - 1));
+            table[lvl - _constants.MinimumLevel] = (int)(4420824 * ExperienceFunction(lvl) / ExperienceFunction(30));
         }
 
         for (int lvl = 31; lvl <= _constants.MaximumLevel; lvl += 1)
@@ -39,5 +38,11 @@ internal class CrpgExperienceTable
         }
 
         return table;
+    }
+    private double ExperienceFunction(int lvl)
+    {
+        float a = _constants.ExperienceForLevelCoefs[0];
+        float b = _constants.ExperienceForLevelCoefs[1];
+        return Math.Pow(lvl - 1, a) + b * (lvl - 1);
     }
 }
