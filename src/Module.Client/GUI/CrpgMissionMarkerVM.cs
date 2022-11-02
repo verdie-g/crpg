@@ -253,15 +253,15 @@ internal class CrpgMissionMarkerVM : ViewModel
 
     private void UpdateTargetScreenPositions()
     {
-        PeerTargets.ApplyActionOnAllItems(delegate (MissionPeerMarkerTargetVM pt)
+        PeerTargets.ApplyActionOnAllItems(delegate(MissionPeerMarkerTargetVM pt)
         {
             pt.UpdateScreenPosition(_missionCamera);
         });
-        FlagTargets.ApplyActionOnAllItems(delegate (MissionFlagMarkerTargetVM ft)
+        FlagTargets.ApplyActionOnAllItems(delegate(MissionFlagMarkerTargetVM ft)
         {
             ft.UpdateScreenPosition(_missionCamera);
         });
-        SiegeEngineTargets.ApplyActionOnAllItems(delegate (MissionSiegeEngineMarkerTargetVM st)
+        SiegeEngineTargets.ApplyActionOnAllItems(delegate(MissionSiegeEngineMarkerTargetVM st)
         {
             st.UpdateScreenPosition(_missionCamera);
         });

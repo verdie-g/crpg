@@ -48,7 +48,6 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
             crpgEscapeMenu,
             ViewCreator.CreateMultiplayerEndOfBattleUIHandler(),
             ViewCreator.CreateMissionScoreBoardUIHandler(mission, true),
-            ViewCreator.CreateMultiplayerCultureSelectUIHandler(),
             ViewCreator.CreateLobbyEquipmentUIHandler(),
             ViewCreator.CreateMissionMultiplayerDuelUI(),
             ViewCreator.CreatePollProgressUIHandler(),
