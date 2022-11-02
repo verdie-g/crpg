@@ -30,16 +30,19 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
 
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
-            if (!IsPlayerAllowedToSpawn(networkPeer))
-            {
-                continue;
-            }
-
             MissionPeer missionPeer = networkPeer.GetComponent<MissionPeer>();
             CrpPeer crpPeer = networkPeer.GetComponent<CrpPeer>();
-            if (missionPeer == null || crpPeer == null || crpPeer.User == null)
+            if (!networkPeer.IsSynchronized
+                || missionPeer == null
+                || missionPeer.ControlledAgent != null
+                || missionPeer.HasSpawnedAgentVisuals
+                || missionPeer.Team == null
+                || missionPeer.Team == Mission.SpectatorTeam
+                || crpPeer?.User == null
+                || crpPeer.SpawnTeamThisRound != null
+                || !IsPlayerAllowedToSpawn(networkPeer))
             {
-                return;
+                continue;
             }
 
             BasicCultureObject teamCulture = missionPeer.Team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;

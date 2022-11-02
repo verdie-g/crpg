@@ -86,15 +86,8 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
 
     protected override bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)
     {
-        var missionPeer = networkPeer.GetComponent<MissionPeer>();
         var crpgPeer = networkPeer.GetComponent<CrpPeer>();
-        if (!networkPeer.IsSynchronized
-            || missionPeer == null
-            || missionPeer.ControlledAgent != null
-            || missionPeer.HasSpawnedAgentVisuals
-            || missionPeer.Team == null
-            || missionPeer.Team == Mission.SpectatorTeam
-            || crpgPeer?.User == null
+        if (crpgPeer?.User == null
             || crpgPeer.SpawnTeamThisRound != null)
         {
             return false;

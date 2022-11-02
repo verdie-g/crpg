@@ -29,17 +29,4 @@ internal class CrpgWarmupSpawningBehavior : CrpgSpawningBehaviorBase
         SpawnBotAgents();
         SpawnPeerAgents();
     }
-
-    protected override bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)
-    {
-        var missionPeer = networkPeer.GetComponent<MissionPeer>();
-        var crpgPeer = networkPeer.GetComponent<CrpPeer>();
-        return networkPeer.IsSynchronized
-               && missionPeer != null
-               && missionPeer.ControlledAgent == null
-               && !missionPeer.HasSpawnedAgentVisuals
-               && missionPeer.Team != null
-               && missionPeer.Team != Mission.SpectatorTeam
-               && crpgPeer?.User != null;
-    }
 }
