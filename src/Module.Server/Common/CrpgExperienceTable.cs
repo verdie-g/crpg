@@ -25,8 +25,7 @@ internal class CrpgExperienceTable
     private int[] ComputeExperienceTable()
     {
         int[] table = new int[_constants.MaximumLevel - _constants.MinimumLevel + 1];
-        table[0] = 0; // lvl 1: 0
-        for (int lvl = _constants.MinimumLevel + 1; lvl <= 30; lvl += 1)
+        for (int lvl = _constants.MinimumLevel; lvl <= 30; lvl += 1)
         {
             const int experienceForLevel30 = 4420824;
             table[lvl - _constants.MinimumLevel] = (int)(experienceForLevel30 * ComputeExperienceDistribution(lvl) / ComputeExperienceDistribution(30));
