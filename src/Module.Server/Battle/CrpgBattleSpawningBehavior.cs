@@ -93,20 +93,20 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
     protected override bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)
     {
         var missionPeer = networkPeer.GetComponent<MissionPeer>();
-        var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
+        var crpgPeer = networkPeer.GetComponent<CrpPeer>();
         if (!networkPeer.IsSynchronized
             || missionPeer == null
             || missionPeer.ControlledAgent != null
             || missionPeer.HasSpawnedAgentVisuals
             || missionPeer.Team == null
             || missionPeer.Team == Mission.SpectatorTeam
-            || crpgRepresentative?.User == null
-            || crpgRepresentative.SpawnTeamThisRound != null)
+            || crpgPeer?.User == null
+            || crpgPeer.SpawnTeamThisRound != null)
         {
             return false;
         }
 
-        var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
+        var characterEquipment = CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
         if (!DoesEquipmentContainWeapon(characterEquipment)) // Disallow spawning without weapons.
         {
             if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
@@ -155,7 +155,7 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
         if (_roundController != null)
         {
             component.SpawnCountThisRound += 1;
-            component.GetNetworkPeer().GetComponent<CrpgRepresentative>().SpawnTeamThisRound = component.Team;
+            component.GetNetworkPeer().GetComponent<CrpPeer>().SpawnTeamThisRound = component.Team;
         }
     }
 
@@ -196,10 +196,10 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
     {
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
-            var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-            if (crpgRepresentative != null)
+            var crpgPeer = networkPeer.GetComponent<CrpPeer>();
+            if (crpgPeer != null)
             {
-                crpgRepresentative.SpawnTeamThisRound = null;
+                crpgPeer.SpawnTeamThisRound = null;
             }
         }
 

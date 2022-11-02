@@ -84,8 +84,8 @@ internal class KickInactiveBehavior : MissionBehavior
 
             if (MissionTime.Now - lastActiveStatus.LastActive > InactiveTimeLimit)
             {
-                var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-                Debug.Print($"Kick inactive user {crpgRepresentative.User!.Character.Name} ({crpgRepresentative.User.Platform}#{crpgRepresentative.User.PlatformUserId})");
+                var crpgPeer = networkPeer.GetComponent<CrpPeer>();
+                Debug.Print($"Kick inactive user {crpgPeer.User!.Character.Name} ({crpgPeer.User.Platform}#{crpgPeer.User.PlatformUserId})");
 
                 const string parameterName = "DisconnectInfo";
                 var disconnectInfo = networkPeer.PlayerConnectionInfo.GetParameter<DisconnectInfo>(parameterName) ?? new DisconnectInfo();

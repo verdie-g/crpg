@@ -40,7 +40,7 @@ internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
     protected override bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)
     {
         MissionPeer missionPeer = networkPeer.GetComponent<MissionPeer>();
-        CrpgRepresentative crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
+        CrpPeer crpPeer = networkPeer.GetComponent<CrpPeer>();
         if (!networkPeer.IsSynchronized
             || missionPeer == null
             || missionPeer.ControlledAgent != null
@@ -49,7 +49,7 @@ internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
             || missionPeer.Culture == null
             || missionPeer.Representative is not DuelMissionRepresentative
             || !missionPeer.SpawnTimer.Check(Mission.CurrentTime)
-            || crpgRepresentative?.User == null)
+            || crpPeer?.User == null)
         {
             return false;
         }

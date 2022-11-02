@@ -98,9 +98,9 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
             MissionPeer? missionPeer = networkPeer?.GetComponent<MissionPeer>();
-            CrpgRepresentative? crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
+            CrpPeer? crpgPeer = networkPeer.GetComponent<CrpPeer>();
             if (networkPeer == null || missionPeer == null ||
-                crpgRepresentative == null || crpgRepresentative.User == null ||
+                crpgPeer == null || crpgPeer.User == null ||
                 missionPeer.Team != Mission.AttackerTeam) // AttackerTeam = Players which are not spectator and not live in a duel.
             {
                 continue;
@@ -115,23 +115,23 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
     private async Task UpdateCrpgDuelistUsersAsync(NetworkCommunicator[] networkPeers)
     {
         List<CrpgUserUpdate> userUpdates = new();
-        Dictionary<int, CrpgRepresentative> crpgRepresentativeByUserId = new();
+        Dictionary<int, CrpPeer> crpgPeerByUserId = new();
 
         foreach (NetworkCommunicator networkPeer in networkPeers)
         {
-            var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-            if (crpgRepresentative?.User == null)
+            var crpgPeer = networkPeer.GetComponent<CrpPeer>();
+            if (crpgPeer?.User == null)
             {
                 continue;
             }
 
-            crpgRepresentativeByUserId[crpgRepresentative.User.Id] = crpgRepresentative;
+            crpgPeerByUserId[crpgPeer.User.Id] = crpgPeer;
             CrpgUserUpdate userUpdate = new()
             {
-                CharacterId = crpgRepresentative.User.Character.Id,
+                CharacterId = crpgPeer.User.Character.Id,
                 Reward = new CrpgUserReward { Experience = 0, Gold = 0 },
                 Statistics = new CrpgCharacterStatistics { Kills = 0, Deaths = 0, Assists = 0, PlayTime = TimeSpan.Zero },
-                Rating = crpgRepresentative.User!.Character.Rating,
+                Rating = crpgPeer.User!.Character.Rating,
                 BrokenItems = Array.Empty<CrpgUserBrokenItem>(),
             };
 
@@ -147,7 +147,7 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
         try
         {
             var res = (await _crpgClient.UpdateUsersAsync(new CrpgGameUsersUpdateRequest { Updates = userUpdates })).Data!;
-            ApplyUpdatedPlayerData(res.UpdateResults, crpgRepresentativeByUserId);
+            ApplyUpdatedPlayerData(res.UpdateResults, crpgPeerByUserId);
             foreach (NetworkCommunicator networkPeer in networkPeers)
             {
                 GameNetwork.BeginModuleEventAsServer(networkPeer);
@@ -168,17 +168,17 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
     }
 
     private void ApplyUpdatedPlayerData(IList<UpdateCrpgUserResult> updateResults,
-        Dictionary<int, CrpgRepresentative> crpgRepresentativeByUserId)
+        Dictionary<int, CrpPeer> crpgPeerByUserId)
     {
         foreach (var updateResult in updateResults)
         {
-            if (!crpgRepresentativeByUserId.TryGetValue(updateResult.User.Id, out var crpgRepresentative))
+            if (!crpgPeerByUserId.TryGetValue(updateResult.User.Id, out var crpgPeer))
             {
                 Debug.Print($"Unknown user with id '{updateResult.User.Id}'");
                 continue;
             }
 
-            crpgRepresentative.User = updateResult.User;
+            crpgPeer.User = updateResult.User;
         }
     }
 }

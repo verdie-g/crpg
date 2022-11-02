@@ -62,13 +62,13 @@ internal class CrpgAgentHudViewModel : ViewModel
         // Hide the experience bar if the user is dead.
         ShowExperienceBar = Mission.Current?.MainAgent != null;
 
-        var crpgRepresentative = _myPeer.GetComponent<CrpgRepresentative>();
-        if (crpgRepresentative == null)
+        var crpgPeer = _myPeer.GetComponent<CrpPeer>();
+        if (crpgPeer == null)
         {
             return;
         }
 
-        var user = crpgRepresentative.User;
+        var user = crpgPeer.User;
         if (user == null)
         {
             return;
@@ -82,10 +82,10 @@ internal class CrpgAgentHudViewModel : ViewModel
             _experience = user.Character.Experience;
         }
 
-        if (_rewardMultiplier != crpgRepresentative.RewardMultiplier)
+        if (_rewardMultiplier != crpgPeer.RewardMultiplier)
         {
-            RewardMultiplier = 'x' + crpgRepresentative.RewardMultiplier.ToString();
-            _rewardMultiplier = crpgRepresentative.RewardMultiplier;
+            RewardMultiplier = 'x' + crpgPeer.RewardMultiplier.ToString();
+            _rewardMultiplier = crpgPeer.RewardMultiplier;
         }
     }
 

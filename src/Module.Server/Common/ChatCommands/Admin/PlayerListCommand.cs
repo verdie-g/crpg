@@ -27,10 +27,10 @@ internal class PlayerListCommand : AdminCommand
                 continue;
             }
 
-            var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-            if (networkPeer.IsSynchronized && crpgRepresentative.User != null)
+            var crpgPeer = networkPeer.GetComponent<CrpPeer>();
+            if (networkPeer.IsSynchronized && crpgPeer.User != null)
             {
-                ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorWarning, $"{crpgRepresentative.User.Id} | '{networkPeer.UserName}'");
+                ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorWarning, $"{crpgPeer.User.Id} | '{networkPeer.UserName}'");
             }
         }
     }

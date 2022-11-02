@@ -36,19 +36,19 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             }
 
             MissionPeer missionPeer = networkPeer.GetComponent<MissionPeer>();
-            CrpgRepresentative crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-            if (missionPeer == null || crpgRepresentative == null || crpgRepresentative.User == null)
+            CrpPeer crpPeer = networkPeer.GetComponent<CrpPeer>();
+            if (missionPeer == null || crpPeer == null || crpPeer.User == null)
             {
                 return;
             }
 
             BasicCultureObject teamCulture = missionPeer.Team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
             var peerClass = MultiplayerClassDivisions.GetMPHeroClasses().Skip(5).First();
-            // var character = CreateCharacter(crpgRepresentative.User.Character, _constants);
-            var characterSkills = CreateCharacterSkills(crpgRepresentative.User!.Character.Characteristics);
+            // var character = CreateCharacter(crpPeer.User.Character, _constants);
+            var characterSkills = CreateCharacterSkills(crpPeer.User!.Character.Characteristics);
             var character = peerClass.HeroCharacter;
 
-            var characterEquipment = CreateCharacterEquipment(crpgRepresentative.User.Character.EquippedItems);
+            var characterEquipment = CreateCharacterEquipment(crpPeer.User.Character.EquippedItems);
             bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
 
             // Used to reset the selected perks for the current troop. Otherwise the player might have addional stats.
@@ -69,11 +69,11 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
                 .InitialPosition(in spawnFrame.origin)
                 .InitialDirection(in initialDirection);
 
-            if (crpgRepresentative.Clan != null)
+            if (crpPeer.Clan != null)
             {
-                agentBuildData.ClothingColor1(crpgRepresentative.Clan.PrimaryColor);
-                agentBuildData.ClothingColor2(crpgRepresentative.Clan.SecondaryColor);
-                if (TryParseBanner(crpgRepresentative.Clan.BannerKey, out var banner))
+                agentBuildData.ClothingColor1(crpPeer.Clan.PrimaryColor);
+                agentBuildData.ClothingColor2(crpPeer.Clan.SecondaryColor);
+                if (TryParseBanner(crpPeer.Clan.BannerKey, out var banner))
                 {
                     agentBuildData.Banner(banner);
                 }

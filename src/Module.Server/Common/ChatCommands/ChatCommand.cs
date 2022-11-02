@@ -162,8 +162,8 @@ internal abstract class ChatCommand
 
         foreach (NetworkCommunicator p in GameNetwork.NetworkPeers)
         {
-            var crpgRepresentative = p.GetComponent<CrpgRepresentative>();
-            if (p.IsSynchronized && crpgRepresentative.User?.Id == id)
+            var crpgPeer = p.GetComponent<CrpPeer>();
+            if (p.IsSynchronized && crpgPeer.User?.Id == id)
             {
                 networkPeer = p;
                 return true;

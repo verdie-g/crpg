@@ -6,7 +6,7 @@ using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common;
 
-internal class CrpgRepresentative : PeerComponent
+internal class CrpPeer : PeerComponent
 {
     private CrpgUser? _user;
     private int _rewardMultiplier;

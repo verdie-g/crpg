@@ -35,8 +35,8 @@ internal class BanCommand : AdminCommand
         var duration = (TimeSpan)arguments[1];
         string reason = (string)arguments[2];
 
-        int? restrictedByUserId = fromPeer.GetComponent<CrpgRepresentative>()?.User?.Id;
-        int? restrictedUserId = targetPeer.GetComponent<CrpgRepresentative>()?.User?.Id;
+        int? restrictedByUserId = fromPeer.GetComponent<CrpPeer>()?.User?.Id;
+        int? restrictedUserId = targetPeer.GetComponent<CrpPeer>()?.User?.Id;
         if (restrictedUserId == null || restrictedByUserId == null)
         {
             return;

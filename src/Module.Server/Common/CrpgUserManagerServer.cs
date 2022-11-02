@@ -37,7 +37,7 @@ internal class CrpgUserManagerServer : MissionNetwork
     protected override void HandleEarlyNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
     {
         base.HandleEarlyNewClientAfterLoadingFinished(networkPeer);
-        networkPeer.AddComponent<CrpgRepresentative>();
+        networkPeer.AddComponent<CrpPeer>();
     }
 
     protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
@@ -51,13 +51,13 @@ internal class CrpgUserManagerServer : MissionNetwork
         RewardMultiplierByPlayerId.Clear();
         foreach (var networkPeer in GameNetwork.NetworkPeers)
         {
-            var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-            if (crpgRepresentative == null)
+            var crpgPeer = networkPeer.GetComponent<CrpPeer>();
+            if (crpgPeer == null)
             {
                 continue;
             }
 
-            RewardMultiplierByPlayerId[networkPeer.VirtualPlayer.Id] = crpgRepresentative.RewardMultiplier;
+            RewardMultiplierByPlayerId[networkPeer.VirtualPlayer.Id] = crpgPeer.RewardMultiplier;
         }
     }
 
@@ -111,10 +111,10 @@ internal class CrpgUserManagerServer : MissionNetwork
             networkPeer.IsMuted = true;
         }
 
-        var crpgRepresentative = networkPeer.GetComponent<CrpgRepresentative>();
-        crpgRepresentative.User = crpgUser;
-        crpgRepresentative.Clan = crpgClan;
-        crpgRepresentative.RewardMultiplier =
+        var crpgPeer = networkPeer.GetComponent<CrpPeer>();
+        crpgPeer.User = crpgUser;
+        crpgPeer.Clan = crpgClan;
+        crpgPeer.RewardMultiplier =
             RewardMultiplierByPlayerId.TryGetValue(vp.Id, out int lastMissionMultiplier)
                 ? lastMissionMultiplier
                 : 1;
