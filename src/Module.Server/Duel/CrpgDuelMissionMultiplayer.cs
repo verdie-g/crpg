@@ -64,6 +64,7 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
 
     protected override void HandleLateNewClientAfterSynchronized(NetworkCommunicator networkPeer)
     {
+        base.HandleLateNewClientAfterSynchronized(networkPeer);
         // Remove player from list to reset preferred arena type.
         if (SpawnComponent?.SpawningBehavior is CrpgDuelSpawningBehavior duelSpawningBehavior)
         {
