@@ -51,6 +51,17 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
                 finalDamage *= 1.85f; // 85% bonus dmg against horses
             }
 
+            // Bonus dmg from slash against horses
+            if (!attackInformation.IsVictimAgentHuman
+                && !attackInformation.DoesAttackerHaveMountAgent
+                && !weapon.CurrentUsageItem.IsConsumable
+                && weapon.CurrentUsageItem.IsMeleeWeapon
+                && collisionData.StrikeType == (int)StrikeType.Swing
+                && !weapon.IsAnyConsumable())
+            {
+                finalDamage *= 1.4f; // 40% bonus dmg against horses
+            }
+
             // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
             else if (collisionData.IsAlternativeAttack && !attackInformation.IsFriendlyFire)
             {
