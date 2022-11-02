@@ -1,5 +1,4 @@
 using Crpg.Application.Common;
-using Crpg.Application.Common.Files;
 using Crpg.Application.Common.Services;
 using NUnit.Framework;
 
