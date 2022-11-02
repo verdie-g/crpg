@@ -8,7 +8,7 @@ namespace Crpg.Module.Duel.Network;
 internal sealed class CrpgUpdateDuelArenaType : GameNetworkMessage
 {
     private static readonly CompressionInfo.Integer TroopTypeCompressionInfo = new((int)TroopType.Invalid, (int)TroopType.NumberOfTroopTypes);
-    public TroopType PlayerTroopType { get; set; } = default!;
+    public TroopType PlayerTroopType { get; set; }
 
     protected override void OnWrite()
     {

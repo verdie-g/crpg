@@ -9,7 +9,6 @@ namespace Crpg.Module.Battle;
 internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
 {
     private const float TotalSpawnDuration = 30f;
-    private readonly CrpgConstants _constants;
     private readonly MultiplayerRoundController? _roundController;
     private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
     private MissionTimer? _spawnTimer;
@@ -19,7 +18,6 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
     public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController? roundController)
         : base(constants)
     {
-        _constants = constants;
         _roundController = roundController;
         _notifiedPlayersAboutSpawnRestriction = new HashSet<PlayerId>();
     }

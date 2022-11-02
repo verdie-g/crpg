@@ -7,6 +7,7 @@ using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.PlayerServices;
 
 namespace Crpg.Module.Duel;
+
 internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
 {
     private readonly CrpgDuelMissionMultiplayer _duelMission;
@@ -27,6 +28,7 @@ internal class CrpgDuelSpawningBehavior : CrpgSpawningBehaviorBase
         {
             SpawnAgents();
         }
+
         base.OnTick(dt);
     }
 

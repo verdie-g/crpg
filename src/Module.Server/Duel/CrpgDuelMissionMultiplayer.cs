@@ -30,10 +30,12 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
     // Around line 432 in MissionCustomGameServerComponent - OnDuelEnded null exception for GetCurrentBattleResult or something like that
     public override MissionLobbyComponent.MultiplayerGameType GetMissionType() => MissionLobbyComponent.MultiplayerGameType.FreeForAll;
 
-    public override void OnAgentRemoved(Agent affectedAgent, Agent affectorAgent, AgentState agentState, KillingBlow blow)
+    public override void OnAgentRemoved(Agent? affectedAgent, Agent? affectorAgent, AgentState agentState, KillingBlow blow)
     {
-        if (!affectedAgent.IsHuman || affectorAgent == null ||
-            affectedAgent == null || affectedAgent == affectorAgent)
+        if (affectorAgent == null
+            || affectedAgent == null
+            || !affectedAgent.IsHuman
+            || affectedAgent == affectorAgent)
         {
             base.OnAgentRemoved(affectedAgent, affectorAgent, agentState, blow);
             return;
@@ -46,7 +48,10 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
             float respawnDelay = 5.1f; // Has to be bigger than 2.1sec. 2seconds delay and 100ms delay to despawn the agent.
             affectedAgent.MissionPeer.SpawnTimer.Reset(Mission.CurrentTime, respawnDelay); // was 5.1f
             affectorAgent.MissionPeer.SpawnTimer.Reset(Mission.CurrentTime, respawnDelay);
-            _ = RemoveRemainingAgents(affectorAgent.MissionPeer, respawnDelay - 2.5f); // Should not be lower than 2.5f, otherwise the duel score will not increase!
+            if (affectorAgent.MissionPeer != null)
+            {
+                _ = RemoveRemainingAgents(affectorAgent.MissionPeer, respawnDelay - 2.5f); // Should not be lower than 2.5f, otherwise the duel score will not increase!
+            }
         }
 
         base.OnAgentRemoved(affectedAgent, affectorAgent, agentState, blow);
@@ -77,11 +82,6 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
     private async Task RemoveRemainingAgents(MissionPeer peer, float delay)
     {
         await Task.Delay((int)(delay * 1000) - 100); // After 2 seconds the duel is actually over. So we wait a bit longer before we manually remove the player who is alive.
-        if (peer == null)
-        {
-            return;
-        }
-
         Agent controlledAgent = peer.ControlledAgent;
         if (controlledAgent != null)
         {
@@ -109,7 +109,7 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
             playersToUpdate.Add(networkPeer);
         }
 
-        _ = UpdateCrpgDuelistUsersAsync(GameNetwork.NetworkPeers.ToArray());
+        _ = UpdateCrpgDuelistUsersAsync(playersToUpdate.ToArray());
     }
 
     private async Task UpdateCrpgDuelistUsersAsync(NetworkCommunicator[] networkPeers)

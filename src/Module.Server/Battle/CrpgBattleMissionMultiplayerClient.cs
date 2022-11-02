@@ -1,11 +1,8 @@
-﻿using System.Text;
-using Crpg.Module.Common;
-using Crpg.Module.Common.Network;
+﻿using Crpg.Module.Common.Network;
 using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.MountAndBlade.Objects;
@@ -23,6 +20,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     private float _remainingTimeForBellSoundToStop = float.MinValue;
     private SoundEvent? _bellSoundEvent;
     private MissionPeer? _missionPeer;
+    private FlagDominationMissionRepresentative? _myRepresentative;
 
     public event Action<BattleSideEnum, float>? OnMoraleChangedEvent;
     public event Action? OnFlagNumberChangedEvent;
@@ -35,8 +33,6 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     public override bool IsGameModeUsingCasualGold => false;
     public IEnumerable<FlagCapturePoint> AllCapturePoints => _flags;
     public bool AreMoralesIndependent => false;
-
-    private FlagDominationMissionRepresentative? _myRepresentative;
 
     public override void OnBehaviorInitialize()
     {

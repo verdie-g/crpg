@@ -1,5 +1,4 @@
-﻿using Crpg.Module.Common;
-using Crpg.Module.Duel.Network;
+﻿using Crpg.Module.Duel.Network;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
@@ -10,11 +9,6 @@ internal class CrpgDuelMissionMultiplayerClient : MissionMultiplayerGameModeDuel
 {
     public override bool IsGameModeUsingAllowCultureChange => false;
     public override bool IsGameModeUsingAllowTroopChange => false;
-
-    public CrpgDuelMissionMultiplayerClient()
-        : base()
-    {
-    }
 
     public override bool CanRequestCultureChange()
     {
