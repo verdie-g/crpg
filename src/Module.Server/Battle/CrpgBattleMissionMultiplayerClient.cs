@@ -7,6 +7,7 @@ using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.MountAndBlade.Objects;
 using TaleWorlds.ObjectSystem;
 
@@ -21,7 +22,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     private bool _notifiedForFlagRemoval;
     private float _remainingTimeForBellSoundToStop = float.MinValue;
     private SoundEvent? _bellSoundEvent;
-    private CrpgRepresentative? _crpgRepresentative;
+    private MissionPeer? _missionPeer;
 
     public event Action<BattleSideEnum, float>? OnMoraleChangedEvent;
     public event Action? OnFlagNumberChangedEvent;
@@ -34,6 +35,8 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     public override bool IsGameModeUsingCasualGold => false;
     public IEnumerable<FlagCapturePoint> AllCapturePoints => _flags;
     public bool AreMoralesIndependent => false;
+
+    private FlagDominationMissionRepresentative? _myRepresentative;
 
     public override void OnBehaviorInitialize()
     {
@@ -48,7 +51,6 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
       base.OnRemoveBehavior();
       RoundComponent.OnPreparationEnded -= OnPreparationEnded;
       MissionNetworkComponent.OnMyClientSynchronized -= OnMyClientSynchronized;
-      _crpgRepresentative?.AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Remove);
     }
 
     public override void OnGoldAmountChangedForRepresentative(MissionRepresentativeBase representative, int goldAmount)
@@ -118,7 +120,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
             }
         }
 
-        BattleSideEnum mySide = _crpgRepresentative?.MissionPeer.Team.Side ?? BattleSideEnum.None;
+        BattleSideEnum mySide = _missionPeer?.Team.Side ?? BattleSideEnum.None;
         if (mySide == BattleSideEnum.None)
         {
             return;
@@ -162,7 +164,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
         _flagOwners[flag.FlagIndex] = owner;
         OnCapturePointOwnerChangedEvent?.Invoke(flag, owner);
 
-        var myTeam = _crpgRepresentative?.MissionPeer.Team;
+        var myTeam = _missionPeer?.Team;
         if (myTeam == null)
         {
             return;
@@ -195,8 +197,6 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
             registerer.Register<UpdateCrpgUser>(HandleUpdateCrpgUser);
             registerer.Register<CrpgRewardUser>(HandleRewardUser);
             registerer.Register<CrpgRewardError>(HandleRewardError);
-            registerer.Register<CrpgNotification>(HandleNotification);
-            registerer.Register<CrpgServerMessage>(HandleServerMessage);
             registerer.Register<FlagDominationMoraleChangeMessage>(OnMoraleChange);
             registerer.Register<FlagDominationCapturePointMessage>(OnCapturePoint);
             registerer.Register<FlagDominationFlagsRemovedMessage>(OnFlagsRemoved);
@@ -245,8 +245,8 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
 
     private void OnMyClientSynchronized()
     {
-        _crpgRepresentative = GameNetwork.MyPeer.GetComponent<CrpgRepresentative>();
-        _crpgRepresentative.AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
+        _missionPeer = GameNetwork.MyPeer.GetComponent<MissionPeer>();
+        _myRepresentative = GameNetwork.MyPeer.GetComponent<FlagDominationMissionRepresentative>();
     }
 
     private void OnMoraleChange(FlagDominationMoraleChangeMessage message)
@@ -338,63 +338,5 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     private void HandleRewardError(CrpgRewardError message)
     {
         InformationManager.DisplayMessage(new InformationMessage("Could not join cRPG main server. Your reward was lost.", new Color(0.75f, 0.01f, 0.01f)));
-    }
-
-    private void HandleNotification(CrpgNotification notification)
-    {
-        string message = notification.IsMessageTextId ? GameTexts.FindText(notification.Message).ToString() : notification.Message;
-
-        // Notifcation like "Flag A and B were removed"
-        if (notification.Type == CrpgNotification.NotificationType.Notification)
-        {
-            MBInformationManager.AddQuickInformation(new TextObject(AddLineBreaksToText(message)), 0, null, notification.SoundEvent);
-        }
-
-        // Red announcement like "A new update is available. Please update your client" (Lobbyscreen)
-        else if (notification.Type == CrpgNotification.NotificationType.Announcement)
-        {
-            InformationManager.AddSystemNotification(message);
-        }
-
-        // Plays a sound event
-        else if (notification.Type == CrpgNotification.NotificationType.Sound)
-        {
-            SoundEvent.CreateEventFromString(notification.SoundEvent, Mission.Scene).Play();
-        }
-    }
-
-    private void HandleServerMessage(CrpgServerMessage message)
-    {
-        string msg = message.IsMessageTextId ? GameTexts.FindText(message.Message).ToString() : message.Message;
-        InformationManager.DisplayMessage(new InformationMessage(msg, new Color(message.Red, message.Green, message.Blue, message.Alpha)));
-    }
-
-    private string AddLineBreaksToText(string text)
-    {
-        string[] words = text.Split(' ');
-        if (words.Length < 2)
-        {
-            return text;
-        }
-
-        StringBuilder result = new();
-        int currentLetterCount = 0;
-        string linebreak = "{newline}";
-        foreach (string word in words)
-        {
-            currentLetterCount += word.Length + 1; // + 1 for spaces
-            result.Append(word);
-            if (currentLetterCount > 100)
-            {
-                currentLetterCount = 0;
-                result.Append(linebreak);
-                continue;
-            }
-
-            result.Append(' ');
-        }
-
-        result.Length -= " ".Length;
-        return result.ToString();
     }
 }

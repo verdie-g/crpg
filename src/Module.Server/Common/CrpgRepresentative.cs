@@ -1,11 +1,12 @@
 ﻿using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Common.Network;
+using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common;
 
-internal class CrpgRepresentative : MissionRepresentativeBase
+internal class CrpgRepresentative : PeerComponent
 {
     private CrpgUser? _user;
     private int _rewardMultiplier;

@@ -98,7 +98,7 @@ internal class RoundRewardBehavior : MissionBehavior
 
             var characterRating = crpgRepresentative.User.Character.Rating;
             rating = new CrpgRating(characterRating.Value, characterRating.Deviation, characterRating.Volatility);
-            _characterRatings[crpgRepresentative.MissionPeer.Peer.Id] = rating;
+            _characterRatings[agent.MissionPeer.Peer.Id] = rating;
             _ratingResults.AddParticipant(rating);
         }
 
