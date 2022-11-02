@@ -36,6 +36,8 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
         CrpgExperienceTable experienceTable = new(_constants);
         MissionMultiplayerGameModeBaseClient gameModeClient = mission.GetMissionBehavior<MissionMultiplayerGameModeBaseClient>();
         MissionView crpgEscapeMenu = ViewCreatorManager.CreateMissionView<CrpgMissionMultiplayerEscapeMenu>(isNetwork: false, null, "Duel", gameModeClient);
+        MissionView altKeyMarkerView = ViewCreatorManager.CreateMissionView<CrpgMultiplayerMarkerUIHandler>(isNetwork: false, null, gameModeClient);
+
         return new[]
         {
             ViewCreator.CreateMissionServerStatusUIHandler(),
@@ -58,6 +60,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
             new MissionAgentContourControllerView(),
             ViewCreator.CreateMissionFlagMarkerUIHandler(), // Draw flags but also player names when pressing ALT.
             new CrpgAgentHud(experienceTable),
+            altKeyMarkerView, // Draw flags but also player names when pressing ALT. (Native: CreateMissionFlagMarkerUIHandler)
         };
     }
 #endif
