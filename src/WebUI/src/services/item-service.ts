@@ -236,7 +236,6 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
     fields: [
       ['Type', itemTypeToStr[baseItem.type]],
       ['Culture', baseItem.culture],
-      ['Weight', baseItem.weight.toFixed(2)],
       ['Tier', baseItem.tier.toFixed(1)],
       ['Repair Cost', `${computeAverageRepairCostByMinute([baseItem])} / min`],
     ],
@@ -282,6 +281,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
   // Special cases for item types with only one weapon mode.
   if (baseItem.type === ItemType.Arrows || baseItem.type === ItemType.Bolts) {
     props.fields.push(
+      ['Stack Weight', (baseItem.weight * baseItem.weapons[0].stackAmount).toFixed(2)],
       ['Speed', baseItem.weapons[0].missileSpeed],
       [
         'Damage',
@@ -292,12 +292,14 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
     );
   } else if (baseItem.type === ItemType.Shield) {
     props.fields.push(
+      ['Weight', baseItem.weight.toFixed(2)],
       ['Speed', baseItem.weapons[0].swingSpeed],
       ['Durability', baseItem.weapons[0].stackAmount],
       ['Armor', baseItem.weapons[0].bodyArmor],
       ['Length', baseItem.weapons[0].length]
     );
   } else if (baseItem.type === ItemType.Bow || baseItem.type === ItemType.Crossbow) {
+    props.fields.push(['Weight', baseItem.weight.toFixed(2)]);
     props.fields.push(['Class', itemUsageStr.get(baseItem.weapons[0].itemUsage)]);
     baseItem.weapons.forEach(weapon => {
       const weaponFields: [string, any][] = [
@@ -322,8 +324,12 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       });
     });
   } else if (baseItem.type === ItemType.Banner) {
+    props.fields.push(['Weight', baseItem.weight.toFixed(2)]);
     props.fields.push(['Length', baseItem.weapons[0].length]);
+  } else if (baseItem.type === ItemType.Mount) {
+    props.fields.push(['Weight', baseItem.weight.toFixed(0)]);
   } else {
+    props.fields.push(['Weight', baseItem.weight.toFixed(2)]);
     baseItem.weapons.forEach(weapon => {
       const itemType = itemTypeByWeaponClass[weapon.class];
       const weaponFields: [string, any][] = [];
@@ -334,12 +340,13 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ) {
         weaponFields.push(...getDamageFields(weapon));
       } else if (itemType === ItemType.Thrown) {
-        weaponFields.push(
-          ['Damage', getDamageFieldValue(weapon.thrustDamage, weapon.thrustDamageType)],
-          ['Fire Rate', weapon.missileSpeed],
-          ['Accuracy', weapon.accuracy],
-          ['Stack Amount', weapon.stackAmount]
-        );
+        props.fields.push(['Stack Weight', (baseItem.weight * weapon.stackAmount).toFixed(2)]),
+          weaponFields.push(
+            ['Damage', getDamageFieldValue(weapon.thrustDamage, weapon.thrustDamageType)],
+            ['Fire Rate', weapon.missileSpeed],
+            ['Accuracy', weapon.accuracy],
+            ['Stack Amount', weapon.stackAmount]
+          );
       }
 
       weaponFields.push(['Handling', weapon.handling], ['Length', weapon.length]);
