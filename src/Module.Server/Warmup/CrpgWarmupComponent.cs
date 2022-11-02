@@ -51,7 +51,7 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
 
         SpawnComponent spawnComponent = Mission.GetMissionBehavior<SpawnComponent>();
         spawnComponent.SetNewSpawnFrameBehavior(new FFASpawnFrameBehavior());
-        spawnComponent.SetNewSpawningBehavior(new CrpgBattleSpawningBehavior(_constants, null));
+        spawnComponent.SetNewSpawningBehavior(new CrpgWarmupSpawningBehavior(_constants));
         _overridenSpawningBehavior = false;
     }
 
@@ -65,7 +65,7 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
 
         SpawnComponent spawnComponent = Mission.GetMissionBehavior<SpawnComponent>();
         if ((WarmupStates)WarmupStateField.GetValue(this) != WarmupStates.InProgress
-            || (spawnComponent.SpawningBehavior.GetType() == typeof(CrpgBattleSpawningBehavior)
+            || (spawnComponent.SpawningBehavior.GetType() == typeof(CrpgWarmupSpawningBehavior)
                 && spawnComponent.SpawnFrameBehavior.GetType() == typeof(FFASpawnFrameBehavior)))
         {
             return;

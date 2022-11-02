@@ -9,13 +9,13 @@ namespace Crpg.Module.Battle;
 internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
 {
     private const float TotalSpawnDuration = 30f;
-    private readonly MultiplayerRoundController? _roundController;
+    private readonly MultiplayerRoundController _roundController;
     private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
     private MissionTimer? _spawnTimer;
     private MissionTimer? _cavalrySpawnDelayTimer;
     private bool _botsSpawned;
 
-    public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController? roundController)
+    public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController roundController)
         : base(constants)
     {
         _roundController = roundController;
@@ -25,26 +25,20 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
     public override void Initialize(SpawnComponent spawnComponent)
     {
         base.Initialize(spawnComponent);
-        if (_roundController != null)
-        {
-            _roundController.OnPreparationEnded += RequestStartSpawnSession;
-            _roundController.OnRoundEnding += RequestStopSpawnSession;
-        }
+        _roundController.OnPreparationEnded += RequestStartSpawnSession;
+        _roundController.OnRoundEnding += RequestStopSpawnSession;
     }
 
     public override void Clear()
     {
         base.Clear();
-        if (_roundController != null)
-        {
-            _roundController.OnPreparationEnded -= RequestStartSpawnSession;
-            _roundController.OnRoundEnding -= RequestStopSpawnSession;
-        }
+        _roundController.OnPreparationEnded -= RequestStartSpawnSession;
+        _roundController.OnRoundEnding -= RequestStopSpawnSession;
     }
 
     public override void OnTick(float dt)
     {
-        if ((IsSpawningEnabled && IsRoundInProgress()) || _roundController == null)
+        if (IsSpawningEnabled && IsRoundInProgress())
         {
             SpawnAgents();
         }
@@ -71,17 +65,17 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
 
     protected override bool IsRoundInProgress()
     {
-        return _roundController?.IsRoundInProgress ?? false;
+        return _roundController.IsRoundInProgress;
     }
 
     protected override void SpawnAgents()
     {
-        if (_roundController != null && _spawnTimer!.Check())
+        if (_spawnTimer!.Check())
         {
             return;
         }
 
-        if (!_botsSpawned || _roundController == null)
+        if (!_botsSpawned)
         {
             SpawnBotAgents();
             _botsSpawned = true;
@@ -151,12 +145,8 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
     protected override void OnPeerSpawned(MissionPeer component)
     {
         base.OnPeerSpawned(component);
-
-        if (_roundController != null)
-        {
-            component.SpawnCountThisRound += 1;
-            component.GetNetworkPeer().GetComponent<CrpPeer>().SpawnTeamThisRound = component.Team;
-        }
+        component.SpawnCountThisRound += 1;
+        component.GetNetworkPeer().GetComponent<CrpPeer>().SpawnTeamThisRound = component.Team;
     }
 
     /// <summary>
