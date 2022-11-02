@@ -31,15 +31,15 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
             MissionPeer missionPeer = networkPeer.GetComponent<MissionPeer>();
-            CrpPeer crpPeer = networkPeer.GetComponent<CrpPeer>();
+            CrpgPeer crpgPeer = networkPeer.GetComponent<CrpgPeer>();
             if (!networkPeer.IsSynchronized
                 || missionPeer == null
                 || missionPeer.ControlledAgent != null
                 || missionPeer.HasSpawnedAgentVisuals
                 || missionPeer.Team == null
                 || missionPeer.Team == Mission.SpectatorTeam
-                || crpPeer?.User == null
-                || crpPeer.SpawnTeamThisRound != null
+                || crpgPeer?.User == null
+                || crpgPeer.SpawnTeamThisRound != null
                 || !IsPlayerAllowedToSpawn(networkPeer))
             {
                 continue;
@@ -47,11 +47,11 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
 
             BasicCultureObject teamCulture = missionPeer.Team == Mission.AttackerTeam ? cultureTeam1 : cultureTeam2;
             var peerClass = MultiplayerClassDivisions.GetMPHeroClasses().Skip(5).First();
-            // var character = CreateCharacter(crpPeer.User.Character, _constants);
-            var characterSkills = CreateCharacterSkills(crpPeer.User!.Character.Characteristics);
+            // var character = CreateCharacter(crpgPeer.User.Character, _constants);
+            var characterSkills = CreateCharacterSkills(crpgPeer.User!.Character.Characteristics);
             var character = peerClass.HeroCharacter;
 
-            var characterEquipment = CreateCharacterEquipment(crpPeer.User.Character.EquippedItems);
+            var characterEquipment = CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
             bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
 
             // Used to reset the selected perks for the current troop. Otherwise the player might have addional stats.
@@ -72,11 +72,11 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
                 .InitialPosition(in spawnFrame.origin)
                 .InitialDirection(in initialDirection);
 
-            if (crpPeer.Clan != null)
+            if (crpgPeer.Clan != null)
             {
-                agentBuildData.ClothingColor1(crpPeer.Clan.PrimaryColor);
-                agentBuildData.ClothingColor2(crpPeer.Clan.SecondaryColor);
-                if (TryParseBanner(crpPeer.Clan.BannerKey, out var banner))
+                agentBuildData.ClothingColor1(crpgPeer.Clan.PrimaryColor);
+                agentBuildData.ClothingColor2(crpgPeer.Clan.SecondaryColor);
+                if (TryParseBanner(crpgPeer.Clan.BannerKey, out var banner))
                 {
                     agentBuildData.Banner(banner);
                 }

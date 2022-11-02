@@ -86,7 +86,7 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
 
     protected override bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)
     {
-        var crpgPeer = networkPeer.GetComponent<CrpPeer>();
+        var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
         if (crpgPeer?.User == null
             || crpgPeer.SpawnTeamThisRound != null)
         {
@@ -139,7 +139,7 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
     {
         base.OnPeerSpawned(component);
         component.SpawnCountThisRound += 1;
-        component.GetNetworkPeer().GetComponent<CrpPeer>().SpawnTeamThisRound = component.Team;
+        component.GetNetworkPeer().GetComponent<CrpgPeer>().SpawnTeamThisRound = component.Team;
     }
 
     /// <summary>
@@ -179,7 +179,7 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
     {
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
-            var crpgPeer = networkPeer.GetComponent<CrpPeer>();
+            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
             if (crpgPeer != null)
             {
                 crpgPeer.SpawnTeamThisRound = null;

@@ -98,7 +98,7 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
         foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
         {
             MissionPeer? missionPeer = networkPeer?.GetComponent<MissionPeer>();
-            CrpPeer? crpgPeer = networkPeer.GetComponent<CrpPeer>();
+            CrpgPeer? crpgPeer = networkPeer.GetComponent<CrpgPeer>();
             if (networkPeer == null || missionPeer == null ||
                 crpgPeer == null || crpgPeer.User == null ||
                 missionPeer.Team != Mission.AttackerTeam) // AttackerTeam = Players which are not spectator and not live in a duel.
@@ -115,11 +115,11 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
     private async Task UpdateCrpgDuelistUsersAsync(NetworkCommunicator[] networkPeers)
     {
         List<CrpgUserUpdate> userUpdates = new();
-        Dictionary<int, CrpPeer> crpgPeerByUserId = new();
+        Dictionary<int, CrpgPeer> crpgPeerByUserId = new();
 
         foreach (NetworkCommunicator networkPeer in networkPeers)
         {
-            var crpgPeer = networkPeer.GetComponent<CrpPeer>();
+            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
             if (crpgPeer?.User == null)
             {
                 continue;
@@ -168,7 +168,7 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
     }
 
     private void ApplyUpdatedPlayerData(IList<UpdateCrpgUserResult> updateResults,
-        Dictionary<int, CrpPeer> crpgPeerByUserId)
+        Dictionary<int, CrpgPeer> crpgPeerByUserId)
     {
         foreach (var updateResult in updateResults)
         {

@@ -90,7 +90,7 @@ internal class RoundRewardBehavior : MissionBehavior
 
         if (!_characterRatings.TryGetValue(agent.MissionPeer.Peer.Id, out rating))
         {
-            var crpgPeer = agent.MissionPeer.Peer.GetComponent<CrpPeer>();
+            var crpgPeer = agent.MissionPeer.Peer.GetComponent<CrpgPeer>();
             if (crpgPeer?.User == null)
             {
                 return false;
@@ -116,14 +116,14 @@ internal class RoundRewardBehavior : MissionBehavior
 
         CrpgRatingCalculator.UpdateRatings(_ratingResults);
 
-        Dictionary<int, CrpPeer> crpgPeerByUserId = new();
+        Dictionary<int, CrpgPeer> crpgPeerByUserId = new();
         var newRoundAllTotalStats = new Dictionary<PlayerId, CrpgCharacterStatistics>();
         List<CrpgUserUpdate> userUpdates = new();
         var networkPeers = GameNetwork.NetworkPeers.ToArray();
         bool rewardMultiplierEnabled = networkPeers.Length > 4;
         foreach (NetworkCommunicator networkPeer in networkPeers)
         {
-            var crpgPeer = networkPeer.GetComponent<CrpPeer>();
+            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
             if (crpgPeer?.User == null)
             {
                 continue;
@@ -170,31 +170,31 @@ internal class RoundRewardBehavior : MissionBehavior
         }
     }
 
-    private void SetReward(CrpgUserUpdate userUpdate, CrpPeer crpPeer, float roundDuration, bool rewardMultiplierEnabled)
+    private void SetReward(CrpgUserUpdate userUpdate, CrpgPeer crpgPeer, float roundDuration, bool rewardMultiplierEnabled)
     {
-        if (crpPeer.SpawnTeamThisRound == null)
+        if (crpgPeer.SpawnTeamThisRound == null)
         {
             return;
         }
 
-        float totalRewardMultiplier = crpPeer.RewardMultiplier * roundDuration;
+        float totalRewardMultiplier = crpgPeer.RewardMultiplier * roundDuration;
         userUpdate.Reward = new CrpgUserReward
         {
             Experience = (int)(totalRewardMultiplier * _constants.ExperienceGainPerSecond),
             Gold = (int)(totalRewardMultiplier * _constants.GoldGainPerSecond),
         };
 
-        crpPeer.RewardMultiplier =
-            _roundController.RoundWinner == crpPeer.SpawnTeamThisRound.Side && rewardMultiplierEnabled
-                ? Math.Min(5, crpPeer.RewardMultiplier + 1)
+        crpgPeer.RewardMultiplier =
+            _roundController.RoundWinner == crpgPeer.SpawnTeamThisRound.Side && rewardMultiplierEnabled
+                ? Math.Min(5, crpgPeer.RewardMultiplier + 1)
                 : 1;
     }
 
-    private CrpgCharacterRating GetNewRating(CrpPeer crpPeer)
+    private CrpgCharacterRating GetNewRating(CrpgPeer crpgPeer)
     {
-        if (!_characterRatings.TryGetValue(crpPeer.Peer.Id, out var rating))
+        if (!_characterRatings.TryGetValue(crpgPeer.Peer.Id, out var rating))
         {
-            return crpPeer.User!.Character.Rating;
+            return crpgPeer.User!.Character.Rating;
         }
 
         return new CrpgCharacterRating
@@ -205,15 +205,15 @@ internal class RoundRewardBehavior : MissionBehavior
         };
     }
 
-    private IList<CrpgUserBrokenItem> BreakItems(CrpPeer crpPeer, float roundDuration)
+    private IList<CrpgUserBrokenItem> BreakItems(CrpgPeer crpgPeer, float roundDuration)
     {
-        if (crpPeer.SpawnTeamThisRound == null)
+        if (crpgPeer.SpawnTeamThisRound == null)
         {
             return Array.Empty<CrpgUserBrokenItem>();
         }
 
         List<CrpgUserBrokenItem> brokenItems = new();
-        foreach (var equippedItem in crpPeer.User!.Character.EquippedItems)
+        foreach (var equippedItem in crpgPeer.User!.Character.EquippedItems)
         {
             var mbItem = Game.Current.ObjectManager.GetObject<ItemObject>(equippedItem.UserItem.BaseItemId);
             if (_random.NextDouble() >= _constants.ItemBreakChance)
@@ -263,7 +263,7 @@ internal class RoundRewardBehavior : MissionBehavior
     }
 
     private void SendRewardToPeers(IList<UpdateCrpgUserResult> updateResults,
-        Dictionary<int, CrpPeer> crpgPeerByUserId)
+        Dictionary<int, CrpgPeer> crpgPeerByUserId)
     {
         foreach (var updateResult in updateResults)
         {
@@ -286,7 +286,7 @@ internal class RoundRewardBehavior : MissionBehavior
         }
     }
 
-    private void SendErrorToPeers(Dictionary<int, CrpPeer> crpgPeerByUserId)
+    private void SendErrorToPeers(Dictionary<int, CrpgPeer> crpgPeerByUserId)
     {
         foreach (var crpgPeer in crpgPeerByUserId.Values)
         {

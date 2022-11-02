@@ -252,7 +252,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         // be performed in InitializeHumanAgentStats but the MissionPeer is not available there.
         if (GameNetwork.IsClientOrReplay) // Server-side the hacky AgentOrigin is directly passed to the AgentBuildData.
         {
-            var crpgUser = agent.MissionPeer?.GetComponent<CrpPeer>()?.User;
+            var crpgUser = agent.MissionPeer?.GetComponent<CrpgPeer>()?.User;
             if (crpgUser != null && agent.Origin is not CrpgBattleAgentOrigin)
             {
                 var characteristics = crpgUser.Character.Characteristics;

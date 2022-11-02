@@ -12,7 +12,7 @@ internal abstract class AdminCommand : ChatCommand
 
     protected override bool CheckRequirements(NetworkCommunicator fromPeer)
     {
-        var crpgUser = fromPeer.GetComponent<CrpPeer>()?.User;
+        var crpgUser = fromPeer.GetComponent<CrpgPeer>()?.User;
         if (crpgUser == null)
         {
             return false;

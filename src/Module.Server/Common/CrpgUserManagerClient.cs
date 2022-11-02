@@ -8,7 +8,7 @@ namespace Crpg.Module.Common;
 internal class CrpgUserManagerClient : MissionNetwork
 {
     private MissionNetworkComponent? _missionNetworkComponent;
-    private CrpPeer? _crpgPeer;
+    private CrpgPeer? _crpgPeer;
 
     public override void OnBehaviorInitialize()
     {
@@ -26,7 +26,7 @@ internal class CrpgUserManagerClient : MissionNetwork
 
     private void OnMyClientSynchronized()
     {
-        _crpgPeer = GameNetwork.MyPeer.GetComponent<CrpPeer>();
+        _crpgPeer = GameNetwork.MyPeer.GetComponent<CrpgPeer>();
         _crpgPeer.AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
     }
 }

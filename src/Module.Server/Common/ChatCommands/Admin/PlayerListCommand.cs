@@ -27,7 +27,7 @@ internal class PlayerListCommand : AdminCommand
                 continue;
             }
 
-            var crpgPeer = networkPeer.GetComponent<CrpPeer>();
+            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
             if (networkPeer.IsSynchronized && crpgPeer.User != null)
             {
                 ChatComponent.ServerSendMessageToPlayer(fromPeer, ColorWarning, $"{crpgPeer.User.Id} | '{networkPeer.UserName}'");

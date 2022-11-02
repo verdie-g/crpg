@@ -37,7 +37,7 @@ internal class CrpgUserManagerServer : MissionNetwork
     protected override void HandleEarlyNewClientAfterLoadingFinished(NetworkCommunicator networkPeer)
     {
         base.HandleEarlyNewClientAfterLoadingFinished(networkPeer);
-        networkPeer.AddComponent<CrpPeer>();
+        networkPeer.AddComponent<CrpgPeer>();
     }
 
     protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
@@ -51,7 +51,7 @@ internal class CrpgUserManagerServer : MissionNetwork
         RewardMultiplierByPlayerId.Clear();
         foreach (var networkPeer in GameNetwork.NetworkPeers)
         {
-            var crpgPeer = networkPeer.GetComponent<CrpPeer>();
+            var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
             if (crpgPeer == null)
             {
                 continue;
@@ -111,7 +111,7 @@ internal class CrpgUserManagerServer : MissionNetwork
             networkPeer.IsMuted = true;
         }
 
-        var crpgPeer = networkPeer.GetComponent<CrpPeer>();
+        var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
         crpgPeer.User = crpgUser;
         crpgPeer.Clan = crpgClan;
         crpgPeer.RewardMultiplier =

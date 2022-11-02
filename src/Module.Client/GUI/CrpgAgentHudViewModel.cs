@@ -62,7 +62,7 @@ internal class CrpgAgentHudViewModel : ViewModel
         // Hide the experience bar if the user is dead.
         ShowExperienceBar = Mission.Current?.MainAgent != null;
 
-        var crpgPeer = _myPeer.GetComponent<CrpPeer>();
+        var crpgPeer = _myPeer.GetComponent<CrpgPeer>();
         if (crpgPeer == null)
         {
             return;

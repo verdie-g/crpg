@@ -48,8 +48,8 @@ internal class MuteCommand : AdminCommand
         var duration = (TimeSpan)arguments[1];
         string reason = (string)arguments[2];
 
-        int? restrictedByUserId = fromPeer.GetComponent<CrpPeer>()?.User?.Id;
-        int? restrictedUserId = targetPeer.GetComponent<CrpPeer>()?.User?.Id;
+        int? restrictedByUserId = fromPeer.GetComponent<CrpgPeer>()?.User?.Id;
+        int? restrictedUserId = targetPeer.GetComponent<CrpgPeer>()?.User?.Id;
         if (restrictedUserId == null || restrictedByUserId == null)
         {
             return;
