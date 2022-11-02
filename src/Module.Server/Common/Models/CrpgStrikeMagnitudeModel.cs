@@ -17,7 +17,16 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         _constants = constants;
     }
 
-    public override float CalculateStrikeMagnitudeForSwing(BasicCharacterObject attackerCharacter, BasicCharacterObject attackerCaptainCharacter, float swingSpeed, float impactPointAsPercent, float weaponWeight, WeaponComponentData weaponUsageComponent, float weaponLength, float weaponInertia, float weaponCoM, float extraLinearSpeed, bool doesAttackerHaveMount)
+    public override float CalculateStrikeMagnitudeForSwing(
+        BasicCharacterObject attackerCharacter,
+        BasicCharacterObject attackerCaptainCharacter,
+        float swingSpeed, float impactPointAsPercent,
+        float weaponWeight, WeaponComponentData weaponUsageComponent,
+        float weaponLength,
+        float weaponInertia,
+        float weaponCoM,
+        float extraLinearSpeed,
+        bool doesAttackerHaveMount)
     {
         float num = weaponLength * impactPointAsPercent - weaponCoM;
         float num2 = swingSpeed * (0.5f + weaponCoM) + extraLinearSpeed;
@@ -34,11 +43,18 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
         return 0.067f * num12;
     }
 
-    public override float CalculateStrikeMagnitudeForThrust(BasicCharacterObject attackerCharacter, BasicCharacterObject attackerCaptainCharacter, float thrustWeaponSpeed, float weaponWeight, WeaponComponentData weaponUsageComponent, float extraLinearSpeed, bool doesAttackerHaveMount, bool isThrown = false)
+    public override float CalculateStrikeMagnitudeForThrust(
+        BasicCharacterObject attackerCharacter,
+        BasicCharacterObject attackerCaptainCharacter,
+        float thrustWeaponSpeed, float weaponWeight,
+        WeaponComponentData weaponUsageComponent,
+        float extraLinearSpeed,
+        bool doesAttackerHaveMount,
+        bool isThrown = false)
     {
-        float num = doesAttackerHaveMount ?
-            thrustWeaponSpeed + (float)Math.Pow(extraLinearSpeed, 0.7f) :
-            thrustWeaponSpeed + extraLinearSpeed;
+        float num = doesAttackerHaveMount
+            ? thrustWeaponSpeed + (float)Math.Pow(extraLinearSpeed, 0.7f)
+            : thrustWeaponSpeed + extraLinearSpeed;
         if (num > 0f)
         {
             if (!isThrown)
