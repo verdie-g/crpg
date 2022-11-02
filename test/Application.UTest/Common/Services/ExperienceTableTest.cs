@@ -7,40 +7,38 @@ namespace Crpg.Application.UTest.Common.Services;
 
 public class ExperienceTableTest
 {
-    private ExperienceTable experienceTable = default!;
-    private Constants constants = default!;
-    [SetUp]
-    public void SetUp()
+    private static readonly Constants Constants = new()
     {
-        FileConstantsSource source = new();
-        constants = source.LoadConstants();
-        experienceTable = new ExperienceTable(constants);
-    }
-
-    [TestCase(0, 0)]
-    [TestCase(3539, 1)]
-    [TestCase(4420824, 30)]
-    [TestCase(8841648, 31)]
+        MinimumLevel = 1,
+        MaximumLevel = 38,
+        ExperienceForLevelCoefs = new[] { 5.65f, 150000f }, // 50 xp for each level
+    };
+    private static readonly ExperienceTable ExperienceTable = new(Constants);
+    [TestCase(500, 1)]
+    [TestCase(4000, 2)]
+    [TestCase(5000000, 30)]
+    [TestCase(9000000, 31)]
     public void GetLevelForExperience(int experience, int expectedLevel)
     {
-        Assert.AreEqual(expectedLevel, experienceTable.GetLevelForExperience(experience));
+        Assert.AreEqual(expectedLevel, ExperienceTable.GetLevelForExperience(experience));
     }
 
-    [TestCase(1, 2000)]
-    [TestCase(2, 5000)]
-    [TestCase(3, 8000)]
+    [TestCase(2, 3538)]
+    [TestCase(3, 7078)]
+    [TestCase(4, 10627)]
+    [TestCase(30, 4420824)]
     public void GetExperienceForLevel(int level, int expectedExperience)
     {
-        Assert.AreEqual(expectedExperience, experienceTable.GetExperienceForLevel(level));
+        Assert.AreEqual(expectedExperience, ExperienceTable.GetExperienceForLevel(level));
     }
 
     [Test]
     public void ExperienceShouldBeExponentialAfterLevel30()
     {
-        int xpLastLevel = experienceTable.GetExperienceForLevel(30);
-        for (int lvl = 31; lvl <= constants.MaximumLevel; lvl += 1)
+        int xpLastLevel = ExperienceTable.GetExperienceForLevel(30);
+        for (int lvl = 31; lvl <= Constants.MaximumLevel; lvl += 1)
         {
-            int xp = experienceTable.GetExperienceForLevel(lvl);
+            int xp = ExperienceTable.GetExperienceForLevel(lvl);
             Assert.AreEqual(2 * xpLastLevel, xp);
             xpLastLevel = xp;
         }
@@ -50,9 +48,9 @@ public class ExperienceTableTest
     public void ExperienceTableShouldBeIncreasing()
     {
         int xpLastLevel = -1;
-        for (int lvl = constants.MinimumLevel; lvl <= constants.MaximumLevel; lvl += 1)
+        for (int lvl = Constants.MinimumLevel; lvl <= Constants.MaximumLevel; lvl += 1)
         {
-            int xp = experienceTable.GetExperienceForLevel(lvl);
+            int xp = ExperienceTable.GetExperienceForLevel(lvl);
             Assert.Greater(xp, xpLastLevel, "Experience for lvl {0} should be greater than for lvl {1}", lvl, lvl - 1);
             xpLastLevel = xp;
         }
