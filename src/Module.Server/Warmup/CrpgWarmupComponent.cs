@@ -13,32 +13,19 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
         .GetField("_warmupState", BindingFlags.NonPublic | BindingFlags.Instance)!;
 
     private readonly CrpgConstants _constants;
-    private readonly bool _alwaysStartMatchAfterWarmup;
     private readonly MultiplayerGameNotificationsComponent _notificationsComponent;
     private bool _overridenSpawningBehavior;
 
-    public CrpgWarmupComponent(CrpgConstants constants, MultiplayerGameNotificationsComponent notificationsComponent, bool alwaysStartMatchAfterWarmup = false)
+    public CrpgWarmupComponent(CrpgConstants constants, MultiplayerGameNotificationsComponent notificationsComponent)
     {
         _constants = constants;
         _notificationsComponent = notificationsComponent;
-        _alwaysStartMatchAfterWarmup = alwaysStartMatchAfterWarmup;
     }
 
     public override void OnBehaviorInitialize()
     {
         base.OnBehaviorInitialize();
         base.OnWarmupEnding += OnWarmupEnding;
-    }
-
-    public override void OnMissionTick(float dt)
-    {
-        base.OnMissionTick(dt);
-        // MultiplayerWarmupComponent checks that at least two players are present to start the game at the end of
-        // the warmup which is annoying during development. The trick was to skip the ending state of the warmup.
-        if (IsInWarmup && _alwaysStartMatchAfterWarmup && (WarmupStates)WarmupStateField.GetValue(this) == WarmupStates.Ending)
-        {
-            WarmupStateField.SetValue(this, WarmupStates.Ended);
-        }
     }
 
     public override void OnPreDisplayMissionTick(float dt)
