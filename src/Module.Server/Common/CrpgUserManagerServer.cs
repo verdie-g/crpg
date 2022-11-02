@@ -3,6 +3,7 @@ using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Api.Models.Restrictions;
 using Crpg.Module.Api.Models.Users;
+using Crpg.Module.Common.Network;
 using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -79,7 +80,7 @@ internal class CrpgUserManagerServer : MissionNetwork
 
             // Adds the CrpgPeer to all players.
             GameNetwork.BeginModuleEventAsServer(networkPeer);
-            GameNetwork.WriteMessage(new AddPeerComponent(networkCommunicator, crpgPeer.TypeId));
+            GameNetwork.WriteMessage(new CrpgAddPeerComponent { Peer = networkCommunicator,  ComponentId = crpgPeer.TypeId });
             GameNetwork.EndModuleEventAsServer();
             // Update all CrpgPeers to current values.
             crpgPeer.SynchronizeToPlayer(networkPeer.VirtualPlayer);
@@ -97,7 +98,7 @@ internal class CrpgUserManagerServer : MissionNetwork
         // Adds the new clients CrpgPeer component for to all other players.
         // There is no need to update the values, as soon as the data was fetched it will be synced through the setter.
         GameNetwork.BeginBroadcastModuleEvent();
-        GameNetwork.WriteMessage(new AddPeerComponent(networkPeer, crpgPeer.TypeId));
+        GameNetwork.WriteMessage(new CrpgAddPeerComponent { Peer = networkPeer, ComponentId = crpgPeer.TypeId });
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.ExcludeTargetPlayer, networkPeer);
     }
 

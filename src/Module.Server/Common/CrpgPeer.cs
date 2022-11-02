@@ -24,15 +24,6 @@ internal class CrpgPeer : PeerComponent
 
     public CrpgClan? Clan { get; set; }
 
-    public override void OnInitialize()
-    {
-        if (GameNetwork.IsClientOrReplay && Peer != null && GameNetwork.MyPeer != null && Peer != GameNetwork.MyPeer.VirtualPlayer)
-        {
-            InformationManager.DisplayMessage(new InformationMessage("Init for Peer " + Peer.UserName));
-            AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
-        }
-    }
-
     public void SynchronizeToPlayer(VirtualPlayer targetPeer)
     {
         if (_user == null)
