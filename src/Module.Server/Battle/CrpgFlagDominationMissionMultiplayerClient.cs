@@ -10,10 +10,12 @@ using TaleWorlds.ObjectSystem;
 
 namespace Crpg.Module.Battle;
 
-internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
+internal class CrpgFlagDominationMissionMultiplayerClient : MissionMultiplayerGameModeBaseClient, ICommanderInfo
 {
-    internal const int FlagsRemovalTime = 120;
+    private const int BattleFlagsRemovalTime = 120;
+    private const int SkirmishFlagsRemovalTime = 120;
 
+    private readonly bool _isSkirmish;
     private FlagCapturePoint[] _flags = Array.Empty<FlagCapturePoint>();
     private Team?[] _flagOwners = Array.Empty<Team>();
     private bool _notifiedForFlagRemoval;
@@ -26,6 +28,11 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     public event Action? OnFlagNumberChangedEvent;
     public event Action<FlagCapturePoint, Team?>? OnCapturePointOwnerChangedEvent;
 
+    public CrpgFlagDominationMissionMultiplayerClient(bool isSkirmish)
+    {
+        _isSkirmish = isSkirmish;
+    }
+
     public override bool IsGameModeUsingGold => false;
     public override bool IsGameModeTactical => _flags.Length != 0;
     public override bool IsGameModeUsingRoundCountdown => true;
@@ -33,6 +40,7 @@ internal class CrpgBattleMissionMultiplayerClient : MissionMultiplayerGameModeBa
     public override bool IsGameModeUsingCasualGold => false;
     public IEnumerable<FlagCapturePoint> AllCapturePoints => _flags;
     public bool AreMoralesIndependent => false;
+    public float FlagsRemovalTime => _isSkirmish ? SkirmishFlagsRemovalTime : BattleFlagsRemovalTime;
 
     public override void OnBehaviorInitialize()
     {

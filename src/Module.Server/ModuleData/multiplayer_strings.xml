@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
-  <!-- Battle Gamemode -->
+  <!-- Battle -->
   <string id="str_multiplayer_official_game_type_name.cRPGBattle" text="{=*}cRPG Battle" />
   <string id="str_multiplayer_official_game_type_explainer.cRPGBattle" text="{=*}·   Kill the entire enemy team to win{newline}·   Gain experience and gold every minute{newline}·   Upgrade your character on c-rpg.eu" />
   <string id="str_multiplayer_game_type.cRPGBattle" text="{=*}cRPG Battle" />
 
-  <!-- Duel Gamemode -->
+  <!-- Skirmish -->
+  <string id="str_multiplayer_official_game_type_name.cRPGSkirmish" text="{=*}cRPG Skirmish" />
+  <string id="str_multiplayer_official_game_type_explainer.cRPGSkirmish" text="{=*}·   Hold control points on the map to deplete enemy morale{newline}·   Kill the entire enemy team or exhaust their morale to win·   Gain experience and gold while playing" />
+  <string id="str_multiplayer_game_type.cRPGSkirmish" text="{=*}cRPG Skirmish" />
+
+  <!-- Duel -->
   <string id="str_multiplayer_official_game_type_name.cRPGDuel" text="{=*}cRPG Duel" />
   <string id="str_multiplayer_official_game_type_explainer.cRPGDuel" text="{=*}·   Fight an opponent in single combat{newline}·   Defeat your opponent multiple times to win the duel and claim their bounty{newline}·   There is no upkeep nor gold gain." />
   <string id="str_multiplayer_game_type.cRPGDuel" text="{=*}cRPG Duel" />
-  
+
   <!-- Maps -->
   <string id="str_multiplayer_scene_name.crpg_battle_abandoned" text="{=!}Abandoned" />
   <string id="str_multiplayer_scene_name.crpg_battle_acaciacitadel" text="{=!}Acacia Citadel" />

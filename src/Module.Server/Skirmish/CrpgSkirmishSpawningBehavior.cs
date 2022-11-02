@@ -1,21 +1,19 @@
 ﻿using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
-using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.PlayerServices;
 
 namespace Crpg.Module.Battle;
 
-internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
+internal class CrpgSkirmishSpawningBehavior : CrpgSpawningBehaviorBase
 {
-    private const float TotalSpawnDuration = 30f;
+    public const int MaxSpawns = 3;
+
     private readonly MultiplayerRoundController _roundController;
     private readonly HashSet<PlayerId> _notifiedPlayersAboutSpawnRestriction;
-    private MissionTimer? _spawnTimer;
-    private MissionTimer? _cavalrySpawnDelayTimer;
     private bool _botsSpawned;
 
-    public CrpgBattleSpawningBehavior(CrpgConstants constants, MultiplayerRoundController roundController)
+    public CrpgSkirmishSpawningBehavior(CrpgConstants constants, MultiplayerRoundController roundController)
         : base(constants)
     {
         _roundController = roundController;
@@ -48,19 +46,12 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
     {
         base.RequestStartSpawnSession();
         _botsSpawned = false;
-        _spawnTimer = new MissionTimer(TotalSpawnDuration); // Limit spawning for 30 seconds.
-        _cavalrySpawnDelayTimer = new MissionTimer(GetCavalrySpawnDelay()); // Cav will spawn X seconds later.
         ResetSpawnTeams();
     }
 
     public override bool AllowEarlyAgentVisualsDespawning(MissionPeer missionPeer)
     {
         return false;
-    }
-
-    public bool SpawnDelayEnded()
-    {
-        return _cavalrySpawnDelayTimer != null && _cavalrySpawnDelayTimer!.Check();
     }
 
     protected override bool IsRoundInProgress()
@@ -70,11 +61,6 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
 
     protected override void SpawnAgents()
     {
-        if (_spawnTimer!.Check())
-        {
-            return;
-        }
-
         if (!_botsSpawned)
         {
             SpawnBotAgents();
@@ -86,13 +72,14 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
 
     protected override bool IsPlayerAllowedToSpawn(NetworkCommunicator networkPeer)
     {
-        var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
-        if (crpgPeer?.User == null || crpgPeer.SpawnTeamThisRound != null)
+        var crpgPeer = networkPeer.GetComponent<CrpgPeer>()!;
+        var missionPeer = networkPeer.GetComponent<MissionPeer>();
+        if (missionPeer == null || missionPeer.SpawnCountThisRound >= MaxSpawns)
         {
             return false;
         }
 
-        var characterEquipment = CreateCharacterEquipment(crpgPeer.User.Character.EquippedItems);
+        var characterEquipment = CreateCharacterEquipment(crpgPeer.User!.Character.EquippedItems);
         if (!DoesEquipmentContainWeapon(characterEquipment)) // Disallow spawning without weapons.
         {
             if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
@@ -111,26 +98,6 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
             return false;
         }
 
-        bool hasMount = characterEquipment[EquipmentIndex.Horse].Item != null;
-        // Disallow spawning cavalry before the cav spawn delay ended.
-        if (hasMount && (!_cavalrySpawnDelayTimer?.Check() ?? false))
-        {
-            if (_notifiedPlayersAboutSpawnRestriction.Add(networkPeer.VirtualPlayer.Id))
-            {
-                GameNetwork.BeginModuleEventAsServer(networkPeer);
-                GameNetwork.WriteMessage(new CrpgNotification
-                {
-                    Type = CrpgNotification.NotificationType.Notification,
-                    Message = $"Cavalry will spawn in {_cavalrySpawnDelayTimer?.GetTimerDuration()} seconds!",
-                    IsMessageTextId = false,
-                    SoundEvent = string.Empty,
-                });
-                GameNetwork.EndModuleEventAsServer();
-            }
-
-            return false;
-        }
-
         return true;
     }
 
@@ -139,40 +106,7 @@ internal class CrpgBattleSpawningBehavior : CrpgSpawningBehaviorBase
         base.OnPeerSpawned(component);
         component.SpawnCountThisRound += 1;
         var crpgPeer = component.GetComponent<CrpgPeer>();
-        crpgPeer.SpawnTeamThisRound = component.Team;
-    }
-
-    /// <summary>
-    /// Cav spawn delay values
-    /// 10 => 7sec
-    /// 30 => 9sec
-    /// 60 => 13sec
-    /// 90 => 17sec
-    /// 120 => 22sec
-    /// 150 => 26sec
-    /// 165+ => 28sec.
-    /// </summary>
-    private int GetCavalrySpawnDelay()
-    {
-        int currentPlayers = Math.Max(GetCurrentPlayerCount(), 1);
-        return Math.Min(28, 5 + currentPlayers / 7);
-    }
-
-    private int GetCurrentPlayerCount()
-    {
-        int counter = 0;
-        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
-        {
-            var missionPeer = networkPeer.GetComponent<MissionPeer>();
-            if (!networkPeer.IsSynchronized || missionPeer == null || missionPeer.Team.Side == BattleSideEnum.None)
-            {
-                continue;
-            }
-
-            counter++;
-        }
-
-        return counter;
+        crpgPeer.SpawnTeamThisRound ??= component.Team;
     }
 
     private void ResetSpawnTeams()

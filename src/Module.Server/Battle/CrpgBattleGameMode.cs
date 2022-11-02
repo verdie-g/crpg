@@ -18,21 +18,30 @@ namespace Crpg.Module.Battle;
 [ViewCreatorModule] // Exposes methods with ViewMethod attribute.
 internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 {
-    public const string GameName = "cRPGBattle";
+    private const string BattleGameName = "cRPGBattle";
+    private const string SkirmishGameName = "cRPGSkirmish";
 
     private static CrpgConstants _constants = default!; // Static so it's accessible from the views.
 
-    public CrpgBattleGameMode(CrpgConstants constants)
-        : base(GameName)
+    private readonly bool _isSkirmish;
+
+    public CrpgBattleGameMode(CrpgConstants constants, bool isSkirmish)
+        : base(isSkirmish ? SkirmishGameName : BattleGameName)
     {
         _constants = constants;
+        _isSkirmish = isSkirmish;
     }
 
 #if CRPG_CLIENT
     // Used by MissionState.OpenNew that finds all methods having a ViewMethod attribute contained in class
     // having a ViewCreatorModule attribute.
-    [ViewMethod(GameName)]
-    public static MissionView[] OpenCrpgBattle(Mission mission)
+    [ViewMethod(BattleGameName)]
+    public static MissionView[] OpenCrpgBattle(Mission mission) => OpenCrpgBattleOrSkirmish(mission);
+    [ViewMethod(SkirmishGameName)]
+    public static MissionView[] OpenCrpgSkirmish(Mission mission) => OpenCrpgBattleOrSkirmish(mission);
+
+    [ViewMethod("")] // All static instances in ViewCreatorModule classes are expected to have a ViewMethod attribute.
+    private static MissionView[] OpenCrpgBattleOrSkirmish(Mission mission)
     {
         CrpgExperienceTable experienceTable = new(_constants);
         MissionMultiplayerGameModeBaseClient gameModeClient = mission.GetMissionBehavior<MissionMultiplayerGameModeBaseClient>();
@@ -69,18 +78,23 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 
     public override void StartMultiplayerGame(string scene)
     {
+        // Inherits the MultiplayerGameNotificationsComponent component.
+        // used to send notifications (e.g. flag captured, round won) to peer
+        CrpgNotificationComponent notificationsComponent = new();
+
 #if CRPG_SERVER
         CrpgHttpClient crpgClient = new();
         MultiplayerRoundController roundController = new(); // starts/stops round, ends match
         RoundRewardBehavior roundRewardComponent = new(roundController, crpgClient, _constants);
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
+        CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent,
+            () => _isSkirmish
+                ? new CrpgSkirmishSpawningBehavior(_constants, roundController)
+                : new CrpgBattleSpawningBehavior(_constants, roundController));
+#else
+        CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
 #endif
-        CrpgBattleMissionMultiplayerClient battleClient = new();
-
-        // Inherits the MultiplayerGameNotificationsComponent component.
-        // used to send notifications (e.g. flag captured, round won) to peer
-        CrpgNotificationComponent notificationsComponent = new();
-        CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent);
+        CrpgFlagDominationMissionMultiplayerClient flagDominationClient = new(_isSkirmish);
 
         MissionState.OpenNew(
             Name,
@@ -92,7 +106,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 #if CRPG_CLIENT
                     new CrpgUserManagerClient(), // Needs to be loaded before the Client mission part.
 #endif
-                    battleClient,
+                    flagDominationClient,
                     new MultiplayerTimerComponent(), // round timer
                     new MultiplayerMissionAgentVisualSpawnComponent(), // expose method to spawn an agent
                     new MissionLobbyEquipmentNetworkComponent(), // logic to change troop or perks
@@ -111,10 +125,11 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
                     notificationsComponent,
 #if CRPG_SERVER
                     roundController,
-                    new CrpgBattleMissionMultiplayer(battleClient),
+                    new CrpgFlagDominationMissionMultiplayer(flagDominationClient, _isSkirmish),
                     roundRewardComponent,
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
-                    new SpawnComponent(new BattleSpawnFrameBehavior(), new CrpgBattleSpawningBehavior(_constants, roundController)),
+                    new SpawnComponent(new BattleSpawnFrameBehavior(),
+                        _isSkirmish ? new CrpgSkirmishSpawningBehavior(_constants, roundController) : new CrpgBattleSpawningBehavior(_constants, roundController)),
                     new AgentHumanAILogic(), // bot intelligence
                     new MultiplayerAdminComponent(), // admin UI to kick player or restart game
                     new CrpgUserManagerServer(crpgClient),

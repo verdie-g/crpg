@@ -9,16 +9,20 @@ using Timer = TaleWorlds.Core.Timer;
 
 namespace Crpg.Module.Battle;
 
-internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
+internal class CrpgFlagDominationMissionMultiplayer : MissionMultiplayerGameModeBase
 {
     private const uint FlagNeutralColor1 = 4284111450;
     private const uint FlagNeutralColor2 = uint.MaxValue;
     private const float FlagAttackRange = 6f;
     private const float FlagAttackRangeSquared = FlagAttackRange * FlagAttackRange;
-    private const float MoraleGainOnTick = 0.002f;
-    private const float MoraleGainMultiplierLastFlag = 1.5f;
 
-    private readonly CrpgBattleMissionMultiplayerClient _battleClient;
+    private const float BattleMoraleGainOnTick = 0.002f;
+    private const float BattleMoraleGainMultiplierLastFlag = 1.5f;
+    private const float SkirmishMoraleGainOnTick = 0.00125f;
+    private const float SkirmishMoraleGainMultiplierLastFlag = 2f;
+
+    private readonly CrpgFlagDominationMissionMultiplayerClient _flagDominationClient;
+    private readonly bool _isSkirmish;
 
     /// <summary>A number between -1.0 and 1.0. Less than 0 means the defenders are winning. Greater than 0 for attackers.</summary>
     private float _morale;
@@ -35,9 +39,10 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
     public override bool AllowCustomPlayerBanners() => false;
     public override bool UseRoundController() => true;
 
-    public CrpgBattleMissionMultiplayer(CrpgBattleMissionMultiplayerClient battleClient)
+    public CrpgFlagDominationMissionMultiplayer(CrpgFlagDominationMissionMultiplayerClient flagDominationClient, bool isSkirmish)
     {
-        _battleClient = battleClient;
+        _flagDominationClient = flagDominationClient;
+        _isSkirmish = isSkirmish;
     }
 
     public override MissionLobbyComponent.MultiplayerGameType GetMissionType()
@@ -136,10 +141,39 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
                    && GetNumberOfAttackersAroundFlag(lastFlag) == 0;
         }
 
-        bool defenderTeamAlive = Mission.DefenderTeam.ActiveAgents.Count > 0;
-        bool attackerTeamAlive = Mission.AttackerTeam.ActiveAgents.Count > 0;
-        CrpgBattleSpawningBehavior spawningBehavior = (CrpgBattleSpawningBehavior)SpawnComponent.SpawningBehavior;
-        return (!defenderTeamAlive || !attackerTeamAlive) && spawningBehavior.SpawnDelayEnded();
+        if (SpawnComponent.SpawningBehavior is CrpgBattleSpawningBehavior s && !s.SpawnDelayEnded())
+        {
+            return false;
+        }
+
+        bool defenderTeamDepleted = Mission.DefenderTeam.ActiveAgents.Count == 0;
+        bool attackerTeamDepleted = Mission.AttackerTeam.ActiveAgents.Count == 0;
+        if (!_isSkirmish)
+        {
+            return defenderTeamDepleted || attackerTeamDepleted;
+        }
+
+        bool defenderCanSpawn = false;
+        bool attackerCanSpawn = false;
+        foreach (NetworkCommunicator networkPeer in GameNetwork.NetworkPeers)
+        {
+            MissionPeer missionPeer = networkPeer.GetComponent<MissionPeer>();
+            if (missionPeer?.Team == null || missionPeer.SpawnCountThisRound >= CrpgSkirmishSpawningBehavior.MaxSpawns)
+            {
+                continue;
+            }
+
+            if (missionPeer.Team.Side == BattleSideEnum.Defender)
+            {
+                defenderCanSpawn = true;
+            }
+            else if (missionPeer.Team.Side == BattleSideEnum.Attacker)
+            {
+                attackerCanSpawn = true;
+            }
+        }
+
+        return (defenderTeamDepleted && !defenderCanSpawn) || (attackerTeamDepleted && !attackerCanSpawn);
     }
 
     public override void OnAgentBuild(Agent agent, Banner banner)
@@ -238,7 +272,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
         GameNetwork.WriteMessage(new FlagDominationMoraleChangeMessage(_morale));
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
 
-        _battleClient.ChangeMorale(_morale);
+        _flagDominationClient.ChangeMorale(_morale);
     }
 
     private float GetMoraleGain()
@@ -253,13 +287,16 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             return 0f;
         }
 
-        float moraleMultiplier = MoraleGainOnTick * Math.Abs(teamFlagsDelta);
+        float moraleGainOnTick = _isSkirmish ? SkirmishMoraleGainOnTick : BattleMoraleGainOnTick;
+        float moraleGainMultiplierLastFlag = _isSkirmish ? SkirmishMoraleGainMultiplierLastFlag : BattleMoraleGainMultiplierLastFlag;
+
+        float moraleMultiplier = moraleGainOnTick * Math.Abs(teamFlagsDelta);
         float moraleGain = teamFlagsDelta <= 0
             ? MBMath.ClampFloat(-1 - _morale, -2f, -1f) * moraleMultiplier
             : MBMath.ClampFloat(1 - _morale, 1f, 2f) * moraleMultiplier;
         if (_wereFlagsRemoved) // For the last flag, the morale is moving faster.
         {
-            moraleGain *= MoraleGainMultiplierLastFlag;
+            moraleGain *= moraleGainMultiplierLastFlag;
         }
 
         return moraleGain;
@@ -361,7 +398,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
                 GameNetwork.BeginBroadcastModuleEvent();
                 GameNetwork.WriteMessage(new FlagDominationCapturePointMessage(flag.FlagIndex, team));
                 GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
-                _battleClient.CaptureFlag(flag, team);
+                _flagDominationClient.CaptureFlag(flag, team);
                 NotificationsComponent.FlagXCapturedByTeamX(flag, closestAgentToFlag.Team);
                 MPPerkObject.RaiseEventForAllPeers(MPPerkCondition.PerkEventFlags.FlagCapture);
             }
@@ -375,7 +412,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             return;
         }
 
-        _checkFlagRemovalTimer ??= new Timer(Mission.CurrentTime, CrpgBattleMissionMultiplayerClient.FlagsRemovalTime);
+        _checkFlagRemovalTimer ??= new Timer(Mission.CurrentTime, _flagDominationClient.FlagsRemovalTime);
         if (!_checkFlagRemovalTimer.Check(Mission.CurrentTime))
         {
             return;
@@ -398,7 +435,7 @@ internal class CrpgBattleMissionMultiplayer : MissionMultiplayerGameModeBase
             GameNetwork.WriteMessage(new FlagDominationFlagsRemovedMessage());
             GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
 
-            _battleClient.ChangeNumberOfFlags();
+            _flagDominationClient.ChangeNumberOfFlags();
             Debug.Print("Flags were removed");
         }
     }

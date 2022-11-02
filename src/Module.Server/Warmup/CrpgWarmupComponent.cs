@@ -14,12 +14,16 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
 
     private readonly CrpgConstants _constants;
     private readonly MultiplayerGameNotificationsComponent _notificationsComponent;
+    private readonly Func<SpawningBehaviorBase>? _createSpawningBehavior;
     private bool _overridenSpawningBehavior;
 
-    public CrpgWarmupComponent(CrpgConstants constants, MultiplayerGameNotificationsComponent notificationsComponent)
+    public CrpgWarmupComponent(CrpgConstants constants,
+        MultiplayerGameNotificationsComponent notificationsComponent,
+        Func<SpawningBehaviorBase>? createSpawningBehavior)
     {
         _constants = constants;
         _notificationsComponent = notificationsComponent;
+        _createSpawningBehavior = createSpawningBehavior;
     }
 
     public override void OnBehaviorInitialize()
@@ -73,9 +77,8 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
         // When this behavior is being removed, it it means the game is about to start and the hardcoded spawn behaviors
         // were set. It's the moment to replace them.
         SpawnComponent spawnComponent = Mission.GetMissionBehavior<SpawnComponent>();
-        MultiplayerRoundController multiplayerRoundController = Mission.GetMissionBehavior<MultiplayerRoundController>();
         spawnComponent.SetNewSpawnFrameBehavior(new FlagDominationSpawnFrameBehavior());
-        spawnComponent.SetNewSpawningBehavior(new CrpgBattleSpawningBehavior(_constants, multiplayerRoundController));
+        spawnComponent.SetNewSpawningBehavior(_createSpawningBehavior!());
     }
 
     private new void OnWarmupEnding()

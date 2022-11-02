@@ -39,7 +39,6 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
                 || missionPeer.Team == null
                 || missionPeer.Team == Mission.SpectatorTeam
                 || crpgPeer?.User == null
-                || crpgPeer.SpawnTeamThisRound != null
                 || !IsPlayerAllowedToSpawn(networkPeer))
             {
                 continue;
