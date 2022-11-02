@@ -35,7 +35,6 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
             if (!networkPeer.IsSynchronized
                 || missionPeer == null
                 || missionPeer.ControlledAgent != null
-                || missionPeer.HasSpawnedAgentVisuals
                 || missionPeer.Team == null
                 || missionPeer.Team == Mission.SpectatorTeam
                 || crpgPeer?.User == null
