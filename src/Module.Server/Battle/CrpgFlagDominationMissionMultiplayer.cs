@@ -317,7 +317,7 @@ internal class CrpgFlagDominationMissionMultiplayer : MissionMultiplayerGameMode
             float closestAgentDistanceToFlagSquared = 16f; // Where does this number come from?
             foreach (Agent agent in Mission.Current.GetAgentsInRange(flag.Position.AsVec2, FlagAttackRange))
             {
-                if (!agent.IsActive() || !agent.IsHuman || agent.HasMount)
+                if (!agent.IsActive() || !agent.IsHuman || (!_isSkirmish && agent.HasMount))
                 {
                     continue;
                 }
