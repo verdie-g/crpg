@@ -1,5 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Crpg.Module.Duel;
 using NetworkMessages.FromClient;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -18,12 +18,12 @@ namespace Crpg.Module.GUI;
 internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
 {
     private const string CrpgWebsite = "https://c-rpg.eu";
-    private readonly bool _isDuelGamemode;
+    private readonly MissionMultiplayerGameModeBaseClient _gameModeClient;
 
-    public CrpgEscapeMenu(string gameType)
-        : base(gameType)
+    public CrpgEscapeMenu(string gamemode, MissionMultiplayerGameModeBaseClient gameModeClient)
+        : base(gamemode)
     {
-        _isDuelGamemode = gameType == "Duel";
+        _gameModeClient = gameModeClient;
     }
 
     protected override List<EscapeMenuItemVM> GetEscapeMenuItems()
@@ -34,7 +34,7 @@ internal class CrpgEscapeMenu : MissionGauntletMultiplayerEscapeMenu
             _ = ExecuteOpenCrpgWebsite();
         }, null, () => Tuple.Create(false, TextObject.Empty), false);
 
-        if (_isDuelGamemode)
+        if (_gameModeClient is CrpgDuelMissionMultiplayerClient)
         {
             AddDuelModeOptions(items);
         }

@@ -34,8 +34,9 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
     public static MissionView[] OpenCrpgDuel(Mission mission)
     {
         CrpgExperienceTable experienceTable = new(_constants);
-        MissionView crpgEscapeMenu = ViewCreatorManager.CreateMissionView<CrpgMissionMultiplayerEscapeMenu>(isNetwork: false, null, "Duel");
-
+        MissionMultiplayerGameModeBaseClient gameModeClient = mission.GetMissionBehavior<MissionMultiplayerGameModeBaseClient>();
+        MissionView crpgEscapeMenu = ViewCreatorManager.CreateMissionView<CrpgMissionMultiplayerEscapeMenu>(isNetwork: false, null, "Duel", gameModeClient);
+        MissionView altKeyMarkerView = ViewCreatorManager.CreateMissionView<CrpgMultiplayerMarkerUIHandler>(false, null, gameModeClient);
         return new[]
         {
             ViewCreator.CreateMissionServerStatusUIHandler(),
@@ -47,6 +48,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
             crpgEscapeMenu,
             ViewCreator.CreateMultiplayerEndOfBattleUIHandler(),
             ViewCreator.CreateMissionScoreBoardUIHandler(mission, true),
+            ViewCreator.CreateMultiplayerCultureSelectUIHandler(),
             ViewCreator.CreateLobbyEquipmentUIHandler(),
             ViewCreator.CreateMissionMultiplayerDuelUI(),
             ViewCreator.CreatePollProgressUIHandler(),
@@ -57,6 +59,7 @@ internal class CrpgDuelGameMode : MissionBasedMultiplayerGameMode
             new MissionItemContourControllerView(),
             new MissionAgentContourControllerView(),
             new CrpgAgentHud(experienceTable),
+            altKeyMarkerView,
         };
     }
 #endif

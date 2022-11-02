@@ -35,7 +35,9 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
     public static MissionView[] OpenCrpgBattle(Mission mission)
     {
         CrpgExperienceTable experienceTable = new(_constants);
-        MissionView crpgEscapeMenu = ViewCreatorManager.CreateMissionView<CrpgMissionMultiplayerEscapeMenu>(isNetwork: false, null, "Battle");
+        MissionMultiplayerGameModeBaseClient gameModeClient = mission.GetMissionBehavior<MissionMultiplayerGameModeBaseClient>();
+        MissionView crpgEscapeMenu = ViewCreatorManager.CreateMissionView<CrpgMissionMultiplayerEscapeMenu>(isNetwork: false, null, "Battle", gameModeClient);
+        MissionView altKeyMarkerView = ViewCreatorManager.CreateMissionView<CrpgMultiplayerMarkerUIHandler>(false, null, gameModeClient);
 
         return new[]
         {
@@ -52,7 +54,6 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
             ViewCreator.CreatePollProgressUIHandler(),
             new MissionItemContourControllerView(), // Draw contour of item on the ground when pressing ALT.
             new MissionAgentContourControllerView(),
-            ViewCreator.CreateMissionFlagMarkerUIHandler(), // Draw flags but also player names when pressing ALT.
             ViewCreator.CreateMissionKillNotificationUIHandler(),
             ViewCreator.CreateMultiplayerMissionHUDExtensionUIHandler(),
             ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
@@ -62,6 +63,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
             new MissionBoundaryWallView(),
             new SpectatorCameraView(),
             new CrpgAgentHud(experienceTable),
+            altKeyMarkerView,  // Draw flags but also player names when pressing ALT. (Native: CreateMissionFlagMarkerUIHandler)
         };
     }
 #endif
