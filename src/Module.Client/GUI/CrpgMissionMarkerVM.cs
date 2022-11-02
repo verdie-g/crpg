@@ -1,4 +1,5 @@
 ﻿using Crpg.Module.Duel;
+using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
@@ -331,9 +332,9 @@ internal class CrpgMissionMarkerVM : ViewModel
                 break;
             }
 
-            if (missionPeer?.Team == null || missionPeer.IsMine ||
+            if (missionPeer?.Team == null || /*missionPeer.IsMine ||*/
                 (!isDuel && missionPeer.Team.Side != battleSideEnum) || // If it's not duel gamemode
-                (isDuel && missionPeer.Team.Side != BattleSideEnum.Defender)) // If its duel gamemode show only players which are dueling
+                (isDuel && missionPeer.Team.Side != BattleSideEnum.Attacker)) // If its duel gamemode show only players which are dueling
             {
                 continue;
             }
@@ -361,6 +362,10 @@ internal class CrpgMissionMarkerVM : ViewModel
                 MissionPeerMarkerTargetVM missionPeerMarkerTargetVM = new(missionPeer, _friendIDs.Contains(missionPeer.Peer.Id));
                 PeerTargets.Add(missionPeerMarkerTargetVM);
                 _teammateDictionary.Add(missionPeer, missionPeerMarkerTargetVM);
+                uint color1 = Color.ConvertStringToColor("#FFFFFFFF").ToUnsignedInteger(); // white
+                uint color2 = Color.ConvertStringToColor("#FF0000FF").ToUnsignedInteger(); // red
+                ReflectionHelper.InvokeMethod(missionPeerMarkerTargetVM, "RefreshColor", new object[] { color1, color2 });
+                //InformationManager.DisplayMessage(new InformationMessage("Color changed to red"));
             }
             else
             {
