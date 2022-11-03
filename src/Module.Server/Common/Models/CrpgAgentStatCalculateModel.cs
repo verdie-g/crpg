@@ -339,7 +339,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
                 float swingSpeedFactor = 1f / Math.Max(equippedItem.WeaponLength / 100f, 1f);
                 props.SwingSpeedMultiplier *= HasSwingDamage(primaryItem) ? swingSpeedFactor : 1f;
                 // Thrustspeed Nerf on Horseback
-                props.ThrustOrRangedReadySpeedMultiplier *= 0.8f;
+                props.ThrustOrRangedReadySpeedMultiplier *= 0.92f;
             }
 
             // Ranged Behavior
