@@ -79,6 +79,7 @@ internal class CrpgPeer : PeerComponent
     {
         if (GameNetwork.IsClientOrReplay)
         {
+            //InformationManager.DisplayMessage(new InformationMessage("called  AddRemoveMessageHandlers for" + Peer.UserName));
             GameNetwork.NetworkMessageHandlerRegisterer registerer = new(mode);
             registerer.Register<UpdateCrpgUser>(HandleUpdateCrpgUser);
             registerer.Register<UpdateRewardMultiplier>(HandleUpdateRewardMultiplier);

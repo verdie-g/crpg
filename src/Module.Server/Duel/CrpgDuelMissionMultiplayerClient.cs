@@ -2,6 +2,7 @@
 using Crpg.Module.Common.Network;
 using Crpg.Module.Duel.Network;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
 
@@ -59,7 +60,7 @@ internal class CrpgDuelMissionMultiplayerClient : MissionMultiplayerGameModeDuel
     {
         NetworkCommunicator peer = message.Peer;
         uint componentId = message.ComponentId;
-        if (peer.GetComponent(componentId) == null)
+        if (peer.GetComponent(componentId) != null)
         {
             peer.AddComponent(componentId);
             OnPeerComponentAdded(peer, componentId);
@@ -69,8 +70,9 @@ internal class CrpgDuelMissionMultiplayerClient : MissionMultiplayerGameModeDuel
     private void OnPeerComponentAdded(NetworkCommunicator networkPeer, uint componentId)
     {
         var newComponent = networkPeer.GetComponent(componentId);
-        if (newComponent is CrpgPeer crpgPeer)
+        if (newComponent != null && newComponent is CrpgPeer crpgPeer)
         {
+            //InformationManager.DisplayMessage(new InformationMessage("adding " + networkPeer.UserName));
             crpgPeer.AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
             registeredCrpgPeerEventListener.Add(crpgPeer);
         }
