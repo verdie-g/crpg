@@ -425,7 +425,7 @@ export function computeOverallArmor(items: Item[]): OverallArmor {
   return items.reduce(
     (total, item) => {
       if (item.type === ItemType.MountHarness) {
-        total.mountArmor += item.armor!.bodyArmor;
+        total.mountArmor = item.armor!.bodyArmor;
       } else if (armorTypes.includes(item.type)) {
         total.headArmor += item.armor!.headArmor;
         total.bodyArmor += item.armor!.bodyArmor;
