@@ -149,6 +149,12 @@ const routes = [
     beforeEnter: combineGuards(isSignedInGuard, isModeratorGuard),
   },
   {
+    path: '/admin/user-restrictions/:id',
+    name: 'admin-user-restrictions',
+    component: () => import('../views/AdministrationUserRestrictions.vue'),
+    beforeEnter: combineGuards(isSignedInGuard, isModeratorGuard),
+  },
+  {
     path: '*',
     name: 'not-found',
     component: () => import('../views/NotFound.vue'),

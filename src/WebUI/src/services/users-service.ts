@@ -12,6 +12,22 @@ import Clan from '@/models/clan';
 import UserItem from '@/models/user-item';
 import Platform from '@/models/platform';
 
+export function getUserByUserId(id: number): Promise<User> {
+  return get(`/users/${id}`);
+}
+
+export function getUserByPlatformUserId(platform: Platform, platformUserId: string): Promise<User> {
+  return get(`/users?platform=${platform}&platformUserId=${platformUserId}`);
+}
+
+export function getUserByName(name: string): Promise<User> {
+  return get(`/users?name=${name}`); // FIXME: TODO:
+}
+
+export async function getUserRestrictions(id: number): Promise<Restriction[]> {
+  return get(`/users/${id}/restrictions`);
+}
+
 export function getUser(): Promise<User> {
   return get('/users/self');
 }
@@ -103,11 +119,6 @@ export function getCharacters(): Promise<Character[]> {
   return get('/users/self/characters');
 }
 
-export async function getUserRestrictions(id: number): Promise<Restriction[]> {
-  const restrictions: Restriction[] = await get(`/users/${id}/restrictions`);
-  return restrictions.map(b => ({ ...b, createdAt: new Date(b.createdAt) }));
-}
-
-export function getUserByPlatformUserId(platform: Platform, platformUserId: string): Promise<User> {
-  return get(`/users?platform=${platform}&platformUserId=${platformUserId}`);
+export async function getRestrictions(): Promise<Restriction[]> {
+  return get(`/users/self/restrictions`);
 }

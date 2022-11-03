@@ -5,4 +5,5 @@ export default interface UserPublic {
   platform: Platform;
   platformUserId: number;
   name: string;
+  avatar: string;
 }

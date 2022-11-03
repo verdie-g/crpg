@@ -142,8 +142,6 @@ export default class App extends Vue {
         const token = await signInSilent();
         if (token !== null) {
           await userModule.getUser();
-
-          console.log('app', userModule.user);
         }
       } catch {
         // The grant is probably not valid anymore because the server was restarted.
