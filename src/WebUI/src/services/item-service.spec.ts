@@ -1,21 +1,8 @@
 import ItemsData from '@/__mocks__/items.json';
-import {
-  computeArmorSetPieceStrengthRequirement,
-  computeOverallPrice,
-  computeOverallWeight,
-  computeOverallArmor,
-} from './item-service';
+import { computeOverallPrice, computeOverallWeight, computeOverallArmor } from './item-service';
 import type Item from '@/models/item';
 
 describe('Overall stats', () => {
-  it('computeArmorSetPieceStrengthRequirement', () => {
-    expect(computeArmorSetPieceStrengthRequirement(ItemsData as Item[])).toEqual(2);
-  });
-
-  it('computeArmorSetPieceStrengthRequirement - no items', () => {
-    expect(computeArmorSetPieceStrengthRequirement([])).toEqual(0);
-  });
-
   it('computeOverallPrice', () => {
     expect(computeOverallPrice(ItemsData as Item[])).toEqual(1430);
   });

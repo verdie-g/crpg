@@ -1,5 +1,4 @@
 export default interface CharacterOverallItemsStats {
-  armorSetRequirement: number;
   maxRepairCost: number;
   averageRepairCost: number;
   price: number;

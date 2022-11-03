@@ -166,6 +166,7 @@
       </b-button>
 
       <character-overall-items-stats-component
+        v-if="characterEquippedItems"
         :equippedItems="characterEquippedItems"
         :character="character"
       />

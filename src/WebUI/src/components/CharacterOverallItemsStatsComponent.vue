@@ -56,6 +56,13 @@
           <b-icon icon="shield-alt" size="is-small" />
         </td>
       </tr>
+      <tr>
+        <td><b>Mount Armor</b></td>
+        <td>
+          {{ itemStats.mountArmor }}
+          <b-icon icon="shield-alt" size="is-small" />
+        </td>
+      </tr>
 
       <template v-if="speedStats">
         <tr>
@@ -119,17 +126,20 @@ import EquippedItem from '@/models/equipped-item';
 import Character from '@/models/character';
 import type CharacterCharacteristics from '@/models/character-characteristics';
 import type CharacterSpeedStats from '@/models/сharacter-speed-stats';
+import type CharacterOverallItemsStats from '@/models/character-overall-items-stats';
 import {
   computeAverageRepairCostByMinute,
   computeMaxRepairCostByMinute,
+  computeOverallPrice,
+  computeOverallWeight,
+  computeOverallArmor,
 } from '@/services/item-service';
 import { computeHealthPoints, computeSpeedStats } from '@/services/characters-service';
-import ItemType from '@/models/item-type';
 
 @Component
 export default class CharacterOverallItemsStatsComponent extends Vue {
   @Prop(Object) readonly character: Character;
-  @Prop(Array) readonly equippedItems: EquippedItem[] | null;
+  @Prop({ type: Array, default: () => [] }) readonly equippedItems: EquippedItem[];
 
   get characteristics() {
     return this.$store.state.user.characteristicsByCharacterId[
@@ -158,45 +168,16 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     });
   }
 
-  get itemStats(): Record<string, number> {
-    const result = {
-      price: 0,
-      maxRepairCost: 0,
-      averageRepairCost: 0,
-      headArmor: 0,
-      bodyArmor: 0,
-      armArmor: 0,
-      legArmor: 0,
-      weight: 0,
+  get itemStats(): CharacterOverallItemsStats {
+    const items = this.equippedItems.map(equipedItem => equipedItem.userItem.baseItem);
+
+    return {
+      maxRepairCost: computeMaxRepairCostByMinute(items),
+      averageRepairCost: computeAverageRepairCostByMinute(items),
+      weight: computeOverallWeight(items),
+      price: computeOverallPrice(items),
+      ...computeOverallArmor(items),
     };
-
-    if (!this.equippedItems) return result;
-    result.maxRepairCost = computeMaxRepairCostByMinute(
-      this.equippedItems.map(item => item.userItem.baseItem)
-    );
-    result.averageRepairCost = computeAverageRepairCostByMinute(
-      this.equippedItems.map(item => item.userItem.baseItem)
-    );
-    this.equippedItems.forEach(ei => {
-      result.price += ei.userItem.baseItem.price;
-
-      if (
-        ei.userItem.baseItem.type !== ItemType.Mount &&
-        ei.userItem.baseItem.type !== ItemType.MountHarness
-      ) {
-        result.weight += ei.userItem.baseItem.weight;
-      }
-
-      const armor = ei.userItem.baseItem.armor;
-      if (armor && ei.userItem.baseItem.type !== ItemType.MountHarness) {
-        result.headArmor += armor.headArmor;
-        result.bodyArmor += armor.bodyArmor;
-        result.armArmor += armor.armArmor;
-        result.legArmor += armor.legArmor;
-      }
-    });
-
-    return result as Record<string, number>;
   }
 }
 </script>
