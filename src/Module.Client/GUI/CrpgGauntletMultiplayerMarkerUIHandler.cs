@@ -43,7 +43,8 @@ internal class CrpgGauntletMultiplayerMarkerUIHandler : MissionView
             return;
         }
 
-        _dataSource.IsEnabled = Input.IsGameKeyDown(5);
+        // Gamekeys are found in GameKeyDefinitions - ShowIndicators is by default the alt key button.
+        _dataSource.IsEnabled = Input.IsGameKeyDown((int)GameKeyDefinition.ShowIndicators);
         _dataSource.Tick(dt);
     }
 }
