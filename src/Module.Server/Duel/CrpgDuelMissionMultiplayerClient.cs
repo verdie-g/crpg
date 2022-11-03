@@ -2,7 +2,6 @@
 using Crpg.Module.Common.Network;
 using Crpg.Module.Duel.Network;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
 

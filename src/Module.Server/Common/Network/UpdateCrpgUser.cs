@@ -43,11 +43,11 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
         int exp = ReadIntFromPacket(ExperienceCompressionInfo, ref bufferReadValid);
         CrpgCharacterCharacteristics characteristics = ReadCharacterCharacteristics(ref bufferReadValid);
         bool hasClan = ReadBoolFromPacket(ref bufferReadValid);
-        CrpgClanMember? clanMemberShip = null;
+        CrpgClanMember? clanMembership = null;
         if (hasClan)
         {
-            clanMemberShip = new();
-            clanMemberShip.ClanId = ReadIntFromPacket(ClanIdCompressionInfo, ref bufferReadValid);
+            clanMembership = new();
+            clanMembership.ClanId = ReadIntFromPacket(ClanIdCompressionInfo, ref bufferReadValid);
         }
 
         // Build Crpg Character
@@ -60,7 +60,7 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
                 Experience = exp,
                 Characteristics = characteristics,
             },
-            ClanMembership = clanMemberShip,
+            ClanMembership = clanMembership,
         };
 
         return bufferReadValid;

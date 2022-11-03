@@ -2,7 +2,6 @@
 using Crpg.Module.Api.Models.Users;
 using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common;

@@ -45,12 +45,12 @@ internal class CrpgMissionMarkerVM : ViewModel
 #pragma warning restore CS8618
     {
         _missionCamera = missionCamera;
-        FlagTargets = new MBBindingList<MissionFlagMarkerTargetVM>();
-        PeerTargets = new MBBindingList<MissionPeerMarkerTargetVM>();
-        SiegeEngineTargets = new MBBindingList<MissionSiegeEngineMarkerTargetVM>();
-        AlwaysVisibleTargets = new MBBindingList<MissionAlwaysVisibleMarkerTargetVM>();
-        _teammateDictionary = new Dictionary<MissionPeer, MissionPeerMarkerTargetVM>();
-        _distanceComparer = new MarkerDistanceComparer();
+        FlagTargets = new();
+        PeerTargets = new();
+        SiegeEngineTargets = new();
+        AlwaysVisibleTargets = new();
+        _teammateDictionary = new();
+        _distanceComparer = new();
         _commanderInfo = Mission.Current.GetMissionBehavior<ICommanderInfo>();
         _gameModeClient = gameModeClient;
         if (_commanderInfo != null)
@@ -324,7 +324,7 @@ internal class CrpgMissionMarkerVM : ViewModel
         }
 
         BattleSideEnum battleSideEnum = GameNetwork.MyPeer.ControlledAgent?.Team.Side ?? BattleSideEnum.None;
-        List<MissionPeerMarkerTargetVM> list = PeerTargets.ToList();
+        List<MissionPeerMarkerTargetVM> markerList = PeerTargets.ToList();
         bool isDuel = _gameModeClient is CrpgDuelMissionMultiplayerClient;
         foreach (MissionPeer missionPeer in VirtualPlayer.Peers<MissionPeer>())
         {
@@ -340,16 +340,16 @@ internal class CrpgMissionMarkerVM : ViewModel
                 continue;
             }
 
-            IEnumerable<MissionPeerMarkerTargetVM> source = PeerTargets.Where((MissionPeerMarkerTargetVM t) => t.TargetPeer?.Peer.Id.Equals(missionPeer.Peer.Id) ?? false);
-            if (source.Count() > 0)
+            IEnumerable<MissionPeerMarkerTargetVM> peerMarkerList = PeerTargets.Where((MissionPeerMarkerTargetVM t) => t.TargetPeer?.Peer.Id.Equals(missionPeer.Peer.Id) ?? false);
+            if (peerMarkerList.Count() > 0)
             {
-                MissionPeerMarkerTargetVM currentMarker = source.First();
-                IEnumerable<MissionAlwaysVisibleMarkerTargetVM> source2 = AlwaysVisibleTargets.Where((MissionAlwaysVisibleMarkerTargetVM t) => t.TargetPeer.Peer.Id.Equals(currentMarker.TargetPeer.Peer.Id));
+                MissionPeerMarkerTargetVM currentMarker = peerMarkerList.First();
+                IEnumerable<MissionAlwaysVisibleMarkerTargetVM> deathIconMarkerList = AlwaysVisibleTargets.Where((MissionAlwaysVisibleMarkerTargetVM t) => t.TargetPeer.Peer.Id.Equals(currentMarker.TargetPeer.Peer.Id));
                 if (BannerlordConfig.EnableDeathIcon && !missionPeer.IsControlledAgentActive)
                 {
-                    if (!source2.Any() && source.First().TargetPeer?.ControlledAgent != null)
+                    if (!deathIconMarkerList.Any() && peerMarkerList.First().TargetPeer?.ControlledAgent != null)
                     {
-                        MissionAlwaysVisibleMarkerTargetVM missionAlwaysVisibleMarkerTargetVM = new(currentMarker.TargetPeer, source.First().WorldPosition, OnRemoveAlwaysVisibleMarker);
+                        MissionAlwaysVisibleMarkerTargetVM missionAlwaysVisibleMarkerTargetVM = new(currentMarker.TargetPeer, peerMarkerList.First().WorldPosition, OnRemoveAlwaysVisibleMarker);
                         missionAlwaysVisibleMarkerTargetVM.UpdateScreenPosition(_missionCamera);
                         AlwaysVisibleTargets.Add(missionAlwaysVisibleMarkerTargetVM);
                     }
@@ -358,6 +358,7 @@ internal class CrpgMissionMarkerVM : ViewModel
                 }
             }
 
+            // Create new teammate markers and add them to list + set color
             if (!_teammateDictionary.ContainsKey(missionPeer))
             {
                 bool missionPeerIsFriend = _friendIDs.Contains(missionPeer.Peer.Id);
@@ -368,11 +369,11 @@ internal class CrpgMissionMarkerVM : ViewModel
             }
             else
             {
-                list.Remove(_teammateDictionary[missionPeer]);
+                markerList.Remove(_teammateDictionary[missionPeer]);
             }
         }
 
-        foreach (MissionPeerMarkerTargetVM item in list)
+        foreach (MissionPeerMarkerTargetVM item in markerList)
         {
             MissionPeerMarkerTargetVM current;
             if ((current = item) != null)
@@ -385,15 +386,15 @@ internal class CrpgMissionMarkerVM : ViewModel
 
     private void UpdateTargetStates(bool state)
     {
-        PeerTargets.ApplyActionOnAllItems(delegate (MissionPeerMarkerTargetVM pt)
+        PeerTargets.ApplyActionOnAllItems(delegate(MissionPeerMarkerTargetVM pt)
         {
             pt.IsEnabled = state;
         });
-        FlagTargets.ApplyActionOnAllItems(delegate (MissionFlagMarkerTargetVM ft)
+        FlagTargets.ApplyActionOnAllItems(delegate(MissionFlagMarkerTargetVM ft)
         {
             ft.IsEnabled = state;
         });
-        SiegeEngineTargets.ApplyActionOnAllItems(delegate (MissionSiegeEngineMarkerTargetVM st)
+        SiegeEngineTargets.ApplyActionOnAllItems(delegate(MissionSiegeEngineMarkerTargetVM st)
         {
             st.IsEnabled = state;
         });
