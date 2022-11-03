@@ -25,14 +25,10 @@ internal class CrpgExperienceTable
     private int[] ComputeExperienceTable()
     {
         int[] table = new int[_constants.MaximumLevel - _constants.MinimumLevel + 1];
-        table[0] = 0; // lvl 1: 0
-
-        for (int lvl = _constants.MinimumLevel + 1; lvl <= 30; lvl += 1)
+        for (int lvl = _constants.MinimumLevel; lvl <= 30; lvl += 1)
         {
-            float a = _constants.ExperienceForLevelCoefs[0];
-            float b = _constants.ExperienceForLevelCoefs[1];
-            float c = _constants.ExperienceForLevelCoefs[2];
-            table[lvl - _constants.MinimumLevel] = (int)(a * Math.Pow(1.26, lvl) + b * lvl + c);
+            const int experienceForLevel30 = 4420824;
+            table[lvl - _constants.MinimumLevel] = (int)(experienceForLevel30 * ComputeExperienceDistribution(lvl) / ComputeExperienceDistribution(30));
         }
 
         for (int lvl = 31; lvl <= _constants.MaximumLevel; lvl += 1)
@@ -41,5 +37,12 @@ internal class CrpgExperienceTable
         }
 
         return table;
+    }
+
+    private double ComputeExperienceDistribution(int lvl)
+    {
+        float a = _constants.ExperienceForLevelCoefs[0];
+        float b = _constants.ExperienceForLevelCoefs[1];
+        return Math.Pow(lvl - 1, a) + b * (lvl - 1);
     }
 }

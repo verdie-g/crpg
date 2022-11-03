@@ -10,23 +10,22 @@ public class ExperienceTableTest
     {
         MinimumLevel = 1,
         MaximumLevel = 38,
-        ExperienceForLevelCoefs = new[] { 0f, 50f, -50 }, // 50 xp for each level
+        ExperienceForLevelCoefs = new[] { 5.65f, 150000f }, // 50 xp for each level
     };
-
     private static readonly ExperienceTable ExperienceTable = new(Constants);
-
-    [TestCase(0, 1)]
-    [TestCase(49, 1)]
-    [TestCase(50, 2)]
-    [TestCase(150, 4)]
+    [TestCase(500, 1)]
+    [TestCase(4000, 2)]
+    [TestCase(5000000, 30)]
+    [TestCase(9000000, 31)]
     public void GetLevelForExperience(int experience, int expectedLevel)
     {
         Assert.AreEqual(expectedLevel, ExperienceTable.GetLevelForExperience(experience));
     }
 
-    [TestCase(1, 0)]
-    [TestCase(2, 50)]
-    [TestCase(3, 100)]
+    [TestCase(2, 3538)]
+    [TestCase(3, 7078)]
+    [TestCase(4, 10627)]
+    [TestCase(30, 4420824)]
     public void GetExperienceForLevel(int level, int expectedExperience)
     {
         Assert.AreEqual(expectedExperience, ExperienceTable.GetExperienceForLevel(level));

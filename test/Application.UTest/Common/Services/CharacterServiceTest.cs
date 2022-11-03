@@ -11,7 +11,7 @@ public class CharacterServiceTest
     {
         MinimumLevel = 1,
         MaximumLevel = 38,
-        ExperienceForLevelCoefs = new[] { 0f, 10f, -10f }, // xp = lvl * 10
+        ExperienceForLevelCoefs = new[] { 5.65f, 150000f }, // xp = lvl * 10
         DefaultAttributePoints = 0,
         AttributePointsPerLevel = 1,
         DefaultSkillPoints = 2,
@@ -53,10 +53,10 @@ public class CharacterServiceTest
     {
         CharacterService characterService = new(ExperienceTable, Constants);
         Character character = new() { Level = 1, Experience = 2, ExperienceMultiplier = 2f, SkippedTheFun = false };
-        characterService.GiveExperience(character, 4);
+        characterService.GiveExperience(character, 2500);
 
         Assert.AreEqual(2, character.Level);
-        Assert.AreEqual(10, character.Experience);
+        Assert.AreEqual(5002, character.Experience);
         Assert.AreEqual(1, character.Characteristics.Attributes.Points);
         Assert.AreEqual(1, character.Characteristics.Skills.Points);
         Assert.AreEqual(100, character.Characteristics.WeaponProficiencies.Points);
