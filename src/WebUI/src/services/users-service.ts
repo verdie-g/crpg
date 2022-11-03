@@ -21,11 +21,11 @@ export function getUserByPlatformUserId(
   platform: Platform,
   platformUserId: string
 ): Promise<UserPublic> {
-  return get(`/users?platform=${platform}&platformUserId=${platformUserId}`);
+  return get(`/users/searchByPlatform?platform=${platform}&platformUserId=${platformUserId}`);
 }
 
-export function getUserByName(name: string): Promise<UserPublic> {
-  return get(`/users?name=${name}`); // FIXME: TODO:
+export function getUsersByName(name: string): Promise<UserPublic[]> {
+  return get(`/users/searchByName?name=${name}`);
 }
 
 export async function getUserRestrictions(id: number): Promise<Restriction[]> {

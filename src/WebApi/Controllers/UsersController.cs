@@ -23,6 +23,23 @@ namespace Crpg.WebApi.Controllers;
 public class UsersController : BaseController
 {
     /// <summary>
+    /// Get users by name.
+    /// </summary>
+    /// <query name="name">The user name.</query>
+    /// <returns>Found users. A limit of 10 records.</returns>
+    /// <response code="200">Ok.</response>
+    /// <response code="400">Bad Request.</response>
+    [HttpGet("searchByName")]
+    public Task<ActionResult<Result<UserPublicViewModel[]>>> GetUsersByName([FromQuery] string name)
+        {
+            var resultTask = CurrentUser.User!.Role == Role.User
+                ? Task.FromResult(new Result<UserPublicViewModel[]>(new Error(ErrorType.Forbidden, ErrorCode.UserRoleNotMet)))
+                : Mediator.Send(new GetUsersByNameQuery { Name = name });
+
+            return ResultToActionAsync(resultTask);
+        }
+
+    /// <summary>
     /// Get user by their platform id.
     /// </summary>
     /// <query name="platform">The user platform.</query>
@@ -30,7 +47,7 @@ public class UsersController : BaseController
     /// <response code="200">Ok.</response>
     /// <response code="400">Bad Request.</response>
     /// <response code="404">User was not found.</response>
-    [HttpGet]
+    [HttpGet("searchByPlatform")]
     public Task<ActionResult<Result<UserPublicViewModel>>> GetUserByPlatformId(
         [FromQuery] Platform platform,
         [FromQuery] string platformUserId)

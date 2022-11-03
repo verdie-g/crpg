@@ -1,7 +1,7 @@
 <template>
   <div class="card mb-6">
     <div class="card-content">
-      <b-tabs v-model="activeSearchMode" type="is-toggle" :animated="false" @input="clearUser">
+      <b-tabs v-model="activeSearchMode" type="is-toggle" :animated="false" @input="clearUsers">
         <b-tab-item label="By Name" :value="searchModes.Name">
           <form @submit.prevent="findUser">
             <b-field label="Nickname" grouped>
@@ -10,7 +10,7 @@
                 required
                 :use-html5-validation="false"
                 v-model="searchByNameModel.name"
-                @input="clearUser"
+                @input="clearUsers"
               />
               <div class="control">
                 <b-button native-type="submit" type="is-primary">Find</b-button>
@@ -27,7 +27,7 @@
                   v-model="searchByPlatformModel.platform"
                   placeholder="Select a Platform"
                   required
-                  @input="clearUser"
+                  @input="clearUsers"
                 >
                   <option v-for="platform in availablePlatforms" :key="platform" :value="platform">
                     {{ platform }}
@@ -40,7 +40,7 @@
                   placeholder="Platform-specific User ID"
                   required
                   :use-html5-validation="false"
-                  @input="clearUser"
+                  @input="clearUsers"
                   v-model="searchByPlatformModel.platformUserId"
                 />
 
@@ -53,9 +53,10 @@
         </b-tab-item>
       </b-tabs>
 
-      <template v-if="user">
+      <template v-if="users.length">
         <h4 class="title is-4">Matched user</h4>
-        <div class="mt-4">
+
+        <div v-for="user in users" class="mt-4" :key="user.id">
           <div class="media">
             <div class="media-left">
               <figure class="image is-64x64">
@@ -124,22 +125,24 @@ export default class SearchUserComponent extends Vue {
     platformUserId: '',
   };
 
-  user: UserPublic | null = null;
+  users: UserPublic[] = [];
 
   async findUser() {
     if (this.activeSearchMode === SearchMode.Name) {
-      this.user = await userService.getUserByName(this.searchByNameModel.name);
+      this.users = await userService.getUsersByName(this.searchByNameModel.name);
       return;
     }
 
-    this.user = await userService.getUserByPlatformUserId(
-      this.searchByPlatformModel.platform,
-      this.searchByPlatformModel.platformUserId
-    );
+    this.users = [
+      await userService.getUserByPlatformUserId(
+        this.searchByPlatformModel.platform,
+        this.searchByPlatformModel.platformUserId
+      ),
+    ];
   }
 
-  clearUser() {
-    this.user = null;
+  clearUsers() {
+    this.users = [];
   }
 }
 </script>
