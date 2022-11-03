@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿// FIXME: UNIT
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Crpg.Application.Common.Interfaces;
 using Crpg.Application.Common.Mediator;

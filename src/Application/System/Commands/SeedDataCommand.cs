@@ -12,7 +12,6 @@ using Crpg.Domain.Entities.Parties;
 using Crpg.Domain.Entities.Restrictions;
 using Crpg.Domain.Entities.Settlements;
 using Crpg.Domain.Entities.Users;
-
 using Crpg.Sdk.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using NetTopologySuite.Geometries;

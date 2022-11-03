@@ -146,10 +146,6 @@ export default class RestrictionsTableComponent extends Vue {
         ? rowA[fieldName].name.localeCompare(rowB[fieldName].name)
         : rowB[fieldName].name.localeCompare(rowA[fieldName].name);
   }
-
-  created() {
-    this.timestampToTimeString(0);
-  }
 }
 </script>
 
