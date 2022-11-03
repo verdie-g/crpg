@@ -365,13 +365,13 @@ internal class ItemExporter : IDataExporter
             .OrderBy(i => i.StringId)
             .ToArray();
         var crpgItems = mbItems.Select(MbToCrpgItem);
-        SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));
+        SerializeCrpgItems(crpgItems, Path.Combine(gitRepoPath, "data"));/*
         const string itemThumbnailsTempPath = "../../crpg-items";
         string itemThumbnailsPath = Path.Combine(gitRepoPath, "src/WebUI/public/items");
         Directory.CreateDirectory(itemThumbnailsTempPath);
         await GenerateItemsThumbnail(mbItems, itemThumbnailsTempPath);
         Directory.Delete(itemThumbnailsPath, recursive: true);
-        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);
+        Directory.Move(itemThumbnailsTempPath, itemThumbnailsPath);*/
     }
 
     private static CrpgItem MbToCrpgItem(ItemObject mbItem)
@@ -827,9 +827,9 @@ internal class ItemExporter : IDataExporter
         float bestArmorPower = type switch
         {
             ItemObject.ItemTypeEnum.HeadArmor => 661f,
-            ItemObject.ItemTypeEnum.Cape => 449f,
-            ItemObject.ItemTypeEnum.BodyArmor => 244f,
-            ItemObject.ItemTypeEnum.HandArmor => 284f,
+            ItemObject.ItemTypeEnum.Cape => 274f,
+            ItemObject.ItemTypeEnum.BodyArmor => 274f,
+            ItemObject.ItemTypeEnum.HandArmor => 274f,
             ItemObject.ItemTypeEnum.LegArmor => 503f,
             ItemObject.ItemTypeEnum.HorseHarness => 100f,
             _ => throw new ArgumentOutOfRangeException(),
