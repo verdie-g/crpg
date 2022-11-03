@@ -1,5 +1,4 @@
-﻿using TaleWorlds.Library;
-using TaleWorlds.MountAndBlade;
+﻿using TaleWorlds.MountAndBlade;
 
 namespace Crpg.Module.Common;
 
