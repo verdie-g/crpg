@@ -347,9 +347,9 @@ internal class CrpgMissionMarkerVM : ViewModel
                 IEnumerable<MissionAlwaysVisibleMarkerTargetVM> deathIconMarkerList = AlwaysVisibleTargets.Where((MissionAlwaysVisibleMarkerTargetVM t) => t.TargetPeer.Peer.Id.Equals(currentMarker.TargetPeer.Peer.Id));
                 if (BannerlordConfig.EnableDeathIcon && !missionPeer.IsControlledAgentActive)
                 {
-                    if (!deathIconMarkerList.Any() && peerMarkerList.First().TargetPeer?.ControlledAgent != null)
+                    if (!deathIconMarkerList.Any() && currentMarker.TargetPeer?.ControlledAgent != null)
                     {
-                        MissionAlwaysVisibleMarkerTargetVM missionAlwaysVisibleMarkerTargetVM = new(currentMarker.TargetPeer, peerMarkerList.First().WorldPosition, OnRemoveAlwaysVisibleMarker);
+                        MissionAlwaysVisibleMarkerTargetVM missionAlwaysVisibleMarkerTargetVM = new(currentMarker.TargetPeer, currentMarker.WorldPosition, OnRemoveAlwaysVisibleMarker);
                         missionAlwaysVisibleMarkerTargetVM.UpdateScreenPosition(_missionCamera);
                         AlwaysVisibleTargets.Add(missionAlwaysVisibleMarkerTargetVM);
                     }
@@ -369,17 +369,19 @@ internal class CrpgMissionMarkerVM : ViewModel
             }
             else
             {
+                // Remove all teammates from the markerList
                 markerList.Remove(_teammateDictionary[missionPeer]);
             }
         }
 
+        // markerList contains only old or dead teammates at this point.
+        // Remove all MissionPeerMarkerTargetVM's which remain in the markerList from the final visible icons.
         foreach (MissionPeerMarkerTargetVM item in markerList)
         {
-            MissionPeerMarkerTargetVM current;
-            if ((current = item) != null)
+            if (item != null)
             {
-                PeerTargets.Remove(current);
-                _teammateDictionary.Remove(current.TargetPeer);
+                PeerTargets.Remove(item);
+                _teammateDictionary.Remove(item.TargetPeer);
             }
         }
     }
