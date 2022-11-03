@@ -18,9 +18,9 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Restriction from '@/models/restriction';
 import * as restrictionService from '@/services/restriction-service';
-import RestrictionsTable from '@/components/RestrictionsTable';
-import PlatformComponent from '@/components/Platform';
-import SearchUserComponent from '@/components/SearchUserComponent';
+import RestrictionsTable from '@/components/RestrictionsTable.vue';
+import PlatformComponent from '@/components/Platform.vue';
+import SearchUserComponent from '@/components/SearchUserComponent.vue';
 
 @Component({
   components: { RestrictionsTable, Platform: PlatformComponent, SearchUserComponent },

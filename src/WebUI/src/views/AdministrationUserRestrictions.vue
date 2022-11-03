@@ -111,7 +111,7 @@ import RestrictionCreation from '@/models/restriction-creation';
 import * as userService from '@/services/users-service';
 import * as restrictionService from '@/services/restriction-service';
 import { NotificationType, notify } from '@/services/notifications-service';
-import RestrictionsTable from '@/components/RestrictionsTable';
+import RestrictionsTable from '@/components/RestrictionsTable.vue';
 import PlatformComponent from '@/components/Platform.vue';
 import { convertHumanDurationToMs } from '@/utils/date';
 import type { HumanDuration } from '@/utils/date';

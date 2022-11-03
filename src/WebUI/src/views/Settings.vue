@@ -46,10 +46,10 @@
 import { Component, Vue } from 'vue-property-decorator';
 import userModule from '@/store/user-module';
 import User from '@/models/user';
+import Restriction from '@/models/restriction';
 import * as userService from '@/services/users-service';
 import { signOut } from '@/services/auth-service';
-import RestrictionsTable from '@/components/RestrictionsTable';
-import Restriction from '@/models/restriction';
+import RestrictionsTable from '@/components/RestrictionsTable.vue';
 import ConfirmActionForm from '@/components/ConfirmActionForm.vue';
 
 @Component({

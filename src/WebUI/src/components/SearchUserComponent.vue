@@ -92,7 +92,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import Platform from '@/models/platform';
 import UserPublic from '@/models/user-public';
 import * as userService from '@/services/users-service';
-import PlatformComponent from '@/components/Platform';
+import PlatformComponent from '@/components/Platform.vue';
 
 enum SearchMode {
   Name = 'Name',

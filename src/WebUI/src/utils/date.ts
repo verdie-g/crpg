@@ -1,3 +1,4 @@
+// TODO: unit
 export function timestampToTimeString(ts: number): string {
   const date = new Date(ts);
   const year = date.getFullYear() - 1970;
@@ -34,15 +35,15 @@ export function timestampToTimeString(ts: number): string {
   return timeStr;
 }
 
-function daysToMs(days: number = 0) {
+function daysToMs(days = 0) {
   return days * 24 * 60 * 60 * 1000;
 }
 
-function hoursToMs(hours: number = 0) {
+function hoursToMs(hours = 0) {
   return hours * 60 * 60 * 1000;
 }
 
-function minutesToMs(minutes: number = 0) {
+function minutesToMs(minutes = 0) {
   return minutes * 60 * 1000;
 }
 

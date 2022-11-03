@@ -1,4 +1,5 @@
 import User from '@/models/user';
+import UserPublic from '@/models/user-public';
 import Character from '@/models/character';
 import { UpdateCharacterRequest } from '@/models/update-character-request';
 import CharacterCharacteristics from '@/models/character-characteristics';
@@ -12,15 +13,18 @@ import Clan from '@/models/clan';
 import UserItem from '@/models/user-item';
 import Platform from '@/models/platform';
 
-export function getUserByUserId(id: number): Promise<User> {
+export function getUserByUserId(id: number): Promise<UserPublic> {
   return get(`/users/${id}`);
 }
 
-export function getUserByPlatformUserId(platform: Platform, platformUserId: string): Promise<User> {
+export function getUserByPlatformUserId(
+  platform: Platform,
+  platformUserId: string
+): Promise<UserPublic> {
   return get(`/users?platform=${platform}&platformUserId=${platformUserId}`);
 }
 
-export function getUserByName(name: string): Promise<User> {
+export function getUserByName(name: string): Promise<UserPublic> {
   return get(`/users?name=${name}`); // FIXME: TODO:
 }
 
