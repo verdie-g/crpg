@@ -26,11 +26,6 @@ internal class CrpgPeer : PeerComponent
 
     public void SynchronizeToPlayer(VirtualPlayer targetPeer)
     {
-        if (_user == null)
-        {
-            Console.WriteLine("SynchronizeToPlayer - User was null");
-        }
-
         if (_user == null || !GameNetwork.IsServerOrRecorder)
         {
             return;
@@ -43,15 +38,11 @@ internal class CrpgPeer : PeerComponent
 
     public void SynchronizeToEveryone()
     {
-        if (_user == null)
-        {
-            Console.WriteLine("SynchronizeToEveryone - User was null");
-        }
-
         if (_user == null || !GameNetwork.IsServerOrRecorder)
         {
             return;
         }
+
         GameNetwork.BeginBroadcastModuleEvent();
         GameNetwork.WriteMessage(new UpdateCrpgUser { Peer = Peer, User = _user });
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
@@ -79,7 +70,6 @@ internal class CrpgPeer : PeerComponent
     {
         if (GameNetwork.IsClientOrReplay)
         {
-            //InformationManager.DisplayMessage(new InformationMessage("called  AddRemoveMessageHandlers for" + Peer.UserName));
             GameNetwork.NetworkMessageHandlerRegisterer registerer = new(mode);
             registerer.Register<UpdateCrpgUser>(HandleUpdateCrpgUser);
             registerer.Register<UpdateRewardMultiplier>(HandleUpdateRewardMultiplier);
@@ -90,11 +80,9 @@ internal class CrpgPeer : PeerComponent
     {
         if (Peer != message.Peer)
         {
-            InformationManager.DisplayMessage(new InformationMessage(Peer.UserName + " did not match " + message.Peer.UserName));
             return;
         }
 
-        InformationManager.DisplayMessage(new InformationMessage("Updated " + message.Peer.UserName));
         User = message.User;
         if (User.ClanMembership != null)
         {

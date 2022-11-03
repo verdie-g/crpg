@@ -1,4 +1,5 @@
-﻿using Crpg.Module.Duel;
+﻿using Crpg.Module.Common;
+using Crpg.Module.Duel;
 using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -359,13 +360,11 @@ internal class CrpgMissionMarkerVM : ViewModel
 
             if (!_teammateDictionary.ContainsKey(missionPeer))
             {
-                MissionPeerMarkerTargetVM missionPeerMarkerTargetVM = new(missionPeer, _friendIDs.Contains(missionPeer.Peer.Id));
+                bool missionPeerIsFriend = _friendIDs.Contains(missionPeer.Peer.Id);
+                MissionPeerMarkerTargetVM missionPeerMarkerTargetVM = new(missionPeer, missionPeerIsFriend);
                 PeerTargets.Add(missionPeerMarkerTargetVM);
                 _teammateDictionary.Add(missionPeer, missionPeerMarkerTargetVM);
-                uint color1 = Color.ConvertStringToColor("#FFFFFFFF").ToUnsignedInteger(); // white
-                uint color2 = Color.ConvertStringToColor("#FF0000FF").ToUnsignedInteger(); // red
-                ReflectionHelper.InvokeMethod(missionPeerMarkerTargetVM, "RefreshColor", new object[] { color1, color2 });
-                //InformationManager.DisplayMessage(new InformationMessage("Color changed to red"));
+                OverridePeerColor(missionPeerMarkerTargetVM, missionPeer, missionPeerIsFriend);
             }
             else
             {
@@ -398,5 +397,38 @@ internal class CrpgMissionMarkerVM : ViewModel
         {
             st.IsEnabled = state;
         });
+    }
+
+    /// <summary>
+    /// Changed to override the native alt key color.
+    /// In cRPG we use red for clanmates and white for everyone else.
+    /// Recently played and the ingame clan feature is ignored.
+    /// </summary>
+    private void OverridePeerColor(MissionPeerMarkerTargetVM missionPeerMarkerTargetVM, MissionPeer missionPeer, bool missionPeerIsFriend)
+    {
+        // Color format #RRGGBBAA
+        const string defaultColor = "#FFFFFFFF"; // white
+        const string clanmateColor = "#FF0000FF"; // red
+        const string friendColor = "#FFFF00FF"; // yellow
+        uint color1 = Color.ConvertStringToColor(defaultColor).ToUnsignedInteger(); // white
+        uint color2 = Color.ConvertStringToColor(defaultColor).ToUnsignedInteger(); // white
+        if (GameNetwork.MyPeer != null)
+        {
+            CrpgPeer myCrpgPeer = GameNetwork.MyPeer.GetComponent<CrpgPeer>();
+            if (!missionPeerIsFriend && myCrpgPeer?.Clan != null)
+            {
+                CrpgPeer crpgPeer = missionPeer.GetNetworkPeer().GetComponent<CrpgPeer>();
+                if (crpgPeer.Clan != null && myCrpgPeer.Clan.Id == crpgPeer.Clan.Id)
+                {
+                    color2 = Color.ConvertStringToColor(clanmateColor).ToUnsignedInteger();
+                }
+            }
+            else if (missionPeerIsFriend)
+            {
+                color2 = Color.ConvertStringToColor(friendColor).ToUnsignedInteger();
+            }
+        }
+
+        ReflectionHelper.InvokeMethod(missionPeerMarkerTargetVM, "RefreshColor", new object[] { color1, color2 });
     }
 }

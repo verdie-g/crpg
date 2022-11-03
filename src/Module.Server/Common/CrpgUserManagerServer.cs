@@ -70,17 +70,17 @@ internal class CrpgUserManagerServer : MissionNetwork
     /// </summary>
     private void SendExistingCrpgPeers(NetworkCommunicator networkPeer)
     {
-        foreach (NetworkCommunicator networkCommunicator in GameNetwork.NetworkPeers)
+        foreach (NetworkCommunicator otherNetworkPeers in GameNetwork.NetworkPeers)
         {
-            CrpgPeer crpgPeer = networkCommunicator.GetComponent<CrpgPeer>();
-            if (crpgPeer == null || crpgPeer.User == null)
+            CrpgPeer crpgPeer = otherNetworkPeers.GetComponent<CrpgPeer>();
+            if (!otherNetworkPeers.IsConnectionActive || !otherNetworkPeers.IsSynchronized || crpgPeer == null || crpgPeer.User == null || networkPeer == otherNetworkPeers)
             {
                 continue;
             }
 
             // Adds the CrpgPeer to all players.
             GameNetwork.BeginModuleEventAsServer(networkPeer);
-            GameNetwork.WriteMessage(new CrpgAddPeerComponent { Peer = networkCommunicator,  ComponentId = crpgPeer.TypeId });
+            GameNetwork.WriteMessage(new CrpgAddPeerComponent { Peer = otherNetworkPeers,  ComponentId = crpgPeer.TypeId });
             GameNetwork.EndModuleEventAsServer();
             // Update all CrpgPeers to current values.
             crpgPeer.SynchronizeToPlayer(networkPeer.VirtualPlayer);

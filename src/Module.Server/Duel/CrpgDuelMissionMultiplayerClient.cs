@@ -72,7 +72,6 @@ internal class CrpgDuelMissionMultiplayerClient : MissionMultiplayerGameModeDuel
         var newComponent = networkPeer.GetComponent(componentId);
         if (newComponent != null && newComponent is CrpgPeer crpgPeer)
         {
-            //InformationManager.DisplayMessage(new InformationMessage("adding " + networkPeer.UserName));
             crpgPeer.AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Add);
             registeredCrpgPeerEventListener.Add(crpgPeer);
         }
