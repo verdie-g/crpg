@@ -26,7 +26,7 @@ internal class CrpgStrikeMagnitudeModel : MultiplayerStrikeMagnitudeModel
                 result = 1f; // Native 1f
                 break;
             case DamageTypes.Cut:
-                result = 0.4f; // Native .1f
+                result = 0.35f; // Native .1f
                 break;
             case DamageTypes.Pierce:
                 result = .45f; // Native .25f
