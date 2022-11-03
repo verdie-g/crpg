@@ -19,38 +19,6 @@ internal class CrpgUserManagerClient : MissionNetwork
         _crpgPeer?.AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode.Remove);
     }
 
-    /*
-    public override void OnPlayerConnectedToServer(NetworkCommunicator networkPeer)
-    {
-        if (networkPeer == null && networkPeer != GameNetwork.MyPeer)
-        {
-            return;
-        }
-
-        CrpgPeer crpgPeer = networkPeer.GetComponent<CrpgPeer>();
-        if (crpgPeer == null)
-        {
-            InformationManager.DisplayMessage(new InformationMessage("CrpgPeer added for " + networkPeer.UserName));
-            networkPeer.AddComponent<CrpgPeer>();
-        }
-    }
-
-    public override void OnPlayerDisconnectedFromServer(NetworkCommunicator networkPeer)
-    {
-        if (networkPeer == null && networkPeer != GameNetwork.MyPeer)
-        {
-            return;
-        }
-
-        CrpgPeer crpgPeer = networkPeer.GetComponent<CrpgPeer>();
-        if (crpgPeer != null)
-        {
-            InformationManager.DisplayMessage(new InformationMessage("CrpgPeer removed for " + networkPeer.UserName));
-            networkPeer.RemoveComponent<CrpgPeer>();
-        }
-    }
-    */
-
     public override void OnRemoveBehavior()
     {
         base.OnRemoveBehavior();
