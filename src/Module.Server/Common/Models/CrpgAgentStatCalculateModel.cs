@@ -73,6 +73,10 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         {
             return 15;
         }
+        else if (skill == DefaultSkills.OneHanded || skill == DefaultSkills.TwoHanded || skill == DefaultSkills.Polearm)
+        {
+            return 135;
+        }
 
         return base.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
     }
