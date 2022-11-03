@@ -333,9 +333,9 @@ internal class CrpgMissionMarkerVM : ViewModel
                 break;
             }
 
-            if (missionPeer?.Team == null || /*missionPeer.IsMine ||*/
+            if (missionPeer?.Team == null || missionPeer.IsMine ||
                 (!isDuel && missionPeer.Team.Side != battleSideEnum) || // If it's not duel gamemode
-                (isDuel && missionPeer.Team.Side != BattleSideEnum.Attacker)) // If its duel gamemode show only players which are dueling
+                (isDuel && missionPeer.Team.Side != BattleSideEnum.Defender)) // If its duel gamemode show only players which are dueling
             {
                 continue;
             }
