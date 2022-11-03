@@ -6727,9 +6727,9 @@
     "name": "Highland Dagger",
     "culture": "Battania",
     "type": "OneHandedWeapon",
-    "price": 207,
+    "price": 295,
     "weight": 0.45,
-    "tier": 0.8256013,
+    "tier": 1.16422677,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -6748,7 +6748,7 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 31,
+        "thrustDamage": 38,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 103,
         "swingDamage": 6,
@@ -6772,7 +6772,7 @@
           "AutoReload",
           "AmmoBreaksOnBounceBack"
         ],
-        "thrustDamage": 16,
+        "thrustDamage": 19,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 103,
         "swingDamage": 0,
@@ -6786,9 +6786,9 @@
     "name": "Highland Throwing Dagger",
     "culture": "Battania",
     "type": "Thrown",
-    "price": 5398,
-    "weight": 0.48,
-    "tier": 8.388238,
+    "price": 6614,
+    "weight": 0.41,
+    "tier": 9.404115,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -6811,12 +6811,12 @@
           "AutoReload",
           "AmmoBreaksOnBounceBack"
         ],
-        "thrustDamage": 17,
+        "thrustDamage": 18,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 103,
+        "thrustSpeed": 104,
         "swingDamage": 0,
         "swingDamageType": "Cut",
-        "swingSpeed": 129
+        "swingSpeed": 130
       },
       {
         "class": "Dagger",
@@ -6831,12 +6831,12 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 31,
+        "thrustDamage": 38,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 103,
-        "swingDamage": 6,
+        "thrustSpeed": 104,
+        "swingDamage": 5,
         "swingDamageType": "Cut",
-        "swingSpeed": 129
+        "swingSpeed": 130
       }
     ]
   },
@@ -8411,7 +8411,7 @@
     "culture": "Aserai",
     "type": "Thrown",
     "price": 5398,
-    "weight": 0.47,
+    "weight": 0.39,
     "tier": 8.388238,
     "requirement": 0,
     "flags": [
@@ -8437,10 +8437,10 @@
         ],
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 103,
+        "thrustSpeed": 104,
         "swingDamage": 0,
         "swingDamageType": "Cut",
-        "swingSpeed": 127
+        "swingSpeed": 129
       },
       {
         "class": "Dagger",
@@ -8455,12 +8455,12 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 32,
+        "thrustDamage": 38,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 103,
+        "thrustSpeed": 104,
         "swingDamage": 6,
         "swingDamageType": "Cut",
-        "swingSpeed": 127
+        "swingSpeed": 129
       }
     ]
   },
@@ -10774,9 +10774,9 @@
     "name": "Broad Bladed Throwing Knives",
     "culture": "Empire",
     "type": "Thrown",
-    "price": 7612,
-    "weight": 0.57,
-    "tier": 10.1698627,
+    "price": 3670,
+    "weight": 0.35,
+    "tier": 6.72271252,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -10786,11 +10786,11 @@
         "class": "ThrowingKnife",
         "itemUsage": "throwing_knife",
         "accuracy": 95,
-        "missileSpeed": 33,
+        "missileSpeed": 35,
         "stackAmount": 9,
         "length": 39,
         "balance": 1.0,
-        "handling": 117,
+        "handling": 118,
         "bodyArmor": 0,
         "flags": [
           "RangedWeapon",
@@ -10799,12 +10799,12 @@
           "AutoReload",
           "AmmoBreaksOnBounceBack"
         ],
-        "thrustDamage": 19,
+        "thrustDamage": 15,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 101,
+        "thrustSpeed": 105,
         "swingDamage": 0,
         "swingDamageType": "Cut",
-        "swingSpeed": 127
+        "swingSpeed": 130
       },
       {
         "class": "Dagger",
@@ -10814,17 +10814,17 @@
         "stackAmount": 0,
         "length": 39,
         "balance": 1.0,
-        "handling": 117,
+        "handling": 118,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 31,
+        "thrustDamage": 38,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 101,
-        "swingDamage": 7,
+        "thrustSpeed": 105,
+        "swingDamage": 5,
         "swingDamageType": "Cut",
-        "swingSpeed": 127
+        "swingSpeed": 130
       }
     ]
   },
@@ -11863,9 +11863,9 @@
     "name": "Xiphos",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 96571,
+    "price": 236302,
     "weight": 0.54,
-    "tier": 38.8239746,
+    "tier": 61.3831635,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -11884,7 +11884,7 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 31,
+        "thrustDamage": 38,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 102,
         "swingDamage": 7,
@@ -16069,9 +16069,9 @@
     "name": "Leafblade Throwing Knife",
     "culture": "Battania",
     "type": "Thrown",
-    "price": 6271,
-    "weight": 0.54,
-    "tier": 9.127522,
+    "price": 8033,
+    "weight": 0.44,
+    "tier": 10.4780407,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -16081,7 +16081,7 @@
         "class": "ThrowingKnife",
         "itemUsage": "throwing_knife",
         "accuracy": 95,
-        "missileSpeed": 33,
+        "missileSpeed": 34,
         "stackAmount": 9,
         "length": 35,
         "balance": 1.0,
@@ -16094,12 +16094,12 @@
           "AutoReload",
           "AmmoBreaksOnBounceBack"
         ],
-        "thrustDamage": 18,
+        "thrustDamage": 19,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 102,
+        "thrustSpeed": 103,
         "swingDamage": 0,
         "swingDamageType": "Cut",
-        "swingSpeed": 128
+        "swingSpeed": 130
       },
       {
         "class": "Dagger",
@@ -16114,12 +16114,12 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 31,
+        "thrustDamage": 38,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 102,
-        "swingDamage": 7,
+        "thrustSpeed": 103,
+        "swingDamage": 6,
         "swingDamageType": "Cut",
-        "swingSpeed": 128
+        "swingSpeed": 130
       }
     ]
   },
@@ -17098,7 +17098,7 @@
     "culture": "Battania",
     "type": "Thrown",
     "price": 4364,
-    "weight": 0.46,
+    "weight": 0.38,
     "tier": 7.43041134,
     "requirement": 0,
     "flags": [
@@ -17124,10 +17124,10 @@
         ],
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 103,
+        "thrustSpeed": 104,
         "swingDamage": 0,
         "swingDamageType": "Cut",
-        "swingSpeed": 127
+        "swingSpeed": 129
       },
       {
         "class": "Dagger",
@@ -17142,12 +17142,12 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 32,
+        "thrustDamage": 38,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 103,
-        "swingDamage": 6,
+        "thrustSpeed": 104,
+        "swingDamage": 5,
         "swingDamageType": "Cut",
-        "swingSpeed": 127
+        "swingSpeed": 129
       }
     ]
   },
@@ -21637,9 +21637,9 @@
     "name": "Pugio",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 184,
+    "price": 295,
     "weight": 0.44,
-    "tier": 0.7256261,
+    "tier": 1.16422677,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -21658,7 +21658,7 @@
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 31,
+        "thrustDamage": 38,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 103,
         "swingDamage": 5,
@@ -21682,7 +21682,7 @@
           "AutoReload",
           "AmmoBreaksOnBounceBack"
         ],
-        "thrustDamage": 15,
+        "thrustDamage": 19,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 103,
         "swingDamage": 0,

@@ -223,10 +223,10 @@ internal class ItemExporter : IDataExporter
         // javelin
         ["crpg_spear_blade_15"] = (1.225f, 1.4f, 1f, 1f, 1),
         // daggers
-        ["crpg_dagger_blade_10"] = (1f, 2.6f, 1f, 0.25f, 9),
-        ["crpg_dagger_blade_11"] = (1f, 2.6f, 1f, 0.25f, 9),
-        ["crpg_dagger_blade_12"] = (1f, 2.6f, 1f, 0.25f, 9),
-        ["crpg_dagger_blade_13"] = (1f, 2.6f, 1f, 0.25f, 9),
+        ["crpg_dagger_blade_10"] = (1f, 3.15f, 1f, 0.25f, 9),
+        ["crpg_dagger_blade_11"] = (1f, 3.15f, 1f, 0.25f, 9),
+        ["crpg_dagger_blade_12"] = (1f, 3.15f, 1f, 0.25f, 9),
+        ["crpg_dagger_blade_13"] = (1f, 3.15f, 1f, 0.25f, 9),
         // Falx , Reaper Falx
         ["crpg_battania_blade_6"] = (0.95f, 1f, 1f, 1.05f, 0),
         // Broad Kaskara
