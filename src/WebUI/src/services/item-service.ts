@@ -336,7 +336,6 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
     });
   } else if (baseItem.type === ItemType.Banner) {
     props.fields.push(['Length', baseItem.weapons[0].length]);
-  } else if (baseItem.type === ItemType.Mount) {
   } else {
     baseItem.weapons.forEach(weapon => {
       const itemType = itemTypeByWeaponClass[weapon.class];
