@@ -38,6 +38,8 @@ internal class CrpgUserManagerServer : MissionNetwork
     {
         base.HandleEarlyNewClientAfterLoadingFinished(networkPeer);
         networkPeer.AddComponent<CrpgPeer>();
+        SendExistingCrpgPeers(networkPeer); // Add CrpgPeer component for all other players for new client.
+        AddNewCrpgPeerToOthers(networkPeer); // Add new client CrpgPeer to all other players.
     }
 
     protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
@@ -59,6 +61,43 @@ internal class CrpgUserManagerServer : MissionNetwork
 
             RewardMultiplierByPlayerId[networkPeer.VirtualPlayer.Id] = crpgPeer.RewardMultiplier;
         }
+    }
+
+    /// <summary>
+    /// Used to synchronize existing CrpgPeers to the new client.
+    /// </summary>
+    private void SendExistingCrpgPeers(NetworkCommunicator networkPeer)
+    {
+        foreach (NetworkCommunicator otherNetworkPeers in GameNetwork.NetworkPeers)
+        {
+            CrpgPeer crpgPeer = otherNetworkPeers.GetComponent<CrpgPeer>();
+            if (!otherNetworkPeers.IsConnectionActive || !otherNetworkPeers.IsSynchronized || crpgPeer == null || crpgPeer.User == null || networkPeer == otherNetworkPeers)
+            {
+                continue;
+            }
+
+            // Adds the CrpgPeer to all players.
+            GameNetwork.BeginModuleEventAsServer(networkPeer);
+            GameNetwork.WriteMessage(new CrpgAddPeerComponent { Peer = otherNetworkPeers, ComponentId = crpgPeer.TypeId });
+            GameNetwork.EndModuleEventAsServer();
+            // Update all CrpgPeers to current values.
+            crpgPeer.SynchronizeToPlayer(networkPeer.VirtualPlayer);
+        }
+    }
+
+    private void AddNewCrpgPeerToOthers(NetworkCommunicator networkPeer)
+    {
+        CrpgPeer crpgPeer = networkPeer.GetComponent<CrpgPeer>();
+        if (crpgPeer == null)
+        {
+            return;
+        }
+
+        // Adds the new clients CrpgPeer component for to all other players.
+        // There is no need to update the values, as soon as the data was fetched it will be synced through the setter.
+        GameNetwork.BeginBroadcastModuleEvent();
+        GameNetwork.WriteMessage(new CrpgAddPeerComponent { Peer = networkPeer, ComponentId = crpgPeer.TypeId });
+        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.ExcludeTargetPlayer, networkPeer);
     }
 
     private async Task SetCrpgComponentAsync(NetworkCommunicator networkPeer)

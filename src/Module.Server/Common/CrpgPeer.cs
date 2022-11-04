@@ -17,12 +17,48 @@ internal class CrpgPeer : PeerComponent
         set
         {
             _user = value ?? throw new ArgumentNullException();
-            if (GameNetwork.IsServerOrRecorder) // Synchronize the property with the client.
-            {
-                GameNetwork.BeginModuleEventAsServer(Peer);
-                GameNetwork.WriteMessage(new UpdateCrpgUser { User = _user });
-                GameNetwork.EndModuleEventAsServer();
-            }
+            SynchronizeToEveryone(); // Synchronize the property with the client.
+        }
+    }
+
+    public CrpgClan? Clan { get; set; }
+
+    public void SynchronizeToPlayer(VirtualPlayer targetPeer)
+    {
+        if (_user == null || !GameNetwork.IsServerOrRecorder)
+        {
+            return;
+        }
+
+        GameNetwork.BeginModuleEventAsServer(targetPeer);
+        GameNetwork.WriteMessage(new UpdateCrpgUser { Peer = Peer, User = _user });
+        GameNetwork.EndModuleEventAsServer();
+    }
+
+    public void SynchronizeToEveryone()
+    {
+        if (_user == null || !GameNetwork.IsServerOrRecorder)
+        {
+            return;
+        }
+
+        GameNetwork.BeginBroadcastModuleEvent();
+        GameNetwork.WriteMessage(new UpdateCrpgUser { Peer = Peer, User = _user });
+        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+    }
+
+    private void HandleUpdateCrpgUser(UpdateCrpgUser message)
+    {
+        if (Peer != message.Peer)
+        {
+            return;
+        }
+
+        User = message.User;
+        if (User.ClanMembership != null)
+        {
+            Clan = new();
+            Clan.Id = User.ClanMembership.ClanId;
         }
     }
 
