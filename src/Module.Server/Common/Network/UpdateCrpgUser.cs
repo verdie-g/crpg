@@ -14,53 +14,29 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
     private static readonly CompressionInfo.Integer ExperienceCompressionInfo = new(0, int.MaxValue, true);
     private static readonly CompressionInfo.Integer LevelCompressionInfo = new(0, 50, true);
     private static readonly CompressionInfo.Integer SkillCompressionInfo = new(0, 16384, true);
-    private static readonly CompressionInfo.Integer ClanIdCompressionInfo = new(0, int.MaxValue, true);
 
     public CrpgUser User { get; set; } = default!;
-    public VirtualPlayer Peer { get; set; } = default!;
 
     protected override void OnWrite()
     {
-        WriteVirtualPlayerReferenceToPacket(Peer);
         WriteIntToPacket(User.Character.Generation, GenerationCompressionInfo);
         WriteIntToPacket(User.Character.Level, LevelCompressionInfo);
         WriteIntToPacket(User.Character.Experience, ExperienceCompressionInfo);
         WriteCharacterCharacteristics(User.Character.Characteristics);
-        bool hasClan = User.ClanMembership != null;
-        WriteBoolToPacket(hasClan);
-        if (hasClan)
-        {
-            WriteIntToPacket(User.ClanMembership!.ClanId, ClanIdCompressionInfo);
-        }
     }
 
     protected override bool OnRead()
     {
         bool bufferReadValid = true;
-        Peer = ReadVirtualPlayerReferenceToPacket(ref bufferReadValid);
-        int generation = ReadIntFromPacket(GenerationCompressionInfo, ref bufferReadValid);
-        int level = ReadIntFromPacket(LevelCompressionInfo, ref bufferReadValid);
-        int exp = ReadIntFromPacket(ExperienceCompressionInfo, ref bufferReadValid);
-        CrpgCharacterCharacteristics characteristics = ReadCharacterCharacteristics(ref bufferReadValid);
-        bool hasClan = ReadBoolFromPacket(ref bufferReadValid);
-        CrpgClanMember? clanMembership = null;
-        if (hasClan)
-        {
-            clanMembership = new();
-            clanMembership.ClanId = ReadIntFromPacket(ClanIdCompressionInfo, ref bufferReadValid);
-        }
-
-        // Build Crpg Character
         User = new CrpgUser
         {
             Character = new CrpgCharacter
             {
-                Generation = generation,
-                Level = level,
-                Experience = exp,
-                Characteristics = characteristics,
+                Generation = ReadIntFromPacket(GenerationCompressionInfo, ref bufferReadValid),
+                Level = ReadIntFromPacket(LevelCompressionInfo, ref bufferReadValid),
+                Experience = ReadIntFromPacket(ExperienceCompressionInfo, ref bufferReadValid),
+                Characteristics = ReadCharacterCharacteristics(ref bufferReadValid),
             },
-            ClanMembership = clanMembership,
         };
 
         return bufferReadValid;
