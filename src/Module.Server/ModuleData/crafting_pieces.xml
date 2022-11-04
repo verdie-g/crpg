@@ -2422,7 +2422,7 @@
       <Material id="Iron4" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_empire_grip_2" name="{=yUyJ39ot}Steel Bound Spatha Grip" tier="4" piece_type="Handle" mesh="empire_grip_2" culture="Culture.empire" length="17" weight="0.15">
+  <CraftingPiece id="crpg_empire_grip_2" name="{=yUyJ39ot}Steel Bound Spatha Grip" tier="4" piece_type="Handle" mesh="empire_grip_2" culture="Culture.empire" length="17" weight="0.0375">
     <BuildData piece_offset="-0.79" next_piece_offset="0" previous_piece_offset="0.9" />
     <Materials>
       <Material id="Iron4" count="1" />
@@ -3606,10 +3606,10 @@
       <Material id="Iron4" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_dagger_blade_10" name="{=TLtaGEcB}Wide Makhaira Blade" tier="2" piece_type="Blade" mesh="dagger_blade_10" length="30" weight="0.475">
+  <CraftingPiece id="crpg_dagger_blade_10" name="{=TLtaGEcB}Wide Makhaira Blade" tier="2" piece_type="Blade" mesh="dagger_blade_10" length="30" weight="0.11875">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="1.344" />
-      <Swing damage_type="Cut" damage_factor="1.96" />
+      <Thrust damage_type="Pierce" damage_factor="2.646" />
+      <Swing damage_type="Cut" damage_factor="1.225" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -3618,10 +3618,10 @@
       <Material id="Iron3" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_dagger_blade_11" name="{=ykTYTbek}Throwing Knife Blade" tier="2" piece_type="Blade" mesh="dagger_blade_11" length="30" weight="0.475">
+  <CraftingPiece id="crpg_dagger_blade_11" name="{=ykTYTbek}Throwing Knife Blade" tier="2" piece_type="Blade" mesh="dagger_blade_11" length="30" weight="0.11875">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="1.344" />
-      <Swing damage_type="Cut" damage_factor="1.96" />
+      <Thrust damage_type="Pierce" damage_factor="2.646" />
+      <Swing damage_type="Cut" damage_factor="1.225" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -3630,10 +3630,10 @@
       <Material id="Iron3" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_dagger_blade_12" name="{=HysmKS5a}Ridged Wide Dagger Blade" tier="1" piece_type="Blade" mesh="dagger_blade_12" length="25.2" weight="0.475" is_default="true">
+  <CraftingPiece id="crpg_dagger_blade_12" name="{=HysmKS5a}Ridged Wide Dagger Blade" tier="1" piece_type="Blade" mesh="dagger_blade_12" length="25.2" weight="0.11875" is_default="true">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_3" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="1.344" />
-      <Swing damage_type="Cut" damage_factor="1.96" />
+      <Thrust damage_type="Pierce" damage_factor="2.646" />
+      <Swing damage_type="Cut" damage_factor="1.225" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -3642,10 +3642,10 @@
       <Material id="Iron2" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_dagger_blade_13" name="{=5o5DaSHZ}Broad Dagger Blade" tier="2" piece_type="Blade" mesh="dagger_blade_13" length="29" weight="0.475">
+  <CraftingPiece id="crpg_dagger_blade_13" name="{=5o5DaSHZ}Broad Dagger Blade" tier="2" piece_type="Blade" mesh="dagger_blade_13" length="29" weight="0.11875">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_1" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="1.344" />
-      <Swing damage_type="Cut" damage_factor="1.96" />
+      <Thrust damage_type="Pierce" damage_factor="2.646" />
+      <Swing damage_type="Cut" damage_factor="1.225" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -3692,7 +3692,7 @@
       <Material id="Iron3" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_empire_dagger_guard_3" name="{=PjMeZcwO}Lipped Dagger Guard" tier="2" piece_type="Guard" mesh="empire_dagger_guard_3" culture="Culture.battania" length="2.7" weight="0.097" is_default="true">
+  <CraftingPiece id="crpg_empire_dagger_guard_3" name="{=PjMeZcwO}Lipped Dagger Guard" tier="2" piece_type="Guard" mesh="empire_dagger_guard_3" culture="Culture.battania" length="2.7" weight="0.02425" is_default="true">
     <BuildData next_piece_offset="0.6" />
     <StatContributions armor_bonus="0" />
     <Materials>
@@ -3745,7 +3745,7 @@
       <Material id="Iron4" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_sturgian_dagger_guard_5" name="{=EbucFMZq}Broad Concave Dagger Guard" tier="2" piece_type="Guard" mesh="sturgian_dagger_guard_5" culture="Culture.battania" length="0.7" weight="0.097">
+  <CraftingPiece id="crpg_sturgian_dagger_guard_5" name="{=EbucFMZq}Broad Concave Dagger Guard" tier="2" piece_type="Guard" mesh="sturgian_dagger_guard_5" culture="Culture.battania" length="0.7" weight="0.02425">
     <BuildData next_piece_offset="0.6" />
     <StatContributions armor_bonus="2" />
     <Materials>
@@ -3934,7 +3934,7 @@
       <Material id="Iron4" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_aserai_dagger_guard_4" name="{=ZfEiEOsK}Southern Crowned Dagger Guard" tier="1" piece_type="Guard" mesh="aserai_dagger_guard_4" culture="Culture.battania" length="4.6" weight="0.097">
+  <CraftingPiece id="crpg_aserai_dagger_guard_4" name="{=ZfEiEOsK}Southern Crowned Dagger Guard" tier="1" piece_type="Guard" mesh="aserai_dagger_guard_4" culture="Culture.battania" length="4.6" weight="0.02425">
     <BuildData next_piece_offset="0.6" />
     <StatContributions armor_bonus="0" />
     <Materials>
@@ -4010,7 +4010,7 @@
       <Material id="Iron2" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_battania_dagger_guard_8" name="{=PZYq0hBO}Layered Bronze Dagger Guard" tier="2" piece_type="Guard" mesh="battania_guard_8" culture="Culture.battania" length="2.1" weight="0.097">
+  <CraftingPiece id="crpg_battania_dagger_guard_8" name="{=PZYq0hBO}Layered Bronze Dagger Guard" tier="2" piece_type="Guard" mesh="battania_guard_8" culture="Culture.battania" length="2.1" weight="0.02425">
     <BuildData next_piece_offset="0.6" />
     <StatContributions armor_bonus="0" />
     <Materials>

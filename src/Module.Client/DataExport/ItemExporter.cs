@@ -223,10 +223,10 @@ internal class ItemExporter : IDataExporter
         // javelin
         ["crpg_spear_blade_15"] = (1.225f, 1.4f, 1f, 1f, 1),
         // daggers
-        ["crpg_dagger_blade_10"] = (1.6f, 1.6f, 1f, 1f, 9),
-        ["crpg_dagger_blade_11"] = (1.6f, 1.6f, 1f, 1f, 9),
-        ["crpg_dagger_blade_12"] = (1.6f, 1.6f, 1f, 1f, 9),
-        ["crpg_dagger_blade_13"] = (1.6f, 1.6f, 1f, 1f, 9),
+        ["crpg_dagger_blade_10"] = (1f, 3.1f, 1f, 0.25f, 9),
+        ["crpg_dagger_blade_11"] = (1f, 3.1f, 1f, 0.25f, 9),
+        ["crpg_dagger_blade_12"] = (1f, 3.1f, 1f, 0.25f, 9),
+        ["crpg_dagger_blade_13"] = (1f, 3.1f, 1f, 0.25f, 9),
         // Falx , Reaper Falx
         ["crpg_battania_blade_6"] = (0.95f, 1f, 1f, 1.05f, 0),
         // Broad Kaskara
@@ -328,7 +328,14 @@ internal class ItemExporter : IDataExporter
         // Triangular Throwing Spear
         ["crpg_eastern_throwing_spear_2_t4"] = ("crpg_Javelin", "crpg_spear_blade_15", "crpg_default_polearm_guard", "crpg_spear_handle_11", 300f, 225f, "crpg_spear_pommel_5"),
     };
-
+    private static readonly Dictionary<string, float> ThrowingKnives = new()
+    {
+        ["crpg_empire_grip_2"] = 0.25f,
+        ["crpg_empire_dagger_guard_3"] = 0.25f,
+        ["crpg_battania_dagger_guard_8"] = 0.25f,
+        ["crpg_aserai_dagger_guard_4"] = 0.25f,
+        ["crpg_sturgian_dagger_guard_5"] = 0.25f,
+    };
     public async Task Export(string gitRepoPath)
     {
         string moduleDataPath = Path.Combine(gitRepoPath, "src/Module.Server/ModuleData");
@@ -554,7 +561,7 @@ internal class ItemExporter : IDataExporter
                          FilterNodeByAttribute("Type", "Pommel"));
                  }
 
-                 if (AxesMacesandSpears.TryGetValue(node1.Attributes["id"].Value, out var newAxeorMace))
+                if (AxesMacesandSpears.TryGetValue(node1.Attributes["id"].Value, out var newAxeorMace))
                  {
                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
                         _ => newAxeorMace.handle,
@@ -618,6 +625,11 @@ internal class ItemExporter : IDataExporter
                         v => (float.Parse(v) * newPommelStats.weightFactor).ToString(CultureInfo.InvariantCulture), "0");
                     ModifyNodeAttribute(node1, "length",
                         v => (float.Parse(v) * newPommelStats.lengthFactor).ToString(CultureInfo.InvariantCulture), "0");
+                }
+                if (ThrowingKnives.TryGetValue(node1.Attributes["id"].Value, out float newThrowingKnivesWeightMultiplier))
+                {
+                    ModifyNodeAttribute(node1, "weight",
+                        v => (float.Parse(v) * newThrowingKnivesWeightMultiplier).ToString(CultureInfo.InvariantCulture), "0");
                 }
             }
             else if (node1.Name == "Item")
