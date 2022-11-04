@@ -51,15 +51,6 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
                 finalDamage *= 1.85f; // 85% bonus dmg against horses
             }
 
-            if (attackInformation.IsVictimAgentHuman
-                && attackInformation.DoesAttackerHaveMountAgent
-                && weapon.CurrentUsageItem.IsPolearm
-                && weapon.CurrentUsageItem.IsMeleeWeapon
-                && attackInformation.IsAttackerAgentDoingPassiveAttack)
-            {
-                finalDamage *= 0.60f; // 40% damage reduction from couched lance
-            }
-
             // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
             else if (collisionData.IsAlternativeAttack && !attackInformation.IsFriendlyFire)
             {
@@ -68,6 +59,16 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
         }
 
         return finalDamage;
+    }
+
+    public override float CalculatePassiveAttackDamage(BasicCharacterObject attackerCharacter, in AttackCollisionData collisionData, float baseDamage)
+    {
+        if (attackerCharacter.IsMounted)
+        {
+            return baseDamage * 0.60f; // 40% damage reduction from couched lance
+        }
+
+        return baseDamage; // Passive stance on foot
     }
 
     public override void CalculateCollisionStunMultipliers(
