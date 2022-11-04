@@ -827,9 +827,9 @@ internal class ItemExporter : IDataExporter
         float bestArmorPower = type switch
         {
             ItemObject.ItemTypeEnum.HeadArmor => 661f,
-            ItemObject.ItemTypeEnum.Cape => 449f,
-            ItemObject.ItemTypeEnum.BodyArmor => 244f,
-            ItemObject.ItemTypeEnum.HandArmor => 284f,
+            ItemObject.ItemTypeEnum.Cape => 274f,
+            ItemObject.ItemTypeEnum.BodyArmor => 274f,
+            ItemObject.ItemTypeEnum.HandArmor => 274f,
             ItemObject.ItemTypeEnum.LegArmor => 503f,
             ItemObject.ItemTypeEnum.HorseHarness => 100f,
             _ => throw new ArgumentOutOfRangeException(),
