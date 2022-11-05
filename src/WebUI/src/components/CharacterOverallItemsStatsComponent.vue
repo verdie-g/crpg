@@ -76,12 +76,10 @@
             <b-icon icon="weight-hanging" size="is-small" />
           </td>
         </tr>
-        <td><b>Weight Reduction from Strength</b></td>
+        <tr>
+          <td><b>Weight Reduction from Strength</b></td>
           <td>
-            {{
-              ((1 - speedStats.weightReductionFactor) * 100).toLocaleString('en-US') +
-              ' %'
-            }}
+            {{ ((1 - speedStats.weightReductionFactor) * 100).toLocaleString('en-US') + ' %' }}
             <b-icon icon="weight-hanging" size="is-small" />
           </td>
         </tr>
