@@ -42,16 +42,13 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
         }
 
         // Defender Team = Players in duels
-        if (affectedAgent.MissionPeer.Team.IsDefender)
+        if (affectedAgent.MissionPeer?.Team.IsDefender ?? false)
         {
             // Set the respawn timer for both players to 5.1sec. 2sec delay + 3 seconds countdown.
             float respawnDelay = 5.1f; // Has to be bigger than 2.1sec. 2seconds delay and 100ms delay to despawn the agent.
             affectedAgent.MissionPeer.SpawnTimer.Reset(Mission.CurrentTime, respawnDelay); // was 5.1f
             affectorAgent.MissionPeer.SpawnTimer.Reset(Mission.CurrentTime, respawnDelay);
-            if (affectorAgent.MissionPeer != null)
-            {
-                _ = RemoveRemainingAgents(affectorAgent.MissionPeer, respawnDelay - 2.5f); // Should not be lower than 2.5f, otherwise the duel score will not increase!
-            }
+            _ = RemoveRemainingAgents(affectorAgent.MissionPeer, respawnDelay - 2.5f); // Should not be lower than 2.5f, otherwise the duel score will not increase!
         }
 
         base.OnAgentRemoved(affectedAgent, affectorAgent, agentState, blow);
@@ -79,14 +76,10 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
         }
     }
 
-    private async Task RemoveRemainingAgents(MissionPeer peer, float delay)
+    private async Task RemoveRemainingAgents(MissionPeer missionPeer, float delay)
     {
         await Task.Delay((int)(delay * 1000) - 100); // After 2 seconds the duel is actually over. So we wait a bit longer before we manually remove the player who is alive.
-        Agent controlledAgent = peer.ControlledAgent;
-        if (controlledAgent != null)
-        {
-            controlledAgent.FadeOut(true, true);
-        }
+        missionPeer?.ControlledAgent?.FadeOut(true, true);
     }
 
     /// <summary>
