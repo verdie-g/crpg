@@ -11,6 +11,11 @@ internal class CrpgPeer : PeerComponent
     private CrpgUser? _user;
     private int _rewardMultiplier;
 
+    public CrpgClan? Clan { get; set; }
+
+    /// <summary>The team the user has spawn in. Used to give the correct reward multiplier even after changing team.</summary>
+    public Team? SpawnTeamThisRound { get; set; }
+
     public CrpgUser? User
     {
         get => _user;
@@ -20,8 +25,6 @@ internal class CrpgPeer : PeerComponent
             SynchronizeToEveryone(); // Synchronize the property with the client.
         }
     }
-
-    public CrpgClan? Clan { get; set; }
 
     public void SynchronizeToPlayer(VirtualPlayer targetPeer)
     {
@@ -47,23 +50,6 @@ internal class CrpgPeer : PeerComponent
         GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
     }
 
-    private void HandleUpdateCrpgUser(UpdateCrpgUser message)
-    {
-        if (Peer != message.Peer)
-        {
-            return;
-        }
-
-        User = message.User;
-        if (User.ClanMembership != null)
-        {
-            Clan = new();
-            Clan.Id = User.ClanMembership.ClanId;
-        }
-    }
-
-    public CrpgClan? Clan { get; set; }
-
     public int RewardMultiplier
     {
         get => _rewardMultiplier;
@@ -79,9 +65,6 @@ internal class CrpgPeer : PeerComponent
         }
     }
 
-    /// <summary>The team the user has spawn in. Used to give the correct reward multiplier even after changing team.</summary>
-    public Team? SpawnTeamThisRound { get; set; }
-
     public void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode mode)
     {
         if (GameNetwork.IsClientOrReplay)
@@ -94,7 +77,17 @@ internal class CrpgPeer : PeerComponent
 
     private void HandleUpdateCrpgUser(UpdateCrpgUser message)
     {
+        if (Peer != message.Peer)
+        {
+            return;
+        }
+
         User = message.User;
+        if (User.ClanMembership != null)
+        {
+            Clan = new();
+            Clan.Id = User.ClanMembership.ClanId;
+        }
     }
 
     private void HandleUpdateRewardMultiplier(UpdateRewardMultiplier message)
