@@ -272,7 +272,7 @@ internal class ItemExporter : IDataExporter
         // Thamaskene Steel Two Handed Sword
         ["crpg_vlandian_pommel_9"] = (1f, 0.7f),
         // xiphos
-        ["crpg_battania_pommel_7"] = (1f, 2f),
+        ["crpg_battania_pommel_7"] = (1f, 13f),
     };
 
     private static readonly Dictionary<string, (string handle, float handleSize, float bladeSizeFactor, bool canScaleHead)> AxesMacesandSpears = new()

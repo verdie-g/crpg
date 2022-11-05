@@ -3456,7 +3456,7 @@
       <Material id="Wood" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_battania_pommel_7" name="{=G9cBw5sV}Highland Round Pommel" tier="4" piece_type="Pommel" mesh="battania_pommel_7" culture="Culture.battania" length="10" weight="0.5">
+  <CraftingPiece id="crpg_battania_pommel_7" name="{=G9cBw5sV}Highland Round Pommel" tier="4" piece_type="Pommel" mesh="battania_pommel_7" culture="Culture.battania" length="10" weight="3.25">
     <Materials>
       <Material id="Iron4" count="1" />
     </Materials>

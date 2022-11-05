@@ -11863,9 +11863,9 @@
     "name": "Xiphos",
     "culture": "Empire",
     "type": "OneHandedWeapon",
-    "price": 236302,
-    "weight": 0.54,
-    "tier": 61.3831635,
+    "price": 5873,
+    "weight": 2.73,
+    "tier": 8.721238,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -11878,18 +11878,18 @@
         "missileSpeed": 0,
         "stackAmount": 0,
         "length": 45,
-        "balance": 1.0,
-        "handling": 116,
+        "balance": 0.72,
+        "handling": 72,
         "bodyArmor": 0,
         "flags": [
           "MeleeWeapon"
         ],
-        "thrustDamage": 38,
+        "thrustDamage": 41,
         "thrustDamageType": "Pierce",
-        "thrustSpeed": 102,
-        "swingDamage": 7,
+        "thrustSpeed": 81,
+        "swingDamage": 24,
         "swingDamageType": "Cut",
-        "swingSpeed": 126
+        "swingSpeed": 91
       }
     ]
   },
