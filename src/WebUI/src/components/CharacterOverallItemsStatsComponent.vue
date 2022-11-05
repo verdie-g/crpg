@@ -76,7 +76,15 @@
             <b-icon icon="weight-hanging" size="is-small" />
           </td>
         </tr>
-
+        <td><b>Weight Reduction from Strength</b></td>
+          <td>
+            {{
+              ((1 - speedStats.perceivedWeight) * 100).toLocaleString('en-US') +
+              ' %'
+            }}
+            <b-icon icon="weight-hanging" size="is-small" />
+          </td>
+        </tr>
         <tr>
           <td><b>Perceived weight</b></td>
           <td>
@@ -182,9 +190,13 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
 
       if (
         ei.userItem.baseItem.type !== ItemType.Mount &&
-        ei.userItem.baseItem.type !== ItemType.MountHarness
+        ei.userItem.baseItem.type !== ItemType.MountHarness &&
+        ei.userItem.baseItem.type !== ItemType.Shield
       ) {
         result.weight += ei.userItem.baseItem.weight;
+      }
+      if (ei.userItem.baseItem.type === ItemType.Shield) {
+        result.weight += 1.5 * ei.userItem.baseItem.weight;
       }
 
       const armor = ei.userItem.baseItem.armor;
