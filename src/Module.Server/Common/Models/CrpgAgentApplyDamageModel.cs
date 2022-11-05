@@ -61,6 +61,16 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
         return finalDamage;
     }
 
+    public override float CalculatePassiveAttackDamage(BasicCharacterObject attackerCharacter, in AttackCollisionData collisionData, float baseDamage)
+    {
+        if (attackerCharacter.IsMounted)
+        {
+            return baseDamage * 0.60f; // 40% damage reduction from couched lance
+        }
+
+        return baseDamage; // Passive stance on foot
+    }
+
     public override void CalculateCollisionStunMultipliers(
         Agent attackerAgent,
         Agent defenderAgent,
