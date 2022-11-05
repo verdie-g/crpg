@@ -38,17 +38,25 @@ internal class CrpgAgentApplyDamageModel : DefaultAgentApplyDamageModel
 
         if (!weapon.IsEmpty)
         {
-            // Bonus dmg with spears against horses (does only work with "main" spears - not javelins etc)
+            // We want to decrease survivability of horses against melee weapon and especially against spears and pikes.
+            // By doing that we ensure that cavalry stays an archer predator while punishing cav errors like running into a wall or an obstacle
             if (!attackInformation.IsVictimAgentHuman
                 && !attackInformation.DoesAttackerHaveMountAgent
-                && weapon.CurrentUsageItem.IsPolearm
                 && !weapon.CurrentUsageItem.IsConsumable
                 && weapon.CurrentUsageItem.IsMeleeWeapon
-                && collisionData.StrikeType == (int)StrikeType.Thrust
-                && collisionData.DamageType == (int)DamageTypes.Pierce
                 && !weapon.IsAnyConsumable())
             {
-                finalDamage *= 1.85f; // 85% bonus dmg against horses
+                if (
+                    collisionData.StrikeType == (int)StrikeType.Thrust
+                    && collisionData.DamageType == (int)DamageTypes.Pierce
+                    && weapon.CurrentUsageItem.IsPolearm)
+                {
+                    finalDamage *= 1.85f;
+                }
+                else
+                {
+                    finalDamage *= 1.4f;
+                }
             }
 
             // For bashes (with and without shield) - Not for allies cause teamdmg might reduce the "finalDamage" below zero. That will break teamhits with bashes.
