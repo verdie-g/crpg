@@ -3456,7 +3456,7 @@
       <Material id="Wood" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_battania_pommel_7" name="{=G9cBw5sV}Highland Round Pommel" tier="4" piece_type="Pommel" mesh="battania_pommel_7" culture="Culture.battania" length="10" weight="0.250">
+  <CraftingPiece id="crpg_battania_pommel_7" name="{=G9cBw5sV}Highland Round Pommel" tier="4" piece_type="Pommel" mesh="battania_pommel_7" culture="Culture.battania" length="10" weight="0.5">
     <Materials>
       <Material id="Iron4" count="1" />
     </Materials>
@@ -3608,7 +3608,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_dagger_blade_10" name="{=TLtaGEcB}Wide Makhaira Blade" tier="2" piece_type="Blade" mesh="dagger_blade_10" length="30" weight="0.11875">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="2.646" />
+      <Thrust damage_type="Pierce" damage_factor="2.604" />
       <Swing damage_type="Cut" damage_factor="1.225" />
     </BladeData>
     <Flags>
@@ -3620,7 +3620,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_dagger_blade_11" name="{=ykTYTbek}Throwing Knife Blade" tier="2" piece_type="Blade" mesh="dagger_blade_11" length="30" weight="0.11875">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="2.646" />
+      <Thrust damage_type="Pierce" damage_factor="2.604" />
       <Swing damage_type="Cut" damage_factor="1.225" />
     </BladeData>
     <Flags>
@@ -3632,7 +3632,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_dagger_blade_12" name="{=HysmKS5a}Ridged Wide Dagger Blade" tier="1" piece_type="Blade" mesh="dagger_blade_12" length="25.2" weight="0.11875" is_default="true">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_3" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="2.646" />
+      <Thrust damage_type="Pierce" damage_factor="2.604" />
       <Swing damage_type="Cut" damage_factor="1.225" />
     </BladeData>
     <Flags>
@@ -3644,7 +3644,7 @@
   </CraftingPiece>
   <CraftingPiece id="crpg_dagger_blade_13" name="{=5o5DaSHZ}Broad Dagger Blade" tier="2" piece_type="Blade" mesh="dagger_blade_13" length="29" weight="0.11875">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_1" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="2.646" />
+      <Thrust damage_type="Pierce" damage_factor="2.604" />
       <Swing damage_type="Cut" damage_factor="1.225" />
     </BladeData>
     <Flags>
