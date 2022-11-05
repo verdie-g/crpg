@@ -184,7 +184,16 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
         ei.userItem.baseItem.type !== ItemType.Mount &&
         ei.userItem.baseItem.type !== ItemType.MountHarness
       ) {
-        result.weight += ei.userItem.baseItem.weight;
+        if (
+          ei.userItem.baseItem.type == ItemType.Thrown ||
+          ei.userItem.baseItem.type == ItemType.Bolts ||
+          ei.userItem.baseItem.type == ItemType.Arrows
+        ) {
+          result.weight +=
+            ei.userItem.baseItem.weight * ei.userItem.baseItem.weapons[0].stackAmount;
+        } else {
+          result.weight += ei.userItem.baseItem.weight;
+        }
       }
 
       const armor = ei.userItem.baseItem.armor;

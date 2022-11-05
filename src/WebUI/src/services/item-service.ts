@@ -236,14 +236,27 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
     fields: [
       ['Type', itemTypeToStr[baseItem.type]],
       ['Culture', baseItem.culture],
-      ['Weight', baseItem.weight.toFixed(2)],
       ['Tier', baseItem.tier.toFixed(1)],
       ['Repair Cost', `${computeAverageRepairCostByMinute([baseItem])} / min`],
     ],
     flags: getItemFlags(baseItem.flags),
     modes: [],
   };
-
+  if (
+    baseItem.type == ItemType.Thrown ||
+    baseItem.type == ItemType.Bolts ||
+    baseItem.type == ItemType.Arrows
+  ) {
+    props.fields.push(['Unit Weight', baseItem.weight.toFixed(2)]);
+    props.fields.push([
+      'Stack Weight',
+      (baseItem.weight * baseItem.weapons[0].stackAmount).toFixed(2),
+    ]);
+  } else if (baseItem.type == ItemType.Mount) {
+    props.fields.push(['Weight', baseItem.weight.toFixed(0)]);
+  } else {
+    props.fields.push(['Weight', baseItem.weight.toFixed(2)]);
+  }
   switch (baseItem.type) {
     case ItemType.Crossbow:
       props.fields.push(['Requirement', baseItem.requirement + ' STR']);
