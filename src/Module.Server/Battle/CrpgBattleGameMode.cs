@@ -62,7 +62,6 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
             ViewCreator.CreatePollProgressUIHandler(),
             new MissionItemContourControllerView(), // Draw contour of item on the ground when pressing ALT.
             new MissionAgentContourControllerView(),
-            ViewCreator.CreateMissionFlagMarkerUIHandler(), // Draw flags but also player names when pressing ALT.
             ViewCreator.CreateMissionKillNotificationUIHandler(),
             ViewCreator.CreateMultiplayerMissionHUDExtensionUIHandler(),
             ViewCreator.CreateMultiplayerMissionDeathCardUIHandler(),
@@ -72,6 +71,8 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
             new MissionBoundaryWallView(),
             new SpectatorCameraView(),
             new CrpgAgentHud(experienceTable),
+            // Draw flags but also player names when pressing ALT. (Native: CreateMissionFlagMarkerUIHandler)
+            ViewCreatorManager.CreateMissionView<CrpgMultiplayerMarkerUIHandler>(isNetwork: false, null, gameModeClient),
         };
     }
 #endif
