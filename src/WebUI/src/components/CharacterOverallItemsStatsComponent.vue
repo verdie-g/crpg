@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table width="300px">
+    <table width="347px">
       <td><b>Price</b></td>
       <td>
         {{ itemStats.price.toLocaleString('en-US') }}
@@ -79,7 +79,7 @@
         <td><b>Weight Reduction from Strength</b></td>
           <td>
             {{
-              ((1 - speedStats.perceivedWeight) * 100).toLocaleString('en-US') +
+              ((1 - speedStats.weightReductionFactor) * 100).toLocaleString('en-US') +
               ' %'
             }}
             <b-icon icon="weight-hanging" size="is-small" />

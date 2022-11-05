@@ -45,6 +45,7 @@ export function computeSpeedStats({
     (20 / (20 + Math.pow((20 * athletics + 3 * agility) / 120, 2)));
 
   return {
+    weightReductionFactor,
     freeWeight,
     perceivedWeight,
     nakedSpeed,
