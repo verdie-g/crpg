@@ -6,13 +6,13 @@ using TaleWorlds.MountAndBlade.View.MissionViews;
 namespace Crpg.Module.GUI;
 
 [OverrideView(typeof(CrpgMultiplayerMarkerUIHandler))]
-internal class CrpgGauntletMultiplayerMarkerUIHandler : MissionView
+internal class CrpgGauntletMultiplayerMarkerUiHandler : MissionView
 {
     private readonly MissionMultiplayerGameModeBaseClient _gameModeClient;
     private GauntletLayer? _gauntletLayer;
-    private CrpgMissionMarkerVM? _dataSource;
+    private CrpgMissionMarkerVm? _dataSource;
 
-    public CrpgGauntletMultiplayerMarkerUIHandler(MissionMultiplayerGameModeBaseClient gameModeClient)
+    public CrpgGauntletMultiplayerMarkerUiHandler(MissionMultiplayerGameModeBaseClient gameModeClient)
     {
         _gameModeClient = gameModeClient;
     }
@@ -20,8 +20,8 @@ internal class CrpgGauntletMultiplayerMarkerUIHandler : MissionView
     public override void OnMissionScreenInitialize()
     {
         base.OnMissionScreenInitialize();
-        _dataSource = new CrpgMissionMarkerVM(MissionScreen.CombatCamera, _gameModeClient);
-        _gauntletLayer = new GauntletLayer(1, "GauntletLayer", false);
+        _dataSource = new CrpgMissionMarkerVm(MissionScreen.CombatCamera, _gameModeClient);
+        _gauntletLayer = new GauntletLayer(1);
         _gauntletLayer.LoadMovie("MPMissionMarkers", _dataSource);
         MissionScreen.AddLayer(_gauntletLayer);
     }

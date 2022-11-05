@@ -46,7 +46,6 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
         CrpgExperienceTable experienceTable = new(_constants);
         MissionMultiplayerGameModeBaseClient gameModeClient = mission.GetMissionBehavior<MissionMultiplayerGameModeBaseClient>();
         MissionView crpgEscapeMenu = ViewCreatorManager.CreateMissionView<CrpgMissionMultiplayerEscapeMenu>(isNetwork: false, null, "Battle", gameModeClient);
-        MissionView altKeyMarkerView = ViewCreatorManager.CreateMissionView<CrpgMultiplayerMarkerUIHandler>(isNetwork: false, null, gameModeClient);
 
         return new[]
         {
@@ -72,7 +71,8 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
             new MissionBoundaryWallView(),
             new SpectatorCameraView(),
             new CrpgAgentHud(experienceTable),
-            altKeyMarkerView, // Draw flags but also player names when pressing ALT. (Native: CreateMissionFlagMarkerUIHandler)
+            // Draw flags but also player names when pressing ALT. (Native: CreateMissionFlagMarkerUIHandler)
+            ViewCreatorManager.CreateMissionView<CrpgMultiplayerMarkerUIHandler>(isNetwork: false, null, gameModeClient),
         };
     }
 #endif
