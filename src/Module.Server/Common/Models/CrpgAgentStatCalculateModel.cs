@@ -274,7 +274,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
         float weightReductionFactor = 1f / (1f + (strengthSkill * strengthSkill - 9) / 81f);
         float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
-        float freeWeight = 3f * (1 + (strengthSkill - 3f) / 30f);
+        float freeWeight = 2.5f * (1 + (strengthSkill - 3f) / 30f);
         float perceivedWeight = Math.Max(totalEncumbrance - freeWeight, 0f) * weightReductionFactor;
         props.TopSpeedReachDuration = 1.5f * (1f + perceivedWeight / 25f) * (20f / (20f + (float)Math.Pow(athleticsSkill / 120f, 2f)));
         float speed = 0.7f + 0.00085f * athleticsSkill;

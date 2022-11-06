@@ -31,7 +31,7 @@ export function computeSpeedStats({
   totalEncumbrance: number;
 }): CharacterSpeedStats {
   const weightReductionFactor = 1 / (1 + (strength * strength - 9) / 81);
-  const freeWeight = 3 * (1 + (strength - 3) / 30);
+  const freeWeight = 2.5 * (1 + (strength - 3) / 30);
   const perceivedWeight = Math.max(totalEncumbrance - freeWeight, 0) * weightReductionFactor;
   const nakedSpeed = 0.7 + 0.00085 * (20 * athletics + 2 * agility);
   const сurrentSpeed = clamp(
