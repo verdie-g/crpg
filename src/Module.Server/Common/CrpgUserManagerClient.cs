@@ -59,7 +59,7 @@ internal class CrpgUserManagerClient : MissionNetwork
         crpgPeer.User = message.User;
         if (crpgPeer.User.ClanMembership != null)
         {
-            crpgPeer.Clan = new CrpgClan { Id = message.User.ClanMembership!.ClanId };
+            crpgPeer.Clan = new CrpgClan { Id = crpgPeer.User.ClanMembership.ClanId };
         }
     }
 

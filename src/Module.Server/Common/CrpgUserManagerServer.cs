@@ -71,7 +71,8 @@ internal class CrpgUserManagerServer : MissionNetwork
         {
             CrpgPeer crpgPeer = networkPeers.GetComponent<CrpgPeer>();
             if (!networkPeers.IsConnectionActive || !networkPeers.IsSynchronized
-                || crpgPeer == null || crpgPeer.User == null || newPlayerNetworkPeer == networkPeers)
+                || crpgPeer == null || crpgPeer.User == null
+                || newPlayerNetworkPeer == networkPeers)
             {
                 continue;
             }
