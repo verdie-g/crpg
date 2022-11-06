@@ -190,9 +190,7 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     );
     this.equippedItems.forEach(ei => {
       result.price += ei.userItem.baseItem.price;
-      if (ei.userItem.baseItem.type === ItemType.Shield) {
-        result.weight += 1.5 * ei.userItem.baseItem.weight;
-      } else if (
+      if (
         ei.userItem.baseItem.type !== ItemType.Mount &&
         ei.userItem.baseItem.type !== ItemType.MountHarness
       ) {
