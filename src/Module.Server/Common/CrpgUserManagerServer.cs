@@ -3,7 +3,6 @@ using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Clans;
 using Crpg.Module.Api.Models.Restrictions;
 using Crpg.Module.Api.Models.Users;
-using Crpg.Module.Common.Network;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -68,11 +67,11 @@ internal class CrpgUserManagerServer : MissionNetwork
     /// </summary>
     private void SendExistingCrpgPeers(NetworkCommunicator newPlayerNetworkPeer)
     {
-        foreach (NetworkCommunicator otherNetworkPeers in GameNetwork.NetworkPeers)
+        foreach (NetworkCommunicator networkPeers in GameNetwork.NetworkPeers)
         {
-            CrpgPeer crpgPeer = otherNetworkPeers.GetComponent<CrpgPeer>();
-            if (!otherNetworkPeers.IsConnectionActive || !otherNetworkPeers.IsSynchronized
-                || crpgPeer == null || crpgPeer.User == null || newPlayerNetworkPeer == otherNetworkPeers)
+            CrpgPeer crpgPeer = networkPeers.GetComponent<CrpgPeer>();
+            if (!networkPeers.IsConnectionActive || !networkPeers.IsSynchronized
+                || crpgPeer == null || crpgPeer.User == null || newPlayerNetworkPeer == networkPeers)
             {
                 continue;
             }
