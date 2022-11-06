@@ -14,7 +14,7 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
     private static readonly CompressionInfo.Integer ExperienceCompressionInfo = new(0, int.MaxValue, true);
     private static readonly CompressionInfo.Integer LevelCompressionInfo = new(0, 50, true);
     private static readonly CompressionInfo.Integer SkillCompressionInfo = new(0, 16384, true);
-    private static readonly CompressionInfo.Integer ClanIdCompressionInfo = new(0, int.MaxValue, true);
+    private static readonly CompressionInfo.Integer ClanIdCompressionInfo = new(-1, int.MaxValue, true);
 
     public CrpgUser User { get; set; } = default!;
     public VirtualPlayer Peer { get; set; } = default!;
