@@ -174,13 +174,13 @@ internal class ItemExporter : IDataExporter
     private static readonly Dictionary<string, (float swingDamageFactor, float thrustDamageFactor, float bluntDamageFactor, float weightFactor, int stackAmount)> Blades = new()
     {
         // glaive
-        ["crpg_spear_blade_19"] = (0.7369f, 1f, 1f, 0.65f, 2),
+        ["crpg_spear_blade_19"] = (0.77f, 1f, 1f, 0.55f, 2),
         // voulge
-        ["crpg_axe_craft_10_head"] = (0.7488f, 1f, 1f, 0.85f, 2),
+        ["crpg_axe_craft_10_head"] = (0.7475f, 1f, 1f, 0.70f, 2),
         // long glaive
         ["crpg_spear_blade_24"] = (0.793f, 1f, 1f, 0.96f, 2),
         // menavlion
-        ["crpg_spear_blade_7"] = (0.85f, 1f, 1f, 1.3f, 2),
+        ["crpg_spear_blade_7"] = (0.90f, 1f, 1f, 1.3f, 2),
         // romphaia
         ["crpg_spear_blade_44"] = (0.7f, 1f, 1f, 0.95f, 2),
         // polesword
@@ -223,10 +223,11 @@ internal class ItemExporter : IDataExporter
         // javelin
         ["crpg_spear_blade_15"] = (1.225f, 1.4f, 1f, 1f, 1),
         // daggers
-        ["crpg_dagger_blade_10"] = (1f, 3.1f, 1f, 0.25f, 9),
-        ["crpg_dagger_blade_11"] = (1f, 3.1f, 1f, 0.25f, 9),
+        ["crpg_dagger_blade_10"] = (2f, 2f, 1f, 0.5f, 9),
+        ["crpg_dagger_blade_11"] = (2f, 2f, 1f, 0.5f, 9),
+        ["crpg_dagger_blade_13"] = (2f, 2f, 1f, 0.5f, 9),
+        // throwing knives
         ["crpg_dagger_blade_12"] = (1f, 3.1f, 1f, 0.25f, 9),
-        ["crpg_dagger_blade_13"] = (1f, 3.1f, 1f, 0.25f, 9),
         // Falx , Reaper Falx
         ["crpg_battania_blade_6"] = (0.95f, 1f, 1f, 1.05f, 0),
         // Broad Kaskara
@@ -271,8 +272,6 @@ internal class ItemExporter : IDataExporter
         ["crpg_battania_pommel_5"] = (1f, 0.7f),
         // Thamaskene Steel Two Handed Sword
         ["crpg_vlandian_pommel_9"] = (1f, 0.7f),
-        // xiphos
-        ["crpg_battania_pommel_7"] = (1f, 13f),
     };
 
     private static readonly Dictionary<string, (string handle, float handleSize, float bladeSizeFactor, bool canScaleHead)> AxesMacesandSpears = new()
@@ -330,13 +329,22 @@ internal class ItemExporter : IDataExporter
         // Triangular Throwing Spear
         ["crpg_eastern_throwing_spear_2_t4"] = ("crpg_Javelin", "crpg_spear_blade_15", "crpg_default_polearm_guard", "crpg_spear_handle_11", 300f, 225f, "crpg_spear_pommel_5"),
     };
-    private static readonly Dictionary<string, float> ThrowingKnives = new()
+    private static readonly Dictionary<string, float> KnivesAndDaggerParts = new()
     {
+        // xiphos
+        ["crpg_battania_pommel_7"] = 2f,
+        // throwing knives
         ["crpg_empire_grip_2"] = 0.25f,
         ["crpg_empire_dagger_guard_3"] = 0.25f,
         ["crpg_battania_dagger_guard_8"] = 0.25f,
         ["crpg_aserai_dagger_guard_4"] = 0.25f,
         ["crpg_sturgian_dagger_guard_5"] = 0.25f,
+    };
+    private static readonly Dictionary<string, string> ThrowingKnivesBladeSwap = new()
+    {
+        ["crpg_empire_throwingknife_t5"] = "crpg_dagger_blade_12",
+        ["crpg_lowland_throwing_knife"] = "crpg_dagger_blade_12",
+        ["crpg_leafblade_throwing_knife"] = "crpg_dagger_blade_12",
     };
     public async Task Export(string gitRepoPath)
     {
@@ -563,7 +571,7 @@ internal class ItemExporter : IDataExporter
                          FilterNodeByAttribute("Type", "Pommel"));
                  }
 
-                if (AxesMacesandSpears.TryGetValue(node1.Attributes["id"].Value, out var newAxeorMace))
+                 if (AxesMacesandSpears.TryGetValue(node1.Attributes["id"].Value, out var newAxeorMace))
                  {
                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
                         _ => newAxeorMace.handle,
@@ -588,6 +596,12 @@ internal class ItemExporter : IDataExporter
                          _ => newTwoHanded.bladeSize.ToString(CultureInfo.InvariantCulture),
                          FilterNodeByAttribute("Type", "Blade"));
                  }
+                if (ThrowingKnivesBladeSwap.TryGetValue(node1.Attributes["id"].Value, out var newBlade))
+                {
+                    ModifyChildNodesAttribute(node1, "Pieces/*", "id",
+                        _ => newBlade,
+                        FilterNodeByAttribute("Type", "Blade"));
+                }
             }
             else if (node1.Name == "CraftingPiece")
             {
@@ -628,7 +642,7 @@ internal class ItemExporter : IDataExporter
                     ModifyNodeAttribute(node1, "length",
                         v => (float.Parse(v) * newPommelStats.lengthFactor).ToString(CultureInfo.InvariantCulture), "0");
                 }
-                if (ThrowingKnives.TryGetValue(node1.Attributes["id"].Value, out float newThrowingKnivesWeightMultiplier))
+                if (KnivesAndDaggerParts.TryGetValue(node1.Attributes["id"].Value, out float newThrowingKnivesWeightMultiplier))
                 {
                     ModifyNodeAttribute(node1, "weight",
                         v => (float.Parse(v) * newThrowingKnivesWeightMultiplier).ToString(CultureInfo.InvariantCulture), "0");
@@ -723,6 +737,7 @@ internal class ItemExporter : IDataExporter
             }
             else if (node1.Name == "CraftingTemplate")
             {
+                List<XmlNode> nodesToRemove = new();
                 foreach (var node2 in node1.ChildNodes.Cast<XmlNode>())
                 {
                     if (node2.Name == "WeaponDescriptions")
@@ -731,6 +746,10 @@ internal class ItemExporter : IDataExporter
                         {
                             weaponDescriptionNode.Attributes!["id"].Value =
                                 PrefixCrpg(weaponDescriptionNode.Attributes["id"].Value);
+                            if (weaponDescriptionNode.Attributes["id"].Value == "crpg_Dagger" && node1.Attributes["id"].Value == "crpg_ThrowingKnife")
+                            {
+                                node2.RemoveChild(weaponDescriptionNode);
+                            }
                         }
                     }
                     else if (node2.Name == "StatsData")
@@ -739,6 +758,10 @@ internal class ItemExporter : IDataExporter
                         if (weaponDescriptionAttr != null)
                         {
                             weaponDescriptionAttr.Value = PrefixCrpg(weaponDescriptionAttr.Value);
+                            if (weaponDescriptionAttr.Value == "crpg_Dagger" && node1.Attributes["id"].Value == "crpg_ThrowingKnife")
+                            {
+                                nodesToRemove.Add(node2);
+                            }
                         }
                     }
                     else if (node2.Name == "UsablePieces")
@@ -747,7 +770,7 @@ internal class ItemExporter : IDataExporter
                         for (int j = 0; j < usablePieceNodes.Length; j += 1)
                         {
                             var usablePieceNode = usablePieceNodes[j];
-                            var mpPieceAttr = usablePieceNode.Attributes!["piece_id"];
+                            var mpPieceAttr = usablePieceNode.Attributes!["mp_piece"];
                             if (mpPieceAttr != null && mpPieceAttr.Value == "true")
                             {
                                 node2.RemoveChild(usablePieceNode);
@@ -758,6 +781,10 @@ internal class ItemExporter : IDataExporter
                                 PrefixCrpg(usablePieceNode.Attributes["piece_id"].Value);
                         }
                     }
+                }
+                foreach (var nodetoremove in nodesToRemove)
+                {
+                    node1.RemoveChild(nodetoremove);
                 }
             }
             else if (node1.Name == "WeaponDescription")

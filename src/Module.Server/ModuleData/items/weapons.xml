@@ -1979,7 +1979,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_lowland_throwing_knife" name="{=zvIax8Kt}Lowland Throwing Knife" culture="Culture.battania" crafting_template="crpg_ThrowingKnife" modifier_group="knife_throwing">
     <Pieces>
-      <Piece id="crpg_dagger_blade_11" Type="Blade" />
+      <Piece id="crpg_dagger_blade_12" Type="Blade" />
       <Piece id="crpg_aserai_dagger_guard_4" Type="Guard" />
       <Piece id="crpg_sturgian_grip_5" Type="Handle" />
       <Piece id="crpg_khuzait_pommel_1" Type="Pommel" />
@@ -1987,7 +1987,7 @@
   </CraftedItem>
   <CraftedItem id="crpg_leafblade_throwing_knife" name="{=te48yHa8}Leafblade Throwing Knife" culture="Culture.battania" crafting_template="crpg_ThrowingKnife" modifier_group="knife_throwing">
     <Pieces>
-      <Piece id="crpg_dagger_blade_11" Type="Blade" scale_factor="90" />
+      <Piece id="crpg_dagger_blade_12" Type="Blade" scale_factor="90" />
       <Piece id="crpg_sturgian_dagger_guard_5" Type="Guard" scale_factor="110" />
       <Piece id="crpg_khuzait_grip_2" Type="Handle" />
       <Piece id="crpg_vlandian_pommel_1" Type="Pommel" />
