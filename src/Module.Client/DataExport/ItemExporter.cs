@@ -590,12 +590,13 @@ internal class ItemExporter : IDataExporter
                          _ => newTwoHanded.bladeSize.ToString(CultureInfo.InvariantCulture),
                          FilterNodeByAttribute("Type", "Blade"));
                  }
-                if (ThrowingKnivesBladeSwap.TryGetValue(node1.Attributes["id"].Value, out var newBlade))
-                {
+
+                 if (ThrowingKnivesBladeSwap.TryGetValue(node1.Attributes["id"].Value, out string newBlade))
+                 {
                     ModifyChildNodesAttribute(node1, "Pieces/*", "id",
                         _ => newBlade,
                         FilterNodeByAttribute("Type", "Blade"));
-                }
+                 }
             }
             else if (node1.Name == "CraftingPiece")
             {
@@ -739,7 +740,7 @@ internal class ItemExporter : IDataExporter
                             weaponDescriptionAttr.Value = PrefixCrpg(weaponDescriptionAttr.Value);
                             if (weaponDescriptionAttr.Value == "crpg_Dagger" && node1.Attributes["id"].Value == "crpg_ThrowingKnife")
                             {
-                                nodesToRemove.Add(node2);
+                                nodesToRemove.Add(node2); // preventing throwing knives from being used as a dagger
                             }
                         }
                     }
@@ -761,9 +762,10 @@ internal class ItemExporter : IDataExporter
                         }
                     }
                 }
+
                 foreach (var nodetoremove in nodesToRemove)
                 {
-                    node1.RemoveChild(nodetoremove);
+                    node1.RemoveChild(nodetoremove); // preventing throwing knives from being used as a dagger
                 }
             }
             else if (node1.Name == "WeaponDescription")
