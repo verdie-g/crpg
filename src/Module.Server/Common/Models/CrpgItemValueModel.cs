@@ -111,14 +111,23 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateWeaponTier(WeaponComponent weaponComponent)
     {
         bool isAThrowingWeapon = weaponComponent.Weapons.Max(a => a.MaxDataValue) >= 1;
-        return weaponComponent.Item?.WeaponDesign == null
-            ? CalculateTierNonCraftedWeapon(weaponComponent)
-            :
-                isAThrowingWeapon
-                    ? CalculateThrownWeaponTier(weaponComponent) > CalculateTierMeleeWeapon(weaponComponent)
-                        ? CalculateThrownWeaponTier(weaponComponent)
-                        : CalculateTierMeleeWeapon(weaponComponent)
-                    : CalculateTierMeleeWeapon(weaponComponent);
+        if (weaponComponent.Item?.WeaponDesign == null)
+        {
+            return CalculateTierNonCraftedWeapon(weaponComponent);
+        }
+        else
+        {
+            if (isAThrowingWeapon && CalculateThrownWeaponTier(weaponComponent) > CalculateTierMeleeWeapon(weaponComponent))
+            {
+                return CalculateThrownWeaponTier(weaponComponent);
+            }
+            else
+            {
+                return CalculateTierMeleeWeapon(weaponComponent);
+            }
+        }
+
+
     }
 
     private float CalculateTierMeleeWeapon(WeaponComponent weaponComponent)
