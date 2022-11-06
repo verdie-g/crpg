@@ -726,7 +726,8 @@ internal class ItemExporter : IDataExporter
                         {
                             weaponDescriptionNode.Attributes!["id"].Value =
                                 PrefixCrpg(weaponDescriptionNode.Attributes["id"].Value);
-                            if (weaponDescriptionNode.Attributes["id"].Value == "crpg_Dagger" && node1.Attributes["id"].Value == "crpg_ThrowingKnife")
+                            if (weaponDescriptionNode.Attributes["id"].Value == "crpg_Dagger"
+                             && node1.Attributes["id"].Value == "crpg_ThrowingKnife")
                             {
                                 node2.RemoveChild(weaponDescriptionNode);
                             }
@@ -738,7 +739,8 @@ internal class ItemExporter : IDataExporter
                         if (weaponDescriptionAttr != null)
                         {
                             weaponDescriptionAttr.Value = PrefixCrpg(weaponDescriptionAttr.Value);
-                            if (weaponDescriptionAttr.Value == "crpg_Dagger" && node1.Attributes["id"].Value == "crpg_ThrowingKnife")
+                            if (weaponDescriptionAttr.Value == "crpg_Dagger"
+                             && node1.Attributes["id"].Value == "crpg_ThrowingKnife")
                             {
                                 nodesToRemove.Add(node2); // preventing throwing knives from being used as a dagger
                             }
