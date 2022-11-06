@@ -256,24 +256,6 @@ internal class ItemExporter : IDataExporter
         ["crpg_spear_blade_40"] = (1f, 1.65f, 1f, 1f, 0),
     };
 
-    private static readonly Dictionary<string, (float lengthFactor, float weightFactor)> Handles = new()
-    {
-        // Highland BroadBlade - Engraved Backsword
-        ["crpg_battania_grip_4"] = (1f, 1.0f),
-        // Spiked Battle Axe
-        ["crpg_axe_craft_13_handle"] = (1f, 0.7f),
-        // Cataphract Mace
-        ["crpg_mace_handle_5"] = (1f, 0.6f),
-    };
-
-    private static readonly Dictionary<string, (float lengthFactor, float weightFactor)> Pommels = new()
-    {
-        // Highland BroadBlade - Engraved Backsword
-        ["crpg_battania_pommel_5"] = (1f, 0.7f),
-        // Thamaskene Steel Two Handed Sword
-        ["crpg_vlandian_pommel_9"] = (1f, 0.7f),
-    };
-
     private static readonly Dictionary<string, (string handle, float handleSize, float bladeSizeFactor, bool canScaleHead)> AxesMacesandSpears = new()
     {
         // Throwing Axes
@@ -329,7 +311,7 @@ internal class ItemExporter : IDataExporter
         // Triangular Throwing Spear
         ["crpg_eastern_throwing_spear_2_t4"] = ("crpg_Javelin", "crpg_spear_blade_15", "crpg_default_polearm_guard", "crpg_spear_handle_11", 300f, 225f, "crpg_spear_pommel_5"),
     };
-    private static readonly Dictionary<string, float> KnivesAndDaggerParts = new()
+    private static readonly Dictionary<string, float> Parts = new()
     {
         // xiphos
         ["crpg_battania_pommel_7"] = 2f,
@@ -339,6 +321,18 @@ internal class ItemExporter : IDataExporter
         ["crpg_battania_dagger_guard_8"] = 0.25f,
         ["crpg_aserai_dagger_guard_4"] = 0.25f,
         ["crpg_sturgian_dagger_guard_5"] = 0.25f,
+
+        // Highland BroadBlade - Engraved Backsword
+        ["crpg_battania_pommel_5"] = 0.7f,
+        // Thamaskene Steel Two Handed Sword
+        ["crpg_vlandian_pommel_9"] = 0.7f,
+
+        // Highland BroadBlade - Engraved Backsword
+        ["crpg_battania_grip_4"] = 1.0f,
+        // Spiked Battle Axe
+        ["crpg_axe_craft_13_handle"] = 0.7f,
+        // Cataphract Mace
+        ["crpg_mace_handle_5"] = 0.6f,
     };
     private static readonly Dictionary<string, string> ThrowingKnivesBladeSwap = new()
     {
@@ -627,22 +621,7 @@ internal class ItemExporter : IDataExporter
                         _ => newBladeStats.stackAmount.ToString(CultureInfo.InvariantCulture));
                 }
 
-                if (Handles.TryGetValue(node1.Attributes["id"].Value, out var newHandleStats))
-                {
-                    ModifyNodeAttribute(node1, "weight",
-                        v => (float.Parse(v) * newHandleStats.weightFactor).ToString(CultureInfo.InvariantCulture), "0");
-                    ModifyNodeAttribute(node1, "length",
-                        v => (float.Parse(v) * newHandleStats.lengthFactor).ToString(CultureInfo.InvariantCulture), "0");
-                }
-
-                if (Pommels.TryGetValue(node1.Attributes["id"].Value, out var newPommelStats))
-                {
-                    ModifyNodeAttribute(node1, "weight",
-                        v => (float.Parse(v) * newPommelStats.weightFactor).ToString(CultureInfo.InvariantCulture), "0");
-                    ModifyNodeAttribute(node1, "length",
-                        v => (float.Parse(v) * newPommelStats.lengthFactor).ToString(CultureInfo.InvariantCulture), "0");
-                }
-                if (KnivesAndDaggerParts.TryGetValue(node1.Attributes["id"].Value, out float newThrowingKnivesWeightMultiplier))
+                if (Parts.TryGetValue(node1.Attributes["id"].Value, out float newThrowingKnivesWeightMultiplier))
                 {
                     ModifyNodeAttribute(node1, "weight",
                         v => (float.Parse(v) * newThrowingKnivesWeightMultiplier).ToString(CultureInfo.InvariantCulture), "0");
