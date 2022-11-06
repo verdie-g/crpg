@@ -64,34 +64,4 @@ internal class CrpgPeer : PeerComponent
             }
         }
     }
-
-    public void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode mode)
-    {
-        if (GameNetwork.IsClientOrReplay)
-        {
-            GameNetwork.NetworkMessageHandlerRegisterer registerer = new(mode);
-            registerer.Register<UpdateCrpgUser>(HandleUpdateCrpgUser);
-            registerer.Register<UpdateRewardMultiplier>(HandleUpdateRewardMultiplier);
-        }
-    }
-
-    private void HandleUpdateCrpgUser(UpdateCrpgUser message)
-    {
-        if (Peer != message.Peer)
-        {
-            return;
-        }
-
-        User = message.User;
-        if (User.ClanMembership != null)
-        {
-            Clan = new();
-            Clan.Id = User.ClanMembership.ClanId;
-        }
-    }
-
-    private void HandleUpdateRewardMultiplier(UpdateRewardMultiplier message)
-    {
-        RewardMultiplier = message.RewardMultiplier;
-    }
 }

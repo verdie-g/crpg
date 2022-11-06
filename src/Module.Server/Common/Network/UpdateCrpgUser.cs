@@ -26,12 +26,7 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
         WriteIntToPacket(User.Character.Level, LevelCompressionInfo);
         WriteIntToPacket(User.Character.Experience, ExperienceCompressionInfo);
         WriteCharacterCharacteristics(User.Character.Characteristics);
-        bool hasClan = User.ClanMembership != null;
-        WriteBoolToPacket(hasClan);
-        if (hasClan)
-        {
-            WriteIntToPacket(User.ClanMembership!.ClanId, ClanIdCompressionInfo);
-        }
+        WriteIntToPacket(User.ClanMembership?.ClanId ?? -1, ClanIdCompressionInfo);
     }
 
     protected override bool OnRead()
@@ -42,13 +37,8 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
         int level = ReadIntFromPacket(LevelCompressionInfo, ref bufferReadValid);
         int exp = ReadIntFromPacket(ExperienceCompressionInfo, ref bufferReadValid);
         CrpgCharacterCharacteristics characteristics = ReadCharacterCharacteristics(ref bufferReadValid);
-        bool hasClan = ReadBoolFromPacket(ref bufferReadValid);
-        CrpgClanMember? clanMembership = null;
-        if (hasClan)
-        {
-            clanMembership = new();
-            clanMembership.ClanId = ReadIntFromPacket(ClanIdCompressionInfo, ref bufferReadValid);
-        }
+        int clanId = ReadIntFromPacket(ClanIdCompressionInfo, ref bufferReadValid);
+        CrpgClanMember? clanMembership = clanId != -1 ? new CrpgClanMember { ClanId = clanId } : null;
 
         // Build Crpg Character
         User = new CrpgUser
