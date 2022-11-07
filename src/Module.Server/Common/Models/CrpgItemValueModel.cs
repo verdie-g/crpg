@@ -111,27 +111,43 @@ internal class CrpgItemValueModel : ItemValueModel
     private float CalculateWeaponTier(WeaponComponent weaponComponent)
     {
         bool isAThrowingWeapon = weaponComponent.Weapons.Max(a => a.MaxDataValue) >= 1;
-        return weaponComponent.Item?.WeaponDesign == null
-            ? CalculateTierNonCraftedWeapon(weaponComponent)
-            :
-                isAThrowingWeapon
-                    ? CalculateThrownWeaponTier(weaponComponent)
-                    : CalculateTierMeleeWeapon(weaponComponent);
+        if (weaponComponent.Item?.WeaponDesign == null)
+        {
+            return CalculateTierNonCraftedWeapon(weaponComponent);
+        }
+        else
+        {
+            if (isAThrowingWeapon && CalculateThrownWeaponTier(weaponComponent) > CalculateTierMeleeWeapon(weaponComponent))
+            {
+                return CalculateThrownWeaponTier(weaponComponent);
+            }
+            else
+            {
+                return CalculateTierMeleeWeapon(weaponComponent);
+            }
+        }
     }
 
     private float CalculateTierMeleeWeapon(WeaponComponent weaponComponent)
     {
-        float weaponScaler = weaponComponent.Item.ItemType switch
-        {
-            ItemObject.ItemTypeEnum.OneHandedWeapon => 44.76610788925f,
-            ItemObject.ItemTypeEnum.TwoHandedWeapon => 92.89804473393f,
-            ItemObject.ItemTypeEnum.Polearm => 28.6f,
-            _ => 1f,
-        };
         float maxTier = float.MinValue;
 
         foreach (var weapon in weaponComponent.Weapons)
         {
+            float weaponScaler = weapon.WeaponClass switch
+            {
+                WeaponClass.OneHandedSword => 41.18481925811f,
+                WeaponClass.OneHandedAxe => 49.74011987693f,
+                WeaponClass.Mace => 41.18481925811f,
+                WeaponClass.Dagger => 44.76610788925f,
+                WeaponClass.TwoHandedSword => 99.4009078653051f,
+                WeaponClass.TwoHandedMace => 92.89804473393f,
+                WeaponClass.TwoHandedAxe => 65.4211f,
+                WeaponClass.TwoHandedPolearm => 34.90445f,
+                WeaponClass.OneHandedPolearm => 34.90445f,
+                _ => float.MaxValue,
+            };
+
             float thrustTier =
                   (float)Math.Pow(weapon.ThrustDamage, 2.25f)
                 * CalculateDamageTypeFactor(weapon.ThrustDamageType)
@@ -174,23 +190,14 @@ internal class CrpgItemValueModel : ItemValueModel
                 tier *= 1.15f;
             }
 
-            if (weapon.WeaponClass == WeaponClass.OneHandedAxe)
-            {
-                tier *= 0.9f;
-            }
-
-            if (weapon.WeaponClass == WeaponClass.TwoHandedAxe)
-            {
-                tier *= 1.42f;
-            }
-
             float lengthTier = weapon.WeaponLength * 0.01f;
             float handlingFactor = weapon.Handling / 100f;
             tier =
-                  0.06f
-                * (tier * (float)Math.Pow(1f + lengthTier, 1.75f))
+                  0.18f
+                * (tier * (float)Math.Pow(lengthTier, 1.5f))
                 * (float)Math.Pow(handlingFactor, 3f);
             tier *= thrustTier > swingTier ? 2f : 1f;
+            tier /= weaponScaler;
 
             if (tier >= maxTier)
             {
@@ -198,7 +205,7 @@ internal class CrpgItemValueModel : ItemValueModel
             }
         }
 
-        return maxTier / weaponScaler;
+        return maxTier;
     }
 
     private float CalculateDamageTypeFactor(DamageTypes damageType)
@@ -265,7 +272,6 @@ internal class CrpgItemValueModel : ItemValueModel
 
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
-
             float crossbowscaler = 2.479958463230f;
             return
                  weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f

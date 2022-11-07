@@ -3456,7 +3456,7 @@
       <Material id="Wood" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_battania_pommel_7" name="{=G9cBw5sV}Highland Round Pommel" tier="4" piece_type="Pommel" mesh="battania_pommel_7" culture="Culture.battania" length="10" weight="3.25">
+  <CraftingPiece id="crpg_battania_pommel_7" name="{=G9cBw5sV}Highland Round Pommel" tier="4" piece_type="Pommel" mesh="battania_pommel_7" culture="Culture.battania" length="10" weight="0.5">
     <Materials>
       <Material id="Iron4" count="1" />
     </Materials>
@@ -3606,10 +3606,10 @@
       <Material id="Iron4" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_dagger_blade_10" name="{=TLtaGEcB}Wide Makhaira Blade" tier="2" piece_type="Blade" mesh="dagger_blade_10" length="30" weight="0.11875">
+  <CraftingPiece id="crpg_dagger_blade_10" name="{=TLtaGEcB}Wide Makhaira Blade" tier="2" piece_type="Blade" mesh="dagger_blade_10" length="30" weight="0.2375">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="2.604" />
-      <Swing damage_type="Cut" damage_factor="1.225" />
+      <Thrust damage_type="Pierce" damage_factor="1.68" />
+      <Swing damage_type="Cut" damage_factor="2.45" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -3618,10 +3618,10 @@
       <Material id="Iron3" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_dagger_blade_11" name="{=ykTYTbek}Throwing Knife Blade" tier="2" piece_type="Blade" mesh="dagger_blade_11" length="30" weight="0.11875">
+  <CraftingPiece id="crpg_dagger_blade_11" name="{=ykTYTbek}Throwing Knife Blade" tier="2" piece_type="Blade" mesh="dagger_blade_11" length="30" weight="0.2375">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_2" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="2.604" />
-      <Swing damage_type="Cut" damage_factor="1.225" />
+      <Thrust damage_type="Pierce" damage_factor="1.68" />
+      <Swing damage_type="Cut" damage_factor="2.45" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -3642,10 +3642,10 @@
       <Material id="Iron2" count="1" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_dagger_blade_13" name="{=5o5DaSHZ}Broad Dagger Blade" tier="2" piece_type="Blade" mesh="dagger_blade_13" length="29" weight="0.11875">
+  <CraftingPiece id="crpg_dagger_blade_13" name="{=5o5DaSHZ}Broad Dagger Blade" tier="2" piece_type="Blade" mesh="dagger_blade_13" length="29" weight="0.2375">
     <BladeData stack_amount="9" physics_material="metal_weapon" body_name="bo_knife_a" holster_mesh="throwing_dagger_quiver_1" holster_mesh_length="35.8">
-      <Thrust damage_type="Pierce" damage_factor="2.604" />
-      <Swing damage_type="Cut" damage_factor="1.225" />
+      <Thrust damage_type="Pierce" damage_factor="1.68" />
+      <Swing damage_type="Cut" damage_factor="2.45" />
     </BladeData>
     <Flags>
       <Flag name="Civilian" type="ItemFlags" />
@@ -4941,11 +4941,11 @@
       <Material id="Iron5" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_axe_craft_10_head" name="{=LNDbMUK0}Voulge Head" tier="4" piece_type="Blade" mesh="axe_craft_10_head" distance_to_next_piece="23" distance_to_previous_piece="4" weight="0.595">
+  <CraftingPiece id="crpg_axe_craft_10_head" name="{=LNDbMUK0}Voulge Head" tier="4" piece_type="Blade" mesh="axe_craft_10_head" distance_to_next_piece="23" distance_to_previous_piece="4" weight="0.49">
     <BuildData piece_offset="-8" />
     <BladeData stack_amount="2" blade_length="23.118" blade_width="18.371" physics_material="metal_weapon" body_name="bo_axe_longer_b">
       <Thrust damage_type="Pierce" damage_factor="0.91" />
-      <Swing damage_type="Cut" damage_factor="1.231776" />
+      <Swing damage_type="Cut" damage_factor="1.229638" />
     </BladeData>
     <Flags>
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
@@ -4963,10 +4963,10 @@
       <Material id="Iron4" count="2" />
     </Materials>
   </CraftingPiece>
-  <CraftingPiece id="crpg_spear_blade_19" name="{=OBeOZ27b}Glaive Head" tier="4" piece_type="Blade" mesh="spear_blade_19" length="37.4" weight="0.28652">
+  <CraftingPiece id="crpg_spear_blade_19" name="{=OBeOZ27b}Glaive Head" tier="4" piece_type="Blade" mesh="spear_blade_19" length="37.4" weight="0.24244">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
       <Thrust damage_type="Pierce" damage_factor="0.595" />
-      <Swing damage_type="Cut" damage_factor="0.980077" />
+      <Swing damage_type="Cut" damage_factor="1.0241" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="1" />
@@ -5060,7 +5060,7 @@
   <CraftingPiece id="crpg_spear_blade_7" name="{=dXRt8jY4}Menavlion Head" tier="4" piece_type="Blade" mesh="spear_blade_7" length="52.924" weight="0.47528">
     <BladeData stack_amount="2" physics_material="wood_weapon" body_name="bo_spear_b">
       <Thrust damage_type="Pierce" damage_factor="0.98" />
-      <Swing damage_type="Cut" damage_factor="1.04125" />
+      <Swing damage_type="Cut" damage_factor="1.1025" />
     </BladeData>
     <Materials>
       <Material id="Iron4" count="1" />
