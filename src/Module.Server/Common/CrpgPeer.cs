@@ -11,22 +11,44 @@ internal class CrpgPeer : PeerComponent
     private CrpgUser? _user;
     private int _rewardMultiplier;
 
+    public CrpgClan? Clan { get; set; }
+
+    /// <summary>The team the user has spawn in. Used to give the correct reward multiplier even after changing team.</summary>
+    public Team? SpawnTeamThisRound { get; set; }
+
     public CrpgUser? User
     {
         get => _user;
         set
         {
             _user = value ?? throw new ArgumentNullException();
-            if (GameNetwork.IsServerOrRecorder) // Synchronize the property with the client.
-            {
-                GameNetwork.BeginModuleEventAsServer(Peer);
-                GameNetwork.WriteMessage(new UpdateCrpgUser { User = _user });
-                GameNetwork.EndModuleEventAsServer();
-            }
+            SynchronizeToEveryone(); // Synchronize the property with the client.
         }
     }
 
-    public CrpgClan? Clan { get; set; }
+    public void SynchronizeToPlayer(VirtualPlayer targetPeer)
+    {
+        if (_user == null || !GameNetwork.IsServerOrRecorder)
+        {
+            return;
+        }
+
+        GameNetwork.BeginModuleEventAsServer(targetPeer);
+        GameNetwork.WriteMessage(new UpdateCrpgUser { Peer = Peer, User = _user });
+        GameNetwork.EndModuleEventAsServer();
+    }
+
+    public void SynchronizeToEveryone()
+    {
+        if (_user == null || !GameNetwork.IsServerOrRecorder)
+        {
+            return;
+        }
+
+        GameNetwork.BeginBroadcastModuleEvent();
+        GameNetwork.WriteMessage(new UpdateCrpgUser { Peer = Peer, User = _user });
+        GameNetwork.EndBroadcastModuleEvent(GameNetwork.EventBroadcastFlags.None);
+    }
 
     public int RewardMultiplier
     {
@@ -41,28 +63,5 @@ internal class CrpgPeer : PeerComponent
                 GameNetwork.EndModuleEventAsServer();
             }
         }
-    }
-
-    /// <summary>The team the user has spawn in. Used to give the correct reward multiplier even after changing team.</summary>
-    public Team? SpawnTeamThisRound { get; set; }
-
-    public void AddRemoveMessageHandlers(GameNetwork.NetworkMessageHandlerRegisterer.RegisterMode mode)
-    {
-        if (GameNetwork.IsClientOrReplay)
-        {
-            GameNetwork.NetworkMessageHandlerRegisterer registerer = new(mode);
-            registerer.Register<UpdateCrpgUser>(HandleUpdateCrpgUser);
-            registerer.Register<UpdateRewardMultiplier>(HandleUpdateRewardMultiplier);
-        }
-    }
-
-    private void HandleUpdateCrpgUser(UpdateCrpgUser message)
-    {
-        User = message.User;
-    }
-
-    private void HandleUpdateRewardMultiplier(UpdateRewardMultiplier message)
-    {
-        RewardMultiplier = message.RewardMultiplier;
     }
 }

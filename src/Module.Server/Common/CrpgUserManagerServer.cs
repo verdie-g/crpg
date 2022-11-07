@@ -38,6 +38,7 @@ internal class CrpgUserManagerServer : MissionNetwork
     {
         base.HandleEarlyNewClientAfterLoadingFinished(networkPeer);
         networkPeer.AddComponent<CrpgPeer>();
+        SendExistingCrpgPeers(networkPeer); // Add CrpgPeer component for all other players for new client.
     }
 
     protected override void HandleNewClientAfterSynchronized(NetworkCommunicator networkPeer)
@@ -58,6 +59,26 @@ internal class CrpgUserManagerServer : MissionNetwork
             }
 
             RewardMultiplierByPlayerId[networkPeer.VirtualPlayer.Id] = crpgPeer.RewardMultiplier;
+        }
+    }
+
+    /// <summary>
+    /// Used to synchronize existing CrpgPeers to the new client.
+    /// </summary>
+    private void SendExistingCrpgPeers(NetworkCommunicator newPlayerNetworkPeer)
+    {
+        foreach (NetworkCommunicator networkPeers in GameNetwork.NetworkPeers)
+        {
+            CrpgPeer crpgPeer = networkPeers.GetComponent<CrpgPeer>();
+            if (!networkPeers.IsConnectionActive || !networkPeers.IsSynchronized
+                || crpgPeer == null || crpgPeer.User == null
+                || newPlayerNetworkPeer == networkPeers)
+            {
+                continue;
+            }
+
+            // Update all CrpgPeers to current values.
+            crpgPeer.SynchronizeToPlayer(newPlayerNetworkPeer.VirtualPlayer);
         }
     }
 
