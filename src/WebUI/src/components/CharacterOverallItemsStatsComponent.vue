@@ -7,17 +7,10 @@
         <b-icon icon="coins" size="is-small" />
       </td>
       <tr>
-        <td><b>Max repair cost</b></td>
-        <td>
-          {{ itemStats.maxRepairCost.toLocaleString('en-US', { maximumFractionDigits: 2 }) }} / min
-          <b-icon icon="coins" size="is-small" />
-        </td>
-      </tr>
-      <tr>
         <td><b>Average repair cost</b></td>
         <td>
           {{ itemStats.averageRepairCost.toLocaleString('en-US', { maximumFractionDigits: 2 }) }} /
-          min
+          hour
           <b-icon icon="coins" size="is-small" />
         </td>
       </tr>
@@ -119,10 +112,7 @@ import EquippedItem from '@/models/equipped-item';
 import Character from '@/models/character';
 import type CharacterCharacteristics from '@/models/character-characteristics';
 import type CharacterSpeedStats from '@/models/сharacter-speed-stats';
-import {
-  computeAverageRepairCostByMinute,
-  computeMaxRepairCostByMinute,
-} from '@/services/item-service';
+import { computeAverageRepairCostByHour } from '@/services/item-service';
 import { computeHealthPoints, computeSpeedStats } from '@/services/characters-service';
 import ItemType from '@/models/item-type';
 
@@ -161,7 +151,6 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
   get itemStats(): Record<string, number> {
     const result = {
       price: 0,
-      maxRepairCost: 0,
       averageRepairCost: 0,
       headArmor: 0,
       bodyArmor: 0,
@@ -171,10 +160,7 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     };
 
     if (!this.equippedItems) return result;
-    result.maxRepairCost = computeMaxRepairCostByMinute(
-      this.equippedItems.map(item => item.userItem.baseItem)
-    );
-    result.averageRepairCost = computeAverageRepairCostByMinute(
+    result.averageRepairCost = computeAverageRepairCostByHour(
       this.equippedItems.map(item => item.userItem.baseItem)
     );
     this.equippedItems.forEach(ei => {
