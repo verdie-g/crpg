@@ -337,7 +337,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         {
             int weaponSkill = GetEffectiveSkillForWeapon(agent, equippedItem);
             props.WeaponInaccuracy = GetWeaponInaccuracy(agent, equippedItem, weaponSkill);
-            if (agent.HasMount)
+            if (agent.HasMount && !equippedItem.IsRangedWeapon)
             {
                 // SwingSpeed Nerf on Horseback
                 float swingSpeedFactor = 1f / Math.Max(equippedItem.WeaponLength / 100f, 1f);
