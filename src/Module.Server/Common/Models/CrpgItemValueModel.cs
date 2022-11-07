@@ -126,8 +126,6 @@ internal class CrpgItemValueModel : ItemValueModel
                 return CalculateTierMeleeWeapon(weaponComponent);
             }
         }
-
-
     }
 
     private float CalculateTierMeleeWeapon(WeaponComponent weaponComponent)
@@ -274,7 +272,6 @@ internal class CrpgItemValueModel : ItemValueModel
 
         if (weaponComponent.Item is { ItemType: ItemObject.ItemTypeEnum.Crossbow })
         {
-
             float crossbowscaler = 2.479958463230f;
             return
                  weapon.ThrustDamage / 100f * weapon.ThrustDamage / 100f
