@@ -682,6 +682,8 @@ internal class ItemExporter : IDataExporter
                 {
                     ModifyChildNodesAttribute(node1, "ItemComponent/Weapon", "hit_points",
                         v => ((int)(int.Parse(v) * 0.5f)).ToString(CultureInfo.InvariantCulture));
+                    ModifyNodeAttribute(node1, "weight",
+                        _ => ModifyShieldWeight(node1).ToString(CultureInfo.InvariantCulture));
                 }
                 else if (type == ItemObject.ItemTypeEnum.Bow || type == ItemObject.ItemTypeEnum.Thrown)
                 {
@@ -849,6 +851,14 @@ internal class ItemExporter : IDataExporter
             _ => throw new ArgumentOutOfRangeException(),
         };
         return 6 * (float)Math.Pow(armorPower, 1.5f) / bestArmorPower;
+    }
+
+    private static float ModifyShieldWeight(XmlNode node)
+    {
+        XmlNode shieldNode = node.SelectNodes("ItemComponent/Weapon")!.Cast<XmlNode>().First();
+        return (shieldNode.Attributes["hit_points"] == null ? 0f : float.Parse(shieldNode.Attributes["hit_points"].Value)
+          + (shieldNode.Attributes["body_armor"] == null ? 0f : 15f * float.Parse(shieldNode.Attributes["body_armor"].Value)))
+          * 0.0002f * (shieldNode.Attributes["weapon_length"] == null ? 1f : float.Parse(shieldNode.Attributes["weapon_length"].Value));
     }
 
     private static void RegisterMbObjects<T>(XmlDocument doc, Game game) where T : MBObjectBase, new()
