@@ -90,12 +90,12 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         float skillComponentMultiplier = 1f;
         float weaponClassMultiplier = weapon.WeaponClass switch
         {
-            WeaponClass.Bow => 1.4f,
+            WeaponClass.Bow => 1.2f,
             WeaponClass.Crossbow => 0.5f,
             WeaponClass.Stone => 1f,
-            WeaponClass.ThrowingAxe => 1.5f,
-            WeaponClass.ThrowingKnife => 1.5f,
-            WeaponClass.Javelin => 1.5f,
+            WeaponClass.ThrowingAxe => 1.1f,
+            WeaponClass.ThrowingKnife => 1.1f,
+            WeaponClass.Javelin => 1.1f,
             _ => 1f,
         };
 
