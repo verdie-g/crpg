@@ -717,13 +717,16 @@ internal class ItemExporter : IDataExporter
             }
             else if (node1.Name == "CraftingTemplate")
             {
-                List<XmlNode> nodesToRemove = new();
-                foreach (var node2 in node1.ChildNodes.Cast<XmlNode>())
+                List<XmlNode> node1Childs = node1.ChildNodes.Cast<XmlNode>().ToList();
+                for (int p = node1Childs.Count - 1; p >= 0; p--)
                 {
+                    XmlNode node2 = node1Childs[p];
                     if (node2.Name == "WeaponDescriptions")
                     {
-                        foreach (var weaponDescriptionNode in node2.ChildNodes.Cast<XmlNode>())
+                        List<XmlNode> node2Childs = node2.ChildNodes.Cast<XmlNode>().ToList();
+                        for (int k = node2Childs.Count - 1; k >= 0; k--)
                         {
+                            XmlNode weaponDescriptionNode = node2Childs[k];
                             weaponDescriptionNode.Attributes!["id"].Value =
                                 PrefixCrpg(weaponDescriptionNode.Attributes["id"].Value);
                             if (weaponDescriptionNode.Attributes["id"].Value == "crpg_Dagger"
@@ -742,7 +745,7 @@ internal class ItemExporter : IDataExporter
                             if (weaponDescriptionAttr.Value == "crpg_Dagger"
                              && node1.Attributes["id"].Value == "crpg_ThrowingKnife")
                             {
-                                nodesToRemove.Add(node2); // preventing throwing knives from being used as a dagger
+                                node1.RemoveChild(node2); // preventing throwing knives from being used as a dagger
                             }
                         }
                     }
@@ -763,11 +766,6 @@ internal class ItemExporter : IDataExporter
                                 PrefixCrpg(usablePieceNode.Attributes["piece_id"].Value);
                         }
                     }
-                }
-
-                foreach (var nodetoremove in nodesToRemove)
-                {
-                    node1.RemoveChild(nodetoremove); // preventing throwing knives from being used as a dagger
                 }
             }
             else if (node1.Name == "WeaponDescription")
