@@ -320,7 +320,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
             ? equipment[wieldedItemIndex4].CurrentUsageItem
             : null;
         int itemSkill = GetEffectiveSkill(character, agent.Origin, agent.Formation, equippedItem?.RelevantSkill ?? DefaultSkills.Athletics);
-        props.SwingSpeedMultiplier = 0.725f + 0.00145f * itemSkill;
+        props.SwingSpeedMultiplier = 0.74f + 0.009f * (float)Math.Pow(itemSkill, 0.65f);
         props.ThrustOrRangedReadySpeedMultiplier = props.SwingSpeedMultiplier;
         props.HandlingMultiplier = 1f;
         props.ShieldBashStunDurationMultiplier = 1f;
