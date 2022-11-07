@@ -35,15 +35,15 @@ export function timestampToTimeString(ts: number): string {
   return timeStr;
 }
 
-function daysToMs(days = 0) {
+function daysToMs(days: number) {
   return days * 24 * 60 * 60 * 1000;
 }
 
-function hoursToMs(hours = 0) {
+function hoursToMs(hours: number) {
   return hours * 60 * 60 * 1000;
 }
 
-function minutesToMs(minutes = 0) {
+function minutesToMs(minutes: number) {
   return minutes * 60 * 1000;
 }
 

@@ -1,3 +1,5 @@
+import queryString from 'query-string';
+
 import User from '@/models/user';
 import UserPublic from '@/models/user-public';
 import Character from '@/models/character';
@@ -17,18 +19,18 @@ export function getUserByUserId(id: number): Promise<UserPublic> {
   return get(`/users/${id}`);
 }
 
-export function getUserByPlatformUserId(
-  platform: Platform,
-  platformUserId: string
-): Promise<UserPublic> {
-  return get(`/users/searchByPlatform?platform=${platform}&platformUserId=${platformUserId}`);
+interface UserSearcyQuery {
+  platform?: Platform;
+  platformUserId?: string;
+  name?: string;
 }
 
-export function getUsersByName(name: string): Promise<UserPublic[]> {
-  return get(`/users/searchByName?name=${name}`);
+export function searchUser(payload: UserSearcyQuery): Promise<UserPublic[]> {
+  const query = queryString.stringify(payload, { skipEmptyString: true, skipNull: true });
+  return get(`/users?${query}`);
 }
 
-export async function getUserRestrictions(id: number): Promise<Restriction[]> {
+export function getUserRestrictions(id: number): Promise<Restriction[]> {
   return get(`/users/${id}/restrictions`);
 }
 
@@ -121,8 +123,4 @@ export function sellUserItem(userItemId: number): Promise<UserItem> {
 
 export function getCharacters(): Promise<Character[]> {
   return get('/users/self/characters');
-}
-
-export async function getRestrictions(): Promise<Restriction[]> {
-  return get(`/users/self/restrictions`);
 }

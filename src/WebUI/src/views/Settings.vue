@@ -64,7 +64,7 @@ export default class Settings extends Vue {
   }
 
   async created() {
-    this.restrictions = await userService.getRestrictions();
+    this.restrictions = await userService.getUserRestrictions(this.user!.id);
   }
 
   onDeleteAccount(): void {

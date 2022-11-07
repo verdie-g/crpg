@@ -9,12 +9,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crpg.Application.Users.Queries;
 
-public record GetUserByPlatformIdQuery : IMediatorRequest<UserPublicViewModel>
+public record GetUserByPlatformIdQuery : IMediatorRequest<UserPublicViewModel[]>
 {
     public Platform Platform { get; init; }
     public string PlatformUserId { get; init; } = string.Empty;
 
-    internal class Handler : IMediatorRequestHandler<GetUserByPlatformIdQuery, UserPublicViewModel>
+    internal class Handler : IMediatorRequestHandler<GetUserByPlatformIdQuery, UserPublicViewModel[]>
     {
         private readonly ICrpgDbContext _db;
         private readonly IMapper _mapper;
@@ -25,14 +25,12 @@ public record GetUserByPlatformIdQuery : IMediatorRequest<UserPublicViewModel>
             _mapper = mapper;
         }
 
-        public async Task<Result<UserPublicViewModel>> Handle(GetUserByPlatformIdQuery req, CancellationToken cancellationToken)
+        public async Task<Result<UserPublicViewModel[]>> Handle(GetUserByPlatformIdQuery req, CancellationToken cancellationToken)
         {
-            var user = await _db.Users
+           return new(await _db.Users
                 .ProjectTo<UserPublicViewModel>(_mapper.ConfigurationProvider)
-                .FirstOrDefaultAsync(u => u.Platform == req.Platform && u.PlatformUserId == req.PlatformUserId, cancellationToken);
-            return user == null
-                ? new(CommonErrors.UserNotFound(req.Platform, req.PlatformUserId))
-                : new(user);
+                .Where(u => u.Platform == req.Platform && u.PlatformUserId == req.PlatformUserId)
+                .ToArrayAsync(cancellationToken));
         }
     }
 }

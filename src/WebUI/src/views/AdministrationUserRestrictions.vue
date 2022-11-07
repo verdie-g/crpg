@@ -16,21 +16,7 @@
       <template v-if="user">
         <div class="card mb-6">
           <div class="card-content">
-            <!--  -->
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-64x64">
-                  <img :src="user.avatar" :alt="user.name" />
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title is-4">{{ user.name }}</p>
-                <p class="subtitle is-6">
-                  Id: {{ user.id }}, {{ user.platform }}: {{ user.platformUserId }}
-                  <Platform :platform="user.platform" :platformUserId="user.platformUserId" />
-                </p>
-              </div>
-            </div>
+            <UserCard :user="user" />
 
             <form @submit.prevent="addRestriction">
               <h3 class="title is-4">New Restriction</h3>
@@ -115,9 +101,10 @@ import RestrictionsTable from '@/components/RestrictionsTable.vue';
 import PlatformComponent from '@/components/Platform.vue';
 import { convertHumanDurationToMs } from '@/utils/date';
 import type { HumanDuration } from '@/utils/date';
+import UserCardComponent from '@/components/UserCard.vue';
 
 @Component({
-  components: { RestrictionsTable, Platform: PlatformComponent },
+  components: { RestrictionsTable, Platform: PlatformComponent, UserCard: UserCardComponent },
 })
 export default class Administration extends Vue {
   availableRestrictionTypes = Object.keys(RestrictionType);

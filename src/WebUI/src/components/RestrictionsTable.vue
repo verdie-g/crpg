@@ -67,6 +67,10 @@
         >
           {{ props.row.restrictedUser.name }}
         </router-link>
+        <platform
+          :platform="props.row.restrictedUser.platform"
+          :platformUserId="props.row.restrictedUser.platformUserId"
+        />
       </template>
     </b-table-column>
 
@@ -123,10 +127,13 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import Restriction from '@/models/restriction';
 import { timestampToTimeString, computeLeftMs, checkIsDateExpired } from '@/utils/date';
+import PlatformComponent from '@/components/Platform.vue';
 
 type WithName = Record<string, { name: string }>;
 
-@Component
+@Component({
+  components: { Platform: PlatformComponent },
+})
 export default class RestrictionsTableComponent extends Vue {
   @Prop({ type: Array, default: () => [] }) readonly data: Restriction[];
   @Prop({ type: Array, default: () => [] }) readonly hiddenCols: Array<string>;

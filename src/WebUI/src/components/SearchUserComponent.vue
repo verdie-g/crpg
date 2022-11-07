@@ -3,7 +3,7 @@
     <div class="card-content">
       <b-tabs v-model="activeSearchMode" type="is-toggle" :animated="false" @input="clearUsers">
         <b-tab-item label="By Name" :value="searchModes.Name">
-          <form @submit.prevent="findUser">
+          <form @submit.prevent="searchUser">
             <b-field label="Nickname" grouped>
               <b-input
                 placeholder="User nickname"
@@ -19,8 +19,8 @@
           </form>
         </b-tab-item>
 
-        <b-tab-item label="By Platform" :value="searchModes.Platfrom">
-          <form @submit.prevent="findUser">
+        <b-tab-item label="By Platform" :value="searchModes.Platform">
+          <form @submit.prevent="searchUser">
             <b-field grouped>
               <b-field label="Platform">
                 <b-select
@@ -56,33 +56,7 @@
       <template v-if="users.length">
         <h4 class="title is-4">Matched user</h4>
 
-        <div v-for="user in users" class="mt-4" :key="user.id">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-64x64">
-                <img :src="user.avatar" :alt="user.name" />
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4">
-                <router-link
-                  class="is-flex is-align-items-center"
-                  :to="{
-                    name: 'admin-user-restrictions',
-                    params: { id: user.id },
-                  }"
-                >
-                  {{ user.name }}
-                  <b-icon icon="external-link-alt" class="is-size-6" />
-                </router-link>
-              </p>
-              <p class="subtitle is-6">
-                Id: {{ user.id }}, {{ user.platform }}: {{ user.platformUserId }}
-                <platform :platform="user.platform" :platformUserId="user.platformUserId" />
-              </p>
-            </div>
-          </div>
-        </div>
+        <UserCard v-for="user in users" class="mt-4" :key="user.id" :user="user" useLink />
       </template>
     </div>
   </div>
@@ -93,20 +67,20 @@ import { Component, Vue } from 'vue-property-decorator';
 import Platform from '@/models/platform';
 import UserPublic from '@/models/user-public';
 import * as userService from '@/services/users-service';
-import PlatformComponent from '@/components/Platform.vue';
+import UserCardComponent from '@/components/UserCard.vue';
 
 enum SearchMode {
   Name = 'Name',
-  Platfrom = 'Platfrom',
+  Platform = 'Platform',
 }
 
 @Component({
-  components: { Platform: PlatformComponent },
+  components: { UserCard: UserCardComponent },
 })
 export default class SearchUserComponent extends Vue {
   searchModes: Record<SearchMode, SearchMode> = {
     [SearchMode.Name]: SearchMode.Name,
-    [SearchMode.Platfrom]: SearchMode.Platfrom,
+    [SearchMode.Platform]: SearchMode.Platform,
   };
   activeSearchMode: SearchMode = SearchMode.Name;
 
@@ -127,18 +101,18 @@ export default class SearchUserComponent extends Vue {
 
   users: UserPublic[] = [];
 
-  async findUser() {
-    if (this.activeSearchMode === SearchMode.Name) {
-      this.users = await userService.getUsersByName(this.searchByNameModel.name);
-      return;
-    }
+  async searchUser() {
+    const payload =
+      this.activeSearchMode === SearchMode.Name
+        ? {
+            name: this.searchByNameModel.name,
+          }
+        : {
+            platform: this.searchByPlatformModel.platform,
+            platformUserId: this.searchByPlatformModel.platformUserId,
+          };
 
-    this.users = [
-      await userService.getUserByPlatformUserId(
-        this.searchByPlatformModel.platform,
-        this.searchByPlatformModel.platformUserId
-      ),
-    ];
+    this.users = await userService.searchUser(payload);
   }
 
   clearUsers() {
