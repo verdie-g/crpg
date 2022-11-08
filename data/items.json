@@ -17194,9 +17194,9 @@
     "name": "Chadz",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 50,
+    "price": 5261,
     "weight": 300.0,
-    "tier": 0.0,
+    "tier": 4.04142332,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -17204,9 +17204,9 @@
     "mount": {
       "bodyLength": 92,
       "chargeDamage": 0,
-      "maneuver": 48,
-      "speed": 17,
-      "hitPoints": 0
+      "maneuver": 58,
+      "speed": 30,
+      "hitPoints": 250
     },
     "weapons": []
   },
