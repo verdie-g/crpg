@@ -653,6 +653,7 @@ internal class ItemExporter : IDataExporter
                 }
                 else if (type == ItemObject.ItemTypeEnum.Horse)
                 {
+                    // Since the xml for horses is loaded from cRPG , anything here will be compounded at each export
                 }
                 else if (type is ItemObject.ItemTypeEnum.HeadArmor
                          or ItemObject.ItemTypeEnum.Cape
