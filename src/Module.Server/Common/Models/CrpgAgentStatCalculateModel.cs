@@ -268,7 +268,6 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
         EquipmentIndex wieldedItemIndex1 = agent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
         EquipmentIndex wieldedItemIndex2 = agent.GetWieldedItemIndex(Agent.HandIndex.OffHand);
 
-        InformationManager.DisplayMessage(new InformationMessage(weaponsEncumbrance.ToString()));
         props.WeaponsEncumbrance = weaponsEncumbrance;
         int strengthSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
