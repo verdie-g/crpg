@@ -360,6 +360,7 @@ internal class ItemExporter : IDataExporter
 
         string moduleDataItemsPath = Path.Combine(moduleDataPath, "items");
         Directory.CreateDirectory(moduleDataItemsPath);
+
         var mbItems = Enumerable.Empty<ItemObject>();
         foreach (string filePath in ItemFilePaths)
         {
