@@ -237,7 +237,7 @@ export function getItemDescriptor(baseItem: Item, rank: number): ItemDescriptor 
       ['Type', itemTypeToStr[baseItem.type]],
       ['Culture', baseItem.culture],
       ['Tier', baseItem.tier.toFixed(1)],
-      ['Repair Cost', `${computeAverageRepairCostByMinute([baseItem])} / min`],
+      ['Repair Cost', `${computeAverageRepairCostByHour([baseItem])} / hour`],
     ],
     flags: getItemFlags(baseItem.flags),
     modes: [],
@@ -406,15 +406,11 @@ export function computeSalePrice(item: UserItem): number {
 }
 
 // TODO: handle upgrade items.
-export function computeMaxRepairCostByMinute(items: Item[]): number {
+export function computeAverageRepairCostByHour(items: Item[]): number {
   return Math.floor(
-    items.reduce((total, item) => total + item.price * Constants.itemRepairCostPerSecond * 60, 0)
-  );
-}
-
-export function computeAverageRepairCostByMinute(items: Item[]): number {
-  return Math.floor(
-    items.reduce((total, item) => total + item.price * Constants.itemRepairCostPerSecond * 60, 0) *
-      Constants.itemBreakChance
+    items.reduce(
+      (total, item) => total + item.price * Constants.itemRepairCostPerSecond * 3600,
+      0
+    ) * Constants.itemBreakChance
   );
 }
