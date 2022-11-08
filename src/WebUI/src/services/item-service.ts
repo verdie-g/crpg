@@ -406,12 +406,6 @@ export function computeSalePrice(item: UserItem): number {
 }
 
 // TODO: handle upgrade items.
-export function computeMaxRepairCostByHour(items: Item[]): number {
-  return Math.floor(
-    items.reduce((total, item) => total + item.price * Constants.itemRepairCostPerSecond * 3600, 0)
-  );
-}
-
 export function computeAverageRepairCostByHour(items: Item[]): number {
   return Math.floor(
     items.reduce(
