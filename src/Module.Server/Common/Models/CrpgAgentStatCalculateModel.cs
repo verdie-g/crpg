@@ -381,7 +381,7 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
                     // Hold Time
                     int powerDraw = GetEffectiveSkill(character, agent.Origin, agent.Formation, CrpgSkills.PowerDraw);
-                    props.WeaponUnsteadyBeginTime = 0.06f + weaponSkill * 0.00175f * MBMath.Lerp(1f, 2f, amount) + powerDraw * powerDraw / 10f * 0.35f + 10f;
+                    props.WeaponUnsteadyBeginTime = 0.06f + weaponSkill * 0.00175f * MBMath.Lerp(1f, 2f, amount) + powerDraw * powerDraw / 10f * 0.35f;
                     props.WeaponUnsteadyEndTime = 2f + props.WeaponUnsteadyBeginTime;
 
                     // Rotation Penalty
