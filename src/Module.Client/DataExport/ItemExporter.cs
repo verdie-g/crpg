@@ -26,7 +26,6 @@ internal class ItemExporter : IDataExporter
         "../../Modules/SandBoxCore/ModuleData/items/body_armors.xml",
         "../../Modules/SandBoxCore/ModuleData/items/arm_armors.xml",
         "../../Modules/SandBoxCore/ModuleData/items/leg_armors.xml",
-        "../../Modules/SandBoxCore/ModuleData/items/horses_and_others.xml",
         "../../Modules/SandBoxCore/ModuleData/items/shields.xml",
         "../../Modules/SandBoxCore/ModuleData/items/weapons.xml",
         "../../Modules/SandBoxCore/ModuleData/items/banners.xml",
@@ -361,7 +360,6 @@ internal class ItemExporter : IDataExporter
 
         string moduleDataItemsPath = Path.Combine(moduleDataPath, "items");
         Directory.CreateDirectory(moduleDataItemsPath);
-
         var mbItems = Enumerable.Empty<ItemObject>();
         foreach (string filePath in ItemFilePaths)
         {
@@ -370,6 +368,11 @@ internal class ItemExporter : IDataExporter
             mbItems = mbItems.Concat(DeserializeMbItems(itemsDoc, game));
             itemsDoc.Save(Path.Combine(moduleDataItemsPath, Path.GetFileName(filePath)));
         }
+
+        var mountDoc = LoadMbDocument(Path.Combine(moduleDataItemsPath, "horses_and_others.xml"));
+        RegisterMbObjects<ItemObject>(mountDoc, game);
+        mbItems = mbItems.Concat(DeserializeMbItems(mountDoc, game));
+        mountDoc.Save(Path.Combine(moduleDataItemsPath, "horses_and_others.xml"));
 
         mbItems = mbItems
             .DistinctBy(i => i.StringId)
@@ -510,7 +513,6 @@ internal class ItemExporter : IDataExporter
         for (int i = 0; i < nodes1.Length; i += 1)
         {
             var node1 = nodes1[i];
-
             // Remove test and blacklisted items
             if (node1.Name == "CraftedItem" || node1.Name == "Item")
             {
@@ -650,13 +652,6 @@ internal class ItemExporter : IDataExporter
                 }
                 else if (type == ItemObject.ItemTypeEnum.Horse)
                 {
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "charge_damage",
-                        v => ((int)(int.Parse(v) * 0.33f)).ToString(CultureInfo.InvariantCulture));
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "speed",
-                        v => ((int)(int.Parse(v) * 0.75f)).ToString(CultureInfo.InvariantCulture));
-                    ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "extra_health",
-                        v => (int.Parse(v) - 50).ToString(CultureInfo.InvariantCulture),
-                        defaultValue: "0");
                 }
                 else if (type is ItemObject.ItemTypeEnum.HeadArmor
                          or ItemObject.ItemTypeEnum.Cape
@@ -792,7 +787,7 @@ internal class ItemExporter : IDataExporter
     private static string PrefixCrpg(string s)
     {
         const string prefix = "crpg_";
-        return s.StartsWith(prefix, StringComparison.Ordinal) ? prefix : prefix + s;
+        return s.StartsWith(prefix, StringComparison.Ordinal) ? s : prefix + s;
     }
 
     private static void ModifyChildNodesAttribute(XmlNode parentNode,
