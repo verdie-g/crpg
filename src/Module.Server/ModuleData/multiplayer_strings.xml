@@ -22,10 +22,12 @@
   <string id="str_multiplayer_scene_name.crpg_battle_banditvalley" text="{=!}Bandit valley" />
   <string id="str_multiplayer_scene_name.crpg_battle_bazaar" text="{=!}Bazaar" />
   <string id="str_multiplayer_scene_name.crpg_battle_cabbagepatch" text="{=!}Cabbage Patch" />
+  <string id="str_multiplayer_scene_name.crpg_battle_canals" text="{=!}Canals" />
   <string id="str_multiplayer_scene_name.crpg_battle_dragonsroost" text="{=!}Dragon's Roost" />
   <string id="str_multiplayer_scene_name.crpg_battle_ghosttown" text="{=!}Ghost Town" />
   <string id="str_multiplayer_scene_name.crpg_battle_hexenbrennen" text="{=!}Hexenbrennen" />
   <string id="str_multiplayer_scene_name.crpg_battle_kalmara" text="{=!}Kalmara" />
+  <string id="str_multiplayer_scene_name.crpg_battle_motte" text="{=!}Motte" />
   <string id="str_multiplayer_scene_name.crpg_battle_onomasticon" text="{=!}Onomasticon" />
   <string id="str_multiplayer_scene_name.crpg_battle_quarry" text="{=!}Quarry" />
   <string id="str_multiplayer_scene_name.crpg_battle_redwoodforest" text="{=!}Red Wood Forest" />
@@ -33,6 +35,7 @@
   <string id="str_multiplayer_scene_name.crpg_battle_sanctuary" text="{=!}Sanctuary" />
   <string id="str_multiplayer_scene_name.crpg_battle_sandpit" text="{=!}Sandpit" />
   <string id="str_multiplayer_scene_name.crpg_battle_skolderby" text="{=!}Skolderby" />
+  <string id="str_multiplayer_scene_name.crpg_battle_stonehenge" text="{=!}Stonehenge" />
   <string id="str_multiplayer_scene_name.crpg_battle_swampbrawl" text="{=!}Swamp Brawl"/>
   <string id="str_multiplayer_scene_name.crpg_battle_vatnborg" text="{=!}Vatnborg" />
 </strings>
