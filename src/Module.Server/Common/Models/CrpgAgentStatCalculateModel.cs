@@ -268,31 +268,15 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
         BasicCharacterObject character = agent.Character;
         MissionEquipment equipment = agent.Equipment;
-        float weaponsEncumbrance = equipment.GetTotalWeightOfWeapons();
-        EquipmentIndex wieldedItemIndex1 = agent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
-        EquipmentIndex wieldedItemIndex2 = agent.GetWieldedItemIndex(Agent.HandIndex.OffHand);
-        if (wieldedItemIndex1 != EquipmentIndex.None)
-        {
-            ItemObject itemObject = equipment[wieldedItemIndex1].Item;
-            WeaponComponent weaponComponent = itemObject.WeaponComponent;
-            float realWeaponLength = weaponComponent.PrimaryWeapon.GetRealWeaponLength();
-            weaponsEncumbrance += (weaponComponent.GetItemType() == ItemObject.ItemTypeEnum.Bow ? 4f : 1.5f)
-                                  * itemObject.Weight * (float)Math.Sqrt(realWeaponLength);
-        }
+        props.WeaponsEncumbrance = equipment.GetTotalWeightOfWeapons();
 
-        if (wieldedItemIndex2 != EquipmentIndex.None)
-        {
-            weaponsEncumbrance += 1.5f * equipment[wieldedItemIndex2].Item.Weight;
-        }
-
-        props.WeaponsEncumbrance = weaponsEncumbrance;
         int strengthSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
         float weightReductionFactor = 1f / (1f + (strengthSkill * strengthSkill - 9) / 81f);
         float totalEncumbrance = props.ArmorEncumbrance + props.WeaponsEncumbrance;
-        float freeWeight = 3f * (1 + (strengthSkill - 3f) / 30f);
+        float freeWeight = 2.5f * (1 + (strengthSkill - 3f) / 30f);
         float perceivedWeight = Math.Max(totalEncumbrance - freeWeight, 0f) * weightReductionFactor;
-        props.TopSpeedReachDuration = 1.4f * (1f + perceivedWeight / 30f) * (20f / (20f + (float)Math.Pow(athleticsSkill / 100f, 2f)));
+        props.TopSpeedReachDuration = 1.5f * (1f + perceivedWeight / 25f) * (20f / (20f + (float)Math.Pow(athleticsSkill / 120f, 2f)));
         float speed = 0.7f + 0.00085f * athleticsSkill;
         props.MaxSpeedMultiplier = MBMath.ClampFloat(
             speed * (float)Math.Pow(361f / (361f + (float)Math.Pow(perceivedWeight, 5f)), 0.05f),

@@ -69,7 +69,18 @@
             <b-icon icon="weight-hanging" size="is-small" />
           </td>
         </tr>
-
+        <tr>
+          <b-tooltip
+            label="The remaining weight after deduction by Free Weight , get reduced by your Strenght Attribute"
+            multilined
+          >
+            <td><b>Weight Reduction</b></td>
+          </b-tooltip>
+          <td>
+            {{ ((1 - speedStats.weightReductionFactor) * 100).toLocaleString('en-US') + ' %' }}
+            <b-icon icon="weight-hanging" size="is-small" />
+          </td>
+        </tr>
         <tr>
           <td><b>Perceived weight</b></td>
           <td>
@@ -165,7 +176,6 @@ export default class CharacterOverallItemsStatsComponent extends Vue {
     );
     this.equippedItems.forEach(ei => {
       result.price += ei.userItem.baseItem.price;
-
       if (
         ei.userItem.baseItem.type !== ItemType.Mount &&
         ei.userItem.baseItem.type !== ItemType.MountHarness
