@@ -264,11 +264,8 @@ internal class CrpgAgentStatCalculateModel : AgentStatCalculateModel
 
         BasicCharacterObject character = agent.Character;
         MissionEquipment equipment = agent.Equipment;
-        float weaponsEncumbrance = equipment.GetTotalWeightOfWeapons();
-        EquipmentIndex wieldedItemIndex1 = agent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
-        EquipmentIndex wieldedItemIndex2 = agent.GetWieldedItemIndex(Agent.HandIndex.OffHand);
+        props.WeaponsEncumbrance = equipment.GetTotalWeightOfWeapons();
 
-        props.WeaponsEncumbrance = weaponsEncumbrance;
         int strengthSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, CrpgSkills.Strength);
         int athleticsSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, DefaultSkills.Athletics);
         float weightReductionFactor = 1f / (1f + (strengthSkill * strengthSkill - 9) / 81f);
