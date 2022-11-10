@@ -384,13 +384,10 @@ internal class CrpgMissionMarkerVm : ViewModel
         if (GameNetwork.MyPeer != null)
         {
             CrpgPeer myCrpgPeer = GameNetwork.MyPeer.GetComponent<CrpgPeer>();
-            if (!missionPeerIsFriend && myCrpgPeer?.Clan != null)
+            CrpgPeer? crpgPeer = missionPeer?.GetNetworkPeer().GetComponent<CrpgPeer>() ?? null;
+            if (myCrpgPeer?.Clan != null && crpgPeer?.Clan != null && crpgPeer.Clan.Id == myCrpgPeer.Clan.Id)
             {
-                CrpgPeer crpgPeer = missionPeer.GetNetworkPeer().GetComponent<CrpgPeer>();
-                if (crpgPeer.Clan != null && myCrpgPeer.Clan.Id == crpgPeer.Clan.Id)
-                {
-                    color2 = Color.ConvertStringToColor(clanmateColor).ToUnsignedInteger();
-                }
+                color2 = Color.ConvertStringToColor(clanmateColor).ToUnsignedInteger();
             }
             else if (missionPeerIsFriend)
             {
