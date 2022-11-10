@@ -3,9 +3,11 @@ using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Common;
 using Crpg.Module.Common.Network;
+using Crpg.Module.Helpers;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.MountAndBlade.MissionRepresentatives;
 
 namespace Crpg.Module.Duel;
 
@@ -73,6 +75,18 @@ internal class CrpgDuelMissionMultiplayer : MissionMultiplayerDuel
             MissionPeer missionPeer = networkPeer.GetComponent<MissionPeer>();
             duelSpawningBehavior.UpdatedPlayerPreferredArenaOnce.Remove(networkPeer.VirtualPlayer.Id);
             missionPeer?.SpawnTimer?.AdjustStartTime(-3f); // Used to reduce the initial spawn on connect.
+        }
+    }
+
+    protected override void HandlePlayerDisconnect(NetworkCommunicator networkPeer)
+    {
+        base.HandlePlayerDisconnect(networkPeer);
+
+        // Remove the existing duel representative so it will create a new one on reconnect.
+        DuelMissionRepresentative duelRepresentative = networkPeer.GetComponent<DuelMissionRepresentative>();
+        if (duelRepresentative != null)
+        {
+            networkPeer.RemoveComponent(duelRepresentative);
         }
     }
 
