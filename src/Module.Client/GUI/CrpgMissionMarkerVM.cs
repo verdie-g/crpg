@@ -384,7 +384,7 @@ internal class CrpgMissionMarkerVm : ViewModel
         if (GameNetwork.MyPeer != null)
         {
             CrpgPeer myCrpgPeer = GameNetwork.MyPeer.GetComponent<CrpgPeer>();
-            if (!missionPeerIsFriend && myCrpgPeer?.Clan != null)
+            if (myCrpgPeer?.Clan != null)
             {
                 CrpgPeer crpgPeer = missionPeer.GetNetworkPeer().GetComponent<CrpgPeer>();
                 if (crpgPeer.Clan != null && myCrpgPeer.Clan.Id == crpgPeer.Clan.Id)
