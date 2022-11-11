@@ -2171,9 +2171,9 @@
     "name": "Beduin Common Saddle",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 2768,
+    "price": 2107,
     "weight": 27.0,
-    "tier": 1.89189184,
+    "tier": 1.55555558,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -2442,9 +2442,9 @@
     "name": "Rugged Beduin Saddle",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 1743,
+    "price": 1351,
     "weight": 21.0,
-    "tier": 1.35135138,
+    "tier": 1.11111116,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -2463,9 +2463,9 @@
     "name": "Rugged Fur Saddle",
     "culture": "Battania",
     "type": "MountHarness",
-    "price": 2231,
+    "price": 1712,
     "weight": 23.0,
-    "tier": 1.62162161,
+    "tier": 1.33333337,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -2484,9 +2484,9 @@
     "name": "Rugged Saddle",
     "culture": "Neutral",
     "type": "MountHarness",
-    "price": 1305,
+    "price": 1024,
     "weight": 24.0,
-    "tier": 1.081081,
+    "tier": 0.8888889,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -4096,9 +4096,9 @@
     "name": "Battania Horse Harness",
     "culture": "Battania",
     "type": "MountHarness",
-    "price": 3992,
+    "price": 2997,
     "weight": 30.0,
-    "tier": 2.43243241,
+    "tier": 2.0,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -4117,9 +4117,9 @@
     "name": "Half Scaled Barding",
     "culture": "Battania",
     "type": "MountHarness",
-    "price": 19509,
+    "price": 13957,
     "weight": 76.0,
-    "tier": 6.48648643,
+    "tier": 5.33333349,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -4138,9 +4138,9 @@
     "name": "Scale Barding",
     "culture": "Battania",
     "type": "MountHarness",
-    "price": 28845,
+    "price": 20458,
     "weight": 125.0,
-    "tier": 8.10810852,
+    "tier": 6.66666651,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -6769,9 +6769,9 @@
     "name": "Camel Saddle",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 2231,
+    "price": 1712,
     "weight": 130.0,
-    "tier": 1.62162161,
+    "tier": 1.33333337,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -6790,9 +6790,9 @@
     "name": "Camel Saddle with Light Load",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 2231,
+    "price": 1712,
     "weight": 130.0,
-    "tier": 1.62162161,
+    "tier": 1.33333337,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -6991,9 +6991,9 @@
     "name": "Reinforced Chainmail Barding",
     "culture": "Vlandia",
     "type": "MountHarness",
-    "price": 44077,
+    "price": 31006,
     "weight": 130.0,
-    "tier": 10.27027,
+    "tier": 8.444445,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -7012,9 +7012,9 @@
     "name": "Chain Mail Horse Armor",
     "culture": "Neutral",
     "type": "MountHarness",
-    "price": 34185,
+    "price": 24161,
     "weight": 120.0,
-    "tier": 8.918919,
+    "tier": 7.33333349,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -8195,9 +8195,9 @@
     "name": "Beduin Cloth Saddle",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 2768,
+    "price": 2107,
     "weight": 22.5,
-    "tier": 1.89189184,
+    "tier": 1.55555558,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -12191,9 +12191,9 @@
     "name": "Reinforced Half Plate Barding",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 36064,
+    "price": 25463,
     "weight": 90.0,
-    "tier": 9.189189,
+    "tier": 7.55555534,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -12212,9 +12212,9 @@
     "name": "Cataphract Half Scale Barding",
     "culture": "Empire",
     "type": "MountHarness",
-    "price": 39971,
+    "price": 28167,
     "weight": 80.0,
-    "tier": 9.72973,
+    "tier": 8.0,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -12233,9 +12233,9 @@
     "name": "Half Mail Barding",
     "culture": "Vlandia",
     "type": "MountHarness",
-    "price": 30576,
+    "price": 21659,
     "weight": 65.0,
-    "tier": 8.378378,
+    "tier": 6.888889,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -13815,9 +13815,9 @@
     "name": "Imperial Riding Harness",
     "culture": "Empire",
     "type": "MountHarness",
-    "price": 1743,
+    "price": 1351,
     "weight": 22.0,
-    "tier": 1.35135138,
+    "tier": 1.11111116,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -13877,9 +13877,9 @@
     "name": "Cataphract Scale Barding",
     "culture": "Empire",
     "type": "MountHarness",
-    "price": 60014,
+    "price": 42000,
     "weight": 135.0,
-    "tier": 12.1621618,
+    "tier": 10.0,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -16806,9 +16806,9 @@
     "name": "Light Harness",
     "culture": "Neutral",
     "type": "MountHarness",
-    "price": 2231,
+    "price": 1712,
     "weight": 20.0,
-    "tier": 1.62162161,
+    "tier": 1.33333337,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -17227,9 +17227,9 @@
     "name": "Reinforced Plate Barding",
     "culture": "Aserai",
     "type": "MountHarness",
-    "price": 48382,
+    "price": 33979,
     "weight": 145.0,
-    "tier": 10.810811,
+    "tier": 8.888889,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -17738,9 +17738,9 @@
     "name": "Mule Harness with Pack",
     "culture": "Neutral",
     "type": "MountHarness",
-    "price": 2231,
+    "price": 1712,
     "weight": 120.0,
-    "tier": 1.62162161,
+    "tier": 1.33333337,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -17759,9 +17759,9 @@
     "name": "Mule Harness with Baskets",
     "culture": "Neutral",
     "type": "MountHarness",
-    "price": 2231,
+    "price": 1712,
     "weight": 120.0,
-    "tier": 1.62162161,
+    "tier": 1.33333337,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -17780,9 +17780,9 @@
     "name": "Mule Harness with Bags",
     "culture": "Neutral",
     "type": "MountHarness",
-    "price": 2231,
+    "price": 1712,
     "weight": 120.0,
-    "tier": 1.62162161,
+    "tier": 1.33333337,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -19221,9 +19221,9 @@
     "name": "Light Saddle",
     "culture": "Sturgia",
     "type": "MountHarness",
-    "price": 6201,
+    "price": 4585,
     "weight": 30.0,
-    "tier": 3.24324322,
+    "tier": 2.66666675,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -19242,9 +19242,9 @@
     "name": "Rough Cavalry Saddle",
     "culture": "Sturgia",
     "type": "MountHarness",
-    "price": 3992,
+    "price": 2997,
     "weight": 35.0,
-    "tier": 2.43243241,
+    "tier": 2.0,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -19345,9 +19345,9 @@
     "name": "Ring Mail Barding",
     "culture": "Sturgia",
     "type": "MountHarness",
-    "price": 19509,
+    "price": 13957,
     "weight": 82.0,
-    "tier": 6.48648643,
+    "tier": 5.33333349,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -24616,9 +24616,9 @@
     "name": "Steppe Fur Harness",
     "culture": "Khuzait",
     "type": "MountHarness",
-    "price": 3992,
+    "price": 2997,
     "weight": 25.5,
-    "tier": 2.43243241,
+    "tier": 2.0,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -24675,9 +24675,9 @@
     "name": "Lamellar Half Barding",
     "culture": "Khuzait",
     "type": "MountHarness",
-    "price": 16794,
+    "price": 12059,
     "weight": 70.0,
-    "tier": 5.94594574,
+    "tier": 4.888889,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -24696,9 +24696,9 @@
     "name": "Steppe Saddle",
     "culture": "Khuzait",
     "type": "MountHarness",
-    "price": 2768,
+    "price": 2107,
     "weight": 23.5,
-    "tier": 1.89189184,
+    "tier": 1.55555558,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -25117,9 +25117,9 @@
     "name": "Striped Leather Harness",
     "culture": "Empire",
     "type": "MountHarness",
-    "price": 3992,
+    "price": 2997,
     "weight": 26.0,
-    "tier": 2.43243241,
+    "tier": 2.0,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -25415,9 +25415,9 @@
     "name": "Reinforced Mail Barding",
     "culture": "Khuzait",
     "type": "MountHarness",
-    "price": 30576,
+    "price": 21659,
     "weight": 85.0,
-    "tier": 8.378378,
+    "tier": 6.888889,
     "requirement": 0,
     "flags": [
       "Civilian"
