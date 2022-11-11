@@ -16,8 +16,8 @@ internal class CrpgItemValueModel : ItemValueModel
         [ItemObject.ItemTypeEnum.BodyArmor] = (31632, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.HandArmor] = (6000, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.LegArmor] = (4662, ArmorPriceCoeffs),
-        [ItemObject.ItemTypeEnum.HorseHarness] = (35000, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Horse] = (25000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.HorseHarness] = (42000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Horse] = (18000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Shield] = (9235, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Bow] = (12264, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Crossbow] = (18000, ItemPriceCoeffs),
@@ -81,7 +81,7 @@ internal class CrpgItemValueModel : ItemValueModel
             ItemObject.ItemTypeEnum.BodyArmor => 45.12333083538974f,
             ItemObject.ItemTypeEnum.HandArmor => 16.34342252585f,
             ItemObject.ItemTypeEnum.LegArmor => 14.497149997024f,
-            ItemObject.ItemTypeEnum.HorseHarness => 37f,
+            ItemObject.ItemTypeEnum.HorseHarness => 45f,
             _ => throw new ArgumentOutOfRangeException(),
         };
 

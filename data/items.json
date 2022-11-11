@@ -368,19 +368,19 @@
     "name": "Apache",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 3972,
+    "price": 12061,
     "weight": 430.0,
-    "tier": 3.3888762,
+    "tier": 7.992573,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 100,
-      "chargeDamage": 0,
+      "chargeDamage": 2,
       "maneuver": 74,
-      "speed": 33,
-      "hitPoints": 140
+      "speed": 44,
+      "hitPoints": 190
     },
     "weapons": []
   },
@@ -539,19 +539,19 @@
     "name": "Artemis",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 5587,
+    "price": 17838,
     "weight": 430.0,
-    "tier": 4.193888,
+    "tier": 9.950334,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 100,
-      "chargeDamage": 0,
+      "chargeDamage": 3,
       "maneuver": 78,
-      "speed": 34,
-      "hitPoints": 149
+      "speed": 46,
+      "hitPoints": 199
     },
     "weapons": []
   },
@@ -2167,6 +2167,27 @@
     "weapons": []
   },
   {
+    "id": "crpg_aseran_village_harness",
+    "name": "Beduin Common Saddle",
+    "culture": "Aserai",
+    "type": "MountHarness",
+    "price": 2768,
+    "weight": 27.0,
+    "tier": 1.89189184,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 7,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Cloth"
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_avalanche_2haxe",
     "name": "Avalanche",
     "culture": "Neutral",
@@ -2412,6 +2433,69 @@
       "bodyArmor": 3,
       "armArmor": 2,
       "legArmor": 2,
+      "materialType": "Cloth"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_bandit_saddle_desert",
+    "name": "Rugged Beduin Saddle",
+    "culture": "Aserai",
+    "type": "MountHarness",
+    "price": 1743,
+    "weight": 21.0,
+    "tier": 1.35135138,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 5,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Cloth"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_bandit_saddle_highland",
+    "name": "Rugged Fur Saddle",
+    "culture": "Battania",
+    "type": "MountHarness",
+    "price": 2231,
+    "weight": 23.0,
+    "tier": 1.62162161,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 6,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Cloth"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_bandit_saddle_steppe",
+    "name": "Rugged Saddle",
+    "culture": "Neutral",
+    "type": "MountHarness",
+    "price": 1305,
+    "weight": 24.0,
+    "tier": 1.081081,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 4,
+      "armArmor": 0,
+      "legArmor": 0,
       "materialType": "Cloth"
     },
     "weapons": []
@@ -4008,6 +4092,69 @@
     "weapons": []
   },
   {
+    "id": "crpg_battania_horse_harness",
+    "name": "Battania Horse Harness",
+    "culture": "Battania",
+    "type": "MountHarness",
+    "price": 3992,
+    "weight": 30.0,
+    "tier": 2.43243241,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 9,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Leather"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_battania_horse_harness_halfscaled",
+    "name": "Half Scaled Barding",
+    "culture": "Battania",
+    "type": "MountHarness",
+    "price": 19509,
+    "weight": 76.0,
+    "tier": 6.48648643,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 24,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Chainmail"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_battania_horse_harness_scaled",
+    "name": "Scale Barding",
+    "culture": "Battania",
+    "type": "MountHarness",
+    "price": 28845,
+    "weight": 125.0,
+    "tier": 8.10810852,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 30,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Chainmail"
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_battania_large_shield_a",
     "name": "Bronze Reinforced Highland Large Shield",
     "culture": "Battania",
@@ -5349,19 +5496,19 @@
     "name": "Baudouin",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 2917,
+    "price": 9469,
     "weight": 450.0,
-    "tier": 2.77482152,
+    "tier": 6.962321,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 105,
-      "chargeDamage": 2,
+      "chargeDamage": 7,
       "maneuver": 66,
-      "speed": 30,
-      "hitPoints": 152
+      "speed": 41,
+      "hitPoints": 207
     },
     "weapons": []
   },
@@ -5488,19 +5635,19 @@
     "name": "Beybars",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 4177,
+    "price": 11965,
     "weight": 520.0,
-    "tier": 3.498568,
+    "tier": 7.9565,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 110,
-      "chargeDamage": 1,
+      "chargeDamage": 5,
       "maneuver": 80,
-      "speed": 24,
-      "hitPoints": 192
+      "speed": 33,
+      "hitPoints": 242
     },
     "weapons": []
   },
@@ -5576,6 +5723,46 @@
         "swingDamage": 43,
         "swingDamageType": "Cut",
         "swingSpeed": 77
+      }
+    ]
+  },
+  {
+    "id": "crpg_bo_staff",
+    "name": "Bo staff",
+    "culture": "Neutral",
+    "type": "Polearm",
+    "price": 50,
+    "weight": 1.0,
+    "tier": 0.0,
+    "requirement": 0,
+    "flags": [
+      "WoodenParry",
+      "DoNotScaleBodyAccordingToWeaponLength"
+    ],
+    "weapons": [
+      {
+        "class": "TwoHandedPolearm",
+        "itemUsage": "polearm_block_swing_thrust",
+        "accuracy": 100,
+        "missileSpeed": 0,
+        "stackAmount": 0,
+        "length": 100,
+        "balance": 1.0,
+        "handling": 100,
+        "bodyArmor": 0,
+        "flags": [
+          "MeleeWeapon",
+          "NotUsableWithOneHand",
+          "WideGrip",
+          "TwoHandIdleOnMount",
+          "PenaltyWithShield"
+        ],
+        "thrustDamage": 2,
+        "thrustDamageType": "Blunt",
+        "thrustSpeed": 100,
+        "swingDamage": 5,
+        "swingDamageType": "Blunt",
+        "swingSpeed": 100
       }
     ]
   },
@@ -5719,19 +5906,19 @@
     "name": "Bohemond",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 2412,
+    "price": 7266,
     "weight": 450.0,
-    "tier": 2.44457936,
+    "tier": 5.97086143,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 105,
-      "chargeDamage": 1,
+      "chargeDamage": 6,
       "maneuver": 64,
-      "speed": 30,
-      "hitPoints": 145
+      "speed": 40,
+      "hitPoints": 198
     },
     "weapons": []
   },
@@ -5972,19 +6159,19 @@
     "name": "Bo'orchu",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 5675,
+    "price": 17990,
     "weight": 300.0,
-    "tier": 4.23432446,
+    "tier": 9.996982,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 90,
-      "chargeDamage": 1,
+      "chargeDamage": 4,
       "maneuver": 85,
-      "speed": 33,
-      "hitPoints": 138
+      "speed": 44,
+      "hitPoints": 188
     },
     "weapons": []
   },
@@ -6474,19 +6661,19 @@
     "name": "Bucephale",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 5620,
+    "price": 17816,
     "weight": 450.0,
-    "tier": 4.20895338,
+    "tier": 9.943507,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 105,
-      "chargeDamage": 2,
+      "chargeDamage": 8,
       "maneuver": 72,
-      "speed": 33,
-      "hitPoints": 169
+      "speed": 44,
+      "hitPoints": 225
     },
     "weapons": []
   },
@@ -6572,6 +6759,48 @@
       "headArmor": 0,
       "bodyArmor": 0,
       "armArmor": 4,
+      "legArmor": 0,
+      "materialType": "Leather"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_camel_saddle",
+    "name": "Camel Saddle",
+    "culture": "Aserai",
+    "type": "MountHarness",
+    "price": 2231,
+    "weight": 130.0,
+    "tier": 1.62162161,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 6,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Leather"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_camel_saddle_b",
+    "name": "Camel Saddle with Light Load",
+    "culture": "Aserai",
+    "type": "MountHarness",
+    "price": 2231,
+    "weight": 130.0,
+    "tier": 1.62162161,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 6,
+      "armArmor": 0,
       "legArmor": 0,
       "materialType": "Leather"
     },
@@ -6754,6 +6983,48 @@
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Plate"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_chain_barding",
+    "name": "Reinforced Chainmail Barding",
+    "culture": "Vlandia",
+    "type": "MountHarness",
+    "price": 44077,
+    "weight": 130.0,
+    "tier": 10.27027,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 38,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Chainmail"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_chain_horse_harness",
+    "name": "Chain Mail Horse Armor",
+    "culture": "Neutral",
+    "type": "MountHarness",
+    "price": 34185,
+    "weight": 120.0,
+    "tier": 8.918919,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 33,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -7128,19 +7399,19 @@
     "name": "Comanche",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 4568,
+    "price": 14854,
     "weight": 430.0,
-    "tier": 3.701418,
+    "tier": 8.986279,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 100,
-      "chargeDamage": 0,
+      "chargeDamage": 3,
       "maneuver": 76,
-      "speed": 33,
-      "hitPoints": 145
+      "speed": 45,
+      "hitPoints": 195
     },
     "weapons": []
   },
@@ -7597,19 +7868,19 @@
     "name": "Danishmend",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 1938,
+    "price": 5618,
     "weight": 300.0,
-    "tier": 2.10391283,
+    "tier": 5.128017,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 90,
-      "chargeDamage": 0,
+      "chargeDamage": 2,
       "maneuver": 74,
-      "speed": 29,
-      "hitPoints": 113
+      "speed": 38,
+      "hitPoints": 160
     },
     "weapons": []
   },
@@ -7618,19 +7889,19 @@
     "name": "Darkhan",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 2541,
+    "price": 7247,
     "weight": 300.0,
-    "tier": 2.531469,
+    "tier": 5.96184874,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 90,
-      "chargeDamage": 0,
+      "chargeDamage": 2,
       "maneuver": 77,
-      "speed": 30,
-      "hitPoints": 119
+      "speed": 39,
+      "hitPoints": 166
     },
     "weapons": []
   },
@@ -7913,6 +8184,27 @@
     "armor": {
       "headArmor": 6,
       "bodyArmor": 0,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Cloth"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_desert_cloth_harness",
+    "name": "Beduin Cloth Saddle",
+    "culture": "Aserai",
+    "type": "MountHarness",
+    "price": 2768,
+    "weight": 22.5,
+    "tier": 1.89189184,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 7,
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Cloth"
@@ -8285,19 +8577,19 @@
     "name": "Durendal",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 3647,
+    "price": 12113,
     "weight": 450.0,
-    "tier": 3.208807,
+    "tier": 8.012118,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 105,
-      "chargeDamage": 2,
+      "chargeDamage": 8,
       "maneuver": 68,
-      "speed": 31,
-      "hitPoints": 158
+      "speed": 42,
+      "hitPoints": 214
     },
     "weapons": []
   },
@@ -10979,19 +11271,19 @@
     "name": "Fiorentina",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 1818,
+    "price": 5551,
     "weight": 420.0,
-    "tier": 2.01150012,
+    "tier": 5.091233,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 100,
-      "chargeDamage": 0,
+      "chargeDamage": 1,
       "maneuver": 58,
-      "speed": 36,
-      "hitPoints": 114
+      "speed": 48,
+      "hitPoints": 164
     },
     "weapons": []
   },
@@ -11599,19 +11891,19 @@
     "name": "Genghis",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 4545,
+    "price": 14840,
     "weight": 300.0,
-    "tier": 3.689356,
+    "tier": 8.981658,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 90,
-      "chargeDamage": 0,
+      "chargeDamage": 3,
       "maneuver": 83,
-      "speed": 32,
-      "hitPoints": 134
+      "speed": 43,
+      "hitPoints": 184
     },
     "weapons": []
   },
@@ -11891,6 +12183,69 @@
       "armArmor": 1,
       "legArmor": 1,
       "materialType": "Cloth"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_half_mail_and_plate_barding",
+    "name": "Reinforced Half Plate Barding",
+    "culture": "Aserai",
+    "type": "MountHarness",
+    "price": 36064,
+    "weight": 90.0,
+    "tier": 9.189189,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 34,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Plate"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_half_scale_barding",
+    "name": "Cataphract Half Scale Barding",
+    "culture": "Empire",
+    "type": "MountHarness",
+    "price": 39971,
+    "weight": 80.0,
+    "tier": 9.72973,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 36,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Chainmail"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_halfchain_barding",
+    "name": "Half Mail Barding",
+    "culture": "Vlandia",
+    "type": "MountHarness",
+    "price": 30576,
+    "weight": 65.0,
+    "tier": 8.378378,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 31,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -13092,19 +13447,19 @@
     "name": "Humphrey",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 1973,
+    "price": 5317,
     "weight": 520.0,
-    "tier": 2.13031745,
+    "tier": 4.961558,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 110,
-      "chargeDamage": 0,
+      "chargeDamage": 2,
       "maneuver": 72,
-      "speed": 22,
-      "hitPoints": 168
+      "speed": 30,
+      "hitPoints": 218
     },
     "weapons": []
   },
@@ -13456,6 +13811,27 @@
     "weapons": []
   },
   {
+    "id": "crpg_imperial_riding_harness",
+    "name": "Imperial Riding Harness",
+    "culture": "Empire",
+    "type": "MountHarness",
+    "price": 1743,
+    "weight": 22.0,
+    "tier": 1.35135138,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 5,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Leather"
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_imperial_robes",
     "name": "Toga",
     "culture": "Empire",
@@ -13493,6 +13869,27 @@
       "armArmor": 16,
       "legArmor": 20,
       "materialType": "Plate"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_imperial_scale_barding",
+    "name": "Cataphract Scale Barding",
+    "culture": "Empire",
+    "type": "MountHarness",
+    "price": 60014,
+    "weight": 135.0,
+    "tier": 12.1621618,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 45,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -13936,19 +14333,19 @@
     "name": "Iroquois",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 3368,
+    "price": 9904,
     "weight": 430.0,
-    "tier": 3.04813766,
+    "tier": 7.144061,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 105,
-      "chargeDamage": 2,
-      "maneuver": 72,
-      "speed": 32,
-      "hitPoints": 135
+      "chargeDamage": 7,
+      "maneuver": 71,
+      "speed": 43,
+      "hitPoints": 181
     },
     "weapons": []
   },
@@ -15439,19 +15836,19 @@
     "name": "Kubilai",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 2927,
+    "price": 9867,
     "weight": 300.0,
-    "tier": 2.7814405,
+    "tier": 7.1288147,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 90,
-      "chargeDamage": 0,
+      "chargeDamage": 2,
       "maneuver": 79,
-      "speed": 30,
-      "hitPoints": 124
+      "speed": 41,
+      "hitPoints": 174
     },
     "weapons": []
   },
@@ -16405,6 +16802,27 @@
     "weapons": []
   },
   {
+    "id": "crpg_light_harness",
+    "name": "Light Harness",
+    "culture": "Neutral",
+    "type": "MountHarness",
+    "price": 2231,
+    "weight": 20.0,
+    "tier": 1.62162161,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 6,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Leather"
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_light_horsemans_kite_shield",
     "name": "Light Cavalry Kite Shield",
     "culture": "Neutral",
@@ -16805,6 +17223,27 @@
     ]
   },
   {
+    "id": "crpg_mail_and_plate_barding",
+    "name": "Reinforced Plate Barding",
+    "culture": "Aserai",
+    "type": "MountHarness",
+    "price": 48382,
+    "weight": 145.0,
+    "tier": 10.810811,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 40,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Plate"
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_mail_cavalier_boots",
     "name": "Mail Cavalier Boots",
     "culture": "Vlandia",
@@ -16961,19 +17400,19 @@
     "name": "Mehmed",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 3643,
+    "price": 9486,
     "weight": 520.0,
-    "tier": 3.20637369,
+    "tier": 6.96950531,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 110,
-      "chargeDamage": 1,
+      "chargeDamage": 4,
       "maneuver": 78,
-      "speed": 24,
-      "hitPoints": 185
+      "speed": 32,
+      "hitPoints": 235
     },
     "weapons": []
   },
@@ -17024,19 +17463,19 @@
     "name": "Milano",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 4527,
+    "price": 14838,
     "weight": 420.0,
-    "tier": 3.680292,
+    "tier": 8.98094749,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 100,
-      "chargeDamage": 0,
+      "chargeDamage": 3,
       "maneuver": 66,
-      "speed": 40,
-      "hitPoints": 136
+      "speed": 54,
+      "hitPoints": 186
     },
     "weapons": []
   },
@@ -17161,19 +17600,19 @@
     "name": "Mohawk",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 1930,
+    "price": 5384,
     "weight": 450.0,
-    "tier": 2.09786558,
+    "tier": 4.998832,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 105,
-      "chargeDamage": 0,
-      "maneuver": 67,
-      "speed": 30,
-      "hitPoints": 123
+      "chargeDamage": 1,
+      "maneuver": 66,
+      "speed": 40,
+      "hitPoints": 172
     },
     "weapons": []
   },
@@ -17278,9 +17717,9 @@
     "name": "Chadz",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 1624,
+    "price": 3799,
     "weight": 300.0,
-    "tier": 1.85741949,
+    "tier": 4.04142332,
     "requirement": 0,
     "flags": [
       "Civilian"
@@ -17289,8 +17728,71 @@
       "bodyLength": 92,
       "chargeDamage": 0,
       "maneuver": 58,
-      "speed": 22,
-      "hitPoints": 200
+      "speed": 30,
+      "hitPoints": 250
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mule_load_a",
+    "name": "Mule Harness with Pack",
+    "culture": "Neutral",
+    "type": "MountHarness",
+    "price": 2231,
+    "weight": 120.0,
+    "tier": 1.62162161,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 6,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Cloth"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mule_load_b",
+    "name": "Mule Harness with Baskets",
+    "culture": "Neutral",
+    "type": "MountHarness",
+    "price": 2231,
+    "weight": 120.0,
+    "tier": 1.62162161,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 6,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Cloth"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_mule_load_c",
+    "name": "Mule Harness with Bags",
+    "culture": "Neutral",
+    "type": "MountHarness",
+    "price": 2231,
+    "weight": 120.0,
+    "tier": 1.62162161,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 6,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Cloth"
     },
     "weapons": []
   },
@@ -17299,19 +17801,19 @@
     "name": "Napoletano",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 3639,
+    "price": 12000,
     "weight": 420.0,
-    "tier": 3.20436454,
+    "tier": 7.969482,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 100,
-      "chargeDamage": 0,
+      "chargeDamage": 2,
       "maneuver": 64,
-      "speed": 39,
-      "hitPoints": 131
+      "speed": 53,
+      "hitPoints": 181
     },
     "weapons": []
   },
@@ -17654,19 +18156,19 @@
     "name": "Navajo",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 2529,
+    "price": 7184,
     "weight": 430.0,
-    "tier": 2.52355766,
+    "tier": 5.931493,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 105,
-      "chargeDamage": 0,
+      "chargeDamage": 1,
       "maneuver": 70,
-      "speed": 31,
-      "hitPoints": 129
+      "speed": 41,
+      "hitPoints": 177
     },
     "weapons": []
   },
@@ -18715,6 +19217,48 @@
     "weapons": []
   },
   {
+    "id": "crpg_northern_light_harness",
+    "name": "Light Saddle",
+    "culture": "Sturgia",
+    "type": "MountHarness",
+    "price": 6201,
+    "weight": 30.0,
+    "tier": 3.24324322,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 12,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Leather"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_northern_noble_harness",
+    "name": "Rough Cavalry Saddle",
+    "culture": "Sturgia",
+    "type": "MountHarness",
+    "price": 3992,
+    "weight": 35.0,
+    "tier": 2.43243241,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 9,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Leather"
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_northern_padded_cloth",
     "name": "Light Padded Armor",
     "culture": "Sturgia",
@@ -18793,6 +19337,27 @@
       "armArmor": 18,
       "legArmor": 0,
       "materialType": "Plate"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_northern_ring_barding",
+    "name": "Ring Mail Barding",
+    "culture": "Sturgia",
+    "type": "MountHarness",
+    "price": 19509,
+    "weight": 82.0,
+    "tier": 6.48648643,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 24,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Chainmail"
     },
     "weapons": []
   },
@@ -19468,19 +20033,19 @@
     "name": "Osman",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 2664,
+    "price": 7249,
     "weight": 520.0,
-    "tier": 2.613014,
+    "tier": 5.962626,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 110,
-      "chargeDamage": 0,
+      "chargeDamage": 2,
       "maneuver": 75,
-      "speed": 23,
-      "hitPoints": 177
+      "speed": 31,
+      "hitPoints": 230
     },
     "weapons": []
   },
@@ -19754,19 +20319,19 @@
     "name": "Padisha",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 3650,
+    "price": 12192,
     "weight": 300.0,
-    "tier": 3.210715,
+    "tier": 8.04167,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 90,
-      "chargeDamage": 0,
+      "chargeDamage": 3,
       "maneuver": 81,
-      "speed": 31,
-      "hitPoints": 129
+      "speed": 42,
+      "hitPoints": 179
     },
     "weapons": []
   },
@@ -21077,19 +21642,19 @@
     "name": "Lionheart",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 4557,
+    "price": 14771,
     "weight": 450.0,
-    "tier": 3.69558787,
+    "tier": 8.958275,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 105,
-      "chargeDamage": 2,
+      "chargeDamage": 8,
       "maneuver": 70,
-      "speed": 32,
-      "hitPoints": 164
+      "speed": 43,
+      "hitPoints": 220
     },
     "weapons": []
   },
@@ -21295,19 +21860,19 @@
     "name": "Raymond",
     "culture": "Khuzait",
     "type": "Mount",
-    "price": 1734,
+    "price": 5277,
     "weight": 450.0,
-    "tier": 1.94606841,
+    "tier": 4.93924952,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 105,
-      "chargeDamage": 2,
+      "chargeDamage": 7,
       "maneuver": 61,
-      "speed": 28,
-      "hitPoints": 137
+      "speed": 38,
+      "hitPoints": 188
     },
     "weapons": []
   },
@@ -22020,19 +22585,19 @@
     "name": "Saladdin",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 6584,
+    "price": 17991,
     "weight": 520.0,
-    "tier": 4.635161,
+    "tier": 9.997325,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 110,
-      "chargeDamage": 1,
+      "chargeDamage": 5,
       "maneuver": 84,
-      "speed": 26,
-      "hitPoints": 204
+      "speed": 35,
+      "hitPoints": 254
     },
     "weapons": []
   },
@@ -22373,19 +22938,19 @@
     "name": "Shadowfax",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 5539,
+    "price": 17877,
     "weight": 420.0,
-    "tier": 4.171526,
+    "tier": 9.962206,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 100,
-      "chargeDamage": 0,
+      "chargeDamage": 3,
       "maneuver": 68,
-      "speed": 41,
-      "hitPoints": 140
+      "speed": 55,
+      "hitPoints": 190
     },
     "weapons": []
   },
@@ -24047,6 +24612,27 @@
     "weapons": []
   },
   {
+    "id": "crpg_steppe_fur_harness",
+    "name": "Steppe Fur Harness",
+    "culture": "Khuzait",
+    "type": "MountHarness",
+    "price": 3992,
+    "weight": 25.5,
+    "tier": 2.43243241,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 9,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Chainmail"
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_steppe_guardian_shield",
     "name": "Eastern Cavalry Shield",
     "culture": "Neutral",
@@ -24083,6 +24669,48 @@
         "swingSpeed": 82
       }
     ]
+  },
+  {
+    "id": "crpg_steppe_half_barding",
+    "name": "Lamellar Half Barding",
+    "culture": "Khuzait",
+    "type": "MountHarness",
+    "price": 16794,
+    "weight": 70.0,
+    "tier": 5.94594574,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 22,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Chainmail"
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_steppe_harness",
+    "name": "Steppe Saddle",
+    "culture": "Khuzait",
+    "type": "MountHarness",
+    "price": 2768,
+    "weight": 23.5,
+    "tier": 1.89189184,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 7,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Chainmail"
+    },
+    "weapons": []
   },
   {
     "id": "crpg_steppe_heavy_bow",
@@ -24485,6 +25113,27 @@
     ]
   },
   {
+    "id": "crpg_stripped_leather_harness",
+    "name": "Striped Leather Harness",
+    "culture": "Empire",
+    "type": "MountHarness",
+    "price": 3992,
+    "weight": 26.0,
+    "tier": 2.43243241,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 9,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Leather"
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_stronger_reinforced_kite_shield",
     "name": "Reinforced Oaken Kite Shield",
     "culture": "Neutral",
@@ -24760,6 +25409,27 @@
         "swingSpeed": 82
       }
     ]
+  },
+  {
+    "id": "crpg_studded_steppe_barding",
+    "name": "Reinforced Mail Barding",
+    "culture": "Khuzait",
+    "type": "MountHarness",
+    "price": 30576,
+    "weight": 85.0,
+    "tier": 8.378378,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "armor": {
+      "headArmor": 0,
+      "bodyArmor": 31,
+      "armArmor": 0,
+      "legArmor": 0,
+      "materialType": "Chainmail"
+    },
+    "weapons": []
   },
   {
     "id": "crpg_studded_steppe_leather",
@@ -26133,19 +26803,19 @@
     "name": "Suleyman",
     "culture": "Aserai",
     "type": "Mount",
-    "price": 5249,
+    "price": 14819,
     "weight": 520.0,
-    "tier": 4.035803,
+    "tier": 8.974289,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 110,
-      "chargeDamage": 1,
+      "chargeDamage": 5,
       "maneuver": 82,
-      "speed": 25,
-      "hitPoints": 198
+      "speed": 34,
+      "hitPoints": 249
     },
     "weapons": []
   },
@@ -27347,19 +28017,19 @@
     "name": "Venezia",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 3112,
+    "price": 9780,
     "weight": 420.0,
-    "tier": 2.89531827,
+    "tier": 7.092777,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 100,
-      "chargeDamage": 0,
+      "chargeDamage": 2,
       "maneuver": 62,
-      "speed": 39,
-      "hitPoints": 126
+      "speed": 52,
+      "hitPoints": 176
     },
     "weapons": []
   },
@@ -27389,19 +28059,19 @@
     "name": "Vienna",
     "culture": "Neutral",
     "type": "Mount",
-    "price": 2306,
+    "price": 7351,
     "weight": 420.0,
-    "tier": 2.37093949,
+    "tier": 6.01183653,
     "requirement": 0,
     "flags": [
       "Civilian"
     ],
     "mount": {
       "bodyLength": 100,
-      "chargeDamage": 0,
+      "chargeDamage": 2,
       "maneuver": 60,
-      "speed": 37,
-      "hitPoints": 120
+      "speed": 50,
+      "hitPoints": 169
     },
     "weapons": []
   },
