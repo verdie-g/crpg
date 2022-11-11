@@ -2207,132 +2207,6 @@
     "weapons": []
   },
   {
-    "id": "crpg_balanced_10",
-    "name": "Artemis",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 17838,
-    "weight": 430.0,
-    "tier": 9.950334,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 100,
-      "chargeDamage": 3,
-      "maneuver": 78,
-      "speed": 46,
-      "hitPoints": 199
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_balanced_5",
-    "name": "Mohawk",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 5384,
-    "weight": 450.0,
-    "tier": 4.998832,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 105,
-      "chargeDamage": 1,
-      "maneuver": 66,
-      "speed": 40,
-      "hitPoints": 172
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_balanced_6",
-    "name": "Navajo",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 7184,
-    "weight": 430.0,
-    "tier": 5.931493,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 105,
-      "chargeDamage": 1,
-      "maneuver": 70,
-      "speed": 41,
-      "hitPoints": 177
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_balanced_7",
-    "name": "Iroquois",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 9904,
-    "weight": 430.0,
-    "tier": 7.144061,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 105,
-      "chargeDamage": 7,
-      "maneuver": 71,
-      "speed": 43,
-      "hitPoints": 181
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_balanced_8",
-    "name": "Apache",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 12061,
-    "weight": 430.0,
-    "tier": 7.992573,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 100,
-      "chargeDamage": 2,
-      "maneuver": 74,
-      "speed": 44,
-      "hitPoints": 190
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_balanced_9",
-    "name": "Comanche",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 14854,
-    "weight": 430.0,
-    "tier": 8.986279,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 100,
-      "chargeDamage": 3,
-      "maneuver": 76,
-      "speed": 45,
-      "hitPoints": 195
-    },
-    "weapons": []
-  },
-  {
     "id": "crpg_bamboo_axe_t4",
     "name": "Bamboo Axe",
     "culture": "Aserai",
@@ -7153,132 +7027,6 @@
     "weapons": []
   },
   {
-    "id": "crpg_charger_10",
-    "name": "Bucephale",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 17816,
-    "weight": 450.0,
-    "tier": 9.943507,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 105,
-      "chargeDamage": 8,
-      "maneuver": 72,
-      "speed": 44,
-      "hitPoints": 225
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_charger_5",
-    "name": "Raymond",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 5277,
-    "weight": 450.0,
-    "tier": 4.93924952,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 105,
-      "chargeDamage": 7,
-      "maneuver": 61,
-      "speed": 38,
-      "hitPoints": 188
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_charger_6",
-    "name": "Bohemond",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 7266,
-    "weight": 450.0,
-    "tier": 5.97086143,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 105,
-      "chargeDamage": 6,
-      "maneuver": 64,
-      "speed": 40,
-      "hitPoints": 198
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_charger_7",
-    "name": "Baudouin",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 9469,
-    "weight": 450.0,
-    "tier": 6.962321,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 105,
-      "chargeDamage": 7,
-      "maneuver": 66,
-      "speed": 41,
-      "hitPoints": 207
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_charger_8",
-    "name": "Durendal",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 12113,
-    "weight": 450.0,
-    "tier": 8.012118,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 105,
-      "chargeDamage": 8,
-      "maneuver": 68,
-      "speed": 42,
-      "hitPoints": 214
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_charger_9",
-    "name": "Lionheart",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 14771,
-    "weight": 450.0,
-    "tier": 8.958275,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 105,
-      "chargeDamage": 8,
-      "maneuver": 70,
-      "speed": 43,
-      "hitPoints": 220
-    },
-    "weapons": []
-  },
-  {
     "id": "crpg_chivalric_kite_shield",
     "name": "Knights Kite Shield",
     "culture": "Vlandia",
@@ -7706,132 +7454,6 @@
         "swingSpeed": 101
       }
     ]
-  },
-  {
-    "id": "crpg_courser_10",
-    "name": "Shadowfax",
-    "culture": "Neutral",
-    "type": "Mount",
-    "price": 17877,
-    "weight": 420.0,
-    "tier": 9.962206,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 100,
-      "chargeDamage": 3,
-      "maneuver": 68,
-      "speed": 55,
-      "hitPoints": 190
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_courser_5",
-    "name": "Fiorentina",
-    "culture": "Neutral",
-    "type": "Mount",
-    "price": 5551,
-    "weight": 420.0,
-    "tier": 5.091233,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 100,
-      "chargeDamage": 1,
-      "maneuver": 58,
-      "speed": 48,
-      "hitPoints": 164
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_courser_6",
-    "name": "Vienna",
-    "culture": "Neutral",
-    "type": "Mount",
-    "price": 7351,
-    "weight": 420.0,
-    "tier": 6.01183653,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 100,
-      "chargeDamage": 2,
-      "maneuver": 60,
-      "speed": 50,
-      "hitPoints": 169
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_courser_7",
-    "name": "Venezia",
-    "culture": "Neutral",
-    "type": "Mount",
-    "price": 9780,
-    "weight": 420.0,
-    "tier": 7.092777,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 100,
-      "chargeDamage": 2,
-      "maneuver": 62,
-      "speed": 52,
-      "hitPoints": 176
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_courser_8",
-    "name": "Napoletano",
-    "culture": "Neutral",
-    "type": "Mount",
-    "price": 12000,
-    "weight": 420.0,
-    "tier": 7.969482,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 100,
-      "chargeDamage": 2,
-      "maneuver": 64,
-      "speed": 53,
-      "hitPoints": 181
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_courser_9",
-    "name": "Milano",
-    "culture": "Neutral",
-    "type": "Mount",
-    "price": 14838,
-    "weight": 420.0,
-    "tier": 8.98094749,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 100,
-      "chargeDamage": 3,
-      "maneuver": 66,
-      "speed": 54,
-      "hitPoints": 186
-    },
-    "weapons": []
   },
   {
     "id": "crpg_crossbow_a",
@@ -13567,6 +13189,132 @@
     ]
   },
   {
+    "id": "crpg_horse_balanced_10",
+    "name": "Artemis",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 17838,
+    "weight": 430.0,
+    "tier": 9.950334,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 100,
+      "chargeDamage": 3,
+      "maneuver": 78,
+      "speed": 46,
+      "hitPoints": 199
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_balanced_5",
+    "name": "Mohawk",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 5384,
+    "weight": 450.0,
+    "tier": 4.998832,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 105,
+      "chargeDamage": 1,
+      "maneuver": 66,
+      "speed": 40,
+      "hitPoints": 172
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_balanced_6",
+    "name": "Navajo",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 7184,
+    "weight": 430.0,
+    "tier": 5.931493,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 105,
+      "chargeDamage": 1,
+      "maneuver": 70,
+      "speed": 41,
+      "hitPoints": 177
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_balanced_7",
+    "name": "Iroquois",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 9904,
+    "weight": 430.0,
+    "tier": 7.144061,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 105,
+      "chargeDamage": 7,
+      "maneuver": 71,
+      "speed": 43,
+      "hitPoints": 181
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_balanced_8",
+    "name": "Apache",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 12061,
+    "weight": 430.0,
+    "tier": 7.992573,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 100,
+      "chargeDamage": 2,
+      "maneuver": 74,
+      "speed": 44,
+      "hitPoints": 190
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_balanced_9",
+    "name": "Comanche",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 14854,
+    "weight": 430.0,
+    "tier": 8.986279,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 100,
+      "chargeDamage": 3,
+      "maneuver": 76,
+      "speed": 45,
+      "hitPoints": 195
+    },
+    "weapons": []
+  },
+  {
     "id": "crpg_horse_bane_flag_t3",
     "name": "Horse Bane Flag",
     "culture": "Battania",
@@ -13601,6 +13349,384 @@
         "swingSpeed": 97
       }
     ]
+  },
+  {
+    "id": "crpg_horse_charger_10",
+    "name": "Bucephale",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 17816,
+    "weight": 450.0,
+    "tier": 9.943507,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 105,
+      "chargeDamage": 8,
+      "maneuver": 72,
+      "speed": 44,
+      "hitPoints": 225
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_charger_5",
+    "name": "Raymond",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 5277,
+    "weight": 450.0,
+    "tier": 4.93924952,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 105,
+      "chargeDamage": 7,
+      "maneuver": 61,
+      "speed": 38,
+      "hitPoints": 188
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_charger_6",
+    "name": "Bohemond",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 7266,
+    "weight": 450.0,
+    "tier": 5.97086143,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 105,
+      "chargeDamage": 6,
+      "maneuver": 64,
+      "speed": 40,
+      "hitPoints": 198
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_charger_7",
+    "name": "Baudouin",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 9469,
+    "weight": 450.0,
+    "tier": 6.962321,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 105,
+      "chargeDamage": 7,
+      "maneuver": 66,
+      "speed": 41,
+      "hitPoints": 207
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_charger_8",
+    "name": "Durendal",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 12113,
+    "weight": 450.0,
+    "tier": 8.012118,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 105,
+      "chargeDamage": 8,
+      "maneuver": 68,
+      "speed": 42,
+      "hitPoints": 214
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_charger_9",
+    "name": "Lionheart",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 14771,
+    "weight": 450.0,
+    "tier": 8.958275,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 105,
+      "chargeDamage": 8,
+      "maneuver": 70,
+      "speed": 43,
+      "hitPoints": 220
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_fast_10",
+    "name": "Shadowfax",
+    "culture": "Neutral",
+    "type": "Mount",
+    "price": 17877,
+    "weight": 420.0,
+    "tier": 9.962206,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 100,
+      "chargeDamage": 3,
+      "maneuver": 68,
+      "speed": 55,
+      "hitPoints": 190
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_fast_5",
+    "name": "Fiorentina",
+    "culture": "Neutral",
+    "type": "Mount",
+    "price": 5551,
+    "weight": 420.0,
+    "tier": 5.091233,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 100,
+      "chargeDamage": 1,
+      "maneuver": 58,
+      "speed": 48,
+      "hitPoints": 164
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_fast_6",
+    "name": "Vienna",
+    "culture": "Neutral",
+    "type": "Mount",
+    "price": 7351,
+    "weight": 420.0,
+    "tier": 6.01183653,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 100,
+      "chargeDamage": 2,
+      "maneuver": 60,
+      "speed": 50,
+      "hitPoints": 169
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_fast_7",
+    "name": "Venezia",
+    "culture": "Neutral",
+    "type": "Mount",
+    "price": 9780,
+    "weight": 420.0,
+    "tier": 7.092777,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 100,
+      "chargeDamage": 2,
+      "maneuver": 62,
+      "speed": 52,
+      "hitPoints": 176
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_fast_8",
+    "name": "Napoletano",
+    "culture": "Neutral",
+    "type": "Mount",
+    "price": 12000,
+    "weight": 420.0,
+    "tier": 7.969482,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 100,
+      "chargeDamage": 2,
+      "maneuver": 64,
+      "speed": 53,
+      "hitPoints": 181
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_fast_9",
+    "name": "Milano",
+    "culture": "Neutral",
+    "type": "Mount",
+    "price": 14838,
+    "weight": 420.0,
+    "tier": 8.98094749,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 100,
+      "chargeDamage": 3,
+      "maneuver": 66,
+      "speed": 54,
+      "hitPoints": 186
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_maneuverable_10",
+    "name": "Bo'orchu",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 17990,
+    "weight": 300.0,
+    "tier": 9.996982,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 90,
+      "chargeDamage": 4,
+      "maneuver": 85,
+      "speed": 44,
+      "hitPoints": 188
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_maneuverable_5",
+    "name": "Danishmend",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 5618,
+    "weight": 300.0,
+    "tier": 5.128017,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 90,
+      "chargeDamage": 2,
+      "maneuver": 74,
+      "speed": 38,
+      "hitPoints": 160
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_maneuverable_6",
+    "name": "Darkhan",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 7247,
+    "weight": 300.0,
+    "tier": 5.96184874,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 90,
+      "chargeDamage": 2,
+      "maneuver": 77,
+      "speed": 39,
+      "hitPoints": 166
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_maneuverable_7",
+    "name": "Kubilai",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 9867,
+    "weight": 300.0,
+    "tier": 7.1288147,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 90,
+      "chargeDamage": 2,
+      "maneuver": 79,
+      "speed": 41,
+      "hitPoints": 174
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_maneuverable_8",
+    "name": "Padisha",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 12192,
+    "weight": 300.0,
+    "tier": 8.04167,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 90,
+      "chargeDamage": 3,
+      "maneuver": 81,
+      "speed": 42,
+      "hitPoints": 179
+    },
+    "weapons": []
+  },
+  {
+    "id": "crpg_horse_maneuverable_9",
+    "name": "Genghis",
+    "culture": "Khuzait",
+    "type": "Mount",
+    "price": 14840,
+    "weight": 300.0,
+    "tier": 8.981658,
+    "requirement": 0,
+    "flags": [
+      "Civilian"
+    ],
+    "mount": {
+      "bodyLength": 90,
+      "chargeDamage": 3,
+      "maneuver": 83,
+      "speed": 43,
+      "hitPoints": 184
+    },
+    "weapons": []
   },
   {
     "id": "crpg_horse_whip",
@@ -17524,132 +17650,6 @@
       "armArmor": 0,
       "legArmor": 0,
       "materialType": "Chainmail"
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_maneuverable_10",
-    "name": "Bo'orchu",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 17990,
-    "weight": 300.0,
-    "tier": 9.996982,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 90,
-      "chargeDamage": 4,
-      "maneuver": 85,
-      "speed": 44,
-      "hitPoints": 188
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_maneuverable_5",
-    "name": "Danishmend",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 5618,
-    "weight": 300.0,
-    "tier": 5.128017,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 90,
-      "chargeDamage": 2,
-      "maneuver": 74,
-      "speed": 38,
-      "hitPoints": 160
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_maneuverable_6",
-    "name": "Darkhan",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 7247,
-    "weight": 300.0,
-    "tier": 5.96184874,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 90,
-      "chargeDamage": 2,
-      "maneuver": 77,
-      "speed": 39,
-      "hitPoints": 166
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_maneuverable_7",
-    "name": "Kubilai",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 9867,
-    "weight": 300.0,
-    "tier": 7.1288147,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 90,
-      "chargeDamage": 2,
-      "maneuver": 79,
-      "speed": 41,
-      "hitPoints": 174
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_maneuverable_8",
-    "name": "Padisha",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 12192,
-    "weight": 300.0,
-    "tier": 8.04167,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 90,
-      "chargeDamage": 3,
-      "maneuver": 81,
-      "speed": 42,
-      "hitPoints": 179
-    },
-    "weapons": []
-  },
-  {
-    "id": "crpg_maneuverable_9",
-    "name": "Genghis",
-    "culture": "Khuzait",
-    "type": "Mount",
-    "price": 14840,
-    "weight": 300.0,
-    "tier": 8.981658,
-    "requirement": 0,
-    "flags": [
-      "Civilian"
-    ],
-    "mount": {
-      "bodyLength": 90,
-      "chargeDamage": 3,
-      "maneuver": 83,
-      "speed": 43,
-      "hitPoints": 184
     },
     "weapons": []
   },
