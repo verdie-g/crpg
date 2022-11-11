@@ -26,6 +26,7 @@ internal class ItemExporter : IDataExporter
         "../../Modules/SandBoxCore/ModuleData/items/body_armors.xml",
         "../../Modules/SandBoxCore/ModuleData/items/arm_armors.xml",
         "../../Modules/SandBoxCore/ModuleData/items/leg_armors.xml",
+        "../../Modules/SandBoxCore/ModuleData/items/horses_and_others.xml",
         "../../Modules/SandBoxCore/ModuleData/items/shields.xml",
         "../../Modules/SandBoxCore/ModuleData/items/weapons.xml",
         "../../Modules/SandBoxCore/ModuleData/items/banners.xml",
@@ -369,11 +370,6 @@ internal class ItemExporter : IDataExporter
             mbItems = mbItems.Concat(DeserializeMbItems(itemsDoc, game));
             itemsDoc.Save(Path.Combine(moduleDataItemsPath, Path.GetFileName(filePath)));
         }
-
-        var mountDoc = LoadMbDocument(Path.Combine(moduleDataItemsPath, "horses_and_others.xml"));
-        RegisterMbObjects<ItemObject>(mountDoc, game);
-        mbItems = mbItems.Concat(DeserializeMbItems(mountDoc, game));
-        mountDoc.Save(Path.Combine(moduleDataItemsPath, "horses_and_others.xml"));
 
         mbItems = mbItems
             .DistinctBy(i => i.StringId)
