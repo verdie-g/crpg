@@ -18,7 +18,6 @@ internal class ItemExporter : IDataExporter
 {
     public async Task Export(string gitRepoPath)
     {
-        string moduleDataPath = Path.Combine(gitRepoPath, "src/Module.Server/ModuleData");
         var game = Game.CreateGame(new MultiplayerGame(), new MultiplayerGameManager());
         game.Initialize();
         var mbItems = game.ObjectManager.GetObjectTypeList<ItemObject>()
@@ -92,7 +91,7 @@ internal class ItemExporter : IDataExporter
                 ThrustDamage = w.ThrustDamage,
                 ThrustDamageType = MbToCrpgDamageType(w.ThrustDamageType),
                 ThrustSpeed = w.ThrustSpeed,
-                SwingDamage = (int)(w.SwingDamageFactor * 25f),
+                SwingDamage = w.SwingDamage,
                 SwingDamageType = MbToCrpgDamageType(w.SwingDamageType),
                 SwingSpeed = w.SwingSpeed,
             }).ToArray();

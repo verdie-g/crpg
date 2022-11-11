@@ -303,7 +303,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -357,7 +357,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 33,
+        "swingDamage": 27,
         "swingDamageType": "Cut",
         "swingSpeed": 81
       }
@@ -393,7 +393,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -507,7 +507,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -545,7 +545,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 95,
-        "swingDamage": 28,
+        "swingDamage": 41,
         "swingDamageType": "Cut",
         "swingSpeed": 86
       }
@@ -583,7 +583,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 93,
-        "swingDamage": 28,
+        "swingDamage": 43,
         "swingDamageType": "Cut",
         "swingSpeed": 78
       }
@@ -621,7 +621,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 95,
-        "swingDamage": 31,
+        "swingDamage": 47,
         "swingDamageType": "Cut",
         "swingSpeed": 76
       }
@@ -720,7 +720,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 28,
+        "swingDamage": 21,
         "swingDamageType": "Cut",
         "swingSpeed": 98
       }
@@ -756,7 +756,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 96,
-        "swingDamage": 28,
+        "swingDamage": 20,
         "swingDamageType": "Cut",
         "swingSpeed": 99
       }
@@ -1441,7 +1441,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 88,
-        "swingDamage": 16,
+        "swingDamage": 14,
         "swingDamageType": "Blunt",
         "swingSpeed": 90
       }
@@ -1474,7 +1474,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 93,
-        "swingDamage": 17,
+        "swingDamage": 13,
         "swingDamageType": "Blunt",
         "swingSpeed": 101
       }
@@ -1507,7 +1507,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 88,
-        "swingDamage": 22,
+        "swingDamage": 19,
         "swingDamageType": "Blunt",
         "swingSpeed": 87
       }
@@ -1540,7 +1540,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 90,
-        "swingDamage": 26,
+        "swingDamage": 21,
         "swingDamageType": "Blunt",
         "swingSpeed": 93
       }
@@ -1575,7 +1575,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 36,
+        "swingDamage": 29,
         "swingDamageType": "Cut",
         "swingSpeed": 87
       }
@@ -1610,7 +1610,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 88,
-        "swingDamage": 37,
+        "swingDamage": 30,
         "swingDamageType": "Cut",
         "swingSpeed": 87
       }
@@ -1645,7 +1645,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 37,
+        "swingDamage": 29,
         "swingDamageType": "Cut",
         "swingSpeed": 90
       }
@@ -1680,7 +1680,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 88,
-        "swingDamage": 41,
+        "swingDamage": 32,
         "swingDamageType": "Cut",
         "swingSpeed": 92
       }
@@ -1873,7 +1873,7 @@
         "thrustDamage": 11,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 27,
+        "swingDamage": 22,
         "swingDamageType": "Cut",
         "swingSpeed": 84
       }
@@ -1908,7 +1908,7 @@
         "thrustDamage": 11,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 28,
+        "swingDamage": 21,
         "swingDamageType": "Cut",
         "swingSpeed": 92
       }
@@ -1941,7 +1941,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 32,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 85
       }
@@ -1974,7 +1974,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 33,
+        "swingDamage": 27,
         "swingDamageType": "Cut",
         "swingSpeed": 79
       }
@@ -2007,7 +2007,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 34,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
         "swingSpeed": 79
       }
@@ -2040,7 +2040,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 34,
+        "swingDamage": 27,
         "swingDamageType": "Cut",
         "swingSpeed": 85
       }
@@ -2073,7 +2073,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 35,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
         "swingSpeed": 86
       }
@@ -2198,7 +2198,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 99,
-        "swingDamage": 33,
+        "swingDamage": 44,
         "swingDamageType": "Cut",
         "swingSpeed": 89
       }
@@ -2257,7 +2257,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 93,
-        "swingDamage": 33,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
         "swingSpeed": 84
       }
@@ -2509,7 +2509,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -2545,7 +2545,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -2581,7 +2581,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -2617,7 +2617,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -2653,7 +2653,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -2689,7 +2689,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -2725,7 +2725,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -2761,7 +2761,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -2797,7 +2797,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -2833,7 +2833,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -2869,7 +2869,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -2905,7 +2905,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -2938,7 +2938,7 @@
         "thrustDamage": 1,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -2994,7 +2994,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 26,
+        "swingDamage": 19,
         "swingDamageType": "Cut",
         "swingSpeed": 95
       }
@@ -3032,7 +3032,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 97,
-        "swingDamage": 22,
+        "swingDamage": 30,
         "swingDamageType": "Cut",
         "swingSpeed": 89
       }
@@ -3068,7 +3068,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 27,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
         "swingSpeed": 97
       }
@@ -3103,7 +3103,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 30,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 84
       },
@@ -3124,7 +3124,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 30,
+        "swingDamage": 36,
         "swingDamageType": "Cut",
         "swingSpeed": 99
       },
@@ -3144,7 +3144,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 30,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 84
       }
@@ -3180,7 +3180,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
-        "swingDamage": 30,
+        "swingDamage": 38,
         "swingDamageType": "Cut",
         "swingSpeed": 94
       }
@@ -3214,7 +3214,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 87,
-        "swingDamage": 39,
+        "swingDamage": 32,
         "swingDamageType": "Cut",
         "swingSpeed": 71
       },
@@ -3236,7 +3236,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 39,
+        "swingDamage": 50,
         "swingDamageType": "Cut",
         "swingSpeed": 89
       },
@@ -3257,7 +3257,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 87,
-        "swingDamage": 39,
+        "swingDamage": 32,
         "swingDamageType": "Cut",
         "swingSpeed": 71
       }
@@ -3292,7 +3292,7 @@
         "thrustDamage": 18,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 31,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 87
       },
@@ -3313,7 +3313,7 @@
         "thrustDamage": 20,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 96,
-        "swingDamage": 31,
+        "swingDamage": 34,
         "swingDamageType": "Cut",
         "swingSpeed": 102
       },
@@ -3333,7 +3333,7 @@
         "thrustDamage": 18,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 31,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 87
       }
@@ -3368,7 +3368,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 37,
+        "swingDamage": 30,
         "swingDamageType": "Cut",
         "swingSpeed": 69
       },
@@ -3389,7 +3389,7 @@
         "thrustDamage": 18,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 95,
-        "swingDamage": 37,
+        "swingDamage": 49,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       },
@@ -3409,7 +3409,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 37,
+        "swingDamage": 30,
         "swingDamageType": "Cut",
         "swingSpeed": 69
       }
@@ -3445,7 +3445,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 95,
-        "swingDamage": 28,
+        "swingDamage": 22,
         "swingDamageType": "Cut",
         "swingSpeed": 96
       }
@@ -3481,7 +3481,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 96,
-        "swingDamage": 33,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 94
       }
@@ -3517,7 +3517,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 35,
+        "swingDamage": 29,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       }
@@ -4186,7 +4186,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -4224,7 +4224,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -4262,7 +4262,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -4427,7 +4427,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 93,
-        "swingDamage": 16,
+        "swingDamage": 12,
         "swingDamageType": "Blunt",
         "swingSpeed": 100
       }
@@ -4460,7 +4460,7 @@
         "thrustDamage": 9,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
-        "swingDamage": 22,
+        "swingDamage": 19,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -4493,7 +4493,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 19,
+        "swingDamage": 15,
         "swingDamageType": "Pierce",
         "swingSpeed": 94
       }
@@ -4592,7 +4592,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 49,
+        "swingDamage": 37,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       }
@@ -4627,7 +4627,7 @@
         "thrustDamage": 18,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 33,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 93
       }
@@ -4663,7 +4663,7 @@
         "thrustDamage": 11,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 43,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
         "swingSpeed": 92
       }
@@ -4700,7 +4700,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 98,
-        "swingDamage": 25,
+        "swingDamage": 34,
         "swingDamageType": "Cut",
         "swingSpeed": 77
       }
@@ -4811,7 +4811,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
-        "swingDamage": 27,
+        "swingDamage": 23,
         "swingDamageType": "Cut",
         "swingSpeed": 82
       }
@@ -4846,7 +4846,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
-        "swingDamage": 31,
+        "swingDamage": 20,
         "swingDamageType": "Cut",
         "swingSpeed": 103
       }
@@ -4881,7 +4881,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 30,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 86
       }
@@ -4914,7 +4914,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 33,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 84
       }
@@ -4949,7 +4949,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 37,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 98
       }
@@ -4987,7 +4987,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -5449,7 +5449,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -5485,7 +5485,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 96,
-        "swingDamage": 33,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 95
       }
@@ -5523,7 +5523,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 99,
-        "swingDamage": 33,
+        "swingDamage": 42,
         "swingDamageType": "Cut",
         "swingSpeed": 94
       }
@@ -5640,7 +5640,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 17,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 86
       }
@@ -5678,7 +5678,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 28,
+        "swingDamage": 43,
         "swingDamageType": "Cut",
         "swingSpeed": 77
       }
@@ -5718,7 +5718,7 @@
         "thrustDamage": 2,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 100,
-        "swingDamage": 20,
+        "swingDamage": 5,
         "swingDamageType": "Blunt",
         "swingSpeed": 100
       }
@@ -5754,7 +5754,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -5787,7 +5787,7 @@
         "thrustDamage": 3,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -5820,7 +5820,7 @@
         "thrustDamage": 3,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -5853,7 +5853,7 @@
         "thrustDamage": 3,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -5889,7 +5889,7 @@
         "thrustDamage": 6,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -5925,7 +5925,7 @@
         "thrustDamage": 9,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -5961,7 +5961,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -5997,7 +5997,7 @@
         "thrustDamage": 3,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -6033,7 +6033,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -6085,7 +6085,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 91,
-        "swingDamage": 26,
+        "swingDamage": 19,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -6123,7 +6123,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -6161,7 +6161,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -6199,7 +6199,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 94
       }
@@ -6235,7 +6235,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -6273,7 +6273,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -6498,7 +6498,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 33,
+        "swingDamage": 27,
         "swingDamageType": "Cut",
         "swingSpeed": 85
       }
@@ -6531,7 +6531,7 @@
         "thrustDamage": 11,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
-        "swingDamage": 32,
+        "swingDamage": 27,
         "swingDamageType": "Cut",
         "swingSpeed": 77
       }
@@ -6566,7 +6566,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 32,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 86
       }
@@ -6751,7 +6751,7 @@
         "thrustDamage": 24,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 101,
-        "swingDamage": 61,
+        "swingDamage": 15,
         "swingDamageType": "Cut",
         "swingSpeed": 127
       },
@@ -6775,7 +6775,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 101,
-        "swingDamage": 61,
+        "swingDamage": 0,
         "swingDamageType": "Cut",
         "swingSpeed": 127
       }
@@ -6814,7 +6814,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 103,
-        "swingDamage": 61,
+        "swingDamage": 0,
         "swingDamageType": "Cut",
         "swingSpeed": 127
       }
@@ -7016,7 +7016,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -7049,7 +7049,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 84,
-        "swingDamage": 35,
+        "swingDamage": 29,
         "swingDamageType": "Cut",
         "swingSpeed": 67
       },
@@ -7070,7 +7070,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 91,
-        "swingDamage": 35,
+        "swingDamage": 49,
         "swingDamageType": "Cut",
         "swingSpeed": 86
       },
@@ -7090,7 +7090,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 84,
-        "swingDamage": 35,
+        "swingDamage": 29,
         "swingDamageType": "Cut",
         "swingSpeed": 67
       }
@@ -7123,7 +7123,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 88,
-        "swingDamage": 32,
+        "swingDamage": 27,
         "swingDamageType": "Cut",
         "swingSpeed": 82
       }
@@ -7159,7 +7159,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -7366,7 +7366,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 98
       }
@@ -7407,7 +7407,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 101
       }
@@ -7444,7 +7444,7 @@
         "thrustDamage": 23,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 96,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 75
       }
@@ -7483,7 +7483,7 @@
         "thrustDamage": 45,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 69
       }
@@ -7521,7 +7521,7 @@
         "thrustDamage": 50,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 84,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 66
       }
@@ -7559,7 +7559,7 @@
         "thrustDamage": 55,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 81,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 63
       }
@@ -7596,7 +7596,7 @@
         "thrustDamage": 30,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 65
       }
@@ -7635,7 +7635,7 @@
         "thrustDamage": 60,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 78,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 60
       }
@@ -7672,7 +7672,7 @@
         "thrustDamage": 36,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 55
       }
@@ -7729,7 +7729,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -7808,7 +7808,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 88,
-        "swingDamage": 30,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 85
       }
@@ -7967,7 +7967,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -8003,7 +8003,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -8036,7 +8036,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -8234,7 +8234,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 34,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
         "swingSpeed": 80
       }
@@ -8293,7 +8293,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -8418,7 +8418,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 103,
-        "swingDamage": 61,
+        "swingDamage": 0,
         "swingDamageType": "Cut",
         "swingSpeed": 126
       }
@@ -8494,7 +8494,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
-        "swingDamage": 33,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 86
       },
@@ -8515,7 +8515,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 99,
-        "swingDamage": 33,
+        "swingDamage": 36,
         "swingDamageType": "Cut",
         "swingSpeed": 101
       },
@@ -8535,7 +8535,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
-        "swingDamage": 33,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 86
       }
@@ -8569,7 +8569,7 @@
         "thrustDamage": 8,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 79,
-        "swingDamage": 23,
+        "swingDamage": 3,
         "swingDamageType": "Cut",
         "swingSpeed": 17
       },
@@ -8592,7 +8592,7 @@
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 88,
-        "swingDamage": 23,
+        "swingDamage": 37,
         "swingDamageType": "Cut",
         "swingSpeed": 64
       }
@@ -9257,7 +9257,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 87,
-        "swingDamage": 26,
+        "swingDamage": 21,
         "swingDamageType": "Blunt",
         "swingSpeed": 94
       }
@@ -9491,7 +9491,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -9571,7 +9571,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -10146,7 +10146,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 18,
+        "swingDamage": 12,
         "swingDamageType": "Pierce",
         "swingSpeed": 102
       }
@@ -10179,7 +10179,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 87,
-        "swingDamage": 26,
+        "swingDamage": 21,
         "swingDamageType": "Blunt",
         "swingSpeed": 91
       }
@@ -10212,7 +10212,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 89,
-        "swingDamage": 26,
+        "swingDamage": 20,
         "swingDamageType": "Blunt",
         "swingSpeed": 101
       }
@@ -10245,7 +10245,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 85,
-        "swingDamage": 27,
+        "swingDamage": 23,
         "swingDamageType": "Blunt",
         "swingSpeed": 89
       }
@@ -10278,7 +10278,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 90,
-        "swingDamage": 38,
+        "swingDamage": 31,
         "swingDamageType": "Blunt",
         "swingSpeed": 85
       }
@@ -10311,7 +10311,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 35,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 93
       }
@@ -10344,7 +10344,7 @@
         "thrustDamage": 18,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 34,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       }
@@ -10377,7 +10377,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 32,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       }
@@ -10449,7 +10449,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
-        "swingDamage": 27,
+        "swingDamage": 10,
         "swingDamageType": "Cut",
         "swingSpeed": 40
       },
@@ -10472,7 +10472,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
-        "swingDamage": 27,
+        "swingDamage": 41,
         "swingDamageType": "Cut",
         "swingSpeed": 81
       }
@@ -10506,7 +10506,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 82,
-        "swingDamage": 34,
+        "swingDamage": 4,
         "swingDamageType": "Cut",
         "swingSpeed": 16
       },
@@ -10529,7 +10529,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 34,
+        "swingDamage": 54,
         "swingDamageType": "Cut",
         "swingSpeed": 60
       }
@@ -10587,7 +10587,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 29,
+        "swingDamage": 22,
         "swingDamageType": "Cut",
         "swingSpeed": 91
       }
@@ -10622,7 +10622,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 29,
+        "swingDamage": 22,
         "swingDamageType": "Cut",
         "swingSpeed": 91
       }
@@ -10657,7 +10657,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 31,
+        "swingDamage": 24,
         "swingDamageType": "Cut",
         "swingSpeed": 89
       }
@@ -10690,7 +10690,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 31,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 84
       }
@@ -10723,7 +10723,7 @@
         "thrustDamage": 18,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 34,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 87
       }
@@ -10762,7 +10762,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 105,
-        "swingDamage": 30,
+        "swingDamage": 0,
         "swingDamageType": "Cut",
         "swingSpeed": 130
       }
@@ -10971,7 +10971,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
-        "swingDamage": 33,
+        "swingDamage": 42,
         "swingDamageType": "Cut",
         "swingSpeed": 91
       }
@@ -11006,7 +11006,7 @@
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 27,
+        "swingDamage": 20,
         "swingDamageType": "Cut",
         "swingSpeed": 96
       }
@@ -11231,7 +11231,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 93
       }
@@ -11312,7 +11312,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -11350,7 +11350,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -11386,7 +11386,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -11827,7 +11827,7 @@
         "thrustDamage": 25,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 98,
-        "swingDamage": 61,
+        "swingDamage": 23,
         "swingDamageType": "Cut",
         "swingSpeed": 120
       }
@@ -11868,7 +11868,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 84,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 88
       }
@@ -12344,7 +12344,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -12382,7 +12382,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 87
       }
@@ -12544,7 +12544,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 86,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 86
       }
@@ -12577,7 +12577,7 @@
         "thrustDamage": 2,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -12744,7 +12744,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 82,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 86
       }
@@ -12782,7 +12782,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 120,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -12820,7 +12820,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -13104,7 +13104,7 @@
         "thrustDamage": 39,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
-        "swingDamage": 40,
+        "swingDamage": 0,
         "swingDamageType": "Cut",
         "swingSpeed": 115
       },
@@ -13125,7 +13125,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
-        "swingDamage": 40,
+        "swingDamage": 20,
         "swingDamageType": "Cut",
         "swingSpeed": 115
       }
@@ -13185,7 +13185,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 96,
-        "swingDamage": 28,
+        "swingDamage": 39,
         "swingDamageType": "Cut",
         "swingSpeed": 87
       }
@@ -13220,7 +13220,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 98,
-        "swingDamage": 30,
+        "swingDamage": 12,
         "swingDamageType": "Cut",
         "swingSpeed": 118
       }
@@ -13256,7 +13256,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -13289,7 +13289,7 @@
         "thrustDamage": 6,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 79,
-        "swingDamage": 20,
+        "swingDamage": 5,
         "swingDamageType": "Blunt",
         "swingSpeed": 99
       }
@@ -13327,7 +13327,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -13389,7 +13389,7 @@
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -13425,7 +13425,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 31,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       }
@@ -13948,7 +13948,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -13983,7 +13983,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 27,
+        "swingDamage": 21,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       }
@@ -14213,7 +14213,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -14251,7 +14251,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -14284,7 +14284,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 88,
-        "swingDamage": 22,
+        "swingDamage": 18,
         "swingDamageType": "Blunt",
         "swingSpeed": 94
       }
@@ -14320,7 +14320,7 @@
         "thrustDamage": 18,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 98,
-        "swingDamage": 29,
+        "swingDamage": 30,
         "swingDamageType": "Cut",
         "swingSpeed": 104
       }
@@ -14355,7 +14355,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 88,
-        "swingDamage": 31,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 85
       },
@@ -14376,7 +14376,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 95,
-        "swingDamage": 31,
+        "swingDamage": 36,
         "swingDamageType": "Cut",
         "swingSpeed": 100
       },
@@ -14396,7 +14396,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 88,
-        "swingDamage": 31,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 85
       }
@@ -15097,7 +15097,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 16,
+        "swingDamage": 14,
         "swingDamageType": "Blunt",
         "swingSpeed": 88
       }
@@ -15130,7 +15130,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 92,
-        "swingDamage": 35,
+        "swingDamage": 28,
         "swingDamageType": "Blunt",
         "swingSpeed": 92
       }
@@ -15163,7 +15163,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 85,
-        "swingDamage": 26,
+        "swingDamage": 22,
         "swingDamageType": "Blunt",
         "swingSpeed": 85
       }
@@ -15196,7 +15196,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 84,
-        "swingDamage": 26,
+        "swingDamage": 23,
         "swingDamageType": "Blunt",
         "swingSpeed": 81
       }
@@ -15286,7 +15286,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 88,
-        "swingDamage": 41,
+        "swingDamage": 31,
         "swingDamageType": "Cut",
         "swingSpeed": 93
       }
@@ -15319,7 +15319,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 36,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
         "swingSpeed": 90
       }
@@ -15352,7 +15352,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 88,
-        "swingDamage": 41,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
         "swingSpeed": 90
       }
@@ -15386,7 +15386,7 @@
         "thrustDamage": 9,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 25,
+        "swingDamage": 12,
         "swingDamageType": "Cut",
         "swingSpeed": 50
       },
@@ -15409,7 +15409,7 @@
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 25,
+        "swingDamage": 35,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       }
@@ -15443,7 +15443,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 34,
+        "swingDamage": 7,
         "swingDamageType": "Cut",
         "swingSpeed": 25
       },
@@ -15466,7 +15466,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 95,
-        "swingDamage": 34,
+        "swingDamage": 50,
         "swingDamageType": "Cut",
         "swingSpeed": 71
       }
@@ -15522,7 +15522,7 @@
         "thrustDamage": 11,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 27,
+        "swingDamage": 18,
         "swingDamageType": "Cut",
         "swingSpeed": 100
       }
@@ -15557,7 +15557,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 32,
+        "swingDamage": 24,
         "swingDamageType": "Cut",
         "swingSpeed": 90
       }
@@ -15592,7 +15592,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 32,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       }
@@ -15627,7 +15627,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 33,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       }
@@ -15662,7 +15662,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 33,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 86
       }
@@ -15716,7 +15716,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 87,
-        "swingDamage": 22,
+        "swingDamage": 18,
         "swingDamageType": "Blunt",
         "swingSpeed": 95
       }
@@ -15918,7 +15918,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -15954,7 +15954,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 30,
+        "swingDamage": 24,
         "swingDamageType": "Cut",
         "swingSpeed": 94
       }
@@ -16037,7 +16037,7 @@
         "thrustDamage": 18,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 103,
-        "swingDamage": 30,
+        "swingDamage": 0,
         "swingDamageType": "Cut",
         "swingSpeed": 130
       }
@@ -16139,7 +16139,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -16302,7 +16302,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 89,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 89
       }
@@ -16724,7 +16724,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 103
       }
@@ -16757,7 +16757,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 88,
-        "swingDamage": 22,
+        "swingDamage": 17,
         "swingDamageType": "Blunt",
         "swingSpeed": 99
       }
@@ -16815,7 +16815,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -17006,7 +17006,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 86,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 89
       }
@@ -17045,7 +17045,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 104,
-        "swingDamage": 30,
+        "swingDamage": 0,
         "swingDamageType": "Cut",
         "swingSpeed": 130
       }
@@ -17086,7 +17086,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 84,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 86
       }
@@ -17259,7 +17259,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -17472,7 +17472,7 @@
         "thrustDamage": 9,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
-        "swingDamage": 22,
+        "swingDamage": 19,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -17513,7 +17513,7 @@
         "thrustDamage": 10,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 86,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 95
       }
@@ -17632,7 +17632,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 31,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       }
@@ -17972,7 +17972,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 100
       }
@@ -18202,7 +18202,7 @@
         "thrustDamage": 19,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 87
       }
@@ -18281,7 +18281,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 88
       }
@@ -18529,7 +18529,7 @@
         "thrustDamage": 11,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 88,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 99
       }
@@ -18650,7 +18650,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 33,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 93
       },
@@ -18691,7 +18691,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 33,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 93
       }
@@ -18729,7 +18729,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 102,
-        "swingDamage": 33,
+        "swingDamage": 38,
         "swingDamageType": "Cut",
         "swingSpeed": 99
       }
@@ -18765,7 +18765,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 31,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 92
       }
@@ -18926,7 +18926,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -19347,7 +19347,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 87
       }
@@ -19385,7 +19385,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 101
       }
@@ -19476,7 +19476,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 7,
+        "swingDamage": 3,
         "swingDamageType": "Blunt",
         "swingSpeed": 42
       },
@@ -19499,7 +19499,7 @@
         "thrustDamage": 20,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 95,
-        "swingDamage": 7,
+        "swingDamage": 12,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -19678,7 +19678,7 @@
         "thrustDamage": 37,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
-        "swingDamage": 40,
+        "swingDamage": 0,
         "swingDamageType": "Cut",
         "swingSpeed": 117
       },
@@ -19699,7 +19699,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
-        "swingDamage": 40,
+        "swingDamage": 18,
         "swingDamageType": "Cut",
         "swingSpeed": 117
       }
@@ -19778,7 +19778,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -19837,7 +19837,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -19875,7 +19875,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -19997,7 +19997,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -20035,7 +20035,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -20402,7 +20402,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -20538,7 +20538,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 89,
-        "swingDamage": 16,
+        "swingDamage": 14,
         "swingDamageType": "Cut",
         "swingSpeed": 69
       },
@@ -20561,7 +20561,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 96,
-        "swingDamage": 16,
+        "swingDamage": 23,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       },
@@ -20582,7 +20582,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 89,
-        "swingDamage": 16,
+        "swingDamage": 14,
         "swingDamageType": "Cut",
         "swingSpeed": 69
       }
@@ -20639,7 +20639,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 93,
-        "swingDamage": 10,
+        "swingDamage": 7,
         "swingDamageType": "Blunt",
         "swingSpeed": 106
       }
@@ -20675,7 +20675,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 92,
-        "swingDamage": 9,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 104
       }
@@ -20712,7 +20712,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 96,
-        "swingDamage": 21,
+        "swingDamage": 13,
         "swingDamageType": "Cut",
         "swingSpeed": 108
       }
@@ -20750,7 +20750,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 19,
+        "swingDamage": 27,
         "swingDamageType": "Blunt",
         "swingSpeed": 87
       }
@@ -20788,7 +20788,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 92,
-        "swingDamage": 19,
+        "swingDamage": 28,
         "swingDamageType": "Blunt",
         "swingSpeed": 85
       }
@@ -20825,7 +20825,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 96,
-        "swingDamage": 24,
+        "swingDamage": 15,
         "swingDamageType": "Cut",
         "swingSpeed": 107
       }
@@ -20982,7 +20982,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 91,
-        "swingDamage": 17,
+        "swingDamage": 30,
         "swingDamageType": "Pierce",
         "swingSpeed": 84
       }
@@ -21018,7 +21018,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 21,
+        "swingDamage": 15,
         "swingDamageType": "Cut",
         "swingSpeed": 97
       }
@@ -21051,7 +21051,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 89,
-        "swingDamage": 26,
+        "swingDamage": 19,
         "swingDamageType": "Blunt",
         "swingSpeed": 101
       }
@@ -21087,7 +21087,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -21120,7 +21120,7 @@
         "thrustDamage": 4,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -21156,7 +21156,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -21368,7 +21368,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 89,
-        "swingDamage": 39,
+        "swingDamage": 32,
         "swingDamageType": "Cut",
         "swingSpeed": 82
       }
@@ -21502,7 +21502,7 @@
         "thrustDamage": 7,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 87,
-        "swingDamage": 15,
+        "swingDamage": 9,
         "swingDamageType": "Blunt",
         "swingSpeed": 55
       },
@@ -21526,7 +21526,7 @@
         "thrustDamage": 9,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 94,
-        "swingDamage": 15,
+        "swingDamage": 23,
         "swingDamageType": "Blunt",
         "swingSpeed": 91
       }
@@ -21561,7 +21561,7 @@
         "thrustDamage": 24,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 101,
-        "swingDamage": 61,
+        "swingDamage": 14,
         "swingDamageType": "Cut",
         "swingSpeed": 127
       },
@@ -21585,7 +21585,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 101,
-        "swingDamage": 61,
+        "swingDamage": 0,
         "swingDamageType": "Cut",
         "swingSpeed": 127
       }
@@ -21627,7 +21627,7 @@
         "thrustDamage": 2,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 56,
-        "swingDamage": 20,
+        "swingDamage": 5,
         "swingDamageType": "Blunt",
         "swingSpeed": 70
       }
@@ -21725,7 +21725,7 @@
         "thrustDamage": 1,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -21782,7 +21782,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -21816,7 +21816,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 87,
-        "swingDamage": 39,
+        "swingDamage": 32,
         "swingDamageType": "Cut",
         "swingSpeed": 73
       },
@@ -21838,7 +21838,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 39,
+        "swingDamage": 50,
         "swingDamageType": "Cut",
         "swingSpeed": 91
       },
@@ -21859,7 +21859,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 87,
-        "swingDamage": 39,
+        "swingDamage": 32,
         "swingDamageType": "Cut",
         "swingSpeed": 73
       }
@@ -21916,7 +21916,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -21954,7 +21954,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -22067,7 +22067,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 34,
+        "swingDamage": 27,
         "swingDamageType": "Cut",
         "swingSpeed": 85
       },
@@ -22088,7 +22088,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 96,
-        "swingDamage": 34,
+        "swingDamage": 38,
         "swingDamageType": "Cut",
         "swingSpeed": 100
       },
@@ -22108,7 +22108,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 34,
+        "swingDamage": 27,
         "swingDamageType": "Cut",
         "swingSpeed": 85
       }
@@ -22160,7 +22160,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 34,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 93
       }
@@ -22605,7 +22605,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -22641,7 +22641,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 103,
-        "swingDamage": 30,
+        "swingDamage": 6,
         "swingDamageType": "Cut",
         "swingSpeed": 127
       }
@@ -22839,7 +22839,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 98,
-        "swingDamage": 34,
+        "swingDamage": 33,
         "swingDamageType": "Cut",
         "swingSpeed": 105
       }
@@ -22875,7 +22875,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -22908,7 +22908,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 90,
-        "swingDamage": 26,
+        "swingDamage": 18,
         "swingDamageType": "Blunt",
         "swingSpeed": 104
       }
@@ -22965,7 +22965,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 31,
+        "swingDamage": 20,
         "swingDamageType": "Cut",
         "swingSpeed": 103
       }
@@ -23000,7 +23000,7 @@
         "thrustDamage": 11,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 27,
+        "swingDamage": 19,
         "swingDamageType": "Cut",
         "swingSpeed": 98
       }
@@ -23094,7 +23094,7 @@
         "thrustDamage": 11,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 28,
+        "swingDamage": 21,
         "swingDamageType": "Cut",
         "swingSpeed": 93
       }
@@ -23132,7 +23132,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
-        "swingDamage": 22,
+        "swingDamage": 24,
         "swingDamageType": "Cut",
         "swingSpeed": 102
       }
@@ -23255,7 +23255,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 28,
+        "swingDamage": 20,
         "swingDamageType": "Cut",
         "swingSpeed": 101
       }
@@ -23293,7 +23293,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 95
       }
@@ -23331,7 +23331,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -23367,7 +23367,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 96,
-        "swingDamage": 28,
+        "swingDamage": 21,
         "swingDamageType": "Cut",
         "swingSpeed": 97
       }
@@ -23400,7 +23400,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 35,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
         "swingSpeed": 78
       },
@@ -23421,7 +23421,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 98,
-        "swingDamage": 35,
+        "swingDamage": 41,
         "swingDamageType": "Cut",
         "swingSpeed": 95
       },
@@ -23441,7 +23441,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 91,
-        "swingDamage": 35,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
         "swingSpeed": 78
       }
@@ -23540,7 +23540,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -23598,7 +23598,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 97,
-        "swingDamage": 28,
+        "swingDamage": 20,
         "swingDamageType": "Cut",
         "swingSpeed": 99
       }
@@ -23809,7 +23809,7 @@
         "thrustDamage": 43,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
-        "swingDamage": 40,
+        "swingDamage": 0,
         "swingDamageType": "Cut",
         "swingSpeed": 111
       },
@@ -23830,7 +23830,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
-        "swingDamage": 40,
+        "swingDamage": 21,
         "swingDamageType": "Cut",
         "swingSpeed": 111
       }
@@ -23908,7 +23908,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -23944,7 +23944,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -24079,7 +24079,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -24115,7 +24115,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -24151,7 +24151,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -24187,7 +24187,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -24223,7 +24223,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -24259,7 +24259,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -24292,7 +24292,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 84,
-        "swingDamage": 35,
+        "swingDamage": 29,
         "swingDamageType": "Cut",
         "swingSpeed": 70
       }
@@ -24328,7 +24328,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -24361,7 +24361,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 85,
-        "swingDamage": 22,
+        "swingDamage": 20,
         "swingDamageType": "Blunt",
         "swingSpeed": 81
       }
@@ -24399,7 +24399,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -24454,7 +24454,7 @@
         "thrustDamage": 2,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -24495,7 +24495,7 @@
         "thrustDamage": 9,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 84,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 94
       }
@@ -24576,7 +24576,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -24659,7 +24659,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 100
       }
@@ -24802,7 +24802,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 96,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 96
       }
@@ -24921,7 +24921,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -25039,7 +25039,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -25098,7 +25098,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -25136,7 +25136,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -25174,7 +25174,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 91
       }
@@ -25337,7 +25337,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -25436,7 +25436,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 98,
-        "swingDamage": 28,
+        "swingDamage": 40,
         "swingDamageType": "Cut",
         "swingSpeed": 87
       }
@@ -25474,7 +25474,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 32,
+        "swingDamage": 48,
         "swingDamageType": "Cut",
         "swingSpeed": 77
       }
@@ -25510,7 +25510,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 96,
-        "swingDamage": 28,
+        "swingDamage": 21,
         "swingDamageType": "Cut",
         "swingSpeed": 97
       }
@@ -25546,7 +25546,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 97,
-        "swingDamage": 31,
+        "swingDamage": 23,
         "swingDamageType": "Cut",
         "swingSpeed": 99
       }
@@ -25582,7 +25582,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 33,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 94
       }
@@ -25618,7 +25618,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 94,
-        "swingDamage": 35,
+        "swingDamage": 29,
         "swingDamageType": "Cut",
         "swingSpeed": 88
       }
@@ -25978,7 +25978,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 36,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 100
       }
@@ -26013,7 +26013,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 24,
+        "swingDamage": 17,
         "swingDamageType": "Cut",
         "swingSpeed": 98
       }
@@ -26048,7 +26048,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 39,
+        "swingDamage": 27,
         "swingDamageType": "Cut",
         "swingSpeed": 101
       }
@@ -26083,7 +26083,7 @@
         "thrustDamage": 8,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
-        "swingDamage": 22,
+        "swingDamage": 14,
         "swingDamageType": "Cut",
         "swingSpeed": 101
       }
@@ -26121,7 +26121,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -26159,7 +26159,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -26195,7 +26195,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 25,
+        "swingDamage": 39,
         "swingDamageType": "Cut",
         "swingSpeed": 62
       },
@@ -26218,7 +26218,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 25,
+        "swingDamage": 39,
         "swingDamageType": "Cut",
         "swingSpeed": 62
       }
@@ -26253,7 +26253,7 @@
         "thrustDamage": 11,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 95,
-        "swingDamage": 27,
+        "swingDamage": 16,
         "swingDamageType": "Cut",
         "swingSpeed": 104
       }
@@ -26288,7 +26288,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 31,
+        "swingDamage": 19,
         "swingDamageType": "Cut",
         "swingSpeed": 105
       }
@@ -26323,7 +26323,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 31,
+        "swingDamage": 20,
         "swingDamageType": "Cut",
         "swingSpeed": 103
       }
@@ -26358,7 +26358,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 33,
+        "swingDamage": 24,
         "swingDamageType": "Cut",
         "swingSpeed": 93
       }
@@ -26393,7 +26393,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 33,
+        "swingDamage": 22,
         "swingDamageType": "Cut",
         "swingSpeed": 100
       }
@@ -26428,7 +26428,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 35,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 93
       }
@@ -27057,7 +27057,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 85
       }
@@ -27212,7 +27212,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 32,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 82
       }
@@ -27292,7 +27292,7 @@
         "thrustDamage": 8,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 102,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 102
       }
@@ -27412,7 +27412,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -27474,7 +27474,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 101
       }
@@ -27515,7 +27515,7 @@
         "thrustDamage": 6,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 89
       }
@@ -27636,7 +27636,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 85,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 88
       }
@@ -27674,7 +27674,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -27732,7 +27732,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -27768,7 +27768,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -27804,7 +27804,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -27840,7 +27840,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -27876,7 +27876,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -27912,7 +27912,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 78,
-        "swingDamage": 20,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 97
       }
@@ -28056,7 +28056,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 87,
-        "swingDamage": 30,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 85
       }
@@ -28092,7 +28092,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 93,
-        "swingDamage": 30,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 90
       }
@@ -28271,7 +28271,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -28390,7 +28390,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 93,
-        "swingDamage": 28,
+        "swingDamage": 44,
         "swingDamageType": "Cut",
         "swingSpeed": 71
       }
@@ -28424,7 +28424,7 @@
         "thrustDamage": 21,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 36,
+        "swingDamage": 44,
         "swingDamageType": "Cut",
         "swingSpeed": 93
       }
@@ -28458,7 +28458,7 @@
         "thrustDamage": 21,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 95,
-        "swingDamage": 36,
+        "swingDamage": 43,
         "swingDamageType": "Cut",
         "swingSpeed": 95
       }
@@ -28494,7 +28494,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 97,
-        "swingDamage": 28,
+        "swingDamage": 20,
         "swingDamageType": "Cut",
         "swingSpeed": 97
       }
@@ -28530,7 +28530,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 98,
-        "swingDamage": 51,
+        "swingDamage": 37,
         "swingDamageType": "Cut",
         "swingSpeed": 94
       }
@@ -29004,7 +29004,7 @@
         "thrustDamage": 8,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 34,
+        "swingDamage": 28,
         "swingDamageType": "Pierce",
         "swingSpeed": 92
       }
@@ -29037,7 +29037,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 87,
-        "swingDamage": 26,
+        "swingDamage": 22,
         "swingDamageType": "Blunt",
         "swingSpeed": 92
       }
@@ -29070,7 +29070,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 87,
-        "swingDamage": 26,
+        "swingDamage": 23,
         "swingDamageType": "Blunt",
         "swingSpeed": 88
       }
@@ -29105,7 +29105,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 42,
+        "swingDamage": 31,
         "swingDamageType": "Cut",
         "swingSpeed": 96
       }
@@ -29140,7 +29140,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 35,
+        "swingDamage": 27,
         "swingDamageType": "Cut",
         "swingSpeed": 93
       }
@@ -29175,7 +29175,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 35,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 94
       }
@@ -29210,7 +29210,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
-        "swingDamage": 35,
+        "swingDamage": 22,
         "swingDamageType": "Cut",
         "swingSpeed": 103
       }
@@ -29305,7 +29305,7 @@
         "thrustDamage": 13,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 30,
+        "swingDamage": 12,
         "swingDamageType": "Cut",
         "swingSpeed": 42
       },
@@ -29328,7 +29328,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 97,
-        "swingDamage": 30,
+        "swingDamage": 46,
         "swingDamageType": "Cut",
         "swingSpeed": 82
       }
@@ -29363,7 +29363,7 @@
         "thrustDamage": 12,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 93,
-        "swingDamage": 27,
+        "swingDamage": 20,
         "swingDamageType": "Cut",
         "swingSpeed": 92
       }
@@ -29398,7 +29398,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 31,
+        "swingDamage": 23,
         "swingDamageType": "Cut",
         "swingSpeed": 91
       }
@@ -29433,7 +29433,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 34,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 92
       }
@@ -29466,7 +29466,7 @@
         "thrustDamage": 15,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 34,
+        "swingDamage": 27,
         "swingDamageType": "Cut",
         "swingSpeed": 86
       }
@@ -29499,7 +29499,7 @@
         "thrustDamage": 18,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 36,
+        "swingDamage": 28,
         "swingDamageType": "Cut",
         "swingSpeed": 89
       }
@@ -29658,7 +29658,7 @@
         "thrustDamage": 2,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 0,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 0
       }
@@ -29712,7 +29712,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 33,
+        "swingDamage": 27,
         "swingDamageType": "Cut",
         "swingSpeed": 83
       },
@@ -29733,7 +29733,7 @@
         "thrustDamage": 16,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 97,
-        "swingDamage": 33,
+        "swingDamage": 38,
         "swingDamageType": "Cut",
         "swingSpeed": 99
       },
@@ -29753,7 +29753,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 90,
-        "swingDamage": 33,
+        "swingDamage": 27,
         "swingDamageType": "Cut",
         "swingSpeed": 83
       }
@@ -29788,7 +29788,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 31,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 85
       },
@@ -29809,7 +29809,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 96,
-        "swingDamage": 31,
+        "swingDamage": 35,
         "swingDamageType": "Cut",
         "swingSpeed": 100
       },
@@ -29829,7 +29829,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 31,
+        "swingDamage": 26,
         "swingDamageType": "Cut",
         "swingSpeed": 85
       }
@@ -29863,7 +29863,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 94,
-        "swingDamage": 33,
+        "swingDamage": 41,
         "swingDamageType": "Cut",
         "swingSpeed": 94
       }
@@ -30113,7 +30113,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -30170,7 +30170,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -30596,7 +30596,7 @@
         "thrustDamage": 36,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
-        "swingDamage": 40,
+        "swingDamage": 0,
         "swingDamageType": "Cut",
         "swingSpeed": 118
       },
@@ -30617,7 +30617,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 100,
-        "swingDamage": 40,
+        "swingDamage": 18,
         "swingDamageType": "Cut",
         "swingSpeed": 118
       }
@@ -30676,7 +30676,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -30789,7 +30789,7 @@
         "thrustDamage": 14,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 92,
-        "swingDamage": 34,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 91
       }
@@ -30903,7 +30903,7 @@
         "thrustDamage": 4,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 101,
-        "swingDamage": 13,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 109
       },
@@ -30925,7 +30925,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 108,
-        "swingDamage": 13,
+        "swingDamage": 7,
         "swingDamageType": "Blunt",
         "swingSpeed": 118
       },
@@ -30946,7 +30946,7 @@
         "thrustDamage": 4,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 101,
-        "swingDamage": 13,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 109
       }
@@ -30980,7 +30980,7 @@
         "thrustDamage": 4,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 101,
-        "swingDamage": 13,
+        "swingDamage": 6,
         "swingDamageType": "Blunt",
         "swingSpeed": 109
       }
@@ -31016,7 +31016,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Undefined",
         "thrustSpeed": 93,
-        "swingDamage": 31,
+        "swingDamage": 25,
         "swingDamageType": "Cut",
         "swingSpeed": 94
       }
@@ -31057,7 +31057,7 @@
         "thrustDamage": 18,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 84,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 86
       }
@@ -31098,7 +31098,7 @@
         "thrustDamage": 17,
         "thrustDamageType": "Pierce",
         "thrustSpeed": 89,
-        "swingDamage": 25,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 90
       }
@@ -31136,7 +31136,7 @@
         "thrustDamage": 0,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 82
       }
@@ -31174,7 +31174,7 @@
         "thrustDamage": 5,
         "thrustDamageType": "Blunt",
         "thrustSpeed": 82,
-        "swingDamage": 20,
+        "swingDamage": 0,
         "swingDamageType": "Blunt",
         "swingSpeed": 83
       }
