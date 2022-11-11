@@ -510,6 +510,7 @@ internal class ItemExporter : IDataExporter
         for (int i = 0; i < nodes1.Length; i += 1)
         {
             var node1 = nodes1[i];
+
             // Remove test and blacklisted items
             if (node1.Name == "CraftedItem" || node1.Name == "Item")
             {
@@ -649,7 +650,13 @@ internal class ItemExporter : IDataExporter
                 }
                 else if (type == ItemObject.ItemTypeEnum.Horse)
                 {
-                    // Since the xml for horses is loaded from cRPG , anything here will be compounded at each export
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "charge_damage",
+                        v => ((int)(int.Parse(v) * 0.33f)).ToString(CultureInfo.InvariantCulture));
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "speed",
+                        v => ((int)(int.Parse(v) * 0.75f)).ToString(CultureInfo.InvariantCulture));
+                    ModifyChildNodesAttribute(node1, "ItemComponent/Horse", "extra_health",
+                        v => (int.Parse(v) - 50).ToString(CultureInfo.InvariantCulture),
+                        defaultValue: "0");
                 }
                 else if (type is ItemObject.ItemTypeEnum.HeadArmor
                          or ItemObject.ItemTypeEnum.Cape
