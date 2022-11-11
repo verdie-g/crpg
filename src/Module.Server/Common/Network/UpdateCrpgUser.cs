@@ -17,7 +17,7 @@ internal sealed class UpdateCrpgUser : GameNetworkMessage
     private static readonly CompressionInfo.Integer ClanIdCompressionInfo = new(-1, int.MaxValue, true);
 
     public CrpgUser User { get; set; } = default!;
-    public VirtualPlayer Peer { get; set; } = default!;
+    public VirtualPlayer? Peer { get; set; }
 
     protected override void OnWrite()
     {

@@ -1,6 +1,7 @@
 ﻿using Crpg.Module.Common;
 using Crpg.Module.Duel;
 using Crpg.Module.Helpers;
+using Crpg.Module.Siege;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
@@ -49,7 +50,7 @@ internal class CrpgMissionMarkerVm : ViewModel
             _commanderInfo.OnFlagNumberChangedEvent += OnFlagNumberChangedEvent;
             _commanderInfo.OnCapturePointOwnerChangedEvent += OnCapturePointOwnerChangedEvent;
             OnFlagNumberChangedEvent();
-            if (_gameModeClient is MissionMultiplayerSiegeClient siegeClient)
+            if (_gameModeClient is CrpgSiegeMissionMultiplayerClient siegeClient)
             {
                 siegeClient.OnCapturePointRemainingMoraleGainsChangedEvent += OnCapturePointRemainingMoraleGainsChanged;
             }
@@ -192,18 +193,18 @@ internal class CrpgMissionMarkerVm : ViewModel
         AlwaysVisibleTargets.Remove(marker);
     }
 
-    private void OnCapturePointRemainingMoraleGainsChanged(int[] remainingMoraleGainsArr)
+    private void OnCapturePointRemainingMoraleGainsChanged(int[] remainingMoraleGains)
     {
         foreach (MissionFlagMarkerTargetVM flagTarget in FlagTargets)
         {
             int flagIndex = flagTarget.TargetFlag.FlagIndex;
-            if (flagIndex >= 0 && flagIndex < remainingMoraleGainsArr.Length)
+            if (flagIndex >= 0 && flagIndex < remainingMoraleGains.Length)
             {
-                flagTarget.OnRemainingMoraleChanged(remainingMoraleGainsArr[flagIndex]);
+                flagTarget.OnRemainingMoraleChanged(remainingMoraleGains[flagIndex]);
             }
         }
 
-        Debug.Print("OnCapturePointRemainingMoraleGainsChanged: " + remainingMoraleGainsArr.Length);
+        Debug.Print("OnCapturePointRemainingMoraleGainsChanged: " + remainingMoraleGains.Length);
     }
 
     private void OnTeamChanged(NetworkCommunicator peer, Team previousTeam, Team newTeam)

@@ -3,6 +3,7 @@ using Crpg.Module.Battle;
 using Crpg.Module.Common;
 using Crpg.Module.Common.Models;
 using Crpg.Module.Duel;
+using Crpg.Module.Siege;
 using Newtonsoft.Json;
 using TaleWorlds.Core;
 using TaleWorlds.ModuleManager;
@@ -34,6 +35,7 @@ internal class CrpgSubModule : MBSubModuleBase
         LoadSpriteSheets();
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode(_constants, isSkirmish: true));
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgBattleGameMode(_constants, isSkirmish: false));
+        TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgSiegeGameMode(_constants));
         TaleWorlds.MountAndBlade.Module.CurrentModule.AddMultiplayerGameMode(new CrpgDuelGameMode(_constants));
 
 #if CRPG_SERVER

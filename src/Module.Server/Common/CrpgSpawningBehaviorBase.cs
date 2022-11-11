@@ -23,7 +23,7 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         return true;
     }
 
-    protected virtual void SpawnPeerAgents()
+    protected void SpawnPeerAgents()
     {
         BasicCultureObject cultureTeam1 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
         BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());
@@ -97,7 +97,7 @@ internal abstract class CrpgSpawningBehaviorBase : SpawningBehaviorBase
         }
     }
 
-    protected virtual void SpawnBotAgents()
+    protected void SpawnBotAgents()
     {
         BasicCultureObject cultureTeam1 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam1.GetStrValue());
         BasicCultureObject cultureTeam2 = MBObjectManager.Instance.GetObject<BasicCultureObject>(MultiplayerOptions.OptionType.CultureTeam2.GetStrValue());

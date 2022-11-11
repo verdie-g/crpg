@@ -13,8 +13,8 @@ internal class CrpgFlagDominationMissionMultiplayer : MissionMultiplayerGameMode
 {
     private const uint FlagNeutralColor1 = 4284111450;
     private const uint FlagNeutralColor2 = uint.MaxValue;
-    private const float FlagAttackRange = 6f;
-    private const float FlagAttackRangeSquared = FlagAttackRange * FlagAttackRange;
+    private const float FlagCaptureRange = 6f;
+    private const float FlagCaptureRangeSquared = FlagCaptureRange * FlagCaptureRange;
 
     private const float BattleMoraleGainOnTick = 0.002f;
     private const float BattleMoraleGainMultiplierLastFlag = 1.5f;
@@ -315,7 +315,7 @@ internal class CrpgFlagDominationMissionMultiplayer : MissionMultiplayerGameMode
 
             Agent? closestAgentToFlag = null;
             float closestAgentDistanceToFlagSquared = 16f; // Where does this number come from?
-            foreach (Agent agent in Mission.Current.GetAgentsInRange(flag.Position.AsVec2, FlagAttackRange))
+            foreach (Agent agent in Mission.Current.GetAgentsInRange(flag.Position.AsVec2, FlagCaptureRange))
             {
                 if (!agent.IsActive() || !agent.IsHuman || (!_isSkirmish && agent.HasMount))
                 {
@@ -453,10 +453,10 @@ internal class CrpgFlagDominationMissionMultiplayer : MissionMultiplayerGameMode
             return 0;
         }
 
-        return Mission.Current.GetAgentsInRange(flag.Position.AsVec2, FlagAttackRange)
+        return Mission.Current.GetAgentsInRange(flag.Position.AsVec2, FlagCaptureRange)
             .Count<Agent>(a => a.IsHuman
                                && a.IsActive()
-                               && a.Position.DistanceSquared(flag.Position) <= FlagAttackRangeSquared
+                               && a.Position.DistanceSquared(flag.Position) <= FlagCaptureRangeSquared
                                && a.Team.Side != flagOwner.Side);
     }
 

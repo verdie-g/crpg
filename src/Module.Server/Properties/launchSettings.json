@@ -1,10 +1,16 @@
 {
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "Module.Server": {
+    "Battle": {
       "commandName": "Executable",
       "executablePath": "%MB_SERVER_PATH%\\bin\\Win64_Shipping_Server\\DedicatedCustomServer.Starter.exe",
-      "commandLineArgs": "_MODULES_*Native*Multiplayer*cRPG*_MODULES_ /dedicatedcustomserverconfigfile ..\\cRPG\\ds_config_crpg.txt /port 7210",
+      "commandLineArgs": "_MODULES_*Native*Multiplayer*cRPG*_MODULES_ /dedicatedcustomserverconfigfile ..\\cRPG\\ds_config_crpg_battle.txt /port 7210",
+      "workingDirectory": "%MB_SERVER_PATH%\\bin\\Win64_Shipping_Server"
+    },
+    "Siege": {
+      "commandName": "Executable",
+      "executablePath": "%MB_SERVER_PATH%\\bin\\Win64_Shipping_Server\\DedicatedCustomServer.Starter.exe",
+      "commandLineArgs": "_MODULES_*Native*Multiplayer*cRPG*_MODULES_ /dedicatedcustomserverconfigfile ..\\cRPG\\ds_config_crpg_siege.txt /port 7210",
       "workingDirectory": "%MB_SERVER_PATH%\\bin\\Win64_Shipping_Server"
     }
   }

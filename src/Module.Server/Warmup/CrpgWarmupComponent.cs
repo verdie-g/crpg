@@ -14,16 +14,17 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
 
     private readonly CrpgConstants _constants;
     private readonly MultiplayerGameNotificationsComponent _notificationsComponent;
-    private readonly Func<SpawningBehaviorBase>? _createSpawningBehavior;
-    private bool _overridenSpawningBehavior;
+    private readonly Func<(SpawnFrameBehaviorBase, SpawningBehaviorBase)>? _createSpawnBehaviors;
+    private WarmupStates _lastTickWarmupState;
 
     public CrpgWarmupComponent(CrpgConstants constants,
         MultiplayerGameNotificationsComponent notificationsComponent,
-        Func<SpawningBehaviorBase>? createSpawningBehavior)
+        Func<(SpawnFrameBehaviorBase, SpawningBehaviorBase)>? createSpawnBehaviors)
     {
         _constants = constants;
         _notificationsComponent = notificationsComponent;
-        _createSpawningBehavior = createSpawningBehavior;
+        _createSpawnBehaviors = createSpawnBehaviors;
+        _lastTickWarmupState = WarmupStates.WaitingForPlayers;
     }
 
     public override void OnBehaviorInitialize()
@@ -35,50 +36,28 @@ internal class CrpgWarmupComponent : MultiplayerWarmupComponent
     public override void OnPreDisplayMissionTick(float dt)
     {
         base.OnPreDisplayMissionTick(dt);
-        if (!_overridenSpawningBehavior)
-        {
-            return;
-        }
-
-        SpawnComponent spawnComponent = Mission.GetMissionBehavior<SpawnComponent>();
-        spawnComponent.SetNewSpawnFrameBehavior(new FFASpawnFrameBehavior());
-        spawnComponent.SetNewSpawningBehavior(new CrpgWarmupSpawningBehavior(_constants));
-        _overridenSpawningBehavior = false;
-    }
-
-    public override void OnClearScene()
-    {
-        base.OnClearScene();
-        if (!_overridenSpawningBehavior && !IsInWarmup)
-        {
-            return;
-        }
-
-        SpawnComponent spawnComponent = Mission.GetMissionBehavior<SpawnComponent>();
-        if ((WarmupStates)WarmupStateField.GetValue(this) != WarmupStates.InProgress
-            || (spawnComponent.SpawningBehavior.GetType() == typeof(CrpgWarmupSpawningBehavior)
-                && spawnComponent.SpawnFrameBehavior.GetType() == typeof(FFASpawnFrameBehavior)))
-        {
-            return;
-        }
-
-        _overridenSpawningBehavior = true;
-    }
-
-    public override void OnRemoveBehavior()
-    {
-        base.OnWarmupEnding -= OnWarmupEnding;
-        base.OnRemoveBehavior();
         if (!GameNetwork.IsServer)
         {
             return;
         }
 
-        // When this behavior is being removed, it it means the game is about to start and the hardcoded spawn behaviors
-        // were set. It's the moment to replace them.
-        SpawnComponent spawnComponent = Mission.GetMissionBehavior<SpawnComponent>();
-        spawnComponent.SetNewSpawnFrameBehavior(new FlagDominationSpawnFrameBehavior());
-        spawnComponent.SetNewSpawningBehavior(_createSpawningBehavior!());
+        var warmupState = (WarmupStates)WarmupStateField.GetValue(this);
+
+        if (_lastTickWarmupState == WarmupStates.WaitingForPlayers && warmupState == WarmupStates.InProgress)
+        {
+            SpawnComponent spawnComponent = Mission.GetMissionBehavior<SpawnComponent>();
+            spawnComponent.SetNewSpawnFrameBehavior(new FFASpawnFrameBehavior());
+            spawnComponent.SetNewSpawningBehavior(new CrpgWarmupSpawningBehavior(_constants));
+        }
+        else if (_lastTickWarmupState == WarmupStates.Ending && warmupState == WarmupStates.Ended)
+        {
+            SpawnComponent spawnComponent = Mission.GetMissionBehavior<SpawnComponent>();
+            (SpawnFrameBehaviorBase spawnFrame, SpawningBehaviorBase spawning) = _createSpawnBehaviors!();
+            spawnComponent.SetNewSpawnFrameBehavior(spawnFrame);
+            spawnComponent.SetNewSpawningBehavior(spawning);
+        }
+
+        _lastTickWarmupState = warmupState;
     }
 
     private new void OnWarmupEnding()

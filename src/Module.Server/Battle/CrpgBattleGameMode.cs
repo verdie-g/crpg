@@ -85,13 +85,13 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 
 #if CRPG_SERVER
         CrpgHttpClient crpgClient = new();
-        MultiplayerRoundController roundController = new(); // starts/stops round, ends match
-        RoundRewardBehavior roundRewardComponent = new(roundController, crpgClient, _constants);
         ChatBox chatBox = Game.Current.GetGameHandler<ChatBox>();
-        CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent,
-            () => _isSkirmish
+
+        MultiplayerRoundController roundController = new(); // starts/stops round, ends match
+        CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, () =>
+            (new FlagDominationSpawnFrameBehavior(), _isSkirmish
                 ? new CrpgSkirmishSpawningBehavior(_constants, roundController)
-                : new CrpgBattleSpawningBehavior(_constants, roundController));
+                : new CrpgBattleSpawningBehavior(_constants, roundController)));
 #else
         CrpgWarmupComponent warmupComponent = new(_constants, notificationsComponent, null);
 #endif
@@ -127,7 +127,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 #if CRPG_SERVER
                     roundController,
                     new CrpgFlagDominationMissionMultiplayer(flagDominationClient, _isSkirmish),
-                    roundRewardComponent,
+                    new CrpgRewardServer(crpgClient, _constants, warmupComponent, roundController),
                     // SpawnFrameBehaviour: where to spawn, SpawningBehaviour: when to spawn
                     new SpawnComponent(new BattleSpawnFrameBehavior(),
                         _isSkirmish ? new CrpgSkirmishSpawningBehavior(_constants, roundController) : new CrpgBattleSpawningBehavior(_constants, roundController)),
@@ -140,6 +140,7 @@ internal class CrpgBattleGameMode : MissionBasedMultiplayerGameMode
 #else
                     new MultiplayerRoundComponent(),
                     new MissionMatchHistoryComponent(),
+                    new CrpgRewardClient(),
 #endif
                 });
     }

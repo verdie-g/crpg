@@ -2,7 +2,7 @@ using Crpg.Module.Api;
 using Crpg.Module.Api.Models;
 using Crpg.Module.Api.Models.Characters;
 using Crpg.Module.Common.Network;
-using Crpg.Module.Helpers;
+using Crpg.Module.Common.Warmup;
 using Crpg.Module.Rating;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -12,24 +12,34 @@ using TaleWorlds.PlayerServices;
 namespace Crpg.Module.Common;
 
 /// <summary>
-/// On round ends, give xp/gold, update rating and stats.
+/// Gives xp/gold, update rating and stats.
 /// </summary>
-internal class RoundRewardBehavior : MissionBehavior
+internal class CrpgRewardServer : MissionBehavior
 {
-    private readonly MultiplayerRoundController _roundController;
+    /// <summary>When there is no round controller (e.g. siege), rewards are sent every minute.</summary>
+    private const int TickDuration = 60;
+
     private readonly ICrpgClient _crpgClient;
     private readonly CrpgConstants _constants;
+    private readonly CrpgWarmupComponent _warmupComponent;
+    private readonly MultiplayerRoundController? _roundController;
     private readonly Dictionary<PlayerId, CrpgRating> _characterRatings;
     private readonly CrpgRatingPeriodResults _ratingResults;
     private readonly Random _random = new();
 
-    private Dictionary<PlayerId, CrpgCharacterStatistics> _lastRoundAllTotalStats = new();
+    private Dictionary<PlayerId, CrpgCharacterStatistics> _lastAllTotalStats = new();
+    private MissionTimer? _tickTimer;
 
-    public RoundRewardBehavior(MultiplayerRoundController roundController, ICrpgClient crpgClient, CrpgConstants constants)
+    public CrpgRewardServer(
+        ICrpgClient crpgClient,
+        CrpgConstants constants,
+        CrpgWarmupComponent warmupComponent,
+        MultiplayerRoundController? roundController)
     {
-        _roundController = roundController;
         _crpgClient = crpgClient;
         _constants = constants;
+        _warmupComponent = warmupComponent;
+        _roundController = roundController;
         _characterRatings = new Dictionary<PlayerId, CrpgRating>();
         _ratingResults = new CrpgRatingPeriodResults();
     }
@@ -39,13 +49,36 @@ internal class RoundRewardBehavior : MissionBehavior
     public override void AfterStart()
     {
         base.AfterStart();
-        _roundController.OnPreRoundEnding += OnPreRoundEnding;
+        if (_roundController != null)
+        {
+            _roundController.OnPreRoundEnding += OnPreRoundEnding;
+        }
+        else
+        {
+            _warmupComponent.OnWarmupEnded += OnWarmupEnded;
+        }
     }
 
     public override void OnRemoveBehavior()
     {
-        _roundController.OnPreRoundEnding -= OnPreRoundEnding;
+        if (_roundController != null)
+        {
+            _roundController.OnPreRoundEnding -= OnPreRoundEnding;
+        }
+        else
+        {
+            _warmupComponent.OnWarmupEnded -= OnWarmupEnded;
+        }
+
         base.OnRemoveBehavior();
+    }
+
+    public override void OnMissionTick(float dt)
+    {
+        if (_tickTimer != null && _tickTimer.Check(reset: true))
+        {
+            _ = UpdateCrpgUsersAsync(_tickTimer.GetTimerDuration());
+        }
     }
 
     public override void OnAgentHit(
@@ -55,7 +88,7 @@ internal class RoundRewardBehavior : MissionBehavior
         in Blow blow,
         in AttackCollisionData attackCollisionData)
     {
-        if (!_roundController.IsRoundInProgress)
+        if (_warmupComponent.IsInWarmup)
         {
             return;
         }
@@ -107,24 +140,29 @@ internal class RoundRewardBehavior : MissionBehavior
 
     private void OnPreRoundEnding()
     {
-        _ = UpdateCrpgUsersAsync();
+        float duration = MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue() - _roundController!.RemainingRoundTime;
+        _ = UpdateCrpgUsersAsync(duration);
     }
 
-    private async Task UpdateCrpgUsersAsync()
+    private void OnWarmupEnded()
     {
-        float roundDuration = MultiplayerOptions.OptionType.RoundTimeLimit.GetIntValue() - _roundController.RemainingRoundTime;
+        _tickTimer = new MissionTimer(TickDuration);
+    }
 
+    private async Task UpdateCrpgUsersAsync(float durationRewarded)
+    {
         CrpgRatingCalculator.UpdateRatings(_ratingResults);
 
         Dictionary<int, CrpgPeer> crpgPeerByUserId = new();
-        var newRoundAllTotalStats = new Dictionary<PlayerId, CrpgCharacterStatistics>();
+        var newAllTotalStats = new Dictionary<PlayerId, CrpgCharacterStatistics>();
         List<CrpgUserUpdate> userUpdates = new();
         var networkPeers = GameNetwork.NetworkPeers.ToArray();
         bool rewardMultiplierEnabled = networkPeers.Length > 4;
         foreach (NetworkCommunicator networkPeer in networkPeers)
         {
+            var missionPeer = networkPeer.GetComponent<MissionPeer>();
             var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
-            if (crpgPeer?.User == null)
+            if (missionPeer == null || crpgPeer?.User == null)
             {
                 continue;
             }
@@ -137,11 +175,16 @@ internal class RoundRewardBehavior : MissionBehavior
                 Reward = new CrpgUserReward { Experience = 0, Gold = 0 },
                 Statistics = new CrpgCharacterStatistics { Kills = 0, Deaths = 0, Assists = 0, PlayTime = TimeSpan.Zero },
                 Rating = GetNewRating(crpgPeer),
-                BrokenItems = BreakItems(crpgPeer, roundDuration),
+                BrokenItems = Array.Empty<CrpgUserBrokenItem>(),
             };
 
-            SetReward(userUpdate, crpgPeer, roundDuration, rewardMultiplierEnabled);
-            SetStatistics(userUpdate, networkPeer, newRoundAllTotalStats);
+            if ((_roundController != null && crpgPeer.SpawnTeamThisRound != null)
+                || (_roundController == null && missionPeer.Team != null && missionPeer.Team.Side != BattleSideEnum.None))
+            {
+                SetReward(userUpdate, crpgPeer, durationRewarded, rewardMultiplierEnabled);
+                SetStatistics(userUpdate, networkPeer, newAllTotalStats);
+                userUpdate.BrokenItems = BreakItems(crpgPeer, durationRewarded);
+            }
 
             userUpdates.Add(userUpdate);
         }
@@ -154,8 +197,8 @@ internal class RoundRewardBehavior : MissionBehavior
             return;
         }
 
-        // Save last round stats to be able to make the difference next round.
-        _lastRoundAllTotalStats = newRoundAllTotalStats;
+        // Save last stats to be able to make the difference next time.
+        _lastAllTotalStats = newAllTotalStats;
 
         // TODO: add retry mechanism (the endpoint need to be idempotent though).
         try
@@ -170,24 +213,29 @@ internal class RoundRewardBehavior : MissionBehavior
         }
     }
 
-    private void SetReward(CrpgUserUpdate userUpdate, CrpgPeer crpgPeer, float roundDuration, bool rewardMultiplierEnabled)
+    private void SetReward(CrpgUserUpdate userUpdate, CrpgPeer crpgPeer, float durationRewarded, bool rewardMultiplierEnabled)
     {
-        if (crpgPeer.SpawnTeamThisRound == null)
-        {
-            return;
-        }
-
-        float totalRewardMultiplier = crpgPeer.RewardMultiplier * roundDuration;
+        float totalRewardMultiplier = crpgPeer.RewardMultiplier * durationRewarded;
         userUpdate.Reward = new CrpgUserReward
         {
             Experience = (int)(totalRewardMultiplier * _constants.ExperienceGainPerSecond),
             Gold = (int)(totalRewardMultiplier * _constants.GoldGainPerSecond),
         };
 
-        crpgPeer.RewardMultiplier =
-            _roundController.RoundWinner == crpgPeer.SpawnTeamThisRound.Side && rewardMultiplierEnabled
+        if (!rewardMultiplierEnabled)
+        {
+            crpgPeer.RewardMultiplier = 1;
+        }
+        else if (_roundController == null)
+        {
+            crpgPeer.RewardMultiplier = 2;
+        }
+        else
+        {
+            crpgPeer.RewardMultiplier = _roundController.RoundWinner == crpgPeer.SpawnTeamThisRound!.Side
                 ? Math.Min(5, crpgPeer.RewardMultiplier + 1)
                 : 1;
+        }
     }
 
     private CrpgCharacterRating GetNewRating(CrpgPeer crpgPeer)
@@ -207,11 +255,6 @@ internal class RoundRewardBehavior : MissionBehavior
 
     private IList<CrpgUserBrokenItem> BreakItems(CrpgPeer crpgPeer, float roundDuration)
     {
-        if (crpgPeer.SpawnTeamThisRound == null)
-        {
-            return Array.Empty<CrpgUserBrokenItem>();
-        }
-
         List<CrpgUserBrokenItem> brokenItems = new();
         foreach (var equippedItem in crpgPeer.User!.Character.EquippedItems)
         {
@@ -233,10 +276,10 @@ internal class RoundRewardBehavior : MissionBehavior
     }
 
     private void SetStatistics(CrpgUserUpdate userUpdate, NetworkCommunicator networkPeer,
-        Dictionary<PlayerId, CrpgCharacterStatistics> newRoundAllTotalStats)
+        Dictionary<PlayerId, CrpgCharacterStatistics> newAllTotalStats)
     {
         var missionPeer = networkPeer.GetComponent<MissionPeer>();
-        var newRoundTotalStats = new CrpgCharacterStatistics
+        var newTotalStats = new CrpgCharacterStatistics
         {
             Kills = missionPeer.KillCount,
             Deaths = missionPeer.DeathCount,
@@ -244,22 +287,22 @@ internal class RoundRewardBehavior : MissionBehavior
             PlayTime = DateTime.Now - missionPeer.JoinTime,
         };
 
-        if (_lastRoundAllTotalStats.TryGetValue(networkPeer.VirtualPlayer.Id, out var lastRoundTotalStats))
+        if (_lastAllTotalStats.TryGetValue(networkPeer.VirtualPlayer.Id, out var lastTotalStats))
         {
-            userUpdate.Statistics.Kills = newRoundTotalStats.Kills - lastRoundTotalStats.Kills;
-            userUpdate.Statistics.Deaths = newRoundTotalStats.Deaths - lastRoundTotalStats.Deaths;
-            userUpdate.Statistics.Assists = newRoundTotalStats.Assists - lastRoundTotalStats.Assists;
-            userUpdate.Statistics.PlayTime = newRoundTotalStats.PlayTime - lastRoundTotalStats.PlayTime;
+            userUpdate.Statistics.Kills = newTotalStats.Kills - lastTotalStats.Kills;
+            userUpdate.Statistics.Deaths = newTotalStats.Deaths - lastTotalStats.Deaths;
+            userUpdate.Statistics.Assists = newTotalStats.Assists - lastTotalStats.Assists;
+            userUpdate.Statistics.PlayTime = newTotalStats.PlayTime - lastTotalStats.PlayTime;
         }
         else
         {
-            userUpdate.Statistics.Kills = newRoundTotalStats.Kills;
-            userUpdate.Statistics.Deaths = newRoundTotalStats.Deaths;
-            userUpdate.Statistics.Assists = newRoundTotalStats.Assists;
-            userUpdate.Statistics.PlayTime = newRoundTotalStats.PlayTime;
+            userUpdate.Statistics.Kills = newTotalStats.Kills;
+            userUpdate.Statistics.Deaths = newTotalStats.Deaths;
+            userUpdate.Statistics.Assists = newTotalStats.Assists;
+            userUpdate.Statistics.PlayTime = newTotalStats.PlayTime;
         }
 
-        newRoundAllTotalStats[networkPeer.VirtualPlayer.Id] = newRoundTotalStats;
+        newAllTotalStats[networkPeer.VirtualPlayer.Id] = newTotalStats;
     }
 
     private void SendRewardToPeers(IList<UpdateCrpgUserResult> updateResults,
