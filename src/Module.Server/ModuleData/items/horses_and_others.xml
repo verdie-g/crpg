@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
-  <Item id="crpg_horse_fast_10" name="Shadowfax" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+  <Item id="crpg_mount_fast_10" name="Shadowfax" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="68" speed="55" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-10" modifier_group="horse">
         <AdditionalMeshes>
@@ -17,7 +17,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_fast_9" name="Milano" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+  <Item id="crpg_mount_fast_9" name="Milano" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="66" speed="54" charge_damage="3" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-14" modifier_group="horse">
         <AdditionalMeshes>
@@ -34,7 +34,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_fast_8" name="Napoletano" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+  <Item id="crpg_mount_fast_8" name="Napoletano" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="64" speed="53" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-19" modifier_group="horse">
         <AdditionalMeshes>
@@ -51,7 +51,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_fast_7" name="Venezia" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+  <Item id="crpg_mount_fast_7" name="Venezia" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="62" speed="52" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-24" modifier_group="horse">
         <AdditionalMeshes>
@@ -68,7 +68,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_fast_6" name="Vienna" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+  <Item id="crpg_mount_fast_6" name="Vienna" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="60" speed="50" charge_damage="2" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-31" modifier_group="horse">
         <AdditionalMeshes>
@@ -85,7 +85,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_fast_5" name="Fiorentina" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
+  <Item id="crpg_mount_fast_5" name="Fiorentina" mesh="horse_brown" item_category="noble_horse" difficulty="0" weight="420" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="58" speed="48" charge_damage="1" body_length="100" is_mountable="true" is_pack_animal="true" extra_health="-36" modifier_group="horse">
         <AdditionalMeshes>
@@ -102,7 +102,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_charger_10" name="Bucephale" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
+  <Item id="crpg_mount_charger_10" name="Bucephale" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="72" speed="44" charge_damage="8" body_length="105" is_mountable="true" extra_health="25" modifier_group="horse">
         <AdditionalMeshes>
@@ -120,7 +120,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_charger_9" name="Lionheart" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
+  <Item id="crpg_mount_charger_9" name="Lionheart" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="70" speed="43" charge_damage="8" body_length="105" is_mountable="true" extra_health="20" modifier_group="horse">
         <AdditionalMeshes>
@@ -138,7 +138,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_charger_8" name="Durendal" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
+  <Item id="crpg_mount_charger_8" name="Durendal" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="68" speed="42" charge_damage="8" body_length="105" is_mountable="true" extra_health="14" modifier_group="horse">
         <AdditionalMeshes>
@@ -156,7 +156,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_charger_7" name="Baudouin" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
+  <Item id="crpg_mount_charger_7" name="Baudouin" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="66" speed="41" charge_damage="7" body_length="105" is_mountable="true" extra_health="7" modifier_group="horse">
         <AdditionalMeshes>
@@ -174,7 +174,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_charger_6" name="Bohemond" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
+  <Item id="crpg_mount_charger_6" name="Bohemond" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="64" speed="40" charge_damage="6" body_length="105" is_mountable="true" extra_health="-2" modifier_group="horse">
         <AdditionalMeshes>
@@ -192,7 +192,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_charger_5" name="Raymond" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
+  <Item id="crpg_mount_charger_5" name="Raymond" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="61" speed="38" charge_damage="7" body_length="105" is_mountable="true" extra_health="-12" modifier_group="horse">
         <AdditionalMeshes>
@@ -210,7 +210,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_balanced_10" name="Artemis" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="90" Type="Horse">
+  <Item id="crpg_mount_balanced_10" name="Artemis" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="90" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="78" speed="46" charge_damage="3" body_length="100" is_mountable="true" extra_health="-1" modifier_group="horse">
         <AdditionalMeshes>
@@ -228,7 +228,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_balanced_9" name="Comanche" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="90" Type="Horse">
+  <Item id="crpg_mount_balanced_9" name="Comanche" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="90" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="76" speed="45" charge_damage="3" body_length="100" is_mountable="true" extra_health="-5" modifier_group="horse">
         <AdditionalMeshes>
@@ -246,7 +246,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_balanced_8" name="Apache" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="90" Type="Horse">
+  <Item id="crpg_mount_balanced_8" name="Apache" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="90" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="74" speed="44" charge_damage="2" body_length="100" is_mountable="true" extra_health="-10" modifier_group="horse">
         <AdditionalMeshes>
@@ -264,7 +264,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_balanced_7" name="Iroquois" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="90" Type="Horse">
+  <Item id="crpg_mount_balanced_7" name="Iroquois" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="90" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="71" speed="43" charge_damage="7" body_length="105" is_mountable="true" extra_health="-19" modifier_group="horse">
         <AdditionalMeshes>
@@ -282,7 +282,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_balanced_6" name="Navajo" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="90" Type="Horse">
+  <Item id="crpg_mount_balanced_6" name="Navajo" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="430" difficulty="90" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="70" speed="41" charge_damage="1" body_length="105" is_mountable="true" extra_health="-23" modifier_group="horse">
         <AdditionalMeshes>
@@ -300,7 +300,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_balanced_5" name="Mohawk" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
+  <Item id="crpg_mount_balanced_5" name="Mohawk" mesh="horse_brown" is_merchandise="false" item_category="noble_horse" subtype="horse" culture="Culture.khuzait" weight="450" difficulty="90" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="66" speed="40" charge_damage="1" body_length="105" is_mountable="true" extra_health="-28" modifier_group="horse">
         <AdditionalMeshes>
@@ -318,7 +318,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_maneuverable_10" name="Bo'orchu" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
+  <Item id="crpg_mount_maneuverable_10" name="Bo'orchu" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="85" speed="44" charge_damage="4" body_length="90" is_mountable="true" extra_health="-12" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
@@ -336,7 +336,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_maneuverable_9" name="Genghis" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
+  <Item id="crpg_mount_maneuverable_9" name="Genghis" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="83" speed="43" charge_damage="3" body_length="90" is_mountable="true" extra_health="-16" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
@@ -354,7 +354,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_maneuverable_8" name="Padisha" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
+  <Item id="crpg_mount_maneuverable_8" name="Padisha" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="81" speed="42" charge_damage="3" body_length="90" is_mountable="true" extra_health="-21" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
@@ -372,7 +372,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_maneuverable_7" name="Kubilai" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
+  <Item id="crpg_mount_maneuverable_7" name="Kubilai" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="79" speed="41" charge_damage="2" body_length="90" is_mountable="true" extra_health="-26" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
@@ -390,7 +390,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_maneuverable_6" name="Darkhan" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
+  <Item id="crpg_mount_maneuverable_6" name="Darkhan" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="77" speed="39" charge_damage="2" body_length="90" is_mountable="true" extra_health="-34" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
@@ -408,7 +408,7 @@
     </ItemComponent>
     <Flags Civilian="true" />
   </Item>
-  <Item id="crpg_horse_maneuverable_5" name="Danishmend" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
+  <Item id="crpg_mount_maneuverable_5" name="Danishmend" mesh="horse_brown" item_category="noble_horse" culture="Culture.khuzait" subtype="horse" weight="300" difficulty="30" appearance="0" Type="Horse">
     <ItemComponent>
       <Horse monster="Monster.horse" maneuver="74" speed="38" charge_damage="2" body_length="90" is_mountable="true" extra_health="-40" skeleton_scale="khuzait_horse">
         <AdditionalMeshes>
