@@ -16,8 +16,8 @@ internal class CrpgItemValueModel : ItemValueModel
         [ItemObject.ItemTypeEnum.BodyArmor] = (31632, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.HandArmor] = (6000, ArmorPriceCoeffs),
         [ItemObject.ItemTypeEnum.LegArmor] = (4662, ArmorPriceCoeffs),
-        [ItemObject.ItemTypeEnum.HorseHarness] = (35000, ItemPriceCoeffs),
-        [ItemObject.ItemTypeEnum.Horse] = (25000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.HorseHarness] = (42000, ItemPriceCoeffs),
+        [ItemObject.ItemTypeEnum.Horse] = (18000, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Shield] = (9235, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Bow] = (12264, ItemPriceCoeffs),
         [ItemObject.ItemTypeEnum.Crossbow] = (18000, ItemPriceCoeffs),
@@ -81,7 +81,7 @@ internal class CrpgItemValueModel : ItemValueModel
             ItemObject.ItemTypeEnum.BodyArmor => 45.12333083538974f,
             ItemObject.ItemTypeEnum.HandArmor => 16.34342252585f,
             ItemObject.ItemTypeEnum.LegArmor => 14.497149997024f,
-            ItemObject.ItemTypeEnum.HorseHarness => 37f,
+            ItemObject.ItemTypeEnum.HorseHarness => 45f,
             _ => throw new ArgumentOutOfRangeException(),
         };
 
@@ -94,13 +94,13 @@ internal class CrpgItemValueModel : ItemValueModel
 
     private float CalculateHorseTier(HorseComponent horseComponent)
     {
-            float horsePower =
-              (float)Math.Pow(horseComponent.Speed, 1.65f)
-            * (float)Math.Pow(horseComponent.Maneuver, 1.85f)
-            * (float)Math.Pow(horseComponent.HitPoints + horseComponent.HitPointBonus, 1.2f)
-            + 300f * (float)Math.Pow(horseComponent.ChargeDamage, 4f) + 800000f * horseComponent.ChargeDamage;
-            float bestHorsePower = 1015355876f;
-            return 10f * horsePower / bestHorsePower;
+        float horsePower =
+          (float)Math.Pow(horseComponent.Speed, 1.60f)
+        * (float)Math.Pow(horseComponent.Maneuver, 1.65f)
+        * (float)Math.Pow(horseComponent.HitPoints + horseComponent.HitPointBonus, 1.26f)
+        + 300f * (float)Math.Pow(horseComponent.ChargeDamage, 5f) + 2500000f * horseComponent.ChargeDamage;
+        float bestHorsePower = 487438929.1f;
+        return 10f * horsePower / bestHorsePower;
     }
 
     private float CalculateBannerTier(BannerComponent bannerComponent)
