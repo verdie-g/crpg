@@ -22,7 +22,7 @@ internal class DonorSynchronizerWorker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken cancellationToken)
     {
-        string patreonAccessToken = _configuration.GetValue<string>("Patreon:AccessToken");
+        string? patreonAccessToken = _configuration.GetValue<string>("Patreon:AccessToken");
         if (patreonAccessToken == null)
         {
             Logger.LogInformation("No Patreon access token was provided. Disabling the donor synchronization");

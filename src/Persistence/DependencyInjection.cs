@@ -11,7 +11,7 @@ public static class DependencyInjection
     public static IServiceCollection AddPersistence(this IServiceCollection services,
         IConfiguration configuration, IApplicationEnvironment appEnv)
     {
-        string connectionString = configuration.GetConnectionString("Crpg");
+        string? connectionString = configuration.GetConnectionString("Crpg");
         if (appEnv.Environment == HostingEnvironment.Development && connectionString == null)
         {
             services.AddDbContext<CrpgDbContext>(options => options.UseInMemoryDatabase("crpg"));

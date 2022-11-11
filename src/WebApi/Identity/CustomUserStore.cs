@@ -13,14 +13,14 @@ internal class CustomUserStore : IUserLoginStore<UserViewModel>, IUserRoleStore<
 
     public CustomUserStore(IMediator mediator) => _mediator = mediator;
 
-    public async Task<UserViewModel> FindByIdAsync(string userId, CancellationToken cancellationToken)
+    public async Task<UserViewModel?> FindByIdAsync(string userId, CancellationToken cancellationToken)
     {
         var res = await _mediator.Send(new GetUserQuery { UserId = int.Parse(userId) }, cancellationToken);
         return res.Data!;
     }
 
     public Task<string> GetUserIdAsync(UserViewModel user, CancellationToken cancellationToken) => Task.FromResult(user.Id.ToString());
-    public Task<string> GetUserNameAsync(UserViewModel user, CancellationToken cancellationToken) => Task.FromResult(user.Name);
+    public Task<string?> GetUserNameAsync(UserViewModel user, CancellationToken cancellationToken) => Task.FromResult<string?>(user.Name);
     public Task<IList<string>> GetRolesAsync(UserViewModel user, CancellationToken cancellationToken) => Task.FromResult<IList<string>>(new[] { user.Role.ToString() });
 
     /// <summary>
@@ -33,12 +33,12 @@ internal class CustomUserStore : IUserLoginStore<UserViewModel>, IUserRoleStore<
         });
 
     public Task<IdentityResult> CreateAsync(UserViewModel user, CancellationToken cancellationToken) => throw new NotImplementedException();
-    public Task SetNormalizedUserNameAsync(UserViewModel user, string normalizedName, CancellationToken cancellationToken) => throw new NotImplementedException();
-    public Task<UserViewModel> FindByLoginAsync(string loginProvider, string providerKey, CancellationToken cancellationToken) => throw new NotImplementedException();
-    public Task<UserViewModel> FindByNameAsync(string normalizedUserViewModelName, CancellationToken cancellationToken) => throw new NotImplementedException();
-    public Task<string> GetNormalizedUserNameAsync(UserViewModel user, CancellationToken cancellationToken) => throw new NotImplementedException();
+    public Task SetNormalizedUserNameAsync(UserViewModel user, string? normalizedName, CancellationToken cancellationToken) => throw new NotImplementedException();
+    public Task<UserViewModel?> FindByLoginAsync(string loginProvider, string providerKey, CancellationToken cancellationToken) => throw new NotImplementedException();
+    public Task<UserViewModel?> FindByNameAsync(string normalizedUserViewModelName, CancellationToken cancellationToken) => throw new NotImplementedException();
+    public Task<string?> GetNormalizedUserNameAsync(UserViewModel user, CancellationToken cancellationToken) => throw new NotImplementedException();
     public Task<IdentityResult> DeleteAsync(UserViewModel user, CancellationToken cancellationToken) => throw new NotImplementedException();
-    public Task SetUserNameAsync(UserViewModel user, string userName, CancellationToken cancellationToken) => throw new NotImplementedException();
+    public Task SetUserNameAsync(UserViewModel user, string? userName, CancellationToken cancellationToken) => throw new NotImplementedException();
     public Task<IdentityResult> UpdateAsync(UserViewModel user, CancellationToken cancellationToken) => throw new NotImplementedException();
     public Task AddLoginAsync(UserViewModel user, UserLoginInfo login, CancellationToken cancellationToken) => throw new NotImplementedException();
     public Task<IList<UserLoginInfo>> GetLoginsAsync(UserViewModel user, CancellationToken cancellationToken) => throw new NotImplementedException();

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <RootNamespace>Crpg.Launcher</RootNamespace>
     <AssemblyName>Crpg.Launcher</AssemblyName>
     <ApplicationIcon>crpg_launcher_icon.ico</ApplicationIcon>

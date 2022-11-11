@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>Crpg.Persistence.UTest</RootNamespace>
     <AssemblyName>Crpg.Persistence.UTest</AssemblyName>
   </PropertyGroup>
@@ -9,10 +9,10 @@
   <Import Project="../../src/Directory.Build.props" />
 
   <ItemGroup>
-    <PackageReference Include="Moq" Version="4.18.1" />
+    <PackageReference Include="Moq" Version="4.18.2" />
     <PackageReference Include="nunit" Version="3.13.3" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.3.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
   </ItemGroup>
 
   <ItemGroup>

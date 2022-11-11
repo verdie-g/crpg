@@ -23,7 +23,7 @@ internal class RequestValidationBehavior<TRequest, TResponse> : IPipelineBehavio
         _validators = (validators as IValidator<TRequest>[])!;
     }
 
-    public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+    public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         if (_validators.Length == 0)
         {
