@@ -1426,6 +1426,7 @@
       <Swing damage_type="Cut" damage_factor="1.229638" />
     </BladeData>
     <Flags>
+	  <Flag name="BonusAgainstShield" />
       <Flag name="CanBePickedUpFromCorpse" type="ItemFlags" />
     </Flags>
     <Materials>
@@ -4663,7 +4664,6 @@
       <Swing damage_type="Cut" damage_factor="1.75" />
     </BladeData>
     <Flags>
-      <Flag name="BonusAgainstShield" />
       <Flag name="Civilian" type="ItemFlags" />
     </Flags>
     <Materials>
@@ -4853,7 +4853,6 @@
       <Swing damage_type="Cut" damage_factor="1.96175" />
     </BladeData>
     <Flags>
-      <Flag name="BonusAgainstShield" />
       <Flag name="Civilian" type="ItemFlags" />
     </Flags>
     <Materials>
@@ -5114,9 +5113,6 @@
     <BladeData stack_amount="0" physics_material="metal_weapon" body_name="bo_sword_one_handed">
       <Swing damage_type="Cut" damage_factor="1.56275" />
     </BladeData>
-    <Flags>
-      <Flag name="BonusAgainstShield" />
-    </Flags>
     <Materials>
       <Material id="Iron5" count="3" />
     </Materials>
@@ -5125,9 +5121,6 @@
     <BladeData stack_amount="0" physics_material="metal_weapon" body_name="bo_sword_one_handed">
       <Swing damage_type="Cut" damage_factor="1.56275" />
     </BladeData>
-    <Flags>
-      <Flag name="BonusAgainstShield" />
-    </Flags>
     <Materials>
       <Material id="Iron5" count="3" />
     </Materials>
