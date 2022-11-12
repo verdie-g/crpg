@@ -102,13 +102,13 @@ public class FileItemsSourceTest
     }
 
     [Test]
-    public async Task CheckPositivePrices()
+    public async Task CheckItemTier()
     {
         var items = await new FileItemsSource().LoadItems();
         List<string> errors = new();
         foreach (var item in items)
         {
-            if (item.Price <= 0)
+            if (item.Tier > 11)
             {
                 errors.Add(item.Id);
             }
@@ -116,7 +116,26 @@ public class FileItemsSourceTest
 
         if (errors.Count != 0)
         {
-            Assert.Fail($"Items with zero or negative price:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
+            Assert.Fail($"Item with too higher tier:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
+        }
+    }
+
+    [Test]
+    public async Task CheckPriceRange()
+    {
+        var items = await new FileItemsSource().LoadItems();
+        List<string> errors = new();
+        foreach (var item in items)
+        {
+            if (item.Price <= 0 || item.Price > 100_000)
+            {
+                errors.Add(item.Id);
+            }
+        }
+
+        if (errors.Count != 0)
+        {
+            Assert.Fail($"Items with zero, or negative price or price too high:{Environment.NewLine}- " + string.Join($"{Environment.NewLine}- ", errors));
         }
     }
 }
