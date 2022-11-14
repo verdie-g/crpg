@@ -62,6 +62,8 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<Stea
                            .FirstOrDefaultAsync(u => u.PlatformUserId == request.PlatformUserId, cancellationToken)
                 ?? new User { Platform = Platform.Steam, PlatformUserId = request.PlatformUserId };
 
+            string oldName = user.Name;
+
             user.Name = request.Name;
             user.AvatarSmall = request.Avatar;
             user.AvatarMedium = request.AvatarMedium;
@@ -75,6 +77,10 @@ public record UpsertUserCommand : IMediatorRequest<UserViewModel>, IMapFrom<Stea
                 _db.Users.Add(user);
                 Logger.LogInformation("{0} joined ({1}#{2})", request.Name,
                     user.Platform, user.PlatformUserId);
+            }
+            else if (user.Name != oldName)
+            {
+                Logger.LogInformation("User '{0}' changed their name from '{1}' to '{2}'", user.Id, oldName, user.Name);
             }
 
             await _db.SaveChangesAsync(cancellationToken);
