@@ -1,12 +1,10 @@
-﻿using Crpg.Module.Common.Network;
-using NetworkMessages.FromServer;
+﻿using NetworkMessages.FromServer;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.MountAndBlade.MissionRepresentatives;
 using TaleWorlds.MountAndBlade.Objects;
-using TaleWorlds.ObjectSystem;
 
 namespace Crpg.Module.Battle;
 
@@ -198,7 +196,6 @@ internal class CrpgFlagDominationMissionMultiplayerClient : MissionMultiplayerGa
         base.AddRemoveMessageHandlers(registerer);
         if (GameNetwork.IsClientOrReplay)
         {
-            registerer.Register<UpdateCrpgUser>(HandleUpdateCrpgUser);
             registerer.Register<FlagDominationMoraleChangeMessage>(OnMoraleChange);
             registerer.Register<FlagDominationCapturePointMessage>(OnCapturePoint);
             registerer.Register<FlagDominationFlagsRemovedMessage>(OnFlagsRemoved);
@@ -276,22 +273,5 @@ internal class CrpgFlagDominationMissionMultiplayerClient : MissionMultiplayerGa
     {
         _flags = Mission.Current.MissionObjects.FindAllWithType<FlagCapturePoint>().ToArray();
         _flagOwners = new Team[_flags.Length];
-    }
-
-    private void HandleUpdateCrpgUser(UpdateCrpgUser message)
-    {
-        // Print a welcome message to new players. For convenience, new player are considered character of generation
-        // 0 and small level. This doesn't handle the case of second characters for the same user but it's good enough.
-        if (RoundComponent.RoundCount > 1 || RoundComponent.CurrentRoundState == MultiplayerRoundState.Ending)
-        {
-            return;
-        }
-
-        var user = message.User;
-        if (user.Character.Generation == 0 && user.Character.Level < 4)
-        {
-            InformationManager.DisplayMessage(new InformationMessage(
-                "Welcome to cRPG! Gain experience and gold in battles and upgrade your character on the website https://c-rpg.eu"));
-        }
     }
 }
