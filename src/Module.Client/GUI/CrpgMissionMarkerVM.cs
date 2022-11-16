@@ -23,7 +23,7 @@ internal class CrpgMissionMarkerVm : ViewModel
     private readonly Dictionary<MissionPeer, MissionPeerMarkerTargetVM> _missionPeerMarkers;
     private readonly MarkerDistanceComparer _distanceComparer;
     private readonly ICommanderInfo? _commanderInfo;
-    private readonly List<PlayerId> _friendIDs;
+    private readonly HashSet<PlayerId> _friendIds;
     private bool _prevEnabledState;
     private bool _fadeOutTimerStarted;
     private float _fadeOutTimer;
@@ -57,11 +57,11 @@ internal class CrpgMissionMarkerVm : ViewModel
         }
 
         MissionPeer.OnTeamChanged += OnTeamChanged;
-        _friendIDs = new List<PlayerId>();
-        IFriendListService[] friendListServices = PlatformServices.Instance.GetFriendListServices();
-        foreach (IFriendListService friendListService in friendListServices)
+
+        _friendIds = new HashSet<PlayerId>();
+        foreach (var friendId in FriendListService.GetAllFriendsInAllPlatforms())
         {
-            _friendIDs.AddRange(friendListService.GetAllFriends());
+            _friendIds.Add(friendId);
         }
     }
 
@@ -337,7 +337,7 @@ internal class CrpgMissionMarkerVm : ViewModel
             // Create new teammate markers and add them to list + set color
             if (!_missionPeerMarkers.ContainsKey(missionPeer))
             {
-                bool missionPeerIsFriend = _friendIDs.Contains(missionPeer.Peer.Id);
+                bool missionPeerIsFriend = _friendIds.Contains(missionPeer.Peer.Id);
                 MissionPeerMarkerTargetVM missionPeerMarkerTargetVm = new(missionPeer, missionPeerIsFriend);
                 PeerTargets.Add(missionPeerMarkerTargetVm);
                 _missionPeerMarkers.Add(missionPeer, missionPeerMarkerTargetVm);
@@ -380,12 +380,12 @@ internal class CrpgMissionMarkerVm : ViewModel
         const string defaultColor = "#FFFFFFFF"; // white
         const string clanmateColor = "#FF0000FF"; // red
         const string friendColor = "#FFFF00FF"; // yellow
-        uint color1 = Color.ConvertStringToColor(defaultColor).ToUnsignedInteger(); // white
-        uint color2 = Color.ConvertStringToColor(defaultColor).ToUnsignedInteger(); // white
+        uint color1 = Color.ConvertStringToColor(defaultColor).ToUnsignedInteger();
+        uint color2 = Color.ConvertStringToColor(defaultColor).ToUnsignedInteger();
         if (GameNetwork.MyPeer != null)
         {
             CrpgPeer myCrpgPeer = GameNetwork.MyPeer.GetComponent<CrpgPeer>();
-            CrpgPeer? crpgPeer = missionPeer?.GetNetworkPeer().GetComponent<CrpgPeer>() ?? null;
+            CrpgPeer? crpgPeer = missionPeer.GetNetworkPeer().GetComponent<CrpgPeer>() ?? null;
             if (myCrpgPeer?.Clan != null && crpgPeer?.Clan != null && crpgPeer.Clan.Id == myCrpgPeer.Clan.Id)
             {
                 color2 = Color.ConvertStringToColor(clanmateColor).ToUnsignedInteger();
