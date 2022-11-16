@@ -11,17 +11,18 @@ namespace Crpg.Module.Common;
 /// </summary>
 internal class KickInactiveBehavior : MissionBehavior
 {
-    private static readonly MissionTime InactiveTimeLimit = MissionTime.Seconds(45);
-
+    private readonly MissionTime _inactiveTimeLimit;
     private readonly MultiplayerWarmupComponent _warmupComponent;
     private readonly MultiplayerGameNotificationsComponent _notificationsComponent;
     private readonly Dictionary<PlayerId, ActivityStatus> _lastActiveStatuses;
     private Timer? _checkTimer;
 
     public KickInactiveBehavior(
+        float inactiveTimeLimit,
         MultiplayerWarmupComponent warmupComponent,
         MultiplayerGameNotificationsComponent notificationsComponent)
     {
+        _inactiveTimeLimit = MissionTime.Seconds(45);
         _warmupComponent = warmupComponent;
         _notificationsComponent = notificationsComponent;
         _lastActiveStatuses = new Dictionary<PlayerId, ActivityStatus>();
@@ -82,7 +83,7 @@ internal class KickInactiveBehavior : MissionBehavior
                 continue;
             }
 
-            if (MissionTime.Now - lastActiveStatus.LastActive > InactiveTimeLimit)
+            if (MissionTime.Now - lastActiveStatus.LastActive > _inactiveTimeLimit)
             {
                 var crpgPeer = networkPeer.GetComponent<CrpgPeer>();
                 Debug.Print($"Kick inactive user {crpgPeer.User!.Character.Name} ({crpgPeer.User.Platform}#{crpgPeer.User.PlatformUserId})");
@@ -95,7 +96,7 @@ internal class KickInactiveBehavior : MissionBehavior
                 return;
             }
 
-            if (MissionTime.Now - lastActiveStatus.LastActive > InactiveTimeLimit - MissionTime.Seconds(15) && !lastActiveStatus.Warned)
+            if (MissionTime.Now - lastActiveStatus.LastActive > _inactiveTimeLimit - MissionTime.Seconds(15) && !lastActiveStatus.Warned)
             {
                 _notificationsComponent.PlayerIsInactive(networkPeer);
                 lastActiveStatus.Warned = true;
